@@ -699,6 +699,74 @@ describe("Text", () => {
     });
 });
 
+describe("Plusgiro", () => {
+    it("should format from string", () => {
+        const wrapper = createWrapper(
+            `<span v-format:plusgiro="'9999996'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--plusgiro">99 99 99-6</span>`,
+        );
+    });
+
+    it("should render empty element from number", () => {
+        const wrapper = createWrapper(
+            `<span v-format:plusgiro="9999996"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--plusgiro"></span>`,
+        );
+    });
+
+    it("should render empty element for invalid data", () => {
+        const wrapper = createWrapper(
+            `<span v-format:plusgiro="'999AB96'"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--plusgiro"></span>`,
+        );
+    });
+
+    it("should render empty element for undefined", () => {
+        const wrapper = createWrapper(
+            `<span v-format:plusgiro="undefined"></span>`,
+        );
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--plusgiro"></span>`,
+        );
+    });
+
+    it("should render empty element for null", () => {
+        const wrapper = createWrapper(`<span v-format:plusgiro="null"></span>`);
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span class="formatter--plusgiro"></span>`,
+        );
+    });
+
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            /* HTML */ `
+                <span v-format:plusgiro="value"></span>
+                <button type="button" @click="value='1 1111-2'">Update</button>
+            `,
+            "9999996",
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--plusgiro">99 99 99-6</span>
+            <button type="button">Update</button>
+        `);
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--plusgiro">1 11 11-2</span>
+            <button type="button">Update</button>
+        `);
+    });
+});
+
 describe("Postnummer", () => {
     it("should format from string", () => {
         const wrapper = createWrapper(

@@ -5,6 +5,7 @@ import {
     parseDate,
     parseOrganisationsnummer,
     parsePersonnummer,
+    parsePlusgiro,
     parsePostalCode,
 } from "@fkui/logic";
 import { type DateRange } from "./date-range";
@@ -152,6 +153,18 @@ export function formatOrganisationsnummer(
 export function formatText(el: HTMLElement, text: string | unknown): void {
     el.classList.add("formatter--text");
     el.textContent = typeof text === "string" ? text : "";
+}
+
+export function formatPlusgiro(
+    el: HTMLElement,
+    plusgiro: string | unknown,
+): void {
+    el.classList.add("formatter--plusgiro");
+    el.textContent = "";
+
+    if (typeof plusgiro === "string") {
+        el.textContent = parsePlusgiro(plusgiro) ?? "";
+    }
 }
 
 export function formatPostnummer(
