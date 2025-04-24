@@ -15450,8 +15450,8 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$W)) : createCommentVNode("", true);
 }
 const FModal = /* @__PURE__ */ _export_sfc$1(_sfc_main$1c, [["render", _sfc_render$P]]);
-function prepareButtonList(src, buttonOrder = config.buttonOrder) {
-  const list = src.map((it) => {
+function prepareButtonList(src) {
+  return src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
     return {
       label: it.label,
@@ -15462,12 +15462,6 @@ function prepareButtonList(src, buttonOrder = config.buttonOrder) {
       buttonType: it.submitButton ? "submit" : "button"
     };
   });
-  switch (buttonOrder) {
-    case FKUIConfigButtonOrder.LEFT_TO_RIGHT:
-      return list;
-    case FKUIConfigButtonOrder.RIGHT_TO_LEFT:
-      return list.reverse();
-  }
 }
 const defaultButtons = [{
   label: "Primärknapp",
@@ -15565,7 +15559,8 @@ const _sfc_main$1b = /* @__PURE__ */ defineComponent({
   })],
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons);
+      const preparedButtonList = prepareButtonList(this.buttons);
+      return config.buttonOrder === FKUIConfigButtonOrder.RIGHT_TO_LEFT ? preparedButtonList.reverse() : preparedButtonList;
     }
   },
   methods: {
@@ -16354,7 +16349,7 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, FKUIConfigButtonOrder.RIGHT_TO_LEFT);
+      return prepareButtonList(this.buttons);
     }
   },
   methods: {
@@ -19291,7 +19286,7 @@ function FTableInjected() {
     const internalVisible = ref(true);
     const renderElement = ref(true);
     const id = ElementIdService.generateElementId("column");
-    const el = useTemplateRef("el");
+    const el = useTemplateRef("element");
     const props = __props;
     const classes = computed(() => {
       return ["table__column", `table__column--${props.type}`];
@@ -19342,8 +19337,7 @@ function FTableInjected() {
     return (_ctx, _cache) => {
       return renderElement.value && internalVisible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
         key: 0,
-        ref_key: "el",
-        ref: el,
+        ref: "element",
         class: classes.value,
         scope: scope.value
       }, _ctx.$attrs), {
@@ -21189,7 +21183,7 @@ const _hoisted_22 = ["colspan"];
       expandableRows,
       hasExpandableContent
     } = expandableTable;
-    const tbodyElement = useTemplateRef("tbodyElement");
+    const tbody = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
         stripClasses: []
@@ -21271,21 +21265,21 @@ const _hoisted_22 = ["colspan"];
       immediate: true,
       deep: true
     });
-    function updateTr(tbodyElement2) {
-      const trElements = [].slice.call(tbodyElement2.children);
+    function updateTr(tbodyElement) {
+      const trElements = [].slice.call(tbodyElement.children);
       const trInteractableElements = trElements.filter((tr2) => {
         return tr2.tabIndex === 0;
       });
       tr.value = trInteractableElements;
     }
     onUpdated(() => {
-      if (tbodyElement.value) {
-        updateTr(tbodyElement.value);
+      if (tbody.value) {
+        updateTr(tbody.value);
       }
     });
     onMounted(() => {
-      if (tbodyElement.value) {
-        updateTr(tbodyElement.value);
+      if (tbody.value) {
+        updateTr(tbody.value);
       }
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
@@ -21471,8 +21465,7 @@ const _hoisted_22 = ["colspan"];
           name: iconName(column)
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_11$1, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
       }), 128))])]), _cache[18] || (_cache[18] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
-        ref_key: "tbodyElement",
-        ref: tbodyElement,
+        ref: "tbodyElement",
         key: tbodyKey.value
       }, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row, index) => {
         return openBlock(), createElementBlock(Fragment, {
