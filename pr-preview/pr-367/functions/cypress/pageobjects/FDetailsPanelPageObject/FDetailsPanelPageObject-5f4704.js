@@ -26,37 +26,43 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject-status.vue:FBadgePageObject-status-af2281.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject.vue:FDetailsPanelPageObject-5f4704.js
 import { defineComponent as _defineComponent } from "vue";
-import { FBadge } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { onMounted } from "vue";
+import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
+import { createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FBadgePageObject-status",
+  __name: "FDetailsPanelPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FBadge() {
-      return FBadge;
+    onMounted(() => {
+      useDetailsPanel("awesome-panel").open("foo");
+    });
+    const __returned__ = { get FPageLayout() {
+      return FPageLayout;
+    }, get FDetailsPanel() {
+      return FDetailsPanel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], { status: "warning" }, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" MyBadge ")
+  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
+    left: _withCtx(() => [
+      _createVNode($setup["FDetailsPanel"], { name: "awesome-panel" })
+    ]),
+    content: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" Inneh\xE5ll ")
     ])),
     _: 1
     /* STABLE */
-  })), [
-    [_directive_test, "my-badge-warning"]
-  ]);
+  });
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-af2281"
+  selector: "#example-5f4704"
 });
 export {
   render

@@ -26,13 +26,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-footer.vue:FDetailsPanelPageObject-footer-3a1ed5.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-close-button.vue:FDetailsPanelPageObject-close-button-2b98d4.js
 import { defineComponent as _defineComponent } from "vue";
 import { onMounted } from "vue";
 import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
-import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject-footer",
+  __name: "FDetailsPanelPageObject-close-button",
   setup(__props, { expose: __expose }) {
     __expose();
     onMounted(() => {
@@ -47,17 +47,10 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     return __returned__;
   }
 });
-var _hoisted_1 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
     left: _withCtx(() => [
-      _createVNode($setup["FDetailsPanel"], { name: "awesome-panel" }, {
-        default: _withCtx(({ footer }) => [
-          _createElementVNode("div", { slot: footer }, "Lorem ipsum", 8, _hoisted_1)
-        ]),
-        _: 1
-        /* STABLE */
-      })
+      _createVNode($setup["FDetailsPanel"], { name: "awesome-panel" })
     ]),
     content: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Inneh\xE5ll ")
@@ -69,7 +62,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-3a1ed5"
+  selector: "#example-2b98d4"
 });
 export {
   render

@@ -10,6 +10,7 @@
     "Hjälp och support",
     "@fkui/tsconfig",
     "Konfiguration",
+    "CHANGELOG v5",
     "Chip",
     "chip",
     "Knapp",
@@ -40,7 +41,6 @@
     "FCalendarDay",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "Längdvalidering",
     "Validator - anpassad",
@@ -228,6 +228,7 @@
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
+    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -293,6 +294,11 @@
     {
       "url": "functions/config.html",
       "title": "Konfiguration",
+      "terms": []
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
       "terms": []
     },
     {
@@ -394,11 +400,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1160,6 +1161,11 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
       "title": "FFileItemPageObject: FFileItemPageObject() constructor",
       "terms": []
@@ -1247,35 +1253,35 @@
     "8": 8,
     "9": 9,
     "10": 10,
-    "11": 10,
+    "11": 11,
     "12": 11,
-    "13": 11,
+    "13": 12,
     "14": 12,
-    "15": 12,
-    "16": 12,
+    "15": 13,
+    "16": 13,
     "17": 13,
-    "18": 13,
+    "18": 14,
     "19": 14,
-    "20": 14,
+    "20": 15,
     "21": 15,
-    "22": 15,
+    "22": 16,
     "23": 16,
-    "24": 16,
+    "24": 17,
     "25": 17,
-    "26": 17,
+    "26": 18,
     "27": 18,
-    "28": 18,
+    "28": 19,
     "29": 19,
-    "30": 19,
+    "30": 20,
     "31": 20,
-    "32": 20,
+    "32": 21,
     "33": 21,
-    "34": 21,
+    "34": 22,
     "35": 22,
-    "36": 22,
-    "37": 22,
+    "36": 23,
+    "37": 23,
     "38": 23,
-    "39": 23,
+    "39": 24,
     "40": 24,
     "41": 25,
     "42": 26,
@@ -1478,6 +1484,7 @@
     "239": 167,
     "240": 168,
     "241": 169,
-    "242": 170
+    "242": 170,
+    "243": 171
   }
 }

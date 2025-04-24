@@ -26,43 +26,40 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject.vue:FDetailsPanelPageObject-431038.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject-fileName.vue:FFileItemPageObject-fileName-b7af8e.js
 import { defineComponent as _defineComponent } from "vue";
-import { onMounted } from "vue";
-import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
-import { createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FFileItem } from "@fkui/vue";
+import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject",
+  __name: "FFileItemPageObject-fileName",
   setup(__props, { expose: __expose }) {
     __expose();
-    onMounted(() => {
-      useDetailsPanel("awesome-panel").open("foo");
-    });
-    const __returned__ = { get FPageLayout() {
-      return FPageLayout;
-    }, get FDetailsPanel() {
-      return FDetailsPanel;
+    const __returned__ = { get FFileItem() {
+      return FFileItem;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
-    left: _withCtx(() => [
-      _createVNode($setup["FDetailsPanel"], { name: "awesome-panel" })
-    ]),
-    content: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Inneh\xE5ll ")
-    ])),
-    _: 1
-    /* STABLE */
-  });
+  const _directive_test = _resolveDirective("test");
+  return _withDirectives((_openBlock(), _createBlock(
+    $setup["FFileItem"],
+    {
+      "file-name": "myFile.doc",
+      "mime-type": "application/msword"
+    },
+    null,
+    512
+    /* NEED_PATCH */
+  )), [
+    [_directive_test, "awesome-file"]
+  ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-431038"
+  selector: "#example-b7af8e"
 });
 export {
   render
