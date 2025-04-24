@@ -127,6 +127,34 @@ FormatPluginPnr.vue
 FormatPluginPnr.vue
 ```
 
+## Plusgiro
+
+Formaterar värdet enligt:
+
+- bindestreck mellan näst sista och sista siffran
+- grupper med två siffror till vänster om bindestreck.
+
+Vid udda antal siffror till vänster kommer första gruppen innehålla en siffra.
+Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffror.
+
+Exempel
+
+- N-N
+- NN-N
+- N NN-N
+- NN NN-N
+- N NN NN-N
+
+Värdet ska vara av typen `string`.
+
+```import static
+FormatPluginPlusgiro.vue
+```
+
+```import nomarkup
+FormatPluginPlusgiro.vue
+```
+
 ## Postnummer
 
 Formaterar värdet enligt formatet NNN NN.

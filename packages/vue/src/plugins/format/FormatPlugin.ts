@@ -8,6 +8,7 @@ import {
     formatNumber,
     formatOrganisationsnummer,
     formatPersonnummer,
+    formatPlusgiro,
     formatPostnummer,
     formatText,
 } from "./formatters";
@@ -21,6 +22,7 @@ const formatters = {
     number: formatNumber,
     orgnr: formatOrganisationsnummer,
     pnr: formatPersonnummer,
+    plusgiro: formatPlusgiro,
     postnummer: formatPostnummer,
     text: formatText,
 };
