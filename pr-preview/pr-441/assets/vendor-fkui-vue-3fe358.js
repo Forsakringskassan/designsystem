@@ -4664,8 +4664,8 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$W)) : createCommentVNode("", true);
 }
 var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$P]]);
-function prepareButtonList(src, buttonOrder = config.buttonOrder) {
-  const list = src.map((it) => {
+function prepareButtonList(src) {
+  return src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
     return {
       label: it.label,
@@ -4676,12 +4676,6 @@ function prepareButtonList(src, buttonOrder = config.buttonOrder) {
       buttonType: it.submitButton ? "submit" : "button"
     };
   });
-  switch (buttonOrder) {
-    case FKUIConfigButtonOrder.LEFT_TO_RIGHT:
-      return list;
-    case FKUIConfigButtonOrder.RIGHT_TO_LEFT:
-      return list.reverse();
-  }
 }
 var defaultButtons = [{
   label: "Prim\xE4rknapp",
@@ -4779,7 +4773,8 @@ var _sfc_main$1b = defineComponent({
   })],
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons);
+      const preparedButtonList = prepareButtonList(this.buttons);
+      return config.buttonOrder === FKUIConfigButtonOrder.RIGHT_TO_LEFT ? preparedButtonList.reverse() : preparedButtonList;
     }
   },
   methods: {
@@ -5568,7 +5563,7 @@ var _sfc_main$15 = defineComponent({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, FKUIConfigButtonOrder.RIGHT_TO_LEFT);
+      return prepareButtonList(this.buttons);
     }
   },
   methods: {
@@ -11212,7 +11207,7 @@ var _sfc_main$J = /* @__PURE__ */ defineComponent({
     const internalVisible = ref(true);
     const renderElement = ref(true);
     const id = ElementIdService.generateElementId("column");
-    const el = useTemplateRef("el");
+    const el = useTemplateRef("element");
     const props = __props;
     const classes = computed(() => {
       return ["table__column", `table__column--${props.type}`];
@@ -11263,8 +11258,7 @@ var _sfc_main$J = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return renderElement.value && internalVisible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
         key: 0,
-        ref_key: "el",
-        ref: el,
+        ref: "element",
         class: classes.value,
         scope: scope.value
       }, _ctx.$attrs), {
@@ -14714,7 +14708,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       expandableRows,
       hasExpandableContent
     } = expandableTable;
-    const tbodyElement = useTemplateRef("tbodyElement");
+    const tbody = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
         stripClasses: []
@@ -14796,21 +14790,21 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       immediate: true,
       deep: true
     });
-    function updateTr(tbodyElement2) {
-      const trElements = [].slice.call(tbodyElement2.children);
+    function updateTr(tbodyElement) {
+      const trElements = [].slice.call(tbodyElement.children);
       const trInteractableElements = trElements.filter((tr2) => {
         return tr2.tabIndex === 0;
       });
       tr.value = trInteractableElements;
     }
     onUpdated(() => {
-      if (tbodyElement.value) {
-        updateTr(tbodyElement.value);
+      if (tbody.value) {
+        updateTr(tbody.value);
       }
     });
     onMounted(() => {
-      if (tbodyElement.value) {
-        updateTr(tbodyElement.value);
+      if (tbody.value) {
+        updateTr(tbody.value);
       }
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
@@ -14996,8 +14990,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
           name: iconName(column)
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_11$1, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
       }), 128))])]), _cache[18] || (_cache[18] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
-        ref_key: "tbodyElement",
-        ref: tbodyElement,
+        ref: "tbodyElement",
         key: tbodyKey.value
       }, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row, index) => {
         return openBlock(), createElementBlock(Fragment, {
@@ -18811,19 +18804,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         default: withCtx(() => [createVNode(_component_i_flex_item, {
           align: "center"
         }, {
-          default: withCtx(() => [_ctx.showLink ? (openBlock(), createElementBlock("a", {
-            key: 0,
-            "aria-expanded": "false",
-            role: "button",
-            href: "#",
-            class: "anchor wizard-step__header__title",
-            onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.open && _ctx.open(...args), ["prevent"])),
-            onKeypress: _cache[1] || (_cache[1] = withKeys(withModifiers((...args) => _ctx.open && _ctx.open(...args), ["prevent"]), ["space"]))
-          }, [createElementVNode("span", _hoisted_6, toDisplayString(_ctx.defaultCurrentStepInformation) + "\xA0", 1), createTextVNode(" " + toDisplayString(_ctx.title) + " ", 1), createElementVNode("span", _hoisted_7, "\xA0" + toDisplayString(_ctx.$t("fkui.wizard-step.finished-step", "Avklarat steg")), 1)], 32)) : (openBlock(), createBlock(resolveDynamicComponent(_ctx.inheritedProps.headerTag), {
-            key: 1,
+          default: withCtx(() => [(openBlock(), createBlock(resolveDynamicComponent(_ctx.inheritedProps.headerTag), {
             class: "wizard-step__header__title"
           }, {
-            default: withCtx(() => [createElementVNode("span", _hoisted_8, toDisplayString(_ctx.defaultCurrentStepInformation) + "\xA0", 1), createTextVNode(" " + toDisplayString(_ctx.title) + " ", 1), _ctx.isPending ? (openBlock(), createElementBlock("span", _hoisted_9, "\n                                    \xA0" + toDisplayString(_ctx.$t("fkui.wizard-step.pending", "Inaktivt")), 1)) : createCommentVNode("", true)]),
+            default: withCtx(() => [_ctx.showLink ? (openBlock(), createElementBlock("a", {
+              key: 0,
+              "aria-expanded": "false",
+              role: "button",
+              href: "#",
+              class: "anchor",
+              onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.open && _ctx.open(...args), ["prevent"])),
+              onKeypress: _cache[1] || (_cache[1] = withKeys(withModifiers((...args) => _ctx.open && _ctx.open(...args), ["prevent"]), ["space"]))
+            }, [createElementVNode("span", _hoisted_6, toDisplayString(_ctx.defaultCurrentStepInformation) + "\xA0", 1), createTextVNode(" " + toDisplayString(_ctx.title) + " ", 1), createElementVNode("span", _hoisted_7, "\n                                        \xA0" + toDisplayString(_ctx.$t("fkui.wizard-step.finished-step", "Avklarat steg")), 1)], 32)) : (openBlock(), createElementBlock(Fragment, {
+              key: 1
+            }, [createElementVNode("span", _hoisted_8, toDisplayString(_ctx.defaultCurrentStepInformation) + "\xA0", 1), createTextVNode(" " + toDisplayString(_ctx.title) + " ", 1), _ctx.isPending ? (openBlock(), createElementBlock("span", _hoisted_9, "\n                                        \xA0" + toDisplayString(_ctx.$t("fkui.wizard-step.pending", "Inaktivt")), 1)) : createCommentVNode("", true)], 64))]),
             _: 1
           }))]),
           _: 1
