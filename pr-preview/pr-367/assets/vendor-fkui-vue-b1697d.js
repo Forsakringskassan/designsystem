@@ -14905,10 +14905,7 @@ var _sfc_main$n = /* @__PURE__ */ defineComponent({
     });
     const $t2 = useTranslate();
     const visible = computed(() => Boolean(panel.item.value));
-    const closeText = (
-      /** Skärmläsartext för stäng-krysset i header */
-      $t2("fkui.details-panel.close", "St\xE4ng")
-    );
+    const closeText = $t2("fkui.details-panel.close", "St\xE4ng");
     useResize({
       visible,
       overlay
