@@ -201,6 +201,7 @@ import { createApp, h } from "vue";
 import {
   ErrorPlugin,
   FErrorHandlingApp,
+  FormatPlugin,
   TestPlugin,
   TranslationPlugin,
   ValidationPlugin,
@@ -221,6 +222,7 @@ function setup(options) {
   app.use(ValidationPlugin);
   app.use(TestPlugin);
   app.use(TranslationPlugin);
+  app.use(FormatPlugin);
   app.mount(selector);
 }
 
