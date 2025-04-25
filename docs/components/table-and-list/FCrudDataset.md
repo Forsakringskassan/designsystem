@@ -105,6 +105,18 @@ FCrudDatasetListExample.vue
 FCrudDatasetSortListExample.vue
 ```
 
+## Textnycklar
+
+Läs mer om att {@link translate-text anpassa och översätta text}.
+
+:::api
+translation:FCrudDataset
+:::
+
+:::api
+translation:FCrudButton
+:::
+
 ## API
 
 ### `FCrudDataset`
