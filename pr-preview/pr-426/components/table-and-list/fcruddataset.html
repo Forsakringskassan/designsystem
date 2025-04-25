@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datamängdredigerare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-a9f97b.css"
+            href="../../assets/docs-dfbd95.css"
             crossorigin
-            integrity="sha384-H0msLDRbOrlw5ggnViHhQ9oJq7oOX8lneeo2AEjnlXtEGkiDVw37gtEzUx233hbA"
+            integrity="sha384-VU638FPJ4BfHN7rx7rJVqjDb6ARrOLhV6HsGpQOm6to263WYev8LbyJsqyKdSdpH"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-2c77e6.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-85bb17.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-2c77e6.js": "sha384-og3JJFWAYp+BpgsZMlEBZlQYfMNzzq/0arm3nfacMAYbBFJiQtnVztNZ186g7OUZ",
+    "../../assets/vendor-fkui-vue-85bb17.js": "sha384-HSpDkBfy1kUY8fZyESYhxdP6gU4GOvUjk/dvXFjE2Lrs/9ycce3647bux4ukqgRj",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-3f3c35.json"
+            href="../../search-data-1fbcbb.json"
             as="fetch"
             crossorigin
-            integrity="sha384-0b3JUFT+RnB9534c17bWIIrJrJjKsAlDL8dn69sCRRD8kxe+Ge6TiwrAEuyz46T0"
+            integrity="sha384-p6mS1Xeo7MoZYATlmALFZmPPFTtYiuI1Z1nMw4eGHSSiE4s0L4IqNPkON3a8AG/A"
             id="search-data"
         />
     </head>
@@ -848,6 +848,17 @@
         </a>
     </li><li class="link ">
         <a
+            href="../page-layout/fdetailspanel.html"
+            
+            
+            
+            data-path="components/page-layout/fdetailspanel.html"
+            
+        >
+            Detaljpanel
+        </a>
+    </li><li class="link ">
+        <a
             href="../page-layout/fresizepane.html"
             
             
@@ -1047,13 +1058,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/2b4c24c58152f22ff8cb7d78928ed4af5c266d66/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b05cf99675f2885ab0c5dad6a3876b05e6c73fe1/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/2b4c24c58152f22ff8cb7d78928ed4af5c266d66/packages/vue/src/components/FCrudDataset/FCrudButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b05cf99675f2885ab0c5dad6a3876b05e6c73fe1/packages/vue/src/components/FCrudDataset/FCrudButton.vue">
                 FCrudButton
             </a>
             
@@ -1079,6 +1090,8 @@
                                 <li><a href="#interaktiv_tabell_med_redigering">Interaktiv tabell med redigering</a></li>
                                 
                                 <li><a href="#forpopulera_objekt">Förpopulera objekt</a></li>
+                                
+                                <li><a href="#knappordning">Knappordning</a></li>
                                 
                                 <li><a href="#anpassade_texter">Anpassade texter</a></li>
                                 
@@ -1279,9 +1292,11 @@ Callback anropas innan modalen visas.</p>
 }
 </code></pre>
                 </div>
-            <h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p class="docs-paragraph">Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
+            <h2 id="knappordning"><a class="header-anchor" href="#knappordning">Knappordning</a></h2><p class="docs-paragraph">Standardinställningen för knappordningen i modalerna för &quot;Lägg till&quot; och &quot;Ändra&quot; är att primärknappen ligger först följt av sekundärknappen.
+Standardinställningen för modalen &quot;Ta bort&quot; är att sekundärknappen ligger först följt av primärknappen.
+Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappordningen för modalen &quot;Ta bort&quot; genom inställning av <a href="../../functions/config.html#referens">buttonOrder</a> i konfigurationen.</p><h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p class="docs-paragraph">Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
             <div
-                id="example-0c3787"
+                id="example-a644af"
                 class="code-preview code-preview--default"
                 
                 
@@ -1449,7 +1464,7 @@ Callback anropas innan modalen visas.</p>
         <h2 id="egna_lagg_till_knappar"><a class="header-anchor" href="#egna_lagg_till_knappar">Egna lägg till knappar</a></h2><p class="docs-paragraph">Använd slotten <code>#buttons</code> för att lägga till egna anpassade lägg-till knappar.
 Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 <div
-                    id="example-17f489"
+                    id="example-111c3e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1468,7 +1483,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             
                 <div
-                    id="example-424a1d"
+                    id="example-3d4955"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1487,7 +1502,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
-                id="example-22265e"
+                id="example-c1213c"
                 class="code-preview code-preview--default"
                 
                 
@@ -1596,7 +1611,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="interaktiv_tabell_med_knapp"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
             <div
-                id="example-fbe245"
+                id="example-b67799"
                 class="code-preview code-preview--default"
                 
                 
@@ -1694,7 +1709,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="lista_med_redigering"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-5d4243"
+                id="example-4da53a"
                 class="code-preview code-preview--default"
                 
                 
@@ -1858,7 +1873,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-bbc865"
+                id="example-65eba4"
                 class="code-preview code-preview--default"
                 
                 
@@ -2505,9 +2520,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">add-mini-panel (<a href="https://github.com/Forsakringskassan/designsystem/commits/2b4c24c58152f22ff8cb7d78928ed4af5c266d66">2b4c24c</a>)<br />
+<div class="footer__right"><div class="version">add-mini-panel (<a href="https://github.com/Forsakringskassan/designsystem/commits/b05cf99675f2885ab0c5dad6a3876b05e6c73fe1">b05cf99</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/426">PR 426</a><br />
-        2025-04-23 07:52
+        2025-04-25 11:31
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2620,10 +2635,10 @@ If false, the button will use a visually hidden text for accessibility.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            src="../../assets/processors/selectable-version/select-version-50a45c.js"
             type="module"
             crossorigin
-            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
+            integrity="sha384-ew0nN7HjZZWlAqqxYNe3jmOgC0rjVWd7o94Muk42AmApjtUhqPuR8E+Y7cq5AJcx"
             
         ></script><script
             src="../../assets/main-a45256.js"
