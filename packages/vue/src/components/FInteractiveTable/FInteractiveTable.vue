@@ -536,11 +536,17 @@ function setActiveRow(row: T | undefined): void {
                     <slot v-bind="{ row: {} }" />
 
                     <th v-if="isExpandableTable" scope="col">
-                        <span class="sr-only">{{ $t("fkui.interactive-table.expand", "Expandera") }}</span>
+                        <span class="sr-only">{{
+                            /** Kolumnrubrik som visas för skärmläsare om funktionen för expanderbara rader (`expandable-attribute`) aktiveras */
+                            $t("fkui.interactive-table.expand", "Expandera")
+                        }}</span>
                     </th>
 
                     <th v-if="selectable" scope="col">
-                        <span class="sr-only">{{ $t("fkui.interactive-table.select", "Markera") }}</span>
+                        <span class="sr-only">{{
+                            /** Kolumnrubrik som visas för skärmläsare om funktionen för valbara rader (`selectable`) aktiveras */
+                            $t("fkui.interactive-table.select", "Markera")
+                        }}</span>
                     </th>
 
                     <th
@@ -645,7 +651,10 @@ function setActiveRow(row: T | undefined): void {
                                 @slot Slot for displaying a message when table is empty.
                                 Default text is 'Tabellen är tom' (key fkui.interactive-table.empty).
                             -->
-                            <slot name="empty">{{ $t("fkui.interactive-table.empty", "Tabellen är tom") }}</slot>
+                            <slot name="empty">{{
+                                /** Text som visas som standardinnehåll i slotten `empty` (när tabellen är tom). */
+                                $t("fkui.interactive-table.empty", "Tabellen är tom")
+                            }}</slot>
                         </td>
                         <!-- slot content won't be rendered, since renderColumns is false for empty table -->
                         <slot v-bind="{ row: {} as T }"></slot>
