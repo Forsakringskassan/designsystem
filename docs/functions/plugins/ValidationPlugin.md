@@ -13,7 +13,7 @@ import { defineComponent } from "vue";
 
 const App = defineComponent({});
 
-/* --- cut above ---*/
+/* --- cut above --- */
 
 import { createApp } from "vue";
 import { ValidationPlugin } from "@fkui/vue";
