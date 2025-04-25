@@ -2,7 +2,7 @@
 title: Skapa eget ikonbibliotek
 name: icon-library
 layout: pattern
-sortorder: 4
+sortorder: 100
 ---
 
 Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.
