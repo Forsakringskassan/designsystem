@@ -6,31 +6,42 @@ import FInteractiveTable from "./FInteractiveTable.vue";
 
 const table = new FInteractiveTablePageObject('[data-test="table-example"]');
 
-const rows = [
-    {
-        id: "1",
-        start: "2022-04-10",
-        end: "2022-04-25",
-        level: "Sjukpenning",
-        antal: "15",
-    },
-    {
-        id: "2",
-        start: "2022-05-06",
-        end: "2022-05-10",
-        level: "Lägstanivå",
-        antal: "4",
-    },
-    {
-        id: "3",
-        start: "2022-05-20",
-        end: "2022-05-31",
-        level: "Sjukpenning",
-        antal: "11",
-    },
-];
+interface TableRow {
+    id: string;
+    start: string;
+    end: string;
+    level: string;
+    antal: string;
+}
 
-const selectedRows = [rows[0], rows[2]];
+function getRows(): TableRow[] {
+    return [
+        {
+            id: "1",
+            start: "2022-04-10",
+            end: "2022-04-25",
+            level: "Sjukpenning",
+            antal: "15",
+        },
+        {
+            id: "2",
+            start: "2022-05-06",
+            end: "2022-05-10",
+            level: "Lägstanivå",
+            antal: "4",
+        },
+        {
+            id: "3",
+            start: "2022-05-20",
+            end: "2022-05-31",
+            level: "Sjukpenning",
+            antal: "11",
+        },
+    ];
+}
+
+let rows: TableRow[] = [];
+let selectedRows: TableRow[] = [];
 
 const defaultTemplate = /* HTML */ `
     <f-interactive-table
@@ -74,6 +85,19 @@ function createComponent(template: string = defaultTemplate): DefineComponent {
         },
     });
 }
+
+beforeEach(() => {
+    rows = getRows();
+    selectedRows = [rows[0], rows[2]];
+});
+
+it("should render correctly when table is empty", () => {
+    rows = [];
+    selectedRows = [];
+    cy.mount(createComponent());
+    table.columnItem(0).el().find("th").should("have.length", 5);
+    table.row(0).find("td").should("have.length", 1);
+});
 
 it("should move focus to next row (circular) with arrow-down-key", () => {
     cy.mount(createComponent());
