@@ -536,7 +536,7 @@ function setActiveRow(row: T | undefined): void {
                     <slot v-bind="{ row: {} }" />
 
                     <th v-if="isExpandableTable" scope="col">
-                        <span class="sr-only">{{ $t("fkui.interactive-table.select", "Expandera") }}</span>
+                        <span class="sr-only">{{ $t("fkui.interactive-table.expand", "Expandera") }}</span>
                     </th>
 
                     <th v-if="selectable" scope="col">
