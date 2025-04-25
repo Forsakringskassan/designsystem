@@ -256,6 +256,9 @@ export default defineComponent({
         <f-checkbox-field v-model="isStriped" :value="true"> Zebrarandig </f-checkbox-field>
         <f-checkbox-field v-model="hasActions" :value="true"> Åtgärdsknappar </f-checkbox-field>
         <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
+        <f-checkbox-field v-model="hasRowDescription" :value="true">
+            Radbeskrivning
+        </f-checkbox-field>
         <f-checkbox-field v-model="hasHiddenCaption" :value="true"> Dold caption </f-checkbox-field>
         <f-checkbox-field v-model="isEmpty" :value="true"> Tom tabell </f-checkbox-field>
         <f-fieldset v-if="isEmpty" name="radio-empty-text">

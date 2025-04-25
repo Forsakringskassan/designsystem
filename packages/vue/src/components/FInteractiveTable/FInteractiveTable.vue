@@ -519,7 +519,9 @@ function setActiveRow(row: T | undefined): void {
 
 <template>
     <div :class="wrapperClasses">
-        <!-- technical debt / fulhack: this is to make sure the typing understands there is an undocumented slot  -->
+        <!--
+            @slot Slot for row description.
+        -->
         <slot v-if="false" name="row-description"></slot>
         <table class="table" :role="tableRole" :class="tableClasses" v-bind="$attrs">
             <caption v-if="hasCaption">
