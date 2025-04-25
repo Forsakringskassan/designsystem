@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 6.6.0 (2025-04-25)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add directive and plugin for formatting number (refs SFKUI-7093) dbf2f81
+* **@fkui/design, @fkui/vue:** add plusgiro directive formatter (refs SFKUI-7093) 4f21f03
+* **@fkui/design, @fkui/vue:** add postal code directive formatter (refs SFKUI-7093) ee397aa
+* **@fkui/design, @fkui/vue:** forward `focus-indicator()` mixin (refs SFKUI-6500) bef76a2
+* **@fkui/vue:** add `FInteractiveTablePageObject.cell()` (refs SFKUI-6500) 97b1dec
+* **@fkui/vue:** add bankgiro directive formatter (refs SFKUI-7093) 6eb783c
+* **@fkui/vue:** add date directive formatter (refs SFKUI-7093) ff47fc7
+* **@fkui/vue:** add minimizable panel (refs SFKUI-7191) 10e0e24
+* **@fkui/vue:** add organisationsnummer directive formatter (refs SFKUI-7093) c25c76b
+* **@fkui/vue:** add personnummer directive formatter (refs SFKUI-7093) fde3cd5
+* **@fkui/vue:** add text directive formatter (refs SFKUI-7093) 6615f36
+* **@fkui/vue:** new component `FDetailsPanel` (refs SFKUI-6993) 7aeec09
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** header element in FWizardStep anchor when completed (fixes SFKUI-7207) d3712cc
+* **deps:** update dependency i18next to v25.0.1 79f1b77
+
 ## 6.5.0 (2025-04-23)
 
 ### Features
