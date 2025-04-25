@@ -4,6 +4,25 @@ name: news
 layout: content-with-menu
 ---
 
+## Version 6.6.0
+
+2025-04-25
+
+Version 6.6.0 innehåller bland annat följande uppdateringar:
+
+### Formatering av data vid presentation
+
+Stöd för att formatera data som presenteras samt förhindra radbrytning av dessa.
+Läs {@link FormatPlugin här} om hur du får formatering på till exempel datum och personnummer som presenteras.
+
+### Applikationslayout i beta
+
+Alla nya komponenter för applikationslayout är nu släppta i status beta.
+Observera att de nya komponenterna inte ska användas i produktion förrän de har status produktionsklar.
+Vi räknar med att kunna sätta status produktionsklar i någon av de närmast kommande releaserna.
+Läs mer om de nya komponenterna {@link FPageLayout applikationsmall}, {@link FResizePane justerbar yta},
+{@link FMinimizablePanel minimerbar panel} och {@link FDetailsPanel detaljpanel}.
+
 ## Version 6.5.0
 
 2025-04-23
