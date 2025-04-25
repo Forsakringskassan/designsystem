@@ -2197,9 +2197,6 @@ import {
   parsePersonnummer
 } from "@fkui/logic";
 
-// packages/vue/src/plugins/format/is-number-format.ts
-import { isSet as isSet3 } from "@fkui/logic";
-
 // packages/vue/src/plugins/format/is-date-range.ts
 import { FDate } from "@fkui/date";
 
