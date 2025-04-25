@@ -224,6 +224,22 @@ Texten sätts i slot `#empty`:
  </f-data-table>
 ```
 
+## Textnycklar
+
+Läs mer om att {@link translate-text anpassa och översätta text}.
+
+:::api
+translation:FDataTable
+:::
+
+:::api
+translation:FInteractiveTable
+:::
+
+:::api
+translation:FTableColumn
+:::
+
 ## Props, Events & Slots
 
 ### FDataTable

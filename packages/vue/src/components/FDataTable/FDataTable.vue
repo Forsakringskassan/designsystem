@@ -225,7 +225,10 @@ function escapeNewlines(value: string): string {
                         <!--
                              @slot Slot for displaying a message when table is empty. Default text is 'Tabellen är tom' (key fkui.data-table.empty).
                         -->
-                        <slot name="empty">{{ $t("fkui.data-table.empty", "Tabellen är tom") }}</slot>
+                        <slot name="empty">{{
+                            /** Text som visas som standardinnehåll i slotten `empty` (när tabellen är tom). */
+                            $t("fkui.data-table.empty", "Tabellen är tom")
+                        }}</slot>
                     </td>
                 </tr>
                 <tr v-for="row in internalRows" :key="rowKey(row)" class="table__row">
