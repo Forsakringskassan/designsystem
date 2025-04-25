@@ -56,8 +56,6 @@ function onClose(reason: string = "close"): void {
 
 <template>
     <component :is="tagName" v-if="visible" :data-panel-name="name" @closed="onClose()">
-        <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-
         <!--
                 @slot Panel content. Use native slots
                 @binding {T} item Object the panel was opened with.

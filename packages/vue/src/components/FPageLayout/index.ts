@@ -1,4 +1,9 @@
 export {
+    type FPageLayoutType,
+    type FPageLayoutBindings,
+    type FPageLayoutSlotMapping,
+} from "./types";
+export {
     type LayoutDefinition,
     type LayoutAreaAttachPanel,
     type LayoutAreaDefinition,

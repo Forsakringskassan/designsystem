@@ -9,16 +9,15 @@ onMounted(() => {
 
 <template>
     <f-page-layout layout="three-column">
-        <template #left>
-            <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
+        <template #default="layoutScope">
             <!-- cut above -->
-            <f-details-panel name="awesome-panel">
-                <template #default="{ content }">
-                    <div :slot="content">Lorem ipsum</div>
+            <f-details-panel :slot="layoutScope.left" name="awesome-panel">
+                <template #default="panelScope">
+                    <div :slot="panelScope.content">Lorem ipsum</div>
                 </template>
             </f-details-panel>
             <!-- cut below -->
+            <div :slot="layoutScope.content">Innehåll</div>
         </template>
-        <template #content> Innehåll </template>
     </f-page-layout>
 </template>

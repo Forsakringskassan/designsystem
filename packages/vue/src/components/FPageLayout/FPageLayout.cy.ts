@@ -70,6 +70,10 @@ before(() => {
                 min-width: 10ch;
                 min-height: 1lh;
             }
+
+            .display-contents {
+                display: contents;
+            }
         `;
         document.head.append(style);
     });
@@ -83,14 +87,10 @@ it("should position simple layout correctly", () => {
     cy.mount({
         template: /* HTML */ `
             <f-page-layout layout="simple">
-                <template #header>
-                    <div class="header"></div>
-                </template>
-                <template #content>
-                    <div class="main flex-grow"></div>
-                </template>
-                <template #footer>
-                    <div class="footer"></div>
+                <template #default="{ header, content, footer }">
+                    <div :slot="header" class="header"></div>
+                    <div :slot="content" class="main flex-grow"></div>
+                    <div :slot="footer" class="footer"></div>
                 </template>
             </f-page-layout>
         `,
@@ -103,17 +103,11 @@ it("should position left-panel layout correctly", () => {
     cy.mount({
         template: /* HTML */ `
             <f-page-layout layout="left-panel">
-                <template #header>
-                    <div class="header"></div>
-                </template>
-                <template #left>
-                    <div class="panel flex-grow"></div>
-                </template>
-                <template #content>
-                    <div class="main flex-grow"></div>
-                </template>
-                <template #footer>
-                    <div class="footer"></div>
+                <template #default="{ header, left, content, footer }">
+                    <div :slot="header" class="header"></div>
+                    <div :slot="left" class="panel flex-grow"></div>
+                    <div :slot="content" class="main flex-grow"></div>
+                    <div :slot="footer" class="footer"></div>
                 </template>
             </f-page-layout>
         `,
@@ -126,18 +120,11 @@ it("should position right-panel layout correctly", () => {
     cy.mount({
         template: /* HTML */ `
             <f-page-layout layout="right-panel">
-                <template #header>
-                    <div class="header"></div>
-                </template>
-                <template #right>
-                    <div class="panel flex-grow"></div>
-                </template>
-                <template #content>
-                    <div class="main flex-grow"></div>
-                </template>
-                <template #footer>
-                    <div class="footer"></div>
-                </template>
+            <template #default="{ header, right, content, footer }">
+                <div :slot="header" class="header"></div>
+                <div :slot="right" class="panel flex-grow"></div>
+                <div :slot="content" class="main flex-grow"></div>
+                <div :slot="footer" class="footer"></div>
             </f-page-layout>
         `,
         components: { FPageLayout },
@@ -149,21 +136,12 @@ it("should position three-column layout correctly", () => {
     cy.mount({
         template: /* HTML */ `
             <f-page-layout layout="three-column">
-                <template #header>
-                    <div class="header"></div>
-                </template>
-                <template #left>
-                    <div class="panel flex-grow"></div>
-                </template>
-                <template #right>
-                    <div class="panel flex-grow"></div>
-                </template>
-                <template #content>
-                    <div class="main flex-grow"></div>
-                </template>
-                <template #footer>
-                    <div class="footer"></div>
-                </template>
+            <template #default="{ header, left, right, content, footer }">
+                <div :slot="header" class="header"></div>
+                <div :slot="left" class="panel flex-grow"></div>
+                <div :slot="right" class="panel flex-grow"></div>
+                <div :slot="content" class="main flex-grow"></div>
+                <div :slot="footer" class="footer"></div>
             </f-page-layout>
         `,
         components: { FPageLayout },
@@ -175,29 +153,28 @@ it("should stack flex items vertically by default", () => {
     cy.mount({
         template: /* HTML */ `
             <f-page-layout layout="three-column">
-                <template #header>
+            <template #default="{ header, left, right, content, footer}">
+                <div :slot="header">
                     <div class="item-1"></div>
                     <div class="item-2"></div>
                     <div class="item-3"></div>
-                </template>
-                <template #left>
+                </div>
+                <div :slot="left" class="display-contents">
                     <div class="item-1"></div>
                     <div class="item-2 flex-grow"></div>
                     <div class="item-3"></div>
-                </template>
-                <template #right>
+                </div>
+                <div :slot="right" class="display-contents">
                     <div class="item-1"></div>
                     <div class="item-2 flex-grow"></div>
                     <div class="item-3"></div>
-                </template>
-                <template #content>
-                    <div class="main flex-grow"></div>
-                </template>
-                <template #footer>
+                </div>
+                <div :slot="content" class="main flex-grow"></div>
+                <div :slot="footer">
                     <div class="item-1"></div>
                     <div class="item-2"></div>
                     <div class="item-3"></div>
-                </template>
+                </div>
             </f-page-layout>
         `,
         components: { FPageLayout },

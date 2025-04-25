@@ -63,8 +63,8 @@ const template = computed(() => {
     return /* HTML */ `
         <div class="layout-container">
             <f-page-layout layout="${layout.value}">
-                <template #${slot.value}>
-                    <f-resize-pane :min :max initial="25%">
+                <template #default="{ ${slot.value}, content }">
+                    <f-resize-pane :slot="${slot.value}" :min :max initial="25%">
                         <custom-panel>
                             <template #default="{ size }">
                                 <p>Panel</p>
@@ -72,9 +72,8 @@ const template = computed(() => {
                             </template>
                         </custom-panel>
                     </f-resize-pane>
-                </template>
-                <template #content>
-                    <div class="content">
+
+                    <div :slot="content" class="content">
                         <p>Huvudyta</p>
                         <p>Drag i handtaget för att ändra storlek.</p>
                         <p>

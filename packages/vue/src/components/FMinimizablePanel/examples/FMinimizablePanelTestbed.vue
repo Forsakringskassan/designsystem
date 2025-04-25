@@ -22,36 +22,32 @@ const is = computed(() => {
 
 <template>
     <f-page-layout layout="three-column">
-        <template #[area]>
-            <component :is min="150px" max="40%" initial="150px">
-                <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-                <f-minimizable-panel>
-                    <template #default="{ header, content, footer, isOpen }">
-                        <template v-if="isOpen">
-                            <h2 :slot="header">[header]</h2>
-                            <div :slot="content">
-                                <p>[content]</p>
-                            </div>
-                            <div :slot="footer">[footer]</div>
-                        </template>
+        <component :is :slot="area" min="150px" max="40%" initial="150px">
+            <f-minimizable-panel>
+                <template #default="{ header, content, footer, isOpen }">
+                    <template v-if="isOpen">
+                        <h2 :slot="header">[header]</h2>
+                        <div :slot="content">
+                            <p>[content]</p>
+                        </div>
+                        <div :slot="footer">[footer]</div>
                     </template>
-                </f-minimizable-panel>
-            </component>
-        </template>
-        <template #content>
-            <div class="content">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt ipsum
-                    tortor. Aliquam erat eros, maximus rhoncus quam ut, dignissim ullamcorper nunc.
-                    Morbi laoreet urna nec leo elementum faucibus. Sed at congue turpis. Proin vitae
-                    risus ac risus porta viverra. Aenean blandit sodales augue. Pellentesque tempor
-                    neque lectus, ac dictum massa consectetur non. Vivamus pharetra magna sed neque
-                    aliquam dictum. Donec cursus, orci eu elementum fermentum, nulla dolor facilisis
-                    dui, et congue lacus odio non sem. Suspendisse vel lorem sed ante tristique
-                    congue quis in eros. Sed quis molestie urna.
-                </p>
-            </div>
-        </template>
+                </template>
+            </f-minimizable-panel>
+        </component>
+
+        <div slot="content" class="content">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt ipsum
+                tortor. Aliquam erat eros, maximus rhoncus quam ut, dignissim ullamcorper nunc.
+                Morbi laoreet urna nec leo elementum faucibus. Sed at congue turpis. Proin vitae
+                risus ac risus porta viverra. Aenean blandit sodales augue. Pellentesque tempor
+                neque lectus, ac dictum massa consectetur non. Vivamus pharetra magna sed neque
+                aliquam dictum. Donec cursus, orci eu elementum fermentum, nulla dolor facilisis
+                dui, et congue lacus odio non sem. Suspendisse vel lorem sed ante tristique congue
+                quis in eros. Sed quis molestie urna.
+            </p>
+        </div>
     </f-page-layout>
 </template>
 

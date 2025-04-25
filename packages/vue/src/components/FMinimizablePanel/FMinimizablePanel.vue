@@ -63,7 +63,6 @@ function onToggle(e: CustomEvent<[boolean, boolean, number?]>): void {
 </script>
 
 <template>
-    <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
     <ce-minimizable-panel :context="ceContext" :close-prefix :open-prefix @toggle="onToggle">
         <!--
             @slot Content

@@ -31,8 +31,8 @@ Lägg `FResizePanel` komponenten som första elementet i respektive yta:
 
 ```html static
 <f-page-layout layout="left-panel">
-    <template #left>
-        <f-resize-pane> Vänster ytans innehåll </f-resize-pane>
+    <template #default="{ left }">
+        <f-resize-pane :slot="left"> Vänster ytans innehåll </f-resize-pane>
     </template>
 </f-page-layout>
 ```

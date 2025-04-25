@@ -13,7 +13,6 @@ import {
     VAR_NAME_ATTACH_PANEL,
     VAR_NAME_DIRECTION,
 } from "./constants";
-import { type PageLayout } from "./webcomponent";
 
 /**
  * @public
@@ -38,11 +37,11 @@ function getProperty<T>(style: CSSStyleDeclaration, key: string): T | null {
 
 function findLayoutElement(
     element: Element | null | undefined,
-): PageLayout | null {
+): Element | null {
     if (!element) {
         return null;
     }
-    const parent = element.closest<PageLayout>("ce-page-layout");
+    const parent = element.closest("ce-page-layout");
     if (parent) {
         return parent;
     }

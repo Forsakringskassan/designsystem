@@ -81,6 +81,9 @@ export { FOffline } from "./FOffline";
 export { FOutputField } from "./FOutputField";
 export { FPageHeader } from "./FPageHeader";
 export {
+    type FPageLayoutBindings,
+    type FPageLayoutType,
+    type FPageLayoutSlotMapping,
     type LayoutDefinition,
     type LayoutAreaAttachPanel,
     type LayoutAreaDefinition,

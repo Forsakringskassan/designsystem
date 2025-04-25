@@ -6,14 +6,15 @@ const panel = useDetailsPanel("awesome-panel");
 
 <template>
     <f-page-layout layout="three-column">
-        <template #left>
+        <template #default="{ left, content }">
             <!-- cut above -->
-            <f-details-panel name="awesome-panel"></f-details-panel>
+            <f-details-panel :slot="left" name="awesome-panel"></f-details-panel>
             <!-- cut below -->
-        </template>
-        <template #content>
-            Innehåll
-            <button type="button" @click="panel.open('foo')">Öppna</button>
+
+            <div :slot="content">
+                Innehåll
+                <button type="button" @click="panel.open('foo')">Öppna</button>
+            </div>
         </template>
     </f-page-layout>
 </template>

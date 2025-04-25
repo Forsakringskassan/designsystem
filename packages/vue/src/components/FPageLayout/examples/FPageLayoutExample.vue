@@ -4,20 +4,12 @@ import { FPageLayout } from "@fkui/vue";
 
 <template>
     <f-page-layout layout="three-column">
-        <template #header>
-            <header class="my-header">[header]</header>
-        </template>
-        <template #left>
-            <div class="my-left-panel">[left]</div>
-        </template>
-        <template #right>
-            <div class="my-right-panel">[right]</div>
-        </template>
-        <template #content>
-            <main class="my-content">[main]</main>
-        </template>
-        <template #footer>
-            <footer class="my-footer">[footer]</footer>
+        <template #default="{ header, left, right, content, footer }">
+            <header :slot="header" class="my-header">[header]</header>
+            <div :slot="left" class="my-left-panel">[left]</div>
+            <div :slot="right" class="my-right-panel">[right]</div>
+            <main :slot="content" class="my-content">[main]</main>
+            <footer :slot="footer" class="my-footer">[footer]</footer>
         </template>
     </f-page-layout>
 </template>

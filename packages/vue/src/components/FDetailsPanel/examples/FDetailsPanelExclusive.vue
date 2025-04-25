@@ -35,34 +35,33 @@ function openPanel4(): void {
 
 <template>
     <f-page-layout layout="three-column">
-        <template #left>
-            <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-            <f-details-panel :name="name1" :exclusive="groupName1">
-                <template #default="{ header }">
-                    <h2 :slot="header">[panel 1]</h2>
-                </template>
-            </f-details-panel>
-            <f-details-panel :name="name2" :exclusive="groupName1">
-                <template #default="{ header }">
-                    <h2 :slot="header">[panel 2]</h2>
-                </template>
-            </f-details-panel>
-        </template>
-        <template #right>
-            <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-            <f-details-panel :name="name3" :exclusive="groupName2">
-                <template #default="{ header }">
-                    <h2 :slot="header">[panel 3]</h2>
-                </template>
-            </f-details-panel>
-            <f-details-panel :name="name4" :exclusive="groupName2">
-                <template #default="{ header }">
-                    <h2 :slot="header">[panel 4]</h2>
-                </template>
-            </f-details-panel>
-        </template>
-        <template #content>
-            <div class="content">
+        <template #default="{ left, right, content }">
+            <div :slot="left">
+                <f-details-panel :name="name1" :exclusive="groupName1">
+                    <template #default="{ header }">
+                        <h2 :slot="header">[panel 1]</h2>
+                    </template>
+                </f-details-panel>
+                <f-details-panel :name="name2" :exclusive="groupName1">
+                    <template #default="{ header }">
+                        <h2 :slot="header">[panel 2]</h2>
+                    </template>
+                </f-details-panel>
+            </div>
+            <div :slot="right">
+                <f-details-panel :name="name3" :exclusive="groupName2">
+                    <template #default="{ header }">
+                        <h2 :slot="header">[panel 3]</h2>
+                    </template>
+                </f-details-panel>
+                <f-details-panel :name="name4" :exclusive="groupName2">
+                    <template #default="{ header }">
+                        <h2 :slot="header">[panel 4]</h2>
+                    </template>
+                </f-details-panel>
+            </div>
+
+            <div :slot="content" class="content">
                 <div>
                     <button type="button" class="button button--primary" @click="openPanel1">
                         Öppna panel 1

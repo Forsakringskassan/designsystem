@@ -15,5 +15,9 @@
 
     "x-expense-panel": {
         "flow": true
+    },
+
+    "x-left-panel": {
+        "flow": true
     }
 }

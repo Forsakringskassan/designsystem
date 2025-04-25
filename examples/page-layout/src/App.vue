@@ -1,19 +1,12 @@
 <script setup lang="ts">
-import {
-    FPageLayout,
-    FResizePane,
-    registerLayout,
-    FPageHeader,
-    FLogo,
-    FMinimizablePanel,
-    FDetailsPanel,
-} from "@fkui/vue";
-import { XContextBar, XToolbar } from "./components";
-import { type Expense } from "./expense";
-import { type Person } from "./person";
+import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo } from "@fkui/vue";
+import { XContextBar, XToolbar, XLeftPanel, XPersonPanel, XExpensePanel } from "./components";
 
-const XPersonPanel = FDetailsPanel<Person>;
-const XExpensePanel = FDetailsPanel<Expense>;
+declare module "@fkui/vue" {
+    interface FPageLayoutSlotMapping {
+        "awesome-layout": ["header", "left", "contextbar", "toolbar", "content", "right", "footer"];
+    }
+}
 
 registerLayout({
     name: "awesome-layout",
@@ -53,8 +46,8 @@ registerLayout({
 
 <template>
     <f-page-layout layout="awesome-layout">
-        <template #header>
-            <header>
+        <template #default="{ header, contextbar, toolbar, content, left, right }">
+            <header :slot="header">
                 <f-page-header>
                     Application layout components
                     <template #logo>
@@ -63,64 +56,22 @@ registerLayout({
                     <template #right> Namn Namnsson </template>
                 </f-page-header>
             </header>
-        </template>
-        <template #contextbar> <x-context-bar></x-context-bar> </template>
-        <template #toolbar>
-            <x-toolbar></x-toolbar>
-        </template>
-        <template #left>
-            <f-resize-pane min="150px" max="40%" initial="600px">
-                <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-                <f-minimizable-panel>
-                    <template #default="{ isOpen, header, footer, content }">
-                        <template v-if="isOpen">
-                            <h1 :slot="header">Rubrik</h1>
-                            <p :slot="content">Innehåll</p>
-                            <div :slot="footer">Fot</div>
-                        </template>
-                    </template>
-                </f-minimizable-panel>
+
+            <x-context-bar :slot="contextbar"></x-context-bar>
+
+            <x-toolbar :slot="toolbar"></x-toolbar>
+
+            <f-resize-pane :slot="left" min="200px 10%" max="40%" initial="600px">
+                <x-left-panel></x-left-panel>
             </f-resize-pane>
-        </template>
-        <template #content>
-            <main>
+
+            <main :slot="content">
                 <router-view />
             </main>
-        </template>
-        <template #right>
-            <f-resize-pane min="250px" max="40%" initial="200px">
-                <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-                <x-person-panel name="person-panel" exclusive="right" heading-tag="h2">
-                    <template #default="{ item, header, content }">
-                        <h2 :slot="header">Detaljer om person</h2>
-                        <div :slot="content">
-                            <dl>
-                                <dt>Namn</dt>
-                                <dd>{{ item.name }}</dd>
-                                <dt>Address</dt>
-                                <dd>{{ item.adress ?? "-" }}</dd>
-                                <dt>Stad</dt>
-                                <dd>{{ item.city ?? "-" }}</dd>
-                                <dt>Bil</dt>
-                                <dd>{{ item.car ?? "-" }}</dd>
-                            </dl>
-                        </div>
-                    </template>
-                </x-person-panel>
-                <x-expense-panel name="expense-panel" exclusive="right" heading-tag="h2">
-                    <template #default="{ item, content }">
-                        <div :slot="content">
-                            <dl>
-                                <dt>ID</dt>
-                                <dd>{{ item.id }}</dd>
-                                <dt>Beskrivning</dt>
-                                <dd>{{ item.description }}</dd>
-                                <dt>Belopp</dt>
-                                <dd>{{ item.amount }} kr</dd>
-                            </dl>
-                        </div>
-                    </template>
-                </x-expense-panel>
+
+            <f-resize-pane :slot="right" min="200px 10%" max="40%" initial="200px">
+                <x-person-panel name="person-panel" exclusive="right"> </x-person-panel>
+                <x-expense-panel name="expense-panel" exclusive="right"></x-expense-panel>
             </f-resize-pane>
         </template>
     </f-page-layout>
