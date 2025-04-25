@@ -16,12 +16,8 @@ export default defineComponent({
     data() {
         return {
             isEmpty: false,
-            isStriped: false,
-            hasRowDescription: false,
             hasCustomEmptyText: false,
-            hasHiddenCaption: false,
             hasActions: false,
-            hasRowHeader: false,
             isSelectable: true,
             isExpandable: false,
             hasCustomExpandContent: false,
@@ -137,23 +133,6 @@ export default defineComponent({
         items(): string {
             return this.isEmpty ? `:rows="[]"` : `:rows="items"`;
         },
-        striped(): string {
-            return this.isStriped ? "striped" : "";
-        },
-        rowHeader(): string {
-            return this.hasRowHeader ? `:row-header="true"` : "";
-        },
-        rowDescription(): string {
-            return this.hasRowDescription ? `description="(åååå-mm-dd)"` : "";
-        },
-        hover(): string {
-            return this.hasHover ? "hover" : "";
-        },
-        caption(): string {
-            return this.hasHiddenCaption
-                ? `<span class="sr-only">Utbetalningar</span>`
-                : "Utbetalningar";
-        },
         selectable(): string {
             return this.isSelectable ? "selectable" : "";
         },
@@ -200,32 +179,19 @@ export default defineComponent({
             return /* HTML */ `
                 <f-interactive-table
                     ${this.items}
-                    ${this.striped}
-                    ${this.hover}
                     ${this.selectable}
                     ${this.expandable}
+                    :showActive="false"
                     key-attribute="id"
                 >
-                    <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
-                        <f-table-column name="level" title="Nivå" ${this.rowHeader} type="text">
+                        <f-table-column name="level" title="Nivå" type="text">
                             {{ row.level }}
                         </f-table-column>
-                        <f-table-column
-                            name="start"
-                            title="Från och med"
-                            ${this.rowDescription}
-                            type="text"
-                            expand
-                        >
+                        <f-table-column name="start" title="Från och med" type="text" expand>
                             {{ row.start }}
                         </f-table-column>
-                        <f-table-column
-                            name="end"
-                            title="Till och med"
-                            ${this.rowDescription}
-                            type="text"
-                        >
+                        <f-table-column name="end" title="Till och med" type="text">
                             {{ row.end }}
                         </f-table-column>
                         <f-table-column name="antal" title="Antal dagar" type="numeric">
@@ -258,11 +224,7 @@ export default defineComponent({
                 Valfritt innehåll
             </f-radio-field>
         </f-fieldset>
-        <f-checkbox-field v-model="hasHover" :value="true"> Hover </f-checkbox-field>
-        <f-checkbox-field v-model="isStriped" :value="true"> Zebrarandig </f-checkbox-field>
         <f-checkbox-field v-model="hasActions" :value="true"> Åtgärdsknappar </f-checkbox-field>
-        <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
-        <f-checkbox-field v-model="hasHiddenCaption" :value="true"> Dold caption </f-checkbox-field>
         <f-checkbox-field v-model="isEmpty" :value="true"> Tom tabell </f-checkbox-field>
         <f-fieldset v-if="isEmpty" name="radio-empty-text">
             <template #label> Meddelande för tom tabell </template>

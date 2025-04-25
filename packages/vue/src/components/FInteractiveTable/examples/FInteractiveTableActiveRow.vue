@@ -14,6 +14,7 @@ export default defineComponent({
             hasHiddenCaption: false,
             hasRowHeader: false,
             hasHover: false,
+            showActiveRow: true,
         };
     },
     computed: {
@@ -64,13 +65,16 @@ export default defineComponent({
                 ? `<span class="sr-only">Utbetalningar</span>`
                 : "Utbetalningar";
         },
+        showActive(): string {
+            return this.showActiveRow ? "" : `:showActive="false"`;
+        },
         template(): string {
             return /* HTML */ `
                 <f-interactive-table
                     :rows="items"
                     ${this.striped}
                     ${this.hover}
-                    :showActive="false"
+                    ${this.showActive}
                     key-attribute="id"
                 >
                     <template #caption> ${this.caption} </template>
@@ -108,9 +112,6 @@ export default defineComponent({
 
 <template>
     <live-example :components="components" :template="template" :livedata="livedata">
-        <f-checkbox-field v-model="hasHover" :value="true"> Hover </f-checkbox-field>
-        <f-checkbox-field v-model="isStriped" :value="true"> Zebrarandig </f-checkbox-field>
-        <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
-        <f-checkbox-field v-model="hasHiddenCaption" :value="true"> Dold caption </f-checkbox-field>
+        <f-checkbox-field v-model="showActiveRow" :value="true">Visa aktiv rad</f-checkbox-field>
     </live-example>
 </template>

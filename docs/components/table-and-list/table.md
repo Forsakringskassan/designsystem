@@ -30,7 +30,13 @@ FDataTableLiveExample.vue
 Använd en interaktiv tabell när användaren behöver interagera med tabellen. Det kan handla om att välja, lägga till, ändra, ta bort en rad eller utföra andra åtgärder via knappar eller genom att klicka på hela raden.
 
 ```import live-example
-FInteractiveTableLiveExample.vue
+FInteractiveTableInteraction.vue
+```
+
+Tabellen kan utformas på samma sätt som en datatabell.
+
+```import live-example
+FInteractiveTableStyling.vue
 ```
 
 ### Hantera rader
@@ -76,6 +82,12 @@ const rows = [
 
 // Preselect all rows that are fruit type.
 const selectedRows = rows.filter((row) => row.type === "Frukt");
+```
+
+Den aktiva raden visas som standard och kan inaktiveras med prop `showActive`.
+
+```import live-example
+FInteractiveTableActiveRow.vue
 ```
 
 ### Expanderbara rader
