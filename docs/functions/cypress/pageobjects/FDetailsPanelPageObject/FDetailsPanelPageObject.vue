@@ -9,11 +9,11 @@ onMounted(() => {
 
 <template>
     <f-page-layout layout="three-column">
-        <template #left>
+        <template #default="{ left, content }">
             <!-- cut above -->
-            <f-details-panel name="awesome-panel"></f-details-panel>
+            <f-details-panel :slot="left" name="awesome-panel"></f-details-panel>
             <!-- cut below -->
+            <div :slot="content">Innehåll</div>
         </template>
-        <template #content> Innehåll </template>
     </f-page-layout>
 </template>

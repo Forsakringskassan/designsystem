@@ -52,32 +52,31 @@ function openPanel(row: Row): void {
 <template>
     <div class="layout-container">
         <f-page-layout layout="three-column">
-            <template #right>
-                <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-                <f-resize-pane min="200px" max="50%">
+            <template #default="layoutScope">
+                <f-resize-pane :slot="layoutScope.right" min="200px" max="50%">
                     <example-panel :name>
-                        <template #default="{ item, close, content }">
-                            <div :slot="content">
+                        <template #default="exampleScope">
+                            <div :slot="exampleScope.content">
                                 <f-text-field
-                                    v-model="item.column1"
+                                    v-model="exampleScope.item.column1"
                                     v-validation.required.maxLength="{ maxLength: { length: 10 } }"
                                 >
                                     Etikett-rubrik 1
                                 </f-text-field>
                                 <f-text-field
-                                    v-model="item.column2"
+                                    v-model="exampleScope.item.column2"
                                     v-validation.required.maxLength="{ maxLength: { length: 10 } }"
                                 >
                                     Etikett-rubrik 2
                                 </f-text-field>
                                 <f-text-field
-                                    v-model="item.column3"
+                                    v-model="exampleScope.item.column3"
                                     v-validation.required.maxLength="{ maxLength: { length: 10 } }"
                                 >
                                     Etikett-rubrik 3
                                 </f-text-field>
                                 <f-text-field
-                                    v-model="item.column4"
+                                    v-model="exampleScope.item.column4"
                                     v-validation.required.maxLength="{ maxLength: { length: 10 } }"
                                 >
                                     Etikett-rubrik 4
@@ -86,14 +85,14 @@ function openPanel(row: Row): void {
                                     <button
                                         class="button button-group__item button--primary button--small"
                                         type="button"
-                                        @click="close('save')"
+                                        @click="exampleScope.close('save')"
                                     >
                                         Spara
                                     </button>
                                     <button
                                         class="button button-group__item button--secondary button--small"
                                         type="button"
-                                        @click="close()"
+                                        @click="exampleScope.close()"
                                     >
                                         Avbryt
                                     </button>
@@ -102,25 +101,26 @@ function openPanel(row: Row): void {
                         </template>
                     </example-panel>
                 </f-resize-pane>
-            </template>
-            <template #content>
-                <f-interactive-table :rows key-attribute="id" @click="openPanel($event)">
-                    <template #caption>Tabell</template>
-                    <template #default="{ row }">
-                        <f-table-column name="column1" title="Kolumnrubrik">
-                            {{ row.column1 }}
-                        </f-table-column>
-                        <f-table-column name="column2" title="Kolumnrubrik">
-                            {{ row.column2 }}
-                        </f-table-column>
-                        <f-table-column name="column3" title="Kolumnrubrik">
-                            {{ row.column3 }}
-                        </f-table-column>
-                        <f-table-column name="column4" title="Kolumnrubrik">
-                            {{ row.column4 }}
-                        </f-table-column>
-                    </template>
-                </f-interactive-table>
+
+                <div :slot="layoutScope.content">
+                    <f-interactive-table :rows key-attribute="id" @click="openPanel($event)">
+                        <template #caption>Tabell</template>
+                        <template #default="{ row }">
+                            <f-table-column name="column1" title="Kolumnrubrik">
+                                {{ row.column1 }}
+                            </f-table-column>
+                            <f-table-column name="column2" title="Kolumnrubrik">
+                                {{ row.column2 }}
+                            </f-table-column>
+                            <f-table-column name="column3" title="Kolumnrubrik">
+                                {{ row.column3 }}
+                            </f-table-column>
+                            <f-table-column name="column4" title="Kolumnrubrik">
+                                {{ row.column4 }}
+                            </f-table-column>
+                        </template>
+                    </f-interactive-table>
+                </div>
             </template>
         </f-page-layout>
     </div>

@@ -40,8 +40,8 @@ För att fylla ytan `header` med innehåll:
 
 ```html static
 <f-page-layout layout="three-column">
-    <template #header>
-        <header>
+    <template #default="{ header }">
+        <header :slot="header">
             <h1>My header</h1>
         </header>
     </template>

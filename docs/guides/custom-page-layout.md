@@ -47,6 +47,16 @@ där:
 - `direction` talar om ifall ytan flödar horisontellt eller vertikalt.
 - `scroll` talar om ifall ytan ska scrolla (i den riktning som `direction` talar om).
 
+Typsäkra användning av den nya layouten genom att utöka interfacet `FPageLayoutSlotMapping`:
+
+```ts nocompile
+declare module "@fkui/vue" {
+    interface FPageLayoutSlotMapping {
+        "my-custom": ["header", "toolbar", "sidebar", "content", "footer"];
+    }
+}
+```
+
 ## Positionering och storlek
 
 För positionering och storlek används [CSS grid](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids) på `::part(grid name)` och kan se ut så här:
@@ -87,11 +97,13 @@ Slutligen används layouten genom att sätta det nya registrerade namnet som `la
 
 ```html static
 <f-page-layout layout="my-custom">
-    <template #header> [header] </template>
-    <template #sidebar> [sidebar] </template>
-    <template #toolbar> [toolbar] </template>
-    <template #content> [content] </template>
-    <template #footer> [footer] </template>
+    <template #default="{ header, sidebar, toolbar, content, footer }">
+        <div :slot="header">[header]</div>
+        <div :slot="sidebar">[sidebar]</div>
+        <div :slot="toolbar">[toolbar]</div>
+        <div :slot="content">[content]</div>
+        <div :slot="footer">[footer]</div>
+    </template>
 </f-page-layout>
 ```
 

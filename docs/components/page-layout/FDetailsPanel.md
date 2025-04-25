@@ -29,18 +29,20 @@ Lägg till en `FDetailsPanel` i en yta i `FPageLayout` och namnge den med ett un
 
 ```html hidden name=base-usage
 <f-page-layout layout="three-column">
-    <template #content> Innehållsyta </template>
+    <template #default="layoutScope">
+        <div :slot="layoutScope.content">Innehållsyta</div>
+    </template>
 </f-page-layout>
 ```
 
 ```html compare=base-usage name=simple
 <f-page-layout layout="three-column">
-    <template #right>
-        <f-details-panel name="awesome-panel">
+    <template #default="layoutScope">
+        <f-details-panel :slot="layoutScope.right" name="awesome-panel">
             <template #default> </template>
         </f-details-panel>
+        <div :slot="layoutScope.content">Innehållsyta</div>
     </template>
-    <template #content> Innehållsyta </template>
 </f-page-layout>
 ```
 
@@ -48,14 +50,14 @@ Om panelen ska ha en justerbar storlek lägg en `FResizePane` runt om:
 
 ```html compare=simple name=resize
 <f-page-layout layout="three-column">
-    <template #right>
-        <f-resize-pane>
+    <template #default="layoutScope">
+        <f-resize-pane :slot="layoutScope.right">
             <f-details-panel name="awesome-panel">
                 <template #default> </template>
             </f-details-panel>
         </f-resize-pane>
+        <div :slot="layoutScope.content">Innehållsyta</div>
     </template>
-    <template #content> Innehållsyta </template>
 </f-page-layout>
 ```
 
@@ -63,16 +65,16 @@ Du lägger innehåll i respektive slot:
 
 ```html compare=simple name=slots
 <f-page-layout layout="three-column">
-    <template #right>
-        <f-details-panel name="awesome-panel">
-            <template #default="{ header, content, footer }">
-                <h2 :slot="header">Rubrik</h2>
-                <div :slot="content">Innehåll</div>
-                <div :slot="footer">Footer</div>
+    <template #default="layoutScope">
+        <f-details-panel :slot="layoutScope.right" name="awesome-panel">
+            <template #default="panelScope">
+                <h2 :slot="panelScope.header">Rubrik</h2>
+                <div :slot="panelScope.content">Innehåll</div>
+                <div :slot="panelScope.footer">Footer</div>
             </template>
         </f-details-panel>
+        <div :slot="layoutScope.content">Innehållsyta</div>
     </template>
-    <template #content> Innehållsyta </template>
 </f-page-layout>
 ```
 
@@ -116,18 +118,18 @@ Du återfår objektet i panelen med scope attribute `item`:
 
 ```html compare=slots
 <f-page-layout layout="three-column">
-    <template #right>
-        <f-details-panel name="awesome-panel">
-            <template #default="{ item, header, content, footer }">
-                <h2 :slot="header">Rubrik</h2>
-                <div :slot="content">
-                    <pre>{{ item }}</pre>
+    <template #default="layoutScope">
+        <f-details-panel :slot="layoutScope.right" name="awesome-panel">
+            <template #default="panelScope">
+                <h2 :slot="panelScope.header">Rubrik</h2>
+                <div :slot="panelScope.content">
+                    <pre>{{ panelScope.item }}</pre>
                 </div>
-                <div :slot="footer">Footer</div>
+                <div :slot="panelScope.footer">Footer</div>
             </template>
         </f-details-panel>
+        <div :slot="layoutScope.content">Innehållsyta</div>
     </template>
-    <template #content> Innehållsyta </template>
 </f-page-layout>
 ```
 
@@ -200,18 +202,20 @@ Du kan lägga in egna knappar som stänger detaljpanelen.
 
 ```html compare=slots
 <f-page-layout layout="three-column">
-    <template #right>
-        <f-details-panel name="awesome-panel">
-            <template #default="{ close, header, content, footer }">
-                <h2 :slot="header">Rubrik</h2>
-                <div :slot="content">
-                    <button type="button" @click="close()">Stäng</button>
+    <template #default="layoutScope">
+        <f-details-panel :slot="layoutScope.right" name="awesome-panel">
+            <template #default="panelScope">
+                <h2 :slot="panelScope.header">Rubrik</h2>
+                <div :slot="panelScope.content">
+                    <button type="button" @click="panelScope.close()">
+                        Stäng
+                    </button>
                 </div>
-                <div :slot="footer">Footer</div>
+                <div :slot="panelScope.footer">Footer</div>
             </template>
         </f-details-panel>
+        <div :slot="layoutScope.content">Innehållsyta</div>
     </template>
-    <template #content> Innehållsyta </template>
 </f-page-layout>
 ```
 

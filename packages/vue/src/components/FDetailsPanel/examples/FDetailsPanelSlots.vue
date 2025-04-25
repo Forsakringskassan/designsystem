@@ -13,18 +13,15 @@ onMounted(() => {
 <template>
     <div class="layout-container">
         <f-page-layout layout="three-column">
-            <template #right>
-                <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-                <f-details-panel :name class="panel">
-                    <template #default="{ header, content, footer }">
-                        <h2 :slot="header">[header]</h2>
-                        <div :slot="content">[content]</div>
-                        <div :slot="footer">[footer]</div>
+            <template #default="layoutScope">
+                <f-details-panel :slot="layoutScope.right" :name class="panel">
+                    <template #default="panelScope">
+                        <h2 :slot="panelScope.header">[header]</h2>
+                        <div :slot="panelScope.content">[content]</div>
+                        <div :slot="panelScope.footer">[footer]</div>
                     </template>
                 </f-details-panel>
-            </template>
-            <template #content>
-                <p>Innehållsyta</p>
+                <p :slot="layoutScope.content">Innehållsyta</p>
             </template>
         </f-page-layout>
     </div>

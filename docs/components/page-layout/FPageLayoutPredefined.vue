@@ -9,14 +9,10 @@ import { FPageLayout } from "@fkui/vue";
             <h3><code>simple</code></h3>
             <div class="layout-container">
                 <f-page-layout layout="simple">
-                    <template #header>
-                        <header class="area header">[header]</header>
-                    </template>
-                    <template #content>
-                        <main class="area content">[content]</main>
-                    </template>
-                    <template #footer>
-                        <footer class="area footer">[footer]</footer>
+                    <template #default="{ header, content, footer }">
+                        <header :slot="header" class="area header">[header]</header>
+                        <main :slot="content" class="area content">[content]</main>
+                        <footer :slot="footer" class="area footer">[footer]</footer>
                     </template>
                 </f-page-layout>
             </div>
@@ -25,17 +21,11 @@ import { FPageLayout } from "@fkui/vue";
             <h3><code>left-panel</code></h3>
             <div class="layout-container">
                 <f-page-layout layout="left-panel">
-                    <template #header>
-                        <header class="area header">[header]</header>
-                    </template>
-                    <template #left>
-                        <div class="area left-panel">[left]</div>
-                    </template>
-                    <template #content>
-                        <main class="area content">[content]</main>
-                    </template>
-                    <template #footer>
-                        <footer class="area footer">[footer]</footer>
+                    <template #default="{ header, left, content, footer }">
+                        <header :slot="header" class="area header">[header]</header>
+                        <div :slot="left" class="area left-panel">[left]</div>
+                        <main :slot="content" class="area content">[content]</main>
+                        <footer :slot="footer" class="area footer">[footer]</footer>
                     </template>
                 </f-page-layout>
             </div>
@@ -44,17 +34,11 @@ import { FPageLayout } from "@fkui/vue";
             <h3><code>right-panel</code></h3>
             <div class="layout-container">
                 <f-page-layout layout="right-panel">
-                    <template #header>
-                        <header class="area header">[header]</header>
-                    </template>
-                    <template #right>
-                        <div class="area right-panel">[right]</div>
-                    </template>
-                    <template #content>
-                        <main class="area content">[content]</main>
-                    </template>
-                    <template #footer>
-                        <footer class="area footer">[footer]</footer>
+                    <template #default="{ header, right, content, footer }">
+                        <header :slot="header" class="area header">[header]</header>
+                        <div :slot="right" class="area left-panel">[right]</div>
+                        <main :slot="content" class="area content">[content]</main>
+                        <footer :slot="footer" class="area footer">[footer]</footer>
                     </template>
                 </f-page-layout>
             </div>
@@ -63,20 +47,12 @@ import { FPageLayout } from "@fkui/vue";
             <h3><code>three-column</code></h3>
             <div class="layout-container">
                 <f-page-layout layout="three-column">
-                    <template #header>
-                        <header class="area header">[header]</header>
-                    </template>
-                    <template #left>
-                        <div class="area left-panel">[left]</div>
-                    </template>
-                    <template #right>
-                        <div class="area right-panel">[right]</div>
-                    </template>
-                    <template #content>
-                        <main class="area content">[content]</main>
-                    </template>
-                    <template #footer>
-                        <footer class="area footer">[footer]</footer>
+                    <template #default="{ header, left, right, content, footer }">
+                        <header :slot="header" class="area header">[header]</header>
+                        <div :slot="left" class="area left-panel">[left]</div>
+                        <div :slot="right" class="area left-panel">[right]</div>
+                        <main :slot="content" class="area content">[content]</main>
+                        <footer :slot="footer" class="area footer">[footer]</footer>
                     </template>
                 </f-page-layout>
             </div>

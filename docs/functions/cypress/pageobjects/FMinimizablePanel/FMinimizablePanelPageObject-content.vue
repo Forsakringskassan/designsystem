@@ -4,16 +4,15 @@ import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
 
 <template>
     <f-page-layout layout="three-column">
-        <template #left>
-            <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
+        <template #default="layoutScope">
             <!-- cut above -->
-            <f-minimizable-panel>
-                <template #default="{ content }">
-                    <div :slot="content">Lorem ipsum</div>
+            <f-minimizable-panel :slot="layoutScope.left">
+                <template #default="panelScope">
+                    <div :slot="panelScope.content">Lorem ipsum</div>
                 </template>
             </f-minimizable-panel>
             <!-- cut below -->
+            <div :slot="layoutScope.content">Innehåll</div>
         </template>
-        <template #content> Innehåll </template>
     </f-page-layout>
 </template>

@@ -19,23 +19,24 @@ function openPanel(): void {
 <template>
     <div class="layout-container">
         <f-page-layout layout="three-column">
-            <template #right>
-                <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-                <f-resize-pane min="200px" max="50%">
+            <template #default="layoutScope">
+                <f-resize-pane :slot="layoutScope.right" min="200px" max="50%">
                     <example-panel :name>
-                        <template #default="{ item, header, content }">
-                            <h2 :slot="header">Detaljpanel</h2>
-                            <p :slot="content">{{ item.name }}</p>
+                        <template #default="panelScope">
+                            <h2 :slot="panelScope.header">Detaljpanel</h2>
+                            <p :slot="panelScope.content">{{ panelScope.item.name }}</p>
                         </template>
                     </example-panel>
                 </f-resize-pane>
-            </template>
-            <template #content>
-                <div>
-                    <button type="button" class="button button--primary" @click="openPanel">
-                        Öppna
-                    </button>
-                </div>
+
+                <button
+                    :slot="layoutScope.content"
+                    type="button"
+                    class="button button--primary"
+                    @click="openPanel"
+                >
+                    Öppna
+                </button>
             </template>
         </f-page-layout>
     </div>

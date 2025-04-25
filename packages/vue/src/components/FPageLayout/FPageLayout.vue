@@ -1,28 +1,34 @@
-<script setup lang="ts">
-import { computed, onUnmounted, useSlots } from "vue";
+<script setup lang="ts" generic="T extends FPageLayoutType">
+import { defineCustomElement, onMounted, onUnmounted } from "vue";
 import { resetDetailPanels } from "../FDetailsPanel/use-details-panel";
-import { PageLayout } from "./webcomponent";
+import { type FPageLayoutType, type FPageLayoutBindings } from "./types";
+import CeComponent from "./FPageLayout.ce.vue";
 
-const tagName = `ce-page-layout`;
-if (!customElements.get(tagName)) {
-    customElements.define(tagName, PageLayout);
-}
-
+const ceTag = "ce-page-layout";
+const { layout } = defineProps<{ layout: T }>();
 const emit = defineEmits<{
-    /** Emitted when the layout has been recalculated */
     update: [];
 }>();
 
-const { layout } = defineProps<{ layout: string }>();
-const slots = useSlots();
+const proxy = new Proxy(
+    {},
+    {
+        get(_, property: string) {
+            // ignore Vue internal props
+            if (property.startsWith("__v")) {
+                return undefined;
+            }
 
-const slotNames = computed((): string[] => {
-    return Object.keys(slots);
+            return property;
+        },
+    },
+);
+
+onMounted(() => {
+    if (!customElements.get(ceTag)) {
+        customElements.define(ceTag, defineCustomElement(CeComponent));
+    }
 });
-
-function onUpdate(): void {
-    emit("update");
-}
 
 onUnmounted(() => {
     resetDetailPanels();
@@ -30,10 +36,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <component :is="tagName" :layout @update="onUpdate">
-        <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -- false positive, this is the native slot attribute -->
-        <div v-for="slot of slotNames" :key="slot" :slot>
-            <slot :name="slot"></slot>
-        </div>
+    <component :is="ceTag" :layout @update="emit('update')">
+        <slot v-bind="proxy as FPageLayoutBindings<T>"></slot>
     </component>
 </template>

@@ -22,17 +22,15 @@ const template = computed(() => {
     return /* HTML */ `
         <div class="layout-container">
             <f-page-layout layout="left-panel">
-                <template #left>
-                    <f-resize-pane min="200px" max="50%" initial="25%">
+                <template #default="{ left, content }">
+                    <f-resize-pane :slot="left" min="200px" max="50%" initial="25%">
                         <custom-panel>
                             <div class="content">
                                 <p>Panel</p>
                             </div>
                         </custom-panel>
                     </f-resize-pane>
-                </template>
-                <template #content>
-                    <div class="content">
+                    <div :slot="content" class="content">
                         <p>Huvudyta</p>
                         <p>Drag i handtaget för att ändra storlek.</p>
                     </div>

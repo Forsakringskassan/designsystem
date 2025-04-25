@@ -121,7 +121,3 @@
         display: none;
     }
 }
-
-:host ::slotted(*) {
-    display: contents;
-}
