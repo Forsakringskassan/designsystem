@@ -56,8 +56,10 @@ export default defineComponent({
         },
         buttonText(): string {
             if (this.action === "delete") {
+                /** Button label when action is "delete" */
                 return this.$t("fkui.crud-button.delete", "Ta bort");
             } else {
+                /** Button label when action is "modifiy" */
                 return this.$t("fkui.crud-button.modify", "Ändra");
             }
         },
