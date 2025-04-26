@@ -11,6 +11,7 @@ module.exports = {
         "fkui/class-deprecated": "error",
         "fkui/prefer-ficon": "error",
         "fkui/required-max-length": "error",
+        "fkui/finteractivetable-checkbox-description": "error",
         "fkui/ftextfield-formatter-validation": "error",
         "fkui/no-template-modal": "error",
         "fkui/ftablecolumn-name": "error",
