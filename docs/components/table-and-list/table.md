@@ -107,7 +107,10 @@ Med Datamängsredigeraren kan du lägga till funktionalitet för att skapa, änd
 
 ### Inmatning i tabell
 
-Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen. Fältens standardetikett är visuellt dolda och ersätts av tabellrubrik för en seende användare, men de läsas fortfarande upp av skärmläsare genom klassen sr-only. Fel vid fältvalidering i en tabell indikeras med varningstriangel och röd ram på samma sätt som fält i ett vanligt formulär men felmeddelandet visas i en popup. Felmeddelandet visas när det felmarkerade fältet har fokus.
+Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen.
+Fältens standardetikett är visuellt dolda och ersätts av tabellrubrik för en seende användare, men de läsas fortfarande upp av skärmläsare.
+Fel vid fältvalidering i en tabell indikeras med varningstriangel och röd ram på samma sätt som fält i ett vanligt formulär men felmeddelandet visas i en popup.
+Felmeddelandet visas när det felmarkerade fältet har fokus.
 Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att placeras i tabell.
 
 ```import
