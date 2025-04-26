@@ -304,6 +304,24 @@ Texten sätts i slot `#empty`:
  </f-data-table>
 ```
 
+## Kolumnbredd
+
+Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna `expand` och `shrink` kan man indikera om man önskar att en kolumn ska använda så mycket eller så lite utrymme som möjligt.
+
+- En kolumn med `expand` tar så mycket utrymme den kan.
+- En kolumn med `shink` tar så lite utrymme den kan.
+
+Med `shrink` koller cellernas innehåll att radbrytas om man inte använt direktivet {@link FormatPlugin `v-format`} eller på annat sätt förbindrat radbrytning.
+
+Om flera kolumner har `expand` fördelas storleken godtycklingt efter webläsarens preferens.
+
+Om inget anges fungerar kolumnen som om `expand` är satt.
+Det är ett fel att sätta både `expand` och `shrink` samtidigt.
+
+```import live-example
+ExpandShrinkExample.vue
+```
+
 ## Textnycklar
 
 Läs mer om att {@link translate-text anpassa och översätta text}.
