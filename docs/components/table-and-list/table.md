@@ -292,6 +292,32 @@ Texten sätts i slot `#empty`:
  </f-data-table>
 ```
 
+## Valbara rader
+
+För interaktiv tabell kan rader kan göras valbara med propen `selectable`.
+`v-model` kan användas för att komma åt lista med valda rader.
+
+Slotten `checkbox-description` måste användas för att ge en beskrivning av kryssrutan för skärmläsare.
+Texten bör innehålla något som tydligt identifierar raden från andra rader.
+
+```html compare=interactivetable-base
+<f-interactive-table :rows="items" selectable v-model="selectedRows">
+    <template #caption> Awesome Table </template>
+    <template #default="{ row }">
+        <f-table-column title="Kolumnrubrik" type="text">
+            {{ row.value }}
+        </f-table-column>
+    </template>
+    <template #checkbox-description="{ row }">
+        Välj rad {{ row.value }}
+    </template>
+</f-interactive-table>
+```
+
+```import nomarkup
+FInteractiveTableSelectable.vue
+```
+
 ## Kolumnbredd
 
 Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna `expand` och `shrink` kan man indikera om man önskar att en kolumn ska använda så mycket eller så lite utrymme som möjligt.
