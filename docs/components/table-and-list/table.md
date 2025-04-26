@@ -23,6 +23,40 @@ Använd för att endast presentera information.
 FDataTableLiveExample.vue
 ```
 
+### Användning
+
+Komponenten har en prop `rows` som du sätter till de rader som ska presenteras.
+
+Slotten `default` renderas för varje item i `rows` och har en slot attribute `row` som innehåller nuvarande rad.
+
+Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `FTableColumn`.
+
+```html static name=datatable-base
+<f-data-table :rows="items">
+    <template #caption> Awesome Table </template>
+    <template #default="{ row }">
+        <f-table-column title="Kolumnrubrik" type="text">
+            {{ row.value }}
+        </f-table-column>
+    </template>
+</f-data-table>
+```
+
+Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använd direktivet {@link FormatPlugin `v-format`} för att formatera och undvika radbryt i cellen.
+
+```html compare=datatable-base
+<f-data-table :rows="items">
+    <template #caption> Awesome Table </template>
+    <template #default="{ row }">
+        <f-table-column
+            title="Kolumnrubrik"
+            type="numeric"
+            v-format:number="row.value"
+        ></f-table-column>
+    </template>
+</f-data-table>
+```
+
 ## Interaktiv tabell
 
 `FInteractiveTable`
@@ -31,6 +65,40 @@ Använd en interaktiv tabell när användaren behöver interagera med tabellen. 
 
 ```import live-example
 FInteractiveTableLiveExample.vue
+```
+
+### Användning
+
+Komponenten har en prop `rows` som du sätter till de rader som ska presenteras.
+
+Slotten `default` renderas för varje item i `rows` och har en slot attribute `row` som innehåller nuvarande rad.
+
+Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `FTableColumn`.
+
+```html static name=interactivetable-base
+<f-interactive-table :rows="items">
+    <template #caption> Awesome Table </template>
+    <template #default="{ row }">
+        <f-table-column title="Kolumnrubrik" type="text">
+            {{ row.value }}
+        </f-table-column>
+    </template>
+</f-interactive-table>
+```
+
+Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använd direktivet {@link FormatPlugin `v-format`} för att formatera och undvika radbryt i cellen.
+
+```html compare=interactivetable-base
+<f-interactive-table :rows="items">
+    <template #caption> Awesome Table </template>
+    <template #default="{ row }">
+        <f-table-column
+            title="Kolumnrubrik"
+            type="numeric"
+            v-format:number="row.value"
+        ></f-table-column>
+    </template>
+</f-interactive-table>
 ```
 
 ### Hantera rader
