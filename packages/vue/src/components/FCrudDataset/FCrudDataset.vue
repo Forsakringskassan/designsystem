@@ -144,12 +144,12 @@ const emit = defineEmits<{
 const formModalButtons = computed((): FModalButtonDescriptor[] => {
     const confirmButtonText =
         operation.value === Operation.ADD
-            ? $t("fkui.crud-dataset.modal.confirm.add", "Lägg till")
-            : $t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+            ? /** "Save" button in "add new" modal" */ $t("fkui.crud-dataset.modal.confirm.add", "Lägg till")
+            : /** "Save" button in "modify" modal */ $t("fkui.crud-dataset.modal.confirm.modify", "Spara");
     const cancelButtonText =
         operation.value === Operation.ADD
-            ? $t("fkui.crud-dataset.modal.cancel.add", "Avbryt")
-            : $t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+            ? /** "Cancel" button in "add new" modal */ $t("fkui.crud-dataset.modal.cancel.add", "Avbryt")
+            : /** "Cancel" button in "modifiy" modal */ $t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
     return [
         {
             label: confirmButtonText,
@@ -169,11 +169,13 @@ const formModalButtons = computed((): FModalButtonDescriptor[] => {
 const confirmDeleteButtons = computed((): FModalButtonDescriptor[] => {
     return [
         {
+            /** "Confirm" button in "delete" modal */
             label: $t("fkui.crud-dataset.modal.confirm.delete", "Ja, ta bort"),
             type: "primary",
             event: "confirm",
         },
         {
+            /** "Cancel" button in "delete" modal */
             label: $t("fkui.crud-dataset.modal.cancel.delete", "Nej, avbryt"),
             type: "secondary",
         },
@@ -249,7 +251,9 @@ function onDeleteConfirm(): void {
     emit("deleted", item.value);
     emit("update:modelValue", result.value);
 
-    alertScreenReader($t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), {
+    /** Text announced to screenreaders when an item has been removed */
+    const message = $t("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort");
+    alertScreenReader(message, {
         assertive: true,
     });
 }
@@ -276,7 +280,10 @@ function onFormModalSubmit(): void {
         emit("update:modelValue", result.value);
 
         callbackAfterItemAdd.value(item.value);
-        alertScreenReader($t("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), {
+
+        /** Text announced to screenreaders when an item has been added */
+        const message = $t("fkui.crud-dataset.aria-live.add", "En rad har lagts till");
+        alertScreenReader(message, {
             assertive: true,
         });
     } else if (operation.value === Operation.MODIFY) {
@@ -288,7 +295,9 @@ function onFormModalSubmit(): void {
         emit("updated", originalItemToUpdate.value);
         emit("update:modelValue", result.value);
 
-        alertScreenReader($t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats"), {
+        /** Text announced to screenreaders when an item has been modified */
+        const message = $t("fkui.crud-dataset.aria-live.modify", "Raden har ändrats");
+        alertScreenReader(message, {
             assertive: true,
         });
     }
@@ -323,7 +332,10 @@ function updateItem(current: T): void {
                 <!--
                      @slot Slot for changing the text in "Add new" button`
                 -->
-                <slot name="add-button">{{ $t("fkui.crud-dataset.button.add", "Lägg till ny") }}</slot>
+                <slot name="add-button">{{
+                    /** Buttontext for adding a new item */
+                    $t("fkui.crud-dataset.button.add", "Lägg till ny")
+                }}</slot>
             </button>
 
             <!--

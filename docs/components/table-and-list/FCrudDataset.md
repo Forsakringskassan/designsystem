@@ -53,14 +53,6 @@ Standardinställningen för knappordningen i modalerna för "Lägg till" och "Ä
 Standardinställningen för modalen "Ta bort" är att sekundärknappen ligger först följt av primärknappen.
 Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappordningen för modalen "Ta bort" genom inställning av {@link config#referens buttonOrder} i konfigurationen.
 
-## Anpassade texter
-
-Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för "lägg till"-knapp kan ändras via slot add-button.
-
-```import
-FCrudDatasetCustomTextExample.vue
-```
-
 ## Egna lägg till knappar
 
 Använd slotten `#buttons` för att lägga till egna anpassade lägg-till knappar.
@@ -103,6 +95,31 @@ FCrudDatasetListExample.vue
 
 ```import
 FCrudDatasetSortListExample.vue
+```
+
+## Anpassade texter
+
+Rubriker i modaler kan anpassas antingen med textnycklar (standardtexter för alla datamängdredigerare) eller med propar (för en specifik datamängdredigerare):
+
+- Lägg till: textnyckel `fkui.crud-dataset.modal.header.add` eller prop `addNewModalHeader`.
+- Ändra: textnyckel `fkui.crud-dataset.modal.header.modify` eller prop `modifyModalHeader`.
+- Ta bort: textnyckel `fkui.crud-dataset.modal.header.delete` eller prop `deleteModalHeader`.
+
+Knapptexter i modaler kan anpassas med textnycklar.
+
+- Lägg till: textnycklar `fkui.crud-dataset.modal.confirm.add` och `fkui.crud-dataset.modal.cancel.add`.
+- Ändra: textnycklar `fkui.crud-dataset.modal.confirm.modify` och `fkui.crud-dataset.modal.cancel.modify`.
+- Ta bort: textnycklar `fkui.crud-dataset.modal.confirm.delete` och `fkui.crud-dataset.modal.cancel.delete`.
+
+Knappentexten för "Lägg till" kan anpassas med textnyckel `fkui.crud-dataset.button.add` eller slotten `add-button`.
+
+Knapptexter för åtgärdsknappar kan anpassas med textnycklar eller med knappens default slot.
+
+- Ändra: textnyckel `fkui.crud-button.modify` eller default slot.
+- Ta bort: textnyckel `fkui.crud-button.delete` eller default slot.
+
+```import
+FCrudDatasetCustomTextExample.vue
 ```
 
 ## Textnycklar
