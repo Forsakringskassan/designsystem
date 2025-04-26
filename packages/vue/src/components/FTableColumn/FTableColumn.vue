@@ -29,14 +29,16 @@ const props = defineProps({
         default: undefined,
     },
     /**
-     * If set to true, display the column, set to false to hide it.
+     * When enabled (default) this column visible.
+     *
+     * Should be used instead of `v-if` or `v-show`.
      */
     visible: {
         type: Boolean,
         default: true,
     },
     /**
-     * If `true` this cell will be a row header (`<th>` as opposed to
+     * When enabled this cell will be a row header (`<th>` as opposed to
      * `<td>`).
      */
     rowHeader: {
