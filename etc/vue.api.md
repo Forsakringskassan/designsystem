@@ -6696,11 +6696,11 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         active: [{
             type: PropType<T | undefined>;
             required: false;
-            default: () => undefined;
+            default: undefined;
         }] extends [Prop<infer V, infer D>] ? unknown extends V ? keyof V extends never ? IfAny<V, V, D> : V : V : {
             type: PropType<T | undefined>;
             required: false;
-            default: () => undefined;
+            default: undefined;
         };
     }> & Omit<{
         readonly scroll: TableScroll;
@@ -6716,11 +6716,11 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly active?: ([{
             type: PropType<T | undefined>;
             required: false;
-            default: () => undefined;
+            default: undefined;
         }] extends [Prop<infer V, infer D>] ? unknown extends V ? keyof V extends never ? IfAny<V, V, D> : V : V : {
             type: PropType<T | undefined>;
             required: false;
-            default: () => undefined;
+            default: undefined;
         }) | undefined;
         readonly onSelect?: ((row: T) => any) | undefined;
         readonly onCollapse?: ((row: T) => any) | undefined;
@@ -6729,7 +6729,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly onClick?: ((row: T) => any) | undefined;
         readonly onExpand?: ((row: T) => any) | undefined;
         readonly onUnselect?: ((row: T) => any) | undefined;
-        readonly "onUpdate:active"?: ((row: T) => any) | undefined;
+        readonly "onUpdate:active"?: ((row: T | undefined) => any) | undefined;
     } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "modelValue" | "scroll" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("modelValue" | "scroll" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
@@ -6760,7 +6760,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         }): any;
         empty?(_: {}): any;
     };
-    emit: ((evt: "select", row: T) => void) & ((evt: "collapse", row: T) => void) & ((evt: "update:modelValue", rows: T[]) => void) & ((evt: "change", row: T) => void) & ((evt: "click", row: T) => void) & ((evt: "expand", row: T) => void) & ((evt: "unselect", row: T) => void) & ((evt: "update:active", row: T) => void);
+    emit: ((evt: "select", row: T) => void) & ((evt: "collapse", row: T) => void) & ((evt: "update:modelValue", rows: T[]) => void) & ((evt: "change", row: T) => void) & ((evt: "click", row: T) => void) & ((evt: "expand", row: T) => void) & ((evt: "unselect", row: T) => void) & ((evt: "update:active", row: T | undefined) => void);
 }>) => VNode & {
     __ctx?: Awaited<typeof __VLS_setup>;
 };
