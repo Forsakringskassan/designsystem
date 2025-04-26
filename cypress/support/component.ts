@@ -2,6 +2,7 @@ import { mount } from "cypress/vue";
 import { injectSpritesheet } from "@fkui/icon-lib-default/dist/f/injectSpritesheet";
 import { type App } from "vue";
 import {
+    FormatPlugin,
     TestPlugin,
     TranslationPlugin,
     ValidationPlugin,
@@ -33,6 +34,7 @@ Cypress.Commands.add("mount", (component, options = {}) => {
     /* Installing validationPlugin */
     options.global.plugins.push({
         install(app: App) {
+            app.use(FormatPlugin);
             app.use(ValidationPlugin);
             app.use(TestPlugin);
             app.use(TranslationPlugin);
