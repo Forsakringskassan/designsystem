@@ -170,41 +170,30 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.
 
 Se nedan exempel av data som kan användas för att generera en expanderbar rad som innehåller två tabellrader.
 
-```js static
-const myExpandableRows = [
-    {
-        id: "1",
-        name: "Utbetalning",
-        date: "2023-10-11",
-        sum: 1200,
-        expandable: [
-            {
-                id: "1a",
-                name: "Barnbidrag",
-                date: "2023-10-11",
-                sum: 200,
-            },
-            {
-                id: "1b",
-                name: "Övrig ersättning",
-                date: "2023-10-11",
-                sum: 1000,
-            },
-        ],
-    },
-];
+```import static
+expandable-rows-data.ts
 ```
 
-```import
+```import name=expandable-base hidden
+FInteractiveTableExpandableExample.vue
+```
+
+```import compare=expandable-base
+FInteractiveTableExpandableExample.vue
+```
+
+```import nomarkup name=expandable-default
 FInteractiveTableExpandableExample.vue
 ```
 
 För att istället skapa expanderbara rader med valfritt innehåll används `expandable` slot.
 
-```html static
-<template #expandable="{ expandableRow }">
-    {{ expandableRow.myAwesomeText }}
-</template>
+```import compare=expandable-default
+FInteractiveTableExpandableRows.vue
+```
+
+```import nomarkup
+FInteractiveTableExpandableRows.vue
 ```
 
 Observera att det inte är rekommenderat att skapa för komplext expanderat innehåll, så som att placera ytterligare expanderbara tabeller inuti.

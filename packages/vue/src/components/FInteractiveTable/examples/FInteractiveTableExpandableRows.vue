@@ -16,5 +16,8 @@ import rows from "./expandable-rows-data";
                 <span v-format:number="row.sum"></span> kronor
             </f-table-column>
         </template>
+        <template #expandable="{ expandableRow }">
+            Anpassat innehåll för expanderad rad "{{ expandableRow.name }}".
+        </template>
     </f-interactive-table>
 </template>
