@@ -321,6 +321,28 @@ Texten bör innehålla något som tydligt identifierar raden från andra rader.
 FInteractiveTableSelectable.vue
 ```
 
+## Radrubriker
+
+Både datatabell och interaktiv tabell kan använda radrubriker utöver kolumnrubriker.
+En radrubrik underlättar för skärmläsareanvändare genom att markera vilken eller vilka celler som utgör en rubrik och blir upplästa automatiskt när skärmläsaren navigerar i tabellen.
+
+Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.
+
+```html compare=datatable-base
+<f-data-table :rows="items">
+    <template #caption> Awesome Table </template>
+    <template #default="{ row }">
+        <f-table-column title="Kolumnrubrik" type="text" row-header>
+            {{ row.value }}
+        </f-table-column>
+    </template>
+</f-data-table>
+```
+
+```import nomarkup
+TableRowHeader.vue
+```
+
 ## Kolumnbredd
 
 Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna `expand` och `shrink` kan man indikera om man önskar att en kolumn ska använda så mycket eller så lite utrymme som möjligt.
