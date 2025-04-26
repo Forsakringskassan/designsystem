@@ -47,7 +47,7 @@ const props = defineProps({
         default: undefined,
     },
     /**
-     * If `true` alternating rows will use a different background color.
+     * When enabled alternating rows will use a different background color.
      */
     striped: {
         type: Boolean,

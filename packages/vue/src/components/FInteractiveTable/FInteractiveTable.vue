@@ -61,7 +61,7 @@ const props = defineProps({
         required: true,
     },
     /**
-     * If `true` hovering over a row will be highlighted
+     * When enabled hovering over a row will be highlighted.
      */
     hover: {
         type: Boolean,
@@ -91,15 +91,19 @@ const props = defineProps({
         default: "",
     },
     /**
-     * If `true` the table rows will be selectable.
-     * @see 'select' and 'unselect' events.
+     * When enabled the table rows will be selectable.
+     *
+     * The current set of selected rows can be accessed with `v-model`.
+     *
+     * The `select` and `unselect` events will be emitted when a row is selected
+     * or deselected.
      */
     selectable: {
         type: Boolean,
         default: false,
     },
     /**
-     * If `true` alternating rows will use a different background color.
+     * When enabled alternating rows will use a different background color.
      */
     striped: {
         type: Boolean,
