@@ -4,6 +4,7 @@ const PreferFIcon = require("./prefer-ficon.rule");
 const requiredmaxlength = require("./requiredmaxlength.rule");
 const ftextfieldFormatterValidation = require("./ftextfieldFormatterValidation.rule");
 const NoTemplateModal = require("./no-template-modal.rule");
+const FInteractiveTableCheckboxDescription = require("./finteractivetable-checkbox-description.rule");
 const FTableColumnName = require("./ftablecolumn-name.rule");
 
 module.exports = {
@@ -11,6 +12,8 @@ module.exports = {
     "fkui/class-deprecated": classdeprecated,
     "fkui/prefer-ficon": PreferFIcon,
     "fkui/required-max-length": requiredmaxlength,
+    "fkui/finteractivetable-checkbox-description":
+        FInteractiveTableCheckboxDescription,
     "fkui/ftextfield-formatter-validation": ftextfieldFormatterValidation,
     "fkui/no-template-modal": NoTemplateModal,
     "fkui/ftablecolumn-name": FTableColumnName,
