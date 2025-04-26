@@ -124,6 +124,14 @@ const props = defineProps({
         },
     },
     /**
+     * Enable showing the active row.
+     */
+    showActive: {
+        type: Boolean,
+        required: false,
+        default: true,
+    },
+    /**
      * Currently selected rows.
      * Requires `selectable` to be set.
      */
@@ -133,56 +141,72 @@ const props = defineProps({
         default: undefined,
     },
     /**
-     * Enable showing the active row.
-     */
-    showActive: {
-        type: Boolean,
-        required: false,
-        default: true,
-    },
-    /**
-     * V-model will bind to value containing the current active row.
+     * Current active row.
      */
     active: {
         type: Object as PropType<T | undefined>,
         required: false,
-        default: () => undefined,
+        default: undefined,
     },
 });
 
 const emit = defineEmits<{
     /**
      * Emitted when row is activated.
+     *
+     * Note: This event is being emitted even if prop `showActive` is set to `false`!
+     *
+     * @param {T} row - Row being activated.
      */
     change: [row: T];
     /**
      * Emitted when row is clicked.
+     *
+     * @param {T} row - Row being clicked.
      */
     click: [row: T];
     /**
-     * Emitted when row is unselected.
-     */
-    unselect: [row: T];
-    /**
-     * V-model event to update value property.
-     */
-    "update:modelValue": [rows: T[]];
-    /**
-     * V-model active event.
-     */
-    "update:active": [row: T];
-    /**
-     * Emitted when row is selected.
+     * Emitted when row is selected. See also `unselect`.
+     *
+     * This event is only emitted when using prop `selectable`.
+     *
+     * @param {T} row - Row being selected.
      */
     select: [row: T];
     /**
-     * Emitted when row is expanded.
+     * Emitted when row is unselected. See also `select`.
+     *
+     * This event is only emitted when using prop `selectable`.
+     *
+     * @param {T} row - Row being unselected.
+     */
+    unselect: [row: T];
+    /**
+     * Emitted when row is expanded. See also `collapse`.
+     *
+     * This event is only emitted when using expandable rows.
+     *
+     * @param {T} row - The parent row holding rows to be expanded.
      */
     expand: [row: T];
     /**
-     * Emitted when row is collapsed.
+     * Emitted when row is collapsed. See also `expand`.
+     *
+     * @param {T} row - The parent row holding rows to be collapsed.
      */
     collapse: [row: T];
+    /**
+     * V-momdel event for selected rows.
+     *
+     * @param {T[]} rows - Array of all currently selected rows.
+     */
+    "update:modelValue": [rows: T[]];
+    /**
+     * V-model event for active row.
+     *
+     * @param {T} row - Current active row or `undefined` if no row is active.
+     */
+    "update:active": [row: T | undefined];
 }>();
 
 const expandableTable: ExpandableTable<T> = useExpandableTable(
@@ -519,6 +543,7 @@ function setActiveRow(row: T | undefined): void {
 
 <template>
     <div :class="wrapperClasses">
+        <!-- @slot Text to use as `aria-label` on the table row element (`<tr>`). -->
         <!-- technical debt / fulhack: this is to make sure the typing understands there is an undocumented slot  -->
         <slot v-if="false" name="row-description"></slot>
         <table class="table" :role="tableRole" :class="tableClasses" v-bind="$attrs">
@@ -591,16 +616,16 @@ function setActiveRow(row: T | undefined): void {
                                     @click.self="onSelect(row)"
                                 >
                                     <span v-if="hasCheckboxDescription" class="sr-only">
+                                        <!--
+                                             @slot Screenreader label for the checkbox when using `selectable`.
+                                             @binding {T} row Current row being rendered.
+                                        -->
                                         <slot name="checkbox-description" v-bind="{ row }" />
                                     </span>
                                 </f-checkbox-field>
                             </div>
                         </td>
 
-                        <!--
-                            @slot Slot for table row. The row object is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ row }"`.
-                            @binding {ListItem} row The object to be visualized.
-                        -->
                         <slot v-bind="{ row }" />
                     </tr>
 
@@ -628,11 +653,9 @@ function setActiveRow(row: T | undefined): void {
                             </template>
                             <td v-else class="table__column table__column--indented" :colspan="columns.length">
                                 <!--
-                                    @slot Slot for expandable table row.
-                                    The row object is available through `v-slot="{ <propertyName> }"`, e.g.
-                                    `v-slot="{ expandableRow }"`.
-                                    @binding {ListItem} expandableRow The object to be visualized.
-                                    @binding {ListItem} parentRow The parent row of the expandable rows.
+                                     @slot Slot for expandable table row.
+                                     @binding {T} expandableRow Current expandable row being rendered.
+                                     @binding {T} parentRow The parent row of the expandable rows.
                                 -->
                                 <slot name="expandable" v-bind="{ expandableRow, parentRow: row }" />
                             </td>
@@ -656,6 +679,10 @@ function setActiveRow(row: T | undefined): void {
                                 $t("fkui.interactive-table.empty", "Tabellen är tom")
                             }}</slot>
                         </td>
+                        <!--
+                             @slot Slot for table row.
+                             @binding {T} row Current row being rendered.
+                        -->
                         <!-- slot content won't be rendered, since renderColumns is false for empty table -->
                         <slot v-bind="{ row: {} as T }"></slot>
                     </tr>
