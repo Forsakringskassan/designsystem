@@ -173,6 +173,7 @@ function isHeader(): boolean {
         v-bind="$attrs"
     >
         <template v-if="renderColumns">
+            <!-- @slot Content to be rendered in table cell. -->
             <slot></slot>
             <!-- Extra space between columns for screen reader. Otherwise it can sometimes read two numbers as one longer number.
             For example a table with | 2 | 200 | can be read as 2200 in some languages.
