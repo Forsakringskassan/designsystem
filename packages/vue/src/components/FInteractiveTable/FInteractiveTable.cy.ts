@@ -7,55 +7,26 @@ import FInteractiveTable from "./FInteractiveTable.vue";
 const table = new FInteractiveTablePageObject('[data-test="table-example"]');
 
 const rows = [
-    {
-        id: "1",
-        start: "2022-04-10",
-        end: "2022-04-25",
-        level: "Sjukpenning",
-        antal: "15",
-    },
-    {
-        id: "2",
-        start: "2022-05-06",
-        end: "2022-05-10",
-        level: "Lägstanivå",
-        antal: "4",
-    },
-    {
-        id: "3",
-        start: "2022-05-20",
-        end: "2022-05-31",
-        level: "Sjukpenning",
-        antal: "11",
-    },
+    { name: "Foo", amount: "7" },
+    { name: "Bar", amount: "1" },
+    { name: "Baz", amount: "49" },
 ];
 
-const selectedRows = [rows[0], rows[2]];
+const defaultTemplateContent = /* HTML */ `
+    <template #caption> Test caption </template>
+    <template #default="{ row }">
+        <f-table-column title="Name" type="text" expand>
+            {{ row.name }}
+        </f-table-column>
+        <f-table-column title="Amount" type="numeric" shrink>
+            {{ row.amount }}
+        </f-table-column>
+    </template>
+`;
 
 const defaultTemplate = /* HTML */ `
-    <f-interactive-table
-        v-model="selectedRows"
-        :rows
-        selectable
-        v-test="'table-example'"
-        key-attribute="id"
-    >
-        <template #caption> Föräldrapenning </template>
-        <template #default="{ row }">
-            <f-table-column title="Nivå" type="text">
-                {{ row.level }}
-            </f-table-column>
-            <f-table-column title="Från och med" type="text" expand>
-                {{ row.start }}
-            </f-table-column>
-            <f-table-column title="Till och med" type="text">
-                {{ row.end }}
-            </f-table-column>
-            <f-table-column title="Antal dagar" type="numeric">
-                {{ row.antal }}
-            </f-table-column>
-        </template>
-        <template #checkbox-description> Välj denna rad </template>
+    <f-interactive-table :rows v-test="'table-example'">
+        ${defaultTemplateContent}
     </f-interactive-table>
 `;
 
@@ -68,7 +39,6 @@ function createComponent(template: string = defaultTemplate): DefineComponent {
         },
         data() {
             return {
-                selectedRows,
                 rows,
             };
         },
@@ -105,52 +75,294 @@ it("should move focus to previous row (circular) with arrow-up-key", () => {
     table.row(2).should("have.focus");
 });
 
-it("should pre-select checkboxes", () => {
-    cy.mount(createComponent());
-    table.columnItem(1).checkbox().isSelected().should("be.true");
-    table.columnItem(2).checkbox().isSelected().should("be.false");
-    table.columnItem(3).checkbox().isSelected().should("be.true");
+describe("when selectable", () => {
+    const selectableTemplate = /* HTML */ `
+        <f-interactive-table
+            v-model="selectedRows"
+            :rows
+            selectable
+            v-test="'table-example'"
+        >
+            ${defaultTemplateContent}
+            <template #checkbox-description> Välj denna rad </template>
+        </f-interactive-table>
+    `;
+    const selectedRows = [rows[0], rows[2]];
+
+    it("should pre-select checkboxes", () => {
+        const TestComponent = defineComponent({
+            template: selectableTemplate,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+            data() {
+                return {
+                    selectedRows,
+                    rows,
+                };
+            },
+        });
+        cy.mount(TestComponent);
+
+        table.columnItem(1).checkbox().isSelected().should("be.true");
+        table.columnItem(2).checkbox().isSelected().should("be.false");
+        table.columnItem(3).checkbox().isSelected().should("be.true");
+    });
+
+    it("should update checkboxes on `v-model` change", () => {
+        const template = /* HTML */ `
+            <div>
+                <button
+                    type="button"
+                    id="remove-all"
+                    @click="selectedRows = []"
+                >
+                    Remove all
+                </button>
+                <button
+                    type="button"
+                    id="select-all"
+                    @click="selectedRows = rows"
+                >
+                    Select all
+                </button>
+                <button
+                    type="button"
+                    id="add-one"
+                    @click="selectedRows.push(rows[1])"
+                >
+                    Add one
+                </button>
+                ${selectableTemplate}
+            </div>
+        `;
+        const TestComponent = defineComponent({
+            template,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+            data() {
+                return {
+                    selectedRows,
+                    rows,
+                };
+            },
+        });
+        cy.mount(TestComponent);
+
+        table.columnItem(1).checkbox().isSelected().should("be.true");
+        table.columnItem(2).checkbox().isSelected().should("be.false");
+        table.columnItem(3).checkbox().isSelected().should("be.true");
+
+        cy.get("#remove-all").click();
+        table.columnItem(1).checkbox().isSelected().should("be.false");
+        table.columnItem(2).checkbox().isSelected().should("be.false");
+        table.columnItem(3).checkbox().isSelected().should("be.false");
+
+        cy.get("#add-one").click();
+        table.columnItem(1).checkbox().isSelected().should("be.false");
+        table.columnItem(2).checkbox().isSelected().should("be.true");
+        table.columnItem(3).checkbox().isSelected().should("be.false");
+
+        cy.get("#select-all").click();
+        table.columnItem(1).checkbox().isSelected().should("be.true");
+        table.columnItem(2).checkbox().isSelected().should("be.true");
+        table.columnItem(3).checkbox().isSelected().should("be.true");
+    });
 });
 
-it("should update checkboxes on `v-model` change", () => {
-    const selectableTemplate = /* HTML */ `
-        <div>
-            <button type="button" id="remove-all" @click="selectedRows = []">
-                Remove all
-            </button>
-            <button type="button" id="select-all" @click="selectedRows = rows">
-                Select all
-            </button>
-            <button
-                type="button"
-                id="add-one"
-                @click="selectedRows.push(rows[1])"
+describe("when `rows` is empty", () => {
+    it("should have an empty row", () => {
+        const template = /* HTML */ `
+            <f-interactive-table :rows="[]" v-test="'table-example'">
+                ${defaultTemplateContent}
+            </f-interactive-table>
+        `;
+        const TestComponent = defineComponent({
+            template,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+        });
+        cy.mount(TestComponent);
+
+        // Should only have one `<tr>` with one `<td>` spanning all columns when empty.
+        table.row(0).should("contain.text", "Tabellen är tom");
+        table.row(1).should("not.exist");
+        table.cell({ row: 1, col: 1 }).should("exist");
+        table.cell({ row: 1, col: 2 }).should("not.exist");
+    });
+
+    it("cell of empty row should span all columns when default", () => {
+        const template = /* HTML */ `
+            <f-interactive-table :rows="[]" v-test="'table-example'">
+                ${defaultTemplateContent}
+            </f-interactive-table>
+        `;
+        const TestComponent = defineComponent({
+            template,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+        });
+        cy.mount(TestComponent);
+
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "2");
+    });
+
+    it("cell of empty row should span all columns when selectable", () => {
+        const template = /* HTML */ `
+            <f-interactive-table :rows="[]" selectable v-test="'table-example'">
+                ${defaultTemplateContent}
+            </f-interactive-table>
+        `;
+        const TestComponent = defineComponent({
+            template,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+        });
+        cy.mount(TestComponent);
+
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "3");
+    });
+
+    it("cell of empty row should span all columns when expandable", () => {
+        const template = /* HTML */ `
+            <f-interactive-table
+                :rows="[]"
+                expandable-attribute="expandable"
+                v-test="'table-example'"
             >
-                Add one
-            </button>
-            ${defaultTemplate}
-        </div>
-    `;
-    cy.mount(createComponent(selectableTemplate));
+                ${defaultTemplateContent}
+            </f-interactive-table>
+        `;
+        const TestComponent = defineComponent({
+            template,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+        });
+        cy.mount(TestComponent);
 
-    table.columnItem(1).checkbox().isSelected().should("be.true");
-    table.columnItem(2).checkbox().isSelected().should("be.false");
-    table.columnItem(3).checkbox().isSelected().should("be.true");
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "3");
+    });
 
-    cy.get("#remove-all").click();
-    table.columnItem(1).checkbox().isSelected().should("be.false");
-    table.columnItem(2).checkbox().isSelected().should("be.false");
-    table.columnItem(3).checkbox().isSelected().should("be.false");
+    it("cell of empty row should span all columns when selectable and expandable", () => {
+        const template = /* HTML */ `
+            <f-interactive-table
+                :rows="[]"
+                selectable
+                expandable-attribute="expandable"
+                v-test="'table-example'"
+            >
+                ${defaultTemplateContent}
+            </f-interactive-table>
+        `;
+        const TestComponent = defineComponent({
+            template,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+        });
+        cy.mount(TestComponent);
 
-    cy.get("#add-one").click();
-    table.columnItem(1).checkbox().isSelected().should("be.false");
-    table.columnItem(2).checkbox().isSelected().should("be.true");
-    table.columnItem(3).checkbox().isSelected().should("be.false");
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "4");
+    });
 
-    cy.get("#select-all").click();
-    table.columnItem(1).checkbox().isSelected().should("be.true");
-    table.columnItem(2).checkbox().isSelected().should("be.true");
-    table.columnItem(3).checkbox().isSelected().should("be.true");
+    it("should be able to show custom text for empty row", () => {
+        const template = /* HTML */ `
+            <f-interactive-table
+                :rows="[]"
+                selectable
+                expandable-attribute="expandable"
+                v-test="'table-example'"
+            >
+                ${defaultTemplateContent}
+                <template #empty> Custom empty </template>
+            </f-interactive-table>
+        `;
+        const TestComponent = defineComponent({
+            template,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+        });
+        cy.mount(TestComponent);
+
+        table.row(0).should("contain.text", "Custom empty");
+    });
+
+    it("should be able to toggle column visibility", () => {
+        const template = /* HTML */ `
+            <div>
+                <button
+                    type="button"
+                    id="toggle-btn"
+                    @click="visible = !visible"
+                >
+                    Toggle
+                </button>
+
+                <f-interactive-table :rows="[]" v-test="'table-example'">
+                    <template #caption> Test caption </template>
+                    <template #default="{ row }">
+                        <f-table-column title="Name" type="text" expand>
+                            {{ row.name }}
+                        </f-table-column>
+                        <f-table-column
+                            title="Amount"
+                            type="numeric"
+                            :visible="visible"
+                        >
+                            {{ row.amount }}
+                        </f-table-column>
+                    </template>
+                    <template #empty> Custom empty </template>
+                </f-interactive-table>
+            </div>
+        `;
+        const TestComponent = defineComponent({
+            template,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+            data() {
+                return {
+                    visible: true,
+                };
+            },
+        });
+        cy.mount(TestComponent);
+
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "2");
+        table
+            .headerRowItem()
+            .tableRowHeaderContent()
+            .eq(1)
+            .should("contain.text", "Amount");
+
+        cy.get("#toggle-btn").click();
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "1");
+        table.columnItem(2).el().should("not.exist");
+
+        cy.get("#toggle-btn").click();
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "2");
+        table
+            .headerRowItem()
+            .tableRowHeaderContent()
+            .eq(1)
+            .should("contain.text", "Amount");
+    });
 });
 
 describe("FInteractiveTable pageobject", () => {
@@ -159,39 +371,29 @@ describe("FInteractiveTable pageobject", () => {
     });
 
     it("should contain caption", () => {
-        table.caption().should("contain", "Föräldrapenning");
+        table.caption().should("contain", "Test caption");
     });
 
     it("should provide a page object that can access any necessary elements in table headers", () => {
-        table.headersRow().should("have.length", 5);
+        table.headersRow().should("have.length", 2);
+
+        table
+            .headerRowItem()
+            .tableRowHeaderContent()
+            .eq(0)
+            .should("have.trimmedText", "Name");
 
         table
             .headerRowItem()
             .tableRowHeaderContent()
             .eq(1)
-            .should("have.trimmedText", "Nivå");
-
-        table
-            .headerRowItem()
-            .tableRowHeaderContent()
-            .eq(2)
-            .should("have.trimmedText", "Från och med");
+            .should("have.trimmedText", "Amount");
     });
 
     it("should provide a page object that can access any necessary elements in a table body", () => {
         table.bodyRow().should("have.length", 3);
 
-        table
-            .columnItem(1)
-            .tableRowBodyContent(1)
-            .should("contain", "Sjukpenning");
-        table
-            .columnItem(1)
-            .tableRowBodyContent(2)
-            .should("contain", "2022-04-10");
-        table
-            .columnItem(1)
-            .tableRowBodyContent(3)
-            .should("contain", "2022-04-25");
+        table.cell({ row: 1, col: 1 }).should("contain.text", "Foo");
+        table.cell({ row: 1, col: 2 }).should("contain.text", "7");
     });
 });

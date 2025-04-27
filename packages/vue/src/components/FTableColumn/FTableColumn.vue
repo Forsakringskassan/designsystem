@@ -6,9 +6,8 @@ import { FTableColumnType, FTableColumnSize, FTableColumnSort, isTableColumnType
 
 const { renderColumns, setVisibilityColumn, addColumn } = FTableInjected();
 
-// Always render/visible element until `onMounted` finished to determine if it's a header.
-const internalVisible = ref(true);
-const renderElement = ref(true);
+const hasMounted = ref(false);
+const isHeader = ref(false);
 
 const id = ElementIdService.generateElementId("column");
 const el = useTemplateRef("element");
@@ -122,10 +121,17 @@ const tagName = computed(() => {
     }
 });
 
+/**
+ * Always render element until `onMounted` finished to determine if it's a header.
+ */
+const renderElement = computed(() => {
+    const shouldRender = !isHeader.value && renderColumns.value && props.visible;
+    return !hasMounted.value || shouldRender;
+});
+
 watch(
     () => props.visible,
     () => {
-        internalVisible.value = props.visible;
         setVisibilityColumn(id, props.visible);
     },
 );
@@ -137,8 +143,8 @@ onMounted(() => {
 
     const size = props.shrink ? FTableColumnSize.SHRINK : FTableColumnSize.EXPAND;
 
-    const header = isHeader();
-    if (header) {
+    isHeader.value = isTableHeader();
+    if (isHeader.value) {
         addColumn({
             name: props.name,
             title: props.title,
@@ -152,11 +158,10 @@ onMounted(() => {
         });
     }
 
-    renderElement.value = renderColumns && !header;
-    internalVisible.value = props.visible;
+    hasMounted.value = true;
 });
 
-function isHeader(): boolean {
+function isTableHeader(): boolean {
     if (!el.value || !(el.value instanceof HTMLElement)) {
         return false;
     }
@@ -166,14 +171,7 @@ function isHeader(): boolean {
 </script>
 
 <template>
-    <component
-        :is="tagName"
-        v-if="renderElement && internalVisible"
-        ref="element"
-        :class="classes"
-        :scope="scope"
-        v-bind="$attrs"
-    >
+    <component :is="tagName" v-if="renderElement" ref="element" :class="classes" :scope="scope" v-bind="$attrs">
         <template v-if="renderColumns">
             <!-- @slot Content to be rendered in table cell. -->
             <slot></slot>

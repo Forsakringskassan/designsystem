@@ -12779,7 +12779,7 @@ export enum FTableColumnType {
 // @public
 export interface FTableInterface {
     addColumn(column: FTableColumnData): void;
-    readonly renderColumns: boolean;
+    readonly renderColumns: Ref<boolean>;
     setVisibilityColumn(id: string, visible: boolean): void;
     textFieldTableMode: boolean;
 }
