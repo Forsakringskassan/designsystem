@@ -4,6 +4,7 @@ import rows from "./expandable-rows-data";
 </script>
 
 <template>
+    <!-- cut above -->
     <f-interactive-table :rows key-attribute="id">
         <template #caption> Expanderbara rader </template>
         <template #default="{ row }">
@@ -17,4 +18,5 @@ import rows from "./expandable-rows-data";
             </f-table-column>
         </template>
     </f-interactive-table>
+    <!-- cut below -->
 </template>

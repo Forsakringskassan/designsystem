@@ -152,21 +152,32 @@ const rows = [
 const selectedRows = rows.filter((row) => row.type === "Frukt");
 ```
 
-### Expanderbara rader
+## Expanderbara rader
 
 Med expanderbara rader går det att skapa ytterligare tabellrader som visas när man trycker på en expanderbar rad.
 
-För att skapa expanderbart innehåll som följer existerande kolumner så krävs det att `expandable-attribute` är satt och `expandable` slot inte används.
-Innehållet måste då följa samma datastruktur som ordinarie rader.
+Expanderbara rader kan presenteras på två sätt:
 
-Se nedan exempel av data som kan användas för att generera en expanderbar rad som innehåller två tabellrader.
+- Rader som följer existerande kolumner
+- Rader med Valfritt innehåll
+
+För båda varianterna gäller att du sätter propen `expandable-attribute` till den egenskap i objektet som innehåller rader med expanderat innehåll.
+
+Givet följande struktur sätter man `expandable-attribute` till `myExpandableRow`:
 
 ```import static
 expandable-rows-data.ts
 ```
 
+### Följa existerande kolumner
+
+För att skapa expanderbart innehåll som följer existerande kolumner så krävs det att `expandable-attribute` är satt och att `expandable` slot inte används.
+Innehållet måste då följa samma datastruktur som ordinarie rader.
+
+Se nedan exempel av data som kan användas för att generera en expanderbar rad som innehåller två tabellrader.
+
 ```import name=expandable-base hidden
-FInteractiveTableExpandableExample.vue
+FInteractiveTableExpandableBase.vue
 ```
 
 ```import compare=expandable-base
@@ -177,7 +188,16 @@ FInteractiveTableExpandableExample.vue
 FInteractiveTableExpandableExample.vue
 ```
 
-För att istället skapa expanderbara rader med valfritt innehåll används `expandable` slot.
+### Valfritt innehåll
+
+För att själv ta kontroll över hur raden presenteras kan du använda slotten `expandable`.
+Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.
+
+::: info Observera
+
+Det är inte rekommenderat att skapa för komplext expanderat innehåll, så som att placera ytterligare expanderbara tabeller inuti.
+
+:::
 
 ```import compare=expandable-default
 FInteractiveTableExpandableRows.vue
@@ -186,8 +206,6 @@ FInteractiveTableExpandableRows.vue
 ```import nomarkup
 FInteractiveTableExpandableRows.vue
 ```
-
-Observera att det inte är rekommenderat att skapa för komplext expanderat innehåll, så som att placera ytterligare expanderbara tabeller inuti.
 
 ## Ange nyckel (`keyAttribute`)
 
