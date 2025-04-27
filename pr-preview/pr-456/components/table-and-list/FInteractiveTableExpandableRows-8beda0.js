@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableExpandableRows.vue:FInteractiveTableExpandableRows-cdf604.js
+// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableExpandableRows.vue:FInteractiveTableExpandableRows-8beda0.js
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 
 // packages/vue/src/components/FInteractiveTable/examples/expandable-rows-data.ts
@@ -70,7 +70,7 @@ var rows = [
 ];
 var expandable_rows_data_default = rows;
 
-// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableExpandableRows.vue:FInteractiveTableExpandableRows-cdf604.js
+// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableExpandableRows.vue:FInteractiveTableExpandableRows-8beda0.js
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, createElementVNode as _createElementVNode, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = {
   __name: "FInteractiveTableExpandableRows",
@@ -91,8 +91,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_format = _resolveDirective("format");
   return _openBlock(), _createBlock($setup["FInteractiveTable"], {
     rows: $setup.rows,
-    "expandable-attribute": "myExpandableRow",
-    "key-attribute": "id"
+    "key-attribute": "id",
+    "expandable-attribute": "myExpandableRow"
   }, {
     caption: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Expanderbara rader ")
@@ -199,7 +199,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-cdf604"
+  selector: "#example-8beda0"
 });
 export {
   render

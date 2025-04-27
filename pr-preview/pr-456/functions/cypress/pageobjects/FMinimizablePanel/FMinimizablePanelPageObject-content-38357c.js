@@ -28,37 +28,46 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject.vue:FLabelPageObject-a74d54.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-content.vue:FMinimizablePanelPageObject-content-38357c.js
 import { defineComponent as _defineComponent } from "vue";
-import { FLabel } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
+import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FLabelPageObject",
+  __name: "FMinimizablePanelPageObject-content",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FLabel() {
-      return FLabel;
+    const __returned__ = { get FPageLayout() {
+      return FPageLayout;
+    }, get FMinimizablePanel() {
+      return FMinimizablePanel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
+var _hoisted_1 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Etikett ")
+  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
+    left: _withCtx(() => [
+      _createVNode($setup["FMinimizablePanel"], null, {
+        default: _withCtx(({ content }) => [
+          _createElementVNode("div", { slot: content }, "Lorem ipsum", 8, _hoisted_1)
+        ]),
+        _: 1
+        /* STABLE */
+      })
+    ]),
+    content: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" Inneh\xE5ll ")
     ])),
     _: 1
     /* STABLE */
-  })), [
-    [_directive_test, "awesome-label"]
-  ]);
+  });
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a74d54"
+  selector: "#example-38357c"
 });
 export {
   render

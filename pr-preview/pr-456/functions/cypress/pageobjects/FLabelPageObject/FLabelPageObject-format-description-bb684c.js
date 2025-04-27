@@ -28,39 +28,48 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject.vue:FMinimizablePanelPageObject-adb54f.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-format-description.vue:FLabelPageObject-format-description-bb684c.js
 import { defineComponent as _defineComponent } from "vue";
-import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
-import { createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FLabel } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject",
+  __name: "FLabelPageObject-format-description",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FPageLayout() {
-      return FPageLayout;
-    }, get FMinimizablePanel() {
-      return FMinimizablePanel;
+    const __returned__ = { get FLabel() {
+      return FLabel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
-    left: _withCtx(() => [
-      _createVNode($setup["FMinimizablePanel"])
-    ]),
-    content: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Inneh\xE5ll ")
+  const _directive_test = _resolveDirective("test");
+  return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" Etikett ")
     ])),
+    description: _withCtx(({ formatDescriptionClass }) => [
+      _createElementVNode(
+        "span",
+        {
+          class: _normalizeClass(formatDescriptionClass)
+        },
+        " Formatbeskrivning ",
+        2
+        /* CLASS */
+      )
+    ]),
     _: 1
     /* STABLE */
-  });
+  })), [
+    [_directive_test, "awesome-label"]
+  ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-adb54f"
+  selector: "#example-bb684c"
 });
 export {
   render

@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-footer.vue:FMinimizablePanelPageObject-footer-ae9a6d.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-footer.vue:FMinimizablePanelPageObject-footer-3f3547.js
 import { defineComponent as _defineComponent } from "vue";
 import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -67,7 +67,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ae9a6d"
+  selector: "#example-3f3547"
 });
 export {
   render
