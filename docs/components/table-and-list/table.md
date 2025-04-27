@@ -114,16 +114,19 @@ Med Datamängsredigeraren kan du lägga till funktionalitet för att skapa, änd
 ### Inmatning i tabell
 
 Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen.
-Fältens standardetikett är visuellt dolda och ersätts av tabellrubrik för en seende användare, men de läsas fortfarande upp av skärmläsare.
+Fältens standardetikett är visuellt dolda och ersätts av tabellrubrik för en seende användare, men inmatningfältets etikett läsas fortfarande upp av skärmläsare.
 Fel vid fältvalidering i en tabell indikeras med varningstriangel och röd ram på samma sätt som fält i ett vanligt formulär men felmeddelandet visas i en popup.
 Felmeddelandet visas när det felmarkerade fältet har fokus.
-Datumväljaren och alla inmatningfält (förutom sökfält) har stöd för att placeras i tabell.
+
+Följande inmatningfält kan användas:
+
+- Textbaserade inmatningsfält (FTextField) förutom sökfält
+- Datumväljaren (FDatepickerField)
+- Dropplista (FSelectField)
 
 ```import
 FInteractiveTableInputExample.vue
 ```
-
-Även dropplista har stöd för att användas i tabellcell. I de fall en obligatorisk dropplista lämnas tom visas samma text som platshållartexten tillsammas med ikon och röd ram.
 
 ### Välja rader
 
