@@ -353,6 +353,22 @@ Det är ett fel att sätta både `expand` och `shrink` samtidigt.
 ExpandShrinkExample.vue
 ```
 
+## Kolumntyper
+
+Kolumner har fyra olika typer som påverkar hur cellen presenteras:
+
+- `text` (default) - standardformatering
+- `date` - font med tabulär bredd på tecken.
+- `numeric` - högerställt och font med tabular bredd på tecken.
+- `action` - för kolumner som innehåller åtgärdsknappar.
+
+Typen anges genom att sätta propen `type`:
+
+```diff
+-<f-table-column title="Kolumnrubrik">
++<f-table-column title="Kolumnrubrik" type="numeric">
+```
+
 ## Textnycklar
 
 Läs mer om att {@link translate-text anpassa och översätta text}.
