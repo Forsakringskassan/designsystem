@@ -1,4 +1,4 @@
-import { inject } from "vue";
+import { type Ref, inject, ref } from "vue";
 import { FTableColumnData } from "./FTableColumnData";
 
 /**
@@ -31,7 +31,7 @@ export interface FTableInterface {
      * - When disabled the column will be registered in the table component but
      *   no actual content will be rendered.
      */
-    readonly renderColumns: boolean;
+    readonly renderColumns: Ref<boolean>;
 }
 
 export function FTableInjected(): FTableInterface {
@@ -42,6 +42,6 @@ export function FTableInjected(): FTableInterface {
             visible: boolean,
         ) => void,
         textFieldTableMode: true,
-        renderColumns: inject("renderColumns", false),
+        renderColumns: inject("renderColumns", ref(false)),
     };
 }

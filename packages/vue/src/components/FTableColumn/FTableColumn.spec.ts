@@ -1,4 +1,4 @@
-import { provide } from "vue";
+import { provide, ref } from "vue";
 import { mount, VueWrapper } from "@vue/test-utils";
 import FTableColumn from "./FTableColumn.vue";
 import "html-validate/jest";
@@ -23,7 +23,7 @@ function createWrapper({
             provide: {
                 addColumn: jest.fn(),
                 setVisibilityColumn: jest.fn(),
-                renderColumns: true,
+                renderColumns: ref(true),
                 ...provide,
             },
         },
