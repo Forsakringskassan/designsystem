@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datamängdsorterare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fadc45cb72e2fd8786c32666bc124767f8bfc8cc/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b1c79f8239c1eb57ba125747b250e0df92fd0d27/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">
                 FSortFilterDataset
             </a>
             
@@ -1101,7 +1101,9 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Datamängdsorterare används vid sortering av datamängd och/eller för sökning i en datamängd i komponenterna lista eller tabell.</p><h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Sätt <code>data</code> till lista som ska sorteras och filtreras samt <code>sortableAttributes</code> till en beskrivning av de fält som är sorterbara.</p>
+                    <div id="content"><p class="docs-paragraph">Datamängdsorterare används vid sortering av datamängd och/eller för sökning i en datamängd i komponenterna lista eller tabell.</p>
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Sätt <code>data</code> till lista som ska sorteras och filtreras samt <code>sortableAttributes</code> till en beskrivning av de fält som är sorterbara.</p>
+
                 <div
                     id="example-b73b01"
                     class="code-preview code-preview--default"
@@ -1124,6 +1126,7 @@
 </code></pre>
                 </div>
             <h3 id="forvald_sortering"><a class="header-anchor" href="#forvald_sortering">Förvald sortering</a></h3><p class="docs-paragraph">Sätt <code>defaultSortAttribute</code> till namnet på fältet som ska sorteras samt <code>defaultSortAscending</code> till <code>true</code> (default) eller <code>false</code> för att välja om sorteringen ska ske i stigande (<code>true</code>) eller fallande (<code>false</code>) ordning.</p>
+
                 <div
                     id="example-958406"
                     class="code-preview code-preview--default"
@@ -1148,6 +1151,7 @@
 </code></pre>
                 </div>
             <h2 id="lista_med_datamangdsorterare"><a class="header-anchor" href="#lista_med_datamangdsorterare">Lista med datamängdsorterare</a></h2><p class="docs-paragraph">Visar hur <code>FSortFilterDataset</code> kan användas med <a href="./flist.html"><code>FList</code></a>.</p>
+
             <div
                 id="example-afa556"
                 class="code-preview code-preview--default"
@@ -1229,6 +1233,7 @@
             </div>
         <h2 id="tabell_med_datamangdsorterare"><a class="header-anchor" href="#tabell_med_datamangdsorterare">Tabell med datamängdsorterare</a></h2><p class="docs-paragraph">När tabell (<a href="./table.html#interaktiv_tabell"><code>FInteractiveTable</code></a> eller <a href="./table.html#datatabell"><code>FDataTable</code></a>) används med datamängdsorterare måste varje tabellkolumn använda <code>name</code> prop med ett unikt värde.
 För objektet som du skickar till datamängdsorterarens <code>sortableAttributes</code> behöver egenskapernas namn även matcha kolumnernas namn för att kunna sortera dem.</p>
+
                 <div
                     id="example-47ddac"
                     class="code-preview code-preview--default"
@@ -1257,6 +1262,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
 </code></pre>
                 </div>
             <h3 id="tabell_med_forvald_sortering"><a class="header-anchor" href="#tabell_med_forvald_sortering">Tabell med förvald sortering</a></h3><p class="docs-paragraph">Visar hur <code>FSortFilterDataset</code> kan användas med <a href="./table.html#interaktiv_tabell"><code>FInteractiveTable</code></a>.</p>
+
             <div
                 id="example-34ef21"
                 class="code-preview code-preview--default"
@@ -1343,6 +1349,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
                 </div>
             </div>
         <h3 id="tabell_med_atgarder"><a class="header-anchor" href="#tabell_med_atgarder">Tabell med åtgärder</a></h3><p class="docs-paragraph">Åtgärder som till exempel batch-funktioner som rör hela datamängden kan placeras i sloten Header för att gruppera med sortering och filtering.</p>
+
             <div
                 id="example-d8828a"
                 class="code-preview code-preview--default"
@@ -1529,6 +1536,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
                 </div>
             </div>
         <h2 id="andra_rubrikniva"><a class="header-anchor" href="#andra_rubrikniva">Ändra rubriknivå</a></h2><p class="docs-paragraph">Du kan variera storleken genom att inte använda den tillgängliga <code>slotClass</code> (som sätter den standardiserade storleken för rubriken).</p>
+
                 <div
                     id="example-7fbdb0"
                     class="code-preview code-preview--default"
@@ -1609,13 +1617,15 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
 </code></pre>
                 </div>
             </div>
-        <h2 id="visa_antalet_rader"><a class="header-anchor" href="#visa_antalet_rader">Visa antalet rader</a></h2><p class="docs-paragraph">För att visa antalet rader som presenteras använder man sig av de två listornas längd.</p><ul>
-<li><p class="docs-paragraph">Om längden av de ursprungliga raderna är <code>0</code> finns inga rader att visa oavsett filtrering.</p></li>
-<li><p class="docs-paragraph">Om längden av de filtrerade raderna är <code>0</code> (men ursprungliga är större än <code>0</code>) visas inga rader på grund av filter.</p></li>
-<li><p class="docs-paragraph">Om längden mellan de två skiljer sig åt har sökningen gett ett resultat.</p></li>
+        <h2 id="visa_antalet_rader"><a class="header-anchor" href="#visa_antalet_rader">Visa antalet rader</a></h2><p class="docs-paragraph">För att visa antalet rader som presenteras använder man sig av de två listornas längd.</p>
+<ul>
+<li>Om längden av de ursprungliga raderna är <code>0</code> finns inga rader att visa oavsett filtrering.</li>
+<li>Om längden av de filtrerade raderna är <code>0</code> (men ursprungliga är större än <code>0</code>) visas inga rader på grund av filter.</li>
+<li>Om längden mellan de två skiljer sig åt har sökningen gett ett resultat.</li>
 </ul>
 <p class="docs-paragraph">Vi använder begreppet &quot;träffar&quot; för att presentera resultat.
 Om det går att specificera träffar så är det bättre att göra det, till exempel &quot;Det finns inga frukter att visa&quot; istället för &quot;Det finns inga träffar att visa&quot;.</p>
+
                 <div
                     id="example-ca78a2"
                     class="code-preview code-preview--default"
@@ -1635,6 +1645,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
 </code></pre>
                 </div>
             <p class="docs-paragraph">Detta går också utnyttja i tabell för att presentera om tabellen är tom pga filtrering eller att inga rader fanns från första början:</p>
+
                 <div
                     id="example-75a7da"
                     class="code-preview code-preview--default"
@@ -1919,9 +1930,9 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2034,16 +2045,16 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

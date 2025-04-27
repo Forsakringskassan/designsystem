@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Anpassa och översätt text - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -547,10 +547,15 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Alla komponenter från designsystemet har stöd för att anpassa och översätta texter.
-Designsystemet levererar text på svenska.</p><p class="docs-paragraph">I huvudsak används <a href="../../logic/variables/TranslationService.html">TranslationService</a> för att översätta text med hjälp av textnycklar.
+Designsystemet levererar text på svenska.</p>
+<p class="docs-paragraph">I huvudsak används <a href="../../logic/variables/TranslationService.html">TranslationService</a> för att översätta text med hjälp av textnycklar.
 Designsystemet levererar <a href="../../functions/i18next-translate/i18next.html">stöd för i18next</a> men man kan själv implementera <a href="../../logic/interfaces/TranslationProviderInterface.html">TranslationProvider</a>.
-Den här guiden förutsätter att i18next används.</p><p class="docs-paragraph">Vissa komponenter använder också slots eller props när formaterat eller komplext innehåll ska visas.
-Läs mer under respektive komponent om hur man anpassar och översätter texter.</p><h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att kunna översätta text måste din applikation måste sätta upp en TranslationProvider som tillhandhåller texter.</p><p class="docs-paragraph">Texterna kan hämtas med REST-anrop, importeras statiskt och bundlas med i javascript eller hårdkodas direkt in i filen:</p>
+Den här guiden förutsätter att i18next används.</p>
+<p class="docs-paragraph">Vissa komponenter använder också slots eller props när formaterat eller komplext innehåll ska visas.
+Läs mer under respektive komponent om hur man anpassar och översätter texter.</p>
+<h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att kunna översätta text måste din applikation måste sätta upp en TranslationProvider som tillhandhåller texter.</p>
+<p class="docs-paragraph">Texterna kan hämtas med REST-anrop, importeras statiskt och bundlas med i javascript eller hårdkodas direkt in i filen:</p>
+
                 <div
                     id="example-b79896"
                     class="code-preview code-preview--default"
@@ -576,7 +581,9 @@ Läs mer under respektive komponent om hur man anpassar och översätter texter.
 <span class="hljs-title class_">TranslationService</span>.<span class="hljs-title function_">changeProvider</span>(provider);
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Läs mer om <a href="../../functions/i18next-translate/i18next.html">hur man använder i18nextProvider</a>.</p><p class="docs-paragraph">Om du använder Vue för att skriva din applikation måste du också aktivera <a href="../../functions/plugins/translationplugin.html">Translation Plugin</a>:</p>
+            <p class="docs-paragraph">Läs mer om <a href="../../functions/i18next-translate/i18next.html">hur man använder i18nextProvider</a>.</p>
+<p class="docs-paragraph">Om du använder Vue för att skriva din applikation måste du också aktivera <a href="../../functions/plugins/translationplugin.html">Translation Plugin</a>:</p>
+
                 <div
                     id="example-083fa5"
                     class="code-preview code-preview--default"
@@ -592,6 +599,7 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 </code></pre>
                 </div>
             <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Översättningar kan antingen ligga som ett platt eller nästlat objekt:</p>
+
                 <div
                     id="example-c82f66"
                     class="code-preview code-preview--default"
@@ -623,7 +631,9 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 <span class="hljs-punctuation">}</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Båda är ekvivalenta och motsvarar textnyckel <code>fkui.foo.bar</code>.</p><p class="docs-paragraph">Översättningar kan innehålla interpolering med parametrar:</p>
+            <p class="docs-paragraph">Båda är ekvivalenta och motsvarar textnyckel <code>fkui.foo.bar</code>.</p>
+<p class="docs-paragraph">Översättningar kan innehålla interpolering med parametrar:</p>
+
                 <div
                     id="example-b9261a"
                     class="code-preview code-preview--default"
@@ -638,12 +648,16 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 </code></pre>
                 </div>
             <p class="docs-paragraph">Vilka textnycklar och parametrar som finns tillgängliga visas i dokumentationen för respektive komponent.</p>
+
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph">i18next har många funktioner som designsystemet inte stödjer så som pluralisering eller context.
 Vi använder endast interpolering med parametrar.</p>
+
             </div>
-        <p class="docs-paragraph">Textnycklar som saknas kommer visa standardtexter från designsystemet, dvs du behöver inte översätta alla texter utan räcker med de du vill anpassa.</p><h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Standard feltexter som visas vid validering hämtas från <a href="../../logic/variables/ValidationService.html">ValidationService</a> och mappas med namnet på validatorn som ger felet:</p>
+        <p class="docs-paragraph">Textnycklar som saknas kommer visa standardtexter från designsystemet, dvs du behöver inte översätta alla texter utan räcker med de du vill anpassa.</p>
+<h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Standard feltexter som visas vid validering hämtas från <a href="../../logic/variables/ValidationService.html">ValidationService</a> och mappas med namnet på validatorn som ger felet:</p>
+
                 <div
                     id="example-28bffb"
                     class="code-preview code-preview--default"
@@ -664,12 +678,16 @@ Vi använder endast interpolering med parametrar.</p>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Läs mer om <a href="../../functions/functions/ValidationErrorMessageBuilder/create.html"><code>ValidationErrorMessageBuilder</code></a>.</p>
+
             <div class="docs-messagebox docs-messagebox--danger">
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph"><code>addValidationErrorMessages()</code> mergar med föregende mappningar inkl de standardtexter som designsystemet levererar.
-Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och ha stenkoll på nya mappningar vid uppdatering av version då minsta förändring kräver att du matchar exakt hur designsystemets mappning ser ut.</p><p class="docs-paragraph">Ett tips är att skapa ett snapshot test i eran kodbas som hämtar ut standardtexterna med <a href="../../logic/functions/getErrorMessages.html"><code>getErrorMessages</code></a> och vid uppdatering verifierar om snapshot ändrats.</p>
+Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och ha stenkoll på nya mappningar vid uppdatering av version då minsta förändring kräver att du matchar exakt hur designsystemets mappning ser ut.</p>
+<p class="docs-paragraph">Ett tips är att skapa ett snapshot test i eran kodbas som hämtar ut standardtexterna med <a href="../../logic/functions/getErrorMessages.html"><code>getErrorMessages</code></a> och vid uppdatering verifierar om snapshot ändrats.</p>
+
             </div>
         <p class="docs-paragraph">Du kan använda textnycklar för översättning genom att kombinera <code>TranslationService</code> och <code>ValidationErrorMessageBuilder</code>:</p>
+
                 <div
                     id="example-733b94"
                     class="code-preview code-preview--default"
@@ -699,6 +717,7 @@ Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och h
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph">Om du använder textnycklar måste texterna ha hämtats ner innan valideringsfelen skapas så de slås upp direkt.</p>
+
             </div>
         
 
@@ -716,9 +735,9 @@ Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och h
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -831,16 +850,16 @@ Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och h
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

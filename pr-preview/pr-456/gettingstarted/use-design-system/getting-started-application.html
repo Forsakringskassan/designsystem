@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Ta fram applikation - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -546,13 +546,20 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">För att sätta det visuella utseendet på din applikation behöver du</p><ul>
-<li><p class="docs-paragraph">välja ett tema</p></li>
-<li><p class="docs-paragraph">sätta temat för din applikation</p></li>
-<li><p class="docs-paragraph">importera ett ikonbibliotek till din applikation.</p></li>
+                    <div id="content"><p class="docs-paragraph">För att sätta det visuella utseendet på din applikation behöver du</p>
+<ul>
+<li>välja ett tema</li>
+<li>sätta temat för din applikation</li>
+<li>importera ett ikonbibliotek till din applikation.</li>
 </ul>
-<h2 id="valj_tema"><a class="header-anchor" href="#valj_tema">Välj tema</a></h2><p class="docs-paragraph">Välj ett av de fördefinierade temana som finns i FKUI eller ta fram ett eget tema.</p><p class="docs-paragraph"><a href="../../styles/theme.html">Läs mer om visuellt utseende och de fördefinierade teman som finns i FKUI</a></p><h2 id="satt_valt_tema_for_applikation"><a class="header-anchor" href="#satt_valt_tema_for_applikation">Sätt valt tema för applikation</a></h2><p class="docs-paragraph">Du kan applicera valt tema på två sätt.</p><p class="docs-paragraph">Om din applikation använder Sass rekommenderar vi att du också använder Sass för att applicera temat.
-På så sätt får du tillgång till de mixins och Sass-funktioner som finns i FKUI.</p><p class="docs-paragraph">Det andra sättet är att använda en förkompilerad CSS-fil.</p><h3 id="sass"><a class="header-anchor" href="#sass">Sass</a></h3><p class="docs-paragraph">Gå in i din main.scss-fil eller motsvarande och lägg in följande rader:</p>
+<h2 id="valj_tema"><a class="header-anchor" href="#valj_tema">Välj tema</a></h2><p class="docs-paragraph">Välj ett av de fördefinierade temana som finns i FKUI eller ta fram ett eget tema.</p>
+<p class="docs-paragraph"><a href="../../styles/theme.html">Läs mer om visuellt utseende och de fördefinierade teman som finns i FKUI</a></p>
+<h2 id="satt_valt_tema_for_applikation"><a class="header-anchor" href="#satt_valt_tema_for_applikation">Sätt valt tema för applikation</a></h2><p class="docs-paragraph">Du kan applicera valt tema på två sätt.</p>
+<p class="docs-paragraph">Om din applikation använder Sass rekommenderar vi att du också använder Sass för att applicera temat.
+På så sätt får du tillgång till de mixins och Sass-funktioner som finns i FKUI.</p>
+<p class="docs-paragraph">Det andra sättet är att använda en förkompilerad CSS-fil.</p>
+<h3 id="sass"><a class="header-anchor" href="#sass">Sass</a></h3><p class="docs-paragraph">Gå in i din main.scss-fil eller motsvarande och lägg in följande rader:</p>
+
                 <div
                     id="example-7ad41e"
                     class="code-preview code-preview--default"
@@ -565,8 +572,10 @@ På så sätt får du tillgång till de mixins och Sass-funktioner som finns i F
 <span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Uppdatera exemplet ovan med de filer som din applikation ska använda.</p><p class="docs-paragraph">Om du inte vill använda styling på alla komponenter utan bara specifika, skriv in nedan i din SCSS-fil.
+            <p class="docs-paragraph">Uppdatera exemplet ovan med de filer som din applikation ska använda.</p>
+<p class="docs-paragraph">Om du inte vill använda styling på alla komponenter utan bara specifika, skriv in nedan i din SCSS-fil.
 I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt inmatningsfält.</p>
+
                 <div
                     id="example-1150f5"
                     class="code-preview code-preview--default"
@@ -581,7 +590,9 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
 <span class="hljs-addition">+@use &quot;@fkui/design/src/components/textarea-field/textarea-field&quot;;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du behöver applicera tema på en egen selector (exempelvis kanske du har flera uppsättningar av FKUI i olika versioner på samma webbsida) så lägger du inte in variablerna globalt utan använder en mixin.</p><p class="docs-paragraph">Vid import:</p>
+            <p class="docs-paragraph">Om du behöver applicera tema på en egen selector (exempelvis kanske du har flera uppsättningar av FKUI i olika versioner på samma webbsida) så lägger du inte in variablerna globalt utan använder en mixin.</p>
+<p class="docs-paragraph">Vid import:</p>
+
                 <div
                     id="example-011c5c"
                     class="code-preview code-preview--default"
@@ -602,8 +613,10 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Notera: variabeln <code>$global</code> måste sättas till <code>false</code> annars sätts samtliga variabler på <code>:root</code> selector.</p><h3 id="css"><a class="header-anchor" href="#css">CSS</a></h3><p class="docs-paragraph">Om din applikation inte använder Sass ska du istället placera <code>@fkui/design/lib/fkui.min.css</code> i en assets-katalog.
+            <p class="docs-paragraph">Notera: variabeln <code>$global</code> måste sättas till <code>false</code> annars sätts samtliga variabler på <code>:root</code> selector.</p>
+<h3 id="css"><a class="header-anchor" href="#css">CSS</a></h3><p class="docs-paragraph">Om din applikation inte använder Sass ska du istället placera <code>@fkui/design/lib/fkui.min.css</code> i en assets-katalog.
 Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
+
                 <div
                     id="example-5c9f03"
                     class="code-preview code-preview--default"
@@ -616,6 +629,7 @@ Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Om du behöver importera styling till javascript:</p>
+
                 <div
                     id="example-16aa46"
                     class="code-preview code-preview--default"
@@ -627,8 +641,12 @@ Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
 </code></pre>
                 </div>
-            <h3 id="eget_tema"><a class="header-anchor" href="#eget_tema">Eget tema</a></h3><p class="docs-paragraph">Utgå från standardtemat och skriv över de variabler som ska ändras.</p><h2 id="importera_ikonbibliotek"><a class="header-anchor" href="#importera_ikonbibliotek">Importera ikonbibliotek</a></h2><p class="docs-paragraph"><a href="../../styles/icons.html">Biblioteket för standardikoner</a> ligger i <code>@fkui/icon-lib-default</code>. Det innehåller licensfria ikoner som används av komponenterna i FKUI.</p><p class="docs-paragraph">För att använda ikoner i din applikation måste du ladda in den <code>spritesheet</code> med ikoner som du vill använda.
-Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.</p><p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
+            <h3 id="eget_tema"><a class="header-anchor" href="#eget_tema">Eget tema</a></h3><p class="docs-paragraph">Utgå från standardtemat och skriv över de variabler som ska ändras.</p>
+<h2 id="importera_ikonbibliotek"><a class="header-anchor" href="#importera_ikonbibliotek">Importera ikonbibliotek</a></h2><p class="docs-paragraph"><a href="../../styles/icons.html">Biblioteket för standardikoner</a> ligger i <code>@fkui/icon-lib-default</code>. Det innehåller licensfria ikoner som används av komponenterna i FKUI.</p>
+<p class="docs-paragraph">För att använda ikoner i din applikation måste du ladda in den <code>spritesheet</code> med ikoner som du vill använda.
+Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.</p>
+<p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
+
                 <div
                     id="example-82ba1d"
                     class="code-preview code-preview--default"
@@ -640,7 +658,10 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
                     <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/icon-lib-default/dist/f&quot;</span>;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">För att använda ett annat ikon-bibliotek ersätt <code>@fkui/icon-lib-default</code> med namnet på det paketet.</p><p class="docs-paragraph">Spritesheets kommer automatiskt laddas in i DOM:en.</p><p class="docs-paragraph">Om du vill ha tillgång till <code>injectSpritesheet</code>-funktionen kan du anropa den själv. Importera den genom:</p>
+            <p class="docs-paragraph">För att använda ett annat ikon-bibliotek ersätt <code>@fkui/icon-lib-default</code> med namnet på det paketet.</p>
+<p class="docs-paragraph">Spritesheets kommer automatiskt laddas in i DOM:en.</p>
+<p class="docs-paragraph">Om du vill ha tillgång till <code>injectSpritesheet</code>-funktionen kan du anropa den själv. Importera den genom:</p>
+
                 <div
                     id="example-92f2bf"
                     class="code-preview code-preview--default"
@@ -654,7 +675,9 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 <span class="hljs-title function_">injectSpritesheet</span>();
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.</p><p class="docs-paragraph"><a href="./icon-library.html#skapa-eget-ikonbibliotek">Läs mer här om hur du tar fram egna ikoner.</a></p>
+            <p class="docs-paragraph">Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.</p>
+<p class="docs-paragraph"><a href="./icon-library.html#skapa-eget-ikonbibliotek">Läs mer här om hur du tar fram egna ikoner.</a></p>
+
 
                     </div>
                 </main>
@@ -670,9 +693,9 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -785,16 +808,16 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

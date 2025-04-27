@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Translation Plugin - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1377,7 +1377,10 @@
 
                     
 
-                    <div id="content"><p class="docs-paragraph">Ett Vue-plugin som hjälper till med att översätta textnycklar globalt.</p><p class="docs-paragraph"><strong>Observera</strong> att TranslationService används av detta plugin. TranslationsService stödjer enbart möjligheten att ange standardvärde i sitt grundutförande. För att översätta nycklar måste en implementation anges i TranslationService.</p><h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><h3 id="composition_api"><a class="header-anchor" href="#composition_api">Composition API</a></h3><p class="docs-paragraph">Om du använder composition API ska du använda <code>useTranslate()</code> för att få tillgång till översättningsfunktionen:</p>
+                    <div id="content"><p class="docs-paragraph">Ett Vue-plugin som hjälper till med att översätta textnycklar globalt.</p>
+<p class="docs-paragraph"><strong>Observera</strong> att TranslationService används av detta plugin. TranslationsService stödjer enbart möjligheten att ange standardvärde i sitt grundutförande. För att översätta nycklar måste en implementation anges i TranslationService.</p>
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><h3 id="composition_api"><a class="header-anchor" href="#composition_api">Composition API</a></h3><p class="docs-paragraph">Om du använder composition API ska du använda <code>useTranslate()</code> för att få tillgång till översättningsfunktionen:</p>
+
                 <div
                     id="example-52c43b"
                     class="code-preview code-preview--default"
@@ -1398,6 +1401,7 @@
 </code></pre>
                 </div>
             <h3 id="options_api"><a class="header-anchor" href="#options_api">Options API</a></h3><p class="docs-paragraph">Om du använder options API ska du använda <code>TranslationMixin</code> för att få tillgång till översättningsfunktionen:</p>
+
                 <div
                     id="example-daff6e"
                     class="code-preview code-preview--default"
@@ -1422,6 +1426,7 @@
                 </div>
             <p class="docs-paragraph">Notera att <code>$t</code> kan användas i metoder och computed men inte som default-värde till propar.
 Du måste istället anropa <code>TranslationService</code> från `@fkui/logic`` direkt:</p>
+
                 <div
                     id="example-634ee4"
                     class="code-preview code-preview--default"
@@ -1448,6 +1453,7 @@ Du måste istället anropa <code>TranslationService</code> från `@fkui/logic`` 
 </code></pre>
                 </div>
             <h3 id="globalt"><a class="header-anchor" href="#globalt">Globalt</a></h3><p class="docs-paragraph">Du installerar plugin globalt för hela applikationen genom:</p>
+
                 <div
                     id="example-1a2705"
                     class="code-preview code-preview--default"
@@ -1471,12 +1477,14 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
 </code></pre>
                 </div>
             <p class="docs-paragraph">Detta motsvarar att alla komponenter använder <code>mixins: [TranslationMixin]</code>.
-Det är enbart att rekommendera för applikationer och ej för komponentbibliotek eftersom komponenter då kräver att konsumenter också använder global installation av plugin.</p><h2 id="t_key_string_defaultvalue_string_params_record_string_unknown"><a class="header-anchor" href="#t_key_string_defaultvalue_string_params_record_string_unknown"><code>$t(key: string, [defaultValue: string], [params: Record&lt;string, unknown&gt;])</code></a></h2><ul>
-<li><p class="docs-paragraph"><code>key</code> - Textnyckel som ska översättas.</p></li>
-<li><p class="docs-paragraph"><code>defaultValue</code> - Standardtext som visas när ingen översättning finns.</p></li>
-<li><p class="docs-paragraph"><code>params</code> - Parametrar som kan interpoleras. Kräver en provider med stöd för interpolering.</p></li>
+Det är enbart att rekommendera för applikationer och ej för komponentbibliotek eftersom komponenter då kräver att konsumenter också använder global installation av plugin.</p>
+<h2 id="t_key_string_defaultvalue_string_params_record_string_unknown"><a class="header-anchor" href="#t_key_string_defaultvalue_string_params_record_string_unknown"><code>$t(key: string, [defaultValue: string], [params: Record&lt;string, unknown&gt;])</code></a></h2><ul>
+<li><code>key</code> - Textnyckel som ska översättas.</li>
+<li><code>defaultValue</code> - Standardtext som visas när ingen översättning finns.</li>
+<li><code>params</code> - Parametrar som kan interpoleras. Kräver en provider med stöd för interpolering.</li>
 </ul>
 <p class="docs-paragraph">Första parametern till <code>$t()</code> är textnyckeln som används för att slå upp översatt text.</p>
+
                 <div
                     id="example-541aa3"
                     class="code-preview code-preview--default"
@@ -1489,6 +1497,7 @@ Det är enbart att rekommendera för applikationer och ej för komponentbibliote
 </code></pre>
                 </div>
             <p class="docs-paragraph">Givet att följande översättningar lästs in till <code>TranslationService</code>:</p>
+
                 <div
                     id="example-7b2fa7"
                     class="code-preview code-preview--default"
@@ -1503,6 +1512,7 @@ Det är enbart att rekommendera för applikationer och ej för komponentbibliote
 </code></pre>
                 </div>
             <p class="docs-paragraph">kommer följande att renderas upp:</p>
+
                 <div
                     id="example-1e7594"
                     class="code-preview code-preview--default"
@@ -1515,6 +1525,7 @@ Det är enbart att rekommendera för applikationer och ej för komponentbibliote
 </code></pre>
                 </div>
             <h3 id="standardtexter"><a class="header-anchor" href="#standardtexter">Standardtexter</a></h3><p class="docs-paragraph">Den valfria parametern <code>defaultValue</code> till <code>$t()</code> är en standardtext som visas när ingen översättning finns:</p>
+
                 <div
                     id="example-830be0"
                     class="code-preview code-preview--default"
@@ -1527,9 +1538,11 @@ Det är enbart att rekommendera för applikationer och ej för komponentbibliote
 </code></pre>
                 </div>
             <p class="docs-paragraph">Samtliga komponenter använder alltid standardtexter.
-För applikationer är det valfritt.</p><h3 id="parametrar_och_interpolering"><a class="header-anchor" href="#parametrar_och_interpolering">Parametrar och interpolering</a></h3><p class="docs-paragraph">Använd den valfria parametern <code>params</code> som är ett objekt med parametrar för interpolering.
+För applikationer är det valfritt.</p>
+<h3 id="parametrar_och_interpolering"><a class="header-anchor" href="#parametrar_och_interpolering">Parametrar och interpolering</a></h3><p class="docs-paragraph">Använd den valfria parametern <code>params</code> som är ett objekt med parametrar för interpolering.
 Exakt hur och vad som kan interpoleras beror på den provider som du använder tillsammans med <code>TranslationService</code>.
 Designsystemet erbjuder enbart en rudimentär provider där <code>{{ value }}</code> används som placeholder i texten.</p>
+
                 <div
                     id="example-7299ca"
                     class="code-preview code-preview--default"
@@ -1542,6 +1555,7 @@ Designsystemet erbjuder enbart en rudimentär provider där <code>{{ value }}</c
 </code></pre>
                 </div>
             <p class="docs-paragraph">eller kombinerat med standardtext:</p>
+
                 <div
                     id="example-5e0c28"
                     class="code-preview code-preview--default"
@@ -1558,6 +1572,7 @@ Designsystemet erbjuder enbart en rudimentär provider där <code>{{ value }}</c
                 </div>
             <p class="docs-paragraph">Andra providers kan erbjuda pluralisering, nästlade objekt, formatering, osv.</p>
 
+
                     </div>
                 </main>
             </div>
@@ -1572,9 +1587,9 @@ Designsystemet erbjuder enbart en rudimentär provider där <code>{{ value }}</c
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1687,16 +1702,16 @@ Designsystemet erbjuder enbart en rudimentär provider där <code>{{ value }}</c
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

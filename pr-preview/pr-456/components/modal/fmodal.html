@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Modal dialogruta - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fadc45cb72e2fd8786c32666bc124767f8bfc8cc/packages/vue/src/components/FModal/FModal.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b1c79f8239c1eb57ba125747b250e0df92fd0d27/packages/vue/src/components/FModal/FModal.vue">
                 FModal
             </a>
             
@@ -1094,6 +1094,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Använd modala dialogrutor för korta interaktioner som är en del av ett flöde. Modaler kan användas för att låta användaren bekräfta ett val, för att förmedla information eller för enkel inmatning.</p>
+
                 <div
                     id="example-76970b"
                     class="code-preview code-preview--borderless"
@@ -1111,18 +1112,21 @@
         <script type="module" src="./FModalLiveExample-695786.js"></script>
     
                 </div>
-            <p class="docs-paragraph">Använd inte modala dialogrutor för att presentera felmeddelanden eller information som användaren behöver kunna läsa under tiden som hen åtgärdar ett fel eller gör ändringar.</p><ul>
-<li><p class="docs-paragraph">I de flesta fall där användaren måste uppmärksammas på viktig information eller problem är en <a href="../fmessagebox.html">meddelanderuta</a> att föredra.</p></li>
-<li><p class="docs-paragraph">Rubriken har tabb-fokus när en modal dialogruta öppnas. Därefter knapparna i den ordning de presenteras och sist stängknappen. Tabb-fokus loopar genom alla klickbara ytor i en modal.</p></li>
-<li><p class="docs-paragraph">Öppna inte ytterligare en modal från en modal.</p></li>
+            <p class="docs-paragraph">Använd inte modala dialogrutor för att presentera felmeddelanden eller information som användaren behöver kunna läsa under tiden som hen åtgärdar ett fel eller gör ändringar.</p>
+<ul>
+<li>I de flesta fall där användaren måste uppmärksammas på viktig information eller problem är en <a href="../fmessagebox.html">meddelanderuta</a> att föredra.</li>
+<li>Rubriken har tabb-fokus när en modal dialogruta öppnas. Därefter knapparna i den ordning de presenteras och sist stängknappen. Tabb-fokus loopar genom alla klickbara ytor i en modal.</li>
+<li>Öppna inte ytterligare en modal från en modal.</li>
 </ul>
-<p class="docs-paragraph">Modala dialogrutor finns i fyra varianter:</p><ul>
-<li><p class="docs-paragraph">standard</p></li>
-<li><p class="docs-paragraph">information</p></li>
-<li><p class="docs-paragraph">varning</p></li>
-<li><p class="docs-paragraph">fel.</p></li>
+<p class="docs-paragraph">Modala dialogrutor finns i fyra varianter:</p>
+<ul>
+<li>standard</li>
+<li>information</li>
+<li>varning</li>
+<li>fel.</li>
 </ul>
 <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Skapa en ny Vue-komponent där <code>f-modal</code> används:</p>
+
                 <div
                     id="example-d96d54"
                     class="code-preview code-preview--default"
@@ -1157,6 +1161,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Du kan sedan öppna din modal genom att använda <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) eller <a href="../../functions/functions/modal-functions/form-modal.html"><code>openModal()</code></a> (options API).</p>
+
                 <div
                     id="example-9996d7"
                     class="code-preview code-preview--default"
@@ -1186,6 +1191,7 @@
             <h3 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h3><p class="docs-paragraph">Att använda <code>FModal</code> nästlad i template är deprekerat.
 Om du använder detta rekommenderar vi att du flyttar den till en egen Vue komponent och använder API för att öppna den.
 Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FModal</code> med API.</p>
+
                 <div
                     id="example-bce030"
                     class="code-preview code-preview--default"
@@ -1202,13 +1208,16 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
  &lt;/template&gt;
 </code></pre>
                 </div>
-            <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p class="docs-paragraph">Modalens höjd anpassas utifrån innehållet. I desktop (&gt;639px) kan modalens bredd anpassas till</p><ul>
-<li><p class="docs-paragraph"><code>small</code> (standard)</p></li>
-<li><p class="docs-paragraph"><code>medium</code></p></li>
-<li><p class="docs-paragraph"><code>large</code></p></li>
-<li><p class="docs-paragraph"><code>fullwidth</code>.</p></li>
+            <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p class="docs-paragraph">Modalens höjd anpassas utifrån innehållet. I desktop (&gt;639px) kan modalens bredd anpassas till</p>
+<ul>
+<li><code>small</code> (standard)</li>
+<li><code>medium</code></li>
+<li><code>large</code></li>
+<li><code>fullwidth</code>.</li>
 </ul>
-<p class="docs-paragraph">I mobil (&lt;640px) har en modal alltid samma bredd, men det går att sätta en modal till fullskärm. Använd fullskärm när användaren ska fokusera på en deluppgift i ett flöde, till exempel används fullskärm av <a href="./fformmodal.html">formulärsmodalen</a>. Använd inte fullskärm för modala dialogrutor som visas som en reaktion på något användaren gör.</p><p class="docs-paragraph">Använd <code>size</code>-prop för att välja storlek på modalen.</p>
+<p class="docs-paragraph">I mobil (&lt;640px) har en modal alltid samma bredd, men det går att sätta en modal till fullskärm. Använd fullskärm när användaren ska fokusera på en deluppgift i ett flöde, till exempel används fullskärm av <a href="./fformmodal.html">formulärsmodalen</a>. Använd inte fullskärm för modala dialogrutor som visas som en reaktion på något användaren gör.</p>
+<p class="docs-paragraph">Använd <code>size</code>-prop för att välja storlek på modalen.</p>
+
                 <div
                     id="example-28f144"
                     class="code-preview code-preview--default"
@@ -1221,7 +1230,9 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 <span class="hljs-addition">+&lt;f-modal size=&quot;small&quot;&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">För mobil finns det en <code>fullscreen</code>-prop för att säkerställa att modal täcker hela skärmen och är utan ram.</p><p class="docs-paragraph">Den här <code>fullscreen</code>-propen påverkar inte modalen i desktop-läge.</p>
+            <p class="docs-paragraph">För mobil finns det en <code>fullscreen</code>-prop för att säkerställa att modal täcker hela skärmen och är utan ram.</p>
+<p class="docs-paragraph">Den här <code>fullscreen</code>-propen påverkar inte modalen i desktop-läge.</p>
+
                 <div
                     id="example-1332ef"
                     class="code-preview code-preview--default"
@@ -1235,6 +1246,7 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 </code></pre>
                 </div>
             <h3 id="anpassa_storlek"><a class="header-anchor" href="#anpassa_storlek">Anpassa storlek</a></h3><p class="docs-paragraph">Implementera en CSS-klass enligt följande:</p>
+
                 <div
                     id="example-c4f75e"
                     class="code-preview code-preview--default"
@@ -1249,6 +1261,7 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 </code></pre>
                 </div>
             <p class="docs-paragraph">Använd inte <code>size</code>-prop utan lägg istället till din klass direkt enligt <code>class=&quot;..&quot;</code>:</p>
+
                 <div
                     id="example-563c65"
                     class="code-preview code-preview--default"
@@ -1261,15 +1274,17 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 <span class="hljs-addition">+&lt;f-modal class=&quot;my-fancy-modal&quot;&gt;</span>
 </code></pre>
                 </div>
-            <h3 id="initialt_fokus"><a class="header-anchor" href="#initialt_fokus">Initialt fokus</a></h3><p class="docs-paragraph">När modalen öppnas så sätts initialt fokus enligt denna rangordning:</p><ol>
-<li><p class="docs-paragraph">Rubrik</p></li>
-<li><p class="docs-paragraph">Första interagerbara element i innehåll</p></li>
-<li><p class="docs-paragraph">Hela innehållet</p></li>
+            <h3 id="initialt_fokus"><a class="header-anchor" href="#initialt_fokus">Initialt fokus</a></h3><p class="docs-paragraph">När modalen öppnas så sätts initialt fokus enligt denna rangordning:</p>
+<ol>
+<li>Rubrik</li>
+<li>Första interagerbara element i innehåll</li>
+<li>Hela innehållet</li>
 </ol>
-<h3 id="fokushantering"><a class="header-anchor" href="#fokushantering">Fokushantering</a></h3><p class="docs-paragraph">Modaler hanterar som standard fokus själv där modalen flyttar fokus till rubriken vid öppning och återställer fokus till tidigare fokuserat element vid stägning. Du kan styra detta beteende med propen för focus:</p><ul>
-<li><p class="docs-paragraph">&quot;on&quot; - komponenten hanterar fokus vid både öppning och stängning</p></li>
-<li><p class="docs-paragraph">&quot;off&quot; - komponenten hanterar inte fokus alls.</p></li>
-<li><p class="docs-paragraph">&quot;open&quot; - komponenten hanterar enbart fokus vid öppning.</p></li>
+<h3 id="fokushantering"><a class="header-anchor" href="#fokushantering">Fokushantering</a></h3><p class="docs-paragraph">Modaler hanterar som standard fokus själv där modalen flyttar fokus till rubriken vid öppning och återställer fokus till tidigare fokuserat element vid stägning. Du kan styra detta beteende med propen för focus:</p>
+<ul>
+<li>&quot;on&quot; - komponenten hanterar fokus vid både öppning och stängning</li>
+<li>&quot;off&quot; - komponenten hanterar inte fokus alls.</li>
+<li>&quot;open&quot; - komponenten hanterar enbart fokus vid öppning.</li>
 </ul>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
         <h3 id="fmodal-props">
@@ -1518,9 +1533,9 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1633,16 +1648,16 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

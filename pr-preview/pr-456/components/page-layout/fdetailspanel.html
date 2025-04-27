@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Detaljpanel - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fadc45cb72e2fd8786c32666bc124767f8bfc8cc/packages/vue/src/components/FDetailsPanel/FDetailsPanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b1c79f8239c1eb57ba125747b250e0df92fd0d27/packages/vue/src/components/FDetailsPanel/FDetailsPanel.vue">
                 FDetailsPanel
             </a>
             
@@ -1102,6 +1102,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Detaljpanel (FDetailsPanel) används tillsammand med <a href="./fpagelayout.html">applikationslayout</a> för att visa detaljer om ett objekt som användaren har valt.</p>
+
             <div
                 id="example-85011a"
                 class="code-preview code-preview--default"
@@ -1192,10 +1193,11 @@ interface <span class="hljs-title class_">Item</span> {
 </code></pre>
                 </div>
             </div>
-        <p class="docs-paragraph">Detaljpanel består av tre slottar:</p><ul>
-<li><p class="docs-paragraph"><code>header</code> - rubrik</p></li>
-<li><p class="docs-paragraph"><code>content</code> - huvudinnehåll</p></li>
-<li><p class="docs-paragraph"><code>footer</code> - frivilligt innehåll som placeras längst ner</p></li>
+        <p class="docs-paragraph">Detaljpanel består av tre slottar:</p>
+<ul>
+<li><code>header</code> - rubrik</li>
+<li><code>content</code> - huvudinnehåll</li>
+<li><code>footer</code> - frivilligt innehåll som placeras längst ner</li>
 </ul>
 
                 <div
@@ -1232,9 +1234,11 @@ interface <span class="hljs-title class_">Item</span> {
         <script type="module" src="./FDetailsPanelSlots-48b0ac.js"></script>
     </div>
                 </div>
-            <p class="docs-paragraph">Detaljpanel kombineras med fördel med <a href="./fresizepane.html">justerbar yta</a> (FResizePane).</p><h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Lägg till en <code>FDetailsPanel</code> i en yta i <code>FPageLayout</code> och namnge den med ett unikt namn.</p>
+            <p class="docs-paragraph">Detaljpanel kombineras med fördel med <a href="./fresizepane.html">justerbar yta</a> (FResizePane).</p>
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Lägg till en <code>FDetailsPanel</code> i en yta i <code>FPageLayout</code> och namnge den med ett unikt namn.</p>
+
                 <div
-                    id="example-2c2fb0"
+                    id="example-3accd8"
                     class="code-preview code-preview--default"
                     data-test="simple"
                     
@@ -1252,8 +1256,9 @@ interface <span class="hljs-title class_">Item</span> {
 </code></pre>
                 </div>
             <p class="docs-paragraph">Om panelen ska ha en justerbar storlek lägg en <code>FResizePane</code> runt om:</p>
+
                 <div
-                    id="example-6e659e"
+                    id="example-fd05fe"
                     class="code-preview code-preview--default"
                     data-test="resize"
                     
@@ -1273,8 +1278,9 @@ interface <span class="hljs-title class_">Item</span> {
 </code></pre>
                 </div>
             <p class="docs-paragraph">Du lägger innehåll i respektive slot:</p>
+
                 <div
-                    id="example-e2c1f0"
+                    id="example-552bf9"
                     class="code-preview code-preview--default"
                     data-test="slots"
                     
@@ -1297,6 +1303,7 @@ interface <span class="hljs-title class_">Item</span> {
                 </div>
             <p class="docs-paragraph">Detalpanelen öppnas med API från <a href="../../functions/functions/use-details-panel.html"><code>useDetailsPanel()</code></a> och kräver ett objekt.
 Använd namnet du angett i propen <code>name</code> som identifierare för att hämta ut rätt detaljpanel.</p>
+
                 <div
                     id="example-c9f2c6"
                     class="code-preview code-preview--default"
@@ -1314,7 +1321,9 @@ panel.<span class="hljs-title function_">close</span>(); <span class="hljs-comme
 </code></pre>
                 </div>
             <p class="docs-paragraph"><code>useDetailsPanel()</code> kan användas överallt i din kodbas så länge namnet matchar en detaljpanel.
-Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen skapats upp men den måste finnas när <code>open()</code> senare anropas.</p><p class="docs-paragraph">Vi rekommenderar att du lägger namnet på panelen i en konstant som återanvänds mellan filer.</p>
+Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen skapats upp men den måste finnas när <code>open()</code> senare anropas.</p>
+<p class="docs-paragraph">Vi rekommenderar att du lägger namnet på panelen i en konstant som återanvänds mellan filer.</p>
+
                 <div
                     id="example-498049"
                     class="code-preview code-preview--default"
@@ -1354,8 +1363,9 @@ Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen sk
 </code></pre>
                 </div>
             <p class="docs-paragraph">Du återfår objektet i panelen med scope attribute <code>item</code>:</p>
+
                 <div
-                    id="example-abe6ce"
+                    id="example-b2ee62"
                     class="code-preview code-preview--default"
                     
                     
@@ -1378,6 +1388,7 @@ Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen sk
 </code></pre>
                 </div>
             <p class="docs-paragraph">Skicka en valfri callback om du vill agera på att detaljpanelen stängs:</p>
+
                 <div
                     id="example-701b5b"
                     class="code-preview code-preview--default"
@@ -1399,8 +1410,10 @@ Det är säkert att anropa <code>useDetailsPanel()</code> före detaljpanelen sk
                 <p class="docs-paragraph"><code>onClose()</code> anropas bara om detaljpanelen stängs.
 Om detaljpanelen öppnas med ett nytt objekt innan slutanvändaren stängt panelen anropas inte <code>onClose()</code> på det föregående objektet.
 Endast callback som associerats med det senaste öppnade objektet anropas.</p>
+
             </div>
         <h2 id="typescript"><a class="header-anchor" href="#typescript">Typescript</a></h2><p class="docs-paragraph">Detaljpanelen är generic och kan typsäkras genom att skapa ett alias för komponenten.</p>
+
                 <div
                     id="example-87cff9"
                     class="code-preview code-preview--default"
@@ -1435,7 +1448,9 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
      &lt;template #default=&quot;{ item }&quot;&gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph"><code>item</code> kommer då vara av typen <code>Item</code>.</p><p class="docs-paragraph">Definiera upp att elementet ärver från <code>FDetailsPanel</code> om du använder <a href="https://html-validate.org/">HTML-validate</a>:</p>
+            <p class="docs-paragraph"><code>item</code> kommer då vara av typen <code>Item</code>.</p>
+<p class="docs-paragraph">Definiera upp att elementet ärver från <code>FDetailsPanel</code> om du använder <a href="https://html-validate.org/">HTML-validate</a>:</p>
+
                 <div
                     id="example-42bf81"
                     class="code-preview code-preview--default"
@@ -1453,8 +1468,9 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
 </code></pre>
                 </div>
             <h2 id="egna_knappar"><a class="header-anchor" href="#egna_knappar">Egna knappar</a></h2><p class="docs-paragraph">Du kan lägga in egna knappar som stänger detaljpanelen.</p>
+
                 <div
-                    id="example-6997df"
+                    id="example-b8dd7f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1477,6 +1493,7 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
 </code></pre>
                 </div>
             <p class="docs-paragraph"><code>close()</code> tar en optional sträng som kan användas för att särskilja olika knappar:</p>
+
                 <div
                     id="example-dde206"
                     class="code-preview code-preview--default"
@@ -1512,10 +1529,12 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph">Om du ska använda detaljpanelen för att redigera objekt tänk på att skicka in en kopia av original-objektet istället.
 Annars riskerar du att mutera originalet vilket bland annat förhindrar att avbryta redigering.</p>
+
             </div>
-        <h2 id="redigera_objekt"><a class="header-anchor" href="#redigera_objekt">Redigera objekt</a></h2><p class="docs-paragraph">Riktlinjer för att använda detaljpanelen för att redigera objekt:</p><ul>
-<li><p class="docs-paragraph">Använd en separat knapp med en annan orsak (<code>@click=&quot;close('save')&quot;</code>) för att låta slutanvändaren ha möjlighet att ångra sig och förhindra att man oavsikligt redigerar data.</p></li>
-<li><p class="docs-paragraph">Använd en kopia av objektet och mutera inte originalobjektet direkt förrän användaren explicit valt att spara.</p></li>
+        <h2 id="redigera_objekt"><a class="header-anchor" href="#redigera_objekt">Redigera objekt</a></h2><p class="docs-paragraph">Riktlinjer för att använda detaljpanelen för att redigera objekt:</p>
+<ul>
+<li>Använd en separat knapp med en annan orsak (<code>@click=&quot;close('save')&quot;</code>) för att låta slutanvändaren ha möjlighet att ångra sig och förhindra att man oavsikligt redigerar data.</li>
+<li>Använd en kopia av objektet och mutera inte originalobjektet direkt förrän användaren explicit valt att spara.</li>
 </ul>
 
             <div
@@ -1694,7 +1713,9 @@ interface <span class="hljs-title class_">Row</span> {
                 </div>
             </div>
         <h2 id="flera_detaljpaneler_i_samma_yta"><a class="header-anchor" href="#flera_detaljpaneler_i_samma_yta">Flera detaljpaneler i samma yta</a></h2><p class="docs-paragraph">Ibland är det användbart att skapa upp flera detaljpaneler i samma yta.
-Som en riktlinje rekommenderar vi att endast visa en detaljpanel åt gången.</p><p class="docs-paragraph">Om du har flera detaljpaneler och vill stoppa andra från att visas samtidigt sätt propen <code>exclusive</code> till ett gemensamt gruppnamn:</p>
+Som en riktlinje rekommenderar vi att endast visa en detaljpanel åt gången.</p>
+<p class="docs-paragraph">Om du har flera detaljpaneler och vill stoppa andra från att visas samtidigt sätt propen <code>exclusive</code> till ett gemensamt gruppnamn:</p>
+
                 <div
                     id="example-6e84b7"
                     class="code-preview code-preview--default"
@@ -1707,7 +1728,8 @@ Som en riktlinje rekommenderar vi att endast visa en detaljpanel åt gången.</p
 <span class="hljs-tag">&lt;<span class="hljs-name">f-details-panel</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;panel-2&quot;</span> <span class="hljs-attr">exclusive</span>=<span class="hljs-string">&quot;panels&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-details-panel</span>&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om en detaljpanel i samma grupp öppnas stängs alla andra detaljpaneler automatiskt (utan att <code>onClose()</code> anropas).</p><h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2>
+            <p class="docs-paragraph">Om en detaljpanel i samma grupp öppnas stängs alla andra detaljpaneler automatiskt (utan att <code>onClose()</code> anropas).</p>
+<h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2>
         <dl class="docs-api docs-api--translation">
             
                         <dt>
@@ -1814,9 +1836,9 @@ from being open at the same time.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1929,16 +1951,16 @@ from being open at the same time.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

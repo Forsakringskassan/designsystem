@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Formaterare och parser - anpassad - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -360,7 +360,8 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">För en djupare förståelse om hur data flödar från inmatningsfält till modell-värde till vy-värde presenterar vi flödesscheman.</p><h2 id="utan_parser_och_formaterare"><a class="header-anchor" href="#utan_parser_och_formaterare">Utan parser och formaterare</a></h2>
+                    <div id="content"><p class="docs-paragraph">För en djupare förståelse om hur data flödar från inmatningsfält till modell-värde till vy-värde presenterar vi flödesscheman.</p>
+<h2 id="utan_parser_och_formaterare"><a class="header-anchor" href="#utan_parser_och_formaterare">Utan parser och formaterare</a></h2>
                 <pre class="mermaid">graph LR
 	FTextField[&quot;`**FTextField**
 	    &amp;quot;AbcD&amp;quot;`&quot;]
@@ -376,6 +377,7 @@
     trim --&gt; modelValue
 </pre>
             <h2 id="formaterare_utan_parser"><a class="header-anchor" href="#formaterare_utan_parser">Formaterare utan parser</a></h2><p class="docs-paragraph">I detta exempel använder vi en fiktiv formaterare som ändrar skiftläge till gemener.</p>
+
                 <div
                     id="example-032ecd"
                     class="code-preview code-preview--default"
@@ -431,6 +433,7 @@
     </div>
                 </div>
             <h2 id="parser_utan_formaterare"><a class="header-anchor" href="#parser_utan_formaterare">Parser utan formaterare</a></h2><p class="docs-paragraph">I detta exempel använder vi en fiktiv parser som ändrar skiftläge till versaler.</p>
+
                 <div
                     id="example-c588df"
                     class="code-preview code-preview--default"
@@ -476,6 +479,7 @@
     pparser --&gt; modelValue
 </pre>
             <p class="docs-paragraph">Eftersom ingen formaterare finns uppdateras inte vy-värdet.</p>
+
                 <div
                     id="example-c0d707"
                     class="code-preview code-preview--default"
@@ -495,6 +499,7 @@
     </div>
                 </div>
             <h2 id="formaterare_och_parser"><a class="header-anchor" href="#formaterare_och_parser">Formaterare och parser</a></h2><p class="docs-paragraph">I detta exempel kombinerar vi formateraren och parsern från tidigare flöden.</p>
+
                 <pre class="mermaid">graph LR
 	FTextField[&quot;`**FTextField**
 	    &amp;quot;AbcD&amp;quot;`&quot;]
@@ -541,6 +546,7 @@
 Vy-värdet formateras om en formaterare är angiven.
 Om även en parser är angiven utöver formaterare så parsas värdet innan det formateras.
 Misslyckas parsning eller formatering på vägen så sätts vy-värdet till model-värdet.</p>
+
                 <pre class="mermaid">graph LR
     modelValue[(&quot;`**modelValue**
 	    &amp;quot;AbcD&amp;quot;`&quot;)]
@@ -557,6 +563,7 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
 </pre>
             <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./formatter-parser.html">(Formatering och parsning)</a></p>
 
+
                     </div>
                 </main>
             </div>
@@ -571,9 +578,9 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -686,16 +693,16 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

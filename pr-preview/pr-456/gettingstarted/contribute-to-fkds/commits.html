@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Commits och commitmeddelanden - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -548,22 +548,29 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.</p><p class="docs-paragraph">Commitmeddelanden använder en modifierad variant av <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> där skillnaden är att vi kräver en Jira-referens i slutet:</p><pre><code>${type}: ${description} (${relation} ${jira})
+                    <div id="content"><p class="docs-paragraph">I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.</p>
+<p class="docs-paragraph">Commitmeddelanden använder en modifierad variant av <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> där skillnaden är att vi kräver en Jira-referens i slutet:</p>
+<pre><code>${type}: ${description} (${relation} ${jira})
 </code></pre>
-<p class="docs-paragraph">där:</p><ul>
-<li><p class="docs-paragraph"><code>${type}</code> är vilken typ av commit, vanligtvis <code>fix</code> eller <code>feat</code>.</p></li>
-<li><p class="docs-paragraph"><code>${description}</code> är en kort summering av commit.</p></li>
-<li><p class="docs-paragraph"><code>${relation}</code> är hur commit relaterat till en Jira, <code>refs</code> eller <code>fixes</code>.</p></li>
-<li><p class="docs-paragraph"><code>${jira}</code> är den Jira som commit relaterar till.</p></li>
+<p class="docs-paragraph">där:</p>
+<ul>
+<li><code>${type}</code> är vilken typ av commit, vanligtvis <code>fix</code> eller <code>feat</code>.</li>
+<li><code>${description}</code> är en kort summering av commit.</li>
+<li><code>${relation}</code> är hur commit relaterat till en Jira, <code>refs</code> eller <code>fixes</code>.</li>
+<li><code>${jira}</code> är den Jira som commit relaterar till.</li>
 </ul>
 
             <div class="docs-messagebox docs-messagebox--info">
                 <p class="docs-messagebox__title">Exempelvis</p>
                 <p class="docs-paragraph"><code>feat: new component `FFoobar` (fixes XYZ-123)</code></p>
+
             </div>
         <p class="docs-paragraph">Scope sätter vi enbart i undantagsfall då det populeras automatiskt i Changelog.
-Vanligt undantag är <code>chore(deps)</code> för beroenden, <code>chore(release)</code> för releaser samt <code>refactor(${verktyg})</code> och <code>style(${verktyg})</code>.</p><h2 id="typ"><a class="header-anchor" href="#typ">Typ</a></h2><p class="docs-paragraph">Den viktigaste beståndsdelen är <code>type</code> som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.</p><p class="docs-paragraph">De vanligaste två är <code>feat</code> (ny funktionallitet) och <code>fix</code> (rättning av existerande funktionallitet).
+Vanligt undantag är <code>chore(deps)</code> för beroenden, <code>chore(release)</code> för releaser samt <code>refactor(${verktyg})</code> och <code>style(${verktyg})</code>.</p>
+<h2 id="typ"><a class="header-anchor" href="#typ">Typ</a></h2><p class="docs-paragraph">Den viktigaste beståndsdelen är <code>type</code> som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.</p>
+<p class="docs-paragraph">De vanligaste två är <code>feat</code> (ny funktionallitet) och <code>fix</code> (rättning av existerande funktionallitet).
 Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code>refactor</code> (interna förändringar som inte påverkar konsument).</p>
+
             <details class="docs-messagebox docs-messagebox--details">
                 <summary class="docs-messagebox__title">
                     Tillgängliga typer
@@ -654,16 +661,18 @@ Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code
 </table>
 
             </details>
-        <p class="docs-paragraph">Läs mer om <a href="./release.html#brytande_andringar">brytande ändringar</a>.</p><h2 id="tumregler"><a class="header-anchor" href="#tumregler">Tumregler</a></h2><p class="docs-paragraph">Ett bra commitmeddelande ska:</p><ul>
-<li><p class="docs-paragraph">Beskriva vilken eller vilka komponenter eller funktioner som berörs. Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</p></li>
-<li><p class="docs-paragraph">Undvika att benämna ramverkskomponenter (&quot;i-komponenter&quot;) utan skriv istället de publika komponenter (&quot;f-komponenter&quot;) som påverkas av ändringen.</p></li>
+        <p class="docs-paragraph">Läs mer om <a href="./release.html#brytande_andringar">brytande ändringar</a>.</p>
+<h2 id="tumregler"><a class="header-anchor" href="#tumregler">Tumregler</a></h2><p class="docs-paragraph">Ett bra commitmeddelande ska:</p>
+<ul>
+<li>Beskriva vilken eller vilka komponenter eller funktioner som berörs. Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</li>
+<li>Undvika att benämna ramverkskomponenter (&quot;i-komponenter&quot;) utan skriv istället de publika komponenter (&quot;f-komponenter&quot;) som påverkas av ändringen.</li>
 </ul>
 
             <div class="docs-messagebox docs-messagebox--info">
                 <p class="docs-messagebox__title">Bra meddelande</p>
                 <ul>
-<li><p class="docs-paragraph">feat: add new prop <code>foo</code> on component <code>FBar</code> (refs XYZ-123)</p></li>
-<li><p class="docs-paragraph">fix: fix styling issue when clicking on <code>FBaz</code> (fixes XYZ-123)</p></li>
+<li>feat: add new prop <code>foo</code> on component <code>FBar</code> (refs XYZ-123)</li>
+<li>fix: fix styling issue when clicking on <code>FBaz</code> (fixes XYZ-123)</li>
 </ul>
 
             </div>
@@ -671,13 +680,15 @@ Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code
             <div class="docs-messagebox docs-messagebox--danger">
                 <p class="docs-messagebox__title">Undvik</p>
                 <ul>
-<li><p class="docs-paragraph">feat: add new prop (refs XYZ-123)</p></li>
-<li><p class="docs-paragraph">fix: WIP (fix XYZ-123)</p></li>
+<li>feat: add new prop (refs XYZ-123)</li>
+<li>fix: WIP (fix XYZ-123)</li>
 </ul>
 
             </div>
         <h2 id="commitlint"><a class="header-anchor" href="#commitlint">Commitlint</a></h2><p class="docs-paragraph">Vi använder <a href="https://commitlint.js.org/">Commitlint</a> för att upprätthålla formatet på commitmeddelanden.
-Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code> från <code>.husky/commit-msg</code>) och är konfigurerat med att använda <a href="https://github.com/Forsakringskassan/commitlint-config"><code>@forsakringskassan/commitlint-config</code></a>.</p><p class="docs-paragraph">Om det behövs kan du kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
+Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code> från <code>.husky/commit-msg</code>) och är konfigurerat med att använda <a href="https://github.com/Forsakringskassan/commitlint-config"><code>@forsakringskassan/commitlint-config</code></a>.</p>
+<p class="docs-paragraph">Om det behövs kan du kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
+
                 <div
                     id="example-a2af4f"
                     class="code-preview code-preview--default"
@@ -689,10 +700,11 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
                     <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">git commit --no-verify -m <span class="hljs-string">&#x27;non-conforming message&#x27;</span>
 </code></pre>
                 </div>
-            <h2 id="arbetsflode"><a class="header-anchor" href="#arbetsflode">Arbetsflöde</a></h2><p class="docs-paragraph">För feature-branches rekommenderar vi detta arbetsflödet för dina commits:</p><ol>
-<li><p class="docs-paragraph">För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch). Denna commit ska använda <code>feat</code> eller <code>fix</code> som type.</p></li>
-<li><p class="docs-paragraph">Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda <code>git commit --fixup</code> eller skapar en ny commit med <code>refactor</code> som type.</p></li>
-<li><p class="docs-paragraph">Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups men även de commits som använder <code>refactor</code> (vars syfte inte är att göra en refaktorisering av kod som inte skapats i denna branch).</p></li>
+            <h2 id="arbetsflode"><a class="header-anchor" href="#arbetsflode">Arbetsflöde</a></h2><p class="docs-paragraph">För feature-branches rekommenderar vi detta arbetsflödet för dina commits:</p>
+<ol>
+<li>För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch). Denna commit ska använda <code>feat</code> eller <code>fix</code> som type.</li>
+<li>Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda <code>git commit --fixup</code> eller skapar en ny commit med <code>refactor</code> som type.</li>
+<li>Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups men även de commits som använder <code>refactor</code> (vars syfte inte är att göra en refaktorisering av kod som inte skapats i denna branch).</li>
 </ol>
 
 
@@ -710,9 +722,9 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -825,16 +837,16 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

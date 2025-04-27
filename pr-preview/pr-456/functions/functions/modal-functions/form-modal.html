@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>formModal() function - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-2e829d.css"
+            href="../../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-98d3be.json"
+            href="../../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1396,8 +1396,10 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Open a form inside a <a href="../../../components/modal/fformmodal.html"><code>FFormModal</code></a> modal and return the form data.</p><p class="docs-paragraph">This is for Vue Options API.
-Use <a href="../use-modal.html">useModal()</a> with Composition API.</p><h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
+                    <div id="content"><p class="docs-paragraph">Open a form inside a <a href="../../../components/modal/fformmodal.html"><code>FFormModal</code></a> modal and return the form data.</p>
+<p class="docs-paragraph">This is for Vue Options API.
+Use <a href="../use-modal.html">useModal()</a> with Composition API.</p>
+<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
                     id="example-4ab95e"
                     class="code-preview code-preview--default"
@@ -1412,25 +1414,32 @@ Use <a href="../use-modal.html">useModal()</a> with Composition API.</p><h2 id="
             <h3 id="parameters"><a class="header-anchor" href="#parameters">Parameters</a></h3><dl>
 <dt><code>callingInstance</code></dt>
 <dd>
-<p class="docs-paragraph">Current component attempting to open confirmation modal. Typically <code>this</code>.</p></dd>
+<p class="docs-paragraph">Current component attempting to open confirmation modal. Typically <code>this</code>.</p>
+</dd>
 <dt><code>options</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>
-<p class="docs-paragraph">Modal options.</p><dl>
+<p class="docs-paragraph">Modal options.</p>
+<dl>
 <dt><code>size</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>
-<p class="docs-paragraph">Optional modal size.</p><p class="docs-paragraph">Must be one of:</p><ul>
-<li><p class="docs-paragraph"><code>&quot;large&quot;</code></p></li>
-<li><p class="docs-paragraph">`&quot;fullscreen&quot;</p></li>
+<p class="docs-paragraph">Optional modal size.</p>
+<p class="docs-paragraph">Must be one of:</p>
+<ul>
+<li><code>&quot;large&quot;</code></li>
+<li>`&quot;fullscreen&quot;</li>
 </ul>
 </dd>
 <dt><code>props</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>
-<p class="docs-paragraph">Optional props to pass to modal.</p></dd>
+<p class="docs-paragraph">Optional props to pass to modal.</p>
+</dd>
 </dl>
 </dd>
 </dl>
-<h3 id="return_value"><a class="header-anchor" href="#return_value">Return value</a></h3><p class="docs-paragraph">A <code>Promise</code> resolving to the form data bound to the <code>value</code> prop.</p><h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">Provided the component <code>MyFormModalComponent</code> has a <code>data</code> field of type <code>MyFormInterface</code> corresponding to the returned value on submit.
+<h3 id="return_value"><a class="header-anchor" href="#return_value">Return value</a></h3><p class="docs-paragraph">A <code>Promise</code> resolving to the form data bound to the <code>value</code> prop.</p>
+<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">Provided the component <code>MyFormModalComponent</code> has a <code>data</code> field of type <code>MyFormInterface</code> corresponding to the returned value on submit.
 On cancel/close a promise is rejected.</p>
+
                 <div
                     id="example-09a02e"
                     class="code-preview code-preview--default"
@@ -1471,6 +1480,7 @@ On cancel/close a promise is rejected.</p>
 <span class="hljs-comment">// Modal closed with result `data`</span></code></pre>
                 </div>
             <p class="docs-paragraph">The example below is for sending <code>size</code>, and custom Vue props to the component <code>MyFormModalComponent</code>.</p>
+
                 <div
                     id="example-0777c7"
                     class="code-preview code-preview--default"
@@ -1501,7 +1511,7 @@ On cancel/close a promise is rejected.</p>
 <span class="hljs-comment">// Modal closed with result `data`</span></code></pre>
                 </div>
             <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
-<li><p class="docs-paragraph"><a href="../use-modal.html">useModal()</a> for using with composition API.</p></li>
+<li><a href="../use-modal.html">useModal()</a> for using with composition API.</li>
 </ul>
 
 
@@ -1519,9 +1529,9 @@ On cancel/close a promise is rejected.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1634,16 +1644,16 @@ On cancel/close a promise is rejected.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../../assets/main-a45256.js"
+            src="../../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

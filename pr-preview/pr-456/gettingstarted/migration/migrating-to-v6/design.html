@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Version 6 migreringsguide: @fkui/design - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-2e829d.css"
+            href="../../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-98d3be.json"
+            href="../../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -553,13 +553,15 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Från version 6.0.0 levereras bara ett tema, det som tidigare hette EXP är nu standard.
-INT-temat är utbrutet och levereras inte av designsystemet längre.</p><ul>
-<li><p class="docs-paragraph"><code>@fkui/css-variables</code> har bytt namn till <code>@fkui/theme-default</code>.</p></li>
-<li><p class="docs-paragraph"><code>@fkui/design</code> levererar nu enbart ett tema.</p></li>
-<li><p class="docs-paragraph"><code>@fkui/design</code> levererar inte längre logotyper</p></li>
+INT-temat är utbrutet och levereras inte av designsystemet längre.</p>
+<ul>
+<li><code>@fkui/css-variables</code> har bytt namn till <code>@fkui/theme-default</code>.</li>
+<li><code>@fkui/design</code> levererar nu enbart ett tema.</li>
+<li><code>@fkui/design</code> levererar inte längre logotyper</li>
 </ul>
 <h2 id="tillampnings_specifika_leverabler_borttagna"><a class="header-anchor" href="#tillampnings_specifika_leverabler_borttagna">Tillämpnings-specifika leverabler borttagna</a></h2><p class="docs-paragraph">Designsystemet tillhandahåller nu endast ett tema.
 Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.</p>
+
                 <div
                     id="example-36eab3"
                     class="code-preview code-preview--default"
@@ -575,7 +577,9 @@ Som konsument finns det fortfarande möjlighet att själv tillhandahålla specif
 <span class="hljs-addition">+@use &quot;@fkui/design&quot;;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph"><a href="../../use-design-system/getting-started-application.html">Läs mer om att använda ett eget tema.</a></p><h2 id="deprekerade_css_variabler_borttagna"><a class="header-anchor" href="#deprekerade_css_variabler_borttagna">Deprekerade CSS-variabler borttagna</a></h2><p class="docs-paragraph">Möjlighet finns att importera separat vid behov.</p>
+            <p class="docs-paragraph"><a href="../../use-design-system/getting-started-application.html">Läs mer om att använda ett eget tema.</a></p>
+<h2 id="deprekerade_css_variabler_borttagna"><a class="header-anchor" href="#deprekerade_css_variabler_borttagna">Deprekerade CSS-variabler borttagna</a></h2><p class="docs-paragraph">Möjlighet finns att importera separat vid behov.</p>
+
                 <div
                     id="example-4bcee5"
                     class="code-preview code-preview--default"
@@ -594,6 +598,7 @@ Som konsument finns det fortfarande möjlighet att själv tillhandahålla specif
             <h2 id="fmodal_borttagna_css_klasser"><a class="header-anchor" href="#fmodal_borttagna_css_klasser"><code>FModal</code> borttagna CSS-klasser</a></h2><p class="docs-paragraph">De deprekerade CSS klasserna <code>modal__dialog-container-large</code> och <code>modal__dialog-container-fullscreen</code> är borttagna.
 Detta påverkar endast dig som använder stylingen direkt, använder man <code>@fkui/vue</code> komponenten <code>FModal</code> påverkas man inte.
 Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive <code>modal__dialog-container--fullscreen</code>.</p>
+
                 <div
                     id="example-2d565d"
                     class="code-preview code-preview--default"
@@ -607,6 +612,7 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
 </code></pre>
                 </div>
             <h2 id="entrypoint_tar_alltid_upp_100_yta"><a class="header-anchor" href="#entrypoint_tar_alltid_upp_100_yta">Entrypoint tar alltid upp 100% yta</a></h2><p class="docs-paragraph">Tidigare tog komponenten enbart upp 66% bredd i desktop, om du vill återskapa det beteendet kan du exempelvis nyttja grid'en:</p>
+
                 <div
                     id="example-f0171e"
                     class="code-preview code-preview--default"
@@ -623,21 +629,26 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
 </code></pre>
                 </div>
             <h2 id="logotyper_borttagna"><a class="header-anchor" href="#logotyper_borttagna">Logotyper borttagna</a></h2><p class="docs-paragraph">Alla logotyp-bilder är borttagna från <code>@fkui/design</code> utan ersättare.
-De som behöver dessa bilder behöver lägga in dem själv.</p><h2 id="navbar_borttagen"><a class="header-anchor" href="#navbar_borttagen">Navbar borttagen</a></h2><p class="docs-paragraph">Styling och klasser för navbar är borttagen och har ersatts av Vue-komponenterna <a href="../../../components/page-layout/fpageheader.html"><code>FPageHeader</code></a> och <a href="../../../components/page-layout/fnavigationmenu.html"><code>FNavigationMenu</code></a>.</p><p class="docs-paragraph">Även tillhörande CSS-variabler är borttagna:</p><ul>
-<li><p class="docs-paragraph"><code>--f-text-color-pageheader</code></p></li>
-<li><p class="docs-paragraph"><code>--f-text-color-navbar</code></p></li>
-<li><p class="docs-paragraph"><code>--f-text-color-navbar-active</code></p></li>
-<li><p class="docs-paragraph"><code>--f-background-pageheader-standard</code></p></li>
-<li><p class="docs-paragraph"><code>--f-background-pageheader-secondary</code></p></li>
-<li><p class="docs-paragraph"><code>--f-background-navbar</code></p></li>
-<li><p class="docs-paragraph"><code>--f-background-navbar-hover</code></p></li>
-<li><p class="docs-paragraph"><code>--f-border-color-separator-pageheader-standard</code></p></li>
-<li><p class="docs-paragraph"><code>--f-border-color-separator-pageheader-secondary</code></p></li>
-<li><p class="docs-paragraph"><code>--f-border-color-navbar-active</code></p></li>
-<li><p class="docs-paragraph"><code>--f-border-color-navbar-hover</code></p></li>
+De som behöver dessa bilder behöver lägga in dem själv.</p>
+<h2 id="navbar_borttagen"><a class="header-anchor" href="#navbar_borttagen">Navbar borttagen</a></h2><p class="docs-paragraph">Styling och klasser för navbar är borttagen och har ersatts av Vue-komponenterna <a href="../../../components/page-layout/fpageheader.html"><code>FPageHeader</code></a> och <a href="../../../components/page-layout/fnavigationmenu.html"><code>FNavigationMenu</code></a>.</p>
+<p class="docs-paragraph">Även tillhörande CSS-variabler är borttagna:</p>
+<ul>
+<li><code>--f-text-color-pageheader</code></li>
+<li><code>--f-text-color-navbar</code></li>
+<li><code>--f-text-color-navbar-active</code></li>
+<li><code>--f-background-pageheader-standard</code></li>
+<li><code>--f-background-pageheader-secondary</code></li>
+<li><code>--f-background-navbar</code></li>
+<li><code>--f-background-navbar-hover</code></li>
+<li><code>--f-border-color-separator-pageheader-standard</code></li>
+<li><code>--f-border-color-separator-pageheader-secondary</code></li>
+<li><code>--f-border-color-navbar-active</code></li>
+<li><code>--f-border-color-navbar-hover</code></li>
 </ul>
 <p class="docs-paragraph">Komponenten <code>FPageHeader</code> ersätter det som tidigare bestod av <code>.navbar__header</code>, och <code>FNavigationMenu</code> ersätter <code>.navbar__nav</code>.
-För att behålla samma funktionalitet behövs båda dessa komponenter användas. Besök respektive sida för ytterligare information om dessa komponenter och för exempel om hur du ska använda komponenterna.</p><p class="docs-paragraph">För att migrera till endast HTML och CSS, se nedan för ett exempel med liten logo samt första menyalternativ valt.</p>
+För att behålla samma funktionalitet behövs båda dessa komponenter användas. Besök respektive sida för ytterligare information om dessa komponenter och för exempel om hur du ska använda komponenterna.</p>
+<p class="docs-paragraph">För att migrera till endast HTML och CSS, se nedan för ett exempel med liten logo samt första menyalternativ valt.</p>
+
                 <div
                     id="example-132d06"
                     class="code-preview code-preview--default"
@@ -699,9 +710,9 @@ För att behålla samma funktionalitet behövs båda dessa komponenter användas
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -814,16 +825,16 @@ För att behålla samma funktionalitet behövs båda dessa komponenter användas
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../../assets/main-a45256.js"
+            src="../../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

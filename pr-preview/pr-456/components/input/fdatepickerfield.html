@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datumväljare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fadc45cb72e2fd8786c32666bc124767f8bfc8cc/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b1c79f8239c1eb57ba125747b250e0df92fd0d27/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">
                 FDatepickerField
             </a>
             
@@ -1103,9 +1103,10 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Datumväljaren underlättar när användaren ska välja en dag som har en tydlig koppling till en veckodag, till exempel:</p><ul>
-<li><p class="docs-paragraph">onsdag förra veckan</p></li>
-<li><p class="docs-paragraph">första måndagen i november</p></li>
+                    <div id="content"><p class="docs-paragraph">Datumväljaren underlättar när användaren ska välja en dag som har en tydlig koppling till en veckodag, till exempel:</p>
+<ul>
+<li>onsdag förra veckan</li>
+<li>första måndagen i november</li>
 </ul>
 
                 <div
@@ -1116,32 +1117,36 @@
                     data-language="vue"
                 >
                     
-        <div id="example-f89414"></div>
+        <div id="example-d50b36"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FDatepickerFieldLiveExample-f89414.js"></script>
+        <script type="module" src="./FDatepickerFieldLiveExample-d50b36.js"></script>
     
                 </div>
-            <p class="docs-paragraph">En datumväljare är mindre användbar när användaren ska ange:</p><ul>
-<li><p class="docs-paragraph">Ett datum som hen kommer ihåg, till exempel en födelsedag</p></li>
-<li><p class="docs-paragraph">Ett datum som finns i ett dokument som användaren har till hands, till exempel ett inflyttningsdatum i ett hyreskontrakt</p></li>
+            <p class="docs-paragraph">En datumväljare är mindre användbar när användaren ska ange:</p>
+<ul>
+<li>Ett datum som hen kommer ihåg, till exempel en födelsedag</li>
+<li>Ett datum som finns i ett dokument som användaren har till hands, till exempel ett inflyttningsdatum i ett hyreskontrakt</li>
 </ul>
 <h2 id="visning"><a class="header-anchor" href="#visning">Visning</a></h2><ul>
-<li><p class="docs-paragraph">Om inget datum är valt visas innevarande månad när kalendern öppnas.</p></li>
-<li><p class="docs-paragraph">Det går att välja vilket år och månad som ska visas som standard.</p></li>
-<li><p class="docs-paragraph">Visning av veckonummer kan döljas.</p></li>
-<li><p class="docs-paragraph">Dagens datum är markerat som standard.</p></li>
+<li>Om inget datum är valt visas innevarande månad när kalendern öppnas.</li>
+<li>Det går att välja vilket år och månad som ska visas som standard.</li>
+<li>Visning av veckonummer kan döljas.</li>
+<li>Dagens datum är markerat som standard.</li>
 </ul>
-<h3 id="format"><a class="header-anchor" href="#format">Format</a></h3><p class="docs-paragraph">Användaren kan skriva in följande format i inmatningsfältet:</p><ul>
-<li><p class="docs-paragraph">åååå-mm-dd</p></li>
-<li><p class="docs-paragraph">ååååmmdd</p></li>
-<li><p class="docs-paragraph">åååå/mm/dd</p></li>
+<h3 id="format"><a class="header-anchor" href="#format">Format</a></h3><p class="docs-paragraph">Användaren kan skriva in följande format i inmatningsfältet:</p>
+<ul>
+<li>åååå-mm-dd</li>
+<li>ååååmmdd</li>
+<li>åååå/mm/dd</li>
 </ul>
-<p class="docs-paragraph">Inmatningsfältet använder inte <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode">inputmode</a> = numeric eftersom det inte garanterar att tangentbordet innehåller bindestreck (minustecken).</p><h3 id="manad_som_visas_nar_inget_datum_ar_valt"><a class="header-anchor" href="#manad_som_visas_nar_inget_datum_ar_valt">Månad som visas när inget datum är valt</a></h3><p class="docs-paragraph">Använd initialMonth för att bestämma vilken månad som ska visas när inget datum är valt. Närmst efterföljande månad med valbara datum visas om du
+<p class="docs-paragraph">Inmatningsfältet använder inte <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode">inputmode</a> = numeric eftersom det inte garanterar att tangentbordet innehåller bindestreck (minustecken).</p>
+<h3 id="manad_som_visas_nar_inget_datum_ar_valt"><a class="header-anchor" href="#manad_som_visas_nar_inget_datum_ar_valt">Månad som visas när inget datum är valt</a></h3><p class="docs-paragraph">Använd initialMonth för att bestämma vilken månad som ska visas när inget datum är valt. Närmst efterföljande månad med valbara datum visas om du
 har valt en månad som inte har några valbara datum.</p>
+
                 <div
                     id="example-f0b074"
                     class="code-preview code-preview--default"
@@ -1157,17 +1162,20 @@ har valt en månad som inte har några valbara datum.</p>
 </code></pre>
                 </div>
             <h2 id="responsivitet"><a class="header-anchor" href="#responsivitet">Responsivitet</a></h2><ul>
-<li><p class="docs-paragraph">På små skärmar (&lt;640 px bredd) visas kalendern som en del av webbsidan (inline)</p></li>
-<li><p class="docs-paragraph">På större skärmar visas kalendern i en pop-up och täcker en del av sidan.</p></li>
-<li><p class="docs-paragraph">Kalenderns bredd anpassas utifrån skärmens bredd.</p></li>
-<li><p class="docs-paragraph">För att ge tillräcklig plats för datumen visas inte veckonummer på skärmar som är 325 px eller smalare.</p></li>
+<li>På små skärmar (&lt;640 px bredd) visas kalendern som en del av webbsidan (inline)</li>
+<li>På större skärmar visas kalendern i en pop-up och täcker en del av sidan.</li>
+<li>Kalenderns bredd anpassas utifrån skärmens bredd.</li>
+<li>För att ge tillräcklig plats för datumen visas inte veckonummer på skärmar som är 325 px eller smalare.</li>
 </ul>
-<h2 id="begransa_valbara_dagar"><a class="header-anchor" href="#begransa_valbara_dagar">Begränsa valbara dagar</a></h2><p class="docs-paragraph">Det går att styra vilka dagar som är valbara genom att:</p><ul>
-<li><p class="docs-paragraph">Sätta begräsningar framåt och bakåt i tiden.</p></li>
-<li><p class="docs-paragraph">Ange enskilda datum som inte är valbara</p></li>
-<li><p class="docs-paragraph">Ange veckodagar som inte är valbara.</p></li>
+<h2 id="begransa_valbara_dagar"><a class="header-anchor" href="#begransa_valbara_dagar">Begränsa valbara dagar</a></h2><p class="docs-paragraph">Det går att styra vilka dagar som är valbara genom att:</p>
+<ul>
+<li>Sätta begräsningar framåt och bakåt i tiden.</li>
+<li>Ange enskilda datum som inte är valbara</li>
+<li>Ange veckodagar som inte är valbara.</li>
 </ul>
-<p class="docs-paragraph">Som standard är datumväljaren begränsad till att bara tillåta val av datum 10 år tillbaka och framåt i tiden. Alla veckodagar och datum är valbara som standard.</p><p class="docs-paragraph">Validatorer används för att sätta begränsningar av valbara dagar.</p><h3 id="min_och_maxdatum"><a class="header-anchor" href="#min_och_maxdatum">Min- och maxdatum</a></h3>
+<p class="docs-paragraph">Som standard är datumväljaren begränsad till att bara tillåta val av datum 10 år tillbaka och framåt i tiden. Alla veckodagar och datum är valbara som standard.</p>
+<p class="docs-paragraph">Validatorer används för att sätta begränsningar av valbara dagar.</p>
+<h3 id="min_och_maxdatum"><a class="header-anchor" href="#min_och_maxdatum">Min- och maxdatum</a></h3>
                 <div
                     id="example-6defbf"
                     class="code-preview code-preview--default"
@@ -1216,6 +1224,7 @@ har valt en månad som inte har några valbara datum.</p>
 </code></pre>
                 </div>
             <h2 id="bredd_pa_inmatningsfalt_och_etikett"><a class="header-anchor" href="#bredd_pa_inmatningsfalt_och_etikett">Bredd på inmatningsfält och etikett</a></h2><p class="docs-paragraph">För att få plats med en längre text i etiketten går det att ha olika bredder på kalenderns etikett och inmatningsfält. Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss skärmbredd.</p>
+
                 <div
                     id="example-1bdb1d"
                     class="code-preview code-preview--default"
@@ -1231,10 +1240,11 @@ har valt en månad som inte har några valbara datum.</p>
  &gt;&lt;/f-datepicker-field&gt;
 </code></pre>
                 </div>
-            <h2 id="inaktiv"><a class="header-anchor" href="#inaktiv">Inaktiv</a></h2><p class="docs-paragraph">Inaktiva komponenter ska undvikas.</p><ul>
-<li><p class="docs-paragraph">Om användaren försöker interagera med en inaktiv komponent ges ingen information om varför komponenten är inaktiv.</p></li>
-<li><p class="docs-paragraph">Användare av skärmläsare får inte veta att komponenten finns eftersom skärmläsare hoppar över inaktiva komponenter.</p></li>
-<li><p class="docs-paragraph">Inaktiva komponenter har ofta för låg kontrast.</p></li>
+            <h2 id="inaktiv"><a class="header-anchor" href="#inaktiv">Inaktiv</a></h2><p class="docs-paragraph">Inaktiva komponenter ska undvikas.</p>
+<ul>
+<li>Om användaren försöker interagera med en inaktiv komponent ges ingen information om varför komponenten är inaktiv.</li>
+<li>Användare av skärmläsare får inte veta att komponenten finns eftersom skärmläsare hoppar över inaktiva komponenter.</li>
+<li>Inaktiva komponenter har ofta för låg kontrast.</li>
 </ul>
 
                 <div
@@ -1252,6 +1262,7 @@ har valt en månad som inte har några valbara datum.</p>
 </code></pre>
                 </div>
             <h2 id="visa_inline"><a class="header-anchor" href="#visa_inline">Visa inline</a></h2><p class="docs-paragraph">Använd alwaysInline om kalendern ska visas inline oavsett skärmbredd.</p>
+
                 <div
                     id="example-33a316"
                     class="code-preview code-preview--default"
@@ -1563,9 +1574,9 @@ If unspecified, todays month will be shown when no day is selected.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1678,16 +1689,16 @@ If unspecified, todays month will be shown when no day is selected.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Fältgruppering - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fadc45cb72e2fd8786c32666bc124767f8bfc8cc/packages/vue/src/components/FFieldset/FFieldset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b1c79f8239c1eb57ba125747b250e0df92fd0d27/packages/vue/src/components/FFieldset/FFieldset.vue">
                 FFieldset
             </a>
             
@@ -1098,7 +1098,9 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Använd komponenten fältgruppering för att gruppera och knyta ihop flera
-inmatningskomponenter semantiskt och ge dem en gemensam etikett.</p><p class="docs-paragraph">Gruppera bara några få inmatningskomponenter som hör ihop tydligt under en fråga eller rubrik.</p>
+inmatningskomponenter semantiskt och ge dem en gemensam etikett.</p>
+<p class="docs-paragraph">Gruppera bara några få inmatningskomponenter som hör ihop tydligt under en fråga eller rubrik.</p>
+
             <div
                 id="example-a5bcec"
                 class="code-preview code-preview--default"
@@ -1108,13 +1110,13 @@ inmatningskomponenter semantiskt och ge dem en gemensam etikett.</p><p class="do
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-e6754b"></div>
+        <div id="example-e463f4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./CrossValidateDates-e6754b.js"></script>
+        <script type="module" src="./CrossValidateDates-e463f4.js"></script>
     </div>
                 <div>
             <button
@@ -1207,15 +1209,21 @@ inmatningskomponenter semantiskt och ge dem en gemensam etikett.</p><p class="do
                 </div>
             </div>
         <p class="docs-paragraph">Fältgruppering en är <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset">fieldset</a> med en
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend">legend</a>.</p><h2 id="skarmlasaranvandare"><a class="header-anchor" href="#skarmlasaranvandare">Skärmläsaranvändare</a></h2><p class="docs-paragraph">Fältgrupperingens etikett läses upp av skärmläsaren när användaren tabbar till en komponent i gruppen.
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend">legend</a>.</p>
+<h2 id="skarmlasaranvandare"><a class="header-anchor" href="#skarmlasaranvandare">Skärmläsaranvändare</a></h2><p class="docs-paragraph">Fältgrupperingens etikett läses upp av skärmläsaren när användaren tabbar till en komponent i gruppen.
 Detta ska jämföras med rubriker som bara läses upp om piltangenterna används för att stega sidans
-innehåll.</p><h2 id="nastla_inte"><a class="header-anchor" href="#nastla_inte">Nästla inte</a></h2><p class="docs-paragraph">Placera inte en fältgruppering i en annan fältgruppering. Skärmläsare läser inte upp när en fältgruppering slutar.
+innehåll.</p>
+<h2 id="nastla_inte"><a class="header-anchor" href="#nastla_inte">Nästla inte</a></h2><p class="docs-paragraph">Placera inte en fältgruppering i en annan fältgruppering. Skärmläsare läser inte upp när en fältgruppering slutar.
 När en fältgruppering placeras i en annan fältgruppering kommer skärmläsaren inte heller läsa upp
 vilken etikett den yttre fältgrupperingen har. Därmed får användaren inte tillräckligt med
-information för att avgöra i vilket sammanhang som en komponent är placerad.</p><h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p class="docs-paragraph">Fältgruppering ger möjlighet att använda en etikett som inte behöver
-upprepas för varje inmatningskomponent. Se exemplet med från- och till-datum.</p><p class="docs-paragraph">Vi återkommer med detaljer kring copy.</p><h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Fältgruppering används alltid för att gruppera <a href="../input/fradiofield.html">radioknappar</a> och
+information för att avgöra i vilket sammanhang som en komponent är placerad.</p>
+<h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><p class="docs-paragraph">Fältgruppering ger möjlighet att använda en etikett som inte behöver
+upprepas för varje inmatningskomponent. Se exemplet med från- och till-datum.</p>
+<p class="docs-paragraph">Vi återkommer med detaljer kring copy.</p>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Fältgruppering används alltid för att gruppera <a href="../input/fradiofield.html">radioknappar</a> och
 <a href="../input/fcheckboxfield.html">kryssrutor</a>. Fältgrupperingen styr om radioknappar ska visas
-horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../chip.html">chip</a>.</p><h3 id="rekommenderade_attribut"><a class="header-anchor" href="#rekommenderade_attribut">Rekommenderade attribut</a></h3>
+horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../chip.html">chip</a>.</p>
+<h3 id="rekommenderade_attribut"><a class="header-anchor" href="#rekommenderade_attribut">Rekommenderade attribut</a></h3>
             <div
                 id="example-f10334"
                 class="code-preview code-preview--default"
@@ -1225,13 +1233,13 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-be6861"></div>
+        <div id="example-d7e70f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFieldsetDefault-be6861.js"></script>
+        <script type="module" src="./FFieldsetDefault-d7e70f.js"></script>
     </div>
                 <div>
             <button
@@ -1298,13 +1306,13 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-765554"></div>
+        <div id="example-16a41f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFieldsetRadioButtons-765554.js"></script>
+        <script type="module" src="./FFieldsetRadioButtons-16a41f.js"></script>
     </div>
                 <div>
             <button
@@ -1357,13 +1365,13 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-5e5ec5"></div>
+        <div id="example-79599d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFieldsetRadioButtonsHorizontal-5e5ec5.js"></script>
+        <script type="module" src="./FFieldsetRadioButtonsHorizontal-79599d.js"></script>
     </div>
                 <div>
             <button
@@ -1416,13 +1424,13 @@ horisontellt eller om radioknappar eller kryssrutor ska visas som <a href="../ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-b11987"></div>
+        <div id="example-0bfdfd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFieldsetCheckbox-b11987.js"></script>
+        <script type="module" src="./FFieldsetCheckbox-0bfdfd.js"></script>
     </div>
                 <div>
             <button
@@ -1761,9 +1769,9 @@ Supported by radiobuttons and chip layout.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1876,16 +1884,16 @@ Supported by radiobuttons and chip layout.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

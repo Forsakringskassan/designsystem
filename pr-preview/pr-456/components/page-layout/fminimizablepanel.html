@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Minimerbar panel - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fadc45cb72e2fd8786c32666bc124767f8bfc8cc/packages/vue/src/components/FMinimizablePanel/FMinimizablePanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b1c79f8239c1eb57ba125747b250e0df92fd0d27/packages/vue/src/components/FMinimizablePanel/FMinimizablePanel.vue">
                 FMinimizablePanel
             </a>
             
@@ -1094,7 +1094,9 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Minimerbar panel (FMinimizablePanel) används tillsammans med <a href="./fpagelayout.html">applikationsmallen</a>
-för att ge användaren möjlighet att visa innehåll i öppet läge eller minimerat läge.</p><p class="docs-paragraph">Komponenten har även stöd för att kombineras ihop med <a href="./fresizepane.html">justerbar yta</a>.</p>
+för att ge användaren möjlighet att visa innehåll i öppet läge eller minimerat läge.</p>
+<p class="docs-paragraph">Komponenten har även stöd för att kombineras ihop med <a href="./fresizepane.html">justerbar yta</a>.</p>
+
             <div
                 id="example-152072"
                 class="code-preview code-preview--default"
@@ -1167,12 +1169,15 @@ för att ge användaren möjlighet att visa innehåll i öppet läge eller minim
 </code></pre>
                 </div>
             </div>
-        <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Använd native slots för att placera innehåll:</p><ul>
-<li><p class="docs-paragraph"><code>header</code></p></li>
-<li><p class="docs-paragraph"><code>default</code></p></li>
-<li><p class="docs-paragraph"><code>footer</code>.</p></li>
+        <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Använd native slots för att placera innehåll:</p>
+<ul>
+<li><code>header</code></li>
+<li><code>default</code></li>
+<li><code>footer</code>.</li>
 </ul>
-<p class="docs-paragraph">Native slot innebär att du som konsument skapar elementet för sloten med attributet <code>slot</code>.</p><p class="docs-paragraph">Använd flaggan <code>isOpen</code> för att styra vad som renderas beroende på om panelen är öppen eller minimerad.</p>
+<p class="docs-paragraph">Native slot innebär att du som konsument skapar elementet för sloten med attributet <code>slot</code>.</p>
+<p class="docs-paragraph">Använd flaggan <code>isOpen</code> för att styra vad som renderas beroende på om panelen är öppen eller minimerad.</p>
+
                 <div
                     id="example-a93124"
                     class="code-preview code-preview--default"
@@ -1193,6 +1198,7 @@ för att ge användaren möjlighet att visa innehåll i öppet läge eller minim
 </code></pre>
                 </div>
             <p class="docs-paragraph">Du kan byta ut ikonen via <code>icon</code>-sloten.</p>
+
                 <div
                     id="example-82603d"
                     class="code-preview code-preview--default"
@@ -1208,12 +1214,20 @@ för att ge användaren möjlighet att visa innehåll i öppet läge eller minim
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-minimizable-panel</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="anpassa_texter"><a class="header-anchor" href="#anpassa_texter">Anpassa texter</a></h2><p class="docs-paragraph">Ikonens skärmläsartext består av ett prefix och en beskrivning av panelen:</p><p class="docs-paragraph"><code>{prefix} {context}</code></p><p class="docs-paragraph">Prefix varierar beroende på om panelen är öppen eller inte.</p><p class="docs-paragraph">Standardtext för minimerat läge:</p><blockquote>
-<p class="docs-paragraph">&quot;Återställ panel&quot;</p></blockquote>
-<p class="docs-paragraph">Standardtext för öppet läge:</p><blockquote>
-<p class="docs-paragraph">&quot;Minimera panel&quot;</p></blockquote>
+            <h2 id="anpassa_texter"><a class="header-anchor" href="#anpassa_texter">Anpassa texter</a></h2><p class="docs-paragraph">Ikonens skärmläsartext består av ett prefix och en beskrivning av panelen:</p>
+<p class="docs-paragraph"><code>{prefix} {context}</code></p>
+<p class="docs-paragraph">Prefix varierar beroende på om panelen är öppen eller inte.</p>
+<p class="docs-paragraph">Standardtext för minimerat läge:</p>
+<blockquote>
+<p class="docs-paragraph">&quot;Återställ panel&quot;</p>
+</blockquote>
+<p class="docs-paragraph">Standardtext för öppet läge:</p>
+<blockquote>
+<p class="docs-paragraph">&quot;Minimera panel&quot;</p>
+</blockquote>
 <p class="docs-paragraph">Konsumenten kan påverka ikonens skärmläsartext via textnycklar
 eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
+
                 <div
                     id="example-a3c343"
                     class="code-preview code-preview--default"
@@ -1397,9 +1411,9 @@ eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1512,16 +1526,16 @@ eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

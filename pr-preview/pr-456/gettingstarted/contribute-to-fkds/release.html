@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Releaseprocess - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -553,41 +553,52 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Här beskriver vi hur du går från en ide till en ny version av FKUI.</p>
+
                 <pre class="mermaid">flowchart LR
 prX[Feature X]:::dashed .-&gt; release
 prepare[Förberedelse] --&gt; commit[Implementation] --&gt; pr[Pull Request] --&gt; release[Release]
 prY[Feature Y]:::dashed .-&gt; release
 classDef dashed fill:transparent,stroke-dasharray:2
 </pre>
-            <h2 id="innan_du_borjar"><a class="header-anchor" href="#innan_du_borjar">Innan du börjar</a></h2><p class="docs-paragraph">Kontakta FKDS-teamet innan du påbörjar ditt arbeta så att du inte gör något i onödan.</p><p class="docs-paragraph">På så vis kan vi säkerställa</p><ul>
-<li><p class="docs-paragraph">att ingen annan redan jobbar med samma feature</p></li>
-<li><p class="docs-paragraph">att det är något vi vill lägga in i designsystemet (så ditt arbete inte blir bortkastat)</p></li>
-<li><p class="docs-paragraph">att lösningsförslaget är genomtänkt och förankrat med krav, designers, copy, och så vidare.</p></li>
-</ul>
-<p class="docs-paragraph">För större ändringar utser vi en kontaktperson i FKDS-teamet som hjälper till med frågor och funderingar och lotsar dig genom releaseprocessen.</p><h2 id="implementation"><a class="header-anchor" href="#implementation">Implementation</a></h2><p class="docs-paragraph">Efter att du kommunicerat med teamet och fått en kontaktperson kan du börja implementera.</p><p class="docs-paragraph">Vi använder <code>main</code> som primär branch och du utgår vanligtvis från den branchen.
-Gäller det en buggrättning som ska ut mot en äldre version utgår du från <code>release/N.x</code> (exempelvis <code>release/4.x</code> för v4).</p><h3 id="branchnamn"><a class="header-anchor" href="#branchnamn">Branchnamn</a></h3><p class="docs-paragraph">Namnge din branch utifrån syfte:</p><ul>
-<li><p class="docs-paragraph"><code>feature/...</code> - en ny feature som läggs till.</p></li>
-<li><p class="docs-paragraph"><code>bugfix/...</code> - buggrättning av existerande feature.</p></li>
-</ul>
-<p class="docs-paragraph">Om din branch enbart rör dokumentation eller refaktorisering kan du använda:</p><ul>
-<li><p class="docs-paragraph"><code>docs/...</code> - ändring av enbart dokumentation.</p></li>
-<li><p class="docs-paragraph"><code>refactor/...</code> - enbart refaktorisering.</p></li>
-</ul>
-<p class="docs-paragraph">Om det finns ett JIRA- eller GitHub-ärende kan du använda det i branchens namn:</p><ul>
-<li><p class="docs-paragraph"><code>bugfix/SFKUI-1234-...</code> för JIRA-ärende.</p></li>
-<li><p class="docs-paragraph"><code>feature/issue-123</code> - för GitHub-ärende.</p></li>
-</ul>
-<h3 id="commits"><a class="header-anchor" href="#commits">Commits</a></h3><p class="docs-paragraph">Commitmeddelanden skrivs i ett format baserat på <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> och ligger som grund för release och changelog.</p><ul>
-<li><p class="docs-paragraph">Läs mer om <a href="./commits.html">commitmeddelanden</a>.</p></li>
-</ul>
-<p class="docs-paragraph">Vi rekommenderar följande arbetsflöde:</p><ol>
-<li><p class="docs-paragraph">Skapa en branch som utgår från <code>main</code> eller <code>release/N.x</code>.</p></li>
-<li><p class="docs-paragraph">Skapa commits.</p>
+            <h2 id="innan_du_borjar"><a class="header-anchor" href="#innan_du_borjar">Innan du börjar</a></h2><p class="docs-paragraph">Kontakta FKDS-teamet innan du påbörjar ditt arbeta så att du inte gör något i onödan.</p>
+<p class="docs-paragraph">På så vis kan vi säkerställa</p>
 <ul>
-<li><p class="docs-paragraph">Varje distinkt/fristående ändring i en egen commit.</p></li>
-<li><p class="docs-paragraph">Använd <code>git commit --amend</code> för att ändra föregående commit.</p></li>
-<li><p class="docs-paragraph">Använd <code>git commit --fixup :/&quot;search term&quot;</code> för att ändra en äldre commit (där &quot;search term&quot; är en del av tidigare commitmeddelande).</p></li>
-<li><p class="docs-paragraph">Använd <code>refactor: ...</code> för ändringar relaterade till din feature som inte behöver synas ut mot konsument.</p></li>
+<li>att ingen annan redan jobbar med samma feature</li>
+<li>att det är något vi vill lägga in i designsystemet (så ditt arbete inte blir bortkastat)</li>
+<li>att lösningsförslaget är genomtänkt och förankrat med krav, designers, copy, och så vidare.</li>
+</ul>
+<p class="docs-paragraph">För större ändringar utser vi en kontaktperson i FKDS-teamet som hjälper till med frågor och funderingar och lotsar dig genom releaseprocessen.</p>
+<h2 id="implementation"><a class="header-anchor" href="#implementation">Implementation</a></h2><p class="docs-paragraph">Efter att du kommunicerat med teamet och fått en kontaktperson kan du börja implementera.</p>
+<p class="docs-paragraph">Vi använder <code>main</code> som primär branch och du utgår vanligtvis från den branchen.
+Gäller det en buggrättning som ska ut mot en äldre version utgår du från <code>release/N.x</code> (exempelvis <code>release/4.x</code> för v4).</p>
+<h3 id="branchnamn"><a class="header-anchor" href="#branchnamn">Branchnamn</a></h3><p class="docs-paragraph">Namnge din branch utifrån syfte:</p>
+<ul>
+<li><code>feature/...</code> - en ny feature som läggs till.</li>
+<li><code>bugfix/...</code> - buggrättning av existerande feature.</li>
+</ul>
+<p class="docs-paragraph">Om din branch enbart rör dokumentation eller refaktorisering kan du använda:</p>
+<ul>
+<li><code>docs/...</code> - ändring av enbart dokumentation.</li>
+<li><code>refactor/...</code> - enbart refaktorisering.</li>
+</ul>
+<p class="docs-paragraph">Om det finns ett JIRA- eller GitHub-ärende kan du använda det i branchens namn:</p>
+<ul>
+<li><code>bugfix/SFKUI-1234-...</code> för JIRA-ärende.</li>
+<li><code>feature/issue-123</code> - för GitHub-ärende.</li>
+</ul>
+<h3 id="commits"><a class="header-anchor" href="#commits">Commits</a></h3><p class="docs-paragraph">Commitmeddelanden skrivs i ett format baserat på <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> och ligger som grund för release och changelog.</p>
+<ul>
+<li>Läs mer om <a href="./commits.html">commitmeddelanden</a>.</li>
+</ul>
+<p class="docs-paragraph">Vi rekommenderar följande arbetsflöde:</p>
+<ol>
+<li>Skapa en branch som utgår från <code>main</code> eller <code>release/N.x</code>.</li>
+<li>Skapa commits.
+<ul>
+<li>Varje distinkt/fristående ändring i en egen commit.</li>
+<li>Använd <code>git commit --amend</code> för att ändra föregående commit.</li>
+<li>Använd <code>git commit --fixup :/&quot;search term&quot;</code> för att ändra en äldre commit (där &quot;search term&quot; är en del av tidigare commitmeddelande).</li>
+<li>Använd <code>refactor: ...</code> för ändringar relaterade till din feature som inte behöver synas ut mot konsument.</li>
 </ul>
 </li>
 </ol>
@@ -616,10 +627,11 @@ gitGraph
     commit id: &quot;test: add missing tests&quot;
     commit id: &quot;docs: write documentation&quot;
 </pre>
-            <p class="docs-paragraph">Städa upp din branch inför en Pull Request:</p><ol>
-<li><p class="docs-paragraph"><code>git fetch</code> - för att hämta ner senaste från Github.</p></li>
-<li><p class="docs-paragraph"><code>git rebase origin/main</code> - för att flytta dina commits över senaste <code>main</code> (rebase).</p></li>
-<li><p class="docs-paragraph"><code>git rebase -i origin/main</code> - för att slå ihop, ändra ordning och dela upp commits (interactive rebase).</p></li>
+            <p class="docs-paragraph">Städa upp din branch inför en Pull Request:</p>
+<ol>
+<li><code>git fetch</code> - för att hämta ner senaste från Github.</li>
+<li><code>git rebase origin/main</code> - för att flytta dina commits över senaste <code>main</code> (rebase).</li>
+<li><code>git rebase -i origin/main</code> - för att slå ihop, ändra ordning och dela upp commits (interactive rebase).</li>
 </ol>
 
                 <pre class="mermaid">gitGraph
@@ -632,26 +644,31 @@ gitGraph
     checkout feature/awesome-feature
     commit id: &quot;feat: new awesome feature&quot;
 </pre>
-            <p class="docs-paragraph">Läs igenom dina commits och tänk till för varje:</p><ul>
-<li><p class="docs-paragraph">Är det en distinkt ändring? Ska den delas eller slås ihop med andra commits?</p></li>
-<li><p class="docs-paragraph">Är meddelandet begripligt utan mer sammanhang?</p></li>
-<li><p class="docs-paragraph">Ska meddelandet visas i Changelog och announcements?</p></li>
+            <p class="docs-paragraph">Läs igenom dina commits och tänk till för varje:</p>
+<ul>
+<li>Är det en distinkt ändring? Ska den delas eller slås ihop med andra commits?</li>
+<li>Är meddelandet begripligt utan mer sammanhang?</li>
+<li>Ska meddelandet visas i Changelog och announcements?</li>
 </ul>
 <h2 id="brytande_andringar"><a class="header-anchor" href="#brytande_andringar">Brytande ändringar</a></h2><p class="docs-paragraph">Undvik brytande ändringar om det är möjligt.
 Skriv istället koden på ett sätt som fungerar bakåtkompatibelt.
-Rådgör gärna med din kontaktperson i FKDS-teamet.</p><p class="docs-paragraph">Exempel på åtgärder du kan göra för att behålla bakåtkompatibilitet:</p><ul>
-<li><p class="docs-paragraph">En ny komponent som ersätter en gammal som deprekeras.</p></li>
-<li><p class="docs-paragraph">En ny prop som ersätter en gammal och/eller gammal prop som accepterar flera datatyper och värden där vissa är deprekerade.</p></li>
+Rådgör gärna med din kontaktperson i FKDS-teamet.</p>
+<p class="docs-paragraph">Exempel på åtgärder du kan göra för att behålla bakåtkompatibilitet:</p>
+<ul>
+<li>En ny komponent som ersätter en gammal som deprekeras.</li>
+<li>En ny prop som ersätter en gammal och/eller gammal prop som accepterar flera datatyper och värden där vissa är deprekerade.</li>
 </ul>
-<p class="docs-paragraph">Går det inte lösa utan att bryta kompatibilitet så gäller följande:</p><ul>
-<li><p class="docs-paragraph">Vi tillsammans samlar ihop flera brytande ändringar i samma release.</p></li>
-<li><p class="docs-paragraph">Vi tillsammans går igenom kodbasen och tar nuvarande deprekerad funktionalitet.</p></li>
-<li><p class="docs-paragraph">Vi tillsammans uppdaterar <a href="../about/release-plan.html">Release planen</a>.</p></li>
-<li><p class="docs-paragraph">Vi tillsammans arbetar fram ett nyhetsmeddelande.</p></li>
-<li><p class="docs-paragraph">Din commit ska använda <code>!</code> efter type samt en trailer med <code>BREAKING CHANGE:</code> och kortfattade förklaring och instruktioner till migrering.</p></li>
-<li><p class="docs-paragraph">Din commit ska innehålla en utförlig migreringsguide. Inkludera exempel och kod-diff.</p></li>
+<p class="docs-paragraph">Går det inte lösa utan att bryta kompatibilitet så gäller följande:</p>
+<ul>
+<li>Vi tillsammans samlar ihop flera brytande ändringar i samma release.</li>
+<li>Vi tillsammans går igenom kodbasen och tar nuvarande deprekerad funktionalitet.</li>
+<li>Vi tillsammans uppdaterar <a href="../about/release-plan.html">Release planen</a>.</li>
+<li>Vi tillsammans arbetar fram ett nyhetsmeddelande.</li>
+<li>Din commit ska använda <code>!</code> efter type samt en trailer med <code>BREAKING CHANGE:</code> och kortfattade förklaring och instruktioner till migrering.</li>
+<li>Din commit ska innehålla en utförlig migreringsguide. Inkludera exempel och kod-diff.</li>
 </ul>
 <p class="docs-paragraph">Exempel på commitmeddelande:</p>
+
                 <div
                     id="example-71af86"
                     class="code-preview code-preview--default"
@@ -667,6 +684,7 @@ that. See migration guide for details.
 </code></pre>
                 </div>
             <p class="docs-paragraph">Exempel på migreringsguide:</p>
+
                 <div
                     id="example-dd1948"
                     class="code-preview code-preview--default"
@@ -692,80 +710,99 @@ Om du har detta måste du också göra detta:
 ```</span>
 </code></pre>
                 </div>
-            <h2 id="pull_request"><a class="header-anchor" href="#pull_request">Pull request</a></h2><p class="docs-paragraph">En pull request ska generellt sett innehålla:</p><ol>
-<li><p class="docs-paragraph">En tydlig beskrivning:</p>
+            <h2 id="pull_request"><a class="header-anchor" href="#pull_request">Pull request</a></h2><p class="docs-paragraph">En pull request ska generellt sett innehålla:</p>
+<ol>
+<li>En tydlig beskrivning:
 <ul>
-<li><p class="docs-paragraph">Vad är bakgrunden till ändringen? Beskriv ett användarfall eller hur en bugg uppstår.</p></li>
-<li><p class="docs-paragraph">Hur löser denna pull requesten ovan beskrivet problem?</p></li>
-<li><p class="docs-paragraph">Om ändringen är visuell inkludera gärna en enkel före/efter bild i beskrivningen.</p></li>
+<li>Vad är bakgrunden till ändringen? Beskriv ett användarfall eller hur en bugg uppstår.</li>
+<li>Hur löser denna pull requesten ovan beskrivet problem?</li>
+<li>Om ändringen är visuell inkludera gärna en enkel före/efter bild i beskrivningen.</li>
 </ul>
 </li>
-<li><p class="docs-paragraph">Välskriven kod som följer de kodstandarer vi satt upp.</p></li>
-<li><p class="docs-paragraph">Testfall, läs mer om <a href="./testverktyg.html">testning</a>:</p>
+<li>Välskriven kod som följer de kodstandarer vi satt upp.</li>
+<li>Testfall, läs mer om <a href="./testverktyg.html">testning</a>:
 <ul>
-<li><p class="docs-paragraph">Enhetstester för logik.</p></li>
-<li><p class="docs-paragraph">Komponenttester för interaktion.</p></li>
-<li><p class="docs-paragraph">Screenshot-tester för visuellt utseende.</p></li>
+<li>Enhetstester för logik.</li>
+<li>Komponenttester för interaktion.</li>
+<li>Screenshot-tester för visuellt utseende.</li>
 </ul>
 </li>
-<li><p class="docs-paragraph">Dokumentation:</p>
+<li>Dokumentation:
 <ul>
-<li><p class="docs-paragraph">Behöverer live-exempel uppdateras?</p></li>
-<li><p class="docs-paragraph">Behövs nytt stycke som förklarar vad ändringen är?</p></li>
-<li><p class="docs-paragraph">Behövs en guide som lär ut hur man använder ändringen?</p></li>
+<li>Behöverer live-exempel uppdateras?</li>
+<li>Behövs nytt stycke som förklarar vad ändringen är?</li>
+<li>Behövs en guide som lär ut hur man använder ändringen?</li>
 </ul>
 </li>
 </ol>
 <p class="docs-paragraph">När din branch är redo för granskning lägger du en pull request mot <code>main</code>.
-Din branch bör vara rebased över <code>main</code> och bör löpande rebasas över <code>main</code>.</p><p class="docs-paragraph">Vi accepterar merge commits men föredrar rebase för att hålla en ren historik.</p><p class="docs-paragraph">Om du använder squash merge är det viktigt att ditt nya commitmeddelande korrekt reflekterar ändringen.
-Ta bort övriga texter, behåll enbart det nya commitmeddelandet.</p><p class="docs-paragraph">Innan merge förväntar vi oss att du läst igenom listan med commits och säkerställt att samtliga commits är lämpliga för changelog.
-Några exempel på vanliga fel (men ej uteslutande lista):</p><ul>
-<li><p class="docs-paragraph">Flera commits med samma meddelande. Det medför brus i changelog där samma feature visas flera gånger (en gång per commit). Om commits hör ihop slå ihop dem till en och samma commit.</p></li>
-<li><p class="docs-paragraph">Flera distinkta feature eller buggrättningar ligger inbakade i en och samma commit. Det medför att ändringar inte syns i changelog. Dela upp din commit i flera nya, en per distinkt ändring.</p></li>
-<li><p class="docs-paragraph">Fel typ, exempelvis att <code>fix</code> eller <code>feat</code> används för ändringar som inte direkt påverkar konsumenten. Det medför brus i changelog där vi visar ändringar som inte påverkar. Använd en annan lämplig type exempelvis <code>refactor</code> eller <code>style</code>.</p></li>
+Din branch bör vara rebased över <code>main</code> och bör löpande rebasas över <code>main</code>.</p>
+<p class="docs-paragraph">Vi accepterar merge commits men föredrar rebase för att hålla en ren historik.</p>
+<p class="docs-paragraph">Om du använder squash merge är det viktigt att ditt nya commitmeddelande korrekt reflekterar ändringen.
+Ta bort övriga texter, behåll enbart det nya commitmeddelandet.</p>
+<p class="docs-paragraph">Innan merge förväntar vi oss att du läst igenom listan med commits och säkerställt att samtliga commits är lämpliga för changelog.
+Några exempel på vanliga fel (men ej uteslutande lista):</p>
+<ul>
+<li>Flera commits med samma meddelande. Det medför brus i changelog där samma feature visas flera gånger (en gång per commit). Om commits hör ihop slå ihop dem till en och samma commit.</li>
+<li>Flera distinkta feature eller buggrättningar ligger inbakade i en och samma commit. Det medför att ändringar inte syns i changelog. Dela upp din commit i flera nya, en per distinkt ändring.</li>
+<li>Fel typ, exempelvis att <code>fix</code> eller <code>feat</code> används för ändringar som inte direkt påverkar konsumenten. Det medför brus i changelog där vi visar ändringar som inte påverkar. Använd en annan lämplig type exempelvis <code>refactor</code> eller <code>style</code>.</li>
 </ul>
-<p class="docs-paragraph">Vi har ingen hård regel för hur många som behöver godkänna din pull request men några tumregler:</p><ul>
-<li><p class="docs-paragraph">Om ändringen rör mer än trivial kod: minst en utvecklare ur FKDS-teamet ska ha granskat.</p></li>
-<li><p class="docs-paragraph">Om ändringen rör mer än trivial dokumentation (stavfel, osv): minst en icke-utvecklare ur FKDS-teamet ska ha granskat.</p></li>
-<li><p class="docs-paragraph">Om ändringen behöver testning (och vid kodändring ska du utgå från att det behövs): minst en testare från ditt team eller ur FKDS-teamet. Rådgör gärna med testare i FKDS-teamet om vad/hur ändringen ska testas.</p></li>
+<p class="docs-paragraph">Vi har ingen hård regel för hur många som behöver godkänna din pull request men några tumregler:</p>
+<ul>
+<li>Om ändringen rör mer än trivial kod: minst en utvecklare ur FKDS-teamet ska ha granskat.</li>
+<li>Om ändringen rör mer än trivial dokumentation (stavfel, osv): minst en icke-utvecklare ur FKDS-teamet ska ha granskat.</li>
+<li>Om ändringen behöver testning (och vid kodändring ska du utgå från att det behövs): minst en testare från ditt team eller ur FKDS-teamet. Rådgör gärna med testare i FKDS-teamet om vad/hur ändringen ska testas.</li>
 </ul>
-<p class="docs-paragraph">Tumregler för godkännande av pull request:</p><ul>
-<li><p class="docs-paragraph">Vi använder uppgifter (tasks) för saker som måste korrigeras.</p></li>
-<li><p class="docs-paragraph">Har du fått ett godkännande innebär det att personen anser att din PR är tillräckligt bra för merge även om det fortfarande finns kommentarer kvar från personen.</p></li>
+<p class="docs-paragraph">Tumregler för godkännande av pull request:</p>
+<ul>
+<li>Vi använder uppgifter (tasks) för saker som måste korrigeras.</li>
+<li>Har du fått ett godkännande innebär det att personen anser att din PR är tillräckligt bra för merge även om det fortfarande finns kommentarer kvar från personen.</li>
 </ul>
 <p class="docs-paragraph">Om du har skrivrättigheter till repository kan du merga din pull request själv.
-Be din kontaktperson merga om du saknar du rättigheter.</p><p class="docs-paragraph">Om din ändring är stor eller komplex finns det en risk att granskning drar ut på tiden.
+Be din kontaktperson merga om du saknar du rättigheter.</p>
+<p class="docs-paragraph">Om din ändring är stor eller komplex finns det en risk att granskning drar ut på tiden.
 Försök att dela upp din PR i flera små PRs som kan granskas och mergas inviduellt.
-Rådgör med kontaktpersonen i FKDS-teamet om hur granskningen ska slutföras och när det är lämpligt att merga.</p><p class="docs-paragraph">Skapa gärna en pull request tidigt för att samla in återkoppling.
-Du kan med fördel skapa den som en &quot;Draft&quot; för att tydligt markera att det inte är färdigt arbete.</p><p class="docs-paragraph">Se också <a href="./checklist-publication.html">checklista för publicering</a>.</p><h2 id="nyheter"><a class="header-anchor" href="#nyheter">Nyheter</a></h2><p class="docs-paragraph">Vi publicerar alla större ändringar som nyheter på hemsida, chatt och andra kanaler.</p><p class="docs-paragraph">Det kan vara</p><ul>
-<li><p class="docs-paragraph">nya eller större ändringar i komponenter eller funktioner</p></li>
-<li><p class="docs-paragraph">ändringar i visuellt utseende</p></li>
-<li><p class="docs-paragraph">brytande ändringar.</p></li>
+Rådgör med kontaktpersonen i FKDS-teamet om hur granskningen ska slutföras och när det är lämpligt att merga.</p>
+<p class="docs-paragraph">Skapa gärna en pull request tidigt för att samla in återkoppling.
+Du kan med fördel skapa den som en &quot;Draft&quot; för att tydligt markera att det inte är färdigt arbete.</p>
+<p class="docs-paragraph">Se också <a href="./checklist-publication.html">checklista för publicering</a>.</p>
+<h2 id="nyheter"><a class="header-anchor" href="#nyheter">Nyheter</a></h2><p class="docs-paragraph">Vi publicerar alla större ändringar som nyheter på hemsida, chatt och andra kanaler.</p>
+<p class="docs-paragraph">Det kan vara</p>
+<ul>
+<li>nya eller större ändringar i komponenter eller funktioner</li>
+<li>ändringar i visuellt utseende</li>
+<li>brytande ändringar.</li>
 </ul>
 <p class="docs-paragraph">Lägg gärna upp förslag på formulering till nyhet i din pull request.
-Texten ska innehålla en kortfattad beskrivning av ändringen.</p><h2 id="release"><a class="header-anchor" href="#release">Release</a></h2><p class="docs-paragraph">Release byggs från CI-miljö för att säkerställa att vi har reproducerbara byggen och transparens i hur releasen är gjord.
-Bygg inte release från lokal utvecklingsmiljö.</p><p class="docs-paragraph">Checklista innan release:</p><ul>
-<li><p class="docs-paragraph">Prata med FKDS-teamet om releasen ska invänta andra pull requests som måste mergas först.</p></li>
-<li><p class="docs-paragraph">Saknar du skrivrättigheter till repository prata med FKDS-teamet.</p></li>
-<li><p class="docs-paragraph">Behöver en nyhet skrivas?</p></li>
-<li><p class="docs-paragraph">Finns det en eller fler commits med type <code>feat</code> eller <code>fix</code>?</p></li>
-</ul>
-<p class="docs-paragraph">För att bygga en release:</p><ol>
-<li><p class="docs-paragraph">Gå till <a href="https://github.com/Forsakringskassan/designsystem/actions">Actions</a>, välj workflow <a href="https://github.com/Forsakringskassan/designsystem/actions/workflows/release.yml">Release</a>.</p></li>
-<li><p class="docs-paragraph">Klicka på &quot;Run workflow&quot;.</p></li>
-<li><p class="docs-paragraph">Om branchen är satt till:</p>
+Texten ska innehålla en kortfattad beskrivning av ändringen.</p>
+<h2 id="release"><a class="header-anchor" href="#release">Release</a></h2><p class="docs-paragraph">Release byggs från CI-miljö för att säkerställa att vi har reproducerbara byggen och transparens i hur releasen är gjord.
+Bygg inte release från lokal utvecklingsmiljö.</p>
+<p class="docs-paragraph">Checklista innan release:</p>
 <ul>
-<li><p class="docs-paragraph"><code>main</code> kommer en ny release skapas på <code>latest</code>.</p></li>
-<li><p class="docs-paragraph"><code>release/*</code> kommer en ny maintenance release skapas på en äldre major version.</p></li>
-<li><p class="docs-paragraph">övriga brancher genererar ingen release.</p></li>
+<li>Prata med FKDS-teamet om releasen ska invänta andra pull requests som måste mergas först.</li>
+<li>Saknar du skrivrättigheter till repository prata med FKDS-teamet.</li>
+<li>Behöver en nyhet skrivas?</li>
+<li>Finns det en eller fler commits med type <code>feat</code> eller <code>fix</code>?</li>
+</ul>
+<p class="docs-paragraph">För att bygga en release:</p>
+<ol>
+<li>Gå till <a href="https://github.com/Forsakringskassan/designsystem/actions">Actions</a>, välj workflow <a href="https://github.com/Forsakringskassan/designsystem/actions/workflows/release.yml">Release</a>.</li>
+<li>Klicka på &quot;Run workflow&quot;.</li>
+<li>Om branchen är satt till:
+<ul>
+<li><code>main</code> kommer en ny release skapas på <code>latest</code>.</li>
+<li><code>release/*</code> kommer en ny maintenance release skapas på en äldre major version.</li>
+<li>övriga brancher genererar ingen release.</li>
 </ul>
 </li>
-<li><p class="docs-paragraph">Klicka på knappen &quot;Run workflow&quot; i menyn som visas för att skapa byggjobbet.</p></li>
-<li><p class="docs-paragraph">Processen kan följas i det nya jobbet som skapades.</p></li>
+<li>Klicka på knappen &quot;Run workflow&quot; i menyn som visas för att skapa byggjobbet.</li>
+<li>Processen kan följas i det nya jobbet som skapades.</li>
 </ol>
 <blockquote>
 <p class="docs-paragraph">Notera: Om det inte finns några commits som genererar en ny release kommer ingen ny release skapas.
-Steget &quot;Semantic Release&quot; i loggen visar då meddelandet:</p><p class="docs-paragraph">&quot;[6:49:04 PM] [semantic-release] › ℹ There are no relevant changes, so no new version is released.&quot;</p></blockquote>
+Steget &quot;Semantic Release&quot; i loggen visar då meddelandet:</p>
+<p class="docs-paragraph">&quot;[6:49:04 PM] [semantic-release] › ℹ There are no relevant changes, so no new version is released.&quot;</p>
+</blockquote>
 
 
                     </div>
@@ -782,9 +819,9 @@ Steget &quot;Semantic Release&quot; i loggen visar då meddelandet:</p><p class=
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -897,16 +934,16 @@ Steget &quot;Semantic Release&quot; i loggen visar då meddelandet:</p><p class=
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

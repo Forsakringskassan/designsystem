@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>focus - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-2e829d.css"
+            href="../../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-98d3be.json"
+            href="../../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1378,7 +1378,8 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Programatically set focus on an element in the DOM.
-There is also support for focusing Vue components and <code>$refs</code> in Vue components.</p><h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+There is also support for focusing Vue components and <code>$refs</code> in Vue components.</p>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
                 <div
                     id="example-761175"
                     class="code-preview code-preview--default"
@@ -1395,8 +1396,8 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 </code></pre>
                 </div>
             <ul>
-<li><p class="docs-paragraph"><code>element</code> - Element to focus.</p></li>
-<li><p class="docs-paragraph"><code>options</code> - Focus options. If you pass boolean <code>true</code> or <code>false</code> it sets the <code>force</code> option.</p></li>
+<li><code>element</code> - Element to focus.</li>
+<li><code>options</code> - Focus options. If you pass boolean <code>true</code> or <code>false</code> it sets the <code>force</code> option.</li>
 </ul>
 
                 <div
@@ -1415,9 +1416,9 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 </code></pre>
                 </div>
             <ul>
-<li><p class="docs-paragraph"><code>force</code> - If set to <code>true</code> <code>tabindex=&quot;-1&quot;</code> will be added as needed so any element can be focused.</p></li>
-<li><p class="docs-paragraph"><code>preventScroll</code> - By default the element is scrolled into view. Set this to <code>true</code> to prevent this behavior. See full description of <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#parameters"><code>preventScroll</code> at MDN</a></p></li>
-<li><p class="docs-paragraph"><code>scrollToTop</code> - By default the element is scrolled into view centered vertically. Set this to <code>true</code> to scroll such that the elements top is at the top of the viewport. It will utilize the <code>scrollIntoView</code> function, see full description of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView"><code>scrollIntoView</code> at MDN</a></p></li>
+<li><code>force</code> - If set to <code>true</code> <code>tabindex=&quot;-1&quot;</code> will be added as needed so any element can be focused.</li>
+<li><code>preventScroll</code> - By default the element is scrolled into view. Set this to <code>true</code> to prevent this behavior. See full description of <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#parameters"><code>preventScroll</code> at MDN</a></li>
+<li><code>scrollToTop</code> - By default the element is scrolled into view centered vertically. Set this to <code>true</code> to scroll such that the elements top is at the top of the viewport. It will utilize the <code>scrollIntoView</code> function, see full description of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView"><code>scrollIntoView</code> at MDN</a></li>
 </ul>
 
                 <div
@@ -1433,10 +1434,12 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 </code></pre>
                 </div>
             <ul>
-<li><p class="docs-paragraph"><code>element</code> - Element to focus.</p></li>
-<li><p class="docs-paragraph"><code>options</code> - Focus options. If you pass boolean <code>true</code> or <code>false</code> it sets the <code>force</code> option.</p></li>
+<li><code>element</code> - Element to focus.</li>
+<li><code>options</code> - Focus options. If you pass boolean <code>true</code> or <code>false</code> it sets the <code>force</code> option.</li>
 </ul>
-<p class="docs-paragraph">Returns <code>true</code> if successfully found an HTMLElement to focus. Otherwise, <code>false</code>.</p><h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">If not in a Vue context, use the variant from <code>@fkui/logic</code>.</p>
+<p class="docs-paragraph">Returns <code>true</code> if successfully found an HTMLElement to focus. Otherwise, <code>false</code>.</p>
+<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">If not in a Vue context, use the variant from <code>@fkui/logic</code>.</p>
+
                 <div
                     id="example-055423"
                     class="code-preview code-preview--default"
@@ -1464,6 +1467,7 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 </code></pre>
                 </div>
             <h3 id="when_in_vue_context"><a class="header-anchor" href="#when_in_vue_context">When in Vue Context</a></h3><p class="docs-paragraph">When using Vue, it is better to import the variant from <code>@fkui/vue</code>.</p>
+
                 <div
                     id="example-7f0784"
                     class="code-preview code-preview--default"
@@ -1489,7 +1493,9 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">If <code>$refs</code> returns an array, the first element will get focused.</p><h4 id="using_focustarget"><a class="header-anchor" href="#using_focustarget">Using <code>focusTarget</code></a></h4><p class="docs-paragraph">The example below will recursively search for a focus target and eventually focus the button inside the <code>MyButton</code> component.</p>
+            <p class="docs-paragraph">If <code>$refs</code> returns an array, the first element will get focused.</p>
+<h4 id="using_focustarget"><a class="header-anchor" href="#using_focustarget">Using <code>focusTarget</code></a></h4><p class="docs-paragraph">The example below will recursively search for a focus target and eventually focus the button inside the <code>MyButton</code> component.</p>
+
                 <div
                     id="example-f8c3d1"
                     class="code-preview code-preview--default"
@@ -1551,9 +1557,9 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1666,16 +1672,16 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../../assets/main-a45256.js"
+            src="../../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>useModal() composable - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-2e829d.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-t8acuSBMncJsxKPIQVaSQqZrHpgF9G9y0vG6e+yTcPMSz+l4F239QJovtOyzkdtX"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-98d3be.json"
+            href="../../search-data-e2dfa0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-DO3+VyGAByOzXuRWd7Tl+4HkTyonEjmRLYwiCdkZH9jscGqbqTIo8QHyrpFv3lhq"
+            integrity="sha384-rHVXJbhF7Yx4jMQ67ONRrJzWfTvlV3Sp0fz2uFIVo2x+Wc1Pj3aCKcjYuLPg31HZ"
             id="search-data"
         />
     </head>
@@ -1396,13 +1396,15 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Composable to get access to modal functions without using <code>callingInstance</code>:</p><ul>
-<li><p class="docs-paragraph"><code>openModal()</code></p></li>
-<li><p class="docs-paragraph"><code>confirmModal()</code></p></li>
-<li><p class="docs-paragraph"><code>formModal()</code></p></li>
+                    <div id="content"><p class="docs-paragraph">Composable to get access to modal functions without using <code>callingInstance</code>:</p>
+<ul>
+<li><code>openModal()</code></li>
+<li><code>confirmModal()</code></li>
+<li><code>formModal()</code></li>
 </ul>
 <p class="docs-paragraph">This is for Vue Composition API.
-Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-functions/confirm-modal.html">confirmModal()</a> and <a href="modal-functions/form-modal.html">formModal()</a> with Options API.</p><h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
+Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-functions/confirm-modal.html">confirmModal()</a> and <a href="modal-functions/form-modal.html">formModal()</a> with Options API.</p>
+<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
                     id="example-5542a1"
                     class="code-preview code-preview--default"
@@ -1414,15 +1416,17 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">useModal</span>(<span class="hljs-params"></span>);
 </code></pre>
                 </div>
-            <h3 id="parameters"><a class="header-anchor" href="#parameters">Parameters</a></h3><p class="docs-paragraph">None</p><h3 id="return_value"><a class="header-anchor" href="#return_value">Return value</a></h3><dl>
+            <h3 id="parameters"><a class="header-anchor" href="#parameters">Parameters</a></h3><p class="docs-paragraph">None</p>
+<h3 id="return_value"><a class="header-anchor" href="#return_value">Return value</a></h3><dl>
 <dt><code>openModal(component, options)</code></dt>
-<dd><p class="docs-paragraph">A wrapped <a href="modal-functions/open-modal.html">openModal()</a> function without <code>callingInstance</code> parameter.</p></dd>
+<dd>A wrapped <a href="modal-functions/open-modal.html">openModal()</a> function without <code>callingInstance</code> parameter.</dd>
 <dt><code>confirmModal(text)</code></dt>
-<dd><p class="docs-paragraph">A wrapped <a href="modal-functions/confirm-modal.html">confirmModal()</a> function without <code>callingInstance</code> parameter.</p></dd>
+<dd>A wrapped <a href="modal-functions/confirm-modal.html">confirmModal()</a> function without <code>callingInstance</code> parameter.</dd>
 <dt><code>formModal(component, options)</code></dt>
-<dd><p class="docs-paragraph">A wrapped <a href="modal-functions/form-modal.html">formModal()</a> function without <code>callingInstance</code> parameter.</p></dd>
+<dd>A wrapped <a href="modal-functions/form-modal.html">formModal()</a> function without <code>callingInstance</code> parameter.</dd>
 </dl>
 <h2 id="example"><a class="header-anchor" href="#example">Example</a></h2><p class="docs-paragraph">Open a simple modal:</p>
+
                 <div
                     id="example-0f38b1"
                     class="code-preview code-preview--default"
@@ -1446,6 +1450,7 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
 </code></pre>
                 </div>
             <p class="docs-paragraph">Open a confirmation modal:</p>
+
                 <div
                     id="example-3498cd"
                     class="code-preview code-preview--default"
@@ -1470,6 +1475,7 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
 </code></pre>
                 </div>
             <p class="docs-paragraph">Open a form modal:</p>
+
                 <div
                     id="example-79196d"
                     class="code-preview code-preview--default"
@@ -1495,9 +1501,9 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
 </code></pre>
                 </div>
             <h2 id="related"><a class="header-anchor" href="#related">Related</a></h2><ul>
-<li><p class="docs-paragraph"><a href="modal-functions/open-modal.html">openModal()</a></p></li>
-<li><p class="docs-paragraph"><a href="modal-functions/confirm-modal.html">confirmModal()</a></p></li>
-<li><p class="docs-paragraph"><a href="modal-functions/form-modal.html">formModal()</a></p></li>
+<li><a href="modal-functions/open-modal.html">openModal()</a></li>
+<li><a href="modal-functions/confirm-modal.html">confirmModal()</a></li>
+<li><a href="modal-functions/form-modal.html">formModal()</a></li>
 </ul>
 
 
@@ -1515,9 +1521,9 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/fadc45cb72e2fd8786c32666bc124767f8bfc8cc">fadc45c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1c79f8239c1eb57ba125747b250e0df92fd0d27">b1c79f8</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 13:27
+        2025-04-27 20:48
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1630,16 +1636,16 @@ Use <a href="modal-functions/open-modal.html">openModal()</a>, <a href="modal-fu
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>
