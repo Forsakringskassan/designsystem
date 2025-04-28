@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Validator - anpassad - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-120737.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-IusWRxbEFv97KrDAoXUDrjxs26QwiFGM4uNsNu6tehe9kz8ExiXlBbuU0qMGMn68"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-1ac148.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-f6422b.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-1ac148.js": "sha384-0gfKGzLdiiU06hCroCOssdaZp6UKJ4Xj/S5knCMhR8RRAzN34y0DsU7r9Q0rcokT",
+    "../../assets/vendor-fkui-vue-f6422b.js": "sha384-d0VBoq6jBLB+Zc0EJ8jQSxvuzEX7no3aW4y1v3e7bys8fG5RyLh5TUyrnFH0uwCR",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-8c06ea.json"
+            href="../../search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-vRfwYkUQ3c7ke2SDcaBc5EkIFH6LS7bYvYp0QFng3160TGK/X7hldWKW00S6X5ZW"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -362,8 +362,11 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Om ingen av de fördefinerade validatorerna passar dina behov så går det bra att skapa en egen validator i din applikation.</p><p class="docs-paragraph">Låt oss utgå från att du vill ha en validator som verifierar att texten i ett input-fält börjar med ett konfigurerbart värde.
-Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas när valideringen inte är rätt.</p><h2 id="validatorn"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p class="docs-paragraph">En validator implementeras genom att skapa ett objekt som uppfyller interfacet <code>Validator</code>:</p>
+                    <div id="content"><p class="docs-paragraph">Om ingen av de fördefinerade validatorerna passar dina behov så går det bra att skapa en egen validator i din applikation.</p>
+<p class="docs-paragraph">Låt oss utgå från att du vill ha en validator som verifierar att texten i ett input-fält börjar med ett konfigurerbart värde.
+Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas när valideringen inte är rätt.</p>
+<h2 id="validatorn"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p class="docs-paragraph">En validator implementeras genom att skapa ett objekt som uppfyller interfacet <code>Validator</code>:</p>
+
                 <div
                     id="example-b38e9a"
                     class="code-preview code-preview--default"
@@ -382,22 +385,26 @@ Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas n
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">där:</p><ul>
-<li><p class="docs-paragraph"><code>value</code> är det inmatade värdet som ska valideras</p></li>
-<li><p class="docs-paragraph"><code>element</code> är HTML elementet vars värde valideras</p></li>
-<li><p class="docs-paragraph"><code>config</code> är konsumentens konfiguration (dvs det som skickats in till v-validation=&quot;{ ... }&quot;)</p></li>
+            <p class="docs-paragraph">där:</p>
+<ul>
+<li><code>value</code> är det inmatade värdet som ska valideras</li>
+<li><code>element</code> är HTML elementet vars värde valideras</li>
+<li><code>config</code> är konsumentens konfiguration (dvs det som skickats in till v-validation=&quot;{ ... }&quot;)</li>
 </ul>
 <p class="docs-paragraph">Observera att värdet i <code>value</code> är en <code>string</code> och att det är vy-värdet innan parsning och formatering.
 Värdet kan därmed behöva hantering och verifiering innan den faktiska valideringen sker.
 Det är först efter en lyckad validering som eventuell parsning och formatering sker.
-Se mer om parsning och formatering här: <a href="../formatting-and-parsing/custom-formatter-parser.html">Gör din egen formaterare och parser</a>.</p><p class="docs-paragraph">Resultatet av valideringen returneras i form av en <code>boolean</code> där:</p><ul>
-<li><p class="docs-paragraph"><code>true</code> innebär att det inmatade värdet är giltigt</p></li>
-<li><p class="docs-paragraph"><code>false</code> innebär att det inmatade värdet är ogiltigt och ett felmeddelande presenteras</p></li>
+Se mer om parsning och formatering här: <a href="../formatting-and-parsing/custom-formatter-parser.html">Gör din egen formaterare och parser</a>.</p>
+<p class="docs-paragraph">Resultatet av valideringen returneras i form av en <code>boolean</code> där:</p>
+<ul>
+<li><code>true</code> innebär att det inmatade värdet är giltigt</li>
+<li><code>false</code> innebär att det inmatade värdet är ogiltigt och ett felmeddelande presenteras</li>
 </ul>
 <p class="docs-paragraph">Börja med att skapa en enklare validering där du kontrollerar om <code>value</code> börjar med den fasta strängen &quot;demo&quot;.
 Om din validator används på frivilliga fält, så är även ett tomt värde giltigt.
 Den kontrollen görs enklast tidigt i din validator-logik med hjälp av metoden <code>isEmpty</code>.
 Validatorns <code>name</code> är det som sedan används för att aktivera validatorn på ett input-fält.</p>
+
                 <div
                     id="example-72aeb2"
                     class="code-preview code-preview--default"
@@ -421,6 +428,7 @@ Validatorns <code>name</code> är det som sedan används för att aktivera valid
                 </div>
             <p class="docs-paragraph">Glöm inte att skriva tester som verifierar att validatorn fungerar som tänkt.
 Förslagsvis genom att bryta ut logiken till en egen funktion, då blir den enkel att testa med Jest.</p>
+
                 <div
                     id="example-c3d9a2"
                     class="code-preview code-preview--default"
@@ -448,6 +456,7 @@ export const startsWithValidator: Validator = {
             <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att få en mer flexibel validator kan du göra det möjligt att välja start-sträng.
 Det gör du genom att ge den stöd för att ta emot en konfiguration från konsumenten.
 Om konsumenten inte förser validatorn med konfiguration så sätter du även ett standardvärde &quot;demo&quot;.</p>
+
                 <div
                     id="example-238841"
                     class="code-preview code-preview--default"
@@ -484,6 +493,7 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
 </code></pre>
                 </div>
             <p class="docs-paragraph">Om det finns möjlighet till felaktig konfiguration eller om standardvärden inte används måste du införa felhantering:</p>
+
                 <div
                     id="example-0f06bc"
                     class="code-preview code-preview--default"
@@ -511,6 +521,7 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
                 </div>
             <h2 id="registrering"><a class="header-anchor" href="#registrering">Registrering</a></h2><p class="docs-paragraph">För att göra validatorn tillgänglig för användning i din applikation så behöver den registreras.
 Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m. i t.ex. <code>main.ts</code>. Gör det inte i en komponents lifecycle-hooks så som <code>created</code>, <code>mounted</code> m.fl.</p>
+
                 <div
                     id="example-6953f2"
                     class="code-preview code-preview--default"
@@ -522,8 +533,10 @@ Tänk på att bara registrera validatorn en gång, förslagsvis görs det global
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+ ValidationService.registerValidator(customStartValidator);</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Nu när validatorn är klar så passar det bra att skriva komponenttester för att verifiera att validatorn är rätt registrerad och att den går att använda tillsammans med sin konfiguration.</p><h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Aktivera validatorn på ditt inputfält genom att lägga till direktivet <code>v-validation.startsWith</code> och förse den med en konfiguration.
+            <p class="docs-paragraph">Nu när validatorn är klar så passar det bra att skriva komponenttester för att verifiera att validatorn är rätt registrerad och att den går att använda tillsammans med sin konfiguration.</p>
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Aktivera validatorn på ditt inputfält genom att lägga till direktivet <code>v-validation.startsWith</code> och förse den med en konfiguration.
 I exemplet nedan så anger du värdet <code>test</code> till konfigurationens attribut <code>startString</code>. Nu kommer validatorn validera att input-fältets värde börjar med &quot;test&quot;.</p>
+
                 <div
                     id="example-a58abe"
                     class="code-preview code-preview--default"
@@ -545,8 +558,10 @@ I exemplet nedan så anger du värdet <code>test</code> till konfigurationens at
             <h2 id="felmeddelanden"><a class="header-anchor" href="#felmeddelanden">Felmeddelanden</a></h2><p class="docs-paragraph">Om input-fältets värde inte börjar med &quot;test&quot;, kommer fältet att markeras som felaktigt och felmeddelandet &quot;STARTSWITH&quot; kommer att visas vid ettiketten.
 För att få ett mer förklarande felmeddelande så uppdaterar du exemplet med en bättre text.
 Här finns det två vägar att gå.
-Antigen sätter man en global standardtext (rekomenderat) eller så sätter man en specifik text för varje input-fält som använder validatorn.</p><p class="docs-paragraph">Börja med att sätta ett specifikt felmeddelande till just detta input-fält.
+Antigen sätter man en global standardtext (rekomenderat) eller så sätter man en specifik text för varje input-fält som använder validatorn.</p>
+<p class="docs-paragraph">Börja med att sätta ett specifikt felmeddelande till just detta input-fält.
 Det gör du genom att lägga till attributet <code>errorMessage</code> till validatorns konfiguration, med en tillhörande text.</p>
+
                 <div
                     id="example-b3421e"
                     class="code-preview code-preview--default"
@@ -568,8 +583,10 @@ Det gör du genom att lägga till attributet <code>errorMessage</code> till vali
 
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Ett bättre sätt är att registrera felmeddelandet globalt.</p><p class="docs-paragraph">I detta lite enklare exempel så nöjer vi oss med att registrera felmeddelandet direkt i applikationen.
+            <p class="docs-paragraph">Ett bättre sätt är att registrera felmeddelandet globalt.</p>
+<p class="docs-paragraph">I detta lite enklare exempel så nöjer vi oss med att registrera felmeddelandet direkt i applikationen.
 Då behöver <code>errorMessage</code> användas och felmeddelande blir samma på alla ställen i applikationen där validatorn används.</p>
+
                 <div
                     id="example-d034f1"
                     class="code-preview code-preview--default"
@@ -588,6 +605,7 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
 </code></pre>
                 </div>
             <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Här nedan visas ett komplett exempel med tre input-fält.</p>
+
             <div
                 id="example-a79a4d"
                 class="code-preview code-preview--default"
@@ -719,7 +737,11 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./validation.html">Validering och felhantering</a></p><p class="docs-paragraph"><a href="../../components/validation/validators.html">Validatorer</a></p><p class="docs-paragraph"><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p><p class="docs-paragraph"><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
+        <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./validation.html">Validering och felhantering</a></p>
+<p class="docs-paragraph"><a href="../../components/validation/validators.html">Validatorer</a></p>
+<p class="docs-paragraph"><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p>
+<p class="docs-paragraph"><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
+
 
                     </div>
                 </main>
@@ -735,9 +757,9 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix-search-sort-filter-dataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/bb89b8b6ac231e72e7db9802b242e73513840ff5">bb89b8b</a>)<br />
+<div class="footer__right"><div class="version">fix-search-sort-filter-dataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/9c4ee061170749085a6233fa0e4c8a2206168459">9c4ee06</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/417">PR 417</a><br />
-        2025-04-15 14:20
+        2025-04-28 09:04
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -823,7 +845,7 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
-            <label for="search-field" class="label"> Sök </label>
+            <label for="search-field" class="label">Sök</label>
             <div class="text-field__input-wrapper">
                 <div class="text-field__icon-wrapper">
                     <input
@@ -850,16 +872,16 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

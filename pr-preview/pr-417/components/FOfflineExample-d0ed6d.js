@@ -1631,6 +1631,7 @@ import { createApp, h } from "vue";
 import {
   ErrorPlugin,
   FErrorHandlingApp,
+  FormatPlugin,
   TestPlugin,
   TranslationPlugin,
   ValidationPlugin,
@@ -1651,6 +1652,7 @@ function setup(options) {
   app.use(ValidationPlugin);
   app.use(TestPlugin);
   app.use(TranslationPlugin);
+  app.use(FormatPlugin);
   app.mount(selector);
 }
 
@@ -2185,6 +2187,21 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
 FErrorHandlingApp_default.render = render5;
 FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
 
+// packages/vue/src/plugins/format/formatters.ts
+import { DateFormat, FDate as FDate2 } from "@fkui/date";
+import {
+  formatNumber as numberFormater,
+  parseBankgiro,
+  parseDate,
+  parseOrganisationsnummer,
+  parsePersonnummer,
+  parsePlusgiro,
+  parsePostalCode
+} from "@fkui/logic";
+
+// packages/vue/src/plugins/format/is-date-range.ts
+import { FDate } from "@fkui/date";
+
 // packages/vue/src/components/FModal/sizes.ts
 var sizes = [
   "",
@@ -2552,8 +2569,8 @@ var FModal_default2 = FModal_default;
 import { defineComponent as defineComponent7 } from "vue";
 
 // packages/vue/src/components/FModal/modal-button.ts
-function prepareButtonList(src, buttonOrder = config.buttonOrder) {
-  const list = src.map((it) => ({
+function prepareButtonList(src) {
+  return src.map((it) => ({
     label: it.label,
     screenreader: it.screenreader,
     event: it.event ?? "dismiss",
@@ -2561,12 +2578,6 @@ function prepareButtonList(src, buttonOrder = config.buttonOrder) {
     classlist: ["button", `button--${it.type ?? "secondary"}`],
     buttonType: it.submitButton ? "submit" : "button"
   }));
-  switch (buttonOrder) {
-    case 0 /* LEFT_TO_RIGHT */:
-      return list;
-    case 1 /* RIGHT_TO_LEFT */:
-      return list.reverse();
-  }
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue?type=script
@@ -2656,7 +2667,8 @@ var FConfirmModal_default = defineComponent7({
   emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons);
+      const preparedButtonList = prepareButtonList(this.buttons);
+      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.reverse() : preparedButtonList;
     }
   },
   methods: {
@@ -3422,7 +3434,7 @@ var FFormModal_default = defineComponent11({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, 1 /* RIGHT_TO_LEFT */);
+      return prepareButtonList(this.buttons);
     }
   },
   methods: {

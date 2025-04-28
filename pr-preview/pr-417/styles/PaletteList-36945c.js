@@ -3,6 +3,7 @@ import { createApp, h } from "vue";
 import {
   ErrorPlugin,
   FErrorHandlingApp,
+  FormatPlugin,
   TestPlugin,
   TranslationPlugin,
   ValidationPlugin,
@@ -23,6 +24,7 @@ function setup(options) {
   app.use(ValidationPlugin);
   app.use(TestPlugin);
   app.use(TranslationPlugin);
+  app.use(FormatPlugin);
   app.mount(selector);
 }
 
@@ -429,7 +431,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "name",
           title: "Namn",
           type: "text",
           shrink: ""
@@ -451,7 +452,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "color",
           title: "Exempel",
           type: "text",
           shrink: ""
@@ -479,7 +479,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          name: "value",
           title: "F\xE4rgkod",
           type: "text",
           shrink: ""
