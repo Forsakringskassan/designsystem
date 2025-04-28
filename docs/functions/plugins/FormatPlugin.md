@@ -13,13 +13,9 @@ Val av formaterare görs via direktivets argument och följande format stöds:
 - nummer
 - organisationsnummer
 - personnummer
+- plusgiro
+- postnummer
 - text.
-
-::: warning
-Använd inte formaterings-direktivet på komponenter.
-Oväntat beteende kan inträffa då en komponent har flera rotnoder.
-Om du ändå använder formaterings-direktivet på komponenter kommer direktivet alltid att gälla för komponentens rotnod, liknande "fallthrough attributes".
-:::
 
 ## Konfiguration
 

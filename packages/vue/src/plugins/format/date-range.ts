@@ -1,5 +1,8 @@
 import { FDate } from "@fkui/date";
-
+/**
+ * @internal
+ */
+/* --- cut above --- */
 export type DateRange =
     | {
           from: string;
