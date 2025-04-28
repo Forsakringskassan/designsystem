@@ -123,7 +123,7 @@ Läs mer om {@link ValidationErrorMessageBuilder.create `ValidationErrorMessageB
 
 ::: danger Tänk på att
 
-`addValidationErrorMessages()` mergar med föregående mappningar inkl de standardtexter som designsystemet levererar.
+`addValidationErrorMessages()` mergar med föregående mappningar inklusive de standardtexter som designsystemet levererar.
 Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och ha stenkoll på nya mappningar vid uppdatering av version då minsta förändring kräver att du matchar exakt hur designsystemets mappning ser ut.
 
 Ett tips är att skapa ett snapshot test i eran kodbas som hämtar ut standardtexterna med [`getErrorMessages`][getErrorMessages] och vid uppdatering verifierar om snapshot ändrats.
@@ -152,7 +152,7 @@ ValidationService.addValidationErrorMessages(messages);
 
 ::: warning Tänk på att
 
-Om du använder textnycklar måste texterna ha hämtats ner innan valideringsfelen skapas så de slås upp direkt.
+Om du använder textnycklar måste texterna ha hämtats ner innan valideringsfelen skapas då de slås upp direkt.
 
 :::
 
