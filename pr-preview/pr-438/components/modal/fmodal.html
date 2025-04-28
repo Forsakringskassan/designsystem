@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Modal dialogruta - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-bfb830.css"
+            href="../../assets/docs-7366a2.css"
             crossorigin
-            integrity="sha384-jNU11wd9FRK4VXkgqMVu6WGACvYWS5rnMosunfz58e+srBLK0KpXT0PSlDMTPMUA"
+            integrity="sha384-Qh0wi0TrNjCvaiXCxGUsDL/iEQtJ09YyM8jb6FwmLCPVIMWdP06pOxbwFLiCGFKq"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-019c7b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-f9fbc4.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-019c7b.js": "sha384-TUCFALPYxp3P+m74XAoAW9lJOr8XpQS7Mp4PEnc0bUeklFSoHtC8rb0QyZxgZDeR",
+    "../../assets/vendor-fkui-vue-f9fbc4.js": "sha384-WeaQpZ/VWUVuIpggYHibh48vVbrmAIQ8fjGdl/KCH/Rggc8+t1gLO7wHJXlmVY1L",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-f416bf.json"
+            href="../../search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -848,6 +848,17 @@
         </a>
     </li><li class="link ">
         <a
+            href="../page-layout/fdetailspanel.html"
+            
+            
+            
+            data-path="components/page-layout/fdetailspanel.html"
+            
+        >
+            Detaljpanel
+        </a>
+    </li><li class="link ">
+        <a
             href="../page-layout/fresizepane.html"
             
             
@@ -856,6 +867,17 @@
             
         >
             Justerbar yta
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fminimizablepanel.html"
+            
+            
+            
+            data-path="components/page-layout/fminimizablepanel.html"
+            
+        >
+            Minimerbar panel
         </a>
     </li><li class="link ">
         <a
@@ -1036,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/94b7ff410f06415cd5a84fde72b7af7e06da10ae/packages/vue/src/components/FModal/FModal.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/6af10f57cf5da25b33875ada93eb5580baacc52d/packages/vue/src/components/FModal/FModal.vue">
                 FModal
             </a>
             
@@ -1072,6 +1094,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Använd modala dialogrutor för korta interaktioner som är en del av ett flöde. Modaler kan användas för att låta användaren bekräfta ett val, för att förmedla information eller för enkel inmatning.</p>
+
                 <div
                     id="example-76970b"
                     class="code-preview code-preview--borderless"
@@ -1080,27 +1103,30 @@
                     data-language="vue"
                 >
                     
-        <div id="example-d72c40"></div>
+        <div id="example-f52902"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FModalLiveExample-d72c40.js"></script>
+        <script type="module" src="./FModalLiveExample-f52902.js"></script>
     
                 </div>
-            <p class="docs-paragraph">Använd inte modala dialogrutor för att presentera felmeddelanden eller information som användaren behöver kunna läsa under tiden som hen åtgärdar ett fel eller gör ändringar.</p><ul>
-<li><p class="docs-paragraph">I de flesta fall där användaren måste uppmärksammas på viktig information eller problem är en <a href="../fmessagebox.html">meddelanderuta</a> att föredra.</p></li>
-<li><p class="docs-paragraph">Rubriken har tabb-fokus när en modal dialogruta öppnas. Därefter knapparna i den ordning de presenteras och sist stängknappen. Tabb-fokus loopar genom alla klickbara ytor i en modal.</p></li>
-<li><p class="docs-paragraph">Öppna inte ytterligare en modal från en modal.</p></li>
+            <p class="docs-paragraph">Använd inte modala dialogrutor för att presentera felmeddelanden eller information som användaren behöver kunna läsa under tiden som hen åtgärdar ett fel eller gör ändringar.</p>
+<ul>
+<li>I de flesta fall där användaren måste uppmärksammas på viktig information eller problem är en <a href="../fmessagebox.html">meddelanderuta</a> att föredra.</li>
+<li>Rubriken har tabb-fokus när en modal dialogruta öppnas. Därefter knapparna i den ordning de presenteras och sist stängknappen. Tabb-fokus loopar genom alla klickbara ytor i en modal.</li>
+<li>Öppna inte ytterligare en modal från en modal.</li>
 </ul>
-<p class="docs-paragraph">Modala dialogrutor finns i fyra varianter:</p><ul>
-<li><p class="docs-paragraph">standard</p></li>
-<li><p class="docs-paragraph">information</p></li>
-<li><p class="docs-paragraph">varning</p></li>
-<li><p class="docs-paragraph">fel.</p></li>
+<p class="docs-paragraph">Modala dialogrutor finns i fyra varianter:</p>
+<ul>
+<li>standard</li>
+<li>information</li>
+<li>varning</li>
+<li>fel.</li>
 </ul>
 <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Skapa en ny Vue-komponent där <code>f-modal</code> används:</p>
+
                 <div
                     id="example-d96d54"
                     class="code-preview code-preview--default"
@@ -1135,6 +1161,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Du kan sedan öppna din modal genom att använda <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) eller <a href="../../functions/functions/modal-functions/form-modal.html"><code>openModal()</code></a> (options API).</p>
+
                 <div
                     id="example-9996d7"
                     class="code-preview code-preview--default"
@@ -1164,6 +1191,7 @@
             <h3 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h3><p class="docs-paragraph">Att använda <code>FModal</code> nästlad i template är deprekerat.
 Om du använder detta rekommenderar vi att du flyttar den till en egen Vue komponent och använder API för att öppna den.
 Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FModal</code> med API.</p>
+
                 <div
                     id="example-bce030"
                     class="code-preview code-preview--default"
@@ -1180,13 +1208,16 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
  &lt;/template&gt;
 </code></pre>
                 </div>
-            <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p class="docs-paragraph">Modalens höjd anpassas utifrån innehållet. I desktop (&gt;639px) kan modalens bredd anpassas till</p><ul>
-<li><p class="docs-paragraph"><code>small</code> (standard)</p></li>
-<li><p class="docs-paragraph"><code>medium</code></p></li>
-<li><p class="docs-paragraph"><code>large</code></p></li>
-<li><p class="docs-paragraph"><code>fullwidth</code>.</p></li>
+            <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p class="docs-paragraph">Modalens höjd anpassas utifrån innehållet. I desktop (&gt;639px) kan modalens bredd anpassas till</p>
+<ul>
+<li><code>small</code> (standard)</li>
+<li><code>medium</code></li>
+<li><code>large</code></li>
+<li><code>fullwidth</code>.</li>
 </ul>
-<p class="docs-paragraph">I mobil (&lt;640px) har en modal alltid samma bredd, men det går att sätta en modal till fullskärm. Använd fullskärm när användaren ska fokusera på en deluppgift i ett flöde, till exempel används fullskärm av <a href="./fformmodal.html">formulärsmodalen</a>. Använd inte fullskärm för modala dialogrutor som visas som en reaktion på något användaren gör.</p><p class="docs-paragraph">Använd <code>size</code>-prop för att välja storlek på modalen.</p>
+<p class="docs-paragraph">I mobil (&lt;640px) har en modal alltid samma bredd, men det går att sätta en modal till fullskärm. Använd fullskärm när användaren ska fokusera på en deluppgift i ett flöde, till exempel används fullskärm av <a href="./fformmodal.html">formulärsmodalen</a>. Använd inte fullskärm för modala dialogrutor som visas som en reaktion på något användaren gör.</p>
+<p class="docs-paragraph">Använd <code>size</code>-prop för att välja storlek på modalen.</p>
+
                 <div
                     id="example-28f144"
                     class="code-preview code-preview--default"
@@ -1199,7 +1230,9 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 <span class="hljs-addition">+&lt;f-modal size=&quot;small&quot;&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">För mobil finns det en <code>fullscreen</code>-prop för att säkerställa att modal täcker hela skärmen och är utan ram.</p><p class="docs-paragraph">Den här <code>fullscreen</code>-propen påverkar inte modalen i desktop-läge.</p>
+            <p class="docs-paragraph">För mobil finns det en <code>fullscreen</code>-prop för att säkerställa att modal täcker hela skärmen och är utan ram.</p>
+<p class="docs-paragraph">Den här <code>fullscreen</code>-propen påverkar inte modalen i desktop-läge.</p>
+
                 <div
                     id="example-1332ef"
                     class="code-preview code-preview--default"
@@ -1213,6 +1246,7 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 </code></pre>
                 </div>
             <h3 id="anpassa_storlek"><a class="header-anchor" href="#anpassa_storlek">Anpassa storlek</a></h3><p class="docs-paragraph">Implementera en CSS-klass enligt följande:</p>
+
                 <div
                     id="example-c4f75e"
                     class="code-preview code-preview--default"
@@ -1227,6 +1261,7 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 </code></pre>
                 </div>
             <p class="docs-paragraph">Använd inte <code>size</code>-prop utan lägg istället till din klass direkt enligt <code>class=&quot;..&quot;</code>:</p>
+
                 <div
                     id="example-563c65"
                     class="code-preview code-preview--default"
@@ -1239,15 +1274,17 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 <span class="hljs-addition">+&lt;f-modal class=&quot;my-fancy-modal&quot;&gt;</span>
 </code></pre>
                 </div>
-            <h3 id="initialt_fokus"><a class="header-anchor" href="#initialt_fokus">Initialt fokus</a></h3><p class="docs-paragraph">När modalen öppnas så sätts initialt fokus enligt denna rangordning:</p><ol>
-<li><p class="docs-paragraph">Rubrik</p></li>
-<li><p class="docs-paragraph">Första interagerbara element i innehåll</p></li>
-<li><p class="docs-paragraph">Hela innehållet</p></li>
+            <h3 id="initialt_fokus"><a class="header-anchor" href="#initialt_fokus">Initialt fokus</a></h3><p class="docs-paragraph">När modalen öppnas så sätts initialt fokus enligt denna rangordning:</p>
+<ol>
+<li>Rubrik</li>
+<li>Första interagerbara element i innehåll</li>
+<li>Hela innehållet</li>
 </ol>
-<h3 id="fokushantering"><a class="header-anchor" href="#fokushantering">Fokushantering</a></h3><p class="docs-paragraph">Modaler hanterar som standard fokus själv där modalen flyttar fokus till rubriken vid öppning och återställer fokus till tidigare fokuserat element vid stägning. Du kan styra detta beteende med propen för focus:</p><ul>
-<li><p class="docs-paragraph">&quot;on&quot; - komponenten hanterar fokus vid både öppning och stängning</p></li>
-<li><p class="docs-paragraph">&quot;off&quot; - komponenten hanterar inte fokus alls.</p></li>
-<li><p class="docs-paragraph">&quot;open&quot; - komponenten hanterar enbart fokus vid öppning.</p></li>
+<h3 id="fokushantering"><a class="header-anchor" href="#fokushantering">Fokushantering</a></h3><p class="docs-paragraph">Modaler hanterar som standard fokus själv där modalen flyttar fokus till rubriken vid öppning och återställer fokus till tidigare fokuserat element vid stägning. Du kan styra detta beteende med propen för focus:</p>
+<ul>
+<li>&quot;on&quot; - komponenten hanterar fokus vid både öppning och stängning</li>
+<li>&quot;off&quot; - komponenten hanterar inte fokus alls.</li>
+<li>&quot;open&quot; - komponenten hanterar enbart fokus vid öppning.</li>
 </ul>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
         <h3 id="fmodal-props">
@@ -1496,9 +1533,9 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/sfkui-6168 (<a href="https://github.com/Forsakringskassan/designsystem/commits/94b7ff410f06415cd5a84fde72b7af7e06da10ae">94b7ff4</a>)<br />
+<div class="footer__right"><div class="version">fix/sfkui-6168 (<a href="https://github.com/Forsakringskassan/designsystem/commits/6af10f57cf5da25b33875ada93eb5580baacc52d">6af10f5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/438">PR 438</a><br />
-        2025-04-22 08:41
+        2025-04-28 14:19
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1611,16 +1648,16 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

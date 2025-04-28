@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Version 6 migreringsguide: Cypress Pageobjects - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-bfb830.css"
+            href="../../../assets/docs-7366a2.css"
             crossorigin
-            integrity="sha384-jNU11wd9FRK4VXkgqMVu6WGACvYWS5rnMosunfz58e+srBLK0KpXT0PSlDMTPMUA"
+            integrity="sha384-Qh0wi0TrNjCvaiXCxGUsDL/iEQtJ09YyM8jb6FwmLCPVIMWdP06pOxbwFLiCGFKq"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-019c7b.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-f9fbc4.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../../assets/vendor-fkui-vue-019c7b.js": "sha384-TUCFALPYxp3P+m74XAoAW9lJOr8XpQS7Mp4PEnc0bUeklFSoHtC8rb0QyZxgZDeR",
+    "../../../assets/vendor-fkui-vue-f9fbc4.js": "sha384-WeaQpZ/VWUVuIpggYHibh48vVbrmAIQ8fjGdl/KCH/Rggc8+t1gLO7wHJXlmVY1L",
     "../../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-f416bf.json"
+            href="../../../search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -561,8 +561,9 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Använder du TypeScript med Cypress behöver du sätta två inställningar i din <code>cypress/tsconfig.json</code>:</p>
+
                 <div
-                    id="example-2dd3be"
+                    id="example-6ec094"
                     class="code-preview code-preview--default"
                     
                     
@@ -578,25 +579,30 @@
          &quot;types&quot;: [&quot;cypress&quot;, &quot;node&quot;]
 </code></pre>
                 </div>
-            <p class="docs-paragraph"><code>moduleResolution</code> kan sättas till något av:</p><ul>
-<li><p class="docs-paragraph"><code>bundler</code></p></li>
-<li><p class="docs-paragraph"><code>node16</code></p></li>
-<li><p class="docs-paragraph"><code>nodenext</code></p></li>
+            <p class="docs-paragraph"><code>moduleResolution</code> kan sättas till något av:</p>
+<ul>
+<li><code>bundler</code></li>
+<li><code>node16</code></li>
+<li><code>nodenext</code></li>
 </ul>
 <h2 id="trimmedtext"><a class="header-anchor" href="#trimmedtext"><code>trimmedText()</code></a></h2><p class="docs-paragraph">Den deprekerade <code>trimmedText()</code> metoden är borttagen från samtliga pageobjekt.
-Ej att förväxla med tredjeparts kommando/assertion med samma namn som med fördel kan användas som ersättare.</p><p class="docs-paragraph">Som förslag till ersättare kan någon av följande tekniker användas:</p><ul>
-<li><p class="docs-paragraph"><code>cy.get(..).should(&quot;have.text&quot;, &quot;...&quot;)</code> - givet att det inte finns inledande eller efterföljande whitespace kan native <code>have.text</code> användas.</p></li>
-<li><p class="docs-paragraph"><code>cy.get(..).should(&quot;contain.text&quot;, &quot;...&quot;)</code> - givet att du testar hela textens innehåll kan native <code>contain.text</code> användas.</p></li>
-<li><p class="docs-paragraph"><code>cy.get(..).should(&quot;trimmedText&quot;, &quot;...&quot;)</code> - tredjeparts assertion som tillhandhåller motsvarande (och buggfri) lösning kan användas.</p></li>
+Ej att förväxla med tredjeparts kommando/assertion med samma namn som med fördel kan användas som ersättare.</p>
+<p class="docs-paragraph">Som förslag till ersättare kan någon av följande tekniker användas:</p>
+<ul>
+<li><code>cy.get(..).should(&quot;have.text&quot;, &quot;...&quot;)</code> - givet att det inte finns inledande eller efterföljande whitespace kan native <code>have.text</code> användas.</li>
+<li><code>cy.get(..).should(&quot;contain.text&quot;, &quot;...&quot;)</code> - givet att du testar hela textens innehåll kan native <code>contain.text</code> användas.</li>
+<li><code>cy.get(..).should(&quot;trimmedText&quot;, &quot;...&quot;)</code> - tredjeparts assertion som tillhandhåller motsvarande (och buggfri) lösning kan användas.</li>
 </ul>
-<p class="docs-paragraph">Specifikt, för varje pageobjekt kan <code>.trimmedText().should(..)</code> ersättas med:</p><ul>
-<li><p class="docs-paragraph">För <code>FBadgePageObject</code> ersätt med <code>.el().should(..)</code>.-</p></li>
-<li><p class="docs-paragraph">För <code>FCheckboxFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</p></li>
-<li><p class="docs-paragraph">För <code>FLabelPageObject</code> ersätt med <code>.el().should(..)</code></p></li>
-<li><p class="docs-paragraph">För <code>FRadioFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</p></li>
-<li><p class="docs-paragraph">För <code>FSelectFieldPageObject</code> ersätt med <code>.selectedOption().should(..)</code>.</p></li>
+<p class="docs-paragraph">Specifikt, för varje pageobjekt kan <code>.trimmedText().should(..)</code> ersättas med:</p>
+<ul>
+<li>För <code>FBadgePageObject</code> ersätt med <code>.el().should(..)</code>.-</li>
+<li>För <code>FCheckboxFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
+<li>För <code>FLabelPageObject</code> ersätt med <code>.el().should(..)</code></li>
+<li>För <code>FRadioFieldPageObject</code> ersätt med <code>.label().should(..)</code>.</li>
+<li>För <code>FSelectFieldPageObject</code> ersätt med <code>.selectedOption().should(..)</code>.</li>
 </ul>
 <h2 id="flabelpageobject"><a class="header-anchor" href="#flabelpageobject"><code>FLabelPageobject</code></a></h2><p class="docs-paragraph">Metoden <code>discreteDescription</code> har ändrat namn till <code>formatDescription</code> för att matcha motsvarande ändringar på FLabel komponenten.</p>
+
                 <div
                     id="example-9be015"
                     class="code-preview code-preview--default"
@@ -611,6 +617,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
                 </div>
             <h2 id="floaderpageobject"><a class="header-anchor" href="#floaderpageobject"><code>FLoaderPageobject</code></a></h2><p class="docs-paragraph">Den deprekerade metoden <code>FLoaderPageobject.loader()</code> är borttagen.
 Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda <code>.el()</code>.</p>
+
                 <div
                     id="example-8e1201"
                     class="code-preview code-preview--default"
@@ -627,6 +634,7 @@ Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man a
                 </div>
             <h2 id="fmessageboxpageobject"><a class="header-anchor" href="#fmessageboxpageobject"><code>FMessageBoxPageObject</code></a></h2><p class="docs-paragraph">De deprekerade metoderna <code>FMessageBoxPageObject.title()</code> och <code>FMessageBoxPageObject.body()</code> är borttagna.
 Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda <code>.content()</code> för att hämta ut hela innehållet i slotten eller använda en egen selector.</p>
+
                 <div
                     id="example-8cda00"
                     class="code-preview code-preview--default"
@@ -640,6 +648,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
 </code></pre>
                 </div>
             <h2 id="fnavigationmenupageobject"><a class="header-anchor" href="#fnavigationmenupageobject"><code>FNavigationMenuPageobject</code></a></h2><p class="docs-paragraph">Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
+
                 <div
                     id="example-4a2c9c"
                     class="code-preview code-preview--default"
@@ -654,9 +663,11 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             <h2 id="fpageheaderpageobject"><a class="header-anchor" href="#fpageheaderpageobject"><code>FPageHeaderPageobject</code></a></h2><p class="docs-paragraph">Metoden <code>FPageHeaderPageobject.logoRouterLink</code> är borttagen.
 Eftersom <code>FPageHeader</code> inte längre tillhandahåller en <code>router-link</code> så finns det ingen direkt ersättare.
-Du får istället använda selector för egen implementerad <code>router-link</code> i <code>FPageHeader</code> <code>logo</code> slot.</p><h2 id="fprogressbarpageobject"><a class="header-anchor" href="#fprogressbarpageobject"><code>FProgressbarPageObject</code></a></h2><p class="docs-paragraph">Metoden <code>ariaValueNow()</code> har ändrats till <code>value()</code> och returnerar nu <code>number</code> istället för <code>string</code>.</p>
+Du får istället använda selector för egen implementerad <code>router-link</code> i <code>FPageHeader</code> <code>logo</code> slot.</p>
+<h2 id="fprogressbarpageobject"><a class="header-anchor" href="#fprogressbarpageobject"><code>FProgressbarPageObject</code></a></h2><p class="docs-paragraph">Metoden <code>ariaValueNow()</code> har ändrats till <code>value()</code> och returnerar nu <code>number</code> istället för <code>string</code>.</p>
+
                 <div
-                    id="example-6e43bd"
+                    id="example-0d255a"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -668,6 +679,7 @@ Du får istället använda selector för egen implementerad <code>router-link</c
 </code></pre>
                 </div>
             <h2 id="ftooltippageobject"><a class="header-anchor" href="#ftooltippageobject"><code>FTooltipPageObject</code></a></h2><p class="docs-paragraph">Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
+
                 <div
                     id="example-99d871"
                     class="code-preview code-preview--default"
@@ -723,6 +735,7 @@ Du får istället använda selector för egen implementerad <code>router-link</c
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Notera</p>
                 <p class="docs-paragraph">Både <code>closeButtonBottom()</code> och <code>closeButtonTop()</code> är ersatt med <code>closeButton()</code> då det inte längre finns två separata knappar.</p>
+
             </div>
         
 
@@ -740,9 +753,9 @@ Du får istället använda selector för egen implementerad <code>router-link</c
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/sfkui-6168 (<a href="https://github.com/Forsakringskassan/designsystem/commits/94b7ff410f06415cd5a84fde72b7af7e06da10ae">94b7ff4</a>)<br />
+<div class="footer__right"><div class="version">fix/sfkui-6168 (<a href="https://github.com/Forsakringskassan/designsystem/commits/6af10f57cf5da25b33875ada93eb5580baacc52d">6af10f5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/438">PR 438</a><br />
-        2025-04-22 08:41
+        2025-04-28 14:19
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -855,16 +868,16 @@ Du får istället använda selector för egen implementerad <code>router-link</c
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-aad26b.js"
+            src="../../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../../assets/main-a45256.js"
+            src="../../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

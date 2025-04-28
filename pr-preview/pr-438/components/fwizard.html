@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Steg för steg-guide - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-bfb830.css"
+            href="../assets/docs-7366a2.css"
             crossorigin
-            integrity="sha384-jNU11wd9FRK4VXkgqMVu6WGACvYWS5rnMosunfz58e+srBLK0KpXT0PSlDMTPMUA"
+            integrity="sha384-Qh0wi0TrNjCvaiXCxGUsDL/iEQtJ09YyM8jb6FwmLCPVIMWdP06pOxbwFLiCGFKq"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-019c7b.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-f9fbc4.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../assets/vendor-fkui-vue-019c7b.js": "sha384-TUCFALPYxp3P+m74XAoAW9lJOr8XpQS7Mp4PEnc0bUeklFSoHtC8rb0QyZxgZDeR",
+    "../assets/vendor-fkui-vue-f9fbc4.js": "sha384-WeaQpZ/VWUVuIpggYHibh48vVbrmAIQ8fjGdl/KCH/Rggc8+t1gLO7wHJXlmVY1L",
     "../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-f416bf.json"
+            href="../search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -848,6 +848,17 @@
         </a>
     </li><li class="link ">
         <a
+            href="./page-layout/fdetailspanel.html"
+            
+            
+            
+            data-path="components/page-layout/fdetailspanel.html"
+            
+        >
+            Detaljpanel
+        </a>
+    </li><li class="link ">
+        <a
             href="./page-layout/fresizepane.html"
             
             
@@ -856,6 +867,17 @@
             
         >
             Justerbar yta
+        </a>
+    </li><li class="link ">
+        <a
+            href="./page-layout/fminimizablepanel.html"
+            
+            
+            
+            data-path="components/page-layout/fminimizablepanel.html"
+            
+        >
+            Minimerbar panel
         </a>
     </li><li class="link ">
         <a
@@ -1036,13 +1058,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/94b7ff410f06415cd5a84fde72b7af7e06da10ae/packages/vue/src/components/FWizard/FWizard.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/6af10f57cf5da25b33875ada93eb5580baacc52d/packages/vue/src/components/FWizard/FWizard.vue">
                 FWizard
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/94b7ff410f06415cd5a84fde72b7af7e06da10ae/packages/vue/src/components/FWizard/FWizardStep.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/6af10f57cf5da25b33875ada93eb5580baacc52d/packages/vue/src/components/FWizard/FWizardStep.vue">
                 FWizardStep
             </a>
             
@@ -1082,6 +1104,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Steg för steg-guide används för att dela upp en uppgift i några få steg som passar bra att hantera i en viss ordning.</p>
+
             <div
                 id="example-e01978"
                 class="code-preview code-preview--default"
@@ -1174,31 +1197,35 @@
 </code></pre>
                 </div>
             </div>
-        <p class="docs-paragraph">Använd steg för steg för att dela upp en större uppgift som användaren ska utföra. Då kan användaren fokusera på en sak i taget istället för att bli överöst med information och val.</p><ul>
-<li><p class="docs-paragraph">Använd så få steg som möjligt, helst inte fler än 5 eller 6.</p></li>
-<li><p class="docs-paragraph">Ett steg ska innehålla en eller några få enkla val eller kortfattad information.</p></li>
-<li><p class="docs-paragraph">Antalet steg ska vara fast och inte ändras beroende på val användaren gör i ett steg.</p></li>
-<li><p class="docs-paragraph">Rubrikerna för stegen måste följa korrekt rubriknivå för sidan.</p></li>
-<li><p class="docs-paragraph">Om ett steg innehåller ett formulär måste det vara komplett och rätt ifyllt innan användaren tillåtas att fortsätta till nästa steg.</p></li>
+        <p class="docs-paragraph">Använd steg för steg för att dela upp en större uppgift som användaren ska utföra. Då kan användaren fokusera på en sak i taget istället för att bli överöst med information och val.</p>
+<ul>
+<li>Använd så få steg som möjligt, helst inte fler än 5 eller 6.</li>
+<li>Ett steg ska innehålla en eller några få enkla val eller kortfattad information.</li>
+<li>Antalet steg ska vara fast och inte ändras beroende på val användaren gör i ett steg.</li>
+<li>Rubrikerna för stegen måste följa korrekt rubriknivå för sidan.</li>
+<li>Om ett steg innehåller ett formulär måste det vara komplett och rätt ifyllt innan användaren tillåtas att fortsätta till nästa steg.</li>
 </ul>
-<h2 id="stegens_storlek_och_omfattning"><a class="header-anchor" href="#stegens_storlek_och_omfattning">Stegens storlek och omfattning</a></h2><p class="docs-paragraph">Ett steg ska innehålla en eller några få enkla val eller kortfattad information. Fokusera på en huvudfråga eller ett tydligt område. Ett steg bör ha en kort och konkret rubrik.</p><p class="docs-paragraph">Innehåll och frågor som inte passar under en och samma rubrik ska inte placeras i samma steg. Om innehållet i ett steg behöver delas upp med underrubriker bör du antagligen dela upp steget i flera steg.</p><h2 id="nar_steg_for_steg_inte_passar"><a class="header-anchor" href="#nar_steg_for_steg_inte_passar">När steg för steg inte passar</a></h2><ul>
-<li><p class="docs-paragraph">När uppgifterna vi presenterar inte har en naturlig följd.</p></li>
-<li><p class="docs-paragraph">När vi har väldigt omfattande uppgifter som resulterar i många och långa steg.</p></li>
-<li><p class="docs-paragraph">När något av stegen tar väldigt lång tid att fylla i, i kombination med att steget blir omfattande, till exempel att användarens val skapar långa listor eller tabeller.</p></li>
+<h2 id="stegens_storlek_och_omfattning"><a class="header-anchor" href="#stegens_storlek_och_omfattning">Stegens storlek och omfattning</a></h2><p class="docs-paragraph">Ett steg ska innehålla en eller några få enkla val eller kortfattad information. Fokusera på en huvudfråga eller ett tydligt område. Ett steg bör ha en kort och konkret rubrik.</p>
+<p class="docs-paragraph">Innehåll och frågor som inte passar under en och samma rubrik ska inte placeras i samma steg. Om innehållet i ett steg behöver delas upp med underrubriker bör du antagligen dela upp steget i flera steg.</p>
+<h2 id="nar_steg_for_steg_inte_passar"><a class="header-anchor" href="#nar_steg_for_steg_inte_passar">När steg för steg inte passar</a></h2><ul>
+<li>När uppgifterna vi presenterar inte har en naturlig följd.</li>
+<li>När vi har väldigt omfattande uppgifter som resulterar i många och långa steg.</li>
+<li>När något av stegen tar väldigt lång tid att fylla i, i kombination med att steget blir omfattande, till exempel att användarens val skapar långa listor eller tabeller.</li>
 </ul>
 <h2 id="copyriktlinjer"><a class="header-anchor" href="#copyriktlinjer">Copyriktlinjer</a></h2><h3 id="stegrubriker"><a class="header-anchor" href="#stegrubriker">Stegrubriker</a></h3><ul>
-<li><p class="docs-paragraph">Syftar i första hand till att hjälpa till att dela in flödet i mindre delar.</p></li>
-<li><p class="docs-paragraph">Ska ha relevant copy men inte bära hela innehållet i delen - det gör till exempel etikettrubrikerna om ett steg innehåller ett formulär.</p></li>
-<li><p class="docs-paragraph">Ska ge användaren en snabb översikt över det enskilda steget och även en tydlig översikt över flödet.</p></li>
-<li><p class="docs-paragraph">Ska vara så kortfattade som möjligt.</p></li>
-<li><p class="docs-paragraph">Bör bestå av konkreta substantiv som till exempel Dagar, Bostad, Sjukdom och symtom.</p></li>
-<li><p class="docs-paragraph">”Kompletterande uppgifter” och ”Övrigt” ska undvikas. Om det är svårt att skriva en lämplig rubrik på grund av att innehållet spretar bör du se över indelningen i steg.</p></li>
+<li>Syftar i första hand till att hjälpa till att dela in flödet i mindre delar.</li>
+<li>Ska ha relevant copy men inte bära hela innehållet i delen - det gör till exempel etikettrubrikerna om ett steg innehåller ett formulär.</li>
+<li>Ska ge användaren en snabb översikt över det enskilda steget och även en tydlig översikt över flödet.</li>
+<li>Ska vara så kortfattade som möjligt.</li>
+<li>Bör bestå av konkreta substantiv som till exempel Dagar, Bostad, Sjukdom och symtom.</li>
+<li>”Kompletterande uppgifter” och ”Övrigt” ska undvikas. Om det är svårt att skriva en lämplig rubrik på grund av att innehållet spretar bör du se över indelningen i steg.</li>
 </ul>
 <h3 id="knapptexter"><a class="header-anchor" href="#knapptexter">Knapptexter</a></h3><ul>
-<li><p class="docs-paragraph">Standardtexten på primärknappen är Fortsätt, men det går att sätta en text på primärknappen i varje steg (next-button-text).</p></li>
-<li><p class="docs-paragraph">Standardtexten på sekundärknappen är Avbryt, men det går att sätta en text på sekundärknappen i varje steg (cancel-button-text).</p></li>
+<li>Standardtexten på primärknappen är Fortsätt, men det går att sätta en text på primärknappen i varje steg (next-button-text).</li>
+<li>Standardtexten på sekundärknappen är Avbryt, men det går att sätta en text på sekundärknappen i varje steg (cancel-button-text).</li>
 </ul>
 <h2 id="for_utvecklare"><a class="header-anchor" href="#for_utvecklare">För utvecklare</a></h2><p class="docs-paragraph">En guide består av <code>&lt;f-wizard&gt;</code> och en eller fler guidesteg <code>&lt;f-wizard-step&gt;</code>.</p>
+
                 <div
                     id="example-41ae0d"
                     class="code-preview code-preview--default"
@@ -1215,6 +1242,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend osv) så kan du använda beforeSubmit:</p>
+
                 <div
                     id="example-8009a6"
                     class="code-preview code-preview--default"
@@ -1234,6 +1262,7 @@
                 </div>
             <p class="docs-paragraph">Notera att det är metoden <code>onBeforeNext</code> som ska skickas in i sin helhelt, anropa inte metoden med <code>:before-next=&quot;onBeforeNext()&quot;</code>.
 I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
+
                 <div
                     id="example-83c639"
                     class="code-preview code-preview--default"
@@ -1248,6 +1277,7 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
 },</code></pre>
                 </div>
             <p class="docs-paragraph">Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FWizardStepAction.CANCEL</code> från <code>onBeforeNext</code>:</p>
+
                 <div
                     id="example-ff6aaf"
                     class="code-preview code-preview--default"
@@ -1779,9 +1809,9 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/sfkui-6168 (<a href="https://github.com/Forsakringskassan/designsystem/commits/94b7ff410f06415cd5a84fde72b7af7e06da10ae">94b7ff4</a>)<br />
+<div class="footer__right"><div class="version">fix/sfkui-6168 (<a href="https://github.com/Forsakringskassan/designsystem/commits/6af10f57cf5da25b33875ada93eb5580baacc52d">6af10f5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/438">PR 438</a><br />
-        2025-04-22 08:41
+        2025-04-28 14:19
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1894,16 +1924,16 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-aad26b.js"
+            src="../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../assets/main-a45256.js"
+            src="../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>
