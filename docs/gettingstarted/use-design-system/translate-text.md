@@ -23,7 +23,7 @@ Läs mer under respektive komponent om hur man anpassar och översätter texter.
 
 ## Konfiguration
 
-För att kunna översätta text måste din applikation måste sätta upp en TranslationProvider som tillhandhåller texter.
+För att kunna översätta text måste din applikation sätta upp en TranslationProvider som tillhandhåller texter.
 
 Texterna kan hämtas med REST-anrop, importeras statiskt och bundlas med i javascript eller hårdkodas direkt in i filen:
 
@@ -123,7 +123,7 @@ Läs mer om {@link ValidationErrorMessageBuilder.create `ValidationErrorMessageB
 
 ::: danger Tänk på att
 
-`addValidationErrorMessages()` mergar med föregende mappningar inkl de standardtexter som designsystemet levererar.
+`addValidationErrorMessages()` mergar med föregående mappningar inkl de standardtexter som designsystemet levererar.
 Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och ha stenkoll på nya mappningar vid uppdatering av version då minsta förändring kräver att du matchar exakt hur designsystemets mappning ser ut.
 
 Ett tips är att skapa ett snapshot test i eran kodbas som hämtar ut standardtexterna med [`getErrorMessages`][getErrorMessages] och vid uppdatering verifierar om snapshot ändrats.
