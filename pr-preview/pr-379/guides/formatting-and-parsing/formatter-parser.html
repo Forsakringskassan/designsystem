@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Formatering och parsning - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-8b458e.css"
+            href="../../assets/docs-53a3f0.css"
             crossorigin
-            integrity="sha384-HczexJ3VPDUg4OOHSQnDzPc6tn8vuS1bhkJgzGjGSFFAPj3IVQ9BwSK0ndeNVwPw"
+            integrity="sha384-oBgDebH/RyOanTVbgpoPeR7NaLvY9enFA0wx4u86//e748CfZnEnLHCie8Q3iZBk"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-3fe358.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-bab7fb.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-3fe358.js": "sha384-9VHTdhaS8M+g88GezUQD9/iUPHknt9a7gu3X0DyeQCn3beF9QosI8jIKQtBYzr78",
+    "../../assets/vendor-fkui-vue-bab7fb.js": "sha384-G6r9hGfKhk2X4Ye3DP0SNxcRhs/IZ9e46bEiOeKzVGsA1WOfiNAvhbPxVDX4S5BP",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-8debbe.json"
+            href="../../search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-2Cra93XG9PSLAxMyLxvEo2CBM7rK9zQb8qwixKaT1HJVhRl8A9jHHMKIy335Sqju"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -355,19 +355,29 @@
                     <div id="content"><p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält.
 Parsning används för att ändra på det som faktiskt hanteras och skickas in.
 Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag.
-Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p><p class="docs-paragraph">Vi rekommenderar att du i första hand använder de <a href="../../components/input/textfield-specialized.html">specialiserade inmatningsfälten</a> där validering, formatering och parsning är inbyggt.</p><p class="docs-paragraph"><strong>Notera att vi stödjer inte formatering och parsning utan validering.</strong></p><h2 id="formatering_och_parsning"><a class="header-anchor" href="#formatering_och_parsning">Formatering och parsning</a></h2><p class="docs-paragraph">Förenklat sett kan man säga att:</p><ul>
-<li><p class="docs-paragraph">Parser tolkar vy-värdet och gör om till ett modell-värde.</p></li>
-<li><p class="docs-paragraph">Formaterare tolkar modell-värdet och gör om till ett vy-värde.</p></li>
+Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
+<p class="docs-paragraph">Vi rekommenderar att du i första hand använder de <a href="../../components/input/textfield-specialized.html">specialiserade inmatningsfälten</a> där validering, formatering och parsning är inbyggt.</p>
+<p class="docs-paragraph"><strong>Notera att vi stödjer inte formatering och parsning utan validering.</strong></p>
+<h2 id="formatering_och_parsning"><a class="header-anchor" href="#formatering_och_parsning">Formatering och parsning</a></h2><p class="docs-paragraph">Förenklat sett kan man säga att:</p>
+<ul>
+<li>Parser tolkar vy-värdet och gör om till ett modell-värde.</li>
+<li>Formaterare tolkar modell-värdet och gör om till ett vy-värde.</li>
 </ul>
-<p class="docs-paragraph">Vy-värdet (<code>viewValue</code>) är det som visuellt presenteras i inmatningsfältet och är vanligtvis det som matats in av användaren.</p><p class="docs-paragraph">Modell-värdet (<code>modelValue</code>) är det värde som skrivs ner till konsumentens <code>v-model</code> och följdaktligen det konsumenten får ut från inmatningsfältet.
+<p class="docs-paragraph">Vy-värdet (<code>viewValue</code>) är det som visuellt presenteras i inmatningsfältet och är vanligtvis det som matats in av användaren.</p>
+<p class="docs-paragraph">Modell-värdet (<code>modelValue</code>) är det värde som skrivs ner till konsumentens <code>v-model</code> och följdaktligen det konsumenten får ut från inmatningsfältet.
 Modell-värdet är det som senare används av logik och om en parser används är tolkat till rätt datatyp (exempelvis <code>string</code> till <code>number</code>).</p>
+
                 <pre class="mermaid">graph LR
 	viewValue -- parser --&gt; modelValue -- formatter --&gt; viewValue
 </pre>
-            <p class="docs-paragraph">Undantaget från detta är när enbart en formaterare används: då agerar formateraren både som <code>formatter</code> och <code>parser</code>, det vill säga det formaterade värdet är det som skrivs ner som modell-värde.</p><h3 id="formatering"><a class="header-anchor" href="#formatering">Formatering</a></h3><p class="docs-paragraph">Formatering används för göra det lättare för användaren att läsa uppgifter som har matas in.
+            <p class="docs-paragraph">Undantaget från detta är när enbart en formaterare används: då agerar formateraren både som <code>formatter</code> och <code>parser</code>, det vill säga det formaterade värdet är det som skrivs ner som modell-värde.</p>
+<h3 id="formatering"><a class="header-anchor" href="#formatering">Formatering</a></h3><p class="docs-paragraph">Formatering används för göra det lättare för användaren att läsa uppgifter som har matas in.
 Formatering görs när användaren lämnar inmatningsfältet och inmatningen har validerats utan fel.
 Till exempel formateras siffror inmatade i ett fält för valuta med ett mellanslag som tusenavgränsare och personnummer med ett bindestreck innan de fyra sista siffrorna.
-Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p><p class="docs-paragraph">Vy-värdet rensas alltid på inledande och avslutande mellanslag, oavsett om en specifik formaterare är satt eller ej.</p><p class="docs-paragraph">För att sätta formaterare använder man <code>formatter</code>-propen på <a href="../../components/input/ftextfield.html"><code>FTextField</code></a>:</p>
+Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p>
+<p class="docs-paragraph">Vy-värdet rensas alltid på inledande och avslutande mellanslag, oavsett om en specifik formaterare är satt eller ej.</p>
+<p class="docs-paragraph">För att sätta formaterare använder man <code>formatter</code>-propen på <a href="../../components/input/ftextfield.html"><code>FTextField</code></a>:</p>
+
                 <div
                     id="example-6f9842"
                     class="code-preview code-preview--default"
@@ -385,6 +395,7 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
 </code></pre>
                 </div>
             <p class="docs-paragraph">I exemplet nedan visas hur en formaterare (<code>formatNumber</code>) används för att infoga tusenavgränsare, notera också att modell-värdet också innehåller det formaterade värdet.</p>
+
                 <div
                     id="example-2959a1"
                     class="code-preview code-preview--default"
@@ -403,7 +414,11 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
         <script type="module" src="./FormatterExample-127105.js"></script>
     </div>
                 </div>
-            <p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Läs mer om att ta fram applikationsspecifik formaterare.)</a></p><h3 id="parsning"><a class="header-anchor" href="#parsning">Parsning</a></h3><p class="docs-paragraph">Parsning används för att tolka det inmatade värdet och se till att det blir rätt datatyp och format som kan hanteras av logiken.</p><p class="docs-paragraph">Parser får alltid in ett värde med inledande och avslutande mellanslag rensat.</p><p class="docs-paragraph">För att sätta parser använder man <code>parser</code> propen på <a href="../../components/input/ftextfield.html"><code>FTextField</code></a>:</p>
+            <p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Läs mer om att ta fram applikationsspecifik formaterare.)</a></p>
+<h3 id="parsning"><a class="header-anchor" href="#parsning">Parsning</a></h3><p class="docs-paragraph">Parsning används för att tolka det inmatade värdet och se till att det blir rätt datatyp och format som kan hanteras av logiken.</p>
+<p class="docs-paragraph">Parser får alltid in ett värde med inledande och avslutande mellanslag rensat.</p>
+<p class="docs-paragraph">För att sätta parser använder man <code>parser</code> propen på <a href="../../components/input/ftextfield.html"><code>FTextField</code></a>:</p>
+
                 <div
                     id="example-51aaf7"
                     class="code-preview code-preview--default"
@@ -421,6 +436,7 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
 </code></pre>
                 </div>
             <p class="docs-paragraph">I exemplet nedan visas hur en parser (<code>parseNumber</code>) används för tolka det inmatade värdet som ett numeriskt värde istället för text.</p>
+
                 <div
                     id="example-8062b1"
                     class="code-preview code-preview--default"
@@ -439,7 +455,9 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
         <script type="module" src="./ParserExample-951e60.js"></script>
     </div>
                 </div>
-            <p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Läs mer om att ta fram en applikationsspecifik parser.)</a></p><h3 id="kombinera_formaterare_och_parser"><a class="header-anchor" href="#kombinera_formaterare_och_parser">Kombinera formaterare och parser</a></h3><p class="docs-paragraph">Det går att kombinera formaterare och parser:</p>
+            <p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Läs mer om att ta fram en applikationsspecifik parser.)</a></p>
+<h3 id="kombinera_formaterare_och_parser"><a class="header-anchor" href="#kombinera_formaterare_och_parser">Kombinera formaterare och parser</a></h3><p class="docs-paragraph">Det går att kombinera formaterare och parser:</p>
+
                 <div
                     id="example-354d27"
                     class="code-preview code-preview--default"
@@ -458,7 +476,10 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
         <script type="module" src="./CombinedFormatterParserExample-782724.js"></script>
     </div>
                 </div>
-            <p class="docs-paragraph">Då ser vi hur modellvärdet blir tolkat som ett numeriskt värde och vy-värdet formateras med tusenavgränsare.</p><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Formaterare och parser - anpassad)</a></p><p class="docs-paragraph"><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
+            <p class="docs-paragraph">Då ser vi hur modellvärdet blir tolkat som ett numeriskt värde och vy-värdet formateras med tusenavgränsare.</p>
+<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./custom-formatter-parser.html">(Formaterare och parser - anpassad)</a></p>
+<p class="docs-paragraph"><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
+
 
                     </div>
                 </main>
@@ -474,9 +495,9 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/8aa5ed639012817951561498d06459eec3365bc0">8aa5ed6</a>)<br />
+<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/ef4e66d19d4254caf95f4263119fe94dd2daeec5">ef4e66d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/379">PR 379</a><br />
-        2025-04-24 08:21
+        2025-04-28 06:43
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -589,16 +610,16 @@ Det värde som visas för användaren är vyvärdet (<code>viewValue</code>).</p
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-50a45c.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-ew0nN7HjZZWlAqqxYNe3jmOgC0rjVWd7o94Muk42AmApjtUhqPuR8E+Y7cq5AJcx"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

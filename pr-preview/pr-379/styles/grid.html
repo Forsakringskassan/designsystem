@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Grid - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-8b458e.css"
+            href="../assets/docs-53a3f0.css"
             crossorigin
-            integrity="sha384-HczexJ3VPDUg4OOHSQnDzPc6tn8vuS1bhkJgzGjGSFFAPj3IVQ9BwSK0ndeNVwPw"
+            integrity="sha384-oBgDebH/RyOanTVbgpoPeR7NaLvY9enFA0wx4u86//e748CfZnEnLHCie8Q3iZBk"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-3fe358.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-bab7fb.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../assets/vendor-fkui-vue-3fe358.js": "sha384-9VHTdhaS8M+g88GezUQD9/iUPHknt9a7gu3X0DyeQCn3beF9QosI8jIKQtBYzr78",
+    "../assets/vendor-fkui-vue-bab7fb.js": "sha384-G6r9hGfKhk2X4Ye3DP0SNxcRhs/IZ9e46bEiOeKzVGsA1WOfiNAvhbPxVDX4S5BP",
     "../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-8debbe.json"
+            href="../search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-2Cra93XG9PSLAxMyLxvEo2CBM7rK9zQb8qwixKaT1HJVhRl8A9jHHMKIy335Sqju"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -343,14 +343,21 @@
           }
 }
 </style>
-<p class="docs-paragraph">Grid används för att skapa responsiva gränssnitt som anpassar sig till olika skärm- och fönsterstorlekar. Det definierar den yta som komponenter kan placeras på och styr hur stor del av ytans bredd som komponenterna får uppta vid olika brytpunkter för skärmbredden.</p><h2 id="containers"><a class="header-anchor" href="#containers">Containers</a></h2><p class="docs-paragraph">Containern styr den maximala bredden som innehållet får ta och sätter marginal i vänster- och högerkant. Containerns fulla bredd motsvarar 12 kolumner.
-Det finns två typer av containers:</p><ul>
-<li><p class="docs-paragraph"><strong>Container</strong> – centrerar innehållet på skärmen i en maxbredd som varierar beroende av skärmens bredd</p></li>
+<p class="docs-paragraph">Grid används för att skapa responsiva gränssnitt som anpassar sig till olika skärm- och fönsterstorlekar. Det definierar den yta som komponenter kan placeras på och styr hur stor del av ytans bredd som komponenterna får uppta vid olika brytpunkter för skärmbredden.</p>
+<h2 id="containers"><a class="header-anchor" href="#containers">Containers</a></h2><p class="docs-paragraph">Containern styr den maximala bredden som innehållet får ta och sätter marginal i vänster- och högerkant. Containerns fulla bredd motsvarar 12 kolumner.
+Det finns två typer av containers:</p>
+<ul>
+<li><strong>Container</strong> – centrerar innehållet på skärmen i en maxbredd som varierar beroende av skärmens bredd</li>
 </ul>
-<p class="docs-paragraph"><img src="../assets/images/ce5ecf50c0df541163cb419389e55c9e.png" alt="Container"></p><ul>
-<li><p class="docs-paragraph"><strong>Container-fluid</strong> - tar 100% av den tillgängliga ytan. Om en maxbredd sätts kommer ytan vänsterjusteras</p></li>
+<p class="docs-paragraph"><img src="../assets/images/ce5ecf50c0df541163cb419389e55c9e.png" alt="Container"></p>
+<ul>
+<li><strong>Container-fluid</strong> - tar 100% av den tillgängliga ytan. Om en maxbredd sätts kommer ytan vänsterjusteras</li>
 </ul>
-<p class="docs-paragraph"><img src="../assets/images/f853a97a3830a984cefcbcf6c1a190fb.png" alt="Container-fluid"></p><h2 id="marginaler_och_mellanrum"><a class="header-anchor" href="#marginaler_och_mellanrum">Marginaler och mellanrum</a></h2><p class="docs-paragraph">Containers har inbyggda marginaler motsvarande 1 rem till höger och vänster. Gutter är mellanrummet mellan kolumnerna och motsvarar 2 rem.</p><p class="docs-paragraph"><img src="../assets/images/4219a542a81abe0c86ca27f90ac52cd0.png" alt="Gutter"></p><h2 id="rader_och_kolumner"><a class="header-anchor" href="#rader_och_kolumner">Rader och kolumner</a></h2><p class="docs-paragraph">Innehåll i ett gridlayout placeras i kolumner (<code>col</code>) och kolumnerna ska i sig alltid ligga i en rad (<code>row</code>). Varje rad har 12 möjliga kolumner, vilket motsvarar hela bredden som raden placeras i. Bredden på en kolumn anges i hur många av radens 12 möjliga kolumner som den får uppta. Komponenter som placeras i kolumnen tar sedan hela kolumnens bredd.</p><h3 id="exempel_kolumner"><a class="header-anchor" href="#exempel_kolumner">Exempel kolumner</a></h3>
+<p class="docs-paragraph"><img src="../assets/images/f853a97a3830a984cefcbcf6c1a190fb.png" alt="Container-fluid"></p>
+<h2 id="marginaler_och_mellanrum"><a class="header-anchor" href="#marginaler_och_mellanrum">Marginaler och mellanrum</a></h2><p class="docs-paragraph">Containers har inbyggda marginaler motsvarande 1 rem till höger och vänster. Gutter är mellanrummet mellan kolumnerna och motsvarar 2 rem.</p>
+<p class="docs-paragraph"><img src="../assets/images/4219a542a81abe0c86ca27f90ac52cd0.png" alt="Gutter"></p>
+<h2 id="rader_och_kolumner"><a class="header-anchor" href="#rader_och_kolumner">Rader och kolumner</a></h2><p class="docs-paragraph">Innehåll i ett gridlayout placeras i kolumner (<code>col</code>) och kolumnerna ska i sig alltid ligga i en rad (<code>row</code>). Varje rad har 12 möjliga kolumner, vilket motsvarar hela bredden som raden placeras i. Bredden på en kolumn anges i hur många av radens 12 möjliga kolumner som den får uppta. Komponenter som placeras i kolumnen tar sedan hela kolumnens bredd.</p>
+<h3 id="exempel_kolumner"><a class="header-anchor" href="#exempel_kolumner">Exempel kolumner</a></h3>
                 <div
                     id="example-d1710c"
                     class="code-preview code-preview--default"
@@ -365,13 +372,15 @@ Det finns två typer av containers:</p><ul>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph"><img src="../assets/images/095c0164337e046b31063b9bba7795fc.png" alt="Kolumner"></p><ul>
-<li><p class="docs-paragraph">En kolumn som sätts till col-12 tar upp alla 12 möjliga kolumner i raden, men eftersom samma resultat uppnås utan att använda rad- och kolumnklasser behöver den varianten i regel inte användas.</p></li>
-<li><p class="docs-paragraph">I en rad med två lika stora kolumner får vardera ta upp 6 av radens 12 möjliga kolumner.</p></li>
-<li><p class="docs-paragraph">I en rad med tre lika stora kolumner får vardera ta upp 4 av radens 12 möjliga kolumner.</p></li>
-<li><p class="docs-paragraph">Kolumnerna i en rad kan vara olika stora – så länge summan av kolumnernas bredd inte överstiger 12 kommer de lägga sig bredvid varandra.</p></li>
+            <p class="docs-paragraph"><img src="../assets/images/095c0164337e046b31063b9bba7795fc.png" alt="Kolumner"></p>
+<ul>
+<li>En kolumn som sätts till col-12 tar upp alla 12 möjliga kolumner i raden, men eftersom samma resultat uppnås utan att använda rad- och kolumnklasser behöver den varianten i regel inte användas.</li>
+<li>I en rad med två lika stora kolumner får vardera ta upp 6 av radens 12 möjliga kolumner.</li>
+<li>I en rad med tre lika stora kolumner får vardera ta upp 4 av radens 12 möjliga kolumner.</li>
+<li>Kolumnerna i en rad kan vara olika stora – så länge summan av kolumnernas bredd inte överstiger 12 kommer de lägga sig bredvid varandra.</li>
 </ul>
 <h4 id="exempel_med_olika_komponentstorlekar"><a class="header-anchor" href="#exempel_med_olika_komponentstorlekar">Exempel med olika komponentstorlekar</a></h4><p class="docs-paragraph">Komponenternas bredd styrs av bredden på den kolumn de placeras i.</p>
+
                 <div
                     id="example-a1e651"
                     class="code-preview code-preview--borderless"
@@ -462,13 +471,17 @@ Det finns två typer av containers:</p><ul>
 </div>
 </div>
                 </div>
-            <h2 id="brytpunkter"><a class="header-anchor" href="#brytpunkter">Brytpunkter</a></h2><p class="docs-paragraph">Genom att använda fördefinierade brytpunkter kan du anpassa hur en layout ska se ut vid olika skärmstorlekar. Det finns fyra brytpunkter som kan konfigureras. Varje brytpunkt har ett standardvärde för vilken skärmbredd den kommer att bryta på:</p><ul>
-<li><p class="docs-paragraph">sm - skärmbredd mellan 0 och 639 pixlar</p></li>
-<li><p class="docs-paragraph">md - skärmbredd mellan 640 och 1023 pixlar</p></li>
-<li><p class="docs-paragraph">lg - skärmbredd mellan 1024 och 1279 pixlar</p></li>
-<li><p class="docs-paragraph">xl - skärmbredd från 1280 pixlar och uppåt</p></li>
+            <h2 id="brytpunkter"><a class="header-anchor" href="#brytpunkter">Brytpunkter</a></h2><p class="docs-paragraph">Genom att använda fördefinierade brytpunkter kan du anpassa hur en layout ska se ut vid olika skärmstorlekar. Det finns fyra brytpunkter som kan konfigureras. Varje brytpunkt har ett standardvärde för vilken skärmbredd den kommer att bryta på:</p>
+<ul>
+<li>sm - skärmbredd mellan 0 och 639 pixlar</li>
+<li>md - skärmbredd mellan 640 och 1023 pixlar</li>
+<li>lg - skärmbredd mellan 1024 och 1279 pixlar</li>
+<li>xl - skärmbredd från 1280 pixlar och uppåt</li>
 </ul>
-<p class="docs-paragraph">Du sätter bredden på en kolumn för olika skärmstorlekar genom att ange i klassen för vilken brytpunkt bredden gäller.</p><h3 id="storlek_pa_kolumner_i_olika_scenarion"><a class="header-anchor" href="#storlek_pa_kolumner_i_olika_scenarion">Storlek på kolumner i olika scenarion</a></h3><p class="docs-paragraph">För att aktivera de olika brytpunkterna så kan du minska bredden på webbläsarens fönster.</p><p class="docs-paragraph">I de angivna exempel nedan finns det två olika scenarion. Ett där föräldern tar upp hela bredden på 12 kolumner och ett exempel där föräldern tar 8 kolumner medan dess barn tar hela bredden på 12 kolumner inuti dess förälder.</p><h4 id="foralder_med_12_kolumner"><a class="header-anchor" href="#foralder_med_12_kolumner">Förälder med 12 kolumner</a></h4>
+<p class="docs-paragraph">Du sätter bredden på en kolumn för olika skärmstorlekar genom att ange i klassen för vilken brytpunkt bredden gäller.</p>
+<h3 id="storlek_pa_kolumner_i_olika_scenarion"><a class="header-anchor" href="#storlek_pa_kolumner_i_olika_scenarion">Storlek på kolumner i olika scenarion</a></h3><p class="docs-paragraph">För att aktivera de olika brytpunkterna så kan du minska bredden på webbläsarens fönster.</p>
+<p class="docs-paragraph">I de angivna exempel nedan finns det två olika scenarion. Ett där föräldern tar upp hela bredden på 12 kolumner och ett exempel där föräldern tar 8 kolumner medan dess barn tar hela bredden på 12 kolumner inuti dess förälder.</p>
+<h4 id="foralder_med_12_kolumner"><a class="header-anchor" href="#foralder_med_12_kolumner">Förälder med 12 kolumner</a></h4>
             <div
                 id="example-873c24"
                 class="code-preview code-preview--default"
@@ -579,6 +592,7 @@ Det finns två typer av containers:</p><ul>
             </div>
         <h4 id="foralder_med_8_kolumner"><a class="header-anchor" href="#foralder_med_8_kolumner">Förälder med 8 kolumner</a></h4><p class="docs-paragraph">I detta exempel nästlar vi en grid i en förälder med 8 kolumner.
 Det innebär att kolumernas storlek kommer motsvara tolftedelar utav förälderns 8 kolumner och inte längre skärmstorleken.</p>
+
                 <div
                     id="example-6b55aa"
                     class="code-preview code-preview--default"
@@ -635,7 +649,8 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
 </div>
 </div>
                 </div>
-            <h2 id="placering"><a class="header-anchor" href="#placering">Placering</a></h2><p class="docs-paragraph">Grid stödjer dynamisk placering av kolumner både horisontellt och vertikalt.</p><h3 id="horisontellt"><a class="header-anchor" href="#horisontellt">Horisontellt</a></h3>
+            <h2 id="placering"><a class="header-anchor" href="#placering">Placering</a></h2><p class="docs-paragraph">Grid stödjer dynamisk placering av kolumner både horisontellt och vertikalt.</p>
+<h3 id="horisontellt"><a class="header-anchor" href="#horisontellt">Horisontellt</a></h3>
             <div
                 id="example-909e56"
                 class="code-preview code-preview--default"
@@ -922,7 +937,9 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
 </code></pre>
                 </div>
             </div>
-        <h3 id="ordning_av_kolumner"><a class="header-anchor" href="#ordning_av_kolumner">Ordning av kolumner</a></h3><p class="docs-paragraph">Tänk på att om du via styling ändrar ordning på kolumner så kommer det inte påverka hur de läses upp av skärmläsare.</p><h4 id="hjalpklasser_for_dynamisk_ordning"><a class="header-anchor" href="#hjalpklasser_for_dynamisk_ordning">Hjälpklasser för dynamisk ordning</a></h4><p class="docs-paragraph">Grid inkluderar flera hjälpklasser för dynamisk ordning, <code>col--order-$ORDNING</code> och <code>col--$BRYTPUNKT-order-$ORDNING</code> så att det är lättare att byta ordning på kolumner dynamiskt mellan olika brytpunkter.</p>
+        <h3 id="ordning_av_kolumner"><a class="header-anchor" href="#ordning_av_kolumner">Ordning av kolumner</a></h3><p class="docs-paragraph">Tänk på att om du via styling ändrar ordning på kolumner så kommer det inte påverka hur de läses upp av skärmläsare.</p>
+<h4 id="hjalpklasser_for_dynamisk_ordning"><a class="header-anchor" href="#hjalpklasser_for_dynamisk_ordning">Hjälpklasser för dynamisk ordning</a></h4><p class="docs-paragraph">Grid inkluderar flera hjälpklasser för dynamisk ordning, <code>col--order-$ORDNING</code> och <code>col--$BRYTPUNKT-order-$ORDNING</code> så att det är lättare att byta ordning på kolumner dynamiskt mellan olika brytpunkter.</p>
+
             <div
                 id="example-eea729"
                 class="code-preview code-preview--default"
@@ -987,9 +1004,9 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/8aa5ed639012817951561498d06459eec3365bc0">8aa5ed6</a>)<br />
+<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/ef4e66d19d4254caf95f4263119fe94dd2daeec5">ef4e66d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/379">PR 379</a><br />
-        2025-04-24 08:21
+        2025-04-28 06:43
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1102,16 +1119,16 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-50a45c.js"
+            src="../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-ew0nN7HjZZWlAqqxYNe3jmOgC0rjVWd7o94Muk42AmApjtUhqPuR8E+Y7cq5AJcx"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../assets/main-a45256.js"
+            src="../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>CHANGELOG - FK Designsystem</title><link
             rel="stylesheet"
-            href="./assets/docs-8b458e.css"
+            href="./assets/docs-53a3f0.css"
             crossorigin
-            integrity="sha384-HczexJ3VPDUg4OOHSQnDzPc6tn8vuS1bhkJgzGjGSFFAPj3IVQ9BwSK0ndeNVwPw"
+            integrity="sha384-oBgDebH/RyOanTVbgpoPeR7NaLvY9enFA0wx4u86//e748CfZnEnLHCie8Q3iZBk"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "./assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "./assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "./assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "./assets/vendor-fkui-vue-3fe358.js",
+    "@fkui/vue": "./assets/vendor-fkui-vue-bab7fb.js",
     "@forsakringskassan/docs-live-example": "./assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "./assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "./assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "./assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "./assets/vendor-fkui-vue-3fe358.js": "sha384-9VHTdhaS8M+g88GezUQD9/iUPHknt9a7gu3X0DyeQCn3beF9QosI8jIKQtBYzr78",
+    "./assets/vendor-fkui-vue-bab7fb.js": "sha384-G6r9hGfKhk2X4Ye3DP0SNxcRhs/IZ9e46bEiOeKzVGsA1WOfiNAvhbPxVDX4S5BP",
     "./assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="./search-data-8debbe.json"
+            href="./search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-2Cra93XG9PSLAxMyLxvEo2CBM7rK9zQb8qwixKaT1HJVhRl8A9jHHMKIy335Sqju"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -235,198 +235,218 @@
 
                     
 
-                    <div id="content"><h2 id="v6-5-0"><a class="header-anchor" href="#v6-5-0">6.5.0 (2025-04-23)</a></h2><h3 id="features"><a class="header-anchor" href="#features">Features</a></h3><ul>
-<li><p class="docs-paragraph"><strong>deps:</strong> update dependency i18next to v25 223cfd7</p></li>
+                    <div id="content"><h2 id="v6-6-0"><a class="header-anchor" href="#v6-6-0">6.6.0 (2025-04-25)</a></h2><h3 id="features"><a class="header-anchor" href="#features">Features</a></h3><ul>
+<li><strong>@fkui/design, @fkui/vue:</strong> add directive and plugin for formatting number (refs SFKUI-7093) dbf2f81</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> add plusgiro directive formatter (refs SFKUI-7093) 4f21f03</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> add postal code directive formatter (refs SFKUI-7093) ee397aa</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> forward <code>focus-indicator()</code> mixin (refs SFKUI-6500) bef76a2</li>
+<li><strong>@fkui/vue:</strong> add <code>FInteractiveTablePageObject.cell()</code> (refs SFKUI-6500) 97b1dec</li>
+<li><strong>@fkui/vue:</strong> add bankgiro directive formatter (refs SFKUI-7093) 6eb783c</li>
+<li><strong>@fkui/vue:</strong> add date directive formatter (refs SFKUI-7093) ff47fc7</li>
+<li><strong>@fkui/vue:</strong> add minimizable panel (refs SFKUI-7191) 10e0e24</li>
+<li><strong>@fkui/vue:</strong> add organisationsnummer directive formatter (refs SFKUI-7093) c25c76b</li>
+<li><strong>@fkui/vue:</strong> add personnummer directive formatter (refs SFKUI-7093) fde3cd5</li>
+<li><strong>@fkui/vue:</strong> add text directive formatter (refs SFKUI-7093) 6615f36</li>
+<li><strong>@fkui/vue:</strong> new component <code>FDetailsPanel</code> (refs SFKUI-6993) 7aeec09</li>
 </ul>
 <h3 id="bug_fixes"><a class="header-anchor" href="#bug_fixes">Bug Fixes</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>FTableColumn</code> <code>name</code> only required with <code>FSortFilterDataset</code> (fixes SFKUI-7059) 3dc3454, closes #312</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> default value in FSortFilterDataset dropdown (fixes SFKUI-7083) 401f110</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> fix &quot;set operation on key value failed&quot; on <code>FInteractiveTable</code> (refs SFKUI-6500) 7bb357e</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> fix &quot;set operation on key value failed&quot; on <code>FTableColumn</code> (refs SFKUI-6500) 0fe7409</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> wrong button order in <code>FFormModal</code> (fixes SFKUI-7185) (<a href="undefined/Forsakringskassan/designsystem/issues/429">#429</a>) 886b8f4</p></li>
+<li><strong>@fkui/design, @fkui/vue:</strong> header element in FWizardStep anchor when completed (fixes SFKUI-7207) d3712cc</li>
+<li><strong>deps:</strong> update dependency i18next to v25.0.1 79f1b77</li>
 </ul>
-<h2 id="v6-4-0"><a class="header-anchor" href="#v6-4-0">6.4.0 (2025-04-11)</a></h2><h3 id="features--1"><a class="header-anchor" href="#features--1">Features</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default:</strong> add semantic tokens for colors to wizard (refs SFKUI-7160) 23a3c86</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default:</strong> remove background for selected list/table rows (refs SFKUI-4410) (<a href="undefined/Forsakringskassan/designsystem/issues/413">#413</a>) af9f3ee</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> add styling <code>text-align: left</code> on component <code>th</code> (fixes SFKUI-7151) 86c1b0f</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> update card semantic tokens (refs SFKUI-7166) 6c50ad5</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> update entrypoint with tokens  (refs SFKUI-7040) 6c2f0f1</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> support custom buttons in <code>FCrudDataset</code> (fixes SFKUI-7068) 07ee345, closes #321</p></li>
-<li><p class="docs-paragraph"><strong>deps:</strong> update dependency express to v5 6c388e3</p></li>
-<li><p class="docs-paragraph"><strong>deps:</strong> update dependency express to v5 a48fef0</p></li>
+<h2 id="v6-5-0"><a class="header-anchor" href="#v6-5-0">6.5.0 (2025-04-23)</a></h2><h3 id="features--1"><a class="header-anchor" href="#features--1">Features</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25 223cfd7</li>
 </ul>
 <h3 id="bug_fixes--2"><a class="header-anchor" href="#bug_fixes--2">Bug Fixes</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> collapsed expandable rows in <code>FInteractiveTable</code> shown as white gaps in iOS browsers (fixes SFKUI-6984) (<a href="undefined/Forsakringskassan/designsystem/issues/406">#406</a>) 40421a7</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> card throws error when content is validated (fixes SFKUI-7190) 4c1e690</p></li>
+<li><strong>@fkui/vue:</strong> <code>FTableColumn</code> <code>name</code> only required with <code>FSortFilterDataset</code> (fixes SFKUI-7059) 3dc3454, closes #312</li>
+<li><strong>@fkui/vue:</strong> default value in FSortFilterDataset dropdown (fixes SFKUI-7083) 401f110</li>
+<li><strong>@fkui/vue:</strong> fix &quot;set operation on key value failed&quot; on <code>FInteractiveTable</code> (refs SFKUI-6500) 7bb357e</li>
+<li><strong>@fkui/vue:</strong> fix &quot;set operation on key value failed&quot; on <code>FTableColumn</code> (refs SFKUI-6500) 0fe7409</li>
+<li><strong>@fkui/vue:</strong> wrong button order in <code>FFormModal</code> (fixes SFKUI-7185) (<a href="undefined/Forsakringskassan/designsystem/issues/429">#429</a>) 886b8f4</li>
 </ul>
-<h2 id="v6-3-1"><a class="header-anchor" href="#v6-3-1">6.3.1 (2025-03-25)</a></h2><h3 id="bug_fixes--3"><a class="header-anchor" href="#bug_fixes--3">Bug Fixes</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/test-utils, @fkui/tsconfig:</strong> use <code>moduleResolution</code> <code>bundler</code> instead of <code>node16</code> (refs SFKUI-6500) effa960</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> move focus with arrow keys in <code>FInteractiveTable</code> (fixes SFKUI-7136) 2231d03</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> set <code>keyAttribute</code> as optional for <code>FDataTable</code> (fixes SFKUI-6936) 3c64d99, closes #158</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> set <code>keyAttribute</code> as optional for <code>FInteractiveTable</code> (fixes SFKUI-6936) 2f8d465, closes #158</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> set <code>keyAttribute</code> as optional for <code>FList</code> (fixes SFKUI-6936) bb28be4, closes #158</p></li>
-<li><p class="docs-paragraph"><strong>deps:</strong> update dependency i18next to v24.2.3 ac251de</p></li>
-<li><p class="docs-paragraph">stage <code>publiccode.yml</code> after prepare (refs SFKUI-6500) fe63716</p></li>
+<h2 id="v6-4-0"><a class="header-anchor" href="#v6-4-0">6.4.0 (2025-04-11)</a></h2><h3 id="features--3"><a class="header-anchor" href="#features--3">Features</a></h3><ul>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> add semantic tokens for colors to wizard (refs SFKUI-7160) 23a3c86</li>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> remove background for selected list/table rows (refs SFKUI-4410) (<a href="undefined/Forsakringskassan/designsystem/issues/413">#413</a>) af9f3ee</li>
+<li><strong>@fkui/design:</strong> add styling <code>text-align: left</code> on component <code>th</code> (fixes SFKUI-7151) 86c1b0f</li>
+<li><strong>@fkui/design:</strong> update card semantic tokens (refs SFKUI-7166) 6c50ad5</li>
+<li><strong>@fkui/design:</strong> update entrypoint with tokens  (refs SFKUI-7040) 6c2f0f1</li>
+<li><strong>@fkui/vue:</strong> support custom buttons in <code>FCrudDataset</code> (fixes SFKUI-7068) 07ee345, closes #321</li>
+<li><strong>deps:</strong> update dependency express to v5 6c388e3</li>
+<li><strong>deps:</strong> update dependency express to v5 a48fef0</li>
 </ul>
-<h2 id="v6-3-0"><a class="header-anchor" href="#v6-3-0">6.3.0 (2025-03-11)</a></h2><h3 id="features--4"><a class="header-anchor" href="#features--4">Features</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/date, @fkui/i18next-translate, @fkui/logic, @fkui/test-utils, @fkui/tsconfig, @fkui/vue-labs, @fkui/vue:</strong> new package <code>@fkui/tsconfig</code> (refs SFKUI-6500) e036065</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default:</strong> semantic tokens label (refs SFKUI-6835) c249d5e</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/theme-default, @fkui/vue:</strong> new component <code>FResizePane</code> (refs SFKUI-6993) d01b0a1</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue-labs:</strong> <code>@fkui/vue-labs/pageobject</code> moved to <code>@fkui/vue-labs/cypress</code> (refs SFKUI-6500) 1676ebf</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> set colors on <code>FPageLayout</code> areas (refs SFKUI-6500) 37d6370</p></li>
+<h3 id="bug_fixes--4"><a class="header-anchor" href="#bug_fixes--4">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/design:</strong> collapsed expandable rows in <code>FInteractiveTable</code> shown as white gaps in iOS browsers (fixes SFKUI-6984) (<a href="undefined/Forsakringskassan/designsystem/issues/406">#406</a>) 40421a7</li>
+<li><strong>@fkui/vue:</strong> card throws error when content is validated (fixes SFKUI-7190) 4c1e690</li>
 </ul>
-<h3 id="bug_fixes--5"><a class="header-anchor" href="#bug_fixes--5">Bug Fixes</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> anchor underline offset relative to parent element. <a href="undefined/Forsakringskassan/designsystem/issues/345">#345</a> (refs SB-4982) 1041436</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> do not render as expandable row if empty (fixes SFKUI-7078) 2fdf973, closes #333</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> set selected on <code>v-model</code> change (fixes SFKUI-7052) f8b8af3, closes #293</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> fix <code>FPageLayout</code> size on IOS (refs SFKUI-6500) 69bbec5</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove <code>tabindex</code> from <code>FList</code> <code>ul</code> element (fixes SFKUI-5962) fb7ba82</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> text field components allow null model value (fixes SFKUI-7076) 840d200, closes #316</p></li>
-<li><p class="docs-paragraph"><strong>deps:</strong> update dependency core-js to v3.41.0 5c79e8b</p></li>
+<h2 id="v6-3-1"><a class="header-anchor" href="#v6-3-1">6.3.1 (2025-03-25)</a></h2><h3 id="bug_fixes--5"><a class="header-anchor" href="#bug_fixes--5">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/test-utils, @fkui/tsconfig:</strong> use <code>moduleResolution</code> <code>bundler</code> instead of <code>node16</code> (refs SFKUI-6500) effa960</li>
+<li><strong>@fkui/vue:</strong> move focus with arrow keys in <code>FInteractiveTable</code> (fixes SFKUI-7136) 2231d03</li>
+<li><strong>@fkui/vue:</strong> set <code>keyAttribute</code> as optional for <code>FDataTable</code> (fixes SFKUI-6936) 3c64d99, closes #158</li>
+<li><strong>@fkui/vue:</strong> set <code>keyAttribute</code> as optional for <code>FInteractiveTable</code> (fixes SFKUI-6936) 2f8d465, closes #158</li>
+<li><strong>@fkui/vue:</strong> set <code>keyAttribute</code> as optional for <code>FList</code> (fixes SFKUI-6936) bb28be4, closes #158</li>
+<li><strong>deps:</strong> update dependency i18next to v24.2.3 ac251de</li>
+<li>stage <code>publiccode.yml</code> after prepare (refs SFKUI-6500) fe63716</li>
 </ul>
-<h2 id="v6-2-0"><a class="header-anchor" href="#v6-2-0">6.2.0 (2025-02-28)</a></h2><h3 id="features--6"><a class="header-anchor" href="#features--6">Features</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> add <code>useAreaData()</code> composable (refs SFKUI-6992) 8e62c60</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> cypress pageobjects as esm hybrid package (refs SFKUI-6500) a3bfe08</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> new <code>FPageLayout</code> component (refs SFKUI-6992) 26f0d41</p></li>
+<h2 id="v6-3-0"><a class="header-anchor" href="#v6-3-0">6.3.0 (2025-03-11)</a></h2><h3 id="features--6"><a class="header-anchor" href="#features--6">Features</a></h3><ul>
+<li><strong>@fkui/date, @fkui/i18next-translate, @fkui/logic, @fkui/test-utils, @fkui/tsconfig, @fkui/vue-labs, @fkui/vue:</strong> new package <code>@fkui/tsconfig</code> (refs SFKUI-6500) e036065</li>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> semantic tokens label (refs SFKUI-6835) c249d5e</li>
+<li><strong>@fkui/theme-default, @fkui/vue:</strong> new component <code>FResizePane</code> (refs SFKUI-6993) d01b0a1</li>
+<li><strong>@fkui/vue-labs:</strong> <code>@fkui/vue-labs/pageobject</code> moved to <code>@fkui/vue-labs/cypress</code> (refs SFKUI-6500) 1676ebf</li>
+<li><strong>@fkui/vue:</strong> set colors on <code>FPageLayout</code> areas (refs SFKUI-6500) 37d6370</li>
 </ul>
 <h3 id="bug_fixes--7"><a class="header-anchor" href="#bug_fixes--7">Bug Fixes</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default:</strong> changed semantic tokens for icons and color for some semantic tokens  (refs SFKUI-7038) 98e7a6c</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> add offset top to IPopupListbox (refs SFKUI-6500) cabd15b</p></li>
+<li><strong>@fkui/design:</strong> anchor underline offset relative to parent element. <a href="undefined/Forsakringskassan/designsystem/issues/345">#345</a> (refs SB-4982) 1041436</li>
+<li><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> do not render as expandable row if empty (fixes SFKUI-7078) 2fdf973, closes #333</li>
+<li><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> set selected on <code>v-model</code> change (fixes SFKUI-7052) f8b8af3, closes #293</li>
+<li><strong>@fkui/vue:</strong> fix <code>FPageLayout</code> size on IOS (refs SFKUI-6500) 69bbec5</li>
+<li><strong>@fkui/vue:</strong> remove <code>tabindex</code> from <code>FList</code> <code>ul</code> element (fixes SFKUI-5962) fb7ba82</li>
+<li><strong>@fkui/vue:</strong> text field components allow null model value (fixes SFKUI-7076) 840d200, closes #316</li>
+<li><strong>deps:</strong> update dependency core-js to v3.41.0 5c79e8b</li>
 </ul>
-<h2 id="v6-1-0"><a class="header-anchor" href="#v6-1-0">6.1.0 (2025-02-20)</a></h2><h3 id="features--8"><a class="header-anchor" href="#features--8">Features</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default:</strong> added semantic tokens to Messagebox (refs SFKUI-6986) 3472153</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default:</strong> update Modal with semantic tokens  (refs SFKUI-7034) b759bc0</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>FCrudDataset</code> generic and type-safe (refs SFKUI-6500) 5fa2d7b</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>FDataTable</code> generic and type-safe (refs SFKUI-6500) 3381443</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> generic and type-safe (refs SFKUI-6500) 908146a</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>FList</code> generic and type-safe (refs SFKUI-6500) 21bf92e</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>FSortFilterDataset</code> generic and type-safe (refs SFKUI-6500) 4b27b43</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>useSlotUtils.hasSlot()</code> takes same arguments options api <code>hasSlot()</code> (refs SFKUI-6500) 14707dd</p></li>
+<h2 id="v6-2-0"><a class="header-anchor" href="#v6-2-0">6.2.0 (2025-02-28)</a></h2><h3 id="features--8"><a class="header-anchor" href="#features--8">Features</a></h3><ul>
+<li><strong>@fkui/vue:</strong> add <code>useAreaData()</code> composable (refs SFKUI-6992) 8e62c60</li>
+<li><strong>@fkui/vue:</strong> cypress pageobjects as esm hybrid package (refs SFKUI-6500) a3bfe08</li>
+<li><strong>@fkui/vue:</strong> new <code>FPageLayout</code> component (refs SFKUI-6992) 26f0d41</li>
 </ul>
 <h3 id="bug_fixes--9"><a class="header-anchor" href="#bug_fixes--9">Bug Fixes</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default, @fkui/vue:</strong> remove <code>navbar</code> styles (refs SFKUI-7039) 058eee5</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default:</strong> set sideEffects field for css packages (refs SFKUI-6500) d7b993f</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue:</strong> <code>FCalendar</code> improved accessablility (fixes SFKUI-7011) 6fa234d</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> fix action buttons wrapping in <code>FInteractiveTable</code> (fixes SFKUI-6902) 36ec7ef, closes #296</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> fix missing type declaration for <code>@fkui/design</code> (refs SFKUI-6500) a711cc6, closes #288</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/theme-default:</strong> fix missing type declaration for <code>@fkui/theme-default</code> (refs SFKUI-6500) a6c7a6e, closes #287</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> use <code>teleportTarget</code> in <code>IPopupError</code> (refs SFKUI-7050) 3314ba7</p></li>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> changed semantic tokens for icons and color for some semantic tokens  (refs SFKUI-7038) 98e7a6c</li>
+<li><strong>@fkui/vue:</strong> add offset top to IPopupListbox (refs SFKUI-6500) cabd15b</li>
 </ul>
-<h2 id="v6-0-1"><a class="header-anchor" href="#v6-0-1">6.0.1 (2025-02-11)</a></h2><h3 id="bug_fixes--10"><a class="header-anchor" href="#bug_fixes--10">Bug Fixes</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> focus in highcontrast mode (refs SFKUI-6909) a0e5ea6</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> stepNumber for cancel button slot in FWizardStep (refs SFKUI-6500) 7a9928f</p></li>
-<li><p class="docs-paragraph"><strong>deps:</strong> fix broken peerDependencies (refs SFKUI-6500) 6a4a995</p></li>
+<h2 id="v6-1-0"><a class="header-anchor" href="#v6-1-0">6.1.0 (2025-02-20)</a></h2><h3 id="features--10"><a class="header-anchor" href="#features--10">Features</a></h3><ul>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> added semantic tokens to Messagebox (refs SFKUI-6986) 3472153</li>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> update Modal with semantic tokens  (refs SFKUI-7034) b759bc0</li>
+<li><strong>@fkui/vue:</strong> <code>FCrudDataset</code> generic and type-safe (refs SFKUI-6500) 5fa2d7b</li>
+<li><strong>@fkui/vue:</strong> <code>FDataTable</code> generic and type-safe (refs SFKUI-6500) 3381443</li>
+<li><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> generic and type-safe (refs SFKUI-6500) 908146a</li>
+<li><strong>@fkui/vue:</strong> <code>FList</code> generic and type-safe (refs SFKUI-6500) 21bf92e</li>
+<li><strong>@fkui/vue:</strong> <code>FSortFilterDataset</code> generic and type-safe (refs SFKUI-6500) 4b27b43</li>
+<li><strong>@fkui/vue:</strong> <code>useSlotUtils.hasSlot()</code> takes same arguments options api <code>hasSlot()</code> (refs SFKUI-6500) 14707dd</li>
 </ul>
-<p class="docs-paragraph">För äldre versioner se:</p><ul>
-<li><p class="docs-paragraph"><a href="changelog/v5.html">Changelog för v5</a></p></li>
+<h3 id="bug_fixes--11"><a class="header-anchor" href="#bug_fixes--11">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/design, @fkui/theme-default, @fkui/vue:</strong> remove <code>navbar</code> styles (refs SFKUI-7039) 058eee5</li>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> set sideEffects field for css packages (refs SFKUI-6500) d7b993f</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> <code>FCalendar</code> improved accessablility (fixes SFKUI-7011) 6fa234d</li>
+<li><strong>@fkui/design:</strong> fix action buttons wrapping in <code>FInteractiveTable</code> (fixes SFKUI-6902) 36ec7ef, closes #296</li>
+<li><strong>@fkui/design:</strong> fix missing type declaration for <code>@fkui/design</code> (refs SFKUI-6500) a711cc6, closes #288</li>
+<li><strong>@fkui/theme-default:</strong> fix missing type declaration for <code>@fkui/theme-default</code> (refs SFKUI-6500) a6c7a6e, closes #287</li>
+<li><strong>@fkui/vue:</strong> use <code>teleportTarget</code> in <code>IPopupError</code> (refs SFKUI-7050) 3314ba7</li>
+</ul>
+<h2 id="v6-0-1"><a class="header-anchor" href="#v6-0-1">6.0.1 (2025-02-11)</a></h2><h3 id="bug_fixes--12"><a class="header-anchor" href="#bug_fixes--12">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/design:</strong> focus in highcontrast mode (refs SFKUI-6909) a0e5ea6</li>
+<li><strong>@fkui/vue:</strong> stepNumber for cancel button slot in FWizardStep (refs SFKUI-6500) 7a9928f</li>
+<li><strong>deps:</strong> fix broken peerDependencies (refs SFKUI-6500) 6a4a995</li>
+</ul>
+<p class="docs-paragraph">För äldre versioner se:</p>
+<ul>
+<li><a href="changelog/v5.html">Changelog för v5</a></li>
 </ul>
 <h2 id="v6-0-0"><a class="header-anchor" href="#v6-0-0">6.0.0 (2025-02-10)</a></h2><p class="docs-paragraph">Denna release innehåller brytande ändringar.
-Läs mer om hur du <a href="gettingstarted/migration/migrating-to-v6/overview.html">migrerar till version 6</a>.</p><h3 id="breaking_changes"><a class="header-anchor" href="#breaking_changes">⚠ BREAKING CHANGES</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue-labs:</strong> <code>@fkui/design</code> no longer provides logotype images.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue:</strong> Consumers of <code>entrypoint</code> need to define their disered width.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue:</strong> <code>FPageHeader</code> no longer provides default content in
-<code>logo</code> slot.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The <code>FProgressbarPageObject.ariaValueNow()</code> method has been
-renamed to <code>value()</code> and returns <code>number</code> instead of <code>string</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> default <code>buttonOrder</code> is now <code>RIGHT_TO_LEFT</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The <code>change</code> event has been removed from <code>FCrudDataset</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The <code>change</code> event has been removed from <code>FDialogueTree</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The <code>update</code> event has been removed from <code>FInteractiveTable</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The <code>update</code> event has been removed from <code>FList</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The <code>change</code> event has been removed from <code>FWizard</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The <code>update</code> event has been removed from <code>FTextField</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The <code>change</code> event has been removed from <code>FCalendar</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>@fkui/vue/pageobject</code> has been renamed to <code>@fkui/vue/cypress</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue-labs, @fkui/vue:</strong> <code>discreteDescriptionClass</code> has been renamed to
-<code>formatDescriptionClass</code> in <code>FLabel</code> and all components using <code>FLabel</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> FTooltip now requires a <code>headerTag</code> if it has a header-slot</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic, @fkui/vue:</strong> Deprecated <code>FForm</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> Deprecated <code>FFormStep</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> Deprecated <code>FFormStepButton</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> The internal function <code>isRadiobuttonOrCheckbox(..)</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> The deprecated parameter <code>timeLimitMillis</code> to `setCookie(..) has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> The deprecated and obsolete function <code>applyValidationMessages(..)</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> The deprecated constant <code>FORMAT_3_DIGITS_GROUP</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> The deprecated constant <code>WHITESPACE_PATTERN</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> The deprecated constant <code>DATE_REGEXP_WITH_DASH</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> The deprecated and legacy entrypoint
-<code>@fkui/logic/lib/polyfills</code> has been removed and replaced with <code>@fkui/logic/polyfills</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The following deprecated methods from Cypress Pageobjects has
-been removed:</p></li>
+Läs mer om hur du <a href="gettingstarted/migration/migrating-to-v6/overview.html">migrerar till version 6</a>.</p>
+<h3 id="breaking_changes"><a class="header-anchor" href="#breaking_changes">⚠ BREAKING CHANGES</a></h3><ul>
+<li><strong>@fkui/design, @fkui/vue-labs:</strong> <code>@fkui/design</code> no longer provides logotype images.</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> Consumers of <code>entrypoint</code> need to define their disered width.</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> <code>FPageHeader</code> no longer provides default content in
+<code>logo</code> slot.</li>
+<li><strong>@fkui/vue:</strong> The <code>FProgressbarPageObject.ariaValueNow()</code> method has been
+renamed to <code>value()</code> and returns <code>number</code> instead of <code>string</code>.</li>
+<li><strong>@fkui/vue:</strong> default <code>buttonOrder</code> is now <code>RIGHT_TO_LEFT</code>.</li>
+<li><strong>@fkui/vue:</strong> The <code>change</code> event has been removed from <code>FCrudDataset</code>.</li>
+<li><strong>@fkui/vue:</strong> The <code>change</code> event has been removed from <code>FDialogueTree</code>.</li>
+<li><strong>@fkui/vue:</strong> The <code>update</code> event has been removed from <code>FInteractiveTable</code>.</li>
+<li><strong>@fkui/vue:</strong> The <code>update</code> event has been removed from <code>FList</code>.</li>
+<li><strong>@fkui/vue:</strong> The <code>change</code> event has been removed from <code>FWizard</code>.</li>
+<li><strong>@fkui/vue:</strong> The <code>update</code> event has been removed from <code>FTextField</code>.</li>
+<li><strong>@fkui/vue:</strong> The <code>change</code> event has been removed from <code>FCalendar</code>.</li>
+<li><strong>@fkui/vue:</strong> <code>@fkui/vue/pageobject</code> has been renamed to <code>@fkui/vue/cypress</code>.</li>
+<li><strong>@fkui/design, @fkui/vue-labs, @fkui/vue:</strong> <code>discreteDescriptionClass</code> has been renamed to
+<code>formatDescriptionClass</code> in <code>FLabel</code> and all components using <code>FLabel</code>.</li>
+<li><strong>@fkui/vue:</strong> FTooltip now requires a <code>headerTag</code> if it has a header-slot</li>
+<li><strong>@fkui/logic, @fkui/vue:</strong> Deprecated <code>FForm</code> has been removed.</li>
+<li><strong>@fkui/vue:</strong> Deprecated <code>FFormStep</code> has been removed.</li>
+<li><strong>@fkui/vue:</strong> Deprecated <code>FFormStepButton</code> has been removed.</li>
+<li><strong>@fkui/logic:</strong> The internal function <code>isRadiobuttonOrCheckbox(..)</code> has been removed.</li>
+<li><strong>@fkui/logic:</strong> The deprecated parameter <code>timeLimitMillis</code> to `setCookie(..) has been removed.</li>
+<li><strong>@fkui/logic:</strong> The deprecated and obsolete function <code>applyValidationMessages(..)</code> has been removed.</li>
+<li><strong>@fkui/logic:</strong> The deprecated constant <code>FORMAT_3_DIGITS_GROUP</code> has been removed.</li>
+<li><strong>@fkui/logic:</strong> The deprecated constant <code>WHITESPACE_PATTERN</code> has been removed.</li>
+<li><strong>@fkui/logic:</strong> The deprecated constant <code>DATE_REGEXP_WITH_DASH</code> has been removed.</li>
+<li><strong>@fkui/logic:</strong> The deprecated and legacy entrypoint
+<code>@fkui/logic/lib/polyfills</code> has been removed and replaced with <code>@fkui/logic/polyfills</code>.</li>
+<li><strong>@fkui/vue:</strong> The following deprecated methods from Cypress Pageobjects has
+been removed:</li>
 </ul>
 <ul>
-<li><p class="docs-paragraph"><code>FTooltipPageObject.contents()</code>.</p></li>
-<li><p class="docs-paragraph"><code>FNavigationMenuPageObject.menu()</code>.</p></li>
-<li><p class="docs-paragraph"><code>FMessageBoxPageobject.body()</code>.</p></li>
-<li><p class="docs-paragraph"><code>FMessageBoxPageobject.title()</code>.</p></li>
-<li><p class="docs-paragraph"><code>FLoaderPageobject.loader()</code>.</p></li>
+<li><code>FTooltipPageObject.contents()</code>.</li>
+<li><code>FNavigationMenuPageObject.menu()</code>.</li>
+<li><code>FMessageBoxPageobject.body()</code>.</li>
+<li><code>FMessageBoxPageobject.title()</code>.</li>
+<li><code>FLoaderPageobject.loader()</code>.</li>
 </ul>
 <ul>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The deprecated configuration options <code>modalTarget</code> and
-<code>popupTarget</code> has been removed and replaced with <code>teleportTarget</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> <code>getTextFromScopedSlot(..)</code> function has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> Deprecated validator <code>personnummer</code> has been removed.
-Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code> instead.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic, @fkui/vue:</strong> Deprecated validator <code>personnummer</code> has been removed.
-Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code> instead.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The deprecated <code>skipLinkHref</code> prop has been removed from <code>FPageHeader</code>.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> Deprecated <code>FFormModal</code> slots <code>submit-button-text</code> and
-<code>cancel-button-text</code> removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue-labs, @fkui/vue:</strong> The deprecated <code>trimmedText()</code> method has been removed from all pageobjects.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The deprecated <code>FCheckboxGroup</code> component and the deprecated alias
-<code>FCheckboxGroupField</code> has been removed.</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> The deprecated <code>FRadioGroup</code> component and the deprecated alias
-<code>FRadioGroupField</code> has been removed.</p></li>
+<li><strong>@fkui/vue:</strong> The deprecated configuration options <code>modalTarget</code> and
+<code>popupTarget</code> has been removed and replaced with <code>teleportTarget</code>.</li>
+<li><strong>@fkui/vue:</strong> <code>getTextFromScopedSlot(..)</code> function has been removed.</li>
+<li><strong>@fkui/vue:</strong> Deprecated validator <code>personnummer</code> has been removed.
+Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code> instead.</li>
+<li><strong>@fkui/logic, @fkui/vue:</strong> Deprecated validator <code>personnummer</code> has been removed.
+Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code> instead.</li>
+<li><strong>@fkui/vue:</strong> The deprecated <code>skipLinkHref</code> prop has been removed from <code>FPageHeader</code>.</li>
+<li><strong>@fkui/vue:</strong> Deprecated <code>FFormModal</code> slots <code>submit-button-text</code> and
+<code>cancel-button-text</code> removed.</li>
+<li><strong>@fkui/vue-labs, @fkui/vue:</strong> The deprecated <code>trimmedText()</code> method has been removed from all pageobjects.</li>
+<li><strong>@fkui/vue:</strong> The deprecated <code>FCheckboxGroup</code> component and the deprecated alias
+<code>FCheckboxGroupField</code> has been removed.</li>
+<li><strong>@fkui/vue:</strong> The deprecated <code>FRadioGroup</code> component and the deprecated alias
+<code>FRadioGroupField</code> has been removed.</li>
 </ul>
-<h3 id="features--11"><a class="header-anchor" href="#features--11">Features</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default, @fkui/vue-labs, @fkui/vue:</strong> add <code>@fkui/theme-default</code> package (refs SFKUI-6970) 466cc2e</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/theme-default, @fkui/vue:</strong> add <code>FLogo</code> component (refs SFKUI-6960) d72c041</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue-labs, @fkui/vue:</strong> rename <code>discreteDescriptionClass</code> to <code>formatDescriptionClass</code> (refs SFKUI-7002) d0193d4</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue-labs:</strong> remove logos from <code>@fkui/design</code> (refs SFKUI-6938) 90ef626</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue:</strong> entrypoint always uses full width (refs SB-4982) b0ae343</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design, @fkui/vue:</strong> remove <code>FPageHeader</code> <code>logo</code> slot content (refs SFKUI-6960) 129b092</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> remove deprecated alias <code>modal__dialog-container-{large,fullscreen}</code> classes (refs SFKUI-6963) be16655</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/design:</strong> updated button with semantic tokens (refs SFKUI-6988) 8a6d96c</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic, @fkui/vue:</strong> remove deprecated <code>FForm</code> (refs SFKUI-6961) eaef002</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic, @fkui/vue:</strong> remove deprecated validator <code>personnummer</code> (refs SFKUI-6965) 8c3f6c2</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> remove deprecated <code>applyValidationMessages</code> function from <code>@fkui/logic</code> (refs SFKUI-6963) 66cd2ed</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> remove deprecated <code>DATE_REGEXP_WITH_DASH</code> constant from <code>@fkui/logic</code> (refs SFKUI-6963) de34aec</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> remove deprecated <code>FORMAT_3_DIGITS_GROUP</code> constant from <code>@fkui/logic</code> (refs SFKUI-6963) 2d46557</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> remove deprecated <code>WHITESPACE_PATTERN</code> constant from <code>@fkui/logic</code> (refs SFKUI-6963) f214863</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> remove deprecated entrypoint <code>@fkui/logic/lib/polyfills</code> (refs SFKUI-6963) 381df2e</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> remove deprecated parameter <code>timeLimitMillis</code> from <code>setCookie(..)</code> (refs SFKUI-6963) 8d2777f</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/logic:</strong> remove internal function <code>isRadiobuttonOrCheckbox</code> from <code>@fkui/logic</code> (refs SFKUI-6963) c9e5638</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue-labs, @fkui/vue:</strong> remove deprecated <code>trimmedText()</code> method from all pageobjects (refs SFKUI-6963) a6b1df5</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> change default <code>buttonOrder</code> to <code>RIGHT_TO_LEFT</code> (refs SFKUI-6500) 8334635</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> deprecate template modals (refs SFKUI-6841) 463e617, closes #54</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> emit change event for all input components (refs SFKUI-6963) 1790bfe</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> group-validity event for <code>FValidationGroup</code> formalized (refs SFKUI-6500) 3cfd520</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> new <code>FSelectField.selectedOption()</code> method (refs SFKUI-6500) d37456e</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove <code>change</code> event from <code>FCalendar</code> (refs SFKUI-6963) 41269e1</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove <code>change</code> event from <code>FWizard</code> (refs SFKUI-6963) b9253d5</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove <code>update</code> event from <code>FTextField</code> (refs SFKUI-6963) 1fc5bde</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>{submit,cancel}-button-text</code> from <code>FFormModal</code> refs (refs SFKUI-6963) 6e62fe4</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>change</code> event from <code>FCrudDataset</code> (refs SFKUI-6963) 98c6d1e</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>change</code> event from <code>FDialogueTree</code> (refs SFKUI-6963) 16c3329</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>config.modalTarget</code> and <code>config.popupTarget</code> (refs SFKUI-6963) 6bc9959</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>FCheckboxGroup</code> and <code>FCheckboxGroupField</code> (refs SFKUI-6963) 2350d9c</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>FFormStep</code> (refs SFKUI-6961) 19058f0</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>FFormStepButton</code> (refs SFKUI-6961) 57b0035</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>FRadioGroup</code> and <code>FRadioGroupField</code> (refs SFKUI-6963) 4500e05</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>getTextFromScopedSlot(..)</code> function (refs SFKUI-6963) 778d9d7</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>skipLinkHref</code> prop from <code>FPageHeader</code> (refs SFKUI-6963) a7a46c2</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>update</code> event from <code>FInteractiveTable</code> (refs SFKUI-6963) e3b9ef9</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated <code>update</code> event from <code>FList</code> (refs SFKUI-6963) 85ef64d</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated methods from Cypress pageobjects (refs SFKUI-6963) e0207cb</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> remove deprecated validator <code>personnummer</code> (refs SFKUI-6965) a2b3a23</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> rename <code>@fkui/vue/pageobject</code> to <code>@fkui/vue/cypress</code> (refs SFKUI-6963) 9652321</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> rename <code>FProgressbarPageObject.ariaValueNow()</code> to <code>value()</code> (refs SFKUI-6500) c05bdfb</p></li>
+<h3 id="features--13"><a class="header-anchor" href="#features--13">Features</a></h3><ul>
+<li><strong>@fkui/design, @fkui/theme-default, @fkui/vue-labs, @fkui/vue:</strong> add <code>@fkui/theme-default</code> package (refs SFKUI-6970) 466cc2e</li>
+<li><strong>@fkui/design, @fkui/theme-default, @fkui/vue:</strong> add <code>FLogo</code> component (refs SFKUI-6960) d72c041</li>
+<li><strong>@fkui/design, @fkui/vue-labs, @fkui/vue:</strong> rename <code>discreteDescriptionClass</code> to <code>formatDescriptionClass</code> (refs SFKUI-7002) d0193d4</li>
+<li><strong>@fkui/design, @fkui/vue-labs:</strong> remove logos from <code>@fkui/design</code> (refs SFKUI-6938) 90ef626</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> entrypoint always uses full width (refs SB-4982) b0ae343</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> remove <code>FPageHeader</code> <code>logo</code> slot content (refs SFKUI-6960) 129b092</li>
+<li><strong>@fkui/design:</strong> remove deprecated alias <code>modal__dialog-container-{large,fullscreen}</code> classes (refs SFKUI-6963) be16655</li>
+<li><strong>@fkui/design:</strong> updated button with semantic tokens (refs SFKUI-6988) 8a6d96c</li>
+<li><strong>@fkui/logic, @fkui/vue:</strong> remove deprecated <code>FForm</code> (refs SFKUI-6961) eaef002</li>
+<li><strong>@fkui/logic, @fkui/vue:</strong> remove deprecated validator <code>personnummer</code> (refs SFKUI-6965) 8c3f6c2</li>
+<li><strong>@fkui/logic:</strong> remove deprecated <code>applyValidationMessages</code> function from <code>@fkui/logic</code> (refs SFKUI-6963) 66cd2ed</li>
+<li><strong>@fkui/logic:</strong> remove deprecated <code>DATE_REGEXP_WITH_DASH</code> constant from <code>@fkui/logic</code> (refs SFKUI-6963) de34aec</li>
+<li><strong>@fkui/logic:</strong> remove deprecated <code>FORMAT_3_DIGITS_GROUP</code> constant from <code>@fkui/logic</code> (refs SFKUI-6963) 2d46557</li>
+<li><strong>@fkui/logic:</strong> remove deprecated <code>WHITESPACE_PATTERN</code> constant from <code>@fkui/logic</code> (refs SFKUI-6963) f214863</li>
+<li><strong>@fkui/logic:</strong> remove deprecated entrypoint <code>@fkui/logic/lib/polyfills</code> (refs SFKUI-6963) 381df2e</li>
+<li><strong>@fkui/logic:</strong> remove deprecated parameter <code>timeLimitMillis</code> from <code>setCookie(..)</code> (refs SFKUI-6963) 8d2777f</li>
+<li><strong>@fkui/logic:</strong> remove internal function <code>isRadiobuttonOrCheckbox</code> from <code>@fkui/logic</code> (refs SFKUI-6963) c9e5638</li>
+<li><strong>@fkui/vue-labs, @fkui/vue:</strong> remove deprecated <code>trimmedText()</code> method from all pageobjects (refs SFKUI-6963) a6b1df5</li>
+<li><strong>@fkui/vue:</strong> change default <code>buttonOrder</code> to <code>RIGHT_TO_LEFT</code> (refs SFKUI-6500) 8334635</li>
+<li><strong>@fkui/vue:</strong> deprecate template modals (refs SFKUI-6841) 463e617, closes #54</li>
+<li><strong>@fkui/vue:</strong> emit change event for all input components (refs SFKUI-6963) 1790bfe</li>
+<li><strong>@fkui/vue:</strong> group-validity event for <code>FValidationGroup</code> formalized (refs SFKUI-6500) 3cfd520</li>
+<li><strong>@fkui/vue:</strong> new <code>FSelectField.selectedOption()</code> method (refs SFKUI-6500) d37456e</li>
+<li><strong>@fkui/vue:</strong> remove <code>change</code> event from <code>FCalendar</code> (refs SFKUI-6963) 41269e1</li>
+<li><strong>@fkui/vue:</strong> remove <code>change</code> event from <code>FWizard</code> (refs SFKUI-6963) b9253d5</li>
+<li><strong>@fkui/vue:</strong> remove <code>update</code> event from <code>FTextField</code> (refs SFKUI-6963) 1fc5bde</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>{submit,cancel}-button-text</code> from <code>FFormModal</code> refs (refs SFKUI-6963) 6e62fe4</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>change</code> event from <code>FCrudDataset</code> (refs SFKUI-6963) 98c6d1e</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>change</code> event from <code>FDialogueTree</code> (refs SFKUI-6963) 16c3329</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>config.modalTarget</code> and <code>config.popupTarget</code> (refs SFKUI-6963) 6bc9959</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>FCheckboxGroup</code> and <code>FCheckboxGroupField</code> (refs SFKUI-6963) 2350d9c</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>FFormStep</code> (refs SFKUI-6961) 19058f0</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>FFormStepButton</code> (refs SFKUI-6961) 57b0035</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>FRadioGroup</code> and <code>FRadioGroupField</code> (refs SFKUI-6963) 4500e05</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>getTextFromScopedSlot(..)</code> function (refs SFKUI-6963) 778d9d7</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>skipLinkHref</code> prop from <code>FPageHeader</code> (refs SFKUI-6963) a7a46c2</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>update</code> event from <code>FInteractiveTable</code> (refs SFKUI-6963) e3b9ef9</li>
+<li><strong>@fkui/vue:</strong> remove deprecated <code>update</code> event from <code>FList</code> (refs SFKUI-6963) 85ef64d</li>
+<li><strong>@fkui/vue:</strong> remove deprecated methods from Cypress pageobjects (refs SFKUI-6963) e0207cb</li>
+<li><strong>@fkui/vue:</strong> remove deprecated validator <code>personnummer</code> (refs SFKUI-6965) a2b3a23</li>
+<li><strong>@fkui/vue:</strong> rename <code>@fkui/vue/pageobject</code> to <code>@fkui/vue/cypress</code> (refs SFKUI-6963) 9652321</li>
+<li><strong>@fkui/vue:</strong> rename <code>FProgressbarPageObject.ariaValueNow()</code> to <code>value()</code> (refs SFKUI-6500) c05bdfb</li>
 </ul>
-<h3 id="bug_fixes--12"><a class="header-anchor" href="#bug_fixes--12">Bug Fixes</a></h3><ul>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> combobox reactive options (fixes SFKUI-7010) 3c74336</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> fix <code>aria-label</code> prop on <code>FProgressbar</code> (fixes SFKUI-7004) 3c5c4f0</p></li>
-<li><p class="docs-paragraph"><strong>@fkui/vue:</strong> update FTooltip to require headerTag if header exists (refs SFKUI-6972) 1efb8fe</p></li>
-<li><p class="docs-paragraph"><strong>deps:</strong> update dependency i18next to v24.2.2 8346550</p></li>
+<h3 id="bug_fixes--14"><a class="header-anchor" href="#bug_fixes--14">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> combobox reactive options (fixes SFKUI-7010) 3c74336</li>
+<li><strong>@fkui/vue:</strong> fix <code>aria-label</code> prop on <code>FProgressbar</code> (fixes SFKUI-7004) 3c5c4f0</li>
+<li><strong>@fkui/vue:</strong> update FTooltip to require headerTag if header exists (refs SFKUI-6972) 1efb8fe</li>
+<li><strong>deps:</strong> update dependency i18next to v24.2.2 8346550</li>
 </ul>
 
 
@@ -444,9 +464,9 @@ Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/8aa5ed639012817951561498d06459eec3365bc0">8aa5ed6</a>)<br />
+<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/ef4e66d19d4254caf95f4263119fe94dd2daeec5">ef4e66d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/379">PR 379</a><br />
-        2025-04-24 08:21
+        2025-04-28 06:43
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -559,16 +579,16 @@ Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="./assets/processors/selectable-version/select-version-50a45c.js"
+            src="./assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-ew0nN7HjZZWlAqqxYNe3jmOgC0rjVWd7o94Muk42AmApjtUhqPuR8E+Y7cq5AJcx"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="./assets/main-a45256.js"
+            src="./assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

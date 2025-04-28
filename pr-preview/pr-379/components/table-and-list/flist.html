@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Lista - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-8b458e.css"
+            href="../../assets/docs-53a3f0.css"
             crossorigin
-            integrity="sha384-HczexJ3VPDUg4OOHSQnDzPc6tn8vuS1bhkJgzGjGSFFAPj3IVQ9BwSK0ndeNVwPw"
+            integrity="sha384-oBgDebH/RyOanTVbgpoPeR7NaLvY9enFA0wx4u86//e748CfZnEnLHCie8Q3iZBk"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-3fe358.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-bab7fb.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-3fe358.js": "sha384-9VHTdhaS8M+g88GezUQD9/iUPHknt9a7gu3X0DyeQCn3beF9QosI8jIKQtBYzr78",
+    "../../assets/vendor-fkui-vue-bab7fb.js": "sha384-G6r9hGfKhk2X4Ye3DP0SNxcRhs/IZ9e46bEiOeKzVGsA1WOfiNAvhbPxVDX4S5BP",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-8debbe.json"
+            href="../../search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-2Cra93XG9PSLAxMyLxvEo2CBM7rK9zQb8qwixKaT1HJVhRl8A9jHHMKIy335Sqju"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -848,6 +848,17 @@
         </a>
     </li><li class="link ">
         <a
+            href="../page-layout/fdetailspanel.html"
+            
+            
+            
+            data-path="components/page-layout/fdetailspanel.html"
+            
+        >
+            Detaljpanel
+        </a>
+    </li><li class="link ">
+        <a
             href="../page-layout/fresizepane.html"
             
             
@@ -856,6 +867,17 @@
             
         >
             Justerbar yta
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fminimizablepanel.html"
+            
+            
+            
+            data-path="components/page-layout/fminimizablepanel.html"
+            
+        >
+            Minimerbar panel
         </a>
     </li><li class="link ">
         <a
@@ -1036,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8aa5ed639012817951561498d06459eec3365bc0/packages/vue/src/components/FList/FList.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ef4e66d19d4254caf95f4263119fe94dd2daeec5/packages/vue/src/components/FList/FList.vue">
                 FList
             </a>
             
@@ -1072,6 +1094,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Lista används när användaren behöver gå igenom ett antal poster för att hitta en särskild post som ska visas eller hanteras.</p>
+
                 <div
                     id="example-50a33c"
                     class="code-preview code-preview--borderless"
@@ -1080,18 +1103,20 @@
                     data-language="vue"
                 >
                     
-        <div id="example-d05e1e"></div>
+        <div id="example-6511f5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FListLiveExample-d05e1e.js"></script>
+        <script type="module" src="./FListLiveExample-6511f5.js"></script>
     
                 </div>
             <h2 id="ange_nyckel_keyattribute"><a class="header-anchor" href="#ange_nyckel_keyattribute">Ange nyckel (<code>keyAttribute</code>)</a></h2><p class="docs-paragraph">Med <code>keyAttribute</code> så kan du ange namnet för en nyckel (<code>key</code>) som finns i varje list-ojekt och innehåller ett värde som kan användas för att identifiera olika objekt.
-Om detta anges, så måste varje objekt innehålla denna nyckel med ett unikt värde.</p><p class="docs-paragraph">Att använda <code>keyAttribute</code> är valfritt och behövs inte anges om du inte har nåt naturligt id att ange för dina objekt.
+Om detta anges, så måste varje objekt innehålla denna nyckel med ett unikt värde.</p>
+<p class="docs-paragraph">Att använda <code>keyAttribute</code> är valfritt och behövs inte anges om du inte har nåt naturligt id att ange för dina objekt.
 Men om det är tänkt att objekten ska laddas om från REST-api eller liknande så måste du använda <code>keyAttribute</code> för att aktuell status för dina objekt ska kunna bibehållas.</p>
+
                 <div
                     id="example-6ac41c"
                     class="code-preview code-preview--default"
@@ -1120,7 +1145,8 @@ Men om det är tänkt att objekten ska laddas om från REST-api eller liknande s
 ];
 </code></pre>
                 </div>
-            <h2 id="anvandning_av_komponent"><a class="header-anchor" href="#anvandning_av_komponent">Användning av komponent</a></h2><p class="docs-paragraph"><strong>Komponent motsvarar följande HTML element:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">Unordered List</a></p><h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+            <h2 id="anvandning_av_komponent"><a class="header-anchor" href="#anvandning_av_komponent">Användning av komponent</a></h2><p class="docs-paragraph"><strong>Komponent motsvarar följande HTML element:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">Unordered List</a></p>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
         <h3 id="flist-props">
             <a class="header-anchor" href="#flist-props">Props</a>
         </h3>
@@ -1458,9 +1484,9 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/8aa5ed639012817951561498d06459eec3365bc0">8aa5ed6</a>)<br />
+<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/ef4e66d19d4254caf95f4263119fe94dd2daeec5">ef4e66d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/379">PR 379</a><br />
-        2025-04-24 08:21
+        2025-04-28 06:43
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1573,16 +1599,16 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-50a45c.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-ew0nN7HjZZWlAqqxYNe3jmOgC0rjVWd7o94Muk42AmApjtUhqPuR8E+Y7cq5AJcx"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>
