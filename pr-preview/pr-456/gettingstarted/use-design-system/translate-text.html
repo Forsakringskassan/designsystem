@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-f04934.json"
+            href="../../search-data-cd4328.json"
             as="fetch"
             crossorigin
-            integrity="sha384-MThRM2FdvM3s22wWa2IkAcGhpNUp9EMWWtugO+6Pt58HTa6aScKp09HBOfW6r6VV"
+            integrity="sha384-mP2gqvEeBpL1pBZYX/v5Xl/bYh5PX2WaUjOqyK1qJNgbZ/fRlv++7y1S1owWMSkg"
             id="search-data"
         />
     </head>
@@ -553,7 +553,7 @@ Designsystemet levererar <a href="../../functions/i18next-translate/i18next.html
 Den här guiden förutsätter att i18next används.</p>
 <p class="docs-paragraph">Vissa komponenter använder också slots eller props när formaterat eller komplext innehåll ska visas.
 Läs mer under respektive komponent om hur man anpassar och översätter texter.</p>
-<h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att kunna översätta text måste din applikation måste sätta upp en TranslationProvider som tillhandhåller texter.</p>
+<h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att kunna översätta text måste din applikation sätta upp en TranslationProvider som tillhandhåller texter.</p>
 <p class="docs-paragraph">Texterna kan hämtas med REST-anrop, importeras statiskt och bundlas med i javascript eller hårdkodas direkt in i filen:</p>
 
                 <div
@@ -681,7 +681,7 @@ Vi använder endast interpolering med parametrar.</p>
 
             <div class="docs-messagebox docs-messagebox--danger">
                 <p class="docs-messagebox__title">Tänk på att</p>
-                <p class="docs-paragraph"><code>addValidationErrorMessages()</code> mergar med föregende mappningar inkl de standardtexter som designsystemet levererar.
+                <p class="docs-paragraph"><code>addValidationErrorMessages()</code> mergar med föregående mappningar inkl de standardtexter som designsystemet levererar.
 Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och ha stenkoll på nya mappningar vid uppdatering av version då minsta förändring kräver att du matchar exakt hur designsystemets mappning ser ut.</p>
 <p class="docs-paragraph">Ett tips är att skapa ett snapshot test i eran kodbas som hämtar ut standardtexterna med <a href="../../logic/functions/getErrorMessages.html"><code>getErrorMessages</code></a> och vid uppdatering verifierar om snapshot ändrats.</p>
 
@@ -735,9 +735,9 @@ Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och h
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/b98167063c1250ab49744707d35f712a09758e36">b981670</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/1d2f6147360d5cb7386643366b3bd9e6da8b1fe1">1d2f614</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-27 22:07
+        2025-04-28 07:29
 </div>
 <div class="toolbar__item">
     <form id="version">
