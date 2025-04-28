@@ -103,7 +103,6 @@ function onResize(event: CustomEvent<[size: number]>): void {
 <template>
     <component :is="tagName" :disabled :hidden :overlay :offset v-bind="props" @resize="onResize">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -- native slot -->
-        <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
         <div slot="content">
             <!-- @slot Pane content -->
             <slot name="default"></slot>
