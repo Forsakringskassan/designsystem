@@ -29,7 +29,7 @@ const props = defineProps({
         default: undefined,
     },
     /**
-     * When enabled (default) this column visible.
+     * When enabled controls column visibility (default `true`)
      *
      * Should be used instead of `v-if` or `v-show`.
      */

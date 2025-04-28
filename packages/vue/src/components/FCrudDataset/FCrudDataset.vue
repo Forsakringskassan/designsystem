@@ -149,7 +149,7 @@ const formModalButtons = computed((): FModalButtonDescriptor[] => {
     const cancelButtonText =
         operation.value === Operation.ADD
             ? /** "Cancel" button in "add new" modal */ $t("fkui.crud-dataset.modal.cancel.add", "Avbryt")
-            : /** "Cancel" button in "modifiy" modal */ $t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+            : /** "Cancel" button in "modify" modal */ $t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
     return [
         {
             label: confirmButtonText,
