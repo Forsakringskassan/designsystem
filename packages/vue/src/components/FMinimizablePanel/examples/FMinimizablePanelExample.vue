@@ -7,7 +7,6 @@ import { FPageLayout, FResizePane, FMinimizablePanel } from "@fkui/vue";
         <template #left>
             <f-resize-pane min="150px" max="40%" initial="600px">
                 <!-- eslint-disable vue/no-deprecated-slot-attribute -- native-slot -->
-                <!-- [html-validate-disable vue/prefer-slot-shorthand -- native slot] -->
                 <f-minimizable-panel>
                     <template #default="{ isOpen, header, footer, content }">
                         <template v-if="isOpen">
