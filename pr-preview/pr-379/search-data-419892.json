@@ -7,9 +7,9 @@
     "Grid",
     "Densitet",
     "Färger",
-    "Hjälp och support",
     "@fkui/tsconfig",
     "Konfiguration",
+    "Hjälp och support",
     "Chip",
     "chip",
     "Knapp",
@@ -48,19 +48,6 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
-    "Skapa eget ikonbibliotek",
-    "Kom igång",
-    "Ta fram applikation",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
-    "Testverktyg",
-    "Releaseprocess",
-    "För utvecklare",
-    "Commits och commitmeddelanden",
-    "Checklista vid publicering",
-    "På gång",
-    "Nyheter",
-    "Designsystemet",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
@@ -94,6 +81,19 @@
     "includeItem",
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
+    "Skapa eget ikonbibliotek",
+    "Kom igång",
+    "Ta fram applikation",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
+    "Testverktyg",
+    "Releaseprocess",
+    "För utvecklare",
+    "Commits och commitmeddelanden",
+    "Checklista vid publicering",
+    "På gång",
+    "Nyheter",
+    "Designsystemet",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -198,11 +198,6 @@
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
-    "Version 6 migreringsguide: @fkui/vue",
-    "Version 6 migreringsguide",
-    "Version 6 migreringsguide: @fkui/logic",
-    "Version 6 migreringsguide: @fkui/design",
-    "Version 6 migreringsguide: Cypress Pageobjects",
     "openModal",
     "formModal() function",
     "confirmModal() function",
@@ -223,6 +218,11 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
+    "Version 6 migreringsguide: @fkui/vue",
+    "Version 6 migreringsguide",
+    "Version 6 migreringsguide: @fkui/logic",
+    "Version 6 migreringsguide: @fkui/design",
+    "Version 6 migreringsguide: Cypress Pageobjects",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -292,11 +292,6 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/help-and-support.html",
-      "title": "Hjälp och support",
-      "terms": []
-    },
-    {
       "url": "functions/tsconfig.html",
       "title": "@fkui/tsconfig",
       "terms": []
@@ -304,6 +299,11 @@
     {
       "url": "functions/config.html",
       "title": "Konfiguration",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/help-and-support.html",
+      "title": "Hjälp och support",
       "terms": []
     },
     {
@@ -444,71 +444,6 @@
     {
       "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
       "title": "Formaterare och parser - anpassad",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
-      "title": "Testverktyg",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/contribute-to-fkds/release.html",
-      "title": "Releaseprocess",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/contribute-to-fkds/contributing-developers.html",
-      "title": "För utvecklare",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/contribute-to-fkds/commits.html",
-      "title": "Commits och commitmeddelanden",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/contribute-to-fkds/checklist-publication.html",
-      "title": "Checklista vid publicering",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/about/release-plan.html",
-      "title": "På gång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/about/news.html",
-      "title": "Nyheter",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
       "terms": []
     },
     {
@@ -664,6 +599,71 @@
     {
       "url": "functions/functions/dispatch-component-validity-event.html",
       "title": "dispatchComponentValidityEvent",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
+      "title": "Testverktyg",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/release.html",
+      "title": "Releaseprocess",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/contributing-developers.html",
+      "title": "För utvecklare",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/commits.html",
+      "title": "Commits och commitmeddelanden",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/checklist-publication.html",
+      "title": "Checklista vid publicering",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/release-plan.html",
+      "title": "På gång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/news.html",
+      "title": "Nyheter",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
       "terms": []
     },
     {
@@ -1018,31 +1018,6 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
-      "title": "Version 6 migreringsguide: @fkui/vue",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
-      "title": "Version 6 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
-      "title": "Version 6 migreringsguide: @fkui/logic",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/design.html",
-      "title": "Version 6 migreringsguide: @fkui/design",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
-      "title": "Version 6 migreringsguide: Cypress Pageobjects",
-      "terms": []
-    },
-    {
       "url": "functions/functions/modal-functions/open-modal.html",
       "title": "openModal",
       "terms": []
@@ -1140,6 +1115,31 @@
     {
       "url": "functions/functions/dom-functions/find-element-from-vue-ref.html",
       "title": "findElementFromVueRef",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
+      "title": "Version 6 migreringsguide: @fkui/vue",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
+      "title": "Version 6 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
+      "title": "Version 6 migreringsguide: @fkui/logic",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/design.html",
+      "title": "Version 6 migreringsguide: @fkui/design",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
+      "title": "Version 6 migreringsguide: Cypress Pageobjects",
       "terms": []
     },
     {
@@ -1352,27 +1352,27 @@
     "50": 34,
     "51": 35,
     "52": 36,
-    "53": 37,
-    "54": 38,
-    "55": 39,
-    "56": 40,
-    "57": 41,
-    "58": 42,
-    "59": 43,
-    "60": 44,
-    "61": 45,
-    "62": 46,
-    "63": 47,
-    "64": 48,
-    "65": 49,
-    "66": 49,
-    "67": 50,
-    "68": 51,
-    "69": 52,
-    "70": 53,
-    "71": 54,
-    "72": 55,
-    "73": 55,
+    "53": 36,
+    "54": 37,
+    "55": 38,
+    "56": 39,
+    "57": 40,
+    "58": 41,
+    "59": 42,
+    "60": 42,
+    "61": 42,
+    "62": 43,
+    "63": 44,
+    "64": 45,
+    "65": 46,
+    "66": 47,
+    "67": 48,
+    "68": 49,
+    "69": 50,
+    "70": 51,
+    "71": 52,
+    "72": 53,
+    "73": 54,
     "74": 55,
     "75": 56,
     "76": 57,
