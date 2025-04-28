@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>openModal - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-88ed0c.css"
+            href="../../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1386,7 +1386,8 @@
 ): <span class="hljs-title class_">AsyncModalResult</span>&lt;T&gt;;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Provides an API to pragmatically open modal dialogs.</p><h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
+            <p class="docs-paragraph">Provides an API to pragmatically open modal dialogs.</p>
+<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
                     id="example-9f2f01"
                     class="code-preview code-preview--default"
@@ -1404,15 +1405,17 @@
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Modal closed with result&quot;</span>, result);
 <span class="hljs-comment">// Modal closed with result { reason: &quot;close&quot;, data: undefined }</span></code></pre>
                 </div>
-            <h2 id="api_for_custom_modals"><a class="header-anchor" href="#api_for_custom_modals">API for custom modals</a></h2><p class="docs-paragraph">The given component must adhere to the following contract:</p><ol>
-<li><p class="docs-paragraph">When closed, no matter the reason, the modal MUST emit the <code>close</code> event.</p></li>
-<li><p class="docs-paragraph">When closed, the modal SHOULD include <code>{ reason: string }</code> as event payload.</p></li>
-<li><p class="docs-paragraph">When closed, the modal MAY include <code>{ data: T }</code> as event payload.</p></li>
-<li><p class="docs-paragraph">The modal MUST be visible by default or use the prop <code>isOpen</code> to control visibility.</p></li>
-<li><p class="docs-paragraph">The modal SHOULD respect the <code>content</code> prop to set the primary text of the modal.</p></li>
+            <h2 id="api_for_custom_modals"><a class="header-anchor" href="#api_for_custom_modals">API for custom modals</a></h2><p class="docs-paragraph">The given component must adhere to the following contract:</p>
+<ol>
+<li>When closed, no matter the reason, the modal MUST emit the <code>close</code> event.</li>
+<li>When closed, the modal SHOULD include <code>{ reason: string }</code> as event payload.</li>
+<li>When closed, the modal MAY include <code>{ data: T }</code> as event payload.</li>
+<li>The modal MUST be visible by default or use the prop <code>isOpen</code> to control visibility.</li>
+<li>The modal SHOULD respect the <code>content</code> prop to set the primary text of the modal.</li>
 </ol>
 <p class="docs-paragraph">Until the <code>close</code> event has been received the caller will be blocked.
 Both <code>reason</code> and <code>data</code> will be available in the resolved promise.</p>
+
 
                     </div>
                 </main>
@@ -1428,9 +1431,9 @@ Both <code>reason</code> and <code>data</code> will be available in the resolved
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1543,16 +1546,16 @@ Both <code>reason</code> and <code>data</code> will be available in the resolved
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../../assets/main-a45256.js"
+            src="../../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Version 6 migreringsguide - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-88ed0c.css"
+            href="../../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -542,73 +542,89 @@
                     <div id="content"><h2 id="sammanfattning"><a class="header-anchor" href="#sammanfattning">Sammanfattning</a></h2><ul>
 <li>
 <p class="docs-paragraph">Vi har tagit bort stöd för containermanéret då det inte uppfyller krav på tillgänglighet.
-De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.</p></li>
+De relaterade komponenterna formulär (FForm), formulärsteg (FFormStep) har tagits bort.</p>
+</li>
 <li>
 <p class="docs-paragraph">Modal (FModal): Knappordningen är ändrad i modaler så att den sekundära knappen ligger före den primära knappen.
-Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.</p></li>
+Anledningen är att användare inte ska ändra något av misstag, till exempel ta bort något.</p>
+</li>
 <li>
-<p class="docs-paragraph">Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migrating-to-fieldset.html">FFieldset</a>.</p></li>
+<p class="docs-paragraph">Kryssruta och radioknapp: De gamla grupperingskomponenterna för kryssruta och radioknapp har tagits bort, använd istället <a href="../migrating-to-fieldset.html">FFieldset</a>.</p>
+</li>
 <li>
-<p class="docs-paragraph">Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.</p></li>
+<p class="docs-paragraph">Sidhuvud (FPageHeader): Komponenten innehåller inte längre länk eller logotyp som standard.</p>
+</li>
 <li>
-<p class="docs-paragraph">Ett antal andra funktioner, typer och komponenter är också borttagna.</p></li>
+<p class="docs-paragraph">Ett antal andra funktioner, typer och komponenter är också borttagna.</p>
+</li>
 <li>
-<p class="docs-paragraph">Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).</p></li>
+<p class="docs-paragraph">Pageobject: Ett antal deprekerade metoder är borttagna (bland annat trimmedText()).</p>
+</li>
 <li>
-<p class="docs-paragraph">Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.</p></li>
+<p class="docs-paragraph">Valideringsservice: Den deprekerade validatorn personnummer är borttagen, använd istället validatorerna personnummerFormat och personnummerLuhn.</p>
+</li>
 <li>
 <p class="docs-paragraph">Tema och variabler: Designsystemet tillhandahåller nu endast ett tema.
-Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.</p></li>
+Som konsument finns det fortfarande möjlighet att själv tillhandahålla specifika tillämpningar.</p>
+</li>
 <li>
-<p class="docs-paragraph">Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.</p></li>
+<p class="docs-paragraph">Formatbeskrivning etikett: Klassnamnet för formatbeskrivning på etikett är ändrat.</p>
+</li>
 </ul>
-<h2 id="fkui_design"><a class="header-anchor" href="#fkui_design"><code>@fkui/design</code></a></h2><p class="docs-paragraph"><strong>Borttaget</strong>:</p><ul>
-<li><p class="docs-paragraph"><a href="./design.html#fmodal_deprekerade_css_klasser"><code>modal__dialog-container-large</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./design.html#fmodal_deprekerade_css_klasser"><code>modal__dialog-container-fullscreen</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./design.html#deprekerade_css_variabler_exluderade_fran_standardtema"><code>@fkui/css-variables</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./design.html#logotyper_borttagna"><code>@fkui/design/src/assets/images</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./design.html#navbar_borttagen"><code>navbar</code></a></p></li>
+<h2 id="fkui_design"><a class="header-anchor" href="#fkui_design"><code>@fkui/design</code></a></h2><p class="docs-paragraph"><strong>Borttaget</strong>:</p>
+<ul>
+<li><a href="./design.html#fmodal_deprekerade_css_klasser"><code>modal__dialog-container-large</code></a></li>
+<li><a href="./design.html#fmodal_deprekerade_css_klasser"><code>modal__dialog-container-fullscreen</code></a></li>
+<li><a href="./design.html#deprekerade_css_variabler_exluderade_fran_standardtema"><code>@fkui/css-variables</code></a></li>
+<li><a href="./design.html#logotyper_borttagna"><code>@fkui/design/src/assets/images</code></a></li>
+<li><a href="./design.html#navbar_borttagen"><code>navbar</code></a></li>
 </ul>
-<p class="docs-paragraph"><strong>Ändrat:</strong></p><ul>
-<li><p class="docs-paragraph"><a href="./design.html#tillampnings_specifika_leverabler_borttagna"><code>@fkui/design</code></a></p></li>
+<p class="docs-paragraph"><strong>Ändrat:</strong></p>
+<ul>
+<li><a href="./design.html#tillampnings_specifika_leverabler_borttagna"><code>@fkui/design</code></a></li>
 </ul>
-<h2 id="fkui_logic"><a class="header-anchor" href="#fkui_logic"><code>@fkui/logic</code></a></h2><p class="docs-paragraph"><strong>Borttaget</strong>:</p><ul>
-<li><p class="docs-paragraph"><a href="./logic.html#polyfill"><code>@fkui/logic/lib/polyfills</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./logic.html#date_regexp_with_dash"><code>DATE_REGEXP_WITH_DASH</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./logic.html#whitespace_pattern"><code>WHITESPACE_PATTERN</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./logic.html#format_3_digits_group"><code>FORMAT_3_DIGITS_GROUP</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./logic.html#applyvalidationmessages"><code>applyValidationMessages()</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./logic.html#isradiobuttonorcheckbox"><code>isRadiobuttonOrCheckbox()</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./logic.html#validator_personnummer"><code>personnummer</code></a></p></li>
+<h2 id="fkui_logic"><a class="header-anchor" href="#fkui_logic"><code>@fkui/logic</code></a></h2><p class="docs-paragraph"><strong>Borttaget</strong>:</p>
+<ul>
+<li><a href="./logic.html#polyfill"><code>@fkui/logic/lib/polyfills</code></a></li>
+<li><a href="./logic.html#date_regexp_with_dash"><code>DATE_REGEXP_WITH_DASH</code></a></li>
+<li><a href="./logic.html#whitespace_pattern"><code>WHITESPACE_PATTERN</code></a></li>
+<li><a href="./logic.html#format_3_digits_group"><code>FORMAT_3_DIGITS_GROUP</code></a></li>
+<li><a href="./logic.html#applyvalidationmessages"><code>applyValidationMessages()</code></a></li>
+<li><a href="./logic.html#isradiobuttonorcheckbox"><code>isRadiobuttonOrCheckbox()</code></a></li>
+<li><a href="./logic.html#validator_personnummer"><code>personnummer</code></a></li>
 </ul>
-<p class="docs-paragraph"><strong>Ändrat:</strong></p><ul>
-<li><p class="docs-paragraph"><a href="./logic.html#setcookie"><code>setCookie()</code></a></p></li>
+<p class="docs-paragraph"><strong>Ändrat:</strong></p>
+<ul>
+<li><a href="./logic.html#setcookie"><code>setCookie()</code></a></li>
 </ul>
-<h2 id="fkui_vue"><a class="header-anchor" href="#fkui_vue"><code>@fkui/vue</code></a></h2><p class="docs-paragraph"><strong>Borttaget:</strong></p><ul>
-<li><p class="docs-paragraph"><a href="./vue.html#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>config.modalTarget</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>config.popupTarget</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroupField</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fform_fformstep_och_fformstepbutton"><code>FForm</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fform_fformstep_och_fformstepbutton"><code>FFormStep</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fform_fformstep_och_fformstepbutton"><code>FFormStepButton</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fradiogroup_och_fradiogroupfield"><code>FRadioGroup</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fradiogroup_och_fradiogroupfield"><code>FRadioGroupField</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fradiogroup_och_fradiogroupfield"><code>getTextFromScopedSlot()</code></a></p></li>
+<h2 id="fkui_vue"><a class="header-anchor" href="#fkui_vue"><code>@fkui/vue</code></a></h2><p class="docs-paragraph"><strong>Borttaget:</strong></p>
+<ul>
+<li><a href="./vue.html#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>config.modalTarget</code></a></li>
+<li><a href="./vue.html#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>config.popupTarget</code></a></li>
+<li><a href="./vue.html#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroup</code></a></li>
+<li><a href="./vue.html#fcheckboxgroup_och_fcheckboxgroupfield"><code>FCheckboxGroupField</code></a></li>
+<li><a href="./vue.html#fform_fformstep_och_fformstepbutton"><code>FForm</code></a></li>
+<li><a href="./vue.html#fform_fformstep_och_fformstepbutton"><code>FFormStep</code></a></li>
+<li><a href="./vue.html#fform_fformstep_och_fformstepbutton"><code>FFormStepButton</code></a></li>
+<li><a href="./vue.html#fradiogroup_och_fradiogroupfield"><code>FRadioGroup</code></a></li>
+<li><a href="./vue.html#fradiogroup_och_fradiogroupfield"><code>FRadioGroupField</code></a></li>
+<li><a href="./vue.html#fradiogroup_och_fradiogroupfield"><code>getTextFromScopedSlot()</code></a></li>
 </ul>
-<p class="docs-paragraph"><strong>Ändrat:</strong></p><ul>
-<li><p class="docs-paragraph"><a href="./vue.html#fcalendar"><code>FCalendar</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fformmodal_slots"><code>FFormModal</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#fpageheader"><code>FPageHeader</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./vue.html#ftextfield"><code>FTextField</code></a></p></li>
+<p class="docs-paragraph"><strong>Ändrat:</strong></p>
+<ul>
+<li><a href="./vue.html#fcalendar"><code>FCalendar</code></a></li>
+<li><a href="./vue.html#fformmodal_slots"><code>FFormModal</code></a></li>
+<li><a href="./vue.html#fpageheader"><code>FPageHeader</code></a></li>
+<li><a href="./vue.html#ftextfield"><code>FTextField</code></a></li>
 </ul>
-<h2 id="cypress"><a class="header-anchor" href="#cypress">Cypress</a></h2><p class="docs-paragraph"><strong>Borttaget:</strong></p><ul>
-<li><p class="docs-paragraph"><a href="./cypress-pageobjects.html#trimmedtext"><code>trimmedText()</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./cypress-pageobjects.html#fmessageboxpageobject"><code>FMessageBoxPageObject.title()</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./cypress-pageobjects.html#fmessageboxpageobject"><code>FMessageBoxPageObject.body()</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./cypress-pageobjects.html#floaderpageobject"><code>FLoaderPageobject.loader()</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./cypress-pageobjects.html#fnavigationmenupageobject"><code>FNavigationMenuPageobject.menu()</code></a></p></li>
-<li><p class="docs-paragraph"><a href="./cypress-pageobjects.html#ftooltippageobject"><code>FTooltipPageObject.content()</code></a></p></li>
+<h2 id="cypress"><a class="header-anchor" href="#cypress">Cypress</a></h2><p class="docs-paragraph"><strong>Borttaget:</strong></p>
+<ul>
+<li><a href="./cypress-pageobjects.html#trimmedtext"><code>trimmedText()</code></a></li>
+<li><a href="./cypress-pageobjects.html#fmessageboxpageobject"><code>FMessageBoxPageObject.title()</code></a></li>
+<li><a href="./cypress-pageobjects.html#fmessageboxpageobject"><code>FMessageBoxPageObject.body()</code></a></li>
+<li><a href="./cypress-pageobjects.html#floaderpageobject"><code>FLoaderPageobject.loader()</code></a></li>
+<li><a href="./cypress-pageobjects.html#fnavigationmenupageobject"><code>FNavigationMenuPageobject.menu()</code></a></li>
+<li><a href="./cypress-pageobjects.html#ftooltippageobject"><code>FTooltipPageObject.content()</code></a></li>
 </ul>
 
 
@@ -626,9 +642,9 @@ Som konsument finns det fortfarande möjlighet att själv tillhandahålla specif
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -741,16 +757,16 @@ Som konsument finns det fortfarande möjlighet att själv tillhandahålla specif
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../../assets/main-a45256.js"
+            src="../../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>useResize() composable - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1343,11 +1343,13 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Composable för att styra hur en <a href="../../components/page-layout/fresizepane.html">justerbar yta</a> ska bete sig:</p><ul>
-<li><p class="docs-paragraph">Om ytan ska vara justerbar eller ej.</p></li>
-<li><p class="docs-paragraph">Om ytan ska visas eller ej.</p></li>
+                    <div id="content"><p class="docs-paragraph">Composable för att styra hur en <a href="../../components/page-layout/fresizepane.html">justerbar yta</a> ska bete sig:</p>
+<ul>
+<li>Om ytan ska vara justerbar eller ej.</li>
+<li>Om ytan ska visas eller ej.</li>
 </ul>
-<p class="docs-paragraph">Om flera komponenter nyttjar <code>useResize()</code> i samma justerbara yta och minst en av dem aktiverar en egenskap, exempelvis om minst en komponent sätter <code>enabled</code>, så är den justerbara ytan justerbar.</p><h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
+<p class="docs-paragraph">Om flera komponenter nyttjar <code>useResize()</code> i samma justerbara yta och minst en av dem aktiverar en egenskap, exempelvis om minst en komponent sätter <code>enabled</code>, så är den justerbara ytan justerbar.</p>
+<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
                     id="example-58c82a"
                     class="code-preview code-preview--default"
@@ -1362,23 +1364,26 @@
             <h3 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h3><dl>
 <dt><code>options</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>
-<p class="docs-paragraph">Egenskaper att styra.</p><dl>
+<p class="docs-paragraph">Egenskaper att styra.</p>
+<dl>
 <dt><code>enabled: Ref&lt;boolean&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd><p class="docs-paragraph">Om aktiv kommer den justerbara ytan att vara justerbar. Default: <code>true</code>.</p></dd>
+<dd>Om aktiv kommer den justerbara ytan att vara justerbar. Default: <code>true</code>.</dd>
 <dt><code>visible: Ref&lt;boolean&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd><p class="docs-paragraph">Om aktiv kommer den justerbara ytan att visas. Default: <code>true</code>.</p></dd>
+<dd>Om aktiv kommer den justerbara ytan att visas. Default: <code>true</code>.</dd>
 <dt><code>overlay: Ref&lt;boolean&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd><p class="docs-paragraph">Om aktiv kommer den justerbara ytan att visas som en overlay istället för statisk. <code>offset</code> kan användas för att sätta en statisk storlek för hur mycket plats den justerbara ytan ska ta upp. Default: <code>false</code>.</p></dd>
+<dd>Om aktiv kommer den justerbara ytan att visas som en overlay istället för statisk. <code>offset</code> kan användas för att sätta en statisk storlek för hur mycket plats den justerbara ytan ska ta upp. Default: <code>false</code>.</dd>
 <dt><code>offset: Ref&lt;number&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd><p class="docs-paragraph">När <code>overlay</code> är aktiv sätter detta hur mycket statisk plats den justerbara ytan ska ta upp. Default: <code>0</code>.</p></dd>
+<dd>När <code>overlay</code> är aktiv sätter detta hur mycket statisk plats den justerbara ytan ska ta upp. Default: <code>0</code>.</dd>
 </dl>
 </dd>
 </dl>
-<h3 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><p class="docs-paragraph">Ett objekt som innehåller:</p><dl>
+<h3 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><p class="docs-paragraph">Ett objekt som innehåller:</p>
+<dl>
 <dt><code>size: Readonly&lt;Ref&lt;number&gt;&gt;</code></dt>
-<dd><p class="docs-paragraph">Nuvarande storlek på ytan i px.</p></dd>
+<dd>Nuvarande storlek på ytan i px.</dd>
 </dl>
 <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Exempel för att visa/dölja justerbar yta baserat på om en anpassad panel är synlig eller dold.</p>
+
                 <div
                     id="example-b71aae"
                     class="code-preview code-preview--default"
@@ -1404,8 +1409,8 @@
 </code></pre>
                 </div>
             <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
-<li><p class="docs-paragraph"><a href="../../components/page-layout/fresizepane.html"><code>FResizePane</code></a></p></li>
-<li><p class="docs-paragraph"><a href="../../guides/custom-page-layout.html">Egen layout till applikationsmall</a></p></li>
+<li><a href="../../components/page-layout/fresizepane.html"><code>FResizePane</code></a></li>
+<li><a href="../../guides/custom-page-layout.html">Egen layout till applikationsmall</a></li>
 </ul>
 
 
@@ -1423,9 +1428,9 @@
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1538,16 +1543,16 @@
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

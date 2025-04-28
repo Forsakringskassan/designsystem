@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Meddelanderuta - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-88ed0c.css"
+            href="../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3261d00bd21041d0f259d8d89471cf79165080c8/packages/vue/src/components/FMessageBox/FMessageBox.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ddaee538f78f69c1ccc2dc3d67d8b8596d340119/packages/vue/src/components/FMessageBox/FMessageBox.vue">
                 FMessageBox
             </a>
             
@@ -1100,6 +1100,7 @@
                     <div id="content"><p class="docs-paragraph">Använd en meddelanderuta för att uppmärksamma användare på viktig information, varningar eller fel.
 En meddelanderuta kan visas inför att användaren ska använda en tjänst eller fylla i ett formulär samt som
 en reaktion på att användaren gör ett val i ett formulär eller trycker på en knapp.</p>
+
                 <div
                     id="example-f6d15c"
                     class="code-preview code-preview--borderless"
@@ -1118,31 +1119,38 @@ en reaktion på att användaren gör ett val i ett formulär eller trycker på e
     
                 </div>
             <p class="docs-paragraph">Använd ett kort meddelande när du inte behöver en rubrik för att förtydliga informationen i meddelandet.
-Ett kort meddelande används ofta som en följd av att användaren har gjort ett visst val på samma sida.</p><p class="docs-paragraph">Använd en stor meddelanderuta när du vill uppmärksamma användaren på extra viktig information som hen behöver känna till eller agera på.
+Ett kort meddelande används ofta som en följd av att användaren har gjort ett visst val på samma sida.</p>
+<p class="docs-paragraph">Använd en stor meddelanderuta när du vill uppmärksamma användaren på extra viktig information som hen behöver känna till eller agera på.
 En stor meddelanderuta har alltid en rubrik. Rubrik ska sättas till rätt nivå utifrån var meddelanderutan placeras. Rubriknivån påverkar inte rubrikens styling.
 Rubriken ska beskriva kärnfrågan så tydligt som möjligt.
-Ord som “information” ska inte användas i en rubrik.</p><ul>
-<li><p class="docs-paragraph">Informationsmeddelanden används för att förmedla extra viktig information som gäller alla eller majoriteten av besökarna på sidan.</p></li>
-<li><p class="docs-paragraph">Varningsmeddelanden används för att uppmärksamma användaren på sådant som är viktigt att veta och som kan
-kräva att användaren agerar i ett senare skede.</p></li>
-<li><p class="docs-paragraph">Felmeddelanden används för att informera användaren om kritiska och stoppande fel och vad användaren behöver
-göra för att kunna fortsätta.</p></li>
-<li><p class="docs-paragraph">Positiv återkoppling används för att informera användaren när denne har gjort vad som behövs och att resultatet var lyckat.</p></li>
+Ord som “information” ska inte användas i en rubrik.</p>
+<ul>
+<li>Informationsmeddelanden används för att förmedla extra viktig information som gäller alla eller majoriteten av besökarna på sidan.</li>
+<li>Varningsmeddelanden används för att uppmärksamma användaren på sådant som är viktigt att veta och som kan
+kräva att användaren agerar i ett senare skede.</li>
+<li>Felmeddelanden används för att informera användaren om kritiska och stoppande fel och vad användaren behöver
+göra för att kunna fortsätta.</li>
+<li>Positiv återkoppling används för att informera användaren när denne har gjort vad som behövs och att resultatet var lyckat.</li>
 </ul>
 <h2 id="copy"><a class="header-anchor" href="#copy">Copy</a></h2><h3 id="informationsmeddelande_blatt"><a class="header-anchor" href="#informationsmeddelande_blatt">Informationsmeddelande (blått)</a></h3><p class="docs-paragraph">Fundera först på om meddelandet behövs överhuvudtaget eller om informationen passar bättre i någon annan
 del av informationsprocessen
 (t.ex. i en ingress på samma sida). Rubriken bör oftast beskriva kärnfrågan så tydligt som möjligt.
-Men om det inte är nödvändigt kan man använda rubriken för att jobba med tonaliteten.</p><h3 id="varningsmeddelande_gult"><a class="header-anchor" href="#varningsmeddelande_gult">Varningsmeddelande (gult)</a></h3><p class="docs-paragraph">Rubriken bör tydligt och direkt beskriva vad användaren ska tänka på, eller vad som är problem med val som användaren gjort.
+Men om det inte är nödvändigt kan man använda rubriken för att jobba med tonaliteten.</p>
+<h3 id="varningsmeddelande_gult"><a class="header-anchor" href="#varningsmeddelande_gult">Varningsmeddelande (gult)</a></h3><p class="docs-paragraph">Rubriken bör tydligt och direkt beskriva vad användaren ska tänka på, eller vad som är problem med val som användaren gjort.
 Tidigare har vi använt rubriken Tänk på att... men vi strävar efter att arbeta bort det.
 Exempel
 <em>Har du fått ny lön?</em>
 Dina inkomstuppgifter är äldre än ett år. Kolla att de fortfarande stämmer.
 <em>Du har redan ansökt om ersättning för den här dagen</em>
-Du har redan ansökt om 100 procent vab för den här dagen.</p><h3 id="felmeddelande_rott"><a class="header-anchor" href="#felmeddelande_rott">Felmeddelande (rött)</a></h3><p class="docs-paragraph">Rubriken bör tydligt och direkt beskriva vad som är fel.
-Brödtexen bör beskriva vad användaren kan göra för att lösa problemet.</p><p class="docs-paragraph">Exempel</p><p class="docs-paragraph"><em>Innan du går vidare</em>
-Oj, du har missat något. Gå till:</p><ol>
-<li><p class="docs-paragraph">Dagar och tid</p></li>
-<li><p class="docs-paragraph">Kompletterande frågor om vab-dagarna</p></li>
+Du har redan ansökt om 100 procent vab för den här dagen.</p>
+<h3 id="felmeddelande_rott"><a class="header-anchor" href="#felmeddelande_rott">Felmeddelande (rött)</a></h3><p class="docs-paragraph">Rubriken bör tydligt och direkt beskriva vad som är fel.
+Brödtexen bör beskriva vad användaren kan göra för att lösa problemet.</p>
+<p class="docs-paragraph">Exempel</p>
+<p class="docs-paragraph"><em>Innan du går vidare</em>
+Oj, du har missat något. Gå till:</p>
+<ol>
+<li>Dagar och tid</li>
+<li>Kompletterande frågor om vab-dagarna</li>
 </ol>
 <h2 id="banner"><a class="header-anchor" href="#banner">Banner</a></h2>
             <div
@@ -1263,6 +1271,7 @@ Oj, du har missat något. Gå till:</p><ol>
         <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p class="docs-paragraph">Komponenten har inbyggda texter för skärmläsare som är anpassade efter vilken typ av meddelande som visas.
 För typen &quot;info&quot; läser den till exempel upp &quot;Informationsmeddelande&quot;.
 Om applikationen inte önskar detta beteende och själv vill redogöra för detta går det att stänga av.</p>
+
             <div
                 id="example-2bdbc2"
                 class="code-preview code-preview--default"
@@ -1568,9 +1577,9 @@ Note that by doing this, it is the applications responsiblity to provide a clear
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1683,16 +1692,16 @@ Note that by doing this, it is the applications responsiblity to provide a clear
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../assets/main-a45256.js"
+            src="../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

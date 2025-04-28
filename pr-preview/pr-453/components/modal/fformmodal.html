@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Formulärsmodal - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3261d00bd21041d0f259d8d89471cf79165080c8/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ddaee538f78f69c1ccc2dc3d67d8b8596d340119/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">
                 FFormModal
             </a>
             
@@ -1101,13 +1101,18 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Formulärsmodal är en standardmodal som kan presentera formulärsfält och hantera validering.</p><p class="docs-paragraph">Formulärsmodalen baseras på en modal dialogruta av typen standard och visas i fullskärm i mobil (&lt;640px).</p><p class="docs-paragraph">Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra.
+                    <div id="content"><p class="docs-paragraph">Formulärsmodal är en standardmodal som kan presentera formulärsfält och hantera validering.</p>
+<p class="docs-paragraph">Formulärsmodalen baseras på en modal dialogruta av typen standard och visas i fullskärm i mobil (&lt;640px).</p>
+<p class="docs-paragraph">Modalen har alltid en primärknapp för submit och en sekundärknapp för att avbryta och ångra.
 Standardinställning för knappordning i modaler är att primärknappen ligger först följt av sekundärknappen.
-Alla fält valideras när användaren trycker på primärknappen.</p><ul>
-<li><p class="docs-paragraph">Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.</p></li>
-<li><p class="docs-paragraph">Öppna inte ytterligare modaler från en modal.</p></li>
+Alla fält valideras när användaren trycker på primärknappen.</p>
+<ul>
+<li>Använd inte formulärsmodaler till stora formulär, begränsa formuläret till några få komponenter och undvik flerradiga inmatningsfält.</li>
+<li>Öppna inte ytterligare modaler från en modal.</li>
 </ul>
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Du skapar själv upp din formulärsmodal genom att skapa upp en ny Vue-komponent där <code>FFormModal</code>-komponenten nyttjas.</p><p class="docs-paragraph">Skapa först upp ett interface motsvarande den data din formulärsmodal ska arbeta med:</p>
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Du skapar själv upp din formulärsmodal genom att skapa upp en ny Vue-komponent där <code>FFormModal</code>-komponenten nyttjas.</p>
+<p class="docs-paragraph">Skapa först upp ett interface motsvarande den data din formulärsmodal ska arbeta med:</p>
+
                 <div
                     id="example-3ba6a5"
                     class="code-preview code-preview--default"
@@ -1123,6 +1128,7 @@ Alla fält valideras när användaren trycker på primärknappen.</p><ul>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Din komponent ska innehålla en prop <code>value</code> motsvarande ett objekt av interfacet:</p>
+
                 <div
                     id="example-003479"
                     class="code-preview code-preview--default"
@@ -1143,6 +1149,7 @@ Alla fält valideras när användaren trycker på primärknappen.</p><ul>
                 </div>
             <p class="docs-paragraph">Template använder <code>FFormModal</code> och binder <code>value</code> dels som <code>value</code>-propen men också som <code>v-model</code> för respektive inmatningsfält.
 Inmatningsfälten läggs in i <code>#input-text-fields</code>-slotten.</p>
+
                 <div
                     id="example-0134bb"
                     class="code-preview code-preview--default"
@@ -1215,8 +1222,11 @@ interface <span class="hljs-title class_">Person</span> {
                 <p class="docs-paragraph">Data muteras direkt på <code>value</code>-propen.
 Det kan leda till oönskade konsekvenser om konsumenten skickas in existernade referenser till objekt istället för att skicka in en kopia eller nytt objekt.
 Du kan antingen låta din formulärsmodal hantera detta genom att internt kopiera <code>value</code> eller tydligt dokumentera att konsumenten måste skicka in en kopia.</p>
+
             </div>
-        <h2 id="oppna_modal"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p class="docs-paragraph">Du öppnar modalen med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p><p class="docs-paragraph"><strong>Options API:</strong></p>
+        <h2 id="oppna_modal"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p class="docs-paragraph">Du öppnar modalen med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
+<p class="docs-paragraph"><strong>Options API:</strong></p>
+
                 <div
                     id="example-a3147b"
                     class="code-preview code-preview--default"
@@ -1228,6 +1238,7 @@ Du kan antingen låta din formulärsmodal hantera detta genom att internt kopier
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">PersonFormModal</span>);</code></pre>
                 </div>
             <p class="docs-paragraph"><strong>Composition API:</strong></p>
+
                 <div
                     id="example-50a4cf"
                     class="code-preview code-preview--default"
@@ -1257,7 +1268,9 @@ async function onOpen(): Promise&lt;void&gt; {
 </code></pre>
                 </div>
             <p class="docs-paragraph">Returvärdet är <code>Promise</code> som löses ut med <code>resolve(value)</code> (det objekt som ligger lagrat i <code>value</code> när modalen stängs).
-Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()</code> .</p><p class="docs-paragraph">Förifylld data kan skickas in med propen <code>value</code>:</p>
+Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()</code> .</p>
+<p class="docs-paragraph">Förifylld data kan skickas in med propen <code>value</code>:</p>
+
                 <div
                     id="example-a25fc3"
                     class="code-preview code-preview--default"
@@ -1366,6 +1379,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
         <h2 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h2><p class="docs-paragraph">Att använda <code>FFormModal</code> nästlad i template är deprekerat.
 Vi rekommenderar att du flyttar den till en egen Vue komponent och använder API för att öppna den.
 Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FFormModal</code> med API.</p>
+
                 <div
                     id="example-c4f478"
                     class="code-preview code-preview--default"
@@ -1384,6 +1398,7 @@ Se <a href="./fformmodal.html#anvandning"><code>Användning</code></a> för hur 
                 </div>
             <h2 id="formularsmodal_med_flera_knappar"><a class="header-anchor" href="#formularsmodal_med_flera_knappar">Formulärsmodal med flera knappar</a></h2><p class="docs-paragraph">Komponenten har en prop <code>buttons</code> som styr vilka knappar som finns i modalens sidfot.
 Med den kan du ta bort existerande knappar eller använda en helt egen uppsättning.</p>
+
                 <div
                     id="example-684da6"
                     class="code-preview code-preview--default"
@@ -1401,6 +1416,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 });</code></pre>
                 </div>
             <p class="docs-paragraph"><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
+
                 <div
                     id="example-588a49"
                     class="code-preview code-preview--default"
@@ -1431,11 +1447,13 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-attr">buttons</span>: [{ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Stäng&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;dismiss&quot;</span> }];
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Två event har speciell innebörd:</p><ul>
-<li><p class="docs-paragraph"><code>dismiss</code>: stänger modalen utan att spara formulärsdata.</p></li>
-<li><p class="docs-paragraph"><code>submit</code>: stänger modalen och returnerar formulärsdata till anroparen.</p></li>
+            <p class="docs-paragraph">Två event har speciell innebörd:</p>
+<ul>
+<li><code>dismiss</code>: stänger modalen utan att spara formulärsdata.</li>
+<li><code>submit</code>: stänger modalen och returnerar formulärsdata till anroparen.</li>
 </ul>
 <h2 id="skarmlasare"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p class="docs-paragraph">Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code> property:</p>
+
                 <div
                     id="example-12df49"
                     class="code-preview code-preview--default"
@@ -1448,7 +1466,9 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <span class="hljs-addition">+buttons: [{ label: &quot;Stäng&quot;, screenreader: &quot;formuläret&quot;, event: &quot;dismiss&quot; }];</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du använder <code>screenreader</code> för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i <code>label</code>. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.</p><h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p class="docs-paragraph">Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
+            <p class="docs-paragraph">Om du använder <code>screenreader</code> för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i <code>label</code>. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.</p>
+<h3 id="validering_av_inmatad_data"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p class="docs-paragraph">Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
+
                 <div
                     id="example-701ef5"
                     class="code-preview code-preview--default"
@@ -1468,6 +1488,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 </div>
             <p class="docs-paragraph">Notera att det är metoden <code>onBeforeSubmit</code> som ska skickas in i sin helhelt, anropa inte metoden med <code>:before-submit=&quot;onBeforeSubmit()&quot;</code>.
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
+
                 <div
                     id="example-9dc125"
                     class="code-preview code-preview--default"
@@ -1482,6 +1503,7 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
 },</code></pre>
                 </div>
             <p class="docs-paragraph">Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
+
                 <div
                     id="example-65572d"
                     class="code-preview code-preview--default"
@@ -1860,8 +1882,8 @@ The event payload is the data that has been submitted.</p>
                     
         </dl>
     <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
-<li><p class="docs-paragraph"><a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) för programatiskt användande av formulärsmodal.</p></li>
-<li><p class="docs-paragraph"><a href="./fmodal.html">Modal</a> för mer information om modaler.</p></li>
+<li><a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) för programatiskt användande av formulärsmodal.</li>
+<li><a href="./fmodal.html">Modal</a> för mer information om modaler.</li>
 </ul>
 
 
@@ -1879,9 +1901,9 @@ The event payload is the data that has been submitted.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1994,16 +2016,16 @@ The event payload is the data that has been submitted.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

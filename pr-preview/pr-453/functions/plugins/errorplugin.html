@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Error Plugin - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1324,7 +1324,9 @@
 
                     
 
-                    <div id="content"><p class="docs-paragraph">Ett Vue-plugin som visar en generell felsida då ett ohanterat fel uppstår.</p><h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">Skapa en komponent som wrappar din applikationskomponent:</p>
+                    <div id="content"><p class="docs-paragraph">Ett Vue-plugin som visar en generell felsida då ett ohanterat fel uppstår.</p>
+<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">Skapa en komponent som wrappar din applikationskomponent:</p>
+
                 <div
                     id="example-f14f9c"
                     class="code-preview code-preview--default"
@@ -1351,6 +1353,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Anropa <code>app.use(ErrorPlugin)</code> innan applikationen monteras:</p>
+
                 <div
                     id="example-63d3b4"
                     class="code-preview code-preview--default"
@@ -1365,6 +1368,7 @@
 </code></pre>
                 </div>
             <h3 id="egen_felsida"><a class="header-anchor" href="#egen_felsida">Egen felsida</a></h3><p class="docs-paragraph">Det går att sätta sin egen specifika felsida.</p>
+
                 <div
                     id="example-799ebc"
                     class="code-preview code-preview--default"
@@ -1383,7 +1387,9 @@
  });
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Ett enkelt sätt för att komma igång med en applikationsspecifik sida är att kopiera <code>FErrorPage.vue</code> i detta repo.</p><h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Prova att kasta ett ohanterat fel:</p>
+            <p class="docs-paragraph">Ett enkelt sätt för att komma igång med en applikationsspecifik sida är att kopiera <code>FErrorPage.vue</code> i detta repo.</p>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Prova att kasta ett ohanterat fel:</p>
+
             <div
                 id="example-9d4191"
                 class="code-preview code-preview--default"
@@ -1464,6 +1470,7 @@
                 </div>
             </div>
         <p class="docs-paragraph">Axios-fel mm hanteras om man har kodat på följande vis:</p>
+
                 <div
                     id="example-2dc64b"
                     class="code-preview code-preview--default"
@@ -1479,6 +1486,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Om man däremot har kodat felaktigt, enligt nedanstående exempel, kommer exceptions inte att fångas av denna plugin.</p>
+
                 <div
                     id="example-50fa75"
                     class="code-preview code-preview--default"
@@ -1493,6 +1501,7 @@
 </code></pre>
                 </div>
             <h2 id="options"><a class="header-anchor" href="#options">Options</a></h2><p class="docs-paragraph">Plugin tar ett optional objekt med inställningar:</p>
+
                 <div
                     id="example-9770f7"
                     class="code-preview code-preview--default"
@@ -1515,14 +1524,16 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 </code></pre>
                 </div>
             <h3 id="capturewarnings"><a class="header-anchor" href="#capturewarnings"><code>captureWarnings</code></a></h3><ul>
-<li><p class="docs-paragraph">type: <code>boolean</code></p></li>
-<li><p class="docs-paragraph">default: <code>true</code></p></li>
+<li>type: <code>boolean</code></li>
+<li>default: <code>true</code></li>
 </ul>
-<p class="docs-paragraph">Om <code>true</code> så hanteras varningar som fel i utvecklarläge.</p><h3 id="logtoconsole"><a class="header-anchor" href="#logtoconsole"><code>logToConsole</code></a></h3><ul>
-<li><p class="docs-paragraph">type: <code>boolean</code></p></li>
-<li><p class="docs-paragraph">default: <code>true</code></p></li>
+<p class="docs-paragraph">Om <code>true</code> så hanteras varningar som fel i utvecklarläge.</p>
+<h3 id="logtoconsole"><a class="header-anchor" href="#logtoconsole"><code>logToConsole</code></a></h3><ul>
+<li>type: <code>boolean</code></li>
+<li>default: <code>true</code></li>
 </ul>
 <p class="docs-paragraph">Om <code>true</code> så loggas fel till console (så som det normallt set blir när <code>ErrorPlugin</code> eller en annan <code>errorHandler</code> installerats)</p>
+
 
                     </div>
                 </main>
@@ -1538,9 +1549,9 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1653,16 +1664,16 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

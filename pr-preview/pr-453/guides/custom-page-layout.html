@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Egen layout till applikationsmall - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-88ed0c.css"
+            href="../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -360,7 +360,8 @@
 
                     <div id="content"><p class="docs-paragraph">Registrera en ny layout med <code>registerLayout(..)</code>.
 Anropet kan exempelvis göras från din <code>main.ts</code>eller i root-komponenten som monterar applikationslayouten.
-Namnet som anges är vad som senare används i <code>layout</code>-propen till <code>FPageLayout</code>.</p><h2 id="registrera_tema"><a class="header-anchor" href="#registrera_tema">Registrera tema</a></h2>
+Namnet som anges är vad som senare används i <code>layout</code>-propen till <code>FPageLayout</code>.</p>
+<h2 id="registrera_tema"><a class="header-anchor" href="#registrera_tema">Registrera tema</a></h2>
                 <div
                     id="example-ec8cc9"
                     class="code-preview code-preview--default"
@@ -399,12 +400,14 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 });
 </code></pre>
                 </div>
-            <p class="docs-paragraph">där:</p><ul>
-<li><p class="docs-paragraph"><code>attachPanel</code> talar om hur en panel ska fästas. Om ytan inte kan ta paneler sätter man <code>&quot;none&quot;</code>.</p></li>
-<li><p class="docs-paragraph"><code>direction</code> talar om ifall ytan flödar horisontellt eller vertikalt.</p></li>
-<li><p class="docs-paragraph"><code>scroll</code> talar om ifall ytan ska scrolla (i den riktning som <code>direction</code> talar om).</p></li>
+            <p class="docs-paragraph">där:</p>
+<ul>
+<li><code>attachPanel</code> talar om hur en panel ska fästas. Om ytan inte kan ta paneler sätter man <code>&quot;none&quot;</code>.</li>
+<li><code>direction</code> talar om ifall ytan flödar horisontellt eller vertikalt.</li>
+<li><code>scroll</code> talar om ifall ytan ska scrolla (i den riktning som <code>direction</code> talar om).</li>
 </ul>
 <h2 id="positionering_och_storlek"><a class="header-anchor" href="#positionering_och_storlek">Positionering och storlek</a></h2><p class="docs-paragraph">För positionering och storlek används <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids">CSS grid</a> på <code>::part(grid name)</code> och kan se ut så här:</p>
+
                 <div
                     id="example-8cd080"
                     class="code-preview code-preview--default"
@@ -423,7 +426,9 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p><h2 id="farger"><a class="header-anchor" href="#farger">Färger</a></h2><p class="docs-paragraph">Färg och bakgrundsfärg sätts med <code>::part(area name)</code>:</p>
+            <p class="docs-paragraph">Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p>
+<h2 id="farger"><a class="header-anchor" href="#farger">Färger</a></h2><p class="docs-paragraph">Färg och bakgrundsfärg sätts med <code>::part(area name)</code>:</p>
+
                 <div
                     id="example-475ba9"
                     class="code-preview code-preview--default"
@@ -438,10 +443,13 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p><p class="docs-paragraph">Vi rekommenderar att använda semantiska färger.</p><ul>
-<li><p class="docs-paragraph">Läs mer om <a href="../styles/colors.html">semantiska färger</a>.</p></li>
+            <p class="docs-paragraph">Namn motsvarar de ytor som registrerats tidigare med <code>registerLayout()</code>.</p>
+<p class="docs-paragraph">Vi rekommenderar att använda semantiska färger.</p>
+<ul>
+<li>Läs mer om <a href="../styles/colors.html">semantiska färger</a>.</li>
 </ul>
 <h2 id="anvand_eget_tema"><a class="header-anchor" href="#anvand_eget_tema">Använd eget tema</a></h2><p class="docs-paragraph">Slutligen används layouten genom att sätta det nya registrerade namnet som <code>layout</code> attributet samt implementera de ytor som definierats med hjälp av Vue slots.</p>
+
                 <div
                     id="example-9a3c96"
                     class="code-preview code-preview--default"
@@ -459,7 +467,9 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-layout</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="justerbara_ytor_och_paneler"><a class="header-anchor" href="#justerbara_ytor_och_paneler">Justerbara ytor och paneler</a></h2><p class="docs-paragraph">Komponenten <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> kan användas för att skapa en yta vars storlek kan justeras av slutanvändaren.</p><p class="docs-paragraph">Använd <a href="../functions/functions/use-resize.html">useResize() composable</a> för att styra <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> om du skapar egna paneler.</p>
+            <h2 id="justerbara_ytor_och_paneler"><a class="header-anchor" href="#justerbara_ytor_och_paneler">Justerbara ytor och paneler</a></h2><p class="docs-paragraph">Komponenten <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> kan användas för att skapa en yta vars storlek kan justeras av slutanvändaren.</p>
+<p class="docs-paragraph">Använd <a href="../functions/functions/use-resize.html">useResize() composable</a> för att styra <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> om du skapar egna paneler.</p>
+
 
                     </div>
                 </main>
@@ -475,9 +485,9 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -590,16 +600,16 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../assets/main-a45256.js"
+            src="../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

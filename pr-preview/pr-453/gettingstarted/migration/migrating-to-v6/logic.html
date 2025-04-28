@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Version 6 migreringsguide: @fkui/logic - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-88ed0c.css"
+            href="../../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -546,6 +546,7 @@
                     
 
                     <div id="content"><h2 id="polyfill"><a class="header-anchor" href="#polyfill">Polyfill</a></h2><p class="docs-paragraph">Den deprekerade entrypointen <code>@fkui/logic/lib/polyfills</code> är borttagen och ersatt med <code>@fkui/logic/polyfills</code>.</p>
+
                 <div
                     id="example-1952c0"
                     class="code-preview code-preview--default"
@@ -559,6 +560,7 @@
 </code></pre>
                 </div>
             <h2 id="validator_personnummer"><a class="header-anchor" href="#validator_personnummer">Validator <code>personnummer</code></a></h2><p class="docs-paragraph">Den deprekerade validatorn <code>personnummer</code> är borttagen och ersätts med validatorerna <a href="../../../components/validation/validators.html#personnummer_format_personnummerformat"><code>personnummerFormat</code></a> och <a href="../../../components/validation/validators.html#personnummer_checksumma_personnummerluhn"><code>personnummerLuhn</code></a>.</p>
+
                 <div
                     id="example-88039b"
                     class="code-preview code-preview--default"
@@ -575,6 +577,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Rekommenderat är att använda det specialiserade inmatningsfältet <a href="../../../components/input/textfield-specialized.html#personnummer"><code>FPersonnummerTextField</code></a>.</p>
+
                 <div
                     id="example-040c88"
                     class="code-preview code-preview--default"
@@ -586,7 +589,9 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-personnummer-text-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;model&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-personnummer-text-field</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="date_regexp_with_dash"><a class="header-anchor" href="#date_regexp_with_dash"><code>DATE_REGEXP_WITH_DASH</code></a></h2><p class="docs-paragraph">Den deprekerade konstanten <code>DATE_REGEXP_WITH_DASH</code> är borttagen och ersatt med <code>FDate</code> klassen från <code>@fkui/date</code>.</p><p class="docs-paragraph">Exempelvis om du använder konstanten för att testa om ett datum är giltigt format använd <code>.isValid(..)</code> metoden:</p>
+            <h2 id="date_regexp_with_dash"><a class="header-anchor" href="#date_regexp_with_dash"><code>DATE_REGEXP_WITH_DASH</code></a></h2><p class="docs-paragraph">Den deprekerade konstanten <code>DATE_REGEXP_WITH_DASH</code> är borttagen och ersatt med <code>FDate</code> klassen från <code>@fkui/date</code>.</p>
+<p class="docs-paragraph">Exempelvis om du använder konstanten för att testa om ett datum är giltigt format använd <code>.isValid(..)</code> metoden:</p>
+
                 <div
                     id="example-aa1b8b"
                     class="code-preview code-preview--default"
@@ -602,7 +607,9 @@
  }
 </code></pre>
                 </div>
-            <h2 id="whitespace_pattern"><a class="header-anchor" href="#whitespace_pattern"><code>WHITESPACE_PATTERN</code></a></h2><p class="docs-paragraph">Den deprekerade konstanten <code>WHITESPACE_PATTERN</code> är borttagen och delvis ersatt med <code>stripWhitespace</code>.</p><p class="docs-paragraph">Om du använder den för att ta bort whitespace från text ersätt med <code>stripWhitespace</code>:</p>
+            <h2 id="whitespace_pattern"><a class="header-anchor" href="#whitespace_pattern"><code>WHITESPACE_PATTERN</code></a></h2><p class="docs-paragraph">Den deprekerade konstanten <code>WHITESPACE_PATTERN</code> är borttagen och delvis ersatt med <code>stripWhitespace</code>.</p>
+<p class="docs-paragraph">Om du använder den för att ta bort whitespace från text ersätt med <code>stripWhitespace</code>:</p>
+
                 <div
                     id="example-823439"
                     class="code-preview code-preview--default"
@@ -615,10 +622,14 @@
 <span class="hljs-addition">+const stripped = stripWhitespace(text);</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du använder den för andra ändamål ersätt med reguljära uttrycket <code>\s+</code> (med eller utan global flaggan).</p><h2 id="format_3_digits_group"><a class="header-anchor" href="#format_3_digits_group"><code>FORMAT_3_DIGITS_GROUP</code></a></h2><p class="docs-paragraph">Den deprekerade konstanten <code>FORMAT_3_DIGITS_GROUP</code> är borttagen utan ersättare.
-Om du använder den behöver du använda ett eget reguljärt uttryck.</p><h2 id="applyvalidationmessages"><a class="header-anchor" href="#applyvalidationmessages"><code>applyValidationMessages()</code></a></h2><p class="docs-paragraph">Den deprekerade funktionen <code>applyValidationMessages()</code> är borttagen utan ersättare.
-Funktionen var en placeholder som inte gjorde något och anrop kan därför tas bort.</p><h2 id="isradiobuttonorcheckbox"><a class="header-anchor" href="#isradiobuttonorcheckbox"><code>isRadiobuttonOrCheckbox()</code></a></h2><p class="docs-paragraph">Intern funktion som ej var tänkt för allmän konsumption.
+            <p class="docs-paragraph">Om du använder den för andra ändamål ersätt med reguljära uttrycket <code>\s+</code> (med eller utan global flaggan).</p>
+<h2 id="format_3_digits_group"><a class="header-anchor" href="#format_3_digits_group"><code>FORMAT_3_DIGITS_GROUP</code></a></h2><p class="docs-paragraph">Den deprekerade konstanten <code>FORMAT_3_DIGITS_GROUP</code> är borttagen utan ersättare.
+Om du använder den behöver du använda ett eget reguljärt uttryck.</p>
+<h2 id="applyvalidationmessages"><a class="header-anchor" href="#applyvalidationmessages"><code>applyValidationMessages()</code></a></h2><p class="docs-paragraph">Den deprekerade funktionen <code>applyValidationMessages()</code> är borttagen utan ersättare.
+Funktionen var en placeholder som inte gjorde något och anrop kan därför tas bort.</p>
+<h2 id="isradiobuttonorcheckbox"><a class="header-anchor" href="#isradiobuttonorcheckbox"><code>isRadiobuttonOrCheckbox()</code></a></h2><p class="docs-paragraph">Intern funktion som ej var tänkt för allmän konsumption.
 Om du använder denna behöver du implementera logiken själv:</p>
+
                 <div
                     id="example-37d612"
                     class="code-preview code-preview--default"
@@ -636,6 +647,7 @@ Om du använder denna behöver du implementera logiken själv:</p>
             <h2 id="setcookie"><a class="header-anchor" href="#setcookie"><code>setCookie()</code></a></h2><p class="docs-paragraph">Funktionen <code>setCookie(..)</code> tar inte längre den deprekerade parametern <code>timeLimitMillis</code>.
 Använd <code>timeLimitSeconds</code> istället.</p>
 
+
                     </div>
                 </main>
             </div>
@@ -650,9 +662,9 @@ Använd <code>timeLimitSeconds</code> istället.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -765,16 +777,16 @@ Använd <code>timeLimitSeconds</code> istället.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../../assets/main-a45256.js"
+            src="../../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

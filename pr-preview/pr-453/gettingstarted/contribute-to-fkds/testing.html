@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Automatisk testning - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -541,7 +541,8 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Den här sidan innehåller riktlinjer för automatiska testfall.</p><h2 id="terminologi"><a class="header-anchor" href="#terminologi">Terminologi</a></h2><table class="table">
+                    <div id="content"><p class="docs-paragraph">Den här sidan innehåller riktlinjer för automatiska testfall.</p>
+<h2 id="terminologi"><a class="header-anchor" href="#terminologi">Terminologi</a></h2><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Förkortning</th>
@@ -557,29 +558,35 @@
 </tr>
 </tbody>
 </table>
-<h2 id="overgripande_riktlinjer"><a class="header-anchor" href="#overgripande_riktlinjer">Övergripande riktlinjer</a></h2><h3 id="enhetstester_med_jest"><a class="header-anchor" href="#enhetstester_med_jest">Enhetstester med <code>jest</code></a></h3><p class="docs-paragraph">Med enhetstester testar vi:</p><ul>
-<li><p class="docs-paragraph">logik</p></li>
-<li><p class="docs-paragraph">events</p></li>
-<li><p class="docs-paragraph">props</p></li>
-<li><p class="docs-paragraph">regler för HTML-Validate.</p></li>
+<h2 id="overgripande_riktlinjer"><a class="header-anchor" href="#overgripande_riktlinjer">Övergripande riktlinjer</a></h2><h3 id="enhetstester_med_jest"><a class="header-anchor" href="#enhetstester_med_jest">Enhetstester med <code>jest</code></a></h3><p class="docs-paragraph">Med enhetstester testar vi:</p>
+<ul>
+<li>logik</li>
+<li>events</li>
+<li>props</li>
+<li>regler för HTML-Validate.</li>
 </ul>
 <p class="docs-paragraph">I enhetstester testar vi funktionalitet i isolation och mockar omvärlden.
 Styrkan med enhetstester i Jest ligger i att de är snabba, enkla att mocka och att man enkelt kan anropa funktioner.
-Svagheten ligger i att det är svårt att vänta ut cykler från exempelvis Vue.js.</p><h3 id="komponenttester_med_cypress"><a class="header-anchor" href="#komponenttester_med_cypress">Komponenttester med <code>cypress</code></a></h3><p class="docs-paragraph">Med komponenttester testar vi:</p><ul>
-<li><p class="docs-paragraph">enskilda komponenter</p></li>
-<li><p class="docs-paragraph">interaktion med komponenten.</p></li>
+Svagheten ligger i att det är svårt att vänta ut cykler från exempelvis Vue.js.</p>
+<h3 id="komponenttester_med_cypress"><a class="header-anchor" href="#komponenttester_med_cypress">Komponenttester med <code>cypress</code></a></h3><p class="docs-paragraph">Med komponenttester testar vi:</p>
+<ul>
+<li>enskilda komponenter</li>
+<li>interaktion med komponenten.</li>
 </ul>
 <p class="docs-paragraph">Komponenttester körs i Chrome med Cypress och där testar vi komponenter i isolation.
 Vi interagerar med komponenten på samma sätt som en konsument implementerat ett use-case och på ett sätt som en slutkund interagerat med.
 Styrkan i komponenttester ligger i att en riktig browser kör testfallen och att Cypress är bra på att hantera att vänta på cykler från exempelvis Vue.js.
-Svagheten ligger i att det är svårare att mocka omvärlden och lockande att skriva tester som är beroende av många andra komponenter (ej isolerade tester).</p><h3 id="e2e_med_cypress"><a class="header-anchor" href="#e2e_med_cypress">E2E med <code>cypress</code></a></h3><p class="docs-paragraph">Med E2E-tester testar vi:</p><ul>
-<li><p class="docs-paragraph">interaktion mellan flera komponenter</p></li>
-<li><p class="docs-paragraph">exempel i dokumentation.</p></li>
+Svagheten ligger i att det är svårare att mocka omvärlden och lockande att skriva tester som är beroende av många andra komponenter (ej isolerade tester).</p>
+<h3 id="e2e_med_cypress"><a class="header-anchor" href="#e2e_med_cypress">E2E med <code>cypress</code></a></h3><p class="docs-paragraph">Med E2E-tester testar vi:</p>
+<ul>
+<li>interaktion mellan flera komponenter</li>
+<li>exempel i dokumentation.</li>
 </ul>
 <p class="docs-paragraph">E2E-tester kör i Chrome med Cypress och kräver en webserver som servar en websida, sidan under test.
 För komponenter använder vi oss av samma pageobject som konsumenter och kompletterar detta med interna pageobjekt för respektive sida under test.
 Styrkan i E2E-tester ligger i att det är enkelt att testa hur flera komponenter interagerar med varandra.
-Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma).</p><h3 id="filnamn_och_katalogstruktur"><a class="header-anchor" href="#filnamn_och_katalogstruktur">Filnamn och katalogstruktur</a></h3>
+Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma).</p>
+<h3 id="filnamn_och_katalogstruktur"><a class="header-anchor" href="#filnamn_och_katalogstruktur">Filnamn och katalogstruktur</a></h3>
                 <div
                     id="example-7a373c"
                     class="code-preview code-preview--default"
@@ -608,6 +615,7 @@ Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma
 </code></pre>
                 </div>
             <h3 id="testdata"><a class="header-anchor" href="#testdata">Testdata</a></h3><h4 id="minimera_innehallet_i_testdata"><a class="header-anchor" href="#minimera_innehallet_i_testdata">Minimera innehållet i testdata</a></h4><p class="docs-paragraph">Håll nere innehållet i din testdata, inkludera bara det som är relevant för just det specifika testfallet.</p>
+
                 <div
                     id="example-29eb6d"
                     class="code-preview code-preview--default"
@@ -632,7 +640,9 @@ Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma
 </code></pre>
                 </div>
             <p class="docs-paragraph">Motivering:
-Onödig data ökar den kognitiva belastningen för läsaren och gör det svårare att urskilja vad som är viktigt.</p><p class="docs-paragraph">Ibland kan detta orsaka konflikt med datatyper i Typescript:</p>
+Onödig data ökar den kognitiva belastningen för läsaren och gör det svårare att urskilja vad som är viktigt.</p>
+<p class="docs-paragraph">Ibland kan detta orsaka konflikt med datatyper i Typescript:</p>
+
                 <div
                     id="example-c3b7d8"
                     class="code-preview code-preview--default"
@@ -649,6 +659,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
 </code></pre>
                 </div>
             <p class="docs-paragraph">Överväg att ändra prototypen så den inte kräver mer än nödvändigt:</p>
+
                 <div
                     id="example-8854e5"
                     class="code-preview code-preview--default"
@@ -662,6 +673,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
 </code></pre>
                 </div>
             <p class="docs-paragraph">alternativt:</p>
+
                 <div
                     id="example-afc6ef"
                     class="code-preview code-preview--default"
@@ -680,6 +692,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
 </code></pre>
                 </div>
             <p class="docs-paragraph">Ytterligare ett alternativ är att skapa en funktion för att skapa upp objektet:</p>
+
                 <div
                     id="example-b339a3"
                     class="code-preview code-preview--default"
@@ -717,6 +730,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
 </code></pre>
                 </div>
             <h4 id="foredra_testdata_i_direkt_anslutning_till_testfallet"><a class="header-anchor" href="#foredra_testdata_i_direkt_anslutning_till_testfallet">Föredra testdata i direkt anslutning till testfallet</a></h4><p class="docs-paragraph">Testdata lägger vi i första hand i direkt anslutning till testfallet.</p>
+
                 <div
                     id="example-7ed848"
                     class="code-preview code-preview--default"
@@ -740,7 +754,9 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
 </code></pre>
                 </div>
             <p class="docs-paragraph">Motivering:
-Genom att lägga testdata i anslutning till testet är det lätt att utläsa varför assertions är förväntade och man behöver inte hoppa runt i testfilen för att läsa ut det.</p><h4 id="bryt_ut_stor_och_repetitiv_testdata"><a class="header-anchor" href="#bryt_ut_stor_och_repetitiv_testdata">Bryt ut stor och repetitiv testdata</a></h4><p class="docs-paragraph">Om det inte går att minimera storleken på testdata eller den används frekvent bryt ut den till en separat fil.</p>
+Genom att lägga testdata i anslutning till testet är det lätt att utläsa varför assertions är förväntade och man behöver inte hoppa runt i testfilen för att läsa ut det.</p>
+<h4 id="bryt_ut_stor_och_repetitiv_testdata"><a class="header-anchor" href="#bryt_ut_stor_och_repetitiv_testdata">Bryt ut stor och repetitiv testdata</a></h4><p class="docs-paragraph">Om det inte går att minimera storleken på testdata eller den används frekvent bryt ut den till en separat fil.</p>
+
                 <div
                     id="example-e723db"
                     class="code-preview code-preview--default"
@@ -767,6 +783,7 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
 </code></pre>
                 </div>
             <p class="docs-paragraph">Filerna läggs med fördel i <code>__fixtures__</code>:</p>
+
                 <div
                     id="example-17f520"
                     class="code-preview code-preview--default"
@@ -783,10 +800,12 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
 </code></pre>
                 </div>
             <p class="docs-paragraph">Motivering:
-Stora mängder testdata distraherar från själva testfallet.</p><h3 id="given_when_then"><a class="header-anchor" href="#given_when_then">Given-When-Then</a></h3><p class="docs-paragraph">Även om vi inte alltid skriver ut det explicit skriver vi testfallen enligt formatet:</p><ol>
-<li><p class="docs-paragraph">Given: givet följande scenario.</p></li>
-<li><p class="docs-paragraph">When: när följande inträffar.</p></li>
-<li><p class="docs-paragraph">Then: vad som förväntas.</p></li>
+Stora mängder testdata distraherar från själva testfallet.</p>
+<h3 id="given_when_then"><a class="header-anchor" href="#given_when_then">Given-When-Then</a></h3><p class="docs-paragraph">Även om vi inte alltid skriver ut det explicit skriver vi testfallen enligt formatet:</p>
+<ol>
+<li>Given: givet följande scenario.</li>
+<li>When: när följande inträffar.</li>
+<li>Then: vad som förväntas.</li>
 </ol>
 
                 <div
@@ -815,7 +834,10 @@ Stora mängder testdata distraherar från själva testfallet.</p><h3 id="given_w
 </code></pre>
                 </div>
             <p class="docs-paragraph">Motivering:
-Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p><h3 id="namnsattning"><a class="header-anchor" href="#namnsattning">Namnsättning</a></h3><h4 id="beskriv_tydligt_vad_testfallet_gar_ut_pa"><a class="header-anchor" href="#beskriv_tydligt_vad_testfallet_gar_ut_pa">Beskriv tydligt vad testfallet går ut på</a></h4><p class="docs-paragraph">Varje <code>it</code> (inklusive dess <code>describe</code>) ska kunna läsas och förklara vad testet går ut på.</p><p class="docs-paragraph">Dåligt:</p>
+Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
+<h3 id="namnsattning"><a class="header-anchor" href="#namnsattning">Namnsättning</a></h3><h4 id="beskriv_tydligt_vad_testfallet_gar_ut_pa"><a class="header-anchor" href="#beskriv_tydligt_vad_testfallet_gar_ut_pa">Beskriv tydligt vad testfallet går ut på</a></h4><p class="docs-paragraph">Varje <code>it</code> (inklusive dess <code>describe</code>) ska kunna läsas och förklara vad testet går ut på.</p>
+<p class="docs-paragraph">Dåligt:</p>
+
                 <div
                     id="example-3d7d9b"
                     class="code-preview code-preview--default"
@@ -829,7 +851,9 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p><h3 id="namnsat
 });
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Förklarar inte vad man förväntar sig av propen</p><p class="docs-paragraph">Bra:</p>
+            <p class="docs-paragraph">Förklarar inte vad man förväntar sig av propen</p>
+<p class="docs-paragraph">Bra:</p>
+
                 <div
                     id="example-1def56"
                     class="code-preview code-preview--default"
@@ -844,31 +868,34 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p><h3 id="namnsat
 </code></pre>
                 </div>
             <p class="docs-paragraph">Motivering:
-Tydligare vad som gått fel när man läser loggar och för att som läsare förstå vad testfallet går ut på.</p><h3 id="gruppera_med_describe"><a class="header-anchor" href="#gruppera_med_describe">Gruppera med <code>describe</code></a></h3><ul>
-<li><p class="docs-paragraph">Props grupperas under <code>describe(&quot;props&quot;, () =&gt; { ... })</code>.</p></li>
-<li><p class="docs-paragraph">Events grupperas under <code>describe(&quot;events&quot;, () =&gt; { ... })</code>.</p></li>
-<li><p class="docs-paragraph">HTML-Validate regler grupperas under <code>describe(&quot;html-validate&quot;, () =&gt; { ... })</code>.</p></li>
-<li><p class="docs-paragraph">Dokumentationsexempel grupperas under exemplets namn.</p></li>
-<li><p class="docs-paragraph">I övrigt gruppera efter logisk funktionalitet.</p></li>
+Tydligare vad som gått fel när man läser loggar och för att som läsare förstå vad testfallet går ut på.</p>
+<h3 id="gruppera_med_describe"><a class="header-anchor" href="#gruppera_med_describe">Gruppera med <code>describe</code></a></h3><ul>
+<li>Props grupperas under <code>describe(&quot;props&quot;, () =&gt; { ... })</code>.</li>
+<li>Events grupperas under <code>describe(&quot;events&quot;, () =&gt; { ... })</code>.</li>
+<li>HTML-Validate regler grupperas under <code>describe(&quot;html-validate&quot;, () =&gt; { ... })</code>.</li>
+<li>Dokumentationsexempel grupperas under exemplets namn.</li>
+<li>I övrigt gruppera efter logisk funktionalitet.</li>
 </ul>
 <h3 id="koppla_till_krav_id_dar_applicerbart"><a class="header-anchor" href="#koppla_till_krav_id_dar_applicerbart">Koppla till krav ID där applicerbart</a></h3><p class="docs-paragraph">Motivering:
-Det underlättar för både utvecklare och testare att härleda vilket krav testfallet är kopplat till.</p><h3 id="checklista"><a class="header-anchor" href="#checklista">Checklista</a></h3><ul>
-<li><p class="docs-paragraph">[ ] Enhetstest för logik?</p></li>
-<li><p class="docs-paragraph">[ ] Enhetstest för propar?</p></li>
-<li><p class="docs-paragraph">[ ] Enhetstest för event?</p></li>
-<li><p class="docs-paragraph">[ ] Enhetstest för HTML-Validate?</p></li>
-<li><p class="docs-paragraph">[ ] Component tests för interaktion med komponent?</p></li>
-<li><p class="docs-paragraph">[ ] Cypresstest för exempel i dokumentation?</p></li>
-<li><p class="docs-paragraph">[ ] Pageobject?</p></li>
+Det underlättar för både utvecklare och testare att härleda vilket krav testfallet är kopplat till.</p>
+<h3 id="checklista"><a class="header-anchor" href="#checklista">Checklista</a></h3><ul>
+<li>[ ] Enhetstest för logik?</li>
+<li>[ ] Enhetstest för propar?</li>
+<li>[ ] Enhetstest för event?</li>
+<li>[ ] Enhetstest för HTML-Validate?</li>
+<li>[ ] Component tests för interaktion med komponent?</li>
+<li>[ ] Cypresstest för exempel i dokumentation?</li>
+<li>[ ] Pageobject?</li>
 </ul>
-<h2 id="jest"><a class="header-anchor" href="#jest">Jest</a></h2><h3 id="import_ordning"><a class="header-anchor" href="#import_ordning">Import ordning</a></h3><p class="docs-paragraph">Import-rader ska sorteras enligt följande:</p><ol>
-<li><p class="docs-paragraph">Importer med enbart side-effects.</p></li>
-<li><p class="docs-paragraph">System och standardbibiliotek.</p></li>
-<li><p class="docs-paragraph">Tredje-parts bibiliotek.</p></li>
-<li><p class="docs-paragraph">In-house bibliotek.</p></li>
-<li><p class="docs-paragraph">Interna beroenden inom monorepo.</p></li>
-<li><p class="docs-paragraph">Interna beroenden inom paketet.</p></li>
-<li><p class="docs-paragraph">Systemet under test (SUT) (exempelvis klassen, funktionen, komponenten som testas).</p></li>
+<h2 id="jest"><a class="header-anchor" href="#jest">Jest</a></h2><h3 id="import_ordning"><a class="header-anchor" href="#import_ordning">Import ordning</a></h3><p class="docs-paragraph">Import-rader ska sorteras enligt följande:</p>
+<ol>
+<li>Importer med enbart side-effects.</li>
+<li>System och standardbibiliotek.</li>
+<li>Tredje-parts bibiliotek.</li>
+<li>In-house bibliotek.</li>
+<li>Interna beroenden inom monorepo.</li>
+<li>Interna beroenden inom paketet.</li>
+<li>Systemet under test (SUT) (exempelvis klassen, funktionen, komponenten som testas).</li>
 </ol>
 <p class="docs-paragraph">Typescript funktion, klass osv:</p><div
                     id="example-f4cf3f"
@@ -888,6 +915,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 </code></pre>
                 </div>
             <p class="docs-paragraph">För en VueJS komponent, importera komponenten sist direkt från <code>.vue</code> filen:</p>
+
                 <div
                     id="example-56eeda"
                     class="code-preview code-preview--default"
@@ -899,7 +927,8 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-title class_">MyComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyComponent.vue&quot;</span>;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Motivering: ordningen av imports gör det mer överskådligt och snabbare att greppa.</p><h3 id="props"><a class="header-anchor" href="#props">Props</a></h3>
+            <p class="docs-paragraph">Motivering: ordningen av imports gör det mer överskådligt och snabbare att greppa.</p>
+<h3 id="props"><a class="header-anchor" href="#props">Props</a></h3>
                 <div
                     id="example-27d665"
                     class="code-preview code-preview--default"
@@ -923,7 +952,16 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 });
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Motivering: genom att gruppera i nästlade describes är det enklare att se vad testfallet tillgör, vilken prop exempelvis</p><h3 id="v_model_propen_testas_under_describe_v_model"><a class="header-anchor" href="#v_model_propen_testas_under_describe_v_model"><code>v-model</code> propen testas under describe(&quot;v-model&quot;)</a></h3><h3 id="anvand_shallowmount"><a class="header-anchor" href="#anvand_shallowmount">Använd <code>shallowMount</code></a></h3><p class="docs-paragraph">I första hand använd <code>shallowMount</code>.</p><p class="docs-paragraph">Om vi behöver andra komponenter så använder vi <code>mount</code> för andra hand.</p><p class="docs-paragraph">Om man behöver många default-värden, många repetitiva propar då skapar vi <code>createWrapper</code></p><h3 id="it_each"><a class="header-anchor" href="#it_each">it.each</a></h3><p class="docs-paragraph">Används för repetitiva tester där man vill testa många olika input värden som ger olika output värden.</p><p class="docs-paragraph">Om din it.each behöver en if-sats dela istället upp it.each i två it.each, en för varje condition.</p><p class="docs-paragraph">Om din it.each behöver en description parameter bryt istället ut till en egen it</p><h3 id="undvik_attachtodocument_och_attachto"><a class="header-anchor" href="#undvik_attachtodocument_och_attachto">Undvik <code>attachToDocument</code> och <code>attachTo</code></a></h3><p class="docs-paragraph">Om man inte måste! Testar man focus så måste man ha <code>attachTo</code></p><p class="docs-paragraph">Motivering: genom att inte attacha till <code>body</code> så behöver vi inte lika mycket uppstädning mellan testfall</p><h3 id="foredra_jest_spyon_over_jest_fn"><a class="header-anchor" href="#foredra_jest_spyon_over_jest_fn">Föredra <code>jest.spyOn</code> över <code>jest.fn()</code></a></h3>
+            <p class="docs-paragraph">Motivering: genom att gruppera i nästlade describes är det enklare att se vad testfallet tillgör, vilken prop exempelvis</p>
+<h3 id="v_model_propen_testas_under_describe_v_model"><a class="header-anchor" href="#v_model_propen_testas_under_describe_v_model"><code>v-model</code> propen testas under describe(&quot;v-model&quot;)</a></h3><h3 id="anvand_shallowmount"><a class="header-anchor" href="#anvand_shallowmount">Använd <code>shallowMount</code></a></h3><p class="docs-paragraph">I första hand använd <code>shallowMount</code>.</p>
+<p class="docs-paragraph">Om vi behöver andra komponenter så använder vi <code>mount</code> för andra hand.</p>
+<p class="docs-paragraph">Om man behöver många default-värden, många repetitiva propar då skapar vi <code>createWrapper</code></p>
+<h3 id="it_each"><a class="header-anchor" href="#it_each">it.each</a></h3><p class="docs-paragraph">Används för repetitiva tester där man vill testa många olika input värden som ger olika output värden.</p>
+<p class="docs-paragraph">Om din it.each behöver en if-sats dela istället upp it.each i två it.each, en för varje condition.</p>
+<p class="docs-paragraph">Om din it.each behöver en description parameter bryt istället ut till en egen it</p>
+<h3 id="undvik_attachtodocument_och_attachto"><a class="header-anchor" href="#undvik_attachtodocument_och_attachto">Undvik <code>attachToDocument</code> och <code>attachTo</code></a></h3><p class="docs-paragraph">Om man inte måste! Testar man focus så måste man ha <code>attachTo</code></p>
+<p class="docs-paragraph">Motivering: genom att inte attacha till <code>body</code> så behöver vi inte lika mycket uppstädning mellan testfall</p>
+<h3 id="foredra_jest_spyon_over_jest_fn"><a class="header-anchor" href="#foredra_jest_spyon_over_jest_fn">Föredra <code>jest.spyOn</code> över <code>jest.fn()</code></a></h3>
                 <div
                     id="example-bcd50b"
                     class="code-preview code-preview--default"
@@ -936,7 +974,9 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <span class="hljs-addition">+jest.spyOn(console, &#x27;log&#x27;);</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Motivering: <code>jest.spyOn</code> fungerar med <code>jest.clearAllMocks</code></p><h3 id="foredra_lokalt_scopad_wrapper_over_global"><a class="header-anchor" href="#foredra_lokalt_scopad_wrapper_over_global">Föredra lokalt scopad wrapper över global</a></h3><p class="docs-paragraph">istället för:</p>
+            <p class="docs-paragraph">Motivering: <code>jest.spyOn</code> fungerar med <code>jest.clearAllMocks</code></p>
+<h3 id="foredra_lokalt_scopad_wrapper_over_global"><a class="header-anchor" href="#foredra_lokalt_scopad_wrapper_over_global">Föredra lokalt scopad wrapper över global</a></h3><p class="docs-paragraph">istället för:</p>
+
                 <div
                     id="example-b6de64"
                     class="code-preview code-preview--default"
@@ -953,6 +993,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 </code></pre>
                 </div>
             <p class="docs-paragraph">kör:</p>
+
                 <div
                     id="example-9e31dd"
                     class="code-preview code-preview--default"
@@ -966,14 +1007,22 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 });
 </code></pre>
                 </div>
-            <h3 id="anvand_get_over_find"><a class="header-anchor" href="#anvand_get_over_find">Använd <code>.get()</code> över <code>.find()</code></a></h3><p class="docs-paragraph">get smäller om den inte finns, find ger ett tomt objekt.</p><p class="docs-paragraph">Om du inte i testet ska testa <code>.exists()</code> eller en array med 0 eller fler element.</p><h3 id="undvik_utskrifter_i_testfall"><a class="header-anchor" href="#undvik_utskrifter_i_testfall">Undvik utskrifter i testfall</a></h3><p class="docs-paragraph">Undvik att använda <code>console.log</code> (och liknande) i testfallen.</p><p class="docs-paragraph">Motivering: det genererar brus i logfiler och gör det svårt att snabbt få en överblick över fallerande testfall då man måste läsa och mentalt filtrera bort från riktiga felmeddelanden.</p><p class="docs-paragraph">Om koden under test skriver ut med <code>console.log</code> (eller liknande) bör du <strong>i första hand ifrågasätta syftet</strong> med utskriften.
+            <h3 id="anvand_get_over_find"><a class="header-anchor" href="#anvand_get_over_find">Använd <code>.get()</code> över <code>.find()</code></a></h3><p class="docs-paragraph">get smäller om den inte finns, find ger ett tomt objekt.</p>
+<p class="docs-paragraph">Om du inte i testet ska testa <code>.exists()</code> eller en array med 0 eller fler element.</p>
+<h3 id="undvik_utskrifter_i_testfall"><a class="header-anchor" href="#undvik_utskrifter_i_testfall">Undvik utskrifter i testfall</a></h3><p class="docs-paragraph">Undvik att använda <code>console.log</code> (och liknande) i testfallen.</p>
+<p class="docs-paragraph">Motivering: det genererar brus i logfiler och gör det svårt att snabbt få en överblick över fallerande testfall då man måste läsa och mentalt filtrera bort från riktiga felmeddelanden.</p>
+<p class="docs-paragraph">Om koden under test skriver ut med <code>console.log</code> (eller liknande) bör du <strong>i första hand ifrågasätta syftet</strong> med utskriften.
 Utskriften kommer synas för slutkunder i produktion.
 För felhantering så visas det bara för den som letar, om det rör sig om ett hindrande fel så kan en exception vara lämpligare och om det inte är hindrande (dvs koden kan hantera det) så ger en utskrift kanske inte något mervärde annat än brus.
-Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt genom att mocka <code>console.log</code>, verifiera resultatet samt avsaknad av andra utskrifter.</p><p class="docs-paragraph">Utskrifter från Vue ska hanteras och inte döljas, exempelvis:</p><blockquote>
+Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt genom att mocka <code>console.log</code>, verifiera resultatet samt avsaknad av andra utskrifter.</p>
+<p class="docs-paragraph">Utskrifter från Vue ska hanteras och inte döljas, exempelvis:</p>
+<blockquote>
 <pre><code>[vue-test-utils]: name is deprecated and will be removed in the next major version.
 </code></pre>
 </blockquote>
-<p class="docs-paragraph">Istället för att dölja meddelandet se till att korrigera din kod.</p><p class="docs-paragraph">För att korrekt mocka och verifiera <code>console.log</code> använder du <code>jest.spyOn(..)</code>:</p>
+<p class="docs-paragraph">Istället för att dölja meddelandet se till att korrigera din kod.</p>
+<p class="docs-paragraph">För att korrekt mocka och verifiera <code>console.log</code> använder du <code>jest.spyOn(..)</code>:</p>
+
                 <div
                     id="example-1e98fc"
                     class="code-preview code-preview--default"
@@ -1008,7 +1057,11 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 </code></pre>
                 </div>
             <p class="docs-paragraph">Undvik <code>console.log = jest.fn()</code> då det gör det svårare att åerställa mellan testfall.
-Är du inte försiktig när du mockar <code>console.log</code> försvårar du för andra som försöker använda <code>console.log</code> och du kan dölja riktiga fel som skrivs ut i console.</p><h3 id="folj_best_practice_for_jest"><a class="header-anchor" href="#folj_best_practice_for_jest">Följ best practice för jest</a></h3><p class="docs-paragraph">Länk</p><h2 id="komponenttester"><a class="header-anchor" href="#komponenttester">Komponenttester</a></h2><h2 id="e2e_tester"><a class="header-anchor" href="#e2e_tester">E2E tester</a></h2><h3 id="vi_skriver_ett_e2e_cypress_test_for_varje_korbart_exempel"><a class="header-anchor" href="#vi_skriver_ett_e2e_cypress_test_for_varje_korbart_exempel">Vi skriver ett E2E cypress test för varje körbart exempel</a></h3><p class="docs-paragraph">Motivering: då exempel är en del av det vi levererar till konsumenter vill vi att de alltid ska vara i ett fungerande skick och inte utdaterade.</p><h2 id="pageobject_for_cypress"><a class="header-anchor" href="#pageobject_for_cypress">Pageobject för Cypress</a></h2><p class="docs-paragraph">Vi skriver och levererar pageobject för alla publika komponenter och moduler.</p><h3 id="mall"><a class="header-anchor" href="#mall">Mall</a></h3>
+Är du inte försiktig när du mockar <code>console.log</code> försvårar du för andra som försöker använda <code>console.log</code> och du kan dölja riktiga fel som skrivs ut i console.</p>
+<h3 id="folj_best_practice_for_jest"><a class="header-anchor" href="#folj_best_practice_for_jest">Följ best practice för jest</a></h3><p class="docs-paragraph">Länk</p>
+<h2 id="komponenttester"><a class="header-anchor" href="#komponenttester">Komponenttester</a></h2><h2 id="e2e_tester"><a class="header-anchor" href="#e2e_tester">E2E tester</a></h2><h3 id="vi_skriver_ett_e2e_cypress_test_for_varje_korbart_exempel"><a class="header-anchor" href="#vi_skriver_ett_e2e_cypress_test_for_varje_korbart_exempel">Vi skriver ett E2E cypress test för varje körbart exempel</a></h3><p class="docs-paragraph">Motivering: då exempel är en del av det vi levererar till konsumenter vill vi att de alltid ska vara i ett fungerande skick och inte utdaterade.</p>
+<h2 id="pageobject_for_cypress"><a class="header-anchor" href="#pageobject_for_cypress">Pageobject för Cypress</a></h2><p class="docs-paragraph">Vi skriver och levererar pageobject för alla publika komponenter och moduler.</p>
+<h3 id="mall"><a class="header-anchor" href="#mall">Mall</a></h3>
                 <div
                     id="example-7a5fdc"
                     class="code-preview code-preview--default"
@@ -1047,7 +1100,9 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 </code></pre>
                 </div>
             <h3 id="anvand_metoder"><a class="header-anchor" href="#anvand_metoder">Använd metoder</a></h3><p class="docs-paragraph">Låt varje beståndsdel av pageobject vara en egen metod.
-Undvik arrow-funktion-som-property mönster:</p><p class="docs-paragraph">Istället för:</p>
+Undvik arrow-funktion-som-property mönster:</p>
+<p class="docs-paragraph">Istället för:</p>
+
                 <div
                     id="example-4d0667"
                     class="code-preview code-preview--default"
@@ -1072,6 +1127,7 @@ Undvik arrow-funktion-som-property mönster:</p><p class="docs-paragraph">Istäl
 </code></pre>
                 </div>
             <p class="docs-paragraph">Använd vanliga klassmetoder:</p>
+
                 <div
                     id="example-1b792c"
                     class="code-preview code-preview--default"
@@ -1096,8 +1152,10 @@ Undvik arrow-funktion-som-property mönster:</p><p class="docs-paragraph">Istäl
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Motivering: koden blir enklare att läsa och förstå, dokumentation hänger ihop med implementation.</p><h3 id="undvik_find"><a class="header-anchor" href="#undvik_find">Undvik <code>find(..)</code></a></h3><p class="docs-paragraph">Undvik <code>cy.get(..).find(..)</code> i pageobject.
+            <p class="docs-paragraph">Motivering: koden blir enklare att läsa och förstå, dokumentation hänger ihop med implementation.</p>
+<h3 id="undvik_find"><a class="header-anchor" href="#undvik_find">Undvik <code>find(..)</code></a></h3><p class="docs-paragraph">Undvik <code>cy.get(..).find(..)</code> i pageobject.
 Skriv istället ihop selectorn med en template literal:</p>
+
                 <div
                     id="example-c5c5a9"
                     class="code-preview code-preview--default"
@@ -1111,6 +1169,7 @@ Skriv istället ihop selectorn med en template literal:</p>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Motivering: Cypress kommer bara upprepa det sista kommandot (<a href="https://docs.cypress.io/guides/core-concepts/retry-ability#Only-the-last-command-is-retried">retry-ability</a>) så om <code>cy.get(..)</code> inte returnerar det du förväntar dig kommer <code>.find(..)</code> inte heller göra det och trots att <code>find</code> upprepas kommer den agera på det tidigare felaktiga resultatet från <code>cy.get(..)</code>.</p>
+
 
                     </div>
                 </main>
@@ -1126,9 +1185,9 @@ Skriv istället ihop selectorn med en template literal:</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1241,16 +1300,16 @@ Skriv istället ihop selectorn med en template literal:</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

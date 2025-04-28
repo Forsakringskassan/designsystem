@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Format Plugin - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1358,13 +1358,14 @@
                     <div id="content"><p class="docs-paragraph">FormatPlugin lägger till stöd för formaterings-direktivet <code>v-format</code>.
 Direktivet används för att formatera data som ska presenteras.
 Utöver formateringen förhindras även radbrytning av data.
-Val av formaterare görs via direktivets argument och följande format stöds:</p><ul>
-<li><p class="docs-paragraph">bankgiro</p></li>
-<li><p class="docs-paragraph">datum</p></li>
-<li><p class="docs-paragraph">nummer</p></li>
-<li><p class="docs-paragraph">organisationsnummer</p></li>
-<li><p class="docs-paragraph">personnummer</p></li>
-<li><p class="docs-paragraph">text.</p></li>
+Val av formaterare görs via direktivets argument och följande format stöds:</p>
+<ul>
+<li>bankgiro</li>
+<li>datum</li>
+<li>nummer</li>
+<li>organisationsnummer</li>
+<li>personnummer</li>
+<li>text.</li>
 </ul>
 
             <div class="docs-messagebox docs-messagebox--warning">
@@ -1372,8 +1373,10 @@ Val av formaterare görs via direktivets argument och följande format stöds:</
                 <p class="docs-paragraph">Använd inte formaterings-direktivet på komponenter.
 Oväntat beteende kan inträffa då en komponent har flera rotnoder.
 Om du ändå använder formaterings-direktivet på komponenter kommer direktivet alltid att gälla för komponentens rotnod, liknande &quot;fallthrough attributes&quot;.</p>
+
             </div>
         <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">Du initialiserar FormatPlugin på nedan sätt (bör göras så tidigt i applikationen som möjligt, till exempel main.ts )</p>
+
                 <div
                     id="example-8c2857"
                     class="code-preview code-preview--default"
@@ -1390,9 +1393,11 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>);
 </code></pre>
                 </div>
-            <h2 id="bankgiro"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h2><p class="docs-paragraph">Värdet ska vara av typen <code>string</code>.</p><p class="docs-paragraph">Formaterar värdet enligt:</p><ul>
-<li><p class="docs-paragraph">NNN-NNNN om längden är sju tecken</p></li>
-<li><p class="docs-paragraph">NNNN-NNNN om längden är åtta tecken.</p></li>
+            <h2 id="bankgiro"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h2><p class="docs-paragraph">Värdet ska vara av typen <code>string</code>.</p>
+<p class="docs-paragraph">Formaterar värdet enligt:</p>
+<ul>
+<li>NNN-NNNN om längden är sju tecken</li>
+<li>NNNN-NNNN om längden är åtta tecken.</li>
 </ul>
 
                 <div
@@ -1431,13 +1436,15 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
         <script type="module" src="./FormatPluginBankgiro-29e365.js"></script>
     </div>
                 </div>
-            <h2 id="datum"><a class="header-anchor" href="#datum">Datum</a></h2><p class="docs-paragraph">Datumformateraren stödjer fyra olika format:</p><ul>
-<li><p class="docs-paragraph"><code>v-format:date</code>: &quot;2022-05-04&quot;</p></li>
-<li><p class="docs-paragraph"><code>v-format:date-long</code>: &quot;4 maj 2022&quot;</p></li>
-<li><p class="docs-paragraph"><code>v-format:date-full</code>: &quot;onsdag 4 maj 2022&quot;</p></li>
-<li><p class="docs-paragraph"><code>v-format:date-range</code>: &quot;2022-05-04 – 2022-08-01&quot;</p></li>
+            <h2 id="datum"><a class="header-anchor" href="#datum">Datum</a></h2><p class="docs-paragraph">Datumformateraren stödjer fyra olika format:</p>
+<ul>
+<li><code>v-format:date</code>: &quot;2022-05-04&quot;</li>
+<li><code>v-format:date-long</code>: &quot;4 maj 2022&quot;</li>
+<li><code>v-format:date-full</code>: &quot;onsdag 4 maj 2022&quot;</li>
+<li><code>v-format:date-range</code>: &quot;2022-05-04 – 2022-08-01&quot;</li>
 </ul>
 <p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code>, <code>FDate</code> eller <code>DateRange</code>.</p>
+
                 <div
                     id="example-d83a08"
                     class="code-preview code-preview--default"
@@ -1513,12 +1520,14 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
         <script type="module" src="./FormatPluginDate-d88a40.js"></script>
     </div>
                 </div>
-            <h2 id="nummer"><a class="header-anchor" href="#nummer">Nummer</a></h2><p class="docs-paragraph">Formaterar värdet som ett nummer enligt:</p><ul>
-<li><p class="docs-paragraph">tar bort inledande nollor</p></li>
-<li><p class="docs-paragraph">sätter tusenavdelare</p></li>
-<li><p class="docs-paragraph">konverterar punkt till komma.</p></li>
+            <h2 id="nummer"><a class="header-anchor" href="#nummer">Nummer</a></h2><p class="docs-paragraph">Formaterar värdet som ett nummer enligt:</p>
+<ul>
+<li>tar bort inledande nollor</li>
+<li>sätter tusenavdelare</li>
+<li>konverterar punkt till komma.</li>
 </ul>
 <p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code>,<code>number</code> eller <code>NumberFormat</code> om man vill precisera antalet decimaler.</p>
+
                 <div
                     id="example-00b240"
                     class="code-preview code-preview--default"
@@ -1582,6 +1591,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             <h2 id="organisationsnummer"><a class="header-anchor" href="#organisationsnummer">Organisationsnummer</a></h2><p class="docs-paragraph">Formaterar värdet enligt formatet NNNNNN-NNNN.
 Värdet ska vara av typen <code>string</code>.</p>
+
                 <div
                     id="example-07e512"
                     class="code-preview code-preview--default"
@@ -1620,6 +1630,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             <h2 id="personnummer"><a class="header-anchor" href="#personnummer">Personnummer</a></h2><p class="docs-paragraph">Formaterar värdet enligt formatet ååååmmdd-nnnn.
 Värdet ska vara av typen <code>string</code>.</p>
+
                 <div
                     id="example-04f75b"
                     class="code-preview code-preview--default"
@@ -1656,19 +1667,23 @@ Värdet ska vara av typen <code>string</code>.</p>
         <script type="module" src="./FormatPluginPnr-2808b2.js"></script>
     </div>
                 </div>
-            <h2 id="plusgiro"><a class="header-anchor" href="#plusgiro">Plusgiro</a></h2><p class="docs-paragraph">Formaterar värdet enligt:</p><ul>
-<li><p class="docs-paragraph">bindestreck mellan näst sista och sista siffran</p></li>
-<li><p class="docs-paragraph">grupper med två siffror till vänster om bindestreck.</p></li>
+            <h2 id="plusgiro"><a class="header-anchor" href="#plusgiro">Plusgiro</a></h2><p class="docs-paragraph">Formaterar värdet enligt:</p>
+<ul>
+<li>bindestreck mellan näst sista och sista siffran</li>
+<li>grupper med två siffror till vänster om bindestreck.</li>
 </ul>
 <p class="docs-paragraph">Vid udda antal siffror till vänster kommer första gruppen innehålla en siffra.
-Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffror.</p><p class="docs-paragraph">Exempel</p><ul>
-<li><p class="docs-paragraph">N-N</p></li>
-<li><p class="docs-paragraph">NN-N</p></li>
-<li><p class="docs-paragraph">N NN-N</p></li>
-<li><p class="docs-paragraph">NN NN-N</p></li>
-<li><p class="docs-paragraph">N NN NN-N</p></li>
+Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffror.</p>
+<p class="docs-paragraph">Exempel</p>
+<ul>
+<li>N-N</li>
+<li>NN-N</li>
+<li>N NN-N</li>
+<li>NN NN-N</li>
+<li>N NN NN-N</li>
 </ul>
 <p class="docs-paragraph">Värdet ska vara av typen <code>string</code>.</p>
+
                 <div
                     id="example-d17015"
                     class="code-preview code-preview--default"
@@ -1707,6 +1722,7 @@ Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffro
                 </div>
             <h2 id="postnummer"><a class="header-anchor" href="#postnummer">Postnummer</a></h2><p class="docs-paragraph">Formaterar värdet enligt formatet NNN NN.
 Värdet ska vara av typen <code>string</code>.</p>
+
                 <div
                     id="example-1999c9"
                     class="code-preview code-preview--default"
@@ -1744,6 +1760,7 @@ Värdet ska vara av typen <code>string</code>.</p>
     </div>
                 </div>
             <h2 id="text"><a class="header-anchor" href="#text">Text</a></h2><p class="docs-paragraph">Formateraren för text ser till att texten inte radbryts.</p>
+
                 <div
                     id="example-e8e394"
                     class="code-preview code-preview--default"
@@ -1805,9 +1822,9 @@ Värdet ska vara av typen <code>string</code>.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1920,16 +1937,16 @@ Värdet ska vara av typen <code>string</code>.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Kalender - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-88ed0c.css"
+            href="../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1058,13 +1058,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3261d00bd21041d0f259d8d89471cf79165080c8/packages/vue/src/components/FCalendar/FCalendar.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ddaee538f78f69c1ccc2dc3d67d8b8596d340119/packages/vue/src/components/FCalendar/FCalendar.vue">
                 FCalendar
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3261d00bd21041d0f259d8d89471cf79165080c8/packages/vue/src/components/FCalendar/FCalendarDay.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ddaee538f78f69c1ccc2dc3d67d8b8596d340119/packages/vue/src/components/FCalendar/FCalendarDay.vue">
                 FCalendarDay
             </a>
             
@@ -1108,6 +1108,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Kalendern används när en användare behöver välja flera dagar, välja dagar och fylla i information om dem, se mer information om en dag eller få en överblick över en månad.</p>
+
             <div
                 id="example-aa8614"
                 class="code-preview code-preview--default"
@@ -1172,17 +1173,22 @@
 </code></pre>
                 </div>
             </div>
-        <p class="docs-paragraph">Varje dag i kalendern är en knapp och det går att styra vad som ska hända när användaren väljer en dag.</p><p class="docs-paragraph">Till exempel kan ett klick på en dag i kalendern användas för att:</p><ul>
-<li><p class="docs-paragraph">Visa information om dagen</p></li>
-<li><p class="docs-paragraph">Visa formulärsfält för att fylla i uppgifter om dagen</p></li>
-<li><p class="docs-paragraph">Välja dagen (som en av flera)</p></li>
+        <p class="docs-paragraph">Varje dag i kalendern är en knapp och det går att styra vad som ska hända när användaren väljer en dag.</p>
+<p class="docs-paragraph">Till exempel kan ett klick på en dag i kalendern användas för att:</p>
+<ul>
+<li>Visa information om dagen</li>
+<li>Visa formulärsfält för att fylla i uppgifter om dagen</li>
+<li>Välja dagen (som en av flera)</li>
 </ul>
-<h2 id="valbara_dagar"><a class="header-anchor" href="#valbara_dagar">Valbara dagar</a></h2><p class="docs-paragraph">Det går att styra vilka dagar som är valbara genom att:</p><ul>
-<li><p class="docs-paragraph">Sätt en period för inom vilken det ska finnas valbara dagar</p></li>
-<li><p class="docs-paragraph">Ange enskilda dagar som inte är valbara</p></li>
-<li><p class="docs-paragraph">Ange veckodagar som inte är valbara.</p></li>
+<h2 id="valbara_dagar"><a class="header-anchor" href="#valbara_dagar">Valbara dagar</a></h2><p class="docs-paragraph">Det går att styra vilka dagar som är valbara genom att:</p>
+<ul>
+<li>Sätt en period för inom vilken det ska finnas valbara dagar</li>
+<li>Ange enskilda dagar som inte är valbara</li>
+<li>Ange veckodagar som inte är valbara.</li>
 </ul>
-<p class="docs-paragraph">Användaren kan klicka på en dag som inte är valbar, därmed kan du välja att visa ett felmeddelande på ett lämpligt sätt.</p><p class="docs-paragraph">För att sätta det lägsta och högsta möjliga datumet att välja skickar du in en <a href="../date/classes/FDate.html"><code>FDate</code></a> till <code>minDate</code> respektive <code>maxDate</code>.</p>
+<p class="docs-paragraph">Användaren kan klicka på en dag som inte är valbar, därmed kan du välja att visa ett felmeddelande på ett lämpligt sätt.</p>
+<p class="docs-paragraph">För att sätta det lägsta och högsta möjliga datumet att välja skickar du in en <a href="../date/classes/FDate.html"><code>FDate</code></a> till <code>minDate</code> respektive <code>maxDate</code>.</p>
+
                 <div
                     id="example-5a051b"
                     class="code-preview code-preview--default"
@@ -1194,10 +1200,14 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p class="docs-paragraph">Kalendern är 100% i bredd. För att ändra bredden placeras kalendern i en container som hanterar komponentens bredd.</p><p class="docs-paragraph">Kolumnen med veckonummer visas inte på skärmar som är under 325px breda.</p><h2 id="manad_som_visas"><a class="header-anchor" href="#manad_som_visas">Månad som visas</a></h2><p class="docs-paragraph">För att hantera vilken månad som visas används <code>v-model</code>.
-Den tar en <a href="../date/classes/FDate.html"><code>FDate</code></a> och visar aktuell månad för datumet oavsett vilken dag som skickas in.</p><h2 id="tabindex"><a class="header-anchor" href="#tabindex">Tabindex</a></h2><p class="docs-paragraph">När användare går till kalendern med tab så får första dagen i månaden fokus.
+            <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p class="docs-paragraph">Kalendern är 100% i bredd. För att ändra bredden placeras kalendern i en container som hanterar komponentens bredd.</p>
+<p class="docs-paragraph">Kolumnen med veckonummer visas inte på skärmar som är under 325px breda.</p>
+<h2 id="manad_som_visas"><a class="header-anchor" href="#manad_som_visas">Månad som visas</a></h2><p class="docs-paragraph">För att hantera vilken månad som visas används <code>v-model</code>.
+Den tar en <a href="../date/classes/FDate.html"><code>FDate</code></a> och visar aktuell månad för datumet oavsett vilken dag som skickas in.</p>
+<h2 id="tabindex"><a class="header-anchor" href="#tabindex">Tabindex</a></h2><p class="docs-paragraph">När användare går till kalendern med tab så får första dagen i månaden fokus.
 För att ändra detta beteende skickar du in en <a href="../date/classes/FDate.html"><code>FDate</code></a> med den dag som ska få fokus till <code>tabDate</code>.
 Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
+
                 <div
                     id="example-61999d"
                     class="code-preview code-preview--default"
@@ -1214,7 +1224,9 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
  &gt;&lt;/f-calendar&gt;
 </code></pre>
                 </div>
-            <h2 id="egen_dagkomponent"><a class="header-anchor" href="#egen_dagkomponent">Egen dagkomponent</a></h2><p class="docs-paragraph">Kalendern använder en dagkomponent, antingen <code>&lt;f-calendar-day&gt;</code> eller en egen komponent.</p><p class="docs-paragraph">I följande exempel av kalendern har en egen dagkomponent använts för att skapa en kalender med olika schemalagda händelser.</p>
+            <h2 id="egen_dagkomponent"><a class="header-anchor" href="#egen_dagkomponent">Egen dagkomponent</a></h2><p class="docs-paragraph">Kalendern använder en dagkomponent, antingen <code>&lt;f-calendar-day&gt;</code> eller en egen komponent.</p>
+<p class="docs-paragraph">I följande exempel av kalendern har en egen dagkomponent använts för att skapa en kalender med olika schemalagda händelser.</p>
+
             <div
                 id="example-92e55f"
                 class="code-preview code-preview--default"
@@ -1415,6 +1427,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
                 </div>
             </div>
         <h2 id="valja_flera_dagar"><a class="header-anchor" href="#valja_flera_dagar">Välja flera dagar</a></h2><p class="docs-paragraph">I följande exempel av kalendern kan man välja flera dagar och visuellt se vilka dagar som är valda. Alla valda dagar sparas ner till en array.</p>
+
                 <div
                     id="example-a74a35"
                     class="code-preview code-preview--default"
@@ -1441,7 +1454,9 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Metoden <code>onSelectDay</code> kommer i exemplet lägga till den dagen du klickar på i en array för alla dagar. Finns redan dagen i arrayen kommer den valda dagen tas bort från arrayen.
-Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarna sparas och kolla om den valda dagen finns. Finns den markeras den, finns den inte avmarkeras den.</p><p class="docs-paragraph">Exemplet lagrar dagarna som <code>string</code> i arrayen.</p>
+Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarna sparas och kolla om den valda dagen finns. Finns den markeras den, finns den inte avmarkeras den.</p>
+<p class="docs-paragraph">Exemplet lagrar dagarna som <code>string</code> i arrayen.</p>
+
             <div
                 id="example-2334ed"
                 class="code-preview code-preview--default"
@@ -1794,9 +1809,9 @@ If undefined, the first day of the month will gain focus.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1909,16 +1924,16 @@ If undefined, the first day of the month will gain focus.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../assets/main-a45256.js"
+            src="../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

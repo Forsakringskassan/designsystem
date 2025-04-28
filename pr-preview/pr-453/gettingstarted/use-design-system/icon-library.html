@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Skapa eget ikonbibliotek - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -535,8 +535,13 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.</p><h2 id="skapa_eget_ikonbibliotek"><a class="header-anchor" href="#skapa_eget_ikonbibliotek">Skapa eget ikonbibliotek</a></h2><p class="docs-paragraph">Använd skriptet i <code>@fkui/icon-lib-builder</code> för att bygga ett ikonbibliotek.</p><p class="docs-paragraph">Börja med att installera skriptet <a href="../contribute-to-fkds/contributing-developers.html#Kommandon">kommando för installation</a>.</p><p class="docs-paragraph">Lägg därefter till de ikoner du vill ska ingå i en katalog &quot;icons&quot;.
-Strukturera ikonerna i underkataloger för varje önskat bibliotek, till exempel <code>./icons/f</code>.</p><p class="docs-paragraph">Bygg ikonbiblioteket genom att skriva</p>
+                    <div id="content"><p class="docs-paragraph">Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.</p>
+<h2 id="skapa_eget_ikonbibliotek"><a class="header-anchor" href="#skapa_eget_ikonbibliotek">Skapa eget ikonbibliotek</a></h2><p class="docs-paragraph">Använd skriptet i <code>@fkui/icon-lib-builder</code> för att bygga ett ikonbibliotek.</p>
+<p class="docs-paragraph">Börja med att installera skriptet <a href="../contribute-to-fkds/contributing-developers.html#Kommandon">kommando för installation</a>.</p>
+<p class="docs-paragraph">Lägg därefter till de ikoner du vill ska ingå i en katalog &quot;icons&quot;.
+Strukturera ikonerna i underkataloger för varje önskat bibliotek, till exempel <code>./icons/f</code>.</p>
+<p class="docs-paragraph">Bygg ikonbiblioteket genom att skriva</p>
+
                 <div
                     id="example-c89ef4"
                     class="code-preview code-preview--default"
@@ -548,7 +553,9 @@ Strukturera ikonerna i underkataloger för varje önskat bibliotek, till exempel
                     <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">fkui-icon-lib-build
 </code></pre>
                 </div>
-            <h2 id="anvand_i_projekt"><a class="header-anchor" href="#anvand_i_projekt">Använd i projekt</a></h2><p class="docs-paragraph"><a href="./getting-started-application.html#importera-ikonbibliotek">Läs mer om hur du använder ikoner i din applikation</a></p><h3 id="rendera_ut_ikon"><a class="header-anchor" href="#rendera_ut_ikon">Rendera ut ikon</a></h3><p class="docs-paragraph">Ikoner renderas sedan genom följande markup:</p>
+            <h2 id="anvand_i_projekt"><a class="header-anchor" href="#anvand_i_projekt">Använd i projekt</a></h2><p class="docs-paragraph"><a href="./getting-started-application.html#importera-ikonbibliotek">Läs mer om hur du använder ikoner i din applikation</a></p>
+<h3 id="rendera_ut_ikon"><a class="header-anchor" href="#rendera_ut_ikon">Rendera ut ikon</a></h3><p class="docs-paragraph">Ikoner renderas sedan genom följande markup:</p>
+
                 <div
                     id="example-623cc6"
                     class="code-preview code-preview--default"
@@ -563,25 +570,27 @@ Strukturera ikonerna i underkataloger för varje önskat bibliotek, till exempel
 </code></pre>
                 </div>
             <h2 id="riktlinjer_for_ikoner"><a class="header-anchor" href="#riktlinjer_for_ikoner">Riktlinjer för ikoner</a></h2><ul>
-<li><p class="docs-paragraph">512x512 viewbox (<code>viewBox=&quot;0 0 512 512&quot;</code>)</p></li>
+<li>512x512 viewbox (<code>viewBox=&quot;0 0 512 512&quot;</code>)</li>
 </ul>
 <h3 id="andra_skala_pa_ikoner"><a class="header-anchor" href="#andra_skala_pa_ikoner">Ändra skala på ikoner</a></h3><ol>
-<li><p class="docs-paragraph">Ändra <code>viewBox</code> och ta bort eventuella <code>x</code>-, <code>y</code>-, <code>width</code>- och <code>height</code>-attribut.</p></li>
-<li><p class="docs-paragraph">Wrappa innehållet i en <code>&lt;g&gt;</code> om det inte redan finns en.</p></li>
-<li><p class="docs-paragraph">Sätt <code>class=&quot;&quot;</code> på <code>path</code>,<code>circle</code> och <code>rect</code> och döp det efter vad objektet är.</p></li>
-<li><p class="docs-paragraph">Lägg till <code>transform=&quot;&quot;</code> på <code>&lt;g&gt;</code> och applicera transformationer:</p>
+<li>Ändra <code>viewBox</code> och ta bort eventuella <code>x</code>-, <code>y</code>-, <code>width</code>- och <code>height</code>-attribut.</li>
+<li>Wrappa innehållet i en <code>&lt;g&gt;</code> om det inte redan finns en.</li>
+<li>Sätt <code>class=&quot;&quot;</code> på <code>path</code>,<code>circle</code> och <code>rect</code> och döp det efter vad objektet är.</li>
+<li>Lägg till <code>transform=&quot;&quot;</code> på <code>&lt;g&gt;</code> och applicera transformationer:
 <ul>
-<li><p class="docs-paragraph"><code>translate(x y)</code> för att flytta på innehållet.</p></li>
-<li><p class="docs-paragraph"><code>scale(x)</code> för att skala ikonen.</p></li>
-<li><p class="docs-paragraph">Exempelvis skriver du <code>transform=&quot;translate(5 -8) scale(5)&quot;</code> för att flytta ikonen 5 enheter till höger, 8 enheter uppåt och därefter skala 5x.</p></li>
-<li><p class="docs-paragraph">Tänk på att ordningen på transformationer spelar roll (translate före scale ger inte samma resultat som scale före translate).</p></li>
+<li><code>translate(x y)</code> för att flytta på innehållet.</li>
+<li><code>scale(x)</code> för att skala ikonen.</li>
+<li>Exempelvis skriver du <code>transform=&quot;translate(5 -8) scale(5)&quot;</code> för att flytta ikonen 5 enheter till höger, 8 enheter uppåt och därefter skala 5x.</li>
+<li>Tänk på att ordningen på transformationer spelar roll (translate före scale ger inte samma resultat som scale före translate).</li>
 </ul>
 </li>
-<li><p class="docs-paragraph">Kör <code>svgo -i my-icon.svg -o test.svg</code> och verifiera att resultatet är korrekt.</p></li>
+<li>Kör <code>svgo -i my-icon.svg -o test.svg</code> och verifiera att resultatet är korrekt.</li>
 </ol>
 <h3 id="andra_farg_pa_ikoner"><a class="header-anchor" href="#andra_farg_pa_ikoner">Ändra färg på ikoner</a></h3><p class="docs-paragraph">En ikon ska alltid ha en standardfärg som stylas via attributet <code>color</code>.
-Detta uppnås genom att ett eller flera av dess element har <code>fill</code>/<code>stroke</code>-attribut satta tilll currentColor.</p><p class="docs-paragraph">Det kan vara möjligt att ändra på flera färger utöver standardfärgen på en ikon genom att använda attributen <code>fill</code> och <code>stroke</code>.
+Detta uppnås genom att ett eller flera av dess element har <code>fill</code>/<code>stroke</code>-attribut satta tilll currentColor.</p>
+<p class="docs-paragraph">Det kan vara möjligt att ändra på flera färger utöver standardfärgen på en ikon genom att använda attributen <code>fill</code> och <code>stroke</code>.
 För att ta reda på vilket attribut som gäller behöver du gå in i ikonen och se hur den är definierad.</p>
+
 
                     </div>
                 </main>
@@ -597,9 +606,9 @@ För att ta reda på vilket attribut som gäller behöver du gå in i ikonen och
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -712,16 +721,16 @@ För att ta reda på vilket attribut som gäller behöver du gå in i ikonen och
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Valideringsformulär - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3261d00bd21041d0f259d8d89471cf79165080c8/packages/vue/src/components/FValidationForm/FValidationForm.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ddaee538f78f69c1ccc2dc3d67d8b8596d340119/packages/vue/src/components/FValidationForm/FValidationForm.vue">
                 FValidationForm
             </a>
             
@@ -1099,8 +1099,10 @@
 
                     <div id="content"><p class="docs-paragraph">Du använder valideringsformulär när du har ett formulär eller ett mindre delformulär som ska valideras.
 Vid tryck på submit-knapp utförs klientvalidering och de fel som hittas presenteras i en lista som får fokus.
-Komponentens <code>submit</code>-event skickas enbart om allt innehåll är giltigt.</p><p class="docs-paragraph">Komponenten är transparent och attribut tilldelas <code>form</code>-elementet.
+Komponentens <code>submit</code>-event skickas enbart om allt innehåll är giltigt.</p>
+<p class="docs-paragraph">Komponenten är transparent och attribut tilldelas <code>form</code>-elementet.
 Attributet <code>autocomplete</code> är satt till <code>off</code>.</p>
+
             <div
                 id="example-59667b"
                 class="code-preview code-preview--default"
@@ -1228,6 +1230,7 @@ Attributet <code>autocomplete</code> är satt till <code>off</code>.</p>
             </div>
         <h2 id="formular_med_fa_falt"><a class="header-anchor" href="#formular_med_fa_falt">Formulär med få fält</a></h2><p class="docs-paragraph">Är det få fält som ingår i formuläret är det onödigt att visa en fellista.
 Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
+
                 <div
                     id="example-921ae9"
                     class="code-preview code-preview--default"
@@ -1245,6 +1248,7 @@ Då finns ett alternativ att fokusera på första felaktiga fältet.</p>
                 </div>
             <h2 id="formular_med_dolda_falt"><a class="header-anchor" href="#formular_med_dolda_falt">Formulär med dolda fält</a></h2><p class="docs-paragraph">För att få validering och felhantering att fungera för inmatningskomponenter som ligger dolda i en kollapsad expanderbar yta måste du se till att ytan öppnas.
 Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara ytan innan fokus kan flyttas till inmatningsfältet.</p>
+
                 <div
                     id="example-1f2142"
                     class="code-preview code-preview--default"
@@ -1275,6 +1279,7 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
 </code></pre>
                 </div>
             <p class="docs-paragraph">Följande exempel visar hur man kan använda <code>errorListBeforeNavigate</code> för att expandera ytan innan fokus flyttas.</p>
+
             <div
                 id="example-2e6a1f"
                 class="code-preview code-preview--default"
@@ -1384,7 +1389,9 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
 </code></pre>
                 </div>
             </div>
-        <h2 id="paverka_flode_vid_klick_pa_submit"><a class="header-anchor" href="#paverka_flode_vid_klick_pa_submit">Påverka flöde vid klick på submit</a></h2><p class="docs-paragraph">Fält valideras redan med vanlig validering, men om extra validering behövs (manuella steg, korsvalidering eller servervalidering osv) så kan <code>beforeValidation</code> eller <code>beforeSubmit</code> användas för att påverka flödet.</p><p class="docs-paragraph"><img src="../../assets/images/b9baa7112eaac3810b7fb06e5c554218.png" alt="submit"></p><table class="table">
+        <h2 id="paverka_flode_vid_klick_pa_submit"><a class="header-anchor" href="#paverka_flode_vid_klick_pa_submit">Påverka flöde vid klick på submit</a></h2><p class="docs-paragraph">Fält valideras redan med vanlig validering, men om extra validering behövs (manuella steg, korsvalidering eller servervalidering osv) så kan <code>beforeValidation</code> eller <code>beforeSubmit</code> användas för att påverka flödet.</p>
+<p class="docs-paragraph"><img src="../../assets/images/b9baa7112eaac3810b7fb06e5c554218.png" alt="submit"></p>
+<table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Hook</th>
@@ -1403,6 +1410,7 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
 </tbody>
 </table>
 <p class="docs-paragraph">Båda hooks kan avbryta flödet genom att returnera <code>FValidationFormAction.ABORT</code>:</p>
+
                 <div
                     id="example-d5a8e3"
                     class="code-preview code-preview--default"
@@ -1421,6 +1429,7 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
                 </div>
             <h2 id="servervalidering"><a class="header-anchor" href="#servervalidering">Servervalidering</a></h2><p class="docs-paragraph">Följande exempel visar hur man kan använda <code>beforeSubmit</code> för att servervalidera inmatningsfält.
 Första inmatningsfältet kommer alltid få ett fel när man försöker skicka in formuläret.</p>
+
             <div
                 id="example-7787ef"
                 class="code-preview code-preview--default"
@@ -1746,9 +1755,9 @@ If the prop is not set a random value will be generated.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1861,16 +1870,16 @@ If the prop is not set a random value will be generated.</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

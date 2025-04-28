@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Validation Plugin - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1325,7 +1325,9 @@
                     
 
                     <div id="content"><p class="docs-paragraph"><code>ValidationPlugin</code> möjliggör validering av inmatningsfält genom att lägga till direktivet <code>v-validation</code>.
-Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.</p><p class="docs-paragraph"><code>ValidationPlugin</code> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
+Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.</p>
+<p class="docs-paragraph"><code>ValidationPlugin</code> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
+
                 <div
                     id="example-e44823"
                     class="code-preview code-preview--default"
@@ -1350,6 +1352,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             <p class="docs-paragraph">Via <code>ValidationService.addValidationErrorMessages</code> kan man specificera översättningar av validator fel.
 I nedan exempel anges ett objekt med validatornamnet som nyckel och översättning som värde (om översättning saknas så kommer validatornamnet istället användas).</p>
+
                 <div
                     id="example-fba356"
                     class="code-preview code-preview--default"
@@ -1367,6 +1370,7 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
 </code></pre>
                 </div>
             <p class="docs-paragraph">För att få <em>autocompletion</em> av validatornamn så rekommenderas att använda <code>ValidationErrorMessageBuilder</code>:</p>
+
                 <div
                     id="example-d97d41"
                     class="code-preview code-preview--default"
@@ -1390,8 +1394,10 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(messages);
 </code></pre>
                 </div>
-            <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.</p><p class="docs-paragraph"><strong>Observera</strong> Ordningen definierar prioriteten för varje validator, ju längre till vänster desto högre prioritet.
+            <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.</p>
+<p class="docs-paragraph"><strong>Observera</strong> Ordningen definierar prioriteten för varje validator, ju längre till vänster desto högre prioritet.
 Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den <code>required</code> validatorn att köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.</p>
+
             <div
                 id="example-085b97"
                 class="code-preview code-preview--default"
@@ -1449,6 +1455,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                 </div>
             </div>
         <p class="docs-paragraph">Valideringsdirektivet är även reaktivt vilket betyder att man kan binda variabler i konfigurationen och när variablerna uppdateras i runtime så kommer valideringen hantera detta.</p>
+
             <div
                 id="example-02fce1"
                 class="code-preview code-preview--default"
@@ -1513,6 +1520,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
             </div>
         <p class="docs-paragraph"><code>v-validation</code>-direktivet skickar <code>ValidityEvents</code> under inmatning och när fokus tappas.
 <code>ValidityEvent</code> innehåller information om valideringens status.</p>
+
             <div
                 id="example-0aea31"
                 class="code-preview code-preview--default"
@@ -1581,6 +1589,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                 </div>
             </div>
         <h2 id="utokade_komponenter_med_default_validering"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p class="docs-paragraph">Om man behöver utveckla en egen komponent med inbyggd validering som standard-beteende så måste man lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
+
                 <div
                     id="example-b68238"
                     class="code-preview code-preview--default"
@@ -1602,7 +1611,9 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Se implementationen av komponenten FEmailTextField på sidan <a href="../../components/input/textfield-specialized.html">Inmatningsfält specialiserade</a> för konkret exempel.</p><h2 id="applikationsspecifikt_felmeddelande"><a class="header-anchor" href="#applikationsspecifikt_felmeddelande">Applikationsspecifikt felmeddelande</a></h2><p class="docs-paragraph">Alla validatorers konfiguration tar attributet <code>errorMessage</code> som ersätter felmeddelandet som definieras med <code>ValidatorService.addValidationErrorMessages</code> funktionen.</p>
+            <p class="docs-paragraph">Se implementationen av komponenten FEmailTextField på sidan <a href="../../components/input/textfield-specialized.html">Inmatningsfält specialiserade</a> för konkret exempel.</p>
+<h2 id="applikationsspecifikt_felmeddelande"><a class="header-anchor" href="#applikationsspecifikt_felmeddelande">Applikationsspecifikt felmeddelande</a></h2><p class="docs-paragraph">Alla validatorers konfiguration tar attributet <code>errorMessage</code> som ersätter felmeddelandet som definieras med <code>ValidatorService.addValidationErrorMessages</code> funktionen.</p>
+
             <div
                 id="example-77d947"
                 class="code-preview code-preview--default"
@@ -1667,6 +1678,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
         <h2 id="prefix_for_att_urskilja_fel_med_samma_etiketter"><a class="header-anchor" href="#prefix_for_att_urskilja_fel_med_samma_etiketter">Prefix för att urskilja fel med samma etiketter</a></h2><p class="docs-paragraph">I de fall då flera fält har samma etikett kan det bli svårt att urskilja dem i fellistan.
 Vue-direktivet <code>v-validation-prefix</code> plockar ut <code>errorMessage</code> från alla <code>component-validity</code> event som kommer underifrån i DOM hierarkin och lägger på den angivna texten som prefix innan det bubblar vidare till formuläret.
 Det innebär att man kan lägga direktivet på flera platser för att kontinuerligt lägga på fler prefix.</p>
+
             <div
                 id="example-43dc9f"
                 class="code-preview code-preview--default"
@@ -1746,6 +1758,7 @@ Det innebär att man kan lägga direktivet på flera platser för att kontinuerl
             </div>
         <h2 id="inaktivera_validering"><a class="header-anchor" href="#inaktivera_validering">Inaktivera validering</a></h2><p class="docs-paragraph">Om du dynamiskt behöver aktivera / inaktivera en validering, kan du passa in <code>enabled</code> som option på samtliga validatorer.
 Ett use-case för detta är tex om ett fält längre ned skall vara required baserat på val som tidigare har gjorts.</p>
+
                 <div
                     id="example-58bda1"
                     class="code-preview code-preview--default"
@@ -1840,7 +1853,9 @@ Ett use-case för detta är tex om ett fält längre ned skall vara required bas
                 </div>
             </div>
         <h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><p class="docs-paragraph"><code>ValidationService</code> används när man vill tvinga revalidering av fält, t.ex. vid <code>submit</code>.
-Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="revalidera_falt"><a class="header-anchor" href="#revalidera_falt">Revalidera fält</a></h2><p class="docs-paragraph">Exempel på revalidering av all fält på denna sida.</p>
+Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
+<h2 id="revalidera_falt"><a class="header-anchor" href="#revalidera_falt">Revalidera fält</a></h2><p class="docs-paragraph">Exempel på revalidering av all fält på denna sida.</p>
+
             <div
                 id="example-886c88"
                 class="code-preview code-preview--default"
@@ -1902,6 +1917,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="rev
                 </div>
             </div>
         <h2 id="server_fel"><a class="header-anchor" href="#server_fel">Server-fel</a></h2><p class="docs-paragraph">Exempel på att sätta serverfel på all fält på denna sida.</p>
+
             <div
                 id="example-8ddfb5"
                 class="code-preview code-preview--default"
@@ -1965,8 +1981,10 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p><h2 id="rev
                 </div>
             </div>
         <h2 id="inaktiva_falt"><a class="header-anchor" href="#inaktiva_falt">Inaktiva fält</a></h2><p class="docs-paragraph">Vid validering tolkas inaktiva fält (inmatningsfält med <code>disabled</code> attributet satt) som giltiga oavsett resultatet från validering.
-Detta eftersom användaren inte har möjlighet att interagera med inaktiva fält och därför inte kan rätta felet.</p><p class="docs-paragraph">Om du dynamiskt växlar <code>disabled</code> krävs det att du manuellt validerar om elementet när fältet blir inaktivt för att tömma eventuella existerande fel.
+Detta eftersom användaren inte har möjlighet att interagera med inaktiva fält och därför inte kan rätta felet.</p>
+<p class="docs-paragraph">Om du dynamiskt växlar <code>disabled</code> krävs det att du manuellt validerar om elementet när fältet blir inaktivt för att tömma eventuella existerande fel.
 Det rekommenderade sättet är att använda sig av event listeners för <code>change</code>, <code>click</code> osv och validera om därifrån.</p>
+
             <div
                 id="example-9bc1b6"
                 class="code-preview code-preview--default"
@@ -2073,7 +2091,12 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
 </code></pre>
                 </div>
             </div>
-        <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/custom-validator.html">Validator - anpassad</a></p><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/cross-validation.html">Korsvalidering</a></p><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/length-validation.html">Längdvalidering</a></p><p class="docs-paragraph"><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
+        <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p>
+<p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/custom-validator.html">Validator - anpassad</a></p>
+<p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/cross-validation.html">Korsvalidering</a></p>
+<p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/length-validation.html">Längdvalidering</a></p>
+<p class="docs-paragraph"><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
+
 
                     </div>
                 </main>
@@ -2089,9 +2112,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2204,16 +2227,16 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

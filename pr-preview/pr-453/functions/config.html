@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Konfiguration - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-88ed0c.css"
+            href="../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1343,7 +1343,8 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph"><code>config</code> är ett enkelt objekt som innehåller ett begränsat antal globala inställningar för FKUI.</p><h2 id="installningar"><a class="header-anchor" href="#installningar">Inställningar</a></h2>
+                    <div id="content"><p class="docs-paragraph"><code>config</code> är ett enkelt objekt som innehåller ett begränsat antal globala inställningar för FKUI.</p>
+<h2 id="installningar"><a class="header-anchor" href="#installningar">Inställningar</a></h2>
                 <div
                     id="example-088a3a"
                     class="code-preview code-preview--default"
@@ -1373,6 +1374,7 @@
 </code></pre>
                 </div>
             <h2 id="andra_en_installning"><a class="header-anchor" href="#andra_en_installning">Ändra en inställning</a></h2><p class="docs-paragraph">Görs lämpligtvis i applikationens <code>main.ts</code>.</p>
+
                 <div
                     id="example-634721"
                     class="code-preview code-preview--default"
@@ -1387,10 +1389,12 @@ config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title 
 </code></pre>
                 </div>
             <h2 id="referens"><a class="header-anchor" href="#referens">Referens</a></h2><h3 id="knappordning_bekraftelsemodal_buttonorder"><a class="header-anchor" href="#knappordning_bekraftelsemodal_buttonorder">Knappordning bekräftelsemodal (<code>buttonOrder</code>)</a></h3><ul>
-<li><p class="docs-paragraph">default: Höger till vänster (<code>RIGHT_TO_LEFT</code>)</p></li>
-<li><p class="docs-paragraph">type: <code>FKUIConfigButtonOrder</code></p></li>
+<li>default: Höger till vänster (<code>RIGHT_TO_LEFT</code>)</li>
+<li>type: <code>FKUIConfigButtonOrder</code></li>
 </ul>
-<p class="docs-paragraph">Anger i vilken ordning man vill visa knappar i bekräftelsemodal.</p><p class="docs-paragraph"><code>LEFT_TO_RIGHT</code>: Vänster till höger</p>
+<p class="docs-paragraph">Anger i vilken ordning man vill visa knappar i bekräftelsemodal.</p>
+<p class="docs-paragraph"><code>LEFT_TO_RIGHT</code>: Vänster till höger</p>
+
                 <div
                     id="example-800a68"
                     class="code-preview code-preview--borderless"
@@ -1408,6 +1412,7 @@ config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title 
 </div>
                 </div>
             <p class="docs-paragraph"><code>RIGHT_TO_LEFT</code>: Höger till vänster</p>
+
                 <div
                     id="example-4acf0e"
                     class="code-preview code-preview--borderless"
@@ -1471,29 +1476,33 @@ config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title 
 </tbody>
 </table>
 <h3 id="teleporttarget"><a class="header-anchor" href="#teleporttarget"><code>teleportTarget</code></a></h3><ul>
-<li><p class="docs-paragraph">default: <code>document.body</code></p></li>
-<li><p class="docs-paragraph">type: <code>string | Element</code></p></li>
+<li>default: <code>document.body</code></li>
+<li>type: <code>string | Element</code></li>
 </ul>
-<p class="docs-paragraph">Anger var komponenter som teleporteras ska monteras.</p><p class="docs-paragraph">Komponenter som påverkas av denna inställning inkluderar:</p><ul>
-<li><p class="docs-paragraph">Programmatiskt öppnad <code>FModal</code>.</p></li>
-<li><p class="docs-paragraph"><code>FLoader</code> när den använder <code>overlay</code>.</p></li>
-<li><p class="docs-paragraph"><code>IPopup</code> när den använder <code>overlay</code>.</p></li>
-<li><p class="docs-paragraph"><code>IPopupMenu</code> när den använder <code>overlay</code>.</p></li>
-<li><p class="docs-paragraph"><code>FDatepickerField</code> när den använder <code>overlay</code>.</p></li>
-<li><p class="docs-paragraph"><code>FNavigationMenu</code> popupmeny när den använder <code>overlay</code>.</p></li>
-<li><p class="docs-paragraph"><code>FContextMenu</code>.</p></li>
+<p class="docs-paragraph">Anger var komponenter som teleporteras ska monteras.</p>
+<p class="docs-paragraph">Komponenter som påverkas av denna inställning inkluderar:</p>
+<ul>
+<li>Programmatiskt öppnad <code>FModal</code>.</li>
+<li><code>FLoader</code> när den använder <code>overlay</code>.</li>
+<li><code>IPopup</code> när den använder <code>overlay</code>.</li>
+<li><code>IPopupMenu</code> när den använder <code>overlay</code>.</li>
+<li><code>FDatepickerField</code> när den använder <code>overlay</code>.</li>
+<li><code>FNavigationMenu</code> popupmeny när den använder <code>overlay</code>.</li>
+<li><code>FContextMenu</code>.</li>
 </ul>
 <h3 id="popupcontainer"><a class="header-anchor" href="#popupcontainer"><code>popupContainer</code></a></h3><ul>
-<li><p class="docs-paragraph">default: <code>document.body</code></p></li>
-<li><p class="docs-paragraph">type: <code>string | HTMLElement</code></p></li>
+<li>default: <code>document.body</code></li>
+<li>type: <code>string | HTMLElement</code></li>
 </ul>
-<p class="docs-paragraph">Anger inom vilken container popups ska hålla sig inom när den använder overlay.</p><h3 id="production"><a class="header-anchor" href="#production"><code>production</code></a></h3><ul>
-<li><p class="docs-paragraph">default: true</p></li>
-<li><p class="docs-paragraph">type: <code>boolean</code></p></li>
+<p class="docs-paragraph">Anger inom vilken container popups ska hålla sig inom när den använder overlay.</p>
+<h3 id="production"><a class="header-anchor" href="#production"><code>production</code></a></h3><ul>
+<li>default: true</li>
+<li>type: <code>boolean</code></li>
 </ul>
 <p class="docs-paragraph">Gör det möjligt att specificera om man vill ha ett skarpt produktion beteendet av FKUI eller en icke-produktion, t.ex för test/utveckling,
 beteendet.
 Ett exempel av skillnad: i produktion vill man inte kasta exception men man loggar de i konsolen istället.</p>
+
 
                     </div>
                 </main>
@@ -1509,9 +1518,9 @@ Ett exempel av skillnad: i produktion vill man inte kasta exception men man logg
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1624,16 +1633,16 @@ Ett exempel av skillnad: i produktion vill man inte kasta exception men man logg
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../assets/main-a45256.js"
+            src="../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

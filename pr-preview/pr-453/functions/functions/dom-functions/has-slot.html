@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>hasSlot() function - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-88ed0c.css"
+            href="../../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1345,7 +1345,8 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Check if slot is implemented by the user.</p><h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
+                    <div id="content"><p class="docs-paragraph">Check if slot is implemented by the user.</p>
+<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
                     id="example-6b1a58"
                     class="code-preview code-preview--default"
@@ -1360,23 +1361,31 @@
             <h2 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
 <dt><code>vm: { $slots: Record&lt;string, NormalizedScopedSlot | undefined&gt; }</code></dt>
 <dd>
-<p class="docs-paragraph">Component instance.</p></dd>
+<p class="docs-paragraph">Component instance.</p>
+</dd>
 <dt><code>name: string</code></dt>
 <dd>
-<p class="docs-paragraph">Name of the slot to check for.</p></dd>
+<p class="docs-paragraph">Name of the slot to check for.</p>
+</dd>
 <dt><code>props: Record&lt;string, unknown&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>
-<p class="docs-paragraph">Props required by a scoped slot.</p></dd>
+<p class="docs-paragraph">Props required by a scoped slot.</p>
+</dd>
 <dt><code>options: Partial&lt;RenderSlotOptions&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>
-<p class="docs-paragraph">Render options.</p><dl>
+<p class="docs-paragraph">Render options.</p>
+<dl>
 <dt><code>stripClasses: string[]</code></dt>
 <dd>
-<p class="docs-paragraph">List of classes to exclude when extracting slot text.</p><p class="docs-paragraph">Default: <code>[&quot;sr-only&quot;]</code></p></dd>
+<p class="docs-paragraph">List of classes to exclude when extracting slot text.</p>
+<p class="docs-paragraph">Default: <code>[&quot;sr-only&quot;]</code></p>
+</dd>
 </dl>
 </dd>
 </dl>
-<h2 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h2><p class="docs-paragraph"><code>true</code> if the slot is implemented and have non-empty content, otherwise <code>false</code>.</p><h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">Given the following markup:</p>
+<h2 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h2><p class="docs-paragraph"><code>true</code> if the slot is implemented and have non-empty content, otherwise <code>false</code>.</p>
+<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">Given the following markup:</p>
+
                 <div
                     id="example-93c99a"
                     class="code-preview code-preview--default"
@@ -1405,6 +1414,7 @@
 <span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;baz&quot;</span>); <span class="hljs-comment">// --&gt; false</span></code></pre>
                 </div>
             <p class="docs-paragraph">If you use scoped slots you need to pass in the scope:</p>
+
                 <div
                     id="example-ad80ca"
                     class="code-preview code-preview--default"
@@ -1431,6 +1441,7 @@
                 </div>
             <p class="docs-paragraph">By default text wrapped by the <code>sr-only</code> class is ignored.
 This can be changed by setting the <code>stripClasses</code> option to <code>[]</code></p>
+
                 <div
                     id="example-347c06"
                     class="code-preview code-preview--default"
@@ -1474,9 +1485,9 @@ This can be changed by setting the <code>stripClasses</code> option to <code>[]<
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1589,16 +1600,16 @@ This can be changed by setting the <code>stripClasses</code> option to <code>[]<
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../../assets/main-a45256.js"
+            src="../../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>

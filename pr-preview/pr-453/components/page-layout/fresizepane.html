@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Justerbar yta - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-88ed0c.css"
+            href="../../assets/docs-623ed6.css"
             crossorigin
-            integrity="sha384-cDwZZzUGoYaobGzGY6J9mXr6qyS2zeX/Y00EFyMREcbxALKyC+XHFNo2QGjl6pZg"
+            integrity="sha384-589YPExyXwFW69foGRpvj6FjVczVrl4rqlyRPFgNVsAusq6fQjwZJuNv4Ody4w3w"
             
         />
         <link
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3261d00bd21041d0f259d8d89471cf79165080c8/packages/vue/src/components/FResizePane/FResizePane.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ddaee538f78f69c1ccc2dc3d67d8b8596d340119/packages/vue/src/components/FResizePane/FResizePane.vue">
                 FResizePane
             </a>
             
@@ -1097,11 +1097,14 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Justerbar yta (FResizePane) används tillsammand med <a href="./fpagelayout.html">Applikationslayout</a> för göra en yta med justerbar storlek.</p><p class="docs-paragraph">Ytans storlek kan justeras med pekdon genom att dra i och släppa avgränsaren mellan ytorna eller med tangentbord:</p><ul>
-<li><p class="docs-paragraph"><kbd>Vänster</kbd> och <kbd>Höger</kbd> ökar/minskar storleken.</p></li>
-<li><p class="docs-paragraph"><kbd>Home</kbd> och <kbd>End</kbd> maximerar/minimerar storleken.</p></li>
+                    <div id="content"><p class="docs-paragraph">Justerbar yta (FResizePane) används tillsammand med <a href="./fpagelayout.html">Applikationslayout</a> för göra en yta med justerbar storlek.</p>
+<p class="docs-paragraph">Ytans storlek kan justeras med pekdon genom att dra i och släppa avgränsaren mellan ytorna eller med tangentbord:</p>
+<ul>
+<li><kbd>Vänster</kbd> och <kbd>Höger</kbd> ökar/minskar storleken.</li>
+<li><kbd>Home</kbd> och <kbd>End</kbd> maximerar/minimerar storleken.</li>
 </ul>
 <p class="docs-paragraph">Ytans storlek lagras i webläsaren så nästa gång användaren tar upp samma applikation så återställs ytans storlek.</p>
+
                 <div
                     id="example-cd583e"
                     class="code-preview code-preview--borderless"
@@ -1130,11 +1133,14 @@ p {
         <script type="module" src="./FResizePaneLiveExample-f77d0e.js"></script>
     
                 </div>
-            <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">FResizePane kan enbart användas i ytor där paneler kan fästas, för de standardlayouter som designsystemet levererar är det ytorna:</p><ul>
-<li><p class="docs-paragraph"><code>left</code> (för paneler till vänster)</p></li>
-<li><p class="docs-paragraph"><code>right</code> (för paneler till höger)</p></li>
+            <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">FResizePane kan enbart användas i ytor där paneler kan fästas, för de standardlayouter som designsystemet levererar är det ytorna:</p>
+<ul>
+<li><code>left</code> (för paneler till vänster)</li>
+<li><code>right</code> (för paneler till höger)</li>
 </ul>
-<p class="docs-paragraph">Skapar du en egen layout är det alla ytor där <code>attachPanel</code> inte är <code>&quot;none&quot;</code>.</p><p class="docs-paragraph">Lägg <code>FResizePanel</code> komponenten som första elementet i respektive yta:</p>
+<p class="docs-paragraph">Skapar du en egen layout är det alla ytor där <code>attachPanel</code> inte är <code>&quot;none&quot;</code>.</p>
+<p class="docs-paragraph">Lägg <code>FResizePanel</code> komponenten som första elementet i respektive yta:</p>
+
                 <div
                     id="example-90edfd"
                     class="code-preview code-preview--default"
@@ -1149,16 +1155,19 @@ p {
 </code></pre>
                 </div>
             <h2 id="begransa_storlek"><a class="header-anchor" href="#begransa_storlek">Begränsa storlek</a></h2><p class="docs-paragraph">Storleken på ytan kan begränsas genom att använda <code>min</code>- och <code>max</code> propen.
-Värden kan anges antingen som absolut storlek i pixlar (<code>px</code>), i procent (<code>%</code>) eller båda samtidigt.</p><ul>
-<li><p class="docs-paragraph"><code>200px</code> - minsta/största storlek är 200px</p></li>
-<li><p class="docs-paragraph"><code>20%</code> - minsta/största storlek är 20% av applikationslayoutens totala bredd.</p></li>
-<li><p class="docs-paragraph"><code>200px 20%</code> - minsta/största är det minsta/största av 200px eller 20%.</p></li>
+Värden kan anges antingen som absolut storlek i pixlar (<code>px</code>), i procent (<code>%</code>) eller båda samtidigt.</p>
+<ul>
+<li><code>200px</code> - minsta/största storlek är 200px</li>
+<li><code>20%</code> - minsta/största storlek är 20% av applikationslayoutens totala bredd.</li>
+<li><code>200px 20%</code> - minsta/största är det minsta/största av 200px eller 20%.</li>
 </ul>
 <p class="docs-paragraph">Storleken refererar till innehållet i ytan, dvs <code>200px</code> innebär att det finns 200px effektiv yta för innehåll.
-Ytans totala storlek blir 200px + storleken på handtaget för att justera storleken.</p><h2 id="initial_storlek"><a class="header-anchor" href="#initial_storlek">Initial storlek</a></h2><p class="docs-paragraph">Den initiala storleken på ytan kan anges med <code>initial</code> propen.
-Värde kan anges antingen som absolut storlek i pixlar (<code>px</code>) eller i procent (<code>%</code>).</p><ul>
-<li><p class="docs-paragraph"><code>200px</code> - initial storlek är 200px</p></li>
-<li><p class="docs-paragraph"><code>20%</code> - initial storlek är 20% av applikationslayoutens totala bredd.</p></li>
+Ytans totala storlek blir 200px + storleken på handtaget för att justera storleken.</p>
+<h2 id="initial_storlek"><a class="header-anchor" href="#initial_storlek">Initial storlek</a></h2><p class="docs-paragraph">Den initiala storleken på ytan kan anges med <code>initial</code> propen.
+Värde kan anges antingen som absolut storlek i pixlar (<code>px</code>) eller i procent (<code>%</code>).</p>
+<ul>
+<li><code>200px</code> - initial storlek är 200px</li>
+<li><code>20%</code> - initial storlek är 20% av applikationslayoutens totala bredd.</li>
 </ul>
 <h2 id="anpassad_panel"><a class="header-anchor" href="#anpassad_panel">Anpassad panel</a></h2>
                 <div
@@ -1187,11 +1196,13 @@ Värde kan anges antingen som absolut storlek i pixlar (<code>px</code>) eller i
     
                 </div>
             <p class="docs-paragraph">En anpassad panel använder composable <a href="../../functions/functions/use-resize.html">useResize() composable</a> för att få tillgång till det API som exponeras från justerbar yta.
-Som konsument kan du styra om ytan ska</p><ul>
-<li><p class="docs-paragraph">vara justerbar</p></li>
-<li><p class="docs-paragraph">visas.</p></li>
+Som konsument kan du styra om ytan ska</p>
+<ul>
+<li>vara justerbar</li>
+<li>visas.</li>
 </ul>
 <p class="docs-paragraph">Samtliga är valfria och aktiverade som standard.</p>
+
                 <div
                     id="example-711680"
                     class="code-preview code-preview--default"
@@ -1214,7 +1225,8 @@ Som konsument kan du styra om ytan ska</p><ul>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph"><a href="../../functions/functions/use-resize.html">Läs mer om useResize</a>.</p><h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2>
+            <p class="docs-paragraph"><a href="../../functions/functions/use-resize.html">Läs mer om useResize</a>.</p>
+<h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2>
         <h3 id="fresizepane-props">
             <a class="header-anchor" href="#fresizepane-props">Props</a>
         </h3>
@@ -1323,9 +1335,9 @@ size)</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/3261d00bd21041d0f259d8d89471cf79165080c8">3261d00</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/ddaee538f78f69c1ccc2dc3d67d8b8596d340119">ddaee53</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-25 14:16
+        2025-04-28 06:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1438,16 +1450,16 @@ size)</p>
             integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-bc5dde.js"
+            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
             type="module"
             crossorigin
-            integrity="sha384-9bojVJ6MLQiXkvnyk30cmKVRqooHlVeE23Y7XJtWC/f5DZdfedHxORKAf+Cbv1sZ"
+            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-40ed80.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
             
         ></script>
     </body>
