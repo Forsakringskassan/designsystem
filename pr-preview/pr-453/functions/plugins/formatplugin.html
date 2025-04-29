@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-148387.json"
+            href="../../search-data-041166.json"
             as="fetch"
             crossorigin
-            integrity="sha384-01AJ3w+f3KPHlTK+Oi/SNN9mki9168NFiJE7tY/mxuLdNhjvZf9Ba+AOKIVVcNM+"
+            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
             id="search-data"
         />
     </head>
@@ -1365,20 +1365,14 @@ Val av formaterare görs via direktivets argument och följande format stöds:</
 <li>nummer</li>
 <li>organisationsnummer</li>
 <li>personnummer</li>
+<li>plusgiro</li>
+<li>postnummer</li>
 <li>text.</li>
 </ul>
-
-            <div class="docs-messagebox docs-messagebox--warning">
-                <p class="docs-messagebox__title">Tänk på att</p>
-                <p class="docs-paragraph">Använd inte formaterings-direktivet på komponenter.
-Oväntat beteende kan inträffa då en komponent har flera rotnoder.
-Om du ändå använder formaterings-direktivet på komponenter kommer direktivet alltid att gälla för komponentens rotnod, liknande &quot;fallthrough attributes&quot;.</p>
-
-            </div>
-        <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">Du initialiserar FormatPlugin på nedan sätt (bör göras så tidigt i applikationen som möjligt, till exempel main.ts )</p>
+<h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">Du initialiserar FormatPlugin på nedan sätt (bör göras så tidigt i applikationen som möjligt, till exempel main.ts )</p>
 
                 <div
-                    id="example-8c2857"
+                    id="example-208f55"
                     class="code-preview code-preview--default"
                     
                     
@@ -1401,7 +1395,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
 </ul>
 
                 <div
-                    id="example-b707d0"
+                    id="example-7f2545"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1419,7 +1413,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             
                 <div
-                    id="example-fc7e52"
+                    id="example-74194e"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1446,16 +1440,14 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
 <p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code>, <code>FDate</code> eller <code>DateRange</code>.</p>
 
                 <div
-                    id="example-d83a08"
+                    id="example-e04ddd"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">DateRange</span> =
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">DateRange</span> =
     | {
           <span class="hljs-attr">from</span>: <span class="hljs-built_in">string</span>;
           <span class="hljs-attr">to</span>: <span class="hljs-built_in">string</span>;
@@ -1468,7 +1460,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             
                 <div
-                    id="example-9e1ff6"
+                    id="example-336f29"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1503,7 +1495,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             
                 <div
-                    id="example-e75c4a"
+                    id="example-cba2f6"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1529,17 +1521,14 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
 <p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code>,<code>number</code> eller <code>NumberFormat</code> om man vill precisera antalet decimaler.</p>
 
                 <div
-                    id="example-00b240"
+                    id="example-aa5467"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-comment">/**
- * <span class="hljs-doctag">@internal</span>
- */</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">NumberFormat</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">NumberFormat</span> {
     <span class="hljs-attr">number</span>: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>;
     <span class="hljs-attr">decimals</span>: <span class="hljs-built_in">number</span>;
 }
@@ -1547,7 +1536,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             
                 <div
-                    id="example-d2f4ff"
+                    id="example-9ec1ed"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1572,7 +1561,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             
                 <div
-                    id="example-8aaf25"
+                    id="example-91fc04"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1593,7 +1582,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
 Värdet ska vara av typen <code>string</code>.</p>
 
                 <div
-                    id="example-07e512"
+                    id="example-a81a35"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1611,7 +1600,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-111dec"
+                    id="example-f6a219"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1632,7 +1621,7 @@ Värdet ska vara av typen <code>string</code>.</p>
 Värdet ska vara av typen <code>string</code>.</p>
 
                 <div
-                    id="example-04f75b"
+                    id="example-51b2c4"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1650,7 +1639,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-114662"
+                    id="example-52e5cd"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1685,7 +1674,7 @@ Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffro
 <p class="docs-paragraph">Värdet ska vara av typen <code>string</code>.</p>
 
                 <div
-                    id="example-d17015"
+                    id="example-a67325"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1703,7 +1692,7 @@ Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffro
                 </div>
             
                 <div
-                    id="example-a7ad9e"
+                    id="example-27381b"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1724,7 +1713,7 @@ Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffro
 Värdet ska vara av typen <code>string</code>.</p>
 
                 <div
-                    id="example-1999c9"
+                    id="example-7b62e9"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1742,7 +1731,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-b42ce2"
+                    id="example-8f8fb7"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1762,7 +1751,7 @@ Värdet ska vara av typen <code>string</code>.</p>
             <h2 id="text"><a class="header-anchor" href="#text">Text</a></h2><p class="docs-paragraph">Formateraren för text ser till att texten inte radbryts.</p>
 
                 <div
-                    id="example-e8e394"
+                    id="example-98b368"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1785,7 +1774,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-bdfcf5"
+                    id="example-120367"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1822,9 +1811,9 @@ Värdet ska vara av typen <code>string</code>.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/903a6cf5df0c86b69761041b8050fba308205fef">903a6cf</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/cbdfd234b5298602082afbf963328554fffbcd80">cbdfd23</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-04-28 08:26
+        2025-04-29 11:26
 </div>
 <div class="toolbar__item">
     <form id="version">
