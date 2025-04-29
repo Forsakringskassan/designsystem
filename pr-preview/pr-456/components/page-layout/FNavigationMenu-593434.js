@@ -87,8 +87,8 @@ setup({
 
 vue-router/dist/vue-router.mjs:
   (*!
-    * vue-router v4.5.0
-    * (c) 2024 Eduardo San Martin Morote
+    * vue-router v4.5.1
+    * (c) 2025 Eduardo San Martin Morote
     * @license MIT
     *)
 */
