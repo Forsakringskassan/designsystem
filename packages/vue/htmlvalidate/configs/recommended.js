@@ -15,5 +15,6 @@ module.exports = {
         "fkui/ftextfield-formatter-validation": "error",
         "fkui/no-template-modal": "error",
         "fkui/ftablecolumn-name": "error",
+        "vue/prefer-slot-shorthand": "off",
     },
 };
