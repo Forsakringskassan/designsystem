@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FMinimizablePanel/examples/FMinimizablePanelExample.vue:FMinimizablePanelExample-134ca4.js
+// virtual-entry:virtual:packages/vue/src/components/FMinimizablePanel/examples/FMinimizablePanelExample.vue:FMinimizablePanelExample-a34a6d.js
 import { defineComponent as _defineComponent } from "vue";
 import { FPageLayout, FResizePane, FMinimizablePanel } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, withCtx as _withCtx, createVNode as _createVNode, createBlock as _createBlock } from "vue";
@@ -96,7 +96,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-134ca4"
+  selector: "#example-a34a6d"
 });
 export {
   render

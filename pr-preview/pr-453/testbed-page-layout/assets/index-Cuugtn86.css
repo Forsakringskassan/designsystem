@@ -6797,7 +6797,7 @@ main {
     width: 100%;
 }
 
-[data-v-89140db5]::part(grid awesome-layout) {
+[data-v-94f82e81]::part(grid awesome-layout) {
     grid-template:
         "header header header" min-content
         "left contextbar contextbar" min-content
@@ -6805,23 +6805,23 @@ main {
         "left content right" 1fr
         / min-content 1fr;
 }
-[data-v-89140db5]::part(area header) {
+[data-v-94f82e81]::part(area header) {
     --f-page-layout-background: var(--f-background-pageheader-primary);
     --f-page-layout-color: var(--fkds-color-text-inverted);
 }
-[data-v-89140db5]::part(area contextbar) {
+[data-v-94f82e81]::part(area contextbar) {
     --f-page-layout-background: var(--fkds-color-background-secondary);
     --f-page-layout-color: var(--fkds-color-text-primary);
 }
-[data-v-89140db5]::part(area toolbar) {
+[data-v-94f82e81]::part(area toolbar) {
     --f-page-layout-background: var(--fkds-color-background-secondary);
     --f-page-layout-color: var(--fkds-color-text-primary);
 }
-[data-v-89140db5]::part(area left) {
+[data-v-94f82e81]::part(area left) {
     --f-page-layout-background: var(--fkds-color-background-secondary);
     --f-page-layout-color: var(--fkds-color-text-primary);
 }
-[data-v-89140db5]::part(area right) {
+[data-v-94f82e81]::part(area right) {
     --f-page-layout-background: var(--fkds-color-background-secondary);
     --f-page-layout-color: var(--fkds-color-text-primary);
 }

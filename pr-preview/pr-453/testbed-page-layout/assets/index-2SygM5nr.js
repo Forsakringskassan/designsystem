@@ -25609,7 +25609,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-89140db5"]]);
+const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-94f82e81"]]);
 const app = createApp(App);
 app.use(router);
 app.mount("#app");
