@@ -33,15 +33,12 @@ jobs:
               run: echo "VERSION=v$(npm pkg get version | jq -r)" | tee -a $GITHUB_ENV
             - name: Install dependencies
               run: npm ci
-            - name: Build (minimal)
-              run: |
-                  npm exec lerna -- run build \
-                      --include-dependencies \
-                      --scope=@fkui/i18next-translate \
-                      --scope=@fkui/vue \
-                      --scope=@fkui/vue-labs
             - name: Build documentation
-              run: npm run build:docs
+              if: github.event.action != 'closed'
+              uses: ./.github/actions/build-docs
+              with:
+                  example-apps: true
+                  sandbox: false
             - name: Sanity check
               run: git status && git diff
             - name: Pull pages as subtree
