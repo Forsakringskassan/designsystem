@@ -1,0 +1,38 @@
+name: Build documentation
+
+inputs:
+    git-remote:
+        required: false
+        default: origin
+    git-branch:
+        required: false
+        default: gh-pages
+    example-apps:
+        required: false
+        default: false
+    sandbox:
+        required: false
+        default: false
+
+runs:
+    using: composite
+    steps:
+        - name: Build library (minimal)
+          shell: bash
+          run: |
+              npm exec lerna -- run build \
+              --include-dependencies \
+              --scope=@fkui/i18next-translate \
+              --scope=@fkui/vue \
+              --scope=@fkui/vue-labs
+        - name: Build sandbox
+          if: (inputs.sandbox == 'true' || inputs.sandbox == true)
+          shell: bash
+          run: npm run -w @fkui/vue-sandbox build
+        - name: Build sandbox
+          if: (inputs.example-apps == 'true' || inputs.example-apps == true)
+          shell: bash
+          run: npm run -w @fkui/testbed-page-layout build
+        - name: Build documentation
+          shell: bash
+          run: node generate-docs.mjs
