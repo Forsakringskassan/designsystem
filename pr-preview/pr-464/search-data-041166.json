@@ -139,14 +139,14 @@
     "FFormModal",
     "Bekräftelsemodal",
     "FConfirmModal",
-    "Startpunkt",
-    "entrypoint",
-    "Länk",
-    "anchor",
     "Förloppsindikator",
     "FProgressbar",
     "Laddningsindikator",
     "FLoader",
+    "Startpunkt",
+    "entrypoint",
+    "Länk",
+    "anchor",
     "Specialiserade inmatningsfält",
     "Kombobox",
     "FTextField",
@@ -815,20 +815,6 @@
       ]
     },
     {
-      "url": "components/links/entrypoint.html",
-      "title": "Startpunkt",
-      "terms": [
-        "entrypoint"
-      ]
-    },
-    {
-      "url": "components/links/anchor.html",
-      "title": "Länk",
-      "terms": [
-        "anchor"
-      ]
-    },
-    {
       "url": "components/load/fprogressbar.html",
       "title": "Förloppsindikator",
       "terms": [
@@ -840,6 +826,20 @@
       "title": "Laddningsindikator",
       "terms": [
         "FLoader"
+      ]
+    },
+    {
+      "url": "components/links/entrypoint.html",
+      "title": "Startpunkt",
+      "terms": [
+        "entrypoint"
+      ]
+    },
+    {
+      "url": "components/links/anchor.html",
+      "title": "Länk",
+      "terms": [
+        "anchor"
       ]
     },
     {
