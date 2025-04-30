@@ -2,9 +2,9 @@
 
 @mixin css-variables {
     // TEXT
-    --fkds-color-text-primary: #{$palette-color-fk-black-100}; /* Standard text färg */
+    --fkds-color-text-primary: #{$palette-color-fk-black-100};
     --fkds-color-text-secondary: #{$palette-color-fk-black-70};
-    --fkds-color-text-inverted: #{$palette-color-white-100}; /* Inverterad text färg */
+    --fkds-color-text-inverted: #{$palette-color-white-100};
     --fkds-color-text-disabled: #{$palette-color-fk-black-50};
 
     // BACKGROUND
@@ -21,6 +21,7 @@
     --fkds-color-border-primary: #{$palette-color-fk-black-50};
     --fkds-color-border-strong: #{$palette-color-fk-black-70};
     --fkds-color-border-weak: #{$palette-color-fk-black-15};
+    --fkds-color-border-disabled: #{$palette-color-fk-black-50};
 
     // ACTION - TEXT
     --fkds-color-action-text-primary-default: #{$palette-color-bluebell-100};
@@ -35,7 +36,6 @@
     --fkds-color-action-text-inverted-hover: #{$palette-color-white-100};
     --fkds-color-action-text-inverted-active: #{$palette-color-white-100};
     --fkds-color-action-text-inverted-focus: #{$palette-color-white-100};
-    --fkds-color-action-text-disabled: #{$palette-color-fk-black-50};
 
     // ACTION - BACKGROUND
     --fkds-color-action-background-primary-default: #{$palette-color-bluebell-100};
@@ -46,22 +46,12 @@
     --fkds-color-action-background-secondary-hover: #{$palette-color-bluebell-15};
     --fkds-color-action-background-secondary-active: #{$palette-color-bluebell-15};
     --fkds-color-action-background-secondary-focus: #{$palette-color-bluebell-15};
-    --fkds-color-action-background-accent-default: #{$palette-color-green-a-100};
-    --fkds-color-action-background-accent-hover: #{$palette-color-green-a-120};
-    --fkds-color-action-background-accent-active: #{$palette-color-green-a-120};
-    --fkds-color-action-background-accent-focus: #{$palette-color-green-a-120};
-    --fkds-color-action-background-disabled: #{$palette-color-fk-black-5};
 
     // ACTION - BORDER
     --fkds-color-action-border-primary-default: #{$palette-color-bluebell-100};
     --fkds-color-action-border-primary-hover: #{$palette-color-bluebell-120};
     --fkds-color-action-border-primary-active: #{$palette-color-bluebell-120};
     --fkds-color-action-border-primary-focus: #{$palette-color-bluebell-120};
-    --fkds-color-action-border-accent-default: #{$palette-color-green-a-100};
-    --fkds-color-action-border-accent-hover: #{$palette-color-green-a-120};
-    --fkds-color-action-border-accent-active: #{$palette-color-green-a-120};
-    --fkds-color-action-border-accent-focus: #{$palette-color-green-a-120};
-    --fkds-color-action-border-disabled: #{$palette-color-fk-black-50};
 
     // FEEDBACK - BACKGROUND
     --fkds-color-feedback-background-neutral: #{$palette-color-fk-black-5};
@@ -101,7 +91,6 @@
 
     // ICON - ACTION
     --fkds-icon-color-action-content-primary-default: #{$palette-color-bluebell-100};
-    --fkds-icon-color-action-content-primary-disabled: #{$palette-color-fk-black-50};
     --fkds-icon-color-action-content-primary-hover: #{$palette-color-bluebell-120};
     --fkds-icon-color-action-content-primary-active: #{$palette-color-bluebell-120};
     --fkds-icon-color-action-content-primary-focus: #{$palette-color-bluebell-120};
@@ -109,13 +98,11 @@
     --fkds-icon-color-action-content-secondary-hover: #{$palette-color-bluebell-120};
     --fkds-icon-color-action-content-secondary-active: #{$palette-color-bluebell-120};
     --fkds-icon-color-action-content-secondary-focus: #{$palette-color-bluebell-120};
-    --fkds-icon-color-action-content-accent-default: #{$palette-color-green-a-100};
-    --fkds-icon-color-action-content-accent-hover: #{$palette-color-green-a-120};
-    --fkds-icon-color-action-content-accent-active: #{$palette-color-green-a-120};
-    --fkds-icon-color-action-content-accent-focus: #{$palette-color-green-a-120};
     --fkds-icon-color-action-content-weak-default: #{$palette-color-fk-black-70};
     --fkds-icon-color-action-content-inverted-default: #{$palette-color-white-100};
     --fkds-icon-color-action-content-inverted-hover: #{$palette-color-white-100};
+    --fkds-icon-color-action-content-inverted-active: #{$palette-color-white-100};
+    --fkds-icon-color-action-content-inverted-focus: #{$palette-color-white-100};
 
     // ICON - FEEDBACK
     --fkds-icon-color-feedback-content-info: #{$palette-color-fk-black-100};
