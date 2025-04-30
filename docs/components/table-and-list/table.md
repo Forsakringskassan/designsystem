@@ -120,9 +120,9 @@ Felmeddelandet visas när det felmarkerade fältet har fokus.
 
 Följande inmatningfält kan användas:
 
-- Textbaserade inmatningsfält (FTextField) förutom sökfält
-- Datumväljaren (FDatepickerField)
-- Dropplista (FSelectField)
+- textbaserade inmatningsfält (FTextField) förutom sökfält
+- datumväljare (FDatepickerField)
+- dropplista (FSelectField).
 
 ```import
 FInteractiveTableInputExample.vue
@@ -349,14 +349,14 @@ TableRowHeader.vue
 
 ## Kolumnbredd
 
-Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna `expand` och `shrink` kan man indikera om man önskar att en kolumn ska använda så mycket eller så lite utrymme som möjligt.
+Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna `expand` och `shrink` kan du indikera att en kolumn ska använda så mycket eller så lite utrymme som möjligt.
 
 - En kolumn med `expand` tar så mycket utrymme den kan.
-- En kolumn med `shink` tar så lite utrymme den kan.
+- En kolumn med `shrink` tar så lite utrymme den kan.
 
-Med `shrink` koller cellernas innehåll att radbrytas om man inte använt direktivet {@link FormatPlugin `v-format`} eller på annat sätt förbindrat radbrytning.
+Med `shrink` kommer cellernas innehåll att radbrytas om du inte använt direktivet {@link FormatPlugin `v-format`} eller på annat sätt förbindrat radbrytning.
 
-Om flera kolumner har `expand` fördelas storleken godtycklingt efter webläsarens preferens.
+Om flera kolumner har `expand` fördelas storleken godtycklingt efter webbläsarens preferens.
 
 Om inget anges fungerar kolumnen som om `expand` är satt.
 Det är ett fel att sätta både `expand` och `shrink` samtidigt.
