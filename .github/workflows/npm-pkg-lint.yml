@@ -2,6 +2,9 @@ name: npm-pkg-lint
 
 on: [push, pull_request]
 
+permissions:
+    contents: read
+
 jobs:
     npm-pkg-lint:
         runs-on: ubuntu-latest
