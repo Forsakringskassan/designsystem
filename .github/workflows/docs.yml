@@ -4,6 +4,7 @@ concurrency: deploy-${{ github.ref }}
 on:
     workflow_dispatch:
     workflow_call:
+
 jobs:
     docs:
         name: Deploy
