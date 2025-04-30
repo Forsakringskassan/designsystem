@@ -21,15 +21,16 @@ runs:
           shell: bash
           run: |
               npm exec lerna -- run build \
-              --include-dependencies \
-              --scope=@fkui/i18next-translate \
-              --scope=@fkui/vue \
-              --scope=@fkui/vue-labs
+                  --include-dependencies \
+                  --scope=@fkui/i18next-translate \
+                  --scope=@fkui/vue \
+                  --scope=@fkui/vue-labs
+              npm exec lerna run build:docs
         - name: Build sandbox
           if: (inputs.sandbox == 'true' || inputs.sandbox == true)
           shell: bash
           run: npm run -w @fkui/vue-sandbox build
-        - name: Build sandbox
+        - name: Build example applications
           if: (inputs.example-apps == 'true' || inputs.example-apps == true)
           shell: bash
           run: npm run -w @fkui/testbed-page-layout build
