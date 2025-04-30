@@ -549,10 +549,10 @@
                     <div id="content"><p class="docs-paragraph">Alla komponenter från designsystemet har stöd för att anpassa och översätta texter.
 Designsystemet levererar text på svenska.</p>
 <p class="docs-paragraph">I huvudsak används <a href="../../logic/variables/TranslationService.html">TranslationService</a> för att översätta text med hjälp av textnycklar.
-Designsystemet levererar <a href="../../functions/i18next-translate/i18next.html">stöd för i18next</a> men man kan själv implementera <a href="../../logic/interfaces/TranslationProviderInterface.html">TranslationProvider</a>.
+Designsystemet levererar <a href="../../functions/i18next-translate/i18next.html">stöd för i18next</a> men du kan själv implementera <a href="../../logic/interfaces/TranslationProviderInterface.html">TranslationProvider</a>.
 Den här guiden förutsätter att i18next används.</p>
 <p class="docs-paragraph">Vissa komponenter använder också slots eller props när formaterat eller komplext innehåll ska visas.
-Läs mer under respektive komponent om hur man anpassar och översätter texter.</p>
+Läs mer under respektive komponent om hur du anpassar och översätter texter.</p>
 <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att kunna översätta text måste din applikation sätta upp en TranslationProvider som tillhandhåller texter.</p>
 <p class="docs-paragraph">Texterna kan hämtas med REST-anrop, importeras statiskt och bundlas med i javascript eller hårdkodas direkt in i filen:</p>
 
@@ -581,7 +581,7 @@ Läs mer under respektive komponent om hur man anpassar och översätter texter.
 <span class="hljs-title class_">TranslationService</span>.<span class="hljs-title function_">changeProvider</span>(provider);
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Läs mer om <a href="../../functions/i18next-translate/i18next.html">hur man använder i18nextProvider</a>.</p>
+            <p class="docs-paragraph">Läs mer om <a href="../../functions/i18next-translate/i18next.html">hur du använder i18nextProvider</a>.</p>
 <p class="docs-paragraph">Om du använder Vue för att skriva din applikation måste du också aktivera <a href="../../functions/plugins/translationplugin.html">Translation Plugin</a>:</p>
 
                 <div
@@ -655,8 +655,8 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 Vi använder endast interpolering med parametrar.</p>
 
             </div>
-        <p class="docs-paragraph">Textnycklar som saknas kommer visa standardtexter från designsystemet, dvs du behöver inte översätta alla texter utan räcker med de du vill anpassa.</p>
-<h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Standard feltexter som visas vid validering hämtas från <a href="../../logic/variables/ValidationService.html">ValidationService</a> och mappas med namnet på validatorn som ger felet:</p>
+        <p class="docs-paragraph">Textnycklar som saknas kommer visa standardtexter från designsystemet, vilket innebär att du behöver inte översätta alla texter utan det räcker med de du vill anpassa.</p>
+<h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Standard-feltexter som visas vid validering hämtas från <a href="../../logic/variables/ValidationService.html">ValidationService</a> och mappas med namnet på validatorn som ger felet:</p>
 
                 <div
                     id="example-28bffb"
@@ -735,9 +735,9 @@ Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och h
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/d3dd4f910f5e6aad45a5da62d32add3cf6dd00b6">d3dd4f9</a>)<br />
+<div class="footer__right"><div class="version">docs/table-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/07bafec087ec30fa77f6c6913048fd26aae1cf1a">07bafec</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/456">PR 456</a><br />
-        2025-04-29 08:04
+        2025-04-30 14:04
 </div>
 <div class="toolbar__item">
     <form id="version">
