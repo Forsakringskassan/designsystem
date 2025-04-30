@@ -146,5 +146,9 @@
     "--f-background-warning",
     "--f-background-modal-shelf",
     "--f-border-color-info",
-    "--f-border-color-warning"
+    "--f-border-color-warning",
+    "--fkds-color-action-text-disabled",
+    "--fkds-color-action-background-disabled",
+    "--fkds-color-action-border-disabled",
+    "--fkds-icon-color-action-content-primary-disabled"
 ]

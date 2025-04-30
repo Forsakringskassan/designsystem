@@ -249,6 +249,12 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-background-modal-shelf: #{$palette-color-white-100};
     --f-border-color-info: #{$palette-color-bluebell-100};
     --f-border-color-warning: #{$palette-color-yellow-100};
+
+    // Deprecated since 6.8.0
+    --fkds-color-action-text-disabled: #{$palette-color-fk-black-50};
+    --fkds-color-action-background-disabled: #{$palette-color-fk-black-5};
+    --fkds-color-action-border-disabled: #{$palette-color-fk-black-50};
+    --fkds-icon-color-action-content-primary-disabled: #{$palette-color-fk-black-50};
 }
 
 @if $global {
