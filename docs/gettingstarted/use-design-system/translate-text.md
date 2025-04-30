@@ -15,11 +15,11 @@ Alla komponenter från designsystemet har stöd för att anpassa och översätta
 Designsystemet levererar text på svenska.
 
 I huvudsak används [TranslationService][TranslationService] för att översätta text med hjälp av textnycklar.
-Designsystemet levererar {@link i18next stöd för i18next} men man kan själv implementera [TranslationProvider][TranslationProvider].
+Designsystemet levererar {@link i18next stöd för i18next} men du kan själv implementera [TranslationProvider][TranslationProvider].
 Den här guiden förutsätter att i18next används.
 
 Vissa komponenter använder också slots eller props när formaterat eller komplext innehåll ska visas.
-Läs mer under respektive komponent om hur man anpassar och översätter texter.
+Läs mer under respektive komponent om hur du anpassar och översätter texter.
 
 ## Konfiguration
 
@@ -45,7 +45,7 @@ const provider = await i18nextProvider({
 TranslationService.changeProvider(provider);
 ```
 
-Läs mer om {@link i18next hur man använder i18nextProvider}.
+Läs mer om {@link i18next hur du använder i18nextProvider}.
 
 Om du använder Vue för att skriva din applikation måste du också aktivera {@link TranslationPlugin}:
 
@@ -101,11 +101,11 @@ Vi använder endast interpolering med parametrar.
 
 :::
 
-Textnycklar som saknas kommer visa standardtexter från designsystemet, dvs du behöver inte översätta alla texter utan räcker med de du vill anpassa.
+Textnycklar som saknas kommer visa standardtexter från designsystemet, vilket innebär att du behöver inte översätta alla texter utan det räcker med de du vill anpassa.
 
 ## Validering
 
-Standard feltexter som visas vid validering hämtas från [ValidationService][ValidationService] och mappas med namnet på validatorn som ger felet:
+Standard-feltexter som visas vid validering hämtas från [ValidationService][ValidationService] och mappas med namnet på validatorn som ger felet:
 
 ```ts
 import { ValidationService, ValidationErrorMessageBuilder } from "@fkui/logic";
