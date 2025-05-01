@@ -133,12 +133,6 @@
     "FMinimizablePanel",
     "Detaljpanel",
     "FDetailsPanel",
-    "Modal dialogruta",
-    "FModal",
-    "Formulärsmodal",
-    "FFormModal",
-    "Bekräftelsemodal",
-    "FConfirmModal",
     "Förloppsindikator",
     "FProgressbar",
     "Laddningsindikator",
@@ -147,6 +141,12 @@
     "entrypoint",
     "Länk",
     "anchor",
+    "Modal dialogruta",
+    "FModal",
+    "Formulärsmodal",
+    "FFormModal",
+    "Bekräftelsemodal",
+    "FConfirmModal",
     "Specialiserade inmatningsfält",
     "Kombobox",
     "FTextField",
@@ -794,27 +794,6 @@
       ]
     },
     {
-      "url": "components/modal/fmodal.html",
-      "title": "Modal dialogruta",
-      "terms": [
-        "FModal"
-      ]
-    },
-    {
-      "url": "components/modal/fformmodal.html",
-      "title": "Formulärsmodal",
-      "terms": [
-        "FFormModal"
-      ]
-    },
-    {
-      "url": "components/modal/fconfirmmodal.html",
-      "title": "Bekräftelsemodal",
-      "terms": [
-        "FConfirmModal"
-      ]
-    },
-    {
       "url": "components/load/fprogressbar.html",
       "title": "Förloppsindikator",
       "terms": [
@@ -840,6 +819,27 @@
       "title": "Länk",
       "terms": [
         "anchor"
+      ]
+    },
+    {
+      "url": "components/modal/fmodal.html",
+      "title": "Modal dialogruta",
+      "terms": [
+        "FModal"
+      ]
+    },
+    {
+      "url": "components/modal/fformmodal.html",
+      "title": "Formulärsmodal",
+      "terms": [
+        "FFormModal"
+      ]
+    },
+    {
+      "url": "components/modal/fconfirmmodal.html",
+      "title": "Bekräftelsemodal",
+      "terms": [
+        "FConfirmModal"
       ]
     },
     {
