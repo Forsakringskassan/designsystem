@@ -107,7 +107,7 @@
     "@vue/server-renderer": "3.5.13",
     "autoprefixer": "10.4.21",
     "cli-table": "0.3.11",
-    "core-js": "3.41.0",
+    "core-js": "3.42.0",
     "cypress": "14.3.2",
     "cypress-html-validate": "7.1.0",
     "esbuild": "0.25.3",
