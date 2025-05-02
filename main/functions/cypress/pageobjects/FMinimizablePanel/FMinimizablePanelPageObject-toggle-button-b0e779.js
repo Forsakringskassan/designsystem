@@ -28,48 +28,39 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-format-description.vue:FLabelPageObject-format-description-9846dd.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-toggle-button.vue:FMinimizablePanelPageObject-toggle-button-b0e779.js
 import { defineComponent as _defineComponent } from "vue";
-import { FLabel } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
+import { createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FLabelPageObject-format-description",
+  __name: "FMinimizablePanelPageObject-toggle-button",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FLabel() {
-      return FLabel;
+    const __returned__ = { get FPageLayout() {
+      return FPageLayout;
+    }, get FMinimizablePanel() {
+      return FMinimizablePanel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Etikett ")
-    ])),
-    description: _withCtx(({ formatDescriptionClass }) => [
-      _createElementVNode(
-        "span",
-        {
-          class: _normalizeClass(formatDescriptionClass)
-        },
-        " Formatbeskrivning ",
-        2
-        /* CLASS */
-      )
+  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
+    left: _withCtx(() => [
+      _createVNode($setup["FMinimizablePanel"])
     ]),
+    content: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" Inneh\xE5ll ")
+    ])),
     _: 1
     /* STABLE */
-  })), [
-    [_directive_test, "awesome-label"]
-  ]);
+  });
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-9846dd"
+  selector: "#example-b0e779"
 });
 export {
   render

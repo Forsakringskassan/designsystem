@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-el.vue:FMinimizablePanelPageObject-el-f19571.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-footer.vue:FMinimizablePanelPageObject-footer-1f9d0c.js
 import { defineComponent as _defineComponent } from "vue";
 import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
-import { createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject-el",
+  __name: "FMinimizablePanelPageObject-footer",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FPageLayout() {
@@ -45,10 +45,17 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     return __returned__;
   }
 });
+var _hoisted_1 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
     left: _withCtx(() => [
-      _createVNode($setup["FMinimizablePanel"])
+      _createVNode($setup["FMinimizablePanel"], null, {
+        default: _withCtx(({ footer }) => [
+          _createElementVNode("div", { slot: footer }, "Lorem ipsum", 8, _hoisted_1)
+        ]),
+        _: 1
+        /* STABLE */
+      })
     ]),
     content: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Inneh\xE5ll ")
@@ -60,7 +67,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f19571"
+  selector: "#example-1f9d0c"
 });
 export {
   render
