@@ -1,5 +1,5 @@
 {
-  "name": "@fkui/testbed-page-layout",
+  "name": "@fkui/example-page-layout",
   "version": "6.6.0",
   "private": true,
   "description": "An example and testbed for application layout components",
@@ -8,7 +8,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Forsakringskassan/designsystem.git",
-    "directory": "internal/testbed-page-layout"
+    "directory": "examples/page-layout"
   },
   "license": "MIT",
   "author": "Försäkringskassan",

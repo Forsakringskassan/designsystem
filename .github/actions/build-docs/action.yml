@@ -33,7 +33,7 @@ runs:
         - name: Build example applications
           if: (inputs.example-apps == 'true' || inputs.example-apps == true)
           shell: bash
-          run: npm run -w @fkui/testbed-page-layout build
+          run: npm run -w @fkui/example-page-layout build
         - name: Build documentation
           shell: bash
           run: node generate-docs.mjs

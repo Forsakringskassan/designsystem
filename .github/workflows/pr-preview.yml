@@ -48,7 +48,7 @@ jobs:
                       |-|-
                       | Dokumentation | ${{ steps.preview.outputs.preview-url }} |
                       | Vue Sandbox | ${{ steps.preview.outputs.preview-url }}/vue-sandbox |
-                      | Applikationsmall | ${{ steps.preview.outputs.preview-url }}/testbed-page-layout |
+                      | Applikationsmall | ${{ steps.preview.outputs.preview-url }}/examples/page-layout |
 
                       ---
 
