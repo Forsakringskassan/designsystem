@@ -187,9 +187,9 @@ try {
         "public/vue-sandbox",
     );
     await copyDocs(
-        "@fkui/testbed-page-layout",
-        "internal/testbed-page-layout/dist",
-        "public/testbed-page-layout",
+        "@fkui/example-page-layout",
+        "examples/page-layout/dist",
+        "public/examples/page-layout",
     );
 } catch (err) {
     console.error(err.prettyError ? err.prettyError() : err);

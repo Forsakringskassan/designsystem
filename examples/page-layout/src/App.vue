@@ -56,7 +56,7 @@ registerLayout({
         <template #header>
             <header>
                 <f-page-header>
-                    Layout components testbed
+                    Application layout components
                     <template #logo>
                         <f-logo size="small">Logo</f-logo>
                     </template>

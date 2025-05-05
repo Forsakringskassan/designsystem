@@ -15,8 +15,9 @@
   "files": [],
   "workspaces": [
     "docs",
-    "packages/*",
-    "internal/*"
+    "examples/*",
+    "internal/*",
+    "packages/*"
   ],
   "scripts": {
     "build": "lerna run build",
