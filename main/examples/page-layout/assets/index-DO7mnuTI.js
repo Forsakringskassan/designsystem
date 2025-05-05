@@ -25649,7 +25649,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 createTextVNode(" Namn Namnsson ")
               ])),
               default: withCtx(() => [
-                _cache[2] || (_cache[2] = createTextVNode(" Layout components testbed "))
+                _cache[2] || (_cache[2] = createTextVNode(" Application layout components "))
               ]),
               _: 1
             })
@@ -25744,7 +25744,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-02b38582"]]);
+const App = /* @__PURE__ */ _export_sfc$1(_sfc_main, [["__scopeId", "data-v-c333d540"]]);
 const app = createApp(App);
 app.use(router);
 app.mount("#app");
