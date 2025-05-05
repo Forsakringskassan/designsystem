@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-114358.json"
+            href="../../search-data-948d67.json"
             as="fetch"
             crossorigin
-            integrity="sha384-lwlM3iIBzww37AqjkaXhXtjZH8cV/GkZmik1ZVCjWcgdEqjLDL4GgoyGM1gJ2OFi"
+            integrity="sha384-fvTdglYuje+vSp2AZ+NUZWKafY/WfBXFCoi2iWd6vn3gv7Z3gZOc84qyMV86IJoW"
             id="search-data"
         />
     </head>
@@ -679,17 +679,17 @@ Vi använder endast interpolering med parametrar.</p>
                 </div>
             <p class="docs-paragraph">Läs mer om <a href="../../functions/functions/ValidationErrorMessageBuilder/create.html"><code>ValidationErrorMessageBuilder</code></a>.</p>
 
-            <div class="docs-messagebox docs-messagebox--danger">
+            <div class="docs-messagebox docs-messagebox--info">
                 <p class="docs-messagebox__title">Tänk på att</p>
-                <p class="docs-paragraph"><code>setErrorMessages()</code> mergar med föregående mappningar inklusive de standardtexter som designsystemet levererar.
-Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och ha stenkoll på nya mappningar vid uppdatering av version då minsta förändring kräver att du matchar exakt hur designsystemets mappning ser ut.</p>
-<p class="docs-paragraph">Ett tips är att skapa ett snapshot test i eran kodbas som hämtar ut standardtexterna med <a href="../../logic/functions/getErrorMessages.html"><code>getErrorMessages</code></a> och vid uppdatering verifierar om snapshot ändrats.</p>
+                <p class="docs-paragraph"><code>setErrorMessages()</code> slår ihop med föregående mappningar inklusive de standardtexter som designsystemet levererar (som innehåller en del specifika kombinationer).</p>
+<p class="docs-paragraph">Du kan använda <code>clearErrorMessages()</code> eller <code>clear</code> flaggan till <code>setErrorMessages()</code> för att rensa tidigare texter men du måste då själv mappa upp kombinationer så som <code>required.radio</code>, <code>required.checkbox</code> osv.</p>
+<p class="docs-paragraph">Se gärna källkoden för <a href="https://github.com/Forsakringskassan/designsystem/blob/main/packages/logic/src/services/ValidationService/ValidationTranslations/get-error-messages.ts">designsystemets standardtexter</a>.</p>
 
             </div>
         <p class="docs-paragraph">Du kan använda textnycklar för översättning genom att kombinera <code>TranslationService</code> och <code>ValidationErrorMessageBuilder</code>:</p>
 
                 <div
-                    id="example-1e912c"
+                    id="example-a308df"
                     class="code-preview code-preview--default"
                     
                     
@@ -735,9 +735,9 @@ Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och h
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feature/validation-error-messages (<a href="https://github.com/Forsakringskassan/designsystem/commits/c2d5778abada457d05275fa8a548b18a698dcb5f">c2d5778</a>)<br />
+<div class="footer__right"><div class="version">feature/validation-error-messages (<a href="https://github.com/Forsakringskassan/designsystem/commits/62112cc609b5c3f8e27f8faac95ba3665d0e1dd5">62112cc</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/468">PR 468</a><br />
-        2025-05-05 17:21
+        2025-05-05 17:30
 </div>
 <div class="toolbar__item">
     <form id="version">
