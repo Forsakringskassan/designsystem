@@ -443,10 +443,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.41.0",
+    version: "3.42.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.41.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.42.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -1442,23 +1442,62 @@ function requireGetIteratorDirect() {
   };
   return getIteratorDirect;
 }
+var iteratorHelperWithoutClosingOnEarlyError;
+var hasRequiredIteratorHelperWithoutClosingOnEarlyError;
+function requireIteratorHelperWithoutClosingOnEarlyError() {
+  if (hasRequiredIteratorHelperWithoutClosingOnEarlyError) return iteratorHelperWithoutClosingOnEarlyError;
+  hasRequiredIteratorHelperWithoutClosingOnEarlyError = 1;
+  var globalThis2 = requireGlobalThis();
+  iteratorHelperWithoutClosingOnEarlyError = function(METHOD_NAME, ExpectedError) {
+    var Iterator = globalThis2.Iterator;
+    var IteratorPrototype = Iterator && Iterator.prototype;
+    var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
+    var CLOSED = false;
+    if (method) try {
+      method.call({
+        next: function() {
+          return {
+            done: true
+          };
+        },
+        "return": function() {
+          CLOSED = true;
+        }
+      }, -1);
+    } catch (error) {
+      if (!(error instanceof ExpectedError)) CLOSED = false;
+    }
+    if (!CLOSED) return method;
+  };
+  return iteratorHelperWithoutClosingOnEarlyError;
+}
 var hasRequiredEs_iterator_forEach;
 function requireEs_iterator_forEach() {
   if (hasRequiredEs_iterator_forEach) return es_iterator_forEach;
   hasRequiredEs_iterator_forEach = 1;
   var $ = require_export();
+  var call = requireFunctionCall();
   var iterate2 = requireIterate();
   var aCallable2 = requireACallable();
   var anObject2 = requireAnObject();
   var getIteratorDirect2 = requireGetIteratorDirect();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var forEachWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError2("forEach", TypeError);
   $({
     target: "Iterator",
     proto: true,
-    real: true
+    real: true,
+    forced: forEachWithoutClosingOnEarlyError
   }, {
     forEach: function forEach(fn) {
       anObject2(this);
-      aCallable2(fn);
+      try {
+        aCallable2(fn);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (forEachWithoutClosingOnEarlyError) return call(forEachWithoutClosingOnEarlyError, this, fn);
       var record = getIteratorDirect2(this);
       var counter = 0;
       iterate2(record, function(value) {
@@ -1895,6 +1934,9 @@ function requireEs_iterator_filter() {
   var createIteratorProxy = requireIteratorCreateProxy();
   var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
   var IS_PURE = requireIsPure();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var filterWithoutClosingOnEarlyError = !IS_PURE && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
   var IteratorProxy = createIteratorProxy(function() {
     var iterator = this.iterator;
     var predicate = this.predicate;
@@ -1912,11 +1954,16 @@ function requireEs_iterator_filter() {
     target: "Iterator",
     proto: true,
     real: true,
-    forced: IS_PURE
+    forced: IS_PURE || filterWithoutClosingOnEarlyError
   }, {
     filter: function filter(predicate) {
       anObject2(this);
-      aCallable2(predicate);
+      try {
+        aCallable2(predicate);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
       return new IteratorProxy(getIteratorDirect2(this), {
         predicate
       });
@@ -1926,51 +1973,64 @@ function requireEs_iterator_filter() {
 }
 requireEs_iterator_filter();
 var es_iterator_map = {};
-var iteratorMap;
-var hasRequiredIteratorMap;
-function requireIteratorMap() {
-  if (hasRequiredIteratorMap) return iteratorMap;
-  hasRequiredIteratorMap = 1;
+var hasRequiredEs_iterator_map;
+function requireEs_iterator_map() {
+  if (hasRequiredEs_iterator_map) return es_iterator_map;
+  hasRequiredEs_iterator_map = 1;
+  var $ = require_export();
   var call = requireFunctionCall();
   var aCallable2 = requireACallable();
   var anObject2 = requireAnObject();
   var getIteratorDirect2 = requireGetIteratorDirect();
   var createIteratorProxy = requireIteratorCreateProxy();
   var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var IS_PURE = requireIsPure();
+  var mapWithoutClosingOnEarlyError = !IS_PURE && iteratorHelperWithoutClosingOnEarlyError2("map", TypeError);
   var IteratorProxy = createIteratorProxy(function() {
     var iterator = this.iterator;
     var result = anObject2(call(this.next, iterator));
     var done = this.done = !!result.done;
     if (!done) return callWithSafeIterationClosing2(iterator, this.mapper, [result.value, this.counter++], true);
   });
-  iteratorMap = function map(mapper) {
-    anObject2(this);
-    aCallable2(mapper);
-    return new IteratorProxy(getIteratorDirect2(this), {
-      mapper
-    });
-  };
-  return iteratorMap;
-}
-var hasRequiredEs_iterator_map;
-function requireEs_iterator_map() {
-  if (hasRequiredEs_iterator_map) return es_iterator_map;
-  hasRequiredEs_iterator_map = 1;
-  var $ = require_export();
-  var map = requireIteratorMap();
-  var IS_PURE = requireIsPure();
   $({
     target: "Iterator",
     proto: true,
     real: true,
-    forced: IS_PURE
+    forced: IS_PURE || mapWithoutClosingOnEarlyError
   }, {
-    map
+    map: function map(mapper) {
+      anObject2(this);
+      try {
+        aCallable2(mapper);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
+      return new IteratorProxy(getIteratorDirect2(this), {
+        mapper
+      });
+    }
   });
   return es_iterator_map;
 }
 requireEs_iterator_map();
 var es_iterator_reduce = {};
+var functionApply;
+var hasRequiredFunctionApply;
+function requireFunctionApply() {
+  if (hasRequiredFunctionApply) return functionApply;
+  hasRequiredFunctionApply = 1;
+  var NATIVE_BIND = requireFunctionBindNative();
+  var FunctionPrototype = Function.prototype;
+  var apply = FunctionPrototype.apply;
+  var call = FunctionPrototype.call;
+  functionApply = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
+    return call.apply(apply, arguments);
+  });
+  return functionApply;
+}
 var hasRequiredEs_iterator_reduce;
 function requireEs_iterator_reduce() {
   if (hasRequiredEs_iterator_reduce) return es_iterator_reduce;
@@ -1980,18 +2040,35 @@ function requireEs_iterator_reduce() {
   var aCallable2 = requireACallable();
   var anObject2 = requireAnObject();
   var getIteratorDirect2 = requireGetIteratorDirect();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var apply = requireFunctionApply();
+  var fails2 = requireFails();
   var $TypeError = TypeError;
+  var FAILS_ON_INITIAL_UNDEFINED = fails2(function() {
+    [].keys().reduce(function() {
+    }, void 0);
+  });
+  var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError2("reduce", $TypeError);
   $({
     target: "Iterator",
     proto: true,
-    real: true
+    real: true,
+    forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
   }, {
     reduce: function reduce(reducer) {
       anObject2(this);
-      aCallable2(reducer);
-      var record = getIteratorDirect2(this);
+      try {
+        aCallable2(reducer);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
       var noInitial = arguments.length < 2;
       var accumulator = noInitial ? void 0 : arguments[1];
+      if (reduceWithoutClosingOnEarlyError) {
+        return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
+      }
+      var record = getIteratorDirect2(this);
       var counter = 0;
       iterate2(record, function(value) {
         if (noInitial) {
