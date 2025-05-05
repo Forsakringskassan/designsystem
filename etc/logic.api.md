@@ -524,9 +524,11 @@ export const ValidationService: ValidationServiceInterface;
 
 // @public (undocumented)
 export interface ValidationServiceInterface {
+    // @deprecated
     addValidationErrorMessages(validationErrorMessageMap: Record<ValidatorName | string, string>): void;
     addValidatorsToElement(element: ValidatableHTMLElement, validatorConfigs: ValidatorConfigs, isBaseConfigs?: boolean): void;
     clearAllStates(): void;
+    clearErrorMessages(): void;
     // @internal @deprecated (undocumented)
     getElementsAndValidators(): Record<string, ElementValidatorsReference>;
     getValidatorByName<TConfig = ValidatorConfig>(name: ValidatorName): Validator<TConfig>;
@@ -539,6 +541,9 @@ export interface ValidationServiceInterface {
     // @internal
     resolveValidityModeWhenError(element: ValidatableHTMLElement, touched?: boolean, submitted?: boolean): ValidityMode;
     setError(element: string | Element | null, message: string): void;
+    setErrorMessages(messages: Record<string, string>, options?: {
+        clear?: boolean;
+    }): void;
     // @deprecated
     setState(element: string | Element | null, validationState: ValidationState): void;
     setSubmitted(element: string | Element | null): void;

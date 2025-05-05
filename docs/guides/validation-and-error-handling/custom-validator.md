@@ -208,7 +208,7 @@ Då behöver `errorMessage` användas och felmeddelande blir samma på alla stä
 
 ```diff
   ValidationService.registerValidator(customStartValidator);
-+ ValidationService.addValidationErrorMessages(
++ ValidationService.setErrorMessages(
 +    ValidationErrorMessageBuilder.create()
 +        .map("startsWith", "Fältet börjar med fel värde.")
 +        .build(),

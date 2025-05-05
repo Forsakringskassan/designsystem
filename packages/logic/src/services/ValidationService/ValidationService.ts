@@ -66,7 +66,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         {};
 
     public constructor() {
-        this.addValidationErrorMessages(getErrorMessages());
+        this.setErrorMessages(getErrorMessages());
     }
 
     public getElementsAndValidators(): Record<
@@ -85,10 +85,23 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     public addValidationErrorMessages(
         validationErrorMessages: Record<ValidatorName, string>,
     ): void {
-        this.validationErrorMessages = {
-            ...this.validationErrorMessages,
-            ...validationErrorMessages,
-        };
+        this.setErrorMessages(validationErrorMessages);
+    }
+
+    public setErrorMessages(
+        messages: Record<string, string>,
+        options: { clear?: boolean } = {},
+    ): void {
+        const { clear = false } = options;
+        if (clear) {
+            this.clearErrorMessages();
+        }
+        const current = this.validationErrorMessages;
+        this.validationErrorMessages = { ...current, ...messages };
+    }
+
+    public clearErrorMessages(): void {
+        this.validationErrorMessages = {};
     }
 
     public registerValidator<TConfig = ValidatorConfig>(

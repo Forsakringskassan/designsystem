@@ -116,17 +116,18 @@ const messages = ValidationErrorMessageBuilder.create()
     .mapCombined("required", "date", "Fyll i ett datum")
     .build();
 
-ValidationService.addValidationErrorMessages(messages);
+ValidationService.setErrorMessages(messages);
 ```
 
 Läs mer om {@link ValidationErrorMessageBuilder.create `ValidationErrorMessageBuilder`}.
 
-::: danger Tänk på att
+::: info Tänk på att
 
-`addValidationErrorMessages()` mergar med föregående mappningar inklusive de standardtexter som designsystemet levererar.
-Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och ha stenkoll på nya mappningar vid uppdatering av version då minsta förändring kräver att du matchar exakt hur designsystemets mappning ser ut.
+`setErrorMessages()` slår ihop med föregående mappningar inklusive de standardtexter som designsystemet levererar (som innehåller en del specifika kombinationer).
 
-Ett tips är att skapa ett snapshot test i eran kodbas som hämtar ut standardtexterna med [`getErrorMessages`][getErrorMessages] och vid uppdatering verifierar om snapshot ändrats.
+Du kan använda `clearErrorMessages()` eller `clear` flaggan till `setErrorMessages()` för att rensa tidigare texter men du måste då själv mappa upp kombinationer så som `required.radio`, `required.checkbox` osv.
+
+Se gärna källkoden för [designsystemets standardtexter](https://github.com/Forsakringskassan/designsystem/blob/main/packages/logic/src/services/ValidationService/ValidationTranslations/get-error-messages.ts).
 
 :::
 
@@ -147,7 +148,7 @@ const messages = ValidationErrorMessageBuilder.create()
     .mapCombined("required", "date", $t("validation.error.required.date"))
     .build();
 
-ValidationService.addValidationErrorMessages(messages);
+ValidationService.setErrorMessages(messages);
 ```
 
 ::: warning Tänk på att

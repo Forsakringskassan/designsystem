@@ -222,11 +222,60 @@ export interface ValidationServiceInterface {
      * @see {@link ValidationErrorMessageBuilder}
      *
      * @public
+     * @deprecated Use `setErrorMessages()`.
      * @param validationErrorMessageMap - the map with translation for validators
      */
     addValidationErrorMessages(
         validationErrorMessageMap: Record<ValidatorName | string, string>,
     ): void;
+
+    /**
+     * Set error messages for one or more validators.
+     *
+     * The mapping should contain an object with the validator descriptor as key
+     * and the error message as value. A descriptor is a dot separated list of keywords:
+     *
+     * - One or more validator names.
+     * - An input type (`text`, `radio`, `checkbox`, `select` or `textarea`).
+     *
+     * When multiple validator names are given the first one is the validator
+     * yielding the error and any subsequent validators is used when the first
+     * validator is combined with these validators (no matter if those yield an
+     * error or not).
+     *
+     * - `required` - the error message when `required` yields an error.
+     * - `required.date` - the error message when `required` yields an error on an
+     * input field which also uses the `date` validator.
+     * - `required.radio` - the error message when `required` yield an error on an
+     * input field of type radiobutton.
+     * - `required.whitelist.textarea` - the error message when `required` yield an
+     * error on an textarea which also uses the `whitelist` validator.
+     *
+     * New translations will be merged with existing messages and overwritten if
+     * they already exists. Do note that if a more specific error message
+     * already exists the specific one will not be affected (e.g. setting the
+     * error for `required` whould not affect `required.radio` if it exists).
+     *
+     * Set `clear` to `true` to reset all previous messages (overwrite instead
+     * of merge).
+     *
+     * @see {@link ValidationErrorMessageBuilder}
+     *
+     * @public
+     * @param messages - the map with error messages for validators
+     */
+    setErrorMessages(
+        messages: Record<string, string>,
+        options?: { clear?: boolean },
+    ): void;
+
+    /**
+     * Clears any previous set error messages for validators (including default
+     * texts)
+     *
+     * @public
+     */
+    clearErrorMessages(): void;
 
     /**
      * Register a validator.
