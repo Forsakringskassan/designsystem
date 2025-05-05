@@ -1041,7 +1041,7 @@ describe("Error message", () => {
             required: "REQUIRED",
             percent: "PERCENT",
         };
-        ValidationService.addValidationErrorMessages({
+        ValidationService.setErrorMessages({
             required: "OVERRIDEN",
             date: "DATE",
         });

@@ -23,7 +23,7 @@ const removeValidatorsFromElement = jest.spyOn(
 
 const validateElement = jest.spyOn(ValidationService, "validateElement");
 
-ValidationService.addValidationErrorMessages({ required: "REQUIRED" });
+ValidationService.setErrorMessages({ required: "REQUIRED" });
 
 afterEach(() => {
     jest.clearAllMocks();
