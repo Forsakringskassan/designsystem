@@ -47,8 +47,8 @@ jobs:
                       | Sida | URL |
                       |-|-
                       | Dokumentation | ${{ steps.preview.outputs.preview-url }} |
-                      | Vue Sandbox | ${{ steps.preview.outputs.preview-url }}/vue-sandbox |
-                      | Applikationsmall | ${{ steps.preview.outputs.preview-url }}/examples/page-layout |
+                      | Vue Sandbox | ${{ steps.preview.outputs.preview-url }}vue-sandbox |
+                      | Applikationsmall | ${{ steps.preview.outputs.preview-url }}examples/page-layout |
 
                       ---
 

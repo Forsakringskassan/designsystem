@@ -18,6 +18,8 @@ Applikationsmallen erbjuder olika layouter för att dela upp en applikation som 
 Du kan utgå från en av fyra standardlayouter eller skapa en egen.
 Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en yta styrs av vad som placeras i ytan.
 
+Se också [exempelapplikation för Applikationsmall][example-app] ([källkod][example-source]) för en komplett applikation.
+
 ## Användning
 
 ```import test-id=example
@@ -85,3 +87,10 @@ FPageLayoutPredefined.vue
 Utöver förkonfigurerade layouter kan man skapa en egen.
 
 Läs mer om att {@link custom-page-layout skapa egen layout}.
+
+## Relaterat
+
+[Applikationslayout exempelapplikation][example-app] ([källkod][example-source])
+
+[example-app]: ../../examples/page-layout
+[example-source]: https://github.com/Forsakringskassan/designsystem/tree/main/examples/page-layout
