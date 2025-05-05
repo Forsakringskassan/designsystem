@@ -27,6 +27,7 @@ export default defineComponent({
             hasCustomExpandContent: false,
             hasHover: false,
             emptyItems: [],
+            showActiveRow: false,
         };
     },
     computed: {
@@ -204,6 +205,7 @@ export default defineComponent({
                     ${this.hover}
                     ${this.selectable}
                     ${this.expandable}
+                    ${this.showActive}
                     key-attribute="id"
                 >
                     <template #caption> ${this.caption} </template>
@@ -232,6 +234,9 @@ export default defineComponent({
                     ${this.empty}
                 </f-interactive-table>
             `;
+        },
+        showActive(): string {
+            return this.showActiveRow ? "" : `:showActive="false"`;
         },
     },
 });
@@ -267,5 +272,6 @@ export default defineComponent({
                 Eget meddelande
             </f-radio-field>
         </f-fieldset>
+        <f-checkbox-field v-model="showActiveRow" :value="true"> Visa aktiv rad </f-checkbox-field>
     </live-example>
 </template>
