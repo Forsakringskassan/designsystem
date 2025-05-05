@@ -48,5 +48,5 @@ const messages = ValidationErrorMessageBuilder.create()
     .mapCombined("required", "date", "Fyll i ett datum")
     .build();
 
-ValidationService.addValidationErrorMessages(messages);
+ValidationService.setErrorMessages(messages);
 ```

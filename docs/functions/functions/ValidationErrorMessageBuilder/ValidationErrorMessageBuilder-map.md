@@ -46,5 +46,5 @@ const messages = ValidationErrorMessageBuilder.create()
     .map("required", "Välj ett av alternativen", "radio")
     .build();
 
-ValidationService.addValidationErrorMessages(messages);
+ValidationService.setErrorMessages(messages);
 ```

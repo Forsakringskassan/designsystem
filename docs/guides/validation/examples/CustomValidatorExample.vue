@@ -32,7 +32,7 @@ export const startsWithValidator: Validator<StartsWithConfig> = {
 };
 
 ValidationService.registerValidator(startsWithValidator);
-ValidationService.addValidationErrorMessages(
+ValidationService.setErrorMessages(
     ValidationErrorMessageBuilder.create()
         .map("startsWith", "Fältet börjar med fel värde.")
         .build(),
