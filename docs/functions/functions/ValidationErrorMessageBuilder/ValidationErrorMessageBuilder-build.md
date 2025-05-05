@@ -5,7 +5,7 @@ short-title: build()
 layout: api.method
 ---
 
-Returnerar objekt med slutgiltiga mappningar mellan validatorer och feltexter för användning med `ValidationService.addValidationErrorMessages()`.
+Returnerar objekt med slutgiltiga mappningar mellan validatorer och feltexter för användning med `ValidationService.setErrorMessages()`.
 
 ## Syntax
 
