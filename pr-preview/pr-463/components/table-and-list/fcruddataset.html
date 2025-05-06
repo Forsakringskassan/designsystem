@@ -25,22 +25,22 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-f2f696.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-7ef914.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-f2f696.js": "sha384-OpxVdSj8QB+5h6vUXeri55Rcg8WJHDXQ6CaTsm+S5LGPdKMmopYfN6OiF+Kl34+j",
+    "../../assets/vendor-fkui-vue-7ef914.js": "sha384-s9dASZsOc/MchZWPPa05Ij/SNKMmSikj2B4ta8T1p/I/PPRncIA6wvYkFSfmt4TI",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
         </script><script
-            src="../../assets/bootstrap-956ec3.js"
+            src="../../assets/bootstrap-5b0e6e.js"
             
             crossorigin
-            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            integrity="sha384-kGP2A4LFI4CNwztBKqOla524cwTlhYuNFsx/6foX7fdioP3nxHwqF6vcvJFMia/Q"
             
         ></script><script>
     (() => {
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-041166.json"
+            href="../../search-data-0f0ceb.json"
             as="fetch"
             crossorigin
-            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
+            integrity="sha384-tmG5T9kSJs2ljvqmjbPuW2blfBZvQuiEk5HswmhP/+6Ws4KAITr3F6elcfmnXSOA"
             id="search-data"
         />
     </head>
@@ -1058,13 +1058,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/11ecef6713b5a90a3ea4f5ad97e7672e87b14a3e/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/453c7ba34bbc231d1a295625447baf7c42f95bca/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/11ecef6713b5a90a3ea4f5ad97e7672e87b14a3e/packages/vue/src/components/FCrudDataset/FCrudButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/453c7ba34bbc231d1a295625447baf7c42f95bca/packages/vue/src/components/FCrudDataset/FCrudButton.vue">
                 FCrudButton
             </a>
             
@@ -1093,8 +1093,6 @@
                                 
                                 <li><a href="#knappordning">Knappordning</a></li>
                                 
-                                <li><a href="#anpassade_texter">Anpassade texter</a></li>
-                                
                                 <li><a href="#egna_lagg_till_knappar">Egna lägg till knappar</a></li>
                                 
                                 <li><a href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></li>
@@ -1104,6 +1102,10 @@
                                 <li><a href="#lista_med_redigering">Lista med redigering</a></li>
                                 
                                 <li><a href="#sorterbar_lista">Sorterbar lista</a></li>
+                                
+                                <li><a href="#anpassade_texter">Anpassade texter</a></li>
+                                
+                                <li><a href="#textnycklar">Textnycklar</a></li>
                                 
                                 <li><a href="#api">API</a></li>
                                 
@@ -1126,13 +1128,13 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-3c82a9"></div>
+        <div id="example-a60edf"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-3c82a9.js"></script>
+        <script type="module" src="./FCrudDatasetTableExample-a60edf.js"></script>
     </div>
                 <div>
             <button
@@ -1297,10 +1299,49 @@ Callback anropas innan modalen visas.</p>
             <h2 id="knappordning"><a class="header-anchor" href="#knappordning">Knappordning</a></h2><p class="docs-paragraph">Standardinställningen för knappordningen i modalerna för &quot;Lägg till&quot; och &quot;Ändra&quot; är att primärknappen ligger först följt av sekundärknappen.
 Standardinställningen för modalen &quot;Ta bort&quot; är att sekundärknappen ligger först följt av primärknappen.
 Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappordningen för modalen &quot;Ta bort&quot; genom inställning av <a href="../../functions/config.html#referens">buttonOrder</a> i konfigurationen.</p>
-<h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p class="docs-paragraph">Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
+<h2 id="egna_lagg_till_knappar"><a class="header-anchor" href="#egna_lagg_till_knappar">Egna lägg till knappar</a></h2><p class="docs-paragraph">Använd slotten <code>#buttons</code> för att lägga till egna anpassade lägg-till knappar.
+Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
+                <div
+                    id="example-8497c3"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
+     &lt;template #default&gt; ... &lt;/template&gt;
+<span class="hljs-addition">+    &lt;template #buttons=&quot;{ buttonClasses }&quot;&gt;</span>
+<span class="hljs-addition">+        &lt;button type=&quot;button&quot; :class=&quot;buttonClasses&quot; @click=&quot;onClick&quot;&gt;</span>
+<span class="hljs-addition">+            My button</span>
+<span class="hljs-addition">+        &lt;/button&gt;</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-crud-dataset&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-d100e5"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="example-f30005"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FCrudDatasetAdditionalButtons-f30005.js"></script>
+    </div>
+                </div>
+            <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
-                id="example-a644af"
+                id="example-7e1693"
                 class="code-preview code-preview--default"
                 
                 
@@ -1308,13 +1349,561 @@ Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappor
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-6b10e3"></div>
+        <div id="example-0075a2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetCustomTextExample-6b10e3.js"></script>
+        <script type="module" src="./FCrudDatasetTableCreateExample-0075a2.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FDataTable</span>,
+        <span class="hljs-title class_">FTableColumn</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-data-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Rättigheter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                        {{ row.name }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                        {{ row.origin }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
+                        {{ row.description }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-data-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.id&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 4 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                ID
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Namn
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Land
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.description&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
+                Beskrivning
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="interaktiv_tabell_med_knapp"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
+            <div
+                id="example-b4248d"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-db997e"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FCrudDatasetTableUpdateExample-db997e.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FCrudButton</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableColumn</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FCrudButton</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FInteractiveTable</span>,
+        <span class="hljs-title class_">FTableColumn</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                        {{ row.name }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                        {{ row.origin }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
+                        {{ row.description }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Åtgärd&quot;</span> <span class="hljs-attr">shrink</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;action&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;row&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span>&gt;</span>
+                            Ändra Namn
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Namn
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="lista_med_redigering"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
+            <div
+                id="example-9d16e1"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-27bcd4"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FCrudDatasetListExample-27bcd4.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCrudDataset</span>,
+    <span class="hljs-title class_">FCrudButton</span>,
+    <span class="hljs-title class_">FList</span>,
+    <span class="hljs-title class_">FStaticField</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FCrudButton</span>,
+        <span class="hljs-title class_">FList</span>,
+        <span class="hljs-title class_">FStaticField</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
+        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
+            };
+        },
+        <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
+            }, <span class="hljs-number">0</span>);
+        },
+        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span>
+        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span>
+        <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;f-crud-dataset-list-example&quot;</span>
+        <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>
+        @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+        @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+        @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+    &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-list</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">element-id</span>=<span class="hljs-string">&quot;example&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">selectable</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-7&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                                Land:
+                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                                Beskrivning:
+                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-5&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-list&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span> /&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span> /&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">screenreader</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span> Frukt ID {{ item.id }} <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-list</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Namn
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Land
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.description&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
+                Beskrivning
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Namn <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> {{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Land
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            Vill du verkligen radera frukten &quot;{{ item.name }}&quot; med ID {{ item.id }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
+            <div
+                id="example-70d50c"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-ac68ab"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FCrudDatasetSortListExample-ac68ab.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCrudButton</span>,
+    <span class="hljs-title class_">FCrudDataset</span>,
+    <span class="hljs-title class_">FList</span>,
+    <span class="hljs-title class_">FSortFilterDataset</span>,
+    <span class="hljs-title class_">FStaticField</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCrudButton</span>,
+        <span class="hljs-title class_">FCrudDataset</span>,
+        <span class="hljs-title class_">FList</span>,
+        <span class="hljs-title class_">FSortFilterDataset</span>,
+        <span class="hljs-title class_">FStaticField</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            fruits,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
+        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
+            };
+        },
+        <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
+            }, <span class="hljs-number">0</span>);
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
+                <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span>
+                <span class="hljs-attr">:sortable-attributes</span>=<span class="hljs-string">&quot;{
+                    name: &#x27;Namn&#x27;,
+                    origin: &#x27;Land&#x27;,
+                }&quot;</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-list</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--lg-10&quot;</span>&gt;</span>
+                                    Land:
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                                    Beskrivning:
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-1&quot;</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> /&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-1&quot;</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> /&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-list</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Namn
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Land
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.description&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
+                Beskrivning
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Namn <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> {{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span>
+                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
+                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+            &gt;</span>
+                Land
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            Vill du verkligen ta bort frukten &quot;{{ item.name }}&quot; med ID {{ item.id }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p class="docs-paragraph">Rubriker i modaler kan anpassas antingen med textnycklar (standardtexter för alla datamängdredigerare) eller med propar (för en specifik datamängdredigerare):</p>
+<ul>
+<li>Lägg till: textnyckel <code>fkui.crud-dataset.modal.header.add</code> eller prop <code>addNewModalHeader</code>.</li>
+<li>Ändra: textnyckel <code>fkui.crud-dataset.modal.header.modify</code> eller prop <code>modifyModalHeader</code>.</li>
+<li>Ta bort: textnyckel <code>fkui.crud-dataset.modal.header.delete</code> eller prop <code>deleteModalHeader</code>.</li>
+</ul>
+<p class="docs-paragraph">Knapptexter i modaler kan anpassas med textnycklar.</p>
+<ul>
+<li>Lägg till: textnycklar <code>fkui.crud-dataset.modal.confirm.add</code> och <code>fkui.crud-dataset.modal.cancel.add</code>.</li>
+<li>Ändra: textnycklar <code>fkui.crud-dataset.modal.confirm.modify</code> och <code>fkui.crud-dataset.modal.cancel.modify</code>.</li>
+<li>Ta bort: textnycklar <code>fkui.crud-dataset.modal.confirm.delete</code> och <code>fkui.crud-dataset.modal.cancel.delete</code>.</li>
+</ul>
+<p class="docs-paragraph">Knappentexten för &quot;Lägg till&quot; kan anpassas med textnyckel <code>fkui.crud-dataset.button.add</code> eller slotten <code>add-button</code>.</p>
+<p class="docs-paragraph">Knapptexter för åtgärdsknappar kan anpassas med textnycklar eller med knappens default slot.</p>
+<ul>
+<li>Ändra: textnyckel <code>fkui.crud-button.modify</code> eller default slot.</li>
+<li>Ta bort: textnyckel <code>fkui.crud-button.delete</code> eller default slot.</li>
+</ul>
+
+            <div
+                id="example-f2c9c7"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-10a9d7"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FCrudDatasetCustomTextExample-10a9d7.js"></script>
     </div>
                 <div>
             <button
@@ -1465,577 +2054,300 @@ Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappor
 </code></pre>
                 </div>
             </div>
-        <h2 id="egna_lagg_till_knappar"><a class="header-anchor" href="#egna_lagg_till_knappar">Egna lägg till knappar</a></h2><p class="docs-paragraph">Använd slotten <code>#buttons</code> för att lägga till egna anpassade lägg-till knappar.
-Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
+        <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att <a href="../../gettingstarted/use-design-system/translate-text.html">anpassa och översätta text</a>.</p>
 
-                <div
-                    id="example-667c04"
-                    class="code-preview code-preview--default"
+        <dl class="docs-api docs-api--translation">
+            
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-header-add"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-header-add"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.header.add</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Lägg till rad"</p>
+                            
+                            
+                            
+                        </dd>
                     
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-header-modify"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-header-modify"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.header.modify</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Ändra rad"</p>
+                            
+                            
+                            
+                        </dd>
                     
-                    data-language="diff"
-                >
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-header-delete"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-header-delete"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.header.delete</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Är du säker på att du vill ta bort raden?"</p>
+                            
+                            
+                            
+                        </dd>
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
-     &lt;template #default&gt; ... &lt;/template&gt;
-<span class="hljs-addition">+    &lt;template #buttons=&quot;{ buttonClasses }&quot;&gt;</span>
-<span class="hljs-addition">+        &lt;button type=&quot;button&quot; :class=&quot;buttonClasses&quot; @click=&quot;onClick&quot;&gt;</span>
-<span class="hljs-addition">+            My button</span>
-<span class="hljs-addition">+        &lt;/button&gt;</span>
-<span class="hljs-addition">+    &lt;/template&gt;</span>
- &lt;/f-crud-dataset&gt;
-</code></pre>
-                </div>
-            
-                <div
-                    id="example-3d4955"
-                    class="code-preview code-preview--default"
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-confirm-add"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-confirm-add"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.confirm.add</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>&quot;Save&quot; button in &quot;add new&quot; modal&quot;</p>
+
+                            <p class="doc-api__item">Default: "Lägg till"</p>
+                            
+                            
+                            
+                        </dd>
                     
-                    data-tags="nomarkup"
-                    data-language="vue"
-                >
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-confirm-modify"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-confirm-modify"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.confirm.modify</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>&quot;Save&quot; button in &quot;modify&quot; modal</p>
+
+                            <p class="doc-api__item">Default: "Spara"</p>
+                            
+                            
+                            
+                        </dd>
                     
-                    <div class="code-preview__preview">
-        <div id="example-c1d4df"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-cancel-add"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-cancel-add"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.cancel.add</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>&quot;Cancel&quot; button in &quot;add new&quot; modal</p>
+
+                            <p class="doc-api__item">Default: "Avbryt"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-cancel-modify"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-cancel-modify"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.cancel.modify</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>&quot;Cancel&quot; button in &quot;modify&quot; modal</p>
+
+                            <p class="doc-api__item">Default: "Avbryt"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-confirm-delete"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-confirm-delete"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.confirm.delete</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>&quot;Confirm&quot; button in &quot;delete&quot; modal</p>
+
+                            <p class="doc-api__item">Default: "Ja, ta bort"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-cancel-delete"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-cancel-delete"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.cancel.delete</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>&quot;Cancel&quot; button in &quot;delete&quot; modal</p>
+
+                            <p class="doc-api__item">Default: "Nej, avbryt"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-aria-live-delete"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-aria-live-delete"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.aria-live.delete</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Text announced to screenreaders when an item has been removed</p>
+
+                            <p class="doc-api__item">Default: "Raden har tagits bort"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-aria-live-add"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-aria-live-add"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.aria-live.add</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Text announced to screenreaders when an item has been added</p>
+
+                            <p class="doc-api__item">Default: "En rad har lagts till"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-aria-live-modify"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-aria-live-modify"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.aria-live.modify</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Text announced to screenreaders when an item has been modified</p>
+
+                            <p class="doc-api__item">Default: "Raden har ändrats"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-button-add"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-button-add"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.button.add</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Buttontext for adding a new item</p>
+
+                            <p class="doc-api__item">Default: "Lägg till ny"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-modal-close"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-modal-close"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.modal.close</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Stäng"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <dl class="docs-api docs-api--translation">
             
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetAdditionalButtons-c1d4df.js"></script>
-    </div>
-                </div>
-            <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
-            <div
-                id="example-c1213c"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="example-393991"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-393991.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+                        <dt>
+                            <code id="fcrudbutton-translation-fkui-crud-button-delete"
+                                ><a class="docs-api__anchor" href="#fcrudbutton-translation-fkui-crud-button-delete"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-button.delete</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Button label when action is &quot;delete&quot;</p>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FDataTable</span>,
-        <span class="hljs-title class_">FTableColumn</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+                            <p class="doc-api__item">Default: "Ta bort"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcrudbutton-translation-fkui-crud-button-modify"
+                                ><a class="docs-api__anchor" href="#fcrudbutton-translation-fkui-crud-button-modify"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-button.modify</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Button label when action is &quot;modify&quot;</p>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-data-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Rättigheter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.name }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.origin }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
-                        {{ row.description }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-data-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.id&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 4 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                ID
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Namn
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Land
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.description&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
-                Beskrivning
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="interaktiv_tabell_med_knapp"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
-            <div
-                id="example-b67799"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="example-3dea8f"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableUpdateExample-3dea8f.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FCrudButton</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableColumn</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FCrudButton</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FInteractiveTable</span>,
-        <span class="hljs-title class_">FTableColumn</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.name }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.origin }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
-                        {{ row.description }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Åtgärd&quot;</span> <span class="hljs-attr">shrink</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;action&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;row&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span>&gt;</span>
-                            Ändra Namn
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Namn
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="lista_med_redigering"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
-            <div
-                id="example-4da53a"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="example-a2bf62"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetListExample-a2bf62.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCrudDataset</span>,
-    <span class="hljs-title class_">FCrudButton</span>,
-    <span class="hljs-title class_">FList</span>,
-    <span class="hljs-title class_">FStaticField</span>,
-    <span class="hljs-title class_">FTextField</span>,
-    <span class="hljs-title class_">FTextareaField</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FCrudButton</span>,
-        <span class="hljs-title class_">FList</span>,
-        <span class="hljs-title class_">FStaticField</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
-        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
-            <span class="hljs-keyword">return</span> {
-                <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
-                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
-            };
-        },
-        <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
-                <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
-            }, <span class="hljs-number">0</span>);
-        },
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span>
-        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span>
-        <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;f-crud-dataset-list-example&quot;</span>
-        <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>
-        @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
-        @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
-        @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
-    &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-list</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">element-id</span>=<span class="hljs-string">&quot;example&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">selectable</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-7&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-                                Land:
-                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                                Beskrivning:
-                                <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-5&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-list&quot;</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span> /&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span> /&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">screenreader</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span> Frukt ID {{ item.id }} <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-list</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Namn
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Land
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.description&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
-                Beskrivning
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Namn <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> {{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Land
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            Vill du verkligen radera frukten &quot;{{ item.name }}&quot; med ID {{ item.id }}
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
-            <div
-                id="example-65eba4"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="example-643e6b"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetSortListExample-643e6b.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FCrudButton</span>,
-    <span class="hljs-title class_">FCrudDataset</span>,
-    <span class="hljs-title class_">FList</span>,
-    <span class="hljs-title class_">FSortFilterDataset</span>,
-    <span class="hljs-title class_">FStaticField</span>,
-    <span class="hljs-title class_">FTextField</span>,
-    <span class="hljs-title class_">FTextareaField</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudButton</span>,
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FList</span>,
-        <span class="hljs-title class_">FSortFilterDataset</span>,
-        <span class="hljs-title class_">FStaticField</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-comment">// Förpopulera ett objekt med värden</span>
-        <span class="hljs-title function_">beforeCreate</span>(): <span class="hljs-title class_">FruitData</span> {
-            <span class="hljs-keyword">return</span> {
-                <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxId</span>() + <span class="hljs-number">1</span>),
-                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;&quot;</span>,
-                <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;&quot;</span>,
-            };
-        },
-        <span class="hljs-title function_">getMaxId</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruits</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">max, item</span>) =&gt;</span> {
-                <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(max, <span class="hljs-built_in">parseInt</span>(item.<span class="hljs-property">id</span>, <span class="hljs-number">10</span>));
-            }, <span class="hljs-number">0</span>);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
-                <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span>
-                <span class="hljs-attr">:sortable-attributes</span>=<span class="hljs-string">&quot;{
-                    name: &#x27;Namn&#x27;,
-                    origin: &#x27;Land&#x27;,
-                }&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-list</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--lg-10&quot;</span>&gt;</span>
-                                    Land:
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.origin }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                                    Beskrivning:
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span> {{ item.description }} <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-1&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> /&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-1&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> /&gt;</span>
-                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-list</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Namn
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Land
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.description&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
-                Beskrivning
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Namn <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> {{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span>
-                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.origin&quot;</span>
-                <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 32 } }&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-            &gt;</span>
-                Land
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            Vill du verkligen ta bort frukten &quot;{{ item.name }}&quot; med ID {{ item.id }}
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><h3 id="fcruddataset"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h3>
+                            <p class="doc-api__item">Default: "Ändra"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><h3 id="fcruddataset"><a class="header-anchor" href="#fcruddataset"><code>FCrudDataset</code></a></h3>
         <h4 id="fcruddataset-props">
             <a class="header-anchor" href="#fcruddataset-props">Props</a>
         </h4>
@@ -2525,9 +2837,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">table-empty (<a href="https://github.com/Forsakringskassan/designsystem/commits/11ecef6713b5a90a3ea4f5ad97e7672e87b14a3e">11ecef6</a>)<br />
+<div class="footer__right"><div class="version">table-empty (<a href="https://github.com/Forsakringskassan/designsystem/commits/453c7ba34bbc231d1a295625447baf7c42f95bca">453c7ba</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/463">PR 463</a><br />
-        2025-04-29 21:20
+        2025-05-06 09:36
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2634,22 +2946,22 @@ If false, the button will use a visually hidden text for accessibility.</p>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../../assets/processors/motd/index-fd9bb8.js"
+            src="../../assets/processors/motd/index-26ba41.js"
             type="module"
             crossorigin
-            integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
+            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
+            src="../../assets/processors/selectable-version/select-version-910589.js"
             type="module"
             crossorigin
-            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
+            integrity="sha384-I1UkV0jct1U2DK2sHeJaQT/Y/zs56PzTr8ov/aUSg8JBcBJtIOPYDvMy2o167CwS"
             
         ></script><script
-            src="../../assets/main-40ed80.js"
+            src="../../assets/main-0ec342.js"
             type="module"
             crossorigin
-            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
+            integrity="sha384-024ARbIkk+36wQRMNqANavYck/wi86OjA7OQfU3szttx8PSUfCLc+u90c5D34iPZ"
             
         ></script>
     </body>
