@@ -67,6 +67,7 @@ components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
 components/table-and-list/flist.html
 components/table-and-list/fsortfilterdataset.html
+components/table-and-list/table-draft.html
 components/table-and-list/table.html
 components/validation/ferrorlist.html
 components/validation/formatters-and-parsers.html
