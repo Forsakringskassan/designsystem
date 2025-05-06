@@ -147,6 +147,83 @@ const FulHack = defineComponent({
 </template>
 ```
 
+## Ny fräsig kod
+
+Ett sätt att skapa åtgärdsknappar:
+
+```html hidden name=old
+<button type="button" class="button button--tertiary button--small">
+    <f-icon class="button__icon" name="pen"></f-icon>
+</button>
+```
+
+```html compare=old
+<button type="button" class="button table__button">
+    <f-icon class="button__icon" name="pen"></f-icon>
+</button>
+```
+
+Inga extra klasser för utseende, vi styr utseende via `table_button`:
+
+- Ingen `button--tertiary` eller `button--discrete`
+- Ingen `button--small`
+- Erbjuder inget val, du får inte köra primary large!
+- Etikett valfritt men man måste använda `aria-label` ELLER synlig etikett.
+
+Motsvarande koncept för länkar med `table__anchor`.
+
+```vue
+<script setup lang="ts">
+import { FInteractiveTable, FTableColumn, FIcon } from "@fkui/vue";
+
+const rows = [
+    { name: "Banan", type: "Frukt" },
+    { name: "Äpple", type: "Frukt" },
+    { name: "Vitkål", type: "Grönsak" },
+    { name: "Spenat", type: "Grönsak" },
+];
+</script>
+
+<template>
+    <f-interactive-table :rows>
+        <template #caption> Ny frän ensad kod </template>
+        <template #default="{ row }">
+            <f-table-column title="A" type="text" expand>
+                {{ row.name }}
+            </f-table-column>
+            <f-table-column title="B" type="text" expand>
+                Lorem ipsum dolor sit amet
+            </f-table-column>
+            <f-table-column title="Åtgärder" type="action" shrink>
+                <a class="anchor table__anchor">Länk</a>
+                <button
+                    aria-label="Redigera"
+                    class="button table__button"
+                    type="button"
+                >
+                    <f-icon class="button__icon" name="pen"></f-icon>
+                </button>
+                <button
+                    aria-label="Redigera"
+                    class="button table__button"
+                    type="button"
+                >
+                    <f-icon class="button__icon" name="pen"></f-icon>
+                </button>
+                <button class="button table__button" type="button">
+                    <f-icon class="button__icon" name="pen"></f-icon>
+                    Etikett
+                </button>
+                <button class="button table__button" type="button">
+                    <f-icon class="button__icon" name="pen"></f-icon>
+                    Etikett
+                </button>
+            </f-table-column>
+        </template>
+    </f-interactive-table>
+</template>
+```
+
 Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner. Tabeller kan antingen vara enkla datatabeller för presentation, eller vara mer avancerade interaktiva tabeller.
 
 I en tabell har varje rad samma grupper av information som visas kolumnvis, till exempel namn, datum, belopp och diarienummer.
