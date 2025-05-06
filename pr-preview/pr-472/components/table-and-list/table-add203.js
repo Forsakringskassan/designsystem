@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/table-and-list/table.md:table-8819fb.js
+// virtual-entry:virtual:docs/components/table-and-list/table.md:table-add203.js
 import { defineComponent as _defineComponent } from "vue";
 import { defineComponent, provide } from "vue";
 import { FInteractiveTable, FTableColumn, FIcon, FCrudButton } from "@fkui/vue";
@@ -76,24 +76,34 @@ var _hoisted_2 = {
   type: "button"
 };
 var _hoisted_3 = {
+  "aria-label": "Redigera",
   class: "button button--tertiary button--small",
   type: "button"
 };
 var _hoisted_4 = {
+  "aria-label": "Redigera",
+  class: "button button--discrete button--small",
+  type: "button"
+};
+var _hoisted_5 = {
+  class: "button button--tertiary button--small",
+  type: "button"
+};
+var _hoisted_6 = {
   class: "button button--discrete button--small",
   type: "button"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FulHack"], null, {
     default: _withCtx(() => [
-      _cache[7] || (_cache[7] = _createElementVNode(
+      _cache[12] || (_cache[12] = _createElementVNode(
         "p",
         null,
         " Inventering av \xE5tg\xE4rdsknappar som existerar i dokumentation, exempel och kod: ",
         -1
         /* HOISTED */
       )),
-      _cache[8] || (_cache[8] = _createElementVNode(
+      _cache[13] || (_cache[13] = _createElementVNode(
         "ul",
         null,
         [
@@ -107,7 +117,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )),
       _createVNode($setup["FInteractiveTable"], { rows: $setup.rows }, {
         caption: _withCtx(() => _cache[0] || (_cache[0] = [
-          _createTextVNode(" Awesome Table ")
+          _createTextVNode(" Enligt dokumentation ")
         ])),
         default: _withCtx(({ row }) => [
           _createVNode(
@@ -175,7 +185,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             },
             1024
             /* DYNAMIC_SLOTS */
+          )
+        ]),
+        _: 1
+        /* STABLE */
+      }),
+      _createVNode($setup["FInteractiveTable"], { rows: $setup.rows }, {
+        caption: _withCtx(() => _cache[3] || (_cache[3] = [
+          _createTextVNode(" Korrigerat med korrekt kod ")
+        ])),
+        default: _withCtx(({ row }) => [
+          _createVNode(
+            $setup["FTableColumn"],
+            {
+              title: "A",
+              type: "text",
+              expand: ""
+            },
+            {
+              default: _withCtx(() => [
+                _createTextVNode(
+                  _toDisplayString(row.name),
+                  1
+                  /* TEXT */
+                )
+              ]),
+              _: 2
+              /* DYNAMIC */
+            },
+            1024
+            /* DYNAMIC_SLOTS */
           ),
+          _createVNode($setup["FTableColumn"], {
+            title: "B",
+            type: "text",
+            expand: ""
+          }, {
+            default: _withCtx(() => _cache[4] || (_cache[4] = [
+              _createTextVNode(" Lorem ipsum dolor sit amet ")
+            ])),
+            _: 1
+            /* STABLE */
+          }),
           _createVNode(
             $setup["FTableColumn"],
             {
@@ -185,7 +236,88 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             },
             {
               default: _withCtx(() => [
-                _cache[6] || (_cache[6] = _createElementVNode(
+                _cache[5] || (_cache[5] = _createElementVNode(
+                  "a",
+                  { class: "anchor" },
+                  "L\xE4nk",
+                  -1
+                  /* HOISTED */
+                )),
+                _createVNode($setup["FCrudButton"], {
+                  action: "modify",
+                  item: row,
+                  icon: ""
+                }, null, 8, ["item"]),
+                _createElementVNode("button", _hoisted_3, [
+                  _createVNode($setup["FIcon"], {
+                    class: "button__icon",
+                    name: "pen"
+                  })
+                ]),
+                _createElementVNode("button", _hoisted_4, [
+                  _createVNode($setup["FIcon"], {
+                    class: "button__icon",
+                    name: "pen"
+                  })
+                ])
+              ]),
+              _: 2
+              /* DYNAMIC */
+            },
+            1024
+            /* DYNAMIC_SLOTS */
+          )
+        ]),
+        _: 1
+        /* STABLE */
+      }),
+      _createVNode($setup["FInteractiveTable"], { rows: $setup.rows }, {
+        caption: _withCtx(() => _cache[6] || (_cache[6] = [
+          _createTextVNode(" Med synlig etikett ")
+        ])),
+        default: _withCtx(({ row }) => [
+          _createVNode(
+            $setup["FTableColumn"],
+            {
+              title: "A",
+              type: "text",
+              expand: ""
+            },
+            {
+              default: _withCtx(() => [
+                _createTextVNode(
+                  _toDisplayString(row.name),
+                  1
+                  /* TEXT */
+                )
+              ]),
+              _: 2
+              /* DYNAMIC */
+            },
+            1024
+            /* DYNAMIC_SLOTS */
+          ),
+          _createVNode($setup["FTableColumn"], {
+            title: "B",
+            type: "text",
+            expand: ""
+          }, {
+            default: _withCtx(() => _cache[7] || (_cache[7] = [
+              _createTextVNode(" Lorem ipsum dolor sit amet ")
+            ])),
+            _: 1
+            /* STABLE */
+          }),
+          _createVNode(
+            $setup["FTableColumn"],
+            {
+              title: "\xC5tg\xE4rder",
+              type: "action",
+              shrink: ""
+            },
+            {
+              default: _withCtx(() => [
+                _cache[11] || (_cache[11] = _createElementVNode(
                   "a",
                   { class: "anchor" },
                   "L\xE4nk",
@@ -198,25 +330,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   icon: "",
                   label: ""
                 }, {
-                  default: _withCtx(() => _cache[3] || (_cache[3] = [
+                  default: _withCtx(() => _cache[8] || (_cache[8] = [
                     _createTextVNode(" Etikett ")
                   ])),
                   _: 2
                   /* DYNAMIC */
                 }, 1032, ["item"]),
-                _createElementVNode("button", _hoisted_3, [
-                  _createVNode($setup["FIcon"], {
-                    class: "button__icon",
-                    name: "pen"
-                  }),
-                  _cache[4] || (_cache[4] = _createTextVNode(" Etikett "))
+                _createElementVNode("button", _hoisted_5, [
+                  _createVNode($setup["FIcon"], { name: "pen" }),
+                  _cache[9] || (_cache[9] = _createTextVNode(" Etikett "))
                 ]),
-                _createElementVNode("button", _hoisted_4, [
-                  _createVNode($setup["FIcon"], {
-                    class: "button__icon",
-                    name: "pen"
-                  }),
-                  _cache[5] || (_cache[5] = _createTextVNode(" Etikett "))
+                _createElementVNode("button", _hoisted_6, [
+                  _createVNode($setup["FIcon"], { name: "pen" }),
+                  _cache[10] || (_cache[10] = _createTextVNode(" Etikett "))
                 ])
               ]),
               _: 2
@@ -237,7 +363,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8819fb"
+  selector: "#example-add203"
 });
 export {
   render
