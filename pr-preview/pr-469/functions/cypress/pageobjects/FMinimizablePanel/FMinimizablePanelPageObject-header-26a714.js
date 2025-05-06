@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-content.vue:FMinimizablePanelPageObject-content-3c2550.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-header.vue:FMinimizablePanelPageObject-header-26a714.js
 import { defineComponent as _defineComponent } from "vue";
 import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject-content",
+  __name: "FMinimizablePanelPageObject-header",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FPageLayout() {
@@ -50,8 +50,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
     left: _withCtx(() => [
       _createVNode($setup["FMinimizablePanel"], null, {
-        default: _withCtx(({ content }) => [
-          _createElementVNode("div", { slot: content }, "Lorem ipsum", 8, _hoisted_1)
+        default: _withCtx(({ header }) => [
+          _createElementVNode("div", { slot: header }, "Lorem ipsum", 8, _hoisted_1)
         ]),
         _: 1
         /* STABLE */
@@ -67,7 +67,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-3c2550"
+  selector: "#example-26a714"
 });
 export {
   render
