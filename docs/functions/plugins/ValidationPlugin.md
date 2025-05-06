@@ -23,13 +23,13 @@ app.use(ValidationPlugin);
 app.mount("#app");
 ```
 
-Via `ValidationService.addValidationErrorMessages` kan man specificera översättningar av validator fel.
+Via `ValidationService.setErrorMessages()` kan man specificera översättningar av validator fel.
 I nedan exempel anges ett objekt med validatornamnet som nyckel och översättning som värde (om översättning saknas så kommer validatornamnet istället användas).
 
 ```ts
 import { ValidationService } from "@fkui/logic";
 
-ValidationService.addValidationErrorMessages({
+ValidationService.setErrorMessages({
     required: "Fältet krävs",
     personnummerFormat: "Felaktigt format på personnummer",
 });
@@ -50,7 +50,7 @@ const messages = ValidationErrorMessageBuilder.create()
     )
     .build();
 
-ValidationService.addValidationErrorMessages(messages);
+ValidationService.setErrorMessages(messages);
 ```
 
 ## Användning
@@ -99,7 +99,7 @@ Se implementationen av komponenten FEmailTextField på sidan {@link textfield-sp
 
 ## Applikationsspecifikt felmeddelande
 
-Alla validatorers konfiguration tar attributet `errorMessage` som ersätter felmeddelandet som definieras med `ValidatorService.addValidationErrorMessages` funktionen.
+Alla validatorers konfiguration tar attributet `errorMessage` som ersätter felmeddelandet som definieras med `ValidatorService.setErrorMessages()` funktionen.
 
 ```import
 ValidationPluginErrorMessage.vue
