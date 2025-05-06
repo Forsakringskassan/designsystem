@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Applikationsmall - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-0d8cb4.css"
+            href="../../assets/docs-e1a080.css"
             crossorigin
-            integrity="sha384-JJVQ32I90tczi5jSzS3W3LNmYE0bjkyymsZAN8icNya2Qvq8m+e1eOkqn34W05ZW"
+            integrity="sha384-QSEtFlxUPkFd5E+2RRy2v5JeVRs88AVz1TTaasq/7g/uy69TswM5/rEutcA+88UO"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-f25647.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-95b31e.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-f25647.js": "sha384-MSytx68fq/reFZeDXkZxdF2Q1rKX1xQnV4jZGTwfYjot0vGPpmgFwMVApcNRNQO3",
+    "../../assets/vendor-fkui-vue-95b31e.js": "sha384-6xTNVkylPySkLatlwdly60Rcj9crvf7Ke94ptY7RLbpgK0T1PMWVkpxPZLY7BcvN",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-298b88.json"
+            href="../../search-data-114358.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Vn5lRGP9kO6cnNUqDC6/rWSEQwVGdXTBe7erfHDZOr87TVHwY9kskf8Rf08mzoJu"
+            integrity="sha384-lwlM3iIBzww37AqjkaXhXtjZH8cV/GkZmik1ZVCjWcgdEqjLDL4GgoyGM1gJ2OFi"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4b7bac3d5c665828fef1e38dc65757c329189f24/packages/vue/src/components/FPageLayout/FPageLayout.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/eb74a63fa7965abbe1daf9d201d0711dae479ade/packages/vue/src/components/FPageLayout/FPageLayout.vue">
                 FPageLayout
             </a>
             
@@ -1089,6 +1089,8 @@
                                 
                                 <li><a href="#egen_layout">Egen layout</a></li>
                                 
+                                <li><a href="#relaterat">Relaterat</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -1106,9 +1108,10 @@
 <p class="docs-paragraph">Applikationsmallen erbjuder olika layouter för att dela upp en applikation som täcker hela skärmen i ytor.
 Du kan utgå från en av fyra standardlayouter eller skapa en egen.
 Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en yta styrs av vad som placeras i ytan.</p>
+<p class="docs-paragraph">Se också <a href="../../examples/page-layout">exempelapplikation för Applikationsmall</a> (<a href="https://github.com/Forsakringskassan/designsystem/tree/main/examples/page-layout">källkod</a>) för en komplett applikation.</p>
 <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2>
             <div
-                id="example-6e2196"
+                id="example-ffac43"
                 class="code-preview code-preview--default"
                 data-test="example"
                 
@@ -1229,7 +1232,7 @@ Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en 
         <p class="docs-paragraph">Vilken layout som används bestäms av <code>layout</code>-propen:</p>
 
                 <div
-                    id="example-b10ec3"
+                    id="example-bebf7e"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1244,7 +1247,7 @@ Ytans innehåll fylls med hjälp av Vue slots med motsvarande namn.</p>
 <p class="docs-paragraph">För att fylla ytan <code>header</code> med innehåll:</p>
 
                 <div
-                    id="example-b726b7"
+                    id="example-481b2c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1285,7 +1288,7 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
 <h2 id="standardlayouter"><a class="header-anchor" href="#standardlayouter">Standardlayouter</a></h2><p class="docs-paragraph">Följande förkonfigurerade layouter följer med som standard:</p>
 
                 <div
-                    id="example-3bf378"
+                    id="example-284b46"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="borderless nomarkup"
@@ -1343,6 +1346,7 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
                 </div>
             <h2 id="egen_layout"><a class="header-anchor" href="#egen_layout">Egen layout</a></h2><p class="docs-paragraph">Utöver förkonfigurerade layouter kan man skapa en egen.</p>
 <p class="docs-paragraph">Läs mer om att <a href="../../guides/custom-page-layout.html">skapa egen layout</a>.</p>
+<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../examples/page-layout">Applikationslayout exempelapplikation</a> (<a href="https://github.com/Forsakringskassan/designsystem/tree/main/examples/page-layout">källkod</a>)</p>
 
 
                     </div>
@@ -1359,9 +1363,9 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/sfkui-6168 (<a href="https://github.com/Forsakringskassan/designsystem/commits/4b7bac3d5c665828fef1e38dc65757c329189f24">4b7bac3</a>)<br />
+<div class="footer__right"><div class="version">fix/sfkui-6168 (<a href="https://github.com/Forsakringskassan/designsystem/commits/eb74a63fa7965abbe1daf9d201d0711dae479ade">eb74a63</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/438">PR 438</a><br />
-        2025-05-05 09:18
+        2025-05-06 06:27
 </div>
 <div class="toolbar__item">
     <form id="version">
