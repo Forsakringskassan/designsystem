@@ -485,6 +485,18 @@ var metadata_default = {
       "comment": null
     },
     {
+      "name": "--fkds-icon-color-action-content-inverted-active",
+      "value": "#ffffff",
+      "palette": "white-100",
+      "comment": null
+    },
+    {
+      "name": "--fkds-icon-color-action-content-inverted-focus",
+      "value": "#ffffff",
+      "palette": "white-100",
+      "comment": null
+    },
+    {
       "name": "--fkds-icon-color-feedback-content-info",
       "value": "#1b1e23",
       "palette": "fk-black-100",
