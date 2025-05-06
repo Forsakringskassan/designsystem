@@ -9,6 +9,144 @@ component:
     - FTableColumn
 ---
 
+```vue
+<script setup lang="ts">
+import { defineComponent, provide } from "vue";
+import { FInteractiveTable, FTableColumn, FIcon, FCrudButton } from "@fkui/vue";
+
+const rows = [
+    { name: "Banan", type: "Frukt" },
+    { name: "Äpple", type: "Frukt" },
+    { name: "Vitkål", type: "Grönsak" },
+    { name: "Spenat", type: "Grönsak" },
+];
+
+const FulHack = defineComponent({
+    setup() {
+        provide("modify", () => {
+            /* do nothing */
+        });
+        provide("delete", () => {
+            /* do nothing */
+        });
+    },
+    template: "<slot></slot>",
+});
+</script>
+
+<template>
+    <ful-hack>
+        <p>
+            Inventering av åtgärdsknappar som existerar i dokumentation, exempel
+            och kod:
+        </p>
+        <ul>
+            <li>Länk (`a.anchor`)</li>
+            <li>FCrudButton</li>
+            <li>Tertiär knapp (`button.button--tertiary`)</li>
+            <li>Diskret knapp (`button.button--discrete`)</li>
+        </ul>
+        <f-interactive-table :rows>
+            <template #caption> Enligt dokumentation </template>
+            <template #default="{ row }">
+                <f-table-column title="A" type="text" expand>
+                    {{ row.name }}
+                </f-table-column>
+                <f-table-column title="B" type="text" expand>
+                    Lorem ipsum dolor sit amet
+                </f-table-column>
+                <f-table-column title="Åtgärder" type="action" shrink>
+                    <a class="anchor">Länk</a>
+                    <f-crud-button
+                        action="modify"
+                        :item="row"
+                        icon
+                    ></f-crud-button>
+                    <button
+                        aria-label="Redigera"
+                        class="button button--tertiary button--small"
+                        type="button"
+                    >
+                        <f-icon name="pen"></f-icon>
+                    </button>
+                    <button
+                        aria-label="Redigera"
+                        class="button button--discrete button--small"
+                        type="button"
+                    >
+                        <f-icon name="pen"></f-icon>
+                    </button>
+                </f-table-column>
+            </template>
+        </f-interactive-table>
+        <f-interactive-table :rows>
+            <template #caption> Korrigerat med korrekt kod </template>
+            <template #default="{ row }">
+                <f-table-column title="A" type="text" expand>
+                    {{ row.name }}
+                </f-table-column>
+                <f-table-column title="B" type="text" expand>
+                    Lorem ipsum dolor sit amet
+                </f-table-column>
+                <f-table-column title="Åtgärder" type="action" shrink>
+                    <a class="anchor">Länk</a>
+                    <f-crud-button
+                        action="modify"
+                        :item="row"
+                        icon
+                    ></f-crud-button>
+                    <button
+                        aria-label="Redigera"
+                        class="button button--tertiary button--small"
+                        type="button"
+                    >
+                        <f-icon class="button__icon" name="pen"></f-icon>
+                    </button>
+                    <button
+                        aria-label="Redigera"
+                        class="button button--discrete button--small"
+                        type="button"
+                    >
+                        <f-icon class="button__icon" name="pen"></f-icon>
+                    </button>
+                </f-table-column>
+            </template>
+        </f-interactive-table>
+        <f-interactive-table :rows>
+            <template #caption> Med synlig etikett </template>
+            <template #default="{ row }">
+                <f-table-column title="A" type="text" expand>
+                    {{ row.name }}
+                </f-table-column>
+                <f-table-column title="B" type="text" expand>
+                    Lorem ipsum dolor sit amet
+                </f-table-column>
+                <f-table-column title="Åtgärder" type="action" shrink>
+                    <a class="anchor">Länk</a>
+                    <f-crud-button action="modify" :item="row" icon label>
+                        Etikett
+                    </f-crud-button>
+                    <button
+                        class="button button--tertiary button--small"
+                        type="button"
+                    >
+                        <f-icon name="pen"></f-icon>
+                        Etikett
+                    </button>
+                    <button
+                        class="button button--discrete button--small"
+                        type="button"
+                    >
+                        <f-icon name="pen"></f-icon>
+                        Etikett
+                    </button>
+                </f-table-column>
+            </template>
+        </f-interactive-table>
+    </ful-hack>
+</template>
+```
+
 Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner. Tabeller kan antingen vara enkla datatabeller för presentation, eller vara mer avancerade interaktiva tabeller.
 
 I en tabell har varje rad samma grupper av information som visas kolumnvis, till exempel namn, datum, belopp och diarienummer.
