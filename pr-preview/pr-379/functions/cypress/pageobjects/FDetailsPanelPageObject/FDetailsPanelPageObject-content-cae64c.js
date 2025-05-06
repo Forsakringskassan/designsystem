@@ -28,13 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-close-button.vue:FDetailsPanelPageObject-close-button-111716.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-content.vue:FDetailsPanelPageObject-content-cae64c.js
 import { defineComponent as _defineComponent } from "vue";
 import { onMounted } from "vue";
 import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
-import { createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject-close-button",
+  __name: "FDetailsPanelPageObject-content",
   setup(__props, { expose: __expose }) {
     __expose();
     onMounted(() => {
@@ -49,10 +49,17 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     return __returned__;
   }
 });
+var _hoisted_1 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
     left: _withCtx(() => [
-      _createVNode($setup["FDetailsPanel"], { name: "awesome-panel" })
+      _createVNode($setup["FDetailsPanel"], { name: "awesome-panel" }, {
+        default: _withCtx(({ content }) => [
+          _createElementVNode("div", { slot: content }, "Lorem ipsum", 8, _hoisted_1)
+        ]),
+        _: 1
+        /* STABLE */
+      })
     ]),
     content: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Inneh\xE5ll ")
@@ -64,7 +71,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-111716"
+  selector: "#example-cae64c"
 });
 export {
   render

@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
@@ -11343,7 +11343,7 @@ function FTableInjected() {
     addColumn: inject("addColumn"),
     setVisibilityColumn: inject("setVisibilityColumn"),
     textFieldTableMode: true,
-    renderColumns: inject("renderColumns", false)
+    renderColumns: inject("renderColumns", ref(false))
   };
 }
 var _sfc_main$N = /* @__PURE__ */ defineComponent({
@@ -11445,8 +11445,8 @@ var _sfc_main$N = /* @__PURE__ */ defineComponent({
       setVisibilityColumn: setVisibilityColumn2,
       addColumn: addColumn2
     } = FTableInjected();
-    const internalVisible = ref(true);
-    const renderElement = ref(true);
+    const hasMounted = ref(false);
+    const isHeader = ref(false);
     const id = ElementIdService.generateElementId("column");
     const el = useTemplateRef("element");
     const props = __props;
@@ -11463,8 +11463,11 @@ var _sfc_main$N = /* @__PURE__ */ defineComponent({
         return "td";
       }
     });
+    const renderElement = computed(() => {
+      const shouldRender = !isHeader.value && renderColumns.value && props.visible;
+      return !hasMounted.value || shouldRender;
+    });
     watch(() => props.visible, () => {
-      internalVisible.value = props.visible;
       setVisibilityColumn2(id, props.visible);
     });
     onMounted(() => {
@@ -11472,8 +11475,8 @@ var _sfc_main$N = /* @__PURE__ */ defineComponent({
         throw new Error("Table cannot have both shrink and expand enabled at the same time");
       }
       const size = props.shrink ? FTableColumnSize.SHRINK : FTableColumnSize.EXPAND;
-      const header2 = isHeader();
-      if (header2) {
+      isHeader.value = isTableHeader();
+      if (isHeader.value) {
         addColumn2({
           name: props.name,
           title: props.title,
@@ -11486,10 +11489,9 @@ var _sfc_main$N = /* @__PURE__ */ defineComponent({
           sort: FTableColumnSort.UNSORTED
         });
       }
-      renderElement.value = renderColumns && !header2;
-      internalVisible.value = props.visible;
+      hasMounted.value = true;
     });
-    function isHeader() {
+    function isTableHeader() {
       if (!el.value || !(el.value instanceof HTMLElement)) {
         return false;
       }
@@ -11497,7 +11499,7 @@ var _sfc_main$N = /* @__PURE__ */ defineComponent({
       return (closest == null ? void 0 : closest.tagName) === "THEAD";
     }
     return (_ctx, _cache) => {
-      return renderElement.value && internalVisible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
+      return renderElement.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
         key: 0,
         ref: "element",
         class: classes.value,

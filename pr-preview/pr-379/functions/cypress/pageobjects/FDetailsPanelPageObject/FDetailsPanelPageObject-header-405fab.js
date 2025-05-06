@@ -28,13 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-content.vue:FDetailsPanelPageObject-content-f78fcd.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-header.vue:FDetailsPanelPageObject-header-405fab.js
 import { defineComponent as _defineComponent } from "vue";
 import { onMounted } from "vue";
 import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject-content",
+  __name: "FDetailsPanelPageObject-header",
   setup(__props, { expose: __expose }) {
     __expose();
     onMounted(() => {
@@ -54,8 +54,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
     left: _withCtx(() => [
       _createVNode($setup["FDetailsPanel"], { name: "awesome-panel" }, {
-        default: _withCtx(({ content }) => [
-          _createElementVNode("div", { slot: content }, "Lorem ipsum", 8, _hoisted_1)
+        default: _withCtx(({ header }) => [
+          _createElementVNode("h2", { slot: header }, "Lorem ipsum", 8, _hoisted_1)
         ]),
         _: 1
         /* STABLE */
@@ -71,7 +71,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f78fcd"
+  selector: "#example-405fab"
 });
 export {
   render

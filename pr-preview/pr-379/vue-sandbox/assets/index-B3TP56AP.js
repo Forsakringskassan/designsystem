@@ -19269,7 +19269,7 @@ function FTableInjected() {
     addColumn: inject("addColumn"),
     setVisibilityColumn: inject("setVisibilityColumn"),
     textFieldTableMode: true,
-    renderColumns: inject("renderColumns", false)
+    renderColumns: inject("renderColumns", ref(false))
   };
 }
 /* @__PURE__ */ defineComponent({
@@ -19371,8 +19371,8 @@ function FTableInjected() {
       setVisibilityColumn: setVisibilityColumn2,
       addColumn: addColumn2
     } = FTableInjected();
-    const internalVisible = ref(true);
-    const renderElement = ref(true);
+    const hasMounted = ref(false);
+    const isHeader = ref(false);
     const id = ElementIdService.generateElementId("column");
     const el = useTemplateRef("element");
     const props = __props;
@@ -19389,8 +19389,11 @@ function FTableInjected() {
         return "td";
       }
     });
+    const renderElement = computed(() => {
+      const shouldRender = !isHeader.value && renderColumns.value && props.visible;
+      return !hasMounted.value || shouldRender;
+    });
     watch(() => props.visible, () => {
-      internalVisible.value = props.visible;
       setVisibilityColumn2(id, props.visible);
     });
     onMounted(() => {
@@ -19398,8 +19401,8 @@ function FTableInjected() {
         throw new Error("Table cannot have both shrink and expand enabled at the same time");
       }
       const size = props.shrink ? FTableColumnSize.SHRINK : FTableColumnSize.EXPAND;
-      const header2 = isHeader();
-      if (header2) {
+      isHeader.value = isTableHeader();
+      if (isHeader.value) {
         addColumn2({
           name: props.name,
           title: props.title,
@@ -19412,10 +19415,9 @@ function FTableInjected() {
           sort: FTableColumnSort.UNSORTED
         });
       }
-      renderElement.value = renderColumns && !header2;
-      internalVisible.value = props.visible;
+      hasMounted.value = true;
     });
-    function isHeader() {
+    function isTableHeader() {
       if (!el.value || !(el.value instanceof HTMLElement)) {
         return false;
       }
@@ -19423,7 +19425,7 @@ function FTableInjected() {
       return (closest == null ? void 0 : closest.tagName) === "THEAD";
     }
     return (_ctx, _cache) => {
-      return renderElement.value && internalVisible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
+      return renderElement.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
         key: 0,
         ref: "element",
         class: classes.value,
