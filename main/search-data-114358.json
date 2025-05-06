@@ -71,6 +71,8 @@
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
     "focus-indicator() mixin",
     "Validation Plugin",
     "Translation Plugin",
@@ -79,8 +81,6 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
-    "EventBus",
-    "EventBus",
     "i18next",
     "i18nextProvider",
     "I18nextProvider",
@@ -243,12 +243,12 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
+    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -553,6 +553,13 @@
       "terms": []
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": []
@@ -583,13 +590,6 @@
       "terms": [
         "ErrorPlugin",
         "FErrorHandlingApp"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
       ]
     },
     {
@@ -1234,11 +1234,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -1261,6 +1256,11 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -1412,13 +1412,13 @@
     "69": 48,
     "70": 49,
     "71": 50,
-    "72": 51,
-    "73": 52,
-    "74": 53,
-    "75": 54,
-    "76": 55,
+    "72": 50,
+    "73": 51,
+    "74": 52,
+    "75": 53,
+    "76": 54,
     "77": 55,
-    "78": 55,
+    "78": 56,
     "79": 56,
     "80": 56,
     "81": 57,
