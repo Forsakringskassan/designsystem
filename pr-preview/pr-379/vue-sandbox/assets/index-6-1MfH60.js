@@ -15091,6 +15091,8 @@ function includeItem(item, itemList, compareAttribute) {
 }
 var TableScroll = /* @__PURE__ */ ((TableScroll2) => {
   TableScroll2["HORIZONTAL"] = "horizontal";
+  TableScroll2["VERTICAL"] = "vertical";
+  TableScroll2["BOTH"] = "both";
   TableScroll2["NONE"] = "none";
   return TableScroll2;
 })(TableScroll || {});
@@ -15099,6 +15101,14 @@ const scrollClasses = {
     "horizontal"
     /* HORIZONTAL */
   ]: ["table__scroll", "table__scroll--horizontal"],
+  [
+    "vertical"
+    /* VERTICAL */
+  ]: ["table__scroll", "table__scroll--vertical"],
+  [
+    "both"
+    /* BOTH */
+  ]: ["table__scroll", "table__scroll--horizontal", "table__scroll--vertical"],
   [
     "none"
     /* NONE */
@@ -20796,6 +20806,8 @@ const _hoisted_8$5 = ["colspan"];
      * Can be one of the following values:
      *
      * - `"horizontal"`: Enables horizontal scrolling
+     * - `"vertical"`: Enables vertical scrolling
+     * - `"both"`: Enables scrolling in both directions
      * - `"none"`: Disables scrolling (default)
      */
     scroll: {
@@ -21319,6 +21331,8 @@ const _hoisted_22 = ["colspan"];
      * Can be one of the following values:
      *
      * - `"horizontal"`: Enables horizontal scrolling
+     * - `"vertical"`: Enables vertical scrolling
+     * - `"both"`: Enables scrolling in both directions
      * - `"none"`: Disables scrolling (default)
      */
     scroll: {

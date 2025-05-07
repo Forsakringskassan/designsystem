@@ -5806,19 +5806,18 @@ input[type=search]:focus,
 }
 .table__scroll {
   margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));
-  overflow: hidden;
+}
+.table__scroll thead th,
+.table__scroll thead td,
+.table__scroll tbody th,
+.table__scroll tbody td {
+  white-space: nowrap;
 }
 .table__scroll .table {
   margin: 0;
 }
 .table__scroll--horizontal {
   overflow-x: auto;
-}
-.table__scroll--horizontal thead th,
-.table__scroll--horizontal thead td,
-.table__scroll--horizontal tbody th,
-.table__scroll--horizontal tbody td {
-  white-space: nowrap;
 }
 .table__input {
   margin-top: calc(0.25rem * var(--f-density-factor));
@@ -6770,13 +6769,56 @@ input[type=search]:focus,
 body {
   font-family: var(--f-font-family);
 }
-.sandbox-root {
-    width: min(100% - 2rem, 80ch);
-    margin: auto;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
-h1 {
-    margin-top: 2rem;
+
+main {
+  padding: 1rem;
 }
-hr {
-    margin-bottom: 2rem;
+.contextbar[data-v-f3c4fc0f] {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+.contextbar__forman[data-v-f3c4fc0f] {
+    font-weight: bold;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+[data-v-c333d540]::part(grid awesome-layout) {
+    grid-template:
+        "header header header" min-content
+        "left contextbar contextbar" min-content
+        "left toolbar toolbar" min-content
+        "left content right" 1fr
+        / min-content 1fr;
+}
+[data-v-c333d540]::part(area header) {
+    --f-page-layout-background: var(--f-background-pageheader-primary);
+    --f-page-layout-color: var(--fkds-color-text-inverted);
+}
+[data-v-c333d540]::part(area contextbar) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-c333d540]::part(area toolbar) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-c333d540]::part(area left) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-c333d540]::part(area right) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
 }

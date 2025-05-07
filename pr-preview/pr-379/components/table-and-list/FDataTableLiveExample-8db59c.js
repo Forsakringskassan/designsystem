@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue:FDataTableLiveExample-64e553.js
+// virtual-entry:virtual:packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue:FDataTableLiveExample-8db59c.js
 import { defineComponent } from "vue";
 import { FCheckboxField, FDataTable, FFieldset, FRadioField, FTableColumn } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
@@ -42,10 +42,10 @@ var exampleComponent = defineComponent({
       isStriped: false,
       hasRowHeader: false,
       hasRowDescription: false,
-      forceHorizontalScroll: false,
       hasCustomEmptyText: false,
       hasHiddenCaption: false,
-      emptyItems: []
+      emptyItems: [],
+      showHorizontalScroll: false
     };
   },
   computed: {
@@ -96,7 +96,7 @@ var exampleComponent = defineComponent({
       return this.hasRowDescription ? `description="(\xE5\xE5\xE5\xE5-mm-dd)"` : "";
     },
     scroll() {
-      return this.forceHorizontalScroll ? `scroll="horizontal"` : "";
+      return this.showHorizontalScroll ? `scroll="horizontal"` : "";
     },
     caption() {
       return this.hasHiddenCaption ? `<span class="sr-only">F\xF6r\xE4ldrapenning</span>` : "F\xF6r\xE4ldrapenning";
@@ -206,8 +206,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
-            modelValue: _ctx.forceHorizontalScroll,
-            "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.forceHorizontalScroll = $event),
+            modelValue: _ctx.showHorizontalScroll,
+            "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.showHorizontalScroll = $event),
             value: true
           }, {
             default: _withCtx(() => _cache[13] || (_cache[13] = [
@@ -282,7 +282,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-64e553"
+  selector: "#example-8db59c"
 });
 export {
   render
