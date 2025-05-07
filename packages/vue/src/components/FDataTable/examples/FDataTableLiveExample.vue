@@ -1,19 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import {
-    FCheckboxField,
-    FDataTable,
-    FFieldset,
-    FRadioField,
-    FSelectField,
-    FTableColumn,
-    TableScroll,
-} from "@fkui/vue";
+import { FCheckboxField, FDataTable, FFieldset, FRadioField, FTableColumn } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
     name: "FDataTableLiveExample",
-    components: { LiveExample, FCheckboxField, FRadioField, FSelectField, FFieldset },
+    components: { LiveExample, FCheckboxField, FRadioField, FFieldset },
     data() {
         return {
             isEmpty: false,
@@ -23,7 +15,7 @@ export default defineComponent({
             hasCustomEmptyText: false,
             hasHiddenCaption: false,
             emptyItems: [],
-            scroll: "none" as TableScroll,
+            showHorizontalScroll: false,
         };
     },
     computed: {
@@ -75,6 +67,9 @@ export default defineComponent({
         rowDescription(): string {
             return this.hasRowDescription ? `description="(åååå-mm-dd)"` : "";
         },
+        scroll(): string {
+            return this.showHorizontalScroll ? `scroll="horizontal"` : "";
+        },
 
         caption(): string {
             return this.hasHiddenCaption
@@ -88,9 +83,8 @@ export default defineComponent({
             return this.isEmpty && this.hasCustomEmptyText ? template : "";
         },
         template(): string {
-            const scroll = this.scroll !== "none" ? `scroll="${this.scroll}"` : "";
             return /* HTML */ `
-                <f-data-table ${this.items} ${this.striped} ${scroll} key-attribute="id">
+                <f-data-table ${this.items} ${this.striped} ${this.scroll} key-attribute="id">
                     <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
                         <f-table-column title="Nivå" ${this.rowHeader} type="text">
@@ -135,6 +129,9 @@ export default defineComponent({
             <f-checkbox-field v-model="hasHiddenCaption" :value="true">
                 Dold caption
             </f-checkbox-field>
+            <f-checkbox-field v-model="showHorizontalScroll" :value="true">
+                Horisontal skroll
+            </f-checkbox-field>
         </f-fieldset>
 
         <!-- Interaktion -->
@@ -151,16 +148,5 @@ export default defineComponent({
                 </f-radio-field>
             </f-fieldset>
         </f-fieldset>
-
-        <!-- Skroll-->
-        <f-select-field v-model="scroll">
-            <template #label> Skroll </template>
-            <template #default>
-                <option value="none">Inaktiv</option>
-                <option value="horizontal">Horisontal</option>
-                <option value="vertical">Vertikal</option>
-                <option value="both">Båda</option>
-            </template>
-        </f-select-field>
     </live-example>
 </template>
