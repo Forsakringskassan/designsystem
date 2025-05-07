@@ -28,14 +28,21 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue:FDataTableLiveExample-8db59c.js
+// virtual-entry:virtual:packages/vue/src/components/FDataTable/examples/FDataTableLiveExample.vue:FDataTableLiveExample-5119c5.js
 import { defineComponent } from "vue";
-import { FCheckboxField, FDataTable, FFieldset, FRadioField, FTableColumn } from "@fkui/vue";
+import {
+  FCheckboxField,
+  FDataTable,
+  FFieldset,
+  FRadioField,
+  FSelectField,
+  FTableColumn
+} from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode } from "vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createElementVNode as _createElementVNode } from "vue";
 var exampleComponent = defineComponent({
   name: "FDataTableLiveExample",
-  components: { LiveExample, FCheckboxField, FRadioField, FFieldset },
+  components: { LiveExample, FCheckboxField, FRadioField, FSelectField, FFieldset },
   data() {
     return {
       isEmpty: false,
@@ -45,7 +52,7 @@ var exampleComponent = defineComponent({
       hasCustomEmptyText: false,
       hasHiddenCaption: false,
       emptyItems: [],
-      showHorizontalScroll: false
+      scroll: "none"
     };
   },
   computed: {
@@ -95,9 +102,6 @@ var exampleComponent = defineComponent({
     rowDescription() {
       return this.hasRowDescription ? `description="(\xE5\xE5\xE5\xE5-mm-dd)"` : "";
     },
-    scroll() {
-      return this.showHorizontalScroll ? `scroll="horizontal"` : "";
-    },
     caption() {
       return this.hasHiddenCaption ? `<span class="sr-only">F\xF6r\xE4ldrapenning</span>` : "F\xF6r\xE4ldrapenning";
     },
@@ -111,10 +115,11 @@ var exampleComponent = defineComponent({
       return this.isEmpty && this.hasCustomEmptyText ? template : "";
     },
     template() {
+      const scroll = this.scroll !== "none" ? `scroll="${this.scroll}"` : "";
       return (
         /* HTML */
         `
-                <f-data-table ${this.items} ${this.striped} ${this.scroll} key-attribute="id">
+                <f-data-table ${this.items} ${this.striped} ${scroll} key-attribute="id">
                     <template #caption> ${this.caption} </template>
                     <template #default="{ row }">
                         <f-table-column title="Niv\xE5" ${this.rowHeader} type="text">
@@ -149,6 +154,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_checkbox_field = _resolveComponent("f-checkbox-field");
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   const _component_f_radio_field = _resolveComponent("f-radio-field");
+  const _component_f_select_field = _resolveComponent("f-select-field");
   const _component_live_example = _resolveComponent("live-example");
   return _openBlock(), _createBlock(_component_live_example, {
     components: _ctx.components,
@@ -204,33 +210,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             ])),
             _: 1
             /* STABLE */
-          }, 8, ["modelValue"]),
-          _createVNode(_component_f_checkbox_field, {
-            modelValue: _ctx.showHorizontalScroll,
-            "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.showHorizontalScroll = $event),
-            value: true
-          }, {
-            default: _withCtx(() => _cache[13] || (_cache[13] = [
-              _createTextVNode(" Horisontal skroll ")
-            ])),
-            _: 1
-            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1
         /* STABLE */
       }),
       _createVNode(_component_f_fieldset, { name: "interaktion" }, {
-        label: _withCtx(() => _cache[14] || (_cache[14] = [
+        label: _withCtx(() => _cache[13] || (_cache[13] = [
           _createTextVNode(" Interaktion ")
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.isEmpty,
-            "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.isEmpty = $event),
+            "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isEmpty = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[15] || (_cache[15] = [
+            default: _withCtx(() => _cache[14] || (_cache[14] = [
               _createTextVNode(" Tom tabell ")
             ])),
             _: 1
@@ -240,16 +235,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             key: 0,
             name: "radio-empty-text"
           }, {
-            label: _withCtx(() => _cache[16] || (_cache[16] = [
+            label: _withCtx(() => _cache[15] || (_cache[15] = [
               _createTextVNode(" Meddelande f\xF6r tom tabell ")
             ])),
             default: _withCtx(() => [
               _createVNode(_component_f_radio_field, {
                 modelValue: _ctx.hasCustomEmptyText,
-                "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasCustomEmptyText = $event),
+                "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.hasCustomEmptyText = $event),
                 value: false
               }, {
-                default: _withCtx(() => _cache[17] || (_cache[17] = [
+                default: _withCtx(() => _cache[16] || (_cache[16] = [
                   _createTextVNode(" Standardmeddelande ")
                 ])),
                 _: 1
@@ -257,10 +252,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               }, 8, ["modelValue"]),
               _createVNode(_component_f_radio_field, {
                 modelValue: _ctx.hasCustomEmptyText,
-                "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasCustomEmptyText = $event),
+                "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasCustomEmptyText = $event),
                 value: true
               }, {
-                default: _withCtx(() => _cache[18] || (_cache[18] = [
+                default: _withCtx(() => _cache[17] || (_cache[17] = [
                   _createTextVNode(" Eget meddelande ")
                 ])),
                 _: 1
@@ -273,7 +268,47 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 1
         /* STABLE */
-      })
+      }),
+      _createVNode(_component_f_select_field, {
+        modelValue: _ctx.scroll,
+        "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.scroll = $event)
+      }, {
+        label: _withCtx(() => _cache[18] || (_cache[18] = [
+          _createTextVNode(" Skroll ")
+        ])),
+        default: _withCtx(() => _cache[19] || (_cache[19] = [
+          _createElementVNode(
+            "option",
+            { value: "none" },
+            "Inaktiv",
+            -1
+            /* HOISTED */
+          ),
+          _createElementVNode(
+            "option",
+            { value: "horizontal" },
+            "Horisontal",
+            -1
+            /* HOISTED */
+          ),
+          _createElementVNode(
+            "option",
+            { value: "vertical" },
+            "Vertikal",
+            -1
+            /* HOISTED */
+          ),
+          _createElementVNode(
+            "option",
+            { value: "both" },
+            "B\xE5da",
+            -1
+            /* HOISTED */
+          )
+        ])),
+        _: 1
+        /* STABLE */
+      }, 8, ["modelValue"])
     ]),
     _: 1
     /* STABLE */
@@ -282,7 +317,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8db59c"
+  selector: "#example-5119c5"
 });
 export {
   render
