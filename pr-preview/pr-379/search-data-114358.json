@@ -204,6 +204,11 @@
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
+    "Version 6 migreringsguide: @fkui/vue",
+    "Version 6 migreringsguide",
+    "Version 6 migreringsguide: @fkui/logic",
+    "Version 6 migreringsguide: @fkui/design",
+    "Version 6 migreringsguide: Cypress Pageobjects",
     "openModal",
     "formModal() function",
     "confirmModal() function",
@@ -224,11 +229,6 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
-    "Version 6 migreringsguide: @fkui/vue",
-    "Version 6 migreringsguide",
-    "Version 6 migreringsguide: @fkui/logic",
-    "Version 6 migreringsguide: @fkui/design",
-    "Version 6 migreringsguide: Cypress Pageobjects",
     "ValidationErrorMessageBuilder: map() method",
     "ValidationErrorMessageBuilder: mapCombined() method",
     "ValidationErrorMessageBuilder: create() function",
@@ -1039,6 +1039,31 @@
       ]
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
+      "title": "Version 6 migreringsguide: @fkui/vue",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
+      "title": "Version 6 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
+      "title": "Version 6 migreringsguide: @fkui/logic",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/design.html",
+      "title": "Version 6 migreringsguide: @fkui/design",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
+      "title": "Version 6 migreringsguide: Cypress Pageobjects",
+      "terms": []
+    },
+    {
       "url": "functions/functions/modal-functions/open-modal.html",
       "title": "openModal",
       "terms": []
@@ -1136,31 +1161,6 @@
     {
       "url": "functions/functions/dom-functions/find-element-from-vue-ref.html",
       "title": "findElementFromVueRef",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
-      "title": "Version 6 migreringsguide: @fkui/vue",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
-      "title": "Version 6 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
-      "title": "Version 6 migreringsguide: @fkui/logic",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/design.html",
-      "title": "Version 6 migreringsguide: @fkui/design",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
-      "title": "Version 6 migreringsguide: Cypress Pageobjects",
       "terms": []
     },
     {

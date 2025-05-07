@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-f1e6da.json"
+            href="../../search-data-114358.json"
             as="fetch"
             crossorigin
-            integrity="sha384-WX7czRrpapMyTLu1YUNxsG8yol8fBRD2aocV13jb/hahhdMl5C1tHv9oqaAwgdTD"
+            integrity="sha384-lwlM3iIBzww37AqjkaXhXtjZH8cV/GkZmik1ZVCjWcgdEqjLDL4GgoyGM1gJ2OFi"
             id="search-data"
         />
     </head>
@@ -1058,19 +1058,19 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/1d9be256bd65c87d0028011f3b4db91d201a47d9/packages/vue/src/components/FDataTable/FDataTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/76627150942c3215a80882c61b522c0a4b101939/packages/vue/src/components/FDataTable/FDataTable.vue">
                 FDataTable
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/1d9be256bd65c87d0028011f3b4db91d201a47d9/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/76627150942c3215a80882c61b522c0a4b101939/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
                 FInteractiveTable
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/1d9be256bd65c87d0028011f3b4db91d201a47d9/packages/vue/src/components/FTableColumn/FTableColumn.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/76627150942c3215a80882c61b522c0a4b101939/packages/vue/src/components/FTableColumn/FTableColumn.vue">
                 FTableColumn
             </a>
             
@@ -1209,13 +1209,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-d06eec"></div>
+        <div id="example-e11e42"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTableLiveExample-d06eec.js"></script>
+        <script type="module" src="./FInteractiveTableLiveExample-e11e42.js"></script>
     
                 </div>
             <h3 id="anvandning--1"><a class="header-anchor" href="#anvandning--1">Användning</a></h3><p class="docs-paragraph">Komponenten har en prop <code>rows</code> som du sätter till de rader som ska presenteras.</p>
@@ -1650,7 +1650,7 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
 <li>Text i en tabellcell ska i regel vara vänsterställd. Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.</li>
 <li>Använd zebra-randiga rader när du har långa och många rader.  Det gör det enklare att visuellt skanna av tabellen och följa rader.</li>
 </ul>
-<h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p class="docs-paragraph">För att lägga till horisontal skroll i tabell använder du prop <code>scroll</code>:</p>
+<h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p class="docs-paragraph">För att lägga till skroll i tabell använder du prop <code>scroll</code>:</p>
 
                 <div
                     id="example-2b294c"
@@ -1668,35 +1668,11 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
  &lt;/f-data-table&gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Vertikal skroll kräver att tabellen kapslas in av en <code>div</code> med styling för <code>height</code> och <code>overflow-y</code>:</p>
-
-                <div
-                    id="example-562138"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+&lt;div class=&quot;example-force-vertical-scroll&quot;&gt;</span>
-    &lt;f-data-table&gt;
-        ...
-    &lt;/f-data-table&gt;
-<span class="hljs-addition">+&lt;/div&gt;</span>
-
-&lt;style&gt;
-<span class="hljs-addition">+   .example-force-vertical-scroll {</span>
-<span class="hljs-addition">+       height: 200px;</span>
-<span class="hljs-addition">+       overflow-y: auto;</span>
-<span class="hljs-addition">+   }</span>
-&lt;/style&gt;
-</code></pre>
-                </div>
             <h3 id="tomt_lage_i_tabellen"><a class="header-anchor" href="#tomt_lage_i_tabellen">Tomt läge i tabellen</a></h3><p class="docs-paragraph">Texten för en tom tabell går att anpassas till att bättre passa innehållet, till exempel &quot;Det finns inga betalningar&quot;, &quot;Ingen anslutning finns&quot;
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-aea20a"
+                    id="example-4766e1"
                     class="code-preview code-preview--default"
                     
                     
@@ -1718,7 +1694,7 @@ Texten sätts i slot <code>#empty</code>:</p>
 Texten bör innehålla något som tydligt identifierar raden från andra rader.</p>
 
                 <div
-                    id="example-26dc6f"
+                    id="example-b72539"
                     class="code-preview code-preview--default"
                     
                     
@@ -1741,7 +1717,7 @@ Texten bör innehålla något som tydligt identifierar raden från andra rader.<
                 </div>
             
                 <div
-                    id="example-e31da3"
+                    id="example-7308f7"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1763,7 +1739,7 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
 <p class="docs-paragraph">Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.</p>
 
                 <div
-                    id="example-c92a8e"
+                    id="example-83c399"
                     class="code-preview code-preview--default"
                     
                     
@@ -1782,7 +1758,7 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
                 </div>
             
                 <div
-                    id="example-b29ee3"
+                    id="example-aba62f"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1810,7 +1786,7 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
 Det är ett fel att sätta både <code>expand</code> och <code>shrink</code> samtidigt.</p>
 
                 <div
-                    id="example-cfbe2a"
+                    id="example-dda7fb"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="live-example"
@@ -1836,7 +1812,7 @@ Det är ett fel att sätta både <code>expand</code> och <code>shrink</code> sam
 <p class="docs-paragraph">Typen anges genom att sätta propen <code>type</code>:</p>
 
                 <div
-                    id="example-ee9bf8"
+                    id="example-fdfaee"
                     class="code-preview code-preview--default"
                     
                     
@@ -2791,9 +2767,9 @@ Requires <code>selectable</code> to be set.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/1d9be256bd65c87d0028011f3b4db91d201a47d9">1d9be25</a>)<br />
+<div class="footer__right"><div class="version">fix/vertical-table-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/76627150942c3215a80882c61b522c0a4b101939">7662715</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/379">PR 379</a><br />
-        2025-05-07 13:29
+        2025-05-07 13:50
 </div>
 <div class="toolbar__item">
     <form id="version">
