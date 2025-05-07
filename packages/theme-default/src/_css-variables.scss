@@ -268,9 +268,7 @@
     --f-button-letter-spacing: 0.01rem;
     --f-button-default-line-height: 1.5rem;
     --f-button-discrete-radius-hover: none;
-    --f-button-discrete-table-column-action-margin: 0;
-    --f-button-discrete-table-column-action-border-radius: #{$_f-border-radius-medium};
-    --f-button-discrete-table-column-action-icon-margin: 0 2px 0 2px;
+    --f-button-tertiary-table-column-action-icon-margin: 0 2px 0 2px;
     --f-button-tertiary-table-column-action-margin: 0 0 0 0.5rem;
 
     $_f-button-default-padding-top: 1rem;
@@ -317,11 +315,6 @@
     --f-button-discrete-black-padding-right: #{$_f-button-discrete-padding-right};
     --f-button-discrete-black-padding-bottom: #{$_f-button-discrete-padding-bottom};
     --f-button-discrete-black-padding-left: #{$_f-button-discrete-padding-left};
-
-    --f-button-discrete-table-column-action-padding-top: 0.571rem;
-    --f-button-discrete-table-column-action-padding-right: 0.571rem;
-    --f-button-discrete-table-column-action-padding-bottom: 0.571rem;
-    --f-button-discrete-table-column-action-padding-left: 0.571rem;
 
     --f-modal-close-button-margin: 1rem 1rem 0;
     --f-modal-close-button-padding: none;

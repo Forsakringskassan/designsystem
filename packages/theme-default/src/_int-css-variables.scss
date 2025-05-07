@@ -114,8 +114,6 @@
     --f-button-letter-spacing: normal;
     --f-button-default-line-height: calc(1.25 * 1rem);
     --f-button-discrete-radius-hover: 3rem;
-    --f-button-discrete-table-column-action-margin: 0 0 0 0.9rem;
-    --f-button-discrete-table-column-action-border-radius: 0.4rem;
     --f-button-default-padding-top: #{$_f-button-default-padding-top};
     --f-button-default-padding-right: #{$_f-button-default-padding-right};
     --f-button-default-padding-bottom: #{$_f-button-default-padding-bottom};
@@ -140,10 +138,6 @@
     --f-button-discrete-black-padding-right: 0.4rem;
     --f-button-discrete-black-padding-bottom: 0.4rem;
     --f-button-discrete-black-padding-left: 0.4rem;
-    --f-button-discrete-table-column-action-padding-top: 0.2rem;
-    --f-button-discrete-table-column-action-padding-right: 0.2rem;
-    --f-button-discrete-table-column-action-padding-bottom: 0.2rem;
-    --f-button-discrete-table-column-action-padding-left: 0.2rem;
 
     --f-expandable-panel-heading-border-close: 1px solid #{$f-border-color-expandable-panel-closed};
     --f-expandable-panel-heading-border-open: 1px solid #{$f-border-color-panel};

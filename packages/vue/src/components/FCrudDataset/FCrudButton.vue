@@ -75,7 +75,7 @@ function executeAction(): void {
 </script>
 
 <template>
-    <button type="button" class="button button--small button--tertiary" @click="executeAction">
+    <button type="button" class="button table__button" @click="executeAction">
         <f-icon v-if="iconName" class="button__icon" :name="iconName"></f-icon>
         <span v-if="!props.label" class="sr-only">
             <!--

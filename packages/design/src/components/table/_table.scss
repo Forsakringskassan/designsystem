@@ -258,30 +258,16 @@ $table-input-offset-horizontal: 0.25rem;
                 padding-left: size.$padding-150;
             }
 
-            // remove margin and reduce padding on buttons
-            &--action .button--discrete {
-                border-radius: var(--f-button-discrete-table-column-action-border-radius);
-                margin: var(--f-button-discrete-table-column-action-margin);
-                /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
-                padding-top: densify(var(--f-button-discrete-table-column-action-padding-top));
-                padding-right: var(--f-button-discrete-table-column-action-padding-right);
-                padding-bottom: densify(var(--f-button-discrete-table-column-action-padding-bottom));
-                padding-left: var(--f-button-discrete-table-column-action-padding-left);
-                /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-                min-width: 24px;
-                width: max-content;
-            }
-
+            &--action .button--discrete,
             &--action .button--tertiary {
                 margin: var(--f-button-tertiary-table-column-action-margin);
                 min-width: 24px;
                 width: max-content;
-            }
 
-            &--action .button--discrete .button__icon,
-            &--action .button--tertiary .button__icon {
-                margin: var(--f-button-discrete-table-column-action-icon-margin);
-                transform: translate(0, 10%);
+                .button__icon {
+                    margin: var(--f-button-tertiary-table-column-action-icon-margin);
+                    transform: translate(0, 10%);
+                }
             }
         }
     }
