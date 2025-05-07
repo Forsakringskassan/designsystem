@@ -14,11 +14,11 @@ exports[`snapshot should match snapshot 1`] = `
       <tr>
         <td>1</td>
         <td>a</td>
-        <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
+        <td><button type="button" class="button table__button" id="modifyButton">
             <!--v-if-->
             <!--v-if-->Ändra
           </button></td>
-        <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
+        <td><button type="button" class="button table__button" id="deleteButton">
             <!--v-if-->
             <!--v-if-->Ta bort
           </button></td>
@@ -26,11 +26,11 @@ exports[`snapshot should match snapshot 1`] = `
       <tr>
         <td>2</td>
         <td>b</td>
-        <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
+        <td><button type="button" class="button table__button" id="modifyButton">
             <!--v-if-->
             <!--v-if-->Ändra
           </button></td>
-        <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
+        <td><button type="button" class="button table__button" id="deleteButton">
             <!--v-if-->
             <!--v-if-->Ta bort
           </button></td>
@@ -38,11 +38,11 @@ exports[`snapshot should match snapshot 1`] = `
       <tr>
         <td>3</td>
         <td>c</td>
-        <td><button type="button" class="button button--small button--tertiary" id="modifyButton">
+        <td><button type="button" class="button table__button" id="modifyButton">
             <!--v-if-->
             <!--v-if-->Ändra
           </button></td>
-        <td><button type="button" class="button button--small button--tertiary" id="deleteButton">
+        <td><button type="button" class="button table__button" id="deleteButton">
             <!--v-if-->
             <!--v-if-->Ta bort
           </button></td>
