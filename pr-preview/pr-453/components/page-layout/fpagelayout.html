@@ -25,22 +25,22 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-a0b4a4.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-f2721d.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-a0b4a4.js": "sha384-Tidmkz6+eBtcuO5nTwsd0MxCx7HKVrWjqAsOds5lF3djI90kcY1/vvEdBAiovT+m",
+    "../../assets/vendor-fkui-vue-f2721d.js": "sha384-5vdrJ36EGeEcgC7K1ObuMXCV9W0KDhsL6BzklB9h82mM74aIBGikS8+bj1CHFAGx",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
         </script><script
-            src="../../assets/bootstrap-956ec3.js"
+            src="../../assets/bootstrap-5b0e6e.js"
             
             crossorigin
-            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            integrity="sha384-kGP2A4LFI4CNwztBKqOla524cwTlhYuNFsx/6foX7fdioP3nxHwqF6vcvJFMia/Q"
             
         ></script><script>
     (() => {
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-041166.json"
+            href="../../search-data-e09fdf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-rh2lBmrq0gilpRfXBA9aKbLvZ7M95tADESOM7wEg+EJXDJhwC/0t7QgmUzS4nak3"
+            integrity="sha384-bucjb16dz+fAjruQV0U6Fn0Vc88iqHekXzr8QXV9KgbXSJdf1SWFvZKghqTweQyq"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b1ed85af36539b0ea260713f0f8cf26832646e96/packages/vue/src/components/FPageLayout/FPageLayout.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/0ebbd25dee3904beb17bc915b4759f7737bbaebf/packages/vue/src/components/FPageLayout/FPageLayout.vue">
                 FPageLayout
             </a>
             
@@ -1089,6 +1089,8 @@
                                 
                                 <li><a href="#egen_layout">Egen layout</a></li>
                                 
+                                <li><a href="#relaterat">Relaterat</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -1106,9 +1108,10 @@
 <p class="docs-paragraph">Applikationsmallen erbjuder olika layouter för att dela upp en applikation som täcker hela skärmen i ytor.
 Du kan utgå från en av fyra standardlayouter eller skapa en egen.
 Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en yta styrs av vad som placeras i ytan.</p>
+<p class="docs-paragraph">Se också <a href="../../examples/page-layout">exempelapplikation för Applikationsmall</a> (<a href="https://github.com/Forsakringskassan/designsystem/tree/main/examples/page-layout">källkod</a>) för en komplett applikation.</p>
 <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2>
             <div
-                id="example-6e2196"
+                id="example-ffac43"
                 class="code-preview code-preview--default"
                 data-test="example"
                 
@@ -1116,40 +1119,40 @@ Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en 
             >
                 <!-- [html-validate-disable-block unique-landmark, no-multiple-main, heading-level -- clashes with site layout] -->
                 <div class="code-preview__preview">
-        <div id="example-b2ae8a"></div>
+        <div id="example-af8970"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.my-header[data-v-b2ae8a] {
+.my-header[data-v-af8970] {
     background: darkred;
     color: white;
     padding: 1rem;
 }
-.my-footer[data-v-b2ae8a] {
+.my-footer[data-v-af8970] {
     background: cyan;
     color: black;
     padding: 1rem;
 }
-.my-left-panel[data-v-b2ae8a] {
+.my-left-panel[data-v-af8970] {
     background: greenyellow;
     padding: 1rem;
     flex-grow: 1;
     width: 25cqw;
 }
-.my-right-panel[data-v-b2ae8a] {
+.my-right-panel[data-v-af8970] {
     background: hotpink;
     padding: 1rem;
     flex-grow: 1;
     width: 25cqw;
 }
-.my-content[data-v-b2ae8a] {
+.my-content[data-v-af8970] {
     flex-grow: 1;
     padding: 1rem;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FPageLayoutExample-b2ae8a.js"></script>
+        <script type="module" src="./FPageLayoutExample-af8970.js"></script>
     </div>
                 <div>
             <button
@@ -1221,7 +1224,7 @@ Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en 
         <p class="docs-paragraph">Vilken layout som används bestäms av <code>layout</code>-propen:</p>
 
                 <div
-                    id="example-b10ec3"
+                    id="example-bebf7e"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1236,7 +1239,7 @@ Ytans innehåll fylls med hjälp av Vue slots med motsvarande namn.</p>
 <p class="docs-paragraph">För att fylla ytan <code>header</code> med innehåll:</p>
 
                 <div
-                    id="example-fcfa62"
+                    id="example-61f735"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1277,7 +1280,7 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
 <h2 id="standardlayouter"><a class="header-anchor" href="#standardlayouter">Standardlayouter</a></h2><p class="docs-paragraph">Följande förkonfigurerade layouter följer med som standard:</p>
 
                 <div
-                    id="example-3bf378"
+                    id="example-284b46"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="borderless nomarkup"
@@ -1285,56 +1288,57 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
                 >
                     <!-- [html-validate-disable-block unique-landmark, no-multiple-main, heading-level -- clashes with site layout] -->
                     <div class="code-preview__preview">
-        <div id="example-932ac4"></div>
+        <div id="example-be68ea"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.wrapper[data-v-932ac4] {
+.wrapper[data-v-be68ea] {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
-.layout-container[data-v-932ac4] {
+.layout-container[data-v-be68ea] {
     container-type: size;
     aspect-ratio: 16 / 9;
     max-height: 230px;
     border: 2px dashed #777;
     padding: 1px;
 }
-.area[data-v-932ac4] {
+.area[data-v-be68ea] {
     padding: 0.5rem;
     align-content: center;
     text-align: center;
 }
-.header[data-v-932ac4] {
+.header[data-v-be68ea] {
     background: darkred;
     color: white;
 }
-.footer[data-v-932ac4] {
+.footer[data-v-be68ea] {
     background: cyan;
     color: black;
 }
-.left-panel[data-v-932ac4] {
+.left-panel[data-v-be68ea] {
     background: greenyellow;
     flex-grow: 1;
     width: 25cqw;
 }
-.right-panel[data-v-932ac4] {
+.right-panel[data-v-be68ea] {
     background: hotpink;
     flex-grow: 1;
     width: 25cqw;
 }
-.content[data-v-932ac4] {
+.content[data-v-be68ea] {
     flex-grow: 1;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FPageLayoutPredefined-932ac4.js"></script>
+        <script type="module" src="./FPageLayoutPredefined-be68ea.js"></script>
     </div>
                 </div>
             <h2 id="egen_layout"><a class="header-anchor" href="#egen_layout">Egen layout</a></h2><p class="docs-paragraph">Utöver förkonfigurerade layouter kan man skapa en egen.</p>
 <p class="docs-paragraph">Läs mer om att <a href="../../guides/custom-page-layout.html">skapa egen layout</a>.</p>
+<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../examples/page-layout">Applikationslayout exempelapplikation</a> (<a href="https://github.com/Forsakringskassan/designsystem/tree/main/examples/page-layout">källkod</a>)</p>
 
 
                     </div>
@@ -1351,9 +1355,9 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/b1ed85af36539b0ea260713f0f8cf26832646e96">b1ed85a</a>)<br />
+<div class="footer__right"><div class="version">refactor-page-layout-ce-vue (<a href="https://github.com/Forsakringskassan/designsystem/commits/0ebbd25dee3904beb17bc915b4759f7737bbaebf">0ebbd25</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/453">PR 453</a><br />
-        2025-05-05 06:48
+        2025-05-07 15:39
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1460,22 +1464,22 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../../assets/processors/motd/index-fd9bb8.js"
+            src="../../assets/processors/motd/index-26ba41.js"
             type="module"
             crossorigin
-            integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
+            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-d14ebf.js"
+            src="../../assets/processors/selectable-version/select-version-910589.js"
             type="module"
             crossorigin
-            integrity="sha384-nnlZsU8VY9a3+xQtaA4XnzSGLOpJph/zZuj27Xr9w2+aM8oJQP0pAF6pOVPFOH9Z"
+            integrity="sha384-I1UkV0jct1U2DK2sHeJaQT/Y/zs56PzTr8ov/aUSg8JBcBJtIOPYDvMy2o167CwS"
             
         ></script><script
-            src="../../assets/main-40ed80.js"
+            src="../../assets/main-0ec342.js"
             type="module"
             crossorigin
-            integrity="sha384-VKAB1aHBT3estRoY9xyoz2UT9XhCRr1mhN7ay15WubnoKPb8bs1HiRERQK8rp2Aa"
+            integrity="sha384-024ARbIkk+36wQRMNqANavYck/wi86OjA7OQfU3szttx8PSUfCLc+u90c5D34iPZ"
             
         ></script>
     </body>
