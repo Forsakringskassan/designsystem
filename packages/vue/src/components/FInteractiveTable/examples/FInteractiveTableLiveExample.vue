@@ -179,19 +179,11 @@ export default defineComponent({
         actions(): string {
             const actions = /* HTML */ `
                 <f-table-column title="Åtgärd" type="action" shrink>
-                    <button
-                        aria-label="Redigera"
-                        class="button button--tertiary button--small"
-                        type="button"
-                    >
-                        <f-icon name="pen"></f-icon>
+                    <button aria-label="Redigera" class="button table__button" type="button">
+                        <f-icon class="button__icon" name="pen"></f-icon>
                     </button>
-                    <button
-                        aria-label="Ta bort"
-                        class="button button--tertiary button--small"
-                        type="button"
-                    >
-                        <f-icon name="trashcan"></f-icon>
+                    <button aria-label="Ta bort" class="button table__button" type="button">
+                        <f-icon class="button__icon" name="trashcan"></f-icon>
                     </button>
                 </f-table-column>
             `;
