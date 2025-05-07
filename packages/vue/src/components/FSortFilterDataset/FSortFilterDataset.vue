@@ -260,7 +260,7 @@ function filterResultset(): void {
                             <button
                                 v-if="showClearButton"
                                 type="button"
-                                class="button button--discrete sort-filter-dataset__search__close-icon"
+                                class="button button--tertiary sort-filter-dataset__search__close-icon"
                                 :title="$t('fkui.sort-filter-dataset.clear.filter', 'Rensa sökfält')"
                                 @click="onClickClearSearch"
                             >

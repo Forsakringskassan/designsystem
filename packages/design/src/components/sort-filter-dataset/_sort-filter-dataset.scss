@@ -49,7 +49,7 @@ $sortfilter-header-padding-top: size.$padding-025 !default;
             }
         }
 
-        &__close-icon.button--discrete {
+        &__close-icon.button--tertiary {
             position: absolute;
             top: calc(-1 * size.$margin-075);
             right: 0;
@@ -62,7 +62,7 @@ $sortfilter-header-padding-top: size.$padding-025 !default;
             }
         }
 
-        &__close-icon.button--discrete:hover {
+        &__close-icon.button--tertiary:hover {
             box-shadow: none;
             background-color: transparent;
         }
