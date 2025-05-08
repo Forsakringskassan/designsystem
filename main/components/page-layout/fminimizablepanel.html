@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-7ef914.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-f2721d.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-7ef914.js": "sha384-s9dASZsOc/MchZWPPa05Ij/SNKMmSikj2B4ta8T1p/I/PPRncIA6wvYkFSfmt4TI",
+    "../../assets/vendor-fkui-vue-f2721d.js": "sha384-5vdrJ36EGeEcgC7K1ObuMXCV9W0KDhsL6BzklB9h82mM74aIBGikS8+bj1CHFAGx",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-18c777.json"
+            href="../../search-data-57f936.json"
             as="fetch"
             crossorigin
-            integrity="sha384-wAc4F4Ts+5Si/6YtirJFzzb1Np3HLGcF1QDiGcNVBFdspdl7Dl21n58AjAv6GIky"
+            integrity="sha384-nwfZH+tUZDpFLcaKN+u0xM3Z83yEGu4w7A8JVduFl56XPxwnNvPusj8x3nlrNNlQ"
             id="search-data"
         />
     </head>
@@ -1058,7 +1058,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3847098d2aee31bea157625bad0111a361ef1d5f/packages/vue/src/components/FMinimizablePanel/FMinimizablePanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/f662c0f2c5cb01e4a1d5f5b8f6b2ce12c905e13f/packages/vue/src/components/FMinimizablePanel/FMinimizablePanel.vue">
                 FMinimizablePanel
             </a>
             
@@ -1106,7 +1106,7 @@ för att ge användaren möjlighet att visa innehåll i öppet läge eller minim
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-7e7b48"></div>
+        <div id="example-2a1716"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1117,7 +1117,7 @@ för att ge användaren möjlighet att visa innehåll i öppet läge eller minim
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FMinimizablePanelExample-7e7b48.js"></script>
+        <script type="module" src="./FMinimizablePanelExample-2a1716.js"></script>
     </div>
                 <div>
             <button
@@ -1141,21 +1141,20 @@ för att ge användaren möjlighet att visa innehåll i öppet läge eller minim
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-page-layout</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">&quot;three-column&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">left</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-resize-pane</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;150px&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;40%&quot;</span> <span class="hljs-attr">initial</span>=<span class="hljs-string">&quot;600px&quot;</span>&gt;</span>
-                <span class="hljs-comment">&lt;!-- eslint-disable vue/no-deprecated-slot-attribute -- native-slot --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;layoutScope&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-resize-pane</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;layoutScope.left&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;150px&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;40%&quot;</span> <span class="hljs-attr">initial</span>=<span class="hljs-string">&quot;600px&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-minimizable-panel</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ isOpen, header, footer, content }&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isOpen&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>Rubrik<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>Innehåll<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>Fot<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;panelScope&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;panelScope.isOpen&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;panelScope.header&quot;</span>&gt;</span>Rubrik<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;panelScope.content&quot;</span>&gt;</span>Innehåll<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;panelScope.footer&quot;</span>&gt;</span>Fot<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-minimizable-panel</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-resize-pane</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;layoutScope.content&quot;</span>&gt;</span>[Applikationsyta]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span>[Applikationsyta]<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-layout</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
@@ -1410,9 +1409,9 @@ eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/3847098d2aee31bea157625bad0111a361ef1d5f">3847098</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/f662c0f2c5cb01e4a1d5f5b8f6b2ce12c905e13f">f662c0f</a>)<br />
         
-        2025-05-07 06:11
+        2025-05-08 09:17
 </div>
 <div class="toolbar__item">
     <form id="version">
