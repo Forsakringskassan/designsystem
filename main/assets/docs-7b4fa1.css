@@ -2989,8 +2989,8 @@ input[type=search]:focus,
   background: var(--f-background-grid-default);
 }
 
-.radio-button-group--border .radio-button-group__content .radio-button:hover, .checkbox-group--border .checkbox-group__content .checkbox:hover, .list--hover .list__item:focus-within,
-.list--hover .list__item:hover, .list__item--hover {
+.radio-button-group--border .radio-button-group__content .radio-button:not(.disabled):hover, .checkbox-group--border .checkbox-group__content .checkbox:not(.disabled):hover, .list--hover .list__item:not(.disabled):focus-within,
+.list--hover .list__item:not(.disabled):hover, .list__item--hover:not(.disabled) {
   background: var(--f-background-grid-hover);
 }
 

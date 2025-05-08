@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject-typeOfFile.vue:FFileItemPageObject-typeOfFile-ab20a1.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject-typeOfFile.vue:FFileItemPageObject-typeOfFile-400e48.js
 import { defineComponent as _defineComponent } from "vue";
 import { FFileItem } from "@fkui/vue";
 import { resolveDirective as _resolveDirective, createVNode as _createVNode, withDirectives as _withDirectives, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -93,7 +93,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ab20a1"
+  selector: "#example-400e48"
 });
 export {
   render

@@ -243,15 +243,15 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FInteractiveTablePageObject: cell() method",
-    "FFileItemPageObject: FFileItemPageObject() constructor",
-    "FFileItemPageObject: typeOfFile() method",
-    "FFileItemPageObject: fileName() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
+    "FInteractiveTablePageObject: cell() method",
+    "FFileItemPageObject: FFileItemPageObject() constructor",
+    "FFileItemPageObject: typeOfFile() method",
+    "FFileItemPageObject: fileName() method",
     "FBadgePageObject: FBadgePageObject() constructor",
     "FFileItemPageObject: status() method",
     "FFileItemPageObject: inverted() method",
@@ -1234,26 +1234,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
-      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
-      "title": "FFileItemPageObject: typeOfFile() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
-      "title": "FFileItemPageObject: fileName() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -1276,6 +1256,26 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
+      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
+      "title": "FFileItemPageObject: typeOfFile() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
+      "title": "FFileItemPageObject: fileName() method",
       "terms": []
     },
     {
