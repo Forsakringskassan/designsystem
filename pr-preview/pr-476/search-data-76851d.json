@@ -57,8 +57,6 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
@@ -67,6 +65,8 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
@@ -483,16 +483,6 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": []
@@ -530,6 +520,16 @@
     {
       "url": "gettingstarted/about/index.html",
       "title": "Designsystemet",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
       "terms": []
     },
     {
