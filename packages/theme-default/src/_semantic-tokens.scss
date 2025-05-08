@@ -13,10 +13,6 @@
     --fkds-color-background-tertiary: #{$palette-color-fk-black-15};
     --fkds-color-background-disabled: #{$palette-color-fk-black-5};
 
-    // BACKGROUND - ACTION
-    --fkds-color-action-background-select-hover: #{$palette-color-green-a-15};
-    --fkds-color-action-background-select-default: #{$palette-color-green-a-85};
-
     // BORDER
     --fkds-color-border-primary: #{$palette-color-fk-black-50};
     --fkds-color-border-strong: #{$palette-color-fk-black-70};
@@ -77,10 +73,14 @@
     --fkds-color-feedback-text-positive: #{$palette-color-green-a-85};
 
     // SELECT - BACKGROUND
-    --fkds-color-select-background-primary-default: #{$palette-color-green-a-85};
-    --fkds-color-select-background-primary-hover: #{$palette-color-green-a-15};
-    --fkds-color-select-background-primary-active: #{$palette-color-green-a-15};
-    --fkds-color-select-background-primary-focus: #{$palette-color-green-a-15};
+    --fkds-color-select-background-primary-default: #{$palette-color-bluebell-100};
+    --fkds-color-select-background-primary-hover: #{$palette-color-bluebell-15};
+    --fkds-color-select-background-primary-active: #{$palette-color-bluebell-15};
+    --fkds-color-select-background-primary-focus: #{$palette-color-bluebell-15};
+    --fkds-color-select-background-secondary-default: #{$palette-color-green-a-85};
+    --fkds-color-select-background-secondary-hover: #{$palette-color-green-a-15};
+    --fkds-color-select-background-secondary-active: #{$palette-color-green-a-15};
+    --fkds-color-select-background-secondary-focus: #{$palette-color-green-a-15};
 
     // ICON
     --fkds-icon-color-content-primary: #{$palette-color-fk-black-100};
