@@ -357,6 +357,9 @@ $table-input-offset-horizontal: 0.25rem;
         // move margin from <table> to the wrapper div
         margin: $table-margin;
 
+        // set overflow to `hidden` as default
+        overflow: hidden;
+
         thead th,
         thead td,
         tbody th,
