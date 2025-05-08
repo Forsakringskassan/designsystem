@@ -19,7 +19,7 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
     background: var(--f-background-grid-default);
 }
 
-%list-item-hover {
+%list-item-hover:not(.disabled) {
     background: var(--f-background-grid-hover);
 }
 
