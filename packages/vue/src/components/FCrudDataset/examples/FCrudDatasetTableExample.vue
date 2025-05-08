@@ -48,8 +48,12 @@ export default defineComponent({
                         {{ row.description }}
                     </f-table-column>
                     <f-table-column title="Åtgärd" type="action" shrink>
-                        <f-crud-button action="modify" :item="row" icon />
-                        <f-crud-button action="delete" :item="row" icon />
+                        <f-crud-button action="modify" :item="row" icon>
+                            {{ `Ändra  ${row.name}` }}
+                        </f-crud-button>
+                        <f-crud-button action="delete" :item="row" icon>
+                            {{ `Ta bort ${row.name}` }}
+                        </f-crud-button>
                     </f-table-column>
                 </template>
             </f-interactive-table>
