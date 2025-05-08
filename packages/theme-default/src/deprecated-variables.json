@@ -139,5 +139,7 @@
     "--f-background-warning",
     "--f-background-modal-shelf",
     "--f-border-color-info",
-    "--f-border-color-warning"
+    "--f-border-color-warning",
+    "--fkds-color-action-background-select-hover",
+    "--fkds-color-action-background-select-default"
 ]
