@@ -318,9 +318,11 @@ function updateItem(current: T): void {
 <template>
     <div class="crud-dataset">
         <!--
-@slot Slot for displaying the data.
-    -->
-        <slot></slot>
+             @slot Slot for displaying the data.
+             @binding {(item: T) => void} Callback to trigger modification modal
+             @binding {(item: T) => void} Callback to trigger deletion modal
+        -->
+        <slot v-bind="{ modify: updateItem, delete: deleteItem }"></slot>
         <div v-if="hasAddSlot">
             <button
                 data-test="f-crud-dataset-add-button"

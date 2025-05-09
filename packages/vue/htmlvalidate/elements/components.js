@@ -542,6 +542,23 @@ module.exports = defineMetadata({
         inherit: "f-label#description",
     },
 
+    "f-table-button": {
+        flow: false,
+        interactive: true,
+        attributes: {
+            icon: {
+                enum: ["/.+/"],
+            },
+            label: {
+                boolean: true,
+            },
+        },
+        textContent: "accessible",
+        permittedContent: ["span", "template"],
+        permittedDescendants: [{ exclude: ["@interactive"] }],
+        requiredAncestors: ["f-table-column"],
+    },
+
     "f-table-column": {
         flow: false,
         attributes: {
@@ -551,7 +568,7 @@ module.exports = defineMetadata({
             type: ["text", "date", "numeric", "action"],
         },
         requiredAttributes: ["title"],
-        permittedContent: ["@phrasing", "button", "f-badge"],
+        permittedContent: ["@phrasing", "button", "f-badge", "f-table-button"],
     },
 
     "f-tooltip": {

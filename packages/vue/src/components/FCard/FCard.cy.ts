@@ -30,14 +30,14 @@ function createComponent(): DefineComponent {
                 <template #footer>
                     <div class="button-group">
                         <button
-                            class="button button-group__item button--discrete"
+                            class="button button-group__item button--tertiary"
                             type="button"
                         >
                             <span> Ta bort </span>
                         </button>
 
                         <button
-                            class="button button-group__item button--discrete"
+                            class="button button-group__item button--tertiary"
                             type="button"
                         >
                             <span> Ändra </span>
