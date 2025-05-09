@@ -24,7 +24,7 @@ exports[`FLoader should have text by default 1`] = `
           <div class="loader__spinner-3-circle4 loader__circle loader__circle--4"></div>
         </div>
       </div>
-      <div class="loader__wait-text" tabindex="-1"><span role="alert">Vänligen vänta</span></div>
+      <div class="loader__wait-text" tabindex="-1"><span>Vänligen vänta</span></div>
     </div>
   </div>
 </teleport-stub>

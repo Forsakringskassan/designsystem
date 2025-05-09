@@ -42,7 +42,7 @@ describe("FLoader", () => {
     });
 
     describe("Overlay Mode", () => {
-        it("should have focus on loading text when opened", () => {
+        it("should have focus on loading text when opened and aria alert should not be set on loader text", () => {
             cy.mount(FLoader, {
                 props: {
                     show: true,
@@ -51,6 +51,11 @@ describe("FLoader", () => {
             });
             loader.wrapper().should("be.visible");
             loader.waitText().should("have.focus");
+            loader
+                .waitText()
+                .get("span")
+                .invoke("attr", "role")
+                .should("not.exist");
         });
 
         it("should restore focus after tooltip is closed", () => {
@@ -79,6 +84,23 @@ describe("FLoader", () => {
             loader.wrapper().should("be.visible");
             loader.waitText().should("have.focus");
             cy.get("button").should("have.focus");
+        });
+
+        it("should not set focus when focusOnOverlay is set to false and aria alert should be set on loader text", () => {
+            cy.mount(FLoader, {
+                props: {
+                    show: true,
+                    overlay: true,
+                    focusOnOverlay: false,
+                },
+            });
+            loader.wrapper().should("be.visible");
+            loader.waitText().should("not.have.focus");
+            loader
+                .waitText()
+                .get("span")
+                .invoke("attr", "role")
+                .should("equal", "alert");
         });
     });
 
