@@ -217,76 +217,57 @@ export default defineComponent({
 
 <template>
     <div class="wizard-step" :class="cssClass" :aria-current="isOpen ? 'step' : undefined">
-        <div ref="header" role="group" class="wizard-step__header" tabindex="-1">
-            <i-flex>
-                <i-flex-item align="bottom" shrink aria-hidden="true">
-                    <div class="wizard-step__header__line-up"></div>
-                    <div class="icon-stack">
-                        <f-icon name="circle" />
-                        <f-icon name="success" />
-                        <div data-test="step-number">{{ stepNumber }}</div>
-                    </div>
-                    <div class="wizard-step__header__line-down"></div>
-                </i-flex-item>
-
-                <i-flex-item align="bottom" grow>
-                    <template v-if="isOpen">
-                        <!--
-                            @slot Use this slot to customize the content displayed for the "step of" information.
-                            @binding {string} headerClass Class to be applied to the step-of information.
-                            @binding {number} stepNumber Current step number.
-                            @binding {number} totalSteps The total number of steps in this wizard.
-                        -->
-                        <slot
-                            name="step-of"
-                            v-bind="{ headerClass: 'wizard-step__header__step-of', stepNumber, totalSteps }"
-                        >
-                            <span aria-hidden="true" class="wizard-step__header__step-of">{{
-                                defaultCurrentStepInformation
-                            }}</span>
-                        </slot>
-                    </template>
-
-                    <i-flex class="wizard-step__header__title-container">
-                        <i-flex-item align="center">
-                            <component :is="inheritedProps.headerTag" class="wizard-step__header__title">
-                                <a
-                                    v-if="showLink"
-                                    aria-expanded="false"
-                                    role="button"
-                                    href="#"
-                                    class="anchor"
-                                    @click.prevent="open"
-                                    @keypress.space.prevent="open"
-                                >
-                                    <span class="sr-only">{{ defaultCurrentStepInformation }}&nbsp;</span>
-                                    {{ title }}
-                                    <span class="sr-only">
-                                        &nbsp;{{ $t("fkui.wizard-step.finished-step", "Avklarat steg") }}
-                                    </span>
-                                </a>
-                                <template v-else>
-                                    <span class="sr-only">{{ defaultCurrentStepInformation }}&nbsp;</span>
-                                    {{ title }}
-                                    <span v-if="isPending" class="sr-only">
-                                        &nbsp;{{ $t("fkui.wizard-step.pending", "Inaktivt") }}
-                                    </span>
-                                </template>
-                            </component>
-                        </i-flex-item>
-                    </i-flex>
-                    <div class="wizard-step__header__line-adjustment"></div>
-                </i-flex-item>
-            </i-flex>
+        <div class="wizard-step__line-up"></div>
+        <template v-if="isOpen">
+            <!--
+                @slot Use this slot to customize the content displayed for the "step of" information.
+                @binding {string} headerClass Class to be applied to the step-of information.
+                @binding {number} stepNumber Current step number.
+                @binding {number} totalSteps The total number of steps in this wizard.
+            -->
+            <slot name="step-of" v-bind="{ headerClass: 'wizard-step__step-of', stepNumber, totalSteps }">
+                <span aria-hidden="true" class="wizard-step__step-of">{{ defaultCurrentStepInformation }}</span>
+            </slot>
+        </template>
+        <div class="wizard-step__icon-container">
+            <div class="wizard-step__icon-container__circle">
+                <f-icon name="success" />
+                <div class="wizard-step__icon-container__number" data-test="step-number">{{ stepNumber }}</div>
+            </div>
+            <div class="wizard-step__icon-container__line-down"></div>
         </div>
-
+        <div ref="header" role="group" class="wizard-step__header" tabindex="-1">
+            <component :is="inheritedProps.headerTag" class="wizard-step__header__title">
+                <a
+                    v-if="showLink"
+                    aria-expanded="false"
+                    role="button"
+                    href="#"
+                    class="anchor"
+                    @click.prevent="open"
+                    @keypress.space.prevent="open"
+                >
+                    <span class="sr-only">{{ defaultCurrentStepInformation }}&nbsp;</span>
+                    {{ title }}
+                    <span class="sr-only"> &nbsp;{{ $t("fkui.wizard-step.finished-step", "Avklarat steg") }} </span>
+                </a>
+                <template v-else>
+                    <span class="sr-only">{{ defaultCurrentStepInformation }}&nbsp;</span>
+                    {{ title }}
+                    <span v-if="isPending" class="sr-only">
+                        &nbsp;{{ $t("fkui.wizard-step.pending", "Inaktivt") }}
+                    </span>
+                </template>
+            </component>
+        </div>
+        <div class="wizard-step__line-down"></div>
         <i-animate-expand
             :key="animationId"
             :opacity="false"
             :expanded="isOpen"
             :before-animation="beforeAnimation"
             :after-animation="afterAnimation"
-            class="wizard-step__connector"
+            class="wizard-step__content"
         >
             <f-validation-form
                 :id="formId"
@@ -314,10 +295,10 @@ export default defineComponent({
                             class="button button--primary button-group__item button--large"
                         >
                             <!--
-                                @slot Use this slot to customize the text of the "Next" button.
-                                @binding {number} stepNumber Current step number (starts at 1).
-                                @binding {number} totalSteps The total number of steps in this wizard.
-                            -->
+                                    @slot Use this slot to customize the text of the "Next" button.
+                                    @binding {number} stepNumber Current step number (starts at 1).
+                                    @binding {number} totalSteps The total number of steps in this wizard.
+                                -->
                             <slot name="next-button-text" v-bind="{ stepNumber, totalSteps }">
                                 <template v-if="isFinalStep">
                                     {{ $t("fkui.wizard-step.button.next.text-final", "Gå vidare och granska") }}
@@ -337,10 +318,10 @@ export default defineComponent({
                             @click="onCancel"
                         >
                             <!--
-                                @slot Use this slot to customize the text of the "Cancel" button.
-                                @binding {number} stepNumber Current step number (starts at 1).
-                                @binding {number} totalSteps The total number of steps in this wizard.
-                            -->
+                                    @slot Use this slot to customize the text of the "Cancel" button.
+                                    @binding {number} stepNumber Current step number (starts at 1).
+                                    @binding {number} totalSteps The total number of steps in this wizard.
+                                -->
                             <slot name="cancel-button-text" v-bind="{ stepNumber, totalSteps }">
                                 {{ $t("fkui.wizard-step.button.cancel.text", "Avbryt") }}
                             </slot>

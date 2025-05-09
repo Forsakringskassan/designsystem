@@ -745,6 +745,8 @@ export class FWizardStepPageobject implements BasePageObject {
     // (undocumented)
     selector: string;
     status(): Cypress.Chainable<string>;
+    stepNumber(): DefaultCypressChainable;
+    title(): DefaultCypressChainable;
     waitOnAnimationCompleted(): void;
     waitOnClose(): void;
     waitOnOpen(): void;
