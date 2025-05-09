@@ -73,10 +73,14 @@ export default defineComponent({
                         <div class="col col--md-5">
                             <ul class="button-list">
                                 <li>
-                                    <f-crud-button action="modify" :item="item" icon label />
+                                    <f-crud-button action="modify" :item="item" icon label>
+                                        Ändra <span class="sr-only">{{ item.name }}</span>
+                                    </f-crud-button>
                                 </li>
                                 <li>
-                                    <f-crud-button action="delete" :item="item" icon label />
+                                    <f-crud-button action="delete" :item="item" icon label>
+                                        Ta bort <span class="sr-only">{{ item.name }}</span>
+                                    </f-crud-button>
                                 </li>
                             </ul>
                         </div>

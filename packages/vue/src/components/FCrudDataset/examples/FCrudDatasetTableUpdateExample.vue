@@ -42,7 +42,7 @@ export default defineComponent({
                     </f-table-column>
                     <f-table-column title="Åtgärd" shrink type="action">
                         <f-crud-button action="modify" :item="row" icon label>
-                            Ändra Namn
+                            Ändra Namn <span class="sr-only"> {{ row.name }} </span>
                         </f-crud-button>
                     </f-table-column>
                 </template>

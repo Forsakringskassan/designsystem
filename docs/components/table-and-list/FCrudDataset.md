@@ -11,6 +11,11 @@ Datamändgredigeraren används för att erbjuda användare funktionerna "lägg t
 Komponenten ansvarar inte för hur datamängden och åtgärderna "lägg till", "ändra" och "ta bort" presenteras.
 Vanligtvis används lista eller tabell för presentation men kan även vara egenutvecklad.
 
+Om knappens visuella text för "ändra" och "ta bort" inte tydligt identifierar raden från andra rader,
+behöver knappen kompletteras med en text för skärmläsare.
+Beroende på sammanhang kan även knappen för "lägg till ny" behöva kompletteras med en skärmläsartext,
+som tydligör vad som läggs till.
+
 ```html name=base hidden
 <f-crud-dataset>
     <template #default> ... </template>

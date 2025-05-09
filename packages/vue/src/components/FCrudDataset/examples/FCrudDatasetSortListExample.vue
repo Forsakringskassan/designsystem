@@ -69,10 +69,14 @@ export default defineComponent({
                                     <br />
                                 </div>
                                 <div class="col col--sm-1">
-                                    <f-crud-button action="modify" :item="item" icon />
+                                    <f-crud-button action="modify" :item="item" icon>
+                                        {{ `Ändra  ${item.name}` }}
+                                    </f-crud-button>
                                 </div>
                                 <div class="col col--sm-1">
-                                    <f-crud-button action="delete" :item="item" icon />
+                                    <f-crud-button action="delete" :item="item" icon>
+                                        {{ `Ta bort ${item.name}` }}
+                                    </f-crud-button>
                                 </div>
                             </div>
                         </template>
