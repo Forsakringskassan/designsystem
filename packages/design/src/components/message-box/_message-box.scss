@@ -59,22 +59,18 @@
 }
 
 .message-box {
-    padding: core.densify(size.$padding-150) size.$padding-150;
-    margin: size.$margin-050 0 core.densify(size.$margin-200) 0;
+    padding: core.densify(size.$padding-100) size.$padding-100;
+    margin: size.$margin-150 0 core.densify(size.$margin-150) 0;
     color: $messagebox-color-text-default;
 
     &__heading {
-        font-size: var(--f-font-size-h3);
+        font-size: var(--f-font-size-large);
         font-weight: var(--f-font-weight-medium);
         color: $messagebox-info-color-heading;
         line-height: var(--f-line-height-medium);
         align-items: flex-start;
         margin-bottom: core.densify(size.$margin-050);
         margin-top: 0;
-
-        @include breakpoints.breakpoint-only(sm) {
-            font-size: var(--f-font-size-large);
-        }
     }
 
     &__icon {
@@ -119,11 +115,5 @@
 
     &--banner {
         @include messagebox-banner-variant;
-    }
-
-    @include breakpoints.breakpoint-down(sm) {
-        margin-bottom: core.densify(size.$margin-150);
-        margin-top: core.densify(size.$margin-150);
-        padding: core.densify(size.$padding-100) size.$padding-100;
     }
 }
