@@ -46,6 +46,7 @@ export { type FFileItemIconName, FFileItem } from "./FFileItem";
 export { FFileSelector } from "./FFileSelector";
 export { FIcon } from "./FIcon";
 export { FInteractiveTable } from "./FInteractiveTable";
+export { FFixedPane } from "./FFixedPane";
 export { FLabel } from "./FLabel";
 export { FLayoutApplicationTemplate } from "./FLayoutApplicationTemplate";
 export {

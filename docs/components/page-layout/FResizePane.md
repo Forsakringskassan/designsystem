@@ -5,7 +5,7 @@ layout: component
 component: FResizePane
 ---
 
-Justerbar yta (FResizePane) används tillsammand med {@link FPageLayout Applikationslayout} för göra en yta med justerbar storlek.
+Justerbar yta (FResizePane) används tillsammans med {@link FPageLayout Applikationslayout} för göra en yta med justerbar storlek.
 
 Ytans storlek kan justeras med pekdon genom att dra i och släppa avgränsaren mellan ytorna eller med tangentbord:
 

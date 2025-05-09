@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
+import { FPageLayout, FDetailsPanel, useDetailsPanel, FFixedPane } from "@fkui/vue";
 
 const { exclusive } = defineProps<{
     exclusive: boolean;
@@ -36,7 +36,7 @@ function openPanel4(): void {
 <template>
     <f-page-layout layout="three-column">
         <template #default="{ left, right, content }">
-            <div :slot="left">
+            <f-fixed-pane :slot="left">
                 <f-details-panel :name="name1" :exclusive="groupName1">
                     <template #default="{ header }">
                         <h2 :slot="header">[panel 1]</h2>
@@ -47,8 +47,8 @@ function openPanel4(): void {
                         <h2 :slot="header">[panel 2]</h2>
                     </template>
                 </f-details-panel>
-            </div>
-            <div :slot="right">
+            </f-fixed-pane>
+            <f-fixed-pane :slot="right">
                 <f-details-panel :name="name3" :exclusive="groupName2">
                     <template #default="{ header }">
                         <h2 :slot="header">[panel 3]</h2>
@@ -59,7 +59,7 @@ function openPanel4(): void {
                         <h2 :slot="header">[panel 4]</h2>
                     </template>
                 </f-details-panel>
-            </div>
+            </f-fixed-pane>
 
             <div :slot="content" class="content">
                 <div>

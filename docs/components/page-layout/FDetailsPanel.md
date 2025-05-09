@@ -21,7 +21,7 @@ Detaljpanel består av tre slottar:
 FDetailsPanelSlots.vue
 ```
 
-Detaljpanel kombineras med fördel med {@link FResizePane justerbar yta} (FResizePane).
+Detaljpanel kombineras med fördel med {@link FResizePane justerbar yta} (FResizePane) eller {@link FFixedPane fixerad yta} (FFixedPane).
 
 ## Användning
 
@@ -268,12 +268,23 @@ Som en riktlinje rekommenderar vi att endast visa en detaljpanel åt gången.
 
 Om du har flera detaljpaneler och vill stoppa andra från att visas samtidigt sätt propen `exclusive` till ett gemensamt gruppnamn:
 
+Då det blir flera rotelement behöver panelerna placeras i en `FFixedPane` eller `FResizePane` för att layout ska bete sig korrekt.
+
 ```html static
-<f-details-panel name="panel-1" exclusive="panels"></f-details-panel>
-<f-details-panel name="panel-2" exclusive="panels"></f-details-panel>
+<f-fixed-pane>
+    <f-details-panel name="panel-1" exclusive="panels"></f-details-panel>
+    <f-details-panel name="panel-2" exclusive="panels"></f-details-panel>
+</f-fixed-pane>
 ```
 
 Om en detaljpanel i samma grupp öppnas stängs alla andra detaljpaneler automatiskt (utan att `onClose()` anropas).
+
+```html static
+<f-fixed-pane>
+    <f-details-panel name="panel-1" exclusive="panels"></f-details-panel>
+    <f-details-panel name="panel-2" exclusive="panels"></f-details-panel>
+</f-fixed-pane>
+```
 
 ## Textnycklar
 
