@@ -15,11 +15,9 @@ exports[`snapshot should match snapshot 1`] = `
         <td>1</td>
         <td>a</td>
         <td><button type="button" class="button table__button" id="modifyButton">
-            <!--v-if-->
             <!--v-if-->Ändra
           </button></td>
         <td><button type="button" class="button table__button" id="deleteButton">
-            <!--v-if-->
             <!--v-if-->Ta bort
           </button></td>
       </tr>
@@ -27,11 +25,9 @@ exports[`snapshot should match snapshot 1`] = `
         <td>2</td>
         <td>b</td>
         <td><button type="button" class="button table__button" id="modifyButton">
-            <!--v-if-->
             <!--v-if-->Ändra
           </button></td>
         <td><button type="button" class="button table__button" id="deleteButton">
-            <!--v-if-->
             <!--v-if-->Ta bort
           </button></td>
       </tr>
@@ -39,11 +35,9 @@ exports[`snapshot should match snapshot 1`] = `
         <td>3</td>
         <td>c</td>
         <td><button type="button" class="button table__button" id="modifyButton">
-            <!--v-if-->
             <!--v-if-->Ändra
           </button></td>
         <td><button type="button" class="button table__button" id="deleteButton">
-            <!--v-if-->
             <!--v-if-->Ta bort
           </button></td>
       </tr>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { FIcon } from "../FIcon";
+import { FTableButton } from "../FTableButton";
 import { useTranslate } from "../../plugins";
 import { FCrudDatasetInjected } from "./FCrudDatasetInterface";
 
@@ -75,14 +75,11 @@ function executeAction(): void {
 </script>
 
 <template>
-    <button type="button" class="button table__button" @click="executeAction">
-        <f-icon v-if="iconName" class="button__icon" :name="iconName"></f-icon>
-        <span v-if="!props.label" class="sr-only">
-            <!--
-                 @slot Slot used to provide custom content for the button text.
-            -->
-            <slot> {{ buttonText }} </slot>
-        </span>
-        <slot v-if="props.label"> {{ buttonText }} </slot>
-    </button>
+    <!-- [html-validate-disable-block element-permitted-content, element-required-ancestor -- this is now the responsibility of FCrudButton instead] -->
+    <f-table-button :icon="iconName" :label="props.label" @click="executeAction">
+        <!--
+             @slot Slot used to provide custom content for the button text.
+        -->
+        <slot> {{ buttonText }} </slot>
+    </f-table-button>
 </template>
