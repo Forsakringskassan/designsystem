@@ -122,6 +122,31 @@ Följande inmatningfält kan användas:
 FInteractiveTableInputExample.vue
 ```
 
+## Åtgärdsknappar
+
+Åtgärdsknappar kan placeras i en tabell för att utföra en operation på raden.
+Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig.
+Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
+Kolumnens typ ska sättas till `action`.
+
+```import static compare=interactivetable-base
+TableButton.vue
+```
+
+```import nomarkup name=action-button
+TableButton.vue
+```
+
+Om etiketten är synlig kan man använda `sr-only` för att ge ytterligare kontext till skärmläsare:
+
+```import static compare=action-button
+TableButton-sronly.vue
+```
+
+```import nomarkup
+TableButton-sronly.vue
+```
+
 ### Välja rader
 
 En interaktiv tabell med `selectable` prop lägger till kryssrutor som kan användas för att välja rader.
@@ -410,6 +435,12 @@ translation:FTableColumn
 Används för att presentera information
 :::api
 vue:FDataTable
+:::
+
+### FTableButton
+
+:::api
+vue:FTableButton
 :::
 
 ### FTableColumn

@@ -3,34 +3,29 @@
 exports[`snapshot should match snapshot when action = delete 1`] = `
 <button type="button" class="button table__button">
   <!--v-if--><span class="sr-only">Ta bort</span>
-  <!--v-if-->
 </button>
 `;
 
 exports[`snapshot should match snapshot when action = modify 1`] = `
 <button type="button" class="button table__button">
   <!--v-if--><span class="sr-only">Ändra</span>
-  <!--v-if-->
 </button>
 `;
 
 exports[`snapshot should match snapshot when both label and icon is used 1`] = `
 <button type="button" class="button table__button">
-  <f-icon-stub name="pen" library="f" class="button__icon"></f-icon-stub>
-  <!--v-if-->Ändra
+  <f-icon-stub name="pen" library="f" class="button__icon"></f-icon-stub>Ändra
 </button>
 `;
 
 exports[`snapshot should match snapshot when only icon is used 1`] = `
 <button type="button" class="button table__button">
   <f-icon-stub name="pen" library="f" class="button__icon"></f-icon-stub><span class="sr-only">Ändra</span>
-  <!--v-if-->
 </button>
 `;
 
 exports[`snapshot should match snapshot when only label is used 1`] = `
 <button type="button" class="button table__button">
-  <!--v-if-->
   <!--v-if-->Ändra
 </button>
 `;
