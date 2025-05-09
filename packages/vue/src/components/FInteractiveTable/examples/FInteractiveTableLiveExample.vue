@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
-    FIcon,
     FInteractiveTable,
+    FTableButton,
     FTableColumn,
     FCheckboxField,
     FRadioField,
@@ -11,7 +11,7 @@ import {
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
-    name: "FDataTableLiveExample",
+    name: "FInteractiveTableLiveExample",
     components: { LiveExample, FCheckboxField, FRadioField, FFieldset },
     data() {
         return {
@@ -133,7 +133,7 @@ export default defineComponent({
             };
         },
         components(): object {
-            return { FIcon, FInteractiveTable, FTableColumn };
+            return { FInteractiveTable, FTableButton, FTableColumn };
         },
         items(): string {
             return this.isEmpty ? `:rows="[]"` : `:rows="items"`;
@@ -179,12 +179,8 @@ export default defineComponent({
         actions(): string {
             const actions = /* HTML */ `
                 <f-table-column title="Åtgärd" type="action" shrink>
-                    <button aria-label="Redigera" class="button table__button" type="button">
-                        <f-icon class="button__icon" name="pen"></f-icon>
-                    </button>
-                    <button aria-label="Ta bort" class="button table__button" type="button">
-                        <f-icon class="button__icon" name="trashcan"></f-icon>
-                    </button>
+                    <f-table-button icon="pen"> Redigera </f-table-button>
+                    <f-table-button icon="trashcan"> Ta bort </f-table-button>
                 </f-table-column>
             `;
             return this.hasActions ? actions : "";

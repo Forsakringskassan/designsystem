@@ -113,6 +113,7 @@ export {
     FSortFilterDatasetInjected,
 } from "./FSortFilterDataset";
 export { FStaticField } from "./FStaticField";
+export { FTableButton } from "./FTableButton";
 export {
     type FTableColumnData,
     type FTableInterface,

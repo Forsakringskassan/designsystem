@@ -6,6 +6,7 @@ sortorder: 1
 component:
     - FDataTable
     - FInteractiveTable
+    - FTableButton
     - FTableColumn
 ---
 
@@ -32,8 +33,8 @@ Slotten `default` renderas för varje item i `rows` och har en slot attribute `r
 Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `FTableColumn`.
 
 ```html static name=datatable-base
-<f-data-table :rows="items">
-    <template #caption> Awesome Table </template>
+<f-data-table :rows>
+    <template #caption> Tabell exempel </template>
     <template #default="{ row }">
         <f-table-column title="Kolumnrubrik" type="text">
             {{ row.value }}
@@ -45,8 +46,8 @@ Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `
 Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använd direktivet {@link FormatPlugin `v-format`} för att formatera och undvika radbryt i cellen.
 
 ```html compare=datatable-base
-<f-data-table :rows="items">
-    <template #caption> Awesome Table </template>
+<f-data-table :rows>
+    <template #caption> Tabell exempel </template>
     <template #default="{ row }">
         <f-table-column
             title="Kolumnrubrik"
@@ -76,11 +77,17 @@ Slotten `default` renderas för varje item i `rows` och har en slot attribute `r
 Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `FTableColumn`.
 
 ```html static name=interactivetable-base
-<f-interactive-table :rows="items">
-    <template #caption> Awesome Table </template>
+<f-interactive-table :rows>
+    <template #caption> Tabell exempel </template>
     <template #default="{ row }">
-        <f-table-column title="Kolumnrubrik" type="text">
-            {{ row.value }}
+        <f-table-column title="Kolumn A" type="text">
+            {{ row.foo }}
+        </f-table-column>
+        <f-table-column title="Kolumn B" type="text">
+            {{ row.bar }}
+        </f-table-column>
+        <f-table-column title="Kolumn C" type="text">
+            {{ row.baz }}
         </f-table-column>
     </template>
 </f-interactive-table>
@@ -89,14 +96,20 @@ Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `
 Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använd direktivet {@link FormatPlugin `v-format`} för att formatera och undvika radbryt i cellen.
 
 ```html compare=interactivetable-base
-<f-interactive-table :rows="items">
-    <template #caption> Awesome Table </template>
+<f-interactive-table :rows>
+    <template #caption> Tabell exempel </template>
     <template #default="{ row }">
         <f-table-column
-            title="Kolumnrubrik"
+            title="Kolumn A"
             type="numeric"
-            v-format:number="row.value"
+            v-format:number="row.foo"
         ></f-table-column>
+        <f-table-column title="Kolumn B" type="text">
+            {{ row.bar }}
+        </f-table-column>
+        <f-table-column title="Kolumn C" type="text">
+            {{ row.baz }}
+        </f-table-column>
     </template>
 </f-interactive-table>
 ```
@@ -119,13 +132,19 @@ Följande inmatningfält kan användas:
 - dropplista (FSelectField).
 
 ```html static compare=interactivetable-base
-<f-interactive-table :rows="items">
-    <template #caption> Awesome Table </template>
+<f-interactive-table :rows>
+    <template #caption> Tabell exempel </template>
     <template #default="{ row }">
-        <f-table-column title="Utbetalningsdatum" type="text" shrink>
-            <f-datepicker-field v-model="row.date" v-validation.required>
-                Utbetalningsdatum
+        <f-table-column title="Kolumn A" type="text">
+            <f-datepicker-field v-model="row.foo" v-validation.required>
+                Kolumn A
             </f-datepicker-field>
+        </f-table-column>
+        <f-table-column title="Kolumn B" type="text">
+            {{ row.bar }}
+        </f-table-column>
+        <f-table-column title="Kolumn C" type="text">
+            {{ row.baz }}
         </f-table-column>
     </template>
 </f-interactive-table>
@@ -133,6 +152,42 @@ Följande inmatningfält kan användas:
 
 ```import
 FInteractiveTableInputExample.vue
+```
+
+## Åtgärdsknappar
+
+Åtgärdsknappar kan placeras i en tabell för att utföra en operation på raden.
+Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig.
+Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
+Kolumnens typ ska sättas till `action`.
+
+```import static compare=interactivetable-base
+TableButton.vue
+```
+
+```import nomarkup name=action-button
+TableButton.vue
+```
+
+Om etiketten ska vara synlig använder du propen `label`.
+En `<span>` med `sr-only` kan användas för att ge ytterligare kontext till skärmläsare:
+
+```import static compare=action-button
+TableButton-sronly.vue
+```
+
+```import nomarkup
+TableButton-sronly.vue
+```
+
+Länkar i tabell använder `table__anchor` klassen:
+
+```import static compare=interactivetable-base
+TableLink.vue
+```
+
+```import nomarkup name=action-button
+TableLink.vue
 ```
 
 ### Välja rader
@@ -295,8 +350,8 @@ I undantagsfall kan du också använda en dold skärmläsartext i caption, men t
 För att lägga till skroll i tabell använder du prop `scroll`:
 
 ```diff
--<f-data-table :rows="items">
-+<f-data-table :rows="items" scroll="horizontal">
+-<f-data-table :rows>
++<f-data-table :rows scroll="horizontal">
      <template #default="{ row }">
          <!-- [...] -->
      </template>
@@ -309,7 +364,7 @@ Texten för en tom tabell går att anpassas till att bättre passa innehållet, 
 Texten sätts i slot `#empty`:
 
 ```diff
- <f-data-table :rows="items">
+ <f-data-table :rows>
      <template #caption> Kända ankeborgare </template>
 +    <template #empty> Det finns inga rättigheter </template>
      <template #default="{ row }">
@@ -327,11 +382,17 @@ Slotten `checkbox-description` måste användas för att ge en beskrivning av kr
 Texten bör innehålla något som tydligt identifierar raden från andra rader.
 
 ```html compare=interactivetable-base
-<f-interactive-table :rows="items" selectable v-model="selectedRows">
-    <template #caption> Awesome Table </template>
+<f-interactive-table :rows selectable v-model="selectedRows">
+    <template #caption> Tabell exempel </template>
     <template #default="{ row }">
-        <f-table-column title="Kolumnrubrik" type="text">
-            {{ row.value }}
+        <f-table-column title="Kolumn A" type="text">
+            {{ row.foo }}
+        </f-table-column>
+        <f-table-column title="Kolumn B" type="text">
+            {{ row.bar }}
+        </f-table-column>
+        <f-table-column title="Kolumn C" type="text">
+            {{ row.baz }}
         </f-table-column>
     </template>
     <template #checkbox-description="{ row }">
@@ -352,8 +413,8 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
 Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.
 
 ```html compare=datatable-base
-<f-data-table :rows="items">
-    <template #caption> Awesome Table </template>
+<f-data-table :rows>
+    <template #caption> Tabell exempel </template>
     <template #default="{ row }">
         <f-table-column title="Kolumnrubrik" type="text" row-header>
             {{ row.value }}
@@ -423,6 +484,12 @@ translation:FTableColumn
 Används för att presentera information
 :::api
 vue:FDataTable
+:::
+
+### FTableButton
+
+:::api
+vue:FTableButton
 :::
 
 ### FTableColumn

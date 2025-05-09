@@ -131,3 +131,7 @@ Alla tidigare typer av knappar finns kvar för att nuvarande applikationer ska f
 - Diskret knapp - ska ersättas med en tertiär knapp av lämplig storlek.
 - Standard - ska ersättas med en sekundär knapp av lämplig storlek.
 - Primär och sekundär ska ändras så att de använder en faktisk storlek.
+
+## Relaterat
+
+- {@link component:FTableButton FTableButton} för åtgärdsknapp i tabell.
