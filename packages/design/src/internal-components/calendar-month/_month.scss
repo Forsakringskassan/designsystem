@@ -1,4 +1,5 @@
 @use "../../components/z-index";
+@use "variables" as *;
 
 $MONTH_SELECTOR: ".calendar-month" !default;
 $days: 7;
@@ -26,7 +27,6 @@ $day-width: calc((100% - $week-width) / $days);
     &__header-cell {
         padding: 0.5rem 0;
         text-align: center;
-        background-color: white;
 
         abbr,
         span {
@@ -36,14 +36,13 @@ $day-width: calc((100% - $week-width) / $days);
             text-transform: none;
             font-size: 1rem;
             cursor: auto;
-            color: var(--f-text-color-weekday-weeknumber);
+            color: $month-weekday-color-text;
         }
     }
 
     &__cell {
         height: 2.75rem;
         padding: 0;
-        background: white;
     }
 
     &__cell--week-number {
@@ -51,7 +50,7 @@ $day-width: calc((100% - $week-width) / $days);
         padding-right: 0.25rem;
         text-align: right;
         min-width: 2rem;
-        color: var(--f-text-color-weekday-weeknumber);
+        color: $month-weeknumber-color-text;
     }
 
     &__button {
@@ -60,7 +59,7 @@ $day-width: calc((100% - $week-width) / $days);
         cursor: pointer;
         padding: 0;
         width: 100%;
-        background-color: var(--f-background-month);
+        background-color: $month-day-color-background-default;
         font-size: 1rem;
 
         &:focus {
