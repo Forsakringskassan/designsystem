@@ -112,3 +112,5 @@ Slutligen används layouten genom att sätta det nya registrerade namnet som `la
 Komponenten {@link FResizePane} kan användas för att skapa en yta vars storlek kan justeras av slutanvändaren.
 
 Använd {@link useResize} för att styra {@link FResizePane} om du skapar egna paneler.
+
+Ska ytan inte vara justerbar så bör komponenten {@link FFixedPane} användas när flera paneler ska befinna sig i samma yta.
