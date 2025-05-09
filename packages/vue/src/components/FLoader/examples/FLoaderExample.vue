@@ -62,7 +62,7 @@ export default defineComponent({
             <button
                 v-test="'loader-toggle'"
                 type="button"
-                class="button button--discrete"
+                class="button button--tertiary"
                 @click="toggleLoader()"
             >
                 Toggla loader
@@ -70,7 +70,7 @@ export default defineComponent({
             <button
                 v-test="'loader-toggle-overlay'"
                 type="button"
-                class="button button--discrete"
+                class="button button--tertiary"
                 :disabled="Boolean(show)"
                 @click="toggleOverlay()"
             >
@@ -79,7 +79,7 @@ export default defineComponent({
             <button
                 v-test="'loader-toggle-delay'"
                 type="button"
-                class="button button--discrete"
+                class="button button--tertiary"
                 @click="toggleDelay()"
             >
                 Toggla delay
@@ -87,7 +87,7 @@ export default defineComponent({
             <button
                 v-test="'loader-toggle-text'"
                 type="button"
-                class="button button--discrete"
+                class="button button--tertiary"
                 @click="toggleCloseText()"
             >
                 Toggla text

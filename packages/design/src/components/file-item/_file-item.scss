@@ -10,7 +10,8 @@ $FILE_LIST_ITEM_SELECTOR: ".file-item-list" !default;
 }
 
 #{$FILE_ITEM_SELECTOR} {
-    .button--discrete {
+    .button--discrete,
+    .button--tertiary {
         padding: 0;
         min-width: auto;
         text-align: left;
