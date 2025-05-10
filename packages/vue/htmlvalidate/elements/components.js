@@ -508,6 +508,10 @@ module.exports = defineMetadata({
         },
     },
 
+    "f-fixed-pane": {
+        flow: true,
+    },
+
     "f-sort-filter-dataset": {
         flow: true,
         interactive: true,

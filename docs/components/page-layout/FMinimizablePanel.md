@@ -8,7 +8,7 @@ component: FMinimizablePanel
 Minimerbar panel (FMinimizablePanel) används tillsammans med {@link FPageLayout applikationsmallen}
 för att ge användaren möjlighet att visa innehåll i öppet läge eller minimerat läge.
 
-Komponenten har även stöd för att kombineras ihop med {@link FResizePane justerbar yta}.
+Komponenten har även stöd för att kombineras ihop med {@link FResizePane justerbar yta} (FResizePane) eller {@link FFixedPane fixerad yta} (FFixedPane).
 
 ```import name=minimizable-panel-example
 FMinimizablePanelExample.vue
