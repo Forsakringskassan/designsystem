@@ -111,7 +111,7 @@
     "core-js": "3.42.0",
     "cypress": "14.3.3",
     "cypress-html-validate": "7.1.0",
-    "esbuild": "0.25.3",
+    "esbuild": "0.25.4",
     "flush-promises": "1.0.2",
     "fs-extra": "11.3.0",
     "glob": "11.0.2",
