@@ -10,10 +10,6 @@
     $color--hover: $color,
     $color--focus: $color--hover,
     $color--disabled: $button-color-text-disabled,
-    $icon-color: $color,
-    $icon-color--hover: $color--hover,
-    $icon-color--focus: $color--focus,
-    $icon-color--disabled: $color--disabled,
     $background-color--hover: $background-color,
     $background-color--focus: $background-color--hover,
     $background-color--disabled: $button-color-background-disabled,
@@ -34,19 +30,11 @@
     color: $color;
     padding: $padding-top $padding-right $padding-bottom $padding-left;
 
-    & > .button__icon {
-        color: $icon-color;
-    }
-
     &:hover {
         background-color: $background-color--hover;
         border-color: $border-color--hover;
         color: $color--hover;
         box-shadow: $shadow-hover;
-
-        & > .button__icon {
-            color: $icon-color--hover;
-        }
     }
 
     &:active,
@@ -56,10 +44,6 @@
         background-color: $background-color--focus;
         border-color: $border-color--focus;
         color: $color--focus;
-
-        & > .button__icon {
-            color: $icon-color--focus;
-        }
     }
 
     &.disabled,
@@ -71,9 +55,5 @@
         background-color: $background-color--disabled;
         border-color: $border-color--disabled;
         color: $color--disabled;
-
-        & > .button__icon {
-            color: $icon-color--disabled;
-        }
     }
 }
