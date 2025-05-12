@@ -46,14 +46,14 @@
     "preset": "@forsakringskassan/jest-config"
   },
   "dependencies": {
-    "i18next": "25.0.2"
+    "i18next": "25.1.2"
   },
   "devDependencies": {
     "@fkui/logic": "6.6.0",
     "@rollup/plugin-commonjs": "28.0.3",
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-typescript": "12.1.2",
-    "rollup": "4.40.1"
+    "rollup": "4.40.2"
   },
   "peerDependencies": {
     "@fkui/logic": "^6.6.0"
