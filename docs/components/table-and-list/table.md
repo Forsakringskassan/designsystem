@@ -118,6 +118,19 @@ Följande inmatningfält kan användas:
 - datumväljare (FDatepickerField)
 - dropplista (FSelectField).
 
+```html static compare=interactivetable-base
+<f-interactive-table :rows="items">
+    <template #caption> Awesome Table </template>
+    <template #default="{ row }">
+        <f-table-column title="Utbetalningsdatum" type="text" shrink>
+            <f-datepicker-field v-model="row.date" v-validation.required>
+                Utbetalningsdatum
+            </f-datepicker-field>
+        </f-table-column>
+    </template>
+</f-interactive-table>
+```
+
 ```import
 FInteractiveTableInputExample.vue
 ```
