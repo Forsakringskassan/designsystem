@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="sv" class="layout--content-with-menu" data-root-url="..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Komponenter - FKUI Labs</title><link
+            rel="stylesheet"
+            href="../assets/docs-994bfe.css"
+            crossorigin
+            integrity="sha384-D/L5e4vtYPqiWHckxfg+PoMRRolXZBia6psGjgLx+/T6QfNdX3jHPNItIMCiXmVI"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-fkui-d3a31e.css"
+            crossorigin
+            integrity="sha384-rTkf6XXnwuvX0qtnYXqszJ3Cvx46yPxlbCCPb4zxKB4l0Wd+9wO4mKSg/QEsDib3"
+            data-theme="fkui" disabled
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../assets/vendor-vue-6c2e41.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-c06ed0.js",
+    "@fkui/date": "../assets/vendor-fkui-date-d11adb.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-c59af6.js"
+  },
+  "integrity": {
+    "../assets/vendor-vue-6c2e41.js": "sha384-YEv4tbVQlGj3XZu1k08lRfiDBJ6kZ+kj+WwpGdcMsyRsbPcuo6/9ExhKEAPH6LwP",
+    "../assets/vendor-fkui-logic-c06ed0.js": "sha384-FlZw+HsGkcDZ9Pv8S2Oh2tzFy/xoCapwWSTFG5OAuJXoJYX1aGnfD9i0HfD165qm",
+    "../assets/vendor-fkui-date-d11adb.js": "sha384-X12fOIHKUKGgD0l/UlcXFi10Tij8/mCElKW44ma4fJmying2dQoELzvX0hIALN7I",
+    "../assets/vendor-fkui-vue-c59af6.js": "sha384-P787zdRZKcQ6qg9HJm6/++52YSLHDwAOP7/Eo+ZbalbqAdYezZl6PiH516hWGqFI"
+  }
+}
+        </script><script
+            src="../assets/bootstrap-dfc010.js"
+            
+            crossorigin
+            integrity="sha384-4CY3mj1uza2HPzeViyHD3gIMd8d3TDJDCoq1h22Ak/QLHgKLnc2ymTmUrjDIDy3M"
+            
+        ></script><link
+            rel="preload"
+            href="../search-data-cdf67f.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-sUnhZOnckHbg1NZYpFxul1Ux/9MzFzeTaARsEl2YyKpRE8PVVTxzkzeE1ulqfv+j"
+            id="search-data"
+        />
+    </head>
+    <body><div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../index.html">
+            <span aria-label="FKUI Labs" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../index.html"> FKUI Labs </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="./"> Komponenter </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./"> Komponenter </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <span class="version">
+        6.6.0
+    </span>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol><li class="link active">
+        <a
+            href="./"
+            
+            
+            
+            data-path="components/"
+            
+        >
+            Komponenter
+        </a>
+    </li><li class="link ">
+        <a
+            href="./xtimetextfield.html"
+            
+            
+            
+            data-path="components/xtimetextfield.html"
+            
+        >
+            Tidsinmatning
+        </a>
+    </li></ol>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Komponenter</h1>
+
+                    
+
+                    <div id="content"><p class="docs-paragraph">Experimentella komponenter som kan ändras när som helst.
+Även vid brytande ändringar hanteras det som vilka andra ändringar som helst (dvs ej semantisk versionshantering).</p>
+<p class="docs-paragraph">Använd på egen risk!</p>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="../changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content"></div>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Sök</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog><script
+            src="../assets/main-036f3f.js"
+            type="module"
+            crossorigin
+            integrity="sha384-aUikZ5VT6CVNqZxNWj/D51OBcH4qlq8Q+VXbmGwK0k4Qf7I7OKsAAUVyy/TtFdW7"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/index.md
+         Document ID: fs:docs/components/index.md
+         Document name: index
+         Document alias: 
+
+    -->
+</html>
