@@ -256,6 +256,7 @@ function filterResultset(): void {
                                 <span class="sr-only">{{ placeholderFilter }}</span>
                             </f-text-field>
 
+                            <!-- [html-validate-disable-next fkui/class-deprecated -- technical debt] -->
                             <button
                                 v-if="showClearButton"
                                 type="button"
