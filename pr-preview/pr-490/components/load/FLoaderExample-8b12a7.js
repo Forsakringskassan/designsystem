@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderExample.vue:FLoaderExample-4ca5be.js
+// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderExample.vue:FLoaderExample-8b12a7.js
 import { defineComponent } from "vue";
 import { FLoader } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withDirectives as _withDirectives, vModelText as _vModelText } from "vue";
@@ -110,7 +110,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _createElementVNode("div", _hoisted_1, [
       _withDirectives((_openBlock(), _createElementBlock("button", {
         type: "button",
-        class: "button button--discrete",
+        class: "button button--tertiary",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.toggleLoader())
       }, _cache[5] || (_cache[5] = [
         _createTextVNode(" Toggla loader ")
@@ -119,7 +119,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _withDirectives((_openBlock(), _createElementBlock("button", {
         type: "button",
-        class: "button button--discrete",
+        class: "button button--tertiary",
         disabled: Boolean(_ctx.show),
         onClick: _cache[1] || (_cache[1] = ($event) => _ctx.toggleOverlay())
       }, _cache[6] || (_cache[6] = [
@@ -129,7 +129,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _withDirectives((_openBlock(), _createElementBlock("button", {
         type: "button",
-        class: "button button--discrete",
+        class: "button button--tertiary",
         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.toggleDelay())
       }, _cache[7] || (_cache[7] = [
         _createTextVNode(" Toggla delay ")
@@ -138,7 +138,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _withDirectives((_openBlock(), _createElementBlock("button", {
         type: "button",
-        class: "button button--discrete",
+        class: "button button--tertiary",
         onClick: _cache[3] || (_cache[3] = ($event) => _ctx.toggleCloseText())
       }, _cache[8] || (_cache[8] = [
         _createTextVNode(" Toggla text ")
@@ -180,7 +180,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4ca5be"
+  selector: "#example-8b12a7"
 });
 export {
   render

@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleAddStep.vue:FWizardExampleAddStep-4bd3a6.js
+// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleAddStep.vue:FWizardExampleAddStep-de41ea.js
 import { defineComponent } from "vue";
 import { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, renderList as _renderList, Fragment as _Fragment, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString } from "vue";
@@ -115,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             )),
             _createElementVNode("button", {
               type: "button",
-              class: "button button--discrete",
+              class: "button button--tertiary",
               onClick: _cache[0] || (_cache[0] = (...args) => _ctx.addBasket && _ctx.addBasket(...args))
             }, [
               _createVNode(_component_f_icon, {
@@ -208,7 +208,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 ]),
                 _createElementVNode("button", {
                   type: "button",
-                  class: "button button--discrete",
+                  class: "button button--tertiary",
                   onClick: ($event) => _ctx.removeBasket(item)
                 }, [
                   _createVNode(_component_f_icon, { name: "trashcan" }),
@@ -264,7 +264,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4bd3a6"
+  selector: "#example-de41ea"
 });
 export {
   render
