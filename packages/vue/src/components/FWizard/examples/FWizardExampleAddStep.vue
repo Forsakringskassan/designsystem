@@ -63,7 +63,7 @@ export default defineComponent({
         >
             <f-wizard-step key="fruktkorg-antal" v-test="'myOrderStep'" title="Min beställning">
                 <h3>Fruktkorg</h3>
-                <button type="button" class="button button--discrete" @click="addBasket">
+                <button type="button" class="button button--tertiary" @click="addBasket">
                     <f-icon class="button__icon" name="plus" /> Lägg till fruktkorg
                 </button>
             </f-wizard-step>
@@ -94,7 +94,7 @@ export default defineComponent({
                     </f-checkbox-field>
                 </f-fieldset>
 
-                <button type="button" class="button button--discrete" @click="removeBasket(item)">
+                <button type="button" class="button button--tertiary" @click="removeBasket(item)">
                     <f-icon name="trashcan" /> Ta bort fruktkorg
                 </button>
             </f-wizard-step>

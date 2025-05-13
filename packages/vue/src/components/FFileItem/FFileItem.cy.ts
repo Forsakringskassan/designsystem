@@ -43,7 +43,7 @@ describe("FFileItem", () => {
                         <button
                             v-if="progress < 100"
                             type="button"
-                            class="button button--discrete file-item__file-remove file-item__abort"
+                            class="button button--tertiary file-item__file-remove file-item__abort"
                         >
                             <f-icon name="close" class="button__icon"></f-icon>
                             <span> Avbryt uppladdning </span>
@@ -51,7 +51,7 @@ describe("FFileItem", () => {
                         <button
                             v-else-if="progress === 100"
                             type="button"
-                            class="button button--discrete file-item__file-remove"
+                            class="button button--tertiary file-item__file-remove"
                         >
                             <f-icon
                                 name="trashcan"

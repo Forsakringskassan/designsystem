@@ -113,14 +113,14 @@ export default defineComponent({
                 <f-icon name="paper-clip" class="button__icon"></f-icon> Tertiary
             </button>
             <button
-                class="button button--discrete button-group__item"
+                class="button button--tertiary button-group__item"
                 :class="useFullWidth ? 'button--full-width' : ''"
                 type="button"
             >
                 Discrete
             </button>
             <button
-                class="button button--discrete-inverted button-group__item"
+                class="button button--tertiary-inverted button-group__item"
                 :class="useFullWidth ? 'button--full-width' : ''"
                 type="button"
             >

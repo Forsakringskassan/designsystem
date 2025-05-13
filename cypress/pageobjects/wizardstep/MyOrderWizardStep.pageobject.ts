@@ -9,6 +9,6 @@ export class MyOrderWizardStepPageobject extends FWizardStepPageobject {
         super(selector);
 
         this.addBasket = () =>
-            cy.get(`${this.selector} button.button--discrete`);
+            cy.get(`${this.selector} button.button--tertiary`);
     }
 }
