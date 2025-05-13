@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datamängdredigerare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-5ec231.css"
+            href="../../assets/docs-40a697.css"
             crossorigin
-            integrity="sha384-ZJ7bW2/mvGCU71G4flihC6H23Eqngo4UnyRqm+E/HgzQzW0dMZTTHQgDZYsk6+e2"
+            integrity="sha384-KM9c5YAigIlO6CfEUepzlronFpbEE0J+mE03Ad4p51odlMcQ+TXXvwhW4hyWxLXw"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-b5fb0f.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-5ee2b9.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-b5fb0f.js": "sha384-S506ou2lgk+tp+akZ6laFXAIF98iQCjF2yteR6YXfqSc/TeZR8rwwPSVRNpJhpoM",
+    "../../assets/vendor-fkui-vue-5ee2b9.js": "sha384-eC6wV1B5euN1s4BhYowHraKuhFxOXvnl/jo+lNIoHq4bocNY4rNyVxzA4ACN82Jk",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-4c0bdf.json"
+            href="../../search-data-df5f2b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-/zxlZnFREbuuqfdtsNWRp5AyggLnCScWr18DzcWuwHY77r9BJ4BUWLHEmzcpMyt7"
+            integrity="sha384-yVjjT94+mFWLysBm3UM98++Sy3vdn4P7sasamHNDeKkTFfALUxouiFQc22giid82"
             id="search-data"
         />
     </head>
@@ -859,6 +859,17 @@
         </a>
     </li><li class="link ">
         <a
+            href="../page-layout/ffixedpane.html"
+            
+            
+            
+            data-path="components/page-layout/ffixedpane.html"
+            
+        >
+            Fixerad yta
+        </a>
+    </li><li class="link ">
+        <a
             href="../page-layout/fresizepane.html"
             
             
@@ -1058,13 +1069,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3d5b8f7afb0723d78ad38c80b310f73ba5558a68/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/bbbe54e386b428d1780ab629536b3644ae0901f2/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3d5b8f7afb0723d78ad38c80b310f73ba5558a68/packages/vue/src/components/FCrudDataset/FCrudButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/bbbe54e386b428d1780ab629536b3644ae0901f2/packages/vue/src/components/FCrudDataset/FCrudButton.vue">
                 FCrudButton
             </a>
             
@@ -1118,9 +1129,13 @@
                     <div id="content"><p class="docs-paragraph">Datamändgredigeraren används för att erbjuda användare funktionerna &quot;lägg till&quot;, &quot;ändra&quot; och &quot;ta bort&quot; i en datamängd.
 Komponenten ansvarar inte för hur datamängden och åtgärderna &quot;lägg till&quot;, &quot;ändra&quot; och &quot;ta bort&quot; presenteras.
 Vanligtvis används lista eller tabell för presentation men kan även vara egenutvecklad.</p>
+<p class="docs-paragraph">Om knappens visuella text för &quot;ändra&quot; och &quot;ta bort&quot; inte tydligt identifierar raden från andra rader,
+behöver knappen kompletteras med en text för skärmläsare.
+Beroende på sammanhang kan även knappen för &quot;lägg till ny&quot; behöva kompletteras med en skärmläsartext,
+som tydligör vad som läggs till.</p>
 <h2 id="interaktiv_tabell_med_redigering"><a class="header-anchor" href="#interaktiv_tabell_med_redigering">Interaktiv tabell med redigering</a></h2>
             <div
-                id="example-85943e"
+                id="example-55b036"
                 class="code-preview code-preview--default"
                 
                 
@@ -1128,13 +1143,13 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-b2d4d6"></div>
+        <div id="example-a17424"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-b2d4d6.js"></script>
+        <script type="module" src="./FCrudDatasetTableExample-a17424.js"></script>
     </div>
                 <div>
             <button
@@ -1202,8 +1217,12 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
                         {{ row.description }}
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Åtgärd&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;action&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;row&quot;</span> <span class="hljs-attr">icon</span> /&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;row&quot;</span> <span class="hljs-attr">icon</span> /&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;row&quot;</span> <span class="hljs-attr">icon</span>&gt;</span>
+                            {{ `Ändra  ${row.name}` }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;row&quot;</span> <span class="hljs-attr">icon</span>&gt;</span>
+                            {{ `Ta bort ${row.name}` }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
@@ -1268,7 +1287,7 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
 Callback anropas innan modalen visas.</p>
 
                 <div
-                    id="example-c15810"
+                    id="example-af5c6a"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1282,7 +1301,7 @@ Callback anropas innan modalen visas.</p>
                 </div>
             
                 <div
-                    id="example-14354c"
+                    id="example-b98cde"
                     class="code-preview code-preview--default"
                     
                     
@@ -1303,7 +1322,7 @@ Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappor
 Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
                 <div
-                    id="example-8497c3"
+                    id="example-af8624"
                     class="code-preview code-preview--default"
                     
                     
@@ -1322,7 +1341,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             
                 <div
-                    id="example-d100e5"
+                    id="example-cfb29a"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1330,18 +1349,18 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 >
                     
                     <div class="code-preview__preview">
-        <div id="example-919e8e"></div>
+        <div id="example-1d0960"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetAdditionalButtons-919e8e.js"></script>
+        <script type="module" src="./FCrudDatasetAdditionalButtons-1d0960.js"></script>
     </div>
                 </div>
             <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
-                id="example-7e1693"
+                id="example-67b11d"
                 class="code-preview code-preview--default"
                 
                 
@@ -1349,13 +1368,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-2e6083"></div>
+        <div id="example-bee235"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-2e6083.js"></script>
+        <script type="module" src="./FCrudDatasetTableCreateExample-bee235.js"></script>
     </div>
                 <div>
             <button
@@ -1450,7 +1469,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="interaktiv_tabell_med_knapp"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
             <div
-                id="example-b4248d"
+                id="example-48e075"
                 class="code-preview code-preview--default"
                 
                 
@@ -1458,13 +1477,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-c7298a"></div>
+        <div id="example-ba8812"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableUpdateExample-c7298a.js"></script>
+        <script type="module" src="./FCrudDatasetTableUpdateExample-ba8812.js"></script>
     </div>
                 <div>
             <button
@@ -1526,7 +1545,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Åtgärd&quot;</span> <span class="hljs-attr">shrink</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;action&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;row&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span>&gt;</span>
-                            Ändra Namn
+                            Ändra Namn <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> {{ row.name }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                         <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1548,7 +1567,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="lista_med_redigering"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-9d16e1"
+                id="example-2c3102"
                 class="code-preview code-preview--default"
                 
                 
@@ -1556,13 +1575,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-fa05ef"></div>
+        <div id="example-c54d7a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetListExample-fa05ef.js"></script>
+        <script type="module" src="./FCrudDatasetListExample-c54d7a.js"></script>
     </div>
                 <div>
             <button
@@ -1655,10 +1674,14 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-5&quot;</span>&gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-list&quot;</span>&gt;</span>
                                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span> /&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span>&gt;</span>
+                                        Ändra <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
                                 <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
                                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span> /&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span>&gt;</span>
+                                        Ta bort <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>{{ item.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
                                 <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
                             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
                         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1712,7 +1735,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="sorterbar_lista"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-70d50c"
+                id="example-17aea1"
                 class="code-preview code-preview--default"
                 
                 
@@ -1720,13 +1743,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-7cbb78"></div>
+        <div id="example-2eb631"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetSortListExample-7cbb78.js"></script>
+        <script type="module" src="./FCrudDatasetSortListExample-2eb631.js"></script>
     </div>
                 <div>
             <button
@@ -1815,10 +1838,14 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                                     <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
                                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-1&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> /&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span>&gt;</span>
+                                        {{ `Ändra  ${item.name}` }}
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
                                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--sm-1&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> /&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span>&gt;</span>
+                                        {{ `Ta bort ${item.name}` }}
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
                                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1889,7 +1916,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 </ul>
 
             <div
-                id="example-f2c9c7"
+                id="example-7302e5"
                 class="code-preview code-preview--default"
                 
                 
@@ -1897,13 +1924,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-927e95"></div>
+        <div id="example-c783dd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetCustomTextExample-927e95.js"></script>
+        <script type="module" src="./FCrudDatasetCustomTextExample-c783dd.js"></script>
     </div>
                 <div>
             <button
@@ -1999,10 +2026,14 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--lg-5 col--md-6&quot;</span>&gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row row--align-end&quot;</span>&gt;</span>
                                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span> /&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;modify&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span>&gt;</span>
+                                        {{ `Ändra ${item.name}` }}
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
                                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col&quot;</span>&gt;</span>
-                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span> /&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-button</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">:item</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">icon</span> <span class="hljs-attr">label</span>&gt;</span>
+                                        {{ `Ta bort ${item.name}` }}
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-button</span>&gt;</span>
                                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -2837,9 +2868,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feature/forced_colors_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/3d5b8f7afb0723d78ad38c80b310f73ba5558a68">3d5b8f7</a>)<br />
+<div class="footer__right"><div class="version">feature/forced_colors_button (<a href="https://github.com/Forsakringskassan/designsystem/commits/bbbe54e386b428d1780ab629536b3644ae0901f2">bbbe54e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/485">PR 485</a><br />
-        2025-05-11 19:35
+        2025-05-13 13:19
 </div>
 <div class="toolbar__item">
     <form id="version">
