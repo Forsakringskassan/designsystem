@@ -48,8 +48,6 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -59,6 +57,8 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
@@ -67,13 +67,13 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
+    "EventBus",
+    "EventBus",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
     "focus-indicator() mixin",
-    "EventBus",
-    "EventBus",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -214,10 +214,6 @@
     "openModal",
     "formModal() function",
     "confirmModal() function",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -235,6 +231,10 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -245,12 +245,12 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -459,16 +459,6 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -492,6 +482,16 @@
     {
       "url": "gettingstarted/use-design-system/getting-started-application.html",
       "title": "Ta fram applikation",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
       "terms": []
     },
     {
@@ -535,6 +535,13 @@
       "terms": []
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": []
@@ -558,13 +565,6 @@
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
     },
     {
       "url": "functions/plugins/validationplugin.html",
@@ -1088,26 +1088,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1193,6 +1173,26 @@
       "terms": []
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
       "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
       "terms": []
@@ -1243,6 +1243,11 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -1265,11 +1270,6 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -1398,12 +1398,12 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 33,
-    "50": 34,
-    "51": 34,
-    "52": 34,
-    "53": 34,
-    "54": 34,
+    "49": 32,
+    "50": 32,
+    "51": 32,
+    "52": 32,
+    "53": 32,
+    "54": 33,
     "55": 34,
     "56": 35,
     "57": 36,
@@ -1417,11 +1417,11 @@
     "65": 44,
     "66": 45,
     "67": 46,
-    "68": 47,
-    "69": 48,
-    "70": 49,
-    "71": 50,
-    "72": 51,
+    "68": 46,
+    "69": 47,
+    "70": 48,
+    "71": 49,
+    "72": 50,
     "73": 51,
     "74": 52,
     "75": 53,
