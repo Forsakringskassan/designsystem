@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { capitalize, defineComponent, type PropType } from "vue";
 import { FDate } from "@fkui/date";
 import { alertScreenReader } from "@fkui/logic";
 import { FIcon } from "../../components/FIcon";
@@ -115,7 +115,7 @@ export default defineComponent({
             }
         },
         getDateText(value: FDate): string {
-            return `${value.monthName} ${value.year}`;
+            return `${capitalize(value.monthName)} ${value.year}`;
         },
         isFocused(ref: string): boolean {
             return document.activeElement === this.$refs[ref];

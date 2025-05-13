@@ -190,7 +190,7 @@ describe("open calendar", () => {
     it("should show current month", () => {
         datepickerField
             .calendarCaption()
-            .should("contain.text", "december 2022");
+            .should("contain.text", "December 2022");
     });
 
     it("should focus on caption", () => {
@@ -258,11 +258,11 @@ describe("open calendar and go to previous month", () => {
     it("should set caption to previous month", () => {
         datepickerField
             .calendarCaption()
-            .should("contain.text", "november 2022");
+            .should("contain.text", "November 2022");
     });
 
     it("should set aria-live message to previous month", () => {
-        alertScreenReader.el().should("contain.text", "november 2022 visas");
+        alertScreenReader.el().should("contain.text", "November 2022 visas");
     });
 });
 
@@ -278,11 +278,11 @@ describe("open calendar and go to next month", () => {
     it("should set caption to next month", () => {
         datepickerField
             .calendarCaption()
-            .should("contain.text", "januari 2023");
+            .should("contain.text", "Januari 2023");
     });
 
     it("should set aria-live message to next month", () => {
-        alertScreenReader.el().should("contain.text", "januari 2023 visas");
+        alertScreenReader.el().should("contain.text", "Januari 2023 visas");
     });
 });
 
@@ -498,7 +498,7 @@ describe("initial month set", () => {
         it("should show initial month", () => {
             datepickerField
                 .calendarCaption()
-                .should("contain.text", "februari 2020");
+                .should("contain.text", "Februari 2020");
         });
     });
 });
@@ -520,7 +520,7 @@ describe("initial month set and invalid date", () => {
         it("should show initial month and not indicate any day is selected", () => {
             datepickerField
                 .calendarCaption()
-                .should("contain.text", "mars 2020");
+                .should("contain.text", "Mars 2020");
 
             datepickerField.selectedDay().should("not.exist");
         });
@@ -545,7 +545,7 @@ describe("initial month set and invalid date format", () => {
         it("should show initial month and not indicate any day is selected", () => {
             datepickerField
                 .calendarCaption()
-                .should("contain.text", "april 2020");
+                .should("contain.text", "April 2020");
 
             datepickerField.selectedDay().should("not.exist");
         });
@@ -584,7 +584,7 @@ describe("valid date", () => {
         it("should show belonging month and indicate day is selected", () => {
             datepickerField
                 .calendarCaption()
-                .should("contain.text", "december 2022");
+                .should("contain.text", "December 2022");
             datepickerField.selectedDay().should("exist");
         });
 
@@ -670,7 +670,7 @@ describe("invalid date", () => {
         it("should default show current month and not indicate any day is selected", () => {
             datepickerField
                 .calendarCaption()
-                .should("contain.text", "december 2022");
+                .should("contain.text", "December 2022");
             datepickerField.selectedDay().should("not.exist");
         });
 
@@ -699,7 +699,7 @@ describe("invalid date and initial month set", () => {
             datepickerField.toggleCalendarButton().click();
             datepickerField
                 .calendarCaption()
-                .should("contain.text", "april 2020");
+                .should("contain.text", "April 2020");
             datepickerField.selectedDay().should("not.exist");
         });
     });
@@ -902,7 +902,7 @@ describe("mindate within month", () => {
         it("should not navigate", () => {
             datepickerField
                 .calendarCaption()
-                .should("contain.text", "december 2022");
+                .should("contain.text", "December 2022");
         });
 
         it("should set aria-live message", () => {
@@ -1002,7 +1002,7 @@ describe("maxdate within month", () => {
         it("should not navigate", () => {
             datepickerField
                 .calendarCaption()
-                .should("contain.text", "december 2022");
+                .should("contain.text", "December 2022");
         });
 
         it("should set aria-live message", () => {
