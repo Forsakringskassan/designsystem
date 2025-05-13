@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-6c9fb1.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-6e2642.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-6c9fb1.js": "sha384-fh2Z3IEUjsvFClBOuISwVAjR00JPyUVdWvKcRamNSIoiAiGzRbBdyywWZ0NsV/kj",
+    "../../assets/vendor-fkui-vue-6e2642.js": "sha384-iyJA4iOWdiLbN8vCVuI+oMLuNQdryutzd4fV36duB+4z0lAWv7N5NZiiVGCDcxDL",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-3c6118.json"
+            href="../../search-data-013a2b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-3JQGZvZPWC9riveT6tDarrTbt4JIUFDiptoV6SNkJ+cuX3Mp6I+EzPNJ7UtFWdqy"
+            integrity="sha384-O0UrlUODZVZqhYsa9FivFLn7fMAJh45X1w/HZjtppEP+GuOVsurYVm7Ka50gXg3O"
             id="search-data"
         />
     </head>
@@ -859,6 +859,17 @@
         </a>
     </li><li class="link ">
         <a
+            href="../page-layout/ffixedpane.html"
+            
+            
+            
+            data-path="components/page-layout/ffixedpane.html"
+            
+        >
+            Fixerad yta
+        </a>
+    </li><li class="link ">
+        <a
             href="../page-layout/fresizepane.html"
             
             
@@ -1058,19 +1069,19 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/922fb5b9d9085b9e92d0669aa5e31d451a3dcf43/packages/vue/src/components/FDataTable/FDataTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/dd37ef0dc13e72e49093b9a85267e9dcdf217663/packages/vue/src/components/FDataTable/FDataTable.vue">
                 FDataTable
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/922fb5b9d9085b9e92d0669aa5e31d451a3dcf43/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/dd37ef0dc13e72e49093b9a85267e9dcdf217663/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
                 FInteractiveTable
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/922fb5b9d9085b9e92d0669aa5e31d451a3dcf43/packages/vue/src/components/FTableColumn/FTableColumn.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/dd37ef0dc13e72e49093b9a85267e9dcdf217663/packages/vue/src/components/FTableColumn/FTableColumn.vue">
                 FTableColumn
             </a>
             
@@ -1273,8 +1284,31 @@ Felmeddelandet visas när det felmarkerade fältet har fokus.</p>
 <li>dropplista (FSelectField).</li>
 </ul>
 
+                <div
+                    id="example-49a7bf"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-interactive-table :rows=&quot;items&quot;&gt;
+     &lt;template #caption&gt; Awesome Table &lt;/template&gt;
+     &lt;template #default=&quot;{ row }&quot;&gt;
+<span class="hljs-deletion">-        &lt;f-table-column title=&quot;Kolumnrubrik&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-            {{ row.value }}</span>
+<span class="hljs-addition">+        &lt;f-table-column title=&quot;Utbetalningsdatum&quot; type=&quot;text&quot; shrink&gt;</span>
+<span class="hljs-addition">+            &lt;f-datepicker-field v-model=&quot;row.date&quot; v-validation.required&gt;</span>
+<span class="hljs-addition">+                Utbetalningsdatum</span>
+<span class="hljs-addition">+            &lt;/f-datepicker-field&gt;</span>
+         &lt;/f-table-column&gt;
+     &lt;/template&gt;
+ &lt;/f-interactive-table&gt;
+</code></pre>
+                </div>
+            
             <div
-                id="example-442966"
+                id="example-bc1be0"
                 class="code-preview code-preview--default"
                 
                 
@@ -1373,7 +1407,7 @@ Felmeddelandet visas när det felmarkerade fältet har fokus.</p>
 När en rad väljs uppdateras <code>v-model</code> med referens till alla rader som är valda.</p>
 
                 <div
-                    id="example-ea71a0"
+                    id="example-43a045"
                     class="code-preview code-preview--default"
                     
                     
@@ -1393,7 +1427,7 @@ På så sätt kan du till exempel förvälja vissa rader eller skapa bulk-åtgä
 Notera att <code>v-model</code> kräver referenser till objekt som du skickat till <code>rows</code> prop för att kunna välja dessa.</p>
 
                 <div
-                    id="example-700768"
+                    id="example-449d1c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1421,7 +1455,7 @@ Notera att <code>v-model</code> kräver referenser till objekt som du skickat ti
 <p class="docs-paragraph">Givet följande struktur sätter man <code>expandable-attribute</code> till <code>myExpandableRow</code>:</p>
 
                 <div
-                    id="example-4ba17c"
+                    id="example-e22e84"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1470,7 +1504,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <p class="docs-paragraph">Se nedan exempel av data som kan användas för att generera en expanderbar rad som innehåller två tabellrader.</p>
 
                 <div
-                    id="example-7f7778"
+                    id="example-770f3b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1486,7 +1520,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
                 </div>
             
                 <div
-                    id="example-be458b"
+                    id="example-b866be"
                     class="code-preview code-preview--default"
                     data-test="expandable-default"
                     data-tags="nomarkup"
@@ -1513,7 +1547,7 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
             </div>
         
                 <div
-                    id="example-3da6cd"
+                    id="example-b2b3cf"
                     class="code-preview code-preview--default"
                     
                     
@@ -1531,7 +1565,7 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
                 </div>
             
                 <div
-                    id="example-b5e68e"
+                    id="example-442a54"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1554,7 +1588,7 @@ Om detta anges, så måste varje rad (även expanderade rader) innehålla denna 
 Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande så måste du använda <code>keyAttribute</code> för att aktuell status för raderna ska kunna bibehållas.</p>
 
                 <div
-                    id="example-3ce358"
+                    id="example-2c283f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1567,7 +1601,7 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
                 </div>
             
                 <div
-                    id="example-76a299"
+                    id="example-4d54ae"
                     class="code-preview code-preview--default"
                     
                     
@@ -1585,7 +1619,7 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
 <p class="docs-paragraph">Om tabellen har en heading i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>:</p>
 
                 <div
-                    id="example-2428fe"
+                    id="example-1bfcea"
                     class="code-preview code-preview--default"
                     
                     
@@ -1603,7 +1637,7 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
             <p class="docs-paragraph">Använd caption om tabellen inte har en naturlig rubrik:</p>
 
                 <div
-                    id="example-88082f"
+                    id="example-b24acf"
                     class="code-preview code-preview--default"
                     
                     
@@ -1619,7 +1653,7 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
             <p class="docs-paragraph">I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:</p>
 
                 <div
-                    id="example-9aca71"
+                    id="example-0d6737"
                     class="code-preview code-preview--default"
                     
                     
@@ -1649,7 +1683,7 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
 <h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p class="docs-paragraph">För att lägga till skroll i tabell använder du prop <code>scroll</code>:</p>
 
                 <div
-                    id="example-2b294c"
+                    id="example-80a592"
                     class="code-preview code-preview--default"
                     
                     
@@ -1668,7 +1702,7 @@ Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-4766e1"
+                    id="example-92b814"
                     class="code-preview code-preview--default"
                     
                     
@@ -1690,7 +1724,7 @@ Texten sätts i slot <code>#empty</code>:</p>
 Texten bör innehålla något som tydligt identifierar raden från andra rader.</p>
 
                 <div
-                    id="example-b72539"
+                    id="example-6dabb4"
                     class="code-preview code-preview--default"
                     
                     
@@ -1713,7 +1747,7 @@ Texten bör innehålla något som tydligt identifierar raden från andra rader.<
                 </div>
             
                 <div
-                    id="example-7308f7"
+                    id="example-a343b2"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1735,7 +1769,7 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
 <p class="docs-paragraph">Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.</p>
 
                 <div
-                    id="example-83c399"
+                    id="example-c9d8ec"
                     class="code-preview code-preview--default"
                     
                     
@@ -1754,7 +1788,7 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
                 </div>
             
                 <div
-                    id="example-aba62f"
+                    id="example-809aea"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1782,7 +1816,7 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
 Det är ett fel att sätta både <code>expand</code> och <code>shrink</code> samtidigt.</p>
 
                 <div
-                    id="example-dda7fb"
+                    id="example-664314"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="live-example"
@@ -1808,7 +1842,7 @@ Det är ett fel att sätta både <code>expand</code> och <code>shrink</code> sam
 <p class="docs-paragraph">Typen anges genom att sätta propen <code>type</code>:</p>
 
                 <div
-                    id="example-fdfaee"
+                    id="example-5e3f56"
                     class="code-preview code-preview--default"
                     
                     
@@ -2767,9 +2801,9 @@ Requires <code>selectable</code> to be set.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">docs-f-crud-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/922fb5b9d9085b9e92d0669aa5e31d451a3dcf43">922fb5b</a>)<br />
+<div class="footer__right"><div class="version">docs-f-crud-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/dd37ef0dc13e72e49093b9a85267e9dcdf217663">dd37ef0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/478">PR 478</a><br />
-        2025-05-09 07:11
+        2025-05-13 11:16
 </div>
 <div class="toolbar__item">
     <form id="version">
