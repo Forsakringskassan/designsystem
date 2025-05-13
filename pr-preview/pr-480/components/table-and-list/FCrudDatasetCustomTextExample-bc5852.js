@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetCustomTextExample.vue:FCrudDatasetCustomTextExample-925b92.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetCustomTextExample.vue:FCrudDatasetCustomTextExample-bc5852.js
 import { defineComponent } from "vue";
 import {
   FCrudDataset,
@@ -67,8 +67,8 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetCustomTextExample.vue:FCrudDatasetCustomTextExample-925b92.js
-import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetCustomTextExample.vue:FCrudDatasetCustomTextExample-bc5852.js
+import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = defineComponent({
   name: "ExampleApp",
   components: {
@@ -186,7 +186,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     item,
                     icon: "",
                     label: ""
-                  }, null, 8, ["item"])
+                  }, {
+                    default: _withCtx(() => [
+                      _createTextVNode(
+                        _toDisplayString(`\xC4ndra ${item.name}`),
+                        1
+                        /* TEXT */
+                      )
+                    ]),
+                    _: 2
+                    /* DYNAMIC */
+                  }, 1032, ["item"])
                 ]),
                 _createElementVNode("div", _hoisted_6, [
                   _createVNode(_component_f_crud_button, {
@@ -194,7 +204,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     item,
                     icon: "",
                     label: ""
-                  }, null, 8, ["item"])
+                  }, {
+                    default: _withCtx(() => [
+                      _createTextVNode(
+                        _toDisplayString(`Ta bort ${item.name}`),
+                        1
+                        /* TEXT */
+                      )
+                    ]),
+                    _: 2
+                    /* DYNAMIC */
+                  }, 1032, ["item"])
                 ])
               ])
             ])
@@ -337,7 +357,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-925b92"
+  selector: "#example-bc5852"
 });
 export {
   render

@@ -28,11 +28,11 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableLiveExample.vue:FInteractiveTableLiveExample-e4e719.js
+// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableLiveExample.vue:FInteractiveTableLiveExample-329fe3.js
 import { defineComponent } from "vue";
 import {
-  FIcon,
   FInteractiveTable,
+  FTableButton,
   FTableColumn,
   FCheckboxField,
   FRadioField,
@@ -41,7 +41,7 @@ import {
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode } from "vue";
 var exampleComponent = defineComponent({
-  name: "FDataTableLiveExample",
+  name: "FInteractiveTableLiveExample",
   components: { LiveExample, FCheckboxField, FRadioField, FFieldset },
   data() {
     return {
@@ -163,7 +163,7 @@ var exampleComponent = defineComponent({
       };
     },
     components() {
-      return { FIcon, FInteractiveTable, FTableColumn };
+      return { FInteractiveTable, FTableButton, FTableColumn };
     },
     items() {
       return this.isEmpty ? `:rows="[]"` : `:rows="items"`;
@@ -213,12 +213,8 @@ var exampleComponent = defineComponent({
         /* HTML */
         `
                 <f-table-column title="\xC5tg\xE4rd" type="action" shrink>
-                    <button aria-label="Redigera" class="button table__button" type="button">
-                        <f-icon class="button__icon" name="pen"></f-icon>
-                    </button>
-                    <button aria-label="Ta bort" class="button table__button" type="button">
-                        <f-icon class="button__icon" name="trashcan"></f-icon>
-                    </button>
+                    <f-table-button icon="pen"> Redigera </f-table-button>
+                    <f-table-button icon="trashcan"> Ta bort </f-table-button>
                 </f-table-column>
             `
       );
@@ -474,7 +470,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e4e719"
+  selector: "#example-329fe3"
 });
 export {
   render

@@ -28,9 +28,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-519180.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-637502.js
 import { defineComponent } from "vue";
-import { FCrudDataset, FCrudButton, FTextField, FInteractiveTable, FTableColumn } from "@fkui/vue";
+import {
+  FCrudDataset,
+  FCrudButton,
+  FInteractiveTable,
+  FTableColumn,
+  FTextField,
+  FTextareaField
+} from "@fkui/vue";
 
 // packages/vue/src/components/FCrudDataset/examples/fruit-data.ts
 var fruits = [
@@ -60,16 +67,16 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableUpdateExample.vue:FCrudDatasetTableUpdateExample-519180.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-637502.js
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = defineComponent({
-  name: "ExampleApp",
   components: {
     FCrudDataset,
     FCrudButton,
-    FTextField,
     FInteractiveTable,
-    FTableColumn
+    FTableColumn,
+    FTextField,
+    FTextareaField
   },
   data() {
     return {
@@ -87,6 +94,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_crud_button = _resolveComponent("f-crud-button");
   const _component_f_interactive_table = _resolveComponent("f-interactive-table");
   const _component_f_text_field = _resolveComponent("f-text-field");
+  const _component_f_textarea_field = _resolveComponent("f-textarea-field");
   const _component_f_crud_dataset = _resolveComponent("f-crud-dataset");
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createBlock(_component_f_crud_dataset, {
@@ -178,20 +186,38 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _component_f_table_column,
             {
               title: "\xC5tg\xE4rd",
-              shrink: "",
-              type: "action"
+              type: "action",
+              shrink: ""
             },
             {
               default: _withCtx(() => [
                 _createVNode(_component_f_crud_button, {
                   action: "modify",
                   item: row,
-                  icon: "",
-                  label: ""
+                  icon: ""
                 }, {
-                  default: _withCtx(() => _cache[2] || (_cache[2] = [
-                    _createTextVNode(" \xC4ndra Namn ")
-                  ])),
+                  default: _withCtx(() => [
+                    _createTextVNode(
+                      _toDisplayString(`\xC4ndra  ${row.name}`),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  _: 2
+                  /* DYNAMIC */
+                }, 1032, ["item"]),
+                _createVNode(_component_f_crud_button, {
+                  action: "delete",
+                  item: row,
+                  icon: ""
+                }, {
+                  default: _withCtx(() => [
+                    _createTextVNode(
+                      _toDisplayString(`Ta bort ${row.name}`),
+                      1
+                      /* TEXT */
+                    )
+                  ]),
                   _: 2
                   /* DYNAMIC */
                 }, 1032, ["item"])
@@ -213,7 +239,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        default: _withCtx(() => _cache[3] || (_cache[3] = [
+        default: _withCtx(() => _cache[2] || (_cache[2] = [
           _createTextVNode(" Namn ")
         ])),
         _: 2
@@ -228,7 +254,139 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             maxLength: true
           }
         ]
+      ]),
+      _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
+        modelValue: item.origin,
+        "onUpdate:modelValue": ($event) => item.origin = $event,
+        type: "text"
+      }, {
+        default: _withCtx(() => _cache[3] || (_cache[3] = [
+          _createTextVNode(" Land ")
+        ])),
+        _: 2
+        /* DYNAMIC */
+      }, 1032, ["modelValue", "onUpdate:modelValue"])), [
+        [
+          _directive_validation,
+          { maxLength: { length: 32 } },
+          void 0,
+          {
+            required: true,
+            maxLength: true
+          }
+        ]
+      ]),
+      _withDirectives((_openBlock(), _createBlock(_component_f_textarea_field, {
+        modelValue: item.description,
+        "onUpdate:modelValue": ($event) => item.description = $event
+      }, {
+        default: _withCtx(() => _cache[4] || (_cache[4] = [
+          _createTextVNode(" Beskrivning ")
+        ])),
+        _: 2
+        /* DYNAMIC */
+      }, 1032, ["modelValue", "onUpdate:modelValue"])), [
+        [
+          _directive_validation,
+          void 0,
+          void 0,
+          { required: true }
+        ]
+      ]),
+      _createTextVNode(
+        " ID " + _toDisplayString(item.id),
+        1
+        /* TEXT */
+      )
+    ]),
+    add: _withCtx(({ item }) => [
+      _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
+        modelValue: item.id,
+        "onUpdate:modelValue": ($event) => item.id = $event,
+        type: "text"
+      }, {
+        default: _withCtx(() => _cache[5] || (_cache[5] = [
+          _createTextVNode(" ID ")
+        ])),
+        _: 2
+        /* DYNAMIC */
+      }, 1032, ["modelValue", "onUpdate:modelValue"])), [
+        [
+          _directive_validation,
+          { maxLength: { length: 4 } },
+          void 0,
+          {
+            required: true,
+            maxLength: true
+          }
+        ]
+      ]),
+      _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
+        modelValue: item.name,
+        "onUpdate:modelValue": ($event) => item.name = $event,
+        type: "text"
+      }, {
+        default: _withCtx(() => _cache[6] || (_cache[6] = [
+          _createTextVNode(" Namn ")
+        ])),
+        _: 2
+        /* DYNAMIC */
+      }, 1032, ["modelValue", "onUpdate:modelValue"])), [
+        [
+          _directive_validation,
+          { maxLength: { length: 32 } },
+          void 0,
+          {
+            required: true,
+            maxLength: true
+          }
+        ]
+      ]),
+      _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
+        modelValue: item.origin,
+        "onUpdate:modelValue": ($event) => item.origin = $event,
+        type: "text"
+      }, {
+        default: _withCtx(() => _cache[7] || (_cache[7] = [
+          _createTextVNode(" Land ")
+        ])),
+        _: 2
+        /* DYNAMIC */
+      }, 1032, ["modelValue", "onUpdate:modelValue"])), [
+        [
+          _directive_validation,
+          { maxLength: { length: 32 } },
+          void 0,
+          {
+            required: true,
+            maxLength: true
+          }
+        ]
+      ]),
+      _withDirectives((_openBlock(), _createBlock(_component_f_textarea_field, {
+        modelValue: item.description,
+        "onUpdate:modelValue": ($event) => item.description = $event
+      }, {
+        default: _withCtx(() => _cache[8] || (_cache[8] = [
+          _createTextVNode(" Beskrivning ")
+        ])),
+        _: 2
+        /* DYNAMIC */
+      }, 1032, ["modelValue", "onUpdate:modelValue"])), [
+        [
+          _directive_validation,
+          void 0,
+          void 0,
+          { required: true }
+        ]
       ])
+    ]),
+    delete: _withCtx(({ item }) => [
+      _createTextVNode(
+        ' Vill du verkligen radera fruken "' + _toDisplayString(item.name) + '" med ID ' + _toDisplayString(item.id),
+        1
+        /* TEXT */
+      )
     ]),
     _: 1
     /* STABLE */
@@ -237,7 +395,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-519180"
+  selector: "#example-637502"
 });
 export {
   render

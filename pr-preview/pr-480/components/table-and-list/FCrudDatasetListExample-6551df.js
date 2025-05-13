@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetListExample.vue:FCrudDatasetListExample-e7b4bc.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetListExample.vue:FCrudDatasetListExample-6551df.js
 import { defineComponent } from "vue";
 import {
   FCrudDataset,
@@ -67,8 +67,8 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetListExample.vue:FCrudDatasetListExample-e7b4bc.js
-import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetListExample.vue:FCrudDatasetListExample-6551df.js
+import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = defineComponent({
   components: {
     FCrudDataset,
@@ -107,6 +107,8 @@ var _hoisted_1 = { class: "row" };
 var _hoisted_2 = { class: "col col--md-7" };
 var _hoisted_3 = { class: "col col--md-5" };
 var _hoisted_4 = { class: "button-list" };
+var _hoisted_5 = { class: "sr-only" };
+var _hoisted_6 = { class: "sr-only" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_crud_button = _resolveComponent("f-crud-button");
   const _component_f_list = _resolveComponent("f-list");
@@ -182,7 +184,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     item,
                     icon: "",
                     label: ""
-                  }, null, 8, ["item"])
+                  }, {
+                    default: _withCtx(() => [
+                      _cache[5] || (_cache[5] = _createTextVNode(" \xC4ndra ")),
+                      _createElementVNode(
+                        "span",
+                        _hoisted_5,
+                        _toDisplayString(item.name),
+                        1
+                        /* TEXT */
+                      )
+                    ]),
+                    _: 2
+                    /* DYNAMIC */
+                  }, 1032, ["item"])
                 ]),
                 _createElementVNode("li", null, [
                   _createVNode(_component_f_crud_button, {
@@ -190,7 +205,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     item,
                     icon: "",
                     label: ""
-                  }, null, 8, ["item"])
+                  }, {
+                    default: _withCtx(() => [
+                      _cache[6] || (_cache[6] = _createTextVNode(" Ta bort ")),
+                      _createElementVNode(
+                        "span",
+                        _hoisted_6,
+                        _toDisplayString(item.name),
+                        1
+                        /* TEXT */
+                      )
+                    ]),
+                    _: 2
+                    /* DYNAMIC */
+                  }, 1032, ["item"])
                 ])
               ])
             ])
@@ -213,7 +241,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        default: _withCtx(() => _cache[5] || (_cache[5] = [
+        default: _withCtx(() => _cache[7] || (_cache[7] = [
           _createTextVNode(" Namn ")
         ])),
         _: 2
@@ -234,7 +262,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => _cache[6] || (_cache[6] = [
+        default: _withCtx(() => _cache[8] || (_cache[8] = [
           _createTextVNode(" Land ")
         ])),
         _: 2
@@ -254,7 +282,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: item.description,
         "onUpdate:modelValue": ($event) => item.description = $event
       }, {
-        default: _withCtx(() => _cache[7] || (_cache[7] = [
+        default: _withCtx(() => _cache[9] || (_cache[9] = [
           _createTextVNode(" Beskrivning ")
         ])),
         _: 2
@@ -274,7 +302,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        label: _withCtx(() => _cache[8] || (_cache[8] = [
+        label: _withCtx(() => _cache[10] || (_cache[10] = [
           _createTextVNode(" Namn ")
         ])),
         default: _withCtx(() => [
@@ -292,7 +320,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => _cache[9] || (_cache[9] = [
+        default: _withCtx(() => _cache[11] || (_cache[11] = [
           _createTextVNode(" Land ")
         ])),
         _: 2
@@ -323,7 +351,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e7b4bc"
+  selector: "#example-6551df"
 });
 export {
   render
