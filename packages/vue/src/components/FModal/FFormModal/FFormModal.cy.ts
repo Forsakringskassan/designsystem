@@ -24,7 +24,7 @@ const TestComponent = defineComponent({
                 </f-text-field>
                 <button
                     type="button"
-                    class="button button--discrete"
+                    class="button button--tertiary"
                     data-test="add-dynamic-button"
                     @click="addDynamicButton"
                 >
