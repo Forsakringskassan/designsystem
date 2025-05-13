@@ -11,20 +11,18 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
     text-align: center;
     border-bottom: 1px solid var(--f-border-color-calendar-navbar);
     padding: 1rem;
+    gap: 1rem;
     margin-bottom: 0.75rem;
     font-size: var(--f-font-size-h4);
 
     &__month {
-        order: 2;
+        margin-right: auto;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 
     &__arrow--previous {
-        order: 1;
         transform: scaleX(-1);
-    }
-
-    &__arrow--next {
-        order: 3;
     }
 
     &__icon {

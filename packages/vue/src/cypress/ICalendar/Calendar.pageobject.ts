@@ -3,18 +3,18 @@ import { ICalendarNavbarPageObject } from "../ICalendarNavbar.pageobject";
 import { FCalenderDayPageobject } from "../FCalenderDay.pageobject";
 
 const monthList = [
-    "januari",
-    "februari",
-    "mars",
-    "april",
-    "maj",
-    "juni",
-    "juli",
-    "augusti",
-    "september",
-    "oktober",
-    "november",
-    "december",
+    "Januari",
+    "Februari",
+    "Mars",
+    "April",
+    "Maj",
+    "Juni",
+    "Juli",
+    "Augusti",
+    "September",
+    "Oktober",
+    "November",
+    "December",
 ];
 /**
  * Calendar pageobject and functions for accessing days, and navigation in the calendar day view
