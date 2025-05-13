@@ -163,6 +163,7 @@ export default defineComponent({
                     <!-- `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.
                         `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .
                     -->
+                    <!-- [html-validate-disable-next fkui/class-deprecated -- technical debt] -->
                     <button
                         tabindex="-1"
                         type="button"
