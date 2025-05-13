@@ -57,6 +57,7 @@ components/modal/fformmodal.html
 components/modal/fmodal.html
 components/page-layout/application-layout.html
 components/page-layout/fdetailspanel.html
+components/page-layout/ffixedpane.html
 components/page-layout/fminimizablepanel.html
 components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
