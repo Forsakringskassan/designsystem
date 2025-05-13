@@ -46,7 +46,7 @@
     "postcss": "8.5.3",
     "postcss-scss": "4.0.9",
     "rimraf": "6.0.1",
-    "sass": "1.87.0"
+    "sass": "1.88.0"
   },
   "engines": {
     "node": ">= 20",
