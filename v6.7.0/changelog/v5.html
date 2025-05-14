@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="sv" class="layout--default" data-root-url="..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>CHANGELOG v5 - FK Designsystem</title><link
+            rel="stylesheet"
+            href="../assets/docs-86c5e4.css"
+            crossorigin
+            integrity="sha384-AmvzMyheqWez6bNEen1Xg9cHcAlGGQhllgUOSNnrOb4VtNsuVqci2lu4/MMhaMe5"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-fkui-ec7d63.css"
+            crossorigin
+            integrity="sha384-0uebXW3LYLMKttDhGsVuOyaM3wwefRa31iELbGpIUJ/hotD4wjzC4yVl9zX1u5JU"
+            data-theme="fkui" disabled
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-b51d64.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../assets/vendor-fkui-vue-b51d64.js": "sha384-nUYNoQYu0v2tk/LuIYE+rPBLiKSniQ25k1zIZzZCyhgPYrWVqM8f4O+dw8kwhxJY",
+    "../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
+            src="../assets/bootstrap-5b0e6e.js"
+            
+            crossorigin
+            integrity="sha384-kGP2A4LFI4CNwztBKqOla524cwTlhYuNFsx/6foX7fdioP3nxHwqF6vcvJFMia/Q"
+            
+        ></script><script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../search-data-fe1c9a.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-ljsS2ZPeamszOp7nzKuFNKOOmPR6aRHer5nNHMWrueLuOPrpksaAvzmoCd7OQ6e3"
+            id="search-data"
+        />
+    </head>
+    <body><template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../gettingstarted/"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../components/"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../gettingstarted/"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../components/"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">CHANGELOG v5</h1>
+
+                    
+
+                    <div id="content"><p class="docs-paragraph">Detta är Changelog för version 5.x.
+För senaste version se <a href="../changelog.html">ordinarie Changelog</a>.</p>
+<h2 id="v5-46-3"><a class="header-anchor" href="#v5-46-3">5.46.3 (2025-04-04)</a></h2><h3 id="bug_fixes"><a class="header-anchor" href="#bug_fixes">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> card throws error when content is validated (fixes SFKUI-7190) a01fbec</li>
+</ul>
+<h2 id="v5-46-2"><a class="header-anchor" href="#v5-46-2">5.46.2 (2025-02-20)</a></h2><h3 id="bug_fixes--1"><a class="header-anchor" href="#bug_fixes--1">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> use <code>teleportTarget</code> in <code>IPopupError</code> (refs SFKUI-7050) 3795b2f</li>
+</ul>
+<h2 id="v5-46-1"><a class="header-anchor" href="#v5-46-1">5.46.1 (2025-02-10)</a></h2><h3 id="bug_fixes--2"><a class="header-anchor" href="#bug_fixes--2">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> stepNumber for cancel button slot in FWizardStep (refs SFKUI-6500) d91aeaa</li>
+</ul>
+<h2 id="v5-46-0"><a class="header-anchor" href="#v5-46-0">5.46.0 (2025-01-23)</a></h2><h3 id="features"><a class="header-anchor" href="#features">Features</a></h3><ul>
+<li><strong>@fkui/design, @fkui/logic, @fkui/vue:</strong> support validation on <code>FCard</code> (fixes SFKUI-6983) cda8ecb</li>
+<li><strong>@fkui/vue:</strong> expose stepNumber in slots and beforeNext in FWizardStep (refs SFKUI-6500) 2437bc1</li>
+</ul>
+<h3 id="bug_fixes--3"><a class="header-anchor" href="#bug_fixes--3">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> switch to role grid in calendar (fixes SFKUI-6943) 87e31fd, closes #172</li>
+</ul>
+<h2 id="v5-45-1"><a class="header-anchor" href="#v5-45-1">5.45.1 (2025-01-20)</a></h2><h3 id="bug_fixes--4"><a class="header-anchor" href="#bug_fixes--4">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/date:</strong> <code>FDate</code> comparsion should not be affected by time (fixes SFKUI-6987) abd720d</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> use slot content for expandable rows in FInteractiveTable (refs SFKUI-6935) 76a1403, closes #157</li>
+<li><strong>@fkui/vue:</strong> add v-model and flag for showing the active row (refs SFKUI-5545) 1008caa</li>
+<li><strong>@fkui/vue:</strong> toggable visability for columns in empty <code>FInteractiveTable</code> (fixes SFKUI-6899) e906362</li>
+<li>add new api definition (refs SFKUI-5545) 57990c5</li>
+</ul>
+<h2 id="v5-45-0"><a class="header-anchor" href="#v5-45-0">5.45.0 (2025-01-13)</a></h2><h3 id="features--5"><a class="header-anchor" href="#features--5">Features</a></h3><ul>
+<li><strong>@fkui/css-variables, @fkui/design:</strong> add tokens to textfields (refs SFKUI-6900) ea35a3a</li>
+<li><strong>@fkui/css-variables, @fkui/design:</strong> update selectfield with tokens (refs SFKUI-6940) 72d0241</li>
+</ul>
+<h3 id="bug_fixes--6"><a class="header-anchor" href="#bug_fixes--6">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/css-variables, @fkui/design, @fkui/vue:</strong> disabled combobox (refs SFKUI-6956) d37c883</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> inline global modal styling (refs SFKUI-6500) b5b7e49</li>
+<li><strong>@fkui/vue-labs:</strong> x-search-bar removed (fixes SFKUI-6953) 07b8744</li>
+<li><strong>@fkui/vue:</strong> fix wrong runtime error when missing <code>routes</code> prop on <code>FNavigationMenu</code> (refs SFKUI-6500) e18ff97</li>
+<li><strong>@fkui/vue:</strong> remove unnecessary beforeSubmit (refs SB-4982) ddfd67d</li>
+<li><strong>@fkui/vue:</strong> scroll on modal close when <code>focus=&quot;on&quot;</code> (fixes <a href="undefined/Forsakringskassan/designsystem/issues/187">#187</a>) ac43df6</li>
+<li><strong>deps:</strong> update dependency core-js to v3.40.0 c909b64</li>
+<li><strong>deps:</strong> update dependency i18next to v24.1.2 5bde548</li>
+<li><strong>deps:</strong> update dependency i18next to v24.2.0 0681e0d</li>
+<li><strong>deps:</strong> update dependency i18next to v24.2.1 8830fed</li>
+</ul>
+<h2 id="v5-44-0"><a class="header-anchor" href="#v5-44-0">5.44.0 (2024-12-17)</a></h2><h3 id="features--7"><a class="header-anchor" href="#features--7">Features</a></h3><ul>
+<li><strong>@fkui/css-variables, @fkui/design, @fkui/vue-labs, @fkui/vue:</strong> add <code>FTextField</code> combobox <code>options</code> prop (fixes SFKUI-5885) 98dcc95</li>
+</ul>
+<h3 id="bug_fixes--8"><a class="header-anchor" href="#bug_fixes--8">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> fix resetting active item back to undefined in f-list (refs SFKUI-6941) a175535</li>
+</ul>
+<h2 id="v5-43-0"><a class="header-anchor" href="#v5-43-0">5.43.0 (2024-12-16)</a></h2><h3 id="features--9"><a class="header-anchor" href="#features--9">Features</a></h3><ul>
+<li><strong>@fkui/vue:</strong> fmodal focus strategy (refs SB-4982) ec1af56</li>
+</ul>
+<h3 id="bug_fixes--10"><a class="header-anchor" href="#bug_fixes--10">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v24.1.0 ea567a5</li>
+</ul>
+<h2 id="v5-42-0"><a class="header-anchor" href="#v5-42-0">5.42.0 (2024-12-13)</a></h2><h3 id="features--11"><a class="header-anchor" href="#features--11">Features</a></h3><ul>
+<li><strong>@fkui/css-variables, @fkui/design:</strong> semantic tokens chip (refs SFKUI-6910) e95d89c</li>
+<li><strong>@fkui/vue:</strong> add <code>IPopupListbox</code> component (refs SFKUI-5885) acad3b8</li>
+</ul>
+<h3 id="bug_fixes--12"><a class="header-anchor" href="#bug_fixes--12">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/logic, @fkui/vue:</strong> error messages validators (fixes SFKUI-6942) fd327d2</li>
+<li><strong>@fkui/vue:</strong> fix tooltip in fieldset (refs SFKUI-6500) a0e20ae</li>
+<li><strong>@fkui/vue:</strong> handle when <code>matchMedia</code> is not available (refs SFKUI-6500) 45b86b4</li>
+<li><strong>deps:</strong> update dependency i18next to v24.0.5 a5c9e3b</li>
+<li><strong>deps:</strong> use more explicit versions in peerDendencies (refs SFKUI-6500) f16db22</li>
+</ul>
+<h2 id="v5-41-0"><a class="header-anchor" href="#v5-41-0">5.41.0 (2024-12-04)</a></h2><h3 id="features--13"><a class="header-anchor" href="#features--13">Features</a></h3><ul>
+<li><strong>@fkui/logic, @fkui/vue:</strong> add allowList validator (refs SFKUI-5885) 405bc54</li>
+</ul>
+<h3 id="dependency_upgrades"><a class="header-anchor" href="#dependency_upgrades">Dependency upgrades</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v24.0.2 (<a href="undefined/Forsakringskassan/designsystem/issues/132">#132</a>) 313fa70</li>
+</ul>
+<h3 id="bug_fixes--14"><a class="header-anchor" href="#bug_fixes--14">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> fix infinite loop when rendering fieldset with checkboxes (fixes SFKUI-6863) 6cd4c8a</li>
+</ul>
+<h2 id="v5-40-0"><a class="header-anchor" href="#v5-40-0">5.40.0 (2024-11-28)</a></h2><h3 id="features--15"><a class="header-anchor" href="#features--15">Features</a></h3><ul>
+<li><strong>@fkui/css-variables, @fkui/design, @fkui/vue:</strong> tooltip rewritten (fixes SFKUI-679) 37defce</li>
+<li><strong>@fkui/css-variables, @fkui/design:</strong> semantic tokens (refs SFKUI-6836) 0713aaa</li>
+<li><strong>@fkui/design:</strong> semantic tokens tooltip (refs SFKUI-6920) 0700bfe</li>
+<li><strong>@fkui/i18next-translate:</strong> new package <code>@fkui/i18next-translate</code> for using <code>i18next</code> with FKUI (refs SFKUI-6500) f565ad7</li>
+<li><strong>@fkui/logic:</strong> add formatPersonnummerToDate helper (refs KDK-48741) a652d7d</li>
+<li><strong>@fkui/logic:</strong> add validator <code>personnummerNotSame</code> (refs KDK-48741) ae2d18d</li>
+<li><strong>@fkui/logic:</strong> add validator <code>personnummerOlder</code> (refs KDK-48741) 6a91033</li>
+<li><strong>@fkui/logic:</strong> add validator <code>personnummerYounger</code> (refs KDK-48741) 84a5299</li>
+<li><strong>@fkui/vue:</strong> add <code>cancel-button-text</code> slot to wizard step (refs SFKUI-6500) 8078723</li>
+<li><strong>@fkui/vue:</strong> add <code>isFinalStep</code> param to wizard <code>cancel</code> event (refs SFKUI-6500) 19dde28</li>
+<li><strong>@fkui/vue:</strong> add new useSlotUtils composable (refs SKFUI-6500) 61bbeaa</li>
+<li><strong>@fkui/vue:</strong> new prop <code>teleport</code> on <code>FLoader</code> to override default teleport target (refs SFKUI-6500) 1ede0e2</li>
+<li><strong>@fkui/vue:</strong> revalidate textfield on config update (refs SFKUI-6500) 930188e</li>
+<li><strong>deps:</strong> require vue 3.5 or later (refs SFKUI-6500) 082d1f8</li>
+<li><strong>deps:</strong> update dependency i18next to v24 4c8650f</li>
+</ul>
+<h3 id="dependency_upgrades--16"><a class="header-anchor" href="#dependency_upgrades--16">Dependency upgrades</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v23.16.4 f3af4ba</li>
+<li><strong>deps:</strong> update dependency i18next to v23.16.5 843cefd</li>
+<li><strong>deps:</strong> update dependency i18next to v23.16.6 186c42a</li>
+<li><strong>deps:</strong> update dependency i18next to v23.16.8 28d293d</li>
+</ul>
+<h3 id="bug_fixes--17"><a class="header-anchor" href="#bug_fixes--17">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/css-variables:</strong> modal shelf color (refs SFKUI-6500) 3a17a84</li>
+<li><strong>@fkui/design, @fkui/vue:</strong> <code>FNavigationMenu</code> use <code>visibility</code> for overflow (fixes SFKUI-6731) 0e0f9ce</li>
+<li><strong>@fkui/vue:</strong> click on menu item activates anchor (refs SFKUI-4899) d7a58b7</li>
+</ul>
+<h2 id="v5-39-0"><a class="header-anchor" href="#v5-39-0">5.39.0 (2024-11-05)</a></h2><h3 id="features--18"><a class="header-anchor" href="#features--18">Features</a></h3><ul>
+<li><strong>deps:</strong> bundle lodash (refs SFKUI-6500) 6cb2abc</li>
+</ul>
+<h3 id="bug_fixes--19"><a class="header-anchor" href="#bug_fixes--19">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> fix <code>getDay{Start,End}Offset</code> refers to a value but is being used as a type (refs SFKUI-6500) 871ddce</li>
+<li><strong>@fkui/vue:</strong> fix treeshaking issue with lodash (refs SFKUI-6500) baf361b</li>
+</ul>
+<h2 id="v5-38-0"><a class="header-anchor" href="#v5-38-0">5.38.0 (2024-10-25)</a></h2><h3 id="features--20"><a class="header-anchor" href="#features--20">Features</a></h3><ul>
+<li><strong>@fkui/vue:</strong> new <code>useModal()</code> composable for using modals with composition API (refs SFKUI-6500) a210418</li>
+</ul>
+<h2 id="v5-37-3"><a class="header-anchor" href="#v5-37-3">5.37.3 (2024-10-15)</a></h2><h3 id="bug_fixes--21"><a class="header-anchor" href="#bug_fixes--21">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/design:</strong> tables without scrolling activates will word-wrap instead of overflowing (refs SFKUI-6500) dad8178</li>
+<li><strong>@fkui/vue:</strong> fix table &quot;invalid prop: type check failed [..] expected [..] got function&quot; (fixes SFKUI-6382) f2a47b8</li>
+</ul>
+<h2 id="v5-37-2"><a class="header-anchor" href="#v5-37-2">5.37.2 (2024-10-14)</a></h2><h3 id="dependency_upgrades--22"><a class="header-anchor" href="#dependency_upgrades--22">Dependency upgrades</a></h3><ul>
+<li><strong>deps:</strong> update dependency express to v4.21.1 a087891</li>
+</ul>
+<h3 id="bug_fixes--23"><a class="header-anchor" href="#bug_fixes--23">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/css-variables, @fkui/design, @fkui/vue:</strong> teritary buttons in table (refs SFKUI-6710) 2bbe76e</li>
+<li><strong>@fkui/vue:</strong> <code>FSortFilterDataset</code> add support for sorting mixed types (fixes SFKUI-6816) dfb30e7</li>
+<li><strong>@fkui/vue:</strong> enable focus to <code>IPopupMenu</code> while using key nav (refs SFKUI-6622) dc9563c</li>
+<li><strong>@fkui/vue:</strong> fix tabbing issues in <code>IPopupMenu</code> (refs SFKUI-6644) a48312d</li>
+<li><strong>@fkui/vue:</strong> table caption with sr-only is rendered properly (fixes SFKUI-6434) 8096dc9</li>
+</ul>
+<h2 id="v5-37-1"><a class="header-anchor" href="#v5-37-1">5.37.1 (2024-09-30)</a></h2><h3 id="bug_fixes--24"><a class="header-anchor" href="#bug_fixes--24">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> add missing <code>FFormData</code> export (refs SFKUI-6500) 7c5a78a</li>
+<li><strong>@fkui/vue:</strong> add missing <code>FModalData</code> export (refs SFKUI-6500) 97fdcc8</li>
+<li><strong>@fkui/vue:</strong> add missing <code>IconName</code> export (refs SFKUI-6500) 4e8d9eb</li>
+<li><strong>@fkui/vue:</strong> add missing <code>IPopupData</code> export (refs SFKUI-6500) bfcee75</li>
+<li><strong>@fkui/vue:</strong> add missing <code>IPopupErrorData</code> export (refs SFKUI-6500) 31c8dd4</li>
+</ul>
+<h2 id="v5-37-0"><a class="header-anchor" href="#v5-37-0">5.37.0 (2024-09-25)</a></h2><h3 id="features--25"><a class="header-anchor" href="#features--25">Features</a></h3><ul>
+<li><strong>@fkui/vue:</strong> two new props <code>errorList*</code> for <code>FValidationForm</code> (fixes SFKUI-6792) 2cc596c</li>
+<li><strong>@fkui/vue:</strong> use single <code>skipLink</code> prop on <code>FPageHeader</code> (refs SFKUI-6500) 1d024aa</li>
+</ul>
+<h3 id="bug_fixes--26"><a class="header-anchor" href="#bug_fixes--26">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/vue:</strong> add missing <code>ExpandableTable</code> export (refs SFKUI-6500) 57c0117</li>
+<li><strong>@fkui/vue:</strong> add missing <code>FCRUDDatasetData</code> export (refs SFKUI-6500) 562e226</li>
+<li><strong>@fkui/vue:</strong> add missing <code>FDialogueTreeData</code> export (refs SFKUI-6500) df4880d</li>
+<li><strong>@fkui/vue:</strong> add missing <code>FInteractiveTableData</code> export (refs SFKUI-6500) 9b5112b</li>
+<li><strong>@fkui/vue:</strong> add missing <code>FListData</code> export (refs SFKUI-6500) 8101130</li>
+<li><strong>@fkui/vue:</strong> add missing <code>FTableColumnData</code> export (refs SFKUI-6500) e9fd47d</li>
+<li><strong>@fkui/vue:</strong> add missing <code>ModalOptions</code> and <code>MaybeOptions</code> export (refs SFKUI-6500) 63a7da5</li>
+</ul>
+<h2 id="v5-36-3"><a class="header-anchor" href="#v5-36-3">5.36.3 (2024-09-20)</a></h2><h3 id="dependency_upgrades--27"><a class="header-anchor" href="#dependency_upgrades--27">Dependency upgrades</a></h3><ul>
+<li><strong>deps:</strong> update dependency express to v4.20.0 [security] 7bf4cad</li>
+<li><strong>deps:</strong> update dependency express to v4.21.0 892b107</li>
+</ul>
+<h2 id="v5-36-2"><a class="header-anchor" href="#v5-36-2">5.36.2 (2024-09-10)</a></h2><h3 id="bug_fixes--28"><a class="header-anchor" href="#bug_fixes--28">Bug Fixes</a></h3><ul>
+<li>remove broken motd link (refs SFKUI-6500) 42e61e0</li>
+</ul>
+<h2 id="v5-36-1"><a class="header-anchor" href="#v5-36-1">5.36.1 (2024-09-10)</a></h2><h3 id="bug_fixes--29"><a class="header-anchor" href="#bug_fixes--29">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/design, @fkui/vue:</strong> offline should use short layout ab7e7f9, closes #13</li>
+</ul>
+<h2 id="v5-36-0"><a class="header-anchor" href="#v5-36-0">5.36.0 (2024-09-09)</a></h2><h3 id="features--30"><a class="header-anchor" href="#features--30">Features</a></h3><ul>
+<li><strong>@fkui/css-variables, @fkui/date, @fkui/design, @fkui/icon-lib-builder, @fkui/icon-lib-default, @fkui/logic, @fkui/test-utils, @fkui/vue-labs, @fkui/vue:</strong> initial public version (refs SFKUI-6500) d0b0604</li>
+<li><strong>deps:</strong> update dependency kleur to v4 e88d20d</li>
+</ul>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../gettingstarted/about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right"><div class="version"><div class="heading--h1">FKDS version 6.7.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--tertiary button--tertiary--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Sök</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog><script
+            src="../assets/processors/motd/index-26ba41.js"
+            type="module"
+            crossorigin
+            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
+            
+        ></script><script
+            src="../assets/processors/selectable-version/select-version-088264.js"
+            type="module"
+            crossorigin
+            integrity="sha384-L24LuqqDvxkzHPrZZivH0yWBMqrGurxn7ic+D9tYCRsIzQJjoW+ZqoaaFaD9Ib78"
+            
+        ></script><script
+            src="../assets/main-0ec342.js"
+            type="module"
+            crossorigin
+            integrity="sha384-024ARbIkk+36wQRMNqANavYck/wi86OjA7OQfU3szttx8PSUfCLc+u90c5D34iPZ"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/changelog/changelog-v5.md
+         Document ID: fs:docs/changelog/changelog-v5.md
+         Document name: changelog-v5
+         Document alias: 
+
+    -->
+</html>

@@ -1,0 +1,1723 @@
+<!doctype html>
+<html lang="sv" class="layout--component" data-root-url="../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Datumväljare - FK Designsystem</title><link
+            rel="stylesheet"
+            href="../../assets/docs-86c5e4.css"
+            crossorigin
+            integrity="sha384-AmvzMyheqWez6bNEen1Xg9cHcAlGGQhllgUOSNnrOb4VtNsuVqci2lu4/MMhaMe5"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-fkui-ec7d63.css"
+            crossorigin
+            integrity="sha384-0uebXW3LYLMKttDhGsVuOyaM3wwefRa31iELbGpIUJ/hotD4wjzC4yVl9zX1u5JU"
+            data-theme="fkui" disabled
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-b51d64.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../../assets/vendor-fkui-vue-b51d64.js": "sha384-nUYNoQYu0v2tk/LuIYE+rPBLiKSniQ25k1zIZzZCyhgPYrWVqM8f4O+dw8kwhxJY",
+    "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
+            src="../../assets/bootstrap-5b0e6e.js"
+            
+            crossorigin
+            integrity="sha384-kGP2A4LFI4CNwztBKqOla524cwTlhYuNFsx/6foX7fdioP3nxHwqF6vcvJFMia/Q"
+            
+        ></script><script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../search-data-fe1c9a.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-ljsS2ZPeamszOp7nzKuFNKOOmPR6aRHer5nNHMWrueLuOPrpksaAvzmoCd7OQ6e3"
+            id="search-data"
+        />
+    </head>
+    <body><template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol><li class="link ">
+        <a
+            href="../fbadge.html"
+            
+            
+            
+            data-path="components/fbadge.html"
+            
+        >
+            Bricka
+        </a>
+    </li><li class="link ">
+        <a
+            href="../chip.html"
+            
+            
+            
+            data-path="components/chip.html"
+            
+        >
+            Chip
+        </a>
+    </li><li class="link ">
+        <a
+            href="../fdialoguetree.html"
+            
+            
+            
+            data-path="components/fdialoguetree.html"
+            
+        >
+            Dialogträd
+        </a>
+    </li><li class="link ">
+        <a
+            href="../flabel.html"
+            
+            
+            
+            data-path="components/flabel.html"
+            
+        >
+            Etikett
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Expanderbara ytor</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../expandable/fexpandablepanel.html"
+            
+            
+            
+            data-path="components/expandable/fexpandablepanel.html"
+            
+        >
+            Expanderbar panel
+        </a>
+    </li><li class="link ">
+        <a
+            href="../expandable/fexpand.html"
+            
+            
+            
+            data-path="components/expandable/fexpand.html"
+            
+        >
+            Expanderbart innehåll
+        </a>
+    </li><li class="link ">
+        <a
+            href="../expandable/fexpandableparagraph.html"
+            
+            
+            
+            data-path="components/expandable/fexpandableparagraph.html"
+            
+        >
+            Expanderbart stycke
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Filuppladdning</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../file-upload/ffileitem.html"
+            
+            
+            
+            data-path="components/file-upload/ffileitem.html"
+            
+        >
+            Filpresentatör
+        </a>
+    </li><li class="link ">
+        <a
+            href="../file-upload/ffileselector.html"
+            
+            
+            
+            data-path="components/file-upload/ffileselector.html"
+            
+        >
+            Filväljare
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Gruppera</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../group/ffieldset.html"
+            
+            
+            
+            data-path="components/group/ffieldset.html"
+            
+        >
+            Fältgruppering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../group/"
+            
+            
+            
+            data-path="components/group/"
+            
+        >
+            Komponentgrupp
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../ficon.html"
+            
+            
+            
+            data-path="components/ficon.html"
+            
+        >
+            Ikon
+        </a>
+    </li><li class="expandable active">
+        <details open>
+            <summary>Inmatning</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="./ftextfield.html"
+            
+            
+            
+            data-path="components/input/ftextfield.html"
+            
+        >
+            Inmatningsfält
+        </a>
+    </li><li class="link active">
+        <a
+            href="./fdatepickerfield.html"
+            
+            
+            
+            data-path="components/input/fdatepickerfield.html"
+            
+        >
+            Datumväljare
+        </a>
+    </li><li class="link ">
+        <a
+            href="./fselectfield.html"
+            
+            
+            
+            data-path="components/input/fselectfield.html"
+            
+        >
+            Dropplista
+        </a>
+    </li><li class="link ">
+        <a
+            href="./ftextareafield.html"
+            
+            
+            
+            data-path="components/input/ftextareafield.html"
+            
+        >
+            Flerradigt inmatningsfält
+        </a>
+    </li><li class="link ">
+        <a
+            href="./combobox.html"
+            
+            
+            
+            data-path="components/input/combobox.html"
+            
+        >
+            Kombobox
+        </a>
+    </li><li class="link ">
+        <a
+            href="./fcheckboxfield.html"
+            
+            
+            
+            data-path="components/input/fcheckboxfield.html"
+            
+        >
+            Kryssruta
+        </a>
+    </li><li class="link ">
+        <a
+            href="./fradiofield.html"
+            
+            
+            
+            data-path="components/input/fradiofield.html"
+            
+        >
+            Radioknapp
+        </a>
+    </li><li class="link ">
+        <a
+            href="./textfield-specialized.html"
+            
+            
+            
+            data-path="components/input/textfield-specialized.html"
+            
+        >
+            Specialiserade inmatningsfält
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../fcalendar.html"
+            
+            
+            
+            data-path="components/fcalendar.html"
+            
+        >
+            Kalender
+        </a>
+    </li><li class="link ">
+        <a
+            href="../button.html"
+            
+            
+            
+            data-path="components/button.html"
+            
+        >
+            Knapp
+        </a>
+    </li><li class="link ">
+        <a
+            href="../fcontextmenu.html"
+            
+            
+            
+            data-path="components/fcontextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li><li class="link ">
+        <a
+            href="../fcard.html"
+            
+            
+            
+            data-path="components/fcard.html"
+            
+        >
+            Kort
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Ladda innehåll</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../load/fprogressbar.html"
+            
+            
+            
+            data-path="components/load/fprogressbar.html"
+            
+        >
+            Förloppsindikator
+        </a>
+    </li><li class="link ">
+        <a
+            href="../load/floader.html"
+            
+            
+            
+            data-path="components/load/floader.html"
+            
+        >
+            Laddningsindikator
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../flogo.html"
+            
+            
+            
+            data-path="components/flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Länkar</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../links/anchor.html"
+            
+            
+            
+            data-path="components/links/anchor.html"
+            
+        >
+            Länk
+        </a>
+    </li><li class="link ">
+        <a
+            href="../links/entrypoint.html"
+            
+            
+            
+            data-path="components/links/entrypoint.html"
+            
+        >
+            Startpunkt
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../fmessagebox.html"
+            
+            
+            
+            data-path="components/fmessagebox.html"
+            
+        >
+            Meddelanderuta
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Modal</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../modal/fconfirmmodal.html"
+            
+            
+            
+            data-path="components/modal/fconfirmmodal.html"
+            
+        >
+            Bekräftelsemodal
+        </a>
+    </li><li class="link ">
+        <a
+            href="../modal/fformmodal.html"
+            
+            
+            
+            data-path="components/modal/fformmodal.html"
+            
+        >
+            Formulärsmodal
+        </a>
+    </li><li class="link ">
+        <a
+            href="../modal/fmodal.html"
+            
+            
+            
+            data-path="components/modal/fmodal.html"
+            
+        >
+            Modal dialogruta
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../foffline.html"
+            
+            
+            
+            data-path="components/foffline.html"
+            
+        >
+            Offline
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Presentationsfält</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../presentation/foutputfield.html"
+            
+            
+            
+            data-path="components/presentation/foutputfield.html"
+            
+        >
+            Presentationsfält - dynamiskt
+        </a>
+    </li><li class="link ">
+        <a
+            href="../presentation/fstaticfield.html"
+            
+            
+            
+            data-path="components/presentation/fstaticfield.html"
+            
+        >
+            Presentationsfält - statiskt
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Ramverkskomponenter</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../framework/ianimateexpand.html"
+            
+            
+            
+            data-path="components/framework/ianimateexpand.html"
+            
+        >
+            Animerad expandering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/iflexitem.html"
+            
+            
+            
+            data-path="components/framework/iflexitem.html"
+            
+        >
+            Flex Item
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/iflex.html"
+            
+            
+            
+            data-path="components/framework/iflex.html"
+            
+        >
+            Flexibel positionering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/iskiplink.html"
+            
+            
+            
+            data-path="components/framework/iskiplink.html"
+            
+        >
+            Gå till innehåll
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/icalendarmonth.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonth.html"
+            
+        >
+            Kalendermånad
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/icalendarnavbar.html"
+            
+            
+            
+            data-path="components/framework/icalendarnavbar.html"
+            
+        >
+            Kalendernavigering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/icalendarmonthgrid.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonthgrid.html"
+            
+        >
+            Kalenderrutnät
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/ipopup.html"
+            
+            
+            
+            data-path="components/framework/ipopup.html"
+            
+        >
+            Popup
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/ipopupmenu.html"
+            
+            
+            
+            data-path="components/framework/ipopupmenu.html"
+            
+        >
+            Popup-meny
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/ipopuperror.html"
+            
+            
+            
+            data-path="components/framework/ipopuperror.html"
+            
+        >
+            PopupError
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Sidlayout</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../page-layout/application-layout.html"
+            
+            
+            
+            data-path="components/page-layout/application-layout.html"
+            
+        >
+            Applikationslayout
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fpagelayout.html"
+            
+            
+            
+            data-path="components/page-layout/fpagelayout.html"
+            
+        >
+            Applikationsmall
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fdetailspanel.html"
+            
+            
+            
+            data-path="components/page-layout/fdetailspanel.html"
+            
+        >
+            Detaljpanel
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/ffixedpane.html"
+            
+            
+            
+            data-path="components/page-layout/ffixedpane.html"
+            
+        >
+            Fixerad yta
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fresizepane.html"
+            
+            
+            
+            data-path="components/page-layout/fresizepane.html"
+            
+        >
+            Justerbar yta
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fminimizablepanel.html"
+            
+            
+            
+            data-path="components/page-layout/fminimizablepanel.html"
+            
+        >
+            Minimerbar panel
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fnavigationmenu.html"
+            
+            
+            
+            data-path="components/page-layout/fnavigationmenu.html"
+            
+        >
+            Navigeringsmeny
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fpageheader.html"
+            
+            
+            
+            data-path="components/page-layout/fpageheader.html"
+            
+        >
+            Sidhuvud
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../fwizard.html"
+            
+            
+            
+            data-path="components/fwizard.html"
+            
+        >
+            Steg för steg-guide
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Tabell och lista</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../table-and-list/table.html"
+            
+            
+            
+            data-path="components/table-and-list/table.html"
+            
+        >
+            Tabell
+        </a>
+    </li><li class="link ">
+        <a
+            href="../table-and-list/flist.html"
+            
+            
+            
+            data-path="components/table-and-list/flist.html"
+            
+        >
+            Lista
+        </a>
+    </li><li class="link ">
+        <a
+            href="../table-and-list/fcruddataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fcruddataset.html"
+            
+        >
+            Datamängdredigerare
+        </a>
+    </li><li class="link ">
+        <a
+            href="../table-and-list/fsortfilterdataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fsortfilterdataset.html"
+            
+        >
+            Datamängdsorterare
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../ftooltip.html"
+            
+            
+            
+            data-path="components/ftooltip.html"
+            
+        >
+            Tooltip
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Validering</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../validation/ferrorlist.html"
+            
+            
+            
+            data-path="components/validation/ferrorlist.html"
+            
+        >
+            Fellista
+        </a>
+    </li><li class="link ">
+        <a
+            href="../validation/formatters-and-parsers.html"
+            
+            
+            
+            data-path="components/validation/formatters-and-parsers.html"
+            
+        >
+            Formaterare och parsers
+        </a>
+    </li><li class="link ">
+        <a
+            href="../validation/validators.html"
+            
+            
+            
+            data-path="components/validation/validators.html"
+            
+        >
+            Validatorer
+        </a>
+    </li><li class="link ">
+        <a
+            href="../validation/fvalidationgroup.html"
+            
+            
+            
+            data-path="components/validation/fvalidationgroup.html"
+            
+        >
+            Validering samlad
+        </a>
+    </li><li class="link ">
+        <a
+            href="../validation/fvalidationform.html"
+            
+            
+            
+            data-path="components/validation/fvalidationform.html"
+            
+        >
+            Valideringsformulär
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Datumväljare</h1>
+
+                    
+                    <div id="aside"><dl>
+    
+    <dt>Komponent</dt>
+    <dd>
+        <div class="docs-badge-list">
+            
+            
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/eab8f6660158999d279372b664a88f541eaf8063/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">
+                FDatepickerField
+            </a>
+            
+            
+        </div>
+    </dd>
+    
+
+    
+    <dt>Status</dt>
+    <dd>
+        <div class="badge badge--success">Produktionsklar</div>
+    </dd>
+    
+</dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#visning">Visning</a></li>
+                                
+                                <li><a href="#responsivitet">Responsivitet</a></li>
+                                
+                                <li><a href="#begransa_valbara_dagar">Begränsa valbara dagar</a></li>
+                                
+                                <li><a href="#bredd_pa_inmatningsfalt_och_etikett">Bredd på inmatningsfält och etikett</a></li>
+                                
+                                <li><a href="#inaktiv">Inaktiv</a></li>
+                                
+                                <li><a href="#visa_inline">Visa inline</a></li>
+                                
+                                <li><a href="#dolj_markering_av_dagens_datum">Dölj markering av dagens datum</a></li>
+                                
+                                <li><a href="#api">API</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content"><p class="docs-paragraph">Datumväljaren underlättar när användaren ska välja en dag som har en tydlig koppling till en veckodag, till exempel:</p>
+<ul>
+<li>onsdag förra veckan</li>
+<li>första måndagen i november</li>
+</ul>
+
+                <div
+                    id="example-bc6675"
+                    class="code-preview code-preview--borderless"
+                    data-test="live"
+                    data-tags="live-example"
+                    data-language="vue"
+                >
+                    
+        <div id="example-677bdd"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FDatepickerFieldLiveExample-677bdd.js"></script>
+    
+                </div>
+            <p class="docs-paragraph">En datumväljare är mindre användbar när användaren ska ange:</p>
+<ul>
+<li>Ett datum som hen kommer ihåg, till exempel en födelsedag</li>
+<li>Ett datum som finns i ett dokument som användaren har till hands, till exempel ett inflyttningsdatum i ett hyreskontrakt</li>
+</ul>
+<h2 id="visning"><a class="header-anchor" href="#visning">Visning</a></h2><ul>
+<li>Om inget datum är valt visas innevarande månad när kalendern öppnas.</li>
+<li>Det går att välja vilket år och månad som ska visas som standard.</li>
+<li>Visning av veckonummer kan döljas.</li>
+<li>Dagens datum är markerat som standard.</li>
+</ul>
+<h3 id="format"><a class="header-anchor" href="#format">Format</a></h3><p class="docs-paragraph">Användaren kan skriva in följande format i inmatningsfältet:</p>
+<ul>
+<li>åååå-mm-dd</li>
+<li>ååååmmdd</li>
+<li>åååå/mm/dd</li>
+</ul>
+<p class="docs-paragraph">Inmatningsfältet använder inte <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode">inputmode</a> = numeric eftersom det inte garanterar att tangentbordet innehåller bindestreck (minustecken).</p>
+<h3 id="manad_som_visas_nar_inget_datum_ar_valt"><a class="header-anchor" href="#manad_som_visas_nar_inget_datum_ar_valt">Månad som visas när inget datum är valt</a></h3><p class="docs-paragraph">Använd initialMonth för att bestämma vilken månad som ska visas när inget datum är valt. Närmst efterföljande månad med valbara datum visas om du
+har valt en månad som inte har några valbara datum.</p>
+
+                <div
+                    id="example-f0b074"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+<span class="hljs-addition">+    :initial-month=&#x27;FDate.fromIso(&quot;2023-05-07&quot;)&#x27;</span>
+ &gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h2 id="responsivitet"><a class="header-anchor" href="#responsivitet">Responsivitet</a></h2><ul>
+<li>På små skärmar (&lt;640 px bredd) visas kalendern som en del av webbsidan (inline)</li>
+<li>På större skärmar visas kalendern i en pop-up och täcker en del av sidan.</li>
+<li>Kalenderns bredd anpassas utifrån skärmens bredd.</li>
+<li>För att ge tillräcklig plats för datumen visas inte veckonummer på skärmar som är 325 px eller smalare.</li>
+</ul>
+<h2 id="begransa_valbara_dagar"><a class="header-anchor" href="#begransa_valbara_dagar">Begränsa valbara dagar</a></h2><p class="docs-paragraph">Det går att styra vilka dagar som är valbara genom att:</p>
+<ul>
+<li>Sätta begräsningar framåt och bakåt i tiden.</li>
+<li>Ange enskilda datum som inte är valbara</li>
+<li>Ange veckodagar som inte är valbara.</li>
+</ul>
+<p class="docs-paragraph">Som standard är datumväljaren begränsad till att bara tillåta val av datum 10 år tillbaka och framåt i tiden. Alla veckodagar och datum är valbara som standard.</p>
+<p class="docs-paragraph">Validatorer används för att sätta begränsningar av valbara dagar.</p>
+<h3 id="min_och_maxdatum"><a class="header-anchor" href="#min_och_maxdatum">Min- och maxdatum</a></h3>
+                <div
+                    id="example-6defbf"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+<span class="hljs-addition">+    v-validation.minDate.maxDate=&quot;{</span>
+<span class="hljs-addition">+        minDate: { limit: &#x27;2023-08-07&#x27; },</span>
+<span class="hljs-addition">+        maxDate: { limit: &#x27;2024-02-07&#x27; },</span>
+<span class="hljs-addition">+    }&quot;</span>
+&gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h3 id="begransa_valbara_datum"><a class="header-anchor" href="#begransa_valbara_datum">Begränsa valbara datum</a></h3>
+                <div
+                    id="example-8d074c"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+<span class="hljs-addition">+    v-validation.invalidDates=&quot;{ invalidDates: { dates: [&#x27;2023-10-31&#x27;, &#x27;2023-11-04&#x27;] }}&quot;</span>
+ &gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h3 id="begransa_valbara_veckodagar"><a class="header-anchor" href="#begransa_valbara_veckodagar">Begränsa valbara veckodagar</a></h3>
+                <div
+                    id="example-aed847"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+<span class="hljs-addition">+    v-validation.invalidWeekdays=&quot;{ invalidWeekdays: { days: [Weekday.SATURDAY, Weekday.SUNDAY] }}&quot;</span>
+ &gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h2 id="bredd_pa_inmatningsfalt_och_etikett"><a class="header-anchor" href="#bredd_pa_inmatningsfalt_och_etikett">Bredd på inmatningsfält och etikett</a></h2><p class="docs-paragraph">För att få plats med en längre text i etiketten går det att ha olika bredder på kalenderns etikett och inmatningsfält. Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss skärmbredd.</p>
+
+                <div
+                    id="example-1bdb1d"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+<span class="hljs-addition">+    label-width=&quot;md-9 lg-7&quot;</span>
+<span class="hljs-addition">+    input-width=&quot;md-6&quot;</span>
+ &gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h2 id="inaktiv"><a class="header-anchor" href="#inaktiv">Inaktiv</a></h2><p class="docs-paragraph">Inaktiva komponenter ska undvikas.</p>
+<ul>
+<li>Om användaren försöker interagera med en inaktiv komponent ges ingen information om varför komponenten är inaktiv.</li>
+<li>Användare av skärmläsare får inte veta att komponenten finns eftersom skärmläsare hoppar över inaktiva komponenter.</li>
+<li>Inaktiva komponenter har ofta för låg kontrast.</li>
+</ul>
+
+                <div
+                    id="example-4aaf80"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+<span class="hljs-addition">+    disabled</span>
+ &gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h2 id="visa_inline"><a class="header-anchor" href="#visa_inline">Visa inline</a></h2><p class="docs-paragraph">Använd alwaysInline om kalendern ska visas inline oavsett skärmbredd.</p>
+
+                <div
+                    id="example-33a316"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+<span class="hljs-addition">+    always-inline</span>
+ &gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h2 id="dolj_markering_av_dagens_datum"><a class="header-anchor" href="#dolj_markering_av_dagens_datum">Dölj markering av dagens datum</a></h2>
+                <div
+                    id="example-a51015"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+<span class="hljs-addition">+    :highlight-today=&quot;false&quot;</span>
+ &gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fdatepickerfield-props">
+            <a class="header-anchor" href="#fdatepickerfield-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fdatepickerfield-prop-v-model"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Selected day.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-initialmonth"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-initialmonth"
+                                    ><span class="docs-api__name"
+                                        >initialMonth</span
+                                    >: FDate | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Initial month. Applies when no day is selected.
+If unspecified, todays month will be shown when no day is selected.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-highlighttoday"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-highlighttoday"
+                                    ><span class="docs-api__name"
+                                        >highlightToday</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Highlight today.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-alwaysinline"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-alwaysinline"
+                                    ><span class="docs-api__name"
+                                        >alwaysInline</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Always display inline.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-labelwidth"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-labelwidth"
+                                    ><span class="docs-api__name"
+                                        >labelWidth</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set responsive width for label section.</p>
+<pre><code>label-width=&quot;md-9 lg-6&quot;
+</code></pre>
+
+                            <p class="doc-api__item">Default: <code>&quot;sm-12&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-inputwidth"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-inputwidth"
+                                    ><span class="docs-api__name"
+                                        >inputWidth</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set responsive width for input section that wraps input element and icons.</p>
+<pre><code>input-width=&quot;md-6 lg-3&quot;
+</code></pre>
+
+                            <p class="doc-api__item">Default: <code>&quot;sm-12&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-prop-disabled"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-prop-disabled"
+                                    ><span class="docs-api__name"
+                                        >disabled</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set to <code>true</code>, empty string <code>&quot;&quot;</code> or string <code>&quot;disabled&quot;</code> to disable this field.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fdatepickerfield-events">
+            <a class="header-anchor" href="#fdatepickerfield-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fdatepickerfield-event-change"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-event-change"
+                                    ><span class="docs-api__name"
+                                        >change</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when the value of the checkbox changes.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><code>v-model</code> event.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>&lt;anonymous&gt;: string</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fdatepickerfield-slots">
+            <a class="header-anchor" href="#fdatepickerfield-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fdatepickerfield-slot-default"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>Optional</strong> Slot for setting the label. Default value &quot;Datum&quot;</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-slot-tooltip"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-slot-tooltip"
+                                    ><span class="docs-api__name"
+                                        >tooltip</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>Optional</strong> Slot for tooltip. May only contain an <a href="../ftooltip.html"><code>FTooltip</code></a>.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-slot-description"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-slot-description"
+                                    ><span class="docs-api__name"
+                                        >description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>Optional</strong> Slot for displaying description. The contents are passed to the description-slot of <a href="../flabel.html"><code>FLabel</code></a>.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>description-class: string[]</code> <span role="presentation">&mdash;</span> CSS classes for primary description content.</li><li><code>format-description-class: string[]</code> <span role="presentation">&mdash;</span> CSS classes for format description.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatepickerfield-slot-error-message"
+                                ><a class="docs-api__anchor" href="#fdatepickerfield-slot-error-message"
+                                    ><span class="docs-api__name"
+                                        >error-message</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p><strong>Optional</strong> Slot for error message(s). The contents are passed to the error message-slot of <a href="../flabel.html"><code>FLabel</code></a>.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../../gettingstarted/about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right"><div class="version"><div class="heading--h1">FKDS version 6.7.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--tertiary button--tertiary--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Sök</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog><script
+            src="../../assets/processors/motd/index-26ba41.js"
+            type="module"
+            crossorigin
+            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
+            
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-088264.js"
+            type="module"
+            crossorigin
+            integrity="sha384-L24LuqqDvxkzHPrZZivH0yWBMqrGurxn7ic+D9tYCRsIzQJjoW+ZqoaaFaD9Ib78"
+            
+        ></script><script
+            src="../../assets/main-0ec342.js"
+            type="module"
+            crossorigin
+            integrity="sha384-024ARbIkk+36wQRMNqANavYck/wi86OjA7OQfU3szttx8PSUfCLc+u90c5D34iPZ"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/input/FDatepickerField.md
+         Document ID: fs:docs/components/input/FDatepickerField.md
+         Document name: FDatepickerField
+         Document alias: component:FDatepickerField
+
+    -->
+</html>
