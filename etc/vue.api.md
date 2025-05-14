@@ -25,6 +25,7 @@ import { FocusOptions as FocusOptions_2 } from '@fkui/logic';
 import { formatNumber } from '@fkui/logic';
 import { formatPersonnummer } from '@fkui/logic';
 import { formatPostalCode } from '@fkui/logic';
+import { FYear } from '@fkui/date';
 import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
 import { OrganisationsnummerString } from '@fkui/logic';
@@ -1441,9 +1442,29 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
-}>, {}, {}, {}, {
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>, {
+yearSelectorOpen: Readonly<Ref<boolean, boolean>>;
+yearSelectorStyle: Readonly<Ref<Record<string, string>, Record<string, string>>>;
+activeYear: Ref<FYear, FYear>;
+selectableYears: Readonly<ShallowRef<FYear[]>>;
+onYearSelectorKeyDown: (event: KeyboardEvent) => void;
+onChangeDate: (date: FDate) => void;
+onClickSelectYear: (year: FYear) => void;
+}, {}, {
+yearNounText(): string;
+}, {
+getSelectableYearId(year: FYear): string;
 onClickDay(date: FDate): void;
-onChangeMonth(date: FDate): void;
 }, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "click")[], "update:modelValue" | "click", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
@@ -1462,10 +1483,22 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
 }>> & Readonly<{
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
+id: string;
+yearSelector: boolean;
 tabDate: FDate | undefined;
 }, {}, {
 ICalendarNavbar: DefineComponent<ExtractPropTypes<    {
@@ -1481,6 +1514,21 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+yearSelectorOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
 }>, {}, {}, {
 previousDisabled(): boolean;
 nextDisabled(): boolean;
@@ -1489,14 +1537,19 @@ nextValue(): FDate;
 currentText(): string;
 previousSrText(): string;
 nextSrText(): string;
+openYearSelectorText(): string;
+closeYearSelectorText(): string;
 previousIconClasses(): Record<string, boolean>;
 nextIconClasses(): Record<string, boolean>;
 }, {
+onClickYearSelector(): void;
 onClickPreviousButton(): void;
 onClickNextButton(): void;
+onCloseYearSelector(): void;
+changeDisplayYearSelectorAsOpen(value: boolean): void;
 getDateText(value: FDate): string;
 isFocused(ref: string): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "update:yearSelectorOpen")[], "update:modelValue" | "change" | "update:yearSelectorOpen", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -1509,10 +1562,30 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+yearSelectorOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}>, {}, {}, {
+"onUpdate:yearSelectorOpen"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+yearSelector: boolean;
+yearSelectorOpen: boolean;
+}, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
 type: StringConstructor;
@@ -3352,6 +3425,11 @@ alwaysInline: {
 type: BooleanConstructor;
 default: boolean;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
 labelWidth: {
 type: StringConstructor;
 required: false;
@@ -3419,6 +3497,11 @@ alwaysInline: {
 type: BooleanConstructor;
 default: boolean;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
 labelWidth: {
 type: StringConstructor;
 required: false;
@@ -3439,6 +3522,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 modelValue: string;
+yearSelector: boolean;
 disabled: boolean;
 labelWidth: string;
 inputWidth: string;
@@ -3464,9 +3548,29 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
-}>, {}, {}, {}, {
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>, {
+yearSelectorOpen: Readonly<Ref<boolean, boolean>>;
+yearSelectorStyle: Readonly<Ref<Record<string, string>, Record<string, string>>>;
+activeYear: Ref<FYear, FYear>;
+selectableYears: Readonly<ShallowRef<FYear[]>>;
+onYearSelectorKeyDown: (event: KeyboardEvent) => void;
+onChangeDate: (date: FDate) => void;
+onClickSelectYear: (year: FYear) => void;
+}, {}, {
+yearNounText(): string;
+}, {
+getSelectableYearId(year: FYear): string;
 onClickDay(date: FDate): void;
-onChangeMonth(date: FDate): void;
 }, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "click")[], "update:modelValue" | "click", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
@@ -3485,10 +3589,22 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
 }>> & Readonly<{
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
+id: string;
+yearSelector: boolean;
 tabDate: FDate | undefined;
 }, {}, {
 ICalendarNavbar: DefineComponent<ExtractPropTypes<    {
@@ -3504,6 +3620,21 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+yearSelectorOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
 }>, {}, {}, {
 previousDisabled(): boolean;
 nextDisabled(): boolean;
@@ -3512,14 +3643,19 @@ nextValue(): FDate;
 currentText(): string;
 previousSrText(): string;
 nextSrText(): string;
+openYearSelectorText(): string;
+closeYearSelectorText(): string;
 previousIconClasses(): Record<string, boolean>;
 nextIconClasses(): Record<string, boolean>;
 }, {
+onClickYearSelector(): void;
 onClickPreviousButton(): void;
 onClickNextButton(): void;
+onCloseYearSelector(): void;
+changeDisplayYearSelectorAsOpen(value: boolean): void;
 getDateText(value: FDate): string;
 isFocused(ref: string): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "update:yearSelectorOpen")[], "update:modelValue" | "change" | "update:yearSelectorOpen", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -3532,10 +3668,30 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+yearSelectorOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}>, {}, {}, {
+"onUpdate:yearSelectorOpen"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+yearSelector: boolean;
+yearSelectorOpen: boolean;
+}, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
 type: StringConstructor;
@@ -14615,6 +14771,21 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+yearSelectorOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
 }>, {}, {}, {
 previousDisabled(): boolean;
 nextDisabled(): boolean;
@@ -14623,14 +14794,19 @@ nextValue(): FDate;
 currentText(): string;
 previousSrText(): string;
 nextSrText(): string;
+openYearSelectorText(): string;
+closeYearSelectorText(): string;
 previousIconClasses(): Record<string, boolean>;
 nextIconClasses(): Record<string, boolean>;
 }, {
+onClickYearSelector(): void;
 onClickPreviousButton(): void;
 onClickNextButton(): void;
+onCloseYearSelector(): void;
+changeDisplayYearSelectorAsOpen(value: boolean): void;
 getDateText(value: FDate): string;
 isFocused(ref: string): boolean;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "update:yearSelectorOpen")[], "update:modelValue" | "change" | "update:yearSelectorOpen", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -14643,10 +14819,30 @@ maxDate: {
 type: PropType<FDate>;
 required: true;
 };
+yearSelector: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+yearSelectorOpen: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-}>, {}, {}, {
+"onUpdate:yearSelectorOpen"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+yearSelector: boolean;
+yearSelectorOpen: boolean;
+}, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
 type: StringConstructor;

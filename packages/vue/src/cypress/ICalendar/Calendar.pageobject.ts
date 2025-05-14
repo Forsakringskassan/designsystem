@@ -104,4 +104,36 @@ export class CalendarPageObject implements BasePageObject {
             }
         });
     }
+
+    /**
+     * @internal
+     */
+    public navYearSelectorButton(): DefaultCypressChainable {
+        return this.navigationBar.yearSelectorButton();
+    }
+
+    /**
+     * @internal
+     */
+    public yearSelector(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar__year-selector`);
+    }
+
+    /**
+     * @internal
+     */
+    public highlightedYear(): DefaultCypressChainable {
+        return cy.get(
+            `${this.selector} .calendar__year-selector__year--highlight`,
+        );
+    }
+
+    /**
+     * Get all available years from year selector.
+     *
+     * @internal
+     */
+    public availableYears(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar__year-selector__year`);
+    }
 }

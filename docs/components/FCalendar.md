@@ -37,6 +37,19 @@ För att sätta det lägsta och högsta möjliga datumet att välja skickar du i
 <f-calendar v-model="month" :min-date="min" :max-date="max"></f-calendar>
 ```
 
+## Årsväljare
+
+En årsväljare gör det lättare för användaren att byta till ett annat år och används när kalendern sträcker sig över flera år. Årsväljaren är som standard inaktiverad och aktiveras genom att använda propen `year-selector`:
+
+```diff
+ <f-calendar
+     v-model="model"
+     :min-date="min"
+     :max-date="max"
++    year-selector
+ ></f-calendar>
+```
+
 ## Storlek
 
 Kalendern är 100% i bredd. För att ändra bredden placeras kalendern i en container som hanterar komponentens bredd.
