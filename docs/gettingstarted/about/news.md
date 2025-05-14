@@ -17,6 +17,10 @@ Tabell har inte längre stöd för vertikal skroll då det har fungerat bristfä
 Påverkar komponenterna {@link table#interaktiv_tabell interaktiv tabell} (FInteractiveTable) och {@link table#datatabell datatabell} (FDatatable).
 `TableScroll.VERTICAL` och `TableScroll.BOTH` är deprekerade och bör ej användas.
 
+### Åtgärdsknappar i tabell
+
+Ny komponent för {@link component:FTableButton åtgärdsknappar i tabell} (FTableButton).
+
 ## Version 6.6.0
 
 2025-04-25
