@@ -15505,13 +15505,13 @@ export type StepNumber = number;
 
 // @public (undocumented)
 export enum TableScroll {
-    // (undocumented)
+    // @deprecated (undocumented)
     BOTH = "both",
     // (undocumented)
     HORIZONTAL = "horizontal",
     // (undocumented)
     NONE = "none",
-    // (undocumented)
+    // @deprecated (undocumented)
     VERTICAL = "vertical"
 }
 

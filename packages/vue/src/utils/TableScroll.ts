@@ -3,7 +3,13 @@
  */
 export enum TableScroll {
     HORIZONTAL = "horizontal",
+    /**
+     * @deprecated Only horizontal is supported. Deprecated since 6.7.0.
+     */
     VERTICAL = "vertical",
+    /**
+     * @deprecated Acts as horizontal. Recommended to use `TableScroll.HORIZONTAL` instead. Deprecated since 6.7.0.
+     */
     BOTH = "both",
     NONE = "none",
 }
