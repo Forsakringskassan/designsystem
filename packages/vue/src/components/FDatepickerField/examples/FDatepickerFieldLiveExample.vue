@@ -20,6 +20,7 @@ export default defineComponent({
             isRequired: false,
             isDisabled: false,
             alwaysInlineEnabled: false,
+            enableYearSelector: false,
             tooltipVisible: false,
             descriptionVisible: false,
         };
@@ -83,6 +84,9 @@ export default defineComponent({
         disabled(): string {
             return this.isDisabled ? "disabled" : "";
         },
+        yearSelector(): string {
+            return this.enableYearSelector ? "year-selector" : "";
+        },
         description(): string {
             const template = /* HTML */ `
                 <template #description="{ descriptionClass }">
@@ -110,6 +114,7 @@ export default defineComponent({
                     v-model="model"
                     ${this.initialMonth}
                     ${this.alwaysInline}
+                    ${this.yearSelector}
                     ${this.highlightToday}
                     ${this.validation}
                     ${this.disabled}
@@ -171,6 +176,10 @@ export default defineComponent({
         <f-checkbox-field v-model="isDisabled" :value="true"> Inaktivt fält </f-checkbox-field>
         <f-checkbox-field v-model="alwaysInlineEnabled" :value="true">
             Kalendern visas alltid inline
+        </f-checkbox-field>
+
+        <f-checkbox-field v-model="enableYearSelector" :value="true">
+            Visa årsväljare
         </f-checkbox-field>
         <f-fieldset name="etikett">
             <template #label> Etiketten </template>
