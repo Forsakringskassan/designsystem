@@ -35,8 +35,34 @@ export default defineComponent({
             type: Object as PropType<FDate>,
             required: true,
         },
+        /**
+         * Includes a year selector when enabled.
+         */
+        yearSelector: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+        /**
+         * Displays the year selector as open when enabled.
+         */
+        displayYearSelectorAsOpen: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
     },
-    emits: ["change", "update:modelValue"],
+    emits: [
+        "change",
+        "update:modelValue",
+
+        /**
+         * `update:displayYearSelectorAsOpen` event. Emitted when year selector is opened or closed.
+         * @event update:displayYearSelectorAsOpen
+         * @type {boolean}
+         */
+        "update:displayYearSelectorAsOpen",
+    ],
     computed: {
         previousDisabled(): boolean {
             return isInvalidMonth(this.modelValue.addMonths(-1), this.minDate, this.maxDate);
@@ -59,6 +85,12 @@ export default defineComponent({
         nextSrText(): string {
             return this.$t("fkui.calendar-navbar.next", "Nästa månad");
         },
+        openYearSelectorText(): string {
+            return this.$t("fkui.calendar-navbar.open-year-selector", "Öppna årsväljare");
+        },
+        closeYearSelectorText(): string {
+            return this.$t("fkui.calendar-navbar.close-year-selector", "Stäng årsväljare");
+        },
         previousIconClasses(): Record<string, boolean> {
             return {
                 "calendar-navbar__icon": true,
@@ -73,8 +105,13 @@ export default defineComponent({
         },
     },
     methods: {
+        onClickYearSelector() {
+            this.changeDisplayYearSelectorAsOpen(!this.displayYearSelectorAsOpen);
+        },
         onClickPreviousButton(): void {
             if (!this.previousDisabled) {
+                this.onCloseYearSelector();
+
                 /**
                  * V-model event.
                  * @event update:modelValue
@@ -98,6 +135,7 @@ export default defineComponent({
         },
         onClickNextButton(): void {
             if (!this.nextDisabled) {
+                this.onCloseYearSelector();
                 this.$emit("update:modelValue", this.nextValue);
                 this.$emit("change", this.nextValue);
 
@@ -114,6 +152,12 @@ export default defineComponent({
                 alertScreenReader(message, { assertive: true });
             }
         },
+        onCloseYearSelector() {
+            this.changeDisplayYearSelectorAsOpen(false);
+        },
+        changeDisplayYearSelectorAsOpen(displayYearSelectorAsOpen: boolean) {
+            this.$emit("update:displayYearSelectorAsOpen", displayYearSelectorAsOpen);
+        },
         getDateText(value: FDate): string {
             return `${capitalize(value.monthName)} ${value.year}`;
         },
@@ -127,7 +171,26 @@ export default defineComponent({
 <template>
     <div class="calendar-navbar">
         <div class="calendar-navbar__month" tabindex="-1">
-            {{ currentText }}
+            <label for="yearSelectorButton">{{ currentText }}</label>
+
+            <!-- Button - Open/close year selector -->
+            <button
+                v-if="yearSelector"
+                id="yearSelectorButton"
+                class="calendar-navbar__year-selector-button"
+                type="button"
+                aria-haspopup="listbox"
+                :aria-expanded="displayYearSelectorAsOpen"
+                @click.stop.prevent="onClickYearSelector"
+            >
+                <f-icon
+                    :class="displayYearSelectorAsOpen ? 'calendar-navbar__arrow--up' : undefined"
+                    name="arrow-down"
+                />
+                <span class="sr-only">{{
+                    displayYearSelectorAsOpen ? openYearSelectorText : closeYearSelectorText
+                }}</span>
+            </button>
         </div>
 
         <button

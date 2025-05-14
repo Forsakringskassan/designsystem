@@ -1,7 +1,28 @@
+@use "../../components/combobox/combobox";
+
 $CALENDAR_SELECTOR: ".calendar" !default;
 
 #{$CALENDAR_SELECTOR} {
     &__wrapper {
         width: 100%;
+    }
+
+    &__year-selector {
+        height: 20rem;
+        overflow-x: auto;
+        position: relative;
+
+        &__listbox {
+            @extend .combobox__listbox__list;
+        }
+
+        &__year {
+            @extend .combobox__listbox__option;
+            margin: 5px;
+
+            &--highlight {
+                @extend .combobox__listbox__option--highlight;
+            }
+        }
     }
 }
