@@ -73,7 +73,7 @@ async function copyDocs(pkg, from, to) {
     }
 }
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     site: {
         name: "FK Designsystem",
         lang: "sv",
