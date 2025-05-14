@@ -2,8 +2,8 @@ publiccodeYmlVersion: "0.4"
 name: Försäkringskassans designsystem
 url: https://github.com/Forsakringskassan/designsystem.git
 landingURL: https://github.com/Forsakringskassan/designsystem
-softwareVersion: 6.6.0
-releaseDate: 2025-04-25
+softwareVersion: 6.7.0
+releaseDate: 2025-05-14
 logo: docs/src/assets/images/fk-logo-primary.svg
 platforms:
     - web

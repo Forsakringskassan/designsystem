@@ -167,7 +167,7 @@ export default defineComponent({
                     <button
                         tabindex="-1"
                         type="button"
-                        class="button button--discrete button--discrete--black modal__close-button popup-error__button"
+                        class="button button--tertiary button--tertiary--black modal__close-button popup-error__button"
                         aria-label="Stäng"
                         @click="onClose"
                     >
