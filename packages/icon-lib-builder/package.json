@@ -31,12 +31,13 @@
   "jest": {
     "preset": "@forsakringskassan/jest-config"
   },
-  "devDependencies": {
-    "glob": "11.0.2",
-    "svgo": "3.3.2"
-  },
   "engines": {
     "node": ">= 20",
     "npm": ">= 7"
+  },
+  "dependencies": {
+    "glob": "11.0.2",
+    "sass": "1.88.0",
+    "svgo": "3.3.2"
   }
 }
