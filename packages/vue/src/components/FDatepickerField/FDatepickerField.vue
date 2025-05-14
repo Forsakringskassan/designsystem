@@ -68,6 +68,14 @@ export default defineComponent({
             default: false,
         },
         /**
+         * Set to `true` if year selector should be enabled.
+         */
+        yearSelector: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+        /**
          * Set responsive width for label section.
          *
          * ```
@@ -388,6 +396,7 @@ export default defineComponent({
                     :tab-date="calendarValue"
                     :min-date="minDate"
                     :max-date="maxDate"
+                    :year-selector="yearSelector"
                     @click="onSelectCalendarDay"
                     @keyup.esc.stop="onKeyupEsc"
                 >

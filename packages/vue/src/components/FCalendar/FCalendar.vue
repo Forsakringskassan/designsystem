@@ -3,10 +3,12 @@ import { defineComponent, type PropType } from "vue";
 import { FDate } from "@fkui/date";
 import ICalendarNavbar from "../../internal-components/calendar/ICalendarNavbar.vue";
 import ICalendarMonth from "../../internal-components/calendar/ICalendarMonth.vue";
+import FList from "../FList/FList.vue";
 
 export default defineComponent({
     name: "FCalendar",
     components: {
+        FList,
         ICalendarNavbar,
         ICalendarMonth,
     },
@@ -44,9 +46,36 @@ export default defineComponent({
             type: Object as PropType<FDate>,
             required: true,
         },
+        /**
+         * Set to `true` if year selector should be enabled.
+         */
+        yearSelector: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
     },
     emits: ["click", "update:modelValue"],
+    data() {
+        return {
+            showYearSelector: false,
+        };
+    },
+    computed: {
+        selectableYears(): Array<{ yearDiff: number }> {
+            const numberOfSelectableYears = 5;
+            const selectableYears = [];
+            for (let yearDiff = 0 - numberOfSelectableYears; yearDiff < numberOfSelectableYears; yearDiff++) {
+                selectableYears.push({ yearDiff: yearDiff });
+            }
+            return selectableYears;
+        },
+    },
+
     methods: {
+        getYearLabel(yearDiff: number): number {
+            return this.modelValue.addYears(yearDiff).year;
+        },
         onClickDay(date: FDate): void {
             /**
              * `click` event. Emitted when a calendar day is clicked.
@@ -55,13 +84,20 @@ export default defineComponent({
              */
             this.$emit("click", date);
         },
-        onChangeMonth(date: FDate): void {
+        onChangeDate(date: FDate): void {
             /**
-             * `v-model` event. Emitted when changing to a different month in the calendar.
+             * `v-model` event. Emitted when changing to a different month or year in the calendar.
              * @event update:modelValue
              * @type {FDate}
              */
             this.$emit("update:modelValue", date);
+        },
+        onUpdateShowYearSelector(showYearSelector: boolean): void {
+            this.showYearSelector = showYearSelector;
+        },
+        onYearSelected(selectedYear: { yearDiff: number }): void {
+            this.onUpdateShowYearSelector(false);
+            this.onChangeDate(this.modelValue.addYears(selectedYear.yearDiff));
         },
     },
 });
@@ -73,16 +109,33 @@ export default defineComponent({
             :model-value="modelValue"
             :min-date="minDate"
             :max-date="maxDate"
-            @update:model-value="onChangeMonth"
+            :is-year-selector-open="showYearSelector"
+            :year-selector="yearSelector"
+            @update:model-value="onChangeDate"
+            @update:show-year-selector="onUpdateShowYearSelector"
         ></i-calendar-navbar>
 
+        <f-list
+            v-if="showYearSelector"
+            :items="selectableYears"
+            selectable
+            :checkbox="false"
+            class="calendar__year-selector"
+            @update:active="onYearSelected"
+        >
+            <template #default="{ item }">
+                <h3>{{ getYearLabel(item.yearDiff) }}</h3>
+            </template>
+        </f-list>
+
         <i-calendar-month
+            v-else
             :model-value="modelValue"
             :min-date="minDate"
             :max-date="maxDate"
             :tab-date="tabDate"
             @click="onClickDay"
-            @update:model-value="onChangeMonth"
+            @update:model-value="onChangeDate"
         >
             <template #default="{ date, focused }">
                 <!--

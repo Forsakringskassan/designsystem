@@ -4,4 +4,9 @@ $CALENDAR_SELECTOR: ".calendar" !default;
     &__wrapper {
         width: 100%;
     }
+
+    &__year-selector {
+        height: 20rem;
+        overflow-x: auto;
+    }
 }
