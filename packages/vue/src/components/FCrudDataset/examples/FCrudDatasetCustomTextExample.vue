@@ -1,20 +1,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import {
-    FCrudDataset,
-    FCrudButton,
-    FList,
-    FStaticField,
-    FTextField,
-    FTextareaField,
-} from "@fkui/vue";
+import { FCrudDataset, FIcon, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
 import { type FruitData, fruits } from "./fruit-data";
 
 export default defineComponent({
     name: "ExampleApp",
     components: {
         FCrudDataset,
-        FCrudButton,
+        FIcon,
         FList,
         FStaticField,
         FTextField,
@@ -58,7 +51,7 @@ export default defineComponent({
         @updated="saveModel"
         @deleted="saveModel"
     >
-        <template #default>
+        <template #default="{ updateItem, deleteItem }">
             <f-list :items="fruits" element-id="example" key-attribute="id">
                 <template #default="{ item }">
                     <div class="row">
@@ -76,14 +69,24 @@ export default defineComponent({
                         <div class="col col--lg-5 col--md-6">
                             <div class="row row--align-end">
                                 <div class="col">
-                                    <f-crud-button action="modify" :item="item" icon label>
-                                        {{ `Ändra ${item.name}` }}
-                                    </f-crud-button>
+                                    <button
+                                        type="button"
+                                        class="button button--small button--tertiary"
+                                        @click="updateItem(item)"
+                                    >
+                                        <f-icon class="button__icon" name="pen"></f-icon>
+                                        Ändra <span class="sr-only">{{ item.name }}</span>
+                                    </button>
                                 </div>
                                 <div class="col">
-                                    <f-crud-button action="delete" :item="item" icon label>
-                                        {{ `Ta bort ${item.name}` }}
-                                    </f-crud-button>
+                                    <button
+                                        type="button"
+                                        class="button button--small button--tertiary"
+                                        @click="deleteItem(item)"
+                                    >
+                                        <f-icon class="button__icon" name="trashcan"></f-icon>
+                                        Ta bort <span class="sr-only">{{ item.name }}</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
