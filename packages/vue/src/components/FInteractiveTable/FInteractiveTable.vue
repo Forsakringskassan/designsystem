@@ -115,8 +115,8 @@ const props = defineProps({
      * Can be one of the following values:
      *
      * - `"horizontal"`: Enables horizontal scrolling
-     * - `"vertical"`: Enables vertical scrolling
-     * - `"both"`: Enables scrolling in both directions
+     * - `"vertical"`: Does nothing (deprecated)
+     * - `"both"`: Acts as horizontal (deprecated)
      * - `"none"`: Disables scrolling (default)
      */
     scroll: {
