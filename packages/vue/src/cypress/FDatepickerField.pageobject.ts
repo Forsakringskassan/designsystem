@@ -54,6 +54,13 @@ export class FDatepickerFieldPageobject implements BasePageObject {
         return this.calendarNavbar.text();
     }
 
+    /**
+     * @internal
+     */
+    public navYearSelectorButton(): DefaultCypressChainable {
+        return this.calendarNavbar.yearSelectorButton();
+    }
+
     public navPrevButton(): DefaultCypressChainable {
         return this.calendarNavbar.prevButton();
     }
@@ -78,5 +85,30 @@ export class FDatepickerFieldPageobject implements BasePageObject {
 
     public highlightedDay(): DefaultCypressChainable {
         return cy.get(`${this.selector} [data-date] .calendar-day--today`);
+    }
+
+    /**
+     * @internal
+     */
+    public yearSelector(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar__year-selector`);
+    }
+
+    /**
+     * @internal
+     */
+    public highlightedYear(): DefaultCypressChainable {
+        return cy.get(
+            `${this.selector} .calendar__year-selector__year--highlight`,
+        );
+    }
+
+    /**
+     * Get all available years from year selector.
+     *
+     * @internal
+     */
+    public availableYears(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar__year-selector__year`);
     }
 }

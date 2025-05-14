@@ -1,7 +1,32 @@
+@use "../../components/combobox/combobox";
+
 $CALENDAR_SELECTOR: ".calendar" !default;
 
 #{$CALENDAR_SELECTOR} {
     &__wrapper {
         width: 100%;
+    }
+
+    &__year-selector {
+        height: var(--f-calendar-height);
+        overflow-x: auto;
+        position: relative;
+
+        &__listbox {
+            /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+            @extend .combobox__listbox__list;
+        }
+
+        &__year {
+            /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+            @extend .combobox__listbox__option;
+
+            margin: 5px;
+
+            &--highlight {
+                /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+                @extend .combobox__listbox__option--highlight;
+            }
+        }
     }
 }
