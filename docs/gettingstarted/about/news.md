@@ -4,6 +4,19 @@ name: news
 layout: content-with-menu
 ---
 
+## Version 6.7.0
+
+### Uppdatering av applikationslayout (beta)
+
+- Lagt till komponent {@link FFixedPane fixerad yta} (FFixedPane) som används för fasta ytor.
+- Applikationsmall (FPageLayout) använder sig nu av native slots (kräver kodändringar).
+
+### Vertikal skroll i tabell
+
+Tabell har inte längre stöd för vertikal skroll då det har fungerat bristfälligt.
+Påverkar komponenterna {@link table#interaktiv_tabell interaktiv tabell} (FInteractiveTable) och {@link table#datatabell datatabell} (FDatatable).
+`TableScroll.VERTICAL` och `TableScroll.BOTH` är deprekerade och bör ej användas.
+
 ## Version 6.6.0
 
 2025-04-25
