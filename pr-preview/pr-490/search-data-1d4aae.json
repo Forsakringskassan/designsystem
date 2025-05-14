@@ -212,6 +212,9 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
+    "openModal",
+    "formModal() function",
+    "confirmModal() function",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -229,9 +232,6 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
-    "openModal",
-    "formModal() function",
-    "confirmModal() function",
     "ValidationErrorMessageBuilder: map() method",
     "ValidationErrorMessageBuilder: mapCombined() method",
     "ValidationErrorMessageBuilder: create() function",
@@ -1075,6 +1075,21 @@
       "terms": []
     },
     {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
+      "terms": []
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1157,21 +1172,6 @@
     {
       "url": "functions/functions/dom-functions/find-element-from-vue-ref.html",
       "title": "findElementFromVueRef",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
       "terms": []
     },
     {
