@@ -201,6 +201,9 @@ module.exports = defineMetadata({
             "always-inline": {
                 boolean: true,
             },
+            "year-selector": {
+                boolean: true,
+            },
         },
         slots: ["default", "tooltip", "description", "error-message"],
     },
@@ -246,6 +249,10 @@ module.exports = defineMetadata({
             "tab-date": {},
             "min-date": {},
             "max-date": {},
+            "year-selector": {
+                boolean: true,
+            },
+            id: {},
         },
     },
 

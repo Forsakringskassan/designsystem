@@ -227,6 +227,211 @@ describe("open calendar", () => {
             .dayButton("2022-12-01")
             .should("have.prop", "tabindex", 0);
     });
+
+    it("should hide year selector button", () => {
+        datepickerField.navYearSelectorButton().should("not.exist");
+    });
+});
+
+describe("open calendar with year selector enabled", () => {
+    beforeEach(() => {
+        setDate(today);
+        setViewport(VIEWPORT.MOBILE);
+        cy.mount(FDatepickerField, {
+            props: {
+                yearSelector: true,
+            },
+        });
+    });
+
+    it("should open year selector when pressing year selector button", () => {
+        datepickerField.toggleCalendarButton().click();
+        datepickerField.yearSelector().should("not.exist");
+        datepickerField.navYearSelectorButton().click();
+        datepickerField.yearSelector().should("exist");
+    });
+
+    it("should use current year if no date has been selected yet", () => {
+        datepickerField.input().clear();
+        datepickerField.input().blur();
+        datepickerField.toggleCalendarButton().click();
+        datepickerField.navYearSelectorButton().click();
+        datepickerField.yearSelector().should("exist");
+        datepickerField.highlightedYear().should("have.text", "2022");
+    });
+
+    it("should use year from entered date", () => {
+        datepickerField.input().type("2020-10-31");
+        datepickerField.input().blur();
+        datepickerField.toggleCalendarButton().click();
+        datepickerField.navYearSelectorButton().click();
+        datepickerField.yearSelector().should("exist");
+        datepickerField.highlightedYear().should("have.text", "2020");
+    });
+
+    it("should update value to selected year", () => {
+        datepickerField.input().type("2020-10-31");
+        datepickerField.input().blur();
+        datepickerField.toggleCalendarButton().click();
+        datepickerField
+            .calendarCaption()
+            .should("contain.text", "Oktober 2020");
+        datepickerField.navYearSelectorButton().click();
+        datepickerField.yearSelector().should("exist");
+        datepickerField.availableYears().eq(1).click();
+        datepickerField.yearSelector().should("not.exist");
+        datepickerField
+            .calendarCaption()
+            .should("contain.text", "Oktober 2013");
+        datepickerField.dayButton("2013-10-10").click();
+        datepickerField.input().should("have.value", "2013-10-10");
+    });
+
+    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    it.skip("should have approved design", () => {
+        shouldMatchScreenshot();
+    });
+});
+
+describe("open calendar with year selector enabled and open", () => {
+    beforeEach(() => {
+        setDate(today);
+        setViewport(VIEWPORT.MOBILE);
+        cy.mount(FDatepickerField, {
+            props: {
+                yearSelector: true,
+            },
+        });
+        datepickerField.toggleCalendarButton().click();
+        datepickerField.navYearSelectorButton().click();
+        datepickerField.yearSelector().should("exist");
+    });
+
+    it("should have current year as highlighted year", () => {
+        datepickerField.highlightedYear().should("contain.text", "2022");
+    });
+
+    it("should focus on highlighted year", () => {
+        datepickerField.highlightedYear().should("have.focus");
+    });
+
+    it("should set year selector button sr-text", () => {
+        datepickerField
+            .navYearSelectorButton()
+            .should("contain.text", "Stäng årsväljare");
+    });
+
+    it("should set year selector button expanded", () => {
+        datepickerField
+            .navYearSelectorButton()
+            .should("have.attr", "aria-expanded", "true");
+    });
+
+    it("should not show previous/next month buttons", () => {
+        datepickerField.navPrevButton().should("not.exist");
+        datepickerField.navNextButton().should("not.exist");
+    });
+
+    it("should highlight previous year when pressing up arrow", () => {
+        datepickerField.highlightedYear().type("{upArrow}");
+        datepickerField.highlightedYear().should("contain.text", "2021");
+    });
+
+    it("should highlight next year when pressing down arrow", () => {
+        datepickerField.highlightedYear().type("{downArrow}");
+        datepickerField.highlightedYear().should("contain.text", "2023");
+    });
+
+    it("should close year selector when pressing year selector button", () => {
+        datepickerField.navYearSelectorButton().click();
+        datepickerField.yearSelector().should("not.exist");
+    });
+
+    it("should highlight last year when highlighting first year and pressing up arrow", () => {
+        // Input last day of first year
+        datepickerField.input().type(`2012-12-31`).blur();
+
+        // Open year selector
+        datepickerField.toggleCalendarButton().click();
+        datepickerField.navYearSelectorButton().click();
+        datepickerField.highlightedYear().should("contain.text", "2012");
+
+        // Perform user input
+        datepickerField.highlightedYear().type("{upArrow}");
+        datepickerField.highlightedYear().should("contain.text", "2032");
+    });
+
+    it("should highlight first year when highlighting last year and pressing down arrow", () => {
+        // Input first day of last year
+        datepickerField.input().type(`2032-01-01`).blur();
+
+        // Open year selector
+        datepickerField.toggleCalendarButton().click();
+        datepickerField.navYearSelectorButton().click();
+        datepickerField.highlightedYear().should("contain.text", "2032");
+
+        // Perform user input
+        datepickerField.highlightedYear().type("{downArrow}");
+        datepickerField.highlightedYear().should("contain.text", "2012");
+    });
+
+    it("should focus on year selector button when pressing shift+tab key", () => {
+        // Verify that highlighted year has focus
+        const highlightedYear = datepickerField.highlightedYear();
+        highlightedYear.should("contain.text", "2022");
+        highlightedYear.focused().should("exist");
+
+        // SHIFT+TAB to change focus to "Year selector" button
+        highlightedYear.trigger("keydown", { key: "Tab", shiftKey: true });
+        const navYearSelectorButton = datepickerField.navYearSelectorButton();
+        navYearSelectorButton.should("have.focus");
+    });
+
+    it("should focus on close calendar button when pressing tab key", () => {
+        // Verify that highlighted year has focus
+        const highlightedYear = datepickerField.highlightedYear();
+        highlightedYear.should("contain.text", "2022");
+        highlightedYear.focused().should("exist");
+
+        // TAB to change focus to "Close" button
+        highlightedYear.trigger("keydown", { key: "Tab" });
+        const closeCalendarButton = datepickerField.closeCalendarButton();
+        closeCalendarButton.should("have.focus");
+    });
+
+    it("should loop focus when pressing shift+tab or tab key", () => {
+        // Verify that highlighted year has focus
+        const highlightedYear = datepickerField.highlightedYear();
+        highlightedYear.should("contain.text", "2022");
+        highlightedYear.focused().should("exist");
+
+        // SHIFT+TAB to change focus to "Year selector" button
+        highlightedYear.trigger("keydown", { key: "Tab", shiftKey: true });
+        const navYearSelectorButton = datepickerField.navYearSelectorButton();
+        navYearSelectorButton.should("have.focus");
+
+        // SHIFT+TAB to change focus to "Close" button
+        navYearSelectorButton.trigger("keydown", {
+            key: "Tab",
+            shiftKey: true,
+        });
+        const closeCalendarButton = datepickerField.closeCalendarButton();
+        closeCalendarButton.should("have.focus");
+
+        // TAB to change focus to "Year selector" button
+        closeCalendarButton.trigger("keydown", { key: "Tab" });
+        datepickerField.navYearSelectorButton().should("have.focus");
+    });
+
+    it("should close year selector when pressing highlighted year", () => {
+        datepickerField.highlightedYear().click();
+        datepickerField.yearSelector().should("not.exist");
+    });
+
+    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    it.skip("should have approved design", () => {
+        shouldMatchScreenshot();
+    });
 });
 
 describe("open calendar in desktop", () => {

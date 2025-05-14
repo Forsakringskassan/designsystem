@@ -10,12 +10,16 @@
     padding: 2px;
 }
 
-.combobox__listbox__list {
+%combobox__listbox__list {
     margin: 0;
     padding: 0;
 }
 
-.combobox__listbox__option {
+.combobox__listbox__list {
+    @extend %combobox__listbox__list;
+}
+
+%combobox__listbox__option {
     color: $combobox-color-text;
     cursor: pointer;
     list-style-type: none;
@@ -32,6 +36,10 @@
         color: $combobox-color-text-selected;
         font-weight: var(--f-font-weight-medium);
     }
+}
+
+.combobox__listbox__option {
+    @extend %combobox__listbox__option;
 }
 
 .combobox__button {

@@ -1,5 +1,27 @@
+@use "../../components/combobox/combobox";
+
 .calendar {
     &__wrapper {
         width: 100%;
+    }
+
+    &__year-selector {
+        height: var(--f-calendar-height);
+        overflow-x: auto;
+        position: relative;
+
+        &__listbox {
+            @extend %combobox__listbox__list;
+        }
+
+        &__year {
+            @extend %combobox__listbox__option;
+
+            margin: 5px;
+
+            &--highlight {
+                @extend %combobox__listbox__option--highlight;
+            }
+        }
     }
 }

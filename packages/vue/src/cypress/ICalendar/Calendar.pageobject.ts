@@ -37,6 +37,15 @@ export class CalendarPageObject implements BasePageObject {
     }
 
     /**
+     * Get the caption text.
+     *
+     * @internal
+     */
+    public calendarCaption(): DefaultCypressChainable {
+        return this.navigationBar.text();
+    }
+
+    /**
      * return the weeknumbers surrounding the days in the calendar
      */
     public weekNumbers(): DefaultCypressChainable {
@@ -103,5 +112,44 @@ export class CalendarPageObject implements BasePageObject {
                 }
             }
         });
+    }
+
+    /**
+     * @internal
+     */
+    public navYearSelectorButton(): DefaultCypressChainable {
+        return this.navigationBar.yearSelectorButton();
+    }
+
+    /**
+     * @internal
+     */
+    public yearSelector(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar__year-selector`);
+    }
+
+    /**
+     * @internal
+     */
+    public yearSelectorListbox(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar__year-selector__listbox`);
+    }
+
+    /**
+     * @internal
+     */
+    public highlightedYear(): DefaultCypressChainable {
+        return cy.get(
+            `${this.selector} .calendar__year-selector__year--highlight`,
+        );
+    }
+
+    /**
+     * Get all available years from year selector.
+     *
+     * @internal
+     */
+    public availableYears(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .calendar__year-selector__year`);
     }
 }
