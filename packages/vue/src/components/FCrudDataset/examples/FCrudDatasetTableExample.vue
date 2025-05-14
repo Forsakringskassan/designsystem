@@ -2,8 +2,8 @@
 import { defineComponent } from "vue";
 import {
     FCrudDataset,
-    FCrudButton,
     FInteractiveTable,
+    FTableButton,
     FTableColumn,
     FTextField,
     FTextareaField,
@@ -13,8 +13,8 @@ import { type FruitData, fruits } from "./fruit-data";
 export default defineComponent({
     components: {
         FCrudDataset,
-        FCrudButton,
         FInteractiveTable,
+        FTableButton,
         FTableColumn,
         FTextField,
         FTextareaField,
@@ -34,7 +34,7 @@ export default defineComponent({
 
 <template>
     <f-crud-dataset v-model="fruits" @created="saveModel" @updated="saveModel" @deleted="saveModel">
-        <template #default>
+        <template #default="{ updateItem, deleteItem }">
             <f-interactive-table :rows="fruits" key-attribute="id">
                 <template #caption> <b>Frukter</b> </template>
                 <template #default="{ row }">
@@ -48,12 +48,12 @@ export default defineComponent({
                         {{ row.description }}
                     </f-table-column>
                     <f-table-column title="Åtgärd" type="action" shrink>
-                        <f-crud-button action="modify" :item="row" icon>
-                            {{ `Ändra  ${row.name}` }}
-                        </f-crud-button>
-                        <f-crud-button action="delete" :item="row" icon>
-                            {{ `Ta bort ${row.name}` }}
-                        </f-crud-button>
+                        <f-table-button icon="pen" @click="updateItem(row)">
+                            Ändra {{ row.name }}
+                        </f-table-button>
+                        <f-table-button icon="trashcan" @click="deleteItem(row)">
+                            Ta bort {{ row.name }}
+                        </f-table-button>
                     </f-table-column>
                 </template>
             </f-interactive-table>

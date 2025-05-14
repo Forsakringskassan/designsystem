@@ -2796,7 +2796,10 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        default?(_: {}): any;
+        default?(_: {
+            updateItem: (current: T) => void;
+            deleteItem: (current: T) => void;
+        }): any;
         'add-button'?(_: {}): any;
         buttons?(_: {
             buttonClasses: string[];

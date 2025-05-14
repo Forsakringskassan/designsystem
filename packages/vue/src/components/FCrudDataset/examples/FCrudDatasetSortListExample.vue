@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
-    FCrudButton,
     FCrudDataset,
+    FIcon,
     FList,
     FSortFilterDataset,
     FStaticField,
@@ -13,8 +13,8 @@ import { type FruitData, fruits } from "./fruit-data";
 
 export default defineComponent({
     components: {
-        FCrudButton,
         FCrudDataset,
+        FIcon,
         FList,
         FSortFilterDataset,
         FStaticField,
@@ -47,7 +47,7 @@ export default defineComponent({
 
 <template>
     <f-crud-dataset v-model="fruits" :before-create="beforeCreate">
-        <template #default>
+        <template #default="{ updateItem, deleteItem }">
             <f-sort-filter-dataset
                 :data="fruits"
                 :sortable-attributes="{
@@ -69,14 +69,26 @@ export default defineComponent({
                                     <br />
                                 </div>
                                 <div class="col col--sm-1">
-                                    <f-crud-button action="modify" :item="item" icon>
-                                        {{ `Ändra  ${item.name}` }}
-                                    </f-crud-button>
+                                    <button
+                                        type="button"
+                                        class="button button--small button--tertiary"
+                                        @click="updateItem(item)"
+                                    >
+                                        <f-icon class="button__icon" name="pen">
+                                            <title>Ändra {{ item.name }}</title>
+                                        </f-icon>
+                                    </button>
                                 </div>
                                 <div class="col col--sm-1">
-                                    <f-crud-button action="delete" :item="item" icon>
-                                        {{ `Ta bort ${item.name}` }}
-                                    </f-crud-button>
+                                    <button
+                                        type="button"
+                                        class="button button--small button--tertiary"
+                                        @click="deleteItem(item)"
+                                    >
+                                        <f-icon class="button__icon" name="trashcan">
+                                            <title>Ta bort {{ item.name }}</title>
+                                        </f-icon>
+                                    </button>
                                 </div>
                             </div>
                         </template>
