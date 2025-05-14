@@ -1,3 +1,12 @@
 .table__anchor {
     cursor: pointer;
+    display: inline-flex;
+    gap: 0.25rem;
+
+    > svg.icon {
+        flex-shrink: 0;
+        align-self: center;
+        min-width: auto;
+        max-width: none;
+    }
 }
