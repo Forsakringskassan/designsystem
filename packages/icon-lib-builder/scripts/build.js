@@ -2,6 +2,7 @@ const path = require("node:path");
 const fs = require("node:fs/promises");
 const { globSync } = require("glob");
 const { optimize } = require("svgo");
+const sass = require("sass");
 const { name: packageName } = require("../package.json");
 const { capitalize } = require("./common");
 const { generateIndexFile } = require("./generate-index-file");
@@ -183,6 +184,18 @@ async function getSpriteSheetdata(directory, files) {
     return { content, icons };
 }
 
+async function generateStyle(directory, directoryName) {
+    const stylePath = path.join(directory, "index.scss");
+
+    try {
+        await fs.stat(stylePath);
+    } catch {
+        return;
+    }
+    const result = sass.compile(stylePath);
+    await fs.writeFile(path.join(dest, directoryName, "index.css"), result.css);
+}
+
 async function main() {
     const directories = globSync("icons/*/");
     const directoryNames = directories.map((d) => path.basename(d));
@@ -194,6 +207,8 @@ async function main() {
         await fs.mkdir(path.join(dest, directoryName), { recursive: true });
 
         const data = await getSpriteSheetdata(directory, files);
+
+        await generateStyle(directory, directoryName);
         await generateSpritesheetSvg(directoryName, data);
         await generateSpritesheetJson(directoryName, data);
         await fs.writeFile(
