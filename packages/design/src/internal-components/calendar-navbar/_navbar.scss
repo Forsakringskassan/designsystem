@@ -25,6 +25,14 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
         transform: scaleX(-1);
     }
 
+    &__arrow--up {
+        transform: scaleY(-1);
+    }
+
+    &__yearSelectorButton {
+        margin-bottom: 0;
+    }
+
     &__icon {
         color: var(--f-icon-color-white);
         background-color: var(--f-icon-color-primary);
