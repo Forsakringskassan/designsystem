@@ -67,6 +67,14 @@ export default defineComponent({
             default: false,
         },
         /**
+         * Includes a year selector when enabled.
+         */
+        yearSelector: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+        /**
          * Set responsive width for label section.
          *
          * ```
@@ -267,7 +275,7 @@ export default defineComponent({
             }
 
             const popup = getHTMLElementFromVueRef(this.$refs.popup);
-            const navMonth: HTMLElement | null = popup.querySelector(".calendar-navbar__month");
+            const navMonth: HTMLElement | null = popup.querySelector(".calendar-navbar__month--title");
             if (navMonth) {
                 navMonth.focus({ preventScroll: true });
             }
@@ -387,6 +395,7 @@ export default defineComponent({
                     :tab-date="calendarValue"
                     :min-date="minDate"
                     :max-date="maxDate"
+                    :year-selector
                     @click="onSelectCalendarDay"
                     @keyup.esc.stop="onKeyupEsc"
                 >

@@ -48,6 +48,20 @@ har valt en månad som inte har några valbara datum.
  ></f-datepicker-field>
 ```
 
+### Årsväljare
+
+En årsväljare gör det lättare för användaren att byta till ett annat år och används när kalendern sträcker sig över flera år.
+Årsväljaren är som standard inaktiverad och aktiveras genom att använda propen `year-selector`:
+
+```diff
+ <f-datepicker-field
+     v-model="model"
+     :min-date="min"
+     :max-date="max"
++    year-selector
+ ></f-datepicker-field>
+```
+
 ## Responsivitet
 
 - På små skärmar (<640 px bredd) visas kalendern som en del av webbsidan (inline)

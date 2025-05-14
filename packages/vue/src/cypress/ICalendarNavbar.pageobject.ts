@@ -18,7 +18,16 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     }
 
     public text(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .calendar-navbar__month`);
+        return cy.get(`${this.selector} .calendar-navbar__month--title`);
+    }
+
+    /**
+     * @internal
+     */
+    public yearSelectorButton(): DefaultCypressChainable {
+        return cy.get(
+            `${this.selector} .calendar-navbar__year-selector-button`,
+        );
     }
 
     public prevButton(): DefaultCypressChainable {

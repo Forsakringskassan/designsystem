@@ -20,18 +20,30 @@ export interface BasePageObject {
 // @public
 export class CalendarPageObject implements BasePageObject {
     constructor(selector: string);
+    // @internal
+    availableYears(): DefaultCypressChainable;
+    // @internal
+    calendarCaption(): DefaultCypressChainable;
     // (undocumented)
     day(day?: number): FCalendarDayPageObject;
     dayButton(day?: number): DefaultCypressChainable;
     // (undocumented)
     el(): DefaultCypressChainable;
     headerCells(): DefaultCypressChainable;
+    // @internal (undocumented)
+    highlightedYear(): DefaultCypressChainable;
     navigateTo(targetYear: number, targetMonth: number): void;
     // (undocumented)
     navigationBar: ICalendarNavbarPageObject;
+    // @internal (undocumented)
+    navYearSelectorButton(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
     weekNumbers(): DefaultCypressChainable;
+    // @internal (undocumented)
+    yearSelector(): DefaultCypressChainable;
+    // @internal (undocumented)
+    yearSelectorListbox(): DefaultCypressChainable;
 }
 
 // @public (undocumented)
@@ -157,6 +169,8 @@ export class FCrudDatasetPageObject implements BasePageObject {
 // @public (undocumented)
 export class FDatepickerFieldPageobject implements BasePageObject {
     constructor(selector: string);
+    // @internal
+    availableYears(): DefaultCypressChainable;
     // (undocumented)
     calendar(): DefaultCypressChainable;
     // (undocumented)
@@ -171,12 +185,16 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     el(): DefaultCypressChainable;
     // (undocumented)
     highlightedDay(): DefaultCypressChainable;
+    // @internal (undocumented)
+    highlightedYear(): DefaultCypressChainable;
     // (undocumented)
     input(): DefaultCypressChainable;
     // (undocumented)
     navNextButton(): DefaultCypressChainable;
     // (undocumented)
     navPrevButton(): DefaultCypressChainable;
+    // @internal (undocumented)
+    navYearSelectorButton(): DefaultCypressChainable;
     // (undocumented)
     popup(): DefaultCypressChainable;
     // (undocumented)
@@ -187,6 +205,8 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     textFieldErrorMessage(): DefaultCypressChainable;
     // (undocumented)
     toggleCalendarButton(): DefaultCypressChainable;
+    // @internal (undocumented)
+    yearSelector(): DefaultCypressChainable;
 }
 
 // @public
@@ -767,6 +787,8 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     selector: string;
     // (undocumented)
     text(): DefaultCypressChainable;
+    // @internal (undocumented)
+    yearSelectorButton(): DefaultCypressChainable;
 }
 
 // @public (undocumented)
