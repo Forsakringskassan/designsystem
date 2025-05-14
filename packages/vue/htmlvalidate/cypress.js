@@ -10,6 +10,9 @@ module.exports = [
     /* FList uses a ul with role="select" */
     "ul.list",
 
+    /* FCalendar uses a ul with role="listbox" */
+    ".calendar__year-selector__listbox",
+
     /* ICalendar misuses aria-label */
     ".calendar ul[aria-label]",
 
