@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue-sandbox",
-  "version": "6.6.0",
+  "version": "6.7.0",
   "private": true,
   "description": "fkui-vue-sandbox",
   "homepage": "https://designsystem.forsakringskassan.se/",
@@ -19,12 +19,12 @@
     "start": "vite --"
   },
   "dependencies": {
-    "@fkui/date": "6.6.0",
-    "@fkui/design": "6.6.0",
-    "@fkui/logic": "6.6.0",
-    "@fkui/icon-lib-default": "6.6.0",
-    "@fkui/theme-default": "6.6.0",
-    "@fkui/vue": "6.6.0",
+    "@fkui/date": "6.7.0",
+    "@fkui/design": "6.7.0",
+    "@fkui/logic": "6.7.0",
+    "@fkui/icon-lib-default": "6.7.0",
+    "@fkui/theme-default": "6.7.0",
+    "@fkui/vue": "6.7.0",
     "vue": "3.5.13",
     "vue-router": "4.5.1"
   },

@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 6.7.0 (2025-05-14)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** new `table__button` class for table action buttons (refs SFKUI-7155) 2c18d8e
+* **@fkui/design:** new `table__anchor` class for links in tables (refs SFKUI-7155) e4701c2
+* **@fkui/design:** remove styling for table scroll values `VERTICAL` and `BOTH` (refs SFKUI-7119) 1022932
+* **@fkui/vue:** add `f-fixed-pane` component (refs SFKUI-6500) b154d07
+* **@fkui/vue:** expose `FCrudDataset` button callbacks as slot attributes (refs SFKUI-7155) 9ad32b7
+* **@fkui/vue:** new `FTableButton` component (refs SFKUI-7155) dc0e212
+* **@fkui/vue:** new html-validate rule to detect when table checkbox-description is missing (refs SFKUI-6500) c08c906
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** issue with FWizardStep header overflow (fixes SFKUI-6168) 3f3b018
+* **@fkui/design:** horizontal scroll bar shown when `scroll="vertical"` (fixes SFKUI-7119) 901ac00
+* **@fkui/design:** visible hover effect for inactive bordered checkboxes (fixes SFKUI-7214) feac7d6
+* **@fkui/vue:** fix malformed cells on empty table (fixes SFKUI-7219) 71bfcc7, closes #454
+* **@fkui/vue:** use distinct translation key `fkui.interactive-table.expand` (refs SFKUI-7070) ee58c2a
+* **deps:** update dependency i18next to v25.0.2 afe49a6
+* **deps:** update dependency i18next to v25.1.1 ffbf811
+* **deps:** update dependency i18next to v25.1.2 4d7f2b1
+* **deps:** update dependency vue-router to v4.5.1 6fff20a
+
 ## 6.6.0 (2025-04-25)
 
 ### Features
