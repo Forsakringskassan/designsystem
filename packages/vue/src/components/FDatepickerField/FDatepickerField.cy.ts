@@ -296,7 +296,7 @@ describe("open calendar with year selector enabled", () => {
     });
 });
 
-describe.only("open calendar with year selector enabled and open", () => {
+describe("open calendar with year selector enabled and open", () => {
     beforeEach(() => {
         setDate(today);
         setViewport(VIEWPORT.MOBILE);
