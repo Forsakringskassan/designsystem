@@ -91,7 +91,7 @@
     "@forsakringskassan/prettier-config": "3.0.5",
     "@forsakringskassan/sass-module-importer": "1.1.4",
     "@forsakringskassan/stylelint-config": "2.5.1",
-    "@forsakringskassan/vite-lib-config": "3.6.6",
+    "@forsakringskassan/vite-lib-config": "4.0.0",
     "@html-validate/release-scripts": "6.8.3",
     "@types/estree": "1.0.7",
     "@types/glob": "8.1.0",
