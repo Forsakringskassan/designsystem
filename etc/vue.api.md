@@ -7122,7 +7122,7 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
 export const FLoader: DefineComponent<ExtractPropTypes<    {
 show: {
 type: BooleanConstructor;
-required: true;
+required: false;
 default: boolean;
 };
 overlay: {
@@ -7136,7 +7136,7 @@ required: false;
 default: boolean;
 };
 language: {
-type: StringConstructor;
+type: PropType<"sv" | "en">;
 required: false;
 default: string;
 };
@@ -7165,7 +7165,7 @@ closeLoader(): void;
 }, ComponentOptions, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 show: {
 type: BooleanConstructor;
-required: true;
+required: false;
 default: boolean;
 };
 overlay: {
@@ -7179,7 +7179,7 @@ required: false;
 default: boolean;
 };
 language: {
-type: StringConstructor;
+type: PropType<"sv" | "en">;
 required: false;
 default: string;
 };
@@ -7195,9 +7195,10 @@ default: undefined;
 };
 }>> & Readonly<{}>, {
 teleport: string | HTMLElement | undefined;
+show: boolean;
 overlay: boolean;
 delay: boolean;
-language: string;
+language: "sv" | "en";
 focusOnOverlay: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
