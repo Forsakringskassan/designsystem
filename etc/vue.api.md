@@ -7140,7 +7140,6 @@ default: undefined;
 };
 }>> & Readonly<{}>, {
 teleport: string | HTMLElement | undefined;
-show: boolean;
 overlay: boolean;
 show: boolean;
 delay: boolean;
