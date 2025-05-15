@@ -57,22 +57,22 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
     "Commits och commitmeddelanden",
     "Checklista vid publicering",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "EventBus",
-    "EventBus",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
     "focus-indicator() mixin",
     "Validation Plugin",
     "Translation Plugin",
@@ -486,6 +486,16 @@
       "terms": []
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": []
@@ -511,16 +521,6 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
       "url": "gettingstarted/about/release-plan.html",
       "title": "På gång",
       "terms": []
@@ -534,13 +534,6 @@
       "url": "gettingstarted/about/index.html",
       "title": "Designsystemet",
       "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
     },
     {
       "url": "functions/test-utils/vue.html",
@@ -561,6 +554,13 @@
       "url": "functions/test-utils/jest.html",
       "title": "Jest",
       "terms": []
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
     },
     {
       "url": "functions/sass/focus-indicator.html",
@@ -1419,10 +1419,10 @@
     "65": 44,
     "66": 45,
     "67": 46,
-    "68": 46,
-    "69": 47,
-    "70": 48,
-    "71": 49,
+    "68": 47,
+    "69": 48,
+    "70": 49,
+    "71": 50,
     "72": 50,
     "73": 51,
     "74": 52,
