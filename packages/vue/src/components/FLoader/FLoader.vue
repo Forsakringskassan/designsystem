@@ -37,10 +37,10 @@ export default defineComponent({
         },
         /**
          * Language used for determining fallback value for the loading text. Useful if loader is displayed before
-         * text keys have been downloaded
+         * text keys have been downloaded. Default is Swedish `sv`, can be changed to English `en`.
          */
         language: {
-            type: String,
+            type: String as PropType<"sv" | "en">,
             required: false,
             default: "sv",
         },
