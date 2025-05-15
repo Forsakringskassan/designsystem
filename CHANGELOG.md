@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 6.7.1 (2025-05-15)
+
+### Bug Fixes
+
+* **@fkui/design:** prevent fieldset from overflowing when its content has unbreakable text (refs FRI-850) b2285d9
+* **@fkui/vue:** selector in turnOffAnimation in wizard pageobject (refs SFKUI-6500) 8bd6456
+
 ## 6.7.0 (2025-05-14)
 
 ### Features
