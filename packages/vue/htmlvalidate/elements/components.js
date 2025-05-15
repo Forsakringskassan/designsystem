@@ -1423,4 +1423,8 @@ module.exports = defineMetadata({
         },
         slots: ["default"],
     },
+
+    "f-grid": {
+        flow: true,
+    },
 });

@@ -314,6 +314,12 @@ provide(
     computed(() => internalRows.value.length > 0),
 );
 
+const activeRowIndex = ref<number | undefined>(0);
+const activeCellIndex = ref<number | undefined>(0);
+
+provide("activeRowIndex", activeRowIndex);
+provide("activeCellIndex", activeCellIndex);
+
 watch(
     () => props.rows,
     () => setSelectedRows(),
@@ -380,10 +386,12 @@ function isSelected(row: T): boolean {
 }
 
 function onKeydown(event: KeyboardEvent, index: number): void {
+    console.log(event, event.target);
     onKeydown2({ rows: internalRows.value, tr, activate }, event, index);
 }
 
 function onClick(event: MouseEvent, row: T): void {
+    return;
     const { target } = event as MouseEvent & { target: HTMLElement };
     const isRelevant = ["TD", "TH"].includes(target.nodeName);
 
@@ -395,6 +403,8 @@ function onClick(event: MouseEvent, row: T): void {
 }
 
 function activate(row: T, tr: HTMLElement | null): void {
+    return;
+
     emit("click", row);
 
     if (isExpandableTable.value && hasExpandableContent(row)) {
@@ -620,22 +630,21 @@ function setActiveRow(row: T | undefined): void {
             <tbody ref="tbodyElement" :key="tbodyKey">
                 <template v-for="(row, index) in internalRows" :key="rowKey(row)">
                     <tr
+                        ref="tr"
                         :class="rowClasses(row, index)"
-                        :aria-label="rowDescription(row)"
                         :aria-expanded="rowAriaExpanded(row)"
                         :aria-level="isExpandableTable ? 1 : undefined"
                         :aria-describedby="getExpandableDescribedby(row)"
-                        tabindex="0"
                         @keydown.self="onKeydown($event, index)"
                         @click="onClick($event, row)"
                     >
-                        <td v-if="isExpandableTable">
+                        <td v-if="isExpandableTable" tabindex="0">
                             <div v-if="hasExpandableContent(row)" class="table__expand-icon">
                                 <f-icon name="arrow-right" :rotate="isExpanded(row) ? '270' : '90'"></f-icon>
                             </div>
                         </td>
 
-                        <td v-if="selectable" class="table__column--selectable">
+                        <td v-if="selectable" class="table__column--selectable" tabindex="0">
                             <div class="table__input">
                                 <f-checkbox-field
                                     :value="true"
@@ -660,6 +669,7 @@ function setActiveRow(row: T | undefined): void {
                         <tr
                             v-for="(expandableRow, expandableIndex) in expandableRows(row)"
                             :key="rowKey(expandableRow)"
+                            ref="tr"
                             aria-level="2"
                             :class="expandableRowClasses(row, expandableIndex)"
                         >
@@ -667,18 +677,23 @@ function setActiveRow(row: T | undefined): void {
                                 Expandable column placeholder.
                                 Expandable rows cannot be expanded.
                             -->
-                            <td class="table__column--placeholder"></td>
+                            <td class="table__column--placeholder" tabindex="0"></td>
 
                             <!--
                                 Selectable column placeholder.
                                 Expandable rows cannot be selected.
                             -->
-                            <td v-if="selectable" class="table__column--placeholder"></td>
+                            <td v-if="selectable" class="table__column--placeholder" tabindex="0"></td>
 
                             <template v-if="!hasExpandableSlot">
                                 <slot v-bind="{ row: expandableRow as T }"></slot>
                             </template>
-                            <td v-else class="table__column table__column--indented" :colspan="columns.length">
+                            <td
+                                v-else
+                                class="table__column table__column--indented"
+                                :colspan="columns.length"
+                                tabindex="0"
+                            >
                                 <!--
                                      @slot Slot for expandable table row.
                                      @binding {T} expandableRow Current expandable row being rendered.
@@ -696,7 +711,7 @@ function setActiveRow(row: T | undefined): void {
 
                 <template v-if="isEmpty">
                     <tr>
-                        <td class="table__column table__column--action" :colspan="nbOfColumns">
+                        <td class="table__column table__column--action" :colspan="nbOfColumns" tabindex="0">
                             <!--
                                 @slot Slot for displaying a message when table is empty.
                                 Default text is 'Tabellen är tom' (key fkui.interactive-table.empty).

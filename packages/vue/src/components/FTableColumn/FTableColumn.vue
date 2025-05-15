@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { type PropType, computed, onMounted, ref, useTemplateRef, watch } from "vue";
+import { type PropType, computed, inject, onMounted, ref, useTemplateRef, watch, watchEffect } from "vue";
 import { ElementIdService } from "@fkui/logic";
+import { onKeydown } from "../FInteractiveTable/FTableKeybindings";
 import { FTableInjected } from "./FTableInterface";
 import { FTableColumnType, FTableColumnSize, FTableColumnSort, isTableColumnType } from "./FTableColumnData";
 
 const { renderColumns, setVisibilityColumn, addColumn } = FTableInjected();
+
+const activeRowIndex = inject("activeRowIndex");
+const activeCellIndex = inject("activeCellIndex");
 
 const hasMounted = ref(false);
 const isHeader = ref(false);
@@ -14,6 +18,20 @@ const el = useTemplateRef("element");
 
 defineOptions({
     inheritAttrs: false,
+});
+
+watchEffect(() => {
+    if (activeCellIndex?.value === el.value?.cellIndex) {
+        if (activeRowIndex?.value === el.value?.parentElement?.rowIndex) {
+            console.log("I am active!", activeRowIndex.value, activeCellIndex.value);
+
+            el.value?.focus();
+        }
+    }
+
+    // console.log(
+    //     `active cell: [${activeRowIndex?.value},${activeCellIndex?.value}] | my cell: [${el.value?.parentElement?.rowIndex},${el.value?.cellIndex}] `,
+    // );
 });
 
 const props = defineProps({
@@ -168,10 +186,53 @@ function isTableHeader(): boolean {
     const closest = el.value.closest("thead, tbody");
     return closest?.tagName === "THEAD";
 }
+
+function onKeydown(e: KeyboardEvent): void {
+    console.log(e.code);
+    if (e.code === "ArrowLeft") {
+        e.preventDefault();
+
+        activeCellIndex.value = e.target.cellIndex - 1;
+        activeRowIndex.value = e.target.parentElement.rowIndex;
+    }
+
+    if (e.code === "ArrowRight") {
+        e.preventDefault();
+
+        activeCellIndex.value = e.target.cellIndex + 1;
+        activeRowIndex.value = e.target.parentElement.rowIndex;
+    }
+
+    if (e.code === "ArrowUp") {
+        e.preventDefault();
+
+        activeCellIndex.value = e.target.cellIndex;
+        activeRowIndex.value = e.target.parentElement.rowIndex - 1;
+    }
+
+    if (e.code === "ArrowDown") {
+        e.preventDefault();
+
+        activeCellIndex.value = e.target.cellIndex;
+        activeRowIndex.value = e.target.parentElement.rowIndex + 1;
+    }
+
+    // responsiva. ftablecolumn injetar rowindex, cellindex. watchEffect. kollar sitt element cellIndex. what about rowindex. får slå. parent.rowIndex.
+    // aktivera: focus() om.. inte delegerat.
+}
 </script>
 
 <template>
-    <component :is="tagName" v-if="renderElement" ref="element" :class="classes" :scope="scope" v-bind="$attrs">
+    <component
+        :is="tagName"
+        v-if="renderElement"
+        ref="element"
+        :class="classes"
+        :scope="scope"
+        v-bind="$attrs"
+        tabindex="0"
+        @keydown="onKeydown"
+    >
         <template v-if="renderColumns">
             <!-- @slot Content to be rendered in table cell. -->
             <slot></slot>
