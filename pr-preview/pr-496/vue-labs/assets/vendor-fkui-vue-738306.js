@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, Transition, Teleport, normalizeProps, guardReactiveProps, normalizeStyle, onMounted, toValue, onUnmounted, useSlots, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, ref, unref, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
@@ -6462,7 +6462,7 @@ var _sfc_main$1a = defineComponent({
       return this.$refs.changeYearButton;
     },
     getDateText(value) {
-      return `${value.monthName}`;
+      return `${value.monthName} ${value.year}`;
     },
     isFocused(ref2) {
       return document.activeElement === this.$refs[ref2];
@@ -6494,24 +6494,24 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClickChangeYear && _ctx.onClickChangeYear(...args))
   }, [createVNode(_component_f_icon, {
     name: _ctx.showChangeYearContextMenu ? `close` : `arrow-down`
-  }, null, 8, ["name"]), createTextVNode(toDisplayString(_ctx.modelValue.year), 1)], 512)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("button", {
+  }, null, 8, ["name"]), _cache[3] || (_cache[3] = createTextVNode(toDisplayString(null)))], 512)]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("button", {
     ref: "previousButton",
     class: "calendar-navbar__arrow calendar-navbar__arrow--previous",
     type: "button",
     "aria-disabled": _ctx.previousDisabled,
     "aria-live": _ctx.isFocused("previousButton") ? "polite" : "off",
     onClick: _cache[1] || (_cache[1] = withModifiers((...args) => _ctx.onClickPreviousButton && _ctx.onClickPreviousButton(...args), ["stop"]))
-  }, [createElementVNode("span", _hoisted_4$q, toDisplayString(_ctx.previousSrText), 1), _cache[3] || (_cache[3] = createTextVNode()), createVNode(_component_f_icon, {
+  }, [createElementVNode("span", _hoisted_4$q, toDisplayString(_ctx.previousSrText), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.previousIconClasses),
     name: "arrow-right"
-  }, null, 8, ["class"])], 8, _hoisted_3$v), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("button", {
+  }, null, 8, ["class"])], 8, _hoisted_3$v), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("button", {
     ref: "nextButton",
     class: "calendar-navbar__arrow calendar-navbar__arrow--next",
     type: "button",
     "aria-disabled": _ctx.nextDisabled,
     "aria-live": _ctx.isFocused("nextButton") ? "polite" : "off",
     onClick: _cache[2] || (_cache[2] = withModifiers((...args) => _ctx.onClickNextButton && _ctx.onClickNextButton(...args), ["stop"]))
-  }, [createElementVNode("span", _hoisted_6$g, toDisplayString(_ctx.nextSrText), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(_component_f_icon, {
+  }, [createElementVNode("span", _hoisted_6$g, toDisplayString(_ctx.nextSrText), 1), _cache[5] || (_cache[5] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.nextIconClasses),
     name: "arrow-right"
   }, null, 8, ["class"])], 8, _hoisted_5$l)]);

@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/CustomValidatorExample.vue:CustomValidatorExample-a36110.js
+// virtual-entry:virtual:docs/guides/validation/examples/CustomValidatorExample.vue:CustomValidatorExample-deec2b.js
 import { FTextField } from "@fkui/vue";
 import {
   ValidationErrorMessageBuilder,
@@ -181,7 +181,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a36110"
+  selector: "#example-deec2b"
 });
 export {
   render,

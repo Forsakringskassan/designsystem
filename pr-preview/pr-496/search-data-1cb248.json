@@ -41,13 +41,22 @@
     "Bricka",
     "FBadge",
     "CHANGELOG v5",
+    "Formatering och parsning",
+    "Formaterare och parser - anpassad",
     "Validering och felhantering",
     "Längdvalidering",
     "Validator - anpassad",
     "Felmeddelande - anpassat",
     "Korsvalidering",
-    "Formatering och parsning",
-    "Formaterare och parser - anpassad",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "Kom igång",
+    "Ta fram applikation",
     "Version 5 migreringsguide",
     "Fieldset migreringsguide",
     "Testverktyg",
@@ -58,15 +67,6 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "Kom igång",
-    "Ta fram applikation",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
@@ -425,6 +425,16 @@
       "terms": []
     },
     {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": []
+    },
+    {
       "url": "guides/validation-and-error-handling/validation.html",
       "title": "Validering och felhantering",
       "terms": []
@@ -450,13 +460,29 @@
       "terms": []
     },
     {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
       "terms": []
     },
     {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -507,32 +533,6 @@
     {
       "url": "gettingstarted/about/index.html",
       "title": "Designsystemet",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -1400,20 +1400,20 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 33,
-    "50": 34,
-    "51": 35,
-    "52": 36,
-    "53": 37,
-    "54": 38,
-    "55": 39,
-    "56": 40,
-    "57": 41,
-    "58": 42,
-    "59": 42,
-    "60": 42,
-    "61": 42,
-    "62": 42,
+    "49": 32,
+    "50": 32,
+    "51": 32,
+    "52": 32,
+    "53": 32,
+    "54": 33,
+    "55": 34,
+    "56": 35,
+    "57": 36,
+    "58": 37,
+    "59": 38,
+    "60": 39,
+    "61": 40,
+    "62": 41,
     "63": 42,
     "64": 43,
     "65": 44,
