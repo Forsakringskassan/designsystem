@@ -38,7 +38,7 @@ export class FWizardPageobject implements BasePageObject {
      * Turns off the animation att css class level.
      */
     public turnOffAnimation(): void {
-        cy.get(".wizard-step__connector").invoke("css", "transition", "none");
+        cy.get(".wizard-step__content").invoke("css", "transition", "none");
     }
 
     public constructor(selector: string) {
