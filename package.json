@@ -60,13 +60,6 @@
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config"
   },
-  "lint-staged": {
-    "*.{json,md,css,scss,html}": "prettier --write",
-    "*.{js,cjs,mjs,vue,ts}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
   "prettier": "@forsakringskassan/prettier-config",
   "stylelint": {
     "extends": [
@@ -82,7 +75,7 @@
   "devDependencies": {
     "@babel/core": "7.27.1",
     "@babel/preset-env": "7.27.2",
-    "@forsakringskassan/commitlint-config": "1.4.2",
+    "@forsakringskassan/commitlint-config": "2.0.1",
     "@forsakringskassan/cypress-axe": "3.2.1",
     "@forsakringskassan/cypress-visual-regression": "2.4.0",
     "@forsakringskassan/docs-generator": "2.27.1",
@@ -98,7 +91,7 @@
     "@forsakringskassan/prettier-config": "3.0.5",
     "@forsakringskassan/sass-module-importer": "1.1.4",
     "@forsakringskassan/stylelint-config": "2.5.1",
-    "@forsakringskassan/vite-lib-config": "3.6.6",
+    "@forsakringskassan/vite-lib-config": "4.0.0",
     "@html-validate/release-scripts": "6.8.3",
     "@types/estree": "1.0.7",
     "@types/glob": "8.1.0",
@@ -121,7 +114,6 @@
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "lerna": "8.2.2",
-    "lint-staged": "15.5.2",
     "mocha-junit-reporter": "2.2.1",
     "mocha-multi-reporters": "1.5.1",
     "npm-pkg-lint": "3.10.11",
