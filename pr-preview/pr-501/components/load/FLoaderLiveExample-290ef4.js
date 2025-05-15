@@ -26,7 +26,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderLiveExample.vue:FLoaderLiveExample-a1458d.js
+// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderLiveExample.vue:FLoaderLiveExample-290ef4.js
 import { defineComponent } from "vue";
 import { FLoader, FCheckboxField } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
@@ -68,7 +68,7 @@ var exampleComponent = defineComponent({
     customText: {
       immediate: false,
       handler() {
-        if (this.language) {
+        if (this.customText) {
           this.language = false;
         }
       }
@@ -203,7 +203,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a1458d"
+  selector: "#example-290ef4"
 });
 export {
   render
