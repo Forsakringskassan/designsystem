@@ -7141,6 +7141,7 @@ default: undefined;
 }>> & Readonly<{}>, {
 teleport: string | HTMLElement | undefined;
 overlay: boolean;
+show: boolean;
 delay: boolean;
 language: string;
 focusOnOverlay: boolean;
