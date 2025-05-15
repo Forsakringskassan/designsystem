@@ -71,6 +71,9 @@
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
+    "focus-indicator() mixin",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -78,15 +81,9 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
-    "focus-indicator() mixin",
     "i18next",
     "i18nextProvider",
     "I18nextProvider",
-    "EventBus",
-    "EventBus",
-    "Hjälpklasser",
-    "densify",
-    "Skärmläsare",
     "useResize() composable",
     "useModal() composable",
     "useDetailsPanel() composable",
@@ -100,6 +97,9 @@
     "includeItem",
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
+    "Hjälpklasser",
+    "densify",
+    "Skärmläsare",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -215,6 +215,10 @@
     "openModal",
     "formModal() function",
     "confirmModal() function",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -232,10 +236,6 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -556,6 +556,18 @@
       "terms": []
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": []
+    },
+    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": []
@@ -584,11 +596,6 @@
       ]
     },
     {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": []
-    },
-    {
       "url": "functions/i18next-translate/i18next.html",
       "title": "i18next",
       "terms": []
@@ -601,28 +608,6 @@
     {
       "url": "functions/i18next-translate/i18next-provider-interface.html",
       "title": "I18nextProvider",
-      "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/densify.html",
-      "title": "densify",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
       "terms": []
     },
     {
@@ -688,6 +673,21 @@
     {
       "url": "functions/functions/dispatch-component-validity-event.html",
       "title": "dispatchComponentValidityEvent",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/densify.html",
+      "title": "densify",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
       "terms": []
     },
     {
@@ -1090,6 +1090,26 @@
       "terms": []
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1172,26 +1192,6 @@
     {
       "url": "functions/functions/dom-functions/find-element-from-vue-ref.html",
       "title": "findElementFromVueRef",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
       "terms": []
     },
     {
@@ -1423,17 +1423,17 @@
     "69": 48,
     "70": 49,
     "71": 50,
-    "72": 51,
-    "73": 52,
-    "74": 53,
-    "75": 54,
+    "72": 50,
+    "73": 51,
+    "74": 52,
+    "75": 53,
     "76": 54,
-    "77": 54,
-    "78": 55,
+    "77": 55,
+    "78": 56,
     "79": 56,
-    "80": 57,
-    "81": 58,
-    "82": 59,
+    "80": 56,
+    "81": 57,
+    "82": 58,
     "83": 59,
     "84": 60,
     "85": 61,
