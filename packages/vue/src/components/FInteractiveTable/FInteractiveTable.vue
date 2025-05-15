@@ -13,6 +13,7 @@ import {
     getCurrentInstance,
     watch,
 } from "vue";
+import { findTabbableElements } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
 import { TableScroll, tableScrollClasses, itemEquals, includeItem, renderSlotText } from "../../utils";
 import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
@@ -45,6 +46,7 @@ const activeRow = ref<T | undefined>(undefined);
 const columns = ref<FTableColumnData[]>([]);
 const selectedRows = ref<T[]>([]) as Ref<T[]>;
 const tr = shallowRef<HTMLElement[]>([]);
+const trAll = shallowRef<HTMLElement[]>([]);
 const tbodyKey = ref(0);
 
 defineOptions({
@@ -231,6 +233,7 @@ const {
     getExpandableDescribedby,
     expandableRows,
     hasExpandableContent,
+    getExpandedIndex,
 } = expandableTable;
 
 const tbody = useTemplateRef<HTMLElement>("tbodyElement");
@@ -342,8 +345,8 @@ watch(
 );
 
 function updateTr(tbodyElement: HTMLElement): void {
-    const trElements = [].slice.call(tbodyElement.children) as HTMLElement[];
-    const trInteractableElements = trElements.filter((tr) => {
+    trAll.value = [].slice.call(tbodyElement.children) as HTMLElement[];
+    const trInteractableElements = trAll.value.filter((tr) => {
         return tr.tabIndex === 0;
     });
     tr.value = trInteractableElements;
@@ -364,15 +367,6 @@ onMounted(() => {
     registerCallbackAfterItemAdd(callbackAfterItemAdd);
     registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
 });
-
-function forceRepaintIE11(target: HTMLElement): void {
-    if (navigator.userAgent.includes("Trident")) {
-        target.style.display = "none";
-        /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, this function is probably not needed any longer */
-        target.offsetHeight;
-        target.style.removeProperty("display");
-    }
-}
 
 function isActive(row: T): boolean {
     if (!props.showActive) {
@@ -412,13 +406,7 @@ function activate(row: T, tr: HTMLElement | null): void {
         setActiveRow(row);
 
         if (tr) {
-            /* ie11: force focus on <tr> instead of <td> */
             tr.focus();
-
-            /* ie11 also needs to force repaint or the outline will not
-             * be rendered properly */
-            const td = tr.children[0] as HTMLElement;
-            forceRepaintIE11(td);
         }
     }
 }
@@ -517,14 +505,49 @@ function callbackBeforeItemDelete(item: T): void {
     if (internalRows.value.length === 0) {
         return;
     }
-    // Activate the item above the deleted one if it exists
-    let targetIndex = internalRows.value.indexOf(item) - 1;
-    if (targetIndex < 0 && internalRows.value.length > 1) {
-        targetIndex = 1;
-    } else if (targetIndex < 0) {
-        targetIndex = 0;
+
+    const index = internalRows.value.indexOf(item);
+    const target = getPreviousFocus(index) ?? getNextFocus(index);
+    if (target) {
+        target.focus();
     }
-    activate(internalRows.value[targetIndex], tr.value[targetIndex]);
+}
+
+function getPreviousFocus(currentIndex: number): HTMLElement | undefined {
+    const targetIndex = currentIndex - 1;
+    if (targetIndex < 0) {
+        return undefined;
+    }
+
+    const targetRow = tr.value[targetIndex];
+    if (!targetRow) {
+        return undefined;
+    }
+
+    const row = internalRows.value[targetIndex];
+    if (!isExpanded(row)) {
+        const tabbables = findTabbableElements(targetRow);
+        return tabbables[tabbables.length - 1];
+    }
+
+    // Get interactable in custom expandable rows, or parent row if none found.
+    const expandedIndex = getExpandedIndex(currentIndex, internalRows.value) - 1;
+    const { length } = expandableRows(row) as T[];
+    for (let i = 0; i <= length; i++) {
+        const targetExpandedRow = trAll.value[expandedIndex - i];
+        const tabbables = findTabbableElements(targetExpandedRow);
+        const target = tabbables[tabbables.length - 1];
+        if (target) {
+            return target;
+        }
+    }
+
+    return undefined;
+}
+
+function getNextFocus(currentIndex: number): HTMLElement | undefined {
+    const targetIndex = currentIndex + 1;
+    return tr.value[targetIndex];
 }
 
 function escapeNewlines(value: string): string {

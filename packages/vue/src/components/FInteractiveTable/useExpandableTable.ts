@@ -14,6 +14,7 @@ export interface ExpandableTable<T> {
     getExpandableDescribedby(row: T): string | undefined;
     expandableRows(row: T): T[] | undefined;
     hasExpandableContent(row: T): boolean;
+    getExpandedIndex(shallowIndex: number, rows: T[]): number;
 }
 
 type Emit<T> = ((evt: "expand", row: T) => void) &
@@ -114,6 +115,31 @@ export function useExpandableTable<T extends object>(
         return Boolean(expandableRows(row));
     }
 
+    /**
+     * Translate shallow row index to flattened row index including expandable rows.
+     */
+    function getExpandedIndex(shallowIndex: number, rows: T[]): number {
+        let expandedIndex = 0;
+
+        for (let i = 0; i < shallowIndex; i++) {
+            const row = rows[i];
+            expandedIndex++;
+
+            if (!hasExpandableContent(row)) {
+                continue;
+            }
+
+            const { length } = expandableRows(row) as T[];
+            if (length === 0) {
+                continue;
+            }
+
+            expandedIndex += length;
+        }
+
+        return expandedIndex;
+    }
+
     return {
         isExpandableTable,
         hasExpandableSlot,
@@ -124,5 +150,6 @@ export function useExpandableTable<T extends object>(
         getExpandableDescribedby,
         expandableRows,
         hasExpandableContent,
+        getExpandedIndex,
     };
 }
