@@ -26,11 +26,11 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderLiveExample.vue:FLoaderLiveExample-290ef4.js
+// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderLiveExample.vue:FLoaderLiveExample-4c506c.js
 import { defineComponent } from "vue";
 import { FLoader, FCheckboxField } from "@fkui/vue";
-import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode } from "vue";
+import { createElement, LiveExample } from "@forsakringskassan/docs-live-example";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString } from "vue";
 var exampleComponent = defineComponent({
   name: "FLoaderLiveExample",
   components: {
@@ -45,8 +45,13 @@ var exampleComponent = defineComponent({
       delay: false,
       customText: false,
       focusOnOverlay: true,
-      language: false
+      english: false
     };
+  },
+  computed: {
+    language() {
+      return this.english ? "en" : void 0;
+    }
   },
   watch: {
     overlay: {
@@ -60,7 +65,7 @@ var exampleComponent = defineComponent({
     language: {
       immediate: false,
       handler() {
-        if (this.language) {
+        if (this.english) {
           this.customText = false;
         }
       }
@@ -69,7 +74,7 @@ var exampleComponent = defineComponent({
       immediate: false,
       handler() {
         if (this.customText) {
-          this.language = false;
+          this.english = false;
         }
       }
     }
@@ -78,24 +83,6 @@ var exampleComponent = defineComponent({
     components() {
       return { FLoader };
     },
-    showLoader() {
-      return this.show ? "show" : "";
-    },
-    showOverlay() {
-      return this.overlay ? "overlay" : "";
-    },
-    showDelayed() {
-      return this.delay ? "delay" : "";
-    },
-    showCustomText() {
-      return this.customText ? "En alternativ text" : "";
-    },
-    showFocusOnOverlay() {
-      return this.focusOnOverlay ? "" : ':focusOnOverlay="false"';
-    },
-    useEnglish() {
-      return this.language ? 'language="en"' : "";
-    },
     toggleLoader() {
       this.show = true;
       setTimeout(() => {
@@ -103,19 +90,17 @@ var exampleComponent = defineComponent({
       }, this.loaderTime * 1e3);
     },
     template() {
-      return (
-        /* HTML */
-        `
-                <f-loader
-                    ${this.showLoader()}
-                    ${this.showOverlay()}
-                    ${this.showDelayed()}
-                    ${this.showFocusOnOverlay()}
-                    ${this.useEnglish()}
-                >
-                    ${this.showCustomText()}
-                </f-loader>
-            `
+      const { show, overlay, delay, focusOnOverlay, language } = this;
+      return createElement(
+        "f-loader",
+        {
+          show,
+          overlay,
+          delay,
+          language,
+          ":focusOnOverlay": focusOnOverlay ? void 0 : "false"
+        },
+        this.customText ? "En alternativ text" : ""
       );
     }
   }
@@ -151,8 +136,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
-        modelValue: _ctx.language,
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.language = $event),
+        modelValue: _ctx.english,
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.english = $event),
         value: true
       }, {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
@@ -184,14 +169,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
+      _createElementVNode("button", {
+        class: "button button--primary button--medium",
+        type: "button",
+        onClick: _cache[5] || (_cache[5] = ($event) => _ctx.toggleLoader())
+      }, " Visa "),
       _createElementVNode(
-        "button",
-        {
-          class: "button button--primary button--small",
-          type: "button",
-          onClick: _cache[5] || (_cache[5] = ($event) => _ctx.toggleLoader())
-        },
-        " Visa laddningsindikator i " + _toDisplayString(_ctx.loaderTime) + " sekunder ",
+        "p",
+        null,
+        "Laddningsindikatorn visas i " + _toDisplayString(_ctx.loaderTime) + " sekunder.",
         1
         /* TEXT */
       )
@@ -203,7 +189,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-290ef4"
+  selector: "#example-4c506c"
 });
 export {
   render
