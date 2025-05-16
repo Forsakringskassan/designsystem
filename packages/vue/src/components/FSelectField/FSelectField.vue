@@ -35,7 +35,7 @@ export default defineComponent({
          * @model
          */
         modelValue: {
-            type: [String, Number, Object, Array, Boolean],
+            type: [String, Number, Object, Array, Boolean, null],
             required: false,
             default: undefined,
         },
