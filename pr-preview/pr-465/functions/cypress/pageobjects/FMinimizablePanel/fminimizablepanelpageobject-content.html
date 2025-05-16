@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FMinimizablePanelPageObject: content() method - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../../assets/docs-4ee8dd.css"
+            href="../../../../assets/docs-02e47e.css"
             crossorigin
-            integrity="sha384-g+jzdd+EZGRw2cd1a83kBXqtw5rsY2qlvY/Ss/ECdU5GIyqaUiL5KkRRDMVYpYbG"
+            integrity="sha384-TnrtElxrWGd/aIplcpbN8+K5qa4zFV5OsIXZbsGYU3uhFAOCfk0UEu5v+KO8+GNg"
             
         />
         <link
             rel="stylesheet"
-            href="../../../../assets/docs-fkui-db8f73.css"
+            href="../../../../assets/docs-fkui-ca822f.css"
             crossorigin
-            integrity="sha384-nmlJw4relrEzR3O4jpr+1XQ0vLak83nXhuZcImPR08M8M1u5BVmouAhKdt3Rohp7"
+            integrity="sha384-4USfM65exrbr4Uh/15fnN5Grpx+EeU3rulpvjfOCRXmQY3K52vHrqw1Jx+5/DfNq"
             data-theme="fkui" disabled
         />
 
@@ -25,14 +25,14 @@
     "vue": "../../../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../../../assets/vendor-fkui-vue-7373e1.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-da6b25.js",
     "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../../../assets/vendor-fkui-vue-7373e1.js": "sha384-wW05rNt1aEMRNTWDfYznFnBvP09+9qgJlGm/0A+vapVKQtQbh19rnOhcHJDaOGmN",
+    "../../../../assets/vendor-fkui-vue-da6b25.js": "sha384-CQb7X1iCFOpV0CJEPuYsMgLWLaUN79E9eBuGmkcYbMsNHFOj8TYjQMANGMINbmnf",
     "../../../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-29be0b.json"
+            href="../../../../search-data-b53a17.json"
             as="fetch"
             crossorigin
-            integrity="sha384-rN3r1Hlps3bg+nA0FHBu8Uda6bjLsFZyqGIVLby+A9g9TCRNH03jNpi3nxNbnMel"
+            integrity="sha384-QWNiv0/ptS4xRyaCQaiJ6xrbLdsVka8QEgMd8yM7R6UsD3xt044exmOWYCD5BdaT"
             id="search-data"
         />
     </head>
@@ -1419,9 +1419,9 @@
                     data-language="vue"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-minimizable-panel</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ content }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>Lorem ipsum<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-minimizable-panel</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;layoutScope.left&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;panelScope&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;panelScope.content&quot;</span>&gt;</span>Lorem ipsum<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-minimizable-panel</span>&gt;</span></code></pre>
                 </div>
@@ -1460,9 +1460,9 @@ panel
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feature/semantic_tokens_disabled (<a href="https://github.com/Forsakringskassan/designsystem/commits/31de2631d11d5a152d893939c498af2d69826444">31de263</a>)<br />
+<div class="footer__right"><div class="version">feature/semantic_tokens_disabled (<a href="https://github.com/Forsakringskassan/designsystem/commits/e5a85784b69e18f1ac8b1f561c1904f368067ea6">e5a8578</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/465">PR 465</a><br />
-        2025-05-06 12:14
+        2025-05-16 09:37
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1474,7 +1474,7 @@ panel
     <dialog id="version-dialog">
         <div id="version-dialog-head">
             <h1>Välj version</h1>
-            <button type="button" class="button button--discrete button--discrete--black">
+            <button type="button" class="button button--tertiary button--tertiary--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
                     <use href="#f-icon-close"></use>
@@ -1575,10 +1575,10 @@ panel
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../../../assets/processors/selectable-version/select-version-910589.js"
+            src="../../../../assets/processors/selectable-version/select-version-edf3c8.js"
             type="module"
             crossorigin
-            integrity="sha384-I1UkV0jct1U2DK2sHeJaQT/Y/zs56PzTr8ov/aUSg8JBcBJtIOPYDvMy2o167CwS"
+            integrity="sha384-VhdMYAJTqJZibCyEGmjpDxP9nDkmjMHCl3skaxRRjneIqlcHrHgIZkgpTm1RM7jZ"
             
         ></script><script
             src="../../../../assets/main-0ec342.js"

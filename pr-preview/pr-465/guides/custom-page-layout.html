@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Egen layout till applikationsmall - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-4ee8dd.css"
+            href="../assets/docs-02e47e.css"
             crossorigin
-            integrity="sha384-g+jzdd+EZGRw2cd1a83kBXqtw5rsY2qlvY/Ss/ECdU5GIyqaUiL5KkRRDMVYpYbG"
+            integrity="sha384-TnrtElxrWGd/aIplcpbN8+K5qa4zFV5OsIXZbsGYU3uhFAOCfk0UEu5v+KO8+GNg"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-db8f73.css"
+            href="../assets/docs-fkui-ca822f.css"
             crossorigin
-            integrity="sha384-nmlJw4relrEzR3O4jpr+1XQ0vLak83nXhuZcImPR08M8M1u5BVmouAhKdt3Rohp7"
+            integrity="sha384-4USfM65exrbr4Uh/15fnN5Grpx+EeU3rulpvjfOCRXmQY3K52vHrqw1Jx+5/DfNq"
             data-theme="fkui" disabled
         />
 
@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-7373e1.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-da6b25.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../assets/vendor-fkui-vue-7373e1.js": "sha384-wW05rNt1aEMRNTWDfYznFnBvP09+9qgJlGm/0A+vapVKQtQbh19rnOhcHJDaOGmN",
+    "../assets/vendor-fkui-vue-da6b25.js": "sha384-CQb7X1iCFOpV0CJEPuYsMgLWLaUN79E9eBuGmkcYbMsNHFOj8TYjQMANGMINbmnf",
     "../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-29be0b.json"
+            href="../search-data-b53a17.json"
             as="fetch"
             crossorigin
-            integrity="sha384-rN3r1Hlps3bg+nA0FHBu8Uda6bjLsFZyqGIVLby+A9g9TCRNH03jNpi3nxNbnMel"
+            integrity="sha384-QWNiv0/ptS4xRyaCQaiJ6xrbLdsVka8QEgMd8yM7R6UsD3xt044exmOWYCD5BdaT"
             id="search-data"
         />
     </head>
@@ -406,10 +406,27 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <li><code>direction</code> talar om ifall ytan flödar horisontellt eller vertikalt.</li>
 <li><code>scroll</code> talar om ifall ytan ska scrolla (i den riktning som <code>direction</code> talar om).</li>
 </ul>
-<h2 id="positionering_och_storlek"><a class="header-anchor" href="#positionering_och_storlek">Positionering och storlek</a></h2><p class="docs-paragraph">För positionering och storlek används <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids">CSS grid</a> på <code>::part(grid name)</code> och kan se ut så här:</p>
+<p class="docs-paragraph">Typsäkra användning av den nya layouten genom att utöka interfacet <code>FPageLayoutSlotMapping</code>:</p>
 
                 <div
-                    id="example-8cd080"
+                    id="example-567e2a"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">declare</span> <span class="hljs-variable language_">module</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span> {
+    <span class="hljs-keyword">interface</span> <span class="hljs-title class_">FPageLayoutSlotMapping</span> {
+        <span class="hljs-string">&quot;my-custom&quot;</span>: [<span class="hljs-string">&quot;header&quot;</span>, <span class="hljs-string">&quot;toolbar&quot;</span>, <span class="hljs-string">&quot;sidebar&quot;</span>, <span class="hljs-string">&quot;content&quot;</span>, <span class="hljs-string">&quot;footer&quot;</span>];
+    }
+}
+</code></pre>
+                </div>
+            <h2 id="positionering_och_storlek"><a class="header-anchor" href="#positionering_och_storlek">Positionering och storlek</a></h2><p class="docs-paragraph">För positionering och storlek används <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids">CSS grid</a> på <code>::part(grid name)</code> och kan se ut så här:</p>
+
+                <div
+                    id="example-9fb1ea"
                     class="code-preview code-preview--default"
                     
                     
@@ -430,7 +447,7 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <h2 id="farger"><a class="header-anchor" href="#farger">Färger</a></h2><p class="docs-paragraph">Färg och bakgrundsfärg sätts med <code>::part(area name)</code>:</p>
 
                 <div
-                    id="example-475ba9"
+                    id="example-0ec313"
                     class="code-preview code-preview--default"
                     
                     
@@ -451,7 +468,7 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 <h2 id="anvand_eget_tema"><a class="header-anchor" href="#anvand_eget_tema">Använd eget tema</a></h2><p class="docs-paragraph">Slutligen används layouten genom att sätta det nya registrerade namnet som <code>layout</code> attributet samt implementera de ytor som definierats med hjälp av Vue slots.</p>
 
                 <div
-                    id="example-09b59c"
+                    id="example-9a5c43"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -459,16 +476,19 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-page-layout</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">&quot;my-custom&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span> [header] <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">sidebar</span>&gt;</span> [sidebar] <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">toolbar</span>&gt;</span> [toolbar] <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span> [content] <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span> [footer] <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ header, sidebar, toolbar, content, footer }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>[header]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;sidebar&quot;</span>&gt;</span>[sidebar]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;toolbar&quot;</span>&gt;</span>[toolbar]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>[content]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:slot</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>[footer]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-layout</span>&gt;</span>
 </code></pre>
                 </div>
             <h2 id="justerbara_ytor_och_paneler"><a class="header-anchor" href="#justerbara_ytor_och_paneler">Justerbara ytor och paneler</a></h2><p class="docs-paragraph">Komponenten <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> kan användas för att skapa en yta vars storlek kan justeras av slutanvändaren.</p>
 <p class="docs-paragraph">Använd <a href="../functions/functions/use-resize.html">useResize() composable</a> för att styra <a href="../components/page-layout/fresizepane.html"><code>FResizePane</code></a> om du skapar egna paneler.</p>
+<p class="docs-paragraph">Ska ytan inte vara justerbar så bör komponenten <a href="../components/page-layout/ffixedpane.html"><code>FFixedPane</code></a> användas när flera paneler ska befinna sig i samma yta.</p>
 
 
                     </div>
@@ -485,9 +505,9 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feature/semantic_tokens_disabled (<a href="https://github.com/Forsakringskassan/designsystem/commits/31de2631d11d5a152d893939c498af2d69826444">31de263</a>)<br />
+<div class="footer__right"><div class="version">feature/semantic_tokens_disabled (<a href="https://github.com/Forsakringskassan/designsystem/commits/e5a85784b69e18f1ac8b1f561c1904f368067ea6">e5a8578</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/465">PR 465</a><br />
-        2025-05-06 12:14
+        2025-05-16 09:37
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -499,7 +519,7 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
     <dialog id="version-dialog">
         <div id="version-dialog-head">
             <h1>Välj version</h1>
-            <button type="button" class="button button--discrete button--discrete--black">
+            <button type="button" class="button button--tertiary button--tertiary--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
                     <use href="#f-icon-close"></use>
@@ -600,10 +620,10 @@ Namnet som anges är vad som senare används i <code>layout</code>-propen till <
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-910589.js"
+            src="../assets/processors/selectable-version/select-version-edf3c8.js"
             type="module"
             crossorigin
-            integrity="sha384-I1UkV0jct1U2DK2sHeJaQT/Y/zs56PzTr8ov/aUSg8JBcBJtIOPYDvMy2o167CwS"
+            integrity="sha384-VhdMYAJTqJZibCyEGmjpDxP9nDkmjMHCl3skaxRRjneIqlcHrHgIZkgpTm1RM7jZ"
             
         ></script><script
             src="../assets/main-0ec342.js"
