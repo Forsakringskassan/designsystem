@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-5feb65.json"
+            href="../search-data-f76615.json"
             as="fetch"
             crossorigin
-            integrity="sha384-2ILjsyGEOmynVzoWzMXIqlqOVeVbR1urnE33+eKhUpOrF/GgAz16kLkCkUCm3OYh"
+            integrity="sha384-6K7MwX7gz09+vDzOgUijcFukgmAcLthPYGKnFOJjllsa36q8JgKaZvxvn5P+AR5G"
             id="search-data"
         />
     </head>
@@ -1069,7 +1069,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8d837714f2f6010bb3033e77ef183559a46b77e8/packages/vue/src/components/FIcon/FIcon.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/dd35d87bf99a521fb5f7149524315c38ef5e6c32/packages/vue/src/components/FIcon/FIcon.vue">
                 FIcon
             </a>
             
@@ -1618,7 +1618,7 @@ interface <span class="hljs-title class_">IconEntry</span> {
 
 <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">importIcons</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">IconPackage</span>&gt; {
     <span class="hljs-comment">/* @ts-expect-error technical debt: the module target supports this in practice but it seems to pick up the wrong config, need to investigate further */</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-title function_">importDefault</span>(<span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">DOCS_ICON_LIB</span>)); <span class="hljs-comment">// eslint-disable-line no-undef -- for similar reasons, this script is primarly for browser but `process.env` will be available during compilation</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">importDefault</span>(<span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">DOCS_ICON_LIB</span>));
 }
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">decamelize</span>(<span class="hljs-params">value: string</span>): string {
@@ -1815,9 +1815,9 @@ interface <span class="hljs-title class_">IconEntry</span> {
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/8d837714f2f6010bb3033e77ef183559a46b77e8">8d83771</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/dd35d87bf99a521fb5f7149524315c38ef5e6c32">dd35d87</a>)<br />
         
-        2025-05-16 12:19
+        2025-05-16 19:55
 </div>
 <div class="toolbar__item">
     <form id="version">
