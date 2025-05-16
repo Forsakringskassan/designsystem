@@ -12340,7 +12340,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | ArrayConstructor | NumberConstructor)[];
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | ArrayConstructor | NumberConstructor | null)[];
 required: false;
 default: undefined;
 };
@@ -12367,7 +12367,7 @@ labelClass(): string;
 labelWrapperClass(): string | undefined;
 selectWrapperClass(): string | undefined;
 vModel: {
-get(): string | number | boolean | unknown[] | Record<string, any> | undefined;
+get(): string | number | boolean | unknown[] | Record<string, any> | null | undefined;
 set(value: unknown): void;
 };
 }, {
@@ -12384,7 +12384,7 @@ required: false;
 default: boolean;
 };
 modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | ArrayConstructor | NumberConstructor)[];
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | ArrayConstructor | NumberConstructor | null)[];
 required: false;
 default: undefined;
 };
@@ -12403,7 +12403,7 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
-modelValue: string | number | boolean | unknown[] | Record<string, any>;
+modelValue: string | number | boolean | unknown[] | Record<string, any> | null;
 inline: boolean;
 labelWidth: string;
 selectWidth: string;
