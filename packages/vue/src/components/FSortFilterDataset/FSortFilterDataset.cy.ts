@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent, type PropType } from "vue";
 import { FInteractiveTable } from "../FInteractiveTable";
 import { FTableColumn } from "../FTableColumn";
 import {
@@ -29,6 +29,7 @@ const TestComponent = defineComponent({
             data-test="sort-filter-dataset-example"
             :data="items"
             :sortable-attributes="sortableAttributes"
+            :filter-attributes="filterAttributes"
             v-bind="showHideAttrs"
         >
             <template #header="{ slotClass }">
@@ -83,6 +84,11 @@ const TestComponent = defineComponent({
             type: Boolean,
             required: false,
             default: true,
+        },
+        filterAttributes: {
+            type: Array as PropType<string[]>,
+            required: false,
+            default: undefined,
         },
     },
     data() {
@@ -218,6 +224,29 @@ describe("filter", () => {
         sortFilterDataset.textField.input().type(" 21");
         assertTable(["aba"], COLUMN_TEXT);
         assertTable(["2021"], COLUMN_YEAR);
+    });
+
+    it("should filter by any attribute if filterAttributes is left empty", () => {
+        cy.mount(TestComponent);
+        // Filter by id 4
+        sortFilterDataset.textField.input().type("4");
+        assertTable(["bbb"], COLUMN_TEXT);
+        assertTable(["2023"], COLUMN_YEAR);
+    });
+
+    it("should filter by attributes in filterAttributes", () => {
+        cy.mount(TestComponent, { props: { filterAttributes: ["text"] } });
+        sortFilterDataset.textField.input().type("20");
+        assertTable([], COLUMN_TEXT);
+        sortFilterDataset.textField.input().clear();
+        sortFilterDataset.textField.input().type("c");
+        assertTable(["aAc"], COLUMN_TEXT);
+    });
+
+    it("should not filter by any attribute if filterAttributes is empty", () => {
+        cy.mount(TestComponent, { props: { filterAttributes: [] } });
+        sortFilterDataset.textField.input().type("20");
+        assertTable([], COLUMN_TEXT);
     });
 });
 
