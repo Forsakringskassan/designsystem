@@ -320,47 +320,27 @@ $button--tertiary: (
         &--black {
             color: $button-tertiary-black-color-text-default;
 
-            & > .button__icon {
-                color: $button-tertiary-black-icon-color-content-default;
-            }
-
             &:hover,
             &:active,
             &:focus {
                 color: $button-tertiary-black-color-text-focus;
-
-                & > .button__icon {
-                    color: $button-tertiary-black-icon-color-content-focus;
-                }
             }
         }
 
         &--inverted {
             color: $button-tertiary-inverted-color-text-default;
 
-            & > .button__icon {
-                color: $button-tertiary-inverted-icon-color-content-default;
-            }
-
             &:hover,
             &:active,
             &:focus {
                 color: $button-tertiary-inverted-color-text-focus;
                 background-color: $button-tertiary-inverted-color-background-focus;
-
-                & > .button__icon {
-                    color: $button-tertiary-inverted-icon-color-content-focus;
-                }
             }
 
             &:disabled {
                 color: $button-tertiary-inverted-color-text-disabled;
                 border-width: 0;
                 background-color: $button-tertiary-inverted-color-background-disabled;
-
-                & > .button__icon {
-                    color: $button-tertiary-inverted-icon-color-content-disabled;
-                }
             }
         }
 
