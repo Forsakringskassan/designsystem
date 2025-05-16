@@ -1631,6 +1631,7 @@ import { createApp, h } from "vue";
 import {
   ErrorPlugin,
   FErrorHandlingApp,
+  FormatPlugin,
   TestPlugin,
   TranslationPlugin,
   ValidationPlugin,
@@ -1651,6 +1652,7 @@ function setup(options) {
   app.use(ValidationPlugin);
   app.use(TestPlugin);
   app.use(TranslationPlugin);
+  app.use(FormatPlugin);
   app.mount(selector);
 }
 
@@ -2184,6 +2186,21 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
 // packages/vue/src/plugins/error/FErrorHandlingApp.vue
 FErrorHandlingApp_default.render = render5;
 FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
+
+// packages/vue/src/plugins/format/formatters.ts
+import { DateFormat, FDate as FDate2 } from "@fkui/date";
+import {
+  formatNumber as numberFormater,
+  parseBankgiro,
+  parseDate,
+  parseOrganisationsnummer,
+  parsePersonnummer,
+  parsePlusgiro,
+  parsePostalCode
+} from "@fkui/logic";
+
+// packages/vue/src/plugins/format/is-date-range.ts
+import { FDate } from "@fkui/date";
 
 // packages/vue/src/components/FModal/sizes.ts
 var sizes = [

@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Testverktyg - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-7bb5b7.css"
+            href="../../assets/docs-b648e6.css"
             crossorigin
-            integrity="sha384-zkpVDJCyRHaNPgo8932DqDY7D67iG9jT90dnuGabCI7LMEhemljeGu7APE+gPIlv"
+            integrity="sha384-HrY96xYZqEvXWLtmOU+Xh5Ufg+pKslOBvbCTbZekd7F+MFmKWvYngCIG5g8Fuk+H"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-4ecb6d.css"
+            href="../../assets/docs-fkui-ec7d63.css"
             crossorigin
-            integrity="sha384-CC6Vb3lD+/MxRQkRAEekVk7Fo0SZFS6JwkUWKQWZwFuguHLB6tQ0+3tFeeqDSTwr"
+            integrity="sha384-0uebXW3LYLMKttDhGsVuOyaM3wwefRa31iELbGpIUJ/hotD4wjzC4yVl9zX1u5JU"
             data-theme="fkui" disabled
         />
 
@@ -25,22 +25,22 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-1b0f8b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-379b19.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-1b0f8b.js": "sha384-R4afTVU+05v6EzmESqRA1J3FyG+2UZq68gejL5pQ3+FeHC5eJAPQgxUc2L96Hjpe",
+    "../../assets/vendor-fkui-vue-379b19.js": "sha384-fOamcURrhGFagt2ueM5Jrgvm5EdhsmwGIc4p82FyB37R9xVWb7JX0X7X7eJedQ10",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
         </script><script
-            src="../../assets/bootstrap-956ec3.js"
+            src="../../assets/bootstrap-5b0e6e.js"
             
             crossorigin
-            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            integrity="sha384-kGP2A4LFI4CNwztBKqOla524cwTlhYuNFsx/6foX7fdioP3nxHwqF6vcvJFMia/Q"
             
         ></script><script>
     (() => {
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-f416bf.json"
+            href="../../search-data-d1d45b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-sdncv6VXJnvkysYez0UbpI6zIl5DlIFdulzWNYGRMHAumEynZulLAQgvxBrrdZFE"
+            integrity="sha384-dCQjX7AN/rSsDigXkOwvcxSsLHc4AzOI0IrfPQ2ozE0SEnZrcSHaJlq1mC0Ic0y+"
             id="search-data"
         />
     </head>
@@ -258,6 +258,17 @@
             
         >
             Ta fram applikation
+        </a>
+    </li><li class="link ">
+        <a
+            href="../use-design-system/translate-text.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/translate-text.html"
+            
+        >
+            Anpassa och översätt text
         </a>
     </li><li class="link ">
         <a
@@ -533,26 +544,44 @@
                     </div>
                     
 
-                    <div id="content"><h2 id="testfall"><a class="header-anchor" href="#testfall">Testfall</a></h2><p class="docs-paragraph">Testfall i FKUI implementeras med två verktyg:</p><ul>
-<li><p class="docs-paragraph">Jest för enhetstester</p></li>
-<li><p class="docs-paragraph">Cypress för komponenttester och E2E-tester</p></li>
+                    <div id="content"><h2 id="testfall"><a class="header-anchor" href="#testfall">Testfall</a></h2><p class="docs-paragraph">Testfall i FKUI implementeras med två verktyg:</p>
+<ul>
+<li>Jest för enhetstester</li>
+<li>Cypress för komponenttester och E2E-tester</li>
 </ul>
-<p class="docs-paragraph">Som en tumregel använder vi enhetstester för att testa logik, komponenttester för att testa interaktion och i undantagsfall E2E-tester för att testa integration.</p><p class="docs-paragraph">Samtliga tester körs från CI-miljö vid branch-byggen.
-PR-byggen kör inte komponenttester eller E2E-tester.</p><p class="docs-paragraph">Läs mer om <a href="./testing.html">att skriva automatiska testfall</a>.</p><h3 id="jest"><a class="header-anchor" href="#jest">Jest</a></h3><p class="docs-paragraph">Paket utan ramverksspecifika komponenter samt logik för Vue-komponenter testas med Jest.
-Vi testar inte interaktion med komponenter med Jest.</p><p class="docs-paragraph">Enhetstester placeras i samma katalog som filen som ska testas och använder <code>${filename}.spec.ts</code> som filnamn.</p><p class="docs-paragraph">För Jest finns två förinställda konfigurationer:</p><ul>
-<li><p class="docs-paragraph"><a href="https://github.com/Forsakringskassan/jest-config/tree/main/packages/jest-config"><code>@forsakringskassan/jest-config</code></a>: för paket som är skriva i ren typescript, ej ramverksspecifikt.</p></li>
-<li><p class="docs-paragraph"><a href="https://github.com/Forsakringskassan/jest-config/tree/main/packages/jest-config-vue"><code>@forsakringskassan/jest-config-vue</code></a>: för paket med Vue-komponenter.</p></li>
+<p class="docs-paragraph">Som en tumregel använder vi enhetstester för att testa logik, komponenttester för att testa interaktion och i undantagsfall E2E-tester för att testa integration.</p>
+<p class="docs-paragraph">Samtliga tester körs från CI-miljö vid branch-byggen.
+PR-byggen kör inte komponenttester eller E2E-tester.</p>
+<p class="docs-paragraph">Läs mer om <a href="./testing.html">att skriva automatiska testfall</a>.</p>
+<h3 id="jest"><a class="header-anchor" href="#jest">Jest</a></h3><p class="docs-paragraph">Paket utan ramverksspecifika komponenter samt logik för Vue-komponenter testas med Jest.
+Vi testar inte interaktion med komponenter med Jest.</p>
+<p class="docs-paragraph">Enhetstester placeras i samma katalog som filen som ska testas och använder <code>${filename}.spec.ts</code> som filnamn.</p>
+<p class="docs-paragraph">För Jest finns två förinställda konfigurationer:</p>
+<ul>
+<li><a href="https://github.com/Forsakringskassan/jest-config/tree/main/packages/jest-config"><code>@forsakringskassan/jest-config</code></a>: för paket som är skriva i ren typescript, ej ramverksspecifikt.</li>
+<li><a href="https://github.com/Forsakringskassan/jest-config/tree/main/packages/jest-config-vue"><code>@forsakringskassan/jest-config-vue</code></a>: för paket med Vue-komponenter.</li>
 </ul>
 <p class="docs-paragraph">Båda konfigurationer genererar coverage och testresultat i maskinläsbart format i <code>coverage</code> samt <code>test-results</code> katalogerna.
-CI-miljö läser in samtliga filer.</p><p class="docs-paragraph">Jest anropas från respektive paket via <code>test</code>-scriptet.
-<code>test</code>-scriptet i root anropar i sin tur <code>test</code> i respektive paket.</p><p class="docs-paragraph">Extra hjälpfunktioner finns i ett stödpaket <a href="../../functions/test-utils">Om testverktyg</a> och kan nyttjas både av en applikationsutvecklare och den som bidrar till FKUI.</p><h3 id="komponenttester_cypress"><a class="header-anchor" href="#komponenttester_cypress">Komponenttester (Cypress)</a></h3><p class="docs-paragraph">För paket med Vue-komponenter testar vi interaktion och utseende av komponenten med Cypress Komponenttest.</p><p class="docs-paragraph">Komponenttester placeras i samma katalog som komponenten för komponenten och använder <code>${component}.cy.ts</code> som filnamn.</p><p class="docs-paragraph">Varje komponent bör ha minst ett komponenttest som testar det visuella utseendet i form av ett screenshot sk &quot;screenshottester&quot;
-Vi använder oss av <code>@forsakringskassan/cypress-visual-regression</code> för att skriva tester med skärmdumpar: visuell regressionstest.</p><p class="docs-paragraph">Läs mer om [screenshottester][testning].</p><p class="docs-paragraph">Cypress är konfigurerat i rootens <code>cypress.config.ts</code> och anropas direkt från root med <code>npm exec cypress open</code> (headed) alternativt <code>npm exec cypress run</code> (headless).</p><p class="docs-paragraph">Cypress är konfigurerat med följande plugins:</p><ul>
-<li><p class="docs-paragraph"><code>@forsakringskassan/cypress-axe</code> för tillgänglighetstester med Axe.</p></li>
-<li><p class="docs-paragraph"><code>@forsakringskassan/cypress-visual-regression</code> för screenshottester (visuel regression).</p></li>
-<li><p class="docs-paragraph"><code>cypress-html-validate</code> för HTML validering.</p></li>
+CI-miljö läser in samtliga filer.</p>
+<p class="docs-paragraph">Jest anropas från respektive paket via <code>test</code>-scriptet.
+<code>test</code>-scriptet i root anropar i sin tur <code>test</code> i respektive paket.</p>
+<p class="docs-paragraph">Extra hjälpfunktioner finns i ett stödpaket <a href="../../functions/test-utils">Om testverktyg</a> och kan nyttjas både av en applikationsutvecklare och den som bidrar till FKUI.</p>
+<h3 id="komponenttester_cypress"><a class="header-anchor" href="#komponenttester_cypress">Komponenttester (Cypress)</a></h3><p class="docs-paragraph">För paket med Vue-komponenter testar vi interaktion och utseende av komponenten med Cypress Komponenttest.</p>
+<p class="docs-paragraph">Komponenttester placeras i samma katalog som komponenten för komponenten och använder <code>${component}.cy.ts</code> som filnamn.</p>
+<p class="docs-paragraph">Varje komponent bör ha minst ett komponenttest som testar det visuella utseendet i form av ett screenshot sk &quot;screenshottester&quot;
+Vi använder oss av <code>@forsakringskassan/cypress-visual-regression</code> för att skriva tester med skärmdumpar: visuell regressionstest.</p>
+<p class="docs-paragraph">Läs mer om [screenshottester][testning].</p>
+<p class="docs-paragraph">Cypress är konfigurerat i rootens <code>cypress.config.ts</code> och anropas direkt från root med <code>npm exec cypress open</code> (headed) alternativt <code>npm exec cypress run</code> (headless).</p>
+<p class="docs-paragraph">Cypress är konfigurerat med följande plugins:</p>
+<ul>
+<li><code>@forsakringskassan/cypress-axe</code> för tillgänglighetstester med Axe.</li>
+<li><code>@forsakringskassan/cypress-visual-regression</code> för screenshottester (visuel regression).</li>
+<li><code>cypress-html-validate</code> för HTML validering.</li>
 </ul>
 <p class="docs-paragraph">Konfigurationen genererar testresultat i maskinläsbart format i <code>test-results</code> katalogen.
-CI-miljö läser in filen.</p><p class="docs-paragraph"><code>tsconfig.json</code> i respektive paket med Cypress komponenttester pekar ut en separat <code>tsconfig.cypress.json</code> med specifik typescript-konfiguration för Cypress:</p>
+CI-miljö läser in filen.</p>
+<p class="docs-paragraph"><code>tsconfig.json</code> i respektive paket med Cypress komponenttester pekar ut en separat <code>tsconfig.cypress.json</code> med specifik typescript-konfiguration för Cypress:</p>
+
                 <div
                     id="example-3f39b1"
                     class="code-preview code-preview--default"
@@ -576,8 +605,11 @@ CI-miljö läser in filen.</p><p class="docs-paragraph"><code>tsconfig.json</cod
 <span class="hljs-punctuation">}</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Läs mer om <a href="#tsconfig-json">tsconfig.json</a>.</p><h3 id="e2e_cypress"><a class="header-anchor" href="#e2e_cypress">E2E (Cypress)</a></h3><p class="docs-paragraph">I undantagsfall kan du använda E2E-tester om ett större sammanhang ska testas.
-E2E-tester kör mot den genererade dokumentationen och kräver att den byggts och startats som en separat process.</p><p class="docs-paragraph">För att bygga och starta dokumentation:</p>
+            <p class="docs-paragraph">Läs mer om <a href="#tsconfig-json">tsconfig.json</a>.</p>
+<h3 id="e2e_cypress"><a class="header-anchor" href="#e2e_cypress">E2E (Cypress)</a></h3><p class="docs-paragraph">I undantagsfall kan du använda E2E-tester om ett större sammanhang ska testas.
+E2E-tester kör mot den genererade dokumentationen och kräver att den byggts och startats som en separat process.</p>
+<p class="docs-paragraph">För att bygga och starta dokumentation:</p>
+
                 <div
                     id="example-b17142"
                     class="code-preview code-preview--default"
@@ -592,6 +624,7 @@ npm start
 </code></pre>
                 </div>
             <p class="docs-paragraph">Därefter kan du starta E2E-tester i en annan terminal:</p>
+
                 <div
                     id="example-6d51d8"
                     class="code-preview code-preview--default"
@@ -603,49 +636,70 @@ npm start
                     <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm <span class="hljs-built_in">exec</span> cypress open
 </code></pre>
                 </div>
-            <p class="docs-paragraph">E2E-tester ska endast användas som en sista utväg.</p><p class="docs-paragraph">För konfiguration se <a href="#komponenttester_cypress">komponenttester</a>.</p><h2 id="statisk_kodanalys_och_lintning"><a class="header-anchor" href="#statisk_kodanalys_och_lintning">Statisk kodanalys och lintning</a></h2><p class="docs-paragraph">FKUI använder flera verktyg för statisk kodanalys och lintning:</p><ul>
-<li><p class="docs-paragraph">Prettier för att formatera kod.</p></li>
-<li><p class="docs-paragraph">ESLint för lintning av javascript-, typescript- och Vue-filer.</p></li>
-<li><p class="docs-paragraph">HTML-Validate för validering och analys av HTML i komponenter och exempel.</p></li>
-<li><p class="docs-paragraph">Stylelint för lintning av css- och sass-filer.</p></li>
+            <p class="docs-paragraph">E2E-tester ska endast användas som en sista utväg.</p>
+<p class="docs-paragraph">För konfiguration se <a href="#komponenttester_cypress">komponenttester</a>.</p>
+<h2 id="statisk_kodanalys_och_lintning"><a class="header-anchor" href="#statisk_kodanalys_och_lintning">Statisk kodanalys och lintning</a></h2><p class="docs-paragraph">FKUI använder flera verktyg för statisk kodanalys och lintning:</p>
+<ul>
+<li>Prettier för att formatera kod.</li>
+<li>ESLint för lintning av javascript-, typescript- och Vue-filer.</li>
+<li>HTML-Validate för validering och analys av HTML i komponenter och exempel.</li>
+<li>Stylelint för lintning av css- och sass-filer.</li>
 </ul>
 <p class="docs-paragraph">Samtliga verktyg körs och är konfigurerade från root men i undantagsfall konfigureras verktygen om i respektive paket.
-Flera verktyg använder färdiga mallar för sin konfiguration, se respektive konfigurationsfil och dokumentation för detaljer.</p><p class="docs-paragraph">Vid commit anropas både Prettier och ESLint via husky (konfigurerat i <code>.husky/pre-commit</code>).</p><h3 id="eslint"><a class="header-anchor" href="#eslint">ESLint</a></h3>
+Flera verktyg använder färdiga mallar för sin konfiguration, se respektive konfigurationsfil och dokumentation för detaljer.</p>
+<p class="docs-paragraph">Vid commit anropas både Prettier och ESLint via husky (konfigurerat i <code>.husky/pre-commit</code>).</p>
+<h3 id="eslint"><a class="header-anchor" href="#eslint">ESLint</a></h3>
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph">Ej migrerat till Eslint v9 och flat config!</p>
+
             </div>
-        <p class="docs-paragraph">ESLint körs på alla källkodsfiler i repository.</p><p class="docs-paragraph">Använder <a href="https://github.com/Forsakringskassan/eslint-config"><code>@forsakringskassan/eslint-config</code></a> och tillhörande paket.
-Konfiguration hittas i <code>.eslintrc.cjs</code> samt <code>.eslintignore</code>.</p><p class="docs-paragraph">Utöver standardkonfigurationen så är exempel och testfall konfigurerade med en snällare konfiguration.</p>
+        <p class="docs-paragraph">ESLint körs på alla källkodsfiler i repository.</p>
+<p class="docs-paragraph">Använder <a href="https://github.com/Forsakringskassan/eslint-config"><code>@forsakringskassan/eslint-config</code></a> och tillhörande paket.
+Konfiguration hittas i <code>.eslintrc.cjs</code> samt <code>.eslintignore</code>.</p>
+<p class="docs-paragraph">Utöver standardkonfigurationen så är exempel och testfall konfigurerade med en snällare konfiguration.</p>
+
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph">I undantagsfall finns <code>.eslintrc.*</code> filer i underkataloger.
 Det är kodskuld som bör migreras.</p>
+
             </div>
-        <h3 id="prettier"><a class="header-anchor" href="#prettier">Prettier</a></h3><p class="docs-paragraph">Prettier körs på alla filer i repository.</p><p class="docs-paragraph">Använder <a href="https://github.com/Forsakringskassan/prettier-config"><code>@forsakringskassan/prettier-config</code></a>.
-Konfiguration hittas i <code>package.json</code> samt <code>.prettierignore</code>.</p><h3 id="html_validate"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><p class="docs-paragraph">Körs på alla källkodsfiler och exempel i repository, vid Cypress komponenttester och E2E samt på den genererade dokumentationen i <code>public</code> katalogen.</p><p class="docs-paragraph">Konfigurerat i:</p><ul>
-<li><p class="docs-paragraph"><code>.htmlvalidate.json</code> för källkodsfiler och exempel.</p></li>
-<li><p class="docs-paragraph"><code>.htmlvalidate-public.js</code> för genererad dokumentation.</p></li>
-<li><p class="docs-paragraph"><code>cypress.config.ts</code> för Cypress.</p></li>
+        <h3 id="prettier"><a class="header-anchor" href="#prettier">Prettier</a></h3><p class="docs-paragraph">Prettier körs på alla filer i repository.</p>
+<p class="docs-paragraph">Använder <a href="https://github.com/Forsakringskassan/prettier-config"><code>@forsakringskassan/prettier-config</code></a>.
+Konfiguration hittas i <code>package.json</code> samt <code>.prettierignore</code>.</p>
+<h3 id="html_validate"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><p class="docs-paragraph">Körs på alla källkodsfiler och exempel i repository, vid Cypress komponenttester och E2E samt på den genererade dokumentationen i <code>public</code> katalogen.</p>
+<p class="docs-paragraph">Konfigurerat i:</p>
+<ul>
+<li><code>.htmlvalidate.json</code> för källkodsfiler och exempel.</li>
+<li><code>.htmlvalidate-public.js</code> för genererad dokumentation.</li>
+<li><code>cypress.config.ts</code> för Cypress.</li>
 </ul>
-<p class="docs-paragraph">Använder följande plugins:</p><ul>
-<li><p class="docs-paragraph"><a href="https://gitlab.com/html-validate/html-validate-vue"><code>html-validate-vue</code></a> för <code>*.vue</code>.</p></li>
-<li><p class="docs-paragraph"><a href="https://github.com/OlofFredriksson/html-validate-markdown"><code>html-validate-markdown</code></a> för <code>*.md</code>.</p></li>
-<li><p class="docs-paragraph"><code>@fkui/vue/htmlvalidate</code> för FKUI-specifika regler och konfigurationer.</p></li>
+<p class="docs-paragraph">Använder följande plugins:</p>
+<ul>
+<li><a href="https://gitlab.com/html-validate/html-validate-vue"><code>html-validate-vue</code></a> för <code>*.vue</code>.</li>
+<li><a href="https://github.com/OlofFredriksson/html-validate-markdown"><code>html-validate-markdown</code></a> för <code>*.md</code>.</li>
+<li><code>@fkui/vue/htmlvalidate</code> för FKUI-specifika regler och konfigurationer.</li>
 </ul>
 <p class="docs-paragraph">Utöver konfiguration så levererar <code>@fkui/vue</code> en rekommenderad html-validate plugin.</p>
+
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph">Teknisk skuld: html-validate konfiguration från <code>@fkui/vue/htmlvalidate</code> är odokumenterad!</p>
+
             </div>
         <h3 id="stylelint"><a class="header-anchor" href="#stylelint">Stylelint</a></h3><p class="docs-paragraph">Använder <a href="https://github.com/Forsakringskassan/stylelint-config"><code>@forsakringskassan/stylelint-config</code></a>.
-Konfiguration hittas i <code>package.json</code>.</p><p class="docs-paragraph">Utöver standardkonfiguration så levererar <code>@fkui/design</code> en rekommenderad stylelint-konfiguration.</p>
+Konfiguration hittas i <code>package.json</code>.</p>
+<p class="docs-paragraph">Utöver standardkonfiguration så levererar <code>@fkui/design</code> en rekommenderad stylelint-konfiguration.</p>
+
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph">Teknisk skuld: stylelint konfiguration från <code>@fkui/design/stylelint</code> är odokumenterad!</p>
+
             </div>
         <h3 id="pnr_scanner"><a class="header-anchor" href="#pnr_scanner">pnr-scanner</a></h3><p class="docs-paragraph">Från CI miljö anropas <code>pnr-scanner</code> som söker igenom repository efter personnummer.
 Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/portal/apier-och-oppna-data/utvecklarportalen/oppetdata/Test%C2%AD%C2%ADpersonnummer">Skatteverkets resurs för Testpersonnummer</a> tillåts.</p>
+
 
                     </div>
                 </main>
@@ -661,9 +715,9 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">fix/sfkui-5466 (<a href="https://github.com/Forsakringskassan/designsystem/commits/960686cf70dff396a6ea8ac04fa16f731d6ec57b">960686c</a>)<br />
+<div class="footer__right"><div class="version">fix/sfkui-5466 (<a href="https://github.com/Forsakringskassan/designsystem/commits/0e2ef5febf158429ab3766001573a7d5901b7555">0e2ef5f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/447">PR 447</a><br />
-        2025-04-23 09:41
+        2025-05-16 08:02
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -675,7 +729,7 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
     <dialog id="version-dialog">
         <div id="version-dialog-head">
             <h1>Välj version</h1>
-            <button type="button" class="button button--discrete button--discrete--black">
+            <button type="button" class="button button--tertiary button--tertiary--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
                     <use href="#f-icon-close"></use>
@@ -770,22 +824,22 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../../assets/processors/motd/index-fd9bb8.js"
+            src="../../assets/processors/motd/index-26ba41.js"
             type="module"
             crossorigin
-            integrity="sha384-TixOowzXTm4QA+3WSGv0y/jt+s1AYSbboaZyhkFFYeaOUX450idxVUJ8Ubs+Vd8J"
+            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-aad26b.js"
+            src="../../assets/processors/selectable-version/select-version-edf3c8.js"
             type="module"
             crossorigin
-            integrity="sha384-lxddh0g7aHU1xGuYnECbqbelJsLEZqpmkLjDfFXJKQhFKW8a00hmCAKOAvqueJVQ"
+            integrity="sha384-VhdMYAJTqJZibCyEGmjpDxP9nDkmjMHCl3skaxRRjneIqlcHrHgIZkgpTm1RM7jZ"
             
         ></script><script
-            src="../../assets/main-a45256.js"
+            src="../../assets/main-0ec342.js"
             type="module"
             crossorigin
-            integrity="sha384-RLNafEBIyx72ArGGgrfZ/FyRzG+YZ60+eK5p0X64Je8WYohzWwiKzl6ZlfmUXq55"
+            integrity="sha384-024ARbIkk+36wQRMNqANavYck/wi86OjA7OQfU3szttx8PSUfCLc+u90c5D34iPZ"
             
         ></script>
     </body>
