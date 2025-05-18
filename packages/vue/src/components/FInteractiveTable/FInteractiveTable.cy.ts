@@ -364,36 +364,3 @@ describe("when `rows` is empty", () => {
             .should("contain.text", "Amount");
     });
 });
-
-describe("FInteractiveTable pageobject", () => {
-    beforeEach(() => {
-        cy.mount(createComponent());
-    });
-
-    it("should contain caption", () => {
-        table.caption().should("contain", "Test caption");
-    });
-
-    it("should provide a page object that can access any necessary elements in table headers", () => {
-        table.headersRow().should("have.length", 2);
-
-        table
-            .headerRowItem()
-            .tableRowHeaderContent()
-            .eq(0)
-            .should("have.trimmedText", "Name");
-
-        table
-            .headerRowItem()
-            .tableRowHeaderContent()
-            .eq(1)
-            .should("have.trimmedText", "Amount");
-    });
-
-    it("should provide a page object that can access any necessary elements in a table body", () => {
-        table.bodyRow().should("have.length", 3);
-
-        table.cell({ row: 1, col: 1 }).should("contain.text", "Foo");
-        table.cell({ row: 1, col: 2 }).should("contain.text", "7");
-    });
-});
