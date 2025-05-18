@@ -38,7 +38,7 @@ var metadata_default = {
       "name": "--fkds-color-text-primary",
       "value": "#1b1e23",
       "palette": "fk-black-100",
-      "comment": "Standard text f\xE4rg"
+      "comment": null
     },
     {
       "name": "--fkds-color-text-secondary",
@@ -50,7 +50,7 @@ var metadata_default = {
       "name": "--fkds-color-text-inverted",
       "value": "#ffffff",
       "palette": "white-100",
-      "comment": "Inverterad text f\xE4rg"
+      "comment": null
     },
     {
       "name": "--fkds-color-text-disabled",
@@ -110,6 +110,12 @@ var metadata_default = {
       "name": "--fkds-color-border-weak",
       "value": "#ddddde",
       "palette": "fk-black-15",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-border-disabled",
+      "value": "#8d8e91",
+      "palette": "fk-black-50",
       "comment": null
     },
     {
@@ -185,12 +191,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-color-action-text-disabled",
-      "value": "#8d8e91",
-      "palette": "fk-black-50",
-      "comment": null
-    },
-    {
       "name": "--fkds-color-action-background-primary-default",
       "value": "#4a52b6",
       "palette": "bluebell-100",
@@ -239,36 +239,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-color-action-background-accent-default",
-      "value": "#116a3e",
-      "palette": "green-a-100",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-accent-hover",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-accent-active",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-accent-focus",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-disabled",
-      "value": "#f4f4f4",
-      "palette": "fk-black-5",
-      "comment": null
-    },
-    {
       "name": "--fkds-color-action-border-primary-default",
       "value": "#4a52b6",
       "palette": "bluebell-100",
@@ -290,36 +260,6 @@ var metadata_default = {
       "name": "--fkds-color-action-border-primary-focus",
       "value": "#3b4292",
       "palette": "bluebell-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-accent-default",
-      "value": "#116a3e",
-      "palette": "green-a-100",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-accent-hover",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-accent-active",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-accent-focus",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-disabled",
-      "value": "#8d8e91",
-      "palette": "fk-black-50",
       "comment": null
     },
     {
@@ -485,12 +425,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-icon-color-action-content-primary-disabled",
-      "value": "#8d8e91",
-      "palette": "fk-black-50",
-      "comment": null
-    },
-    {
       "name": "--fkds-icon-color-action-content-primary-hover",
       "value": "#3b4292",
       "palette": "bluebell-120",
@@ -533,30 +467,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-icon-color-action-content-accent-default",
-      "value": "#116a3e",
-      "palette": "green-a-100",
-      "comment": null
-    },
-    {
-      "name": "--fkds-icon-color-action-content-accent-hover",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-icon-color-action-content-accent-active",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-icon-color-action-content-accent-focus",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
       "name": "--fkds-icon-color-action-content-weak-default",
       "value": "#5f6165",
       "palette": "fk-black-70",
@@ -570,6 +480,18 @@ var metadata_default = {
     },
     {
       "name": "--fkds-icon-color-action-content-inverted-hover",
+      "value": "#ffffff",
+      "palette": "white-100",
+      "comment": null
+    },
+    {
+      "name": "--fkds-icon-color-action-content-inverted-active",
+      "value": "#ffffff",
+      "palette": "white-100",
+      "comment": null
+    },
+    {
+      "name": "--fkds-icon-color-action-content-inverted-focus",
       "value": "#ffffff",
       "palette": "white-100",
       "comment": null
