@@ -84,4 +84,38 @@ describe("FFileItem", () => {
         fileItem._progressMeter.progressMeter().should("not.exist");
         fileItem.typeOfButtonIcon().should("be.equal", "trashcan");
     });
+
+    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    it.skip("should wrap file name without natural breakpoints on multiple lines", () => {
+        cy.viewport(400, 300);
+        const fileName =
+            "lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit.pdf";
+        cy.mount(FFileItem, { props: { fileName } });
+        const pageObject = new FFileItemPageObject(".file-item");
+        pageObject.fileName().should("have.trimmedText", fileName);
+        cy.get(pageObject.selector).toMatchScreenshot();
+    });
+
+    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    it.skip("should with row slot wrap file name without natural breakpoints on multiple lines", () => {
+        cy.viewport(400, 300);
+        const fileName =
+            "lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit.pdf";
+        const row = defineComponent({
+            components: { FIcon },
+            template: /* HTML */ `
+                <button
+                    type="button"
+                    class="button button--tertiary button--medium file-item__file-remove"
+                >
+                    <f-icon name="trashcan" class="button__icon"></f-icon>
+                    Ta bort
+                </button>
+            `,
+        });
+        cy.mount(FFileItem, { props: { fileName }, slots: { row } });
+        const pageObject = new FFileItemPageObject(".file-item");
+        pageObject.fileName().should("have.trimmedText", fileName);
+        cy.get(pageObject.selector).toMatchScreenshot();
+    });
 });
