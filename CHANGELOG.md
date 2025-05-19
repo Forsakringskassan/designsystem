@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 6.8.0 (2025-05-19)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** updated semantic tokens for colors (refs SFKUI-7232) 07841f1
+* **@fkui/design, @fkui/vue:** update calender navbar styling (refs SFKUI-7243) 8d83771
+* **@fkui/design:** button icon and forced colors  (refs SFKUI-6980) df48aae
+* **@fkui/icon-lib-builder:** allow SCSS entry in icon lib (refs SB-4982) cbac36c
+
+### Bug Fixes
+
+* **@fkui/vue:** `FInteractiveTable` do not activate row on delete (refs SFKUI-4237) f413fd3
+* **@fkui/vue:** `FInteractiveTable` focus correct interactable on delete (fixes SFKUI-5257) 88886f4
+* **@fkui/vue:** add filterAttributes prop for FSortFilterDataset (fixes SFKUI-6581) 2ff2a96
+* **@fkui/vue:** add prop to FLoader to toggle focus on overlay (fixes SFKUI-5466) 38bbbce
+* **deps:** update dependency i18next to v25.1.3 1bb0012
+* **deps:** update dependency sass to v1.89.0 29d053b
+
 ## 6.7.1 (2025-05-15)
 
 ### Bug Fixes
