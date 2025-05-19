@@ -67,12 +67,12 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "EventBus",
-    "EventBus",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
     "focus-indicator() mixin",
     "Validation Plugin",
     "Translation Plugin",
@@ -536,13 +536,6 @@
       "terms": []
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": []
@@ -561,6 +554,13 @@
       "url": "functions/test-utils/jest.html",
       "title": "Jest",
       "terms": []
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
     },
     {
       "url": "functions/sass/focus-indicator.html",
@@ -1419,10 +1419,10 @@
     "65": 44,
     "66": 45,
     "67": 46,
-    "68": 46,
-    "69": 47,
-    "70": 48,
-    "71": 49,
+    "68": 47,
+    "69": 48,
+    "70": 49,
+    "71": 50,
     "72": 50,
     "73": 51,
     "74": 52,

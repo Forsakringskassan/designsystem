@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-46b297.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-b5343d.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-46b297.js": "sha384-50N4UvrcYDlk8/W8Vw3XUn7AFlfMzWCHYfQiMZ1zvSfoksefcq5qOYdK7IDjvEKe",
+    "../../assets/vendor-fkui-vue-b5343d.js": "sha384-EYFZV/2k6+a9TBSWaNb28k3GaB/6yESDAOeE00Pz9IqpPix5VULk7oLudip3j3/H",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-15b4cb.json"
+            href="../../search-data-fe1c9a.json"
             as="fetch"
             crossorigin
-            integrity="sha384-NhquFEbDE7vd4tz5n8zLownoAurRPWegwdFOTHZD/9JHXDpetRuH+eQoIlRPkvbP"
+            integrity="sha384-ljsS2ZPeamszOp7nzKuFNKOOmPR6aRHer5nNHMWrueLuOPrpksaAvzmoCd7OQ6e3"
             id="search-data"
         />
     </head>
@@ -1069,7 +1069,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/29d053bace534aa85a6214918847476b122d4f5a/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/2ff2a9681260935f265f608d8e3ae30ef881ed55/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">
                 FSortFilterDataset
             </a>
             
@@ -1161,10 +1161,35 @@
  &lt;/f-sort-filter-dataset&gt;
 </code></pre>
                 </div>
+            <h3 id="filtrering"><a class="header-anchor" href="#filtrering">Filtrering</a></h3><p class="docs-paragraph">Sätt <code>filterAttributes</code> till en lista med vilka attribut som ska inkluderas i filtreringen.
+Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtreringen.</p>
+
+                <div
+                    id="example-a77d53"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset
+     :data=&quot;items&quot;
+     :sortable-attributes=&quot;{ givenname: &#x27;Förnamn&#x27;, surname: &#x27;Efternamn&#x27; }&quot;
+<span class="hljs-addition">+    :filter-attributes=&quot;[&#x27;surname&#x27;]&quot;</span>
+ &gt;
+     &lt;template #header=&quot;{ slotClass }&quot;&gt;
+         &lt;h3 :class=&quot;slotClass&quot;&gt;Rubrik&lt;/h3&gt;
+     &lt;/template&gt;
+     &lt;template #default=&quot;{ sortFilterResult }&quot;&gt;
+         &lt;!-- sortFilterResult is array with filtered items --&gt;
+     &lt;/template&gt;
+ &lt;/f-sort-filter-dataset&gt;
+</code></pre>
+                </div>
             <h2 id="lista_med_datamangdsorterare"><a class="header-anchor" href="#lista_med_datamangdsorterare">Lista med datamängdsorterare</a></h2><p class="docs-paragraph">Visar hur <code>FSortFilterDataset</code> kan användas med <a href="./flist.html"><code>FList</code></a>.</p>
 
             <div
-                id="example-afa556"
+                id="example-34b3f9"
                 class="code-preview code-preview--default"
                 
                 
@@ -1246,7 +1271,7 @@
 För objektet som du skickar till datamängdsorterarens <code>sortableAttributes</code> behöver egenskapernas namn även matcha kolumnernas namn för att kunna sortera dem.</p>
 
                 <div
-                    id="example-47ddac"
+                    id="example-dd7c99"
                     class="code-preview code-preview--default"
                     
                     
@@ -1259,7 +1284,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
                 </div>
             
                 <div
-                    id="example-671d3a"
+                    id="example-6b6d05"
                     class="code-preview code-preview--default"
                     
                     
@@ -1275,7 +1300,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
             <h3 id="tabell_med_forvald_sortering"><a class="header-anchor" href="#tabell_med_forvald_sortering">Tabell med förvald sortering</a></h3><p class="docs-paragraph">Visar hur <code>FSortFilterDataset</code> kan användas med <a href="./table.html#interaktiv_tabell"><code>FInteractiveTable</code></a>.</p>
 
             <div
-                id="example-34ef21"
+                id="example-159c0d"
                 class="code-preview code-preview--default"
                 
                 
@@ -1362,7 +1387,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
         <h3 id="tabell_med_atgarder"><a class="header-anchor" href="#tabell_med_atgarder">Tabell med åtgärder</a></h3><p class="docs-paragraph">Åtgärder som till exempel batch-funktioner som rör hela datamängden kan placeras i sloten Header för att gruppera med sortering och filtering.</p>
 
             <div
-                id="example-d8828a"
+                id="example-2afb41"
                 class="code-preview code-preview--default"
                 
                 
@@ -1466,7 +1491,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
             </div>
         <h2 id="datamangdsorterare_och_egen_presentation"><a class="header-anchor" href="#datamangdsorterare_och_egen_presentation">Datamängdsorterare och egen presentation</a></h2>
             <div
-                id="example-b39a06"
+                id="example-bf86df"
                 class="code-preview code-preview--default"
                 
                 
@@ -1549,7 +1574,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
         <h2 id="andra_rubrikniva"><a class="header-anchor" href="#andra_rubrikniva">Ändra rubriknivå</a></h2><p class="docs-paragraph">Du kan variera storleken genom att inte använda den tillgängliga <code>slotClass</code> (som sätter den standardiserade storleken för rubriken).</p>
 
                 <div
-                    id="example-7fbdb0"
+                    id="example-e06f10"
                     class="code-preview code-preview--default"
                     
                     
@@ -1573,7 +1598,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
                 </div>
             
             <div
-                id="example-f94af1"
+                id="example-d70ac7"
                 class="code-preview code-preview--default"
                 
                 
@@ -1638,7 +1663,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
 Om det går att specificera träffar så är det bättre att göra det, till exempel &quot;Det finns inga frukter att visa&quot; istället för &quot;Det finns inga träffar att visa&quot;.</p>
 
                 <div
-                    id="example-ca78a2"
+                    id="example-7faf95"
                     class="code-preview code-preview--default"
                     
                     
@@ -1658,7 +1683,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
             <p class="docs-paragraph">Detta går också utnyttja i tabell för att presentera om tabellen är tom pga filtrering eller att inga rader fanns från första början:</p>
 
                 <div
-                    id="example-75a7da"
+                    id="example-400ae5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1683,7 +1708,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
                 </div>
             
                 <div
-                    id="example-362fbd"
+                    id="example-ddeffa"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1834,6 +1859,25 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
                             
                         </dd>
                     
+                        <dt>
+                            <code id="fsortfilterdataset-prop-filterattributes"
+                                ><a class="docs-api__anchor" href="#fsortfilterdataset-prop-filterattributes"
+                                    ><span class="docs-api__name"
+                                        >filterAttributes</span
+                                    >: string[]</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Attributes that should be included in search when filtering by input.
+Default includes all attributes.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
         </dl>
     
         <h3 id="fsortfilterdataset-events">
@@ -1941,9 +1985,9 @@ Default is textkey &quot;fkui.sort-filter-dataset.placeholder.filter&quot;</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/29d053bace534aa85a6214918847476b122d4f5a">29d053b</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/2ff2a9681260935f265f608d8e3ae30ef881ed55">2ff2a96</a>)<br />
         
-        2025-05-19 06:19
+        2025-05-19 07:18
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -22442,6 +22442,15 @@ const _hoisted_6$a = ["value"];
       type: Boolean,
       required: false,
       default: () => true
+    },
+    /**
+     * Attributes that should be included in search when filtering by input.
+     * Default includes all attributes.
+     */
+    filterAttributes: {
+      type: Array,
+      required: false,
+      default: void 0
     }
   },
   emits: ["datasetSorted", "usedSortAttributes"],
@@ -22490,8 +22499,12 @@ const _hoisted_6$a = ["value"];
       });
       return arr;
     });
-    const filterAttributes = computed(() => {
-      return Object.keys(props.sortableAttributes);
+    const internalFilterAttributes = computed(() => {
+      if (!props.filterAttributes) {
+        var _props$data$;
+        return Object.keys((_props$data$ = props.data[0]) !== null && _props$data$ !== void 0 ? _props$data$ : {});
+      }
+      return props.filterAttributes;
     });
     provide("sort", (attribute, ascending) => {
       const foundAttribute = sortOrders.value.find((item) => {
@@ -22532,7 +22545,7 @@ const _hoisted_6$a = ["value"];
       deep: true
     });
     function sortFilterData() {
-      const filteredData = filter(props.data, filterAttributes.value, searchString.value);
+      const filteredData = filter(props.data, internalFilterAttributes.value, searchString.value);
       if (sortAttribute.value.attribute === "") {
         sortFilterResult.value = filteredData;
       } else {

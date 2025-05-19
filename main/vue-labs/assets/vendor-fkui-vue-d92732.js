@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
@@ -13209,6 +13209,15 @@ var _sfc_main$z = /* @__PURE__ */ defineComponent({
       type: Boolean,
       required: false,
       default: () => true
+    },
+    /**
+     * Attributes that should be included in search when filtering by input.
+     * Default includes all attributes.
+     */
+    filterAttributes: {
+      type: Array,
+      required: false,
+      default: void 0
     }
   },
   emits: ["datasetSorted", "usedSortAttributes"],
@@ -13257,8 +13266,12 @@ var _sfc_main$z = /* @__PURE__ */ defineComponent({
       });
       return arr;
     });
-    const filterAttributes = computed(() => {
-      return Object.keys(props.sortableAttributes);
+    const internalFilterAttributes = computed(() => {
+      if (!props.filterAttributes) {
+        var _props$data$;
+        return Object.keys((_props$data$ = props.data[0]) !== null && _props$data$ !== void 0 ? _props$data$ : {});
+      }
+      return props.filterAttributes;
     });
     provide("sort", (attribute, ascending) => {
       const foundAttribute = sortOrders.value.find((item) => {
@@ -13299,7 +13312,7 @@ var _sfc_main$z = /* @__PURE__ */ defineComponent({
       deep: true
     });
     function sortFilterData() {
-      const filteredData = filter(props.data, filterAttributes.value, searchString.value);
+      const filteredData = filter(props.data, internalFilterAttributes.value, searchString.value);
       if (sortAttribute.value.attribute === "") {
         sortFilterResult.value = filteredData;
       } else {
