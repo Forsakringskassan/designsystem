@@ -11708,11 +11708,11 @@ required: false;
 default: () => string;
 };
 modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor | null)[];
 required: false;
 };
 value: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor | null)[];
 required: true;
 };
 }>, {
@@ -11759,11 +11759,11 @@ required: false;
 default: () => string;
 };
 modelValue: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor | null)[];
 required: false;
 };
 value: {
-type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor)[];
+type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor | null)[];
 required: true;
 };
 }>> & Readonly<{
