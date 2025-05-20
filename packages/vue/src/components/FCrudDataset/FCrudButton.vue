@@ -4,6 +4,10 @@ import { FTableButton } from "../FTableButton";
 import { useTranslate } from "../../plugins";
 import { FCrudDatasetInjected } from "./FCrudDatasetInterface";
 
+/**
+ * @deprecated for table replace with <f-table-button> or <button> in other cases
+ */
+
 const props = defineProps({
     /**
      * The action to be performed by the button.
