@@ -2,9 +2,7 @@
 title: Datamängdredigerare
 status: Produktionsklar
 layout: component
-component:
-    - FCrudDataset
-    - FCrudButton
+component: FCrudDataset
 ---
 
 Datamändgredigeraren används för att erbjuda användare funktionerna "lägg till", "ändra" och "ta bort" i en datamängd.
@@ -149,6 +147,5 @@ vue:FCrudDataset
 
 ### `FCrudButton`
 
-:::api
-vue:FCrudButton
-:::
+Komponenten är deprekerad.
+Läs mer om att {@link migrating-crud-button migrera FCrudButton}.

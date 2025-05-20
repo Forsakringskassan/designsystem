@@ -69,6 +69,7 @@ describe("snapshot", () => {
 describe("html-validate", () => {
     it("should require action attribute", () => {
         const markup = /* HTML */ `
+            <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-dataset>
                 <template #default>
                     <f-crud-button item="test"></f-crud-button>
@@ -76,20 +77,21 @@ describe("html-validate", () => {
             </f-crud-dataset>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <f-crud-button> is missing required "action" attribute (element-required-attributes) at inline:4:22:
-              2 |             <f-crud-dataset>
-              3 |                 <template #default>
-            > 4 |                     <f-crud-button item="test"></f-crud-button>
+            "error: <f-crud-button> is missing required "action" attribute (element-required-attributes) at inline:5:22:
+              3 |             <f-crud-dataset>
+              4 |                 <template #default>
+            > 5 |                     <f-crud-button item="test"></f-crud-button>
                 |                      ^^^^^^^^^^^^^
-              5 |                 </template>
-              6 |             </f-crud-dataset>
-              7 |
+              6 |                 </template>
+              7 |             </f-crud-dataset>
+              8 |
             Selector: f-crud-dataset > template > f-crud-button"
         `);
     });
 
     it("should require item attribute", () => {
         const markup = /* HTML */ `
+            <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-dataset>
                 <template #default>
                     <f-crud-button action="modify"></f-crud-button>
@@ -97,20 +99,21 @@ describe("html-validate", () => {
             </f-crud-dataset>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <f-crud-button> is missing required "item" attribute (element-required-attributes) at inline:4:22:
-              2 |             <f-crud-dataset>
-              3 |                 <template #default>
-            > 4 |                     <f-crud-button action="modify"></f-crud-button>
+            "error: <f-crud-button> is missing required "item" attribute (element-required-attributes) at inline:5:22:
+              3 |             <f-crud-dataset>
+              4 |                 <template #default>
+            > 5 |                     <f-crud-button action="modify"></f-crud-button>
                 |                      ^^^^^^^^^^^^^
-              5 |                 </template>
-              6 |             </f-crud-dataset>
-              7 |
+              6 |                 </template>
+              7 |             </f-crud-dataset>
+              8 |
             Selector: f-crud-dataset > template > f-crud-button"
         `);
     });
 
     it("should only allow actions modify and delete", () => {
         const markup = (action: string): string => /* HTML */ `
+            <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-dataset>
                 <template #default>
                     <f-crud-button
@@ -124,28 +127,30 @@ describe("html-validate", () => {
         expect(markup("modify")).toMatchInlineCodeframe(`""`);
         expect(markup("delete")).toMatchInlineCodeframe(`""`);
         expect(markup("foobar")).toMatchInlineCodeframe(`
-            "error: Attribute "action" has invalid value "foobar" (attribute-allowed-values) at inline:5:33:
-              3 |                 <template #default>
-              4 |                     <f-crud-button
-            > 5 |                         action="foobar"
+            "error: Attribute "action" has invalid value "foobar" (attribute-allowed-values) at inline:6:33:
+              4 |                 <template #default>
+              5 |                     <f-crud-button
+            > 6 |                         action="foobar"
                 |                                 ^^^^^^
-              6 |                         item="test"
-              7 |                     ></f-crud-button>
-              8 |                 </template>
+              7 |                         item="test"
+              8 |                     ></f-crud-button>
+              9 |                 </template>
             Selector: f-crud-dataset > template > f-crud-button"
         `);
     });
 
     it("should require f-crud-dataset as ancestor", () => {
         const markup = /* HTML */ `
+            <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-button action="modify" item="test"></f-crud-button>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <f-crud-button> element requires a <f-crud-dataset> ancestor (element-required-ancestor) at inline:2:14:
+            "error: <f-crud-button> element requires a <f-crud-dataset> ancestor (element-required-ancestor) at inline:3:14:
               1 |
-            > 2 |             <f-crud-button action="modify" item="test"></f-crud-button>
+              2 |             <!-- [html-validate-disable deprecated -- component should still work] -->
+            > 3 |             <f-crud-button action="modify" item="test"></f-crud-button>
                 |              ^^^^^^^^^^^^^
-              3 |
+              4 |
             Selector: f-crud-button"
         `);
     });
