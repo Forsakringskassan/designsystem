@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Laddningsindikator - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-7bbbd0.css"
+            href="../../assets/docs-76e65a.css"
             crossorigin
-            integrity="sha384-zZwODfghiTEks2RFvrNZ3rWOisVGPsZm9B0+jdjyNBubUMkzzIFz6zAkkd6bJXEo"
+            integrity="sha384-kwfGldW4+bFA5VvQ0AsPX5GEgtwXFywm0QREypQT2YyutcJpvBiAneaU8pEp0D4B"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-1e16f6.css"
+            href="../../assets/docs-fkui-fa0e82.css"
             crossorigin
-            integrity="sha384-UXiRga9RhIFmqiVSxva9nuJ2Sl7Kvf3BLfhfUlsw10rl0pTNVzcd82/A1f6r3Ziw"
+            integrity="sha384-U3i1b/M7N1Nk3MnbNNzO442XC9DPyzLW42wKQP/25bmbSnBpypFk02K3KUPSiklw"
             data-theme="fkui" disabled
         />
 
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd7b76.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-1c45a2.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-15dade.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
     "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../assets/vendor-fkui-vue-1c45a2.js": "sha384-4nyVnlgLIepenzqLxrJIKEUTbRLhzcwduOCtMQSJiACTX23Cb/00a9wDiZ+jbxLj",
+    "../../assets/vendor-fkui-vue-15dade.js": "sha384-nA0rDPGEXHPB1ii821tP6YbTzMx11FaR9P2LvCY1NLncdEpMyuKteIB/89LWiBni",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-90940b.json"
+            href="../../search-data-f601a7.json"
             as="fetch"
             crossorigin
-            integrity="sha384-vRtLfZylXLGNFZQQTL1CAUsRh+taqv4hDVB0p3mtZHBUZCN13XZGG4v6LQjVPgjb"
+            integrity="sha384-hpDGXGVRTXbi9bQf+c6kLoek+hwODadxsCvykZT6HCj9wj3yw1NZR+kYBf5b+0U/"
             id="search-data"
         />
     </head>
@@ -859,6 +859,17 @@
         </a>
     </li><li class="link ">
         <a
+            href="../page-layout/ffixedpane.html"
+            
+            
+            
+            data-path="components/page-layout/ffixedpane.html"
+            
+        >
+            Fixerad yta
+        </a>
+    </li><li class="link ">
+        <a
             href="../page-layout/fresizepane.html"
             
             
@@ -1058,7 +1069,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/9c7c1c763e1abf86933d39b5d2a0e086d86729fa/packages/vue/src/components/FLoader/FLoader.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ea2c5404039b4b259d88c29762d6c11478798fe6/packages/vue/src/components/FLoader/FLoader.vue">
                 FLoader
             </a>
             
@@ -1083,6 +1094,8 @@
                                 
                                 <li><a href="#teleport">Teleport</a></li>
                                 
+                                <li><a href="#fokushantering">Fokushantering</a></li>
+                                
                                 <li><a href="#api">API</a></li>
                                 
                             </ul>
@@ -1093,158 +1106,27 @@
 
                     <div id="content"><p class="docs-paragraph">Laddningsindikator används för att visa att en sida eller en del av en sida håller på att laddas.</p>
 
-            <div
-                id="example-fa5166"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="example-4ca5be"></div>
+                <div
+                    id="example-367fdb"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags="live-example"
+                    data-language="vue"
+                >
+                    
+        <div id="example-da2b6e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FLoaderExample-4ca5be.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FLoader</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">const</span> defaultTimer = <span class="hljs-number">10</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FLoaderExample&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FLoader</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">overlay</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">delay</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">customText</span>: <span class="hljs-literal">false</span>,
-            <span class="hljs-attr">time</span>: defaultTimer,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">toggleLoader</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span>) {
-                <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span>) {
-                    <span class="hljs-built_in">clearInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">interval</span>);
-                } <span class="hljs-keyword">else</span> {
-                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">interval</span> = <span class="hljs-built_in">setInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">countdown</span>, <span class="hljs-number">1000</span>);
-                }
-            }
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">show</span>;
-        },
-        <span class="hljs-title function_">toggleOverlay</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">overlay</span>;
-        },
-        <span class="hljs-title function_">toggleDelay</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">delay</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">delay</span> ? <span class="hljs-literal">false</span> : <span class="hljs-literal">true</span>;
-        },
-
-        <span class="hljs-title function_">toggleCloseText</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">customText</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">customText</span>;
-        },
-        <span class="hljs-title function_">countdown</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> = <span class="hljs-built_in">parseInt</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>, <span class="hljs-number">10</span>) - <span class="hljs-number">1</span>;
-            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> === <span class="hljs-number">0</span>) {
-                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleLoader</span>();
-                <span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span> = defaultTimer;
-            }
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-loader</span> <span class="hljs-attr">:show</span>=<span class="hljs-string">&quot;show&quot;</span> <span class="hljs-attr">:overlay</span>=<span class="hljs-string">&quot;overlay&quot;</span> <span class="hljs-attr">:delay</span>=<span class="hljs-string">&quot;delay&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;customText&quot;</span>&gt;</span> Loading (App specific)... <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-loader</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- [html-validate-disable-next no-inline-style] --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position: relative; z-index: 1000000&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;loader-toggle&#x27;&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--discrete&quot;</span>
-                @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggleLoader()&quot;</span>
-            &gt;</span>
-                Toggla loader
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;loader-toggle-overlay&#x27;&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--discrete&quot;</span>
-                <span class="hljs-attr">:disabled</span>=<span class="hljs-string">&quot;Boolean(show)&quot;</span>
-                @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggleOverlay()&quot;</span>
-            &gt;</span>
-                Toggla overlay
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;loader-toggle-delay&#x27;&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--discrete&quot;</span>
-                @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggleDelay()&quot;</span>
-            &gt;</span>
-                Toggla delay
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;loader-toggle-text&#x27;&quot;</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--discrete&quot;</span>
-                @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggleCloseText()&quot;</span>
-            &gt;</span>
-                Toggla text
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;delay&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> Delay är påslagen <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;overlay&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-                Forcera avstängning efter antal sekunder:
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-                    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;loader-timer&quot;</span>
-                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;time&quot;</span>
-                    <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;loader-timer&#x27;&quot;</span>
-                    <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 10 } }&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-                    <span class="hljs-attr">:disabled</span>=<span class="hljs-string">&quot;Boolean(show)&quot;</span>
-            /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
+        <script type="module" src="./FLoaderLiveExample-da2b6e.js"></script>
+    
                 </div>
-            </div>
-        <ul>
-<li>En laddningsindikator visas när det tar mer än en sekund att ladda innehållet.</li>
+            <ul>
+<li>En laddningsindikator bör visas när det tar mer än en sekund att ladda innehållet.</li>
 <li>Placeras på ytan där innehåll som laddas sen ska visas eller i ett eget lager ovanpå sidan</li>
-<li>Texten ska i de flesta fall vara &quot;Vänligen vänta&quot;</li>
+<li>Texten ska i de flesta fall vara standardtexten &quot;Vänligen vänta&quot;</li>
 </ul>
 <h2 id="teleport"><a class="header-anchor" href="#teleport">Teleport</a></h2><p class="docs-paragraph">Komponenten teleporteras till body-elementet som standard när den visas som overlay.</p>
 <p class="docs-paragraph">Detta kan ändras till valfritt element antingen genom att</p>
@@ -1252,7 +1134,37 @@
 <li>ändra värdet för <code>config.teleportTarget</code> (global för applikationen).</li>
 <li>sätta prop <code>teleport</code> (per komponentinstans)</li>
 </ul>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+
+                <div
+                    id="example-07bda8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-loader&gt; &lt;/f-loader&gt;</span>
+<span class="hljs-addition">+&lt;f-loader teleport=&quot;floader-target&quot;&gt; &lt;/f-loader&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="fokushantering"><a class="header-anchor" href="#fokushantering">Fokushantering</a></h2><p class="docs-paragraph">Som standard när laddningsindikatorn visas så informeras skärmläsaranvändare med hjälp av <code>role=&quot;alert&quot;</code>, som sätts på laddningsindikatorns text.</p>
+<p class="docs-paragraph">Om <code>overlay</code> används så sätts istället fokus på laddningsindikatorns text,
+för att sedan flyttas tillbaka till föregående element när den stängs.</p>
+<p class="docs-paragraph">Om man inte vill att fokus ska flyttas till laddningsindikatorns text vid <code>overlay</code> kan man sätta egenskapen <code>focusOnOverlay</code> till <code>false</code>. Då informeras skärmläsaranvändare med hjälp av <code>role=&quot;alert&quot;</code> även vid <code>overlay</code>.</p>
+
+                <div
+                    id="example-20a17a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-loader overlay&gt; &lt;/f-loader&gt;</span>
+<span class="hljs-addition">+&lt;f-loader overlay :focusOnOverlay=&quot;false&quot;&gt; &lt;/f-loader&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
         <h3 id="floader-props">
             <a class="header-anchor" href="#floader-props">Props</a>
         </h3>
@@ -1266,7 +1178,7 @@
                                     >: boolean</a
                                 ></code
                             >
-                            
+                            <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
                         <dd>
@@ -1325,9 +1237,31 @@
                         </dt>
                         <dd>
                             <p>Language used for determining fallback value for the loading text. Useful if loader is displayed before
-text keys have been downloaded</p>
+text keys have been downloaded. Default is Swedish <code>sv</code>, can be changed to English <code>en</code>.</p>
 
                             <p class="doc-api__item">Default: <code>&quot;sv&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="floader-prop-focusonoverlay"
+                                ><a class="docs-api__anchor" href="#floader-prop-focusonoverlay"
+                                    ><span class="docs-api__name"
+                                        >focusOnOverlay</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Controls if focus should be set on the loading text when the loader is displayed with overlay.</p>
+<ul>
+<li>When set to true focus will be set on the loading text when the loader is displayed with overlay.</li>
+<li>When set to false no focus will be set, instead aria alert is used to announce loading for screen readers.</li>
+</ul>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
                             
                         </dd>
                     
@@ -1343,13 +1277,7 @@ text keys have been downloaded</p>
                             
                         </dt>
                         <dd>
-                            <p>Set teleport target (when overlay is enabled).</p>
-<ul>
-<li>When set to a string it is used as a selector.</li>
-<li>When set to a element it is used directly.</li>
-<li>Default uses <a href="../../functions/config.html#teleportTarget">Konfiguration</a>.</li>
-</ul>
-
+                            &#8208;
                             <p class="doc-api__item">Default: <code>undefined</code></p>
                             
                         </dd>
@@ -1397,9 +1325,9 @@ text keys have been downloaded</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feature/tokens_calendarcomponents (<a href="https://github.com/Forsakringskassan/designsystem/commits/9c7c1c763e1abf86933d39b5d2a0e086d86729fa">9c7c1c7</a>)<br />
+<div class="footer__right"><div class="version">feature/tokens_calendarcomponents (<a href="https://github.com/Forsakringskassan/designsystem/commits/ea2c5404039b4b259d88c29762d6c11478798fe6">ea2c540</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/481">PR 481</a><br />
-        2025-05-09 11:07
+        2025-05-20 12:51
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1411,7 +1339,7 @@ text keys have been downloaded</p>
     <dialog id="version-dialog">
         <div id="version-dialog-head">
             <h1>Välj version</h1>
-            <button type="button" class="button button--discrete button--discrete--black">
+            <button type="button" class="button button--tertiary button--tertiary--black">
                 <span>Stäng</span>
                 <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
                     <use href="#f-icon-close"></use>
@@ -1512,10 +1440,10 @@ text keys have been downloaded</p>
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-910589.js"
+            src="../../assets/processors/selectable-version/select-version-71f98b.js"
             type="module"
             crossorigin
-            integrity="sha384-I1UkV0jct1U2DK2sHeJaQT/Y/zs56PzTr8ov/aUSg8JBcBJtIOPYDvMy2o167CwS"
+            integrity="sha384-eGLcbxuKM1xkv5hI6PlbXQD489BCwxWEGzF5UBBEkbfdicK7hpaR+MryaeAatVv8"
             
         ></script><script
             src="../../assets/main-0ec342.js"
