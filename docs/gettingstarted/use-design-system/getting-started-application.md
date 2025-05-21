@@ -26,6 +26,16 @@ På så sätt får du tillgång till de mixins och Sass-funktioner som finns i F
 
 Det andra sättet är att använda en förkompilerad CSS-fil.
 
+::: info Tänk på att
+
+Designsystemet använder inte vendor prefix varken på Sass källkod eller förkompilerad CSS.
+
+För maximal webläsar-kompatibilitet rekommenderar vi att du kör [autoprefixer][autoprefixer] eller liknande verktyg.
+
+:::
+
+[autoprefixer]: https://github.com/postcss/autoprefixer
+
 ### Sass
 
 Gå in i din main.scss-fil eller motsvarande och lägg in följande rader:
