@@ -1,4 +1,4 @@
-const { generatePackageDts } = require("./generate-package-dts");
+import { generatePackageDts } from "./generate-package-dts";
 
 it("should generate content for package dts", () => {
     // eslint-disable-next-line jest/no-large-snapshots -- easier to read in this case

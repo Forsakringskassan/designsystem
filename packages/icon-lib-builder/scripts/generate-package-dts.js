@@ -1,10 +1,10 @@
-const { camelCase } = require("./common");
+import { camelCase } from "./common.js";
 
 /**
  * @param {string[]} libraries - all library names
  * @returns {string]
  */
-function generatePackageDts(libraries) {
+export function generatePackageDts(libraries) {
     const keys = libraries.map(camelCase);
     return [
         `import { IconLibrary } from "./icon-library";`,
@@ -26,5 +26,3 @@ function generatePackageDts(libraries) {
         `export default value;`,
     ].join("\n");
 }
-
-module.exports = { generatePackageDts };
