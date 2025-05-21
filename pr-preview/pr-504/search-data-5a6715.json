@@ -57,10 +57,6 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
@@ -75,6 +71,10 @@
     "Jest",
     "EventBus",
     "EventBus",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "focus-indicator() mixin",
     "Validation Plugin",
     "Translation Plugin",
@@ -487,23 +487,6 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
-    },
-    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": []
@@ -568,6 +551,23 @@
       "title": "EventBus",
       "terms": [
         "EventBus"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
       ]
     },
     {
@@ -1418,16 +1418,16 @@
     "57": 36,
     "58": 37,
     "59": 38,
-    "60": 38,
-    "61": 39,
-    "62": 40,
-    "63": 41,
-    "64": 42,
-    "65": 43,
-    "66": 44,
-    "67": 45,
-    "68": 46,
-    "69": 47,
+    "60": 39,
+    "61": 40,
+    "62": 41,
+    "63": 42,
+    "64": 43,
+    "65": 44,
+    "66": 45,
+    "67": 46,
+    "68": 47,
+    "69": 48,
     "70": 48,
     "71": 49,
     "72": 50,
