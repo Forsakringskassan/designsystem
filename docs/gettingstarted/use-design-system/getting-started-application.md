@@ -56,18 +56,20 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
 @use "@fkui/design/src/components/textarea-field/textarea-field";
 ```
 
-Om du behöver applicera tema på en egen selector (exempelvis kanske du har flera uppsättningar av FKUI i olika versioner på samma webbsida) så lägger du inte in variablerna globalt utan använder en mixin.
+Om du behöver applicera tema på en egen selector (exempelvis kanske du har flera uppsättningar av FKUI i olika versioner på samma webbsida) så rekommenderar vi att selectorn läggs till med en PostCSS plugin likt [postcss-prefix-selector][postcss-prefix-selector].
 
-Vid import:
+[postcss-prefix-selector]: https://www.npmjs.com/package/postcss-prefix-selector
+
+Det finns begränsat stöd för att importera CSS-variabler från temat på en egen selector:
 
 ```scss compare=sass-base
 @use "@fkui/theme-default" as fkui with (
     $global: false
 );
+@use "@fkui/design";
 
 .my-scope {
     @include fkui.css-variables;
-    @import "@fkui/design";
 }
 ```
 
