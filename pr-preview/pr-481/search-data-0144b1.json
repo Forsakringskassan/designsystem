@@ -10,6 +10,7 @@
     "Hjälp och support",
     "@fkui/tsconfig",
     "Konfiguration",
+    "CHANGELOG v5",
     "Chip",
     "chip",
     "Knapp",
@@ -40,7 +41,6 @@
     "FCalendarDay",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "Längdvalidering",
     "Validator - anpassad",
@@ -71,6 +71,8 @@
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
     "focus-indicator() mixin",
     "Validation Plugin",
     "Translation Plugin",
@@ -79,14 +81,12 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
-    "i18next",
-    "i18nextProvider",
-    "I18nextProvider",
-    "EventBus",
-    "EventBus",
     "Hjälpklasser",
     "densify",
     "Skärmläsare",
+    "i18next",
+    "i18nextProvider",
+    "I18nextProvider",
     "useResize() composable",
     "useModal() composable",
     "useDetailsPanel() composable",
@@ -255,15 +255,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -317,6 +317,11 @@
     {
       "url": "functions/config.html",
       "title": "Konfiguration",
+      "terms": []
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
       "terms": []
     },
     {
@@ -418,11 +423,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -556,6 +556,13 @@
       "terms": []
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": []
@@ -589,28 +596,6 @@
       ]
     },
     {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/helpers/index.html",
       "title": "Hjälpklasser",
       "terms": []
@@ -623,6 +608,21 @@
     {
       "url": "functions/helpers/accessibility.html",
       "title": "Skärmläsare",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
       "terms": []
     },
     {
@@ -1290,6 +1290,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -1320,21 +1335,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
-      "terms": []
-    },
-    {
       "url": "changelog.html",
       "title": "CHANGELOG",
       "terms": []
@@ -1362,35 +1362,35 @@
     "8": 8,
     "9": 9,
     "10": 10,
-    "11": 10,
+    "11": 11,
     "12": 11,
-    "13": 11,
+    "13": 12,
     "14": 12,
-    "15": 12,
-    "16": 12,
+    "15": 13,
+    "16": 13,
     "17": 13,
-    "18": 13,
+    "18": 14,
     "19": 14,
-    "20": 14,
+    "20": 15,
     "21": 15,
-    "22": 15,
+    "22": 16,
     "23": 16,
-    "24": 16,
+    "24": 17,
     "25": 17,
-    "26": 17,
+    "26": 18,
     "27": 18,
-    "28": 18,
+    "28": 19,
     "29": 19,
-    "30": 19,
+    "30": 20,
     "31": 20,
-    "32": 20,
+    "32": 21,
     "33": 21,
-    "34": 21,
+    "34": 22,
     "35": 22,
-    "36": 22,
-    "37": 22,
+    "36": 23,
+    "37": 23,
     "38": 23,
-    "39": 23,
+    "39": 24,
     "40": 24,
     "41": 25,
     "42": 26,
@@ -1423,17 +1423,17 @@
     "69": 48,
     "70": 49,
     "71": 50,
-    "72": 51,
-    "73": 52,
-    "74": 53,
-    "75": 54,
-    "76": 55,
+    "72": 50,
+    "73": 51,
+    "74": 52,
+    "75": 53,
+    "76": 54,
     "77": 55,
-    "78": 55,
+    "78": 56,
     "79": 56,
-    "80": 57,
-    "81": 58,
-    "82": 59,
+    "80": 56,
+    "81": 57,
+    "82": 58,
     "83": 59,
     "84": 60,
     "85": 61,
