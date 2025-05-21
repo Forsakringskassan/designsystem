@@ -259,6 +259,17 @@ $palette-color-hav-20: #dbe0ec !default;
     // Deprecated since 6.9.0
     --fkds-color-action-background-select-hover: #{$palette-color-green-a-15};
     --fkds-color-action-background-select-default: #{$palette-color-green-a-85};
+
+    // Deprecated since 6.10.0
+    --f-border-color-calendar-highlight: #{$palette-color-fk-black-70};
+    --f-border-color-calendar-selected: #{$palette-color-white-100};
+    --f-border-color-calendar-navbar: #{$palette-color-fk-black-15};
+    --f-text-color-weekday-weeknumber: #{$palette-color-fk-black-70};
+    --f-background-month: #{$palette-color-fk-black-5};
+    --f-background-calendar-default: #{$palette-color-fk-black-5};
+    --f-background-calendar-selected: #{$palette-color-green-a-100};
+    --f-background-calendar-hover: #{$palette-color-bluebell-15};
+    --f-border-color-calendar-disabled: #{$palette-color-fk-black-50};
 }
 
 @if $global {
