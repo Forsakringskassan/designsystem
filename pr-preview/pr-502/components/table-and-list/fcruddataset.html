@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0e7046.json"
+            href="../../search-data-690e94.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dC6wa8srJ9sNdZCqpGW4dWhvgeKO+97ptShoWQ/Zh3hBIpZFFBvEBCXITBULHVW8"
+            integrity="sha384-eWGIxw8nRNYpVC4IqAlcFCgQyXrnnLbrvkBoYMa2W4Zh6rJ8mj8WYhWEenGxqzdH"
             id="search-data"
         />
     </head>
@@ -1069,14 +1069,8 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/0cd440816c4ac68cc9772b7ba25e869021969e51/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/cad44b01aeac209d04988daa216a9970a8fef819/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
-            </a>
-            
-            
-            
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/0cd440816c4ac68cc9772b7ba25e869021969e51/packages/vue/src/components/FCrudDataset/FCrudButton.vue">
-                FCrudButton
             </a>
             
             
@@ -2763,193 +2757,9 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                         </dd>
                     
         </dl>
-    <h3 id="fcrudbutton"><a class="header-anchor" href="#fcrudbutton"><code>FCrudButton</code></a></h3><p class="docs-paragraph"><strong>Deprekerad:</strong> För tabell använd <a href="./table.html">FTableButton</a> istället annars vanlig <a href="../button.html">knapp</a>.</p>
-<p class="docs-paragraph">För tabell:</p>
+    <h3 id="fcrudbutton"><a class="header-anchor" href="#fcrudbutton"><code>FCrudButton</code></a></h3><p class="docs-paragraph">Komponenten är deprekerad.
+Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.html">migrera FCrudButton</a>.</p>
 
-                <div
-                    id="example-90901c"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
-<span class="hljs-deletion">-    &lt;template #default&gt;</span>
-<span class="hljs-addition">+    &lt;template #default=&quot;{ updateItem, deleteItem }&quot;&gt;</span>
-         &lt;f-interactive-table :rows&gt;
-             &lt;template #caption&gt; Tabell &lt;/template&gt;
-             &lt;template #default=&quot;{ row }&quot;&gt;
-                 &lt;f-table-column title=&quot;Åtgärder&quot;&gt;
-<span class="hljs-deletion">-                    &lt;f-crud-button action=&quot;modify&quot; :item=&quot;row&quot; icon&gt;</span>
-<span class="hljs-deletion">-                        Ändra {{ row.name }}</span>
-<span class="hljs-deletion">-                    &lt;/f-crud-button&gt;</span>
-<span class="hljs-deletion">-                    &lt;f-crud-button action=&quot;delete&quot; :item=&quot;row&quot; icon&gt;</span>
-<span class="hljs-deletion">-                        Ta bort {{ row.name }}</span>
-<span class="hljs-deletion">-                    &lt;/f-crud-button&gt;</span>
-<span class="hljs-addition">+                    &lt;f-table-button icon=&quot;pen&quot; @click=&quot;updateItem(item)&quot;&gt;</span>
-<span class="hljs-addition">+                        Ändra {{ item.name }}</span>
-<span class="hljs-addition">+                    &lt;/f-table-button&gt;</span>
-<span class="hljs-addition">+                    &lt;f-table-button icon=&quot;trashcan&quot; @click=&quot;deleteItem(item)&quot;&gt;</span>
-<span class="hljs-addition">+                        Ta bort {{ item.name }}</span>
-<span class="hljs-addition">+                    &lt;/f-table-button&gt;</span>
-                 &lt;/f-table-column&gt;
-             &lt;/template&gt;
-         &lt;/f-interactive-table&gt;
-</code></pre>
-                </div>
-            <p class="docs-paragraph">Övriga:</p>
-
-                <div
-                    id="example-ee82a5"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
-<span class="hljs-deletion">-    &lt;template #default&gt;</span>
-<span class="hljs-addition">+    &lt;template #default=&quot;{ updateItem, deleteItem }&quot;&gt;</span>
-         &lt;f-list :items&gt;
-             &lt;template #default=&quot;{ item }&quot;&gt;
-<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;modify&quot; :item icon&gt;</span>
-<span class="hljs-deletion">-                    Ändra {{ item.name }}</span>
-<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
-<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;delete&quot; :item icon&gt;</span>
-<span class="hljs-deletion">-                    Ta bort {{ item.name }}</span>
-<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
-<span class="hljs-addition">+                &lt;button</span>
-<span class="hljs-addition">+                    type=&quot;button&quot;</span>
-<span class="hljs-addition">+                    class=&quot;button button--small button--tertiary&quot;</span>
-<span class="hljs-addition">+                    @click=&quot;updateItem(item)&quot;</span>
-<span class="hljs-addition">+                &gt;</span>
-<span class="hljs-addition">+                    &lt;f-icon name=&quot;pen&quot;&gt;</span>
-<span class="hljs-addition">+                        &lt;title&gt;Ändra {{ item.name }}&lt;/title&gt;</span>
-<span class="hljs-addition">+                    &lt;/f-icon&gt;</span>
-<span class="hljs-addition">+                &lt;/button&gt;</span>
-<span class="hljs-addition">+                &lt;button</span>
-<span class="hljs-addition">+                    type=&quot;button&quot;</span>
-<span class="hljs-addition">+                    class=&quot;button button--small button--tertiary&quot;</span>
-<span class="hljs-addition">+                    @click=&quot;deleteItem(item)&quot;</span>
-<span class="hljs-addition">+                &gt;</span>
-<span class="hljs-addition">+                    &lt;f-icon name=&quot;pen&quot;&gt;</span>
-<span class="hljs-addition">+                        &lt;title&gt;Ta bort {{ item.name }}&lt;/title&gt;</span>
-<span class="hljs-addition">+                    &lt;/f-icon&gt;</span>
-<span class="hljs-addition">+                &lt;/button&gt;</span>
-             &lt;/template&gt;
-         &lt;/f-list&gt;
-     &lt;/template&gt;
-</code></pre>
-                </div>
-            
-        <h4 id="fcrudbutton-props">
-            <a class="header-anchor" href="#fcrudbutton-props">Props</a>
-        </h4>
-        <dl class="docs-api docs-api--slots">
-            
-                        <dt>
-                            <code id="fcrudbutton-prop-action"
-                                ><a class="docs-api__anchor" href="#fcrudbutton-prop-action"
-                                    ><span class="docs-api__name"
-                                        >action</span
-                                    >: string</a
-                                ></code
-                            >
-                            
-                            
-                        </dt>
-                        <dd>
-                            <p>The action to be performed by the button.
-Must be one of the following values: &quot;delete&quot; or &quot;modify&quot;.</p>
-
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fcrudbutton-prop-icon"
-                                ><a class="docs-api__anchor" href="#fcrudbutton-prop-icon"
-                                    ><span class="docs-api__name"
-                                        >icon</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Determines if an icon should be displayed on the button.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fcrudbutton-prop-item"
-                                ><a class="docs-api__anchor" href="#fcrudbutton-prop-item"
-                                    ><span class="docs-api__name"
-                                        >item</span
-                                    >: object</a
-                                ></code
-                            >
-                            
-                            
-                        </dt>
-                        <dd>
-                            <p>The item that the action will be performed on.</p>
-
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fcrudbutton-prop-label"
-                                ><a class="docs-api__anchor" href="#fcrudbutton-prop-label"
-                                    ><span class="docs-api__name"
-                                        >label</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Determines if the button should display a label.
-If false, the button will use a visually hidden text for accessibility.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
-                            
-                        </dd>
-                    
-        </dl>
-    
-        <h4 id="fcrudbutton-slots">
-            <a class="header-anchor" href="#fcrudbutton-slots">Slots</a>
-        </h4>
-        <dl class="docs-api docs-api--slots">
-            
-                        <dt>
-                            <code id="fcrudbutton-slot-default"
-                                ><a class="docs-api__anchor" href="#fcrudbutton-slot-default"
-                                    ><span class="docs-api__name"
-                                        >default</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Slot used to provide custom content for the button text.</p>
-
-                            
-                            
-                            
-                            
-                        </dd>
-                    
-        </dl>
-    
 
                     </div>
                 </main>
@@ -2965,9 +2775,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feature/deprecated-crud-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/0cd440816c4ac68cc9772b7ba25e869021969e51">0cd4408</a>)<br />
+<div class="footer__right"><div class="version">feature/deprecated-crud-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/cad44b01aeac209d04988daa216a9970a8fef819">cad44b0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/502">PR 502</a><br />
-        2025-05-20 11:32
+        2025-05-21 15:25
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -3099,7 +2909,7 @@ If false, the button will use a visually hidden text for accessibility.</p>
          Source file: docs/components/table-and-list/FCrudDataset.md
          Document ID: fs:docs/components/table-and-list/FCrudDataset.md
          Document name: FCrudDataset
-         Document alias: component:FCrudDataset, component:FCrudButton
+         Document alias: component:FCrudDataset
 
     -->
 </html>
