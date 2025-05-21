@@ -1,16 +1,23 @@
-const path = require("node:path");
-const fs = require("node:fs/promises");
-const { globSync } = require("glob");
-const { optimize } = require("svgo");
-const sass = require("sass");
-const { name: packageName } = require("../package.json");
-const { capitalize } = require("./common");
-const { generateIndexFile } = require("./generate-index-file");
-const { buildDemo } = require("./build-demo");
-const { generatePackageDts } = require("./generate-package-dts");
+import path from "node:path";
+import fs from "node:fs/promises";
+import { globSync } from "glob";
+import { optimize } from "svgo";
+import sass from "sass";
 
+import { capitalize } from "./common.js";
+import { buildDemo } from "./build-demo.js";
+import { generatePackageDts } from "./generate-package-dts.js";
+import { generateIndexFile } from "./generate-index-file.js";
+
+const __dirname = import.meta.dirname;
 const dest = "dist";
 const templateDir = path.join(__dirname, "../templates");
+
+const packageJson = await fs.readFile("./package.json", {
+    encoding: "utf-8",
+});
+
+const packageName = JSON.parse(packageJson).name;
 
 /**
  * @param {string[]} libraries
@@ -198,6 +205,7 @@ async function generateStyle(directory, directoryName) {
 
 async function main() {
     const directories = globSync("icons/*/");
+
     const directoryNames = directories.map((d) => path.basename(d));
     await fs.rm(dest, { force: true, recursive: true });
 

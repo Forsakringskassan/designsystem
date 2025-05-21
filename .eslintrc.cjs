@@ -102,5 +102,12 @@ module.exports = {
                 "import/no-unresolved": "off",
             },
         },
+        {
+            files: ["packages/icon-lib-builder/**/*.js"],
+            rules: {
+                //icon-lib-builder is built with esm and without toolchain (esbuild for example), and esm requires file extension with imports.
+                "import/extensions": "off",
+            },
+        },
     ],
 };

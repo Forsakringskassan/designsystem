@@ -1,6 +1,6 @@
-const { camelCase } = require("./common");
+import { camelCase } from "./common.js";
 
-function generateIndexFile(directoryNames) {
+export function generateIndexFile(directoryNames) {
     const lib = (dir) => camelCase(dir);
     const libMeta = (dir) => `${lib(dir)}Meta`;
     const libInject = (dir) => `${lib(dir)}Inject`;
@@ -31,5 +31,3 @@ function generateIndexFile(directoryNames) {
         "};",
     ].join("\n");
 }
-
-module.exports = { generateIndexFile };

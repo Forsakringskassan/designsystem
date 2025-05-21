@@ -1,7 +1,8 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const { globSync } = require("glob");
+import fs from "node:fs";
+import path from "node:path";
+import { globSync } from "glob";
 
+const __dirname = import.meta.dirname;
 /**
  * Read and parse a JSON file.
  *
@@ -12,7 +13,7 @@ function loadJsonFile(filePath) {
     return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }
 
-function buildDemo() {
+export function buildDemo() {
     const dest = "dist";
     const binFolder = __dirname;
     const destFolder = path.resolve("./dist");
@@ -73,5 +74,3 @@ function buildDemo() {
     fs.writeFileSync(`${dest}/index.html`, demoPageMarkup);
     fs.copyFileSync(path.join(templatesFolder, "demo.css"), `${dest}/demo.css`);
 }
-
-module.exports = { buildDemo };

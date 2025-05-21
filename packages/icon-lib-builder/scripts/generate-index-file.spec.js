@@ -1,4 +1,4 @@
-const { generateIndexFile } = require("./generate-index-file");
+import { generateIndexFile } from "./generate-index-file";
 
 it("should generate index.js file", () => {
     expect(generateIndexFile(["foo", "bar-baz"])).toMatchInlineSnapshot(`
