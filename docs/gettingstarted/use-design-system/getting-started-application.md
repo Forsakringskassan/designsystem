@@ -26,6 +26,16 @@ På så sätt får du tillgång till de mixins och Sass-funktioner som finns i F
 
 Det andra sättet är att använda en förkompilerad CSS-fil.
 
+::: info Tänk på att
+
+Designsystemet använder inte vendor prefix varken på Sass källkod eller förkompilerad CSS.
+
+För maximal webbläsar-kompatibilitet rekommenderar vi att du kör [autoprefixer][autoprefixer] eller liknande verktyg.
+
+:::
+
+[autoprefixer]: https://github.com/postcss/autoprefixer
+
 ### Sass
 
 Gå in i din main.scss-fil eller motsvarande och lägg in följande rader:
@@ -89,7 +99,7 @@ Utgå från standardtemat och skriv över de variabler som ska ändras.
 
 {@link icons Biblioteket för standardikoner} ligger i `@fkui/icon-lib-default`. Det innehåller licensfria ikoner som används av komponenterna i FKUI.
 
-För att använda ikoner i din applikation måste du ladda in den `spritesheet` med ikoner som du vill använda.
+För att använda ikoner i din applikation måste du ladda in det `spritesheet` med ikoner som du vill använda.
 Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.
 
 Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:
