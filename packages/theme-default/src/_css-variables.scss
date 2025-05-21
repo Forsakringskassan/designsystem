@@ -9,7 +9,7 @@
     --f-text-color-default: #{$palette-color-fk-black-100}; // global
     --f-text-color-default-inverted: #{$palette-color-white-100}; // global
     --f-text-color-discrete: #{$palette-color-fk-black-70}; // label, table
-    --f-text-color-weekday-weeknumber: #{$palette-color-fk-black-70};
+
     --f-text-color-error: #{$palette-color-red-85}; // label, error-list, form-step
 
     --f-text-color-link: #{$palette-color-bluebell-100};
@@ -106,10 +106,6 @@
     --f-background-tab-active: #{$palette-color-white-100};
     --f-background-tab-inactive: #{$palette-color-bluebell-5};
 
-    --f-background-calendar-default: #{$palette-color-fk-black-5};
-    --f-background-calendar-selected: #{$palette-color-green-a-100};
-    --f-background-calendar-hover: #{$palette-color-bluebell-15};
-
     --f-background-menu: #{$palette-color-fk-black-5};
     --f-background-menu-vertical-hover: #{$palette-color-fk-black-15};
     --f-background-menu-vertical-highlight: #{$palette-color-green-b-15};
@@ -118,7 +114,6 @@
     --f-background-popupmenu-vertical-hover: #{$palette-color-fk-black-15};
     --f-background-popupmenu-vertical-highlight: #{$palette-color-green-b-15};
 
-    --f-background-month: #{$palette-color-fk-black-5};
     --f-background-dialogue-tree: #{$palette-color-white-100};
     --f-background-dialogue-tree-hover: #{$palette-color-bluebell-15};
 
@@ -135,10 +130,6 @@
     --f-border-color-card: #{$palette-color-fk-black-50}; // Card
     --f-border-color-dialogue-tree: #{$palette-color-fk-black-50}; // Dialogue tree
 
-    --f-border-color-calendar-highlight: #{$palette-color-fk-black-70};
-    --f-border-color-calendar-disabled: #{$palette-color-fk-black-50};
-    --f-border-color-calendar-navbar: #{$palette-color-fk-black-15};
-    --f-border-color-calendar-selected: #{$palette-color-white-100};
     --f-border-color-form-step: #{$palette-color-fk-black-15};
     --f-border-color-progress-finished: #{$palette-color-green-b-120};
     --f-border-color-progress-ongoing: #{$palette-color-fk-black-70};
