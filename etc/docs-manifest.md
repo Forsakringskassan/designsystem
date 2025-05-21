@@ -164,6 +164,7 @@ gettingstarted/about/index.html
 gettingstarted/about/news.html
 gettingstarted/about/release-plan.html
 gettingstarted/contribute-to-fkds/checklist-publication.html
+gettingstarted/contribute-to-fkds/code-guidelines.html
 gettingstarted/contribute-to-fkds/commits.html
 gettingstarted/contribute-to-fkds/contributing-developers.html
 gettingstarted/contribute-to-fkds/index.html
