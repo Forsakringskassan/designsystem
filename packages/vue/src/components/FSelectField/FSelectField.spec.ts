@@ -183,6 +183,22 @@ describe("events", () => {
         expect(vModelValue).toEqual({ id: 1, fruit: "banana" });
     });
 
+    it("should support v-model by emitting update:modelValue event with null", async () => {
+        const wrapper = mount(
+            createTestComponentWithOptions([
+                { text: "BananaObject", value: { id: 1, fruit: "banana" } },
+                { text: "AppleObject", value: { id: 2, fruit: "apple" } },
+            ]),
+            { props: { modelValue: null } },
+        );
+        await wrapper.vm.$nextTick();
+        const vModelValue = wrapper
+            .findComponent(FSelectField)
+            .props("modelValue");
+
+        expect(vModelValue).toBeNull();
+    });
+
     it("should emit change event with when value changes", () => {
         const wrapper = mount(
             createTestComponentWithOptions([

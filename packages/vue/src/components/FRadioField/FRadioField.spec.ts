@@ -22,21 +22,40 @@ function createWrapper({
 }
 
 it.each`
-    vModel       | value    | expected
-    ${undefined} | ${false} | ${false}
-    ${null}      | ${false} | ${false}
-    ${""}        | ${false} | ${false}
-    ${false}     | ${""}    | ${false}
-    ${0}         | ${false} | ${false}
-    ${undefined} | ${true}  | ${false}
-    ${null}      | ${true}  | ${false}
-    ${""}        | ${true}  | ${false}
-    ${true}      | ${""}    | ${false}
-    ${0}         | ${true}  | ${false}
-    ${0}         | ${0}     | ${true}
-    ${1}         | ${0}     | ${false}
-    ${1}         | ${1}     | ${true}
-    ${0}         | ${1}     | ${false}
+    vModel       | value        | expected
+    ${undefined} | ${undefined} | ${true}
+    ${undefined} | ${false}     | ${false}
+    ${undefined} | ${true}      | ${false}
+    ${undefined} | ${""}        | ${false}
+    ${undefined} | ${0}         | ${false}
+    ${""}        | ${""}        | ${true}
+    ${""}        | ${undefined} | ${false}
+    ${""}        | ${false}     | ${false}
+    ${""}        | ${true}      | ${false}
+    ${""}        | ${0}         | ${false}
+    ${false}     | ${false}     | ${true}
+    ${false}     | ${undefined} | ${false}
+    ${false}     | ${true}      | ${false}
+    ${false}     | ${""}        | ${false}
+    ${false}     | ${0}         | ${false}
+    ${true}      | ${true}      | ${true}
+    ${true}      | ${undefined} | ${false}
+    ${true}      | ${false}     | ${false}
+    ${true}      | ${""}        | ${false}
+    ${true}      | ${0}         | ${false}
+    ${0}         | ${0}         | ${true}
+    ${0}         | ${undefined} | ${false}
+    ${0}         | ${false}     | ${false}
+    ${0}         | ${true}      | ${false}
+    ${0}         | ${1}         | ${false}
+    ${0}         | ${""}        | ${false}
+    ${1}         | ${1}         | ${true}
+    ${1}         | ${0}         | ${false}
+    ${null}      | ${null}      | ${true}
+    ${null}      | ${true}      | ${false}
+    ${null}      | ${false}     | ${false}
+    ${null}      | ${""}        | ${false}
+    ${null}      | ${0}         | ${false}
 `(
     'should handle v-model value "$vModel" where checked should be "$expected" when radio value is "$value"',
     ({ vModel, value, expected }) => {
