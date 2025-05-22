@@ -5,7 +5,7 @@ import { useFieldset } from "../FFieldset";
 import { renderSlotText, dispatchComponentValidityEvent, hasSlot, getHTMLElementFromVueRef } from "../../utils";
 
 // ! Boolean must be last so that empty string ('') is not parsed as true, see: https://github.com/vuejs/vue/blob/81e1e47cabbd479e2a285f03120944f1efffe749/test/unit/features/options/props.spec.js#L516.
-const anyType = [String, Object, Array, Number, Date, Boolean];
+const anyType = [String, Object, Array, Number, Date, null, Boolean];
 
 export default defineComponent({
     name: "FRadioField",

@@ -24,12 +24,10 @@ function createWrapper({
 it.each`
     vModel       | value    | expected
     ${undefined} | ${false} | ${false}
-    ${null}      | ${false} | ${false}
     ${""}        | ${false} | ${false}
     ${false}     | ${""}    | ${false}
     ${0}         | ${false} | ${false}
     ${undefined} | ${true}  | ${false}
-    ${null}      | ${true}  | ${false}
     ${""}        | ${true}  | ${false}
     ${true}      | ${""}    | ${false}
     ${0}         | ${true}  | ${false}
@@ -37,6 +35,11 @@ it.each`
     ${1}         | ${0}     | ${false}
     ${1}         | ${1}     | ${true}
     ${0}         | ${1}     | ${false}
+    ${null}      | ${null}  | ${true}
+    ${null}      | ${true}  | ${false}
+    ${null}      | ${false} | ${false}
+    ${null}      | ${""}    | ${false}
+    ${null}      | ${0}     | ${false}
 `(
     'should handle v-model value "$vModel" where checked should be "$expected" when radio value is "$value"',
     ({ vModel, value, expected }) => {
