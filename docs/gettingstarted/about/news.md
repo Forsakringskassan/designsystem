@@ -4,6 +4,10 @@ name: news
 layout: content-with-menu
 ---
 
+## Version 6.9.0
+
+`FCrudButton` är deprekerad, läs mer om att {@link migrating-crud-button migrera FCrudButton}.
+
 ## Version 6.7.0
 
 ### Uppdatering av applikationslayout (beta)
