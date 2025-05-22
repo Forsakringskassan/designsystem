@@ -86,8 +86,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[3] || (_cache[3] = [
               _createTextVNode(" Namn ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [3]
           }, 8, ["modelValue"])), [
             [
               _directive_validation,
@@ -115,8 +115,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[4] || (_cache[4] = [
               _createTextVNode(" Minimuml\xE4ngd ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [4]
           }, 8, ["modelValue"])), [
             [
               _directive_validation,
@@ -141,8 +141,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* HOISTED */
       ))
     ]),
-    _: 1
-    /* STABLE */
+    _: 1,
+    __: [5, 6]
   });
 }
 exampleComponent.render = render;

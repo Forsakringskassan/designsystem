@@ -2879,8 +2879,8 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx2(() => _cache[0] || (_cache[0] = [
             _createTextVNode2("\xA0")
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [0]
         })) : _createCommentVNode7("v-if", true),
         _createVNode2(_component_i_flex_item, { grow: "" }, {
           default: _withCtx2(() => [

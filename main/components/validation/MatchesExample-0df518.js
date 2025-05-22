@@ -60,8 +60,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[2] || (_cache[2] = [
           _createTextVNode(" Referens ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [2]
       }, 8, ["modelValue"])
     ]),
     _createElementVNode("div", _hoisted_3, [
@@ -73,8 +73,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" Inmatningsf\xE4lt ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [3]
       }, 8, ["modelValue"])), [
         [
           _directive_validation,

@@ -78,8 +78,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" Fr\xE5n och med ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [3]
       }, 8, ["modelValue", "onComponentValidity"])), [
         [
           _directive_validation,
@@ -108,8 +108,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" Till och med ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [4]
       }, 8, ["modelValue"])), [
         [
           _directive_validation,

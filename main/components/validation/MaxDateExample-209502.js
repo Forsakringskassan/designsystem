@@ -49,8 +49,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx(() => _cache[1] || (_cache[1] = [
       _createTextVNode(" Fyll i ett datum som ligger f\xF6re den 31 januari 2020 ")
     ])),
-    _: 1
-    /* STABLE */
+    _: 1,
+    __: [1]
   }, 8, ["modelValue"])), [
     [
       _directive_validation,
