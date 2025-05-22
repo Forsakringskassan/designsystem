@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { inject, ref, type Ref, useTemplateRef, watchEffect } from "vue";
+import { computed, inject, ref, type Ref, useTemplateRef, watchEffect } from "vue";
 
 const activeRowIndex = inject<Ref<number>>("activeRowIndex");
 const activeCellIndex = inject<Ref<number>>("activeCellIndex");
+const lastRowIndex = inject<Ref<number>>("lastRowIndex");
+const lastCellIndex = inject<Ref<number>>("lastCellIndex");
 const el = useTemplateRef("td");
 
 const { focusable = true } = defineProps<{ focusable?: boolean }>();
@@ -27,8 +29,6 @@ watchEffect(() => {
 });
 
 function onKeydown(e: KeyboardEvent): void {
-    console.log("onkeydown", e);
-
     const el =
         e.target.cellIndex !== undefined
             ? e.target
@@ -40,14 +40,23 @@ function onKeydown(e: KeyboardEvent): void {
         return;
     }
 
+    console.log(e.code, el.parentElement.rowIndex, el.cellIndex);
+
     if (e.code === "ArrowLeft") {
         e.preventDefault();
+        if (el.cellIndex === 0) {
+            return;
+        }
+
         activeCellIndex.value = el.cellIndex - 1;
         activeRowIndex.value = el.parentElement.rowIndex;
     }
 
     if (e.code === "ArrowRight") {
         e.preventDefault();
+        if (lastCellIndex?.value === el.cellIndex) {
+            return;
+        }
 
         activeCellIndex.value = el.cellIndex + 1;
         activeRowIndex.value = el.parentElement.rowIndex;
@@ -56,6 +65,10 @@ function onKeydown(e: KeyboardEvent): void {
     if (e.code === "ArrowUp") {
         e.preventDefault();
 
+        if (el.parentElement.rowIndex === 1) {
+            return;
+        }
+
         activeCellIndex.value = el.cellIndex;
         activeRowIndex.value = el.parentElement.rowIndex - 1;
     }
@@ -63,14 +76,34 @@ function onKeydown(e: KeyboardEvent): void {
     if (e.code === "ArrowDown") {
         e.preventDefault();
 
+        if (lastRowIndex.value === el.parentElement.rowIndex) {
+            return;
+        }
+
         activeCellIndex.value = el.cellIndex;
         activeRowIndex.value = el.parentElement.rowIndex + 1;
     }
 }
+
+function onClick() {
+    if (focusable) {
+        activeCellIndex.value = el.value.cellIndex;
+        activeRowIndex.value = el.value.parentElement.rowIndex;
+        el.value?.focus();
+    }
+}
+
+const tabindex = computed(() => {
+    if (!focusable) {
+        return undefined;
+    }
+
+    return active.value ? 0 : -1;
+});
 </script>
 
 <template>
-    <td ref="td" tabindex="0" class="table__column" style="border: solid red 1px" @keydown="onKeydown">
+    <td ref="td" :tabindex class="table__column" @keydown="onKeydown" @click="onClick">
         <slot v-bind="{ active }"></slot>
     </td>
 </template>
