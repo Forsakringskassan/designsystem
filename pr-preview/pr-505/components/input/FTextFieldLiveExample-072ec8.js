@@ -335,8 +335,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
       }, 8, ["modelValue"]),
       _ctx.isTextfieldOrNumeric ? (_openBlock(), _createBlock(_component_f_select_field, {
         key: 0,
@@ -362,8 +362,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [27, 28]
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _ctx.isTextfieldOrNumeric ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 1,
@@ -374,8 +374,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[29] || (_cache[29] = [
           _createTextVNode(" Begr\xE4nsa till\xE5tna tecken med whitelist-validatorn ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [29]
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       !_ctx.isClearable ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 2,
@@ -386,8 +386,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[30] || (_cache[30] = [
           _createTextVNode(" Obligatorisk f\xE4lt ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [30]
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDisabled,
@@ -397,8 +397,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[31] || (_cache[31] = [
           _createTextVNode(" Inaktivt f\xE4lt ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [31]
       }, 8, ["modelValue"]),
       _ctx.showAppendInner ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 3,
@@ -409,8 +409,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[32] || (_cache[32] = [
           _createTextVNode(" Inneh\xE5ll i inmatningsf\xE4lt ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [32]
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_fieldset, { name: "etikett" }, {
         label: _withCtx(() => _cache[33] || (_cache[33] = [
@@ -426,8 +426,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[34] || (_cache[34] = [
               _createTextVNode(" Hj\xE4lptext ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [34]
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
           _ctx.supportDescription ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
             key: 1,
@@ -438,8 +438,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[35] || (_cache[35] = [
               _createTextVNode(" Formatbeskrivning ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [35]
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
           !_ctx.isEmail ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
             key: 2,
@@ -450,8 +450,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[36] || (_cache[36] = [
               _createTextVNode(" Tooltip ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [36]
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.isInline,
@@ -461,8 +461,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[37] || (_cache[37] = [
               _createTextVNode(" Inline ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [37]
           }, 8, ["modelValue"]),
           !_ctx.isTextfieldOrNumeric ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
             key: 3,
@@ -473,8 +473,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[38] || (_cache[38] = [
               _createTextVNode(" Annan etikett ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [38]
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true)
         ]),
         _: 1

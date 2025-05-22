@@ -61,8 +61,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
           _createTextVNode(" M\xE5ndag ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [6]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         id: "dagar-tisdag",
@@ -73,8 +73,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[7] || (_cache[7] = [
           _createTextVNode(" Tisdag ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [7]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         id: "dagar-onsdag",
@@ -85,8 +85,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
           _createTextVNode(" Onsdag ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [8]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         id: "dagar-torsdag",
@@ -97,8 +97,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[9] || (_cache[9] = [
           _createTextVNode(" Torsdag ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [9]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         id: "dagar-fredag",
@@ -109,8 +109,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
           _createTextVNode(" Fredag ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [10]
       }, 8, ["modelValue"])
     ]),
     _: 1

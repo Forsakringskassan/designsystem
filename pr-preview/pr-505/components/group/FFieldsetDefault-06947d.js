@@ -85,8 +85,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[5] || (_cache[5] = [
           _createTextVNode(" Ja ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [5]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_radio_field, {
         id: "deltid-nej",
@@ -97,8 +97,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
           _createTextVNode(" Nej ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [6]
       }, 8, ["modelValue"])
     ]),
     _: 1

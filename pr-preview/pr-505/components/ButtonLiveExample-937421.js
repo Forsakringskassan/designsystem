@@ -166,8 +166,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [9, 10, 11]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.buttonSize,
@@ -199,8 +199,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [13, 14, 15]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.hasIcon,
@@ -210,8 +210,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[16] || (_cache[16] = [
           _createTextVNode(" Visa ikon ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [16]
       }, 8, ["modelValue"]),
       _ctx.hasIcon ? (_openBlock(), _createBlock(_component_f_fieldset, {
         key: 0,
@@ -230,8 +230,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[18] || (_cache[18] = [
               _createTextVNode(" V\xE4nster ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [18]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.iconPlacement,
@@ -241,8 +241,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[19] || (_cache[19] = [
               _createTextVNode(" H\xF6ger ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [19]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -257,8 +257,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[20] || (_cache[20] = [
           _createTextVNode(" Fullbredd i mobil ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [20]
       }, 8, ["modelValue", "disabled"]),
       _ctx.isTertiary ? (_openBlock(), _createBlock(_component_f_select_field, {
         key: 1,
@@ -291,8 +291,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [22, 23, 24]
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDisabled,
@@ -302,8 +302,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[25] || (_cache[25] = [
           _createTextVNode(" Inaktiv ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [25]
       }, 8, ["modelValue"])
     ]),
     _: 1

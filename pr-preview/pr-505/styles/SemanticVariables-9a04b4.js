@@ -83,18 +83,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-color-action-background-select-hover",
-      "value": "#dbe9e2",
-      "palette": "green-a-15",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-select-default",
-      "value": "#35805b",
-      "palette": "green-a-85",
-      "comment": null
-    },
-    {
       "name": "--fkds-color-border-primary",
       "value": "#8d8e91",
       "palette": "fk-black-50",
@@ -366,24 +354,48 @@ var metadata_default = {
     },
     {
       "name": "--fkds-color-select-background-primary-default",
+      "value": "#4a52b6",
+      "palette": "bluebell-100",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-select-background-primary-hover",
+      "value": "#e5e5f5",
+      "palette": "bluebell-15",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-select-background-primary-active",
+      "value": "#e5e5f5",
+      "palette": "bluebell-15",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-select-background-primary-focus",
+      "value": "#e5e5f5",
+      "palette": "bluebell-15",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-select-background-secondary-default",
       "value": "#35805b",
       "palette": "green-a-85",
       "comment": null
     },
     {
-      "name": "--fkds-color-select-background-primary-hover",
+      "name": "--fkds-color-select-background-secondary-hover",
       "value": "#dbe9e2",
       "palette": "green-a-15",
       "comment": null
     },
     {
-      "name": "--fkds-color-select-background-primary-active",
+      "name": "--fkds-color-select-background-secondary-active",
       "value": "#dbe9e2",
       "palette": "green-a-15",
       "comment": null
     },
     {
-      "name": "--fkds-color-select-background-primary-focus",
+      "name": "--fkds-color-select-background-secondary-focus",
       "value": "#dbe9e2",
       "palette": "green-a-15",
       "comment": null

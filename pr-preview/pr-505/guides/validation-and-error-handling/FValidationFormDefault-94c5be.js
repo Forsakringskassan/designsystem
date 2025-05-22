@@ -100,8 +100,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[9] || (_cache[9] = [
           _createTextVNode(" Alternativt telefonnummer (frivilligt) ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [9]
       }, 8, ["modelValue"]),
       _withDirectives(_createVNode(_component_f_email_text_field, {
         modelValue: _ctx.email,
@@ -127,8 +127,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
               _createTextVNode(" Mejl ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [11]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.info,
@@ -138,8 +138,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[12] || (_cache[12] = [
               _createTextVNode(" Sms ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [12]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -165,8 +165,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[14] || (_cache[14] = [
               _createTextVNode(" Nyheter ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [14]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.tips,
@@ -176,8 +176,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[15] || (_cache[15] = [
               _createTextVNode(" Tips ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [15]
           }, 8, ["modelValue"])
         ]),
         _: 1

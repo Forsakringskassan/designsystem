@@ -76,8 +76,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               default: _withCtx(() => _cache[3] || (_cache[3] = [
                 _createTextVNode(" Etikett-rubrik ")
               ])),
-              _: 1
-              /* STABLE */
+              _: 1,
+              __: [3]
             })), [
               [
                 _directive_validation,
@@ -93,8 +93,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               default: _withCtx(() => _cache[4] || (_cache[4] = [
                 _createTextVNode(" Etikett-rubrik (frivillig) ")
               ])),
-              _: 1
-              /* STABLE */
+              _: 1,
+              __: [4]
             })), [
               [
                 _directive_validation,
@@ -120,8 +120,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               default: _withCtx(() => _cache[5] || (_cache[5] = [
                 _createTextVNode(" Etikett-rubrik ")
               ])),
-              _: 1
-              /* STABLE */
+              _: 1,
+              __: [5]
             }, 8, ["modelValue"])), [
               [
                 _directive_validation,
@@ -163,8 +163,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   /* HOISTED */
                 ))
               ]),
-              _: 1
-              /* STABLE */
+              _: 1,
+              __: [7, 8, 9]
             }, 8, ["modelValue"])), [
               [
                 _directive_validation,
@@ -188,8 +188,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => [
             _cache[11] || (_cache[11] = _createTextVNode(" En informationstext "))
           ]),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [11]
         })
       ]),
       _: 1
