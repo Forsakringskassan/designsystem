@@ -39,7 +39,7 @@
     "postsass": "node scripts/extract-sass-variables.mjs src/_palette-variables.scss dist/palette.json"
   },
   "devDependencies": {
-    "@adobe/css-tools": "4.4.2",
+    "@adobe/css-tools": "4.4.3",
     "get-css-variables": "1.0.0",
     "glob": "11.0.2",
     "npm-run-all2": "8.0.2",
