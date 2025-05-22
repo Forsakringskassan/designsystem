@@ -9,10 +9,8 @@ export const FocusPlugin: Plugin = {
     install(app: App) {
         app.directive(
             "focus",
-            (el: HTMLElement, { value, arg }: DirectiveBinding) => {
+            (el: HTMLElement, { value }: DirectiveBinding) => {
                 watchEffect(() => {
-                    console.log("value changed", el, value);
-
                     if (value === true) {
                         el.focus();
                     }
