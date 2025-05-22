@@ -13,6 +13,7 @@ import { type SortOrder } from "./sort-order";
 
 const $t = useTranslate();
 
+const useDefaultSortOrder = ref(true);
 const searchString = ref("");
 const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 };
 const sortAttribute = ref<SortOrder>(defaultSortValue);
@@ -176,7 +177,7 @@ onMounted(() => {
 watch(
     () => props.data,
     () => {
-        if (props.defaultSortAttribute !== "") {
+        if (props.defaultSortAttribute !== "" && useDefaultSortOrder.value) {
             const foundAttribute = sortOrders.value.find((item) => {
                 return item.attribute === props.defaultSortAttribute && item.ascending === props.defaultSortAscending;
             });
@@ -205,6 +206,7 @@ function sortFilterData(): void {
 }
 
 function onChangeSortAttribute(): void {
+    useDefaultSortOrder.value = false;
     sortFilterData();
     emit("usedSortAttributes", sortAttribute.value);
 }
