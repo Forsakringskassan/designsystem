@@ -162,7 +162,7 @@ describe("events", () => {
         expect(htmlSelect.value).toBe("apple");
         expect(
             wrapper
-                .findComponent(FSelectField)
+                .getComponent(FSelectField)
                 .emitted("update:modelValue")![0][0],
         ).toMatchInlineSnapshot(`"apple"`);
     });
@@ -177,10 +177,26 @@ describe("events", () => {
         );
         await wrapper.vm.$nextTick();
         const vModelValue = wrapper
-            .findComponent(FSelectField)
+            .getComponent(FSelectField)
             .props("modelValue");
 
         expect(vModelValue).toEqual({ id: 1, fruit: "banana" });
+    });
+
+    it("should support v-model by emitting update:modelValue event with null", async () => {
+        const wrapper = mount(
+            createTestComponentWithOptions([
+                { text: "BananaObject", value: { id: 1, fruit: "banana" } },
+                { text: "AppleObject", value: { id: 2, fruit: "apple" } },
+            ]),
+            { props: { modelValue: null } },
+        );
+        await wrapper.vm.$nextTick();
+        const vModelValue = wrapper
+            .getComponent(FSelectField)
+            .props("modelValue");
+
+        expect(vModelValue).toBeNull();
     });
 
     it("should emit change event with when value changes", () => {
@@ -194,7 +210,7 @@ describe("events", () => {
         const select = wrapper.get("select");
         select.setValue("apple");
         expect(
-            wrapper.findComponent(FSelectField).emitted("change")![0][0],
+            wrapper.getComponent(FSelectField).emitted("change")![0][0],
         ).toMatchInlineSnapshot(`"apple"`);
     });
 });
