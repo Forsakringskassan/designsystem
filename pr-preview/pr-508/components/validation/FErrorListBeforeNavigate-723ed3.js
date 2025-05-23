@@ -81,8 +81,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => _cache[3] || (_cache[3] = [
             _createTextVNode(" Favoritfrukt \u{1F34E} ")
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [3]
         }),
         _createVNode(_component_f_text_field, {
           id: "favorit-godis",
@@ -91,8 +91,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => _cache[4] || (_cache[4] = [
             _createTextVNode(" Favoritgodis \u{1F36C} ")
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [4]
         })
       ]),
       _: 1

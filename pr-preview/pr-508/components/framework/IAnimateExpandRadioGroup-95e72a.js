@@ -61,8 +61,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[5] || (_cache[5] = [
           _createTextVNode(" Ja tack ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [5]
       }, 8, ["modelValue"]),
       _createVNode(_component_i_animate_expand, { expanded: _ctx.moreQuestions }, {
         default: _withCtx(() => [
@@ -82,8 +82,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 default: _withCtx(() => _cache[7] || (_cache[7] = [
                   _createTextVNode(" Ja, visa mer ")
                 ])),
-                _: 1
-                /* STABLE */
+                _: 1,
+                __: [7]
               }, 8, ["modelValue"]),
               _createVNode(_component_i_animate_expand, { expanded: _ctx.areYouSure }, {
                 default: _withCtx(() => [
@@ -91,8 +91,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     default: _withCtx(() => _cache[8] || (_cache[8] = [
                       _createTextVNode(" Vad tyckte du? ")
                     ])),
-                    _: 1
-                    /* STABLE */
+                    _: 1,
+                    __: [8]
                   })), [
                     [
                       _directive_validation,
@@ -113,8 +113,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 default: _withCtx(() => _cache[9] || (_cache[9] = [
                   _createTextVNode(" Nej tack ")
                 ])),
-                _: 1
-                /* STABLE */
+                _: 1,
+                __: [9]
               }, 8, ["modelValue"])
             ]),
             _: 1
@@ -132,8 +132,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
           _createTextVNode(" Nej tack ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [10]
       }, 8, ["modelValue"])
     ]),
     _: 1

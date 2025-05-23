@@ -125,8 +125,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               _cache[3] || (_cache[3] = _createTextVNode(" L\xE4gg till fruktkorg "))
             ])
           ]),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [4]
         })), [
           [_directive_test, "myOrderStep"]
         ]),
@@ -147,8 +147,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   default: _withCtx(() => [..._cache[5] || (_cache[5] = [
                     _createTextVNode(" Namn p\xE5 presentkort ")
                   ])]),
-                  _: 2
-                  /* DYNAMIC */
+                  _: 2,
+                  __: [5]
                 }, 1032, ["modelValue", "onUpdate:modelValue"])), [
                   [
                     _directive_validation,
@@ -236,8 +236,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               /* HOISTED */
             )
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [8]
         }, 8, ["onBeforeNext"])), [
           [_directive_test, "myInfoStep"]
         ])

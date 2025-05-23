@@ -46,8 +46,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" L\xE4gg till fil ")
     ])),
-    _: 1
-    /* STABLE */
+    _: 1,
+    __: [0]
   });
 }
 exampleComponent.render = render;

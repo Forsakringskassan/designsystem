@@ -181,8 +181,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
           _createTextVNode(" Inaktiverad ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [6]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isRequired,
@@ -192,8 +192,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[7] || (_cache[7] = [
           _createTextVNode(" Obligatorisk ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [7]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isBorder,
@@ -203,8 +203,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
           _createTextVNode(" Ram ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [8]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "checkbox-label" }, {
         label: _withCtx(() => _cache[9] || (_cache[9] = [
@@ -219,8 +219,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
               _createTextVNode(" Tooltip ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [10]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
@@ -230,8 +230,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
               _createTextVNode(" Hj\xE4lptext ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [11]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_select_field, {
             modelValue: _ctx.showDetails,
@@ -263,8 +263,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 /* HOISTED */
               ))
             ]),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [13, 14, 15]
           }, 8, ["modelValue"])
         ]),
         _: 1

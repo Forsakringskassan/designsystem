@@ -199,8 +199,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       /* TEXT */
                     )
                   ]),
-                  _: 2
-                  /* DYNAMIC */
+                  _: 2,
+                  __: [2]
                 }, 1032, ["onClick"])
               ]),
               _: 2
@@ -223,8 +223,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" Namn ")
         ])),
-        _: 2
-        /* DYNAMIC */
+        _: 2,
+        __: [3]
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
         [
           _directive_validation,

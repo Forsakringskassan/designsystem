@@ -84,8 +84,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => _cache[4] || (_cache[4] = [
             _createTextVNode(" Nej ")
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [4]
         }, 8, ["modelValue"])), [
           [_directive_test, "disabled-no"]
         ]),
@@ -98,8 +98,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => _cache[5] || (_cache[5] = [
             _createTextVNode(" Ja ")
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [5]
         }, 8, ["modelValue"])), [
           [_directive_test, "disabled-yes"]
         ])
@@ -119,8 +119,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => _cache[6] || (_cache[6] = [
             _createTextVNode(" Namn ")
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [6]
         }, 8, ["modelValue", "disabled"])), [
           [_directive_test, "dynamic-disable"],
           [

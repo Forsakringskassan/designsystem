@@ -93,8 +93,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[5] || (_cache[5] = [
               _createTextVNode(" Field1 ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [5]
           }, 8, ["modelValue"])), [
             [
               _directive_validation,
@@ -114,8 +114,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[6] || (_cache[6] = [
               _createTextVNode(" Field2 ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [6]
           }, 8, ["modelValue"])), [
             [
               _directive_validation,
