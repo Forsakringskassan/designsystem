@@ -15487,13 +15487,13 @@ const _hoisted_5$n = {
 const _hoisted_6$h = {
   class: "modal__header"
 };
-const _hoisted_7$c = {
+const _hoisted_7$d = {
   key: 0,
   ref: "modalTitle",
   class: "modal__title",
   tabindex: "-1"
 };
-const _hoisted_8$8 = {
+const _hoisted_8$9 = {
   ref: "modalContent",
   class: "modal__content",
   tabindex: "-1"
@@ -15523,7 +15523,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createBaseVNode("div", _hoisted_4$t, [createBaseVNode("div", _hoisted_5$n, [createBaseVNode("div", _hoisted_6$h, [createBaseVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$c, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$8, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$3, [createBaseVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$3, [createBaseVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,

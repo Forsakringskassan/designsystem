@@ -213,9 +213,10 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "formModal() function",
-    "confirmModal() function",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -233,10 +234,9 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
+    "openModal",
+    "formModal() function",
+    "confirmModal() function",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -1082,18 +1082,23 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
       "terms": []
     },
     {
@@ -1182,23 +1187,18 @@
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
       "terms": []
     },
     {
