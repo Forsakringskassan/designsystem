@@ -1,4 +1,4 @@
-@use "../../core/utils/functions" as *;
+@use "../../core";
 @use "variables" as *;
 
 $BADGE_SELECTOR: ".badge" !default;
@@ -21,7 +21,7 @@ $BADGE_SELECTOR: ".badge" !default;
     box-sizing: border-box;
     display: inline-block;
     font-size: var(--f-font-size-standard);
-    line-height: densify(var(--f-line-height-large));
+    line-height: core.densify(var(--f-line-height-large));
     font-weight: var(--f-font-weight-normal);
     padding: 0 0.5rem;
 

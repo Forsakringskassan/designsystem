@@ -20,7 +20,9 @@ Sass hjälpfunktion för att anpassa värde baserat på aktuell densitet.
 ## Exempel
 
 ```scss
+@use "@fkui/design" as fkui;
+
 .my-awesome-component {
-    margin-bottom: densify(1rem);
+    margin-bottom: fkui.densify(1rem);
 }
 ```

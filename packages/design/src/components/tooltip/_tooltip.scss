@@ -2,8 +2,8 @@
 
 @use "sass:math";
 @use "sass:list";
+@use "../../core";
 @use "../../core/size";
-@use "../../core/utils/functions" as *;
 @use "variables" as *;
 
 $tooltip-border-radius: var(--f-border-radius-small);
@@ -45,7 +45,7 @@ $inner-border:
     display: none;
     overflow: hidden;
     width: 100%;
-    margin-bottom: densify(size.$margin-100);
+    margin-bottom: core.densify(size.$margin-100);
 
     &.expanded,
     &.animating {
@@ -54,7 +54,7 @@ $inner-border:
 
     &__container {
         text-wrap: pretty;
-        margin-bottom: densify(size.$margin-025);
+        margin-bottom: core.densify(size.$margin-025);
 
         &:has(+ .tooltip.expanded),
         &:has(+ .tooltip.animating) {

@@ -2,4 +2,4 @@
 @use "components/all" as components;
 @use "internal-components/all" as internal-components;
 
-@forward "core/mixins/focus";
+@forward "core" show densify, focus-indicator;

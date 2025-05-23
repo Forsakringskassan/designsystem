@@ -1,7 +1,7 @@
+@use "../../core";
 @use "../../core/config-variables";
 @use "../../core/size";
 @use "../../core/mixins/circle" as *;
-@use "../../core/utils/functions" as *;
 
 $EXPANDABLE_PARAGRAPH_SELECTOR: ".expandable-paragraph" !default;
 $ICON_WIDTH: var(--f-icon-size-small);
@@ -10,7 +10,7 @@ $CONTENT_MARGIN: calc(#{$ICON_WIDTH} + #{$ICON_MARGIN});
 $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
 
 #{$EXPANDABLE_PARAGRAPH_SELECTOR} {
-    margin: 0 0 densify(var(--f-margin-component-bottom));
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
     &__heading {
         line-height: $EXPANDABLE_PARAGRAPH_LINE_HEIGHT;
         margin: 0;
@@ -80,18 +80,18 @@ $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
     }
 
     &__content {
-        margin-top: densify(size.$margin-075);
-        margin-bottom: densify(size.$margin-100);
+        margin-top: core.densify(size.$margin-075);
+        margin-bottom: core.densify(size.$margin-100);
     }
 
     &__separator {
         border-bottom: var(--f-border-width-medium) solid var(--f-border-color-separator);
-        margin: 0 $ICON_MARGIN densify(size.$margin-050) $ICON_MARGIN;
+        margin: 0 $ICON_MARGIN core.densify(size.$margin-050) $ICON_MARGIN;
     }
 
     &--list {
-        margin-bottom: densify(size.$margin-050);
-        padding-bottom: densify(size.$padding-050);
+        margin-bottom: core.densify(size.$margin-050);
+        padding-bottom: core.densify(size.$padding-050);
         border-bottom: var(--f-border-width-small) solid var(--f-border-color-separator);
     }
 }

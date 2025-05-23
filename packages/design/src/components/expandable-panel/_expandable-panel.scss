@@ -1,8 +1,8 @@
+@use "../../core";
 @use "../../core/mixins/circle";
 @use "../../core/typography/headings";
-@use "../icon/icon";
 @use "../../core/size";
-@use "../../core/utils/functions" as *;
+@use "../icon/icon";
 
 $EXPANDABLE_PANEL_SELECTOR: ".expandable-panel" !default;
 $EXPANDABLE_PANEL_LINE_HEIGHT: var(--f-line-height-medium);
@@ -10,7 +10,7 @@ $ICON_MARGIN: 0.5rem;
 $ICON_WIDTH: var(--f-icon-size-medium);
 
 #{$EXPANDABLE_PANEL_SELECTOR} {
-    margin-bottom: densify(size.$margin-200);
+    margin-bottom: core.densify(size.$margin-200);
 
     &__icon {
         @include circle.circle($background: var(--f-icon-color-expandable-panel), $size: $ICON_WIDTH);
@@ -64,7 +64,7 @@ $ICON_WIDTH: var(--f-icon-size-medium);
             cursor: pointer;
             display: flex;
             margin: 0;
-            padding: densify(size.$padding-100) size.$padding-100;
+            padding: core.densify(size.$padding-100) size.$padding-100;
             position: relative;
             text-align: left;
             width: 100%;
@@ -108,6 +108,6 @@ $ICON_WIDTH: var(--f-icon-size-medium);
         border: var(--f-border-width-medium) solid var(--f-border-color-panel);
         border-top: 0;
         line-height: inherit;
-        padding: densify(size.$padding-150) size.$padding-150;
+        padding: core.densify(size.$padding-150) size.$padding-150;
     }
 }
