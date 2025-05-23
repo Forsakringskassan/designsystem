@@ -178,8 +178,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             ]),
             _cache[1] || (_cache[1] = _createTextVNode(" kronor "))
           ]),
-          _: 2
-          /* DYNAMIC */
+          _: 2,
+          __: [1]
         },
         1024
         /* DYNAMIC_SLOTS */

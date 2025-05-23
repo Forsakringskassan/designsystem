@@ -95,8 +95,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[6] || (_cache[6] = [
               _createTextVNode(" Information ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [6]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.messageType,
@@ -106,8 +106,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[7] || (_cache[7] = [
               _createTextVNode(" Varning ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [7]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.messageType,
@@ -117,8 +117,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[8] || (_cache[8] = [
               _createTextVNode(" Fel ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [8]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.messageType,
@@ -128,8 +128,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[9] || (_cache[9] = [
               _createTextVNode(" Positiv \xE5terkoppling ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [9]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -143,8 +143,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
           _createTextVNode(" Kort meddelande ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [10]
       }, 8, ["modelValue"])
     ]),
     _: 1

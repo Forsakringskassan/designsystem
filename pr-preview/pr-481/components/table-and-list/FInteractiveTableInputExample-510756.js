@@ -116,8 +116,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               default: _withCtx(() => _cache[1] || (_cache[1] = [
                 _createTextVNode(" Utbetalningsdatum ")
               ])),
-              _: 2
-              /* DYNAMIC */
+              _: 2,
+              __: [1]
             }, 1032, ["modelValue", "onUpdate:modelValue"])), [
               [
                 _directive_validation,
@@ -149,8 +149,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               default: _withCtx(() => _cache[2] || (_cache[2] = [
                 _createTextVNode(" Utbetalt belopp ")
               ])),
-              _: 2
-              /* DYNAMIC */
+              _: 2,
+              __: [2]
             }, 1032, ["modelValue", "onUpdate:modelValue"])), [
               [
                 _directive_validation,

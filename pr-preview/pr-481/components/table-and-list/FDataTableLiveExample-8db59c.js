@@ -169,8 +169,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[9] || (_cache[9] = [
               _createTextVNode(" Zebrarandig ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [9]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.hasRowHeader,
@@ -180,8 +180,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
               _createTextVNode(" Radrubriker ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [10]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.hasRowDescription,
@@ -191,8 +191,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
               _createTextVNode(" Kolumnbeskrivnig ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [11]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.hasHiddenCaption,
@@ -202,8 +202,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[12] || (_cache[12] = [
               _createTextVNode(" Dold caption ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [12]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.showHorizontalScroll,
@@ -213,8 +213,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[13] || (_cache[13] = [
               _createTextVNode(" Horisontal skroll ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [13]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -233,8 +233,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[15] || (_cache[15] = [
               _createTextVNode(" Tom tabell ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [15]
           }, 8, ["modelValue"]),
           _ctx.isEmpty ? (_openBlock(), _createBlock(_component_f_fieldset, {
             key: 0,
@@ -252,8 +252,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 default: _withCtx(() => _cache[17] || (_cache[17] = [
                   _createTextVNode(" Standardmeddelande ")
                 ])),
-                _: 1
-                /* STABLE */
+                _: 1,
+                __: [17]
               }, 8, ["modelValue"]),
               _createVNode(_component_f_radio_field, {
                 modelValue: _ctx.hasCustomEmptyText,
@@ -263,8 +263,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 default: _withCtx(() => _cache[18] || (_cache[18] = [
                   _createTextVNode(" Eget meddelande ")
                 ])),
-                _: 1
-                /* STABLE */
+                _: 1,
+                __: [18]
               }, 8, ["modelValue"])
             ]),
             _: 1

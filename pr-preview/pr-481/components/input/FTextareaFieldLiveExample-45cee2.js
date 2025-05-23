@@ -145,8 +145,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[7] || (_cache[7] = [
               _createTextVNode(" Tooltip ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [7]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
@@ -156,8 +156,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[8] || (_cache[8] = [
               _createTextVNode(" Hj\xE4lptext ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [8]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -176,8 +176,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
               _createTextVNode(" Inaktiv ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [10]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.isResizable,
@@ -187,8 +187,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
               _createTextVNode(" Justerbar storlek ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [11]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.customWarning,
@@ -198,8 +198,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[12] || (_cache[12] = [
               _createTextVNode(" Egen varningstext ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [12]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -242,8 +242,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [14, 15, 16, 17]
       }, 8, ["modelValue"])
     ]),
     _: 1

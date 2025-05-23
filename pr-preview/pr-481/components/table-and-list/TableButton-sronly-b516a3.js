@@ -151,8 +151,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   /* TEXT */
                 )
               ]),
-              _: 2
-              /* DYNAMIC */
+              _: 2,
+              __: [1]
             }, 1032, ["onClick"])
           ]),
           _: 2

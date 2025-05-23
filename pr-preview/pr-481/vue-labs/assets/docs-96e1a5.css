@@ -1,6 +1,6 @@
 @charset "UTF-8";
 :root {
-  --fkui-theme-default-version: "6.8.0";
+  --fkui-theme-default-version: "6.9.0";
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff;
@@ -3092,6 +3092,7 @@ input[type=search]:focus,
 }
 .file-item__file-name {
   margin-left: 0.25rem;
+  min-width: 0;
   overflow-wrap: break-word;
   white-space: normal;
 }
@@ -5650,6 +5651,7 @@ input[type=search]:focus,
 }
 .wizard-step .wizard-step__content {
   margin-left: 0.5rem;
+  min-width: 0;
   grid-area: wizard-step__content;
 }
 .wizard-step .wizard-step__line-up {

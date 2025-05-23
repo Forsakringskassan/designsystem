@@ -66,8 +66,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               /* HOISTED */
             )
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [0]
         })
       ]),
       _: 1

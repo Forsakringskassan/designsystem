@@ -63,8 +63,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       default: _withCtx(() => _cache[2] || (_cache[2] = [
         _createTextVNode(" Max tio tecken ")
       ])),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [2]
     }, 8, ["modelValue"])), [
       [_directive_test, "validator-enabled"],
       [
