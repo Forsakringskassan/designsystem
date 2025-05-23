@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/modal/FFormModal.md:FFormModal-b2b95e.js
+// virtual-entry:virtual:docs/components/modal/FFormModal.md:FFormModal-67ae09.js
 import { defineComponent } from "vue";
 import { FFormModal, FTextField } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -77,7 +77,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b2b95e"
+  selector: "#example-67ae09"
 });
 export {
   render

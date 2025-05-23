@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalUsage.vue:FModalUsage-ebf33c.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalUsage.vue:FModalUsage-2bd10a.js
 import { defineComponent as _defineComponent2 } from "vue";
 import { useModal } from "@fkui/vue";
 
@@ -82,7 +82,7 @@ MyAwesomeModal_default.render = render;
 MyAwesomeModal_default.__file = "packages/vue/src/components/FModal/examples/MyAwesomeModal.vue";
 var MyAwesomeModal_default2 = MyAwesomeModal_default;
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalUsage.vue:FModalUsage-ebf33c.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalUsage.vue:FModalUsage-2bd10a.js
 import { createElementVNode as _createElementVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent2({
   __name: "FModalUsage",
@@ -109,7 +109,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ebf33c"
+  selector: "#example-2bd10a"
 });
 export {
   render2 as render
