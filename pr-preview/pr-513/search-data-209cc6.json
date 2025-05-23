@@ -83,12 +83,12 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
-    "Hjälpklasser",
-    "densify",
-    "Skärmläsare",
     "i18next",
     "i18nextProvider",
     "I18nextProvider",
+    "Hjälpklasser",
+    "densify",
+    "Skärmläsare",
     "useResize() composable",
     "useModal() composable",
     "useDetailsPanel() composable",
@@ -213,9 +213,6 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "formModal() function",
-    "confirmModal() function",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -237,6 +234,9 @@
     "ValidationErrorMessageBuilder: mapCombined() method",
     "ValidationErrorMessageBuilder: create() function",
     "ValidationErrorMessageBuilder: build() method",
+    "openModal",
+    "formModal() function",
+    "confirmModal() function",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -604,21 +604,6 @@
       ]
     },
     {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/densify.html",
-      "title": "densify",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": []
-    },
-    {
       "url": "functions/i18next-translate/i18next.html",
       "title": "i18next",
       "terms": []
@@ -631,6 +616,21 @@
     {
       "url": "functions/i18next-translate/i18next-provider-interface.html",
       "title": "I18nextProvider",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/densify.html",
+      "title": "densify",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
       "terms": []
     },
     {
@@ -1082,21 +1082,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1199,6 +1184,21 @@
     {
       "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
       "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
       "terms": []
     },
     {
