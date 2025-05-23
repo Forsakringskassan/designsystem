@@ -83,12 +83,12 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
-    "i18next",
-    "i18nextProvider",
-    "I18nextProvider",
     "Hjälpklasser",
     "densify",
     "Skärmläsare",
+    "i18next",
+    "i18nextProvider",
+    "I18nextProvider",
     "useResize() composable",
     "useModal() composable",
     "useDetailsPanel() composable",
@@ -604,21 +604,6 @@
       ]
     },
     {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": []
-    },
-    {
       "url": "functions/helpers/index.html",
       "title": "Hjälpklasser",
       "terms": []
@@ -631,6 +616,21 @@
     {
       "url": "functions/helpers/accessibility.html",
       "title": "Skärmläsare",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
       "terms": []
     },
     {
