@@ -160,6 +160,6 @@
     "--f-background-month",
     "--f-background-calendar-default",
     "--f-background-calendar-selected",
-    " --f-background-calendar-hover",
+    "--f-background-calendar-hover",
     "--f-border-color-calendar-disabled"
 ]
