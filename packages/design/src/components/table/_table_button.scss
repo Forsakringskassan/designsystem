@@ -10,7 +10,7 @@
     font-size: 14px;
     line-height: 1.25rem;
     min-width: 24px;
-    padding: densify(0.375rem) size.$padding-025;
+    padding: core.densify(0.375rem) size.$padding-025;
     text-underline-offset: 3.5px;
     margin: var(--f-button-tertiary-table-column-action-margin);
     width: max-content;
