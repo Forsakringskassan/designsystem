@@ -1,5 +1,5 @@
+@use "../../core";
 @use "../../core/size";
-@use "../../core/utils/functions" as *;
 @use "variables" as *;
 
 $ICON_SELECTOR: ".icon" !default;
@@ -19,7 +19,7 @@ $ICON_SELECTOR: ".icon" !default;
         height: var(--f-icon-size-large);
         position: absolute;
         right: size.$margin-075;
-        top: densify(size.$margin-050);
+        top: core.densify(size.$margin-050);
         transition: opacity var(--f-animation-duration-medium) ease-in-out;
         width: var(--f-icon-size-large);
     }

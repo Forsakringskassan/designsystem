@@ -1,0 +1,3 @@
+@function densify($value) {
+    @return calc($value * var(--f-density-factor));
+}

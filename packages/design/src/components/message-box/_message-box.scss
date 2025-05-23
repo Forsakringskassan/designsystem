@@ -1,6 +1,6 @@
+@use "../../core";
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
-@use "../../core/utils/functions" as *;
 @use "variables" as *;
 
 $MESSAGE_BOX_SELECTOR: ".message-box" !default;
@@ -51,7 +51,7 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     width: var(--f-width-full);
     box-shadow: var(--f-box-modal-shadow);
     border-collapse: separate;
-    padding: densify(size.$padding-100) size.$padding-100;
+    padding: core.densify(size.$padding-100) size.$padding-100;
 
     @include make-box-variant($selector, $messagebox-error-color-background, $messagebox-error-color-border, $short-layout);
 
@@ -61,8 +61,8 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
 }
 
 #{$MESSAGE_BOX_SELECTOR} {
-    padding: densify(size.$padding-150) size.$padding-150;
-    margin: size.$margin-050 0 densify(size.$margin-200) 0;
+    padding: core.densify(size.$padding-150) size.$padding-150;
+    margin: size.$margin-050 0 core.densify(size.$margin-200) 0;
 
     &__heading {
         font-size: var(--f-font-size-h3);
@@ -70,7 +70,7 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
         color: $messagebox-info-color-heading;
         line-height: var(--f-line-height-medium);
         align-items: flex-start;
-        margin-bottom: densify(size.$margin-050);
+        margin-bottom: core.densify(size.$margin-050);
         margin-top: 0;
 
         @include breakpoints.breakpoint-only(sm) {
@@ -115,8 +115,8 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     }
 
     @include breakpoints.breakpoint-down(sm) {
-        margin-bottom: densify(size.$margin-150);
-        margin-top: densify(size.$margin-150);
-        padding: densify(size.$padding-100) size.$padding-100;
+        margin-bottom: core.densify(size.$margin-150);
+        margin-top: core.densify(size.$margin-150);
+        padding: core.densify(size.$padding-100) size.$padding-100;
     }
 }
