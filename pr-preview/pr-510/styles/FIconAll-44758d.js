@@ -169,7 +169,7 @@ function injectSpritesheet() {
   element.innerHTML = spritesheet;
   element.style.display = "none";
   element.setAttribute("aria-hidden", "true");
-  element.setAttribute("data-icon-package", "@fkui/icon-lib-builder");
+  element.setAttribute("data-icon-package", "@fkui/icon-lib-default");
   element.setAttribute("data-icon-library", "f");
   document.body.appendChild(element);
 }
