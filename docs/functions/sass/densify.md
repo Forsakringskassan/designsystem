@@ -1,7 +1,10 @@
 ---
-title: densify
 name: densify
-layout: content-with-menu
+title: densify() function
+short-title: densify()
+layout: api
+redirect_from:
+    - functions/helpers/densify.html
 ---
 
 Sass hjälpfunktion för att anpassa värde baserat på aktuell densitet.
