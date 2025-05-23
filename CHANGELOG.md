@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 6.9.0 (2025-05-23)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** update semantic tokens for select (refs SFKUI-7236) 7275a1f
+* **@fkui/vue:** deprecate `FCrudButton` (refs SFKUI-7155) 7650477
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** reset min width of file item to enable wrapping of its file name (refs FRI-850) a4260c4
+* **@fkui/design:** prevent wizard step from overflowing when its content has unbreakable text (refs FRI-850) cee4ffc
+* **deps:** update dependency i18next to v25.2.0 e04b932
+* **deps:** update vue monorepo to v3.5.14 ([#504](undefined/Forsakringskassan/designsystem/issues/504)) 7766571
+* **fkui-vue:** radio field component allows null model value (refs SFKUI-6500) f9bf9d5
+* **fkui-vue:** select field component allows null model value (refs SFKUI-6500) b46968f
+
 ## 6.8.0 (2025-05-19)
 
 ### Features
