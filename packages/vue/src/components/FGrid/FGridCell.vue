@@ -83,6 +83,30 @@ function onKeydown(e: KeyboardEvent): void {
         activeCellIndex.value = el.cellIndex;
         activeRowIndex.value = el.parentElement.rowIndex + 1;
     }
+
+    if (e.code === "Home") {
+        e.preventDefault();
+
+        if (e.ctrlKey) {
+            activeCellIndex.value = 0;
+            activeRowIndex.value = 1;
+        } else {
+            activeCellIndex.value = 0;
+            activeRowIndex.value = el.parentElement.rowIndex;
+        }
+    }
+
+    if (e.code === "End") {
+        e.preventDefault();
+
+        if (e.ctrlKey) {
+            activeCellIndex.value = lastCellIndex.value;
+            activeRowIndex.value = lastRowIndex.value;
+        } else {
+            activeCellIndex.value = lastCellIndex.value;
+            activeRowIndex.value = el.parentElement.rowIndex;
+        }
+    }
 }
 
 function onClick() {
