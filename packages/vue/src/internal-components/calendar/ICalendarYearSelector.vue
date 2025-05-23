@@ -1,17 +1,12 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
 import { FDate } from "@fkui/date";
 import { focus } from "@fkui/logic";
-import ICalendarNavbar from "../../internal-components/calendar/ICalendarNavbar.vue";
-import ICalendarMonth from "../../internal-components/calendar/ICalendarMonth.vue";
+import { defineComponent, type PropType } from "vue";
 import { getHTMLElementFromVueRef, getHTMLElementsFromVueRef } from "../../utils";
 
 export default defineComponent({
-    name: "FCalendar",
-    components: {
-        ICalendarNavbar,
-        ICalendarMonth,
-    },
+    name: "ICalendarYearSelector",
+    components: {},
     props: {
         /**
          * Active month.
@@ -20,17 +15,6 @@ export default defineComponent({
         modelValue: {
             type: Object as PropType<FDate>,
             required: true,
-        },
-        /**
-         * Date to set tabindex on when component gains focus.
-         *
-         * Consumers can update this related to active month.
-         * If undefined, the first day of the month will gain focus.
-         */
-        tabDate: {
-            type: Object as PropType<FDate | undefined>,
-            required: false,
-            default: undefined,
         },
         /**
          * Min date.
@@ -49,13 +33,13 @@ export default defineComponent({
         /**
          * Set to `true` if year selector should be enabled.
          */
-        yearSelector: {
+        enabled: {
             type: Boolean,
             required: false,
             default: false,
         },
     },
-    emits: ["click", "update:modelValue"],
+    emits: ["update:modelValue"],
     data() {
         return {
             activeYear: NaN,
@@ -75,14 +59,6 @@ export default defineComponent({
         },
     },
     methods: {
-        onClickDay(date: FDate): void {
-            /**
-             * `click` event. Emitted when a calendar day is clicked.
-             * @event click
-             * @type {FDate}
-             */
-            this.$emit("click", date);
-        },
         onChangeDate(date: FDate): void {
             /**
              * `v-model` event. Emitted when changing to a different month or year in the calendar.
@@ -164,68 +140,22 @@ export default defineComponent({
     },
 });
 </script>
-
 <template>
-    <div class="calendar__wrapper">
-        <i-calendar-navbar
-            ref="calendarNavbar"
-            :model-value="modelValue"
-            :min-date="minDate"
-            :max-date="maxDate"
-            :year-selector="yearSelector"
-            :is-year-selector-open="isYearSelectorOpen"
-            @update:model-value="onChangeDate"
-            @update:show-year-selector="onUpdateShowYearSelector"
-        ></i-calendar-navbar>
-
-        <!--
-        <i-calendar-year-selector
-            v-if="isYearSelectorOpen"
-            :model-value="modelValue"
-            :min-date="minDate"
-            :max-date="maxDate"
-            :enabled="isYearSelectorOpen"
-            class="calendar__year-selector"
-        ></i-calendar-year-selector>
-        -->
-
-        <div v-if="isYearSelectorOpen" class="calendar__year-selector">
-            <!-- [html-validate-disable-next prefer-native-element] -->
-            <ul role="listbox" class="combobox__listbox__list" :aria-activedescendant="'yearSelector-' + activeYear">
-                <li
-                    v-for="year in selectableYears"
-                    :id="'yearSelector-' + year"
-                    ref="yearElements"
-                    :key="year"
-                    :tabindex="activeYear === year ? 0 : -1"
-                    :aria-selected="activeYear === year ? 'true' : undefined"
-                    class="combobox__listbox__option calendar__year-selector__year"
-                    :class="{ 'combobox__listbox__option--highlight': activeYear === year }"
-                    @keydown="onYearSelectorKeyDown"
-                    @click.stop.prevent="onClickSelectYear(year)"
-                >
-                    {{ year }}
-                </li>
-            </ul>
-        </div>
-
-        <i-calendar-month
-            v-else
-            :model-value="modelValue"
-            :min-date="minDate"
-            :max-date="maxDate"
-            :tab-date="tabDate"
-            @click="onClickDay"
-            @update:model-value="onChangeDate"
+    <!-- [html-validate-disable-next prefer-native-element] -->
+    <ul role="listbox" class="combobox__listbox__list" :aria-activedescendant="'yearSelector-' + activeYear">
+        <li
+            v-for="year in selectableYears"
+            :id="'yearSelector-' + year"
+            ref="yearElements"
+            :key="year"
+            :tabindex="activeYear === year ? 0 : -1"
+            :aria-selected="activeYear === year ? 'true' : undefined"
+            class="combobox__listbox__option"
+            :class="{ 'combobox__listbox__option--highlight': activeYear === year }"
+            @keydown="onYearSelectorKeyDown"
+            @click.stop.prevent="onClickSelectYear(year)"
         >
-            <template #default="{ date, focused }">
-                <!--
-                @slot Slot for calendar day.
-                @binding {FDate} date The date object for the current day.
-                @binding {boolean} is-focused Indicates whether the current day is focused.
-                -->
-                <slot :date="date" :is-focused="focused"></slot>
-            </template>
-        </i-calendar-month>
-    </div>
+            {{ year }}
+        </li>
+    </ul>
 </template>

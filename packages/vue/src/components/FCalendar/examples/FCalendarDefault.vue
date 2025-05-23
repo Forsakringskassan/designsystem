@@ -20,7 +20,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-calendar v-model="month" :min-date="min" :max-date="max">
+    <f-calendar v-model="month" :min-date="min" :max-date="max" year-selector>
         <template #default="{ date, isFocused }">
             <f-calendar-day :day="date" :focused="isFocused"> </f-calendar-day>
         </template>
