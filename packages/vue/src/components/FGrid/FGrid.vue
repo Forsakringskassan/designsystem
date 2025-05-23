@@ -7,7 +7,7 @@ import FGridCell from "./FGridCell.vue";
 const { rows, expandableAttribute = undefined } = defineProps<{ rows: T[]; expandableAttribute: string | undefined }>();
 
 const columns = [
-    // { id: "expander", size: "", title: "" },
+    { id: "expander", size: "", title: "" },
     { id: "id", size: "", title: "Id" },
     { id: "foo", size: "", title: "Förnamn" },
     { id: "bar", size: "", title: "Efternamn" },
