@@ -90,8 +90,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       default: _withCtx(() => [
         _cache[3] || (_cache[3] = _createTextVNode(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'foo' "))
       ]),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [3]
     }, 8, ["modelValue"])), [
       [
         _directive_validation,
@@ -124,8 +124,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       default: _withCtx(() => [
         _cache[4] || (_cache[4] = _createTextVNode(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'bar' "))
       ]),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [4]
     }, 8, ["modelValue"])), [
       [
         _directive_validation,
@@ -161,8 +161,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       default: _withCtx(() => [
         _cache[5] || (_cache[5] = _createTextVNode(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'demo' "))
       ]),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [5]
     }, 8, ["modelValue"])), [
       [
         _directive_validation,

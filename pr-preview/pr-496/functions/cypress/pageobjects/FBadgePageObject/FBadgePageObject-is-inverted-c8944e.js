@@ -57,8 +57,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => _cache[0] || (_cache[0] = [
             _createTextVNode(" My Not Inverted Badge ")
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [0]
         })), [
           [_directive_test, "my-badge-not-inverted"]
         ])
@@ -71,8 +71,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => _cache[1] || (_cache[1] = [
             _createTextVNode(" My Inverted Badge ")
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [1]
         })), [
           [_directive_test, "my-badge-inverted"]
         ])
