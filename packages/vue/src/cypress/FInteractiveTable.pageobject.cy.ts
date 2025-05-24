@@ -1,5 +1,9 @@
 import { defineComponent } from "vue";
-import { FInteractiveTable, FTableColumn } from "../components";
+import {
+    FInteractiveTable,
+    FTableColumn,
+    FSortFilterDataset,
+} from "../components";
 import { FInteractiveTablePageObject } from "./FInteractiveTable.pageobject";
 
 interface Row {
@@ -41,6 +45,7 @@ const TestComponent = defineComponent({
             :selectable
             :expandable-attribute="expandable ? 'nested' : undefined"
         >
+            <template #caption> Test table </template>
             <template #checkbox-description> Select row </template>
             <template #default="{ row }">
                 <f-table-column :row-header title="A">
@@ -53,7 +58,7 @@ const TestComponent = defineComponent({
     `,
 });
 
-const table = new FInteractiveTablePageObject(".table");
+const table = new FInteractiveTablePageObject();
 
 describe("cell()", () => {
     it("should select the correct cell", () => {
@@ -167,4 +172,295 @@ describe("cell()", () => {
         table.cell({ row: 6, col: 2 }).should("contain.text", "B3");
         table.cell({ row: 6, col: 3 }).should("contain.text", "C3");
     });
+});
+
+it("`caption()` should get `<caption>` element", () => {
+    cy.mount(TestComponent, {
+        props: {
+            rows,
+            rowHeader: false,
+            expandable: false,
+            selectable: false,
+        },
+    });
+
+    table.caption().should("contain.text", "Test table");
+    table.caption().should("have.prop", "tagName", "CAPTION");
+});
+
+it("`headersRow()` should get all `<th>` elements in `<thead>`", () => {
+    cy.mount(TestComponent, {
+        props: {
+            rows,
+            rowHeader: true,
+            expandable: true,
+            selectable: true,
+        },
+    });
+
+    // Includes `<th>` for selectable and expandable.
+    table.headersRow().should("have.length", 5);
+    table.headersRow().eq(0).should("have.prop", "tagName", "TH");
+    table.headersRow().eq(0).should("exist");
+    table.headersRow().eq(1).should("exist");
+    table.headersRow().eq(2).should("have.trimmedText", "A");
+    table.headersRow().eq(3).should("have.trimmedText", "B");
+    table.headersRow().eq(4).should("have.trimmedText", "C");
+});
+
+describe("`bodyRow()`", () => {
+    it("should get all `<tr>` elements in `<tbody>`", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: false,
+                selectable: false,
+            },
+        });
+
+        table.bodyRow().should("have.length", 3);
+        table.bodyRow().eq(0).find("td").eq(0).should("have.trimmedText", "A1");
+        table.bodyRow().eq(1).find("td").eq(0).should("have.trimmedText", "A2");
+        table.bodyRow().eq(2).find("td").eq(0).should("have.trimmedText", "A3");
+        table.bodyRow().eq(0).should("have.prop", "tagName", "TR");
+        table.bodyRow().eq(1).should("have.prop", "tagName", "TR");
+        table.bodyRow().eq(2).should("have.prop", "tagName", "TR");
+    });
+
+    it("should be able to get collapsed expandable rows", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: true,
+                selectable: false,
+            },
+        });
+
+        table.bodyRow().should("have.length", 6);
+        table
+            .bodyRow()
+            .eq(1)
+            .find("td")
+            .eq(1)
+            .should("have.trimmedText", "A1a");
+        table
+            .bodyRow()
+            .eq(2)
+            .find("td")
+            .eq(1)
+            .should("have.trimmedText", "A1b");
+        table
+            .bodyRow()
+            .eq(3)
+            .find("td")
+            .eq(1)
+            .should("have.trimmedText", "A1c");
+    });
+
+    it("should be able to get expanded expandable rows", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: true,
+                selectable: false,
+            },
+        });
+
+        table.row(0).click();
+        table.bodyRow().should("have.length", 6);
+        table
+            .bodyRow()
+            .eq(1)
+            .find("td")
+            .eq(1)
+            .should("have.trimmedText", "A1a");
+        table
+            .bodyRow()
+            .eq(2)
+            .find("td")
+            .eq(1)
+            .should("have.trimmedText", "A1b");
+        table
+            .bodyRow()
+            .eq(3)
+            .find("td")
+            .eq(1)
+            .should("have.trimmedText", "A1c");
+    });
+});
+
+describe("`row()`", () => {
+    it("should get correct `<tr>` in `<tbody>`", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: false,
+                selectable: false,
+            },
+        });
+
+        table.row(0).find("td").eq(0).should("have.trimmedText", "A1");
+        table.row(1).find("td").eq(0).should("have.trimmedText", "A2");
+        table.row(2).find("td").eq(0).should("have.trimmedText", "A3");
+        table.row(3).should("not.exist");
+        table.row(0).should("have.prop", "tagName", "TR");
+        table.row(1).should("have.prop", "tagName", "TR");
+        table.row(2).should("have.prop", "tagName", "TR");
+    });
+
+    it("should be able to get collapsed expandable rows", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: true,
+                selectable: false,
+            },
+        });
+
+        table.row(1).find("td").eq(1).should("have.trimmedText", "A1a");
+        table.row(2).find("td").eq(1).should("have.trimmedText", "A1b");
+        table.row(3).find("td").eq(1).should("have.trimmedText", "A1c");
+    });
+
+    it("should be able to get expanded expandable rows", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: true,
+                selectable: false,
+            },
+        });
+
+        table.row(0).click();
+        table.row(1).find("td").eq(1).should("have.trimmedText", "A1a");
+        table.row(2).find("td").eq(1).should("have.trimmedText", "A1b");
+        table.row(3).find("td").eq(1).should("have.trimmedText", "A1c");
+    });
+});
+
+it("`columnItem()` should get `FTableColumnPageObject` for given row index", () => {
+    cy.mount(TestComponent, {
+        props: {
+            rows,
+            rowHeader: false,
+            expandable: true,
+            selectable: true,
+        },
+    });
+
+    table
+        .columnItem(0)
+        .tableRowHeaderContent()
+        .eq(2)
+        .should("have.trimmedText", "A");
+    table
+        .columnItem(0)
+        .tableRowHeaderContent()
+        .eq(3)
+        .should("have.trimmedText", "B");
+    table
+        .columnItem(0)
+        .tableRowHeaderContent()
+        .eq(4)
+        .should("have.trimmedText", "C");
+    table.columnItem(1).tableRowBodyContent(2).should("have.trimmedText", "A1");
+    table.columnItem(1).tableRowBodyContent(3).should("have.trimmedText", "B1");
+    table.columnItem(1).tableRowBodyContent(4).should("have.trimmedText", "C1");
+});
+
+it("`headerRowItem()` should get `FTableColumnPageObject` for header row", () => {
+    cy.mount(TestComponent, {
+        props: {
+            rows,
+            rowHeader: false,
+            expandable: true,
+            selectable: true,
+        },
+    });
+
+    table.headerRowItem().tableRowHeaderContent().should("have.length", 5);
+    table.headerRowItem().tableRowHeaderContent().eq(0).should("exist");
+    table.headerRowItem().tableRowHeaderContent().eq(1).should("exist");
+    table
+        .headerRowItem()
+        .tableRowHeaderContent()
+        .eq(2)
+        .should("have.trimmedText", "A");
+    table
+        .headerRowItem()
+        .tableRowHeaderContent()
+        .eq(3)
+        .should("have.trimmedText", "B");
+    table
+        .headerRowItem()
+        .tableRowHeaderContent()
+        .eq(4)
+        .should("have.trimmedText", "C");
+});
+
+it("`getColumnSortedByIcon()` should get sort icon of given column and order", () => {
+    const SortedComponent = defineComponent({
+        components: { FInteractiveTable, FTableColumn, FSortFilterDataset },
+        data() {
+            return {
+                sortableAttributes: {
+                    a: "A",
+                    b: "B",
+                    c: "C",
+                },
+                rows,
+            };
+        },
+        template: /* HTML */ `
+            <f-sort-filter-dataset
+                :data="rows"
+                default-sort-attribute="a"
+                :default-sort-ascending="true"
+                :sortable-attributes="sortableAttributes"
+            >
+                <template #default="{ sortFilterResult }">
+                    <f-interactive-table
+                        :rows="sortFilterResult"
+                        selectable
+                        expandable-attribute="nested"
+                    >
+                        <template #caption> Test table </template>
+                        <template #checkbox-description> Select row </template>
+                        <template #default="{ row }">
+                            <f-table-column name="a" title="A">
+                                {{ row.a }}
+                            </f-table-column>
+                            <f-table-column name="b" title="B">
+                                {{ row.b }}
+                            </f-table-column>
+                            <f-table-column name="c" title="C">
+                                {{ row.c }}
+                            </f-table-column>
+                        </template>
+                    </f-interactive-table>
+                </template>
+            </f-sort-filter-dataset>
+        `,
+    });
+    cy.mount(SortedComponent);
+
+    table.getColumnSortedByIcon(2, "ascending").should("exist");
+    table.getColumnSortedByIcon(2, "descending").should("not.exist");
+    table.getColumnSortedByIcon(2, "unsorted").should("not.exist");
+
+    table.headersRow().eq(2).click();
+    table.getColumnSortedByIcon(2, "ascending").should("not.exist");
+    table.getColumnSortedByIcon(2, "descending").should("exist");
+    table.getColumnSortedByIcon(2, "unsorted").should("not.exist");
+
+    table.headersRow().eq(2).click();
+    table.getColumnSortedByIcon(2, "ascending").should("not.exist");
+    table.getColumnSortedByIcon(2, "descending").should("not.exist");
+    table.getColumnSortedByIcon(2, "unsorted").should("exist");
 });
