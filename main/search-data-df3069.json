@@ -41,22 +41,13 @@
     "Bricka",
     "FBadge",
     "CHANGELOG v5",
+    "Formatering och parsning",
+    "Formaterare och parser - anpassad",
     "Validering och felhantering",
     "Längdvalidering",
     "Validator - anpassad",
     "Felmeddelande - anpassat",
     "Korsvalidering",
-    "Formatering och parsning",
-    "Formaterare och parser - anpassad",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "Kom igång",
-    "Ta fram applikation",
     "Version 5 migreringsguide",
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
@@ -69,10 +60,15 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Vue.js",
-    "Om testverktyg",
-    "Generella funktioner",
-    "Jest",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "Kom igång",
+    "Ta fram applikation",
     "EventBus",
     "EventBus",
     "focus-indicator() mixin",
@@ -102,6 +98,10 @@
     "includeItem",
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
+    "Vue.js",
+    "Om testverktyg",
+    "Generella funktioner",
+    "Jest",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -426,6 +426,16 @@
       "terms": []
     },
     {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": []
+    },
+    {
       "url": "guides/validation-and-error-handling/validation.html",
       "title": "Validering och felhantering",
       "terms": []
@@ -448,42 +458,6 @@
     {
       "url": "guides/validation-and-error-handling/cross-validation.html",
       "title": "Korsvalidering",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -544,23 +518,29 @@
       "terms": []
     },
     {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
       "terms": []
     },
     {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
       "terms": []
     },
     {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -696,6 +676,26 @@
     {
       "url": "functions/functions/dispatch-component-validity-event.html",
       "title": "dispatchComponentValidityEvent",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
       "terms": []
     },
     {
@@ -1407,39 +1407,39 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 32,
-    "50": 32,
-    "51": 32,
-    "52": 32,
-    "53": 32,
-    "54": 33,
-    "55": 34,
-    "56": 35,
-    "57": 36,
-    "58": 37,
-    "59": 38,
-    "60": 38,
-    "61": 39,
-    "62": 40,
-    "63": 41,
-    "64": 42,
+    "49": 33,
+    "50": 34,
+    "51": 34,
+    "52": 35,
+    "53": 36,
+    "54": 37,
+    "55": 38,
+    "56": 39,
+    "57": 40,
+    "58": 41,
+    "59": 42,
+    "60": 43,
+    "61": 43,
+    "62": 43,
+    "63": 43,
+    "64": 43,
     "65": 43,
     "66": 44,
     "67": 45,
     "68": 46,
     "69": 47,
-    "70": 48,
-    "71": 49,
-    "72": 50,
-    "73": 51,
+    "70": 47,
+    "71": 48,
+    "72": 49,
+    "73": 50,
     "74": 51,
     "75": 52,
     "76": 53,
-    "77": 54,
-    "78": 55,
-    "79": 56,
-    "80": 57,
-    "81": 57,
+    "77": 53,
+    "78": 53,
+    "79": 54,
+    "80": 55,
+    "81": 56,
     "82": 57,
     "83": 58,
     "84": 59,
