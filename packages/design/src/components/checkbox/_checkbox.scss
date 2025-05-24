@@ -1,7 +1,7 @@
+@use "../../core";
 @use "../../core/size";
 @use "../../core/mixins/focus" as *;
 @use "../../core/mixins/sr-only" as *;
-@use "../../core/utils/functions" as *;
 
 $checkbox_label_offset: 0.1rem;
 $CHECKBOX_SELECTOR: ".checkbox" !default;
@@ -12,7 +12,7 @@ $CHECKBOX_SELECTOR: ".checkbox" !default;
 
 #{$CHECKBOX_SELECTOR} {
     min-height: var(--f-height-medium);
-    margin-bottom: densify(size.$margin-100);
+    margin-bottom: core.densify(size.$margin-100);
 
     &:last-child {
         margin-bottom: 0;

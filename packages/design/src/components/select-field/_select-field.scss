@@ -10,7 +10,7 @@ $SELECT_FIELD_SELECTOR: ".select-field" !default;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin: 0 0 densify(var(--f-margin-component-bottom));
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
     position: relative;
     width: var(--f-width-full);
 
@@ -36,7 +36,7 @@ $SELECT_FIELD_SELECTOR: ".select-field" !default;
         border: var(--f-border-width-medium) solid $selectfield-color-border-default;
         color: $selectfield-color-text-default;
         cursor: pointer;
-        min-height: densify(var(--f-height-large));
+        min-height: core.densify(var(--f-height-large));
         padding: var(--padding-input-fields);
         width: var(--f-width-full);
 

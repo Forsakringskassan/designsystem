@@ -1,12 +1,12 @@
+@use "../../core";
 @use "../../core/size";
-@use "../../core/utils/functions" as *;
 
 $TABLE_SELECTOR: ".table" !default;
 
 // General variables
 $table-font-size: var(--f-font-size-standard) !default;
 $table-focus-size: 2px !default;
-$table-margin: 0 0 densify(var(--f-margin-component-bottom)) !default;
+$table-margin: 0 0 core.densify(var(--f-margin-component-bottom)) !default;
 
 // Caption
 $table-caption-background: transparent !default;
@@ -16,7 +16,7 @@ $table-caption-foreground: var(--f-text-color-default) !default;
 $table-header-background: var(--f-background-grid-header) !default;
 $table-header-foreground: var(--f-text-color-default) !default;
 $table-header-separator: 1px solid var(--f-border-color-grid) !default;
-$table-header-padding: densify(size.$padding-025) size.$padding-050 !default;
+$table-header-padding: core.densify(size.$padding-025) size.$padding-050 !default;
 $table-header-border: 2px solid var(--f-border-color-grid-header) !default;
 $table-header-font-weight: var(--f-font-weight-medium) !default;
 
@@ -31,13 +31,13 @@ $table-row-background-alt: var(--f-background-grid-striped) !default;
 $table-row-foreground: var(--f-text-color-default) !default;
 $table-row-separator: 1px solid var(--f-border-color-grid) !default;
 $table-row-font-weight: var(--f-font-weight-normal) !default;
-$table-row-line-height: densify(1.5rem) !default;
+$table-row-line-height: core.densify(1.5rem) !default;
 
 // Input fields in table cells
-$table-input-margin-top: densify(size.$margin-025);
+$table-input-margin-top: core.densify(size.$margin-025);
 $table-input-min-width: size.$padding-175;
 $table-input-height: size.$padding-175;
-$table-input-offset-vertical: densify(0.15rem);
+$table-input-offset-vertical: core.densify(0.15rem);
 $table-input-offset-horizontal: 0.25rem;
 
 %table-monospace {
@@ -122,7 +122,7 @@ $table-input-offset-horizontal: 0.25rem;
         font-size: var(--f-font-size-standard);
         font-weight: var(--f-font-weight-medium);
         line-height: var(--f-line-height-large);
-        margin-bottom: densify(size.$margin-025);
+        margin-bottom: core.densify(size.$margin-025);
         width: var(--f-width-full);
         text-align: left;
     }
@@ -222,7 +222,7 @@ $table-input-offset-horizontal: 0.25rem;
 
         td,
         th {
-            padding: densify(var(--f-table-body-row-padding)) var(--f-table-body-row-padding);
+            padding: core.densify(var(--f-table-body-row-padding)) var(--f-table-body-row-padding);
             border-bottom: $table-row-separator;
             vertical-align: top;
         }
@@ -251,7 +251,7 @@ $table-input-offset-horizontal: 0.25rem;
             }
 
             &--selectable {
-                padding: densify(0.2rem) 0.2rem;
+                padding: core.densify(0.2rem) 0.2rem;
             }
 
             &--placeholder + .table__column {

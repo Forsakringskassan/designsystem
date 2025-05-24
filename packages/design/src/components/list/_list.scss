@@ -1,13 +1,13 @@
+@use "../../core";
 @use "../../core/config-variables";
 @use "../../core/size";
-@use "../../core/utils/functions" as *;
 
 $LIST_SELECTOR: ".list" !default;
 
 // list item specific variables
 $list-border: var(--f-border-width-medium) solid var(--f-border-color-grid);
 $list-padding: size.$padding-075;
-$list-margin: 0 0 densify(var(--f-margin-component-bottom));
+$list-margin: 0 0 core.densify(var(--f-margin-component-bottom));
 $list-input-margin-top: 0.1rem;
 $list-input-min-width: size.$padding-175;
 $list-input-height: size.$padding-175;
@@ -48,7 +48,7 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
 
         &__itempane {
             width: 100%;
-            padding: densify(var(--f-list-item-itempane-padding)) var(--f-list-item-itempane-padding);
+            padding: core.densify(var(--f-list-item-itempane-padding)) var(--f-list-item-itempane-padding);
             color: inherit;
 
             --f-margin-component-bottom: 0.5rem;
@@ -67,7 +67,7 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
         }
 
         &__selectpane {
-            padding: densify($list-selectpane-padding) 0 densify($list-selectpane-padding) $list-selectpane-padding;
+            padding: core.densify($list-selectpane-padding) 0 core.densify($list-selectpane-padding) $list-selectpane-padding;
 
             &__input {
                 margin-top: $list-input-margin-top;
@@ -82,7 +82,7 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
                 .checkbox__label::before,
                 .radio-button__label::after,
                 .radio-button__label::before {
-                    top: densify(0.2rem);
+                    top: core.densify(0.2rem);
                     left: 0.2rem;
                 }
             }

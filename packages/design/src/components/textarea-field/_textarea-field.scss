@@ -10,7 +10,7 @@ $TEXTAREA_FIELD_SELECTOR: ".textarea-field" !default;
     flex-direction: column;
     justify-content: flex-end;
     line-height: var(--f-line-height-large);
-    margin: 0 0 densify(var(--f-margin-component-bottom));
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
     position: relative;
     width: var(--f-width-full);
 
@@ -25,8 +25,8 @@ $TEXTAREA_FIELD_SELECTOR: ".textarea-field" !default;
         border: var(--f-border-width-medium) solid $textareafield-color-border-default;
         box-sizing: border-box;
         font-size: var(--f-font-size-standard);
-        min-height: densify(var(--f-height-large));
-        padding: densify(size.$padding-050) size.$padding-075;
+        min-height: core.densify(var(--f-height-large));
+        padding: core.densify(size.$padding-050) size.$padding-075;
         width: var(--f-width-full);
     }
 

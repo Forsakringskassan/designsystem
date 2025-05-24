@@ -1,12 +1,12 @@
+@use "../../core";
 @use "../../core/size";
-@use "../../core/utils/functions" as *;
 @use "variables" as *;
 
 $CARD_SELECTOR: ".card" !default;
 
 #{$CARD_SELECTOR} {
-    padding: densify(size.$padding-100) size.$padding-100;
-    margin: densify(size.$margin-100) 0;
+    padding: core.densify(size.$padding-100) size.$padding-100;
+    margin: core.densify(size.$margin-100) 0;
 
     &--default {
         background-color: $card-color-background;
@@ -40,13 +40,13 @@ $CARD_SELECTOR: ".card" !default;
             font-size: var(--f-font-size-large);
             font-weight: var(--f-font-weight-bold);
             line-height: var(--f-line-height-large);
-            margin-bottom: densify(size.$margin-025);
+            margin-bottom: core.densify(size.$margin-025);
             display: block;
         }
     }
 
     &__footer {
-        padding-top: densify(size.$padding-125);
+        padding-top: core.densify(size.$padding-125);
 
         > .button-group {
             margin-bottom: 0;

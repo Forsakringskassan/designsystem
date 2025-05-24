@@ -141,7 +141,7 @@ functions/functions/ValidationErrorMessageBuilder/create.html
 functions/functions/ValidationErrorMessageBuilder/map-combined.html
 functions/functions/ValidationErrorMessageBuilder/map.html
 functions/helpers/accessibility.html
-functions/helpers/densify.html
+functions/helpers/densify.html -> functions/sass/densify.html
 functions/helpers/index.html
 functions/i18next-translate/i18next-provider-interface.html
 functions/i18next-translate/i18next-provider.html
@@ -152,6 +152,7 @@ functions/plugins/formatplugin.html
 functions/plugins/testplugin.html
 functions/plugins/translationplugin.html
 functions/plugins/validationplugin.html
+functions/sass/densify.html
 functions/sass/focus-indicator.html
 functions/services/event-bus.html
 functions/test-utils/index.html

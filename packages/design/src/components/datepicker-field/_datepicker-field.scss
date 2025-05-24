@@ -1,7 +1,7 @@
+@use "../../core";
 @use "../../core/size";
 @use "../../core/config-variables";
 @use "../../core/mixins/breakpoints";
-@use "../../core/utils/functions" as *;
 
 $DATEPICKER_FIELD_SELECTOR: ".datepicker-field" !default;
 $POPUP_SELECTOR: ".popup" !default;
@@ -22,8 +22,8 @@ $calendar-width: calc(100vw - #{$popup-spacing});
             color: var(--f-icon-color-primary);
             min-height: var(--f-icon-size-large);
             min-width: var(--f-icon-size-large);
-            height: densify(var(--f-icon-size-x-large));
-            width: densify(var(--f-icon-size-x-large));
+            height: core.densify(var(--f-icon-size-x-large));
+            width: core.densify(var(--f-icon-size-x-large));
             vertical-align: middle;
         }
 

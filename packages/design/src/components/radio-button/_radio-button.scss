@@ -1,14 +1,14 @@
+@use "../../core";
 @use "../../core/size";
 @use "../../core/mixins/focus" as *;
 @use "../../core/mixins/sr-only" as *;
-@use "../../core/utils/functions" as *;
 
 $radio_button_label_offset: 0.1rem;
 $RADIO_BUTTON_SELECTOR: ".radio-button" !default;
 
 #{$RADIO_BUTTON_SELECTOR} {
     min-height: var(--f-height-medium);
-    margin-bottom: densify(size.$margin-100);
+    margin-bottom: core.densify(size.$margin-100);
     margin-right: size.$margin-150;
 
     &:last-child {

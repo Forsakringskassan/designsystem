@@ -35,7 +35,3 @@
     $next: if($index < list.length($breakpoint-keys), list.nth($breakpoint-keys, $index + 1), null);
     @return if($next, get-min-for($next) - 0.02px, null);
 }
-
-@function densify($value) {
-    @return calc($value * var(--f-density-factor));
-}

@@ -2,7 +2,6 @@ $BUTTON_SELECTOR: ".button" !default;
 
 @use "../../core";
 @use "../../core/size";
-@use "../../core/utils/functions" as *;
 @use "variables" as *;
 
 @mixin button-group-margin($margin-bottom, $margin-right) {
@@ -19,24 +18,24 @@ $BUTTON_SELECTOR: ".button" !default;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: densify(size.$margin-050);
-    margin-top: densify(size.$margin-025);
+    margin-bottom: core.densify(size.$margin-050);
+    margin-top: core.densify(size.$margin-025);
 
     .button-group__item {
         margin: 0;
-        margin-bottom: densify(size.$margin-100);
+        margin-bottom: core.densify(size.$margin-100);
 
         @include core.breakpoint-up(md) {
-            @include button-group-margin(densify(size.$margin-100), size.$margin-125);
+            @include button-group-margin(core.densify(size.$margin-100), size.$margin-125);
         }
     }
 
     > .button.button--discrete {
-        @include button-group-margin(densify(size.$margin-100), size.$margin-150);
+        @include button-group-margin(core.densify(size.$margin-100), size.$margin-150);
     }
 
     > .button.button--small {
-        @include button-group-margin(densify(size.$margin-075), size.$margin-075);
+        @include button-group-margin(core.densify(size.$margin-075), size.$margin-075);
         &.button--full-width {
             @include core.breakpoint-down(sm) {
                 margin-right: 0;
@@ -45,7 +44,7 @@ $BUTTON_SELECTOR: ".button" !default;
     }
 
     > .button.button--medium {
-        @include button-group-margin(densify(size.$margin-075), size.$margin-100);
+        @include button-group-margin(core.densify(size.$margin-075), size.$margin-100);
         &.button--full-width {
             @include core.breakpoint-down(sm) {
                 margin-right: 0;
@@ -55,7 +54,7 @@ $BUTTON_SELECTOR: ".button" !default;
 
     > .button.button--large {
         @include core.breakpoint-up(md) {
-            @include button-group-margin(densify(size.$margin-100), size.$margin-125);
+            @include button-group-margin(core.densify(size.$margin-100), size.$margin-125);
         }
     }
 
@@ -65,21 +64,21 @@ $BUTTON_SELECTOR: ".button" !default;
 }
 
 .button-list {
-    margin-bottom: densify(size.$margin-050);
-    margin-top: densify(size.$margin-025);
+    margin-bottom: core.densify(size.$margin-050);
+    margin-top: core.densify(size.$margin-025);
     padding-left: 0;
 
     > li button {
         margin: 0;
-        margin-bottom: densify(size.$margin-100);
+        margin-bottom: core.densify(size.$margin-100);
 
         &.button.button--small,
         &.button.button--medium {
-            margin-bottom: densify(size.$margin-075);
+            margin-bottom: core.densify(size.$margin-075);
         }
 
         &.button.button--large {
-            margin-bottom: densify(size.$margin-100);
+            margin-bottom: core.densify(size.$margin-100);
         }
     }
 }
@@ -91,9 +90,9 @@ $button--primary: (
     color: $button-primary-color-text-default,
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-primary-padding-top)),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-primary-padding-top)),
     padding-right: var(--f-button-primary-padding-right),
-    padding-bottom: densify(var(--f-button-primary-padding-bottom)),
+    padding-bottom: core.densify(var(--f-button-primary-padding-bottom)),
     padding-left: var(--f-button-primary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
@@ -105,9 +104,9 @@ $button--secondary: (
     color: $button-secondary-color-text-default,
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-secondary-padding-top)),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-secondary-padding-top)),
     padding-right: var(--f-button-secondary-padding-right),
-    padding-bottom: densify(var(--f-button-secondary-padding-bottom)),
+    padding-bottom: core.densify(var(--f-button-secondary-padding-bottom)),
     padding-left: var(--f-button-secondary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
@@ -119,9 +118,9 @@ $button--standard: (
     color: var(--f-text-color-button-standard),
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-standard-padding-top)),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-standard-padding-top)),
     padding-right: var(--f-button-standard-padding-right),
-    padding-bottom: densify(var(--f-button-standard-padding-bottom)),
+    padding-bottom: core.densify(var(--f-button-standard-padding-bottom)),
     padding-left: var(--f-button-standard-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
@@ -137,9 +136,9 @@ $button--discrete: (
     border-width: 0,
     shadow: none,
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-discrete-padding-top)),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-discrete-padding-top)),
     padding-right: var(--f-button-discrete-padding-right),
-    padding-bottom: densify(var(--f-button-discrete-padding-bottom)),
+    padding-bottom: core.densify(var(--f-button-discrete-padding-bottom)),
     padding-left: var(--f-button-discrete-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
@@ -154,9 +153,9 @@ $button--discrete-inverted: (
     border-width: 0,
     shadow: none,
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-discrete-padding-top)),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-discrete-padding-top)),
     padding-right: var(--f-button-discrete-padding-right),
-    padding-bottom: densify(var(--f-button-discrete-padding-bottom)),
+    padding-bottom: core.densify(var(--f-button-discrete-padding-bottom)),
     padding-left: var(--f-button-discrete-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
@@ -172,9 +171,9 @@ $button--tertiary: (
     border-width: 0,
     shadow: none,
     shadow-hover: none,
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: densify(var(--f-button-tertiary-padding-top)),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-tertiary-padding-top)),
     padding-right: var(--f-button-tertiary-padding-right),
-    padding-bottom: densify(var(--f-button-tertiary-padding-bottom)),
+    padding-bottom: core.densify(var(--f-button-tertiary-padding-bottom)),
     padding-left: var(--f-button-tertiary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
 ) !default;
 
@@ -191,13 +190,13 @@ $button--tertiary: (
     justify-content: center;
     letter-spacing: var(--f-button-letter-spacing);
     line-height: var(--f-button-default-line-height);
-    margin-bottom: densify(size.$margin-150);
-    margin-top: densify(size.$margin-025);
+    margin-bottom: core.densify(size.$margin-150);
+    margin-top: core.densify(size.$margin-025);
     min-width: var(--f-button-min-width);
     /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
-    padding-top: densify(var(--f-button-default-padding-top));
+    padding-top: core.densify(var(--f-button-default-padding-top));
     padding-right: var(--f-button-default-padding-right);
-    padding-bottom: densify(var(--f-button-default-padding-bottom));
+    padding-bottom: core.densify(var(--f-button-default-padding-bottom));
     padding-left: var(--f-button-default-padding-left);
     /* stylelint-enable declaration-block-no-redundant-longhand-properties */
     position: relative;
@@ -254,9 +253,9 @@ $button--tertiary: (
 
         &--black {
             /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
-            padding-top: densify(var(--f-button-discrete-black-padding-top));
+            padding-top: core.densify(var(--f-button-discrete-black-padding-top));
             padding-right: var(--f-button-discrete-black-padding-right);
-            padding-bottom: densify(var(--f-button-discrete-black-padding-bottom));
+            padding-bottom: core.densify(var(--f-button-discrete-black-padding-bottom));
             padding-left: var(--f-button-discrete-black-padding-left);
             /* stylelint-enable declaration-block-no-redundant-longhand-properties */
             color: var(--f-text-color-default);
@@ -284,9 +283,9 @@ $button--tertiary: (
         font-weight: var(--f-font-weight-bold);
         outline-offset: size.$padding-025;
         /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
-        padding-top: densify(var(--f-button-discrete-padding-top));
+        padding-top: core.densify(var(--f-button-discrete-padding-top));
         padding-right: var(--f-button-discrete-padding-right);
-        padding-bottom: densify(var(--f-button-discrete-padding-bottom));
+        padding-bottom: core.densify(var(--f-button-discrete-padding-bottom));
         padding-left: var(--f-button-discrete-padding-left);
         /* stylelint-enable declaration-block-no-redundant-longhand-properties */
         line-height: calc(1.25 * var(--f-font-size-standard));
@@ -356,7 +355,7 @@ $button--tertiary: (
 
         &#{$BUTTON_SELECTOR}--small {
             min-width: 24px;
-            padding: densify(0.375rem) size.$padding-025;
+            padding: core.densify(0.375rem) size.$padding-025;
             text-underline-offset: 3.5px;
             &#{$BUTTON_SELECTOR}--align-text {
                 margin-left: -(size.$margin-025);
@@ -366,9 +365,9 @@ $button--tertiary: (
         &#{$BUTTON_SELECTOR}--medium {
             min-width: 8rem;
             /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
-            padding-top: densify(var(--f-button-tertiary-padding-top));
+            padding-top: core.densify(var(--f-button-tertiary-padding-top));
             padding-right: var(--f-button-tertiary-padding-right);
-            padding-bottom: densify(var(--f-button-tertiary-padding-bottom));
+            padding-bottom: core.densify(var(--f-button-tertiary-padding-bottom));
             padding-left: var(--f-button-tertiary-padding-left);
             /* stylelint-enable declaration-block-no-redundant-longhand-properties */
             &#{$BUTTON_SELECTOR}--align-text {
@@ -378,7 +377,7 @@ $button--tertiary: (
 
         &#{$BUTTON_SELECTOR}--large {
             min-width: var(--f-button-min-width);
-            padding: densify(1.125rem) 0.75rem;
+            padding: core.densify(1.125rem) 0.75rem;
             &#{$BUTTON_SELECTOR}--align-text {
                 margin-left: -(size.$margin-075);
             }
@@ -408,7 +407,7 @@ $button--tertiary: (
         font-size: 14px;
         line-height: 1.25rem;
         min-width: 4rem;
-        padding: densify(size.$padding-025) size.$padding-075;
+        padding: core.densify(size.$padding-025) size.$padding-075;
 
         @include core.breakpoint-down(sm) {
             &:not(.button--full-width) {
@@ -425,7 +424,7 @@ $button--tertiary: (
     &#{$BUTTON_SELECTOR}--medium {
         line-height: 1.5rem;
         min-width: 8rem;
-        padding: densify(0.625rem) 1.25rem;
+        padding: core.densify(0.625rem) 1.25rem;
 
         @include core.breakpoint-down(sm) {
             &:not(.button--full-width) {
@@ -437,7 +436,7 @@ $button--tertiary: (
     &#{$BUTTON_SELECTOR}--large {
         line-height: 1.5rem;
         min-width: 9.5rem;
-        padding: densify(1rem) 1.5rem;
+        padding: core.densify(1rem) 1.5rem;
 
         @include core.breakpoint-down(sm) {
             max-width: var(--f-width-full);

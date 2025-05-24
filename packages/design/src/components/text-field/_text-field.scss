@@ -9,7 +9,7 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin: 0 0 densify(var(--f-margin-component-bottom));
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
     position: relative;
     width: var(--f-width-full);
 
@@ -33,7 +33,7 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
 
     &__input-wrapper {
         display: flex;
-        gap: densify(size.$padding-050);
+        gap: core.densify(size.$padding-050);
     }
 
     &__input {
@@ -41,7 +41,7 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
         box-shadow: var(--f-input-shadow-inset);
         border-radius: var(--f-border-radius-medium);
         border: var(--f-border-width-medium) solid $textfield-color-border-default;
-        min-height: densify(var(--f-height-large));
+        min-height: core.densify(var(--f-height-large));
         padding: 0 0.75rem;
         width: var(--f-width-full);
     }
@@ -60,8 +60,8 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
     &__append-inner {
         display: inline;
         position: absolute;
-        right: densify(size.$margin-075);
-        top: densify(size.$margin-050);
+        right: core.densify(size.$margin-075);
+        top: core.densify(size.$margin-050);
         height: var(--f-icon-size-large);
         width: var(--f-icon-size-large);
         overflow: hidden;
@@ -100,8 +100,8 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
         justify-content: center;
         align-items: center;
         top: 0;
-        right: densify(0.25rem);
-        min-height: densify(var(--f-height-large));
+        right: core.densify(0.25rem);
+        min-height: core.densify(var(--f-height-large));
         width: 2.5rem;
     }
 

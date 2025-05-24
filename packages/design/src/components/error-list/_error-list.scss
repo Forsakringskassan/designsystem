@@ -1,12 +1,12 @@
+@use "../../core";
 @use "../../core/config-variables";
 @use "../../core/size";
-@use "../../core/utils/functions" as *;
 
 $ERROR_LIST_SELECTOR: ".error-list" !default;
 
 #{$ERROR_LIST_SELECTOR} {
     color: var(--f-text-color-error);
-    margin: 0 0 densify(var(--f-margin-component-bottom));
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
 
     &--list-style-none {
         list-style-type: none;
@@ -19,7 +19,7 @@ $ERROR_LIST_SELECTOR: ".error-list" !default;
 
     &__list {
         margin: 0;
-        line-height: max(1.5, densify(2));
+        line-height: max(1.5, core.densify(2));
     }
 
     &__bullet::before {

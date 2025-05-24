@@ -1,6 +1,6 @@
+@use "../../core";
 @use "../../core/size";
 @use "../icon/icon";
-@use "../../core/utils/functions" as *;
 @use "variables" as *;
 
 $LABEL_SELECTOR: ".label" !default;
@@ -11,7 +11,7 @@ $LABEL_SELECTOR: ".label" !default;
     font-size: var(--f-font-size-standard);
     font-weight: var(--f-font-weight-medium);
     line-height: var(--f-line-height-large);
-    margin-bottom: densify(size.$margin-025);
+    margin-bottom: core.densify(size.$margin-025);
     width: var(--f-width-full);
 
     &__message {
@@ -33,7 +33,7 @@ $LABEL_SELECTOR: ".label" !default;
 
         &--left {
             position: relative;
-            top: densify(3px);
+            top: core.densify(3px);
         }
     }
 

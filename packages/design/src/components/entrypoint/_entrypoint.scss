@@ -1,6 +1,6 @@
+@use "../../core";
 @use "../../core/size";
 @use "variables" as *;
-@use "../../core/utils/functions" as *;
 
 $ENTRYPOINT_SELECTOR: ".entrypoint" !default;
 
@@ -18,10 +18,10 @@ $ENTRYPOINT_SELECTOR: ".entrypoint" !default;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    margin-bottom: densify(size.$margin-150);
-    margin-top: densify(size.$margin-025);
+    margin-bottom: core.densify(size.$margin-150);
+    margin-top: core.densify(size.$margin-025);
     text-align: left;
-    padding: densify(size.$padding-100) size.$padding-100;
+    padding: core.densify(size.$padding-100) size.$padding-100;
     line-height: var(--f-line-height-large);
     width: 100%;
 
