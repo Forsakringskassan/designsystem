@@ -1,7 +1,8 @@
 @use "../../core/mixins/circle";
+@use "variables" as *;
 
 $CALENDAR_DAY_SELECTOR: ".calendar-day" !default;
-$calendar-highlight-border: var(--f-border-width-small) solid var(--f-border-color-calendar-highlight);
+$calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highlight-color-border-default;
 
 #{$CALENDAR_DAY_SELECTOR} {
     align-items: center;
@@ -11,6 +12,7 @@ $calendar-highlight-border: var(--f-border-width-small) solid var(--f-border-col
     height: 2.75rem;
     width: 100%;
 
+    // Highlight = mark today's date
     &--highlight {
         position: relative;
 
@@ -19,20 +21,18 @@ $calendar-highlight-border: var(--f-border-width-small) solid var(--f-border-col
 
             content: "";
             position: absolute;
-            border: var(--f-border-width-small) solid var(--f-border-color-calendar-highlight);
+            border: var(--f-border-width-small) solid $calendarday-highlight-color-border-default;
         }
 
         &.calendar-day--selected {
             &::before {
-                border: var(--f-border-width-medium) solid var(--f-border-color-calendar-selected);
+                border: var(--f-border-width-medium) solid $calendarday-highlight-color-border-selected;
             }
         }
-        &:active:not(&--disabled) {
-            color: var(--f-text-color-default-inverted);
-            background-color: var(--f-background-calendar-selected);
 
+        &:active:not(&--disabled) {
             &::before {
-                border: var(--f-border-width-medium) solid var(--f-border-color-calendar-selected);
+                border: var(--f-border-width-medium) solid $calendarday-highlight-color-border-selected;
             }
         }
 
@@ -44,7 +44,7 @@ $calendar-highlight-border: var(--f-border-width-small) solid var(--f-border-col
 
                 content: "";
                 position: absolute;
-                border: var(--f-border-width-small) solid var(--f-border-color-calendar-highlight);
+                border: var(--f-border-width-small) solid $calendarday-highlight-color-border-default;
             }
 
             &::after {
@@ -58,8 +58,8 @@ $calendar-highlight-border: var(--f-border-width-small) solid var(--f-border-col
     }
 
     &--selected {
-        color: var(--f-text-color-default-inverted);
-        background-color: var(--f-background-calendar-selected);
+        color: $calendarday-color-text-selected;
+        background-color: $calendarday-color-background-selected;
     }
 
     &--disabled {
@@ -75,12 +75,12 @@ $calendar-highlight-border: var(--f-border-width-small) solid var(--f-border-col
 
     &:hover:not(&--disabled, &--selected),
     &--hover:not(&--disabled, &--selected) {
-        background-color: var(--f-background-calendar-hover);
+        background-color: $calendarday-color-background-hover;
     }
 
     &:active:not(&--disabled),
     &--active:not(&--disabled) {
-        color: var(--f-text-color-default-inverted);
-        background-color: var(--f-background-calendar-selected);
+        color: $calendarday-color-text-selected;
+        background-color: $calendarday-color-background-selected;
     }
 }
