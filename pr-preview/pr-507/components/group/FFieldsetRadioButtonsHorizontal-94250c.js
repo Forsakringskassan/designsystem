@@ -61,8 +61,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" Ja ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [3]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_radio_field, {
         id: "horisontellt-nej",
@@ -73,8 +73,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" Nej ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [4]
       }, 8, ["modelValue"])
     ]),
     _: 1

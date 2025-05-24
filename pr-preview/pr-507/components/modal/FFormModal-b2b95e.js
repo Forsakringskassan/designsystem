@@ -56,8 +56,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" Namn ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [3]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_text_field, {
         modelValue: _ctx.value.age,
@@ -66,8 +66,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" \xC5lder ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [4]
       }, 8, ["modelValue"])
     ]),
     _: 1

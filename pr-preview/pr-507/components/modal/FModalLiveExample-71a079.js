@@ -162,8 +162,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [4, 5, 6, 7]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.modalSize,
@@ -202,8 +202,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [9, 10, 11, 12]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.modalFullscreen,
@@ -213,8 +213,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[13] || (_cache[13] = [
           _createTextVNode(" Fullsk\xE4rm i mobill\xE4ge ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [13]
       }, 8, ["modelValue"])
     ]),
     _: 1

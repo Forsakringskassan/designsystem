@@ -125,8 +125,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" Favoritfrukt ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [4]
       }, 8, ["modelValue"])), [
         [_directive_test, "field1"],
         [
@@ -146,8 +146,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[5] || (_cache[5] = [
           _createTextVNode(" Smak ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [5]
       }, 8, ["modelValue"])), [
         [_directive_test, "field2"],
         [
@@ -170,8 +170,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* HOISTED */
       ))
     ]),
-    _: 1
-    /* STABLE */
+    _: 1,
+    __: [6]
   }, 8, ["size", "data-test", "is-open", "value", "before-submit", "buttons", "onSubmit", "onCancel", "onClose"]);
 }
 

@@ -43,8 +43,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Namn p\xE5 barn ")
     ])),
-    _: 1
-    /* STABLE */
+    _: 1,
+    __: [0]
   })), [
     [
       _directive_validation,

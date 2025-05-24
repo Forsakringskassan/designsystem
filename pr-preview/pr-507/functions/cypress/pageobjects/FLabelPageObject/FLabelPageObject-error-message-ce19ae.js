@@ -54,8 +54,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[0] || (_cache[0] = [
           _createTextVNode(" Etikett ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [0]
       })), [
         [
           _directive_validation,
@@ -76,8 +76,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* HOISTED */
       ))
     ]),
-    _: 1
-    /* STABLE */
+    _: 1,
+    __: [1]
   });
 }
 exampleComponent.render = render;
