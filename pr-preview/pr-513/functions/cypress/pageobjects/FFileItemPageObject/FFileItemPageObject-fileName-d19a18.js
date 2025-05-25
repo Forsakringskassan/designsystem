@@ -28,16 +28,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-description.vue:FLabelPageObject-description-e1e02c.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject-fileName.vue:FFileItemPageObject-fileName-d19a18.js
 import { defineComponent as _defineComponent } from "vue";
-import { FLabel } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { FFileItem } from "@fkui/vue";
+import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FLabelPageObject-description",
+  __name: "FFileItemPageObject-fileName",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FLabel() {
-      return FLabel;
+    const __returned__ = { get FFileItem() {
+      return FFileItem;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -45,31 +45,23 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Etikett ")
-    ])),
-    description: _withCtx(({ descriptionClass }) => [
-      _createElementVNode(
-        "span",
-        {
-          class: _normalizeClass(descriptionClass)
-        },
-        " Hj\xE4lptext ",
-        2
-        /* CLASS */
-      )
-    ]),
-    _: 1
-    /* STABLE */
-  })), [
-    [_directive_test, "awesome-label"]
+  return _withDirectives((_openBlock(), _createBlock(
+    $setup["FFileItem"],
+    {
+      "file-name": "myFile.doc",
+      "mime-type": "application/msword"
+    },
+    null,
+    512
+    /* NEED_PATCH */
+  )), [
+    [_directive_test, "awesome-file"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e1e02c"
+  selector: "#example-d19a18"
 });
 export {
   render
