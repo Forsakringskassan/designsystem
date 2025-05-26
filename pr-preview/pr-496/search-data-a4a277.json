@@ -76,6 +76,7 @@
     "EventBus",
     "EventBus",
     "focus-indicator() mixin",
+    "densify() function",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -87,7 +88,6 @@
     "i18nextProvider",
     "I18nextProvider",
     "Hjälpklasser",
-    "densify",
     "Skärmläsare",
     "useResize() composable",
     "useModal() composable",
@@ -213,10 +213,9 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
+    "openModal",
+    "formModal() function",
+    "confirmModal() function",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -234,9 +233,10 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
-    "openModal",
-    "formModal() function",
-    "confirmModal() function",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -576,6 +576,11 @@
       "terms": []
     },
     {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": []
+    },
+    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": []
@@ -621,11 +626,6 @@
     {
       "url": "functions/helpers/index.html",
       "title": "Hjälpklasser",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/densify.html",
-      "title": "densify",
       "terms": []
     },
     {
@@ -1082,23 +1082,18 @@
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
       "terms": []
     },
     {
@@ -1187,18 +1182,23 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
       "terms": []
     },
     {
@@ -1439,8 +1439,8 @@
     "78": 55,
     "79": 56,
     "80": 57,
-    "81": 57,
-    "82": 57,
+    "81": 58,
+    "82": 58,
     "83": 58,
     "84": 59,
     "85": 60,
