@@ -157,8 +157,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [5, 6, 7]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isEmpty,
@@ -168,8 +168,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
           _createTextVNode(" Tom lista ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [8]
       }, 8, ["modelValue"]),
       _ctx.isEmpty ? (_openBlock(), _createBlock(_component_f_fieldset, {
         key: 0,
@@ -187,8 +187,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
               _createTextVNode(" Standardmeddelande ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [10]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.hasCustomEmptyText,
@@ -198,8 +198,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
               _createTextVNode(" Eget meddelande ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [11]
           }, 8, ["modelValue"])
         ]),
         _: 1

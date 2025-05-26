@@ -169,8 +169,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[8] || (_cache[8] = [
               _createTextVNode(" Enkelval (radioknappar)")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [8]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.type,
@@ -180,8 +180,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[9] || (_cache[9] = [
               _createTextVNode(" Flerval (kryssrutor)")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [9]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -195,8 +195,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
           _createTextVNode(" Horisontell layout ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [10]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDisabled,
@@ -206,8 +206,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[11] || (_cache[11] = [
           _createTextVNode(" Inaktiverad ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [11]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isRequired,
@@ -217,8 +217,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[12] || (_cache[12] = [
           _createTextVNode(" Obligatorisk ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [12]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "checkbox-label" }, {
         label: _withCtx(() => _cache[13] || (_cache[13] = [
@@ -233,8 +233,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[14] || (_cache[14] = [
               _createTextVNode(" Tooltip ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [14]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
@@ -244,8 +244,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[15] || (_cache[15] = [
               _createTextVNode(" Hj\xE4lptext ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [15]
           }, 8, ["modelValue"])
         ]),
         _: 1

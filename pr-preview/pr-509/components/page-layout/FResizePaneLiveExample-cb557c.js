@@ -158,8 +158,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[9] || (_cache[9] = [
               _createTextVNode("V\xE4nster")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [9]
           }, 8, ["modelValue"]),
           _createVNode($setup["FRadioField"], {
             modelValue: $setup.attachment,
@@ -169,8 +169,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
               _createTextVNode("H\xF6ger")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [10]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -189,8 +189,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[12] || (_cache[12] = [
               _createTextVNode("Enabled")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [12]
           }, 8, ["modelValue"]),
           _createVNode($setup["FCheckboxField"], {
             modelValue: $setup.visible,
@@ -200,8 +200,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[13] || (_cache[13] = [
               _createTextVNode("Visible")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [13]
           }, 8, ["modelValue"]),
           _createVNode($setup["FCheckboxField"], {
             modelValue: $setup.overlay,
@@ -211,8 +211,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[14] || (_cache[14] = [
               _createTextVNode("Overlay")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [14]
           }, 8, ["modelValue"])
         ]),
         _: 1

@@ -123,8 +123,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
           _createTextVNode(" F\xF6rdr\xF6jd ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [6]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.customText,
@@ -134,8 +134,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[7] || (_cache[7] = [
           _createTextVNode(" Alternativ text ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [7]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.english,
@@ -145,8 +145,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
           _createTextVNode(" Engelsk text ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [8]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.overlay,
@@ -156,8 +156,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[9] || (_cache[9] = [
           _createTextVNode(" Overlay ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [9]
       }, 8, ["modelValue"]),
       _ctx.overlay ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 0,
@@ -168,8 +168,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
           _createTextVNode(" Fokusera p\xE5 meddelande ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [10]
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createElementVNode("button", {
         class: "button button--primary button--medium",

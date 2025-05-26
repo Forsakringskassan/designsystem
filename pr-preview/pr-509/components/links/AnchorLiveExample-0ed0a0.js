@@ -107,8 +107,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[6] || (_cache[6] = [
               _createTextVNode(" Standard ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [6]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.linkType,
@@ -118,8 +118,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[7] || (_cache[7] = [
               _createTextVNode(" Dokument ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [7]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.linkType,
@@ -129,8 +129,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[8] || (_cache[8] = [
               _createTextVNode(" Ny flik ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [8]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -167,8 +167,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [10, 11, 12]
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDiscrete,
@@ -178,8 +178,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[13] || (_cache[13] = [
           _createTextVNode(" Diskret l\xE4nk ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [13]
       }, 8, ["modelValue"])
     ]),
     _: 1

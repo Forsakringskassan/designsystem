@@ -94,8 +94,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[2] || (_cache[2] = [
           _createTextVNode(" Rubrik i tooltip ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [2]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.longText,
@@ -105,8 +105,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" L\xE5ng text ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [3]
       }, 8, ["modelValue"])
     ]),
     _: 1

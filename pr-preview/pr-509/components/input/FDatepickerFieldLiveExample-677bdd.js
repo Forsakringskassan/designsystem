@@ -198,8 +198,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: _ctx.getDateWithOffset(-6)
           }, " Exempel: " + _toDisplayString(_ctx.getMonthYearString(_ctx.getDateWithOffset(-6))), 9, _hoisted_1)
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [12]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.minDateLimit,
@@ -220,8 +220,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: _ctx.getDateWithOffset(-3)
           }, "Exempel: " + _toDisplayString(_ctx.getDateWithOffset(-3)), 9, _hoisted_2)
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [14]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.maxDateLimit,
@@ -242,8 +242,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: _ctx.getDateWithOffset(3)
           }, "Exempel: " + _toDisplayString(_ctx.getDateWithOffset(3)), 9, _hoisted_3)
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [16]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.invalidWeekdays,
@@ -268,8 +268,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* HOISTED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [18, 19]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.invalidDates,
@@ -290,8 +290,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: _ctx.getInvalidDates()
           }, "Exempel: " + _toDisplayString(_ctx.getInvalidDates().join(", ")), 9, _hoisted_4)
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [21]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.highlightTodayEnabled,
@@ -301,8 +301,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[22] || (_cache[22] = [
           _createTextVNode(" Markera dagens datum i kalendern ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [22]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isRequired,
@@ -312,8 +312,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[23] || (_cache[23] = [
           _createTextVNode(" Obligatorisk f\xE4lt ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [23]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDisabled,
@@ -323,8 +323,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[24] || (_cache[24] = [
           _createTextVNode(" Inaktivt f\xE4lt ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [24]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.alwaysInlineEnabled,
@@ -334,8 +334,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[25] || (_cache[25] = [
           _createTextVNode(" Kalendern visas alltid inline ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [25]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "etikett" }, {
         label: _withCtx(() => _cache[26] || (_cache[26] = [
@@ -350,8 +350,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[27] || (_cache[27] = [
               _createTextVNode(" Tooltip ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [27]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
@@ -361,8 +361,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[28] || (_cache[28] = [
               _createTextVNode(" Hj\xE4lptext ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [28]
           }, 8, ["modelValue"])
         ]),
         _: 1

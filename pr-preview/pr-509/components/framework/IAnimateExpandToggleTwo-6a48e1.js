@@ -77,8 +77,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* HOISTED */
         )
       ])),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [3]
     }, 8, ["opacity", "expanded"]),
     _createVNode(_component_i_animate_expand, {
       opacity: _ctx.opacity,
@@ -93,8 +93,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* HOISTED */
         )
       ])),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [4]
     }, 8, ["opacity", "expanded"])
   ]);
 }

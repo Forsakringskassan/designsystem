@@ -185,8 +185,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
               _createTextVNode(" Vertikalt (standard)")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [10]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.isHorizontal,
@@ -196,8 +196,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
               _createTextVNode(" Horisontellt ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [11]
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -211,8 +211,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[12] || (_cache[12] = [
           _createTextVNode(" Ram ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [12]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isPreselected,
@@ -222,8 +222,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[13] || (_cache[13] = [
           _createTextVNode(" F\xF6rvald radioknapp ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [13]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDisabled,
@@ -233,8 +233,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[14] || (_cache[14] = [
           _createTextVNode(" Inaktiverad radioknapp ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [14]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isRequired,
@@ -244,8 +244,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(() => _cache[15] || (_cache[15] = [
           _createTextVNode(" Obligatoriskt val ")
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [15]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "radio-label" }, {
         label: _withCtx(() => _cache[16] || (_cache[16] = [
@@ -260,8 +260,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[17] || (_cache[17] = [
               _createTextVNode(" Tooltip ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [17]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
@@ -271,8 +271,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             default: _withCtx(() => _cache[18] || (_cache[18] = [
               _createTextVNode(" Hj\xE4lptext ")
             ])),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [18]
           }, 8, ["modelValue"]),
           _createVNode(_component_f_select_field, {
             modelValue: _ctx.showDetails,
@@ -304,8 +304,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 /* HOISTED */
               ))
             ]),
-            _: 1
-            /* STABLE */
+            _: 1,
+            __: [20, 21, 22]
           }, 8, ["modelValue"])
         ]),
         _: 1

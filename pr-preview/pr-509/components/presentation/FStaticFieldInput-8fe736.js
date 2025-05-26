@@ -53,8 +53,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       default: _withCtx(() => _cache[1] || (_cache[1] = [
         _createTextVNode(" Namn ")
       ])),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [1]
     }, 8, ["modelValue"])), [
       [
         _directive_validation,
@@ -70,8 +70,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       default: _withCtx(() => [
         _cache[3] || (_cache[3] = _createTextVNode(" En liten statisk beskrivning. "))
       ]),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [3]
     })
   ]);
 }
