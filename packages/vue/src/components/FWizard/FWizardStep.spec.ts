@@ -118,16 +118,6 @@ it("should call beforeValidation with data including key, totalSteps and stepNum
 });
 
 describe("html-validate", () => {
-    it("should allow as root element in SFC", () => {
-        expect.assertions(1);
-        const markup = /* HTML */ `
-            <template>
-                <f-wizard-step key="my-key" title="my-title"></f-wizard-step>
-            </template>
-        `;
-        expect(markup).toHTMLValidate("Component.vue");
-    });
-
     it("should allow flow content", () => {
         expect.assertions(1);
         const markup = /* HTML */ `
@@ -137,7 +127,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toHTMLValidate();
+        expect(markup).toMatchInlineCodeframe(`""`);
     });
 
     it("should allow flow content in default slot", () => {
@@ -151,7 +141,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toHTMLValidate();
+        expect(markup).toMatchInlineCodeframe(`""`);
     });
 
     it("should allow flow content in step-of slot", () => {
@@ -165,7 +155,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toHTMLValidate();
+        expect(markup).toMatchInlineCodeframe(`""`);
     });
 
     it("should allow flow content in error-message slot", () => {
@@ -179,7 +169,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toHTMLValidate();
+        expect(markup).toMatchInlineCodeframe(`""`);
     });
 
     it("should allow phrasing content in next-button-text slot", () => {
@@ -193,39 +183,55 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toHTMLValidate();
+        expect(markup).toMatchInlineCodeframe(`""`);
     });
 
     it("should not allow flow content in next-button-text slot", () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-wizard-step key="my-key" title="my-title">
-                <template #next-button-text>
-                    <div></div>
-                </template>
-            </f-wizard-step>
+            <f-wizard header-tag="h1">
+                <f-wizard-step key="my-key" title="my-title">
+                    <template #next-button-text>
+                        <div></div>
+                    </template>
+                </f-wizard-step>
+            </f-wizard>
         `;
-        expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                '<div> element is not permitted as content under slot "next-button-text" (<f-wizard-step>)',
-        });
+        expect(markup).toMatchInlineCodeframe(`
+            "error: <div> element is not permitted as content under slot "next-button-text" (<f-wizard-step>) (element-permitted-content) at inline:5:26:
+              3 |                 <f-wizard-step key="my-key" title="my-title">
+              4 |                     <template #next-button-text>
+            > 5 |                         <div></div>
+                |                          ^^^
+              6 |                     </template>
+              7 |                 </f-wizard-step>
+              8 |             </f-wizard>
+            Selector: f-wizard > f-wizard-step > template > div"
+        `);
     });
 
     it("should not allow interactive content in next-button-text slot", () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-wizard-step key="my-key" title="my-title">
-                <template #next-button-text>
-                    <button type="button">Button</button>
-                </template>
-            </f-wizard-step>
+            <f-wizard header-tag="h1">
+                <f-wizard-step key="my-key" title="my-title">
+                    <template #next-button-text>
+                        <button type="button">Button</button>
+                    </template>
+                </f-wizard-step>
+            </f-wizard>
         `;
-        expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                '<button> element is not permitted as a descendant of slot "next-button-text" (<f-wizard-step>)',
-        });
+        expect(markup).toMatchInlineCodeframe(`
+            "error: <button> element is not permitted as a descendant of slot "next-button-text" (<f-wizard-step>) (element-permitted-content) at inline:5:26:
+              3 |                 <f-wizard-step key="my-key" title="my-title">
+              4 |                     <template #next-button-text>
+            > 5 |                         <button type="button">Button</button>
+                |                          ^^^^^^
+              6 |                     </template>
+              7 |                 </f-wizard-step>
+              8 |             </f-wizard>
+            Selector: f-wizard > f-wizard-step > template > button"
+        `);
     });
 
     it("should allow phrasing content in cancel-button-text slot", () => {
@@ -239,71 +245,111 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toHTMLValidate();
+        expect(markup).toMatchInlineCodeframe(`""`);
     });
 
     it("should not allow flow content in cancel-button-text slot", () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-wizard-step key="my-key" title="my-title">
-                <template #cancel-button-text>
-                    <div></div>
-                </template>
-            </f-wizard-step>
+            <f-wizard header-tag="h1">
+                <f-wizard-step key="my-key" title="my-title">
+                    <template #cancel-button-text>
+                        <div></div>
+                    </template>
+                </f-wizard-step>
+            </f-wizard>
         `;
-        expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                '<div> element is not permitted as content under slot "cancel-button-text" (<f-wizard-step>)',
-        });
+        expect(markup).toMatchInlineCodeframe(`
+            "error: <div> element is not permitted as content under slot "cancel-button-text" (<f-wizard-step>) (element-permitted-content) at inline:5:26:
+              3 |                 <f-wizard-step key="my-key" title="my-title">
+              4 |                     <template #cancel-button-text>
+            > 5 |                         <div></div>
+                |                          ^^^
+              6 |                     </template>
+              7 |                 </f-wizard-step>
+              8 |             </f-wizard>
+            Selector: f-wizard > f-wizard-step > template > div"
+        `);
     });
 
     it("should not allow interactive content in cancel-button-text slot", () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-wizard-step key="my-key" title="my-title">
-                <template #cancel-button-text>
-                    <button type="button">Button</button>
-                </template>
-            </f-wizard-step>
+            <f-wizard header-tag="h1">
+                <f-wizard-step key="my-key" title="my-title">
+                    <template #cancel-button-text>
+                        <button type="button">Button</button>
+                    </template>
+                </f-wizard-step>
+            </f-wizard>
         `;
-        expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                '<button> element is not permitted as a descendant of slot "cancel-button-text" (<f-wizard-step>)',
-        });
+        expect(markup).toMatchInlineCodeframe(`
+            "error: <button> element is not permitted as a descendant of slot "cancel-button-text" (<f-wizard-step>) (element-permitted-content) at inline:5:26:
+              3 |                 <f-wizard-step key="my-key" title="my-title">
+              4 |                     <template #cancel-button-text>
+            > 5 |                         <button type="button">Button</button>
+                |                          ^^^^^^
+              6 |                     </template>
+              7 |                 </f-wizard-step>
+              8 |             </f-wizard>
+            Selector: f-wizard > f-wizard-step > template > button"
+        `);
     });
 
     it("should require key attribute", () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-wizard-step title="my-title"></f-wizard-step>
+            <f-wizard header-tag="h1">
+                <f-wizard-step title="my-title"></f-wizard-step>
+            </f-wizard>
         `;
-        expect(markup).not.toHTMLValidate({
-            ruleId: "element-required-attributes",
-            message: '<f-wizard-step> is missing required "key" attribute',
-        });
+        expect(markup).toMatchInlineCodeframe(`
+            "error: <f-wizard-step> is missing required "key" attribute (element-required-attributes) at inline:3:18:
+              1 |
+              2 |             <f-wizard header-tag="h1">
+            > 3 |                 <f-wizard-step title="my-title"></f-wizard-step>
+                |                  ^^^^^^^^^^^^^
+              4 |             </f-wizard>
+              5 |
+            Selector: f-wizard > f-wizard-step"
+        `);
     });
 
     it("should require title attribute", () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-wizard-step key="my-key"></f-wizard-step>
+            <f-wizard header-tag="h1">
+                <f-wizard-step key="my-key"></f-wizard-step>
+            </f-wizard>
         `;
-        expect(markup).not.toHTMLValidate({
-            ruleId: "element-required-attributes",
-            message: '<f-wizard-step> is missing required "title" attribute',
-        });
+        expect(markup).toMatchInlineCodeframe(`
+            "error: <f-wizard-step> is missing required "title" attribute (element-required-attributes) at inline:3:18:
+              1 |
+              2 |             <f-wizard header-tag="h1">
+            > 3 |                 <f-wizard-step key="my-key"></f-wizard-step>
+                |                  ^^^^^^^^^^^^^
+              4 |             </f-wizard>
+              5 |
+            Selector: f-wizard > f-wizard-step"
+        `);
     });
 
     it("should require non-empty title attribute", () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-wizard-step key="my-key" title=""></f-wizard-step>
+            <f-wizard header-tag="h1">
+                <f-wizard-step key="my-key" title=""></f-wizard-step>
+            </f-wizard>
         `;
-        expect(markup).not.toHTMLValidate({
-            ruleId: "attribute-allowed-values",
-            message: 'Attribute "title" has invalid value ""',
-        });
+        expect(markup).toMatchInlineCodeframe(`
+            "error: Attribute "title" has invalid value "" (attribute-allowed-values) at inline:3:45:
+              1 |
+              2 |             <f-wizard header-tag="h1">
+            > 3 |                 <f-wizard-step key="my-key" title=""></f-wizard-step>
+                |                                             ^^^^^
+              4 |             </f-wizard>
+              5 |
+            Selector: f-wizard > f-wizard-step"
+        `);
     });
 });
