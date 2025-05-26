@@ -8,7 +8,18 @@
     "apiReport": {
         "reportFileName": "<unscopedPackageName>-cypress.api.md"
     },
+    "docModel": {
+        "enabled": true,
+        "apiJsonFilePath": "<projectFolder>/temp/cypress.api.json"
+    },
     "dtsRollup": {
         "publicTrimmedFilePath": "<projectFolder>/dist/types/cypress.d.ts"
+    },
+    "messages": {
+        "extractorMessageReporting": {
+            "ae-unresolved-link": {
+                "logLevel": "none"
+            }
+        }
     }
 }
