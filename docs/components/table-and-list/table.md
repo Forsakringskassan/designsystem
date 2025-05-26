@@ -70,6 +70,10 @@ Innehåller cellen numeriska värden, datum eller annan data som inte är löpte
 
 Använd en interaktiv tabell när användaren behöver interagera med tabellen. Det kan handla om att välja, lägga till, ändra, ta bort en rad eller utföra andra åtgärder via knappar eller genom att klicka på hela raden.
 
+```import live-example
+FInteractiveTableLiveExample.vue
+```
+
 ### Användning
 
 Komponenten har en prop `rows` som du sätter till de rader som ska presenteras.

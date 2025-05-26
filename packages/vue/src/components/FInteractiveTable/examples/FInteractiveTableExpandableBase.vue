@@ -4,7 +4,8 @@ import rows from "./expandable-rows-data";
 </script>
 
 <template>
-    <f-interactive-table :rows key-attribute="id" expandable-attribute="myExpandableRow">
+    <!-- cut above -->
+    <f-interactive-table :rows key-attribute="id">
         <template #caption> Expanderbara rader </template>
         <template #default="{ row }">
             <f-table-column title="Ersättning"> {{ row.name }} </f-table-column>
@@ -17,4 +18,5 @@ import rows from "./expandable-rows-data";
             </f-table-column>
         </template>
     </f-interactive-table>
+    <!-- cut below -->
 </template>
