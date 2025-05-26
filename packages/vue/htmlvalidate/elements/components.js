@@ -1427,4 +1427,20 @@ module.exports = defineMetadata({
     "f-grid": {
         flow: true,
     },
+
+    "f-grid-row": {
+        flow: true,
+    },
+
+    "f-grid-cell": {
+        flow: true,
+    },
+
+    "f-grid-text-field": {
+        flow: true,
+    },
+
+    "f-grid-example": {
+        flow: true,
+    },
 });

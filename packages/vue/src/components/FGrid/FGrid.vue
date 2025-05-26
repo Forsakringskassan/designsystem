@@ -1,6 +1,6 @@
 <script lang="ts" setup generic="T extends { id: number }">
 import { computed, provide, ref } from "vue";
-import { FIcon } from "@fkui/vue";
+import { FIcon } from "..";
 import FGridRow from "./FGridRow.vue";
 import FGridCell from "./FGridCell.vue";
 

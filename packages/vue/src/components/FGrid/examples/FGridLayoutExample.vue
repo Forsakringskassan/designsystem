@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPageLayout, FDetailsPanel, useDetailsPanel, FResizePane } from "@fkui/vue";
+import { FPageLayout, FDetailsPanel, FResizePane } from "@fkui/vue";
 import FGridExample from "./FGridExample.vue";
 
 interface Item {
@@ -7,14 +7,7 @@ interface Item {
 }
 
 const name = "awesome-panel";
-const panel = useDetailsPanel<Item>(name);
 const ExamplePanel = FDetailsPanel<Item>;
-
-function openPanel(): void {
-    panel.open({
-        name: "Kalle Anka",
-    });
-}
 </script>
 
 <template>

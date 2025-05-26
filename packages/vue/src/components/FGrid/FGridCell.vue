@@ -40,8 +40,6 @@ function onKeydown(e: KeyboardEvent): void {
         return;
     }
 
-    console.log(e.code, el.parentElement.rowIndex, el.cellIndex);
-
     if (e.code === "ArrowLeft") {
         e.preventDefault();
         if (el.cellIndex === 0) {
@@ -109,7 +107,7 @@ function onKeydown(e: KeyboardEvent): void {
     }
 }
 
-function onClick() {
+function onClick(): void {
     if (focusable) {
         activeCellIndex.value = el.value.cellIndex;
         activeRowIndex.value = el.value.parentElement.rowIndex;

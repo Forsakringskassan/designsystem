@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FIcon, useDetailsPanel } from "@fkui/vue";
+// import { useDetailsPanel } from "@fkui/vue";
 import FGrid from "../FGrid.vue";
 import FGridCell from "../FGridCell.vue";
 import FGridTextField from "../FGridTextField.vue";
@@ -26,17 +26,23 @@ const rows = ref([
     },
 ]);
 
-const name = "awesome-panel";
-const panel = useDetailsPanel(name);
+// const name = "awesome-panel";
+// const panel = useDetailsPanel(name);
 
-function openPanel(): void {
-    panel.open({
-        name: "Kalle Anka",
-    });
-}
+// function openPanel(): void {
+//     panel.open({
+//         name: "Kalle Anka",
+//     });
+// }
 </script>
 
 <template>
+    <br />
+    <label for="foo">Foo</label>
+    <input id="foo" type="text" maxlength="40" />
+    <br />
+    <br />
+
     <f-grid :rows expandable-attribute="baz">
         <template #default="{ row }">
             <!-- <f-grid-cell :focusable="false" class="checkbox">

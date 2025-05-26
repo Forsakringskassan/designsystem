@@ -181,7 +181,7 @@ const tdTabindex = computed(() => {
 <template>
     <td ref="td" :tabindex="tdTabindex" class="table__column" @keydown="onKeydown" @click="onClick">
         <template v-if="editing">
-            <input ref="input" v-model="editValue" tabindex="0" class="cell" :type @blur="onBlur" />
+            <input ref="input" v-model="editValue" maxlength="40" tabindex="0" class="cell" :type @blur="onBlur" />
         </template>
         <template v-else> {{ model }}</template>
     </td>
