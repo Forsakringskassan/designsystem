@@ -4,7 +4,7 @@ import { FIcon } from "..";
 import FGridRow from "./FGridRow.vue";
 import FGridCell from "./FGridCell.vue";
 
-const { rows, expandableAttribute = undefined } = defineProps<{ rows: T[]; expandableAttribute: string | undefined }>();
+const { rows, expandableAttribute = undefined } = defineProps<{ rows: T[]; expandableAttribute?: string }>();
 
 let columns;
 

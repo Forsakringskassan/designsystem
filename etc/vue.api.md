@@ -8456,6 +8456,9 @@ parser: ParseFunction<number>;
 function focus_2(element: unknown, options?: boolean | FocusOptions_2): boolean;
 export { focus_2 as focus }
 
+// @public
+export const FocusPlugin: Plugin_2;
+
 // @public (undocumented)
 export const FOffline: DefineComponent<    {}, {}, {
 isOnline: boolean;

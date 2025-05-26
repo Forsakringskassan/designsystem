@@ -7,21 +7,21 @@ import FGridTextField from "../FGridTextField.vue";
 
 const rows = ref([
     {
-        id: "foo",
+        id: 1,
         foo: "Kalle",
         bar: "2025-05-26",
         baz: [
-            { id: "banan", foo: "Gul", bar: "2024-12-31" },
-            { id: "äpple", foo: "Grönt", bar: "1999-05-06" },
+            { id: 2, foo: "Gul", bar: "2024-12-31" },
+            { id: 3, foo: "Grönt", bar: "1999-05-06" },
         ],
     },
     {
-        id: "bar",
+        id: 4,
         foo: "Musse",
         bar: "2025-01-02",
         baz: [
-            { id: "melon", foo: "Grön", bar: "1980-08-08" },
-            { id: "citron", foo: "Gul", bar: "1912-12-12" },
+            { id: 5, foo: "Grön", bar: "1980-08-08" },
+            { id: 6, foo: "Gul", bar: "1912-12-12" },
         ],
     },
 ]);
