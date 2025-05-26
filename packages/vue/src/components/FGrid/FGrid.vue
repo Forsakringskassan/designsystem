@@ -1,35 +1,48 @@
-<script lang="ts" setup generic="T extends { id: number }">
-import { computed, provide, ref } from "vue";
+<script lang="ts" setup generic="T extends { id: number } & Record<string, any>">
+import { computed, provide, type Ref, ref } from "vue";
 import { FIcon } from "..";
 import FGridRow from "./FGridRow.vue";
 import FGridCell from "./FGridCell.vue";
 
 const { rows, expandableAttribute = undefined } = defineProps<{ rows: T[]; expandableAttribute: string | undefined }>();
 
-const columns = [
-    { id: "expander", size: "", title: "" },
-    { id: "id", size: "", title: "Id" },
-    { id: "foo", size: "", title: "Förnamn" },
-    { id: "bar", size: "", title: "Efternamn" },
-    // { id: "shortcut", size: "", title: "" },
-];
+let columns;
+
+if (expandableAttribute) {
+    columns = [
+        { id: "expander", size: "", title: "" },
+        { id: "id", size: "", title: "Id" },
+        { id: "foo", size: "", title: "Förnamn" },
+        { id: "bar", size: "", title: "Efternamn" },
+    ];
+} else {
+    columns = [
+        { id: "select", size: "", title: "Välj" },
+        { id: "id", size: "", title: "Id" },
+        { id: "foo", size: "", title: "Namn" },
+        { id: "bar", size: "", title: "När" },
+        { id: "shortcut", size: "", title: "" },
+    ];
+}
 
 function escapeNewlines(value: string): string {
     return value.replace(/\n/g, "<br/>");
 }
 
-const activeRowIndex = ref<number | undefined>(1);
-const activeCellIndex = ref<number | undefined>(0);
+const activeRowIndex = ref(1);
+const activeCellIndex = ref(0);
 
-const expandables = computed(() => rows.filter((it) => it[expandableAttribute]).map((it) => it["id"]));
+const expandables = computed(() =>
+    expandableAttribute ? rows.filter((it) => it[expandableAttribute]).map((it) => it.id) : [],
+);
 
-function isExpandable(id: string): boolean {
+function isExpandable(id: number): boolean {
     return expandables.value.includes(id);
 }
-const expanded = ref([]);
+const expanded: Ref<number[]> = ref([]);
 
-function toggleExpanded(id: string): void {
-    // kvar: hantera fokus, tabindex för action celler vid klick
+function toggleExpanded(id: number): void {
+    // att göra: hantera fokus, tabindex för action celler vid klick
 
     const index = expanded.value.indexOf(id);
     if (index < 0) {
@@ -39,7 +52,7 @@ function toggleExpanded(id: string): void {
     }
 }
 
-function toggleIcon(id: string): string {
+function toggleIcon(id: number): string {
     return expanded.value.includes(id) ? "arrow-down" : "arrow-right";
 }
 
@@ -72,6 +85,7 @@ provide("lastRowIndex", lastRowIndex);
             <col v-for="column in columns" :key="column.id" :class="column.size" />
         </colgroup>
         <thead>
+            <!-- [html-validate-disable-next element-permitted-content -- this is a tr]-->
             <f-grid-row>
                 <th v-for="column in columns" :key="column.id" scope="col" class="table__column">
                     <!-- eslint-disable-next-line vue/no-v-html -->
@@ -80,6 +94,7 @@ provide("lastRowIndex", lastRowIndex);
             </f-grid-row>
         </thead>
         <tbody>
+            <!-- [html-validate-disable-next element-permitted-content -- this is a tr]-->
             <f-grid-row v-for="row in currentRows" :key="row.id">
                 <template v-if="expandableAttribute">
                     <template v-if="isExpandable(row.id)">

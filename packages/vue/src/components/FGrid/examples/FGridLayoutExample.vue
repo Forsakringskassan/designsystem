@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { FPageLayout, FDetailsPanel, FResizePane } from "@fkui/vue";
 import FGridExample from "./FGridExample.vue";
+import FGridExpandableExample from "./FGridExpandableExample.vue";
 
 interface Item {
     name: string;
@@ -24,9 +25,18 @@ const ExamplePanel = FDetailsPanel<Item>;
                 </f-resize-pane>
 
                 <div :slot="layoutScope.content">
+                    <h2>Tabell</h2>
                     <f-grid-example> </f-grid-example>
+                    <h2>Expanderbar tabell</h2>
+                    <f-grid-expandable-example></f-grid-expandable-example>
                 </div>
             </template>
         </f-page-layout>
     </div>
 </template>
+
+<style>
+.layout-container {
+    padding: 1rem;
+}
+</style>

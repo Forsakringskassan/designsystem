@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, inject, ref, type Ref, useTemplateRef, watchEffect } from "vue";
+import { isTableCell, handleViewKeyDown } from "./logic";
 
 const activeRowIndex = inject<Ref<number>>("activeRowIndex");
 const activeCellIndex = inject<Ref<number>>("activeCellIndex");
@@ -16,8 +17,12 @@ const emit = defineEmits<{
 const active = ref(false);
 
 watchEffect(() => {
+    if (!isTableCell(el.value)) {
+        return;
+    }
+
     active.value =
-        activeCellIndex?.value === el.value?.cellIndex && activeRowIndex?.value === el.value?.parentElement?.rowIndex;
+        activeCellIndex?.value === el.value.cellIndex && activeRowIndex?.value === el.value.parentElement.rowIndex;
 
     if (active.value) {
         if (focusable) {
@@ -29,86 +34,15 @@ watchEffect(() => {
 });
 
 function onKeydown(e: KeyboardEvent): void {
-    const el =
-        e.target.cellIndex !== undefined
-            ? e.target
-            : e.target.parentElement.cellIndex !== undefined
-              ? e.target.parentElement
-              : undefined;
-
-    if (!el) {
-        return;
-    }
-
-    if (e.code === "ArrowLeft") {
-        e.preventDefault();
-        if (el.cellIndex === 0) {
-            return;
-        }
-
-        activeCellIndex.value = el.cellIndex - 1;
-        activeRowIndex.value = el.parentElement.rowIndex;
-    }
-
-    if (e.code === "ArrowRight") {
-        e.preventDefault();
-        if (lastCellIndex?.value === el.cellIndex) {
-            return;
-        }
-
-        activeCellIndex.value = el.cellIndex + 1;
-        activeRowIndex.value = el.parentElement.rowIndex;
-    }
-
-    if (e.code === "ArrowUp") {
-        e.preventDefault();
-
-        if (el.parentElement.rowIndex === 1) {
-            return;
-        }
-
-        activeCellIndex.value = el.cellIndex;
-        activeRowIndex.value = el.parentElement.rowIndex - 1;
-    }
-
-    if (e.code === "ArrowDown") {
-        e.preventDefault();
-
-        if (lastRowIndex.value === el.parentElement.rowIndex) {
-            return;
-        }
-
-        activeCellIndex.value = el.cellIndex;
-        activeRowIndex.value = el.parentElement.rowIndex + 1;
-    }
-
-    if (e.code === "Home") {
-        e.preventDefault();
-
-        if (e.ctrlKey) {
-            activeCellIndex.value = 0;
-            activeRowIndex.value = 1;
-        } else {
-            activeCellIndex.value = 0;
-            activeRowIndex.value = el.parentElement.rowIndex;
-        }
-    }
-
-    if (e.code === "End") {
-        e.preventDefault();
-
-        if (e.ctrlKey) {
-            activeCellIndex.value = lastCellIndex.value;
-            activeRowIndex.value = lastRowIndex.value;
-        } else {
-            activeCellIndex.value = lastCellIndex.value;
-            activeRowIndex.value = el.parentElement.rowIndex;
-        }
-    }
+    handleViewKeyDown(e, activeCellIndex, activeRowIndex, lastCellIndex?.value, lastRowIndex?.value);
 }
 
 function onClick(): void {
-    if (focusable) {
+    if (!activeCellIndex || !activeRowIndex) {
+        return;
+    }
+
+    if (focusable && isTableCell(el.value)) {
         activeCellIndex.value = el.value.cellIndex;
         activeRowIndex.value = el.value.parentElement.rowIndex;
         el.value?.focus();

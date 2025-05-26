@@ -14,6 +14,12 @@ Använd en tabell när användaren behöver analysera och jämföra information 
 
 I en tabell har varje rad samma grupper av information som visas kolumnvis, till exempel namn, datum, belopp och diarienummer.
 
+## Poc
+
+```import
+FGridLayoutExample.vue
+```
+
 ## Datatabell
 
 `FDataTable`
@@ -63,10 +69,6 @@ Innehåller cellen numeriska värden, datum eller annan data som inte är löpte
 `FInteractiveTable`
 
 Använd en interaktiv tabell när användaren behöver interagera med tabellen. Det kan handla om att välja, lägga till, ändra, ta bort en rad eller utföra andra åtgärder via knappar eller genom att klicka på hela raden.
-
-```import live-example
-FInteractiveTableLiveExample.vue
-```
 
 ### Användning
 

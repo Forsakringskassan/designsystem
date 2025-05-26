@@ -1429,18 +1429,22 @@ module.exports = defineMetadata({
     },
 
     "f-grid-row": {
-        flow: true,
+        inherit: "tr",
     },
 
     "f-grid-cell": {
-        flow: true,
+        inherit: "td",
     },
 
     "f-grid-text-field": {
-        flow: true,
+        inherit: "td",
     },
 
     "f-grid-example": {
+        flow: true,
+    },
+
+    "f-grid-expandable-example": {
         flow: true,
     },
 });

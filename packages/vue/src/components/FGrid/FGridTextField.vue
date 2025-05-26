@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { inject, ref, type Ref, useTemplateRef, watchEffect, nextTick, defineProps, computed } from "vue";
+import { isAlphanumeric, isTableCell, handleViewKeyDown } from "./logic";
 
 const { type = "text" } = defineProps<{ type?: string }>();
 
@@ -17,9 +18,13 @@ const model = defineModel({ type: String });
 const editValue: Ref<string | undefined> = ref("");
 
 watchEffect(() => {
+    if (!isTableCell(tdRef.value)) {
+        return;
+    }
+
     active.value =
-        activeCellIndex?.value === tdRef.value?.cellIndex &&
-        activeRowIndex?.value === tdRef.value?.parentElement?.rowIndex;
+        activeCellIndex?.value === tdRef.value.cellIndex &&
+        activeRowIndex?.value === tdRef.value.parentElement.rowIndex;
 
     if (active.value) {
         if (!editing.value) {
@@ -30,80 +35,42 @@ watchEffect(() => {
     }
 });
 
-function isAlphanumeric(keyCode: number): boolean {
-    return (keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90);
-}
-
 async function handleNonEditKeydown(e: KeyboardEvent): Promise<void> {
-    if (e.code === "ArrowLeft") {
-        e.preventDefault();
-        if (tdRef.value.cellIndex === 0) {
-            return;
-        }
-        activeCellIndex.value = tdRef.value?.cellIndex - 1;
-        activeRowIndex.value = tdRef.value?.parentElement.rowIndex;
-    } else if (e.code === "ArrowRight") {
-        e.preventDefault();
-
-        if (lastCellIndex?.value === tdRef.value.cellIndex) {
-            return;
-        }
-
-        activeCellIndex.value = tdRef.value?.cellIndex + 1;
-        activeRowIndex.value = tdRef.value?.parentElement.rowIndex;
-    } else if (e.code === "ArrowUp") {
-        e.preventDefault();
-
-        if (tdRef.value.parentElement.rowIndex === 1) {
-            return;
-        }
-
-        activeCellIndex.value = tdRef.value?.cellIndex;
-        activeRowIndex.value = tdRef.value?.parentElement.rowIndex - 1;
-    } else if (e.code === "ArrowDown") {
-        e.preventDefault();
-
-        if (lastRowIndex.value === tdRef.value.parentElement.rowIndex) {
-            return;
-        }
-
-        activeCellIndex.value = tdRef.value?.cellIndex;
-        activeRowIndex.value = tdRef.value?.parentElement.rowIndex + 1;
-    } else if (e.code === "Enter") {
+    if (e.code === "Enter") {
         e.preventDefault();
         editValue.value = model.value;
         editing.value = true;
         await nextTick();
-        inputRef.value.focus();
+
+        if (inputRef.value) {
+            inputRef.value.focus();
+        }
     } else if (isAlphanumeric(e.keyCode)) {
         editing.value = true;
         await nextTick();
-        inputRef.value.focus();
-    } else if (e.code === "Home") {
-        e.preventDefault();
 
-        if (e.ctrlKey) {
-            activeCellIndex.value = 0;
-            activeRowIndex.value = 1;
-        } else {
-            activeCellIndex.value = 0;
-            activeRowIndex.value = tdRef.value?.parentElement.rowIndex;
+        if (inputRef.value) {
+            inputRef.value.focus();
         }
-    } else if (e.code === "End") {
-        e.preventDefault();
-
-        if (e.ctrlKey) {
-            activeCellIndex.value = lastCellIndex.value;
-            activeRowIndex.value = lastRowIndex.value;
-        } else {
-            activeCellIndex.value = lastCellIndex.value;
-            activeRowIndex.value = tdRef.value?.parentElement.rowIndex;
-        }
+    } else {
+        handleViewKeyDown(e, activeCellIndex, activeRowIndex, lastCellIndex?.value, lastRowIndex?.value);
     }
 }
 
 async function handleEditKeydown(e: KeyboardEvent): Promise<void> {
-    // editing
+    if (
+        activeCellIndex === undefined ||
+        activeRowIndex === undefined ||
+        lastCellIndex === undefined ||
+        lastRowIndex === undefined
+    ) {
+        return;
+    }
+
+    if (!isTableCell(tdRef.value)) {
+        return;
+    }
+
     if (e.code === "Escape") {
         e.preventDefault();
         editing.value = false;
@@ -151,13 +118,24 @@ async function onKeydown(e: KeyboardEvent): Promise<void> {
 }
 
 async function onClick(): Promise<void> {
+    if (activeCellIndex === undefined || activeRowIndex === undefined) {
+        return;
+    }
+
+    if (!isTableCell(tdRef.value)) {
+        return;
+    }
+
     if (!editing.value) {
         editing.value = true;
         editValue.value = model.value;
         await nextTick();
         activeCellIndex.value = tdRef.value.cellIndex;
         activeRowIndex.value = tdRef.value.parentElement.rowIndex;
-        inputRef.value.focus();
+
+        if (inputRef && inputRef.value) {
+            inputRef.value.focus();
+        }
     }
 }
 
