@@ -6,18 +6,18 @@ sortorder: 1
 layout: api.class
 ---
 
-`FDetailsPanelPageObject` är ett Cypress pageobjekt för {@link FDetailsPanel Detaljpanel} (FDetailsPanel).
+Cypress pageobject for`FDetailsPanel`.
 
 ## Syntax
 
 ```ts nocompile nolint
-FDetailsPanelPageObject.fromName(name);
+protected new FDetailsPanelPageObject(selector);
 ```
 
 ### Parametrar
 
-`name: string`
-: Namn som angets som propen `name` till `FDetailsPanel`.
+`selector: string`
+: &ndash;
 
 ## Exempel
 
@@ -25,10 +25,6 @@ FDetailsPanelPageObject.fromName(name);
 FDetailsPanelPageObject.vue
 ```
 
-```import static
+```import
 FDetailsPanelPageObject.cy.ts
 ```
-
-## Relaterat
-
-- {@link FDetailsPanel}

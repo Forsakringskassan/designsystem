@@ -2,10 +2,10 @@
 name: FFileItemPageObject.typeOfFile
 title: "FFileItemPageObject: typeOfFile() method"
 short-title: typeOfFile()
-layout: article
+layout: api.method
 ---
 
-Används för att komma åt namnet på filens ikon till exempel pdf, doc osv
+Filename extension in lowercase.
 
 ## Syntax
 
@@ -15,7 +15,7 @@ typeOfFile();
 
 ### Returvärde
 
-`String` som innehåller filändelsen från filnamnet i gemener.
+`Cypress.Chainable<string>`
 
 ## Exempel
 
@@ -23,10 +23,6 @@ typeOfFile();
 FFileItemPageObject-typeOfFile.vue
 ```
 
-```import static
+```import
 FFileItemPageObject-typeOfFile.cy.ts
 ```
-
-## Relaterat
-
-- {@link FFileItem}

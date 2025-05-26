@@ -1,11 +1,11 @@
 ---
-name: FFileItemPageObject.status
-title: "FFileItemPageObject: status() method"
+name: FBadgePageObject.status
+title: "FBadgePageObject: status() method"
 short-title: status()
-layout: article
+layout: api.method
 ---
 
-Används för att komma åt en statusens namn på brickan.
+Get badge variant.
 
 ## Syntax
 
@@ -15,7 +15,15 @@ status();
 
 ### Returvärde
 
-`String` som innehåller en del av klassnamnet på brickans namn som `default`, `warning`, `error`, `success` eller `info`.
+`Cypress.Chainable<string>`
+
+A string with the badge variant:
+
+- `default`
+- `warning`
+- `error`
+- `success`
+- `info`
 
 ## Exempel
 

@@ -5,7 +5,7 @@ short-title: footer()
 layout: api.method
 ---
 
-Hämtar ut det användardefinierade innehållet från `footer`-slotten i {@link FDetailsPanel Detaljpanel} (FDetailsPanel).
+Content in footer slot (as defined by consumer).
 
 ## Syntax
 
@@ -15,7 +15,7 @@ footer();
 
 ### Returvärde
 
-`HTMLElement` med det användardefinierade innehållet från `footer`-slotten.
+`Cypress.Chainable<JQuery<HTMLElement>>`
 
 ## Exempel
 
@@ -23,10 +23,6 @@ footer();
 FDetailsPanelPageObject-footer.vue
 ```
 
-```import static
+```import
 FDetailsPanelPageObject-footer.cy.ts
 ```
-
-## Relaterat
-
-- {@link FDetailsPanel}

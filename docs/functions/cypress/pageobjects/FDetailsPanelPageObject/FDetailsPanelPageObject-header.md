@@ -5,7 +5,7 @@ short-title: header()
 layout: api.method
 ---
 
-Hämtar ut det användardefinierade innehållet från `header`-slotten i {@link FDetailsPanel Detaljpanel} (FDetailsPanel).
+Content in header slot (as defined by consumer).
 
 ## Syntax
 
@@ -15,7 +15,7 @@ header();
 
 ### Returvärde
 
-`HTMLElement` med det användardefinierade innehållet från `header`-slotten.
+`Cypress.Chainable<JQuery<HTMLElement>>`
 
 ## Exempel
 
@@ -23,10 +23,6 @@ header();
 FDetailsPanelPageObject-header.vue
 ```
 
-```import static
+```import
 FDetailsPanelPageObject-header.cy.ts
 ```
-
-## Relaterat
-
-- {@link FDetailsPanel}

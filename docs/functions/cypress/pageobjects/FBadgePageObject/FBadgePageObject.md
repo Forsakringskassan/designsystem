@@ -3,10 +3,8 @@ name: FBadgePageObject
 title: "FBadgePageObject: FBadgePageObject() constructor"
 short-title: FBadgePageObject()
 sortorder: 1
-layout: article
+layout: api.class
 ---
-
-Använd `FBadgePageObject` för att hämta information relaterat till {@link FBadge bricka }.
 
 ## Syntax
 
@@ -17,7 +15,7 @@ new FBadgePageObject(selector);
 ### Parametrar
 
 `selector: string`
-: Selector till `FBadge` elementet. Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
+: Selector till `FBadge` elementet. Du kan med fördel använda {@link TestPlugin | `v-test`} direktivet för din selector.
 
 ## Exempel
 
@@ -28,8 +26,3 @@ FBadgePageObject.vue
 ```import
 FBadgePageObject.cy.ts
 ```
-
-## Relaterat
-
-- {@link FBadge}
-- {@link TestPlugin}

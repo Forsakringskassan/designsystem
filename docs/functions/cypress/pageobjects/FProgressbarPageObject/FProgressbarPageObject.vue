@@ -2,8 +2,8 @@
 import { FProgressbar } from "@fkui/vue";
 </script>
 
-<!-- cut above -->
-
 <template>
-    <f-progressbar v-test="'progressbar'" :value="40" aria-label="Progressbar"></f-progressbar>
+    <!-- cut above -->
+    <f-progressbar> lorem ipsum </f-progressbar>
+    <!-- cut below -->
 </template>
