@@ -3,11 +3,12 @@ const { getDocumentationUrl } = require("./common");
 
 /**
  * @typedef {import("html-validate/node").ElementReadyEvent} ElementReadyEvent
+ * @typedef {import("html-validate/node").HtmlElement} HtmlElement
  */
 
 /**
- *
  * @param {ElementReadyEvent} event
+ * @returns {boolean}
  */
 function isRelevant(event) {
     const { target } = event;
@@ -16,6 +17,26 @@ function isRelevant(event) {
         target.is("f-confirm-modal") ||
         target.is("f-form-modal")
     );
+}
+
+/**
+ * Test if this element is the document root.
+ *
+ * @param {HtmlElement} node
+ * @returns {boolean}
+ */
+function isDocumentRoot(node) {
+    return node.isRootElement();
+}
+
+/**
+ * Test if this element is the <template> element of a Vue SFC component.
+ *
+ * @param {HtmlElement} node
+ * @returns {boolean}
+ */
+function isSFCTemplateRoot(node) {
+    return node.is("template") && node.parent.isRootElement();
 }
 
 class NoTemplateModal extends Rule {
@@ -29,7 +50,8 @@ class NoTemplateModal extends Rule {
 
     setup() {
         this.on("element:ready", isRelevant, (event) => {
-            if (event.target.parent.is("#document")) {
+            const { parent } = event.target;
+            if (isDocumentRoot(parent) || isSFCTemplateRoot(parent)) {
                 return;
             }
 
