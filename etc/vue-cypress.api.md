@@ -339,24 +339,18 @@ export class FFormModalPageObject extends FModalPageObject implements BasePageOb
 
 // @public (undocumented)
 export class FInteractiveTablePageObject implements BasePageObject {
-    constructor(selector: string);
-    // (undocumented)
+    constructor(selector?: string);
     bodyRow(): DefaultCypressChainable;
-    // (undocumented)
     caption(): DefaultCypressChainable;
     cell(descriptor: {
         row: number;
         col: number;
     }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
     columnItem(index: number): FTableColumnPageObject;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
-    // (undocumented)
+    el(): DefaultCypressChainable;
     getColumnSortedByIcon(index: number, order: "ascending" | "descending" | "unsorted"): DefaultCypressChainable;
     headerRowItem(): FTableColumnPageObject;
-    // (undocumented)
     headersRow(): DefaultCypressChainable;
-    // (undocumented)
     row(index: number): DefaultCypressChainable;
     // (undocumented)
     selector: string;

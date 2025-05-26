@@ -6,14 +6,19 @@ import { FTableColumnPageObject } from "./FTableColumn.pageobject";
  */
 export class FInteractiveTablePageObject implements BasePageObject {
     public selector: string;
-    public el: () => DefaultCypressChainable;
 
     /**
-     * @param selector - table selector.
+     * @param selector - root element selector for `FInteractiveTable`, usually `.table`.
      */
-    public constructor(selector: string) {
+    public constructor(selector: string = ".table") {
         this.selector = selector;
-        this.el = () => cy.get(this.selector);
+    }
+
+    /**
+     * Get root element.
+     */
+    public el(): DefaultCypressChainable {
+        return cy.get(this.selector);
     }
 
     /**
@@ -52,24 +57,50 @@ export class FInteractiveTablePageObject implements BasePageObject {
         );
     }
 
+    /**
+     * Get `<caption>` element.
+     */
     public caption(): DefaultCypressChainable {
         return cy.get(`${this.selector} caption`);
     }
 
-    public bodyRow(): DefaultCypressChainable {
-        return cy.get(`${this.selector} tbody tr`);
-    }
-
-    public row(index: number): DefaultCypressChainable {
-        return cy.get(`${this.selector} tbody tr:nth(${index})`);
-    }
-
+    /**
+     * Get all table headers (`<th>` in `<thead>`).
+     *
+     * Includes the headers for checkboxes in selectable rows and markers in expandable rows.
+     */
     public headersRow(): DefaultCypressChainable {
         return cy.get(`${this.selector} thead th`);
     }
 
     /**
-     * Hämta page object för specifikt Table row item.
+     * Get all table body rows (`<tr>` in `<tbody>`).
+     *
+     * Includes expandable rows even if not expanded.
+     */
+    public bodyRow(): DefaultCypressChainable {
+        return cy.get(`${this.selector} tbody tr`);
+    }
+
+    /**
+     * Get row (`<tr>` in `<tbody>`) of given index.
+     *
+     * Includes expandable rows even if not expanded.
+     *
+     * @param index - Row number (0-indexed).
+     */
+    public row(index: number): DefaultCypressChainable {
+        return cy.get(`${this.selector} tbody tr:nth(${index})`);
+    }
+
+    /**
+     * Get page object for `FTableColumn` with selector targeting the given row number.
+     *
+     * Index includes the header row (index 0 selects the header row while 1 selects first row in table body).
+     * Index ignores expandable rows.
+     *
+     * @param index - Row number (0-indexed).
+     * @returns Page object for `FTableColumn`.
      */
     public columnItem(index: number): FTableColumnPageObject {
         return new FTableColumnPageObject(
@@ -79,12 +110,23 @@ export class FInteractiveTablePageObject implements BasePageObject {
     }
 
     /**
-     * Hämta page object för specifikt Header row item.
+     * Get page object for `FTableColumn` with selector targeting the header row.
+     *
+     * @returns Page object for `FTableColumn`.
      */
     public headerRowItem(): FTableColumnPageObject {
         return new FTableColumnPageObject(`${this.selector} .table__row`, 0);
     }
 
+    /**
+     * Get sort order icon in given column.
+     *
+     * Index includes the columns for checkboxes in selectable rows and markers in expandable rows.
+     *
+     * @param index - Column index (0-indexed).
+     * @param order - Column sort order.
+     * @returns icon of given sort order.
+     */
     public getColumnSortedByIcon(
         index: number,
         order: "ascending" | "descending" | "unsorted",
