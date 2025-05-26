@@ -1244,7 +1244,10 @@ module.exports = defineMetadata({
 
     "f-wizard-step": {
         flow: true,
-        requiredAncestors: ["f-wizard > f-wizard-step"],
+        requiredAncestors: [
+            "f-wizard > f-wizard-step",
+            "template > f-wizard-step",
+        ],
         attributes: {
             key: {
                 required: true,
