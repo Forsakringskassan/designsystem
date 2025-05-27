@@ -2,20 +2,20 @@
 name: FProgressbarPageObject.value
 title: "FProgressbarPageObject: value() method"
 short-title: value()
-layout: article
+layout: api.method
 ---
 
-Används för att hämta det nuvarande värdet på försloppsindikatorn (0-100).
+Get the current value of the progressbar.
 
 ## Syntax
 
-```ts name=syntax nocompile nolint
+```ts nocompile nolint
 value();
 ```
 
 ### Returvärde
 
-`number` som innehåller värdet som förloppsindikatorn har just nu.
+`Cypress.Chainable<number>`
 
 ## Exempel
 
@@ -26,7 +26,3 @@ FProgressbarPageObject-value.vue
 ```import
 FProgressbarPageObject-value.cy.ts
 ```
-
-## Relaterat
-
-- {@link FProgressbar Förloppsindikator} (`FProgressbar`)

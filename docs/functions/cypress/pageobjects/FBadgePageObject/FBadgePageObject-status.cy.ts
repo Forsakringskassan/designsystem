@@ -1,11 +1,13 @@
 import { FBadgePageObject } from "@fkui/vue/cypress";
 import Example from "./FBadgePageObject-status.vue";
 
-it("Should match the status warning in the badge", () => {
+it("should [...]", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
-    const myBadge = new FBadgePageObject("[data-test=my-badge-warning]");
-    myBadge.status().should("be.equal", "warning");
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars -- placeholder code */
+    const obj = new FBadgePageObject("[data-test=awesome-component]");
     /* --- cut below --- */
+
+    throw new Error("Not implemented");
 });

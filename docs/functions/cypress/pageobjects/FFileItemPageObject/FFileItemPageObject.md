@@ -3,10 +3,8 @@ name: FFileItemPageObject
 title: "FFileItemPageObject: FFileItemPageObject() constructor"
 short-title: FFileItemPageObject()
 sortorder: 1
-layout: article
+layout: api.class
 ---
-
-Använd `FFileItemPageObject` för att hämta information relaterat till {@link FFileItem filpresentatören }.
 
 ## Syntax
 
@@ -17,7 +15,7 @@ new FFileItemPageObject(selector);
 ### Parametrar
 
 `selector: string`
-: Selector till `FFileItem` elementet. Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
+: the root of the file item, usually `<div class="file-item">...</div>`.
 
 ## Exempel
 
@@ -25,10 +23,6 @@ new FFileItemPageObject(selector);
 FFileItemPageObject.vue
 ```
 
-```import static
+```import
 FFileItemPageObject.cy.ts
 ```
-
-## Relaterat
-
-- {@link FFileItem}

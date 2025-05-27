@@ -1,11 +1,13 @@
 import { FDetailsPanelPageObject } from "@fkui/vue/cypress";
 import Example from "./FDetailsPanelPageObject.vue";
 
-it("el() should select correct element", () => {
+it("should [...]", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
-    const panel = FDetailsPanelPageObject.fromName("awesome-panel");
-    panel.el().should("exist");
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars -- placeholder code */
+    const obj = new FDetailsPanelPageObject("[data-test=awesome-component]");
     /* --- cut below --- */
+
+    throw new Error("Not implemented");
 });

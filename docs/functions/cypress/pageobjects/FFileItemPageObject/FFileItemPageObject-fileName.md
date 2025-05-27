@@ -2,10 +2,10 @@
 name: FFileItemPageObject.fileName
 title: "FFileItemPageObject: fileName() method"
 short-title: fileName()
-layout: article
+layout: api.method
 ---
 
-Används för att komma åt det fullständiga filnamnet den uppladdade filen.
+Filename of the uploaded file.
 
 ## Syntax
 
@@ -15,7 +15,7 @@ fileName();
 
 ### Returvärde
 
-`String` som innehåller det fullständiga filnamnet.
+`Cypress.Chainable<JQuery<HTMLElement>>`
 
 ## Exempel
 
@@ -23,10 +23,6 @@ fileName();
 FFileItemPageObject-fileName.vue
 ```
 
-```import static
+```import
 FFileItemPageObject-fileName.cy.ts
 ```
-
-## Relaterat
-
-- {@link FFileItem}

@@ -58,7 +58,6 @@ export class FBadgePageObject implements BasePageObject {
     isInverted(): Cypress.Chainable<boolean>;
     // (undocumented)
     selector: string;
-    // (undocumented)
     status(): Cypress.Chainable<string>;
 }
 

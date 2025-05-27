@@ -1,14 +1,13 @@
 import { FProgressbarPageObject } from "@fkui/vue/cypress";
 import Example from "./FProgressbarPageObject-value.vue";
 
-it("FProgressbarPageObject.value() should give us the correct value of progressbar class", () => {
+it("should [...]", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
-
-    const progressbar = new FProgressbarPageObject("[data-test=progressbar]");
-    progressbar.value().should("be.equal", 40);
-    progressbar.value().should("be.greaterThan", 0);
-
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars -- placeholder code */
+    const obj = new FProgressbarPageObject("[data-test=awesome-component]");
     /* --- cut below --- */
+
+    throw new Error("Not implemented");
 });

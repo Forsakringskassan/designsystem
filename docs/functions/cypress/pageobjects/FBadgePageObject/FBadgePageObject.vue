@@ -3,5 +3,7 @@ import { FBadge } from "@fkui/vue";
 </script>
 
 <template>
-    <f-badge v-test="'my-badge'"> MyBadge </f-badge>
+    <!-- cut above -->
+    <f-badge> lorem ipsum </f-badge>
+    <!-- cut below -->
 </template>

@@ -2,20 +2,20 @@
 name: FProgressbarPageObject.el
 title: "FProgressbarPageObject: el() method"
 short-title: el()
-layout: article
+layout: api.method
 ---
 
-Hämtar förloppsindikatorns element.
+Get the element itself.
 
 ## Syntax
 
-```ts name=syntax nocompile nolint
+```ts nocompile nolint
 el();
 ```
 
 ### Returvärde
 
-Det `HTMLElement` som förloppsindikatorn använder.
+`DefaultCypressChainable`
 
 ## Exempel
 
@@ -26,7 +26,3 @@ FProgressbarPageObject-el.vue
 ```import
 FProgressbarPageObject-el.cy.ts
 ```
-
-## Relaterat
-
-- {@link FProgressbar Förloppsindikator} (`FProgressbar`)

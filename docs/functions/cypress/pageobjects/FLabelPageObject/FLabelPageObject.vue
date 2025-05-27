@@ -2,7 +2,8 @@
 import { FLabel } from "@fkui/vue";
 </script>
 
-<!-- cut above -->
 <template>
-    <f-label v-test="'awesome-label'"> Etikett </f-label>
+    <!-- cut above -->
+    <f-label> lorem ipsum </f-label>
+    <!-- cut below -->
 </template>

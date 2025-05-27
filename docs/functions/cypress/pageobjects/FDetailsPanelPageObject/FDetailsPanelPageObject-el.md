@@ -5,9 +5,7 @@ short-title: el()
 layout: api.method
 ---
 
-Hämtar elementet för {@link FDetailsPanel Detaljpanel} (FDetailsPanel).
-
-Kan användas för att verifiera om detaljpanelen visas eller ej.
+Panel element.
 
 ## Syntax
 
@@ -17,7 +15,7 @@ el();
 
 ### Returvärde
 
-`HTMLElement` för detaljpanelen.
+`DefaultCypressChainable`
 
 ## Exempel
 
@@ -25,10 +23,6 @@ el();
 FDetailsPanelPageObject-el.vue
 ```
 
-```import static
+```import
 FDetailsPanelPageObject-el.cy.ts
 ```
-
-## Relaterat
-
-- {@link FDetailsPanel}

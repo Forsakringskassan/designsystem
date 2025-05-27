@@ -1,11 +1,13 @@
 import { FFileItemPageObject } from "@fkui/vue/cypress";
 import Example from "./FFileItemPageObject-fileName.vue";
 
-it("el() should select correct element", () => {
+it("should [...]", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
-    const fileItem = new FFileItemPageObject("[data-test=awesome-file]");
-    fileItem.fileName().should("have.text", "myFile.doc");
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars -- placeholder code */
+    const obj = new FFileItemPageObject("[data-test=awesome-component]");
     /* --- cut below --- */
+
+    throw new Error("Not implemented");
 });

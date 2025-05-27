@@ -5,7 +5,7 @@ short-title: content()
 layout: api.method
 ---
 
-Hämtar ut det användardefinierade innehållet från `content`-slotten i {@link FDetailsPanel Detaljpanel} (FDetailsPanel).
+Content in content slot (as defined by consumer).
 
 ## Syntax
 
@@ -15,7 +15,7 @@ content();
 
 ### Returvärde
 
-`HTMLElement` med det användardefinierade innehållet från `content`-slotten.
+`Cypress.Chainable<JQuery<HTMLElement>>`
 
 ## Exempel
 
@@ -23,10 +23,6 @@ content();
 FDetailsPanelPageObject-content.vue
 ```
 
-```import static
+```import
 FDetailsPanelPageObject-content.cy.ts
 ```
-
-## Relaterat
-
-- {@link FDetailsPanel}

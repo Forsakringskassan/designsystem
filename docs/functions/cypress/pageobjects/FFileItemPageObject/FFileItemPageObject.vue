@@ -4,6 +4,6 @@ import { FFileItem } from "@fkui/vue";
 
 <template>
     <!-- cut above -->
-    <f-file-item v-test="'file-item'" :file-name="'myFile.pdf'" :mime-type="'application/pdf'"></f-file-item>
+    <f-file-item> lorem ipsum </f-file-item>
     <!-- cut below -->
 </template>

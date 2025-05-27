@@ -2,10 +2,10 @@
 name: FLabelPageObject.description
 title: "FLabelPageObject: description() method"
 short-title: description()
-layout: article
+layout: api.method
 ---
 
-Hämtar elementet med etikettens hjälptext.
+Hjälptext
 
 ## Syntax
 
@@ -15,7 +15,7 @@ description();
 
 ### Returvärde
 
-`HTMLElement` som innehåller etikettens hjälptext.
+`DefaultCypressChainable`
 
 ## Exempel
 
@@ -23,10 +23,6 @@ description();
 FLabelPageObject-description.vue
 ```
 
-```import static
+```import
 FLabelPageObject-description.cy.ts
 ```
-
-## Relaterat
-
-- {@link FLabel}

@@ -1,54 +1,49 @@
 ---
-name: FInteractiveTablePageObject.cell
-title: "FInteractiveTablePageObject: cell() method"
-short-title: cell()
-layout: api.method
----
 
-Hämtar en tabellcell från en {@link component:FInteractiveTable interaktiv tabell} (FInteractiveTable).
+    name: FInteractiveTablePageObject.cell
+    title: "FInteractiveTablePageObject: cell() method"
+    short-title: cell()
+    layout: api.method
+    ---
 
-Både rad och kolumn är 1-indexerade, dvs rad 1 kolumn 1 refererar till första cellen.
+    Get table cell (typically `<td>` but can be `<th>` if row headers are present).
 
-Varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer, dvs kolumn 1 refererar till första cellen med innehåll.
+Both row and column are 1-indexed, i.e. 1:1 selects the first cell in the first row.
 
-För expanderbara rader beror radnummer på om rader är expanderade eller ej.
-Om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad medans om första raden är expanderd refererar andra raden till första expanderade raden under den första raden.
+Neither the marker for expandable rows or the checkbox for selectable rows are included in the column count, i.e. `1` always refers to the first column with content.
 
-## Syntax
+For expandable rows the row count depend on whenever a row is expanded or not. If the first row is collapsed the second row refers to the next parent row while if the first row is expanded the second row refers to the first expanded row under the first row.
 
-```ts nocompile nolint
-cell(descriptor);
-```
+    ## Syntax
 
-### Parametrar
+    ```ts nocompile nolint
+    cell(descriptor);
+    ```
 
-`descriptor`
-: Rad och kolumn
+    ### Parametrar
 
-    `row: number`
-    : Radnummer (1-indexerat).
+    `descriptor: {
+    row: number;
+    col: number;
 
-    `col: number`
-    : Kolumnnummer (1-indexerat).
+}`
+: Row and column number of cell (1-indexed).
 
-### Returvärde
+    ### Returvärde
 
-`HTMLTableCellElement` med tabellcellen beskriven av `descriptor`.
+    `Cypress.Chainable<JQuery<HTMLTableCellElement>>`
 
-## Exempel
+     The cell element.
 
-```import nomarkup
-FInteractiveTablePageObject-cell.vue
-```
 
-```import static
-FInteractiveTablePageObject-cell.vue
-```
 
-```import static
-FInteractiveTablePageObject-cell.cy.ts
-```
 
-## Relaterat
+    ## Exempel
 
-- {@link component:FInteractiveTable Interaktiv tabell} (FInteractiveTable)
+    ```import static
+    FInteractiveTablePageObject-cell.vue
+    ```
+
+    ```import
+    FInteractiveTablePageObject-cell.cy.ts
+    ```
