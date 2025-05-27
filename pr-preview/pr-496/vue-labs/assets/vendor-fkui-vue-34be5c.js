@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
@@ -4674,7 +4674,7 @@ var _hoisted_8$9 = {
   class: "modal__content",
   tabindex: "-1"
 };
-var _hoisted_9$6 = {
+var _hoisted_9$7 = {
   class: "modal__footer"
 };
 var _hoisted_10$3 = {
@@ -4699,7 +4699,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("div", _hoisted_4$t, [createElementVNode("div", _hoisted_5$n, [createElementVNode("div", _hoisted_6$h, [createElementVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$3, [createElementVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$3, [createElementVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -6392,6 +6392,12 @@ var _sfc_main$1a = defineComponent({
     nextSrText() {
       return this.$t("fkui.calendar-navbar.next", "N\xE4sta m\xE5nad");
     },
+    openYearSelectorText() {
+      return this.$t("fkui.calendar-navbar.open-year-selector", "\xD6ppna \xE5rsv\xE4ljare");
+    },
+    closeYearSelectorText() {
+      return this.$t("fkui.calendar-navbar.close-year-selector", "St\xE4ng \xE5rsv\xE4ljare");
+    },
     previousIconClasses() {
       return {
         "calendar-navbar__icon": true,
@@ -6475,12 +6481,15 @@ var _hoisted_3$w = {
   for: "yearSelectorButton"
 };
 var _hoisted_4$r = ["aria-expanded"];
-var _hoisted_5$l = ["aria-disabled", "aria-live"];
-var _hoisted_6$g = {
+var _hoisted_5$l = {
   class: "sr-only"
 };
-var _hoisted_7$c = ["aria-disabled", "aria-live"];
-var _hoisted_8$8 = {
+var _hoisted_6$g = ["aria-disabled", "aria-live"];
+var _hoisted_7$c = {
+  class: "sr-only"
+};
+var _hoisted_8$8 = ["aria-disabled", "aria-live"];
+var _hoisted_9$6 = {
   class: "sr-only"
 };
 function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
@@ -6496,27 +6505,27 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.isYearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
     name: "arrow-down"
-  }, null, 8, ["class"]), _cache[3] || (_cache[3] = createTextVNode(" " + toDisplayString(void 0)))], 8, _hoisted_4$r)) : createCommentVNode("", true)]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("button", {
+  }, null, 8, ["class"]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_5$l, toDisplayString(_ctx.isYearSelectorOpen ? _ctx.openYearSelectorText : _ctx.closeYearSelectorText), 1)], 8, _hoisted_4$r)) : createCommentVNode("", true)]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("button", {
     ref: "previousButton",
     class: "calendar-navbar__arrow calendar-navbar__arrow--previous",
     type: "button",
     "aria-disabled": _ctx.previousDisabled,
     "aria-live": _ctx.isFocused("previousButton") ? "polite" : "off",
     onClick: _cache[1] || (_cache[1] = withModifiers((...args) => _ctx.onClickPreviousButton && _ctx.onClickPreviousButton(...args), ["stop"]))
-  }, [createElementVNode("span", _hoisted_6$g, toDisplayString(_ctx.previousSrText), 1), _cache[5] || (_cache[5] = createTextVNode()), createVNode(_component_f_icon, {
+  }, [createElementVNode("span", _hoisted_7$c, toDisplayString(_ctx.previousSrText), 1), _cache[5] || (_cache[5] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.previousIconClasses),
     name: "arrow-right"
-  }, null, 8, ["class"])], 8, _hoisted_5$l), _cache[8] || (_cache[8] = createTextVNode()), createElementVNode("button", {
+  }, null, 8, ["class"])], 8, _hoisted_6$g), _cache[8] || (_cache[8] = createTextVNode()), createElementVNode("button", {
     ref: "nextButton",
     class: "calendar-navbar__arrow calendar-navbar__arrow--next",
     type: "button",
     "aria-disabled": _ctx.nextDisabled,
     "aria-live": _ctx.isFocused("nextButton") ? "polite" : "off",
     onClick: _cache[2] || (_cache[2] = withModifiers((...args) => _ctx.onClickNextButton && _ctx.onClickNextButton(...args), ["stop"]))
-  }, [createElementVNode("span", _hoisted_8$8, toDisplayString(_ctx.nextSrText), 1), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
+  }, [createElementVNode("span", _hoisted_9$6, toDisplayString(_ctx.nextSrText), 1), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.nextIconClasses),
     name: "arrow-right"
-  }, null, 8, ["class"])], 8, _hoisted_7$c)]);
+  }, null, 8, ["class"])], 8, _hoisted_8$8)]);
 }
 var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$F]]);
 function getDayStartOffset(days) {
