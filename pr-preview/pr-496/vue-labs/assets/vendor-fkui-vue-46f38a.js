@@ -6353,7 +6353,7 @@ var _sfc_main$1a = defineComponent({
       required: true
     },
     /**
-     * Set to `true` if year selector should be enabled.
+     * Includes a year selector when enabled.
      */
     yearSelector: {
       type: Boolean,
@@ -6361,15 +6361,24 @@ var _sfc_main$1a = defineComponent({
       default: false
     },
     /**
-     * Set to `true` if year selector should be open.
+     * Displays the year selector as open when enabled.
      */
-    isYearSelectorOpen: {
+    displayYearSelectorAsOpen: {
       type: Boolean,
       required: false,
       default: false
     }
   },
-  emits: ["change", "update:modelValue", "update:showYearSelector"],
+  emits: [
+    "change",
+    "update:modelValue",
+    /**
+     * `update` event. Emitted when year selector is opened or closed.
+     * @event update
+     * @type {boolean}
+     */
+    "update:displayYearSelectorAsOpen"
+  ],
   computed: {
     previousDisabled() {
       return isInvalidMonth(this.modelValue.addMonths(-1), this.minDate, this.maxDate);
@@ -6413,7 +6422,7 @@ var _sfc_main$1a = defineComponent({
   },
   methods: {
     onClickYearSelector() {
-      this.showYearSelector(!this.isYearSelectorOpen);
+      this.changeDisplayYearSelectorAsOpen(!this.displayYearSelectorAsOpen);
     },
     onClickPreviousButton() {
       if (!this.previousDisabled) {
@@ -6457,10 +6466,10 @@ var _sfc_main$1a = defineComponent({
       }
     },
     onCloseYearSelector() {
-      this.showYearSelector(false);
+      this.changeDisplayYearSelectorAsOpen(false);
     },
-    showYearSelector(showYearSelector) {
-      this.$emit("update:showYearSelector", showYearSelector);
+    changeDisplayYearSelectorAsOpen(displayYearSelectorAsOpen) {
+      this.$emit("update:displayYearSelectorAsOpen", displayYearSelectorAsOpen);
     },
     getDateText(value) {
       return `${capitalize(value.monthName)} ${value.year}`;
@@ -6500,12 +6509,12 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     class: "calendar-navbar__year-selector-button",
     type: "button",
     "aria-haspopup": "listbox",
-    "aria-expanded": _ctx.isYearSelectorOpen,
+    "aria-expanded": _ctx.displayYearSelectorAsOpen,
     onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.onClickYearSelector && _ctx.onClickYearSelector(...args), ["stop", "prevent"]))
   }, [createVNode(_component_f_icon, {
-    class: normalizeClass(_ctx.isYearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
+    class: normalizeClass(_ctx.displayYearSelectorAsOpen ? "calendar-navbar__arrow--up" : void 0),
     name: "arrow-down"
-  }, null, 8, ["class"]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_5$l, toDisplayString(_ctx.isYearSelectorOpen ? _ctx.openYearSelectorText : _ctx.closeYearSelectorText), 1)], 8, _hoisted_4$r)) : createCommentVNode("", true)]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("button", {
+  }, null, 8, ["class"]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_5$l, toDisplayString(_ctx.displayYearSelectorAsOpen ? _ctx.openYearSelectorText : _ctx.closeYearSelectorText), 1)], 8, _hoisted_4$r)) : createCommentVNode("", true)]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("button", {
     ref: "previousButton",
     class: "calendar-navbar__arrow calendar-navbar__arrow--previous",
     type: "button",
@@ -6895,7 +6904,7 @@ var _sfc_main$17 = defineComponent({
   data() {
     return {
       activeYear: NaN,
-      isYearSelectorOpen: false
+      displayYearSelectorAsOpen: false
     };
   },
   computed: {
@@ -6917,16 +6926,16 @@ var _sfc_main$17 = defineComponent({
     onChangeDate(date) {
       this.$emit("update:modelValue", date);
     },
-    async onUpdateShowYearSelector(showYearSelector) {
-      this.isYearSelectorOpen = showYearSelector;
-      if (this.isYearSelectorOpen) {
+    async onUpdateDisplayYearSelectorAsOpen(showYearSelector) {
+      this.displayYearSelectorAsOpen = showYearSelector;
+      if (this.displayYearSelectorAsOpen) {
         await this.$nextTick();
         this.activeYear = this.currentYear;
         this.updateYearSelectorFocus();
       }
     },
     onYearSelectorKeyDown(event) {
-      if (event.ctrlKey || !this.isYearSelectorOpen) {
+      if (event.ctrlKey || !this.displayYearSelectorAsOpen) {
         return;
       }
       const firstYear = this.minDate.year;
@@ -6982,7 +6991,7 @@ var _sfc_main$17 = defineComponent({
       this.closeYearSelector();
     },
     closeYearSelector() {
-      this.isYearSelectorOpen = false;
+      this.displayYearSelectorAsOpen = false;
       const calendarNavbar = getHTMLElementFromVueRef(this.$refs.calendarNavbar);
       const calenderNavbarButton = calendarNavbar.querySelector("button");
       focus$1(calenderNavbarButton);
@@ -7008,10 +7017,10 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     "min-date": _ctx.minDate,
     "max-date": _ctx.maxDate,
     "year-selector": _ctx.yearSelector,
-    "is-year-selector-open": _ctx.isYearSelectorOpen,
+    "display-year-selector-as-open": _ctx.displayYearSelectorAsOpen,
     "onUpdate:modelValue": _ctx.onChangeDate,
-    "onUpdate:showYearSelector": _ctx.onUpdateShowYearSelector
-  }, null, 8, ["model-value", "min-date", "max-date", "year-selector", "is-year-selector-open", "onUpdate:modelValue", "onUpdate:showYearSelector"]), _cache[1] || (_cache[1] = createTextVNode()), _ctx.isYearSelectorOpen ? (openBlock(), createElementBlock("div", _hoisted_2$D, [createElementVNode("ul", {
+    "onUpdate:displayYearSelectorAsOpen": _ctx.onUpdateDisplayYearSelectorAsOpen
+  }, null, 8, ["model-value", "min-date", "max-date", "year-selector", "display-year-selector-as-open", "onUpdate:modelValue", "onUpdate:displayYearSelectorAsOpen"]), _cache[1] || (_cache[1] = createTextVNode()), _ctx.displayYearSelectorAsOpen ? (openBlock(), createElementBlock("div", _hoisted_2$D, [createElementVNode("ul", {
     role: "listbox",
     class: "calendar__year-selector__listbox",
     "aria-activedescendant": "yearSelector-" + _ctx.activeYear
