@@ -6,6 +6,7 @@ import {
 } from "@fkui/test-utils/vue";
 import FTableColumn from "../FTableColumn/FTableColumn.vue";
 import FDataTable from "./FDataTable.vue";
+import FDataTableErrorExample from "./examples/FDataTableErrorExample.vue";
 
 describe("density", () => {
     const DensityComponent = defineComponent({
@@ -43,6 +44,14 @@ describe("density", () => {
     it.skip(`should be densified`, () => {
         cy.viewport(densityWrapperWidth, densityWrapperHeight);
         cy.mount(DensityComponent);
+        cy.toMatchScreenshot();
+    });
+});
+
+describe("FDataTable", () => {
+    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    it.skip("should display error message", () => {
+        cy.mount(FDataTableErrorExample);
         cy.toMatchScreenshot();
     });
 });
