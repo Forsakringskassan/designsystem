@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-toggle-button.vue:FMinimizablePanelPageObject-toggle-button-5abaa7.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject.vue:FMinimizablePanelPageObject-188e38.js
 import { defineComponent as _defineComponent } from "vue";
 import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
 import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject-toggle-button",
+  __name: "FMinimizablePanelPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FPageLayout() {
@@ -59,7 +59,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-5abaa7"
+  selector: "#example-188e38"
 });
 export {
   render
