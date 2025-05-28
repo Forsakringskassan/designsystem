@@ -48,6 +48,10 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -57,10 +61,6 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
@@ -70,12 +70,12 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
+    "EventBus",
+    "EventBus",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
-    "EventBus",
-    "EventBus",
     "focus-indicator() mixin",
     "densify() function",
     "Validation Plugin",
@@ -462,6 +462,23 @@
       "terms": []
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -486,23 +503,6 @@
       "url": "gettingstarted/use-design-system/getting-started-application.html",
       "title": "Ta fram applikation",
       "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
     },
     {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
@@ -550,6 +550,13 @@
       "terms": []
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": []
@@ -568,13 +575,6 @@
       "url": "functions/test-utils/jest.html",
       "title": "Jest",
       "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
     },
     {
       "url": "functions/sass/focus-indicator.html",
@@ -1413,17 +1413,17 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 32,
-    "50": 32,
-    "51": 32,
-    "52": 32,
-    "53": 32,
-    "54": 33,
-    "55": 34,
+    "49": 33,
+    "50": 34,
+    "51": 34,
+    "52": 35,
+    "53": 35,
+    "54": 35,
+    "55": 35,
     "56": 35,
-    "57": 36,
-    "58": 37,
-    "59": 38,
+    "57": 35,
+    "58": 36,
+    "59": 37,
     "60": 38,
     "61": 39,
     "62": 40,
@@ -1435,10 +1435,10 @@
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 49,
-    "72": 50,
-    "73": 51,
-    "74": 52,
+    "71": 48,
+    "72": 49,
+    "73": 50,
+    "74": 51,
     "75": 52,
     "76": 53,
     "77": 54,
