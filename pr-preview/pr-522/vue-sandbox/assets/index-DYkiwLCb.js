@@ -23808,17 +23808,25 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$1 = {};
+const _sfc_main$2 = {};
 const _hoisted_1 = { class: "text-field" };
 function _sfc_render$1(_ctx, _cache) {
   return openBlock(), createElementBlock("div", _hoisted_1, _cache[0] || (_cache[0] = [
     createStaticVNode('<div class="i-width-sm-12"><label class="label" for="fkui-vue-element-0003"> Etikett 3</label></div><div class="text-field__input-wrapper i-width-sm-12"><div class="text-field__icon-wrapper"><input id="fkui-vue-element-0003" type="text" class="text-field__input"></div></div>', 2)
   ]));
 }
-const DefaultView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+const MyComponent = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "DefaultView",
+  setup(__props) {
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(MyComponent);
+    };
+  }
+});
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [{ path: "/", name: "", component: DefaultView }]
+  routes: [{ path: "/", name: "", component: _sfc_main$1 }]
 });
 const _sfc_main = {};
 function _sfc_render(_ctx, _cache) {
