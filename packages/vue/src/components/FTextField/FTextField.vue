@@ -383,7 +383,7 @@ export default defineComponent({
 <template>
     <div class="text-field" :class="rootClass">
         <div :class="labelWrapperClass">
-            <f-label :for="id" :class="labelClass">
+            <f-label :id="`${id}-label`" :for="id" :class="labelClass">
                 <template #default>
                     <!-- @slot Slot for label content. -->
                     <slot name="default">
@@ -444,6 +444,7 @@ export default defineComponent({
                     :type="type"
                     class="text-field__input"
                     v-bind="$attrs"
+                    :aria-labelledby="`${id}-label`"
                     @blur="onBlur"
                     @focus="onFocus"
                     @change="onChange"
