@@ -28,13 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-close-button.vue:FDetailsPanelPageObject-close-button-5a9d0f.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject.vue:FDetailsPanelPageObject-b0a9d1.js
 import { defineComponent as _defineComponent } from "vue";
 import { onMounted } from "vue";
 import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
 import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject-close-button",
+  __name: "FDetailsPanelPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
     onMounted(() => {
@@ -52,7 +52,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 var _hoisted_1 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
-    default: _withCtx(({ content, left }) => [
+    default: _withCtx(({ left, content }) => [
       _createVNode($setup["FDetailsPanel"], {
         slot: left,
         name: "awesome-panel"
@@ -66,7 +66,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-5a9d0f"
+  selector: "#example-b0a9d1"
 });
 export {
   render
