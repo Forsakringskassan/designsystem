@@ -8,6 +8,7 @@ import {
     TestPlugin,
     TranslationPlugin,
     ValidationPlugin,
+    FocusPlugin,
     setRunningContext,
 } from "@fkui/vue";
 
@@ -27,5 +28,6 @@ export function setup(options: SetupOptions): void {
     app.use(TestPlugin);
     app.use(TranslationPlugin);
     app.use(FormatPlugin);
+    app.use(FocusPlugin);
     app.mount(selector);
 }
