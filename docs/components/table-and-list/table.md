@@ -58,6 +58,30 @@ Innehåller cellen numeriska värden, datum eller annan data som inte är löpte
 </f-data-table>
 ```
 
+### Felhantering
+
+Om ett fel uppstår vid hämtning av tabellens data kan ett felmeddelande visas med hjälp av `#empty` sloten och {@link FMessageBox en meddelanderuta}.
+
+```html compare=datatable-base
+<f-data-table :rows>
+    <template #caption> Tabell exempel </template>
+    <template #default="{ row }">
+        <f-table-column title="Kolumnrubrik" type="text">
+            {{ row.value }}
+        </f-table-column>
+    </template>
+    <template #empty>
+        <f-message-box v-if="showError" type="error" layout="short">
+            Något gick fel. Testa att ladda om sidan.
+        </f-message-box>
+    </template>
+</f-data-table>
+```
+
+```import nomarkup
+FDataTableErrorExample.vue
+```
+
 ## Interaktiv tabell
 
 `FInteractiveTable`
