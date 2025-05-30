@@ -9,6 +9,7 @@ import {
     TranslationPlugin,
     ValidationPlugin,
     FormatPlugin,
+    FocusPlugin,
 } from "./plugins";
 import { setRunningContext } from "./config";
 
@@ -20,5 +21,6 @@ export function setup(options: SetupOptions): void {
     app.use(TranslationPlugin);
     app.use(ValidationPlugin);
     app.use(FormatPlugin);
+    app.use(FocusPlugin);
     app.mount(selector);
 }

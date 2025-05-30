@@ -1426,4 +1426,28 @@ module.exports = defineMetadata({
         },
         slots: ["default"],
     },
+
+    "f-grid": {
+        flow: true,
+    },
+
+    "f-grid-row": {
+        inherit: "tr",
+    },
+
+    "f-grid-cell": {
+        inherit: "td",
+    },
+
+    "f-grid-text-field": {
+        inherit: "td",
+    },
+
+    "f-grid-example": {
+        flow: true,
+    },
+
+    "f-grid-expandable-example": {
+        flow: true,
+    },
 });
