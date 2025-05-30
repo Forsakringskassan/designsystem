@@ -78,11 +78,6 @@
     "EventBus",
     "focus-indicator() mixin",
     "densify() function",
-    "i18next",
-    "i18nextProvider",
-    "I18nextProvider",
-    "Hjälpklasser",
-    "Skärmläsare",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -90,6 +85,11 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
+    "i18next",
+    "i18nextProvider",
+    "I18nextProvider",
+    "Hjälpklasser",
+    "Skärmläsare",
     "useResize() composable",
     "useModal() composable",
     "useDetailsPanel() composable",
@@ -587,31 +587,6 @@
       "terms": []
     },
     {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": []
-    },
-    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": []
@@ -638,6 +613,31 @@
         "ErrorPlugin",
         "FErrorHandlingApp"
       ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": []
     },
     {
       "url": "functions/functions/use-resize.html",
@@ -1447,12 +1447,12 @@
     "80": 57,
     "81": 58,
     "82": 59,
-    "83": 60,
-    "84": 61,
-    "85": 62,
-    "86": 63,
-    "87": 64,
-    "88": 64,
+    "83": 59,
+    "84": 59,
+    "85": 60,
+    "86": 61,
+    "87": 62,
+    "88": 63,
     "89": 64,
     "90": 65,
     "91": 66,
