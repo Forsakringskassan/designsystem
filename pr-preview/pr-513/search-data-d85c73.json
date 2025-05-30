@@ -10,6 +10,7 @@
     "Hjälp och support",
     "@fkui/tsconfig",
     "Konfiguration",
+    "CHANGELOG v5",
     "Chip",
     "chip",
     "Knapp",
@@ -40,7 +41,6 @@
     "FCalendarDay",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "Längdvalidering",
     "Validator - anpassad",
@@ -48,15 +48,6 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "Kom igång",
-    "Ta fram applikation",
     "Version 5 migreringsguide",
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
@@ -70,10 +61,15 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Vue.js",
-    "Om testverktyg",
-    "Generella funktioner",
-    "Jest",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "Kom igång",
+    "Ta fram applikation",
     "EventBus",
     "EventBus",
     "focus-indicator() mixin",
@@ -103,6 +99,10 @@
     "includeItem",
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
+    "Vue.js",
+    "Om testverktyg",
+    "Generella funktioner",
+    "Jest",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -214,9 +214,6 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "formModal() function",
-    "confirmModal() function",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -238,6 +235,9 @@
     "ValidationErrorMessageBuilder: mapCombined() method",
     "ValidationErrorMessageBuilder: create() function",
     "ValidationErrorMessageBuilder: build() method",
+    "openModal",
+    "formModal() function",
+    "confirmModal() function",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -319,6 +319,11 @@
     {
       "url": "functions/config.html",
       "title": "Konfiguration",
+      "terms": []
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
       "terms": []
     },
     {
@@ -422,11 +427,6 @@
       ]
     },
     {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
-    },
-    {
       "url": "guides/validation-and-error-handling/validation.html",
       "title": "Validering och felhantering",
       "terms": []
@@ -459,32 +459,6 @@
     {
       "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
       "title": "Formaterare och parser - anpassad",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -550,23 +524,29 @@
       "terms": []
     },
     {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
       "terms": []
     },
     {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
       "terms": []
     },
     {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -702,6 +682,26 @@
     {
       "url": "functions/functions/dispatch-component-validity-event.html",
       "title": "dispatchComponentValidityEvent",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
       "terms": []
     },
     {
@@ -1088,21 +1088,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1205,6 +1190,21 @@
     {
       "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
       "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
       "terms": []
     },
     {
@@ -1375,35 +1375,35 @@
     "8": 8,
     "9": 9,
     "10": 10,
-    "11": 10,
+    "11": 11,
     "12": 11,
-    "13": 11,
+    "13": 12,
     "14": 12,
-    "15": 12,
-    "16": 12,
+    "15": 13,
+    "16": 13,
     "17": 13,
-    "18": 13,
+    "18": 14,
     "19": 14,
-    "20": 14,
+    "20": 15,
     "21": 15,
-    "22": 15,
+    "22": 16,
     "23": 16,
-    "24": 16,
+    "24": 17,
     "25": 17,
-    "26": 17,
+    "26": 18,
     "27": 18,
-    "28": 18,
+    "28": 19,
     "29": 19,
-    "30": 19,
+    "30": 20,
     "31": 20,
-    "32": 20,
+    "32": 21,
     "33": 21,
-    "34": 21,
+    "34": 22,
     "35": 22,
-    "36": 22,
-    "37": 22,
+    "36": 23,
+    "37": 23,
     "38": 23,
-    "39": 23,
+    "39": 24,
     "40": 24,
     "41": 25,
     "42": 26,
@@ -1413,41 +1413,41 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 32,
-    "50": 32,
-    "51": 32,
-    "52": 32,
-    "53": 32,
-    "54": 33,
-    "55": 34,
-    "56": 35,
-    "57": 36,
-    "58": 37,
-    "59": 38,
-    "60": 38,
-    "61": 39,
-    "62": 40,
-    "63": 41,
-    "64": 42,
-    "65": 43,
+    "49": 33,
+    "50": 34,
+    "51": 34,
+    "52": 35,
+    "53": 36,
+    "54": 37,
+    "55": 38,
+    "56": 39,
+    "57": 40,
+    "58": 41,
+    "59": 42,
+    "60": 43,
+    "61": 44,
+    "62": 44,
+    "63": 44,
+    "64": 44,
+    "65": 44,
     "66": 44,
     "67": 45,
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 49,
-    "72": 50,
-    "73": 51,
-    "74": 52,
+    "71": 48,
+    "72": 49,
+    "73": 50,
+    "74": 51,
     "75": 52,
     "76": 53,
     "77": 54,
     "78": 55,
-    "79": 56,
-    "80": 57,
-    "81": 58,
-    "82": 59,
-    "83": 59,
+    "79": 55,
+    "80": 55,
+    "81": 56,
+    "82": 57,
+    "83": 58,
     "84": 59,
     "85": 60,
     "86": 61,
