@@ -73,7 +73,7 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "7.27.1",
+    "@babel/core": "7.27.3",
     "@babel/preset-env": "7.27.2",
     "@forsakringskassan/commitlint-config": "2.0.1",
     "@forsakringskassan/cypress-axe": "3.2.1",
