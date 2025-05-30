@@ -152,5 +152,14 @@
     "--fkds-color-action-border-disabled",
     "--fkds-icon-color-action-content-primary-disabled",
     "--fkds-color-action-background-select-hover",
-    "--fkds-color-action-background-select-default"
+    "--fkds-color-action-background-select-default",
+    "--f-border-color-calendar-highlight",
+    "--f-border-color-calendar-selected",
+    "--f-border-color-calendar-navbar",
+    "--f-text-color-weekday-weeknumber",
+    "--f-background-month",
+    "--f-background-calendar-default",
+    "--f-background-calendar-selected",
+    "--f-background-calendar-hover",
+    "--f-border-color-calendar-disabled"
 ]
