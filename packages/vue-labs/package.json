@@ -75,7 +75,7 @@
     "@forsakringskassan/docs-generator": "2.28.3",
     "@forsakringskassan/vite-lib-config": "4.0.1",
     "@vue/test-utils": "2.4.6",
-    "esbuild": "0.25.4",
+    "esbuild": "0.25.5",
     "vite": "6.3.5",
     "vue": "3.5.15",
     "vue-router": "4.5.1"
