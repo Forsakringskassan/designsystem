@@ -97,7 +97,7 @@
     "@types/glob": "8.1.0",
     "@types/jest": "29.5.14",
     "@types/lodash": "4.17.17",
-    "@types/node": "20.17.51",
+    "@types/node": "20.17.52",
     "@vue/server-renderer": "3.5.15",
     "autoprefixer": "10.4.21",
     "cli-table": "0.3.11",
