@@ -98,7 +98,7 @@
     "@types/jest": "29.5.14",
     "@types/lodash": "4.17.17",
     "@types/node": "20.17.52",
-    "@vue/server-renderer": "3.5.15",
+    "@vue/server-renderer": "3.5.16",
     "autoprefixer": "10.4.21",
     "cli-table": "0.3.11",
     "core-js": "3.42.0",
@@ -124,7 +124,7 @@
     "typedoc": "0.28.5",
     "typescript": "5.8.3",
     "vite": "6.3.5",
-    "vue": "3.5.15",
+    "vue": "3.5.16",
     "vue-tsc": "2.2.0"
   },
   "engines": {

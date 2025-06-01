@@ -77,7 +77,7 @@
     "@vue/test-utils": "2.4.6",
     "esbuild": "0.25.5",
     "vite": "6.3.5",
-    "vue": "3.5.15",
+    "vue": "3.5.16",
     "vue-router": "4.5.1"
   },
   "peerDependencies": {
