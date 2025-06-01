@@ -41,15 +41,13 @@
     "Bricka",
     "FBadge",
     "CHANGELOG v5",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "Kom igång",
-    "Ta fram applikation",
+    "Validering och felhantering",
+    "Längdvalidering",
+    "Validator - anpassad",
+    "Felmeddelande - anpassat",
+    "Korsvalidering",
+    "Formatering och parsning",
+    "Formaterare och parser - anpassad",
     "Version 5 migreringsguide",
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
@@ -63,21 +61,23 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Validering och felhantering",
-    "Längdvalidering",
-    "Validator - anpassad",
-    "Felmeddelande - anpassat",
-    "Korsvalidering",
-    "Formatering och parsning",
-    "Formaterare och parser - anpassad",
-    "EventBus",
-    "EventBus",
-    "focus-indicator() mixin",
-    "densify() function",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "Kom igång",
+    "Ta fram applikation",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
+    "focus-indicator() mixin",
+    "densify() function",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -217,10 +217,6 @@
     "openModal",
     "formModal() function",
     "confirmModal() function",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -238,22 +234,26 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
     "FProgressbarPageObject: el() method",
-    "FMinimizablePanelPageObject: constructor",
-    "FMinimizablePanelPageObject: toggleButton() method",
-    "FMinimizablePanelPageObject: header() method",
-    "FMinimizablePanelPageObject: footer() method",
-    "FMinimizablePanelPageObject: el() method",
-    "FMinimizablePanelPageObject: content() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
     "FInteractiveTablePageObject: cell() method",
+    "FMinimizablePanelPageObject: constructor",
+    "FMinimizablePanelPageObject: toggleButton() method",
+    "FMinimizablePanelPageObject: header() method",
+    "FMinimizablePanelPageObject: footer() method",
+    "FMinimizablePanelPageObject: el() method",
+    "FMinimizablePanelPageObject: content() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -427,29 +427,38 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
+      "url": "guides/validation-and-error-handling/validation.html",
+      "title": "Validering och felhantering",
       "terms": []
     },
     {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
+      "url": "guides/validation-and-error-handling/length-validation.html",
+      "title": "Längdvalidering",
       "terms": []
     },
     {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
+      "url": "guides/validation-and-error-handling/custom-validator.html",
+      "title": "Validator - anpassad",
+      "terms": []
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-error-message.html",
+      "title": "Felmeddelande - anpassat",
+      "terms": []
+    },
+    {
+      "url": "guides/validation-and-error-handling/cross-validation.html",
+      "title": "Korsvalidering",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
       "terms": []
     },
     {
@@ -515,55 +524,29 @@
       "terms": []
     },
     {
-      "url": "guides/validation-and-error-handling/validation.html",
-      "title": "Validering och felhantering",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/length-validation.html",
-      "title": "Längdvalidering",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/custom-validator.html",
-      "title": "Validator - anpassad",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/custom-error-message.html",
-      "title": "Felmeddelande - anpassat",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/cross-validation.html",
-      "title": "Korsvalidering",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
-      "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
       "terms": [
-        "EventBus"
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
       ]
     },
     {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
       "terms": []
     },
     {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -584,6 +567,23 @@
     {
       "url": "functions/test-utils/jest.html",
       "title": "Jest",
+      "terms": []
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": []
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
       "terms": []
     },
     {
@@ -1103,26 +1103,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1208,6 +1188,26 @@
       "terms": []
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
       "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
       "terms": []
@@ -1225,36 +1225,6 @@
     {
       "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
       "title": "FProgressbarPageObject: el() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
-      "title": "FMinimizablePanelPageObject: constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html",
-      "title": "FMinimizablePanelPageObject: toggleButton() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html",
-      "title": "FMinimizablePanelPageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html",
-      "title": "FMinimizablePanelPageObject: footer() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html",
-      "title": "FMinimizablePanelPageObject: el() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
-      "title": "FMinimizablePanelPageObject: content() method",
       "terms": []
     },
     {
@@ -1285,6 +1255,36 @@
     {
       "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
       "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
+      "title": "FMinimizablePanelPageObject: constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html",
+      "title": "FMinimizablePanelPageObject: toggleButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html",
+      "title": "FMinimizablePanelPageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html",
+      "title": "FMinimizablePanelPageObject: footer() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html",
+      "title": "FMinimizablePanelPageObject: el() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
+      "title": "FMinimizablePanelPageObject: content() method",
       "terms": []
     },
     {
@@ -1406,39 +1406,39 @@
     "39": 23,
     "40": 24,
     "41": 25,
-    "42": 25,
-    "43": 25,
-    "44": 25,
-    "45": 25,
-    "46": 25,
-    "47": 26,
-    "48": 27,
-    "49": 28,
-    "50": 29,
-    "51": 30,
-    "52": 31,
-    "53": 31,
-    "54": 32,
-    "55": 33,
-    "56": 34,
-    "57": 35,
-    "58": 36,
-    "59": 37,
-    "60": 38,
-    "61": 39,
-    "62": 40,
-    "63": 41,
-    "64": 42,
-    "65": 43,
+    "42": 26,
+    "43": 27,
+    "44": 28,
+    "45": 29,
+    "46": 30,
+    "47": 31,
+    "48": 32,
+    "49": 33,
+    "50": 34,
+    "51": 34,
+    "52": 35,
+    "53": 36,
+    "54": 37,
+    "55": 38,
+    "56": 39,
+    "57": 40,
+    "58": 41,
+    "59": 42,
+    "60": 43,
+    "61": 44,
+    "62": 44,
+    "63": 44,
+    "64": 44,
+    "65": 44,
     "66": 44,
     "67": 45,
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 48,
-    "72": 49,
-    "73": 50,
-    "74": 51,
+    "71": 49,
+    "72": 50,
+    "73": 51,
+    "74": 52,
     "75": 52,
     "76": 53,
     "77": 54,

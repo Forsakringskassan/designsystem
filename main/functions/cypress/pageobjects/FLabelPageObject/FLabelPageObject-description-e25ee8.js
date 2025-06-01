@@ -28,38 +28,48 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-toggle-button.vue:FMinimizablePanelPageObject-toggle-button-3f070d.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-description.vue:FLabelPageObject-description-e25ee8.js
 import { defineComponent as _defineComponent } from "vue";
-import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
-import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FLabel } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject-toggle-button",
+  __name: "FLabelPageObject-description",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FPageLayout() {
-      return FPageLayout;
-    }, get FMinimizablePanel() {
-      return FMinimizablePanel;
+    const __returned__ = { get FLabel() {
+      return FLabel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
-var _hoisted_1 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
-    default: _withCtx(({ left, content }) => [
-      _createVNode($setup["FMinimizablePanel"], { slot: left }, null, 8, ["slot"]),
-      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_1)
+  const _directive_test = _resolveDirective("test");
+  return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" Etikett ")
+    ])),
+    description: _withCtx(({ descriptionClass }) => [
+      _createElementVNode(
+        "span",
+        {
+          class: _normalizeClass(descriptionClass)
+        },
+        " Hj\xE4lptext ",
+        2
+        /* CLASS */
+      )
     ]),
     _: 1
     /* STABLE */
-  });
+  })), [
+    [_directive_test, "awesome-label"]
+  ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-3f070d"
+  selector: "#example-e25ee8"
 });
 export {
   render
