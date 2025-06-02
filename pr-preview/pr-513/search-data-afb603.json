@@ -85,6 +85,9 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
+    "i18next",
+    "i18nextProvider",
+    "I18nextProvider",
     "Hjälpklasser",
     "Skärmläsare",
     "useResize() composable",
@@ -100,9 +103,6 @@
     "includeItem",
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
-    "i18next",
-    "i18nextProvider",
-    "I18nextProvider",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -615,6 +615,21 @@
       ]
     },
     {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": []
+    },
+    {
       "url": "functions/helpers/index.html",
       "title": "Hjälpklasser",
       "terms": []
@@ -687,21 +702,6 @@
     {
       "url": "functions/functions/dispatch-component-validity-event.html",
       "title": "dispatchComponentValidityEvent",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
       "terms": []
     },
     {
