@@ -1,0 +1,12 @@
+// TEXT
+$radio-button-color-text-disabled: var(--fkds-color-text-disabled);
+
+// BACKGROUND
+$radio-button-color-background-default: var(--fkds-color-background-primary);
+$radio-button-color-background-selected: var(--fkds-color-select-background-primary-default);
+$radio-button-color-background-disabled: var(--fkds-color-background-disabled);
+
+// BORDER
+$radio-button-color-border-default: var(--fkds-color-border-primary);
+$radio-button-color-border-selected: transparent;
+$radio-button-color-border-disabled: var(--fkds-color-border-disabled);
