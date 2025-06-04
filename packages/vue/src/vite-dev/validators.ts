@@ -10,8 +10,8 @@ export const personnummer = defineValidator("personnummer", {
     type: "raw",
     validate(value: string) {
         if (typeof value === "string" && /^\d+$/.test(value)) {
-            return { name: "personnummer", valid: true };
+            return { valid: true };
         }
-        return { name: "personnummer", valid: false, code: "format" };
+        return { valid: false, code: "format" };
     },
 });
