@@ -1,70 +1,51 @@
-interface ValidationCodeMapping {
-    personnummer: "format" | "checksum";
-}
-
-interface ValidationValid<K extends string> {
-    name: K;
-    valid: true;
-}
-
-type ValidationInvalid<K extends string> = K extends keyof ValidationCodeMapping
-    ? { name: K, valid: false; code: ValidationCodeMapping[K] }
-    : { name: K, valid: false; code: unknown };
-
-type ValidatorResult<K extends string> =
-    | ValidationValid<K>
-    | ValidationInvalid<K>;
-
-interface RawValidator<K extends string, TValue> {
-    name: K;
-    type: "raw";
-    validate(value: TValue | null | undefined): ValidatorResult<K>;
-}
-
-interface ParsedValidator<K extends string, TModel> {
-    name: K;
-    type: "parsed";
-    validate(value: TModel): ValidatorResult<K>;
-}
-
-type Validator2<K extends string, TValue, TModel> =
-    | RawValidator<K, TValue>
-    | ParsedValidator<K, TModel>;
+import {
+    type ModelValueValidator,
+    type ValidatorDefinition,
+    type ViewValueValidator,
+} from "./validator-definition";
 
 export interface ValidationTarget<TValue, TModel> {
     getViewValue(): TValue | null | undefined;
     getModelValue(): TModel;
-    readonly validators: Array<Validator2<string, TValue, TModel>>;
+    parser(value: TValue): TModel;
+    formatter(value: TModel): TValue;
+    readonly validators: Array<ValidatorDefinition<string, TValue, TModel>>;
 }
 
-export const personnummer: RawValidator<"personnummer", string> = {
-    name: "personnummer",
-    type: "raw",
-    validate(value) {
-        if (typeof value === "string" && /^\d+$/.test(value)) {
-            return { name: "personnummer", valid: true };
-        }
-        return { name: "personnummer", valid: false, code: "format" };
-    },
-};
+function isViewValueValidator<K extends string, TValue, TModel>(
+    value: ValidatorDefinition<K, TValue, TModel>,
+): value is ViewValueValidator<K, TValue> {
+    return value.type === "raw";
+}
 
-export function validateSingle<TValue, TModel>(
+function isModelValueValidator<K extends string, TValue, TModel>(
+    value: ValidatorDefinition<K, TValue, TModel>,
+): value is ModelValueValidator<K, TModel> {
+    return value.type === "parsed";
+}
+
+export function validateElement<TValue, TModel>(
     target: ValidationTarget<TValue, TModel>,
 ): boolean {
     const viewValue = target.getViewValue();
-
-    for (const validator of target.validators.filter(isRaw)) {
+    for (const validator of target.validators.filter(isViewValueValidator)) {
         const result = validator.validate(viewValue);
         if (!result.valid) {
             return false;
         }
     }
 
-    return true;
-}
+    if (!viewValue) {
+        return true;
+    }
 
-function isRaw<K extends string, TValue, TModel>(
-    value: Validator2<K, TValue, TModel>,
-): value is RawValidator<K, TValue> {
-    return value.type === "raw";
+    const modelValue = target.parser(viewValue);
+    for (const validator of target.validators.filter(isModelValueValidator)) {
+        const result = validator.validate(modelValue);
+        if (!result.valid) {
+            return false;
+        }
+    }
+
+    return true;
 }

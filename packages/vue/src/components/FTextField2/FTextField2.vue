@@ -3,7 +3,8 @@
 import { ElementIdService } from "@fkui/logic";
 import { ref } from "vue";
 import { FLabel } from "@fkui/vue";
-import { personnummer, validateSingle } from "../../vite-dev/ValidationService2";
+import { validateElement } from "../../vite-dev/ValidationService2";
+import { personnummer } from "../../vite-dev/validators";
 
 const hasError = ref(false);
 const validationMessage = ref("Fel fel fel!");
@@ -11,12 +12,18 @@ const id = ElementIdService.generateElementId();
 const viewValue = defineModel<string>();
 
 function onBlur(): void {
-    const result = validateSingle({
+    const result = validateElement({
         getViewValue() {
             return viewValue.value;
         },
         getModelValue() {
             return "model value not implemented";
+        },
+        parser(value) {
+            return value;
+        },
+        formatter(value) {
+            return value;
         },
         validators: [personnummer],
     });
