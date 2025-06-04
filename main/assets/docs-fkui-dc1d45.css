@@ -2,7 +2,8 @@ html {
   font-size: 16px;
 }
 
-.code-preview__preview {
+.code-preview__preview,
+.live-example__example {
   --fkds-color-text-primary: #1b1e23;
   --fkds-color-text-secondary: #5f6165;
   --fkds-color-text-inverted: #ffffff;
@@ -15,6 +16,7 @@ html {
   --fkds-color-border-strong: #5f6165;
   --fkds-color-border-weak: #ddddde;
   --fkds-color-border-disabled: #8d8e91;
+  --fkds-color-border-inverted: #ffffff;
   --fkds-color-action-text-primary-default: #4a52b6;
   --fkds-color-action-text-primary-hover: #3b4292;
   --fkds-color-action-text-primary-active: #3b4292;
@@ -97,7 +99,6 @@ html {
   --f-text-color-default: #1b1e23;
   --f-text-color-default-inverted: #ffffff;
   --f-text-color-discrete: #5f6165;
-  --f-text-color-weekday-weeknumber: #5f6165;
   --f-text-color-error: #d23838;
   --f-text-color-link: #4a52b6;
   --f-text-color-link-hover: #1b1e23;
@@ -174,16 +175,12 @@ html {
   --f-background-grid-focus-inner: #f5f6fa;
   --f-background-tab-active: #ffffff;
   --f-background-tab-inactive: #f5f6fa;
-  --f-background-calendar-default: #f4f4f4;
-  --f-background-calendar-selected: #116a3e;
-  --f-background-calendar-hover: #e5e5f5;
   --f-background-menu: #f4f4f4;
   --f-background-menu-vertical-hover: #ddddde;
   --f-background-menu-vertical-highlight: #e7f0e9;
   --f-background-popupmenu: #ffffff;
   --f-background-popupmenu-vertical-hover: #ddddde;
   --f-background-popupmenu-vertical-highlight: #e7f0e9;
-  --f-background-month: #f4f4f4;
   --f-background-dialogue-tree: #ffffff;
   --f-background-dialogue-tree-hover: #e5e5f5;
   --f-border-color-modal: #8d8e91;
@@ -195,10 +192,6 @@ html {
   --f-border-color-input-inner-disabled: #ffffff;
   --f-border-color-card: #8d8e91;
   --f-border-color-dialogue-tree: #8d8e91;
-  --f-border-color-calendar-highlight: #5f6165;
-  --f-border-color-calendar-disabled: #8d8e91;
-  --f-border-color-calendar-navbar: #ddddde;
-  --f-border-color-calendar-selected: #ffffff;
   --f-border-color-form-step: #ddddde;
   --f-border-color-progress-finished: #4c7e56;
   --f-border-color-progress-ongoing: #5f6165;
@@ -330,4 +323,10 @@ html {
   --size: 0;
   --min: 0;
   --max: 0;
+  --f-logo-image-small:
+      url("./images/fk-logo-primary-small.svg"),
+      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+  --f-logo-image-large:
+      url("./images/fk-logo-primary-large.svg"),
+      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 }
