@@ -45,6 +45,11 @@ export function enableValidation(
     element[sym] = target;
 }
 
+// @TODO direktiv
+// @TODO typning av enableValidation
+// @TODO en validator helt klar med config och allt
+
+
 export async function validateElement(
     element: HTMLElement,
 ): Promise<ValidationResult> {
@@ -53,6 +58,7 @@ export async function validateElement(
         return { isValid: true };
     }
 
+    // @TODO eventnamn
     const event = new CustomEvent("foo", {
         detail: {
             isValid: false,

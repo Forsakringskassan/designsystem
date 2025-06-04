@@ -34,13 +34,15 @@ onMounted(() => {
         },
         validators: [number, min],
     });
-    //addValidator(Element, "personnummer", config);
+    console.log(element.value);
+    //addValidators(Element, ["personnummer"], config);
 });
 
 async function onBlur(): Promise<void> {
     if (!element.value) {
         return;
     }
+    // @TODO returvärde med data
     await validateElement(element.value);
 }
 
