@@ -3,14 +3,25 @@
 import { ElementIdService } from "@fkui/logic";
 import { ref } from "vue";
 import { FLabel } from "@fkui/vue";
+import { personnummer, validateSingle } from "../../vite-dev/ValidationService2";
 
 const hasError = ref(false);
 const validationMessage = ref("Fel fel fel!");
 const id = ElementIdService.generateElementId();
 const viewValue = defineModel<string>();
 
-function onBlur() {
-    const result = validate({ getViewValue, getModelValue, validators });
+function onBlur(): void {
+    const result = validateSingle({
+        getViewValue() {
+            return viewValue.value;
+        },
+        getModelValue() {
+            return "model value not implemented";
+        },
+        validators: [personnummer],
+    });
+    hasError.value = !result;
+    console.log({ result });
 }
 </script>
 
@@ -22,14 +33,7 @@ function onBlur() {
         </template>
 
         <template #error-message>
-            <!--
-                    @slot Slot for displaying single or several error messages.
-                    @binding {boolean} hasError Set to true when a validation error is present
-                    @binding {string} validationMessage Descriptive validation error message for current error
-                -->
-            <slot name="error-message" v-bind="{ hasError, validationMessage }">
-                <template v-if="hasError">{{ validationMessage }}</template>
-            </slot>
+            <template v-if="hasError">{{ validationMessage }}</template>
         </template>
     </f-label>
     <input :id v-model="viewValue" type="text" @blur="onBlur" />
