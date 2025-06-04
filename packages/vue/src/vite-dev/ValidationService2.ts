@@ -13,6 +13,10 @@ declare global {
     }
 }
 
+interface ValidationResult {
+    isValid: boolean;
+}
+
 /** @internal */
 export interface ValidationTarget<TValue, TModel> {
     getViewValue(): TValue | null | undefined;
@@ -38,38 +42,62 @@ export function enableValidation(
     element: HTMLElement,
     target: ValidationTarget<unknown, unknown>,
 ): void {
-    console.log('enable validation on', element);
     element[sym] = target;
 }
 
-export function validateElement<TValue, TModel>(element: {
-    [sym]?: ValidationTarget<TValue, TModel>;
-}): boolean {
+export async function validateElement(
+    element: HTMLElement,
+): Promise<ValidationResult> {
     const { [sym]: target } = element;
     if (!target) {
-        console.log('no target in element', element);
-        return true;
+        return { isValid: true };
     }
 
+    const event = new CustomEvent("foo", {
+        detail: {
+            isValid: false,
+            viewValue: undefined as unknown,
+            modelValue: undefined as unknown,
+            formattedValue: undefined as unknown,
+            message: undefined as string | undefined,
+        },
+    });
+
+    // validering råa värden
     const viewValue = target.getViewValue();
+    event.detail.viewValue = viewValue;
     for (const validator of target.validators.filter(isViewValueValidator)) {
         const result = validator.validate(viewValue);
         if (!result.valid) {
-            return false;
+            event.detail.message = `validator "${validator.name}" failed (view value)`;
+            element.dispatchEvent(event);
+            return { isValid: false };
         }
     }
 
     if (!viewValue) {
-        return true;
+        event.detail.isValid = true;
+        element.dispatchEvent(event);
+        return { isValid: true };
     }
 
+    // validering tolkade värden
     const modelValue = target.parser(viewValue);
+    event.detail.modelValue = modelValue;
     for (const validator of target.validators.filter(isModelValueValidator)) {
         const result = validator.validate(modelValue);
         if (!result.valid) {
-            return false;
+            event.detail.message = `validator "${validator.name}" failed (model value)`;
+            element.dispatchEvent(event);
+            return { isValid: false };
         }
     }
 
-    return true;
+    const formattedValue = target.formatter(modelValue);
+    event.detail.formattedValue = formattedValue;
+
+    event.detail.isValid = true;
+    element.dispatchEvent(event);
+
+    return { isValid: true };
 }
