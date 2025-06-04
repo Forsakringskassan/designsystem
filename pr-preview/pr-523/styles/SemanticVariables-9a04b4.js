@@ -107,6 +107,12 @@ var metadata_default = {
       "comment": null
     },
     {
+      "name": "--fkds-color-border-inverted",
+      "value": "#ffffff",
+      "palette": "white-100",
+      "comment": null
+    },
+    {
       "name": "--fkds-color-action-text-primary-default",
       "value": "#4a52b6",
       "palette": "bluebell-100",
