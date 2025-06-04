@@ -1,10 +1,10 @@
 <!-- eslint-disable import/no-extraneous-dependencies -->
 <script setup lang="ts">
-import { ElementIdService } from "@fkui/logic";
+import { ElementIdService, formatNumber, parseNumber } from "@fkui/logic";
 import { onMounted, ref, useTemplateRef } from "vue";
 import { FLabel } from "@fkui/vue";
 import { enableValidation, validateElement } from "../../vite-dev/ValidationService2";
-import { personnummer } from "../../vite-dev/validators";
+import { min, number, personnummer } from "../../vite-dev/validators";
 
 const hasError = ref(false);
 const validationMessage = ref("Fel fel fel!");
@@ -24,24 +24,29 @@ onMounted(() => {
         getModelValue() {
             return "model value not implemented";
         },
-        parser(value) {
-            return value;
+        parser(value: string): number {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
+            return parseNumber(value)!;
         },
-        formatter(value) {
-            return value;
+        formatter(value: number): string {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
+            return formatNumber(value)!;
         },
-        validators: [personnummer],
+        validators: [number, min],
     });
     //addValidator(Element, "personnummer", config);
 });
 
-function onBlur(): void {
+async function onBlur(): Promise<void> {
     if (!element.value) {
         return;
     }
-    const result = validateElement(element.value);
-    hasError.value = !result;
-    console.log({ result });
+    await validateElement(element.value);
+}
+
+function onFoo(event: CustomEvent): void {
+    hasError.value = !event.detail.isValid;
+    validationMessage.value = event.detail.message;
 }
 </script>
 
@@ -56,5 +61,5 @@ function onBlur(): void {
             <template v-if="hasError">{{ validationMessage }}</template>
         </template>
     </f-label>
-    <input :id v-model="viewValue" type="text" ref="input" @blur="onBlur" />
+    <input :id ref="input" v-model="viewValue" type="text" @blur="onBlur" @foo="onFoo" />
 </template>
