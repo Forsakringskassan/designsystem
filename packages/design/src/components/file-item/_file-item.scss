@@ -71,11 +71,4 @@ $FILE_LIST_ITEM_SELECTOR: ".file-item-list" !default;
         margin-bottom: size.$margin-125;
         border: var(--f-border-width-medium) solid var(--f-border-color-separator);
     }
-
-    &__file-uploading {
-        .progress__meter--inprogress {
-            background: var(--f-background-progress-file-item-ongoing);
-            border: var(--f-border-width-small) solid var(--f-border-color-progress-file-item-ongoing);
-        }
-    }
 }
