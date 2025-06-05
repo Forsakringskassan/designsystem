@@ -13,6 +13,10 @@ $progressbar-border-width: var(--f-border-width-medium);
     padding: 0;
     border: $progressbar-border-width solid $progressbar-color-border;
 
+    @media (forced-colors: active) {
+        border: $progressbar-border-width solid highlight;
+    }
+
     &__meter {
         display: block;
         float: left;

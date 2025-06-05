@@ -42,10 +42,6 @@ $FILE_LIST_ITEM_SELECTOR: ".file-item-list" !default;
 
     &__file-remove {
         flex: 0 0 auto;
-
-        svg {
-            color: var(--f-icon-color-primary);
-        }
     }
 
     &__file-abort {
