@@ -1,7 +1,7 @@
 import { parseNumber } from "@fkui/logic";
-import { defineValidator } from "../validator-definition";
+import { defineValidator } from "../define-validator";
 
-declare module "../validator-definition" {
+declare module "../type-mapping" {
     export interface ValidatorTypeMapping {
         number: {
             config: never;

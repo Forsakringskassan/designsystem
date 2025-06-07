@@ -1,16 +1,13 @@
-import { getCandidates } from "./get-candidates";
-import { type ValidationElement } from "./validation-element";
-import { type ValidationResult } from "./validation-result";
-import { type ValidationState } from "./validation-state";
+import { getErrorMessage } from "./error-messages";
+import { stateSymbol } from "./state-symbol";
 import {
     type UntypedModelValueValidator,
     type UntypedValidator,
     type UntypedViewValueValidator,
-    type ValidatorContext,
-    type ValidatorTypeMapping,
-    getValidatorByname,
-} from "./validator-definition";
-import "./validators";
+} from "./untyped-validator";
+import { type ValidationResult } from "./validation-result";
+import { type ValidationState } from "./validation-state";
+import { type UntypedValidatorContext } from "./validator-context";
 
 interface ValidationError {
     name: string;
@@ -18,14 +15,7 @@ interface ValidationError {
     message: string;
 }
 
-const stateSymbol = Symbol("validation-state");
-let errorMessages: Record<string, string> = {};
-
-declare global {
-    interface HTMLElement {
-        [stateSymbol]?: ValidationState<unknown, unknown>;
-    }
-}
+const eventName = "validation:updated";
 
 function isViewValueValidator(
     value: [validator: UntypedValidator, config: unknown],
@@ -39,64 +29,14 @@ function isModelValueValidator(
     return Boolean(value[0].validateModelValue);
 }
 
-export function enableValidation<TValue, TModel>(
-    element: HTMLElement,
-    target: ValidationElement<TValue, TModel>,
-): void {
-    element[stateSymbol] = {
-        getViewValue: target.getViewValue,
-        getModelValue: target.getModelValue,
-        parser: target.parser ?? ((value) => value),
-        formatter: target.formatter ?? ((value) => value),
-        validators: [],
-    };
-    for (const event of target.event) {
-        element.addEventListener(event, () => {
-            internalValidate(element);
-        });
-    }
-}
-
-type Prettify<T> = {
-    readonly [K in keyof T]: T[K];
-} & {};
-
-export function addValidatorsToElement(
-    element: HTMLElement,
-    config: {
-        [K in keyof ValidatorTypeMapping]?: Prettify<
-            {
-                enabled?: boolean;
-            } & ValidatorTypeMapping[K]["config"] extends never
-                ? // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- asdf
-                  {}
-                : ValidatorTypeMapping[K]["config"]
-        >;
-    },
-): void {
-    const state = element[stateSymbol];
-    if (!state) {
-        throw new Error("element is not validatable");
-    }
-    for (const [name, v] of Object.entries(config)) {
-        const validator = getValidatorByname(name) as UntypedValidator;
-        state.validators.push([validator, v]);
-    }
-}
-
 function createError(
     target: Pick<ValidationState<unknown, unknown>, "validators">,
     name: string,
     code: string,
 ): ValidationError {
-    const validators = Object.values(target.validators).map((it) => it[0]);
-    const candidates = getCandidates({ name, code }, validators, undefined);
-    const key = candidates.find((it) => errorMessages[it]);
-    const message = key ? errorMessages[key] : name;
+    const message = getErrorMessage(target, name, code);
     return { name, code, message };
 }
-
-// @TODO direktiv
 
 function validateViewValue<TValue, TModel>(
     element: HTMLElement,
@@ -105,7 +45,7 @@ function validateViewValue<TValue, TModel>(
 ): ValidationError | null {
     const validators = target.validators.filter(isViewValueValidator);
     for (const [validator, config] of validators) {
-        const context: ValidatorContext<unknown> = { config, element };
+        const context: UntypedValidatorContext = { config, element };
         const result = validator.validateViewValue.call(context, value);
         if (!result.valid) {
             return createError(
@@ -125,7 +65,7 @@ function validateModelValue<TValue, TModel>(
 ): ValidationError | null {
     const validators = target.validators.filter(isModelValueValidator);
     for (const [validator, config] of validators) {
-        const context: ValidatorContext<unknown> = { config, element };
+        const context: UntypedValidatorContext = { config, element };
         const result = validator.validateModelValue.call(context, value);
         if (!result.valid) {
             return createError(
@@ -147,7 +87,7 @@ function dispatchError(
         formattedValue?: unknown;
     },
 ): void {
-    const event = new CustomEvent("foo", {
+    const event = new CustomEvent(eventName, {
         detail: { isValid: false, ...data },
     });
     element.dispatchEvent(event);
@@ -161,7 +101,7 @@ function dispatchSuccess(
         formattedValue: unknown;
     },
 ): void {
-    const event = new CustomEvent("foo", {
+    const event = new CustomEvent(eventName, {
         detail: { isValid: true, ...data },
     });
     element.dispatchEvent(event);
@@ -205,7 +145,7 @@ export function internalValidate(element: HTMLElement): ValidationResult {
 }
 
 /**
- * @internal
+ * @public
  * @param element - The element to validate
  * @returns
  */
@@ -213,18 +153,4 @@ export async function validateElement(
     element: HTMLElement,
 ): Promise<ValidationResult> {
     return internalValidate(element);
-}
-
-/**
- * @public
- * @param texts - Updated error messages
- */
-export function addErrorMessages(
-    texts: Record<string, string>,
-    { clear }: { clear?: boolean } = {},
-): void {
-    if (clear) {
-        errorMessages = {};
-    }
-    errorMessages = { ...errorMessages, ...texts };
 }
