@@ -1,14 +1,6 @@
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type -- asdf */
 export interface ValidatorTypeMapping {
-    number: {
-        config: never;
-        codes: never;
-    };
-    min: {
-        config: {
-            readonly value?: number;
-        };
-        codes: never;
-    };
+/* intentionally empty */
 }
 
 export type ValidatorName = keyof ValidatorTypeMapping;
@@ -27,10 +19,6 @@ export type ValidatorContext<K> = K extends ValidatorName
           readonly element: HTMLElement;
       };
 
-//interface ValidatorResult<K extends ValidatorName> {
-//    readonly valid: boolean;
-//    code: ValidatorCode<K>;
-//}
 type ValidatorResult<K> = K extends ValidatorName
     ? ValidatorCode<K> extends never
         ? { valid: boolean }
@@ -76,5 +64,17 @@ export function defineValidator<K extends ValidatorName, TValue, TModel>(
     name: K,
     definition: Omit<Validator<K, TValue, TModel>, "name">,
 ): Validator<K, TValue, TModel> {
-    return { name, ...definition };
+    const validator = { name, ...definition };
+    availableValidators[name] = validator as UntypedValidator;
+    return validator;
+}
+
+const availableValidators: Partial<Record<string, UntypedValidator>> = {};
+
+export function getValidatorByname(name: string): UntypedValidator {
+    const validator = availableValidators[name];
+    if (!validator) {
+        throw new Error(`no validator named "${name}"`);
+    }
+    return validator as UntypedValidator;
 }
