@@ -3,7 +3,7 @@
 import { ElementIdService, formatNumber, parseNumber } from "@fkui/logic";
 import { onMounted, ref, useTemplateRef } from "vue";
 import { FLabel } from "@fkui/vue";
-import { addValidatorsToElement, enableValidation, validateElement } from "../../vite-dev/ValidationService2";
+import { addValidatorsToElement, enableValidation } from "../../vite-dev/ValidationService2";
 
 const hasError = ref(false);
 const validationMessage = ref("Fel fel fel!");
@@ -31,20 +31,13 @@ onMounted(() => {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
             return formatNumber(value)!;
         },
+        event: ["blur"],
     });
     addValidatorsToElement(element.value, {
         number: {},
         min: { value: 5 },
     });
 });
-
-async function onBlur(): Promise<void> {
-    if (!element.value) {
-        return;
-    }
-    // @TODO returvärde med data
-    await validateElement(element.value);
-}
 
 function onFoo(event: CustomEvent): void {
     hasError.value = !event.detail.isValid;
@@ -63,5 +56,5 @@ function onFoo(event: CustomEvent): void {
             <template v-if="hasError">{{ validationMessage }}</template>
         </template>
     </f-label>
-    <input :id ref="input" v-model="viewValue" type="text" @blur="onBlur" @foo="onFoo" />
+    <input :id ref="input" v-model="viewValue" type="text" @foo="onFoo" />
 </template>

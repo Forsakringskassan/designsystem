@@ -51,6 +51,11 @@ export function enableValidation<TValue, TModel>(
         formatter: target.formatter ?? ((value) => value),
         validators: [],
     };
+    for (const event of target.event) {
+        element.addEventListener(event, () => {
+            internalValidate(element);
+        });
+    }
 }
 
 type Prettify<T> = {
@@ -145,9 +150,12 @@ function dispatchSuccess(
     element.dispatchEvent(event);
 }
 
-export async function validateElement(
-    element: HTMLElement,
-): Promise<ValidationResult> {
+/**
+ * @inernal
+ * @param element
+ * @returns
+ */
+export function internalValidate(element: HTMLElement): ValidationResult {
     const { [stateSymbol]: target } = element;
     if (!target) {
         return { isValid: true, errors: [] };
@@ -175,4 +183,15 @@ export async function validateElement(
     dispatchSuccess(element, { viewValue, modelValue, formattedValue });
 
     return { isValid: true, errors: [] };
+}
+
+/**
+ * @public
+ * @param element
+ * @returns
+ */
+export async function validateElement(
+    element: HTMLElement,
+): Promise<ValidationResult> {
+    return internalValidate(element);
 }
