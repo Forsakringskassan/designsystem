@@ -1,37 +1,56 @@
 import { parseNumber } from "@fkui/logic";
-import { defineValidator } from "./validator-definition";
+import {
+    defineValidator,
+    UntypedValidator,
+    Validator,
+    ValidatorName,
+} from "./validator-definition";
 
-declare module "./validator-result" {
-    interface ValidationCodeMapping {
-        personnummer: "format" | "checksum";
+declare module "./validator-definition" {
+    export interface ValidatorTypeMapping {
+        personnummer: {
+            config: never;
+            codes: never;
+        };
     }
 }
 
 export const personnummer = defineValidator("personnummer", {
-    type: "raw",
-    validate(value: string) {
+    validateViewValue(value) {
         if (typeof value === "string" && /^\d+$/.test(value)) {
-            return { valid: true };
+            return { valid: true, code: "format" };
         }
         return { valid: false, code: "format" };
     },
 });
 
 export const number = defineValidator("number", {
-    type: "raw",
-    validate(value: string) {
+    validateViewValue(value) {
         if (typeof value !== "string") {
-            return { valid: false, code: "" };
+            return { valid: false };
         }
-        return { valid: typeof parseNumber(value) === "number", code: "" };
+        return { valid: typeof parseNumber(value) === "number" };
     },
 });
-
 
 export const min = defineValidator("min", {
-    type: "parsed",
-    validate(value: number) {
-        console.log({ value });
-        return { valid: value >= 10, code: "" };
+    validateModelValue(value: number | null | undefined) {
+        return { valid: typeof value === "number" && value >= 10 };
     },
 });
+
+const validators: Partial<
+    Record<string, Validator<ValidatorName, unknown, unknown>>
+> = {
+    personnummer,
+    number,
+    min: min as Validator<"min", unknown, unknown>,
+};
+
+export function getValidatorByname(name: string): UntypedValidator {
+    const validator = validators[name];
+    if (!validator) {
+        throw new Error(`no validator named "${name}"`);
+    }
+    return validator as UntypedValidator;
+}

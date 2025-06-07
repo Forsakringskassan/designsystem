@@ -3,8 +3,7 @@
 import { ElementIdService, formatNumber, parseNumber } from "@fkui/logic";
 import { onMounted, ref, useTemplateRef } from "vue";
 import { FLabel } from "@fkui/vue";
-import { enableValidation, validateElement } from "../../vite-dev/ValidationService2";
-import { min, number, personnummer } from "../../vite-dev/validators";
+import { addValidatorsToElement, enableValidation, validateElement } from "../../vite-dev/ValidationService2";
 
 const hasError = ref(false);
 const validationMessage = ref("Fel fel fel!");
@@ -21,8 +20,8 @@ onMounted(() => {
         getViewValue() {
             return viewValue.value;
         },
-        getModelValue() {
-            return "model value not implemented";
+        getModelValue(): number {
+            return 5;
         },
         parser(value: string): number {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
@@ -32,10 +31,11 @@ onMounted(() => {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
             return formatNumber(value)!;
         },
-        validators: [number, min],
     });
-    console.log(element.value);
-    //addValidators(Element, ["personnummer"], config);
+    addValidatorsToElement(element.value, {
+        number: {},
+        min: { value: 5 },
+    });
 });
 
 async function onBlur(): Promise<void> {
