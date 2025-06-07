@@ -1,6 +1,6 @@
 /* eslint-disable-next-line @typescript-eslint/no-empty-object-type -- asdf */
 export interface ValidatorTypeMapping {
-/* intentionally empty */
+    /* intentionally empty */
 }
 
 export type ValidatorName = keyof ValidatorTypeMapping;

@@ -1,24 +1,22 @@
 import { type ValidationElement } from "./validation-element";
+import { ValidationResult } from "./validation-result";
 import {
     type UntypedModelValueValidator,
     type UntypedValidator,
     type UntypedViewValueValidator,
     type ValidatorContext,
     type ValidatorTypeMapping,
-    getValidatorByname
+    getValidatorByname,
 } from "./validator-definition";
+import "./validators";
 
 /** @internal */
-export const sym = Symbol("validation-target");
+export const stateSymbol = Symbol("validation-state");
 
 declare global {
     interface HTMLElement {
-        [sym]: ValidationState<unknown, unknown>;
+        [stateSymbol]: ValidationState<unknown, unknown>;
     }
-}
-
-interface ValidationResult {
-    isValid: boolean;
 }
 
 /** @internal */
@@ -46,7 +44,7 @@ export function enableValidation<TValue, TModel>(
     element: HTMLElement,
     target: ValidationElement<TValue, TModel>,
 ): void {
-    element[sym] = {
+    element[stateSymbol] = {
         getViewValue: target.getViewValue,
         getModelValue: target.getModelValue,
         parser: target.parser ?? ((value) => value),
@@ -72,7 +70,7 @@ export function addValidatorsToElement(
         >;
     },
 ): void {
-    const state = element[sym];
+    const state = element[stateSymbol];
     if (!state) {
         throw new Error("element is not validatable");
     }
@@ -150,44 +148,31 @@ function dispatchSuccess(
 export async function validateElement(
     element: HTMLElement,
 ): Promise<ValidationResult> {
-    const { [sym]: target } = element;
+    const { [stateSymbol]: target } = element;
     if (!target) {
-        return { isValid: true };
+        return { isValid: true, errors: [] };
     }
-
-    // @TODO eventnamn
-    const event = new CustomEvent("foo", {
-        detail: {
-            isValid: false,
-            viewValue: undefined as unknown,
-            modelValue: undefined as unknown,
-            formattedValue: undefined as unknown,
-            message: undefined as string | undefined,
-        },
-    });
 
     // validering råa värden
     const viewValue = target.getViewValue();
-    event.detail.viewValue = viewValue;
     const viewValueError = validateViewValue(element, target, viewValue);
     if (viewValueError) {
         const message = `validator "${viewValueError.validator}" failed (view value)`;
         dispatchError(element, { message, viewValue });
-        return { isValid: false };
+        return { isValid: false, errors: [{ element, message }] };
     }
 
     // validering tolkade värden
     const modelValue = target.parser(viewValue);
-    event.detail.modelValue = modelValue;
     const modelValueError = validateModelValue(element, target, modelValue);
     if (modelValueError) {
         const message = `validator "${modelValueError.validator}" failed (model value)`;
         dispatchError(element, { message, viewValue, modelValue });
-        return { isValid: false };
+        return { isValid: false, errors: [{ element, message }] };
     }
 
     const formattedValue = target.formatter(modelValue);
     dispatchSuccess(element, { viewValue, modelValue, formattedValue });
 
-    return { isValid: true };
+    return { isValid: true, errors: [] };
 }
