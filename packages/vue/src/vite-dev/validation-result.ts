@@ -1,4 +1,3 @@
-
 /**
  * The result of {@link validateElement}.
  *
