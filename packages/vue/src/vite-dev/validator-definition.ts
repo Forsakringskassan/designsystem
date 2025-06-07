@@ -37,7 +37,7 @@ type ViewValueValidatorCallback<K extends ValidatorName, T> = (
 
 type ModelValueValidatorCallback<K extends ValidatorName, T> = (
     this: ValidatorContext<K>,
-    value: T | null | undefined,
+    value: T,
 ) => ValidatorResult<K>;
 
 export interface Validator<K extends ValidatorName, TValue, TModel> {
