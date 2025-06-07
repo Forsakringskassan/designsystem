@@ -1,12 +1,12 @@
 import { type ValidationElement } from "./validation-element";
 import {
-    UntypedModelValueValidator,
-    UntypedValidator,
-    UntypedViewValueValidator,
-    ValidatorContext,
-    ValidatorTypeMapping,
+    type UntypedModelValueValidator,
+    type UntypedValidator,
+    type UntypedViewValueValidator,
+    type ValidatorContext,
+    type ValidatorTypeMapping,
+    getValidatorByname
 } from "./validator-definition";
-import { getValidatorByname } from "./validators";
 
 /** @internal */
 export const sym = Symbol("validation-target");
