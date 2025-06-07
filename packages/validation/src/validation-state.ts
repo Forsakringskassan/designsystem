@@ -1,4 +1,4 @@
-import { UntypedValidator } from "./validator-definition";
+import { type UntypedValidator } from "./untyped-validator";
 
 /**
  * Internal state for validation service.

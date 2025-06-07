@@ -1,9 +1,11 @@
-import { defineValidator } from "../validator-definition";
+import { defineValidator } from "../define-validator";
 
-declare module "../validator-definition" {
+declare module "../type-mapping" {
     export interface ValidatorTypeMapping {
         minValue: {
-            config: number | undefined;
+            config: {
+                limit?: number;
+            };
             codes: never;
         };
     }
@@ -11,7 +13,7 @@ declare module "../validator-definition" {
 
 export const min = defineValidator("minValue", {
     validateModelValue(value: number) {
-        const limit = this.config ?? 0;
+        const { limit = 0 } = this.config;
         return {
             valid: value >= limit,
         };

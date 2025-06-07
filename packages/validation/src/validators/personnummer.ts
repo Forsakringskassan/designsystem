@@ -1,6 +1,6 @@
-import { defineValidator } from "../validator-definition";
+import { defineValidator } from "../define-validator";
 
-declare module "../validator-definition" {
+declare module "../type-mapping" {
     export interface ValidatorTypeMapping {
         personnummer: {
             config: never;

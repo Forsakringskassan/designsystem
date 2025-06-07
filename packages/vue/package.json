@@ -86,6 +86,7 @@
     "@fkui/logic": "6.11.0",
     "@fkui/test-utils": "6.11.0",
     "@fkui/theme-default": "6.11.0",
+    "@fkui/validation": "6.11.0",
     "@forsakringskassan/vite-lib-config": "4.0.2",
     "@vue/test-utils": "2.4.6",
     "cypress": "14.4.1",

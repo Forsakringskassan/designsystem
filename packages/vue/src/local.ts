@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { type SetupOptions } from "@forsakringskassan/vite-lib-config";
 import { getErrorMessages } from "@fkui/logic";
-import { addErrorMessages } from "./vite-dev/ValidationService2";
+import { addErrorMessages } from "@fkui/validation";
 
 import "@fkui/icon-lib-default/dist/f";
 import "./local.scss";
