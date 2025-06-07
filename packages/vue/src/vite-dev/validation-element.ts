@@ -4,6 +4,7 @@ export interface ValidationElementSimple {
     getModelValue(): string;
     parser?(value: string): string;
     formatter?(value: string): string;
+    event: string[];
 }
 
 /** @public */
@@ -12,6 +13,7 @@ export interface ValidationElementParsed<TValue, TModel> {
     getModelValue(): TModel;
     parser(value: TValue): TModel;
     formatter(value: TModel): TValue;
+    event: string[];
 }
 
 /** @public */
