@@ -35,7 +35,7 @@ onMounted(() => {
     });
     addValidatorsToElement(element.value, {
         number: {},
-        min: { value: 5 },
+        minValue: 5,
     });
 });
 

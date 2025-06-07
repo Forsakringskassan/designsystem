@@ -1,5 +1,7 @@
 import { createApp } from "vue";
 import { type SetupOptions } from "@forsakringskassan/vite-lib-config";
+import { getErrorMessages } from "@fkui/logic";
+import { addErrorMessages } from "./vite-dev/ValidationService2";
 
 import "@fkui/icon-lib-default/dist/f";
 import "./local.scss";
@@ -13,6 +15,7 @@ import {
 import { setRunningContext } from "./config";
 
 export function setup(options: SetupOptions): void {
+    addErrorMessages(getErrorMessages());
     const { rootComponent, selector } = options;
     const app = createApp(rootComponent);
     setRunningContext(app);

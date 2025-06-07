@@ -9,8 +9,8 @@ export interface ValidationElementSimple {
 
 /** @public */
 export interface ValidationElementParsed<TValue, TModel> {
-    getViewValue(): TValue | null | undefined;
-    getModelValue(): TModel;
+    getViewValue(): TValue | undefined;
+    getModelValue(): TModel | undefined;
     parser(value: TValue): TModel;
     formatter(value: TModel): TValue;
     event: string[];
