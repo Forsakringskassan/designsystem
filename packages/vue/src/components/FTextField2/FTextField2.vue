@@ -3,7 +3,7 @@
 import { ElementIdService, formatNumber, parseNumber } from "@fkui/logic";
 import { onMounted, ref, useTemplateRef } from "vue";
 import { FLabel } from "@fkui/vue";
-import { enableValidation, addValidatorsToElement } from "@fkui/validation";
+import { enableValidation, addValidatorsToElement, UpdateEvent } from "@fkui/validation";
 
 const hasError = ref(false);
 const validationMessage = ref("Fel fel fel!");
@@ -39,7 +39,7 @@ onMounted(() => {
     });
 });
 
-function onFoo(event: CustomEvent): void {
+function onValidationUpdate(event: UpdateEvent): void {
     hasError.value = !event.detail.isValid;
     validationMessage.value = event.detail.message;
 }
@@ -56,6 +56,6 @@ function onFoo(event: CustomEvent): void {
             <template v-if="hasError">{{ validationMessage }}</template>
         </template>
     </f-label>
-    <input :id ref="input" v-model="viewValue" type="text" @validation:updated="onFoo" />
+    <input :id ref="input" v-model="viewValue" type="text" @validation:update="onValidationUpdate" />
     <pre>{{ JSON.stringify({ viewValue }) }}</pre>
 </template>

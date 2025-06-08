@@ -11,6 +11,7 @@ export {
 export { addValidatorsToElement } from "./add-validators-to-element";
 export { addErrorMessages } from "./error-messages";
 export { type ValidatorTypeMapping } from "./type-mapping";
+export { type UpdateEvent, type UpdateEventDetails } from "./update-event";
 export { validateElement } from "./validate-element";
 export {
     type ValidationCommonConfig,
