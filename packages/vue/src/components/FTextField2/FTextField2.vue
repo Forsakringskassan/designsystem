@@ -3,7 +3,7 @@
 import { ElementIdService, formatNumber, parseNumber } from "@fkui/logic";
 import { onMounted, ref, useTemplateRef } from "vue";
 import { FLabel } from "@fkui/vue";
-import { enableValidation, addValidatorsToElement, UpdateEvent } from "@fkui/validation";
+import { type UpdateEvent, enableValidation, addValidatorsToElement } from "@fkui/validation";
 
 const hasError = ref(false);
 const validationMessage = ref("Fel fel fel!");
