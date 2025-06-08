@@ -56,6 +56,7 @@ function onValidationUpdate(event: UpdateEvent): void {
             <template v-if="hasError">{{ validationMessage }}</template>
         </template>
     </f-label>
+    <!-- [html-validate-disable-block fkui/required-max-length -- temp] -->
     <input :id ref="input" v-model="viewValue" type="text" @validation:update="onValidationUpdate" />
     <pre>{{ JSON.stringify({ viewValue }) }}</pre>
 </template>
