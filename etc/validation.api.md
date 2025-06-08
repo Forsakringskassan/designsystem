@@ -49,6 +49,23 @@ export interface EnableValidationOptionsSimple {
 }
 
 // @public (undocumented)
+export type UpdateEvent<TValue = unknown, TModel = unknown> = CustomEvent<UpdateEventDetails<TValue, TModel>>;
+
+// @public (undocumented)
+export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
+    // (undocumented)
+    formattedValue?: TValue;
+    // (undocumented)
+    isValid: boolean;
+    // (undocumented)
+    message: string;
+    // (undocumented)
+    modelValue?: TModel;
+    // (undocumented)
+    viewValue?: TValue;
+}
+
+// @public (undocumented)
 export function validateElement(element: HTMLElement): Promise<ValidationResult>;
 
 // @public (undocumented)

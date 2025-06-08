@@ -5,6 +5,7 @@ import {
     type UntypedValidator,
     type UntypedViewValueValidator,
 } from "./untyped-validator";
+import { type UpdateEventDetails } from "./update-event";
 import { type ValidationResult } from "./validation-result";
 import { type ValidationState } from "./validation-state";
 import { type UntypedValidatorContext } from "./validator-context";
@@ -15,7 +16,7 @@ interface ValidationError {
     message: string;
 }
 
-const eventName = "validation:updated";
+const eventName = "validation:update";
 
 function isViewValueValidator(
     value: [validator: UntypedValidator, config: unknown],
@@ -80,14 +81,9 @@ function validateModelValue<TValue, TModel>(
 
 function dispatchError(
     element: HTMLElement,
-    data: {
-        message: string;
-        viewValue?: unknown;
-        modelValue?: unknown;
-        formattedValue?: unknown;
-    },
+    data: Omit<UpdateEventDetails, "isValid">,
 ): void {
-    const event = new CustomEvent(eventName, {
+    const event = new CustomEvent<UpdateEventDetails>(eventName, {
         detail: { isValid: false, ...data },
     });
     element.dispatchEvent(event);
@@ -95,14 +91,10 @@ function dispatchError(
 
 function dispatchSuccess(
     element: HTMLElement,
-    data: {
-        viewValue: unknown;
-        modelValue: unknown;
-        formattedValue: unknown;
-    },
+    data: Omit<UpdateEventDetails, "isValid" | "message">,
 ): void {
-    const event = new CustomEvent(eventName, {
-        detail: { isValid: true, ...data },
+    const event = new CustomEvent<UpdateEventDetails>(eventName, {
+        detail: { isValid: true, message: "", ...data },
     });
     element.dispatchEvent(event);
 }
