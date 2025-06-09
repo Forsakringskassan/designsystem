@@ -159,5 +159,18 @@ export function internalValidate(element: HTMLElement): ValidationResult {
 export async function validateElement(
     element: HTMLElement,
 ): Promise<ValidationResult> {
-    return internalValidate(element);
+    const self = internalValidate(element);
+
+    let isValid = self.isValid;
+    const errors = [...self.errors];
+
+    /* validate all validatable children of this element an aggregate result */
+    const children = element.querySelectorAll<HTMLElement>("[data-validation]");
+    for (const child of children) {
+        const result = internalValidate(child);
+        isValid &&= result.isValid;
+        errors.push(...result.errors);
+    }
+
+    return { isValid, errors };
 }

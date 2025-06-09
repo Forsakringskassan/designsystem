@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
-import { setFormSubmitted } from "@fkui/validation";
+import { setFormSubmitted, validateElement } from "@fkui/validation";
 import { FTextField2 } from "../components";
 
 const namn = ref("World");
 const form = useTemplateRef("form");
 
-function onSubmit(event: Event) {
+async function onSubmit(event: Event) {
     event.preventDefault();
     if (form.value) {
         setFormSubmitted(form.value);
+        const result = await validateElement(form.value);
+        console.log(result);
     }
 }
 </script>
