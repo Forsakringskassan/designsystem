@@ -2,9 +2,9 @@
 ** TODO initial
 ** DONE submitted
 ** TODO touched
-* useValidation() composable [0/2]
+* useValidation() composable [1/2]
 ** TODO required attribute
-** TODO aria-invalid attribute
+** DONE aria-invalid attribute
 * TODO instant
 * TODO validate descendants
 * TODO server error messages
