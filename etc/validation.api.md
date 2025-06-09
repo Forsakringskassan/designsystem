@@ -49,6 +49,12 @@ export interface EnableValidationOptionsSimple {
 }
 
 // @public (undocumented)
+export function resetFormSubmitted(form: HTMLFormElement): void;
+
+// @public (undocumented)
+export function setFormSubmitted(form: HTMLFormElement): void;
+
+// @public (undocumented)
 export type UpdateEvent<TValue = unknown, TModel = unknown> = CustomEvent<UpdateEventDetails<TValue, TModel>>;
 
 // @public (undocumented)
@@ -61,6 +67,7 @@ export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
     message: string;
     // (undocumented)
     modelValue?: TModel;
+    submitted: boolean;
     // (undocumented)
     viewValue?: TValue;
 }

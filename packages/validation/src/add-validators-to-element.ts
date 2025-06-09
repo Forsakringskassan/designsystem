@@ -1,5 +1,5 @@
 import { getValidatorByName } from "./registry";
-import { stateSymbol } from "./state-symbol";
+import { componentStateSymbol } from "./state-symbol";
 import { type ValidatorTypeMapping } from "./type-mapping";
 import { ValidationConfig } from "./validation-config";
 
@@ -12,7 +12,7 @@ export function addValidatorsToElement(
         [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
     },
 ): void {
-    const state = element[stateSymbol];
+    const state = element[componentStateSymbol];
     if (!state) {
         throw new Error("element is not validatable");
     }

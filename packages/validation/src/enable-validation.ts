@@ -1,4 +1,4 @@
-import { stateSymbol } from "./state-symbol";
+import { componentStateSymbol } from "./state-symbol";
 import { internalValidate } from "./validate-element";
 
 /** @public */
@@ -31,7 +31,7 @@ export function enableValidation<TValue, TModel>(
     element: HTMLElement,
     target: EnableValidationOptions<TValue, TModel>,
 ): void {
-    element[stateSymbol] = {
+    element[componentStateSymbol] = {
         getViewValue: target.getViewValue,
         getModelValue: target.getModelValue,
         parser: target.parser ?? ((value) => value),
