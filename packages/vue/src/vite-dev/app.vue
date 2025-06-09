@@ -6,9 +6,11 @@ import { FTextField2 } from "../components";
 const namn = ref("World");
 const form = useTemplateRef("form");
 
-function onSubmit(event) {
+function onSubmit(event: Event) {
     event.preventDefault();
-    setFormSubmitted(form.value);
+    if (form.value) {
+        setFormSubmitted(form.value);
+    }
 }
 </script>
 
