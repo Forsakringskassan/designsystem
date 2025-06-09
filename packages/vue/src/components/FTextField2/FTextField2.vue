@@ -40,7 +40,7 @@ onMounted(() => {
 });
 
 function onValidationUpdate(event: UpdateEvent): void {
-    hasError.value = !event.detail.isValid;
+    hasError.value = event.detail.submitted && !event.detail.isValid;
     validationMessage.value = event.detail.message;
 }
 </script>

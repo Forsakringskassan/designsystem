@@ -1,5 +1,5 @@
 import { getErrorMessage } from "./error-messages";
-import { stateSymbol } from "./state-symbol";
+import { componentStateSymbol, formStateSymbol } from "./state-symbol";
 import {
     type UntypedModelValueValidator,
     type UntypedValidator,
@@ -105,9 +105,14 @@ function dispatchSuccess(
  * @returns
  */
 export function internalValidate(element: HTMLElement): ValidationResult {
-    const { [stateSymbol]: target } = element;
+    const { [componentStateSymbol]: target } = element;
     if (!target) {
         return { isValid: true, errors: [] };
+    }
+
+    let submitted = false;
+    if ("form" in element && element.form instanceof HTMLFormElement) {
+        submitted = element.form[formStateSymbol]?.submitted ?? false;
     }
 
     // validering råa värden
@@ -115,7 +120,7 @@ export function internalValidate(element: HTMLElement): ValidationResult {
     const viewValueError = validateViewValue(element, target, viewValue);
     if (viewValueError) {
         const { message } = viewValueError;
-        dispatchError(element, { message, viewValue });
+        dispatchError(element, { message, viewValue, submitted });
         return { isValid: false, errors: [{ element, message }] };
     }
 
@@ -125,13 +130,23 @@ export function internalValidate(element: HTMLElement): ValidationResult {
         const modelValueError = validateModelValue(element, target, modelValue);
         if (modelValueError) {
             const { message } = modelValueError;
-            dispatchError(element, { message, viewValue, modelValue });
+            dispatchError(element, {
+                message,
+                viewValue,
+                modelValue,
+                submitted,
+            });
             return { isValid: false, errors: [{ element, message }] };
         }
     }
 
     const formattedValue = target.formatter(modelValue);
-    dispatchSuccess(element, { viewValue, modelValue, formattedValue });
+    dispatchSuccess(element, {
+        viewValue,
+        modelValue,
+        formattedValue,
+        submitted,
+    });
 
     return { isValid: true, errors: [] };
 }
