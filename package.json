@@ -93,7 +93,7 @@
     "@forsakringskassan/stylelint-config": "2.5.2",
     "@forsakringskassan/vite-lib-config": "4.0.1",
     "@html-validate/release-scripts": "6.9.0",
-    "@types/estree": "1.0.7",
+    "@types/estree": "1.0.8",
     "@types/glob": "8.1.0",
     "@types/jest": "29.5.14",
     "@types/lodash": "4.17.17",
