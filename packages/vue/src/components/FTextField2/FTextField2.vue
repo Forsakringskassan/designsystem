@@ -4,45 +4,42 @@ import { ElementIdService, formatNumber, parseNumber } from "@fkui/logic";
 import { onMounted, ref, useTemplateRef } from "vue";
 import { FLabel } from "@fkui/vue";
 import { type UpdateEvent, enableValidation, addValidatorsToElement } from "@fkui/validation";
+import { useValidation } from "./use-validation";
 
-const hasError = ref(false);
-const validationMessage = ref("Fel fel fel!");
+// const hasError = ref(false);
+// const validationMessage = ref("Fel fel fel!");
 const id = ElementIdService.generateElementId();
 const viewValue = defineModel<string>();
 
 const element = useTemplateRef("input");
+const { ariaInvalid, showValidationError, validationMessage } = useValidation(element, {
+    getViewValue() {
+        return viewValue.value;
+    },
+    getModelValue(): number {
+        return 5;
+    },
+    parser(value: string): number {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
+        return parseNumber(value)!;
+    },
+    formatter(value: number): string {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
+        return formatNumber(value)!;
+    },
+    event: ["blur"],
+});
 
+/* workaround until plugin directive is in place */
 onMounted(() => {
     if (!element.value) {
         return;
     }
-    enableValidation(element.value, {
-        getViewValue() {
-            return viewValue.value;
-        },
-        getModelValue(): number {
-            return 5;
-        },
-        parser(value: string): number {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
-            return parseNumber(value)!;
-        },
-        formatter(value: number): string {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- asdf
-            return formatNumber(value)!;
-        },
-        event: ["blur"],
-    });
     addValidatorsToElement(element.value, {
         number: {},
         minValue: { limit: 5 },
     });
 });
-
-function onValidationUpdate(event: UpdateEvent): void {
-    hasError.value = event.detail.submitted && !event.detail.isValid;
-    validationMessage.value = event.detail.message;
-}
 </script>
 
 <template>
@@ -53,10 +50,10 @@ function onValidationUpdate(event: UpdateEvent): void {
         </template>
 
         <template #error-message>
-            <template v-if="hasError">{{ validationMessage }}</template>
+            <template v-if="showValidationError">{{ validationMessage }}</template>
         </template>
     </f-label>
     <!-- [html-validate-disable-block fkui/required-max-length -- temp] -->
-    <input :id ref="input" v-model="viewValue" type="text" @validation:update="onValidationUpdate" />
-    <pre>{{ JSON.stringify({ viewValue }) }}</pre>
+    <input :id :ariaInvalid ref="input" v-model="viewValue" type="text" />
+    <pre>{{ JSON.stringify({ showValidationError, validationMessage, viewValue }) }}</pre>
 </template>
