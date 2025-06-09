@@ -13,7 +13,7 @@ export interface UseValidation {
 }
 
 export function useValidation<TValue, TModel>(
-    element: ShallowRef<HTMLElement>,
+    element: Readonly<ShallowRef<HTMLElement | null>>,
     options: EnableValidationOptions<TValue, TModel>,
 ): UseValidation {
     const ariaInvalid: Ref<"true" | undefined> = ref(undefined);
