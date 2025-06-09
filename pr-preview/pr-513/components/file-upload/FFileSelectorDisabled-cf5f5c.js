@@ -28,17 +28,21 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorEnabled.vue:FFileSelectorEnabled-265f6b.js
+// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorDisabled.vue:FFileSelectorDisabled-cf5f5c.js
 import { defineComponent } from "vue";
 import { FFileSelector } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "FFileSelectorEnabled",
+  name: "FFileSelectorDisabled",
   components: { FFileSelector }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_file_selector = _resolveComponent("f-file-selector");
-  return _openBlock(), _createBlock(_component_f_file_selector, { accept: "application/pdf, image/jpeg, image/tiff, image/png" }, {
+  return _openBlock(), _createBlock(_component_f_file_selector, {
+    id: "dis",
+    accept: "image/jpeg, image/tiff",
+    disabled: ""
+  }, {
     default: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" L\xE4gg till fil ")
     ])),
@@ -49,7 +53,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-265f6b"
+  selector: "#example-cf5f5c"
 });
 export {
   render

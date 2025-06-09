@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemButtonProgress.vue:FFileItemButtonProgress-8ecc2c.js
+// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemButtonProgress.vue:FFileItemButtonProgress-b6d589.js
 import { defineComponent } from "vue";
 import { FFileItem, FIcon, FProgressbar } from "@fkui/vue";
 import { vModelText as _vModelText, createElementVNode as _createElementVNode, withDirectives as _withDirectives, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, createBlock as _createBlock, withCtx as _withCtx } from "vue";
@@ -122,7 +122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8ecc2c"
+  selector: "#example-b6d589"
 });
 export {
   render

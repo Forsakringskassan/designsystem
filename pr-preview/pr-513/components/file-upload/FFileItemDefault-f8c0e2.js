@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemDefault.vue:FFileItemDefault-d2234f.js
+// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemDefault.vue:FFileItemDefault-f8c0e2.js
 import { defineComponent } from "vue";
 import { FFileItem } from "@fkui/vue";
 import { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -50,7 +50,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d2234f"
+  selector: "#example-f8c0e2"
 });
 export {
   render
