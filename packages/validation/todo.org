@@ -1,0 +1,12 @@
+* State [0/2]
+** TODO submitted
+** TODO touched
+* useValidation() composable [0/2]
+** TODO required attribute
+** TODO aria-invalid attribute
+* TODO instant
+* TODO validate descendants
+* TODO server error messages
+* Reactivity [0/2]
+** TODO configuration updated
+** TODO cross-validation
