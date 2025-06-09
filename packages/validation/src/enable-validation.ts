@@ -43,4 +43,5 @@ export function enableValidation<TValue, TModel>(
             internalValidate(element);
         });
     }
+    element.setAttribute("data-validation", "");
 }

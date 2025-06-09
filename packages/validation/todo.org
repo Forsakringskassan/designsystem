@@ -6,9 +6,10 @@
 ** TODO required attribute
 ** DONE aria-invalid attribute
 * TODO instant
-* TODO validate descendants
+* DONE validate descendants
 * TODO server error messages
 * TODO vue plugin
 * Reactivity [0/2]
 ** TODO configuration updated
 ** TODO cross-validation
+* TODO default export all validators
