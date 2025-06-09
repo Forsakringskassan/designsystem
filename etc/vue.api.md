@@ -7150,8 +7150,8 @@ default: undefined;
 };
 }>> & Readonly<{}>, {
 teleport: string | HTMLElement | undefined;
-overlay: boolean;
 show: boolean;
+overlay: boolean;
 delay: boolean;
 language: "sv" | "en";
 focusOnOverlay: boolean;
