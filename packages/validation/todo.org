@@ -13,3 +13,10 @@
 ** TODO configuration updated
 ** TODO cross-validation
 * TODO default export all validators
+* Use with: [0/6]
+** TODO FTextField
+** TODO FRadioField
+** TODO FCheckboxField
+** TODO FSelectField
+** TODO FTextAreaField
+** TODO FList

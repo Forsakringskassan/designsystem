@@ -69,6 +69,8 @@ export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
     modelValue?: TModel;
     submitted: boolean;
     // (undocumented)
+    validator: string;
+    // (undocumented)
     viewValue?: TValue;
 }
 
@@ -90,6 +92,7 @@ export type ValidationConfig<K extends keyof ValidatorTypeMapping> = ValidatorTy
 export interface ValidationResult {
     readonly errors: Array<{
         readonly element: HTMLElement;
+        readonly validator: string;
         readonly message: string;
     }>;
     readonly isValid: boolean;

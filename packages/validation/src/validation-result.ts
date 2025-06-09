@@ -8,7 +8,11 @@ export interface ValidationResult {
     readonly isValid: boolean;
     /** List of errors present */
     readonly errors: Array<{
+        /** element the error belongs to */
         readonly element: HTMLElement;
+        /** name of validator yielding the error */
+        readonly validator: string;
+        /** error message */
         readonly message: string;
     }>;
 }
