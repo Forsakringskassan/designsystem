@@ -12,6 +12,14 @@ export interface UseValidation {
     validationMessage: Readonly<Ref<string | undefined>>;
 }
 
+function shouldshowError(event: UpdateEvent): boolean {
+    const { submitted, isValid, validator } = event.detail;
+    if (isValid) {
+        return false;
+    }
+    return submitted || validator !== "required";
+}
+
 export function useValidation<TValue, TModel>(
     element: Readonly<ShallowRef<HTMLElement | null>>,
     options: EnableValidationOptions<TValue, TModel>,
@@ -26,10 +34,11 @@ export function useValidation<TValue, TModel>(
         enableValidation(element.value, options);
     });
     useEventListener(element, "validation:update", (event: UpdateEvent) => {
-        const { submitted, isValid, message } = event.detail;
-        showValidationError.value = submitted && !isValid;
+        const { message } = event.detail;
+        const show = shouldshowError(event);
+        showValidationError.value = show;
         validationMessage.value = message;
-        ariaInvalid.value = showValidationError.value ? "true" : undefined;
+        ariaInvalid.value = show ? "true" : undefined;
     });
     return {
         ariaInvalid,

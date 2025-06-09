@@ -36,6 +36,7 @@ onMounted(() => {
         return;
     }
     addValidatorsToElement(element.value, {
+        required: {},
         number: {},
         minValue: { limit: 5 },
     });

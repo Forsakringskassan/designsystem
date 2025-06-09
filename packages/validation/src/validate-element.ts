@@ -11,8 +11,11 @@ import { type ValidationState } from "./validation-state";
 import { type UntypedValidatorContext } from "./validator-context";
 
 interface ValidationError {
+    /** validator name */
     name: string;
+    /** validator error code (or "default" if no code was provided) */
     code: string;
+    /** error message */
     message: string;
 }
 
@@ -91,10 +94,10 @@ function dispatchError(
 
 function dispatchSuccess(
     element: HTMLElement,
-    data: Omit<UpdateEventDetails, "isValid" | "message">,
+    data: Omit<UpdateEventDetails, "isValid" | "validator" | "message">,
 ): void {
     const event = new CustomEvent<UpdateEventDetails>(eventName, {
-        detail: { isValid: true, message: "", ...data },
+        detail: { isValid: true, validator: "", message: "", ...data },
     });
     element.dispatchEvent(event);
 }
@@ -119,9 +122,17 @@ export function internalValidate(element: HTMLElement): ValidationResult {
     const viewValue = target.getViewValue();
     const viewValueError = validateViewValue(element, target, viewValue);
     if (viewValueError) {
-        const { message } = viewValueError;
-        dispatchError(element, { message, viewValue, submitted });
-        return { isValid: false, errors: [{ element, message }] };
+        const { name, message } = viewValueError;
+        dispatchError(element, {
+            validator: name,
+            message,
+            viewValue,
+            submitted,
+        });
+        return {
+            isValid: false,
+            errors: [{ element, validator: name, message }],
+        };
     }
 
     // validering tolkade värden
@@ -129,14 +140,18 @@ export function internalValidate(element: HTMLElement): ValidationResult {
     if (typeof modelValue !== "undefined") {
         const modelValueError = validateModelValue(element, target, modelValue);
         if (modelValueError) {
-            const { message } = modelValueError;
+            const { name, message } = modelValueError;
             dispatchError(element, {
+                validator: name,
                 message,
                 viewValue,
                 modelValue,
                 submitted,
             });
-            return { isValid: false, errors: [{ element, message }] };
+            return {
+                isValid: false,
+                errors: [{ element, validator: name, message }],
+            };
         }
     }
 

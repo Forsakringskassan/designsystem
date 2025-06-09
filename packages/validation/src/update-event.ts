@@ -3,7 +3,10 @@
  */
 export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
     isValid: boolean;
+
+    validator: string;
     message: string;
+
     viewValue?: TValue;
     modelValue?: TModel;
     formattedValue?: TValue;
