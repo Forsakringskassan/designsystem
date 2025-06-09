@@ -5,7 +5,7 @@ import {
     type UntypedValidator,
     type UntypedViewValueValidator,
 } from "./untyped-validator";
-import { type UpdateEventDetails } from "./update-event";
+import { type UpdateEventDetails } from "./event/update-event";
 import { type ValidationResult } from "./validation-result";
 import { type ValidationState } from "./validation-state";
 import { type UntypedValidatorContext } from "./validator-context";
@@ -108,8 +108,8 @@ function dispatchSuccess(
  * @returns
  */
 export function internalValidate(element: HTMLElement): ValidationResult {
-    const { [componentStateSymbol]: target } = element;
-    if (!target) {
+    const { [componentStateSymbol]: state } = element;
+    if (!state || state.placeholder) {
         return { isValid: true, errors: [] };
     }
 
@@ -119,8 +119,8 @@ export function internalValidate(element: HTMLElement): ValidationResult {
     }
 
     // validering råa värden
-    const viewValue = target.getViewValue();
-    const viewValueError = validateViewValue(element, target, viewValue);
+    const viewValue = state.getViewValue();
+    const viewValueError = validateViewValue(element, state, viewValue);
     if (viewValueError) {
         const { name, message } = viewValueError;
         dispatchError(element, {
@@ -136,9 +136,9 @@ export function internalValidate(element: HTMLElement): ValidationResult {
     }
 
     // validering tolkade värden
-    const modelValue = target.parser(viewValue);
+    const modelValue = state.parser(viewValue);
     if (typeof modelValue !== "undefined") {
-        const modelValueError = validateModelValue(element, target, modelValue);
+        const modelValueError = validateModelValue(element, state, modelValue);
         if (modelValueError) {
             const { name, message } = modelValueError;
             dispatchError(element, {
@@ -155,7 +155,7 @@ export function internalValidate(element: HTMLElement): ValidationResult {
         }
     }
 
-    const formattedValue = target.formatter(modelValue);
+    const formattedValue = state.formatter(modelValue);
     dispatchSuccess(element, {
         viewValue,
         modelValue,

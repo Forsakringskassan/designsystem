@@ -15,6 +15,14 @@ export function addValidatorsToElement(element: HTMLElement, config: {
 }): void;
 
 // @public (undocumented)
+export type ConfigEvent = CustomEvent<ConfigEventDetails>;
+
+// @public (undocumented)
+export type ConfigEventDetails = {
+    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
+};
+
+// @public (undocumented)
 export function enableValidation<TValue, TModel>(element: HTMLElement, target: EnableValidationOptions<TValue, TModel>): void;
 
 // @public (undocumented)

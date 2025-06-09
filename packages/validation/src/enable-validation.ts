@@ -31,17 +31,25 @@ export function enableValidation<TValue, TModel>(
     element: HTMLElement,
     target: EnableValidationOptions<TValue, TModel>,
 ): void {
+    const existing = element[componentStateSymbol];
+    if (existing && existing.placeholder === false) {
+        throw new Error("validation already enabled on element");
+    }
+
     element[componentStateSymbol] = {
+        placeholder: false,
         getViewValue: target.getViewValue,
         getModelValue: target.getModelValue,
         parser: target.parser ?? ((value) => value),
         formatter: target.formatter ?? ((value) => value),
-        validators: [],
+        validators: existing?.validators ?? [],
     };
+
     for (const event of target.event) {
         element.addEventListener(event, () => {
             internalValidate(element);
         });
     }
+
     element.setAttribute("data-validation", "");
 }

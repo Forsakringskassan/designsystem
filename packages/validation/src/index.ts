@@ -1,5 +1,9 @@
+import { ConfigEvent, UpdateEvent } from "./event";
 import { componentStateSymbol, formStateSymbol } from "./state-symbol";
-import { type ValidationState } from "./validation-state";
+import {
+    type PlaceholderState,
+    type ValidationState,
+} from "./validation-state";
 import "./validators";
 
 export {
@@ -8,11 +12,16 @@ export {
     type EnableValidationOptionsSimple,
     enableValidation,
 } from "./enable-validation";
+export {
+    type ConfigEvent,
+    type ConfigEventDetails,
+    type UpdateEvent,
+    type UpdateEventDetails,
+} from "./event";
 export { addValidatorsToElement } from "./add-validators-to-element";
 export { addErrorMessages } from "./error-messages";
 export { setFormSubmitted, resetFormSubmitted } from "./form-submitted";
 export { type ValidatorTypeMapping } from "./type-mapping";
-export { type UpdateEvent, type UpdateEventDetails } from "./update-event";
 export { validateElement } from "./validate-element";
 export {
     type ValidationCommonConfig,
@@ -22,7 +31,14 @@ export { type ValidationResult } from "./validation-result";
 
 declare global {
     interface HTMLElement {
-        [componentStateSymbol]?: ValidationState<unknown, unknown>;
+        [componentStateSymbol]?:
+            | ValidationState<unknown, unknown>
+            | PlaceholderState;
+    }
+
+    interface HTMLElementEventMap {
+        "validation:config": ConfigEvent;
+        "validation:update": UpdateEvent;
     }
 
     interface HTMLFormElement {
