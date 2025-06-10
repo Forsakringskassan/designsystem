@@ -2798,7 +2798,7 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
     slots: {
         default?(_: {
             updateItem: (current: T) => void;
-            deleteItem: (current: T) => void;
+            deleteItem: (current: T, nested?: keyof T) => void;
         }): any;
         'add-button'?(_: {}): any;
         buttons?(_: {

@@ -76,6 +76,22 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.
 FCrudDatasetAdditionalButtons.vue
 ```
 
+## Borttagning av nästlade objekt
+
+Om du har nästlade objekt ( till exempel för {@link table#expanderbara_rader expanderbara tabeller}) som du
+vill kunna ta bort behöver du även ange egenskapsnamnet (`key`) till callback funktionen `deleteItem()`.
+
+```js
+const items = [
+    { name: "Awesome item", nested: [{ name: "Awesome nested item" }] },
+];
+```
+
+```diff
+-<f-table-button icon="trashcan" @click="deleteItem(item)">
++<f-table-button icon="trashcan" @click="deleteItem(item, 'nested')">
+```
+
 ## Datatabell med lägg till-knapp
 
 ```import
