@@ -105,9 +105,9 @@ describe("when selectable", () => {
         });
         cy.mount(TestComponent);
 
-        table.columnItem(1).checkbox().isSelected().should("be.true");
-        table.columnItem(2).checkbox().isSelected().should("be.false");
-        table.columnItem(3).checkbox().isSelected().should("be.true");
+        table.checkbox(1).isSelected().should("be.true");
+        table.checkbox(2).isSelected().should("be.false");
+        table.checkbox(3).isSelected().should("be.true");
     });
 
     it("should update checkboxes on `v-model` change", () => {
@@ -152,24 +152,24 @@ describe("when selectable", () => {
         });
         cy.mount(TestComponent);
 
-        table.columnItem(1).checkbox().isSelected().should("be.true");
-        table.columnItem(2).checkbox().isSelected().should("be.false");
-        table.columnItem(3).checkbox().isSelected().should("be.true");
+        table.checkbox(1).isSelected().should("be.true");
+        table.checkbox(2).isSelected().should("be.false");
+        table.checkbox(3).isSelected().should("be.true");
 
         cy.get("#remove-all").click();
-        table.columnItem(1).checkbox().isSelected().should("be.false");
-        table.columnItem(2).checkbox().isSelected().should("be.false");
-        table.columnItem(3).checkbox().isSelected().should("be.false");
+        table.checkbox(1).isSelected().should("be.false");
+        table.checkbox(2).isSelected().should("be.false");
+        table.checkbox(3).isSelected().should("be.false");
 
         cy.get("#add-one").click();
-        table.columnItem(1).checkbox().isSelected().should("be.false");
-        table.columnItem(2).checkbox().isSelected().should("be.true");
-        table.columnItem(3).checkbox().isSelected().should("be.false");
+        table.checkbox(1).isSelected().should("be.false");
+        table.checkbox(2).isSelected().should("be.true");
+        table.checkbox(3).isSelected().should("be.false");
 
         cy.get("#select-all").click();
-        table.columnItem(1).checkbox().isSelected().should("be.true");
-        table.columnItem(2).checkbox().isSelected().should("be.true");
-        table.columnItem(3).checkbox().isSelected().should("be.true");
+        table.checkbox(1).isSelected().should("be.true");
+        table.checkbox(2).isSelected().should("be.true");
+        table.checkbox(3).isSelected().should("be.true");
     });
 });
 
@@ -345,22 +345,14 @@ describe("when `rows` is empty", () => {
         cy.mount(TestComponent);
 
         table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "2");
-        table
-            .headerRowItem()
-            .tableRowHeaderContent()
-            .eq(1)
-            .should("contain.text", "Amount");
+        table.header(2).should("contain.text", "Amount");
 
         cy.get("#toggle-btn").click();
         table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "1");
-        table.columnItem(2).el().should("not.exist");
+        table.header(2).should("not.exist");
 
         cy.get("#toggle-btn").click();
         table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "2");
-        table
-            .headerRowItem()
-            .tableRowHeaderContent()
-            .eq(1)
-            .should("contain.text", "Amount");
+        table.header(2).should("contain.text", "Amount");
     });
 });
