@@ -1,5 +1,5 @@
 import { type DefaultCypressChainable, type BasePageObject } from "./common";
-import { FTableColumnPageObject } from "./FTableColumn.pageobject";
+import { FTableColumnPageObject, FCheckboxFieldPageObject } from ".";
 
 /**
  * @public
@@ -65,21 +65,30 @@ export class FInteractiveTablePageObject implements BasePageObject {
     }
 
     /**
+     * Get table header cell (`<th>` in `<thead>`).
+     *
+     * Neither the marker for expandable rows or the checkbox for selectable
+     * rows are included in the column count, i.e. `1` always refers to the
+     * first column with content.
+     *
+     * @public
+     * @param col - column number of header (1-indexed).
+     * @returns The header cell element.
+     */
+    public header(
+        col: number,
+    ): Cypress.Chainable<JQuery<HTMLTableCellElement>> {
+        const index = col - 1;
+        return cy.get(`${this.selector} thead .table__column:nth(${index})`);
+    }
+
+    /**
      * Get all table headers (`<th>` in `<thead>`).
      *
      * Includes the headers for checkboxes in selectable rows and markers in expandable rows.
      */
     public headersRow(): DefaultCypressChainable {
         return cy.get(`${this.selector} thead th`);
-    }
-
-    /**
-     * Get all table body rows (`<tr>` in `<tbody>`).
-     *
-     * Includes expandable rows even if not expanded.
-     */
-    public bodyRow(): DefaultCypressChainable {
-        return cy.get(`${this.selector} tbody tr`);
     }
 
     /**
@@ -94,28 +103,38 @@ export class FInteractiveTablePageObject implements BasePageObject {
     }
 
     /**
-     * Get page object for `FTableColumn` with selector targeting the given row number.
+     * Get all table body rows (`<tr>` in `<tbody>`).
      *
-     * Index includes the header row (index 0 selects the header row while 1 selects first row in table body).
-     * Index ignores expandable rows.
-     *
-     * @param index - Row number (0-indexed).
-     * @returns Page object for `FTableColumn`.
+     * Includes expandable rows even if not expanded.
      */
-    public columnItem(index: number): FTableColumnPageObject {
-        return new FTableColumnPageObject(
-            `${this.selector} .table__row`,
-            index,
-        );
+    public bodyRow(): DefaultCypressChainable {
+        return cy.get(`${this.selector} tbody tr`);
     }
 
     /**
-     * Get page object for `FTableColumn` with selector targeting the header row.
+     * Get page object with selector for the checkbox in given row.
      *
-     * @returns Page object for `FTableColumn`.
+     * For expandable rows the row count depend on whenever a row is expanded or
+     * not. If the first row is collapsed the second row refers to the next
+     * parent row while if the first row is expanded the second row refers to
+     * the first expanded row under the first row.
+     *
+     * Requires a `selectable` table.
+     *
+     * @public
+     * @param row - Row number (1-indexed).
+     * @returns Page object for `FCheckboxField`.
      */
-    public headerRowItem(): FTableColumnPageObject {
-        return new FTableColumnPageObject(`${this.selector} .table__row`, 0);
+    public checkbox(row: number): FCheckboxFieldPageObject {
+        const index = row - 1;
+        return new FCheckboxFieldPageObject(
+            [
+                this.selector,
+                `tbody`,
+                `tr:not(.table__expandable-row--collapsed):nth(${index})`,
+                `.checkbox`,
+            ].join(" "),
+        );
     }
 
     /**
@@ -147,7 +166,35 @@ export class FInteractiveTablePageObject implements BasePageObject {
                 throw Error("Invalid order");
         }
 
-        const column = this.headerRowItem().tableRowHeaderContent().eq(index);
-        return column.find(`svg.${iconName}`);
+        return cy.get(
+            `${this.selector} thead th:nth(${index}) svg.${iconName}`,
+        );
+    }
+
+    /**
+     * Get page object for `FTableColumn` with selector targeting the header row.
+     *
+     * @deprecated Use `header()` instead. Deprecated since %version%.
+     * @returns Page object for `FTableColumn`.
+     */
+    public headerRowItem(): FTableColumnPageObject {
+        return new FTableColumnPageObject(`${this.selector} .table__row`, 0);
+    }
+
+    /**
+     * Get page object for `FTableColumn` with selector targeting the given row number.
+     *
+     * Index includes the header row (index 0 selects the header row while 1 selects first row in table body).
+     * Index ignores expandable rows.
+     *
+     * @deprecated Use `cell()` for body content and `header()` for header content instead. Deprecated since %version%.
+     * @param index - Row number (0-indexed).
+     * @returns Page object for `FTableColumn`.
+     */
+    public columnItem(index: number): FTableColumnPageObject {
+        return new FTableColumnPageObject(
+            `${this.selector} .table__row`,
+            index,
+        );
     }
 }

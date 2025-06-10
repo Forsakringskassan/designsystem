@@ -88,6 +88,8 @@ functions/cypress/pageobjects/FFileItemPageObject/filename.html
 functions/cypress/pageobjects/FFileItemPageObject/index.html
 functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html
 functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html
+functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html
+functions/cypress/pageobjects/FInteractiveTablePageObject/header.html
 functions/cypress/pageobjects/FLabelPageObject/description.html
 functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html
