@@ -23,16 +23,16 @@ function useResize(options);
 `options` {@optional}
 : Egenskaper att styra.
 
-    `enabled: Ref<boolean>` {@optional}
+    `enabled: boolean` {@optional}
     : Om aktiv kommer den justerbara ytan att vara justerbar. Default: `true`.
 
-    `visible: Ref<boolean>` {@optional}
+    `visible: boolean` {@optional}
     : Om aktiv kommer den justerbara ytan att visas. Default: `true`.
 
-    `overlay: Ref<boolean>` {@optional}
+    `overlay: boolean` {@optional}
     : Om aktiv kommer den justerbara ytan att visas som en overlay istället för statisk. `offset` kan användas för att sätta en statisk storlek för hur mycket plats den justerbara ytan ska ta upp. Default: `false`.
 
-    `offset: Ref<number>` {@optional}
+    `offset: number` {@optional}
     : När `overlay` är aktiv sätter detta hur mycket statisk plats den justerbara ytan ska ta upp. Default: `0`.
 
 ### Returvärde

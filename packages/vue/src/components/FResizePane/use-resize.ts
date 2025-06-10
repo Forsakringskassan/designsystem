@@ -1,13 +1,20 @@
-import { type InjectionKey, type Ref, inject, onUnmounted, ref } from "vue";
+import {
+    type InjectionKey,
+    type Ref,
+    inject,
+    onUnmounted,
+    ref,
+    toRef,
+} from "vue";
 
 /**
  * @internal
  */
 export interface ResizeParams {
-    readonly enabled?: Readonly<Ref<boolean>>;
-    readonly visible?: Readonly<Ref<boolean>>;
-    readonly offset?: Readonly<Ref<number>>;
-    readonly overlay?: Readonly<Ref<boolean>>;
+    readonly enabled: Readonly<Ref<boolean>> | undefined;
+    readonly visible: Readonly<Ref<boolean>> | undefined;
+    readonly offset: Readonly<Ref<number>> | undefined;
+    readonly overlay: Readonly<Ref<boolean>> | undefined;
 }
 
 /**
@@ -17,7 +24,7 @@ export interface ResizeParams {
  */
 export interface ResizeAPI {
     register(params: ResizeParams): () => void;
-    size: Readonly<Ref<number>>;
+    readonly size: Readonly<Ref<number>>;
 }
 
 /**
@@ -42,10 +49,10 @@ export interface UseResize {
  */
 export interface UseResizeOptions {
     /** When one or more components sets `enabled` to `true` the resize handle is enabled and the end user can drag it to resize the pane */
-    readonly enabled?: Readonly<Ref<boolean>>;
+    readonly enabled?: boolean | Readonly<Ref<boolean>>;
 
     /** When one or more compoents set `visible` to `true` the resize pane is visible */
-    readonly visible?: Readonly<Ref<boolean>>;
+    readonly visible?: boolean | Readonly<Ref<boolean>>;
 
     /**
      * When one or more components set `overlay` to `true` the resize pane is
@@ -55,7 +62,7 @@ export interface UseResizeOptions {
      * The `offset` property can be used to set a static size of how much space
      * it should occupy.
      */
-    readonly overlay?: Readonly<Ref<boolean>>;
+    readonly overlay?: boolean | Readonly<Ref<boolean>>;
 
     /**
      * When `overlay` is enabled this sets how much static space (in px) the
@@ -67,7 +74,16 @@ export interface UseResizeOptions {
      * amount of space and the rest of the pane will be positioned on
      * top of the other layout areas.
      */
-    readonly offset?: Readonly<Ref<number>>;
+    readonly offset?: number | Readonly<Ref<number>>;
+}
+
+function toOptionalRef<T>(
+    value: T | Readonly<Ref<T>> | undefined,
+): Readonly<Ref<T>> | undefined {
+    if (typeof value === "undefined") {
+        return value;
+    }
+    return toRef(value) as Ref<T>;
 }
 
 /**
@@ -86,10 +102,10 @@ export function useResize(options: UseResizeOptions = {}): UseResize {
     });
 
     const unregister = api.register({
-        enabled: options.enabled,
-        visible: options.visible,
-        overlay: options.overlay,
-        offset: options.offset,
+        enabled: toOptionalRef(options.enabled),
+        visible: toOptionalRef(options.visible),
+        overlay: toOptionalRef(options.overlay),
+        offset: toOptionalRef(options.offset),
     });
 
     onUnmounted(unregister);
