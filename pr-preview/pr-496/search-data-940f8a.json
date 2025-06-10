@@ -88,8 +88,6 @@
     "i18next",
     "i18nextProvider",
     "I18nextProvider",
-    "Hjälpklasser",
-    "Skärmläsare",
     "useResize() composable",
     "useModal() composable",
     "useDetailsPanel() composable",
@@ -103,6 +101,8 @@
     "includeItem",
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
+    "Hjälpklasser",
+    "Skärmläsare",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -209,14 +209,14 @@
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
-    "openModal",
-    "formModal() function",
-    "confirmModal() function",
     "Version 6 migreringsguide: @fkui/vue",
     "Version 6 migreringsguide",
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
+    "openModal",
+    "formModal() function",
+    "confirmModal() function",
     "ValidationErrorMessageBuilder: map() method",
     "ValidationErrorMessageBuilder: mapCombined() method",
     "ValidationErrorMessageBuilder: create() function",
@@ -253,7 +253,6 @@
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -266,6 +265,7 @@
     "FBadgePageObject: FBadgePageObject() constructor",
     "FFileItemPageObject: status() method",
     "FFileItemPageObject: inverted() method",
+    "FInteractiveTablePageObject: cell() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -630,16 +630,6 @@
       "terms": []
     },
     {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": []
-    },
-    {
       "url": "functions/functions/use-resize.html",
       "title": "useResize() composable",
       "terms": []
@@ -702,6 +692,16 @@
     {
       "url": "functions/functions/dispatch-component-validity-event.html",
       "title": "dispatchComponentValidityEvent",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
       "terms": []
     },
     {
@@ -1063,21 +1063,6 @@
       ]
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": []
-    },
-    {
       "url": "gettingstarted/migration/migrating-to-v6/vue.html",
       "title": "Version 6 migreringsguide: @fkui/vue",
       "terms": []
@@ -1100,6 +1085,21 @@
     {
       "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
       "title": "Version 6 migreringsguide: Cypress Pageobjects",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
       "terms": []
     },
     {
@@ -1283,11 +1283,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
       "title": "FFileItemPageObject: FFileItemPageObject() constructor",
       "terms": []
@@ -1345,6 +1340,11 @@
     {
       "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
       "title": "FFileItemPageObject: inverted() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
