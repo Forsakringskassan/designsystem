@@ -4,6 +4,7 @@
 ** TODO touched
 * useValidation() composable [1/2]
 ** TODO required attribute
+*** TODO behövs det?
 ** DONE aria-invalid attribute
 * TODO instant
 * DONE validate descendants
