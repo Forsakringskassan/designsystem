@@ -13,7 +13,7 @@ export enum dayType {
 /**
  * @public
  */
-export class FCalenderDayPageobject implements BasePageObject {
+export class FCalendarDayPageObject implements BasePageObject {
     public selector: string;
 
     public constructor(selector: string) {
@@ -39,3 +39,9 @@ export class FCalenderDayPageobject implements BasePageObject {
         return this.button().click();
     }
 }
+
+/**
+ * @deprecated Deprecated alias; use `FCalendarDayPageObject` instead (typo in name)
+ * @public
+ */
+export class FCalenderDayPageobject extends FCalendarDayPageObject {}

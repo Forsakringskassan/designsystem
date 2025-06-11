@@ -1,5 +1,9 @@
 export { type DefaultCypressChainable, type BasePageObject } from "./common";
-export { FCalenderDayPageobject, dayType } from "./FCalenderDay.pageobject";
+export {
+    FCalendarDayPageObject,
+    FCalenderDayPageobject,
+    dayType,
+} from "./FCalendarDay.pageobject";
 export { FBadgePageObject } from "./FBadge.pageobject";
 export { FCheckboxFieldPageObject } from "./FCheckboxField.pageobject";
 export { FCheckboxFieldPageObject as FCheckboxGroupFieldPageObject } from "./FCheckboxField.pageobject";
