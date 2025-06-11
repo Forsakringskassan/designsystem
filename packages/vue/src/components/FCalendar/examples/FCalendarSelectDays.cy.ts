@@ -1,10 +1,10 @@
-import { FCalenderDayPageobject } from "../../../cypress";
+import { FCalendarDayPageobject } from "../../../cypress";
 import FCalendarSelectDays from "./FCalendarSelectDays.vue";
 
-function mount(): FCalenderDayPageobject {
+function mount(): FCalendarDayPageobject {
     cy.mount(FCalendarSelectDays);
 
-    return new FCalenderDayPageobject(`[data-test="multiple-days"]`);
+    return new FCalendarDayPageobject(`[data-test="multiple-days"]`);
 }
 
 describe("FCalendarSelectDays", () => {
