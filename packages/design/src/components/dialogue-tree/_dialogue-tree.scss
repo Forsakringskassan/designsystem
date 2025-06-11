@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .dialogue-tree {
     margin: 0 0 var(--f-margin-component-bottom);
 
@@ -6,11 +8,11 @@
         padding-left: 0;
         list-style-type: none;
         border-radius: 2px;
-        border: 1px solid var(--f-border-color-dialogue-tree);
+        border: 1px solid $dialogue-tree-color-border-default;
 
         &-item {
-            background-color: var(--f-background-dialogue-tree);
-            border-bottom: 1px solid var(--f-border-color-dialogue-tree);
+            background-color: $dialogue-tree-color-background-default;
+            border-bottom: 1px solid $dialogue-tree-color-border-default;
             padding: 0.25em;
             height: 60px;
 
@@ -19,7 +21,7 @@
             }
 
             &:hover {
-                background-color: var(--f-background-dialogue-tree-hover);
+                background-color: $dialogue-tree-color-background-hover;
             }
 
             button {
@@ -39,7 +41,7 @@
                     overflow: hidden;
                     font-weight: var(--f-font-weight-medium);
                     font-size: var(--f-font-size-standard);
-                    color: var(--f-text-color-default);
+                    color: $dialogue-tree-color-text-default;
                     text-align: left;
                     cursor: pointer;
                 }
