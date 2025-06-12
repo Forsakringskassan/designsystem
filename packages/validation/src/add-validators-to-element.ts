@@ -2,16 +2,32 @@ import { type ConfigEventDetails } from "./event";
 import { getValidatorByName } from "./registry";
 import { componentStateSymbol } from "./state-symbol";
 import { type ValidatorTypeMapping } from "./type-mapping";
-import { type UntypedValidator } from "./untyped-validator";
-import { ValidationConfig } from "./validation-config";
+import { type ValidationConfig } from "./validation-config";
+import {
+    type PlaceholderState,
+    type ValidationState,
+} from "./validation-state";
 
 const eventName = "validation:config";
 
+function configFromState(
+    state: ValidationState<unknown, unknown> | PlaceholderState,
+): {
+    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
+} {
+    const { validators } = state;
+    const entries = validators.map(([validator, config]) => [
+        validator.name,
+        config,
+    ]);
+    return Object.fromEntries(entries);
+}
+
 function dispatchConfigEvent(
     element: HTMLElement,
-    validators: Array<[validator: UntypedValidator, config: unknown]>,
+    state: ValidationState<unknown, unknown> | PlaceholderState,
 ): void {
-    const config = Object.fromEntries(validators.map(it => [it[0].name, it[1]]));
+    const config = configFromState(state);
     const event = new CustomEvent<ConfigEventDetails>(eventName, {
         detail: config,
     });
@@ -27,14 +43,19 @@ export function addValidatorsToElement(
         [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
     },
 ): void {
-    const state = element[componentStateSymbol];
+    let state = element[componentStateSymbol];
     if (!state) {
-        throw new Error("element is not validatable");
+        const placeholder: PlaceholderState = {
+            placeholder: true,
+            validators: [],
+        };
+        state = placeholder;
+        element[componentStateSymbol] = state;
     }
+    state.validators = [];
     for (const [name, v] of Object.entries(config)) {
         const validator = getValidatorByName(name);
         state.validators.push([validator, v]);
     }
-    console.log({ config });
-    dispatchConfigEvent(element, state.validators);
+    dispatchConfigEvent(element, state);
 }
