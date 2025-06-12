@@ -165,6 +165,6 @@
     "--f-background-progress",
     "--f-background-progress-ongoing",
     "--f-border-color-progress-ongoing",
-    " --f-background-progress-finished",
+    "--f-background-progress-finished",
     "--f-border-color-progress-finished"
 ]
