@@ -80,10 +80,7 @@
     --f-background-success: #{$palette-color-green-a-5}; // modal, messagebox
     --f-background-overlay: rgba(0, 0, 0, 0.75); // modal, loader
 
-    --f-background-progress: #{$palette-color-fk-black-15};
-    --f-background-progress-ongoing: #{$palette-color-yellow-85};
     --f-background-progress-file-item-ongoing: #{$palette-color-yellow-85};
-    --f-background-progress-finished: #{$palette-color-green-b-85};
     --f-background-pageheader-primary: #{$palette-color-green-a-100}; // page-header
     --f-background-skiplink-focus: #{$palette-color-bluebell-5};
     --f-background-heading-expandable-panel: #{$palette-color-green-a-100};
@@ -131,8 +128,6 @@
     --f-border-color-dialogue-tree: #{$palette-color-fk-black-50}; // Dialogue tree
 
     --f-border-color-form-step: #{$palette-color-fk-black-15};
-    --f-border-color-progress-finished: #{$palette-color-green-b-120};
-    --f-border-color-progress-ongoing: #{$palette-color-fk-black-70};
     --f-border-color-progress-file-item-ongoing: #{$palette-color-fk-black-70};
 
     --f-border-color-panel: #{$palette-color-green-b-15}; // expandable-panel, static-panel palettfärg!?
