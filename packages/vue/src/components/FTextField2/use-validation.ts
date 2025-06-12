@@ -7,8 +7,8 @@ export interface Validity {
 }
 
 export interface UseValidationOptions<TValue, TModel> {
-    viewValue: Ref<TValue | undefined>;
-    modelValue: Ref<TValue | TModel | undefined>;
+    viewValue: Ref<TValue>;
+    modelValue: Ref<TValue | TModel>;
     validity: Ref<Validity>;
     parser(value: TValue): TModel | undefined;
     formatter(value: TModel): TValue | undefined;

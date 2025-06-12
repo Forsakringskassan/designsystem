@@ -79,7 +79,7 @@ export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
     // (undocumented)
     validator: string;
     // (undocumented)
-    viewValue?: TValue;
+    viewValue: TValue;
 }
 
 // @public (undocumented)

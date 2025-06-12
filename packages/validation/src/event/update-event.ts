@@ -7,7 +7,7 @@ export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
     validator: string;
     message: string;
 
-    viewValue?: TValue;
+    viewValue: TValue;
     modelValue?: TModel;
     formattedValue?: TValue;
 

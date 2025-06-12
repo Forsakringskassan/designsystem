@@ -13360,12 +13360,29 @@ onToggle?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_9" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_9" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_9" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_8" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FTextField2: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, __VLS_TemplateResult_9["slots"]>;
+export const FTextField2: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_8<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_8<Pick<Partial<{}> & Omit<{
+        readonly "onUpdate:modelValue"?: ((value: string | T) => any) | undefined;
+        readonly "onUpdate:validity"?: ((value: Validity) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, "onUpdate:modelValue" | "onUpdate:validity"> & ({
+        modelValue?: string | T;
+        validity?: Validity;
+    } & {
+        parser?: (value: string) => T;
+        formatter?: (value: T) => string;
+    }) & Partial<{}>> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        default?(_: {}): any;
+    };
+    emit: ((evt: "update:modelValue", value: string | T) => void) & ((evt: "update:validity", value: Validity) => void);
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
 
 // @public (undocumented)
 export const FTooltip: DefineComponent<ExtractPropTypes<    {
@@ -15064,12 +15081,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_10" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_10" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_10" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_9" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_9" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_9" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_10<typeof __VLS_component_10, __VLS_TemplateResult_10["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, __VLS_TemplateResult_9["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
@@ -15699,6 +15716,10 @@ export interface VueLike {
 
 // @public (undocumented)
 export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer T ? (...args: R) => T : never;
+
+// Warnings were encountered during analysis:
+//
+// src/components/FTextField2/FTextField2.vue:236:29 - (ae-forgotten-export) The symbol "Validity" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
