@@ -41,8 +41,8 @@
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
     "start": "npm run build:docs && fkui-serve typedoc",
-    "test": "jest --coverage",
-    "unit": "jest",
+    "test": "jest --coverage --passWithNoTests",
+    "unit": "jest --passWithNoTests",
     "unit:watch": "jest --watch",
     "watch": "rollup --config --watch"
   },

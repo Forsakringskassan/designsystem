@@ -24,3 +24,4 @@
 * Support enabled option
 * Support errorMessage option
 * v-model för validation status
+* inline validator (directly in configureValidators())
