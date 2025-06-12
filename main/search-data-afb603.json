@@ -74,6 +74,8 @@
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
     "focus-indicator() mixin",
     "densify() function",
     "Validation Plugin",
@@ -83,8 +85,6 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
-    "EventBus",
-    "EventBus",
     "i18next",
     "i18nextProvider",
     "I18nextProvider",
@@ -217,10 +217,6 @@
     "openModal",
     "formModal() function",
     "confirmModal() function",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -238,16 +234,20 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
+    "FProgressbarPageObject: FProgressbarPageObject() constructor",
+    "FProgressbarPageObject: value() method",
+    "FProgressbarPageObject: progressStatus() method",
+    "FProgressbarPageObject: el() method",
     "FMinimizablePanelPageObject: constructor",
     "FMinimizablePanelPageObject: toggleButton() method",
     "FMinimizablePanelPageObject: header() method",
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FProgressbarPageObject: FProgressbarPageObject() constructor",
-    "FProgressbarPageObject: value() method",
-    "FProgressbarPageObject: progressStatus() method",
-    "FProgressbarPageObject: el() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
@@ -570,6 +570,13 @@
       "terms": []
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": []
@@ -605,13 +612,6 @@
       "terms": [
         "ErrorPlugin",
         "FErrorHandlingApp"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
       ]
     },
     {
@@ -1103,26 +1103,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1208,6 +1188,46 @@
       "terms": []
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
+      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
+      "title": "FProgressbarPageObject: value() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
+      "title": "FProgressbarPageObject: progressStatus() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
+      "title": "FProgressbarPageObject: el() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
       "title": "FMinimizablePanelPageObject: constructor",
       "terms": []
@@ -1235,26 +1255,6 @@
     {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
       "title": "FMinimizablePanelPageObject: content() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
-      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
-      "title": "FProgressbarPageObject: value() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
-      "title": "FProgressbarPageObject: progressStatus() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
-      "title": "FProgressbarPageObject: el() method",
       "terms": []
     },
     {
@@ -1439,14 +1439,14 @@
     "72": 50,
     "73": 51,
     "74": 52,
-    "75": 53,
-    "76": 54,
-    "77": 55,
-    "78": 56,
-    "79": 57,
-    "80": 58,
+    "75": 52,
+    "76": 53,
+    "77": 54,
+    "78": 55,
+    "79": 56,
+    "80": 57,
     "81": 58,
-    "82": 58,
+    "82": 59,
     "83": 59,
     "84": 59,
     "85": 60,

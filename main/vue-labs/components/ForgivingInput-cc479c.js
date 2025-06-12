@@ -443,10 +443,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.42.0",
+    version: "3.43.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.42.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.43.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -495,7 +495,7 @@ function requireUid() {
   var uncurryThis = requireFunctionUncurryThis();
   var id = 0;
   var postfix = Math.random();
-  var toString = uncurryThis(1 .toString);
+  var toString = uncurryThis(1.1.toString);
   uid = function(key) {
     return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString(++id + postfix, 36);
   };
@@ -1389,7 +1389,7 @@ function requireIterate() {
     var fn = bind(unboundFunction, that);
     var iterator, iterFn, index, length, result, next, step;
     var stop = function(condition) {
-      if (iterator) iteratorClose2(iterator, "normal", condition);
+      if (iterator) iteratorClose2(iterator, "normal");
       return new Result(true, condition);
     };
     var callFn = function(value) {
@@ -1449,8 +1449,8 @@ function requireIteratorHelperWithoutClosingOnEarlyError() {
   hasRequiredIteratorHelperWithoutClosingOnEarlyError = 1;
   var globalThis2 = requireGlobalThis();
   iteratorHelperWithoutClosingOnEarlyError = function(METHOD_NAME, ExpectedError) {
-    var Iterator = globalThis2.Iterator;
-    var IteratorPrototype = Iterator && Iterator.prototype;
+    var Iterator2 = globalThis2.Iterator;
+    var IteratorPrototype = Iterator2 && Iterator2.prototype;
     var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
     var CLOSED = false;
     if (method) try {
@@ -1772,7 +1772,7 @@ function requireEs_iterator_constructor() {
   var FORCED = IS_PURE || !isCallable2(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails2(function() {
     NativeIterator({});
   });
-  var IteratorConstructor = function Iterator() {
+  var IteratorConstructor = function Iterator2() {
     anInstance2(this, IteratorPrototype);
     if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
   };
@@ -1833,6 +1833,27 @@ function requireCreateIterResultObject() {
   };
   return createIterResultObject;
 }
+var iteratorCloseAll;
+var hasRequiredIteratorCloseAll;
+function requireIteratorCloseAll() {
+  if (hasRequiredIteratorCloseAll) return iteratorCloseAll;
+  hasRequiredIteratorCloseAll = 1;
+  var iteratorClose2 = requireIteratorClose();
+  iteratorCloseAll = function(iters, kind, value) {
+    for (var i = iters.length - 1; i >= 0; i--) {
+      if (iters[i] === void 0) continue;
+      try {
+        value = iteratorClose2(iters[i].iterator, kind, value);
+      } catch (error) {
+        kind = "throw";
+        value = error;
+      }
+    }
+    if (kind === "throw") throw value;
+    return value;
+  };
+  return iteratorCloseAll;
+}
 var iteratorCreateProxy;
 var hasRequiredIteratorCreateProxy;
 function requireIteratorCreateProxy() {
@@ -1848,9 +1869,12 @@ function requireIteratorCreateProxy() {
   var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
   var createIterResultObject2 = requireCreateIterResultObject();
   var iteratorClose2 = requireIteratorClose();
+  var iteratorCloseAll2 = requireIteratorCloseAll();
   var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
   var ITERATOR_HELPER = "IteratorHelper";
   var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
+  var NORMAL = "normal";
+  var THROW = "throw";
   var setInternalState = InternalStateModule.set;
   var createIteratorProxyPrototype = function(IS_ITERATOR) {
     var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
@@ -1876,11 +1900,16 @@ function requireIteratorCreateProxy() {
           return returnMethod ? call(returnMethod, iterator) : createIterResultObject2(void 0, true);
         }
         if (state.inner) try {
-          iteratorClose2(state.inner.iterator, "normal");
+          iteratorClose2(state.inner.iterator, NORMAL);
         } catch (error) {
-          return iteratorClose2(iterator, "throw", error);
+          return iteratorClose2(iterator, THROW, error);
         }
-        if (iterator) iteratorClose2(iterator, "normal");
+        if (state.openIters) try {
+          iteratorCloseAll2(state.openIters, NORMAL);
+        } catch (error) {
+          return iteratorClose2(iterator, THROW, error);
+        }
+        if (iterator) iteratorClose2(iterator, NORMAL);
         return createIterResultObject2(void 0, true);
       }
     });
@@ -1889,7 +1918,7 @@ function requireIteratorCreateProxy() {
   var IteratorHelperPrototype = createIteratorProxyPrototype(false);
   createNonEnumerableProperty2(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
   iteratorCreateProxy = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
-    var IteratorProxy = function Iterator(record, state) {
+    var IteratorProxy = function Iterator2(record, state) {
       if (state) {
         state.iterator = record.iterator;
         state.next = record.next;
@@ -1922,6 +1951,23 @@ function requireCallWithSafeIterationClosing() {
   };
   return callWithSafeIterationClosing;
 }
+var iteratorHelperThrowsOnInvalidIterator;
+var hasRequiredIteratorHelperThrowsOnInvalidIterator;
+function requireIteratorHelperThrowsOnInvalidIterator() {
+  if (hasRequiredIteratorHelperThrowsOnInvalidIterator) return iteratorHelperThrowsOnInvalidIterator;
+  hasRequiredIteratorHelperThrowsOnInvalidIterator = 1;
+  iteratorHelperThrowsOnInvalidIterator = function(methodName, argument) {
+    var method = typeof Iterator == "function" && Iterator.prototype[methodName];
+    if (method) try {
+      method.call({
+        next: null
+      }, argument).next();
+    } catch (error) {
+      return true;
+    }
+  };
+  return iteratorHelperThrowsOnInvalidIterator;
+}
 var hasRequiredEs_iterator_filter;
 function requireEs_iterator_filter() {
   if (hasRequiredEs_iterator_filter) return es_iterator_filter;
@@ -1935,8 +1981,12 @@ function requireEs_iterator_filter() {
   var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
   var IS_PURE = requireIsPure();
   var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperThrowsOnInvalidIterator2 = requireIteratorHelperThrowsOnInvalidIterator();
   var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
-  var filterWithoutClosingOnEarlyError = !IS_PURE && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
+  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator2("filter", function() {
+  });
+  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
+  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
   var IteratorProxy = createIteratorProxy(function() {
     var iterator = this.iterator;
     var predicate = this.predicate;
@@ -1954,7 +2004,7 @@ function requireEs_iterator_filter() {
     target: "Iterator",
     proto: true,
     real: true,
-    forced: IS_PURE || filterWithoutClosingOnEarlyError
+    forced: FORCED
   }, {
     filter: function filter(predicate) {
       anObject2(this);
@@ -1985,9 +2035,13 @@ function requireEs_iterator_map() {
   var createIteratorProxy = requireIteratorCreateProxy();
   var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
   var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperThrowsOnInvalidIterator2 = requireIteratorHelperThrowsOnInvalidIterator();
   var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
   var IS_PURE = requireIsPure();
-  var mapWithoutClosingOnEarlyError = !IS_PURE && iteratorHelperWithoutClosingOnEarlyError2("map", TypeError);
+  var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator2("map", function() {
+  });
+  var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError2("map", TypeError);
+  var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
   var IteratorProxy = createIteratorProxy(function() {
     var iterator = this.iterator;
     var result = anObject2(call(this.next, iterator));
@@ -1998,7 +2052,7 @@ function requireEs_iterator_map() {
     target: "Iterator",
     proto: true,
     real: true,
-    forced: IS_PURE || mapWithoutClosingOnEarlyError
+    forced: FORCED
   }, {
     map: function map(mapper) {
       anObject2(this);
