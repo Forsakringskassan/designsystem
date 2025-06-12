@@ -33,13 +33,13 @@ export interface EnableValidationOptionsParsed<TValue, TModel> {
     // (undocumented)
     event: string[];
     // (undocumented)
-    formatter(value: TModel): TValue;
+    formatter(value: TModel): TValue | undefined;
     // (undocumented)
     getModelValue(): TModel | undefined;
     // (undocumented)
     getViewValue(): TValue | undefined;
     // (undocumented)
-    parser(value: TValue): TModel;
+    parser(value: TValue): TModel | undefined;
 }
 
 // @public (undocumented)
@@ -47,13 +47,13 @@ export interface EnableValidationOptionsSimple {
     // (undocumented)
     event: string[];
     // (undocumented)
-    formatter?(value: string): string;
+    formatter?(value: string): string | undefined;
     // (undocumented)
     getModelValue(): string;
     // (undocumented)
     getViewValue(): string | null | undefined;
     // (undocumented)
-    parser?(value: string): string;
+    parser?(value: string): string | undefined;
 }
 
 // @public (undocumented)

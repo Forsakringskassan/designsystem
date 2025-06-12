@@ -5,8 +5,8 @@ import { internalValidate } from "./validate-element";
 export interface EnableValidationOptionsSimple {
     getViewValue(): string | null | undefined;
     getModelValue(): string;
-    parser?(value: string): string;
-    formatter?(value: string): string;
+    parser?(value: string): string | undefined;
+    formatter?(value: string): string | undefined;
     event: string[];
 }
 
@@ -14,8 +14,8 @@ export interface EnableValidationOptionsSimple {
 export interface EnableValidationOptionsParsed<TValue, TModel> {
     getViewValue(): TValue | undefined;
     getModelValue(): TModel | undefined;
-    parser(value: TValue): TModel;
-    formatter(value: TModel): TValue;
+    parser(value: TValue): TModel | undefined;
+    formatter(value: TModel): TValue | undefined;
     event: string[];
 }
 

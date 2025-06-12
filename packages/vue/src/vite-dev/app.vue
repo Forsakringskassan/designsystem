@@ -4,6 +4,7 @@ import { setFormSubmitted, validateElement } from "@fkui/validation";
 import { FTextField2 } from "../components";
 
 const namn = ref("World");
+const isValid = ref(false);
 const form = useTemplateRef("form");
 
 async function onSubmit(event: Event) {
@@ -18,7 +19,8 @@ async function onSubmit(event: Event) {
 
 <template>
     <form @submit="onSubmit" ref="form">
-        <f-text-field2 v-model="namn"> Namn </f-text-field2>
-        <button type="submit"> Submit </button>
+        <f-text-field2 v-model="namn" v-model:is-valid="isValid" > Namn </f-text-field2>
+        <button type="submit">Submit</button>
+        <pre>{{ JSON.stringify({ namn, isValid }) }}</pre>
     </form>
 </template>

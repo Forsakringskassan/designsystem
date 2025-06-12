@@ -18,7 +18,7 @@ export interface ValidationState<TValue, TModel> {
     /** Function to format model value to view value */
     formatter(value: TModel): TValue;
     /** Validators applied to this instance. */
-    readonly validators: Array<[validator: UntypedValidator, config: unknown]>;
+    validators: Array<[validator: UntypedValidator, config: unknown]>;
 }
 
 /**
@@ -30,5 +30,5 @@ export interface ValidationState<TValue, TModel> {
  * */
 export interface PlaceholderState {
     readonly placeholder: true;
-    readonly validators: Array<[validator: UntypedValidator, config: unknown]>;
+    validators: Array<[validator: UntypedValidator, config: unknown]>;
 }
