@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-afb603.json"
+            href="../search-data-952b32.json"
             as="fetch"
             crossorigin
-            integrity="sha384-85QrqCQ/Zux0Vhr0P/KprXtiS6Ei7BRjD0z2BAcX1NhwA25DXgG7vaud0oRSj0/z"
+            integrity="sha384-rLJQrssYjtMMMyFRz986EkAHSXBNnRZx4CcpHpKKu3uxGeo9VcEWoNHInG1Gct8f"
             id="search-data"
         />
     </head>
@@ -1069,13 +1069,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/7cf50e9a1904a5f14cce104c1e0f349b68247076/packages/vue/src/components/FCalendar/FCalendar.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4e185dccefa62a4ae0eb500083a9bb00052aa8a3/packages/vue/src/components/FCalendar/FCalendar.vue">
                 FCalendar
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/7cf50e9a1904a5f14cce104c1e0f349b68247076/packages/vue/src/components/FCalendar/FCalendarDay.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4e185dccefa62a4ae0eb500083a9bb00052aa8a3/packages/vue/src/components/FCalendar/FCalendarDay.vue">
                 FCalendarDay
             </a>
             
@@ -1099,6 +1099,8 @@
                             <ul>
                                 
                                 <li><a href="#valbara_dagar">Valbara dagar</a></li>
+                                
+                                <li><a href="#arsvaljare">Årsväljare</a></li>
                                 
                                 <li><a href="#storlek">Storlek</a></li>
                                 
@@ -1129,13 +1131,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-d13cab"></div>
+        <div id="example-3ba029"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCalendarDefault-d13cab.js"></script>
+        <script type="module" src="./FCalendarDefault-3ba029.js"></script>
     </div>
                 <div>
             <button
@@ -1175,7 +1177,7 @@
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span> <span class="hljs-attr">year-selector</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ date, isFocused }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar-day</span> <span class="hljs-attr">:day</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">:focused</span>=<span class="hljs-string">&quot;isFocused&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar-day</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1211,6 +1213,24 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
 </code></pre>
                 </div>
+            <h2 id="arsvaljare"><a class="header-anchor" href="#arsvaljare">Årsväljare</a></h2><p class="docs-paragraph">Det går att aktivera en årsväljare genom att använda propen <code>year-selector</code>:</p>
+
+                <div
+                    id="example-33f5b9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-calendar
+     v-model=&quot;model&quot;
+     :min-date=&quot;min&quot;
+     :max-date=&quot;max&quot;
+<span class="hljs-addition">+    year-selector</span>
+ &gt;&lt;/f-calendar&gt;
+</code></pre>
+                </div>
             <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p class="docs-paragraph">Kalendern är 100% i bredd. För att ändra bredden placeras kalendern i en container som hanterar komponentens bredd.</p>
 <p class="docs-paragraph">Kolumnen med veckonummer visas inte på skärmar som är under 325px breda.</p>
 <h2 id="manad_som_visas"><a class="header-anchor" href="#manad_som_visas">Månad som visas</a></h2><p class="docs-paragraph">För att hantera vilken månad som visas används <code>v-model</code>.
@@ -1220,7 +1240,7 @@ För att ändra detta beteende skickar du in en <a href="../date/classes/FDate.h
 Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
                 <div
-                    id="example-61999d"
+                    id="example-7dcb10"
                     class="code-preview code-preview--default"
                     
                     
@@ -1239,7 +1259,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 <p class="docs-paragraph">I följande exempel av kalendern har en egen dagkomponent använts för att skapa en kalender med olika schemalagda händelser.</p>
 
             <div
-                id="example-92e55f"
+                id="example-bd8c8b"
                 class="code-preview code-preview--default"
                 data-test="calendar-custom"
                 
@@ -1440,7 +1460,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
         <h2 id="valja_flera_dagar"><a class="header-anchor" href="#valja_flera_dagar">Välja flera dagar</a></h2><p class="docs-paragraph">I följande exempel av kalendern kan man välja flera dagar och visuellt se vilka dagar som är valda. Alla valda dagar sparas ner till en array.</p>
 
                 <div
-                    id="example-a74a35"
+                    id="example-f2d9aa"
                     class="code-preview code-preview--default"
                     
                     
@@ -1469,7 +1489,7 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
 <p class="docs-paragraph">Exemplet lagrar dagarna som <code>string</code> i arrayen.</p>
 
             <div
-                id="example-2334ed"
+                id="example-4bf0c9"
                 class="code-preview code-preview--default"
                 data-test="calendar-select-days"
                 
@@ -1856,9 +1876,9 @@ If undefined, the first day of the month will gain focus.</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feat/change-year (<a href="https://github.com/Forsakringskassan/designsystem/commits/7cf50e9a1904a5f14cce104c1e0f349b68247076">7cf50e9</a>)<br />
+<div class="footer__right"><div class="version">feat/change-year (<a href="https://github.com/Forsakringskassan/designsystem/commits/4e185dccefa62a4ae0eb500083a9bb00052aa8a3">4e185dc</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/496">PR 496</a><br />
-        2025-06-11 15:59
+        2025-06-12 09:08
 </div>
 <div class="toolbar__item">
     <form id="version">

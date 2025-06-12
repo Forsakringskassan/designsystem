@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarDefault.vue:FCalendarDefault-d13cab.js
+// virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarDefault.vue:FCalendarDefault-3ba029.js
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import { FCalendar, FCalendarDay } from "@fkui/vue";
@@ -54,8 +54,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     modelValue: _ctx.month,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.month = $event),
     "min-date": _ctx.min,
-    "max-date": _ctx.max,
-    "year-selector": ""
+    "max-date": _ctx.max
   }, {
     default: _withCtx(({ date, isFocused }) => [
       _createVNode(_component_f_calendar_day, {
@@ -70,7 +69,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d13cab"
+  selector: "#example-3ba029"
 });
 export {
   render
