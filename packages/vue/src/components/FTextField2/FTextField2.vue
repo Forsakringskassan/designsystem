@@ -4,29 +4,22 @@ import { ElementIdService, formatNumber, parseNumber } from "@fkui/logic";
 import { onMounted, ref, useTemplateRef, watch, watchEffect } from "vue";
 import { FLabel } from "@fkui/vue";
 import { type UpdateEvent, enableValidation, addValidatorsToElement } from "@fkui/validation";
-import { useValidation } from "./use-validation";
-
-const emit = defineEmits<{
-    "update:is-valid": [value: boolean];
-}>();
-
-const props = defineProps<{
-    isValid?: boolean,
-}>();
+import { type Validity, useValidation } from "./use-validation";
 
 const id = ElementIdService.generateElementId();
-const modelValue = defineModel();
-const rawValue = ref<string>("");
+
+const modelValue = defineModel<string | number>({ default: "" });
+const viewValue = ref<string>(formatNumber(modelValue.value) ?? "");
+const validity = defineModel<Validity>("validity", {
+    required: false,
+    default: { isValid: false },
+});
 
 const element = useTemplateRef("input");
-const { value, isValid, attributes, showValidationError, validationMessage } = useValidation(element, {
-    getViewValue() {
-        return rawValue.value;
-    },
-    getModelValue(): number {
-        return modelValue.value;
-    },
-    initial: modelValue.value,
+const { attributes, showValidationError, validationMessage } = useValidation(element, {
+    viewValue,
+    modelValue,
+    validity,
     parser(value: string): number {
         return parseNumber(value)!;
     },
@@ -35,14 +28,6 @@ const { value, isValid, attributes, showValidationError, validationMessage } = u
     },
     event: ["blur"],
 });
-
-watchEffect(() => {
-    modelValue.value = value.value;
-});
-
-watch(isValid, (isValid) => {
-    emit("update:is-valid", isValid);
-}, { initial: true });
 
 /* workaround until plugin directive is in place */
 onMounted(() => {
@@ -74,8 +59,8 @@ onMounted(() => {
         :ariaInvalid="attributes.ariaInvalid"
         :required="attributes.required.value"
         ref="input"
-        v-model="rawValue"
+        v-model="viewValue"
         type="text"
     />
-    <pre>{{ JSON.stringify({ showValidationError, validationMessage, value, rawValue, modelValue }, null, 2) }}</pre>
+    <pre>{{ JSON.stringify({ showValidationError, validationMessage, viewValue, modelValue, validity }, null, 2) }}</pre>
 </template>
