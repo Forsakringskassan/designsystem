@@ -1,25 +1,21 @@
 import { type Ref, type ShallowRef, onMounted, ref } from "vue";
-import {
-    type EnableValidationOptions,
-    type UpdateEvent,
-    enableValidation,
-} from "@fkui/validation";
+import { type UpdateEvent, enableValidation } from "@fkui/validation";
 import { useEventListener } from "@vueuse/core";
 
+export interface Validity {
+    isValid: boolean;
+}
+
 export interface UseValidationOptions<TValue, TModel> {
-    getViewValue(): TValue;
-    getModelValue(): TModel;
-    initial: TValue;
-    parser(value: TValue): TModel;
-    formatter(value: TModel): TValue;
+    viewValue: Ref<TValue | undefined>;
+    modelValue: Ref<TValue | TModel | undefined>;
+    validity: Ref<Validity>;
+    parser(value: TValue): TModel | undefined;
+    formatter(value: TModel): TValue | undefined;
     event: string[];
 }
 
-export interface UseValidation<TValue, TModel> {
-    viewValue: Ref<TValue>;
-    modelValue: Ref<TModel>;
-    value: Ref<TValue | TModel | undefined>;
-    isValid: Readonly<Ref<boolean>>;
+export interface UseValidation {
     showValidationError: Readonly<Ref<boolean>>;
     validationMessage: Readonly<Ref<string | undefined>>;
     attributes: {
@@ -39,19 +35,13 @@ function shouldshowError(event: UpdateEvent): boolean {
 export function useValidation<TValue, TModel>(
     element: Readonly<ShallowRef<HTMLElement | null>>,
     options: UseValidationOptions<TValue, TModel>,
-): UseValidation<TValue, TModel> {
-    const viewValue = ref<TValue>(options.initial) as Ref<TValue>;
-    const modelValue = ref<TModel>(
-        options.parser(options.initial),
-    ) as Ref<TModel>;
-    const value = ref<TValue | TModel | undefined>(viewValue.value) as Ref<
-        TValue | TModel | undefined
-    >;
-    const isValid = ref(false);
+): UseValidation {
+    const { viewValue, modelValue, validity } = options;
     const ariaInvalid: Ref<"true" | undefined> = ref(undefined);
     const required: Ref = ref(false);
     const showValidationError = ref();
     const validationMessage: Ref<string | undefined> = ref(undefined);
+    let internalModelValue: TModel | undefined = undefined;
     onMounted(() => {
         if (!element.value) {
             return;
@@ -66,22 +56,33 @@ export function useValidation<TValue, TModel>(
             (event: UpdateEvent<TValue, TModel>) => {
                 const { message } = event.detail;
                 const show = shouldshowError(event);
-                isValid.value = event.detail.isValid;
                 showValidationError.value = show;
                 validationMessage.value = message;
                 ariaInvalid.value = show ? "true" : undefined;
-                value.value = event.detail.modelValue ?? event.detail.viewValue;
+                if (typeof event.detail.formattedValue !== "undefined") {
+                    viewValue.value = event.detail.formattedValue;
+                }
+                if (typeof event.detail.modelValue !== "undefined") {
+                    modelValue.value = event.detail.modelValue;
+                    internalModelValue = event.detail.modelValue;
+                } else {
+                    modelValue.value = event.detail.viewValue;
+                    internalModelValue = undefined;
+                }
+                validity.value.isValid = event.detail.isValid;
             },
         );
         enableValidation<TValue, TModel>(element.value, {
+            getViewValue() {
+                return viewValue.value;
+            },
+            getModelValue() {
+                return internalModelValue;
+            },
             ...options,
         });
     });
     return {
-        viewValue,
-        modelValue,
-        value,
-        isValid,
         showValidationError,
         validationMessage,
         attributes: {
