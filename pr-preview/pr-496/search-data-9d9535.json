@@ -217,10 +217,6 @@
     "openModal",
     "formModal() function",
     "confirmModal() function",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -238,6 +234,10 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -248,12 +248,12 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -1103,26 +1103,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1208,6 +1188,26 @@
       "terms": []
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
       "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
       "terms": []
@@ -1258,6 +1258,11 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -1280,11 +1285,6 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
