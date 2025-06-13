@@ -55,7 +55,8 @@
     "pretest": "npm run lint",
     "test": "lerna run test",
     "test:ct": "cypress run-ct --headless",
-    "vue": "npm run --workspace packages/vue --"
+    "vue": "npm run --workspace packages/vue --",
+    "validation": "npm run --workspace packages/validation --"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config"

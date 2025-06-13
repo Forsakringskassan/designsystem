@@ -1,9 +1,8 @@
 <!-- eslint-disable import/no-extraneous-dependencies -->
 <script setup lang="ts" generic="T">
 import { ElementIdService } from "@fkui/logic";
-import { onMounted, ref, useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { FLabel } from "@fkui/vue";
-import { addValidatorsToElement } from "@fkui/validation";
 import { type Validity, useValidation } from "./use-validation";
 
 const id = ElementIdService.generateElementId();
@@ -23,8 +22,9 @@ const validity = defineModel<Validity>("validity", {
     default: { isValid: false },
 });
 
-const element = useTemplateRef("input");
-const { attributes, showValidationError, validationMessage } = useValidation<string, T>(element, {
+const element = useTemplateRef<HTMLElement>("input");
+const rootElement = useTemplateRef<HTMLElement>("root");
+const { attributes, showValidationError, validationMessage } = useValidation<string, T>(element, rootElement, {
     viewValue,
     modelValue,
     validity,
@@ -36,41 +36,31 @@ const { attributes, showValidationError, validationMessage } = useValidation<str
     },
     event: ["blur"],
 });
-
-/* workaround until plugin directive is in place */
-onMounted(() => {
-    if (!element.value) {
-        return;
-    }
-    addValidatorsToElement(element.value, {
-        required: {},
-        number: {},
-        minValue: { limit: 5 },
-    });
-});
 </script>
 
 <template>
-    <f-label :for="id">
-        <template #default>
-            <!-- @slot Slot for label content. -->
-            <slot name="default"> </slot>
-        </template>
+    <div ref="root">
+        <f-label :for="id">
+            <template #default>
+                <!-- @slot Slot for label content. -->
+                <slot name="default"> </slot>
+            </template>
 
-        <template #error-message>
-            <template v-if="showValidationError">{{ validationMessage }}</template>
-        </template>
-    </f-label>
-    <!-- [html-validate-disable-block fkui/required-max-length -- temp] -->
-    <input
-        :id
-        ref="input"
-        v-model="viewValue"
-        :ariaInvalid="attributes.ariaInvalid"
-        :required="attributes.required.value"
-        type="text"
-    />
-    <pre>{{
-        JSON.stringify({ showValidationError, validationMessage, viewValue, modelValue, validity }, null, 2)
-    }}</pre>
+            <template #error-message>
+                <template v-if="showValidationError">{{ validationMessage }}</template>
+            </template>
+        </f-label>
+        <!-- [html-validate-disable-block fkui/required-max-length -- temp] -->
+        <input
+            :id
+            ref="input"
+            v-model="viewValue"
+            :ariaInvalid="attributes.ariaInvalid"
+            :required="attributes.required.value"
+            type="text"
+        />
+        <pre>{{
+            JSON.stringify({ showValidationError, validationMessage, viewValue, modelValue, validity }, null, 2)
+        }}</pre>
+    </div>
 </template>
