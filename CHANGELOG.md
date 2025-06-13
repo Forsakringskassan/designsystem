@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 6.10.0 (2025-06-13)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** deprecated calendar variables (refs SFKUI-6990) 9f905de
+* **@fkui/design, @fkui/theme-default:** tokens calendar components (refs SFKUI-6990) ea497a4
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** fix table button broken padding (refs SFKUI-6500) c4b2305
+* **@fkui/design:** properly expose `densify()` function (refs SFKUI-6500) 42aa981
+* **@fkui/tsconfig:** use `bundler` as default `moduleResolution` in `@fkui/tsconfig/recommended` (refs SFKUI-6500) 0e0e87b
+* **@fkui/vue:** `FSortFilterDataset` respect sort attribute after dataset update (fixes SFKUI-6399) 80fc166
+* **@fkui/vue:** allow passing unwrapped datatypes to `useResize()` (refs SFKUI-6500) 11e415b
+* **deps:** update dependency i18next to v25.2.1 88beaa7
+* **deps:** update dependency sass to v1.89.1 98dbde0
+* **deps:** update dependency sass to v1.89.2 e6b78f8
+* **deps:** update vue monorepo to v3.5.15 1474ed9
+* **deps:** update vue monorepo to v3.5.16 8b12e97
+* **html-validate:** allow `FWizardStep` in `<template>` (refs SFKUI-6500) 775d6b6
+* **html-validate:** handle Vue SFC `<template>` in `fkui/no-template-modal` rule (refs SFKUI-6500) 45728c5
+
 ## 6.9.0 (2025-05-23)
 
 ### Features
