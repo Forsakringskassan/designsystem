@@ -6959,7 +6959,6 @@ function useYearSelector(options) {
   function updateYearSelectorFocus() {
     const index = selectableYears.value.indexOf(activeYear.value);
     const activeElement = getHTMLElementsFromVueRef(options.yearElements.value)[index];
-    console.log(activeElement);
     focus$1(activeElement);
     const wrapperElement = getHTMLElementFromVueRef(options.yearSelector.value);
     const wrapperHeight = wrapperElement.getBoundingClientRect().height;
