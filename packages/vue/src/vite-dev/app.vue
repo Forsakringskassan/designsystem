@@ -5,6 +5,7 @@ import { FTextField2 } from "../components";
 
 const namn = ref("World");
 const validity = ref<{ isValid: boolean }>({ isValid: false });
+const number = ref("5");
 const form = useTemplateRef("form");
 
 async function onSubmit(event: Event): Promise<void> {
@@ -21,6 +22,9 @@ async function onSubmit(event: Event): Promise<void> {
 <template>
     <form ref="form" @submit="onSubmit">
         <f-text-field2 v-model="namn" v-model:validity="validity"> Namn </f-text-field2>
+        <f-text-field2 v-model="number" v-validation.number.minValue="{ minValue: { limit: 10 } }">
+            Nummer >= 10
+        </f-text-field2>
         <button type="submit">Submit</button>
         <p v-if="validity.isValid">Denna texten visas bara om värdet är giltigt</p>
         <pre>{{ JSON.stringify({ namn, validity }) }}</pre>

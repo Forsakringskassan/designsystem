@@ -4,6 +4,8 @@
 
 ```ts
 
+import { Plugin as Plugin_2 } from 'vue';
+
 // @public (undocumented)
 export function addErrorMessages(texts: Record<string, string>, { clear }?: {
     clear?: boolean;
@@ -56,8 +58,18 @@ export interface EnableValidationOptionsSimple {
     parser?(value: string): string | undefined;
 }
 
+// @public
+export function getConfigFromElement(element: HTMLElement): {
+    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
+} | undefined;
+
 // @public (undocumented)
 export function resetFormSubmitted(form: HTMLFormElement): void;
+
+// @public
+export function setConfigToElement(element: HTMLElement, config: {
+    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
+}): void;
 
 // @public (undocumented)
 export function setFormSubmitted(form: HTMLFormElement): void;
@@ -95,6 +107,9 @@ export interface ValidationCommonConfig {
 
 // @public (undocumented)
 export type ValidationConfig<K extends keyof ValidatorTypeMapping> = ValidatorTypeMapping[K]["config"] extends never ? ValidationCommonConfig : ValidationCommonConfig & ValidatorTypeMapping[K]["config"];
+
+// @public (undocumented)
+export const ValidationPlugin: Plugin_2;
 
 // @public
 export interface ValidationResult {

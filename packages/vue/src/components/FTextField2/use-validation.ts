@@ -1,5 +1,10 @@
 import { type Ref, type ShallowRef, onMounted, ref } from "vue";
-import { type UpdateEvent, enableValidation } from "@fkui/validation";
+import {
+    type UpdateEvent,
+    addValidatorsToElement,
+    enableValidation,
+    getConfigFromElement,
+} from "@fkui/validation";
 import { useEventListener } from "@vueuse/core";
 
 export interface Validity {
@@ -34,6 +39,7 @@ function shouldshowError(event: UpdateEvent): boolean {
 
 export function useValidation<TValue, TModel>(
     element: Readonly<ShallowRef<HTMLElement | null>>,
+    rootElement: Readonly<ShallowRef<HTMLElement | null>>,
     options: UseValidationOptions<TValue, TModel>,
 ): UseValidation {
     const { viewValue, modelValue, validity } = options;
@@ -43,7 +49,14 @@ export function useValidation<TValue, TModel>(
     const validationMessage: Ref<string | undefined> = ref(undefined);
     let internalModelValue: TModel | undefined = undefined;
     onMounted(() => {
-        if (!element.value) {
+        console.log("useValidation:onMounted:enableValidation", element.value);
+
+        if (!element.value || !rootElement.value) {
+            return;
+        }
+
+        const config = getConfigFromElement(rootElement.value);
+        if (!config) {
             return;
         }
         useEventListener(element, "validation:config", (event) => {
@@ -81,6 +94,7 @@ export function useValidation<TValue, TModel>(
             },
             ...options,
         });
+        addValidatorsToElement(element.value, config);
     });
     return {
         showValidationError,
