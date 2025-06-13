@@ -244,10 +244,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
