@@ -7,12 +7,13 @@ layout: api.method
 
 Hämtar en tabellcell från en {@link component:FInteractiveTable interaktiv tabell} (FInteractiveTable).
 
-Både rad och kolumn är 1-indexerade, dvs rad 1 kolumn 1 refererar till första cellen.
+Både rad och kolumn är 1-indexerade, vilket innebär att rad 1 kolumn 1 refererar till första cellen.
 
-Varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer, dvs kolumn 1 refererar till första cellen med innehåll.
+Varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer.
+Det innebär att kolumn 1 refererar till första cellen med innehåll.
 
 För expanderbara rader beror radnummer på om rader är expanderade eller ej.
-Om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad medans om första raden är expanderd refererar andra raden till första expanderade raden under den första raden.
+Om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad medans om första raden är expanderad refererar andra raden till första expanderade raden under den första raden.
 
 ## Syntax
 

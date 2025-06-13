@@ -346,9 +346,13 @@ export class FInteractiveTablePageObject implements BasePageObject {
         row: number;
         col: number;
     }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
+    checkbox(row: number): FCheckboxFieldPageObject;
+    // @deprecated
     columnItem(index: number): FTableColumnPageObject;
     el(): DefaultCypressChainable;
     getColumnSortedByIcon(index: number, order: "ascending" | "descending" | "unsorted"): DefaultCypressChainable;
+    header(col: number): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
+    // @deprecated
     headerRowItem(): FTableColumnPageObject;
     headersRow(): DefaultCypressChainable;
     row(index: number): DefaultCypressChainable;
@@ -618,10 +622,10 @@ export class FStaticFieldPageObject implements BasePageObject {
     tooltip: FTooltipPageObject;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export class FTableColumnPageObject implements BasePageObject {
     constructor(selector: string, index: number);
-    // (undocumented)
+    // @deprecated (undocumented)
     checkbox(): FCheckboxFieldPageObject;
     // (undocumented)
     el: () => DefaultCypressChainable;
@@ -629,9 +633,9 @@ export class FTableColumnPageObject implements BasePageObject {
     index: number;
     // (undocumented)
     selector: string;
-    // (undocumented)
+    // @deprecated (undocumented)
     tableRowBodyContent(position: number): DefaultCypressChainable;
-    // (undocumented)
+    // @deprecated (undocumented)
     tableRowHeaderContent(): DefaultCypressChainable;
 }
 

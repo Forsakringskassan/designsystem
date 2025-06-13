@@ -46,7 +46,9 @@ const TestComponent = defineComponent({
             :expandable-attribute="expandable ? 'nested' : undefined"
         >
             <template #caption> Test table </template>
-            <template #checkbox-description> Select row </template>
+            <template #checkbox-description="{ row }">
+                Select row {{ row.a }}
+            </template>
             <template #default="{ row }">
                 <f-table-column :row-header title="A">
                     {{ row.a }}
@@ -186,6 +188,53 @@ it("`caption()` should get `<caption>` element", () => {
 
     table.caption().should("contain.text", "Test table");
     table.caption().should("have.prop", "tagName", "CAPTION");
+});
+
+describe("`header()`", () => {
+    it("should get correct `<th>` element in `<thead>`", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: false,
+                selectable: false,
+            },
+        });
+
+        table.header(1).should("have.trimmedText", "A");
+        table.header(2).should("have.trimmedText", "B");
+        table.header(3).should("have.trimmedText", "C");
+    });
+
+    it("should not include column header for expandable marker", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: true,
+                selectable: false,
+            },
+        });
+
+        table.header(1).should("have.trimmedText", "A");
+        table.header(2).should("have.trimmedText", "B");
+        table.header(3).should("have.trimmedText", "C");
+    });
+
+    it("should not include column header for selectable checkbox", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: false,
+                selectable: true,
+            },
+        });
+
+        table.header(1).should("have.trimmedText", "A");
+        table.header(2).should("have.trimmedText", "B");
+        table.header(3).should("have.trimmedText", "C");
+    });
 });
 
 it("`headersRow()` should get all `<th>` elements in `<thead>`", () => {
@@ -341,6 +390,54 @@ describe("`row()`", () => {
         table.row(1).find("td").eq(1).should("have.trimmedText", "A1a");
         table.row(2).find("td").eq(1).should("have.trimmedText", "A1b");
         table.row(3).find("td").eq(1).should("have.trimmedText", "A1c");
+    });
+});
+
+describe("`checkbox()`", () => {
+    it("should get `FCheckboxFieldPageObject` for given row", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: false,
+                selectable: true,
+            },
+        });
+
+        table.checkbox(1).label().should("contain.text", "Select row A1");
+        table.checkbox(2).label().should("contain.text", "Select row A2");
+        table.checkbox(3).label().should("contain.text", "Select row A3");
+    });
+
+    it("should count expanded rows", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: true,
+                selectable: true,
+            },
+        });
+
+        table.row(0).click();
+        table.checkbox(1).label().should("contain.text", "Select row A1");
+        table.checkbox(5).label().should("contain.text", "Select row A2");
+        table.checkbox(6).label().should("contain.text", "Select row A3");
+    });
+
+    it("should ignore collapsed rows", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: true,
+                selectable: true,
+            },
+        });
+
+        table.checkbox(1).label().should("contain.text", "Select row A1");
+        table.checkbox(2).label().should("contain.text", "Select row A2");
+        table.checkbox(3).label().should("contain.text", "Select row A3");
     });
 });
 
