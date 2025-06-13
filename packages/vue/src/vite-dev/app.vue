@@ -1,37 +1,35 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTextField } from "../components";
+import { FButton, FList } from "../components";
 
-const namn = ref("World");
+let counter = 0;
+const items = ref<Array<{ id: number }>>([]);
+
+function syncOperation(): void {
+    console.log("do something sync"); // eslint-disable-line no-console -- temp
+}
+
+async function asyncOperation(): Promise<void> {
+    console.log("starting a slow async operation"); // eslint-disable-line no-console -- temp
+    const id = counter++;
+    items.value.push({ id });
+    await new Promise((resolve) => setTimeout(resolve, 5000 + Math.random() * 5000));
+    items.value = items.value.filter((it) => it.id !== id);
+    console.log("slow async operation done"); // eslint-disable-line no-console -- temp
+}
 </script>
 
 <template>
     <div class="container">
         <h1>@fkui/vue</h1>
 
-        <p>A few common commands to keep track of:</p>
-        <dl>
-            <dt><code>npm run vue unit</code></dt>
-            <dd>Run Jest unit tests</dd>
-            <dt><code>npm run vue unit -- Foobar</code></dt>
-            <dd>Run unit tests matching "Foobar"</dd>
-            <dt><code>npm run vue unit -- -u</code></dt>
-            <dd>Update snapshots</dd>
-            <dt><code>npm exec cypress -- open --component</code></dt>
-            <dd>Run Cypress Component Tests</dd>
-            <dt><code>npm run prettier:write</code></dt>
-            <dd>Reformat files</dd>
-            <dt><code>npm run lint</code></dt>
-            <dd>Run all linting and static analyzis</dd>
-            <dt><code>npm test</code></dt>
-            <dd>Run all tests</dd>
-        </dl>
+        <f-button @click="syncOperation">sync button</f-button>
+        <f-button @click="asyncOperation">async button</f-button>
+        <button type="button" class="button button--primary" @click="asyncOperation">original button</button>
 
-        <hr />
-
-        <h2>Sandbox</h2>
-
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
+        <f-list :items>
+            <template #default="{ item }"> job #{{ item.id }} in progress... </template>
+            <template #empty>No expensive calls in progress</template>
+        </f-list>
     </div>
 </template>

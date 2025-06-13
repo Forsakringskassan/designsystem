@@ -686,10 +686,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -1144,10 +1144,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -1425,6 +1425,13 @@ default: typeof parseBankgiro;
 }>> & Readonly<{}>, {
 formatter: FormatFunction<string>;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_2" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FButton: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
 
 // @public (undocumented)
 export const FCalendar: DefineComponent<ExtractPropTypes<    {
@@ -1726,12 +1733,12 @@ selected: boolean;
 highlight: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_2" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_2" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FCard: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
+export const FCard: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
 
 // @public (undocumented)
 export const FCheckboxField: DefineComponent<ExtractPropTypes<    {
@@ -1812,8 +1819,8 @@ required: true;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
-id: string;
 disabled: boolean;
+id: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
@@ -1992,10 +1999,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -2757,12 +2764,12 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FCrudButton: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const FCrudButton: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal" needs to be exported by the entry point index.d.ts
 //
@@ -3008,10 +3015,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -3437,8 +3444,8 @@ default: boolean;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
-modelValue: string;
 disabled: boolean;
+modelValue: string;
 labelWidth: string;
 inputWidth: string;
 initialMonth: FDate | undefined;
@@ -3948,10 +3955,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -4718,10 +4725,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -5885,8 +5892,8 @@ default: boolean;
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 }>, {
-id: string;
 disabled: boolean;
+id: string;
 }, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -5944,12 +5951,12 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_5" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FFixedPane: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
+export const FFixedPane: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, __VLS_TemplateResult_5["slots"]>;
 
 // @public (undocumented)
 export const FFormModal: DefineComponent<ExtractPropTypes<    {
@@ -6013,7 +6020,7 @@ preparedButtons(): FModalButton[];
 onClose(): void;
 onSubmit(): Promise<void>;
 onCancel(): void;
-}, ComponentOptions, ComponentOptionsMixin, ("close" | "submit" | "cancel")[], "close" | "submit" | "cancel", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("submit" | "close" | "cancel")[], "submit" | "close" | "cancel", PublicProps, Readonly<ExtractPropTypes<    {
 fullscreen: {
 type: BooleanConstructor;
 required: false;
@@ -7365,12 +7372,12 @@ align: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_5" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_5" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_6" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_6" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_6" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FMinimizablePanel: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, __VLS_TemplateResult_5["slots"]>;
+export const FMinimizablePanel: __VLS_WithTemplateSlots_6<typeof __VLS_component_6, __VLS_TemplateResult_6["slots"]>;
 
 // @public
 export const FModal: DefineComponent<ExtractPropTypes<    {
@@ -8158,10 +8165,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -8779,10 +8786,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -9486,10 +9493,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -9963,10 +9970,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -10467,10 +10474,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -10918,10 +10925,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -11378,10 +11385,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -11770,16 +11777,16 @@ required: true;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
-id: string;
 disabled: boolean;
+id: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_6" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_6" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_6" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_7" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_7" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_7" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FResizePane: __VLS_WithTemplateSlots_6<typeof __VLS_component_6, __VLS_TemplateResult_6["slots"]>;
+export const FResizePane: __VLS_WithTemplateSlots_7<typeof __VLS_component_7, __VLS_TemplateResult_7["slots"]>;
 
 // @public (undocumented)
 export const FSearchTextField: DefineComponent<ExtractPropTypes<    {
@@ -11998,10 +12005,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -12679,19 +12686,19 @@ rotate: string;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_7" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_7" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_7" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export const FTableButton: __VLS_WithTemplateSlots_7<typeof __VLS_component_7, __VLS_TemplateResult_7["slots"]>;
-
 // Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_8" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_8" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_8" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FTableColumn: __VLS_WithTemplateSlots_8<typeof __VLS_component_8, __VLS_TemplateResult_8["slots"]>;
+export const FTableButton: __VLS_WithTemplateSlots_8<typeof __VLS_component_8, __VLS_TemplateResult_8["slots"]>;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_9" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_9" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_9" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FTableColumn: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, __VLS_TemplateResult_9["slots"]>;
 
 // @public (undocumented)
 export interface FTableColumnData {
@@ -12842,9 +12849,9 @@ default: boolean;
 onInput?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
+disabled: boolean;
 id: string;
 modelValue: string;
-disabled: boolean;
 maxlength: number;
 softLimit: number;
 charactersLeftWarning: string;
@@ -13086,10 +13093,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -15057,12 +15064,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_9" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_9" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_9" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_10" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_10" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_10" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, __VLS_TemplateResult_9["slots"]>;
+export const IPopupListbox: __VLS_WithTemplateSlots_10<typeof __VLS_component_10, __VLS_TemplateResult_10["slots"]>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
