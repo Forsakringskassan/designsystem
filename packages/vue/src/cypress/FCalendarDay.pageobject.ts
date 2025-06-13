@@ -13,7 +13,7 @@ export enum dayType {
 /**
  * @public
  */
-export class FCalenderDayPageobject implements BasePageObject {
+export class FCalendarDayPageobject implements BasePageObject {
     public selector: string;
 
     public constructor(selector: string) {

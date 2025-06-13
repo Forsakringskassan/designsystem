@@ -1,6 +1,6 @@
 import { type BasePageObject, type DefaultCypressChainable } from "../common";
 import { ICalendarNavbarPageObject } from "../ICalendarNavbar.pageobject";
-import { FCalenderDayPageobject } from "../FCalenderDay.pageobject";
+import { FCalendarDayPageobject } from "../FCalendarDay.pageobject";
 
 const monthList = [
     "Januari",
@@ -61,8 +61,8 @@ export class CalendarPageObject implements BasePageObject {
         );
     }
 
-    public day(day: number = 1): FCalenderDayPageobject {
-        return new FCalenderDayPageobject(
+    public day(day: number = 1): FCalendarDayPageobject {
+        return new FCalendarDayPageobject(
             `${this.selector} .calendar-month__button:nth(${
                 day - 1
             }) .calendar-day`,

@@ -21,7 +21,7 @@ export interface BasePageObject {
 export class CalendarPageObject implements BasePageObject {
     constructor(selector: string);
     // (undocumented)
-    day(day?: number): FCalenderDayPageobject;
+    day(day?: number): FCalendarDayPageobject;
     dayButton(day?: number): DefaultCypressChainable;
     // (undocumented)
     el(): DefaultCypressChainable;
@@ -63,7 +63,7 @@ export class FBadgePageObject implements BasePageObject {
 }
 
 // @public (undocumented)
-export class FCalenderDayPageobject implements BasePageObject {
+export class FCalendarDayPageobject implements BasePageObject {
     constructor(selector: string);
     // (undocumented)
     button(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
