@@ -28,16 +28,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject-progress-status.vue:FProgressbarPageObject-progress-status-fdc7a1.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-description.vue:FLabelPageObject-description-f0377f.js
 import { defineComponent as _defineComponent } from "vue";
-import { FProgressbar } from "@fkui/vue";
-import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FLabel } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FProgressbarPageObject-progress-status",
+  __name: "FLabelPageObject-description",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FProgressbar() {
-      return FProgressbar;
+    const __returned__ = { get FLabel() {
+      return FLabel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -45,23 +45,31 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock(
-    $setup["FProgressbar"],
-    {
-      value: 40,
-      "aria-label": "Progressbar"
-    },
-    null,
-    512
-    /* NEED_PATCH */
-  )), [
-    [_directive_test, "progressbar"]
+  return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" Etikett ")
+    ])),
+    description: _withCtx(({ descriptionClass }) => [
+      _createElementVNode(
+        "span",
+        {
+          class: _normalizeClass(descriptionClass)
+        },
+        " Hj\xE4lptext ",
+        2
+        /* CLASS */
+      )
+    ]),
+    _: 1
+    /* STABLE */
+  })), [
+    [_directive_test, "awesome-label"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-fdc7a1"
+  selector: "#example-f0377f"
 });
 export {
   render
