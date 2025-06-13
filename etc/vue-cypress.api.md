@@ -168,11 +168,15 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     // (undocumented)
     highlightedDay(): DefaultCypressChainable;
     // (undocumented)
+    highlightedYear(): DefaultCypressChainable;
+    // (undocumented)
     input(): DefaultCypressChainable;
     // (undocumented)
     navNextButton(): DefaultCypressChainable;
     // (undocumented)
     navPrevButton(): DefaultCypressChainable;
+    // (undocumented)
+    navYearSelectorButton(): DefaultCypressChainable;
     // (undocumented)
     popup(): DefaultCypressChainable;
     // (undocumented)
@@ -183,6 +187,8 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     textFieldErrorMessage(): DefaultCypressChainable;
     // (undocumented)
     toggleCalendarButton(): DefaultCypressChainable;
+    // (undocumented)
+    yearSelector(): DefaultCypressChainable;
 }
 
 // @public
@@ -759,6 +765,8 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     selector: string;
     // (undocumented)
     text(): DefaultCypressChainable;
+    // (undocumented)
+    yearSelectorButton(): DefaultCypressChainable;
 }
 
 // @public (undocumented)
