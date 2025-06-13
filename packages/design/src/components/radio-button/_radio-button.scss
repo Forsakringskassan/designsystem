@@ -2,6 +2,8 @@
 @use "../../core/size";
 @use "../../core/mixins/focus" as *;
 @use "../../core/mixins/sr-only" as *;
+@use "../../core/utils/functions" as *;
+@use "variables" as *;
 
 $radio_button_label_offset: 0.1rem;
 $RADIO_BUTTON_SELECTOR: ".radio-button" !default;
@@ -52,7 +54,8 @@ $RADIO_BUTTON_SELECTOR: ".radio-button" !default;
             top: 0;
             cursor: pointer;
             width: var(--f-icon-size-medium);
-            border: var(--f-border-width-medium) solid var(--f-border-color-input);
+            background-color: $radio-button-color-background-default;
+            border: var(--f-border-width-medium) solid $radio-button-color-border-default;
             display: block;
             transition:
                 background-color ease var(--f-animation-duration-medium),
@@ -60,43 +63,47 @@ $RADIO_BUTTON_SELECTOR: ".radio-button" !default;
                 opacity ease var(--f-animation-duration-medium);
         }
 
-        // Outer ring of the custom radio input
-        &::before {
-            background: var(--f-background-input);
-            box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner);
-        }
-
-        // Inner ring of the custom radio input
+        // Inner and outer ring of the custom radio input
         &::after {
-            background: var(--f-background-input-selected);
-            box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner-selected);
+            background-color: $radio-button-color-background-selected;
+            box-shadow: inset 0 0 0 var(--f-border-width-medium) $radio-button-color-background-default;
             opacity: 0;
+            @media (forced-colors: active) {
+                forced-color-adjust: none;
+                background-color: Highlight;
+                box-shadow: inset 0 0 0 var(--f-border-width-medium) Canvas;
+            }
         }
     }
 
     &.disabled {
-        color: var(--f-text-color-input-disabled);
+        color: $radio-button-color-text-disabled;
+        @media (forced-colors: active) {
+            color: GrayText;
+        }
 
         #{$RADIO_BUTTON_SELECTOR}__label {
+            cursor: default;
             &::before,
             &::after {
-                border: var(--f-border-width-medium) solid var(--f-text-color-input-disabled);
-                box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner-disabled);
-            }
-
-            &::after {
-                background: var(--f-background-input-selected-disabled);
+                background: $radio-button-color-background-disabled;
+                border: var(--f-border-width-medium) solid $radio-button-color-border-disabled;
+                cursor: default;
+                @media (forced-colors: active) {
+                    border: var(--f-border-width-medium) solid GrayText;
+                }
             }
         }
     }
 
-    // Hide inner ring by default
+    // Hide inner and outer ring by default
     input[type="radio"] + label::after {
         opacity: 0;
     }
 
-    // Show inner ring when checked
+    // Show inner and outer ring and change color on outer ring when checked
     input[type="radio"]:checked + label::after {
+        border: var(--f-border-width-medium) solid $radio-button-color-border-selected;
         opacity: 1;
     }
 
