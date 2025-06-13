@@ -55,6 +55,8 @@
     "pretest": "npm run lint",
     "test": "lerna run test",
     "test:ct": "cypress run-ct --headless",
+    "version": "scripts/version",
+    "postversion": "npm run build",
     "vue": "npm run --workspace packages/vue --"
   },
   "commitlint": {

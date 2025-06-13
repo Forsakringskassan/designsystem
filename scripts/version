@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in $(git ls-files 'docs/**/*.{md,ts,vue}' '{packages/*/src/**/*.{ts,vue}'); do
+	sed "s/%version%/${npm_new_version}/g" -i "${file}"
+	git add "${file}"
+done
