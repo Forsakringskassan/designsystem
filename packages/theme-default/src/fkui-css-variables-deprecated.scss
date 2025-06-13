@@ -270,6 +270,11 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-background-calendar-selected: #{$palette-color-green-a-100};
     --f-background-calendar-hover: #{$palette-color-bluebell-15};
     --f-border-color-calendar-disabled: #{$palette-color-fk-black-50};
+    --f-background-progress: #{$palette-color-fk-black-15};
+    --f-background-progress-ongoing: #{$palette-color-yellow-85};
+    --f-border-color-progress-ongoing: #{$palette-color-fk-black-70};
+    --f-background-progress-finished: #{$palette-color-green-b-85};
+    --f-border-color-progress-finished: #{$palette-color-green-b-120};
 }
 
 @if $global {

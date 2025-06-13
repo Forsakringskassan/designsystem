@@ -1,34 +1,44 @@
 @use "../../core/size";
+@use "variables" as *;
 
 $PROGRESS_BAR_SELECTOR: ".progress" !default;
+$progressbar-height: var(--f-height-small);
+$progressbar-border-width: var(--f-border-width-medium);
 
 #{$PROGRESS_BAR_SELECTOR} {
-    background-color: var(--f-background-progress);
-    border-radius: var(--f-height-medium);
-    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
-    height: var(--f-height-small);
+    background-color: $progressbar-color-background;
+    border-radius: var(--f-border-radius-medium);
+    height: $progressbar-height;
     margin-bottom: size.$margin-150;
     padding: 0;
+    border: $progressbar-border-width solid $progressbar-color-border;
+
+    @media (forced-colors: active) {
+        border: $progressbar-border-width solid highlight;
+    }
 
     &__meter {
-        border-radius: var(--f-height-medium);
         display: block;
         float: left;
-        height: var(--f-height-small);
-        margin: calc(-1 * var(--f-border-width-small));
+        height: calc($progressbar-height - ($progressbar-border-width * 2));
         transition:
             width var(--f-animation-duration-medium) ease-out,
             background-color var(--f-animation-duration-medium) ease-out;
 
         &--inprogress {
-            background: var(--f-background-progress-ongoing);
-            border: var(--f-border-width-small) solid var(--f-border-color-progress-ongoing);
+            background: $progressbar-color-meter-inprogress;
+
+            @media (forced-colors: active) {
+                background: highlight;
+            }
         }
 
         &--finished {
-            background: var(--f-background-progress-finished);
-            border: var(--f-border-width-small) solid var(--f-border-color-progress-finished);
-            width: calc(100% + 2 * var(--f-border-width-small));
+            background: $progressbar-color-meter-finished;
+
+            @media (forced-colors: active) {
+                background: highlight;
+            }
         }
     }
 }
