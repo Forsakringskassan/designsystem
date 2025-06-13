@@ -6,6 +6,7 @@ export interface FruitData {
     name: string;
     origin: string;
     description: string;
+    variant?: FruitData[];
 }
 
 /**
@@ -18,6 +19,20 @@ export const fruits: FruitData[] = [
         origin: "Sverige",
         description:
             "Rund, ofta röd eller grön frukt med söt eller syrlig smak.",
+        variant: [
+            {
+                id: "1a",
+                name: "Discovery",
+                origin: "Sverige",
+                description: "Rött och gulgrönt äpple. Krispig och smakrik.",
+            },
+            {
+                id: "1b",
+                name: "Ingrid Marie",
+                origin: "Sverige",
+                description: "Mörkrött äpple. Saftig och sötsyrlig.",
+            },
+        ],
     },
     {
         id: "2",

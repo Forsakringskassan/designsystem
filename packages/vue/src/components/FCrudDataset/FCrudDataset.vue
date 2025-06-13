@@ -15,6 +15,7 @@ const slots = useSlots();
 const result = ref<T[]>([]) as Ref<T[]>;
 const operation = ref<Operation>(Operation.NONE);
 const item = ref<T | null>(null);
+const nestedKey = ref<keyof T | null | undefined>(null);
 const originalItemToUpdate = ref<T | null>(null);
 const isFormModalOpen = ref(false);
 const isConfirmModalOpen = ref(false);
@@ -232,22 +233,23 @@ function createItem(): void {
     isFormModalOpen.value = true;
 }
 
-function deleteItem(current: T): void {
+function deleteItem(current: T, nested?: keyof T): void {
     if (!hasDeleteSlot.value) {
         throw Error("No template is defined for #delete");
     }
     operation.value = Operation.DELETE;
     item.value = current;
     isConfirmModalOpen.value = true;
+    nestedKey.value = nested;
 }
 
 function onDeleteConfirm(): void {
     if (!item.value) {
         return;
     }
-    callbackBeforeItemDelete.value(item.value);
-    result.value = result.value.filter((it) => it !== item.value);
 
+    callbackBeforeItemDelete.value(item.value);
+    result.value = filterItem(result.value, item.value, nestedKey.value);
     emit("deleted", item.value);
     emit("update:modelValue", result.value);
 
@@ -256,6 +258,35 @@ function onDeleteConfirm(): void {
     alertScreenReader(message, {
         assertive: true,
     });
+}
+
+function filterItem(items: T[], target: T, nested?: keyof T): T[] {
+    const newItems = [...items];
+
+    for (let i = 0; i < newItems.length; i++) {
+        const item = newItems[i];
+
+        // Filter shallow item.
+        if (item === target) {
+            newItems.splice(i, 1);
+            return newItems;
+        }
+
+        // Filter nested item.
+        if (nested && Array.isArray(item[nested])) {
+            const nestedItems = item[nested];
+            const nestedIndex = nestedItems.findIndex((it) => it === target);
+
+            if (nestedIndex !== -1) {
+                const clonedNested = [...nestedItems];
+                clonedNested.splice(nestedIndex, 1);
+                item[nested] = clonedNested as T[keyof T];
+                return newItems;
+            }
+        }
+    }
+
+    return newItems;
 }
 
 function onDeleteClose(e: { reason: string }): void {
@@ -320,7 +351,7 @@ function updateItem(current: T): void {
         <!--
              @slot Slot for displaying the data.
              @binding {(item: T) => void} updateItem Callback to trigger modification modal
-             @binding {(item: T) => void} deleteItem Callback to trigger deletion modal
+             @binding {(item: T, nested?: keyof T) => void} deleteItem Callback to trigger deletion modal
         -->
         <slot v-bind="{ updateItem, deleteItem }"></slot>
         <div v-if="hasAddSlot">
