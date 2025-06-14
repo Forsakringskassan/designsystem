@@ -41,6 +41,13 @@
     "Bricka",
     "FBadge",
     "CHANGELOG v5",
+    "Validering och felhantering",
+    "Längdvalidering",
+    "Validator - anpassad",
+    "Felmeddelande - anpassat",
+    "Korsvalidering",
+    "Formatering och parsning",
+    "Formaterare och parser - anpassad",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -63,13 +70,6 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Validering och felhantering",
-    "Längdvalidering",
-    "Validator - anpassad",
-    "Felmeddelande - anpassat",
-    "Korsvalidering",
-    "Formatering och parsning",
-    "Formaterare och parser - anpassad",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
@@ -217,6 +217,10 @@
     "openModal",
     "formModal() function",
     "confirmModal() function",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -234,10 +238,6 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -427,6 +427,41 @@
       "terms": []
     },
     {
+      "url": "guides/validation-and-error-handling/validation.html",
+      "title": "Validering och felhantering",
+      "terms": []
+    },
+    {
+      "url": "guides/validation-and-error-handling/length-validation.html",
+      "title": "Längdvalidering",
+      "terms": []
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-validator.html",
+      "title": "Validator - anpassad",
+      "terms": []
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-error-message.html",
+      "title": "Felmeddelande - anpassat",
+      "terms": []
+    },
+    {
+      "url": "guides/validation-and-error-handling/cross-validation.html",
+      "title": "Korsvalidering",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": []
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -512,41 +547,6 @@
     {
       "url": "gettingstarted/about/index.html",
       "title": "Designsystemet",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/validation.html",
-      "title": "Validering och felhantering",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/length-validation.html",
-      "title": "Längdvalidering",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/custom-validator.html",
-      "title": "Validator - anpassad",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/custom-error-message.html",
-      "title": "Felmeddelande - anpassat",
-      "terms": []
-    },
-    {
-      "url": "guides/validation-and-error-handling/cross-validation.html",
-      "title": "Korsvalidering",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
       "terms": []
     },
     {
@@ -1103,6 +1103,26 @@
       "terms": []
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1185,26 +1205,6 @@
     {
       "url": "functions/functions/dom-functions/find-element-from-vue-ref.html",
       "title": "findElementFromVueRef",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
       "terms": []
     },
     {
@@ -1406,24 +1406,24 @@
     "39": 23,
     "40": 24,
     "41": 25,
-    "42": 25,
-    "43": 25,
-    "44": 25,
-    "45": 25,
-    "46": 25,
-    "47": 26,
-    "48": 27,
-    "49": 28,
-    "50": 29,
-    "51": 30,
-    "52": 31,
-    "53": 31,
-    "54": 32,
-    "55": 33,
-    "56": 34,
-    "57": 35,
-    "58": 36,
-    "59": 37,
+    "42": 26,
+    "43": 27,
+    "44": 28,
+    "45": 29,
+    "46": 30,
+    "47": 31,
+    "48": 32,
+    "49": 32,
+    "50": 32,
+    "51": 32,
+    "52": 32,
+    "53": 32,
+    "54": 33,
+    "55": 34,
+    "56": 35,
+    "57": 36,
+    "58": 37,
+    "59": 38,
     "60": 38,
     "61": 39,
     "62": 40,
