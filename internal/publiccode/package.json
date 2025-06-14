@@ -25,7 +25,7 @@
     "npm": ">= 7"
   },
   "devDependencies": {
-    "@jest/globals": "29.7.0",
+    "@jest/globals": "30.0.0",
     "execa": "9.6.0",
     "prettier": "3.5.3",
     "yaml": "2.8.0"
