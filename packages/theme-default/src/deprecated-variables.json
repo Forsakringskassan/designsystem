@@ -161,5 +161,10 @@
     "--f-background-calendar-default",
     "--f-background-calendar-selected",
     "--f-background-calendar-hover",
-    "--f-border-color-calendar-disabled"
+    "--f-border-color-calendar-disabled",
+    "--f-background-progress",
+    "--f-background-progress-ongoing",
+    "--f-border-color-progress-ongoing",
+    "--f-background-progress-finished",
+    "--f-border-color-progress-finished"
 ]
