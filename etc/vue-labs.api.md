@@ -508,14 +508,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<HoursMinutesString>>;

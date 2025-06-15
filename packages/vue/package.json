@@ -46,7 +46,7 @@
   "scripts": {
     "prebuild": "run-s clean",
     "build": "run-s build:lib build:pageobjects build:dts build:api",
-    "build:api": "fk-api-extractor --patch-augmentations api-extractor.*.json",
+    "build:api": "node fix-vue-tsc-types.mjs && fk-api-extractor --patch-augmentations api-extractor.*.json",
     "build:dts": "vue-tsc -b",
     "build:lib": "fk-build-vue-lib",
     "build:pageobjects": "node build-pageobjects.mjs",
@@ -91,6 +91,7 @@
     "cypress": "14.4.1",
     "esbuild": "0.25.5",
     "flush-promises": "1.0.2",
+    "glob": "11.0.2",
     "vite": "6.3.5",
     "vue": "3.5.16",
     "vue-router": "4.5.1"

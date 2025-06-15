@@ -503,12 +503,12 @@ export const EventBus: EventBus;
 export interface EventBusMap {
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FBadge: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
+export const FBadge: __VLS_WithSlots<typeof __VLS_component, __VLS_Slots>;
 
 // @public (undocumented)
 export const FBankAccountNumberTextField: DefineComponent<ExtractPropTypes<    {
@@ -950,14 +950,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 parser: {
 type: PropType<ParseFunction<BankAccountNumberString>>;
@@ -1408,14 +1406,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<BankgiroString>>;
@@ -1726,12 +1722,12 @@ selected: boolean;
 highlight: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_2" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_2" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FCard: __VLS_WithTemplateSlots_2<typeof __VLS_component_2, __VLS_TemplateResult_2["slots"]>;
+export const FCard: __VLS_WithSlots_2<typeof __VLS_component_2, __VLS_Slots_2>;
 
 // @public (undocumented)
 export const FCheckboxField: DefineComponent<ExtractPropTypes<    {
@@ -2256,14 +2252,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<ClearingnumberString>>;
@@ -2757,12 +2751,12 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_3" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_3" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_3" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FCrudButton: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, __VLS_TemplateResult_3["slots"]>;
+export const FCrudButton: __VLS_WithSlots_3<typeof __VLS_component_3, __VLS_Slots_3>;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal" needs to be exported by the entry point index.d.ts
 //
@@ -2796,23 +2790,28 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        default?(_: {
+        default?: (props: {
             updateItem: (current: T) => void;
             deleteItem: (current: T) => void;
-        }): any;
-        'add-button'?(_: {}): any;
-        buttons?(_: {
+        }) => any;
+    } & {
+        'add-button'?: (props: {}) => any;
+    } & {
+        buttons?: (props: {
             buttonClasses: string[];
-        }): any;
-        add?(_: {
+        }) => any;
+    } & {
+        add?: (props: {
             item: NonNullable<DistributeRef<[T | null] extends [Ref<any, any>] ? IfAny<Ref<any, any> & T, Ref<Ref<any, any> & T, Ref<any, any> & T>, Ref<any, any> & T> : Ref<UnwrapRef<T> | null, T | UnwrapRef<T> | null>>>;
-        }): any;
-        modify?(_: {
+        }) => any;
+    } & {
+        modify?: (props: {
             item: NonNullable<DistributeRef<[T | null] extends [Ref<any, any>] ? IfAny<Ref<any, any> & T, Ref<Ref<any, any> & T, Ref<any, any> & T>, Ref<any, any> & T> : Ref<UnwrapRef<T> | null, T | UnwrapRef<T> | null>>>;
-        }): any;
-        delete?(_: {
+        }) => any;
+    } & {
+        delete?: (props: {
             item: NonNullable<DistributeRef<[T | null] extends [Ref<any, any>] ? IfAny<Ref<any, any> & T, Ref<Ref<any, any> & T, Ref<any, any> & T>, Ref<any, any> & T> : Ref<UnwrapRef<T> | null, T | UnwrapRef<T> | null>>>;
-        }): any;
+        }) => any;
     };
     emit: ((evt: "created", item: T) => void) & ((evt: "updated", item: T) => void) & ((evt: "update:modelValue", items: T[]) => void) & ((evt: "deleted", item: T) => void);
 }>) => VNode & {
@@ -3272,14 +3271,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<number>>;
@@ -3313,17 +3310,21 @@ export const FDataTable: <T extends object>(__VLS_props: NonNullable<Awaited<typ
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        caption?(_: {}): any;
-        default?(_: {
+        caption?: (props: {}) => any;
+    } & {
+        default?: (props: {
             row: {};
-        }): any;
-        default?(_: {
+        }) => any;
+    } & {
+        default?: (props: {
             row: T;
-        }): any;
-        default?(_: {
+        }) => any;
+    } & {
+        empty?: (props: {}) => any;
+    } & {
+        default?: (props: {
             row: T;
-        }): any;
-        empty?(_: {}): any;
+        }) => any;
     };
     emit: {};
 }>) => VNode & {
@@ -4212,14 +4213,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -4347,13 +4346,13 @@ export const FDetailsPanel: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_se
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        default?(_: {
+        default?: (props: {
             item: T;
             close: (reason?: string) => void;
             header: "header";
             footer: "footer";
             content: "content";
-        }): any;
+        }) => any;
     };
     emit: {};
 }>) => VNode & {
@@ -4982,14 +4981,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
@@ -5944,12 +5941,12 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_4" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_4" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_4" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FFixedPane: __VLS_WithTemplateSlots_4<typeof __VLS_component_4, __VLS_TemplateResult_4["slots"]>;
+export const FFixedPane: __VLS_WithSlots_4<typeof __VLS_component_4, __VLS_Slots_4>;
 
 // @public (undocumented)
 export const FFormModal: DefineComponent<ExtractPropTypes<    {
@@ -6649,31 +6646,40 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        'row-description'?(_: {}): any;
-        caption?(_: {}): any;
-        default?(_: {
+        'row-description'?: (props: {}) => any;
+    } & {
+        caption?: (props: {}) => any;
+    } & {
+        default?: (props: {
             row: {};
-        }): any;
-        default?(_: {
+        }) => any;
+    } & {
+        'checkbox-description'?: (props: {
             row: T;
-        }): any;
-        default?(_: {
+        }) => any;
+    } & {
+        default?: (props: {
             row: T;
-        }): any;
-        default?(_: {
+        }) => any;
+    } & {
+        default?: (props: {
             row: T;
-        }): any;
-        default?(_: {
-            row: T;
-        }): any;
-        'checkbox-description'?(_: {
-            row: T;
-        }): any;
-        expandable?(_: {
+        }) => any;
+    } & {
+        expandable?: (props: {
             expandableRow: T;
             parentRow: T;
-        }): any;
-        empty?(_: {}): any;
+        }) => any;
+    } & {
+        default?: (props: {
+            row: T;
+        }) => any;
+    } & {
+        empty?: (props: {}) => any;
+    } & {
+        default?: (props: {
+            row: T;
+        }) => any;
     };
     emit: ((evt: "select", row: T) => void) & ((evt: "collapse", row: T) => void) & ((evt: "update:modelValue", rows: T[]) => void) & ((evt: "change", row: T) => void) & ((evt: "click", row: T) => void) & ((evt: "expand", row: T) => void) & ((evt: "unselect", row: T) => void) & ((evt: "update:active", row: T | undefined) => void);
 }>) => VNode & {
@@ -7046,17 +7052,21 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        default?(_: {
+        default?: (props: {
             item: T;
-        }): any;
-        default?(_: {
+        }) => any;
+    } & {
+        empty?: (props: {}) => any;
+    } & {
+        screenreader?: (props: {
             item: T;
-        }): any;
-        empty?(_: {}): any;
-        empty?(_: {}): any;
-        screenreader?(_: {
+        }) => any;
+    } & {
+        default?: (props: {
             item: T;
-        }): any;
+        }) => any;
+    } & {
+        empty?: (props: {}) => any;
     };
     emit: ((evt: "select", item: T) => void) & ((evt: "update:modelValue", item: T[]) => void) & ((evt: "change", item: T) => void) & ((evt: "click", item: T) => void) & ((evt: "unselect", item: T) => void) & ((evt: "update:active", item: T) => void);
 }>) => VNode & {
@@ -7166,7 +7176,7 @@ validator(value: string): boolean;
 };
 }>> & Readonly<{}>, {
 size: string;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLSpanElement>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export const FMessageBox: DefineComponent<ExtractPropTypes<    {
@@ -7365,12 +7375,12 @@ align: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_5" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_5" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_5" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FMinimizablePanel: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, __VLS_TemplateResult_5["slots"]>;
+export const FMinimizablePanel: __VLS_WithSlots_5<typeof __VLS_component_5, __VLS_Slots_5>;
 
 // @public
 export const FModal: DefineComponent<ExtractPropTypes<    {
@@ -8422,14 +8432,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 decimals: {
 type: NumberConstructor;
@@ -9043,14 +9051,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<OrganisationsnummerString>>;
@@ -9273,7 +9279,7 @@ export const FPageLayout: <T extends FPageLayoutType>(__VLS_props: NonNullable<A
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        default?(_: FPageLayoutBindings<T>): any;
+        default?: (props: FPageLayoutBindings<T>) => any;
     };
     emit: (evt: "update") => void;
 }>) => VNode & {
@@ -9750,14 +9756,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 decimals: {
 type: NumberConstructor;
@@ -10227,14 +10231,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<PersonnummerString>>;
@@ -10731,14 +10733,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
@@ -11182,14 +11182,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<PlusgiroString>>;
@@ -11642,14 +11640,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 formatter: {
 type: PropType<FormatFunction<PostalCodeString>>;
@@ -11693,7 +11689,7 @@ required: true;
 };
 }>> & Readonly<{}>, {
 valueText: string;
-}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLDivElement>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export const FRadioField: DefineComponent<ExtractPropTypes<    {
@@ -11774,12 +11770,12 @@ id: string;
 disabled: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_6" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_6" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_6" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_6" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_6" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FResizePane: __VLS_WithTemplateSlots_6<typeof __VLS_component_6, __VLS_TemplateResult_6["slots"]>;
+export const FResizePane: __VLS_WithSlots_6<typeof __VLS_component_6, __VLS_Slots_6>;
 
 // @public (undocumented)
 export const FSearchTextField: DefineComponent<ExtractPropTypes<    {
@@ -12262,14 +12258,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -12569,12 +12563,13 @@ export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __V
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
-        header?(_: {
+        header?: (props: {
             slotClass: string;
-        }): any;
-        default?(_: {
+        }) => any;
+    } & {
+        default?: (props: {
             sortFilterResult: T[];
-        }): any;
+        }) => any;
     };
     emit: ((evt: "datasetSorted", items: T[]) => void) & ((evt: "usedSortAttributes", sortAttribute: SortOrder) => void);
 }>) => VNode & {
@@ -12679,19 +12674,19 @@ rotate: string;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_7" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_7" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_7" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_7" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_7" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FTableButton: __VLS_WithTemplateSlots_7<typeof __VLS_component_7, __VLS_TemplateResult_7["slots"]>;
+export const FTableButton: __VLS_WithSlots_7<typeof __VLS_component_7, __VLS_Slots_7>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_8" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_8" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_8" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_8" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_8" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FTableColumn: __VLS_WithTemplateSlots_8<typeof __VLS_component_8, __VLS_TemplateResult_8["slots"]>;
+export const FTableColumn: __VLS_WithSlots_8<typeof __VLS_component_8, __VLS_Slots_8>;
 
 // @public (undocumented)
 export interface FTableColumnData {
@@ -13350,14 +13345,12 @@ inputNode: HTMLInputElement;
 }> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
@@ -14719,16 +14712,14 @@ close: () => any;
 }, string, PublicProps, Readonly<__VLS_Props_4> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {
-listbox: HTMLUListElement;
-}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 // @public (undocumented)
 export const IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
-}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, HTMLButtonElement>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
 export const IFlex: DefineComponent<ExtractPropTypes<    {
@@ -15057,12 +15048,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithTemplateSlots_9" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_9" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "__VLS_component_9" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_TemplateResult_9" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_9" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, __VLS_TemplateResult_9["slots"]>;
+export const IPopupListbox: __VLS_WithSlots_9<typeof __VLS_component_9, __VLS_Slots_9>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
