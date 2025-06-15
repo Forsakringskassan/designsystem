@@ -9,6 +9,21 @@ jest.unstable_mockModule("./git-add", () => ({
     gitAdd: mockGitAdd,
 }));
 
+/* jest v30 handles import.meta.resolve but until then mock prettier as it uses to fancy esm features */
+jest.unstable_mockModule("prettier", () => {
+    return {
+        __esModule: true,
+        default: {
+            resolveConfig() {
+                return {};
+            },
+            format(value) {
+                return value;
+            },
+        },
+    };
+});
+
 const { verifyConditions, prepare } = await import("./index");
 
 const tempdir = fs.realpathSync(os.tmpdir());

@@ -21,8 +21,8 @@
   "dependencies": {
     "@fkui/date": "6.10.0",
     "@fkui/design": "6.10.0",
-    "@fkui/logic": "6.10.0",
     "@fkui/icon-lib-default": "6.10.0",
+    "@fkui/logic": "6.10.0",
     "@fkui/theme-default": "6.10.0",
     "@fkui/vue": "6.10.0",
     "vue": "3.5.16",

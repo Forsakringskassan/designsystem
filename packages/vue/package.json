@@ -67,13 +67,13 @@
         }
       }
     },
+    "moduleNameMapper": {
+      "^(.+\\.css)\\?raw$": "$1"
+    },
     "preset": "@forsakringskassan/jest-config-vue",
     "setupFilesAfterEnv": [
       "./jest.setup.ts"
-    ],
-    "moduleNameMapper": {
-      "^(.+\\.css)\\?raw$": "$1"
-    }
+    ]
   },
   "dependencies": {
     "@vueuse/core": "12.8.2",
