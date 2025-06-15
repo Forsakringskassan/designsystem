@@ -70,14 +70,14 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "EventBus",
-    "EventBus",
-    "focus-indicator() mixin",
-    "densify() function",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
+    "focus-indicator() mixin",
+    "densify() function",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -552,23 +552,6 @@
       "terms": []
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": []
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": []
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": []
@@ -586,6 +569,23 @@
     {
       "url": "functions/test-utils/jest.html",
       "title": "Jest",
+      "terms": []
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": []
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
       "terms": []
     },
     {
@@ -1447,10 +1447,10 @@
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 48,
-    "72": 49,
-    "73": 50,
-    "74": 51,
+    "71": 49,
+    "72": 50,
+    "73": 51,
+    "74": 52,
     "75": 52,
     "76": 53,
     "77": 54,
