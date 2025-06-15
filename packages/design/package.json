@@ -46,7 +46,7 @@
     "autoprefixer": "10.4.21",
     "cssnano": "7.0.7",
     "flush-promises": "1.0.2",
-    "glob": "11.0.2",
+    "glob": "11.0.3",
     "jest-light-runner": "0.7.9",
     "jest-preset-stylelint": "7.3.0",
     "picocolors": "1.1.1",

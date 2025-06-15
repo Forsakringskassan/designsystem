@@ -109,7 +109,7 @@
     "esbuild": "0.25.5",
     "flush-promises": "1.0.2",
     "fs-extra": "11.3.0",
-    "glob": "11.0.2",
+    "glob": "11.0.3",
     "html-validate": "9.5.3",
     "html-validate-markdown": "5.0.0",
     "html-validate-vue": "7.1.6",

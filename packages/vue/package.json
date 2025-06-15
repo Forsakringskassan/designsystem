@@ -91,7 +91,7 @@
     "cypress": "14.4.1",
     "esbuild": "0.25.5",
     "flush-promises": "1.0.2",
-    "glob": "11.0.2",
+    "glob": "11.0.3",
     "vite": "6.3.5",
     "vue": "3.5.16",
     "vue-router": "4.5.1"
