@@ -28,45 +28,48 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-header.vue:FMinimizablePanelPageObject-header-e70434.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-format-description.vue:FLabelPageObject-format-description-1a40ba.js
 import { defineComponent as _defineComponent } from "vue";
-import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
-import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FLabel } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject-header",
+  __name: "FLabelPageObject-format-description",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FPageLayout() {
-      return FPageLayout;
-    }, get FMinimizablePanel() {
-      return FMinimizablePanel;
+    const __returned__ = { get FLabel() {
+      return FLabel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
-var _hoisted_1 = ["slot"];
-var _hoisted_2 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
-    default: _withCtx(({ left, content }) => [
-      _createVNode($setup["FMinimizablePanel"], { slot: left }, {
-        default: _withCtx(({ header }) => [
-          _createElementVNode("div", { slot: header }, "Lorem ipsum", 8, _hoisted_1)
-        ]),
-        _: 2
-        /* DYNAMIC */
-      }, 1032, ["slot"]),
-      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_2)
+  const _directive_test = _resolveDirective("test");
+  return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createTextVNode(" Etikett ")
+    ])),
+    description: _withCtx(({ formatDescriptionClass }) => [
+      _createElementVNode(
+        "span",
+        {
+          class: _normalizeClass(formatDescriptionClass)
+        },
+        " Formatbeskrivning ",
+        2
+        /* CLASS */
+      )
     ]),
     _: 1
     /* STABLE */
-  });
+  })), [
+    [_directive_test, "awesome-label"]
+  ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e70434"
+  selector: "#example-1a40ba"
 });
 export {
   render

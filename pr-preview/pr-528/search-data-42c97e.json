@@ -70,14 +70,14 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Vue.js",
-    "Om testverktyg",
-    "Generella funktioner",
-    "Jest",
     "EventBus",
     "EventBus",
     "focus-indicator() mixin",
     "densify() function",
+    "Vue.js",
+    "Om testverktyg",
+    "Generella funktioner",
+    "Jest",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -242,17 +242,17 @@
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
     "FProgressbarPageObject: el() method",
-    "FLabelPageObject: FLabelPageObject() constructor",
-    "FLabelPageObject: formatDescription() method",
-    "FLabelPageObject: errorMessage() method",
-    "FLabelPageObject: errorIcon() method",
-    "FLabelPageObject: description() method",
     "FMinimizablePanelPageObject: constructor",
     "FMinimizablePanelPageObject: toggleButton() method",
     "FMinimizablePanelPageObject: header() method",
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FLabelPageObject: FLabelPageObject() constructor",
+    "FLabelPageObject: formatDescription() method",
+    "FLabelPageObject: errorMessage() method",
+    "FLabelPageObject: errorIcon() method",
+    "FLabelPageObject: description() method",
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
@@ -552,6 +552,23 @@
       "terms": []
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": []
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": []
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": []
@@ -569,23 +586,6 @@
     {
       "url": "functions/test-utils/jest.html",
       "title": "Jest",
-      "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": []
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
       "terms": []
     },
     {
@@ -1230,31 +1230,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
-      "title": "FLabelPageObject: FLabelPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
-      "title": "FLabelPageObject: formatDescription() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
-      "title": "FLabelPageObject: errorMessage() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
-      "title": "FLabelPageObject: errorIcon() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
-      "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
       "title": "FMinimizablePanelPageObject: constructor",
       "terms": []
@@ -1282,6 +1257,31 @@
     {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
       "title": "FMinimizablePanelPageObject: content() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
+      "title": "FLabelPageObject: FLabelPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
+      "title": "FLabelPageObject: formatDescription() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
+      "title": "FLabelPageObject: errorMessage() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
+      "title": "FLabelPageObject: errorIcon() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
+      "title": "FLabelPageObject: description() method",
       "terms": []
     },
     {
@@ -1447,10 +1447,10 @@
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 49,
-    "72": 50,
-    "73": 51,
-    "74": 52,
+    "71": 48,
+    "72": 49,
+    "73": 50,
+    "74": 51,
     "75": 52,
     "76": 53,
     "77": 54,

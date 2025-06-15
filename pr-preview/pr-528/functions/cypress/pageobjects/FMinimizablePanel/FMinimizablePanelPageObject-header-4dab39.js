@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject.vue:FMinimizablePanelPageObject-a82d9e.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-header.vue:FMinimizablePanelPageObject-header-4dab39.js
 import { defineComponent as _defineComponent } from "vue";
 import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
-import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject",
+  __name: "FMinimizablePanelPageObject-header",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FPageLayout() {
@@ -46,11 +46,18 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   }
 });
 var _hoisted_1 = ["slot"];
+var _hoisted_2 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
     default: _withCtx(({ left, content }) => [
-      _createVNode($setup["FMinimizablePanel"], { slot: left }, null, 8, ["slot"]),
-      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_1)
+      _createVNode($setup["FMinimizablePanel"], { slot: left }, {
+        default: _withCtx(({ header }) => [
+          _createElementVNode("div", { slot: header }, "Lorem ipsum", 8, _hoisted_1)
+        ]),
+        _: 2
+        /* DYNAMIC */
+      }, 1032, ["slot"]),
+      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_2)
     ]),
     _: 1
     /* STABLE */
@@ -59,7 +66,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a82d9e"
+  selector: "#example-4dab39"
 });
 export {
   render
