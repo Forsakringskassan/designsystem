@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-29f589.json"
+            href="../../../../search-data-349a53.json"
             as="fetch"
             crossorigin
-            integrity="sha384-0+2dEpY8jlqb/H5pZSEErHlzax/wfFLk5sEv/Dt/VxkQKHzZiq1aBSRc6MBaOGGN"
+            integrity="sha384-fclde3FQUqfQJPAuZm+Q3zqZ9yBHn2Jfg4383Fdr1/b4k8Olj01hU4fsED3d67lv"
             id="search-data"
         />
     </head>
@@ -469,6 +469,28 @@
             
         >
             cell()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./checkbox.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html"
+            
+        >
+            checkbox()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./header.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"
+            
+        >
+            header()
         </a>
     </li></ol>
 
@@ -1397,13 +1419,14 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Hämtar en tabellcell från en <a href="../../../../components/table-and-list/table.html">interaktiv tabell</a> (FInteractiveTable).</p>
-<p class="docs-paragraph">Både rad och kolumn är 1-indexerade, dvs rad 1 kolumn 1 refererar till första cellen.</p>
-<p class="docs-paragraph">Varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer, dvs kolumn 1 refererar till första cellen med innehåll.</p>
+<p class="docs-paragraph">Både rad och kolumn är 1-indexerade, vilket innebär att rad 1 kolumn 1 refererar till första cellen.</p>
+<p class="docs-paragraph">Varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer.
+Det innebär att kolumn 1 refererar till första cellen med innehåll.</p>
 <p class="docs-paragraph">För expanderbara rader beror radnummer på om rader är expanderade eller ej.
-Om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad medans om första raden är expanderd refererar andra raden till första expanderade raden under den första raden.</p>
+Om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad medans om första raden är expanderad refererar andra raden till första expanderade raden under den första raden.</p>
 <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-d479d7"
+                    id="example-ac789a"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1428,7 +1451,7 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
 <h3 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><p class="docs-paragraph"><code>HTMLTableCellElement</code> med tabellcellen beskriven av <code>descriptor</code>.</p>
 <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-5c16ce"
+                    id="example-650036"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1436,18 +1459,18 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
                 >
                     
                     <div class="code-preview__preview">
-        <div id="example-cc475b"></div>
+        <div id="example-45214d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTablePageObject-cell-cc475b.js"></script>
+        <script type="module" src="./FInteractiveTablePageObject-cell-45214d.js"></script>
     </div>
                 </div>
             
                 <div
-                    id="example-0b86dd"
+                    id="example-267aba"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1465,7 +1488,7 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
                 </div>
             
                 <div
-                    id="example-7f2dd8"
+                    id="example-c62778"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1495,9 +1518,9 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/6e7d78ee05f12e491c90bbda53129cb846e174e0">6e7d78e</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/aa42b2d0a50c614a0d43e1a73030cbb7be8401df">aa42b2d</a>)<br />
         
-        2025-06-15 15:41
+        2025-06-15 17:34
 </div>
 <div class="toolbar__item">
     <form id="version">
