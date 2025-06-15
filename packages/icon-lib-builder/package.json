@@ -2,7 +2,6 @@
   "name": "@fkui/icon-lib-builder",
   "version": "6.10.0",
   "description": "Icon library builder",
-  "type": "module",
   "keywords": [
     "fkui",
     "designsystem",
@@ -17,6 +16,7 @@
   },
   "license": "MIT",
   "author": "Försäkringskassan",
+  "type": "module",
   "bin": {
     "fkui-icon-lib-build": "bin/build.js"
   },
@@ -32,13 +32,13 @@
   "jest": {
     "preset": "@forsakringskassan/jest-config"
   },
-  "engines": {
-    "node": ">= 20",
-    "npm": ">= 7"
-  },
   "dependencies": {
     "glob": "11.0.2",
     "sass": "1.89.2",
     "svgo": "3.3.2"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
   }
 }

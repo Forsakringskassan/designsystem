@@ -21,7 +21,6 @@
     "./src/**/*.scss"
   ],
   "main": "./lib/fkui.css",
-  "sass": "./src/fkui.scss",
   "types": "type-stub.d.ts",
   "files": [
     "lib",
@@ -72,5 +71,6 @@
   "engines": {
     "node": ">= 20",
     "npm": ">= 7"
-  }
+  },
+  "sass": "./src/fkui.scss"
 }
