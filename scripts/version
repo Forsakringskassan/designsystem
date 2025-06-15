@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Finds all files matching any of the patterns and replaces the %version%
+# placeholder with the actual version from the new release.
+
+patterns=(
+	'**/*.css'
+	'**/*.md'
+	'**/*.scss'
+	'**/*.ts'
+	'**/*.vue'
+)
+
+for file in $(git ls-files "${patterns[@]}"); do
+	if [[ "${file}" == scripts/* || "${file}" == etc/* ]]; then
+		continue
+	fi
+
+	# inline global substitution with the 'w' flag to pipe the changes to grep
+	# which matches if any changes was made.
+	if sed "s/%version%/v${npm_new_version}/gw /dev/stdout" -i "${file}" | grep -q .; then
+		echo "${file}"
+		git add "${file}"
+	fi
+done
