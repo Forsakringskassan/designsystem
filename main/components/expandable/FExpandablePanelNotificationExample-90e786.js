@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FExpandablePanel/examples/FExpandablePanelNotificationExample.vue:FExpandablePanelNotificationExample-880865.js
+// virtual-entry:virtual:packages/vue/src/components/FExpandablePanel/examples/FExpandablePanelNotificationExample.vue:FExpandablePanelNotificationExample-90e786.js
 import { defineComponent } from "vue";
 import { FExpandablePanel } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -86,7 +86,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-880865"
+  selector: "#example-90e786"
 });
 export {
   render
