@@ -30,7 +30,9 @@ export interface ResizeAPI {
 /**
  * @internal
  */
-export const injectionKey: InjectionKey<ResizeAPI> = Symbol("FResizePane");
+export const injectionKey: InjectionKey<ResizeAPI> = Symbol.for(
+    "FResizePane:useResize",
+);
 
 /**
  * Returned from `useResize()`.
