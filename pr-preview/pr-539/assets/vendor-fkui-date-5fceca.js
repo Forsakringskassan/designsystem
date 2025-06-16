@@ -754,8 +754,8 @@ var FDate = class _FDate {
   /**
    * Returns a new {@link FDate} object with the date before This one.
    *
-   * @since %version%
    * @public
+   * @since %version%
    */
   previous() {
     return this.addDays(-1);
