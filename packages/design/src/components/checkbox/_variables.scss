@@ -1,0 +1,16 @@
+// TEXT
+$checkbox-color-text-disabled: var(--fkds-color-text-disabled);
+
+// ICON
+$checkbox-icon-color-content: var(--fkds-icon-color-content-inverted);
+$checkbox-icon-color-content-disabled: var(--fkds-icon-color-content-disabled);
+
+// BACKGROUND
+$checkbox-color-background-default: var(--fkds-color-background-primary);
+$checkbox-color-background-selected: var(--fkds-color-select-background-primary-default);
+$checkbox-color-background-disabled: var(--fkds-color-background-disabled);
+
+// BORDER
+$checkbox-color-border-default: var(--fkds-color-border-primary);
+$checkbox-color-border-selected: transparent;
+$checkbox-color-border-disabled: var(--fkds-color-border-disabled);
