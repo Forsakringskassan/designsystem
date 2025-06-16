@@ -174,7 +174,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
     /**
      * Get page object for `FTableColumn` with selector targeting the header row.
      *
-     * @deprecated Use `header()` instead. Deprecated since %version%.
+     * @deprecated Use `header()` instead. Deprecated since v6.11.0.
      * @returns Page object for `FTableColumn`.
      */
     public headerRowItem(): FTableColumnPageObject {
@@ -187,7 +187,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
      * Index includes the header row (index 0 selects the header row while 1 selects first row in table body).
      * Index ignores expandable rows.
      *
-     * @deprecated Use `cell()` for body content and `header()` for header content instead. Deprecated since %version%.
+     * @deprecated Use `cell()` for body content and `header()` for header content instead. Deprecated since v6.11.0.
      * @param index - Row number (0-indexed).
      * @returns Page object for `FTableColumn`.
      */

@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 6.11.0 (2025-06-16)
+
+### Features
+
+* **@fkui/vue:** deprecate `FTableColumnPageObject` (refs SFKUI-6500) aa42b2d
+
+### Bug Fixes
+
+* **@fkui/vue:** use a public symbol for `useResize()` if consumer needs to recreate it (fixes SFKUI-7285) 88e845f
+* **deps:** update dependency glob to v11.0.3 7e2ad9d
+
 ## 6.10.0 (2025-06-13)
 
 ### Features
