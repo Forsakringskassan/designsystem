@@ -35,6 +35,7 @@ export class FDate implements IterableDate<FDate> {
     // (undocumented)
     next(): FDate;
     static now(): FDate;
+    previous(): FDate;
     startOfMonth(): FDate;
     toJSON(): string;
     toString(format?: DateFormat): string;

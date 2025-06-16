@@ -335,6 +335,16 @@ export class FDate implements IterableDate<FDate> {
         return new FDate(this.value.add(value, "year"));
     }
 
+    /**
+     * Returns a new {@link FDate} object with the date before This one.
+     *
+     * @public
+     * @since %version%
+     */
+    public previous(): FDate {
+        return this.addDays(-1);
+    }
+
     public next(): FDate {
         return this.addDays(1);
     }
