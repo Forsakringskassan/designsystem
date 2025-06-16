@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>CHANGELOG - FK Designsystem</title><link
             rel="stylesheet"
-            href="./assets/docs-e2004e.css"
+            href="./assets/docs-055150.css"
             crossorigin
-            integrity="sha384-D6QMIjryKAir7vGGlJZw0HYBDVPjp+eNf5ZBx9vMpH7gMzftSCxu/hkfqvTFbYtn"
+            integrity="sha384-PNafhOF/pIRPf8m70Kiz168aXME8nYyd67UrTMJFxxTycVh0LzCRvo5udf0EkgtC"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "./assets/vendor-vue-dc67b0.js",
     "@fkui/logic": "./assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "./assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "./assets/vendor-fkui-vue-ea15b4.js",
+    "@fkui/vue": "./assets/vendor-fkui-vue-dc4688.js",
     "@forsakringskassan/docs-live-example": "./assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "./assets/vendor-vue-dc67b0.js": "sha384-w6RSzRmHPR3Dxv48oPqDytMhEMChKTfEuQ59Vc3Cy089YDnCWSKmgjkzmaZw87CA",
     "./assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "./assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "./assets/vendor-fkui-vue-ea15b4.js": "sha384-qZ8uP9VlNSdb6F9pg0fp9kpGMLgfiIsRddEQ+FzmaX1BgtR6DH8ZDBlYlhr6Eqlu",
+    "./assets/vendor-fkui-vue-dc4688.js": "sha384-4SDkOwuP1dpzh6kSyJhkEt/1LUvFdDnKaB8DOC4Au8KuLyWzE7iqHjBFrwaSkVAN",
     "./assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="./search-data-e7f360.json"
+            href="./search-data-e86315.json"
             as="fetch"
             crossorigin
-            integrity="sha384-HX/vhK34aGFG26cWET5LYHKOMKlFXNTKgdDpWkR+P04wS8jcd82vfrYdtl5XLvvI"
+            integrity="sha384-7dZmcVnCofSDztZJeJvwiBiXSsmGAe1q3Fc8tci2Q1saOoZ0aoX1Nm4SDwYtS2MM"
             id="search-data"
         />
     </head>
@@ -235,11 +235,29 @@
 
                     
 
-                    <div id="content"><h2 id="v6-9-0"><a class="header-anchor" href="#v6-9-0">6.9.0 (2025-05-23)</a></h2><h3 id="features"><a class="header-anchor" href="#features">Features</a></h3><ul>
+                    <div id="content"><h2 id="v6-10-0"><a class="header-anchor" href="#v6-10-0">6.10.0 (2025-06-13)</a></h2><h3 id="features"><a class="header-anchor" href="#features">Features</a></h3><ul>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> deprecated calendar variables (refs SFKUI-6990) 9f905de</li>
+<li><strong>@fkui/design, @fkui/theme-default:</strong> tokens calendar components (refs SFKUI-6990) ea497a4</li>
+</ul>
+<h3 id="bug_fixes"><a class="header-anchor" href="#bug_fixes">Bug Fixes</a></h3><ul>
+<li><strong>@fkui/design, @fkui/vue:</strong> fix table button broken padding (refs SFKUI-6500) c4b2305</li>
+<li><strong>@fkui/design:</strong> properly expose <code>densify()</code> function (refs SFKUI-6500) 42aa981</li>
+<li><strong>@fkui/tsconfig:</strong> use <code>bundler</code> as default <code>moduleResolution</code> in <code>@fkui/tsconfig/recommended</code> (refs SFKUI-6500) 0e0e87b</li>
+<li><strong>@fkui/vue:</strong> <code>FSortFilterDataset</code> respect sort attribute after dataset update (fixes SFKUI-6399) 80fc166</li>
+<li><strong>@fkui/vue:</strong> allow passing unwrapped datatypes to <code>useResize()</code> (refs SFKUI-6500) 11e415b</li>
+<li><strong>deps:</strong> update dependency i18next to v25.2.1 88beaa7</li>
+<li><strong>deps:</strong> update dependency sass to v1.89.1 98dbde0</li>
+<li><strong>deps:</strong> update dependency sass to v1.89.2 e6b78f8</li>
+<li><strong>deps:</strong> update vue monorepo to v3.5.15 1474ed9</li>
+<li><strong>deps:</strong> update vue monorepo to v3.5.16 8b12e97</li>
+<li><strong>html-validate:</strong> allow <code>FWizardStep</code> in <code>&lt;template&gt;</code> (refs SFKUI-6500) 775d6b6</li>
+<li><strong>html-validate:</strong> handle Vue SFC <code>&lt;template&gt;</code> in <code>fkui/no-template-modal</code> rule (refs SFKUI-6500) 45728c5</li>
+</ul>
+<h2 id="v6-9-0"><a class="header-anchor" href="#v6-9-0">6.9.0 (2025-05-23)</a></h2><h3 id="features--1"><a class="header-anchor" href="#features--1">Features</a></h3><ul>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> update semantic tokens for select (refs SFKUI-7236) 7275a1f</li>
 <li><strong>@fkui/vue:</strong> deprecate <code>FCrudButton</code> (refs SFKUI-7155) 7650477</li>
 </ul>
-<h3 id="bug_fixes"><a class="header-anchor" href="#bug_fixes">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--2"><a class="header-anchor" href="#bug_fixes--2">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design, @fkui/vue:</strong> reset min width of file item to enable wrapping of its file name (refs FRI-850) a4260c4</li>
 <li><strong>@fkui/design:</strong> prevent wizard step from overflowing when its content has unbreakable text (refs FRI-850) cee4ffc</li>
 <li><strong>deps:</strong> update dependency i18next to v25.2.0 e04b932</li>
@@ -247,13 +265,13 @@
 <li><strong>fkui-vue:</strong> radio field component allows null model value (refs SFKUI-6500) f9bf9d5</li>
 <li><strong>fkui-vue:</strong> select field component allows null model value (refs SFKUI-6500) b46968f</li>
 </ul>
-<h2 id="v6-8-0"><a class="header-anchor" href="#v6-8-0">6.8.0 (2025-05-19)</a></h2><h3 id="features--1"><a class="header-anchor" href="#features--1">Features</a></h3><ul>
+<h2 id="v6-8-0"><a class="header-anchor" href="#v6-8-0">6.8.0 (2025-05-19)</a></h2><h3 id="features--3"><a class="header-anchor" href="#features--3">Features</a></h3><ul>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> updated semantic tokens for colors (refs SFKUI-7232) 07841f1</li>
 <li><strong>@fkui/design, @fkui/vue:</strong> update calender navbar styling (refs SFKUI-7243) 8d83771</li>
 <li><strong>@fkui/design:</strong> button icon and forced colors  (refs SFKUI-6980) df48aae</li>
 <li><strong>@fkui/icon-lib-builder:</strong> allow SCSS entry in icon lib (refs SB-4982) cbac36c</li>
 </ul>
-<h3 id="bug_fixes--2"><a class="header-anchor" href="#bug_fixes--2">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--4"><a class="header-anchor" href="#bug_fixes--4">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> do not activate row on delete (refs SFKUI-4237) f413fd3</li>
 <li><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> focus correct interactable on delete (fixes SFKUI-5257) 88886f4</li>
 <li><strong>@fkui/vue:</strong> add filterAttributes prop for FSortFilterDataset (fixes SFKUI-6581) 2ff2a96</li>
@@ -261,11 +279,11 @@
 <li><strong>deps:</strong> update dependency i18next to v25.1.3 1bb0012</li>
 <li><strong>deps:</strong> update dependency sass to v1.89.0 29d053b</li>
 </ul>
-<h2 id="v6-7-1"><a class="header-anchor" href="#v6-7-1">6.7.1 (2025-05-15)</a></h2><h3 id="bug_fixes--3"><a class="header-anchor" href="#bug_fixes--3">Bug Fixes</a></h3><ul>
+<h2 id="v6-7-1"><a class="header-anchor" href="#v6-7-1">6.7.1 (2025-05-15)</a></h2><h3 id="bug_fixes--5"><a class="header-anchor" href="#bug_fixes--5">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design:</strong> prevent fieldset from overflowing when its content has unbreakable text (refs FRI-850) b2285d9</li>
 <li><strong>@fkui/vue:</strong> selector in turnOffAnimation in wizard pageobject (refs SFKUI-6500) 8bd6456</li>
 </ul>
-<h2 id="v6-7-0"><a class="header-anchor" href="#v6-7-0">6.7.0 (2025-05-14)</a></h2><h3 id="features--4"><a class="header-anchor" href="#features--4">Features</a></h3><ul>
+<h2 id="v6-7-0"><a class="header-anchor" href="#v6-7-0">6.7.0 (2025-05-14)</a></h2><h3 id="features--6"><a class="header-anchor" href="#features--6">Features</a></h3><ul>
 <li><strong>@fkui/design, @fkui/theme-default, @fkui/vue:</strong> new <code>table__button</code> class for table action buttons (refs SFKUI-7155) 2c18d8e</li>
 <li><strong>@fkui/design:</strong> new <code>table__anchor</code> class for links in tables (refs SFKUI-7155) e4701c2</li>
 <li><strong>@fkui/design:</strong> remove styling for table scroll values <code>VERTICAL</code> and <code>BOTH</code> (refs SFKUI-7119) 1022932</li>
@@ -274,7 +292,7 @@
 <li><strong>@fkui/vue:</strong> new <code>FTableButton</code> component (refs SFKUI-7155) dc0e212</li>
 <li><strong>@fkui/vue:</strong> new html-validate rule to detect when table checkbox-description is missing (refs SFKUI-6500) c08c906</li>
 </ul>
-<h3 id="bug_fixes--5"><a class="header-anchor" href="#bug_fixes--5">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--7"><a class="header-anchor" href="#bug_fixes--7">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design, @fkui/vue:</strong> issue with FWizardStep header overflow (fixes SFKUI-6168) 3f3b018</li>
 <li><strong>@fkui/design:</strong> horizontal scroll bar shown when <code>scroll=&quot;vertical&quot;</code> (fixes SFKUI-7119) 901ac00</li>
 <li><strong>@fkui/design:</strong> visible hover effect for inactive bordered checkboxes (fixes SFKUI-7214) feac7d6</li>
@@ -285,7 +303,7 @@
 <li><strong>deps:</strong> update dependency i18next to v25.1.2 4d7f2b1</li>
 <li><strong>deps:</strong> update dependency vue-router to v4.5.1 6fff20a</li>
 </ul>
-<h2 id="v6-6-0"><a class="header-anchor" href="#v6-6-0">6.6.0 (2025-04-25)</a></h2><h3 id="features--6"><a class="header-anchor" href="#features--6">Features</a></h3><ul>
+<h2 id="v6-6-0"><a class="header-anchor" href="#v6-6-0">6.6.0 (2025-04-25)</a></h2><h3 id="features--8"><a class="header-anchor" href="#features--8">Features</a></h3><ul>
 <li><strong>@fkui/design, @fkui/vue:</strong> add directive and plugin for formatting number (refs SFKUI-7093) dbf2f81</li>
 <li><strong>@fkui/design, @fkui/vue:</strong> add plusgiro directive formatter (refs SFKUI-7093) 4f21f03</li>
 <li><strong>@fkui/design, @fkui/vue:</strong> add postal code directive formatter (refs SFKUI-7093) ee397aa</li>
@@ -299,21 +317,21 @@
 <li><strong>@fkui/vue:</strong> add text directive formatter (refs SFKUI-7093) 6615f36</li>
 <li><strong>@fkui/vue:</strong> new component <code>FDetailsPanel</code> (refs SFKUI-6993) 7aeec09</li>
 </ul>
-<h3 id="bug_fixes--7"><a class="header-anchor" href="#bug_fixes--7">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--9"><a class="header-anchor" href="#bug_fixes--9">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design, @fkui/vue:</strong> header element in FWizardStep anchor when completed (fixes SFKUI-7207) d3712cc</li>
 <li><strong>deps:</strong> update dependency i18next to v25.0.1 79f1b77</li>
 </ul>
-<h2 id="v6-5-0"><a class="header-anchor" href="#v6-5-0">6.5.0 (2025-04-23)</a></h2><h3 id="features--8"><a class="header-anchor" href="#features--8">Features</a></h3><ul>
+<h2 id="v6-5-0"><a class="header-anchor" href="#v6-5-0">6.5.0 (2025-04-23)</a></h2><h3 id="features--10"><a class="header-anchor" href="#features--10">Features</a></h3><ul>
 <li><strong>deps:</strong> update dependency i18next to v25 223cfd7</li>
 </ul>
-<h3 id="bug_fixes--9"><a class="header-anchor" href="#bug_fixes--9">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--11"><a class="header-anchor" href="#bug_fixes--11">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/vue:</strong> <code>FTableColumn</code> <code>name</code> only required with <code>FSortFilterDataset</code> (fixes SFKUI-7059) 3dc3454, closes #312</li>
 <li><strong>@fkui/vue:</strong> default value in FSortFilterDataset dropdown (fixes SFKUI-7083) 401f110</li>
 <li><strong>@fkui/vue:</strong> fix &quot;set operation on key value failed&quot; on <code>FInteractiveTable</code> (refs SFKUI-6500) 7bb357e</li>
 <li><strong>@fkui/vue:</strong> fix &quot;set operation on key value failed&quot; on <code>FTableColumn</code> (refs SFKUI-6500) 0fe7409</li>
 <li><strong>@fkui/vue:</strong> wrong button order in <code>FFormModal</code> (fixes SFKUI-7185) (<a href="undefined/Forsakringskassan/designsystem/issues/429">#429</a>) 886b8f4</li>
 </ul>
-<h2 id="v6-4-0"><a class="header-anchor" href="#v6-4-0">6.4.0 (2025-04-11)</a></h2><h3 id="features--10"><a class="header-anchor" href="#features--10">Features</a></h3><ul>
+<h2 id="v6-4-0"><a class="header-anchor" href="#v6-4-0">6.4.0 (2025-04-11)</a></h2><h3 id="features--12"><a class="header-anchor" href="#features--12">Features</a></h3><ul>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> add semantic tokens for colors to wizard (refs SFKUI-7160) 23a3c86</li>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> remove background for selected list/table rows (refs SFKUI-4410) (<a href="undefined/Forsakringskassan/designsystem/issues/413">#413</a>) af9f3ee</li>
 <li><strong>@fkui/design:</strong> add styling <code>text-align: left</code> on component <code>th</code> (fixes SFKUI-7151) 86c1b0f</li>
@@ -323,11 +341,11 @@
 <li><strong>deps:</strong> update dependency express to v5 6c388e3</li>
 <li><strong>deps:</strong> update dependency express to v5 a48fef0</li>
 </ul>
-<h3 id="bug_fixes--11"><a class="header-anchor" href="#bug_fixes--11">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--13"><a class="header-anchor" href="#bug_fixes--13">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design:</strong> collapsed expandable rows in <code>FInteractiveTable</code> shown as white gaps in iOS browsers (fixes SFKUI-6984) (<a href="undefined/Forsakringskassan/designsystem/issues/406">#406</a>) 40421a7</li>
 <li><strong>@fkui/vue:</strong> card throws error when content is validated (fixes SFKUI-7190) 4c1e690</li>
 </ul>
-<h2 id="v6-3-1"><a class="header-anchor" href="#v6-3-1">6.3.1 (2025-03-25)</a></h2><h3 id="bug_fixes--12"><a class="header-anchor" href="#bug_fixes--12">Bug Fixes</a></h3><ul>
+<h2 id="v6-3-1"><a class="header-anchor" href="#v6-3-1">6.3.1 (2025-03-25)</a></h2><h3 id="bug_fixes--14"><a class="header-anchor" href="#bug_fixes--14">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/test-utils, @fkui/tsconfig:</strong> use <code>moduleResolution</code> <code>bundler</code> instead of <code>node16</code> (refs SFKUI-6500) effa960</li>
 <li><strong>@fkui/vue:</strong> move focus with arrow keys in <code>FInteractiveTable</code> (fixes SFKUI-7136) 2231d03</li>
 <li><strong>@fkui/vue:</strong> set <code>keyAttribute</code> as optional for <code>FDataTable</code> (fixes SFKUI-6936) 3c64d99, closes #158</li>
@@ -336,14 +354,14 @@
 <li><strong>deps:</strong> update dependency i18next to v24.2.3 ac251de</li>
 <li>stage <code>publiccode.yml</code> after prepare (refs SFKUI-6500) fe63716</li>
 </ul>
-<h2 id="v6-3-0"><a class="header-anchor" href="#v6-3-0">6.3.0 (2025-03-11)</a></h2><h3 id="features--13"><a class="header-anchor" href="#features--13">Features</a></h3><ul>
+<h2 id="v6-3-0"><a class="header-anchor" href="#v6-3-0">6.3.0 (2025-03-11)</a></h2><h3 id="features--15"><a class="header-anchor" href="#features--15">Features</a></h3><ul>
 <li><strong>@fkui/date, @fkui/i18next-translate, @fkui/logic, @fkui/test-utils, @fkui/tsconfig, @fkui/vue-labs, @fkui/vue:</strong> new package <code>@fkui/tsconfig</code> (refs SFKUI-6500) e036065</li>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> semantic tokens label (refs SFKUI-6835) c249d5e</li>
 <li><strong>@fkui/theme-default, @fkui/vue:</strong> new component <code>FResizePane</code> (refs SFKUI-6993) d01b0a1</li>
 <li><strong>@fkui/vue-labs:</strong> <code>@fkui/vue-labs/pageobject</code> moved to <code>@fkui/vue-labs/cypress</code> (refs SFKUI-6500) 1676ebf</li>
 <li><strong>@fkui/vue:</strong> set colors on <code>FPageLayout</code> areas (refs SFKUI-6500) 37d6370</li>
 </ul>
-<h3 id="bug_fixes--14"><a class="header-anchor" href="#bug_fixes--14">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--16"><a class="header-anchor" href="#bug_fixes--16">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design:</strong> anchor underline offset relative to parent element. <a href="undefined/Forsakringskassan/designsystem/issues/345">#345</a> (refs SB-4982) 1041436</li>
 <li><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> do not render as expandable row if empty (fixes SFKUI-7078) 2fdf973, closes #333</li>
 <li><strong>@fkui/vue:</strong> <code>FInteractiveTable</code> set selected on <code>v-model</code> change (fixes SFKUI-7052) f8b8af3, closes #293</li>
@@ -352,16 +370,16 @@
 <li><strong>@fkui/vue:</strong> text field components allow null model value (fixes SFKUI-7076) 840d200, closes #316</li>
 <li><strong>deps:</strong> update dependency core-js to v3.41.0 5c79e8b</li>
 </ul>
-<h2 id="v6-2-0"><a class="header-anchor" href="#v6-2-0">6.2.0 (2025-02-28)</a></h2><h3 id="features--15"><a class="header-anchor" href="#features--15">Features</a></h3><ul>
+<h2 id="v6-2-0"><a class="header-anchor" href="#v6-2-0">6.2.0 (2025-02-28)</a></h2><h3 id="features--17"><a class="header-anchor" href="#features--17">Features</a></h3><ul>
 <li><strong>@fkui/vue:</strong> add <code>useAreaData()</code> composable (refs SFKUI-6992) 8e62c60</li>
 <li><strong>@fkui/vue:</strong> cypress pageobjects as esm hybrid package (refs SFKUI-6500) a3bfe08</li>
 <li><strong>@fkui/vue:</strong> new <code>FPageLayout</code> component (refs SFKUI-6992) 26f0d41</li>
 </ul>
-<h3 id="bug_fixes--16"><a class="header-anchor" href="#bug_fixes--16">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--18"><a class="header-anchor" href="#bug_fixes--18">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> changed semantic tokens for icons and color for some semantic tokens  (refs SFKUI-7038) 98e7a6c</li>
 <li><strong>@fkui/vue:</strong> add offset top to IPopupListbox (refs SFKUI-6500) cabd15b</li>
 </ul>
-<h2 id="v6-1-0"><a class="header-anchor" href="#v6-1-0">6.1.0 (2025-02-20)</a></h2><h3 id="features--17"><a class="header-anchor" href="#features--17">Features</a></h3><ul>
+<h2 id="v6-1-0"><a class="header-anchor" href="#v6-1-0">6.1.0 (2025-02-20)</a></h2><h3 id="features--19"><a class="header-anchor" href="#features--19">Features</a></h3><ul>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> added semantic tokens to Messagebox (refs SFKUI-6986) 3472153</li>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> update Modal with semantic tokens  (refs SFKUI-7034) b759bc0</li>
 <li><strong>@fkui/vue:</strong> <code>FCrudDataset</code> generic and type-safe (refs SFKUI-6500) 5fa2d7b</li>
@@ -371,7 +389,7 @@
 <li><strong>@fkui/vue:</strong> <code>FSortFilterDataset</code> generic and type-safe (refs SFKUI-6500) 4b27b43</li>
 <li><strong>@fkui/vue:</strong> <code>useSlotUtils.hasSlot()</code> takes same arguments options api <code>hasSlot()</code> (refs SFKUI-6500) 14707dd</li>
 </ul>
-<h3 id="bug_fixes--18"><a class="header-anchor" href="#bug_fixes--18">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--20"><a class="header-anchor" href="#bug_fixes--20">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design, @fkui/theme-default, @fkui/vue:</strong> remove <code>navbar</code> styles (refs SFKUI-7039) 058eee5</li>
 <li><strong>@fkui/design, @fkui/theme-default:</strong> set sideEffects field for css packages (refs SFKUI-6500) d7b993f</li>
 <li><strong>@fkui/design, @fkui/vue:</strong> <code>FCalendar</code> improved accessablility (fixes SFKUI-7011) 6fa234d</li>
@@ -380,7 +398,7 @@
 <li><strong>@fkui/theme-default:</strong> fix missing type declaration for <code>@fkui/theme-default</code> (refs SFKUI-6500) a6c7a6e, closes #287</li>
 <li><strong>@fkui/vue:</strong> use <code>teleportTarget</code> in <code>IPopupError</code> (refs SFKUI-7050) 3314ba7</li>
 </ul>
-<h2 id="v6-0-1"><a class="header-anchor" href="#v6-0-1">6.0.1 (2025-02-11)</a></h2><h3 id="bug_fixes--19"><a class="header-anchor" href="#bug_fixes--19">Bug Fixes</a></h3><ul>
+<h2 id="v6-0-1"><a class="header-anchor" href="#v6-0-1">6.0.1 (2025-02-11)</a></h2><h3 id="bug_fixes--21"><a class="header-anchor" href="#bug_fixes--21">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/design:</strong> focus in highcontrast mode (refs SFKUI-6909) a0e5ea6</li>
 <li><strong>@fkui/vue:</strong> stepNumber for cancel button slot in FWizardStep (refs SFKUI-6500) 7a9928f</li>
 <li><strong>deps:</strong> fix broken peerDependencies (refs SFKUI-6500) 6a4a995</li>
@@ -448,7 +466,7 @@ Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code>
 <li><strong>@fkui/vue:</strong> The deprecated <code>FRadioGroup</code> component and the deprecated alias
 <code>FRadioGroupField</code> has been removed.</li>
 </ul>
-<h3 id="features--20"><a class="header-anchor" href="#features--20">Features</a></h3><ul>
+<h3 id="features--22"><a class="header-anchor" href="#features--22">Features</a></h3><ul>
 <li><strong>@fkui/design, @fkui/theme-default, @fkui/vue-labs, @fkui/vue:</strong> add <code>@fkui/theme-default</code> package (refs SFKUI-6970) 466cc2e</li>
 <li><strong>@fkui/design, @fkui/theme-default, @fkui/vue:</strong> add <code>FLogo</code> component (refs SFKUI-6960) d72c041</li>
 <li><strong>@fkui/design, @fkui/vue-labs, @fkui/vue:</strong> rename <code>discreteDescriptionClass</code> to <code>formatDescriptionClass</code> (refs SFKUI-7002) d0193d4</li>
@@ -492,7 +510,7 @@ Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code>
 <li><strong>@fkui/vue:</strong> rename <code>@fkui/vue/pageobject</code> to <code>@fkui/vue/cypress</code> (refs SFKUI-6963) 9652321</li>
 <li><strong>@fkui/vue:</strong> rename <code>FProgressbarPageObject.ariaValueNow()</code> to <code>value()</code> (refs SFKUI-6500) c05bdfb</li>
 </ul>
-<h3 id="bug_fixes--21"><a class="header-anchor" href="#bug_fixes--21">Bug Fixes</a></h3><ul>
+<h3 id="bug_fixes--23"><a class="header-anchor" href="#bug_fixes--23">Bug Fixes</a></h3><ul>
 <li><strong>@fkui/vue:</strong> combobox reactive options (fixes SFKUI-7010) 3c74336</li>
 <li><strong>@fkui/vue:</strong> fix <code>aria-label</code> prop on <code>FProgressbar</code> (fixes SFKUI-7004) 3c5c4f0</li>
 <li><strong>@fkui/vue:</strong> update FTooltip to require headerTag if header exists (refs SFKUI-6972) 1efb8fe</li>
@@ -514,9 +532,9 @@ Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">calender-spelling-error (<a href="https://github.com/Forsakringskassan/designsystem/commits/3d4d6deb01cc236132baa92c0a532a104876f23a">3d4d6de</a>)<br />
+<div class="footer__right"><div class="version">calender-spelling-error (<a href="https://github.com/Forsakringskassan/designsystem/commits/037167a511e6603dd8ef659d70ce2534b61be6bb">037167a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/531">PR 531</a><br />
-        2025-06-12 06:53
+        2025-06-16 06:34
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -629,10 +647,10 @@ Use validators <code>personnummerFormat</code> and <code>personnummerLuhn</code>
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="./assets/processors/selectable-version/select-version-da0c92.js"
+            src="./assets/processors/selectable-version/select-version-7499db.js"
             type="module"
             crossorigin
-            integrity="sha384-pHbVyEZmK4wZQM4T56aE0dwGX1IrOuNWxBu7SjTXK5o/ynGa2yi3VBEYcNSOpjHO"
+            integrity="sha384-l3ZW0IIqmUSoqYFJccXeg4Csj585c0I7Kue66lsju34tB8aeqUzzxCnwZec4aexV"
             
         ></script><script
             src="./assets/main-ae2d8a.js"
