@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FInteractiveTablePageObject: cell() method - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../../assets/docs-7f7524.css"
+            href="../../../../assets/docs-569a66.css"
             crossorigin
-            integrity="sha384-x2f/ZFyxBBDOzdmYGqVGGdqOKcc6XYSOaq0c9fe+GYjSVsj6bxukqyVyPZjdSkFL"
+            integrity="sha384-2F++HQ1RAUDLHMqajxJOnnsoBPB3/TQcs2WRdalqRzrw3tbsRmxCE6tIdHOcPd8z"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../../../assets/vendor-vue-dc67b0.js",
     "@fkui/logic": "../../../../assets/vendor-fkui-logic-93a394.js",
     "@fkui/date": "../../../../assets/vendor-fkui-date-0c3a2b.js",
-    "@fkui/vue": "../../../../assets/vendor-fkui-vue-43ce6c.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-519252.js",
     "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../../../assets/vendor-vue-dc67b0.js": "sha384-w6RSzRmHPR3Dxv48oPqDytMhEMChKTfEuQ59Vc3Cy089YDnCWSKmgjkzmaZw87CA",
     "../../../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
     "../../../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
-    "../../../../assets/vendor-fkui-vue-43ce6c.js": "sha384-t0IDgunpxsk656DJ9vfkkYZ20yaDqS/VvnfA9YnHX1OWC+NG4l+ngBJsu4UN6JdP",
+    "../../../../assets/vendor-fkui-vue-519252.js": "sha384-+mcoJf6Ra4qjaWSfRRbe3R5+9kA8ZeP+rn7OTpjhqKYR7gnAH50ZtpCSd65VhHEy",
     "../../../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-bdafa4.json"
+            href="../../../../search-data-98ac09.json"
             as="fetch"
             crossorigin
-            integrity="sha384-0Ds/84afn6I1L2p4fVK601Z3cpgjLKaRwR2PQBUVhKgDb3nSL6c0RJfXjuoTnCAx"
+            integrity="sha384-hLZC/GTc4ZsjPEPDZBixwGgb+GnycGRpD6Ss5ZKEsognLX6B/TqkF0RFVc9ZIZ36"
             id="search-data"
         />
     </head>
@@ -469,6 +469,28 @@
             
         >
             cell()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./checkbox.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html"
+            
+        >
+            checkbox()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./header.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"
+            
+        >
+            header()
         </a>
     </li></ol>
 
@@ -1397,13 +1419,14 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Hämtar en tabellcell från en <a href="../../../../components/table-and-list/table.html">interaktiv tabell</a> (FInteractiveTable).</p>
-<p class="docs-paragraph">Både rad och kolumn är 1-indexerade, dvs rad 1 kolumn 1 refererar till första cellen.</p>
-<p class="docs-paragraph">Varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer, dvs kolumn 1 refererar till första cellen med innehåll.</p>
+<p class="docs-paragraph">Både rad och kolumn är 1-indexerade, vilket innebär att rad 1 kolumn 1 refererar till första cellen.</p>
+<p class="docs-paragraph">Varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer.
+Det innebär att kolumn 1 refererar till första cellen med innehåll.</p>
 <p class="docs-paragraph">För expanderbara rader beror radnummer på om rader är expanderade eller ej.
-Om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad medans om första raden är expanderd refererar andra raden till första expanderade raden under den första raden.</p>
+Om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad medans om första raden är expanderad refererar andra raden till första expanderade raden under den första raden.</p>
 <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-d479d7"
+                    id="example-ac789a"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1428,7 +1451,7 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
 <h3 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><p class="docs-paragraph"><code>HTMLTableCellElement</code> med tabellcellen beskriven av <code>descriptor</code>.</p>
 <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-5c16ce"
+                    id="example-650036"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1436,18 +1459,18 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
                 >
                     
                     <div class="code-preview__preview">
-        <div id="example-3e57dd"></div>
+        <div id="example-3c1505"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTablePageObject-cell-3e57dd.js"></script>
+        <script type="module" src="./FInteractiveTablePageObject-cell-3c1505.js"></script>
     </div>
                 </div>
             
                 <div
-                    id="example-0b86dd"
+                    id="example-267aba"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1465,7 +1488,7 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
                 </div>
             
                 <div
-                    id="example-7f2dd8"
+                    id="example-c62778"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1495,9 +1518,9 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">feat/semantic-token-dialogue-tree (<a href="https://github.com/Forsakringskassan/designsystem/commits/7067cbe6f28b6a2990616240a22e19c31a339b73">7067cbe</a>)<br />
+<div class="footer__right"><div class="version">feat/semantic-token-dialogue-tree (<a href="https://github.com/Forsakringskassan/designsystem/commits/545c43679b2b9bee256a722b11d4b1b4195ef804">545c436</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/530">PR 530</a><br />
-        2025-06-11 13:55
+        2025-06-16 11:52
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1610,10 +1633,10 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../../../assets/processors/selectable-version/select-version-da0c92.js"
+            src="../../../../assets/processors/selectable-version/select-version-7499db.js"
             type="module"
             crossorigin
-            integrity="sha384-pHbVyEZmK4wZQM4T56aE0dwGX1IrOuNWxBu7SjTXK5o/ynGa2yi3VBEYcNSOpjHO"
+            integrity="sha384-l3ZW0IIqmUSoqYFJccXeg4Csj585c0I7Kue66lsju34tB8aeqUzzxCnwZec4aexV"
             
         ></script><script
             src="../../../../assets/main-ae2d8a.js"
