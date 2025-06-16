@@ -1,4 +1,5 @@
 import { FDate } from "../f-date";
+import { FYear } from "../f-year";
 import { range } from "./range";
 
 it("should yield inclusive range", () => {
@@ -51,4 +52,14 @@ it("should throw error if begin is after end", () => {
     expect(() => Array.from(range(begin, end))).toThrow(
         "Begin (2022-05-25) must be earlier or equal to end (2022-05-24)",
     );
+});
+
+it("should handle FYear", () => {
+    expect.assertions(1);
+    const begin = FYear.fromYear(1999);
+    const end = FYear.fromYear(2004);
+    const it = range(begin, end);
+    expect(Array.from(it, (it) => it.value)).toEqual([
+        1999, 2000, 2001, 2002, 2003, 2004,
+    ]);
 });

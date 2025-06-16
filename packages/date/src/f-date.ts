@@ -3,6 +3,7 @@ import { DateFormat } from "./date-format";
 import { getLocale, Locale } from "./locale";
 import { type IterableDate } from "./range";
 import { Weekday } from "./weekday";
+import { FYear } from "./f-year";
 
 type Formatter = Record<DateFormat, string>;
 
@@ -108,7 +109,7 @@ export class FDate implements IterableDate<FDate> {
      * @public
      */
     public static fromYearMonthDay(
-        year: number | string,
+        year: FYear | number | string,
         month: number | string,
         day: number | string,
     ): FDate {

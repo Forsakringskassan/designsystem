@@ -25,7 +25,7 @@ export class FDate implements IterableDate<FDate> {
     equals(rhs: FDate | string): boolean;
     static fromDate(value: Date): FDate;
     static fromIso(value: string): FDate;
-    static fromYearMonthDay(year: number | string, month: number | string, day: number | string): FDate;
+    static fromYearMonthDay(year: FYear | number | string, month: number | string, day: number | string): FDate;
     isAfter(rhs: FDate | string): boolean;
     isBefore(rhs: FDate | string): boolean;
     isValid(): boolean;
@@ -42,6 +42,24 @@ export class FDate implements IterableDate<FDate> {
     get week(): number;
     get weekDay(): Weekday | 0;
     get year(): number;
+}
+
+// @public
+export class FYear implements IterableDate<FYear> {
+    addYears(amount: number): FYear;
+    static compare(a: FYear | number | string, b: FYear | number | string): number;
+    equals(rhs: FYear | number | string): boolean;
+    static fromDate(value: FDate | Date): FYear;
+    static fromYear(value: number | string): FYear;
+    isAfter(rhs: FYear | number | string): boolean;
+    isBefore(rhs: FYear | number | string): boolean;
+    isValid(): boolean;
+    next(): FYear;
+    static now(): FYear;
+    previous(): FYear;
+    toJSON(): number | null;
+    toString(): string;
+    get value(): number;
 }
 
 // @public
