@@ -940,12 +940,12 @@ var FYear = class _FYear {
    * Get the year as number (four digits)
    *
    * ```
-   * FYear.now().value(); // => 1999
+   * FYear.now().value; // => 1999
    * ```
    *
    * @public
    */
-  value() {
+  get value() {
     return this._value;
   }
   /**
@@ -959,7 +959,7 @@ var FYear = class _FYear {
    * @public
    */
   isValid() {
-    return isNaN(this._value);
+    return !isNaN(this._value);
   }
   /**
    * Returns a new {@link FYear} object with a specified amount of years
@@ -1060,7 +1060,20 @@ var FYear = class _FYear {
    * @returns `-1`, `0` or `1`
    */
   static compare(a, b) {
-    return _FYear.toValue(a) - _FYear.toValue(b);
+    const ax = _FYear.toFYear(a);
+    const bx = _FYear.toFYear(b);
+    const aInvalid = !ax.isValid();
+    const bInvalid = !bx.isValid();
+    if (aInvalid || bInvalid) {
+      if (aInvalid && bInvalid) {
+        return 0;
+      } else if (aInvalid) {
+        return 1;
+      } else {
+        return -1;
+      }
+    }
+    return Math.max(Math.min(ax._value - bx._value, 1), -1);
   }
   /**
    * Returns a string representation of the year.
@@ -1068,7 +1081,7 @@ var FYear = class _FYear {
    * @public
    */
   toString() {
-    if (this._value !== null) {
+    if (this.isValid()) {
       return this._value.toString();
     } else {
       return "";
