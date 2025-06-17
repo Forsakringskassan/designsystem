@@ -72,6 +72,16 @@ eller genom att sätta `context`-proppen in till komponenten:
 +<f-minimizable-panel context="My awesome panel">
 ```
 
+### Initialt state
+
+Som standard är minimerbar panel expanderad i desktop.
+Med `initial="minimized"` kan du ändra så den är minimerad som standard.
+
+```diff
+-<f-minimizable-panel>
++<f-minimizable-panel initial="minimized">
+```
+
 ### Textnycklar
 
 :::api

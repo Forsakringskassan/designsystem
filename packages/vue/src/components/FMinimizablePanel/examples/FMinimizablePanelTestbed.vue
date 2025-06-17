@@ -2,9 +2,14 @@
 import { computed, defineComponent } from "vue";
 import { FPageLayout, FResizePane, FMinimizablePanel } from "@fkui/vue";
 
-const { area = "left", resize = false } = defineProps<{
+const {
+    area = "left",
+    resize = false,
+    initial = undefined,
+} = defineProps<{
     area: string;
     resize: boolean;
+    initial?: "expanded" | "minimized";
 }>();
 
 const DummyWrapper = defineComponent({
@@ -23,7 +28,7 @@ const is = computed(() => {
 <template>
     <f-page-layout layout="three-column">
         <component :is :slot="area" min="150px" max="40%" initial="150px">
-            <f-minimizable-panel>
+            <f-minimizable-panel v-bind="Boolean(initial) ? { initial } : {}">
                 <template #default="{ header, content, footer, isOpen }">
                     <template v-if="isOpen">
                         <h2 :slot="header">[header]</h2>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useTemplateRef, watch } from "vue";
+import { computed, useTemplateRef, watch } from "vue";
 import { useMediaQuery } from "@vueuse/core";
 import { useAreaData } from "../FPageLayout/use-area-data";
 
@@ -7,6 +7,7 @@ const {
     openPrefix = "Återställ",
     closePrefix = "Minimera",
     context = "panel",
+    modelValue = true,
 } = defineProps<{
     /**
      * Screenreader prefix for toggle button when minimized.
@@ -26,6 +27,10 @@ const {
      * Default value "panel".
      */
     context?: string;
+    /**
+     * v-model binding.
+     */
+    modelValue?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -36,12 +41,13 @@ const emit = defineEmits<{
      * @offset offset - offset to use when overlay.
      */
     toggle: [isOpen: boolean, overlay: boolean, offset?: number];
+    "update:modelValue": [isOpen: boolean];
 }>();
 
 const rootRef = useTemplateRef("root");
 const { attachPanel } = useAreaData(rootRef);
 const isDesktop = useMediaQuery("(width >= 640px)");
-const isOpen = ref<boolean>(false);
+const isOpen = computed(() => modelValue);
 
 function updateIsOpen(value: boolean): void {
     if (value && !isDesktop.value && rootRef.value) {
@@ -51,13 +57,17 @@ function updateIsOpen(value: boolean): void {
         emit("toggle", value, false);
     }
 
-    isOpen.value = value;
+    emit("update:modelValue", value);
 }
 
 watch(
-    isDesktop,
-    (newValue: boolean) => {
-        updateIsOpen(newValue);
+    () => [isDesktop, isOpen],
+    ([isDesktopVal, isOpenVal]) => {
+        if (!isDesktopVal.value) {
+            updateIsOpen(false);
+        } else {
+            updateIsOpen(isOpenVal.value);
+        }
     },
     { immediate: true },
 );
