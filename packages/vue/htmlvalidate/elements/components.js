@@ -454,6 +454,9 @@ module.exports = defineMetadata({
             context: {
                 enum: ["/.+/"],
             },
+            initial: {
+                enum: ["expanded", "minimized"],
+            },
         },
         slots: ["default", "icon"],
     },

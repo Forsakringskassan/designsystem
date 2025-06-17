@@ -10,13 +10,19 @@ if (!customElements.get(ceTag)) {
     customElements.define(ceTag, defineCustomElement(MinimizablePanel));
 }
 
-const { context } = defineProps<{
+const { context, initial = "expanded" } = defineProps<{
     /**
      * Screenreader context for toggle button.
      *
      * Default value of `fkui.minimizable-panel.context`.
      */
     context?: string;
+    /**
+     * Start in initial state.
+     *
+     * Default is `expanded`.
+     */
+    initial?: "minimized" | "expanded";
 }>();
 
 const $t = useTranslate();
@@ -31,7 +37,7 @@ const openPrefix =
 
 const defaultContext = /** Del av skärmläsartext för knapp. */ $t("fkui.minimizable-panel.context", "panel");
 
-const isOpen = ref(false);
+const isOpen = ref(initial === "expanded");
 const overlay = ref(false);
 const offset = ref<number | undefined>(undefined);
 
@@ -60,10 +66,21 @@ function onToggle(e: CustomEvent<[boolean, boolean, number?]>): void {
     overlay.value = e.detail[1];
     offset.value = e.detail[2];
 }
+
+function onUpdateModel(e: CustomEvent<[boolean]>): void {
+    isOpen.value = e.detail[0];
+}
 </script>
 
 <template>
-    <ce-minimizable-panel :context="ceContext" :close-prefix :open-prefix @toggle="onToggle">
+    <ce-minimizable-panel
+        :model-value="isOpen"
+        :context="ceContext"
+        :close-prefix
+        :open-prefix
+        @update:model-value="onUpdateModel"
+        @toggle="onToggle"
+    >
         <!--
             @slot Content
                 @binding {boolean} isOpen panel state

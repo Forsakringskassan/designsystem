@@ -59,12 +59,61 @@ describe("desktop", () => {
                     },
                 });
 
+                // initial state is expanded if no initial prop is set in testbed
                 minimizablePanel.header().should("contain.text", "[header]");
                 minimizablePanel.toggleButton().click({ force: true });
                 minimizablePanel.header().should("not.exist");
                 minimizablePanel.toggleButton().click({ force: true });
                 minimizablePanel.header().should("contain.text", "[header]");
                 //cy.toMatchScreenshot(); technical debt
+            });
+        }
+    }
+});
+
+describe("initial state minimized", () => {
+    for (const [resizeDescription, resize] of Object.entries(resizeVariants)) {
+        for (const [areaDescription, area] of Object.entries(areaVariants)) {
+            it(`should open and close properly in ${areaDescription} with ${resizeDescription}`, () => {
+                cy.viewport(...desktop);
+                cy.mount(Testbed, {
+                    props: {
+                        area,
+                        resize,
+                        initial: "minimized",
+                    },
+                });
+
+                // initial state is minimized
+                minimizablePanel.header().should("not.exist");
+                minimizablePanel.toggleButton().click({ force: true });
+                minimizablePanel.header().should("contain.text", "[header]");
+                minimizablePanel.toggleButton().click({ force: true });
+                minimizablePanel.header().should("not.exist");
+            });
+        }
+    }
+});
+
+describe("initial state expanded", () => {
+    for (const [resizeDescription, resize] of Object.entries(resizeVariants)) {
+        for (const [areaDescription, area] of Object.entries(areaVariants)) {
+            it(`should open and close properly in ${areaDescription} with ${resizeDescription}`, () => {
+                cy.viewport(...desktop);
+                cy.mount(Testbed, {
+                    props: {
+                        area,
+                        resize,
+                        initial: "expanded",
+                    },
+                });
+
+                // initial state is expanded
+                minimizablePanel.header().should("contain.text", "[header]");
+                minimizablePanel.toggleButton().click({ force: true });
+                minimizablePanel.header().should("not.exist");
+                minimizablePanel.toggleButton().click({ force: true });
+                minimizablePanel.header().should("contain.text", "[header]");
             });
         }
     }
