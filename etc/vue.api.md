@@ -7614,7 +7614,9 @@ type: StringConstructor;
 required: false;
 default: string;
 };
-}>, {}, FNavigationMenuData, {
+}>, {
+isMounted: Ref<boolean, boolean>;
+}, FNavigationMenuData, {
 items(): MenuItem[];
 overflowItems(): MenuItem[];
 hasOverflow(): boolean;

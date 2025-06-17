@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { defineComponent, ref, type PropType } from "vue";
 import { debounce } from "@fkui/logic";
 import { TranslationMixin } from "../../plugins";
 import {
@@ -122,6 +122,10 @@ export default defineComponent({
          */
         "update:route",
     ],
+    setup() {
+        const isMounted = ref(false);
+        return { isMounted };
+    },
     data(): FNavigationMenuData {
         return {
             selectedItem: "",
@@ -193,11 +197,13 @@ export default defineComponent({
         },
     },
     mounted() {
+        this.isMounted = true;
         this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
         this.resizeObserver.observe(this.$el);
         this.onResize();
     },
     unmounted() {
+        this.isMounted = false;
         if (this.resizeObserver) {
             this.resizeObserver.disconnect();
         }
@@ -297,7 +303,7 @@ export default defineComponent({
             focus(itemAnchor, { preventScroll: true });
         },
         async onResize(): Promise<void> {
-            if (this.vertical) {
+            if (!this.isMounted || this.vertical) {
                 return;
             }
 
