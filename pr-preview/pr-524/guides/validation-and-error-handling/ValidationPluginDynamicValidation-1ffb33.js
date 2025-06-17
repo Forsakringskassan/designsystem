@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginDynamicValidation.vue:ValidationPluginDynamicValidation-b1e567.js
+// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginDynamicValidation.vue:ValidationPluginDynamicValidation-1ffb33.js
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FValidationForm, FTextField } from "@fkui/vue";
@@ -148,7 +148,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b1e567"
+  selector: "#example-1ffb33"
 });
 export {
   render
