@@ -78,9 +78,6 @@
     "EventBus",
     "focus-indicator() mixin",
     "densify() function",
-    "i18next",
-    "i18nextProvider",
-    "I18nextProvider",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -88,6 +85,9 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
+    "i18next",
+    "i18nextProvider",
+    "I18nextProvider",
     "Hjälpklasser",
     "Skärmläsare",
     "useResize() composable",
@@ -238,6 +238,21 @@
     "ValidationErrorMessageBuilder: mapCombined() method",
     "ValidationErrorMessageBuilder: create() function",
     "ValidationErrorMessageBuilder: build() method",
+    "FYear",
+    "FYear: value property",
+    "FYear: toString() method",
+    "FYear: toJSON() method",
+    "FYear: now() function",
+    "FYear: isValid() method",
+    "FYear: isBefore() method",
+    "FYear: isAfter() method",
+    "FYear: fromYear() function",
+    "FYear: fromDate() function",
+    "FYear: equals() method",
+    "FYear: compare() function",
+    "FYear: addYears() method",
+    "FYear: previous() method",
+    "FYear: next() method",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -589,21 +604,6 @@
       "terms": []
     },
     {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": []
-    },
-    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": []
@@ -630,6 +630,21 @@
         "ErrorPlugin",
         "FErrorHandlingApp"
       ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": []
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": []
     },
     {
       "url": "functions/helpers/index.html",
@@ -1210,6 +1225,81 @@
       "terms": []
     },
     {
+      "url": "functions/date/f-year/index.html",
+      "title": "FYear",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/value.html",
+      "title": "FYear: value property",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/tostring.html",
+      "title": "FYear: toString() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/tojson.html",
+      "title": "FYear: toJSON() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/now.html",
+      "title": "FYear: now() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-valid.html",
+      "title": "FYear: isValid() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-before.html",
+      "title": "FYear: isBefore() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-after.html",
+      "title": "FYear: isAfter() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/from-year.html",
+      "title": "FYear: fromYear() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/from-date.html",
+      "title": "FYear: fromDate() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/equals.html",
+      "title": "FYear: equals() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/compare.html",
+      "title": "FYear: compare() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/add-years.html",
+      "title": "FYear: addYears() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/f-date-previous.html",
+      "title": "FYear: previous() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/f-date-next.html",
+      "title": "FYear: next() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
       "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
       "terms": []
@@ -1459,10 +1549,10 @@
     "80": 57,
     "81": 58,
     "82": 59,
-    "83": 60,
-    "84": 61,
-    "85": 62,
-    "86": 62,
+    "83": 59,
+    "84": 59,
+    "85": 60,
+    "86": 61,
     "87": 62,
     "88": 63,
     "89": 64,
@@ -1646,6 +1736,21 @@
     "267": 187,
     "268": 188,
     "269": 189,
-    "270": 190
+    "270": 190,
+    "271": 191,
+    "272": 192,
+    "273": 193,
+    "274": 194,
+    "275": 195,
+    "276": 196,
+    "277": 197,
+    "278": 198,
+    "279": 199,
+    "280": 200,
+    "281": 201,
+    "282": 202,
+    "283": 203,
+    "284": 204,
+    "285": 205
   }
 }

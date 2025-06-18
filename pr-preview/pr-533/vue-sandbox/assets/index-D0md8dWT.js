@@ -9089,6 +9089,15 @@ class FDate {
   addYears(value) {
     return new FDate(this.value.add(value, "year"));
   }
+  /**
+   * Returns a new {@link FDate} object with the date before This one.
+   *
+   * @public
+   * @since %version%
+   */
+  previous() {
+    return this.addDays(-1);
+  }
   next() {
     return this.addDays(1);
   }

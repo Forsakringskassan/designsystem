@@ -1,4 +1,4 @@
-// ../logic/lib/esm/index.js
+// packages/logic/lib/esm/index.js
 var configLogic = {
   production: true
 };
@@ -1528,6 +1528,15 @@ var FDate = class _FDate {
    */
   addYears(value) {
     return new _FDate(this.value.add(value, "year"));
+  }
+  /**
+   * Returns a new {@link FDate} object with the date before This one.
+   *
+   * @public
+   * @since %version%
+   */
+  previous() {
+    return this.addDays(-1);
   }
   next() {
     return this.addDays(1);
