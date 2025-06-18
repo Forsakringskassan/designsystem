@@ -16,6 +16,8 @@ På komponentsidorna kan du testa komponenterna och hur du kan anpassa dem för 
 Egna komponenter ska helst undvikas.
 Försök att hitta ett sätt att kombinera designsystemets komponenter för att lösa problemet.
 
+När du vill skapa skisser eller prototyper med designsystemets komponenter kan du använda {@link https://www.figma.com/@fkds Försäkringskassan UI kit}. Det är ett komponentbibliotek framtaget för designverktyget Figma.
+
 ### Visuellt
 
 Designsystemet har en färgpalett som utgår från Försäkringskassans grafiska profil. Grid-systemet används för att designa responsiva användargränssnitt. Läs mer om {@link theme visuellt}.
