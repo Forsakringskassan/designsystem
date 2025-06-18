@@ -1,4 +1,4 @@
-// ../date/lib/esm/index.js
+// packages/date/lib/esm/index.js
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
@@ -764,7 +764,7 @@ var FDate = class _FDate {
    * Returns a new {@link FDate} object with the date before This one.
    *
    * @public
-   * @since %version%
+   * @since v6.12.0
    */
   previous() {
     return this.addDays(-1);
