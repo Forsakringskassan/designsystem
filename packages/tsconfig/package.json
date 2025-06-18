@@ -1,6 +1,6 @@
 {
   "name": "@fkui/tsconfig",
-  "version": "6.11.0",
+  "version": "6.12.0",
   "description": "Shared tsconfig.json presets for libraries and applications based on FKUI",
   "keywords": [
     "fkui",

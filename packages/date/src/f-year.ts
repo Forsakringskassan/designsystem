@@ -6,7 +6,7 @@ import { type IterableDate } from "./range";
  * Represents a year.
  *
  * @public
- * @since %version%
+ * @since v6.12.0
  */
 export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     private _value: number;

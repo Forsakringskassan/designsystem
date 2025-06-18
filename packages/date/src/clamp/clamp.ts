@@ -23,7 +23,7 @@ export interface Clampable<T> {
  * ```
  *
  * @public
- * @since %version%
+ * @since v6.12.0
  * @param value - The value to limit.
  * @param min - The lower bound (inclusive).
  * @param max - The upper bound (inclusive).

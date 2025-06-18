@@ -341,7 +341,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
      * Returns a new {@link FDate} object with the date before This one.
      *
      * @public
-     * @since %version%
+     * @since v6.12.0
      */
     public previous(): FDate {
         return this.addDays(-1);

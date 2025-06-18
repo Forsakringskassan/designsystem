@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 6.12.0 (2025-06-18)
+
+### Features
+
+* **@fkui/date:** add `FDate.previous()` for symmetry with `next()` (refs SFKUI-6500) 0d9a43b
+* **@fkui/date:** new `clamp()` function to limit date values between min/max (refs SFKUI-6500) e55c2b6
+* **@fkui/date:** new `FYear` class representing a year (refs SFKUI-6500) 3a4bab9
+* **@fkui/design:** semantic tokens and HCM support on checkbox (refs SFKUI-7178) eaf7628
+* **@fkui/design:** semantic tokens and HCM support on radio button (refs SFKUI-7179) 7b069fe
+* **@fkui/design:** update dialogue tree semantic tokens (refs SFKUI-7206) 5213cba
+* **@fkui/design:** update progressbar with semantic tokens for colors (refs SFKUI-7273) a52dc04
+* **@fkui/theme-default:** deprecated color variables progressbar (refs SFKUI-7273) 0fa50fb
+
 ## 6.11.0 (2025-06-16)
 
 ### Features
