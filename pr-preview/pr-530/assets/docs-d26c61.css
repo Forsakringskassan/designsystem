@@ -150,10 +150,7 @@
   --f-background-error: #fcf3f3;
   --f-background-success: #f3f8f5;
   --f-background-overlay: rgba(0, 0, 0, 0.75);
-  --f-background-progress: #ddddde;
-  --f-background-progress-ongoing: #ffc834;
   --f-background-progress-file-item-ongoing: #ffc834;
-  --f-background-progress-finished: #77ad82;
   --f-background-pageheader-primary: #116a3e;
   --f-background-skiplink-focus: #f5f6fa;
   --f-background-heading-expandable-panel: #116a3e;
@@ -190,8 +187,6 @@
   --f-border-color-card: #8d8e91;
   --f-border-color-dialogue-tree: #8d8e91;
   --f-border-color-form-step: #ddddde;
-  --f-border-color-progress-finished: #4c7e56;
-  --f-border-color-progress-ongoing: #5f6165;
   --f-border-color-progress-file-item-ongoing: #5f6165;
   --f-border-color-panel: #e7f0e9;
   --f-border-color-expandable-panel: #116a3e;
@@ -3103,9 +3098,6 @@ input[type=search]:focus,
 .file-item__file-remove {
   flex: 0 0 auto;
 }
-.file-item__file-remove svg {
-  color: var(--f-icon-color-primary);
-}
 .file-item__file-abort {
   flex: 0 0 auto;
 }
@@ -3124,10 +3116,6 @@ input[type=search]:focus,
 .file-item__separator {
   margin-bottom: 1.25rem;
   border: var(--f-border-width-medium) solid var(--f-border-color-separator);
-}
-.file-item__file-uploading .progress__meter--inprogress {
-  background: var(--f-background-progress-file-item-ongoing);
-  border: var(--f-border-width-small) solid var(--f-border-color-progress-file-item-ongoing);
 }
 
 .file-selector svg {
@@ -4805,29 +4793,39 @@ input[type=search]:focus,
 }
 
 .progress {
-  background-color: var(--f-background-progress);
-  border-radius: var(--f-height-medium);
-  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+  background-color: var(--fkds-color-background-primary);
+  border-radius: var(--f-border-radius-medium);
   height: var(--f-height-small);
   margin-bottom: 1.5rem;
   padding: 0;
+  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-positive);
+}
+@media (forced-colors: active) {
+  .progress {
+    border: var(--f-border-width-medium) solid highlight;
+  }
 }
 .progress__meter {
-  border-radius: var(--f-height-medium);
   display: block;
   float: left;
-  height: var(--f-height-small);
-  margin: calc(-1 * var(--f-border-width-small));
+  height: calc(var(--f-height-small) - var(--f-border-width-medium) * 2);
   transition: width var(--f-animation-duration-medium) ease-out, background-color var(--f-animation-duration-medium) ease-out;
 }
 .progress__meter--inprogress {
-  background: var(--f-background-progress-ongoing);
-  border: var(--f-border-width-small) solid var(--f-border-color-progress-ongoing);
+  background: var(--fkds-color-feedback-background-positive-strong);
+}
+@media (forced-colors: active) {
+  .progress__meter--inprogress {
+    background: highlight;
+  }
 }
 .progress__meter--finished {
-  background: var(--f-background-progress-finished);
-  border: var(--f-border-width-small) solid var(--f-border-color-progress-finished);
-  width: calc(100% + 2 * var(--f-border-width-small));
+  background: var(--fkds-color-feedback-background-positive-strong);
+}
+@media (forced-colors: active) {
+  .progress__meter--finished {
+    background: highlight;
+  }
 }
 
 .radio-button {

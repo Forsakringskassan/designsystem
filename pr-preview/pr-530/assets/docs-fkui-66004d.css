@@ -153,10 +153,7 @@ html {
   --f-background-error: #fcf3f3;
   --f-background-success: #f3f8f5;
   --f-background-overlay: rgba(0, 0, 0, 0.75);
-  --f-background-progress: #ddddde;
-  --f-background-progress-ongoing: #ffc834;
   --f-background-progress-file-item-ongoing: #ffc834;
-  --f-background-progress-finished: #77ad82;
   --f-background-pageheader-primary: #116a3e;
   --f-background-skiplink-focus: #f5f6fa;
   --f-background-heading-expandable-panel: #116a3e;
@@ -193,8 +190,6 @@ html {
   --f-border-color-card: #8d8e91;
   --f-border-color-dialogue-tree: #8d8e91;
   --f-border-color-form-step: #ddddde;
-  --f-border-color-progress-finished: #4c7e56;
-  --f-border-color-progress-ongoing: #5f6165;
   --f-border-color-progress-file-item-ongoing: #5f6165;
   --f-border-color-panel: #e7f0e9;
   --f-border-color-expandable-panel: #116a3e;
