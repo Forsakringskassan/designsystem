@@ -1,3 +1,4 @@
+import { type Clampable } from "./clamp";
 import { type FDate } from "./f-date";
 import { type IterableDate } from "./range";
 
@@ -7,7 +8,7 @@ import { type IterableDate } from "./range";
  * @public
  * @since %version%
  */
-export class FYear implements IterableDate<FYear> {
+export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     private _value: number;
 
     private constructor(value: number) {

@@ -105,6 +105,7 @@ functions/cypress/pageobjects/FProgressbarPageObject/el.html
 functions/cypress/pageobjects/FProgressbarPageObject/index.html
 functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html
 functions/cypress/pageobjects/FProgressbarPageObject/value.html
+functions/date/clamp.html
 functions/date/f-year/add-years.html
 functions/date/f-year/compare.html
 functions/date/f-year/equals.html
