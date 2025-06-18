@@ -4872,33 +4872,49 @@ input[type=search]:focus,
   top: 0;
   cursor: pointer;
   width: var(--f-icon-size-medium);
-  border: var(--f-border-width-medium) solid var(--f-border-color-input);
+  background-color: var(--fkds-color-background-primary);
+  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
   display: block;
   transition: background-color ease var(--f-animation-duration-medium), border-color ease var(--f-animation-duration-medium), opacity ease var(--f-animation-duration-medium);
 }
-.radio-button__label::before {
-  background: var(--f-background-input);
-  box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner);
-}
 .radio-button__label::after {
-  background: var(--f-background-input-selected);
-  box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner-selected);
+  background-color: var(--fkds-color-select-background-primary-default);
+  box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--fkds-color-background-primary);
   opacity: 0;
 }
+@media (forced-colors: active) {
+  .radio-button__label::after {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    box-shadow: inset 0 0 0 var(--f-border-width-medium) Canvas;
+  }
+}
 .radio-button.disabled {
-  color: var(--f-text-color-input-disabled);
+  color: var(--fkds-color-text-disabled);
+}
+@media (forced-colors: active) {
+  .radio-button.disabled {
+    color: GrayText;
+  }
+}
+.radio-button.disabled .radio-button__label {
+  cursor: default;
 }
 .radio-button.disabled .radio-button__label::before, .radio-button.disabled .radio-button__label::after {
-  border: var(--f-border-width-medium) solid var(--f-text-color-input-disabled);
-  box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--f-border-color-input-inner-disabled);
+  background: var(--fkds-color-background-disabled);
+  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);
+  cursor: default;
 }
-.radio-button.disabled .radio-button__label::after {
-  background: var(--f-background-input-selected-disabled);
+@media (forced-colors: active) {
+  .radio-button.disabled .radio-button__label::before, .radio-button.disabled .radio-button__label::after {
+    border: var(--f-border-width-medium) solid GrayText;
+  }
 }
 .radio-button input[type=radio] + label::after {
   opacity: 0;
 }
 .radio-button input[type=radio]:checked + label::after {
+  border: var(--f-border-width-medium) solid transparent;
   opacity: 1;
 }
 .radio-button input[type=radio]:focus + label {
