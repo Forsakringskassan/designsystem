@@ -5,6 +5,17 @@
 ```ts
 
 // @public
+export function clamp<T extends Clampable<T>>(value: T, min: T, max: T): T;
+
+// @public
+export interface Clampable<T> {
+    // (undocumented)
+    isAfter(rhs: T): boolean;
+    // (undocumented)
+    isBefore(rhs: T): boolean;
+}
+
+// @public
 export enum DateFormat {
     FULL = "full",
     ISO8601 = "iso-8601",
@@ -13,7 +24,7 @@ export enum DateFormat {
 }
 
 // @public
-export class FDate implements IterableDate<FDate> {
+export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     addDays(value: number): FDate;
     addMonths(value: number): FDate;
     addYears(value: number): FDate;
@@ -45,7 +56,7 @@ export class FDate implements IterableDate<FDate> {
 }
 
 // @public
-export class FYear implements IterableDate<FYear> {
+export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     addYears(amount: number): FYear;
     static compare(a: FYear | number | string, b: FYear | number | string): number;
     equals(rhs: FYear | number | string): boolean;

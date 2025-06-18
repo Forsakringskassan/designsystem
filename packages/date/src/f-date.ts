@@ -4,6 +4,7 @@ import { getLocale, Locale } from "./locale";
 import { type IterableDate } from "./range";
 import { Weekday } from "./weekday";
 import { FYear } from "./f-year";
+import { Clampable } from "./clamp";
 
 type Formatter = Record<DateFormat, string>;
 
@@ -29,7 +30,7 @@ const formatter: Record<Locale, Formatter> = {
  *
  * @public
  */
-export class FDate implements IterableDate<FDate> {
+export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     private value: Dayjs;
 
     private constructor(value?: ConfigType) {
