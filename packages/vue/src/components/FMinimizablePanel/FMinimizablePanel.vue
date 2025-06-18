@@ -10,13 +10,19 @@ if (!customElements.get(ceTag)) {
     customElements.define(ceTag, defineCustomElement(MinimizablePanel));
 }
 
-const { context } = defineProps<{
+const { context, startMinimized = false } = defineProps<{
     /**
      * Screenreader context for toggle button.
      *
      * Default value of `fkui.minimizable-panel.context`.
      */
     context?: string;
+    /**
+     * Start in minimized state.
+     *
+     * Default is `false`.
+     */
+    startMinimized?: boolean;
 }>();
 
 const $t = useTranslate();
@@ -31,7 +37,7 @@ const openPrefix =
 
 const defaultContext = /** Del av skärmläsartext för knapp. */ $t("fkui.minimizable-panel.context", "panel");
 
-const isOpen = ref(false);
+const isOpen = ref(startMinimized);
 const overlay = ref(false);
 const offset = ref<number | undefined>(undefined);
 
