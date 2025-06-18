@@ -14,8 +14,8 @@ search:
 
 Kalendern används när en användare behöver välja flera dagar, välja dagar och fylla i information om dem, se mer information om en dag eller få en överblick över en månad.
 
-```import test-id=calendar-default
-FCalendarDefault.vue
+```import live-example
+FCalendarLiveExample.vue
 ```
 
 Varje dag i kalendern är en knapp och det går att styra vad som ska hända när användaren väljer en dag.
