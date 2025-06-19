@@ -254,16 +254,16 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
+    "FProgressbarPageObject: FProgressbarPageObject() constructor",
+    "FProgressbarPageObject: value() method",
+    "FProgressbarPageObject: progressStatus() method",
+    "FProgressbarPageObject: el() method",
     "FMinimizablePanelPageObject: constructor",
     "FMinimizablePanelPageObject: toggleButton() method",
     "FMinimizablePanelPageObject: header() method",
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FProgressbarPageObject: FProgressbarPageObject() constructor",
-    "FProgressbarPageObject: value() method",
-    "FProgressbarPageObject: progressStatus() method",
-    "FProgressbarPageObject: el() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
@@ -1306,6 +1306,26 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
+      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
+      "title": "FProgressbarPageObject: value() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
+      "title": "FProgressbarPageObject: progressStatus() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
+      "title": "FProgressbarPageObject: el() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
       "title": "FMinimizablePanelPageObject: constructor",
       "terms": []
@@ -1333,26 +1353,6 @@
     {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
       "title": "FMinimizablePanelPageObject: content() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
-      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
-      "title": "FProgressbarPageObject: value() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
-      "title": "FProgressbarPageObject: progressStatus() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
-      "title": "FProgressbarPageObject: el() method",
       "terms": []
     },
     {

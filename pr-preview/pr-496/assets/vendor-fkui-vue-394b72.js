@@ -7006,9 +7006,8 @@ function useYearSelector(options) {
     closeYearSelector();
   }
   function closeYearSelector() {
-    var _a;
     displayYearSelectorAsOpen.value = false;
-    const button = (_a = calendarNavbar.value) == null ? void 0 : _a.querySelector("button");
+    const button = getHTMLElementFromVueRef(calendarNavbar.value).querySelector("button");
     focus$1(button);
   }
   return {
