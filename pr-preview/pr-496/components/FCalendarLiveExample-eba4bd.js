@@ -6098,7 +6098,7 @@ var ICalendarNavbar_default = defineComponent20({
     /**
      * Displays the year selector as open when enabled.
      */
-    displayYearSelectorAsOpen: {
+    yearSelectorOpen: {
       type: Boolean,
       required: false,
       default: false
@@ -6116,11 +6116,10 @@ var ICalendarNavbar_default = defineComponent20({
     "change",
     "update:modelValue",
     /**
-     * `update:displayYearSelectorAsOpen` event. Emitted when year selector is opened or closed.
-     * @event update:displayYearSelectorAsOpen
+     * Emitted when year selector is opened or closed.
      * @type {boolean}
      */
-    "update:displayYearSelectorAsOpen"
+    "update:yearSelectorOpen"
   ],
   computed: {
     previousDisabled() {
@@ -6165,7 +6164,7 @@ var ICalendarNavbar_default = defineComponent20({
   },
   methods: {
     onClickYearSelector() {
-      this.changeDisplayYearSelectorAsOpen(!this.displayYearSelectorAsOpen);
+      this.changeDisplayYearSelectorAsOpen(!this.yearSelectorOpen);
     },
     onClickPreviousButton() {
       if (!this.previousDisabled) {
@@ -6201,8 +6200,8 @@ var ICalendarNavbar_default = defineComponent20({
     onCloseYearSelector() {
       this.changeDisplayYearSelectorAsOpen(false);
     },
-    changeDisplayYearSelectorAsOpen(displayYearSelectorAsOpen) {
-      this.$emit("update:displayYearSelectorAsOpen", displayYearSelectorAsOpen);
+    changeDisplayYearSelectorAsOpen(value) {
+      this.$emit("update:yearSelectorOpen", value);
     },
     getDateText(value) {
       return `${capitalize(value.monthName)} ${value.year}`;
@@ -6250,24 +6249,24 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
         class: "calendar-navbar__year-selector-button",
         type: "button",
         "aria-haspopup": "listbox",
-        "aria-expanded": _ctx.displayYearSelectorAsOpen,
+        "aria-expanded": _ctx.yearSelectorOpen,
         "aria-live": _ctx.isFocused("yearSelectorButton") ? "polite" : "off",
         onClick: _cache[0] || (_cache[0] = _withModifiers6((...args) => _ctx.onClickYearSelector && _ctx.onClickYearSelector(...args), ["stop", "prevent"]))
       }, [
         _createElementVNode15(
           "span",
           _hoisted_63,
-          _toDisplayString9(_ctx.displayYearSelectorAsOpen ? _ctx.closeYearSelectorText : _ctx.openYearSelectorText),
+          _toDisplayString9(_ctx.yearSelectorOpen ? _ctx.closeYearSelectorText : _ctx.openYearSelectorText),
           1
           /* TEXT */
         ),
         _createVNode6(_component_f_icon, {
-          class: _normalizeClass11(_ctx.displayYearSelectorAsOpen ? "calendar-navbar__arrow--up" : void 0),
+          class: _normalizeClass11(_ctx.yearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
           name: "arrow-down"
         }, null, 8, ["class"])
       ], 8, _hoisted_55)) : _createCommentVNode19("v-if", true)
     ]),
-    !_ctx.displayYearSelectorAsOpen ? (_openBlock21(), _createElementBlock16("button", {
+    !_ctx.yearSelectorOpen ? (_openBlock21(), _createElementBlock16("button", {
       key: 0,
       ref: "previousButton",
       class: "calendar-navbar__arrow calendar-navbar__arrow--previous",
@@ -6288,7 +6287,7 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
         name: "arrow-right"
       }, null, 8, ["class"])
     ], 8, _hoisted_73)) : _createCommentVNode19("v-if", true),
-    !_ctx.displayYearSelectorAsOpen ? (_openBlock21(), _createElementBlock16("button", {
+    !_ctx.yearSelectorOpen ? (_openBlock21(), _createElementBlock16("button", {
       key: 1,
       ref: "nextButton",
       class: "calendar-navbar__arrow calendar-navbar__arrow--next",
