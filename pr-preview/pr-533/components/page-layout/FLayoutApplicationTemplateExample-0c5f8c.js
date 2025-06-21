@@ -82,7 +82,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("a", { href: "#" }, "[sidhuvud]")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     "top-navigation": _withCtx(() => _cache[2] || (_cache[2] = [
@@ -93,7 +93,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("a", { href: "#" }, "[toppnavigering]")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     footer: _withCtx(() => _cache[7] || (_cache[7] = [
@@ -104,7 +104,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("a", { href: "#" }, "[sidfot]")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     default: _withCtx(() => [
@@ -115,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Navigationstitel",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ])),
         content: _withCtx(() => _cache[4] || (_cache[4] = [
@@ -153,14 +153,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   null,
                   "Prim\xE4ryta",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _cache[6] || (_cache[6] = _createElementVNode(
                   "p",
                   null,
                   "Klicka nedan f\xF6r att se mer i sekund\xE4rpanelen.",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _createElementVNode("ul", null, [
                   (_openBlock(true), _createElementBlock(

@@ -287,21 +287,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 { value: "never" },
                 "Nej",
                 -1
-                /* HOISTED */
+                /* CACHED */
               )),
               _cache[21] || (_cache[21] = _createElementVNode(
                 "option",
                 { value: "always" },
                 "Utvidgad text",
                 -1
-                /* HOISTED */
+                /* CACHED */
               )),
               _cache[22] || (_cache[22] = _createElementVNode(
                 "option",
                 { value: "when-selected" },
                 "Expanderbar text",
                 -1
-                /* HOISTED */
+                /* CACHED */
               ))
             ]),
             _: 1,

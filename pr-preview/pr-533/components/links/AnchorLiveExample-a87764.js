@@ -150,21 +150,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "pdf" },
             "PDF",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[11] || (_cache[11] = _createElementVNode(
             "option",
             { value: "doc" },
             "Doc",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[12] || (_cache[12] = _createElementVNode(
             "option",
             { value: "pic" },
             "Bild",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,

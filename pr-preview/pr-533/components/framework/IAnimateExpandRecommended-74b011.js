@@ -124,21 +124,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           { value: "height: 200px; background: hotpink" },
           "200px h\xF6jd",
           -1
-          /* HOISTED */
+          /* CACHED */
         ),
         _createElementVNode(
           "option",
           { value: "height: 600px; background: cyan" },
           "600px h\xF6jd",
           -1
-          /* HOISTED */
+          /* CACHED */
         ),
         _createElementVNode(
           "option",
           { value: "height: 1200px; background: yellow" },
           "1200px h\xF6jd",
           -1
-          /* HOISTED */
+          /* CACHED */
         )
       ]),
       512

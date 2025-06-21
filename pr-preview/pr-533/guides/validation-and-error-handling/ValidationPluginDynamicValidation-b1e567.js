@@ -75,7 +75,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Namn f\xE5r inte vara kortare \xE4n minsta l\xE4ngd.",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode("div", _hoisted_1, [
         _createElementVNode("div", _hoisted_2, [
@@ -138,7 +138,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         },
         "Signera",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _: 1,

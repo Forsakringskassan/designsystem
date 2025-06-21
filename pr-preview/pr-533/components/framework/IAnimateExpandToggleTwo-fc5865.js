@@ -74,7 +74,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           { style: { "background-color": "yellow", "height": "200px", "position": "relative" } },
           null,
           -1
-          /* HOISTED */
+          /* CACHED */
         )
       ])),
       _: 1,
@@ -90,7 +90,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           { style: { "background-color": "hotpink", "height": "300px", "position": "relative" } },
           null,
           -1
-          /* HOISTED */
+          /* CACHED */
         )
       ])),
       _: 1,

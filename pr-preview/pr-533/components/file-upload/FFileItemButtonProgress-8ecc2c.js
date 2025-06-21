@@ -97,7 +97,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             " Avbryt uppladdning ",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ])) : _ctx.progress === 100 ? (_openBlock(), _createElementBlock("button", _hoisted_2, [
           _createVNode(_component_f_icon, {

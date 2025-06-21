@@ -1928,21 +1928,21 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Fel",
       -1
-      /* HOISTED */
+      /* CACHED */
     ),
     _createElementVNode2(
       "p",
       null,
       "Ett fel har uppst\xE5tt.",
       -1
-      /* HOISTED */
+      /* CACHED */
     ),
     _createElementVNode2(
       "a",
       { href: "/" },
       "G\xE5 till startsidan",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -2907,7 +2907,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                               },
                               null,
                               -1
-                              /* HOISTED */
+                              /* CACHED */
                             )),
                             _createElementVNode5(
                               "span",
@@ -2948,7 +2948,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                                 },
                                 null,
                                 -1
-                                /* HOISTED */
+                                /* CACHED */
                               )),
                               _createElementVNode5(
                                 "span",
@@ -3936,7 +3936,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
       { for: "constraint" },
       " Begr\xE4nsa till: ",
       -1
-      /* HOISTED */
+      /* CACHED */
     )),
     _withDirectives(_createElementVNode8(
       "select",
@@ -3951,21 +3951,21 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
           { value: "viewport" },
           "Viewport",
           -1
-          /* HOISTED */
+          /* CACHED */
         ),
         _createElementVNode8(
           "option",
           { value: "container" },
           "Container",
           -1
-          /* HOISTED */
+          /* CACHED */
         ),
         _createElementVNode8(
           "option",
           { value: "combo" },
           "Viewport + container",
           -1
-          /* HOISTED */
+          /* CACHED */
         )
       ]),
       544
@@ -3982,7 +3982,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
         _createTextVNode3(" med hj\xE4lp av musen.")
       ],
       -1
-      /* HOISTED */
+      /* CACHED */
     )),
     _createElementVNode8(
       "div",

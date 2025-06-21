@@ -300,7 +300,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   _createElementVNode("label", { class: "label tooltip-before__label" }, " Tooltip ")
                 ],
                 -1
-                /* HOISTED */
+                /* CACHED */
               )),
               _withDirectives((_openBlock(), _createBlock(_component_f_textarea_field, {
                 modelValue: _ctx.textAreaField,
@@ -333,21 +333,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     { value: "Text" },
                     "Text",
                     -1
-                    /* HOISTED */
+                    /* CACHED */
                   )),
                   _cache[35] || (_cache[35] = _createElementVNode(
                     "option",
                     { value: "Text2" },
                     "Text 2",
                     -1
-                    /* HOISTED */
+                    /* CACHED */
                   )),
                   _cache[36] || (_cache[36] = _createElementVNode(
                     "option",
                     { value: "Text3" },
                     "Text 3",
                     -1
-                    /* HOISTED */
+                    /* CACHED */
                   ))
                 ]),
                 _: 1,
@@ -567,7 +567,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         null,
                         " \xC4ndra ",
                         -1
-                        /* HOISTED */
+                        /* CACHED */
                       ))
                     ]),
                     _createElementVNode("button", _hoisted_8, [
@@ -577,7 +577,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         null,
                         " Ta bort ",
                         -1
-                        /* HOISTED */
+                        /* CACHED */
                       ))
                     ])
                   ])
@@ -594,7 +594,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   },
                   " Medium ",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _cache[56] || (_cache[56] = _createElementVNode(
                   "button",
@@ -604,7 +604,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   },
                   " Medium ",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _createElementVNode("button", _hoisted_10, [
                   _createVNode(_component_f_icon, {
@@ -623,7 +623,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   },
                   " Large ",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _cache[59] || (_cache[59] = _createElementVNode(
                   "button",
@@ -633,7 +633,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   },
                   " Large ",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _createElementVNode("button", _hoisted_12, [
                   _createVNode(_component_f_icon, {
@@ -693,7 +693,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     null,
                     "Br\xF6dtext",
                     -1
-                    /* HOISTED */
+                    /* CACHED */
                   ))
                 ]),
                 _: 1

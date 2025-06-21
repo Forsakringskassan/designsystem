@@ -61,28 +61,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         },
         "V\xE4lj\u2026",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[3] || (_cache[3] = _createElementVNode(
         "option",
         { value: "FOO" },
         "Foo",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[4] || (_cache[4] = _createElementVNode(
         "option",
         { value: "BAR" },
         "Bar",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[5] || (_cache[5] = _createElementVNode(
         "option",
         { value: "BAZ" },
         "Baz",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _: 1,

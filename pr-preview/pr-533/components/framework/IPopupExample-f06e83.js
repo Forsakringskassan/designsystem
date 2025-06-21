@@ -80,7 +80,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             " Tr\xE4utensilierna i ett tryckeri \xE4ro ingalunda en oviktig faktor, f\xF6r trevnadens, ordningens och ekonomiens uppr\xE4tth\xE5llande, och dock \xE4r det icke s\xE4llan som sorgliga erfarenheter g\xF6ras p\xE5 grund af det of\xF6rst\xE5nd med hvilket kaster, formbr\xE4den och regaler tillverkas och f\xF6rs\xE4ljas Kaster som \xE4ro d\xE5ligt hopkomna och af otillr\xE4ckligt. ",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _createElementVNode("button", {
             type: "button",
