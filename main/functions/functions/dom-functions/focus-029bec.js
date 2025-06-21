@@ -68,14 +68,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Important Section",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[1] || (_cache[1] = _createElementVNode(
         "p",
         null,
         "Some interesting content.",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createVNode(
         _component_my_button,

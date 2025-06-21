@@ -73,7 +73,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         },
         "Skicka in",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _: 1,

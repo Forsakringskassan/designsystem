@@ -260,7 +260,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Modalen st\xE4ngdes med resultatet:",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode(
         "pre",

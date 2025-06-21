@@ -2117,21 +2117,21 @@ function render4(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Fel",
       -1
-      /* HOISTED */
+      /* CACHED */
     ),
     _createElementVNode2(
       "p",
       null,
       "Ett fel har uppst\xE5tt.",
       -1
-      /* HOISTED */
+      /* CACHED */
     ),
     _createElementVNode2(
       "a",
       { href: "/" },
       "G\xE5 till startsidan",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -2917,7 +2917,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                               },
                               null,
                               -1
-                              /* HOISTED */
+                              /* CACHED */
                             )),
                             _createElementVNode5(
                               "span",
@@ -2958,7 +2958,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                                 },
                                 null,
                                 -1
-                                /* HOISTED */
+                                /* CACHED */
                               )),
                               _createElementVNode5(
                                 "span",

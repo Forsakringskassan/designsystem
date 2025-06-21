@@ -58,7 +58,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Some interesting content.",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ],
     64

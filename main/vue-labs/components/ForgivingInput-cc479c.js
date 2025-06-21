@@ -2413,7 +2413,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createTextVNode(
         " Renskrivet v\xE4rde: " + _toDisplayString(_ctx.userFriendlyValue) + ".",
@@ -2425,7 +2425,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createTextVNode(
         " V\xE4rde i timmar: " + _toDisplayString(_ctx.timeInHours) + ".",
@@ -2437,7 +2437,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createTextVNode(
         " V\xE4rde i objektnotation: " + _toDisplayString(_ctx.timeAsObject) + ". ",
