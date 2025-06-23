@@ -25143,6 +25143,12 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
      */
     "update:route"
   ],
+  setup() {
+    const isMounted = ref(false);
+    return {
+      isMounted
+    };
+  },
   data() {
     return {
       selectedItem: "",
@@ -25219,11 +25225,13 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     }
   },
   mounted() {
+    this.isMounted = true;
     this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
     this.resizeObserver.observe(this.$el);
     this.onResize();
   },
   unmounted() {
+    this.isMounted = false;
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
     }
@@ -25318,7 +25326,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
       });
     },
     async onResize() {
-      if (this.vertical) {
+      if (!this.isMounted || this.vertical) {
         return;
       }
       const menu = getHTMLElementFromVueRef(this.$refs.menu);
