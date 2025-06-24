@@ -57,7 +57,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _: 1

@@ -84,7 +84,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           },
           " Spara ",
           -1
-          /* HOISTED */
+          /* CACHED */
         )),
         _createElementVNode("button", {
           type: "button",

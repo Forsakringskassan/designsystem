@@ -1991,21 +1991,21 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Fel",
       -1
-      /* HOISTED */
+      /* CACHED */
     ),
     _createElementVNode2(
       "p",
       null,
       "Ett fel har uppst\xE5tt.",
       -1
-      /* HOISTED */
+      /* CACHED */
     ),
     _createElementVNode2(
       "a",
       { href: "/" },
       "G\xE5 till startsidan",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -2970,7 +2970,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                               },
                               null,
                               -1
-                              /* HOISTED */
+                              /* CACHED */
                             )),
                             _createElementVNode5(
                               "span",
@@ -3011,7 +3011,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                                 },
                                 null,
                                 -1
-                                /* HOISTED */
+                                /* CACHED */
                               )),
                               _createElementVNode5(
                                 "span",
@@ -5722,49 +5722,49 @@ function render19(_ctx, _cache, $props, $setup, $data, $options) {
         { class: "calendar-month__col--day" },
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[3] || (_cache[3] = _createElementVNode13(
         "col",
         { class: "calendar-month__col--day" },
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[4] || (_cache[4] = _createElementVNode13(
         "col",
         { class: "calendar-month__col--day" },
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[5] || (_cache[5] = _createElementVNode13(
         "col",
         { class: "calendar-month__col--day" },
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[6] || (_cache[6] = _createElementVNode13(
         "col",
         { class: "calendar-month__col--day" },
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[7] || (_cache[7] = _createElementVNode13(
         "col",
         { class: "calendar-month__col--day" },
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _cache[8] || (_cache[8] = _createElementVNode13(
         "col",
         { class: "calendar-month__col--day" },
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _createElementVNode13("thead", null, [
@@ -7468,7 +7468,7 @@ function render26(_ctx, _cache, $props, $setup, $data, $options) {
                 null,
                 null,
                 -1
-                /* HOISTED */
+                /* CACHED */
               )),
               _createCommentVNode23(" @slot Slot for extended label, should only contain short text "),
               _renderSlot20(_ctx.$slots, "details")
@@ -7486,7 +7486,7 @@ function render26(_ctx, _cache, $props, $setup, $data, $options) {
                     null,
                     null,
                     -1
-                    /* HOISTED */
+                    /* CACHED */
                   )),
                   _createCommentVNode23("\n                        @slot Slot for details, should only contain short text\n                        @binding {number} height The height of the expanded details content.\n                        "),
                   _renderSlot20(_ctx.$slots, "details", { height: _ctx.height })

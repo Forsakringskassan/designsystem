@@ -116,7 +116,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         { type: "submit" },
         "Trigga fel",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _: 1,
