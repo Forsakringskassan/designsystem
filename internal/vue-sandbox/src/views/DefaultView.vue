@@ -1,15 +1,28 @@
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
+<script setup lang="ts">
+import { useModal } from "@fkui/vue";
+import ModalALotOfFields from "./ModalALotOfFields.vue";
 
-export default defineComponent({
-    components: { FTextField },
-    data() {
-        return {
-            awesomeModel: "",
-        };
-    },
-});
+const { formModal } = useModal();
+
+async function openModalWithoutErrorList(): Promise<void> {
+    try {
+        await formModal(ModalALotOfFields);
+    } catch {
+        /* cancelled*/
+    }
+}
+
+async function openModalWithErrorList(): Promise<void> {
+    try {
+        await formModal(ModalALotOfFields, {
+            props: {
+                useErrorList: true,
+            },
+        });
+    } catch {
+        /* cancelled*/
+    }
+}
 </script>
 
 <template>
@@ -23,16 +36,13 @@ export default defineComponent({
             <strong>Ändra och labba gärna här men glöm inte återställa innan merge!</strong>
         </p>
         <hr />
-        <f-text-field
-            id="awesome-field"
-            v-model="awesomeModel"
-            v-validation.required.maxLength="{ maxLength: { length: 10 } }"
-        >
-            <template #default> Inmatningsfält. </template>
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass"> Lorem ipsum dolor sit amet. </span>
-            </template>
-        </f-text-field>
+        <div>
+            <button type="button" class="button" @click="openModalWithoutErrorList">Öppna modal utan fellista</button>
+        </div>
+
+        <div>
+            <button type="button" class="button" @click="openModalWithErrorList">Öppna modal med fellista</button>
+        </div>
     </div>
 </template>
 
