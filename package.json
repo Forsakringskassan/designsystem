@@ -106,6 +106,7 @@
     "core-js": "3.43.0",
     "cypress": "14.5.0",
     "cypress-html-validate": "7.1.0",
+    "cypress-split": "1.24.18",
     "esbuild": "0.25.5",
     "flush-promises": "1.0.2",
     "fs-extra": "11.3.0",
