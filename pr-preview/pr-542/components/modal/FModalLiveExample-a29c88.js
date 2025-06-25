@@ -138,28 +138,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "" },
             "Standard",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[5] || (_cache[5] = _createElementVNode(
             "option",
             { value: "information" },
             "Informationsmodal",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[6] || (_cache[6] = _createElementVNode(
             "option",
             { value: "warning" },
             "Varningsmodal",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[7] || (_cache[7] = _createElementVNode(
             "option",
             { value: "error" },
             "Felmodal",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,
@@ -178,28 +178,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "small" },
             "Liten",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[10] || (_cache[10] = _createElementVNode(
             "option",
             { value: "medium" },
             "Medium",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[11] || (_cache[11] = _createElementVNode(
             "option",
             { value: "large" },
             "Stor",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[12] || (_cache[12] = _createElementVNode(
             "option",
             { value: "fullwidth" },
             "Fullbredd",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,

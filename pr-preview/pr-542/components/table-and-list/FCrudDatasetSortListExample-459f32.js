@@ -158,7 +158,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     null,
                     null,
                     -1
-                    /* HOISTED */
+                    /* CACHED */
                   )),
                   _cache[3] || (_cache[3] = _createTextVNode(" Beskrivning: ")),
                   _createElementVNode(
@@ -173,7 +173,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     null,
                     null,
                     -1
-                    /* HOISTED */
+                    /* CACHED */
                   ))
                 ]),
                 _createElementVNode("div", _hoisted_3, [

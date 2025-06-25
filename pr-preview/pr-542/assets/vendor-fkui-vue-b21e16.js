@@ -18038,6 +18038,12 @@ var _sfc_main$b = defineComponent({
      */
     "update:route"
   ],
+  setup() {
+    const isMounted = ref(false);
+    return {
+      isMounted
+    };
+  },
   data() {
     return {
       selectedItem: "",
@@ -18114,11 +18120,13 @@ var _sfc_main$b = defineComponent({
     }
   },
   mounted() {
+    this.isMounted = true;
     this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
     this.resizeObserver.observe(this.$el);
     this.onResize();
   },
   unmounted() {
+    this.isMounted = false;
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
     }
@@ -18213,7 +18221,7 @@ var _sfc_main$b = defineComponent({
       });
     },
     async onResize() {
-      if (this.vertical) {
+      if (!this.isMounted || this.vertical) {
         return;
       }
       const menu = getHTMLElementFromVueRef(this.$refs.menu);

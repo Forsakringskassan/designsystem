@@ -298,7 +298,7 @@ var PatchFlagNames = {
   [512]: `NEED_PATCH`,
   [1024]: `DYNAMIC_SLOTS`,
   [2048]: `DEV_ROOT_FRAGMENT`,
-  [-1]: `HOISTED`,
+  [-1]: `CACHED`,
   [-2]: `BAIL`
 };
 var slotFlagsText = {
@@ -991,6 +991,7 @@ var Link = class {
   }
 };
 var Dep = class {
+  // TODO isolatedDeclarations "__v_skip"
   constructor(computed3) {
     this.computed = computed3;
     this.version = 0;
@@ -999,6 +1000,7 @@ var Dep = class {
     this.map = void 0;
     this.key = void 0;
     this.sc = 0;
+    this.__v_skip = true;
     if (true) {
       this.subsHead = void 0;
     }
@@ -4624,7 +4626,7 @@ function isMismatchAllowed(el, allowedType) {
     if (allowedType === 0 && list.includes("children")) {
       return true;
     }
-    return allowedAttr.split(",").includes(MismatchTypeString[allowedType]);
+    return list.includes(MismatchTypeString[allowedType]);
   }
 }
 var requestIdleCallback = getGlobalThis().requestIdleCallback || ((cb) => setTimeout(cb, 1));
@@ -6869,6 +6871,8 @@ var assignSlots = (slots, children, optimized) => {
 var initSlots = (instance, children, optimized) => {
   const slots = instance.slots = createInternalObject();
   if (instance.vnode.shapeFlag & 32) {
+    const cacheIndexes = children.__;
+    if (cacheIndexes) def(slots, "__", cacheIndexes, true);
     const type = children._;
     if (type) {
       assignSlots(slots, children, optimized);
@@ -7104,6 +7108,8 @@ function baseCreateRenderer(options, createHydrationFns) {
     }
     if (ref2 != null && parentComponent) {
       setRef(ref2, n1 && n1.ref, parentSuspense, n2 || n1, !n2);
+    } else if (ref2 == null && n1 && n1.ref != null) {
+      setRef(n1.ref, null, parentSuspense, n1, true);
     }
   };
   const processText = (n1, n2, container, anchor) => {
@@ -7676,7 +7682,8 @@ function baseCreateRenderer(options, createHydrationFns) {
             hydrateSubTree();
           }
         } else {
-          if (root.ce) {
+          if (root.ce && // @ts-expect-error _def is private
+          root.ce._def.shadowRoot !== false) {
             root.ce._injectChildStyle(type);
           }
           if (true) {
@@ -10775,7 +10782,7 @@ function isMemoSame(cached, memo) {
   }
   return true;
 }
-var version = "3.5.16";
+var version = "3.5.17";
 var warn2 = true ? warn$1 : NOOP;
 var ErrorTypeStrings = ErrorTypeStrings$1;
 var devtools = true ? devtools$1 : void 0;
@@ -11758,9 +11765,10 @@ var VueElement = class _VueElement extends BaseClass {
     };
     const asyncDef = this._def.__asyncLoader;
     if (asyncDef) {
-      this._pendingResolve = asyncDef().then(
-        (def2) => resolve2(this._def = def2, true)
-      );
+      this._pendingResolve = asyncDef().then((def2) => {
+        def2.configureApp = this._def.configureApp;
+        resolve2(this._def = def2, true);
+      });
     } else {
       resolve2(this._def);
     }
@@ -13507,7 +13515,7 @@ var Tokenizer = class {
     this.buffer = input;
     while (this.index < this.buffer.length) {
       const c = this.buffer.charCodeAt(this.index);
-      if (c === 10) {
+      if (c === 10 && this.state !== 33) {
         this.newlines.push(this.index);
       }
       switch (this.state) {
@@ -14662,7 +14670,7 @@ function isUpperCase(c) {
   return c > 64 && c < 91;
 }
 var windowsNewlineRE = /\r\n/g;
-function condenseWhitespace(nodes, tag) {
+function condenseWhitespace(nodes) {
   const shouldCondense = currentOptions.whitespace !== "preserve";
   let removedWhitespace = false;
   for (let i = 0; i < nodes.length; i++) {
@@ -14825,12 +14833,12 @@ function cacheStatic(root, context) {
     context,
     // Root node is unfortunately non-hoistable due to potential parent
     // fallthrough attributes.
-    isSingleElementRoot(root, root.children[0])
+    !!getSingleElementRoot(root)
   );
 }
-function isSingleElementRoot(root, child) {
-  const { children } = root;
-  return children.length === 1 && child.type === 1 && !isSlotOutlet(child);
+function getSingleElementRoot(root) {
+  const children = root.children.filter((x) => x.type !== 3);
+  return children.length === 1 && children[0].type === 1 && !isSlotOutlet(children[0]) ? children[0] : null;
 }
 function walk(node, parent, context, doNotHoistNode = false, inFor = false) {
   const { children } = node;
@@ -15296,15 +15304,15 @@ function createRootCodegen(root, context) {
   const { helper } = context;
   const { children } = root;
   if (children.length === 1) {
-    const child = children[0];
-    if (isSingleElementRoot(root, child) && child.codegenNode) {
-      const codegenNode = child.codegenNode;
+    const singleElementRootChild = getSingleElementRoot(root);
+    if (singleElementRootChild && singleElementRootChild.codegenNode) {
+      const codegenNode = singleElementRootChild.codegenNode;
       if (codegenNode.type === 13) {
         convertToBlock(codegenNode, context);
       }
       root.codegenNode = codegenNode;
     } else {
-      root.codegenNode = child;
+      root.codegenNode = children[0];
     }
   } else if (children.length > 1) {
     let patchFlag = 64;
@@ -16683,7 +16691,7 @@ function buildSlots(node, context, buildSlotFn = buildClientSlotFn) {
       let prev;
       while (j--) {
         prev = children[j];
-        if (prev.type !== 3) {
+        if (prev.type !== 3 && isNonWhitespaceContent(prev)) {
           break;
         }
       }
@@ -18802,7 +18810,7 @@ export {
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.5.16
+  * @vue/shared v3.5.17
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -18810,14 +18818,14 @@ export {
 
 @vue/reactivity/dist/reactivity.esm-bundler.js:
   (**
-  * @vue/reactivity v3.5.16
+  * @vue/reactivity v3.5.17
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-core/dist/runtime-core.esm-bundler.js:
   (**
-  * @vue/runtime-core v3.5.16
+  * @vue/runtime-core v3.5.17
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -18825,7 +18833,7 @@ export {
 
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (**
-  * @vue/runtime-dom v3.5.16
+  * @vue/runtime-dom v3.5.17
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -18833,21 +18841,21 @@ export {
 
 @vue/compiler-core/dist/compiler-core.esm-bundler.js:
   (**
-  * @vue/compiler-core v3.5.16
+  * @vue/compiler-core v3.5.17
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/compiler-dom/dist/compiler-dom.esm-bundler.js:
   (**
-  * @vue/compiler-dom v3.5.16
+  * @vue/compiler-dom v3.5.17
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 vue/dist/vue.esm-bundler.js:
   (**
-  * vue v3.5.16
+  * vue v3.5.17
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)

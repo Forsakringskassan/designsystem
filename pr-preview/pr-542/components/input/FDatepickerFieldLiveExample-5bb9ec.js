@@ -192,7 +192,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "" },
             "Nuvarande m\xE5nad (standard)",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _createElementVNode("option", {
             value: _ctx.getDateWithOffset(-6)
@@ -214,7 +214,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "" },
             "10 \xE5r tillbaka (standard)",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _createElementVNode("option", {
             value: _ctx.getDateWithOffset(-3)
@@ -236,7 +236,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "" },
             "10 \xE5r fram\xE5t (standard)",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _createElementVNode("option", {
             value: _ctx.getDateWithOffset(3)
@@ -258,14 +258,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: false },
             "Inga (standard)",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[19] || (_cache[19] = _createElementVNode(
             "option",
             { value: true },
             "Exempel: L\xF6rdag och s\xF6ndag",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,
@@ -284,7 +284,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: [] },
             "Inga (standard)",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _createElementVNode("option", {
             value: _ctx.getInvalidDates()

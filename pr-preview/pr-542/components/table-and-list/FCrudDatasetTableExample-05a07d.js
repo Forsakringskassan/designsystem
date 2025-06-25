@@ -115,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Frukter",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ])),
         default: _withCtx(({ row }) => [

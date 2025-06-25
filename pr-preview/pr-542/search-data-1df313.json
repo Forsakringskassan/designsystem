@@ -48,6 +48,15 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "Kom igång",
+    "Ta fram applikation",
     "Version 5 migreringsguide",
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
@@ -61,15 +70,6 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "Kom igång",
-    "Ta fram applikation",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
@@ -218,6 +218,10 @@
     "openModal",
     "formModal() function",
     "confirmModal() function",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -235,10 +239,6 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
     "FYear",
     "FYear: value property",
     "FYear: toString() method",
@@ -480,6 +480,32 @@
       "terms": []
     },
     {
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
+      "terms": []
+    },
+    {
       "url": "gettingstarted/migration/migrating-to-v5.html",
       "title": "Version 5 migreringsguide",
       "terms": []
@@ -539,32 +565,6 @@
     {
       "url": "gettingstarted/about/index.html",
       "title": "Designsystemet",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -1126,6 +1126,26 @@
       "terms": []
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1208,26 +1228,6 @@
     {
       "url": "functions/functions/dom-functions/find-element-from-vue-ref.html",
       "title": "findElementFromVueRef",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
       "terms": []
     },
     {
@@ -1521,23 +1521,23 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 33,
-    "50": 34,
-    "51": 34,
-    "52": 35,
-    "53": 36,
-    "54": 37,
-    "55": 38,
-    "56": 39,
-    "57": 40,
-    "58": 41,
-    "59": 42,
-    "60": 43,
-    "61": 44,
-    "62": 44,
-    "63": 44,
-    "64": 44,
-    "65": 44,
+    "49": 32,
+    "50": 32,
+    "51": 32,
+    "52": 32,
+    "53": 32,
+    "54": 33,
+    "55": 34,
+    "56": 35,
+    "57": 36,
+    "58": 37,
+    "59": 38,
+    "60": 38,
+    "61": 39,
+    "62": 40,
+    "63": 41,
+    "64": 42,
+    "65": 43,
     "66": 44,
     "67": 45,
     "68": 46,

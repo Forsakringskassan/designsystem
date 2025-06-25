@@ -135,7 +135,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               { class: "sr-only" },
               " Frukter ",
               -1
-              /* HOISTED */
+              /* CACHED */
             )
           ])),
           default: _withCtx(({ row }) => [

@@ -54,7 +54,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       { class: "sr-only" },
       " Till tj\xE4nsten ans\xF6k om hundbidrag ",
       -1
-      /* HOISTED */
+      /* CACHED */
     )),
     _createVNode($setup["FIcon"], {
       name: "arrow-right",

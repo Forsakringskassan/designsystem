@@ -119,7 +119,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               null,
               null,
               -1
-              /* HOISTED */
+              /* CACHED */
             )),
             _cache[2] || (_cache[2] = _createTextVNode(" Beskrivning: ")),
             _createElementVNode(
@@ -134,7 +134,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               null,
               null,
               -1
-              /* HOISTED */
+              /* CACHED */
             ))
           ])
         ]),

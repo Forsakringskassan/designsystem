@@ -65,7 +65,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         { class: "sr-only" },
         "Debug-data: ",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createTextVNode(
         "value: " + _toDisplayString(_ctx.currentProgress),

@@ -102,21 +102,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "" },
             "Standard",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "option",
             { value: "expand" },
             "Expand",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "option",
             { value: "shrink" },
             "Shrink",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ])),
         _: 1
@@ -135,21 +135,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "" },
             "Standard",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "option",
             { value: "expand" },
             "Expand",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "option",
             { value: "shrink" },
             "Shrink",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ])),
         _: 1
@@ -168,21 +168,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "" },
             "Standard",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "option",
             { value: "expand" },
             "Expand",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "option",
             { value: "shrink" },
             "Shrink",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ])),
         _: 1

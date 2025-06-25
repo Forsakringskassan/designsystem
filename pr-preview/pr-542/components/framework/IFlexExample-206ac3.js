@@ -63,7 +63,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               null,
               "Rubrik med ikon",
               -1
-              /* HOISTED */
+              /* CACHED */
             )
           ])),
           _: 1,

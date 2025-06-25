@@ -140,21 +140,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "static" },
             "Statisk",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[6] || (_cache[6] = _createElementVNode(
             "option",
             { value: "checkbox" },
             "Interaktiv med kryssruta",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[7] || (_cache[7] = _createElementVNode(
             "option",
             { value: "link" },
             "Interaktiv med l\xE4nk",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,

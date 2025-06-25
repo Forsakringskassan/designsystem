@@ -218,28 +218,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "3" },
             "3",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[15] || (_cache[15] = _createElementVNode(
             "option",
             { value: "4" },
             "4 (standard)",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[16] || (_cache[16] = _createElementVNode(
             "option",
             { value: "5" },
             "5",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[17] || (_cache[17] = _createElementVNode(
             "option",
             { value: "6" },
             "6",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,

@@ -241,98 +241,98 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "f-text-field" },
             "Fritext",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[13] || (_cache[13] = _createElementVNode(
             "option",
             { value: "f-bankgiro-text-field" },
             "Bankgiro",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[14] || (_cache[14] = _createElementVNode(
             "option",
             { value: "f-clearingnumber-text-field" },
             "Clearingnummer",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[15] || (_cache[15] = _createElementVNode(
             "option",
             { value: "f-bank-account-number-text-field" },
             "Kontonummer",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[16] || (_cache[16] = _createElementVNode(
             "option",
             { value: "f-email-text-field" },
             "Mejladress",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[17] || (_cache[17] = _createElementVNode(
             "option",
             { value: "f-numeric-text-field" },
             "Numeriskt",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[18] || (_cache[18] = _createElementVNode(
             "option",
             { value: "f-organisationsnummer-text-field" },
             "Organisationsnummer",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[19] || (_cache[19] = _createElementVNode(
             "option",
             { value: "f-personnummer-text-field" },
             "Personnummer",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[20] || (_cache[20] = _createElementVNode(
             "option",
             { value: "f-plusgiro-text-field" },
             "Plusgiro",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[21] || (_cache[21] = _createElementVNode(
             "option",
             { value: "f-postal-code-text-field" },
             "Postnummer",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[22] || (_cache[22] = _createElementVNode(
             "option",
             { value: "f-percent-text-field" },
             "Procent",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[23] || (_cache[23] = _createElementVNode(
             "option",
             { value: "f-phone-text-field" },
             "Telefonnummer",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[24] || (_cache[24] = _createElementVNode(
             "option",
             { value: "f-currency-text-field" },
             "Valuta",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[25] || (_cache[25] = _createElementVNode(
             "option",
             { value: "f-search-text-field" },
             "S\xF6kf\xE4lt",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,
@@ -352,14 +352,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: 0 },
             "Ingen gr\xE4ns",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[28] || (_cache[28] = _createElementVNode(
             "option",
             { value: 20 },
             "Exempel: 20 tecken",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,

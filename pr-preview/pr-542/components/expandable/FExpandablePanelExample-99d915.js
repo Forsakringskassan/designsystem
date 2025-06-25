@@ -69,7 +69,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }, " L\xE4nk till annan sida ")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     _: 1

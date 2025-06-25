@@ -70,7 +70,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { class: "sr-only" },
             "Tabell",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ])),
         default: _withCtx(({ row }) => [
@@ -115,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Valda rader:",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode(
         "pre",
