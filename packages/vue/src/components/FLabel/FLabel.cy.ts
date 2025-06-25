@@ -41,8 +41,7 @@ describe("FLabel", () => {
         label.errorMessage().should("contain.text", "Felmeddelande");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    describe.skip("density", () => {
+    describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>
