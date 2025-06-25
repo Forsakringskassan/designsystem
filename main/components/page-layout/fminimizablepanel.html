@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-e1237a.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-f26798.js",
     "@fkui/date": "../../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-a34dab.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-128cc6.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
   },
   "integrity": {
     "../../assets/vendor-vue-e1237a.js": "sha384-jBE6MBB68PBZU11sQPZUvL6i+TCJ6L7ZJgwOX5uGGj1wp4V8yuNdAhDMeEEMID+N",
     "../../assets/vendor-fkui-logic-f26798.js": "sha384-VoYS/Aq6jNp0G4gyTUUp7e7cRZ6D4h19wa0kdfAbEtvAnlhSaIF2hPMEVs0H/Mci",
     "../../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../../assets/vendor-fkui-vue-a34dab.js": "sha384-pNq1R3Nl9bPFhl60KKH+AW5XSMS7t1ujnHWdJnRAEjmM4taCIPxE4EjiJ+3X8NF0",
+    "../../assets/vendor-fkui-vue-128cc6.js": "sha384-9lpIgDpc8k9l49LR8OIPdWGXM3t530vGx5getm+Uhp5LHymZ4IRMdNiTffBl1b6i",
     "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-42d517.json"
+            href="../../search-data-c445b7.json"
             as="fetch"
             crossorigin
-            integrity="sha384-W9HQT0FTZSiVy+l+8F1IQFFbwPSj7nezYoYzee906G1eKKoSLG5jdxa4JQJT6tdW"
+            integrity="sha384-z56/t+ke9y7mXmmRCHRdQmUlX6GZwurdPGcadxRXxBI2NlvNrHE9KQys5K+nGh4J"
             id="search-data"
         />
     </head>
@@ -1069,7 +1069,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/dc0894843fe6fd5fe2bd44a5338516ca2869df6a/packages/vue/src/components/FMinimizablePanel/FMinimizablePanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/d52f2cc083e8f60bc9e0cf450ae84aef6d311283/packages/vue/src/components/FMinimizablePanel/FMinimizablePanel.vue">
                 FMinimizablePanel
             </a>
             
@@ -1117,7 +1117,7 @@ för att ge användaren möjlighet att visa innehåll i öppet läge eller minim
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-20e6fa"></div>
+        <div id="example-62a61d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1128,7 +1128,7 @@ för att ge användaren möjlighet att visa innehåll i öppet läge eller minim
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FMinimizablePanelExample-20e6fa.js"></script>
+        <script type="module" src="./FMinimizablePanelExample-62a61d.js"></script>
     </div>
                 <div>
             <button
@@ -1249,6 +1249,21 @@ eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
 <span class="hljs-addition">+&lt;f-minimizable-panel context=&quot;My awesome panel&quot;&gt;</span>
 </code></pre>
                 </div>
+            <h3 id="initialt_state"><a class="header-anchor" href="#initialt_state">Initialt state</a></h3><p class="docs-paragraph">Som standard är minimerbar panel expanderad i desktop.
+Med <code>initial=&quot;minimized&quot;</code> kan du ändra så den är minimerad som standard.</p>
+
+                <div
+                    id="example-2c882f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-minimizable-panel&gt;</span>
+<span class="hljs-addition">+&lt;f-minimizable-panel initial=&quot;minimized&quot;&gt;</span>
+</code></pre>
+                </div>
             <h3 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h3>
         <dl class="docs-api docs-api--translation">
             
@@ -1358,6 +1373,25 @@ eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
                             
                         </dd>
                     
+                        <dt>
+                            <code id="fminimizablepanel-prop-initial"
+                                ><a class="docs-api__anchor" href="#fminimizablepanel-prop-initial"
+                                    ><span class="docs-api__name"
+                                        >initial</span
+                                    >: union</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Start in initial state.</p>
+<p>Default is <code>expanded</code>.</p>
+
+                            
+                            
+                        </dd>
+                    
         </dl>
     
         <h3 id="fminimizablepanel-slots">
@@ -1420,9 +1454,9 @@ eller genom att sätta <code>context</code>-proppen in till komponenten:</p>
 
 <div class="footer__center"></div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/dc0894843fe6fd5fe2bd44a5338516ca2869df6a">dc08948</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/d52f2cc083e8f60bc9e0cf450ae84aef6d311283">d52f2cc</a>)<br />
         
-        2025-06-25 11:09
+        2025-06-25 12:30
 </div>
 <div class="toolbar__item">
     <form id="version">
