@@ -23,7 +23,7 @@
   "devDependencies": {
     "@jest/globals": "29.7.0",
     "execa": "9.6.0",
-    "prettier": "3.5.3",
+    "prettier": "3.6.0",
     "yaml": "2.8.0"
   },
   "engines": {
