@@ -4,6 +4,9 @@
 
 ```ts
 
+import { AllowedComponentProps } from 'vue';
+import { Component } from 'vue';
+import { ComponentCustomProps } from 'vue';
 import { ComponentOptions } from 'vue';
 import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
@@ -15,14 +18,52 @@ import { ParseFunction } from '@fkui/vue';
 import { PropType } from 'vue';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
+import { ShallowUnwrapRef } from 'vue';
 import { ValidatorConfig } from '@fkui/logic';
+import { ValidatorConfigs } from '@fkui/logic';
 import { ValidityEvent } from '@fkui/logic';
+import { VNode } from 'vue';
+import { VNodeProps } from 'vue';
+
+// @public (undocumented)
+export function defineTableColumns<T, K extends keyof T = keyof T>(columns: Array<TableColumn<T, K>>): Array<TableColumn<T, K>>;
 
 // @public (undocumented)
 export function forgivingParseTimeToNumber(value?: string | null): number | undefined;
 
 // @public (undocumented)
 export function formatNumberToTime(value?: number): HoursMinutesString | undefined;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal<Pick<Partial<{}> & Omit<{
+        readonly "onUpdate:modelValue"?: ((value: T[]) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, "onUpdate:modelValue"> & ({
+        columns: Array<TableColumn<T, KeyAttribute>>;
+        rows: T[];
+        keyAttribute?: KeyAttribute;
+        expandableAttribute?: ExpandableAttribute;
+        striped?: boolean;
+        selectable?: "single" | "multi";
+        paginerated?: boolean;
+    } & {
+        modelValue?: T[];
+    }) & {}> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        expandable?: (props: {
+            row: Required<T>[ExpandableAttribute] extends unknown[] ? Required<T>[ExpandableAttribute][number] : never;
+        }) => any;
+    } & {
+        footer?: (props: {}) => any;
+    };
+    emit: (evt: "update:modelValue", value: T[]) => void;
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
 
 // @public (undocumented)
 export const HOURS_MINUTES_REGEXP: RegExp;
@@ -64,6 +105,18 @@ export function parseTimeToNumber(value?: string | null): number | undefined;
 
 // @public (undocumented)
 export function splitHoursMinutes(valueString: string, extraForgiving?: boolean): string[];
+
+// Warning: (ae-forgotten-export) The symbol "TableColumnSimple" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TableColumnCheckbox" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TableColumnRadio" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TableColumnText" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TableColumnAnchor" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TableColumnButton" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TableColumnRender" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TableColumnSelect" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRadio<T, K> | TableColumnText<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T> | TableColumnSelect<T, K>;
 
 // @public (undocumented)
 export const XTimeTextField: DefineComponent<ExtractPropTypes<    {
