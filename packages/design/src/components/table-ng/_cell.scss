@@ -1,0 +1,124 @@
+@use "../../core";
+@use "../../core/size";
+
+$vertical-padding: core.densify(size.$padding-025);
+$horizontal-padding: size.$padding-050;
+
+.table-ng__cell {
+    padding: $vertical-padding $horizontal-padding;
+    text-wrap: nowrap;
+
+    &--text {
+        padding: 0 0.25rem;
+
+        &:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+
+            .table-ng__textwrapper {
+                @extend %text-focus-state;
+            }
+
+            .table-ng__texticon {
+                visibility: visible;
+            }
+        }
+
+        &:hover {
+            .table-ng__textwrapper {
+                @extend %text-hover-state;
+            }
+        }
+
+        &.table-ng__cell--error:not(:focus-within) {
+            .table-ng__textwrapper {
+                @extend %text-error-state;
+            }
+            .table-ng__texticon {
+                visibility: visible;
+            }
+        }
+
+        &.table-ng__cell--error:hover:not(:focus-within) {
+            .table-ng__textwrapper {
+                @extend %text-error-state;
+            }
+        }
+
+        &.table-ng__cell--error:focus {
+            .table-ng__textwrapper {
+                @extend %text-error-state;
+            }
+        }
+    }
+}
+
+.table-ng__textwrapper {
+    @extend %text-default-state;
+
+    padding: $vertical-padding $horizontal-padding;
+    display: flex;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    align-items: center;
+
+    &:hover:not(:focus-within) .table-ng__texticon {
+        visibility: visible;
+    }
+
+    &:focus-within {
+        @extend %text-edit-state;
+
+        .table-ng__textview {
+            display: none;
+        }
+
+        .table-ng__textedit {
+            flex: 1 0 auto;
+        }
+    }
+}
+
+.table-ng__textview {
+    flex: 1 1 auto;
+}
+
+.table-ng__textedit {
+    flex: 0 1 0;
+    width: 0;
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    &:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+}
+
+.table-ng__texticon {
+    visibility: hidden;
+    margin-left: 1rem;
+}
+
+%text-default-state {
+    border-bottom-color: var(--fkds-color-border-weak);
+}
+
+%text-hover-state {
+    background: var(--fkds-color-action-background-secondary-hover);
+}
+
+%text-error-state {
+    color: var(--fkds-color-feedback-text-negative);
+    border-bottom-color: var(--fkds-color-feedback-text-negative);
+}
+
+%text-focus-state {
+    border-color: #000;
+}
+
+%text-edit-state {
+    border-color: #000;
+}
