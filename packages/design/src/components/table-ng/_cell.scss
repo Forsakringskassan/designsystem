@@ -1,0 +1,152 @@
+@use "../../core";
+@use "../../core/size";
+
+$vertical-padding: core.densify(size.$padding-025);
+$horizontal-padding: size.$padding-050;
+
+.table-ng__cell {
+    padding: $vertical-padding $horizontal-padding;
+    text-wrap: nowrap;
+    border: 2px solid transparent;
+
+    &:focus,
+    &:focus-within {
+        box-shadow: none;
+        border: 2px solid var(--f-color-focus);
+    }
+
+    input,
+    button,
+    a,
+    [role="combobox"] {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    &--select,
+    &--text {
+        padding: 0 0.25rem;
+
+        &:focus-visible {
+            .table-ng__editable__icon {
+                visibility: visible;
+            }
+        }
+
+        &:hover {
+            .table-ng__editable {
+                @extend %text-hover-state;
+            }
+        }
+    }
+
+    &--text {
+        &:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        &.table-ng__cell--error:not(:focus-within) {
+            .table-ng__editable {
+                @extend %text-error-state;
+            }
+            .table-ng__editable__icon {
+                visibility: visible;
+            }
+        }
+
+        &.table-ng__cell--error:hover:not(:focus-within) {
+            .table-ng__editable {
+                @extend %text-error-state;
+            }
+        }
+
+        &.table-ng__cell--error:focus {
+            .table-ng__editable {
+                @extend %text-error-state;
+            }
+        }
+
+        .table-ng__editable {
+            border-width: 2px;
+            border-style: solid;
+            border-color: transparent;
+
+            &:focus-within {
+                .table-ng__editable__text {
+                    display: none;
+                }
+
+                .table-ng__textedit {
+                    flex: 1 0 auto;
+                }
+            }
+        }
+    }
+
+    &--checkbox,
+    &--radio {
+        text-align: center;
+        padding: core.densify(size.$padding-025);
+
+        input {
+            height: var(--f-icon-size-medium);
+            width: var(--f-icon-size-medium);
+        }
+    }
+
+    &--button {
+        button {
+            background: inherit;
+            border: 0;
+            cursor: pointer;
+            margin: 0;
+            min-width: var(--f-icon-size-medium);
+            padding: 0;
+            width: 100%;
+        }
+    }
+}
+
+.table-ng__textedit {
+    flex: 0 1 0;
+    width: 0;
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    &:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+}
+
+.table-ng__editable {
+    padding: $vertical-padding $horizontal-padding;
+    display: flex;
+    align-items: center;
+
+    &:hover:not(:focus-within) &__icon {
+        visibility: visible;
+    }
+
+    &__text {
+        flex: 1 1 auto;
+    }
+
+    &__icon {
+        visibility: hidden;
+        margin-left: 1rem;
+        flex: none;
+    }
+}
+
+%text-hover-state {
+    background: var(--fkds-color-action-background-secondary-hover);
+}
+
+%text-error-state {
+    color: var(--fkds-color-feedback-text-negative);
+    border-bottom-color: var(--fkds-color-feedback-text-negative);
+}

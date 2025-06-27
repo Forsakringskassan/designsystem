@@ -1,0 +1,39 @@
+@use "../../core";
+@use "../../core/size";
+
+$vertical-padding: core.densify(size.$padding-025);
+$horizontal-padding: size.$padding-050;
+
+.table-ng__column {
+    padding: $vertical-padding $horizontal-padding;
+    border-bottom: 2px solid transparent;
+    border-right: 1px solid transparent;
+
+    &:focus,
+    &:focus-within {
+        box-shadow: none;
+        border-bottom: 2px solid var(--f-color-focus);
+        border-right: 1px solid var(--f-color-focus);
+    }
+
+    &--checkbox {
+        text-align: center;
+        padding: core.densify(size.$padding-025);
+
+        input {
+            height: var(--f-icon-size-medium);
+            width: var(--f-icon-size-medium);
+        }
+    }
+
+    &__sort-icon {
+        color: var(--f-icon-color-table-header);
+        height: var(--f-icon-size-x-small);
+        width: var(--f-icon-size-x-small);
+        min-width: var(--f-icon-size-x-small);
+
+        &--discrete {
+            color: var(--f-icon-color-table-header-discrete);
+        }
+    }
+}
