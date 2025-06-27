@@ -1435,4 +1435,28 @@ module.exports = defineMetadata({
         },
         slots: ["default"],
     },
+
+    "f-table": {
+        flow: true,
+    },
+
+    "i-table-row": {
+        flow: true,
+    },
+
+    "f-table-cell": {
+        flow: true,
+    },
+
+    "f-table-edit-cell": {
+        flow: true,
+    },
+
+    "define-template": {
+        flow: true,
+    },
+
+    "reuse-template": {
+        flow: true,
+    },
 });

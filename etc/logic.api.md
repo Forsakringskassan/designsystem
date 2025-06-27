@@ -226,6 +226,9 @@ export interface InvalidWeekdaysValidatorConfig extends ValidatorOptions {
     days: number[];
 }
 
+// @public (undocumented)
+export function isAlphanumeric(keyCode: number): boolean;
+
 // @public
 export function isEmpty(value: string | undefined | null): value is "" | undefined | null;
 

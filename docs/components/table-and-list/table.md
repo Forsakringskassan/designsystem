@@ -14,6 +14,12 @@ Använd en tabell när användaren behöver analysera och jämföra information 
 
 I en tabell har varje rad samma grupper av information som visas kolumnvis, till exempel namn, datum, belopp och diarienummer.
 
+## Poc
+
+```import
+FTableLayoutExample.vue
+```
+
 ## Datatabell
 
 `FDataTable`
