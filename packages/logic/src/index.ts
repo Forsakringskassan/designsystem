@@ -1,6 +1,7 @@
 export * from "./config";
 export * from "./converters";
 export * from "./dom";
+export { guardRef } from "./guards";
 export {
     type AllowListValidatorConfig,
     type BlacklistValidatorConfig,
