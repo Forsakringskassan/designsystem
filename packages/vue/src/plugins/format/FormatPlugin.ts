@@ -48,7 +48,11 @@ export const FormatPlugin: Plugin = {
                 const formatter = formatters[arg as keyof typeof formatters];
                 if (formatter) {
                     removeObsoleteClasses(el);
-                    formatter(el, value);
+
+                    // skip formatting if element has `data-locked-text-content` attribute set
+                    if (el.dataset.lockedTextContent === undefined) {
+                        formatter(el, value);
+                    }
                 }
             },
         );
