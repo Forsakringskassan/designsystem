@@ -2224,7 +2224,7 @@ dt(qt, { builders: () => Io, printer: () => Ro, utils: () => Yo });
 var Io = { join: ke, line: Me, softline: _r, hardline: z, literalline: We, group: At, conditionalGroup: Cr, fill: hr, lineSuffix: Se, lineSuffixBoundary: Ar, cursor: X, breakParent: pe, ifBreak: gr, trim: Br, indent: ie, indentIfBreak: yr, align: oe, addAlignmentToDoc: Ge, markAsRoot: mr, dedentToRoot: dr, dedent: Er, hardlineWithoutBreakParent: Te, literallineWithoutBreakParent: Bt, label: xr, concat: (e) => e };
 var Ro = { printDocToString: me };
 var Yo = { willBreak: Dr, traverseDoc: le, findInDoc: Ve, mapDoc: be, removeLines: fr, stripTrailingHardline: $e, replaceEndOfLine: lr, canBreak: Fr };
-var tu = "3.6.1";
+var tu = "3.6.2";
 var Qt = {};
 dt(Qt, { addDanglingComment: () => ee, addLeadingComment: () => se, addTrailingComment: () => ae, getAlignmentSize: () => Ee, getIndentSize: () => ru, getMaxContinuousCount: () => nu, getNextNonSpaceNonCommentCharacter: () => uu, getNextNonSpaceNonCommentCharacterIndex: () => Xo, getPreferredQuote: () => iu, getStringWidth: () => Ne, hasNewline: () => G, hasNewlineInRange: () => su, hasSpaces: () => au, isNextLineEmpty: () => ti, isNextLineEmptyAfterIndex: () => ct, isPreviousLineEmpty: () => Zo, makeString: () => Du, skip: () => he, skipEverythingButNewLine: () => Je, skipInlineComment: () => ye, skipNewline: () => U, skipSpaces: () => T, skipToLineEnd: () => He, skipTrailingComment: () => Ae, skipWhitespace: () => Rr });
 function jo(e, t7) {
