@@ -201,6 +201,16 @@ export function formatPostalCode(value: string | undefined | null): string | und
 // @public (undocumented)
 export function getErrorMessages(): Record<string, string>;
 
+// @public (undocumented)
+export function guardRef<T>(ref: {
+    value: T | null;
+} | undefined | null): asserts ref is {
+    value: T;
+};
+
+// @public
+export function guardSet<T>(value: T | undefined | null, message?: string): asserts value is T;
+
 // @public
 export function handleTab(event: KeyboardEvent, container: HTMLElement): void;
 
@@ -215,6 +225,9 @@ export interface InvalidWeekdaysValidatorConfig extends ValidatorOptions {
     // (undocumented)
     days: number[];
 }
+
+// @public (undocumented)
+export function isAlphanumeric(keyCode: number): boolean;
 
 // @public
 export function isEmpty(value: string | undefined | null): value is "" | undefined | null;
