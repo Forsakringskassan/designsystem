@@ -70,6 +70,10 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
+    "Vue.js",
+    "Om testverktyg",
+    "Generella funktioner",
+    "Jest",
     "EventBus",
     "EventBus",
     "focus-indicator() mixin",
@@ -100,10 +104,6 @@
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
     "clamp() function",
-    "Vue.js",
-    "Om testverktyg",
-    "Generella funktioner",
-    "Jest",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -568,6 +568,26 @@
       "terms": []
     },
     {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
+      "terms": []
+    },
+    {
       "url": "functions/services/event-bus.html",
       "title": "EventBus",
       "terms": [
@@ -705,26 +725,6 @@
     {
       "url": "functions/date/clamp.html",
       "title": "clamp() function",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
       "terms": []
     },
     {
@@ -1543,19 +1543,19 @@
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 48,
-    "72": 49,
-    "73": 50,
-    "74": 51,
+    "71": 49,
+    "72": 50,
+    "73": 51,
+    "74": 52,
     "75": 52,
     "76": 53,
     "77": 54,
     "78": 55,
-    "79": 55,
-    "80": 55,
-    "81": 56,
-    "82": 57,
-    "83": 58,
+    "79": 56,
+    "80": 57,
+    "81": 58,
+    "82": 59,
+    "83": 59,
     "84": 59,
     "85": 60,
     "86": 61,
