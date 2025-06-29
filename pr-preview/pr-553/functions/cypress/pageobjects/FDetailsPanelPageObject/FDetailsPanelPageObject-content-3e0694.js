@@ -28,13 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-header.vue:FDetailsPanelPageObject-header-e480bc.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-content.vue:FDetailsPanelPageObject-content-3e0694.js
 import { defineComponent as _defineComponent } from "vue";
 import { onMounted } from "vue";
 import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject-header",
+  __name: "FDetailsPanelPageObject-content",
   setup(__props, { expose: __expose }) {
     __expose();
     onMounted(() => {
@@ -53,18 +53,22 @@ var _hoisted_1 = ["slot"];
 var _hoisted_2 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
-    default: _withCtx(({ left, content }) => [
+    default: _withCtx((layoutScope) => [
       _createVNode($setup["FDetailsPanel"], {
-        slot: left,
+        slot: layoutScope.left,
         name: "awesome-panel"
       }, {
-        default: _withCtx(({ header }) => [
-          _createElementVNode("h2", { slot: header }, "Lorem ipsum", 8, _hoisted_1)
+        default: _withCtx((panelScope) => [
+          _createElementVNode("div", {
+            slot: panelScope.content
+          }, "Lorem ipsum", 8, _hoisted_1)
         ]),
         _: 2
         /* DYNAMIC */
       }, 1032, ["slot"]),
-      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_2)
+      _createElementVNode("div", {
+        slot: layoutScope.content
+      }, "Inneh\xE5ll", 8, _hoisted_2)
     ]),
     _: 1
     /* STABLE */
@@ -73,7 +77,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e480bc"
+  selector: "#example-3e0694"
 });
 export {
   render
