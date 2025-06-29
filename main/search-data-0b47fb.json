@@ -46,8 +46,6 @@
     "Validator - anpassad",
     "Felmeddelande - anpassat",
     "Korsvalidering",
-    "Formatering och parsning",
-    "Formaterare och parser - anpassad",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -57,16 +55,18 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
+    "Formatering och parsning",
+    "Formaterare och parser - anpassad",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
     "Commits och commitmeddelanden",
     "Riktlinjer för kod",
     "Checklista vid publicering",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "På gång",
     "Nyheter",
     "Designsystemet",
@@ -470,16 +470,6 @@
       "terms": []
     },
     {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
-      "terms": []
-    },
-    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -506,21 +496,14 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
       "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
     },
     {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
@@ -551,6 +534,23 @@
       "url": "gettingstarted/contribute-to-fkds/checklist-publication.html",
       "title": "Checklista vid publicering",
       "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
     },
     {
       "url": "gettingstarted/about/release-plan.html",
@@ -1519,12 +1519,12 @@
     "44": 28,
     "45": 29,
     "46": 30,
-    "47": 31,
-    "48": 32,
-    "49": 32,
-    "50": 32,
-    "51": 32,
-    "52": 32,
+    "47": 30,
+    "48": 30,
+    "49": 30,
+    "50": 30,
+    "51": 30,
+    "52": 31,
     "53": 32,
     "54": 33,
     "55": 34,
@@ -1532,12 +1532,12 @@
     "57": 36,
     "58": 37,
     "59": 38,
-    "60": 38,
-    "61": 39,
-    "62": 40,
-    "63": 41,
-    "64": 42,
-    "65": 43,
+    "60": 39,
+    "61": 40,
+    "62": 41,
+    "63": 42,
+    "64": 43,
+    "65": 44,
     "66": 44,
     "67": 45,
     "68": 46,
