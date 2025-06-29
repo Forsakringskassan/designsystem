@@ -46,6 +46,8 @@
     "Validator - anpassad",
     "Felmeddelande - anpassat",
     "Korsvalidering",
+    "Formatering och parsning",
+    "Formaterare och parser - anpassad",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -55,27 +57,25 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
-    "Formatering och parsning",
-    "Formaterare och parser - anpassad",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
     "Commits och commitmeddelanden",
     "Riktlinjer för kod",
     "Checklista vid publicering",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "EventBus",
-    "EventBus",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
+    "EventBus",
+    "EventBus",
     "focus-indicator() mixin",
     "densify() function",
     "Validation Plugin",
@@ -470,6 +470,16 @@
       "terms": []
     },
     {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": []
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -496,14 +506,21 @@
       "terms": []
     },
     {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
       "terms": []
     },
     {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
       "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
     },
     {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
@@ -536,23 +553,6 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
-    },
-    {
       "url": "gettingstarted/about/release-plan.html",
       "title": "På gång",
       "terms": []
@@ -566,13 +566,6 @@
       "url": "gettingstarted/about/index.html",
       "title": "Designsystemet",
       "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
     },
     {
       "url": "functions/test-utils/vue.html",
@@ -593,6 +586,13 @@
       "url": "functions/test-utils/jest.html",
       "title": "Jest",
       "terms": []
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
     },
     {
       "url": "functions/sass/focus-indicator.html",
@@ -1519,12 +1519,12 @@
     "44": 28,
     "45": 29,
     "46": 30,
-    "47": 30,
-    "48": 30,
-    "49": 30,
-    "50": 30,
-    "51": 30,
-    "52": 31,
+    "47": 31,
+    "48": 32,
+    "49": 32,
+    "50": 32,
+    "51": 32,
+    "52": 32,
     "53": 32,
     "54": 33,
     "55": 34,
@@ -1532,21 +1532,21 @@
     "57": 36,
     "58": 37,
     "59": 38,
-    "60": 39,
-    "61": 40,
-    "62": 41,
-    "63": 42,
-    "64": 43,
-    "65": 44,
+    "60": 38,
+    "61": 39,
+    "62": 40,
+    "63": 41,
+    "64": 42,
+    "65": 43,
     "66": 44,
     "67": 45,
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 48,
-    "72": 49,
-    "73": 50,
-    "74": 51,
+    "71": 49,
+    "72": 50,
+    "73": 51,
+    "74": 52,
     "75": 52,
     "76": 53,
     "77": 54,
