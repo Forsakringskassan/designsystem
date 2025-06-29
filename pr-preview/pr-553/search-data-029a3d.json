@@ -70,10 +70,6 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Vue.js",
-    "Om testverktyg",
-    "Generella funktioner",
-    "Jest",
     "EventBus",
     "EventBus",
     "focus-indicator() mixin",
@@ -85,6 +81,10 @@
     "Error Plugin",
     "ErrorPlugin",
     "FErrorHandlingApp",
+    "Vue.js",
+    "Om testverktyg",
+    "Generella funktioner",
+    "Jest",
     "i18next",
     "i18nextProvider",
     "I18nextProvider",
@@ -210,11 +210,6 @@
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
-    "Version 6 migreringsguide: @fkui/vue",
-    "Version 6 migreringsguide",
-    "Version 6 migreringsguide: @fkui/logic",
-    "Version 6 migreringsguide: @fkui/design",
-    "Version 6 migreringsguide: Cypress Pageobjects",
     "openModal",
     "formModal() function",
     "confirmModal() function",
@@ -254,6 +249,11 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
+    "Version 6 migreringsguide: @fkui/vue",
+    "Version 6 migreringsguide",
+    "Version 6 migreringsguide: @fkui/logic",
+    "Version 6 migreringsguide: @fkui/design",
+    "Version 6 migreringsguide: Cypress Pageobjects",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -568,26 +568,6 @@
       "terms": []
     },
     {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
-      "terms": []
-    },
-    {
       "url": "functions/services/event-bus.html",
       "title": "EventBus",
       "terms": [
@@ -631,6 +611,26 @@
         "ErrorPlugin",
         "FErrorHandlingApp"
       ]
+    },
+    {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
+      "terms": []
     },
     {
       "url": "functions/i18next-translate/i18next.html",
@@ -1086,31 +1086,6 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
-      "title": "Version 6 migreringsguide: @fkui/vue",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
-      "title": "Version 6 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
-      "title": "Version 6 migreringsguide: @fkui/logic",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/design.html",
-      "title": "Version 6 migreringsguide: @fkui/design",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
-      "title": "Version 6 migreringsguide: Cypress Pageobjects",
-      "terms": []
-    },
-    {
       "url": "functions/functions/modal-functions/open-modal.html",
       "title": "openModal",
       "terms": []
@@ -1303,6 +1278,31 @@
     {
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
+      "title": "Version 6 migreringsguide: @fkui/vue",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
+      "title": "Version 6 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
+      "title": "Version 6 migreringsguide: @fkui/logic",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/design.html",
+      "title": "Version 6 migreringsguide: @fkui/design",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
+      "title": "Version 6 migreringsguide: Cypress Pageobjects",
       "terms": []
     },
     {
@@ -1543,19 +1543,19 @@
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 49,
-    "72": 50,
-    "73": 51,
-    "74": 52,
+    "71": 48,
+    "72": 49,
+    "73": 50,
+    "74": 51,
     "75": 52,
     "76": 53,
     "77": 54,
     "78": 55,
-    "79": 56,
-    "80": 57,
-    "81": 58,
-    "82": 59,
-    "83": 59,
+    "79": 55,
+    "80": 55,
+    "81": 56,
+    "82": 57,
+    "83": 58,
     "84": 59,
     "85": 60,
     "86": 61,
