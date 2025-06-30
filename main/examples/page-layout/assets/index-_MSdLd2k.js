@@ -1,38 +1,27 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 (function polyfill() {
   const relList = document.createElement("link").relList;
-  if (relList && relList.supports && relList.supports("modulepreload")) {
-    return;
-  }
-  for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
-    processPreload(link);
-  }
+  if (relList && relList.supports && relList.supports("modulepreload")) return;
+  for (const link of document.querySelectorAll('link[rel="modulepreload"]')) processPreload(link);
   new MutationObserver((mutations) => {
     for (const mutation of mutations) {
-      if (mutation.type !== "childList") {
-        continue;
-      }
-      for (const node of mutation.addedNodes) {
-        if (node.tagName === "LINK" && node.rel === "modulepreload")
-          processPreload(node);
-      }
+      if (mutation.type !== "childList") continue;
+      for (const node of mutation.addedNodes) if (node.tagName === "LINK" && node.rel === "modulepreload") processPreload(node);
     }
-  }).observe(document, { childList: true, subtree: true });
+  }).observe(document, {
+    childList: true,
+    subtree: true
+  });
   function getFetchOpts(link) {
     const fetchOpts = {};
     if (link.integrity) fetchOpts.integrity = link.integrity;
     if (link.referrerPolicy) fetchOpts.referrerPolicy = link.referrerPolicy;
-    if (link.crossOrigin === "use-credentials")
-      fetchOpts.credentials = "include";
+    if (link.crossOrigin === "use-credentials") fetchOpts.credentials = "include";
     else if (link.crossOrigin === "anonymous") fetchOpts.credentials = "omit";
     else fetchOpts.credentials = "same-origin";
     return fetchOpts;
   }
   function processPreload(link) {
-    if (link.ep)
-      return;
+    if (link.ep) return;
     link.ep = true;
     const fetchOpts = getFetchOpts(link);
     fetch(link.href, fetchOpts);
@@ -10038,8 +10027,8 @@ function requireLodash_clonedeep() {
     var reIsNative = RegExp(
       "^" + funcToString.call(hasOwnProperty2).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
     );
-    var Buffer2 = moduleExports ? root.Buffer : void 0, Symbol2 = root.Symbol, Uint8Array2 = root.Uint8Array, getPrototype = overArg(Object.getPrototypeOf, Object), objectCreate2 = Object.create, propertyIsEnumerable = objectProto.propertyIsEnumerable, splice = arrayProto2.splice;
-    var nativeGetSymbols = Object.getOwnPropertySymbols, nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : void 0, nativeKeys = overArg(Object.keys, Object);
+    var Buffer = moduleExports ? root.Buffer : void 0, Symbol2 = root.Symbol, Uint8Array = root.Uint8Array, getPrototype = overArg(Object.getPrototypeOf, Object), objectCreate2 = Object.create, propertyIsEnumerable = objectProto.propertyIsEnumerable, splice = arrayProto2.splice;
+    var nativeGetSymbols = Object.getOwnPropertySymbols, nativeIsBuffer = Buffer ? Buffer.isBuffer : void 0, nativeKeys = overArg(Object.keys, Object);
     var DataView2 = getNative(root, "DataView"), Map2 = getNative(root, "Map"), Promise2 = getNative(root, "Promise"), Set2 = getNative(root, "Set"), WeakMap2 = getNative(root, "WeakMap"), nativeCreate = getNative(Object, "create");
     var dataViewCtorString = toSource(DataView2), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set2), weakMapCtorString = toSource(WeakMap2);
     var symbolProto = Symbol2 ? Symbol2.prototype : void 0, symbolValueOf = symbolProto ? symbolProto.valueOf : void 0;
@@ -10312,7 +10301,7 @@ function requireLodash_clonedeep() {
     }
     function cloneArrayBuffer(arrayBuffer) {
       var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
-      new Uint8Array2(result).set(new Uint8Array2(arrayBuffer));
+      new Uint8Array(result).set(new Uint8Array(arrayBuffer));
       return result;
     }
     function cloneDataView(dataView, isDeep) {
@@ -11101,14 +11090,14 @@ function popFocus(handle) {
     }
   }
   const top = _focusElementStack.pop();
-  if ((top == null ? void 0 : top.id) !== handle[sym]) {
-    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top == null ? void 0 : top.id} but got ${handle[sym]}`;
+  if (top?.id !== handle[sym]) {
+    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top?.id} but got ${handle[sym]}`;
     {
       console.error(outOfOrderErrorMsg);
       return;
     }
   }
-  focus$1(top == null ? void 0 : top.element);
+  focus$1(top?.element);
 }
 function handleTab(event, container) {
   const elements = findTabbableElements(container);
@@ -11133,9 +11122,7 @@ function isValidatableFormElement(element) {
   return element instanceof HTMLInputElement || element instanceof HTMLSelectElement || element instanceof HTMLTextAreaElement;
 }
 class ElementIdServiceImpl {
-  constructor() {
-    __publicField(this, "elementIdMap", /* @__PURE__ */ new Map());
-  }
+  elementIdMap = /* @__PURE__ */ new Map();
   generateElementId(prefix = "fkui") {
     const id = this.nextId(prefix);
     if (document.getElementById(id) === null) {
@@ -11165,9 +11152,7 @@ class ElementIdServiceImpl {
 }
 const ElementIdService = /* @__PURE__ */ new ElementIdServiceImpl();
 class DefaultTranslationProvider {
-  constructor() {
-    __publicField(this, "language", "sv");
-  }
+  language = "sv";
   get currentLanguage() {
     return this.language;
   }
@@ -11190,24 +11175,22 @@ class DefaultTranslationProvider {
   }
 }
 class TranslationServiceImpl {
-  constructor() {
-    __publicField(this, "provider", new DefaultTranslationProvider());
-  }
+  provider = new DefaultTranslationProvider();
   changeProvider(newProvider) {
     this.provider = newProvider;
   }
 }
 const TranslationService = /* @__PURE__ */ new TranslationServiceImpl();
 class ValidationErrorMessageBuilder {
-  constructor() {
-    __publicField(this, "validatorMessageMap");
-    this.validatorMessageMap = {};
-  }
   /**
    * Create a new builder.
    */
   static create() {
     return new ValidationErrorMessageBuilder();
+  }
+  validatorMessageMap;
+  constructor() {
+    this.validatorMessageMap = {};
   }
   /**
    * Map the validator name message towards an error message.
@@ -11254,11 +11237,11 @@ function createFieldsetValidator(element, validationService) {
   new FieldsetValidationHandler(element, validationService);
 }
 class FieldsetValidationHandler {
+  hasDocumentListener = false;
+  documentFocusInRef = void 0;
+  element;
+  validationService;
   constructor(element, validationService) {
-    __publicField(this, "hasDocumentListener", false);
-    __publicField(this, "documentFocusInRef");
-    __publicField(this, "element");
-    __publicField(this, "validationService");
     Object.assign(this);
     this.element = element;
     this.validationService = validationService;
@@ -11344,10 +11327,10 @@ function hasValidators(element) {
   return typeof element.dataset.validation === "string";
 }
 class ValidationServiceImpl {
+  validationStates = {};
+  elementValidatorsReferences = {};
+  validationErrorMessages = {};
   constructor() {
-    __publicField(this, "validationStates", {});
-    __publicField(this, "elementValidatorsReferences", {});
-    __publicField(this, "validationErrorMessages", {});
     this.addValidationErrorMessages(getErrorMessages());
   }
   getElementsAndValidators() {
@@ -15307,8 +15290,8 @@ function require_Uint8Array() {
   if (hasRequired_Uint8Array) return _Uint8Array;
   hasRequired_Uint8Array = 1;
   var root = require_root();
-  var Uint8Array2 = root.Uint8Array;
-  _Uint8Array = Uint8Array2;
+  var Uint8Array = root.Uint8Array;
+  _Uint8Array = Uint8Array;
   return _Uint8Array;
 }
 var _mapToArray;
@@ -15346,7 +15329,7 @@ var hasRequired_equalByTag;
 function require_equalByTag() {
   if (hasRequired_equalByTag) return _equalByTag;
   hasRequired_equalByTag = 1;
-  var Symbol2 = require_Symbol(), Uint8Array2 = require_Uint8Array(), eq = requireEq(), equalArrays = require_equalArrays(), mapToArray = require_mapToArray(), setToArray = require_setToArray();
+  var Symbol2 = require_Symbol(), Uint8Array = require_Uint8Array(), eq = requireEq(), equalArrays = require_equalArrays(), mapToArray = require_mapToArray(), setToArray = require_setToArray();
   var COMPARE_PARTIAL_FLAG = 1, COMPARE_UNORDERED_FLAG = 2;
   var boolTag = "[object Boolean]", dateTag = "[object Date]", errorTag = "[object Error]", mapTag = "[object Map]", numberTag = "[object Number]", regexpTag = "[object RegExp]", setTag = "[object Set]", stringTag = "[object String]", symbolTag = "[object Symbol]";
   var arrayBufferTag = "[object ArrayBuffer]", dataViewTag = "[object DataView]";
@@ -15360,7 +15343,7 @@ function require_equalByTag() {
         object = object.buffer;
         other = other.buffer;
       case arrayBufferTag:
-        if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array2(object), new Uint8Array2(other))) {
+        if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
           return false;
         }
         return true;
@@ -15567,8 +15550,8 @@ function requireIsBuffer() {
     var freeExports = exports && !exports.nodeType && exports;
     var freeModule = freeExports && true && module && !module.nodeType && module;
     var moduleExports = freeModule && freeModule.exports === freeExports;
-    var Buffer2 = moduleExports ? root.Buffer : void 0;
-    var nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : void 0;
+    var Buffer = moduleExports ? root.Buffer : void 0;
+    var nativeIsBuffer = Buffer ? Buffer.isBuffer : void 0;
     var isBuffer2 = nativeIsBuffer || stubFalse;
     module.exports = isBuffer2;
   })(isBuffer, isBuffer.exports);
@@ -16405,7 +16388,7 @@ function refIsHTMLElementArray(value) {
   return Array.isArray(value) && value.length > 0 && value[0] instanceof HTMLElement;
 }
 function refIsVue(value) {
-  return (value == null ? void 0 : value.$el) !== void 0;
+  return value?.$el !== void 0;
 }
 function refIsVueArray(value) {
   return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
@@ -17821,8 +17804,7 @@ function intersection(a, b) {
 }
 function excludeClass(exclude) {
   return (node) => {
-    var _a;
-    if (typeof ((_a = node.props) == null ? void 0 : _a.class) !== "string") {
+    if (typeof node.props?.class !== "string") {
       return true;
     }
     const classes = node.props.class.split(/\s+/);
@@ -17952,12 +17934,10 @@ function getAbsolutePosition(src) {
 }
 function useEventListener$1(target, event, callback) {
   onMounted(() => {
-    var _a;
-    (_a = toValue(target)) == null ? void 0 : _a.addEventListener(event, callback);
+    toValue(target)?.addEventListener(event, callback);
   });
   onUnmounted(() => {
-    var _a;
-    (_a = toValue(target)) == null ? void 0 : _a.removeEventListener(event, callback);
+    toValue(target)?.removeEventListener(event, callback);
   });
 }
 function useSlotUtils() {
@@ -18198,7 +18178,6 @@ function clipRect(src, clip) {
   };
 }
 function fitInsideArea(options) {
-  var _a;
   if (isElementOptions(options)) {
     const {
       area: areaElement,
@@ -18220,7 +18199,7 @@ function fitInsideArea(options) {
       spacing: spacing2,
       candidateOrder
     });
-    const offset2 = (_a = targetElement.offsetParent) == null ? void 0 : _a.getBoundingClientRect();
+    const offset2 = targetElement.offsetParent?.getBoundingClientRect();
     if (!offset2) {
       return result;
     }
@@ -18761,8 +18740,7 @@ const _sfc_main$12 = /* @__PURE__ */ defineComponent({
     }
   },
   unmounted() {
-    var _a;
-    (_a = this.anchor) == null ? void 0 : _a.removeEventListener("keyup", this.onKeyEsc);
+    this.anchor?.removeEventListener("keyup", this.onKeyEsc);
     window.removeEventListener("resize", this.onResize);
   },
   methods: {
@@ -18778,9 +18756,8 @@ const _sfc_main$12 = /* @__PURE__ */ defineComponent({
       this.$emit("close");
     },
     setArrowOffset() {
-      var _a;
       const wrapper2 = this.$refs["wrapper"];
-      const inputIcon = (_a = this.anchor) == null ? void 0 : _a.nextElementSibling;
+      const inputIcon = this.anchor?.nextElementSibling;
       if (!inputIcon || !wrapper2) {
         return;
       }
@@ -19014,7 +18991,6 @@ const _sfc_main$11 = /* @__PURE__ */ defineComponent({
       return Math.ceil(contentWrapper.clientHeight / numOfItems);
     }
     async function calculatePosition() {
-      var _a;
       await nextTick();
       const wrapperElement = wrapperRef.value;
       const contentWrapper = contentRef.value;
@@ -19053,9 +19029,9 @@ const _sfc_main$11 = /* @__PURE__ */ defineComponent({
           width,
           height
         } = rect;
-        const offsetRect = (_a = wrapperElement == null ? void 0 : wrapperElement.offsetParent) == null ? void 0 : _a.getBoundingClientRect();
-        const offsetLeft = (_offsetRect$x = offsetRect == null ? void 0 : offsetRect.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
-        const offSetTop = Math.floor(((_offsetRect$top = offsetRect == null ? void 0 : offsetRect.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
+        const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
+        const offsetLeft = (_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
+        const offSetTop = Math.floor(((_offsetRect$top = offsetRect?.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
         wrapperElement.style.top = `${top - offSetTop}px`;
         wrapperElement.style.left = `${left - offsetLeft}px`;
         wrapperElement.style.width = `${width}px`;
@@ -19562,7 +19538,6 @@ function useCombobox(inputRef, options, onOptionSelected) {
     }
   }
   async function openSelected(fallback = null) {
-    var _a;
     if (hasOptions.value) {
       dropdownIsOpen.value = true;
       await nextTick();
@@ -19575,7 +19550,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
       } else {
         activeOption.value = null;
       }
-      (_a = inputRef.value) == null ? void 0 : _a.focus();
+      inputRef.value?.focus();
     }
   }
   function close() {
@@ -19617,10 +19592,9 @@ function useCombobox(inputRef, options, onOptionSelected) {
     toggleDropdown();
   }
   async function onInputFocus() {
-    var _a;
     var _inputRef$value$value;
     await nextTick();
-    filter2.value = (_inputRef$value$value = (_a = inputRef.value) == null ? void 0 : _a.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
+    filter2.value = (_inputRef$value$value = inputRef.value?.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
     selectMode.value = options.value ? options.value.includes(filter2.value) : false;
   }
   async function onInputKeyDown(event) {
@@ -19727,10 +19701,9 @@ const _sfc_main$Z = /* @__PURE__ */ defineComponent({
       emit2("close");
     }
     watchEffect(async () => {
-      var _a;
       if (__props.activeOption !== null) {
         await nextTick();
-        const activeOptionNode = (_a = listboxRef.value) == null ? void 0 : _a.querySelector(`#${__props.activeOptionId}`);
+        const activeOptionNode = listboxRef.value?.querySelector(`#${__props.activeOptionId}`);
         activeElement.value = activeOptionNode !== null && activeOptionNode !== void 0 ? activeOptionNode : void 0;
       }
     });
@@ -19959,7 +19932,7 @@ function useHorizontalOffset(options) {
     const attachTo = toRef(props, "attachTo");
     const ready = ref(false);
     const iconTarget = computed(() => {
-      if (provided == null ? void 0 : provided.value) {
+      if (provided?.value) {
         return provided.value;
       }
       if (attachTo.value) {
@@ -19979,14 +19952,12 @@ function useHorizontalOffset(options) {
     const offset2 = useHorizontalOffset({
       element: button,
       parent: computed(() => {
-        var _a;
         var _iconTarget$value$par;
-        return (_iconTarget$value$par = (_a = iconTarget.value) == null ? void 0 : _a.parentElement) !== null && _iconTarget$value$par !== void 0 ? _iconTarget$value$par : null;
+        return (_iconTarget$value$par = iconTarget.value?.parentElement) !== null && _iconTarget$value$par !== void 0 ? _iconTarget$value$par : null;
       })
     });
     watchEffect(() => {
-      var _a;
-      (_a = iconTarget.value) == null ? void 0 : _a.classList.add("tooltip__container");
+      iconTarget.value?.classList.add("tooltip__container");
     });
     watchEffect(() => {
       if (!wrapper2.value) {
@@ -21511,7 +21482,7 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
         return false;
       }
       const closest = el.value.closest("thead, tbody");
-      return (closest == null ? void 0 : closest.tagName) === "THEAD";
+      return closest?.tagName === "THEAD";
     }
     return (_ctx, _cache) => {
       return renderElement.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName2.value), mergeProps({
@@ -22530,7 +22501,7 @@ function includesAllSearchTerms(item, filterAttributes, searchTerms) {
     return isSet(value) ? value.toString().toLocaleLowerCase() : void 0;
   }).filter(Boolean);
   for (const searchTerm of searchTerms) {
-    const match = values.find((it) => it == null ? void 0 : it.includes(searchTerm));
+    const match = values.find((it) => it?.includes(searchTerm));
     if (!match) {
       return false;
     }
@@ -23311,7 +23282,7 @@ function createDetailsPanel(name, options) {
         });
       }
       this.item.value = item;
-      this.callback.value = (_options2$onClose = options2 == null ? void 0 : options2.onClose) !== null && _options2$onClose !== void 0 ? _options2$onClose : null;
+      this.callback.value = (_options2$onClose = options2?.onClose) !== null && _options2$onClose !== void 0 ? _options2$onClose : null;
     },
     close() {
       this.item.value = null;
@@ -24035,33 +24006,27 @@ const _sfc_main$t = /* @__PURE__ */ defineComponent({
         scope.run(() => {
           watchEffect(() => {
             anyEnabled.value = any(components, (it) => {
-              var _a;
               var _it$enabled$value;
-              return (_it$enabled$value = (_a = it.enabled) == null ? void 0 : _a.value) !== null && _it$enabled$value !== void 0 ? _it$enabled$value : true;
+              return (_it$enabled$value = it.enabled?.value) !== null && _it$enabled$value !== void 0 ? _it$enabled$value : true;
             });
           });
           watchEffect(() => {
             anyVisible.value = any(components, (it) => {
-              var _a;
               var _it$visible$value;
-              return (_it$visible$value = (_a = it.visible) == null ? void 0 : _a.value) !== null && _it$visible$value !== void 0 ? _it$visible$value : true;
+              return (_it$visible$value = it.visible?.value) !== null && _it$visible$value !== void 0 ? _it$visible$value : true;
             });
           });
           watchEffect(() => {
             anyOverlay.value = any(components, (it) => {
-              var _a;
               var _it$overlay$value;
-              return (_it$overlay$value = (_a = it.overlay) == null ? void 0 : _a.value) !== null && _it$overlay$value !== void 0 ? _it$overlay$value : false;
+              return (_it$overlay$value = it.overlay?.value) !== null && _it$overlay$value !== void 0 ? _it$overlay$value : false;
             });
           });
           watchEffect(() => {
             if (components.length === 0) {
               return 0;
             }
-            const offsets = components.map((it) => {
-              var _a;
-              return (_a = it.offset) == null ? void 0 : _a.value;
-            }).filter((it) => typeof it === "number");
+            const offsets = components.map((it) => it.offset?.value).filter((it) => typeof it === "number");
             offset2.value = Math.max(0, ...offsets);
           });
         });
@@ -24702,7 +24667,6 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
       });
     }
     function onSelect(row) {
-      var _a, _b;
       if (includeItem(row, selectedRows.value, internalKey2)) {
         selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey2));
         emit2("unselect", row);
@@ -24711,7 +24675,7 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
         emit2("select", row);
       }
       updateVModelWithSelectedRows();
-      (_b = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy) == null ? void 0 : _b.$forceUpdate();
+      getCurrentInstance()?.proxy?.$forceUpdate();
     }
     function setSelectedRows() {
       if (!props.modelValue || !props.modelValue.length) {
@@ -25296,12 +25260,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
       }
     },
     clickItemAnchor(item) {
-      var _a;
       if (!item.href) {
         return;
       }
       const index = this.items.indexOf(item);
-      (_a = this.getAnchor(index)) == null ? void 0 : _a.click();
+      this.getAnchor(index)?.click();
     },
     onPopupMenuItemSelected(key) {
       this.selectItem(key);
