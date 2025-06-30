@@ -1,0 +1,71 @@
+{
+  "name": "@fkui/validation",
+  "version": "6.16.0",
+  "description": "Validation for FKUI components",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "form",
+    "validation"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/validation"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "!**/*.js.map"
+  ],
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "rollup --config",
+    "postbuild": "fk-api-extractor --patch-augmentations",
+    "build:docs": "typedoc",
+    "clean": "rimraf .jest-cache coverage dist temp test-results typedoc",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "start": "npm run build:docs && fkui-serve typedoc",
+    "test": "jest --coverage --passWithNoTests",
+    "unit": "jest --passWithNoTests",
+    "unit:watch": "jest --watch",
+    "watch": "rollup --config --watch"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "28.0.6",
+    "@rollup/plugin-node-resolve": "16.0.1",
+    "@rollup/plugin-typescript": "12.1.4",
+    "rollup": "4.49.0"
+  },
+  "peerDependencies": {
+    "@fkui/logic": "^6.16.0",
+    "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

@@ -151,6 +151,10 @@ module.exports = defineMetadata({
         },
     },
 
+    "f-text-field2": {
+        flow: true,
+    },
+
     "f-data-table": {
         flow: true,
         attributes: {

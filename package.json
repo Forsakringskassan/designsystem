@@ -56,7 +56,8 @@
     "test:ct": "cypress run-ct --headless",
     "version": "scripts/version",
     "postversion": "npm run build",
-    "vue": "npm run --workspace packages/vue --"
+    "vue": "npm run --workspace packages/vue --",
+    "validation": "npm run --workspace packages/validation --"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config"

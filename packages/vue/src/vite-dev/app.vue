@@ -1,37 +1,60 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { FTextField } from "../components";
+import { ref, useTemplateRef } from "vue";
+import { parseNumber } from "@fkui/logic";
+import { type ValidityModel, defineValidator, setFormSubmitted, validateElement } from "@fkui/validation";
+import { FTextField2 } from "../components";
 
-const namn = ref("World");
+const validity = ref<{ isValid: boolean }>({ isValid: false });
+const value1 = ref(12);
+const value2 = ref();
+const form = useTemplateRef("form");
+
+declare module "@fkui/validation" {
+    interface ValidatorTypeMapping {
+        custom: {
+            config: {
+                foo: string;
+                bar: ValidityModel;
+            };
+            codes: never;
+        };
+    }
+}
+
+defineValidator("custom", {
+    validateViewValue() {
+        //console.log("config", this.config);
+        return {
+            valid: true,
+        };
+    },
+});
+
+async function onSubmit(event: Event): Promise<void> {
+    event.preventDefault();
+    if (form.value) {
+        setFormSubmitted(form.value);
+        const result = await validateElement(form.value);
+        /* eslint-disable-next-line no-console -- temp */
+        console.log(result);
+    }
+}
 </script>
 
 <template>
-    <div class="container">
-        <h1>@fkui/vue</h1>
+    <form ref="form" @submit="onSubmit">
+        <f-text-field2 id="value-1" v-model="value1" v-validation.number :parser="parseNumber"> Tal 1 </f-text-field2>
+        <f-text-field2
+            id="value-2"
+            v-model="value2"
+            v-validation.number.minValue="{ minValue: { limit: value1 } }"
+            :parser="parseNumber"
+        >
+            Tal 2
+        </f-text-field2>
 
-        <p>A few common commands to keep track of:</p>
-        <dl>
-            <dt><code>npm run vue unit</code></dt>
-            <dd>Run Jest unit tests</dd>
-            <dt><code>npm run vue unit -- Foobar</code></dt>
-            <dd>Run unit tests matching "Foobar"</dd>
-            <dt><code>npm run vue unit -- -u</code></dt>
-            <dd>Update snapshots</dd>
-            <dt><code>npm exec cypress -- open --component</code></dt>
-            <dd>Run Cypress Component Tests</dd>
-            <dt><code>npm run prettier:write</code></dt>
-            <dd>Reformat files</dd>
-            <dt><code>npm run lint</code></dt>
-            <dd>Run all linting and static analyzis</dd>
-            <dt><code>npm test</code></dt>
-            <dd>Run all tests</dd>
-        </dl>
-
-        <hr />
-
-        <h2>Sandbox</h2>
-
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
-    </div>
+        <button type="submit">Submit</button>
+        <p v-if="validity.isValid">Denna texten visas bara om värdet är giltigt</p>
+        <pre>{{ JSON.stringify({ value1, value2 }) }}</pre>
+    </form>
 </template>

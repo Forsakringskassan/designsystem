@@ -1,0 +1,27 @@
+* State [1/3]
+** TODO initial
+** DONE submitted
+** TODO touched
+* useValidation() composable [1/2]
+** TODO required attribute
+*** TODO behövs det?
+** DONE aria-invalid attribute
+* TODO instant
+* DONE validate descendants
+* TODO server error messages
+* TODO vue plugin
+* Reactivity [0/2]
+** TODO configuration updated
+** TODO cross-validation
+* TODO default export all validators
+* Use with: [0/6]
+** TODO FTextField
+** TODO FRadioField
+** TODO FCheckboxField
+** TODO FSelectField
+** TODO FTextAreaField
+** TODO FList
+* Support enabled option
+* Support errorMessage option
+* v-model för validation status
+* inline validator (directly in configureValidators())

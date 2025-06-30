@@ -1,0 +1,23 @@
+{
+    "extends": "@fkui/tsconfig/recommended",
+    "compilerOptions": {
+        "types": ["node", "jest"],
+        "emitDeclarationOnly": true,
+        "verbatimModuleSyntax": true,
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*.ts"],
+    "typedocOptions": {
+        "entryPoints": ["src/index.ts"],
+        "out": "typedoc",
+        "exclude": "**/*+(.spec|.e2e).ts",
+        "excludePrivate": true,
+        "excludeInternal": true,
+        "hideGenerator": true,
+        "treatWarningsAsErrors": true,
+        "validation": {
+            "notExported": true,
+            "invalidLink": true
+        }
+    }
+}

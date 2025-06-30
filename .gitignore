@@ -9,6 +9,7 @@ dist/
 docs/examples/files/
 public/
 temp/
+typedoc/
 *.tsbuildinfo
 
 # Jest output

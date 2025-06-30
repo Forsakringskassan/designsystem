@@ -7328,8 +7328,8 @@ default: undefined;
 };
 }>> & Readonly<{}>, {
 teleport: string | HTMLElement | undefined;
-overlay: boolean;
 show: boolean;
+overlay: boolean;
 delay: boolean;
 language: "sv" | "en";
 focusOnOverlay: boolean;
@@ -13534,6 +13534,30 @@ onToggle?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_8" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FTextField2: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_8<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_8<Pick<Partial<{}> & Omit<{
+        readonly "onUpdate:modelValue"?: ((value: string | T) => any) | undefined;
+        readonly "onUpdate:validity"?: ((value: Validity) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, "onUpdate:modelValue" | "onUpdate:validity"> & ({
+        parser?: (value: string) => T;
+        formatter?: (value: T) => string;
+    } & {
+        modelValue?: string | T;
+        validity?: Validity;
+    }) & Partial<{}>> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        default?: (props: {}) => any;
+    };
+    emit: ((evt: "update:modelValue", value: string | T) => void) & ((evt: "update:validity", value: Validity) => void);
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
+
 // @public (undocumented)
 export const FTooltip: DefineComponent<ExtractPropTypes<    {
 attachTo: {
@@ -15906,6 +15930,10 @@ export interface VueLike {
 
 // @public (undocumented)
 export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer T ? (...args: R) => T : never;
+
+// Warnings were encountered during analysis:
+//
+// src/components/FTextField2/FTextField2.vue:211:29 - (ae-forgotten-export) The symbol "Validity" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

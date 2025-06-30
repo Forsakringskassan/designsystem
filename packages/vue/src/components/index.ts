@@ -143,6 +143,7 @@ export {
     FTextField,
     useTextFieldSetup,
 } from "./FTextField";
+export { FTextField2 } from "./FTextField2";
 export { FTextareaField } from "./FTextareaField";
 export { FTooltip, tooltipAttachTo } from "./FTooltip";
 export {
