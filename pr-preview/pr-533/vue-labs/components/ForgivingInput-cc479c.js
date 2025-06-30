@@ -2176,14 +2176,13 @@ function minutesToHoursMinutesString(value) {
   return stripWhitespace(valueString);
 }
 function splitHoursMinutes(valueString, extraForgiving = false) {
-  var _a, _b;
   const regexps = extraForgiving ? [HOURS_MINUTES_WITHOUT_COLON_REGEXP, HOURS_MINUTES_REGEXP] : [HOURS_MINUTES_REGEXP];
   const match = findMatch(regexps, stripWhitespace(valueString));
   if (!match) {
     return ["", ""];
   }
-  const hours = padInitialZeros((_a = match == null ? void 0 : match.groups) == null ? void 0 : _a.hours);
-  const minutes = padInitialZeros((_b = match == null ? void 0 : match.groups) == null ? void 0 : _b.minutes);
+  const hours = padInitialZeros(match?.groups?.hours);
+  const minutes = padInitialZeros(match?.groups?.minutes);
   return [hours, minutes];
 }
 function minutesToUserFriendlyString(value) {
@@ -2245,8 +2244,7 @@ var HoursMinutesValidatorUtils = class _HoursMinutesValidatorUtils {
     return compare(valueAsNumber, limitAsNumber);
   }
   static getParserFromConfig(config) {
-    var _a;
-    if (!isSet(config) || !Array.isArray(config.parser) || !isSet((_a = config.parser) == null ? void 0 : _a[0]) || typeof config.parser[0] !== "function") {
+    if (!isSet(config) || !Array.isArray(config.parser) || !isSet(config.parser?.[0]) || typeof config.parser[0] !== "function") {
       return parseTimeToNumber;
     }
     return config.parser[0];
