@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/ParserExample.vue:ParserExample-c2edd5.js
+// virtual-entry:virtual:docs/guides/validation/examples/ParserExample.vue:ParserExample-951e60.js
 import { defineComponent } from "vue";
 import { parseNumber } from "@fkui/logic";
 import { FTextField, FOutputField } from "@fkui/vue";
@@ -107,7 +107,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-c2edd5"
+  selector: "#example-951e60"
 });
 export {
   render
