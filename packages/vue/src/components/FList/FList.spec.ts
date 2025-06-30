@@ -597,4 +597,26 @@ describe("html-validate", () => {
             message: '<f-list> is missing required "items" attribute',
         });
     });
+
+    it("should allow aria-label or aria-labelledby", () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-list :items="[]" aria-label="lorem ipsum"></f-list>
+
+            <h2 id="header">lorem ipsum</h2>
+            <f-list :items="[]" aria-labelledby="header"></f-list>
+        `;
+        expect(markup).toHTMLValidate();
+    });
+
+    it("should not allow empty aria-label", () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-list :items="[]" aria-label=""></f-list>
+        `;
+        expect(markup).not.toHTMLValidate({
+            ruleId: "attribute-allowed-values",
+            message: 'Attribute "aria-label" has invalid value ""',
+        });
+    });
 });

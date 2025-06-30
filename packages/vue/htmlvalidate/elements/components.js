@@ -340,7 +340,13 @@ module.exports = defineMetadata({
         flow: true,
         phrasing: true,
         requiredAttributes: ["items"],
+        aria: {
+            naming: "allowed",
+        },
         attributes: {
+            "aria-label": {
+                enum: ["/.+/"],
+            },
             selectable: ["/^[a-zA-Z][\\w\\d-_.:]+$/", "", "false", "true"],
             value: ["/.*/"],
             "key-attribute": ["/.+/"],
