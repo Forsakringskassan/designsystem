@@ -10,7 +10,6 @@
     "Hjälp och support",
     "@fkui/tsconfig",
     "Konfiguration",
-    "CHANGELOG v5",
     "Chip",
     "chip",
     "Knapp",
@@ -41,6 +40,7 @@
     "FCalendarDay",
     "Bricka",
     "FBadge",
+    "CHANGELOG v5",
     "Validering och felhantering",
     "Längdvalidering",
     "Validator - anpassad",
@@ -48,15 +48,6 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "Kom igång",
-    "Ta fram applikation",
     "Version 5 migreringsguide",
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
@@ -70,10 +61,23 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "Kom igång",
+    "Ta fram applikation",
     "EventBus",
     "EventBus",
     "focus-indicator() mixin",
     "densify() function",
+    "Vue.js",
+    "Om testverktyg",
+    "Generella funktioner",
+    "Jest",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -100,10 +104,6 @@
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
     "clamp() function",
-    "Vue.js",
-    "Om testverktyg",
-    "Generella funktioner",
-    "Jest",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -145,16 +145,16 @@
     "FFixedPane",
     "Detaljpanel",
     "FDetailsPanel",
+    "Förloppsindikator",
+    "FProgressbar",
+    "Laddningsindikator",
+    "FLoader",
     "Modal dialogruta",
     "FModal",
     "Formulärsmodal",
     "FFormModal",
     "Bekräftelsemodal",
     "FConfirmModal",
-    "Förloppsindikator",
-    "FProgressbar",
-    "Laddningsindikator",
-    "FLoader",
     "Startpunkt",
     "entrypoint",
     "Länk",
@@ -340,11 +340,6 @@
       "terms": []
     },
     {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
-    },
-    {
       "url": "components/chip.html",
       "title": "Chip",
       "terms": [
@@ -445,6 +440,11 @@
       ]
     },
     {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
       "url": "guides/validation-and-error-handling/validation.html",
       "title": "Validering och felhantering",
       "terms": []
@@ -477,32 +477,6 @@
     {
       "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
       "title": "Formaterare och parser - anpassad",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
       "terms": []
     },
     {
@@ -568,6 +542,32 @@
       "terms": []
     },
     {
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
+      "terms": []
+    },
+    {
       "url": "functions/services/event-bus.html",
       "title": "EventBus",
       "terms": [
@@ -582,6 +582,26 @@
     {
       "url": "functions/sass/densify.html",
       "title": "densify() function",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
       "terms": []
     },
     {
@@ -705,26 +725,6 @@
     {
       "url": "functions/date/clamp.html",
       "title": "clamp() function",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
       "terms": []
     },
     {
@@ -862,6 +862,20 @@
       ]
     },
     {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "FLoader"
+      ]
+    },
+    {
       "url": "components/modal/fmodal.html",
       "title": "Modal dialogruta",
       "terms": [
@@ -880,20 +894,6 @@
       "title": "Bekräftelsemodal",
       "terms": [
         "FConfirmModal"
-      ]
-    },
-    {
-      "url": "components/load/fprogressbar.html",
-      "title": "Förloppsindikator",
-      "terms": [
-        "FProgressbar"
-      ]
-    },
-    {
-      "url": "components/load/floader.html",
-      "title": "Laddningsindikator",
-      "terms": [
-        "FLoader"
       ]
     },
     {
@@ -1483,35 +1483,35 @@
     "8": 8,
     "9": 9,
     "10": 10,
-    "11": 11,
+    "11": 10,
     "12": 11,
-    "13": 12,
+    "13": 11,
     "14": 12,
-    "15": 13,
-    "16": 13,
+    "15": 12,
+    "16": 12,
     "17": 13,
-    "18": 14,
+    "18": 13,
     "19": 14,
-    "20": 15,
+    "20": 14,
     "21": 15,
-    "22": 16,
+    "22": 15,
     "23": 16,
-    "24": 17,
+    "24": 16,
     "25": 17,
-    "26": 18,
+    "26": 17,
     "27": 18,
-    "28": 19,
+    "28": 18,
     "29": 19,
-    "30": 20,
+    "30": 19,
     "31": 20,
-    "32": 21,
+    "32": 20,
     "33": 21,
-    "34": 22,
+    "34": 21,
     "35": 22,
-    "36": 23,
-    "37": 23,
+    "36": 22,
+    "37": 22,
     "38": 23,
-    "39": 24,
+    "39": 23,
     "40": 24,
     "41": 25,
     "42": 26,
@@ -1521,23 +1521,23 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 32,
-    "50": 32,
-    "51": 32,
-    "52": 32,
-    "53": 32,
-    "54": 33,
-    "55": 34,
-    "56": 35,
-    "57": 36,
-    "58": 37,
-    "59": 38,
-    "60": 38,
-    "61": 39,
-    "62": 40,
-    "63": 41,
-    "64": 42,
-    "65": 43,
+    "49": 33,
+    "50": 34,
+    "51": 34,
+    "52": 35,
+    "53": 36,
+    "54": 37,
+    "55": 38,
+    "56": 39,
+    "57": 40,
+    "58": 41,
+    "59": 42,
+    "60": 43,
+    "61": 44,
+    "62": 44,
+    "63": 44,
+    "64": 44,
+    "65": 44,
     "66": 44,
     "67": 45,
     "68": 46,
@@ -1551,11 +1551,11 @@
     "76": 53,
     "77": 54,
     "78": 55,
-    "79": 55,
-    "80": 55,
-    "81": 56,
-    "82": 57,
-    "83": 58,
+    "79": 56,
+    "80": 57,
+    "81": 58,
+    "82": 59,
+    "83": 59,
     "84": 59,
     "85": 60,
     "86": 61,

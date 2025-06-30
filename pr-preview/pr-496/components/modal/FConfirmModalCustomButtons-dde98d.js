@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FConfirmModalCustomButtons.vue:FConfirmModalCustomButtons-a27be6.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FConfirmModalCustomButtons.vue:FConfirmModalCustomButtons-dde98d.js
 import { defineComponent } from "vue";
 import { openModal, FConfirmModal } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -82,7 +82,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a27be6"
+  selector: "#example-dde98d"
 });
 export {
   render
