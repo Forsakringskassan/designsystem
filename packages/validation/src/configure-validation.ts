@@ -37,7 +37,7 @@ function dispatchConfigEvent(
 /**
  * @public
  */
-export function addValidatorsToElement(
+export function configureValidation(
     element: HTMLElement,
     config: {
         [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;

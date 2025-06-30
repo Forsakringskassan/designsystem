@@ -12,17 +12,17 @@ export function addErrorMessages(texts: Record<string, string>, { clear }?: {
 }): void;
 
 // @public (undocumented)
-export function addValidatorsToElement(element: HTMLElement, config: {
-    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-}): void;
-
-// @public (undocumented)
 export type ConfigEvent = CustomEvent<ConfigEventDetails>;
 
 // @public (undocumented)
 export type ConfigEventDetails = {
     [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
 };
+
+// @public (undocumented)
+export function configureValidation(element: HTMLElement, config: {
+    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
+}): void;
 
 // @public (undocumented)
 export function enableValidation<TValue, TModel>(element: HTMLElement, target: EnableValidationOptions<TValue, TModel>): void;

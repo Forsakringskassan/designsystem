@@ -23,7 +23,7 @@ export {
     type UpdateEvent,
     type UpdateEventDetails,
 } from "./event";
-export { addValidatorsToElement } from "./add-validators-to-element";
+export { configureValidation } from "./configure-validation";
 export { addErrorMessages } from "./error-messages";
 export { setFormSubmitted, resetFormSubmitted } from "./form-submitted";
 export { type ValidatorTypeMapping } from "./type-mapping";
