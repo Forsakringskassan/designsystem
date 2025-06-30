@@ -46,7 +46,7 @@
   "scripts": {
     "prebuild": "run-s clean",
     "build": "run-s build:lib build:pageobjects build:dts build:api",
-    "build:api": "node fix-vue-tsc-types.mjs && fk-api-extractor --patch-augmentations api-extractor.*.json",
+    "build:api": "fk-api-extractor --patch-augmentations --patch-declare-var-vls api-extractor.*.json",
     "build:dts": "vue-tsc -b",
     "build:lib": "fk-build-vue-lib",
     "build:pageobjects": "node build-pageobjects.mjs",
