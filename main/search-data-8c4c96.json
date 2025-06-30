@@ -258,17 +258,17 @@
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
     "FProgressbarPageObject: el() method",
+    "FLabelPageObject: FLabelPageObject() constructor",
+    "FLabelPageObject: formatDescription() method",
+    "FLabelPageObject: errorMessage() method",
+    "FLabelPageObject: errorIcon() method",
+    "FLabelPageObject: description() method",
     "FMinimizablePanelPageObject: constructor",
     "FMinimizablePanelPageObject: toggleButton() method",
     "FMinimizablePanelPageObject: header() method",
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FLabelPageObject: FLabelPageObject() constructor",
-    "FLabelPageObject: formatDescription() method",
-    "FLabelPageObject: errorMessage() method",
-    "FLabelPageObject: errorIcon() method",
-    "FLabelPageObject: description() method",
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
@@ -1326,6 +1326,31 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
+      "title": "FLabelPageObject: FLabelPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
+      "title": "FLabelPageObject: formatDescription() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
+      "title": "FLabelPageObject: errorMessage() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
+      "title": "FLabelPageObject: errorIcon() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
+      "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
       "title": "FMinimizablePanelPageObject: constructor",
       "terms": []
@@ -1353,31 +1378,6 @@
     {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
       "title": "FMinimizablePanelPageObject: content() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
-      "title": "FLabelPageObject: FLabelPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
-      "title": "FLabelPageObject: formatDescription() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
-      "title": "FLabelPageObject: errorMessage() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
-      "title": "FLabelPageObject: errorIcon() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
-      "title": "FLabelPageObject: description() method",
       "terms": []
     },
     {
