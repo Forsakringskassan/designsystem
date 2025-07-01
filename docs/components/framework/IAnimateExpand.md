@@ -1,6 +1,5 @@
 ---
 title: Animerad expandering
-status: Produktionsklar
 layout: component
 component: IAnimateExpand
 ---
