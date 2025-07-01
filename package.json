@@ -90,7 +90,7 @@
     "@forsakringskassan/eslint-config-vue": "11.9.13",
     "@forsakringskassan/jest-config": "29.6.4",
     "@forsakringskassan/jest-config-vue": "29.6.4",
-    "@forsakringskassan/prettier-config": "3.1.2",
+    "@forsakringskassan/prettier-config": "3.1.4",
     "@forsakringskassan/sass-module-importer": "1.1.4",
     "@forsakringskassan/stylelint-config": "2.5.3",
     "@forsakringskassan/vite-lib-config": "4.1.0",
