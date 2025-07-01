@@ -10,6 +10,7 @@
     "Hjälp och support",
     "@fkui/tsconfig",
     "Konfiguration",
+    "CHANGELOG v5",
     "Chip",
     "chip",
     "Knapp",
@@ -40,7 +41,6 @@
     "FCalendarDay",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "Längdvalidering",
     "Validator - anpassad",
@@ -218,10 +218,6 @@
     "openModal",
     "formModal() function",
     "confirmModal() function",
-    "ValidationErrorMessageBuilder: map() method",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "ValidationErrorMessageBuilder: create() function",
-    "ValidationErrorMessageBuilder: build() method",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -239,6 +235,10 @@
     "findParentByName",
     "findHTMLElementFromVueRef",
     "findElementFromVueRef",
+    "ValidationErrorMessageBuilder: map() method",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "ValidationErrorMessageBuilder: create() function",
+    "ValidationErrorMessageBuilder: build() method",
     "FYear",
     "FYear: value property",
     "FYear: toString() method",
@@ -340,6 +340,11 @@
       "terms": []
     },
     {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
       "url": "components/chip.html",
       "title": "Chip",
       "terms": [
@@ -438,11 +443,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1126,26 +1126,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1228,6 +1208,26 @@
     {
       "url": "functions/functions/dom-functions/find-element-from-vue-ref.html",
       "title": "findElementFromVueRef",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
       "terms": []
     },
     {
@@ -1483,35 +1483,35 @@
     "8": 8,
     "9": 9,
     "10": 10,
-    "11": 10,
+    "11": 11,
     "12": 11,
-    "13": 11,
+    "13": 12,
     "14": 12,
-    "15": 12,
-    "16": 12,
+    "15": 13,
+    "16": 13,
     "17": 13,
-    "18": 13,
+    "18": 14,
     "19": 14,
-    "20": 14,
+    "20": 15,
     "21": 15,
-    "22": 15,
+    "22": 16,
     "23": 16,
-    "24": 16,
+    "24": 17,
     "25": 17,
-    "26": 17,
+    "26": 18,
     "27": 18,
-    "28": 18,
+    "28": 19,
     "29": 19,
-    "30": 19,
+    "30": 20,
     "31": 20,
-    "32": 20,
+    "32": 21,
     "33": 21,
-    "34": 21,
+    "34": 22,
     "35": 22,
-    "36": 22,
-    "37": 22,
+    "36": 23,
+    "37": 23,
     "38": 23,
-    "39": 23,
+    "39": 24,
     "40": 24,
     "41": 25,
     "42": 26,
