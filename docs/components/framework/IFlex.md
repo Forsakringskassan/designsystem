@@ -1,6 +1,5 @@
 ---
 title: Flexibel positionering
-status: Produktionsklar
 layout: component
 component: IFlex
 ---

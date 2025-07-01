@@ -1,6 +1,5 @@
 ---
 title: Gå till innehåll
-status: Produktionsklar
 layout: component
 component: ISkipLink
 ---
