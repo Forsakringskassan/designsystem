@@ -73,6 +73,22 @@ async function copyDocs(pkg, from, to) {
     }
 }
 
+function sandboxProcessor() {
+    return {
+        after: "generate-docs",
+        name: "fkui:sandbox-processor",
+        handler(context) {
+            context.setTemplateData(
+                "sandboxLink",
+                "https://play.vuejs.org/#eNqVVVFv2jAQ/itWnlIJkoftiVHUraNSq62t1mpPeUmTS3BxHM8+MyqU/76zE0iglK5IoMT+7rvvzuePTfBVqWhlIZgEU5NprpAZQKuYSGV5ngRokmCWSF6pWiPbsBLw0moNEq+lwVRmMGIaCtawQtcVSwLiSoIvg4irR1jjFQeR96CLYml5/AraZt6hotgvJEEiE5nVlI/xLik7P6IkPCMyHxJucVGq1GUtkSS4RwfYUlV1DuJ3KqwjoxJCyhM4wDRuG0Fl0wtCpUSKQG+MPtNi7MjGhS9oNfYs1KeeLQloeZUKnqfIaxlp+GO5hnw2R74ExGk8pNjSKg2zaUYks82G3Tzc3UYGNZclL17CTU/enLGmmcYeOI1dkNM70BiMgrad4ypV0bOpJZ3sxiVJug060AnzK26tPQmSSron9L5AVGYSx1aqZRlldRX3iAuXw2As+FMMpoq5zGFNOZJgtE8n6pJnp/k85L8J/aScoiPAlizn9NOz0dMxRk5DMKa84xyK1IourKCgZ8jwQWlOZAsAPJ33kGZPxFE2J6NJZEMHhYaiC14eHBOxKy5A3yk3P/vHlQpR/73xa6gt7IrKFpAtj6w/m3VbwL0GA3pFbdztYarpDrXb84dbGsnBJo2cFV3T39j8BaYW1mlsYd+szEn2AOfVXvupo1F+NPM1gjTbopxQ3w2P985xeaL0Xu6n6POgi/7CR2iogTsjwRcFjJxtxGr5s7Z0/wfm09mOHhgP3a3uut4LW3L5hlMNQ14d7WHMBybMM7svrD17YWXmxLSGGJJxTVw1Z9QMAjFGC5E1EB7KJvfqiFhfeBiesfPZNpSx1v1wARV8b5X94HJJHpjXma3ITqNMA03xXBBCItmioH1vjR3DYSxZnKD4JDD4IvZqOopeuP8LB3/rUvmI4zeKtseZMeSvmqdPlCyit0GyXQ0LSHPn+CDz8FDBsE3bfuRgeCk/2ok+6nQPBrh3q2+xXdnvldYT7xf1asjcf6Pfa9qHJmj+AYiAyGM=",
+            );
+            context.addTemplateBlock("toolbar", "sandbox-toolbar", {
+                filename: "partials/sandbox.html",
+            });
+        },
+    };
+}
+
 const docs = new Generator(import.meta.url, {
     site: {
         name: "FK Designsystem",
@@ -133,6 +149,7 @@ const docs = new Generator(import.meta.url, {
         }),
         cookieProcessor(),
         htmlRedirectProcessor(),
+        sandboxProcessor(),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
