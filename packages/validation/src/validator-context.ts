@@ -1,7 +1,7 @@
 import { type ValidatorConfig, type ValidatorName } from "./type-mapping";
 
 /**
- * @internal
+ * @public
  */
 export interface TypedValidatorContext<K extends ValidatorName> {
     readonly config: ValidatorConfig<K>;
@@ -9,7 +9,7 @@ export interface TypedValidatorContext<K extends ValidatorName> {
 }
 
 /**
- * @internal
+ * @public
  */
 export interface UntypedValidatorContext {
     readonly config: unknown;

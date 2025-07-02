@@ -25,6 +25,9 @@ export function configureValidation(element: HTMLElement, config: {
 }): void;
 
 // @public (undocumented)
+export function defineValidator<K extends ValidatorName, TValue, TModel>(name: K, definition: Omit<Validator<K, TValue, TModel>, "name">): Validator<K, TValue, TModel>;
+
+// @public (undocumented)
 export function enableValidation<TValue, TModel>(element: HTMLElement, target: EnableValidationOptions<TValue, TModel>): void;
 
 // @public (undocumented)
@@ -64,6 +67,9 @@ export function getConfigFromElement(element: HTMLElement): {
 } | undefined;
 
 // @public (undocumented)
+export type ModelValueValidatorCallback<K extends ValidatorName, T> = (this: ValidatorContext<K>, value: T) => ValidatorResult<K>;
+
+// @public (undocumented)
 export function resetFormSubmitted(form: HTMLFormElement): void;
 
 // @public
@@ -73,6 +79,22 @@ export function setConfigToElement(element: HTMLElement, config: {
 
 // @public (undocumented)
 export function setFormSubmitted(form: HTMLFormElement): void;
+
+// @public (undocumented)
+export interface TypedValidatorContext<K extends ValidatorName> {
+    // (undocumented)
+    readonly config: ValidatorConfig<K>;
+    // (undocumented)
+    readonly element: HTMLElement;
+}
+
+// @public (undocumented)
+export interface UntypedValidatorContext {
+    // (undocumented)
+    readonly config: unknown;
+    // (undocumented)
+    readonly element: HTMLElement;
+}
 
 // @public (undocumented)
 export type UpdateEvent<TValue = unknown, TModel = unknown> = CustomEvent<UpdateEventDetails<TValue, TModel>>;
@@ -122,8 +144,41 @@ export interface ValidationResult {
 }
 
 // @public (undocumented)
+export interface Validator<K extends ValidatorName, TValue, TModel> {
+    // (undocumented)
+    readonly name: K;
+    // (undocumented)
+    validateModelValue?: ModelValueValidatorCallback<K, TModel>;
+    // (undocumented)
+    validateViewValue?: ViewValueValidatorCallback<K, TValue>;
+}
+
+// @public
+export type ValidatorCode<K extends ValidatorName> = ValidatorTypeMapping[K]["codes"];
+
+// @public
+export type ValidatorConfig<K extends ValidatorName> = ValidatorTypeMapping[K]["config"];
+
+// @public (undocumented)
+export type ValidatorContext<K> = K extends ValidatorName ? TypedValidatorContext<K> : UntypedValidatorContext;
+
+// @public
+export type ValidatorName = keyof ValidatorTypeMapping;
+
+// @public (undocumented)
+export type ValidatorResult<K extends ValidatorName> = ValidatorCode<K> extends never ? {
+    valid: boolean;
+} : {
+    valid: boolean;
+    code: ValidatorCode<K>;
+};
+
+// @public (undocumented)
 export interface ValidatorTypeMapping {
 }
+
+// @public (undocumented)
+export type ViewValueValidatorCallback<K extends ValidatorName, T> = (this: ValidatorContext<K>, value: T | null | undefined) => ValidatorResult<K>;
 
 // (No @packageDocumentation comment for this package)
 

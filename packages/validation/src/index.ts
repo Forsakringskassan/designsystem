@@ -1,3 +1,5 @@
+export { configureValidation } from "./configure-validation";
+export { defineValidator } from "./define-validator";
 import { ConfigEvent, UpdateEvent } from "./event";
 import { componentStateSymbol, formStateSymbol } from "./state-symbol";
 import { type ValidatorTypeMapping } from "./type-mapping";
@@ -23,10 +25,19 @@ export {
     type UpdateEvent,
     type UpdateEventDetails,
 } from "./event";
-export { configureValidation } from "./configure-validation";
 export { addErrorMessages } from "./error-messages";
 export { setFormSubmitted, resetFormSubmitted } from "./form-submitted";
-export { type ValidatorTypeMapping } from "./type-mapping";
+export {
+    type ValidatorTypeMapping,
+    type ValidatorName,
+    type ValidatorCode,
+    type ValidatorConfig,
+} from "./type-mapping";
+export {
+    type ValidatorContext,
+    type TypedValidatorContext,
+    type UntypedValidatorContext,
+} from "./validator-context";
 export { validateElement } from "./validate-element";
 export {
     getConfigFromElement,
@@ -35,7 +46,14 @@ export {
     type ValidationConfig,
 } from "./validation-config";
 export { type ValidationResult } from "./validation-result";
+export {
+    type Validator,
+    type ValidatorResult,
+    type ModelValueValidatorCallback,
+    type ViewValueValidatorCallback,
+} from "./validator";
 export { ValidationPlugin } from "./plugins/ValidationPlugin";
+
 declare global {
     interface HTMLElement {
         [componentStateSymbol]?:
