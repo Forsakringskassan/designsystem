@@ -25,6 +25,14 @@ $fk-logo-large: "fk-logo-primary-large.svg";
         linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 }
 
+.sandbox-link {
+    padding: 0 0.75rem;
+}
+
+#content a.button.docs-button {
+    color: #fff;
+}
+
 .mermaid p {
     margin-bottom: 0;
 }
