@@ -3,7 +3,9 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import module from "node:module";
 import { execSync } from "node:child_process";
+import { strFromU8, strToU8, zlibSync } from "fflate";
 import fse from "fs-extra";
+import { glob } from "glob";
 import isCI from "is-ci";
 import {
     Generator,
@@ -73,14 +75,31 @@ async function copyDocs(pkg, from, to) {
     }
 }
 
-function sandboxProcessor() {
+/**
+ * @param {string} folder
+ * @returns {import("@forsakringskassan/docs-generator").Processor}
+ */
+function sandboxProcessor(folder) {
     return {
         after: "generate-docs",
         name: "fkui:sandbox-processor",
-        handler(context) {
+        async handler(context) {
+            const filenames = await glob("**", { cwd: folder, nodir: true });
+            const entries = await Promise.all(
+                filenames.map(async (filename) => {
+                    const filePath = path.join(folder, filename);
+                    const content = await fs.readFile(filePath, "utf-8");
+                    return [filename, content];
+                }),
+            );
+            const data = JSON.stringify(Object.fromEntries(entries));
+            const buffer = strToU8(data);
+            const zipped = zlibSync(buffer, { level: 9 });
+            const binary = strFromU8(zipped, true);
+            const hash = btoa(binary);
             context.setTemplateData(
                 "sandboxLink",
-                "https://play.vuejs.org/#eNqVVVFv2jAQ/itWnlIJkoftiVHUraNSq62t1mpPeUmTS3BxHM8+MyqU/76zE0iglK5IoMT+7rvvzuePTfBVqWhlIZgEU5NprpAZQKuYSGV5ngRokmCWSF6pWiPbsBLw0moNEq+lwVRmMGIaCtawQtcVSwLiSoIvg4irR1jjFQeR96CLYml5/AraZt6hotgvJEEiE5nVlI/xLik7P6IkPCMyHxJucVGq1GUtkSS4RwfYUlV1DuJ3KqwjoxJCyhM4wDRuG0Fl0wtCpUSKQG+MPtNi7MjGhS9oNfYs1KeeLQloeZUKnqfIaxlp+GO5hnw2R74ExGk8pNjSKg2zaUYks82G3Tzc3UYGNZclL17CTU/enLGmmcYeOI1dkNM70BiMgrad4ypV0bOpJZ3sxiVJug060AnzK26tPQmSSron9L5AVGYSx1aqZRlldRX3iAuXw2As+FMMpoq5zGFNOZJgtE8n6pJnp/k85L8J/aScoiPAlizn9NOz0dMxRk5DMKa84xyK1IourKCgZ8jwQWlOZAsAPJ33kGZPxFE2J6NJZEMHhYaiC14eHBOxKy5A3yk3P/vHlQpR/73xa6gt7IrKFpAtj6w/m3VbwL0GA3pFbdztYarpDrXb84dbGsnBJo2cFV3T39j8BaYW1mlsYd+szEn2AOfVXvupo1F+NPM1gjTbopxQ3w2P985xeaL0Xu6n6POgi/7CR2iogTsjwRcFjJxtxGr5s7Z0/wfm09mOHhgP3a3uut4LW3L5hlMNQ14d7WHMBybMM7svrD17YWXmxLSGGJJxTVw1Z9QMAjFGC5E1EB7KJvfqiFhfeBiesfPZNpSx1v1wARV8b5X94HJJHpjXma3ITqNMA03xXBBCItmioH1vjR3DYSxZnKD4JDD4IvZqOopeuP8LB3/rUvmI4zeKtseZMeSvmqdPlCyit0GyXQ0LSHPn+CDz8FDBsE3bfuRgeCk/2ok+6nQPBrh3q2+xXdnvldYT7xf1asjcf6Pfa9qHJmj+AYiAyGM=",
+                `https://play.vuejs.org/#${hash}`,
             );
             context.addTemplateBlock("toolbar", "sandbox-toolbar", {
                 filename: "partials/sandbox.html",
@@ -149,7 +168,7 @@ const docs = new Generator(import.meta.url, {
         }),
         cookieProcessor(),
         htmlRedirectProcessor(),
-        sandboxProcessor(),
+        sandboxProcessor("docs/playground"),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });

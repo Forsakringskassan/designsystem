@@ -1,0 +1,11 @@
+{
+    "extends": "./playground/tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "rootDir": "./playground",
+        "noEmit": true,
+        "strict": true,
+        "skipLibCheck": true
+    },
+    "include": ["playground/**.js", "playground/**.ts", "playground/**.vue"]
+}
