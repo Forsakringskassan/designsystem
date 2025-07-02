@@ -1,0 +1,26 @@
+{
+  "name": "@fkui/cypress-split",
+  "version": "6.12.0",
+  "description": "Split Cypress specs across parallel CI machines for speed",
+  "keywords": [
+    "cypress-plugin",
+    "parallel",
+    "speed",
+    "ci"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "internal/cypress-split"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "globby": "11.1.0"
+  }
+}
