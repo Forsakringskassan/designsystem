@@ -107,6 +107,7 @@
     "cypress": "14.5.0",
     "cypress-html-validate": "7.1.0",
     "esbuild": "0.25.5",
+    "fflate": "0.8.2",
     "flush-promises": "1.0.2",
     "fs-extra": "11.3.0",
     "glob": "11.0.3",
