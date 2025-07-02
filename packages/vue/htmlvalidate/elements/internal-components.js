@@ -109,6 +109,16 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "i-calendar-year-selector": {
+        flow: true,
+        slots: ["default"],
+        attributes: {
+            "min-date": {},
+            "max-date": {},
+            id: {},
+        },
+    },
+
     "i-animate-expand": {
         flow: true,
         attributes: {
