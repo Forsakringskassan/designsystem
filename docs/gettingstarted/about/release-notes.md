@@ -1,14 +1,20 @@
 ---
-title: Nyheter
-name: news
-layout: content-with-menu
+title: Releaseanteckningar
+name: release-notes
+layout: pattern
+redirect_from:
+    - gettingstarted/about/news.html
 ---
 
 ## Version 6.9.0
 
+2025-05-23
+
 `FCrudButton` är deprekerad, läs mer om att {@link migrating-crud-button migrera FCrudButton}.
 
 ## Version 6.7.0
+
+2025-05-14
 
 ### Uppdatering av applikationslayout (beta)
 
@@ -38,7 +44,7 @@ Läs {@link FormatPlugin här} om hur du får formatering på till exempel datum
 
 ### Applikationslayout i beta
 
-Alla nya komponenter för applikationslayout är nu släppta i status beta.
+Alla nya komponenter för applikationslayout är nu släppta i {@link about#beta status beta).
 Observera att de nya komponenterna inte ska användas i produktion förrän de har status produktionsklar.
 Vi räknar med att kunna sätta status produktionsklar i någon av de närmast kommande releaserna.
 Läs mer om de nya komponenterna {@link FPageLayout applikationsmall}, {@link FResizePane justerbar yta},
@@ -59,20 +65,42 @@ Dokumentationen för {@link config konfiguration} är uppdaterad med vilken inby
 
 Mer kontroll över justerbara ytor i nya applikationslayouten (fortfarande beta):
 
-- Overlay
-- Stäng av/på om storlek ska kunna justeras
-- Dölj/visa yta
+- overlay
+- stäng av/på om storlek ska kunna justeras
+- dölj/visa yta.
 
-Flera buggar rättade.
+Flera buggar är rättade.
 
 ### Stöd för egna knappar i `FCrudDataset`
 
 Använd slotten #buttons för att lägga till egna anpassade lägg-till knappar.
 
-## Ny release med brytande ändringar &#127881;
+## Version 6.3.0
 
-Version: 6.0.0 <br>
+2025-03-11
+
+Release innehåller följande uppdateringar:
+
+- Nytt paket `@fkui/tsconfig` med rekommenderad konfiguration för TypeScript och FKUI. Läs mer om {@link tsconfig}.
+- Inmatningsfält (FTextField) hanterar `null` som modellvärde.
+- Ändringar i {@link FPageLayout} och relaterade komponenter (fortfarande i beta).
+- Flera buggar är rättade.
+
+## Version 6.2.0
+
+2025-02-28
+
+Release innehåller följande uppdateringar:
+
+- Betaversion av nya komponenter för applikationslayout finns tillgängliga.
+  Observera att de inte går att använda förrän de ligger i status produktionsklar.
+- Flera buggar är rättade.
+
+## Version 6.0.0
+
 2025-02-10
+
+### Ny release med brytande ändringar
 
 Releasen innehåller bland annat följande uppdateringar:
 
@@ -99,19 +127,21 @@ Releasen innehåller bland annat följande uppdateringar:
 
 {@link migrating-to-v6 Läs mer i migreringsguiden för version 6}
 
-## Kombobox
+## Version 5.44.0
 
-Version: 5.44.0 <br>
 2024-12-17
+
+### Kombobox
 
 Komboboxen kombinerar ett textfält med en lista som har förbestämda alternativ. Listan filtreras för att matcha det som skrivs in i textfältet och presenterar förslag. För användaren innebär detta ett smidigare sätt att göra ett val bland ett stort antal alternativ i stället för att behöva skrolla i en lång dropplista. Komboboxen kan också användas i de fall då användaren både ska kunna skriva en godtycklig fritext eller välja i en lista med förbestämda förslag.
 
 {@link combobox Läs mer om kombobox}
 
-## Densitet
+## Version 5.26.0
 
-Version: 5.26.0 <br>
 2024-06-04
+
+### Densitet
 
 Densitet styr hur många komponenter och hur mycket information som får plats på skärmen utan att användaren behöver skrolla. Höjden är frikopplad från fontstorlek och rem. Densitet påverkar en komponents höjd samt avståndet mellan komponenter. Hög densitet ger en kompakt layout för applikationer som behöver presentera mycket information som användaren måste kunna överblicka. Till exempel handläggningsstöd.
 
@@ -121,26 +151,29 @@ Det ska tilläggas att webbapplikationer som körs i Hapo kommer att fortsätta 
 
 {@link density Läs mer om densitet}
 
-## Inmatning i tabellceller
+## Version 5.25.0
 
-Version: 5.25.0 <br>
 2024-05-29
+
+### Inmatning i tabellceller
 
 Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen. Fältens standardetikett är visuellt dolda och ersätts av tabellrubriken för en seende användare men läsas upp som vanligt av skärmläsare. Vid fältvalidering visas felmeddelande i en tooltip när fältet har fokus. Utöver inmatningsfält har datumväljare och dropplista stöd för att användas i tabell.
 
 {@link table#inmatning_i_tabell Läs mer om inmatning i tabell }
 
-## Internt tema byter namn
+## Version 5.25.0
 
-Version: 5.25.0 <br>
 2024-05-29
+
+### Internt tema byter namn
 
 Det interna temat byter i dokumentationen namn till FK Hapo. Detta är ett steg mot att framöver lägga till stöd för att kunna bygga desktopanpassade applikationer med samma tema för hela Försäkringskassan.
 
-## Deprekering av gruppkomponenter för radio och kryssruta
+## Version 5.17.0
 
-Version: 5.17.0 <br>
 2024-03-22
+
+### Deprekering av gruppkomponenter för radio och kryssruta
 
 - `FRadioGroup`, `FCheckboxGroup` ersätts med Fältgruppering (`FFieldset`)
 - `FRadioGroupField` byter namn till `FRadioField`
@@ -148,17 +181,19 @@ Version: 5.17.0 <br>
 
 {@link migrating-to-fieldset Läs mer om hur du uppdaterar din användning av radio och kryssrutor }
 
-## Expanderbara rader i tabeller
+## Version 5.16.0
 
-Version: 5.16.0 <br>
 2024-03-11
+
+### Expanderbara rader i tabeller
 
 {@link table#interaktiv_tabell Interaktiva tabeller } kan ha expanderbara rader för att visa ytterligare rader eller valfritt innehåll.
 
-## Validering och visning av status
+## Version 5.15.0
 
-Version: 5.15.0 <br>
 2024-02-09
+
+### Validering och visning av status
 
 Ett obligatoriskt inmatningsfält som lämnas tomt när användaren tabbar förbi fältet visas inte längre som felaktigt. Istället visas de som felaktiga först när användaren
 försöker skicka in formuläret.
@@ -171,17 +206,19 @@ Istället förblir ett ifyllt fält neutralt när det är ifyllt. Notera att det
 Innan den här ändringen visades inmatningsfält som OK när uppgifterna som användaren matade in uppfyllde formatregler eller när ett fält utan formatregler helt enkelt bara
 blev ifyllt (t.ex. ett fält för att ange ett namn).
 
-## Förlåtande personnummer
+## Version 5.10.0
 
-Version: 5-10.0 <br>
 2023-12-14
+
+### Förlåtande personnummer
 
 Det {@link textfield-specialized#personnummer specialiserade inmatningsfältet för personnummer} har uppdaterats med förlåtande inmatning. Användaren kan skriva in personnummer med både 10 siffror eller 12 siffror. Det inmatade värdet kommer efter godkänd validering att formateras enligt [Skatteverkets regler](https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html) för personnummer. Från och med det år en person fyller 100 år har personnumret plustecken istället för bindestreck.
 
-## Vue3
+## Version 5.0.0
 
-Version: 5.0.0 <br>
 2023-09-22
+
+### Vue3
 
 FKUI har uppdaterats till Vue3.
 

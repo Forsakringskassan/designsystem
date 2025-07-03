@@ -132,8 +132,8 @@ Går det inte lösa utan att bryta kompatibilitet så gäller följande:
 
 - Vi tillsammans samlar ihop flera brytande ändringar i samma release.
 - Vi tillsammans går igenom kodbasen och tar nuvarande deprekerad funktionalitet.
-- Vi tillsammans uppdaterar {@link release-plan Release planen}.
-- Vi tillsammans arbetar fram ett nyhetsmeddelande.
+- Vi tillsammans uppdaterar {@link releases Releaser}.
+- Vi tillsammans arbetar fram ett releaseanteckning.
 - Din commit ska använda `!` efter type samt en trailer med `BREAKING CHANGE:` och kortfattade förklaring och instruktioner till migrering.
 - Din commit ska innehålla en utförlig migreringsguide. Inkludera exempel och kod-diff.
 
@@ -222,9 +222,9 @@ Du kan med fördel skapa den som en "Draft" för att tydligt markera att det int
 
 Se också {@link checklist-publication checklista för publicering}.
 
-## Nyheter
+## Releaseanteckningar
 
-Vi publicerar alla större ändringar som nyheter på hemsida, chatt och andra kanaler.
+Vi publicerar alla viktiga ändringar i {@link release-notes releaseanteckningarna}.
 
 Det kan vara
 
@@ -232,7 +232,7 @@ Det kan vara
 - ändringar i visuellt utseende
 - brytande ändringar.
 
-Lägg gärna upp förslag på formulering till nyhet i din pull request.
+Lägg gärna upp förslag på formulering till releaseanteckning i din pull request.
 Texten ska innehålla en kortfattad beskrivning av ändringen.
 
 ## Release

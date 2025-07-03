@@ -180,8 +180,11 @@ functions/test-utils/lib.html
 functions/test-utils/vue.html
 functions/tsconfig.html
 gettingstarted/about/index.html
-gettingstarted/about/news.html
-gettingstarted/about/release-plan.html
+gettingstarted/about/news.html -> gettingstarted/about/release-notes.html
+gettingstarted/about/release-notes.html
+gettingstarted/about/release-plan.html -> gettingstarted/about/roadmap.html
+gettingstarted/about/releases.html
+gettingstarted/about/roadmap.html
 gettingstarted/contribute-to-fkds/checklist-publication.html
 gettingstarted/contribute-to-fkds/code-guidelines.html
 gettingstarted/contribute-to-fkds/commits.html
