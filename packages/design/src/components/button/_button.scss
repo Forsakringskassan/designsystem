@@ -113,7 +113,7 @@ $button--standard: (
     background-color--hover: $button-secondary-color-background-hover,
     background-color: $button-secondary-color-background-default,
     border-color: $button-secondary-color-border-default,
-    color: var(--f-text-color-button-standard),
+    color: $button-secondary-color-text-default,
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
     padding-top: core.densify(var(--f-button-standard-padding-top)),
@@ -124,9 +124,9 @@ $button--standard: (
 
 /// Discrete button
 $button--discrete: (
-    color: var(--f-text-color-button-discrete),
+    color: $button-tertiary-color-text-default,
     color--hover: var(--f-text-color-button-discrete-hover),
-    color--disabled: var(--f-text-color-button-discrete-disabled),
+    color--disabled: $button-tertiary-color-text-disabled,
     background-color--hover: var(--f-background-button-discrete-hover),
     background-color: transparent,
     background-color--disabled: transparent,
@@ -142,9 +142,9 @@ $button--discrete: (
 
 /// Discrete inverted button
 $button--discrete-inverted: (
-    color: var(--f-text-color-button-discrete-inverted),
+    color: $button-tertiary-inverted-color-text-default,
     color--hover: var(--f-text-color-button-discrete-inverted-hover),
-    color--disabled: var(--f-text-color-button-discrete-inverted-disabled),
+    color--disabled: $button-tertiary-inverted-color-text-disabled,
     background-color: transparent,
     background-color--disabled: transparent,
     border-color--disabled: transparent,
@@ -216,11 +216,7 @@ $button--tertiary: (
         /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
         @extend .button--discrete--black;
 
-        color: var(--f-text-color-default);
-
-        & > .button__icon {
-            color: var(--f-icon-color-black);
-        }
+        color: $button-tertiary-black-color-text-default;
     }
 }
 
@@ -256,11 +252,7 @@ $button--tertiary: (
             padding-bottom: core.densify(var(--f-button-discrete-black-padding-bottom));
             padding-left: var(--f-button-discrete-black-padding-left);
             /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-            color: var(--f-text-color-default);
-
-            & > .button__icon {
-                color: var(--f-icon-color-black);
-            }
+            color: $button-tertiary-black-color-text-default;
         }
 
         &:hover {
@@ -324,6 +316,10 @@ $button--tertiary: (
             }
         }
 
+        &:disabled {
+            border: none;
+        }
+
         &--inverted {
             color: $button-tertiary-inverted-color-text-default;
 
@@ -336,6 +332,7 @@ $button--tertiary: (
 
             &:disabled {
                 color: $button-tertiary-inverted-color-text-disabled;
+                border: none;
                 border-width: 0;
                 background-color: $button-tertiary-inverted-color-background-disabled;
             }

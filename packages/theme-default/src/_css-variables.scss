@@ -9,7 +9,6 @@
     --f-text-color-default: #{$palette-color-fk-black-100}; // global
     --f-text-color-default-inverted: #{$palette-color-white-100}; // global
     --f-text-color-discrete: #{$palette-color-fk-black-70}; // label, table
-
     --f-text-color-error: #{$palette-color-red-85}; // label, error-list
 
     --f-text-color-link: #{$palette-color-bluebell-100};
@@ -23,17 +22,11 @@
     --f-text-color-heading-4: inherit;
     --f-text-color-heading-5: inherit;
     --f-text-color-heading-6: inherit;
-    --f-text-color-input-disabled: #{$palette-color-fk-black-50}; // checkbox
-    --f-text-color-heading-expandable-panel: #{$palette-color-white-100};
-    --f-text-color-wizard-step-done: #{$palette-color-green-a-85}; // wizard-step
 
-    --f-text-color-button-standard: #{$palette-color-bluebell-100};
-    --f-text-color-button-discrete: #{$palette-color-bluebell-100};
-    --f-text-color-button-discrete-disabled: #{$palette-color-fk-black-50};
+    --f-text-color-heading-expandable-panel: #{$palette-color-white-100};
+
     --f-text-color-button-discrete-hover: #{$palette-color-bluebell-120};
-    --f-text-color-button-discrete-inverted: #{$palette-color-white-100};
     --f-text-color-button-discrete-inverted-hover: #{$palette-color-white-100};
-    --f-text-color-button-discrete-inverted-disabled: #{$palette-color-bluebell-15};
 
     --f-text-color-menu: #{$palette-color-fk-black-100};
     --f-text-color-menu-hover: #{$palette-color-fk-black-100};
@@ -42,20 +35,14 @@
     --f-text-color-popupmenu: #{$palette-color-fk-black-100};
     --f-text-color-popupmenu-hover: #{$palette-color-fk-black-100};
 
-    --f-text-color-close-button: #{$palette-color-fk-black-100};
-
     // ***********
     // ICON COLORS
     // ***********
     --f-icon-color-white: #{$palette-color-white-100}; // global
-    --f-icon-color-black: #{$palette-color-fk-black-100}; // global
     --f-icon-color-info: #{$palette-color-bluebell-100}; // message-box, modal, tooltip
-
     --f-icon-color-primary: #{$palette-color-bluebell-100}; // select-field, file-item, file-selector, calendar
-    --f-icon-color-discrete: #{$palette-color-fk-black-70}; // wizard-step
-    --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field
+    --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field, form-step
     --f-icon-color-error: #{$palette-color-red-100}; // message-box, text-field, textarea, modal, file-item
-    --f-icon-color-input: #{$palette-color-fk-black-50}; // textfield
     --f-icon-color-notice: #{$palette-color-tegel-100}; // expandable-panel
     --f-icon-color-loader: #{$palette-color-green-a-85};
     --f-icon-color-expandable-panel: #{$palette-color-white-100};
@@ -64,22 +51,13 @@
     --f-icon-color-table-header-discrete: #{$palette-color-fk-black-50}; // table
     --f-icon-color-sort-filter-dataset-close: #{$palette-color-fk-black-100}; // sort-filter-dataset
     --f-icon-color-sort-filter-dataset-search: #{$palette-color-fk-black-50}; // sort-filter-dataset
-    --f-icon-color-wizard-step-pending: #{$palette-color-fk-black-5}; // wizard-step
-    --f-icon-color-wizard-step-done: #{$palette-color-green-a-85}; // wizard-step
     --f-icon-color-success-background: #{$palette-color-green-a-15};
 
     // *****************
     // BACKGROUND COLORS
     // *****************
-    --f-background-content: #{$palette-color-white-100}; // modal, expandable, navbar content
-    --f-background-input: #{$palette-color-white-100}; // input element
-    --f-background-input-selected: #{$palette-color-bluebell-100}; // checkbox, radiobutton
-    --f-background-input-selected-disabled: #{$palette-color-fk-black-50}; // checkbox, radiobutton
-    --f-background-error: #{$palette-color-red-5}; // modal, messagebox
-    --f-background-success: #{$palette-color-green-a-5}; // modal, messagebox
     --f-background-overlay: rgba(0, 0, 0, 0.75); // modal, loader
 
-    --f-background-progress-file-item-ongoing: #{$palette-color-yellow-85};
     --f-background-pageheader-primary: #{$palette-color-green-a-100}; // page-header
     --f-background-skiplink-focus: #{$palette-color-bluebell-5};
     --f-background-heading-expandable-panel: #{$palette-color-green-a-100};
@@ -87,7 +65,6 @@
     --f-background-expandable-panel: #{$palette-color-white-100};
     --f-background-heading-static-panel: #{$palette-color-green-b-50};
     --f-background-code: #{$palette-color-fk-black-5};
-    --f-background-wizard-step-line: #{$palette-color-fk-black-70}; // wizard-step
 
     --f-background-button-discrete-hover: none;
     --f-background-sidepanel-button-tertiary-hover: #{$palette-color-bluebell-15}; //  FLeftPanel and FRightPanel
@@ -110,23 +87,9 @@
     --f-background-popupmenu-vertical-hover: #{$palette-color-fk-black-15};
     --f-background-popupmenu-vertical-highlight: #{$palette-color-green-b-15};
 
-    --f-background-dialogue-tree: #{$palette-color-white-100};
-    --f-background-dialogue-tree-hover: #{$palette-color-bluebell-15};
-
     // *************
     // BORDER COLORS
     // *************
-    --f-border-color-modal: #{$palette-color-fk-black-50};
-    --f-border-color-success: #{$palette-color-green-a-85}; // message-box, textfield, textarea
-    --f-border-color-error: #{$palette-color-red-100}; // message-box, modal, textfield, textarea
-    --f-border-color-input: #{$palette-color-fk-black-50};
-    --f-border-color-input-inner: #{$palette-color-bluebell-15}; // radiobutton
-    --f-border-color-input-inner-selected: #{$palette-color-bluebell-15}; // radiobutton
-    --f-border-color-input-inner-disabled: #{$palette-color-white-100}; // radiobutton
-    --f-border-color-card: #{$palette-color-fk-black-50}; // Card
-    --f-border-color-dialogue-tree: #{$palette-color-fk-black-50}; // Dialogue tree
-
-    --f-border-color-progress-file-item-ongoing: #{$palette-color-fk-black-70};
 
     --f-border-color-panel: #{$palette-color-green-b-15}; // expandable-panel, static-panel palettfärg!?
     --f-border-color-expandable-panel: #{$palette-color-green-a-100};
@@ -135,7 +98,6 @@
     --f-border-color-separator: #{$palette-color-fk-black-15}; // radio-button-group, file-item, expandable-paragraph
     --f-border-color-separator-pageheader-primary: #{$palette-color-white-100}; // page-header
     --f-border-color-separator-contextmenu: #{$palette-color-fk-black-50};
-    --f-border-color-wizard-step-line: #{$palette-color-fk-black-70}; // wizard-step
     --f-border-color-link: #{$palette-color-bluebell-100};
     --f-border-color-link-hover: #{$palette-color-fk-black-50};
     --f-border-color-link-discrete: #{$palette-color-fk-black-50};
