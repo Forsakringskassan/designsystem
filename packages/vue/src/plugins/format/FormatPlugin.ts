@@ -45,6 +45,10 @@ export const FormatPlugin: Plugin = {
         app.directive(
             "format",
             (el: HTMLElement, { value, arg }: DirectiveBinding) => {
+                if (value === undefined) {
+                    return;
+                }
+
                 const formatter = formatters[arg as keyof typeof formatters];
                 if (formatter) {
                     removeObsoleteClasses(el);

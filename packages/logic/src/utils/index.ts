@@ -16,3 +16,5 @@ export {
     deleteCookie,
     findCookie,
 } from "./cookies";
+export { guardRef } from "./guard-ref";
+export { guardSet } from "./guard-set";
