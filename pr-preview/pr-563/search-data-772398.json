@@ -70,14 +70,10 @@
     "På gång",
     "Nyheter",
     "Designsystemet",
-    "Vue.js",
-    "Om testverktyg",
-    "Generella funktioner",
-    "Jest",
+    "EventBus",
+    "EventBus",
     "focus-indicator() mixin",
     "densify() function",
-    "EventBus",
-    "EventBus",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -104,6 +100,10 @@
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
     "clamp() function",
+    "Vue.js",
+    "Om testverktyg",
+    "Generella funktioner",
+    "Jest",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -151,14 +151,14 @@
     "FFormModal",
     "Bekräftelsemodal",
     "FConfirmModal",
-    "Startpunkt",
-    "entrypoint",
-    "Länk",
-    "anchor",
     "Förloppsindikator",
     "FProgressbar",
     "Laddningsindikator",
     "FLoader",
+    "Startpunkt",
+    "entrypoint",
+    "Länk",
+    "anchor",
     "Specialiserade inmatningsfält",
     "Kombobox",
     "FTextField",
@@ -569,24 +569,11 @@
       "terms": []
     },
     {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
-      "terms": []
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
     },
     {
       "url": "functions/sass/focus-indicator.html",
@@ -597,13 +584,6 @@
       "url": "functions/sass/densify.html",
       "title": "densify() function",
       "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
     },
     {
       "url": "functions/plugins/validationplugin.html",
@@ -726,6 +706,26 @@
     {
       "url": "functions/date/clamp.html",
       "title": "clamp() function",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": []
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
       "terms": []
     },
     {
@@ -884,20 +884,6 @@
       ]
     },
     {
-      "url": "components/links/entrypoint.html",
-      "title": "Startpunkt",
-      "terms": [
-        "entrypoint"
-      ]
-    },
-    {
-      "url": "components/links/anchor.html",
-      "title": "Länk",
-      "terms": [
-        "anchor"
-      ]
-    },
-    {
       "url": "components/load/fprogressbar.html",
       "title": "Förloppsindikator",
       "terms": [
@@ -909,6 +895,20 @@
       "title": "Laddningsindikator",
       "terms": [
         "FLoader"
+      ]
+    },
+    {
+      "url": "components/links/entrypoint.html",
+      "title": "Startpunkt",
+      "terms": [
+        "entrypoint"
+      ]
+    },
+    {
+      "url": "components/links/anchor.html",
+      "title": "Länk",
+      "terms": [
+        "anchor"
       ]
     },
     {
@@ -1549,19 +1549,19 @@
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 49,
-    "72": 50,
-    "73": 51,
-    "74": 52,
-    "75": 53,
-    "76": 54,
+    "71": 48,
+    "72": 49,
+    "73": 50,
+    "74": 51,
+    "75": 52,
+    "76": 53,
     "77": 54,
     "78": 55,
-    "79": 56,
-    "80": 57,
-    "81": 58,
-    "82": 59,
-    "83": 59,
+    "79": 55,
+    "80": 55,
+    "81": 56,
+    "82": 57,
+    "83": 58,
     "84": 59,
     "85": 60,
     "86": 61,
