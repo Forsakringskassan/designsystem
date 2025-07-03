@@ -1,10 +1,10 @@
-import { type ValidatorConfig, type ValidatorName } from "./type-mapping";
+import { type ValidatorTypeMapping, type ValidatorName } from "./type-mapping";
 
 /**
  * @public
  */
 export interface TypedValidatorContext<K extends ValidatorName> {
-    readonly config: ValidatorConfig<K>;
+    readonly config: ValidatorTypeMapping[K]["config"];
     readonly element: HTMLElement;
 }
 

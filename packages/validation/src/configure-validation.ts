@@ -2,7 +2,10 @@ import { type ConfigEventDetails } from "./event";
 import { getValidatorByName } from "./registry";
 import { componentStateSymbol } from "./state-symbol";
 import { type ValidatorTypeMapping } from "./type-mapping";
-import { type ValidationConfig } from "./validation-config";
+import {
+    type ValidatorConfigMapping,
+    type ValidatorConfig,
+} from "./types/validation-config";
 import {
     type PlaceholderState,
     type ValidationState,
@@ -12,9 +15,7 @@ const eventName = "validation:config";
 
 function configFromState(
     state: ValidationState<unknown, unknown> | PlaceholderState,
-): {
-    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-} {
+): ValidatorConfigMapping {
     const { validators } = state;
     const entries = validators.map(([validator, config]) => [
         validator.name,
@@ -39,9 +40,7 @@ function dispatchConfigEvent(
  */
 export function configureValidation(
     element: HTMLElement,
-    config: {
-        [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-    },
+    config: ValidatorConfigMapping,
 ): void {
     let state = element[componentStateSymbol];
     if (!state) {

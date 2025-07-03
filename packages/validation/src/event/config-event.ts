@@ -1,12 +1,9 @@
-import { type ValidatorTypeMapping } from "../type-mapping";
-import { type ValidationConfig } from "../validation-config";
+import { type ValidatorConfigMapping } from "../types";
 
 /**
  * @public
  */
-export type ConfigEventDetails = {
-    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-};
+export type ConfigEventDetails = ValidatorConfigMapping;
 
 /**
  * @public

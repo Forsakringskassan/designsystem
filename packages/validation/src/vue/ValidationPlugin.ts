@@ -1,17 +1,15 @@
 import { type App, type Plugin, type Directive, watchEffect } from "vue";
 import { type ValidatorTypeMapping } from "../type-mapping";
-import { type ValidationConfig } from "../validation-config";
-import { setConfigToElement } from "../validation-config";
+import { type ValidatorConfigMapping } from "../types/validation-config";
+import { setConfigToElement } from "./config";
 
 /**
  * @public
  */
 export type ValidationDirective = Directive<
     HTMLElement,
-    | {
-          [K in keyof ValidatorTypeMapping]?: Partial<ValidationConfig<K>>;
-      }
-    | undefined
+    ValidatorConfigMapping | undefined,
+    keyof ValidatorTypeMapping & {}
 >;
 
 declare module "vue" {
@@ -23,11 +21,13 @@ declare module "vue" {
 const validationDirective: ValidationDirective = {
     deep: true,
     mounted(element, binding) {
-        watchEffect(() => { // @todo behövs denna?
+        watchEffect(() => {
+            // @todo behövs denna?
             setConfigToElement(element, binding.value ?? {});
         });
     },
     updated(element, binding) {
+        console.log("update", binding.value);
         setConfigToElement(element, binding.value ?? {});
     },
 };

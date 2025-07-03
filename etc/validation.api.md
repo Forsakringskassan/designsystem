@@ -16,14 +16,10 @@ export function addErrorMessages(texts: Record<string, string>, { clear }?: {
 export type ConfigEvent = CustomEvent<ConfigEventDetails>;
 
 // @public (undocumented)
-export type ConfigEventDetails = {
-    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-};
+export type ConfigEventDetails = ValidatorConfigMapping;
 
 // @public (undocumented)
-export function configureValidation(element: HTMLElement, config: {
-    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-}): void;
+export function configureValidation(element: HTMLElement, config: ValidatorConfigMapping): void;
 
 // @public (undocumented)
 export function defineValidator<K extends ValidatorName, TValue, TModel>(name: K, definition: Omit<Validator<K, TValue, TModel>, "name">): Validator<K, TValue, TModel>;
@@ -63,9 +59,7 @@ export interface EnableValidationOptionsSimple {
 }
 
 // @public
-export function getConfigFromElement(element: HTMLElement): {
-    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-} | undefined;
+export function getConfigFromElement(element: HTMLElement): ValidatorConfigMapping | undefined;
 
 // @public (undocumented)
 export type ModelValueValidatorCallback<K extends ValidatorName, T> = (this: ValidatorContext<K>, value: T) => ValidatorResult<K>;
@@ -74,9 +68,7 @@ export type ModelValueValidatorCallback<K extends ValidatorName, T> = (this: Val
 export function resetFormSubmitted(form: HTMLFormElement): void;
 
 // @public
-export function setConfigToElement(element: HTMLElement, config: {
-    [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-}): void;
+export function setConfigToElement(element: HTMLElement, config: ValidatorConfigMapping): void;
 
 // @public (undocumented)
 export function setFormSubmitted(form: HTMLFormElement): void;
@@ -84,7 +76,7 @@ export function setFormSubmitted(form: HTMLFormElement): void;
 // @public (undocumented)
 export interface TypedValidatorContext<K extends ValidatorName> {
     // (undocumented)
-    readonly config: ValidatorConfig<K>;
+    readonly config: ValidatorTypeMapping[K]["config"];
     // (undocumented)
     readonly element: HTMLElement;
 }
@@ -121,20 +113,7 @@ export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
 export function validateElement(element: HTMLElement): Promise<ValidationResult>;
 
 // @public (undocumented)
-export interface ValidationCommonConfig {
-    // (undocumented)
-    enabled?: boolean;
-    // (undocumented)
-    errorMessage?: string;
-}
-
-// @public (undocumented)
-export type ValidationConfig<K extends keyof ValidatorTypeMapping> = ValidatorTypeMapping[K]["config"] extends never ? ValidationCommonConfig : ValidationCommonConfig & ValidatorTypeMapping[K]["config"];
-
-// @public (undocumented)
-export type ValidationDirective = Directive<HTMLElement, {
-    [K in keyof ValidatorTypeMapping]?: Partial<ValidationConfig<K>>;
-} | undefined>;
+export type ValidationDirective = Directive<HTMLElement, ValidatorConfigMapping | undefined, keyof ValidatorTypeMapping & {}>;
 
 // @public (undocumented)
 export const ValidationPlugin: Plugin_2;
@@ -162,8 +141,21 @@ export interface Validator<K extends ValidatorName, TValue, TModel> {
 // @public
 export type ValidatorCode<K extends ValidatorName> = ValidatorTypeMapping[K]["codes"];
 
+// @public (undocumented)
+export interface ValidatorCommonConfig {
+    // (undocumented)
+    enabled?: boolean;
+    // (undocumented)
+    errorMessage?: string;
+}
+
+// @public (undocumented)
+export type ValidatorConfig<K extends keyof ValidatorTypeMapping> = ValidatorTypeMapping[K]["config"] extends never ? ValidatorCommonConfig : ValidatorCommonConfig & ValidatorTypeMapping[K]["config"];
+
 // @public
-export type ValidatorConfig<K extends ValidatorName> = ValidatorTypeMapping[K]["config"];
+export type ValidatorConfigMapping = {
+    readonly [K in keyof ValidatorTypeMapping]?: ValidatorConfig<K>;
+};
 
 // @public (undocumented)
 export type ValidatorContext<K> = K extends ValidatorName ? TypedValidatorContext<K> : UntypedValidatorContext;

@@ -14,14 +14,6 @@ export interface ValidatorTypeMapping {
 export type ValidatorName = keyof ValidatorTypeMapping;
 
 /**
- * Type with mapping between validator name and configuration.
- *
- * @public
- */
-export type ValidatorConfig<K extends ValidatorName> =
-    ValidatorTypeMapping[K]["config"];
-
-/**
  * Type with mapping between validator name and error codes.
  *
  * @public

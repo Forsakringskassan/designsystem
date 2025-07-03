@@ -1,18 +1,13 @@
-export { configureValidation } from "./configure-validation";
-export { defineValidator } from "./define-validator";
-import { ConfigEvent, UpdateEvent } from "./event";
+import { type ConfigEvent, type UpdateEvent } from "./event";
 import { componentStateSymbol, formStateSymbol } from "./state-symbol";
-import { type ValidatorTypeMapping } from "./type-mapping";
-import {
-    type ValidationConfig,
-    type validationConfigSymbol,
-} from "./validation-config";
 import {
     type PlaceholderState,
     type ValidationState,
 } from "./validation-state";
 import "./validators";
 
+export { configureValidation } from "./configure-validation";
+export { defineValidator } from "./define-validator";
 export {
     type EnableValidationOptions,
     type EnableValidationOptionsParsed,
@@ -31,7 +26,6 @@ export {
     type ValidatorTypeMapping,
     type ValidatorName,
     type ValidatorCode,
-    type ValidatorConfig,
 } from "./type-mapping";
 export {
     type ValidatorContext,
@@ -40,11 +34,10 @@ export {
 } from "./validator-context";
 export { validateElement } from "./validate-element";
 export {
-    getConfigFromElement,
-    setConfigToElement,
-    type ValidationCommonConfig,
-    type ValidationConfig,
-} from "./validation-config";
+    type ValidatorCommonConfig,
+    type ValidatorConfig,
+    type ValidatorConfigMapping,
+} from "./types";
 export { type ValidationResult } from "./validation-result";
 export {
     type Validator,
@@ -52,16 +45,18 @@ export {
     type ModelValueValidatorCallback,
     type ViewValueValidatorCallback,
 } from "./validator";
-export { type ValidationDirective, ValidationPlugin } from "./plugins/ValidationPlugin";
+export {
+    type ValidationDirective,
+    ValidationPlugin,
+    getConfigFromElement,
+    setConfigToElement,
+} from "./vue";
 
 declare global {
     interface HTMLElement {
         [componentStateSymbol]?:
             | ValidationState<unknown, unknown>
             | PlaceholderState;
-        [validationConfigSymbol]?: {
-            [K in keyof ValidatorTypeMapping]?: ValidationConfig<K>;
-        };
     }
 
     interface HTMLElementEventMap {
