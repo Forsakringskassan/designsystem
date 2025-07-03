@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="sv" class="layout--component" data-root-url="../..">
+<html lang="sv" class="layout--content-with-menu" data-root-url="../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Förloppsindikator - FK Designsystem</title><link
+        <title>Om ramverkskomponenter - FK Designsystem</title><link
             rel="stylesheet"
             href="../../assets/docs-05431d.css"
             crossorigin
@@ -532,14 +532,14 @@
         >
             Kort
         </a>
-    </li><li class="expandable active">
-        <details open>
+    </li><li class="expandable ">
+        <details >
             <summary>Ladda innehåll</summary>
             
             
-<ol><li class="link active">
+<ol><li class="link ">
         <a
-            href="./fprogressbar.html"
+            href="../load/fprogressbar.html"
             
             
             
@@ -550,7 +550,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="./floader.html"
+            href="../load/floader.html"
             
             
             
@@ -700,14 +700,14 @@
 
             
         </details>
-    </li><li class="expandable ">
-        <details >
+    </li><li class="expandable active">
+        <details open>
             <summary>Ramverkskomponenter</summary>
             
             
-<ol><li class="link ">
+<ol><li class="link active">
         <a
-            href="../framework/about.html"
+            href="./about.html"
             
             
             
@@ -718,7 +718,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/ianimateexpand.html"
+            href="./ianimateexpand.html"
             
             
             
@@ -729,7 +729,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/iflexitem.html"
+            href="./iflexitem.html"
             
             
             
@@ -740,7 +740,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/iflex.html"
+            href="./iflex.html"
             
             
             
@@ -751,7 +751,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/iskiplink.html"
+            href="./iskiplink.html"
             
             
             
@@ -762,7 +762,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/icalendarmonth.html"
+            href="./icalendarmonth.html"
             
             
             
@@ -773,7 +773,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/icalendarnavbar.html"
+            href="./icalendarnavbar.html"
             
             
             
@@ -784,7 +784,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/icalendarmonthgrid.html"
+            href="./icalendarmonthgrid.html"
             
             
             
@@ -795,7 +795,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/ipopup.html"
+            href="./ipopup.html"
             
             
             
@@ -806,7 +806,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/ipopupmenu.html"
+            href="./ipopupmenu.html"
             
             
             
@@ -817,7 +817,7 @@
         </a>
     </li><li class="link ">
         <a
-            href="../framework/ipopuperror.html"
+            href="./ipopuperror.html"
             
             
             
@@ -1070,198 +1070,13 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Förloppsindikator</h1>
+                    <h1 id="title">Om ramverkskomponenter</h1>
 
                     
-                    <div id="aside"><dl>
-    
-    <dt>Komponent</dt>
-    <dd>
-        <div class="docs-badge-list">
-            
-            
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b3364e8fab5cac9bde3a0d7a0fed44967dfadebd/packages/vue/src/components/FProgressbar/FProgressbar.vue">
-                FProgressbar
-            </a>
-            
-            
-        </div>
-    </dd>
-    
 
-    
-    <dt>Status</dt>
-    <dd>
-        <div class="badge badge--success">Produktionsklar</div>
-    </dd>
-    
-</dl>
-
-
-                        
-                        <details id="outline">
-                            <summary class="outline__heading">Innehåll</summary>
-                            <ul>
-                                
-                                <li><a href="#api">API</a></li>
-                                
-                                <li><a href="#relaterat">Relaterat</a></li>
-                                
-                            </ul>
-                        </details>
-                        
-                    </div>
-                    
-
-                    <div id="content"><p class="docs-paragraph">Förloppsindikator används för att visa status för en operation som förväntas ta relativt lång tid.</p>
-
-            <div
-                id="example-807c78"
-                class="code-preview code-preview--default"
-                data-test="example"
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="example-01e000"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FProgressbarExample-01e000.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FProgressbar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FProgressbarExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FProgressbar</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">currentProgress</span>: <span class="hljs-number">40</span>,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">decrease</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentProgress</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentProgress</span> - <span class="hljs-number">20</span>, <span class="hljs-number">0</span>);
-        },
-        <span class="hljs-title function_">increase</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentProgress</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentProgress</span> + <span class="hljs-number">20</span>, <span class="hljs-number">100</span>);
-        },
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-progressbar</span>
-            <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;currentProgress&quot;</span>
-            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Progressbar&quot;</span>
-            <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Progressbar&quot;</span>
-            <span class="hljs-attr">value-text</span>=<span class="hljs-string">&quot;You have uploaded %VALUE% %.&quot;</span>
-        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-progressbar</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-data&quot;</span>
-        &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Debug-data: <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>value: {{currentProgress}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;increase&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;decrease&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>Decrease<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-            Progress:
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">&quot;currentProgress&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
-        <h3 id="fprogressbar-props">
-            <a class="header-anchor" href="#fprogressbar-props">Props</a>
-        </h3>
-        <dl class="docs-api docs-api--slots">
-            
-                        <dt>
-                            <code id="fprogressbar-prop-value"
-                                ><a class="docs-api__anchor" href="#fprogressbar-prop-value"
-                                    ><span class="docs-api__name"
-                                        >value</span
-                                    >: number</a
-                                ></code
-                            >
-                            
-                            
-                        </dt>
-                        <dd>
-                            <p>Sets the progress. Higher value indicates further progress.</p>
-<p>Value must be in range 0-100.</p>
-
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fprogressbar-prop-valuetext"
-                                ><a class="docs-api__anchor" href="#fprogressbar-prop-valuetext"
-                                    ><span class="docs-api__name"
-                                        >valueText</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Text that the screenreader will read.</p>
-<p><code>%VALUE%</code> can be used as a placeholder for the actual value e.g
-<code>&quot;You have uploaded %VALUE% percent&quot;</code>.</p>
-
-                            <p class="doc-api__item">Default: <code>&quot;Du har slutfört %VALUE% %.&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fprogressbar-prop-aria-label"
-                                ><a class="docs-api__anchor" href="#fprogressbar-prop-aria-label"
-                                    ><span class="docs-api__name"
-                                        >aria-label</span
-                                    >: string</a
-                                ></code
-                            >
-                            
-                            
-                        </dt>
-                        <dd>
-                            <p>Accessible name for this progressbar. Should describe the purpose of this
-progressbar.</p>
-
-                            
-                            
-                        </dd>
-                    
-        </dl>
-    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
-<li><a href="../../functions/cypress/pageobjects/FProgressbarPageObject">FProgressbarPageObject</a></li>
-</ul>
+                    <div id="content"><p class="docs-paragraph">Ramverkskomponenter är interna komponenter som används av designsystemet.
+Vi avråder från att du använder en ramverkskomponent direkt i en applikation eftersom den kan ändras utan förvarning.
+Vi hanterar inte en ändring i en ramverkskomponent som brytande vilket medför att ändringar inte finns med i releaseinformation och migreringsguide saknas.</p>
 
 
                     </div>
@@ -1410,10 +1225,10 @@ progressbar.</p>
 
     <!--
 
-         Source file: docs/components/load/FProgressbar.md
-         Document ID: fs:docs/components/load/FProgressbar.md
-         Document name: FProgressbar
-         Document alias: component:FProgressbar
+         Source file: docs/components/framework/about.md
+         Document ID: fs:docs/components/framework/about.md
+         Document name: about
+         Document alias: 
 
     -->
 </html>
