@@ -2,10 +2,6 @@
 @use "../../core/mixins/sr-only" as *;
 
 .file-selector {
-    svg {
-        color: var(--f-icon-color-primary);
-    }
-
     input[type="file"] {
         @include sr-only;
 

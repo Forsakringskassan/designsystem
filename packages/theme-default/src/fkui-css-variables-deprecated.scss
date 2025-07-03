@@ -279,6 +279,40 @@ $palette-color-hav-20: #dbe0ec !default;
     // Deprecated since v6.14.0
     --f-background-form-step: #{$palette-color-fk-black-5};
     --f-border-color-form-step: #{$palette-color-fk-black-15};
+
+    // Deprecated since %version%
+    --f-background-content: #{$palette-color-white-100};
+    --f-background-input-selected: #{$palette-color-bluebell-100};
+    --f-background-input-selected-disabled: #{$palette-color-fk-black-50};
+    --f-background-success: #{$palette-color-green-a-5};
+    --f-background-progress-file-item-ongoing: #{$palette-color-yellow-85};
+    --f-background-dialogue-tree: #{$palette-color-white-100};
+    --f-background-dialogue-tree-hover: #{$palette-color-bluebell-15};
+    --f-background-error: #{$palette-color-red-5};
+    --f-background-wizard-step-line: #{$palette-color-fk-black-70};
+    --f-border-color-wizard-step-line: #{$palette-color-fk-black-70};
+    --f-border-color-progress-file-item-ongoing: #{$palette-color-fk-black-70};
+    --f-border-color-modal: #{$palette-color-fk-black-50};
+    --f-border-color-input: #{$palette-color-fk-black-50};
+    --f-border-color-input-inner: #{$palette-color-bluebell-15};
+    --f-border-color-input-inner-selected: #{$palette-color-bluebell-15};
+    --f-border-color-input-inner-disabled: #{$palette-color-white-100};
+    --f-border-color-success: #{$palette-color-green-a-85};
+    --f-border-color-error: #{$palette-color-red-100};
+    --f-border-color-card: #{$palette-color-fk-black-50};
+    --f-border-color-dialogue-tree: #{$palette-color-fk-black-50};
+    --f-text-color-input-disabled: #{$palette-color-fk-black-50};
+    --f-text-color-wizard-step-done: #{$palette-color-green-a-85};
+    --f-text-color-close-button: #{$palette-color-fk-black-100};
+    --f-icon-color-discrete: #{$palette-color-fk-black-70};
+    --f-icon-color-wizard-step-pending: #{$palette-color-fk-black-5};
+    --f-icon-color-wizard-step-done: #{$palette-color-green-a-85};
+    --f-icon-color-input: #{$palette-color-fk-black-50};
+    --f-text-color-button-standard: #{$palette-color-bluebell-100};
+    --f-text-color-button-discrete: #{$palette-color-bluebell-100};
+    --f-text-color-button-discrete-disabled: #{$palette-color-fk-black-50};
+    --f-text-color-button-discrete-inverted: #{$palette-color-white-100};
+    --f-text-color-button-discrete-inverted-disabled: #{$palette-color-bluebell-15};
 }
 
 @if $global {

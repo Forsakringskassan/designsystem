@@ -8,6 +8,7 @@
 @use "arrows/left-before" as arrowLeftBefore;
 @use "arrows/right" as arrowRight;
 @use "arrows/right-before" as arrowRightBefore;
+@use "variables" as *;
 
 // With inspiration from:
 // https://www.smashingmagazine.com/2024/03/modern-css-tooltips-speech-bubbles-part1/#comments-modern-css-tooltips-speech-bubbles-part1
@@ -24,8 +25,8 @@
     $pos: calc(100% - var(--i-popup-error-offset));
     $radius: 0.2em;
     $border-width: var(--f-border-width-medium);
-    $border-color: var(--f-border-color-error);
-    $bg-color: var(--f-background-error);
+    $border-color: $popuperror-color-border-default;
+    $bg-color: $popuperror-color-background-default;
     $offset: $height * tan($angle / 2);
 
     &--overlay {
@@ -58,7 +59,7 @@
         display: flex;
         justify-content: space-between;
         padding: 0.5em 10px;
-        background: var(--f-border-color-error);
+        background: $popuperror-color-border-default;
         line-height: 24px;
         position: relative;
 
