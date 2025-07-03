@@ -1,7 +1,7 @@
 <!-- eslint-disable import/no-extraneous-dependencies -->
 <script setup lang="ts" generic="T">
 import { ElementIdService } from "@fkui/logic";
-import { ref, useTemplateRef } from "vue";
+import { ref, useTemplateRef, watch } from "vue";
 import { FLabel } from "@fkui/vue";
 import { type Validity, useValidation } from "./use-validation";
 
@@ -11,31 +11,68 @@ type ParserFn<U> = (value: string) => U;
 type FormatterFn<U> = (value: U) => string;
 
 const props = defineProps<{
+    modelValue?: T | undefined;
     parser?: ParserFn<T>;
     formatter?: FormatterFn<T>;
 }>();
 
-const modelValue = defineModel<string | T>({ default: "" });
-const viewValue = ref<string>(props.formatter ? props.formatter(modelValue.value as T) : (modelValue.value as string));
+const emit = defineEmits<{
+    "update:modelValue": [value: T | undefined];
+}>();
+
+const modelValue = ref<T | undefined>(props.modelValue);
+const internalValue = ref<T | undefined>();
+const viewValue = ref<string>(formatterFn(modelValue.value));
 const validity = defineModel<Validity>("validity", {
     required: false,
     default: { isValid: false },
 });
 
+watch(
+    () => props.modelValue,
+    (value) => {
+        if (typeof value === "undefined") {
+            return;
+        }
+        if (value === internalValue.value) {
+            return;
+        }
+        console.log("prop watcher setting internal value to", { value });
+        internalValue.value = value;
+    },
+    { immediate: true },
+);
+
+watch(
+    () => internalValue.value,
+    (value) => {
+        console.log("internal value updated", { value });
+        modelValue.value = value;
+        emit("update:modelValue", value);
+    },
+);
+
 const element = useTemplateRef<HTMLElement>("input");
 const rootElement = useTemplateRef<HTMLElement>("root");
 const { attributes, showValidationError, validationMessage } = useValidation<string, T>(element, rootElement, {
     viewValue,
-    modelValue,
+    modelValue: internalValue,
     validity,
-    parser(value) {
-        return props.parser ? props.parser(value) : (value as T);
-    },
-    formatter(value) {
-        return props.formatter ? props.formatter(value) : (value as string);
-    },
+    parser: parseFn,
+    formatter: formatterFn,
     event: ["blur"],
 });
+
+function formatterFn(value: T | undefined): string {
+    if (typeof value === "undefined") {
+        return "";
+    }
+    return props.formatter ? props.formatter(value) : String(value);
+}
+
+function parseFn(value: string): T {
+    return props.parser ? props.parser(value) : (value as T);
+}
 </script>
 
 <template>
@@ -55,12 +92,10 @@ const { attributes, showValidationError, validationMessage } = useValidation<str
             :id
             ref="input"
             v-model="viewValue"
-            :ariaInvalid="attributes.ariaInvalid"
+            :ariaInvalid="attributes.ariaInvalid.value"
             :required="attributes.required.value"
             type="text"
         />
-        <pre>{{
-            JSON.stringify({ showValidationError, validationMessage, viewValue, modelValue, validity }, null, 2)
-        }}</pre>
+        <pre>{{ JSON.stringify({ viewValue, modelValue, validity }, null, 2) }}</pre>
     </div>
 </template>

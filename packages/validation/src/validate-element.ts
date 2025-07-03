@@ -127,6 +127,8 @@ export function internalValidate(element: HTMLElement): ValidationResult {
             validator: name,
             message,
             viewValue,
+            modelValue: null,
+            formattedValue: null,
             submitted,
         });
         return {
@@ -146,6 +148,7 @@ export function internalValidate(element: HTMLElement): ValidationResult {
                 message,
                 viewValue,
                 modelValue,
+                formattedValue: null, // @todo borde vi inte försöka formatera värdet även om modellen inte validerar?
                 submitted,
             });
             return {
@@ -155,7 +158,10 @@ export function internalValidate(element: HTMLElement): ValidationResult {
         }
     }
 
-    const formattedValue = state.formatter(modelValue);
+    const formattedValue =
+        typeof modelValue !== "undefined"
+            ? state.formatter(modelValue)
+            : viewValue;
     dispatchSuccess(element, {
         viewValue,
         modelValue,

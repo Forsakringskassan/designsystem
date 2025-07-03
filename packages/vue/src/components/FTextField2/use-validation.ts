@@ -13,7 +13,7 @@ export interface Validity {
 
 export interface UseValidationOptions<TValue, TModel> {
     viewValue: Ref<TValue>;
-    modelValue: Ref<TValue | TModel>;
+    modelValue: Ref<TModel | undefined>;
     validity: Ref<Validity>;
     parser(value: TValue): TModel | undefined;
     formatter(value: TModel): TValue | undefined;
@@ -47,42 +47,37 @@ export function useValidation<TValue, TModel>(
     const required: Ref = ref(false);
     const showValidationError = ref();
     const validationMessage: Ref<string | undefined> = ref(undefined);
-    let internalModelValue: TModel | undefined = undefined;
-    onMounted(() => {
-        /* eslint-disable-next-line no-console -- temp */
-        console.log("useValidation:onMounted:enableValidation", element.value);
 
+    onMounted(() => {
         if (!element.value || !rootElement.value) {
             return;
         }
 
+        /* @todo hantera att denna kanske kan komma senare */
         const config = getConfigFromElement(rootElement.value);
         if (!config) {
             return;
         }
+
         useEventListener(element, "validation:config", (event) => {
             const { enabled = true } = event.detail.required ?? {};
             required.value = enabled;
         });
+
         useEventListener(
             element,
             "validation:update",
             (event: UpdateEvent<TValue, TModel>) => {
+                console.log('validation:update', event.detail);
                 const { message } = event.detail;
                 const show = shouldshowError(event);
                 showValidationError.value = show;
                 validationMessage.value = message;
                 ariaInvalid.value = show ? "true" : undefined;
-                if (typeof event.detail.formattedValue !== "undefined") {
+                if (event.detail.formattedValue !== undefined) {
                     viewValue.value = event.detail.formattedValue;
                 }
-                if (typeof event.detail.modelValue !== "undefined") {
-                    modelValue.value = event.detail.modelValue;
-                    internalModelValue = event.detail.modelValue;
-                } else {
-                    modelValue.value = event.detail.viewValue;
-                    internalModelValue = undefined;
-                }
+                modelValue.value = event.detail.modelValue;
                 validity.value.isValid = event.detail.isValid;
             },
         );
@@ -91,7 +86,7 @@ export function useValidation<TValue, TModel>(
                 return viewValue.value;
             },
             getModelValue() {
-                return internalModelValue;
+                return modelValue.value;
             },
             ...options,
         });

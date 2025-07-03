@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Directive } from 'vue';
 import { Plugin as Plugin_2 } from 'vue';
 
 // @public (undocumented)
@@ -102,13 +103,13 @@ export type UpdateEvent<TValue = unknown, TModel = unknown> = CustomEvent<Update
 // @public (undocumented)
 export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
     // (undocumented)
-    formattedValue?: TValue;
+    formattedValue: TValue | undefined;
     // (undocumented)
     isValid: boolean;
     // (undocumented)
     message: string;
     // (undocumented)
-    modelValue?: TModel;
+    modelValue: TModel | undefined;
     submitted: boolean;
     // (undocumented)
     validator: string;
@@ -129,6 +130,11 @@ export interface ValidationCommonConfig {
 
 // @public (undocumented)
 export type ValidationConfig<K extends keyof ValidatorTypeMapping> = ValidatorTypeMapping[K]["config"] extends never ? ValidationCommonConfig : ValidationCommonConfig & ValidatorTypeMapping[K]["config"];
+
+// @public (undocumented)
+export type ValidationDirective = Directive<HTMLElement, {
+    [K in keyof ValidatorTypeMapping]?: Partial<ValidationConfig<K>>;
+} | undefined>;
 
 // @public (undocumented)
 export const ValidationPlugin: Plugin_2;

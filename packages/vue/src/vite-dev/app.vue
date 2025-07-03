@@ -1,12 +1,36 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from "vue";
-import { setFormSubmitted, validateElement } from "@fkui/validation";
+import { Ref, ref, useTemplateRef } from "vue";
+import { parseNumber } from "@fkui/logic";
+import { defineValidator, setFormSubmitted, validateElement } from "@fkui/validation";
 import { FTextField2 } from "../components";
+import { Validity } from "../components/FTextField2/use-validation";
 
 const namn = ref("World");
 const validity = ref<{ isValid: boolean }>({ isValid: false });
-const number = ref("5");
+const value1 = ref(12);
+const value2 = ref();
 const form = useTemplateRef("form");
+
+declare module "@fkui/validation" {
+    interface ValidatorTypeMapping {
+        custom: {
+            config: {
+                foo: string;
+                bar: Validity;
+            };
+            codes: never;
+        };
+    }
+}
+
+defineValidator("custom", {
+    validateViewValue() {
+        //console.log("config", this.config);
+        return {
+            valid: true,
+        };
+    },
+});
 
 async function onSubmit(event: Event): Promise<void> {
     event.preventDefault();
@@ -21,12 +45,18 @@ async function onSubmit(event: Event): Promise<void> {
 
 <template>
     <form ref="form" @submit="onSubmit">
-        <f-text-field2 v-model="namn" v-model:validity="validity"> Namn </f-text-field2>
-        <f-text-field2 v-model="number" v-validation.number.minValue="{ minValue: { limit: 10 } }">
-            Nummer &lt;= 10
+        <f-text-field2 id="value-1" v-model="value1" v-validation.number :parser="parseNumber"> Tal 1 </f-text-field2>
+        <f-text-field2
+            id="value-2"
+            v-model="value2"
+            v-validation.number.minValue="{ minValue: { limit: value1 } }"
+            :parser="parseNumber"
+        >
+            Tal 2
         </f-text-field2>
+
         <button type="submit">Submit</button>
         <p v-if="validity.isValid">Denna texten visas bara om värdet är giltigt</p>
-        <pre>{{ JSON.stringify({ namn, validity }) }}</pre>
+        <pre>{{ JSON.stringify({ value1, value2 }) }}</pre>
     </form>
 </template>

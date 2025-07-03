@@ -52,7 +52,7 @@ export {
     type ModelValueValidatorCallback,
     type ViewValueValidatorCallback,
 } from "./validator";
-export { ValidationPlugin } from "./plugins/ValidationPlugin";
+export { type ValidationDirective, ValidationPlugin } from "./plugins/ValidationPlugin";
 
 declare global {
     interface HTMLElement {
