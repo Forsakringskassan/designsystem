@@ -18,10 +18,10 @@ Komponenterna är testade både manuellt och med hjälp av automatiserade verkty
 
 {@link help-and-support Läs mer om hur du får hjälp och support}
 
-## Nyheter
+## Releaser
 
-{@link news Läs om senaste nytt i designsystemet}
+{@link release-notes Läs om innehållet i releaserna}
 
 ## På gång i designsystemet
 
-{@link release-plan Läs om vad som är på gång i designsystemet}
+{@link roadmap Läs om vad som är på gång i designsystemet}
