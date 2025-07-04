@@ -202,6 +202,9 @@ export function formatPostalCode(value: string | undefined | null): string | und
 export function getErrorMessages(): Record<string, string>;
 
 // @public
+export function guardSet<T>(value: T | undefined | null, message?: string): asserts value is T;
+
+// @public
 export function handleTab(event: KeyboardEvent, container: HTMLElement): void;
 
 // @public (undocumented)
