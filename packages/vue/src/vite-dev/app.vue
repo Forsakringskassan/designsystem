@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { Ref, ref, useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { parseNumber } from "@fkui/logic";
 import { defineValidator, setFormSubmitted, validateElement } from "@fkui/validation";
 import { FTextField2 } from "../components";
 import { Validity } from "../components/FTextField2/use-validation";
 
-const namn = ref("World");
 const validity = ref<{ isValid: boolean }>({ isValid: false });
 const value1 = ref(12);
 const value2 = ref();

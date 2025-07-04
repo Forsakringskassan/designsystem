@@ -44,8 +44,7 @@ export {
 export {
     type ValidationDirective,
     ValidationPlugin,
-    getConfigFromElement,
-    setConfigToElement,
+    useValidationConfig,
 } from "./vue";
 
 declare global {

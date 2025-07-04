@@ -1,4 +1,4 @@
-import { ValidatorName } from "./type-mapping";
+import { type ValidatorName } from "./type-mapping";
 
 /**
  * Returns validation error message candidates in prioritized order.

@@ -3,6 +3,7 @@
     "compilerOptions": {
         "types": ["node", "jest"],
         "emitDeclarationOnly": true,
+        "verbatimModuleSyntax": true,
         "skipLibCheck": true
     },
     "include": ["src/**/*.ts"],

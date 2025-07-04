@@ -1,5 +1,5 @@
 import { componentStateSymbol } from "./state-symbol";
-import { ValidatorConfigMapping } from "./types";
+import { type ValidatorConfigMapping } from "./types";
 import { internalValidate } from "./validate-element";
 
 /** @public */

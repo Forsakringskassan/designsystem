@@ -1,5 +1,5 @@
-import { ValidatorName } from "./type-mapping";
-import { UntypedValidatorContext } from "./validator-context";
+import { type ValidatorName } from "./type-mapping";
+import { type UntypedValidatorContext } from "./validator-context";
 
 /**
  * Represents a validator without its type.

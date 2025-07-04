@@ -11,7 +11,7 @@ export interface ValidatorTypeMapping {
  *
  * @public
  */
-export type ValidatorName = keyof ValidatorTypeMapping;
+export type ValidatorName = keyof ValidatorTypeMapping & {};
 
 /**
  * Type with mapping between validator name and error codes.

@@ -9,6 +9,14 @@ export interface ValidatorCommonConfig {
 }
 
 /**
+ * @internal
+ */
+export interface NormalizedValidatorCommonConfig {
+    enabled: boolean;
+    errorMessage?: string;
+}
+
+/**
  * @public
  */
 export type ValidatorConfig<K extends keyof ValidatorTypeMapping> =
@@ -17,10 +25,25 @@ export type ValidatorConfig<K extends keyof ValidatorTypeMapping> =
         : ValidatorCommonConfig & ValidatorTypeMapping[K]["config"];
 
 /**
+ * @internal
+ */
+export type NormalizedValidatorConfig<K extends keyof ValidatorTypeMapping> =
+    ValidatorTypeMapping[K]["config"] extends never
+        ? NormalizedValidatorCommonConfig
+        : NormalizedValidatorCommonConfig & ValidatorTypeMapping[K]["config"];
+
+/**
  * An object containing optional configuration for each validator.
  *
  * @public
  */
 export type ValidatorConfigMapping = {
     readonly [K in keyof ValidatorTypeMapping]?: ValidatorConfig<K>;
+};
+
+/**
+ * @internal
+ */
+export type NormalizedValidatorConfigMapping = {
+    readonly [K in keyof ValidatorTypeMapping]?: NormalizedValidatorConfig<K>;
 };

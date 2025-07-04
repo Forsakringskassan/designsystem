@@ -1,8 +1,8 @@
-import { type Ref, type ShallowRef, onMounted, ref } from "vue";
+import { type Ref, type ShallowRef, onMounted, ref, watchEffect } from "vue";
 import {
     type UpdateEvent,
     enableValidation,
-    getConfigFromElement,
+    useValidationConfig,
 } from "@fkui/validation";
 import { useEventListener } from "@vueuse/core";
 
@@ -46,15 +46,15 @@ export function useValidation<TValue, TModel>(
     const required: Ref = ref(false);
     const showValidationError = ref();
     const validationMessage: Ref<string | undefined> = ref(undefined);
+    const configuration = useValidationConfig(rootElement);
+
+    watchEffect(() => {
+        /* eslint-disable-next-line no-console -- debug */
+        console.log("configuration updated", { ...configuration.value });
+    });
 
     onMounted(() => {
-        if (!element.value || !rootElement.value) {
-            return;
-        }
-
-        /* @todo hantera att denna kanske kan komma senare */
-        const config = getConfigFromElement(rootElement.value);
-        if (!config) {
+        if (!element.value) {
             return;
         }
 
@@ -67,7 +67,6 @@ export function useValidation<TValue, TModel>(
             element,
             "validation:update",
             (event: UpdateEvent<TValue, TModel>) => {
-                console.log('validation:update', event.detail);
                 const { message } = event.detail;
                 const show = shouldshowError(event);
                 showValidationError.value = show;
@@ -89,7 +88,7 @@ export function useValidation<TValue, TModel>(
                 return modelValue.value;
             },
             getConfiguration() {
-                return getConfigFromElement(rootElement.value) ?? {};
+                return configuration.value ?? {};
             },
             ...options,
         });

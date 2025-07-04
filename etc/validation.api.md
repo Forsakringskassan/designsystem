@@ -5,7 +5,9 @@
 ```ts
 
 import { Directive } from 'vue';
+import { MaybeRefOrGetter } from 'vue';
 import { Plugin as Plugin_2 } from 'vue';
+import { Ref } from 'vue';
 
 // @public (undocumented)
 export function addErrorMessages(texts: Record<string, string>, { clear }?: {
@@ -59,17 +61,11 @@ export interface EnableValidationOptionsSimple {
     parser?(value: string): string | undefined;
 }
 
-// @public
-export function getConfigFromElement(element: HTMLElement | null): ValidatorConfigMapping | undefined;
-
 // @public (undocumented)
 export type ModelValueValidatorCallback<K extends ValidatorName, T> = (this: ValidatorContext<K>, value: T) => ValidatorResult<K>;
 
 // @public (undocumented)
 export function resetFormSubmitted(form: HTMLFormElement): void;
-
-// @public
-export function setConfigToElement(element: HTMLElement, config: ValidatorConfigMapping): void;
 
 // @public (undocumented)
 export function setFormSubmitted(form: HTMLFormElement): void;
@@ -109,6 +105,9 @@ export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
     // (undocumented)
     viewValue: TValue;
 }
+
+// @public (undocumented)
+export function useValidationConfig(rootElement: MaybeRefOrGetter<HTMLElement | null>): Readonly<Ref<ValidatorConfigMapping | undefined>>;
 
 // @public (undocumented)
 export function validateElement(element: HTMLElement): Promise<ValidationResult>;
@@ -162,7 +161,7 @@ export type ValidatorConfigMapping = {
 export type ValidatorContext<K> = K extends ValidatorName ? TypedValidatorContext<K> : UntypedValidatorContext;
 
 // @public
-export type ValidatorName = keyof ValidatorTypeMapping;
+export type ValidatorName = keyof ValidatorTypeMapping & {};
 
 // @public (undocumented)
 export type ValidatorResult<K extends ValidatorName> = ValidatorCode<K> extends never ? {

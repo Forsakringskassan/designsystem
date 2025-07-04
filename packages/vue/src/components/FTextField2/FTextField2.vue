@@ -37,7 +37,6 @@ watch(
         if (value === internalValue.value) {
             return;
         }
-        console.log("prop watcher setting internal value to", { value });
         internalValue.value = value;
     },
     { immediate: true },
@@ -46,7 +45,6 @@ watch(
 watch(
     () => internalValue.value,
     (value) => {
-        console.log("internal value updated", { value });
         modelValue.value = value;
         emit("update:modelValue", value);
     },

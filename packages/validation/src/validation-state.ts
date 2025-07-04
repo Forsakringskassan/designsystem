@@ -1,4 +1,4 @@
-import { ValidatorConfigMapping } from "./types";
+import { type ValidatorConfigMapping } from "./types";
 
 /**
  * Internal state for validation service.

@@ -7,6 +7,7 @@ function build(format) {
     const outDir = `dist/${format}`;
 
     return {
+        external: ["@fkui/logic", "vue"],
         input: ["src/index.ts"],
         output: {
             dir: outDir,

@@ -1,6 +1,5 @@
 import { getCandidates } from "./get-candidates";
-import { ValidatorName } from "./type-mapping";
-import { type ValidationState } from "./validation-state";
+import { type ValidatorName } from "./type-mapping";
 
 let errorMessages: Record<string, string> = {};
 
