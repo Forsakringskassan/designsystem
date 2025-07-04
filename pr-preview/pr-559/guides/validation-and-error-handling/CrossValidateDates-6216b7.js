@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/CrossValidateDates.vue:CrossValidateDates-f7516a.js
+// virtual-entry:virtual:docs/guides/validation/examples/CrossValidateDates.vue:CrossValidateDates-6216b7.js
 import { defineComponent } from "vue";
 import { FDate, Weekday } from "@fkui/date";
 import { isEmpty } from "@fkui/logic";
@@ -139,7 +139,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f7516a"
+  selector: "#example-6216b7"
 });
 export {
   render

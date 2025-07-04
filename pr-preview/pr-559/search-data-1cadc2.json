@@ -41,13 +41,13 @@
     "Bricka",
     "FBadge",
     "CHANGELOG v5",
+    "Formatering och parsning",
+    "Formaterare och parser - anpassad",
     "Validering och felhantering",
     "Längdvalidering",
     "Validator - anpassad",
     "Felmeddelande - anpassat",
     "Korsvalidering",
-    "Formatering och parsning",
-    "Formaterare och parser - anpassad",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -446,6 +446,16 @@
       "terms": []
     },
     {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": []
+    },
+    {
       "url": "guides/validation-and-error-handling/validation.html",
       "title": "Validering och felhantering",
       "terms": []
@@ -468,16 +478,6 @@
     {
       "url": "guides/validation-and-error-handling/cross-validation.html",
       "title": "Korsvalidering",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
-      "terms": []
-    },
-    {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
       "terms": []
     },
     {
