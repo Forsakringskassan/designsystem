@@ -3,6 +3,7 @@ import {
     onMounted,
     ref,
     toValue,
+    watchEffect,
     type MaybeRefOrGetter,
     type Ref,
 } from "vue";
@@ -11,6 +12,7 @@ import { enableValidation } from "../enable-validation";
 import type { UpdateEvent } from "../event";
 import type { ValidatorConfigMapping } from "../types";
 import { useValidationConfig } from "./use-validation-config";
+import { internalValidate } from "../validate-element";
 
 /**
  * @public
@@ -67,6 +69,13 @@ export function useValidation<TValue, TModel>(
     const configuration = useValidationConfig(rootElement);
     const required = computed(() => {
         return Boolean(configuration.value.required?.enabled);
+    });
+
+    watchEffect(() => {
+        const x = toValue(element);
+        if (x) {
+            internalValidate(x, configuration.value);
+        }
     });
 
     useEventListener(

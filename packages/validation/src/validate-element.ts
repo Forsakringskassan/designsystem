@@ -9,6 +9,7 @@ import { type UpdateEventDetails } from "./event/update-event";
 import { type ValidationResult } from "./validation-result";
 import { type UntypedValidatorContext } from "./validator-context";
 import { getValidatorByName } from "./registry";
+import { type ValidatorConfigMapping } from "./types";
 
 interface ValidationError {
     /** validator name */
@@ -108,13 +109,19 @@ function dispatchSuccess(
  * @param element - The element to validate
  * @returns
  */
-export function internalValidate(element: HTMLElement): ValidationResult {
+export function internalValidate(
+    element: HTMLElement,
+    config?: ValidatorConfigMapping,
+): ValidationResult {
     const { [componentStateSymbol]: state } = element;
     if (!state) {
         return { isValid: true, errors: [] };
     }
 
-    const config = state.getConfiguration();
+    if (!config) {
+        config = state.getConfiguration();
+    }
+
     const validators = Object.entries(config).map(
         ([name, config]): [validator: UntypedValidator, config: unknown] => {
             const validator = getValidatorByName(name);
