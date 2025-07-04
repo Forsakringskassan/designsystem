@@ -1,6 +1,7 @@
 import { type Ref, type ShallowRef, onMounted, ref, watchEffect } from "vue";
 import {
     type UpdateEvent,
+    type ValidatorConfigMapping,
     enableValidation,
     useValidationConfig,
 } from "@fkui/validation";
@@ -26,6 +27,7 @@ export interface UseValidation {
         ariaInvalid: Readonly<Ref<"true" | undefined>>;
         required: Readonly<Ref<boolean>>;
     };
+    configuration: Readonly<Ref<ValidatorConfigMapping>>;
 }
 
 function shouldshowError(event: UpdateEvent): boolean {
@@ -88,7 +90,7 @@ export function useValidation<TValue, TModel>(
                 return modelValue.value;
             },
             getConfiguration() {
-                return configuration.value ?? {};
+                return configuration.value;
             },
             ...options,
         });
@@ -100,5 +102,6 @@ export function useValidation<TValue, TModel>(
             ariaInvalid,
             required,
         },
+        configuration,
     };
 }

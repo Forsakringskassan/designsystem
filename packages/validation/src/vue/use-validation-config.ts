@@ -13,13 +13,13 @@ import { getConfigurationRef } from "./get-configuration-ref";
  */
 export function useValidationConfig(
     rootElement: MaybeRefOrGetter<HTMLElement | null>,
-): Readonly<Ref<ValidatorConfigMapping | undefined>> {
-    const configRef = ref<ValidatorConfigMapping | undefined>();
+): Readonly<Ref<ValidatorConfigMapping>> {
+    const configRef = ref<ValidatorConfigMapping>({});
 
     watchEffect(() => {
         const element = toValue(rootElement);
         if (!element) {
-            configRef.value = undefined;
+            configRef.value = {};
             return;
         }
         configRef.value = getConfigurationRef(element).value;

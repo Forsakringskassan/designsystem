@@ -107,7 +107,7 @@ export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
 }
 
 // @public (undocumented)
-export function useValidationConfig(rootElement: MaybeRefOrGetter<HTMLElement | null>): Readonly<Ref<ValidatorConfigMapping | undefined>>;
+export function useValidationConfig(rootElement: MaybeRefOrGetter<HTMLElement | null>): Readonly<Ref<ValidatorConfigMapping>>;
 
 // @public (undocumented)
 export function validateElement(element: HTMLElement): Promise<ValidationResult>;

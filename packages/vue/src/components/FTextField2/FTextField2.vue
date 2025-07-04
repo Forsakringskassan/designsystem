@@ -52,14 +52,18 @@ watch(
 
 const element = useTemplateRef<HTMLElement>("input");
 const rootElement = useTemplateRef<HTMLElement>("root");
-const { attributes, showValidationError, validationMessage } = useValidation<string, T>(element, rootElement, {
-    viewValue,
-    modelValue: internalValue,
-    validity,
-    parser: parseFn,
-    formatter: formatterFn,
-    event: ["blur"],
-});
+const { attributes, showValidationError, validationMessage, configuration } = useValidation<string, T>(
+    element,
+    rootElement,
+    {
+        viewValue,
+        modelValue: internalValue,
+        validity,
+        parser: parseFn,
+        formatter: formatterFn,
+        event: ["blur"],
+    },
+);
 
 function formatterFn(value: T | undefined): string {
     if (typeof value === "undefined") {
@@ -94,6 +98,6 @@ function parseFn(value: string): T {
             :required="attributes.required.value"
             type="text"
         />
-        <pre>{{ JSON.stringify({ viewValue, modelValue, validity }, null, 2) }}</pre>
+        <pre>{{ JSON.stringify({ viewValue, modelValue, validity, configuration }, null, 2) }}</pre>
     </div>
 </template>
