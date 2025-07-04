@@ -67,6 +67,10 @@ jobs:
     cypress-ct:
         name: Cypress Component Tests
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                containers: [1, 2, 3, 4]
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -80,6 +84,9 @@ jobs:
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue build
             - name: Cypress Component Testing
               uses: cypress-io/github-action@v6
+              env:
+                  SPLIT: ${{ strategy.job-total }}
+                  SPLIT_INDEX: ${{ strategy.job-index }}
               with:
                   summary-title: "Component tests"
                   browser: chrome

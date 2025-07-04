@@ -13,7 +13,9 @@ build/
 coverage/
 dist/
 docs/examples/files/
-lib/
+packages/date/lib
+packages/design/lib
+packages/logic/lib
 public/
 temp/
 tests/e2e/screenshots/

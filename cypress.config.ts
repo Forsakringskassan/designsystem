@@ -1,6 +1,7 @@
 import { type ConfigData } from "html-validate";
 import { type Manifest, Generator } from "@forsakringskassan/docs-generator";
 import { defineConfig } from "cypress";
+import cypressSplit from "@fkui/cypress-split";
 import getToMatchScreenshotsPlugin from "@forsakringskassan/cypress-visual-regression/plugin";
 import { init as installAxe } from "@forsakringskassan/cypress-axe/plugins";
 import htmlvalidate, {
@@ -79,7 +80,9 @@ export default defineConfig({
     component: {
         setupNodeEvents(on, config) {
             getToMatchScreenshotsPlugin(on, config);
-            return install(on, config);
+            config = install(on, config);
+            config = cypressSplit(on, config);
+            return config;
         },
         devServer: {
             framework: "vue",

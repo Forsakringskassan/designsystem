@@ -25,6 +25,7 @@ components/flabel.html
 components/flogo.html
 components/fmessagebox.html
 components/foffline.html
+components/framework/about.html
 components/framework/ianimateexpand.html
 components/framework/icalendarmonth.html
 components/framework/icalendarmonthgrid.html
