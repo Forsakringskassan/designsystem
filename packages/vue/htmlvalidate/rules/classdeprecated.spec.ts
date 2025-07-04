@@ -28,6 +28,7 @@ it("should not report error on `v-bind:class`", async () => {
         <div :class="navbar"></div>
         <div v-bind:class></div>
         <div v-bind:class="navbar"></div>
+        <div v-bind:class="icon-stack--new-window"></div>
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
@@ -37,6 +38,7 @@ it("should not report error when non-deprecated class is used", async () => {
     expect.assertions(1);
     const markup = /* HTML */ `
         <button type="button" class="button button--tertiary"></button>
+        <div class="icon-stack button__icon" />
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
@@ -103,5 +105,29 @@ it("should report error when `.navbar` is used", async () => {
         "Class \`navbar\` is deprecated.
 
         It should be replaced with the Vue components \`FPageHeader\` and \`FNavigationMenu\`."
+    `);
+});
+
+it("should report error when `.icon-stack--new-window` is used", async () => {
+    expect.assertions(3);
+    const markup = /* HTML */ `
+        <div class="icon-stack button__icon icon-stack--new-window" />
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    expect(report).toBeInvalid();
+    expect(report).toMatchInlineCodeframe(`
+        "error: class "icon-stack--new-window" is deprecated (fkui/class-deprecated) at inline:2:45:
+          1 |
+        > 2 |         <div class="icon-stack button__icon icon-stack--new-window" />
+            |                                             ^^^^^^^^^^^^^^^^^^^^^^
+          3 |
+        Selector: div"
+    `);
+    const error = report.results[0].messages[0];
+    const docs = await htmlvalidate.getContextualDocumentation(error);
+    expect(docs?.description).toMatchInlineSnapshot(`
+        "Class \`icon-stack--new-window\` is deprecated.
+
+        Stacked icons are no longer used for file item links."
     `);
 });

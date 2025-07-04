@@ -55,7 +55,7 @@ export class FFileItemPageObject implements BasePageObject {
      */
     public typeOfFile(): Cypress.Chainable<string> {
         return this._fileIcon().then((el) =>
-            el[1].classList[1].replace(/.*f-icon-(\w+).*/, "$1"),
+            el[0].classList[1].replace(/.*f-icon-(\w+).*/, "$1"),
         );
     }
 
