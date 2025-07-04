@@ -1,3 +1,4 @@
+import { ValidatorName } from "./type-mapping";
 import { UntypedValidatorContext } from "./validator-context";
 
 /**
@@ -8,7 +9,7 @@ import { UntypedValidatorContext } from "./validator-context";
  * @internal
  */
 export interface UntypedValidator {
-    readonly name: string;
+    readonly name: ValidatorName;
     validateViewValue?: UntypedValidatorCallback;
     validateModelValue?: UntypedValidatorCallback;
 }

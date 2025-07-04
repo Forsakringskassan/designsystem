@@ -27,7 +27,6 @@ const validationDirective: ValidationDirective = {
         });
     },
     updated(element, binding) {
-        console.log("update", binding.value);
         setConfigToElement(element, binding.value ?? {});
     },
 };

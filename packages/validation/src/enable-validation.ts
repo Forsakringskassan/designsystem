@@ -1,10 +1,12 @@
 import { componentStateSymbol } from "./state-symbol";
+import { ValidatorConfigMapping } from "./types";
 import { internalValidate } from "./validate-element";
 
 /** @public */
 export interface EnableValidationOptionsSimple {
     getViewValue(): string | null | undefined;
     getModelValue(): string;
+    getConfiguration(): ValidatorConfigMapping;
     parser?(value: string): string | undefined;
     formatter?(value: string): string | undefined;
     event: string[];
@@ -14,6 +16,7 @@ export interface EnableValidationOptionsSimple {
 export interface EnableValidationOptionsParsed<TValue, TModel> {
     getViewValue(): TValue | undefined;
     getModelValue(): TModel | undefined;
+    getConfiguration(): ValidatorConfigMapping;
     parser(value: TValue): TModel | undefined;
     formatter(value: TModel): TValue | undefined;
     event: string[];
@@ -32,17 +35,16 @@ export function enableValidation<TValue, TModel>(
     target: EnableValidationOptions<TValue, TModel>,
 ): void {
     const existing = element[componentStateSymbol];
-    if (existing && existing.placeholder === false) {
+    if (existing) {
         throw new Error("validation already enabled on element");
     }
 
     element[componentStateSymbol] = {
-        placeholder: false,
         getViewValue: target.getViewValue,
         getModelValue: target.getModelValue,
+        getConfiguration: target.getConfiguration,
         parser: target.parser ?? ((value) => value),
         formatter: target.formatter ?? ((value) => value),
-        validators: existing?.validators ?? [],
     };
 
     for (const event of target.event) {

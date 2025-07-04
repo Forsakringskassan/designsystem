@@ -1,3 +1,5 @@
+import { ValidatorName } from "./type-mapping";
+
 /**
  * Returns validation error message candidates in prioritized order.
  *
@@ -5,13 +7,11 @@
  */
 export function getCandidates(
     validator: { name: string; code: string | undefined },
-    validators: Array<{ readonly name: string }>,
+    validators: ValidatorName[],
     component: string | undefined,
 ): string[] {
     const candidates: string[] = [];
-    const combinedNames = validators.map(
-        (it) => `${validator.name}.${it.name}`,
-    );
+    const combinedNames = validators.map((it) => `${validator.name}.${it}`);
 
     if (component) {
         const combinedNamesWithType = combinedNames.map(

@@ -1,4 +1,5 @@
 import { getCandidates } from "./get-candidates";
+import { ValidatorName } from "./type-mapping";
 import { type ValidationState } from "./validation-state";
 
 let errorMessages: Record<string, string> = {};
@@ -7,11 +8,10 @@ let errorMessages: Record<string, string> = {};
  * @internal
  */
 export function getErrorMessage(
-    target: Pick<ValidationState<unknown, unknown>, "validators">,
+    validators: ValidatorName[],
     name: string,
     code: string,
 ): string {
-    const validators = Object.values(target.validators).map((it) => it[0]);
     const candidates = getCandidates({ name, code }, validators, undefined);
     const key = candidates.find((it) => errorMessages[it]);
     return key ? errorMessages[key] : name;

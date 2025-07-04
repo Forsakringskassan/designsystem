@@ -19,9 +19,6 @@ export type ConfigEvent = CustomEvent<ConfigEventDetails>;
 export type ConfigEventDetails = ValidatorConfigMapping;
 
 // @public (undocumented)
-export function configureValidation(element: HTMLElement, config: ValidatorConfigMapping): void;
-
-// @public (undocumented)
 export function defineValidator<K extends ValidatorName, TValue, TModel>(name: K, definition: Omit<Validator<K, TValue, TModel>, "name">): Validator<K, TValue, TModel>;
 
 // @public (undocumented)
@@ -37,6 +34,8 @@ export interface EnableValidationOptionsParsed<TValue, TModel> {
     // (undocumented)
     formatter(value: TModel): TValue | undefined;
     // (undocumented)
+    getConfiguration(): ValidatorConfigMapping;
+    // (undocumented)
     getModelValue(): TModel | undefined;
     // (undocumented)
     getViewValue(): TValue | undefined;
@@ -51,6 +50,8 @@ export interface EnableValidationOptionsSimple {
     // (undocumented)
     formatter?(value: string): string | undefined;
     // (undocumented)
+    getConfiguration(): ValidatorConfigMapping;
+    // (undocumented)
     getModelValue(): string;
     // (undocumented)
     getViewValue(): string | null | undefined;
@@ -59,7 +60,7 @@ export interface EnableValidationOptionsSimple {
 }
 
 // @public
-export function getConfigFromElement(element: HTMLElement): ValidatorConfigMapping | undefined;
+export function getConfigFromElement(element: HTMLElement | null): ValidatorConfigMapping | undefined;
 
 // @public (undocumented)
 export type ModelValueValidatorCallback<K extends ValidatorName, T> = (this: ValidatorContext<K>, value: T) => ValidatorResult<K>;

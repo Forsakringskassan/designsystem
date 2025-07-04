@@ -7,8 +7,8 @@ import {
 } from "./untyped-validator";
 import { type UpdateEventDetails } from "./event/update-event";
 import { type ValidationResult } from "./validation-result";
-import { type ValidationState } from "./validation-state";
 import { type UntypedValidatorContext } from "./validator-context";
+import { getValidatorByName } from "./registry";
 
 interface ValidationError {
     /** validator name */
@@ -34,26 +34,27 @@ function isModelValueValidator(
 }
 
 function createError(
-    target: Pick<ValidationState<unknown, unknown>, "validators">,
+    validators: Array<[UntypedValidator, unknown]>,
     name: string,
     code: string,
 ): ValidationError {
-    const message = getErrorMessage(target, name, code);
+    const validatorNames = validators.map((it) => it[0].name);
+    const message = getErrorMessage(validatorNames, name, code);
     return { name, code, message };
 }
 
-function validateViewValue<TValue, TModel>(
+function validateViewValue<TValue>(
     element: HTMLElement,
-    target: ValidationState<TValue, TModel>,
+    validators: Array<[UntypedValidator, unknown]>,
     value: TValue,
 ): ValidationError | null {
-    const validators = target.validators.filter(isViewValueValidator);
-    for (const [validator, config] of validators) {
+    const viewValueValidators = validators.filter(isViewValueValidator);
+    for (const [validator, config] of viewValueValidators) {
         const context: UntypedValidatorContext = { config, element };
         const result = validator.validateViewValue.call(context, value);
         if (!result.valid) {
             return createError(
-                target,
+                validators,
                 validator.name,
                 result.code ?? "default",
             );
@@ -62,18 +63,18 @@ function validateViewValue<TValue, TModel>(
     return null;
 }
 
-function validateModelValue<TValue, TModel>(
+function validateModelValue<TValue>(
     element: HTMLElement,
-    target: ValidationState<TValue, TModel>,
+    validators: Array<[UntypedValidator, unknown]>,
     value: TValue,
 ): ValidationError | null {
-    const validators = target.validators.filter(isModelValueValidator);
-    for (const [validator, config] of validators) {
+    const modelValueValidators = validators.filter(isModelValueValidator);
+    for (const [validator, config] of modelValueValidators) {
         const context: UntypedValidatorContext = { config, element };
         const result = validator.validateModelValue.call(context, value);
         if (!result.valid) {
             return createError(
-                target,
+                validators,
                 validator.name,
                 result.code ?? "default",
             );
@@ -109,9 +110,17 @@ function dispatchSuccess(
  */
 export function internalValidate(element: HTMLElement): ValidationResult {
     const { [componentStateSymbol]: state } = element;
-    if (!state || state.placeholder) {
+    if (!state) {
         return { isValid: true, errors: [] };
     }
+
+    const config = state.getConfiguration();
+    const validators = Object.entries(config).map(
+        ([name, config]): [validator: UntypedValidator, config: unknown] => {
+            const validator = getValidatorByName(name);
+            return [validator, config];
+        },
+    );
 
     let submitted = false;
     if ("form" in element && element.form instanceof HTMLFormElement) {
@@ -120,15 +129,15 @@ export function internalValidate(element: HTMLElement): ValidationResult {
 
     // validering råa värden
     const viewValue = state.getViewValue();
-    const viewValueError = validateViewValue(element, state, viewValue);
+    const viewValueError = validateViewValue(element, validators, viewValue);
     if (viewValueError) {
         const { name, message } = viewValueError;
         dispatchError(element, {
             validator: name,
             message,
             viewValue,
-            modelValue: null,
-            formattedValue: null,
+            modelValue: undefined,
+            formattedValue: undefined,
             submitted,
         });
         return {
@@ -140,7 +149,11 @@ export function internalValidate(element: HTMLElement): ValidationResult {
     // validering tolkade värden
     const modelValue = state.parser(viewValue);
     if (typeof modelValue !== "undefined") {
-        const modelValueError = validateModelValue(element, state, modelValue);
+        const modelValueError = validateModelValue(
+            element,
+            validators,
+            modelValue,
+        );
         if (modelValueError) {
             const { name, message } = modelValueError;
             dispatchError(element, {
@@ -148,7 +161,7 @@ export function internalValidate(element: HTMLElement): ValidationResult {
                 message,
                 viewValue,
                 modelValue,
-                formattedValue: null, // @todo borde vi inte försöka formatera värdet även om modellen inte validerar?
+                formattedValue: undefined, // @todo borde vi inte försöka formatera värdet även om modellen inte validerar?
                 submitted,
             });
             return {

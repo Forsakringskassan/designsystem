@@ -1,12 +1,8 @@
 import { type ConfigEvent, type UpdateEvent } from "./event";
 import { componentStateSymbol, formStateSymbol } from "./state-symbol";
-import {
-    type PlaceholderState,
-    type ValidationState,
-} from "./validation-state";
+import { type ValidationState } from "./validation-state";
 import "./validators";
 
-export { configureValidation } from "./configure-validation";
 export { defineValidator } from "./define-validator";
 export {
     type EnableValidationOptions,
@@ -54,9 +50,7 @@ export {
 
 declare global {
     interface HTMLElement {
-        [componentStateSymbol]?:
-            | ValidationState<unknown, unknown>
-            | PlaceholderState;
+        [componentStateSymbol]?: ValidationState<unknown, unknown>;
     }
 
     interface HTMLElementEventMap {

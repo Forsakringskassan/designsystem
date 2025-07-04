@@ -1,7 +1,6 @@
 import { type Ref, type ShallowRef, onMounted, ref } from "vue";
 import {
     type UpdateEvent,
-    configureValidation,
     enableValidation,
     getConfigFromElement,
 } from "@fkui/validation";
@@ -81,6 +80,7 @@ export function useValidation<TValue, TModel>(
                 validity.value.isValid = event.detail.isValid;
             },
         );
+
         enableValidation<TValue, TModel>(element.value, {
             getViewValue() {
                 return viewValue.value;
@@ -88,9 +88,11 @@ export function useValidation<TValue, TModel>(
             getModelValue() {
                 return modelValue.value;
             },
+            getConfiguration() {
+                return getConfigFromElement(rootElement.value) ?? {};
+            },
             ...options,
         });
-        configureValidation(element.value, config);
     });
     return {
         showValidationError,

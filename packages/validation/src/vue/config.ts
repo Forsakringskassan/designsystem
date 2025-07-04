@@ -13,9 +13,9 @@ export const validationConfigSymbol = Symbol("validation:config");
  * @public
  */
 export function getConfigFromElement(
-    element: HTMLElement,
+    element: HTMLElement | null,
 ): ValidatorConfigMapping | undefined {
-    return element[validationConfigSymbol];
+    return element ? element[validationConfigSymbol] : undefined;
 }
 
 /**
