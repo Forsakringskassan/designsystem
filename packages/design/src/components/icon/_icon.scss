@@ -62,6 +62,8 @@ $ICON_SELECTOR: ".icon" !default;
 #{$ICON_SELECTOR}-stack,
 #{$ICON_SELECTOR} {
     &--new-window {
+        @warn "This class is deprecated!";
+
         // anchor icons to top-right and bottom-left
         .icon {
             &.f-icon-new-window {
