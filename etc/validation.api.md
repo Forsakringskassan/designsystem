@@ -24,7 +24,7 @@ export type ConfigEventDetails = ValidatorConfigMapping;
 export function defineValidator<K extends ValidatorName, TValue, TModel>(name: K, definition: Omit<Validator<K, TValue, TModel>, "name">): Validator<K, TValue, TModel>;
 
 // @public (undocumented)
-export function enableValidation<TValue, TModel>(element: HTMLElement, target: EnableValidationOptions<TValue, TModel>): void;
+export function enableValidation<TValue, TModel>(element: HTMLElement | null, target: EnableValidationOptions<TValue, TModel>): void;
 
 // @public (undocumented)
 export type EnableValidationOptions<TValue, TModel> = EnableValidationOptionsSimple | EnableValidationOptionsParsed<TValue, TModel>;
@@ -107,7 +107,41 @@ export interface UpdateEventDetails<TValue = unknown, TModel = unknown> {
 }
 
 // @public (undocumented)
+export interface UseValidation {
+    // (undocumented)
+    attributes: {
+        ariaInvalid: Readonly<Ref<"true" | undefined>>;
+        required: Readonly<Ref<boolean>>;
+    };
+    // (undocumented)
+    configuration: Readonly<Ref<ValidatorConfigMapping>>;
+    // (undocumented)
+    showValidationError: Readonly<Ref<boolean>>;
+    // (undocumented)
+    validationMessage: Readonly<Ref<string | undefined>>;
+}
+
+// @public (undocumented)
+export function useValidation<TValue, TModel>(element: MaybeRefOrGetter<HTMLElement | null>, rootElement: MaybeRefOrGetter<HTMLElement | null>, options: UseValidationOptions<TValue, TModel>): UseValidation;
+
+// @public (undocumented)
 export function useValidationConfig(rootElement: MaybeRefOrGetter<HTMLElement | null>): Readonly<Ref<ValidatorConfigMapping>>;
+
+// @public (undocumented)
+export interface UseValidationOptions<TValue, TModel> {
+    // (undocumented)
+    event: string[];
+    // (undocumented)
+    formatter(value: TModel): TValue | undefined;
+    // (undocumented)
+    modelValue: Ref<TModel | undefined>;
+    // (undocumented)
+    parser(value: TValue): TModel | undefined;
+    // (undocumented)
+    validity: Ref<ValidityModel>;
+    // (undocumented)
+    viewValue: Ref<TValue>;
+}
 
 // @public (undocumented)
 export function validateElement(element: HTMLElement): Promise<ValidationResult>;
@@ -173,6 +207,12 @@ export type ValidatorResult<K extends ValidatorName> = ValidatorCode<K> extends 
 
 // @public (undocumented)
 export interface ValidatorTypeMapping {
+}
+
+// @public (undocumented)
+export interface ValidityModel {
+    // (undocumented)
+    isValid: boolean;
 }
 
 // @public (undocumented)

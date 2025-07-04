@@ -31,9 +31,13 @@ export type EnableValidationOptions<TValue, TModel> =
  * @public
  */
 export function enableValidation<TValue, TModel>(
-    element: HTMLElement,
+    element: HTMLElement | null,
     target: EnableValidationOptions<TValue, TModel>,
 ): void {
+    if (!element) {
+        return;
+    }
+
     const existing = element[componentStateSymbol];
     if (existing) {
         throw new Error("validation already enabled on element");

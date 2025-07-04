@@ -43,7 +43,11 @@ export {
 } from "./validator";
 export {
     type ValidationDirective,
+    type UseValidation,
+    type UseValidationOptions,
+    type ValidityModel,
     ValidationPlugin,
+    useValidation,
     useValidationConfig,
 } from "./vue";
 

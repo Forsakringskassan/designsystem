@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import { parseNumber } from "@fkui/logic";
-import { defineValidator, setFormSubmitted, validateElement } from "@fkui/validation";
+import { type ValidityModel, defineValidator, setFormSubmitted, validateElement } from "@fkui/validation";
 import { FTextField2 } from "../components";
-import { Validity } from "../components/FTextField2/use-validation";
 
 const validity = ref<{ isValid: boolean }>({ isValid: false });
 const value1 = ref(12);
@@ -15,7 +14,7 @@ declare module "@fkui/validation" {
         custom: {
             config: {
                 foo: string;
-                bar: Validity;
+                bar: ValidityModel;
             };
             codes: never;
         };

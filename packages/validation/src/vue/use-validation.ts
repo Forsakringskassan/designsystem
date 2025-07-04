@@ -1,25 +1,39 @@
-import { type Ref, type ShallowRef, onMounted, ref, watchEffect } from "vue";
 import {
-    type UpdateEvent,
-    type ValidatorConfigMapping,
-    enableValidation,
-    useValidationConfig,
-} from "@fkui/validation";
+    computed,
+    onMounted,
+    ref,
+    toValue,
+    type MaybeRefOrGetter,
+    type Ref,
+} from "vue";
 import { useEventListener } from "@vueuse/core";
+import { enableValidation } from "../enable-validation";
+import type { UpdateEvent } from "../event";
+import type { ValidatorConfigMapping } from "../types";
+import { useValidationConfig } from "./use-validation-config";
 
-export interface Validity {
+/**
+ * @public
+ */
+export interface ValidityModel {
     isValid: boolean;
 }
 
+/**
+ * @public
+ */
 export interface UseValidationOptions<TValue, TModel> {
     viewValue: Ref<TValue>;
     modelValue: Ref<TModel | undefined>;
-    validity: Ref<Validity>;
+    validity: Ref<ValidityModel>;
     parser(value: TValue): TModel | undefined;
     formatter(value: TModel): TValue | undefined;
     event: string[];
 }
 
+/**
+ * @public
+ */
 export interface UseValidation {
     showValidationError: Readonly<Ref<boolean>>;
     validationMessage: Readonly<Ref<string | undefined>>;
@@ -38,51 +52,42 @@ function shouldshowError(event: UpdateEvent): boolean {
     return submitted || validator !== "required";
 }
 
+/**
+ * @public
+ */
 export function useValidation<TValue, TModel>(
-    element: Readonly<ShallowRef<HTMLElement | null>>,
-    rootElement: Readonly<ShallowRef<HTMLElement | null>>,
+    element: MaybeRefOrGetter<HTMLElement | null>,
+    rootElement: MaybeRefOrGetter<HTMLElement | null>,
     options: UseValidationOptions<TValue, TModel>,
 ): UseValidation {
     const { viewValue, modelValue, validity } = options;
     const ariaInvalid: Ref<"true" | undefined> = ref(undefined);
-    const required: Ref = ref(false);
     const showValidationError = ref();
     const validationMessage: Ref<string | undefined> = ref(undefined);
     const configuration = useValidationConfig(rootElement);
-
-    watchEffect(() => {
-        /* eslint-disable-next-line no-console -- debug */
-        console.log("configuration updated", { ...configuration.value });
+    const required = computed(() => {
+        return Boolean(configuration.value.required?.enabled);
     });
 
+    useEventListener(
+        element,
+        "validation:update",
+        (event: UpdateEvent<TValue, TModel>) => {
+            const { message } = event.detail;
+            const show = shouldshowError(event);
+            showValidationError.value = show;
+            validationMessage.value = message;
+            ariaInvalid.value = show ? "true" : undefined;
+            if (event.detail.formattedValue !== undefined) {
+                viewValue.value = event.detail.formattedValue;
+            }
+            modelValue.value = event.detail.modelValue;
+            validity.value.isValid = event.detail.isValid;
+        },
+    );
+
     onMounted(() => {
-        if (!element.value) {
-            return;
-        }
-
-        useEventListener(element, "validation:config", (event) => {
-            const { enabled = true } = event.detail.required ?? {};
-            required.value = enabled;
-        });
-
-        useEventListener(
-            element,
-            "validation:update",
-            (event: UpdateEvent<TValue, TModel>) => {
-                const { message } = event.detail;
-                const show = shouldshowError(event);
-                showValidationError.value = show;
-                validationMessage.value = message;
-                ariaInvalid.value = show ? "true" : undefined;
-                if (event.detail.formattedValue !== undefined) {
-                    viewValue.value = event.detail.formattedValue;
-                }
-                modelValue.value = event.detail.modelValue;
-                validity.value.isValid = event.detail.isValid;
-            },
-        );
-
-        enableValidation<TValue, TModel>(element.value, {
+        enableValidation<TValue, TModel>(toValue(element), {
             getViewValue() {
                 return viewValue.value;
             },
@@ -95,6 +100,7 @@ export function useValidation<TValue, TModel>(
             ...options,
         });
     });
+
     return {
         showValidationError,
         validationMessage,

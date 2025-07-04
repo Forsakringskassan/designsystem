@@ -3,7 +3,7 @@
 import { ElementIdService } from "@fkui/logic";
 import { ref, useTemplateRef, watch } from "vue";
 import { FLabel } from "@fkui/vue";
-import { type Validity, useValidation } from "./use-validation";
+import { type ValidityModel, useValidation } from "@fkui/validation";
 
 const id = ElementIdService.generateElementId();
 
@@ -23,7 +23,7 @@ const emit = defineEmits<{
 const modelValue = ref<T | undefined>(props.modelValue);
 const internalValue = ref<T | undefined>();
 const viewValue = ref<string>(formatterFn(modelValue.value));
-const validity = defineModel<Validity>("validity", {
+const validity = defineModel<ValidityModel>("validity", {
     required: false,
     default: { isValid: false },
 });
