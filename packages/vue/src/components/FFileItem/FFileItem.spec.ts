@@ -102,6 +102,6 @@ it.each`
             mimeType,
         },
     });
-    const icon = wrapper.get("f-icon-stub:nth-child(2)").element;
+    const icon = wrapper.get("f-icon-stub").element;
     expect(icon.getAttribute("name")).toEqual(expected);
 });
