@@ -21,6 +21,6 @@
     "lib"
   ],
   "devDependencies": {
-    "globby": "11.1.0"
+    "globby": "14.1.0"
   }
 }
