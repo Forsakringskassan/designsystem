@@ -48,19 +48,6 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
-    "Testverktyg",
-    "Releaseprocess",
-    "För utvecklare",
-    "Commits och commitmeddelanden",
-    "Riktlinjer för kod",
-    "Checklista vid publicering",
-    "På gång",
-    "Nyheter",
-    "Designsystemet",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -70,6 +57,23 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
+    "Testverktyg",
+    "Releaseprocess",
+    "För utvecklare",
+    "Commits och commitmeddelanden",
+    "Riktlinjer för kod",
+    "Checklista vid publicering",
+    "På gång",
+    "Nyheter",
+    "Designsystemet",
+    "Vue.js",
+    "Om testverktyg",
+    "Generella funktioner",
+    "Jest",
     "EventBus",
     "EventBus",
     "focus-indicator() mixin",
@@ -100,10 +104,6 @@
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
     "clamp() function",
-    "Vue.js",
-    "Om testverktyg",
-    "Generella funktioner",
-    "Jest",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -481,6 +481,49 @@
       "terms": []
     },
     {
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": []
@@ -526,46 +569,23 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
       "terms": []
     },
     {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
       "terms": []
     },
     {
@@ -706,26 +726,6 @@
     {
       "url": "functions/date/clamp.html",
       "title": "clamp() function",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": []
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
       "terms": []
     },
     {
@@ -1527,41 +1527,41 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 33,
-    "50": 34,
-    "51": 35,
-    "52": 36,
-    "53": 37,
-    "54": 38,
-    "55": 39,
-    "56": 40,
-    "57": 41,
-    "58": 42,
-    "59": 43,
-    "60": 43,
-    "61": 44,
-    "62": 44,
-    "63": 44,
-    "64": 44,
-    "65": 44,
+    "49": 32,
+    "50": 32,
+    "51": 32,
+    "52": 32,
+    "53": 32,
+    "54": 33,
+    "55": 34,
+    "56": 35,
+    "57": 36,
+    "58": 37,
+    "59": 38,
+    "60": 38,
+    "61": 39,
+    "62": 40,
+    "63": 41,
+    "64": 42,
+    "65": 43,
     "66": 44,
     "67": 45,
     "68": 46,
     "69": 47,
     "70": 48,
-    "71": 48,
-    "72": 49,
-    "73": 50,
-    "74": 51,
+    "71": 49,
+    "72": 50,
+    "73": 51,
+    "74": 52,
     "75": 52,
     "76": 53,
     "77": 54,
     "78": 55,
-    "79": 55,
-    "80": 55,
-    "81": 56,
-    "82": 57,
-    "83": 58,
+    "79": 56,
+    "80": 57,
+    "81": 58,
+    "82": 59,
+    "83": 59,
     "84": 59,
     "85": 60,
     "86": 61,
