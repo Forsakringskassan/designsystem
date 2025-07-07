@@ -217,9 +217,6 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "formModal() function",
-    "confirmModal() function",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -241,6 +238,9 @@
     "ValidationErrorMessageBuilder: mapCombined() method",
     "ValidationErrorMessageBuilder: create() function",
     "ValidationErrorMessageBuilder: build() method",
+    "openModal",
+    "formModal() function",
+    "confirmModal() function",
     "FYear",
     "FYear: value property",
     "FYear: toString() method",
@@ -260,17 +260,17 @@
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
     "FProgressbarPageObject: el() method",
+    "FLabelPageObject: FLabelPageObject() constructor",
+    "FLabelPageObject: formatDescription() method",
+    "FLabelPageObject: errorMessage() method",
+    "FLabelPageObject: errorIcon() method",
+    "FLabelPageObject: description() method",
     "FMinimizablePanelPageObject: constructor",
     "FMinimizablePanelPageObject: toggleButton() method",
     "FMinimizablePanelPageObject: header() method",
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FLabelPageObject: FLabelPageObject() constructor",
-    "FLabelPageObject: formatDescription() method",
-    "FLabelPageObject: errorMessage() method",
-    "FLabelPageObject: errorIcon() method",
-    "FLabelPageObject: description() method",
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
@@ -1123,21 +1123,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1243,6 +1228,21 @@
       "terms": []
     },
     {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
+      "terms": []
+    },
+    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": []
@@ -1338,6 +1338,31 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
+      "title": "FLabelPageObject: FLabelPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
+      "title": "FLabelPageObject: formatDescription() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
+      "title": "FLabelPageObject: errorMessage() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
+      "title": "FLabelPageObject: errorIcon() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
+      "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
       "title": "FMinimizablePanelPageObject: constructor",
       "terms": []
@@ -1365,31 +1390,6 @@
     {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
       "title": "FMinimizablePanelPageObject: content() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
-      "title": "FLabelPageObject: FLabelPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
-      "title": "FLabelPageObject: formatDescription() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
-      "title": "FLabelPageObject: errorMessage() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
-      "title": "FLabelPageObject: errorIcon() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
-      "title": "FLabelPageObject: description() method",
       "terms": []
     },
     {
