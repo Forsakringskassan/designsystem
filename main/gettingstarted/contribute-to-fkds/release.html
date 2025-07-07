@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-d2d5fa.json"
+            href="../../search-data-fff0ca.json"
             as="fetch"
             crossorigin
-            integrity="sha384-c0n6CyNxFlqHqxr2tRcc7gLvWqGA8rF+i2+PZXBmiU1/0VkOVsIHvGs4WSY1bPAu"
+            integrity="sha384-zZ9SicQDRlf5pI7fUxQ2PbLQMF7UaToiwNywLGWM0+i0qTkG/dNE1AieSEU625QZ"
             id="search-data"
         />
     </head>
@@ -403,25 +403,36 @@
         </a>
     </li><li class="link ">
         <a
-            href="../about/news.html"
+            href="../about/roadmap.html"
             
             
             
-            data-path="gettingstarted/about/news.html"
-            
-        >
-            Nyheter
-        </a>
-    </li><li class="link ">
-        <a
-            href="../about/release-plan.html"
-            
-            
-            
-            data-path="gettingstarted/about/release-plan.html"
+            data-path="gettingstarted/about/roadmap.html"
             
         >
             På gång
+        </a>
+    </li><li class="link ">
+        <a
+            href="../about/release-notes.html"
+            
+            
+            
+            data-path="gettingstarted/about/release-notes.html"
+            
+        >
+            Releaseanteckningar
+        </a>
+    </li><li class="link ">
+        <a
+            href="../about/releases.html"
+            
+            
+            
+            data-path="gettingstarted/about/releases.html"
+            
+        >
+            Releaser
         </a>
     </li></ol>
 
@@ -567,7 +578,7 @@
                                 
                                 <li><a href="#pull_request">Pull request</a></li>
                                 
-                                <li><a href="#nyheter">Nyheter</a></li>
+                                <li><a href="#releaseanteckningar">Releaseanteckningar</a></li>
                                 
                                 <li><a href="#release">Release</a></li>
                                 
@@ -687,8 +698,8 @@ Rådgör gärna med din kontaktperson i FKDS-teamet.</p>
 <ul>
 <li>Vi tillsammans samlar ihop flera brytande ändringar i samma release.</li>
 <li>Vi tillsammans går igenom kodbasen och tar nuvarande deprekerad funktionalitet.</li>
-<li>Vi tillsammans uppdaterar <a href="../about/release-plan.html">Release planen</a>.</li>
-<li>Vi tillsammans arbetar fram ett nyhetsmeddelande.</li>
+<li>Vi tillsammans uppdaterar <a href="../about/releases.html">Releaser</a>.</li>
+<li>Vi tillsammans arbetar fram ett releaseanteckning.</li>
 <li>Din commit ska använda <code>!</code> efter type samt en trailer med <code>BREAKING CHANGE:</code> och kortfattade förklaring och instruktioner till migrering.</li>
 <li>Din commit ska innehålla en utförlig migreringsguide. Inkludera exempel och kod-diff.</li>
 </ul>
@@ -791,14 +802,14 @@ Rådgör med kontaktpersonen i FKDS-teamet om hur granskningen ska slutföras oc
 <p class="docs-paragraph">Skapa gärna en pull request tidigt för att samla in återkoppling.
 Du kan med fördel skapa den som en &quot;Draft&quot; för att tydligt markera att det inte är färdigt arbete.</p>
 <p class="docs-paragraph">Se också <a href="./checklist-publication.html">checklista för publicering</a>.</p>
-<h2 id="nyheter"><a class="header-anchor" href="#nyheter">Nyheter</a></h2><p class="docs-paragraph">Vi publicerar alla större ändringar som nyheter på hemsida, chatt och andra kanaler.</p>
+<h2 id="releaseanteckningar"><a class="header-anchor" href="#releaseanteckningar">Releaseanteckningar</a></h2><p class="docs-paragraph">Vi publicerar alla viktiga ändringar i <a href="../about/release-notes.html">releaseanteckningarna</a>.</p>
 <p class="docs-paragraph">Det kan vara</p>
 <ul>
 <li>nya eller större ändringar i komponenter eller funktioner</li>
 <li>ändringar i visuellt utseende</li>
 <li>brytande ändringar.</li>
 </ul>
-<p class="docs-paragraph">Lägg gärna upp förslag på formulering till nyhet i din pull request.
+<p class="docs-paragraph">Lägg gärna upp förslag på formulering till releaseanteckning i din pull request.
 Texten ska innehålla en kortfattad beskrivning av ändringen.</p>
 <h2 id="release"><a class="header-anchor" href="#release">Release</a></h2><p class="docs-paragraph">Release byggs från CI-miljö för att säkerställa att vi har reproducerbara byggen och transparens i hur releasen är gjord.
 Bygg inte release från lokal utvecklingsmiljö.</p>
@@ -852,9 +863,9 @@ Steget &quot;Semantic Release&quot; i loggen visar då meddelandet:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/50799d5cff04a64ef3e7ad2269235964ea8b2e53">50799d5</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/98946927e90712e0a48c7722f7a350d0f70da994">9894692</a>)<br />
         
-        2025-07-06 17:49
+        2025-07-07 11:48
 </div>
 <div class="toolbar__item">
     <form id="version">
