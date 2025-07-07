@@ -3,7 +3,7 @@
 // @ts-check
 
 import path from "node:path";
-import globby from "globby";
+import { globbySync } from "globby";
 
 /**
  * @template T
@@ -82,17 +82,15 @@ function getSpecs(config) {
         excludeSpecPattern,
         additionalIgnorePattern,
     } = config;
-    return globby
-        .sync(specPattern, {
-            cwd: projectRoot,
-            absolute: true,
-            ignore: [
-                ...excludeSpecPattern,
-                additionalIgnorePattern,
-                "**/node_modules/**",
-            ],
-        })
-        .toSorted();
+    return globbySync(specPattern, {
+        cwd: projectRoot,
+        absolute: true,
+        ignore: [
+            ...excludeSpecPattern,
+            additionalIgnorePattern,
+            "**/node_modules/**",
+        ],
+    }).toSorted();
 }
 
 /**
