@@ -48,6 +48,15 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "Kom igång",
+    "Ta fram applikation",
     "Version 5 migreringsguide",
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
@@ -62,21 +71,10 @@
     "Releaser",
     "Releaseanteckningar",
     "Designsystemet",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "Kom igång",
-    "Ta fram applikation",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
     "Jest",
-    "EventBus",
-    "EventBus",
     "focus-indicator() mixin",
     "densify() function",
     "Validation Plugin",
@@ -89,6 +87,8 @@
     "i18next",
     "i18nextProvider",
     "I18nextProvider",
+    "EventBus",
+    "EventBus",
     "Hjälpklasser",
     "Skärmläsare",
     "useResize() composable",
@@ -482,6 +482,32 @@
       "terms": []
     },
     {
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
+      "terms": []
+    },
+    {
       "url": "gettingstarted/migration/migrating-to-v5.html",
       "title": "Version 5 migreringsguide",
       "terms": []
@@ -549,32 +575,6 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
-      "terms": []
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": []
@@ -593,13 +593,6 @@
       "url": "functions/test-utils/jest.html",
       "title": "Jest",
       "terms": []
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "EventBus"
-      ]
     },
     {
       "url": "functions/sass/focus-indicator.html",
@@ -653,6 +646,13 @@
       "url": "functions/i18next-translate/i18next-provider-interface.html",
       "title": "I18nextProvider",
       "terms": []
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "EventBus"
+      ]
     },
     {
       "url": "functions/helpers/index.html",
@@ -1533,24 +1533,24 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 33,
-    "50": 34,
-    "51": 34,
-    "52": 35,
-    "53": 36,
-    "54": 37,
-    "55": 38,
-    "56": 39,
-    "57": 40,
-    "58": 41,
-    "59": 42,
-    "60": 43,
-    "61": 44,
-    "62": 45,
-    "63": 45,
-    "64": 45,
-    "65": 45,
-    "66": 45,
+    "49": 32,
+    "50": 32,
+    "51": 32,
+    "52": 32,
+    "53": 32,
+    "54": 33,
+    "55": 34,
+    "56": 35,
+    "57": 36,
+    "58": 37,
+    "59": 38,
+    "60": 38,
+    "61": 39,
+    "62": 40,
+    "63": 41,
+    "64": 42,
+    "65": 43,
+    "66": 44,
     "67": 45,
     "68": 46,
     "69": 47,
@@ -1560,18 +1560,18 @@
     "73": 51,
     "74": 52,
     "75": 53,
-    "76": 53,
-    "77": 54,
-    "78": 55,
-    "79": 56,
-    "80": 57,
-    "81": 58,
+    "76": 54,
+    "77": 55,
+    "78": 56,
+    "79": 57,
+    "80": 58,
+    "81": 59,
     "82": 59,
-    "83": 60,
+    "83": 59,
     "84": 60,
-    "85": 60,
-    "86": 61,
-    "87": 62,
+    "85": 61,
+    "86": 62,
+    "87": 63,
     "88": 63,
     "89": 64,
     "90": 65,
