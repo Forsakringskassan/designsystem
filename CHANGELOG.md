@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 6.13.0 (2025-07-07)
+
+### Features
+
+* **@fkui/design:** update errorlist tokens (refs SFKUI-7290) adcdffb
+* **@fkui/vue:** make it possible to start minimizablepanel minimized (refs HLS-32397) d52f2cc
+* **deps:** update dependency svgo to v4 acb447a
+
+### Bug Fixes
+
+* **@fkui/vue:** allow `aria-label` on `FList` (refs SFKUI-6500) a277350
+* **@fkui/vue:** f-navigation-menu handles component is unmounted before resize handler fires (refs HLS-34566) c84d7f9
+* **deps:** update dependency i18next to v25.3.0 a7b31dc
+* **deps:** update vue monorepo to v3.5.17 60159ba
+
 ## 6.12.0 (2025-06-18)
 
 ### Features
