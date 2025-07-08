@@ -61,16 +61,16 @@
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
     "FCrudButton",
-    "På gång",
-    "Releaser",
-    "Releaseanteckningar",
-    "Designsystemet",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
     "Commits och commitmeddelanden",
     "Riktlinjer för kod",
     "Checklista vid publicering",
+    "På gång",
+    "Releaser",
+    "Releaseanteckningar",
+    "Designsystemet",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
@@ -217,9 +217,6 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "formModal() function",
-    "confirmModal() function",
     "refIsVue",
     "refIsVueArray",
     "refIsHTMLElementArray",
@@ -241,6 +238,9 @@
     "ValidationErrorMessageBuilder: mapCombined() method",
     "ValidationErrorMessageBuilder: create() function",
     "ValidationErrorMessageBuilder: build() method",
+    "openModal",
+    "formModal() function",
+    "confirmModal() function",
     "FYear",
     "FYear: value property",
     "FYear: toString() method",
@@ -525,26 +525,6 @@
       ]
     },
     {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": []
-    },
-    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": []
@@ -572,6 +552,26 @@
     {
       "url": "gettingstarted/contribute-to-fkds/checklist-publication.html",
       "title": "Checklista vid publicering",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
       "terms": []
     },
     {
@@ -1123,21 +1123,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": []
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": []
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": []
@@ -1240,6 +1225,21 @@
     {
       "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
       "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
       "terms": []
     },
     {

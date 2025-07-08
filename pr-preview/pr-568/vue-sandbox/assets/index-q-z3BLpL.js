@@ -3096,6 +3096,7 @@ function onErrorCaptured(hook, target = currentInstance) {
   injectHook("ec", hook, target);
 }
 const COMPONENTS = "components";
+const DIRECTIVES = "directives";
 function resolveComponent(name, maybeSelfReference) {
   return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
 }
@@ -3107,11 +3108,14 @@ function resolveDynamicComponent(component) {
     return component || NULL_DYNAMIC_COMPONENT;
   }
 }
+function resolveDirective(name) {
+  return resolveAsset(DIRECTIVES, name);
+}
 function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false) {
   const instance = currentRenderingInstance || currentInstance;
   if (instance) {
     const Component = instance.type;
-    {
+    if (type === COMPONENTS) {
       const selfName = getComponentName(
         Component,
         false
@@ -7636,7 +7640,7 @@ function normalizeContainer(container) {
   }
   return container;
 }
-function injectSpritesheet$1() {
+function injectSpritesheet() {
   const spritesheet = '<svg xmlns="http://www.w3.org/2000/svg" focusable="false"><symbol id="f-icon-triangle" xml:space="preserve" viewBox="0 0 512 512"><path d="M215.1 75.68c18.17-31.5 63.63-31.5 81.8 0l177.95 308.45c18.16 31.48-4.56 70.82-40.9 70.82H78.05c-36.34 0-59.06-39.34-40.9-70.82z" style="fill:currentColor"/><path d="m331.89 66.64 165.1 286.16c33.7 58.41-8.46 131.4-75.89 131.4H90.91c-67.43 0-109.59-72.99-75.89-131.4L180.11 66.64c33.72-58.44 118.06-58.44 151.78 0m-37.94 21.89c-16.86-29.22-59.03-29.22-75.89 0L52.96 374.7c-16.85 29.2 4.23 65.7 37.95 65.7H421.1c33.72 0 54.79-36.49 37.95-65.7z" style="fill-rule:evenodd;clip-rule:evenodd"/></symbol><symbol id="f-icon-trashcan" xml:space="preserve" viewBox="0 0 512 512"><path fill="currentColor" d="M387.4 133H140.7c-25.2 0-44.9 19.6-44.9 44.9l22.4 286c0 25.2 19.6 44.9 44.9 44.9H365c25.2 0 44.9-19.6 44.9-44.9l22.4-283.2c0-28.1-19.7-47.7-44.9-47.7M205.2 435.8c0 11.2-8.4 19.6-19.6 19.6S166 447 166 435.8V203.1c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6zm78.5 2.8c0 11.2-8.4 19.6-19.6 19.6s-19.6-8.4-19.6-19.6V203.1c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6zm81.3 0c0 11.2-8.4 19.6-19.6 19.6s-22.4-8.4-22.4-19.6V205.9c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6v232.7zM437.9 68.5H365V23.7C365 12.5 356.6 4 345.3 4H182.7c-11.2 0-19.6 8.4-19.6 19.6v44.9H90.2C79 68.5 70.6 79.7 70.6 91s8.4 19.6 19.6 19.6h347.7c11.2 0 19.6-8.4 19.6-19.6s-8.4-22.5-19.6-22.5M205.2 46.1H323v25.2H205.2z"/></symbol><symbol id="f-icon-success" viewBox="0 0 512 512"><path fill="currentColor" d="m173.898 439.404-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001"/></symbol><symbol id="f-icon-sort" viewBox="0 0 512 512"><path fill="currentColor" d="M137 288h238c21.4 0 32.1 25.9 17 41L273 448c-9.4 9.4-24.6 9.4-33.9 0L120 329c-15.1-15.1-4.4-41 17-41m255-105L273 64c-9.4-9.4-24.6-9.4-33.9 0L120 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41"/></symbol><symbol id="f-icon-search" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"/></symbol><symbol id="f-icon-plus" viewBox="0 0 512 512"><path fill="currentColor" d="M448 208H304V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H64c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32"/></symbol><symbol id="f-icon-pic" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M0 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v320c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm323.8 106.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6-26.5-33.1c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4S78.8 416 88 416h336c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7zM112 192c26.5 0 48-21.5 48-48s-21.5-48-48-48-48 21.5-48 48 21.5 48 48 48"/></symbol><symbol id="f-icon-pen" viewBox="0 0 512 512"><path fill="currentColor" d="m290.74 93.24 128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22zm207.2-19.06-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91"/></symbol><symbol id="f-icon-pdf" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0zm192 0v128h128zM64 224h24c30.9 0 56 25.1 56 56s-25.1 56-56 56h-8v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16m24 80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8v48zm72-64c0-8.8 7.2-16 16-16h24c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-24c-8.8 0-16-7.2-16-16zm32 112h8c8.8 0 16-7.2 16-16v-64c0-8.8-7.2-16-16-16h-8zm96-128h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16"/></symbol><symbol id="f-icon-paper-clip" viewBox="0 0 512 512"><path fill="currentColor" d="M75.246 466.142c-58.43-60.289-57.341-157.511 1.386-217.581L286.392 34c44.316-45.332 116.351-45.336 160.671 0 43.89 44.894 43.943 117.329 0 162.276L264.214 383.128c-29.855 30.537-78.633 30.111-107.982-.998-28.275-29.97-27.368-77.473 1.452-106.953l143.743-146.835c6.182-6.314 16.312-6.422 22.626-.241l22.861 22.379c6.315 6.182 6.422 16.312.241 22.626L203.427 319.927c-4.932 5.045-5.236 13.428-.648 18.292 4.372 4.634 11.245 4.711 15.688.165l182.849-186.851c19.613-20.062 19.613-52.725-.011-72.798-19.189-19.627-49.957-19.637-69.154 0L122.39 293.295c-34.763 35.56-35.299 93.12-1.191 128.313 34.01 35.093 88.985 35.137 123.058.286l172.06-175.999c6.177-6.319 16.307-6.433 22.626-.256l22.877 22.364c6.319 6.177 6.434 16.307.256 22.626l-172.06 175.998c-59.576 60.938-155.943 60.216-214.77-.485"/></symbol><symbol id="f-icon-new-window" xml:space="preserve" viewBox="0 0 512 512"><path d="M455.1 464.4H46.2V55.5h166.6V8.7H-1V512h503.3V298.2h-47.2z" style="fill:gray"/><path d="M460.3 0H317v52.1h105.9L275.3 199.9l37.5 37.1L460.3 89.6v106.2h52.1V0z" style="fill:#1b1e23"/></symbol><symbol id="f-icon-i" xml:space="preserve" x="0" y="0" viewBox="0 0 512 512"><style>.i{fill:currentColor}</style><path d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09" class="i"/></symbol><symbol id="f-icon-file" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M0 64C0 28.7 28.7 0 64 0h160v128c0 17.7 14.3 32 32 32h128v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm384 64H256V0z"/></symbol><symbol id="f-icon-error" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32m0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24m32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32 32-14.3 32-32"/></symbol><symbol id="f-icon-doc" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0zm192 0v128h128zM111 257.1l26.8 89.2 31.6-90.3c3.4-9.6 12.5-16.1 22.7-16.1s19.3 6.4 22.7 16.1l31.6 90.3 26.6-89.2c3.8-12.7 17.2-19.9 29.9-16.1s19.9 17.2 16.1 29.9l-48 160c-3 10-12.1 16.9-22.4 17.1s-19.8-6.2-23.2-16.1L192 336.6l-33.3 95.3c-3.4 9.8-12.8 16.3-23.2 16.1s-19.5-7.1-22.4-17.1l-48-160c-3.8-12.7 3.4-26.1 16.1-29.9s26.1 3.4 29.9 16.1z"/></symbol><symbol id="f-icon-dash" viewBox="0 0 512 512"><path fill="currentColor" d="M448 208H64c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32"/></symbol><symbol id="f-icon-cross" fill="none" viewBox="0 0 13 13"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m1 1 11 11M12 1 1 12"/></symbol><symbol id="f-icon-close" viewBox="0 0 512 512"><path fill="currentColor" d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"/></symbol><symbol id="f-icon-circle" xml:space="preserve" viewBox="0 0 512 512"><path d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256" style="fill:currentColor"/><path d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3" style="fill-rule:evenodd;clip-rule:evenodd"/></symbol><symbol id="f-icon-chevrons-left" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M34.5 239 228.9 44.7c9.4-9.4 24.6-9.4 33.9 0l22.7 22.7c9.4 9.4 9.4 24.5 0 33.9L131.5 256l154 154.8c9.3 9.4 9.3 24.5 0 33.9l-22.7 22.7c-9.4 9.4-24.6 9.4-33.9 0L34.5 273c-9.4-9.4-9.4-24.6 0-33.9z"/></symbol><symbol id="f-icon-caret-up" viewBox="0 0 512 512"><path fill="currentColor" d="M384.662 352H127.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142"/></symbol><symbol id="f-icon-caret-down" viewBox="0 0 512 512"><path fill="currentColor" d="M127.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L270.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L113.2 226.1c-12.6-12.6-3.7-34.1 14.1-34.1"/></symbol><symbol id="f-icon-calendar" viewBox="0 0 512 512"><path fill="currentColor" d="M180 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12m108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m96-260v352c0 26.5-21.5 48-48 48H80c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48m-48 346V160H80v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6"/></symbol><symbol id="f-icon-bell" fill="none" viewBox="0 0 512 512"><path fill="currentColor" d="M256.001 512c35.32 0 63.97-28.65 63.97-64h-127.94c0 35.35 28.65 64 63.97 64m215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C150.561 68.1 96.081 130.3 96.081 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71"/></symbol><symbol id="f-icon-bars" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M0 96c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32m0 160c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32m448 160c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h384c17.7 0 32 14.3 32 32"/></symbol><symbol id="f-icon-arrow-right" fill="none" viewBox="0 0 512 512"><path fill="currentColor" d="M381.476 272.971 187.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L284.505 256 130.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L381.475 239.03c9.373 9.372 9.373 24.568.001 33.941"/></symbol><symbol id="f-icon-arrow-in-circle" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8m113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34"/></symbol><symbol id="f-icon-arrow-down" viewBox="0 0 512 512"><path fill="currentColor" d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"/></symbol><symbol id="f-icon-alert" viewBox="0 0 512 512"><path fill="currentColor" d="m233.363 287.35-17.101-96.43c-3.45-19.48 15.314-36.92 39.737-36.92s43.187 17.43 39.737 36.92l-17.101 96.43c-1.613 9.08-11.256 15.82-22.636 15.82s-21.023-6.74-22.636-15.82M220 364.031c0-19.875 16.11-36 36-36 19.876 0 36 16.11 36 36s-16.11 36-36 36c-19.876 0-36-16.124-36-36"/></symbol></svg>';
   const element = document.createElement("div");
   element.innerHTML = spritesheet;
@@ -7648,10 +7652,10 @@ function injectSpritesheet$1() {
 }
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
-    injectSpritesheet$1();
+    injectSpritesheet();
   });
 } else {
-  injectSpritesheet$1();
+  injectSpritesheet();
 }
 const configLogic = {
   production: true
@@ -17958,7 +17962,7 @@ function useHorizontalOffset(options) {
     }, 0);
   }
 }
-const _sfc_main$X = /* @__PURE__ */ defineComponent({
+/* @__PURE__ */ defineComponent({
   name: "FTooltip",
   components: {
     FExpand,
@@ -18115,80 +18119,6 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
     }
   }
 });
-const _hoisted_1$H = ["aria-expanded"];
-const _hoisted_2$x = {
-  class: "icon-stack icon-stack--tooltip"
-};
-const _hoisted_3$q = {
-  class: "sr-only"
-};
-const _hoisted_4$m = {
-  key: 0,
-  class: "tooltip__bubble",
-  tabindex: "-1"
-};
-const _hoisted_5$i = {
-  class: "tooltip__body"
-};
-const _hoisted_6$e = {
-  class: "tooltip__footer"
-};
-function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock(Fragment, null, [(openBlock(), createBlock(Teleport, {
-    disabled: _ctx.iconTarget === null,
-    to: _ctx.iconTarget
-  }, [createBaseVNode("button", {
-    ref: "button",
-    class: "tooltip__button",
-    type: "button",
-    "aria-expanded": _ctx.isOpen,
-    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClickToggle && _ctx.onClickToggle(...args))
-  }, [createBaseVNode("span", _hoisted_2$x, [createVNode(_component_f_icon, {
-    name: "circle"
-  }), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_f_icon, {
-    name: "i"
-  }), _cache[3] || (_cache[3] = createTextVNode()), createBaseVNode("span", _hoisted_3$q, toDisplayString(_ctx.screenReaderText), 1)])], 8, _hoisted_1$H)], 8, ["disabled", "to"])), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("div", mergeProps({
-    ref: "wrapper",
-    class: "tooltip"
-  }, _ctx.$attrs), [_ctx.ready ? (openBlock(), createElementBlock("div", _hoisted_4$m, [_ctx.hasHeader ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), {
-    key: 0,
-    class: "tooltip__header"
-  }, {
-    default: withCtx(() => [renderSlot(_ctx.$slots, "header")]),
-    _: 3
-  })) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_5$i, [renderSlot(_ctx.$slots, "body")]), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_6$e, [createBaseVNode("button", {
-    class: "close-button",
-    type: "button",
-    onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClickToggle && _ctx.onClickToggle(...args))
-  }, [createBaseVNode("span", null, toDisplayString(_ctx.closeButtonText), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(_component_f_icon, {
-    class: "button__icon",
-    name: "close"
-  })])])])) : createCommentVNode("", true)], 16)], 64);
-}
-const FTooltip = /* @__PURE__ */ _export_sfc$1(_sfc_main$X, [["render", _sfc_render$u]]);
-function* labelClasses(options) {
-  const {
-    labelClass
-  } = options;
-  yield "fieldset__label";
-  yield labelClass;
-}
-function* contentClasses(options) {
-  const {
-    hasRadiobutton,
-    hasCheckbox,
-    contentClass
-  } = options;
-  yield "fieldset__content";
-  if (hasRadiobutton) {
-    yield "radio-button-group__content";
-  }
-  if (hasCheckbox) {
-    yield "checkbox-group__content";
-  }
-  yield contentClass;
-}
 const injectionKeys = {
   sharedName: Symbol("sharedName"),
   showDetails: Symbol("showDetails"),
@@ -18201,310 +18131,6 @@ function useFieldset() {
     getFieldsetLabelText: inject(injectionKeys.getFieldsetLabelText, () => void 0)
   };
 }
-function isEqual(a, b) {
-  if (a.length !== b.length) {
-    return false;
-  }
-  return a.every((_, i) => a[i] === b[i]);
-}
-const _sfc_main$W = /* @__PURE__ */ defineComponent({
-  name: "FFieldset",
-  components: {
-    FIcon
-  },
-  mixins: [TranslationMixin],
-  props: {
-    /**
-     * The id for the fieldset id attribute.
-     * If the prop is not set a random value will be generated.
-     */
-    id: {
-      type: String,
-      required: false,
-      default: () => ElementIdService.generateElementId()
-    },
-    /**
-     * Name provided to child content as `sharedName` for optional usage (it will not be set on the fieldset element).
-     * For radio inputs this is a shortcut to specify the shared name attribute at one place,
-     * instead of repeatedly setting the name attribute on each radio input.
-     */
-    name: {
-      type: String,
-      required: false,
-      default: void 0
-    },
-    /**
-     * The CSS classes for the label, description and error-message slot.
-     */
-    labelClass: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * The CSS classes for the default slot.
-     */
-    contentClass: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    /**
-     * Aligns underlying items horizontally.
-     * Supported by radiobuttons and chip layout.
-     */
-    horizontal: {
-      type: Boolean,
-      required: false
-    },
-    /**
-     * Displays radio and checkbox content with chip layout.
-     */
-    chip: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    /**
-     * Displays a box with border around radiobuttons and checkboxes.
-     */
-    border: {
-      type: Boolean,
-      required: false
-    },
-    /**
-     * Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.
-     *
-     * * `never` (default) - Never show item details.
-     * - `when-selected` - Show item details when selected.
-     * - `always` - Always show item details.
-     */
-    showDetails: {
-      type: String,
-      default: "never",
-      validator(value) {
-        return ["never", "when-selected", "always"].includes(value);
-      }
-    }
-  },
-  setup(props) {
-    const slots = useSlots();
-    provide(injectionKeys.sharedName, props.name);
-    provide(injectionKeys.showDetails, props.showDetails);
-    provide(injectionKeys.getFieldsetLabelText, () => {
-      return renderSlotText(slots.label);
-    });
-    provide(tooltipAttachTo, useTemplateRef("tooltipAttachTo"));
-  },
-  data() {
-    return {
-      validity: {
-        validityMode: "INITIAL"
-      },
-      descriptionClass: ["label__description"],
-      formatDescriptionClass: ["label__description", "label__description--format"],
-      validityElement: null,
-      dispatchObject: {},
-      detail: {},
-      hasDocumentListener: false,
-      legendKey: 1,
-      oldMessage: "",
-      children: new Array(),
-      hasCheckbox: false,
-      hasRadiobutton: false
-    };
-  },
-  computed: {
-    hasError() {
-      return this.validity.validityMode === "ERROR";
-    },
-    hasErrorMessageSlot() {
-      return hasSlot(this, "error-message");
-    },
-    hasTooltipSlot() {
-      return Boolean(this.$slots.tooltip);
-    },
-    hasDescriptionSlot() {
-      return hasSlot(this, "description");
-    },
-    legendClass() {
-      return this.hasTooltipSlot ? ["sr-only"] : this.groupLabelClass;
-    },
-    groupLabelClass() {
-      return Array.from(labelClasses(this));
-    },
-    groupContentClass() {
-      return Array.from(contentClasses(this));
-    },
-    classes() {
-      const {
-        hasRadiobutton,
-        hasCheckbox,
-        horizontal,
-        chip,
-        border
-      } = this;
-      return {
-        "radio-button-group": hasRadiobutton,
-        "radio-button-group--chip": chip && hasRadiobutton,
-        "radio-button-group--horizontal": horizontal && hasRadiobutton,
-        "radio-button-group--border": border && hasRadiobutton,
-        "checkbox-group": hasCheckbox,
-        "checkbox-group--chip": chip && hasCheckbox,
-        "checkbox-group--horizontal": horizontal && hasCheckbox,
-        "checkbox-group--border": border && hasCheckbox
-      };
-    },
-    checkedChildren() {
-      return this.children.filter((child) => child.checked);
-    },
-    debouncedUpdateChildren() {
-      return debounce(this.updateCheckboxChildren.bind(this), 150);
-    },
-    checkboxCheckedScreenReaderText() {
-      return this.checkedChildren.length === 1 ? this.$t("fkui.checkbox-group.checkbox.checked", "Kryssruta kryssad") : this.$t("fkui.checkbox-group.checkbox.not.checked", "Kryssruta ej kryssad");
-    },
-    numberOfCheckboxesScreenReaderText() {
-      return this.$t("fkui.checkbox-group.count", "Grupp med {{ count }} kryssrutor", {
-        count: String(this.children.length)
-      });
-    },
-    numberOfCheckedCheckboxesScreenText() {
-      return this.$t("fkui.checkbox-group.checked", "{{ checked }} kryssad av {{ count }}", {
-        checked: String(this.checkedChildren.length),
-        count: String(this.children.length)
-      });
-    }
-  },
-  async mounted() {
-    await this.$nextTick();
-    const types = Array.from(this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`), (it) => it.getAttribute("type"));
-    this.hasCheckbox = types.includes("checkbox");
-    this.hasRadiobutton = types.includes("radio");
-    if (this.hasCheckbox) {
-      this.updateCheckboxChildren();
-    }
-  },
-  updated() {
-    if (this.hasCheckbox) {
-      this.debouncedUpdateChildren();
-    }
-  },
-  methods: {
-    async onValidity({
-      detail
-    }) {
-      var _renderSlotText;
-      if (detail.target !== this.$el) {
-        return;
-      }
-      this.detail = detail;
-      await this.$nextTick();
-      const errorMessage = (_renderSlotText = renderSlotText(this.$slots.label)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
-      const firstFocusableElement = this.$el.querySelector("input:not(disabled), select:not(disabled), textarea:not(disabled)");
-      const focusElementId = firstFocusableElement ? firstFocusableElement.id : this.id;
-      this.validityElement = this.$el;
-      this.dispatchObject = {
-        ...detail,
-        errorMessage,
-        focusElementId
-      };
-      this.validity = this.detail;
-      if (this.validityElement) {
-        dispatchComponentValidityEvent(this.validityElement, this.dispatchObject);
-      }
-      const message = detail.validityMode === "INITIAL" ? "" : detail.validationMessage;
-      if (message !== this.oldMessage) {
-        this.forceLegendUpdate();
-        this.oldMessage = message;
-      }
-    },
-    /**
-     * Workaround for NVDA-bug. Force re rendering of legend element due to NVDA not recognizing innerHTML changes.
-     * NVDA has closed the bug as it is related to the browser (works in FF): https://github.com/nvaccess/nvda/issues/13162
-     */
-    forceLegendUpdate() {
-      this.legendKey++;
-    },
-    async updateCheckboxChildren() {
-      await this.$nextTick();
-      const checkboxes = Array.from(this.$el.querySelectorAll('input[type="checkbox"]'));
-      if (!isEqual(this.children, checkboxes)) {
-        this.children = checkboxes;
-      }
-    }
-  }
-});
-const _hoisted_1$G = ["id"];
-const _hoisted_2$w = {
-  key: 0,
-  class: "sr-only"
-};
-const _hoisted_3$p = {
-  key: 0,
-  class: "label__message label__message--error"
-};
-const _hoisted_4$l = {
-  key: 0,
-  "data-test": "checked-boxes",
-  class: "sr-only",
-  "aria-live": "polite"
-};
-const _hoisted_5$h = {
-  key: 0
-};
-const _hoisted_6$d = {
-  key: 1
-};
-const _hoisted_7$a = {
-  ref: "tooltipAttachTo",
-  class: "label"
-};
-const _hoisted_8$6 = {
-  "aria-hidden": "true"
-};
-const _hoisted_9$4 = {
-  key: 0,
-  class: "label__message label__message--error"
-};
-function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("fieldset", {
-    id: _ctx.id,
-    class: normalizeClass(["fieldset", _ctx.classes]),
-    onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
-  }, [(openBlock(), createElementBlock("legend", {
-    key: _ctx.legendKey,
-    class: normalizeClass(["label", _ctx.legendClass])
-  }, [renderSlot(_ctx.$slots, "label"), _cache[1] || (_cache[1] = createTextVNode()), _ctx.hasCheckbox && _ctx.children.length > 1 ? (openBlock(), createElementBlock("span", _hoisted_2$w, [createBaseVNode("span", null, toDisplayString(_ctx.numberOfCheckboxesScreenReaderText), 1)])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "description", {
-    descriptionClass: _ctx.descriptionClass,
-    formatDescriptionClass: _ctx.formatDescriptionClass
-  }), _cache[3] || (_cache[3] = createTextVNode()), renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
-    hasError: _ctx.hasError,
-    validationMessage: _ctx.validity.validationMessage
-  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_3$p, [createVNode(_component_f_icon, {
-    class: "label__icon--left",
-    name: "error"
-  }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)), _cache[7] || (_cache[7] = createTextVNode()), _ctx.hasCheckbox ? (openBlock(), createElementBlock("span", _hoisted_4$l, [_ctx.children.length === 1 ? (openBlock(), createElementBlock("span", _hoisted_5$h, toDisplayString(_ctx.checkboxCheckedScreenReaderText), 1)) : (openBlock(), createElementBlock("span", _hoisted_6$d, toDisplayString(_ctx.numberOfCheckedCheckboxesScreenText), 1))])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.hasTooltipSlot ? (openBlock(), createElementBlock(Fragment, {
-    key: 1
-  }, [createBaseVNode("div", _hoisted_7$a, [createBaseVNode("span", _hoisted_8$6, [renderSlot(_ctx.$slots, "label")])], 512), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? (openBlock(), createElementBlock("div", {
-    key: 0,
-    class: normalizeClass(["label", _ctx.groupLabelClass]),
-    "aria-hidden": "true"
-  }, [renderSlot(_ctx.$slots, "description", {
-    descriptionClass: _ctx.descriptionClass,
-    formatDescriptionClass: _ctx.formatDescriptionClass
-  }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
-    hasError: _ctx.hasError,
-    validationMessage: _ctx.validity.validationMessage
-  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_9$4, [createVNode(_component_f_icon, {
-    class: "label__icon--left",
-    name: "error"
-  }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", {
-    class: normalizeClass(_ctx.groupContentClass)
-  }, [renderSlot(_ctx.$slots, "default")], 2)], 42, _hoisted_1$G);
-}
-const FFieldset = /* @__PURE__ */ _export_sfc$1(_sfc_main$W, [["render", _sfc_render$t]]);
 const anyType$1 = [String, Object, Array, Number, Date, Boolean];
 const _sfc_main$V = /* @__PURE__ */ defineComponent({
   name: "FCheckboxField",
@@ -22413,200 +22039,6 @@ const __default__ = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const anyType = [String, Object, Array, Number, Date, null, Boolean];
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
-  name: "FRadioField",
-  inheritAttrs: false,
-  props: {
-    /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
-     */
-    disabled: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    /**
-     * The id for the input id attribute.
-     * The id for the label for attribute.
-     * If the prop is not set a random value will be generated.
-     */
-    id: {
-      type: String,
-      required: false,
-      default: () => ElementIdService.generateElementId()
-    },
-    /**
-     * The value for the input checked attribute.
-     * @model
-     */
-    // ? The rule is disabled so that the `checked` prop can be undefined or null.
-    /* eslint-disable-next-line vue/require-default-prop -- technical debt,
-    /* it should contain a default value of undefined and proptype should
-    /* include undefined (see comment on line above) */
-    modelValue: {
-      type: anyType,
-      required: false
-    },
-    /**
-     * The value for the input.
-     */
-    value: {
-      type: anyType,
-      required: true
-    }
-  },
-  emits: ["change", "update:modelValue"],
-  setup() {
-    const {
-      sharedName,
-      showDetails,
-      getFieldsetLabelText
-    } = useFieldset();
-    return {
-      sharedName,
-      showDetails,
-      getFieldsetLabelText
-    };
-  },
-  data() {
-    return {
-      height: 0,
-      initialStyle: {
-        overflow: "hidden",
-        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
-      },
-      hiddenStyle: {
-        height: "auto",
-        position: "absolute",
-        visibility: "hidden"
-      },
-      visibleStyle: {
-        width: "",
-        position: "",
-        visibility: "",
-        height: "0px"
-      },
-      openedStyle: {
-        height: "auto"
-      }
-    };
-  },
-  computed: {
-    attrs() {
-      var _this$sharedName;
-      return {
-        ...this.$attrs,
-        value: this.value,
-        checked: this.value === this.modelValue,
-        name: (_this$sharedName = this.sharedName) !== null && _this$sharedName !== void 0 ? _this$sharedName : this.$attrs.name,
-        onChange: (event) => {
-          if (event.target instanceof HTMLInputElement) {
-            this.$emit("update:modelValue", this.value);
-            this.$emit("change", this.value);
-          }
-        },
-        onInput: (event) => {
-          event.target.focus();
-        }
-      };
-    },
-    disabledClass() {
-      return this.disabled ? "disabled" : "";
-    }
-  },
-  methods: {
-    async onValidity({
-      detail
-    }) {
-      if (detail.target !== this.$el.querySelector("input")) {
-        return;
-      }
-      await this.$nextTick();
-      let errorMessage = "";
-      if (hasSlot(this, "default")) {
-        const labelText = this.getFieldsetLabelText();
-        if (labelText) {
-          errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
-        } else {
-          errorMessage = `${renderSlotText(this.$slots.default)}`;
-        }
-      }
-      const element = this.$el.querySelector(`#${detail.elementId}`);
-      if (element) {
-        dispatchComponentValidityEvent(element, {
-          ...detail,
-          errorMessage,
-          focusElementId: detail.elementId
-        });
-      }
-    },
-    enter(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      const computedStyle = getComputedStyle(element);
-      Object.assign(htmlElement.style, this.initialStyle);
-      Object.assign(htmlElement.style, this.hiddenStyle);
-      htmlElement.style.width = computedStyle.width;
-      const height = computedStyle.height;
-      Object.assign(htmlElement.style, this.visibleStyle);
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        this.height = parseInt(height, 10);
-        htmlElement.style.height = height;
-      });
-    },
-    afterEnter(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      Object.assign(htmlElement.style, this.openedStyle);
-    },
-    leave(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      const height = getComputedStyle(element).height;
-      htmlElement.style.height = height;
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        Object.assign(htmlElement.style, this.visibleStyle);
-      });
-    }
-  }
-});
-const _hoisted_1$4 = ["id", "disabled"];
-const _hoisted_2$2 = ["for"];
-const _hoisted_3$1 = {
-  key: 0,
-  class: "radio-button__details"
-};
-const _hoisted_4$1 = {
-  key: 0,
-  class: "radio-button__details"
-};
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", {
-    class: normalizeClass(["radio-button", _ctx.disabledClass]),
-    onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
-  }, [createBaseVNode("input", mergeProps({
-    id: _ctx.id,
-    type: "radio",
-    class: "radio-button__input",
-    disabled: _ctx.disabled
-  }, _ctx.attrs), null, 16, _hoisted_1$4), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("label", {
-    class: normalizeClass(_ctx.$slots.details ? "radio-button__label radio-button__width" : "radio-button__label"),
-    for: _ctx.id
-  }, [renderSlot(_ctx.$slots, "default"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
-    key: 0
-  }, [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$1, [_cache[1] || (_cache[1] = createBaseVNode("br", null, null, -1)), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "details")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, {
-    key: 1,
-    onEnter: _ctx.enter,
-    onAfterEnter: _ctx.afterEnter,
-    onLeave: _ctx.leave
-  }, {
-    default: withCtx(() => [_ctx.value === _ctx.modelValue ? (openBlock(), createElementBlock("span", _hoisted_4$1, [_cache[3] || (_cache[3] = createBaseVNode("br", null, null, -1)), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "details", {
-      height: _ctx.height
-    })])) : createCommentVNode("", true)]),
-    _: 3
-  }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$2)], 34);
-}
-const FRadioField = /* @__PURE__ */ _export_sfc$1(_sfc_main$4, [["render", _sfc_render$4]]);
 /*!
   * vue-router v4.5.1
   * (c) 2025 Eduardo San Martin Morote
@@ -24469,117 +23901,13 @@ function extractChangingRecords(to, from) {
   }
   return [leavingRecords, updatingRecords, enteringRecords];
 }
-function injectSpritesheet() {
-  const spritesheet = '<svg xmlns="http://www.w3.org/2000/svg" focusable="false"><symbol id="f-icon-triangle" xml:space="preserve" viewBox="0 0 512 512"><path d="M215.1 75.68c18.17-31.5 63.63-31.5 81.8 0l177.95 308.45c18.16 31.48-4.56 70.82-40.9 70.82H78.05c-36.34 0-59.06-39.34-40.9-70.82z" style="fill:currentColor"/><path d="m331.89 66.64 165.1 286.16c33.7 58.41-8.46 131.4-75.89 131.4H90.91c-67.43 0-109.59-72.99-75.89-131.4L180.11 66.64c33.72-58.44 118.06-58.44 151.78 0m-37.94 21.89c-16.86-29.22-59.03-29.22-75.89 0L52.96 374.7c-16.85 29.2 4.23 65.7 37.95 65.7H421.1c33.72 0 54.79-36.49 37.95-65.7z" style="fill-rule:evenodd;clip-rule:evenodd"/></symbol><symbol id="f-icon-trashcan" xml:space="preserve" viewBox="0 0 512 512"><path fill="currentColor" d="M387.4 133H140.7c-25.2 0-44.9 19.6-44.9 44.9l22.4 286c0 25.2 19.6 44.9 44.9 44.9H365c25.2 0 44.9-19.6 44.9-44.9l22.4-283.2c0-28.1-19.7-47.7-44.9-47.7M205.2 435.8c0 11.2-8.4 19.6-19.6 19.6S166 447 166 435.8V203.1c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6zm78.5 2.8c0 11.2-8.4 19.6-19.6 19.6s-19.6-8.4-19.6-19.6V203.1c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6zm81.3 0c0 11.2-8.4 19.6-19.6 19.6s-22.4-8.4-22.4-19.6V205.9c0-11.2 8.4-19.6 19.6-19.6s19.6 8.4 19.6 19.6v232.7zM437.9 68.5H365V23.7C365 12.5 356.6 4 345.3 4H182.7c-11.2 0-19.6 8.4-19.6 19.6v44.9H90.2C79 68.5 70.6 79.7 70.6 91s8.4 19.6 19.6 19.6h347.7c11.2 0 19.6-8.4 19.6-19.6s-8.4-22.5-19.6-22.5M205.2 46.1H323v25.2H205.2z"/></symbol><symbol id="f-icon-success" viewBox="0 0 512 512"><path fill="currentColor" d="m173.898 439.404-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001"/></symbol><symbol id="f-icon-sort" viewBox="0 0 512 512"><path fill="currentColor" d="M137 288h238c21.4 0 32.1 25.9 17 41L273 448c-9.4 9.4-24.6 9.4-33.9 0L120 329c-15.1-15.1-4.4-41 17-41m255-105L273 64c-9.4-9.4-24.6-9.4-33.9 0L120 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41"/></symbol><symbol id="f-icon-search" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"/></symbol><symbol id="f-icon-plus" viewBox="0 0 512 512"><path fill="currentColor" d="M448 208H304V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H64c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32"/></symbol><symbol id="f-icon-pic" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M0 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v320c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm323.8 106.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6-26.5-33.1c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4S78.8 416 88 416h336c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7zM112 192c26.5 0 48-21.5 48-48s-21.5-48-48-48-48 21.5-48 48 21.5 48 48 48"/></symbol><symbol id="f-icon-pen" viewBox="0 0 512 512"><path fill="currentColor" d="m290.74 93.24 128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22zm207.2-19.06-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91"/></symbol><symbol id="f-icon-pdf" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0zm192 0v128h128zM64 224h24c30.9 0 56 25.1 56 56s-25.1 56-56 56h-8v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16m24 80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8v48zm72-64c0-8.8 7.2-16 16-16h24c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-24c-8.8 0-16-7.2-16-16zm32 112h8c8.8 0 16-7.2 16-16v-64c0-8.8-7.2-16-16-16h-8zm96-128h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16"/></symbol><symbol id="f-icon-paper-clip" viewBox="0 0 512 512"><path fill="currentColor" d="M75.246 466.142c-58.43-60.289-57.341-157.511 1.386-217.581L286.392 34c44.316-45.332 116.351-45.336 160.671 0 43.89 44.894 43.943 117.329 0 162.276L264.214 383.128c-29.855 30.537-78.633 30.111-107.982-.998-28.275-29.97-27.368-77.473 1.452-106.953l143.743-146.835c6.182-6.314 16.312-6.422 22.626-.241l22.861 22.379c6.315 6.182 6.422 16.312.241 22.626L203.427 319.927c-4.932 5.045-5.236 13.428-.648 18.292 4.372 4.634 11.245 4.711 15.688.165l182.849-186.851c19.613-20.062 19.613-52.725-.011-72.798-19.189-19.627-49.957-19.637-69.154 0L122.39 293.295c-34.763 35.56-35.299 93.12-1.191 128.313 34.01 35.093 88.985 35.137 123.058.286l172.06-175.999c6.177-6.319 16.307-6.433 22.626-.256l22.877 22.364c6.319 6.177 6.434 16.307.256 22.626l-172.06 175.998c-59.576 60.938-155.943 60.216-214.77-.485"/></symbol><symbol id="f-icon-new-window" xml:space="preserve" viewBox="0 0 512 512"><path d="M455.1 464.4H46.2V55.5h166.6V8.7H-1V512h503.3V298.2h-47.2z" style="fill:gray"/><path d="M460.3 0H317v52.1h105.9L275.3 199.9l37.5 37.1L460.3 89.6v106.2h52.1V0z" style="fill:#1b1e23"/></symbol><symbol id="f-icon-i" xml:space="preserve" x="0" y="0" viewBox="0 0 512 512"><style>.i{fill:currentColor}</style><path d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09" class="i"/></symbol><symbol id="f-icon-file" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M0 64C0 28.7 28.7 0 64 0h160v128c0 17.7 14.3 32 32 32h128v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm384 64H256V0z"/></symbol><symbol id="f-icon-error" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32m0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24m32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32 32-14.3 32-32"/></symbol><symbol id="f-icon-doc" viewBox="-64 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.--><path fill="currentColor" d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0zm192 0v128h128zM111 257.1l26.8 89.2 31.6-90.3c3.4-9.6 12.5-16.1 22.7-16.1s19.3 6.4 22.7 16.1l31.6 90.3 26.6-89.2c3.8-12.7 17.2-19.9 29.9-16.1s19.9 17.2 16.1 29.9l-48 160c-3 10-12.1 16.9-22.4 17.1s-19.8-6.2-23.2-16.1L192 336.6l-33.3 95.3c-3.4 9.8-12.8 16.3-23.2 16.1s-19.5-7.1-22.4-17.1l-48-160c-3.8-12.7 3.4-26.1 16.1-29.9s26.1 3.4 29.9 16.1z"/></symbol><symbol id="f-icon-dash" viewBox="0 0 512 512"><path fill="currentColor" d="M448 208H64c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32"/></symbol><symbol id="f-icon-cross" fill="none" viewBox="0 0 13 13"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m1 1 11 11M12 1 1 12"/></symbol><symbol id="f-icon-close" viewBox="0 0 512 512"><path fill="currentColor" d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"/></symbol><symbol id="f-icon-circle" xml:space="preserve" viewBox="0 0 512 512"><path d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256" style="fill:currentColor"/><path d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3" style="fill-rule:evenodd;clip-rule:evenodd"/></symbol><symbol id="f-icon-chevrons-left" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M34.5 239 228.9 44.7c9.4-9.4 24.6-9.4 33.9 0l22.7 22.7c9.4 9.4 9.4 24.5 0 33.9L131.5 256l154 154.8c9.3 9.4 9.3 24.5 0 33.9l-22.7 22.7c-9.4 9.4-24.6 9.4-33.9 0L34.5 273c-9.4-9.4-9.4-24.6 0-33.9z"/></symbol><symbol id="f-icon-caret-up" viewBox="0 0 512 512"><path fill="currentColor" d="M384.662 352H127.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142"/></symbol><symbol id="f-icon-caret-down" viewBox="0 0 512 512"><path fill="currentColor" d="M127.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L270.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L113.2 226.1c-12.6-12.6-3.7-34.1 14.1-34.1"/></symbol><symbol id="f-icon-calendar" viewBox="0 0 512 512"><path fill="currentColor" d="M180 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12m108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12m96-260v352c0 26.5-21.5 48-48 48H80c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48m-48 346V160H80v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6"/></symbol><symbol id="f-icon-bell" fill="none" viewBox="0 0 512 512"><path fill="currentColor" d="M256.001 512c35.32 0 63.97-28.65 63.97-64h-127.94c0 35.35 28.65 64 63.97 64m215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C150.561 68.1 96.081 130.3 96.081 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71"/></symbol><symbol id="f-icon-bars" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="currentColor" d="M0 96c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32m0 160c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32m448 160c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h384c17.7 0 32 14.3 32 32"/></symbol><symbol id="f-icon-arrow-right" fill="none" viewBox="0 0 512 512"><path fill="currentColor" d="M381.476 272.971 187.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L284.505 256 130.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L381.475 239.03c9.373 9.372 9.373 24.568.001 33.941"/></symbol><symbol id="f-icon-arrow-in-circle" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8m113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34"/></symbol><symbol id="f-icon-arrow-down" viewBox="0 0 512 512"><path fill="currentColor" d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"/></symbol><symbol id="f-icon-alert" viewBox="0 0 512 512"><path fill="currentColor" d="m233.363 287.35-17.101-96.43c-3.45-19.48 15.314-36.92 39.737-36.92s43.187 17.43 39.737 36.92l-17.101 96.43c-1.613 9.08-11.256 15.82-22.636 15.82s-21.023-6.74-22.636-15.82M220 364.031c0-19.875 16.11-36 36-36 19.876 0 36 16.11 36 36s-16.11 36-36 36c-19.876 0-36-16.124-36-36"/></symbol></svg>';
-  const element = document.createElement("div");
-  element.innerHTML = spritesheet;
-  element.style.display = "none";
-  element.setAttribute("aria-hidden", "true");
-  element.setAttribute("data-icon-package", "@fkui/icon-lib-default");
-  element.setAttribute("data-icon-library", "f");
-  document.body.appendChild(element);
-}
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
-  __name: "DefaultView",
-  setup(__props) {
-    onMounted(() => {
-      const themeDefaultLink = document.createElement("link");
-      themeDefaultLink.rel = "stylesheet";
-      themeDefaultLink.href = "https://unpkg.com/@fkui/theme-default@latest/dist/fkui-css-variables.css";
-      document.head.append(themeDefaultLink);
-      const designLink = document.createElement("link");
-      designLink.rel = "stylesheet";
-      designLink.href = "https://unpkg.com/@fkui/design@latest";
-      document.head.append(designLink);
-      injectSpritesheet();
-    });
-    const selectedValue = ref();
-    const selectedValues = ref([]);
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [
-        createVNode(unref(FFieldset), null, {
-          label: withCtx(() => _cache[4] || (_cache[4] = [
-            createTextVNode(" Välj ett eller flera alternativ ")
-          ])),
-          tooltip: withCtx(() => [
-            createVNode(unref(FTooltip), { "screen-reader-text": "Denna text syns bara för skärmläsare" }, {
-              body: withCtx(() => _cache[5] || (_cache[5] = [
-                createTextVNode(" Lorem ipsum dolor sit amet. ")
-              ])),
-              _: 1
-            })
-          ]),
-          default: withCtx(() => [
-            createVNode(unref(FCheckboxField), {
-              modelValue: selectedValues.value[0],
-              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => selectedValues.value[0] = $event),
-              value: false
-            }, {
-              default: withCtx(() => _cache[6] || (_cache[6] = [
-                createTextVNode("Alternativ 1")
-              ])),
-              _: 1,
-              __: [6]
-            }, 8, ["modelValue"]),
-            createVNode(unref(FCheckboxField), {
-              modelValue: selectedValues.value[1],
-              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => selectedValues.value[1] = $event),
-              value: false
-            }, {
-              default: withCtx(() => _cache[7] || (_cache[7] = [
-                createTextVNode("Alternativ 2")
-              ])),
-              _: 1,
-              __: [7]
-            }, 8, ["modelValue"])
-          ]),
-          _: 1
-        }),
-        createVNode(unref(FFieldset), null, {
-          label: withCtx(() => _cache[8] || (_cache[8] = [
-            createTextVNode(" Välj ett alternativ ")
-          ])),
-          tooltip: withCtx(() => [
-            createVNode(unref(FTooltip), { "screen-reader-text": "Denna text syns bara för skärmläsare" }, {
-              body: withCtx(() => _cache[9] || (_cache[9] = [
-                createTextVNode(" Lorem ipsum dolor sit amet. ")
-              ])),
-              _: 1
-            })
-          ]),
-          default: withCtx(() => [
-            createVNode(unref(FRadioField), {
-              modelValue: selectedValue.value,
-              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => selectedValue.value = $event),
-              value: true
-            }, {
-              default: withCtx(() => _cache[10] || (_cache[10] = [
-                createTextVNode("Alternativ 1")
-              ])),
-              _: 1,
-              __: [10]
-            }, 8, ["modelValue"]),
-            createVNode(unref(FRadioField), {
-              modelValue: selectedValue.value,
-              "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => selectedValue.value = $event),
-              value: false
-            }, {
-              default: withCtx(() => _cache[11] || (_cache[11] = [
-                createTextVNode("Alternativ 2")
-              ])),
-              _: 1,
-              __: [11]
-            }, 8, ["modelValue"])
-          ]),
-          _: 1
-        })
-      ], 64);
+  components: { FTextField },
+  data() {
+    return {
+      awesomeModel: ""
     };
   }
-});
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes: [{ path: "/", name: "", component: _sfc_main$1 }]
 });
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -24588,6 +23916,49 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
+const _hoisted_1 = { class: "sandbox-root" };
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_text_field = resolveComponent("f-text-field");
+  const _directive_validation = resolveDirective("validation");
+  return openBlock(), createElementBlock("div", _hoisted_1, [
+    _cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
+    _cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
+    _cache[4] || (_cache[4] = createBaseVNode("p", null, [
+      createBaseVNode("strong", null, "Ändra och labba gärna här men glöm inte återställa innan merge!")
+    ], -1)),
+    _cache[5] || (_cache[5] = createBaseVNode("hr", null, null, -1)),
+    withDirectives((openBlock(), createBlock(_component_f_text_field, {
+      id: "awesome-field",
+      modelValue: _ctx.awesomeModel,
+      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.awesomeModel = $event)
+    }, {
+      default: withCtx(() => _cache[1] || (_cache[1] = [
+        createTextVNode(" Inmatningsfält. ")
+      ])),
+      description: withCtx(({ descriptionClass }) => [
+        createBaseVNode("span", {
+          class: normalizeClass(descriptionClass)
+        }, " Lorem ipsum dolor sit amet. ", 2)
+      ]),
+      _: 1
+    }, 8, ["modelValue"])), [
+      [
+        _directive_validation,
+        { maxLength: { length: 10 } },
+        void 0,
+        {
+          required: true,
+          maxLength: true
+        }
+      ]
+    ])
+  ]);
+}
+const DefaultView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [{ path: "/", name: "", component: DefaultView }]
+});
 const _sfc_main = {};
 function _sfc_render(_ctx, _cache) {
   const _component_router_view = resolveComponent("router-view");

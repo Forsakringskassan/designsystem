@@ -6155,3 +6155,13 @@ input[type=search]:focus,
 body {
   font-family: var(--f-font-family);
 }
+.sandbox-root {
+    width: min(100% - 2rem, 80ch);
+    margin: auto;
+}
+h1 {
+    margin-top: 2rem;
+}
+hr {
+    margin-bottom: 2rem;
+}
