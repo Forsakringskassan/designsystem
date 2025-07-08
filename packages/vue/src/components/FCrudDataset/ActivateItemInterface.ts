@@ -13,6 +13,8 @@ export interface ActivateItemInterface<T> {
     registerCallbackAfterItemAdd(callback: ActivateItemCallback<T>): void;
     // When an item is deleted the item above it should be set to active and have focus.
     registerCallbackBeforeItemDelete(callback: ActivateItemCallback<T>): void;
+    // Set key for nested items to enable deletion.
+    setNestedKey(key: keyof T): void;
 }
 
 /**
@@ -28,5 +30,8 @@ export function ActivateItemInjected<T>(): ActivateItemInterface<T> {
             "registerCallbackBeforeItemDelete",
             () => undefined,
         ) as (callback: ActivateItemCallback<T>) => void,
+        setNestedKey: inject("setNestedKey", () => undefined) as (
+            key: keyof T,
+        ) => void,
     };
 }
