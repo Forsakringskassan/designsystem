@@ -10,7 +10,7 @@ if (!customElements.get(ceTag)) {
     customElements.define(ceTag, defineCustomElement(MinimizablePanel));
 }
 
-const { context, initial = "expanded" } = defineProps<{
+const { context = undefined, initial = "expanded" } = defineProps<{
     /**
      * Screenreader context for toggle button.
      *

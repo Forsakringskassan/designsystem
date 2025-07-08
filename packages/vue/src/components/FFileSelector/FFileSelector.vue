@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { type PropType, defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import FIcon from "../FIcon/FIcon.vue";
 
@@ -9,10 +9,6 @@ export default defineComponent({
         FIcon,
     },
     inheritAttrs: false,
-    model: {
-        prop: "files",
-        event: "change",
-    },
     props: {
         /**
          * The id for the input id attribute.
@@ -32,8 +28,12 @@ export default defineComponent({
             required: false,
             default: false,
         },
+        modelValue: {
+            type: Object as PropType<FileList | null>,
+            default: null,
+        },
     },
-    emits: ["change"],
+    emits: ["change", "update:modelValue"],
     computed: {
         attrs(): Record<string, unknown> {
             return {

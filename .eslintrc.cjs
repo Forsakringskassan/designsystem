@@ -68,6 +68,7 @@ module.exports = {
             files: "cypress/**/*.[jt]s",
             rules: {
                 "import/no-extraneous-dependencies": "off",
+                "import/order": "off",
             },
         },
 
