@@ -15,6 +15,10 @@ Knappen finns i tre varianter och tre storlekar. En knapp har en text och kan ko
 ButtonLiveExample.vue
 ```
 
+```import live-example
+ButtonLiveExample2.vue
+```
+
 ## Primär knapp
 
 Använd primär knapp för det primära och det mest troliga alternativet för användaren. Det får bara finnas en primär knapp per sida.
@@ -131,6 +135,12 @@ Alla tidigare typer av knappar finns kvar för att nuvarande applikationer ska f
 - Diskret knapp - ska ersättas med en tertiär knapp av lämplig storlek.
 - Standard - ska ersättas med en sekundär knapp av lämplig storlek.
 - Primär och sekundär ska ändras så att de använder en faktisk storlek.
+
+## API
+
+:::api
+vue:FButton
+:::
 
 ## Relaterat
 

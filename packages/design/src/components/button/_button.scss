@@ -230,6 +230,11 @@ $button--tertiary: (
     @extend %button-template;
     @include core.make-button-variant($BUTTON_SELECTOR, $button--standard...);
 
+    --f-button-loader-extra-padding: 0.75rem;
+    &:has(.icon) {
+        --f-button-loader-extra-padding: 0rem;
+    }
+
     &#{$BUTTON_SELECTOR}--primary {
         @include core.make-button-variant($BUTTON_SELECTOR, $button--primary...);
     }
@@ -408,6 +413,8 @@ $button--tertiary: (
         line-height: 1.25rem;
         min-width: 4rem;
         padding: core.densify(size.$padding-025) size.$padding-075;
+        padding-left: calc(size.$padding-075 + var(--f-button-loader-extra-padding));
+        padding-right: calc(size.$padding-075 + var(--f-button-loader-extra-padding));
 
         @include core.breakpoint-down(sm) {
             &:not(.button--full-width) {
@@ -425,6 +432,8 @@ $button--tertiary: (
         line-height: 1.5rem;
         min-width: 8rem;
         padding: core.densify(0.625rem) 1.25rem;
+        padding-left: calc(1.25rem + var(--f-button-loader-extra-padding));
+        padding-right: calc(1.25rem + var(--f-button-loader-extra-padding));
 
         @include core.breakpoint-down(sm) {
             &:not(.button--full-width) {
@@ -437,6 +446,8 @@ $button--tertiary: (
         line-height: 1.5rem;
         min-width: 9.5rem;
         padding: core.densify(1rem) 1.5rem;
+        padding-left: calc(1.5rem + var(--f-button-loader-extra-padding));
+        padding-right: calc(1.5rem + var(--f-button-loader-extra-padding));
 
         @include core.breakpoint-down(sm) {
             max-width: var(--f-width-full);
@@ -467,5 +478,34 @@ $button--tertiary: (
         border-width: var(--f-border-width-medium);
         box-shadow: none;
         cursor: default;
+    }
+
+    & > .button__inflight {
+        margin-bottom: -3px;
+        visibility: visible;
+        animation:
+            button-spinner-delay 200ms linear 1,
+            button-spinner-rotation 1s linear infinite;
+    }
+
+    @keyframes button-spinner-rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes button-spinner-delay {
+        0%,
+        99% {
+            opacity: 0;
+        }
+
+        100% {
+            transform: 1;
+        }
     }
 }
