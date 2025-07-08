@@ -39,7 +39,7 @@ const $t = useTranslate();
 const slots = useSlots();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
-const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
+const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete, setNestedKey } = ActivateItemInjected<T>();
 const internalKey = getInternalKey<T>();
 
 const activeRow = ref<T | undefined>(undefined);
@@ -361,6 +361,9 @@ onUpdated(() => {
 onMounted(() => {
     if (tbody.value) {
         updateTr(tbody.value);
+    }
+    if (isExpandableTable) {
+        setNestedKey(props.expandableAttribute as keyof T);
     }
     registerCallbackOnSort(callbackOnSort);
     registerCallbackOnMount(callbackSortableColumns);
