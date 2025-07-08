@@ -54,14 +54,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { class: "sr-only" },
             " Sk\xE4rml\xE4sarinformation som fullst\xE4ndigt ers\xE4tter rubriken och som inneh\xE5ller tydlig kontext ",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "span",
             { class: "aria-hidden" },
             " En rubrik som inte f\xF6rklarar sin kontext ",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ]),
         2
@@ -72,7 +72,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _: 1

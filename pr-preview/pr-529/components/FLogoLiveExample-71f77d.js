@@ -76,21 +76,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "responsive" },
             "Responsiv",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[3] || (_cache[3] = _createElementVNode(
             "option",
             { value: "small" },
             "Liten",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[4] || (_cache[4] = _createElementVNode(
             "option",
             { value: "large" },
             "Stor",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,

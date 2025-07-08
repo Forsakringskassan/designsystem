@@ -73,7 +73,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         " Custom message ",
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     default: _withCtx(() => [
@@ -141,7 +141,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           },
           " Spara ",
           -1
-          /* HOISTED */
+          /* CACHED */
         )),
         _createElementVNode("button", {
           type: "button",

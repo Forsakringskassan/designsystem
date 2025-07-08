@@ -154,7 +154,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 { class: "sr-only" },
                 "\xF6ppnas i ny flik",
                 -1
-                /* HOISTED */
+                /* CACHED */
               ))
             ])
           ]),

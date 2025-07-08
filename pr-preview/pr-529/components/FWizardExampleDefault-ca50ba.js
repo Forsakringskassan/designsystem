@@ -146,21 +146,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   },
                   "V\xE4lj",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _cache[8] || (_cache[8] = _createElementVNode(
                   "option",
                   { value: "ALTERNATIV1" },
                   "Alternativ 1",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _cache[9] || (_cache[9] = _createElementVNode(
                   "option",
                   { value: "ALTERNATIV2" },
                   "Alternativ 2",
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 ))
               ]),
               _: 1,

@@ -624,7 +624,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         { id: "semantiska_farger" },
         "Semantiska f\xE4rger",
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     default: _withCtx(({ sortFilterResult }) => [

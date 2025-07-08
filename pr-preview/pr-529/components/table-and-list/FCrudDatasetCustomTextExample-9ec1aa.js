@@ -170,7 +170,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   null,
                   null,
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 )),
                 _cache[3] || (_cache[3] = _createTextVNode(" Beskrivning: ")),
                 _createElementVNode(
@@ -185,7 +185,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   null,
                   null,
                   -1
-                  /* HOISTED */
+                  /* CACHED */
                 ))
               ])
             ]),
@@ -253,7 +253,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         { class: "sr-only" },
         " frukt ",
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     add: _withCtx(({ item }) => [

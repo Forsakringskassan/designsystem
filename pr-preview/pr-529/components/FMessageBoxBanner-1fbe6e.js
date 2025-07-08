@@ -48,7 +48,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         " Det verkar som att du inte har n\xE5gon internetuppkoppling just nu. T\xE4nk p\xE5 att du beh\xF6ver uppkoppling f\xF6r att kunna signera ",
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     _: 1,

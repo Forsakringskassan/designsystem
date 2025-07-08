@@ -52,7 +52,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         },
         null,
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     default: _withCtx(() => [

@@ -99,35 +99,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "standard" },
             "Standard",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[4] || (_cache[4] = _createElementVNode(
             "option",
             { value: "warning" },
             "Varning",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[5] || (_cache[5] = _createElementVNode(
             "option",
             { value: "error" },
             "Fel",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[6] || (_cache[6] = _createElementVNode(
             "option",
             { value: "success" },
             "Framg\xE5ng",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[7] || (_cache[7] = _createElementVNode(
             "option",
             { value: "info" },
             "Info",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,

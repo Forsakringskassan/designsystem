@@ -97,7 +97,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Frukter",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createVNode(_component_f_sort_filter_dataset, {
         data: _ctx.fruits,
@@ -117,7 +117,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 null,
                 " Ta bort ",
                 -1
-                /* HOISTED */
+                /* CACHED */
               ))
             ]),
             _createElementVNode("button", _hoisted_3, [
@@ -130,7 +130,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 null,
                 " Bifoga ",
                 -1
-                /* HOISTED */
+                /* CACHED */
               ))
             ])
           ])
@@ -148,7 +148,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 { class: "sr-only" },
                 " Frukter ",
                 -1
-                /* HOISTED */
+                /* CACHED */
               )
             ])),
             "checkbox-description": _withCtx(() => _cache[3] || (_cache[3] = [

@@ -47,7 +47,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Stor rubrik",
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     default: _withCtx(() => _cache[1] || (_cache[1] = [])),

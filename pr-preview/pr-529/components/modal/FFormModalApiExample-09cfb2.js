@@ -167,7 +167,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         " Fruktsallad \xE4r en dessert best\xE5ende av minst tre sorters blandade frukter som \xE4r t\xE4rnade eller skivade och ofta skalade och urk\xE4rnade. En tallrik med fruktsallad best\xE5ende av p\xE4ron, satsuma, kiwi, passionsfrukt, granat\xE4ppelk\xE4rnor, samt grekisk yoghurt blandat med flytande honung, kardemumma och vaniljsocker. ",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _: 1,
@@ -222,7 +222,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Modalen st\xE4ngdes med resultatet:",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode2(
         "pre",

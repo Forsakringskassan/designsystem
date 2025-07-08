@@ -78,7 +78,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("code", null, "simple")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode("div", _hoisted_3, [
         _createVNode($setup["FPageLayout"], { layout: "simple" }, {
@@ -109,7 +109,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("code", null, "left-panel")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode("div", _hoisted_8, [
         _createVNode($setup["FPageLayout"], { layout: "left-panel" }, {
@@ -144,7 +144,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("code", null, "right-panel")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode("div", _hoisted_14, [
         _createVNode($setup["FPageLayout"], { layout: "right-panel" }, {
@@ -179,7 +179,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("code", null, "three-column")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode("div", _hoisted_20, [
         _createVNode($setup["FPageLayout"], { layout: "three-column" }, {

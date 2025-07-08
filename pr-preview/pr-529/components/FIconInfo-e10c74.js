@@ -48,7 +48,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Redigera",
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     _: 1,

@@ -57,7 +57,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "En rubrik",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ]),
         512

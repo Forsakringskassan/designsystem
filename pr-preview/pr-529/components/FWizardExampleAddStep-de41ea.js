@@ -111,7 +111,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               null,
               "Fruktkorg",
               -1
-              /* HOISTED */
+              /* CACHED */
             )),
             _createElementVNode("button", {
               type: "button",
@@ -233,7 +233,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               null,
               "Min adress",
               -1
-              /* HOISTED */
+              /* CACHED */
             )
           ])),
           _: 1,

@@ -66,7 +66,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Arbetsgivare",
         -1
-        /* HOISTED */
+        /* CACHED */
       ),
       _createElementVNode(
         "p",
@@ -79,7 +79,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createTextVNode(" Sverige ")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       ),
       _createElementVNode(
         "p",
@@ -89,7 +89,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("span", null, " 0109999999 ")
         ],
         -1
-        /* HOISTED */
+        /* CACHED */
       )
     ])),
     footer: _withCtx(() => [
@@ -101,7 +101,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             " Ta bort ",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _createElementVNode("button", _hoisted_3, [
@@ -111,7 +111,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             " \xC4ndra ",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ])
       ])

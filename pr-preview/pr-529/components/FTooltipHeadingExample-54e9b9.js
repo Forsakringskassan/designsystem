@@ -65,7 +65,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Heading level 1",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ]),
         512
@@ -90,7 +90,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Heading level 2",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ]),
         512
@@ -115,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Heading level 3",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ]),
         512
@@ -140,7 +140,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Heading level 4",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ]),
         512
@@ -165,7 +165,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Heading level 5",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ]),
         512
@@ -190,7 +190,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Heading level 6",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ]),
         512
@@ -211,7 +211,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Unattached",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createVNode(_component_f_tooltip, { "screen-reader-text": "Sk\xE4rml\xE4sartext" }, {
         body: _withCtx(() => _cache[12] || (_cache[12] = [

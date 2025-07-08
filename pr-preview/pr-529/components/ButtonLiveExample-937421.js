@@ -149,21 +149,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "primary" },
             "Prim\xE4r",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[10] || (_cache[10] = _createElementVNode(
             "option",
             { value: "secondary" },
             "Sekund\xE4r",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[11] || (_cache[11] = _createElementVNode(
             "option",
             { value: "tertiary" },
             "Terti\xE4r",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,
@@ -182,21 +182,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "small" },
             "Small",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[14] || (_cache[14] = _createElementVNode(
             "option",
             { value: "medium" },
             "Medium (standard)",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[15] || (_cache[15] = _createElementVNode(
             "option",
             { value: "large" },
             "Large",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,
@@ -274,21 +274,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "standard" },
             "Standard",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[23] || (_cache[23] = _createElementVNode(
             "option",
             { value: "black" },
             "Svart",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[24] || (_cache[24] = _createElementVNode(
             "option",
             { value: "inverted" },
             "Inverterad",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
         _: 1,
