@@ -13,7 +13,7 @@ import {
     getCurrentInstance,
     watch,
 } from "vue";
-import { findTabbableElements } from "@fkui/logic";
+import { findTabbableElements, isVisible } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
 import { TableScroll, tableScrollClasses, itemEquals, includeItem, renderSlotText } from "../../utils";
 import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
@@ -509,7 +509,13 @@ function callbackBeforeItemDelete(item: T): void {
         return;
     }
 
-    const index = internalRows.value.indexOf(item);
+    let index;
+    if (isExpandableTable) {
+        index = getExpandedIndex(item, internalRows.value);
+    } else {
+        index = internalRows.value.indexOf(item);
+    }
+
     const target = getPreviousFocus(index) ?? getNextFocus(index);
     if (target) {
         target.focus();
@@ -517,31 +523,27 @@ function callbackBeforeItemDelete(item: T): void {
 }
 
 function getPreviousFocus(currentIndex: number): HTMLElement | undefined {
-    const targetIndex = currentIndex - 1;
-    if (targetIndex < 0) {
+    const previousIndex = currentIndex - 1;
+    if (previousIndex < 0) {
         return undefined;
     }
 
-    const targetRow = tr.value[targetIndex];
+    let targetRow = trAll.value[previousIndex];
     if (!targetRow) {
         return undefined;
     }
 
-    const row = internalRows.value[targetIndex];
-    if (!isExpanded(row)) {
-        const tabbables = findTabbableElements(targetRow);
-        return tabbables[tabbables.length - 1];
-    }
+    for (let index = 0; index <= previousIndex; index++) {
+        const targetIndex = previousIndex - index;
+        targetRow = trAll.value[targetIndex];
 
-    // Get interactable in custom expandable rows, or parent row if none found.
-    const expandedIndex = getExpandedIndex(currentIndex, internalRows.value) - 1;
-    const { length } = expandableRows(row) as T[];
-    for (let i = 0; i <= length; i++) {
-        const targetExpandedRow = trAll.value[expandedIndex - i];
-        const tabbables = findTabbableElements(targetExpandedRow);
-        const target = tabbables[tabbables.length - 1];
-        if (target) {
-            return target;
+        if (!isVisible(targetRow)) {
+            continue;
+        }
+
+        const tabbables = findTabbableElements(targetRow);
+        if (tabbables.length > 0) {
+            return tabbables[tabbables.length - 1];
         }
     }
 
