@@ -74,6 +74,8 @@ export interface ActivateItemInterface<T> {
     registerCallbackAfterItemAdd(callback: ActivateItemCallback<T>): void;
     // (undocumented)
     registerCallbackBeforeItemDelete(callback: ActivateItemCallback<T>): void;
+    // (undocumented)
+    setNestedKey(key: keyof T): void;
 }
 
 // @public
