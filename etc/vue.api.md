@@ -5861,6 +5861,10 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
+modelValue: {
+type: PropType<FileList | null>;
+default: null;
+};
 }>, {}, {}, {
 attrs(): Record<string, unknown>;
 labelClass(): string;
@@ -5868,7 +5872,7 @@ labelId(): string;
 ariaDisabled(): string | undefined;
 }, {
 onClick(event: Event): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, "change"[], "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -5879,10 +5883,16 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
+modelValue: {
+type: PropType<FileList | null>;
+default: null;
+};
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
+modelValue: FileList | null;
 disabled: boolean;
 }, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
@@ -12543,7 +12553,6 @@ rotate: string;
 // @public (undocumented)
 export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_7<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
     props: __VLS_PrettifyLocal_7<Pick<Partial<{
-        data: T[];
         defaultSortAttribute: string;
         showSort: boolean;
         showFilter: boolean;
@@ -12561,7 +12570,7 @@ export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __V
         readonly filterAttributes?: string[] | undefined;
         readonly onDatasetSorted?: ((items: T[]) => any) | undefined;
         readonly onUsedSortAttributes?: ((sortAttribute: SortOrder) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "data" | "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes">, "sortableAttributes" | "onDatasetSorted" | "onUsedSortAttributes" | ("data" | "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes">, "data" | "sortableAttributes" | "onDatasetSorted" | "onUsedSortAttributes" | ("defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes")> & {} & Partial<{}>> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {

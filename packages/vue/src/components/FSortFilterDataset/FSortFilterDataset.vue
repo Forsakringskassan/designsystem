@@ -35,7 +35,6 @@ const props = defineProps({
     data: {
         type: Array as PropType<T[]>,
         required: true,
-        default: () => [],
     },
     /**
      * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.

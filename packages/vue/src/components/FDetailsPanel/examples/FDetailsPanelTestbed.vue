@@ -3,8 +3,8 @@ import { computed, defineComponent } from "vue";
 import { FPageLayout, FResizePane, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
 
 const { area = "left", resize = false } = defineProps<{
-    area: string;
-    resize: boolean;
+    area?: string;
+    resize?: boolean;
 }>();
 
 const DummyWrapper = defineComponent({
