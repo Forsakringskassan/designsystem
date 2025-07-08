@@ -26995,6 +26995,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           title: "Stegrubrik 1"
         }, {
           default: withCtx(() => [
+            _cache[7] || (_cache[7] = createBaseVNode("p", null, " Fruktsallad är en dessert bestående av minst tre sorters blandade frukter som är tärnade eller skivade och ofta skalade och urkärnade. En tallrik med fruktsallad bestående av päron, satsuma, kiwi, passionsfrukt, granatäppelkärnor, samt grekisk yoghurt blandat med flytande honung, kardemumma och vaniljsocker. ", -1)),
             withDirectives((openBlock(), createBlock(_component_f_text_field, null, {
               default: withCtx(() => _cache[4] || (_cache[4] = [
                 createTextVNode(" Etikett-rubrik ")
@@ -27012,6 +27013,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
                 }
               ]
             ]),
+            _cache[8] || (_cache[8] = createBaseVNode("p", null, " Fruktsallad är en dessert bestående av minst tre sorters blandade frukter som är tärnade eller skivade och ofta skalade och urkärnade. En tallrik med fruktsallad bestående av päron, satsuma, kiwi, passionsfrukt, granatäppelkärnor, samt grekisk yoghurt blandat med flytande honung, kardemumma och vaniljsocker. ", -1)),
             withDirectives((openBlock(), createBlock(_component_f_text_field, null, {
               default: withCtx(() => _cache[5] || (_cache[5] = [
                 createTextVNode(" Etikett-rubrik (frivillig) ")
@@ -27026,6 +27028,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
                 { maxLength: true }
               ]
             ]),
+            _cache[9] || (_cache[9] = createBaseVNode("p", null, " Fruktsallad är en dessert bestående av minst tre sorters blandade frukter som är tärnade eller skivade och ofta skalade och urkärnade. En tallrik med fruktsallad bestående av päron, satsuma, kiwi, passionsfrukt, granatäppelkärnor, samt grekisk yoghurt blandat med flytande honung, kardemumma och vaniljsocker. ", -1)),
             createBaseVNode("button", {
               "data-test": "form-modal-api-example-button",
               type: "button",
@@ -27037,7 +27040,8 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
               createBaseVNode("pre", _hoisted_2, toDisplayString(_ctx.result), 1)
             ])) : createCommentVNode("", true)
           ]),
-          _: 1
+          _: 1,
+          __: [7, 8, 9]
         }),
         createVNode(_component_f_wizard_step, {
           key: "bar",
@@ -27049,11 +27053,11 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
               modelValue: _ctx.date,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.date = $event)
             }, {
-              default: withCtx(() => _cache[7] || (_cache[7] = [
+              default: withCtx(() => _cache[10] || (_cache[10] = [
                 createTextVNode(" Etikett-rubrik ")
               ])),
               _: 1,
-              __: [7]
+              __: [10]
             }, 8, ["modelValue"])), [
               [
                 _directive_validation,
@@ -27066,19 +27070,19 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
               modelValue: _ctx.options,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.options = $event)
             }, {
-              label: withCtx(() => _cache[8] || (_cache[8] = [
+              label: withCtx(() => _cache[11] || (_cache[11] = [
                 createTextVNode(" Etikett-rubrik ")
               ])),
               default: withCtx(() => [
-                _cache[9] || (_cache[9] = createBaseVNode("option", {
+                _cache[12] || (_cache[12] = createBaseVNode("option", {
                   disabled: true,
                   value: ""
                 }, "Välj", -1)),
-                _cache[10] || (_cache[10] = createBaseVNode("option", { value: "ALTERNATIV1" }, "Alternativ 1", -1)),
-                _cache[11] || (_cache[11] = createBaseVNode("option", { value: "ALTERNATIV2" }, "Alternativ 2", -1))
+                _cache[13] || (_cache[13] = createBaseVNode("option", { value: "ALTERNATIV1" }, "Alternativ 1", -1)),
+                _cache[14] || (_cache[14] = createBaseVNode("option", { value: "ALTERNATIV2" }, "Alternativ 2", -1))
               ]),
               _: 1,
-              __: [9, 10, 11]
+              __: [12, 13, 14]
             }, 8, ["modelValue"])), [
               [
                 _directive_validation,
@@ -27095,14 +27099,14 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           "use-error-list": false,
           title: "Stegrubrik 3"
         }, {
-          "next-button-text": withCtx(() => _cache[12] || (_cache[12] = [
+          "next-button-text": withCtx(() => _cache[15] || (_cache[15] = [
             createTextVNode(" Klar ")
           ])),
           default: withCtx(() => [
-            _cache[13] || (_cache[13] = createTextVNode(" En informationstext "))
+            _cache[16] || (_cache[16] = createTextVNode(" En informationstext "))
           ]),
           _: 1,
-          __: [13]
+          __: [16]
         })
       ]),
       _: 1
