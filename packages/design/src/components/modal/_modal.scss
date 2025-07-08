@@ -87,6 +87,7 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
 
                 .modal__dialog {
                     min-height: 100vh;
+                    min-height: 100dvh;
                 }
 
                 .modal__dialog-inner {
