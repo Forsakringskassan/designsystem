@@ -14,6 +14,10 @@ $LABEL_SELECTOR: ".label" !default;
     margin-bottom: core.densify(size.$margin-025);
     width: var(--f-width-full);
 
+    &.sr-only {
+        width: auto;
+    }
+
     &__message {
         display: block;
         font-weight: var(--f-font-weight-normal);
