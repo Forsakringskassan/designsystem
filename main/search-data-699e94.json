@@ -77,8 +77,6 @@
     "Jest",
     "EventBus",
     "EventBus",
-    "focus-indicator() mixin",
-    "densify() function",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -105,6 +103,8 @@
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
     "clamp() function",
+    "focus-indicator() mixin",
+    "densify() function",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -602,16 +602,6 @@
       ]
     },
     {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": []
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": []
-    },
-    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": []
@@ -732,6 +722,16 @@
     {
       "url": "functions/date/clamp.html",
       "title": "clamp() function",
+      "terms": []
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": []
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
       "terms": []
     },
     {
@@ -1566,9 +1566,9 @@
     "79": 56,
     "80": 57,
     "81": 58,
-    "82": 59,
-    "83": 60,
-    "84": 60,
+    "82": 58,
+    "83": 58,
+    "84": 59,
     "85": 60,
     "86": 61,
     "87": 62,
