@@ -2329,7 +2329,7 @@ input[type=search]:focus,
 .button > .button__inflight, .docs-example-button > .button__inflight {
   margin-bottom: -3px;
   visibility: visible;
-  animation: delayed 500ms linear 1, rotation 1s linear infinite;
+  animation: delayed 200ms linear 1, rotation 1s linear infinite;
 }
 @keyframes rotation {
   0% {
