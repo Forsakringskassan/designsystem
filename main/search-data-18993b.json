@@ -77,6 +77,8 @@
     "Jest",
     "EventBus",
     "EventBus",
+    "focus-indicator() mixin",
+    "densify() function",
     "Validation Plugin",
     "Translation Plugin",
     "Test Plugin",
@@ -103,8 +105,6 @@
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
     "clamp() function",
-    "focus-indicator() mixin",
-    "densify() function",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -277,15 +277,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -602,6 +602,16 @@
       ]
     },
     {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": []
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": []
+    },
+    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": []
@@ -722,16 +732,6 @@
     {
       "url": "functions/date/clamp.html",
       "title": "clamp() function",
-      "terms": []
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": []
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
       "terms": []
     },
     {
@@ -1423,6 +1423,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -1450,21 +1465,6 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -1566,9 +1566,9 @@
     "79": 56,
     "80": 57,
     "81": 58,
-    "82": 58,
-    "83": 58,
-    "84": 59,
+    "82": 59,
+    "83": 60,
+    "84": 60,
     "85": 60,
     "86": 61,
     "87": 62,

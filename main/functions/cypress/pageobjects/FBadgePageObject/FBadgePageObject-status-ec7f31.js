@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject.vue:FBadgePageObject-a21c11.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject-status.vue:FBadgePageObject-status-ec7f31.js
 import { defineComponent as _defineComponent } from "vue";
 import { FBadge } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FBadgePageObject",
+  __name: "FBadgePageObject-status",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FBadge() {
@@ -45,20 +45,20 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], null, {
+  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], { status: "warning" }, {
     default: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" MyBadge ")
     ])),
     _: 1,
     __: [0]
   })), [
-    [_directive_test, "my-badge"]
+    [_directive_test, "my-badge-warning"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a21c11"
+  selector: "#example-ec7f31"
 });
 export {
   render
