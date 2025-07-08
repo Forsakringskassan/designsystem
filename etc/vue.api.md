@@ -11717,11 +11717,11 @@ default: () => string;
 };
 modelValue: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor | null)[];
-required: false;
+default: () => undefined;
 };
 value: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor | null)[];
-required: true;
+default: () => undefined;
 };
 }>, {
 sharedName: string | undefined;
@@ -11768,17 +11768,19 @@ default: () => string;
 };
 modelValue: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor | null)[];
-required: false;
+default: () => undefined;
 };
 value: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | DateConstructor | ArrayConstructor | NumberConstructor | null)[];
-required: true;
+default: () => undefined;
 };
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
+value: string | number | boolean | Date | unknown[] | Record<string, any> | null;
 id: string;
+modelValue: string | number | boolean | Date | unknown[] | Record<string, any> | null;
 disabled: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
