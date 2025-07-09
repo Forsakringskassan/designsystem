@@ -17,6 +17,8 @@ Om det är mycket information som ska presenteras kan kortet visa en sammanfattn
 
 Ett kort kan innehålla flera knappar eller länkar, till exempel för att visa detaljer, redigera uppgifter eller för att radera objektet eller personens uppgifter.
 
+{@link FDefinitionList Definitionslistor} kan användas för att presentera information i ett kompakt format.
+
 ## Innehåll
 
 Ett kort har tre ytor där innehåll kan placeras:

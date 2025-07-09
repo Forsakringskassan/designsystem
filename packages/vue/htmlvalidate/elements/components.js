@@ -1477,4 +1477,18 @@ module.exports = defineMetadata({
         },
         slots: ["default"],
     },
+    "f-definition-list": {
+        flow: true,
+        attributes: {
+            definitions: {
+                required: true,
+            },
+            justified: {
+                boolean: true,
+                required: false,
+            },
+        },
+        permittedContent: [],
+        textContent: "none",
+    },
 });

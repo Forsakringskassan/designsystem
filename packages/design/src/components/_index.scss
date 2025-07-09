@@ -10,6 +10,7 @@
 @forward "contextmenu/variables";
 @forward "crud-dataset/variables";
 @forward "datepicker-field/variables";
+@forward "definition-list/variables";
 @forward "dialogue-tree/variables";
 @forward "entrypoint/variables";
 @forward "error-list/variables";
@@ -59,6 +60,7 @@
 @use "contextmenu";
 @use "crud-dataset";
 @use "datepicker-field";
+@use "definition-list";
 @use "dialogue-tree";
 @use "entrypoint";
 @use "error-list";

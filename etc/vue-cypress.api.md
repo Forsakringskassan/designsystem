@@ -209,6 +209,23 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     yearSelector(): DefaultCypressChainable;
 }
 
+// @public (undocumented)
+export class FDefinitionListPageObject implements BasePageObject {
+    constructor(selector: string);
+    // (undocumented)
+    description(index: number): DefaultCypressChainable;
+    // (undocumented)
+    el(): DefaultCypressChainable;
+    // (undocumented)
+    isJustified(): Cypress.Chainable<boolean>;
+    // (undocumented)
+    numberOfDefinitions(): Cypress.Chainable<number>;
+    // (undocumented)
+    selector: string;
+    // (undocumented)
+    term(index: number): DefaultCypressChainable;
+}
+
 // @public
 export class FDetailsPanelPageObject implements BasePageObject {
     protected constructor(selector: string);
