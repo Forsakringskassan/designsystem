@@ -435,6 +435,12 @@ align: string;
 export { _default as FValidationForm }
 export { _default as IValidationForm }
 
+// @public
+export interface Definition {
+    description: string;
+    term: string;
+}
+
 // @public (undocumented)
 export type DetailsPanelCloseCallback<T> = (data: {
     item: T;
@@ -4334,6 +4340,31 @@ selected: boolean;
 highlight: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const FDefinitionList: DefineComponent<ExtractPropTypes<    {
+definitions: {
+type: PropType<Definition[]>;
+required: true;
+};
+aligned: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+definitions: {
+type: PropType<Definition[]>;
+required: true;
+};
+aligned: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{}>, {
+aligned: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_3" needs to be exported by the entry point index.d.ts
 //

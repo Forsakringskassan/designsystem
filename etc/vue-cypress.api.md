@@ -189,6 +189,17 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     toggleCalendarButton(): DefaultCypressChainable;
 }
 
+// @public (undocumented)
+export class FDefinitionListPageObject implements BasePageObject {
+    constructor(selector: string);
+    definition(index: number): DefaultCypressChainable;
+    definitions(): DefaultCypressChainable;
+    // (undocumented)
+    el: () => DefaultCypressChainable;
+    // (undocumented)
+    selector: string;
+}
+
 // @public
 export class FDetailsPanelPageObject implements BasePageObject {
     protected constructor(selector: string);
