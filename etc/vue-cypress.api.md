@@ -210,6 +210,16 @@ export class FDatepickerFieldPageobject implements BasePageObject {
 }
 
 // @public
+export class FDefinitionListPageObject implements BasePageObject {
+    constructor(selector: string);
+    description(index: number): DefaultCypressChainable;
+    el(): DefaultCypressChainable;
+    numberOfDefinitions(): Cypress.Chainable<number>;
+    selector: string;
+    term(index: number): DefaultCypressChainable;
+}
+
+// @public
 export class FDetailsPanelPageObject implements BasePageObject {
     protected constructor(selector: string);
     closeButton(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
