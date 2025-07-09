@@ -61,3 +61,13 @@ $CARD_SELECTOR: ".card" !default;
         color: $card-color-text-error;
     }
 }
+
+// TODO Flytta till `_definition-list.scss`
+$DEFINITION_LIST_SELECTOR: ".definition-list" !default;
+
+#{$DEFINITION_LIST_SELECTOR} {
+    > dl {
+        display: grid;
+        grid-template-columns: max-content auto;
+    }
+}
