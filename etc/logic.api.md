@@ -201,6 +201,13 @@ export function formatPostalCode(value: string | undefined | null): string | und
 // @public (undocumented)
 export function getErrorMessages(): Record<string, string>;
 
+// @public (undocumented)
+export function guardRef<T>(ref: {
+    value: T | null;
+} | undefined | null): asserts ref is {
+    value: T;
+};
+
 // @public
 export function handleTab(event: KeyboardEvent, container: HTMLElement): void;
 
