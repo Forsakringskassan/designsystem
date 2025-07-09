@@ -4335,6 +4335,37 @@ highlight: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
+// @public (undocumented)
+export const FDefinitionList: DefineComponent<ExtractPropTypes<    {
+definitions: {
+type: PropType<FDefinitionListItem[]>;
+required: true;
+};
+justified: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+definitions: {
+type: PropType<FDefinitionListItem[]>;
+required: true;
+};
+justified: {
+type: BooleanConstructor;
+required: false;
+default: boolean;
+};
+}>> & Readonly<{}>, {
+justified: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public
+export interface FDefinitionListItem {
+    description: string;
+    term: string;
+}
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
