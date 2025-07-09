@@ -1,0 +1,107 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FCheckboxField, FFieldset, FRadioField, FIcon, FSelectField, FButton } from "@fkui/vue";
+import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
+
+export default defineComponent({
+    name: "ButtonLiveExample",
+    components: { LiveExample, FCheckboxField, FFieldset, FRadioField, FSelectField },
+    data() {
+        return {
+            type: undefined as undefined | string,
+            size: undefined as undefined | string,
+            disabled: false,
+            tertiaryColor: undefined as undefined | string,
+            hasIcon: false,
+            iconPlacement: "Left",
+            mobileFullWidth: false,
+            disabledFullwidth: undefined as undefined | boolean,
+            isAsync: false,
+        };
+    },
+    computed: {
+        components(): object {
+            return { FIcon, FButton };
+        },
+        isTertiary(): boolean {
+            return this.type === `tertiary`;
+        },
+        iconPropName(): string {
+            return `icon${this.iconPlacement}`;
+        },
+        template(): string {
+            const { type, size, disabled, tertiaryColor, isAsync, mobileFullWidth } = this;
+            return createElement(
+                "f-button",
+                {
+                    type,
+                    size,
+                    tertiaryColor,
+                    disabled,
+                    mobileFullWidth,
+                    "@click": isAsync ? "asyncFunction" : undefined,
+                    [this.iconPropName]: this.hasIcon ? "success" : undefined,
+                },
+                "Knapptext",
+            );
+        },
+    },
+    watch: {
+        size: {
+            immediate: true,
+            async handler(): Promise<void> {
+                if (this.size === "large") {
+                    this.mobileFullWidth = true;
+                    this.disabledFullwidth = true;
+                } else {
+                    this.mobileFullWidth = false;
+                    this.disabledFullwidth = false;
+                }
+            },
+        },
+    },
+    methods: {
+        livemethods(): object {
+            return {
+                async asyncFunction() {
+                    await new Promise((resolve) => setTimeout(resolve, 3000));
+                },
+            };
+        },
+    },
+});
+</script>
+
+<template>
+    <live-example :components :template :livemethods="livemethods()">
+        <f-select-field v-model="type">
+            <template #label> Typ </template>
+            <option :value="undefined">Primär</option>
+            <option value="secondary">Sekundär</option>
+            <option value="tertiary">Tertiär</option>
+        </f-select-field>
+        <f-select-field v-model="size">
+            <template #label> Storlek </template>
+            <option value="small">Small</option>
+            <option :value="undefined">Medium (standard)</option>
+            <option value="large">Large</option>
+        </f-select-field>
+        <f-checkbox-field v-model="hasIcon" :value="true"> Visa ikon </f-checkbox-field>
+        <f-fieldset v-if="hasIcon" name="radio-place-icon" horizontal>
+            <template #label> Placering av ikon </template>
+            <f-radio-field v-model="iconPlacement" value="Left"> Vänster </f-radio-field>
+            <f-radio-field v-model="iconPlacement" value="Right"> Höger </f-radio-field>
+        </f-fieldset>
+        <f-checkbox-field v-model="mobileFullWidth" :value="true" :disabled="disabledFullwidth">
+            Fullbredd i mobil
+        </f-checkbox-field>
+        <f-select-field v-if="isTertiary" v-model="tertiaryColor">
+            <template #label> Färg </template>
+            <option :value="undefined">Standard</option>
+            <option value="black">Svart</option>
+            <option value="inverted">Inverterad</option>
+        </f-select-field>
+        <f-checkbox-field v-model="disabled" :value="true"> Inaktiv </f-checkbox-field>
+        <f-checkbox-field v-model="isAsync" :value="true"> Asynkron åtgärd </f-checkbox-field>
+    </live-example>
+</template>
