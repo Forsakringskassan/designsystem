@@ -1,0 +1,18 @@
+.definition-list {
+    margin: 0;
+
+    > dt {
+        float: left;
+        clear: left;
+        margin-right: 5px;
+    }
+
+    > dd {
+        margin-left: 0;
+    }
+
+    &--aligned {
+        display: grid;
+        grid-template-columns: max-content auto;
+    }
+}

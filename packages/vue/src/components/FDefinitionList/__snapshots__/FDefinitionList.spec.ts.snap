@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with default settings 1`] = `
+<dl
+  class="definition-list"
+>
+  
+  
+  <dt>
+    Skulle ha jobbat:
+  </dt>
+  <dd>
+    8 timmar
+  </dd>
+  
+  
+  <dt>
+    Vabbade:
+  </dt>
+  <dd>
+    8 timmar
+  </dd>
+  
+  
+  <dt>
+    Omfattning:
+  </dt>
+  <dd>
+    100 procent
+  </dd>
+  
+  
+</dl>
+`;
+
+exports[`snapshots should match snapshot with grid layout 1`] = `
+<dl
+  class="definition-list definition-list--aligned"
+>
+  
+  
+  <dt>
+    Skulle ha jobbat:
+  </dt>
+  <dd>
+    8 timmar
+  </dd>
+  
+  
+  <dt>
+    Vabbade:
+  </dt>
+  <dd>
+    8 timmar
+  </dd>
+  
+  
+  <dt>
+    Omfattning:
+  </dt>
+  <dd>
+    100 procent
+  </dd>
+  
+  
+</dl>
+`;
