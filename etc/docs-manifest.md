@@ -68,6 +68,7 @@ components/pagination.html
 components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
+components/table-and-list/fdefinitionlist.html
 components/table-and-list/flist.html
 components/table-and-list/fsortfilterdataset.html
 components/table-and-list/table.html
@@ -80,6 +81,7 @@ functions/config.html
 functions/cypress/pageobjects/FBadgePageObject/index.html
 functions/cypress/pageobjects/FBadgePageObject/is-inverted.html
 functions/cypress/pageobjects/FBadgePageObject/status.html
+functions/cypress/pageobjects/fdefinitionlistpageobject.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/content.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/el.html
