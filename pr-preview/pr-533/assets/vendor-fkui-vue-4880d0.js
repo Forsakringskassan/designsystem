@@ -18884,20 +18884,16 @@ var _sfc_main$4 = defineComponent({
      * The value for the input checked attribute.
      * @model
      */
-    // ? The rule is disabled so that the `checked` prop can be undefined or null.
-    /* eslint-disable-next-line vue/require-default-prop -- technical debt,
-    /* it should contain a default value of undefined and proptype should
-    /* include undefined (see comment on line above) */
     modelValue: {
       type: anyType,
-      required: false
+      default: () => void 0
     },
     /**
      * The value for the input.
      */
     value: {
       type: anyType,
-      required: true
+      default: () => void 0
     }
   },
   emits: ["change", "update:modelValue"],
