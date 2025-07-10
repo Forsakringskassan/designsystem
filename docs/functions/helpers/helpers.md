@@ -1,6 +1,12 @@
 ---
 title: Hjälpklasser
 layout: content-with-menu
+search:
+    terms:
+        - helpers
+        - h-no-margin
+        - h-root-size
+        - h-display-flex
 ---
 
 Generella hjälpklasser för att exempelvis skriva över styling från komponenter.

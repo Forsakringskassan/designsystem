@@ -3,6 +3,9 @@ title: Kontextmeny
 status: Produktionsklar
 layout: component
 component: FContextMenu
+search:
+    terms:
+        - menyval
 ---
 
 En kontextmeny presenterar en popup-ruta med funktioner kopplade till ett objekt, till exempel en lista eller tabellrad.

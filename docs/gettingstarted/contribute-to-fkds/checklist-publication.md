@@ -2,15 +2,18 @@
 title: Checklista vid publicering
 layout: pattern
 sortorder: 4
+search:
+    terms:
+        - personuppgifter
 ---
 
 :::alt checklist-publication-alt
 
 Om du bidrar till designsystemet genom att göra en uppdatering, kontrollera att dina uppdateringar i kod och dokumentation följer kraven nedan på vad som är tillåtet att publicera.
 
-## Persondata
+## Personuppgifter
 
-Det får inte finnas persondata som tillhör en person eller som möjliggör identifiering. Det kan till exempel vara
+Det får inte finnas uppgifter som tillhör en person eller som möjliggör identifiering av person. Det kan till exempel vara
 
 - personnummer
 - kortnummer

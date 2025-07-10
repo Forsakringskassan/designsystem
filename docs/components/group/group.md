@@ -5,6 +5,10 @@ layout: component
 component:
     - name: group
       source: _group.scss
+search:
+    terms:
+        - gruppera
+        - gruppering
 ---
 
 Komponentgrupp används för att gruppera komponenter.

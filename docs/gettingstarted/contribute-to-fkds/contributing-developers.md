@@ -3,6 +3,15 @@ title: För utvecklare
 name: contributing-developers
 layout: pattern
 sortorder: 2
+search:
+    terms:
+        - installation
+        - kommandon
+        - kodstandard
+        - lintning
+        - paketering
+        - commit
+        - commit-meddelande
 ---
 
 ## Installation

@@ -2,6 +2,9 @@
 title: Version 5 migreringsguide
 name: migrating-to-v5
 layout: pattern
+search:
+    terms:
+        - Vue 3
 ---
 
 ## Vue 3

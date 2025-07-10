@@ -2,6 +2,9 @@
 title: EventBus
 layout: content-with-menu
 component: EventBus
+search:
+    terms:
+        - services
 ---
 
 `EventBus` is a global eventhandler where one can listen on and emit events.

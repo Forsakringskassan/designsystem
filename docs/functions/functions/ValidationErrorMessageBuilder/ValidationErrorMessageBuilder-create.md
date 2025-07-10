@@ -3,6 +3,10 @@ name: ValidationErrorMessageBuilder.create
 title: "ValidationErrorMessageBuilder: create() function"
 short-title: create()
 layout: api.function
+search:
+    terms:
+        - feltext
+        - validator
 ---
 
 `ValidationErrorMessageBuilder` är builder pattern för att mappa upp validatorer till feltexter som visas när valideringsfel uppstår.

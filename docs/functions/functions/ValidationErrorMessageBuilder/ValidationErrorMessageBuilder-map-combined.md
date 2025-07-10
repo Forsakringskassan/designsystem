@@ -3,6 +3,10 @@ name: ValidationErrorMessageBuilder.mapCombined
 title: "ValidationErrorMessageBuilder: mapCombined() method"
 short-title: mapCombined()
 layout: api.method
+search:
+    terms:
+        - feltext
+        - validator
 ---
 
 Sätter en feltext på en kombination av validatorer.

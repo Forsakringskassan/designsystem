@@ -3,6 +3,9 @@ title: clamp() function
 short-title: clamp()
 name: clamp
 layout: api.function
+search:
+    terms:
+        - datum
 ---
 
 Begränsar ett datumvärde till att ligga mellan två gränsvärden.

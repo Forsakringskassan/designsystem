@@ -1,6 +1,10 @@
 ---
 title: Färger
 layout: article
+search:
+    terms:
+        - semantiska
+        - färgpalett
 ---
 
 Försäkringskassans digitala färgpalett är baserad på färgerna som finns i den grafiska profilen.

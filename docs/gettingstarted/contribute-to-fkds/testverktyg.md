@@ -1,6 +1,21 @@
 ---
 title: Testverktyg
 layout: article
+search:
+    terms:
+        - testfall
+        - jest
+        - enhetstest
+        - cypress
+        - komponenttest
+        - e2e-test
+        - statisk kodanalys
+        - lintning
+        - eslint
+        - prettier
+        - html-validate
+        - styleint
+        - pnr-scanner
 ---
 
 ## Testfall

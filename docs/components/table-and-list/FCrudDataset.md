@@ -3,6 +3,13 @@ title: Datamängdredigerare
 status: Produktionsklar
 layout: component
 component: FCrudDataset
+search:
+    terms:
+        - redigera
+        - redigering
+        - ändra
+        - ta bort
+        - lägg till
 ---
 
 Datamändgredigeraren används för att erbjuda användare funktionerna "lägg till", "ändra" och "ta bort" i en datamängd.

@@ -3,6 +3,11 @@ title: Valideringsformulär
 status: Produktionsklar
 layout: component
 component: FValidationForm
+search:
+    terms:
+        - felhantering
+        - submit
+        - servervalidering
 ---
 
 Du använder valideringsformulär när du har ett formulär eller ett mindre delformulär som ska valideras.

@@ -2,6 +2,9 @@
 title: refIsVueArray
 name: refIsVueArray
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Verifies that a ref is an array containing at least one Vue component.

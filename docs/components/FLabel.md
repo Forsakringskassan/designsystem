@@ -3,6 +3,9 @@ title: Etikett
 status: Produktionsklar
 layout: component
 component: FLabel
+search:
+    terms:
+        - feltext
 ---
 
 Etikett är en utökad label och används tillsammans med inmatningskomponenter. En etikett innehåller alltid etikett-rubrik medan övriga delar ska kombineras på det mest ändamålsenliga sättet i en given situation.

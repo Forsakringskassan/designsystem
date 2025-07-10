@@ -3,6 +3,11 @@ name: "@fkui/test-utils"
 title: Om testverktyg
 layout: content-with-menu
 sortorder: 0
+search:
+    terms:
+        - automatiska testfall
+        - Jest
+        - Cypress
 ---
 
 Samling med funktioner och komponenter till Jest och Cypress för att underlätta utveckling av automatiska testfall.

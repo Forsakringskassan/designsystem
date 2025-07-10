@@ -1,6 +1,18 @@
 ---
 title: Formaterare och parsers
 layout: component
+search:
+    terms:
+        - bankgiro
+        - clearingnummer
+        - datum
+        - kontonummer
+        - nummer
+        - organisationsnummer
+        - personnummer
+        - plusgiro
+        - postnummer
+        - procent
 ---
 
 Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält. Parsning används för att ändra på det som faktiskt hanteras och skickas in. Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag. Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.

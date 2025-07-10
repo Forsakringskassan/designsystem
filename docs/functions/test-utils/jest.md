@@ -1,6 +1,9 @@
 ---
 name: Jest
 layout: content-with-menu
+search:
+    terms:
+        - testverktyg
 ---
 
 Matchers för Jest.
