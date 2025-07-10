@@ -3,6 +3,12 @@ title: useModal() composable
 short-title: useModal()
 name: useModal
 layout: article
+search:
+    terms:
+        - openModal
+        - confirmModal
+        - formModal
+        - composition API
 ---
 
 Composable to get access to modal functions without using `callingInstance`:

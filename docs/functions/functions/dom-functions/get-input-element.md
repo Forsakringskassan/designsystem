@@ -2,6 +2,9 @@
 title: getInputElement
 name: getInputElement
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 (Odokumenterad funktion)

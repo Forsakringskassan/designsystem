@@ -3,6 +3,10 @@ name: ValidationErrorMessageBuilder.map
 title: "ValidationErrorMessageBuilder: map() method"
 short-title: map()
 layout: api.method
+search:
+    terms:
+        - feltext
+        - validator
 ---
 
 Sätter en feltext på en validator.

@@ -2,6 +2,9 @@
 title: Releaseanteckningar
 name: release-notes
 layout: pattern
+search:
+    terms:
+        - version
 redirect_from:
     - gettingstarted/about/news.html
 ---

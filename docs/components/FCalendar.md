@@ -5,6 +5,11 @@ layout: component
 component:
     - FCalendar
     - FCalendarDay
+search:
+    terms:
+        - valbara dagar
+        - dagkomponent
+        - kalenderdag
 ---
 
 Kalendern används när en användare behöver välja flera dagar, välja dagar och fylla i information om dem, se mer information om en dag eller få en överblick över en månad.

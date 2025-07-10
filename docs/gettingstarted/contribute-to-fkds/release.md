@@ -2,6 +2,16 @@
 title: Releaseprocess
 layout: pattern
 sortorder: 2
+search:
+    terms:
+        - implementation
+        - branch
+        - branchnamn
+        - commits
+        - brytande ändringar
+        - pull request
+        - releaseanteckningar
+        - release
 ---
 
 Här beskriver vi hur du går från en ide till en ny version av FKUI.

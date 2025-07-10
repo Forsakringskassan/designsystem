@@ -1,6 +1,9 @@
 ---
 title: Felmeddelande - anpassat
 layout: content-with-menu
+search:
+    terms:
+        - eget felmeddelande
 ---
 
 Samtliga inmatningskomponenter har en slot `error-message` med två bindings:

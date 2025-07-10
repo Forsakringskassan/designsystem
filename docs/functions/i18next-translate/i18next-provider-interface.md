@@ -2,6 +2,9 @@
 title: I18nextProvider
 name: I18nextProvider
 layout: pattern
+search:
+    terms:
+        - TranslationService
 ---
 
 Provider till `TranslationService` som använder [`i18next`][i18next] för översättningar.

@@ -2,6 +2,17 @@
 title: Formaterare och parser - anpassad
 layout: pattern
 sortorder: 2
+search:
+    terms:
+        - formaterare
+        - formatter
+        - parser
+        - vyvärde
+        - vy-värde
+        - viewValue
+        - modellvärde
+        - modell-värde
+        - modelValue
 ---
 
 För en djupare förståelse om hur data flödar från inmatningsfält till modell-värde till vy-värde presenterar vi flödesscheman.

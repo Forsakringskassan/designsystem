@@ -1,6 +1,14 @@
 ---
 title: Typografi
 layout: pattern
+search:
+    terms:
+        - rubrik
+        - rubriknivå
+        - paragraf
+        - textformatering
+        - textelement
+        - teckenstorlek
 ---
 
 Typografin för Försäkringskassan har ett brett användningsområde och kan användas både i rubriker och löpande text.

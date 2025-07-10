@@ -1,6 +1,10 @@
 ---
 title: Translation Plugin
 layout: content-with-menu
+search:
+    terms:
+        - översätta textnycklar globalt
+        - TranslationService
 ---
 
 Ett Vue-plugin som hjälper till med att översätta textnycklar globalt.
@@ -143,4 +147,4 @@ eller kombinerat med standardtext:
 </p>
 ```
 
-Andra providers kan erbjuda pluralisering, nästlade objekt, formatering, osv.
+Andra providers kan erbjuda pluralisering, nästlade objekt, formatering och så vidare.

@@ -5,6 +5,10 @@ layout: component
 component:
     - FWizard
     - FWizardStep
+search:
+    terms:
+        - guidesteg
+        - formulär
 ---
 
 Steg för steg-guide används för att dela upp en uppgift i några få steg som passar bra att hantera i en viss ordning.

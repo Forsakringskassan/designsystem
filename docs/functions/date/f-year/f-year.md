@@ -4,6 +4,9 @@ title: FYear
 short-title: FYear
 layout: api.class
 sortorder: 1
+search:
+    terms:
+        - årtal
 ---
 
 Representerar ett årtal.

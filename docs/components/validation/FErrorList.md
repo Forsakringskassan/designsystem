@@ -3,6 +3,9 @@ title: Fellista
 status: Produktionsklar
 layout: component
 component: FErrorList
+search:
+    terms:
+        - validering
 ---
 
 Fellista används för att sammanställa inmatningsfel i stora formulär.

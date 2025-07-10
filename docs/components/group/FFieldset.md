@@ -3,6 +3,13 @@ title: Fältgruppering
 status: Produktionsklar
 layout: component
 component: FFieldset
+search:
+    terms:
+        - inmatningskomponenter
+        - kryssruta
+        - radioknapp
+        - gruppera
+        - gruppering
 ---
 
 Använd komponenten fältgruppering för att gruppera och knyta ihop flera

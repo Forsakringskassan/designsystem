@@ -2,6 +2,9 @@
 title: getElementsFromVueRef
 name: getElementsFromVueRef
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Gets an array of `Element` items from a ref.

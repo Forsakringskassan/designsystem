@@ -2,6 +2,9 @@
 title: findElementFromVueRef
 name: findElementFromVueRef
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Find an `Element` from a ref, provided it is defined and not an array.

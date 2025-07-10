@@ -2,6 +2,19 @@
 title: Grid
 name: grid
 layout: pattern
+search:
+    terms:
+        - responsiv
+        - container
+        - marginal
+        - mellanrum
+        - gutter
+        - rader
+        - kolumner
+        - brytpunkter
+        - placering
+        - dynamisk placering
+        - dynamisk ordning
 ---
 
 <!-- [html-validate-disable-next element-permitted-content -- css for grid component example] -->

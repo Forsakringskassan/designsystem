@@ -2,6 +2,10 @@
 title: focus
 name: focus
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
+        - focusTarget
 ---
 
 Programatically set focus on an element in the DOM.

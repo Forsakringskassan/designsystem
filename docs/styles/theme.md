@@ -2,6 +2,11 @@
 title: Tema
 layout: pattern
 sortorder: 1
+search:
+    terms:
+        - scss
+        - css
+        - theme
 ---
 
 Du kan sätta det visuella utseendet för din applikation på flera olika sätt. Du gör det enklast genom att använda ett tema. Ett tema består av en färdig uppsättning av variabler, SCSS eller CSS, som styr det visuella utseendet. Variablerna styr till exempel vilken färg, storlek, avstånd, form och typografi som en komponent har.

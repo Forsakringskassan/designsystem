@@ -1,12 +1,18 @@
 ---
 title: Test Plugin
 layout: content-with-menu
+search:
+    terms:
+        - data-test
+        - testautomation
+        - enhetstest
+        - e2e-test
 ---
 
-_TestPlugin_ lägger till stöd för att lägga till `data-test` attribute dynamiskt på HTML element.
+TestPlugin lägger till stöd för att lägga till `data-test` attribute dynamiskt på HTML element.
 Plugin:et är tänkt att användas vid testautomation, enhets- och e2e-tester.
 
-_TestPlugin_ initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )
+TestPlugin initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, till exempel main.ts )
 
 ```ts
 import { defineComponent } from "vue";
@@ -25,9 +31,9 @@ app.mount("#app");
 
 ## Användning
 
-Lägg till direktivet `v-test` till elementet som ska få `data-test` attributet.
+Lägg till direktivet `v-test` till elementet som ska få attributet `data-test`.
 
-Notera att om värdet som skickas in till `v-test` är en sträng så måste värdet ha `''` runt sig, t.ex. `v-test="'exempel-v-test'"`.
+Notera att om värdet som skickas in till `v-test` är en sträng så måste värdet ha `''` runt sig, till exempel `v-test="'exempel-v-test'"`.
 Detta är för att det som är innanför `v-test=""` evalueras som JavaScript.
 
 ```import

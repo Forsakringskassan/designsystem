@@ -2,6 +2,10 @@
 title: Validering och felhantering
 layout: pattern
 sortorder: 1
+search:
+    terms:
+        - obligatoriska fält
+        - submit
 ---
 
 Vi hjälper användarna att fylla i uppgifter i ett formulär på rätt sätt genom att vi validerar uppgifterna och visar tydliga felmeddelanden vid rätt tillfälle.

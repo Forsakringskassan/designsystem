@@ -1,6 +1,19 @@
 ---
 title: Format Plugin
 layout: article
+search:
+    terms:
+        - formateringsdirektiv
+        - v-format
+        - radbrytning
+        - bankgiro
+        - datum
+        - nummer
+        - organisationsnummer
+        - personnummer
+        - plusgiro
+        - postnummer
+        - text
 ---
 
 FormatPlugin lägger till stöd för formaterings-direktivet `v-format`.
