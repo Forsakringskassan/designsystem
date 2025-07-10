@@ -1,14 +1,16 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
 @use "../../core/config-variables";
+@use "variables" as *;
 
 .contextmenu {
     min-width: 260px;
-    background-color: var(--f-background-popupmenu);
+    background-color: $contextmenu-color-background;
+    color: $contextmenu-color-text-default;
 
     &__list {
         margin: 0;
-        border: 1px solid var(--f-border-color-popupmenu);
+        border: var(--f-border-width-small) solid $contextmenu-color-border;
         padding: size.$padding-050;
         display: block;
         list-style-type: none;
@@ -23,12 +25,12 @@
             a,
             a:visited,
             a:active {
-                color: var(--f-text-color-popupmenu);
+                color: $contextmenu-color-text-active;
             }
 
             &:hover {
-                color: var(--f-text-color-popupmenu-hover);
-                background-color: var(--f-background-popupmenu-vertical-hover);
+                color: $contextmenu-color-text-hover;
+                background-color: $contextmenu-color-item-background-hover;
             }
 
             // when desktop, long texts expands popup
@@ -42,7 +44,7 @@
         margin: 0.75rem;
         height: 1px;
         border: none;
-        border-top: 1px solid var(--f-border-color-separator-contextmenu);
+        border-top: var(--f-border-width-small) solid $contextmenu-color-separator;
     }
 
     &__lefticon {
