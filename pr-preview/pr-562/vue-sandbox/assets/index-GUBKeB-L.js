@@ -11497,10 +11497,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.43.0",
+    version: "3.44.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "© 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.43.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.44.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -19236,7 +19236,7 @@ function requireSetMethodGetKeysBeforeCloningDetection() {
         }
       };
       var result = baseSet[METHOD_NAME](setLike);
-      return result.size !== 1 || result.values().next().value !== 4;
+      return result.size === 1 && result.values().next().value === 4;
     } catch (error) {
       return false;
     }
