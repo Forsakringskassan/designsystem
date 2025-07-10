@@ -248,6 +248,16 @@ describe("filter", () => {
         sortFilterDataset.textField.input().type("20");
         assertTable([], COLUMN_TEXT);
     });
+
+    it("when clear button is clicked, should focus search field", () => {
+        cy.mount(TestComponent, { props: { filterAttributes: [] } });
+        sortFilterDataset.textField.input().type("foo");
+        sortFilterDataset
+            .el()
+            .get(".sort-filter-dataset__search__close-icon")
+            .click();
+        sortFilterDataset.textField.input().should("have.focus");
+    });
 });
 
 describe("sort & filter in combination", () => {
