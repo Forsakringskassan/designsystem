@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-e0bb69.json"
+            href="../../search-data-43196c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-I8B6oAl0wvmrrHfA/tPX5SgKIAuCwvzrUrwMo6QubceMWKiglEtX6069/58B/0Pj"
+            integrity="sha384-qab8IOY6Qkkx8VhDfEY3tl9guw/x4w6P98vSOqwuqSQ5j9VLGew10R+zN390MGQT"
             id="search-data"
         />
     </head>
@@ -1112,7 +1112,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Modal funktioner</summary>
+            <summary>Modalfunktioner</summary>
             
             
 <ol><li class="link ">
@@ -1598,7 +1598,7 @@
 
                     <div id="content"><p class="docs-paragraph"><code>ValidationPlugin</code> möjliggör validering av inmatningsfält genom att lägga till direktivet <code>v-validation</code>.
 Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.</p>
-<p class="docs-paragraph"><code>ValidationPlugin</code> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
+<p class="docs-paragraph"><code>ValidationPlugin</code> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, till exempel main.ts )</p>
 
                 <div
                     id="example-45432c"
@@ -1616,7 +1616,7 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
 app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>);
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Via <code>ValidationService.addValidationErrorMessages</code> kan man specificera översättningar av validator fel.
+            <p class="docs-paragraph">Via <code>ValidationService.addValidationErrorMessages</code> kan du specificera översättningar av validatorfel.
 I nedan exempel anges ett objekt med validatornamnet som nyckel och översättning som värde (om översättning saknas så kommer validatornamnet istället användas).</p>
 
                 <div
@@ -1635,7 +1635,7 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
 });
 </code></pre>
                 </div>
-            <p class="docs-paragraph">För att få <em>autocompletion</em> av validatornamn så rekommenderas att använda <code>ValidationErrorMessageBuilder</code>:</p>
+            <p class="docs-paragraph">Använd <code>ValidationErrorMessageBuilder</code> för att få autocompletion av validatornamn:</p>
 
                 <div
                     id="example-d97d41"
@@ -1662,7 +1662,7 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                 </div>
             <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.</p>
 <p class="docs-paragraph"><strong>Observera</strong> Ordningen definierar prioriteten för varje validator, ju längre till vänster desto högre prioritet.
-Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den <code>required</code> validatorn att köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.</p>
+Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer validatorn för <code>required</code> köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.</p>
 
             <div
                 id="example-085b97"
@@ -1854,7 +1854,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
 </code></pre>
                 </div>
             </div>
-        <h2 id="utokade_komponenter_med_default_validering"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p class="docs-paragraph">Om man behöver utveckla en egen komponent med inbyggd validering som standard-beteende så måste man lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
+        <h2 id="utokade_komponenter_med_default_validering"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p class="docs-paragraph">Om du behöver utveckla en egen komponent med inbyggd validering som standard-beteende måste du lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
 
                 <div
                     id="example-b68238"
@@ -1942,8 +1942,8 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                 </div>
             </div>
         <h2 id="prefix_for_att_urskilja_fel_med_samma_etiketter"><a class="header-anchor" href="#prefix_for_att_urskilja_fel_med_samma_etiketter">Prefix för att urskilja fel med samma etiketter</a></h2><p class="docs-paragraph">I de fall då flera fält har samma etikett kan det bli svårt att urskilja dem i fellistan.
-Vue-direktivet <code>v-validation-prefix</code> plockar ut <code>errorMessage</code> från alla <code>component-validity</code> event som kommer underifrån i DOM hierarkin och lägger på den angivna texten som prefix innan det bubblar vidare till formuläret.
-Det innebär att man kan lägga direktivet på flera platser för att kontinuerligt lägga på fler prefix.</p>
+Vue-direktivet <code>v-validation-prefix</code> plockar ut <code>errorMessage</code> från alla <code>component-validity</code>-event som kommer underifrån i DOM-hierarkin och lägger på den angivna texten som prefix innan det bubblar vidare till formuläret.
+Det innebär att du kan lägga direktivet på flera platser för att kontinuerligt lägga på fler prefix.</p>
 
             <div
                 id="example-43dc9f"
@@ -2022,8 +2022,8 @@ Det innebär att man kan lägga direktivet på flera platser för att kontinuerl
 </code></pre>
                 </div>
             </div>
-        <h2 id="inaktivera_validering"><a class="header-anchor" href="#inaktivera_validering">Inaktivera validering</a></h2><p class="docs-paragraph">Om du dynamiskt behöver aktivera / inaktivera en validering, kan du passa in <code>enabled</code> som option på samtliga validatorer.
-Ett use-case för detta är tex om ett fält längre ned skall vara required baserat på val som tidigare har gjorts.</p>
+        <h2 id="inaktivera_validering"><a class="header-anchor" href="#inaktivera_validering">Inaktivera validering</a></h2><p class="docs-paragraph">Om du dynamiskt behöver aktivera/inaktivera en validering, kan du passa in <code>enabled</code> som option på samtliga validatorer.
+Ett use-case för detta är till exempel om ett fält längre ned skall vara required baserat på val som tidigare har gjorts.</p>
 
                 <div
                     id="example-58bda1"
@@ -2118,7 +2118,7 @@ Ett use-case för detta är tex om ett fält längre ned skall vara required bas
 </code></pre>
                 </div>
             </div>
-        <h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><p class="docs-paragraph"><code>ValidationService</code> används när man vill tvinga revalidering av fält, t.ex. vid <code>submit</code>.
+        <h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><p class="docs-paragraph"><code>ValidationService</code> används när du vill tvinga revalidering av fält, till exempel vid <code>submit</code>.
 Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
 <h2 id="revalidera_falt"><a class="header-anchor" href="#revalidera_falt">Revalidera fält</a></h2><p class="docs-paragraph">Exempel på revalidering av all fält på denna sida.</p>
 
@@ -2182,7 +2182,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
 </code></pre>
                 </div>
             </div>
-        <h2 id="server_fel"><a class="header-anchor" href="#server_fel">Server-fel</a></h2><p class="docs-paragraph">Exempel på att sätta serverfel på all fält på denna sida.</p>
+        <h2 id="serverfel"><a class="header-anchor" href="#serverfel">Serverfel</a></h2><p class="docs-paragraph">Exempel på att sätta serverfel på all fält på denna sida.</p>
 
             <div
                 id="example-8ddfb5"
@@ -2249,7 +2249,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
         <h2 id="inaktiva_falt"><a class="header-anchor" href="#inaktiva_falt">Inaktiva fält</a></h2><p class="docs-paragraph">Vid validering tolkas inaktiva fält (inmatningsfält med <code>disabled</code> attributet satt) som giltiga oavsett resultatet från validering.
 Detta eftersom användaren inte har möjlighet att interagera med inaktiva fält och därför inte kan rätta felet.</p>
 <p class="docs-paragraph">Om du dynamiskt växlar <code>disabled</code> krävs det att du manuellt validerar om elementet när fältet blir inaktivt för att tömma eventuella existerande fel.
-Det rekommenderade sättet är att använda sig av event listeners för <code>change</code>, <code>click</code> osv och validera om därifrån.</p>
+Det rekommenderade sättet är att använda sig av event listeners för <code>change</code>, <code>click</code> och så vidare och validera om därifrån.</p>
 
             <div
                 id="example-9bc1b6"
@@ -2386,9 +2386,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/update-search-terms (<a href="https://github.com/Forsakringskassan/designsystem/commits/a9e97ab3d19bf6bdecf1bbcfa9f5ae3ed89c3931">a9e97ab</a>)<br />
+<div class="footer__right"><div class="version">docs/update-search-terms (<a href="https://github.com/Forsakringskassan/designsystem/commits/ae27c85aad6bc980d4c08b53dcb63eeebae921f5">ae27c85</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/575">PR 575</a><br />
-        2025-07-10 08:20
+        2025-07-10 14:44
 </div>
 <div class="toolbar__item">
     <form id="version">
