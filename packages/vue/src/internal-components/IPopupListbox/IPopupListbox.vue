@@ -14,7 +14,13 @@ export interface IPopupListboxProps {
     activeElement?: HTMLElement | undefined;
 }
 
-const { isOpen, anchor, numOfItems, itemHeight, activeElement } = defineProps<IPopupListboxProps>();
+const {
+    isOpen,
+    anchor,
+    numOfItems,
+    itemHeight = undefined,
+    activeElement = undefined,
+} = defineProps<IPopupListboxProps>();
 const emit = defineEmits<{ close: [] }>();
 const wrapperRef = useTemplateRef("wrapper");
 const contentRef = useTemplateRef("content");

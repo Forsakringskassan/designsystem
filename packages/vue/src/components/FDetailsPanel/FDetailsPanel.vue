@@ -12,7 +12,7 @@ if (!customElements.get(tagName)) {
     customElements.define(tagName, defineCustomElement(FDetailsPanel));
 }
 
-const { name, exclusive } = defineProps<{
+const { name, exclusive = undefined } = defineProps<{
     /**
      * Name of this panel. Used when referencing the panel in useDetailsPanel.
      */

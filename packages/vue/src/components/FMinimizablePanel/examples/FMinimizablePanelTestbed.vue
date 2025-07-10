@@ -7,8 +7,8 @@ const {
     resize = false,
     initial = undefined,
 } = defineProps<{
-    area: string;
-    resize: boolean;
+    area?: string;
+    resize?: boolean;
     initial?: "expanded" | "minimized";
 }>();
 
