@@ -3,6 +3,11 @@ title: Kom igång
 name: getting-started
 layout: pattern
 sortorder: 1
+search:
+    terms:
+        - designer
+        - utvecklare
+        - utvecklingsverktyg
 ---
 
 :::alt getting-started-alt.md

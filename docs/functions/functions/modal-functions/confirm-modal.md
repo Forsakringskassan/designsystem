@@ -2,6 +2,11 @@
 title: confirmModal() function
 short-title: confirmModal()
 layout: article
+search:
+    terms:
+        - modalfunktion
+        - bekräftelsemodal
+        - options API
 ---
 
 Open a {@link FConfirmModal} confirmation modal with given text.

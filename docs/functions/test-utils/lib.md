@@ -1,6 +1,10 @@
 ---
 name: Generella funktioner
 layout: content-with-menu
+search:
+    terms:
+        - automatiska testfall
+        - testverktyg
 ---
 
 Samling med generella funktioner för automatiska testfall.

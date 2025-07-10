@@ -2,6 +2,11 @@
 title: formModal() function
 short-title: formModal()
 layout: article
+search:
+    terms:
+        - modalfunktion
+        - formulärsmodal
+        - options API
 ---
 
 Open a form inside a {@link FFormModal} modal and return the form data.

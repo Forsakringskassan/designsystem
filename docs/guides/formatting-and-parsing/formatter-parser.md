@@ -2,6 +2,17 @@
 title: Formatering och parsning
 layout: pattern
 sortorder: 1
+search:
+    terms:
+        - formaterare
+        - formatter
+        - parser
+        - vyvärde
+        - vy-värde
+        - viewValue
+        - modellvärde
+        - modell-värde
+        - modelValue
 ---
 
 Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält.

@@ -2,6 +2,9 @@
 title: getElementFromVueRef
 name: getElementFromVueRef
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Gets an `Element` a ref, provided it is defined and not an array.

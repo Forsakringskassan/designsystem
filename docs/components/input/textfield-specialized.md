@@ -2,6 +2,21 @@
 title: Specialiserade inmatningsfält
 status: Produktionsklar
 layout: component
+search:
+    terms:
+        - bankgiro
+        - clearingnummer
+        - kontonummer
+        - mejladress
+        - numeriskt
+        - organisationsnummer
+        - personnummer
+        - plusgiro
+        - postnummer
+        - procent
+        - sökfält
+        - telefonnummer
+        - valuta
 ---
 
 Det specialiserade inmatningsfältet används när användaren själv ska skriva in information som kontonummer, personnummer eller telefonnummer. Det specialiserade inmatningsfältet ärver egenskaper från vanliga inmatningsfältet och lägger till text för etikett, validerar inmatat värde och formaterar värde vid behov.

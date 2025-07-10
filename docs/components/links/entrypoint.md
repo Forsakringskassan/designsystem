@@ -5,6 +5,9 @@ layout: component
 component:
     - name: entrypoint
       source: components/**/_entrypoint.scss
+search:
+    terms:
+        - länk
 ---
 
 Startpunkt används för att framhäva en länk extra tydligt, som till exempel en ingång till en digital tjänst.

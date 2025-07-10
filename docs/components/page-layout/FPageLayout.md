@@ -3,6 +3,9 @@ title: Applikationsmall
 status: Beta
 layout: component
 component: FPageLayout
+search:
+    terms:
+        - landmärken
 ---
 
 <!-- to force the examples to a maximum size -->

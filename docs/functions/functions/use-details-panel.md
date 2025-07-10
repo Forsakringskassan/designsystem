@@ -3,6 +3,9 @@ title: useDetailsPanel() composable
 short-title: useDetailsPanel()
 name: useDetailsPanel
 layout: api.composable
+search:
+    terms:
+        - detaljpanel
 ---
 
 Composable för att interagera med {@link FDetailsPanel detaljpanel}.

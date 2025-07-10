@@ -3,6 +3,12 @@ title: Designsystemet
 name: about
 layout: content-with-menu
 sortorder: 1
+search:
+    terms:
+        - status
+        - produktionsklar
+        - beta
+        - experimentell
 ---
 
 Designsystemet är till för dig som utformar digitala gränssnitt på Försäkringskassan.

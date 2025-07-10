@@ -1,6 +1,15 @@
 ---
 title: Konfiguration
 layout: pattern
+search:
+    terms:
+        - knappordning bekräftelsemodal
+        - buttonOrder
+        - teleportTarget
+        - popupContainer
+        - production
+        - globala inställningar
+        - config
 ---
 
 `config` är ett enkelt objekt som innehåller ett begränsat antal globala inställningar för FKUI.
@@ -93,6 +102,5 @@ Anger inom vilken container popups ska hålla sig inom när den använder overla
 - default: true
 - type: `boolean`
 
-Gör det möjligt att specificera om man vill ha ett skarpt produktion beteendet av FKUI eller en icke-produktion, t.ex för test/utveckling,
-beteendet.
-Ett exempel av skillnad: i produktion vill man inte kasta exception men man loggar de i konsolen istället.
+Gör det möjligt att specificera om du vill ha ett skarpt produktionsbeteende av FKUI eller ett icke-produktionsbeteende, till exempel för test eller utveckling.
+Ett exempel på skillnad: i produktion vill man inte kasta exception men man loggar det i konsolen istället.

@@ -1,6 +1,11 @@
 ---
 name: Vue.js
 layout: content-with-menu
+search:
+    terms:
+        - testverktyg
+        - cypress
+        - DensityWrapper
 ---
 
 Komponenter för testning av Vue.js komponenter.

@@ -3,6 +3,9 @@ title: useResize() composable
 short-title: useResize()
 name: useResize
 layout: article
+search:
+    terms:
+        - justerbar yta
 ---
 
 Composable för att styra hur en {@link FResizePane justerbar yta} ska bete sig:

@@ -1,6 +1,9 @@
 ---
 title: Skärmläsare
 layout: content-with-menu
+search:
+    terms:
+        - NVDA
 ---
 
 ## Visa text enbart för skärmläsare

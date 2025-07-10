@@ -2,6 +2,11 @@
 title: På gång
 name: roadmap
 layout: pattern
+search:
+    terms:
+        - pågående arbete
+        - planerat arbete
+        - framtid
 redirect_from:
     - gettingstarted/about/release-plan.html
 ---

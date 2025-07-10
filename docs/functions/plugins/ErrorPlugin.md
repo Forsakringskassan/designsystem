@@ -4,6 +4,13 @@ layout: content-with-menu
 component:
     - ErrorPlugin
     - FErrorHandlingApp
+search:
+    terms:
+        - generell felsida
+        - egen felsida
+        - captureWarnings
+        - logToConsole
+        - errorHandler
 ---
 
 Ett Vue-plugin som visar en generell felsida då ett ohanterat fel uppstår.

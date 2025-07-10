@@ -3,6 +3,13 @@ title: Ta fram applikation
 name: getting-started-application
 layout: pattern
 sortorder: 2
+search:
+    terms:
+        - tema
+        - sass
+        - scss
+        - css
+        - ikonbibliotek
 ---
 
 För att sätta det visuella utseendet på din applikation behöver du

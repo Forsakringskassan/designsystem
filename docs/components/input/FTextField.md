@@ -4,6 +4,12 @@ sortorder: 1
 status: Produktionsklar
 layout: component
 component: FTextField
+search:
+    terms:
+        - validation
+        - formatering
+        - parsning
+        - inline
 ---
 
 Använd inmatningsfält för information som användaren behöver skriva in själv, exempelvis namn, mejladress eller arbetsgivare.

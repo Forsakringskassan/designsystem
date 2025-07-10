@@ -1,6 +1,12 @@
 ---
 title: Längdvalidering
 layout: pattern
+search:
+    terms:
+        - maxlängd
+        - maxlength
+        - validator
+        - attribut
 ---
 
 Du måste använda längdvalidering på fritextfält. Det kan göras på två sätt och ibland är det bra att ha båda sätten på ett fritextfält.

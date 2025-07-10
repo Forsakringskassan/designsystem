@@ -1,12 +1,22 @@
 ---
 title: Validation Plugin
 layout: content-with-menu
+search:
+    terms:
+        - validering
+        - v-validation
+        - ValidationService
+        - valideringsdirektiv
+        - inaktivera validering
+        - revalidera fält
+        - serverfel
+        - inaktiva fält
 ---
 
 `ValidationPlugin` möjliggör validering av inmatningsfält genom att lägga till direktivet `v-validation`.
 Internt används `ValidationService` ifrån `@fkui/logic`.
 
-`ValidationPlugin` initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )
+`ValidationPlugin` initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, till exempel main.ts )
 
 ```ts
 import { defineComponent } from "vue";
@@ -23,7 +33,7 @@ app.use(ValidationPlugin);
 app.mount("#app");
 ```
 
-Via `ValidationService.addValidationErrorMessages` kan man specificera översättningar av validator fel.
+Via `ValidationService.addValidationErrorMessages` kan du specificera översättningar av validatorfel.
 I nedan exempel anges ett objekt med validatornamnet som nyckel och översättning som värde (om översättning saknas så kommer validatornamnet istället användas).
 
 ```ts
@@ -35,7 +45,7 @@ ValidationService.addValidationErrorMessages({
 });
 ```
 
-För att få _autocompletion_ av validatornamn så rekommenderas att använda `ValidationErrorMessageBuilder`:
+Använd `ValidationErrorMessageBuilder` för att få autocompletion av validatornamn:
 
 ```ts
 import { ValidationService, ValidationErrorMessageBuilder } from "@fkui/logic";
@@ -58,7 +68,7 @@ ValidationService.addValidationErrorMessages(messages);
 Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.
 
 **Observera** Ordningen definierar prioriteten för varje validator, ju längre till vänster desto högre prioritet.
-Till exempel i `v-validation.required.maxLength.minLength` kommer den `required` validatorn att köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.
+Till exempel i `v-validation.required.maxLength.minLength` kommer validatorn för `required` köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.
 
 ```import
 ValidationPluginExample.vue
@@ -79,7 +89,7 @@ ValidationPluginValidityEvent.vue
 
 ## Utökade komponenter med default-validering
 
-Om man behöver utveckla en egen komponent med inbyggd validering som standard-beteende så måste man lägga till validatorn i komponentens mounted()-metod via metoden `ValidationService.addValidatorsToElement()` och med tredje parametern `isBaseConfigs` satt till `true`:
+Om du behöver utveckla en egen komponent med inbyggd validering som standard-beteende måste du lägga till validatorn i komponentens mounted()-metod via metoden `ValidationService.addValidatorsToElement()` och med tredje parametern `isBaseConfigs` satt till `true`:
 
 ```ts
 import { useTemplateRef } from "vue";
@@ -108,8 +118,8 @@ ValidationPluginErrorMessage.vue
 ## Prefix för att urskilja fel med samma etiketter
 
 I de fall då flera fält har samma etikett kan det bli svårt att urskilja dem i fellistan.
-Vue-direktivet `v-validation-prefix` plockar ut `errorMessage` från alla `component-validity` event som kommer underifrån i DOM hierarkin och lägger på den angivna texten som prefix innan det bubblar vidare till formuläret.
-Det innebär att man kan lägga direktivet på flera platser för att kontinuerligt lägga på fler prefix.
+Vue-direktivet `v-validation-prefix` plockar ut `errorMessage` från alla `component-validity`-event som kommer underifrån i DOM-hierarkin och lägger på den angivna texten som prefix innan det bubblar vidare till formuläret.
+Det innebär att du kan lägga direktivet på flera platser för att kontinuerligt lägga på fler prefix.
 
 ```import
 ValidationPluginFormValidation.vue
@@ -117,8 +127,8 @@ ValidationPluginFormValidation.vue
 
 ## Inaktivera validering
 
-Om du dynamiskt behöver aktivera / inaktivera en validering, kan du passa in `enabled` som option på samtliga validatorer.
-Ett use-case för detta är tex om ett fält längre ned skall vara required baserat på val som tidigare har gjorts.
+Om du dynamiskt behöver aktivera/inaktivera en validering, kan du passa in `enabled` som option på samtliga validatorer.
+Ett use-case för detta är till exempel om ett fält längre ned skall vara required baserat på val som tidigare har gjorts.
 
 ```html static
 <label class="label" for="required-input"> Villkorsstyrd validering </label>
@@ -136,7 +146,7 @@ ValidationPluginToggleEnabled.vue
 
 ## ValidationService
 
-`ValidationService` används när man vill tvinga revalidering av fält, t.ex. vid `submit`.
+`ValidationService` används när du vill tvinga revalidering av fält, till exempel vid `submit`.
 Den erbjuder även funktioner för att sätta fel ifrån servern.
 
 ## Revalidera fält
@@ -147,7 +157,7 @@ Exempel på revalidering av all fält på denna sida.
 ValidationPluginRevalidate.vue
 ```
 
-## Server-fel
+## Serverfel
 
 Exempel på att sätta serverfel på all fält på denna sida.
 
@@ -161,7 +171,7 @@ Vid validering tolkas inaktiva fält (inmatningsfält med `disabled` attributet 
 Detta eftersom användaren inte har möjlighet att interagera med inaktiva fält och därför inte kan rätta felet.
 
 Om du dynamiskt växlar `disabled` krävs det att du manuellt validerar om elementet när fältet blir inaktivt för att tömma eventuella existerande fel.
-Det rekommenderade sättet är att använda sig av event listeners för `change`, `click` osv och validera om därifrån.
+Det rekommenderade sättet är att använda sig av event listeners för `change`, `click` och så vidare och validera om därifrån.
 
 ```import
 ValidationPluginToggleDisable.vue

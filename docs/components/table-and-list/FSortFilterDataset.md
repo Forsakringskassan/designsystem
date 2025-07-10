@@ -3,6 +3,10 @@ title: Datamängdsorterare
 status: Produktionsklar
 layout: component
 component: FSortFilterDataset
+search:
+    terms:
+        - sortera
+        - filtrera
 ---
 
 Datamängdsorterare används vid sortering av datamängd och/eller för sökning i en datamängd i komponenterna lista eller tabell.

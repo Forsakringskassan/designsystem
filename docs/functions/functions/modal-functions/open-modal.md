@@ -1,6 +1,10 @@
 ---
 title: openModal
 layout: content-with-menu
+search:
+    terms:
+        - modalfunktion
+        - options API
 ---
 
 ```ts nocompile

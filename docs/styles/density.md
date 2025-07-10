@@ -1,6 +1,11 @@
 ---
 title: Densitet
 layout: pattern
+search:
+    terms:
+        - kompakt utseende
+        - luftigt utseende
+        - densify
 ---
 
 Densitet styr hur många komponenter och hur mycket information som får plats på skärmen utan att

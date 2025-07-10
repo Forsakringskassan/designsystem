@@ -2,6 +2,9 @@
 title: i18next
 layout: pattern
 sortorder: 1
+search:
+    terms:
+        - TranslationService
 ---
 
 Provider till `TranslationService` som använder [`i18next`][i18next] för översättningar.

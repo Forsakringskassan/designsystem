@@ -5,6 +5,10 @@ short-title: densify()
 layout: api
 redirect_from:
     - functions/helpers/densify.html
+search:
+    terms:
+        - densitet
+        - sass
 ---
 
 Sass hjälpfunktion för att anpassa värde baserat på aktuell densitet.

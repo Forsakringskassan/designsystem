@@ -3,6 +3,10 @@ title: Laddningsindikator
 status: Produktionsklar
 layout: component
 component: FLoader
+search:
+    terms:
+        - ladda
+        - laddning
 ---
 
 Laddningsindikator används för att visa att en sida eller en del av en sida håller på att laddas.

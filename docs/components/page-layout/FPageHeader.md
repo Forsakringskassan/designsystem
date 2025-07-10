@@ -3,6 +3,9 @@ title: Sidhuvud
 status: Produktionsklar
 layout: component
 component: FPageHeader
+search:
+    terms:
+        - skiplink
 ---
 
 Sidhuvud ska visas längst upp på applikationer som öppnas i ett eget webbläsarfönster.
