@@ -57,6 +57,10 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
@@ -67,10 +71,6 @@
     "Releaser",
     "Releaseanteckningar",
     "Designsystemet",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
@@ -89,6 +89,8 @@
     "i18next",
     "i18nextProvider",
     "I18nextProvider",
+    "Hjälpklasser",
+    "Skärmläsare",
     "useResize() composable",
     "useModal() composable",
     "useDetailsPanel() composable",
@@ -103,8 +105,6 @@
     "handleKeyboardFocusNavigation",
     "dispatchComponentValidityEvent",
     "clamp() function",
-    "Hjälpklasser",
-    "Skärmläsare",
     "Validatorer",
     "Formaterare och parsers",
     "Validering samlad",
@@ -508,6 +508,23 @@
       "terms": []
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": []
@@ -556,23 +573,6 @@
       "url": "gettingstarted/about/index.html",
       "title": "Designsystemet",
       "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
     },
     {
       "url": "functions/test-utils/vue.html",
@@ -655,6 +655,16 @@
       "terms": []
     },
     {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": []
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": []
+    },
+    {
       "url": "functions/functions/use-resize.html",
       "title": "useResize() composable",
       "terms": []
@@ -722,16 +732,6 @@
     {
       "url": "functions/date/clamp.html",
       "title": "clamp() function",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": []
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
       "terms": []
     },
     {
@@ -1544,16 +1544,16 @@
     "57": 36,
     "58": 37,
     "59": 38,
-    "60": 39,
-    "61": 40,
-    "62": 41,
-    "63": 42,
-    "64": 43,
-    "65": 44,
-    "66": 45,
-    "67": 46,
-    "68": 47,
-    "69": 48,
+    "60": 38,
+    "61": 39,
+    "62": 40,
+    "63": 41,
+    "64": 42,
+    "65": 43,
+    "66": 44,
+    "67": 45,
+    "68": 46,
+    "69": 47,
     "70": 48,
     "71": 49,
     "72": 50,
