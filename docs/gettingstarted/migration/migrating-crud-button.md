@@ -4,7 +4,7 @@ layout: article
 component: FCrudButton
 ---
 
-`FCrudButton` är deprekerad och ersatt med {@link component:FTableButton FTableButton} för tabeller eller {@link component:button knapp} för andra användningsområden.
+`FCrudButton` är deprekerad och ersatt med {@link component:FTableButton FTableButton} för tabeller eller {@link component:FButton knapp} för andra användningsområden.
 
 Proparna
 
