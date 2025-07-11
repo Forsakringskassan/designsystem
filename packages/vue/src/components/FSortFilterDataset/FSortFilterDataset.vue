@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T">
 import { type PropType, type Ref, computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from "vue";
-import { focus, debounce, alertScreenReader, TranslationService } from "@fkui/logic";
+import { debounce, alertScreenReader, TranslationService } from "@fkui/logic";
+import { getHTMLElementFromVueRef } from "../../utils";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { FSelectField } from "../FSelectField";
 import { FIcon } from "../FIcon";
@@ -12,6 +13,7 @@ import { filter } from "./FSortFilterFilter";
 import { type SortOrder } from "./sort-order";
 
 const $t = useTranslate();
+const searchField = useTemplateRef("search-field");
 
 const useDefaultSortOrder = ref(true);
 const searchString = ref("");
@@ -218,8 +220,10 @@ function onSearchInput(event: InputEvent): void {
 function onClickClearSearch(): void {
     searchString.value = "";
     sortFilterData();
-    const input = useTemplateRef<HTMLElement>("search-field").value;
-    focus(input);
+    const input = getHTMLElementFromVueRef(searchField.value).querySelector("input");
+    if (input) {
+        input.focus();
+    }
 }
 
 function filterResultset(): void {
