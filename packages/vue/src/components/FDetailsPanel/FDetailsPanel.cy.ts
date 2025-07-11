@@ -28,7 +28,7 @@ for (const [variant, size] of Object.entries(sizes)) {
                 .should("contain.text", "[content]")
                 .and("contain.text", JSON.stringify({ item: "foobar" }));
             detailsPanel.footer().should("contain.text", "[footer]");
-            //cy.toMatchScreenshot(); technical debt
+            cy.toMatchScreenshot();
             detailsPanel.closeButton().click();
             detailsPanel.el().should("not.exist");
         });
@@ -50,7 +50,7 @@ for (const [variant, size] of Object.entries(sizes)) {
                 .should("contain.text", "[content]")
                 .and("contain.text", JSON.stringify({ item: "foobar" }));
             detailsPanel.footer().should("contain.text", "[footer]");
-            //cy.toMatchScreenshot(); technical debt
+            cy.toMatchScreenshot();
             detailsPanel.closeButton().click();
             detailsPanel.el().should("not.exist");
         });
@@ -72,7 +72,7 @@ for (const [variant, size] of Object.entries(sizes)) {
                 .should("contain.text", "[content]")
                 .and("contain.text", JSON.stringify({ item: "foobar" }));
             detailsPanel.footer().should("contain.text", "[footer]");
-            //cy.toMatchScreenshot(); technical debt
+            cy.toMatchScreenshot();
             detailsPanel.closeButton().click();
             detailsPanel.el().should("not.exist");
         });
@@ -94,7 +94,7 @@ for (const [variant, size] of Object.entries(sizes)) {
                 .should("contain.text", "[content]")
                 .and("contain.text", JSON.stringify({ item: "foobar" }));
             detailsPanel.footer().should("contain.text", "[footer]");
-            //cy.toMatchScreenshot(); technical debt
+            cy.toMatchScreenshot();
             detailsPanel.closeButton().click();
             detailsPanel.el().should("not.exist");
         });
@@ -134,7 +134,7 @@ describe("exclusive", () => {
         detailsPanel2.header().should("contain.text", "[panel 2]");
         detailsPanel3.header().should("contain.text", "[panel 3]");
         detailsPanel4.header().should("contain.text", "[panel 4]");
-        //cy.toMatchScreenshot(); technical debt
+        cy.toMatchScreenshot();
     });
 
     it("should only keep one panel per group open when exclusive is enabled", () => {
@@ -158,6 +158,6 @@ describe("exclusive", () => {
         detailsPanel4.el().should("exist");
         detailsPanel2.header().should("contain.text", "[panel 2]");
         detailsPanel4.header().should("contain.text", "[panel 4]");
-        //cy.toMatchScreenshot(); technical debt
+        cy.toMatchScreenshot();
     });
 });

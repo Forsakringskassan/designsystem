@@ -377,8 +377,7 @@ describe("documentation", () => {
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-it.skip("should match visual regression (desktop)", () => {
+it("should match visual regression (desktop)", () => {
     cy.viewport(...Viewport.DESKTOP);
     cy.mount({
         template: /* HTML */ `
@@ -393,8 +392,7 @@ it.skip("should match visual regression (desktop)", () => {
     cy.get("#wrapper").toMatchScreenshot();
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-it.skip("should match visual regression (mobile)", () => {
+it("should match visual regression (mobile)", () => {
     cy.viewport(...Viewport.MOBILE);
     cy.mount({
         template: /* HTML */ `
