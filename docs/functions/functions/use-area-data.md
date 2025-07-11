@@ -5,7 +5,7 @@ name: useAreaData
 layout: article
 ---
 
-Composable för att hämta information om den {@link FPageLayout layout yta} ett element befinner sig i:
+Composable för att hämta information om den {@link FPageLayout layout-yta} ett element befinner sig i:
 
 - Ytans namn.
 - Om paneler ska anslutas till höger eller vänster.

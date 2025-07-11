@@ -2,6 +2,10 @@
 title: Releaser
 name: releases
 layout: content-with-menu
+search:
+    terms:
+        - deprekering
+        - borttagna komponenter
 ---
 
 ## Releaser

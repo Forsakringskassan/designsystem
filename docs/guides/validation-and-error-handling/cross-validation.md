@@ -1,6 +1,9 @@
 ---
 title: Korsvalidering
 layout: pattern
+search:
+    terms:
+        - datumperiod
 ---
 
 ## Datumperiod

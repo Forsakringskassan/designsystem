@@ -2,6 +2,9 @@
 title: getHTMLElementsFromVueRef
 name: getHTMLElementsFromVueRef
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Gets an array of `HTMLElement` items from a ref.

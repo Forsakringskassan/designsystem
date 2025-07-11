@@ -1,6 +1,9 @@
 ---
 title: Validator - anpassad
 layout: pattern
+search:
+    terms:
+        - egen validator
 ---
 
 Om ingen av de fördefinerade validatorerna passar dina behov så går det bra att skapa en egen validator i din applikation.

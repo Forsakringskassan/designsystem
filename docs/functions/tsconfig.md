@@ -2,6 +2,9 @@
 title: "@fkui/tsconfig"
 short-title: TSConfig
 layout: article
+search:
+    terms:
+        - konfiguration TypeScript
 ---
 
 Rekommenderad konfiguration för TypeScript (`tsconfig.json`).

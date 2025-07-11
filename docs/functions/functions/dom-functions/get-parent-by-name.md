@@ -2,6 +2,9 @@
 title: getParentByName
 name: getParentByName
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Get and return the parent of given Vue component that matches given name.

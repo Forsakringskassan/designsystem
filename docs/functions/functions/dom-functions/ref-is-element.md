@@ -2,6 +2,9 @@
 title: refIsElement
 name: refIsElement
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Verifies that a ref is a single `Element` and nothing else.

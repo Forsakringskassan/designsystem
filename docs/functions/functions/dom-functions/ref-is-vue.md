@@ -2,6 +2,9 @@
 title: refIsVue
 name: refIsVue
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Verifies that a ref is a single Vue component and nothing else.

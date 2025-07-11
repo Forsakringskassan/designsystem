@@ -1,6 +1,70 @@
 ---
 title: Validatorer
 layout: component
+search:
+    terms:
+        - identisk
+        - matches
+        - maxlängd
+        - maxLength
+        - minlängd
+        - minLength
+        - obligatorisk
+        - required
+        - tillåtna tecken
+        - whitelist
+        - val från lista
+        - allowList
+        - datum
+        - date
+        - datumformat
+        - dateFormat
+        - inte valbara datum
+        - invalidDates
+        - inte valbara veckodagar
+        - invalidWeekdays
+        - maxdatum
+        - maxDate
+        - mindatum
+        - minDate
+        - nummer
+        - number
+        - heltal
+        - integer
+        - decimaltal
+        - decimal
+        - maxvärde
+        - maxValue
+        - minvärde
+        - minValue
+        - mindre än
+        - lessThan
+        - större än
+        - greaterThan
+        - procent
+        - percent
+        - valutabelopp
+        - currency
+        - organisationsnummer
+        - personnummer
+        - personnummerFormat
+        - checksumma
+        - personnummerLuhn
+        - personnummerNotSame
+        - personnummerOlder
+        - personnummerYounger
+        - mejladress
+        - email
+        - postnummer
+        - postalCode
+        - telefonnummer
+        - phoneNumber
+        - bankgiro
+        - clearingnummer
+        - clearingNumber
+        - kontonummer
+        - bankAccountNumber
+        - plusgiro
 ---
 
 ## Generella validatorer
@@ -473,7 +537,7 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - procent `percent`: Fyll i en högre siffra.
 - valutabelopp `currency`: Fyll i ett belopp.
 
-### Mindre än `lessThen`
+### Mindre än `lessThan`
 
 Validatorn kontrollerar att det ifyllda värdet är mindre än det angivna gränsvärdet.
 

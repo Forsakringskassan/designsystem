@@ -3,6 +3,9 @@ title: Ikon
 status: Produktionsklar
 layout: component
 component: FIcon
+search:
+    terms:
+        - spritesheet
 ---
 
 ## Innan användning

@@ -3,6 +3,9 @@ title: hasSlot() function
 short-title: hasSlot()
 name: hasSlot
 layout: article
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Check if slot is implemented by the user.

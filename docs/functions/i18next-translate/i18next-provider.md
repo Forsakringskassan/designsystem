@@ -3,6 +3,9 @@ title: i18nextProvider
 name: i18nextProvider
 layout: pattern
 sortorder: 2
+search:
+    terms:
+        - TranslationService
 ---
 
 Skapar en ny {@link I18nextProvider} för användning med `TranslationService`.

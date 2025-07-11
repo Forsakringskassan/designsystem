@@ -2,6 +2,9 @@
 title: refIsElementArray
 name: refIsElementArray
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Verifies that a ref is an array containing at least one `Element`.

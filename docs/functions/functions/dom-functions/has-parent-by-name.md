@@ -2,6 +2,9 @@
 title: hasParentByName
 name: hasParentByName
 layout: content-with-menu
+search:
+    terms:
+        - DOM-funktion
 ---
 
 Check if given component has a parent with given name.

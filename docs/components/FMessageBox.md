@@ -3,6 +3,12 @@ title: Meddelanderuta
 status: Produktionsklar
 layout: component
 component: FMessageBox
+search:
+    terms:
+        - informationsmeddelande
+        - varningsmeddelande
+        - felmeddelande
+        - banner
 ---
 
 Använd en meddelanderuta för att uppmärksamma användare på viktig information, varningar eller fel.
