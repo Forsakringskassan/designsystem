@@ -1,10 +1,10 @@
 <script>
 import { defineComponent } from "vue";
-import { FCard, FIcon } from "@fkui/vue";
+import { FCard, FButton } from "@fkui/vue";
 
 export default defineComponent({
     name: "FCardExample",
-    components: { FCard, FIcon },
+    components: { FCard, FButton },
 });
 </script>
 
@@ -27,21 +27,12 @@ export default defineComponent({
         </template>
         <template #footer>
             <div class="button-group">
-                <button
-                    class="button button-group__item button--tertiary button--medium button--align-text"
-                    type="button"
-                >
-                    <f-icon name="trashcan"></f-icon>
+                <f-button variant="tertiary" align-text group-item icon-left="trashcan">
                     <span> Ta bort </span>
-                </button>
-
-                <button
-                    class="button button-group__item button--tertiary button--medium button--align-text"
-                    type="button"
-                >
-                    <f-icon name="pen"></f-icon>
-                    <span> Ändra </span>
-                </button>
+                </f-button>
+                <f-button variant="tertiary" align-text group-item icon-left="pen">
+                    <span> Ta bort </span>
+                </f-button>
             </div>
         </template>
     </f-card>
