@@ -14,7 +14,7 @@ export interface ExpandableTable<T> {
     getExpandableDescribedby(row: T): string | undefined;
     expandableRows(row: T): T[] | undefined;
     hasExpandableContent(row: T): boolean;
-    getExpandedIndex(shallowIndex: number, rows: T[]): number;
+    getExpandedIndex(row: T, rows: T[]): number;
 }
 
 type Emit<T> = ((evt: "expand", row: T) => void) &
@@ -116,28 +116,32 @@ export function useExpandableTable<T extends object>(
     }
 
     /**
-     * Translate shallow row index to flattened row index including expandable rows.
+     * Get the flattened index (including expandable rows) from a row.
      */
-    function getExpandedIndex(shallowIndex: number, rows: T[]): number {
-        let expandedIndex = 0;
+    function getExpandedIndex(row: T, rows: T[]): number {
+        let index = 0;
 
-        for (let i = 0; i < shallowIndex; i++) {
-            const row = rows[i];
-            expandedIndex++;
+        for (const currentRow of rows) {
+            if (currentRow === row) {
+                return index;
+            }
 
-            if (!hasExpandableContent(row)) {
+            index++;
+
+            if (!hasExpandableContent(currentRow) || !isExpanded(currentRow)) {
                 continue;
             }
 
-            const { length } = expandableRows(row) as T[];
-            if (length === 0) {
-                continue;
+            const nestedRows = expandableRows(currentRow) as T[];
+            for (const currentNestedRow of nestedRows) {
+                if (currentNestedRow === row) {
+                    return index;
+                }
+                index++;
             }
-
-            expandedIndex += length;
         }
 
-        return expandedIndex;
+        return -1;
     }
 
     return {
