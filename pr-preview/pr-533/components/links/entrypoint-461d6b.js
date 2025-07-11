@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/links/entrypoint.md:entrypoint-dcbf70.js
+// virtual-entry:virtual:docs/components/links/entrypoint.md:entrypoint-461d6b.js
 import { FIcon } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = {
@@ -65,7 +65,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-dcbf70"
+  selector: "#example-461d6b"
 });
 export {
   render

@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
@@ -4713,7 +4713,7 @@ var _hoisted_5$n = {
 var _hoisted_6$h = {
   class: "modal__header"
 };
-var _hoisted_7$c = {
+var _hoisted_7$b = {
   key: 0,
   ref: "modalTitle",
   class: "modal__title",
@@ -4749,7 +4749,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("div", _hoisted_4$s, [createElementVNode("div", _hoisted_5$n, [createElementVNode("div", _hoisted_6$h, [createElementVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$c, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$8, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$3, [createElementVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$b, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$8, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$3, [createElementVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -6630,7 +6630,7 @@ var _hoisted_6$f = {
   class: "calendar-month__cell calendar-month__cell--week-number",
   "aria-hidden": "true"
 };
-var _hoisted_7$b = ["colspan"];
+var _hoisted_7$a = ["colspan"];
 var _hoisted_8$7 = ["colspan"];
 var _hoisted_9$5 = {
   key: 0,
@@ -6680,7 +6680,7 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
       key: 1,
       class: "calendar-month__cell",
       colspan: _ctx.getDayStartOffset(week.days)
-    }, null, 8, _hoisted_7$b)) : createCommentVNode("", true), _cache[18] || (_cache[18] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(week.days, (day) => {
+    }, null, 8, _hoisted_7$a)) : createCommentVNode("", true), _cache[18] || (_cache[18] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(week.days, (day) => {
       return openBlock(), createElementBlock("td", {
         key: day.toString(),
         class: "calendar-month__cell",
@@ -9766,7 +9766,7 @@ var _hoisted_5$h = {
 var _hoisted_6$d = {
   key: 1
 };
-var _hoisted_7$a = {
+var _hoisted_7$9 = {
   ref: "tooltipAttachTo",
   class: "label"
 };
@@ -9797,7 +9797,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)), _cache[7] || (_cache[7] = createTextVNode()), _ctx.hasCheckbox ? (openBlock(), createElementBlock("span", _hoisted_4$l, [_ctx.children.length === 1 ? (openBlock(), createElementBlock("span", _hoisted_5$h, toDisplayString(_ctx.checkboxCheckedScreenReaderText), 1)) : (openBlock(), createElementBlock("span", _hoisted_6$d, toDisplayString(_ctx.numberOfCheckedCheckboxesScreenText), 1))])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.hasTooltipSlot ? (openBlock(), createElementBlock(Fragment, {
     key: 1
-  }, [createElementVNode("div", _hoisted_7$a, [createElementVNode("span", _hoisted_8$6, [renderSlot(_ctx.$slots, "label")])], 512), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_7$9, [createElementVNode("span", _hoisted_8$6, [renderSlot(_ctx.$slots, "label")])], 512), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(["label", _ctx.groupLabelClass]),
     "aria-hidden": "true"
@@ -11729,7 +11729,7 @@ var _hoisted_5$f = {
   class: "label__message label__message--error"
 };
 var _hoisted_6$c = ["for"];
-var _hoisted_7$9 = {
+var _hoisted_7$8 = {
   key: 0,
   class: "label__message label__message--error"
 };
@@ -11755,7 +11755,7 @@ function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
   }, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "description", {
     descriptionClass: _ctx.descriptionClass,
     formatDescriptionClass: _ctx.formatDescriptionClass
-  }), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$9, [createVNode(_component_f_icon, {
+  }), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$8, [createVNode(_component_f_icon, {
     class: "label__icon--left",
     name: "error"
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$c));
@@ -12345,7 +12345,7 @@ var _hoisted_6$b = {
   key: 2,
   class: "text-field__append-inner"
 };
-var _hoisted_7$8 = {
+var _hoisted_7$7 = {
   key: 3,
   class: "text-field__append-inner"
 };
@@ -12415,7 +12415,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     "is-open": _ctx.showPopupError,
     "error-message": _ctx.validationMessage,
     onClose: _ctx.closePopupError
-  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$b, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), _ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$8, [createVNode(_component_i_combobox_toggle_button, {
+  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$b, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), _ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$7, [createVNode(_component_i_combobox_toggle_button, {
     disabled: _ctx.disabled,
     "aria-controls": _ctx.dropdownIsOpen ? _ctx.dropdownId : void 0,
     "aria-expanded": _ctx.dropdownIsOpen,
@@ -13576,7 +13576,7 @@ var _hoisted_5$c = {
 var _hoisted_6$9 = {
   key: 0
 };
-var _hoisted_7$7 = {
+var _hoisted_7$6 = {
   key: 1
 };
 var _hoisted_8$5 = ["colspan"];
@@ -13759,7 +13759,7 @@ var _sfc_main$y = /* @__PURE__ */ defineComponent({
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_5$c, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
       }), 128))])]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_6$9, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         row: {}
-      })))])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$7, [createElementVNode("td", {
+      })))])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$6, [createElementVNode("td", {
         class: "table__column table__column--action",
         colspan: columns.value.length
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(
@@ -15560,7 +15560,7 @@ var _hoisted_5$a = {
   class: "sr-only"
 };
 var _hoisted_6$8 = ["id"];
-var _hoisted_7$6 = {
+var _hoisted_7$5 = {
   class: "expandable-panel__body"
 };
 var _hoisted_8$4 = {
@@ -15600,7 +15600,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [withDirectives(createElementVNode("div", {
       id: _ctx.id,
       class: "expandable-panel__content"
-    }, [createElementVNode("div", _hoisted_7$6, [renderSlot(_ctx.$slots, "default")]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasOutsideSlot ? (openBlock(), createElementBlock("div", _hoisted_8$4, [renderSlot(_ctx.$slots, "outside")])) : createCommentVNode("", true)], 8, _hoisted_6$8), [[vShow, _ctx.expanded]])]),
+    }, [createElementVNode("div", _hoisted_7$5, [renderSlot(_ctx.$slots, "default")]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasOutsideSlot ? (openBlock(), createElementBlock("div", _hoisted_8$4, [renderSlot(_ctx.$slots, "outside")])) : createCommentVNode("", true)], 8, _hoisted_6$8), [[vShow, _ctx.expanded]])]),
     _: 3
   })], 2);
 }
@@ -15702,7 +15702,7 @@ var _hoisted_5$9 = ["id"];
 var _hoisted_6$7 = {
   class: "expandable-paragraph__content"
 };
-var _hoisted_7$5 = {
+var _hoisted_7$4 = {
   key: 0,
   class: "expandable-paragraph__separator"
 };
@@ -15733,7 +15733,7 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [withDirectives(createElementVNode("div", {
       id: _ctx.id,
       class: "expandable-paragraph__container"
-    }, [createElementVNode("div", _hoisted_6$7, [renderSlot(_ctx.$slots, "default")]), _cache[4] || (_cache[4] = createTextVNode()), !_ctx.list ? (openBlock(), createElementBlock("div", _hoisted_7$5)) : createCommentVNode("", true)], 8, _hoisted_5$9), [[vShow, _ctx.expanded]])]),
+    }, [createElementVNode("div", _hoisted_6$7, [renderSlot(_ctx.$slots, "default")]), _cache[4] || (_cache[4] = createTextVNode()), !_ctx.list ? (openBlock(), createElementBlock("div", _hoisted_7$4)) : createCommentVNode("", true)], 8, _hoisted_5$9), [[vShow, _ctx.expanded]])]),
     _: 3
   })], 2);
 }
@@ -15833,15 +15833,12 @@ var _hoisted_2$h = {
 };
 var _hoisted_3$c = ["id"];
 var _hoisted_4$a = {
-  class: "icon-stack button__icon icon-stack--new-window"
-};
-var _hoisted_5$8 = {
   class: "file-item__file-name"
 };
-var _hoisted_6$6 = {
+var _hoisted_5$8 = {
   class: "sr-only"
 };
-var _hoisted_7$4 = {
+var _hoisted_6$6 = {
   key: 0,
   class: "file-item__change-info"
 };
@@ -15850,11 +15847,9 @@ function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", _hoisted_1$l, [createElementVNode("div", _hoisted_2$h, [createElementVNode("a", mergeProps({
     id: _ctx.id,
     class: "file-item__file-open"
-  }, _ctx.$attrs), [createElementVNode("div", _hoisted_4$a, [createVNode(_component_f_icon, {
-    name: "new-window"
-  }), _cache[0] || (_cache[0] = createTextVNode()), createVNode(_component_f_icon, {
+  }, _ctx.$attrs), [createVNode(_component_f_icon, {
     name: _ctx.iconName
-  }, null, 8, ["name"])]), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_5$8, toDisplayString(_ctx.fileName), 1), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("span", _hoisted_6$6, "\xA0" + toDisplayString(_ctx.$t("fkui.file-item.file-open", "\xF6ppnas i nytt f\xF6nster")), 1)], 16, _hoisted_3$c), _cache[3] || (_cache[3] = createTextVNode()), renderSlot(_ctx.$slots, "row")]), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), _ctx.isMimeTypeChanged ? (openBlock(), createElementBlock("div", _hoisted_7$4, toDisplayString(_ctx.mimeTypeChangedText), 1)) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), _cache[7] || (_cache[7] = createElementVNode("hr", {
+  }, null, 8, ["name"]), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_4$a, toDisplayString(_ctx.fileName), 1), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_5$8, "\xA0" + toDisplayString(_ctx.$t("fkui.file-item.file-open", "\xF6ppnas i nytt f\xF6nster")), 1)], 16, _hoisted_3$c), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "row")]), _cache[3] || (_cache[3] = createTextVNode()), renderSlot(_ctx.$slots, "default"), _cache[4] || (_cache[4] = createTextVNode()), _ctx.isMimeTypeChanged ? (openBlock(), createElementBlock("div", _hoisted_6$6, toDisplayString(_ctx.mimeTypeChangedText), 1)) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), _cache[6] || (_cache[6] = createElementVNode("hr", {
     class: "file-item__separator"
   }, null, -1))]);
 }

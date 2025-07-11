@@ -16724,7 +16724,7 @@ const _hoisted_5$n = {
 const _hoisted_6$h = {
   class: "modal__header"
 };
-const _hoisted_7$c = {
+const _hoisted_7$b = {
   key: 0,
   ref: "modalTitle",
   class: "modal__title",
@@ -16760,7 +16760,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createBaseVNode("div", _hoisted_4$s, [createBaseVNode("div", _hoisted_5$n, [createBaseVNode("div", _hoisted_6$h, [createBaseVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$c, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$8, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$3, [createBaseVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$b, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$8, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$3, [createBaseVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -21565,7 +21565,7 @@ const _hoisted_5$f = {
   class: "label__message label__message--error"
 };
 const _hoisted_6$c = ["for"];
-const _hoisted_7$9 = {
+const _hoisted_7$8 = {
   key: 0,
   class: "label__message label__message--error"
 };
@@ -21591,7 +21591,7 @@ function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
   }, [renderSlot(_ctx.$slots, "default"), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "description", {
     descriptionClass: _ctx.descriptionClass,
     formatDescriptionClass: _ctx.formatDescriptionClass
-  }), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$9, [createVNode(_component_f_icon, {
+  }), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$8, [createVNode(_component_f_icon, {
     class: "label__icon--left",
     name: "error"
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message")])) : createCommentVNode("", true)], 8, _hoisted_6$c));
@@ -22181,7 +22181,7 @@ const _hoisted_6$b = {
   key: 2,
   class: "text-field__append-inner"
 };
-const _hoisted_7$8 = {
+const _hoisted_7$7 = {
   key: 3,
   class: "text-field__append-inner"
 };
@@ -22251,7 +22251,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     "is-open": _ctx.showPopupError,
     "error-message": _ctx.validationMessage,
     onClose: _ctx.closePopupError
-  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$b, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), _ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$8, [createVNode(_component_i_combobox_toggle_button, {
+  }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$b, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), _ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$7, [createVNode(_component_i_combobox_toggle_button, {
     disabled: _ctx.disabled,
     "aria-controls": _ctx.dropdownIsOpen ? _ctx.dropdownId : void 0,
     "aria-expanded": _ctx.dropdownIsOpen,
@@ -22838,7 +22838,7 @@ const _hoisted_5$c = {
 const _hoisted_6$9 = {
   key: 0
 };
-const _hoisted_7$7 = {
+const _hoisted_7$6 = {
   key: 1
 };
 const _hoisted_8$5 = ["colspan"];
@@ -23021,7 +23021,7 @@ const _hoisted_8$5 = ["colspan"];
         }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_5$c, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
       }), 128))])]), _cache[7] || (_cache[7] = createTextVNode()), createBaseVNode("tbody", null, [isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_6$9, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         row: {}
-      })))])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$7, [createBaseVNode("td", {
+      })))])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$6, [createBaseVNode("td", {
         class: "table__column table__column--action",
         colspan: columns.value.length
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(
