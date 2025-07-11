@@ -28,38 +28,40 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-toggle-button.vue:FMinimizablePanelPageObject-toggle-button-b9e9d4.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject-el.vue:FProgressbarPageObject-el-81e102.js
 import { defineComponent as _defineComponent } from "vue";
-import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
-import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FProgressbar } from "@fkui/vue";
+import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject-toggle-button",
+  __name: "FProgressbarPageObject-el",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FPageLayout() {
-      return FPageLayout;
-    }, get FMinimizablePanel() {
-      return FMinimizablePanel;
+    const __returned__ = { get FProgressbar() {
+      return FProgressbar;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
-var _hoisted_1 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
-    default: _withCtx(({ left, content }) => [
-      _createVNode($setup["FMinimizablePanel"], { slot: left }, null, 8, ["slot"]),
-      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_1)
-    ]),
-    _: 1
-    /* STABLE */
-  });
+  const _directive_test = _resolveDirective("test");
+  return _withDirectives((_openBlock(), _createBlock(
+    $setup["FProgressbar"],
+    {
+      value: 40,
+      "aria-label": "Progressbar"
+    },
+    null,
+    512
+    /* NEED_PATCH */
+  )), [
+    [_directive_test, "progressbar"]
+  ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b9e9d4"
+  selector: "#example-81e102"
 });
 export {
   render
