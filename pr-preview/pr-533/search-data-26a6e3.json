@@ -152,14 +152,14 @@
     "FFormModal",
     "Bekräftelsemodal",
     "FConfirmModal",
-    "Förloppsindikator",
-    "FProgressbar",
-    "Laddningsindikator",
-    "FLoader",
     "Startpunkt",
     "entrypoint",
     "Länk",
     "anchor",
+    "Förloppsindikator",
+    "FProgressbar",
+    "Laddningsindikator",
+    "FLoader",
     "Specialiserade inmatningsfält",
     "Kombobox",
     "FTextField",
@@ -890,20 +890,6 @@
       ]
     },
     {
-      "url": "components/load/fprogressbar.html",
-      "title": "Förloppsindikator",
-      "terms": [
-        "FProgressbar"
-      ]
-    },
-    {
-      "url": "components/load/floader.html",
-      "title": "Laddningsindikator",
-      "terms": [
-        "FLoader"
-      ]
-    },
-    {
       "url": "components/links/entrypoint.html",
       "title": "Startpunkt",
       "terms": [
@@ -915,6 +901,20 @@
       "title": "Länk",
       "terms": [
         "anchor"
+      ]
+    },
+    {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "FLoader"
       ]
     },
     {
