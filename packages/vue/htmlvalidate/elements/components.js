@@ -1,4 +1,7 @@
-const { defineMetadata } = require("html-validate");
+const { defineMetadata, metadataHelper } = require("html-validate");
+
+const { allowedIfAttributeHasValue, allowedIfAttributeIsAbsent } =
+    metadataHelper;
 
 module.exports = defineMetadata({
     /* f-label is defined at top as many other elements inherits from it */
@@ -114,6 +117,38 @@ module.exports = defineMetadata({
 
     "f-text-field#error-message": {
         inherit: "f-label#error-message",
+    },
+
+    "f-button": {
+        inherit: "button",
+        attributes: {
+            size: {
+                enum: ["small", "medium", "large"],
+            },
+            "icon-left": {
+                allowed: allowedIfAttributeIsAbsent("icon-right"),
+                enum: ["/.+/"],
+            },
+            "icon-right": {
+                allowed: allowedIfAttributeIsAbsent("icon-left"),
+                enum: ["/.+/"],
+            },
+            "tertiary-style": {
+                allowed: allowedIfAttributeHasValue("variant", ["tertiary"], {
+                    defaultValue: "primary",
+                }),
+                enum: ["standard", "black", "inverted"],
+            },
+            "align-text": {
+                boolean: true,
+                allowed: allowedIfAttributeHasValue("variant", ["tertiary"], {
+                    defaultValue: "primary",
+                }),
+            },
+            "mobile-full-width": {
+                boolean: true,
+            },
+        },
     },
 
     "f-data-table": {

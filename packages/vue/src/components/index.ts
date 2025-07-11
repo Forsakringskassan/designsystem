@@ -1,4 +1,5 @@
 export { FBadge } from "./FBadge";
+export { FButton } from "./FButton";
 export { FCalendar, FCalendarDay } from "./FCalendar";
 export { FCard } from "./FCard";
 export { FCheckboxField } from "./FCheckboxField";
