@@ -116,6 +116,10 @@ module.exports = defineMetadata({
         inherit: "f-label#error-message",
     },
 
+    "f-button": {
+        inherit: "button",
+    },
+
     "f-data-table": {
         flow: true,
         attributes: {
