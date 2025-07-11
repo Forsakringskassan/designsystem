@@ -48,6 +48,10 @@
     "Korsvalidering",
     "Formatering och parsning",
     "Formaterare och parser - anpassad",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -57,10 +61,6 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
@@ -482,6 +482,23 @@
       "terms": []
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -506,23 +523,6 @@
       "url": "gettingstarted/use-design-system/getting-started-application.html",
       "title": "Ta fram applikation",
       "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
     },
     {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
@@ -1533,17 +1533,17 @@
     "46": 30,
     "47": 31,
     "48": 32,
-    "49": 32,
-    "50": 32,
-    "51": 32,
-    "52": 32,
-    "53": 32,
-    "54": 33,
-    "55": 34,
+    "49": 33,
+    "50": 34,
+    "51": 34,
+    "52": 35,
+    "53": 35,
+    "54": 35,
+    "55": 35,
     "56": 35,
-    "57": 36,
-    "58": 37,
-    "59": 38,
+    "57": 35,
+    "58": 36,
+    "59": 37,
     "60": 38,
     "61": 39,
     "62": 40,

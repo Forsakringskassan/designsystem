@@ -1770,7 +1770,7 @@ input[type=search]:focus,
   color: var(--f-text-color-error);
 }
 
-.description-list > dl {
+.definition-list > dl {
   display: grid;
   grid-template-columns: max-content auto;
 }
