@@ -49,7 +49,7 @@ export default defineComponent({
             default: undefined,
         },
         /**
-         * The items to be diplayed in the menu
+         * The items to be displayed in the menu.
          */
         items: {
             type: Array as PropType<ContextMenuItem[]>,
