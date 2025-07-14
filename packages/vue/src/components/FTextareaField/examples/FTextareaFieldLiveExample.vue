@@ -4,7 +4,7 @@ import { FCheckboxField, FFieldset, FSelectField, FTextareaField, FTooltip } fro
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
-    name: "FListLiveExample",
+    name: "FTextareaFieldLiveExample",
     components: { LiveExample, FCheckboxField, FFieldset, FSelectField },
     data() {
         return {
