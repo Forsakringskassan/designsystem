@@ -28,13 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTextareaField/examples/FTextareaFieldLiveExample.vue:FTextareaFieldLiveExample-3cfba7.js
+// virtual-entry:virtual:packages/vue/src/components/FTextareaField/examples/FTextareaFieldLiveExample.vue:FTextareaFieldLiveExample-6c6bea.js
 import { defineComponent } from "vue";
 import { FCheckboxField, FFieldset, FSelectField, FTextareaField, FTooltip } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "FListLiveExample",
+  name: "FTextareaFieldLiveExample",
   components: { LiveExample, FCheckboxField, FFieldset, FSelectField },
   data() {
     return {
@@ -253,7 +253,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-3cfba7"
+  selector: "#example-6c6bea"
 });
 export {
   render
