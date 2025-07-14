@@ -3301,6 +3301,9 @@ input[type=search]:focus,
   margin-bottom: calc(0.25rem * var(--f-density-factor));
   width: var(--f-width-full);
 }
+.label.sr-only {
+  width: auto;
+}
 .label__message {
   display: block;
   font-weight: var(--f-font-weight-normal);
