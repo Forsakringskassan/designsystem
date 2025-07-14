@@ -1760,6 +1760,7 @@ input[type=search]:focus,
 .definition-list > dl {
   display: grid;
   grid-template-columns: max-content auto;
+  margin: 0;
 }
 
 .anchor, .file-item__file-open {
