@@ -95,6 +95,13 @@ module.exports = defineMetadata({
             "max-date": {
                 required: true,
             },
+            "year-selector": {
+                boolean: true,
+            },
+            "year-selector-open": {
+                boolean: true,
+            },
+            id: {},
         },
     },
 
