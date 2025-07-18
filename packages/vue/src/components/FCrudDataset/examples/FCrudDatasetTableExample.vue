@@ -35,7 +35,7 @@ export default defineComponent({
 <template>
     <f-crud-dataset v-model="fruits" @created="saveModel" @updated="saveModel" @deleted="saveModel">
         <template #default="{ updateItem, deleteItem }">
-            <f-interactive-table :rows="fruits" key-attribute="id">
+            <f-interactive-table :rows="fruits" expandable-attribute="variant" key-attribute="id">
                 <template #caption> <b>Frukter</b> </template>
                 <template #default="{ row }">
                     <f-table-column title="Namn" type="text" shrink>
@@ -107,7 +107,7 @@ export default defineComponent({
         </template>
 
         <template #delete="{ item }">
-            Vill du verkligen radera fruken "{{ item.name }}" med ID {{ item.id }}
+            Vill du verkligen radera frukten "{{ item.name }}" med ID {{ item.id }}
         </template>
     </f-crud-dataset>
 </template>
