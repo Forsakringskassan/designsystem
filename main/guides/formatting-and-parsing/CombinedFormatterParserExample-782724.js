@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/CombinedFormatterParserExample.vue:CombinedFormatterParserExample-621104.js
+// virtual-entry:virtual:docs/guides/validation/examples/CombinedFormatterParserExample.vue:CombinedFormatterParserExample-782724.js
 import { defineComponent } from "vue";
 import { formatNumber, parseNumber } from "@fkui/logic";
 import { FTextField, FOutputField } from "@fkui/vue";
@@ -109,7 +109,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-621104"
+  selector: "#example-782724"
 });
 export {
   render
