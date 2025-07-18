@@ -22608,6 +22608,7 @@ const _hoisted_6$a = ["value"];
     emit: __emit
   }) {
     const $t2 = useTranslate();
+    const searchField = useTemplateRef("search-field");
     const useDefaultSortOrder = ref(true);
     const searchString = ref("");
     const defaultSortValue = {
@@ -22719,8 +22720,10 @@ const _hoisted_6$a = ["value"];
     function onClickClearSearch() {
       searchString.value = "";
       sortFilterData();
-      const input = useTemplateRef("search-field").value;
-      focus$1(input);
+      const input = getHTMLElementFromVueRef(searchField.value).querySelector("input");
+      if (input) {
+        input.focus();
+      }
     }
     function filterResultset() {
       sortFilterData();
