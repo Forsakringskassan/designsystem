@@ -1,8 +1,6 @@
 @use "../../core/size";
 
-$STATIC_PANEL_SELECTOR: ".static-panel" !default;
-
-#{$STATIC_PANEL_SELECTOR} {
+.static-panel {
     margin-bottom: 2.5rem;
 
     &__heading {

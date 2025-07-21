@@ -1,8 +1,6 @@
 @use "../../core";
 @use "../../core/size";
 
-$TABLE_SELECTOR: ".table" !default;
-
 // General variables
 $table-font-size: var(--f-font-size-standard) !default;
 $table-focus-size: 2px !default;
@@ -95,7 +93,7 @@ $table-input-offset-horizontal: 0.25rem;
     visibility: collapse;
 }
 
-#{$TABLE_SELECTOR} {
+.table {
     border-collapse: separate;
     border-spacing: 0;
     font-size: $table-font-size;
@@ -143,7 +141,7 @@ $table-input-offset-horizontal: 0.25rem;
                 border-right: none;
             }
 
-            #{$TABLE_SELECTOR}__column__header__icon {
+            .table__column__header__icon {
                 color: var(--f-icon-color-table-header);
                 height: var(--f-icon-size-x-small);
                 width: var(--f-icon-size-x-small);
@@ -157,7 +155,7 @@ $table-input-offset-horizontal: 0.25rem;
     }
 
     tbody {
-        #{$TABLE_SELECTOR}__row {
+        .table__row {
             @extend %table-row-normal;
 
             &--normal {
@@ -188,7 +186,7 @@ $table-input-offset-horizontal: 0.25rem;
                 @extend %table-row-focus-within;
 
                 // these have higher priority
-                &#{$TABLE_SELECTOR}__row {
+                &.table__row {
                     &--active {
                         @extend %table-row-active;
                     }
@@ -200,7 +198,7 @@ $table-input-offset-horizontal: 0.25rem;
                 @extend %table-row-focus;
 
                 // these have higher priority
-                &#{$TABLE_SELECTOR}__row {
+                &.table__row {
                     &--active {
                         @extend %table-row-active;
                     }
@@ -212,7 +210,7 @@ $table-input-offset-horizontal: 0.25rem;
             }
         }
 
-        #{$TABLE_SELECTOR}__expandable-row {
+        .table__expandable-row {
             @extend %table-row-normal;
 
             &--collapsed {
@@ -238,7 +236,7 @@ $table-input-offset-horizontal: 0.25rem;
             line-height: $table-row-line-height;
         }
 
-        #{$TABLE_SELECTOR}__column {
+        .table__column {
             // apply monospace font only on tbody rows, not thead
             &--numeric,
             &--date {
@@ -307,11 +305,11 @@ $table-input-offset-horizontal: 0.25rem;
     }
 
     &--striped tbody {
-        #{$TABLE_SELECTOR}__row:nth-child(even) {
+        .table__row:nth-child(even) {
             @extend %table-row-striped;
 
             // these have higher priority
-            &#{$TABLE_SELECTOR}__row {
+            &.table__row {
                 &--active {
                     @extend %table-row-active;
                 }
@@ -320,11 +318,11 @@ $table-input-offset-horizontal: 0.25rem;
     }
 
     &--hover tbody {
-        #{$TABLE_SELECTOR}__row:hover {
+        .table__row:hover {
             @extend %table-row-hover;
 
             // these have higher priority
-            &#{$TABLE_SELECTOR}__row {
+            &.table__row {
                 &--active {
                     @extend %table-row-active;
                 }
@@ -332,7 +330,7 @@ $table-input-offset-horizontal: 0.25rem;
         }
     }
 
-    &--selectable #{$TABLE_SELECTOR}__row {
+    &--selectable .table__row {
         td:hover,
         th:hover {
             cursor: pointer;
@@ -353,7 +351,7 @@ $table-input-offset-horizontal: 0.25rem;
             white-space: nowrap;
         }
 
-        #{$TABLE_SELECTOR} {
+        .table {
             margin: 0;
         }
 

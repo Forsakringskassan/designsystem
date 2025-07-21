@@ -3,9 +3,7 @@
 @use "../../core/size";
 @use "variables" as *;
 
-$ERROR_LIST_SELECTOR: ".error-list" !default;
-
-#{$ERROR_LIST_SELECTOR} {
+.error-list {
     color: $errorlist-color-text;
     margin: 0 0 core.densify(var(--f-margin-component-bottom));
 

@@ -2,9 +2,7 @@
 @use "../../core/mixins/breakpoints";
 @use "../../core/config-variables";
 
-$CONTEXTMENU_SELECTOR: ".contextmenu" !default;
-
-#{$CONTEXTMENU_SELECTOR} {
+.contextmenu {
     min-width: 260px;
     background-color: var(--f-background-popupmenu);
 

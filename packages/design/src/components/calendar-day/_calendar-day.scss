@@ -1,10 +1,9 @@
 @use "../../core/mixins/circle";
 @use "variables" as *;
 
-$CALENDAR_DAY_SELECTOR: ".calendar-day" !default;
 $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highlight-color-border-default;
 
-#{$CALENDAR_DAY_SELECTOR} {
+.calendar-day {
     align-items: center;
     display: inline-flex;
     font-weight: var(--f-font-weight-medium);

@@ -1,8 +1,6 @@
 @use "../../core";
 @use "../../core/size";
 
-$SORT_FILTER_DATASET_SELECTOR: ".sort-filter-dataset" !default;
-
 // Selectfield
 $sortfilter-field-margin-bottom: 0.85rem !default;
 
@@ -14,7 +12,7 @@ $sortfilter-field-label-padding-top: size.$padding-050 !default;
 $sortfilter-header-font-size: var(--f-font-size-h2) !default;
 $sortfilter-header-padding-top: size.$padding-025 !default;
 
-#{$SORT_FILTER_DATASET_SELECTOR} {
+.sort-filter-dataset {
     &__sort {
         min-width: 80px;
     }

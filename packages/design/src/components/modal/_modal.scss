@@ -4,7 +4,6 @@
 @use "../../core/mixins/breakpoints";
 @use "variables" as *;
 
-$MODAL_SELECTOR: ".modal" !default;
 $modal-sizes: (
     "small": var(--f-modal-size-small),
     "medium": var(--f-modal-size-medium),
@@ -13,7 +12,7 @@ $modal-sizes: (
 ) !default;
 $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
 
-#{$MODAL_SELECTOR} {
+.modal {
     &__backdrop {
         background: var(--f-background-overlay);
         display: flex;
@@ -55,7 +54,7 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
         margin-bottom: size.$margin-050;
         width: 100%;
 
-        #{$MODAL_SELECTOR}__title {
+        .modal__title {
             font-size: var(--f-modal-title-font-size);
             margin-bottom: 0;
             margin-top: 0;
@@ -86,17 +85,17 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
                 width: 100%;
                 max-width: none;
 
-                #{$MODAL_SELECTOR}__dialog {
+                .modal__dialog {
                     min-height: 100vh;
                 }
 
-                #{$MODAL_SELECTOR}__dialog-inner {
+                .modal__dialog-inner {
                     flex: 1 1 auto;
                     display: flex;
                     flex-direction: column;
                 }
 
-                #{$MODAL_SELECTOR}__content {
+                .modal__content {
                     flex: 1 1 auto;
                 }
             }
@@ -115,7 +114,7 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
         position: relative;
         z-index: z-index.$MODAL_ZINDEX;
 
-        #{$MODAL_SELECTOR}__dialog-inner {
+        .modal__dialog-inner {
             height: auto;
             margin: 0 size.$margin-150 size.$margin-150;
 
@@ -124,7 +123,7 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
             }
         }
 
-        #{$MODAL_SELECTOR}__footer {
+        .modal__footer {
             margin-top: size.$margin-200;
 
             > .button-group {
@@ -153,18 +152,18 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
         }
     }
 
-    &--information #{$MODAL_SELECTOR}__shelf {
+    &--information .modal__shelf {
         background-color: $modal-shelf-info-color-background;
         .close-button {
             color: $modal-color-closebutton-text-inverted;
         }
     }
 
-    &--warning #{$MODAL_SELECTOR}__shelf {
+    &--warning .modal__shelf {
         background-color: $modal-shelf-warning-color-background;
     }
 
-    &--error #{$MODAL_SELECTOR}__shelf {
+    &--error .modal__shelf {
         background-color: $modal-shelf-error-color-background;
         .close-button {
             color: $modal-color-closebutton-text-inverted;

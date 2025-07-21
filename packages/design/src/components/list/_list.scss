@@ -2,8 +2,6 @@
 @use "../../core/config-variables";
 @use "../../core/size";
 
-$LIST_SELECTOR: ".list" !default;
-
 // list item specific variables
 $list-border: var(--f-border-width-medium) solid var(--f-border-color-grid);
 $list-padding: size.$padding-075;
@@ -27,7 +25,7 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
     background: var(--f-background-grid-active);
 }
 
-#{$LIST_SELECTOR} {
+.list {
     margin: $list-margin;
     padding-left: 0;
 
@@ -90,12 +88,12 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
     }
 
     &--hover {
-        #{$LIST_SELECTOR}__item:focus-within,
-        #{$LIST_SELECTOR}__item:hover {
+        .list__item:focus-within,
+        .list__item:hover {
             cursor: pointer;
             @extend %list-item-hover;
 
-            &#{$LIST_SELECTOR}__item {
+            &.list__item {
                 &--active {
                     @extend %list-item-active;
                 }

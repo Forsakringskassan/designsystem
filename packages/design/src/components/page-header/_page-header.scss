@@ -1,9 +1,8 @@
 @use "../../core/size";
 
-$PAGE_HEADER_SELECTOR: ".page-header" !default;
 $page-header-separator-width: 1px !default;
 
-#{$PAGE_HEADER_SELECTOR} {
+.page-header {
     display: flex;
     flex-direction: row;
     width: 100%;

@@ -11,8 +11,7 @@
 
 // With inspiration from:
 // https://www.smashingmagazine.com/2024/03/modern-css-tooltips-speech-bubbles-part1/#comments-modern-css-tooltips-speech-bubbles-part1
-$POPUP_ERROR_SELECTOR: ".popup-error" !default;
-#{$POPUP_ERROR_SELECTOR} {
+.popup-error {
     --i-popup-error-offset: 24px;
 
     // Arrorw angle
@@ -36,7 +35,7 @@ $POPUP_ERROR_SELECTOR: ".popup-error" !default;
         // the page height when teleporting to bottom of body.
         top: 0;
 
-        #{$POPUP_ERROR_SELECTOR}__wrapper {
+        .popup-error__wrapper {
             left: -10000px;
             position: absolute;
             z-index: z-index.$POPUP_ZINDEX;
@@ -47,7 +46,7 @@ $POPUP_ERROR_SELECTOR: ".popup-error" !default;
     &--inline {
         position: static;
 
-        #{$POPUP_ERROR_SELECTOR}__wrapper {
+        .popup-error__wrapper {
             box-sizing: border-box;
             margin-top: size.$margin-050;
             margin-bottom: size.$margin-050;
@@ -63,7 +62,7 @@ $POPUP_ERROR_SELECTOR: ".popup-error" !default;
         line-height: 24px;
         position: relative;
 
-        #{$POPUP_ERROR_SELECTOR}__button {
+        .popup-error__button {
             margin: 0;
             min-height: 24px;
             min-width: 24px;

@@ -1,12 +1,11 @@
 @use "../../components/z-index";
 @use "variables" as *;
 
-$MONTH_SELECTOR: ".calendar-month" !default;
 $days: 7;
 $week-width: 2%;
 $day-width: calc((100% - $week-width) / $days);
 
-#{$MONTH_SELECTOR} {
+.calendar-month {
     &__table {
         border-spacing: 2px;
         padding: 0 0.5rem 1rem;

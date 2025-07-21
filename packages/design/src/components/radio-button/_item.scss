@@ -1,8 +1,5 @@
 @use ".././list/list";
 
-$RADIO_BUTTON_SELECTOR: ".radio-button" !default;
-$CHECKBOX_SELECTOR: ".checkbox" !default;
-
 %selectable-item {
     border: list.$list-border;
     margin-bottom: 0;
@@ -39,8 +36,8 @@ $CHECKBOX_SELECTOR: ".checkbox" !default;
     }
 }
 
-#{$RADIO_BUTTON_SELECTOR,
-$CHECKBOX_SELECTOR} {
+.radio-button,
+.checkbox {
     &__details {
         display: block;
     }

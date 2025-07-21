@@ -2,9 +2,7 @@
 @use "../../core/size";
 @use "variables" as *;
 
-$CARD_SELECTOR: ".card" !default;
-
-#{$CARD_SELECTOR} {
+.card {
     padding: core.densify(size.$padding-100) size.$padding-100;
     margin: core.densify(size.$margin-100) 0;
 

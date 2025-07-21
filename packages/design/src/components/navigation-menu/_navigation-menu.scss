@@ -2,9 +2,7 @@
 @use "../../core/mixins/breakpoints";
 @use "../../core/config-variables";
 
-$IMENU_SELECTOR: ".imenu" !default;
-
-#{$IMENU_SELECTOR} {
+.imenu {
     &__list {
         background-color: var(--f-background-menu);
         margin: 0;
@@ -43,7 +41,7 @@ $IMENU_SELECTOR: ".imenu" !default;
     }
 }
 
-#{$IMENU_SELECTOR}--vertical {
+.imenu--vertical {
     .imenu__list {
         display: block;
 
@@ -68,7 +66,7 @@ $IMENU_SELECTOR: ".imenu" !default;
     }
 }
 
-#{$IMENU_SELECTOR}--horizontal {
+.imenu--horizontal {
     overflow: hidden;
 
     .imenu__list {

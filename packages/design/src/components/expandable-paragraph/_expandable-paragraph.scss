@@ -3,13 +3,12 @@
 @use "../../core/size";
 @use "../../core/mixins/circle" as *;
 
-$EXPANDABLE_PARAGRAPH_SELECTOR: ".expandable-paragraph" !default;
 $ICON_WIDTH: var(--f-icon-size-small);
 $ICON_MARGIN: 0.5rem;
 $CONTENT_MARGIN: calc(#{$ICON_WIDTH} + #{$ICON_MARGIN});
 $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
 
-#{$EXPANDABLE_PARAGRAPH_SELECTOR} {
+.expandable-paragraph {
     margin: 0 0 core.densify(var(--f-margin-component-bottom));
     &__heading {
         line-height: $EXPANDABLE_PARAGRAPH_LINE_HEIGHT;
@@ -43,20 +42,20 @@ $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
         }
     }
 
-    &#{$EXPANDABLE_PARAGRAPH_SELECTOR}--open {
-        #{$EXPANDABLE_PARAGRAPH_SELECTOR}__icon {
+    &.expandable-paragraph--open {
+        .expandable-paragraph__icon {
             svg:nth-child(2) {
                 transform: rotate(0);
             }
         }
 
-        #{$EXPANDABLE_PARAGRAPH_SELECTOR}__container {
+        .expandable-paragraph__container {
             height: auto;
         }
     }
 
-    &#{$EXPANDABLE_PARAGRAPH_SELECTOR}--closed {
-        #{$EXPANDABLE_PARAGRAPH_SELECTOR}__icon {
+    &.expandable-paragraph--closed {
+        .expandable-paragraph__icon {
             svg:nth-child(2) {
                 transform: rotate(-90deg);
             }

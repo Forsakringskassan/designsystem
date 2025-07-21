@@ -2,8 +2,6 @@
 @use "../../core/size";
 @use "variables" as *;
 
-$ICON_SELECTOR: ".icon" !default;
-
 @at-root {
     %icon--base {
         display: inline-block;
@@ -29,13 +27,13 @@ $ICON_SELECTOR: ".icon" !default;
 
         position: relative;
 
-        #{$ICON_SELECTOR} {
+        .icon {
             position: absolute;
         }
     }
 }
 
-#{$ICON_SELECTOR} {
+.icon {
     @extend %icon--base;
 
     &--flip-horizontal {
@@ -59,8 +57,8 @@ $ICON_SELECTOR: ".icon" !default;
     }
 }
 
-#{$ICON_SELECTOR}-stack,
-#{$ICON_SELECTOR} {
+.icon-stack,
+.icon {
     &--new-window {
         // anchor icons to top-right and bottom-left
         .icon {
@@ -81,8 +79,8 @@ $ICON_SELECTOR: ".icon" !default;
     }
 }
 
-#{$ICON_SELECTOR}-stack,
-#{$ICON_SELECTOR}--stack {
+.icon-stack,
+.icon--stack {
     @extend %icon-stack;
 
     &--tooltip {

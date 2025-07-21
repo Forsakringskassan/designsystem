@@ -3,33 +3,31 @@
 @use "./radio-button";
 @use "./item";
 
-$RADIO_BUTTON_GROUP_SELECTOR: ".radio-button-group" !default;
-
-#{$RADIO_BUTTON_GROUP_SELECTOR} {
+.radio-button-group {
     &__content {
         display: flex;
         flex-direction: column;
     }
 
     &--horizontal {
-        #{$RADIO_BUTTON_GROUP_SELECTOR}__content {
+        .radio-button-group__content {
             flex-direction: row;
 
-            #{radio-button.$RADIO_BUTTON_SELECTOR} {
+            .radio-button {
                 margin-bottom: 0;
             }
 
             @include bp.breakpoint-down(sm) {
                 flex-direction: column;
 
-                #{radio-button.$RADIO_BUTTON_SELECTOR} {
+                .radio-button {
                     margin-bottom: size.$margin-100;
                 }
             }
         }
     }
     &--border {
-        #{$RADIO_BUTTON_GROUP_SELECTOR}__content {
+        .radio-button-group__content {
             .radio-button {
                 @extend %selectable-item;
             }

@@ -1,6 +1,5 @@
 @use "../z-index";
 
-$LAYOUT_NAVIGATION_SELECTOR: ".layout-navigation" !default;
 $ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
 
 // parameters
@@ -20,7 +19,7 @@ $border-hover-navigation: #{$palette-color-bluebell-15};
 $border-dots-navigation: #{$palette-color-fk-black-50};
 $scrollbar-navigation: #{$palette-color-fk-black-50};
 
-#{$LAYOUT_NAVIGATION_SELECTOR} {
+.layout-navigation {
     min-height: 100%;
     width: 100%;
 

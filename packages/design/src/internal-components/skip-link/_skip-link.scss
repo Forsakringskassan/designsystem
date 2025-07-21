@@ -1,9 +1,7 @@
 @use "../../core/size";
 @use "../../core/config-variables";
 
-$ISKIPLINK_SELECTOR: ".iskiplink" !default;
-
-#{$ISKIPLINK_SELECTOR} {
+.iskiplink {
     position: absolute;
     top: -200px;
 

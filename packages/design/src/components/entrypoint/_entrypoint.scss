@@ -2,9 +2,7 @@
 @use "../../core/size";
 @use "variables" as *;
 
-$ENTRYPOINT_SELECTOR: ".entrypoint" !default;
-
-#{$ENTRYPOINT_SELECTOR} {
+.entrypoint {
     background-color: $entrypoint-color-background-default;
     color: $entrypoint-color-text-default;
     border: var(--f-border-width-medium) solid transparent; // forced-colors mode

@@ -1,8 +1,6 @@
 @use "../../core/size";
 @use "../z-index";
 
-$LOADER_SELECTOR: ".loader" !default;
-
 @keyframes bouncedelay {
     0%,
     80%,
@@ -25,7 +23,7 @@ $LOADER_SELECTOR: ".loader" !default;
     }
 }
 
-#{$LOADER_SELECTOR} {
+.loader {
     div[tabindex] {
         outline: none;
     }
@@ -66,7 +64,7 @@ $LOADER_SELECTOR: ".loader" !default;
     }
 
     &--overlay {
-        #{$LOADER_SELECTOR}__backdrop {
+        .loader__backdrop {
             align-items: center;
             background: var(--f-background-overlay);
             display: flex;
@@ -80,11 +78,11 @@ $LOADER_SELECTOR: ".loader" !default;
             z-index: z-index.$LOADER_OVERLAY_ZINDEX;
         }
 
-        #{$LOADER_SELECTOR}__wait-text {
+        .loader__wait-text {
             color: var(--f-text-color-default-inverted);
         }
 
-        #{$LOADER_SELECTOR}__circle {
+        .loader__circle {
             background-color: var(--f-icon-color-white);
         }
     }

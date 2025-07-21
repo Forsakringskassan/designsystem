@@ -1,11 +1,10 @@
 @use "../../core/size";
 @use "variables" as *;
 
-$PROGRESS_BAR_SELECTOR: ".progress" !default;
 $progressbar-height: var(--f-height-small);
 $progressbar-border-width: var(--f-border-width-medium);
 
-#{$PROGRESS_BAR_SELECTOR} {
+.progress {
     background-color: $progressbar-color-background;
     border-radius: var(--f-border-radius-medium);
     height: $progressbar-height;

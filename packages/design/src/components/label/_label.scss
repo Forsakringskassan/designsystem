@@ -3,9 +3,7 @@
 @use "../icon/icon";
 @use "variables" as *;
 
-$LABEL_SELECTOR: ".label" !default;
-
-#{$LABEL_SELECTOR} {
+.label {
     color: $label-color-text;
     display: inline-block;
     font-size: var(--f-font-size-standard);
