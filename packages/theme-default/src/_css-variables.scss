@@ -10,7 +10,7 @@
     --f-text-color-default-inverted: #{$palette-color-white-100}; // global
     --f-text-color-discrete: #{$palette-color-fk-black-70}; // label, table
 
-    --f-text-color-error: #{$palette-color-red-85}; // label, error-list, form-step
+    --f-text-color-error: #{$palette-color-red-85}; // label, error-list
 
     --f-text-color-link: #{$palette-color-bluebell-100};
     --f-text-color-link-hover: #{$palette-color-fk-black-100};
@@ -53,7 +53,7 @@
 
     --f-icon-color-primary: #{$palette-color-bluebell-100}; // select-field, file-item, file-selector, calendar
     --f-icon-color-discrete: #{$palette-color-fk-black-70}; // wizard-step
-    --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field, form-step
+    --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field
     --f-icon-color-error: #{$palette-color-red-100}; // message-box, text-field, textarea, modal, file-item
     --f-icon-color-input: #{$palette-color-fk-black-50}; // textfield
     --f-icon-color-notice: #{$palette-color-tegel-100}; // expandable-panel
@@ -72,7 +72,6 @@
     // BACKGROUND COLORS
     // *****************
     --f-background-content: #{$palette-color-white-100}; // modal, expandable, navbar content
-    --f-background-form-step: #{$palette-color-fk-black-5}; // form-step
     --f-background-input: #{$palette-color-white-100}; // input element
     --f-background-input-selected: #{$palette-color-bluebell-100}; // checkbox, radiobutton
     --f-background-input-selected-disabled: #{$palette-color-fk-black-50}; // checkbox, radiobutton
@@ -118,7 +117,7 @@
     // BORDER COLORS
     // *************
     --f-border-color-modal: #{$palette-color-fk-black-50};
-    --f-border-color-success: #{$palette-color-green-a-85}; // message-box, textfield, textarea, form-step
+    --f-border-color-success: #{$palette-color-green-a-85}; // message-box, textfield, textarea
     --f-border-color-error: #{$palette-color-red-100}; // message-box, modal, textfield, textarea
     --f-border-color-input: #{$palette-color-fk-black-50};
     --f-border-color-input-inner: #{$palette-color-bluebell-15}; // radiobutton
@@ -127,7 +126,6 @@
     --f-border-color-card: #{$palette-color-fk-black-50}; // Card
     --f-border-color-dialogue-tree: #{$palette-color-fk-black-50}; // Dialogue tree
 
-    --f-border-color-form-step: #{$palette-color-fk-black-15};
     --f-border-color-progress-file-item-ongoing: #{$palette-color-fk-black-70};
 
     --f-border-color-panel: #{$palette-color-green-b-15}; // expandable-panel, static-panel palettfärg!?
