@@ -275,6 +275,10 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-border-color-progress-ongoing: #{$palette-color-fk-black-70};
     --f-background-progress-finished: #{$palette-color-green-b-85};
     --f-border-color-progress-finished: #{$palette-color-green-b-120};
+
+    // Deprecated since %placeholder%
+    --f-background-form-step: #{$palette-color-fk-black-5};
+    --f-border-color-form-step: #{$palette-color-fk-black-15};
 }
 
 @if $global {
