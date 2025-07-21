@@ -1,5 +1,7 @@
 @forward "core" show densify, focus-indicator;
-
 @use "core";
+
+@forward "components";
 @use "components";
+
 @use "internal-components";

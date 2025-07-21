@@ -1,11 +1,11 @@
 // BACKGROUND
-$textareafield-color-background-default: var(--fkds-color-background-primary);
-$textareafield-color-background-disabled: var(--fkds-color-background-disabled);
+$textareafield-color-background-default: var(--fkds-color-background-primary) !default;
+$textareafield-color-background-disabled: var(--fkds-color-background-disabled) !default;
 
 // BORDER
-$textareafield-color-border-default: var(--fkds-color-border-primary);
-$textareafield-color-border-disabled: var(--fkds-color-border-disabled);
-$textareafield-color-border-error: var(--fkds-color-feedback-border-negative);
+$textareafield-color-border-default: var(--fkds-color-border-primary) !default;
+$textareafield-color-border-disabled: var(--fkds-color-border-disabled) !default;
+$textareafield-color-border-error: var(--fkds-color-feedback-border-negative) !default;
 
 // TEXT
-$textareafield-color-text-disabled: var(--fkds-color-text-disabled);
+$textareafield-color-text-disabled: var(--fkds-color-text-disabled) !default;
