@@ -5,7 +5,6 @@
 $ENTRYPOINT_SELECTOR: ".entrypoint" !default;
 
 #{$ENTRYPOINT_SELECTOR} {
-    /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
     background-color: $entrypoint-color-background-default;
     color: $entrypoint-color-text-default;
     border: var(--f-border-width-medium) solid transparent; // forced-colors mode

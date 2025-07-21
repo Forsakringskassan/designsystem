@@ -120,7 +120,6 @@ $scrollbar-secondary: #{$palette-color-fk-black-50};
 
     @media (width <=1280px) {
         &__secondary {
-            /* stylelint-disable-next-line color-function-notation, alpha-value-notation -- technical debt */
             box-shadow:
                 4px 0 2px rgb(0, 0, 0, 0.5),
                 -4px 0 2px rgb(0, 0, 0, 0.5);

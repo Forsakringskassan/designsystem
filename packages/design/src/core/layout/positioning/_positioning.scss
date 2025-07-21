@@ -3,7 +3,6 @@
     `fixed` is used by IE11.
     `sticky` is used by other web browsers. */
 
-    // sass-lint:disable-block no-duplicate-properties
     position: fixed;
     position: sticky;
     z-index: 9999;
