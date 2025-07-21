@@ -937,7 +937,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -951,7 +951,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -1393,7 +1393,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -1407,7 +1407,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -2239,7 +2239,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -2253,7 +2253,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -3258,7 +3258,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -3272,7 +3272,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -4200,7 +4200,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -4214,7 +4214,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -4968,7 +4968,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -4982,7 +4982,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -7175,7 +7175,7 @@ default: string;
 required: false;
 validator(value: string): boolean;
 };
-}>, {}, {}, {
+}>, void, {}, {
 ariaLabel(): string;
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 size: {
@@ -8431,7 +8431,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -8445,7 +8445,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -9050,7 +9050,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -9064,7 +9064,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -9755,7 +9755,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -9769,7 +9769,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -10230,7 +10230,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -10244,7 +10244,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -10732,7 +10732,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -10746,7 +10746,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -11181,7 +11181,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -11195,7 +11195,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -11639,7 +11639,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -11653,7 +11653,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -11684,7 +11684,7 @@ default: string;
 type: StringConstructor;
 required: true;
 };
-}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 value: {
 type: NumberConstructor;
 required: true;
@@ -12259,7 +12259,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -12273,7 +12273,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -13345,7 +13345,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -13359,7 +13359,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -14719,7 +14719,7 @@ rotate: string;
 // Warning: (ae-forgotten-export) The symbol "__VLS_Props_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IComboboxDropdown: DefineComponent<__VLS_Props_4, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxDropdown: DefineComponent<__VLS_Props_4, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<__VLS_Props_4> & Readonly<{
@@ -14728,7 +14728,7 @@ onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 // @public (undocumented)
-export const IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
