@@ -4,10 +4,6 @@
 $FILE_SELECTOR_SELECTOR: ".file-selector" !default;
 
 #{$FILE_SELECTOR_SELECTOR} {
-    svg {
-        color: var(--f-icon-color-primary);
-    }
-
     input[type="file"] {
         @include sr-only;
 
