@@ -104,10 +104,10 @@ $button--secondary: (
     color: $button-secondary-color-text-default,
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-secondary-padding-top)),
+    padding-top: core.densify(var(--f-button-secondary-padding-top)),
     padding-right: var(--f-button-secondary-padding-right),
     padding-bottom: core.densify(var(--f-button-secondary-padding-bottom)),
-    padding-left: var(--f-button-secondary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
+    padding-left: var(--f-button-secondary-padding-left),
 ) !default;
 
 /// Standard button
@@ -118,10 +118,10 @@ $button--standard: (
     color: var(--f-text-color-button-standard),
     shadow: var(--f-button-shadow),
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-standard-padding-top)),
+    padding-top: core.densify(var(--f-button-standard-padding-top)),
     padding-right: var(--f-button-standard-padding-right),
     padding-bottom: core.densify(var(--f-button-standard-padding-bottom)),
-    padding-left: var(--f-button-standard-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
+    padding-left: var(--f-button-standard-padding-left),
 ) !default;
 
 /// Discrete button
@@ -136,10 +136,10 @@ $button--discrete: (
     border-width: 0,
     shadow: none,
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-discrete-padding-top)),
+    padding-top: core.densify(var(--f-button-discrete-padding-top)),
     padding-right: var(--f-button-discrete-padding-right),
     padding-bottom: core.densify(var(--f-button-discrete-padding-bottom)),
-    padding-left: var(--f-button-discrete-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
+    padding-left: var(--f-button-discrete-padding-left),
 ) !default;
 
 /// Discrete inverted button
@@ -153,10 +153,10 @@ $button--discrete-inverted: (
     border-width: 0,
     shadow: none,
     shadow-hover: var(--f-button-shadow-hover),
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-discrete-padding-top)),
+    padding-top: core.densify(var(--f-button-discrete-padding-top)),
     padding-right: var(--f-button-discrete-padding-right),
     padding-bottom: core.densify(var(--f-button-discrete-padding-bottom)),
-    padding-left: var(--f-button-discrete-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
+    padding-left: var(--f-button-discrete-padding-left),
 ) !default;
 
 /// Tertiary button
@@ -171,10 +171,10 @@ $button--tertiary: (
     border-width: 0,
     shadow: none,
     shadow-hover: none,
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-tertiary-padding-top)),
+    padding-top: core.densify(var(--f-button-tertiary-padding-top)),
     padding-right: var(--f-button-tertiary-padding-right),
     padding-bottom: core.densify(var(--f-button-tertiary-padding-bottom)),
-    padding-left: var(--f-button-tertiary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
+    padding-left: var(--f-button-tertiary-padding-left),
 ) !default;
 
 /// Button placeholders
