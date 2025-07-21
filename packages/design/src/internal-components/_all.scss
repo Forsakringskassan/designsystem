@@ -1,10 +1,9 @@
-/* stylelint-disable no-invalid-position-at-import-rule -- technical debt */
-@use "IFlex/iflex";
-@use "IPopupMenu/ipopupmenu";
-@use "ISkipLink/iskiplink";
 @use "animate-expand/animate-expand";
-@use "calendar-month/month";
-@use "calendar-navbar/navbar";
+@use "calendar-month/calendar-month";
+@use "calendar-navbar/calendar-navbar";
 @use "calendar/calendar";
+@use "flex/flex";
+@use "popup-error/popup-error";
+@use "popup-menu/popup-menu";
 @use "popup/popup";
-@use "popupError/popuperror";
+@use "skip-link/skip-link";
