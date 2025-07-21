@@ -3,9 +3,7 @@
 @use "../../core/utils/functions" as *;
 @use "variables" as *;
 
-$TEXTAREA_FIELD_SELECTOR: ".textarea-field" !default;
-
-#{$TEXTAREA_FIELD_SELECTOR} {
+.textarea-field {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -41,7 +39,7 @@ $TEXTAREA_FIELD_SELECTOR: ".textarea-field" !default;
     }
 
     &--error {
-        #{$TEXTAREA_FIELD_SELECTOR}__textarea {
+        .textarea-field__textarea {
             border-color: $textareafield-color-border-error;
         }
     }

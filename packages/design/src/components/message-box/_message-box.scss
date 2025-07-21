@@ -3,9 +3,7 @@
 @use "../../core/mixins/breakpoints";
 @use "variables" as *;
 
-$MESSAGE_BOX_SELECTOR: ".message-box" !default;
-
-@mixin make-box-variant($MESSAGE_BOX_SELECTOR, $background-color, $border-color, $short-layout: false) {
+@mixin make-box-variant($background-color, $border-color, $short-layout: false, $selector: ".message-box") {
     border: var(--f-border-width-medium) solid;
     border-color: $border-color;
     background-color: $background-color;
@@ -14,7 +12,7 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     @if $short-layout {
         border-left: size.$padding-100 solid $border-color;
 
-        #{$MESSAGE_BOX_SELECTOR} {
+        #{$selector} {
             &__icon {
                 font-size: 0; // ignore any whitespaces in template affecting height
 
@@ -47,20 +45,20 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     }
 }
 
-@mixin messagebox-banner-variant($selector, $short-layout: false) {
+@mixin messagebox-banner-variant($short-layout: false, $selector: ".message-box") {
     width: var(--f-width-full);
     box-shadow: var(--f-box-modal-shadow);
     border-collapse: separate;
     padding: core.densify(size.$padding-100) size.$padding-100;
 
-    @include make-box-variant($selector, $messagebox-error-color-background, $messagebox-error-color-border, $short-layout);
+    @include make-box-variant($messagebox-error-color-background, $messagebox-error-color-border, $short-layout, $selector: $selector);
 
     .iflex__item > p {
         margin-bottom: 0;
     }
 }
 
-#{$MESSAGE_BOX_SELECTOR} {
+.message-box {
     padding: core.densify(size.$padding-150) size.$padding-150;
     margin: size.$margin-050 0 core.densify(size.$margin-200) 0;
 
@@ -79,39 +77,39 @@ $MESSAGE_BOX_SELECTOR: ".message-box" !default;
     }
 
     &--info {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-info-color-background, $messagebox-info-color-border);
+        @include make-box-variant($messagebox-info-color-background, $messagebox-info-color-border);
     }
 
     &--info-short {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-info-color-background, $messagebox-info-color-border, $short-layout: true);
+        @include make-box-variant($messagebox-info-color-background, $messagebox-info-color-border, $short-layout: true);
     }
 
     &--error {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-error-color-background, $messagebox-error-color-border);
+        @include make-box-variant($messagebox-error-color-background, $messagebox-error-color-border);
     }
 
     &--error-short {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-error-color-background, $messagebox-error-color-border, $short-layout: true);
+        @include make-box-variant($messagebox-error-color-background, $messagebox-error-color-border, $short-layout: true);
     }
 
     &--warning {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-warning-color-background, $messagebox-warning-color-border);
+        @include make-box-variant($messagebox-warning-color-background, $messagebox-warning-color-border);
     }
 
     &--warning-short {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-warning-color-background, $messagebox-warning-color-border, $short-layout: true);
+        @include make-box-variant($messagebox-warning-color-background, $messagebox-warning-color-border, $short-layout: true);
     }
 
     &--success {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-success-color-background, $messagebox-success-color-border);
+        @include make-box-variant($messagebox-success-color-background, $messagebox-success-color-border);
     }
 
     &--success-short {
-        @include make-box-variant($MESSAGE_BOX_SELECTOR, $messagebox-success-color-background, $messagebox-success-color-border, $short-layout: true);
+        @include make-box-variant($messagebox-success-color-background, $messagebox-success-color-border, $short-layout: true);
     }
 
     &--banner {
-        @include messagebox-banner-variant($MESSAGE_BOX_SELECTOR);
+        @include messagebox-banner-variant;
     }
 
     @include breakpoints.breakpoint-down(sm) {

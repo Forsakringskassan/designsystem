@@ -1,8 +1,6 @@
 @use "../../core/mixins/breakpoints";
 
-$LOGO_SELECTOR: ".logo" !default;
-
-#{$LOGO_SELECTOR} {
+.logo {
     display: inline-block;
 
     &--small {

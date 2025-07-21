@@ -6,9 +6,8 @@
 @use "variables" as *;
 
 $radio_button_label_offset: 0.1rem;
-$RADIO_BUTTON_SELECTOR: ".radio-button" !default;
 
-#{$RADIO_BUTTON_SELECTOR} {
+.radio-button {
     min-height: var(--f-height-medium);
     margin-bottom: core.densify(size.$margin-100);
     margin-right: size.$margin-150;
@@ -82,7 +81,7 @@ $RADIO_BUTTON_SELECTOR: ".radio-button" !default;
             color: GrayText;
         }
 
-        #{$RADIO_BUTTON_SELECTOR}__label {
+        .radio-button__label {
             cursor: default;
             &::before,
             &::after {

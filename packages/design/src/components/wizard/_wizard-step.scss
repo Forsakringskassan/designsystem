@@ -1,21 +1,19 @@
 @use "../../core";
 @use "variables" as *;
 
-$WIZARD_STEP_SELECTOR: ".wizard-step" !default;
-
 /* Selectors */
 $icon-success-selector: ".icon.f-icon-success" !default;
-$header-selector: "#{$WIZARD_STEP_SELECTOR}__header" !default;
+$header-selector: ".wizard-step__header" !default;
 $title-selector: "#{$header-selector}__title" !default;
 $anchor-selector: "#{$title-selector} .anchor" !default;
-$step-of-selector: "#{$WIZARD_STEP_SELECTOR}__step-of" !default;
-$line-up-selector: "#{$WIZARD_STEP_SELECTOR}__line-up" !default;
-$line-down-selector: "#{$WIZARD_STEP_SELECTOR}__line-down" !default;
-$icon-line-down-selector: "#{$WIZARD_STEP_SELECTOR}__icon-container__line-down" !default;
-$icon-container-selector: "#{$WIZARD_STEP_SELECTOR}__icon-container" !default;
-$circle-selector: "#{$WIZARD_STEP_SELECTOR}__icon-container__circle" !default;
-$number-selector: "#{$WIZARD_STEP_SELECTOR}__icon-container__number" !default;
-$form-body-selector: "#{$WIZARD_STEP_SELECTOR}-body" !default;
+$step-of-selector: ".wizard-step__step-of" !default;
+$line-up-selector: ".wizard-step__line-up" !default;
+$line-down-selector: ".wizard-step__line-down" !default;
+$icon-line-down-selector: ".wizard-step__icon-container__line-down" !default;
+$icon-container-selector: ".wizard-step__icon-container" !default;
+$circle-selector: ".wizard-step__icon-container__circle" !default;
+$number-selector: ".wizard-step__icon-container__number" !default;
+$form-body-selector: ".wizard-step-body" !default;
 $form-border-container: "#{$form-body-selector}__border-container" !default;
 
 /* position adjustments for lines */
@@ -26,7 +24,7 @@ $line-gap-to-circle: 4px;
 $line-width: 2px;
 $icon-size: 30px;
 
-#{$WIZARD_STEP_SELECTOR} {
+.wizard-step {
     display: grid;
     grid-template:
         "wizard-step__line-up wizard-step__step-of" min-content

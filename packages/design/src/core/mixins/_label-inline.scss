@@ -2,15 +2,14 @@
 @use "../mixins/breakpoints";
 @use "../utils";
 
-$LABEL_SELECTOR: ".label" !default;
-
 @mixin label-inline() {
     @include breakpoints.breakpoint-up(md) {
         margin-bottom: utils.densify(size.$margin-075);
         flex-direction: row;
         justify-content: flex-start;
         width: auto;
-        #{$LABEL_SELECTOR} {
+
+        .label {
             width: auto;
             margin-right: size.$margin-100;
             padding-top: utils.densify(size.$padding-050);

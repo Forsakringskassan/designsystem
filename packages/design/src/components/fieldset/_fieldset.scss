@@ -2,9 +2,7 @@
 @use "../../core/config-variables";
 @use "../../core/size";
 
-$FIELDSET_SELECTOR: ".fieldset" !default;
-
-#{$FIELDSET_SELECTOR} {
+.fieldset {
     border: 0;
     margin: 0 0 core.densify(var(--f-margin-component-bottom));
     min-width: 0;

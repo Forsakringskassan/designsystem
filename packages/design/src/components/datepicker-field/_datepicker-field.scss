@@ -4,14 +4,11 @@
 @use "../../core/mixins/breakpoints";
 @use "variables" as *;
 
-$DATEPICKER_FIELD_SELECTOR: ".datepicker-field" !default;
-$POPUP_SELECTOR: ".popup" !default;
-
 // 40px = popup spacing (20px) * 2
 $popup-spacing: 40px;
 $calendar-width: calc(100vw - #{$popup-spacing});
 
-#{$DATEPICKER_FIELD_SELECTOR} {
+.datepicker-field {
     &__button {
         background: transparent;
         border: 0;
@@ -58,14 +55,14 @@ $calendar-width: calc(100vw - #{$popup-spacing});
     }
 }
 
-#{$POPUP_SELECTOR}--overlay #{$DATEPICKER_FIELD_SELECTOR} {
+.popup--overlay .datepicker-field {
     &__popup {
         width: $calendar-width;
         max-width: 28rem;
     }
 }
 
-#{$POPUP_SELECTOR}--inline #{$DATEPICKER_FIELD_SELECTOR} {
+.popup--inline .datepicker-field {
     &__popup {
         width: 100%;
     }

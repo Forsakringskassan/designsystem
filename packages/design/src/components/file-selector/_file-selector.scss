@@ -1,9 +1,7 @@
 @use "../../core/mixins/focus" as *;
 @use "../../core/mixins/sr-only" as *;
 
-$FILE_SELECTOR_SELECTOR: ".file-selector" !default;
-
-#{$FILE_SELECTOR_SELECTOR} {
+.file-selector {
     svg {
         color: var(--f-icon-color-primary);
     }

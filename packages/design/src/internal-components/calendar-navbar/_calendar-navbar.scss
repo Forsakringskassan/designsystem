@@ -1,11 +1,10 @@
 @use "variables" as *;
 
-$CALENDAR_NAVBAR_SELECTOR: ".calendar-navbar" !default;
 $calendar-icon-padding: 5px;
 $calendar-icon-disabled-border-width: 1px;
 $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-disabled-border-width);
 
-#{$CALENDAR_NAVBAR_SELECTOR} {
+.calendar-navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

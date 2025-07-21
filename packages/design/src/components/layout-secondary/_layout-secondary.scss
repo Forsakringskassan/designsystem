@@ -1,6 +1,5 @@
 @use "../z-index";
 
-$LAYOUT_SECONDARY_SELECTOR: ".layout-secondary" !default;
 $ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
 
 // parameters
@@ -20,7 +19,7 @@ $border-hover-secondary: #{$palette-color-bluebell-15};
 $border-dots-secondary: #{$palette-color-fk-black-50};
 $scrollbar-secondary: #{$palette-color-fk-black-50};
 
-#{$LAYOUT_SECONDARY_SELECTOR} {
+.layout-secondary {
     width: 100%;
     min-height: 100%;
 

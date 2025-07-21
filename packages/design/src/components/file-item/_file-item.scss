@@ -1,15 +1,12 @@
 @use "../anchor/anchor";
 @use "../../core/size";
 
-$FILE_ITEM_SELECTOR: ".file-item" !default;
-$FILE_LIST_ITEM_SELECTOR: ".file-item-list" !default;
-
-#{$FILE_LIST_ITEM_SELECTOR} {
+.file-item-list {
     list-style-type: none;
     padding-left: 0;
 }
 
-#{$FILE_ITEM_SELECTOR} {
+.file-item {
     .button--discrete {
         padding: 0;
         min-width: auto;

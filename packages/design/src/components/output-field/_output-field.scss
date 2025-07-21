@@ -1,9 +1,7 @@
 @use "../../core";
 @use "../../core/config-variables";
 
-$OUTPUT_FIELD_SELECTOR: ".output-field" !default;
-
-#{$OUTPUT_FIELD_SELECTOR} {
+.output-field {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

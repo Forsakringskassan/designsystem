@@ -2,7 +2,6 @@
 @use "../../core/mixins/breakpoints";
 @use "../../core/config-variables";
 
-$IFLEX_SELECTOR: ".iflex" !default;
 $iflex-base-gap: 0.25rem;
 
 %iflex {
@@ -45,7 +44,7 @@ $iflex-base-gap: 0.25rem;
     align-self: flex-end;
 }
 
-#{$IFLEX_SELECTOR} {
+.iflex {
     @extend %iflex;
 
     &__item {
@@ -79,20 +78,20 @@ $iflex-base-gap: 0.25rem;
     }
 }
 
-#{$IFLEX_SELECTOR}--collapse {
+.iflex--collapse {
     @include breakpoints.breakpoint-down(sm) {
         display: block;
     }
 }
 
-#{$IFLEX_SELECTOR}--wrap {
+.iflex--wrap {
     flex-wrap: wrap;
 }
 
-#{$IFLEX_SELECTOR}--float-right {
+.iflex--float-right {
     justify-content: flex-end;
 }
 
-#{$IFLEX_SELECTOR}--float-center {
+.iflex--float-center {
     justify-content: center;
 }

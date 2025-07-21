@@ -1,6 +1,4 @@
-$ANIMATE_EXPAND_SELECTOR: ".animate-expand" !default;
-
-#{$ANIMATE_EXPAND_SELECTOR} {
+.animate-expand {
     transition: var(--f-animation-expand-close);
     overflow: hidden;
     visibility: hidden;

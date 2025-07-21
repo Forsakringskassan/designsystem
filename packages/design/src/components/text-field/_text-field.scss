@@ -3,9 +3,7 @@
 @use "../../core/utils/functions" as *;
 @use "variables" as *;
 
-$TEXT_FIELD_SELECTOR: ".text-field" !default;
-
-#{$TEXT_FIELD_SELECTOR} {
+.text-field {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -90,12 +88,12 @@ $TEXT_FIELD_SELECTOR: ".text-field" !default;
     }
 
     &--error {
-        #{$TEXT_FIELD_SELECTOR}__input {
+        .text-field__input {
             border-color: $textfield-color-border-error;
         }
     }
 
-    &--search + #{$TEXT_FIELD_SELECTOR}__append-inner {
+    &--search + .text-field__append-inner {
         display: flex;
         justify-content: center;
         align-items: center;

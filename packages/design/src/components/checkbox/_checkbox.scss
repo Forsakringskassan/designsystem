@@ -5,14 +5,13 @@
 @use "variables" as *;
 
 $checkbox_label_offset: 0.1rem;
-$CHECKBOX_SELECTOR: ".checkbox" !default;
 
 %checkbox-icon {
     mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImNoZWNrYm94LWljb24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgogICAgICAgICB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHJlY3QgeD0iMy40NzQiIHk9IjkuMTk0IiBmaWxsPSIjM0M1NTkyIiB3aWR0aD0iMCIgaGVpZ2h0PSIwIi8+CjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTguMzc2LDE1LjAwNWMtMC40MTYsMC0wLjgzMi0wLjE1OC0xLjE0OS0wLjQ3NWwtMy4yNS0zLjI0M2MtMC42MzUtMC42MzQtMC42MzUtMS42NiwwLTIuMjkzCiAgICAgICAgYzAuNjM1LTAuNjMzLDEuNjYzLTAuNjMzLDIuMjk4LDBsMi4xMDEsMi4wOTdsNS4zNTEtNS4zNGMwLjYzNS0wLjYzNCwxLjY2My0wLjYzNCwyLjI5OCwwYzAuNjM1LDAuNjMzLDAuNjM1LDEuNjU5LDAsMi4yOTMKICAgICAgICBsLTYuNSw2LjQ4N0M5LjIwNywxNC44NDcsOC43OTIsMTUuMDA1LDguMzc2LDE1LjAwNXoiLz4KPC9zdmc+Cg==");
     mask-repeat: no-repeat;
 }
 
-#{$CHECKBOX_SELECTOR} {
+.checkbox {
     min-height: var(--f-height-medium);
     margin-bottom: core.densify(size.$margin-100);
 
@@ -87,7 +86,7 @@ $CHECKBOX_SELECTOR: ".checkbox" !default;
             color: GrayText;
         }
 
-        #{$CHECKBOX_SELECTOR}__label {
+        .checkbox__label {
             cursor: default;
 
             &::before {
@@ -105,7 +104,7 @@ $CHECKBOX_SELECTOR: ".checkbox" !default;
             }
         }
 
-        input[type="checkbox"]:checked + #{$CHECKBOX_SELECTOR}__label::after {
+        input[type="checkbox"]:checked + .checkbox__label::after {
             background-color: $checkbox-icon-color-content-disabled;
         }
     }
@@ -119,11 +118,11 @@ $CHECKBOX_SELECTOR: ".checkbox" !default;
         }
     }
 
-    input[type="checkbox"]:checked + #{$CHECKBOX_SELECTOR}__label::after {
+    input[type="checkbox"]:checked + .checkbox__label::after {
         opacity: 1;
     }
 
-    input[type="checkbox"]:focus + #{$CHECKBOX_SELECTOR}__label {
+    input[type="checkbox"]:focus + .checkbox__label {
         @include focus-indicator;
     }
 }

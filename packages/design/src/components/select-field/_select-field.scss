@@ -4,9 +4,7 @@
 @use "../../core/utils/functions" as *;
 @use "variables" as *;
 
-$SELECT_FIELD_SELECTOR: ".select-field" !default;
-
-#{$SELECT_FIELD_SELECTOR} {
+.select-field {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -23,7 +21,7 @@ $SELECT_FIELD_SELECTOR: ".select-field" !default;
     }
 
     &--table-error {
-        #{$SELECT_FIELD_SELECTOR}__select {
+        .select-field__select {
             padding-right: calc(var(--f-icon-size-large) + 2.25rem);
         }
     }
@@ -82,7 +80,7 @@ $SELECT_FIELD_SELECTOR: ".select-field" !default;
         text-align: center;
     }
     &--error {
-        #{$SELECT_FIELD_SELECTOR}__select {
+        .select-field__select {
             border-color: $selectfield-color-border-error;
         }
     }

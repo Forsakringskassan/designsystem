@@ -3,10 +3,9 @@
 @use "../../core/config-variables" as vars;
 @use "../z-index";
 
-$LAYOUT_APPLICATION_SELECTOR: ".layout-application-template" !default;
 $ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
 
-#{$LAYOUT_APPLICATION_SELECTOR} {
+.layout-application-template {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -34,17 +33,17 @@ $ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
     }
 }
 
-#{$LAYOUT_APPLICATION_SELECTOR}__body {
+.layout-application-template__body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
 }
 
-#{$LAYOUT_APPLICATION_SELECTOR}__body > div {
+.layout-application-template__body > div {
     height: 100%;
 }
 
-#{$LAYOUT_APPLICATION_SELECTOR}__html {
+.layout-application-template__html {
     height: 100%;
 }
 

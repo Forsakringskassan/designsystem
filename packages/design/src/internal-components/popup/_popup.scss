@@ -2,9 +2,7 @@
 @use "../../components/z-index";
 @use "../../core/config-variables";
 
-$POPUP_SELECTOR: ".popup" !default;
-
-#{$POPUP_SELECTOR} {
+.popup {
     &--overlay {
         position: absolute;
 
@@ -12,7 +10,7 @@ $POPUP_SELECTOR: ".popup" !default;
         // the page height when teleporting to bottom of body.
         top: 0;
 
-        #{$POPUP_SELECTOR}__wrapper {
+        .popup__wrapper {
             left: -10000px;
             max-width: fit-content;
             border-radius: var(--f-border-radius-small);
@@ -25,7 +23,7 @@ $POPUP_SELECTOR: ".popup" !default;
     &--inline {
         position: static;
 
-        #{$POPUP_SELECTOR}__wrapper {
+        .popup__wrapper {
             box-sizing: border-box;
             margin-top: size.$margin-050;
             margin-bottom: size.$margin-050;

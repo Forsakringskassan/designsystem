@@ -2,9 +2,7 @@
 @use "../../core/mixins/breakpoints";
 @use "../../core/config-variables";
 
-$IPOPUPMENU_SELECTOR: ".ipopupmenu" !default;
-
-#{$IPOPUPMENU_SELECTOR} {
+.ipopupmenu {
     background-color: var(--f-background-popupmenu);
 
     &__list {
@@ -30,7 +28,7 @@ $IPOPUPMENU_SELECTOR: ".ipopupmenu" !default;
     }
 }
 
-#{$IPOPUPMENU_SELECTOR}--vertical {
+.ipopupmenu--vertical {
     .ipopupmenu__list {
         display: block;
 
