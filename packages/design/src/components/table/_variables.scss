@@ -1,1 +1,14 @@
-// stylelint-disable no-empty-source -- placeholder file
+// Caption
+$table-caption-background: transparent !default;
+$table-caption-foreground: var(--f-text-color-default) !default;
+
+// Header
+$table-header-background: var(--f-background-grid-header) !default;
+$table-header-foreground: var(--f-text-color-default) !default;
+$table-header-border: 2px solid var(--f-border-color-grid-header) !default;
+
+// Rows
+$table-row-background: var(--f-background-grid-default) !default;
+$table-row-background-alt: var(--f-background-grid-striped) !default;
+$table-row-foreground: var(--f-text-color-default) !default;
+$table-row-separator: 1px solid var(--f-border-color-grid) !default;

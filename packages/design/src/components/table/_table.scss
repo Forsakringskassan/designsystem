@@ -1,21 +1,15 @@
 @use "../../core";
 @use "../../core/size";
+@use "variables" as *;
 
 // General variables
 $table-font-size: var(--f-font-size-standard) !default;
 $table-focus-size: 2px !default;
 $table-margin: 0 0 core.densify(var(--f-margin-component-bottom)) !default;
 
-// Caption
-$table-caption-background: transparent !default;
-$table-caption-foreground: var(--f-text-color-default) !default;
-
 // Header
-$table-header-background: var(--f-background-grid-header) !default;
-$table-header-foreground: var(--f-text-color-default) !default;
 $table-header-separator: 1px solid var(--f-border-color-grid) !default;
 $table-header-padding: core.densify(size.$padding-025) size.$padding-050 !default;
-$table-header-border: 2px solid var(--f-border-color-grid-header) !default;
 $table-header-font-weight: var(--f-font-weight-medium) !default;
 
 // Column description
@@ -24,10 +18,6 @@ $table-description-background: transparent !default;
 $table-description-font-weight: var(--f-font-weight-normal) !default;
 
 // Rows
-$table-row-background: var(--f-background-grid-default) !default;
-$table-row-background-alt: var(--f-background-grid-striped) !default;
-$table-row-foreground: var(--f-text-color-default) !default;
-$table-row-separator: 1px solid var(--f-border-color-grid) !default;
 $table-row-font-weight: var(--f-font-weight-normal) !default;
 $table-row-line-height: core.densify(1.5rem) !default;
 
