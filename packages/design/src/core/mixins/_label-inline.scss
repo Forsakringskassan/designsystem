@@ -1,6 +1,6 @@
 @use "../size";
 @use "../mixins/breakpoints";
-@use "../utils/all" as utils;
+@use "../utils";
 
 $LABEL_SELECTOR: ".label" !default;
 

@@ -1,5 +1,5 @@
-@use "core/all" as core;
-@use "components/all" as components;
-@use "internal-components/all" as internal-components;
+@use "core";
+@use "components";
+@use "internal-components";
 
 @forward "core" show densify, focus-indicator;
