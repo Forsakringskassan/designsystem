@@ -1,16 +1,16 @@
 // TEXT
-$checkbox-color-text-disabled: var(--fkds-color-text-disabled);
+$checkbox-color-text-disabled: var(--fkds-color-text-disabled) !default;
 
 // ICON
-$checkbox-icon-color-content: var(--fkds-icon-color-content-inverted);
-$checkbox-icon-color-content-disabled: var(--fkds-icon-color-content-disabled);
+$checkbox-icon-color-content: var(--fkds-icon-color-content-inverted) !default;
+$checkbox-icon-color-content-disabled: var(--fkds-icon-color-content-disabled) !default;
 
 // BACKGROUND
-$checkbox-color-background-default: var(--fkds-color-background-primary);
-$checkbox-color-background-selected: var(--fkds-color-select-background-primary-default);
-$checkbox-color-background-disabled: var(--fkds-color-background-disabled);
+$checkbox-color-background-default: var(--fkds-color-background-primary) !default;
+$checkbox-color-background-selected: var(--fkds-color-select-background-primary-default) !default;
+$checkbox-color-background-disabled: var(--fkds-color-background-disabled) !default;
 
 // BORDER
-$checkbox-color-border-default: var(--fkds-color-border-primary);
-$checkbox-color-border-selected: transparent;
-$checkbox-color-border-disabled: var(--fkds-color-border-disabled);
+$checkbox-color-border-default: var(--fkds-color-border-primary) !default;
+$checkbox-color-border-selected: transparent !default;
+$checkbox-color-border-disabled: var(--fkds-color-border-disabled) !default;
