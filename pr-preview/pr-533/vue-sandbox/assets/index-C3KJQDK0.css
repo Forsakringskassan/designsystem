@@ -2637,7 +2637,6 @@ input[type=search]:focus,
 }
 
 .entrypoint {
-  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
   background-color: var(--fkds-color-action-background-primary-default);
   color: var(--fkds-color-action-text-inverted-default);
   border: var(--f-border-width-medium) solid transparent;
@@ -3944,7 +3943,6 @@ input[type=search]:focus,
 }
 @media (width <= 1280px) {
   .layout-secondary__secondary {
-    /* stylelint-disable-next-line color-function-notation, alpha-value-notation -- technical debt */
     box-shadow: 4px 0 2px rgba(0, 0, 0, 0.5), -4px 0 2px rgba(0, 0, 0, 0.5);
   }
 }
