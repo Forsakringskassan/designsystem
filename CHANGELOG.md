@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 6.14.0 (2025-07-22)
+
+### Features
+
+* **@fkui/design:** expose table scss variables (refs SFKUI-6500) 137e28a
+* **@fkui/design:** forward sass variables from components (refs SFKUI-6500) 12c4c7d
+* **@fkui/vue:** remove `FFileItem` icon stack (fixes SFKUI-7249) cd47c24
+
+### Bug Fixes
+
+* **@fkui/design:** fix configuring `@fkui/design` with sass `[@use](undefined/use) .. with` (refs SFKUI-6500) 1a8cd22, closes #582
+* **@fkui/design:** unnecessary horizontal scroll bar shown for fieldsets with tooltips (fixes SFKUI-7292) 78e2efb, closes #544
+* **@fkui/vue:** fix `FSortFilterDataset` focus on clear search (fixes SFKUI-7080) 705a1a4
+* **deps:** update dependency i18next to v25.3.1 7ce8969
+* **deps:** update dependency i18next to v25.3.2 675bbe5
+
 ## 6.13.0 (2025-07-07)
 
 ### Features
