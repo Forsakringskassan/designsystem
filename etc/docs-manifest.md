@@ -159,6 +159,7 @@ functions/functions/ValidationErrorMessageBuilder/build.html
 functions/functions/ValidationErrorMessageBuilder/create.html
 functions/functions/ValidationErrorMessageBuilder/map-combined.html
 functions/functions/ValidationErrorMessageBuilder/map.html
+functions/guard-set.html
 functions/helpers/accessibility.html
 functions/helpers/densify.html -> functions/sass/densify.html
 functions/helpers/index.html
