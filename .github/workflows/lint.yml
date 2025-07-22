@@ -50,3 +50,4 @@ jobs:
               uses: ext/npm-pkg-lint@master
               with:
                   folders: packages/*
+                  allow-dependencies: fk-icons
