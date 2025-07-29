@@ -174,7 +174,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx(() => [
       _createVNode(_component_f_fieldset, { name: "radio-orientation" }, {
         label: _withCtx(() => _cache[9] || (_cache[9] = [
-          _createTextVNode(" Placering ")
+          _createTextVNode(
+            " Placering ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
@@ -183,7 +187,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: false
           }, {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
-              _createTextVNode(" Vertikalt (standard)")
+              _createTextVNode(
+                " Vertikalt (standard)",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [10]
@@ -194,7 +202,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
-              _createTextVNode(" Horisontellt ")
+              _createTextVNode(
+                " Horisontellt ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [11]
@@ -209,7 +221,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[12] || (_cache[12] = [
-          _createTextVNode(" Ram ")
+          _createTextVNode(
+            " Ram ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [12]
@@ -220,7 +236,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[13] || (_cache[13] = [
-          _createTextVNode(" F\xF6rvald radioknapp ")
+          _createTextVNode(
+            " F\xF6rvald radioknapp ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [13]
@@ -231,7 +251,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[14] || (_cache[14] = [
-          _createTextVNode(" Inaktiverad radioknapp ")
+          _createTextVNode(
+            " Inaktiverad radioknapp ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [14]
@@ -242,14 +266,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[15] || (_cache[15] = [
-          _createTextVNode(" Obligatoriskt val ")
+          _createTextVNode(
+            " Obligatoriskt val ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [15]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "radio-label" }, {
         label: _withCtx(() => _cache[16] || (_cache[16] = [
-          _createTextVNode(" Etiketten ")
+          _createTextVNode(
+            " Etiketten ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
@@ -258,7 +290,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[17] || (_cache[17] = [
-              _createTextVNode(" Tooltip ")
+              _createTextVNode(
+                " Tooltip ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [17]
@@ -269,7 +305,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[18] || (_cache[18] = [
-              _createTextVNode(" Hj\xE4lptext ")
+              _createTextVNode(
+                " Hj\xE4lptext ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [18]
@@ -279,7 +319,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.showDetails = $event)
           }, {
             label: _withCtx(() => _cache[19] || (_cache[19] = [
-              _createTextVNode(" Ut\xF6kad etikett ")
+              _createTextVNode(
+                " Ut\xF6kad etikett ",
+                -1
+                /* CACHED */
+              )
             ])),
             default: _withCtx(() => [
               _cache[20] || (_cache[20] = _createElementVNode(

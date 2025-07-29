@@ -49,7 +49,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "input-width": "md-6"
   }, {
     default: _withCtx(() => _cache[1] || (_cache[1] = [
-      _createTextVNode(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi mollis pulvinar. ")
+      _createTextVNode(
+        " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi mollis pulvinar. ",
+        -1
+        /* CACHED */
+      )
     ])),
     _: 1,
     __: [1]

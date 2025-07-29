@@ -56,7 +56,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     selectable: ""
   }, {
     caption: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Tabell ")
+      _createTextVNode(
+        " Tabell ",
+        -1
+        /* CACHED */
+      )
     ])),
     "checkbox-description": _withCtx(({ row }) => [
       _createTextVNode(

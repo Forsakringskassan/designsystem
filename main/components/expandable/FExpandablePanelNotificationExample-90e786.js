@@ -59,10 +59,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onToggle: _ctx.onToggle1
     }, {
       title: _withCtx(() => _cache[0] || (_cache[0] = [
-        _createTextVNode(" Titel med en notifiering ")
+        _createTextVNode(
+          " Titel med en notifiering ",
+          -1
+          /* CACHED */
+        )
       ])),
       default: _withCtx(() => _cache[1] || (_cache[1] = [
-        _createTextVNode(" Inneh\xE5ll ")
+        _createTextVNode(
+          " Inneh\xE5ll ",
+          -1
+          /* CACHED */
+        )
       ])),
       _: 1
       /* STABLE */
@@ -73,10 +81,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onToggle: _ctx.onToggle2
     }, {
       title: _withCtx(() => _cache[2] || (_cache[2] = [
-        _createTextVNode(" Titel med tv\xE5 notifieringar ")
+        _createTextVNode(
+          " Titel med tv\xE5 notifieringar ",
+          -1
+          /* CACHED */
+        )
       ])),
       default: _withCtx(() => _cache[3] || (_cache[3] = [
-        _createTextVNode(" Inneh\xE5ll ")
+        _createTextVNode(
+          " Inneh\xE5ll ",
+          -1
+          /* CACHED */
+        )
       ])),
       _: 1
       /* STABLE */

@@ -145,7 +145,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               ),
               _createElementVNode("div", _hoisted_1, [
                 _createElementVNode("div", _hoisted_2, [
-                  _cache[1] || (_cache[1] = _createTextVNode(" Land: ")),
+                  _cache[1] || (_cache[1] = _createTextVNode(
+                    " Land: ",
+                    -1
+                    /* CACHED */
+                  )),
                   _createElementVNode(
                     "em",
                     null,
@@ -160,7 +164,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     -1
                     /* CACHED */
                   )),
-                  _cache[3] || (_cache[3] = _createTextVNode(" Beskrivning: ")),
+                  _cache[3] || (_cache[3] = _createTextVNode(
+                    " Beskrivning: ",
+                    -1
+                    /* CACHED */
+                  )),
                   _createElementVNode(
                     "em",
                     null,
@@ -253,7 +261,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         default: _withCtx(() => _cache[5] || (_cache[5] = [
-          _createTextVNode(" Namn ")
+          _createTextVNode(
+            " Namn ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [5]
@@ -274,7 +286,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
-          _createTextVNode(" Land ")
+          _createTextVNode(
+            " Land ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [6]
@@ -294,7 +310,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.description = $event
       }, {
         default: _withCtx(() => _cache[7] || (_cache[7] = [
-          _createTextVNode(" Beskrivning ")
+          _createTextVNode(
+            " Beskrivning ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [7]
@@ -314,7 +334,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         label: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Namn ")
+          _createTextVNode(
+            " Namn ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createTextVNode(
@@ -332,7 +356,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         default: _withCtx(() => _cache[9] || (_cache[9] = [
-          _createTextVNode(" Land ")
+          _createTextVNode(
+            " Land ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [9]

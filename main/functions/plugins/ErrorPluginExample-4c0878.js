@@ -57,7 +57,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "button",
       onClick: _cache[0] || (_cache[0] = ($event) => _ctx.generateError())
     }, _cache[2] || (_cache[2] = [
-      _createTextVNode(" Fel ")
+      _createTextVNode(
+        " Fel ",
+        -1
+        /* CACHED */
+      )
     ]))), [
       [_directive_test, "generate-error"]
     ]),
@@ -66,7 +70,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "button",
       onClick: _cache[1] || (_cache[1] = ($event) => _ctx.generateWarning())
     }, _cache[3] || (_cache[3] = [
-      _createTextVNode(" Varning ")
+      _createTextVNode(
+        " Varning ",
+        -1
+        /* CACHED */
+      )
     ]))), [
       [_directive_test, "generate-warning"]
     ])

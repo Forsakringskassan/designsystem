@@ -158,7 +158,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx(() => [
       _createVNode(_component_f_fieldset, { name: "styling" }, {
         label: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Styling ")
+          _createTextVNode(
+            " Styling ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
@@ -167,7 +171,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[9] || (_cache[9] = [
-              _createTextVNode(" Zebrarandig ")
+              _createTextVNode(
+                " Zebrarandig ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [9]
@@ -178,7 +186,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
-              _createTextVNode(" Radrubriker ")
+              _createTextVNode(
+                " Radrubriker ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [10]
@@ -189,7 +201,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
-              _createTextVNode(" Kolumnbeskrivnig ")
+              _createTextVNode(
+                " Kolumnbeskrivnig ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [11]
@@ -200,7 +216,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[12] || (_cache[12] = [
-              _createTextVNode(" Dold caption ")
+              _createTextVNode(
+                " Dold caption ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [12]
@@ -211,7 +231,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[13] || (_cache[13] = [
-              _createTextVNode(" Horisontal skroll ")
+              _createTextVNode(
+                " Horisontal skroll ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [13]
@@ -222,7 +246,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }),
       _createVNode(_component_f_fieldset, { name: "interaktion" }, {
         label: _withCtx(() => _cache[14] || (_cache[14] = [
-          _createTextVNode(" Interaktion ")
+          _createTextVNode(
+            " Interaktion ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
@@ -231,7 +259,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[15] || (_cache[15] = [
-              _createTextVNode(" Tom tabell ")
+              _createTextVNode(
+                " Tom tabell ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [15]
@@ -241,7 +273,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             name: "radio-empty-text"
           }, {
             label: _withCtx(() => _cache[16] || (_cache[16] = [
-              _createTextVNode(" Meddelande f\xF6r tom tabell ")
+              _createTextVNode(
+                " Meddelande f\xF6r tom tabell ",
+                -1
+                /* CACHED */
+              )
             ])),
             default: _withCtx(() => [
               _createVNode(_component_f_radio_field, {
@@ -250,7 +286,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 value: false
               }, {
                 default: _withCtx(() => _cache[17] || (_cache[17] = [
-                  _createTextVNode(" Standardmeddelande ")
+                  _createTextVNode(
+                    " Standardmeddelande ",
+                    -1
+                    /* CACHED */
+                  )
                 ])),
                 _: 1,
                 __: [17]
@@ -261,7 +301,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 value: true
               }, {
                 default: _withCtx(() => _cache[18] || (_cache[18] = [
-                  _createTextVNode(" Eget meddelande ")
+                  _createTextVNode(
+                    " Eget meddelande ",
+                    -1
+                    /* CACHED */
+                  )
                 ])),
                 _: 1,
                 __: [18]

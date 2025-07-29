@@ -54,10 +54,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onToggle: _ctx.onToggle
   }, {
     title: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Titel ")
+      _createTextVNode(
+        " Titel ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(() => _cache[1] || (_cache[1] = [
-      _createTextVNode(" Inneh\xE5ll "),
+      _createTextVNode(
+        " Inneh\xE5ll ",
+        -1
+        /* CACHED */
+      ),
       _createElementVNode(
         "p",
         null,
