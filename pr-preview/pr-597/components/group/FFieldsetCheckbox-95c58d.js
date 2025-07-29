@@ -49,7 +49,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "group-name-checkbox" }, {
     label: _withCtx(() => _cache[5] || (_cache[5] = [
-      _createTextVNode(" Vilka dagar i veckan vill du bli kontaktad? ")
+      _createTextVNode(
+        " Vilka dagar i veckan vill du bli kontaktad? ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(() => [
       _createVNode(_component_f_checkbox_field, {
@@ -59,7 +63,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "mandag"
       }, {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
-          _createTextVNode(" M\xE5ndag ")
+          _createTextVNode(
+            " M\xE5ndag ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [6]
@@ -71,7 +79,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "tisdag"
       }, {
         default: _withCtx(() => _cache[7] || (_cache[7] = [
-          _createTextVNode(" Tisdag ")
+          _createTextVNode(
+            " Tisdag ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [7]
@@ -83,7 +95,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "onsdag"
       }, {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Onsdag ")
+          _createTextVNode(
+            " Onsdag ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [8]
@@ -95,7 +111,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "torsdag"
       }, {
         default: _withCtx(() => _cache[9] || (_cache[9] = [
-          _createTextVNode(" Torsdag ")
+          _createTextVNode(
+            " Torsdag ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [9]
@@ -107,7 +127,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "fredag"
       }, {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
-          _createTextVNode(" Fredag ")
+          _createTextVNode(
+            " Fredag ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [10]

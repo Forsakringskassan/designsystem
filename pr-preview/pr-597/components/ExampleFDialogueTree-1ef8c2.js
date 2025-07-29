@@ -120,10 +120,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _Fragment,
           { key: 0 },
           [
-            _cache[2] || (_cache[2] = _createTextVNode(" formA ")),
+            _cache[2] || (_cache[2] = _createTextVNode(
+              " formA ",
+              -1
+              /* CACHED */
+            )),
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
               default: _withCtx(() => _cache[1] || (_cache[1] = [
-                _createTextVNode(" Field 1 ")
+                _createTextVNode(
+                  " Field 1 ",
+                  -1
+                  /* CACHED */
+                )
               ])),
               _: 1,
               __: [1]
@@ -146,10 +154,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _Fragment,
           { key: 1 },
           [
-            _cache[4] || (_cache[4] = _createTextVNode(" formB ")),
+            _cache[4] || (_cache[4] = _createTextVNode(
+              " formB ",
+              -1
+              /* CACHED */
+            )),
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
               default: _withCtx(() => _cache[3] || (_cache[3] = [
-                _createTextVNode(" Field 1 ")
+                _createTextVNode(
+                  " Field 1 ",
+                  -1
+                  /* CACHED */
+                )
               ])),
               _: 1,
               __: [3]

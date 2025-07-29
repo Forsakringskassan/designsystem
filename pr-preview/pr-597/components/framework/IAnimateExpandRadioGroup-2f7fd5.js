@@ -50,7 +50,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "more-questions" }, {
     label: _withCtx(() => _cache[4] || (_cache[4] = [
-      _createTextVNode(" Vill du svar p\xE5 mer fr\xE5gor? ")
+      _createTextVNode(
+        " Vill du svar p\xE5 mer fr\xE5gor? ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(() => [
       _createVNode(_component_f_radio_field, {
@@ -59,7 +63,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[5] || (_cache[5] = [
-          _createTextVNode(" Ja tack ")
+          _createTextVNode(
+            " Ja tack ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [5]
@@ -71,7 +79,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             name: "are-you-sure"
           }, {
             label: _withCtx(() => _cache[6] || (_cache[6] = [
-              _createTextVNode(" \xC4r du s\xE4ker? ")
+              _createTextVNode(
+                " \xC4r du s\xE4ker? ",
+                -1
+                /* CACHED */
+              )
             ])),
             default: _withCtx(() => [
               _createVNode(_component_f_radio_field, {
@@ -80,7 +92,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 value: true
               }, {
                 default: _withCtx(() => _cache[7] || (_cache[7] = [
-                  _createTextVNode(" Ja, visa mer ")
+                  _createTextVNode(
+                    " Ja, visa mer ",
+                    -1
+                    /* CACHED */
+                  )
                 ])),
                 _: 1,
                 __: [7]
@@ -89,7 +105,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 default: _withCtx(() => [
                   _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { class: "indent" }, {
                     default: _withCtx(() => _cache[8] || (_cache[8] = [
-                      _createTextVNode(" Vad tyckte du? ")
+                      _createTextVNode(
+                        " Vad tyckte du? ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [8]
@@ -111,7 +131,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 value: false
               }, {
                 default: _withCtx(() => _cache[9] || (_cache[9] = [
-                  _createTextVNode(" Nej tack ")
+                  _createTextVNode(
+                    " Nej tack ",
+                    -1
+                    /* CACHED */
+                  )
                 ])),
                 _: 1,
                 __: [9]
@@ -130,7 +154,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: false
       }, {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
-          _createTextVNode(" Nej tack ")
+          _createTextVNode(
+            " Nej tack ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [10]

@@ -96,7 +96,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx(() => [
       _createVNode(_component_f_fieldset, { name: "radio-link-type" }, {
         label: _withCtx(() => _cache[5] || (_cache[5] = [
-          _createTextVNode(" Typ av l\xE4nk ")
+          _createTextVNode(
+            " Typ av l\xE4nk ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
@@ -105,7 +109,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: "standard"
           }, {
             default: _withCtx(() => _cache[6] || (_cache[6] = [
-              _createTextVNode(" Standard ")
+              _createTextVNode(
+                " Standard ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [6]
@@ -116,7 +124,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: "document"
           }, {
             default: _withCtx(() => _cache[7] || (_cache[7] = [
-              _createTextVNode(" Dokument ")
+              _createTextVNode(
+                " Dokument ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [7]
@@ -127,7 +139,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: "external"
           }, {
             default: _withCtx(() => _cache[8] || (_cache[8] = [
-              _createTextVNode(" Ny flik ")
+              _createTextVNode(
+                " Ny flik ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [8]
@@ -142,7 +158,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.fileType = $event)
       }, {
         label: _withCtx(() => _cache[9] || (_cache[9] = [
-          _createTextVNode(" Filtyp ")
+          _createTextVNode(
+            " Filtyp ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[10] || (_cache[10] = _createElementVNode(
@@ -176,7 +196,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[13] || (_cache[13] = [
-          _createTextVNode(" Diskret l\xE4nk ")
+          _createTextVNode(
+            " Diskret l\xE4nk ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [13]

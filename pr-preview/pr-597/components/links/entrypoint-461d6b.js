@@ -48,7 +48,11 @@ var _hoisted_1 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createElementBlock("a", _hoisted_1, [
-    _cache[0] || (_cache[0] = _createTextVNode(" Ans\xF6k om hundbidrag ")),
+    _cache[0] || (_cache[0] = _createTextVNode(
+      " Ans\xF6k om hundbidrag ",
+      -1
+      /* CACHED */
+    )),
     _cache[1] || (_cache[1] = _createElementVNode(
       "span",
       { class: "sr-only" },

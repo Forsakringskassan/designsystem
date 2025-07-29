@@ -44,7 +44,11 @@ var _hoisted_1 = { class: "red" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_format = _resolveDirective("format");
   return _openBlock(), _createElementBlock("span", null, [
-    _cache[0] || (_cache[0] = _createTextVNode("Julafton intr\xE4ffar den ")),
+    _cache[0] || (_cache[0] = _createTextVNode(
+      "Julafton intr\xE4ffar den ",
+      -1
+      /* CACHED */
+    )),
     _withDirectives(_createElementVNode(
       "span",
       _hoisted_1,
@@ -54,7 +58,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), [
       [_directive_format, $setup.myText, "text"]
     ]),
-    _cache[1] || (_cache[1] = _createTextVNode(" varje \xE5r."))
+    _cache[1] || (_cache[1] = _createTextVNode(
+      " varje \xE5r.",
+      -1
+      /* CACHED */
+    ))
   ]);
 }
 exampleComponent.render = render;

@@ -190,7 +190,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   onClick: ($event) => updateItem(row)
                 }, {
                   default: _withCtx(() => [
-                    _cache[2] || (_cache[2] = _createTextVNode(" \xC4ndra ")),
+                    _cache[2] || (_cache[2] = _createTextVNode(
+                      " \xC4ndra ",
+                      -1
+                      /* CACHED */
+                    )),
                     _createElementVNode(
                       "span",
                       _hoisted_1,
@@ -221,7 +225,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode(" Namn ")
+          _createTextVNode(
+            " Namn ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [3]

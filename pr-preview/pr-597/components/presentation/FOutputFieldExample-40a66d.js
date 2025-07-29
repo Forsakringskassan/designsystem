@@ -52,7 +52,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.number1 = $event)
     }, {
       default: _withCtx(() => _cache[2] || (_cache[2] = [
-        _createTextVNode(" Nummer 1 ")
+        _createTextVNode(
+          " Nummer 1 ",
+          -1
+          /* CACHED */
+        )
       ])),
       _: 1,
       __: [2]
@@ -70,7 +74,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.number2 = $event)
     }, {
       default: _withCtx(() => _cache[3] || (_cache[3] = [
-        _createTextVNode(" Nummer 2 ")
+        _createTextVNode(
+          " Nummer 2 ",
+          -1
+          /* CACHED */
+        )
       ])),
       _: 1,
       __: [3]
@@ -87,7 +95,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       for: "one two"
     }, {
       label: _withCtx(() => _cache[4] || (_cache[4] = [
-        _createTextVNode(" Summa ")
+        _createTextVNode(
+          " Summa ",
+          -1
+          /* CACHED */
+        )
       ])),
       tooltip: _withCtx(() => [
         _createVNode(_component_f_tooltip, {
@@ -95,10 +107,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "header-tag": "h2"
         }, {
           header: _withCtx(() => _cache[5] || (_cache[5] = [
-            _createTextVNode(" Mer om summa-f\xE4ltet ")
+            _createTextVNode(
+              " Mer om summa-f\xE4ltet ",
+              -1
+              /* CACHED */
+            )
           ])),
           body: _withCtx(() => _cache[6] || (_cache[6] = [
-            _createTextVNode(" Detta f\xE4ltet \xE4r en summa av nummer 1 och nummer 2. ")
+            _createTextVNode(
+              " Detta f\xE4ltet \xE4r en summa av nummer 1 och nummer 2. ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1
           /* STABLE */
