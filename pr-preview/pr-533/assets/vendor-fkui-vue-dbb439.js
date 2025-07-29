@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
@@ -5156,7 +5156,7 @@ function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
       key: 1,
       shrink: ""
     }, {
-      default: withCtx(() => _cache[0] || (_cache[0] = [createTextVNode("\xA0")])),
+      default: withCtx(() => _cache[0] || (_cache[0] = [createTextVNode("\xA0", -1)])),
       _: 1,
       __: [0]
     })) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_flex_item, {
@@ -18445,7 +18445,7 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
       grow: "",
       align: "center"
     }, {
-      default: withCtx(() => [createElementVNode("p", _hoisted_4$4, [renderSlot(_ctx.$slots, "default", {}, () => [_cache[1] || (_cache[1] = createTextVNode(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu "))])])]),
+      default: withCtx(() => [createElementVNode("p", _hoisted_4$4, [renderSlot(_ctx.$slots, "default", {}, () => [_cache[1] || (_cache[1] = createTextVNode(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu ", -1))])])]),
       _: 3
     })]),
     _: 3,

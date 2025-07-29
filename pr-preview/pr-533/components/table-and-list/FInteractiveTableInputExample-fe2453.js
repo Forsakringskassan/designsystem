@@ -76,7 +76,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "key-attribute": "id"
   }, {
     caption: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Justera betalningar ")
+      _createTextVNode(
+        " Justera betalningar ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(({ row }) => [
       _createVNode(
@@ -114,7 +118,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "onUpdate:modelValue": ($event) => row.date = $event
             }, {
               default: _withCtx(() => _cache[1] || (_cache[1] = [
-                _createTextVNode(" Utbetalningsdatum ")
+                _createTextVNode(
+                  " Utbetalningsdatum ",
+                  -1
+                  /* CACHED */
+                )
               ])),
               _: 2,
               __: [1]
@@ -147,7 +155,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "onUpdate:modelValue": ($event) => row.belopp = $event
             }, {
               default: _withCtx(() => _cache[2] || (_cache[2] = [
-                _createTextVNode(" Utbetalt belopp ")
+                _createTextVNode(
+                  " Utbetalt belopp ",
+                  -1
+                  /* CACHED */
+                )
               ])),
               _: 2,
               __: [2]

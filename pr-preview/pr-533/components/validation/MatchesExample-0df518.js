@@ -58,7 +58,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.reference = $event)
       }, {
         default: _withCtx(() => _cache[2] || (_cache[2] = [
-          _createTextVNode(" Referens ")
+          _createTextVNode(
+            " Referens ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [2]
@@ -71,7 +75,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.model = $event)
       }, {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode(" Inmatningsf\xE4lt ")
+          _createTextVNode(
+            " Inmatningsf\xE4lt ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [3]

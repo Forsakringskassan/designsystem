@@ -43,17 +43,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     logo: _withCtx(() => [
       _createVNode(_component_f_logo, { size: "small" }, {
         default: _withCtx(() => _cache[0] || (_cache[0] = [
-          _createTextVNode("Example logo text")
+          _createTextVNode(
+            "Example logo text",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [0]
       })
     ]),
     right: _withCtx(() => _cache[1] || (_cache[1] = [
-      _createTextVNode(" Namn Namnsson ")
+      _createTextVNode(
+        " Namn Namnsson ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(() => [
-      _cache[2] || (_cache[2] = _createTextVNode(" Exempelapplikation "))
+      _cache[2] || (_cache[2] = _createTextVNode(
+        " Exempelapplikation ",
+        -1
+        /* CACHED */
+      ))
     ]),
     _: 1,
     __: [2]

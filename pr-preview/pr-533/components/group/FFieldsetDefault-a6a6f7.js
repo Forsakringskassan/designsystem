@@ -47,7 +47,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "group-name-default" }, {
     label: _withCtx(() => _cache[2] || (_cache[2] = [
-      _createTextVNode(" Arbetar du deltid? ")
+      _createTextVNode(
+        " Arbetar du deltid? ",
+        -1
+        /* CACHED */
+      )
     ])),
     description: _withCtx(({ descriptionClass }) => [
       _createElementVNode(
@@ -66,10 +70,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "header-tag": "h2"
       }, {
         header: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode(" Lite allm\xE4n information ")
+          _createTextVNode(
+            " Lite allm\xE4n information ",
+            -1
+            /* CACHED */
+          )
         ])),
         body: _withCtx(() => _cache[4] || (_cache[4] = [
-          _createTextVNode(" H\xE4r kan man skriva lite extra information om man nu \xF6nskar det! ")
+          _createTextVNode(
+            " H\xE4r kan man skriva lite extra information om man nu \xF6nskar det! ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1
         /* STABLE */
@@ -83,7 +95,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[5] || (_cache[5] = [
-          _createTextVNode(" Ja ")
+          _createTextVNode(
+            " Ja ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [5]
@@ -95,7 +111,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: false
       }, {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
-          _createTextVNode(" Nej ")
+          _createTextVNode(
+            " Nej ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [6]

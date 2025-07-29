@@ -92,7 +92,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.fruits = $event)
     }, {
       label: _withCtx(() => _cache[1] || (_cache[1] = [
-        _createTextVNode(" V\xE4lj datak\xE4lla ")
+        _createTextVNode(
+          " V\xE4lj datak\xE4lla ",
+          -1
+          /* CACHED */
+        )
       ])),
       default: _withCtx(() => [
         _createElementVNode("option", { value: _ctx.emptyList }, "Inl\xE4st data utan rader", 8, _hoisted_1),

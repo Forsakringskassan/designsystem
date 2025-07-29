@@ -62,7 +62,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "Ja"
       }, {
         default: _withCtx(() => _cache[2] || (_cache[2] = [
-          _createTextVNode(" Jag \xE4r en ensam kryssruta s\xE5 min screenreadertext kommer att vara anpassad f\xF6r det. ")
+          _createTextVNode(
+            " Jag \xE4r en ensam kryssruta s\xE5 min screenreadertext kommer att vara anpassad f\xF6r det. ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [2]

@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-header.vue:FInteractiveTablePageObject-header-989bec.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-cell.vue:FInteractiveTablePageObject-cell-45214d.js
 import { defineComponent as _defineComponent } from "vue";
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FInteractiveTablePageObject-header",
+  __name: "FInteractiveTablePageObject-cell",
   setup(__props, { expose: __expose }) {
     __expose();
     const rows = [
@@ -51,9 +51,16 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createBlock($setup["FInteractiveTable"], { rows: $setup.rows }, {
+  return _openBlock(), _createBlock($setup["FInteractiveTable"], {
+    "key-attribute": "id",
+    rows: $setup.rows
+  }, {
     caption: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Tabell ")
+      _createTextVNode(
+        " Tabell ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(({ row }) => [
       _createVNode(
@@ -115,7 +122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-989bec"
+  selector: "#example-45214d"
 });
 export {
   render

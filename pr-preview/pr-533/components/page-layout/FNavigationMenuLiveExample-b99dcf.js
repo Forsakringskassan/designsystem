@@ -88,7 +88,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[1] || (_cache[1] = [
-          _createTextVNode(" Vertikal ")
+          _createTextVNode(
+            " Vertikal ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [1]
