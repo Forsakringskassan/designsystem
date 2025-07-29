@@ -82,7 +82,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onToggle: _ctx.onToggle
       }, {
         title: _withCtx(() => _cache[4] || (_cache[4] = [
-          _createTextVNode("Panel to be expanded")
+          _createTextVNode(
+            "Panel to be expanded",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
@@ -91,7 +95,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.field1 = $event)
           }, {
             default: _withCtx(() => _cache[5] || (_cache[5] = [
-              _createTextVNode(" Field1 ")
+              _createTextVNode(
+                " Field1 ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [5]
@@ -112,7 +120,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.field2 = $event)
           }, {
             default: _withCtx(() => _cache[6] || (_cache[6] = [
-              _createTextVNode(" Field2 ")
+              _createTextVNode(
+                " Field2 ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [6]

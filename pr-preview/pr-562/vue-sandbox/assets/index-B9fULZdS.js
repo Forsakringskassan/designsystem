@@ -28,7 +28,7 @@
   }
 })();
 /**
-* @vue/shared v3.5.17
+* @vue/shared v3.5.18
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -284,7 +284,7 @@ const stringifySymbol = (v, i = "") => {
   );
 };
 /**
-* @vue/reactivity v3.5.17
+* @vue/reactivity v3.5.18
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -1836,7 +1836,7 @@ function traverse(value, depth = Infinity, seen) {
   return value;
 }
 /**
-* @vue/runtime-core v3.5.17
+* @vue/runtime-core v3.5.18
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -3385,7 +3385,7 @@ const PublicInstanceProxyHandlers = {
 function useSlots() {
   return getContext().slots;
 }
-function getContext() {
+function getContext(calledFunctionName) {
   const i = getCurrentInstance();
   return i.setupContext || (i.setupContext = createSetupContext(i));
 }
@@ -3515,7 +3515,8 @@ function applyOptions(instance) {
       expose.forEach((key) => {
         Object.defineProperty(exposed, key, {
           get: () => publicThis[key],
-          set: (val) => publicThis[key] = val
+          set: (val) => publicThis[key] = val,
+          enumerable: true
         });
       });
     } else if (!instance.exposed) {
@@ -3875,7 +3876,7 @@ function provide(key, value) {
   }
 }
 function inject(key, defaultValue, treatDefaultAsFactory = false) {
-  const instance = currentInstance || currentRenderingInstance;
+  const instance = getCurrentInstance();
   if (instance || currentApp) {
     let provides = currentApp ? currentApp._context.provides : instance ? instance.parent == null || instance.ce ? instance.vnode.appContext && instance.vnode.appContext.provides : instance.parent.provides : void 0;
     if (provides && key in provides) {
@@ -4171,7 +4172,7 @@ function validatePropName(key) {
   }
   return false;
 }
-const isInternalKey = (key) => key[0] === "_" || key === "$stable";
+const isInternalKey = (key) => key === "_" || key === "__" || key === "_ctx" || key === "$stable";
 const normalizeSlotValue = (value) => isArray$2(value) ? value.map(normalizeVNode) : [normalizeVNode(value)];
 const normalizeSlot$1 = (key, rawSlot, ctx) => {
   if (rawSlot._n) {
@@ -4801,6 +4802,7 @@ function baseCreateRenderer(options, createHydrationFns) {
       if (!initialVNode.el) {
         const placeholder = instance.subTree = createVNode(Comment);
         processCommentNode(null, placeholder, container, anchor);
+        initialVNode.placeholder = placeholder.el;
       }
     } else {
       setupRenderEffect(
@@ -5213,7 +5215,11 @@ function baseCreateRenderer(options, createHydrationFns) {
       for (i = toBePatched - 1; i >= 0; i--) {
         const nextIndex = s2 + i;
         const nextChild = c2[nextIndex];
-        const anchor = nextIndex + 1 < l2 ? c2[nextIndex + 1].el : parentAnchor;
+        const anchorVNode = c2[nextIndex + 1];
+        const anchor = nextIndex + 1 < l2 ? (
+          // #13559, fallback to el placeholder for unresolved async component
+          anchorVNode.el || anchorVNode.placeholder
+        ) : parentAnchor;
         if (newIndexToOldIndexMap[i] === 0) {
           patch(
             null,
@@ -6221,6 +6227,7 @@ function cloneVNode(vnode, extraProps, mergeRef = false, cloneTransition = false
     suspense: vnode.suspense,
     ssContent: vnode.ssContent && cloneVNode(vnode.ssContent),
     ssFallback: vnode.ssFallback && cloneVNode(vnode.ssFallback),
+    placeholder: vnode.placeholder,
     el: vnode.el,
     anchor: vnode.anchor,
     ctx: vnode.ctx,
@@ -6637,9 +6644,9 @@ function h(type, propsOrChildren, children) {
     return createVNode(type, propsOrChildren, children);
   }
 }
-const version = "3.5.17";
+const version = "3.5.18";
 /**
-* @vue/runtime-dom v3.5.17
+* @vue/runtime-dom v3.5.18
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -15977,7 +15984,7 @@ function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
       key: 1,
       shrink: ""
     }, {
-      default: withCtx(() => _cache[0] || (_cache[0] = [createTextVNode(" ")])),
+      default: withCtx(() => _cache[0] || (_cache[0] = [createTextVNode(" ", -1)])),
       _: 1,
       __: [0]
     })) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_flex_item, {
@@ -23939,7 +23946,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.awesomeModel = $event)
     }, {
       default: withCtx(() => _cache[1] || (_cache[1] = [
-        createTextVNode(" Inmatningsfält. ")
+        createTextVNode(" Inmatningsfält. ", -1)
       ])),
       description: withCtx(({ descriptionClass }) => [
         createBaseVNode("span", {

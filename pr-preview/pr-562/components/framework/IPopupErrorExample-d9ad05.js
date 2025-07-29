@@ -84,7 +84,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "key-attribute": "id"
       }, {
         caption: _withCtx(() => _cache[0] || (_cache[0] = [
-          _createTextVNode(" PopupError example ")
+          _createTextVNode(
+            " PopupError example ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(({ row }) => [
           _createVNode(

@@ -147,7 +147,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   [
                     _createVNode($setup["FIcon"], { name: "pen" }),
                     _createElementVNode("span", null, [
-                      _cache[2] || (_cache[2] = _createTextVNode(" \xC4ndra ")),
+                      _cache[2] || (_cache[2] = _createTextVNode(
+                        " \xC4ndra ",
+                        -1
+                        /* CACHED */
+                      )),
                       hasError ? (_openBlock(), _createElementBlock("span", _hoisted_4, " p\xE5 kortet, det inneh\xE5ller fel ")) : _createCommentVNode("v-if", true)
                     ])
                   ],
