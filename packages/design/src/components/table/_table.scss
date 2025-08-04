@@ -142,6 +142,10 @@ $table-input-offset-horizontal: 0.25rem;
                 }
             }
         }
+
+        .table__column--numeric {
+            text-align: right;
+        }
     }
 
     tbody {
