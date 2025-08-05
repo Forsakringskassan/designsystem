@@ -76,6 +76,10 @@
         }
     }
 
+    &__icon {
+        line-height: var(--f-line-height-large);
+    }
+
     &__content {
         text-align: left;
     }
