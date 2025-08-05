@@ -76,6 +76,10 @@
         }
     }
 
+    &__content {
+        text-align: left;
+    }
+
     &--info {
         @include make-box-variant($messagebox-info-color-background, $messagebox-info-color-border);
     }
