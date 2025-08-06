@@ -68,7 +68,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
         body: _withCtx(() => _cache[1] || (_cache[1] = [
-          _createTextVNode(" Lorem ipsum dolor sit amet. ")
+          _createTextVNode(
+            " Lorem ipsum dolor sit amet. ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1
         /* STABLE */

@@ -52,10 +52,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _cache[1] || (_cache[1] = ($event) => $setup.emit("close"))
   }, {
     header: _withCtx(() => _cache[2] || (_cache[2] = [
-      _createTextVNode(" My awesome modal ")
+      _createTextVNode(
+        " My awesome modal ",
+        -1
+        /* CACHED */
+      )
     ])),
     content: _withCtx(() => _cache[3] || (_cache[3] = [
-      _createTextVNode(" My awesome content ")
+      _createTextVNode(
+        " My awesome content ",
+        -1
+        /* CACHED */
+      )
     ])),
     footer: _withCtx(() => [
       _createElementVNode("div", _hoisted_1, [

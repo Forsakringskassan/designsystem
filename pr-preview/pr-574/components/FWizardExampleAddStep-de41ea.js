@@ -122,7 +122,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 class: "button__icon",
                 name: "plus"
               }),
-              _cache[3] || (_cache[3] = _createTextVNode(" L\xE4gg till fruktkorg "))
+              _cache[3] || (_cache[3] = _createTextVNode(
+                " L\xE4gg till fruktkorg ",
+                -1
+                /* CACHED */
+              ))
             ])
           ]),
           _: 1,
@@ -145,7 +149,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   "onUpdate:modelValue": ($event) => item.namn = $event
                 }, {
                   default: _withCtx(() => [..._cache[5] || (_cache[5] = [
-                    _createTextVNode(" Namn p\xE5 presentkort ")
+                    _createTextVNode(
+                      " Namn p\xE5 presentkort ",
+                      -1
+                      /* CACHED */
+                    )
                   ])]),
                   _: 2,
                   __: [5]
@@ -165,7 +173,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   { id: "frukt-checkbox-group" },
                   {
                     label: _withCtx(() => [..._cache[6] || (_cache[6] = [
-                      _createTextVNode(" Vad ska ing\xE5 i din fruktkorg? ")
+                      _createTextVNode(
+                        " Vad ska ing\xE5 i din fruktkorg? ",
+                        -1
+                        /* CACHED */
+                      )
                     ])]),
                     default: _withCtx(() => [
                       (_openBlock(true), _createElementBlock(
@@ -212,7 +224,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   onClick: ($event) => _ctx.removeBasket(item)
                 }, [
                   _createVNode(_component_f_icon, { name: "trashcan" }),
-                  _cache[7] || (_cache[7] = _createTextVNode(" Ta bort fruktkorg "))
+                  _cache[7] || (_cache[7] = _createTextVNode(
+                    " Ta bort fruktkorg ",
+                    -1
+                    /* CACHED */
+                  ))
                 ], 8, _hoisted_1)
               ]),
               _: 2
@@ -246,7 +262,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* STABLE */
     }, 8, ["modelValue", "onCompleted", "onCancel"]),
     _createElementVNode("p", _hoisted_2, [
-      _cache[9] || (_cache[9] = _createTextVNode(" Ett steg kan \xF6ppnas programatiskt, t.ex. man klickar '\xE4ndra' i ett granska-steg. ")),
+      _cache[9] || (_cache[9] = _createTextVNode(
+        " Ett steg kan \xF6ppnas programatiskt, t.ex. man klickar '\xE4ndra' i ett granska-steg. ",
+        -1
+        /* CACHED */
+      )),
       _createElementVNode("button", {
         type: "button",
         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.current = "baz")

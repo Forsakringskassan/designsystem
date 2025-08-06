@@ -119,7 +119,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           )
         ])),
         content: _withCtx(() => _cache[4] || (_cache[4] = [
-          _createTextVNode(" [content] ")
+          _createTextVNode(
+            " [content] ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_layout_right_panel, null, {

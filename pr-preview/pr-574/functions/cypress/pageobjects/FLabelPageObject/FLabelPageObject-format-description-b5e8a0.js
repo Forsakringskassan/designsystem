@@ -47,7 +47,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
   return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
     default: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Etikett ")
+      _createTextVNode(
+        " Etikett ",
+        -1
+        /* CACHED */
+      )
     ])),
     description: _withCtx(({ formatDescriptionClass }) => [
       _createElementVNode(

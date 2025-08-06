@@ -55,7 +55,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "awesome-panel"
       }, null, 8, ["slot"]),
       _createElementVNode("div", { slot: content }, [
-        _cache[1] || (_cache[1] = _createTextVNode(" Inneh\xE5ll ")),
+        _cache[1] || (_cache[1] = _createTextVNode(
+          " Inneh\xE5ll ",
+          -1
+          /* CACHED */
+        )),
         _createElementVNode("button", {
           type: "button",
           onClick: _cache[0] || (_cache[0] = ($event) => $setup.panel.open("foo"))

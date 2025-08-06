@@ -84,7 +84,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: _cache[1] || (_cache[1] = ($event) => _ctx.decrease())
     }, "Decrease"),
     _createElementVNode("label", null, [
-      _cache[4] || (_cache[4] = _createTextVNode(" Progress: ")),
+      _cache[4] || (_cache[4] = _createTextVNode(
+        " Progress: ",
+        -1
+        /* CACHED */
+      )),
       _withDirectives(_createElementVNode(
         "input",
         {
