@@ -33,3 +33,29 @@ $button-tertiary-inverted-color-background-focus: transparent !default;
 $button-tertiary-inverted-color-background-disabled: transparent !default;
 $button-tertiary-inverted-color-text-disabled: var(--fkds-color-text-disabled) !default;
 $button-tertiary-inverted-icon-color-content-disabled: var(--fkds-icon-color-content-disabled) !default;
+
+// Spinner animation
+$button-spinner-animation:
+    button-spinner-delay 200ms linear 1,
+    button-spinner-rotation 1s linear infinite !default;
+
+@keyframes button-spinner-rotation {
+    0% {
+        transform: translate(0, 15%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(0, 15%) rotate(360deg);
+    }
+}
+
+@keyframes button-spinner-delay {
+    0%,
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: 1;
+    }
+}
