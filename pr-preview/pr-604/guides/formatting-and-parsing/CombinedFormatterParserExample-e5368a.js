@@ -62,7 +62,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         parser: _ctx.parseNumber
       }, {
         default: _withCtx(() => _cache[1] || (_cache[1] = [
-          _createTextVNode(" Inmatningsf\xE4lt ")
+          _createTextVNode(
+            " Inmatningsf\xE4lt ",
+            -1
+            /* CACHED */
+          )
         ])),
         description: _withCtx(({ descriptionClass }) => [
           _createElementVNode(
@@ -89,7 +93,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _createElementVNode("div", _hoisted_3, [
       _createVNode(_component_f_output_field, { for: "combined-formatter-example" }, {
         label: _withCtx(() => _cache[2] || (_cache[2] = [
-          _createTextVNode(" modelValue ")
+          _createTextVNode(
+            " modelValue ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createElementVNode(

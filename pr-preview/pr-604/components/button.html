@@ -6,33 +6,33 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Knapp - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-c9794d.css"
+            href="../assets/docs-6b4f5d.css"
             crossorigin
-            integrity="sha384-SaCRzYHBgMvTzvS5VdrXoFzTvDQe7pwG3eF7TCEGe5GTq+qRSrCRW4szX2R4I+9d"
+            integrity="sha384-jCcF/WfHyQr1S9EdCXyZZzecX516zINZ9lhq9cDWxSaInn5k2m7LDdXn8zH44pcK"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-1856e7.css"
+            href="../assets/docs-fkui-506d7e.css"
             crossorigin
-            integrity="sha384-nd1b7fA1dYz+tN0BEDJ7Qsb0QGe5PGxefMHn44xpXQcoZSu1joCxsQ/qwd17g6Bj"
+            integrity="sha384-XoOQIpLdFa618UeB2hgs+6rCDDWhIUnuVI8wD+HD1Uizn6mhyZ+IkMFpLUcr1//K"
             data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-e1237a.js",
+    "vue": "../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-f26798.js",
     "@fkui/date": "../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-4b278a.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-af3511.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-cd0a92.js"
   },
   "integrity": {
-    "../assets/vendor-vue-e1237a.js": "sha384-jBE6MBB68PBZU11sQPZUvL6i+TCJ6L7ZJgwOX5uGGj1wp4V8yuNdAhDMeEEMID+N",
+    "../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../assets/vendor-fkui-logic-f26798.js": "sha384-VoYS/Aq6jNp0G4gyTUUp7e7cRZ6D4h19wa0kdfAbEtvAnlhSaIF2hPMEVs0H/Mci",
     "../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../assets/vendor-fkui-vue-4b278a.js": "sha384-RYO8R35xDB2De+nbj4pZ1DaO0wuHyHuve1TWi2I5Qx33htlK8tOhaYPzQDHtouCu",
+    "../assets/vendor-fkui-vue-af3511.js": "sha384-Q9Jt8hpOAc7NS6noGZ+RexGVi/gmaqRDzePvx123ovd/mCeiTfz0grqecIqy2LbI",
     "../assets/vendor-forsakringskassan-docs-live-example-cd0a92.js": "sha384-+ytYxTVX2pqx9YmX3DG6AjvU6MKa+nwiMe2/wgRw8vjsWe2S3ukrvVqwESMNT4f5"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-943e3d.json"
+            href="../search-data-688fc7.json"
             as="fetch"
             crossorigin
-            integrity="sha384-n2Tvo4iYKBXXux0tbnUGWIkBGrs0MC/ZGNsak1MYUHL+sjQNeT4xumKeHrOAI3fV"
+            integrity="sha384-04Co0aAH1p31NgUQlJv9p7xNtk3q1nivJmzUa7Shp210KOpU+yxFfMg9E3Kj3Ll+"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c397945bbe62d6480dec76db1a2638a1f853dded/packages/vue/src/components/FButton/FButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8f36f814d8aa65512e9f835e5fb103a6d0f53507/packages/vue/src/components/FButton/FButton.vue">
                 FButton
             </a>
             
@@ -1294,7 +1294,7 @@ under tiden som den asynkrona åtgärden utförs.
 Om knappen saknar ikon så visas spinner till vänstert om knappens text.</p>
 
                 <div
-                    id="example-a31b68"
+                    id="example-aa177f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1306,7 +1306,7 @@ Om knappen saknar ikon så visas spinner till vänstert om knappens text.</p>
 <span class="hljs-addition">+       // Your asynchronous operation</span>
 <span class="hljs-addition">+}</span>
 &lt;/script&gt;
-&lt;templte&gt;
+&lt;template&gt;
 <span class="hljs-deletion">-   &lt;f-button&gt; text &lt;/f-button&gt;</span>
 <span class="hljs-addition">+   &lt;f-button @click=&quot;asyncOperation&quot;&gt; text &lt;/f-button&gt;</span>
 &lt;/template&gt;
@@ -1449,7 +1449,12 @@ Knappars text för endast skärmläsare (SR-only-text) ska vara så beskrivande 
                             
                         </dt>
                         <dd>
-                            <p>Type of button, can be either 'primary', 'secondary' or 'tertiary'.</p>
+                            <p>Type of button, can be either of:</p>
+<ul>
+<li><code>primary</code></li>
+<li><code>secondary</code></li>
+<li><code>tertiary</code></li>
+</ul>
 
                             <p class="doc-api__item">Default: <code>&quot;primary&quot;</code></p>
                             
@@ -1467,7 +1472,12 @@ Knappars text för endast skärmläsare (SR-only-text) ska vara så beskrivande 
                             
                         </dt>
                         <dd>
-                            <p>Button size, can be either 'small', 'medium' or 'large'.</p>
+                            <p>Button size, can be either of:</p>
+<ul>
+<li><code>small</code></li>
+<li><code>medium</code></li>
+<li><code>large</code></li>
+</ul>
 
                             <p class="doc-api__item">Default: <code>&quot;medium&quot;</code></p>
                             
@@ -1521,8 +1531,13 @@ Knappars text för endast skärmläsare (SR-only-text) ska vara så beskrivande 
                             
                         </dt>
                         <dd>
-                            <p>Tertiarry button style, used in conjunction with button type 'tertiarry'.
-Can be either 'standard', 'black' or 'inverted'.</p>
+                            <p>Tertiarry button style, used in conjunction with button type <code>tertiarry</code>.
+Can be either of:</p>
+<ul>
+<li><code>standard</code></li>
+<li><code>black</code></li>
+<li><code>inverted</code></li>
+</ul>
 
                             <p class="doc-api__item">Default: <code>&quot;standard&quot;</code></p>
                             
@@ -1558,7 +1573,7 @@ Can be either 'standard', 'black' or 'inverted'.</p>
                             
                         </dt>
                         <dd>
-                            <p>Sets margin to 0, used in conjunction with 'button-group'.</p>
+                            <p>Sets margin to 0, used in conjunction with <code>button-group</code>.</p>
 
                             <p class="doc-api__item">Default: <code>false</code></p>
                             
@@ -1576,7 +1591,7 @@ Can be either 'standard', 'black' or 'inverted'.</p>
                             
                         </dt>
                         <dd>
-                            <p>Automatically set button to full width when screen width is 639 pixels or below, always active for button size 'large'.</p>
+                            <p>Automatically set button to full width when screen width is 639 pixels or below, always active for button size <code>large</code>.</p>
 
                             <p class="doc-api__item">Default: <code>false</code></p>
                             
@@ -1636,9 +1651,9 @@ Can be either 'standard', 'black' or 'inverted'.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/f-button-spinner (<a href="https://github.com/Forsakringskassan/designsystem/commits/c397945bbe62d6480dec76db1a2638a1f853dded">c397945</a>)<br />
+<div class="footer__right"><div class="version">feature/f-button-spinner (<a href="https://github.com/Forsakringskassan/designsystem/commits/8f36f814d8aa65512e9f835e5fb103a6d0f53507">8f36f81</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/604">PR 604</a><br />
-        2025-08-06 09:05
+        2025-08-07 11:20
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1749,16 +1764,16 @@ Can be either 'standard', 'black' or 'inverted'.</p>
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-394ef1.js"
+            src="../assets/processors/selectable-version/select-version-8ada51.js"
             type="module"
             crossorigin
-            integrity="sha384-JKjbh/Acgppbfz2RYLNLbbVROujPyjReMsIwWzW6EggwVudZgnNL6+u1vJXobiGA"
+            integrity="sha384-fUEHur/QWG/yDDo7YNHQucL3HLm56KEVRxJdXPsovOlasATK9ZbLjo/nIHBQpgfz"
             
         ></script><script
-            src="../assets/main-ea435e.js"
+            src="../assets/main-f78fbb.js"
             type="module"
             crossorigin
-            integrity="sha384-904l+ZPm6/kQ1ANSB9lYycQY2COYUgmo58g0Zwh7Cwq2d/yNrGnNiKmLKnxFm5oV"
+            integrity="sha384-zMyEQdxABe2jwYk/JcrRWVhAqkwkcFDzYLPZDLV0S/7EKWlTe5h7ibyBtZp1v+7z"
             
         ></script>
     </body>

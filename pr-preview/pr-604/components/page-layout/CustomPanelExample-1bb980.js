@@ -95,7 +95,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[2] || (_cache[2] = [
-          _createTextVNode("Aktiv")
+          _createTextVNode(
+            "Aktiv",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [2]
@@ -106,7 +110,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode("Synlig")
+          _createTextVNode(
+            "Synlig",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [3]

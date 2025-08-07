@@ -121,7 +121,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
-          _createTextVNode(" F\xF6rdr\xF6jd ")
+          _createTextVNode(
+            " F\xF6rdr\xF6jd ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [6]
@@ -132,7 +136,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[7] || (_cache[7] = [
-          _createTextVNode(" Alternativ text ")
+          _createTextVNode(
+            " Alternativ text ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [7]
@@ -143,7 +151,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Engelsk text ")
+          _createTextVNode(
+            " Engelsk text ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [8]
@@ -154,7 +166,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[9] || (_cache[9] = [
-          _createTextVNode(" Overlay ")
+          _createTextVNode(
+            " Overlay ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [9]
@@ -166,7 +182,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
-          _createTextVNode(" Fokusera p\xE5 meddelande ")
+          _createTextVNode(
+            " Fokusera p\xE5 meddelande ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [10]

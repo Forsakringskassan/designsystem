@@ -143,7 +143,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 /* TEXT */
               ),
               _createElementVNode("p", null, [
-                _cache[1] || (_cache[1] = _createTextVNode(" Land: ")),
+                _cache[1] || (_cache[1] = _createTextVNode(
+                  " Land: ",
+                  -1
+                  /* CACHED */
+                )),
                 _createElementVNode(
                   "em",
                   null,
@@ -158,7 +162,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   -1
                   /* CACHED */
                 )),
-                _cache[3] || (_cache[3] = _createTextVNode(" Beskrivning: ")),
+                _cache[3] || (_cache[3] = _createTextVNode(
+                  " Beskrivning: ",
+                  -1
+                  /* CACHED */
+                )),
                 _createElementVNode(
                   "em",
                   null,
@@ -187,7 +195,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       class: "button__icon",
                       name: "pen"
                     }),
-                    _cache[5] || (_cache[5] = _createTextVNode(" \xC4ndra ")),
+                    _cache[5] || (_cache[5] = _createTextVNode(
+                      " \xC4ndra ",
+                      -1
+                      /* CACHED */
+                    )),
                     _createElementVNode(
                       "span",
                       _hoisted_7,
@@ -207,7 +219,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       class: "button__icon",
                       name: "trashcan"
                     }),
-                    _cache[6] || (_cache[6] = _createTextVNode(" Ta bort ")),
+                    _cache[6] || (_cache[6] = _createTextVNode(
+                      " Ta bort ",
+                      -1
+                      /* CACHED */
+                    )),
                     _createElementVNode(
                       "span",
                       _hoisted_10,
@@ -233,7 +249,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 1032, ["items"])
     ]),
     "add-button": _withCtx(() => _cache[7] || (_cache[7] = [
-      _createTextVNode(" L\xE4gg till ny "),
+      _createTextVNode(
+        " L\xE4gg till ny ",
+        -1
+        /* CACHED */
+      ),
       _createElementVNode(
         "span",
         { class: "sr-only" },
@@ -249,7 +269,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Namn ")
+          _createTextVNode(
+            " Namn ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [8]
@@ -270,7 +294,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         default: _withCtx(() => _cache[9] || (_cache[9] = [
-          _createTextVNode(" Land ")
+          _createTextVNode(
+            " Land ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [9]
@@ -290,7 +318,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.description = $event
       }, {
         default: _withCtx(() => _cache[10] || (_cache[10] = [
-          _createTextVNode(" Beskrivning ")
+          _createTextVNode(
+            " Beskrivning ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [10]
@@ -310,7 +342,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         label: _withCtx(() => _cache[11] || (_cache[11] = [
-          _createTextVNode(" Namn ")
+          _createTextVNode(
+            " Namn ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createTextVNode(
@@ -328,7 +364,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, {
         default: _withCtx(() => _cache[12] || (_cache[12] = [
-          _createTextVNode(" Land ")
+          _createTextVNode(
+            " Land ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 2,
         __: [12]

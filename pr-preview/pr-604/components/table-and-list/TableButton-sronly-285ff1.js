@@ -64,7 +64,11 @@ var _hoisted_1 = { class: "sr-only" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FInteractiveTable"], { rows: $setup.rows }, {
     caption: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Tabell exempel ")
+      _createTextVNode(
+        " Tabell exempel ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(({ row }) => [
       _createVNode(
@@ -142,7 +146,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               onClick: ($event) => $setup.modifyRow(row)
             }, {
               default: _withCtx(() => [
-                _cache[1] || (_cache[1] = _createTextVNode(" Redigera ")),
+                _cache[1] || (_cache[1] = _createTextVNode(
+                  " Redigera ",
+                  -1
+                  /* CACHED */
+                )),
                 _createElementVNode(
                   "span",
                   _hoisted_1,

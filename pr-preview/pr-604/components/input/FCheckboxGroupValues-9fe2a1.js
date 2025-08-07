@@ -46,7 +46,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "checkbox-complex-values" }, {
     label: _withCtx(() => _cache[2] || (_cache[2] = [
-      _createTextVNode(" Broschyrer ")
+      _createTextVNode(
+        " Broschyrer ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(() => [
       _createVNode(_component_f_checkbox_field, {
@@ -56,7 +60,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: ["Om du bor eller arbetar utomlands"]
       }, {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode(" Om du bor eller arbetar utomlands ")
+          _createTextVNode(
+            " Om du bor eller arbetar utomlands ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [3]
@@ -68,7 +76,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: { offentlighet: false, sekretess: true }
       }, {
         default: _withCtx(() => _cache[4] || (_cache[4] = [
-          _createTextVNode(" Offentlighet och sekretess ")
+          _createTextVNode(
+            " Offentlighet och sekretess ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [4]

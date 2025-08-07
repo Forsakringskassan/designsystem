@@ -394,7 +394,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[6] || (_cache[6] = [
-          _createTextVNode(" Obligatoriskt f\xE4lt ")
+          _createTextVNode(
+            " Obligatoriskt f\xE4lt ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [6]
@@ -405,7 +409,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[7] || (_cache[7] = [
-          _createTextVNode(" Inaktivt f\xE4lt ")
+          _createTextVNode(
+            " Inaktivt f\xE4lt ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [7]
@@ -416,14 +424,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Till\xE5t fritext ")
+          _createTextVNode(
+            " Till\xE5t fritext ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [8]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "label-settings" }, {
         label: _withCtx(() => _cache[9] || (_cache[9] = [
-          _createTextVNode(" Etiketten ")
+          _createTextVNode(
+            " Etiketten ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
@@ -432,7 +448,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
-              _createTextVNode(" Hj\xE4lptext ")
+              _createTextVNode(
+                " Hj\xE4lptext ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [10]
@@ -443,7 +463,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
-              _createTextVNode(" Tooltip ")
+              _createTextVNode(
+                " Tooltip ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [11]
@@ -454,7 +478,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[12] || (_cache[12] = [
-              _createTextVNode(" Inline ")
+              _createTextVNode(
+                " Inline ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [12]

@@ -67,7 +67,11 @@ var _hoisted_2 = { class: "sr-only" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FInteractiveTable"], { rows: $setup.rows }, {
     caption: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Tabell exempel ")
+      _createTextVNode(
+        " Tabell exempel ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(({ row }) => [
       _createVNode(
@@ -140,7 +144,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         {
           default: _withCtx(() => [
             _createElementVNode("a", _hoisted_1, [
-              _cache[1] || (_cache[1] = _createTextVNode(" \xD6ppna dokument ")),
+              _cache[1] || (_cache[1] = _createTextVNode(
+                " \xD6ppna dokument ",
+                -1
+                /* CACHED */
+              )),
               _createElementVNode(
                 "span",
                 _hoisted_2,

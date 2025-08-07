@@ -36,7 +36,11 @@ function render(_ctx, _cache) {
   const _component_f_form_modal = _resolveComponent("f-form-modal", true);
   return _openBlock(), _createBlock(_component_f_form_modal, { value: _ctx.value }, {
     header: _withCtx(() => _cache[2] || (_cache[2] = [
-      _createTextVNode(" Awesome Modal ")
+      _createTextVNode(
+        " Awesome Modal ",
+        -1
+        /* CACHED */
+      )
     ])),
     "input-text-fields": _withCtx(() => [
       _createVNode(_component_f_text_field, {
@@ -44,7 +48,11 @@ function render(_ctx, _cache) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value.name = $event)
       }, {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode(" Namn ")
+          _createTextVNode(
+            " Namn ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [3]
@@ -54,7 +62,11 @@ function render(_ctx, _cache) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.value.age = $event)
       }, {
         default: _withCtx(() => _cache[4] || (_cache[4] = [
-          _createTextVNode(" \xC5lder ")
+          _createTextVNode(
+            " \xC5lder ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [4]

@@ -55,7 +55,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onToggle: _ctx.onToggle
   }, {
     title: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Titel (span) ")
+      _createTextVNode(
+        " Titel (span) ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(() => _cache[1] || (_cache[1] = [
       _createElementVNode(

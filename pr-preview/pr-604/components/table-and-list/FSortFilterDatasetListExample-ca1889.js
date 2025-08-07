@@ -106,7 +106,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
           ),
           _createElementVNode("p", null, [
-            _cache[0] || (_cache[0] = _createTextVNode(" Land: ")),
+            _cache[0] || (_cache[0] = _createTextVNode(
+              " Land: ",
+              -1
+              /* CACHED */
+            )),
             _createElementVNode(
               "em",
               null,
@@ -121,7 +125,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               -1
               /* CACHED */
             )),
-            _cache[2] || (_cache[2] = _createTextVNode(" Beskrivning: ")),
+            _cache[2] || (_cache[2] = _createTextVNode(
+              " Beskrivning: ",
+              -1
+              /* CACHED */
+            )),
             _createElementVNode(
               "em",
               null,

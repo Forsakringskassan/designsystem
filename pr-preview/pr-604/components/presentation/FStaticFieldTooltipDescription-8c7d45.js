@@ -43,7 +43,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createElementBlock("div", _hoisted_1, [
     _createVNode(_component_f_static_field, null, {
       label: _withCtx(() => _cache[0] || (_cache[0] = [
-        _createTextVNode(" Etikett ")
+        _createTextVNode(
+          " Etikett ",
+          -1
+          /* CACHED */
+        )
       ])),
       tooltip: _withCtx(() => [
         _createVNode(_component_f_tooltip, {
@@ -51,10 +55,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "header-tag": "h2"
         }, {
           header: _withCtx(() => _cache[1] || (_cache[1] = [
-            _createTextVNode(" Mer om avancerat f\xE4lt ")
+            _createTextVNode(
+              " Mer om avancerat f\xE4lt ",
+              -1
+              /* CACHED */
+            )
           ])),
           body: _withCtx(() => _cache[2] || (_cache[2] = [
-            _createTextVNode(" Detta f\xE4ltet kr\xE4ver lite n\xE4rmare f\xF6rklaring. ")
+            _createTextVNode(
+              " Detta f\xE4ltet kr\xE4ver lite n\xE4rmare f\xF6rklaring. ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1
           /* STABLE */
@@ -81,7 +93,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         )
       ]),
       default: _withCtx(() => _cache[3] || (_cache[3] = [
-        _createTextVNode(" En liten statisk text. ")
+        _createTextVNode(
+          " En liten statisk text. ",
+          -1
+          /* CACHED */
+        )
       ])),
       _: 1
       /* STABLE */

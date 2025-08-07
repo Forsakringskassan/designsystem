@@ -62,7 +62,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ), [
         [_vModelCheckbox, _ctx.opacity]
       ]),
-      _cache[2] || (_cache[2] = _createTextVNode(" Toning"))
+      _cache[2] || (_cache[2] = _createTextVNode(
+        " Toning",
+        -1
+        /* CACHED */
+      ))
     ]),
     _createVNode(_component_i_animate_expand, {
       opacity: _ctx.opacity,

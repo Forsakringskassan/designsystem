@@ -177,7 +177,10 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
   __name: "FButton",
   props: {
     /**
-     * Type of button, can be either 'primary', 'secondary' or 'tertiary'.
+     * Type of button, can be either of:
+     * - `primary`
+     * - `secondary`
+     * - `tertiary`
      */
     variant: {
       type: String,
@@ -187,7 +190,10 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       }
     },
     /**
-     * Button size, can be either 'small', 'medium' or 'large'.
+     * Button size, can be either of:
+     * - `small`
+     * - `medium`
+     * - `large`
      */
     size: {
       type: String,
@@ -211,8 +217,11 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       default: void 0
     },
     /**
-     * Tertiarry button style, used in conjunction with button type 'tertiarry'.
-     * Can be either 'standard', 'black' or 'inverted'.
+     * Tertiarry button style, used in conjunction with button type `tertiarry`.
+     * Can be either of:
+     * - `standard`
+     * - `black`
+     * - `inverted`
      */
     tertiaryStyle: {
       type: String,
@@ -229,14 +238,14 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       default: false
     },
     /**
-     * Sets margin to 0, used in conjunction with 'button-group'.
+     * Sets margin to 0, used in conjunction with `button-group`.
      */
     groupItem: {
       type: Boolean,
       default: false
     },
     /**
-     * Automatically set button to full width when screen width is 639 pixels or below, always active for button size 'large'.
+     * Automatically set button to full width when screen width is 639 pixels or below, always active for button size `large`.
      */
     mobileFullWidth: {
       type: Boolean,

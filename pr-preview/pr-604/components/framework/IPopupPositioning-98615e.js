@@ -2867,7 +2867,11 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           shrink: ""
         }, {
           default: _withCtx2(() => _cache[0] || (_cache[0] = [
-            _createTextVNode2("\xA0")
+            _createTextVNode2(
+              "\xA0",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [0]
