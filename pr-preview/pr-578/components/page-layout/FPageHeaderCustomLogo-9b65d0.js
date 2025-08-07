@@ -40,7 +40,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_page_header = _resolveComponent("f-page-header");
   return _openBlock(), _createBlock(_component_f_page_header, null, {
     right: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Namn Namnsson ")
+      _createTextVNode(
+        " Namn Namnsson ",
+        -1
+        /* CACHED */
+      )
     ])),
     logo: _withCtx(() => _cache[1] || (_cache[1] = [
       _createElementVNode(
@@ -56,7 +60,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )
     ])),
     default: _withCtx(() => [
-      _cache[2] || (_cache[2] = _createTextVNode(" Exempelapplikation "))
+      _cache[2] || (_cache[2] = _createTextVNode(
+        " Exempelapplikation ",
+        -1
+        /* CACHED */
+      ))
     ]),
     _: 1,
     __: [2]

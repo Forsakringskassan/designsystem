@@ -55,7 +55,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           maxlength: "100"
         }, {
           default: _withCtx(() => _cache[1] || (_cache[1] = [
-            _createTextVNode(" Favoritfrukt ")
+            _createTextVNode(
+              " Favoritfrukt ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [1]
@@ -72,7 +76,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           maxlength: "100"
         }, {
           default: _withCtx(() => _cache[2] || (_cache[2] = [
-            _createTextVNode(" Favoritgodis ")
+            _createTextVNode(
+              " Favoritgodis ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [2]

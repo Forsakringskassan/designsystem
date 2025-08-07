@@ -64,7 +64,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onValidity: _cache[1] || (_cache[1] = ($event) => _ctx.validityEvent = $event.detail)
     }, {
       default: _withCtx(() => _cache[2] || (_cache[2] = [
-        _createTextVNode(" Name of child ")
+        _createTextVNode(
+          " Name of child ",
+          -1
+          /* CACHED */
+        )
       ])),
       _: 1,
       __: [2]

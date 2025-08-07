@@ -51,7 +51,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.name = $event)
     }, {
       default: _withCtx(() => _cache[1] || (_cache[1] = [
-        _createTextVNode(" Namn ")
+        _createTextVNode(
+          " Namn ",
+          -1
+          /* CACHED */
+        )
       ])),
       _: 1,
       __: [1]
@@ -65,10 +69,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _createVNode(_component_f_static_field, null, {
       label: _withCtx(() => _cache[2] || (_cache[2] = [
-        _createTextVNode(" Beskrivning ")
+        _createTextVNode(
+          " Beskrivning ",
+          -1
+          /* CACHED */
+        )
       ])),
       default: _withCtx(() => [
-        _cache[3] || (_cache[3] = _createTextVNode(" En liten statisk beskrivning. "))
+        _cache[3] || (_cache[3] = _createTextVNode(
+          " En liten statisk beskrivning. ",
+          -1
+          /* CACHED */
+        ))
       ]),
       _: 1,
       __: [3]

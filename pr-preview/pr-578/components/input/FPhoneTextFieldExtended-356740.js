@@ -48,7 +48,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "extended-validation": ""
   }, {
     extendedLabel: _withCtx(() => _cache[1] || (_cache[1] = [
-      _createTextVNode(" Skriv in ditt telefonnummer igen ")
+      _createTextVNode(
+        " Skriv in ditt telefonnummer igen ",
+        -1
+        /* CACHED */
+      )
     ])),
     _: 1
     /* STABLE */

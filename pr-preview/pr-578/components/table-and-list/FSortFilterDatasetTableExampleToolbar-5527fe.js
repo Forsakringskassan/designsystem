@@ -152,7 +152,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               )
             ])),
             "checkbox-description": _withCtx(() => _cache[3] || (_cache[3] = [
-              _createTextVNode(" V\xE4lj denna raden ")
+              _createTextVNode(
+                " V\xE4lj denna raden ",
+                -1
+                /* CACHED */
+              )
             ])),
             default: _withCtx(({ row }) => [
               _createVNode(

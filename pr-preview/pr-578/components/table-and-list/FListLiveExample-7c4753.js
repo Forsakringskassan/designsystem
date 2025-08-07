@@ -132,7 +132,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.listOption = $event)
       }, {
         label: _withCtx(() => _cache[4] || (_cache[4] = [
-          _createTextVNode(" Interaktivitet ")
+          _createTextVNode(
+            " Interaktivitet ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[5] || (_cache[5] = _createElementVNode(
@@ -166,7 +170,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Tom lista ")
+          _createTextVNode(
+            " Tom lista ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [8]
@@ -176,7 +184,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "radio-empty-text"
       }, {
         label: _withCtx(() => _cache[9] || (_cache[9] = [
-          _createTextVNode(" Meddelande f\xF6r tom lista ")
+          _createTextVNode(
+            " Meddelande f\xF6r tom lista ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
@@ -185,7 +197,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: false
           }, {
             default: _withCtx(() => _cache[10] || (_cache[10] = [
-              _createTextVNode(" Standardmeddelande ")
+              _createTextVNode(
+                " Standardmeddelande ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [10]
@@ -196,7 +212,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: true
           }, {
             default: _withCtx(() => _cache[11] || (_cache[11] = [
-              _createTextVNode(" Eget meddelande ")
+              _createTextVNode(
+                " Eget meddelande ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [11]

@@ -47,7 +47,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
   }, {
     default: _withCtx(() => _cache[1] || (_cache[1] = [
-      _createTextVNode(" Fyll i ett datum som inte \xE4r 1 januari, 5 maj eller 20 juni 2022 ")
+      _createTextVNode(
+        " Fyll i ett datum som inte \xE4r 1 januari, 5 maj eller 20 juni 2022 ",
+        -1
+        /* CACHED */
+      )
     ])),
     _: 1,
     __: [1]

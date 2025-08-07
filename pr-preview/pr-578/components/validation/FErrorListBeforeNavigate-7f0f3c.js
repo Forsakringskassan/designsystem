@@ -61,7 +61,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "before-navigate": _ctx.beforeNavigate
     }, {
       title: _withCtx(() => _cache[1] || (_cache[1] = [
-        _createTextVNode(" Kolla p\xE5 felen nedan ")
+        _createTextVNode(
+          " Kolla p\xE5 felen nedan ",
+          -1
+          /* CACHED */
+        )
       ])),
       _: 1
       /* STABLE */
@@ -71,7 +75,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onToggle: _cache[0] || (_cache[0] = ($event) => _ctx.expanded = !_ctx.expanded)
     }, {
       title: _withCtx(() => _cache[2] || (_cache[2] = [
-        _createTextVNode(" Favoriter ")
+        _createTextVNode(
+          " Favoriter ",
+          -1
+          /* CACHED */
+        )
       ])),
       default: _withCtx(() => [
         _createVNode(_component_f_text_field, {
@@ -79,7 +87,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           maxlength: "100"
         }, {
           default: _withCtx(() => _cache[3] || (_cache[3] = [
-            _createTextVNode(" Favoritfrukt \u{1F34E} ")
+            _createTextVNode(
+              " Favoritfrukt \u{1F34E} ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [3]
@@ -89,7 +101,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           maxlength: "100"
         }, {
           default: _withCtx(() => _cache[4] || (_cache[4] = [
-            _createTextVNode(" Favoritgodis \u{1F36C} ")
+            _createTextVNode(
+              " Favoritgodis \u{1F36C} ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [4]

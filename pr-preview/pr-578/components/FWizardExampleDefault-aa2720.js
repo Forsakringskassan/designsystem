@@ -74,7 +74,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx(() => [
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
               default: _withCtx(() => _cache[3] || (_cache[3] = [
-                _createTextVNode(" Etikett-rubrik ")
+                _createTextVNode(
+                  " Etikett-rubrik ",
+                  -1
+                  /* CACHED */
+                )
               ])),
               _: 1,
               __: [3]
@@ -91,7 +95,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             ]),
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
               default: _withCtx(() => _cache[4] || (_cache[4] = [
-                _createTextVNode(" Etikett-rubrik (frivillig) ")
+                _createTextVNode(
+                  " Etikett-rubrik (frivillig) ",
+                  -1
+                  /* CACHED */
+                )
               ])),
               _: 1,
               __: [4]
@@ -118,7 +126,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.date = $event)
             }, {
               default: _withCtx(() => _cache[5] || (_cache[5] = [
-                _createTextVNode(" Etikett-rubrik ")
+                _createTextVNode(
+                  " Etikett-rubrik ",
+                  -1
+                  /* CACHED */
+                )
               ])),
               _: 1,
               __: [5]
@@ -135,7 +147,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.options = $event)
             }, {
               label: _withCtx(() => _cache[6] || (_cache[6] = [
-                _createTextVNode(" Etikett-rubrik ")
+                _createTextVNode(
+                  " Etikett-rubrik ",
+                  -1
+                  /* CACHED */
+                )
               ])),
               default: _withCtx(() => [
                 _cache[7] || (_cache[7] = _createElementVNode(
@@ -183,10 +199,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           title: "Stegrubrik 3"
         }, {
           "next-button-text": _withCtx(() => _cache[10] || (_cache[10] = [
-            _createTextVNode(" Klar ")
+            _createTextVNode(
+              " Klar ",
+              -1
+              /* CACHED */
+            )
           ])),
           default: _withCtx(() => [
-            _cache[11] || (_cache[11] = _createTextVNode(" En informationstext "))
+            _cache[11] || (_cache[11] = _createTextVNode(
+              " En informationstext ",
+              -1
+              /* CACHED */
+            ))
           ]),
           _: 1,
           __: [11]

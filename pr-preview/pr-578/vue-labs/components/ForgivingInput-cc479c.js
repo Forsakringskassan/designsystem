@@ -2374,7 +2374,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         )
       ]),
       default: _withCtx(() => [
-        _cache[1] || (_cache[1] = _createTextVNode(" Ange arbetstid "))
+        _cache[1] || (_cache[1] = _createTextVNode(
+          " Ange arbetstid ",
+          -1
+          /* CACHED */
+        ))
       ]),
       _: 1,
       __: [1]

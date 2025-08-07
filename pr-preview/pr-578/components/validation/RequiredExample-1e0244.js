@@ -62,7 +62,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
       }, {
         default: _withCtx(() => _cache[2] || (_cache[2] = [
-          _createTextVNode(" Fyll i minst ett tecken ")
+          _createTextVNode(
+            " Fyll i minst ett tecken ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [2]

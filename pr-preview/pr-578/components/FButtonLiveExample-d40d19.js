@@ -105,7 +105,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.variant = $event)
       }, {
         label: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Typ ")
+          _createTextVNode(
+            " Typ ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[9] || (_cache[9] = _createElementVNode(
@@ -138,7 +142,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.size = $event)
       }, {
         label: _withCtx(() => _cache[12] || (_cache[12] = [
-          _createTextVNode(" Storlek ")
+          _createTextVNode(
+            " Storlek ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[13] || (_cache[13] = _createElementVNode(
@@ -172,7 +180,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[16] || (_cache[16] = [
-          _createTextVNode(" Visa ikon ")
+          _createTextVNode(
+            " Visa ikon ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [16]
@@ -183,7 +195,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         horizontal: ""
       }, {
         label: _withCtx(() => _cache[17] || (_cache[17] = [
-          _createTextVNode(" Placering av ikon ")
+          _createTextVNode(
+            " Placering av ikon ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
@@ -192,7 +208,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: "Left"
           }, {
             default: _withCtx(() => _cache[18] || (_cache[18] = [
-              _createTextVNode(" V\xE4nster ")
+              _createTextVNode(
+                " V\xE4nster ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [18]
@@ -203,7 +223,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: "Right"
           }, {
             default: _withCtx(() => _cache[19] || (_cache[19] = [
-              _createTextVNode(" H\xF6ger ")
+              _createTextVNode(
+                " H\xF6ger ",
+                -1
+                /* CACHED */
+              )
             ])),
             _: 1,
             __: [19]
@@ -219,7 +243,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         disabled: _ctx.disabledFullwidth
       }, {
         default: _withCtx(() => _cache[20] || (_cache[20] = [
-          _createTextVNode(" Fullbredd i mobil ")
+          _createTextVNode(
+            " Fullbredd i mobil ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [20]
@@ -230,7 +258,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.tertiaryStyle = $event)
       }, {
         label: _withCtx(() => _cache[21] || (_cache[21] = [
-          _createTextVNode(" F\xE4rg ")
+          _createTextVNode(
+            " F\xE4rg ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[22] || (_cache[22] = _createElementVNode(
@@ -264,7 +296,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[25] || (_cache[25] = [
-          _createTextVNode(" Inaktiv ")
+          _createTextVNode(
+            " Inaktiv ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [25]

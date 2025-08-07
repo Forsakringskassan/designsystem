@@ -2877,7 +2877,11 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           shrink: ""
         }, {
           default: _withCtx2(() => _cache[0] || (_cache[0] = [
-            _createTextVNode2("\xA0")
+            _createTextVNode2(
+              "\xA0",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [0]
@@ -3704,7 +3708,11 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
               _createElementVNode8("p", _hoisted_43, [
                 _createCommentVNode10(" @slot Slot for customizing text message. "),
                 _renderSlot11(_ctx.$slots, "default", {}, () => [
-                  _cache[0] || (_cache[0] = _createTextVNode3(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu "))
+                  _cache[0] || (_cache[0] = _createTextVNode3(
+                    " Det verkar som att du inte har n\xE5gon internetuppkoppling just nu ",
+                    -1
+                    /* CACHED */
+                  ))
                 ])
               ])
             ]),
