@@ -2930,7 +2930,11 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           shrink: ""
         }, {
           default: _withCtx2(() => _cache[0] || (_cache[0] = [
-            _createTextVNode2("\xA0")
+            _createTextVNode2(
+              "\xA0",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [0]
@@ -4736,8 +4740,8 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     isOpen: { type: Boolean, required: true },
     anchor: { type: null, required: true },
     numOfItems: { type: Number, required: true },
-    itemHeight: { type: Number, required: false },
-    activeElement: { type: null, required: false }
+    itemHeight: { type: Number, required: false, default: () => void 0 },
+    activeElement: { type: null, required: false, default: () => void 0 }
   },
   emits: ["close"],
   setup(__props, { expose: __expose, emit: __emit }) {
@@ -7570,7 +7574,11 @@ function render27(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx11(() => _cache[1] || (_cache[1] = [
-          _createTextVNode6(" Visa \xE5rsv\xE4ljare ")
+          _createTextVNode6(
+            " Visa \xE5rsv\xE4ljare ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [1]
