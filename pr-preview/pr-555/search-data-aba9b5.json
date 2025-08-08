@@ -35,7 +35,7 @@
     "Hjälp och support",
     "@fkui/tsconfig",
     "konfiguration TypeScript",
-    "guardSet",
+    "guardSet() function",
     "Konfiguration",
     "knappordning bekräftelsemodal",
     "buttonOrder",
@@ -702,7 +702,7 @@
     },
     {
       "url": "functions/guard-set.html",
-      "title": "guardSet",
+      "title": "guardSet() function",
       "terms": []
     },
     {
