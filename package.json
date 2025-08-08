@@ -108,7 +108,7 @@
     "esbuild": "0.25.8",
     "fflate": "0.8.2",
     "flush-promises": "1.0.2",
-    "fs-extra": "11.3.0",
+    "fs-extra": "11.3.1",
     "glob": "11.0.3",
     "html-validate": "9.7.1",
     "html-validate-markdown": "5.0.0",
