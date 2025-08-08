@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-34768e.json"
+            href="../search-data-aba9b5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-mOs04I9retYJsdTTB0HP+zePpCvtz2qJm0bJ9hp/PZLcB1IbVHNWU2asKZWPgXO/"
+            integrity="sha384-ZS1t+6v0MZicUECif1sb+Bxa8+eT2S5acFE2ZKC76PzxSRAGYk6oy1x+lbFZcURT"
             id="search-data"
         />
     </head>
@@ -1631,8 +1631,14 @@
                     <div id="content"><p class="docs-paragraph"><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions">Assertion funktion</a> för att säkerställa att ett värde är satt.
 Alla värden skiljt från <code>null</code> och <code>undefined</code> anses vara satta inklusive värden så som <code>0</code> eller <code>&quot;&quot;</code>.
 Kastar <code>MissingValueError</code> om värdet inte är satt.</p>
-<div>
-<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
+
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p class="docs-paragraph">Assertion funktioner använder vi bara i de fall där det är bättre att applikationen kraschar om villkoret inte är uppfyllt.
+Om villkoret kan hända i normalfall så är det bättre att använda andra lösningar så som null-checks eller default värden.</p>
+
+            </div>
+        <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
                     id="example-5a5100"
                     class="code-preview code-preview--default"
@@ -1699,9 +1705,9 @@ Kastar <code>MissingValueError</code> om värdet inte är satt.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">add-guardset-function (<a href="https://github.com/Forsakringskassan/designsystem/commits/30589f7078686ac147a0c463e4ca86c3e7022c2a">30589f7</a>)<br />
+<div class="footer__right"><div class="version">add-guardset-function (<a href="https://github.com/Forsakringskassan/designsystem/commits/2013d9f9b8a32371b6888c69466a988520e342ca">2013d9f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/555">PR 555</a><br />
-        2025-08-08 13:04
+        2025-08-08 13:09
 </div>
 <div class="toolbar__item">
     <form id="version">
