@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-be9657.js",
     "@fkui/date": "../../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-face99.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-c625e4.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../../assets/vendor-fkui-logic-be9657.js": "sha384-bkKGakh4v6/CgdwB01sdh34vfdJbt2LHohIrIK3ZJ8wi24DvQdRXEvzwEpd+I+eM",
     "../../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../../assets/vendor-fkui-vue-face99.js": "sha384-DkYDn6ZBk/a7IvmKDV9jZ28TDUTvAMUil52kq6/+G4Fwyd00bminWOMgClXe8ObB",
+    "../../assets/vendor-fkui-vue-c625e4.js": "sha384-HGgDCGsRtBCKG+Lj+CqnAUMl549zHonJQN5F6mZjok8xgeW2UudFtNYPthcAMVMt",
     "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-d23637.json"
+            href="../../search-data-bf82b5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-6IFpmSjKn/KBhXPlir4luaTcpNOxIzwELLqxomd2z8a15QgjU8uYSNlux3frWGkq"
+            integrity="sha384-nP2yEAlEmw2FbP68Kz7Gmo/hBbaftjgShg5XC3snRoYgg1QIV59rm4Ak8C8foPPn"
             id="search-data"
         />
     </head>
@@ -1612,7 +1612,7 @@ Leading and trailing whitespace is trimmed and internal whitespace is collapsed.
 Any elements with the <code>sr-only</code> class will be ignored.</p>
 
                 <div
-                    id="example-c6dcdf"
+                    id="example-ee7848"
                     class="code-preview code-preview--default"
                     
                     
@@ -1626,12 +1626,18 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
      * Default: `[&quot;sr-only&quot;]`
      */</span>
     <span class="hljs-attr">stripClasses</span>: <span class="hljs-built_in">string</span>[];
+
+    <span class="hljs-comment">/**
+     * By default nested components will not be rendered. When this option is
+     * enabled components will be rendered as `&lt;ComponentName /&gt;`.
+     */</span>
+    <span class="hljs-attr">componentPlaceholder</span>: <span class="hljs-built_in">boolean</span>;
 }
 </code></pre>
                 </div>
             
                 <div
-                    id="example-fdc4c8"
+                    id="example-d18f1d"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1648,7 +1654,7 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
             <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">Given the following markup:</p>
 
                 <div
-                    id="example-dacce0"
+                    id="example-8debc5"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1662,7 +1668,7 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
                 </div>
             
                 <div
-                    id="example-0600fb"
+                    id="example-d21a98"
                     class="code-preview code-preview--default"
                     
                     
@@ -1677,7 +1683,7 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
             <p class="docs-paragraph">If you use scoped slots you need to pass in the scope:</p>
 
                 <div
-                    id="example-a0f106"
+                    id="example-925081"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1691,7 +1697,7 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
                 </div>
             
                 <div
-                    id="example-7e67c3"
+                    id="example-59c63a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1728,9 +1734,9 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">add-guardset-function (<a href="https://github.com/Forsakringskassan/designsystem/commits/3086c3cdb4177613919420538e2aa2f5b4be0902">3086c3c</a>)<br />
+<div class="footer__right"><div class="version">add-guardset-function (<a href="https://github.com/Forsakringskassan/designsystem/commits/cad96ee354043527639f9364057ac6e32d4badc3">cad96ee</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/555">PR 555</a><br />
-        2025-08-08 13:36
+        2025-08-08 15:04
 </div>
 <div class="toolbar__item">
     <form id="version">
