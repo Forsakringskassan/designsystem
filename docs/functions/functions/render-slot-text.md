@@ -16,6 +16,12 @@ interface RenderSlotOptions {
      * Default: `["sr-only"]`
      */
     stripClasses: string[];
+
+    /**
+     * By default nested components will not be rendered. When this option is
+     * enabled components will be rendered as `<ComponentName />`.
+     */
+    componentPlaceholder: boolean;
 }
 ```
 

@@ -1,4 +1,5 @@
 import {
+    type Component,
     type Slot,
     type VNode,
     type VNodeArrayChildren,
@@ -16,10 +17,17 @@ export interface RenderSlotOptions {
      * Default: `["sr-only"]`
      */
     stripClasses: string[];
+
+    /**
+     * By default nested components will not be rendered. When this option is
+     * enabled components will be rendered as `<ComponentName />`.
+     */
+    componentPlaceholder: boolean;
 }
 
 const defaultOptions: RenderSlotOptions = {
     stripClasses: ["sr-only"],
+    componentPlaceholder: false,
 };
 
 /**
@@ -51,6 +59,20 @@ function excludeComment<T extends VNode>(node: T): boolean {
     return node.type !== Comment;
 }
 
+function isComponent(node: VNode): node is VNode & { type: Component } {
+    return typeof node.type === "object";
+}
+
+function getComponentName({ type }: { type: Component }): string {
+    if ("__name" in type) {
+        return String(type.__name);
+    }
+    if ("name" in type) {
+        return String(type.name);
+    }
+    return "Component";
+}
+
 function getTextContent(
     children: VNodeArrayChildren,
     options: RenderSlotOptions,
@@ -59,12 +81,20 @@ function getTextContent(
         .filter(isVNode)
         .filter(excludeComment)
         .filter(excludeClass(options.stripClasses))
-        .map((child) => {
-            if (Array.isArray(child.children)) {
-                return getTextContent(child.children, options);
+        .map((node) => {
+            if (isComponent(node)) {
+                if (options.componentPlaceholder) {
+                    const name = getComponentName(node);
+                    return `<${name} />`;
+                } else {
+                    return "";
+                }
             }
-            if (typeof child.children === "string") {
-                return child.children;
+            if (Array.isArray(node.children)) {
+                return getTextContent(node.children, options);
+            }
+            if (typeof node.children === "string") {
+                return node.children;
             }
         })
         .join("");
@@ -102,7 +132,6 @@ export function renderSlotText(
         return undefined;
     }
 
-    return collapseWhitespace(
-        getTextContent(nodes, { ...defaultOptions, ...options }),
-    );
+    const effectiveOptions = { ...defaultOptions, ...options };
+    return collapseWhitespace(getTextContent(nodes, effectiveOptions));
 }

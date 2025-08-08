@@ -1,10 +1,11 @@
 import { defineComponent } from "vue";
 import { mount, VueWrapper } from "@vue/test-utils";
+import { FBadge as SfcComponent } from "../components";
 import { type RenderSlotOptions, renderSlotText } from "./render-slot-text";
 
 interface Props {
     scopeData?: Record<string, unknown>;
-    options?: RenderSlotOptions;
+    options?: Partial<RenderSlotOptions>;
 }
 
 const InnerComponent = defineComponent({
@@ -69,6 +70,62 @@ describe("renderSlotText()", () => {
             </InnerComponent>
         `;
         const wrapper = await createWrapper(markup);
+        expect(wrapper.text()).toBe("");
+    });
+
+    it("should handle nested components with placeholder enabled", async () => {
+        expect.assertions(1);
+        const NamedComponent = defineComponent({ name: "NamedComponent" });
+        const UnnamedComponent = defineComponent({});
+        const markup = /* HTML */ `
+            <InnerComponent :options="{ componentPlaceholder: true }">
+                <template #source>
+                    <named-component></named-component>
+                    <unnamed-component></unnamed-component>
+                    <sfc-component></sfc-component>
+                </template>
+            </InnerComponent>
+        `;
+        const Component = defineComponent({
+            components: {
+                InnerComponent,
+                NamedComponent,
+                UnnamedComponent,
+                SfcComponent,
+            },
+            template: markup,
+        });
+        const wrapper = mount(Component);
+        await wrapper.vm.$nextTick();
+        expect(wrapper.text()).toBe(
+            "<NamedComponent /><Component /><FBadge />",
+        );
+    });
+
+    it("should handle nested components with placeholder disabled", async () => {
+        expect.assertions(1);
+        const NamedComponent = defineComponent({ name: "NamedComponent" });
+        const UnnamedComponent = defineComponent({});
+        const markup = /* HTML */ `
+            <InnerComponent :options="{ componentPlaceholder: false }">
+                <template #source>
+                    <named-component></named-component>
+                    <unnamed-component></unnamed-component>
+                    <sfc-component></sfc-component>
+                </template>
+            </InnerComponent>
+        `;
+        const Component = defineComponent({
+            components: {
+                InnerComponent,
+                NamedComponent,
+                UnnamedComponent,
+                SfcComponent,
+            },
+            template: markup,
+        });
+        const wrapper = mount(Component);
+        await wrapper.vm.$nextTick();
         expect(wrapper.text()).toBe("");
     });
 
