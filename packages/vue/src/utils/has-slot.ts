@@ -1,6 +1,11 @@
 import { type Slots } from "vue";
 import { type RenderSlotOptions, renderSlotText } from "./render-slot-text";
 
+const defaultOptions: RenderSlotOptions = {
+    stripClasses: ["sr-only"],
+    componentPlaceholder: true,
+};
+
 /**
  * Check if slot is implemented by the user.
  *
@@ -15,9 +20,10 @@ export function hasSlot(
     vm: { $slots: Slots },
     name: string,
     props: Record<string, unknown> = {},
-    options: Partial<RenderSlotOptions> = {},
+    options: Partial<Pick<RenderSlotOptions, "stripClasses">> = {},
 ): boolean {
     const slot = vm.$slots[name];
 
-    return Boolean(renderSlotText(slot, props, options));
+    const effectiveOptions = { ...defaultOptions, ...options };
+    return Boolean(renderSlotText(slot, props, effectiveOptions));
 }

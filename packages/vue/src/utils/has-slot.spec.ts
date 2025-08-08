@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
+import { FBadge } from "../components";
 import { hasSlot } from "./has-slot";
 
 const InnerComponent = defineComponent({
@@ -14,6 +15,23 @@ describe("hasSlot", () => {
             template: /* HTML */ `
                 <InnerComponent>
                     <template #foo> lorem ipsum </template>
+                </InnerComponent>
+            `,
+        });
+        const wrapper = mount(TestComponent);
+        const { vm } = wrapper.getComponent(InnerComponent);
+        expect(hasSlot(vm, "foo")).toBeTruthy();
+    });
+
+    it("should return true if slot has nested component", () => {
+        expect.assertions(1);
+        const TestComponent = defineComponent({
+            components: { InnerComponent, FBadge },
+            template: /* HTML */ `
+                <InnerComponent>
+                    <template #foo>
+                        <f-badge></f-badge>
+                    </template>
                 </InnerComponent>
             `,
         });

@@ -14394,7 +14394,7 @@ export function hasParentByName(vm: ComponentPublicInstance | undefined | null, 
 // @public
 export function hasSlot(vm: {
     $slots: Slots;
-}, name: string, props?: Record<string, unknown>, options?: Partial<RenderSlotOptions>): boolean;
+}, name: string, props?: Record<string, unknown>, options?: Partial<Pick<RenderSlotOptions, "stripClasses">>): boolean;
 
 // @public (undocumented)
 export const IAnimateExpand: DefineComponent<ExtractPropTypes<    {
@@ -15506,6 +15506,7 @@ export function registerLayout<T extends LayoutDefinition>(definition: T): void;
 
 // @public (undocumented)
 export interface RenderSlotOptions {
+    componentPlaceholder: boolean;
     stripClasses: string[];
 }
 
