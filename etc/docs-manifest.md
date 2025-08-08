@@ -122,6 +122,7 @@ functions/date/f-year/now.html
 functions/date/f-year/tojson.html
 functions/date/f-year/tostring.html
 functions/date/f-year/value.html
+functions/functions/assert-set.html
 functions/functions/dispatch-component-validity-event.html
 functions/functions/dom-functions/find-element-from-vue-ref.html
 functions/functions/dom-functions/find-html-element-from-vue-ref.html
