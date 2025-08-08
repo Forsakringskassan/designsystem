@@ -443,10 +443,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.43.0",
+    version: "3.45.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.43.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.45.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -2374,7 +2374,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         )
       ]),
       default: _withCtx(() => [
-        _cache[1] || (_cache[1] = _createTextVNode(" Ange arbetstid "))
+        _cache[1] || (_cache[1] = _createTextVNode(
+          " Ange arbetstid ",
+          -1
+          /* CACHED */
+        ))
       ]),
       _: 1,
       __: [1]

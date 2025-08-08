@@ -72,7 +72,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onChange: _ctx.onToggleDisable
     }, {
       label: _withCtx(() => _cache[3] || (_cache[3] = [
-        _createTextVNode(" Ska inmatningsf\xE4ltet vara inaktivt? ")
+        _createTextVNode(
+          " Ska inmatningsf\xE4ltet vara inaktivt? ",
+          -1
+          /* CACHED */
+        )
       ])),
       default: _withCtx(() => [
         _withDirectives((_openBlock(), _createBlock(_component_f_radio_field, {
@@ -82,7 +86,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           value: false
         }, {
           default: _withCtx(() => _cache[4] || (_cache[4] = [
-            _createTextVNode(" Nej ")
+            _createTextVNode(
+              " Nej ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [4]
@@ -96,7 +104,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           value: true
         }, {
           default: _withCtx(() => _cache[5] || (_cache[5] = [
-            _createTextVNode(" Ja ")
+            _createTextVNode(
+              " Ja ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [5]
@@ -117,7 +129,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           disabled: _ctx.isDisabled
         }, {
           default: _withCtx(() => _cache[6] || (_cache[6] = [
-            _createTextVNode(" Namn ")
+            _createTextVNode(
+              " Namn ",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [6]

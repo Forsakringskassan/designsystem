@@ -91,7 +91,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.badgeType = $event)
       }, {
         label: _withCtx(() => _cache[2] || (_cache[2] = [
-          _createTextVNode(" Typ ")
+          _createTextVNode(
+            " Typ ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[3] || (_cache[3] = _createElementVNode(
@@ -139,7 +143,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Inverterad ")
+          _createTextVNode(
+            " Inverterad ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [8]
