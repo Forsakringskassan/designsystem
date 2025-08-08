@@ -47,6 +47,7 @@ module.exports = {
                         "^https://www.npmjs.com/",
                         "^https://www.pts.se/",
                         "^https://www.skatteverket.se/",
+                        "^https://www.typescriptlang.org/",
                         "^https://www.w3schools.com/",
                         "^https://www7.skatteverket.se/",
                         ...additionalUrls,

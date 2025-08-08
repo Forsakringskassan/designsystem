@@ -1,3 +1,4 @@
+export { assertSet } from "./assertions";
 export * from "./config";
 export * from "./converters";
 export * from "./dom";

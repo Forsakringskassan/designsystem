@@ -24,6 +24,9 @@ export interface AllowListValidatorConfig extends ValidatorOptions {
 }
 
 // @public
+export function assertSet<T>(value: T | undefined | null, message?: string): asserts value is T;
+
+// @public
 export const availableValidators: Validator[];
 
 // @public
