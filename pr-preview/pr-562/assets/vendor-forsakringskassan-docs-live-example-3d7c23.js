@@ -7065,6 +7065,12 @@ async function getSourceCode(options) {
     return await highlight(uncommented);
   }
 }
+function toKebabCase(input) {
+  return input.replace(
+    /[A-Z]+(?![a-z])|[A-Z]/g,
+    ($2, ofs) => (ofs ? "-" : "") + $2.toLowerCase()
+  );
+}
 var LiveExampleSourcecode_default = /* @__PURE__ */ _defineComponent({
   __name: "LiveExampleSourcecode",
   props: {
@@ -7183,7 +7189,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { class: "icon icon--code" },
             null,
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _createTextVNode(
             " " + _toDisplayString($setup.codeToggleText),
@@ -7205,7 +7211,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               { class: "label fieldset__label" },
               "Kodspr\xE5k",
               -1
-              /* HOISTED */
+              /* CACHED */
             )),
             _createElementVNode("div", _hoisted_6, [
               $props.templateLanguage === "vue" ? (_openBlock(), _createElementBlock("div", _hoisted_7, [
@@ -7428,7 +7434,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
             null,
             "Unknown language, cannot render example",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
         ])))
       ],
@@ -7514,7 +7520,9 @@ function serializeAttribute(key, value, prefix = "") {
 }
 function serializeAttributes(attrs) {
   const entries = Object.entries(attrs);
-  const kv = entries.map(([key, value]) => serializeAttribute(key, value));
+  const kv = entries.map(
+    ([key, value]) => serializeAttribute(toKebabCase(key), value)
+  );
   const flat = kv.flat();
   if (flat.length > 0) {
     return ` ${kv.flat().join(" ")}`;
