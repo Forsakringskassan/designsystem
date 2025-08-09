@@ -23,14 +23,14 @@
             {
   "imports": {
     "vue": "../../assets/vendor-vue-99b838.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-97e565.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-3950ef.js",
     "@fkui/date": "../../assets/vendor-fkui-date-843385.js",
     "@fkui/vue": "../../assets/vendor-fkui-vue-c27e28.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
-    "../../assets/vendor-fkui-logic-97e565.js": "sha384-ovY9RFaioG2EFeJ778dWocJWg7rjAwW9bOK/MsiRBQ6Fwo9/dKrq0DskKAh7DE1M",
+    "../../assets/vendor-fkui-logic-3950ef.js": "sha384-vVD8JAtCNyiHUDRHLcQp35q8biQP7NfoGAJJjloLLaa86A/RabVq3qx1MWQ4ykOx",
     "../../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
     "../../assets/vendor-fkui-vue-c27e28.js": "sha384-efM1gt3TjQE+OIivrhTEwA0WhIbRTRilYi0J8koUzQsoJw/tyEJAIHeHqUeTAyRP",
     "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-045db5.json"
+            href="../../search-data-ad7a91.json"
             as="fetch"
             crossorigin
-            integrity="sha384-uiKHLghiON4rHwFny6Mu12uWbITXVmqICqyCVVHS5Npl6LEYcccEQD/90qvcUhFS"
+            integrity="sha384-NHwMmJt1sYCe2ZTCGeARHHaeWDAniKm8aMpF+yUI6pZgtuv9HTX/Lmfai6Q8qaTv"
             id="search-data"
         />
     </head>
@@ -695,7 +695,7 @@ Vi använder endast interpolering med parametrar.</p>
 <h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Standard-feltexter som visas vid validering hämtas från <a href="../../logic/variables/ValidationService.html">ValidationService</a> och mappas med namnet på validatorn som ger felet:</p>
 
                 <div
-                    id="example-28bffb"
+                    id="example-9e38b4"
                     class="code-preview code-preview--default"
                     
                     
@@ -710,22 +710,22 @@ Vi använder endast interpolering med parametrar.</p>
     .<span class="hljs-title function_">mapCombined</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;date&quot;</span>, <span class="hljs-string">&quot;Fyll i ett datum&quot;</span>)
     .<span class="hljs-title function_">build</span>();
 
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(messages);
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setErrorMessages</span>(messages);
 </code></pre>
                 </div>
             <p class="docs-paragraph">Läs mer om <a href="../../functions/functions/ValidationErrorMessageBuilder/create.html"><code>ValidationErrorMessageBuilder</code></a>.</p>
 
-            <div class="docs-messagebox docs-messagebox--danger">
+            <div class="docs-messagebox docs-messagebox--info">
                 <p class="docs-messagebox__title">Tänk på att</p>
-                <p class="docs-paragraph"><code>addValidationErrorMessages()</code> mergar med föregående mappningar inklusive de standardtexter som designsystemet levererar.
-Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och ha stenkoll på nya mappningar vid uppdatering av version då minsta förändring kräver att du matchar exakt hur designsystemets mappning ser ut.</p>
-<p class="docs-paragraph">Ett tips är att skapa ett snapshot test i eran kodbas som hämtar ut standardtexterna med <a href="../../logic/functions/getErrorMessages.html"><code>getErrorMessages</code></a> och vid uppdatering verifierar om snapshot ändrats.</p>
+                <p class="docs-paragraph"><code>setErrorMessages()</code> slår ihop med föregående mappningar inklusive de standardtexter som designsystemet levererar (som innehåller en del specifika kombinationer).</p>
+<p class="docs-paragraph">Du kan använda <code>clearErrorMessages()</code> eller <code>clear</code> flaggan till <code>setErrorMessages()</code> för att rensa tidigare texter men du måste då själv mappa upp kombinationer så som <code>required.radio</code>, <code>required.checkbox</code> osv.</p>
+<p class="docs-paragraph">Se gärna källkoden för <a href="https://github.com/Forsakringskassan/designsystem/blob/main/packages/logic/src/services/ValidationService/ValidationTranslations/get-error-messages.ts">designsystemets standardtexter</a>.</p>
 
             </div>
         <p class="docs-paragraph">Du kan använda textnycklar för översättning genom att kombinera <code>TranslationService</code> och <code>ValidationErrorMessageBuilder</code>:</p>
 
                 <div
-                    id="example-733b94"
+                    id="example-a308df"
                     class="code-preview code-preview--default"
                     
                     
@@ -746,7 +746,7 @@ Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och h
     .<span class="hljs-title function_">mapCombined</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;date&quot;</span>, $t(<span class="hljs-string">&quot;validation.error.required.date&quot;</span>))
     .<span class="hljs-title function_">build</span>();
 
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(messages);
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setErrorMessages</span>(messages);
 </code></pre>
                 </div>
             
@@ -779,9 +779,9 @@ Det innebär tyvärr att du måste mappa upp samtliga kombinationer själv och h
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/dcc640576883d451d010c7560c467e4f8c026ba3">dcc6405</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/68aa647fe82d845e86ea904018164e9915e0844c">68aa647</a>)<br />
         
-        2025-08-09 08:03
+        2025-08-09 09:18
 </div>
 <div class="toolbar__item">
     <form id="version">
