@@ -48,10 +48,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       id: "child-name"
     }, {
       default: _withCtx(() => _cache[1] || (_cache[1] = [
-        _createTextVNode(" Barnets namn ")
+        _createTextVNode(
+          " Barnets namn ",
+          -1
+          /* CACHED */
+        )
       ])),
-      _: 1
-      /* STABLE */
+      _: 1,
+      __: [1]
     })), [
       [
         _directive_validation,

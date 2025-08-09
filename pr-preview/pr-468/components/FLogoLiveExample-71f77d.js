@@ -68,7 +68,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.logoSize = $event)
       }, {
         label: _withCtx(() => _cache[1] || (_cache[1] = [
-          _createTextVNode(" Storlek ")
+          _createTextVNode(
+            " Storlek ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[2] || (_cache[2] = _createElementVNode(
@@ -76,25 +80,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "responsive" },
             "Responsiv",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[3] || (_cache[3] = _createElementVNode(
             "option",
             { value: "small" },
             "Liten",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[4] || (_cache[4] = _createElementVNode(
             "option",
             { value: "large" },
             "Stor",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [2, 3, 4]
       }, 8, ["modelValue"])
     ]),
     _: 1

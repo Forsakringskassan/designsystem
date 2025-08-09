@@ -188,7 +188,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )
     ]),
     "error-message": _withCtx(() => _cache[2] || (_cache[2] = [
-      _createTextVNode("Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till:")
+      _createTextVNode(
+        "Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till:",
+        -1
+        /* CACHED */
+      )
     ])),
     "input-text-fields": _withCtx(() => [
       _createVNode(_component_f_dialogue_tree, {
@@ -260,7 +264,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Modalen st\xE4ngdes med resultatet:",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _createElementVNode(
         "pre",

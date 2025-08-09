@@ -103,7 +103,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 null,
                 "Arbetsgivare",
                 -1
-                /* HOISTED */
+                /* CACHED */
               ),
               _createElementVNode(
                 "p",
@@ -116,7 +116,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   _createTextVNode(" Sverige ")
                 ],
                 -1
-                /* HOISTED */
+                /* CACHED */
               ),
               _createElementVNode(
                 "p",
@@ -126,7 +126,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   _createElementVNode("span", null, " 0109999999 ")
                 ],
                 -1
-                /* HOISTED */
+                /* CACHED */
               )
             ])),
             footer: _withCtx(({ hasError }) => [
@@ -138,7 +138,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     null,
                     " Ta bort ",
                     -1
-                    /* HOISTED */
+                    /* CACHED */
                   ))
                 ]),
                 _createElementVNode(
@@ -147,7 +147,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   [
                     _createVNode($setup["FIcon"], { name: "pen" }),
                     _createElementVNode("span", null, [
-                      _cache[2] || (_cache[2] = _createTextVNode(" \xC4ndra ")),
+                      _cache[2] || (_cache[2] = _createTextVNode(
+                        " \xC4ndra ",
+                        -1
+                        /* CACHED */
+                      )),
                       hasError ? (_openBlock(), _createElementBlock("span", _hoisted_4, " p\xE5 kortet, det inneh\xE5ller fel ")) : _createCommentVNode("v-if", true)
                     ])
                   ],
@@ -169,11 +173,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             },
             "Simulera inskick av formul\xE4r",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [3]
       }),
       _createElementVNode("button", {
         type: "button",

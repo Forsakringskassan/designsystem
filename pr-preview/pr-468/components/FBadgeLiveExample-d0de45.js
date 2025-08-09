@@ -91,7 +91,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.badgeType = $event)
       }, {
         label: _withCtx(() => _cache[2] || (_cache[2] = [
-          _createTextVNode(" Typ ")
+          _createTextVNode(
+            " Typ ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[3] || (_cache[3] = _createElementVNode(
@@ -99,39 +103,39 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { value: "standard" },
             "Standard",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[4] || (_cache[4] = _createElementVNode(
             "option",
             { value: "warning" },
             "Varning",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[5] || (_cache[5] = _createElementVNode(
             "option",
             { value: "error" },
             "Fel",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[6] || (_cache[6] = _createElementVNode(
             "option",
             { value: "success" },
             "Framg\xE5ng",
             -1
-            /* HOISTED */
+            /* CACHED */
           )),
           _cache[7] || (_cache[7] = _createElementVNode(
             "option",
             { value: "info" },
             "Info",
             -1
-            /* HOISTED */
+            /* CACHED */
           ))
         ]),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [3, 4, 5, 6, 7]
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isInverted,
@@ -139,10 +143,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Inverterad ")
+          _createTextVNode(
+            " Inverterad ",
+            -1
+            /* CACHED */
+          )
         ])),
-        _: 1
-        /* STABLE */
+        _: 1,
+        __: [8]
       }, 8, ["modelValue"])
     ]),
     _: 1

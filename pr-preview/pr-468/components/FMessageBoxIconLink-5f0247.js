@@ -63,7 +63,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _createElementVNode("span", { class: "sr-only" }, " \xF6ppnas i nytt f\xF6nster ")
           ],
           -1
-          /* HOISTED */
+          /* CACHED */
         )),
         _createVNode(_component_f_icon, { name: "new-window" })
       ])

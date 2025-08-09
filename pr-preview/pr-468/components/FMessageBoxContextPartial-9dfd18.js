@@ -54,9 +54,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             { class: "sr-only" },
             " Sk\xE4rml\xE4sarinformation kombinerad med befintlig titel ",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
-          _createTextVNode(" En rubrik som kombineras med en sk\xE4rml\xE4sartext f\xF6r att tydligt f\xF6rklara sin kontext n\xE4r den f\xE5r fokus ")
+          _createTextVNode(
+            " En rubrik som kombineras med en sk\xE4rml\xE4sartext f\xF6r att tydligt f\xF6rklara sin kontext n\xE4r den f\xE5r fokus ",
+            -1
+            /* CACHED */
+          )
         ]),
         2
         /* CLASS */
@@ -66,7 +70,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         null,
         "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
         -1
-        /* HOISTED */
+        /* CACHED */
       ))
     ]),
     _: 1

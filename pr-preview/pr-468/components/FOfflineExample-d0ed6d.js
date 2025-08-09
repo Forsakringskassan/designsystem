@@ -2117,21 +2117,21 @@ function render4(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Fel",
       -1
-      /* HOISTED */
+      /* CACHED */
     ),
     _createElementVNode2(
       "p",
       null,
       "Ett fel har uppst\xE5tt.",
       -1
-      /* HOISTED */
+      /* CACHED */
     ),
     _createElementVNode2(
       "a",
       { href: "/" },
       "G\xE5 till startsidan",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -2877,10 +2877,14 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           shrink: ""
         }, {
           default: _withCtx2(() => _cache[0] || (_cache[0] = [
-            _createTextVNode2("\xA0")
+            _createTextVNode2(
+              "\xA0",
+              -1
+              /* CACHED */
+            )
           ])),
-          _: 1
-          /* STABLE */
+          _: 1,
+          __: [0]
         })) : _createCommentVNode7("v-if", true),
         _createVNode2(_component_i_flex_item, { grow: "" }, {
           default: _withCtx2(() => [
@@ -2917,7 +2921,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                               },
                               null,
                               -1
-                              /* HOISTED */
+                              /* CACHED */
                             )),
                             _createElementVNode5(
                               "span",
@@ -2958,7 +2962,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                                 },
                                 null,
                                 -1
-                                /* HOISTED */
+                                /* CACHED */
                               )),
                               _createElementVNode5(
                                 "span",
@@ -3555,7 +3559,8 @@ import {
   isVNode
 } from "vue";
 var defaultOptions = {
-  stripClasses: ["sr-only"]
+  stripClasses: ["sr-only"],
+  componentPlaceholder: false
 };
 function collapseWhitespace(text) {
   return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
@@ -3576,13 +3581,33 @@ function excludeClass(exclude) {
 function excludeComment(node) {
   return node.type !== Comment;
 }
+function isComponent(node) {
+  return typeof node.type === "object";
+}
+function getComponentName({ type }) {
+  if ("__name" in type) {
+    return String(type.__name);
+  }
+  if ("name" in type) {
+    return String(type.name);
+  }
+  return "Component";
+}
 function getTextContent(children, options) {
-  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
-    if (Array.isArray(child.children)) {
-      return getTextContent(child.children, options);
+  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((node) => {
+    if (isComponent(node)) {
+      if (options.componentPlaceholder) {
+        const name = getComponentName(node);
+        return `<${name} />`;
+      } else {
+        return "";
+      }
     }
-    if (typeof child.children === "string") {
-      return child.children;
+    if (Array.isArray(node.children)) {
+      return getTextContent(node.children, options);
+    }
+    if (typeof node.children === "string") {
+      return node.children;
     }
   }).join("");
 }
@@ -3594,15 +3619,19 @@ function renderSlotText(render14, props = {}, options) {
   if (nodes.length === 0) {
     return void 0;
   }
-  return collapseWhitespace(
-    getTextContent(nodes, { ...defaultOptions, ...options })
-  );
+  const effectiveOptions = { ...defaultOptions, ...options };
+  return collapseWhitespace(getTextContent(nodes, effectiveOptions));
 }
 
 // packages/vue/src/utils/has-slot.ts
+var defaultOptions2 = {
+  stripClasses: ["sr-only"],
+  componentPlaceholder: true
+};
 function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
-  return Boolean(renderSlotText(slot, props, options));
+  const effectiveOptions = { ...defaultOptions2, ...options };
+  return Boolean(renderSlotText(slot, props, effectiveOptions));
 }
 
 // packages/vue/src/utils/use-modal.ts
@@ -3704,7 +3733,11 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
               _createElementVNode8("p", _hoisted_43, [
                 _createCommentVNode10(" @slot Slot for customizing text message. "),
                 _renderSlot11(_ctx.$slots, "default", {}, () => [
-                  _cache[0] || (_cache[0] = _createTextVNode3(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu "))
+                  _cache[0] || (_cache[0] = _createTextVNode3(
+                    " Det verkar som att du inte har n\xE5gon internetuppkoppling just nu ",
+                    -1
+                    /* CACHED */
+                  ))
                 ])
               ])
             ]),
