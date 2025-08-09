@@ -7,4 +7,9 @@ export {
     defineTableColumns,
 } from "./FTable";
 export { XFileDragdrop } from "./XFileDragdrop";
+export {
+    XSortFilterDatasetNg,
+    matchPropertyValue,
+    uniqueValues,
+} from "./XSortFilterDatasetNg";
 export * from "./XTimeTextField";
