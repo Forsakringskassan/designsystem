@@ -67,6 +67,7 @@ components/page-layout/fresizepane.html
 components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
+components/table-and-list/fdefinitionlist.html
 components/table-and-list/flist.html
 components/table-and-list/fsortfilterdataset.html
 components/table-and-list/table.html

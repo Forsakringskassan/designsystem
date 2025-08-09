@@ -21,6 +21,7 @@ export {
 } from "./FCrudDataset";
 export { FDataTable } from "./FDataTable";
 export { FDatepickerField } from "./FDatepickerField";
+export { type Definition, FDefinitionList } from "./FDefinitionList";
 export {
     type DetailsPanelCloseCallback,
     type UseDetailsPanel,
