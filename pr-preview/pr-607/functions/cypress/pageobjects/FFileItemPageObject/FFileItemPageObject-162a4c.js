@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject-fileName.vue:FFileItemPageObject-fileName-325946.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject.vue:FFileItemPageObject-162a4c.js
 import { defineComponent as _defineComponent } from "vue";
 import { FFileItem } from "@fkui/vue";
 import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FFileItemPageObject-fileName",
+  __name: "FFileItemPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FFileItem() {
@@ -48,20 +48,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _withDirectives((_openBlock(), _createBlock(
     $setup["FFileItem"],
     {
-      "file-name": "myFile.doc",
-      "mime-type": "application/msword"
+      "file-name": "myFile.pdf",
+      "mime-type": "application/pdf"
     },
     null,
     512
     /* NEED_PATCH */
   )), [
-    [_directive_test, "awesome-file"]
+    [_directive_test, "file-item"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-325946"
+  selector: "#example-162a4c"
 });
 export {
   render
