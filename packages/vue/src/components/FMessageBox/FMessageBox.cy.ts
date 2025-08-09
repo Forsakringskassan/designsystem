@@ -29,8 +29,7 @@ function getDefaultTemplate(type: string): string {
     `;
 }
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("default layout", () => {
+describe("default layout", () => {
     const DensityComponent = defineComponent({
         template: getDefaultTemplate("info"),
         components: {
@@ -46,8 +45,7 @@ describe.skip("default layout", () => {
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("short layout", () => {
+describe("short layout", () => {
     const DensityComponent = defineComponent({
         template: getShortTemplate("info"),
         components: {
@@ -63,8 +61,7 @@ describe.skip("short layout", () => {
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-it.skip("should have approved design", () => {
+it("should have approved design", () => {
     const ScreenshotComponent = defineComponent({
         template: /* HTML */ `
             <div class="row">

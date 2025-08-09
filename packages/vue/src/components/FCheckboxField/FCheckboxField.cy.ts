@@ -165,8 +165,7 @@ describe("FCheckboxField", () => {
         fieldset.tooltip.iButton().should("exist");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should always show details regardless of whether foo or bar is checked when show-details is always", () => {
+    it("should always show details regardless of whether foo or bar is checked when show-details is always", () => {
         const template = /* HTML */ `
             <f-fieldset border show-details="always">
                 <template #label> Label text </template>
@@ -198,8 +197,7 @@ describe("FCheckboxField", () => {
         cy.get("fieldset").toMatchScreenshot({ baseDelay: 500 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should display details when checkbox is checked and show-details is when-selected", () => {
+    it("should display details when checkbox is checked and show-details is when-selected", () => {
         const template = /* HTML */ `
             <f-fieldset border show-details="when-selected">
                 <template #label> Label text </template>
@@ -235,8 +233,7 @@ describe("FCheckboxField", () => {
         cy.get("fieldset").toMatchScreenshot({ baseDelay: 500 });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    describe.skip("density", () => {
+    describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>
