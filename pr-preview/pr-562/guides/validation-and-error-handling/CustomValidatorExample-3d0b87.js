@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/CustomValidatorExample.vue:CustomValidatorExample-a36110.js
+// virtual-entry:virtual:docs/guides/validation/examples/CustomValidatorExample.vue:CustomValidatorExample-3d0b87.js
 import { FTextField } from "@fkui/vue";
 import {
   ValidationErrorMessageBuilder,
@@ -54,7 +54,7 @@ var startsWithValidator = {
   }
 };
 ValidationService.registerValidator(startsWithValidator);
-ValidationService.addValidationErrorMessages(
+ValidationService.setErrorMessages(
   ValidationErrorMessageBuilder.create().map("startsWith", "F\xE4ltet b\xF6rjar med fel v\xE4rde.").build()
 );
 var exampleComponent = defineComponent({
@@ -193,7 +193,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a36110"
+  selector: "#example-3d0b87"
 });
 export {
   render,

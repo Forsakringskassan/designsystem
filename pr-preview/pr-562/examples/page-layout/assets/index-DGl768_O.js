@@ -11338,7 +11338,7 @@ class ValidationServiceImpl {
   elementValidatorsReferences = {};
   validationErrorMessages = {};
   constructor() {
-    this.addValidationErrorMessages(getErrorMessages());
+    this.setErrorMessages(getErrorMessages());
   }
   getElementsAndValidators() {
     return this.elementValidatorsReferences;
@@ -11347,10 +11347,18 @@ class ValidationServiceImpl {
     return Object.values(this.validationStates).some((item) => item.touched === true);
   }
   addValidationErrorMessages(validationErrorMessages) {
-    this.validationErrorMessages = {
-      ...this.validationErrorMessages,
-      ...validationErrorMessages
-    };
+    this.setErrorMessages(validationErrorMessages);
+  }
+  setErrorMessages(messages, options = {}) {
+    const { clear = false } = options;
+    if (clear) {
+      this.clearErrorMessages();
+    }
+    const current = this.validationErrorMessages;
+    this.validationErrorMessages = { ...current, ...messages };
+  }
+  clearErrorMessages() {
+    this.validationErrorMessages = {};
   }
   registerValidator(validator) {
     const { name } = validator;
