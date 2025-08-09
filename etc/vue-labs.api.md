@@ -17,6 +17,7 @@ import { PropType } from 'vue';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
 import { ShallowUnwrapRef } from 'vue';
+import { UnwrapRefSimple } from '@vue/reactivity';
 import { ValidatorConfig } from '@fkui/logic';
 import { ValidatorConfigs } from '@fkui/logic';
 import { ValidityEvent } from '@fkui/logic';
@@ -61,6 +62,9 @@ export class HoursMinutesValidatorUtils {
     static validate(value: string, config: ValidatorConfig, name: string, compare: (value: number, limit: number) => boolean): boolean;
 }
 
+// @public (undocumented)
+export function matchPropertyValue<T, K extends keyof T = keyof T>(property: K): (item: T, value: T[K] | null) => boolean;
+
 // @public
 export function minutesToHoursFloat(...values: Array<number | undefined>): number;
 
@@ -104,6 +108,9 @@ export type TableColumnType = TableColumn<unknown, never> extends infer U ? U ex
     type: infer T;
 } ? T extends undefined ? never : T : never : never;
 
+// @public (undocumented)
+export function uniqueValues<T, K extends keyof T = keyof T>(items: T[], property: K): Array<T[K]>;
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -112,7 +119,12 @@ export const XFileDragdrop: typeof __VLS_export_2;
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const XTimeTextField: typeof __VLS_export_3;
+export const XSortFilterDatasetNg: typeof __VLS_export_3;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_4" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const XTimeTextField: typeof __VLS_export_4;
 
 // (No @packageDocumentation comment for this package)
 

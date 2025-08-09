@@ -7,6 +7,10 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "x-sort-filter-dataset-ng": {
+        flow: true,
+    },
+
     "x-time-text-field": {
         flow: true,
     },
