@@ -20,6 +20,11 @@ function ensureSet(value, message = "") {
   }
   return value;
 }
+function assertRef(ref, message = "Expected ref to have a non-null value, but it did not") {
+  if (!isSet(ref?.value)) {
+    throw new MissingValueError(message);
+  }
+}
 function assertSet(value, message = "Expected value to be set, but it was not") {
   if (!isSet(value)) {
     throw new MissingValueError(message);
@@ -3284,6 +3289,7 @@ export {
   ValidationService,
   addFocusListener,
   alertScreenReader,
+  assertRef,
   assertSet,
   availableValidators,
   configLogic,
