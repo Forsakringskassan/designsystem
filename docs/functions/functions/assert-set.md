@@ -48,7 +48,7 @@ function useValue(value: string): void {
 }
 
 const value = maybeGetValue();
-//            ^? string | null
+//            ^?    string | null
 
 assertSet(value);
 useValue(value); // OK value cannot be null after call to assertSet()

@@ -24,6 +24,13 @@ export interface AllowListValidatorConfig extends ValidatorOptions {
 }
 
 // @public
+export function assertRef<T>(ref: {
+    value: T | null;
+} | undefined | null, message?: string): asserts ref is {
+    value: T;
+};
+
+// @public
 export function assertSet<T>(value: T | undefined | null, message?: string): asserts value is T;
 
 // @public
