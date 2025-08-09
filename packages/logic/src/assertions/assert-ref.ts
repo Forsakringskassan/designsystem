@@ -23,7 +23,7 @@ import { isSet } from "../utils/is";
  * ```
  *
  * @public
- * @since %version%
+ * @since v6.15.0
  * @param ref - the value asserted to be a ref.
  * @param message - an optional exception message to use if the check fails.
  * @throws {@link MissingValueError} if value is not set.

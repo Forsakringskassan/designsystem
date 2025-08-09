@@ -21,7 +21,7 @@ import { MissingValueError } from "../utils/ensure-set";
  * ```
  *
  * @public
- * @since %version%
+ * @since v6.15.0
  * @param value - the value asserted to be set.
  * @param message - an optional exception message to use if the check fails.
  * @throws {@link MissingValueError} if value is not set.

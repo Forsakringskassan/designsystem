@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 6.15.0 (2025-08-09)
+
+### Features
+
+* **@fkui/logic, @fkui/vue:** new `ValidationService.setErrorMessages` with better control over merges (refs SFKUI-6500) 68aa647
+* **@fkui/logic:** add `assertRef` function (refs SFKUI-6500) dcc6405
+* **@fkui/logic:** add `assertSet` function (refs SFKUI-6500) 4417f84
+
+### Bug Fixes
+
+* **@fkui/design:** numeric table column headers not right aligned (refs SFKUI-6500) b1edbf6, closes #599
+* **@fkui/design:** table message box content centered (refs SFKUI-6500) f3e8d32, closes #598
+* **@fkui/design:** table message box icon alignment error (refs SFKUI-6500) 0b877ba, closes #598
+* **@fkui/vue:** `hasSlot()` returns `true` for nested vue components (fixes SFKUI-7303) 255dec5
+* **deps:** update dependency sass to v1.90.0 17b8da7
+* **deps:** update vue monorepo to v3.5.18 eaafb04
+
 ## 6.14.0 (2025-07-22)
 
 ### Features
