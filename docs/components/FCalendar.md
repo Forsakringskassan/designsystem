@@ -14,8 +14,8 @@ search:
 
 Kalendern används när en användare behöver välja flera dagar, välja dagar och fylla i information om dem, se mer information om en dag eller få en överblick över en månad.
 
-```import test-id=calendar-default
-FCalendarDefault.vue
+```import live-example
+FCalendarLiveExample.vue
 ```
 
 Varje dag i kalendern är en knapp och det går att styra vad som ska hända när användaren väljer en dag.
@@ -40,6 +40,19 @@ För att sätta det lägsta och högsta möjliga datumet att välja skickar du i
 
 ```html static
 <f-calendar v-model="month" :min-date="min" :max-date="max"></f-calendar>
+```
+
+## Årsväljare
+
+En årsväljare gör det lättare för användaren att byta till ett annat år och används när kalendern sträcker sig över flera år. Årsväljaren är som standard inaktiverad och aktiveras genom att använda propen `year-selector`:
+
+```diff
+ <f-calendar
+     v-model="model"
+     :min-date="min"
+     :max-date="max"
++    year-selector
+ ></f-calendar>
 ```
 
 ## Storlek
@@ -108,6 +121,18 @@ Exemplet lagrar dagarna som `string` i arrayen.
 ```import test-id=calendar-select-days
 FCalendarSelectDays.vue
 ```
+
+## Textnycklar
+
+Läs mer om att {@link translate-text anpassa och översätta text}.
+
+:::api
+translation:FCalendar
+:::
+
+:::api
+translation:FCalendarDay
+:::
 
 ## Props, Events & Slots
 
