@@ -51,7 +51,26 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["cancel", "completed", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted when wizard is canceled, i.e.
+         * user pressing 'Avbryt' button.
+         *
+         * Passes a boolean indicating if it was cancelled on the final step.
+         */
+        "cancel",
+        /**
+         * Emitted when wizard is finished, i.e.
+         * user pressing 'Fortsätt' button in last step.
+         */
+        "completed",
+        /**
+         * V-model event.
+         * @event update:modelValue
+         * @type {FWizardKey}
+         */
+        "update:modelValue",
+    ],
     data() {
         return {
             steps: [] as FWizardStepDefinition[],
@@ -114,10 +133,6 @@ export default defineComponent({
 
             if (next > this.steps.length) {
                 await this.doOpen(-1);
-                /**
-                 * Emitted when wizard is finished, i.e.
-                 * user pressing 'Fortsätt' button in last step.
-                 */
                 this.$emit("completed");
             } else {
                 await this.doOpen(next);
@@ -142,23 +157,12 @@ export default defineComponent({
 
             if (open >= 0) {
                 const step = this.steps[open - 1];
-                /**
-                 * V-model event.
-                 * @event update:modelValue
-                 * @type {FWizardKey}
-                 */
                 this.$emit("update:modelValue", step.key);
             } else {
                 this.$emit("update:modelValue", null);
             }
         },
         cancel(isFinalStep: boolean): void {
-            /**
-             * Emitted when wizard is canceled, i.e.
-             * user pressing 'Avbryt' button.
-             *
-             * Passes a boolean indicating if it was cancelled on the final step.
-             */
             this.$emit("cancel", isFinalStep);
         },
     },

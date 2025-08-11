@@ -75,7 +75,19 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["input", "update:modelValue"],
+    emits: [
+        /**
+         * @event input
+         * @type {string}
+         */
+        "input",
+        /**
+         * V-model event.
+         * @event update:modelValue
+         * @type {string}
+         */
+        "update:modelValue",
+    ],
     data() {
         return {
             validityMode: "INITIAL" as string,
@@ -142,17 +154,7 @@ export default defineComponent({
     methods: {
         onInput(event: Event): void {
             if (event.target instanceof HTMLTextAreaElement) {
-                /**
-                 * V-model event.
-                 * @event update:modelValue
-                 * @type {string}
-                 */
                 this.$emit("update:modelValue", event.target.value);
-
-                /**
-                 * @event input
-                 * @type {string}
-                 */
                 this.$emit("input", event.target.value);
             }
         },

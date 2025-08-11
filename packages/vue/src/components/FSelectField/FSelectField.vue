@@ -63,7 +63,21 @@ export default defineComponent({
             default: "sm-12",
         },
     },
-    emits: ["change", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted when the value of the dropdown changes.
+         *
+         * @event change
+         * @type {string}
+         */
+        "change",
+        /**
+         * V-model event.
+         * @event update:modelValue
+         * @type {string}
+         */
+        "update:modelValue",
+    ],
     setup() {
         return {
             textFieldTableMode: inject("textFieldTableMode", false) as boolean,
@@ -108,19 +122,7 @@ export default defineComponent({
                 return this.modelValue;
             },
             set(value: unknown) {
-                /**
-                 * V-model event.
-                 * @event update:modelValue
-                 * @type {string}
-                 */
                 this.$emit("update:modelValue", value);
-
-                /**
-                 * Emitted when the value of the dropdown changes.
-                 *
-                 * @event change
-                 * @type {string}
-                 */
                 this.$emit("change", value);
             },
         },

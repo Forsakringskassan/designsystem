@@ -79,7 +79,14 @@ export default defineComponent({
             },
         },
     },
-    emits: ["submit"],
+    emits: [
+        /** V-model event.
+         *
+         * @event submit
+         *
+         */
+        "submit",
+    ],
     data() {
         return {
             validity: { isValid: true, componentsWithError: [], componentCount: 0 } as GroupValidityEvent,
@@ -142,11 +149,6 @@ export default defineComponent({
                 return;
             }
 
-            /** V-model event.
-             *
-             * @event submit
-             *
-             */
             this.$emit("submit", event);
         },
     },

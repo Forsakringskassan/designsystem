@@ -64,7 +64,13 @@ export default defineComponent({
             default: "Du har %VALUE% notifieringar.",
         },
     },
-    emits: ["toggle"],
+    emits: [
+        /**
+         * Emitted when panel heading is clicked.
+         * @type {MouseEvent}
+         */
+        "toggle",
+    ],
     computed: {
         expandedClass(): string {
             return this.expanded ? "expandable-panel--expanded" : "expandable-panel--collapsed";
@@ -81,10 +87,6 @@ export default defineComponent({
     },
     methods: {
         onClickHeadingButton(event: MouseEvent): void {
-            /**
-             * Emitted when panel heading is clicked.
-             * @type {MouseEvent}
-             */
             this.$emit("toggle", event);
         },
     },

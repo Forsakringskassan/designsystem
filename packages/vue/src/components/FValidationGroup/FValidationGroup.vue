@@ -32,7 +32,21 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["group-validity", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted when validation group has been updated.
+         *
+         * @event group-validity
+         * @type {GroupValidityEvent}
+         */
+        "group-validity",
+        /**
+         * V-model event.
+         * @event group-validity
+         * @type {GroupValidityEvent}
+         */
+        "update:modelValue",
+    ],
     data() {
         return {
             components: {} as unknown as Record<string, ComponentValidityEvent>,
@@ -59,20 +73,7 @@ export default defineComponent({
             const componentsWithError = components.filter((component) => component.validityMode === "ERROR");
 
             componentsWithError.sort((a, b) => documentOrderComparator(a.target, b.target));
-
-            /**
-             * V-model event.
-             * @event group-validity
-             * @type {GroupValidityEvent}
-             */
             this.$emit("update:modelValue", { isValid, componentsWithError, componentCount: components.length });
-
-            /**
-             * Emitted when validation group has been updated.
-             *
-             * @event group-validity
-             * @type {GroupValidityEvent}
-             */
             this.$emit("group-validity", { isValid, componentsWithError, componentCount: components.length });
         },
     },

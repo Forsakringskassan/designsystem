@@ -130,7 +130,23 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["blur", "change", "update:modelValue"],
+    emits: [
+        /**
+         * @event blur
+         * @type {string}
+         */
+        "blur",
+        /**
+         * @event change
+         * @type {string}
+         */
+        "change",
+        /* V-model event.
+         * @event update:modelValue
+         * @type {string}
+         */
+        "update:modelValue",
+    ],
     setup(props) {
         // a shared setup is used because components extending this component need to redeclare the same setup
         const {
@@ -244,17 +260,9 @@ export default defineComponent({
         async onChange(): Promise<void> {
             // trigger v-model update when not handled by onValidity event
             if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
-                /* V-model event.
-                 * @event update:modelValue
-                 * @type {string}
-                 */
                 this.$emit("update:modelValue", this.viewValue);
 
                 await this.$nextTick(); // wait for model update before triggering change event
-                /**
-                 * @event change
-                 * @type {string}
-                 */
                 this.$emit("change", this.viewValue);
             }
         },
@@ -272,10 +280,6 @@ export default defineComponent({
             if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
                 this.$emit("update:modelValue", this.viewValue);
                 await this.$nextTick(); // wait for model update before triggering blur event
-                /**
-                 * @event blur
-                 * @type {string}
-                 */
                 this.$emit("blur", this.viewValue);
             }
         },

@@ -62,8 +62,13 @@ export default defineComponent({
     },
     emits: [
         "change",
+        /**
+         * V-model event.
+         * @event update:modelValue
+         * @param value
+         * @type {FDate}
+         */
         "update:modelValue",
-
         /**
          * Emitted when year selector is opened or closed.
          * @type {boolean}
@@ -120,12 +125,6 @@ export default defineComponent({
         },
         onClickPreviousButton(): void {
             if (!this.previousDisabled) {
-                /**
-                 * V-model event.
-                 * @event update:modelValue
-                 * @param value
-                 * @type {FDate}
-                 */
                 this.$emit("update:modelValue", this.previousValue);
 
                 const previousMonth = this.getDateText(this.previousValue);

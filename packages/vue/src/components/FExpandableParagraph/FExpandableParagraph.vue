@@ -63,7 +63,13 @@ export default defineComponent({
             default: () => ElementIdService.generateElementId(),
         },
     },
-    emits: ["toggle"],
+    emits: [
+        /**
+         * Emitted when heading is clicked.
+         * @type {MouseEvent}
+         */
+        "toggle",
+    ],
     computed: {
         expandedClass(): string {
             return this.expanded ? "expandable-paragraph--open" : "expandable-paragraph--closed";
@@ -83,10 +89,6 @@ export default defineComponent({
     },
     methods: {
         onClickMinimize(event: MouseEvent): void {
-            /**
-             * Emitted when heading is clicked.
-             * @type {MouseEvent}
-             */
             this.$emit("toggle", event);
         },
     },

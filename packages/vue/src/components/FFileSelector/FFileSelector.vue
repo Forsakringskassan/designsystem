@@ -33,7 +33,16 @@ export default defineComponent({
             default: null,
         },
     },
-    emits: ["change", "update:modelValue"],
+    emits: [
+        /**
+         * V-model event.
+         *
+         * @event input
+         * @type {FileList}
+         */
+        "change",
+        "update:modelValue",
+    ],
     computed: {
         attrs(): Record<string, unknown> {
             return {
@@ -41,12 +50,6 @@ export default defineComponent({
                 id: this.id,
                 onChange: (event: Event) => {
                     if (event.target instanceof HTMLInputElement) {
-                        /**
-                         * V-model event.
-                         *
-                         * @event input
-                         * @type {FileList}
-                         */
                         this.$emit("change", event.target.files);
                     }
                 },
