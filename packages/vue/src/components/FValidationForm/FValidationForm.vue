@@ -82,7 +82,6 @@ export default defineComponent({
     emits: [
         /** V-model event.
          *
-         * @event submit
          *
          */
         "submit",

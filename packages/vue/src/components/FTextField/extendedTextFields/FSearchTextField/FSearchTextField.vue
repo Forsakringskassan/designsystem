@@ -33,12 +33,10 @@ export default defineComponent({
     },
     emits: [
         /**
-         * @event blur
          * @type {string | number}
          */
         "blur",
         /**
-         * @event change
          * @type {string | number}
          */
         "change",
@@ -46,7 +44,6 @@ export default defineComponent({
         /**
          * V-model event.
          *
-         * @event update:modelValue
          * @type {string}
          */
         "update:modelValue",

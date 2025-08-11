@@ -66,7 +66,6 @@ export default defineComponent({
         "completed",
         /**
          * V-model event.
-         * @event update:modelValue
          * @type {FWizardKey}
          */
         "update:modelValue",

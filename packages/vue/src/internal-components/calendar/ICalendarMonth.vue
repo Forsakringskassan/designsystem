@@ -53,13 +53,11 @@ export default defineComponent({
         "change",
         /**
          * `click` event.
-         * @event click
          * @type {string}
          */
         "click",
         /**
          * `v-model` event.
-         * @event update:modelValue
          * @type {string}
          */
         "update:modelValue",

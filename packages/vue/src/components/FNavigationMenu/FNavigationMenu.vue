@@ -108,7 +108,6 @@ export default defineComponent({
          * Event that is dispatched when a menu item is selected, for example, by clicking on the item.
          * In most use cases the event payload is used to call Vue `router.push()` from the consumer code.
          *
-         * @event selectedRoute
          * @param route
          * @type {string}
          */
@@ -116,7 +115,6 @@ export default defineComponent({
         /**
          * V-model event to update route property.
          *
-         * @event update:route
          * @param route
          * @type {string}
          */

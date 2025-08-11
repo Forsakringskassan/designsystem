@@ -47,13 +47,11 @@ export default defineComponent({
     emits: [
         /**
          * `click` event. Emitted when a calendar day is clicked.
-         * @event click
          * @type {FDate}
          */
         "click",
         /**
          * `v-model` event. Emitted when changing to a different month in the calendar.
-         * @event update:modelValue
          * @type {FDate}
          */
         "update:modelValue",
