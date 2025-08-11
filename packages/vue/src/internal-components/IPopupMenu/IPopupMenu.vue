@@ -78,28 +78,23 @@ export default defineComponent({
     emits: [
         /**
          * Emitted when an item is selected and when tabbing out of the popup.
-         *
-         * @event close
          */
         "close",
         /**
          * Emitted when an item is selected.
          *
-         * @event select
          * @type {string} item key
          */
         "select",
         /**
          * V-model event. Emitted when an item is selected.
          *
-         * @event select
          * @type {string} item key
          */
         "update:modelValue",
         /**
          * V-model event. Emitted when item focus changes.
          *
-         * @event select
          * @type {string} Key of focused item, or empty if no item focused.
          */
         "update:focusedItem",

@@ -49,13 +49,11 @@ export default defineComponent({
         /**
          * Emitted when the value of the radiobutton changes.
          *
-         * @event change
          * @type {anyType}
          */
         "change",
         /**
          * V-model event.
-         * @event update:modelValue
          * @type {anyType}
          */
         "update:modelValue",

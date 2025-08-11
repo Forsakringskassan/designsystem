@@ -111,13 +111,11 @@ export default defineComponent({
         /**
          * Emitted when the value of the checkbox changes.
          *
-         * @event change
          * @type {string}
          */
         "change",
         /**
          * `v-model` event.
-         * @event update:modelValue
          * @type {string}
          */
         "update:modelValue",

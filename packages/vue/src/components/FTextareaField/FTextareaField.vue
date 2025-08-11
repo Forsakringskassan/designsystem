@@ -77,13 +77,11 @@ export default defineComponent({
     },
     emits: [
         /**
-         * @event input
          * @type {string}
          */
         "input",
         /**
          * V-model event.
-         * @event update:modelValue
          * @type {string}
          */
         "update:modelValue",
