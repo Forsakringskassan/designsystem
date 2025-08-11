@@ -28,41 +28,45 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject.vue:FBadgePageObject-a21c11.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject.vue:FDetailsPanelPageObject-736376.js
 import { defineComponent as _defineComponent } from "vue";
-import { FBadge } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { onMounted } from "vue";
+import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
+import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FBadgePageObject",
+  __name: "FDetailsPanelPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FBadge() {
-      return FBadge;
+    onMounted(() => {
+      useDetailsPanel("awesome-panel").open("foo");
+    });
+    const __returned__ = { get FPageLayout() {
+      return FPageLayout;
+    }, get FDetailsPanel() {
+      return FDetailsPanel;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
 });
+var _hoisted_1 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], null, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(
-        " MyBadge ",
-        -1
-        /* CACHED */
-      )
-    ])),
-    _: 1,
-    __: [0]
-  })), [
-    [_directive_test, "my-badge"]
-  ]);
+  return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
+    default: _withCtx(({ left, content }) => [
+      _createVNode($setup["FDetailsPanel"], {
+        slot: left,
+        name: "awesome-panel"
+      }, null, 8, ["slot"]),
+      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_1)
+    ]),
+    _: 1
+    /* STABLE */
+  });
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a21c11"
+  selector: "#example-736376"
 });
 export {
   render
