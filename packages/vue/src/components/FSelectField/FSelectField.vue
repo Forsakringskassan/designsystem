@@ -67,13 +67,11 @@ export default defineComponent({
         /**
          * Emitted when the value of the dropdown changes.
          *
-         * @event change
          * @type {string}
          */
         "change",
         /**
          * V-model event.
-         * @event update:modelValue
          * @type {string}
          */
         "update:modelValue",

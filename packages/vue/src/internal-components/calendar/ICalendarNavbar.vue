@@ -64,7 +64,6 @@ export default defineComponent({
         "change",
         /**
          * V-model event.
-         * @event update:modelValue
          * @param value
          * @type {FDate}
          */
