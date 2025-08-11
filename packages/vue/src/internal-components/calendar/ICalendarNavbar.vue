@@ -36,7 +36,16 @@ export default defineComponent({
             required: true,
         },
     },
-    emits: ["change", "update:modelValue"],
+    emits: [
+        "change",
+        /**
+         * V-model event.
+         * @event update:modelValue
+         * @param value
+         * @type {FDate}
+         */
+        "update:modelValue",
+    ],
     computed: {
         previousDisabled(): boolean {
             return isInvalidMonth(this.modelValue.addMonths(-1), this.minDate, this.maxDate);
@@ -75,12 +84,6 @@ export default defineComponent({
     methods: {
         onClickPreviousButton(): void {
             if (!this.previousDisabled) {
-                /**
-                 * V-model event.
-                 * @event update:modelValue
-                 * @param value
-                 * @type {FDate}
-                 */
                 this.$emit("update:modelValue", this.previousValue);
 
                 const previousMonth = this.getDateText(this.previousValue);

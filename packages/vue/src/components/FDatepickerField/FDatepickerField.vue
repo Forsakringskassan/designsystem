@@ -99,7 +99,21 @@ export default defineComponent({
             default: false,
         },
     },
-    emits: ["change", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted when the value of the checkbox changes.
+         *
+         * @event change
+         * @type {string}
+         */
+        "change",
+        /**
+         * `v-model` event.
+         * @event update:modelValue
+         * @type {string}
+         */
+        "update:modelValue",
+    ],
     setup() {
         const defaultMinDate = FDate.now().addYears(-10);
         const defaultMaxDate = FDate.now().addYears(10);
@@ -197,20 +211,7 @@ export default defineComponent({
         },
         onChangeTextField(): void {
             updateCalendarValue(this, this.textFieldValue);
-
-            /**
-             * `v-model` event.
-             * @event update:modelValue
-             * @type {string}
-             */
             this.$emit("update:modelValue", this.textFieldValue);
-
-            /**
-             * Emitted when the value of the checkbox changes.
-             *
-             * @event change
-             * @type {string}
-             */
             this.$emit("change", this.textFieldValue);
         },
         onClickCalendarButton() {

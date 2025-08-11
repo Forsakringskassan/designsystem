@@ -37,7 +37,24 @@ export default defineComponent({
         },
         extendedValidation: { type: Boolean, default: false },
     },
-    emits: ["blur", "change", "update:modelValue"],
+    emits: [
+        /**
+         * @event blur
+         * @type {string | number}
+         */
+        "blur",
+        /**
+         * @event change
+         * @type {string | number}
+         */
+        "change",
+        /**
+         * V-model event.
+         * @event update:modelValue
+         * @type {string}
+         */
+        "update:modelValue",
+    ],
     data() {
         return {
             validityMode: "INITIAL" as string,
@@ -50,25 +67,12 @@ export default defineComponent({
     },
     methods: {
         onChange(event: Event): void {
-            /**
-             * @event change
-             * @type {string | number}
-             */
             this.$emit("change", event);
         },
         onBlur(event: Event): void {
-            /**
-             * @event blur
-             * @type {string | number}
-             */
             this.$emit("blur", event);
         },
         onUpdate(event: Event): void {
-            /**
-             * V-model event.
-             * @event update:modelValue
-             * @type {string}
-             */
             this.$emit("update:modelValue", event);
         },
         onValidity({ detail }: CustomEvent<ValidityEvent>): void {

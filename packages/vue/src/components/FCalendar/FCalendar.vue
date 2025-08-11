@@ -44,22 +44,25 @@ export default defineComponent({
             required: true,
         },
     },
-    emits: ["click", "update:modelValue"],
+    emits: [
+        /**
+         * `click` event. Emitted when a calendar day is clicked.
+         * @event click
+         * @type {FDate}
+         */
+        "click",
+        /**
+         * `v-model` event. Emitted when changing to a different month in the calendar.
+         * @event update:modelValue
+         * @type {FDate}
+         */
+        "update:modelValue",
+    ],
     methods: {
         onClickDay(date: FDate): void {
-            /**
-             * `click` event. Emitted when a calendar day is clicked.
-             * @event click
-             * @type {FDate}
-             */
             this.$emit("click", date);
         },
         onChangeMonth(date: FDate): void {
-            /**
-             * `v-model` event. Emitted when changing to a different month in the calendar.
-             * @event update:modelValue
-             * @type {FDate}
-             */
             this.$emit("update:modelValue", date);
         },
     },

@@ -49,14 +49,23 @@ export default defineComponent({
             required: true,
         },
     },
-    emits: ["change", "click", "update:modelValue"],
+    emits: [
+        "change",
+        /**
+         * `click` event.
+         * @event click
+         * @type {string}
+         */
+        "click",
+        /**
+         * `v-model` event.
+         * @event update:modelValue
+         * @type {string}
+         */
+        "update:modelValue",
+    ],
     methods: {
         onClickDay(date: FDate): void {
-            /**
-             * `click` event.
-             * @event click
-             * @type {string}
-             */
             this.$emit("click", date);
         },
         async onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void> {
@@ -81,11 +90,6 @@ export default defineComponent({
                 return;
             }
 
-            /**
-             * `v-model` event.
-             * @event update:modelValue
-             * @type {string}
-             */
             this.$emit("update:modelValue", navigatedMonth);
 
             if (navigatedDay.month !== date.month) {
