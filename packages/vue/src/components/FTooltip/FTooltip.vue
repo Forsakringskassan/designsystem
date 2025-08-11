@@ -67,7 +67,20 @@ export default defineComponent({
             },
         },
     },
-    emits: ["update:modelValue", "toggle"],
+    emits: [
+        /**
+         * v-model event.
+         *
+         * @param {boolean} value - Model value
+         */
+        "update:modelValue",
+        /**
+         * Emitted when the state of the tooltip (collapsed/expanded) changes.
+         *
+         * @param {{ isOpen: boolean }} event - New state of tooltip.
+         */
+        "toggle",
+    ],
     setup(props) {
         const provided = inject(tooltipAttachTo, null);
         const attachTo = toRef(props, "attachTo");
@@ -141,18 +154,7 @@ export default defineComponent({
             const value = this.isOpen;
             const event = { isOpen: this.isOpen };
 
-            /**
-             * v-model event.
-             *
-             * @param {boolean} value - Model value
-             */
             this.$emit("update:modelValue", value);
-
-            /**
-             * Emitted when the state of the tooltip (collapsed/expanded) changes.
-             *
-             * @param {{ isOpen: boolean }} event - New state of tooltip.
-             */
             this.$emit("toggle", event);
 
             if (!this.isOpen) {

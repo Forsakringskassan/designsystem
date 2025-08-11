@@ -31,7 +31,26 @@ export default defineComponent({
             default: 80,
         },
     },
-    emits: ["blur", "change", "update", "update:modelValue"],
+    emits: [
+        /**
+         * @event blur
+         * @type {string | number}
+         */
+        "blur",
+        /**
+         * @event change
+         * @type {string | number}
+         */
+        "change",
+        "update",
+        /**
+         * V-model event.
+         *
+         * @event update:modelValue
+         * @type {string}
+         */
+        "update:modelValue",
+    ],
     data() {
         return {
             defaultText: this.$t("fkui.search-text-field.label", "Sök"),
@@ -56,26 +75,12 @@ export default defineComponent({
             this.$emit("update:modelValue", (event.target as HTMLInputElement).value);
         },
         onChange(event: Event): void {
-            /**
-             * @event change
-             * @type {string | number}
-             */
             this.$emit("change", event);
         },
         onBlur(event: Event): void {
-            /**
-             * @event blur
-             * @type {string | number}
-             */
             this.$emit("blur", event);
         },
         onUpdate(event: Event): void {
-            /**
-             * V-model event.
-             *
-             * @event update:modelValue
-             * @type {string}
-             */
             this.$emit("update:modelValue", event);
         },
     },

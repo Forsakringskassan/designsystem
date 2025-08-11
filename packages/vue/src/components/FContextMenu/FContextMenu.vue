@@ -64,7 +64,18 @@ export default defineComponent({
             default: "Kontextuell meny",
         },
     },
-    emits: ["close", "select"],
+    emits: [
+        /**
+         * Event that is dispatched after an item is selected or
+         * after pressing for example esc in the menu
+         */
+        "close",
+        /**
+         * Event that is dispatched when an item is selected.
+         * @type {string} item key
+         */
+        "select",
+    ],
     setup() {
         return { contextmenu: ref<HTMLElement | null>(null) };
     },
@@ -112,19 +123,11 @@ export default defineComponent({
             return this.separatorPositions.includes(index);
         },
         closePopup(): void {
-            /**
-             * Event that is dispatched after an item is selected or
-             * after pressing for example esc in the menu
-             */
             this.$emit("close");
         },
         onClickItem(item: ContextMenuItem): void {
             if (isContextMenuTextItem(item) && item.key) {
                 this.selectedItem = item.key;
-                /**
-                 * Event that is dispatched when an item is selected.
-                 * @type {string} item key
-                 */
                 this.$emit("select", this.selectedItem);
                 this.closePopup();
             }
