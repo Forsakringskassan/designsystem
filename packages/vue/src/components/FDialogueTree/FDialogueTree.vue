@@ -36,7 +36,6 @@ export default defineComponent({
     emits: [
         /**
          * `v-model` event.
-         * @event update:modelValue
          * @type {FDialogueTreeUserProgress}
          */
         "update:modelValue",

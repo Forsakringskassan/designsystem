@@ -37,7 +37,6 @@ export default defineComponent({
         /**
          * V-model event.
          *
-         * @event input
          * @type {FileList}
          */
         "change",

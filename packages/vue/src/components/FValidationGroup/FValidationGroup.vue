@@ -36,13 +36,11 @@ export default defineComponent({
         /**
          * Emitted when validation group has been updated.
          *
-         * @event group-validity
          * @type {GroupValidityEvent}
          */
         "group-validity",
         /**
          * V-model event.
-         * @event group-validity
          * @type {GroupValidityEvent}
          */
         "update:modelValue",

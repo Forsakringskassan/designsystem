@@ -53,13 +53,11 @@ export default defineComponent({
         /**
          * Emitted when the value of the checkbox changes.
          *
-         * @event change
          * @type {anyType | anyType[]}
          */
         "change",
         /**
          * V-model event.
-         * @event update:modelValue
          * @type {anyType | anyType[]}
          */
         "update:modelValue",
