@@ -33,7 +33,14 @@ export default defineComponent({
             required: true,
         },
     },
-    emits: ["update:modelValue"],
+    emits: [
+        /**
+         * `v-model` event.
+         * @event update:modelValue
+         * @type {FDialogueTreeUserProgress}
+         */
+        "update:modelValue",
+    ],
     data(): FDialogueTreeData {
         return {
             currentStep: this.dialogueTree,
@@ -87,12 +94,6 @@ export default defineComponent({
                 lastStep,
                 steps: this.steps,
             };
-
-            /**
-             * `v-model` event.
-             * @event update:modelValue
-             * @type {FDialogueTreeUserProgress}
-             */
             this.$emit("update:modelValue", emit);
         },
     },

@@ -131,7 +131,23 @@ export default defineComponent({
             ],
         },
     },
-    emits: ["cancel", "close", "submit"],
+    emits: [
+        /**
+         * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+         * In most use cases the isOpen prop should be set to false when this event is triggered.
+         */
+        "cancel",
+        /**
+         * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+         * In most use cases the isOpen prop should be set to false when this event is triggered.
+         */
+        "close",
+        /**
+         * Event that is dispatched when the submit button is is clicked.
+         * The event payload is the data that has been submitted.
+         */
+        "submit",
+    ],
     data() {
         return {};
     },
@@ -143,23 +159,11 @@ export default defineComponent({
     methods: {
         onClose() {
             ValidationService.resetState(this.$el);
-            /**
-             * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-             * In most use cases the isOpen prop should be set to false when this event is triggered.
-             */
             this.$emit("cancel");
-            /**
-             * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
-             * In most use cases the isOpen prop should be set to false when this event is triggered.
-             */
             this.$emit("close", { reason: "close" });
         },
         async onSubmit() {
             ValidationService.resetState(this.$el);
-            /**
-             * Event that is dispatched when the submit button is is clicked.
-             * The event payload is the data that has been submitted.
-             */
             this.$emit("submit", { data: this.value });
             this.$emit("close", { reason: "submit", data: this.value });
         },

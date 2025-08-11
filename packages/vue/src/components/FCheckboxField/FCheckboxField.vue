@@ -49,7 +49,21 @@ export default defineComponent({
             required: true,
         },
     },
-    emits: ["change", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted when the value of the checkbox changes.
+         *
+         * @event change
+         * @type {anyType | anyType[]}
+         */
+        "change",
+        /**
+         * V-model event.
+         * @event update:modelValue
+         * @type {anyType | anyType[]}
+         */
+        "update:modelValue",
+    ],
     setup() {
         const { showDetails, getFieldsetLabelText } = useFieldset();
         return {
@@ -140,19 +154,7 @@ export default defineComponent({
                 }
             }
 
-            /**
-             * V-model event.
-             * @event update:modelValue
-             * @type {anyType | anyType[]}
-             */
             this.$emit("update:modelValue", newModel);
-
-            /**
-             * Emitted when the value of the checkbox changes.
-             *
-             * @event change
-             * @type {anyType | anyType[]}
-             */
             this.$emit("change", newModel);
         },
         onKeydown(event: Event): void {

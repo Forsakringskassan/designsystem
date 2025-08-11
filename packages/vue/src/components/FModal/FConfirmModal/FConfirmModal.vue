@@ -93,7 +93,13 @@ export default defineComponent({
             },
         },
     },
-    emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
+    emits: [
+        /**
+         * Emits reason for closing modal
+         */
+        "close",
+        ...defaultButtons.map((it) => it.event ?? ""),
+    ],
     computed: {
         preparedButtons(): FModalButton[] {
             const preparedButtonList = prepareButtonList(this.buttons);
@@ -113,13 +119,8 @@ export default defineComponent({
              * Emits specified button event when clicked
              *
              * @event button.event
-             *
              */
             this.$emit(button.event);
-
-            /**
-             * Emits reason for closing modal
-             */
             this.$emit("close", {
                 reason: button.reason,
             });

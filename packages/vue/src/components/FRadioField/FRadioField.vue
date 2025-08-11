@@ -45,7 +45,21 @@ export default defineComponent({
             default: () => undefined,
         },
     },
-    emits: ["change", "update:modelValue"],
+    emits: [
+        /**
+         * Emitted when the value of the radiobutton changes.
+         *
+         * @event change
+         * @type {anyType}
+         */
+        "change",
+        /**
+         * V-model event.
+         * @event update:modelValue
+         * @type {anyType}
+         */
+        "update:modelValue",
+    ],
     setup() {
         const { sharedName, showDetails, getFieldsetLabelText } = useFieldset();
         return { sharedName, showDetails, getFieldsetLabelText };
@@ -82,19 +96,7 @@ export default defineComponent({
                 name: this.sharedName ?? this.$attrs.name,
                 onChange: (event: Event) => {
                     if (event.target instanceof HTMLInputElement) {
-                        /**
-                         * V-model event.
-                         * @event update:modelValue
-                         * @type {anyType}
-                         */
                         this.$emit("update:modelValue", this.value);
-
-                        /**
-                         * Emitted when the value of the radiobutton changes.
-                         *
-                         * @event change
-                         * @type {anyType}
-                         */
                         this.$emit("change", this.value);
                     }
                 },
