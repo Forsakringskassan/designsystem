@@ -1,6 +1,12 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
     "extends": "../../api-extractor.json",
+    "compiler": {
+        "tsconfigFilePath": "<projectFolder>/tsconfig.lib.json",
+        "overrideTsconfig": {
+            "moduleResolution": "node"
+        }
+    },
     "dtsRollup": {
         "publicTrimmedFilePath": "<projectFolder>/dist/types/index.d.ts"
     },
