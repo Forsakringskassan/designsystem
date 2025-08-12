@@ -109,7 +109,7 @@ export default defineComponent({
     },
     emits: [
         /**
-         * Emitted when the value of the checkbox changes.
+         * Emitted when date changes.
          *
          * @type {string}
          */
