@@ -6919,7 +6919,6 @@ contentStyle(): Record<string, string>;
 }, {
 onOpenSecondary(): Promise<void>;
 onCloseSecondary(): void;
-openSecondary(): void;
 onClickCloseSecondary(): void;
 onResize(): void;
 }, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {

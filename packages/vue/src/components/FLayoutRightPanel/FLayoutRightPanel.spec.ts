@@ -3,6 +3,7 @@ import "@fkui/test-utils/jest";
 import { flushPromises, mount, VueWrapper } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import FLayoutRightPanel from "./FLayoutRightPanel.vue";
+import { FLayoutRightPanelService } from "./services/FLayoutRightPanelService";
 
 let wrapper: VueWrapper;
 
@@ -22,8 +23,7 @@ async function createWrapper(): Promise<VueWrapper> {
         },
         attachTo: createPlaceholderInDocument(),
     });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should not test methods this way, should interact with the component the same way an actual user does
-    (wrapper.vm as any).openSecondary();
+    FLayoutRightPanelService.open();
     // wait for it to open
     await wrapper.vm.$nextTick();
     await flushPromises();
