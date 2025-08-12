@@ -80,9 +80,8 @@ export default defineComponent({
         },
     },
     emits: [
-        /** V-model event.
-         *
-         *
+        /**
+         * Emitted when form is successfully submitted.
          */
         "submit",
     ],
