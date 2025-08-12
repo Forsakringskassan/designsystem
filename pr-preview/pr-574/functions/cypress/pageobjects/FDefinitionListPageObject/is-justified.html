@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-830dc8.json"
+            href="../../../../search-data-538546.json"
             as="fetch"
             crossorigin
-            integrity="sha384-OWZfxgBNdWNx1WFTPuRdYSIl+1ZXjIvMAso423iUAw49celXl4Tckaup9xLry+kM"
+            integrity="sha384-p/e0eUhawRIcSKTOMzGmLhfngDOQqp239GqQ/MdKSgTQPps+StUkjmScUehEMPvJ"
             id="search-data"
         />
     </head>
@@ -303,6 +303,17 @@
         >
             FDefinitionListPageObject()
         </a>
+    </li><li class="link ">
+        <a
+            href="./description.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDefinitionListPageObject/description.html"
+            
+        >
+            description()
+        </a>
     </li><li class="link active">
         <a
             href="./is-justified.html"
@@ -313,6 +324,28 @@
             
         >
             isJustified()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./number-of-definitions.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDefinitionListPageObject/number-of-definitions.html"
+            
+        >
+            numberOfDefinitions()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./term.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDefinitionListPageObject/term.html"
+            
+        >
+            term()
         </a>
     </li></ol>
 
@@ -1719,12 +1752,12 @@
                     <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> myDefinitionListNotJustified = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(
     <span class="hljs-string">&quot;[data-test=my-definition-list-not-justified]&quot;</span>,
 );
-myDefinitionListNotJustified.<span class="hljs-title function_">isJustified</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;eq&quot;</span>, <span class="hljs-literal">false</span>);
+myDefinitionListNotJustified.<span class="hljs-title function_">isJustified</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;be.equal&quot;</span>, <span class="hljs-literal">false</span>);
 
 <span class="hljs-keyword">const</span> myDefinitionListJustified = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(
     <span class="hljs-string">&quot;[data-test=my-definition-list-justified]&quot;</span>,
 );
-myDefinitionListJustified.<span class="hljs-title function_">isJustified</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;eq&quot;</span>, <span class="hljs-literal">true</span>);</code></pre>
+myDefinitionListJustified.<span class="hljs-title function_">isJustified</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;be.equal&quot;</span>, <span class="hljs-literal">true</span>);</code></pre>
                 </div>
             <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
 <li><a href="../../../../components/table-and-list/fdefinitionlist.html"><code>FDefinitionList</code></a></li>
@@ -1753,9 +1786,9 @@ myDefinitionListJustified.<span class="hljs-title function_">isJustified</span>(
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">compact-description-list (<a href="https://github.com/Forsakringskassan/designsystem/commits/62468cbdc075a894a841b9890814970e24c1b550">62468cb</a>)<br />
+<div class="footer__right"><div class="version">compact-description-list (<a href="https://github.com/Forsakringskassan/designsystem/commits/1a771e3391a97ef2074e264a187c3193cef2b8ef">1a771e3</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/574">PR 574</a><br />
-        2025-08-12 14:34
+        2025-08-12 15:18
 </div>
 <div class="toolbar__item">
     <form id="version">
