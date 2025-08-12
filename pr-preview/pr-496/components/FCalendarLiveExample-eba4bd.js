@@ -3629,7 +3629,8 @@ import {
   isVNode
 } from "vue";
 var defaultOptions = {
-  stripClasses: ["sr-only"]
+  stripClasses: ["sr-only"],
+  componentPlaceholder: false
 };
 function collapseWhitespace(text) {
   return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
@@ -3650,13 +3651,33 @@ function excludeClass(exclude) {
 function excludeComment(node) {
   return node.type !== Comment;
 }
+function isComponent(node) {
+  return typeof node.type === "object";
+}
+function getComponentName({ type }) {
+  if ("__name" in type) {
+    return String(type.__name);
+  }
+  if ("name" in type) {
+    return String(type.name);
+  }
+  return "Component";
+}
 function getTextContent(children, options) {
-  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
-    if (Array.isArray(child.children)) {
-      return getTextContent(child.children, options);
+  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((node) => {
+    if (isComponent(node)) {
+      if (options.componentPlaceholder) {
+        const name = getComponentName(node);
+        return `<${name} />`;
+      } else {
+        return "";
+      }
     }
-    if (typeof child.children === "string") {
-      return child.children;
+    if (Array.isArray(node.children)) {
+      return getTextContent(node.children, options);
+    }
+    if (typeof node.children === "string") {
+      return node.children;
     }
   }).join("");
 }
@@ -3668,15 +3689,19 @@ function renderSlotText(render28, props = {}, options) {
   if (nodes.length === 0) {
     return void 0;
   }
-  return collapseWhitespace(
-    getTextContent(nodes, { ...defaultOptions, ...options })
-  );
+  const effectiveOptions = { ...defaultOptions, ...options };
+  return collapseWhitespace(getTextContent(nodes, effectiveOptions));
 }
 
 // packages/vue/src/utils/has-slot.ts
+var defaultOptions2 = {
+  stripClasses: ["sr-only"],
+  componentPlaceholder: true
+};
 function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
-  return Boolean(renderSlotText(slot, props, options));
+  const effectiveOptions = { ...defaultOptions2, ...options };
+  return Boolean(renderSlotText(slot, props, effectiveOptions));
 }
 
 // packages/vue/src/utils/use-modal.ts
@@ -6217,16 +6242,19 @@ var ICalendarNavbar_default = defineComponent20({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarNavbar.vue?type=template
-import { toDisplayString as _toDisplayString9, openBlock as _openBlock21, createElementBlock as _createElementBlock16, createCommentVNode as _createCommentVNode19, createElementVNode as _createElementVNode15, resolveComponent as _resolveComponent9, normalizeClass as _normalizeClass11, createVNode as _createVNode6, withModifiers as _withModifiers6 } from "vue";
+import { createCommentVNode as _createCommentVNode19, toDisplayString as _toDisplayString9, createElementVNode as _createElementVNode15, resolveComponent as _resolveComponent9, normalizeClass as _normalizeClass11, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock21, createElementBlock as _createElementBlock16 } from "vue";
 var _hoisted_116 = { class: "calendar-navbar" };
 var _hoisted_210 = {
   class: "calendar-navbar__month",
   tabindex: "-1"
 };
-var _hoisted_37 = ["for"];
-var _hoisted_45 = { key: 1 };
-var _hoisted_55 = ["id", "aria-expanded", "aria-live"];
-var _hoisted_63 = { class: "sr-only" };
+var _hoisted_37 = ["id", "aria-expanded", "aria-live"];
+var _hoisted_45 = { class: "calendar-navbar__month--title" };
+var _hoisted_55 = { class: "sr-only" };
+var _hoisted_63 = {
+  key: 1,
+  class: "calendar-navbar__month--title"
+};
 var _hoisted_73 = ["aria-disabled", "aria-live"];
 var _hoisted_83 = { class: "sr-only" };
 var _hoisted_93 = ["aria-disabled", "aria-live"];
@@ -6235,19 +6263,9 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent9("f-icon");
   return _openBlock21(), _createElementBlock16("div", _hoisted_116, [
     _createElementVNode15("div", _hoisted_210, [
-      _ctx.yearSelector ? (_openBlock21(), _createElementBlock16("label", {
-        key: 0,
-        for: `${_ctx.id}`
-      }, _toDisplayString9(_ctx.currentText), 9, _hoisted_37)) : (_openBlock21(), _createElementBlock16(
-        "span",
-        _hoisted_45,
-        _toDisplayString9(_ctx.currentText),
-        1
-        /* TEXT */
-      )),
       _createCommentVNode19(" Button - Open/close year selector "),
       _ctx.yearSelector ? (_openBlock21(), _createElementBlock16("button", {
-        key: 2,
+        key: 0,
         id: `${_ctx.id}`,
         ref: "yearSelectorButton",
         class: "calendar-navbar__year-selector-button",
@@ -6259,7 +6277,14 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
       }, [
         _createElementVNode15(
           "span",
-          _hoisted_63,
+          _hoisted_45,
+          _toDisplayString9(_ctx.currentText),
+          1
+          /* TEXT */
+        ),
+        _createElementVNode15(
+          "span",
+          _hoisted_55,
           _toDisplayString9(_ctx.yearSelectorOpen ? _ctx.closeYearSelectorText : _ctx.openYearSelectorText),
           1
           /* TEXT */
@@ -6268,7 +6293,13 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
           class: _normalizeClass11(_ctx.yearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
           name: "arrow-down"
         }, null, 8, ["class"])
-      ], 8, _hoisted_55)) : _createCommentVNode19("v-if", true)
+      ], 8, _hoisted_37)) : (_openBlock21(), _createElementBlock16(
+        "span",
+        _hoisted_63,
+        _toDisplayString9(_ctx.currentText),
+        1
+        /* TEXT */
+      ))
     ]),
     !_ctx.yearSelectorOpen ? (_openBlock21(), _createElementBlock16("button", {
       key: 0,
