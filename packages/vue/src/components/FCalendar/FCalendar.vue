@@ -13,7 +13,6 @@ export default defineComponent({
     props: {
         /**
          * Active month.
-         * @model
          */
         modelValue: {
             type: Object as PropType<FDate>,

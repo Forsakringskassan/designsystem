@@ -27,8 +27,6 @@ export default defineComponent({
         },
         /**
          * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
-         *
-         * @model
          */
         modelValue: {
             type: Boolean,

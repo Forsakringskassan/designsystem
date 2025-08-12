@@ -25,7 +25,6 @@ const props = defineProps({
     /**
      * The list of items that should be deleted, modified or added to.
      * If the prop is not set an empty array will be used.
-     * @model
      */
     modelValue: {
         type: Array as PropType<T[]>,

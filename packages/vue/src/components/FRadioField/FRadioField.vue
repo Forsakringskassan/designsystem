@@ -32,7 +32,6 @@ export default defineComponent({
         },
         /**
          * The value for the input checked attribute.
-         * @model
          */
         modelValue: {
             type: anyType,

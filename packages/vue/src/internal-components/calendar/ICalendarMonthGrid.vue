@@ -9,7 +9,6 @@ export default defineComponent({
     props: {
         /**
          * Focused month.
-         * @model
          */
         value: {
             type: Object as PropType<FDate>,

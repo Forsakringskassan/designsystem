@@ -36,7 +36,6 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         /** Selected day.
-         * @model
          */
         modelValue: {
             type: String,

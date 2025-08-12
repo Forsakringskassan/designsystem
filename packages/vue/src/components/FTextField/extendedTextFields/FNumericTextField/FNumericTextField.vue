@@ -16,7 +16,6 @@ export default defineComponent({
     props: {
         /**
          * The number of decimals to format number as.
-         * @model
          */
         decimals: {
             type: Number,

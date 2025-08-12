@@ -32,7 +32,6 @@ export default defineComponent({
         },
         /**
          * The value for the input checked attribute.
-         * @model
          */
         // ? The rule is disabled so that the `checked` prop can be undefined or null.
         /* eslint-disable-next-line vue/require-default-prop -- technical debt,

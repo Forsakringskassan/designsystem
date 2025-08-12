@@ -20,7 +20,6 @@ export default defineComponent({
     props: {
         /**
          * Current dialogue question
-         * @model
          */
         modelValue: {
             type: Object as PropType<FDialogueTreeUserProgress>,
