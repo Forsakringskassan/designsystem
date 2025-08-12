@@ -35,7 +35,7 @@ export default defineComponent({
     },
     emits: [
         /**
-         * V-model event.
+         * Emitted when file changed.
          *
          * @type {FileList}
          */
