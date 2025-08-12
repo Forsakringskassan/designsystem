@@ -97,9 +97,6 @@ export default defineComponent({
         onCloseSecondary(): void {
             this.isOpen = false;
         },
-        openSecondary(): void {
-            FLayoutRightPanelService.open();
-        },
         onClickCloseSecondary(): void {
             FLayoutRightPanelService.close();
         },
