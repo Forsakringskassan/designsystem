@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Validator - anpassad - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-6b4f5d.css"
+            href="../../assets/docs-477361.css"
             crossorigin
-            integrity="sha384-jCcF/WfHyQr1S9EdCXyZZzecX516zINZ9lhq9cDWxSaInn5k2m7LDdXn8zH44pcK"
+            integrity="sha384-IDsaKzIJPbfma+X+XlWBboDbIK54r/dK+hiNrOyHKH6wLtoIb/1sIlV9d9Mi+hd8"
             
         />
         <link
@@ -23,17 +23,17 @@
             {
   "imports": {
     "vue": "../../assets/vendor-vue-99b838.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-f26798.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-3950ef.js",
     "@fkui/date": "../../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-af3511.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-cd0a92.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-26fc9e.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
-    "../../assets/vendor-fkui-logic-f26798.js": "sha384-VoYS/Aq6jNp0G4gyTUUp7e7cRZ6D4h19wa0kdfAbEtvAnlhSaIF2hPMEVs0H/Mci",
+    "../../assets/vendor-fkui-logic-3950ef.js": "sha384-vVD8JAtCNyiHUDRHLcQp35q8biQP7NfoGAJJjloLLaa86A/RabVq3qx1MWQ4ykOx",
     "../../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../../assets/vendor-fkui-vue-af3511.js": "sha384-Q9Jt8hpOAc7NS6noGZ+RexGVi/gmaqRDzePvx123ovd/mCeiTfz0grqecIqy2LbI",
-    "../../assets/vendor-forsakringskassan-docs-live-example-cd0a92.js": "sha384-+ytYxTVX2pqx9YmX3DG6AjvU6MKa+nwiMe2/wgRw8vjsWe2S3ukrvVqwESMNT4f5"
+    "../../assets/vendor-fkui-vue-26fc9e.js": "sha384-19Jp6JbhrpNEu3Qbk2X3dEbe4fQcVdha4QdGApL+tloQKV35NsNUTYSxIiyo/W/q",
+    "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
         </script><script
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-688fc7.json"
+            href="../../search-data-478fee.json"
             as="fetch"
             crossorigin
-            integrity="sha384-04Co0aAH1p31NgUQlJv9p7xNtk3q1nivJmzUa7Shp210KOpU+yxFfMg9E3Kj3Ll+"
+            integrity="sha384-XT0wffw2f/uhkPUCk51qGV9JwwXIhOntkrJuWtqA+Mb26eSIsOuLIEvzkMF+MdM1"
             id="search-data"
         />
     </head>
@@ -591,7 +591,7 @@ Det gör du genom att lägga till attributet <code>errorMessage</code> till vali
 Då behöver <code>errorMessage</code> användas och felmeddelande blir samma på alla ställen i applikationen där validatorn används.</p>
 
                 <div
-                    id="example-d034f1"
+                    id="example-3bc6b5"
                     class="code-preview code-preview--default"
                     
                     
@@ -599,7 +599,7 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">  ValidationService.registerValidator(customStartValidator);
-<span class="hljs-addition">+ ValidationService.addValidationErrorMessages(</span>
+<span class="hljs-addition">+ ValidationService.setErrorMessages(</span>
 <span class="hljs-addition">+    ValidationErrorMessageBuilder.create()</span>
 <span class="hljs-addition">+        .map(&quot;startsWith&quot;, &quot;Fältet börjar med fel värde.&quot;)</span>
 <span class="hljs-addition">+        .build(),</span>
@@ -618,13 +618,13 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-b260ed"></div>
+        <div id="example-17b14e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./CustomValidatorExample-b260ed.js"></script>
+        <script type="module" src="./CustomValidatorExample-17b14e.js"></script>
     </div>
                 <div>
             <button
@@ -676,7 +676,7 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
 };
 
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">registerValidator</span>(startsWithValidator);
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setErrorMessages</span>(
     <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
         .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;startsWith&quot;</span>, <span class="hljs-string">&quot;Fältet börjar med fel värde.&quot;</span>)
         .<span class="hljs-title function_">build</span>(),
@@ -768,9 +768,9 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/f-button-spinner (<a href="https://github.com/Forsakringskassan/designsystem/commits/8f36f814d8aa65512e9f835e5fb103a6d0f53507">8f36f81</a>)<br />
+<div class="footer__right"><div class="version">feature/f-button-spinner (<a href="https://github.com/Forsakringskassan/designsystem/commits/497bcb02ab01b4f8cb42f74fc7188d356d9c58b8">497bcb0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/604">PR 604</a><br />
-        2025-08-07 11:20
+        2025-08-12 10:31
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -881,10 +881,10 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-8ada51.js"
+            src="../../assets/processors/selectable-version/select-version-faae45.js"
             type="module"
             crossorigin
-            integrity="sha384-fUEHur/QWG/yDDo7YNHQucL3HLm56KEVRxJdXPsovOlasATK9ZbLjo/nIHBQpgfz"
+            integrity="sha384-VebEbxY/p3c04mDpvDhP35IMs4bk932+mNK+qhKt6hmh7hE+01fUrUurMRetl1Mu"
             
         ></script><script
             src="../../assets/main-f78fbb.js"

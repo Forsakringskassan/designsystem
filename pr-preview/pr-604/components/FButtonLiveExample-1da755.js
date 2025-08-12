@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/design-component-tests/Button/examples/FButtonLiveExample.vue:FButtonLiveExample-1da755.js
+// virtual-entry:virtual:packages/vue/src/components/FButton/examples/FButtonLiveExample.vue:FButtonLiveExample-1da755.js
 import { defineComponent } from "vue";
 import { FCheckboxField, FFieldset, FRadioField, FIcon, FSelectField, FButton } from "@fkui/vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
