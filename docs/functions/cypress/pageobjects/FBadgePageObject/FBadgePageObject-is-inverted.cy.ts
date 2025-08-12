@@ -5,10 +5,10 @@ it("should check if the badge is inverted or not ", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
-    const myBadgeNotIverted = new FBadgePageObject(
+    const myBadgeNotInverted = new FBadgePageObject(
         "[data-test=my-badge-not-inverted]",
     );
-    myBadgeNotIverted.isInverted().should("be.equal", false);
+    myBadgeNotInverted.isInverted().should("be.equal", false);
 
     const myBadgeInverted = new FBadgePageObject(
         "[data-test=my-badge-inverted]",
