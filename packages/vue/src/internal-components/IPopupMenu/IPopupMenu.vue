@@ -14,8 +14,6 @@ export default defineComponent({
     props: {
         /**
          * Key of the currently selected and highlighted item.
-         *
-         * @model
          */
         modelValue: {
             type: String,
@@ -25,8 +23,6 @@ export default defineComponent({
         /**
          * Key of the currently focused item.
          * Sets focus on matching item element when value changes.
-         *
-         * @model
          */
         focusedItem: {
             type: String,

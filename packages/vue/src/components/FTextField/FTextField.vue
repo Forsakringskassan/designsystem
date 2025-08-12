@@ -37,7 +37,6 @@ export default defineComponent({
          * The value for the input.
          * If the prop is not used or set to undefined
          * or null then the default value will be used.
-         * @model
          */
         modelValue: {
             type: [String, Number, null],

@@ -15,7 +15,6 @@ export default defineComponent({
          *   `componentsWithError`: a list of components with errors sorted in DOM order
          *
          *   `componentCount`: number of registered components
-         * @model
          */
         modelValue: {
             type: Object as PropType<GroupValidityEvent>,
