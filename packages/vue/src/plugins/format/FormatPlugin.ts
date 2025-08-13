@@ -35,6 +35,11 @@ function removeObsoleteClasses(el: HTMLElement): void {
     });
 }
 
+function isFormatDisabled(el: HTMLElement): boolean {
+    // skip formatting if the element has `data-format-disabled` attribute
+    return el.dataset.formatDisabled !== undefined;
+}
+
 /**
  * FormatPlugin: A Vue directive plugin for formatting text based on a provided format definition.
  *
@@ -45,6 +50,10 @@ export const FormatPlugin: Plugin = {
         app.directive(
             "format",
             (el: HTMLElement, { value, arg }: DirectiveBinding) => {
+                if (isFormatDisabled(el)) {
+                    return;
+                }
+
                 const formatter = formatters[arg as keyof typeof formatters];
                 if (formatter) {
                     removeObsoleteClasses(el);
