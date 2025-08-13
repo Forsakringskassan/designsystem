@@ -117,8 +117,7 @@ function shouldMatchScreenshot(): void {
     cy.get(".contextmenu__list").toMatchScreenshot();
 }
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("visual regression", () => {
+describe("visual regression", () => {
     it("should have approved design with desktop viewport", () => {
         // desktop
         mountAndGetPageObject();

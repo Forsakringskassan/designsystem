@@ -9,8 +9,7 @@ const rows = [
     { a: 7, b: 8, c: 9 },
 ];
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("visual regression", () => {
+describe("visual regression", () => {
     it("with icon only", () => {
         const TestComponent = defineComponent({
             components: { FInteractiveTable, FTableButton, FTableColumn },

@@ -40,8 +40,7 @@ describe("density", () => {
         },
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip(`should be densified`, () => {
+    it(`should be densified`, () => {
         cy.viewport(densityWrapperWidth, densityWrapperHeight);
         cy.mount(DensityComponent);
         cy.toMatchScreenshot();
@@ -49,8 +48,7 @@ describe("density", () => {
 });
 
 describe("FDataTable", () => {
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should display error message", () => {
+    it("should display error message", () => {
         cy.mount(FDataTableErrorExample);
         cy.toMatchScreenshot();
     });

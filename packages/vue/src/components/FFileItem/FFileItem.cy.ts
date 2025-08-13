@@ -85,8 +85,7 @@ describe("FFileItem", () => {
         fileItem.typeOfButtonIcon().should("be.equal", "trashcan");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should wrap file name without natural breakpoints on multiple lines", () => {
+    it("should wrap file name without natural breakpoints on multiple lines", () => {
         cy.viewport(400, 300);
         const fileName =
             "lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit.pdf";
@@ -96,8 +95,7 @@ describe("FFileItem", () => {
         cy.get(pageObject.selector).toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should with row slot wrap file name without natural breakpoints on multiple lines", () => {
+    it("should with row slot wrap file name without natural breakpoints on multiple lines", () => {
         cy.viewport(400, 300);
         const fileName =
             "lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit.pdf";
