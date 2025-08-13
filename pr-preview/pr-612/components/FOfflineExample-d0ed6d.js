@@ -2187,9 +2187,6 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
 FErrorHandlingApp_default.render = render5;
 FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
 
-// packages/vue/src/plugins/format/FormatPlugin.ts
-import { isSet as isSet3 } from "@fkui/logic";
-
 // packages/vue/src/plugins/format/formatters.ts
 import { DateFormat, FDate as FDate2 } from "@fkui/date";
 import {
