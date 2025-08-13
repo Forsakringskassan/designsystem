@@ -16152,7 +16152,6 @@ const _sfc_main$1f = /* @__PURE__ */ defineComponent({
      *   `componentsWithError`: a list of components with errors sorted in DOM order
      *
      *   `componentCount`: number of registered components
-     * @model
      */
     modelValue: {
       type: Object,
@@ -18036,8 +18035,6 @@ function useHorizontalOffset(options) {
     },
     /**
      * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
-     *
-     * @model
      */
     modelValue: {
       type: Boolean,
@@ -18207,7 +18204,6 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
     },
     /**
      * The value for the input checked attribute.
-     * @model
      */
     // ? The rule is disabled so that the `checked` prop can be undefined or null.
     /* eslint-disable-next-line vue/require-default-prop -- technical debt,
@@ -18470,7 +18466,6 @@ const _hoisted_2$t = {
     /**
      * The list of items that should be deleted, modified or added to.
      * If the prop is not set an empty array will be used.
-     * @model
      */
     modelValue: {
       type: Array,
@@ -19777,7 +19772,6 @@ const _sfc_main$O = /* @__PURE__ */ defineComponent({
     /**
      * The value for the input.
      * If the prop is not set undefined will be used.
-     * @model
      */
     modelValue: {
       type: [String, Number, Object, Array, Boolean, null],
@@ -20004,7 +19998,6 @@ const _sfc_main$N = /* @__PURE__ */ defineComponent({
      * The value for the input.
      * If the prop is not used or set to undefined
      * or null then the default value will be used.
-     * @model
      */
     modelValue: {
       type: [String, Number, null],
@@ -20438,7 +20431,6 @@ const FTextField = /* @__PURE__ */ _export_sfc$1(_sfc_main$N, [["render", _sfc_r
     /**
      * The value for the input.
      * If the prop is not set undefined will be used.
-     * @model
      */
     modelValue: {
       type: [String, null],

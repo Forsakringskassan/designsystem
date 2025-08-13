@@ -5316,7 +5316,6 @@ var _sfc_main$1f = defineComponent({
      *   `componentsWithError`: a list of components with errors sorted in DOM order
      *
      *   `componentCount`: number of registered components
-     * @model
      */
     modelValue: {
       type: Object,
@@ -6573,7 +6572,6 @@ var _sfc_main$19 = defineComponent({
   props: {
     /**
      * Focused month.
-     * @model
      */
     value: {
       type: Object,
@@ -6770,7 +6768,6 @@ var _sfc_main$18 = defineComponent({
   props: {
     /**
      * Active month.
-     * @model
      */
     modelValue: {
       type: Object,
@@ -6885,7 +6882,6 @@ var _sfc_main$17 = defineComponent({
   props: {
     /**
      * Active month.
-     * @model
      */
     modelValue: {
       type: Object,
@@ -8337,8 +8333,6 @@ var _sfc_main$10 = defineComponent({
   props: {
     /**
      * Key of the currently selected and highlighted item.
-     *
-     * @model
      */
     modelValue: {
       type: String,
@@ -8348,8 +8342,6 @@ var _sfc_main$10 = defineComponent({
     /**
      * Key of the currently focused item.
      * Sets focus on matching item element when value changes.
-     *
-     * @model
      */
     focusedItem: {
       type: String,
@@ -9323,8 +9315,6 @@ var _sfc_main$X = defineComponent({
     },
     /**
      * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
-     *
-     * @model
      */
     modelValue: {
       type: Boolean,
@@ -9872,7 +9862,6 @@ var _sfc_main$V = defineComponent({
     },
     /**
      * The value for the input checked attribute.
-     * @model
      */
     // ? The rule is disabled so that the `checked` prop can be undefined or null.
     /* eslint-disable-next-line vue/require-default-prop -- technical debt,
@@ -10400,7 +10389,6 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
     /**
      * The list of items that should be deleted, modified or added to.
      * If the prop is not set an empty array will be used.
-     * @model
      */
     modelValue: {
       type: Array,
@@ -11825,7 +11813,6 @@ var _sfc_main$O = defineComponent({
     /**
      * The value for the input.
      * If the prop is not set undefined will be used.
-     * @model
      */
     modelValue: {
       type: [String, Number, Object, Array, Boolean, null],
@@ -12052,7 +12039,6 @@ var _sfc_main$N = defineComponent({
      * The value for the input.
      * If the prop is not used or set to undefined
      * or null then the default value will be used.
-     * @model
      */
     modelValue: {
       type: [String, Number, null],
@@ -12486,7 +12472,6 @@ var _sfc_main$M = defineComponent({
     /**
      * The value for the input.
      * If the prop is not set undefined will be used.
-     * @model
      */
     modelValue: {
       type: [String, null],
@@ -12638,7 +12623,6 @@ var _sfc_main$L = defineComponent({
      * The value for the input.
      * If the prop is not used or set to undefined
      * or null then the default value will be used.
-     * @model
      */
     modelValue: {
       type: [String, null],
@@ -12994,7 +12978,6 @@ var _sfc_main$F = defineComponent({
   props: {
     /**
      * The number of decimals to format number as.
-     * @model
      */
     decimals: {
       type: Number,
@@ -13901,7 +13884,6 @@ var _sfc_main$x = defineComponent({
   inheritAttrs: false,
   props: {
     /** Selected day.
-     * @model
      */
     modelValue: {
       type: String,
@@ -15406,7 +15388,6 @@ var _sfc_main$q = defineComponent({
   props: {
     /**
      * Current dialogue question
-     * @model
      */
     modelValue: {
       type: Object,
@@ -18909,7 +18890,6 @@ var _sfc_main$4 = defineComponent({
     },
     /**
      * The value for the input checked attribute.
-     * @model
      */
     modelValue: {
       type: anyType,
@@ -19125,7 +19105,6 @@ var _sfc_main$2 = defineComponent({
     /**
      * The value for the input.
      * If the prop is not set undefined will be used.
-     * @model
      */
     modelValue: {
       type: String,
