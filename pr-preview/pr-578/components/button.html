@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-3950ef.js",
     "@fkui/date": "../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-7dee0a.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-494490.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../assets/vendor-fkui-logic-3950ef.js": "sha384-vVD8JAtCNyiHUDRHLcQp35q8biQP7NfoGAJJjloLLaa86A/RabVq3qx1MWQ4ykOx",
     "../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../assets/vendor-fkui-vue-7dee0a.js": "sha384-OkFKmcHDoAfj65Uv7pKBrWKxcp6UN7EPz/lpoMKsNPgweCp4YEDy0i/S20m/t1MP",
+    "../assets/vendor-fkui-vue-494490.js": "sha384-TSwxVd5B+FGQfa1B35Ssv+Qy0pqkjfHOj6kZBKtYqKlo+FHABm4jwM9Vjlrl74t9",
     "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-a65a58.json"
+            href="../search-data-7c9023.json"
             as="fetch"
             crossorigin
-            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
+            integrity="sha384-YihYWUKtB7XQDEsGgyLEOfQszYJLdh6qahgb3RR6hO/fm18ferK0t1AuXM83/tta"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/98cccc356b58a87acf66bab827624b2f6c1a67bc/packages/vue/src/components/FButton/FButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e3193b94d4dc09de4a4f764de8bbdabe2bdb7259/packages/vue/src/components/FButton/FButton.vue">
                 FButton
             </a>
             
@@ -1179,13 +1179,13 @@ Observera att minimum bredd på knappen också tas bort.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-b4a006"></div>
+        <div id="example-9976dc"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCardExample-b4a006.js"></script>
+        <script type="module" src="./FCardExample-9976dc.js"></script>
     </div>
                 <div>
             <button
@@ -1232,10 +1232,15 @@ Observera att minimum bredd på knappen också tas bort.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">align-text</span> <span class="hljs-attr">group-item</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                    <span class="hljs-attr">align-text</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                    <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
+                &gt;</span>
                     Ta bort
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">align-text</span> <span class="hljs-attr">group-item</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">align-text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>&gt;</span>
                     Ta bort
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1269,7 +1274,7 @@ För varje knappstorlek finns en minsta bredd.</p>
                 </div>
             <h2 id="fullbredd"><a class="header-anchor" href="#fullbredd">Fullbredd</a></h2><p class="docs-paragraph">Fullbreddsknappar är främst avsedda att användas på ytor upp till 639 pixlars bredd.
 Knappar som har storleken Large sätts automatiskt till fullbredd när skärmbredden är upp till 639 pixlar.</p>
-<h3 id="fullbredd_i_mobillage"><a class="header-anchor" href="#fullbredd_i_mobillage">Fullbredd i mobilläge</a></h3><p class="docs-paragraph">Knappar (small &amp; medium) är som standard inte fullbredd i mobil men kan aktiveras med attributet <code>mobile-full-width</code>.</p>
+<h3 id="fullbredd_i_mobillage"><a class="header-anchor" href="#fullbredd_i_mobillage">Fullbredd i mobilläge</a></h3><p class="docs-paragraph">Knappar (small &amp; medium) är som standard inte fullbredd i mobil men kan aktiveras med prop <code>mobile-full-width</code>.</p>
 
                 <div
                     id="example-b64bb4"
@@ -1313,13 +1318,13 @@ En button-group kan användas när knappar ska visas horisontellt i desktop och 
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-40eba7"></div>
+        <div id="example-f4025b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FButtonGroupExample-40eba7.js"></script>
+        <script type="module" src="./FButtonGroupExample-f4025b.js"></script>
     </div>
                 <div>
             <button
@@ -1343,8 +1348,10 @@ En button-group kan användas när knappar ska visas horisontellt i desktop och 
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">group-item</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;</span> Knapp 1 i grupp <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">group-item</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;error&quot;</span>&gt;</span> Knapp 2 i grupp <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;</span> Knapp 1 i grupp <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;error&quot;</span>&gt;</span>
+            Knapp 2 i grupp
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -1362,13 +1369,13 @@ Alla knappar som är i en grupp ska ha samma storlek.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-397fb8"></div>
+        <div id="example-ced993"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FButtonListExample-397fb8.js"></script>
+        <script type="module" src="./FButtonListExample-ced993.js"></script>
     </div>
                 <div>
             <button
@@ -1393,10 +1400,10 @@ Alla knappar som är i en grupp ska ha samma storlek.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-list&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">group-item</span>&gt;</span> Knapp 1 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>&gt;</span> Knapp 1 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">group-item</span>&gt;</span> Knapp 2 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>&gt;</span> Knapp 2 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1431,7 +1438,12 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>Type of button, can be either 'primary', 'secondary' or 'tertiary'.</p>
+                            <p>Type of button, can be one of:</p>
+<ul>
+<li><code>primary</code></li>
+<li><code>secondary</code></li>
+<li><code>tertiary</code></li>
+</ul>
 
                             <p class="doc-api__item">Default: <code>&quot;primary&quot;</code></p>
                             
@@ -1449,7 +1461,12 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>Button size, can be either 'small', 'medium' or 'large'.</p>
+                            <p>Button size, can be one of:</p>
+<ul>
+<li><code>small</code></li>
+<li><code>medium</code></li>
+<li><code>large</code></li>
+</ul>
 
                             <p class="doc-api__item">Default: <code>&quot;medium&quot;</code></p>
                             
@@ -1467,7 +1484,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>When set to an icon name an icon is displayed to the left of the button text.</p>
+                            <p>Name of an icon to display on the left side of the button.</p>
 
                             <p class="doc-api__item">Default: <code>undefined</code></p>
                             
@@ -1485,7 +1502,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>When set to an icon name an icon is displayed to the right of the button text.</p>
+                            <p>Name of an icon to display on the right side of the button.</p>
 
                             <p class="doc-api__item">Default: <code>undefined</code></p>
                             
@@ -1503,7 +1520,13 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>Tertiarry button style, used in conjunction with button type 'tertiarry'.</p>
+                            <p>Tertiary button style, used in conjunction with button variant <code>tertiary</code>.
+Can be one of:</p>
+<ul>
+<li><code>standard</code></li>
+<li><code>black</code></li>
+<li><code>inverted</code></li>
+</ul>
 
                             <p class="doc-api__item">Default: <code>&quot;standard&quot;</code></p>
                             
@@ -1521,25 +1544,8 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>Align button text and icon with content abow or below.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fbutton-prop-groupitem"
-                                ><a class="docs-api__anchor" href="#fbutton-prop-groupitem"
-                                    ><span class="docs-api__name"
-                                        >groupItem</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Sets margin to 0, used in conjunction with 'button-group'.</p>
+                            <p>Align button text and icon with content above or below.
+Used in conjunction with button variant <code>tertiary</code>.</p>
 
                             <p class="doc-api__item">Default: <code>false</code></p>
                             
@@ -1557,7 +1563,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>Automatically set button to full width when screen width is 639 pixels or below, always active for button size 'large'.</p>
+                            <p>Enable full width on mobile for sizes <code>small</code> and <code>medium</code>, always active for button size <code>large</code>.</p>
 
                             <p class="doc-api__item">Default: <code>false</code></p>
                             
@@ -1617,9 +1623,9 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/f-button-only (<a href="https://github.com/Forsakringskassan/designsystem/commits/98cccc356b58a87acf66bab827624b2f6c1a67bc">98cccc3</a>)<br />
+<div class="footer__right"><div class="version">feature/f-button-only (<a href="https://github.com/Forsakringskassan/designsystem/commits/e3193b94d4dc09de4a4f764de8bbdabe2bdb7259">e3193b9</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/578">PR 578</a><br />
-        2025-08-11 08:59
+        2025-08-13 07:43
 </div>
 <div class="toolbar__item">
     <form id="version">
