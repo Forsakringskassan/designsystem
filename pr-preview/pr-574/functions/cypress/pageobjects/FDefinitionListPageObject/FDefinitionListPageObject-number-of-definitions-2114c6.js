@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDefinitionListPageObject/FDefinitionListPageObject-number-of-definitions.vue:FDefinitionListPageObject-number-of-definitions-89edd1.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDefinitionListPageObject/FDefinitionListPageObject-number-of-definitions.vue:FDefinitionListPageObject-number-of-definitions-2114c6.js
 import { defineComponent as _defineComponent } from "vue";
 import { FDefinitionList } from "@fkui/vue";
 import { resolveDirective as _resolveDirective, createVNode as _createVNode, withDirectives as _withDirectives, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -37,12 +37,13 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   setup(__props, { expose: __expose }) {
     __expose();
     const zeroDefinitions = [];
+    const oneDefinition = [{ term: "Omfattning", description: "100 procent" }];
     const threeDefinitions = [
       { term: "Skulle ha jobbat", description: "8 timmar" },
       { term: "Vabbade", description: "8 timmar" },
       { term: "Omfattning", description: "100 procent" }
     ];
-    const __returned__ = { zeroDefinitions, threeDefinitions, get FDefinitionList() {
+    const __returned__ = { zeroDefinitions, oneDefinition, threeDefinitions, get FDefinitionList() {
       return FDefinitionList;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -66,6 +67,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _withDirectives(_createVNode(
         $setup["FDefinitionList"],
+        { definitions: $setup.oneDefinition },
+        null,
+        512
+        /* NEED_PATCH */
+      ), [
+        [_directive_test, "my-definition-list-one-definition"]
+      ]),
+      _withDirectives(_createVNode(
+        $setup["FDefinitionList"],
         { definitions: $setup.threeDefinitions },
         null,
         512
@@ -81,7 +91,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-89edd1"
+  selector: "#example-2114c6"
 });
 export {
   render
