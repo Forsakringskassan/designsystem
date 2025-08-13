@@ -3037,7 +3037,6 @@ var FValidationGroup_default = defineComponent9({
      *   `componentsWithError`: a list of components with errors sorted in DOM order
      *
      *   `componentCount`: number of registered components
-     * @model
      */
     modelValue: {
       type: Object,
