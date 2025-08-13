@@ -238,18 +238,18 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       return hasIconLeft.value || hasIconRight.value;
     });
     const buttonClass = computed(() => {
-      let classes = `button button--${props.variant} button--${props.size}`;
+      const classes = ["button", `button--${props.variant}`, `button--${props.size}`];
       if (props.variant === "tertiary" && props.alignText) {
-        classes = `${classes} button--align-text`;
+        classes.push(`button--align-text`);
       }
       if (props.variant === "tertiary") {
-        classes = `${classes} button--tertiary--${props.tertiaryStyle}`;
+        classes.push(`button--tertiary--${props.tertiaryStyle}`);
       }
       if (props.variant === "tertiary" && !hasIcon.value) {
-        classes = `${classes} button--tertiary--underline`;
+        classes.push(`button--tertiary--underline`);
       }
       if (props.mobileFullWidth && props.size !== "large") {
-        classes = `${classes} button--full-width`;
+        classes.push(`button--full-width`);
       }
       return classes;
     });
