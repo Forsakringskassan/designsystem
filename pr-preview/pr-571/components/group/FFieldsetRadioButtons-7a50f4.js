@@ -46,7 +46,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "group-name-radio" }, {
     label: _withCtx(() => _cache[2] || (_cache[2] = [
-      _createTextVNode(" Ans\xF6ker du om sjukpenning? ")
+      _createTextVNode(
+        " Ans\xF6ker du om sjukpenning? ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(() => [
       _createVNode(_component_f_radio_field, {
@@ -56,7 +60,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode(" Ja ")
+          _createTextVNode(
+            " Ja ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [3]
@@ -68,7 +76,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: false
       }, {
         default: _withCtx(() => _cache[4] || (_cache[4] = [
-          _createTextVNode(" Nej ")
+          _createTextVNode(
+            " Nej ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [4]

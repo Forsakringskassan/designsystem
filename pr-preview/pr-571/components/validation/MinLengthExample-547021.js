@@ -47,7 +47,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
   }, {
     default: _withCtx(() => _cache[1] || (_cache[1] = [
-      _createTextVNode(" Fyll i ett ord som inneh\xE5ller minst 4 tecken ")
+      _createTextVNode(
+        " Fyll i ett ord som inneh\xE5ller minst 4 tecken ",
+        -1
+        /* CACHED */
+      )
     ])),
     _: 1,
     __: [1]

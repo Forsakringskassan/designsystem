@@ -80,7 +80,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ), [
         [_vModelCheckbox, _ctx.isAnimated]
       ]),
-      _cache[5] || (_cache[5] = _createTextVNode(" Animera"))
+      _cache[5] || (_cache[5] = _createTextVNode(
+        " Animera",
+        -1
+        /* CACHED */
+      ))
     ]),
     _createElementVNode("label", null, [
       _withDirectives(_createElementVNode(
@@ -95,7 +99,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ), [
         [_vModelCheckbox, _ctx.hasOpacity]
       ]),
-      _cache[6] || (_cache[6] = _createTextVNode(" Opacitet"))
+      _cache[6] || (_cache[6] = _createTextVNode(
+        " Opacitet",
+        -1
+        /* CACHED */
+      ))
     ]),
     _createElementVNode("label", null, [
       _withDirectives(_createElementVNode(
@@ -110,7 +118,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ), [
         [_vModelCheckbox, _ctx.useVShow]
       ]),
-      _cache[7] || (_cache[7] = _createTextVNode(" Use v-show instead of v-if"))
+      _cache[7] || (_cache[7] = _createTextVNode(
+        " Use v-show instead of v-if",
+        -1
+        /* CACHED */
+      ))
     ]),
     _withDirectives(_createElementVNode(
       "select",

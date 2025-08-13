@@ -60,7 +60,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_file_item = _resolveComponent("f-file-item");
   return _openBlock(), _createElementBlock("div", null, [
     _createElementVNode("label", null, [
-      _cache[2] || (_cache[2] = _createTextVNode(" Progress: ")),
+      _cache[2] || (_cache[2] = _createTextVNode(
+        " Progress: ",
+        -1
+        /* CACHED */
+      )),
       _withDirectives(_createElementVNode(
         "input",
         {
@@ -104,7 +108,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             name: "trashcan",
             class: "button__icon"
           }),
-          _cache[4] || (_cache[4] = _createTextVNode(" Ta bort "))
+          _cache[4] || (_cache[4] = _createTextVNode(
+            " Ta bort ",
+            -1
+            /* CACHED */
+          ))
         ])) : _createCommentVNode("v-if", true)
       ]),
       default: _withCtx(() => [

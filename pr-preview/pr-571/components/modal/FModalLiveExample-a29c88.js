@@ -130,7 +130,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modalType = $event)
       }, {
         label: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode(" Typ ")
+          _createTextVNode(
+            " Typ ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[4] || (_cache[4] = _createElementVNode(
@@ -170,7 +174,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.modalSize = $event)
       }, {
         label: _withCtx(() => _cache[8] || (_cache[8] = [
-          _createTextVNode(" Storlek ")
+          _createTextVNode(
+            " Storlek ",
+            -1
+            /* CACHED */
+          )
         ])),
         default: _withCtx(() => [
           _cache[9] || (_cache[9] = _createElementVNode(
@@ -211,7 +219,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[13] || (_cache[13] = [
-          _createTextVNode(" Fullsk\xE4rm i mobill\xE4ge ")
+          _createTextVNode(
+            " Fullsk\xE4rm i mobill\xE4ge ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [13]

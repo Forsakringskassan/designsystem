@@ -92,7 +92,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[2] || (_cache[2] = [
-          _createTextVNode(" Rubrik i tooltip ")
+          _createTextVNode(
+            " Rubrik i tooltip ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [2]
@@ -103,7 +107,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true
       }, {
         default: _withCtx(() => _cache[3] || (_cache[3] = [
-          _createTextVNode(" L\xE5ng text ")
+          _createTextVNode(
+            " L\xE5ng text ",
+            -1
+            /* CACHED */
+          )
         ])),
         _: 1,
         __: [3]

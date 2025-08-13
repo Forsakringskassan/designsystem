@@ -95,7 +95,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "expandable-attribute": "myExpandableRow"
   }, {
     caption: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(" Expanderbara rader ")
+      _createTextVNode(
+        " Expanderbara rader ",
+        -1
+        /* CACHED */
+      )
     ])),
     default: _withCtx(({ row }) => [
       _createVNode(
@@ -176,7 +180,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             ), [
               [_directive_format, row.sum, "number"]
             ]),
-            _cache[1] || (_cache[1] = _createTextVNode(" kronor "))
+            _cache[1] || (_cache[1] = _createTextVNode(
+              " kronor ",
+              -1
+              /* CACHED */
+            ))
           ]),
           _: 2,
           __: [1]

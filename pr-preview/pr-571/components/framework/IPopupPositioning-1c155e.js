@@ -2867,7 +2867,11 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           shrink: ""
         }, {
           default: _withCtx2(() => _cache[0] || (_cache[0] = [
-            _createTextVNode2("\xA0")
+            _createTextVNode2(
+              "\xA0",
+              -1
+              /* CACHED */
+            )
           ])),
           _: 1,
           __: [0]
@@ -3033,7 +3037,6 @@ var FValidationGroup_default = defineComponent9({
      *   `componentsWithError`: a list of components with errors sorted in DOM order
      *
      *   `componentCount`: number of registered components
-     * @model
      */
     modelValue: {
       type: Object,
@@ -3545,7 +3548,8 @@ import {
   isVNode
 } from "vue";
 var defaultOptions = {
-  stripClasses: ["sr-only"]
+  stripClasses: ["sr-only"],
+  componentPlaceholder: false
 };
 function collapseWhitespace(text) {
   return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
@@ -3566,13 +3570,33 @@ function excludeClass(exclude) {
 function excludeComment(node) {
   return node.type !== Comment;
 }
+function isComponent(node) {
+  return typeof node.type === "object";
+}
+function getComponentName({ type }) {
+  if ("__name" in type) {
+    return String(type.__name);
+  }
+  if ("name" in type) {
+    return String(type.name);
+  }
+  return "Component";
+}
 function getTextContent(children, options) {
-  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
-    if (Array.isArray(child.children)) {
-      return getTextContent(child.children, options);
+  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((node) => {
+    if (isComponent(node)) {
+      if (options.componentPlaceholder) {
+        const name = getComponentName(node);
+        return `<${name} />`;
+      } else {
+        return "";
+      }
     }
-    if (typeof child.children === "string") {
-      return child.children;
+    if (Array.isArray(node.children)) {
+      return getTextContent(node.children, options);
+    }
+    if (typeof node.children === "string") {
+      return node.children;
     }
   }).join("");
 }
@@ -3584,15 +3608,19 @@ function renderSlotText(render13, props = {}, options) {
   if (nodes.length === 0) {
     return void 0;
   }
-  return collapseWhitespace(
-    getTextContent(nodes, { ...defaultOptions, ...options })
-  );
+  const effectiveOptions = { ...defaultOptions, ...options };
+  return collapseWhitespace(getTextContent(nodes, effectiveOptions));
 }
 
 // packages/vue/src/utils/has-slot.ts
+var defaultOptions2 = {
+  stripClasses: ["sr-only"],
+  componentPlaceholder: true
+};
 function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
-  return Boolean(renderSlotText(slot, props, options));
+  const effectiveOptions = { ...defaultOptions2, ...options };
+  return Boolean(renderSlotText(slot, props, effectiveOptions));
 }
 
 // packages/vue/src/utils/use-modal.ts
