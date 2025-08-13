@@ -1727,7 +1727,7 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDefinitionList</span>, type <span class="hljs-title class_">FDefinitionListItem</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-keyword">const</span> <span class="hljs-attr">oneDefinition</span>: <span class="hljs-title class_">FDefinitionListItem</span>[] = [{ <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Myndighet&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Försäkringskassan&quot;</span> }];
+<span class="hljs-keyword">const</span> <span class="hljs-attr">zeroDefinitions</span>: <span class="hljs-title class_">FDefinitionListItem</span>[] = [];
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">threeDefinitions</span>: <span class="hljs-title class_">FDefinitionListItem</span>[] = [
     { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Skulle ha jobbat&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
@@ -1737,7 +1737,7 @@
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-definition-list</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;my-definition-list-one-definition&#x27;&quot;</span> <span class="hljs-attr">:definitions</span>=<span class="hljs-string">&quot;oneDefinition&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-definition-list</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;my-definition-list-zero-definitions&#x27;&quot;</span> <span class="hljs-attr">:definitions</span>=<span class="hljs-string">&quot;zeroDefinitions&quot;</span> /&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">f-definition-list</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;my-definition-list-three-definitions&#x27;&quot;</span> <span class="hljs-attr">:definitions</span>=<span class="hljs-string">&quot;threeDefinitions&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1753,9 +1753,9 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> myDefinitionListZeroDefinitions = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(
-    <span class="hljs-string">&quot;[data-test=my-definition-list-one-definition]&quot;</span>,
+    <span class="hljs-string">&quot;[data-test=my-definition-list-zero-definitions]&quot;</span>,
 );
-myDefinitionListZeroDefinitions.<span class="hljs-title function_">numberOfDefinitions</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;eq&quot;</span>, <span class="hljs-number">1</span>);
+myDefinitionListZeroDefinitions.<span class="hljs-title function_">numberOfDefinitions</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;eq&quot;</span>, <span class="hljs-number">0</span>);
 
 <span class="hljs-keyword">const</span> myDefinitionListThreeDefinitions = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(
     <span class="hljs-string">&quot;[data-test=my-definition-list-three-definitions]&quot;</span>,
@@ -1789,9 +1789,9 @@ myDefinitionListThreeDefinitions.<span class="hljs-title function_">numberOfDefi
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">compact-description-list (<a href="https://github.com/Forsakringskassan/designsystem/commits/a8930bd64848dea67521af9eaa419715eff0aced">a8930bd</a>)<br />
+<div class="footer__right"><div class="version">compact-description-list (<a href="https://github.com/Forsakringskassan/designsystem/commits/51fca699f8ba6dd7290ba2df8b0ba48926b7ba9a">51fca69</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/574">PR 574</a><br />
-        2025-08-12 15:42
+        2025-08-13 07:15
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDefinitionListPageObject/FDefinitionListPageObject-number-of-definitions.vue:FDefinitionListPageObject-number-of-definitions-8c603d.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDefinitionListPageObject/FDefinitionListPageObject-number-of-definitions.vue:FDefinitionListPageObject-number-of-definitions-89edd1.js
 import { defineComponent as _defineComponent } from "vue";
 import { FDefinitionList } from "@fkui/vue";
 import { resolveDirective as _resolveDirective, createVNode as _createVNode, withDirectives as _withDirectives, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -36,13 +36,13 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FDefinitionListPageObject-number-of-definitions",
   setup(__props, { expose: __expose }) {
     __expose();
-    const oneDefinition = [{ term: "Myndighet", description: "F\xF6rs\xE4kringskassan" }];
+    const zeroDefinitions = [];
     const threeDefinitions = [
       { term: "Skulle ha jobbat", description: "8 timmar" },
       { term: "Vabbade", description: "8 timmar" },
       { term: "Omfattning", description: "100 procent" }
     ];
-    const __returned__ = { oneDefinition, threeDefinitions, get FDefinitionList() {
+    const __returned__ = { zeroDefinitions, threeDefinitions, get FDefinitionList() {
       return FDefinitionList;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -57,12 +57,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     [
       _withDirectives(_createVNode(
         $setup["FDefinitionList"],
-        { definitions: $setup.oneDefinition },
+        { definitions: $setup.zeroDefinitions },
         null,
         512
         /* NEED_PATCH */
       ), [
-        [_directive_test, "my-definition-list-one-definition"]
+        [_directive_test, "my-definition-list-zero-definitions"]
       ]),
       _withDirectives(_createVNode(
         $setup["FDefinitionList"],
@@ -81,7 +81,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8c603d"
+  selector: "#example-89edd1"
 });
 export {
   render
