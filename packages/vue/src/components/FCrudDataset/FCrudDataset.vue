@@ -8,6 +8,7 @@ import { FModalButtonDescriptor } from "../FModal/modal-button";
 import { useTranslate } from "../../plugins";
 import { type FValidationFormCallback } from "../FValidationForm";
 import { Operation } from "./operation";
+import { filterItem } from "./filter-item";
 
 const $t = useTranslate();
 const slots = useSlots();
@@ -15,6 +16,7 @@ const slots = useSlots();
 const result = ref<T[]>([]) as Ref<T[]>;
 const operation = ref<Operation>(Operation.NONE);
 const item = ref<T | null>(null);
+const nestedKey = ref<keyof T | null | undefined>(null);
 const originalItemToUpdate = ref<T | null>(null);
 const isFormModalOpen = ref(false);
 const isConfirmModalOpen = ref(false);
@@ -208,6 +210,8 @@ provide("registerCallbackBeforeItemDelete", (callback: (item: T) => void) => {
     callbackBeforeItemDelete.value = callback;
 });
 
+provide("setNestedKey", setNestedKey);
+
 onMounted(() => {
     if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
         throw Error("At least one template of the following must be defined. #add, #delete or #modify");
@@ -244,9 +248,9 @@ function onDeleteConfirm(): void {
     if (!item.value) {
         return;
     }
-    callbackBeforeItemDelete.value(item.value);
-    result.value = result.value.filter((it) => it !== item.value);
 
+    callbackBeforeItemDelete.value(item.value);
+    result.value = filterItem(result.value, item.value, nestedKey.value);
     emit("deleted", item.value);
     emit("update:modelValue", result.value);
 
@@ -312,6 +316,10 @@ function updateItem(current: T): void {
     item.value = deepClone(current);
     isFormModalOpen.value = true;
 }
+
+function setNestedKey(key: keyof T): void {
+    nestedKey.value = key;
+}
 </script>
 
 <template>
@@ -319,7 +327,7 @@ function updateItem(current: T): void {
         <!--
              @slot Slot for displaying the data.
              @binding {(item: T) => void} updateItem Callback to trigger modification modal
-             @binding {(item: T) => void} deleteItem Callback to trigger deletion modal
+             @binding {(item: T, nested?: keyof T) => void} deleteItem Callback to trigger deletion modal
         -->
         <slot v-bind="{ updateItem, deleteItem }"></slot>
         <div v-if="hasAddSlot">

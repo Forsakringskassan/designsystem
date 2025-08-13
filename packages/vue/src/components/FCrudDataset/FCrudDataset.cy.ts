@@ -1,6 +1,14 @@
 import { defineComponent } from "vue";
-import { FModal, FConfirmModal, FFormModal } from "../FModal";
+import {
+    FConfirmModal,
+    FFormModal,
+    FInteractiveTable,
+    FModal,
+    FTableButton,
+    FTableColumn,
+} from "..";
 import { ListItem } from "../../types";
+import { FInteractiveTablePageObject } from "../../cypress";
 import ListExample from "./examples/FCrudDatasetListExample.vue";
 import FCrudDataset from "./FCrudDataset.vue";
 import FCrudButton from "./FCrudButton.vue";
@@ -138,6 +146,87 @@ describe("item delete", () => {
         cy.get(".modal .button--primary").click();
         // Check that row 1 and item with id item1 do not exist after delete
         cy.get("#item1").should("not.exist");
+    });
+
+    it("should delete nested item", () => {
+        const rows = [
+            {
+                name: "a",
+                nested: [{ name: "a1" }, { name: "a2" }],
+            },
+            { name: "b", nested: [] },
+        ];
+        const TestComponent = defineComponent({
+            components: {
+                FCrudDataset,
+                FInteractiveTable,
+                FTableButton,
+                FTableColumn,
+            },
+            data() {
+                return {
+                    rows,
+                };
+            },
+            template: /* HTML */ `
+                <f-crud-dataset v-model="rows">
+                    <template #default="{ deleteItem }">
+                        <f-interactive-table
+                            :rows
+                            expandable-attribute="nested"
+                        >
+                            <template #checkbox-description>
+                                Select row
+                            </template>
+                            <template #default="{ row }">
+                                <f-table-column :row-header title="Name">
+                                    {{ row.name }}
+                                </f-table-column>
+                                <f-table-column
+                                    title="Åtgärd"
+                                    shrink
+                                    type="action"
+                                >
+                                    <f-table-button
+                                        icon="pen"
+                                        @click="deleteItem(row)"
+                                    >
+                                        Delete
+                                        <span class="sr-only">
+                                            {{ row.name }}
+                                        </span>
+                                    </f-table-button>
+                                </f-table-column>
+                            </template>
+                        </f-interactive-table>
+                    </template>
+                    <template #delete="{ item }">
+                        <span> Delete </span>
+                        {{ item.name }}?
+                    </template>
+                </f-crud-dataset>
+            `,
+        });
+        cy.mount(TestComponent);
+        const table = new FInteractiveTablePageObject();
+
+        table.row(0).click();
+
+        table.bodyRow().should("have.length", 4);
+        table.cell({ row: 1, col: 1 }).should("have.trimmedText", "a");
+        table.cell({ row: 2, col: 1 }).should("have.trimmedText", "a1");
+        table.cell({ row: 3, col: 1 }).should("have.trimmedText", "a2");
+        table.cell({ row: 4, col: 1 }).should("have.trimmedText", "b");
+        table.row(4).should("not.exist");
+
+        table.row(1).find(".button").click();
+        cy.get(".modal .button--primary").click();
+
+        table.bodyRow().should("have.length", 3);
+        table.cell({ row: 1, col: 1 }).should("have.trimmedText", "a");
+        table.cell({ row: 2, col: 1 }).should("have.trimmedText", "a2");
+        table.cell({ row: 3, col: 1 }).should("have.trimmedText", "b");
+        table.row(3).should("not.exist");
     });
 
     it("should emit deleted event when items are deleted", () => {
