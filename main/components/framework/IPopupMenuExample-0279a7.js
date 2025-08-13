@@ -3085,7 +3085,6 @@ var FValidationGroup_default = defineComponent9({
      *   `componentsWithError`: a list of components with errors sorted in DOM order
      *
      *   `componentCount`: number of registered components
-     * @model
      */
     modelValue: {
       type: Object,
@@ -4338,8 +4337,6 @@ var IPopupMenu_default = defineComponent13({
   props: {
     /**
      * Key of the currently selected and highlighted item.
-     *
-     * @model
      */
     modelValue: {
       type: String,
@@ -4349,8 +4346,6 @@ var IPopupMenu_default = defineComponent13({
     /**
      * Key of the currently focused item.
      * Sets focus on matching item element when value changes.
-     *
-     * @model
      */
     focusedItem: {
       type: String,
