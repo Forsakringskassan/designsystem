@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-3950ef.js",
     "@fkui/date": "../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-26fc9e.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-eb444f.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../assets/vendor-fkui-logic-3950ef.js": "sha384-vVD8JAtCNyiHUDRHLcQp35q8biQP7NfoGAJJjloLLaa86A/RabVq3qx1MWQ4ykOx",
     "../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../assets/vendor-fkui-vue-26fc9e.js": "sha384-19Jp6JbhrpNEu3Qbk2X3dEbe4fQcVdha4QdGApL+tloQKV35NsNUTYSxIiyo/W/q",
+    "../assets/vendor-fkui-vue-eb444f.js": "sha384-G2XUDk5aJIH2es4tSH5k6f+8/PxFvFCmmjnEJCVfuy6W+eGOCI+sq6/gwfFeDJ6k",
     "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-478fee.json"
+            href="../search-data-a65a58.json"
             as="fetch"
             crossorigin
-            integrity="sha384-XT0wffw2f/uhkPUCk51qGV9JwwXIhOntkrJuWtqA+Mb26eSIsOuLIEvzkMF+MdM1"
+            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/497bcb02ab01b4f8cb42f74fc7188d356d9c58b8/packages/vue/src/components/FButton/FButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b47041c9c232068b2493a92164a4f26e30fbe704/packages/vue/src/components/FButton/FButton.vue">
                 FButton
             </a>
             
@@ -1151,29 +1151,83 @@ En knapp har en text och kan kompletteras med en ikon.</p>
                     data-language="vue"
                 >
                     
-        <div id="example-1da755"></div>
+        <div id="example-3c084c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FButtonLiveExample-1da755.js"></script>
+        <script type="module" src="./FButtonLiveExample-3c084c.js"></script>
     
                 </div>
             <h2 id="primar_knapp"><a class="header-anchor" href="#primar_knapp">Primär knapp</a></h2><p class="docs-paragraph">Använd primär knapp för det primära och det mest troliga alternativet för användaren.
 Det får bara finnas en primär knapp per sida.</p>
 <h2 id="sekundar_knapp"><a class="header-anchor" href="#sekundar_knapp">Sekundär knapp</a></h2><p class="docs-paragraph">Använd sekundär knapp fristående eller tillsammans med en primär knapp.</p>
-<h2 id="tertiar_knapp"><a class="header-anchor" href="#tertiar_knapp">Tertiär knapp</a></h2><p class="docs-paragraph">Använd tertiär knapp om en sekundär knapp blir för framträdande.
+
+                <div
+                    id="example-2f0c28"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-button&gt; Knapptext &lt;/f-button&gt;</span>
+<span class="hljs-addition">+&lt;f-button variant=&quot;secondary&quot;&gt; Knapptext &lt;/f-button&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="tertiar_knapp"><a class="header-anchor" href="#tertiar_knapp">Tertiär knapp</a></h2><p class="docs-paragraph">Använd tertiär knapp om en sekundär knapp blir för framträdande.
 Tertiär knapp passar bra när flera knappar ska grupperas,
 till exmepel om ett kort ska ha knappar för att ändra eller ta bort objekt som kortet representerar.
 Den kan användas som en tredje knapp tillsammans med en primär och en sekundär knapp i en grupp.
 Knapptexten är understruken om en tertiär knapp används utan en ikon.</p>
-<h3 id="linjera_tertiar_knapp_med_innehall"><a class="header-anchor" href="#linjera_tertiar_knapp_med_innehall">Linjera tertiär knapp med innehåll</a></h3><p class="docs-paragraph">Om du vill linjera den tertiära knappens text eller ikon med innehåll placerat ovanför eller under knappen så använd prop <code>align-text</code>.
+
+                <div
+                    id="example-a4955f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-button&gt; Knapptext &lt;/f-button&gt;</span>
+<span class="hljs-addition">+&lt;f-button variant=&quot;tertiary&quot;&gt; Knapptext &lt;/f-button&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Svart tertiär knapp används för funktioner som inte har att göra med det huvudsakliga flödet eller innehållet på en sida, tex Skriv ut.</p>
+
+                <div
+                    id="example-e67d8d"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-button variant=&quot;tertiary&quot;&gt; Knapptext &lt;/f-button&gt;</span>
+<span class="hljs-addition">+&lt;f-button variant=&quot;tertiary&quot; tertiary-style=&quot;black&quot;&gt; Knapptext &lt;/f-button&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Inverterad tertiär knapp användas för att få en bättre kontrast mot en mörk bakgrund.</p>
+
+                <div
+                    id="example-0dd75f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-button&gt; Knapptext &lt;/f-button&gt;</span>
+<span class="hljs-addition">+&lt;f-button variant=&quot;tertiary&quot; tertiary-style=&quot;inverted&quot;&gt; Knapptext &lt;/f-button&gt;</span>
+</code></pre>
+                </div>
+            <h3 id="linjera_tertiar_knapp_med_innehall"><a class="header-anchor" href="#linjera_tertiar_knapp_med_innehall">Linjera tertiär knapp med innehåll</a></h3><p class="docs-paragraph">Om du vill linjera den tertiära knappens text eller ikon med innehåll placerat ovanför eller under knappen så använd prop <code>align-text</code>.
 Detta lägger på en negativ vänstermarginal.
 Observera att minimum bredd på knappen också tas bort.</p>
 
             <div
-                id="example-222133"
+                id="example-db5bd2"
                 class="code-preview code-preview--default"
                 
                 
@@ -1181,13 +1235,13 @@ Observera att minimum bredd på knappen också tas bort.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-b4a006"></div>
+        <div id="example-9976dc"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCardExample-b4a006.js"></script>
+        <script type="module" src="./FCardExample-9976dc.js"></script>
     </div>
                 <div>
             <button
@@ -1234,10 +1288,15 @@ Observera att minimum bredd på knappen också tas bort.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">align-text</span> <span class="hljs-attr">group-item</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                    <span class="hljs-attr">align-text</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                    <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
+                &gt;</span>
                     Ta bort
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">align-text</span> <span class="hljs-attr">group-item</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">align-text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>&gt;</span>
                     Ta bort
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1258,7 +1317,7 @@ Knappens bredd bestäms av längden på knapptexten.
 För varje knappstorlek finns en minsta bredd.</p>
 
                 <div
-                    id="example-77e85a"
+                    id="example-de8dc6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1271,10 +1330,10 @@ För varje knappstorlek finns en minsta bredd.</p>
                 </div>
             <h2 id="fullbredd"><a class="header-anchor" href="#fullbredd">Fullbredd</a></h2><p class="docs-paragraph">Fullbreddsknappar är främst avsedda att användas på ytor upp till 639 pixlars bredd.
 Knappar som har storleken Large sätts automatiskt till fullbredd när skärmbredden är upp till 639 pixlar.</p>
-<h3 id="fullbredd_i_mobillage"><a class="header-anchor" href="#fullbredd_i_mobillage">Fullbredd i mobilläge</a></h3><p class="docs-paragraph">Knappar (small &amp; medium) är som standard inte fullbredd i mobil men kan aktiveras med attributet <code>mobile-full-width</code>.</p>
+<h3 id="fullbredd_i_mobillage"><a class="header-anchor" href="#fullbredd_i_mobillage">Fullbredd i mobilläge</a></h3><p class="docs-paragraph">Knappar (small &amp; medium) är som standard inte fullbredd i mobil men kan aktiveras med prop <code>mobile-full-width</code>.</p>
 
                 <div
-                    id="example-b64bb4"
+                    id="example-2016e5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1289,7 +1348,7 @@ Knappar som har storleken Large sätts automatiskt till fullbredd när skärmbre
 Använd ikoner för att förtydliga knappens funktion och skapa snabbare igenkänning.</p>
 
                 <div
-                    id="example-b652ac"
+                    id="example-3660be"
                     class="code-preview code-preview--default"
                     
                     
@@ -1302,7 +1361,7 @@ Använd ikoner för att förtydliga knappens funktion och skapa snabbare igenkä
                 </div>
             
                 <div
-                    id="example-7a4afe"
+                    id="example-9746e4"
                     class="code-preview code-preview--default"
                     
                     
@@ -1318,7 +1377,7 @@ under tiden som den asynkrona åtgärden utförs.
 Om knappen saknar ikon så visas spinner till vänstert om knappens text.</p>
 
                 <div
-                    id="example-6865e2"
+                    id="example-6809ef"
                     class="code-preview code-preview--default"
                     
                     
@@ -1343,7 +1402,7 @@ Om bredden på ytan där knapparna visas inte räcker visas knapparna på flera 
 En button-group kan användas när knappar ska visas horisontellt i desktop och vertikalt och fullbredd i mobil.</p>
 
             <div
-                id="example-c946a6"
+                id="example-0575ad"
                 class="code-preview code-preview--default"
                 
                 
@@ -1351,13 +1410,13 @@ En button-group kan användas när knappar ska visas horisontellt i desktop och 
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-40eba7"></div>
+        <div id="example-f4025b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FButtonGroupExample-40eba7.js"></script>
+        <script type="module" src="./FButtonGroupExample-f4025b.js"></script>
     </div>
                 <div>
             <button
@@ -1381,8 +1440,10 @@ En button-group kan användas när knappar ska visas horisontellt i desktop och 
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">group-item</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;</span> Knapp 1 i grupp <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">group-item</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;error&quot;</span>&gt;</span> Knapp 2 i grupp <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;</span> Knapp 1 i grupp <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;error&quot;</span>&gt;</span>
+            Knapp 2 i grupp
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -1392,7 +1453,7 @@ En button-group kan användas när knappar ska visas horisontellt i desktop och 
 Alla knappar som är i en grupp ska ha samma storlek.</p>
 
             <div
-                id="example-e6d0e5"
+                id="example-90f21f"
                 class="code-preview code-preview--default"
                 
                 
@@ -1400,13 +1461,17 @@ Alla knappar som är i en grupp ska ha samma storlek.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-397fb8"></div>
+        <div id="example-1035d7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
+.no-marker {
+    list-style-type: none;
+}
+
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FButtonListExample-397fb8.js"></script>
+        <script type="module" src="./FButtonListExample-1035d7.js"></script>
     </div>
                 <div>
             <button
@@ -1429,15 +1494,23 @@ Alla knappar som är i en grupp ska ha samma storlek.</p>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-list&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-list no-marker&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">group-item</span>&gt;</span> Knapp 1 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;</span> Knapp 1 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">group-item</span>&gt;</span> Knapp 2 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;cross&quot;</span>&gt;</span> Knapp 2 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>&gt;</span> Knapp 3 i lista <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+<span class="hljs-selector-class">.no-marker</span> {
+    <span class="hljs-attribute">list-style-type</span>: none;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -1449,7 +1522,6 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
 <li>Diskret knapp - ska ersättas med en tertiär knapp av lämplig storlek.</li>
 <li>Standard - ska ersättas med en sekundär knapp av lämplig storlek.</li>
 <li>Primär och sekundär ska ändras så att de använder en faktisk storlek.</li>
-<li><code>&lt;button&gt;</code> ersätts av <code>&lt;f-button&gt;</code> komponenten.</li>
 </ul>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
         <h3 id="fbutton-props">
@@ -1469,7 +1541,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>Type of button, can be either of:</p>
+                            <p>Type of button, can be one of:</p>
 <ul>
 <li><code>primary</code></li>
 <li><code>secondary</code></li>
@@ -1492,7 +1564,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>Button size, can be either of:</p>
+                            <p>Button size, can be one of:</p>
 <ul>
 <li><code>small</code></li>
 <li><code>medium</code></li>
@@ -1515,7 +1587,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>When set to an icon name an icon is displayed to the left of the button text.</p>
+                            <p>Name of an icon to display on the left side of the button.</p>
 
                             <p class="doc-api__item">Default: <code>undefined</code></p>
                             
@@ -1533,7 +1605,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>When set to an icon name an icon is displayed to the right of the button text.</p>
+                            <p>Name of an icon to display on the right side of the button.</p>
 
                             <p class="doc-api__item">Default: <code>undefined</code></p>
                             
@@ -1551,8 +1623,8 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                             
                         </dt>
                         <dd>
-                            <p>Tertiarry button style, used in conjunction with button type <code>tertiarry</code>.
-Can be either of:</p>
+                            <p>Tertiary button style, used in conjunction with button variant <code>tertiary</code>.
+Can be one of:</p>
 <ul>
 <li><code>standard</code></li>
 <li><code>black</code></li>
@@ -1575,25 +1647,8 @@ Can be either of:</p>
                             
                         </dt>
                         <dd>
-                            <p>Align button text and icon with content abow or below.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fbutton-prop-groupitem"
-                                ><a class="docs-api__anchor" href="#fbutton-prop-groupitem"
-                                    ><span class="docs-api__name"
-                                        >groupItem</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Sets margin to 0, used in conjunction with <code>button-group</code>.</p>
+                            <p>Align button text and icon with content above or below.
+Used in conjunction with button variant <code>tertiary</code>.</p>
 
                             <p class="doc-api__item">Default: <code>false</code></p>
                             
@@ -1611,7 +1666,7 @@ Can be either of:</p>
                             
                         </dt>
                         <dd>
-                            <p>Automatically set button to full width when screen width is 639 pixels or below, always active for button size <code>large</code>.</p>
+                            <p>Enable full width on mobile for sizes <code>small</code> and <code>medium</code>, always active for button size <code>large</code>.</p>
 
                             <p class="doc-api__item">Default: <code>false</code></p>
                             
@@ -1671,9 +1726,9 @@ Can be either of:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/f-button-spinner (<a href="https://github.com/Forsakringskassan/designsystem/commits/497bcb02ab01b4f8cb42f74fc7188d356d9c58b8">497bcb0</a>)<br />
+<div class="footer__right"><div class="version">feature/f-button-spinner (<a href="https://github.com/Forsakringskassan/designsystem/commits/b47041c9c232068b2493a92164a4f26e30fbe704">b47041c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/604">PR 604</a><br />
-        2025-08-12 10:31
+        2025-08-14 11:54
 </div>
 <div class="toolbar__item">
     <form id="version">
