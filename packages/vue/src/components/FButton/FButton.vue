@@ -1,6 +1,14 @@
 <script setup lang="ts">
-import { computed, defineProps, type PropType } from "vue";
+import { computed, defineProps, useAttrs, type PropType } from "vue";
 import { FIcon } from "../FIcon";
+import { useInflight } from "./use-inflight";
+
+defineOptions({
+    inheritAttrs: false,
+});
+const originalAttrs = useAttrs();
+const { inflight, fn: onClick } = useInflight(originalAttrs.onClick);
+const attrs = { ...originalAttrs, onClick };
 
 const props = defineProps({
     /**
@@ -94,7 +102,6 @@ const hasIcon = computed((): boolean => {
 });
 
 const buttonClass = computed((): string[] => {
-    //let classes = `button button--${props.variant} button--${props.size}`;
     const classes = ["button", `button--${props.variant}`, `button--${props.size}`];
 
     if (props.variant === "tertiary" && props.alignText) {
@@ -112,20 +119,33 @@ const buttonClass = computed((): string[] => {
     if (props.mobileFullWidth && props.size !== "large") {
         classes.push(`button--full-width`);
     }
+    if (!hasIcon.value && !inflight.value) {
+        classes.push(`${classes} button--no-icon`);
+    }
 
     return classes;
 });
 </script>
 
 <template>
-    <button type="button" :class="buttonClass">
-        <f-icon v-if="props.iconLeft" class="button__icon" :name="props.iconLeft"></f-icon>
+    <button type="button" :class="buttonClass" :disabled="inflight" v-bind="attrs">
+        <template v-if="hasIconLeft">
+            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__inflight"></f-icon>
+            <f-icon v-else-if="props.iconLeft" class="button__icon" :name="props.iconLeft"></f-icon>
+        </template>
+
+        <template v-if="!hasIcon">
+            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__inflight"></f-icon>
+        </template>
 
         <!--
         @slot Slot for text to display in the button.
         -->
         <slot name="default"></slot>
 
-        <f-icon v-if="props.iconRight" class="button__icon" :name="props.iconRight"></f-icon>
+        <template v-if="hasIconRight">
+            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__inflight"></f-icon>
+            <f-icon v-else-if="props.iconRight" class="button__icon" :name="props.iconRight"></f-icon>
+        </template>
     </button>
 </template>

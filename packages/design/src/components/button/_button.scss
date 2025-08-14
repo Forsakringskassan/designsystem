@@ -228,6 +228,11 @@ $button--tertiary: (
     @extend %button-template;
     @include core.make-button-variant(".button", $button--standard...);
 
+    --f-button-loader-extra-padding: 0.75rem;
+    &:has(.icon) {
+        --f-button-loader-extra-padding: 0rem;
+    }
+
     &.button--primary {
         @include core.make-button-variant(".button", $button--primary...);
     }
@@ -406,6 +411,8 @@ $button--tertiary: (
         line-height: 1.25rem;
         min-width: 4rem;
         padding: core.densify(size.$padding-025) size.$padding-075;
+        padding-left: calc(size.$padding-075 + var(--f-button-loader-extra-padding));
+        padding-right: calc(size.$padding-075 + var(--f-button-loader-extra-padding));
 
         @include core.breakpoint-down(sm) {
             &:not(.button--full-width) {
@@ -422,7 +429,9 @@ $button--tertiary: (
     &.button--medium {
         line-height: 1.5rem;
         min-width: 8rem;
-        padding: core.densify(0.625rem) 1.25rem;
+        padding: core.densify(0.625rem) size.$padding-125;
+        padding-left: calc(size.$padding-125 + var(--f-button-loader-extra-padding));
+        padding-right: calc(size.$padding-125 + var(--f-button-loader-extra-padding));
 
         @include core.breakpoint-down(sm) {
             &:not(.button--full-width) {
@@ -434,7 +443,9 @@ $button--tertiary: (
     &.button--large {
         line-height: 1.5rem;
         min-width: 9.5rem;
-        padding: core.densify(1rem) 1.5rem;
+        padding: core.densify(1rem) size.$padding-150;
+        padding-left: calc(size.$padding-150 + var(--f-button-loader-extra-padding));
+        padding-right: calc(size.$padding-150 + var(--f-button-loader-extra-padding));
 
         @include core.breakpoint-down(sm) {
             max-width: var(--f-width-full);
@@ -465,5 +476,10 @@ $button--tertiary: (
         border-width: var(--f-border-width-medium);
         box-shadow: none;
         cursor: default;
+    }
+
+    & > .button__inflight {
+        visibility: visible;
+        animation: $button-spinner-animation;
     }
 }

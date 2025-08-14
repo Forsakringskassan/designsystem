@@ -686,10 +686,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -1142,10 +1142,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -1815,8 +1815,8 @@ required: true;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
-id: string;
 disabled: boolean;
+id: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
@@ -1995,10 +1995,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -3014,10 +3014,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -3445,8 +3445,8 @@ default: boolean;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
-modelValue: string;
 disabled: boolean;
+modelValue: string;
 labelWidth: string;
 inputWidth: string;
 initialMonth: FDate | undefined;
@@ -3956,10 +3956,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -4724,10 +4724,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -5898,9 +5898,9 @@ default: null;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
+disabled: boolean;
 id: string;
 modelValue: FileList | null;
-disabled: boolean;
 }, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {
@@ -6087,8 +6087,8 @@ onSubmit?: ((...args: any[]) => any) | undefined;
 onClose?: ((...args: any[]) => any) | undefined;
 onCancel?: ((...args: any[]) => any) | undefined;
 }>, {
-size: string;
 value: Record<string, any>;
+size: string;
 isOpen: boolean;
 fullscreen: boolean;
 ariaCloseText: string;
@@ -8187,10 +8187,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -8806,10 +8806,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -9511,10 +9511,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -9986,10 +9986,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -10488,10 +10488,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -10937,10 +10937,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -11395,10 +11395,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -11786,9 +11786,9 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 value: string | number | boolean | Date | unknown[] | Record<string, any> | null;
+disabled: boolean;
 id: string;
 modelValue: string | number | boolean | Date | unknown[] | Record<string, any> | null;
-disabled: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_7" needs to be exported by the entry point index.d.ts
@@ -12015,10 +12015,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;
@@ -12857,9 +12857,9 @@ default: boolean;
 onInput?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
+disabled: boolean;
 id: string;
 modelValue: string;
-disabled: boolean;
 maxlength: number;
 softLimit: number;
 charactersLeftWarning: string;
@@ -13101,10 +13101,10 @@ onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 type: string;
+disabled: boolean;
 id: string;
 modelValue: string | number | null;
 inline: boolean;
-disabled: boolean;
 options: string[] | undefined;
 labelWidth: string;
 formatter: FormatFunction<any>;

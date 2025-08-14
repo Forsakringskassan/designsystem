@@ -107,6 +107,29 @@ Använd ikoner för att förtydliga knappens funktion och skapa snabbare igenkä
 +<f-button icon-left="pen"> text </f-button>
 ```
 
+```diff
+-<f-button> text </f-button>
++<f-button icon-left="pen"> text </f-button>
+```
+
+## Asynkron åtgärd
+
+Vid klick på knappar som utför en asynkron åtgärd och om åtgärden tar längre än 200 ms så visas en spinner istället för ikonen på knappen,
+under tiden som den asynkrona åtgärden utförs.
+Om knappen saknar ikon så visas spinner till vänstert om knappens text.
+
+```diff
+<script>
++    async function asyncOperation(): Promise<void> {
++       // Your asynchronous operation
++}
+</script>
+<template>
+-   <f-button> text </f-button>
++   <f-button @click="asyncOperation"> text </f-button>
+</template>
+```
+
 ## Inaktiv
 
 Inaktiv knapp bör undvikas i stor utsträckning som möjligt.
