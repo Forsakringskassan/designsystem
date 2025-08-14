@@ -15,7 +15,7 @@ jobs:
             DST_BRANCH: gh-pages
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
               with:
                   ref: "${{ github.ref_name }}"
             - name: Configure git
