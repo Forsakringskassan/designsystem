@@ -6182,6 +6182,9 @@ var ICalendarNavbar_default = defineComponent20({
         "calendar-navbar__icon": true,
         "calendar-navbar__icon--disabled": this.nextDisabled
       };
+    },
+    monthTitleClass() {
+      return this.yearSelector ? "sr-only" : "";
     }
   },
   methods: {
@@ -6235,19 +6238,16 @@ var ICalendarNavbar_default = defineComponent20({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarNavbar.vue?type=template
-import { createCommentVNode as _createCommentVNode19, toDisplayString as _toDisplayString9, createElementVNode as _createElementVNode15, resolveComponent as _resolveComponent9, normalizeClass as _normalizeClass11, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock21, createElementBlock as _createElementBlock16 } from "vue";
+import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass11, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode19, resolveComponent as _resolveComponent9, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock21, createElementBlock as _createElementBlock16 } from "vue";
 var _hoisted_116 = { class: "calendar-navbar" };
-var _hoisted_210 = {
-  class: "calendar-navbar__month",
-  tabindex: "-1"
+var _hoisted_210 = { class: "calendar-navbar__month" };
+var _hoisted_37 = ["aria-live"];
+var _hoisted_45 = ["id", "aria-expanded"];
+var _hoisted_55 = {
+  class: "calendar-navbar__year-selector-button--title",
+  "aria-hidden": "true"
 };
-var _hoisted_37 = ["id", "aria-expanded", "aria-live"];
-var _hoisted_45 = { class: "calendar-navbar__month--title" };
-var _hoisted_55 = { class: "sr-only" };
-var _hoisted_63 = {
-  key: 1,
-  class: "calendar-navbar__month--title"
-};
+var _hoisted_63 = { class: "sr-only" };
 var _hoisted_73 = ["aria-disabled", "aria-live"];
 var _hoisted_83 = { class: "sr-only" };
 var _hoisted_93 = ["aria-disabled", "aria-live"];
@@ -6256,6 +6256,11 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent9("f-icon");
   return _openBlock21(), _createElementBlock16("div", _hoisted_116, [
     _createElementVNode15("div", _hoisted_210, [
+      _createElementVNode15("span", {
+        class: _normalizeClass11([_ctx.monthTitleClass, "calendar-navbar__month--title"]),
+        tabindex: "-1",
+        "aria-live": _ctx.isFocused("yearSelectorButton") ? "polite" : "off"
+      }, _toDisplayString9(_ctx.currentText), 11, _hoisted_37),
       _createCommentVNode19(" Button - Open/close year selector "),
       _ctx.yearSelector ? (_openBlock21(), _createElementBlock16("button", {
         key: 0,
@@ -6265,19 +6270,18 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
         type: "button",
         "aria-haspopup": "listbox",
         "aria-expanded": _ctx.yearSelectorOpen,
-        "aria-live": _ctx.isFocused("yearSelectorButton") ? "polite" : "off",
         onClick: _cache[0] || (_cache[0] = _withModifiers6((...args) => _ctx.onClickYearSelector && _ctx.onClickYearSelector(...args), ["stop", "prevent"]))
       }, [
         _createElementVNode15(
           "span",
-          _hoisted_45,
+          _hoisted_55,
           _toDisplayString9(_ctx.currentText),
           1
           /* TEXT */
         ),
         _createElementVNode15(
           "span",
-          _hoisted_55,
+          _hoisted_63,
           _toDisplayString9(_ctx.yearSelectorOpen ? _ctx.closeYearSelectorText : _ctx.openYearSelectorText),
           1
           /* TEXT */
@@ -6286,13 +6290,7 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
           class: _normalizeClass11(_ctx.yearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
           name: "arrow-down"
         }, null, 8, ["class"])
-      ], 8, _hoisted_37)) : (_openBlock21(), _createElementBlock16(
-        "span",
-        _hoisted_63,
-        _toDisplayString9(_ctx.currentText),
-        1
-        /* TEXT */
-      ))
+      ], 8, _hoisted_45)) : _createCommentVNode19("v-if", true)
     ]),
     !_ctx.yearSelectorOpen ? (_openBlock21(), _createElementBlock16("button", {
       key: 0,
