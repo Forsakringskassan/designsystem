@@ -836,3 +836,44 @@ describe("Postnummer", () => {
         `);
     });
 });
+
+describe("Format disabled", () => {
+    it("should not format text when `data-format-disabled` attribute is set", async () => {
+        const wrapper = createWrapper(
+            `
+                <span v-format:number="value" data-format-disabled>Raw text</span>
+            `,
+            12345,
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(
+            `<span data-format-disabled="">Raw text</span>`,
+        );
+    });
+});
+
+describe("Undefined value", () => {
+    it("should be reactive", async () => {
+        const wrapper = createWrapper(
+            `
+                <span v-format:number="value"></span>
+                <button type="button" @click="value=12345">Update</button>
+            `,
+            undefined,
+        );
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--number"></span>
+            <button type="button">Update</button>
+        `);
+
+        const button = wrapper.get("button").element;
+        button.click();
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper).toMatchInlineSnapshot(`
+            <span class="formatter--number">12&nbsp;345</span>
+            <button type="button">Update</button>
+        `);
+    });
+});
