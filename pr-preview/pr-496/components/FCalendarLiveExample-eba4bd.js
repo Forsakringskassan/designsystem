@@ -3100,7 +3100,6 @@ var FValidationGroup_default = defineComponent9({
      *   `componentsWithError`: a list of components with errors sorted in DOM order
      *
      *   `componentCount`: number of registered components
-     * @model
      */
     modelValue: {
       type: Object,
@@ -4994,8 +4993,6 @@ var IPopupMenu_default = defineComponent15({
   props: {
     /**
      * Key of the currently selected and highlighted item.
-     *
-     * @model
      */
     modelValue: {
       type: String,
@@ -5005,8 +5002,6 @@ var IPopupMenu_default = defineComponent15({
     /**
      * Key of the currently focused item.
      * Sets focus on matching item element when value changes.
-     *
-     * @model
      */
     focusedItem: {
       type: String,
@@ -5634,7 +5629,6 @@ var ICalendarMonthGrid_default = defineComponent18({
   props: {
     /**
      * Focused month.
-     * @model
      */
     value: {
       type: Object,
@@ -5972,7 +5966,6 @@ var ICalendarMonth_default = defineComponent19({
   props: {
     /**
      * Active month.
-     * @model
      */
     modelValue: {
       type: Object,
@@ -6619,8 +6612,6 @@ var FTooltip_default = defineComponent21({
     },
     /**
      * State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.
-     *
-     * @model
      */
     modelValue: {
       type: Boolean,
@@ -7301,7 +7292,6 @@ var FCheckboxField_default = defineComponent23({
     },
     /**
      * The value for the input checked attribute.
-     * @model
      */
     // ? The rule is disabled so that the `checked` prop can be undefined or null.
     /* eslint-disable-next-line vue/require-default-prop -- technical debt,
