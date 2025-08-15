@@ -6,6 +6,14 @@
             "syntaxKind": "modifier"
         },
         {
+            "tagName": "@model",
+            "syntaxKind": "modifier"
+        },
+        {
+            "tagName": "@since",
+            "syntaxKind": "block"
+        },
+        {
             "tagName": "@slot",
             "syntaxKind": "block"
         }

@@ -1,8 +1,15 @@
 @use "variables" as *;
+@use "../../components/button/button";
+@use "../../core";
+@use "../../core/size";
 
 $calendar-icon-padding: 5px;
 $calendar-icon-disabled-border-width: 1px;
 $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-disabled-border-width);
+%calendar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 
 .calendar-navbar {
     display: flex;
@@ -18,12 +25,40 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
 
     &__month {
         margin-right: auto;
-        font-size: 1.5rem;
-        font-weight: bold;
+
+        &--title {
+            @extend %calendar-title;
+        }
     }
 
     &__arrow--previous {
         transform: scaleX(-1);
+    }
+
+    &__arrow--up {
+        transform: rotate(0.5turn);
+    }
+
+    &__year-selector-button {
+        /* stylelint-disable scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend .button--margin-bottom-0;
+        @extend .button--tertiary--black;
+        @extend .button--tertiary;
+        @extend .button;
+
+        /* stylelint-enable */
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        font-size: 14px;
+        line-height: 1.25rem;
+        min-width: 24px;
+        padding: core.densify(0.375rem) size.$padding-025;
+        text-underline-offset: 3.5px;
+
+        &--title {
+            @extend %calendar-title;
+        }
     }
 
     &__icon {
