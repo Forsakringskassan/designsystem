@@ -183,12 +183,6 @@ docs.compileStyle("docs", "./docs/src/docs-theme.scss", {
 
 docs.compileStyle("docs-fkui", "./docs/src/fkui-theme.scss", {
     appendTo: "head",
-    attributes: {
-        data: {
-            theme: "fkui",
-        },
-        disabled: true,
-    },
 });
 
 docs.copyResource("images", "docs/src/assets/images");

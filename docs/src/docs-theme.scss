@@ -23,6 +23,8 @@ $fk-logo-large: "fk-logo-primary-large.svg";
     --f-logo-image-large:
         url("#{config-variables.$asset-path-images}/#{$fk-logo-large}"),
         linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+
+    color-scheme: light dark;
 }
 
 .sandbox-link {

@@ -23,6 +23,8 @@ runs:
               npm exec lerna -- run build \
                   --include-dependencies \
                   --scope=@fkui/i18next-translate \
+                  --scope=@fkui/theme-default \
+                  --scope=@fkui/theme-dark \
                   --scope=@fkui/vue \
                   --scope=@fkui/vue-labs
               npm exec lerna run build:docs
