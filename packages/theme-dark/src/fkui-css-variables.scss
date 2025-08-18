@@ -1,0 +1,20 @@
+// stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
+
+@use "version" as *;
+@use "semantic-tokens" as semantic-tokens;
+@use "css-variables" as css-variables;
+
+$global: true !default;
+
+@mixin css-variables {
+    @include semantic-tokens.css-variables;
+    @include css-variables.css-variables;
+}
+
+@if $global {
+    :root {
+        --fkui-theme-default-version: "#{$version}";
+
+        @include css-variables;
+    }
+}
