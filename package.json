@@ -99,7 +99,7 @@
     "@types/estree": "1.0.8",
     "@types/jest": "29.5.14",
     "@types/lodash": "4.17.20",
-    "@types/node": "20.19.10",
+    "@types/node": "20.19.11",
     "@vue/server-renderer": "3.5.18",
     "autoprefixer": "10.4.21",
     "cli-table": "0.3.11",
