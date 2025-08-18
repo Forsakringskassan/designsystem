@@ -349,10 +349,10 @@ var require_isMasked = __commonJS({
   "node_modules/lodash/_isMasked.js"(exports, module) {
     "use strict";
     var coreJsData = require_coreJsData();
-    var maskSrcKey = function() {
+    var maskSrcKey = (function() {
       var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || "");
       return uid ? "Symbol(src)_1." + uid : "";
-    }();
+    })();
     function isMasked(func) {
       return !!maskSrcKey && maskSrcKey in func;
     }
@@ -1114,9 +1114,9 @@ var require_isArguments = __commonJS({
     var objectProto = Object.prototype;
     var hasOwnProperty = objectProto.hasOwnProperty;
     var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-    var isArguments = baseIsArguments(/* @__PURE__ */ function() {
+    var isArguments = baseIsArguments(/* @__PURE__ */ (function() {
       return arguments;
-    }()) ? baseIsArguments : function(value) {
+    })()) ? baseIsArguments : function(value) {
       return isObjectLike(value) && hasOwnProperty.call(value, "callee") && !propertyIsEnumerable.call(value, "callee");
     };
     module.exports = isArguments;
@@ -1240,7 +1240,7 @@ var require_nodeUtil = __commonJS({
     var freeModule = freeExports && typeof module == "object" && module && !module.nodeType && module;
     var moduleExports = freeModule && freeModule.exports === freeExports;
     var freeProcess = moduleExports && freeGlobal.process;
-    var nodeUtil = function() {
+    var nodeUtil = (function() {
       try {
         var types = freeModule && freeModule.require && freeModule.require("util").types;
         if (types) {
@@ -1249,7 +1249,7 @@ var require_nodeUtil = __commonJS({
         return freeProcess && freeProcess.binding && freeProcess.binding("util");
       } catch (e) {
       }
-    }();
+    })();
     module.exports = nodeUtil;
   }
 });

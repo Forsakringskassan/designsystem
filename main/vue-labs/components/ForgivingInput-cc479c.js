@@ -41,9 +41,9 @@ function requireGlobalThis() {
   globalThis_1 = // eslint-disable-next-line es/no-global-this -- safe
   check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || // eslint-disable-next-line no-restricted-globals -- safe
   check(typeof self == "object" && self) || check(typeof commonjsGlobal == "object" && commonjsGlobal) || check(typeof globalThis_1 == "object" && globalThis_1) || // eslint-disable-next-line no-new-func -- fallback
-  /* @__PURE__ */ function() {
+  /* @__PURE__ */ (function() {
     return this;
-  }() || Function("return this")();
+  })() || Function("return this")();
   return globalThis_1;
 }
 var objectGetOwnPropertyDescriptor = {};
@@ -83,8 +83,8 @@ function requireFunctionBindNative() {
   hasRequiredFunctionBindNative = 1;
   var fails2 = requireFails();
   functionBindNative = !fails2(function() {
-    var test = function() {
-    }.bind();
+    var test = (function() {
+    }).bind();
     return typeof test != "function" || test.hasOwnProperty("prototype");
   });
   return functionBindNative;
@@ -724,8 +724,8 @@ function requireFunctionName() {
   var FunctionPrototype = Function.prototype;
   var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
   var EXISTS = hasOwn(FunctionPrototype, "name");
-  var PROPER = EXISTS && function something() {
-  }.name === "something";
+  var PROPER = EXISTS && (function something() {
+  }).name === "something";
   var CONFIGURABLE = EXISTS && (!DESCRIPTORS || DESCRIPTORS && getDescriptor(FunctionPrototype, "name").configurable);
   functionName = {
     EXISTS,
@@ -1281,9 +1281,9 @@ function requireClassof() {
   var wellKnownSymbol2 = requireWellKnownSymbol();
   var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
   var $Object = Object;
-  var CORRECT_ARGUMENTS = classofRaw2(/* @__PURE__ */ function() {
+  var CORRECT_ARGUMENTS = classofRaw2(/* @__PURE__ */ (function() {
     return arguments;
-  }()) === "Arguments";
+  })()) === "Arguments";
   var tryGet = function(it, key) {
     try {
       return it[key];
