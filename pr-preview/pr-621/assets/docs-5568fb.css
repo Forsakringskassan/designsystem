@@ -7774,6 +7774,7 @@ body {
   --f-logo-image-large:
       url("./images/fk-logo-primary-large.svg"),
       linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+  color-scheme: light dark;
 }
 
 .sandbox-link {
