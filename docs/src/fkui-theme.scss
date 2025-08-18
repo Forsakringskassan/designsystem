@@ -1,26 +1,31 @@
-@use "@fkui/theme-default/src/fkui-css-variables" as fkui with (
+@use "@fkui/theme-default/src/fkui-css-variables" as fkui-default with (
     $global: false
 );
-@use "@fkui/design/src/core/config-variables" with (
-    $asset-path: "./assets",
-    $asset-path-images: "./images"
+@use "@fkui/theme-dark/src/fkui-css-variables" as fkui-dark with (
+    $global: false
 );
 
-$fk-logo-small: "fk-logo-primary-small.svg";
-$fk-logo-large: "fk-logo-primary-large.svg";
+@media (prefers-color-scheme: light) {
+    .code-preview__preview,
+    .live-example__example {
+        @include fkui-default.css-variables();
+    }
+}
 
-html {
-    font-size: 16px;
+@media (prefers-color-scheme: dark) {
+    .code-preview__preview,
+    .live-example__example {
+        @include fkui-dark.css-variables();
+    }
 }
 
 .code-preview__preview,
 .live-example__example {
-    @include fkui.css-variables();
-    --f-logo-image-small:
-        url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
-        linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+    @media (prefers-color-scheme: light) {
+        @include fkui-default.css-variables();
+    }
 
-    --f-logo-image-large:
-        url("#{config-variables.$asset-path-images}/#{$fk-logo-large}"),
-        linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+    @media (prefers-color-scheme: dark) {
+        @include fkui-dark.css-variables();
+    }
 }
