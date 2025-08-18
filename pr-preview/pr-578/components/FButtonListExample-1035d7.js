@@ -223,6 +223,19 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
     mobileFullWidth: {
       type: Boolean,
       default: false
+    },
+    /**
+     * The default behavior of the button. Possible values are:
+     * - `submit`
+     * - `reset`
+     * - `button`
+     */
+    type: {
+      type: String,
+      default: "button",
+      validator(value) {
+        return ["submit", "reset", "button"].includes(value);
+      }
     }
   },
   setup(__props, { expose: __expose }) {
@@ -263,30 +276,25 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=template
 import { openBlock as _openBlock2, createBlock as _createBlock, createCommentVNode as _createCommentVNode2, renderSlot as _renderSlot2, normalizeClass as _normalizeClass, createElementBlock as _createElementBlock2 } from "vue";
+var _hoisted_12 = ["type"];
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2(
-    "button",
-    {
-      type: "button",
-      class: _normalizeClass($setup.buttonClass)
-    },
-    [
-      $setup.props.iconLeft ? (_openBlock2(), _createBlock($setup["FIcon"], {
-        key: 0,
-        class: "button__icon",
-        name: $setup.props.iconLeft
-      }, null, 8, ["name"])) : _createCommentVNode2("v-if", true),
-      _createCommentVNode2("\n        @slot Slot for text to display in the button.\n        "),
-      _renderSlot2(_ctx.$slots, "default"),
-      $setup.props.iconRight ? (_openBlock2(), _createBlock($setup["FIcon"], {
-        key: 1,
-        class: "button__icon",
-        name: $setup.props.iconRight
-      }, null, 8, ["name"])) : _createCommentVNode2("v-if", true)
-    ],
-    2
-    /* CLASS */
-  );
+  return _openBlock2(), _createElementBlock2("button", {
+    type: $props.type,
+    class: _normalizeClass($setup.buttonClass)
+  }, [
+    $setup.props.iconLeft ? (_openBlock2(), _createBlock($setup["FIcon"], {
+      key: 0,
+      class: "button__icon",
+      name: $setup.props.iconLeft
+    }, null, 8, ["name"])) : _createCommentVNode2("v-if", true),
+    _createCommentVNode2("\n        @slot Slot for text to display in the button.\n        "),
+    _renderSlot2(_ctx.$slots, "default"),
+    $setup.props.iconRight ? (_openBlock2(), _createBlock($setup["FIcon"], {
+      key: 1,
+      class: "button__icon",
+      name: $setup.props.iconRight
+    }, null, 8, ["name"])) : _createCommentVNode2("v-if", true)
+  ], 10, _hoisted_12);
 }
 
 // packages/vue/src/components/FButton/FButton.vue
@@ -305,9 +313,9 @@ var exampleComponent = /* @__PURE__ */ _defineComponent2({
     return __returned__;
   }
 });
-var _hoisted_12 = { class: "button-list no-marker" };
+var _hoisted_13 = { class: "button-list no-marker" };
 function render3(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock3(), _createElementBlock3("ul", _hoisted_12, [
+  return _openBlock3(), _createElementBlock3("ul", _hoisted_13, [
     _createElementVNode2("li", null, [
       _createVNode($setup["FButton"], {
         variant: "tertiary",
