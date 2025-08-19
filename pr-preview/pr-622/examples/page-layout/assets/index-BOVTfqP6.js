@@ -20349,6 +20349,25 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["NONE"] = 3] = "NONE";
   return Operation2;
 })(Operation || {});
+function filterItem(items, target, nested) {
+  const newItems = [...items];
+  for (let i = 0; i < newItems.length; i++) {
+    const item = newItems[i];
+    if (item === target) {
+      newItems.splice(i, 1);
+      return newItems;
+    }
+    if (nested && Array.isArray(item[nested])) {
+      const nestedItems = item[nested];
+      const nestedIndex = nestedItems.findIndex((it) => it === target);
+      if (nestedIndex !== -1) {
+        nestedItems.splice(nestedIndex, 1);
+        return newItems;
+      }
+    }
+  }
+  return newItems;
+}
 const _hoisted_1$D = {
   class: "crud-dataset"
 };
@@ -20447,6 +20466,7 @@ const _hoisted_2$t = {
     const result = ref([]);
     const operation = ref(Operation.NONE);
     const item = ref(null);
+    const nestedKey = ref(null);
     const originalItemToUpdate = ref(null);
     const isFormModalOpen = ref(false);
     const isConfirmModalOpen = ref(false);
@@ -20513,6 +20533,7 @@ const _hoisted_2$t = {
     provide("registerCallbackBeforeItemDelete", (callback) => {
       callbackBeforeItemDelete.value = callback;
     });
+    provide("setNestedKey", setNestedKey);
     onMounted(() => {
       if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
         throw Error("At least one template of the following must be defined. #add, #delete or #modify");
@@ -20545,7 +20566,7 @@ const _hoisted_2$t = {
         return;
       }
       callbackBeforeItemDelete.value(item.value);
-      result.value = result.value.filter((it) => it !== item.value);
+      result.value = filterItem(result.value, item.value, nestedKey.value);
       emit2("deleted", item.value);
       emit2("update:modelValue", result.value);
       const message = $t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort");
@@ -20599,6 +20620,9 @@ const _hoisted_2$t = {
       originalItemToUpdate.value = current;
       item.value = deepClone(current);
       isFormModalOpen.value = true;
+    }
+    function setNestedKey(key) {
+      nestedKey.value = key;
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1$D, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
@@ -20660,7 +20684,8 @@ const _hoisted_2$t = {
 function ActivateItemInjected() {
   return {
     registerCallbackAfterItemAdd: inject("registerCallbackAfterItemAdd", () => void 0),
-    registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0)
+    registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0),
+    setNestedKey: inject("setNestedKey", () => void 0)
   };
 }
 var es_set_difference_v2 = {};
@@ -24318,23 +24343,25 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
   function hasExpandableContent(row) {
     return Boolean(expandableRows(row));
   }
-  function getExpandedIndex(shallowIndex, rows) {
-    let expandedIndex = 0;
-    for (let i = 0; i < shallowIndex; i++) {
-      const row = rows[i];
-      expandedIndex++;
-      if (!hasExpandableContent(row)) {
+  function getExpandedIndex(row, rows) {
+    let index = 0;
+    for (const currentRow of rows) {
+      if (currentRow === row) {
+        return index;
+      }
+      index++;
+      if (!hasExpandableContent(currentRow) || !isExpanded(currentRow)) {
         continue;
       }
-      const {
-        length
-      } = expandableRows(row);
-      if (length === 0) {
-        continue;
+      const nestedRows = expandableRows(currentRow);
+      for (const currentNestedRow of nestedRows) {
+        if (currentNestedRow === row) {
+          return index;
+        }
+        index++;
       }
-      expandedIndex += length;
     }
-    return expandedIndex;
+    return -1;
   }
   return {
     isExpandableTable,
@@ -24537,7 +24564,8 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
     } = FSortFilterDatasetInjected();
     const {
       registerCallbackAfterItemAdd,
-      registerCallbackBeforeItemDelete
+      registerCallbackBeforeItemDelete,
+      setNestedKey
     } = ActivateItemInjected();
     const internalKey2 = getInternalKey();
     const activeRow = ref(void 0);
@@ -24658,6 +24686,9 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
     onMounted(() => {
       if (tbody.value) {
         updateTr(tbody.value);
+      }
+      if (isExpandableTable) {
+        setNestedKey(props.expandableAttribute);
       }
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
@@ -24784,36 +24815,35 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
       if (internalRows.value.length === 0) {
         return;
       }
-      const index = internalRows.value.indexOf(item);
+      let index;
+      if (isExpandableTable) {
+        index = getExpandedIndex(item, internalRows.value);
+      } else {
+        index = internalRows.value.indexOf(item);
+      }
       const target = (_getPreviousFocus = getPreviousFocus(index)) !== null && _getPreviousFocus !== void 0 ? _getPreviousFocus : getNextFocus(index);
       if (target) {
         target.focus();
       }
     }
     function getPreviousFocus(currentIndex) {
-      const targetIndex = currentIndex - 1;
-      if (targetIndex < 0) {
+      const previousIndex = currentIndex - 1;
+      if (previousIndex < 0) {
         return void 0;
       }
-      const targetRow = tr.value[targetIndex];
+      let targetRow = trAll.value[previousIndex];
       if (!targetRow) {
         return void 0;
       }
-      const row = internalRows.value[targetIndex];
-      if (!isExpanded(row)) {
+      for (let index = 0; index <= previousIndex; index++) {
+        const targetIndex = previousIndex - index;
+        targetRow = trAll.value[targetIndex];
+        if (!isVisible(targetRow)) {
+          continue;
+        }
         const tabbables = findTabbableElements(targetRow);
-        return tabbables[tabbables.length - 1];
-      }
-      const expandedIndex = getExpandedIndex(currentIndex, internalRows.value) - 1;
-      const {
-        length
-      } = expandableRows(row);
-      for (let i = 0; i <= length; i++) {
-        const targetExpandedRow = trAll.value[expandedIndex - i];
-        const tabbables = findTabbableElements(targetExpandedRow);
-        const target = tabbables[tabbables.length - 1];
-        if (target) {
-          return target;
+        if (tabbables.length > 0) {
+          return tabbables[tabbables.length - 1];
         }
       }
       return void 0;

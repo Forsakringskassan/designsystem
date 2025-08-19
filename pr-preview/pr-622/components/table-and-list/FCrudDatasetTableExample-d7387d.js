@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-a57f84.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-d7387d.js
 import { defineComponent } from "vue";
 import {
   FCrudDataset,
@@ -45,7 +45,21 @@ var fruits = [
     id: "1",
     name: "\xC4pple",
     origin: "Sverige",
-    description: "Rund, ofta r\xF6d eller gr\xF6n frukt med s\xF6t eller syrlig smak."
+    description: "Rund, ofta r\xF6d eller gr\xF6n frukt med s\xF6t eller syrlig smak.",
+    variant: [
+      {
+        id: "1a",
+        name: "Discovery",
+        origin: "Sverige",
+        description: "R\xF6tt och gulgr\xF6nt \xE4pple. Krispig och smakrik."
+      },
+      {
+        id: "1b",
+        name: "Ingrid Marie",
+        origin: "Sverige",
+        description: "M\xF6rkr\xF6tt \xE4pple. Saftig och s\xF6tsyrlig."
+      }
+    ]
   },
   {
     id: "2",
@@ -67,7 +81,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-a57f84.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-d7387d.js
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = defineComponent({
   components: {
@@ -107,6 +121,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     default: _withCtx(({ updateItem, deleteItem }) => [
       _createVNode(_component_f_interactive_table, {
         rows: _ctx.fruits,
+        "expandable-attribute": "variant",
         "key-attribute": "id"
       }, {
         caption: _withCtx(() => _cache[1] || (_cache[1] = [
@@ -409,7 +424,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     delete: _withCtx(({ item }) => [
       _createTextVNode(
-        ' Vill du verkligen radera fruken "' + _toDisplayString(item.name) + '" med ID ' + _toDisplayString(item.id),
+        ' Vill du verkligen radera frukten "' + _toDisplayString(item.name) + '" med ID ' + _toDisplayString(item.id),
         1
         /* TEXT */
       )
@@ -421,7 +436,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a57f84"
+  selector: "#example-d7387d"
 });
 export {
   render

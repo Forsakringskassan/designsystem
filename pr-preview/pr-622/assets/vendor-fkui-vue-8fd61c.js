@@ -1,6 +1,6 @@
 // packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createBlock, createCommentVNode, unref, createApp, resolveComponent, withKeys, createVNode, toDisplayString, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
-import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
+import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
 var statuses = ["default", "warning", "error", "success", "info"];
 var _sfc_main$1n = /* @__PURE__ */ defineComponent({
@@ -10508,6 +10508,25 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
   Operation2[Operation2["NONE"] = 3] = "NONE";
   return Operation2;
 })(Operation || {});
+function filterItem(items, target, nested) {
+  const newItems = [...items];
+  for (let i = 0; i < newItems.length; i++) {
+    const item = newItems[i];
+    if (item === target) {
+      newItems.splice(i, 1);
+      return newItems;
+    }
+    if (nested && Array.isArray(item[nested])) {
+      const nestedItems = item[nested];
+      const nestedIndex = nestedItems.findIndex((it) => it === target);
+      if (nestedIndex !== -1) {
+        nestedItems.splice(nestedIndex, 1);
+        return newItems;
+      }
+    }
+  }
+  return newItems;
+}
 var _hoisted_1$D = {
   class: "crud-dataset"
 };
@@ -10606,6 +10625,7 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
     const result = ref([]);
     const operation = ref(Operation.NONE);
     const item = ref(null);
+    const nestedKey = ref(null);
     const originalItemToUpdate = ref(null);
     const isFormModalOpen = ref(false);
     const isConfirmModalOpen = ref(false);
@@ -10672,6 +10692,7 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
     provide("registerCallbackBeforeItemDelete", (callback) => {
       callbackBeforeItemDelete.value = callback;
     });
+    provide("setNestedKey", setNestedKey);
     onMounted(() => {
       if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
         throw Error("At least one template of the following must be defined. #add, #delete or #modify");
@@ -10704,7 +10725,7 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
         return;
       }
       callbackBeforeItemDelete.value(item.value);
-      result.value = result.value.filter((it) => it !== item.value);
+      result.value = filterItem(result.value, item.value, nestedKey.value);
       emit("deleted", item.value);
       emit("update:modelValue", result.value);
       const message = $t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort");
@@ -10758,6 +10779,9 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
       originalItemToUpdate.value = current;
       item.value = deepClone(current);
       isFormModalOpen.value = true;
+    }
+    function setNestedKey(key) {
+      nestedKey.value = key;
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1$D, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
@@ -10937,7 +10961,8 @@ var _sfc_main$R = /* @__PURE__ */ defineComponent({
 function ActivateItemInjected() {
   return {
     registerCallbackAfterItemAdd: inject("registerCallbackAfterItemAdd", () => void 0),
-    registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0)
+    registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0),
+    setNestedKey: inject("setNestedKey", () => void 0)
   };
 }
 var es_set_difference_v2 = {};
@@ -16191,23 +16216,25 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
   function hasExpandableContent(row) {
     return Boolean(expandableRows(row));
   }
-  function getExpandedIndex(shallowIndex, rows) {
-    let expandedIndex = 0;
-    for (let i = 0; i < shallowIndex; i++) {
-      const row = rows[i];
-      expandedIndex++;
-      if (!hasExpandableContent(row)) {
+  function getExpandedIndex(row, rows) {
+    let index = 0;
+    for (const currentRow of rows) {
+      if (currentRow === row) {
+        return index;
+      }
+      index++;
+      if (!hasExpandableContent(currentRow) || !isExpanded(currentRow)) {
         continue;
       }
-      const {
-        length
-      } = expandableRows(row);
-      if (length === 0) {
-        continue;
+      const nestedRows = expandableRows(currentRow);
+      for (const currentNestedRow of nestedRows) {
+        if (currentNestedRow === row) {
+          return index;
+        }
+        index++;
       }
-      expandedIndex += length;
     }
-    return expandedIndex;
+    return -1;
   }
   return {
     isExpandableTable,
@@ -16410,7 +16437,8 @@ var _sfc_main$l = /* @__PURE__ */ defineComponent({
     } = FSortFilterDatasetInjected();
     const {
       registerCallbackAfterItemAdd,
-      registerCallbackBeforeItemDelete
+      registerCallbackBeforeItemDelete,
+      setNestedKey
     } = ActivateItemInjected();
     const internalKey2 = getInternalKey();
     const activeRow = ref(void 0);
@@ -16531,6 +16559,9 @@ var _sfc_main$l = /* @__PURE__ */ defineComponent({
     onMounted(() => {
       if (tbody.value) {
         updateTr(tbody.value);
+      }
+      if (isExpandableTable) {
+        setNestedKey(props.expandableAttribute);
       }
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
@@ -16657,36 +16688,35 @@ var _sfc_main$l = /* @__PURE__ */ defineComponent({
       if (internalRows.value.length === 0) {
         return;
       }
-      const index = internalRows.value.indexOf(item);
+      let index;
+      if (isExpandableTable) {
+        index = getExpandedIndex(item, internalRows.value);
+      } else {
+        index = internalRows.value.indexOf(item);
+      }
       const target = (_getPreviousFocus = getPreviousFocus(index)) !== null && _getPreviousFocus !== void 0 ? _getPreviousFocus : getNextFocus(index);
       if (target) {
         target.focus();
       }
     }
     function getPreviousFocus(currentIndex) {
-      const targetIndex = currentIndex - 1;
-      if (targetIndex < 0) {
+      const previousIndex = currentIndex - 1;
+      if (previousIndex < 0) {
         return void 0;
       }
-      const targetRow = tr.value[targetIndex];
+      let targetRow = trAll.value[previousIndex];
       if (!targetRow) {
         return void 0;
       }
-      const row = internalRows.value[targetIndex];
-      if (!isExpanded(row)) {
+      for (let index = 0; index <= previousIndex; index++) {
+        const targetIndex = previousIndex - index;
+        targetRow = trAll.value[targetIndex];
+        if (!isVisible(targetRow)) {
+          continue;
+        }
         const tabbables = findTabbableElements(targetRow);
-        return tabbables[tabbables.length - 1];
-      }
-      const expandedIndex = getExpandedIndex(currentIndex, internalRows.value) - 1;
-      const {
-        length
-      } = expandableRows(row);
-      for (let i = 0; i <= length; i++) {
-        const targetExpandedRow = trAll.value[expandedIndex - i];
-        const tabbables = findTabbableElements(targetExpandedRow);
-        const target = tabbables[tabbables.length - 1];
-        if (target) {
-          return target;
+        if (tabbables.length > 0) {
+          return tabbables[tabbables.length - 1];
         }
       }
       return void 0;
@@ -18266,8 +18296,8 @@ var _sfc_main$b = defineComponent({
     },
     showItemSrText(index) {
       const isSelected = this.items[index].key === this.selectedItem;
-      const isVisible = index < this.overflowIndex;
-      return isSelected && isVisible;
+      const isVisible2 = index < this.overflowIndex;
+      return isSelected && isVisible2;
     },
     getVisibleAnchors() {
       const itemAnchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
