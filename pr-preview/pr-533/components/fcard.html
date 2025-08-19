@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-efe049.js",
     "@fkui/date": "../assets/vendor-fkui-date-18a9b5.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-b8de70.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-612501.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../assets/vendor-fkui-logic-efe049.js": "sha384-FiztVSPAWHRNJrQw5vvNFBPEB3Bh6u/lFSAvBL8At6K0nZvLyaqK9vCT4Np4wS+o",
     "../assets/vendor-fkui-date-18a9b5.js": "sha384-/BhWaHaRzDax/IItSxXiIs/xsJKrEYFoKdLwlxJBOQtFbvUEGAiw1a7KwcxTNihA",
-    "../assets/vendor-fkui-vue-b8de70.js": "sha384-0jE3c+BEqZP+bhycH9zhuoFSSvXtvcJ0Lrb/3VkpX/TSbl31k2LJkWmG9LKO/jDR",
+    "../assets/vendor-fkui-vue-612501.js": "sha384-tJhnAjRW1LOwTLh+/ZCTXzrGaSegAVqM1n6OFsAEj9CjOWTQi4C7WJoave1PlTmo",
     "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-22f70a.json"
+            href="../search-data-c81162.json"
             as="fetch"
             crossorigin
-            integrity="sha384-CZr/EVdZUImmgHrvwjaX61bmzq+trkhYHtqRrZWbjhNXRaYT19uRoskoLZRQz0sh"
+            integrity="sha384-OkLO3nuXgl0xW3AgUk8gJ1L47+5h63o3b+HvOO5KzvGTZDdOp9HG/XDX3kVkkwk6"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/0db0e78917ac006766c6bd7bbc7a05bfedadcb59/packages/vue/src/components/FCard/FCard.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/a2358d6ac3d16e41627bb8e619e962ac2f179700/packages/vue/src/components/FCard/FCard.vue">
                 FCard
             </a>
             
@@ -1131,13 +1131,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-57f41e"></div>
+        <div id="example-8e2bc7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCardExample-57f41e.js"></script>
+        <script type="module" src="./FCardExample-8e2bc7.js"></script>
     </div>
                 <div>
             <button
@@ -1157,11 +1157,11 @@
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FIcon</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FCardExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FIcon</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FCard</span>, <span class="hljs-title class_">FButton</span> },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -1184,21 +1184,17 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--tertiary button--medium button--align-text&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
+                    <span class="hljs-attr">align-text</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                    <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
                 &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trashcan&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-icon</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> Ta bort <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--tertiary button--medium button--align-text&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;pen&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-icon</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> Ändra <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    Ta bort
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> <span class="hljs-attr">align-text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;pen&quot;</span>&gt;</span>
+                    Ta bort
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-card</span>&gt;</span>
@@ -1322,13 +1318,13 @@ Använd <code>error-message</code>-slotten för att definiera ett eget beteende.
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-a4a8db"></div>
+        <div id="example-9d641e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCardValidationExample-a4a8db.js"></script>
+        <script type="module" src="./FCardValidationExample-9d641e.js"></script>
     </div>
                 <div>
             <button
@@ -1584,9 +1580,9 @@ Använd <code>error-message</code>-slotten för att definiera ett eget beteende.
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/0db0e78917ac006766c6bd7bbc7a05bfedadcb59">0db0e78</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/a2358d6ac3d16e41627bb8e619e962ac2f179700">a2358d6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/533">PR 533</a><br />
-        2025-08-18 14:21
+        2025-08-19 09:38
 </div>
 <div class="toolbar__item">
     <form id="version">
