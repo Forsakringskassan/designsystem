@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datumväljare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-5c1909.css"
+            href="../../assets/docs-7b33f4.css"
             crossorigin
-            integrity="sha384-08RbscgOpypImaF8PwjcGU+1fR+EcNgOtXFwMgZxv8UFi2JpaKBoWELYYeN2d9op"
+            integrity="sha384-4t7oEpRTN7RTHOBxqZ950C1SW4jhudYf0sW+x9VIFJ6srNnYjcjzPh27WosLR6ms"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-efe049.js",
     "@fkui/date": "../../assets/vendor-fkui-date-18a9b5.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-166c21.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8eddc1.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../../assets/vendor-fkui-logic-efe049.js": "sha384-FiztVSPAWHRNJrQw5vvNFBPEB3Bh6u/lFSAvBL8At6K0nZvLyaqK9vCT4Np4wS+o",
     "../../assets/vendor-fkui-date-18a9b5.js": "sha384-/BhWaHaRzDax/IItSxXiIs/xsJKrEYFoKdLwlxJBOQtFbvUEGAiw1a7KwcxTNihA",
-    "../../assets/vendor-fkui-vue-166c21.js": "sha384-6zZEn6908NdS7PaVOL/jdOzrzEDssLqUllQrH55lJlBdwyeTcSdFfdH9YQqIdClV",
+    "../../assets/vendor-fkui-vue-8eddc1.js": "sha384-goIHKpsDVvGxr6PxCsQH1VITuW5xAyiPyB3fIkafx+UvXjjrr7DQVybaZWdg75H4",
     "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-22f70a.json"
+            href="../../search-data-a65a58.json"
             as="fetch"
             crossorigin
-            integrity="sha384-CZr/EVdZUImmgHrvwjaX61bmzq+trkhYHtqRrZWbjhNXRaYT19uRoskoLZRQz0sh"
+            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fead1523f9e6250a2677330d72d277746417f6cd/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8a6705f49de12fc9fe19a700c6eb1d726764aee8/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">
                 FDatepickerField
             </a>
             
@@ -1142,13 +1142,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-ddc531"></div>
+        <div id="example-a34f93"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FDatepickerFieldLiveExample-ddc531.js"></script>
+        <script type="module" src="./FDatepickerFieldLiveExample-a34f93.js"></script>
     
                 </div>
             <p class="docs-paragraph">En datumväljare är mindre användbar när användaren ska ange:</p>
@@ -1186,9 +1186,26 @@ har valt en månad som inte har några valbara datum.</p>
  &gt;&lt;/f-datepicker-field&gt;
 </code></pre>
                 </div>
-            <h3 id="arsvaljare"><a class="header-anchor" href="#arsvaljare">Årsväljare</a></h3><p class="docs-paragraph">En årsväljare gör det lättare för användaren att byta till ett annat år och används när kalendern sträcker sig över flera år.</p>
-<p class="docs-paragraph"><a href="../fcalendar.html#arsvaljare">Läs mer om årsväljare.</a></p>
-<h2 id="responsivitet"><a class="header-anchor" href="#responsivitet">Responsivitet</a></h2><ul>
+            <h3 id="arsvaljare"><a class="header-anchor" href="#arsvaljare">Årsväljare</a></h3><p class="docs-paragraph">En årsväljare gör det lättare för användaren att byta till ett annat år och används när kalendern sträcker sig över flera år.
+Årsväljaren är som standard inaktiverad och aktiveras genom att använda propen <code>year-selector</code>:</p>
+
+                <div
+                    id="example-288fc8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-datepicker-field
+     v-model=&quot;model&quot;
+     :min-date=&quot;min&quot;
+     :max-date=&quot;max&quot;
+<span class="hljs-addition">+    year-selector</span>
+ &gt;&lt;/f-datepicker-field&gt;
+</code></pre>
+                </div>
+            <h2 id="responsivitet"><a class="header-anchor" href="#responsivitet">Responsivitet</a></h2><ul>
 <li>På små skärmar (&lt;640 px bredd) visas kalendern som en del av webbsidan (inline)</li>
 <li>På större skärmar visas kalendern i en pop-up och täcker en del av sidan.</li>
 <li>Kalenderns bredd anpassas utifrån skärmens bredd.</li>
@@ -1204,7 +1221,7 @@ har valt en månad som inte har några valbara datum.</p>
 <p class="docs-paragraph">Validatorer används för att sätta begränsningar av valbara dagar.</p>
 <h3 id="min_och_maxdatum"><a class="header-anchor" href="#min_och_maxdatum">Min- och maxdatum</a></h3>
                 <div
-                    id="example-df9668"
+                    id="example-00450c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1222,7 +1239,7 @@ har valt en månad som inte har några valbara datum.</p>
                 </div>
             <h3 id="begransa_valbara_datum"><a class="header-anchor" href="#begransa_valbara_datum">Begränsa valbara datum</a></h3>
                 <div
-                    id="example-38a0c5"
+                    id="example-38f362"
                     class="code-preview code-preview--default"
                     
                     
@@ -1237,7 +1254,7 @@ har valt en månad som inte har några valbara datum.</p>
                 </div>
             <h3 id="begransa_valbara_veckodagar"><a class="header-anchor" href="#begransa_valbara_veckodagar">Begränsa valbara veckodagar</a></h3>
                 <div
-                    id="example-6ed7ea"
+                    id="example-41bb92"
                     class="code-preview code-preview--default"
                     
                     
@@ -1253,7 +1270,7 @@ har valt en månad som inte har några valbara datum.</p>
             <h2 id="bredd_pa_inmatningsfalt_och_etikett"><a class="header-anchor" href="#bredd_pa_inmatningsfalt_och_etikett">Bredd på inmatningsfält och etikett</a></h2><p class="docs-paragraph">För att få plats med en längre text i etiketten går det att ha olika bredder på kalenderns etikett och inmatningsfält. Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss skärmbredd.</p>
 
                 <div
-                    id="example-7c7df8"
+                    id="example-260f95"
                     class="code-preview code-preview--default"
                     
                     
@@ -1275,7 +1292,7 @@ har valt en månad som inte har några valbara datum.</p>
 </ul>
 
                 <div
-                    id="example-891868"
+                    id="example-fdfc24"
                     class="code-preview code-preview--default"
                     
                     
@@ -1291,7 +1308,7 @@ har valt en månad som inte har några valbara datum.</p>
             <h2 id="visa_inline"><a class="header-anchor" href="#visa_inline">Visa inline</a></h2><p class="docs-paragraph">Använd alwaysInline om kalendern ska visas inline oavsett skärmbredd.</p>
 
                 <div
-                    id="example-90a247"
+                    id="example-07fbe5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1306,7 +1323,7 @@ har valt en månad som inte har några valbara datum.</p>
                 </div>
             <h2 id="dolj_markering_av_dagens_datum"><a class="header-anchor" href="#dolj_markering_av_dagens_datum">Dölj markering av dagens datum</a></h2>
                 <div
-                    id="example-4cb849"
+                    id="example-15947f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1627,9 +1644,9 @@ If unspecified, todays month will be shown when no day is selected.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feat/change-year (<a href="https://github.com/Forsakringskassan/designsystem/commits/fead1523f9e6250a2677330d72d277746417f6cd">fead152</a>)<br />
+<div class="footer__right"><div class="version">feat/change-year (<a href="https://github.com/Forsakringskassan/designsystem/commits/8a6705f49de12fc9fe19a700c6eb1d726764aee8">8a6705f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/496">PR 496</a><br />
-        2025-08-18 07:07
+        2025-08-19 11:32
 </div>
 <div class="toolbar__item">
     <form id="version">

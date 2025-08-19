@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datamängdredigerare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-5c1909.css"
+            href="../../assets/docs-7b33f4.css"
             crossorigin
-            integrity="sha384-08RbscgOpypImaF8PwjcGU+1fR+EcNgOtXFwMgZxv8UFi2JpaKBoWELYYeN2d9op"
+            integrity="sha384-4t7oEpRTN7RTHOBxqZ950C1SW4jhudYf0sW+x9VIFJ6srNnYjcjzPh27WosLR6ms"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-efe049.js",
     "@fkui/date": "../../assets/vendor-fkui-date-18a9b5.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-166c21.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8eddc1.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../../assets/vendor-fkui-logic-efe049.js": "sha384-FiztVSPAWHRNJrQw5vvNFBPEB3Bh6u/lFSAvBL8At6K0nZvLyaqK9vCT4Np4wS+o",
     "../../assets/vendor-fkui-date-18a9b5.js": "sha384-/BhWaHaRzDax/IItSxXiIs/xsJKrEYFoKdLwlxJBOQtFbvUEGAiw1a7KwcxTNihA",
-    "../../assets/vendor-fkui-vue-166c21.js": "sha384-6zZEn6908NdS7PaVOL/jdOzrzEDssLqUllQrH55lJlBdwyeTcSdFfdH9YQqIdClV",
+    "../../assets/vendor-fkui-vue-8eddc1.js": "sha384-goIHKpsDVvGxr6PxCsQH1VITuW5xAyiPyB3fIkafx+UvXjjrr7DQVybaZWdg75H4",
     "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-22f70a.json"
+            href="../../search-data-a65a58.json"
             as="fetch"
             crossorigin
-            integrity="sha384-CZr/EVdZUImmgHrvwjaX61bmzq+trkhYHtqRrZWbjhNXRaYT19uRoskoLZRQz0sh"
+            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fead1523f9e6250a2677330d72d277746417f6cd/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8a6705f49de12fc9fe19a700c6eb1d726764aee8/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -1151,13 +1151,13 @@ som tydligör vad som läggs till.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-05a07d"></div>
+        <div id="example-d7387d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-05a07d.js"></script>
+        <script type="module" src="./FCrudDatasetTableExample-d7387d.js"></script>
     </div>
                 <div>
             <button
@@ -1212,7 +1212,7 @@ som tydligör vad som läggs till.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ updateItem, deleteItem }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;variant&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
@@ -1284,7 +1284,7 @@ som tydligör vad som läggs till.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            Vill du verkligen radera fruken &quot;{{ item.name }}&quot; med ID {{ item.id }}
+            Vill du verkligen radera frukten &quot;{{ item.name }}&quot; med ID {{ item.id }}
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1357,13 +1357,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 >
                     
                     <div class="code-preview__preview">
-        <div id="example-e51959"></div>
+        <div id="example-c0df3a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetAdditionalButtons-e51959.js"></script>
+        <script type="module" src="./FCrudDatasetAdditionalButtons-c0df3a.js"></script>
     </div>
                 </div>
             <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
@@ -1376,13 +1376,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-bf5e75"></div>
+        <div id="example-66ab66"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-bf5e75.js"></script>
+        <script type="module" src="./FCrudDatasetTableCreateExample-66ab66.js"></script>
     </div>
                 <div>
             <button
@@ -1485,13 +1485,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-d242fa"></div>
+        <div id="example-d6b167"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableUpdateExample-d242fa.js"></script>
+        <script type="module" src="./FCrudDatasetTableUpdateExample-d6b167.js"></script>
     </div>
                 <div>
             <button
@@ -1583,13 +1583,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-31ea98"></div>
+        <div id="example-1da8da"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetListExample-31ea98.js"></script>
+        <script type="module" src="./FCrudDatasetListExample-1da8da.js"></script>
     </div>
                 <div>
             <button
@@ -1754,13 +1754,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-459f32"></div>
+        <div id="example-a9f844"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetSortListExample-459f32.js"></script>
+        <script type="module" src="./FCrudDatasetSortListExample-a9f844.js"></script>
     </div>
                 <div>
             <button
@@ -1947,13 +1947,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-9ec1aa"></div>
+        <div id="example-9585d9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetCustomTextExample-9ec1aa.js"></script>
+        <script type="module" src="./FCrudDatasetCustomTextExample-9585d9.js"></script>
     </div>
                 <div>
             <button
@@ -2670,7 +2670,7 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             <p>Slot for displaying the data.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger modification modal</li><li><code>deleteItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger deletion modal</li>
+                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger modification modal</li><li><code>deleteItem: (item: T, nested?: keyof T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger deletion modal</li>
                             </ul>
                             
                         </dd>
@@ -2797,9 +2797,9 @@ Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.ht
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feat/change-year (<a href="https://github.com/Forsakringskassan/designsystem/commits/fead1523f9e6250a2677330d72d277746417f6cd">fead152</a>)<br />
+<div class="footer__right"><div class="version">feat/change-year (<a href="https://github.com/Forsakringskassan/designsystem/commits/8a6705f49de12fc9fe19a700c6eb1d726764aee8">8a6705f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/496">PR 496</a><br />
-        2025-08-18 07:07
+        2025-08-19 11:32
 </div>
 <div class="toolbar__item">
     <form id="version">
