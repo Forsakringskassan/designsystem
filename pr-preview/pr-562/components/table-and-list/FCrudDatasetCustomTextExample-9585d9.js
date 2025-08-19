@@ -38,7 +38,21 @@ var fruits = [
     id: "1",
     name: "\xC4pple",
     origin: "Sverige",
-    description: "Rund, ofta r\xF6d eller gr\xF6n frukt med s\xF6t eller syrlig smak."
+    description: "Rund, ofta r\xF6d eller gr\xF6n frukt med s\xF6t eller syrlig smak.",
+    variant: [
+      {
+        id: "1a",
+        name: "Discovery",
+        origin: "Sverige",
+        description: "R\xF6tt och gulgr\xF6nt \xE4pple. Krispig och smakrik."
+      },
+      {
+        id: "1b",
+        name: "Ingrid Marie",
+        origin: "Sverige",
+        description: "M\xF6rkr\xF6tt \xE4pple. Saftig och s\xF6tsyrlig."
+      }
+    ]
   },
   {
     id: "2",

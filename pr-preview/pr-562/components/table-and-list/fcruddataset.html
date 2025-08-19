@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-efe049.js",
     "@fkui/date": "../../assets/vendor-fkui-date-18a9b5.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-612501.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8fd61c.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../../assets/vendor-fkui-logic-efe049.js": "sha384-FiztVSPAWHRNJrQw5vvNFBPEB3Bh6u/lFSAvBL8At6K0nZvLyaqK9vCT4Np4wS+o",
     "../../assets/vendor-fkui-date-18a9b5.js": "sha384-/BhWaHaRzDax/IItSxXiIs/xsJKrEYFoKdLwlxJBOQtFbvUEGAiw1a7KwcxTNihA",
-    "../../assets/vendor-fkui-vue-612501.js": "sha384-tJhnAjRW1LOwTLh+/ZCTXzrGaSegAVqM1n6OFsAEj9CjOWTQi4C7WJoave1PlTmo",
+    "../../assets/vendor-fkui-vue-8fd61c.js": "sha384-usQAquHZzl8j1RIP/vBPAKdexiBgFgTB4DOftbDAC7gtgRSuVxXUTTu6Zg0e6Z8x",
     "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-901730.json"
+            href="../../search-data-aaeb2e.json"
             as="fetch"
             crossorigin
-            integrity="sha384-as7//KizJJUsZnWVhn0DpNNhAD1NtcbSj5s2eH3jw0T1ApltveGGqyNqhO73zt0c"
+            integrity="sha384-5TaZlmqhDuhXg0wZfTiDh8h87292D7M2hVzeLXILTck1ecSXuziilIyDmf7vQ+p3"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b046be960592fa291fd11e84ff2e6a7a0891de38/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b3985bc66ec47d7d066adef6f9a4885f788d816b/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -1151,13 +1151,13 @@ som tydligör vad som läggs till.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-a57f84"></div>
+        <div id="example-d7387d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-a57f84.js"></script>
+        <script type="module" src="./FCrudDatasetTableExample-d7387d.js"></script>
     </div>
                 <div>
             <button
@@ -1212,7 +1212,7 @@ som tydligör vad som läggs till.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ updateItem, deleteItem }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;variant&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
@@ -1284,7 +1284,7 @@ som tydligör vad som läggs till.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            Vill du verkligen radera fruken &quot;{{ item.name }}&quot; med ID {{ item.id }}
+            Vill du verkligen radera frukten &quot;{{ item.name }}&quot; med ID {{ item.id }}
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -2670,7 +2670,7 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             <p>Slot for displaying the data.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger modification modal</li><li><code>deleteItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger deletion modal</li>
+                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger modification modal</li><li><code>deleteItem: (item: T, nested?: keyof T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger deletion modal</li>
                             </ul>
                             
                         </dd>
@@ -2797,9 +2797,9 @@ Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.ht
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/jest-preset-stylelint-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/b046be960592fa291fd11e84ff2e6a7a0891de38">b046be9</a>)<br />
+<div class="footer__right"><div class="version">renovate/jest-preset-stylelint-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/b3985bc66ec47d7d066adef6f9a4885f788d816b">b3985bc</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/562">PR 562</a><br />
-        2025-08-19 09:54
+        2025-08-19 10:34
 </div>
 <div class="toolbar__item">
     <form id="version">
