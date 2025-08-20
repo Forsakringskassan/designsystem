@@ -19,7 +19,7 @@ module.exports = {
             files: [
                 "./*.{js,mjs}",
                 "./{examples,packages,internal}/*/*.{js,ts,cjs,mjs}",
-                "./{examples,packages,internal}/*/scripts/**/*.{js,ts,cjs,mjs}",
+                "./{examples,packages,internal}/*/{html-validate,scripts,stylelint}/**/*.{js,ts,cjs,mjs}",
                 "./scripts/*.{js,ts,cjs,mjs}",
             ],
             extends: ["@forsakringskassan/cli"],
