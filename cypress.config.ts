@@ -1,3 +1,4 @@
+import { pathToFileURL } from "node:url";
 import { type ConfigData } from "html-validate";
 import { type Manifest, Generator } from "@forsakringskassan/docs-generator";
 import { defineConfig } from "cypress";
@@ -12,7 +13,8 @@ import exclude from "./packages/vue/htmlvalidate/cypress";
 import config from "./docs.config";
 
 async function getDocsPages(): Promise<Manifest["pages"]> {
-    const docs = new Generator(config);
+    const importMetaUrl = pathToFileURL(__filename);
+    const docs = new Generator(importMetaUrl, config);
     const manifest = await docs.manifest(config.sourceFiles);
     return manifest.pages.filter((it) => {
         return it.path.endsWith(".html");
