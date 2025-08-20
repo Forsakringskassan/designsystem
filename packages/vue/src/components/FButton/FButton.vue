@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineProps, type PropType } from "vue";
+import { computed, type PropType } from "vue";
 import { FIcon } from "../FIcon";
 
 const props = defineProps({
