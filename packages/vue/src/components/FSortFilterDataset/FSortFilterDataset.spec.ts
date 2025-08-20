@@ -281,26 +281,51 @@ it("should sort data when dropdown is changed", async () => {
     expect(rows[2].findAll("td")[0].text()).toBe("3");
 });
 
-it("should respect sort attribute after dataset change", async () => {
-    const wrapper = createTableWrapper();
-    const options = wrapper.find("select").findAll("option");
+describe("should keep sort on data change", () => {
+    it("when sort was selected using dropdown", async () => {
+        const wrapper = createTableWrapper();
+        const options = wrapper.find("select").findAll("option");
 
-    // Sort by Column B (Stigande)
-    await options[3].setValue();
-    let rows = wrapper.findAll("tr");
-    expect(rows[0].findAll("td")[1].text()).toBe("a");
-    expect(rows[1].findAll("td")[1].text()).toBe("k");
-    expect(rows[2].findAll("td")[1].text()).toBe("ö");
+        // Sort by Column B (Stigande)
+        await options[3].setValue();
+        let rows = wrapper.findAll("tr");
+        expect(rows[0].findAll("td")[1].text()).toBe("a");
+        expect(rows[1].findAll("td")[1].text()).toBe("k");
+        expect(rows[2].findAll("td")[1].text()).toBe("ö");
 
-    const newData = [...DATA, { a: 0, b: "b", c: "dummy", d: {} }];
-    await wrapper.setData({ data: newData });
-    await wrapper.vm.$nextTick();
+        const newData = [...DATA, { a: 0, b: "b", c: "dummy", d: {} }];
+        await wrapper.setData({ data: newData });
+        await wrapper.vm.$nextTick();
 
-    rows = wrapper.findAll("tr");
-    expect(rows[0].findAll("td")[1].text()).toBe("a");
-    expect(rows[1].findAll("td")[1].text()).toBe("b");
-    expect(rows[2].findAll("td")[1].text()).toBe("k");
-    expect(rows[3].findAll("td")[1].text()).toBe("ö");
+        rows = wrapper.findAll("tr");
+        expect(rows[0].findAll("td")[1].text()).toBe("a");
+        expect(rows[1].findAll("td")[1].text()).toBe("b");
+        expect(rows[2].findAll("td")[1].text()).toBe("k");
+        expect(rows[3].findAll("td")[1].text()).toBe("ö");
+    });
+
+    it("when sort was selected using inject method", async () => {
+        const wrapper = createTableWrapper();
+
+        // Sort by Column B (Stigande)
+        getUnderlyingComponent(wrapper).triggersort("b", true);
+        await wrapper.vm.$nextTick();
+
+        let rows = wrapper.findAll("tr");
+        expect(rows[0].findAll("td")[1].text()).toBe("a");
+        expect(rows[1].findAll("td")[1].text()).toBe("k");
+        expect(rows[2].findAll("td")[1].text()).toBe("ö");
+
+        const newData = [...DATA, { a: 0, b: "b", c: "dummy", d: {} }];
+        await wrapper.setData({ data: newData });
+        await wrapper.vm.$nextTick();
+
+        rows = wrapper.findAll("tr");
+        expect(rows[0].findAll("td")[1].text()).toBe("a");
+        expect(rows[1].findAll("td")[1].text()).toBe("b");
+        expect(rows[2].findAll("td")[1].text()).toBe("k");
+        expect(rows[3].findAll("td")[1].text()).toBe("ö");
+    });
 });
 
 it("should emit event when dataset is sorted", async () => {

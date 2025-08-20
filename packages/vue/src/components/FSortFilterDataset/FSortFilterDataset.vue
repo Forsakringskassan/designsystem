@@ -185,6 +185,7 @@ watch(
             if (foundAttribute) {
                 sortAttribute.value = foundAttribute;
             }
+            useDefaultSortOrder.value = false;
         }
         sortFilterData();
     },
@@ -207,7 +208,6 @@ function sortFilterData(): void {
 }
 
 function onChangeSortAttribute(): void {
-    useDefaultSortOrder.value = false;
     sortFilterData();
     emit("usedSortAttributes", sortAttribute.value);
 }
