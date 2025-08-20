@@ -39,7 +39,7 @@ describe("mobile", () => {
                 minimizablePanel.header().should("not.exist");
                 minimizablePanel.toggleButton().click({ force: true });
                 minimizablePanel.header().should("contain.text", "[header]");
-                // cy.toMatchScreenshot(); technical debt
+                cy.toMatchScreenshot();
                 minimizablePanel.toggleButton().click({ force: true });
                 minimizablePanel.header().should("not.exist");
             });
@@ -65,7 +65,7 @@ describe("desktop", () => {
                 minimizablePanel.header().should("not.exist");
                 minimizablePanel.toggleButton().click({ force: true });
                 minimizablePanel.header().should("contain.text", "[header]");
-                //cy.toMatchScreenshot(); technical debt
+                cy.toMatchScreenshot();
             });
         }
     }

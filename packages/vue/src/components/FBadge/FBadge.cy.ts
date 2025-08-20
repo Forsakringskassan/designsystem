@@ -55,8 +55,7 @@ describe("FBadge", () => {
         badge.isInverted().should("be.equal", true);
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    describe.skip("screenshots normal viewport", () => {
+    describe("screenshots normal viewport", () => {
         beforeEach(() => {
             cy.viewport(1024, 600);
         });
@@ -74,8 +73,7 @@ describe("FBadge", () => {
         });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    describe.skip("screenshots narrow viewport", () => {
+    describe("screenshots narrow viewport", () => {
         beforeEach(() => {
             cy.viewport(200, 700);
         });
@@ -93,8 +91,7 @@ describe("FBadge", () => {
         });
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    describe.skip("density", () => {
+    describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>

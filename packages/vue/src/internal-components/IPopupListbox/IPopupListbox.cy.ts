@@ -52,14 +52,7 @@ describe("IPopupListbox below anchor", () => {
         cy.get("button").click();
         cy.get("ul").should("be.visible");
 
-        /**
-         * cy.toMatchScreenshot();
-         * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
-         */
-
-        // top = body margin 8px + input height 50px
-        cy.get(".popup__wrapper").should("have.css", "top", "58px");
-        cy.get(".popup__wrapper").should("have.css", "left", "43px");
+        cy.toMatchScreenshot();
     });
 
     it("should position 7 items below input without scroll", () => {
@@ -104,14 +97,7 @@ describe("IPopupListbox below anchor", () => {
         cy.get("button").click();
         cy.get("ul").should("be.visible");
 
-        /**
-         * cy.toMatchScreenshot();
-         * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
-         */
-
-        // top = body margin 8px + input height 50px
-        cy.get(".popup__wrapper").should("have.css", "top", "58px");
-        cy.get(".popup__wrapper").should("have.css", "left", "43px");
+        cy.toMatchScreenshot();
     });
 
     it("should position 15 items below input with scroll", () => {
@@ -157,14 +143,7 @@ describe("IPopupListbox below anchor", () => {
         cy.get("button").click();
         cy.get("ul").should("be.visible");
 
-        /**
-         * cy.toMatchScreenshot();
-         * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
-         */
-
-        // top = body margin 8px + input height 50px
-        cy.get(".popup__wrapper").should("have.css", "top", "58px");
-        cy.get(".popup__wrapper").should("have.css", "left", "43px");
+        cy.toMatchScreenshot();
     });
 });
 
@@ -214,14 +193,7 @@ describe("IPopupListbox above anchor", () => {
         cy.get("button").click();
         cy.get("ul").should("be.visible");
 
-        /**
-         * cy.toMatchScreenshot();
-         * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
-         */
-
-        // top = body margin-top + input margin-top + 2 * itemHeight = 8 + 200 - 3 * 24 = 160
-        cy.get(".popup__wrapper").should("have.css", "top", "136px");
-        cy.get(".popup__wrapper").should("have.css", "left", "43px");
+        cy.toMatchScreenshot();
     });
 
     it("should position 7 items above input without scroll", () => {
@@ -266,14 +238,7 @@ describe("IPopupListbox above anchor", () => {
         cy.get("button").click();
         cy.get("ul").should("be.visible");
 
-        /**
-         * cy.toMatchScreenshot();
-         * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
-         */
-
-        // top = body margin-top + input margin-top + 6 * itemHeight = 8 + 200 - 7 * 24
-        cy.get(".popup__wrapper").should("have.css", "top", "40px");
-        cy.get(".popup__wrapper").should("have.css", "left", "43px");
+        cy.toMatchScreenshot();
     });
 
     it("should position 15 items above input with scroll", () => {
@@ -319,13 +284,6 @@ describe("IPopupListbox above anchor", () => {
         cy.get("button").click();
         cy.get("ul").should("be.visible");
 
-        /**
-         * cy.toMatchScreenshot();
-         * replace cy.get().should() ↓ with toMatchScreenshot ↑ when it works again
-         */
-
-        // top = body margin-top + input margin-top + 6 * itemHeight = 8 + 200 - 7 * 24
-        cy.get(".popup__wrapper").should("have.css", "top", "40px");
-        cy.get(".popup__wrapper").should("have.css", "left", "43px");
+        cy.toMatchScreenshot();
     });
 });

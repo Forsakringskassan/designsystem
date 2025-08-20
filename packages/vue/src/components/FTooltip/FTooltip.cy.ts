@@ -29,8 +29,7 @@ describe("FTooltip", () => {
         tooltip.closeButton().click();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should appear visually correct with label and tooltip", () => {
+    it("should appear visually correct with label and tooltip", () => {
         const TestComponent = defineComponent({
             components: { FTooltip },
             template: /* HTML */ `
@@ -42,6 +41,7 @@ describe("FTooltip", () => {
                         :attach-to="attach?.[index]"
                         :id="v.id"
                         v-model="v.model"
+                        headerTag="h2"
                         screen-reader-text="Läs mer"
                     >
                         <template #header> Rubrik </template>
@@ -68,8 +68,7 @@ describe("FTooltip", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should appear visually correct with heading and tooltip", () => {
+    it("should appear visually correct with heading and tooltip", () => {
         const TestComponent = defineComponent({
             components: { FTooltip },
             template: /* HTML */ `
@@ -81,6 +80,7 @@ describe("FTooltip", () => {
                         :attach-to="attach?.[index]"
                         :id="v.id"
                         v-model="v.model"
+                        headerTag="h2"
                         screen-reader-text="Läs mer"
                     >
                         <template #header> Rubrik </template>
@@ -107,8 +107,7 @@ describe("FTooltip", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    it.skip("should appear visually correct with input field and tooltip", () => {
+    it("should appear visually correct with input field and tooltip", () => {
         const TestComponent = defineComponent({
             components: { FTextField, FTooltip },
             template: /* HTML */ `
@@ -118,6 +117,7 @@ describe("FTooltip", () => {
                         <f-tooltip
                             :id="v.id"
                             v-model="v.model"
+                            headerTag="h2"
                             screen-reader-text="Läs mer"
                         >
                             <template #header> Rubrik </template>
@@ -144,15 +144,17 @@ describe("FTooltip", () => {
         cy.toMatchScreenshot();
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-    describe.skip("density", () => {
+    describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>
                     <f-label>
                         <template #default> Tooltip </template>
                         <template #tooltip>
-                            <f-tooltip screen-reader-text="Skärmläsartext">
+                            <f-tooltip
+                                headerTag="h2"
+                                screen-reader-text="Skärmläsartext"
+                            >
                                 <template #header> Rubrik </template>
                                 <template #body> Brödtext </template>
                             </f-tooltip>

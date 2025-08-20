@@ -70,8 +70,7 @@ function createComponent(options?: {
     });
 }
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("Primary", () => {
+describe("Primary", () => {
     beforeEach(() => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
     });
@@ -98,8 +97,7 @@ describe.skip("Primary", () => {
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("Secondary", () => {
+describe("Secondary", () => {
     beforeEach(() => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
     });
@@ -128,8 +126,7 @@ describe.skip("Secondary", () => {
     });
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("Tertiary", () => {
+describe("Tertiary", () => {
     beforeEach(() => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
     });
