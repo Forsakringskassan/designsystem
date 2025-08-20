@@ -52,15 +52,13 @@ it("should provide a page object that can access any necessary elements", () => 
     output.body().eq(0).should("have.trimmedText", "4");
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-it.skip(`should match screenshot`, () => {
+it(`should match screenshot`, () => {
     cy.viewport(sizeWrapperWidth, sizeWrapperHeight);
     cy.mount(TestComponent);
     cy.toMatchScreenshot();
 });
 
-/* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
-describe.skip("density", () => {
+describe("density", () => {
     const DensityComponent = defineComponent({
         template: /* HTML */ `
             <density-wrapper>

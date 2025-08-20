@@ -1,4 +1,5 @@
 import { pathToFileURL } from "node:url";
+import { styleText } from "node:util";
 import { type ConfigData } from "html-validate";
 import { type Manifest, Generator } from "@forsakringskassan/docs-generator";
 import { defineConfig } from "cypress";
@@ -57,6 +58,10 @@ const htmlValidateOptions: CypressHtmlValidateOptions = {
     exclude,
 };
 
+const disableVisualRegression = (() => {
+    return Boolean(process.env.CI);
+})();
+
 export default defineConfig({
     // Cypress may sometimes restart tests when it detects a changed file in the __screenshot__ folder.
     watchForFileChanges: false,
@@ -81,6 +86,14 @@ export default defineConfig({
     },
     component: {
         setupNodeEvents(on, config) {
+            /* eslint-disable-next-line no-console -- expected to log */
+            console.log(
+                "Visual regression:",
+                disableVisualRegression
+                    ? styleText("red", "disabled")
+                    : styleText("green", "enabled"),
+            );
+            config.env.DISABLE_VISUAL_REGRESSION = disableVisualRegression;
             getToMatchScreenshotsPlugin(on, config);
             config = install(on, config);
             config = cypressSplit(on, config);
