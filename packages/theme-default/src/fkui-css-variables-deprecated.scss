@@ -414,6 +414,16 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-border-color-panel: #{$palette-color-green-b-15};
     --f-border-color-static-panel: #{$palette-color-green-b-50};
     --f-static-panel-heading-border: none;
+
+    // Deprecated since %version%
+    --f-text-color-link: #{$palette-color-bluebell-100};
+    --f-text-color-link-hover: #{$palette-color-fk-black-100};
+    --f-text-color-link-discrete: #{$palette-color-fk-black-100};
+    --f-text-color-link-discrete-hover: #{$palette-color-bluebell-100};
+    --f-border-color-link: #{$palette-color-bluebell-100};
+    --f-border-color-link-hover: #{$palette-color-fk-black-50};
+    --f-border-color-link-discrete: #{$palette-color-fk-black-50};
+    --f-border-color-link-discrete-hover: #{$palette-color-bluebell-100};
 }
 
 @if $global {
