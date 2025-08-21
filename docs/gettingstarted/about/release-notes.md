@@ -9,6 +9,24 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.16.0
+
+2025-08-22
+
+### Ny komponent för knapp
+
+En Vue-komponent finns nu för knapp.
+Vi rekommenderar att ni byter till denna nya Vue-komponent för att slippa hålla reda på knapp-klasser.
+
+### Årsväljare för kalender
+
+För att användare snabbt ska kunna byta till annat år i kalender och datumväljare finns nu funktionen årsväljare.
+Läs mer här om {@link FCalendar#arsvaljare årsväljare}.
+
+### Bugg åtgärdad för datamängdsorteraren
+
+Tabellen behåller nu sorteringen på den kolumn som användaren har valt efter att data har ändrats i tabellen.
+
 ## Version 6.9.0
 
 2025-05-23
@@ -163,10 +181,6 @@ Det ska tilläggas att webbapplikationer som körs i Hapo kommer att fortsätta 
 Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen. Fältens standardetikett är visuellt dolda och ersätts av tabellrubriken för en seende användare men läsas upp som vanligt av skärmläsare. Vid fältvalidering visas felmeddelande i en tooltip när fältet har fokus. Utöver inmatningsfält har datumväljare och dropplista stöd för att användas i tabell.
 
 {@link table#inmatning_i_tabell Läs mer om inmatning i tabell }
-
-## Version 5.25.0
-
-2024-05-29
 
 ### Internt tema byter namn
 

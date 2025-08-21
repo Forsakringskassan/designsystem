@@ -26,10 +26,6 @@ De nya komponenterna är mer flexibla, till exempel kan du fylla en yta med valf
 Till att börja med kommer ett antal olika varianter av layouter släppas.
 De nya komponenterna är släppta med {@link about#status_for_komponenter status beta} och kommer släppas som produktionsklara under hösten.
 
-### Årsväljare till kalender
-
-Årsväljaren gör att användare på ett snabbt sätt kan byta till annat år i kalender.
-
 ### Ny komponent för tabell
 
 Vi tar fram en ny komponent för tabell som underlättar navigering för användaren.
@@ -38,7 +34,9 @@ Den nya komponenten kommer på sikt att ersätta dagens komponenter för tabell 
 
 ### Förhindra dubbelklick på knapp och knapp i väntande läge
 
-Vi inför ett väntande läge på knapp när användare har klickat på knapp och det är en fördröjning innan knappens åtgärd är utförd. Vi ser också till att förhindra dubbelklick på knapp.
+Vi inför ett väntande läge på knapp när användare har klickat på knapp och det är en fördröjning innan knappens åtgärd är utförd.
+Vi ser också till att förhindra dubbelklick på knapp.
+Första steget är den nya Vue-komponenten för knapp som har släppts.
 
 ### Omskrivning av valideringsservice
 
@@ -55,9 +53,12 @@ Vi vill också
 
 När vi skrivit om valideringsservice kommer vi göra en generell översyn på validatorer och de specialiserade inmatningsfälten.
 
+### Komponent för att visa uppgifter kompakt
+
+Ny komponent för att visa inmatade uppgifter på ett mer kompakt sätt till exempel i ett kort eller granskasteg kommer snart.
+
 ## Planerat arbete
 
-- Ny komponent för att visa inmatade uppgifter på ett mer kompakt sätt till exempel i ett kort eller granskasteg.
 - Uppdatera och förbättra prioriterade komponenter.
   Nästa komponent i ordningen är datamängdredigeraren.
 
