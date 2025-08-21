@@ -281,5 +281,14 @@
     "--f-background-heading-static-panel",
     "--f-border-color-panel",
     "--f-border-color-static-panel",
-    "--f-static-panel-heading-border"
+    "--f-static-panel-heading-border",
+    "--f-icon-color-discrete",
+    "--f-text-color-link",
+    "--f-text-color-link-hover",
+    "--f-text-color-link-discrete",
+    "--f-text-color-link-discrete-hover",
+    "--f-border-color-link",
+    "--f-border-color-link-hover",
+    "--f-border-color-link-discrete",
+    "--f-border-color-link-discrete-hover"
 ]

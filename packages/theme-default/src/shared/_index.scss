@@ -7,11 +7,6 @@
     // TEXT COLORS
     // ***********
 
-    --f-text-color-link: #{$palette-color-bluebell-100};
-    --f-text-color-link-hover: #{$palette-color-fk-black-100};
-    --f-text-color-link-discrete: #{$palette-color-fk-black-100};
-    --f-text-color-link-discrete-hover: #{$palette-color-bluebell-100};
-
     --f-text-color-heading-1: inherit;
     --f-text-color-heading-2: inherit;
     --f-text-color-heading-3: inherit;
@@ -39,10 +34,6 @@
 
     --f-border-color-separator: #{$palette-color-fk-black-15}; // radio-button-group, file-item, expandable-paragraph
     --f-border-color-separator-pageheader-primary: #{$palette-color-white-100}; // page-header
-    --f-border-color-link: #{$palette-color-bluebell-100};
-    --f-border-color-link-hover: #{$palette-color-fk-black-50};
-    --f-border-color-link-discrete: #{$palette-color-fk-black-50};
-    --f-border-color-link-discrete-hover: #{$palette-color-bluebell-100};
 
     // *******************
     // COLOR VARIABLES END

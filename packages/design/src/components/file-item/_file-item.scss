@@ -34,8 +34,8 @@
         @extend .anchor--block;
 
         flex: 0 1 auto;
-        overflow: hidden;
         white-space: nowrap;
+        cursor: pointer;
     }
 
     &__file-remove {
