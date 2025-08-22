@@ -1,3 +1,4 @@
+import { isVisible } from "@fkui/logic";
 import { getInternalKey } from "../../utils/internal-key";
 import { MetaRow } from "./MetaRow";
 
@@ -62,10 +63,13 @@ function getTr(td: HTMLTableCellElement): HTMLTableRowElement {
 function getTd(element: HTMLElement): HTMLTableCellElement {
     if (isTd(element)) {
         return element;
-    } else if (isTd(element.parentElement)) {
-        return element.parentElement;
     } else {
-        throw new Error("td not found");
+        const closest = element.closest("td");
+        if (!closest) {
+            throw new Error("expected td parent");
+        }
+
+        return closest;
     }
 }
 
@@ -78,11 +82,7 @@ function getLastCellIndex(tableElement: HTMLTableElement): number {
 }
 
 function getCellOrAction(cell: HTMLTableCellElement): HTMLElement {
-    if (cell.firstElementChild?.tagName.toLowerCase() === "button") {
-        return cell.firstElementChild as HTMLButtonElement;
-    }
-
-    return cell;
+    return findAction(cell) ?? cell;
 }
 
 function navigate(
@@ -215,6 +215,16 @@ export function getMetaRows<
     );
 
     return array;
+}
+
+export function findAction(
+    cell: HTMLTableCellElement,
+): HTMLElement | undefined {
+    const action = cell.querySelector<HTMLElement>("button, a, input");
+
+    if (action && isVisible(action)) {
+        return action;
+    }
 }
 
 export function setTabbable(

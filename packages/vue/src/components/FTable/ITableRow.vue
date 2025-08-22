@@ -62,6 +62,7 @@ const toggleIcon = computed(() => (isExpanded ? "arrow-down" : "arrow-right"));
     padding: 0;
     background: inherit;
     border: 0;
+    cursor: pointer;
 }
 
 .level-2 {

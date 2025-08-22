@@ -1452,6 +1452,10 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "f-table-select-cell": {
+        flow: true,
+    },
+
     "define-template": {
         flow: true,
     },

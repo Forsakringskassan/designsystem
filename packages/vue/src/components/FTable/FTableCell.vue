@@ -1,8 +1,20 @@
 <script setup lang="ts">
-import { inject } from "vue";
+import { inject, onMounted, useTemplateRef } from "vue";
+import { findAction } from "./FTable.logic";
 
 const { title } = defineProps<{ title: string }>();
 const renderHeader = inject<boolean>("renderHeader");
+const tdRef = useTemplateRef("td");
+
+onMounted(() => {
+    if (tdRef.value) {
+        const action = findAction(tdRef.value);
+
+        if (action) {
+            action.tabIndex = -1;
+        }
+    }
+});
 </script>
 
 <template>
@@ -11,6 +23,6 @@ const renderHeader = inject<boolean>("renderHeader");
         <th scope="col" class="table__column" data-locked-text-content>{{ title }}</th>
     </template>
     <template v-else>
-        <td tabindex="-1"><slot></slot></td>
+        <td ref="td" tabindex="-1"><slot></slot></td>
     </template>
 </template>

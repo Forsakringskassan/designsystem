@@ -14756,13 +14756,13 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_Props_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Props_6" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IComboboxDropdown: DefineComponent<__VLS_Props_5, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxDropdown: DefineComponent<__VLS_Props_6, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
-}, string, PublicProps, Readonly<__VLS_Props_5> & Readonly<{
+}, string, PublicProps, Readonly<__VLS_Props_6> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;

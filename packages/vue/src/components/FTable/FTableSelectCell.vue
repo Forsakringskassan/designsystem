@@ -1,57 +1,45 @@
 <script setup lang="ts">
 import { inject, nextTick, onMounted, ref, useTemplateRef } from "vue";
-import { assertRef, assertSet, isAlphanumeric, type ValidityEvent } from "@fkui/logic";
+import { assertRef, assertSet } from "@fkui/logic";
 import { FTableCell } from ".";
 
 const { title } = defineProps<{ title: string }>();
 
 const editing = ref(false);
 const viewValue = ref("");
+const editRef = useTemplateRef("edit");
+
 const startEdit: ((focusElement: HTMLElement) => void) | undefined = inject("startEdit");
 const stopEdit: ((reason: "enter" | "escape" | "tab" | "shift-tab" | "blur") => void) | undefined = inject("stopEdit");
-const editRef = useTemplateRef("edit");
-const inputRef = ref<HTMLInputElement | null>(null);
 
 onMounted(() => {
-    // when column is rendered, no template refs exist
     if (!editRef.value) {
-        return;
+        return; // when column is rendered, no template refs exist
     }
 
-    inputRef.value = editRef.value.querySelector("input");
-
-    if (!inputRef.value) {
-        throw new Error("expected input");
-    }
-
-    viewValue.value = inputRef.value?.value ?? "";
+    viewValue.value = "Välj";
 });
 
 async function onCellDoubleClick(): Promise<void> {
     editing.value = true;
     await nextTick();
-    assertRef(inputRef);
-
-    if (inputRef.value.type === "text") {
-        inputRef.value.selectionStart = inputRef.value.value.length;
-    }
-
     assertSet(startEdit);
-    startEdit(inputRef.value);
+    assertRef(editRef);
+    startEdit(editRef.value);
 }
 
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
-    if (isAlphanumeric(e.keyCode) || e.code === "Enter") {
+    if (e.code === "Enter") {
         editing.value = true;
         await nextTick();
-        assertRef(inputRef);
         assertSet(startEdit);
-        startEdit(inputRef.value);
+        assertRef(editRef);
+        startEdit(editRef.value);
     }
 }
 
 async function submit(): Promise<void> {
-    viewValue.value = inputRef.value?.value ?? "";
+    viewValue.value = editRef.value?.value ?? "";
     editing.value = false;
     await nextTick();
 }
@@ -86,27 +74,28 @@ function onEditBlur(): void {
         stopEdit("blur");
     }
 }
-
-const isValid = ref(true);
-function onValidity(e: CustomEvent<ValidityEvent>): void {
-    isValid.value = e.detail.isValid;
-}
 </script>
 
 <template>
     <f-table-cell :title @dblclick.stop="onCellDoubleClick" @keydown="onCellKeyDown">
-        <div v-show="!editing" ref="view" class="view">{{ viewValue }}</div>
-        <div
+        <div v-show="!editing">{{ viewValue }}</div>
+        <select
             v-show="editing"
             ref="edit"
+            name="select"
             @click.prevent
             @dblclick.prevent
             @keydown.stop="onEditKeyDown"
-            @component-validity="onValidity"
             @focusout="onEditBlur"
         >
-            <slot></slot>
-        </div>
+            <option value="Välj">Välj</option>
+            <option value="Hund">Hund</option>
+            <option value="Katt">Katt</option>
+            <option value="Hamster">Hamster</option>
+            <option value="Papegoja">Papegoja</option>
+            <option value="Spindel">Spindel</option>
+            <option value="Guldfisk">Guldfisk</option>
+        </select>
     </f-table-cell>
 </template>
 
@@ -114,9 +103,5 @@ function onValidity(e: CustomEvent<ValidityEvent>): void {
 .input {
     border: none;
     background: inherit;
-}
-.view {
-    pointer-events: none;
-    user-select: none;
 }
 </style>
