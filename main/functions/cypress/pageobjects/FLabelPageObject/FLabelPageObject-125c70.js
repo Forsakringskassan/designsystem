@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-description.vue:FLabelPageObject-description-1d7012.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject.vue:FLabelPageObject-125c70.js
 import { defineComponent as _defineComponent } from "vue";
 import { FLabel } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FLabelPageObject-description",
+  __name: "FLabelPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FLabel() {
@@ -53,19 +53,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       )
     ])),
-    description: _withCtx(({ descriptionClass }) => [
-      _createElementVNode(
-        "span",
-        {
-          class: _normalizeClass(descriptionClass)
-        },
-        " Hj\xE4lptext ",
-        2
-        /* CLASS */
-      )
-    ]),
-    _: 1
-    /* STABLE */
+    _: 1,
+    __: [0]
   })), [
     [_directive_test, "awesome-label"]
   ]);
@@ -73,7 +62,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1d7012"
+  selector: "#example-125c70"
 });
 export {
   render
