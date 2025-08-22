@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-203b3f.json"
+            href="../../search-data-a65a58.json"
             as="fetch"
             crossorigin
-            integrity="sha384-R0lB/wes0E5PLBXWGkuXC4vQsk8Gk082N7lH3ab3TzbegwWV6xUQwVCUlQrWq2hA"
+            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/6549d171650efc430989a2937c29dcc54028872e/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/81ced7bd407e1dd608d9e197d71d3674c4e34a8c/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">
                 IPopupMenu
             </a>
             
@@ -1124,13 +1124,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-8ca1ec"></div>
+        <div id="example-be74f1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupMenuExample-8ca1ec.js"></script>
+        <script type="module" src="./IPopupMenuExample-be74f1.js"></script>
     </div>
                 <div>
             <button
@@ -1260,14 +1260,14 @@ Detta kan du göra genom att ange en <code>key</code> i <code>v-model:focused-it
 Komponenten kommer då sätta fokus på det elementet som matchade objektet.</p>
 <p class="docs-paragraph">Se koden för ovan exempel för hur man kan hantera fokus till menyn i samband med tangentbordsnavigering.</p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
-        <h3 id="ipopupmenu-props">
-            <a class="header-anchor" href="#ipopupmenu-props">Props</a>
+        <h3 id="ipopupmenu-models">
+            <a class="header-anchor" href="#ipopupmenu-models">Models</a>
         </h3>
-        <dl class="docs-api docs-api--slots">
+        <dl class="docs-api docs-api--models">
             
                         <dt>
-                            <code id="ipopupmenu-prop-v-model"
-                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-v-model"
+                            <code id="ipopupmenu-model-v-model"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-model-v-model"
                                     ><span class="docs-api__name"
                                         >v-model</span
                                     >: string</a
@@ -1284,8 +1284,8 @@ Komponenten kommer då sätta fokus på det elementet som matchade objektet.</p>
                         </dd>
                     
                         <dt>
-                            <code id="ipopupmenu-prop-v-model-focuseditem"
-                                ><a class="docs-api__anchor" href="#ipopupmenu-prop-v-model-focuseditem"
+                            <code id="ipopupmenu-model-v-model-focuseditem"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-model-v-model-focuseditem"
                                     ><span class="docs-api__name"
                                         >v-model:focusedItem</span
                                     >: string</a
@@ -1302,6 +1302,13 @@ Sets focus on matching item element when value changes.</p>
                             
                         </dd>
                     
+        </dl>
+    
+        <h3 id="ipopupmenu-props">
+            <a class="header-anchor" href="#ipopupmenu-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
                         <dt>
                             <code id="ipopupmenu-prop-isopen"
                                 ><a class="docs-api__anchor" href="#ipopupmenu-prop-isopen"
@@ -1455,44 +1462,6 @@ Sets focus on matching item element when value changes.</p>
                             
                         </dd>
                     
-                        <dt>
-                            <code id="ipopupmenu-event-update-modelvalue"
-                                ><a class="docs-api__anchor" href="#ipopupmenu-event-update-modelvalue"
-                                    ><span class="docs-api__name"
-                                        >update:modelValue</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>V-model event. Emitted when an item is selected.</p>
-
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: string</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ipopupmenu-event-update-focuseditem"
-                                ><a class="docs-api__anchor" href="#ipopupmenu-event-update-focuseditem"
-                                    ><span class="docs-api__name"
-                                        >update:focusedItem</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>V-model event. Emitted when item focus changes.</p>
-
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: string</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
         </dl>
     
 
@@ -1518,9 +1487,9 @@ Sets focus on matching item element when value changes.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/6549d171650efc430989a2937c29dcc54028872e">6549d17</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/81ced7bd407e1dd608d9e197d71d3674c4e34a8c">81ced7b</a>)<br />
         
-        2025-08-21 19:49
+        2025-08-22 05:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1637,10 +1606,10 @@ Sets focus on matching item element when value changes.</p>
             integrity="sha384-VebEbxY/p3c04mDpvDhP35IMs4bk932+mNK+qhKt6hmh7hE+01fUrUurMRetl1Mu"
             
         ></script><script
-            src="../../assets/main-06b010.js"
+            src="../../assets/main-22d1ed.js"
             type="module"
             crossorigin
-            integrity="sha384-h1GiRbU5azi/dNKvJ/vTsvi2tDpeqpa+JTFo1ceEcyGUp9ukQzFIz/8Q7kah9dah"
+            integrity="sha384-B05Nsrf9xL85/e14o5yJkhROvcMPzw9bQhaY2drPqUUMiGDBd+24ErxIGeCeIKeX"
             
         ></script>
     </body>
