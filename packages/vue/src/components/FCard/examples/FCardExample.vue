@@ -36,7 +36,7 @@ export default defineComponent({
                     Ta bort
                 </f-button>
                 <f-button variant="tertiary" align-text class="button-group__item" icon-left="pen">
-                    Ta bort
+                    Ändra
                 </f-button>
             </div>
         </template>
