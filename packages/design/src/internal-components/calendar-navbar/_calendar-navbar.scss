@@ -18,6 +18,7 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
     align-items: center;
     text-align: center;
     border-bottom: var(--f-border-width-medium) solid $calendarnavbar-color-border;
+    color: $calendarnavbar-color-text;
     padding: 1rem;
     gap: 1rem;
     margin-bottom: 0.75rem;
