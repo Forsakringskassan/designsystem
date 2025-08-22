@@ -28,16 +28,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-description.vue:FLabelPageObject-description-1d7012.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject.vue:FProgressbarPageObject-d2d432.js
 import { defineComponent as _defineComponent } from "vue";
-import { FLabel } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { FProgressbar } from "@fkui/vue";
+import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FLabelPageObject-description",
+  __name: "FProgressbarPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FLabel() {
-      return FLabel;
+    const __returned__ = { get FProgressbar() {
+      return FProgressbar;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -45,35 +45,23 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
-      _createTextVNode(
-        " Etikett ",
-        -1
-        /* CACHED */
-      )
-    ])),
-    description: _withCtx(({ descriptionClass }) => [
-      _createElementVNode(
-        "span",
-        {
-          class: _normalizeClass(descriptionClass)
-        },
-        " Hj\xE4lptext ",
-        2
-        /* CLASS */
-      )
-    ]),
-    _: 1
-    /* STABLE */
-  })), [
-    [_directive_test, "awesome-label"]
+  return _withDirectives((_openBlock(), _createBlock(
+    $setup["FProgressbar"],
+    {
+      value: 40,
+      "aria-label": "Progressbar"
+    },
+    null,
+    512
+    /* NEED_PATCH */
+  )), [
+    [_directive_test, "progressbar"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1d7012"
+  selector: "#example-d2d432"
 });
 export {
   render
