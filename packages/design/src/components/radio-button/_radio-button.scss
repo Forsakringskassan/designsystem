@@ -36,6 +36,7 @@ $radio_button_label_offset: 0.1rem;
         padding-top: $radio_button_label_offset;
         padding-bottom: $radio_button_label_offset;
         position: relative;
+        color: $radio-button-color-text-default;
 
         // Safari: required to make label clickable
         * {

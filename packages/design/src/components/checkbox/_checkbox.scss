@@ -39,6 +39,7 @@ $checkbox_label_offset: 0.1rem;
         padding-top: $checkbox_label_offset;
         padding-bottom: $checkbox_label_offset;
         position: relative;
+        color: $checkbox-color-text-default;
 
         // Safari: required to make label clickable
         * {
