@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-4e992f.json"
+            href="../../search-data-d68eef.json"
             as="fetch"
             crossorigin
-            integrity="sha384-khd2JUthOIy1pLLVobkkda6MQ2E2MkohFa4V75LXqIxS5ksCgQAwQWmLDSFTOmk9"
+            integrity="sha384-KBsHlXpf9D/W0T6p7ah44Th1CWC1uYfwiSmngUiWr+gzNyGRi4QSkIHgYtLDu857"
             id="search-data"
         />
     </head>
@@ -570,6 +570,8 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
+                                <li><a href="#version_6_16_0">Version 6.16.0</a></li>
+                                
                                 <li><a href="#version_6_9_0">Version 6.9.0</a></li>
                                 
                                 <li><a href="#version_6_7_0">Version 6.7.0</a></li>
@@ -592,8 +594,6 @@
                                 
                                 <li><a href="#version_5_25_0">Version 5.25.0</a></li>
                                 
-                                <li><a href="#version_5_25_0">Version 5.25.0</a></li>
-                                
                                 <li><a href="#version_5_17_0">Version 5.17.0</a></li>
                                 
                                 <li><a href="#version_5_16_0">Version 5.16.0</a></li>
@@ -610,7 +610,13 @@
                     </div>
                     
 
-                    <div id="content"><h2 id="version_6_9_0"><a class="header-anchor" href="#version_6_9_0">Version 6.9.0</a></h2><p class="docs-paragraph">2025-05-23</p>
+                    <div id="content"><h2 id="version_6_16_0"><a class="header-anchor" href="#version_6_16_0">Version 6.16.0</a></h2><p class="docs-paragraph">2025-08-22</p>
+<h3 id="ny_komponent_for_knapp"><a class="header-anchor" href="#ny_komponent_for_knapp">Ny komponent för knapp</a></h3><p class="docs-paragraph">En Vue-komponent finns nu för knapp.
+Vi rekommenderar att ni byter till denna nya Vue-komponent för att slippa hålla reda på knapp-klasser.</p>
+<h3 id="arsvaljare_for_kalender"><a class="header-anchor" href="#arsvaljare_for_kalender">Årsväljare för kalender</a></h3><p class="docs-paragraph">För att användare snabbt ska kunna byta till annat år i kalender och datumväljare finns nu funktionen årsväljare.
+Läs mer här om <a href="../../components/fcalendar.html#arsvaljare">årsväljare</a>.</p>
+<h3 id="bugg_atgardad_for_datamangdsorteraren"><a class="header-anchor" href="#bugg_atgardad_for_datamangdsorteraren">Bugg åtgärdad för datamängdsorteraren</a></h3><p class="docs-paragraph">Tabellen behåller nu sorteringen på den kolumn som användaren har valt efter att data har ändrats i tabellen.</p>
+<h2 id="version_6_9_0"><a class="header-anchor" href="#version_6_9_0">Version 6.9.0</a></h2><p class="docs-paragraph">2025-05-23</p>
 <p class="docs-paragraph"><code>FCrudButton</code> är deprekerad, läs mer om att <a href="../migration/migrating-crud-button.html">migrera FCrudButton</a>.</p>
 <h2 id="version_6_7_0"><a class="header-anchor" href="#version_6_7_0">Version 6.7.0</a></h2><p class="docs-paragraph">2025-05-14</p>
 <h3 id="uppdatering_av_applikationslayout_beta"><a class="header-anchor" href="#uppdatering_av_applikationslayout_beta">Uppdatering av applikationslayout (beta)</a></h3><ul>
@@ -703,7 +709,6 @@ Som konsument finns det fortfarande möjlighet att själv tillhandahålla specif
 <h2 id="version_5_25_0"><a class="header-anchor" href="#version_5_25_0">Version 5.25.0</a></h2><p class="docs-paragraph">2024-05-29</p>
 <h3 id="inmatning_i_tabellceller"><a class="header-anchor" href="#inmatning_i_tabellceller">Inmatning i tabellceller</a></h3><p class="docs-paragraph">Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen. Fältens standardetikett är visuellt dolda och ersätts av tabellrubriken för en seende användare men läsas upp som vanligt av skärmläsare. Vid fältvalidering visas felmeddelande i en tooltip när fältet har fokus. Utöver inmatningsfält har datumväljare och dropplista stöd för att användas i tabell.</p>
 <p class="docs-paragraph"><a href="../../components/table-and-list/table.html#inmatning_i_tabell">Läs mer om inmatning i tabell</a></p>
-<h2 id="version_5_25_0--1"><a class="header-anchor" href="#version_5_25_0--1">Version 5.25.0</a></h2><p class="docs-paragraph">2024-05-29</p>
 <h3 id="internt_tema_byter_namn"><a class="header-anchor" href="#internt_tema_byter_namn">Internt tema byter namn</a></h3><p class="docs-paragraph">Det interna temat byter i dokumentationen namn till FK Hapo. Detta är ett steg mot att framöver lägga till stöd för att kunna bygga desktopanpassade applikationer med samma tema för hela Försäkringskassan.</p>
 <h2 id="version_5_17_0"><a class="header-anchor" href="#version_5_17_0">Version 5.17.0</a></h2><p class="docs-paragraph">2024-03-22</p>
 <h3 id="deprekering_av_gruppkomponenter_for_radio_och_kryssruta"><a class="header-anchor" href="#deprekering_av_gruppkomponenter_for_radio_och_kryssruta">Deprekering av gruppkomponenter för radio och kryssruta</a></h3><ul>
@@ -753,9 +758,9 @@ blev ifyllt (t.ex. ett fält för att ange ett namn).</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/jest-preset-stylelint-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/ff11ddb5d01cac72e28cb99f3d87e67b4beb1a4f">ff11ddb</a>)<br />
+<div class="footer__right"><div class="version">renovate/jest-preset-stylelint-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/94dbd64ac3889f906e22e93c61f3dcd263c47299">94dbd64</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/562">PR 562</a><br />
-        2025-08-22 08:25
+        2025-08-22 09:38
 </div>
 <div class="toolbar__item">
     <form id="version">
