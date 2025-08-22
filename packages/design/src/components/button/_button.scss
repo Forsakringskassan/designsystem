@@ -166,7 +166,6 @@ $button--tertiary: (
     background-color: $button-tertiary-color-background-default,
     background-color--disabled: $button-tertiary-color-background-disabled,
     border-color--disabled: $button-tertiary-color-border-disabled,
-    border-width: 0,
     shadow: none,
     shadow-hover: none,
     padding-top: core.densify(var(--f-button-tertiary-padding-top)),
@@ -186,6 +185,7 @@ $button--tertiary: (
     font-size: var(--f-font-size-standard);
     font-weight: var(--f-font-weight-medium);
     justify-content: center;
+    align-items: center;
     letter-spacing: var(--f-button-letter-spacing);
     line-height: var(--f-button-default-line-height);
     margin-bottom: core.densify(size.$margin-150);
@@ -221,6 +221,9 @@ $button--tertiary: (
 }
 
 .button {
+    display: inline-flex;
+    position: relative;
+
     @extend %button-template;
     @include core.make-button-variant(".button", $button--standard...);
 
@@ -419,7 +422,7 @@ $button--tertiary: (
     &.button--medium {
         line-height: 1.5rem;
         min-width: 8rem;
-        padding: core.densify(0.625rem) 1.25rem;
+        padding: core.densify(0.625rem) size.$padding-125;
 
         @include core.breakpoint-down(sm) {
             &:not(.button--full-width) {
@@ -431,7 +434,7 @@ $button--tertiary: (
     &.button--large {
         line-height: 1.5rem;
         min-width: 9.5rem;
-        padding: core.densify(1rem) 1.5rem;
+        padding: core.densify(1rem) size.$padding-150;
 
         @include core.breakpoint-down(sm) {
             max-width: var(--f-width-full);
@@ -439,9 +442,8 @@ $button--tertiary: (
         }
     }
 
-    & > .button__icon {
+    & .button__icon {
         margin-right: size.$margin-025;
-        transform: translate(0, 15%);
 
         &:not(:first-child) {
             margin-left: size.$margin-025;
@@ -462,5 +464,78 @@ $button--tertiary: (
         border-width: var(--f-border-width-medium);
         box-shadow: none;
         cursor: default;
+    }
+
+    // Inflight animations
+    $button-spinner-animation: button-spinner-rotation $button-spinner-animation-duration linear infinite !default;
+    $button-text-animation: width $button-spinner-animation-delay ease-out;
+
+    @keyframes button-spinner-rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes button-spinner-delay {
+        0%,
+        99% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .button__spinner {
+        display: inline-block;
+        width: var(--f-icon-size-small);
+        height: var(--f-icon-size-small);
+        animation:
+            $button-spinner-animation,
+            button-spinner-delay $button-spinner-animation-delay linear;
+    }
+
+    &.button.button--small {
+        .button__spinner {
+            width: 14px;
+            height: 14px;
+        }
+        .spinner--before,
+        .spinner--after {
+            width: calc(7px + size.$padding-025 * 0.5);
+            height: 14px;
+        }
+    }
+
+    .spinner--before,
+    .spinner--after {
+        display: inline-flex;
+        width: calc(var(--f-icon-size-small) * 0.5 + size.$padding-025 * 0.5);
+        height: var(--f-icon-size-small);
+        align-self: center;
+        transition: $button-text-animation;
+    }
+
+    &.button__inflight {
+        &.button.button--small {
+            .spinner--after {
+                width: 0;
+            }
+            .spinner--before {
+                width: calc(14px + size.$padding-025);
+            }
+        }
+
+        .spinner--after {
+            width: 0;
+        }
+        .spinner--before {
+            width: calc(var(--f-icon-size-small) + size.$padding-025);
+        }
     }
 }
