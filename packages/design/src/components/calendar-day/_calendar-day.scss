@@ -10,6 +10,7 @@ $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highl
     justify-content: center;
     height: 2.75rem;
     width: 100%;
+    color: $calendarday-color-text-default;
 
     // Highlight = mark today's date
     &--highlight {
@@ -75,6 +76,7 @@ $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highl
     &:hover:not(&--disabled, &--selected),
     &--hover:not(&--disabled, &--selected) {
         background-color: $calendarday-color-background-hover;
+        color: $calendarday-color-text-hover;
     }
 
     &:active:not(&--disabled),
