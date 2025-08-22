@@ -36,6 +36,7 @@
 
     &__input {
         background-color: $textfield-color-background-default;
+        color: $textfield-color-text-default;
         box-shadow: var(--f-input-shadow-inset);
         border-radius: var(--f-border-radius-medium);
         border: var(--f-border-width-medium) solid $textfield-color-border-default;

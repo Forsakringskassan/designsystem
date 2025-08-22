@@ -30,6 +30,7 @@
                 width: 100%;
                 height: 100%;
                 background-color: inherit;
+                color: $dialogue-tree-color-text-default;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -41,7 +42,6 @@
                     overflow: hidden;
                     font-weight: var(--f-font-weight-medium);
                     font-size: var(--f-font-size-standard);
-                    color: $dialogue-tree-color-text-default;
                     text-align: left;
                     cursor: pointer;
                 }
@@ -49,6 +49,7 @@
                 .icon {
                     flex-shrink: 0;
                     margin-left: 1.25rem;
+                    color: currentcolor;
                 }
             }
         }

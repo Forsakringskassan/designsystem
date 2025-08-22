@@ -18,6 +18,7 @@
 
     &__textarea {
         background-color: $textareafield-color-background-default;
+        color: $textareafield-color-text-default;
         box-shadow: var(--f-input-shadow-inset);
         border-radius: var(--f-border-radius-medium);
         border: var(--f-border-width-medium) solid $textareafield-color-border-default;

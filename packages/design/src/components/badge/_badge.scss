@@ -33,6 +33,9 @@
 
     &--warning {
         @include make-badge-variant($badge-color-text-warning, $badge-color-background-warning);
+        @media (prefers-color-scheme: dark) {
+            color: var(--fkds-color-text-inverted);
+        }
     }
 
     &--warning-inverted {
