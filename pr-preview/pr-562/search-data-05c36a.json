@@ -193,19 +193,6 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "Vue.js",
-    "testverktyg",
-    "cypress",
-    "DensityWrapper",
-    "Om testverktyg",
-    "automatiska testfall",
-    "Jest",
-    "Cypress",
-    "Generella funktioner",
-    "automatiska testfall",
-    "testverktyg",
-    "Jest",
-    "testverktyg",
     "EventBus",
     "EventBus",
     "services",
@@ -289,6 +276,19 @@
     "assertRef() function",
     "clamp() function",
     "datum",
+    "Vue.js",
+    "testverktyg",
+    "cypress",
+    "DensityWrapper",
+    "Om testverktyg",
+    "automatiska testfall",
+    "Jest",
+    "Cypress",
+    "Generella funktioner",
+    "automatiska testfall",
+    "testverktyg",
+    "Jest",
+    "testverktyg",
     "Validatorer",
     "identisk",
     "matches",
@@ -526,6 +526,34 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
+    "FYear",
+    "årtal",
+    "FYear: value property",
+    "FYear: toString() method",
+    "FYear: toJSON() method",
+    "FYear: now() function",
+    "FYear: isValid() method",
+    "FYear: isBefore() method",
+    "FYear: isAfter() method",
+    "FYear: fromYear() function",
+    "FYear: fromDate() function",
+    "FYear: equals() method",
+    "FYear: compare() function",
+    "FYear: addYears() method",
+    "FYear: previous() method",
+    "FYear: next() method",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -561,34 +589,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
-    "FYear",
-    "årtal",
-    "FYear: value property",
-    "FYear: toString() method",
-    "FYear: toJSON() method",
-    "FYear: now() function",
-    "FYear: isValid() method",
-    "FYear: isBefore() method",
-    "FYear: isAfter() method",
-    "FYear: fromYear() function",
-    "FYear: fromDate() function",
-    "FYear: equals() method",
-    "FYear: compare() function",
-    "FYear: addYears() method",
-    "FYear: previous() method",
-    "FYear: next() method",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -1056,39 +1056,6 @@
       ]
     },
     {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
-      "terms": [
-        "testverktyg",
-        "cypress",
-        "DensityWrapper"
-      ]
-    },
-    {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
-      "terms": [
-        "automatiska testfall",
-        "Jest",
-        "Cypress"
-      ]
-    },
-    {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": [
-        "automatiska testfall",
-        "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
-      "terms": [
-        "testverktyg"
-      ]
-    },
-    {
       "url": "functions/services/event-bus.html",
       "title": "EventBus",
       "terms": [
@@ -1302,6 +1269,39 @@
       "title": "clamp() function",
       "terms": [
         "datum"
+      ]
+    },
+    {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": [
+        "testverktyg",
+        "cypress",
+        "DensityWrapper"
+      ]
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": [
+        "automatiska testfall",
+        "Jest",
+        "Cypress"
+      ]
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": [
+        "automatiska testfall",
+        "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
+      "terms": [
+        "testverktyg"
       ]
     },
     {
@@ -1836,6 +1836,115 @@
       ]
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/date/f-year/index.html",
+      "title": "FYear",
+      "terms": [
+        "årtal"
+      ]
+    },
+    {
+      "url": "functions/date/f-year/value.html",
+      "title": "FYear: value property",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/tostring.html",
+      "title": "FYear: toString() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/tojson.html",
+      "title": "FYear: toJSON() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/now.html",
+      "title": "FYear: now() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-valid.html",
+      "title": "FYear: isValid() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-before.html",
+      "title": "FYear: isBefore() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-after.html",
+      "title": "FYear: isAfter() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/from-year.html",
+      "title": "FYear: fromYear() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/from-date.html",
+      "title": "FYear: fromDate() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/equals.html",
+      "title": "FYear: equals() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/compare.html",
+      "title": "FYear: compare() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/add-years.html",
+      "title": "FYear: addYears() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/f-date-previous.html",
+      "title": "FYear: previous() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/f-date-next.html",
+      "title": "FYear: next() method",
+      "terms": []
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -1954,115 +2063,6 @@
       "terms": [
         "DOM-funktion"
       ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/date/f-year/index.html",
-      "title": "FYear",
-      "terms": [
-        "årtal"
-      ]
-    },
-    {
-      "url": "functions/date/f-year/value.html",
-      "title": "FYear: value property",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/tostring.html",
-      "title": "FYear: toString() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/tojson.html",
-      "title": "FYear: toJSON() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/now.html",
-      "title": "FYear: now() function",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/is-valid.html",
-      "title": "FYear: isValid() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/is-before.html",
-      "title": "FYear: isBefore() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/is-after.html",
-      "title": "FYear: isAfter() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/from-year.html",
-      "title": "FYear: fromYear() function",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/from-date.html",
-      "title": "FYear: fromDate() function",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/equals.html",
-      "title": "FYear: equals() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/compare.html",
-      "title": "FYear: compare() function",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/add-years.html",
-      "title": "FYear: addYears() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/f-date-previous.html",
-      "title": "FYear: previous() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/f-date-next.html",
-      "title": "FYear: next() method",
-      "terms": []
     },
     {
       "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
@@ -2427,96 +2427,96 @@
     "193": 49,
     "194": 49,
     "195": 49,
-    "196": 49,
+    "196": 50,
     "197": 50,
     "198": 50,
     "199": 50,
-    "200": 50,
+    "200": 51,
     "201": 51,
     "202": 51,
-    "203": 51,
+    "203": 52,
     "204": 52,
     "205": 52,
-    "206": 53,
-    "207": 53,
-    "208": 53,
-    "209": 54,
-    "210": 54,
-    "211": 54,
-    "212": 54,
-    "213": 55,
-    "214": 55,
-    "215": 55,
-    "216": 56,
-    "217": 56,
-    "218": 56,
-    "219": 56,
-    "220": 56,
-    "221": 56,
-    "222": 56,
-    "223": 56,
-    "224": 56,
-    "225": 57,
-    "226": 57,
-    "227": 57,
-    "228": 58,
-    "229": 58,
-    "230": 58,
-    "231": 58,
-    "232": 58,
-    "233": 59,
-    "234": 59,
-    "235": 59,
-    "236": 59,
-    "237": 59,
-    "238": 59,
-    "239": 59,
-    "240": 59,
-    "241": 59,
-    "242": 59,
-    "243": 59,
+    "206": 52,
+    "207": 52,
+    "208": 52,
+    "209": 52,
+    "210": 52,
+    "211": 52,
+    "212": 53,
+    "213": 53,
+    "214": 53,
+    "215": 54,
+    "216": 54,
+    "217": 54,
+    "218": 54,
+    "219": 54,
+    "220": 55,
+    "221": 55,
+    "222": 55,
+    "223": 55,
+    "224": 55,
+    "225": 55,
+    "226": 55,
+    "227": 55,
+    "228": 55,
+    "229": 55,
+    "230": 55,
+    "231": 55,
+    "232": 56,
+    "233": 56,
+    "234": 56,
+    "235": 56,
+    "236": 56,
+    "237": 56,
+    "238": 56,
+    "239": 56,
+    "240": 57,
+    "241": 57,
+    "242": 58,
+    "243": 58,
     "244": 59,
-    "245": 60,
+    "245": 59,
     "246": 60,
     "247": 60,
     "248": 60,
     "249": 60,
     "250": 60,
-    "251": 60,
-    "252": 60,
-    "253": 61,
-    "254": 61,
-    "255": 62,
-    "256": 62,
+    "251": 61,
+    "252": 61,
+    "253": 62,
+    "254": 62,
+    "255": 63,
+    "256": 63,
     "257": 63,
     "258": 63,
-    "259": 64,
+    "259": 63,
     "260": 64,
     "261": 64,
-    "262": 64,
-    "263": 64,
-    "264": 65,
-    "265": 65,
-    "266": 66,
-    "267": 66,
-    "268": 67,
-    "269": 67,
-    "270": 67,
-    "271": 67,
-    "272": 67,
-    "273": 68,
-    "274": 68,
-    "275": 69,
-    "276": 70,
-    "277": 71,
-    "278": 72,
-    "279": 73,
-    "280": 74,
-    "281": 75,
-    "282": 76,
-    "283": 77,
-    "284": 78,
-    "285": 79,
+    "262": 65,
+    "263": 66,
+    "264": 67,
+    "265": 68,
+    "266": 69,
+    "267": 70,
+    "268": 71,
+    "269": 72,
+    "270": 73,
+    "271": 74,
+    "272": 75,
+    "273": 76,
+    "274": 77,
+    "275": 77,
+    "276": 78,
+    "277": 78,
+    "278": 78,
+    "279": 78,
+    "280": 79,
+    "281": 79,
+    "282": 79,
+    "283": 79,
+    "284": 80,
+    "285": 80,
     "286": 80,
     "287": 81,
     "288": 81,
@@ -2759,66 +2759,66 @@
     "525": 141,
     "526": 142,
     "527": 142,
-    "528": 143,
+    "528": 142,
     "529": 143,
-    "530": 144,
-    "531": 144,
-    "532": 145,
-    "533": 145,
-    "534": 146,
-    "535": 146,
-    "536": 147,
-    "537": 147,
-    "538": 148,
-    "539": 148,
-    "540": 149,
-    "541": 149,
-    "542": 150,
+    "530": 143,
+    "531": 143,
+    "532": 144,
+    "533": 144,
+    "534": 144,
+    "535": 145,
+    "536": 145,
+    "537": 145,
+    "538": 146,
+    "539": 146,
+    "540": 147,
+    "541": 148,
+    "542": 149,
     "543": 150,
     "544": 151,
-    "545": 151,
-    "546": 152,
-    "547": 152,
-    "548": 153,
-    "549": 153,
-    "550": 154,
-    "551": 154,
-    "552": 155,
-    "553": 155,
-    "554": 155,
-    "555": 156,
-    "556": 156,
-    "557": 157,
-    "558": 157,
-    "559": 158,
-    "560": 158,
-    "561": 159,
-    "562": 159,
-    "563": 159,
-    "564": 160,
-    "565": 160,
-    "566": 160,
-    "567": 161,
-    "568": 161,
-    "569": 161,
-    "570": 162,
-    "571": 162,
-    "572": 162,
-    "573": 163,
-    "574": 163,
-    "575": 164,
-    "576": 165,
-    "577": 166,
-    "578": 167,
-    "579": 168,
-    "580": 169,
-    "581": 170,
-    "582": 171,
-    "583": 172,
-    "584": 173,
-    "585": 174,
-    "586": 175,
-    "587": 176,
+    "545": 152,
+    "546": 153,
+    "547": 154,
+    "548": 155,
+    "549": 156,
+    "550": 157,
+    "551": 158,
+    "552": 159,
+    "553": 160,
+    "554": 161,
+    "555": 161,
+    "556": 162,
+    "557": 162,
+    "558": 163,
+    "559": 163,
+    "560": 164,
+    "561": 164,
+    "562": 165,
+    "563": 165,
+    "564": 166,
+    "565": 166,
+    "566": 167,
+    "567": 167,
+    "568": 168,
+    "569": 168,
+    "570": 169,
+    "571": 169,
+    "572": 170,
+    "573": 170,
+    "574": 171,
+    "575": 171,
+    "576": 172,
+    "577": 172,
+    "578": 173,
+    "579": 173,
+    "580": 174,
+    "581": 174,
+    "582": 174,
+    "583": 175,
+    "584": 175,
+    "585": 176,
+    "586": 176,
+    "587": 177,
     "588": 177,
     "589": 178,
     "590": 179,
