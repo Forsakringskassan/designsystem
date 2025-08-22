@@ -11,6 +11,7 @@ export {
     ICalendarMonth,
     ICalendarMonthGrid,
     ICalendarNavbar,
+    ICalendarYearSelector,
 } from "./calendar";
 
 export {
