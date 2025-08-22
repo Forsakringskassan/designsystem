@@ -2642,7 +2642,7 @@ input[type=search]:focus,
 .dialogue-tree__list-item button .icon {
   flex-shrink: 0;
   margin-left: 1.25rem;
-  color: currentColor;
+  color: currentcolor;
 }
 
 .entrypoint {
