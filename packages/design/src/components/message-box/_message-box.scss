@@ -61,6 +61,7 @@
 .message-box {
     padding: core.densify(size.$padding-150) size.$padding-150;
     margin: size.$margin-050 0 core.densify(size.$margin-200) 0;
+    color: $messagebox-color-text-default;
 
     &__heading {
         font-size: var(--f-font-size-h3);
