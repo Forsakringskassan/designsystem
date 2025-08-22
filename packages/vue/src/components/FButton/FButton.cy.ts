@@ -7,18 +7,20 @@ const VIEWPORT = {
 };
 
 function createComponent(options?: {
-    variant?: string;
     iconLeft?: string;
     iconRight?: string;
     mobileFullWidth?: boolean;
     tertiaryStyle?: string;
+    variant?: string;
 }): DefineComponent {
-    const { variant, iconLeft, iconRight, mobileFullWidth, tertiaryStyle } =
+    const { iconLeft, iconRight, mobileFullWidth, tertiaryStyle, variant } =
         options ?? {};
 
+    const testName = Cypress.currentTest.titlePath.join(" ");
     return defineComponent({
         template: /* HTML */ `
             <div id="background" style="background-color: lightgray;">
+                <span>${testName}</span>
                 <p style="border: 1px dashed hotpink">
                     <f-button
                         :variant="variant"
@@ -75,7 +77,7 @@ describe("Primary", () => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
     });
 
-    it("text only", () => {
+    it("no icon", () => {
         cy.mount(createComponent());
         cy.get("#background").toMatchScreenshot();
     });
@@ -102,7 +104,7 @@ describe("Secondary", () => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
     });
 
-    it("text only", () => {
+    it("no icon", () => {
         cy.mount(createComponent({ variant: "secondary" }));
         cy.get("#background").toMatchScreenshot();
     });
@@ -131,7 +133,7 @@ describe("Tertiary", () => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
     });
 
-    it("text only", () => {
+    it("no icon", () => {
         cy.mount(createComponent({ variant: "tertiary" }));
         cy.get("#background").toMatchScreenshot();
     });

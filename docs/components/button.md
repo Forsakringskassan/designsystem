@@ -107,6 +107,86 @@ Använd ikoner för att förtydliga knappens funktion och skapa snabbare igenkä
 +<f-button icon-left="pen"> text </f-button>
 ```
 
+## Hantering av asynkrona åtgärder
+
+Beroende på om den funktion som anropas av en knapp är synkron eller asynkron,
+och om den returnerar en `Promise`,
+så får knappen olika beteende.
+
+### Synkron kod
+
+Om funktionen som körs vid knapptryck är synkron (ej asynkron, returnerar ingen `Promise`):
+
+- Ingen spinner visas.
+- Knappen beter sig som vanligt – användaren kan klicka flera gånger direkt efter varandra.
+
+```diff
+<script>
++   function syncOperation(): void {
++       const response = doSomething();
++       console.log("This operation blocked the entire page until finished");
++   }
+</script>
+<template>
+-   <f-button> text </f-button>
++   <f-button @click="syncOperation"> text </f-button>
+</template>
+```
+
+### Asynkron kod med `Promise`
+
+Om funktionen returnerar en `Promise` (till exempel vid användning av `async/await` eller annan `Promise`-baserad logik):
+
+- Om åtgärden tar längre än **200 ms**, visas en **spinner** på knappen under tiden åtgärden pågår.
+    - Har knappen en ikon, ersätts ikonen temporärt av en spinner.
+    - Saknar knappen ikon, visas spinnern till vänster om knappens text.
+- Knappen **inaktiveras** tills `Promise` är **resolved** eller **rejected**.
+
+```diff
+<script>
++   async function asyncOperation(): Promise<void> {
++       const response = await fetch("/api");
++       console.log("This request blocked the button until finished");
++}
+</script>
+<template>
+-   <f-button> text </f-button>
++   <f-button @click="asyncOperation"> text </f-button>
+</template>
+```
+
+::: messagebox
+
+Använd detta beteende när det är viktigt att slutanvändaren väntar in åtgärden innan andra interaktioner sker.
+
+:::
+
+### Asynkron kod utan `Promise`
+
+Om åtgärden är asynkron men inte returnerar en `Promise` (till exempel `fetch` utan att returnera vidare, eller callback-baserad logik):
+
+- Behandlas som en synkron åtgärd – **ingen spinner visas** och **knappen inaktiveras inte**.
+
+```diff
+<script>
++   function backgroundJob(): void {
++       fetch("/api").then(response => {
++           console("This request ran in the background");
++       });
++   });
+</script>
+<template>
+-   <f-button> text </f-button>
++   <f-button @click="backgroundJob"> text </f-button>
+</template>
+```
+
+::: messagebox
+
+Det här är lämpligt i situationer där åtgärden kan ske i bakgrunden och användaren inte behöver vänta på att åtgärden är klar.
+
+:::
+
 ## Inaktiv
 
 Inaktiv knapp bör undvikas i stor utsträckning som möjligt.
