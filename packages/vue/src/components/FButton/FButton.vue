@@ -1,6 +1,14 @@
 <script setup lang="ts">
-import { computed, type PropType } from "vue";
+import { computed, defineProps, useAttrs, type PropType } from "vue";
 import { FIcon } from "../FIcon";
+import { useInflight } from "./use-inflight";
+
+defineOptions({
+    inheritAttrs: false,
+});
+const originalAttrs = useAttrs();
+const { inflight, fn: onClick } = useInflight(originalAttrs.onClick);
+const attrs = { ...originalAttrs, onClick };
 
 const props = defineProps({
     /**
@@ -124,20 +132,36 @@ const buttonClass = computed((): string[] => {
     if (props.mobileFullWidth && props.size !== "large") {
         classes.push(`button--full-width`);
     }
+    if (inflight.value) {
+        classes.push(`${classes} button__inflight`);
+    }
 
     return classes;
 });
 </script>
 
 <template>
-    <button :type :class="buttonClass">
-        <f-icon v-if="props.iconLeft" class="button__icon" :name="props.iconLeft"></f-icon>
-
+    <button type="button" :class="buttonClass" :disabled="inflight" v-bind="attrs">
+        <template v-if="hasIconLeft">
+            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            <f-icon v-else-if="props.iconLeft" class="button__icon" :name="props.iconLeft"></f-icon>
+        </template>
+        <template v-if="!hasIcon">
+            <span class="spinner--before">
+                <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            </span>
+        </template>
         <!--
         @slot Slot for text to display in the button.
         -->
-        <slot name="default"></slot>
+        <span><slot name="default"></slot></span>
 
-        <f-icon v-if="props.iconRight" class="button__icon" :name="props.iconRight"></f-icon>
+        <template v-if="hasIconRight">
+            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            <f-icon v-else-if="props.iconRight" class="button__icon" :name="props.iconRight"></f-icon>
+        </template>
+        <template v-if="!hasIcon">
+            <span class="spinner--after"></span>
+        </template>
     </button>
 </template>
