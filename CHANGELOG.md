@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 6.16.0 (2025-08-22)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** add year selector to calendar component (refs SFKUI-7246) 963fdd8
+* **@fkui/vue:** new `FButton` component (refs SFKUI-7248) 4792668
+
+### Bug Fixes
+
+* **@fkui/vue:** `FSortFilterDataset` use current sort on data change (fixes SFKUI-7310) 0fdbb8e, closes #618
+* **@fkui/vue:** fix `FCrudDataset` delete on nested items (fixes SFKUI-7084) 2df70c8
+* **deps:** update dependency i18next to v25.3.4 f97ffd3
+* **deps:** update dependency i18next to v25.3.6 9384f5a
+
 ## 6.15.0 (2025-08-09)
 
 ### Features
