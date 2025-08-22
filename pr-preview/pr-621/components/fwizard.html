@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-99b838.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-efe049.js",
     "@fkui/date": "../assets/vendor-fkui-date-18a9b5.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-dc1651.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-b549b4.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
     "../assets/vendor-fkui-logic-efe049.js": "sha384-FiztVSPAWHRNJrQw5vvNFBPEB3Bh6u/lFSAvBL8At6K0nZvLyaqK9vCT4Np4wS+o",
     "../assets/vendor-fkui-date-18a9b5.js": "sha384-/BhWaHaRzDax/IItSxXiIs/xsJKrEYFoKdLwlxJBOQtFbvUEGAiw1a7KwcxTNihA",
-    "../assets/vendor-fkui-vue-dc1651.js": "sha384-RTI807uBHCtf5kbEjXvXEMLxpnrq/WCxyyDOa76Te/KKrROc7ZLnLwKiRstTMlrH",
+    "../assets/vendor-fkui-vue-b549b4.js": "sha384-9Pb2N13MOleRPvxmAWLf6nutPs33BngbfRXTQEArIabzlslefVcBg45cN6ACXK7s",
     "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-a65a58.json"
+            href="../search-data-89b670.json"
             as="fetch"
             crossorigin
-            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
+            integrity="sha384-Es9paYbpESriKMlrtcRacTFjetAovatVz8HbvtDXRedqnQbxJHgfpZ/p4AFulY2F"
             id="search-data"
         />
     </head>
@@ -1083,13 +1083,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e9e6dfc78a12486acb575ee8dbb6981e63be672c/packages/vue/src/components/FWizard/FWizard.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/67d18e5587cf45de92be4de72c17c73c492431ce/packages/vue/src/components/FWizard/FWizard.vue">
                 FWizard
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e9e6dfc78a12486acb575ee8dbb6981e63be672c/packages/vue/src/components/FWizard/FWizardStep.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/67d18e5587cf45de92be4de72c17c73c492431ce/packages/vue/src/components/FWizard/FWizardStep.vue">
                 FWizardStep
             </a>
             
@@ -1472,14 +1472,14 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 </div>
             </div>
         <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fwizard"><a class="header-anchor" href="#fwizard">FWizard</a></h3>
-        <h4 id="fwizard-props">
-            <a class="header-anchor" href="#fwizard-props">Props</a>
+        <h4 id="fwizard-models">
+            <a class="header-anchor" href="#fwizard-models">Models</a>
         </h4>
-        <dl class="docs-api docs-api--slots">
+        <dl class="docs-api docs-api--models">
             
                         <dt>
-                            <code id="fwizard-prop-v-model"
-                                ><a class="docs-api__anchor" href="#fwizard-prop-v-model"
+                            <code id="fwizard-model-v-model"
+                                ><a class="docs-api__anchor" href="#fwizard-model-v-model"
                                     ><span class="docs-api__name"
                                         >v-model</span
                                     >: string</a
@@ -1494,6 +1494,13 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                             
                         </dd>
                     
+        </dl>
+    
+        <h4 id="fwizard-props">
+            <a class="header-anchor" href="#fwizard-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
                         <dt>
                             <code id="fwizard-prop-headertag"
                                 ><a class="docs-api__anchor" href="#fwizard-prop-headertag"
@@ -1576,25 +1583,6 @@ user pressing 'Fortsätt' button in last step.</p>
                             
                             
                             
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fwizard-event-update-modelvalue"
-                                ><a class="docs-api__anchor" href="#fwizard-event-update-modelvalue"
-                                    ><span class="docs-api__name"
-                                        >update:modelValue</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>V-model event.</p>
-
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: FWizardKey</code></li>
-                            </ul>
                             
                         </dd>
                     
@@ -1841,9 +1829,9 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/dark-theme (<a href="https://github.com/Forsakringskassan/designsystem/commits/e9e6dfc78a12486acb575ee8dbb6981e63be672c">e9e6dfc</a>)<br />
+<div class="footer__right"><div class="version">feature/dark-theme (<a href="https://github.com/Forsakringskassan/designsystem/commits/67d18e5587cf45de92be4de72c17c73c492431ce">67d18e5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/621">PR 621</a><br />
-        2025-08-20 14:07
+        2025-08-22 06:59
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1960,10 +1948,10 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
             integrity="sha384-VebEbxY/p3c04mDpvDhP35IMs4bk932+mNK+qhKt6hmh7hE+01fUrUurMRetl1Mu"
             
         ></script><script
-            src="../assets/main-06b010.js"
+            src="../assets/main-22d1ed.js"
             type="module"
             crossorigin
-            integrity="sha384-h1GiRbU5azi/dNKvJ/vTsvi2tDpeqpa+JTFo1ceEcyGUp9ukQzFIz/8Q7kah9dah"
+            integrity="sha384-B05Nsrf9xL85/e14o5yJkhROvcMPzw9bQhaY2drPqUUMiGDBd+24ErxIGeCeIKeX"
             
         ></script>
     </body>
