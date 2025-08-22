@@ -1461,6 +1461,11 @@ input[type=search]:focus,
   background-color: var(--fkds-color-feedback-background-warning-strong);
   border-color: var(--fkds-color-feedback-background-warning-strong);
 }
+@media (prefers-color-scheme: dark) {
+  .badge--warning {
+    color: var(--fkds-color-text-inverted);
+  }
+}
 .badge--warning-inverted {
   color: var(--fkds-color-text-primary);
   background-color: var(--fkds-color-feedback-background-warning);
@@ -2211,6 +2216,7 @@ input[type=search]:focus,
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   position: relative;
+  color: var(--fkds-color-text-primary);
 }
 .checkbox__label * {
   pointer-events: none;
@@ -2619,6 +2625,7 @@ input[type=search]:focus,
   width: 100%;
   height: 100%;
   background-color: inherit;
+  color: var(--fkds-color-action-text-secondary-default);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2630,13 +2637,13 @@ input[type=search]:focus,
   overflow: hidden;
   font-weight: var(--f-font-weight-medium);
   font-size: var(--f-font-size-standard);
-  color: var(--fkds-color-action-text-secondary-default);
   text-align: left;
   cursor: pointer;
 }
 .dialogue-tree__list-item button .icon {
   flex-shrink: 0;
   margin-left: 1.25rem;
+  color: currentcolor;
 }
 
 .entrypoint {
@@ -4747,6 +4754,7 @@ input[type=search]:focus,
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   position: relative;
+  color: var(--fkds-color-text-primary);
 }
 .radio-button__label * {
   pointer-events: none;
@@ -5278,6 +5286,7 @@ input[type=search]:focus,
 }
 .text-field__input {
   background-color: var(--fkds-color-background-primary);
+  color: var(--fkds-color-text-primary);
   box-shadow: var(--f-input-shadow-inset);
   border-radius: var(--f-border-radius-medium);
   border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
@@ -5372,6 +5381,7 @@ input[type=search]:focus,
 }
 .textarea-field__textarea {
   background-color: var(--fkds-color-background-primary);
+  color: var(--fkds-color-text-primary);
   box-shadow: var(--f-input-shadow-inset);
   border-radius: var(--f-border-radius-medium);
   border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
