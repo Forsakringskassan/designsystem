@@ -73,15 +73,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, {
           default: _withCtx(() => [
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
-              default: _withCtx(() => _cache[3] || (_cache[3] = [
+              default: _withCtx(() => [..._cache[3] || (_cache[3] = [
                 _createTextVNode(
                   " Etikett-rubrik ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [3]
+              ])]),
+              _: 1
+              /* STABLE */
             })), [
               [
                 _directive_validation,
@@ -94,15 +94,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               ]
             ]),
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
-              default: _withCtx(() => _cache[4] || (_cache[4] = [
+              default: _withCtx(() => [..._cache[4] || (_cache[4] = [
                 _createTextVNode(
                   " Etikett-rubrik (frivillig) ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [4]
+              ])]),
+              _: 1
+              /* STABLE */
             })), [
               [
                 _directive_validation,
@@ -125,15 +125,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               modelValue: _ctx.date,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.date = $event)
             }, {
-              default: _withCtx(() => _cache[5] || (_cache[5] = [
+              default: _withCtx(() => [..._cache[5] || (_cache[5] = [
                 _createTextVNode(
                   " Etikett-rubrik ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [5]
+              ])]),
+              _: 1
+              /* STABLE */
             }, 8, ["modelValue"])), [
               [
                 _directive_validation,
@@ -146,13 +146,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               modelValue: _ctx.options,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.options = $event)
             }, {
-              label: _withCtx(() => _cache[6] || (_cache[6] = [
+              label: _withCtx(() => [..._cache[6] || (_cache[6] = [
                 _createTextVNode(
                   " Etikett-rubrik ",
                   -1
                   /* CACHED */
                 )
-              ])),
+              ])]),
               default: _withCtx(() => [
                 _cache[7] || (_cache[7] = _createElementVNode(
                   "option",
@@ -179,8 +179,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   /* CACHED */
                 ))
               ]),
-              _: 1,
-              __: [7, 8, 9]
+              _: 1
+              /* STABLE */
             }, 8, ["modelValue"])), [
               [
                 _directive_validation,
@@ -198,13 +198,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "use-error-list": false,
           title: "Stegrubrik 3"
         }, {
-          "next-button-text": _withCtx(() => _cache[10] || (_cache[10] = [
+          "next-button-text": _withCtx(() => [..._cache[10] || (_cache[10] = [
             _createTextVNode(
               " Klar ",
               -1
               /* CACHED */
             )
-          ])),
+          ])]),
           default: _withCtx(() => [
             _cache[11] || (_cache[11] = _createTextVNode(
               " En informationstext ",
@@ -212,8 +212,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               /* CACHED */
             ))
           ]),
-          _: 1,
-          __: [11]
+          _: 1
+          /* STABLE */
         })
       ]),
       _: 1

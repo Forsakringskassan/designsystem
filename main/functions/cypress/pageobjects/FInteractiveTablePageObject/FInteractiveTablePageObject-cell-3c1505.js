@@ -55,13 +55,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "key-attribute": "id",
     rows: $setup.rows
   }, {
-    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+    caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Tabell ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(({ row }) => [
       _createVNode(
         $setup["FTableColumn"],

@@ -321,15 +321,15 @@ function render3(_ctx, _cache, $props, $setup, $data, $options) {
         variant: "tertiary",
         "icon-left": "success"
       }, {
-        default: _withCtx(() => _cache[0] || (_cache[0] = [
+        default: _withCtx(() => [..._cache[0] || (_cache[0] = [
           _createTextVNode(
             " Knapp 1 i lista ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [0]
+        ])]),
+        _: 1
+        /* STABLE */
       })
     ]),
     _createElementVNode2("li", null, [
@@ -337,15 +337,15 @@ function render3(_ctx, _cache, $props, $setup, $data, $options) {
         variant: "tertiary",
         "icon-left": "cross"
       }, {
-        default: _withCtx(() => _cache[1] || (_cache[1] = [
+        default: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
             " Knapp 2 i lista ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [1]
+        ])]),
+        _: 1
+        /* STABLE */
       })
     ]),
     _createElementVNode2("li", null, [
@@ -353,15 +353,15 @@ function render3(_ctx, _cache, $props, $setup, $data, $options) {
         variant: "tertiary",
         "icon-left": "pen"
       }, {
-        default: _withCtx(() => _cache[2] || (_cache[2] = [
+        default: _withCtx(() => [..._cache[2] || (_cache[2] = [
           _createTextVNode(
             " Knapp 3 i lista ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [2]
+        ])]),
+        _: 1
+        /* STABLE */
       })
     ])
   ]);

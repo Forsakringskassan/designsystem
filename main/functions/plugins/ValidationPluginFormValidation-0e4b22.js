@@ -43,25 +43,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_validation = _resolveDirective("validation");
   const _directive_test = _resolveDirective("test");
   return _withDirectives((_openBlock(), _createBlock(_component_f_validation_form, null, {
-    "error-message": _withCtx(() => _cache[0] || (_cache[0] = [
+    "error-message": _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Fel i f\xF6ljande f\xE4lt... ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _withDirectives((_openBlock(), _createElementBlock("div", null, [
         _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { maxlength: 100 }, {
-          default: _withCtx(() => _cache[1] || (_cache[1] = [
+          default: _withCtx(() => [..._cache[1] || (_cache[1] = [
             _createTextVNode(
               " Okreativ etikett ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [1]
+          ])]),
+          _: 1
+          /* STABLE */
         })), [
           [
             _directive_validation_prefix,
@@ -77,15 +77,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ]
         ]),
         _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { maxlength: 100 }, {
-          default: _withCtx(() => _cache[2] || (_cache[2] = [
+          default: _withCtx(() => [..._cache[2] || (_cache[2] = [
             _createTextVNode(
               " Okreativ etikett ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [2]
+          ])]),
+          _: 1
+          /* STABLE */
         })), [
           [
             _directive_validation_prefix,
@@ -101,15 +101,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ]
         ]),
         _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { maxlength: 100 }, {
-          default: _withCtx(() => _cache[3] || (_cache[3] = [
+          default: _withCtx(() => [..._cache[3] || (_cache[3] = [
             _createTextVNode(
               " Okreativ etikett ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [3]
+          ])]),
+          _: 1
+          /* STABLE */
         })), [
           [
             _directive_validation_prefix,
@@ -135,8 +135,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       ))
     ]),
-    _: 1,
-    __: [4]
+    _: 1
+    /* STABLE */
   })), [
     [_directive_test, "form-validation-prefix"]
   ]);

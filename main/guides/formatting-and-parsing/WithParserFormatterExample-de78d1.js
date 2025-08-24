@@ -66,13 +66,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         parser: _ctx.myParser,
         formatter: _ctx.myFormatter
       }, {
-        default: _withCtx(() => _cache[1] || (_cache[1] = [
+        default: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
             " Inmatningsf\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue", "parser", "formatter"])), [
@@ -86,13 +86,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _createElementVNode("div", _hoisted_3, [
       _createVNode(_component_f_output_field, { for: "with-parser-formatter" }, {
-        label: _withCtx(() => _cache[2] || (_cache[2] = [
+        label: _withCtx(() => [..._cache[2] || (_cache[2] = [
           _createTextVNode(
             " modelValue ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createElementVNode(
             "span",

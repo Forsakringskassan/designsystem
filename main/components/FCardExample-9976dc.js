@@ -52,7 +52,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CLASS */
       )
     ]),
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
         "p",
         null,
@@ -83,7 +83,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     footer: _withCtx(() => [
       _createElementVNode("div", _hoisted_1, [
         _createVNode(_component_f_button, {
@@ -92,15 +92,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           class: "button-group__item",
           "icon-left": "trashcan"
         }, {
-          default: _withCtx(() => _cache[1] || (_cache[1] = [
+          default: _withCtx(() => [..._cache[1] || (_cache[1] = [
             _createTextVNode(
               " Ta bort ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [1]
+          ])]),
+          _: 1
+          /* STABLE */
         }),
         _createVNode(_component_f_button, {
           variant: "tertiary",
@@ -108,15 +108,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           class: "button-group__item",
           "icon-left": "pen"
         }, {
-          default: _withCtx(() => _cache[2] || (_cache[2] = [
+          default: _withCtx(() => [..._cache[2] || (_cache[2] = [
             _createTextVNode(
               " Ta bort ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [2]
+          ])]),
+          _: 1
+          /* STABLE */
         })
       ])
     ]),
