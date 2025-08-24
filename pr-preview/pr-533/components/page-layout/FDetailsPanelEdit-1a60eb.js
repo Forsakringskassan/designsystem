@@ -110,15 +110,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     modelValue: exampleScope.item.column1,
                     "onUpdate:modelValue": ($event) => exampleScope.item.column1 = $event
                   }, {
-                    default: _withCtx(() => _cache[1] || (_cache[1] = [
+                    default: _withCtx(() => [..._cache[1] || (_cache[1] = [
                       _createTextVNode(
                         " Etikett-rubrik 1 ",
                         -1
                         /* CACHED */
                       )
-                    ])),
-                    _: 2,
-                    __: [1]
+                    ])]),
+                    _: 2
+                    /* DYNAMIC */
                   }, 1032, ["modelValue", "onUpdate:modelValue"])), [
                     [
                       _directive_validation,
@@ -134,15 +134,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     modelValue: exampleScope.item.column2,
                     "onUpdate:modelValue": ($event) => exampleScope.item.column2 = $event
                   }, {
-                    default: _withCtx(() => _cache[2] || (_cache[2] = [
+                    default: _withCtx(() => [..._cache[2] || (_cache[2] = [
                       _createTextVNode(
                         " Etikett-rubrik 2 ",
                         -1
                         /* CACHED */
                       )
-                    ])),
-                    _: 2,
-                    __: [2]
+                    ])]),
+                    _: 2
+                    /* DYNAMIC */
                   }, 1032, ["modelValue", "onUpdate:modelValue"])), [
                     [
                       _directive_validation,
@@ -158,15 +158,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     modelValue: exampleScope.item.column3,
                     "onUpdate:modelValue": ($event) => exampleScope.item.column3 = $event
                   }, {
-                    default: _withCtx(() => _cache[3] || (_cache[3] = [
+                    default: _withCtx(() => [..._cache[3] || (_cache[3] = [
                       _createTextVNode(
                         " Etikett-rubrik 3 ",
                         -1
                         /* CACHED */
                       )
-                    ])),
-                    _: 2,
-                    __: [3]
+                    ])]),
+                    _: 2
+                    /* DYNAMIC */
                   }, 1032, ["modelValue", "onUpdate:modelValue"])), [
                     [
                       _directive_validation,
@@ -182,15 +182,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     modelValue: exampleScope.item.column4,
                     "onUpdate:modelValue": ($event) => exampleScope.item.column4 = $event
                   }, {
-                    default: _withCtx(() => _cache[4] || (_cache[4] = [
+                    default: _withCtx(() => [..._cache[4] || (_cache[4] = [
                       _createTextVNode(
                         " Etikett-rubrik 4 ",
                         -1
                         /* CACHED */
                       )
-                    ])),
-                    _: 2,
-                    __: [4]
+                    ])]),
+                    _: 2
+                    /* DYNAMIC */
                   }, 1032, ["modelValue", "onUpdate:modelValue"])), [
                     [
                       _directive_validation,
@@ -231,13 +231,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "key-attribute": "id",
             onClick: _cache[0] || (_cache[0] = ($event) => $setup.openPanel($event))
           }, {
-            caption: _withCtx(() => _cache[5] || (_cache[5] = [
+            caption: _withCtx(() => [..._cache[5] || (_cache[5] = [
               _createTextVNode(
                 "Tabell",
                 -1
                 /* CACHED */
               )
-            ])),
+            ])]),
             default: _withCtx(({ row }) => [
               _createVNode(
                 $setup["FTableColumn"],

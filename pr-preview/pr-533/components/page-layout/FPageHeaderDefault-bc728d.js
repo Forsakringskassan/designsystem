@@ -42,24 +42,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock(_component_f_page_header, null, {
     logo: _withCtx(() => [
       _createVNode(_component_f_logo, { size: "small" }, {
-        default: _withCtx(() => _cache[0] || (_cache[0] = [
+        default: _withCtx(() => [..._cache[0] || (_cache[0] = [
           _createTextVNode(
             "Example logo text",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [0]
+        ])]),
+        _: 1
+        /* STABLE */
       })
     ]),
-    right: _withCtx(() => _cache[1] || (_cache[1] = [
+    right: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createTextVNode(
         " Namn Namnsson ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _cache[2] || (_cache[2] = _createTextVNode(
         " Exempelapplikation ",
@@ -67,8 +67,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       ))
     ]),
-    _: 1,
-    __: [2]
+    _: 1
+    /* STABLE */
   });
 }
 exampleComponent.render = render;

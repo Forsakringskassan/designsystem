@@ -146,101 +146,101 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: _withCtx(() => [
       _createVNode($setup["FFieldset"], { name: "attachment" }, {
-        label: _withCtx(() => _cache[8] || (_cache[8] = [
+        label: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " F\xE4st till ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode($setup["FRadioField"], {
             modelValue: $setup.attachment,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.attachment = $event),
             value: "left"
           }, {
-            default: _withCtx(() => _cache[9] || (_cache[9] = [
+            default: _withCtx(() => [..._cache[9] || (_cache[9] = [
               _createTextVNode(
                 "V\xE4nster",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [9]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode($setup["FRadioField"], {
             modelValue: $setup.attachment,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $setup.attachment = $event),
             value: "right"
           }, {
-            default: _withCtx(() => _cache[10] || (_cache[10] = [
+            default: _withCtx(() => [..._cache[10] || (_cache[10] = [
               _createTextVNode(
                 "H\xF6ger",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [10]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1
         /* STABLE */
       }),
       _createVNode($setup["FFieldset"], { name: "attachment" }, {
-        label: _withCtx(() => _cache[11] || (_cache[11] = [
+        label: _withCtx(() => [..._cache[11] || (_cache[11] = [
           _createTextVNode(
             " Egenskaper ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode($setup["FCheckboxField"], {
             modelValue: $setup.enabled,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $setup.enabled = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[12] || (_cache[12] = [
+            default: _withCtx(() => [..._cache[12] || (_cache[12] = [
               _createTextVNode(
                 "Enabled",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [12]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode($setup["FCheckboxField"], {
             modelValue: $setup.visible,
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => $setup.visible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[13] || (_cache[13] = [
+            default: _withCtx(() => [..._cache[13] || (_cache[13] = [
               _createTextVNode(
                 "Visible",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [13]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode($setup["FCheckboxField"], {
             modelValue: $setup.overlay,
             "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => $setup.overlay = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[14] || (_cache[14] = [
+            default: _withCtx(() => [..._cache[14] || (_cache[14] = [
               _createTextVNode(
                 "Overlay",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [14]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -250,14 +250,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $setup.min,
         "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => $setup.min = $event)
       }, {
-        label: _withCtx(() => _cache[15] || (_cache[15] = [
+        label: _withCtx(() => [..._cache[15] || (_cache[15] = [
           _createTextVNode(
             " Minsta storlek ",
             -1
             /* CACHED */
           )
-        ])),
-        default: _withCtx(() => _cache[16] || (_cache[16] = [
+        ])]),
+        default: _withCtx(() => [..._cache[16] || (_cache[16] = [
           _createElementVNode(
             "option",
             { value: void 0 },
@@ -286,7 +286,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -294,14 +294,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $setup.max,
         "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $setup.max = $event)
       }, {
-        label: _withCtx(() => _cache[17] || (_cache[17] = [
+        label: _withCtx(() => [..._cache[17] || (_cache[17] = [
           _createTextVNode(
             " St\xF6rsta storlek ",
             -1
             /* CACHED */
           )
-        ])),
-        default: _withCtx(() => _cache[18] || (_cache[18] = [
+        ])]),
+        default: _withCtx(() => [..._cache[18] || (_cache[18] = [
           _createElementVNode(
             "option",
             { value: void 0 },
@@ -330,7 +330,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -339,14 +339,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => $setup.offset = $event),
         disabled: !$setup.overlay
       }, {
-        label: _withCtx(() => _cache[19] || (_cache[19] = [
+        label: _withCtx(() => [..._cache[19] || (_cache[19] = [
           _createTextVNode(
             " Offset ",
             -1
             /* CACHED */
           )
-        ])),
-        default: _withCtx(() => _cache[20] || (_cache[20] = [
+        ])]),
+        default: _withCtx(() => [..._cache[20] || (_cache[20] = [
           _createElementVNode(
             "option",
             { value: 0 },
@@ -361,7 +361,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue", "disabled"])

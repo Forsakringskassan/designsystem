@@ -55,15 +55,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.reference,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.reference = $event)
       }, {
-        default: _withCtx(() => _cache[2] || (_cache[2] = [
+        default: _withCtx(() => [..._cache[2] || (_cache[2] = [
           _createTextVNode(
             " Fyll i ett personnummer (referens) ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [2]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])), [
         [
           _directive_validation,
@@ -79,15 +79,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.model,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.model = $event)
       }, {
-        default: _withCtx(() => _cache[3] || (_cache[3] = [
+        default: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " Fyll i ett personnummer ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [3]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])), [
         [
           _directive_validation,

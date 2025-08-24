@@ -188,13 +188,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.monthToShow,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.monthToShow = $event)
       }, {
-        label: _withCtx(() => _cache[12] || (_cache[12] = [
+        label: _withCtx(() => [..._cache[12] || (_cache[12] = [
           _createTextVNode(
             " Visa m\xE5nad ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[13] || (_cache[13] = _createElementVNode(
             "option",
@@ -207,20 +207,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: _ctx.getDateWithOffset(-6)
           }, " Exempel: " + _toDisplayString(_ctx.getMonthYearString(_ctx.getDateWithOffset(-6))), 9, _hoisted_1)
         ]),
-        _: 1,
-        __: [13]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.minDateLimit,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.minDateLimit = $event)
       }, {
-        label: _withCtx(() => _cache[14] || (_cache[14] = [
+        label: _withCtx(() => [..._cache[14] || (_cache[14] = [
           _createTextVNode(
             " Tidigaste valbara datum ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[15] || (_cache[15] = _createElementVNode(
             "option",
@@ -233,20 +233,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: _ctx.getDateWithOffset(-3)
           }, "Exempel: " + _toDisplayString(_ctx.getDateWithOffset(-3)), 9, _hoisted_2)
         ]),
-        _: 1,
-        __: [15]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.maxDateLimit,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.maxDateLimit = $event)
       }, {
-        label: _withCtx(() => _cache[16] || (_cache[16] = [
+        label: _withCtx(() => [..._cache[16] || (_cache[16] = [
           _createTextVNode(
             " Senaste valbara datum ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[17] || (_cache[17] = _createElementVNode(
             "option",
@@ -259,20 +259,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: _ctx.getDateWithOffset(3)
           }, "Exempel: " + _toDisplayString(_ctx.getDateWithOffset(3)), 9, _hoisted_3)
         ]),
-        _: 1,
-        __: [17]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.invalidWeekdays,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.invalidWeekdays = $event)
       }, {
-        label: _withCtx(() => _cache[18] || (_cache[18] = [
+        label: _withCtx(() => [..._cache[18] || (_cache[18] = [
           _createTextVNode(
             " Ej valbara veckodagar ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[19] || (_cache[19] = _createElementVNode(
             "option",
@@ -289,20 +289,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [19, 20]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.invalidDates,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.invalidDates = $event)
       }, {
-        label: _withCtx(() => _cache[21] || (_cache[21] = [
+        label: _withCtx(() => [..._cache[21] || (_cache[21] = [
           _createTextVNode(
             " Ej valbara datum ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[22] || (_cache[22] = _createElementVNode(
             "option",
@@ -315,122 +315,122 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             value: _ctx.getInvalidDates()
           }, "Exempel: " + _toDisplayString(_ctx.getInvalidDates().join(", ")), 9, _hoisted_4)
         ]),
-        _: 1,
-        __: [22]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.highlightTodayEnabled,
         "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.highlightTodayEnabled = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[23] || (_cache[23] = [
+        default: _withCtx(() => [..._cache[23] || (_cache[23] = [
           _createTextVNode(
             " Markera dagens datum i kalendern ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [23]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isRequired,
         "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.isRequired = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[24] || (_cache[24] = [
+        default: _withCtx(() => [..._cache[24] || (_cache[24] = [
           _createTextVNode(
             " Obligatorisk f\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [24]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDisabled,
         "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.isDisabled = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[25] || (_cache[25] = [
+        default: _withCtx(() => [..._cache[25] || (_cache[25] = [
           _createTextVNode(
             " Inaktivt f\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [25]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.alwaysInlineEnabled,
         "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.alwaysInlineEnabled = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[26] || (_cache[26] = [
+        default: _withCtx(() => [..._cache[26] || (_cache[26] = [
           _createTextVNode(
             " Kalendern visas alltid inline ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [26]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.enableYearSelector,
         "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.enableYearSelector = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[27] || (_cache[27] = [
+        default: _withCtx(() => [..._cache[27] || (_cache[27] = [
           _createTextVNode(
             " Visa \xE5rsv\xE4ljare ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [27]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "etikett" }, {
-        label: _withCtx(() => _cache[28] || (_cache[28] = [
+        label: _withCtx(() => [..._cache[28] || (_cache[28] = [
           _createTextVNode(
             " Etiketten ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.tooltipVisible,
             "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => _ctx.tooltipVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[29] || (_cache[29] = [
+            default: _withCtx(() => [..._cache[29] || (_cache[29] = [
               _createTextVNode(
                 " Tooltip ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [29]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
             "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => _ctx.descriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[30] || (_cache[30] = [
+            default: _withCtx(() => [..._cache[30] || (_cache[30] = [
               _createTextVNode(
                 " Hj\xE4lptext ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [30]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1

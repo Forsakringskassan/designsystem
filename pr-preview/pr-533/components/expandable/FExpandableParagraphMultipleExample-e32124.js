@@ -62,14 +62,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "header-tag": "h2",
       onToggle: _ctx.onToggle1
     }, {
-      title: _withCtx(() => _cache[0] || (_cache[0] = [
+      title: _withCtx(() => [..._cache[0] || (_cache[0] = [
         _createTextVNode(
           " Titel (h2) ",
           -1
           /* CACHED */
         )
-      ])),
-      default: _withCtx(() => _cache[1] || (_cache[1] = [
+      ])]),
+      default: _withCtx(() => [..._cache[1] || (_cache[1] = [
         _createElementVNode(
           "span",
           null,
@@ -77,7 +77,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]),
@@ -86,14 +86,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "header-tag": "h3",
       onToggle: _ctx.onToggle2
     }, {
-      title: _withCtx(() => _cache[2] || (_cache[2] = [
+      title: _withCtx(() => [..._cache[2] || (_cache[2] = [
         _createTextVNode(
           " Titel (h3) ",
           -1
           /* CACHED */
         )
-      ])),
-      default: _withCtx(() => _cache[3] || (_cache[3] = [
+      ])]),
+      default: _withCtx(() => [..._cache[3] || (_cache[3] = [
         _createElementVNode(
           "span",
           null,
@@ -101,7 +101,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]),
@@ -110,21 +110,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "header-tag": "h4",
       onToggle: _ctx.onToggle3
     }, {
-      title: _withCtx(() => _cache[4] || (_cache[4] = [
+      title: _withCtx(() => [..._cache[4] || (_cache[4] = [
         _createTextVNode(
           " Titel (h4) ",
           -1
           /* CACHED */
         )
-      ])),
-      related: _withCtx(() => _cache[5] || (_cache[5] = [
+      ])]),
+      related: _withCtx(() => [..._cache[5] || (_cache[5] = [
         _createTextVNode(
           " 2020-06-25 ",
           -1
           /* CACHED */
         )
-      ])),
-      default: _withCtx(() => _cache[6] || (_cache[6] = [
+      ])]),
+      default: _withCtx(() => [..._cache[6] || (_cache[6] = [
         _createElementVNode(
           "span",
           null,
@@ -132,7 +132,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"])

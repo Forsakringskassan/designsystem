@@ -50,15 +50,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       modelValue: _ctx.name,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.name = $event)
     }, {
-      default: _withCtx(() => _cache[1] || (_cache[1] = [
+      default: _withCtx(() => [..._cache[1] || (_cache[1] = [
         _createTextVNode(
           " Namn ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [1]
+      ])]),
+      _: 1
+      /* STABLE */
     }, 8, ["modelValue"])), [
       [
         _directive_validation,
@@ -68,13 +68,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]
     ]),
     _createVNode(_component_f_static_field, null, {
-      label: _withCtx(() => _cache[2] || (_cache[2] = [
+      label: _withCtx(() => [..._cache[2] || (_cache[2] = [
         _createTextVNode(
           " Beskrivning ",
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       default: _withCtx(() => [
         _cache[3] || (_cache[3] = _createTextVNode(
           " En liten statisk beskrivning. ",
@@ -82,8 +82,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* CACHED */
         ))
       ]),
-      _: 1,
-      __: [3]
+      _: 1
+      /* STABLE */
     })
   ]);
 }

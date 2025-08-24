@@ -48,15 +48,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event),
     maxlength: 100
   }, {
-    default: _withCtx(() => _cache[1] || (_cache[1] = [
+    default: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createTextVNode(
         " Ett f\xE4lt med specifict felmeddelande ",
         -1
         /* CACHED */
       )
-    ])),
-    _: 1,
-    __: [1]
+    ])]),
+    _: 1
+    /* STABLE */
   }, 8, ["modelValue"])), [
     [
       _directive_validation,

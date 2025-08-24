@@ -67,7 +67,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-list-before-navigate": _ctx.expandPanel,
     onSubmit: _ctx.onSubmit
   }, {
-    "error-message": _withCtx(() => _cache[3] || (_cache[3] = [
+    "error-message": _withCtx(() => [..._cache[3] || (_cache[3] = [
       _createElementVNode(
         "span",
         null,
@@ -75,34 +75,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _createVNode(_component_f_expandable_panel, {
         expanded: _ctx.expand,
         onToggle: _ctx.onToggle
       }, {
-        title: _withCtx(() => _cache[4] || (_cache[4] = [
+        title: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             "Panel to be expanded",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
             id: "field1",
             modelValue: _ctx.field1,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.field1 = $event)
           }, {
-            default: _withCtx(() => _cache[5] || (_cache[5] = [
+            default: _withCtx(() => [..._cache[5] || (_cache[5] = [
               _createTextVNode(
                 " Field1 ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [5]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])), [
             [
               _directive_validation,
@@ -119,15 +119,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             modelValue: _ctx.field2,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.field2 = $event)
           }, {
-            default: _withCtx(() => _cache[6] || (_cache[6] = [
+            default: _withCtx(() => [..._cache[6] || (_cache[6] = [
               _createTextVNode(
                 " Field2 ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [6]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])), [
             [
               _directive_validation,

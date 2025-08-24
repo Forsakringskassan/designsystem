@@ -130,7 +130,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.style = $event),
         "aria-label": "H\xF6jd"
       },
-      _cache[8] || (_cache[8] = [
+      [..._cache[8] || (_cache[8] = [
         _createElementVNode(
           "option",
           { value: "height: 200px; background: hotpink" },
@@ -152,7 +152,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ]),
+      ])],
       512
       /* NEED_PATCH */
     ), [

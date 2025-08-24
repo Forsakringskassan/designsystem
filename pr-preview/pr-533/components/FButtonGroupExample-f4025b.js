@@ -50,30 +50,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       class: "button-group__item",
       "icon-left": "success"
     }, {
-      default: _withCtx(() => _cache[0] || (_cache[0] = [
+      default: _withCtx(() => [..._cache[0] || (_cache[0] = [
         _createTextVNode(
           " Knapp 1 i grupp ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [0]
+      ])]),
+      _: 1
+      /* STABLE */
     }),
     _createVNode($setup["FButton"], {
       class: "button-group__item",
       variant: "secondary",
       "icon-left": "error"
     }, {
-      default: _withCtx(() => _cache[1] || (_cache[1] = [
+      default: _withCtx(() => [..._cache[1] || (_cache[1] = [
         _createTextVNode(
           " Knapp 2 i grupp ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [1]
+      ])]),
+      _: 1
+      /* STABLE */
     })
   ]);
 }

@@ -83,73 +83,73 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: _withCtx(() => [
       _createVNode(_component_f_fieldset, { name: "radio-message-type" }, {
-        label: _withCtx(() => _cache[5] || (_cache[5] = [
+        label: _withCtx(() => [..._cache[5] || (_cache[5] = [
           _createTextVNode(
             " Typ ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.messageType,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.messageType = $event),
             value: "info"
           }, {
-            default: _withCtx(() => _cache[6] || (_cache[6] = [
+            default: _withCtx(() => [..._cache[6] || (_cache[6] = [
               _createTextVNode(
                 " Information ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [6]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.messageType,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.messageType = $event),
             value: "warning"
           }, {
-            default: _withCtx(() => _cache[7] || (_cache[7] = [
+            default: _withCtx(() => [..._cache[7] || (_cache[7] = [
               _createTextVNode(
                 " Varning ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [7]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.messageType,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.messageType = $event),
             value: "error"
           }, {
-            default: _withCtx(() => _cache[8] || (_cache[8] = [
+            default: _withCtx(() => [..._cache[8] || (_cache[8] = [
               _createTextVNode(
                 " Fel ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [8]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.messageType,
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.messageType = $event),
             value: "success"
           }, {
-            default: _withCtx(() => _cache[9] || (_cache[9] = [
+            default: _withCtx(() => [..._cache[9] || (_cache[9] = [
               _createTextVNode(
                 " Positiv \xE5terkoppling ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [9]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -160,15 +160,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.shortLayout = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[10] || (_cache[10] = [
+        default: _withCtx(() => [..._cache[10] || (_cache[10] = [
           _createTextVNode(
             " Kort meddelande ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [10]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

@@ -262,7 +262,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* DYNAMIC */
       }, 1032, ["items"])
     ]),
-    "add-button": _withCtx(() => _cache[7] || (_cache[7] = [
+    "add-button": _withCtx(() => [..._cache[7] || (_cache[7] = [
       _createTextVNode(
         " L\xE4gg till ny ",
         -1
@@ -275,22 +275,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     add: _withCtx(({ item }) => [
       _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
         modelValue: item.name,
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        default: _withCtx(() => _cache[8] || (_cache[8] = [
+        default: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " Namn ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 2,
-        __: [8]
+        ])]),
+        _: 2
+        /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
         [
           _directive_validation,
@@ -307,15 +307,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => _cache[9] || (_cache[9] = [
+        default: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Land ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 2,
-        __: [9]
+        ])]),
+        _: 2
+        /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
         [
           _directive_validation,
@@ -331,15 +331,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: item.description,
         "onUpdate:modelValue": ($event) => item.description = $event
       }, {
-        default: _withCtx(() => _cache[10] || (_cache[10] = [
+        default: _withCtx(() => [..._cache[10] || (_cache[10] = [
           _createTextVNode(
             " Beskrivning ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 2,
-        __: [10]
+        ])]),
+        _: 2
+        /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
         [
           _directive_validation,
@@ -355,13 +355,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        label: _withCtx(() => _cache[11] || (_cache[11] = [
+        label: _withCtx(() => [..._cache[11] || (_cache[11] = [
           _createTextVNode(
             " Namn ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createTextVNode(
             _toDisplayString(item.name),
@@ -377,15 +377,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => _cache[12] || (_cache[12] = [
+        default: _withCtx(() => [..._cache[12] || (_cache[12] = [
           _createTextVNode(
             " Land ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 2,
-        __: [12]
+        ])]),
+        _: 2
+        /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
         [
           _directive_validation,

@@ -48,7 +48,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         {
           class: _normalizeClass(headingSlotClass)
         },
-        _cache[0] || (_cache[0] = [
+        [..._cache[0] || (_cache[0] = [
           _createElementVNode(
             "span",
             { class: "sr-only" },
@@ -61,7 +61,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ]),
+        ])],
         2
         /* CLASS */
       ),

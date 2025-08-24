@@ -178,96 +178,96 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isDisabled = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[6] || (_cache[6] = [
+        default: _withCtx(() => [..._cache[6] || (_cache[6] = [
           _createTextVNode(
             " Inaktiverad ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [6]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isRequired,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isRequired = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[7] || (_cache[7] = [
+        default: _withCtx(() => [..._cache[7] || (_cache[7] = [
           _createTextVNode(
             " Obligatorisk ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [7]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isBorder,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.isBorder = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[8] || (_cache[8] = [
+        default: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " Ram ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [8]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "checkbox-label" }, {
-        label: _withCtx(() => _cache[9] || (_cache[9] = [
+        label: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Etiketten ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.tooltipVisible,
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.tooltipVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[10] || (_cache[10] = [
+            default: _withCtx(() => [..._cache[10] || (_cache[10] = [
               _createTextVNode(
                 " Tooltip ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [10]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
             "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.descriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[11] || (_cache[11] = [
+            default: _withCtx(() => [..._cache[11] || (_cache[11] = [
               _createTextVNode(
                 " Hj\xE4lptext ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [11]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_select_field, {
             modelValue: _ctx.showDetails,
             "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.showDetails = $event)
           }, {
-            label: _withCtx(() => _cache[12] || (_cache[12] = [
+            label: _withCtx(() => [..._cache[12] || (_cache[12] = [
               _createTextVNode(
                 " Ut\xF6kad etikett ",
                 -1
                 /* CACHED */
               )
-            ])),
+            ])]),
             default: _withCtx(() => [
               _cache[13] || (_cache[13] = _createElementVNode(
                 "option",
@@ -291,8 +291,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 /* CACHED */
               ))
             ]),
-            _: 1,
-            __: [13, 14, 15]
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1

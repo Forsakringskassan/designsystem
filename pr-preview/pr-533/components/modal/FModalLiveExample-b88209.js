@@ -129,13 +129,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.modalType,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modalType = $event)
       }, {
-        label: _withCtx(() => _cache[3] || (_cache[3] = [
+        label: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " Typ ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[4] || (_cache[4] = _createElementVNode(
             "option",
@@ -166,20 +166,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [4, 5, 6, 7]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.modalSize,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.modalSize = $event)
       }, {
-        label: _withCtx(() => _cache[8] || (_cache[8] = [
+        label: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " Storlek ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[9] || (_cache[9] = _createElementVNode(
             "option",
@@ -210,23 +210,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [9, 10, 11, 12]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.modalFullscreen,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.modalFullscreen = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[13] || (_cache[13] = [
+        default: _withCtx(() => [..._cache[13] || (_cache[13] = [
           _createTextVNode(
             " Fullsk\xE4rm i mobill\xE4ge ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [13]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

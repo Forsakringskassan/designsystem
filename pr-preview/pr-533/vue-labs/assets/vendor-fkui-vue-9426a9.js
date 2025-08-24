@@ -5049,8 +5049,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: ($event) => _ctx.onClick(button)
       }, [createElementVNode("span", null, toDisplayString(button.label), 1), _cache[0] || (_cache[0] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$z, "\xA0" + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$J);
     }), 128))])]),
-    _: 3,
-    __: [1, 2]
+    _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
 var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$O]]);
@@ -5287,9 +5286,8 @@ function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
       key: 1,
       shrink: ""
     }, {
-      default: withCtx(() => _cache[0] || (_cache[0] = [createTextVNode("\xA0", -1)])),
-      _: 1,
-      __: [0]
+      default: withCtx(() => [..._cache[0] || (_cache[0] = [createTextVNode("\xA0", -1)])]),
+      _: 1
     })) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_flex_item, {
       grow: ""
     }, {
@@ -5319,11 +5317,9 @@ function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
           key: 1
         }, [createTextVNode(toDisplayString(item.title), 1)], 64))], 64))], 2);
       }), 128))])]),
-      _: 3,
-      __: [5]
+      _: 3
     })]),
-    _: 3,
-    __: [6, 7]
+    _: 3
   })]);
 }
 var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["render", _sfc_render$L]]);
@@ -5877,8 +5873,7 @@ function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
       default: withCtx(() => [_cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "input-text-fields")]),
-      _: 3,
-      __: [0]
+      _: 3
     }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])]),
     footer: withCtx(() => [createElementVNode("div", _hoisted_1$W, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
       return openBlock(), createElementBlock("button", {
@@ -5889,8 +5884,7 @@ function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
       }, [createElementVNode("span", null, toDisplayString(button.label), 1), _cache[2] || (_cache[2] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$x, "\xA0" + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$G);
     }), 128))])]),
-    _: 3,
-    __: [3, 4]
+    _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
 var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$I]]);
@@ -6301,9 +6295,9 @@ var _hoisted_1$V = {
   "data-test": "f-error-page"
 };
 function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$V, _cache[0] || (_cache[0] = [createElementVNode("h1", null, "Fel", -1), createTextVNode(), createElementVNode("p", null, "Ett fel har uppst\xE5tt.", -1), createTextVNode(), createElementVNode("a", {
+  return openBlock(), createElementBlock("div", _hoisted_1$V, [..._cache[0] || (_cache[0] = [createElementVNode("h1", null, "Fel", -1), createTextVNode(), createElementVNode("p", null, "Ett fel har uppst\xE5tt.", -1), createTextVNode(), createElementVNode("a", {
     href: "/"
-  }, "G\xE5 till startsidan", -1)]));
+  }, "G\xE5 till startsidan", -1)])]);
 }
 var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$H]]);
 var _sfc_main$1b = defineComponent({
@@ -7929,8 +7923,7 @@ var _sfc_main$15 = /* @__PURE__ */ defineComponent({
           default: withCtx(() => [createTextVNode(toDisplayString(validationMessage.value), 1)]),
           _: 1
         })]),
-        _: 1,
-        __: [0]
+        _: 1
       })) : createCommentVNode("", true)]), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_3$t, [renderSlot(_ctx.$slots, "default")]), _cache[3] || (_cache[3] = createTextVNode()), hasFooterSlot.value ? (openBlock(), createElementBlock("div", _hoisted_4$o, [renderSlot(_ctx.$slots, "footer", normalizeProps(guardReactiveProps({
         hasError: hasError.value,
         validationMessage: validationMessage.value
@@ -11457,8 +11450,7 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
         }, {
           item: item.value
         }))) : createCommentVNode("", true)]),
-        _: 3,
-        __: [4]
+        _: 3
       }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(FConfirmModal), {
         "is-open": isConfirmModalOpen.value,
         buttons: confirmDeleteButtons.value,
@@ -11469,8 +11461,7 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
         content: withCtx(() => [renderSlot(_ctx.$slots, "delete", normalizeProps(guardReactiveProps({
           item: item.value
         })))]),
-        _: 3,
-        __: [5]
+        _: 3
       }, 8, ["is-open", "buttons"])]);
     };
   }
@@ -13376,8 +13367,7 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
   }), {
     "error-message": withCtx(() => [_ctx.showPasteErrorMessage ? (openBlock(), createElementBlock("span", _hoisted_1$y, toDisplayString(_ctx.pasteErrorText), 1)) : createCommentVNode("", true)]),
     default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.defaultText), 1)]), _cache[2] || (_cache[2] = createTextVNode())]),
-    _: 3,
-    __: [2]
+    _: 3
   }, 16, ["id", "maxlength", "model-value", "onChange", "onBlur", "onUpdate:modelValue", "onValidity", "onPendingValidity"]), _cache[3] || (_cache[3] = createTextVNode()), _ctx.extendedValidation ? (openBlock(), createBlock(_component_f_text_field, {
     key: 0,
     modelValue: _ctx.secondEmail,
@@ -14352,18 +14342,15 @@ var _sfc_main$z = /* @__PURE__ */ defineComponent({
                     value: sortOrder
                   }, toDisplayString(sortOrder.name) + " (" + toDisplayString(sortOrder.ascendingName) + ")\n                            ", 9, _hoisted_6$a);
                 }), 128))]),
-                _: 1,
-                __: [5, 6]
+                _: 1
               }, 8, ["modelValue"])]),
               _: 1
             })) : createCommentVNode("", true)]),
-            _: 1,
-            __: [7]
+            _: 1
           })]),
           _: 1
         })]),
-        _: 3,
-        __: [8]
+        _: 3
       }), _cache[9] || (_cache[9] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         sortFilterResult: sortFilterResult.value
       })))]);
@@ -15981,8 +15968,7 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
           default: withCtx(() => [createElementVNode("title", null, toDisplayString(unref(closeText)), 1)]),
           _: 1
         })])]),
-        _: 3,
-        __: [1]
+        _: 3
       }, 40, ["data-panel-name"])) : createCommentVNode("", true);
     };
   }
@@ -17606,13 +17592,13 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0,
     class: "layout-navigation__navigation__border",
     onMousedown: _cache[2] || (_cache[2] = (...args) => _ctx.onBorderMouseDown && _ctx.onBorderMouseDown(...args))
-  }, _cache[12] || (_cache[12] = [createElementVNode("div", {
+  }, [..._cache[12] || (_cache[12] = [createElementVNode("div", {
     class: "layout-navigation__navigation__border__dot"
   }, null, -1), createTextVNode(), createElementVNode("div", {
     class: "layout-navigation__navigation__border__dot"
   }, null, -1), createTextVNode(), createElementVNode("div", {
     class: "layout-navigation__navigation__border__dot"
-  }, null, -1)]), 32)) : createCommentVNode("", true)], 12, _hoisted_2$d), _cache[14] || (_cache[14] = createTextVNode()), createElementVNode("div", {
+  }, null, -1)])], 32)) : createCommentVNode("", true)], 12, _hoisted_2$d), _cache[14] || (_cache[14] = createTextVNode()), createElementVNode("div", {
     id: "layout-navigation__primary",
     class: normalizeClass(["layout-navigation__primary", _ctx.leftPrimaryClasses]),
     style: normalizeStyle(_ctx.primaryStyle)
@@ -17781,13 +17767,13 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("div", {
     class: "layout-secondary__secondary__border",
     onMousedown: _cache[0] || (_cache[0] = (...args) => _ctx.onBorderMouseDown && _ctx.onBorderMouseDown(...args))
-  }, _cache[2] || (_cache[2] = [createElementVNode("div", {
+  }, [..._cache[2] || (_cache[2] = [createElementVNode("div", {
     class: "layout-secondary__secondary__border__dot"
   }, null, -1), createTextVNode(), createElementVNode("div", {
     class: "layout-secondary__secondary__border__dot"
   }, null, -1), createTextVNode(), createElementVNode("div", {
     class: "layout-secondary__secondary__border__dot"
-  }, null, -1)]), 32), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_2$c, [createElementVNode("div", {
+  }, null, -1)])], 32), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_2$c, [createElementVNode("div", {
     ref: "title",
     class: "layout-secondary__secondary__inner__title",
     style: normalizeStyle(_ctx.contentStyle)
@@ -18504,8 +18490,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
       })))]),
       _: 3
     })]),
-    _: 3,
-    __: [1]
+    _: 3
   })], 2);
 }
 var FMessageBox = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$9]]);
@@ -19073,8 +19058,7 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
       default: withCtx(() => [createElementVNode("p", _hoisted_4$4, [renderSlot(_ctx.$slots, "default", {}, () => [_cache[1] || (_cache[1] = createTextVNode(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu ", -1))])])]),
       _: 3
     })]),
-    _: 3,
-    __: [2]
+    _: 3
   })])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("span", {
     class: "sr-only",
     "aria-hidden": _ctx.shouldNotRead ? "true" : void 0
@@ -20405,8 +20389,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         stepNumber: _ctx.stepNumber,
         totalSteps: _ctx.totalSteps
       })), () => [createTextVNode(toDisplayString(_ctx.$t("fkui.wizard-step.button.cancel.text", "Avbryt")), 1)])])])]),
-      _: 3,
-      __: [8]
+      _: 3
     }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit"])]),
     _: 3
   }, 8, ["expanded", "before-animation", "after-animation"]))], 10, _hoisted_1);

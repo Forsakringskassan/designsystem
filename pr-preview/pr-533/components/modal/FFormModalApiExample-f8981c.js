@@ -111,34 +111,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onCancel: _ctx.onCancel,
     onClose: _ctx.onClose
   }, {
-    header: _withCtx(() => _cache[2] || (_cache[2] = [
+    header: _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Fruktsallad ",
         -1
         /* CACHED */
       )
-    ])),
-    "error-message": _withCtx(() => _cache[3] || (_cache[3] = [
+    ])]),
+    "error-message": _withCtx(() => [..._cache[3] || (_cache[3] = [
       _createTextVNode(
         " Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till: ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     "input-text-fields": _withCtx(() => [
       _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
         modelValue: _ctx.value.field1,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value.field1 = $event)
       }, {
-        default: _withCtx(() => _cache[4] || (_cache[4] = [
+        default: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " Favoritfrukt ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [4]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])), [
         [_directive_test, "field1"],
         [
@@ -155,15 +155,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.value.field2,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.value.field2 = $event)
       }, {
-        default: _withCtx(() => _cache[5] || (_cache[5] = [
+        default: _withCtx(() => [..._cache[5] || (_cache[5] = [
           _createTextVNode(
             " Smak ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [5]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])), [
         [_directive_test, "field2"],
         [
@@ -186,8 +186,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       ))
     ]),
-    _: 1,
-    __: [6]
+    _: 1
+    /* STABLE */
   }, 8, ["size", "data-test", "is-open", "value", "before-submit", "buttons", "onSubmit", "onCancel", "onClose"]);
 }
 

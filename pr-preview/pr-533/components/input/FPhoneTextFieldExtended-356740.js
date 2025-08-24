@@ -47,13 +47,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.extendedphone = $event),
     "extended-validation": ""
   }, {
-    extendedLabel: _withCtx(() => _cache[1] || (_cache[1] = [
+    extendedLabel: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createTextVNode(
         " Skriv in ditt telefonnummer igen ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     _: 1
     /* STABLE */
   }, 8, ["modelValue"])), [
