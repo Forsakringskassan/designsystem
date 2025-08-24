@@ -2375,8 +2375,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* CACHED */
         ))
       ]),
-      _: 1,
-      __: [1]
+      _: 1
+      /* STABLE */
     }, 8, ["modelValue"])), [
       [
         _directive_validation,

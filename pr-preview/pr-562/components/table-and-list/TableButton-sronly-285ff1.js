@@ -63,13 +63,13 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 var _hoisted_1 = { class: "sr-only" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FInteractiveTable"], { rows: $setup.rows }, {
-    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+    caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Tabell exempel ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(({ row }) => [
       _createVNode(
         $setup["FTableColumn"],
@@ -159,8 +159,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   /* TEXT */
                 )
               ]),
-              _: 2,
-              __: [1]
+              _: 2
+              /* DYNAMIC */
             }, 1032, ["onClick"])
           ]),
           _: 2

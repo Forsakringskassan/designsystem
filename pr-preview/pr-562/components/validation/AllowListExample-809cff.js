@@ -51,15 +51,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     modelValue: $setup.model,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.model = $event)
   }, {
-    default: _withCtx(() => _cache[1] || (_cache[1] = [
+    default: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createTextVNode(
         " Fyll i en text (alternativ i lista: foo, bar, baz)",
         -1
         /* CACHED */
       )
-    ])),
-    _: 1,
-    __: [1]
+    ])]),
+    _: 1
+    /* STABLE */
   }, 8, ["modelValue"])), [
     [
       _directive_validation,

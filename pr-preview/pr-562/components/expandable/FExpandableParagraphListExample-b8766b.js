@@ -63,21 +63,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       list: true,
       onToggle: _ctx.onToggle1
     }, {
-      title: _withCtx(() => _cache[0] || (_cache[0] = [
+      title: _withCtx(() => [..._cache[0] || (_cache[0] = [
         _createTextVNode(
           " Titel (h2) ",
           -1
           /* CACHED */
         )
-      ])),
-      related: _withCtx(() => _cache[1] || (_cache[1] = [
+      ])]),
+      related: _withCtx(() => [..._cache[1] || (_cache[1] = [
         _createTextVNode(
           " 2020-06-25 ",
           -1
           /* CACHED */
         )
-      ])),
-      default: _withCtx(() => _cache[2] || (_cache[2] = [
+      ])]),
+      default: _withCtx(() => [..._cache[2] || (_cache[2] = [
         _createElementVNode(
           "span",
           null,
@@ -85,7 +85,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]),
@@ -96,21 +96,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       list: true,
       onToggle: _ctx.onToggle2
     }, {
-      title: _withCtx(() => _cache[3] || (_cache[3] = [
+      title: _withCtx(() => [..._cache[3] || (_cache[3] = [
         _createTextVNode(
           " Titel (h3) (visuell h6) ",
           -1
           /* CACHED */
         )
-      ])),
-      related: _withCtx(() => _cache[4] || (_cache[4] = [
+      ])]),
+      related: _withCtx(() => [..._cache[4] || (_cache[4] = [
         _createTextVNode(
           " 2020-06-25 ",
           -1
           /* CACHED */
         )
-      ])),
-      default: _withCtx(() => _cache[5] || (_cache[5] = [
+      ])]),
+      default: _withCtx(() => [..._cache[5] || (_cache[5] = [
         _createElementVNode(
           "span",
           null,
@@ -118,7 +118,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]),
@@ -129,21 +129,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       list: true,
       onToggle: _ctx.onToggle3
     }, {
-      title: _withCtx(() => _cache[6] || (_cache[6] = [
+      title: _withCtx(() => [..._cache[6] || (_cache[6] = [
         _createTextVNode(
           " Titel (h6) (visuell h2) ",
           -1
           /* CACHED */
         )
-      ])),
-      related: _withCtx(() => _cache[7] || (_cache[7] = [
+      ])]),
+      related: _withCtx(() => [..._cache[7] || (_cache[7] = [
         _createTextVNode(
           " 2020-06-25 ",
           -1
           /* CACHED */
         )
-      ])),
-      default: _withCtx(() => _cache[8] || (_cache[8] = [
+      ])]),
+      default: _withCtx(() => [..._cache[8] || (_cache[8] = [
         _createElementVNode(
           "span",
           null,
@@ -151,7 +151,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"])

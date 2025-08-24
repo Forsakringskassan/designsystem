@@ -46,15 +46,15 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
   return _withDirectives((_openBlock(), _createBlock($setup["FLabel"], null, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Etikett ",
         -1
         /* CACHED */
       )
-    ])),
-    _: 1,
-    __: [0]
+    ])]),
+    _: 1
+    /* STABLE */
   })), [
     [_directive_test, "awesome-label"]
   ]);

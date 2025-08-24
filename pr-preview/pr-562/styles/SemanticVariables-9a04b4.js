@@ -618,7 +618,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: "F\xE4rgkod"
     }
   }, {
-    header: _withCtx(() => _cache[0] || (_cache[0] = [
+    header: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
         "h2",
         { id: "semantiska_farger" },
@@ -626,7 +626,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(({ sortFilterResult }) => [
       _createVNode($setup["FDataTable"], {
         rows: sortFilterResult,

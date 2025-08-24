@@ -43,15 +43,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     accept: "image/jpeg, image/tiff",
     disabled: ""
   }, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " L\xE4gg till fil ",
         -1
         /* CACHED */
       )
-    ])),
-    _: 1,
-    __: [0]
+    ])]),
+    _: 1
+    /* STABLE */
   });
 }
 exampleComponent.render = render;

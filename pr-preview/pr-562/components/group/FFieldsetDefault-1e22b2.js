@@ -46,13 +46,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_radio_field = _resolveComponent("f-radio-field");
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "group-name-default" }, {
-    label: _withCtx(() => _cache[2] || (_cache[2] = [
+    label: _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Arbetar du deltid? ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     description: _withCtx(({ descriptionClass }) => [
       _createElementVNode(
         "span",
@@ -69,20 +69,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "screen-reader-text": "L\xE4s mer om Bor det barn som har fyllt 18 \xE5r i bostaden?",
         "header-tag": "h2"
       }, {
-        header: _withCtx(() => _cache[3] || (_cache[3] = [
+        header: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " Lite allm\xE4n information ",
             -1
             /* CACHED */
           )
-        ])),
-        body: _withCtx(() => _cache[4] || (_cache[4] = [
+        ])]),
+        body: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " H\xE4r kan man skriva lite extra information om man nu \xF6nskar det! ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       })
@@ -94,15 +94,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.deltid = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[5] || (_cache[5] = [
+        default: _withCtx(() => [..._cache[5] || (_cache[5] = [
           _createTextVNode(
             " Ja ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [5]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_radio_field, {
         id: "deltid-nej",
@@ -110,15 +110,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.deltid = $event),
         value: false
       }, {
-        default: _withCtx(() => _cache[6] || (_cache[6] = [
+        default: _withCtx(() => [..._cache[6] || (_cache[6] = [
           _createTextVNode(
             " Nej ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [6]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

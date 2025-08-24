@@ -147,58 +147,58 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           chip: "",
           horizontal: ""
         }, {
-          label: _withCtx(() => _cache[19] || (_cache[19] = [
+          label: _withCtx(() => [..._cache[19] || (_cache[19] = [
             _createTextVNode(
               " V\xE4nster ",
               -1
               /* CACHED */
             )
-          ])),
+          ])]),
           default: _withCtx(() => [
             _createVNode(_component_f_radio_field, {
               modelValue: _ctx.densityLeft,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.densityLeft = $event),
               value: "density-default"
             }, {
-              default: _withCtx(() => _cache[20] || (_cache[20] = [
+              default: _withCtx(() => [..._cache[20] || (_cache[20] = [
                 _createTextVNode(
                   " Standard ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [20]
+              ])]),
+              _: 1
+              /* STABLE */
             }, 8, ["modelValue"]),
             _createVNode(_component_f_radio_field, {
               modelValue: _ctx.densityLeft,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.densityLeft = $event),
               value: "density-dense"
             }, {
-              default: _withCtx(() => _cache[21] || (_cache[21] = [
+              default: _withCtx(() => [..._cache[21] || (_cache[21] = [
                 _createTextVNode(
                   " Kompakt ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [21]
+              ])]),
+              _: 1
+              /* STABLE */
             }, 8, ["modelValue"]),
             _createVNode(_component_f_radio_field, {
               modelValue: _ctx.densityLeft,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.densityLeft = $event),
               value: "density-densest"
             }, {
-              default: _withCtx(() => _cache[22] || (_cache[22] = [
+              default: _withCtx(() => [..._cache[22] || (_cache[22] = [
                 _createTextVNode(
                   " Extra kompakt ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [22]
+              ])]),
+              _: 1
+              /* STABLE */
             }, 8, ["modelValue"])
           ]),
           _: 1
@@ -211,58 +211,58 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           chip: "",
           horizontal: ""
         }, {
-          label: _withCtx(() => _cache[23] || (_cache[23] = [
+          label: _withCtx(() => [..._cache[23] || (_cache[23] = [
             _createTextVNode(
               " H\xF6ger ",
               -1
               /* CACHED */
             )
-          ])),
+          ])]),
           default: _withCtx(() => [
             _createVNode(_component_f_radio_field, {
               modelValue: _ctx.densityRight,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.densityRight = $event),
               value: "density-default"
             }, {
-              default: _withCtx(() => _cache[24] || (_cache[24] = [
+              default: _withCtx(() => [..._cache[24] || (_cache[24] = [
                 _createTextVNode(
                   " Standard ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [24]
+              ])]),
+              _: 1
+              /* STABLE */
             }, 8, ["modelValue"]),
             _createVNode(_component_f_radio_field, {
               modelValue: _ctx.densityRight,
               "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.densityRight = $event),
               value: "density-dense"
             }, {
-              default: _withCtx(() => _cache[25] || (_cache[25] = [
+              default: _withCtx(() => [..._cache[25] || (_cache[25] = [
                 _createTextVNode(
                   " Kompakt ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [25]
+              ])]),
+              _: 1
+              /* STABLE */
             }, 8, ["modelValue"]),
             _createVNode(_component_f_radio_field, {
               modelValue: _ctx.densityRight,
               "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.densityRight = $event),
               value: "density-densest"
             }, {
-              default: _withCtx(() => _cache[26] || (_cache[26] = [
+              default: _withCtx(() => [..._cache[26] || (_cache[26] = [
                 _createTextVNode(
                   " Extra kompakt ",
                   -1
                   /* CACHED */
                 )
-              ])),
-              _: 1,
-              __: [26]
+              ])]),
+              _: 1
+              /* STABLE */
             }, 8, ["modelValue"])
           ]),
           _: 1
@@ -294,8 +294,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     /* CACHED */
                   )
                 ])]),
-                _: 1,
-                __: [27]
+                _: 1
+                /* STABLE */
               }, 8, ["modelValue"])), [
                 [
                   _directive_validation,
@@ -366,8 +366,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     /* CACHED */
                   )
                 ])]),
-                _: 1,
-                __: [32]
+                _: 1
+                /* STABLE */
               }, 8, ["modelValue"])), [
                 [
                   _directive_validation,
@@ -410,8 +410,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     /* CACHED */
                   ))
                 ]),
-                _: 1,
-                __: [34, 35, 36]
+                _: 1
+                /* STABLE */
               }, 8, ["modelValue"]),
               _withDirectives((_openBlock(), _createBlock(_component_f_datepicker_field, {
                 modelValue: _ctx.datepickerField,
@@ -425,8 +425,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     /* CACHED */
                   )
                 ])]),
-                _: 1,
-                __: [37]
+                _: 1
+                /* STABLE */
               }, 8, ["modelValue"])), [
                 [
                   _directive_validation,
@@ -456,8 +456,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         /* CACHED */
                       )
                     ])]),
-                    _: 1,
-                    __: [39]
+                    _: 1
+                    /* STABLE */
                   }, 8, ["modelValue"]),
                   _createVNode(_component_f_checkbox_field, {
                     modelValue: _ctx.checkboxField,
@@ -471,8 +471,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         /* CACHED */
                       )
                     ])]),
-                    _: 1,
-                    __: [40]
+                    _: 1
+                    /* STABLE */
                   }, 8, ["modelValue"]),
                   _createVNode(_component_f_checkbox_field, {
                     modelValue: _ctx.checkboxField,
@@ -486,8 +486,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         /* CACHED */
                       )
                     ])]),
-                    _: 1,
-                    __: [41]
+                    _: 1
+                    /* STABLE */
                   }, 8, ["modelValue"]),
                   _createVNode(_component_f_checkbox_field, {
                     modelValue: _ctx.checkboxField,
@@ -501,8 +501,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         /* CACHED */
                       )
                     ])]),
-                    _: 1,
-                    __: [42]
+                    _: 1
+                    /* STABLE */
                   }, 8, ["modelValue"])
                 ]),
                 _: 1
@@ -538,8 +538,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         /* CACHED */
                       )
                     ])]),
-                    _: 1,
-                    __: [44]
+                    _: 1
+                    /* STABLE */
                   }, 8, ["modelValue"]),
                   _createVNode(_component_f_radio_field, {
                     modelValue: _ctx.radioField,
@@ -553,8 +553,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         /* CACHED */
                       )
                     ])]),
-                    _: 1,
-                    __: [45]
+                    _: 1
+                    /* STABLE */
                   }, 8, ["modelValue"]),
                   _createVNode(_component_f_radio_field, {
                     modelValue: _ctx.radioField,
@@ -568,8 +568,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         /* CACHED */
                       )
                     ])]),
-                    _: 1,
-                    __: [46]
+                    _: 1
+                    /* STABLE */
                   }, 8, ["modelValue"]),
                   _createVNode(_component_f_radio_field, {
                     modelValue: _ctx.radioField,
@@ -583,8 +583,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         /* CACHED */
                       )
                     ])]),
-                    _: 1,
-                    __: [47]
+                    _: 1
+                    /* STABLE */
                   }, 8, ["modelValue"])
                 ]),
                 _: 2
@@ -629,8 +629,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                               /* CACHED */
                             )
                           ])]),
-                          _: 2,
-                          __: [49]
+                          _: 2
+                          /* DYNAMIC */
                         },
                         1024
                         /* DYNAMIC_SLOTS */
@@ -779,8 +779,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     /* CACHED */
                   )
                 ])]),
-                _: 1,
-                __: [60]
+                _: 1
+                /* STABLE */
               }),
               _createVNode(_component_f_badge, { status: "info" }, {
                 default: _withCtx(() => [..._cache[61] || (_cache[61] = [
@@ -790,8 +790,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     /* CACHED */
                   )
                 ])]),
-                _: 1,
-                __: [61]
+                _: 1
+                /* STABLE */
               }),
               _createVNode(_component_f_expandable_paragraph, { expanded: true }, {
                 title: _withCtx(() => [..._cache[62] || (_cache[62] = [

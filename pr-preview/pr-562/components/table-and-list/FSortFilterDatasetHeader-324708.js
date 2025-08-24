@@ -41,7 +41,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     data: [],
     "sortable-attributes": { givenname: "F\xF6rnamn", surname: "Efternamn" }
   }, {
-    header: _withCtx(() => _cache[0] || (_cache[0] = [
+    header: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
         "h1",
         null,
@@ -49,8 +49,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
-    default: _withCtx(() => _cache[1] || (_cache[1] = [])),
+    ])]),
+    default: _withCtx(() => [..._cache[1] || (_cache[1] = [])]),
     _: 1
     /* STABLE */
   });

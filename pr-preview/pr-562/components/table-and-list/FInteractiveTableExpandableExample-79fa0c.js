@@ -94,13 +94,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "key-attribute": "id",
     "expandable-attribute": "myExpandableRow"
   }, {
-    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+    caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Expanderbara rader ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(({ row }) => [
       _createVNode(
         $setup["FTableColumn"],
@@ -186,8 +186,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               /* CACHED */
             ))
           ]),
-          _: 2,
-          __: [1]
+          _: 2
+          /* DYNAMIC */
         },
         1024
         /* DYNAMIC_SLOTS */

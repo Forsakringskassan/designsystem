@@ -60,15 +60,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       modelValue: _ctx.model,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
     }, {
-      default: _withCtx(() => _cache[2] || (_cache[2] = [
+      default: _withCtx(() => [..._cache[2] || (_cache[2] = [
         _createTextVNode(
           " Max tio tecken ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [2]
+      ])]),
+      _: 1
+      /* STABLE */
     }, 8, ["modelValue"])), [
       [_directive_test, "validator-enabled"],
       [

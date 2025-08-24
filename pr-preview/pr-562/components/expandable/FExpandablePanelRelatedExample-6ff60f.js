@@ -53,27 +53,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     expanded: _ctx.expanded,
     onToggle: _ctx.onToggle
   }, {
-    title: _withCtx(() => _cache[0] || (_cache[0] = [
+    title: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Titel ",
         -1
         /* CACHED */
       )
-    ])),
-    default: _withCtx(() => _cache[1] || (_cache[1] = [
+    ])]),
+    default: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createTextVNode(
         " Inneh\xE5ll ",
         -1
         /* CACHED */
       )
-    ])),
-    outside: _withCtx(() => _cache[2] || (_cache[2] = [
+    ])]),
+    outside: _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Relaterat inneh\xE5ll som visas n\xE4r panelen \xE4r expanderad men utanf\xF6r body ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     _: 1
     /* STABLE */
   }, 8, ["expanded", "onToggle"]);

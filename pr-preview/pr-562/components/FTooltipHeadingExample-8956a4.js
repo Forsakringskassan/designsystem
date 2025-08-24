@@ -59,7 +59,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode(
         "div",
         _hoisted_1,
-        _cache[0] || (_cache[0] = [
+        [..._cache[0] || (_cache[0] = [
           _createElementVNode(
             "h1",
             null,
@@ -67,7 +67,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ]),
+        ])],
         512
         /* NEED_PATCH */
       ),
@@ -75,20 +75,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "attach-to": _ctx.heading1,
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
-        body: _withCtx(() => _cache[1] || (_cache[1] = [
+        body: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
             " Lorem ipsum dolor sit amet. ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["attach-to"]),
       _createElementVNode(
         "div",
         _hoisted_2,
-        _cache[2] || (_cache[2] = [
+        [..._cache[2] || (_cache[2] = [
           _createElementVNode(
             "h2",
             null,
@@ -96,7 +96,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ]),
+        ])],
         512
         /* NEED_PATCH */
       ),
@@ -104,20 +104,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "attach-to": _ctx.heading2,
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
-        body: _withCtx(() => _cache[3] || (_cache[3] = [
+        body: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " Lorem ipsum dolor sit amet. ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["attach-to"]),
       _createElementVNode(
         "div",
         _hoisted_3,
-        _cache[4] || (_cache[4] = [
+        [..._cache[4] || (_cache[4] = [
           _createElementVNode(
             "h3",
             null,
@@ -125,7 +125,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ]),
+        ])],
         512
         /* NEED_PATCH */
       ),
@@ -133,20 +133,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "attach-to": _ctx.heading3,
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
-        body: _withCtx(() => _cache[5] || (_cache[5] = [
+        body: _withCtx(() => [..._cache[5] || (_cache[5] = [
           _createTextVNode(
             " Lorem ipsum dolor sit amet. ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["attach-to"]),
       _createElementVNode(
         "div",
         _hoisted_4,
-        _cache[6] || (_cache[6] = [
+        [..._cache[6] || (_cache[6] = [
           _createElementVNode(
             "h4",
             null,
@@ -154,7 +154,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ]),
+        ])],
         512
         /* NEED_PATCH */
       ),
@@ -162,20 +162,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "attach-to": _ctx.heading4,
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
-        body: _withCtx(() => _cache[7] || (_cache[7] = [
+        body: _withCtx(() => [..._cache[7] || (_cache[7] = [
           _createTextVNode(
             " Lorem ipsum dolor sit amet. ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["attach-to"]),
       _createElementVNode(
         "div",
         _hoisted_5,
-        _cache[8] || (_cache[8] = [
+        [..._cache[8] || (_cache[8] = [
           _createElementVNode(
             "h5",
             null,
@@ -183,7 +183,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ]),
+        ])],
         512
         /* NEED_PATCH */
       ),
@@ -191,20 +191,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "attach-to": _ctx.heading5,
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
-        body: _withCtx(() => _cache[9] || (_cache[9] = [
+        body: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Lorem ipsum dolor sit amet. ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["attach-to"]),
       _createElementVNode(
         "div",
         _hoisted_6,
-        _cache[10] || (_cache[10] = [
+        [..._cache[10] || (_cache[10] = [
           _createElementVNode(
             "h6",
             null,
@@ -212,7 +212,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ]),
+        ])],
         512
         /* NEED_PATCH */
       ),
@@ -220,13 +220,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "attach-to": _ctx.heading6,
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
-        body: _withCtx(() => _cache[11] || (_cache[11] = [
+        body: _withCtx(() => [..._cache[11] || (_cache[11] = [
           _createTextVNode(
             " Lorem ipsum dolor sit amet. ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["attach-to"]),
@@ -238,13 +238,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       )),
       _createVNode(_component_f_tooltip, { "screen-reader-text": "Sk\xE4rml\xE4sartext" }, {
-        body: _withCtx(() => _cache[12] || (_cache[12] = [
+        body: _withCtx(() => [..._cache[12] || (_cache[12] = [
           _createTextVNode(
             " Lorem ipsum dolor sit amet. ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       })

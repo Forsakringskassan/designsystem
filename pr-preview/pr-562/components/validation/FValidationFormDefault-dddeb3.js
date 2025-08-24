@@ -78,13 +78,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = _resolveComponent("f-validation-form");
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createBlock(_component_f_validation_form, { onSubmit: _ctx.onSubmit }, {
-    "error-message": _withCtx(() => _cache[8] || (_cache[8] = [
+    "error-message": _withCtx(() => [..._cache[8] || (_cache[8] = [
       _createTextVNode(
         " Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till: ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _withDirectives(_createVNode(_component_f_phone_text_field, {
         modelValue: _ctx.phone,
@@ -101,15 +101,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.phoneAlt,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.phoneAlt = $event)
       }, {
-        default: _withCtx(() => _cache[9] || (_cache[9] = [
+        default: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Alternativt telefonnummer (frivilligt) ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [9]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _withDirectives(_createVNode(_component_f_email_text_field, {
         modelValue: _ctx.email,
@@ -123,43 +123,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]
       ]),
       _withDirectives((_openBlock(), _createBlock(_component_f_fieldset, { name: "info" }, {
-        label: _withCtx(() => _cache[10] || (_cache[10] = [
+        label: _withCtx(() => [..._cache[10] || (_cache[10] = [
           _createTextVNode(
             " Hur vill du f\xE5 information fr\xE5n oss? ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.info,
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.info = $event),
             value: "mejl"
           }, {
-            default: _withCtx(() => _cache[11] || (_cache[11] = [
+            default: _withCtx(() => [..._cache[11] || (_cache[11] = [
               _createTextVNode(
                 " Mejl ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [11]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.info,
             "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.info = $event),
             value: "sms"
           }, {
-            default: _withCtx(() => _cache[12] || (_cache[12] = [
+            default: _withCtx(() => [..._cache[12] || (_cache[12] = [
               _createTextVNode(
                 " Sms ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [12]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -173,43 +173,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]
       ]),
       _withDirectives((_openBlock(), _createBlock(_component_f_fieldset, { name: "type" }, {
-        label: _withCtx(() => _cache[13] || (_cache[13] = [
+        label: _withCtx(() => [..._cache[13] || (_cache[13] = [
           _createTextVNode(
             " Vilken information vill du ha? ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.news,
             "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.news = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[14] || (_cache[14] = [
+            default: _withCtx(() => [..._cache[14] || (_cache[14] = [
               _createTextVNode(
                 " Nyheter ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [14]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.tips,
             "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.tips = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[15] || (_cache[15] = [
+            default: _withCtx(() => [..._cache[15] || (_cache[15] = [
               _createTextVNode(
                 " Tips ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [15]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1

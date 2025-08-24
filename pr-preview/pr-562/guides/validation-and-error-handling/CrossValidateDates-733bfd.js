@@ -65,13 +65,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createBlock(_component_f_fieldset, null, {
-    label: _withCtx(() => _cache[2] || (_cache[2] = [
+    label: _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Anst\xE4llningsperiod ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _withDirectives((_openBlock(), _createBlock(_component_f_datepicker_field, {
         ref: "fromDate",
@@ -79,15 +79,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.fromDate = $event),
         onComponentValidity: _ctx.onValidityFromDate
       }, {
-        default: _withCtx(() => _cache[3] || (_cache[3] = [
+        default: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " Fr\xE5n och med ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [3]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue", "onComponentValidity"])), [
         [
           _directive_validation,
@@ -113,15 +113,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.toDate,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.toDate = $event)
       }, {
-        default: _withCtx(() => _cache[4] || (_cache[4] = [
+        default: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " Till och med ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [4]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])), [
         [
           _directive_validation,

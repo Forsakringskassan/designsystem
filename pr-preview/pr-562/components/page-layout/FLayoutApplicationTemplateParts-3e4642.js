@@ -39,7 +39,7 @@ var exampleComponent = defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_layout_application_template = _resolveComponent("f-layout-application-template");
   return _openBlock(), _createBlock(_component_f_layout_application_template, null, {
-    header: _withCtx(() => _cache[0] || (_cache[0] = [
+    header: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
         "div",
         { class: "example-header" },
@@ -47,8 +47,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
-    "top-navigation": _withCtx(() => _cache[1] || (_cache[1] = [
+    ])]),
+    "top-navigation": _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createElementVNode(
         "div",
         { class: "example-topnav" },
@@ -56,8 +56,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
-    footer: _withCtx(() => _cache[2] || (_cache[2] = [
+    ])]),
+    footer: _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createElementVNode(
         "div",
         { class: "example-footer" },
@@ -65,7 +65,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _cache[3] || (_cache[3] = _createElementVNode(
         "div",
@@ -75,8 +75,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       ))
     ]),
-    _: 1,
-    __: [3]
+    _: 1
+    /* STABLE */
   });
 }
 exampleComponent.render = render;

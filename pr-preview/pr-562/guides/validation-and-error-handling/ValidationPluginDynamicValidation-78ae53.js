@@ -66,13 +66,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = _resolveComponent("f-validation-form");
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createBlock(_component_f_validation_form, { "use-error-list": false }, {
-    "error-message": _withCtx(() => _cache[2] || (_cache[2] = [
+    "error-message": _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Alla fr\xE5gor \xE4r inte korrekt ifyllda. Titta i: ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _cache[5] || (_cache[5] = _createElementVNode(
         "p",
@@ -87,15 +87,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             modelValue: _ctx.name,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.name = $event)
           }, {
-            default: _withCtx(() => _cache[3] || (_cache[3] = [
+            default: _withCtx(() => [..._cache[3] || (_cache[3] = [
               _createTextVNode(
                 " Namn ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [3]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])), [
             [
               _directive_validation,
@@ -120,15 +120,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             modelValue: _ctx.minLength,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.minLength = $event)
           }, {
-            default: _withCtx(() => _cache[4] || (_cache[4] = [
+            default: _withCtx(() => [..._cache[4] || (_cache[4] = [
               _createTextVNode(
                 " Minimuml\xE4ngd ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [4]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])), [
             [
               _directive_validation,
@@ -153,8 +153,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       ))
     ]),
-    _: 1,
-    __: [5, 6]
+    _: 1
+    /* STABLE */
   });
 }
 exampleComponent.render = render;

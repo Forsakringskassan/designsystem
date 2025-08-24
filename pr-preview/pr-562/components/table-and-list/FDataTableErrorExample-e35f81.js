@@ -51,55 +51,55 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FDataTable"], { rows: [] }, {
-    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+    caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Exempel med felmeddelande ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _createVNode($setup["FTableColumn"], {
         title: "Kolumnrubrik 1",
         type: "text"
       }, {
-        default: _withCtx(() => _cache[1] || (_cache[1] = [
+        default: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
             " dummy text ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [1]
+        ])]),
+        _: 1
+        /* STABLE */
       }),
       _createVNode($setup["FTableColumn"], {
         title: "Kolumnrubrik 2",
         type: "text"
       }, {
-        default: _withCtx(() => _cache[2] || (_cache[2] = [
+        default: _withCtx(() => [..._cache[2] || (_cache[2] = [
           _createTextVNode(
             " dummy text ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [2]
+        ])]),
+        _: 1
+        /* STABLE */
       }),
       _createVNode($setup["FTableColumn"], {
         title: "Kolumnrubrik 3",
         type: "text"
       }, {
-        default: _withCtx(() => _cache[3] || (_cache[3] = [
+        default: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " dummy text ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [3]
+        ])]),
+        _: 1
+        /* STABLE */
       })
     ]),
     empty: _withCtx(() => [
@@ -108,15 +108,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "error",
         layout: "short"
       }, {
-        default: _withCtx(() => _cache[4] || (_cache[4] = [
+        default: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " N\xE5got gick fel. Testa att ladda om sidan. ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [4]
+        ])]),
+        _: 1
+        /* STABLE */
       })) : _createCommentVNode("v-if", true)
     ]),
     _: 1

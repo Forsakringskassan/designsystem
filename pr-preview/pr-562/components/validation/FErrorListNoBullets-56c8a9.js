@@ -50,26 +50,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createElementBlock("div", null, [
     _createVNode(_component_f_error_list, { items: _ctx.items }, {
-      title: _withCtx(() => _cache[0] || (_cache[0] = [
+      title: _withCtx(() => [..._cache[0] || (_cache[0] = [
         _createTextVNode(
           " Kolla p\xE5 felen nedan ",
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       _: 1
       /* STABLE */
     }, 8, ["items"]),
     _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { id: "fornamn-utan-bullets" }, {
-      default: _withCtx(() => _cache[1] || (_cache[1] = [
+      default: _withCtx(() => [..._cache[1] || (_cache[1] = [
         _createTextVNode(
           " F\xF6rnamn ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [1]
+      ])]),
+      _: 1
+      /* STABLE */
     })), [
       [
         _directive_validation,
@@ -79,15 +79,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]
     ]),
     _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { id: "efternamn-utan-bullets" }, {
-      default: _withCtx(() => _cache[2] || (_cache[2] = [
+      default: _withCtx(() => [..._cache[2] || (_cache[2] = [
         _createTextVNode(
           " Efternamn ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [2]
+      ])]),
+      _: 1
+      /* STABLE */
     })), [
       [
         _directive_validation,

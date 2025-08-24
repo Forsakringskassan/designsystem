@@ -46,7 +46,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   const _directive_validation = _resolveDirective("validation");
   return _withDirectives((_openBlock(), _createBlock(_component_f_fieldset, { name: "underskrift" }, {
-    label: _withCtx(() => _cache[1] || (_cache[1] = [
+    label: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createElementVNode(
         "h2",
         null,
@@ -54,22 +54,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.sign,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.sign = $event),
         value: "Ja"
       }, {
-        default: _withCtx(() => _cache[2] || (_cache[2] = [
+        default: _withCtx(() => [..._cache[2] || (_cache[2] = [
           _createTextVNode(
             " Jag \xE4r en ensam kryssruta s\xE5 min screenreadertext kommer att vara anpassad f\xF6r det. ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [2]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

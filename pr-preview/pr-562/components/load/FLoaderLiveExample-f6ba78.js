@@ -120,60 +120,60 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.delay = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[6] || (_cache[6] = [
+        default: _withCtx(() => [..._cache[6] || (_cache[6] = [
           _createTextVNode(
             " F\xF6rdr\xF6jd ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [6]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.customText,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.customText = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[7] || (_cache[7] = [
+        default: _withCtx(() => [..._cache[7] || (_cache[7] = [
           _createTextVNode(
             " Alternativ text ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [7]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.english,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.english = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[8] || (_cache[8] = [
+        default: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " Engelsk text ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [8]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.overlay,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.overlay = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[9] || (_cache[9] = [
+        default: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Overlay ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [9]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _ctx.overlay ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 0,
@@ -181,15 +181,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.focusOnOverlay = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[10] || (_cache[10] = [
+        default: _withCtx(() => [..._cache[10] || (_cache[10] = [
           _createTextVNode(
             " Fokusera p\xE5 meddelande ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [10]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createElementVNode("button", {
         class: "button button--primary button--medium",

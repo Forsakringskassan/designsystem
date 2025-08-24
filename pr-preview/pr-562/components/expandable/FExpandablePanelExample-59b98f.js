@@ -53,14 +53,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     expanded: _ctx.expanded,
     onToggle: _ctx.onToggle
   }, {
-    title: _withCtx(() => _cache[0] || (_cache[0] = [
+    title: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Titel ",
         -1
         /* CACHED */
       )
-    ])),
-    default: _withCtx(() => _cache[1] || (_cache[1] = [
+    ])]),
+    default: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createTextVNode(
         " Inneh\xE5ll ",
         -1
@@ -79,7 +79,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     _: 1
     /* STABLE */
   }, 8, ["expanded", "onToggle"]);
