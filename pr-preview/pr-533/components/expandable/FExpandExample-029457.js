@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FExpand/examples/FExpandExample.vue:FExpandExample-5f8d01.js
+// virtual-entry:virtual:packages/vue/src/components/FExpand/examples/FExpandExample.vue:FExpandExample-029457.js
 import { defineComponent } from "vue";
 import { FExpand } from "@fkui/vue";
 import { openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode } from "vue";
@@ -67,7 +67,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-5f8d01"
+  selector: "#example-029457"
 });
 export {
   render

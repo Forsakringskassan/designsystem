@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FExpandableParagraph/examples/FExpandableParagraphMultipleExample.vue:FExpandableParagraphMultipleExample-60ba1b.js
+// virtual-entry:virtual:packages/vue/src/components/FExpandableParagraph/examples/FExpandableParagraphMultipleExample.vue:FExpandableParagraphMultipleExample-e32124.js
 import { defineComponent } from "vue";
 import { FExpandableParagraph } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -141,7 +141,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-60ba1b"
+  selector: "#example-e32124"
 });
 export {
   render

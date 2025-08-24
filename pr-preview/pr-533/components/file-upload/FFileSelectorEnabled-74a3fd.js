@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorEnabled.vue:FFileSelectorEnabled-8a4611.js
+// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorEnabled.vue:FFileSelectorEnabled-74a3fd.js
 import { defineComponent } from "vue";
 import { FFileSelector } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -53,7 +53,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8a4611"
+  selector: "#example-74a3fd"
 });
 export {
   render
