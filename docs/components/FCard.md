@@ -11,6 +11,12 @@ Använd ett kort för att representera ett objekt eller en person, till exempel 
 FCardExample.vue
 ```
 
+TBD: Se över dokumentation, enbart inlagt här för att synliggöra förändringen.
+
+```import
+FCardBadgeExample.vue
+```
+
 Ett kort innehåller information och åtgärder. Ett kort ska kunna stå ensamt utan att förlita sig på sammanhanget, till exempel rubriker. Ett kort kan inte slås samman med ett annat kort, eller delas upp i flera. Om du behöver en underrubrik i ett kort så är det ett tecken på att du borde dela upp kortet i flera kort.
 
 Om det är mycket information som ska presenteras kan kortet visa en sammanfattning medan all information visas på en egen sida som öppnas från kortet. Undvik att expanderbara kort för att visa ytterligare information. Ett kort ska aldrig öppna ytterligare kort.
