@@ -11,6 +11,7 @@ const validationMessage = ref("");
 const hasError = ref(false);
 const isMounted = ref(false);
 
+const hasBadgeSlot = computed(() => hasSlot("badge"));
 const hasHeaderSlot = computed(() => hasSlot("header"));
 const hasFooterSlot = computed(() => hasSlot("footer"));
 const cardClass = computed(() => `card card--${hasError.value ? "error" : "default"}`);
@@ -70,6 +71,12 @@ async function onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void>
 
 <template>
     <div :id :class="cardClass" @validity="onValidity">
+        <div v-if="hasBadgeSlot" class="card__badge">
+            <!--
+                @slot Slot for status badge.
+            -->
+            <slot name="badge"></slot>
+        </div>
         <div v-if="hasHeaderSlot" class="card__header">
             <!--
             @slot Slot for the title.
