@@ -29,34 +29,40 @@ function createComponent(options?: {
                 <span>${testName}</span>
                 <p style="border: 1px dashed hotpink">
                     <f-button
+                        id="button1"
                         :variant="variant"
                         size="small"
                         :icon-left="iconLeft"
                         :iconRight="iconRight"
                         :mobile-full-width="mobileFullWidth"
                         :tertiary-style="tertiaryStyle"
+                        @click="asyncOperation"
                     >
                         Small
                     </f-button>
                 </p>
                 <p style="border: 1px dashed hotpink">
                     <f-button
+                        id="button2"
                         :variant="variant"
                         :icon-left="iconLeft"
                         :icon-right="iconRight"
                         :mobile-full-width="mobileFullWidth"
                         :tertiary-style="tertiaryStyle"
+                        @click="asyncOperation"
                     >
                         Medium
                     </f-button>
                 </p>
                 <p style="border: 1px dashed hotpink">
                     <f-button
+                        id="button3"
                         :variant="variant"
                         size="large"
                         :icon-left="iconLeft"
                         :icon-right="iconRight"
                         :tertiary-style="tertiaryStyle"
+                        @click="asyncOperation"
                     >
                         Large
                     </f-button>
@@ -75,12 +81,24 @@ function createComponent(options?: {
         components: {
             FButton,
         },
+        methods: {
+            async asyncOperation(): Promise<void> {
+                await new Promise((resolve) => setTimeout(resolve, 300));
+            },
+        },
     });
 }
 
-describe("Primary", () => {
+describe("Primary with spinner", () => {
     beforeEach(() => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
+        cy.clock();
+    });
+
+    afterEach(() => {
+        cy.clock().then((clock) => {
+            clock.restore();
+        });
     });
 
     it("text only", () => {
@@ -89,6 +107,10 @@ describe("Primary", () => {
                 testName: `${Cypress.currentTest.titlePath.join(" ")}`,
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -99,6 +121,10 @@ describe("Primary", () => {
                 iconLeft: "bell",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -109,6 +135,10 @@ describe("Primary", () => {
                 iconRight: "bell",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -120,13 +150,24 @@ describe("Primary", () => {
                 mobileFullWidth: true,
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 });
 
-describe("Secondary", () => {
+describe("Secondary with spinner", () => {
     beforeEach(() => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
+        cy.clock();
+    });
+
+    afterEach(() => {
+        cy.clock().then((clock) => {
+            clock.restore();
+        });
     });
 
     it("text only", () => {
@@ -136,6 +177,10 @@ describe("Secondary", () => {
                 variant: "secondary",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -147,6 +192,10 @@ describe("Secondary", () => {
                 iconLeft: "bell",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -158,6 +207,10 @@ describe("Secondary", () => {
                 iconRight: "bell",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -170,13 +223,24 @@ describe("Secondary", () => {
                 mobileFullWidth: true,
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 });
 
-describe("Tertiary", () => {
+describe("Tertiary with spinner", () => {
     beforeEach(() => {
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
+        cy.clock();
+    });
+
+    afterEach(() => {
+        cy.clock().then((clock) => {
+            clock.restore();
+        });
     });
 
     it("text only", () => {
@@ -186,6 +250,10 @@ describe("Tertiary", () => {
                 variant: "tertiary",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -197,6 +265,10 @@ describe("Tertiary", () => {
                 iconLeft: "bell",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -208,6 +280,10 @@ describe("Tertiary", () => {
                 iconRight: "bell",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -220,6 +296,10 @@ describe("Tertiary", () => {
                 mobileFullWidth: true,
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -231,6 +311,10 @@ describe("Tertiary", () => {
                 tertiaryStyle: "black",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 
@@ -242,6 +326,10 @@ describe("Tertiary", () => {
                 tertiaryStyle: "inverted",
             }),
         );
+        cy.get("#button1").click();
+        cy.get("#button2").click();
+        cy.get("#button3").click();
+        cy.tick(250);
         cy.get("#background").toMatchScreenshot();
     });
 });

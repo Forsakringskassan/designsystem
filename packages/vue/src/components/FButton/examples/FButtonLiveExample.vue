@@ -16,6 +16,7 @@ export default defineComponent({
             iconPlacement: "Left",
             mobileFullWidth: false,
             disabledFullwidth: undefined as undefined | boolean,
+            isAsync: false,
         };
     },
     computed: {
@@ -29,7 +30,7 @@ export default defineComponent({
             return `icon${this.iconPlacement}`;
         },
         template(): string {
-            const { variant, size, disabled, tertiaryStyle, mobileFullWidth } = this;
+            const { variant, size, disabled, tertiaryStyle, isAsync, mobileFullWidth } = this;
             return createElement(
                 "f-button",
                 {
@@ -38,6 +39,7 @@ export default defineComponent({
                     tertiaryStyle,
                     disabled,
                     mobileFullWidth,
+                    "@click": isAsync ? "asyncFunction" : undefined,
                     [this.iconPropName]: this.hasIcon ? "success" : undefined,
                 },
                 "Knapptext",
@@ -66,11 +68,20 @@ export default defineComponent({
             },
         },
     },
+    methods: {
+        livemethods(): object {
+            return {
+                async asyncFunction() {
+                    await new Promise((resolve) => setTimeout(resolve, 3000));
+                },
+            };
+        },
+    },
 });
 </script>
 
 <template>
-    <live-example :components :template>
+    <live-example :components :template :livemethods="livemethods()">
         <f-select-field v-model="variant">
             <template #label> Typ </template>
             <option :value="undefined">Primär</option>
@@ -99,5 +110,6 @@ export default defineComponent({
             <option value="inverted">Inverterad</option>
         </f-select-field>
         <f-checkbox-field v-model="disabled" :value="true"> Inaktiv </f-checkbox-field>
+        <f-checkbox-field v-model="isAsync" :value="true"> Asynkron åtgärd </f-checkbox-field>
     </live-example>
 </template>
