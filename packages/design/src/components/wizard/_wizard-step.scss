@@ -62,14 +62,14 @@ $icon-size: 30px;
         width: $icon-size;
         height: $icon-size;
         border-radius: 50%;
-        border: 2px solid $wizardstep-circle-color-border;
+        border: 2px solid $wizardstep-color-circle-border-open;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1.25rem;
         font-weight: bold;
         text-align: center;
-        color: $wizardstep-text-color-open;
+        color: $wizardstep-color-circle-content-open;
         transition:
             background-color 400ms ease-out,
             border-color 400ms ease-out,
@@ -95,7 +95,7 @@ $icon-size: 30px;
     }
 
     #{$step-of-selector} {
-        color: $wizardstep-stepofselector-color-text;
+        color: $wizardstep-color-stepofselector-text;
         font-weight: normal;
         font-size: 1rem;
     }
@@ -103,7 +103,7 @@ $icon-size: 30px;
     #{$line-down-selector},
     #{$icon-line-down-selector},
     #{$line-up-selector} {
-        border-left: $line-width solid $wizardstep-line-color;
+        border-left: $line-width solid $wizardstep-color-line;
         margin-left: 14px;
     }
 
@@ -158,7 +158,7 @@ $icon-size: 30px;
 
     &--open {
         #{$title-selector} {
-            color: $wizardstep-heading-color-default;
+            color: $wizardstep-color-heading-open;
         }
 
         #{$step-of-selector} {
@@ -168,28 +168,27 @@ $icon-size: 30px;
 
     &--done {
         #{$anchor-selector} {
-            color: $wizardstep-heading-color-done;
-            text-decoration-color: $wizardstep-heading-color-done;
+            color: $wizardstep-color-heading-done;
+            text-decoration-color: currentcolor;
             text-decoration-thickness: 2px;
             text-underline-offset: 0.25em;
         }
 
         #{$anchor-selector}:hover {
-            text-decoration-color: $wizardstep-heading-decoration-color-done-hover;
             text-decoration-thickness: 3px;
             text-underline-offset: 0.25em;
         }
 
         #{$icon-success-selector} {
             display: block;
-            color: $wizardstep-success-color;
+            color: $wizardstep-color-circle-content-done;
             width: 20px;
             height: auto;
         }
 
         #{$circle-selector} {
-            background-color: $wizardstep-circle-color-background-done;
-            border-color: $wizardstep-circle-color-border-done;
+            background-color: $wizardstep-color-circle-background-done;
+            border-color: $wizardstep-color-circle-border-done;
         }
 
         #{$number-selector} {
@@ -199,13 +198,13 @@ $icon-size: 30px;
 
     &--pending {
         #{$title-selector} {
-            color: $wizardstep-text-color-pending;
+            color: $wizardstep-color-heading-pending;
         }
 
         #{$circle-selector} {
-            border: 2px solid $wizardstep-circle-color-border;
-            background-color: $wizardstep-circle-color-background-pending;
-            color: $wizardstep-text-color-pending;
+            border: 2px solid $wizardstep-color-circle-border-pending;
+            background-color: $wizardstep-color-circle-background-pending;
+            color: $wizardstep-color-circle-content-pending;
         }
     }
 
