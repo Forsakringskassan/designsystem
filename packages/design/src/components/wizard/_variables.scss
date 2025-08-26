@@ -1,17 +1,18 @@
-$wizardstep-stepofselector-color-text: var(--fkds-color-text-secondary) !default;
-$wizardstep-line-color: var(--fkds-color-border-strong) !default;
-$wizardstep-heading-color-default: var(--fkds-color-text-primary) !default;
-$wizardstep-heading-color-done: var(--fkds-color-feedback-text-positive) !default;
-$wizardstep-heading-decoration-color-done-hover: var(--fkds-color-feedback-text-positive) !default;
+$wizardstep-color-stepofselector-text: var(--fkds-color-text-secondary) !default;
+$wizardstep-color-line: var(--fkds-color-border-strong) !default;
+
+// HEADING
+$wizardstep-color-heading-open: var(--fkds-color-text-primary) !default;
+$wizardstep-color-heading-pending: var(--fkds-color-text-primary) !default;
+$wizardstep-color-heading-done: var(--fkds-color-feedback-text-positive) !default;
 
 // CIRCLE
-$wizardstep-circle-color-border: var(--fkds-color-border-strong) !default;
-$wizardstep-circle-color-background-open: var(--fkds-color-background-primary) !default;
-$wizardstep-text-color-open: var(--fkds-color-text-primary) !default;
-$wizardstep-circle-color-background-pending: var(--fkds-color-background-primary) !default;
-$wizardstep-text-color-pending: var(--fkds-color-text-primary) !default;
-$wizardstep-circle-color-border-done: var(--fkds-color-feedback-border-positive) !default;
-$wizardstep-circle-color-background-done: var(--fkds-color-feedback-background-positive-strong) !default;
-
-// ICON SUCCESS
-$wizardstep-success-color: var(--fkds-icon-color-content-inverted) !default;
+$wizardstep-color-circle-border-open: var(--fkds-color-border-strong) !default;
+$wizardstep-color-circle-border-pending: var(--fkds-color-border-strong) !default;
+$wizardstep-color-circle-border-done: var(--fkds-color-feedback-border-positive) !default;
+$wizardstep-color-circle-background-open: var(--fkds-color-background-primary) !default;
+$wizardstep-color-circle-background-pending: var(--fkds-color-background-primary) !default;
+$wizardstep-color-circle-background-done: var(--fkds-color-feedback-background-positive-strong) !default;
+$wizardstep-color-circle-content-open: var(--fkds-color-text-primary) !default;
+$wizardstep-color-circle-content-pending: var(--fkds-color-text-primary) !default;
+$wizardstep-color-circle-content-done: var(--fkds-icon-color-content-inverted) !default;
