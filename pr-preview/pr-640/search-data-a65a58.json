@@ -415,6 +415,12 @@
     "FFixedPane",
     "Detaljpanel",
     "FDetailsPanel",
+    "Modal dialogruta",
+    "FModal",
+    "Formulärsmodal",
+    "FFormModal",
+    "Bekräftelsemodal",
+    "FConfirmModal",
     "Förloppsindikator",
     "FProgressbar",
     "ladda",
@@ -423,12 +429,6 @@
     "FLoader",
     "ladda",
     "laddning",
-    "Modal dialogruta",
-    "FModal",
-    "Formulärsmodal",
-    "FFormModal",
-    "Bekräftelsemodal",
-    "FConfirmModal",
     "Startpunkt",
     "entrypoint",
     "länk",
@@ -1526,24 +1526,6 @@
       ]
     },
     {
-      "url": "components/load/fprogressbar.html",
-      "title": "Förloppsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FProgressbar"
-      ]
-    },
-    {
-      "url": "components/load/floader.html",
-      "title": "Laddningsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FLoader"
-      ]
-    },
-    {
       "url": "components/modal/fmodal.html",
       "title": "Modal dialogruta",
       "terms": [
@@ -1562,6 +1544,24 @@
       "title": "Bekräftelsemodal",
       "terms": [
         "FConfirmModal"
+      ]
+    },
+    {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FLoader"
       ]
     },
     {
@@ -2648,16 +2648,16 @@
     "414": 100,
     "415": 101,
     "416": 101,
-    "417": 101,
-    "418": 101,
-    "419": 102,
-    "420": 102,
-    "421": 102,
-    "422": 102,
-    "423": 103,
-    "424": 103,
-    "425": 104,
-    "426": 104,
+    "417": 102,
+    "418": 102,
+    "419": 103,
+    "420": 103,
+    "421": 104,
+    "422": 104,
+    "423": 104,
+    "424": 104,
+    "425": 105,
+    "426": 105,
     "427": 105,
     "428": 105,
     "429": 106,
