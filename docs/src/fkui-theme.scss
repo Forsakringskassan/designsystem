@@ -20,7 +20,8 @@
 }
 
 .code-preview__preview,
-.live-example__example {
+.live-example__example,
+.user-theme {
     @media (prefers-color-scheme: light) {
         @include fkui-default.css-variables();
     }

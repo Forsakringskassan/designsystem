@@ -108,6 +108,21 @@ function sandboxProcessor(folder) {
     };
 }
 
+/**
+ * @returns {import("@forsakringskassan/docs-generator").Processor}
+ */
+function themeProcessor() {
+    return {
+        after: "generate-docs",
+        name: "fkui:theme",
+        async handler(context) {
+            context.addTemplateBlock("body:end", "teleport-target", {
+                filename: "partials/teleport.html",
+            });
+        },
+    };
+}
+
 const docs = new Generator(import.meta.url, {
     site: {
         name: "FK Designsystem",
@@ -161,6 +176,7 @@ const docs = new Generator(import.meta.url, {
             siteId: MATOMO_SITE_ID,
             ...matomoConfig,
         }),
+        themeProcessor(),
         topnavProcessor("docs/topmenu.json", "Försäkringskassans designsystem"),
         sourceUrlProcessor({
             enabled: Boolean(DOCS_SOURCE_URL_FORMAT),
