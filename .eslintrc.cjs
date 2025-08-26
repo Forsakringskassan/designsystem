@@ -82,6 +82,13 @@ module.exports = {
         },
 
         {
+            files: ["docs/src/*.{js,ts}"],
+            env: {
+                browser: true,
+            },
+        },
+
+        {
             files: "docs/examples/**/*.{js,ts}",
             rules: {
                 "no-console": "off",

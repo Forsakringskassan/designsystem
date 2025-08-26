@@ -1,3 +1,4 @@
+import { config } from "@fkui/vue";
 import "@forsakringskassan/docs-generator/runtime";
 
 function importDefault(m) {
@@ -13,3 +14,5 @@ async function importIcons() {
 }
 
 importIcons();
+
+config.teleportTarget = document.getElementById("teleport-target");
