@@ -69,6 +69,7 @@ $icon-size: 30px;
         font-size: 1.25rem;
         font-weight: bold;
         text-align: center;
+        color: $wizardstep-text-color-open;
         transition:
             background-color 400ms ease-out,
             border-color 400ms ease-out,
@@ -187,8 +188,8 @@ $icon-size: 30px;
         }
 
         #{$circle-selector} {
-            background-color: var(--f-icon-color-wizard-step-done);
-            border-color: var(--f-icon-color-wizard-step-done);
+            background-color: $wizardstep-circle-color-background-done;
+            border-color: $wizardstep-circle-color-border-done;
         }
 
         #{$number-selector} {
@@ -198,13 +199,13 @@ $icon-size: 30px;
 
     &--pending {
         #{$title-selector} {
-            color: var(--f-text-color-discrete);
+            color: $wizardstep-text-color-pending;
         }
 
         #{$circle-selector} {
             border: 2px solid $wizardstep-circle-color-border;
             background-color: $wizardstep-circle-color-background-pending;
-            color: var(--f-icon-color-discrete);
+            color: $wizardstep-text-color-pending;
         }
     }
 

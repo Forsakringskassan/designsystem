@@ -7,7 +7,9 @@ $wizardstep-heading-decoration-color-done-hover: var(--fkds-color-feedback-text-
 // CIRCLE
 $wizardstep-circle-color-border: var(--fkds-color-border-strong) !default;
 $wizardstep-circle-color-background-open: var(--fkds-color-background-primary) !default;
-$wizardstep-circle-color-background-pending: var(--fkds-color-background-disabled) !default;
+$wizardstep-text-color-open: var(--fkds-color-text-primary) !default;
+$wizardstep-circle-color-background-pending: var(--fkds-color-background-primary) !default;
+$wizardstep-text-color-pending: var(--fkds-color-text-primary) !default;
 $wizardstep-circle-color-border-done: var(--fkds-color-feedback-border-positive) !default;
 $wizardstep-circle-color-background-done: var(--fkds-color-feedback-background-positive-strong) !default;
 
