@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTextField, FIcon, FTable, FTableCell, FTableEditCell } from "@fkui/vue";
+import { FTextField, FIcon, FTable, FTableCell, FTableEditCell, FTableSelectCell } from "@fkui/vue";
 
 const rows = ref([
     {
         id: "1",
+        animal: "Katt",
         level: "Föräldrapenning",
         start: "2022-04-11",
         end: "2022-04-20",
@@ -41,6 +42,7 @@ const rows = ref([
     },
     {
         id: "2",
+        animal: "Spindel",
         level: "Tillfällig föräldrapenning",
         start: "2022-05-02",
         end: "2022-05-04",
@@ -63,6 +65,7 @@ const rows = ref([
     },
     {
         id: "3",
+        animal: "Hamster",
         level: "Föräldrapenning",
         start: "2022-05-16",
         end: "2022-05-27",
@@ -99,6 +102,8 @@ const rows = ref([
     },
 ]);
 
+const selectFieldOptions = ref(["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"]);
+
 function onButtonClick(value: string): void {
     alert(`Du klickade på ${value}`);
 }
@@ -110,6 +115,11 @@ function onButtonClick(value: string): void {
             <f-table-cell title="Kryssruta">
                 <input type="checkbox" aria-label="Kryssruta" />
             </f-table-cell>
+            <f-table-select-cell
+                v-model="row.animal"
+                :options="selectFieldOptions"
+                title="Dropplista"
+            />
             <f-table-cell title="Text">{{ row.id }}</f-table-cell>
             <f-table-cell v-format:number="row.antal" title="Formatterad text"></f-table-cell>
             <f-table-cell title="Knapp">
