@@ -1922,7 +1922,7 @@ var FErrorPage_default = defineComponent2({
 import { createElementVNode as _createElementVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock2 } from "vue";
 var _hoisted_12 = { "data-test": "f-error-page" };
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2("div", _hoisted_12, _cache[0] || (_cache[0] = [
+  return _openBlock2(), _createElementBlock2("div", _hoisted_12, [..._cache[0] || (_cache[0] = [
     _createElementVNode2(
       "h1",
       null,
@@ -1944,7 +1944,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       -1
       /* CACHED */
     )
-  ]));
+  ])]);
 }
 
 // packages/vue/src/plugins/error/FErrorPage.vue
@@ -2866,15 +2866,15 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           key: 1,
           shrink: ""
         }, {
-          default: _withCtx2(() => _cache[0] || (_cache[0] = [
+          default: _withCtx2(() => [..._cache[0] || (_cache[0] = [
             _createTextVNode2(
               "\xA0",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [0]
+          ])]),
+          _: 1
+          /* STABLE */
         })) : _createCommentVNode7("v-if", true),
         _createVNode2(_component_i_flex_item, { grow: "" }, {
           default: _withCtx2(() => [
@@ -3973,7 +3973,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.constraint = $event),
         onChange: _cache[1] || (_cache[1] = (...args) => _ctx.onChangeConstraint && _ctx.onChangeConstraint(...args))
       },
-      _cache[3] || (_cache[3] = [
+      [..._cache[3] || (_cache[3] = [
         _createElementVNode8(
           "option",
           { value: "viewport" },
@@ -3995,7 +3995,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ]),
+      ])],
       544
       /* NEED_HYDRATION, NEED_PATCH */
     ), [

@@ -113,73 +113,73 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: _withCtx(() => [
       _createVNode(_component_f_fieldset, { name: "etikett" }, {
-        label: _withCtx(() => _cache[4] || (_cache[4] = [
+        label: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " Egenskaper ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.descriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[5] || (_cache[5] = [
+            default: _withCtx(() => [..._cache[5] || (_cache[5] = [
               _createTextVNode(
                 " Hj\xE4lptext ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [5]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.formatDescriptionVisible,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.formatDescriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[6] || (_cache[6] = [
+            default: _withCtx(() => [..._cache[6] || (_cache[6] = [
               _createTextVNode(
                 " Formatbeskrivning ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [6]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.tooltipVisible,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.tooltipVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[7] || (_cache[7] = [
+            default: _withCtx(() => [..._cache[7] || (_cache[7] = [
               _createTextVNode(
                 " Tooltip ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [7]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.errorMessageVisible,
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.errorMessageVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[8] || (_cache[8] = [
+            default: _withCtx(() => [..._cache[8] || (_cache[8] = [
               _createTextVNode(
                 " Felmeddelande ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [8]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1

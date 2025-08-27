@@ -95,58 +95,58 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: _withCtx(() => [
       _createVNode(_component_f_fieldset, { name: "radio-link-type" }, {
-        label: _withCtx(() => _cache[5] || (_cache[5] = [
+        label: _withCtx(() => [..._cache[5] || (_cache[5] = [
           _createTextVNode(
             " Typ av l\xE4nk ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.linkType,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.linkType = $event),
             value: "standard"
           }, {
-            default: _withCtx(() => _cache[6] || (_cache[6] = [
+            default: _withCtx(() => [..._cache[6] || (_cache[6] = [
               _createTextVNode(
                 " Standard ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [6]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.linkType,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.linkType = $event),
             value: "document"
           }, {
-            default: _withCtx(() => _cache[7] || (_cache[7] = [
+            default: _withCtx(() => [..._cache[7] || (_cache[7] = [
               _createTextVNode(
                 " Dokument ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [7]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.linkType,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.linkType = $event),
             value: "external"
           }, {
-            default: _withCtx(() => _cache[8] || (_cache[8] = [
+            default: _withCtx(() => [..._cache[8] || (_cache[8] = [
               _createTextVNode(
                 " Ny flik ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [8]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -157,13 +157,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.fileType,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.fileType = $event)
       }, {
-        label: _withCtx(() => _cache[9] || (_cache[9] = [
+        label: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Filtyp ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[10] || (_cache[10] = _createElementVNode(
             "option",
@@ -187,23 +187,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [10, 11, 12]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDiscrete,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isDiscrete = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[13] || (_cache[13] = [
+        default: _withCtx(() => [..._cache[13] || (_cache[13] = [
           _createTextVNode(
             " Diskret l\xE4nk ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [13]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

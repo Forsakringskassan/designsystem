@@ -72,7 +72,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       opacity: _ctx.opacity,
       expanded: _ctx.toggle
     }, {
-      default: _withCtx(() => _cache[3] || (_cache[3] = [
+      default: _withCtx(() => [..._cache[3] || (_cache[3] = [
         _createElementVNode(
           "div",
           { style: { "background-color": "yellow", "height": "200px", "position": "relative" } },
@@ -80,15 +80,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [3]
+      ])]),
+      _: 1
+      /* STABLE */
     }, 8, ["opacity", "expanded"]),
     _createVNode(_component_i_animate_expand, {
       opacity: _ctx.opacity,
       expanded: !_ctx.toggle
     }, {
-      default: _withCtx(() => _cache[4] || (_cache[4] = [
+      default: _withCtx(() => [..._cache[4] || (_cache[4] = [
         _createElementVNode(
           "div",
           { style: { "background-color": "hotpink", "height": "300px", "position": "relative" } },
@@ -96,9 +96,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [4]
+      ])]),
+      _: 1
+      /* STABLE */
     }, 8, ["opacity", "expanded"])
   ]);
 }

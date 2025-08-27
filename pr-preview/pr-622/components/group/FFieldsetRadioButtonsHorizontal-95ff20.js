@@ -48,13 +48,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "group-name-radio-horizontal",
     horizontal: ""
   }, {
-    label: _withCtx(() => _cache[2] || (_cache[2] = [
+    label: _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Ligger radioknapparna horisontellt? ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _createVNode(_component_f_radio_field, {
         id: "horisontellt-ja",
@@ -62,15 +62,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[3] || (_cache[3] = [
+        default: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " Ja ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [3]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_radio_field, {
         id: "horisontellt-nej",
@@ -78,15 +78,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.model = $event),
         value: false
       }, {
-        default: _withCtx(() => _cache[4] || (_cache[4] = [
+        default: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " Nej ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [4]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

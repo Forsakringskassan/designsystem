@@ -112,13 +112,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.variant,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.variant = $event)
       }, {
-        label: _withCtx(() => _cache[8] || (_cache[8] = [
+        label: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " Typ ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[9] || (_cache[9] = _createElementVNode(
             "option",
@@ -142,20 +142,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [9, 10, 11]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_select_field, {
         modelValue: _ctx.size,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.size = $event)
       }, {
-        label: _withCtx(() => _cache[12] || (_cache[12] = [
+        label: _withCtx(() => [..._cache[12] || (_cache[12] = [
           _createTextVNode(
             " Storlek ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[13] || (_cache[13] = _createElementVNode(
             "option",
@@ -179,66 +179,66 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [13, 14, 15]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.hasIcon,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasIcon = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[16] || (_cache[16] = [
+        default: _withCtx(() => [..._cache[16] || (_cache[16] = [
           _createTextVNode(
             " Visa ikon ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [16]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _ctx.hasIcon ? (_openBlock(), _createBlock(_component_f_fieldset, {
         key: 0,
         name: "radio-place-icon",
         horizontal: ""
       }, {
-        label: _withCtx(() => _cache[17] || (_cache[17] = [
+        label: _withCtx(() => [..._cache[17] || (_cache[17] = [
           _createTextVNode(
             " Placering av ikon ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.iconPlacement,
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.iconPlacement = $event),
             value: "Left"
           }, {
-            default: _withCtx(() => _cache[18] || (_cache[18] = [
+            default: _withCtx(() => [..._cache[18] || (_cache[18] = [
               _createTextVNode(
                 " V\xE4nster ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [18]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.iconPlacement,
             "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.iconPlacement = $event),
             value: "Right"
           }, {
-            default: _withCtx(() => _cache[19] || (_cache[19] = [
+            default: _withCtx(() => [..._cache[19] || (_cache[19] = [
               _createTextVNode(
                 " H\xF6ger ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [19]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1
@@ -250,28 +250,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: true,
         disabled: _ctx.disabledFullwidth
       }, {
-        default: _withCtx(() => _cache[20] || (_cache[20] = [
+        default: _withCtx(() => [..._cache[20] || (_cache[20] = [
           _createTextVNode(
             " Fullbredd i mobil ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [20]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue", "disabled"]),
       _ctx.isTertiary ? (_openBlock(), _createBlock(_component_f_select_field, {
         key: 1,
         modelValue: _ctx.tertiaryStyle,
         "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.tertiaryStyle = $event)
       }, {
-        label: _withCtx(() => _cache[21] || (_cache[21] = [
+        label: _withCtx(() => [..._cache[21] || (_cache[21] = [
           _createTextVNode(
             " F\xE4rg ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[22] || (_cache[22] = _createElementVNode(
             "option",
@@ -295,23 +295,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [22, 23, 24]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.disabled,
         "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.disabled = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[25] || (_cache[25] = [
+        default: _withCtx(() => [..._cache[25] || (_cache[25] = [
           _createTextVNode(
             " Inaktiv ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [25]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

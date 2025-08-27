@@ -71,13 +71,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       name: "color",
       onChange: _ctx.onToggleDisable
     }, {
-      label: _withCtx(() => _cache[3] || (_cache[3] = [
+      label: _withCtx(() => [..._cache[3] || (_cache[3] = [
         _createTextVNode(
           " Ska inmatningsf\xE4ltet vara inaktivt? ",
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       default: _withCtx(() => [
         _withDirectives((_openBlock(), _createBlock(_component_f_radio_field, {
           id: "disabled-no",
@@ -85,15 +85,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isDisabled = $event),
           value: false
         }, {
-          default: _withCtx(() => _cache[4] || (_cache[4] = [
+          default: _withCtx(() => [..._cache[4] || (_cache[4] = [
             _createTextVNode(
               " Nej ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [4]
+          ])]),
+          _: 1
+          /* STABLE */
         }, 8, ["modelValue"])), [
           [_directive_test, "disabled-no"]
         ]),
@@ -103,15 +103,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isDisabled = $event),
           value: true
         }, {
-          default: _withCtx(() => _cache[5] || (_cache[5] = [
+          default: _withCtx(() => [..._cache[5] || (_cache[5] = [
             _createTextVNode(
               " Ja ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [5]
+          ])]),
+          _: 1
+          /* STABLE */
         }, 8, ["modelValue"])), [
           [_directive_test, "disabled-yes"]
         ])
@@ -128,15 +128,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.name = $event),
           disabled: _ctx.isDisabled
         }, {
-          default: _withCtx(() => _cache[6] || (_cache[6] = [
+          default: _withCtx(() => [..._cache[6] || (_cache[6] = [
             _createTextVNode(
               " Namn ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [6]
+          ])]),
+          _: 1
+          /* STABLE */
         }, 8, ["modelValue", "disabled"])), [
           [_directive_test, "dynamic-disable"],
           [

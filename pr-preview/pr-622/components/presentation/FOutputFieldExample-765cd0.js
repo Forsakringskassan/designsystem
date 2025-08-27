@@ -51,15 +51,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       modelValue: _ctx.number1,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.number1 = $event)
     }, {
-      default: _withCtx(() => _cache[2] || (_cache[2] = [
+      default: _withCtx(() => [..._cache[2] || (_cache[2] = [
         _createTextVNode(
           " Nummer 1 ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [2]
+      ])]),
+      _: 1
+      /* STABLE */
     }, 8, ["modelValue"])), [
       [
         _directive_validation,
@@ -73,15 +73,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       modelValue: _ctx.number2,
       "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.number2 = $event)
     }, {
-      default: _withCtx(() => _cache[3] || (_cache[3] = [
+      default: _withCtx(() => [..._cache[3] || (_cache[3] = [
         _createTextVNode(
           " Nummer 2 ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [3]
+      ])]),
+      _: 1
+      /* STABLE */
     }, 8, ["modelValue"])), [
       [
         _directive_validation,
@@ -94,32 +94,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       id: "calculated",
       for: "one two"
     }, {
-      label: _withCtx(() => _cache[4] || (_cache[4] = [
+      label: _withCtx(() => [..._cache[4] || (_cache[4] = [
         _createTextVNode(
           " Summa ",
           -1
           /* CACHED */
         )
-      ])),
+      ])]),
       tooltip: _withCtx(() => [
         _createVNode(_component_f_tooltip, {
           "screen-reader-text": "L\xE4s mer om avancerat f\xE4lt",
           "header-tag": "h2"
         }, {
-          header: _withCtx(() => _cache[5] || (_cache[5] = [
+          header: _withCtx(() => [..._cache[5] || (_cache[5] = [
             _createTextVNode(
               " Mer om summa-f\xE4ltet ",
               -1
               /* CACHED */
             )
-          ])),
-          body: _withCtx(() => _cache[6] || (_cache[6] = [
+          ])]),
+          body: _withCtx(() => [..._cache[6] || (_cache[6] = [
             _createTextVNode(
               " Detta f\xE4ltet \xE4r en summa av nummer 1 och nummer 2. ",
               -1
               /* CACHED */
             )
-          ])),
+          ])]),
           _: 1
           /* STABLE */
         })

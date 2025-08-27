@@ -232,13 +232,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.type,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.type = $event)
       }, {
-        label: _withCtx(() => _cache[11] || (_cache[11] = [
+        label: _withCtx(() => [..._cache[11] || (_cache[11] = [
           _createTextVNode(
             " Typ ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[12] || (_cache[12] = _createElementVNode(
             "option",
@@ -339,21 +339,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _ctx.isTextfieldOrNumeric ? (_openBlock(), _createBlock(_component_f_select_field, {
         key: 0,
         modelValue: _ctx.maxLength,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.maxLength = $event)
       }, {
-        label: _withCtx(() => _cache[26] || (_cache[26] = [
+        label: _withCtx(() => [..._cache[26] || (_cache[26] = [
           _createTextVNode(
             " Max antal tecken ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[27] || (_cache[27] = _createElementVNode(
             "option",
@@ -370,8 +370,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [27, 28]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _ctx.isTextfieldOrNumeric ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 1,
@@ -379,15 +379,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.isWhitelist = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[29] || (_cache[29] = [
+        default: _withCtx(() => [..._cache[29] || (_cache[29] = [
           _createTextVNode(
             " Begr\xE4nsa till\xE5tna tecken med whitelist-validatorn ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [29]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       !_ctx.isClearable ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 2,
@@ -395,30 +395,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.isRequired = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[30] || (_cache[30] = [
+        default: _withCtx(() => [..._cache[30] || (_cache[30] = [
           _createTextVNode(
             " Obligatorisk f\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [30]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isDisabled,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isDisabled = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[31] || (_cache[31] = [
+        default: _withCtx(() => [..._cache[31] || (_cache[31] = [
           _createTextVNode(
             " Inaktivt f\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [31]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _ctx.showAppendInner ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 3,
@@ -426,24 +426,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.appendInnerVisible = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[32] || (_cache[32] = [
+        default: _withCtx(() => [..._cache[32] || (_cache[32] = [
           _createTextVNode(
             " Inneh\xE5ll i inmatningsf\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [32]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_fieldset, { name: "etikett" }, {
-        label: _withCtx(() => _cache[33] || (_cache[33] = [
+        label: _withCtx(() => [..._cache[33] || (_cache[33] = [
           _createTextVNode(
             " Etiketten ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _ctx.supportDescription ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
             key: 0,
@@ -451,15 +451,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.descriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[34] || (_cache[34] = [
+            default: _withCtx(() => [..._cache[34] || (_cache[34] = [
               _createTextVNode(
                 " Hj\xE4lptext ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [34]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
           _ctx.supportDescription ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
             key: 1,
@@ -467,15 +467,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.formatDescriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[35] || (_cache[35] = [
+            default: _withCtx(() => [..._cache[35] || (_cache[35] = [
               _createTextVNode(
                 " Formatbeskrivning ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [35]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
           !_ctx.isEmail ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
             key: 2,
@@ -483,30 +483,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.tooltipVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[36] || (_cache[36] = [
+            default: _withCtx(() => [..._cache[36] || (_cache[36] = [
               _createTextVNode(
                 " Tooltip ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [36]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.isInline,
             "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.isInline = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[37] || (_cache[37] = [
+            default: _withCtx(() => [..._cache[37] || (_cache[37] = [
               _createTextVNode(
                 " Inline ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [37]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           !_ctx.isTextfieldOrNumeric ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
             key: 3,
@@ -514,15 +514,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => _ctx.customLabel = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[38] || (_cache[38] = [
+            default: _withCtx(() => [..._cache[38] || (_cache[38] = [
               _createTextVNode(
                 " Annan etikett ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [38]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true)
         ]),
         _: 1

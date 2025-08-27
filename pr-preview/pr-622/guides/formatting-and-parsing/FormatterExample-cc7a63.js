@@ -59,13 +59,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue = $event),
         formatter: _ctx.formatNumber
       }, {
-        default: _withCtx(() => _cache[1] || (_cache[1] = [
+        default: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
             " Inmatningsf\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         description: _withCtx(({ descriptionClass }) => [
           _createElementVNode(
             "span",
@@ -90,13 +90,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _createElementVNode("div", _hoisted_3, [
       _createVNode(_component_f_output_field, { for: "formatter-example" }, {
-        label: _withCtx(() => _cache[2] || (_cache[2] = [
+        label: _withCtx(() => [..._cache[2] || (_cache[2] = [
           _createTextVNode(
             " modelValue ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createElementVNode(
             "span",

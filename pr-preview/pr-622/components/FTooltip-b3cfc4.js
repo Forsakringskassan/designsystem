@@ -51,7 +51,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode(
         "div",
         _hoisted_1,
-        _cache[0] || (_cache[0] = [
+        [..._cache[0] || (_cache[0] = [
           _createElementVNode(
             "h2",
             null,
@@ -59,7 +59,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ]),
+        ])],
         512
         /* NEED_PATCH */
       ),
@@ -67,13 +67,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "attach-to": "heading",
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
-        body: _withCtx(() => _cache[1] || (_cache[1] = [
+        body: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
             " Lorem ipsum dolor sit amet. ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       })

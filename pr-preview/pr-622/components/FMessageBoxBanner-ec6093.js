@@ -42,7 +42,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "error",
     banner: ""
   }, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
         "p",
         null,
@@ -50,9 +50,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
-    _: 1,
-    __: [0]
+    ])]),
+    _: 1
+    /* STABLE */
   });
 }
 exampleComponent.render = render;

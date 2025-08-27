@@ -71,28 +71,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "before-submit": _ctx.runServerValidation,
     onSubmit: _ctx.onSubmit
   }, {
-    "error-message": _withCtx(() => _cache[3] || (_cache[3] = [
+    "error-message": _withCtx(() => [..._cache[3] || (_cache[3] = [
       _createTextVNode(
         " Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till: ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
         ref: "field1",
         modelValue: _ctx.field1,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.field1 = $event)
       }, {
-        default: _withCtx(() => _cache[4] || (_cache[4] = [
+        default: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " Ett inmatningsf\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [4]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])), [
         [
           _directive_validation,
@@ -108,15 +108,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.field2,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.field2 = $event)
       }, {
-        default: _withCtx(() => _cache[5] || (_cache[5] = [
+        default: _withCtx(() => [..._cache[5] || (_cache[5] = [
           _createTextVNode(
             " Ett annat inmatningsf\xE4lt ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [5]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])), [
         [
           _directive_validation,

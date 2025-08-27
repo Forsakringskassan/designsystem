@@ -47,13 +47,13 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_format = _resolveDirective("format");
   return _openBlock(), _createBlock($setup["FStaticField"], null, {
-    label: _withCtx(() => _cache[0] || (_cache[0] = [
+    label: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Formaterat datum ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _withDirectives(_createElementVNode(
         "span",

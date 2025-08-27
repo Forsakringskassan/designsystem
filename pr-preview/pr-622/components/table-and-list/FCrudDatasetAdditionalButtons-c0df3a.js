@@ -48,8 +48,8 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FCrudDataset"], null, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [])),
-    add: _withCtx(() => _cache[1] || (_cache[1] = [])),
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [])]),
+    add: _withCtx(() => [..._cache[1] || (_cache[1] = [])]),
     buttons: _withCtx(({ buttonClasses }) => [
       _createElementVNode(
         "button",

@@ -129,8 +129,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               ))
             ])
           ]),
-          _: 1,
-          __: [4]
+          _: 1
+          /* STABLE */
         })), [
           [_directive_test, "myOrderStep"]
         ]),
@@ -155,8 +155,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       /* CACHED */
                     )
                   ])]),
-                  _: 2,
-                  __: [5]
+                  _: 2
+                  /* DYNAMIC */
                 }, 1032, ["modelValue", "onUpdate:modelValue"])), [
                   [
                     _directive_validation,
@@ -243,7 +243,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           title: "Mina uppgifter",
           onBeforeNext: _ctx.onBeforeNext
         }, {
-          default: _withCtx(() => _cache[8] || (_cache[8] = [
+          default: _withCtx(() => [..._cache[8] || (_cache[8] = [
             _createElementVNode(
               "p",
               null,
@@ -251,9 +251,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [8]
+          ])]),
+          _: 1
+          /* STABLE */
         }, 8, ["onBeforeNext"])), [
           [_directive_test, "myInfoStep"]
         ])

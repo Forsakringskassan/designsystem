@@ -90,13 +90,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.badgeType,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.badgeType = $event)
       }, {
-        label: _withCtx(() => _cache[2] || (_cache[2] = [
+        label: _withCtx(() => [..._cache[2] || (_cache[2] = [
           _createTextVNode(
             " Typ ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[3] || (_cache[3] = _createElementVNode(
             "option",
@@ -134,23 +134,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [3, 4, 5, 6, 7]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isInverted,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isInverted = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[8] || (_cache[8] = [
+        default: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " Inverterad ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [8]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

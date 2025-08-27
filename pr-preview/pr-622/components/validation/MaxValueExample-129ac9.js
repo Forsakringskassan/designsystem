@@ -46,15 +46,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     modelValue: _ctx.model,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
   }, {
-    default: _withCtx(() => _cache[1] || (_cache[1] = [
+    default: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createTextVNode(
         " Fyll i ett tal som \xE4r h\xF6gst 50 ",
         -1
         /* CACHED */
       )
-    ])),
-    _: 1,
-    __: [1]
+    ])]),
+    _: 1
+    /* STABLE */
   }, 8, ["modelValue"])), [
     [
       _directive_validation,

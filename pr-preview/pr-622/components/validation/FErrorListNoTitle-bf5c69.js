@@ -54,15 +54,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       bullets: true
     }, null, 8, ["items"]),
     _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { id: "fornamn-utan-text" }, {
-      default: _withCtx(() => _cache[0] || (_cache[0] = [
+      default: _withCtx(() => [..._cache[0] || (_cache[0] = [
         _createTextVNode(
           " F\xF6rnamn ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [0]
+      ])]),
+      _: 1
+      /* STABLE */
     })), [
       [
         _directive_validation,
@@ -72,15 +72,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]
     ]),
     _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { id: "efternamn-utan-text" }, {
-      default: _withCtx(() => _cache[1] || (_cache[1] = [
+      default: _withCtx(() => [..._cache[1] || (_cache[1] = [
         _createTextVNode(
           " Efternamn ",
           -1
           /* CACHED */
         )
-      ])),
-      _: 1,
-      __: [1]
+      ])]),
+      _: 1
+      /* STABLE */
     })), [
       [
         _directive_validation,

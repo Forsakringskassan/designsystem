@@ -67,13 +67,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $setup.logoSize,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.logoSize = $event)
       }, {
-        label: _withCtx(() => _cache[1] || (_cache[1] = [
+        label: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
             " Storlek ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _cache[2] || (_cache[2] = _createElementVNode(
             "option",
@@ -97,8 +97,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [2, 3, 4]
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

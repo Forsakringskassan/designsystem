@@ -45,13 +45,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_radio_field = _resolveComponent("f-radio-field");
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "group-name-radio" }, {
-    label: _withCtx(() => _cache[2] || (_cache[2] = [
+    label: _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         " Ans\xF6ker du om sjukpenning? ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _createVNode(_component_f_radio_field, {
         id: "ja",
@@ -59,15 +59,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.sjukpenning = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[3] || (_cache[3] = [
+        default: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " Ja ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [3]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_radio_field, {
         id: "nej",
@@ -75,15 +75,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.sjukpenning = $event),
         value: false
       }, {
-        default: _withCtx(() => _cache[4] || (_cache[4] = [
+        default: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " Nej ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [4]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

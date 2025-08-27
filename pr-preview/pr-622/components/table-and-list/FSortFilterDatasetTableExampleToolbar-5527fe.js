@@ -142,7 +142,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             selectable: "",
             "key-attribute": "id"
           }, {
-            caption: _withCtx(() => _cache[2] || (_cache[2] = [
+            caption: _withCtx(() => [..._cache[2] || (_cache[2] = [
               _createElementVNode(
                 "span",
                 { class: "sr-only" },
@@ -150,14 +150,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 -1
                 /* CACHED */
               )
-            ])),
-            "checkbox-description": _withCtx(() => _cache[3] || (_cache[3] = [
+            ])]),
+            "checkbox-description": _withCtx(() => [..._cache[3] || (_cache[3] = [
               _createTextVNode(
                 " V\xE4lj denna raden ",
                 -1
                 /* CACHED */
               )
-            ])),
+            ])]),
             default: _withCtx(({ row }) => [
               _createVNode(
                 _component_f_table_column,

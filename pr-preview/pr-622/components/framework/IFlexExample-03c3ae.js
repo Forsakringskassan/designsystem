@@ -57,7 +57,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* STABLE */
         }),
         _createVNode(_component_i_flex_item, { grow: "" }, {
-          default: _withCtx(() => _cache[0] || (_cache[0] = [
+          default: _withCtx(() => [..._cache[0] || (_cache[0] = [
             _createElementVNode(
               "h2",
               null,
@@ -65,9 +65,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [0]
+          ])]),
+          _: 1
+          /* STABLE */
         })
       ]),
       _: 1

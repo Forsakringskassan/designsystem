@@ -40,15 +40,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _directive_validation = _resolveDirective("validation");
   return _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { id: "child-name" }, {
-    default: _withCtx(() => _cache[0] || (_cache[0] = [
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Barnets namn ",
         -1
         /* CACHED */
       )
-    ])),
-    _: 1,
-    __: [0]
+    ])]),
+    _: 1
+    /* STABLE */
   })), [
     [
       _directive_validation,
