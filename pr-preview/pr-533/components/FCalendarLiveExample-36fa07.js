@@ -2202,7 +2202,13 @@ var FModal_default = defineComponent4({
       }
     }
   },
-  emits: ["close"],
+  emits: [
+    /**
+     * Event that is dispatched when the escape button is pressed.
+     * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+     */
+    "close"
+  ],
   data() {
     return {
       nonModalFocusableElements: [],
@@ -2538,7 +2544,13 @@ var FConfirmModal_default = defineComponent5({
       }
     }
   },
-  emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
+  emits: [
+    /**
+     * Emits reason for closing modal
+     */
+    "close",
+    ...defaultButtons.map((it) => it.event ?? "")
+  ],
   computed: {
     preparedButtons() {
       const preparedButtonList = prepareButtonList(this.buttons);
@@ -3117,7 +3129,19 @@ var FValidationGroup_default = defineComponent9({
       default: false
     }
   },
-  emits: ["group-validity", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when validation group has been updated.
+     *
+     * @type {GroupValidityEvent}
+     */
+    "group-validity",
+    /**
+     * V-model event.
+     * @type {GroupValidityEvent}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       components: {}
@@ -3242,7 +3266,12 @@ var FValidationForm_default = defineComponent10({
       }
     }
   },
-  emits: ["submit"],
+  emits: [
+    /**
+     * Emitted when form is successfully submitted.
+     */
+    "submit"
+  ],
   data() {
     return {
       validity: { isValid: true, componentsWithError: [], componentCount: 0 },
@@ -3484,7 +3513,23 @@ var FFormModal_default = defineComponent11({
       ]
     }
   },
-  emits: ["cancel", "close", "submit"],
+  emits: [
+    /**
+     * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+     * In most use cases the isOpen prop should be set to false when this event is triggered.
+     */
+    "cancel",
+    /**
+     * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+     * In most use cases the isOpen prop should be set to false when this event is triggered.
+     */
+    "close",
+    /**
+     * Event that is dispatched when the submit button is is clicked.
+     * The event payload is the data that has been submitted.
+     */
+    "submit"
+  ],
   data() {
     return {};
   },
@@ -5057,28 +5102,23 @@ var IPopupMenu_default = defineComponent15({
   emits: [
     /**
      * Emitted when an item is selected and when tabbing out of the popup.
-     *
-     * @event close
      */
     "close",
     /**
      * Emitted when an item is selected.
      *
-     * @event select
      * @type {string} item key
      */
     "select",
     /**
      * V-model event. Emitted when an item is selected.
      *
-     * @event select
      * @type {string} item key
      */
     "update:modelValue",
     /**
      * V-model event. Emitted when item focus changes.
      *
-     * @event select
      * @type {string} Key of focused item, or empty if no item focused.
      */
     "update:focusedItem"
@@ -5997,7 +6037,19 @@ var ICalendarMonth_default = defineComponent19({
       required: true
     }
   },
-  emits: ["change", "click", "update:modelValue"],
+  emits: [
+    "change",
+    /**
+     * `click` event.
+     * @type {string}
+     */
+    "click",
+    /**
+     * `v-model` event.
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   methods: {
     onClickDay(date) {
       this.$emit("click", date);
@@ -6136,6 +6188,11 @@ var ICalendarNavbar_default = defineComponent20({
   },
   emits: [
     "change",
+    /**
+     * V-model event.
+     * @param value
+     * @type {FDate}
+     */
     "update:modelValue",
     /**
      * Emitted when year selector is opened or closed.
@@ -6650,7 +6707,20 @@ var FTooltip_default = defineComponent21({
       }
     }
   },
-  emits: ["update:modelValue", "toggle"],
+  emits: [
+    /**
+     * v-model event.
+     *
+     * @param {boolean} value - Model value
+     */
+    "update:modelValue",
+    /**
+     * Emitted when the state of the tooltip (collapsed/expanded) changes.
+     *
+     * @param {{ isOpen: boolean }} event - New state of tooltip.
+     */
+    "toggle"
+  ],
   setup(props) {
     const provided = inject(tooltipAttachTo, null);
     const attachTo = toRef(props, "attachTo");
@@ -7307,7 +7377,19 @@ var FCheckboxField_default = defineComponent23({
       required: true
     }
   },
-  emits: ["change", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when the value of the checkbox changes.
+     *
+     * @type {anyType | anyType[]}
+     */
+    "change",
+    /**
+     * V-model event.
+     * @type {anyType | anyType[]}
+     */
+    "update:modelValue"
+  ],
   setup() {
     const { showDetails, getFieldsetLabelText } = useFieldset();
     return {
