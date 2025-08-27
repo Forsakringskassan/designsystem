@@ -20,7 +20,14 @@
   "files": [
     "lib"
   ],
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
-    "globby": "14.1.0"
+    "@tsconfig/node22": "22.0.2",
+    "@types/node": "22.18.0"
+  },
+  "engines": {
+    "node": ">= 22.0"
   }
 }
