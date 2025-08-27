@@ -4724,7 +4724,13 @@ var _sfc_main$1k = defineComponent({
       }
     }
   },
-  emits: ["close"],
+  emits: [
+    /**
+     * Event that is dispatched when the escape button is pressed.
+     * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+     */
+    "close"
+  ],
   data() {
     return {
       nonModalFocusableElements: [],
@@ -4996,10 +5002,16 @@ var _sfc_main$1j = defineComponent({
       }
     }
   },
-  emits: ["close", ...defaultButtons.map((it) => {
-    var _it$event;
-    return (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "";
-  })],
+  emits: [
+    /**
+     * Emits reason for closing modal
+     */
+    "close",
+    ...defaultButtons.map((it) => {
+      var _it$event;
+      return (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "";
+    })
+  ],
   computed: {
     preparedButtons() {
       const preparedButtonList = prepareButtonList(this.buttons);
@@ -5464,7 +5476,19 @@ var _sfc_main$1f = defineComponent({
       default: false
     }
   },
-  emits: ["group-validity", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when validation group has been updated.
+     *
+     * @type {GroupValidityEvent}
+     */
+    "group-validity",
+    /**
+     * V-model event.
+     * @type {GroupValidityEvent}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       components: {}
@@ -5588,7 +5612,12 @@ var _sfc_main$1e = defineComponent({
       }
     }
   },
-  emits: ["submit"],
+  emits: [
+    /**
+     * Emitted when form is successfully submitted.
+     */
+    "submit"
+  ],
   data() {
     return {
       validity: {
@@ -5807,7 +5836,23 @@ var _sfc_main$1d = defineComponent({
       }]
     }
   },
-  emits: ["cancel", "close", "submit"],
+  emits: [
+    /**
+     * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+     * In most use cases the isOpen prop should be set to false when this event is triggered.
+     */
+    "cancel",
+    /**
+     * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+     * In most use cases the isOpen prop should be set to false when this event is triggered.
+     */
+    "close",
+    /**
+     * Event that is dispatched when the submit button is is clicked.
+     * The event payload is the data that has been submitted.
+     */
+    "submit"
+  ],
   data() {
     return {};
   },
@@ -6588,6 +6633,11 @@ var _sfc_main$1a = defineComponent({
   },
   emits: [
     "change",
+    /**
+     * V-model event.
+     * @param value
+     * @type {FDate}
+     */
     "update:modelValue",
     /**
      * Emitted when year selector is opened or closed.
@@ -7000,7 +7050,19 @@ var _sfc_main$18 = defineComponent({
       required: true
     }
   },
-  emits: ["change", "click", "update:modelValue"],
+  emits: [
+    "change",
+    /**
+     * `click` event.
+     * @type {string}
+     */
+    "click",
+    /**
+     * `v-model` event.
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   methods: {
     onClickDay(date) {
       this.$emit("click", date);
@@ -9156,28 +9218,23 @@ var _sfc_main$10 = defineComponent({
   emits: [
     /**
      * Emitted when an item is selected and when tabbing out of the popup.
-     *
-     * @event close
      */
     "close",
     /**
      * Emitted when an item is selected.
      *
-     * @event select
      * @type {string} item key
      */
     "select",
     /**
      * V-model event. Emitted when an item is selected.
      *
-     * @event select
      * @type {string} item key
      */
     "update:modelValue",
     /**
      * V-model event. Emitted when item focus changes.
      *
-     * @event select
      * @type {string} Key of focused item, or empty if no item focused.
      */
     "update:focusedItem"
@@ -10114,7 +10171,20 @@ var _sfc_main$X = defineComponent({
       }
     }
   },
-  emits: ["update:modelValue", "toggle"],
+  emits: [
+    /**
+     * v-model event.
+     *
+     * @param {boolean} value - Model value
+     */
+    "update:modelValue",
+    /**
+     * Emitted when the state of the tooltip (collapsed/expanded) changes.
+     *
+     * @param {{ isOpen: boolean }} event - New state of tooltip.
+     */
+    "toggle"
+  ],
   setup(props) {
     const provided = inject(tooltipAttachTo, null);
     const attachTo = toRef(props, "attachTo");
@@ -10638,7 +10708,19 @@ var _sfc_main$V = defineComponent({
       required: true
     }
   },
-  emits: ["change", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when the value of the checkbox changes.
+     *
+     * @type {anyType | anyType[]}
+     */
+    "change",
+    /**
+     * V-model event.
+     * @type {anyType | anyType[]}
+     */
+    "update:modelValue"
+  ],
   setup() {
     const {
       showDetails,
@@ -10949,7 +11031,18 @@ var _sfc_main$U = defineComponent({
       default: "Kontextuell meny"
     }
   },
-  emits: ["close", "select"],
+  emits: [
+    /**
+     * Event that is dispatched after an item is selected or
+     * after pressing for example esc in the menu
+     */
+    "close",
+    /**
+     * Event that is dispatched when an item is selected.
+     * @type {string} item key
+     */
+    "select"
+  ],
   setup() {
     return {
       contextmenu: ref(null)
@@ -12626,7 +12719,19 @@ var _sfc_main$O = defineComponent({
       default: "sm-12"
     }
   },
-  emits: ["change", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when the value of the dropdown changes.
+     *
+     * @type {string}
+     */
+    "change",
+    /**
+     * V-model event.
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   setup() {
     return {
       textFieldTableMode: inject("textFieldTableMode", false)
@@ -12914,7 +13019,20 @@ var _sfc_main$N = defineComponent({
       default: false
     }
   },
-  emits: ["blur", "change", "update:modelValue"],
+  emits: [
+    /**
+     * @type {string}
+     */
+    "blur",
+    /**
+     * @type {string}
+     */
+    "change",
+    /* V-model event.
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   setup(props) {
     const {
       textFieldTableMode,
@@ -13278,7 +13396,22 @@ var _sfc_main$M = defineComponent({
       default: TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du m\xE5ste skriva in den igen.")
     }
   },
-  emits: ["blur", "change", "update:modelValue"],
+  emits: [
+    /**
+     * @type {string | number}
+     */
+    "blur",
+    /**
+     * @type {string | number}
+     */
+    "change",
+    /**
+     * V-model event.
+     *
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       validityMode: "INITIAL",
@@ -13419,7 +13552,21 @@ var _sfc_main$L = defineComponent({
       default: false
     }
   },
-  emits: ["blur", "change", "update:modelValue"],
+  emits: [
+    /**
+     * @type {string | number}
+     */
+    "blur",
+    /**
+     * @type {string | number}
+     */
+    "change",
+    /**
+     * V-model event.
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       validityMode: "INITIAL",
@@ -13572,7 +13719,23 @@ var _sfc_main$J = defineComponent({
       default: 80
     }
   },
-  emits: ["blur", "change", "update", "update:modelValue"],
+  emits: [
+    /**
+     * @type {string | number}
+     */
+    "blur",
+    /**
+     * @type {string | number}
+     */
+    "change",
+    "update",
+    /**
+     * V-model event.
+     *
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       defaultText: this.$t("fkui.search-text-field.label", "S\xF6k")
@@ -14733,7 +14896,19 @@ var _sfc_main$x = defineComponent({
       default: false
     }
   },
-  emits: ["change", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when date changes.
+     *
+     * @type {string}
+     */
+    "change",
+    /**
+     * `v-model` event.
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   setup() {
     const defaultMinDate = FDate.now().addYears(-10);
     const defaultMaxDate = FDate.now().addYears(10);
@@ -15997,7 +16172,13 @@ var _sfc_main$q = defineComponent({
       required: true
     }
   },
-  emits: ["update:modelValue"],
+  emits: [
+    /**
+     * `v-model` event.
+     * @type {FDialogueTreeUserProgress}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       currentStep: this.dialogueTree,
@@ -16139,7 +16320,13 @@ var _sfc_main$p = defineComponent({
       default: "Du har %VALUE% notifieringar."
     }
   },
-  emits: ["toggle"],
+  emits: [
+    /**
+     * Emitted when panel heading is clicked.
+     * @type {MouseEvent}
+     */
+    "toggle"
+  ],
   computed: {
     expandedClass() {
       return this.expanded ? "expandable-panel--expanded" : "expandable-panel--collapsed";
@@ -16275,7 +16462,13 @@ var _sfc_main$o = defineComponent({
       default: () => ElementIdService.generateElementId()
     }
   },
-  emits: ["toggle"],
+  emits: [
+    /**
+     * Emitted when heading is clicked.
+     * @type {MouseEvent}
+     */
+    "toggle"
+  ],
   computed: {
     expandedClass() {
       return this.expanded ? "expandable-paragraph--open" : "expandable-paragraph--closed";
@@ -16496,7 +16689,15 @@ var _sfc_main$m = defineComponent({
       default: null
     }
   },
-  emits: ["change", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when file changes.
+     *
+     * @type {FileList}
+     */
+    "change",
+    "update:modelValue"
+  ],
   computed: {
     attrs() {
       return {
@@ -18620,7 +18821,6 @@ var _sfc_main$b = defineComponent({
      * Event that is dispatched when a menu item is selected, for example, by clicking on the item.
      * In most use cases the event payload is used to call Vue `router.push()` from the consumer code.
      *
-     * @event selectedRoute
      * @param route
      * @type {string}
      */
@@ -18628,7 +18828,6 @@ var _sfc_main$b = defineComponent({
     /**
      * V-model event to update route property.
      *
-     * @event update:route
      * @param route
      * @type {string}
      */
@@ -19502,7 +19701,19 @@ var _sfc_main$4 = defineComponent({
       default: () => void 0
     }
   },
-  emits: ["change", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when the value of the radiobutton changes.
+     *
+     * @type {anyType}
+     */
+    "change",
+    /**
+     * V-model event.
+     * @type {anyType}
+     */
+    "update:modelValue"
+  ],
   setup() {
     const {
       sharedName,
@@ -19755,7 +19966,17 @@ var _sfc_main$2 = defineComponent({
       default: false
     }
   },
-  emits: ["input", "update:modelValue"],
+  emits: [
+    /**
+     * @type {string}
+     */
+    "input",
+    /**
+     * V-model event.
+     * @type {string}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       validityMode: "INITIAL",
@@ -19977,7 +20198,25 @@ var _sfc_main$1 = defineComponent({
       default: false
     }
   },
-  emits: ["cancel", "completed", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when wizard is canceled, i.e.
+     * user pressing 'Avbryt' button.
+     *
+     * Passes a boolean indicating if it was cancelled on the final step.
+     */
+    "cancel",
+    /**
+     * Emitted when wizard is finished, i.e.
+     * user pressing 'Fortsätt' button in last step.
+     */
+    "completed",
+    /**
+     * V-model event.
+     * @type {FWizardKey}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       steps: []
