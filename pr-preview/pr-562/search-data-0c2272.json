@@ -196,6 +196,13 @@
     "EventBus",
     "EventBus",
     "services",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -209,13 +216,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -1064,6 +1064,23 @@
       ]
     },
     {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1094,23 +1111,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
       ]
     },
     {
@@ -2434,17 +2434,17 @@
     "200": 51,
     "201": 51,
     "202": 51,
-    "203": 51,
+    "203": 52,
     "204": 52,
     "205": 52,
     "206": 52,
     "207": 53,
     "208": 53,
-    "209": 54,
-    "210": 54,
+    "209": 53,
+    "210": 53,
     "211": 54,
     "212": 54,
-    "213": 55,
+    "213": 54,
     "214": 55,
     "215": 55,
     "216": 56,
