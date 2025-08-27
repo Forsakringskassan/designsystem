@@ -2139,7 +2139,13 @@ var FModal_default = defineComponent4({
       }
     }
   },
-  emits: ["close"],
+  emits: [
+    /**
+     * Event that is dispatched when the escape button is pressed.
+     * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+     */
+    "close"
+  ],
   data() {
     return {
       nonModalFocusableElements: [],
@@ -2475,7 +2481,13 @@ var FConfirmModal_default = defineComponent5({
       }
     }
   },
-  emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
+  emits: [
+    /**
+     * Emits reason for closing modal
+     */
+    "close",
+    ...defaultButtons.map((it) => it.event ?? "")
+  ],
   computed: {
     preparedButtons() {
       const preparedButtonList = prepareButtonList(this.buttons);
@@ -3054,7 +3066,19 @@ var FValidationGroup_default = defineComponent9({
       default: false
     }
   },
-  emits: ["group-validity", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when validation group has been updated.
+     *
+     * @type {GroupValidityEvent}
+     */
+    "group-validity",
+    /**
+     * V-model event.
+     * @type {GroupValidityEvent}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       components: {}
@@ -3179,7 +3203,12 @@ var FValidationForm_default = defineComponent10({
       }
     }
   },
-  emits: ["submit"],
+  emits: [
+    /**
+     * Emitted when form is successfully submitted.
+     */
+    "submit"
+  ],
   data() {
     return {
       validity: { isValid: true, componentsWithError: [], componentCount: 0 },
@@ -3421,7 +3450,23 @@ var FFormModal_default = defineComponent11({
       ]
     }
   },
-  emits: ["cancel", "close", "submit"],
+  emits: [
+    /**
+     * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+     * In most use cases the isOpen prop should be set to false when this event is triggered.
+     */
+    "cancel",
+    /**
+     * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+     * In most use cases the isOpen prop should be set to false when this event is triggered.
+     */
+    "close",
+    /**
+     * Event that is dispatched when the submit button is is clicked.
+     * The event payload is the data that has been submitted.
+     */
+    "submit"
+  ],
   data() {
     return {};
   },
