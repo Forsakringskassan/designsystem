@@ -4,6 +4,7 @@ const path = require("node:path");
 const additionalUrls = (() => {
     const filePath = path.resolve(__dirname, "docs-alt/allowed-urls.js");
     if (fs.existsSync(filePath)) {
+        /* eslint-disable-next-line import/no-dynamic-require -- false positive */
         return require(filePath);
     } else {
         return [];
