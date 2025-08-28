@@ -1,9 +1,7 @@
 /* eslint-disable no-console -- expected to log */
-/// <reference types="Cypress" />
-// @ts-check
 
+import { glob } from "node:fs/promises";
 import path from "node:path";
-import { globbySync } from "globby";
 
 /**
  * @template T
@@ -72,40 +70,49 @@ function splitSpecsLogic(options) {
 }
 
 /**
- * @param {Cypress.PluginConfigOptions} config Cypress config object
- * @returns {string[]}
+ * @template T
+ * @param {T | T[]} value
+ * @returns {T[]}
  */
-function getSpecs(config) {
+function toArray(value) {
+    return Array.isArray(value) ? value : [value];
+}
+
+/**
+ * @param {Cypress.PluginConfigOptions & { additionalIgnorePattern?: string }} config Cypress config object
+ * @returns {Promise<string[]>}
+ */
+async function getSpecs(config) {
     const {
         projectRoot,
         specPattern,
         excludeSpecPattern,
         additionalIgnorePattern,
     } = config;
-    return globbySync(specPattern, {
-        cwd: projectRoot,
-        absolute: true,
-        ignore: [
-            ...excludeSpecPattern,
-            additionalIgnorePattern,
-            "**/node_modules/**",
-        ],
-    }).toSorted();
+    const exclude = [...toArray(excludeSpecPattern), "**/node_modules/**"];
+    if (additionalIgnorePattern) {
+        exclude.push(additionalIgnorePattern);
+    }
+    const iterator = glob(specPattern, { cwd: projectRoot, exclude });
+    const specFiles = await Array.fromAsync(iterator);
+    return specFiles.map((it) => path.resolve(it)).toSorted();
 }
 
 /**
  * Initialize Cypress split plugin using Cypress "on" and "config" arguments.
+ * @template {Cypress.PluginConfigOptions} T
  * @param {Cypress.PluginEvents} _on Cypress "on" event registration
- * @param {Cypress.PluginConfigOptions} config Cypress config object
+ * @param {T} config Cypress config object
+ * @returns Promise<T>
  */
-function cypressSplit(_on, config) {
+async function cypressSplit(_on, config) {
     if (!process.env.SPLIT) {
         return config;
     }
 
-    const specs = getSpecs(config);
+    const specs = await getSpecs(config);
     const splitN = Number(process.env.SPLIT);
-    const splitIndex = Number(process.env.SPLIT_INDEX);
+    const splitIndex = Number(process.env.SPLIT_INDEX ?? 0);
 
     const { splitSpecs } = splitSpecsLogic({
         specs,
