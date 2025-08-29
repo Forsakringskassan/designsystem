@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "glob": "11.0.3",
-    "sass": "1.90.0",
+    "sass": "1.91.0",
     "svgo": "4.0.0"
   },
   "engines": {
