@@ -41,9 +41,9 @@ function requireGlobalThis() {
   globalThis_1 = // eslint-disable-next-line es/no-global-this -- safe
   check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || // eslint-disable-next-line no-restricted-globals -- safe
   check(typeof self == "object" && self) || check(typeof commonjsGlobal == "object" && commonjsGlobal) || check(typeof globalThis_1 == "object" && globalThis_1) || // eslint-disable-next-line no-new-func -- fallback
-  /* @__PURE__ */ function() {
+  /* @__PURE__ */ (function() {
     return this;
-  }() || Function("return this")();
+  })() || Function("return this")();
   return globalThis_1;
 }
 var objectGetOwnPropertyDescriptor = {};
@@ -83,8 +83,8 @@ function requireFunctionBindNative() {
   hasRequiredFunctionBindNative = 1;
   var fails2 = requireFails();
   functionBindNative = !fails2(function() {
-    var test = function() {
-    }.bind();
+    var test = (function() {
+    }).bind();
     return typeof test != "function" || test.hasOwnProperty("prototype");
   });
   return functionBindNative;
@@ -443,10 +443,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.43.0",
+    version: "3.45.1",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.43.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.45.1/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -724,8 +724,8 @@ function requireFunctionName() {
   var FunctionPrototype = Function.prototype;
   var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
   var EXISTS = hasOwn(FunctionPrototype, "name");
-  var PROPER = EXISTS && function something() {
-  }.name === "something";
+  var PROPER = EXISTS && (function something() {
+  }).name === "something";
   var CONFIGURABLE = EXISTS && (!DESCRIPTORS || DESCRIPTORS && getDescriptor(FunctionPrototype, "name").configurable);
   functionName = {
     EXISTS,
@@ -1281,9 +1281,9 @@ function requireClassof() {
   var wellKnownSymbol2 = requireWellKnownSymbol();
   var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
   var $Object = Object;
-  var CORRECT_ARGUMENTS = classofRaw2(/* @__PURE__ */ function() {
+  var CORRECT_ARGUMENTS = classofRaw2(/* @__PURE__ */ (function() {
     return arguments;
-  }()) === "Arguments";
+  })()) === "Arguments";
   var tryGet = function(it, key) {
     try {
       return it[key];
@@ -2176,14 +2176,13 @@ function minutesToHoursMinutesString(value) {
   return stripWhitespace(valueString);
 }
 function splitHoursMinutes(valueString, extraForgiving = false) {
-  var _a, _b;
   const regexps = extraForgiving ? [HOURS_MINUTES_WITHOUT_COLON_REGEXP, HOURS_MINUTES_REGEXP] : [HOURS_MINUTES_REGEXP];
   const match = findMatch(regexps, stripWhitespace(valueString));
   if (!match) {
     return ["", ""];
   }
-  const hours = padInitialZeros((_a = match == null ? void 0 : match.groups) == null ? void 0 : _a.hours);
-  const minutes = padInitialZeros((_b = match == null ? void 0 : match.groups) == null ? void 0 : _b.minutes);
+  const hours = padInitialZeros(match?.groups?.hours);
+  const minutes = padInitialZeros(match?.groups?.minutes);
   return [hours, minutes];
 }
 function minutesToUserFriendlyString(value) {
@@ -2245,8 +2244,7 @@ var HoursMinutesValidatorUtils = class _HoursMinutesValidatorUtils {
     return compare(valueAsNumber, limitAsNumber);
   }
   static getParserFromConfig(config) {
-    var _a;
-    if (!isSet(config) || !Array.isArray(config.parser) || !isSet((_a = config.parser) == null ? void 0 : _a[0]) || typeof config.parser[0] !== "function") {
+    if (!isSet(config) || !Array.isArray(config.parser) || !isSet(config.parser?.[0]) || typeof config.parser[0] !== "function") {
       return parseTimeToNumber;
     }
     return config.parser[0];
@@ -2376,10 +2374,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         )
       ]),
       default: _withCtx(() => [
-        _cache[1] || (_cache[1] = _createTextVNode(" Ange arbetstid "))
+        _cache[1] || (_cache[1] = _createTextVNode(
+          " Ange arbetstid ",
+          -1
+          /* CACHED */
+        ))
       ]),
-      _: 1,
-      __: [1]
+      _: 1
+      /* STABLE */
     }, 8, ["modelValue", "parser"])), [
       [
         _directive_validation,
