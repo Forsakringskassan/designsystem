@@ -9,6 +9,7 @@ import {
     switchTabbable,
     stopEdit,
     setTabbable,
+    getTd,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
 
@@ -45,6 +46,8 @@ const currentCellTarget: Ref<HTMLElement | null> = ref(null);
 async function startEditHandler(focusElement: HTMLElement): Promise<void> {
     assertRef(currentCellTarget);
     setTabbable(currentCellTarget.value, false);
+    currentCellTarget.value = getTd(focusElement);
+
     focusElement.focus();
 }
 

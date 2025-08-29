@@ -27,7 +27,11 @@ onMounted(() => {
     viewValue.value = inputRef.value?.value ?? "";
 });
 
-async function onCellDoubleClick(): Promise<void> {
+async function onCellClick(): Promise<void> {
+    if (editing.value === true) {
+        return;
+    }
+
     editing.value = true;
     await nextTick();
     assertRef(inputRef);
@@ -42,10 +46,16 @@ async function onCellDoubleClick(): Promise<void> {
 
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
     if (isAlphanumeric(e) || e.code === "Enter") {
+        e.preventDefault();
         editing.value = true;
         await nextTick();
         assertRef(inputRef);
         assertSet(startEdit);
+
+        if (isAlphanumeric(e)) {
+            inputRef.value.value = inputRef.value.value + e.key;
+        }
+
         startEdit(inputRef.value);
     }
 }
@@ -94,8 +104,8 @@ function onValidity(e: CustomEvent<ValidityEvent>): void {
 </script>
 
 <template>
-    <f-table-cell :title @dblclick.stop="onCellDoubleClick" @keydown="onCellKeyDown">
-        <div v-show="!editing" ref="view" class="view">{{ viewValue }}</div>
+    <f-table-cell :title @click.stop="onCellClick" @keydown="onCellKeyDown">
+        <div v-show="!editing" tabindex="-1" class="view">{{ viewValue }}</div>
         <div
             v-show="editing"
             ref="edit"

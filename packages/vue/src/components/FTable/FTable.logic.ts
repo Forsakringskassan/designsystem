@@ -60,19 +60,6 @@ function getTr(td: HTMLTableCellElement): HTMLTableRowElement {
     return td.parentElement as HTMLTableRowElement;
 }
 
-function getTd(element: HTMLElement): HTMLTableCellElement {
-    if (isTd(element)) {
-        return element;
-    } else {
-        const closest = element.closest("td");
-        if (!closest) {
-            throw new Error("expected td parent");
-        }
-
-        return closest;
-    }
-}
-
 function getLastRowIndex(tableElement: HTMLTableElement): number {
     return tableElement.rows.length - 1;
 }
@@ -215,6 +202,19 @@ export function getMetaRows<
     );
 
     return array;
+}
+
+export function getTd(element: HTMLElement): HTMLTableCellElement {
+    if (isTd(element)) {
+        return element;
+    } else {
+        const closest = element.closest("td");
+        if (!closest) {
+            throw new Error("expected td parent");
+        }
+
+        return closest;
+    }
 }
 
 export function findAction(
