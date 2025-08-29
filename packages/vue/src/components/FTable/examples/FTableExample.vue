@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTextField, FIcon, FTable, FTableCell, FTableEditCell } from "@fkui/vue";
+import { FTextField, FIcon, FTable, FTableCell, FTableEditCell, FTableSelectCell } from "@fkui/vue";
 
 const rows = ref([
     {
@@ -110,6 +110,7 @@ function onButtonClick(value: string): void {
             <f-table-cell title="Kryssruta">
                 <input type="checkbox" aria-label="Kryssruta" />
             </f-table-cell>
+            <f-table-select-cell title="Dropplista"></f-table-select-cell>
             <f-table-cell title="Text">{{ row.id }}</f-table-cell>
             <f-table-cell v-format:number="row.antal" title="Formatterad text"></f-table-cell>
             <f-table-cell title="Knapp">
