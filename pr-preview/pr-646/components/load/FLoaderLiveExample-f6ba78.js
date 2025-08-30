@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderLiveExample.vue:FLoaderLiveExample-f071ae.js
+// virtual-entry:virtual:packages/vue/src/components/FLoader/examples/FLoaderLiveExample.vue:FLoaderLiveExample-f6ba78.js
 import { defineComponent } from "vue";
 import { FLoader, FCheckboxField } from "@fkui/vue";
 import { createElement, LiveExample } from "@forsakringskassan/docs-live-example";
@@ -211,7 +211,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f071ae"
+  selector: "#example-f6ba78"
 });
 export {
   render
