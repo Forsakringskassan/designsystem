@@ -21,7 +21,7 @@
     "preset": "@forsakringskassan/jest-config"
   },
   "devDependencies": {
-    "@jest/globals": "29.7.0",
+    "@jest/globals": "30.1.1",
     "execa": "9.6.0",
     "prettier": "3.6.2",
     "yaml": "2.8.1"
