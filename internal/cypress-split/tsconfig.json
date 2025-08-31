@@ -1,0 +1,10 @@
+{
+    "extends": ["@tsconfig/node22"],
+    "compilerOptions": {
+        "noEmit": true,
+        "allowJs": true,
+        "checkJs": true,
+        "types": ["node", "cypress"]
+    },
+    "include": ["lib/**/*.js"]
+}
