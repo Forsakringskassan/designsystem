@@ -1,5 +1,6 @@
-import globals from "globals";
-import defaultConfig from "@forsakringskassan/eslint-config/flat.mjs";
+import defaultConfig, {
+    globals,
+} from "@forsakringskassan/eslint-config/flat.mjs";
 import cliConfig from "@forsakringskassan/eslint-config-cli/flat.mjs";
 import cypressConfig from "@forsakringskassan/eslint-config-cypress/flat.mjs";
 import jestConfig from "@forsakringskassan/eslint-config-jest/flat.mjs";
