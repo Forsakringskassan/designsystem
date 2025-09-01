@@ -309,8 +309,7 @@ var _hoisted_22 = {
   key: 1,
   class: "spinner--before"
 };
-var _hoisted_3 = { class: "button__text" };
-var _hoisted_4 = {
+var _hoisted_3 = {
   key: 3,
   class: "spinner--after"
 };
@@ -345,7 +344,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       })) : _createCommentVNode2("v-if", true)
     ])) : _createCommentVNode2("v-if", true),
     _createCommentVNode2("\n        @slot Slot for text to display in the button.\n        "),
-    _createElementVNode2("span", _hoisted_3, [
+    _createElementVNode2("span", null, [
       _renderSlot2(_ctx.$slots, "default")
     ]),
     $setup.hasIconRight ? (_openBlock2(), _createElementBlock2(
@@ -365,7 +364,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       64
       /* STABLE_FRAGMENT */
     )) : _createCommentVNode2("v-if", true),
-    !$setup.hasIcon ? (_openBlock2(), _createElementBlock2("span", _hoisted_4)) : _createCommentVNode2("v-if", true)
+    !$setup.hasIcon ? (_openBlock2(), _createElementBlock2("span", _hoisted_3)) : _createCommentVNode2("v-if", true)
   ], 16, _hoisted_12);
 }
 
