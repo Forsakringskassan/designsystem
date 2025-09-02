@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>, K extends keyof T">
 import { computed, provide } from "vue";
 import { FIcon } from "../FIcon";
-import FTableCell from "./FTableCell.vue";
 
 const {
     renderHeader = false,
@@ -38,7 +37,7 @@ const toggleIcon = computed(() => (isExpanded ? "arrow-down" : "arrow-right"));
     <template v-else>
         <tr class="table-ng__row" :aria-level>
             <template v-if="isTreegrid">
-                <f-table-cell v-if="isExpandable" title="Expandera">
+                <td v-if="isExpandable" tabindex="-1">
                     <button
                         aria-label="toggle"
                         type="button"
@@ -48,7 +47,7 @@ const toggleIcon = computed(() => (isExpanded ? "arrow-down" : "arrow-right"));
                     >
                         <f-icon class="button__icon" :name="toggleIcon"></f-icon>
                     </button>
-                </f-table-cell>
+                </td>
                 <td v-else :class="`level-${ariaLevel}`"></td>
             </template>
 

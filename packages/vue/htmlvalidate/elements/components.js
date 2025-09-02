@@ -1486,10 +1486,6 @@ module.exports = defineMetadata({
         flow: true,
     },
 
-    "f-table-cell": {
-        flow: true,
-    },
-
     "f-table-edit-cell": {
         flow: true,
     },

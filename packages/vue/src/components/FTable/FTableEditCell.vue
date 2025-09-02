@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { inject, nextTick, onMounted, ref, useTemplateRef } from "vue";
 import { assertRef, assertSet, isAlphanumeric, type ValidityEvent } from "@fkui/logic";
-import { FTableCell } from ".";
 
 const { title } = defineProps<{ title: string }>();
 
@@ -104,7 +103,7 @@ function onValidity(e: CustomEvent<ValidityEvent>): void {
 </script>
 
 <template>
-    <f-table-cell :title @click.stop="onCellClick" @keydown="onCellKeyDown">
+    <td tabindex="-1" @click.stop="onCellClick" @keydown="onCellKeyDown">
         <div v-show="!editing" tabindex="-1" class="view">{{ viewValue }}</div>
         <div
             v-show="editing"
@@ -117,7 +116,7 @@ function onValidity(e: CustomEvent<ValidityEvent>): void {
         >
             <slot></slot>
         </div>
-    </f-table-cell>
+    </td>
 </template>
 
 <style lang="scss">

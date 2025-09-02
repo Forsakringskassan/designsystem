@@ -15,7 +15,6 @@ import {
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
 import { TableColumn } from "./table-column";
-import FTableCell from "./FTableCell.vue";
 import FTableEditCell from "./FTableEditCell.vue";
 import FTableSelectCell from "./FTableSelectCell.vue";
 
@@ -101,7 +100,7 @@ onMounted(() => {
     <table ref="table" :role :class="tableClasses">
         <thead>
             <tr class="table-ng__row">
-                <th v-if="isTreegrid" tabindex="-1" class="table-ng__column"></th>
+                <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <th v-for="column in columns" :key="column.header" scope="col" class="table-ng__column">
                     {{ column.header }}
                 </th>
@@ -125,9 +124,14 @@ onMounted(() => {
             >
                 <template v-for="column in columns" :key="column.header">
                     <template v-if="column.type === 'checkbox'">
-                        <f-table-cell :title="column.header">
-                            <input v-model="row[column.key!]" type="checkbox" :aria-label="column.header" />
-                        </f-table-cell>
+                        <td tabindex="-1">
+                            <input
+                                v-model="row[column.key!]"
+                                type="checkbox"
+                                :aria-label="column.header"
+                                tabindex="-1"
+                            />
+                        </td>
                     </template>
                     <template v-else-if="column.type === 'text'">
                         <template v-if="column.editable">
@@ -141,31 +145,36 @@ onMounted(() => {
                             </f-table-edit-cell>
                         </template>
                         <template v-else>
-                            <f-table-cell title="Kryssruta">
+                            <td tabindex="-1">
                                 {{ column.key ? row[column.key] : column.value!(row) }}
-                            </f-table-cell>
+                            </td>
                         </template>
                     </template>
                     <template v-else-if="column.type === 'anchor'">
-                        <f-table-cell title="Länk">
-                            <a class="anchor anchor--block" target="_blank" :href="column.href"
+                        <td tabindex="-1">
+                            <a class="anchor anchor--block" target="_blank" :href="column.href" tabindex="-1"
                                 >{{ column.value(row) }}
                             </a>
-                        </f-table-cell>
+                        </td>
                     </template>
                     <template v-else-if="column.type === 'button'">
-                        <f-table-cell title="Knapp">
-                            <button class="icon-button" type="button" @click="column.onClick!(column.value(row))">
+                        <td tabindex="-1">
+                            <button
+                                class="icon-button"
+                                type="button"
+                                tabindex="-1"
+                                @click="column.onClick!(column.value(row))"
+                            >
                                 <f-icon name="trashcan"></f-icon>
                                 <span class="sr-only">Knapptext</span>
                             </button>
-                        </f-table-cell>
+                        </td>
                     </template>
                     <template v-else-if="column.type === 'select'">
                         <f-table-select-cell :title="column.header"></f-table-select-cell>
                     </template>
                     <template v-else-if="column.type === 'render'">
-                        <component :is="column.render()" :row></component>
+                        <component :is="column.render(row)" :row></component>
                     </template>
                 </template>
             </i-table-row>

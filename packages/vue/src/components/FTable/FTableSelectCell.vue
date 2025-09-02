@@ -2,7 +2,6 @@
 import { inject, nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
 import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { IComboboxDropdown } from "../../internal-components";
-import { FTableCell } from ".";
 
 const { title } = defineProps<{ title: string }>();
 
@@ -186,7 +185,7 @@ async function submit(): Promise<void> {
 </script>
 
 <template>
-    <f-table-cell :title @keydown="onCellKeyDown" @click.stop="onCellClick">
+    <td tabindex="-1" @keydown="onCellKeyDown" @click.stop="onCellClick">
         <div v-show="!editing">{{ viewValue }}</div>
         <div
             v-show="editing"
@@ -215,7 +214,7 @@ async function submit(): Promise<void> {
             @select="onDropdownSelect"
             @close="onDropdownClose"
         ></i-combobox-dropdown>
-    </f-table-cell>
+    </td>
 </template>
 
 <style lang="scss">
