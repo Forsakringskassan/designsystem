@@ -57,9 +57,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         rows: _ctx.items,
         "key-attribute": "id"
       }, {
-        caption: _withCtx(() => _cache[0] || (_cache[0] = [
-          _createTextVNode(" Tabell med standard densitet ")
-        ])),
+        caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
+          _createTextVNode(
+            " Tabell med standard densitet ",
+            -1
+            /* CACHED */
+          )
+        ])]),
         default: _withCtx(({ row }) => [
           _createVNode(
             _component_f_table_column,
@@ -111,9 +115,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         rows: _ctx.items,
         "key-attribute": "id"
       }, {
-        caption: _withCtx(() => _cache[1] || (_cache[1] = [
-          _createTextVNode(" Tabell med kompakt densitet ")
-        ])),
+        caption: _withCtx(() => [..._cache[1] || (_cache[1] = [
+          _createTextVNode(
+            " Tabell med kompakt densitet ",
+            -1
+            /* CACHED */
+          )
+        ])]),
         default: _withCtx(({ row }) => [
           _createVNode(
             _component_f_table_column,
