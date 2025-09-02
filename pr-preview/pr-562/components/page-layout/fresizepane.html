@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-d38767.json"
+            href="../../search-data-3c5a7b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-I+K1g8OoJFeG3hIOTiTrTLr4q4gNmwPyXv5sHBMT0L5306NA5Q0b/o76NmNTt2KY"
+            integrity="sha384-/u7FRtPkyvV0Kw8nIiXkyya2/Xx0bFiFxHi4RPAp61jc3qsufX4T1kSp/LugT9YA"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b5d27264ac853dc02d74d5aa228b38eb1f54e156/packages/vue/src/components/FResizePane/FResizePane.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/661e7fdd4f38b9c728b3f9b38838a434e65cdd66/packages/vue/src/components/FResizePane/FResizePane.vue">
                 FResizePane
             </a>
             
@@ -1122,7 +1122,7 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Justerbar yta (FResizePane) används tillsammans med <a href="./fpagelayout.html">Applikationslayout</a> för göra en yta med justerbar storlek.</p>
+                    <div id="content"><p class="docs-paragraph">Justerbar yta (FResizePane) används tillsammans med <a href="./fpagelayout.html">applikationsmall</a> för göra en yta med justerbar storlek.</p>
 <p class="docs-paragraph">Ytans storlek kan justeras med pekdon genom att dra i och släppa avgränsaren mellan ytorna eller med tangentbord:</p>
 <ul>
 <li><kbd>Vänster</kbd> och <kbd>Höger</kbd> ökar/minskar storleken.</li>
@@ -1158,13 +1158,13 @@ p {
         <script type="module" src="./FResizePaneLiveExample-5267ce.js"></script>
     
                 </div>
-            <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">FResizePane kan enbart användas i ytor där paneler kan fästas, för de standardlayouter som designsystemet levererar är det ytorna:</p>
+            <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Justerbar yta (FResizePane) kan enbart användas i ytor där paneler kan fästas, för de standardlayouter som designsystemet levererar är det ytorna:</p>
 <ul>
 <li><code>left</code> (för paneler till vänster)</li>
 <li><code>right</code> (för paneler till höger)</li>
 </ul>
 <p class="docs-paragraph">Skapar du en egen layout är det alla ytor där <code>attachPanel</code> inte är <code>&quot;none&quot;</code>.</p>
-<p class="docs-paragraph">Lägg <code>FResizePanel</code> komponenten som första elementet i respektive yta:</p>
+<p class="docs-paragraph">Lägg <code>FResizePanel</code>-komponenten som första elementet i respektive yta:</p>
 
                 <div
                     id="example-11008c"
@@ -1181,14 +1181,14 @@ p {
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-layout</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="begransa_storlek"><a class="header-anchor" href="#begransa_storlek">Begränsa storlek</a></h2><p class="docs-paragraph">Storleken på ytan kan begränsas genom att använda <code>min</code>- och <code>max</code> propen.
+            <h2 id="begransa_storlek"><a class="header-anchor" href="#begransa_storlek">Begränsa storlek</a></h2><p class="docs-paragraph">Storleken på ytan kan begränsas genom att använda <code>min</code>- och <code>max</code>-propen.
 Värden kan anges antingen som absolut storlek i pixlar (<code>px</code>), i procent (<code>%</code>) eller båda samtidigt.</p>
 <ul>
 <li><code>200px</code> - minsta/största storlek är 200px</li>
 <li><code>20%</code> - minsta/största storlek är 20% av applikationslayoutens totala bredd.</li>
 <li><code>200px 20%</code> - minsta/största är det minsta/största av 200px eller 20%.</li>
 </ul>
-<p class="docs-paragraph">Storleken refererar till innehållet i ytan, dvs <code>200px</code> innebär att det finns 200px effektiv yta för innehåll.
+<p class="docs-paragraph">Storleken refererar till innehållet i ytan, det vill säga <code>200px</code> innebär att det finns 200px effektiv yta för innehåll.
 Ytans totala storlek blir 200px + storleken på handtaget för att justera storleken.</p>
 <h2 id="initial_storlek"><a class="header-anchor" href="#initial_storlek">Initial storlek</a></h2><p class="docs-paragraph">Den initiala storleken på ytan kan anges med <code>initial</code> propen.
 Värde kan anges antingen som absolut storlek i pixlar (<code>px</code>) eller i procent (<code>%</code>).</p>
@@ -1370,9 +1370,9 @@ size)</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/jest-preset-stylelint-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/b5d27264ac853dc02d74d5aa228b38eb1f54e156">b5d2726</a>)<br />
+<div class="footer__right"><div class="version">renovate/jest-preset-stylelint-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/661e7fdd4f38b9c728b3f9b38838a434e65cdd66">661e7fd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/562">PR 562</a><br />
-        2025-09-01 16:31
+        2025-09-02 11:00
 </div>
 <div class="toolbar__item">
     <form id="version">
