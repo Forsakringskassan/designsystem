@@ -107,30 +107,19 @@
   --f-text-color-heading-4: inherit;
   --f-text-color-heading-5: inherit;
   --f-text-color-heading-6: inherit;
-  --f-text-color-input-disabled: #8d8e91;
   --f-text-color-heading-expandable-panel: #ffffff;
-  --f-text-color-wizard-step-done: #35805b;
-  --f-text-color-button-standard: #4a52b6;
-  --f-text-color-button-discrete: #4a52b6;
-  --f-text-color-button-discrete-disabled: #8d8e91;
   --f-text-color-button-discrete-hover: #3b4292;
-  --f-text-color-button-discrete-inverted: #ffffff;
   --f-text-color-button-discrete-inverted-hover: #ffffff;
-  --f-text-color-button-discrete-inverted-disabled: #e5e5f5;
   --f-text-color-menu: #1b1e23;
   --f-text-color-menu-hover: #1b1e23;
   --f-text-color-menu-horizontal-highlight: #1b1e23;
   --f-text-color-popupmenu: #1b1e23;
   --f-text-color-popupmenu-hover: #1b1e23;
-  --f-text-color-close-button: #1b1e23;
   --f-icon-color-white: #ffffff;
-  --f-icon-color-black: #1b1e23;
   --f-icon-color-info: #4a52b6;
   --f-icon-color-primary: #4a52b6;
-  --f-icon-color-discrete: #5f6165;
   --f-icon-color-success: #35805b;
   --f-icon-color-error: #ca1515;
-  --f-icon-color-input: #8d8e91;
   --f-icon-color-notice: #d34503;
   --f-icon-color-loader: #35805b;
   --f-icon-color-expandable-panel: #ffffff;
@@ -139,17 +128,8 @@
   --f-icon-color-table-header-discrete: #8d8e91;
   --f-icon-color-sort-filter-dataset-close: #1b1e23;
   --f-icon-color-sort-filter-dataset-search: #8d8e91;
-  --f-icon-color-wizard-step-pending: #f4f4f4;
-  --f-icon-color-wizard-step-done: #35805b;
   --f-icon-color-success-background: #dbe9e2;
-  --f-background-content: #ffffff;
-  --f-background-input: #ffffff;
-  --f-background-input-selected: #4a52b6;
-  --f-background-input-selected-disabled: #8d8e91;
-  --f-background-error: #fcf3f3;
-  --f-background-success: #f3f8f5;
   --f-background-overlay: rgba(0, 0, 0, 0.75);
-  --f-background-progress-file-item-ongoing: #ffc834;
   --f-background-pageheader-primary: #116a3e;
   --f-background-skiplink-focus: #f5f6fa;
   --f-background-heading-expandable-panel: #116a3e;
@@ -157,7 +137,6 @@
   --f-background-expandable-panel: #ffffff;
   --f-background-heading-static-panel: #afcfb5;
   --f-background-code: #f4f4f4;
-  --f-background-wizard-step-line: #5f6165;
   --f-background-button-discrete-hover: none;
   --f-background-sidepanel-button-tertiary-hover: #e5e5f5;
   --f-background-grid-default: #ffffff;
@@ -174,25 +153,12 @@
   --f-background-popupmenu: #ffffff;
   --f-background-popupmenu-vertical-hover: #ddddde;
   --f-background-popupmenu-vertical-highlight: #e7f0e9;
-  --f-background-dialogue-tree: #ffffff;
-  --f-background-dialogue-tree-hover: #e5e5f5;
-  --f-border-color-modal: #8d8e91;
-  --f-border-color-success: #35805b;
-  --f-border-color-error: #ca1515;
-  --f-border-color-input: #8d8e91;
-  --f-border-color-input-inner: #e5e5f5;
-  --f-border-color-input-inner-selected: #e5e5f5;
-  --f-border-color-input-inner-disabled: #ffffff;
-  --f-border-color-card: #8d8e91;
-  --f-border-color-dialogue-tree: #8d8e91;
-  --f-border-color-progress-file-item-ongoing: #5f6165;
   --f-border-color-panel: #e7f0e9;
   --f-border-color-expandable-panel: #116a3e;
   --f-border-color-static-panel: #afcfb5;
   --f-border-color-separator: #ddddde;
   --f-border-color-separator-pageheader-primary: #ffffff;
   --f-border-color-separator-contextmenu: #8d8e91;
-  --f-border-color-wizard-step-line: #5f6165;
   --f-border-color-link: #4a52b6;
   --f-border-color-link-hover: #8d8e91;
   --f-border-color-link-discrete: #8d8e91;
@@ -1619,10 +1585,7 @@ input[type=search]:focus,
 }
 .button--text--black {
   /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
-  color: var(--f-text-color-default);
-}
-.button--text--black > .button__icon {
-  color: var(--f-icon-color-black);
+  color: var(--fkds-color-action-text-secondary-default);
 }
 
 .button, .calendar-navbar__year-selector-button {
@@ -1630,13 +1593,13 @@ input[type=search]:focus,
   border-color: var(--fkds-color-action-border-primary-default);
   border-width: var(--f-border-width-medium);
   box-shadow: var(--f-button-shadow);
-  color: var(--f-text-color-button-standard);
+  color: var(--fkds-color-action-text-primary-default);
   padding: calc(var(--f-button-standard-padding-top) * var(--f-density-factor)) var(--f-button-standard-padding-right) calc(var(--f-button-standard-padding-bottom) * var(--f-density-factor)) var(--f-button-standard-padding-left);
 }
 .button:hover, .calendar-navbar__year-selector-button:hover {
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: var(--fkds-color-action-border-primary-default);
-  color: var(--f-text-color-button-standard);
+  color: var(--fkds-color-action-text-primary-default);
   box-shadow: var(--f-button-shadow-hover);
 }
 .button:active, .calendar-navbar__year-selector-button:active, .button:focus, .calendar-navbar__year-selector-button:focus {
@@ -1645,7 +1608,7 @@ input[type=search]:focus,
   outline: 2px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: var(--fkds-color-action-border-primary-default);
-  color: var(--f-text-color-button-standard);
+  color: var(--fkds-color-action-text-primary-default);
 }
 .button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button.button--disabled:hover {
   background-color: var(--fkds-color-background-disabled);
@@ -1716,7 +1679,7 @@ input[type=search]:focus,
   border-color: transparent;
   border-width: 0;
   box-shadow: none;
-  color: var(--f-text-color-button-discrete);
+  color: var(--fkds-color-action-text-primary-default);
   padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);
 }
 .button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover {
@@ -1736,7 +1699,7 @@ input[type=search]:focus,
 .button.button--discrete.disabled, .button--discrete.disabled.calendar-navbar__year-selector-button, .button.disabled.button--text, .disabled.button--text.calendar-navbar__year-selector-button, .button.button--discrete.disabled:hover, .button.button--discrete:disabled, .button--discrete.calendar-navbar__year-selector-button:disabled, .button.button--text:disabled, .button--text.calendar-navbar__year-selector-button:disabled, .button.button--discrete:disabled:hover, .button.button--discrete.button--disabled, .button--discrete.button--disabled.calendar-navbar__year-selector-button, .button.button--disabled.button--text, .button--disabled.button--text.calendar-navbar__year-selector-button, .button.button--discrete.button--disabled:hover {
   background-color: transparent;
   border-color: transparent;
-  color: var(--f-text-color-button-discrete-disabled);
+  color: var(--fkds-color-text-disabled);
 }
 @media (max-width: 639.98px) {
   .button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button {
@@ -1750,10 +1713,7 @@ input[type=search]:focus,
   padding-bottom: calc(var(--f-button-discrete-black-padding-bottom) * var(--f-density-factor));
   padding-left: var(--f-button-discrete-black-padding-left);
   /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-  color: var(--f-text-color-default);
-}
-.button.button--discrete--black > .button__icon, .button--discrete--black.calendar-navbar__year-selector-button > .button__icon, .button.button--text--black > .button__icon, .button--text--black.calendar-navbar__year-selector-button > .button__icon {
-  color: var(--f-icon-color-black);
+  color: var(--fkds-color-action-text-secondary-default);
 }
 .button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover {
   box-shadow: none;
@@ -1778,7 +1738,7 @@ input[type=search]:focus,
   border-color: transparent;
   border-width: 0;
   box-shadow: none;
-  color: var(--f-text-color-button-discrete-inverted);
+  color: var(--fkds-color-action-text-inverted-default);
   padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);
 }
 .button.button--discrete-inverted:hover, .button--discrete-inverted.calendar-navbar__year-selector-button:hover {
@@ -1798,7 +1758,7 @@ input[type=search]:focus,
 .button.button--discrete-inverted.disabled, .button--discrete-inverted.disabled.calendar-navbar__year-selector-button, .button.button--discrete-inverted.disabled:hover, .button.button--discrete-inverted:disabled, .button--discrete-inverted.calendar-navbar__year-selector-button:disabled, .button.button--discrete-inverted:disabled:hover, .button.button--discrete-inverted.button--disabled, .button--discrete-inverted.button--disabled.calendar-navbar__year-selector-button, .button.button--discrete-inverted.button--disabled:hover {
   background-color: transparent;
   border-color: transparent;
-  color: var(--f-text-color-button-discrete-inverted-disabled);
+  color: var(--fkds-color-text-disabled);
 }
 @media (max-width: 639.98px) {
   .button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button {
@@ -1850,6 +1810,9 @@ input[type=search]:focus,
 .button.button--tertiary--black:hover, .calendar-navbar__year-selector-button:hover, .button.button--tertiary--black:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary--black:focus, .calendar-navbar__year-selector-button:focus {
   color: var(--fkds-color-action-text-secondary-default);
 }
+.button.button--tertiary:disabled, .calendar-navbar__year-selector-button:disabled {
+  border: none;
+}
 .button.button--tertiary--inverted, .button--tertiary--inverted.calendar-navbar__year-selector-button {
   color: var(--fkds-color-action-text-inverted-default);
 }
@@ -1859,6 +1822,7 @@ input[type=search]:focus,
 }
 .button.button--tertiary--inverted:disabled, .button--tertiary--inverted.calendar-navbar__year-selector-button:disabled {
   color: var(--fkds-color-text-disabled);
+  border: none;
   border-width: 0;
   background-color: transparent;
 }
@@ -2076,7 +2040,7 @@ input[type=search]:focus,
   margin-bottom: 0 !important;
 }
 .card__error-message {
-  color: var(--f-text-color-error);
+  color: var(--fkds-color-feedback-text-negative);
 }
 
 .list__item {
@@ -2431,7 +2395,7 @@ input[type=search]:focus,
   align-items: center;
   background: inherit;
   border: none;
-  color: var(--f-text-color-close-button);
+  color: var(--fkds-color-action-text-secondary-default);
   cursor: pointer;
   display: flex;
   font-weight: 700;
@@ -3078,9 +3042,6 @@ input[type=search]:focus,
   border: var(--f-border-width-medium) solid var(--f-border-color-separator);
 }
 
-.file-selector svg {
-  color: var(--f-icon-color-primary);
-}
 .file-selector input[type=file] {
   position: absolute;
   width: 1px;
@@ -5953,7 +5914,7 @@ input[type=search]:focus,
   display: flex;
   justify-content: space-between;
   padding: 0.5em 10px;
-  background: var(--f-border-color-error);
+  background: var(--fkds-icon-color-feedback-border-negative);
   line-height: 24px;
   position: relative;
 }
@@ -5971,43 +5932,43 @@ input[type=search]:focus,
   inset: 0;
   padding: var(--f-border-width-medium);
   border-radius: inherit;
-  background: var(--f-background-error) content-box;
+  background: var(--fkds-icon-color-feedback-background-negative) content-box;
 }
 .popup-error--top {
   border-radius: min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) 5.7735026919px 5.7735026919px/5.7735026919px;
-  border-image: conic-gradient(var(--f-border-color-error) 0 0) fill 0/0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;
+  border-image: conic-gradient(var(--fkds-icon-color-feedback-border-negative) 0 0) fill 0/0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;
   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px) 0, calc(100% - var(--i-popup-error-offset)) -10px, max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0);
 }
 .popup-error--bottom {
   border-radius: 5.7735026919px 5.7735026919px min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg)/5.7735026919px;
-  border-image: conic-gradient(var(--f-border-color-error) 0 0) fill 0/0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;
+  border-image: conic-gradient(var(--fkds-icon-color-feedback-border-negative) 0 0) fill 0/0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;
   clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px) 100%, calc(100% - var(--i-popup-error-offset)) calc(100% + 10px), max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 100%);
 }
 .popup-error--left {
   border-radius: 5.7735026919px/min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) 5.7735026919px 5.7735026919px min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg);
-  border-image: conic-gradient(var(--f-border-color-error) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;
+  border-image: conic-gradient(var(--fkds-icon-color-feedback-border-negative) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px), -10px calc(100% - var(--i-popup-error-offset)), 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px));
 }
 .popup-error--right {
   border-radius: 5.7735026919px/5.7735026919px min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) 5.7735026919px;
-  border-image: conic-gradient(var(--f-border-color-error) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;
+  border-image: conic-gradient(var(--fkds-icon-color-feedback-border-negative) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;
   clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, 100% min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px), calc(100% + 10px) calc(100% - var(--i-popup-error-offset)), 100% max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px));
 }
 .popup-error--top::before {
   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692) var(--f-border-width-medium), calc(100% - var(--i-popup-error-offset)) calc(var(--f-border-width-medium) / 0.5 - 10px), max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692) var(--f-border-width-medium));
-  border-image: conic-gradient(var(--f-background-error) 0 0) fill 0/0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;
+  border-image: conic-gradient(var(--fkds-icon-color-feedback-background-negative) 0 0) fill 0/0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;
 }
 .popup-error--bottom::before {
   clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692) calc(100% - var(--f-border-width-medium)), calc(100% - var(--i-popup-error-offset)) calc(100% + 10px - var(--f-border-width-medium) / 0.5), max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692) calc(100% - var(--f-border-width-medium)));
-  border-image: conic-gradient(var(--f-background-error) 0 0) fill 0/0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;
+  border-image: conic-gradient(var(--fkds-icon-color-feedback-background-negative) 0 0) fill 0/0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;
 }
 .popup-error--left::before {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, var(--f-border-width-medium) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(var(--f-border-width-medium) / 0.5 - 10px) calc(100% - var(--i-popup-error-offset)), var(--f-border-width-medium) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));
-  border-image: conic-gradient(var(--f-background-error) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;
+  border-image: conic-gradient(var(--fkds-icon-color-feedback-background-negative) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;
 }
 .popup-error--right::before {
   clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--f-border-width-medium)) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(100% + 10px - var(--f-border-width-medium) / 0.5) calc(100% - var(--i-popup-error-offset)), calc(100% - var(--f-border-width-medium)) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));
-  border-image: conic-gradient(var(--f-background-error) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;
+  border-image: conic-gradient(var(--fkds-icon-color-feedback-background-negative) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;
 }
 
 .ipopupmenu {
@@ -6083,56 +6044,13 @@ input[type=search]:focus,
 body {
   font-family: var(--f-font-family);
 }
-
-html,
-body {
-  margin: 0;
-  padding: 0;
+.sandbox-root {
+    width: min(100% - 2rem, 80ch);
+    margin: auto;
 }
-
-main {
-  padding: 1rem;
+h1 {
+    margin-top: 2rem;
 }
-.contextbar[data-v-f3c4fc0f] {
-    display: flex;
-    gap: 1rem;
-    padding: 0.5rem 0.75rem;
-}
-.contextbar__forman[data-v-f3c4fc0f] {
-    font-weight: bold;
-}
-
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-[data-v-a911d724]::part(grid awesome-layout) {
-    grid-template:
-        "header header header" min-content
-        "left contextbar contextbar" min-content
-        "left toolbar toolbar" min-content
-        "left content right" 1fr
-        / min-content 1fr;
-}
-[data-v-a911d724]::part(area header) {
-    --f-page-layout-background: var(--f-background-pageheader-primary);
-    --f-page-layout-color: var(--fkds-color-text-inverted);
-}
-[data-v-a911d724]::part(area contextbar) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-a911d724]::part(area toolbar) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-a911d724]::part(area left) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-a911d724]::part(area right) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
+hr {
+    margin-bottom: 2rem;
 }
