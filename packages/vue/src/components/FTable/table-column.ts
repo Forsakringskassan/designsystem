@@ -32,6 +32,13 @@ export interface TableColumnButton<T> {
     icon?: string;
 }
 
+export interface TableColumnSelect<T, K extends keyof T> {
+    type: "select";
+    header: string;
+    key?: K;
+    value?(row: T): string;
+}
+
 export interface TableColumnRender<T> {
     type: "render";
     header: string;
@@ -43,7 +50,8 @@ export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnEditable<T, K>
     | TableColumnAnchor<T>
     | TableColumnButton<T>
-    | TableColumnRender<T>;
+    | TableColumnRender<T>
+    | TableColumnSelect<T, K>;
 
 export function defineTableColumns<T, K extends keyof T = keyof T>(
     columns: Array<TableColumn<T, K>>,

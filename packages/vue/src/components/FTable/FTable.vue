@@ -17,6 +17,7 @@ import ITableRow from "./ITableRow.vue";
 import { TableColumn } from "./table-column";
 import FTableCell from "./FTableCell.vue";
 import FTableEditCell from "./FTableEditCell.vue";
+import FTableSelectCell from "./FTableSelectCell.vue";
 
 const {
     columns,
@@ -159,6 +160,9 @@ onMounted(() => {
                                 <span class="sr-only">Knapptext</span>
                             </button>
                         </f-table-cell>
+                    </template>
+                    <template v-else-if="column.type === 'select'">
+                        <f-table-select-cell :title="column.header"></f-table-select-cell>
                     </template>
                     <template v-else-if="column.type === 'render'">
                         <component :is="column.render()" :row></component>

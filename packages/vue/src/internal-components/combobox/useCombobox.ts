@@ -143,7 +143,7 @@ export function useCombobox(
 
     onMounted(() => {
         if (!inputRef.value) {
-            throw new Error("missing input ref");
+            return;
         }
 
         filter.value = inputRef.value.value;
@@ -325,7 +325,7 @@ export function useCombobox(
 
     function onInputKeyUp(): void {
         if (!inputRef.value) {
-            throw new Error("missing input ref");
+            return;
         }
 
         if (filter.value === inputRef.value.value) {

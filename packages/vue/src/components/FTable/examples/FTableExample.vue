@@ -60,6 +60,11 @@ const columns = defineTableColumns<Row>([
         },
     },
     {
+        header: "Dropplista",
+        type: "select",
+        key: "id",
+    },
+    {
         header: "Render function",
         type: "render",
         render() {
