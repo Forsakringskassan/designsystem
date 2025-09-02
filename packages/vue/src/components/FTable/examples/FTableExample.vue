@@ -178,7 +178,7 @@ function onButtonClick(id: string): void {
 </script>
 
 <template>
-    <f-table :rows :columns key-attribute="id"> </f-table>
+    <f-table :rows :columns key-attribute="id" striped> </f-table>
     <pre>{{ rows }}</pre>
 </template>
 

@@ -30,13 +30,13 @@ const toggleIcon = computed(() => (isExpanded ? "arrow-down" : "arrow-right"));
 
 <template>
     <template v-if="renderHeader">
-        <tr class="table__row">
-            <th v-if="isTreegrid" tabindex="-1" class="table__column"></th>
+        <tr class="table-ng__row">
+            <th v-if="isTreegrid" tabindex="-1" class="table-ng__column"></th>
             <slot></slot>
         </tr>
     </template>
     <template v-else>
-        <tr class="table__row" :aria-level>
+        <tr class="table-ng__row" :aria-level>
             <template v-if="isTreegrid">
                 <f-table-cell v-if="isExpandable" title="Expandera">
                     <button

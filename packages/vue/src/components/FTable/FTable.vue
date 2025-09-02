@@ -40,7 +40,7 @@ const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 
 const tableClasses = computed(() => {
-    return striped ? "table--striped" : "";
+    return striped ? "table-ng table-ng--striped" : "table-ng";
 });
 
 /**
@@ -97,11 +97,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <table ref="table" :role class="table" :tableClasses>
+    <table ref="table" :role :class="tableClasses">
         <thead>
-            <tr class="table__row">
-                <th v-if="isTreegrid" tabindex="-1" class="table__column"></th>
-                <th v-for="column in columns" :key="column.header" scope="col" class="table__column">
+            <tr class="table-ng__row">
+                <th v-if="isTreegrid" tabindex="-1" class="table-ng__column"></th>
+                <th v-for="column in columns" :key="column.header" scope="col" class="table-ng__column">
                     {{ column.header }}
                 </th>
             </tr>

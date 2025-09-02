@@ -1,0 +1,64 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+// General variables
+$table-ng-font-size: var(--f-font-size-standard) !default;
+$table-ng-focus-size: 2px !default;
+$table-ng-margin: 0 0 core.densify(var(--f-margin-component-bottom)) !default;
+
+// Header
+$table-ng-header-separator: 1px solid var(--f-border-color-grid) !default;
+$table-ng-header-padding: core.densify(size.$padding-025) size.$padding-050 !default;
+$table-ng-header-font-weight: var(--f-font-weight-medium) !default;
+
+.table-ng {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: $table-ng-font-size;
+    margin: $table-ng-margin;
+    width: 100%;
+
+    caption {
+        background: $table-ng-caption-background;
+        color: $table-ng-caption-foreground;
+        font-size: var(--f-font-size-standard);
+        font-weight: var(--f-font-weight-medium);
+        line-height: var(--f-line-height-large);
+        margin-bottom: core.densify(size.$margin-025);
+        width: var(--f-width-full);
+        text-align: left;
+    }
+
+    thead {
+        th {
+            background: $table-ng-header-background;
+            border-bottom: $table-ng-header-border;
+            border-right: $table-ng-header-separator;
+            color: $table-ng-header-foreground;
+            font-weight: $table-ng-header-font-weight;
+            line-height: var(--f-line-height-large);
+            padding: $table-ng-header-padding;
+            text-align: left;
+            vertical-align: top;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+
+    tbody {
+        .table-ng__row { //Behövs denna?
+            background: $table-ng-row-background;
+            color: $table-ng-row-foreground;
+        }
+    }
+
+    &--striped tbody {
+        .table-ng__row:nth-child(even) {
+            background: $table-ng-row-background-alt;
+            color: $table-ng-row-foreground;
+        }
+    }
+}
