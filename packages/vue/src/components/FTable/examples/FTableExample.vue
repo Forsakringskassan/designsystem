@@ -1,6 +1,77 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { FTextField, FIcon, FTable, FTableCell, FTableEditCell } from "@fkui/vue";
+import { h, ref } from "vue";
+import { FTable } from "@fkui/vue";
+import { formatNumber } from "@fkui/logic";
+import { defineTableColumns } from "../table-column";
+import XTableChip from "./XTableChip.vue";
+
+interface Row {
+    id: string;
+    level: string;
+    start: string;
+    end: string;
+    antal: string;
+    expandableRows: Row[];
+    aktiv?: boolean;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "checkbox",
+        editable: true,
+        header: "Kryssruta",
+        key: "active",
+    },
+    {
+        type: "text",
+        header: "Text",
+        key: "id",
+    },
+    {
+        type: "text",
+        header: "Formatterad text",
+        value(row) {
+            return formatNumber(row.antal) ?? "";
+        },
+    },
+    {
+        type: "text",
+        header: "Redigerbar text",
+        editable: true,
+        key: "level",
+    },
+    {
+        type: "button",
+        header: "Knapp",
+        icon: "trashcan",
+        value(row) {
+            return `Ta bort ${row.id}`;
+        },
+        onClick: onButtonClick,
+    },
+    {
+        header: "Länk",
+        type: "anchor",
+        href: "http://www.vecka.nu",
+        value() {
+            return "Länktext";
+        },
+    },
+    {
+        header: "Render function",
+        type: "render",
+        render() {
+            return h("td", { id: "foo", class: "bar" }, ["👻"]);
+        },
+    },
+    {
+        header: "Custom component",
+        type: "render",
+        render() {
+            return XTableChip;
+        },
+    },
+]);
 
 const rows = ref([
     {
@@ -105,32 +176,8 @@ function onButtonClick(value: string): void {
 </script>
 
 <template>
-    <f-table :rows key-attribute="id" striped>
-        <template #default="{ row }">
-            <f-table-cell title="Kryssruta">
-                <input type="checkbox" aria-label="Kryssruta" />
-            </f-table-cell>
-            <f-table-cell title="Text">{{ row.id }}</f-table-cell>
-            <f-table-cell v-format:number="row.antal" title="Formatterad text"></f-table-cell>
-            <f-table-cell title="Knapp">
-                <button class="icon-button" type="button" @click="() => onButtonClick(row.id)">
-                    <f-icon name="trashcan"></f-icon>
-                    <span class="sr-only">Knapptext</span>
-                </button>
-            </f-table-cell>
-            <f-table-cell title="Länk">
-                <a class="anchor anchor--block" href="#">Länktext</a>
-            </f-table-cell>
-            <f-table-edit-cell title="Redigerbar text">
-                <f-text-field
-                    v-model="row.level"
-                    v-validation.required
-                    class="table-input"
-                    maxlength="40"
-                ></f-text-field>
-            </f-table-edit-cell>
-        </template>
-    </f-table>
+    <f-table :rows :columns key-attribute="id"> </f-table>
+    <pre>{{ rows }}</pre>
 </template>
 
 <style>
@@ -148,5 +195,9 @@ function onButtonClick(value: string): void {
 
 .level-3 {
     padding-left: 1rem;
+}
+
+.bar {
+    background: hotpink;
 }
 </style>

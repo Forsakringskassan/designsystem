@@ -2,6 +2,8 @@
 import { computed, onMounted, provide, type Ref, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
+import FIcon from "../FIcon/FIcon.vue";
+import FTextField from "../FTextField/FTextField.vue";
 import {
     getMetaRows,
     maybeNavigateToCell,
@@ -12,13 +14,18 @@ import {
     getTd,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
+import { TableColumn } from "./table-column";
+import FTableCell from "./FTableCell.vue";
+import FTableEditCell from "./FTableEditCell.vue";
 
 const {
+    columns,
     rows,
     keyAttribute = undefined,
     expandableAttribute = undefined,
     striped = false,
 } = defineProps<{
+    columns: Array<TableColumn<T, K>>;
     rows: T[];
     keyAttribute?: K;
     expandableAttribute?: K;
@@ -92,10 +99,12 @@ onMounted(() => {
 <template>
     <table ref="table" :role class="table" :tableClasses>
         <thead>
-            <!-- [html-validate-disable-next element-permitted-content -- transparent tr] -->
-            <i-table-row render-header :is-treegrid>
-                <slot v-bind="{ row: {} }"></slot>
-            </i-table-row>
+            <tr class="table__row">
+                <th v-if="isTreegrid" tabindex="-1" class="table__column"></th>
+                <th v-for="column in columns" :key="column.header" scope="col" class="table__column">
+                    {{ column.header }}
+                </th>
+            </tr>
         </thead>
 
         <tbody @click="onClick" @keydown="onKeydown">
@@ -113,7 +122,48 @@ onMounted(() => {
                 :is-expanded
                 @toggle="onToggleExpanded"
             >
-                <slot v-bind="{ row }"></slot>
+                <template v-for="column in columns" :key="column.header">
+                    <template v-if="column.type === 'checkbox'">
+                        <f-table-cell :title="column.header">
+                            <input v-model="row[column.key!]" type="checkbox" :aria-label="column.header" />
+                        </f-table-cell>
+                    </template>
+                    <template v-else-if="column.type === 'text'">
+                        <template v-if="column.editable">
+                            <f-table-edit-cell title="Redigerbar text">
+                                <f-text-field
+                                    v-model="row[column.key!]"
+                                    v-validation.required
+                                    class="table-input"
+                                    maxlength="40"
+                                ></f-text-field>
+                            </f-table-edit-cell>
+                        </template>
+                        <template v-else>
+                            <f-table-cell title="Kryssruta">
+                                {{ column.key ? row[column.key] : column.value!(row) }}
+                            </f-table-cell>
+                        </template>
+                    </template>
+                    <template v-else-if="column.type === 'anchor'">
+                        <f-table-cell title="Länk">
+                            <a class="anchor anchor--block" target="_blank" :href="column.href"
+                                >{{ column.value(row) }}
+                            </a>
+                        </f-table-cell>
+                    </template>
+                    <template v-else-if="column.type === 'button'">
+                        <f-table-cell title="Knapp">
+                            <button class="icon-button" type="button" @click="column.onClick!(column.value(row))">
+                                <f-icon name="trashcan"></f-icon>
+                                <span class="sr-only">Knapptext</span>
+                            </button>
+                        </f-table-cell>
+                    </template>
+                    <template v-else-if="column.type === 'render'">
+                        <component :is="column.render()" :row></component>
+                    </template>
+                </template>
             </i-table-row>
         </tbody>
     </table>
