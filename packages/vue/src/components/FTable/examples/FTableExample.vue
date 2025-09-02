@@ -20,7 +20,7 @@ const columns = defineTableColumns<Row>([
         type: "checkbox",
         editable: true,
         header: "Kryssruta",
-        key: "active",
+        key: "aktiv",
     },
     {
         type: "text",
@@ -47,7 +47,9 @@ const columns = defineTableColumns<Row>([
         value(row) {
             return `Ta bort ${row.id}`;
         },
-        onClick: onButtonClick,
+        onClick(row) {
+            onButtonClick(row.id);
+        },
     },
     {
         header: "Länk",
@@ -170,8 +172,8 @@ const rows = ref([
     },
 ]);
 
-function onButtonClick(value: string): void {
-    alert(`Du klickade på ${value}`);
+function onButtonClick(id: string): void {
+    alert(`Du klickade på rad med id ${id}`);
 }
 </script>
 
