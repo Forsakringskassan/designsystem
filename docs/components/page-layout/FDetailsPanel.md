@@ -5,7 +5,7 @@ layout: component
 component: FDetailsPanel
 ---
 
-Detaljpanel (FDetailsPanel) används tillsammand med {@link FPageLayout applikationslayout} för att visa detaljer om ett objekt som användaren har valt.
+Detaljpanel (FDetailsPanel) används tillsammans med {@link FPageLayout applikationsmall} för att visa detaljer om ett objekt som användaren har valt.
 
 ```import
 FDetailsPanelExample.vue

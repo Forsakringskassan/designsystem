@@ -87,7 +87,7 @@ FPageLayoutPredefined.vue
 
 ## Egen layout
 
-Utöver förkonfigurerade layouter kan man skapa en egen.
+Utöver förkonfigurerade layouter kan du skapa en egen.
 
 Läs mer om att {@link custom-page-layout skapa egen layout}.
 
