@@ -5,7 +5,7 @@ layout: component
 component: FFixedPane
 ---
 
-Fixerad yta (FFixedPane) används tillsammans med {@link FPageLayout Applikationslayout} för att göra en yta med fixerad storlek.
+Fixerad yta (FFixedPane) används tillsammans med {@link FPageLayout applikationsmall} för att göra en yta med fixerad storlek.
 
 Komponenten behöver inte nödvändigtvis användas när det enbart finns ett rotelement,
 men när det är flera barn (till exempel flera paneler) så ser komponenten till att layout blir som förväntad.

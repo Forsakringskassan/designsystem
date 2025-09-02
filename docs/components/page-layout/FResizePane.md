@@ -5,7 +5,7 @@ layout: component
 component: FResizePane
 ---
 
-Justerbar yta (FResizePane) används tillsammans med {@link FPageLayout Applikationslayout} för göra en yta med justerbar storlek.
+Justerbar yta (FResizePane) används tillsammans med {@link FPageLayout applikationsmall} för göra en yta med justerbar storlek.
 
 Ytans storlek kan justeras med pekdon genom att dra i och släppa avgränsaren mellan ytorna eller med tangentbord:
 
@@ -20,14 +20,14 @@ FResizePaneLiveExample.vue
 
 ## Användning
 
-FResizePane kan enbart användas i ytor där paneler kan fästas, för de standardlayouter som designsystemet levererar är det ytorna:
+Justerbar yta (FResizePane) kan enbart användas i ytor där paneler kan fästas, för de standardlayouter som designsystemet levererar är det ytorna:
 
 - `left` (för paneler till vänster)
 - `right` (för paneler till höger)
 
 Skapar du en egen layout är det alla ytor där `attachPanel` inte är `"none"`.
 
-Lägg `FResizePanel` komponenten som första elementet i respektive yta:
+Lägg `FResizePanel`-komponenten som första elementet i respektive yta:
 
 ```html static
 <f-page-layout layout="left-panel">
@@ -39,14 +39,14 @@ Lägg `FResizePanel` komponenten som första elementet i respektive yta:
 
 ## Begränsa storlek
 
-Storleken på ytan kan begränsas genom att använda `min`- och `max` propen.
+Storleken på ytan kan begränsas genom att använda `min`- och `max`-propen.
 Värden kan anges antingen som absolut storlek i pixlar (`px`), i procent (`%`) eller båda samtidigt.
 
 - `200px` - minsta/största storlek är 200px
 - `20%` - minsta/största storlek är 20% av applikationslayoutens totala bredd.
 - `200px 20%` - minsta/största är det minsta/största av 200px eller 20%.
 
-Storleken refererar till innehållet i ytan, dvs `200px` innebär att det finns 200px effektiv yta för innehåll.
+Storleken refererar till innehållet i ytan, det vill säga `200px` innebär att det finns 200px effektiv yta för innehåll.
 Ytans totala storlek blir 200px + storleken på handtaget för att justera storleken.
 
 ## Initial storlek
