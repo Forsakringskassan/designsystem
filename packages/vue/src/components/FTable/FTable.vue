@@ -19,6 +19,7 @@ import FTableSelectCell from "./FTableSelectCell.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
+import { startEditKey, stopEditKey } from "./start-stop-edit";
 
 const {
     columns,
@@ -66,8 +67,8 @@ async function stopEditHandler(reason: "enter" | "escape" | "tab" | "shift-tab" 
     currentCellTarget.value = stopEdit(tableRef.value, currentCellTarget.value, reason);
 }
 
-provide("startEdit", startEditHandler);
-provide("stopEdit", stopEditHandler);
+provide(startEditKey, startEditHandler);
+provide(stopEditKey, stopEditHandler);
 
 function onToggleExpanded(key: string): void {
     const index = expandedKeys.value.indexOf(key);

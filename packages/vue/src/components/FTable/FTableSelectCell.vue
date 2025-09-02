@@ -2,6 +2,7 @@
 import { inject, nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
 import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { IComboboxDropdown } from "../../internal-components";
+import { useStartStopEdit } from "./start-stop-edit";
 
 const { title } = defineProps<{ title: string }>();
 
@@ -9,8 +10,7 @@ const editing = ref(false);
 const viewValue = ref("tre");
 const editRef = useTemplateRef("edit");
 
-const startEdit: ((focusElement: HTMLElement) => void) | undefined = inject("startEdit");
-const stopEdit: ((reason: "enter" | "escape" | "tab" | "shift-tab" | "blur") => void) | undefined = inject("stopEdit");
+const { startEdit, stopEdit } = useStartStopEdit();
 
 const dropdownOptions = ref(["ett", "två", "tre"]);
 
