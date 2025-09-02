@@ -1,15 +1,22 @@
 import { type Component, type VNode } from "vue";
 
 export interface TableColumnSimple<T, K extends keyof T> {
-    type: "checkbox" | "text";
+    type: "text";
     header: string;
     key?: K;
     value?(row: T): string;
     editable?: boolean;
 }
 
+export interface TableColumnCheckbox<T, K extends keyof T> {
+    type: "checkbox";
+    header: string;
+    key?: K;
+    value?(row: T): string;
+}
+
 export interface TableColumnEditable<T, K extends keyof T> {
-    type: "checkbox" | "text";
+    type: "text";
     header: string;
     key?: K;
     value?(row: T): string;
@@ -47,6 +54,7 @@ export interface TableColumnRender<T> {
 
 export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnSimple<T, K>
+    | TableColumnCheckbox<T, K>
     | TableColumnEditable<T, K>
     | TableColumnAnchor<T>
     | TableColumnButton<T>

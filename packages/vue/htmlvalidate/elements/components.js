@@ -1494,6 +1494,18 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "i-table-checkbox": {
+        flow: true,
+    },
+
+    "i-table-button": {
+        flow: true,
+    },
+
+    "i-table-anchor": {
+        flow: true,
+    },
+
     "define-template": {
         flow: true,
     },

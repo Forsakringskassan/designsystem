@@ -2,7 +2,6 @@
 import { computed, onMounted, provide, type Ref, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
-import FIcon from "../FIcon/FIcon.vue";
 import FTextField from "../FTextField/FTextField.vue";
 import {
     getMetaRows,
@@ -17,6 +16,9 @@ import ITableRow from "./ITableRow.vue";
 import { TableColumn } from "./table-column";
 import FTableEditCell from "./FTableEditCell.vue";
 import FTableSelectCell from "./FTableSelectCell.vue";
+import ITableCheckbox from "./ITableCheckbox.vue";
+import ITableAnchor from "./ITableAnchor.vue";
+import ITableButton from "./ITableButton.vue";
 
 const {
     columns,
@@ -124,14 +126,7 @@ onMounted(() => {
             >
                 <template v-for="column in columns" :key="column.header">
                     <template v-if="column.type === 'checkbox'">
-                        <td tabindex="-1">
-                            <input
-                                v-model="row[column.key!]"
-                                type="checkbox"
-                                :aria-label="column.header"
-                                tabindex="-1"
-                            />
-                        </td>
+                        <i-table-checkbox :row :column></i-table-checkbox>
                     </template>
                     <template v-else-if="column.type === 'text'">
                         <template v-if="column.editable">
@@ -151,24 +146,10 @@ onMounted(() => {
                         </template>
                     </template>
                     <template v-else-if="column.type === 'anchor'">
-                        <td tabindex="-1">
-                            <a class="anchor anchor--block" target="_blank" :href="column.href" tabindex="-1"
-                                >{{ column.value(row) }}
-                            </a>
-                        </td>
+                        <i-table-anchor :row :column></i-table-anchor>
                     </template>
                     <template v-else-if="column.type === 'button'">
-                        <td tabindex="-1">
-                            <button
-                                class="icon-button"
-                                type="button"
-                                tabindex="-1"
-                                @click="column.onClick!(column.value(row))"
-                            >
-                                <f-icon name="trashcan"></f-icon>
-                                <span class="sr-only">Knapptext</span>
-                            </button>
-                        </td>
+                        <i-table-button :row :column></i-table-button>
                     </template>
                     <template v-else-if="column.type === 'select'">
                         <f-table-select-cell :title="column.header"></f-table-select-cell>
