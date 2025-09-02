@@ -13,7 +13,7 @@ import {
     getTd,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
-import { TableColumn } from "./table-column";
+import { normalizeTableColumns, TableColumn } from "./table-column";
 import FTableEditCell from "./FTableEditCell.vue";
 import FTableSelectCell from "./FTableSelectCell.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
@@ -22,7 +22,7 @@ import ITableButton from "./ITableButton.vue";
 import { startEditKey, stopEditKey } from "./start-stop-edit";
 
 const {
-    columns,
+    columns: rawColumns,
     rows,
     keyAttribute = undefined,
     expandableAttribute = undefined,
@@ -41,6 +41,7 @@ const keyedRows = computed(() => setInternalKeys(rows, keyAttribute, expandableA
 const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute));
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
+const columns = computed(() => normalizeTableColumns(rawColumns));
 
 const tableClasses = computed(() => {
     return striped ? "table-ng table-ng--striped" : "table-ng";
@@ -142,7 +143,7 @@ onMounted(() => {
                         </template>
                         <template v-else>
                             <td tabindex="-1">
-                                {{ column.key ? row[column.key] : column.value!(row) }}
+                                {{ column.value(row) }}
                             </td>
                         </template>
                     </template>
@@ -155,7 +156,7 @@ onMounted(() => {
                     <template v-else-if="column.type === 'select'">
                         <f-table-select-cell :title="column.header"></f-table-select-cell>
                     </template>
-                    <template v-else-if="column.type === 'render'">
+                    <template v-else-if="'render' in column">
                         <component :is="column.render(row)" :row></component>
                     </template>
                 </template>
