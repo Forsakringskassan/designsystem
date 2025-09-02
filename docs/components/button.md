@@ -107,6 +107,50 @@ Använd ikoner för att förtydliga knappens funktion och skapa snabbare igenkä
 +<f-button icon-left="pen"> text </f-button>
 ```
 
+## Hantering av asynkrona åtgärder
+
+Beroende på om den funktion som anropas av en knapp är synkron eller asynkron,
+och huruvida den returnerar en `Promise`,
+så får knappen olika beteende:
+
+### Synkron kod
+
+Om funktionen som körs vid knapptryck är synkron (ej asynkron, returnerar ingen `Promise`):
+
+- Ingen spinner visas.
+- Knappen beter sig som vanligt – användaren kan klicka flera gånger direkt efter varandra.
+
+### Asynkron kod med `Promise`
+
+Om funktionen returnerar en `Promise` (t.ex. vid användning av `async/await` eller annan `Promise`-baserad logik):
+
+- Om åtgärden tar längre än **200 ms**, visas en **spinner** på knappen under tiden åtgärden pågår.
+    - Har knappen en ikon, ersätts ikonen temporärt av en spinner.
+    - Saknar knappen ikon, visas spinnern till vänster om knappens text.
+- Knappen **inaktiveras** tills `Promise` är **resolved** eller **rejected**.
+
+> 💡 Använd detta beteende när det är viktigt att slutanvändaren väntar in åtgärden innan andra interaktioner sker.
+
+### Asynkron kod utan `Promise`
+
+Om åtgärden är asynkron men inte returnerar en `Promise` (t.ex. `fetch` utan att returnera vidare, eller callback-baserad logik):
+
+- Behandlas som en synkron åtgärd – **ingen spinner visas** och **knappen inaktiveras inte**.
+
+> 💡 Det här är lämpligt i situationer där åtgärden kan ske i bakgrunden och användaren inte behöver vänta på att åtgärden är klar.
+
+```diff
+<script>
++    async function asyncOperation(): Promise<void> {
++       // Your asynchronous operation
++}
+</script>
+<template>
+-   <f-button> text </f-button>
++   <f-button @click="asyncOperation"> text </f-button>
+</template>
+```
+
 ## Inaktiv
 
 Inaktiv knapp bör undvikas i stor utsträckning som möjligt.
