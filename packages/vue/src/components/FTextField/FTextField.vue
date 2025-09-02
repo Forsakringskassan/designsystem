@@ -230,6 +230,7 @@ export default defineComponent({
     },
     methods: {
         onDropdownSelect(value: string): void {
+            this.$emit("update:modelValue", value);
             this.selectOption(value);
         },
         onDropdownClose(): void {
