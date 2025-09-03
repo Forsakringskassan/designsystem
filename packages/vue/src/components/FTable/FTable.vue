@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T, K extends keyof T = keyof T">
+<script setup lang="ts" generic="T extends Record<string, unknown>, K extends keyof T = keyof T">
 import { computed, onMounted, provide, type Ref, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";

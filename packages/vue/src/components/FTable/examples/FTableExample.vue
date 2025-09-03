@@ -191,11 +191,17 @@ function onButtonClick(id: string): void {
 </script>
 
 <template>
+    <button type="button" class="button button--secondary">Interagerbart element före</button>
     <f-table :rows :columns key-attribute="id" striped> </f-table>
     <pre>{{ rows }}</pre>
+    <button type="button" class="button button--secondary">Interagerbart element efter</button>
 </template>
 
 <style>
+body {
+    padding: 1rem;
+}
+
 .icon-button {
     margin: 0;
     padding: 0;

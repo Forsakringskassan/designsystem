@@ -1,12 +1,12 @@
 <script setup lang="ts" generic="T">
 import { ref, useTemplateRef } from "vue";
 import { assertRef, focus } from "@fkui/logic";
-import { type NormalizedTableColumnTextField } from "./table-column";
+import { type NormalizedTableColumnText } from "./table-column";
 import { useStartStopEdit } from "./start-stop-edit";
 
 const { row, column } = defineProps<{
     row: T;
-    column: NormalizedTableColumnTextField<T>;
+    column: NormalizedTableColumnText<T>;
 }>();
 
 const model = ref("");
@@ -20,7 +20,6 @@ function onStartEdit(): void {
     assertRef(inputElement);
 
     const { width } = tdElement.value.getBoundingClientRect();
-    console.log({ width });
     model.value = column.value(row);
     tdElement.value.style.setProperty("width", `${width}px`);
 
