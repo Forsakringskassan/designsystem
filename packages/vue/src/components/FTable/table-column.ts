@@ -26,22 +26,23 @@ export interface NormalizedTableColumnCheckbox<T> {
     value(row: T): boolean;
 }
 
-export interface TableColumnEditable<T, K extends keyof T> {
+export interface TableColumnText<T, K extends keyof T> {
     type: "text";
     header: string;
     key?: K;
     value?(row: T): string;
     update?(row: T, value: string): void;
-    editable: true;
+    editable?: boolean;
 }
 
-export interface NormalizedTableColumnEditable<T> {
+export interface NormalizedTableColumnText<T> {
     type: "text";
     header: string;
     value(row: T): string;
     update(row: T, value: string): void;
-    editable: true;
+    editable: boolean;
 }
+
 export interface TableColumnAnchor<T> {
     type: "anchor";
     header: string;
@@ -100,7 +101,7 @@ export interface NormalizedTableColumnRender<T> {
 export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnSimple<T, K>
     | TableColumnCheckbox<T, K>
-    | TableColumnEditable<T, K>
+    | TableColumnText<T, K>
     | TableColumnAnchor<T>
     | TableColumnButton<T>
     | TableColumnRender<T>
@@ -109,7 +110,7 @@ export type TableColumn<T, K extends keyof T = keyof T> =
 export type NormalizedTableColumn<T> =
     | NormalizedTableColumnSimple<T>
     | NormalizedTableColumnCheckbox<T>
-    | NormalizedTableColumnEditable<T>
+    | NormalizedTableColumnText<T>
     | NormalizedTableColumnAnchor<T>
     | NormalizedTableColumnButton<T>
     | NormalizedTableColumnRender<T>
@@ -169,9 +170,9 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "text",
                 header: column.header,
                 value: getValueFn(column.value, column.key, String, ""),
-                update: getUpdateFn(column.value, column.key),
-                editable: column.editable,
-            } satisfies NormalizedTableColumnEditable<T>;
+                update: getUpdateFn(column.update, column.key),
+                editable: Boolean(column.editable),
+            } satisfies NormalizedTableColumnText<T>;
         case "anchor":
             return {
                 type: "anchor",

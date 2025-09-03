@@ -1,4 +1,5 @@
 import { type InjectionKey, inject } from "vue";
+
 /**
  * @internal
  */
