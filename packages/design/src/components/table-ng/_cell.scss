@@ -23,7 +23,7 @@ $horizontal-padding: size.$padding-050;
     border-bottom-color: hotpink;
 
     &:hover {
-        background: hsl(from hotpink h s calc(l + 25))
+        background: hsl(from hotpink h s calc(l + 25));
     }
 
     &:focus-within {

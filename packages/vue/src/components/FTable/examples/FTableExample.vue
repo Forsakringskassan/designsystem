@@ -11,7 +11,11 @@ interface Row {
     start: string;
     end: string;
     antal: string;
-    expandableRows: Row[];
+    expandableRows?: Row[];
+    expandableContent?: Array<{
+        id: string;
+        content: string;
+    }>;
     aktiv?: boolean;
 }
 
@@ -26,7 +30,7 @@ const columns = defineTableColumns<Row>([
         header: "Text",
         value() {
             return "hårdkodad text";
-        }
+        },
     },
     {
         type: "text",
@@ -74,7 +78,6 @@ const columns = defineTableColumns<Row>([
     },
     {
         header: "Render function",
-        type: "render",
         render() {
             return h("td", { id: "foo", class: "bar" }, ["👻"]);
         },
@@ -88,7 +91,7 @@ const columns = defineTableColumns<Row>([
     // },
 ]);
 
-const rows = ref([
+const rows = ref<Row[]>([
     {
         id: "1",
         level: "Föräldrapenning",
