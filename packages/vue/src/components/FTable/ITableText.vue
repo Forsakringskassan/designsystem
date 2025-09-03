@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
 import { ref, useTemplateRef } from "vue";
 import { assertRef, focus } from "@fkui/logic";
-import { FIcon } from "../FIcon"
+import { FIcon } from "../FIcon";
 import { type NormalizedTableColumnText } from "./table-column";
 import { useStartStopEdit } from "./start-stop-edit";
 
@@ -58,10 +58,12 @@ function onEditingKeydown(event: KeyboardEvent): void {
 
     if (event.key === "Enter") {
         column.update(row, model.value);
+        model.value = "";
         onStopEdit({ reason: "enter" });
     }
 
     if (event.key === "Escape") {
+        model.value = "";
         onStopEdit({ reason: "escape" });
     }
 }
@@ -79,6 +81,10 @@ function onKeydown(event: KeyboardEvent): void {
 function onBlur(): void {
     assertRef(tdElement);
     tdElement.value.style.removeProperty("width");
+    const isDirty = model.value !== "";
+    if (isDirty) {
+        column.update(row, model.value);
+    }
 }
 
 function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
@@ -111,7 +117,7 @@ function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
             <f-icon name="pen" class="table-ng__texticon"></f-icon>
         </div>
     </td>
-    <td v-else>
+    <td v-else tabindex="-1" class="table-ng__cell table-ng__cell--static">
         {{ column.value(row) }}
     </td>
 </template>

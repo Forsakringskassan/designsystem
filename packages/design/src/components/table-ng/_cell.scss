@@ -8,14 +8,6 @@ $horizontal-padding: size.$padding-050;
     padding: $vertical-padding $horizontal-padding;
     text-wrap: nowrap;
 
-    &--select {
-        padding: 0;
-    }
-
-    &--checkbox {
-        padding: 0;
-    }
-
     &--text {
         padding: 0 0.25rem;
     }

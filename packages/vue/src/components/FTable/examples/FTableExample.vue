@@ -25,13 +25,15 @@ const columns = defineTableColumns<Row>([
         header: "Kryssruta",
         key: "aktiv",
     },
+
     {
         type: "text",
-        header: "Text",
-        value() {
-            return "hårdkodad text";
+        header: "Oformaterad text",
+        value(row) {
+            return String(row.antal);
         },
     },
+
     {
         type: "text",
         header: "Formatterad text",
