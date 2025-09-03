@@ -31,7 +31,7 @@ export interface TableColumnText<T, K extends keyof T> {
     header: string;
     key?: K;
     value?(row: T): string;
-    update?(row: T, value: string): void;
+    update?(row: T, newValue: string, oldValue: string): void;
     editable?: boolean;
 }
 
@@ -39,7 +39,7 @@ export interface NormalizedTableColumnText<T> {
     type: "text";
     header: string;
     value(row: T): string;
-    update(row: T, value: string): void;
+    update(row: T, newValue: string, oldValue: string): void;
     editable: boolean;
 }
 

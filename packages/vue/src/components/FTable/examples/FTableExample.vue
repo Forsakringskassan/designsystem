@@ -49,8 +49,8 @@ const columns = defineTableColumns<Row>([
         value(row) {
             return row.level;
         },
-        update(row, value) {
-            row.level = value;
+        update(row, newValue, oldValue) {
+            row.level = newValue;
         },
     },
 

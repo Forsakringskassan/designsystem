@@ -57,7 +57,9 @@ function onEditingKeydown(event: KeyboardEvent): void {
     event.stopPropagation();
 
     if (event.key === "Enter") {
-        column.update(row, model.value);
+        const oldValue = column.value(row);
+        const newValue = model.value;
+        column.update(row, oldValue, newValue);
         model.value = "";
         onStopEdit({ reason: "enter" });
     }
@@ -83,7 +85,9 @@ function onBlur(): void {
     tdElement.value.style.removeProperty("width");
     const isDirty = model.value !== "";
     if (isDirty) {
-        column.update(row, model.value);
+        const oldValue = column.value(row);
+        const newValue = model.value;
+        column.update(row, oldValue, newValue);
     }
 }
 
