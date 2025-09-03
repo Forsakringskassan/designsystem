@@ -221,7 +221,7 @@ export function findAction(
     cell: HTMLTableCellElement,
 ): HTMLElement | undefined {
     const action = cell.querySelector<HTMLElement>(
-        "button, a, input, [role='button']",
+        "button, a, input:not(.foobar), [role='button']",
     );
 
     if (action && isVisible(action)) {

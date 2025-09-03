@@ -1482,6 +1482,10 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "i-table-text": {
+        flow: true,
+    },
+
     "i-table-row": {
         flow: true,
     },

@@ -1,0 +1,49 @@
+@use "../../core";
+@use "../../core/size";
+
+$vertical-padding: core.densify(size.$padding-025);
+$horizontal-padding: size.$padding-050;
+
+.table-ng__cell {
+    padding: $vertical-padding $horizontal-padding;
+    height: calc($vertical-padding + 1lh);
+    overflow: hidden;
+    text-wrap: nowrap;
+
+    &--text {
+        padding: 0;
+        cursor: text;
+    }
+}
+
+.table-ng__textwrapper {
+    padding: $vertical-padding $horizontal-padding;
+    display: flex;
+    border: 1px solid transparent;
+    border-bottom-color: hotpink;
+
+    &:hover {
+        background: hsl(from hotpink h s calc(l + 25))
+    }
+
+    &:focus-within {
+        .table-ng__textview {
+            display: none;
+        }
+
+        .table-ng__textedit {
+            flex: 1 0 auto;
+        }
+    }
+}
+
+.table-ng__textview {
+    flex: 1 1 auto;
+}
+
+.table-ng__textedit {
+    flex: 0 1 0px;
+    width: 0px;
+    border: none;
+    padding: 0;
+}
