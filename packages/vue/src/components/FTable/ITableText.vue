@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T">
 import { ref, useTemplateRef } from "vue";
 import { assertRef, focus } from "@fkui/logic";
+import { FIcon } from "../FIcon"
 import { type NormalizedTableColumnText } from "./table-column";
 import { useStartStopEdit } from "./start-stop-edit";
 
@@ -35,7 +36,9 @@ function onStopEdit(options: { reason: "enter" | "escape" }): void {
 }
 
 function onClickCell(event: MouseEvent): void {
-    if (event.target === viewElement.value) {
+    assertRef(tdElement);
+
+    if (tdElement.value.contains(event.target as Node)) {
         onStartEdit();
     }
 }
@@ -105,6 +108,7 @@ function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
                 tabindex="-1"
                 @blur="onBlur"
             />
+            <f-icon name="pen" class="table-ng__texticon"></f-icon>
         </div>
     </td>
     <td v-else>

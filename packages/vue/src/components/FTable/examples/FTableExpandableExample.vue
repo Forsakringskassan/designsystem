@@ -66,14 +66,12 @@ const columns = defineTableColumns<Row>([
     },
     {
         header: "Render function",
-        type: "render",
         render() {
             return h("td", { id: "foo", class: "bar" }, ["👻"]);
         },
     },
     {
         header: "Custom component",
-        type: "render",
         render() {
             return XTableChip;
         },

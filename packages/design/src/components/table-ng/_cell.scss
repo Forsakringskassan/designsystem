@@ -6,27 +6,59 @@ $horizontal-padding: size.$padding-050;
 
 .table-ng__cell {
     padding: $vertical-padding $horizontal-padding;
-    height: calc($vertical-padding + 1lh);
-    overflow: hidden;
     text-wrap: nowrap;
 
-    &--text {
+    &--select {
         padding: 0;
-        cursor: text;
+    }
+
+    &--checkbox {
+        padding: 0;
+    }
+
+    &--text {
+        padding: 0 0.25rem;
+    }
+}
+
+.table-ng__cell--text {
+    &:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+
+        .table-ng__textwrapper {
+            @extend %text-focus-state;
+        }
+
+        .table-ng__texticon {
+            visibility: visible;
+        }
+    }
+
+    &:hover {
+        .table-ng__textwrapper {
+            @extend %text-hover-state;
+        }
     }
 }
 
 .table-ng__textwrapper {
+    @extend %text-default-state;
+
     padding: $vertical-padding $horizontal-padding;
     display: flex;
-    border: 1px solid transparent;
-    border-bottom-color: hotpink;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    align-items: center;
 
-    &:hover {
-        background: hsl(from hotpink h s calc(l + 25));
+    &:hover .table-ng__texticon {
+        visibility: visible;
     }
 
     &:focus-within {
+        @extend %text-edit-state;
+
         .table-ng__textview {
             display: none;
         }
@@ -46,4 +78,31 @@ $horizontal-padding: size.$padding-050;
     width: 0px;
     border: none;
     padding: 0;
+    background: transparent;
+
+    &:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+}
+
+.table-ng__texticon {
+    visibility: hidden;
+    margin-left: 1rem;
+}
+
+%text-default-state {
+    border-bottom-color: var(--fkds-color-border-weak);
+}
+
+%text-hover-state {
+    background: var(--fkds-color-action-background-secondary-hover);
+}
+
+%text-focus-state {
+    border-color: #000;
+}
+
+%text-edit-state {
+    border-color: #000;
 }
