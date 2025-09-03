@@ -18,14 +18,15 @@ interface Row {
 const columns = defineTableColumns<Row>([
     {
         type: "checkbox",
-        editable: true,
         header: "Kryssruta",
         key: "aktiv",
     },
     {
         type: "text",
         header: "Text",
-        key: "id",
+        value() {
+            return "hårdkodad text";
+        }
     },
     {
         type: "text",
@@ -34,12 +35,19 @@ const columns = defineTableColumns<Row>([
             return formatNumber(row.antal) ?? "";
         },
     },
+
     {
         type: "text",
         header: "Redigerbar text",
         editable: true,
-        key: "level",
+        value(row) {
+            return row.level;
+        },
+        update(row, value) {
+            row.level = value;
+        },
     },
+
     {
         type: "button",
         header: "Knapp",

@@ -1,8 +1,7 @@
-<script setup lang="ts" generic="T extends Record<string, unknown>, K extends keyof T">
+<script setup lang="ts" generic="T, K extends keyof T = keyof T">
 import { computed, onMounted, provide, type Ref, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
-import FTextField from "../FTextField/FTextField.vue";
 import {
     getMetaRows,
     maybeNavigateToCell,
@@ -13,12 +12,12 @@ import {
     getTd,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
-import { normalizeTableColumns, TableColumn } from "./table-column";
-import FTableEditCell from "./FTableEditCell.vue";
+import { type TableColumn, normalizeTableColumns } from "./table-column";
 import FTableSelectCell from "./FTableSelectCell.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
+import ITableText from "./ITableText.vue";
 import { startEditKey, stopEditKey } from "./start-stop-edit";
 
 const {
@@ -131,21 +130,7 @@ onMounted(() => {
                         <i-table-checkbox :row :column></i-table-checkbox>
                     </template>
                     <template v-else-if="column.type === 'text'">
-                        <template v-if="column.editable">
-                            <f-table-edit-cell title="Redigerbar text">
-                                <f-text-field
-                                    v-model="row[column.key!]"
-                                    v-validation.required
-                                    class="table-input"
-                                    maxlength="40"
-                                ></f-text-field>
-                            </f-table-edit-cell>
-                        </template>
-                        <template v-else>
-                            <td tabindex="-1">
-                                {{ column.value(row) }}
-                            </td>
-                        </template>
+                        <i-table-text :row :column></i-table-text>
                     </template>
                     <template v-else-if="column.type === 'anchor'">
                         <i-table-anchor :row :column></i-table-anchor>
