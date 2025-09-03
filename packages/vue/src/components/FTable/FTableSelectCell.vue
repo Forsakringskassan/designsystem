@@ -2,7 +2,9 @@
 import { inject, nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
 import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { IComboboxDropdown } from "../../internal-components";
+
 import { FTableCell } from ".";
+import { useStartStopEdit } from "./start-stop-edit";
 
 // Props
 const { modelValue, options, title } = defineProps<{
@@ -13,11 +15,9 @@ const { modelValue, options, title } = defineProps<{
 
 // Editing in progress
 const editing = ref(false);
-
 const editRef = useTemplateRef("edit");
 
-const startEdit: ((focusElement: HTMLElement) => void) | undefined = inject("startEdit");
-const stopEdit: ((reason: "enter" | "escape" | "tab" | "shift-tab" | "blur") => void) | undefined = inject("stopEdit");
+const { startEdit, stopEdit } = useStartStopEdit();
 
 const viewValue = ref(modelValue);
 
@@ -50,10 +50,42 @@ async function startEditing(e: UIEvent): Promise<void> {
     assertRef(editRef);
     startEdit(editRef.value);
     openSelected("first");
+
 }
 
-async function cancel(): Promise<void> {
-    editing.value = false;
+async function onDropdownSelect(value: string): Promise<void> {
+    close();
+    submit();
+    viewValue.value = value;
+    assertSet(stopEdit);
+    stopEdit("enter");
+}
+
+function onDropdownClose(): void {
+    assertSet(stopEdit);
+    stopEdit("escape");
+}
+
+const dropdownId = ElementIdService.generateElementId();
+const dropdownIsOpen = ref(false);
+const activeOptionId = ElementIdService.generateElementId();
+const activeOption: Ref<string | null> = ref(null);
+
+// activeOption trigger: sets input aria-activedescendant
+watchEffect(async () => {
+    if (!editRef.value) {
+        return;
+    }
+
+    if (activeOption.value) {
+        editRef.value.setAttribute("aria-activedescendant", activeOptionId);
+    } else {
+        editRef.value.removeAttribute("aria-activedescendant");
+    }
+});
+
+async function openSelected(fallback: null | "first" | "last" = null): Promise<void> {
+    dropdownIsOpen.value = true;
     await nextTick();
     close();
 }
@@ -185,6 +217,18 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
     }
 }
 
+async function onCellClick(e: MouseEvent): Promise<void> {
+    if (editing.value === true) {
+        return;
+    }
+
+    editing.value = true;
+    await nextTick();
+    assertSet(startEdit);
+    assertRef(editRef);
+    startEdit(editRef.value);
+}
+
 function onEditBlur(): void {
     if (editing.value) {
         submit();
@@ -200,7 +244,7 @@ async function submit(): Promise<void> {
 </script>
 
 <template>
-    <f-table-cell :title @dblclick.stop="onCellDoubleClick" @keydown="onCellKeyDown" @click="onCellClick">
+    <f-table-cell :title @dblclick.stop="onCellDoubleClick" @keydown="onCellKeyDown" @click.stop="onCellClick">
         <div v-show="!editing">{{ viewValue }}</div>
         <div
             v-show="editing"
@@ -222,7 +266,7 @@ async function submit(): Promise<void> {
             v-show="editing"
             id="dropdownId"
             :is-open="dropdownIsOpen"
-            :options="options"
+            :options="options
             :active-option
             :active-option-id
             :input-node="editRef as HTMLInputElement"

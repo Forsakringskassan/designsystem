@@ -1,8 +1,97 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { FTextField, FIcon, FTable, FTableCell, FTableEditCell, FTableSelectCell } from "@fkui/vue";
+import { h, ref } from "vue";
+import { formatNumber } from "@fkui/logic";
+import { defineTableColumns } from "../table-column";
+import XTableChip from "./XTableChip.vue";
 
-const rows = ref([
+interface Row {
+    id: string;
+    level: string;
+    start: string;
+    end: string;
+    antal: string;
+    expandableRows?: Row[];
+    expandableContent?: Array<{
+        id: string;
+        content: string;
+    }>;
+    aktiv?: boolean;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "checkbox",
+        header: "Kryssruta",
+        key: "aktiv",
+    },
+    {
+        type: "text",
+        header: "Text",
+        value() {
+            return "hårdkodad text";
+        },
+    },
+    {
+        type: "text",
+        header: "Formatterad text",
+        value(row) {
+            return formatNumber(row.antal) ?? "";
+        },
+    },
+
+    {
+        type: "text",
+        header: "Redigerbar text",
+        editable: true,
+        value(row) {
+            return row.level;
+        },
+        update(row, value) {
+            row.level = value;
+        },
+    },
+
+    {
+        type: "button",
+        header: "Knapp",
+        icon: "trashcan",
+        value(row) {
+            return `Ta bort ${row.id}`;
+        },
+        onClick(row) {
+            onButtonClick(row.id);
+        },
+    },
+    {
+        header: "Länk",
+        type: "anchor",
+        href: "http://www.vecka.nu",
+        value() {
+            return "Länktext";
+        },
+    },
+    {
+        header: "Dropplista",
+        type: "select",
+        key: "id",
+    },
+    {
+        header: "Render function",
+        render() {
+            return h("td", { id: "foo", class: "bar" }, ["👻"]);
+        },
+    },
+    // {
+    //     header: "Custom component",
+    //     type: "render",
+    //     render() {
+    //         return XTableChip;
+    //     },
+    // },
+]);
+
+const rows = ref<Row[]>([
     {
         id: "1",
         animal: "Katt",
@@ -104,8 +193,8 @@ const rows = ref([
 
 const selectFieldOptions = ref(["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"]);
 
-function onButtonClick(value: string): void {
-    alert(`Du klickade på ${value}`);
+function onButtonClick(id: string): void {
+    alert(`Du klickade på rad med id ${id}`);
 }
 </script>
 
@@ -141,9 +230,17 @@ function onButtonClick(value: string): void {
             </f-table-edit-cell>
         </template>
     </f-table>
+    <button type="button" class="button button--secondary">Interagerbart element före</button>
+    <f-table :rows :columns key-attribute="id" striped> </f-table>
+    <pre>{{ rows }}</pre>
+    <button type="button" class="button button--secondary">Interagerbart element efter</button>
 </template>
 
 <style>
+body {
+    padding: 1rem;
+}
+
 .icon-button {
     margin: 0;
     padding: 0;
@@ -158,5 +255,9 @@ function onButtonClick(value: string): void {
 
 .level-3 {
     padding-left: 1rem;
+}
+
+.bar {
+    background: hotpink;
 }
 </style>

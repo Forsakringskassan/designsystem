@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { inject, nextTick, onMounted, ref, useTemplateRef } from "vue";
+import { nextTick, onMounted, ref, useTemplateRef } from "vue";
 import { assertRef, assertSet, isAlphanumeric, type ValidityEvent } from "@fkui/logic";
-import { FTableCell } from ".";
+import { useStartStopEdit } from "./start-stop-edit";
 
 const { title } = defineProps<{ title: string }>();
 
 const editing = ref(false);
 const viewValue = ref("");
-const startEdit: ((focusElement: HTMLElement) => void) | undefined = inject("startEdit");
-const stopEdit: ((reason: "enter" | "escape" | "tab" | "shift-tab" | "blur") => void) | undefined = inject("stopEdit");
 const editRef = useTemplateRef("edit");
 const inputRef = ref<HTMLInputElement | null>(null);
+
+const { startEdit, stopEdit } = useStartStopEdit();
 
 onMounted(() => {
     // when column is rendered, no template refs exist
@@ -104,7 +104,7 @@ function onValidity(e: CustomEvent<ValidityEvent>): void {
 </script>
 
 <template>
-    <f-table-cell :title @click.stop="onCellClick" @keydown="onCellKeyDown">
+    <td tabindex="-1" @click.stop="onCellClick" @keydown="onCellKeyDown">
         <div v-show="!editing" tabindex="-1" class="view">{{ viewValue }}</div>
         <div
             v-show="editing"
@@ -117,7 +117,7 @@ function onValidity(e: CustomEvent<ValidityEvent>): void {
         >
             <slot></slot>
         </div>
-    </f-table-cell>
+    </td>
 </template>
 
 <style lang="scss">

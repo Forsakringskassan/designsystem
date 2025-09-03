@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends Record<string, unknown>, K extends keyof T">
+<script setup lang="ts" generic="T extends Record<string, unknown>, K extends keyof T = keyof T">
 import { computed, onMounted, provide, type Ref, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
@@ -12,13 +12,22 @@ import {
     getTd,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
+import { type TableColumn, normalizeTableColumns } from "./table-column";
+import FTableSelectCell from "./FTableSelectCell.vue";
+import ITableCheckbox from "./ITableCheckbox.vue";
+import ITableAnchor from "./ITableAnchor.vue";
+import ITableButton from "./ITableButton.vue";
+import ITableText from "./ITableText.vue";
+import { startEditKey, stopEditKey } from "./start-stop-edit";
 
 const {
+    columns: rawColumns,
     rows,
     keyAttribute = undefined,
     expandableAttribute = undefined,
     striped = false,
 } = defineProps<{
+    columns: Array<TableColumn<T, K>>;
     rows: T[];
     keyAttribute?: K;
     expandableAttribute?: K;
@@ -31,9 +40,10 @@ const keyedRows = computed(() => setInternalKeys(rows, keyAttribute, expandableA
 const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute));
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
+const columns = computed(() => normalizeTableColumns(rawColumns));
 
 const tableClasses = computed(() => {
-    return striped ? "table--striped" : "";
+    return striped ? "table-ng table-ng--striped" : "table-ng";
 });
 
 /**
@@ -57,8 +67,8 @@ async function stopEditHandler(reason: "enter" | "escape" | "tab" | "shift-tab" 
     currentCellTarget.value = stopEdit(tableRef.value, currentCellTarget.value, reason);
 }
 
-provide("startEdit", startEditHandler);
-provide("stopEdit", stopEditHandler);
+provide(startEditKey, startEditHandler);
+provide(stopEditKey, stopEditHandler);
 
 function onToggleExpanded(key: string): void {
     const index = expandedKeys.value.indexOf(key);
@@ -90,12 +100,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <table ref="table" :role class="table" :tableClasses>
+    <table ref="table" :role :class="tableClasses">
         <thead>
-            <!-- [html-validate-disable-next element-permitted-content -- transparent tr] -->
-            <i-table-row render-header :is-treegrid>
-                <slot v-bind="{ row: {} }"></slot>
-            </i-table-row>
+            <tr class="table-ng__row">
+                <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
+                <th v-for="column in columns" :key="column.header" scope="col" class="table-ng__column">
+                    {{ column.header }}
+                </th>
+            </tr>
         </thead>
 
         <tbody @click="onClick" @keydown="onKeydown">
@@ -113,7 +125,26 @@ onMounted(() => {
                 :is-expanded
                 @toggle="onToggleExpanded"
             >
-                <slot v-bind="{ row }"></slot>
+                <template v-for="column in columns" :key="column.header">
+                    <template v-if="column.type === 'checkbox'">
+                        <i-table-checkbox :row :column></i-table-checkbox>
+                    </template>
+                    <template v-else-if="column.type === 'text'">
+                        <i-table-text :row :column></i-table-text>
+                    </template>
+                    <template v-else-if="column.type === 'anchor'">
+                        <i-table-anchor :row :column></i-table-anchor>
+                    </template>
+                    <template v-else-if="column.type === 'button'">
+                        <i-table-button :row :column></i-table-button>
+                    </template>
+                    <template v-else-if="column.type === 'select'">
+                        <f-table-select-cell :title="column.header"></f-table-select-cell>
+                    </template>
+                    <template v-else-if="'render' in column">
+                        <component :is="column.render(row)" :row></component>
+                    </template>
+                </template>
             </i-table-row>
         </tbody>
     </table>

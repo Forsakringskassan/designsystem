@@ -1482,11 +1482,11 @@ module.exports = defineMetadata({
         flow: true,
     },
 
-    "i-table-row": {
+    "i-table-text": {
         flow: true,
     },
 
-    "f-table-cell": {
+    "i-table-row": {
         flow: true,
     },
 
@@ -1495,6 +1495,18 @@ module.exports = defineMetadata({
     },
 
     "f-table-select-cell": {
+        flow: true,
+    },
+
+    "i-table-checkbox": {
+        flow: true,
+    },
+
+    "i-table-button": {
+        flow: true,
+    },
+
+    "i-table-anchor": {
         flow: true,
     },
 
