@@ -49,7 +49,7 @@ const columns = defineTableColumns<Row>([
         value(row) {
             return row.level;
         },
-        update(row, newValue, oldValue) {
+        update(row, newValue) {
             row.level = newValue;
         },
     },

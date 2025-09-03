@@ -16,12 +16,12 @@ const viewElement = useTemplateRef("view");
 const inputElement = useTemplateRef("input");
 const { startEdit, stopEdit } = useStartStopEdit();
 
-function onStartEdit(): void {
+function onStartEdit(modelValue: string): void {
     assertRef(tdElement);
     assertRef(inputElement);
 
     const { width } = tdElement.value.getBoundingClientRect();
-    model.value = column.value(row);
+    model.value = modelValue;
     tdElement.value.style.setProperty("width", `${width}px`);
 
     //focus(inputElement);
@@ -39,14 +39,21 @@ function onClickCell(event: MouseEvent): void {
     assertRef(tdElement);
 
     if (tdElement.value.contains(event.target as Node)) {
-        onStartEdit();
+        const value = column.value(row);
+        onStartEdit(value);
     }
 }
 
 function onViewingKeydown(event: KeyboardEvent): void {
-    if (isAlphanumeric(event) || event.key === "Enter") {
+    if (isAlphanumeric(event)){
         event.stopPropagation();
-        onStartEdit();
+        onStartEdit("");
+    }
+
+    if (event.key === "Enter") {
+        event.stopPropagation();
+        const value = column.value(row);
+        onStartEdit(value);
     }
 }
 
@@ -59,7 +66,7 @@ function onEditingKeydown(event: KeyboardEvent): void {
     if (event.key === "Enter") {
         const oldValue = column.value(row);
         const newValue = model.value;
-        column.update(row, oldValue, newValue);
+        column.update(row, newValue, oldValue);
         model.value = "";
         onStopEdit({ reason: "enter" });
     }
@@ -87,7 +94,7 @@ function onBlur(): void {
     if (isDirty) {
         const oldValue = column.value(row);
         const newValue = model.value;
-        column.update(row, oldValue, newValue);
+        column.update(row, newValue, oldValue);
     }
 }
 
