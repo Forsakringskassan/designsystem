@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.16.1 (2025-09-03)
+
+### Bug Fixes
+
+* **deps:** update dependency dayjs to v1.11.18 cf24fec
+* **deps:** update dependency i18next to v25.4.0 b31feab
+* **deps:** update dependency i18next to v25.4.1 0bdc8b3
+* **deps:** update dependency i18next to v25.4.2 cae287d
+* **deps:** update dependency sass to v1.91.0 a852ee2
+* **deps:** update vue monorepo to v3.5.19 0efba11
+* **deps:** update vue monorepo to v3.5.20 c8a4eec
+
 ## 6.16.0 (2025-08-22)
 
 ### Features
