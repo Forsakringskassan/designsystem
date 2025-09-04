@@ -10,7 +10,7 @@ const { column, row } = defineProps<{
 
 <template>
     <td tabindex="-1">
-        <button class="icon-button" type="button" tabindex="-1" @click="column.onClick!(column.value(row))">
+        <button class="icon-button" type="button" tabindex="-1" @click="column.onClick!(row)">
             <f-icon name="trashcan"></f-icon>
             <span class="sr-only">Knapptext</span>
         </button>
