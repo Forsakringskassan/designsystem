@@ -2,7 +2,23 @@ import { isVisible } from "@fkui/logic";
 import { getInternalKey } from "../../utils/internal-key";
 import { MetaRow } from "./MetaRow";
 
+interface TableCellIndex {
+    row: number;
+    cell: number;
+}
+
 const internalKey = getInternalKey();
+
+const navKeys = [
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowUp",
+    "ArrowDown",
+    "Home",
+    "End",
+];
+
+let prevCellIndex: number | undefined = undefined;
 
 function rowKey<T extends Record<string, unknown>>(row: T): string {
     return String(row[internalKey]);
@@ -72,72 +88,95 @@ function getCellOrAction(cell: HTMLTableCellElement): HTMLElement {
     return findAction(cell) ?? cell;
 }
 
+function getVerticalNavIndex(
+    table: HTMLTableElement,
+    from: TableCellIndex,
+    to: TableCellIndex,
+): TableCellIndex {
+    const target = { ...to };
+    const currentMax = table.rows[from.row].cells.length - 1;
+    const targetMax = table.rows[to.row].cells.length - 1;
+
+    if (prevCellIndex && currentMax < targetMax) {
+        target.cell = prevCellIndex;
+        prevCellIndex = undefined;
+    } else {
+        target.cell = targetMax < from.cell ? targetMax : from.cell;
+    }
+
+    if (targetMax < from.cell) {
+        prevCellIndex = from.cell;
+    }
+
+    return target;
+}
+
 function navigate(
     e: KeyboardEvent,
-    fromRowIndex: number,
-    fromCellIndex: number,
-    lastRowIndex: number,
-    lastCellIndex: number,
-): { row: number; cell: number } | undefined {
+    table: HTMLTableElement,
+    from: TableCellIndex,
+    last: TableCellIndex,
+): TableCellIndex | undefined {
     if (
-        fromRowIndex === undefined ||
-        fromCellIndex === undefined ||
-        lastRowIndex === undefined ||
-        lastCellIndex === undefined
+        from.row === undefined ||
+        from.cell === undefined ||
+        last.row === undefined ||
+        last.cell === undefined
     ) {
         return;
     }
+    if (!navKeys.includes(e.code)) {
+        return;
+    }
+    e.preventDefault();
 
     if (e.code === "ArrowLeft") {
-        e.preventDefault();
-        if (fromCellIndex === 0) {
+        if (from.cell === 0) {
             return;
         }
 
+        prevCellIndex = undefined;
         return {
-            row: fromRowIndex,
-            cell: fromCellIndex - 1,
+            row: from.row,
+            cell: from.cell - 1,
         };
     }
 
     if (e.code === "ArrowRight") {
-        e.preventDefault();
-        if (fromCellIndex === lastCellIndex) {
+        if (from.cell === last.cell) {
+            return;
+        }
+        const lastCellIndex = table.rows[from.row].cells.length - 1;
+        if (lastCellIndex <= from.cell) {
             return;
         }
 
+        prevCellIndex = undefined;
         return {
-            row: fromRowIndex,
-            cell: fromCellIndex + 1,
+            row: from.row,
+            cell: from.cell + 1,
         };
     }
 
     if (e.code === "ArrowUp") {
-        e.preventDefault();
-        if (fromRowIndex === 1) {
+        if (from.row === 1) {
             return;
         }
 
-        return {
-            row: fromRowIndex - 1,
-            cell: fromCellIndex,
-        };
+        const to = { row: from.row - 1, cell: from.cell };
+        return getVerticalNavIndex(table, from, to);
     }
 
     if (e.code === "ArrowDown") {
-        e.preventDefault();
-        if (fromRowIndex === lastRowIndex) {
+        if (from.row === last.row) {
             return;
         }
 
-        return {
-            row: fromRowIndex + 1,
-            cell: fromCellIndex,
-        };
+        const to = { row: from.row + 1, cell: from.cell };
+        return getVerticalNavIndex(table, from, to);
     }
 
     if (e.code === "Home") {
-        e.preventDefault();
         if (e.ctrlKey) {
             return {
                 row: 1,
@@ -145,23 +184,22 @@ function navigate(
             };
         } else {
             return {
-                row: fromRowIndex,
+                row: from.row,
                 cell: 0,
             };
         }
     }
 
     if (e.code === "End") {
-        e.preventDefault();
         if (e.ctrlKey) {
             return {
-                row: lastRowIndex,
-                cell: lastCellIndex,
+                row: last.row,
+                cell: table.rows[last.row].cells.length - 1,
             };
         } else {
             return {
-                row: fromRowIndex,
-                cell: lastCellIndex,
+                row: from.row,
+                cell: table.rows[from.row].cells.length - 1,
             };
         }
     }
@@ -262,17 +300,16 @@ export function maybeNavigateToCell(
 ): HTMLElement {
     let newCellTarget = currentCellTarget;
     const td = getTd(e.target as HTMLElement);
-    const rowIndex = getTr(td).rowIndex;
-    const cellIndex = td.cellIndex;
+    const fromIndex = {
+        row: getTr(td).rowIndex,
+        cell: td.cellIndex,
+    };
+    const lastIndex = {
+        row: getLastRowIndex(table),
+        cell: getLastCellIndex(table),
+    };
 
-    const navigateTo = navigate(
-        e,
-        rowIndex,
-        cellIndex,
-        getLastRowIndex(table),
-        getLastCellIndex(table),
-    );
-
+    const navigateTo = navigate(e, table, fromIndex, lastIndex);
     if (navigateTo) {
         newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
         switchTabbable(newCellTarget, currentCellTarget);
