@@ -256,6 +256,12 @@ describe("Option selection", () => {
         cy.get(dropdown).should("not.exist");
         cy.get(input).should("have.value", "foo");
     });
+
+    it("should highlight option", () => {
+        cy.mount(FTextField, defaultMountOptions);
+        cy.get(input).type("{downArrow}{downArrow}");
+        cy.toMatchScreenshot();
+    });
 });
 
 describe("Option selection - No Match", () => {
