@@ -40,6 +40,10 @@
 
 .combobox__listbox__option {
     @extend %combobox__listbox__option;
+
+    &--highlight {
+        @extend %combobox__listbox__option--highlight;
+    }
 }
 
 .combobox__button {
