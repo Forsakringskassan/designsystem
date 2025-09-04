@@ -55,6 +55,10 @@ const columns = defineTableColumns<Row>([
         update(row, newValue) {
             row.level = newValue;
         },
+        validation: {
+            required: {},
+            maxLength: { length: 5 },
+        },
     },
 
     {

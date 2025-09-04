@@ -1,3 +1,4 @@
+import { type ValidatorConfigs } from "@fkui/logic";
 import { type Component, type VNode } from "vue";
 
 export interface TableColumnSimple<T, K extends keyof T> {
@@ -33,6 +34,7 @@ export interface TableColumnText<T, K extends keyof T> {
     value?(row: T): string;
     update?(row: T, newValue: string, oldValue: string): void;
     editable?: boolean;
+    validation?: ValidatorConfigs;
 }
 
 export interface NormalizedTableColumnText<T> {
@@ -41,6 +43,7 @@ export interface NormalizedTableColumnText<T> {
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
     editable: boolean;
+    validation: ValidatorConfigs;
 }
 
 export interface TableColumnAnchor<T> {
@@ -176,6 +179,7 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 value: getValueFn(column.value, column.key, String, ""),
                 update: getUpdateFn(column.update, column.key),
                 editable: Boolean(column.editable),
+                validation: column.validation ?? {},
             } satisfies NormalizedTableColumnText<T>;
         case "anchor":
             return {

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T">
-import { ref, useTemplateRef } from "vue";
-import { assertRef, focus } from "@fkui/logic";
+import { computed, onMounted, ref, useTemplateRef } from "vue";
+import { assertRef, focus, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FIcon } from "../FIcon";
 import { type NormalizedTableColumnText } from "./table-column";
 import { useStartStopEdit } from "./start-stop-edit";
@@ -11,10 +11,37 @@ const { row, column } = defineProps<{
 }>();
 
 const model = ref("");
+const validity = ref<Pick<ValidityEvent, "isValid" | "validationMessage" | "validityMode">>({
+    isValid: true,
+    validationMessage: "",
+    validityMode: "INITIAL",
+});
+const hasError = computed(() => validity.value.validityMode === "ERROR");
+const wrapperClasses = computed(() => {
+    return {
+        "table-ng__cell": true,
+        "table-ng__cell--text": true,
+        "table-ng__cell--valid": !hasError.value,
+        "table-ng__cell--error": hasError.value,
+    };
+
+})
+const inputClasses = computed(() => {
+    return {
+        foobar: true,
+        "table-ng__textedit": true,
+    };
+});
 const tdElement = useTemplateRef("td");
 const viewElement = useTemplateRef("view");
 const inputElement = useTemplateRef("input");
 const { startEdit, stopEdit } = useStartStopEdit();
+
+onMounted(() => {
+    if (inputElement.value) {
+        ValidationService.addValidatorsToElement(inputElement.value, column.validation);
+    }
+});
 
 function onStartEdit(modelValue: string): void {
     assertRef(tdElement);
@@ -45,7 +72,7 @@ function onClickCell(event: MouseEvent): void {
 }
 
 function onViewingKeydown(event: KeyboardEvent): void {
-    if (isAlphanumeric(event)){
+    if (isAlphanumeric(event)) {
         event.stopPropagation();
         onStartEdit("");
     }
@@ -98,6 +125,11 @@ function onBlur(): void {
     }
 }
 
+function onValidity(event: CustomEvent<ValidityEvent>): void {
+    const { isValid, validationMessage, validityMode } = event.detail;
+    validity.value = { isValid, validationMessage, validityMode };
+}
+
 function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
     // using the fact that special keys have a name with length > 1
     // ignores ctrl, meta key combinations
@@ -110,7 +142,7 @@ function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
         v-if="column.editable"
         ref="td"
         tabindex="-1"
-        class="table-ng__cell table-ng__cell--text"
+        :class="wrapperClasses"
         @click.stop="onClickCell"
         @keydown="onKeydown"
     >
@@ -119,11 +151,12 @@ function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
             <input
                 ref="input"
                 v-model="model"
-                class="foobar table-ng__textedit"
+                :class="inputClasses"
                 type="text"
                 maxlength="40"
                 tabindex="-1"
                 @blur="onBlur"
+                @validity="onValidity"
             />
             <f-icon name="pen" class="table-ng__texticon"></f-icon>
         </div>
