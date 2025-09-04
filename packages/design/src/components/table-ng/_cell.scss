@@ -10,47 +10,45 @@ $horizontal-padding: size.$padding-050;
 
     &--text {
         padding: 0 0.25rem;
-    }
-}
 
-.table-ng__cell--text {
-    &:focus-visible {
-        outline: none !important;
-        box-shadow: none !important;
+        &:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
 
-        .table-ng__textwrapper {
-            @extend %text-focus-state;
+            .table-ng__textwrapper {
+                @extend %text-focus-state;
+            }
+
+            .table-ng__texticon {
+                visibility: visible;
+            }
         }
 
-        .table-ng__texticon {
-            visibility: visible;
+        &:hover {
+            .table-ng__textwrapper {
+                @extend %text-hover-state;
+            }
         }
-    }
 
-    &:hover {
-        .table-ng__textwrapper {
-            @extend %text-hover-state;
+        &.table-ng__cell--error:not(:focus-within) {
+            .table-ng__textwrapper {
+                @extend %text-error-state;
+            }
+            .table-ng__texticon {
+                visibility: visible;
+            }
         }
-    }
 
-    &.table-ng__cell--error:not(:focus-within) {
-        .table-ng__textwrapper {
-            @extend %text-error-state;
+        &.table-ng__cell--error:hover:not(:focus-within) {
+            .table-ng__textwrapper {
+                @extend %text-error-state;
+            }
         }
-        .table-ng__texticon {
-            visibility: visible;
-        }
-    }
 
-    &.table-ng__cell--error:hover:not(:focus-within) {
-        .table-ng__textwrapper {
-            @extend %text-error-state;
-        }
-    }
-
-    &.table-ng__cell--error:focus {
-        .table-ng__textwrapper {
-            @extend %text-error-state;
+        &.table-ng__cell--error:focus {
+            .table-ng__textwrapper {
+                @extend %text-error-state;
+            }
         }
     }
 }
@@ -87,8 +85,8 @@ $horizontal-padding: size.$padding-050;
 }
 
 .table-ng__textedit {
-    flex: 0 1 0px;
-    width: 0px;
+    flex: 0 1 0;
+    width: 0;
     border: none;
     padding: 0;
     background: transparent;
