@@ -5,8 +5,11 @@ import { formatNumber } from "@fkui/logic";
 import { defineTableColumns } from "../table-column";
 import XTableChip from "./XTableChip.vue";
 
+const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
+
 interface Row {
     id: string;
+    animal?: string;
     level: string;
     start: string;
     end: string;
@@ -76,7 +79,8 @@ const columns = defineTableColumns<Row>([
     {
         header: "Dropplista",
         type: "select",
-        key: "id",
+        key: "animal",
+        options: selectFieldOptions,
     },
     {
         header: "Render function",
@@ -96,6 +100,7 @@ const columns = defineTableColumns<Row>([
 const rows = ref<Row[]>([
     {
         id: "1",
+        animal: "Katt",
         level: "Föräldrapenning",
         start: "2022-04-11",
         end: "2022-04-20",
@@ -132,6 +137,7 @@ const rows = ref<Row[]>([
     },
     {
         id: "2",
+        animal: "Spindel",
         level: "Tillfällig föräldrapenning",
         start: "2022-05-02",
         end: "2022-05-04",
@@ -154,6 +160,7 @@ const rows = ref<Row[]>([
     },
     {
         id: "3",
+        animal: "Hamster",
         level: "Föräldrapenning",
         start: "2022-05-16",
         end: "2022-05-27",

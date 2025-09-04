@@ -1494,7 +1494,7 @@ module.exports = defineMetadata({
         flow: true,
     },
 
-    "f-table-select-cell": {
+    "i-table-select": {
         flow: true,
     },
 

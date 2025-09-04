@@ -78,12 +78,16 @@ export interface TableColumnSelect<T, K extends keyof T> {
     header: string;
     key?: K;
     value?(row: T): string;
+    update?(row: T, newValue: string, oldValue: string): void;
+    options: string[];
 }
 
 export interface NormalizedTableColumnSelect<T> {
     type: "select";
     header: string;
     value(row: T): string;
+    update(row: T, newValue: string, oldValue: string): void;
+    options: string[];
 }
 
 export interface TableColumnRender<T> {
@@ -193,6 +197,8 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "select",
                 header: column.header,
                 value: getValueFn(column.value, column.key, String, ""),
+                update: getUpdateFn(column.update, column.key),
+                options: column.options,
             } satisfies NormalizedTableColumnSelect<T>;
         case undefined:
             return {

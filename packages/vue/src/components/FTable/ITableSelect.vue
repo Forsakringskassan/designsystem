@@ -1,35 +1,59 @@
-<script setup lang="ts">
-import { inject, nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
+<script setup lang="ts" generic="T">
+import { nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
 import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { IComboboxDropdown } from "../../internal-components";
 import { useStartStopEdit } from "./start-stop-edit";
+import { NormalizedTableColumnSelect } from "./table-column";
 
-const { title } = defineProps<{ title: string }>();
+// Props
+// const { modelValue, options, title } = defineProps<{
+//     modelValue: string;
+//     options: string[];
+//     title: string;
+// }>();
 
+const { row, column } = defineProps<{
+    row: T;
+    column: NormalizedTableColumnSelect<T>;
+}>();
+
+// Editing in progress
 const editing = ref(false);
-const viewValue = ref("tre");
 const editRef = useTemplateRef("edit");
 
 const { startEdit, stopEdit } = useStartStopEdit();
 
-const dropdownOptions = ref(["ett", "två", "tre"]);
+const viewValue = ref(column.value(row));
+
+async function onCellDoubleClick(): Promise<void> {
+    editing.value = true;
+    await nextTick();
+    assertSet(startEdit);
+    assertRef(editRef);
+    startEdit(editRef.value);
+}
 
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
-    if (e.code === "Enter") {
-        e.preventDefault();
-        editing.value = true;
-        await nextTick();
-        assertSet(startEdit);
-        assertRef(editRef);
-        startEdit(editRef.value);
-        openSelected("first");
+    if (e.code === "Enter" || e.code === "NumpadEnter") {
+        startEditing(e);
     }
 }
 
-async function cancel(): Promise<void> {
-    editing.value = false;
+async function onCellClick(e: MouseEvent): Promise<void> {
+    if (editing.value) {
+        return;
+    }
+    startEditing(e);
+}
+
+async function startEditing(e: UIEvent): Promise<void> {
+    e.preventDefault();
+    editing.value = true;
     await nextTick();
-    close();
+    assertSet(startEdit);
+    assertRef(editRef);
+    startEdit(editRef.value);
+    openSelected("first");
 }
 
 async function onDropdownSelect(value: string): Promise<void> {
@@ -70,9 +94,9 @@ async function openSelected(fallback: null | "first" | "last" = null): Promise<v
     if (viewValue.value) {
         activeOption.value = viewValue.value;
     } else if (fallback === "first") {
-        activeOption.value = dropdownOptions.value[0];
+        activeOption.value = column.options[0];
     } else if (fallback === "last") {
-        activeOption.value = dropdownOptions.value[dropdownOptions.value.length - 1];
+        activeOption.value = column.options[column.options.length - 1];
     } else {
         activeOption.value = null;
     }
@@ -87,29 +111,29 @@ function close(): void {
 
 function setNextOption(): void {
     if (activeOption.value) {
-        const index = dropdownOptions.value.indexOf(activeOption.value);
+        const index = column.options.indexOf(activeOption.value);
 
-        if (index === dropdownOptions.value.length - 1) {
-            activeOption.value = dropdownOptions.value[0];
+        if (index === column.options.length - 1) {
+            activeOption.value = column.options[0];
         } else {
-            activeOption.value = dropdownOptions.value[index + 1];
+            activeOption.value = column.options[index + 1];
         }
     } else {
-        activeOption.value = dropdownOptions.value[0];
+        activeOption.value = column.options[0];
     }
 }
 
 function setPreviousOption(): void {
     if (activeOption.value) {
-        const index = dropdownOptions.value.indexOf(activeOption.value);
+        const index = column.options.indexOf(activeOption.value);
 
         if (index === 0) {
-            activeOption.value = dropdownOptions.value[dropdownOptions.value.length - 1];
+            activeOption.value = column.options[column.options.length - 1];
         } else {
-            activeOption.value = dropdownOptions.value[index - 1];
+            activeOption.value = column.options[index - 1];
         }
     } else {
-        activeOption.value = dropdownOptions.value[dropdownOptions.value.length - 1];
+        activeOption.value = column.options[column.options.length - 1];
     }
 }
 
@@ -158,21 +182,11 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
     }
 }
 
-async function onCellClick(e: MouseEvent): Promise<void> {
-    if (editing.value === true) {
-        return;
-    }
-
-    editing.value = true;
-    await nextTick();
-    assertSet(startEdit);
-    assertRef(editRef);
-    startEdit(editRef.value);
-}
-
-function onEditBlur(): void {
+async function onEditBlur(): Promise<void> {
     if (editing.value) {
-        submit();
+        dropdownIsOpen.value = false;
+        editing.value = false;
+        await nextTick();
         assertSet(stopEdit);
         stopEdit("blur");
     }
@@ -182,10 +196,15 @@ async function submit(): Promise<void> {
     editing.value = false;
     await nextTick();
 }
+
+function cancel(): void {
+    assertSet(stopEdit);
+    stopEdit("escape");
+}
 </script>
 
 <template>
-    <td tabindex="-1" @keydown="onCellKeyDown" @click.stop="onCellClick">
+    <td tabindex="-1" @dblclick.stop="onCellDoubleClick" @keydown="onCellKeyDown" @click.stop="onCellClick">
         <div v-show="!editing">{{ viewValue }}</div>
         <div
             v-show="editing"
@@ -207,7 +226,7 @@ async function submit(): Promise<void> {
             v-show="editing"
             id="dropdownId"
             :is-open="dropdownIsOpen"
-            :options="dropdownOptions"
+            :options="column.options"
             :active-option
             :active-option-id
             :input-node="editRef as HTMLInputElement"

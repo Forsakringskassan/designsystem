@@ -13,7 +13,7 @@ import {
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
 import { type TableColumn, normalizeTableColumns } from "./table-column";
-import FTableSelectCell from "./FTableSelectCell.vue";
+import ITableSelect from "./ITableSelect.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
@@ -139,7 +139,7 @@ onMounted(() => {
                         <i-table-button :row :column></i-table-button>
                     </template>
                     <template v-else-if="column.type === 'select'">
-                        <f-table-select-cell :title="column.header"></f-table-select-cell>
+                        <i-table-select :row :column></i-table-select>
                     </template>
                     <template v-else-if="'render' in column">
                         <component :is="column.render(row)" :row></component>
