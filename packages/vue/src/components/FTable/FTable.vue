@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>, K extends keyof T = keyof T">
-import { computed, onMounted, provide, type Ref, ref, useTemplateRef } from "vue";
+import { computed, onMounted, provide, type Ref, ref, useSlots, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
 import {
@@ -44,6 +44,11 @@ const columns = computed(() => normalizeTableColumns(rawColumns));
 
 const tableClasses = computed(() => {
     return striped ? "table-ng table-ng--striped" : "table-ng";
+});
+
+const slots = useSlots();
+const hasExpandableSlot = computed(() => {
+    return Boolean(slots["expandable"]);
 });
 
 /**
@@ -125,24 +130,31 @@ onMounted(() => {
                 :is-expanded
                 @toggle="onToggleExpanded"
             >
-                <template v-for="column in columns" :key="column.header">
-                    <template v-if="column.type === 'checkbox'">
-                        <i-table-checkbox :row :column></i-table-checkbox>
-                    </template>
-                    <template v-else-if="column.type === 'text'">
-                        <i-table-text :row :column></i-table-text>
-                    </template>
-                    <template v-else-if="column.type === 'anchor'">
-                        <i-table-anchor :row :column></i-table-anchor>
-                    </template>
-                    <template v-else-if="column.type === 'button'">
-                        <i-table-button :row :column></i-table-button>
-                    </template>
-                    <template v-else-if="column.type === 'select'">
-                        <i-table-select :row :column></i-table-select>
-                    </template>
-                    <template v-else-if="'render' in column">
-                        <component :is="column.render(row)" :row></component>
+                <template v-if="level! > 1 && hasExpandableSlot">
+                    <td :colspan="columns.length">
+                        <slot name="expandable" v-bind="{ row }" />
+                    </td>
+                </template>
+                <template v-else>
+                    <template v-for="column in columns" :key="column.header">
+                        <template v-if="column.type === 'checkbox'">
+                            <i-table-checkbox :row :column></i-table-checkbox>
+                        </template>
+                        <template v-else-if="column.type === 'text'">
+                            <i-table-text :row :column></i-table-text>
+                        </template>
+                        <template v-else-if="column.type === 'anchor'">
+                            <i-table-anchor :row :column></i-table-anchor>
+                        </template>
+                        <template v-else-if="column.type === 'button'">
+                            <i-table-button :row :column></i-table-button>
+                        </template>
+                        <template v-else-if="column.type === 'select'">
+                            <i-table-select :row :column></i-table-select>
+                        </template>
+                        <template v-else-if="'render' in column">
+                            <component :is="column.render(row)" :row></component>
+                        </template>
                     </template>
                 </template>
             </i-table-row>

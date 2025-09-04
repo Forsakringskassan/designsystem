@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { h, ref } from "vue";
-import { FTable } from "@fkui/vue";
+import { FTable, FCard, FButton } from "@fkui/vue";
 import { formatNumber } from "@fkui/logic";
 import { defineTableColumns } from "../table-column";
 import XTableChip from "./XTableChip.vue";
@@ -18,7 +18,6 @@ interface Row {
 const columns = defineTableColumns<Row>([
     {
         type: "checkbox",
-        editable: true,
         header: "Kryssruta",
         key: "aktiv",
     },
@@ -60,11 +59,6 @@ const columns = defineTableColumns<Row>([
         },
     },
     {
-        header: "Dropplista",
-        type: "select",
-        key: "id",
-    },
-    {
         header: "Render function",
         render() {
             return h("td", { id: "foo", class: "bar" }, ["👻"]);
@@ -85,32 +79,13 @@ const rows = ref([
         start: "2022-04-11",
         end: "2022-04-20",
         antal: "10000",
-        expandableRows: [
-            {
-                id: "1a",
-                level: "Sjukpenningsnivå",
-                start: "2022-04-18",
-                end: "2022-04-20",
-                antal: "30000",
-            },
-            {
-                id: "1b",
-                level: "Lägstanivå",
-                start: "2022-04-16",
-                end: "2022-04-17",
-                antal: "20000",
-            },
-            {
-                id: "1c",
-                level: "Sjukpenningsnivå",
-                start: "2022-04-11",
-                end: "2022-04-15",
-                antal: "50000",
-            },
-        ],
         expandableContent: [
             {
                 id: "1a",
+                content: "Anledning: Tar hand om barnet",
+            },
+            {
+                id: "1b",
                 content: "Anledning: Tar hand om barnet",
             },
         ],
@@ -121,15 +96,6 @@ const rows = ref([
         start: "2022-05-02",
         end: "2022-05-04",
         antal: "30000",
-        expandableRows: [
-            {
-                id: "2a",
-                level: "Heldag",
-                start: "2022-05-02",
-                end: "2022-05-04",
-                antal: "30000",
-            },
-        ],
         expandableContent: [
             {
                 id: "2a",
@@ -143,29 +109,6 @@ const rows = ref([
         start: "2022-05-16",
         end: "2022-05-27",
         antal: "11000",
-        expandableRows: [
-            {
-                id: "3a",
-                level: "Sjukpenningsnivå",
-                start: "2022-05-23",
-                end: "2022-05-27",
-                antal: "40000",
-            },
-            {
-                id: "3b",
-                level: "Lägstanivå",
-                start: "2022-05-21",
-                end: "2022-05-22",
-                antal: "20000",
-            },
-            {
-                id: "3c",
-                level: "Sjukpenningsnivå",
-                start: "2022-05-16",
-                end: "2022-05-20",
-                antal: "50000",
-            },
-        ],
         expandableContent: [
             {
                 id: "3a",
@@ -181,7 +124,37 @@ function onButtonClick(id: string): void {
 </script>
 
 <template>
-    <f-table :rows :columns key-attribute="id" striped expandable-attribute="expandableRows">
+    <f-table :rows :columns key-attribute="id" expandable-attribute="expandableContent">
+        <template #expandable="{ row }">
+            <f-card>
+                <template #header="{ headingSlotClass }">
+                    <h3 :class="headingSlotClass">{{ row.id }}</h3>
+                </template>
+                <template #default>
+                    <p>{{ row.content }}</p>
+                </template>
+                <template #footer>
+                    <div class="button-group">
+                        <f-button
+                            variant="tertiary"
+                            align-text
+                            class="button-group__item"
+                            icon-left="trashcan"
+                        >
+                            Ta bort
+                        </f-button>
+                        <f-button
+                            variant="tertiary"
+                            align-text
+                            class="button-group__item"
+                            icon-left="pen"
+                        >
+                            Ändra
+                        </f-button>
+                    </div>
+                </template>
+            </f-card>
+        </template>
     </f-table>
     <pre>{{ rows }}</pre>
 </template>
