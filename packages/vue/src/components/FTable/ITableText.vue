@@ -54,7 +54,7 @@ function onStartEdit(modelValue: string): void {
     startEdit(inputElement.value);
 }
 
-function onStopEdit(options: { reason: "enter" | "escape" }): void {
+function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" }): void {
     const { reason } = options;
 
     focus(tdElement.value);
@@ -90,6 +90,7 @@ function onEditingKeydown(event: KeyboardEvent): void {
     event.stopPropagation();
 
     if (event.key === "Enter") {
+        event.preventDefault();
         const oldValue = column.value(row);
         const newValue = model.value;
         column.update(row, newValue, oldValue);
@@ -98,8 +99,18 @@ function onEditingKeydown(event: KeyboardEvent): void {
     }
 
     if (event.key === "Escape") {
+        event.preventDefault();
         model.value = "";
         onStopEdit({ reason: "escape" });
+    }
+
+    if (event.key === "Tab") {
+        event.preventDefault();
+        const oldValue = column.value(row);
+        const newValue = model.value;
+        column.update(row, newValue, oldValue);
+        model.value = "";
+        onStopEdit({ reason: event.shiftKey ? "shift-tab" : "tab" });
     }
 }
 
