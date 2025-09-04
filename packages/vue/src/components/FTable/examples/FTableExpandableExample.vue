@@ -5,6 +5,8 @@ import { formatNumber } from "@fkui/logic";
 import { defineTableColumns } from "../table-column";
 import XTableChip from "./XTableChip.vue";
 
+const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
+
 interface Row {
     id: string;
     animal?: string;
@@ -12,11 +14,13 @@ interface Row {
     start: string;
     end: string;
     antal: string;
-    expandableRows: Row[];
+    expandableRows?: Row[];
+    expandableContent?: Array<{
+        id: string;
+        content: string;
+    }>;
     aktiv?: boolean;
 }
-
-const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
 
 const columns = defineTableColumns<Row>([
     {
@@ -24,11 +28,15 @@ const columns = defineTableColumns<Row>([
         header: "Kryssruta",
         key: "aktiv",
     },
+
     {
         type: "text",
-        header: "Text",
-        key: "id",
+        header: "Oformaterad text",
+        value(row) {
+            return String(row.antal);
+        },
     },
+
     {
         type: "text",
         header: "Formatterad text",
@@ -36,12 +44,23 @@ const columns = defineTableColumns<Row>([
             return formatNumber(row.antal) ?? "";
         },
     },
+
     {
         type: "text",
         header: "Redigerbar text",
         editable: true,
-        key: "level",
+        value(row) {
+            return row.level;
+        },
+        update(row, newValue) {
+            row.level = newValue;
+        },
+        validation: {
+            required: {},
+            maxLength: { length: 5 },
+        },
     },
+
     {
         type: "button",
         header: "Knapp",
@@ -73,15 +92,16 @@ const columns = defineTableColumns<Row>([
             return h("td", { id: "foo", class: "bar" }, ["👻"]);
         },
     },
-    {
-        header: "Custom component",
-        render() {
-            return XTableChip;
-        },
-    },
+    // {
+    //     header: "Custom component",
+    //     type: "render",
+    //     render() {
+    //         return XTableChip;
+    //     },
+    // },
 ]);
 
-const rows = ref([
+const rows = ref<Row[]>([
     {
         id: "1",
         animal: "Katt",
@@ -187,12 +207,18 @@ function onButtonClick(id: string): void {
 </script>
 
 <template>
+    <button type="button" class="button button--secondary">Interagerbart element före</button>
     <f-table :rows :columns key-attribute="id" striped expandable-attribute="expandableRows">
     </f-table>
     <pre>{{ rows }}</pre>
+    <button type="button" class="button button--secondary">Interagerbart element efter</button>
 </template>
 
 <style>
+body {
+    padding: 1rem;
+}
+
 .icon-button {
     margin: 0;
     padding: 0;

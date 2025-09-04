@@ -495,7 +495,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -509,7 +509,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
