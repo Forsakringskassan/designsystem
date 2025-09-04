@@ -138,9 +138,9 @@ function getValueFn<TRow, TValue, K extends keyof TRow>(
 }
 
 function getUpdateFn<TRow, TValue, K extends keyof TRow>(
-    fn: ((row: TRow, value: TValue) => void) | undefined,
+    fn: ((row: TRow, newValue: TValue, oldValue: TValue) => void) | undefined,
     key: K | undefined,
-): (row: TRow, value: TValue) => void {
+): (row: TRow, newValue: TValue, oldValue: TValue) => void {
     if (fn) {
         return fn;
     }
