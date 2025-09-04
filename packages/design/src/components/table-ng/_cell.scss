@@ -32,6 +32,27 @@ $horizontal-padding: size.$padding-050;
             @extend %text-hover-state;
         }
     }
+
+    &.table-ng__cell--error:not(:focus-within) {
+        .table-ng__textwrapper {
+            @extend %text-error-state;
+        }
+        .table-ng__texticon {
+            visibility: visible;
+        }
+    }
+
+    &.table-ng__cell--error:hover:not(:focus-within) {
+        .table-ng__textwrapper {
+            @extend %text-error-state;
+        }
+    }
+
+    &.table-ng__cell--error:focus {
+        .table-ng__textwrapper {
+            @extend %text-error-state;
+        }
+    }
 }
 
 .table-ng__textwrapper {
@@ -44,7 +65,7 @@ $horizontal-padding: size.$padding-050;
     border-color: transparent;
     align-items: center;
 
-    &:hover .table-ng__texticon {
+    &:hover:not(:focus-within) .table-ng__texticon {
         visibility: visible;
     }
 
@@ -89,6 +110,11 @@ $horizontal-padding: size.$padding-050;
 
 %text-hover-state {
     background: var(--fkds-color-action-background-secondary-hover);
+}
+
+%text-error-state {
+    color: var(--fkds-color-feedback-text-negative);
+    border-bottom-color: var(--fkds-color-feedback-text-negative);
 }
 
 %text-focus-state {

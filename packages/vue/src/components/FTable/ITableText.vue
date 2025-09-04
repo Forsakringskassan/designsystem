@@ -158,7 +158,8 @@ function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
                 @blur="onBlur"
                 @validity="onValidity"
             />
-            <f-icon name="pen" class="table-ng__texticon"></f-icon>
+            <f-icon v-if="hasError" name="error" class="table-ng__texticon"></f-icon>
+            <f-icon v-else name="pen" class="table-ng__texticon"></f-icon>
         </div>
     </td>
     <td v-else tabindex="-1" class="table-ng__cell table-ng__cell--static">
