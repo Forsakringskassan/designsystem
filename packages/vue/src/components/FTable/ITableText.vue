@@ -24,8 +24,7 @@ const wrapperClasses = computed(() => {
         "table-ng__cell--valid": !hasError.value,
         "table-ng__cell--error": hasError.value,
     };
-
-})
+});
 const inputClasses = computed(() => {
     return {
         foobar: true,

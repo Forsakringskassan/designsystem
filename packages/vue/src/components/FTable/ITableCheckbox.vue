@@ -9,6 +9,7 @@ const { column, row } = defineProps<{
 
 <template>
     <td tabindex="-1">
+        <!-- eslint-disable-next-line vue/no-mutating-props -->
         <input v-model="row[column.key!]" type="checkbox" :aria-label="column.header" tabindex="-1" />
     </td>
 </template>

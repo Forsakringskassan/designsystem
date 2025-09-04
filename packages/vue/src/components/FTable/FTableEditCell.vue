@@ -3,6 +3,7 @@ import { nextTick, onMounted, ref, useTemplateRef } from "vue";
 import { assertRef, assertSet, isAlphanumeric, type ValidityEvent } from "@fkui/logic";
 import { useStartStopEdit } from "./start-stop-edit";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- Fixes lint error
 const { title } = defineProps<{ title: string }>();
 
 const editing = ref(false);
