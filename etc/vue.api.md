@@ -940,7 +940,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -954,7 +954,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -1396,7 +1396,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -1410,7 +1410,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -2323,7 +2323,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -2337,7 +2337,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -2870,7 +2870,7 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
         readonly onUpdated?: ((item: T) => any) | undefined;
         readonly "onUpdate:modelValue"?: ((items: T[]) => any) | undefined;
         readonly onDeleted?: ((item: T) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "primaryButtonRight" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader">, "onUpdate:modelValue" | "onCreated" | "onUpdated" | "onDeleted" | ("beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "primaryButtonRight" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "primaryButtonRight" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader">, "onUpdate:modelValue" | "onCreated" | "onUpdated" | "onDeleted" | ("beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "primaryButtonRight" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader")> & {} & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -3342,7 +3342,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -3356,7 +3356,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -3390,7 +3390,7 @@ export const FDataTable: <T extends object>(__VLS_props: NonNullable<Awaited<typ
         readonly rows: T[];
         readonly striped: boolean;
         readonly keyAttribute?: string | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "keyAttribute" | "striped">, "rows" | ("scroll" | "keyAttribute" | "striped")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "scroll" | "keyAttribute" | "striped">, "rows" | ("scroll" | "keyAttribute" | "striped")> & {} & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -4369,7 +4369,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -4383,7 +4383,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -4511,7 +4511,7 @@ export const FDetailsPanel: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_se
     props: __VLS_PrettifyLocal_3<Pick<Partial<{}> & Omit<{} & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, never> & {
         name: string;
         exclusive?: string;
-    } & Partial<{}>> & PublicProps;
+    } & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -5137,7 +5137,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -5151,7 +5151,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -6821,7 +6821,7 @@ export const FInteractiveTable: <T extends object, K extends keyof T>(__VLS_prop
         readonly onExpand?: ((row: T) => any) | undefined;
         readonly onUnselect?: ((row: T) => any) | undefined;
         readonly "onUpdate:active"?: ((row: T | undefined) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "modelValue" | "scroll" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("modelValue" | "scroll" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "modelValue" | "scroll" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active">, "onChange" | "onClick" | "onSelect" | "onUpdate:modelValue" | "rows" | "onCollapse" | "onExpand" | "onUnselect" | "onUpdate:active" | ("modelValue" | "scroll" | "keyAttribute" | "striped" | "hover" | "expandableAttribute" | "expandableDescribedby" | "selectable" | "showActive" | "active")> & {} & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -7226,7 +7226,7 @@ export const FList: <T extends object>(__VLS_props: NonNullable<Awaited<typeof _
         readonly onClick?: ((item: T) => any) | undefined;
         readonly onUnselect?: ((item: T) => any) | undefined;
         readonly "onUpdate:active"?: ((item: T) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "elementId" | "modelValue" | "checkbox" | "keyAttribute" | "selectable" | "active">, "onChange" | "onClick" | "onSelect" | "items" | "onUpdate:modelValue" | "onUnselect" | "onUpdate:active" | ("elementId" | "modelValue" | "checkbox" | "keyAttribute" | "selectable" | "active")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "elementId" | "modelValue" | "checkbox" | "keyAttribute" | "selectable" | "active">, "onChange" | "onClick" | "onSelect" | "items" | "onUpdate:modelValue" | "onUnselect" | "onUpdate:active" | ("elementId" | "modelValue" | "checkbox" | "keyAttribute" | "selectable" | "active")> & {} & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -7343,7 +7343,7 @@ default: string;
 required: false;
 validator(value: string): boolean;
 };
-}>, void, {}, {
+}>, {}, {}, {
 ariaLabel(): string;
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 size: {
@@ -8599,7 +8599,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -8613,7 +8613,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -9218,7 +9218,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -9232,7 +9232,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -9455,7 +9455,7 @@ export const FPageLayout: <T extends FPageLayoutType>(__VLS_props: NonNullable<A
         readonly onUpdate?: (() => any) | undefined;
     } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, "onUpdate"> & {
         layout: T;
-    } & Partial<{}>> & PublicProps;
+    } & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -9923,7 +9923,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -9937,7 +9937,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -10398,7 +10398,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -10412,7 +10412,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -10900,7 +10900,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -10914,7 +10914,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -11349,7 +11349,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -11363,7 +11363,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -11807,7 +11807,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -11821,7 +11821,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -11852,7 +11852,7 @@ default: string;
 type: StringConstructor;
 required: true;
 };
-}>, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 value: {
 type: NumberConstructor;
 required: true;
@@ -12427,7 +12427,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -12441,7 +12441,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -12740,7 +12740,7 @@ export const FSortFilterDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __V
         readonly filterAttributes?: string[] | undefined;
         readonly onDatasetSorted?: ((items: T[]) => any) | undefined;
         readonly onUsedSortAttributes?: ((sortAttribute: SortOrder) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes">, "data" | "sortableAttributes" | "onDatasetSorted" | "onUsedSortAttributes" | ("defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes")> & {} & Partial<{}>> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes">, "data" | "sortableAttributes" | "onDatasetSorted" | "onUsedSortAttributes" | ("defaultSortAttribute" | "showSort" | "showFilter" | "placeholderFilter" | "defaultSortAscending" | "filterAttributes")> & {} & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -12865,7 +12865,7 @@ export const FTable: <T extends Record<string, unknown>, K extends keyof T = key
         keyAttribute?: K;
         expandableAttribute?: K;
         striped?: boolean;
-    } & Partial<{}>> & PublicProps;
+    } & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {};
@@ -13539,7 +13539,7 @@ options: string[];
 activeOption: string | null;
 activeOptionId: string;
 inputNode: HTMLInputElement;
-}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<{
@@ -13553,7 +13553,7 @@ inputNode: HTMLInputElement;
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
-IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -14954,7 +14954,7 @@ rotate: string;
 // Warning: (ae-forgotten-export) The symbol "__VLS_Props_5" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IComboboxDropdown: DefineComponent<__VLS_Props_5, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxDropdown: DefineComponent<__VLS_Props_5, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
 }, string, PublicProps, Readonly<__VLS_Props_5> & Readonly<{
@@ -14963,7 +14963,7 @@ onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 // @public (undocumented)
-export const IComboboxToggleButton: DefineComponent<    {}, void, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxToggleButton: DefineComponent<    {}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 toggle: () => any;
 }, string, PublicProps, Readonly<{}> & Readonly<{
 onToggle?: (() => any) | undefined;
@@ -15935,7 +15935,7 @@ export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer 
 
 // Warnings were encountered during analysis:
 //
-// src/components/FTable/FTable.vue:461:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
+// src/components/FTable/FTable.vue:459:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
