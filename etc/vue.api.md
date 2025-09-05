@@ -12859,13 +12859,18 @@ rotate: string;
 //
 // @public (undocumented)
 export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_8<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
-    props: __VLS_PrettifyLocal_8<Pick<Partial<{}> & Omit<{} & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, never> & {
+    props: __VLS_PrettifyLocal_8<Pick<Partial<{}> & Omit<{
+        readonly "onUpdate:modelValue"?: ((value: T[]) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, "onUpdate:modelValue"> & ({
         columns: Array<TableColumn<T, KeyAttribute>>;
         rows: T[];
         keyAttribute?: KeyAttribute;
         expandableAttribute?: ExpandableAttribute;
         striped?: boolean;
-    } & {}> & PublicProps;
+        selectable?: "single" | "multi";
+    } & {
+        modelValue?: T[];
+    }) & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -12873,7 +12878,7 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
             row: Required<T>[ExpandableAttribute] extends unknown[] ? Required<T>[ExpandableAttribute][number] : never;
         }) => any;
     };
-    emit: {};
+    emit: (evt: "update:modelValue", value: T[]) => void;
 }>) => VNode & {
     __ctx?: Awaited<typeof __VLS_setup>;
 };

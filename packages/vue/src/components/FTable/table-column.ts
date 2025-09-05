@@ -19,12 +19,14 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
     header: string;
     key?: K;
     value?(row: T): boolean;
+    update?(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
 export interface NormalizedTableColumnCheckbox<T> {
     type: "checkbox";
     header: string;
     value(row: T): boolean;
+    update(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
 export interface TableColumnText<T, K extends keyof T> {
@@ -171,6 +173,7 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "checkbox",
                 header: column.header,
                 value: getValueFn(column.value, column.key, Boolean, false),
+                update: getUpdateFn(column.update, column.key),
             } satisfies NormalizedTableColumnCheckbox<T>;
         case "text":
             return {

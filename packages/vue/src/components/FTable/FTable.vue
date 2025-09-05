@@ -3,7 +3,7 @@
     lang="ts"
     generic="T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
 >
-import { computed, onMounted, provide, type Ref, ref, useSlots, useTemplateRef } from "vue";
+import { computed, onMounted, provide, type Ref, ref, useSlots, useTemplateRef, watchEffect } from "vue";
 import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
 import {
@@ -14,7 +14,7 @@ import {
     stopEdit,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
-import { type TableColumn, normalizeTableColumns } from "./table-column";
+import { type NormalizedTableColumnCheckbox, type TableColumn, normalizeTableColumns } from "./table-column";
 import ITableSelect from "./ITableSelect.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableAnchor from "./ITableAnchor.vue";
@@ -32,20 +32,71 @@ const {
     keyAttribute = undefined,
     expandableAttribute = undefined,
     striped = false,
+    selectable = undefined,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;
     rows: T[];
     keyAttribute?: KeyAttribute;
     expandableAttribute?: ExpandableAttribute;
     striped?: boolean;
+    selectable?: "single" | "multi";
 }>();
-
+const model = defineModel<T[]>({ default: [] });
 const tableRef = useTemplateRef("table");
+const selectAllRef = useTemplateRef("selectAll");
 const expandedKeys: Ref<string[]> = ref([]);
 const keyedRows = computed(() => setInternalKeys(rows, keyAttribute, expandableAttribute));
 const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute));
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
+
+const selectableColumn: NormalizedTableColumnCheckbox<T> = {
+    type: "checkbox",
+    header: "selectable",
+    value(row) {
+        if (!keyAttribute) {
+            return false;
+        }
+
+        return model.value.some((it) => {
+            return row[keyAttribute] === it[keyAttribute];
+        });
+    },
+    update(row, _newValue, _oldValue) {
+        assertRef(model);
+        const index = model.value.indexOf(row);
+
+        if (index < 0) {
+            model.value.push(row);
+        } else {
+            model.value.splice(index, 1);
+        }
+    },
+};
+
+const isIndeterminate = computed(() => {
+    return model.value.length > 0 && model.value.length < rows.length;
+});
+
+const isAllRowsSelected = computed((): boolean => {
+    return model.value.length > 0 && model.value.length === rows.length;
+});
+
+watchEffect(() => {
+    if (selectAllRef.value) {
+        selectAllRef.value.indeterminate = isIndeterminate.value;
+        selectAllRef.value.checked = isAllRowsSelected.value;
+    }
+});
+
+function onSelectAllChange(): void {
+    if (selectAllRef.value?.checked) {
+        model.value = [...rows];
+    } else {
+        model.value = [];
+    }
+}
+
 const columns = computed(() => normalizeTableColumns(rawColumns));
 
 const tableClasses = computed(() => {
@@ -113,6 +164,16 @@ onMounted(() => {
     <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout">
         <thead>
             <tr class="table-ng__row">
+                <th v-if="selectable" class="table-ng__checkbox">
+                    <input
+                        ref="selectAll"
+                        type="checkbox"
+                        aria-label="select all"
+                        tabindex="-1"
+                        indeterminate
+                        @change="onSelectAllChange"
+                    />
+                </th>
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <th v-for="column in columns" :key="column.header" scope="col" class="table-ng__column">
                     {{ column.header }}
@@ -142,6 +203,7 @@ onMounted(() => {
                     </td>
                 </template>
                 <template v-else>
+                    <i-table-checkbox v-if="selectable" :row :column="selectableColumn"></i-table-checkbox>
                     <template v-for="column in columns" :key="column.header">
                         <template v-if="column.type === 'checkbox'">
                             <i-table-checkbox :row :column></i-table-checkbox>

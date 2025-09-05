@@ -24,19 +24,17 @@ interface Row {
 
 const columns = defineTableColumns<Row>([
     {
-        type: "checkbox",
-        header: "Kryssruta",
-        key: "aktiv",
-    },
-
-    {
         type: "text",
         header: "Oformaterad text",
         value(row) {
             return String(row.antal);
         },
     },
-
+    {
+        type: "checkbox",
+        header: "Kryssruta",
+        key: "aktiv",
+    },
     {
         type: "text",
         header: "Formatterad text",
@@ -109,6 +107,7 @@ const rows = ref<Row[]>([
         start: "2022-04-11",
         end: "2022-04-20",
         antal: "10000",
+        aktiv: false,
         expandableRows: [
             {
                 id: "1a",
@@ -146,6 +145,7 @@ const rows = ref<Row[]>([
         start: "2022-05-02",
         end: "2022-05-04",
         antal: "30000",
+        aktiv: false,
         expandableRows: [
             {
                 id: "2a",
@@ -169,6 +169,7 @@ const rows = ref<Row[]>([
         start: "2022-05-16",
         end: "2022-05-27",
         antal: "11000",
+        aktiv: true,
         expandableRows: [
             {
                 id: "3a",
@@ -200,6 +201,7 @@ const rows = ref<Row[]>([
         ],
     },
 ]);
+const mySelectedRows = ref<Row[]>([rows.value[0]]);
 
 function onButtonClick(id: string): void {
     alert(`Du klickade på rad med id ${id}`);
@@ -208,7 +210,12 @@ function onButtonClick(id: string): void {
 
 <template>
     <button type="button" class="button button--secondary">Interagerbart element före</button>
-    <f-table :rows :columns key-attribute="id" striped> </f-table>
+    <f-table v-model="mySelectedRows" :rows :columns key-attribute="id" striped selectable="multi">
+    </f-table>
+    <h3>Selected rows ({{ mySelectedRows.length }} items):</h3>
+    <pre>{{ mySelectedRows }}</pre>
+    <h3>Rows ({{ rows.length }} items):</h3>
+    <pre>{{ rows }}</pre>
     <button type="button" class="button button--secondary">Interagerbart element efter</button>
 </template>
 

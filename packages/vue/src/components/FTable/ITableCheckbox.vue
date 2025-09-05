@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import { type TableColumnCheckbox } from "./table-column";
 import { FTableActivateCellEvent } from "./events";
+import { type NormalizedTableColumnCheckbox } from "./table-column";
 
 const { column, row } = defineProps<{
-    column: TableColumnCheckbox<T, K>;
+    column: NormalizedTableColumnCheckbox<T>;
     row: T;
 }>();
 
@@ -19,11 +19,23 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
         inputElement.value.focus();
     }
 }
+
+function onChange(_e: Event): void {
+    assertRef(inputElement);
+    column.update(row, inputElement.value.checked, !inputElement.value.checked);
+}
 </script>
 
 <template>
-    <td @table-activate-cell="onActivateCell">
-        <!-- eslint-disable-next-line vue/no-mutating-props -->
-        <input ref="input" v-model="row[column.key!]" type="checkbox" :aria-label="column.header" tabindex="-1" />
+    <td class="table-ng__checkbox" tabindex="-1">
+        <input
+            ref="input"
+            :checked="column.value(row)"
+            type="checkbox"
+            :aria-label="column.header"
+            tabindex="-1"
+            @change="onChange"
+            @table-activate-cell="onActivateCell"
+        />
     </td>
 </template>
