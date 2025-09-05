@@ -1,37 +1,94 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { FTextField } from "../components";
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FDatepickerField, FInteractiveTable, FTableColumn, FNumericTextField } from "@fkui/vue";
 
-const namn = ref("World");
+export default defineComponent({
+    name: "FInteractiveTableInputExample",
+    components: {
+        FInteractiveTable,
+        FTableColumn,
+        FDatepickerField,
+        FNumericTextField,
+    },
+    data() {
+        return {
+            foo: [],
+            bar: [],
+            betalningar: [
+                {
+                    id: "1",
+                    date: "2024-05-25",
+                    belopp: "",
+                    beskrivning: "Första utbetalning",
+                },
+                {
+                    id: "2",
+                    date: "2024-06-25",
+                    belopp: "",
+                    beskrivning: "Andra utbetalning",
+                },
+                {
+                    id: "3",
+                    date: "2024-07-24",
+                    belopp: "",
+                    beskrivning: "Tredje utbetalning",
+                },
+            ],
+        };
+    },
+});
 </script>
 
 <template>
-    <div class="container">
-        <h1>@fkui/vue</h1>
+    <div class="row">
+        <div class="col col--lg-10">
+            <f-interactive-table v-model="foo" :rows="betalningar" key-attribute="id" selectable="radio">
+                <template #caption> Justera betalningar </template>
+                <template #default="{ row }">
+                    <f-table-column name="beskrivning" title="Beskrivning" type="text" shrink>
+                        {{ row.beskrivning }}
+                    </f-table-column>
+                    <f-table-column name="date" title="Utbetalningsdatum" type="text" shrink>
+                        <f-datepicker-field v-model="row.date" v-validation.required>
+                            Utbetalningsdatum
+                        </f-datepicker-field>
+                    </f-table-column>
 
-        <p>A few common commands to keep track of:</p>
-        <dl>
-            <dt><code>npm run vue unit</code></dt>
-            <dd>Run Jest unit tests</dd>
-            <dt><code>npm run vue unit -- Foobar</code></dt>
-            <dd>Run unit tests matching "Foobar"</dd>
-            <dt><code>npm run vue unit -- -u</code></dt>
-            <dd>Update snapshots</dd>
-            <dt><code>npm exec cypress -- open --component</code></dt>
-            <dd>Run Cypress Component Tests</dd>
-            <dt><code>npm run prettier:write</code></dt>
-            <dd>Reformat files</dd>
-            <dt><code>npm run lint</code></dt>
-            <dd>Run all linting and static analyzis</dd>
-            <dt><code>npm test</code></dt>
-            <dd>Run all tests</dd>
-        </dl>
-
-        <hr />
-
-        <h2>Sandbox</h2>
-
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
+                    <f-table-column name="belopp" title="Utbetalat belopp" type="text" shrink>
+                        <f-numeric-text-field v-model="row.belopp" v-validation.required>
+                            Utbetalt belopp
+                        </f-numeric-text-field>
+                    </f-table-column>
+                </template>
+            </f-interactive-table>
+        </div>
     </div>
+
+    <pre>{{ foo }}</pre>
+
+    <div class="row">
+        <div class="col col--lg-10">
+            <f-interactive-table v-model="bar" :rows="betalningar" key-attribute="id" selectable="radio">
+                <template #caption> Justera betalningar </template>
+                <template #default="{ row }">
+                    <f-table-column name="beskrivning" title="Beskrivning" type="text" shrink>
+                        {{ row.beskrivning }}
+                    </f-table-column>
+                    <f-table-column name="date" title="Utbetalningsdatum" type="text" shrink>
+                        <f-datepicker-field v-model="row.date" v-validation.required>
+                            Utbetalningsdatum
+                        </f-datepicker-field>
+                    </f-table-column>
+
+                    <f-table-column name="belopp" title="Utbetalat belopp" type="text" shrink>
+                        <f-numeric-text-field v-model="row.belopp" v-validation.required>
+                            Utbetalt belopp
+                        </f-numeric-text-field>
+                    </f-table-column>
+                </template>
+            </f-interactive-table>
+        </div>
+    </div>
+
+    <pre>{{ bar }}</pre>
 </template>
