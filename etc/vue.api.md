@@ -15932,7 +15932,7 @@ export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer 
 
 // Warnings were encountered during analysis:
 //
-// src/components/FTable/FTable.vue:501:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
+// src/components/FTable/FTable.vue:503:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
