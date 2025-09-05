@@ -80,9 +80,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               /* STABLE */
             })
           ]),
-          _: 2
-          /* DYNAMIC */
-        }, 1032, ["slot"]),
+          _: 1
+          /* STABLE */
+        }, 8, ["slot"]),
         _createElementVNode("button", {
           slot: layoutScope.content,
           type: "button",

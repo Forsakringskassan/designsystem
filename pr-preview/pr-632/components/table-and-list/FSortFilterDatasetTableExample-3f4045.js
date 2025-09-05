@@ -178,9 +178,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* DYNAMIC_SLOTS */
           )
         ]),
-        _: 2
-        /* DYNAMIC */
-      }, 1032, ["rows"])
+        _: 1
+        /* STABLE */
+      }, 8, ["rows"])
     ]),
     _: 1
     /* STABLE */

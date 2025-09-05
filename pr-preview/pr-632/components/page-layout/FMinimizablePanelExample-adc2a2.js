@@ -85,9 +85,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* STABLE */
           })
         ]),
-        _: 2
-        /* DYNAMIC */
-      }, 1032, ["slot"]),
+        _: 1
+        /* STABLE */
+      }, 8, ["slot"]),
       _createElementVNode("div", {
         slot: layoutScope.content
       }, "[Applikationsyta]", 8, _hoisted_4)
