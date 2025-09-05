@@ -8,10 +8,7 @@ export function getInternalKey<T>(): keyof T {
 }
 
 /** @internal */
-export function setInternalKey<T extends object>(
-    item: T,
-    value?: string,
-): void {
+export function setInternalKey<T>(item: T, value?: string): void {
     if (item[internalKey as keyof T]) {
         return;
     }
@@ -24,7 +21,7 @@ export function setInternalKey<T extends object>(
 }
 
 /** @internal */
-export function setInternalKeys<T extends object>(
+export function setInternalKeys<T>(
     items: T[],
     key?: keyof T,
     nestedKey?: keyof T,

@@ -20,11 +20,11 @@ const navKeys = [
 
 let prevCellIndex: number | undefined = undefined;
 
-function rowKey<T extends Record<string, unknown>>(row: T): string {
+function rowKey<T>(row: T): string {
     return String(row[internalKey]);
 }
 
-function walk<T extends Record<string, unknown>, K extends keyof T>(
+function walk<T, K extends keyof T = keyof T>(
     array: T[],
     visit: (item: T, level: number) => boolean,
     childKey?: K,
@@ -39,7 +39,7 @@ function walk<T extends Record<string, unknown>, K extends keyof T>(
     }
 }
 
-function getRowIndexes<T extends Record<string, unknown>, K extends keyof T>(
+function getRowIndexes<T, K extends keyof T = keyof T>(
     rows: T[],
     expandableAttribute?: K,
 ): string[] {
@@ -205,10 +205,7 @@ function navigate(
     }
 }
 
-export function getMetaRows<
-    T extends Record<string, unknown>,
-    K extends keyof T,
->(
+export function getMetaRows<T, K extends keyof T = keyof T>(
     keyedRows: T[],
     expandedKeys: string[],
     expandableAttribute?: K,

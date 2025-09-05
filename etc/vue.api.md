@@ -12858,17 +12858,21 @@ rotate: string;
 // Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_8" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FTable: <T extends Record<string, unknown>, K extends keyof T = keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_8<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_8<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
     props: __VLS_PrettifyLocal_8<Pick<Partial<{}> & Omit<{} & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, never> & {
-        columns: Array<TableColumn<T, K>>;
+        columns: Array<TableColumn<T, KeyAttribute>>;
         rows: T[];
-        keyAttribute?: K;
-        expandableAttribute?: K;
+        keyAttribute?: KeyAttribute;
+        expandableAttribute?: ExpandableAttribute;
         striped?: boolean;
     } & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
-    slots: {};
+    slots: {
+        expandable?: (props: {
+            row: Required<T>[ExpandableAttribute] extends Array<unknown> ? Required<T>[ExpandableAttribute][number] : never;
+        }) => any;
+    };
     emit: {};
 }>) => VNode & {
     __ctx?: Awaited<typeof __VLS_setup>;
@@ -15935,7 +15939,7 @@ export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer 
 
 // Warnings were encountered during analysis:
 //
-// src/components/FTable/FTable.vue:459:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
+// src/components/FTable/FTable.vue:495:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

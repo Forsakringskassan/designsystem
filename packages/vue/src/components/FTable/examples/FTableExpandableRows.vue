@@ -176,12 +176,6 @@ const rows = ref<Row[]>([
                 antal: "50000",
             },
         ],
-        expandableContent: [
-            {
-                id: "3a",
-                content: "Anledning: Tar hand om barnet",
-            },
-        ],
     },
 ]);
 

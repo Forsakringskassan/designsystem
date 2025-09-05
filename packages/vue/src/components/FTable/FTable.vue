@@ -1,4 +1,8 @@
-<script setup lang="ts" generic="T extends Record<string, unknown>, K extends keyof T = keyof T">
+<script
+    setup
+    lang="ts"
+    generic="T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
+>
 import { computed, onMounted, provide, type Ref, ref, useSlots, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
@@ -20,6 +24,9 @@ import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
 import { startEditKey, stopEditKey } from "./start-stop-edit";
 
+type ExpandedContent =
+    Required<T>[ExpandableAttribute] extends Array<unknown> ? Required<T>[ExpandableAttribute][number] : never;
+
 const {
     columns: rawColumns,
     rows,
@@ -27,10 +34,10 @@ const {
     expandableAttribute = undefined,
     striped = false,
 } = defineProps<{
-    columns: Array<TableColumn<T, K>>;
+    columns: Array<TableColumn<T, KeyAttribute>>;
     rows: T[];
-    keyAttribute?: K;
-    expandableAttribute?: K;
+    keyAttribute?: KeyAttribute;
+    expandableAttribute?: ExpandableAttribute;
     striped?: boolean;
 }>();
 
@@ -132,7 +139,8 @@ onMounted(() => {
             >
                 <template v-if="level! > 1 && hasExpandableSlot">
                     <td :colspan="columns.length">
-                        <slot name="expandable" v-bind="{ row: row as unknown as T[K] }" />
+                        <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
+                        <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
                     </td>
                 </template>
                 <template v-else>
