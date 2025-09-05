@@ -228,4 +228,5 @@ onMounted(() => {
             </i-table-row>
         </tbody>
     </table>
+    <slot name="footer"></slot>
 </template>

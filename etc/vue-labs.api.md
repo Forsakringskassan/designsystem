@@ -53,6 +53,8 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
         expandable?: (props: {
             row: Required<T>[ExpandableAttribute] extends unknown[] ? Required<T>[ExpandableAttribute][number] : never;
         }) => any;
+    } & {
+        footer?: (props: {}) => any;
     };
     emit: (evt: "update:modelValue", value: T[]) => void;
 }>) => VNode & {
@@ -567,7 +569,7 @@ formatter: FormatFunction<string>;
 
 // Warnings were encountered during analysis:
 //
-// src/components/FTable/FTable.vue:661:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
+// src/components/FTable/FTable.vue:664:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
