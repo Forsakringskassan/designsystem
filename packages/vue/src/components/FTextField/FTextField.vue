@@ -232,6 +232,11 @@ export default defineComponent({
     methods: {
         onDropdownSelect(value: string): void {
             this.selectOption(value);
+            if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
+                this.$emit("update:modelValue", value);
+            } else {
+                ValidationService.validateElement(this.$refs.input as HTMLElement);
+            }
         },
         onDropdownClose(): void {
             this.closeDropdown();
