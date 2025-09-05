@@ -63,9 +63,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             slot: panelScope.content
           }, "Lorem ipsum", 8, _hoisted_1)
         ]),
-        _: 2
-        /* DYNAMIC */
-      }, 1032, ["slot"]),
+        _: 1
+        /* STABLE */
+      }, 8, ["slot"]),
       _createElementVNode("div", {
         slot: layoutScope.content
       }, "Inneh\xE5ll", 8, _hoisted_2)

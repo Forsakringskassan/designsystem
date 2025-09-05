@@ -587,9 +587,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     /* STABLE */
                   }, 8, ["modelValue"])
                 ]),
-                _: 2
-                /* DYNAMIC */
-              }, 1032, ["name"])), [
+                _: 1
+                /* STABLE */
+              }, 8, ["name"])), [
                 [
                   _directive_validation,
                   void 0,
@@ -614,27 +614,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     _Fragment,
                     null,
                     _renderList(_ctx.dataTableColumns, (column) => {
-                      return _openBlock(), _createBlock(
-                        _component_f_table_column,
-                        {
-                          key: column.id,
-                          title: "Kolumnrubrik",
-                          type: "text"
-                        },
-                        {
-                          default: _withCtx(() => [..._cache[49] || (_cache[49] = [
-                            _createTextVNode(
-                              " Text ",
-                              -1
-                              /* CACHED */
-                            )
-                          ])]),
-                          _: 2
-                          /* DYNAMIC */
-                        },
-                        1024
-                        /* DYNAMIC_SLOTS */
-                      );
+                      return _openBlock(), _createBlock(_component_f_table_column, {
+                        key: column.id,
+                        title: "Kolumnrubrik",
+                        type: "text"
+                      }, {
+                        default: _withCtx(() => [..._cache[49] || (_cache[49] = [
+                          _createTextVNode(
+                            " Text ",
+                            -1
+                            /* CACHED */
+                          )
+                        ])]),
+                        _: 1
+                        /* STABLE */
+                      });
                     }),
                     128
                     /* KEYED_FRAGMENT */
