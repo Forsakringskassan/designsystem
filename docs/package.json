@@ -21,6 +21,6 @@
   "devDependencies": {
     "@forsakringskassan/docs-generator": "2.29.2",
     "cypress": "14.5.4",
-    "vue": "3.5.20"
+    "vue": "3.5.21"
   }
 }
