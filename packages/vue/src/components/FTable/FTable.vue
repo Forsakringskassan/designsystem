@@ -22,8 +22,9 @@ import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
 import { stopEditKey } from "./start-stop-edit";
 
-type ExpandedContent =
-    Required<T>[ExpandableAttribute] extends Array<unknown> ? Required<T>[ExpandableAttribute][number] : never;
+type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
+    ? Required<T>[ExpandableAttribute][number]
+    : never;
 
 const {
     columns: rawColumns,
