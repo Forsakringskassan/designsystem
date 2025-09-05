@@ -22,7 +22,7 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 </script>
 
 <template>
-    <td tabindex="-1" @table-activate-cell="onActivateCell">
+    <td @table-activate-cell="onActivateCell">
         <!-- eslint-disable-next-line vue/no-mutating-props -->
         <input ref="input" v-model="row[column.key!]" type="checkbox" :aria-label="column.header" tabindex="-1" />
     </td>

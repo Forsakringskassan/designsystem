@@ -220,7 +220,7 @@ function cancel(): void {
             v-show="editing"
             ref="edit"
             role="combobox"
-            tabindex="0"
+            tabindex="-1"
             aria-expanded
             :aria-controls="dropdownId"
             aria-autocomplete="list"

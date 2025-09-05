@@ -23,7 +23,7 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 </script>
 
 <template>
-    <td tabindex="-1" @table-activate-cell="onActivateCell">
+    <td @table-activate-cell="onActivateCell">
         <button ref="button" class="icon-button" type="button" tabindex="-1" @click="column.onClick!(row)">
             <f-icon name="trashcan"></f-icon>
             <span class="sr-only">Knapptext</span>
