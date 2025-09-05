@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 6.17.0 (2025-09-05)
+
+### Features
+
+* **@fkui/design:** update component contextmenu with semantic color variables (refs SFKUI-7302) d3690f3
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** combobox listbox option not highlighted (refs SFKUI-6500) 84cda30
+
 ## 6.16.1 (2025-09-03)
 
 ### Bug Fixes
