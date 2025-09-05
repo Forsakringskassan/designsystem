@@ -2,6 +2,7 @@
 @use "../../core/config-variables";
 @use "../../core/size";
 @use "../../core/mixins/circle" as *;
+@use "variables" as *;
 
 $ICON_WIDTH: var(--f-icon-size-small);
 $ICON_MARGIN: 0.5rem;
@@ -9,6 +10,7 @@ $CONTENT_MARGIN: calc(#{$ICON_WIDTH} + #{$ICON_MARGIN});
 $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
 
 .expandable-paragraph {
+    color: $expandable-paragraph-color-text-default;
     margin: 0 0 core.densify(var(--f-margin-component-bottom));
     &__heading {
         line-height: $EXPANDABLE_PARAGRAPH_LINE_HEIGHT;
@@ -16,7 +18,7 @@ $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
 
         button {
             border: none;
-            background-color: transparent;
+            background-color: $expandable-paragraph-color-background;
             cursor: pointer;
             margin: 0;
             display: flex;
@@ -27,12 +29,12 @@ $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
     }
 
     &__icon {
-        @include circle($background: var(--f-icon-color-expandable-paragraph), $size: $ICON_WIDTH);
+        @include circle($background: $expandable-paragraph-icon-color-background, $size: $ICON_WIDTH);
 
         margin-top: calc((#{$EXPANDABLE_PARAGRAPH_LINE_HEIGHT} * 1em - #{$ICON_WIDTH}) / 2); // Unit "em" intended here, align icon to header
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         display: flex;
-        color: var(--f-icon-color-white);
+        color: $expandable-paragraph-icon-color-content;
         padding: 3px; // cross icon size
         flex-shrink: 0; // needed for IE11
         margin-right: $ICON_MARGIN;
@@ -74,7 +76,7 @@ $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
     }
 
     &__related-information {
-        color: var(--f-text-color-discrete);
+        color: $expandable-paragraph-color-text-discrete;
         font-size: 0.875rem;
     }
 
@@ -84,13 +86,13 @@ $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
     }
 
     &__separator {
-        border-bottom: var(--f-border-width-medium) solid var(--f-border-color-separator);
+        border-bottom: var(--f-border-width-medium) solid $expandable-paragraph-color-border;
         margin: 0 $ICON_MARGIN core.densify(size.$margin-050) $ICON_MARGIN;
     }
 
     &--list {
         margin-bottom: core.densify(size.$margin-050);
         padding-bottom: core.densify(size.$padding-050);
-        border-bottom: var(--f-border-width-small) solid var(--f-border-color-separator);
+        border-bottom: var(--f-border-width-small) solid $expandable-paragraph-color-border;
     }
 }

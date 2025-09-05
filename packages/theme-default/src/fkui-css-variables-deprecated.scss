@@ -348,6 +348,9 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-icon-color-error: #{$palette-color-red-100};
     --f-text-color-error: #{$palette-color-red-85};
     --f-icon-color-info: #{$palette-color-bluebell-100};
+
+    // Deprecated since %version%
+    --f-icon-color-expandable-paragraph: #{$palette-color-green-a-85};
 }
 
 @if $global {
