@@ -12870,7 +12870,7 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
     attrs: any;
     slots: {
         expandable?: (props: {
-            row: Required<T>[ExpandableAttribute] extends Array<unknown> ? Required<T>[ExpandableAttribute][number] : never;
+            row: Required<T>[ExpandableAttribute] extends unknown[] ? Required<T>[ExpandableAttribute][number] : never;
         }) => any;
     };
     emit: {};
@@ -15939,7 +15939,7 @@ export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer 
 
 // Warnings were encountered during analysis:
 //
-// src/components/FTable/FTable.vue:495:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
+// src/components/FTable/FTable.vue:505:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
