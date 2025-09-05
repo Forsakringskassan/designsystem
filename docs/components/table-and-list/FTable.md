@@ -17,7 +17,7 @@ FTableExample.vue
 ## Expanderbar tabell
 
 ```import
-FTableExpandableExample.vue
+FTableExpandableRows.vue
 ```
 
 ## Textnycklar
