@@ -235,5 +235,6 @@
     "--fkds-icon-color-content-inverted",
     "--f-icon-color-error",
     "--f-text-color-error",
-    "--f-icon-color-info"
+    "--f-icon-color-info",
+    "--f-icon-color-expandable-paragraph"
 ]

@@ -1,1 +1,8 @@
-// stylelint-disable no-empty-source -- placeholder file
+$expandable-paragraph-color-text-default: var(--fkds-color-text-primary) !default;
+$expandable-paragraph-color-text-discrete: var(--fkds-color-text-secondary) !default;
+$expandable-paragraph-color-background: transparent !default;
+$expandable-paragraph-color-border: var(--fkds-color-border-primary) !default;
+$expandable-paragraph-icon-color-content: var(--fkds-color-text-inverted) !default;
+
+// Wrong semantic color for this use. Used until this component is deprecated.
+$expandable-paragraph-icon-color-background: var(--fkds-color-select-background-secondary-default) !default;
