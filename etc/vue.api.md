@@ -14537,6 +14537,9 @@ export function getInputElement(vm: {
     $el: Element;
 }): ValidatableHTMLElement;
 
+// @public (undocumented)
+export function getInternalKey<T>(): keyof T;
+
 // @public
 export function getParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | never;
 
@@ -15721,6 +15724,9 @@ export interface RenderSlotOptions {
 
 // @public
 export function renderSlotText(render: Slot | undefined, props?: Record<string, unknown>, options?: Partial<RenderSlotOptions>): string | undefined;
+
+// @public (undocumented)
+export function setInternalKeys<T>(items: T[], key?: keyof T, nestedKey?: keyof T, seenValues?: Set<unknown>): T[];
 
 // @public (undocumented)
 export function setRunningContext(app: App): void;

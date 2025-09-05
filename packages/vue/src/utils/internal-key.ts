@@ -2,16 +2,13 @@
 export const internalKey = Symbol("internal-key");
 let internalIndex = 0;
 
-/** @internal */
+/** @public */
 export function getInternalKey<T>(): keyof T {
     return internalKey as keyof T;
 }
 
 /** @internal */
-export function setInternalKey<T extends object>(
-    item: T,
-    value?: string,
-): void {
+export function setInternalKey<T>(item: T, value?: string): void {
     if (item[internalKey as keyof T]) {
         return;
     }
@@ -23,8 +20,8 @@ export function setInternalKey<T extends object>(
     });
 }
 
-/** @internal */
-export function setInternalKeys<T extends object>(
+/** @public */
+export function setInternalKeys<T>(
     items: T[],
     key?: keyof T,
     nestedKey?: keyof T,

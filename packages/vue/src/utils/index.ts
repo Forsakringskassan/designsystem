@@ -35,3 +35,4 @@ export {
     type Rect,
     getAbsolutePosition,
 } from "./get-absolute-position";
+export { getInternalKey, setInternalKeys } from "./internal-key";
