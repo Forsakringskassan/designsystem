@@ -4,7 +4,7 @@
     generic="T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
 >
 import { computed, onMounted, provide, type Ref, ref, useSlots, useTemplateRef } from "vue";
-import { assertRef, assertSet } from "@fkui/logic";
+import { assertRef } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
 import {
     dispatchActivateCellEvent,

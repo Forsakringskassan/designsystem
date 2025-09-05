@@ -88,10 +88,6 @@ function getLastCellIndex(tableElement: HTMLTableElement): number {
     return tableElement.rows[0].cells.length - 1;
 }
 
-function getCellOrAction(cell: HTMLTableCellElement): HTMLElement {
-    return findAction(cell) ?? cell;
-}
-
 function getVerticalNavIndex(
     table: HTMLTableElement,
     from: TableCellIndex,
@@ -382,7 +378,7 @@ export function stopEdit(
             break;
         }
         case "blur": {
-            // ev ta bort
+            // eslint-disable-next-line no-console -- ev ta bort
             console.log("stopEdit", "blur");
             break;
         }
