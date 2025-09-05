@@ -1,9 +1,10 @@
 <script setup lang="ts" generic="T">
 import { computed, onMounted, ref, useTemplateRef } from "vue";
-import { assertRef, focus, ValidationService, type ValidityEvent } from "@fkui/logic";
+import { assertRef, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FIcon } from "../FIcon";
 import { type NormalizedTableColumnText } from "./table-column";
 import { useStartStopEdit } from "./start-stop-edit";
+import { FTableActivateCellEvent } from "./events";
 
 const { row, column } = defineProps<{
     row: T;
@@ -34,13 +35,22 @@ const inputClasses = computed(() => {
 const tdElement = useTemplateRef("td");
 const viewElement = useTemplateRef("view");
 const inputElement = useTemplateRef("input");
-const { startEdit, stopEdit } = useStartStopEdit();
+const { stopEdit } = useStartStopEdit();
 
 onMounted(() => {
     if (inputElement.value) {
         ValidationService.addValidatorsToElement(inputElement.value, column.validation);
     }
 });
+
+function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
+    assertRef(tdElement);
+    tdElement.value.tabIndex = 0;
+
+    if (e.detail.focus) {
+        tdElement.value.focus();
+    }
+}
 
 function onStartEdit(modelValue: string): void {
     assertRef(tdElement);
@@ -50,15 +60,16 @@ function onStartEdit(modelValue: string): void {
     model.value = modelValue;
     tdElement.value.style.setProperty("width", `${width}px`);
 
-    //focus(inputElement);
-    startEdit(inputElement.value);
+    inputElement.value.tabIndex = 0;
+    inputElement.value.focus();
 }
 
 function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" }): void {
     const { reason } = options;
 
-    focus(tdElement.value);
-    stopEdit(reason);
+    assertRef(inputElement);
+    inputElement.value.tabIndex = -1;
+    stopEdit(inputElement.value, reason);
 }
 
 function onClickCell(event: MouseEvent): void {
@@ -155,6 +166,7 @@ function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
         :class="wrapperClasses"
         @click.stop="onClickCell"
         @keydown="onKeydown"
+        @table-activate-cell="onActivateCell"
     >
         <div v-if="column.editable" class="table-ng__textwrapper">
             <span ref="view" class="table-ng__textview">{{ column.value(row) }}</span>
@@ -172,7 +184,13 @@ function isAlphanumeric({ key, ctrlKey, metaKey }: KeyboardEvent): boolean {
             <f-icon v-else name="pen" class="table-ng__texticon"></f-icon>
         </div>
     </td>
-    <td v-else tabindex="-1" class="table-ng__cell table-ng__cell--static">
+    <td
+        v-else
+        ref="td"
+        tabindex="-1"
+        class="table-ng__cell table-ng__cell--static"
+        @table-activate-cell="onActivateCell"
+    >
         {{ column.value(row) }}
     </td>
 </template>

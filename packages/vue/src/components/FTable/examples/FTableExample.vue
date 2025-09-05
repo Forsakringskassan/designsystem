@@ -209,7 +209,6 @@ function onButtonClick(id: string): void {
 <template>
     <button type="button" class="button button--secondary">Interagerbart element före</button>
     <f-table :rows :columns key-attribute="id" striped> </f-table>
-    <pre>{{ rows }}</pre>
     <button type="button" class="button button--secondary">Interagerbart element efter</button>
 </template>
 

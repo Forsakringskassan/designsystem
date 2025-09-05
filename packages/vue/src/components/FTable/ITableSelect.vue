@@ -4,6 +4,7 @@ import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { IComboboxDropdown } from "../../internal-components";
 import { useStartStopEdit } from "./start-stop-edit";
 import { NormalizedTableColumnSelect } from "./table-column";
+import { FTableActivateCellEvent } from "./events";
 
 // Props
 // const { modelValue, options, title } = defineProps<{
@@ -21,16 +22,18 @@ const { row, column } = defineProps<{
 const editing = ref(false);
 const editRef = useTemplateRef("edit");
 
-const { startEdit, stopEdit } = useStartStopEdit();
+const { stopEdit } = useStartStopEdit();
 
 const viewValue = ref(column.value(row));
+const tdRef = useTemplateRef("td");
 
-async function onCellDoubleClick(): Promise<void> {
-    editing.value = true;
-    await nextTick();
-    assertSet(startEdit);
-    assertRef(editRef);
-    startEdit(editRef.value);
+function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
+    assertRef(tdRef);
+    tdRef.value.tabIndex = 0;
+
+    if (e.detail.focus) {
+        tdRef.value.focus();
+    }
 }
 
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
@@ -47,26 +50,29 @@ async function onCellClick(e: MouseEvent): Promise<void> {
 }
 
 async function startEditing(e: UIEvent): Promise<void> {
+    assertRef(editRef);
     e.preventDefault();
     editing.value = true;
     await nextTick();
-    assertSet(startEdit);
-    assertRef(editRef);
-    startEdit(editRef.value);
+    editRef.value.tabIndex = 0;
+    editRef.value.focus();
     openSelected("first");
 }
 
 async function onDropdownSelect(value: string): Promise<void> {
+    assertRef(editRef);
+    assertSet(stopEdit);
+
     close();
     submit();
     viewValue.value = value;
-    assertSet(stopEdit);
-    stopEdit("enter");
+    stopEdit(editRef.value, "enter");
 }
 
 function onDropdownClose(): void {
+    assertRef(editRef);
     assertSet(stopEdit);
-    stopEdit("escape");
+    stopEdit(editRef.value, "escape");
 }
 
 const dropdownId = ElementIdService.generateElementId();
@@ -138,13 +144,14 @@ function setPreviousOption(): void {
 }
 
 async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
+    assertRef(editRef);
     assertSet(stopEdit);
 
     switch (e.code) {
         case "Escape":
             e.preventDefault();
             cancel();
-            stopEdit("escape");
+            stopEdit(editRef.value, "escape");
             break;
         case "Enter":
         case "NumpadEnter":
@@ -154,12 +161,12 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
                 viewValue.value = activeOption.value;
             }
             close();
-            stopEdit("enter");
+            stopEdit(editRef.value, "enter");
             break;
         case "Tab":
             e.preventDefault();
             cancel();
-            stopEdit(e.shiftKey ? "shift-tab" : "tab");
+            stopEdit(editRef.value, e.shiftKey ? "shift-tab" : "tab");
             break;
         case "ArrowDown":
             e.preventDefault();
@@ -184,11 +191,13 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
 
 async function onEditBlur(): Promise<void> {
     if (editing.value) {
+        assertSet(stopEdit);
+        assertRef(editRef);
+
         dropdownIsOpen.value = false;
         editing.value = false;
         await nextTick();
-        assertSet(stopEdit);
-        stopEdit("blur");
+        stopEdit(editRef.value, "blur");
     }
 }
 
@@ -199,12 +208,13 @@ async function submit(): Promise<void> {
 
 function cancel(): void {
     assertSet(stopEdit);
-    stopEdit("escape");
+    assertRef(editRef);
+    stopEdit(editRef.value, "escape");
 }
 </script>
 
 <template>
-    <td tabindex="-1" @dblclick.stop="onCellDoubleClick" @keydown="onCellKeyDown" @click.stop="onCellClick">
+    <td ref="td" tabindex="-1" @keydown="onCellKeyDown" @click.stop="onCellClick" @table-activate-cell="onActivateCell">
         <div v-show="!editing">{{ viewValue }}</div>
         <div
             v-show="editing"

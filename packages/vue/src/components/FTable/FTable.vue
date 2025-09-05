@@ -4,16 +4,14 @@
     generic="T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
 >
 import { computed, onMounted, provide, type Ref, ref, useSlots, useTemplateRef } from "vue";
-import { assertRef } from "@fkui/logic";
+import { assertRef, assertSet } from "@fkui/logic";
 import { setInternalKeys } from "../../utils/internal-key";
 import {
+    dispatchActivateCellEvent,
     getMetaRows,
     maybeNavigateToCell,
     setDefaultCellTarget as setDefaultCellTarget,
-    switchTabbable,
     stopEdit,
-    setTabbable,
-    getTd,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
 import { type TableColumn, normalizeTableColumns } from "./table-column";
@@ -22,7 +20,7 @@ import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
-import { startEditKey, stopEditKey } from "./start-stop-edit";
+import { stopEditKey } from "./start-stop-edit";
 
 type ExpandedContent =
     Required<T>[ExpandableAttribute] extends Array<unknown> ? Required<T>[ExpandableAttribute][number] : never;
@@ -58,28 +56,13 @@ const hasExpandableSlot = computed(() => {
     return Boolean(slots["expandable"]);
 });
 
-/**
- * Current td or action (e.g. button) element.
- * Tabbable when not in edit mode.
- * May be focused when not in edit mode.
- */
-const currentCellTarget: Ref<HTMLElement | null> = ref(null);
-
-async function startEditHandler(focusElement: HTMLElement): Promise<void> {
-    assertRef(currentCellTarget);
-    setTabbable(currentCellTarget.value, false);
-    currentCellTarget.value = getTd(focusElement);
-
-    focusElement.focus();
+async function stopEditHandler(
+    element: HTMLElement,
+    reason: "enter" | "escape" | "tab" | "shift-tab" | "blur",
+): Promise<void> {
+    stopEdit(element, reason);
 }
 
-async function stopEditHandler(reason: "enter" | "escape" | "tab" | "shift-tab" | "blur"): Promise<void> {
-    assertRef(tableRef);
-    assertRef(currentCellTarget);
-    currentCellTarget.value = stopEdit(tableRef.value, currentCellTarget.value, reason);
-}
-
-provide(startEditKey, startEditHandler);
 provide(stopEditKey, stopEditHandler);
 
 function onToggleExpanded(key: string): void {
@@ -93,26 +76,40 @@ function onToggleExpanded(key: string): void {
 }
 
 function onKeydown(e: KeyboardEvent): void {
-    assertRef(tableRef);
-    assertRef(currentCellTarget);
-    currentCellTarget.value = maybeNavigateToCell(e, tableRef.value, currentCellTarget.value);
+    maybeNavigateToCell(e);
 }
 
 function onClick(e: MouseEvent): void {
-    const newCellTarget = e.target as HTMLElement;
-    switchTabbable(newCellTarget, currentCellTarget.value);
-    currentCellTarget.value = newCellTarget;
-    currentCellTarget.value.focus();
+    const td = (e.target as HTMLElement).closest("td");
+
+    if (td) {
+        dispatchActivateCellEvent(td, { focus: true });
+    }
+}
+
+function onTableFocusout(e: FocusEvent): void {
+    assertRef(tableRef);
+    const outsideTable = !e.relatedTarget || !tableRef.value.contains(e.relatedTarget as HTMLElement);
+
+    if (outsideTable) {
+        const td = (e.target as HTMLElement).closest("td");
+
+        if (td) {
+            dispatchActivateCellEvent(td, { focus: false });
+        }
+    } else {
+        (e.target as HTMLElement).tabIndex = -1;
+    }
 }
 
 onMounted(() => {
     assertRef(tableRef);
-    currentCellTarget.value = setDefaultCellTarget(tableRef.value);
+    setDefaultCellTarget(tableRef.value);
 });
 </script>
 
 <template>
-    <table ref="table" :role :class="tableClasses">
+    <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout">
         <thead>
             <tr class="table-ng__row">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>

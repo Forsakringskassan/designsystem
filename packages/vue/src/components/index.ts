@@ -164,4 +164,4 @@ export {
     FWizardStep,
     FWizardStepAction,
 } from "./FWizard";
-export { FTable, FTableEditCell } from "./FTable";
+export { FTable } from "./FTable";

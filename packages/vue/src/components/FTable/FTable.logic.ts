@@ -1,6 +1,7 @@
 import { isVisible } from "@fkui/logic";
 import { getInternalKey } from "../../utils/internal-key";
 import { MetaRow } from "./MetaRow";
+import { FTableActivateCellEvent } from "./events";
 
 interface TableCellIndex {
     row: number;
@@ -62,8 +63,7 @@ function getCellTarget(
     rowIndex: number,
     cellIndex: number,
 ): HTMLElement {
-    const cellElement = tableElement.rows[rowIndex].cells[cellIndex];
-    return getCellOrAction(cellElement);
+    return tableElement.rows[rowIndex].cells[cellIndex];
 }
 
 function isTd(
@@ -74,6 +74,10 @@ function isTd(
 
 function getTr(td: HTMLTableCellElement): HTMLTableRowElement {
     return td.parentElement as HTMLTableRowElement;
+}
+
+function getTable(tr: HTMLTableRowElement): HTMLTableElement {
+    return tr.closest("table") as HTMLTableElement;
 }
 
 function getLastRowIndex(tableElement: HTMLTableElement): number {
@@ -285,20 +289,19 @@ export function setDefaultCellTarget(
     table: HTMLTableElement,
 ): HTMLElement | null {
     const target = getCellTarget(table, 1, 0);
-    setTabbable(target, true);
+    dispatchActivateCellEvent(target, { focus: false });
 
     return target;
 }
 
-export function maybeNavigateToCell(
-    e: KeyboardEvent,
-    table: HTMLTableElement,
-    currentCellTarget: HTMLElement,
-): HTMLElement {
-    let newCellTarget = currentCellTarget;
+export function maybeNavigateToCell(e: KeyboardEvent): void {
+    let newCellTarget: HTMLElement = e.target as HTMLElement;
+
     const td = getTd(e.target as HTMLElement);
+    const tr = getTr(td);
+    const table = getTable(tr);
     const fromIndex = {
-        row: getTr(td).rowIndex,
+        row: tr.rowIndex,
         cell: td.cellIndex,
     };
     const lastIndex = {
@@ -309,75 +312,78 @@ export function maybeNavigateToCell(
     const navigateTo = navigate(e, table, fromIndex, lastIndex);
     if (navigateTo) {
         newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
-        switchTabbable(newCellTarget, currentCellTarget);
-        newCellTarget.focus();
+        dispatchActivateCellEvent(newCellTarget, { focus: true });
     }
+}
 
-    return newCellTarget;
+export function dispatchActivateCellEvent(
+    element: HTMLElement,
+    detail: FTableActivateCellEvent,
+): void {
+    element.dispatchEvent(
+        new CustomEvent<FTableActivateCellEvent>("table-activate-cell", {
+            detail,
+        }),
+    );
 }
 
 export function stopEdit(
-    table: HTMLTableElement,
-    currentCellTarget: HTMLElement,
+    element: HTMLElement,
     reason: "enter" | "escape" | "tab" | "shift-tab" | "blur",
 ): HTMLElement {
-    const td = getTd(currentCellTarget);
-    const rowIndex = getTr(td).rowIndex;
+    const td = getTd(element);
+    const tr = getTr(td);
+    const table = getTable(tr);
+
+    const rowIndex = tr.rowIndex;
     const cellIndex = td.cellIndex;
     const lastRowIndex = getLastRowIndex(table);
     const lastCellIndex = getLastCellIndex(table);
 
-    let newCellTarget = currentCellTarget;
+    let newCellTarget: HTMLElement = td;
 
     switch (reason) {
         case "enter": {
             if (rowIndex !== lastRowIndex) {
                 newCellTarget = getCellTarget(table, rowIndex + 1, cellIndex);
-                switchTabbable(newCellTarget, currentCellTarget);
-                newCellTarget.focus();
+                dispatchActivateCellEvent(newCellTarget, { focus: true });
             } else {
-                setTabbable(currentCellTarget, true);
-                currentCellTarget.focus();
+                dispatchActivateCellEvent(newCellTarget, { focus: true });
             }
             break;
         }
         case "escape": {
-            setTabbable(currentCellTarget, true);
-            currentCellTarget.focus();
+            dispatchActivateCellEvent(newCellTarget, { focus: true });
+
             break;
         }
         case "tab": {
             if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
-                setTabbable(currentCellTarget, true);
-                currentCellTarget.focus();
+                dispatchActivateCellEvent(newCellTarget, { focus: true });
             } else if (cellIndex === lastCellIndex) {
                 newCellTarget = getCellTarget(table, rowIndex + 1, 0);
-                switchTabbable(newCellTarget, currentCellTarget);
-                newCellTarget.focus();
+                dispatchActivateCellEvent(newCellTarget, { focus: true });
             } else {
                 newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
-                switchTabbable(newCellTarget, currentCellTarget);
-                newCellTarget.focus();
+                dispatchActivateCellEvent(newCellTarget, { focus: true });
             }
             break;
         }
         case "shift-tab": {
             if (cellIndex === 0 && rowIndex === 1) {
-                setTabbable(currentCellTarget, true);
-                currentCellTarget.focus();
+                dispatchActivateCellEvent(newCellTarget, { focus: true });
             } else if (cellIndex === 0) {
                 newCellTarget = getCellTarget(table, rowIndex - 1, 0);
-                switchTabbable(newCellTarget, currentCellTarget);
-                newCellTarget.focus();
+                dispatchActivateCellEvent(newCellTarget, { focus: true });
             } else {
                 newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
-                switchTabbable(newCellTarget, currentCellTarget);
-                newCellTarget.focus();
+                dispatchActivateCellEvent(newCellTarget, { focus: true });
             }
             break;
         }
         case "blur": {
-            setTabbable(currentCellTarget, true);
+            // ev ta bort
+            console.log("stopEdit", "blur");
             break;
         }
 

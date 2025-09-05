@@ -12944,13 +12944,6 @@ export enum FTableColumnType {
     TEXT = "text"
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_10" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_10" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_10" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export const FTableEditCell: __VLS_WithSlots_10<typeof __VLS_component_10, __VLS_Slots_10>;
-
 // @public
 export interface FTableInterface {
     addColumn(column: FTableColumnData): void;
@@ -14955,13 +14948,13 @@ rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_Props_5" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Props_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IComboboxDropdown: DefineComponent<__VLS_Props_5, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+export const IComboboxDropdown: DefineComponent<__VLS_Props_4, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 select: (option: string) => any;
 close: () => any;
-}, string, PublicProps, Readonly<__VLS_Props_5> & Readonly<{
+}, string, PublicProps, Readonly<__VLS_Props_4> & Readonly<{
 onSelect?: ((option: string) => any) | undefined;
 onClose?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
@@ -15300,12 +15293,12 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_11" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_component_11" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_11" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_WithSlots_10" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_component_10" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_Slots_10" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupListbox: __VLS_WithSlots_11<typeof __VLS_component_11, __VLS_Slots_11>;
+export const IPopupListbox: __VLS_WithSlots_10<typeof __VLS_component_10, __VLS_Slots_10>;
 
 // @public (undocumented)
 export const IPopupMenu: DefineComponent<ExtractPropTypes<    {
@@ -15939,7 +15932,7 @@ export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer 
 
 // Warnings were encountered during analysis:
 //
-// src/components/FTable/FTable.vue:505:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
+// src/components/FTable/FTable.vue:501:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
