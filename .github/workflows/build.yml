@@ -81,7 +81,7 @@ jobs:
             - name: Install dependencies
               run: npm ci
             - name: Build (minimal)
-              run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue build
+              run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/cypress-split build
             - name: Cypress Component Testing
               uses: cypress-io/github-action@v6
               env:
