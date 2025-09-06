@@ -1,6 +1,7 @@
 {
   "name": "@fkui/cypress-split",
   "version": "6.17.0",
+  "private": true,
   "description": "Split Cypress specs across parallel CI machines for speed",
   "keywords": [
     "cypress-plugin",
@@ -15,12 +16,16 @@
   },
   "license": "MIT",
   "type": "module",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.mjs",
+  "types": "types.d.ts",
   "files": [
     "lib"
   ],
+  "scripts": {
+    "build": "node build.mjs"
+  },
   "devDependencies": {
+    "esbuild": "0.25.9",
     "globby": "14.1.0"
   }
 }
