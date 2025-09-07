@@ -31,25 +31,18 @@
   ],
   "scripts": {
     "build": "node build.mjs",
-    "clean": "rimraf .jest-cache coverage lib temp test-results",
-    "test": "jest --coverage",
+    "clean": "rimraf coverage lib temp test-results",
+    "test": "mkdir -p test-results && node --test --experimental-test-coverage --test-reporter=spec --test-reporter=junit --test-reporter-destination=stdout --test-reporter-destination=test-results/jest-junit.xml",
     "posttest": "sass -p node --no-source-map tests:temp/tests",
-    "unit": "jest",
-    "unit:watch": "jest --watch"
-  },
-  "jest": {
-    "preset": "jest-preset-stylelint",
-    "runner": "jest-light-runner"
+    "unit": "node --test",
+    "unit:watch": "node --test --watch"
   },
   "devDependencies": {
     "@fkui/icon-lib-default": "6.18.0",
     "@fkui/theme-default": "6.18.0",
     "autoprefixer": "10.4.21",
     "cssnano": "7.1.1",
-    "flush-promises": "1.0.2",
     "glob": "11.0.3",
-    "jest-light-runner": "0.7.9",
-    "jest-preset-stylelint": "7.3.0",
     "picocolors": "1.1.1",
     "postcss": "8.5.6",
     "postcss-url": "10.1.3",

@@ -1,7 +1,9 @@
-const stylelint = require("stylelint");
+import { it } from "node:test";
+import stylelint from "stylelint";
+import plugin from "../index.js";
 
 const config = {
-    plugins: [require.resolve(".")],
+    plugins: [plugin],
     rules: {
         "fkui/deprecated-variable": true,
     },
@@ -17,15 +19,15 @@ async function lint(code) {
     return { warnings, parseErrors };
 }
 
-it("should warn when using deprecated variable", async () => {
+it("should warn when using deprecated variable", async (t) => {
     const { warnings, parseErrors } = await lint(`
         .foo {
             color: var(--f-shadow-large);
         }
     `);
 
-    expect(parseErrors).toHaveLength(0);
-    expect(warnings).toEqual([
+    t.assert.deepStrictEqual(parseErrors, []);
+    t.assert.partialDeepStrictEqual(warnings, [
         {
             column: 13,
             endColumn: 42,
@@ -39,7 +41,7 @@ it("should warn when using deprecated variable", async () => {
     ]);
 });
 
-it("should handle whitespace", async () => {
+it("should handle whitespace", async (t) => {
     const { warnings, parseErrors } = await lint(`
         .foo {
             a: var( --f-shadow-large);
@@ -48,8 +50,8 @@ it("should handle whitespace", async () => {
         }
     `);
 
-    expect(parseErrors).toHaveLength(0);
-    expect(warnings).toEqual([
+    t.assert.deepStrictEqual(parseErrors, []);
+    t.assert.partialDeepStrictEqual(warnings, [
         {
             column: 13,
             endColumn: 39,
@@ -83,15 +85,15 @@ it("should handle whitespace", async () => {
     ]);
 });
 
-it("should handle fallback value", async () => {
+it("should handle fallback value", async (t) => {
     const { warnings, parseErrors } = await lint(`
         .foo {
             color: var(--f-shadow-large, #ff00aa);
         }
     `);
 
-    expect(parseErrors).toHaveLength(0);
-    expect(warnings).toEqual([
+    t.assert.deepStrictEqual(parseErrors, []);
+    t.assert.partialDeepStrictEqual(warnings, [
         {
             column: 13,
             endColumn: 51,
@@ -105,15 +107,15 @@ it("should handle fallback value", async () => {
     ]);
 });
 
-it("should handle properties with multiple declarations", async () => {
+it("should handle properties with multiple declarations", async (t) => {
     const { warnings, parseErrors } = await lint(`
         .foo {
             background: var(--f-shadow-large), var(--f-color-backdrop);
         }
     `);
 
-    expect(parseErrors).toHaveLength(0);
-    expect(warnings).toEqual([
+    t.assert.deepStrictEqual(parseErrors, []);
+    t.assert.partialDeepStrictEqual(warnings, [
         {
             column: 13,
             endColumn: 72,
@@ -137,15 +139,15 @@ it("should handle properties with multiple declarations", async () => {
     ]);
 });
 
-it("should handle malformed var", async () => {
+it("should handle malformed var", async (t) => {
     const { warnings, parseErrors } = await lint(`
         .foo {
             a: var();
             b: var(--f-shadow-large,);
         }
     `);
-    expect(parseErrors).toHaveLength(0);
-    expect(warnings).toEqual([
+    t.assert.deepStrictEqual(parseErrors, []);
+    t.assert.partialDeepStrictEqual(warnings, [
         {
             column: 13,
             endColumn: 39,
@@ -159,12 +161,12 @@ it("should handle malformed var", async () => {
     ]);
 });
 
-it("should not warn when variable is not deprecated", async () => {
+it("should not warn when variable is not deprecated", async (t) => {
     const { warnings, parseErrors } = await lint(`
         .foo {
             color: var(--my-fancy-variable);
         }
     `);
-    expect(parseErrors).toHaveLength(0);
-    expect(warnings).toHaveLength(0);
+    t.assert.deepStrictEqual(parseErrors, []);
+    t.assert.deepStrictEqual(warnings, []);
 });
