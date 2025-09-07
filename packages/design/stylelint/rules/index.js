@@ -1,3 +1,3 @@
-const deprecatedVariable = require("./deprecatedVariable");
+const deprecatedVariable = require("./deprecated-variable");
 
 module.exports = [deprecatedVariable];
