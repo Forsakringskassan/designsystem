@@ -30,7 +30,7 @@ import { h as h2, ref as ref2 } from "vue";
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, onMounted, createBlock, vModelText, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FButton, FBadge, setInternalKeys } from "@fkui/vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FBadge, FButton, setInternalKeys } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>[0-9]+)?(:(?<minutes>[0-5][0-9]))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>[0-9]{2})(?<minutes>[0-5][0-9])$/;
 var es_iterator_forEach = {};
@@ -2732,17 +2732,17 @@ function stopEdit(element, reason) {
   }
   return newCellTarget;
 }
-var _hoisted_1$6 = {
+var _hoisted_1$7 = {
   key: 0,
   class: "table-ng__row"
 };
-var _hoisted_2$2 = {
+var _hoisted_2$3 = {
   key: 0,
   tabindex: "-1",
   class: "table-ng__column"
 };
-var _hoisted_3$1 = ["aria-level"];
-var _hoisted_4$1 = {
+var _hoisted_3$2 = ["aria-level"];
+var _hoisted_4$2 = {
   key: 0,
   tabindex: "-1"
 };
@@ -2780,13 +2780,13 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$6, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$2)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$7, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
         "aria-level": _ctx.ariaLevel
       }, [_ctx.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
         key: 0
-      }, [_ctx.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_4$1, [createElementVNode("button", {
+      }, [_ctx.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_4$2, [createElementVNode("button", {
         "aria-label": "toggle",
         type: "button",
         class: normalizeClass(["expander", `level-${_ctx.ariaLevel}`]),
@@ -2797,7 +2797,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       }, null, 8, ["name"])], 2)])) : (openBlock(), createElementBlock("td", {
         key: 1,
         class: normalizeClass(`level-${_ctx.ariaLevel}`)
-      }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$1));
+      }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$2));
     };
   }
 });
@@ -2897,7 +2897,7 @@ function useStartStopEdit() {
     stopEdit: stopEdit2
   };
 }
-var _hoisted_1$5 = ["aria-controls"];
+var _hoisted_1$6 = ["aria-controls"];
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
@@ -3089,7 +3089,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         }, ["prevent"])),
         onKeydown: withModifiers(onEditKeyDown, ["stop"]),
         onFocusout: onEditBlur
-      }, toDisplayString(viewValue.value), 41, _hoisted_1$5), [[vShow, editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
+      }, toDisplayString(viewValue.value), 41, _hoisted_1$6), [[vShow, editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
         id: "dropdownId",
         "is-open": dropdownIsOpen.value,
         options: _ctx.column.options,
@@ -3102,7 +3102,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$4 = ["checked", "aria-label"];
+var _hoisted_1$5 = ["checked", "aria-label"];
 var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
@@ -3134,14 +3134,14 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         onChange,
         onTableActivateCell: onActivateCell
-      }, null, 40, _hoisted_1$4)], 32);
+      }, null, 40, _hoisted_1$5)], 32);
     };
   }
 });
-var _hoisted_1$3 = {
+var _hoisted_1$4 = {
   class: "table-ng__checkbox"
 };
-var _hoisted_2$1 = ["checked", "aria-label"];
+var _hoisted_2$2 = ["checked", "aria-label"];
 var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
@@ -3162,7 +3162,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       __props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", _hoisted_1$3, [createElementVNode("input", {
+      return openBlock(), createElementBlock("td", _hoisted_1$4, [createElementVNode("input", {
         ref: "input",
         type: "radio",
         checked: _ctx.column.value(_ctx.row),
@@ -3170,11 +3170,11 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         onChange,
         onTableActivateCell: onActivateCell
-      }, null, 40, _hoisted_2$1)]);
+      }, null, 40, _hoisted_2$2)]);
     };
   }
 });
-var _hoisted_1$2 = ["href"];
+var _hoisted_1$3 = ["href"];
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
@@ -3199,7 +3199,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         target: "_blank",
         href: _ctx.column.href,
         tabindex: "-1"
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$2)], 32);
+      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$3)], 32);
     };
   }
 });
@@ -3238,7 +3238,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$1 = {
+var _hoisted_1$2 = {
   key: 0,
   class: "table-ng__textwrapper"
 };
@@ -3395,7 +3395,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         onClick: withModifiers(onClickCell, ["stop"]),
         onKeydown,
         onTableActivateCell: onActivateCell
-      }, [_ctx.column.editable ? (openBlock(), createElementBlock("div", _hoisted_1$1, [createElementVNode("span", {
+      }, [_ctx.column.editable ? (openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("span", {
         ref: "view",
         class: "table-ng__textview"
       }, toDisplayString(_ctx.column.value(_ctx.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
@@ -3425,6 +3425,21 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
     };
   }
 });
+var _hoisted_1$1 = {
+  class: "container-fluid"
+};
+var _hoisted_2$1 = {
+  class: "row row--align--justify"
+};
+var _hoisted_3$1 = {
+  class: "col col--sm-8"
+};
+var _hoisted_4$1 = {
+  class: "col col--sm-2"
+};
+var _hoisted_5$1 = {
+  class: "col col--sm-2"
+};
 var _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "ITablePager",
   props: {
@@ -3461,41 +3476,41 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
       calculateItemRange();
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [createVNode(unref(FButton), {
-        variant: "tertiary",
-        disabled: switchPageButtonDisabled(false),
-        onClick: _cache[0] || (_cache[0] = ($event) => switchPage(false))
-      }, {
-        default: withCtx(() => [..._cache[2] || (_cache[2] = [createTextVNode("\n        F\xF6reg\xE5ende\n    ", -1)])]),
-        _: 1
-      }, 8, ["disabled"]), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref(FBadge), {
+      return openBlock(), createElementBlock("div", _hoisted_1$1, [createElementVNode("div", _hoisted_2$1, [createElementVNode("div", _hoisted_3$1, [createVNode(unref(FBadge), {
         status: "success"
       }, {
         default: withCtx(() => [createTextVNode("Sida: " + toDisplayString(currentPageIndex.value), 1)]),
         _: 1
-      }), _cache[5] || (_cache[5] = createTextVNode()), createVNode(unref(FBadge), {
+      }), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FBadge), {
         status: "success"
       }, {
         default: withCtx(() => [createTextVNode("Range: " + toDisplayString(firstItemIndex.value) + "-" + toDisplayString(lastItemIndex.value), 1)]),
         _: 1
-      }), _cache[6] || (_cache[6] = createTextVNode()), createVNode(unref(FBadge), {
+      }), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref(FBadge), {
         status: "info"
       }, {
         default: withCtx(() => [createTextVNode(toDisplayString(_ctx.itemsPerPage) + " element/sida", 1)]),
         _: 1
-      }), _cache[7] || (_cache[7] = createTextVNode()), createVNode(unref(FBadge), {
+      }), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref(FBadge), {
         status: "info"
       }, {
         default: withCtx(() => [createTextVNode(toDisplayString(numberOfItems.value) + " element totalt", 1)]),
         _: 1
-      }), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(FButton), {
+      })]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("div", _hoisted_4$1, [createVNode(unref(FButton), {
+        variant: "tertiary",
+        disabled: switchPageButtonDisabled(false),
+        onClick: _cache[0] || (_cache[0] = ($event) => switchPage(false))
+      }, {
+        default: withCtx(() => [..._cache[5] || (_cache[5] = [createTextVNode("\n                    <\n                ", -1)])]),
+        _: 1
+      }, 8, ["disabled"])]), _cache[8] || (_cache[8] = createTextVNode()), createElementVNode("div", _hoisted_5$1, [createVNode(unref(FButton), {
         variant: "tertiary",
         disabled: switchPageButtonDisabled(true),
         onClick: _cache[1] || (_cache[1] = ($event) => switchPage(true))
       }, {
-        default: withCtx(() => [..._cache[3] || (_cache[3] = [createTextVNode("N\xE4sta", -1)])]),
+        default: withCtx(() => [..._cache[6] || (_cache[6] = [createTextVNode("\n                    >\n                ", -1)])]),
         _: 1
-      }, 8, ["disabled"])], 64);
+      }, 8, ["disabled"])])])]);
     };
   }
 });
