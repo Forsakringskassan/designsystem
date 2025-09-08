@@ -41,12 +41,24 @@ onMounted(() => {
 </script>
 
 <template>
-    <f-button variant="tertiary" :disabled="switchPageButtonDisabled(false)" @click="switchPage(false)">
-        Föregående
-    </f-button>
-    <f-badge status="success">Sida: {{ currentPageIndex }}</f-badge>
-    <f-badge status="success">Range: {{ firstItemIndex }}-{{ lastItemIndex }}</f-badge>
-    <f-badge status="info">{{ itemsPerPage }} element/sida</f-badge>
-    <f-badge status="info">{{ numberOfItems }} element totalt</f-badge>
-    <f-button variant="tertiary" :disabled="switchPageButtonDisabled(true)" @click="switchPage(true)">Nästa</f-button>
+    <div class="container-fluid">
+        <div class="row row--align--justify">
+            <div class="col col--sm-8">
+                <f-badge status="success">Sida: {{ currentPageIndex }}</f-badge>
+                <f-badge status="success">Range: {{ firstItemIndex }}-{{ lastItemIndex }}</f-badge>
+                <f-badge status="info">{{ itemsPerPage }} element/sida</f-badge>
+                <f-badge status="info">{{ numberOfItems }} element totalt</f-badge>
+            </div>
+            <div class="col col--sm-2">
+                <f-button variant="tertiary" :disabled="switchPageButtonDisabled(false)" @click="switchPage(false)">
+                    &lt;
+                </f-button>
+            </div>
+            <div class="col col--sm-2">
+                <f-button variant="tertiary" :disabled="switchPageButtonDisabled(true)" @click="switchPage(true)">
+                    &gt;
+                </f-button>
+            </div>
+        </div>
+    </div>
 </template>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { h, ref } from "vue";
+import { ref } from "vue";
 import { FTable } from "@fkui/vue-labs";
-import { formatNumber } from "@fkui/logic";
 import { defineTableColumns } from "../table-column";
 
 const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
@@ -163,10 +162,8 @@ function onButtonClick(id: string): void {
 </script>
 
 <template>
-    <button type="button" class="button button--secondary">Interagerbart element före</button>
     <f-table v-model="mySelectedRows" :rows :columns key-attribute="id" striped paginerated>
     </f-table>
-    <button type="button" class="button button--secondary">Interagerbart element efter</button>
 </template>
 
 <style>
