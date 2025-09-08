@@ -11,17 +11,16 @@ const columns = defineTableColumns<FruitOrder>([
         type: "text",
         header: "Datum",
         value(order) {
-            return order.date;
+            return order.delivery.orderDate;
         },
     },
     {
         type: "text",
         header: "Beställare",
         value(order) {
-            return order.customer;
+            return order.customer.name;
         },
     },
-
     {
         type: "text",
         header: "Totalsumma",
@@ -38,8 +37,24 @@ const columns = defineTableColumns<FruitOrder>([
     {
         header: "Leveransstatus",
         type: "select",
-        key: "delivery",
         options: fruitDeliveryOptions,
+        value(order) {
+            return order.delivery.status;
+        },
+    },
+    {
+        header: "Address",
+        type: "text",
+        value(order) {
+            return order.delivery.address;
+        },
+    },
+    {
+        header: "Anvisningar",
+        type: "text",
+        value(order) {
+            return order.delivery.notes;
+        },
     },
     {
         type: "button",
