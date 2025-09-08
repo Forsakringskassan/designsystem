@@ -1,8 +1,8 @@
 import { defineComponent } from "vue";
 import FTextField from "../../components/FTextField/FTextField.vue";
 import FNumericTextField from "../../components/FTextField/extendedTextFields/FNumericTextField/FNumericTextField.vue";
-import { setupComboboxSelectors } from "./combobox-selectors";
 import { FTextFieldPageObject } from "../../cypress";
+import { setupComboboxSelectors } from "./combobox-selectors";
 
 const { input, button, dropdown, options, activeOption } =
     setupComboboxSelectors();
@@ -10,7 +10,7 @@ const { input, button, dropdown, options, activeOption } =
 const defaultMountOptions = {
     props: { options: ["foo", "bar", "baz"] },
     slots: { default: "Etikett" },
-    attrs: { maxlength: "100" }
+    attrs: { maxlength: "100" },
 };
 
 describe("Dropdown behavior", () => {
@@ -251,14 +251,19 @@ describe("Option selection", () => {
         cy.get(input).type("{downArrow}{downArrow}");
         cy.get(activeOption).click();
         cy.get(dropdown).should("not.exist");
-        cy.get(`[data-test="modelValue"]`).should("have.text", "modelValue: bar");
+        cy.get(`[data-test="modelValue"]`).should(
+            "have.text",
+            "modelValue: bar",
+        );
     });
 
     it("should update v-model value when option is selected and validation active", () => {
         const TestComponentForSelectionWithValidation = defineComponent({
             template: /* HTML */ `
                 <button type="button" data-test="button">test</button>
-                <f-text-field v-model="model" :options
+                <f-text-field
+                    v-model="model"
+                    :options
                     v-validation.required.maxLength="{ maxLength: { length: 1}}"
                 >
                     Reactive options
@@ -286,7 +291,10 @@ describe("Option selection", () => {
         cy.get(dropdown).should("not.exist");
         // kolla att valideringsfel inte visas
         po.label.errorMessage().should("not.exist");
-        cy.get(`[data-test="modelValue"]`).should("have.text", "modelValue: foo");
+        cy.get(`[data-test="modelValue"]`).should(
+            "have.text",
+            "modelValue: foo",
+        );
     });
 
     it("should not select any option for invalid input value", () => {
@@ -344,7 +352,7 @@ describe("Input Validation", () => {
         cy.get(input).click();
         cy.get(input).type("A".repeat(150));
         cy.get(dropdown).should("not.exist");
-        cy.get(input).invoke('val').should('have.length', 100); // maxlength=100 in defaultMountOptions
+        cy.get(input).invoke("val").should("have.length", 100); // maxlength=100 in defaultMountOptions
     });
 });
 
