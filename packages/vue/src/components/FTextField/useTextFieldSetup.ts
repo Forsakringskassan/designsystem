@@ -1,4 +1,5 @@
 import { inject, nextTick, type Ref, ref, useTemplateRef, toRef } from "vue";
+import { type PendingValidityEvent } from "@fkui/logic";
 import { useCombobox } from "../../internal-components";
 import { type FormatFunction } from "./FormatFunction";
 import { type ParseFunction } from "./ParseFunction";
@@ -55,6 +56,12 @@ export function useTextFieldSetup(props: TextFieldSetupProps): {
 
         inputNode.value.focus();
         setCursorAtEnd(inputNode.value);
+
+        inputNode.value.dispatchEvent(
+            new CustomEvent<PendingValidityEvent>("pending-validity", {
+                bubbles: false,
+            }),
+        );
     }
 
     const {
