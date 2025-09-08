@@ -14,6 +14,12 @@ Poc av tabell med pilnavigering och redigeringsläge. Kolumntyper läggs till ef
 FTableExample.vue
 ```
 
+## Välja en rad
+
+```import
+FTableRadioExample.vue
+```
+
 ## Expanderbar tabell
 
 ```import

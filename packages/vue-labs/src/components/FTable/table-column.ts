@@ -29,6 +29,21 @@ export interface NormalizedTableColumnCheckbox<T> {
     update(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
+export interface TableColumnRadio<T, K extends keyof T> {
+    type: "radio";
+    header: string;
+    key?: K;
+    value?(row: T): boolean;
+    update?(row: T, newValue: boolean, oldValue: boolean): void;
+}
+
+export interface NormalizedTableColumnRadio<T> {
+    type: "radio";
+    header: string;
+    value(row: T): boolean;
+    update(row: T, newValue: boolean, oldValue: boolean): void;
+}
+
 export interface TableColumnText<T, K extends keyof T> {
     type: "text";
     header: string;
@@ -110,6 +125,7 @@ export interface NormalizedTableColumnRender<T> {
 export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnSimple<T, K>
     | TableColumnCheckbox<T, K>
+    | TableColumnRadio<T, K>
     | TableColumnText<T, K>
     | TableColumnAnchor<T>
     | TableColumnButton<T>
@@ -119,6 +135,7 @@ export type TableColumn<T, K extends keyof T = keyof T> =
 export type NormalizedTableColumn<T> =
     | NormalizedTableColumnSimple<T>
     | NormalizedTableColumnCheckbox<T>
+    | NormalizedTableColumnRadio<T>
     | NormalizedTableColumnText<T>
     | NormalizedTableColumnAnchor<T>
     | NormalizedTableColumnButton<T>
@@ -175,6 +192,13 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
             } satisfies NormalizedTableColumnCheckbox<T>;
+        case "radio":
+            return {
+                type: "radio",
+                header: column.header,
+                value: getValueFn(column.value, column.key, Boolean, false),
+                update: getUpdateFn(column.update, column.key),
+            } satisfies NormalizedTableColumnRadio<T>;
         case "text":
             return {
                 type: "text",
