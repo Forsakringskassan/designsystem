@@ -23,6 +23,10 @@ function setup(options) {
   setRunningContext(app);
 }
 
+// virtual-entry:virtual:src/components/FTable/examples/FTableExpandableRows.vue:FTableExpandableRows-6b4a10.js
+import { defineComponent as _defineComponent } from "vue";
+import { h as h2, ref as ref2 } from "vue";
+
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, onMounted, createBlock, vModelText, mergeModels, useModel, useSlots, renderList, withCtx, mergeProps, resolveDynamicComponent } from "vue";
@@ -2185,17 +2189,6 @@ function splitHoursMinutes(valueString, extraForgiving = false) {
   const minutes = padInitialZeros(match?.groups?.minutes);
   return [hours, minutes];
 }
-function minutesToUserFriendlyString(value) {
-  const [hours, minutes] = splitHoursMinutes(minutesToHoursMinutesString(value)).map(Number);
-  return TranslationService.provider.translate("ARBE.RW.generell.etikett.timmarochminuter", "{{hours}} timmar och {{minutes}} minuter", {
-    hours,
-    minutes
-  });
-}
-function minutesToHoursFloat(...values) {
-  const minutes = values.filter((value) => isSet(value) && !isNaN(value)).reduce((sum, value) => sum + value, 0);
-  return minutes / 60;
-}
 function minutesToObject(...values) {
   const minutes = values.filter((value) => isSet(value) && !isNaN(value)).reduce((sum, value) => sum + value, 0);
   return {
@@ -2219,9 +2212,6 @@ function parseTimeToNumberUsingConfig(value, extraForgiving) {
 }
 function parseTimeToNumber(value) {
   return parseTimeToNumberUsingConfig(value, false);
-}
-function forgivingParseTimeToNumber(value) {
-  return parseTimeToNumberUsingConfig(value, true);
 }
 var HoursMinutesValidatorUtils = class _HoursMinutesValidatorUtils {
   static validate(value, config, name, compare) {
@@ -2470,134 +2460,1458 @@ function requireEs_iterator_some() {
 }
 requireEs_iterator_some();
 var internalKey = getInternalKey();
-var stopEditKey = Symbol();
-
-// virtual-entry:virtual:src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-cc479c.js
-import { defineComponent as defineComponent2 } from "vue";
-import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, toDisplayString as _toDisplayString, createElementBlock as _createElementBlock } from "vue";
-var exampleComponent = defineComponent2({
-  name: "XTimeComponentExample",
-  components: {
-    XTimeTextField: _sfc_main$8
-  },
-  data() {
-    return {
-      time: void 0,
-      parser: (value) => forgivingParseTimeToNumber(value)
-    };
-  },
-  computed: {
-    userFriendlyValue() {
-      return minutesToUserFriendlyString(this.time);
-    },
-    timeInHours() {
-      return minutesToHoursFloat(this.time);
-    },
-    timeAsObject() {
-      return JSON.stringify(minutesToObject(this.time));
+var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
+var prevCellIndex = void 0;
+function rowKey(row) {
+  return String(row[internalKey]);
+}
+function walk(array, visit, childKey, level = 1) {
+  for (const item of array) {
+    const visitChildren = visit(item, level);
+    if (visitChildren && childKey && item[childKey]) {
+      walk(item[childKey], visit, childKey, level + 1);
     }
+  }
+}
+function getRowIndexes(rows, expandableAttribute) {
+  const array = [];
+  walk(rows, (row) => {
+    array.push(String(row[internalKey]));
+    return true;
+  }, expandableAttribute);
+  return array;
+}
+function getCellTarget(tableElement, rowIndex, cellIndex) {
+  return tableElement.rows[rowIndex].cells[cellIndex];
+}
+function isTd(element) {
+  return element !== null && element.cellIndex !== void 0;
+}
+function getTr(td) {
+  return td.parentElement;
+}
+function getTable(tr) {
+  return tr.closest("table");
+}
+function getLastRowIndex(tableElement) {
+  return tableElement.rows.length - 1;
+}
+function getLastCellIndex(tableElement) {
+  return tableElement.rows[0].cells.length - 1;
+}
+function getVerticalNavIndex(table, from, to) {
+  const target = {
+    ...to
+  };
+  const currentMax = table.rows[from.row].cells.length - 1;
+  const targetMax = table.rows[to.row].cells.length - 1;
+  if (prevCellIndex && currentMax < targetMax) {
+    target.cell = prevCellIndex;
+    prevCellIndex = void 0;
+  } else {
+    target.cell = targetMax < from.cell ? targetMax : from.cell;
+  }
+  if (targetMax < from.cell) {
+    prevCellIndex = from.cell;
+  }
+  return target;
+}
+function navigate(e, table, from, last) {
+  if (from.row === void 0 || from.cell === void 0 || last.row === void 0 || last.cell === void 0) {
+    return;
+  }
+  if (!navKeys.includes(e.code)) {
+    return;
+  }
+  e.preventDefault();
+  if (e.code === "ArrowLeft") {
+    if (from.cell === 0) {
+      return;
+    }
+    prevCellIndex = void 0;
+    return {
+      row: from.row,
+      cell: from.cell - 1
+    };
+  }
+  if (e.code === "ArrowRight") {
+    if (from.cell === last.cell) {
+      return;
+    }
+    const lastCellIndex = table.rows[from.row].cells.length - 1;
+    if (lastCellIndex <= from.cell) {
+      return;
+    }
+    prevCellIndex = void 0;
+    return {
+      row: from.row,
+      cell: from.cell + 1
+    };
+  }
+  if (e.code === "ArrowUp") {
+    if (from.row === 1) {
+      return;
+    }
+    const to = {
+      row: from.row - 1,
+      cell: from.cell
+    };
+    return getVerticalNavIndex(table, from, to);
+  }
+  if (e.code === "ArrowDown") {
+    if (from.row === last.row) {
+      return;
+    }
+    const to = {
+      row: from.row + 1,
+      cell: from.cell
+    };
+    return getVerticalNavIndex(table, from, to);
+  }
+  if (e.code === "Home") {
+    if (e.ctrlKey) {
+      return {
+        row: 1,
+        cell: 0
+      };
+    } else {
+      return {
+        row: from.row,
+        cell: 0
+      };
+    }
+  }
+  if (e.code === "End") {
+    if (e.ctrlKey) {
+      return {
+        row: last.row,
+        cell: table.rows[last.row].cells.length - 1
+      };
+    } else {
+      return {
+        row: from.row,
+        cell: table.rows[from.row].cells.length - 1
+      };
+    }
+  }
+}
+function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
+  const rowIndexes = getRowIndexes(keyedRows);
+  const array = [];
+  walk(keyedRows, (row, level) => {
+    const isExpandable = Boolean(expandableAttribute && row[expandableAttribute]);
+    const isExpanded = isExpandable && expandedKeys.includes(rowKey(row));
+    array.push({
+      key: rowKey(row),
+      row,
+      rowIndex: rowIndexes.indexOf(rowKey(row)) + 1,
+      level: expandableAttribute ? level : void 0,
+      isExpandable,
+      isExpanded
+    });
+    return isExpanded;
+  }, expandableAttribute);
+  return array;
+}
+function getTd(element) {
+  if (isTd(element)) {
+    return element;
+  } else {
+    const closest = element.closest("td");
+    if (!closest) {
+      throw new Error("expected td parent");
+    }
+    return closest;
+  }
+}
+function setDefaultCellTarget(table) {
+  const target = getCellTarget(table, 1, 0);
+  dispatchActivateCellEvent(target, {
+    focus: false
+  });
+  return target;
+}
+function maybeNavigateToCell(e) {
+  let newCellTarget = e.target;
+  const td = getTd(e.target);
+  const tr = getTr(td);
+  const table = getTable(tr);
+  const fromIndex = {
+    row: tr.rowIndex,
+    cell: td.cellIndex
+  };
+  const lastIndex = {
+    row: getLastRowIndex(table),
+    cell: getLastCellIndex(table)
+  };
+  const navigateTo = navigate(e, table, fromIndex, lastIndex);
+  if (navigateTo) {
+    newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
+    dispatchActivateCellEvent(newCellTarget, {
+      focus: true
+    });
+  }
+}
+function dispatchActivateCellEvent(element, detail) {
+  element.dispatchEvent(new CustomEvent("table-activate-cell", {
+    detail
+  }));
+}
+function stopEdit(element, reason) {
+  const td = getTd(element);
+  const tr = getTr(td);
+  const table = getTable(tr);
+  const rowIndex = tr.rowIndex;
+  const cellIndex = td.cellIndex;
+  const lastRowIndex = getLastRowIndex(table);
+  const lastCellIndex = getLastCellIndex(table);
+  let newCellTarget = td;
+  switch (reason) {
+    case "enter": {
+      if (rowIndex !== lastRowIndex) {
+        newCellTarget = getCellTarget(table, rowIndex + 1, cellIndex);
+        dispatchActivateCellEvent(newCellTarget, {
+          focus: true
+        });
+      } else {
+        dispatchActivateCellEvent(newCellTarget, {
+          focus: true
+        });
+      }
+      break;
+    }
+    case "escape": {
+      dispatchActivateCellEvent(newCellTarget, {
+        focus: true
+      });
+      break;
+    }
+    case "tab": {
+      if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
+        dispatchActivateCellEvent(newCellTarget, {
+          focus: true
+        });
+      } else if (cellIndex === lastCellIndex) {
+        newCellTarget = getCellTarget(table, rowIndex + 1, 0);
+        dispatchActivateCellEvent(newCellTarget, {
+          focus: true
+        });
+      } else {
+        newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
+        dispatchActivateCellEvent(newCellTarget, {
+          focus: true
+        });
+      }
+      break;
+    }
+    case "shift-tab": {
+      if (cellIndex === 0 && rowIndex === 1) {
+        dispatchActivateCellEvent(newCellTarget, {
+          focus: true
+        });
+      } else if (cellIndex === 0) {
+        newCellTarget = getCellTarget(table, rowIndex - 1, 0);
+        dispatchActivateCellEvent(newCellTarget, {
+          focus: true
+        });
+      } else {
+        newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
+        dispatchActivateCellEvent(newCellTarget, {
+          focus: true
+        });
+      }
+      break;
+    }
+    case "blur": {
+      console.log("stopEdit", "blur");
+      break;
+    }
+    default: {
+      throw new Error(`invalid stop edit reason: ${reason}`);
+    }
+  }
+  return newCellTarget;
+}
+var _hoisted_1$6 = {
+  key: 0,
+  class: "table-ng__row"
+};
+var _hoisted_2$2 = {
+  key: 0,
+  tabindex: "-1",
+  class: "table-ng__column"
+};
+var _hoisted_3$1 = ["aria-level"];
+var _hoisted_4$1 = {
+  key: 0,
+  tabindex: "-1"
+};
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+  __name: "ITableRow",
+  props: {
+    renderHeader: {
+      type: Boolean,
+      default: false
+    },
+    rowKey: {
+      default: ""
+    },
+    ariaLevel: {
+      default: () => void 0
+    },
+    isTreegrid: {
+      type: Boolean,
+      default: false
+    },
+    isExpandable: {
+      type: Boolean,
+      default: false
+    },
+    isExpanded: {
+      type: Boolean,
+      default: false
+    }
+  },
+  emits: ["toggle"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit = __emit;
+    provide("renderHeader", __props.renderHeader);
+    const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
+    return (_ctx, _cache) => {
+      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$6, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$2)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+        key: 1,
+        class: "table-ng__row",
+        "aria-level": _ctx.ariaLevel
+      }, [_ctx.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
+        key: 0
+      }, [_ctx.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_4$1, [createElementVNode("button", {
+        "aria-label": "toggle",
+        type: "button",
+        class: normalizeClass(["expander", `level-${_ctx.ariaLevel}`]),
+        onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle", _ctx.rowKey))
+      }, [createVNode(unref(FIcon), {
+        class: "button__icon",
+        name: toggleIcon.value
+      }, null, 8, ["name"])], 2)])) : (openBlock(), createElementBlock("td", {
+        key: 1,
+        class: normalizeClass(`level-${_ctx.ariaLevel}`)
+      }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$1));
+    };
+  }
+});
+function getValueFn(fn, key, coerce, defaultValue) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row) => {
+      return coerce(row[key]);
+    };
+  }
+  return () => defaultValue;
+}
+function getUpdateFn(fn, key) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row, value) => {
+      row[key] = value;
+    };
+  }
+  return () => void 0;
+}
+function normalizeTableColumn(column) {
+  var _column$validation;
+  if ("render" in column) {
+    return {
+      type: void 0,
+      header: column.header,
+      render: column.render
+    };
+  }
+  switch (column.type) {
+    case "checkbox":
+      return {
+        type: "checkbox",
+        header: column.header,
+        value: getValueFn(column.value, column.key, Boolean, false),
+        update: getUpdateFn(column.update, column.key)
+      };
+    case "radio":
+      return {
+        type: "radio",
+        header: column.header,
+        value: getValueFn(column.value, column.key, Boolean, false),
+        update: getUpdateFn(column.update, column.key)
+      };
+    case "text":
+      return {
+        type: "text",
+        header: column.header,
+        value: getValueFn(column.value, column.key, String, ""),
+        update: getUpdateFn(column.update, column.key),
+        editable: Boolean(column.editable),
+        validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {}
+      };
+    case "anchor":
+      return {
+        type: "anchor",
+        header: column.header,
+        value: column.value,
+        href: column.href
+      };
+    case "button":
+      return {
+        type: "button",
+        header: column.header,
+        value: column.value,
+        onClick: column.onClick,
+        icon: column.icon
+      };
+    case "select":
+      return {
+        type: "select",
+        header: column.header,
+        value: getValueFn(column.value, column.key, String, ""),
+        update: getUpdateFn(column.update, column.key),
+        options: column.options
+      };
+    case void 0:
+      return {
+        type: void 0,
+        header: column.header,
+        value: getValueFn(column.value, column.key, String, "")
+      };
+  }
+}
+function normalizeTableColumns(columns) {
+  return columns.map(normalizeTableColumn);
+}
+var stopEditKey = Symbol();
+function useStartStopEdit() {
+  const stopEdit2 = inject(stopEditKey, () => Promise.resolve());
+  return {
+    stopEdit: stopEdit2
+  };
+}
+var _hoisted_1$5 = ["aria-controls"];
+var _sfc_main$6 = /* @__PURE__ */ defineComponent({
+  __name: "ITableSelect",
+  props: {
+    row: {},
+    column: {}
+  },
+  setup(__props) {
+    const editing = ref(false);
+    const editRef = useTemplateRef("edit");
+    const {
+      stopEdit: stopEdit2
+    } = useStartStopEdit();
+    const viewValue = ref(__props.column.value(__props.row));
+    const tdRef = useTemplateRef("td");
+    function onActivateCell(e) {
+      assertRef(tdRef);
+      tdRef.value.tabIndex = 0;
+      if (e.detail.focus) {
+        tdRef.value.focus();
+      }
+    }
+    async function onCellKeyDown(e) {
+      if (e.code === "Enter" || e.code === "NumpadEnter") {
+        startEditing(e);
+      }
+    }
+    async function onCellClick(e) {
+      if (editing.value) {
+        return;
+      }
+      startEditing(e);
+    }
+    async function startEditing(e) {
+      assertRef(editRef);
+      e.preventDefault();
+      editing.value = true;
+      await nextTick();
+      editRef.value.tabIndex = 0;
+      editRef.value.focus();
+      openSelected("first");
+    }
+    async function onDropdownSelect(value) {
+      assertRef(editRef);
+      assertSet(stopEdit2);
+      close();
+      submit();
+      viewValue.value = value;
+      stopEdit2(editRef.value, "enter");
+    }
+    function onDropdownClose() {
+      assertRef(editRef);
+      assertSet(stopEdit2);
+      stopEdit2(editRef.value, "escape");
+    }
+    const dropdownId = ElementIdService.generateElementId();
+    const dropdownIsOpen = ref(false);
+    const activeOptionId = ElementIdService.generateElementId();
+    const activeOption = ref(null);
+    watchEffect(async () => {
+      if (!editRef.value) {
+        return;
+      }
+      if (activeOption.value) {
+        editRef.value.setAttribute("aria-activedescendant", activeOptionId);
+      } else {
+        editRef.value.removeAttribute("aria-activedescendant");
+      }
+    });
+    async function openSelected(fallback = null) {
+      dropdownIsOpen.value = true;
+      await nextTick();
+      if (viewValue.value) {
+        activeOption.value = viewValue.value;
+      } else if (fallback === "first") {
+        activeOption.value = __props.column.options[0];
+      } else if (fallback === "last") {
+        activeOption.value = __props.column.options[__props.column.options.length - 1];
+      } else {
+        activeOption.value = null;
+      }
+      editRef.value?.focus();
+    }
+    function close() {
+      dropdownIsOpen.value = false;
+      activeOption.value = null;
+    }
+    function setNextOption() {
+      if (activeOption.value) {
+        const index = __props.column.options.indexOf(activeOption.value);
+        if (index === __props.column.options.length - 1) {
+          activeOption.value = __props.column.options[0];
+        } else {
+          activeOption.value = __props.column.options[index + 1];
+        }
+      } else {
+        activeOption.value = __props.column.options[0];
+      }
+    }
+    function setPreviousOption() {
+      if (activeOption.value) {
+        const index = __props.column.options.indexOf(activeOption.value);
+        if (index === 0) {
+          activeOption.value = __props.column.options[__props.column.options.length - 1];
+        } else {
+          activeOption.value = __props.column.options[index - 1];
+        }
+      } else {
+        activeOption.value = __props.column.options[__props.column.options.length - 1];
+      }
+    }
+    async function onEditKeyDown(e) {
+      assertRef(editRef);
+      assertSet(stopEdit2);
+      switch (e.code) {
+        case "Escape":
+          e.preventDefault();
+          cancel();
+          stopEdit2(editRef.value, "escape");
+          break;
+        case "Enter":
+        case "NumpadEnter":
+          e.preventDefault();
+          submit();
+          if (activeOption.value) {
+            viewValue.value = activeOption.value;
+          }
+          close();
+          stopEdit2(editRef.value, "enter");
+          break;
+        case "Tab":
+          e.preventDefault();
+          cancel();
+          stopEdit2(editRef.value, e.shiftKey ? "shift-tab" : "tab");
+          break;
+        case "ArrowDown":
+          e.preventDefault();
+          if (dropdownIsOpen.value) {
+            setNextOption();
+          } else {
+            openSelected("first");
+          }
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          if (dropdownIsOpen.value) {
+            setPreviousOption();
+          } else {
+            openSelected("last");
+          }
+          break;
+      }
+    }
+    async function onEditBlur() {
+      if (editing.value) {
+        assertSet(stopEdit2);
+        assertRef(editRef);
+        dropdownIsOpen.value = false;
+        editing.value = false;
+        await nextTick();
+        stopEdit2(editRef.value, "blur");
+      }
+    }
+    async function submit() {
+      editing.value = false;
+      await nextTick();
+    }
+    function cancel() {
+      assertSet(stopEdit2);
+      assertRef(editRef);
+      stopEdit2(editRef.value, "escape");
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("td", {
+        ref: "td",
+        tabindex: "-1",
+        onKeydown: onCellKeyDown,
+        onClick: withModifiers(onCellClick, ["stop"]),
+        onTableActivateCell: onActivateCell
+      }, [withDirectives(createElementVNode("div", null, toDisplayString(viewValue.value), 513), [[vShow, !editing.value]]), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("div", {
+        ref: "edit",
+        role: "combobox",
+        tabindex: "-1",
+        "aria-expanded": "",
+        "aria-controls": unref(dropdownId),
+        "aria-autocomplete": "list",
+        onClick: _cache[0] || (_cache[0] = withModifiers(() => {
+        }, ["stop"])),
+        onDblclick: _cache[1] || (_cache[1] = withModifiers(() => {
+        }, ["prevent"])),
+        onKeydown: withModifiers(onEditKeyDown, ["stop"]),
+        onFocusout: onEditBlur
+      }, toDisplayString(viewValue.value), 41, _hoisted_1$5), [[vShow, editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
+        id: "dropdownId",
+        "is-open": dropdownIsOpen.value,
+        options: _ctx.column.options,
+        "active-option": activeOption.value,
+        "active-option-id": unref(activeOptionId),
+        "input-node": editRef.value,
+        onSelect: onDropdownSelect,
+        onClose: onDropdownClose
+      }, null, 8, ["is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 544);
+    };
+  }
+});
+var _hoisted_1$4 = ["checked", "aria-label"];
+var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  __name: "ITableCheckbox",
+  props: {
+    column: {},
+    row: {}
+  },
+  setup(__props) {
+    const inputElement = useTemplateRef("input");
+    function onActivateCell(e) {
+      assertRef(inputElement);
+      inputElement.value.tabIndex = 0;
+      if (e.detail.focus) {
+        inputElement.value.focus();
+      }
+    }
+    function onChange(_e) {
+      assertRef(inputElement);
+      __props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("td", {
+        class: "table-ng__checkbox",
+        onTableActivateCell: onActivateCell
+      }, [createElementVNode("input", {
+        ref: "input",
+        checked: _ctx.column.value(_ctx.row),
+        type: "checkbox",
+        "aria-label": _ctx.column.header,
+        tabindex: "-1",
+        onChange,
+        onTableActivateCell: onActivateCell
+      }, null, 40, _hoisted_1$4)], 32);
+    };
+  }
+});
+var _hoisted_1$3 = {
+  class: "table-ng__checkbox"
+};
+var _hoisted_2$1 = ["checked", "aria-label"];
+var _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  __name: "ITableRadio",
+  props: {
+    column: {},
+    row: {}
+  },
+  setup(__props) {
+    const inputElement = useTemplateRef("input");
+    function onActivateCell(e) {
+      assertRef(inputElement);
+      inputElement.value.tabIndex = 0;
+      if (e.detail.focus) {
+        inputElement.value.focus();
+      }
+    }
+    function onChange(_e) {
+      assertRef(inputElement);
+      __props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("td", _hoisted_1$3, [createElementVNode("input", {
+        ref: "input",
+        type: "radio",
+        checked: _ctx.column.value(_ctx.row),
+        "aria-label": _ctx.column.header,
+        tabindex: "-1",
+        onChange,
+        onTableActivateCell: onActivateCell
+      }, null, 40, _hoisted_2$1)]);
+    };
+  }
+});
+var _hoisted_1$2 = ["href"];
+var _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  __name: "ITableAnchor",
+  props: {
+    column: {},
+    row: {}
+  },
+  setup(__props) {
+    const anchorElement = useTemplateRef("anchor");
+    function onActivateCell(e) {
+      assertRef(anchorElement);
+      anchorElement.value.tabIndex = 0;
+      if (e.detail.focus) {
+        anchorElement.value.focus();
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("td", {
+        onTableActivateCell: onActivateCell
+      }, [createElementVNode("a", {
+        ref: "anchor",
+        class: "anchor anchor--block",
+        target: "_blank",
+        href: _ctx.column.href,
+        tabindex: "-1"
+      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$2)], 32);
+    };
+  }
+});
+var _sfc_main$2 = /* @__PURE__ */ defineComponent({
+  __name: "ITableButton",
+  props: {
+    column: {},
+    row: {}
+  },
+  setup(__props) {
+    const buttonElement = useTemplateRef("button");
+    function onActivateCell(e) {
+      assertRef(buttonElement);
+      buttonElement.value.tabIndex = 0;
+      if (e.detail.focus) {
+        buttonElement.value.focus();
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("td", {
+        onTableActivateCell: onActivateCell
+      }, [createElementVNode("button", {
+        ref: "button",
+        class: "icon-button",
+        type: "button",
+        tabindex: "-1",
+        onClick: _cache[0] || (_cache[0] = ($event) => _ctx.column.onClick(_ctx.row))
+      }, [createVNode(unref(FIcon), {
+        name: "trashcan"
+      }), _cache[1] || (_cache[1] = createTextVNode()), _cache[2] || (_cache[2] = createElementVNode("span", {
+        class: "sr-only"
+      }, "Knapptext", -1))], 512)], 32);
+    };
+  }
+});
+function isAlphanumeric(e) {
+  return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
+}
+var _hoisted_1$1 = {
+  key: 0,
+  class: "table-ng__textwrapper"
+};
+var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "ITableText",
+  props: {
+    row: {},
+    column: {}
+  },
+  setup(__props) {
+    const model = ref("");
+    const validity = ref({
+      isValid: true,
+      validationMessage: "",
+      validityMode: "INITIAL"
+    });
+    const hasError = computed(() => validity.value.validityMode === "ERROR");
+    const wrapperClasses = computed(() => {
+      return {
+        "table-ng__cell": true,
+        "table-ng__cell--text": true,
+        "table-ng__cell--valid": !hasError.value,
+        "table-ng__cell--error": hasError.value
+      };
+    });
+    const inputClasses = computed(() => {
+      return {
+        foobar: true,
+        "table-ng__textedit": true
+      };
+    });
+    const tdElement = useTemplateRef("td");
+    const viewElement = useTemplateRef("view");
+    const inputElement = useTemplateRef("input");
+    const {
+      stopEdit: stopEdit2
+    } = useStartStopEdit();
+    onMounted(() => {
+      if (inputElement.value) {
+        ValidationService.addValidatorsToElement(inputElement.value, __props.column.validation);
+      }
+    });
+    function onActivateCell(e) {
+      assertRef(tdElement);
+      tdElement.value.tabIndex = 0;
+      if (e.detail.focus) {
+        tdElement.value.focus();
+      }
+    }
+    function onStartEdit(modelValue) {
+      assertRef(tdElement);
+      assertRef(inputElement);
+      const {
+        width
+      } = tdElement.value.getBoundingClientRect();
+      model.value = modelValue;
+      tdElement.value.style.setProperty("width", `${width}px`);
+      inputElement.value.focus();
+    }
+    function onStopEdit(options) {
+      const {
+        reason
+      } = options;
+      assertRef(inputElement);
+      inputElement.value.tabIndex = -1;
+      stopEdit2(inputElement.value, reason);
+    }
+    function onClickCell(event) {
+      assertRef(tdElement);
+      if (tdElement.value.contains(event.target)) {
+        const value = __props.column.value(__props.row);
+        onStartEdit(value);
+      }
+    }
+    function onViewingKeydown(event) {
+      if (isAlphanumeric(event)) {
+        event.stopPropagation();
+        onStartEdit("");
+      }
+      if (event.key === "Enter") {
+        event.stopPropagation();
+        const value = __props.column.value(__props.row);
+        onStartEdit(value);
+      }
+    }
+    function onEditingKeydown(event) {
+      assertRef(viewElement);
+      assertRef(inputElement);
+      event.stopPropagation();
+      if (event.key === "Enter") {
+        event.preventDefault();
+        const oldValue = __props.column.value(__props.row);
+        const newValue = model.value;
+        __props.column.update(__props.row, newValue, oldValue);
+        model.value = "";
+        onStopEdit({
+          reason: "enter"
+        });
+      }
+      if (event.key === "Escape") {
+        event.preventDefault();
+        model.value = "";
+        onStopEdit({
+          reason: "escape"
+        });
+      }
+      if (event.key === "Tab") {
+        event.preventDefault();
+        const oldValue = __props.column.value(__props.row);
+        const newValue = model.value;
+        __props.column.update(__props.row, newValue, oldValue);
+        model.value = "";
+        onStopEdit({
+          reason: event.shiftKey ? "shift-tab" : "tab"
+        });
+      }
+    }
+    function onKeydown(event) {
+      const editing = document.activeElement === inputElement.value;
+      if (editing) {
+        onEditingKeydown(event);
+      } else {
+        onViewingKeydown(event);
+      }
+    }
+    function onBlur() {
+      assertRef(tdElement);
+      tdElement.value.style.removeProperty("width");
+      const isDirty = model.value !== "";
+      if (isDirty) {
+        const oldValue = __props.column.value(__props.row);
+        const newValue = model.value;
+        __props.column.update(__props.row, newValue, oldValue);
+      }
+    }
+    function onValidity(event) {
+      const {
+        isValid,
+        validationMessage,
+        validityMode
+      } = event.detail;
+      validity.value = {
+        isValid,
+        validationMessage,
+        validityMode
+      };
+    }
+    return (_ctx, _cache) => {
+      return _ctx.column.editable ? (openBlock(), createElementBlock("td", {
+        key: 0,
+        ref: "td",
+        tabindex: "-1",
+        class: normalizeClass(wrapperClasses.value),
+        onClick: withModifiers(onClickCell, ["stop"]),
+        onKeydown,
+        onTableActivateCell: onActivateCell
+      }, [_ctx.column.editable ? (openBlock(), createElementBlock("div", _hoisted_1$1, [createElementVNode("span", {
+        ref: "view",
+        class: "table-ng__textview"
+      }, toDisplayString(_ctx.column.value(_ctx.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
+        ref: "input",
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => model.value = $event),
+        class: normalizeClass(inputClasses.value),
+        type: "text",
+        maxlength: "40",
+        tabindex: "-1",
+        onBlur,
+        onValidity
+      }, null, 34), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), hasError.value ? (openBlock(), createBlock(unref(FIcon), {
+        key: 0,
+        name: "error",
+        class: "table-ng__texticon"
+      })) : (openBlock(), createBlock(unref(FIcon), {
+        key: 1,
+        name: "pen",
+        class: "table-ng__texticon"
+      }))])) : createCommentVNode("", true)], 34)) : (openBlock(), createElementBlock("td", {
+        key: 1,
+        ref: "td",
+        tabindex: "-1",
+        class: "table-ng__cell table-ng__cell--static",
+        onTableActivateCell: onActivateCell
+      }, toDisplayString(_ctx.column.value(_ctx.row)), 545));
+    };
+  }
+});
+var _hoisted_1 = ["role"];
+var _hoisted_2 = {
+  class: "table-ng__row"
+};
+var _hoisted_3 = {
+  key: 0,
+  class: "table-ng__checkbox"
+};
+var _hoisted_4 = {
+  key: 1
+};
+var _hoisted_5 = {
+  key: 2,
+  scope: "col",
+  tabindex: "-1",
+  class: "table-ng__column"
+};
+var _hoisted_6 = ["colspan"];
+var _sfc_main = /* @__PURE__ */ defineComponent({
+  __name: "FTable",
+  props: /* @__PURE__ */ mergeModels({
+    columns: {},
+    rows: {},
+    keyAttribute: {
+      default: () => void 0
+    },
+    expandableAttribute: {
+      default: () => void 0
+    },
+    striped: {
+      type: Boolean,
+      default: false
+    },
+    selectable: {
+      default: () => void 0
+    }
+  }, {
+    "modelValue": {
+      default: []
+    },
+    "modelModifiers": {}
+  }),
+  emits: ["update:modelValue"],
+  setup(__props) {
+    const model = useModel(__props, "modelValue");
+    const tableRef = useTemplateRef("table");
+    const selectAllRef = useTemplateRef("selectAll");
+    const expandedKeys = ref([]);
+    const keyedRows = computed(() => setInternalKeys(__props.rows, __props.keyAttribute, __props.expandableAttribute));
+    const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
+    const isTreegrid = computed(() => Boolean(__props.expandableAttribute));
+    const role = computed(() => isTreegrid.value ? "treegrid" : "grid");
+    const multiSelectColumn = {
+      type: "checkbox",
+      header: "selectable",
+      value(row) {
+        if (!__props.keyAttribute) {
+          return false;
+        }
+        return model.value.some((it) => {
+          return row[__props.keyAttribute] === it[__props.keyAttribute];
+        });
+      },
+      update(row, _newValue, _oldValue) {
+        assertRef(model);
+        const index = model.value.indexOf(row);
+        if (index < 0) {
+          model.value.push(row);
+        } else {
+          model.value.splice(index, 1);
+        }
+      }
+    };
+    const singleSelectColumn = {
+      type: "radio",
+      header: "V\xE4lj en rad",
+      value(row) {
+        if (!__props.keyAttribute) {
+          return false;
+        }
+        return model.value.some((it) => {
+          return row[__props.keyAttribute] === it[__props.keyAttribute];
+        });
+      },
+      update(row, _newValue, _oldValue) {
+        assertRef(model);
+        model.value = [row];
+      }
+    };
+    const isIndeterminate = computed(() => {
+      return model.value.length > 0 && model.value.length < __props.rows.length;
+    });
+    const isAllRowsSelected = computed(() => {
+      return model.value.length > 0 && model.value.length === __props.rows.length;
+    });
+    const isSingleSelect = computed(() => {
+      return __props.selectable === "single";
+    });
+    const isMultiSelect = computed(() => {
+      return __props.selectable === "multi";
+    });
+    watchEffect(() => {
+      if (selectAllRef.value) {
+        selectAllRef.value.indeterminate = isIndeterminate.value;
+        selectAllRef.value.checked = isAllRowsSelected.value;
+      }
+    });
+    function onSelectAllChange() {
+      if (selectAllRef.value?.checked) {
+        model.value = [...__props.rows];
+      } else {
+        model.value = [];
+      }
+    }
+    const columns = computed(() => normalizeTableColumns(__props.columns));
+    const tableClasses = computed(() => {
+      return __props.striped ? "table-ng table-ng--striped" : "table-ng";
+    });
+    const slots = useSlots();
+    const hasExpandableSlot = computed(() => {
+      return Boolean(slots["expandable"]);
+    });
+    async function stopEditHandler(element, reason) {
+      stopEdit(element, reason);
+    }
+    provide(stopEditKey, stopEditHandler);
+    function onToggleExpanded(key) {
+      const index = expandedKeys.value.indexOf(key);
+      if (index < 0) {
+        expandedKeys.value.push(key);
+      } else {
+        expandedKeys.value.splice(index, 1);
+      }
+    }
+    function onKeydown(e) {
+      maybeNavigateToCell(e);
+    }
+    function onClick(e) {
+      const td = e.target.closest("td");
+      if (td) {
+        dispatchActivateCellEvent(td, {
+          focus: true
+        });
+      }
+    }
+    function onTableFocusout(e) {
+      assertRef(tableRef);
+      const outsideTable = !e.relatedTarget || !tableRef.value.contains(e.relatedTarget);
+      if (outsideTable) {
+        const td = e.target.closest("td");
+        if (td) {
+          dispatchActivateCellEvent(td, {
+            focus: false
+          });
+        }
+      } else {
+        e.target.tabIndex = -1;
+      }
+    }
+    onMounted(() => {
+      assertRef(tableRef);
+      setDefaultCellTarget(tableRef.value);
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock(Fragment, null, [createElementVNode("table", {
+        ref: "table",
+        role: role.value,
+        class: normalizeClass(tableClasses.value),
+        onFocusout: onTableFocusout
+      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_3, [createElementVNode("input", {
+        ref: "selectAll",
+        type: "checkbox",
+        "aria-label": "select all",
+        tabindex: "-1",
+        indeterminate: "",
+        onChange: onSelectAllChange
+      }, null, 544)])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+        return openBlock(), createElementBlock("th", {
+          key: column.header,
+          scope: "col",
+          class: "table-ng__column"
+        }, toDisplayString(column.header), 1);
+      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", {
+        onClick,
+        onKeydown
+      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(metaRows.value, ({
+        key,
+        row,
+        rowIndex,
+        level,
+        setsize,
+        posinset,
+        isExpandable,
+        isExpanded
+      }) => {
+        return openBlock(), createBlock(_sfc_main$7, {
+          key,
+          "row-key": key,
+          "aria-rowindex": rowIndex,
+          "aria-level": level,
+          "aria-setsize": setsize,
+          "aria-posinset": posinset,
+          "is-treegrid": isTreegrid.value,
+          "is-expandable": isExpandable,
+          "is-expanded": isExpanded,
+          onToggle: onToggleExpanded
+        }, {
+          default: withCtx(() => [level > 1 && hasExpandableSlot.value ? (openBlock(), createElementBlock("td", {
+            key: 0,
+            colspan: columns.value.length
+          }, [renderSlot(_ctx.$slots, "expandable", mergeProps({
+            ref_for: true
+          }, {
+            row
+          }))], 8, _hoisted_6)) : (openBlock(), createElementBlock(Fragment, {
+            key: 1
+          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$5, {
+            key: 0,
+            row,
+            column: multiSelectColumn
+          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$4, {
+            key: 1,
+            row,
+            column: singleSelectColumn
+          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+            return openBlock(), createElementBlock(Fragment, {
+              key: column.header
+            }, [column.type === "checkbox" ? (openBlock(), createBlock(_sfc_main$5, {
+              key: 0,
+              row,
+              column
+            }, null, 8, ["row", "column"])) : column.type === "text" ? (openBlock(), createBlock(_sfc_main$1, {
+              key: 1,
+              row,
+              column
+            }, null, 8, ["row", "column"])) : column.type === "anchor" ? (openBlock(), createBlock(_sfc_main$3, {
+              key: 2,
+              row,
+              column
+            }, null, 8, ["row", "column"])) : column.type === "button" ? (openBlock(), createBlock(_sfc_main$2, {
+              key: 3,
+              row,
+              column
+            }, null, 8, ["row", "column"])) : column.type === "select" ? (openBlock(), createBlock(_sfc_main$6, {
+              key: 4,
+              row,
+              column
+            }, null, 8, ["row", "column"])) : "render" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.render(row)), {
+              key: 5,
+              row
+            }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
+          }), 128))], 64))]),
+          _: 2
+        }, 1032, ["row-key", "aria-rowindex", "aria-level", "aria-setsize", "aria-posinset", "is-treegrid", "is-expandable", "is-expanded"]);
+      }), 128))], 32)], 42, _hoisted_1), _cache[6] || (_cache[6] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
+    };
+  }
+});
+
+// virtual-entry:virtual:src/components/FTable/examples/FTableExpandableRows.vue:FTableExpandableRows-6b4a10.js
+import { formatNumber } from "@fkui/logic";
+
+// src/components/FTable/table-column.ts
+function defineTableColumns(columns) {
+  return columns;
+}
+
+// virtual-entry:virtual:src/components/FTable/examples/FTableExpandableRows.vue:FTableExpandableRows-6b4a10.js
+import { createElementVNode as _createElementVNode, createVNode as _createVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+var exampleComponent = /* @__PURE__ */ _defineComponent({
+  __name: "FTableExpandableRows",
+  setup(__props, { expose: __expose }) {
+    __expose();
+    const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
+    const columns = defineTableColumns([
+      {
+        type: "checkbox",
+        header: "Kryssruta",
+        key: "aktiv"
+      },
+      {
+        type: "text",
+        header: "Oformaterad text",
+        value(row) {
+          return String(row.antal);
+        }
+      },
+      {
+        type: "text",
+        header: "Formatterad text",
+        value(row) {
+          return formatNumber(row.antal) ?? "";
+        }
+      },
+      {
+        type: "text",
+        header: "Redigerbar text",
+        editable: true,
+        value(row) {
+          return row.level;
+        },
+        update(row, newValue) {
+          row.level = newValue;
+        },
+        validation: {
+          required: {},
+          maxLength: { length: 5 }
+        }
+      },
+      {
+        type: "button",
+        header: "Knapp",
+        icon: "trashcan",
+        value(row) {
+          return `Ta bort ${row.id}`;
+        },
+        onClick(row) {
+          onButtonClick(row.id);
+        }
+      },
+      {
+        header: "L\xE4nk",
+        type: "anchor",
+        href: "http://www.vecka.nu",
+        value() {
+          return "L\xE4nktext";
+        }
+      },
+      {
+        header: "Dropplista",
+        type: "select",
+        key: "animal",
+        options: selectFieldOptions
+      },
+      {
+        header: "Render function",
+        render() {
+          return h2("td", { id: "foo", class: "bar" }, ["\u{1F47B}"]);
+        }
+      }
+      // {
+      //     header: "Custom component",
+      //     type: "render",
+      //     render() {
+      //         return XTableChip;
+      //     },
+      // },
+    ]);
+    const rows = ref2([
+      {
+        id: "1",
+        animal: "Katt",
+        level: "F\xF6r\xE4ldrapenning",
+        start: "2022-04-11",
+        end: "2022-04-20",
+        antal: "10000",
+        expandableRows: [
+          {
+            id: "1a",
+            level: "Sjukpenningsniv\xE5",
+            start: "2022-04-18",
+            end: "2022-04-20",
+            antal: "30000"
+          },
+          {
+            id: "1b",
+            level: "L\xE4gstaniv\xE5",
+            start: "2022-04-16",
+            end: "2022-04-17",
+            antal: "20000"
+          },
+          {
+            id: "1c",
+            level: "Sjukpenningsniv\xE5",
+            start: "2022-04-11",
+            end: "2022-04-15",
+            antal: "50000"
+          }
+        ]
+      },
+      {
+        id: "2",
+        animal: "Spindel",
+        level: "Tillf\xE4llig f\xF6r\xE4ldrapenning",
+        start: "2022-05-02",
+        end: "2022-05-04",
+        antal: "30000",
+        expandableRows: [
+          {
+            id: "2a",
+            level: "Heldag",
+            start: "2022-05-02",
+            end: "2022-05-04",
+            antal: "30000"
+          }
+        ]
+      },
+      {
+        id: "3",
+        animal: "Hamster",
+        level: "F\xF6r\xE4ldrapenning",
+        start: "2022-05-16",
+        end: "2022-05-27",
+        antal: "11000",
+        expandableRows: [
+          {
+            id: "3a",
+            level: "Sjukpenningsniv\xE5",
+            start: "2022-05-23",
+            end: "2022-05-27",
+            antal: "40000"
+          },
+          {
+            id: "3b",
+            level: "L\xE4gstaniv\xE5",
+            start: "2022-05-21",
+            end: "2022-05-22",
+            antal: "20000"
+          },
+          {
+            id: "3c",
+            level: "Sjukpenningsniv\xE5",
+            start: "2022-05-16",
+            end: "2022-05-20",
+            antal: "50000"
+          }
+        ]
+      }
+    ]);
+    function onButtonClick(id) {
+      alert(`Du klickade p\xE5 rad med id ${id}`);
+    }
+    const __returned__ = { selectFieldOptions, columns, rows, onButtonClick, get FTable() {
+      return _sfc_main;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_x_time_text_field = _resolveComponent("x-time-text-field");
-  const _directive_validation = _resolveDirective("validation");
-  return _openBlock(), _createElementBlock("div", null, [
-    _withDirectives((_openBlock(), _createBlock(_component_x_time_text_field, {
-      modelValue: _ctx.time,
-      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.time = $event),
-      parser: _ctx.parser
-    }, {
-      description: _withCtx(({ formatDescriptionClass }) => [
-        _createElementVNode(
-          "span",
-          {
-            class: _normalizeClass(formatDescriptionClass)
-          },
-          "(tt:mm)",
-          2
-          /* CLASS */
-        )
-      ]),
-      default: _withCtx(() => [
-        _cache[1] || (_cache[1] = _createTextVNode(
-          " Ange arbetstid ",
-          -1
-          /* CACHED */
-        ))
-      ]),
-      _: 1
-      /* STABLE */
-    }, 8, ["modelValue", "parser"])), [
-      [
-        _directive_validation,
+  return _openBlock(), _createElementBlock(
+    _Fragment,
+    null,
+    [
+      _cache[0] || (_cache[0] = _createElementVNode(
+        "button",
         {
-          hoursMinutes: {
-            errorMessage: "Du har skrivit in ett felaktigt tidformat.",
-            parser: [_ctx.parser]
-          },
-          maxTime: {
-            maxTime: "24:00",
-            errorMessage: "Du kan inte fylla i en tid \xF6verstigande 24 timmar.",
-            parser: [_ctx.parser]
-          }
+          type: "button",
+          class: "button button--secondary"
         },
-        void 0,
+        "Interagerbart element f\xF6re",
+        -1
+        /* CACHED */
+      )),
+      _createVNode($setup["FTable"], {
+        rows: $setup.rows,
+        columns: $setup.columns,
+        "key-attribute": "id",
+        striped: "",
+        "expandable-attribute": "expandableRows"
+      }, null, 8, ["rows", "columns"]),
+      _createElementVNode(
+        "pre",
+        null,
+        _toDisplayString($setup.rows),
+        1
+        /* TEXT */
+      ),
+      _cache[1] || (_cache[1] = _createElementVNode(
+        "button",
         {
-          required: true,
-          hoursMinutes: true,
-          maxTime: true
-        }
-      ]
-    ]),
-    _createElementVNode("p", null, [
-      _createTextVNode(
-        " V\xE4rde: " + _toDisplayString(_ctx.time) + ".",
-        1
-        /* TEXT */
-      ),
-      _cache[2] || (_cache[2] = _createElementVNode(
-        "br",
-        null,
-        null,
+          type: "button",
+          class: "button button--secondary"
+        },
+        "Interagerbart element efter",
         -1
         /* CACHED */
-      )),
-      _createTextVNode(
-        " Renskrivet v\xE4rde: " + _toDisplayString(_ctx.userFriendlyValue) + ".",
-        1
-        /* TEXT */
-      ),
-      _cache[3] || (_cache[3] = _createElementVNode(
-        "br",
-        null,
-        null,
-        -1
-        /* CACHED */
-      )),
-      _createTextVNode(
-        " V\xE4rde i timmar: " + _toDisplayString(_ctx.timeInHours) + ".",
-        1
-        /* TEXT */
-      ),
-      _cache[4] || (_cache[4] = _createElementVNode(
-        "br",
-        null,
-        null,
-        -1
-        /* CACHED */
-      )),
-      _createTextVNode(
-        " V\xE4rde i objektnotation: " + _toDisplayString(_ctx.timeAsObject) + ". ",
-        1
-        /* TEXT */
-      )
-    ])
-  ]);
+      ))
+    ],
+    64
+    /* STABLE_FRAGMENT */
+  );
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-cc479c"
+  selector: "#example-6b4a10"
 });
 export {
   render

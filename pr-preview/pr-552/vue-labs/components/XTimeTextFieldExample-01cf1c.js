@@ -2289,7 +2289,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$7 = defineComponent({
+var _sfc_main$8 = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2475,7 +2475,7 @@ import { normalizeClass as _normalizeClass, createElementVNode as _createElement
 var exampleComponent = defineComponent2({
   name: "XTimeComponentExample",
   components: {
-    XTimeTextField: _sfc_main$7
+    XTimeTextField: _sfc_main$8
   },
   data() {
     return {
