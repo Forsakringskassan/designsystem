@@ -244,6 +244,7 @@ export default defineComponent({
     methods: {
         onDropdownSelect(value: string): void {
             this.selectOption(value);
+            this.$emit("update:modelValue", value);
         },
         onDropdownClose(): void {
             this.closeDropdown();
@@ -255,6 +256,11 @@ export default defineComponent({
             this.showErrorPopup = false;
         },
         async onChange(): Promise<void> {
+            // change event can be triggered when unmounted, check ref existance
+            if (!this.$refs.input) {
+                return;
+            }
+
             // trigger v-model update when not handled by onValidity event
             if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
                 this.$emit("update:modelValue", this.viewValue);
