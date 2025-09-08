@@ -1,149 +1,60 @@
 <script setup lang="ts">
-import { h, ref } from "vue";
+import { ref } from "vue";
 import { FButton, FCard } from "@fkui/vue";
 import { FTable } from "@fkui/vue-labs";
 import { formatNumber } from "@fkui/logic";
 import { defineTableColumns } from "../table-column";
+import { type FruitOrder, orders, fruitDeliveryOptions } from "./example-data";
 
-const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
+const columns = defineTableColumns<FruitOrder>([
+    {
+        type: "text",
+        header: "Datum",
+        value(order) {
+            return order.date;
+        },
+    },
+    {
+        type: "text",
+        header: "Beställare",
+        value(order) {
+            return order.customer;
+        },
+    },
 
-interface Row {
-    id: string;
-    animal?: string;
-    level: string;
-    start: string;
-    end: string;
-    antal: string;
-    expandableContent?: Array<{
-        id: string;
-        content: string;
-    }>;
-    aktiv?: boolean;
-}
-
-const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Totalsumma",
+        value(order) {
+            const total = order.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            return formatNumber(total) ?? "";
+        },
+    },
     {
         type: "checkbox",
-        header: "Kryssruta",
-        key: "aktiv",
+        header: "Betald",
+        key: "paid",
     },
-
     {
-        type: "text",
-        header: "Oformaterad text",
-        value(row) {
-            return String(row.antal);
-        },
+        header: "Leveransstatus",
+        type: "select",
+        key: "delivery",
+        options: fruitDeliveryOptions,
     },
-
-    {
-        type: "text",
-        header: "Formatterad text",
-        value(row) {
-            return formatNumber(row.antal) ?? "";
-        },
-    },
-
-    {
-        type: "text",
-        header: "Redigerbar text",
-        editable: true,
-        value(row) {
-            return row.level;
-        },
-        update(row, newValue) {
-            row.level = newValue;
-        },
-        validation: {
-            required: {},
-            maxLength: { length: 5 },
-        },
-    },
-
     {
         type: "button",
-        header: "Knapp",
+        header: "Makulera",
         icon: "trashcan",
-        value(row) {
-            return `Ta bort ${row.id}`;
+        value(order) {
+            return `Ta bort ${order.id}`;
         },
-        onClick(row) {
-            onButtonClick(row.id);
-        },
-    },
-    {
-        header: "Länk",
-        type: "anchor",
-        href: "http://www.vecka.nu",
-        value() {
-            return "Länktext";
+        onClick(order) {
+            onButtonClick(order.id);
         },
     },
-    {
-        header: "Dropplista",
-        type: "select",
-        key: "animal",
-        options: selectFieldOptions,
-    },
-    {
-        header: "Render function",
-        render() {
-            return h("td", { id: "foo", class: "bar" }, ["👻"]);
-        },
-    },
-    // {
-    //     header: "Custom component",
-    //     type: "render",
-    //     render() {
-    //         return XTableChip;
-    //     },
-    // },
 ]);
 
-const rows = ref<Row[]>([
-    {
-        id: "1",
-        animal: "Katt",
-        level: "Föräldrapenning",
-        start: "2022-04-11",
-        end: "2022-04-20",
-        antal: "10000",
-        expandableContent: [
-            {
-                id: "1a",
-                content: "Anledning: Tar hand om barnet",
-            },
-        ],
-    },
-    {
-        id: "2",
-        animal: "Spindel",
-        level: "Tillfällig föräldrapenning",
-        start: "2022-05-02",
-        end: "2022-05-04",
-        antal: "30000",
-        expandableContent: [
-            {
-                id: "2a",
-                content: "Anledning: Tar hand om barnet",
-            },
-        ],
-    },
-    {
-        id: "3",
-        animal: "Hamster",
-        level: "Föräldrapenning",
-        start: "2022-05-16",
-        end: "2022-05-27",
-        antal: "11000",
-        expandableContent: [
-            {
-                id: "3a",
-                content: "Anledning: Tar hand om barnet",
-            },
-        ],
-    },
-]);
+const rows = ref(orders);
 
 function onButtonClick(id: string): void {
     alert(`Du klickade på rad med id ${id}`);
@@ -151,15 +62,16 @@ function onButtonClick(id: string): void {
 </script>
 
 <template>
-    <button type="button" class="button button--secondary">Interagerbart element före</button>
-    <f-table :rows :columns key-attribute="id" striped expandable-attribute="expandableContent">
+    <f-table :rows :columns key-attribute="id" striped expandable-attribute="items">
         <template #expandable="{ row }">
             <f-card>
                 <template #header="{ headingSlotClass }">
-                    <h3 :class="headingSlotClass">{{ row.id }}</h3>
+                    <h3 :class="headingSlotClass">{{ row.product }}</h3>
                 </template>
                 <template #default>
-                    <p>{{ row!.content }}</p>
+                    <p>Pris: {{ row.price }}</p>
+                    <p>Antal: {{ row.quantity }}</p>
+                    <p>Delsumma: {{ row.quantity * row.price }}</p>
                 </template>
                 <template #footer>
                     <div class="button-group">
@@ -184,8 +96,6 @@ function onButtonClick(id: string): void {
             </f-card>
         </template>
     </f-table>
-    <pre>{{ rows }}</pre>
-    <button type="button" class="button button--secondary">Interagerbart element efter</button>
 </template>
 
 <style>
