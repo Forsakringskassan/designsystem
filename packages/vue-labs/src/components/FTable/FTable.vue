@@ -26,7 +26,9 @@ import ITableRadio from "./ITableRadio.vue";
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
+import ITablePager from "./ITablePager.vue";
 import { stopEditKey } from "./start-stop-edit";
+import { MetaRow } from "./MetaRow";
 
 type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
     ? Required<T>[ExpandableAttribute][number]
@@ -39,6 +41,7 @@ const {
     expandableAttribute = undefined,
     striped = false,
     selectable = undefined,
+    paginerated = false,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;
     rows: T[];
@@ -46,15 +49,23 @@ const {
     expandableAttribute?: ExpandableAttribute;
     striped?: boolean;
     selectable?: "single" | "multi";
+    paginerated?: boolean;
 }>();
 const model = defineModel<T[]>({ default: [] });
 const tableRef = useTemplateRef("table");
 const selectAllRef = useTemplateRef("selectAll");
 const expandedKeys: Ref<string[]> = ref([]);
 const keyedRows = computed(() => setInternalKeys(rows, keyAttribute, expandableAttribute));
-const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute));
+const metaRows = computed(
+    (): Array<MetaRow<T>> => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute),
+);
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
+
+const rowsFromPaginator = ref(metaRows.value);
+const viewRows = computed((): Array<MetaRow<T>> => {
+    return paginerated ? (rowsFromPaginator.value as Array<MetaRow<T>>) : metaRows.value;
+});
 
 const multiSelectColumn: NormalizedTableColumnCheckbox<T> = {
     type: "checkbox",
@@ -186,6 +197,10 @@ function onTableFocusout(e: FocusEvent): void {
     }
 }
 
+function onItemRangeUpdate(items: T[]): void {
+    rowsFromPaginator.value = items as Array<MetaRow<T>>;
+}
+
 onMounted(() => {
     assertRef(tableRef);
     setDefaultCellTarget(tableRef.value);
@@ -217,7 +232,7 @@ onMounted(() => {
         <tbody @click="onClick" @keydown="onKeydown">
             <!-- [html-validate-disable-next element-permitted-content -- transparent tr] -->
             <i-table-row
-                v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in metaRows"
+                v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in viewRows"
                 :key
                 :row-key="key"
                 :aria-rowindex="rowIndex"
@@ -262,5 +277,8 @@ onMounted(() => {
             </i-table-row>
         </tbody>
     </table>
+    <div v-if="paginerated">
+        <i-table-pager :items="metaRows as T[]" @item-range="onItemRangeUpdate" />
+    </div>
     <slot name="footer"></slot>
 </template>

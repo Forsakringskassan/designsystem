@@ -36,4 +36,8 @@ module.exports = defineMetadata({
     "i-table-anchor": {
         flow: true,
     },
+
+    "i-table-pager": {
+        flow: true,
+    },
 });
