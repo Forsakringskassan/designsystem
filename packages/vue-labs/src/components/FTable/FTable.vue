@@ -14,9 +14,15 @@ import {
     stopEdit,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
-import { type NormalizedTableColumnCheckbox, type TableColumn, normalizeTableColumns } from "./table-column";
+import {
+    type NormalizedTableColumnCheckbox,
+    type TableColumn,
+    normalizeTableColumns,
+    type NormalizedTableColumnRadio,
+} from "./table-column";
 import ITableSelect from "./ITableSelect.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
+import ITableRadio from "./ITableRadio.vue";
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
@@ -50,7 +56,7 @@ const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value,
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 
-const selectableColumn: NormalizedTableColumnCheckbox<T> = {
+const multiSelectColumn: NormalizedTableColumnCheckbox<T> = {
     type: "checkbox",
     header: "selectable",
     value(row) {
@@ -74,12 +80,38 @@ const selectableColumn: NormalizedTableColumnCheckbox<T> = {
     },
 };
 
+const singleSelectColumn: NormalizedTableColumnRadio<T> = {
+    type: "radio",
+    header: "Välj en rad",
+    value(row) {
+        if (!keyAttribute) {
+            return false;
+        }
+
+        return model.value.some((it) => {
+            return row[keyAttribute] === it[keyAttribute];
+        });
+    },
+    update(row, _newValue, _oldValue) {
+        assertRef(model);
+        model.value = [row];
+    },
+};
+
 const isIndeterminate = computed(() => {
     return model.value.length > 0 && model.value.length < rows.length;
 });
 
 const isAllRowsSelected = computed((): boolean => {
     return model.value.length > 0 && model.value.length === rows.length;
+});
+
+const isSingleSelect = computed(() => {
+    return selectable === "single";
+});
+
+const isMultiSelect = computed(() => {
+    return selectable === "multi";
 });
 
 watchEffect(() => {
@@ -164,7 +196,7 @@ onMounted(() => {
     <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout">
         <thead>
             <tr class="table-ng__row">
-                <th v-if="selectable" class="table-ng__checkbox">
+                <th v-if="isMultiSelect" class="table-ng__checkbox">
                     <input
                         ref="selectAll"
                         type="checkbox"
@@ -174,6 +206,7 @@ onMounted(() => {
                         @change="onSelectAllChange"
                     />
                 </th>
+                <th v-if="isSingleSelect">{{ singleSelectColumn.header }}</th>
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <th v-for="column in columns" :key="column.header" scope="col" class="table-ng__column">
                     {{ column.header }}
@@ -203,7 +236,8 @@ onMounted(() => {
                     </td>
                 </template>
                 <template v-else>
-                    <i-table-checkbox v-if="selectable" :row :column="selectableColumn"></i-table-checkbox>
+                    <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
+                    <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
                     <template v-for="column in columns" :key="column.header">
                         <template v-if="column.type === 'checkbox'">
                             <i-table-checkbox :row :column></i-table-checkbox>

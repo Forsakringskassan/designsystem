@@ -25,6 +25,10 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "i-table-radio": {
+        flow: true,
+    },
+
     "i-table-button": {
         flow: true,
     },

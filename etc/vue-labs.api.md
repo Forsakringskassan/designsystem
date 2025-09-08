@@ -569,7 +569,7 @@ formatter: FormatFunction<string>;
 
 // Warnings were encountered during analysis:
 //
-// src/components/FTable/FTable.vue:664:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
+// src/components/FTable/FTable.vue:763:29 - (ae-forgotten-export) The symbol "TableColumn" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
