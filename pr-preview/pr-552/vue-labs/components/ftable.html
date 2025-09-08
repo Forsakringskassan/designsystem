@@ -178,6 +178,8 @@
                                 
                                 <li><a href="#expanderbar_tabell">Expanderbar tabell</a></li>
                                 
+                                <li><a href="#paginering">Paginering</a></li>
+                                
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
                                 <li><a href="#props_events_slots">Props, Events &amp; Slots</a></li>
@@ -1070,6 +1072,259 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             </div>
+        <h2 id="paginering"><a class="header-anchor" href="#paginering">Paginering</a></h2>
+            <div
+                id="example-99d20d"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-d76c46"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+body {
+    padding: 1rem;
+}
+.icon-button {
+    margin: 0;
+    padding: 0;
+    background: inherit;
+    border: 0;
+    cursor: pointer;
+}
+.level-2 {
+    margin-left: 0.5rem;
+}
+.level-3 {
+    padding-left: 1rem;
+}
+.bar {
+    background: hotpink;
+}
+
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTablePages-d76c46.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
+
+<span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: number;
+    animal?: string;
+    <span class="hljs-attr">level</span>: string;
+    <span class="hljs-attr">start</span>: string;
+    <span class="hljs-attr">end</span>: string;
+    expandableRows?: <span class="hljs-title class_">Row</span>[];
+    expandableContent?: <span class="hljs-title class_">Array</span>&lt;{
+        <span class="hljs-attr">id</span>: string;
+        <span class="hljs-attr">content</span>: string;
+    }&gt;;
+    aktiv?: boolean;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;ID&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;id&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Animal&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;animal&quot;</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Nicky&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Talby&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2024-09-30&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2024-09-17&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Jaynell&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Partlett&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-07-29&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2024-11-28&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Maurizio&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Kinman&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2024-09-30&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2025-04-29&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Harbert&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Knee&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-02-26&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2024-12-05&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Kevyn&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Eversley&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2024-12-09&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2024-09-24&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">6</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Sharl&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Maccrea&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2024-10-20&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2025-04-01&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">7</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Aeriell&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Pizey&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2024-12-20&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2025-02-08&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">8</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Rubina&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Clilverd&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-02-20&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2025-07-11&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">9</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Oneida&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Clears&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-01-24&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2025-04-18&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Odetta&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Picott&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-06-01&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2024-12-17&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">11</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Shayne&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Grainge&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-03-01&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2025-01-05&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">12</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Brnaba&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Brownbridge&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-05-14&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2024-11-25&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">13</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Jim&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Snowsill&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-03-21&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2025-07-01&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">14</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Germayne&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Coneron&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-07-14&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2024-10-23&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-number">15</span>,
+        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Patience&quot;</span>,
+        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sharples&quot;</span>,
+        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2025-08-03&quot;</span>,
+        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2025-04-07&quot;</span>,
+        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">true</span>,
+    },
+]);
+<span class="hljs-keyword">const</span> mySelectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>]]);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onButtonClick</span>(<span class="hljs-params">id: string</span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-title function_">alert</span>(<span class="hljs-string">`Du klickade på rad med id <span class="hljs-subst">${id}</span>`</span>);
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>&gt;</span>Interagerbart element före<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;mySelectedRows&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span> <span class="hljs-attr">paginerated</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>&gt;</span>Interagerbart element efter<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+}
+
+<span class="hljs-selector-class">.icon-button</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">background</span>: inherit;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">cursor</span>: pointer;
+}
+
+<span class="hljs-selector-class">.level-2</span> {
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0.5rem</span>;
+}
+
+<span class="hljs-selector-class">.level-3</span> {
+    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">1rem</span>;
+}
+
+<span class="hljs-selector-class">.bar</span> {
+    <span class="hljs-attribute">background</span>: hotpink;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
         <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att anpassa och översätta text.</p>
 
         <dl class="docs-api docs-api--translation">
@@ -1172,6 +1427,23 @@ interface <span class="hljs-title class_">Row</span> {
                                     ><span class="docs-api__name"
                                         >selectable</span
                                     >: union</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-prop-paginerated"
+                                ><a class="docs-api__anchor" href="#ftable-prop-paginerated"
+                                    ><span class="docs-api__name"
+                                        >paginerated</span
+                                    >: boolean</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>

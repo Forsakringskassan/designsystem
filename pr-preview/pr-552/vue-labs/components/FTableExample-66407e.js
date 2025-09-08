@@ -29,8 +29,8 @@ import { h as h2, ref as ref2 } from "vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
-import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, onMounted, createBlock, vModelText, mergeModels, useModel, useSlots, renderList, withCtx, mergeProps, resolveDynamicComponent } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, setInternalKeys } from "@fkui/vue";
+import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, onMounted, createBlock, vModelText, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FButton, FBadge, setInternalKeys } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>[0-9]+)?(:(?<minutes>[0-5][0-9]))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>[0-9]{2})(?<minutes>[0-5][0-9])$/;
 var es_iterator_forEach = {};
@@ -2282,7 +2282,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$8 = defineComponent({
+var _sfc_main$9 = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2746,7 +2746,7 @@ var _hoisted_4$1 = {
   key: 0,
   tabindex: "-1"
 };
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableRow",
   props: {
     renderHeader: {
@@ -2898,7 +2898,7 @@ function useStartStopEdit() {
   };
 }
 var _hoisted_1$5 = ["aria-controls"];
-var _sfc_main$6 = /* @__PURE__ */ defineComponent({
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
     row: {},
@@ -3103,7 +3103,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$4 = ["checked", "aria-label"];
-var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
     column: {},
@@ -3142,7 +3142,7 @@ var _hoisted_1$3 = {
   class: "table-ng__checkbox"
 };
 var _hoisted_2$1 = ["checked", "aria-label"];
-var _sfc_main$4 = /* @__PURE__ */ defineComponent({
+var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
     column: {},
@@ -3175,7 +3175,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$2 = ["href"];
-var _sfc_main$3 = /* @__PURE__ */ defineComponent({
+var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
     column: {},
@@ -3203,7 +3203,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _sfc_main$2 = /* @__PURE__ */ defineComponent({
+var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "ITableButton",
   props: {
     column: {},
@@ -3242,7 +3242,7 @@ var _hoisted_1$1 = {
   key: 0,
   class: "table-ng__textwrapper"
 };
-var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+var _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "ITableText",
   props: {
     row: {},
@@ -3425,6 +3425,80 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
+var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "ITablePager",
+  props: {
+    items: {},
+    itemsPerPage: {
+      default: 4
+    }
+  },
+  emits: ["itemRange"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const currentPageIndex = ref(1);
+    const firstItemIndex = ref(0);
+    const lastItemIndex = ref(0);
+    const numberOfItems = computed(() => {
+      return __props.items.length;
+    });
+    const emit = __emit;
+    function switchPage(nextPage) {
+      currentPageIndex.value = nextPage ? ++currentPageIndex.value : --currentPageIndex.value;
+      calculateItemRange();
+    }
+    function switchPageButtonDisabled(nextPage) {
+      return nextPage ? numberOfItems.value < __props.itemsPerPage * currentPageIndex.value + 1 : currentPageIndex.value === 1;
+    }
+    function calculateItemRange() {
+      firstItemIndex.value = __props.itemsPerPage * (currentPageIndex.value - 1) + 1;
+      lastItemIndex.value = Math.min(__props.itemsPerPage * currentPageIndex.value, numberOfItems.value);
+      const itemRange = __props.items.slice(firstItemIndex.value - 1, lastItemIndex.value);
+      emit("itemRange", itemRange);
+    }
+    onMounted(() => {
+      calculateItemRange();
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock(Fragment, null, [createVNode(unref(FButton), {
+        variant: "tertiary",
+        disabled: switchPageButtonDisabled(false),
+        onClick: _cache[0] || (_cache[0] = ($event) => switchPage(false))
+      }, {
+        default: withCtx(() => [..._cache[2] || (_cache[2] = [createTextVNode("\n        F\xF6reg\xE5ende\n    ", -1)])]),
+        _: 1
+      }, 8, ["disabled"]), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref(FBadge), {
+        status: "success"
+      }, {
+        default: withCtx(() => [createTextVNode("Sida: " + toDisplayString(currentPageIndex.value), 1)]),
+        _: 1
+      }), _cache[5] || (_cache[5] = createTextVNode()), createVNode(unref(FBadge), {
+        status: "success"
+      }, {
+        default: withCtx(() => [createTextVNode("Range: " + toDisplayString(firstItemIndex.value) + "-" + toDisplayString(lastItemIndex.value), 1)]),
+        _: 1
+      }), _cache[6] || (_cache[6] = createTextVNode()), createVNode(unref(FBadge), {
+        status: "info"
+      }, {
+        default: withCtx(() => [createTextVNode(toDisplayString(_ctx.itemsPerPage) + " element/sida", 1)]),
+        _: 1
+      }), _cache[7] || (_cache[7] = createTextVNode()), createVNode(unref(FBadge), {
+        status: "info"
+      }, {
+        default: withCtx(() => [createTextVNode(toDisplayString(numberOfItems.value) + " element totalt", 1)]),
+        _: 1
+      }), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(FButton), {
+        variant: "tertiary",
+        disabled: switchPageButtonDisabled(true),
+        onClick: _cache[1] || (_cache[1] = ($event) => switchPage(true))
+      }, {
+        default: withCtx(() => [..._cache[3] || (_cache[3] = [createTextVNode("N\xE4sta", -1)])]),
+        _: 1
+      }, 8, ["disabled"])], 64);
+    };
+  }
+});
 var _hoisted_1 = ["role"];
 var _hoisted_2 = {
   class: "table-ng__row"
@@ -3443,6 +3517,9 @@ var _hoisted_5 = {
   class: "table-ng__column"
 };
 var _hoisted_6 = ["colspan"];
+var _hoisted_7 = {
+  key: 0
+};
 var _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
@@ -3460,6 +3537,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     },
     selectable: {
       default: () => void 0
+    },
+    paginerated: {
+      type: Boolean,
+      default: false
     }
   }, {
     "modelValue": {
@@ -3477,6 +3558,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
     const isTreegrid = computed(() => Boolean(__props.expandableAttribute));
     const role = computed(() => isTreegrid.value ? "treegrid" : "grid");
+    const rowsFromPaginator = ref(metaRows.value);
+    const viewRows = computed(() => {
+      return __props.paginerated ? rowsFromPaginator.value : metaRows.value;
+    });
     const multiSelectColumn = {
       type: "checkbox",
       header: "selectable",
@@ -3584,6 +3669,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         e.target.tabIndex = -1;
       }
     }
+    function onItemRangeUpdate(items) {
+      rowsFromPaginator.value = items;
+    }
     onMounted(() => {
       assertRef(tableRef);
       setDefaultCellTarget(tableRef.value);
@@ -3610,7 +3698,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", {
         onClick,
         onKeydown
-      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(metaRows.value, ({
+      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(viewRows.value, ({
         key,
         row,
         rowIndex,
@@ -3620,7 +3708,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         isExpandable,
         isExpanded
       }) => {
-        return openBlock(), createBlock(_sfc_main$7, {
+        return openBlock(), createBlock(_sfc_main$8, {
           key,
           "row-key": key,
           "aria-rowindex": rowIndex,
@@ -3641,34 +3729,34 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
             row
           }))], 8, _hoisted_6)) : (openBlock(), createElementBlock(Fragment, {
             key: 1
-          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$5, {
+          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$6, {
             key: 0,
             row,
             column: multiSelectColumn
-          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$4, {
+          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$5, {
             key: 1,
             row,
             column: singleSelectColumn
           }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
             return openBlock(), createElementBlock(Fragment, {
               key: column.header
-            }, [column.type === "checkbox" ? (openBlock(), createBlock(_sfc_main$5, {
+            }, [column.type === "checkbox" ? (openBlock(), createBlock(_sfc_main$6, {
               key: 0,
               row,
               column
-            }, null, 8, ["row", "column"])) : column.type === "text" ? (openBlock(), createBlock(_sfc_main$1, {
+            }, null, 8, ["row", "column"])) : column.type === "text" ? (openBlock(), createBlock(_sfc_main$2, {
               key: 1,
               row,
               column
-            }, null, 8, ["row", "column"])) : column.type === "anchor" ? (openBlock(), createBlock(_sfc_main$3, {
+            }, null, 8, ["row", "column"])) : column.type === "anchor" ? (openBlock(), createBlock(_sfc_main$4, {
               key: 2,
               row,
               column
-            }, null, 8, ["row", "column"])) : column.type === "button" ? (openBlock(), createBlock(_sfc_main$2, {
+            }, null, 8, ["row", "column"])) : column.type === "button" ? (openBlock(), createBlock(_sfc_main$3, {
               key: 3,
               row,
               column
-            }, null, 8, ["row", "column"])) : column.type === "select" ? (openBlock(), createBlock(_sfc_main$6, {
+            }, null, 8, ["row", "column"])) : column.type === "select" ? (openBlock(), createBlock(_sfc_main$7, {
               key: 4,
               row,
               column
@@ -3679,7 +3767,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           }), 128))], 64))]),
           _: 2
         }, 1032, ["row-key", "aria-rowindex", "aria-level", "aria-setsize", "aria-posinset", "is-treegrid", "is-expandable", "is-expanded"]);
-      }), 128))], 32)], 42, _hoisted_1), _cache[6] || (_cache[6] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
+      }), 128))], 32)], 42, _hoisted_1), _cache[6] || (_cache[6] = createTextVNode()), _ctx.paginerated ? (openBlock(), createElementBlock("div", _hoisted_7, [createVNode(_sfc_main$1, {
+        items: metaRows.value,
+        onItemRange: onItemRangeUpdate
+      }, null, 8, ["items"])])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
     };
   }
 });
