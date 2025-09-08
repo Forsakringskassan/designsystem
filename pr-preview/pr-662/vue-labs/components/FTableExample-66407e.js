@@ -3139,8 +3139,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$3 = {
-  class: "table-ng__checkbox",
-  tabindex: "-1"
+  class: "table-ng__checkbox"
 };
 var _hoisted_2$1 = ["checked", "aria-label"];
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
