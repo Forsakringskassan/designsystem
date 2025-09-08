@@ -2,6 +2,7 @@ import { defineComponent } from "vue";
 import FTextField from "../../components/FTextField/FTextField.vue";
 import FNumericTextField from "../../components/FTextField/extendedTextFields/FNumericTextField/FNumericTextField.vue";
 import { setupComboboxSelectors } from "./combobox-selectors";
+import { FTextFieldPageObject } from "../../cypress";
 
 const { input, button, dropdown, options, activeOption } =
     setupComboboxSelectors();
@@ -9,6 +10,7 @@ const { input, button, dropdown, options, activeOption } =
 const defaultMountOptions = {
     props: { options: ["foo", "bar", "baz"] },
     slots: { default: "Etikett" },
+    attrs: { maxlength: "100" }
 };
 
 describe("Dropdown behavior", () => {
@@ -227,6 +229,66 @@ describe("Option selection", () => {
             .and("contain", "Valt förslag");
     });
 
+    it("should update v-model value when option is selected", () => {
+        const TestComponentForSelection = defineComponent({
+            template: /* HTML */ `
+                <f-text-field v-model="model" :options>
+                    Reactive options
+                </f-text-field>
+                <pre data-test="modelValue">modelValue: {{ model }}</pre>
+            `,
+            data() {
+                return {
+                    options: ["foo", "bar", "buzz"],
+                    model: "",
+                };
+            },
+            components: {
+                FTextField,
+            },
+        });
+        cy.mount(TestComponentForSelection);
+        cy.get(input).type("{downArrow}{downArrow}");
+        cy.get(activeOption).click();
+        cy.get(dropdown).should("not.exist");
+        cy.get(`[data-test="modelValue"]`).should("have.text", "modelValue: bar");
+    });
+
+    it("should update v-model value when option is selected and validation active", () => {
+        const TestComponentForSelectionWithValidation = defineComponent({
+            template: /* HTML */ `
+                <button type="button" data-test="button">test</button>
+                <f-text-field v-model="model" :options
+                    v-validation.required.maxLength="{ maxLength: { length: 1}}"
+                >
+                    Reactive options
+                </f-text-field>
+                <pre data-test="modelValue">modelValue: {{ model }}</pre>
+            `,
+            data() {
+                return {
+                    options: ["foo", "foobar"],
+                    model: "",
+                };
+            },
+            components: {
+                FTextField,
+            },
+        });
+        cy.mount(TestComponentForSelectionWithValidation);
+        cy.get(input).type("fo"); // bara början av "foo"
+        cy.get(`[data-test="button"]`).click();
+        // kolla att valideringsfel visas
+        const po = new FTextFieldPageObject(".text-field");
+        po.label.errorMessage().should("exist");
+        cy.get(input).type("{downArrow}");
+        cy.get(activeOption).click();
+        cy.get(dropdown).should("not.exist");
+        // kolla att valideringsfel inte visas
+        po.label.errorMessage().should("not.exist");
+        cy.get(`[data-test="modelValue"]`).should("have.text", "modelValue: foo");
+    });
+
     it("should not select any option for invalid input value", () => {
         cy.mount(FTextField, defaultMountOptions);
         cy.get(input).click();
@@ -282,6 +344,7 @@ describe("Input Validation", () => {
         cy.get(input).click();
         cy.get(input).type("A".repeat(150));
         cy.get(dropdown).should("not.exist");
+        cy.get(input).invoke('val').should('have.length', 100); // maxlength=100 in defaultMountOptions
     });
 });
 
