@@ -2736,7 +2736,7 @@ var _hoisted_1$8 = {
   key: 0,
   class: "table-ng__row"
 };
-var _hoisted_2$1 = {
+var _hoisted_2$2 = {
   key: 0,
   tabindex: "-1",
   class: "table-ng__column"
@@ -2780,7 +2780,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$1)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$2)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
         "aria-level": _ctx.ariaLevel
@@ -3444,12 +3444,15 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
 var _hoisted_1$1 = {
   class: "pager"
 };
+var _hoisted_2$1 = {
+  key: 1
+};
 var _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "ITablePager",
   props: {
     items: {},
     itemsPerPage: {
-      default: 21
+      default: 11
     }
   },
   emits: ["itemRange"],
@@ -3463,16 +3466,17 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
       return __props.items.length;
     });
     const emit = __emit;
-    function switchPage(nextPage) {
-      currentPage.value = nextPage ? ++currentPage.value : --currentPage.value;
+    function switchToNextPage() {
+      currentPage.value++;
+      defineCurrentPage();
+    }
+    function switchToPreviousPage() {
+      currentPage.value--;
       defineCurrentPage();
     }
     function switchToSpecificPage(page) {
       currentPage.value = page;
       defineCurrentPage();
-    }
-    function switchPageButtonDisabled(nextPage) {
-      return nextPage ? numberOfItems.value < __props.itemsPerPage * currentPage.value + 1 : currentPage.value === 1;
     }
     function defineNumberOfPages() {
       numberOfPages.value = Math.ceil(numberOfItems.value / __props.itemsPerPage);
@@ -3484,37 +3488,46 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
       emit("itemRange", currentPageItems);
       currentPageItemLength.value = currentPageItems.length;
     }
+    function showPageButton(page) {
+      return page === 1 || Math.abs(currentPage.value - page) <= 2 || page === numberOfPages.value;
+    }
     onMounted(() => {
       defineNumberOfPages();
       defineCurrentPage();
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$1, [createVNode(unref(FButton), {
+      return openBlock(), createElementBlock("div", _hoisted_1$1, [currentPage.value !== 1 ? (openBlock(), createBlock(unref(FButton), {
+        key: 0,
         variant: "tertiary",
+        size: "small",
         "icon-left": "chevrons-left",
-        disabled: switchPageButtonDisabled(false),
-        onClick: _cache[0] || (_cache[0] = ($event) => switchPage(false))
+        onClick: _cache[0] || (_cache[0] = ($event) => switchToPreviousPage())
       }, {
         default: withCtx(() => [..._cache[2] || (_cache[2] = [createTextVNode("\n            F\xF6reg\xE5ende\n        ", -1)])]),
         _: 1
-      }, 8, ["disabled"]), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(numberOfPages.value, (page) => {
-        return openBlock(), createBlock(unref(FButton), {
-          key: page,
+      })) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(numberOfPages.value, (page) => {
+        return openBlock(), createElementBlock(Fragment, {
+          key: page
+        }, [showPageButton(page) ? (openBlock(), createBlock(unref(FButton), {
+          key: 0,
+          size: "small",
           variant: "tertiary",
+          disabled: page === currentPage.value,
           onClick: ($event) => switchToSpecificPage(page)
         }, {
           default: withCtx(() => [createTextVNode(toDisplayString(page), 1)]),
           _: 2
-        }, 1032, ["onClick"]);
-      }), 128)), _cache[5] || (_cache[5] = createTextVNode()), createVNode(unref(FButton), {
+        }, 1032, ["disabled", "onClick"])) : showPageButton(page + 1) ? (openBlock(), createElementBlock("span", _hoisted_2$1, "...")) : createCommentVNode("", true)], 64);
+      }), 128)), _cache[5] || (_cache[5] = createTextVNode()), currentPage.value !== numberOfPages.value ? (openBlock(), createBlock(unref(FButton), {
+        key: 1,
         variant: "tertiary",
+        size: "small",
         "icon-right": "arrow-right",
-        disabled: switchPageButtonDisabled(true),
-        onClick: _cache[1] || (_cache[1] = ($event) => switchPage(true))
+        onClick: _cache[1] || (_cache[1] = ($event) => switchToNextPage())
       }, {
         default: withCtx(() => [..._cache[3] || (_cache[3] = [createTextVNode("\n            N\xE4sta\n        ", -1)])]),
         _: 1
-      }, 8, ["disabled"])]);
+      })) : createCommentVNode("", true)]);
     };
   }
 });
