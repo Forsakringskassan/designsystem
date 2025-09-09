@@ -214,7 +214,14 @@ function cancel(): void {
 </script>
 
 <template>
-    <td ref="td" tabindex="-1" @keydown="onCellKeyDown" @click.stop="onCellClick" @table-activate-cell="onActivateCell">
+    <td
+        ref="td"
+        class="table-ng__cell"
+        tabindex="-1"
+        @keydown="onCellKeyDown"
+        @click.stop="onCellClick"
+        @table-activate-cell="onActivateCell"
+    >
         <div v-show="!editing">{{ viewValue }}</div>
         <div
             v-show="editing"

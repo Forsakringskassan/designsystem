@@ -211,7 +211,7 @@ onMounted(() => {
     <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout">
         <thead>
             <tr class="table-ng__row">
-                <th v-if="isMultiSelect" class="table-ng__checkbox">
+                <th v-if="isMultiSelect" class="table-ng__column table-ng__column--checkbox">
                     <input
                         ref="selectAll"
                         type="checkbox"

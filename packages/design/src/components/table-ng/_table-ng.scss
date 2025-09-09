@@ -50,7 +50,6 @@ $table-ng-header-font-weight: var(--f-font-weight-medium) !default;
 
     tbody {
         .table-ng__row {
-            // Behövs denna?
             background: $table-ng-row-background;
             color: $table-ng-row-foreground;
         }
