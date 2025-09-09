@@ -5,7 +5,7 @@ import { FTableActivateCellEvent } from "./events";
 import { type TableColumnAnchor } from "./table-column";
 
 const { column, row } = defineProps<{
-    column: TableColumnAnchor<T>;
+    column: TableColumnAnchor<T, K>;
     row: T;
 }>();
 

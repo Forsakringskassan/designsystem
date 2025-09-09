@@ -11,4 +11,15 @@
             width: var(--f-icon-size-medium);
         }
     }
+
+    &__sort-icon {
+        color: var(--f-icon-color-table-header);
+        height: var(--f-icon-size-x-small);
+        width: var(--f-icon-size-x-small);
+        min-width: var(--f-icon-size-x-small);
+
+        &--discrete {
+            color: var(--f-icon-color-table-header-discrete);
+        }
+    }
 }

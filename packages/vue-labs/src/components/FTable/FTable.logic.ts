@@ -159,7 +159,7 @@ function navigate(
     }
 
     if (e.code === "ArrowUp") {
-        if (from.row === 1) {
+        if (from.row === 0) {
             return;
         }
 

@@ -6,7 +6,7 @@ import { type TableColumnButton } from "./table-column";
 import { FTableActivateCellEvent } from "./events";
 
 const { column, row } = defineProps<{
-    column: TableColumnButton<T>;
+    column: TableColumnButton<T, K>;
     row: T;
 }>();
 

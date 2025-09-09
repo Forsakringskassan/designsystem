@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T">
+<script setup lang="ts" generic="T, K extends keyof T">
 import { nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
 import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { IComboboxDropdown } from "@fkui/vue";
@@ -15,7 +15,7 @@ import { FTableActivateCellEvent } from "./events";
 
 const { row, column } = defineProps<{
     row: T;
-    column: NormalizedTableColumnSelect<T>;
+    column: NormalizedTableColumnSelect<T, K>;
 }>();
 
 // Editing in progress

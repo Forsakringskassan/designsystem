@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T">
+<script setup lang="ts" generic="T, K extends keyof T">
 import { computed, onMounted, ref, useTemplateRef } from "vue";
 import { assertRef, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
@@ -9,7 +9,7 @@ import { isAlphanumeric } from "./is-alphanumeric";
 
 const { row, column } = defineProps<{
     row: T;
-    column: NormalizedTableColumnText<T>;
+    column: NormalizedTableColumnText<T, K>;
 }>();
 
 const model = ref("");

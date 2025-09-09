@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { h, ref } from "vue";
+import { FSortFilterDataset } from "@fkui/vue";
 import { FTable } from "@fkui/vue-labs";
 import { formatNumber } from "@fkui/logic";
 import { defineTableColumns } from "../table-column";
@@ -46,6 +47,7 @@ const columns = defineTableColumns<Row>([
         type: "text",
         header: "Redigerbar text",
         editable: true,
+        key: "level",
         value(row) {
             return row.level;
         },
@@ -57,7 +59,6 @@ const columns = defineTableColumns<Row>([
             maxLength: { length: 5 },
         },
     },
-
     {
         type: "button",
         header: "Knapp",
@@ -200,6 +201,11 @@ const rows = ref<Row[]>([
         ],
     },
 ]);
+
+const sortableAttributes = Object.fromEntries(
+    columns.filter((it) => it.key).map((it) => [it.key, it.header]),
+);
+
 const mySelectedRows = ref<Row[]>([rows.value[0]]);
 
 function onButtonClick(id: string): void {
@@ -209,9 +215,20 @@ function onButtonClick(id: string): void {
 
 <template>
     <button type="button" class="button button--secondary">Interagerbart element före</button>
-    <f-table v-model="mySelectedRows" :rows :columns key-attribute="id" striped selectable="multi">
-        <template #footer>Footer</template>
-    </f-table>
+    <f-sort-filter-dataset :data="rows" :sortable-attributes>
+        <template #default="{ sortFilterResult }">
+            <f-table
+                v-model="mySelectedRows"
+                :rows="sortFilterResult"
+                :columns
+                key-attribute="id"
+                striped
+                selectable="multi"
+            >
+                <template #footer>Footer</template>
+            </f-table>
+        </template>
+    </f-sort-filter-dataset>
     <h3>Selected rows ({{ mySelectedRows.length }} items):</h3>
     <pre>{{ mySelectedRows }}</pre>
     <h3>Rows ({{ rows.length }} items):</h3>

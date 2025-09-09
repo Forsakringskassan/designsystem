@@ -5,7 +5,7 @@
 >
 import { computed, onMounted, provide, type Ref, ref, useSlots, useTemplateRef, watchEffect } from "vue";
 import { assertRef } from "@fkui/logic";
-import { setInternalKeys } from "@fkui/vue";
+import { FSortFilterDatasetInjected, setInternalKeys } from "@fkui/vue";
 import {
     dispatchActivateCellEvent,
     getMetaRows,
@@ -19,6 +19,7 @@ import {
     type TableColumn,
     normalizeTableColumns,
     type NormalizedTableColumnRadio,
+    NormalizedTableColumn,
 } from "./table-column";
 import ITableSelect from "./ITableSelect.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
@@ -27,6 +28,7 @@ import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
 import ITablePager from "./ITablePager.vue";
+import ITableHeader from "./ITableHeader.vue";
 import { stopEditKey } from "./start-stop-edit";
 import { MetaRow } from "./MetaRow";
 
@@ -67,7 +69,7 @@ const viewRows = computed((): Array<MetaRow<T>> => {
     return paginerated ? (rowsFromPaginator.value as Array<MetaRow<T>>) : metaRows.value;
 });
 
-const multiSelectColumn: NormalizedTableColumnCheckbox<T> = {
+const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     type: "checkbox",
     header: "selectable",
     value(row) {
@@ -91,7 +93,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T> = {
     },
 };
 
-const singleSelectColumn: NormalizedTableColumnRadio<T> = {
+const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
     type: "radio",
     header: "Välj en rad",
     value(row) {
@@ -201,17 +203,61 @@ function onItemRangeUpdate(items: T[]): void {
     rowsFromPaginator.value = items as Array<MetaRow<T>>;
 }
 
+const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
+const sortableColumns = ref<string[]>([]);
+const sortedColumn = ref("");
+const sortedAscending = ref(false);
+
+function callbackSortableColumns(columnNames: string[]): void {
+    sortableColumns.value = columnNames;
+}
+
+function callbackOnSort(columnName: string, ascending: boolean): void {
+    sortedColumn.value = columnName;
+    sortedAscending.value = ascending;
+}
+
+function isSortEnabled(column: NormalizedTableColumn<T, KeyAttribute>): boolean {
+    if (!column.sortable) {
+        return false;
+    }
+
+    return sortableColumns.value.indexOf(String(column.sortable)) > -1;
+}
+
+function getSortOrder(column: NormalizedTableColumn<T, KeyAttribute>): "unsorted" | "ascending" | "descending" {
+    if (sortedColumn.value !== column.sortable) {
+        return "unsorted";
+    } else {
+        return sortedAscending.value ? "ascending" : "descending";
+    }
+}
+
+function onToggleSortOrder(sortable: string): void {
+    if (sortable === sortedColumn.value) {
+        if (sortedAscending.value) {
+            sort(sortable, false);
+        } else {
+            sort("", true);
+        }
+    } else {
+        sort(sortable, true);
+    }
+}
+
 onMounted(() => {
     assertRef(tableRef);
     setDefaultCellTarget(tableRef.value);
+    registerCallbackOnMount(callbackSortableColumns);
+    registerCallbackOnSort(callbackOnSort);
 });
 </script>
 
 <template>
-    <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout">
+    <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
         <thead>
             <tr class="table-ng__row">
-                <th v-if="isMultiSelect" class="table-ng__column table-ng__column--checkbox">
+                <th v-if="isMultiSelect" scope="col" class="table-ng__column table-ng__column--checkbox">
                     <input
                         ref="selectAll"
                         type="checkbox"
@@ -221,15 +267,23 @@ onMounted(() => {
                         @change="onSelectAllChange"
                     />
                 </th>
-                <th v-if="isSingleSelect">{{ singleSelectColumn.header }}</th>
+                <th v-if="isSingleSelect" scope="col">{{ singleSelectColumn.header }}</th>
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
-                <th v-for="column in columns" :key="column.header" scope="col" class="table-ng__column">
-                    {{ column.header }}
-                </th>
+                <!-- [html-validate-disable-next element-permitted-content -- transparent th] -->
+                <i-table-header
+                    v-for="column in columns"
+                    :key="column.header"
+                    :column
+                    :sort-enabled="isSortEnabled(column)"
+                    :sort-order="getSortOrder(column)"
+                    scope="col"
+                    class="table-ng__column"
+                    @toggle-sort-order="onToggleSortOrder"
+                ></i-table-header>
             </tr>
         </thead>
 
-        <tbody @click="onClick" @keydown="onKeydown">
+        <tbody>
             <!-- [html-validate-disable-next element-permitted-content -- transparent tr] -->
             <i-table-row
                 v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in viewRows"

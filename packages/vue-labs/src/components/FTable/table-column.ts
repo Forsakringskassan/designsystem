@@ -14,10 +14,11 @@ export interface TableColumnSimple<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnSimple<T> {
+export interface NormalizedTableColumnSimple<T, K> {
     type: undefined;
     header: string;
     value(row: T): string;
+    sortable?: K;
 }
 
 /**
@@ -34,11 +35,12 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnCheckbox<T> {
+export interface NormalizedTableColumnCheckbox<T, K> {
     type: "checkbox";
     header: string;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
+    sortable?: K;
 }
 
 /**
@@ -55,11 +57,12 @@ export interface TableColumnRadio<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnRadio<T> {
+export interface NormalizedTableColumnRadio<T, K> {
     type: "radio";
     header: string;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
+    sortable?: K;
 }
 
 /**
@@ -78,21 +81,23 @@ export interface TableColumnText<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnText<T> {
+export interface NormalizedTableColumnText<T, K> {
     type: "text";
     header: string;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
     editable(row: T): boolean;
     validation: ValidatorConfigs;
+    sortable?: K;
 }
 
 /**
  * @public
  */
-export interface TableColumnAnchor<T> {
+export interface TableColumnAnchor<T, K extends keyof T> {
     type: "anchor";
     header: string;
+    key?: K;
     value(row: T): string;
     href: string;
 }
@@ -100,19 +105,21 @@ export interface TableColumnAnchor<T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnAnchor<T> {
+export interface NormalizedTableColumnAnchor<T, K> {
     type: "anchor";
     header: string;
     value(row: T): string;
     href: string;
+    sortable?: K;
 }
 
 /**
  * @public
  */
-export interface TableColumnButton<T> {
+export interface TableColumnButton<T, K extends keyof T> {
     type: "button";
     header: string;
+    key?: K;
     value(row: T): string;
     onClick?(row: T): void;
     icon?: string;
@@ -121,12 +128,13 @@ export interface TableColumnButton<T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnButton<T> {
+export interface NormalizedTableColumnButton<T, K> {
     type: "button";
     header: string;
     value(row: T): string;
     onClick?(row: T): void;
     icon?: string;
+    sortable?: K;
 }
 
 /**
@@ -145,13 +153,14 @@ export interface TableColumnSelect<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnSelect<T> {
+export interface NormalizedTableColumnSelect<T, K> {
     type: "select";
     header: string;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
     editable(row: T): boolean;
     options: string[];
+    sortable?: K;
 }
 
 /**
@@ -160,6 +169,7 @@ export interface NormalizedTableColumnSelect<T> {
 export interface TableColumnRender<T> {
     type?: undefined;
     header: string;
+    key?: undefined;
     render(row: T): VNode | Component;
 }
 
@@ -170,6 +180,7 @@ export interface NormalizedTableColumnRender<T> {
     type: undefined;
     header: string;
     render(row: T): VNode | Component;
+    sortable?: boolean;
 }
 
 /**
@@ -180,23 +191,23 @@ export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnCheckbox<T, K>
     | TableColumnRadio<T, K>
     | TableColumnText<T, K>
-    | TableColumnAnchor<T>
-    | TableColumnButton<T>
+    | TableColumnAnchor<T, K>
+    | TableColumnButton<T, K>
     | TableColumnRender<T>
     | TableColumnSelect<T, K>;
 
 /**
  * @internal
  */
-export type NormalizedTableColumn<T> =
-    | NormalizedTableColumnSimple<T>
-    | NormalizedTableColumnCheckbox<T>
-    | NormalizedTableColumnRadio<T>
-    | NormalizedTableColumnText<T>
-    | NormalizedTableColumnAnchor<T>
-    | NormalizedTableColumnButton<T>
+export type NormalizedTableColumn<T, K> =
+    | NormalizedTableColumnSimple<T, K>
+    | NormalizedTableColumnCheckbox<T, K>
+    | NormalizedTableColumnRadio<T, K>
+    | NormalizedTableColumnText<T, K>
+    | NormalizedTableColumnAnchor<T, K>
+    | NormalizedTableColumnButton<T, K>
     | NormalizedTableColumnRender<T>
-    | NormalizedTableColumnSelect<T>;
+    | NormalizedTableColumnSelect<T, K>;
 
 function getValueFn<TRow, TValue, K extends keyof TRow>(
     fn: ((row: TRow) => TValue) | undefined,
@@ -238,7 +249,7 @@ function getUpdateFn<TRow, TValue, K extends keyof TRow>(
  */
 function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
-): NormalizedTableColumn<T> {
+): NormalizedTableColumn<T, K> {
     if ("render" in column) {
         return {
             type: undefined,
@@ -253,14 +264,16 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: column.header,
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
-            } satisfies NormalizedTableColumnCheckbox<T>;
+                sortable: column.key,
+            } satisfies NormalizedTableColumnCheckbox<T, K>;
         case "radio":
             return {
                 type: "radio",
                 header: column.header,
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
-            } satisfies NormalizedTableColumnRadio<T>;
+                sortable: column.key,
+            } satisfies NormalizedTableColumnRadio<T, K>;
         case "text":
             return {
                 type: "text",
@@ -272,14 +285,16 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         ? column.editable
                         : () => Boolean(column.editable ?? false),
                 validation: column.validation ?? {},
-            } satisfies NormalizedTableColumnText<T>;
+                sortable: column.key,
+            } satisfies NormalizedTableColumnText<T, K>;
         case "anchor":
             return {
                 type: "anchor",
                 header: column.header,
                 value: column.value,
                 href: column.href,
-            } satisfies NormalizedTableColumnAnchor<T>;
+                sortable: column.key,
+            } satisfies NormalizedTableColumnAnchor<T, K>;
         case "button":
             return {
                 type: "button",
@@ -287,7 +302,8 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 value: column.value,
                 onClick: column.onClick,
                 icon: column.icon,
-            } satisfies NormalizedTableColumnButton<T>;
+                sortable: column.key,
+            } satisfies NormalizedTableColumnButton<T, K>;
         case "select":
             return {
                 type: "select",
@@ -299,13 +315,15 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         ? column.editable
                         : () => Boolean(column.editable ?? false),
                 options: column.options,
-            } satisfies NormalizedTableColumnSelect<T>;
+                sortable: column.key,
+            } satisfies NormalizedTableColumnSelect<T, K>;
         case undefined:
             return {
                 type: undefined,
                 header: column.header,
                 value: getValueFn(column.value, column.key, String, ""),
-            } satisfies NormalizedTableColumnSimple<T>;
+                sortable: column.key,
+            } satisfies NormalizedTableColumnSimple<T, K>;
     }
 }
 
@@ -323,6 +341,6 @@ export function defineTableColumns<T, K extends keyof T = keyof T>(
  */
 export function normalizeTableColumns<T, K extends keyof T = keyof T>(
     columns: Array<TableColumn<T, K>>,
-): Array<NormalizedTableColumn<T>> {
+): Array<NormalizedTableColumn<T, K>> {
     return columns.map(normalizeTableColumn);
 }

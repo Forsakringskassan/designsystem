@@ -1,11 +1,11 @@
-<script setup lang="ts" generic="T">
+<script setup lang="ts" generic="T, K extends keyof T">
 import { useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnRadio } from "./table-column";
 
 const { column, row } = defineProps<{
-    column: NormalizedTableColumnRadio<T>;
+    column: NormalizedTableColumnRadio<T, K>;
     row: T;
 }>();
 
