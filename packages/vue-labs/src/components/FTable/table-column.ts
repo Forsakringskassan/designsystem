@@ -124,8 +124,9 @@ export interface TableColumnButton<T, K extends keyof T> {
     type: "button";
     header: string;
     key?: K;
-    value(row: T): string;
+    value(row: T): string | null;
     onClick?(row: T): void;
+    enabled?: boolean | ((row: T) => boolean);
     icon?: string;
 }
 
@@ -135,8 +136,9 @@ export interface TableColumnButton<T, K extends keyof T> {
 export interface NormalizedTableColumnButton<T, K> {
     type: "button";
     header: string;
-    value(row: T): string;
+    value(row: T): string | null;
     onClick?(row: T): void;
+    enabled(row: T): boolean;
     icon?: string;
     sortable?: K;
 }
@@ -313,6 +315,10 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: column.header,
                 value: column.value,
                 onClick: column.onClick,
+                enabled:
+                    typeof column.enabled === "function"
+                        ? column.enabled
+                        : () => Boolean(column.enabled ?? true),
                 icon: column.icon,
                 sortable: column.key,
             } satisfies NormalizedTableColumnButton<T, K>;

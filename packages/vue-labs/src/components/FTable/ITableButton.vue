@@ -2,11 +2,11 @@
 import { useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
-import { type TableColumnButton } from "./table-column";
+import { type NormalizedTableColumnButton } from "./table-column";
 import { FTableActivateCellEvent } from "./events";
 
 const { column, row } = defineProps<{
-    column: TableColumnButton<T, K>;
+    column: NormalizedTableColumnButton<T, K>;
     row: T;
 }>();
 
@@ -24,7 +24,14 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 
 <template>
     <td class="table-ng__cell table-ng__cell--button" @table-activate-cell="onActivateCell">
-        <button ref="button" class="icon-button" type="button" tabindex="-1" @click="column.onClick!(row)">
+        <button
+            v-if="column.enabled(row) && column.value(row) !== null"
+            ref="button"
+            class="icon-button"
+            type="button"
+            tabindex="-1"
+            @click="column.onClick!(row)"
+        >
             <f-icon v-if="column.icon" :name="column.icon"></f-icon>
             <span class="sr-only">{{ column.value(row) }}</span>
         </button>
