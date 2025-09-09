@@ -29,7 +29,7 @@ import { h as h2, ref as ref2 } from "vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
-import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, onMounted, createBlock, vModelText, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, createBlock, onMounted, vModelText, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FBadge, FButton, setInternalKeys } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>[0-9]+)?(:(?<minutes>[0-5][0-9]))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>[0-9]{2})(?<minutes>[0-5][0-9])$/;
@@ -2732,7 +2732,7 @@ function stopEdit(element, reason) {
   }
   return newCellTarget;
 }
-var _hoisted_1$7 = {
+var _hoisted_1$8 = {
   key: 0,
   class: "table-ng__row"
 };
@@ -2780,7 +2780,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$7, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$2)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$2)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
         "aria-level": _ctx.ariaLevel
@@ -2897,7 +2897,7 @@ function useStartStopEdit() {
     stopEdit: stopEdit2
   };
 }
-var _hoisted_1$6 = ["aria-controls"];
+var _hoisted_1$7 = ["aria-controls"];
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
@@ -3090,7 +3090,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         }, ["prevent"])),
         onKeydown: withModifiers(onEditKeyDown, ["stop"]),
         onFocusout: onEditBlur
-      }, toDisplayString(viewValue.value), 41, _hoisted_1$6), [[vShow, editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
+      }, toDisplayString(viewValue.value), 41, _hoisted_1$7), [[vShow, editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
         id: "dropdownId",
         "is-open": dropdownIsOpen.value,
         options: _ctx.column.options,
@@ -3103,7 +3103,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$5 = ["checked", "aria-label"];
+var _hoisted_1$6 = ["checked", "aria-label"];
 var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
@@ -3134,11 +3134,11 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
         "aria-label": _ctx.column.header,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$5)], 32);
+      }, null, 40, _hoisted_1$6)], 32);
     };
   }
 });
-var _hoisted_1$4 = ["checked", "aria-label"];
+var _hoisted_1$5 = ["checked", "aria-label"];
 var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
@@ -3169,11 +3169,11 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         "aria-label": _ctx.column.header,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$4)], 32);
+      }, null, 40, _hoisted_1$5)], 32);
     };
   }
 });
-var _hoisted_1$3 = ["href"];
+var _hoisted_1$4 = ["href"];
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
@@ -3199,10 +3199,13 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         target: "_blank",
         href: _ctx.column.href,
         tabindex: "-1"
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$3)], 32);
+      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$4)], 32);
     };
   }
 });
+var _hoisted_1$3 = {
+  class: "sr-only"
+};
 var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "ITableButton",
   props: {
@@ -3228,11 +3231,10 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         type: "button",
         tabindex: "-1",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.column.onClick(_ctx.row))
-      }, [createVNode(unref(FIcon), {
-        name: "trashcan"
-      }), _cache[1] || (_cache[1] = createTextVNode()), _cache[2] || (_cache[2] = createElementVNode("span", {
-        class: "sr-only"
-      }, "Knapptext", -1))], 512)], 32);
+      }, [_ctx.column.icon ? (openBlock(), createBlock(unref(FIcon), {
+        key: 0,
+        name: _ctx.column.icon
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_1$3, toDisplayString(_ctx.column.value(_ctx.row)), 1)], 512)], 32);
     };
   }
 });
