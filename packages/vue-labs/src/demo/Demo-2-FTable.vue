@@ -1,17 +1,9 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import {
-    FButton,
-    FCheckboxField,
-    FInteractiveTable,
-    FSelectField,
-    FTableButton,
-    FTableColumn,
-    FTextField,
-} from "@fkui/vue";
+import { FButton } from "@fkui/vue";
 import { formatNumber } from "@fkui/logic";
 import { FTable, defineTableColumns } from "../components";
-import data, { type FruitOrder, OrderStatus, statusString } from "./example-data";
+import data, { type FruitOrder, statusString } from "./example-data";
 import { useERPService } from "./erp-service";
 import XOrderFilter from "./OrderFilter.vue";
 
@@ -66,8 +58,8 @@ const columns = defineTableColumns<FruitOrder>([
     {
         header: "Kund",
         type: "text",
-        get editable() {
-            return true;
+        editable(row) {
+            return !erp.isReadonly(row);
         },
         value(row) {
             return row.name;
