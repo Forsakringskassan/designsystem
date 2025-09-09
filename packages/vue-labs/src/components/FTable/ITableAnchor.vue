@@ -2,10 +2,10 @@
 import { assertRef } from "@fkui/logic";
 import { useTemplateRef } from "vue";
 import { FTableActivateCellEvent } from "./events";
-import { type TableColumnAnchor } from "./table-column";
+import { type NormalizedTableColumnAnchor } from "./table-column";
 
 const { column, row } = defineProps<{
-    column: TableColumnAnchor<T, K>;
+    column: NormalizedTableColumnAnchor<T, K>;
     row: T;
 }>();
 
@@ -23,8 +23,15 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 
 <template>
     <td class="table-ng__cell table-ng__cell--anchor" @table-activate-cell="onActivateCell">
-        <a ref="anchor" class="anchor anchor--block" target="_blank" :href="column.href" tabindex="-1"
-            >{{ column.value(row) }}
+        <a
+            v-if="column.enabled(row) && column.value(row) !== null"
+            ref="anchor"
+            class="anchor anchor--block"
+            target="_blank"
+            :href="column.href"
+            tabindex="-1"
+        >
+            {{ column.value(row) }}
         </a>
     </td>
 </template>

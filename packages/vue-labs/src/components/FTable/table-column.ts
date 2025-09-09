@@ -100,7 +100,8 @@ export interface TableColumnAnchor<T, K extends keyof T> {
     type: "anchor";
     header: string;
     key?: K;
-    value(row: T): string;
+    value(row: T): string | null;
+    enabled?: boolean | ((row: T) => boolean);
     href: string;
 }
 
@@ -110,9 +111,10 @@ export interface TableColumnAnchor<T, K extends keyof T> {
 export interface NormalizedTableColumnAnchor<T, K> {
     type: "anchor";
     header: string;
-    value(row: T): string;
+    value(row: T): string | null;
     href: string;
     sortable?: K;
+    enabled(row: T): boolean;
 }
 
 /**
@@ -299,6 +301,10 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: column.header,
                 value: column.value,
                 href: column.href,
+                enabled:
+                    typeof column.enabled === "function"
+                        ? column.enabled
+                        : () => Boolean(column.enabled ?? true),
                 sortable: column.key,
             } satisfies NormalizedTableColumnAnchor<T, K>;
         case "button":
