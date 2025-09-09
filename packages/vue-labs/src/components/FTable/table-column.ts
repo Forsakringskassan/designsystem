@@ -1,6 +1,9 @@
 import { type ValidatorConfigs } from "@fkui/logic";
 import { type Component, type VNode } from "vue";
 
+/**
+ * @public
+ */
 export interface TableColumnSimple<T, K extends keyof T> {
     type?: undefined;
     header: string;
@@ -8,12 +11,18 @@ export interface TableColumnSimple<T, K extends keyof T> {
     value?(row: T): string;
 }
 
+/**
+ * @internal
+ */
 export interface NormalizedTableColumnSimple<T> {
     type: undefined;
     header: string;
     value(row: T): string;
 }
 
+/**
+ * @public
+ */
 export interface TableColumnCheckbox<T, K extends keyof T> {
     type: "checkbox";
     header: string;
@@ -22,6 +31,9 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
     update?(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
+/**
+ * @internal
+ */
 export interface NormalizedTableColumnCheckbox<T> {
     type: "checkbox";
     header: string;
@@ -29,6 +41,9 @@ export interface NormalizedTableColumnCheckbox<T> {
     update(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
+/**
+ * @public
+ */
 export interface TableColumnRadio<T, K extends keyof T> {
     type: "radio";
     header: string;
@@ -37,6 +52,9 @@ export interface TableColumnRadio<T, K extends keyof T> {
     update?(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
+/**
+ * @internal
+ */
 export interface NormalizedTableColumnRadio<T> {
     type: "radio";
     header: string;
@@ -44,6 +62,9 @@ export interface NormalizedTableColumnRadio<T> {
     update(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
+/**
+ * @public
+ */
 export interface TableColumnText<T, K extends keyof T> {
     type: "text";
     header: string;
@@ -54,6 +75,9 @@ export interface TableColumnText<T, K extends keyof T> {
     validation?: ValidatorConfigs;
 }
 
+/**
+ * @internal
+ */
 export interface NormalizedTableColumnText<T> {
     type: "text";
     header: string;
@@ -63,6 +87,9 @@ export interface NormalizedTableColumnText<T> {
     validation: ValidatorConfigs;
 }
 
+/**
+ * @public
+ */
 export interface TableColumnAnchor<T> {
     type: "anchor";
     header: string;
@@ -70,6 +97,9 @@ export interface TableColumnAnchor<T> {
     href: string;
 }
 
+/**
+ * @internal
+ */
 export interface NormalizedTableColumnAnchor<T> {
     type: "anchor";
     header: string;
@@ -77,6 +107,9 @@ export interface NormalizedTableColumnAnchor<T> {
     href: string;
 }
 
+/**
+ * @public
+ */
 export interface TableColumnButton<T> {
     type: "button";
     header: string;
@@ -85,6 +118,9 @@ export interface TableColumnButton<T> {
     icon?: string;
 }
 
+/**
+ * @internal
+ */
 export interface NormalizedTableColumnButton<T> {
     type: "button";
     header: string;
@@ -93,6 +129,9 @@ export interface NormalizedTableColumnButton<T> {
     icon?: string;
 }
 
+/**
+ * @public
+ */
 export interface TableColumnSelect<T, K extends keyof T> {
     type: "select";
     header: string;
@@ -102,6 +141,9 @@ export interface TableColumnSelect<T, K extends keyof T> {
     options: string[];
 }
 
+/**
+ * @internal
+ */
 export interface NormalizedTableColumnSelect<T> {
     type: "select";
     header: string;
@@ -110,18 +152,27 @@ export interface NormalizedTableColumnSelect<T> {
     options: string[];
 }
 
+/**
+ * @public
+ */
 export interface TableColumnRender<T> {
     type?: undefined;
     header: string;
     render(row: T): VNode | Component;
 }
 
+/**
+ * @internal
+ */
 export interface NormalizedTableColumnRender<T> {
     type: undefined;
     header: string;
     render(row: T): VNode | Component;
 }
 
+/**
+ * @public
+ */
 export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnSimple<T, K>
     | TableColumnCheckbox<T, K>
@@ -132,6 +183,9 @@ export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnRender<T>
     | TableColumnSelect<T, K>;
 
+/**
+ * @internal
+ */
 export type NormalizedTableColumn<T> =
     | NormalizedTableColumnSimple<T>
     | NormalizedTableColumnCheckbox<T>
@@ -159,6 +213,9 @@ function getValueFn<TRow, TValue, K extends keyof TRow>(
     return () => defaultValue;
 }
 
+/**
+ * @internal
+ */
 function getUpdateFn<TRow, TValue, K extends keyof TRow>(
     fn: ((row: TRow, newValue: TValue, oldValue: TValue) => void) | undefined,
     key: K | undefined,
@@ -174,6 +231,9 @@ function getUpdateFn<TRow, TValue, K extends keyof TRow>(
     return () => undefined;
 }
 
+/**
+ * @internal
+ */
 function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
 ): NormalizedTableColumn<T> {
@@ -240,12 +300,18 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
     }
 }
 
+/**
+ * @public
+ */
 export function defineTableColumns<T, K extends keyof T = keyof T>(
     columns: Array<TableColumn<T, K>>,
 ): Array<TableColumn<T, K>> {
     return columns;
 }
 
+/**
+ * @internal
+ */
 export function normalizeTableColumns<T, K extends keyof T = keyof T>(
     columns: Array<TableColumn<T, K>>,
 ): Array<NormalizedTableColumn<T>> {
