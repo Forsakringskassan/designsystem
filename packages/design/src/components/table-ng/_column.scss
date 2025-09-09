@@ -1,0 +1,14 @@
+@use "../../core";
+@use "../../core/size";
+
+.table-ng__column {
+    &--checkbox {
+        text-align: center;
+        padding: core.densify(size.$padding-025);
+
+        input {
+            height: var(--f-icon-size-medium);
+            width: var(--f-icon-size-medium);
+        }
+    }
+}

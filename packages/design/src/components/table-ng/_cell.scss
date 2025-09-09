@@ -7,6 +7,22 @@ $horizontal-padding: size.$padding-050;
 .table-ng__cell {
     padding: $vertical-padding $horizontal-padding;
     text-wrap: nowrap;
+    border: 2px solid transparent;
+
+    &:focus,
+    &:focus-within {
+        box-shadow: none;
+        border: 2px solid var(--f-color-focus);
+    }
+
+    input,
+    button,
+    a,
+    [role="combobox"] {
+        &:focus {
+            box-shadow: none;
+        }
+    }
 
     &--text {
         padding: 0 0.25rem;
@@ -14,10 +30,6 @@ $horizontal-padding: size.$padding-050;
         &:focus-visible {
             outline: none !important;
             box-shadow: none !important;
-
-            .table-ng__textwrapper {
-                @extend %text-focus-state;
-            }
 
             .table-ng__texticon {
                 visibility: visible;
@@ -51,11 +63,20 @@ $horizontal-padding: size.$padding-050;
             }
         }
     }
+
+    &--checkbox,
+    &--radio {
+        text-align: center;
+        padding: core.densify(size.$padding-025);
+
+        input {
+            height: var(--f-icon-size-medium);
+            width: var(--f-icon-size-medium);
+        }
+    }
 }
 
 .table-ng__textwrapper {
-    @extend %text-default-state;
-
     padding: $vertical-padding $horizontal-padding;
     display: flex;
     border-width: 2px;
@@ -68,8 +89,6 @@ $horizontal-padding: size.$padding-050;
     }
 
     &:focus-within {
-        @extend %text-edit-state;
-
         .table-ng__textview {
             display: none;
         }
@@ -102,10 +121,6 @@ $horizontal-padding: size.$padding-050;
     margin-left: 1rem;
 }
 
-%text-default-state {
-    border-bottom-color: var(--fkds-color-border-weak);
-}
-
 %text-hover-state {
     background: var(--fkds-color-action-background-secondary-hover);
 }
@@ -113,12 +128,4 @@ $horizontal-padding: size.$padding-050;
 %text-error-state {
     color: var(--fkds-color-feedback-text-negative);
     border-bottom-color: var(--fkds-color-feedback-text-negative);
-}
-
-%text-focus-state {
-    border-color: #000;
-}
-
-%text-edit-state {
-    border-color: #000;
 }

@@ -23,7 +23,7 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 </script>
 
 <template>
-    <td @table-activate-cell="onActivateCell">
+    <td class="table-ng__cell table-ng__cell--button" @table-activate-cell="onActivateCell">
         <button ref="button" class="icon-button" type="button" tabindex="-1" @click="column.onClick!(row)">
             <f-icon name="trashcan"></f-icon>
             <span class="sr-only">Knapptext</span>

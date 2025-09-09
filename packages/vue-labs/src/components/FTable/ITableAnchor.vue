@@ -22,7 +22,7 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 </script>
 
 <template>
-    <td @table-activate-cell="onActivateCell">
+    <td class="table-ng__cell table-ng__cell--anchor" @table-activate-cell="onActivateCell">
         <a ref="anchor" class="anchor anchor--block" target="_blank" :href="column.href" tabindex="-1"
             >{{ column.value(row) }}
         </a>

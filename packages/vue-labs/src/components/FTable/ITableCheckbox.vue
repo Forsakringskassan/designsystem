@@ -27,7 +27,7 @@ function onChange(_e: Event): void {
 </script>
 
 <template>
-    <td class="table-ng__checkbox" @table-activate-cell="onActivateCell">
+    <td class="table-ng__cell table-ng__cell--checkbox" @table-activate-cell="onActivateCell">
         <input
             ref="input"
             :checked="column.value(row)"
@@ -35,7 +35,6 @@ function onChange(_e: Event): void {
             :aria-label="column.header"
             tabindex="-1"
             @change="onChange"
-            @table-activate-cell="onActivateCell"
         />
     </td>
 </template>
