@@ -26,7 +26,7 @@ function setup(options) {
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, createBlock, onMounted, vModelText, withCtx, renderList, mergeModels, useModel, useSlots, mergeProps, resolveDynamicComponent } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FButton, setInternalKeys } from "@fkui/vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FButton, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>[0-9]+)?(:(?<minutes>[0-5][0-9]))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>[0-9]{2})(?<minutes>[0-5][0-9])$/;
 var es_iterator_forEach = {};
@@ -2289,7 +2289,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$9 = defineComponent({
+var _sfc_main$a = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2475,7 +2475,7 @@ import { normalizeClass as _normalizeClass, createElementVNode as _createElement
 var exampleComponent = defineComponent2({
   name: "XTimeComponentExample",
   components: {
-    XTimeTextField: _sfc_main$9
+    XTimeTextField: _sfc_main$a
   },
   data() {
     return {

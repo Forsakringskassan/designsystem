@@ -30,7 +30,7 @@ import { h as h2, ref as ref2 } from "vue";
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, createBlock, onMounted, vModelText, withCtx, renderList, mergeModels, useModel, useSlots, mergeProps, resolveDynamicComponent } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FButton, setInternalKeys } from "@fkui/vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FButton, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>[0-9]+)?(:(?<minutes>[0-5][0-9]))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>[0-9]{2})(?<minutes>[0-5][0-9])$/;
 var es_iterator_forEach = {};
@@ -2282,7 +2282,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$9 = defineComponent({
+var _sfc_main$a = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2549,7 +2549,7 @@ function navigate(e, table, from, last) {
     };
   }
   if (e.code === "ArrowUp") {
-    if (from.row === 1) {
+    if (from.row === 0) {
       return;
     }
     const to = {
@@ -2746,7 +2746,7 @@ var _hoisted_4$1 = {
   key: 0,
   tabindex: "-1"
 };
-var _sfc_main$8 = /* @__PURE__ */ defineComponent({
+var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "ITableRow",
   props: {
     renderHeader: {
@@ -2838,14 +2838,16 @@ function normalizeTableColumn(column) {
         type: "checkbox",
         header: column.header,
         value: getValueFn(column.value, column.key, Boolean, false),
-        update: getUpdateFn(column.update, column.key)
+        update: getUpdateFn(column.update, column.key),
+        sortable: column.key
       };
     case "radio":
       return {
         type: "radio",
         header: column.header,
         value: getValueFn(column.value, column.key, Boolean, false),
-        update: getUpdateFn(column.update, column.key)
+        update: getUpdateFn(column.update, column.key),
+        sortable: column.key
       };
     case "text":
       return {
@@ -2857,14 +2859,16 @@ function normalizeTableColumn(column) {
           var _column$editable;
           return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
         },
-        validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {}
+        validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
+        sortable: column.key
       };
     case "anchor":
       return {
         type: "anchor",
         header: column.header,
         value: column.value,
-        href: column.href
+        href: column.href,
+        sortable: column.key
       };
     case "button":
       return {
@@ -2872,7 +2876,8 @@ function normalizeTableColumn(column) {
         header: column.header,
         value: column.value,
         onClick: column.onClick,
-        icon: column.icon
+        icon: column.icon,
+        sortable: column.key
       };
     case "select":
       return {
@@ -2884,13 +2889,15 @@ function normalizeTableColumn(column) {
           var _column$editable2;
           return Boolean((_column$editable2 = column.editable) !== null && _column$editable2 !== void 0 ? _column$editable2 : false);
         },
-        options: column.options
+        options: column.options,
+        sortable: column.key
       };
     case void 0:
       return {
         type: void 0,
         header: column.header,
-        value: getValueFn(column.value, column.key, String, "")
+        value: getValueFn(column.value, column.key, String, ""),
+        sortable: column.key
       };
   }
 }
@@ -2905,7 +2912,7 @@ function useStartStopEdit() {
   };
 }
 var _hoisted_1$7 = ["aria-controls"];
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
     row: {},
@@ -3118,7 +3125,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$6 = ["checked", "aria-label"];
-var _sfc_main$6 = /* @__PURE__ */ defineComponent({
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
     column: {},
@@ -3153,7 +3160,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$5 = ["checked", "aria-label"];
-var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
     column: {},
@@ -3188,7 +3195,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$4 = ["href"];
-var _sfc_main$4 = /* @__PURE__ */ defineComponent({
+var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
     column: {},
@@ -3220,7 +3227,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
 var _hoisted_1$3 = {
   class: "sr-only"
 };
-var _sfc_main$3 = /* @__PURE__ */ defineComponent({
+var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableButton",
   props: {
     column: {},
@@ -3258,7 +3265,7 @@ function isAlphanumeric(e) {
 var _hoisted_1$2 = {
   class: "table-ng__textwrapper"
 };
-var _sfc_main$2 = /* @__PURE__ */ defineComponent({
+var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "ITableText",
   props: {
     row: {},
@@ -3447,7 +3454,7 @@ var _hoisted_1$1 = {
 var _hoisted_2$1 = {
   key: 1
 };
-var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+var _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "ITablePager",
   props: {
     items: {},
@@ -3531,16 +3538,102 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
+var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "ITableHeader",
+  props: {
+    column: {},
+    sortEnabled: {
+      type: Boolean
+    },
+    sortOrder: {}
+  },
+  emits: ["toggleSortOrder"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit = __emit;
+    const thElement = useTemplateRef("th");
+    const sortIconClass = computed(() => {
+      return {
+        "table-ng__column__sort-icon": true,
+        "table-ng__column__sort-icon--discrete": __props.sortOrder === "unsorted"
+      };
+    });
+    const sortIcon = computed(() => {
+      switch (__props.sortOrder) {
+        case "unsorted":
+          return "sort";
+        case "ascending":
+          return "caret-up";
+        case "descending":
+          return "caret-down";
+        default:
+          return "";
+      }
+    });
+    function onActivateCell(e) {
+      assertRef(thElement);
+      thElement.value.tabIndex = 0;
+      if (e.detail.focus) {
+        thElement.value.focus();
+      }
+    }
+    function onClickCell() {
+      if (!__props.column.sortable || !__props.sortEnabled) {
+        return;
+      }
+      emit("toggleSortOrder", String(__props.column.sortable));
+    }
+    function onKeydownCell(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        onClickCell();
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("th", {
+        ref: "th",
+        class: "table-ng__column",
+        tabindex: "-1",
+        onKeydown: onKeydownCell,
+        onClick: withModifiers(onClickCell, ["stop"]),
+        onTableActivateCell: onActivateCell
+      }, [createVNode(unref(IFlex), {
+        gap: "1x"
+      }, {
+        default: withCtx(() => [createVNode(unref(IFlexItem), {
+          shrink: ""
+        }, {
+          default: withCtx(() => [createTextVNode(toDisplayString(_ctx.column.header), 1)]),
+          _: 1
+        }), _cache[0] || (_cache[0] = createTextVNode()), _ctx.sortEnabled ? (openBlock(), createBlock(unref(IFlexItem), {
+          key: 0,
+          shrink: "",
+          align: "center"
+        }, {
+          default: withCtx(() => [createVNode(unref(FIcon), {
+            name: sortIcon.value,
+            class: normalizeClass(sortIconClass.value)
+          }, null, 8, ["name", "class"])]),
+          _: 1
+        })) : createCommentVNode("", true)]),
+        _: 1
+      })], 544);
+    };
+  }
+});
 var _hoisted_1 = ["role"];
 var _hoisted_2 = {
   class: "table-ng__row"
 };
 var _hoisted_3 = {
   key: 0,
+  scope: "col",
   class: "table-ng__column table-ng__column--checkbox"
 };
 var _hoisted_4 = {
-  key: 1
+  key: 1,
+  scope: "col"
 };
 var _hoisted_5 = {
   key: 2,
@@ -3704,16 +3797,59 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     function onItemRangeUpdate(items) {
       rowsFromPaginator.value = items;
     }
+    const {
+      sort,
+      registerCallbackOnSort,
+      registerCallbackOnMount
+    } = FSortFilterDatasetInjected();
+    const sortableColumns = ref([]);
+    const sortedColumn = ref("");
+    const sortedAscending = ref(false);
+    function callbackSortableColumns(columnNames) {
+      sortableColumns.value = columnNames;
+    }
+    function callbackOnSort(columnName, ascending) {
+      sortedColumn.value = columnName;
+      sortedAscending.value = ascending;
+    }
+    function isSortEnabled(column) {
+      if (!column.sortable) {
+        return false;
+      }
+      return sortableColumns.value.indexOf(String(column.sortable)) > -1;
+    }
+    function getSortOrder(column) {
+      if (sortedColumn.value !== column.sortable) {
+        return "unsorted";
+      } else {
+        return sortedAscending.value ? "ascending" : "descending";
+      }
+    }
+    function onToggleSortOrder(sortable) {
+      if (sortable === sortedColumn.value) {
+        if (sortedAscending.value) {
+          sort(sortable, false);
+        } else {
+          sort("", true);
+        }
+      } else {
+        sort(sortable, true);
+      }
+    }
     onMounted(() => {
       assertRef(tableRef);
       setDefaultCellTarget(tableRef.value);
+      registerCallbackOnMount(callbackSortableColumns);
+      registerCallbackOnSort(callbackOnSort);
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock(Fragment, null, [createElementVNode("table", {
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
-        onFocusout: onTableFocusout
+        onFocusout: onTableFocusout,
+        onClick,
+        onKeydown
       }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_3, [createElementVNode("input", {
         ref: "selectAll",
         type: "checkbox",
@@ -3722,15 +3858,16 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         indeterminate: "",
         onChange: onSelectAllChange
       }, null, 544)])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-        return openBlock(), createElementBlock("th", {
+        return openBlock(), createBlock(_sfc_main$1, {
           key: column.header,
+          column,
+          "sort-enabled": isSortEnabled(column),
+          "sort-order": getSortOrder(column),
           scope: "col",
-          class: "table-ng__column"
-        }, toDisplayString(column.header), 1);
-      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", {
-        onClick,
-        onKeydown
-      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(viewRows.value, ({
+          class: "table-ng__column",
+          onToggleSortOrder
+        }, null, 8, ["column", "sort-enabled", "sort-order"]);
+      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", null, [(openBlock(true), createElementBlock(Fragment, null, renderList(viewRows.value, ({
         key,
         row,
         rowIndex,
@@ -3740,7 +3877,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         isExpandable,
         isExpanded
       }) => {
-        return openBlock(), createBlock(_sfc_main$8, {
+        return openBlock(), createBlock(_sfc_main$9, {
           key,
           "row-key": key,
           "aria-rowindex": rowIndex,
@@ -3761,34 +3898,34 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
             row
           }))], 8, _hoisted_6)) : (openBlock(), createElementBlock(Fragment, {
             key: 1
-          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$6, {
+          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$7, {
             key: 0,
             row,
             column: multiSelectColumn
-          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$5, {
+          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$6, {
             key: 1,
             row,
             column: singleSelectColumn
           }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
             return openBlock(), createElementBlock(Fragment, {
               key: column.header
-            }, [column.type === "checkbox" ? (openBlock(), createBlock(_sfc_main$6, {
+            }, [column.type === "checkbox" ? (openBlock(), createBlock(_sfc_main$7, {
               key: 0,
               row,
               column
-            }, null, 8, ["row", "column"])) : column.type === "text" ? (openBlock(), createBlock(_sfc_main$2, {
+            }, null, 8, ["row", "column"])) : column.type === "text" ? (openBlock(), createBlock(_sfc_main$3, {
               key: 1,
               row,
               column
-            }, null, 8, ["row", "column"])) : column.type === "anchor" ? (openBlock(), createBlock(_sfc_main$4, {
+            }, null, 8, ["row", "column"])) : column.type === "anchor" ? (openBlock(), createBlock(_sfc_main$5, {
               key: 2,
               row,
               column
-            }, null, 8, ["row", "column"])) : column.type === "button" ? (openBlock(), createBlock(_sfc_main$3, {
+            }, null, 8, ["row", "column"])) : column.type === "button" ? (openBlock(), createBlock(_sfc_main$4, {
               key: 3,
               row,
               column
-            }, null, 8, ["row", "column"])) : column.type === "select" ? (openBlock(), createBlock(_sfc_main$7, {
+            }, null, 8, ["row", "column"])) : column.type === "select" ? (openBlock(), createBlock(_sfc_main$8, {
               key: 4,
               row,
               column
@@ -3799,7 +3936,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           }), 128))], 64))]),
           _: 2
         }, 1032, ["row-key", "aria-rowindex", "aria-level", "aria-setsize", "aria-posinset", "is-treegrid", "is-expandable", "is-expanded"]);
-      }), 128))], 32)], 42, _hoisted_1), _cache[6] || (_cache[6] = createTextVNode()), _ctx.paginerated ? (openBlock(), createElementBlock("div", _hoisted_7, [createVNode(_sfc_main$1, {
+      }), 128))])], 42, _hoisted_1), _cache[6] || (_cache[6] = createTextVNode()), _ctx.paginerated ? (openBlock(), createElementBlock("div", _hoisted_7, [createVNode(_sfc_main$2, {
         items: metaRows.value,
         onItemRange: onItemRangeUpdate
       }, null, 8, ["items"])])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
