@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from "vue";
 import { FButton } from "@fkui/vue";
 
-const { items, itemsPerPage = 11 } = defineProps<{
+const { items, itemsPerPage = 10 } = defineProps<{
     items: T[];
     itemsPerPage?: number;
 }>();
@@ -53,7 +53,10 @@ function defineCurrentPage(): void {
 }
 
 function showPageButton(page: number): boolean {
-    return page === 1 || Math.abs(currentPage.value - page) <= 2 || page === numberOfPages.value;
+    const numberOfAdjacentPagesShown = 2;
+    return (
+        page === 1 || Math.abs(currentPage.value - page) <= numberOfAdjacentPagesShown || page === numberOfPages.value
+    );
 }
 
 onMounted(() => {
@@ -63,7 +66,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="pager">
+    <div v-if="numberOfPages > 1" class="pager">
         <f-button
             v-if="currentPage !== 1"
             variant="tertiary"
