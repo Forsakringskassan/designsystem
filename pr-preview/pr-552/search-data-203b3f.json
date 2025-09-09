@@ -542,18 +542,6 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -589,6 +577,18 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -1913,38 +1913,6 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2062,6 +2030,38 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
       ]
     },
     {
@@ -2775,49 +2775,49 @@
     "541": 156,
     "542": 157,
     "543": 157,
-    "544": 157,
+    "544": 158,
     "545": 158,
-    "546": 158,
-    "547": 158,
-    "548": 159,
-    "549": 159,
-    "550": 159,
-    "551": 160,
-    "552": 160,
-    "553": 160,
-    "554": 161,
-    "555": 161,
-    "556": 162,
-    "557": 162,
-    "558": 163,
-    "559": 163,
-    "560": 164,
-    "561": 164,
-    "562": 165,
-    "563": 165,
-    "564": 166,
-    "565": 166,
-    "566": 167,
-    "567": 167,
-    "568": 168,
-    "569": 168,
-    "570": 169,
-    "571": 169,
-    "572": 170,
-    "573": 170,
-    "574": 171,
-    "575": 171,
-    "576": 172,
-    "577": 172,
-    "578": 173,
-    "579": 173,
-    "580": 174,
-    "581": 174,
-    "582": 174,
-    "583": 175,
-    "584": 175,
+    "546": 159,
+    "547": 159,
+    "548": 160,
+    "549": 160,
+    "550": 161,
+    "551": 161,
+    "552": 162,
+    "553": 162,
+    "554": 163,
+    "555": 163,
+    "556": 164,
+    "557": 164,
+    "558": 165,
+    "559": 165,
+    "560": 166,
+    "561": 166,
+    "562": 167,
+    "563": 167,
+    "564": 168,
+    "565": 168,
+    "566": 169,
+    "567": 169,
+    "568": 170,
+    "569": 170,
+    "570": 170,
+    "571": 171,
+    "572": 171,
+    "573": 172,
+    "574": 172,
+    "575": 173,
+    "576": 173,
+    "577": 174,
+    "578": 174,
+    "579": 174,
+    "580": 175,
+    "581": 175,
+    "582": 175,
+    "583": 176,
+    "584": 176,
     "585": 176,
-    "586": 176,
+    "586": 177,
     "587": 177,
     "588": 177,
     "589": 178,

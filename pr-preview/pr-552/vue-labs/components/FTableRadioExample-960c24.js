@@ -2736,7 +2736,7 @@ var _hoisted_1$8 = {
   key: 0,
   class: "table-ng__row"
 };
-var _hoisted_2$3 = {
+var _hoisted_2$4 = {
   key: 0,
   tabindex: "-1",
   class: "table-ng__column"
@@ -2780,7 +2780,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$4)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
         "aria-level": _ctx.ariaLevel
@@ -2926,7 +2926,7 @@ function useStartStopEdit() {
 var _hoisted_1$7 = {
   class: "table-ng__selectwrapper"
 };
-var _hoisted_2$2 = {
+var _hoisted_2$3 = {
   class: "table-ng__textview"
 };
 var _hoisted_3$1 = ["aria-controls"];
@@ -3110,7 +3110,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"]),
         onTableActivateCell: onActivateCell
-      }, [withDirectives(createElementVNode("div", _hoisted_1$7, [createElementVNode("span", _hoisted_2$2, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$7, [createElementVNode("span", _hoisted_2$3, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "pen",
         class: "table-ng__texticon"
       })], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
@@ -3146,7 +3146,8 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$6 = ["checked", "aria-label", "disabled"];
+var _hoisted_1$6 = ["checked", "aria-label"];
+var _hoisted_2$2 = ["checked", "aria-label"];
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
@@ -3154,31 +3155,42 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     row: {}
   },
   setup(__props) {
-    const inputElement = useTemplateRef("input");
+    const targetElement = useTemplateRef("target");
     function onActivateCell(e) {
-      assertRef(inputElement);
-      inputElement.value.tabIndex = 0;
+      assertRef(targetElement);
+      targetElement.value.tabIndex = 0;
       if (e.detail.focus) {
-        inputElement.value.focus();
+        targetElement.value.focus();
       }
     }
-    function onChange(_e) {
-      assertRef(inputElement);
-      __props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
+    function onChange(e) {
+      const checked = e.target.checked;
+      __props.column.update(__props.row, checked, !checked);
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", {
+      return _ctx.column.editable(_ctx.row) ? (openBlock(), createElementBlock("td", {
+        key: 0,
         class: "table-ng__cell table-ng__cell--checkbox",
         onTableActivateCell: onActivateCell
       }, [createElementVNode("input", {
-        ref: "input",
+        ref: "target",
         checked: _ctx.column.value(_ctx.row),
         type: "checkbox",
         "aria-label": _ctx.column.header,
-        disabled: !_ctx.column.editable(_ctx.row),
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$6)], 32);
+      }, null, 40, _hoisted_1$6)], 32)) : (openBlock(), createElementBlock("td", {
+        key: 1,
+        ref: "target",
+        tabindex: "-1",
+        class: "table-ng__cell table-ng__cell--checkbox",
+        onTableActivateCell: onActivateCell
+      }, [createElementVNode("input", {
+        checked: _ctx.column.value(_ctx.row),
+        type: "checkbox",
+        "aria-label": _ctx.column.header,
+        disabled: ""
+      }, null, 8, _hoisted_2$2)], 544));
     };
   }
 });
@@ -3225,26 +3237,35 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     row: {}
   },
   setup(__props) {
-    const anchorElement = useTemplateRef("anchor");
+    const targetElement = useTemplateRef("target");
     function onActivateCell(e) {
-      assertRef(anchorElement);
-      anchorElement.value.tabIndex = 0;
+      assertRef(targetElement);
+      targetElement.value.tabIndex = 0;
       if (e.detail.focus) {
-        anchorElement.value.focus();
+        targetElement.value.focus();
       }
     }
+    const renderAnchor = computed(() => {
+      return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
+    });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", {
+      return renderAnchor.value ? (openBlock(), createElementBlock("td", {
+        key: 0,
         class: "table-ng__cell table-ng__cell--anchor",
         onTableActivateCell: onActivateCell
-      }, [_ctx.column.enabled(_ctx.row) && _ctx.column.value(_ctx.row) !== null ? (openBlock(), createElementBlock("a", {
-        key: 0,
-        ref: "anchor",
+      }, [createElementVNode("a", {
+        ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: _ctx.column.href,
         tabindex: "-1"
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$4)) : createCommentVNode("", true)], 32);
+      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$4)], 32)) : (openBlock(), createElementBlock("td", {
+        key: 1,
+        ref: "target",
+        tabindex: "-1",
+        class: "table-ng__cell",
+        onTableActivateCell: onActivateCell
+      }, null, 544));
     };
   }
 });
@@ -3259,28 +3280,46 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const buttonElement = useTemplateRef("button");
-    function onActivateCell(e) {
-      assertRef(buttonElement);
-      buttonElement.value.tabIndex = 0;
+    const tdElement = useTemplateRef("td");
+    async function onActivateCell(e) {
+      var _buttonElement$value;
+      await nextTick();
+      const element = (_buttonElement$value = buttonElement.value) !== null && _buttonElement$value !== void 0 ? _buttonElement$value : tdElement.value;
+      assertSet(element);
+      element.tabIndex = 0;
       if (e.detail.focus) {
-        buttonElement.value.focus();
+        element.focus();
       }
     }
+    function onClickButton() {
+      if (__props.column.onClick) {
+        __props.column.onClick(__props.row);
+      }
+    }
+    const renderButton = computed(() => {
+      return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
+    });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", {
+      return renderButton.value ? (openBlock(), createElementBlock("td", {
+        key: 0,
         class: "table-ng__cell table-ng__cell--button",
         onTableActivateCell: onActivateCell
-      }, [_ctx.column.enabled(_ctx.row) && _ctx.column.value(_ctx.row) !== null ? (openBlock(), createElementBlock("button", {
-        key: 0,
+      }, [createElementVNode("button", {
         ref: "button",
         class: "icon-button",
         type: "button",
         tabindex: "-1",
-        onClick: _cache[0] || (_cache[0] = ($event) => _ctx.column.onClick(_ctx.row))
+        onClick: onClickButton
       }, [_ctx.column.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: _ctx.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_1$3, toDisplayString(_ctx.column.value(_ctx.row)), 1)], 512)) : createCommentVNode("", true)], 32);
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$3, toDisplayString(_ctx.column.value(_ctx.row)), 1)], 512)], 32)) : (openBlock(), createElementBlock("td", {
+        key: 1,
+        ref: "td",
+        tabindex: "-1",
+        class: "table-ng__cell",
+        onTableActivateCell: onActivateCell
+      }, null, 544));
     };
   }
 });
