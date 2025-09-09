@@ -74,6 +74,18 @@ $horizontal-padding: size.$padding-050;
             width: var(--f-icon-size-medium);
         }
     }
+
+    &--button {
+        button {
+            background: inherit;
+            border: 0;
+            cursor: pointer;
+            margin: 0;
+            min-width: var(--f-icon-size-medium);
+            padding: 0;
+            width: 100%;
+        }
+    }
 }
 
 .table-ng__textwrapper {
