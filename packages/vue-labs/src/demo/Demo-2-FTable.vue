@@ -75,8 +75,14 @@ const columns = defineTableColumns<FruitOrder>([
     {
         header: "Orderflöde",
         type: "select",
+        editable(row) {
+            return !erp.isReadonly(row);
+        },
         value(row) {
             return row.orderflode;
+        },
+        update(row, value) {
+            row.orderflode = value;
         },
         options: ["ACME", "Standard", "Ekonomi"],
     },
