@@ -25,8 +25,8 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 <template>
     <td class="table-ng__cell table-ng__cell--button" @table-activate-cell="onActivateCell">
         <button ref="button" class="icon-button" type="button" tabindex="-1" @click="column.onClick!(row)">
-            <f-icon name="trashcan"></f-icon>
-            <span class="sr-only">Knapptext</span>
+            <f-icon v-if="column.icon ":name="column.icon"></f-icon>
+            <span class="sr-only">{{ column.value(row) }}</span>
         </button>
     </td>
 </template>
