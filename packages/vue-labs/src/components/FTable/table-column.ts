@@ -138,6 +138,7 @@ export interface TableColumnSelect<T, K extends keyof T> {
     key?: K;
     value?(row: T): string;
     update?(row: T, newValue: string, oldValue: string): void;
+    editable?: boolean | ((row: T) => boolean);
     options: string[];
 }
 
@@ -149,6 +150,7 @@ export interface NormalizedTableColumnSelect<T> {
     header: string;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
+    editable(row: T): boolean;
     options: string[];
 }
 
@@ -268,7 +270,7 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 editable:
                     typeof column.editable === "function"
                         ? column.editable
-                        : () => Boolean(column.editable),
+                        : () => Boolean(column.editable ?? false),
                 validation: column.validation ?? {},
             } satisfies NormalizedTableColumnText<T>;
         case "anchor":
@@ -292,6 +294,10 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: column.header,
                 value: getValueFn(column.value, column.key, String, ""),
                 update: getUpdateFn(column.update, column.key),
+                editable:
+                    typeof column.editable === "function"
+                        ? column.editable
+                        : () => Boolean(column.editable ?? false),
                 options: column.options,
             } satisfies NormalizedTableColumnSelect<T>;
         case undefined:

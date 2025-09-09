@@ -215,6 +215,7 @@ function cancel(): void {
 
 <template>
     <td
+        v-if="column.editable(row)"
         ref="td"
         class="table-ng__cell"
         tabindex="-1"
@@ -250,6 +251,15 @@ function cancel(): void {
             @select="onDropdownSelect"
             @close="onDropdownClose"
         ></i-combobox-dropdown>
+    </td>
+    <td
+        v-else
+        ref="td"
+        tabindex="-1"
+        class="table-ng__cell table-ng__cell--static"
+        @table-activate-cell="onActivateCell"
+    >
+        {{ column.value(row) }}
     </td>
 </template>
 
