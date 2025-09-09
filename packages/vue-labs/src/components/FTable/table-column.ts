@@ -30,6 +30,7 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
     key?: K;
     value?(row: T): boolean;
     update?(row: T, newValue: boolean, oldValue: boolean): void;
+    editable?: boolean | ((row: T) => boolean);
 }
 
 /**
@@ -40,6 +41,7 @@ export interface NormalizedTableColumnCheckbox<T, K> {
     header: string;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
+    editable(row: T): boolean;
     sortable?: K;
 }
 
@@ -264,6 +266,10 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: column.header,
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
+                editable:
+                    typeof column.editable === "function"
+                        ? column.editable
+                        : () => Boolean(column.editable ?? false),
                 sortable: column.key,
             } satisfies NormalizedTableColumnCheckbox<T, K>;
         case "radio":

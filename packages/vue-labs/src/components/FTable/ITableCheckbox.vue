@@ -33,6 +33,7 @@ function onChange(_e: Event): void {
             :checked="column.value(row)"
             type="checkbox"
             :aria-label="column.header"
+            :disabled="!column.editable(row)"
             tabindex="-1"
             @change="onChange"
         />
