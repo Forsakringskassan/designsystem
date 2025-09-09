@@ -1,15 +1,21 @@
 <script setup lang="ts" generic="T">
 import { computed, onMounted, ref } from "vue";
-import { FBadge, FButton } from "@fkui/vue";
+import { FButton } from "@fkui/vue";
 
-const { items, itemsPerPage = 4 } = defineProps<{
+const {
+    items,
+    itemsPerPage = 21,
+    // maxVisiblePages = 8,
+} = defineProps<{
     items: T[];
     itemsPerPage?: number;
+    // maxVisiblePages?: number;
 }>();
 
-const currentPageIndex = ref(1);
-const firstItemIndex = ref(0);
-const lastItemIndex = ref(0);
+const currentPage = ref(1);
+const currentPageItemLength = ref(0);
+
+const numberOfPages = ref(0);
 
 const numberOfItems = computed(() => {
     return items.length;
@@ -20,45 +26,66 @@ const emit = defineEmits<{
 }>();
 
 function switchPage(nextPage: boolean): void {
-    currentPageIndex.value = nextPage ? ++currentPageIndex.value : --currentPageIndex.value;
-    calculateItemRange();
+    currentPage.value = nextPage ? ++currentPage.value : --currentPage.value;
+    defineCurrentPage();
+}
+
+function switchToSpecificPage(page: number): void {
+    currentPage.value = page;
+    defineCurrentPage();
 }
 
 function switchPageButtonDisabled(nextPage: boolean): boolean {
-    return nextPage ? numberOfItems.value < itemsPerPage * currentPageIndex.value + 1 : currentPageIndex.value === 1;
+    return nextPage ? numberOfItems.value < itemsPerPage * currentPage.value + 1 : currentPage.value === 1;
 }
 
-function calculateItemRange(): void {
-    firstItemIndex.value = itemsPerPage * (currentPageIndex.value - 1) + 1;
-    lastItemIndex.value = Math.min(itemsPerPage * currentPageIndex.value, numberOfItems.value);
-    const itemRange = items.slice(firstItemIndex.value - 1, lastItemIndex.value);
-    emit("itemRange", itemRange);
+function defineNumberOfPages(): void {
+    numberOfPages.value = Math.ceil(numberOfItems.value / itemsPerPage);
+}
+
+function defineCurrentPage(): void {
+    // Define current page item limits
+    const currentPageFirstItemId = itemsPerPage * (currentPage.value - 1) + 1;
+    const currentPageLastItemId = Math.min(itemsPerPage * currentPage.value, numberOfItems.value);
+
+    // Define current page items
+    const currentPageItems = items.slice(currentPageFirstItemId - 1, currentPageLastItemId);
+    emit("itemRange", currentPageItems);
+
+    // Define number of items on current page
+    currentPageItemLength.value = currentPageItems.length;
 }
 
 onMounted(() => {
-    calculateItemRange();
+    defineNumberOfPages();
+    defineCurrentPage();
 });
 </script>
 
 <template>
-    <div class="container-fluid">
-        <div class="row row--align--justify">
-            <div class="col col--sm-8">
-                <f-badge status="success">Sida: {{ currentPageIndex }}</f-badge>
-                <f-badge status="success">Range: {{ firstItemIndex }}-{{ lastItemIndex }}</f-badge>
-                <f-badge status="info">{{ itemsPerPage }} element/sida</f-badge>
-                <f-badge status="info">{{ numberOfItems }} element totalt</f-badge>
-            </div>
-            <div class="col col--sm-2">
-                <f-button variant="tertiary" :disabled="switchPageButtonDisabled(false)" @click="switchPage(false)">
-                    &lt;
-                </f-button>
-            </div>
-            <div class="col col--sm-2">
-                <f-button variant="tertiary" :disabled="switchPageButtonDisabled(true)" @click="switchPage(true)">
-                    &gt;
-                </f-button>
-            </div>
-        </div>
+    <div class="pager">
+        <f-button
+            variant="tertiary"
+            icon-left="chevrons-left"
+            :disabled="switchPageButtonDisabled(false)"
+            @click="switchPage(false)"
+        >
+            Föregående
+        </f-button>
+
+        <template v-for="page in numberOfPages" :key="page">
+            <f-button variant="tertiary" @click="switchToSpecificPage(page)">
+                {{ page }}
+            </f-button>
+        </template>
+
+        <f-button
+            variant="tertiary"
+            icon-right="arrow-right"
+            :disabled="switchPageButtonDisabled(true)"
+            @click="switchPage(true)"
+        >
+            Nästa
+        </f-button>
     </div>
 </template>

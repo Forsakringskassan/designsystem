@@ -46,8 +46,8 @@ export default [
     {
         name: "local",
         languageOptions: {
-            sourceType: "module",
             ecmaVersion: 2024,
+            sourceType: "module",
         },
     },
 
