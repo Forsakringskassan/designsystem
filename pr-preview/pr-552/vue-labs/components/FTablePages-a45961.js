@@ -2736,7 +2736,7 @@ var _hoisted_1$7 = {
   key: 0,
   class: "table-ng__row"
 };
-var _hoisted_2$3 = {
+var _hoisted_2$2 = {
   key: 0,
   tabindex: "-1",
   class: "table-ng__column"
@@ -2780,7 +2780,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$7, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$7, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$2)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
         "aria-level": _ctx.ariaLevel
@@ -3072,6 +3072,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("td", {
         ref: "td",
+        class: "table-ng__cell",
         tabindex: "-1",
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"]),
@@ -3124,7 +3125,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("td", {
-        class: "table-ng__checkbox",
+        class: "table-ng__cell table-ng__cell--checkbox",
         onTableActivateCell: onActivateCell
       }, [createElementVNode("input", {
         ref: "input",
@@ -3132,16 +3133,12 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
         type: "checkbox",
         "aria-label": _ctx.column.header,
         tabindex: "-1",
-        onChange,
-        onTableActivateCell: onActivateCell
+        onChange
       }, null, 40, _hoisted_1$5)], 32);
     };
   }
 });
-var _hoisted_1$4 = {
-  class: "table-ng__checkbox"
-};
-var _hoisted_2$2 = ["checked", "aria-label"];
+var _hoisted_1$4 = ["checked", "aria-label"];
 var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
@@ -3162,15 +3159,17 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       __props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", _hoisted_1$4, [createElementVNode("input", {
+      return openBlock(), createElementBlock("td", {
+        class: "table-ng__cell table-ng__cell--radio",
+        onTableActivateCell: onActivateCell
+      }, [createElementVNode("input", {
         ref: "input",
         type: "radio",
         checked: _ctx.column.value(_ctx.row),
         "aria-label": _ctx.column.header,
         tabindex: "-1",
-        onChange,
-        onTableActivateCell: onActivateCell
-      }, null, 40, _hoisted_2$2)]);
+        onChange
+      }, null, 40, _hoisted_1$4)], 32);
     };
   }
 });
@@ -3192,6 +3191,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("td", {
+        class: "table-ng__cell table-ng__cell--anchor",
         onTableActivateCell: onActivateCell
       }, [createElementVNode("a", {
         ref: "anchor",
@@ -3220,6 +3220,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("td", {
+        class: "table-ng__cell table-ng__cell--button",
         onTableActivateCell: onActivateCell
       }, [createElementVNode("button", {
         ref: "button",
@@ -3520,7 +3521,7 @@ var _hoisted_2 = {
 };
 var _hoisted_3 = {
   key: 0,
-  class: "table-ng__checkbox"
+  class: "table-ng__column table-ng__column--checkbox"
 };
 var _hoisted_4 = {
   key: 1
