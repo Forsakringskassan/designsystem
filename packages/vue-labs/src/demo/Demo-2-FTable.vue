@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import { FButton } from "@fkui/vue";
 import { formatNumber } from "@fkui/logic";
 import { FTable, defineTableColumns } from "../components";
-import data, { type FruitOrder, statusString } from "./example-data";
+import data, { type FruitOrder, OrderStatus, statusString } from "./example-data";
 import { useERPService } from "./erp-service";
 import XOrderFilter from "./OrderFilter.vue";
 
@@ -121,7 +121,10 @@ const columns = defineTableColumns<FruitOrder>([
         header: "Bekräfta",
         type: "button",
         icon: "success",
-        value(row) {
+        enabled(row) {
+            return row.status === OrderStatus.PENDING;
+        },
+        value() {
             return "Bekräfta";
         },
     },
@@ -129,7 +132,10 @@ const columns = defineTableColumns<FruitOrder>([
         header: "Plocka",
         type: "button",
         icon: "success",
-        value(row) {
+        enabled(row) {
+            return row.status === OrderStatus.CONFIRMED;
+        },
+        value() {
             return "Plocka";
         },
     },
@@ -137,7 +143,10 @@ const columns = defineTableColumns<FruitOrder>([
         header: "Fakturera",
         type: "button",
         icon: "file",
-        value(row) {
+        enabled(row) {
+            return row.status === OrderStatus.INTRANSIT && row.invoice === null;
+        },
+        value() {
             return "Fakturera";
         },
     },
@@ -145,7 +154,10 @@ const columns = defineTableColumns<FruitOrder>([
         header: "Makulera",
         type: "button",
         icon: "cross",
-        value(row) {
+        enabled(row) {
+            return row.status === OrderStatus.PENDING || row.status === OrderStatus.CONFIRMED;
+        },
+        value() {
             return "Makulera";
         },
     },
