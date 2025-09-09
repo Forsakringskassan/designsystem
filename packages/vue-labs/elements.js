@@ -40,4 +40,8 @@ module.exports = defineMetadata({
     "i-table-pager": {
         flow: true,
     },
+
+    "x-order-filter": {
+        flow: true,
+    },
 });
