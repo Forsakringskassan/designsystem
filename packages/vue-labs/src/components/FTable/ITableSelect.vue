@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
 import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { IComboboxDropdown } from "@fkui/vue";
+import { IComboboxDropdown, FIcon } from "@fkui/vue";
 import { useStartStopEdit } from "./start-stop-edit";
 import { NormalizedTableColumnSelect } from "./table-column";
 import { FTableActivateCellEvent } from "./events";
@@ -217,13 +217,16 @@ function cancel(): void {
     <td
         v-if="column.editable(row)"
         ref="td"
-        class="table-ng__cell"
+        class="table-ng__cell table-ng__cell--select"
         tabindex="-1"
         @keydown="onCellKeyDown"
         @click.stop="onCellClick"
         @table-activate-cell="onActivateCell"
     >
-        <div v-show="!editing">{{ viewValue }}</div>
+        <div v-show="!editing" class="table-ng__selectwrapper">
+            <span class="table-ng__textview">{{ viewValue }}</span>
+            <f-icon name="pen" class="table-ng__texticon"></f-icon>
+        </div>
         <div
             v-show="editing"
             ref="edit"
@@ -232,6 +235,7 @@ function cancel(): void {
             aria-expanded
             :aria-controls="dropdownId"
             aria-autocomplete="list"
+            class="table-ng__selectwrapper"
             @click.stop
             @dblclick.prevent
             @keydown.stop="onEditKeyDown"

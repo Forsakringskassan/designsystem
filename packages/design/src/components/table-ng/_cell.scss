@@ -64,6 +64,16 @@ $horizontal-padding: size.$padding-050;
         }
     }
 
+    &--select {
+        padding: 0 0.25rem;
+
+        &:hover {
+            .table-ng__selectwrapper {
+                @extend %text-hover-state;
+            }
+        }
+    }
+
     &--checkbox,
     &--radio {
         text-align: center;
@@ -108,6 +118,16 @@ $horizontal-padding: size.$padding-050;
         .table-ng__textedit {
             flex: 1 0 auto;
         }
+    }
+}
+
+.table-ng__selectwrapper {
+    padding: $vertical-padding $horizontal-padding;
+    display: flex;
+    align-items: center;
+
+    &:hover:not(:focus-within) .table-ng__texticon {
+        visibility: visible;
     }
 }
 
