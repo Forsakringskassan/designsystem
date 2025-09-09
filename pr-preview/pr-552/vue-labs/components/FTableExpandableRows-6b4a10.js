@@ -3513,6 +3513,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$1 = {
+  key: 0,
   class: "pager"
 };
 var _hoisted_2$1 = {
@@ -3523,7 +3524,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
   props: {
     items: {},
     itemsPerPage: {
-      default: 11
+      default: 10
     }
   },
   emits: ["itemRange"],
@@ -3560,14 +3561,15 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
       currentPageItemLength.value = currentPageItems.length;
     }
     function showPageButton(page) {
-      return page === 1 || Math.abs(currentPage.value - page) <= 2 || page === numberOfPages.value;
+      const numberOfAdjacentPagesShown = 2;
+      return page === 1 || Math.abs(currentPage.value - page) <= numberOfAdjacentPagesShown || page === numberOfPages.value;
     }
     onMounted(() => {
       defineNumberOfPages();
       defineCurrentPage();
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$1, [currentPage.value !== 1 ? (openBlock(), createBlock(unref(FButton), {
+      return numberOfPages.value > 1 ? (openBlock(), createElementBlock("div", _hoisted_1$1, [currentPage.value !== 1 ? (openBlock(), createBlock(unref(FButton), {
         key: 0,
         variant: "tertiary",
         size: "small",
@@ -3598,7 +3600,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
       }, {
         default: withCtx(() => [..._cache[3] || (_cache[3] = [createTextVNode("\n            N\xE4sta\n        ", -1)])]),
         _: 1
-      })) : createCommentVNode("", true)]);
+      })) : createCommentVNode("", true)])) : createCommentVNode("", true);
     };
   }
 });
