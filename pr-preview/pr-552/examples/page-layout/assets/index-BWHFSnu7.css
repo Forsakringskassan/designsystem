@@ -5351,6 +5351,10 @@ input[type=search]:focus,
   width: var(--f-icon-size-medium);
 }
 
+.pager {
+  border-bottom: 1px solid var(--f-border-color-grid);
+}
+
 .text-field {
   display: flex;
   flex-direction: column;
