@@ -2,14 +2,9 @@
 import { computed, onMounted, ref } from "vue";
 import { FButton } from "@fkui/vue";
 
-const {
-    items,
-    itemsPerPage = 21,
-    // maxVisiblePages = 8,
-} = defineProps<{
+const { items, itemsPerPage = 11 } = defineProps<{
     items: T[];
     itemsPerPage?: number;
-    // maxVisiblePages?: number;
 }>();
 
 const currentPage = ref(1);
@@ -25,18 +20,19 @@ const emit = defineEmits<{
     itemRange: [items: T[]];
 }>();
 
-function switchPage(nextPage: boolean): void {
-    currentPage.value = nextPage ? ++currentPage.value : --currentPage.value;
+function switchToNextPage(): void {
+    currentPage.value++;
+    defineCurrentPage();
+}
+
+function switchToPreviousPage(): void {
+    currentPage.value--;
     defineCurrentPage();
 }
 
 function switchToSpecificPage(page: number): void {
     currentPage.value = page;
     defineCurrentPage();
-}
-
-function switchPageButtonDisabled(nextPage: boolean): boolean {
-    return nextPage ? numberOfItems.value < itemsPerPage * currentPage.value + 1 : currentPage.value === 1;
 }
 
 function defineNumberOfPages(): void {
@@ -56,6 +52,10 @@ function defineCurrentPage(): void {
     currentPageItemLength.value = currentPageItems.length;
 }
 
+function showPageButton(page: number): boolean {
+    return page === 1 || Math.abs(currentPage.value - page) <= 2 || page === numberOfPages.value;
+}
+
 onMounted(() => {
     defineNumberOfPages();
     defineCurrentPage();
@@ -65,25 +65,34 @@ onMounted(() => {
 <template>
     <div class="pager">
         <f-button
+            v-if="currentPage !== 1"
             variant="tertiary"
+            size="small"
             icon-left="chevrons-left"
-            :disabled="switchPageButtonDisabled(false)"
-            @click="switchPage(false)"
+            @click="switchToPreviousPage()"
         >
             Föregående
         </f-button>
 
         <template v-for="page in numberOfPages" :key="page">
-            <f-button variant="tertiary" @click="switchToSpecificPage(page)">
+            <f-button
+                v-if="showPageButton(page)"
+                size="small"
+                variant="tertiary"
+                :disabled="page === currentPage"
+                @click="switchToSpecificPage(page)"
+            >
                 {{ page }}
             </f-button>
+            <span v-else-if="showPageButton(page + 1)">...</span>
         </template>
 
         <f-button
+            v-if="currentPage !== numberOfPages"
             variant="tertiary"
+            size="small"
             icon-right="arrow-right"
-            :disabled="switchPageButtonDisabled(true)"
-            @click="switchPage(true)"
+            @click="switchToNextPage()"
         >
             Nästa
         </f-button>
