@@ -81,6 +81,9 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
             return row[keyAttribute] === it[keyAttribute];
         });
     },
+    editable() {
+        return true;
+    },
     update(row, _newValue, _oldValue) {
         assertRef(model);
         const index = model.value.indexOf(row);

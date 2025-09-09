@@ -127,16 +127,26 @@ const columns = defineTableColumns<FruitOrder>([
         value() {
             return "Bekräfta";
         },
+        onClick(row) {
+            erp.confirmOrder(row);
+        },
     },
     {
         header: "Plocka",
         type: "button",
         icon: "success",
         enabled(row) {
-            return row.status === OrderStatus.CONFIRMED;
+            return row.status === OrderStatus.CONFIRMED || row.status === OrderStatus.PROCESSING;
         },
         value() {
             return "Plocka";
+        },
+        onClick(row) {
+            if (row.status === OrderStatus.CONFIRMED) {
+                erp.startPacking(row);
+            } else {
+                erp.finalizePacking(row);
+            }
         },
     },
     {
@@ -148,6 +158,9 @@ const columns = defineTableColumns<FruitOrder>([
         },
         value() {
             return "Fakturera";
+        },
+        onClick(row) {
+            erp.createInvoice(row);
         },
     },
     {
