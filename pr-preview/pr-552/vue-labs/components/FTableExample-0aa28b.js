@@ -2840,6 +2840,10 @@ function normalizeTableColumn(column) {
         header: column.header,
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
+        editable: typeof column.editable === "function" ? column.editable : () => {
+          var _column$editable;
+          return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+        },
         sortable: column.key
       };
     case "radio":
@@ -2857,8 +2861,8 @@ function normalizeTableColumn(column) {
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable;
-          return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+          var _column$editable2;
+          return Boolean((_column$editable2 = column.editable) !== null && _column$editable2 !== void 0 ? _column$editable2 : false);
         },
         validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
         sortable: column.key
@@ -2869,6 +2873,10 @@ function normalizeTableColumn(column) {
         header: column.header,
         value: column.value,
         href: column.href,
+        enabled: typeof column.enabled === "function" ? column.enabled : () => {
+          var _column$enabled;
+          return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
+        },
         sortable: column.key
       };
     case "button":
@@ -2877,6 +2885,10 @@ function normalizeTableColumn(column) {
         header: column.header,
         value: column.value,
         onClick: column.onClick,
+        enabled: typeof column.enabled === "function" ? column.enabled : () => {
+          var _column$enabled2;
+          return Boolean((_column$enabled2 = column.enabled) !== null && _column$enabled2 !== void 0 ? _column$enabled2 : true);
+        },
         icon: column.icon,
         sortable: column.key
       };
@@ -2887,8 +2899,8 @@ function normalizeTableColumn(column) {
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable2;
-          return Boolean((_column$editable2 = column.editable) !== null && _column$editable2 !== void 0 ? _column$editable2 : false);
+          var _column$editable3;
+          return Boolean((_column$editable3 = column.editable) !== null && _column$editable3 !== void 0 ? _column$editable3 : false);
         },
         options: column.options,
         sortable: column.key
@@ -3125,7 +3137,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$6 = ["checked", "aria-label"];
+var _hoisted_1$6 = ["checked", "aria-label", "disabled"];
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
@@ -3154,6 +3166,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         checked: _ctx.column.value(_ctx.row),
         type: "checkbox",
         "aria-label": _ctx.column.header,
+        disabled: !_ctx.column.editable(_ctx.row),
         tabindex: "-1",
         onChange
       }, null, 40, _hoisted_1$6)], 32);
@@ -3215,13 +3228,14 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("td", {
         class: "table-ng__cell table-ng__cell--anchor",
         onTableActivateCell: onActivateCell
-      }, [createElementVNode("a", {
+      }, [_ctx.column.enabled(_ctx.row) && _ctx.column.value(_ctx.row) !== null ? (openBlock(), createElementBlock("a", {
+        key: 0,
         ref: "anchor",
         class: "anchor anchor--block",
         target: "_blank",
         href: _ctx.column.href,
         tabindex: "-1"
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$4)], 32);
+      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$4)) : createCommentVNode("", true)], 32);
     };
   }
 });
@@ -3247,7 +3261,8 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("td", {
         class: "table-ng__cell table-ng__cell--button",
         onTableActivateCell: onActivateCell
-      }, [createElementVNode("button", {
+      }, [_ctx.column.enabled(_ctx.row) && _ctx.column.value(_ctx.row) !== null ? (openBlock(), createElementBlock("button", {
+        key: 0,
         ref: "button",
         class: "icon-button",
         type: "button",
@@ -3256,7 +3271,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
       }, [_ctx.column.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: _ctx.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_1$3, toDisplayString(_ctx.column.value(_ctx.row)), 1)], 512)], 32);
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_1$3, toDisplayString(_ctx.column.value(_ctx.row)), 1)], 512)) : createCommentVNode("", true)], 32);
     };
   }
 });
@@ -3698,6 +3713,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         return model.value.some((it) => {
           return row[__props.keyAttribute] === it[__props.keyAttribute];
         });
+      },
+      editable() {
+        return true;
       },
       update(row, _newValue, _oldValue) {
         assertRef(model);
