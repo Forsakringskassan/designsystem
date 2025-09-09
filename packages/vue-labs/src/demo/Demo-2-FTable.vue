@@ -114,7 +114,7 @@ const columns = defineTableColumns<FruitOrder>([
         type: "anchor",
         href: "#",
         value(row) {
-            return row.tracking ?? "";
+            return row.tracking;
         },
     },
     {
