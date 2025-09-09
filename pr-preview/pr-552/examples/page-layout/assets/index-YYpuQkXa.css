@@ -5285,6 +5285,9 @@ input[type=search]:focus,
 .table-ng__cell--text.table-ng__cell--error:not(:focus-within) .table-ng__texticon {
   visibility: visible;
 }
+.table-ng__cell--select {
+  padding: 0 0.25rem;
+}
 .table-ng__cell--checkbox, .table-ng__cell--radio {
   text-align: center;
   padding: calc(0.25rem * var(--f-density-factor));
@@ -5321,6 +5324,15 @@ input[type=search]:focus,
   flex: 1 0 auto;
 }
 
+.table-ng__selectwrapper {
+  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.table-ng__selectwrapper:hover:not(:focus-within) .table-ng__texticon {
+  visibility: visible;
+}
+
 .table-ng__textview {
   flex: 1 1 auto;
 }
@@ -5342,7 +5354,7 @@ input[type=search]:focus,
   margin-left: 1rem;
 }
 
-.table-ng__cell--text:hover .table-ng__textwrapper {
+.table-ng__cell--text:hover .table-ng__textwrapper, .table-ng__cell--select:hover .table-ng__selectwrapper {
   background: var(--fkds-color-action-background-secondary-hover);
 }
 

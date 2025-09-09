@@ -2737,12 +2737,12 @@ var _hoisted_1$8 = {
   key: 0,
   class: "table-ng__row"
 };
-var _hoisted_2$2 = {
+var _hoisted_2$3 = {
   key: 0,
   tabindex: "-1",
   class: "table-ng__column"
 };
-var _hoisted_3$1 = ["aria-level"];
+var _hoisted_3$2 = ["aria-level"];
 var _hoisted_4$1 = {
   key: 0,
   tabindex: "-1"
@@ -2781,7 +2781,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$2)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
         "aria-level": _ctx.ariaLevel
@@ -2798,7 +2798,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
       }, null, 8, ["name"])], 2)])) : (openBlock(), createElementBlock("td", {
         key: 1,
         class: normalizeClass(`level-${_ctx.ariaLevel}`)
-      }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$1));
+      }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$2));
     };
   }
 });
@@ -2924,7 +2924,13 @@ function useStartStopEdit() {
     stopEdit: stopEdit2
   };
 }
-var _hoisted_1$7 = ["aria-controls"];
+var _hoisted_1$7 = {
+  class: "table-ng__selectwrapper"
+};
+var _hoisted_2$2 = {
+  class: "table-ng__textview"
+};
+var _hoisted_3$1 = ["aria-controls"];
 var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
@@ -3100,25 +3106,29 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       return _ctx.column.editable(_ctx.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
         ref: "td",
-        class: "table-ng__cell",
+        class: "table-ng__cell table-ng__cell--select",
         tabindex: "-1",
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"]),
         onTableActivateCell: onActivateCell
-      }, [withDirectives(createElementVNode("div", null, toDisplayString(viewValue.value), 513), [[vShow, !editing.value]]), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("div", {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$7, [createElementVNode("span", _hoisted_2$2, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
+        name: "pen",
+        class: "table-ng__texticon"
+      })], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
         ref: "edit",
         role: "combobox",
         tabindex: "-1",
         "aria-expanded": "",
         "aria-controls": unref(dropdownId),
         "aria-autocomplete": "list",
+        class: "table-ng__selectwrapper",
         onClick: _cache[0] || (_cache[0] = withModifiers(() => {
         }, ["stop"])),
         onDblclick: _cache[1] || (_cache[1] = withModifiers(() => {
         }, ["prevent"])),
         onKeydown: withModifiers(onEditKeyDown, ["stop"]),
         onFocusout: onEditBlur
-      }, toDisplayString(viewValue.value), 41, _hoisted_1$7), [[vShow, editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
+      }, toDisplayString(viewValue.value), 41, _hoisted_3$1), [[vShow, editing.value]]), _cache[4] || (_cache[4] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
         id: "dropdownId",
         "is-open": dropdownIsOpen.value,
         options: _ctx.column.options,
