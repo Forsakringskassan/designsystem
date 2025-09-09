@@ -90,11 +90,17 @@ const columns = defineTableColumns<FruitOrder>([
         header: "F",
         type: "checkbox",
         key: "foljsesedel",
+        editable(row) {
+            return !erp.isReadonly(row);
+        },
     },
     {
         header: "A",
         type: "checkbox",
         key: "avisering",
+        editable(row) {
+            return !erp.isReadonly(row);
+        },
     },
     {
         header: "Totalbelopp",
