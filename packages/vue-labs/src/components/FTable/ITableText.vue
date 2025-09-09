@@ -154,7 +154,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
 
 <template>
     <td
-        v-if="column.editable"
+        v-if="column.editable(row)"
         ref="td"
         tabindex="-1"
         :class="wrapperClasses"
@@ -162,7 +162,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
         @keydown="onKeydown"
         @table-activate-cell="onActivateCell"
     >
-        <div v-if="column.editable" class="table-ng__textwrapper">
+        <div class="table-ng__textwrapper">
             <span ref="view" class="table-ng__textview">{{ column.value(row) }}</span>
             <input
                 ref="input"

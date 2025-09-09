@@ -71,7 +71,7 @@ export interface TableColumnText<T, K extends keyof T> {
     key?: K;
     value?(row: T): string;
     update?(row: T, newValue: string, oldValue: string): void;
-    editable?: boolean;
+    editable?: boolean | ((row: T) => boolean);
     validation?: ValidatorConfigs;
 }
 
@@ -83,7 +83,7 @@ export interface NormalizedTableColumnText<T> {
     header: string;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
-    editable: boolean;
+    editable(row: T): boolean;
     validation: ValidatorConfigs;
 }
 
@@ -265,7 +265,10 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: column.header,
                 value: getValueFn(column.value, column.key, String, ""),
                 update: getUpdateFn(column.update, column.key),
-                editable: Boolean(column.editable),
+                editable:
+                    typeof column.editable === "function"
+                        ? column.editable
+                        : () => Boolean(column.editable),
                 validation: column.validation ?? {},
             } satisfies NormalizedTableColumnText<T>;
         case "anchor":
