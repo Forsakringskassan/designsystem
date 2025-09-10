@@ -34,6 +34,7 @@ const columns = defineTableColumns<Row>([
         type: "checkbox",
         header: "Kryssruta",
         key: "aktiv",
+        editable: true,
     },
     {
         type: "text",
@@ -41,6 +42,7 @@ const columns = defineTableColumns<Row>([
         value(row) {
             return formatNumber(row.antal) ?? "";
         },
+        editable: true,
     },
 
     {
@@ -83,6 +85,7 @@ const columns = defineTableColumns<Row>([
         type: "select",
         key: "animal",
         options: selectFieldOptions,
+        editable: true,
     },
     {
         header: "Render function",
