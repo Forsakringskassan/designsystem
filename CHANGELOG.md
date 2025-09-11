@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 6.18.0 (2025-09-11)
+
+### Features
+
+* **@fkui/design, @fkui/vue-labs, @fkui/vue:** add f-table component draft (refs SFKUI-7265) 8e9ce84
+* **@fkui/vue:** trigger v-model update earlier in combobox component (refs SFKUI-7314) 359e589
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.5.0 ddc5a49
+* **deps:** update dependency i18next to v25.5.2 ([#661](undefined/Forsakringskassan/designsystem/issues/661)) a7b0569
+* **deps:** update dependency sass to v1.92.0 5fce740
+* **deps:** update dependency sass to v1.92.1 41fc8ff
+* **deps:** update vue monorepo to v3.5.21 900beaf
+
 ## 6.17.0 (2025-09-05)
 
 ### Features
