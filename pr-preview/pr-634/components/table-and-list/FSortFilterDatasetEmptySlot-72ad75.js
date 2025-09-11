@@ -229,9 +229,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               /* STABLE_FRAGMENT */
             ))
           ]),
-          _: 2
-          /* DYNAMIC */
-        }, 1032, ["rows"])
+          _: 1
+          /* STABLE */
+        }, 8, ["rows"])
       ]),
       _: 1
       /* STABLE */

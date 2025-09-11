@@ -54,9 +54,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx(({ footer }) => [
           _createElementVNode("div", { slot: footer }, "Lorem ipsum", 8, _hoisted_1)
         ]),
-        _: 2
-        /* DYNAMIC */
-      }, 1032, ["slot"]),
+        _: 1
+        /* STABLE */
+      }, 8, ["slot"]),
       _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_2)
     ]),
     _: 1

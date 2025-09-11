@@ -153,9 +153,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
           )
         ]),
-        _: 2
-        /* DYNAMIC */
-      }, 1032, ["items"])
+        _: 1
+        /* STABLE */
+      }, 8, ["items"])
     ]),
     _: 1
     /* STABLE */
