@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExpandableRows.vue:FTableExpandableRows-6b4a10.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-98ee97.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref as ref2 } from "vue";
 
@@ -4013,7 +4013,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
   }
 });
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExpandableRows.vue:FTableExpandableRows-6b4a10.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-98ee97.js
 import { formatNumber } from "@fkui/logic";
 
 // src/components/FTable/table-column.ts
@@ -4021,25 +4021,25 @@ function defineTableColumns(columns) {
   return columns;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExpandableRows.vue:FTableExpandableRows-6b4a10.js
-import { createElementVNode as _createElementVNode, createVNode as _createVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-98ee97.js
+import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FTableExpandableRows",
+  __name: "FTableRadioExample",
   setup(__props, { expose: __expose }) {
     __expose();
     const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
     const columns = defineTableColumns([
-      {
-        type: "checkbox",
-        header: "Kryssruta",
-        key: "aktiv"
-      },
       {
         type: "text",
         header: "Oformaterad text",
         value(row) {
           return String(row.antal);
         }
+      },
+      {
+        type: "checkbox",
+        header: "Kryssruta",
+        key: "aktiv"
       },
       {
         type: "text",
@@ -4077,7 +4077,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       {
         header: "L\xE4nk",
         type: "anchor",
-        href: "http://www.vecka.nu",
+        href: "#",
         value() {
           return "L\xE4nktext";
         }
@@ -4110,6 +4110,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         start: "2022-04-11",
         end: "2022-04-20",
         antal: "10000",
+        aktiv: false,
         expandableRows: [
           {
             id: "1a",
@@ -4132,6 +4133,12 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
             end: "2022-04-15",
             antal: "50000"
           }
+        ],
+        expandableContent: [
+          {
+            id: "1a",
+            content: "Anledning: Tar hand om barnet"
+          }
         ]
       },
       {
@@ -4141,6 +4148,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         start: "2022-05-02",
         end: "2022-05-04",
         antal: "30000",
+        aktiv: false,
         expandableRows: [
           {
             id: "2a",
@@ -4148,6 +4156,12 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
             start: "2022-05-02",
             end: "2022-05-04",
             antal: "30000"
+          }
+        ],
+        expandableContent: [
+          {
+            id: "2a",
+            content: "Anledning: Tar hand om barnet"
           }
         ]
       },
@@ -4158,6 +4172,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         start: "2022-05-16",
         end: "2022-05-27",
         antal: "11000",
+        aktiv: true,
         expandableRows: [
           {
             id: "3a",
@@ -4180,13 +4195,20 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
             end: "2022-05-20",
             antal: "50000"
           }
+        ],
+        expandableContent: [
+          {
+            id: "3a",
+            content: "Anledning: Tar hand om barnet"
+          }
         ]
       }
     ]);
+    const mySelectedRows = ref2([rows.value[0]]);
     function onButtonClick(id) {
       alert(`Du klickade p\xE5 rad med id ${id}`);
     }
-    const __returned__ = { selectFieldOptions, columns, rows, onButtonClick, get FTable() {
+    const __returned__ = { selectFieldOptions, columns, rows, mySelectedRows, onButtonClick, get FTable() {
       return _sfc_main;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -4198,7 +4220,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _Fragment,
     null,
     [
-      _cache[0] || (_cache[0] = _createElementVNode(
+      _cache[2] || (_cache[2] = _createElementVNode(
         "button",
         {
           type: "button",
@@ -4209,12 +4231,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       )),
       _createVNode($setup["FTable"], {
+        modelValue: $setup.mySelectedRows,
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.mySelectedRows = $event),
         rows: $setup.rows,
         columns: $setup.columns,
         "key-attribute": "id",
         striped: "",
-        "expandable-attribute": "expandableRows"
-      }, null, 8, ["rows", "columns"]),
+        selectable: "single"
+      }, {
+        footer: _withCtx(() => [..._cache[1] || (_cache[1] = [
+          _createTextVNode(
+            "Footer",
+            -1
+            /* CACHED */
+          )
+        ])]),
+        _: 1
+        /* STABLE */
+      }, 8, ["modelValue", "rows", "columns"]),
+      _createElementVNode(
+        "h3",
+        null,
+        "Selected rows (" + _toDisplayString($setup.mySelectedRows.length) + " items):",
+        1
+        /* TEXT */
+      ),
+      _createElementVNode(
+        "pre",
+        null,
+        _toDisplayString($setup.mySelectedRows),
+        1
+        /* TEXT */
+      ),
+      _createElementVNode(
+        "h3",
+        null,
+        "Rows (" + _toDisplayString($setup.rows.length) + " items):",
+        1
+        /* TEXT */
+      ),
       _createElementVNode(
         "pre",
         null,
@@ -4222,7 +4277,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         1
         /* TEXT */
       ),
-      _cache[1] || (_cache[1] = _createElementVNode(
+      _cache[3] || (_cache[3] = _createElementVNode(
         "button",
         {
           type: "button",
@@ -4240,7 +4295,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-6b4a10"
+  selector: "#example-98ee97"
 });
 export {
   render

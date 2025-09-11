@@ -23,9 +23,10 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-960c24.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-e9af7f.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref as ref2 } from "vue";
+import { FSortFilterDataset } from "@fkui/vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
@@ -4013,7 +4014,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
   }
 });
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-960c24.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-e9af7f.js
 import { formatNumber } from "@fkui/logic";
 
 // src/components/FTable/table-column.ts
@@ -4021,10 +4022,10 @@ function defineTableColumns(columns) {
   return columns;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-960c24.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-e9af7f.js
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FTableRadioExample",
+  __name: "FTableExample",
   setup(__props, { expose: __expose }) {
     __expose();
     const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
@@ -4039,19 +4040,22 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       {
         type: "checkbox",
         header: "Kryssruta",
-        key: "aktiv"
+        key: "aktiv",
+        editable: true
       },
       {
         type: "text",
         header: "Formatterad text",
         value(row) {
           return formatNumber(row.antal) ?? "";
-        }
+        },
+        editable: true
       },
       {
         type: "text",
         header: "Redigerbar text",
         editable: true,
+        key: "level",
         value(row) {
           return row.level;
         },
@@ -4077,7 +4081,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       {
         header: "L\xE4nk",
         type: "anchor",
-        href: "http://www.vecka.nu",
+        href: "#",
         value() {
           return "L\xE4nktext";
         }
@@ -4086,7 +4090,8 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         header: "Dropplista",
         type: "select",
         key: "animal",
-        options: selectFieldOptions
+        options: selectFieldOptions,
+        editable: true
       },
       {
         header: "Render function",
@@ -4204,11 +4209,16 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         ]
       }
     ]);
+    const sortableAttributes = Object.fromEntries(
+      columns.filter((it) => it.key).map((it) => [it.key, it.header])
+    );
     const mySelectedRows = ref2([rows.value[0]]);
     function onButtonClick(id) {
       alert(`Du klickade p\xE5 rad med id ${id}`);
     }
-    const __returned__ = { selectFieldOptions, columns, rows, mySelectedRows, onButtonClick, get FTable() {
+    const __returned__ = { selectFieldOptions, columns, rows, sortableAttributes, mySelectedRows, onButtonClick, get FSortFilterDataset() {
+      return FSortFilterDataset;
+    }, get FTable() {
       return _sfc_main;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -4230,25 +4240,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )),
-      _createVNode($setup["FTable"], {
-        modelValue: $setup.mySelectedRows,
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.mySelectedRows = $event),
-        rows: $setup.rows,
-        columns: $setup.columns,
-        "key-attribute": "id",
-        striped: "",
-        selectable: "single"
+      _createVNode($setup["FSortFilterDataset"], {
+        data: $setup.rows,
+        "sortable-attributes": $setup.sortableAttributes
       }, {
-        footer: _withCtx(() => [..._cache[1] || (_cache[1] = [
-          _createTextVNode(
-            "Footer",
-            -1
-            /* CACHED */
-          )
-        ])]),
+        default: _withCtx(({ sortFilterResult }) => [
+          _createVNode($setup["FTable"], {
+            modelValue: $setup.mySelectedRows,
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.mySelectedRows = $event),
+            rows: sortFilterResult,
+            columns: $setup.columns,
+            "key-attribute": "id",
+            striped: "",
+            selectable: "multi"
+          }, {
+            footer: _withCtx(() => [..._cache[1] || (_cache[1] = [
+              _createTextVNode(
+                "Footer",
+                -1
+                /* CACHED */
+              )
+            ])]),
+            _: 1
+            /* STABLE */
+          }, 8, ["modelValue", "rows", "columns"])
+        ]),
         _: 1
         /* STABLE */
-      }, 8, ["modelValue", "rows", "columns"]),
+      }, 8, ["data", "sortable-attributes"]),
       _createElementVNode(
         "h3",
         null,
@@ -4295,7 +4314,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-960c24"
+  selector: "#example-e9af7f"
 });
 export {
   render
