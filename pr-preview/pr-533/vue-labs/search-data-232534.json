@@ -3,7 +3,9 @@
     "FKUI Vue Labs",
     "Komponenter",
     "Tidsinmatning",
-    "XTimeTextField"
+    "XTimeTextField",
+    "FTable",
+    "FTable"
   ],
   "results": [
     {
@@ -22,12 +24,21 @@
       "terms": [
         "XTimeTextField"
       ]
+    },
+    {
+      "url": "components/ftable.html",
+      "title": "FTable",
+      "terms": [
+        "FTable"
+      ]
     }
   ],
   "mapping": {
     "0": 0,
     "1": 1,
     "2": 2,
-    "3": 2
+    "3": 2,
+    "4": 3,
+    "5": 3
   }
 }

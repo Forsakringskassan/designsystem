@@ -1480,8 +1480,8 @@ var require_Set = __commonJS({
     "use strict";
     var getNative = require_getNative();
     var root = require_root();
-    var Set = getNative(root, "Set");
-    module.exports = Set;
+    var Set2 = getNative(root, "Set");
+    module.exports = Set2;
   }
 });
 
@@ -1503,7 +1503,7 @@ var require_getTag = __commonJS({
     var DataView = require_DataView();
     var Map2 = require_Map();
     var Promise2 = require_Promise();
-    var Set = require_Set();
+    var Set2 = require_Set();
     var WeakMap = require_WeakMap();
     var baseGetTag = require_baseGetTag();
     var toSource = require_toSource();
@@ -1516,10 +1516,10 @@ var require_getTag = __commonJS({
     var dataViewCtorString = toSource(DataView);
     var mapCtorString = toSource(Map2);
     var promiseCtorString = toSource(Promise2);
-    var setCtorString = toSource(Set);
+    var setCtorString = toSource(Set2);
     var weakMapCtorString = toSource(WeakMap);
     var getTag = baseGetTag;
-    if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set && getTag(new Set()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
+    if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
       getTag = function(value) {
         var result = baseGetTag(value), Ctor = result == objectTag ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : "";
         if (ctorString) {
@@ -3693,6 +3693,9 @@ function getAbsolutePosition(src) {
     height: Math.floor(rect.height)
   };
 }
+
+// packages/vue/src/utils/internal-key.ts
+var internalKey = Symbol("internal-key");
 
 // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
 function clamp(value, min, max) {
