@@ -296,6 +296,13 @@ $table-input-offset-horizontal: 0.25rem;
             color: $table-description-foreground;
             font-weight: $table-description-font-weight;
         }
+        &__wrapper {
+            pointer-events: none;
+
+            & > * {
+                pointer-events: auto;
+            }
+        }
     }
 
     &--striped tbody {
