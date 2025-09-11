@@ -2925,10 +2925,10 @@ function useStartStopEdit() {
   };
 }
 var _hoisted_1$7 = {
-  class: "table-ng__selectwrapper"
+  class: "table-ng__editable"
 };
 var _hoisted_2$3 = {
-  class: "table-ng__textview"
+  class: "table-ng__editable__text"
 };
 var _hoisted_3$1 = ["aria-controls"];
 var _sfc_main$8 = /* @__PURE__ */ defineComponent({
@@ -3113,7 +3113,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         onTableActivateCell: onActivateCell
       }, [withDirectives(createElementVNode("div", _hoisted_1$7, [createElementVNode("span", _hoisted_2$3, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "pen",
-        class: "table-ng__texticon"
+        class: "table-ng__editable__icon"
       })], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
         ref: "edit",
         role: "combobox",
@@ -3121,7 +3121,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         "aria-expanded": "",
         "aria-controls": unref(dropdownId),
         "aria-autocomplete": "list",
-        class: "table-ng__selectwrapper",
+        class: "table-ng__editable",
         onClick: _cache[0] || (_cache[0] = withModifiers(() => {
         }, ["stop"])),
         onDblclick: _cache[1] || (_cache[1] = withModifiers(() => {
@@ -3328,7 +3328,7 @@ function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
 var _hoisted_1$2 = {
-  class: "table-ng__textwrapper"
+  class: "table-ng__editable"
 };
 var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "ITableText",
@@ -3485,7 +3485,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         onTableActivateCell: onActivateCell
       }, [createElementVNode("div", _hoisted_1$2, [createElementVNode("span", {
         ref: "view",
-        class: "table-ng__textview"
+        class: "table-ng__editable__text"
       }, toDisplayString(_ctx.column.value(_ctx.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
         ref: "input",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => model.value = $event),
@@ -3498,11 +3498,11 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       }, null, 34), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), hasError.value ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: "error",
-        class: "table-ng__texticon"
+        class: "table-ng__editable__icon"
       })) : (openBlock(), createBlock(unref(FIcon), {
         key: 1,
         name: "pen",
-        class: "table-ng__texticon"
+        class: "table-ng__editable__icon"
       }))])], 34)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "td",
