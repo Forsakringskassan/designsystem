@@ -223,9 +223,9 @@ function cancel(): void {
         @click.stop="onCellClick"
         @table-activate-cell="onActivateCell"
     >
-        <div v-show="!editing" class="table-ng__selectwrapper">
-            <span class="table-ng__textview">{{ viewValue }}</span>
-            <f-icon name="pen" class="table-ng__texticon"></f-icon>
+        <div v-show="!editing" class="table-ng__editable">
+            <span class="table-ng__editable__text">{{ viewValue }}</span>
+            <f-icon name="pen" class="table-ng__editable__icon"></f-icon>
         </div>
         <div
             v-show="editing"
@@ -235,7 +235,7 @@ function cancel(): void {
             aria-expanded
             :aria-controls="dropdownId"
             aria-autocomplete="list"
-            class="table-ng__selectwrapper"
+            class="table-ng__editable"
             @click.stop
             @dblclick.prevent
             @keydown.stop="onEditKeyDown"

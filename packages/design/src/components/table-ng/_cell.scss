@@ -24,52 +24,63 @@ $horizontal-padding: size.$padding-050;
         }
     }
 
+    &--select,
     &--text {
         padding: 0 0.25rem;
 
         &:focus-visible {
-            outline: none !important;
-            box-shadow: none !important;
-
-            .table-ng__texticon {
+            .table-ng__editable__icon {
                 visibility: visible;
             }
         }
 
         &:hover {
-            .table-ng__textwrapper {
+            .table-ng__editable {
                 @extend %text-hover-state;
             }
         }
+    }
+
+    &--text {
+        &:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+        }
 
         &.table-ng__cell--error:not(:focus-within) {
-            .table-ng__textwrapper {
+            .table-ng__editable {
                 @extend %text-error-state;
             }
-            .table-ng__texticon {
+            .table-ng__editable__icon {
                 visibility: visible;
             }
         }
 
         &.table-ng__cell--error:hover:not(:focus-within) {
-            .table-ng__textwrapper {
+            .table-ng__editable {
                 @extend %text-error-state;
             }
         }
 
         &.table-ng__cell--error:focus {
-            .table-ng__textwrapper {
+            .table-ng__editable {
                 @extend %text-error-state;
             }
         }
-    }
 
-    &--select {
-        padding: 0 0.25rem;
+        .table-ng__editable {
+            border-width: 2px;
+            border-style: solid;
+            border-color: transparent;
 
-        &:hover {
-            .table-ng__selectwrapper {
-                @extend %text-hover-state;
+            &:focus-within {
+                .table-ng__editable__text {
+                    display: none;
+                }
+
+                .table-ng__textedit {
+                    flex: 1 0 auto;
+                }
             }
         }
     }
@@ -98,43 +109,6 @@ $horizontal-padding: size.$padding-050;
     }
 }
 
-.table-ng__textwrapper {
-    padding: $vertical-padding $horizontal-padding;
-    display: flex;
-    border-width: 2px;
-    border-style: solid;
-    border-color: transparent;
-    align-items: center;
-
-    &:hover:not(:focus-within) .table-ng__texticon {
-        visibility: visible;
-    }
-
-    &:focus-within {
-        .table-ng__textview {
-            display: none;
-        }
-
-        .table-ng__textedit {
-            flex: 1 0 auto;
-        }
-    }
-}
-
-.table-ng__selectwrapper {
-    padding: $vertical-padding $horizontal-padding;
-    display: flex;
-    align-items: center;
-
-    &:hover:not(:focus-within) .table-ng__texticon {
-        visibility: visible;
-    }
-}
-
-.table-ng__textview {
-    flex: 1 1 auto;
-}
-
 .table-ng__textedit {
     flex: 0 1 0;
     width: 0;
@@ -148,9 +122,24 @@ $horizontal-padding: size.$padding-050;
     }
 }
 
-.table-ng__texticon {
-    visibility: hidden;
-    margin-left: 1rem;
+.table-ng__editable {
+    padding: $vertical-padding $horizontal-padding;
+    display: flex;
+    align-items: center;
+
+    &:hover:not(:focus-within) &__icon {
+        visibility: visible;
+    }
+
+    &__text {
+        flex: 1 1 auto;
+    }
+
+    &__icon {
+        visibility: hidden;
+        margin-left: 1rem;
+        flex: none;
+    }
 }
 
 %text-hover-state {

@@ -162,8 +162,8 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
         @keydown="onKeydown"
         @table-activate-cell="onActivateCell"
     >
-        <div class="table-ng__textwrapper">
-            <span ref="view" class="table-ng__textview">{{ column.value(row) }}</span>
+        <div class="table-ng__editable">
+            <span ref="view" class="table-ng__editable__text">{{ column.value(row) }}</span>
             <input
                 ref="input"
                 v-model="model"
@@ -174,8 +174,8 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
                 @blur="onBlur"
                 @validity="onValidity"
             />
-            <f-icon v-if="hasError" name="error" class="table-ng__texticon"></f-icon>
-            <f-icon v-else name="pen" class="table-ng__texticon"></f-icon>
+            <f-icon v-if="hasError" name="error" class="table-ng__editable__icon"></f-icon>
+            <f-icon v-else name="pen" class="table-ng__editable__icon"></f-icon>
         </div>
     </td>
     <td
