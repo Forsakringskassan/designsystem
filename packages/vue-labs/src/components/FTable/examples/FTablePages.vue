@@ -1039,7 +1039,14 @@ function onButtonClick(id: string): void {
 </script>
 
 <template>
-    <f-table v-model="mySelectedRows" :rows :columns key-attribute="id" striped paginerated>
+    <f-table
+        v-model:selected-rows="mySelectedRows"
+        :rows
+        :columns
+        key-attribute="id"
+        striped
+        paginerated
+    >
     </f-table>
 </template>
 

@@ -53,7 +53,7 @@ const {
     selectable?: "single" | "multi";
     paginerated?: boolean;
 }>();
-const model = defineModel<T[]>({ default: [] });
+const model = defineModel<T[]>("selectedRows", { default: [] });
 const tableRef = useTemplateRef("table");
 const selectAllRef = useTemplateRef("selectAll");
 const expandedKeys: Ref<string[]> = ref([]);
