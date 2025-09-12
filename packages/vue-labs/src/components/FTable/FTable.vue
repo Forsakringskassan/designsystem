@@ -53,7 +53,7 @@ const {
     selectable?: "single" | "multi";
     paginerated?: boolean;
 }>();
-const model = defineModel<T[]>({ default: [] });
+const selectedRows = defineModel<T[]>("selectedRows", { default: [] });
 const tableRef = useTemplateRef("table");
 const selectAllRef = useTemplateRef("selectAll");
 const expandedKeys: Ref<string[]> = ref([]);
@@ -77,7 +77,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
             return false;
         }
 
-        return model.value.some((it) => {
+        return selectedRows.value.some((it) => {
             return row[keyAttribute] === it[keyAttribute];
         });
     },
@@ -85,13 +85,13 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
         return true;
     },
     update(row, _newValue, _oldValue) {
-        assertRef(model);
-        const index = model.value.indexOf(row);
+        assertRef(selectedRows);
+        const index = selectedRows.value.indexOf(row);
 
         if (index < 0) {
-            model.value.push(row);
+            selectedRows.value.push(row);
         } else {
-            model.value.splice(index, 1);
+            selectedRows.value.splice(index, 1);
         }
     },
 };
@@ -104,22 +104,22 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
             return false;
         }
 
-        return model.value.some((it) => {
+        return selectedRows.value.some((it) => {
             return row[keyAttribute] === it[keyAttribute];
         });
     },
     update(row, _newValue, _oldValue) {
-        assertRef(model);
-        model.value = [row];
+        assertRef(selectedRows);
+        selectedRows.value = [row];
     },
 };
 
 const isIndeterminate = computed(() => {
-    return model.value.length > 0 && model.value.length < rows.length;
+    return selectedRows.value.length > 0 && selectedRows.value.length < rows.length;
 });
 
 const isAllRowsSelected = computed((): boolean => {
-    return model.value.length > 0 && model.value.length === rows.length;
+    return selectedRows.value.length > 0 && selectedRows.value.length === rows.length;
 });
 
 const isSingleSelect = computed(() => {
@@ -139,9 +139,9 @@ watchEffect(() => {
 
 function onSelectAllChange(): void {
     if (selectAllRef.value?.checked) {
-        model.value = [...rows];
+        selectedRows.value = [...rows];
     } else {
-        model.value = [];
+        selectedRows.value = [];
     }
 }
 

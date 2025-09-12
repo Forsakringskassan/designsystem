@@ -210,7 +210,14 @@ function onButtonClick(id: string): void {
 
 <template>
     <button type="button" class="button button--secondary">Interagerbart element före</button>
-    <f-table v-model="mySelectedRows" :rows :columns key-attribute="id" striped selectable="single">
+    <f-table
+        v-model:selected-rows="mySelectedRows"
+        :rows
+        :columns
+        key-attribute="id"
+        striped
+        selectable="single"
+    >
         <template #footer>Footer</template>
     </f-table>
     <h3>Selected rows ({{ mySelectedRows.length }} items):</h3>
