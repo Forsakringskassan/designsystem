@@ -222,7 +222,7 @@ function onButtonClick(id: string): void {
     <f-sort-filter-dataset :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
             <f-table
-                v-model="mySelectedRows"
+                v-model:selected-rows="mySelectedRows"
                 :rows="sortFilterResult"
                 :columns
                 key-attribute="id"
