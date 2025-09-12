@@ -39,8 +39,8 @@ export function formatNumberToTime(value?: number): HoursMinutesString | undefin
 // @public (undocumented)
 export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
     props: __VLS_PrettifyLocal<Pick<Partial<{}> & Omit<{
-        readonly "onUpdate:modelValue"?: ((value: T[]) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, "onUpdate:modelValue"> & ({
+        readonly "onUpdate:selectedRows"?: ((value: T[]) => any) | undefined;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, "onUpdate:selectedRows"> & ({
         columns: Array<TableColumn<T, KeyAttribute>>;
         rows: T[];
         keyAttribute?: KeyAttribute;
@@ -49,7 +49,7 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
         selectable?: "single" | "multi";
         paginerated?: boolean;
     } & {
-        modelValue?: T[];
+        selectedRows?: T[];
     }) & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
@@ -60,7 +60,7 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
     } & {
         footer?: (props: {}) => any;
     };
-    emit: (evt: "update:modelValue", value: T[]) => void;
+    emit: (evt: "update:selectedRows", value: T[]) => void;
 }>) => VNode & {
     __ctx?: Awaited<typeof __VLS_setup>;
 };
