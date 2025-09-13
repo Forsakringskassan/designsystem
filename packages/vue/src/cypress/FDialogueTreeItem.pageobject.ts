@@ -12,7 +12,7 @@ export class FDialogueTreeItemPageObject implements BasePageObject {
     }
 
     public title(): DefaultCypressChainable {
-        return cy.get(`${this.selector}`);
+        return cy.get(this.selector);
     }
 
     public button(): DefaultCypressChainable {
