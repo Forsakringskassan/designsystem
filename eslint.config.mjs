@@ -1,11 +1,9 @@
-import defaultConfig, {
-    globals,
-} from "@forsakringskassan/eslint-config/flat.mjs";
-import cliConfig from "@forsakringskassan/eslint-config-cli/flat.mjs";
-import cypressConfig from "@forsakringskassan/eslint-config-cypress/flat.mjs";
-import jestConfig from "@forsakringskassan/eslint-config-jest/flat.mjs";
-import typescriptConfig from "@forsakringskassan/eslint-config-typescript/flat.mjs";
-import vueConfig from "@forsakringskassan/eslint-config-vue/flat.mjs";
+import defaultConfig, { globals } from "@forsakringskassan/eslint-config";
+import cliConfig from "@forsakringskassan/eslint-config-cli";
+import cypressConfig from "@forsakringskassan/eslint-config-cypress";
+import jestConfig from "@forsakringskassan/eslint-config-jest";
+import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
+import vueConfig from "@forsakringskassan/eslint-config-vue";
 
 export default [
     {
@@ -90,7 +88,7 @@ export default [
             "no-unused-vars": "off",
             "@typescript-eslint/explicit-function-return-type": "off",
             "@typescript-eslint/no-unused-vars": "off",
-            "eslint-comments/require-description": "off",
+            "@eslint-community/eslint-comments/require-description": "off",
             "import/no-duplicates": "off",
             "import/no-extraneous-dependencies": "off",
         },
@@ -122,6 +120,36 @@ export default [
         files: ["internal/vue-sandbox/**/*.{js,ts,vue}"],
         rules: {
             "no-console": "off",
+        },
+    },
+
+    {
+        name: "local/technical-debt",
+        rules: {
+            "sonarjs/concise-regex": "off",
+            "sonarjs/constructor-for-side-effects": "off",
+            "sonarjs/no-commented-code": "off",
+            "sonarjs/no-control-regex": "off",
+            "sonarjs/no-dead-store": "off",
+            "sonarjs/no-empty-test-file": "off",
+            "sonarjs/no-nested-assignment": "off",
+            "sonarjs/no-nested-functions": "off",
+            "sonarjs/no-primitive-wrappers": "off",
+            "sonarjs/no-skipped-tests": "off",
+            "sonarjs/os-command": "off",
+            "sonarjs/pseudo-random": "off",
+            "sonarjs/redundant-type-aliases": "off",
+            "sonarjs/slow-regex": "off",
+            "sonarjs/todo-tag": "off",
+            "sonarjs/use-type-alias": "off",
+            "sonarjs/x-powered-by": "off",
+            "sonarjs/no-nested-conditional": "off",
+            "sonarjs/no-ignored-exceptions": "off",
+            "sonarjs/single-char-in-character-classes": "off",
+            "sonarjs/no-clear-text-protocols": "off",
+            "sonarjs/single-character-alternation": "off",
+            "sonarjs/unused-import": "off",
+            "sonarjs/no-unused-vars": "off",
         },
     },
 ];
