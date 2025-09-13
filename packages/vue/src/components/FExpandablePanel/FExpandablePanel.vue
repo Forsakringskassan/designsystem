@@ -82,7 +82,7 @@ export default defineComponent({
             return this.notifications > 0;
         },
         screenReaderNotificationText(): string {
-            return `${this.screenReaderNotificationTemplate.replace("%VALUE%", this.notifications.toString())}`;
+            return this.screenReaderNotificationTemplate.replace("%VALUE%", this.notifications.toString());
         },
     },
     methods: {

@@ -58,7 +58,7 @@ const progressBarClass = computed(() => {
     }
 });
 const progressText = computed(() => {
-    return `${props.valueText.replace("%VALUE%", progressValueNow.value.toString())}`;
+    return props.valueText.replace("%VALUE%", progressValueNow.value.toString());
 });
 </script>
 

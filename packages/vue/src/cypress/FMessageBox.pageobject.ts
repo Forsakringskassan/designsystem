@@ -15,7 +15,7 @@ export class FMessageBoxPageObject implements BasePageObject {
     public constructor(selector: string) {
         this.selector = selector;
         this.el = () => cy.get(selector);
-        this.errors = new FErrorListPageObject(`${this.selector}`);
+        this.errors = new FErrorListPageObject(this.selector);
     }
 
     public icon(): DefaultCypressChainable {
