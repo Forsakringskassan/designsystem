@@ -6,7 +6,7 @@ export default defineComponent({
     name: "FConfirmModalCustomButtons",
     data() {
         return {
-            action: undefined as ModalResult<void> | undefined,
+            action: undefined as ModalResult | undefined,
             isOpen: false,
             threeButtons: [
                 {

@@ -59,7 +59,7 @@ export enum dayType {
 }
 
 // @public (undocumented)
-export type DefaultCypressChainable = Cypress.Chainable<JQuery<HTMLElement>>;
+export type DefaultCypressChainable = Cypress.Chainable<JQuery>;
 
 // @public (undocumented)
 export class FBadgePageObject implements BasePageObject {
@@ -213,11 +213,11 @@ export class FDatepickerFieldPageobject implements BasePageObject {
 export class FDetailsPanelPageObject implements BasePageObject {
     protected constructor(selector: string);
     closeButton(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
-    content(): Cypress.Chainable<JQuery<HTMLElement>>;
+    content(): Cypress.Chainable<JQuery>;
     el(): DefaultCypressChainable;
-    footer(): Cypress.Chainable<JQuery<HTMLElement>>;
+    footer(): Cypress.Chainable<JQuery>;
     static fromName(name: string): FDetailsPanelPageObject;
-    header(): Cypress.Chainable<JQuery<HTMLElement>>;
+    header(): Cypress.Chainable<JQuery>;
     protected static nameSelector(name: string): string;
     readonly selector: string;
 }
@@ -258,7 +258,7 @@ export class FErrorListPageObject {
     // (undocumented)
     getLink(index: number): DefaultCypressChainable;
     // (undocumented)
-    getLinkByName(error: string): Cypress.Chainable<Cypress.Chainable<JQuery<HTMLElement>> | HTMLElement>;
+    getLinkByName(error: string): Cypress.Chainable<Cypress.Chainable<JQuery> | HTMLElement>;
     // (undocumented)
     hasError(error: string): Cypress.Chainable<boolean>;
     links(): DefaultCypressChainable;
@@ -316,14 +316,14 @@ export class FFieldsetPageObject implements BasePageObject {
 export class FFileItemPageObject implements BasePageObject {
     constructor(selector: string);
     // @internal (undocumented)
-    _cancelDeleteButton(): Cypress.Chainable<JQuery<HTMLElement>>;
+    _cancelDeleteButton(): Cypress.Chainable<JQuery>;
     // @internal (undocumented)
-    _cancelDeleteButtonIcon(): Cypress.Chainable<JQuery<HTMLElement>>;
+    _cancelDeleteButtonIcon(): Cypress.Chainable<JQuery>;
     // (undocumented)
     el: () => DefaultCypressChainable;
     // @internal (undocumented)
-    _fileIcon(): Cypress.Chainable<JQuery<HTMLElement>>;
-    fileName(): Cypress.Chainable<JQuery<HTMLElement>>;
+    _fileIcon(): Cypress.Chainable<JQuery>;
+    fileName(): Cypress.Chainable<JQuery>;
     // @internal (undocumented)
     _progressMeter: FProgressbarPageObject;
     // (undocumented)
@@ -455,10 +455,10 @@ export class FMessageBoxPageObject implements BasePageObject {
 // @public
 export class FMinimizablePanelPageObject implements BasePageObject {
     constructor(selector: string);
-    content(): Cypress.Chainable<JQuery<HTMLElement>>;
+    content(): Cypress.Chainable<JQuery>;
     el(): DefaultCypressChainable;
-    footer(): Cypress.Chainable<JQuery<HTMLElement>>;
-    header(): Cypress.Chainable<JQuery<HTMLElement>>;
+    footer(): Cypress.Chainable<JQuery>;
+    header(): Cypress.Chainable<JQuery>;
     readonly selector: string;
     toggleButton(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
 }

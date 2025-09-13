@@ -40,21 +40,21 @@ export class FDetailsPanelPageObject implements BasePageObject {
     /**
      * Content in header slot (as defined by consumer).
      */
-    public header(): Cypress.Chainable<JQuery<HTMLElement>> {
+    public header(): Cypress.Chainable<JQuery> {
         return cy.get(`${this.selector} [slot=header]`);
     }
 
     /**
      * Content in content slot (as defined by consumer).
      */
-    public content(): Cypress.Chainable<JQuery<HTMLElement>> {
+    public content(): Cypress.Chainable<JQuery> {
         return cy.get(`${this.selector} [slot=content]`);
     }
 
     /**
      * Content in footer slot (as defined by consumer).
      */
-    public footer(): Cypress.Chainable<JQuery<HTMLElement>> {
+    public footer(): Cypress.Chainable<JQuery> {
         return cy.get(`${this.selector} [slot=footer]`);
     }
 
