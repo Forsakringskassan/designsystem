@@ -31,7 +31,7 @@ class FieldsetValidationHandler {
         element.addEventListener("change", this.documentFocusIn.bind(this));
 
         Array.from(
-            this.element.querySelectorAll<Element>(
+            this.element.querySelectorAll(
                 "input[type='checkbox'], input[type='radio']",
             ),
         )

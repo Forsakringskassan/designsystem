@@ -25,28 +25,28 @@ export class FFileItemPageObject implements BasePageObject {
     /**
      * @internal
      */
-    public _cancelDeleteButton(): Cypress.Chainable<JQuery<HTMLElement>> {
+    public _cancelDeleteButton(): Cypress.Chainable<JQuery> {
         return cy.get(`${this.selector} .file-item__file-remove`);
     }
 
     /**
      * @internal
      */
-    public _cancelDeleteButtonIcon(): Cypress.Chainable<JQuery<HTMLElement>> {
+    public _cancelDeleteButtonIcon(): Cypress.Chainable<JQuery> {
         return cy.get(`${this.selector} .file-item__file-remove .icon`);
     }
 
     /**
      * @internal
      */
-    public _fileIcon(): Cypress.Chainable<JQuery<HTMLElement>> {
+    public _fileIcon(): Cypress.Chainable<JQuery> {
         return cy.get(`${this.selector} .file-item__file-open .icon`);
     }
 
     /**
      * Filename of the uploaded file.
      */
-    public fileName(): Cypress.Chainable<JQuery<HTMLElement>> {
+    public fileName(): Cypress.Chainable<JQuery> {
         return cy.get(`${this.selector} .file-item__file-name`);
     }
 

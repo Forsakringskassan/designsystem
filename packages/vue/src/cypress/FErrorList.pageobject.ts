@@ -38,7 +38,7 @@ export class FErrorListPageObject {
 
     public getLinkByName(
         error: string,
-    ): Cypress.Chainable<Cypress.Chainable<JQuery<HTMLElement>> | HTMLElement> {
+    ): Cypress.Chainable<Cypress.Chainable<JQuery> | HTMLElement> {
         let link = (): DefaultCypressChainable | HTMLElement =>
             cy.get(`${this.selector} ${error}`);
 

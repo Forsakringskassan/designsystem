@@ -1,4 +1,4 @@
-export type DefaultCypressChainable = Cypress.Chainable<JQuery<HTMLElement>>;
+export type DefaultCypressChainable = Cypress.Chainable<JQuery>;
 
 export interface BasePageObject {
     /**
