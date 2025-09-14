@@ -23,15 +23,15 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-1e9c30.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-276cff.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-09d3d2.js",
     "@fkui/date": "../assets/vendor-fkui-date-0135ed.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-1b2230.js"
+    "@fkui/vue": "../assets/vendor-fkui-vue-d7d401.js"
   },
   "integrity": {
     "../assets/vendor-vue-1e9c30.js": "sha384-oTNMClNyJrNOxWXWSceZCE9W49/ocSeTY9iMaFUMa9HtQHkRXLrqhqLV0YVbYUH2",
-    "../assets/vendor-fkui-logic-276cff.js": "sha384-37kDEnVNEjOngdHNygMUv/Dh1m7soX8UnfGHmfko2WFSwTBVfyTGuPtlLkCvb/lx",
+    "../assets/vendor-fkui-logic-09d3d2.js": "sha384-yyq9t5qGCT0boKTCjLxwUh+Swq3piDsG7G9VAQVd0Tg2p+8WWi82uV1BcrEANIBI",
     "../assets/vendor-fkui-date-0135ed.js": "sha384-VbttNGe46vzs2V4L3UUssyfBddbuQjvmByr6suMYjhdn/IsHzzHrw3YkpC/+RTVz",
-    "../assets/vendor-fkui-vue-1b2230.js": "sha384-30xdyej7HTCgH0PHpR93Vkq+JvBsKK5u+jN6B5reTvcDRgCvYUQZNTLbT7892Q8x"
+    "../assets/vendor-fkui-vue-d7d401.js": "sha384-ASw8H0rLEM9YjSRF0Y26UHQOx6lyBDg2aod/ZphjdA0sMkjBIz0sq+v50ytvDKfa"
   }
 }
         </script><script
@@ -201,7 +201,7 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-e9af7f"></div>
+        <div id="example-0a56c7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -227,7 +227,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-e9af7f.js"></script>
+        <script type="module" src="./FTableExample-0a56c7.js"></script>
     </div>
                 <div>
             <button
@@ -453,7 +453,7 @@ interface <span class="hljs-title class_">Row</span> {
 ]);
 
 <span class="hljs-keyword">const</span> sortableAttributes = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">fromEntries</span>(
-    columns.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> it.<span class="hljs-property">key</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> [it.<span class="hljs-property">key</span>, it.<span class="hljs-property">header</span>]),
+    columns.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> <span class="hljs-string">&quot;key&quot;</span> <span class="hljs-keyword">in</span> it &amp;&amp; it.<span class="hljs-property">key</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> [it.<span class="hljs-property">key</span>, it.<span class="hljs-property">header</span>]),
 );
 
 <span class="hljs-keyword">const</span> mySelectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>]]);
@@ -524,7 +524,7 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-98ee97"></div>
+        <div id="example-ca9cf0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -550,7 +550,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRadioExample-98ee97.js"></script>
+        <script type="module" src="./FTableRadioExample-ca9cf0.js"></script>
     </div>
                 <div>
             <button
@@ -827,7 +827,7 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-ea8650"></div>
+        <div id="example-34d049"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -853,7 +853,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExpandableRows-ea8650.js"></script>
+        <script type="module" src="./FTableExpandableRows-34d049.js"></script>
     </div>
                 <div>
             <button
