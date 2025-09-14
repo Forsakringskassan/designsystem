@@ -14,8 +14,7 @@ function importDefault<T extends object>(m: { default: T } | T): T {
 }
 
 async function importIcons(): Promise<IconPackage> {
-    /* @ts-expect-error technical debt: the module target supports this in practice but it seems to pick up the wrong config, need to investigate further */
-    return importDefault(await import(process.env.DOCS_ICON_LIB)); // eslint-disable-line no-undef -- for similar reasons, this script is primarly for browser but `process.env` will be available during compilation
+    return importDefault(await import(process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default"));
 }
 
 function decamelize(value: string): string {
