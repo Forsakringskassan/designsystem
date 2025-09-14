@@ -179,7 +179,7 @@ export function findHTMLElementFromVueRef(
 ): HTMLElement | undefined {
     const result = findElementFromVueRef(ref);
     if (result instanceof HTMLElement) {
-        return result as HTMLElement;
+        return result;
     }
     return undefined;
 }

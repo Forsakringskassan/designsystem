@@ -561,7 +561,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     }
 
     private getValidators(validatorConfigs: ValidatorConfigs): Validator[] {
-        const validatorNames = Object.keys(validatorConfigs) as ValidatorName[];
+        const validatorNames = Object.keys(validatorConfigs);
 
         return validatorNames.map((validatorName) => {
             const validator = registry[validatorName];
@@ -661,9 +661,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
             return false;
         }
         return Boolean(
-            isRadiobuttonOrCheckbox(element)
-                ? (element as HTMLInputElement).checked
-                : element.value,
+            isRadiobuttonOrCheckbox(element) ? element.checked : element.value,
         );
     }
 
@@ -755,7 +753,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         const validatorConfig = validatorConfigs[validatorName];
 
         if (validatorConfig && validatorConfig.errorMessage) {
-            return validatorConfig.errorMessage as string;
+            return validatorConfig.errorMessage;
         }
 
         const candidates = getCandidates(
