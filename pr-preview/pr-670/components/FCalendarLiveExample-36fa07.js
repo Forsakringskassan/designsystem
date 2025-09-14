@@ -1658,7 +1658,7 @@ function setup(options) {
 
 // virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarLiveExample.vue:FCalendarLiveExample-36fa07.js
 import { defineComponent as defineComponent24 } from "vue";
-import { FDate as FDate5 } from "@fkui/date";
+import { FDate as FDate4 } from "@fkui/date";
 import { FCalendar, FCalendarDay } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
@@ -2852,7 +2852,7 @@ function focusError(item) {
   }
   const focusElement3 = document.querySelector(`#${item.focusElementId}`);
   scrollTo(element, window.innerHeight * 0.25);
-  focus3(focusElement3 ? focusElement3 : element);
+  focus3(focusElement3 ?? element);
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
@@ -3544,7 +3544,7 @@ var FFormModal_default = defineComponent11({
       this.$emit("cancel");
       this.$emit("close", { reason: "close" });
     },
-    async onSubmit() {
+    onSubmit() {
       ValidationService3.resetState(this.$el);
       this.$emit("submit", { data: this.value });
       this.$emit("close", { reason: "submit", data: this.value });
@@ -5135,7 +5135,7 @@ var IPopupMenu_default = defineComponent15({
   watch: {
     isOpen: {
       immediate: true,
-      async handler(newVal) {
+      handler(newVal) {
         if (newVal) {
           return;
         }
@@ -5649,7 +5649,7 @@ ISkipLink_default.render = render18;
 ISkipLink_default.__file = "packages/vue/src/internal-components/ISkipLink/ISkipLink.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonth.vue?type=script
-import { FDate as FDate4 } from "@fkui/date";
+import { FDate as FDate3 } from "@fkui/date";
 import { alertScreenReader, focus as focus7 } from "@fkui/logic";
 import { defineComponent as defineComponent19 } from "vue";
 
@@ -6093,7 +6093,7 @@ var ICalendarMonth_default = defineComponent19({
       let activeDate = void 0;
       if (document.activeElement instanceof HTMLElement) {
         const activeString = document.activeElement.dataset.date;
-        activeDate = activeString ? FDate4.fromIso(activeString) : void 0;
+        activeDate = activeString ? FDate3.fromIso(activeString) : void 0;
       }
       return getDayTabindex(date, activeDate, this.tabDate);
     }
@@ -7635,9 +7635,9 @@ var exampleComponent = defineComponent24({
   computed: {
     livedata() {
       return {
-        month: FDate5.fromIso("2022-10-01"),
-        min: FDate5.fromIso("2020-01-01"),
-        max: FDate5.fromIso("2029-01-30")
+        month: FDate4.fromIso("2022-10-01"),
+        min: FDate4.fromIso("2020-01-01"),
+        max: FDate4.fromIso("2029-01-30")
       };
     },
     components() {
