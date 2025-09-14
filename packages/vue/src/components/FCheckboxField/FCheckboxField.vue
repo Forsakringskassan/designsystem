@@ -129,7 +129,7 @@ export default defineComponent({
     },
     methods: {
         updateExpandedFlag(): void {
-            const checkboxInput = getHTMLElementFromVueRef(this.$refs["checkboxInput"]) as HTMLInputElement;
+            const checkboxInput = getHTMLElementFromVueRef(this.$refs.checkboxInput) as HTMLInputElement;
             this.expanded = checkboxInput.checked;
         },
         emitVModelEvent(event: Event): void {

@@ -96,7 +96,7 @@ export default defineComponent({
             this.$emit("close");
         },
         setArrowOffset() {
-            const wrapper = this.$refs["wrapper"] as HTMLElement;
+            const wrapper = this.$refs.wrapper as HTMLElement;
             const inputIcon = this.anchor?.nextElementSibling;
             if (!inputIcon || !wrapper) {
                 return;
@@ -117,7 +117,7 @@ export default defineComponent({
             /* popup is opening */
             // Wait for popup to show up
             await this.$nextTick();
-            const wrapper = this.$refs["wrapper"] as HTMLElement;
+            const wrapper = this.$refs.wrapper as HTMLElement;
 
             if (!this.anchor) {
                 throw new Error("No anchor element found");
