@@ -13,7 +13,7 @@ import { filterItem } from "./filter-item";
 const $t = useTranslate();
 const slots = useSlots();
 
-const result = ref<T[]>([]) as Ref<T[]>;
+const result = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
 const operation = ref<Operation>(Operation.NONE);
 const item = ref<T | null>(null);
 const nestedKey = ref<keyof T | null | undefined>(null);

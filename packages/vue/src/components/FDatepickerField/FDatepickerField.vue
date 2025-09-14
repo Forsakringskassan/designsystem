@@ -291,6 +291,7 @@ export default defineComponent({
                     throw new Error("MinDate validator must be set");
                 }
 
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
                 this.minDate = FDate.fromIso(minDateConfig.limit.toString());
             }
 
@@ -300,6 +301,7 @@ export default defineComponent({
                     throw new Error("MaxDate validator must be set");
                 }
 
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
                 this.maxDate = FDate.fromIso(maxDateConfig.limit.toString());
             }
         },

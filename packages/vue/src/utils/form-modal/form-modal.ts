@@ -32,6 +32,7 @@ export async function formModal<T>(
     if (result.reason === "submit") {
         return result.data;
     } else {
+        /* eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- technical debt */
         return Promise.reject("cancel");
     }
 }

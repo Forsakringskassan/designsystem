@@ -43,9 +43,11 @@ const offset = ref<number | undefined>(undefined);
 
 useResize({
     enabled: computed(() => {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
         return Boolean(isOpen.value);
     }),
     overlay: computed(() => {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
         return Boolean(overlay.value);
     }),
     offset: computed(() => {

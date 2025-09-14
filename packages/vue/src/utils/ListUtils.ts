@@ -3,6 +3,7 @@ import { isSet } from "@fkui/logic";
 /**
  * @public
  */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function itemEquals<T extends object, K extends keyof T>(
     item1: T | undefined,
     item2: T | undefined,
@@ -22,6 +23,7 @@ export function itemEquals<T extends object, K extends keyof T>(
 /**
  * @public
  */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function includeItem<T extends object, K extends keyof T>(
     item: T | undefined,
     itemList: T[] | undefined,

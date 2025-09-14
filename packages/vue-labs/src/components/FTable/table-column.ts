@@ -5,6 +5,7 @@ import { type Component, type VNode } from "vue";
  * @public
  */
 export interface TableColumnSimple<T, K extends keyof T> {
+    /* eslint-disable-next-line sonarjs/no-redundant-optional -- technical debt */
     type?: undefined;
     header: string;
     key?: K;
@@ -172,10 +173,9 @@ export interface NormalizedTableColumnSelect<T, K> {
 /**
  * @public
  */
-export interface TableColumnRender<T> {
-    type?: undefined;
+export interface TableColumnRender<T, K> {
     header: string;
-    key?: undefined;
+    key?: K;
     render(row: T): VNode | Component;
 }
 
@@ -199,7 +199,7 @@ export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnText<T, K>
     | TableColumnAnchor<T, K>
     | TableColumnButton<T, K>
-    | TableColumnRender<T>
+    | TableColumnRender<T, K>
     | TableColumnSelect<T, K>;
 
 /**
@@ -215,6 +215,7 @@ export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnRender<T>
     | NormalizedTableColumnSelect<T, K>;
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function getValueFn<TRow, TValue, K extends keyof TRow>(
     fn: ((row: TRow) => TValue) | undefined,
     key: K | undefined,
@@ -235,6 +236,7 @@ function getValueFn<TRow, TValue, K extends keyof TRow>(
 /**
  * @internal
  */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function getUpdateFn<TRow, TValue, K extends keyof TRow>(
     fn: ((row: TRow, newValue: TValue, oldValue: TValue) => void) | undefined,
     key: K | undefined,

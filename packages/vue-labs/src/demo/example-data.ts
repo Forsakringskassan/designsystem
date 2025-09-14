@@ -69,6 +69,7 @@ function createPRNG(seed: number): () => number {
         t = Math.imul(t, 0x21f0aaad);
         t = t ^ (t >>> 15);
         t = Math.imul(t, 0x735a2d97);
+        /* eslint-disable-next-line sonarjs/no-dead-store, sonarjs/no-nested-assignment -- as is */
         return ((t = t ^ (t >>> 15)) >>> 0) / 4294967296;
     };
 }

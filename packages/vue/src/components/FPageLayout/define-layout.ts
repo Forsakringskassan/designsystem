@@ -74,6 +74,7 @@ export function defineLayout(
  *
  * @public
  */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function registerLayout<T extends LayoutDefinition>(
     definition: T,
 ): void {

@@ -345,6 +345,7 @@ export default defineComponent({
                 this.viewValue = "";
             } else if (isSet(this.parser)) {
                 if (isSet(this.formatter)) {
+                    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion, @typescript-eslint/prefer-nullish-coalescing -- technical debt */
                     this.viewValue = String(this.formatter(newModelValue) || this.viewValue);
                 }
             } else {

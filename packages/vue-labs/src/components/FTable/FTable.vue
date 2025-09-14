@@ -156,6 +156,7 @@ const hasExpandableSlot = computed(() => {
     return Boolean(slots.expandable);
 });
 
+/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function stopEditHandler(
     element: HTMLElement,
     reason: "enter" | "escape" | "tab" | "shift-tab" | "blur",
@@ -225,6 +226,7 @@ function isSortEnabled(column: NormalizedTableColumn<T, KeyAttribute>): boolean 
         return false;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/prefer-includes -- technical debt */
     return sortableColumns.value.indexOf(String(column.sortable)) > -1;
 }
 

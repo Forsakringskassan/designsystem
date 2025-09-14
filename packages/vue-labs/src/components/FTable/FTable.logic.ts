@@ -21,10 +21,12 @@ const navKeys = [
 
 let prevCellIndex: number | undefined = undefined;
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function rowKey<T>(row: T): string {
     return String(row[internalKey]);
 }
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function walk<T, K extends keyof T = keyof T>(
     array: T[],
     visit: (item: T, level: number) => boolean,
@@ -40,6 +42,7 @@ function walk<T, K extends keyof T = keyof T>(
     }
 }
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function getRowIndexes<T, K extends keyof T = keyof T>(
     rows: T[],
     expandableAttribute?: K,
@@ -77,7 +80,8 @@ function getTr(td: HTMLTableCellElement): HTMLTableRowElement {
 }
 
 function getTable(tr: HTMLTableRowElement): HTMLTableElement {
-    return tr.closest("table") as HTMLTableElement;
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+    return tr.closest("table")!;
 }
 
 function getLastRowIndex(tableElement: HTMLTableElement): number {
@@ -117,6 +121,8 @@ function navigate(
     from: TableCellIndex,
     last: TableCellIndex,
 ): TableCellIndex | undefined {
+    /* @todo fix this */
+    /* eslint-disable sonarjs/different-types-comparison -- the types does not allow this to be true so this "cannot happen" */
     if (
         from.row === undefined ||
         from.cell === undefined ||
@@ -125,6 +131,7 @@ function navigate(
     ) {
         return;
     }
+    /* eslint-enable sonarjs/different-types-comparison */
     if (!navKeys.includes(e.code)) {
         return;
     }
@@ -205,6 +212,7 @@ function navigate(
     }
 }
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function getMetaRows<T, K extends keyof T = keyof T>(
     keyedRows: T[],
     expandedKeys: string[],

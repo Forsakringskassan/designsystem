@@ -36,12 +36,14 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
     }
 }
 
+/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
     if (e.code === "Enter" || e.code === "NumpadEnter") {
         startEditing(e);
     }
 }
 
+/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function onCellClick(e: MouseEvent): Promise<void> {
     if (editing.value) {
         return;
@@ -59,6 +61,7 @@ async function startEditing(e: UIEvent): Promise<void> {
     openSelected("first");
 }
 
+/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function onDropdownSelect(value: string): Promise<void> {
     assertRef(editRef);
     assertSet(stopEdit);
@@ -81,6 +84,7 @@ const activeOptionId = ElementIdService.generateElementId();
 const activeOption: Ref<string | null> = ref(null);
 
 // activeOption trigger: sets input aria-activedescendant
+/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 watchEffect(async () => {
     if (!editRef.value) {
         return;
@@ -143,6 +147,7 @@ function setPreviousOption(): void {
     }
 }
 
+/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
     assertRef(editRef);
     assertSet(stopEdit);

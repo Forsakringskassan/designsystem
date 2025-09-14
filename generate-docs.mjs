@@ -49,6 +49,7 @@ const matomoConfig = MATOMO_CONFIG
 const isRelease = (() => {
     try {
         const cmd = `git log -n1 --format=format:%s`;
+        /* eslint-disable-next-line sonarjs/os-command -- want to execute git from PATH */
         const message = execSync(cmd, { encoding: "utf-8" }).trim();
         return message.startsWith("chore(release):");
     } catch (err) {

@@ -31,6 +31,7 @@
  * @param immediate - Whether the function should be called at the beginning of the delay (Before the timeout) instead of the end.
  * Default is false.
  */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function debounce<TThis, TArgs extends unknown[], TReturn>(
     this: TThis,
     func: (this: TThis, ...args: TArgs) => TReturn,

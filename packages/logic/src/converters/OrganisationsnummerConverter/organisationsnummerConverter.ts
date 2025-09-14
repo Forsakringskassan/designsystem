@@ -20,6 +20,7 @@ export function parseOrganisationsnummer(
         return undefined;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/prefer-regexp-exec -- technical debt */
     const match = value.match(ORGANISATIONSNUMMER_REGEXP);
     if (!match) {
         return undefined;

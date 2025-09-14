@@ -11,7 +11,9 @@ export interface FCrudDatasetInterface {
 
 export function FCrudDatasetInjected(): FCrudDatasetInterface {
     return {
-        delete: inject("delete") as (item: ListItem) => void,
-        modify: inject("modify") as (item: ListItem) => void,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        delete: inject("delete")!,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        modify: inject("modify")!,
     };
 }

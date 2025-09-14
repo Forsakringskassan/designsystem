@@ -17,6 +17,7 @@ export function parseBankgiro(value: string): BankgiroString | undefined {
         return undefined;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/prefer-regexp-exec -- technical debt */
     const match = value.match(BANKGIRO_REGEXP_HYPHEN);
     if (!match) {
         return undefined;

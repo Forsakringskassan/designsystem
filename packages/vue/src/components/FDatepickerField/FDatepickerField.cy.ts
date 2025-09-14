@@ -287,7 +287,7 @@ describe("open calendar with year selector enabled", () => {
         datepickerField.input().should("have.value", "2013-10-10");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    /* eslint-disable-next-line mocha/no-pending-tests -- temporary to get builds running */
     it.skip("should have approved design", () => {
         shouldMatchScreenshot();
     });
@@ -428,7 +428,7 @@ describe("open calendar with year selector enabled and open", () => {
         datepickerField.yearSelector().should("not.exist");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    /* eslint-disable-next-line mocha/no-pending-tests -- temporary to get builds running */
     it.skip("should have approved design", () => {
         shouldMatchScreenshot();
     });

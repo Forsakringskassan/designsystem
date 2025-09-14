@@ -42,9 +42,7 @@ function intersection<T>(a: T[], b: T[]): T[] {
     return a.filter((it) => b.includes(it));
 }
 
-function excludeClass(
-    exclude: string[],
-): <T extends VNode>(node: T) => boolean {
+function excludeClass(exclude: string[]): (node: VNode) => boolean {
     return (node) => {
         if (typeof node.props?.class !== "string") {
             return true;
@@ -55,7 +53,7 @@ function excludeClass(
     };
 }
 
-function excludeComment<T extends VNode>(node: T): boolean {
+function excludeComment(node: VNode): boolean {
     return node.type !== Comment;
 }
 

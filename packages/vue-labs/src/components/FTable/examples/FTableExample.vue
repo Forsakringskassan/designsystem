@@ -27,6 +27,7 @@ const columns = defineTableColumns<Row>([
         type: "text",
         header: "Oformaterad text",
         value(row) {
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
             return String(row.antal);
         },
     },
@@ -206,7 +207,7 @@ const rows = ref<Row[]>([
 ]);
 
 const sortableAttributes = Object.fromEntries(
-    columns.filter((it) => it.key).map((it) => [it.key, it.header]),
+    columns.filter((it) => "key" in it && it.key).map((it) => [it.key, it.header]),
 );
 
 const mySelectedRows = ref<Row[]>([rows.value[0]]);

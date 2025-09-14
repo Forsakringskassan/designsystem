@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/no-primitive-wrappers -- for this we need actual copies */
+
 import { deepClone } from "./deep-clone";
 
 it("should return a deep clone", () => {

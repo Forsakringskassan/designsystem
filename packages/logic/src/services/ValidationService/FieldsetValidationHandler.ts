@@ -7,8 +7,9 @@ export function createFieldsetValidator(
     element: HTMLFieldSetElement,
     validationService: ValidationServiceInterface,
 ): void {
-    /* eslint-disable-next-line no-new -- technical debt, this should be
-     * refactored as to not rely of side-effects of the constructor */
+    /* eslint-disable-next-line no-new, sonarjs/constructor-for-side-effects --
+     * technical debt, this should be refactored as to not rely of side-effects
+     * of the constructor */
     new FieldsetValidationHandler(element, validationService);
 }
 

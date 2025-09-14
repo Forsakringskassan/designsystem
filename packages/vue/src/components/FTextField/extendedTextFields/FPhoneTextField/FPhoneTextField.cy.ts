@@ -104,6 +104,7 @@ describe("FPhoneTextField", () => {
              *
              * Enable:a när buggen är fixad.
              */
+            /* eslint-disable-next-line sonarjs/no-commented-code -- technical debt */
             /*
             secondPhoneNumberTextField.label.errorIcon().should('be.visible');
             */

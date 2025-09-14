@@ -59,19 +59,20 @@ export interface FWizardApi {
 
 export function FWizardApiInjected(): FWizardApi {
     return {
-        register: inject("register") as (
-            key: FWizardKey,
-            element: Element,
-        ) => FWizardStepDefinition,
-        unregister: inject("unregister") as (key: FWizardKey) => void,
-        getStepCount: inject("getStepCount") as () => number,
-        openStep: inject("openStep") as (step: FWizardStepDefinition) => void,
-        openNext: inject("openNext") as (self: FWizardStepDefinition) => void,
-        cancel: inject("cancel") as (isFinalStep: boolean) => void,
-        inheritedProps: inject("inheritedProps") as {
-            readonly headerTag: string;
-            readonly disableInitialFocus: boolean;
-        },
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        register: inject("register")!,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        unregister: inject("unregister")!,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        getStepCount: inject("getStepCount")!,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        openStep: inject("openStep")!,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        openNext: inject("openNext")!,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        cancel: inject("cancel")!,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        inheritedProps: inject("inheritedProps")!,
     };
 }
 

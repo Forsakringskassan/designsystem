@@ -36,11 +36,10 @@ export interface FTableInterface {
 
 export function FTableInjected(): FTableInterface {
     return {
-        addColumn: inject("addColumn") as (column: FTableColumnData) => void,
-        setVisibilityColumn: inject("setVisibilityColumn") as (
-            id: string,
-            visible: boolean,
-        ) => void,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        addColumn: inject("addColumn")!,
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        setVisibilityColumn: inject("setVisibilityColumn")!,
         textFieldTableMode: true,
         renderColumns: inject("renderColumns", ref(false)),
     };

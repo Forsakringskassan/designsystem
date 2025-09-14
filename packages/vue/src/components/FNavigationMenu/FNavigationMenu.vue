@@ -247,6 +247,7 @@ export default defineComponent({
                 this.$emit("selectedRoute", key);
             }
         },
+        /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
         async activateItem(index: number): Promise<void> {
             const popupItemFocused = this.hasOverflow && index === this.overflowIndex;
             if (popupItemFocused) {

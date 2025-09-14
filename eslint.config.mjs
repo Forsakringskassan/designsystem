@@ -1,11 +1,14 @@
 import defaultConfig, {
-    globals,
-} from "@forsakringskassan/eslint-config/flat.mjs";
-import cliConfig from "@forsakringskassan/eslint-config-cli/flat.mjs";
-import cypressConfig from "@forsakringskassan/eslint-config-cypress/flat.mjs";
-import jestConfig from "@forsakringskassan/eslint-config-jest/flat.mjs";
-import typescriptConfig from "@forsakringskassan/eslint-config-typescript/flat.mjs";
-import vueConfig from "@forsakringskassan/eslint-config-vue/flat.mjs";
+    docsConfig,
+    examplesConfig,
+    sandboxConfig,
+} from "@forsakringskassan/eslint-config";
+import cliConfig from "@forsakringskassan/eslint-config-cli";
+import cypressConfig from "@forsakringskassan/eslint-config-cypress";
+import jestConfig from "@forsakringskassan/eslint-config-jest";
+import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
+import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
+import vueConfig from "@forsakringskassan/eslint-config-vue";
 
 export default [
     {
@@ -34,67 +37,24 @@ export default [
             "scripts/*.{js,ts,cjs,mjs}",
         ],
     }),
-    typescriptConfig({
-        files: ["**/*.ts", "**/*.mts"],
+    typescriptConfig(),
+    typeinfoConfig(import.meta.dirname, {
+        files: ["{examples,internal,packages}/**/*.{ts,vue}"],
+        ignores: [
+            "**/*.d.ts",
+            "**/*.cy.ts",
+            "**/*.spec.ts",
+            "**/jest.setup.ts",
+            "**/vite.config.ts",
+            "**/docs/**",
+        ],
     }),
     vueConfig(),
     jestConfig(),
-    cypressConfig({
-        files: ["**/*.cy.[jt]s", "cypress/support/**/*.[jt]s"],
-    }),
-
-    {
-        name: "local",
-        languageOptions: {
-            ecmaVersion: 2024,
-            sourceType: "module",
-        },
-    },
-
-    {
-        /* E2E tests imports pageobjects from monorepo packages but the import
-         * plugin wont resolve them, yielding lots of false positives */
-        name: "local/cypress",
-        files: ["cypress/**/*.[jt]s"],
-        rules: {
-            "import/no-extraneous-dependencies": "off",
-            "import/order": "off",
-        },
-    },
-
-    {
-        /* These legacy files points to compiled files which may or may not
-         * exist yet */
-        name: "local/dts",
-        files: ["packages/*/*.d.ts"],
-        rules: {
-            "import/no-unresolved": "off",
-        },
-    },
-
-    {
-        name: "local/docs",
-        files: ["docs/src/*.{js,ts}"],
-        languageOptions: {
-            globals: {
-                ...globals.browser,
-            },
-        },
-    },
-
-    {
-        name: "local/examples",
-        files: ["**/examples/**/*.{js,ts,vue}"],
-        rules: {
-            "no-console": "off",
-            "no-unused-vars": "off",
-            "@typescript-eslint/explicit-function-return-type": "off",
-            "@typescript-eslint/no-unused-vars": "off",
-            "eslint-comments/require-description": "off",
-            "import/no-duplicates": "off",
-            "import/no-extraneous-dependencies": "off",
-        },
-    },
+    cypressConfig(),
+    docsConfig(),
+    examplesConfig(),
+    sandboxConfig(),
 
     {
         name: "local/pull-request-changelog",
@@ -118,10 +78,19 @@ export default [
     },
 
     {
-        name: "local/sandbox",
-        files: ["internal/vue-sandbox/**/*.{js,ts,vue}"],
+        /* @todo technical debt */
+        name: "local/technical-debt",
         rules: {
-            "no-console": "off",
+            "@typescript-eslint/no-deprecated": "off",
+            "@typescript-eslint/no-floating-promises": "off",
+            "@typescript-eslint/no-unnecessary-condition": "off",
+            "@typescript-eslint/no-unsafe-argument": "off",
+            "@typescript-eslint/no-unsafe-assignment": "off",
+            "@typescript-eslint/no-unsafe-call": "off",
+            "@typescript-eslint/no-unsafe-return": "off",
+            "@typescript-eslint/restrict-template-expressions": "off",
+            "@typescript-eslint/unbound-method": "off",
+            "sonarjs/slow-regex": "off",
         },
     },
 ];

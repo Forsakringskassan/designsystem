@@ -28,6 +28,7 @@ const columns = defineTableColumns<Row>([
         type: "text",
         header: "Oformaterad text",
         value(row) {
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
             return String(row.antal);
         },
     },

@@ -8,7 +8,8 @@ export const percentValidator: Validator = {
     name: "percent",
     validation(value) {
         const valueWithoutWhitespace = isSet(value)
-            ? stripWhitespace(String(value))
+            ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+              stripWhitespace(String(value))
             : value;
         return (
             isEmpty(valueWithoutWhitespace) ||

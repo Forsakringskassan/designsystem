@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/no-primitive-wrappers -- to ensure it works */
+
 import { isString } from "./is-string";
 
 it.each`

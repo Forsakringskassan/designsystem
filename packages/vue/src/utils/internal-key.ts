@@ -3,11 +3,13 @@ export const internalKey = Symbol("internal-key");
 let internalIndex = 0;
 
 /** @public */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt, this is a weird one */
 export function getInternalKey<T>(): keyof T {
     return internalKey as keyof T;
 }
 
 /** @internal */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt, this is a weird one */
 export function setInternalKey<T>(item: T, value?: string): void {
     if (item[internalKey as keyof T]) {
         return;
@@ -43,9 +45,10 @@ export function setInternalKeys<T>(
     }
 
     return items.map((item, index) => {
-        const value = item[key];
+        const value = item[key] as unknown;
         const keyString = String(key);
         const invalidValue =
+            /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- ok since we only test if the string is empty */
             value === undefined || value === null || String(value).length === 0;
 
         if (invalidValue) {
@@ -55,10 +58,12 @@ export function setInternalKeys<T>(
         }
         if (seenValues.has(value)) {
             throw new Error(
+                /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
                 `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${value}" in item index ${index}.`,
             );
         }
 
+        /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
         setInternalKey(item, String(value));
         seenValues.add(value);
 
