@@ -136,7 +136,7 @@ export function formatPersonnummer(
 export function formatPersonnummerToDate(
     value: PersonnummerString | undefined,
 ): FDate | undefined {
-    const datePart = parseDate(parsePersonnummer(value)?.slice(0, 8) || "");
+    const datePart = parseDate(parsePersonnummer(value)?.slice(0, 8) ?? "");
     if (!datePart) {
         return undefined;
     }

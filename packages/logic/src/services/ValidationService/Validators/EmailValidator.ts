@@ -12,7 +12,7 @@ export interface EmailValidatorConfig extends ValidatorOptions {
 export const emailValidator: Validator<EmailValidatorConfig> = {
     name: "email",
     validation(value, _element, config) {
-        const maxLength = config.maxLength || 254;
+        const maxLength = config.maxLength ?? 254;
         const EMAIL_REGEXP = new RegExp(
             `^(?=.{1,${maxLength}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`,
         );

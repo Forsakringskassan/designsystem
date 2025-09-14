@@ -17,9 +17,9 @@ export function getDisplayMonth(
     initialMonth?: FDate,
 ): FDate {
     let effectiveDate;
-    if (selectedDate && selectedDate.isValid()) {
+    if (selectedDate?.isValid()) {
         effectiveDate = selectedDate;
-    } else if (initialMonth && initialMonth.isValid()) {
+    } else if (initialMonth?.isValid()) {
         effectiveDate = initialMonth;
     } else {
         effectiveDate = FDate.now();
@@ -34,5 +34,5 @@ export function getDisplayMonth(
         month = maxDate?.startOfMonth();
     }
 
-    return month || FDate.now().startOfMonth();
+    return month ?? FDate.now().startOfMonth();
 }

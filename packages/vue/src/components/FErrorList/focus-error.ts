@@ -10,5 +10,5 @@ export function focusError(item: ErrorItem): void {
     const focusElement = document.querySelector(`#${item.focusElementId}`);
 
     scrollTo(element, window.innerHeight * 0.25);
-    focus(focusElement ? focusElement : element);
+    focus(focusElement ?? element);
 }

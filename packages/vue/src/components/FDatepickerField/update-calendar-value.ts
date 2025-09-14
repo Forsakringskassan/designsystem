@@ -22,10 +22,7 @@ export function updateCalendarValue(
         datepicker.calendarValue = undefined;
     } else if (!isDateEnabled(newCalendarValue)) {
         datepicker.calendarValue = undefined;
-    } else if (
-        !datepicker.calendarValue ||
-        !datepicker.calendarValue.equals(newCalendarValue)
-    ) {
+    } else if (!datepicker.calendarValue?.equals(newCalendarValue)) {
         datepicker.calendarValue = newCalendarValue;
     }
 }
