@@ -78,8 +78,8 @@ import axios from "axios";
 /* --- cut above --- */
 
 async function bliFel(): Promise<void> {
-    await axios.get("http://example.net");
-    // alternativt return axios.get('http://example.net');
+    await axios.get("https://example.net");
+    // alternativt return axios.get('https://example.net');
 }
 ```
 
@@ -91,7 +91,7 @@ import axios from "axios";
 /* --- cut above --- */
 
 function bliFel(): void {
-    axios.get("http://example.net");
+    axios.get("https://example.net");
 }
 ```
 
