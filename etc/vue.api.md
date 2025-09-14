@@ -3474,16 +3474,16 @@ calendarButtonText(): string;
 popupClass(): string;
 }, {
 dateFormatter: typeof parseDate;
-onValidityTextField({ detail }: CustomEvent<ValidityEvent>): Promise<void>;
+onValidityTextField({ detail }: CustomEvent<ValidityEvent>): void;
 onChangeTextField(): void;
 onClickCalendarButton(): void;
 onFocusoutTextFieldButton(e: FocusEvent): void;
 onSelectCalendarDay(date: FDate): Promise<void>;
-onKeyupEsc(): Promise<void>;
-onClickCloseCalendarButton(): Promise<void>;
+onKeyupEsc(): void;
+onClickCloseCalendarButton(): void;
 onOpenPopup(): void;
 onClosePopup(): void;
-onValidationConfigUpdate(event: CustomEvent<ValidationConfigUpdateDetail>): Promise<void>;
+onValidationConfigUpdate(event: CustomEvent<ValidationConfigUpdateDetail>): void;
 isDateEnabled(day: FDate): boolean;
 isDaySelected(date: FDate): boolean;
 highlightDay(date: FDate): boolean;
@@ -6187,7 +6187,7 @@ default: () => FModalButtonDescriptor[];
 preparedButtons(): FModalButton[];
 }, {
 onClose(): void;
-onSubmit(): Promise<void>;
+onSubmit(): void;
 onCancel(): void;
 }, ComponentOptions, ComponentOptionsMixin, ("submit" | "close" | "cancel")[], "submit" | "close" | "cancel", PublicProps, Readonly<ExtractPropTypes<    {
 fullscreen: {
@@ -13942,7 +13942,7 @@ totalSteps(): number;
 cssClass(): string;
 }, {
 open(): void;
-onSubmit(): Promise<void>;
+onSubmit(): void;
 onCancel(): void;
 beforeAnimation(open: boolean): Promise<void>;
 afterAnimation(open: boolean): Promise<void>;

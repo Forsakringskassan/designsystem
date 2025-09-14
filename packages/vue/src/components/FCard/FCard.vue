@@ -36,7 +36,7 @@ const props = defineProps({
 
 onMounted(() => (isMounted.value = true));
 
-async function onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void> {
+function onValidity({ detail }: CustomEvent<ValidityEvent>): void {
     if (!isMounted.value) {
         return;
     }

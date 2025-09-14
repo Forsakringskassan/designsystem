@@ -10,8 +10,10 @@ export class DefaultTranslationProvider
         return this.language;
     }
 
-    public async changeLanguage(language: string): Promise<void> {
+    /* @todo technical debt, changeLanguage should accept just void */
+    public changeLanguage(language: string): Promise<void> {
         this.language = language;
+        return Promise.resolve();
     }
 
     public translate(

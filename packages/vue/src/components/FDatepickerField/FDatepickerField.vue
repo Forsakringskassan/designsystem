@@ -181,7 +181,7 @@ export default defineComponent({
     },
     methods: {
         dateFormatter: parseDate,
-        async onValidityTextField({ detail }: CustomEvent<ValidityEvent>) {
+        onValidityTextField({ detail }: CustomEvent<ValidityEvent>) {
             // if state cleared in ValidationService, reset state locally
             if (this.textFieldValidityRevealed && detail.validityMode === "INITIAL") {
                 this.textFieldTouched = false;
@@ -256,13 +256,13 @@ export default defineComponent({
             await this.updateTextFieldValue(date.toString());
             updateCalendarValue(this, date.toString());
         },
-        async onKeyupEsc(): Promise<void> {
+        onKeyupEsc(): void {
             this.isCalendarOpen = false;
             waitForScreenReader(() => {
                 getHTMLElementFromVueRef(this.$refs.calendarButton).focus();
             });
         },
-        async onClickCloseCalendarButton(): Promise<void> {
+        onClickCloseCalendarButton(): void {
             this.isCalendarOpen = false;
             waitForScreenReader(() => {
                 getHTMLElementFromVueRef(this.$refs.calendarButton).focus();
@@ -282,7 +282,7 @@ export default defineComponent({
         onClosePopup(): void {
             this.isCalendarOpen = false;
         },
-        async onValidationConfigUpdate(event: CustomEvent<ValidationConfigUpdateDetail>): Promise<void> {
+        onValidationConfigUpdate(event: CustomEvent<ValidationConfigUpdateDetail>): void {
             this.validationConfig = event.detail.config;
 
             if (this.validationConfig.minDate) {
