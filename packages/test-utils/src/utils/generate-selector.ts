@@ -52,6 +52,7 @@ export function generateSelector(element: Element | null): string {
         }
         cur = parent;
     }
+    ancestry.reverse();
 
-    return ancestry.reverse().join(" > ");
+    return ancestry.join(" > ");
 }
