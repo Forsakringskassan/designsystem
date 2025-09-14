@@ -1758,7 +1758,9 @@ function $emit(type, ...args) {
   eventTarget().dispatchEvent(event);
 }
 function $on(type, callback) {
-  fn.set(callback, (event) => callback(...event.detail));
+  fn.set(callback, (event) => {
+    callback(...event.detail);
+  });
   eventTarget().addEventListener(type, fn.get(callback));
 }
 function $off(type, callback) {
@@ -4590,7 +4592,7 @@ var IPopupError_default = defineComponent14({
       this.$emit("close");
     },
     setArrowOffset() {
-      const wrapper = this.$refs["wrapper"];
+      const wrapper = this.$refs.wrapper;
       const inputIcon = this.anchor?.nextElementSibling;
       if (!inputIcon || !wrapper) {
         return;
@@ -4607,7 +4609,7 @@ var IPopupError_default = defineComponent14({
         return;
       }
       await this.$nextTick();
-      const wrapper = this.$refs["wrapper"];
+      const wrapper = this.$refs.wrapper;
       if (!this.anchor) {
         throw new Error("No anchor element found");
       }
@@ -4626,10 +4628,10 @@ var IPopupError_default = defineComponent14({
         this.teleportDisabled = false;
         wrapper.style.left = `${result.x}px`;
         wrapper.style.top = `${result.y}px`;
-        await this.setArrowOffset();
+        this.setArrowOffset();
         return;
       }
-      await this.setArrowOffset();
+      this.setArrowOffset();
       this.teleportDisabled = true;
       wrapper.style.removeProperty("left");
       wrapper.style.removeProperty("top");
@@ -6633,8 +6635,12 @@ function useHorizontalOffset(options) {
   const offset2 = ref4(0);
   watch2(() => elementRef.value, updateOffset);
   watch2(() => parentRef, updateOffset);
-  onMounted4(() => window.addEventListener("resize", updateOffset));
-  onUnmounted3(() => window.removeEventListener("resize", updateOffset));
+  onMounted4(() => {
+    window.addEventListener("resize", updateOffset);
+  });
+  onUnmounted3(() => {
+    window.removeEventListener("resize", updateOffset);
+  });
   return readonly(offset2);
   function updateOffset() {
     const element = elementRef.value;
@@ -7456,7 +7462,7 @@ var FCheckboxField_default = defineComponent23({
   },
   methods: {
     updateExpandedFlag() {
-      const checkboxInput = getHTMLElementFromVueRef(this.$refs["checkboxInput"]);
+      const checkboxInput = getHTMLElementFromVueRef(this.$refs.checkboxInput);
       this.expanded = checkboxInput.checked;
     },
     emitVModelEvent(event) {
