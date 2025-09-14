@@ -148,7 +148,7 @@ export default defineComponent({
             /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
             getComputedStyle(element).height;
             setTimeout(() => {
-                this.height = parseInt(height as string, 10);
+                this.height = parseInt(height, 10);
                 htmlElement.style.height = height;
             });
         },
