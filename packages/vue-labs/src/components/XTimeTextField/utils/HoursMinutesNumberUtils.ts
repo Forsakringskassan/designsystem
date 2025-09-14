@@ -4,7 +4,7 @@ import {
     isSet,
     stripWhitespace,
 } from "@fkui/logic";
-import { HoursMinutesString } from "../converters";
+import { type HoursMinutesString } from "../converters";
 import {
     HOURS_MINUTES_REGEXP,
     HOURS_MINUTES_WITHOUT_COLON_REGEXP,

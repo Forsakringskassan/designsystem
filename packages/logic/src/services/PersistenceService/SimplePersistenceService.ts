@@ -1,5 +1,5 @@
 import { PersistenceService } from "./PersistenceService";
-import { SimplePersistenceServiceInterface } from "./SimplePersistenceServiceInterface";
+import { type SimplePersistenceServiceInterface } from "./SimplePersistenceServiceInterface";
 
 /**
  * This feature can be used by creating a new file with something like:

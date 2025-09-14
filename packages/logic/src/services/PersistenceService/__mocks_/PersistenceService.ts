@@ -1,4 +1,4 @@
-import { PersistenceServiceInterface } from "../PersistenceServiceInterface";
+import { type PersistenceServiceInterface } from "../PersistenceServiceInterface";
 
 export class PersistenceService<T> implements PersistenceServiceInterface<T> {
     public get = jest.fn();

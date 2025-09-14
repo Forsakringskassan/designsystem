@@ -1,4 +1,4 @@
-import { ValidationServiceInterface } from "./ValidationServiceInterface";
+import { type ValidationServiceInterface } from "./ValidationServiceInterface";
 
 /**
  * @internal

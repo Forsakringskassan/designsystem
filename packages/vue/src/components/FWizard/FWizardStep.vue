@@ -2,12 +2,17 @@
 import { defineComponent, getCurrentInstance, type PropType } from "vue";
 import { DomUtils } from "@fkui/logic";
 import { TranslationMixin } from "../../plugins";
-import { GroupValidityEvent } from "../../types";
+import { type GroupValidityEvent } from "../../types";
 import { getHTMLElementFromVueRef } from "../../utils";
 import { IAnimateExpand, IFlex, IFlexItem } from "../../internal-components";
 import { FValidationForm, type FValidationFormResult } from "../FValidationForm";
 import { FIcon } from "../FIcon";
-import { FWizardApi, FWizardApiInjected, FWizardStepDefinition, type FWizardValidationCallback } from "./FWizardApi";
+import {
+    type FWizardApi,
+    type FWizardStepDefinition,
+    type FWizardValidationCallback,
+    FWizardApiInjected,
+} from "./FWizardApi";
 
 const SCROLL_DURATION = 500;
 

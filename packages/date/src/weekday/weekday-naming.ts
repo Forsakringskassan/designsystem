@@ -1,4 +1,4 @@
-import { Weekday } from "./weekday";
+import { type Weekday } from "./weekday";
 
 /**
  * Weekday naming.

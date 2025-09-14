@@ -1,5 +1,5 @@
 import { inject } from "vue";
-import { ListItem } from "../../types";
+import { type ListItem } from "../../types";
 
 /**
  * @public

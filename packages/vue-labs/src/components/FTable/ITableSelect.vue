@@ -3,8 +3,8 @@ import { nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
 import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { IComboboxDropdown, FIcon } from "@fkui/vue";
 import { useStartStopEdit } from "./start-stop-edit";
-import { NormalizedTableColumnSelect } from "./table-column";
-import { FTableActivateCellEvent } from "./events";
+import { type NormalizedTableColumnSelect } from "./table-column";
+import { type FTableActivateCellEvent } from "./events";
 
 // Props
 // const { modelValue, options, title } = defineProps<{

@@ -8,7 +8,7 @@ import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
 import { IComboboxDropdown, IComboboxToggleButton } from "../../internal-components/combobox";
 import { resolveWidthClass } from "./FTextField.logic";
 import { useTextFieldSetup } from "./useTextFieldSetup";
-import { FormatFunction, ParseFunction } from "./index";
+import { type FormatFunction, type ParseFunction } from "./index";
 
 export default defineComponent({
     name: "FTextField",

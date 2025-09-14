@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
-import { FDate, groupByWeek, getWeekdayNamings } from "@fkui/date";
+import { type FDate, groupByWeek, getWeekdayNamings } from "@fkui/date";
 import { debounce } from "@fkui/logic";
 import { getDayStartOffset, getDayEndOffset } from "./get-day-offset";
 

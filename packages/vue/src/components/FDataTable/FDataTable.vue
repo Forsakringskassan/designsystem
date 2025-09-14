@@ -3,7 +3,7 @@ import { type PropType, computed, onMounted, provide, ref } from "vue";
 import { TableScroll, tableScrollClasses } from "../../utils";
 import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import {
-    FTableColumnData,
+    type FTableColumnData,
     FTableColumnSort,
     addColumn,
     setVisibilityColumn,

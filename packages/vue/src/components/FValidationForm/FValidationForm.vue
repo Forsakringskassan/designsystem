@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { ValidationService, focus, ElementIdService } from "@fkui/logic";
-import { BeforeNavigate, FErrorList } from "../FErrorList";
+import { type BeforeNavigate, FErrorList } from "../FErrorList";
 import { FValidationGroup } from "../FValidationGroup";
-import { GroupValidityEvent, ComponentValidityEvent, ErrorItem } from "../../types";
+import { type GroupValidityEvent, type ComponentValidityEvent, type ErrorItem } from "../../types";
 import { FValidationFormAction, type FValidationFormCallback } from "./types";
 
 export default defineComponent({

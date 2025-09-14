@@ -1,4 +1,4 @@
-import { IterableDate } from "./iterable-date";
+import { type IterableDate } from "./iterable-date";
 
 /**
  * Create and iterator for looping over a date period, e.g. every date between

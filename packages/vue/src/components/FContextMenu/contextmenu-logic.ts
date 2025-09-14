@@ -1,5 +1,5 @@
 import { MenuAction } from "../../types";
-import { ContextMenuItem } from "./contextmenuitem";
+import { type ContextMenuItem } from "./contextmenuitem";
 
 export interface MenuActionTarget {
     readonly currentFocusedItemIndex: number;

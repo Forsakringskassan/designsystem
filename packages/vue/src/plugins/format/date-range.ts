@@ -1,4 +1,4 @@
-import { FDate } from "@fkui/date";
+import { type FDate } from "@fkui/date";
 /**
  * @internal
  */

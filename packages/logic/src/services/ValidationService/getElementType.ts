@@ -1,4 +1,4 @@
-import { ValidatableHTMLElement } from "./ValidationServiceInterface";
+import { type ValidatableHTMLElement } from "./ValidationServiceInterface";
 
 /**
  * Resolves element type for a `ValidatableHTMLElement`.

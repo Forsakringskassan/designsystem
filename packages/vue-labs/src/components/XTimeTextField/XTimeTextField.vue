@@ -2,7 +2,7 @@
 import { type PropType, defineComponent } from "vue";
 import { FTextField, TranslationMixin, type ParseFunction, type FormatFunction, useTextFieldSetup } from "@fkui/vue";
 import { isSet, ValidationService } from "@fkui/logic";
-import { HoursMinutesString, formatNumberToTime, parseTimeToNumber } from "./converters";
+import { type HoursMinutesString, formatNumberToTime, parseTimeToNumber } from "./converters";
 import "./validators";
 
 export default defineComponent({

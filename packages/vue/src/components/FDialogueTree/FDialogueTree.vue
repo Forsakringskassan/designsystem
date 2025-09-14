@@ -4,10 +4,10 @@ import { focus, focusFirst } from "@fkui/logic";
 
 import { FIcon } from "../FIcon";
 import { getHTMLElementsFromVueRef } from "../../utils";
-import { FDialogueTreeData } from "./FDialogueTreeData";
+import { type FDialogueTreeData } from "./FDialogueTreeData";
 import {
     type FDialogueTreeOption,
-    FDialogueTreeQuestion,
+    type FDialogueTreeQuestion,
     type FDialogueTreeUserProgress,
     isDialogueTreeEndQuestion,
 } from "./FDialogueTreeModel";

@@ -2,7 +2,7 @@
 import { type BankAccountNumberString, ValidationService, parseBankAccountNumber } from "@fkui/logic";
 import { defineComponent, type PropType } from "vue";
 import FTextField from "../../FTextField.vue";
-import { ParseFunction } from "../../index";
+import { type ParseFunction } from "../../index";
 import { getInputElement } from "../../../../utils";
 import { TranslationMixin } from "../../../../plugins";
 import { useTextFieldSetup } from "../../useTextFieldSetup";

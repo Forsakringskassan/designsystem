@@ -1,6 +1,13 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
-import { FWizardApi, FWizardKey, FWizardStepDefinition, StepNumber, addStep, removeStep } from "./FWizardApi";
+import {
+    type FWizardApi,
+    type FWizardKey,
+    type FWizardStepDefinition,
+    type StepNumber,
+    addStep,
+    removeStep,
+} from "./FWizardApi";
 
 export default defineComponent({
     name: "FWizard",

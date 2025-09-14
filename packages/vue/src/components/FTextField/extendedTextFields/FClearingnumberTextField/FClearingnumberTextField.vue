@@ -2,7 +2,7 @@
 import { type ClearingnumberString, parseClearingNumber, ValidationService } from "@fkui/logic";
 import { defineComponent, type PropType } from "vue";
 import FTextField from "../../FTextField.vue";
-import { FormatFunction } from "../../index";
+import { type FormatFunction } from "../../index";
 import { getInputElement } from "../../../../utils";
 import { TranslationMixin } from "../../../../plugins";
 import { useTextFieldSetup } from "../../useTextFieldSetup";

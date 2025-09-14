@@ -1,6 +1,6 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { ErrorData } from "../../types";
+import { type ErrorData } from "../../types";
 
 export default defineComponent({
     name: "FErrorPage",

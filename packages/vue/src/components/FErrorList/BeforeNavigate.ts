@@ -1,4 +1,4 @@
-import { ErrorItem } from "../../types";
+import { type ErrorItem } from "../../types";
 
 /**
  * @public

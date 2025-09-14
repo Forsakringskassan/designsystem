@@ -4,7 +4,7 @@ import { deepClone, alertScreenReader, TranslationService } from "@fkui/logic";
 
 import { FIcon } from "../FIcon";
 import { FFormModal, FConfirmModal } from "../FModal";
-import { FModalButtonDescriptor } from "../FModal/modal-button";
+import { type FModalButtonDescriptor } from "../FModal/modal-button";
 import { useTranslate } from "../../plugins";
 import { type FValidationFormCallback } from "../FValidationForm";
 import { Operation } from "./operation";

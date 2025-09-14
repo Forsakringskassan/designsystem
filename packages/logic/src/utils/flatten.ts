@@ -1,4 +1,4 @@
-import { NestedStringRecord } from "../types";
+import { type NestedStringRecord } from "../types";
 
 /**
  * Takes an optionally nested textobject structure and convert to a flat

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, defineComponent, shallowRef, useTemplateRef, watch, type PropType } from "vue";
-import { FDate, FYear } from "@fkui/date";
+import { type FDate, type FYear } from "@fkui/date";
 import { ElementIdService, focus } from "@fkui/logic";
 import ICalendarNavbar from "../../internal-components/calendar/ICalendarNavbar.vue";
 import ICalendarMonth from "../../internal-components/calendar/ICalendarMonth.vue";

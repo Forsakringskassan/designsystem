@@ -1,4 +1,4 @@
-import { FDate } from "@fkui/date";
+import { type FDate } from "@fkui/date";
 import { type TranslateFunction } from "@fkui/logic";
 import { isInvalidMonth } from "./is-invalid-month";
 

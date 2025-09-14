@@ -1,4 +1,4 @@
-import { TranslationProviderInterface } from "./TranslationProviderInterface";
+import { type TranslationProviderInterface } from "./TranslationProviderInterface";
 
 /**
  * @public

@@ -4,7 +4,7 @@ import { assertRef, ValidationService, type ValidityEvent } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
 import { type NormalizedTableColumnText } from "./table-column";
 import { useStartStopEdit } from "./start-stop-edit";
-import { FTableActivateCellEvent } from "./events";
+import { type FTableActivateCellEvent } from "./events";
 import { isAlphanumeric } from "./is-alphanumeric";
 
 const { row, column } = defineProps<{

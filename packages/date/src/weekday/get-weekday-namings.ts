@@ -1,6 +1,6 @@
 import { Locale, getLocale } from "../locale";
 import { Weekday } from "./weekday";
-import { WeekdayNaming } from "./weekday-naming";
+import { type WeekdayNaming } from "./weekday-naming";
 
 const namings: Record<Locale, WeekdayNaming[]> = {
     [Locale.SWEDISH]: [
