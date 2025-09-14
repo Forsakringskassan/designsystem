@@ -58,7 +58,9 @@ export function createDetailsPanel<T>(
                     existing.closeMeMaybe();
                 }
                 exclusiveGroups.set(exclusive, {
-                    closeMeMaybe: () => this.close(),
+                    closeMeMaybe: () => {
+                        this.close();
+                    },
                 });
             }
 
