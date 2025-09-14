@@ -37,7 +37,7 @@ export function useExpandableTable<T extends object>(
     });
 
     const hasExpandableSlot = computed(() => {
-        return Boolean(slots["expandable"]);
+        return Boolean(slots.expandable);
     });
 
     function toggleExpanded(row: T): void {

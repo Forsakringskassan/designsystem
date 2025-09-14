@@ -90,7 +90,7 @@ export default defineComponent({
         async onOpenSecondary(): Promise<void> {
             this.isOpen = true;
             await this.$nextTick();
-            const element = getElementFromVueRef(this.$refs["title"]);
+            const element = getElementFromVueRef(this.$refs.title);
             const heading = element.querySelector("h1, h2, h3, h4, h5, h6");
             focus(heading, { force: true });
         },

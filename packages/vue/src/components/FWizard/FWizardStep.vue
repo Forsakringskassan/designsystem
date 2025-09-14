@@ -167,7 +167,7 @@ export default defineComponent({
             await this.$nextTick();
             this.ignoreClick = true;
             if (!open) {
-                const headerElement = getHTMLElementFromVueRef(this.$refs["header"]);
+                const headerElement = getHTMLElementFromVueRef(this.$refs.header);
                 if (!DomUtils.isVisibleInViewport(headerElement)) {
                     ongoingScrollPromise = DomUtils.scrollTo(headerElement, {
                         duration: SCROLL_DURATION,
@@ -195,7 +195,7 @@ export default defineComponent({
                 }
             }
 
-            const headerElement = getHTMLElementFromVueRef(this.$refs["header"]);
+            const headerElement = getHTMLElementFromVueRef(this.$refs.header);
             await this.$nextTick();
             if (!DomUtils.isVisibleInViewport(headerElement)) {
                 await DomUtils.scrollTo(headerElement, { duration: SCROLL_DURATION, offset: 10 });
