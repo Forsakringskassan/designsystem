@@ -1700,7 +1700,9 @@ function $emit(type, ...args) {
   eventTarget().dispatchEvent(event);
 }
 function $on(type, callback) {
-  fn.set(callback, (event) => callback(...event.detail));
+  fn.set(callback, (event) => {
+    callback(...event.detail);
+  });
   eventTarget().addEventListener(type, fn.get(callback));
 }
 function $off(type, callback) {
