@@ -7,7 +7,7 @@
  */
 export function testLuhnChecksum(inputString: string): boolean {
     let sum = 0;
-    if (/^[0-9]+$/.test(inputString) === false) {
+    if (/^\d+$/.test(inputString) === false) {
         throw new Error(
             "Luhn Checksum test only works on strings containing numbers",
         );

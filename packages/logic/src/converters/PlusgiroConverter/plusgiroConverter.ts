@@ -1,6 +1,6 @@
 import { isEmpty, testLuhnChecksum } from "../../utils";
 
-const PLUSGIRO_REGEXP = /^\d{1,7}[-]?\d{1}$/;
+const PLUSGIRO_REGEXP = /^\d{1,7}-?\d$/;
 
 function hyphenShouldBeAdded(value: string): boolean {
     return value.length >= 2 && value.length <= 8;

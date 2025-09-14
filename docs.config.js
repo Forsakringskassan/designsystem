@@ -26,7 +26,7 @@ function transformAttributes(doc, name, attributes = {}) {
  * @param {import("@forsakringskassan/docs-generator").Document} doc
  */
 function transformHeading(doc) {
-    doc.body = doc.body.replace(/^# ([^\n]*)[\n]+/, (_, title) => {
+    doc.body = doc.body.replace(/^# ([^\n]*)\n+/, (_, title) => {
         doc.attributes.title = title;
         return "";
     });

@@ -67,13 +67,13 @@ describe("FWizardStep", () => {
         stepFruktkorg.nameOnGiftcard.label
             .el()
             .invoke("text")
-            .should("match", /^[\s]?.*Namn på presentkort/);
+            .should("match", /^\s?.*Namn på presentkort/);
         stepFruktkorg.nameOnGiftcard.enter("Kalle");
 
         stepFruktkorg.fruits.label
             .el()
             .invoke("text")
-            .should("match", /^[\s]?.*Vad ska ingå i din fruktkorg?/);
+            .should("match", /^\s?.*Vad ska ingå i din fruktkorg?/);
 
         stepFruktkorg.continue().click();
 
