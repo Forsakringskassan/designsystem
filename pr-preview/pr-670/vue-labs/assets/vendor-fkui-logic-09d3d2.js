@@ -2363,7 +2363,10 @@ function getCandidates(validatorName, validators, elementType) {
 }
 function getElementType(element) {
   if (element instanceof HTMLInputElement) {
-    return element.type === "checkbox" ? "checkbox" : element.type === "radio" ? "radio" : "text";
+    return element.type === "checkbox" ? "checkbox" : (
+      /* eslint-disable-next-line sonarjs/no-nested-conditional -- technical debt */
+      element.type === "radio" ? "radio" : "text"
+    );
   } else if (element instanceof HTMLTextAreaElement) {
     return "textarea";
   } else if (element instanceof HTMLSelectElement) {
@@ -2527,6 +2530,7 @@ var ValidationServiceImpl = class {
       });
     });
   }
+  /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
   async isValid(src, root = document) {
     function isValidSync(src2) {
       if (!src2) {
@@ -2685,7 +2689,10 @@ var ValidationServiceImpl = class {
     return foundValidators.some((validator) => {
       const config = validatorConfigs[validator.name];
       const instantConfig = isSet(config) ? config.instant : void 0;
-      return validator.instant && instantConfig !== false || instantConfig === true;
+      return (
+        /* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- false positive */
+        validator.instant && instantConfig !== false || instantConfig === true
+      );
     });
   }
   getState(id) {
@@ -2912,9 +2919,18 @@ function createNumberRegexp(minDecimals = 0, maxDecimals = 2) {
 var decimalValidator = {
   name: "decimal",
   validation(value, _element, config) {
-    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
-    const minDecimalsAsNumber = isSet(config.minDecimals) ? Number(config.minDecimals) : void 0;
-    const maxDecimalsAsNumber = isSet(config.maxDecimals) ? Number(config.maxDecimals) : void 0;
+    const valueWithoutWhitespace = isSet(value) ? (
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+      stripWhitespace(String(value))
+    ) : value;
+    const minDecimalsAsNumber = isSet(config.minDecimals) ? (
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+      Number(config.minDecimals)
+    ) : void 0;
+    const maxDecimalsAsNumber = isSet(config.maxDecimals) ? (
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+      Number(config.maxDecimals)
+    ) : void 0;
     if (config.minDecimals && isNaN(minDecimalsAsNumber)) {
       throw new Error("config.minDecimals must be a number");
     }
@@ -2960,7 +2976,10 @@ var NUMBER_REGEXP = /^([-−]?\d+)?$/;
 var integerValidator = {
   name: "integer",
   validation(value) {
-    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
+    const valueWithoutWhitespace = isSet(value) ? (
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+      stripWhitespace(String(value))
+    ) : value;
     return isEmpty(valueWithoutWhitespace) || NUMBER_REGEXP.test(valueWithoutWhitespace);
   }
 };
@@ -3081,7 +3100,10 @@ var PERCENT_REGEXP = /^([-+]?\d+)([,.]\d+)?$/;
 var percentValidator = {
   name: "percent",
   validation(value) {
-    const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
+    const valueWithoutWhitespace = isSet(value) ? (
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+      stripWhitespace(String(value))
+    ) : value;
     return isEmpty(valueWithoutWhitespace) || PERCENT_REGEXP.test(valueWithoutWhitespace);
   }
 };

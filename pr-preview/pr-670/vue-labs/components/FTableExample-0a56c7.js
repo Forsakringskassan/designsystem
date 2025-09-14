@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-e9af7f.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-0a56c7.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref as ref2 } from "vue";
 import { FSortFilterDataset } from "@fkui/vue";
@@ -4014,7 +4014,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
   }
 });
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-e9af7f.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-0a56c7.js
 import { formatNumber } from "@fkui/logic";
 
 // src/components/FTable/table-column.ts
@@ -4022,7 +4022,7 @@ function defineTableColumns(columns) {
   return columns;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-e9af7f.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-0a56c7.js
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FTableExample",
@@ -4210,7 +4210,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       }
     ]);
     const sortableAttributes = Object.fromEntries(
-      columns.filter((it) => it.key).map((it) => [it.key, it.header])
+      columns.filter((it) => "key" in it && it.key).map((it) => [it.key, it.header])
     );
     const mySelectedRows = ref2([rows.value[0]]);
     function onButtonClick(id) {
@@ -4314,7 +4314,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e9af7f"
+  selector: "#example-0a56c7"
 });
 export {
   render

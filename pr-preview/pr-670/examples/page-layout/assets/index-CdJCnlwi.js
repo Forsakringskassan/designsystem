@@ -11345,7 +11345,10 @@ function getCandidates$1(validatorName, validators, elementType) {
 }
 function getElementType(element) {
   if (element instanceof HTMLInputElement) {
-    return element.type === "checkbox" ? "checkbox" : element.type === "radio" ? "radio" : "text";
+    return element.type === "checkbox" ? "checkbox" : (
+      /* eslint-disable-next-line sonarjs/no-nested-conditional -- technical debt */
+      element.type === "radio" ? "radio" : "text"
+    );
   } else if (element instanceof HTMLTextAreaElement) {
     return "textarea";
   } else if (element instanceof HTMLSelectElement) {
@@ -11509,6 +11512,7 @@ class ValidationServiceImpl {
       });
     });
   }
+  /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
   async isValid(src, root = document) {
     function isValidSync(src2) {
       if (!src2) {
@@ -11667,7 +11671,10 @@ class ValidationServiceImpl {
     return foundValidators.some((validator) => {
       const config2 = validatorConfigs[validator.name];
       const instantConfig = isSet(config2) ? config2.instant : void 0;
-      return validator.instant && instantConfig !== false || instantConfig === true;
+      return (
+        /* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- false positive */
+        validator.instant && instantConfig !== false || instantConfig === true
+      );
     });
   }
   getState(id) {
@@ -18659,12 +18666,18 @@ function setInternalKeys(items, key, nestedKey, seenValues = /* @__PURE__ */ new
   return items.map((item, index) => {
     const value = item[key];
     const keyString = String(key);
-    const invalidValue = value === void 0 || value === null || String(value).length === 0;
+    const invalidValue = (
+      /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- ok since we only test if the string is empty */
+      value === void 0 || value === null || String(value).length === 0
+    );
     if (invalidValue) {
       throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${index}`);
     }
     if (seenValues.has(value)) {
-      throw new Error(`Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${value}" in item index ${index}.`);
+      throw new Error(
+        /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
+        `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${value}" in item index ${index}.`
+      );
     }
     setInternalKey(item, String(value));
     seenValues.add(value);
@@ -20359,7 +20372,7 @@ function filterOptions(options, filter2, selectMode) {
     return options;
   }
   const filterLowerCased = filter2.toLowerCase();
-  return options.filter((it) => it.toLowerCase().indexOf(filterLowerCased) > -1);
+  return options.filter((it) => it.toLowerCase().includes(filterLowerCased));
 }
 const $t = useTranslate();
 function useCombobox(inputRef, options, onOptionSelected) {
@@ -21676,7 +21689,9 @@ function isTableColumnType(value) {
 }
 function FTableInjected() {
   return {
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
     addColumn: inject("addColumn"),
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
     setVisibilityColumn: inject("setVisibilityColumn"),
     textFieldTableMode: true,
     renderColumns: inject("renderColumns", ref(false))
@@ -22173,6 +22188,7 @@ function useTextFieldSetup(props) {
     textFieldTableMode,
     viewValue,
     onOptionSelected,
+    // eslint-disable-line @typescript-eslint/no-misused-promises -- technical debt
     dropdownId,
     dropdownIsOpen,
     dropdownOptions,
@@ -25474,6 +25490,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
         this.$emit("selectedRoute", key);
       }
     },
+    /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
     async activateItem(index) {
       const popupItemFocused = this.hasOverflow && index === this.overflowIndex;
       if (popupItemFocused) {

@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarSelectDays.vue:FCalendarSelectDays-9c0db8.js
+// virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarSelectDays.vue:FCalendarSelectDays-20a76d.js
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import { FCalendar, FCalendarDay } from "@fkui/vue";
@@ -96,7 +96,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-9c0db8"
+  selector: "#example-20a76d"
 });
 export {
   render

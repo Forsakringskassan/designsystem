@@ -1656,7 +1656,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-98615e.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-962f4c.js
 import { defineComponent as defineComponent12 } from "vue";
 
 // packages/vue/src/utils/ListUtils.ts
@@ -3882,7 +3882,7 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
   }
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-98615e.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-962f4c.js
 import { createElementVNode as _createElementVNode8, vModelSelect as _vModelSelect, withDirectives as _withDirectives, createTextVNode as _createTextVNode3, openBlock as _openBlock12, createElementBlock as _createElementBlock12 } from "vue";
 var SPACING = 10;
 var exampleComponent = defineComponent12({
@@ -3955,11 +3955,13 @@ var exampleComponent = defineComponent12({
       const area = areaElement.getBoundingClientRect();
       const anchor = anchorElement.getBoundingClientRect();
       const left = clamp(
+        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
         clientX + this.drag[0],
         SPACING,
         area.width - anchor.width - SPACING - 2
       );
       const top = clamp(
+        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
         clientY + this.drag[1],
         SPACING,
         area.height - anchor.height - SPACING - 2
@@ -4093,7 +4095,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render12;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-98615e"
+  selector: "#example-962f4c"
 });
 export {
   render12 as render
