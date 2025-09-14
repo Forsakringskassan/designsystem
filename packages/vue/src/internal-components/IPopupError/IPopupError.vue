@@ -140,10 +140,10 @@ export default defineComponent({
                 this.teleportDisabled = false;
                 wrapper.style.left = `${result.x}px`;
                 wrapper.style.top = `${result.y}px`;
-                await this.setArrowOffset();
+                this.setArrowOffset();
                 return;
             }
-            await this.setArrowOffset();
+            this.setArrowOffset();
             this.teleportDisabled = true;
             wrapper.style.removeProperty("left");
             wrapper.style.removeProperty("top");
