@@ -76,7 +76,7 @@ defineComponent({
                     this,
                     MyFormModalComponent,
                 );
-            } catch (err) {
+            } catch {
                 /* handle cancel/close case */
                 return;
             }
@@ -119,7 +119,7 @@ defineComponent({
                         },
                     },
                 );
-            } catch (err) {
+            } catch {
                 /* handle cancel/close case */
                 return;
             }
