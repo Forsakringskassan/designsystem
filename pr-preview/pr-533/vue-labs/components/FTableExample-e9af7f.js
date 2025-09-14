@@ -2486,7 +2486,7 @@ function getCellTarget(tableElement, rowIndex, cellIndex) {
   return tableElement.rows[rowIndex].cells[cellIndex];
 }
 function isTd(element) {
-  return element !== null && element.cellIndex !== void 0;
+  return element?.cellIndex !== void 0;
 }
 function getTr(td) {
   return td.parentElement;
@@ -3825,7 +3825,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     });
     const slots = useSlots();
     const hasExpandableSlot = computed(() => {
-      return Boolean(slots["expandable"]);
+      return Boolean(slots.expandable);
     });
     async function stopEditHandler(element, reason) {
       stopEdit(element, reason);
