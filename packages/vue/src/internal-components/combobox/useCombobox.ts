@@ -94,7 +94,7 @@ export function useCombobox(
     });
 
     // activeOption trigger: sets input aria-activedescendant
-    watchEffect(async () => {
+    watchEffect(() => {
         if (!inputRef.value) {
             return;
         }
@@ -255,7 +255,7 @@ export function useCombobox(
             : false;
     }
 
-    async function onInputKeyDown(event: KeyboardEvent): Promise<void> {
+    function onInputKeyDown(event: KeyboardEvent): void {
         let flag = false;
 
         if (event.ctrlKey || event.shiftKey) {

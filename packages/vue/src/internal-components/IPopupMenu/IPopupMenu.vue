@@ -108,7 +108,7 @@ export default defineComponent({
     watch: {
         isOpen: {
             immediate: true,
-            async handler(newVal): Promise<void> {
+            handler(newVal) {
                 if (newVal) {
                     return;
                 }

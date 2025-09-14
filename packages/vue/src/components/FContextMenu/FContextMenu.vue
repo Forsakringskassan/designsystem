@@ -110,7 +110,7 @@ export default defineComponent({
     watch: {
         isOpen: {
             immediate: true,
-            async handler(): Promise<void> {
+            handler() {
                 if (this.isOpen) {
                     this.currentFocusedItemIndex = -1;
                     this.selectedItem = "";

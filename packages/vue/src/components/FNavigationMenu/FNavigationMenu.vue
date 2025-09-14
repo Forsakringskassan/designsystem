@@ -181,7 +181,7 @@ export default defineComponent({
     },
     watch: {
         route: {
-            async handler(value: string): Promise<void> {
+            handler(value: string) {
                 this.selectedItem = value;
             },
             immediate: true,

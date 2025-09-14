@@ -150,7 +150,7 @@ export default defineComponent({
         open(): void {
             this.openStep(this.step);
         },
-        async onSubmit(): Promise<void> {
+        onSubmit(): void {
             if (this.ignoreClick) {
                 return;
             }
