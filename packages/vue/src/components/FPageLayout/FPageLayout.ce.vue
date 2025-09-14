@@ -54,13 +54,17 @@ onMounted(() => {
 
         /* allow slots to settle before we dispatch the update event otherwise
          * the updated data will not yet be available */
-        nextTick(() => emit("update"));
+        nextTick(() => {
+            emit("update");
+        });
 
         useMutationObserver(
             host,
             () => {
                 slotNames.value = getSlotNames(host);
-                nextTick(() => emit("update"));
+                nextTick(() => {
+                    emit("update");
+                });
             },
             {
                 childList: true,

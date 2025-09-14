@@ -65,7 +65,9 @@ function $emit(type: string, ...args: unknown[]): void {
 }
 
 function $on(type: string, callback: (...data: unknown[]) => void): void {
-    fn.set(callback, (event: CustomEvent) => callback(...event.detail));
+    fn.set(callback, (event: CustomEvent) => {
+        callback(...event.detail);
+    });
     eventTarget().addEventListener(type, fn.get(callback));
 }
 

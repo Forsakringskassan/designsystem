@@ -316,7 +316,9 @@ provide(
 
 watch(
     () => props.rows,
-    () => setSelectedRows(),
+    () => {
+        setSelectedRows();
+    },
     { immediate: true, deep: true },
 );
 
@@ -340,7 +342,9 @@ watch(
 
 watch(
     () => props.modelValue,
-    () => setSelectedRows(),
+    () => {
+        setSelectedRows();
+    },
     { immediate: true, deep: true },
 );
 

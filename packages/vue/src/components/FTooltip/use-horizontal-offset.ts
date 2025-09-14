@@ -16,8 +16,12 @@ export function useHorizontalOffset(options: {
     watch(() => parentRef, updateOffset);
 
     /* @todo debounce */
-    onMounted(() => window.addEventListener("resize", updateOffset));
-    onUnmounted(() => window.removeEventListener("resize", updateOffset));
+    onMounted(() => {
+        window.addEventListener("resize", updateOffset);
+    });
+    onUnmounted(() => {
+        window.removeEventListener("resize", updateOffset);
+    });
 
     return readonly(offset);
 

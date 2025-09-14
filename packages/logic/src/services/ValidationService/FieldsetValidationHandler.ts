@@ -26,7 +26,9 @@ class FieldsetValidationHandler {
         Object.assign(this);
         this.element = element;
         this.validationService = validationService;
-        element.addEventListener("focusin", (event) => this.onFocusIn(event));
+        element.addEventListener("focusin", (event) => {
+            this.onFocusIn(event);
+        });
         // Handle checking of input by using keyboard (space)
         element.addEventListener("change", this.documentFocusIn.bind(this));
 
