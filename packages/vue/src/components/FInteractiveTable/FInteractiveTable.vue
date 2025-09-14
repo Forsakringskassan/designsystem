@@ -433,7 +433,7 @@ function onSelect(row: T): void {
 }
 
 function setSelectedRows(): void {
-    if (!props.modelValue || !props.modelValue.length) {
+    if (!props.modelValue?.length) {
         selectedRows.value = [];
         return;
     }

@@ -69,7 +69,7 @@ function getCellTarget(
 function isTd(
     element: (HTMLElement & { cellIndex?: number }) | null,
 ): element is HTMLTableCellElement & { parentElement: HTMLTableRowElement } {
-    return element !== null && element.cellIndex !== undefined;
+    return element?.cellIndex !== undefined;
 }
 
 function getTr(td: HTMLTableCellElement): HTMLTableRowElement {

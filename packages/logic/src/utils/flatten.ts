@@ -32,7 +32,7 @@ export function flatten(
     destination?: Record<string, string>,
     prefix = "",
 ): Record<string, string> {
-    destination = destination || {};
+    destination = destination ?? {};
     return Object.entries(src).reduce((result, [key, data]) => {
         const nestedKey = `${prefix}${key}`;
         if (typeof data === "string") {

@@ -56,7 +56,7 @@ export function scrollTo(
         window.scrollTo({ top: scroll, behavior: "smooth" });
         return Promise.resolve();
     } else {
-        return scrollToSlow(element, arg.duration || 500, arg.offset || 0);
+        return scrollToSlow(element, arg.duration ?? 500, arg.offset ?? 0);
     }
 }
 

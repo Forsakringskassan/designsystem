@@ -68,8 +68,8 @@ export default defineComponent({
             return isSet(this.originalMimeType) && this.originalMimeType !== this.mimeType;
         },
         mimeTypeChangedText(): string {
-            const originalMimeType = (this.originalMimeType || "").split("/").pop() || "";
-            const currentMimeType = (this.mimeType || "").split("/").pop() || "";
+            const originalMimeType = (this.originalMimeType ?? "").split("/").pop() ?? "";
+            const currentMimeType = (this.mimeType ?? "").split("/").pop() ?? "";
             const localChangedMimeTypeText =
                 this.changedMimeTypeText ??
                 this.$t("fkui.file-item.changed-mime-type.text", "(%before% ändrad till %after%)");

@@ -72,7 +72,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
         const match = value.match(
             /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/,
         );
-        if (match && match.groups) {
+        if (match?.groups) {
             const date = new FDate(value);
             const { month } = match.groups;
             /* in dayjs (and native Date) when the day overflows (e.g. 31 feb)

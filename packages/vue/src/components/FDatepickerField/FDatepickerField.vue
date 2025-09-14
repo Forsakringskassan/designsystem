@@ -142,7 +142,7 @@ export default defineComponent({
     computed: {
         calendarButtonText(): string {
             const { calendarValue } = this;
-            if (calendarValue && calendarValue.isValid()) {
+            if (calendarValue?.isValid()) {
                 const prettyDate = calendarValue.toString(DateFormat.FULL);
                 const text = this.$t("fkui.datepicker-field.change", "Ändra datum");
                 return `${text} ${prettyDate}`;

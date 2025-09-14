@@ -25,7 +25,7 @@ export function normalizeDateFormat(value: string): string | undefined {
     const match = supportedFormats
         .map((pattern) => value.match(pattern))
         .find(Boolean);
-    if (!match || !match.groups) {
+    if (!match?.groups) {
         return undefined;
     }
     const { year, month, day } = match.groups;
