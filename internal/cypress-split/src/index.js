@@ -22,11 +22,13 @@ function chunkify(a, n) {
     if (len % n === 0) {
         const size = Math.floor(len / n);
         while (i < len) {
+            /* eslint-disable-next-line sonarjs/no-nested-assignment -- technical debt */
             out.push(a.slice(i, (i += size)));
         }
     } else {
         while (i < len) {
             const size = Math.ceil((len - i) / n--);
+            /* eslint-disable-next-line sonarjs/no-nested-assignment -- technical debt */
             out.push(a.slice(i, (i += size)));
         }
     }

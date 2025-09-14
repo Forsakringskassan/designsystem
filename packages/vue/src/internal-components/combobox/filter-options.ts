@@ -11,7 +11,5 @@ export function filterOptions(
 
     const filterLowerCased = filter.toLowerCase();
 
-    return options.filter(
-        (it) => it.toLowerCase().indexOf(filterLowerCased) > -1,
-    );
+    return options.filter((it) => it.toLowerCase().includes(filterLowerCased));
 }

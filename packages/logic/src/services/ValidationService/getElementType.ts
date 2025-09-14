@@ -14,7 +14,8 @@ export function getElementType(
     if (element instanceof HTMLInputElement) {
         return element.type === "checkbox"
             ? "checkbox"
-            : element.type === "radio"
+            : /* eslint-disable-next-line sonarjs/no-nested-conditional -- technical debt */
+              element.type === "radio"
               ? "radio"
               : "text";
     } else if (element instanceof HTMLTextAreaElement) {

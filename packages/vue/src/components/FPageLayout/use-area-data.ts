@@ -29,6 +29,7 @@ export interface UseAreaData {
     readonly direction: Readonly<Ref<LayoutAreaDirection | null>>;
 }
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function getProperty<T>(style: CSSStyleDeclaration, key: string): T | null {
     const value = style.getPropertyValue(key);
     if (value === "") {

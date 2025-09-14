@@ -78,7 +78,7 @@ export function useTextFieldSetup(props: TextFieldSetupProps): {
     return {
         textFieldTableMode,
         viewValue,
-        onOptionSelected,
+        onOptionSelected, // eslint-disable-line @typescript-eslint/no-misused-promises -- technical debt
         dropdownId,
         dropdownIsOpen,
         dropdownOptions,

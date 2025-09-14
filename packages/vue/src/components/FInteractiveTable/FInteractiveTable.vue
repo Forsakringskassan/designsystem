@@ -44,7 +44,7 @@ const internalKey = getInternalKey<T>();
 
 const activeRow = ref<T | undefined>(undefined);
 const columns = ref<FTableColumnData[]>([]);
-const selectedRows = ref<T[]>([]) as Ref<T[]>;
+const selectedRows = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
 const tr = shallowRef<HTMLElement[]>([]);
 const trAll = shallowRef<HTMLElement[]>([]);
 const tbodyKey = ref(0);
@@ -442,6 +442,7 @@ function setSelectedRows(): void {
         return;
     }
     selectedRows.value = props.modelValue.filter((row: T) => {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
         return includeItem<T, K>(row, internalRows.value, internalKey as K);
     });
 }
@@ -567,6 +568,7 @@ function updateActiveRowFromVModel(): void {
     if (props.active === undefined) {
         setActiveRow(undefined);
     } else if (!itemEquals(props.active, activeRow.value, internalKey)) {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
         setActiveRow(props.active as T);
     }
 }

@@ -46,6 +46,7 @@ export interface ValidatorOptions {
  * @public
  */
 export type ValidatorConfigs = Record<
+    /* eslint-disable-next-line @typescript-eslint/no-duplicate-type-constituents -- technical debt */
     ValidatorName | string,
     ValidatorConfig | undefined
 >;
@@ -226,6 +227,7 @@ export interface ValidationServiceInterface {
      * @param validationErrorMessageMap - the map with translation for validators
      */
     addValidationErrorMessages(
+        /* eslint-disable-next-line @typescript-eslint/no-duplicate-type-constituents -- technical debt */
         validationErrorMessageMap: Record<ValidatorName | string, string>,
     ): void;
 

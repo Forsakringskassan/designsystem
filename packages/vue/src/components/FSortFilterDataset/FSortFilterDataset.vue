@@ -22,7 +22,7 @@ const useDefaultSortOrder = ref(true);
 const searchString = ref("");
 const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 };
 const sortAttribute = ref<SortOrder>(defaultSortValue);
-const sortFilterResult = ref<T[]>([]) as Ref<T[]>;
+const sortFilterResult = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
 const debouncedFilterResultset = debounce(filterResultset, 250);
 
 let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {

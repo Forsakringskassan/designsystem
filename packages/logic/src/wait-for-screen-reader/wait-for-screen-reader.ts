@@ -25,6 +25,7 @@ export function waitForScreenReader<TReturn = void>(
                 const result = callback();
                 resolve(result);
             } catch (err: unknown) {
+                /* eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- technical debt */
                 reject(err);
             }
         }, delay);

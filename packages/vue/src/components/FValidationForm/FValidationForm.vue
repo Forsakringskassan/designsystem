@@ -120,7 +120,8 @@ export default defineComponent({
                 focus(this.$refs.errors as HTMLElement);
             } else {
                 const firstError = this.validity.componentsWithError[0];
-                const element = document.getElementById(firstError.focusElementId) as HTMLElement;
+                /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+                const element = document.getElementById(firstError.focusElementId)!;
                 focus(element);
             }
 

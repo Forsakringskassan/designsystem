@@ -5,6 +5,7 @@ import { isSet } from "../../../../utils";
 /**
  * @internal
  */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function numberValidator<K extends keyof T, T extends ValidatorConfig>(
     value: string,
     config: Partial<T>,

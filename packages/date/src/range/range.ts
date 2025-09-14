@@ -32,6 +32,7 @@ export function* range<T extends IterableDate<T>>(
     end: T,
 ): Generator<T> {
     if (end.isBefore(begin)) {
+        /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- the types this will be used with will have a proper toString() method */
         const message = `Begin (${begin.toString()}) must be earlier or equal to end (${end.toString()})`;
         throw new Error(message);
     }

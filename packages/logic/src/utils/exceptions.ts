@@ -10,6 +10,7 @@ export class DecoratedError extends Error {
     public constructor(message: string, cause: Error) {
         super(message);
         Object.setPrototypeOf(this, DecoratedError.prototype);
+        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
         this.stack += `\nCaused by: ${cause.stack}`;
         this.cause = cause;
     }

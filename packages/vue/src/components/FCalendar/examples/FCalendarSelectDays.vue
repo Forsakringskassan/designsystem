@@ -27,6 +27,7 @@ export default defineComponent({
             }
         },
         isSelected(date) {
+            /* eslint-disable-next-line @typescript-eslint/no-confusing-void-expression -- false positive */
             return this.selected.find((it) => date.equals(it)) !== undefined;
         },
     },

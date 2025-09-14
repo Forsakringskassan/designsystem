@@ -96,7 +96,7 @@ export function useExpandableTable<T extends object>(
     }
 
     function expandableRows(row: T): T[] | undefined {
-        const expandableRows = row[expandableAttribute as keyof T];
+        const expandableRows = row[expandableAttribute as keyof T] as unknown;
 
         if (expandableRows === undefined || expandableRows === null) {
             return undefined;
@@ -108,7 +108,7 @@ export function useExpandableTable<T extends object>(
             return undefined;
         }
 
-        return expandableRows;
+        return expandableRows as T[];
     }
 
     function hasExpandableContent(row: T): boolean {
@@ -132,7 +132,8 @@ export function useExpandableTable<T extends object>(
                 continue;
             }
 
-            const nestedRows = expandableRows(currentRow) as T[];
+            /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+            const nestedRows = expandableRows(currentRow)!;
             for (const currentNestedRow of nestedRows) {
                 if (currentNestedRow === row) {
                     return index;

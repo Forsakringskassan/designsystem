@@ -74,11 +74,13 @@ export default defineComponent({
             const area = areaElement.getBoundingClientRect();
             const anchor = anchorElement.getBoundingClientRect();
             const left = clamp(
+                /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
                 clientX + this.drag[0],
                 SPACING,
                 area.width - anchor.width - SPACING - 2,
             );
             const top = clamp(
+                /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
                 clientY + this.drag[1],
                 SPACING,
                 area.height - anchor.height - SPACING - 2,

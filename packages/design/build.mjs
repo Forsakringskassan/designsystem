@@ -13,7 +13,6 @@ import postcssUrl from "postcss-url";
 import varFuncFallback from "postcss-var-func-fallback";
 
 /* fkui theme */
-/* eslint-disable-next-line import/extensions -- should be mapped with subpackage exports */
 import fkuiTheme from "@fkui/theme-default/dist/fkui-css-variables.js";
 
 const themes = {

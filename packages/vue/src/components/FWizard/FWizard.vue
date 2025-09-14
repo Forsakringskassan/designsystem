@@ -26,7 +26,7 @@ export default defineComponent({
             unregister: this.unregister,
             getStepCount: this.getStepCount,
             openStep: this.openStep,
-            openNext: this.openNext,
+            openNext: this.openNext, // eslint-disable-line @typescript-eslint/no-misused-promises -- technical debt
             cancel: this.cancel,
             inheritedProps,
         };

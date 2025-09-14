@@ -317,6 +317,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         });
     }
 
+    /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
     public async isValid(
         src: string | string[] | Element | Element[] | null,
         root: Document | Element = document,
@@ -416,6 +417,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
                 const tagName = element.tagName.toLowerCase();
                 const ref = `${tagName}#${element.id}`;
                 element.removeEventListener("validity", once);
+                /* eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- technical debt */
                 reject(
                     `Element "${ref}" did not respond with validity event after 500ms`,
                 );
@@ -537,6 +539,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
             const config = validatorConfigs[validator.name];
             const instantConfig = isSet(config) ? config.instant : undefined;
             return (
+                /* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- false positive */
                 (validator.instant && instantConfig !== false) ||
                 instantConfig === true
             );

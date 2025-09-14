@@ -96,7 +96,7 @@ describe("FCalendar default", () => {
         calendar.day(-3).number().should("have.trimmedText", "28");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    /* eslint-disable-next-line mocha/no-pending-tests -- temporary to get builds running */
     it.skip("should match screenshot", () => {
         cy.toMatchScreenshot();
     });
@@ -193,7 +193,7 @@ describe("FCalendar with year selector", () => {
         calendar.navYearSelectorButton().should("have.focus");
     });
 
-    /* eslint-disable-next-line mocha/no-skipped-tests -- temporary to get builds running */
+    /* eslint-disable-next-line mocha/no-pending-tests -- temporary to get builds running */
     it.skip("should match screenshot", () => {
         calendar.navYearSelectorButton().click();
         calendar.yearSelector().should("exist");

@@ -245,6 +245,7 @@ export default defineComponent({
         },
         async updateCheckboxChildren(): Promise<void> {
             await this.$nextTick();
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
             const checkboxes = Array.from(this.$el.querySelectorAll('input[type="checkbox"]')) as HTMLInputElement[];
             if (!isEqual(this.children, checkboxes)) {
                 this.children = checkboxes;

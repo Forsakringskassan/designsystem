@@ -77,7 +77,7 @@ describe("removeStep()", () => {
 
     beforeEach(() => {
         const [a, b, c] = Array.from(document.querySelectorAll("p"));
-        stepB = addStep(steps, "b", b);
+        stepB = addStep(steps, "b", b); // eslint-disable-line sonarjs/no-dead-store -- for consistency
         stepA = addStep(steps, "a", a);
         stepC = addStep(steps, "c", c);
     });

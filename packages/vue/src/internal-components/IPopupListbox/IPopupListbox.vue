@@ -11,7 +11,7 @@ export interface IPopupListboxProps {
     anchor: HTMLElement | null;
     numOfItems: number;
     itemHeight?: number;
-    activeElement?: HTMLElement | undefined;
+    activeElement?: HTMLElement;
 }
 
 const {
@@ -128,6 +128,7 @@ async function calculatePosition(): Promise<void> {
 
     let contentItemHeigth = itemHeight;
     if (!contentItemHeigth) {
+        /* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- technical debt */
         if (!guessedItemHeight) {
             guessedItemHeight = guessItemHeight(numOfItems, contentWrapper);
         }
@@ -149,6 +150,7 @@ async function calculatePosition(): Promise<void> {
         const { top, left, width, height } = rect;
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
         const offsetLeft = offsetRect?.x ?? 0;
+        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
         wrapperElement.style.top = `${top - offSetTop}px`;
         wrapperElement.style.left = `${left - offsetLeft}px`;

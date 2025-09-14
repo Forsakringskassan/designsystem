@@ -84,6 +84,7 @@ export function openModal<T = void>(
             } catch (err) /* istanbul ignore next */ {
                 /* eslint-disable-next-line no-console -- expected to log */
                 console.error(err);
+                /* eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- technical debt */
                 reject(err);
             }
         };

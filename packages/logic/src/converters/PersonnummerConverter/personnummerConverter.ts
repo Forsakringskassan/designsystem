@@ -55,6 +55,7 @@ export function parsePersonnummer(
         return undefined;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/prefer-regexp-exec -- technical debt */
     const match = stripWhitespace(value).match(PERSONNUMMER_REGEXP);
     if (!match) {
         return undefined;

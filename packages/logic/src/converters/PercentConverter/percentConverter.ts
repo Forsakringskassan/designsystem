@@ -14,5 +14,6 @@ export function formatPercent(
  * @public
  */
 export function parsePercent(viewValue: string): number {
-    return parseNumber(viewValue) as number;
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+    return parseNumber(viewValue)!;
 }

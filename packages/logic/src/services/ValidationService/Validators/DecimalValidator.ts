@@ -21,13 +21,16 @@ export const decimalValidator: Validator<DecimalValidatorConfig> = {
     name: "decimal",
     validation(value, _element, config) {
         const valueWithoutWhitespace = isSet(value)
-            ? stripWhitespace(String(value))
+            ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+              stripWhitespace(String(value))
             : value;
         const minDecimalsAsNumber = isSet(config.minDecimals)
-            ? Number(config.minDecimals)
+            ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+              Number(config.minDecimals)
             : undefined;
         const maxDecimalsAsNumber = isSet(config.maxDecimals)
-            ? Number(config.maxDecimals)
+            ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+              Number(config.maxDecimals)
             : undefined;
 
         /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt, should actually verfiy value instead */

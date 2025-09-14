@@ -22,6 +22,7 @@ export function formatPostalCode(
         return undefined;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/prefer-regexp-exec -- technical debt */
     const match = value.match(POSTAL_CODE_REGEXP);
     if (match === null) {
         return undefined;

@@ -1,13 +1,8 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
-    "extends": ["../../tsdoc.json"],
     "tagDefinitions": [
         {
-            "tagName": "@ignore",
-            "syntaxKind": "modifier"
-        },
-        {
-            "tagName": "@slot",
+            "tagName": "@since",
             "syntaxKind": "block"
         }
     ]

@@ -70,6 +70,7 @@ function normalizeFolders(folders) {
  * @returns {void}
  */
 function serve(port, folders, options) {
+    /* eslint-disable-next-line sonarjs/x-powered-by -- for internal use only */
     const app = express();
 
     if (!options.silent) {

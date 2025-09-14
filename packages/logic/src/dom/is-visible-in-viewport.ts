@@ -5,6 +5,7 @@
  */
 export function isVisibleInViewport(element: Element): boolean {
     const rect = element.getBoundingClientRect();
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
     return Boolean(
         rect.top >= 0 &&
             rect.left >= 0 &&
