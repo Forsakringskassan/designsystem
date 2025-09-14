@@ -1,5 +1,5 @@
-import { TranslationServiceInterface } from "./TranslationServiceInterface";
-import { TranslationProviderInterface } from "./TranslationProviderInterface";
+import { type TranslationServiceInterface } from "./TranslationServiceInterface";
+import { type TranslationProviderInterface } from "./TranslationProviderInterface";
 import { DefaultTranslationProvider } from "./DefaultTranslationProvider";
 
 class TranslationServiceImpl implements TranslationServiceInterface {

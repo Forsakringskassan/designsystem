@@ -1,5 +1,5 @@
 import { type StackHandle } from "@fkui/logic";
-import { Placement } from "./IPopupUtils";
+import { type Placement } from "./IPopupUtils";
 
 /**
  * @public

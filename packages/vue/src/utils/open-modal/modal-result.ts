@@ -1,4 +1,4 @@
-import { ModalReason } from "./modal-reason";
+import { type ModalReason } from "./modal-reason";
 
 /**
  * @public

@@ -2,7 +2,7 @@
 import { formatNumber, parseNumber, ValidationService } from "@fkui/logic";
 import { defineComponent, type PropType } from "vue";
 import FTextField from "../../FTextField.vue";
-import { FormatFunction, ParseFunction } from "../../index";
+import { type FormatFunction, type ParseFunction } from "../../index";
 import { getInputElement } from "../../../../utils";
 import { useTextFieldSetup } from "../../useTextFieldSetup";
 

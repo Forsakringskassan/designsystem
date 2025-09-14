@@ -1,6 +1,6 @@
 <script lang="ts">
 import { capitalize, defineComponent, type PropType } from "vue";
-import { FDate } from "@fkui/date";
+import { type FDate } from "@fkui/date";
 import { alertScreenReader, ElementIdService } from "@fkui/logic";
 import { FIcon } from "../../components/FIcon";
 import { TranslationMixin } from "../../plugins";

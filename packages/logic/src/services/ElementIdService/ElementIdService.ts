@@ -1,4 +1,4 @@
-import { ElementIdServiceInterface } from "./ElementIdServiceInterface";
+import { type ElementIdServiceInterface } from "./ElementIdServiceInterface";
 
 class ElementIdServiceImpl implements ElementIdServiceInterface {
     private elementIdMap = new Map<string, { count: number }>();

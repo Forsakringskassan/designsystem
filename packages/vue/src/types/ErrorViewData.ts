@@ -1,4 +1,4 @@
-import { ErrorData } from "./ErrorData";
+import { type ErrorData } from "./ErrorData";
 
 /**
  * @public

@@ -2,8 +2,8 @@
 import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem } from "@fkui/vue";
-import { NormalizedTableColumn } from "./table-column";
-import { FTableActivateCellEvent } from "./events";
+import { type NormalizedTableColumn } from "./table-column";
+import { type FTableActivateCellEvent } from "./events";
 
 const { column, sortEnabled, sortOrder } = defineProps<{
     column: NormalizedTableColumn<T, K>;

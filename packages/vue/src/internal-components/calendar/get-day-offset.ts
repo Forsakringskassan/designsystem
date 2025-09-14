@@ -1,4 +1,4 @@
-import { FDate } from "@fkui/date";
+import { type FDate } from "@fkui/date";
 
 /**
  * Returns passed days in week before first day in array.

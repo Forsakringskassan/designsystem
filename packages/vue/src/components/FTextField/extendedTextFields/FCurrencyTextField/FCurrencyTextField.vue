@@ -1,7 +1,7 @@
 <script lang="ts">
 import { formatNumber, parseNumber, ValidationService } from "@fkui/logic";
 import { defineComponent, type PropType } from "vue";
-import { FormatFunction, ParseFunction } from "../../index";
+import { type FormatFunction, type ParseFunction } from "../../index";
 import FTextField from "../../FTextField.vue";
 import { getInputElement } from "../../../../utils";
 import { TranslationMixin } from "../../../../plugins";

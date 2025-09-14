@@ -1,4 +1,4 @@
-import { FDate } from "@fkui/date";
+import { type FDate } from "@fkui/date";
 
 export function isMonthBefore(date: FDate, minDate?: FDate): boolean {
     return Boolean(minDate && date.isBefore(minDate.startOfMonth()));

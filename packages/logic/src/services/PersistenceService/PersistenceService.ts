@@ -1,4 +1,4 @@
-import { PersistenceServiceInterface } from "./PersistenceServiceInterface";
+import { type PersistenceServiceInterface } from "./PersistenceServiceInterface";
 
 /* istanbul ignore next: manually tested */
 const haveSessionStorage = /* @__PURE__ */ (() => {

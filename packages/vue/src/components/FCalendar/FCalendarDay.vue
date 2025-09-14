@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
-import { FDate } from "@fkui/date";
+import { type FDate } from "@fkui/date";
 import { TranslationMixin } from "../../plugins";
 import { getCalendarDaySrText } from "./get-calendar-day-sr-text";
 

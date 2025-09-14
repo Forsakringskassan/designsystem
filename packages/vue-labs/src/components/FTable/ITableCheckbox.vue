@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import { FTableActivateCellEvent } from "./events";
+import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnCheckbox } from "./table-column";
 
 const { column, row } = defineProps<{

@@ -1,5 +1,5 @@
 import { FLabelPageObject } from "./FLabel.pageobject";
-import { DefaultCypressChainable, BasePageObject } from "./common";
+import { type DefaultCypressChainable, type BasePageObject } from "./common";
 import { FRadioFieldPageObject } from "./FRadioField.pageobject";
 import { FTooltipPageObject } from "./FTooltip.pageobject";
 import { FCheckboxFieldPageObject } from "./FCheckboxField.pageobject";

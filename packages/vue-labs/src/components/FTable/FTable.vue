@@ -3,7 +3,7 @@
     lang="ts"
     generic="T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
 >
-import { computed, onMounted, provide, type Ref, ref, useSlots, useTemplateRef, watchEffect } from "vue";
+import { type Ref, computed, onMounted, provide, ref, useSlots, useTemplateRef, watchEffect } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FSortFilterDatasetInjected, setInternalKeys } from "@fkui/vue";
 import {
@@ -17,9 +17,9 @@ import ITableRow from "./ITableRow.vue";
 import {
     type NormalizedTableColumnCheckbox,
     type TableColumn,
-    normalizeTableColumns,
     type NormalizedTableColumnRadio,
-    NormalizedTableColumn,
+    type NormalizedTableColumn,
+    normalizeTableColumns,
 } from "./table-column";
 import ITableSelect from "./ITableSelect.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
@@ -30,7 +30,7 @@ import ITableText from "./ITableText.vue";
 import ITablePager from "./ITablePager.vue";
 import ITableHeader from "./ITableHeader.vue";
 import { stopEditKey } from "./start-stop-edit";
-import { MetaRow } from "./MetaRow";
+import { type MetaRow } from "./MetaRow";
 
 type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
     ? Required<T>[ExpandableAttribute][number]
@@ -153,7 +153,7 @@ const tableClasses = computed(() => {
 
 const slots = useSlots();
 const hasExpandableSlot = computed(() => {
-    return Boolean(slots["expandable"]);
+    return Boolean(slots.expandable);
 });
 
 async function stopEditHandler(

@@ -14,7 +14,7 @@ import {
     isValidatableHTMLElement,
     ValidationService,
 } from "@fkui/logic";
-import { ComponentValidityEvent } from "../../types";
+import { type ComponentValidityEvent } from "../../types";
 
 import { dispatchComponentUnmountEvent } from "../../utils";
 

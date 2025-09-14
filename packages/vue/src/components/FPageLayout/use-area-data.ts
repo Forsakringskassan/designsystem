@@ -7,7 +7,10 @@ import {
     watchEffect,
 } from "vue";
 import { useEventListener } from "@vueuse/core";
-import { LayoutAreaAttachPanel, LayoutAreaDirection } from "./define-layout";
+import {
+    type LayoutAreaAttachPanel,
+    type LayoutAreaDirection,
+} from "./define-layout";
 import {
     VAR_NAME_AREA,
     VAR_NAME_ATTACH_PANEL,

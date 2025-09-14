@@ -1,7 +1,7 @@
 import { isVisible } from "@fkui/logic";
 import { getInternalKey } from "@fkui/vue";
-import { MetaRow } from "./MetaRow";
-import { FTableActivateCellEvent } from "./events";
+import { type MetaRow } from "./MetaRow";
+import { type FTableActivateCellEvent } from "./events";
 
 interface TableCellIndex {
     row: number;

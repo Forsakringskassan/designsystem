@@ -3,7 +3,7 @@ import { defineComponent, type PropType } from "vue";
 import FModal from "../FModal.vue";
 import { sizes } from "../sizes";
 
-import { FModalButton, FModalButtonDescriptor, prepareButtonList } from "../modal-button";
+import { type FModalButton, type FModalButtonDescriptor, prepareButtonList } from "../modal-button";
 import { config, FKUIConfigButtonOrder } from "../../../config";
 
 const defaultButtons: FModalButtonDescriptor[] = [

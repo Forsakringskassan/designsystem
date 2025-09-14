@@ -7,7 +7,10 @@ import { FSelectField } from "../FSelectField";
 import { FIcon } from "../FIcon";
 import { FTextField } from "../FTextField";
 import { useTranslate } from "../../plugins";
-import { FSortFilterDatasetSortCallback, FSortFilterDatasetMountCallback } from "./FSortFilterDatasetInterface";
+import {
+    type FSortFilterDatasetSortCallback,
+    type FSortFilterDatasetMountCallback,
+} from "./FSortFilterDatasetInterface";
 import { sort } from "./FSortFilterSorter";
 import { filter } from "./FSortFilterFilter";
 import { type SortOrder } from "./sort-order";

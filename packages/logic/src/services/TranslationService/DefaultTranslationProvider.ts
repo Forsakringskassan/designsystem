@@ -1,5 +1,5 @@
 import { isSet } from "../../utils";
-import { TranslationProviderInterface } from "./TranslationProviderInterface";
+import { type TranslationProviderInterface } from "./TranslationProviderInterface";
 
 export class DefaultTranslationProvider
     implements TranslationProviderInterface

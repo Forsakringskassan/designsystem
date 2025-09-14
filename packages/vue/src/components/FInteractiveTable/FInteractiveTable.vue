@@ -18,7 +18,7 @@ import { useSlotUtils } from "../../composables";
 import { TableScroll, tableScrollClasses, itemEquals, includeItem, renderSlotText } from "../../utils";
 import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import {
-    FTableColumnData,
+    type FTableColumnData,
     FTableColumnSort,
     addColumn,
     setVisibilityColumn,
@@ -33,7 +33,7 @@ import { FCheckboxField } from "../FCheckboxField";
 import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
-import { ExpandableTable, useExpandableTable } from "./useExpandableTable";
+import { type ExpandableTable, useExpandableTable } from "./useExpandableTable";
 
 const $t = useTranslate();
 const slots = useSlots();

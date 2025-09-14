@@ -1,4 +1,4 @@
-import { SimplePersistenceServiceInterface } from "../SimplePersistenceServiceInterface";
+import { type SimplePersistenceServiceInterface } from "../SimplePersistenceServiceInterface";
 
 export class SimplePersistenceService<T>
     implements SimplePersistenceServiceInterface<T>

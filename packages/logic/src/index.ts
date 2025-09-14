@@ -49,7 +49,7 @@ export {
     isValidatableHTMLElement,
 } from "./services";
 export * from "./text";
-export * from "./types";
+export type * from "./types";
 export * from "./utils";
 export {
     alertScreenReader,

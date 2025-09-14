@@ -7,7 +7,7 @@ import {
     shallowRef,
     watchEffect,
 } from "vue";
-import { FDate, FYear, clamp, range } from "@fkui/date";
+import { type FDate, FYear, clamp, range } from "@fkui/date";
 import { assertRef, focus } from "@fkui/logic";
 import { useEventListener } from "@vueuse/core";
 import { getHTMLElementsFromVueRef } from "../../utils";

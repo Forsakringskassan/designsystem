@@ -1,4 +1,4 @@
-import { ValidatorName } from "./Validator";
+import { type ValidatorName } from "./Validator";
 
 /**
  * Returns validation error message candidates in prioritized order.

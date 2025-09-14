@@ -1,4 +1,4 @@
-import { FDate } from "../f-date";
+import { type FDate } from "../f-date";
 import { Weekday } from "../weekday";
 import { range } from "../range";
 

@@ -1,4 +1,4 @@
-import { Placement } from "../IPopup";
+import { type Placement } from "../IPopup";
 
 /**
  * @public

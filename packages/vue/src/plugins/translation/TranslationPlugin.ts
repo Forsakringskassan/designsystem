@@ -1,6 +1,6 @@
 import { type App, type ComponentOptions, type Plugin } from "vue";
 import { translate } from "./translate";
-import { TranslateFunction } from "./translate-function";
+import { type TranslateFunction } from "./translate-function";
 
 declare module "vue" {
     interface ComponentCustomProperties {

@@ -1,5 +1,8 @@
 import { type ValidatableHTMLElement } from "@fkui/logic";
-import { ComponentUnmountEvent, type ComponentValidityEvent } from "../types";
+import {
+    type ComponentUnmountEvent,
+    type ComponentValidityEvent,
+} from "../types";
 
 /**
  * Dispatch an ComponentValidityEvent to the given element.

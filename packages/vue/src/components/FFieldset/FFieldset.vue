@@ -2,7 +2,7 @@
 import { type PropType, defineComponent, provide, useSlots, useTemplateRef } from "vue";
 import { ElementIdService, type ValidityEvent, debounce } from "@fkui/logic";
 import { renderSlotText, dispatchComponentValidityEvent, hasSlot } from "../../utils";
-import { ComponentValidityEvent } from "../../types";
+import { type ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";
 import { TranslationMixin } from "../../plugins";
 import { tooltipAttachTo } from "../FTooltip";

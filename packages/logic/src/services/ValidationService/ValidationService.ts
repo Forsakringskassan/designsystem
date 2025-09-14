@@ -2,18 +2,18 @@ import { isRadiobuttonOrCheckbox, isValidatableFormElement } from "../../dom";
 import { isSet } from "../../utils";
 import {
     type ValidatorConfig,
-    ValidationServiceInterface,
+    type ValidationServiceInterface,
     type ValidatorConfigs,
     type ValidityEvent,
-    ValidationState,
+    type ValidationState,
     type ValidatableHTMLElement,
     type ValidityMode,
     type PendingValidityEvent,
-    ValidateEvent,
-    ValidityNativeEvent,
-    ElementValidatorsReference,
-    ValidationResult,
-    ValidationConfigUpdateDetail,
+    type ValidateEvent,
+    type ValidityNativeEvent,
+    type ElementValidatorsReference,
+    type ValidationResult,
+    type ValidationConfigUpdateDetail,
 } from "./ValidationServiceInterface";
 import { type Validator, type ValidatorName } from "./Validator";
 import { getErrorMessages } from "./ValidationTranslations/get-error-messages";

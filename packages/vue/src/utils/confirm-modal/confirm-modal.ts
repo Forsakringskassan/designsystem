@@ -1,5 +1,5 @@
 import { FConfirmModal } from "../../components/FModal";
-import { MaybeWithFKUIContext } from "../../config";
+import { type MaybeWithFKUIContext } from "../../config";
 import { openModal } from "../open-modal";
 
 /**

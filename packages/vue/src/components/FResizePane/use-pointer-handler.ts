@@ -1,8 +1,8 @@
 import { type Ref, type ShallowRef, computed } from "vue";
 import { useEventListener } from "@vueuse/core";
 import { type LayoutAreaAttachPanel } from "../FPageLayout";
-import { Orientation } from "./orientation";
-import { SizeState } from "./size-state";
+import { type Orientation } from "./orientation";
+import { type SizeState } from "./size-state";
 import { clamp } from "./clamp";
 
 /**

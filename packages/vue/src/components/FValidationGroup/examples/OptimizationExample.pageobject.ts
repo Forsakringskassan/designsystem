@@ -1,6 +1,6 @@
 import {
     FRadioGroupPageObject,
-    FRadioFieldPageObject,
+    type FRadioFieldPageObject,
     FTextFieldPageObject,
     type DefaultCypressChainable,
 } from "../../../cypress";
