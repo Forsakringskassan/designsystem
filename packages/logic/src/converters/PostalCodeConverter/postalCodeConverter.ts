@@ -3,7 +3,7 @@ import { isEmpty } from "../../utils";
 /**
  * @internal
  */
-export const POSTAL_CODE_REGEXP = /^([1-9]{1}\d{2}) ?(\d{2})$/;
+export const POSTAL_CODE_REGEXP = /^([1-9]\d{2}) ?(\d{2})$/;
 
 /**
  * A 5-digit string with space separator, for example "932 22"

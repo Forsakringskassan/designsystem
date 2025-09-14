@@ -1,6 +1,6 @@
 import { isEmpty, testLuhnChecksum } from "../../utils";
 
-const ORGANISATIONSNUMMER_REGEXP = /^([0-9]{6})-?([0-9]{4})$/;
+const ORGANISATIONSNUMMER_REGEXP = /^(\d{6})-?(\d{4})$/;
 
 /**
  * A string with 6 digits followed by additional 4 digits separated by a hyphen,

@@ -1,7 +1,7 @@
 import { stripWhitespace } from "../../text";
 import { isEmpty } from "../../utils";
 
-const NUMBER_REGEXP = /^([-]?[0-9]+)([,.][0-9]+)?$/;
+const NUMBER_REGEXP = /^(-?\d+)([,.]\d+)?$/;
 
 function replaceCommaWithDot(str: string): string {
     return str.replace(",", ".");

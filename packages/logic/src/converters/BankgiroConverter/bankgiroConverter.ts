@@ -1,6 +1,6 @@
 import { testLuhnChecksum, isEmpty } from "../../utils";
 
-const BANKGIRO_REGEXP_HYPHEN = /^(\d{3,4})[-]?(\d{4})$/;
+const BANKGIRO_REGEXP_HYPHEN = /^(\d{3,4})-?(\d{4})$/;
 
 /**
  * A string with 7-8 digits separated by hyphen, for example "999-9996"

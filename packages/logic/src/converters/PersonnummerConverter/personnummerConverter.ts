@@ -5,7 +5,7 @@ import { parseDate } from "../DateConverter";
 import { resolveCentury } from "./resolve-century";
 
 const PERSONNUMMER_REGEXP =
-    /^(?<century>\d{2})?(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?<sign>-|\+)?(?<check>\d{4})$/;
+    /^(?<century>\d{2})?(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?<sign>[-+])?(?<check>\d{4})$/;
 
 function getDayWithoutSamordning(day: string): string {
     return (Number(day) % 60).toString().padStart(2, "0");

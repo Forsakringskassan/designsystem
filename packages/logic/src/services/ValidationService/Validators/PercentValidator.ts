@@ -2,7 +2,7 @@ import { type Validator } from "../Validator";
 import { stripWhitespace } from "../../../text";
 import { isEmpty, isSet } from "../../../utils";
 
-const PERCENT_REGEXP = /^([-+]?[0-9]+)([,.][0-9]+)?$/;
+const PERCENT_REGEXP = /^([-+]?\d+)([,.]\d+)?$/;
 
 export const percentValidator: Validator = {
     name: "percent",

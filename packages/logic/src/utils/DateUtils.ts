@@ -1,6 +1,6 @@
 import { isEmpty } from "./is";
 
-const DATE_REGEXP_WITH_DASH = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
+const DATE_REGEXP_WITH_DASH = /^\d{4}-\d{2}-\d{2}$/;
 
 /**
  * @public
