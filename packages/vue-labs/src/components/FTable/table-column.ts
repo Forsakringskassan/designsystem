@@ -246,7 +246,31 @@ function getUpdateFn<TRow, TValue, K extends keyof TRow>(
 /**
  * @internal
  */
-function normalizeTableColumn<T, K extends keyof T = keyof T>(
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnSimple<T, K> | TableColumnText<T, K>,
+): NormalizedTableColumnText<T, K>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnCheckbox<T, K>,
+): NormalizedTableColumnCheckbox<T, K>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnRadio<T, K>,
+): NormalizedTableColumnRadio<T, K>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnAnchor<T, K>,
+): NormalizedTableColumnAnchor<T, K>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnButton<T, K>,
+): NormalizedTableColumnButton<T, K>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnRender<T, K>,
+): NormalizedTableColumnRender<T>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnSelect<T, K>,
+): NormalizedTableColumnSelect<T, K>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumn<T, K>,
+): NormalizedTableColumn<T, K>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
 ): NormalizedTableColumn<T, K> {
     if ("render" in column) {
