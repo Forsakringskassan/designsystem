@@ -352,7 +352,7 @@ $palette-color-hav-20: #dbe0ec !default;
     // Deprecated since v6.24.0
     --f-icon-color-expandable-paragraph: #{$palette-color-green-a-85};
 
-    // Deprecated since %version
+    // Deprecated since v6.25.0
     --f-text-color-default: #{$palette-color-fk-black-100};
     --f-text-color-default-inverted: #{$palette-color-white-100};
     --f-text-color-discrete: #{$palette-color-fk-black-70};
@@ -378,6 +378,20 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-background-tab-active: #{$palette-color-white-100};
     --f-background-tab-inactive: #{$palette-color-bluebell-5};
     --f-background-button-discrete-hover: none;
+
+    // Deprecated since %version%
+    --f-icon-color-white: #{$palette-color-white-100};
+    --f-icon-color-notice: #{$palette-color-tegel-100};
+    --f-icon-color-expandable-panel: #{$palette-color-white-100};
+    --f-text-color-heading-expandable-panel: #{$palette-color-white-100};
+    --f-background-expandable-panel: #{$palette-color-white-100};
+    --f-background-heading-expandable-panel: #{$palette-color-green-a-100};
+    --f-background-heading-expandable-panel-hover: #{$palette-color-green-a-85};
+    --f-border-color-expandable-panel: #{$palette-color-green-a-100};
+    --f-border-color-expandable-panel-closed: none;
+    --f-expandable-panel-heading-border-open: none;
+    --f-expandable-panel-heading-border-close: none;
+    --f-expandable-panel-heading-border-radius: 4px 4px 0 0;
 }
 
 @if $global {

@@ -29,6 +29,12 @@ En expanderbar panel kan visa relaterat innehåll under den panelen när den är
 FExpandablePanelRelatedExample.vue
 ```
 
+## Textnycklar
+
+:::api
+translation:FExpandablePanel
+:::
+
 ## API
 
 :::api

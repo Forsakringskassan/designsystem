@@ -1,1 +1,13 @@
-// stylelint-disable no-empty-source -- placeholder file
+// HEADING
+$expandablepanel-heading-color-background-default: var(--fkds-color-background-secondary) !default;
+$expandablepanel-heading-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;
+$expandablepanel-heading-color-text-default: var(--fkds-color-text-primary) !default;
+$expandablepanel-heading-color-border: var(--fkds-color-border-primary) !default;
+$expandablepanel-heading-notification-color-background: var(--fkds-color-feedback-background-negative-strong) !default;
+$expandablepanel-heading-notification-icon-color-fill: var(--fkds-color-text-inverted) !default;
+$expandablepanel-heading-notification-icon-container-size: var(--f-icon-size-large) !default;
+$expandablepanel-heading-notification-icon-size: var(--f-icon-size-small) !default;
+$expandablepanel-heading-expand-icon-size: var(--f-icon-size-medium) !default;
+
+// BODY
+$expandablepanel-body-color-background-default: var(--fkds-color-background-primary) !default;
