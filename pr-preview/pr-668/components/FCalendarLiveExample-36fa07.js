@@ -1658,7 +1658,7 @@ function setup(options) {
 
 // virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarLiveExample.vue:FCalendarLiveExample-36fa07.js
 import { defineComponent as defineComponent24 } from "vue";
-import { FDate as FDate5 } from "@fkui/date";
+import { FDate as FDate4 } from "@fkui/date";
 import { FCalendar, FCalendarDay } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
@@ -1758,7 +1758,9 @@ function $emit(type, ...args) {
   eventTarget().dispatchEvent(event);
 }
 function $on(type, callback) {
-  fn.set(callback, (event) => callback(...event.detail));
+  fn.set(callback, (event) => {
+    callback(...event.detail);
+  });
   eventTarget().addEventListener(type, fn.get(callback));
 }
 function $off(type, callback) {
@@ -2852,7 +2854,7 @@ function focusError(item) {
   }
   const focusElement3 = document.querySelector(`#${item.focusElementId}`);
   scrollTo(element, window.innerHeight * 0.25);
-  focus3(focusElement3 ? focusElement3 : element);
+  focus3(focusElement3 ?? element);
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
@@ -3544,7 +3546,7 @@ var FFormModal_default = defineComponent11({
       this.$emit("cancel");
       this.$emit("close", { reason: "close" });
     },
-    async onSubmit() {
+    onSubmit() {
       ValidationService3.resetState(this.$el);
       this.$emit("submit", { data: this.value });
       this.$emit("close", { reason: "submit", data: this.value });
@@ -4590,7 +4592,7 @@ var IPopupError_default = defineComponent14({
       this.$emit("close");
     },
     setArrowOffset() {
-      const wrapper = this.$refs["wrapper"];
+      const wrapper = this.$refs.wrapper;
       const inputIcon = this.anchor?.nextElementSibling;
       if (!inputIcon || !wrapper) {
         return;
@@ -4607,7 +4609,7 @@ var IPopupError_default = defineComponent14({
         return;
       }
       await this.$nextTick();
-      const wrapper = this.$refs["wrapper"];
+      const wrapper = this.$refs.wrapper;
       if (!this.anchor) {
         throw new Error("No anchor element found");
       }
@@ -4626,10 +4628,10 @@ var IPopupError_default = defineComponent14({
         this.teleportDisabled = false;
         wrapper.style.left = `${result.x}px`;
         wrapper.style.top = `${result.y}px`;
-        await this.setArrowOffset();
+        this.setArrowOffset();
         return;
       }
-      await this.setArrowOffset();
+      this.setArrowOffset();
       this.teleportDisabled = true;
       wrapper.style.removeProperty("left");
       wrapper.style.removeProperty("top");
@@ -5135,7 +5137,7 @@ var IPopupMenu_default = defineComponent15({
   watch: {
     isOpen: {
       immediate: true,
-      async handler(newVal) {
+      handler(newVal) {
         if (newVal) {
           return;
         }
@@ -5649,7 +5651,7 @@ ISkipLink_default.render = render18;
 ISkipLink_default.__file = "packages/vue/src/internal-components/ISkipLink/ISkipLink.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonth.vue?type=script
-import { FDate as FDate4 } from "@fkui/date";
+import { FDate as FDate3 } from "@fkui/date";
 import { alertScreenReader, focus as focus7 } from "@fkui/logic";
 import { defineComponent as defineComponent19 } from "vue";
 
@@ -6093,7 +6095,7 @@ var ICalendarMonth_default = defineComponent19({
       let activeDate = void 0;
       if (document.activeElement instanceof HTMLElement) {
         const activeString = document.activeElement.dataset.date;
-        activeDate = activeString ? FDate4.fromIso(activeString) : void 0;
+        activeDate = activeString ? FDate3.fromIso(activeString) : void 0;
       }
       return getDayTabindex(date, activeDate, this.tabDate);
     }
@@ -6633,8 +6635,12 @@ function useHorizontalOffset(options) {
   const offset2 = ref4(0);
   watch2(() => elementRef.value, updateOffset);
   watch2(() => parentRef, updateOffset);
-  onMounted4(() => window.addEventListener("resize", updateOffset));
-  onUnmounted3(() => window.removeEventListener("resize", updateOffset));
+  onMounted4(() => {
+    window.addEventListener("resize", updateOffset);
+  });
+  onUnmounted3(() => {
+    window.removeEventListener("resize", updateOffset);
+  });
   return readonly(offset2);
   function updateOffset() {
     const element = elementRef.value;
@@ -7456,7 +7462,7 @@ var FCheckboxField_default = defineComponent23({
   },
   methods: {
     updateExpandedFlag() {
-      const checkboxInput = getHTMLElementFromVueRef(this.$refs["checkboxInput"]);
+      const checkboxInput = getHTMLElementFromVueRef(this.$refs.checkboxInput);
       this.expanded = checkboxInput.checked;
     },
     emitVModelEvent(event) {
@@ -7635,9 +7641,9 @@ var exampleComponent = defineComponent24({
   computed: {
     livedata() {
       return {
-        month: FDate5.fromIso("2022-10-01"),
-        min: FDate5.fromIso("2020-01-01"),
-        max: FDate5.fromIso("2029-01-30")
+        month: FDate4.fromIso("2022-10-01"),
+        min: FDate4.fromIso("2020-01-01"),
+        max: FDate4.fromIso("2029-01-30")
       };
     },
     components() {

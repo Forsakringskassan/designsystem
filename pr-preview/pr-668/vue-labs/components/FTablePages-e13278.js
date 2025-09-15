@@ -31,8 +31,8 @@ import { ref as ref2 } from "vue";
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, createBlock, onMounted, vModelText, withCtx, renderList, mergeModels, useModel, useSlots, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FButton, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
-var HOURS_MINUTES_REGEXP = /^(?<hours>[0-9]+)?(:(?<minutes>[0-5][0-9]))?$/;
-var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>[0-9]{2})(?<minutes>[0-5][0-9])$/;
+var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
+var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 var es_iterator_forEach = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
@@ -2485,7 +2485,7 @@ function getCellTarget(tableElement, rowIndex, cellIndex) {
   return tableElement.rows[rowIndex].cells[cellIndex];
 }
 function isTd(element) {
-  return element !== null && element.cellIndex !== void 0;
+  return element?.cellIndex !== void 0;
 }
 function getTr(td) {
   return td.parentElement;
@@ -3741,7 +3741,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
   }),
   emits: ["update:selectedRows"],
   setup(__props) {
-    const model = useModel(__props, "selectedRows");
+    const selectedRows = useModel(__props, "selectedRows");
     const tableRef = useTemplateRef("table");
     const selectAllRef = useTemplateRef("selectAll");
     const expandedKeys = ref([]);
@@ -3760,7 +3760,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         if (!__props.keyAttribute) {
           return false;
         }
-        return model.value.some((it) => {
+        return selectedRows.value.some((it) => {
           return row[__props.keyAttribute] === it[__props.keyAttribute];
         });
       },
@@ -3768,12 +3768,12 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         return true;
       },
       update(row, _newValue, _oldValue) {
-        assertRef(model);
-        const index = model.value.indexOf(row);
+        assertRef(selectedRows);
+        const index = selectedRows.value.indexOf(row);
         if (index < 0) {
-          model.value.push(row);
+          selectedRows.value.push(row);
         } else {
-          model.value.splice(index, 1);
+          selectedRows.value.splice(index, 1);
         }
       }
     };
@@ -3784,20 +3784,20 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         if (!__props.keyAttribute) {
           return false;
         }
-        return model.value.some((it) => {
+        return selectedRows.value.some((it) => {
           return row[__props.keyAttribute] === it[__props.keyAttribute];
         });
       },
       update(row, _newValue, _oldValue) {
-        assertRef(model);
-        model.value = [row];
+        assertRef(selectedRows);
+        selectedRows.value = [row];
       }
     };
     const isIndeterminate = computed(() => {
-      return model.value.length > 0 && model.value.length < __props.rows.length;
+      return selectedRows.value.length > 0 && selectedRows.value.length < __props.rows.length;
     });
     const isAllRowsSelected = computed(() => {
-      return model.value.length > 0 && model.value.length === __props.rows.length;
+      return selectedRows.value.length > 0 && selectedRows.value.length === __props.rows.length;
     });
     const isSingleSelect = computed(() => {
       return __props.selectable === "single";
@@ -3813,9 +3813,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     });
     function onSelectAllChange() {
       if (selectAllRef.value?.checked) {
-        model.value = [...__props.rows];
+        selectedRows.value = [...__props.rows];
       } else {
-        model.value = [];
+        selectedRows.value = [];
       }
     }
     const columns = computed(() => normalizeTableColumns(__props.columns));
@@ -3824,7 +3824,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     });
     const slots = useSlots();
     const hasExpandableSlot = computed(() => {
-      return Boolean(slots["expandable"]);
+      return Boolean(slots.expandable);
     });
     async function stopEditHandler(element, reason) {
       stopEdit(element, reason);
