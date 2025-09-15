@@ -103,12 +103,9 @@ export default defineComponent({
                 v-bind="$attrs"
                 @click="onClickHeadingButton"
             >
-                <span class="expandable-panel__icon">
-                    <span class="icon-stack">
-                        <f-icon name="dash"></f-icon>
-                        <f-icon name="dash"></f-icon>
-                    </span>
-                </span>
+                <div class="expandable-panel__icon">
+                    <f-icon name="arrow-down"></f-icon>
+                </div>
 
                 <!-- @slot Slot used for title content -->
                 <slot name="title"></slot>
@@ -124,7 +121,10 @@ export default defineComponent({
                     "
                 >
                     <span class="sr-only">{{ screenReaderNotificationText }}</span>
-                    <f-icon name="bell"></f-icon>
+                    <!--<f-icon name="bell"></f-icon>-->
+                    <span class="icon-container">
+                        <f-icon name="bell"></f-icon>
+                    </span>
                 </span>
             </button>
         </component>
