@@ -5,21 +5,13 @@ import { type Component, type VNode } from "vue";
  * @public
  */
 export interface TableColumnSimple<T, K extends keyof T> {
-    /* eslint-disable-next-line sonarjs/no-redundant-optional -- technical debt */
+    /* eslint-disable-next-line sonarjs/no-redundant-optional -- this is used as
+     * a discriminator in the union, for the simple column we are not expected
+     * to set `type` at all but this simplifies the normalization */
     type?: undefined;
     header: string;
     key?: K;
     value?(row: T): string;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnSimple<T, K> {
-    type: undefined;
-    header: string;
-    value(row: T): string;
-    sortable?: K;
 }
 
 /**
@@ -206,7 +198,6 @@ export type TableColumn<T, K extends keyof T = keyof T> =
  * @internal
  */
 export type NormalizedTableColumn<T, K> =
-    | NormalizedTableColumnSimple<T, K>
     | NormalizedTableColumnCheckbox<T, K>
     | NormalizedTableColumnRadio<T, K>
     | NormalizedTableColumnText<T, K>
@@ -339,11 +330,16 @@ function normalizeTableColumn<T, K extends keyof T = keyof T>(
             } satisfies NormalizedTableColumnSelect<T, K>;
         case undefined:
             return {
-                type: undefined,
+                type: "text",
                 header: column.header,
                 value: getValueFn(column.value, column.key, String, ""),
+                update() {
+                    /* do nothing */
+                },
+                editable: () => false,
                 sortable: column.key,
-            } satisfies NormalizedTableColumnSimple<T, K>;
+                validation: {},
+            } satisfies NormalizedTableColumnText<T, K>;
     }
 }
 
