@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTablePages.vue:FTablePages-5cafcc.js
+// virtual-entry:virtual:src/components/FTable/examples/FTablePages.vue:FTablePages-e13278.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref as ref2 } from "vue";
 
@@ -3734,14 +3734,14 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       default: false
     }
   }, {
-    "modelValue": {
+    "selectedRows": {
       default: []
     },
-    "modelModifiers": {}
+    "selectedRowsModifiers": {}
   }),
-  emits: ["update:modelValue"],
+  emits: ["update:selectedRows"],
   setup(__props) {
-    const model = useModel(__props, "modelValue");
+    const selectedRows = useModel(__props, "selectedRows");
     const tableRef = useTemplateRef("table");
     const selectAllRef = useTemplateRef("selectAll");
     const expandedKeys = ref([]);
@@ -3760,7 +3760,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         if (!__props.keyAttribute) {
           return false;
         }
-        return model.value.some((it) => {
+        return selectedRows.value.some((it) => {
           return row[__props.keyAttribute] === it[__props.keyAttribute];
         });
       },
@@ -3768,12 +3768,12 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         return true;
       },
       update(row, _newValue, _oldValue) {
-        assertRef(model);
-        const index = model.value.indexOf(row);
+        assertRef(selectedRows);
+        const index = selectedRows.value.indexOf(row);
         if (index < 0) {
-          model.value.push(row);
+          selectedRows.value.push(row);
         } else {
-          model.value.splice(index, 1);
+          selectedRows.value.splice(index, 1);
         }
       }
     };
@@ -3784,20 +3784,20 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         if (!__props.keyAttribute) {
           return false;
         }
-        return model.value.some((it) => {
+        return selectedRows.value.some((it) => {
           return row[__props.keyAttribute] === it[__props.keyAttribute];
         });
       },
       update(row, _newValue, _oldValue) {
-        assertRef(model);
-        model.value = [row];
+        assertRef(selectedRows);
+        selectedRows.value = [row];
       }
     };
     const isIndeterminate = computed(() => {
-      return model.value.length > 0 && model.value.length < __props.rows.length;
+      return selectedRows.value.length > 0 && selectedRows.value.length < __props.rows.length;
     });
     const isAllRowsSelected = computed(() => {
-      return model.value.length > 0 && model.value.length === __props.rows.length;
+      return selectedRows.value.length > 0 && selectedRows.value.length === __props.rows.length;
     });
     const isSingleSelect = computed(() => {
       return __props.selectable === "single";
@@ -3813,9 +3813,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     });
     function onSelectAllChange() {
       if (selectAllRef.value?.checked) {
-        model.value = [...__props.rows];
+        selectedRows.value = [...__props.rows];
       } else {
-        model.value = [];
+        selectedRows.value = [];
       }
     }
     const columns = computed(() => normalizeTableColumns(__props.columns));
@@ -4018,7 +4018,7 @@ function defineTableColumns(columns) {
   return columns;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTablePages.vue:FTablePages-5cafcc.js
+// virtual-entry:virtual:src/components/FTable/examples/FTablePages.vue:FTablePages-e13278.js
 import { openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FTablePages",
@@ -5057,19 +5057,19 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FTable"], {
-    modelValue: $setup.mySelectedRows,
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.mySelectedRows = $event),
+    "selected-rows": $setup.mySelectedRows,
+    "onUpdate:selectedRows": _cache[0] || (_cache[0] = ($event) => $setup.mySelectedRows = $event),
     rows: $setup.rows,
     columns: $setup.columns,
     "key-attribute": "id",
     striped: "",
     paginerated: ""
-  }, null, 8, ["modelValue", "rows", "columns"]);
+  }, null, 8, ["selected-rows", "rows", "columns"]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-5cafcc"
+  selector: "#example-e13278"
 });
 export {
   render

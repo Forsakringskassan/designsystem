@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-ca9cf0.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-c6cda6.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref as ref2 } from "vue";
 
@@ -3734,14 +3734,14 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       default: false
     }
   }, {
-    "modelValue": {
+    "selectedRows": {
       default: []
     },
-    "modelModifiers": {}
+    "selectedRowsModifiers": {}
   }),
-  emits: ["update:modelValue"],
+  emits: ["update:selectedRows"],
   setup(__props) {
-    const model = useModel(__props, "modelValue");
+    const selectedRows = useModel(__props, "selectedRows");
     const tableRef = useTemplateRef("table");
     const selectAllRef = useTemplateRef("selectAll");
     const expandedKeys = ref([]);
@@ -3760,7 +3760,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         if (!__props.keyAttribute) {
           return false;
         }
-        return model.value.some((it) => {
+        return selectedRows.value.some((it) => {
           return row[__props.keyAttribute] === it[__props.keyAttribute];
         });
       },
@@ -3768,12 +3768,12 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         return true;
       },
       update(row, _newValue, _oldValue) {
-        assertRef(model);
-        const index = model.value.indexOf(row);
+        assertRef(selectedRows);
+        const index = selectedRows.value.indexOf(row);
         if (index < 0) {
-          model.value.push(row);
+          selectedRows.value.push(row);
         } else {
-          model.value.splice(index, 1);
+          selectedRows.value.splice(index, 1);
         }
       }
     };
@@ -3784,20 +3784,20 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         if (!__props.keyAttribute) {
           return false;
         }
-        return model.value.some((it) => {
+        return selectedRows.value.some((it) => {
           return row[__props.keyAttribute] === it[__props.keyAttribute];
         });
       },
       update(row, _newValue, _oldValue) {
-        assertRef(model);
-        model.value = [row];
+        assertRef(selectedRows);
+        selectedRows.value = [row];
       }
     };
     const isIndeterminate = computed(() => {
-      return model.value.length > 0 && model.value.length < __props.rows.length;
+      return selectedRows.value.length > 0 && selectedRows.value.length < __props.rows.length;
     });
     const isAllRowsSelected = computed(() => {
-      return model.value.length > 0 && model.value.length === __props.rows.length;
+      return selectedRows.value.length > 0 && selectedRows.value.length === __props.rows.length;
     });
     const isSingleSelect = computed(() => {
       return __props.selectable === "single";
@@ -3813,9 +3813,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     });
     function onSelectAllChange() {
       if (selectAllRef.value?.checked) {
-        model.value = [...__props.rows];
+        selectedRows.value = [...__props.rows];
       } else {
-        model.value = [];
+        selectedRows.value = [];
       }
     }
     const columns = computed(() => normalizeTableColumns(__props.columns));
@@ -4013,7 +4013,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
   }
 });
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-ca9cf0.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-c6cda6.js
 import { formatNumber } from "@fkui/logic";
 
 // src/components/FTable/table-column.ts
@@ -4021,7 +4021,7 @@ function defineTableColumns(columns) {
   return columns;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-ca9cf0.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-c6cda6.js
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FTableRadioExample",
@@ -4231,8 +4231,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       )),
       _createVNode($setup["FTable"], {
-        modelValue: $setup.mySelectedRows,
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.mySelectedRows = $event),
+        "selected-rows": $setup.mySelectedRows,
+        "onUpdate:selectedRows": _cache[0] || (_cache[0] = ($event) => $setup.mySelectedRows = $event),
         rows: $setup.rows,
         columns: $setup.columns,
         "key-attribute": "id",
@@ -4248,7 +4248,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ])]),
         _: 1
         /* STABLE */
-      }, 8, ["modelValue", "rows", "columns"]),
+      }, 8, ["selected-rows", "rows", "columns"]),
       _createElementVNode(
         "h3",
         null,
@@ -4295,7 +4295,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ca9cf0"
+  selector: "#example-c6cda6"
 });
 export {
   render
