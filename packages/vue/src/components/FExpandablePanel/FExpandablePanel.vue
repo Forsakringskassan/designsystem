@@ -83,6 +83,13 @@ export default defineComponent({
         screenReaderNotificationText(): string {
             return this.screenReaderNotificationTemplate.replace("%VALUE%", this.notifications.toString());
         },
+        notificationTitle(): string {
+            /** Title text for notification */
+            return this.$t("fkui.expandable-panel.notification.title", "{{ count }} notifiering{{ suffix }}", {
+                count: this.notifications,
+                suffix: this.notifications > 1 ? "ar" : "",
+            });
+        },
     },
     methods: {
         onClickHeadingButton(event: MouseEvent): void {
@@ -102,28 +109,20 @@ export default defineComponent({
                 v-bind="$attrs"
                 @click="onClickHeadingButton"
             >
-                <span class="expandable-panel__icon">
-                    <span class="icon-stack">
-                        <f-icon name="dash"></f-icon>
-                        <f-icon name="dash"></f-icon>
+                <span class="expandable-panel__title">
+                    <!-- @slot Slot used for title content -->
+                    <span class="expandable-panel__title__text">
+                        <slot name="title"></slot>
+                    </span>
+
+                    <span v-if="haveNotifications" class="expandable-panel__notification" :title="notificationTitle">
+                        <span class="sr-only">{{ screenReaderNotificationText }}</span>
+                        <f-icon name="bell"></f-icon>
                     </span>
                 </span>
 
-                <!-- @slot Slot used for title content -->
-                <slot name="title"></slot>
-
-                <span
-                    v-if="haveNotifications"
-                    class="expandable-panel__notification"
-                    :title="
-                        $t('fkui.expandable-panel.notification.title', '{{ count }} notifiering{{ suffix }}', {
-                            count: notifications,
-                            suffix: notifications > 1 ? 'ar' : '',
-                        })
-                    "
-                >
-                    <span class="sr-only">{{ screenReaderNotificationText }}</span>
-                    <f-icon name="bell"></f-icon>
+                <span class="expandable-panel__icon">
+                    <f-icon name="arrow-down"></f-icon>
                 </span>
             </button>
         </component>

@@ -3,33 +3,22 @@
 @use "../../core/typography/headings";
 @use "../../core/size";
 @use "../icon/icon";
-
-$EXPANDABLE_PANEL_LINE_HEIGHT: var(--f-line-height-medium);
-$ICON_MARGIN: 0.5rem;
-$ICON_WIDTH: var(--f-icon-size-medium);
+@use "variables" as *;
 
 .expandable-panel {
     margin-bottom: core.densify(size.$margin-200);
 
-    &__icon {
-        @include circle.circle($background: var(--f-icon-color-expandable-panel), $size: $ICON_WIDTH);
-
-        margin-top: calc((#{$EXPANDABLE_PANEL_LINE_HEIGHT} * 1em - #{$ICON_WIDTH}) / 2); // Unit "em" intended here, align icon to header
-        display: flex;
-        color: var(--f-background-heading-expandable-panel);
-        padding: 3px; // cross icon size
-        flex-shrink: 0; // needed for IE11
-        margin-right: $ICON_MARGIN;
-        .icon {
-            transition: transform var(--f-animation-duration-long) ease;
-        }
+    &__icon svg {
+        width: $expandablepanel-heading-expand-icon-size;
+        height: $expandablepanel-heading-expand-icon-size;
+        max-height: initial;
+        max-width: initial;
+        vertical-align: middle;
     }
 
     &.expandable-panel--expanded {
-        .expandable-panel__icon {
-            svg:nth-child(2) {
-                transform: rotate(0);
-            }
+        .expandable-panel__icon svg {
+            transform: rotate(180deg);
         }
 
         .expandable-panel__content {
@@ -37,62 +26,75 @@ $ICON_WIDTH: var(--f-icon-size-medium);
         }
 
         .expandable-panel__heading button {
-            border: var(--f-expandable-panel-heading-border-open);
+            border-radius: var(--f-border-radius-medium) var(--f-border-radius-medium) 0 0;
         }
     }
 
     &.expandable-panel--collapsed {
-        .expandable-panel__icon {
-            svg:nth-child(2) {
-                transform: rotate(-90deg);
-            }
+        .expandable-panel__icon svg {
+            transform: rotate(0);
         }
     }
 
     &__heading {
-        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
-        @extend .heading--h3;
-
         margin-bottom: 0 !important;
 
         button {
-            background-color: var(--f-background-heading-expandable-panel);
-            border: var(--f-expandable-panel-heading-border-close);
-            border-radius: var(--f-expandable-panel-heading-border-radius);
-            color: var(--f-text-color-heading-expandable-panel);
+            background-color: $expandablepanel-heading-color-background-default;
+            border: var(--f-border-width-medium) solid $expandablepanel-heading-color-border;
+            border-radius: var(--f-border-radius-medium);
+            color: $expandablepanel-heading-color-text-default;
             cursor: pointer;
-            display: flex;
+            display: inline-flex;
+            align-items: center;
             margin: 0;
             padding: core.densify(size.$padding-100) size.$padding-100;
-            position: relative;
             text-align: left;
             width: 100%;
+            font-size: var(--f-font-size-large);
+            font-weight: var(--f-font-weight-bold);
+            line-height: var(--f-line-height-large);
 
             &:focus,
             &:hover {
-                background-color: var(--f-background-heading-expandable-panel-hover);
+                background-color: $expandablepanel-heading-color-background-hover;
             }
         }
     }
 
-    &__notification {
-        @include circle.circle(
-            $background: var(--f-icon-color-notice),
-            $border: var(--f-border-width-medium) solid var(--f-icon-color-white),
-            $size: var(--f-icon-size-x-large)
-        );
+    &__title {
+        flex-grow: 1;
+        text-wrap: pretty;
 
-        display: inline-block;
-        padding: 0.27rem;
-        position: absolute;
-        right: 1.5rem;
-        top: calc(-0.5 * size.$padding-150);
-        line-height: 0;
+        &__text {
+            vertical-align: middle;
+        }
+    }
+
+    &__notification {
+        margin-left: 0.25em;
+        width: $expandablepanel-heading-notification-icon-container-size;
+        height: $expandablepanel-heading-notification-icon-container-size;
+        background: $expandablepanel-heading-notification-color-background;
+        border: var(--f-border-radius-small) solid transparent; // forced-colors
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+
+        @media (forced-colors: active) {
+            background: canvas;
+        }
 
         svg {
-            color: var(--f-icon-color-white);
-            height: auto;
-            width: auto;
+            color: $expandablepanel-heading-notification-icon-color-fill;
+            width: $expandablepanel-heading-notification-icon-size;
+            height: $expandablepanel-heading-notification-icon-size;
+
+            @media (forced-colors: active) {
+                color: buttonText;
+            }
         }
     }
 
@@ -103,10 +105,11 @@ $ICON_WIDTH: var(--f-icon-size-medium);
     }
 
     &__body {
-        background-color: var(--f-background-expandable-panel);
-        border: var(--f-border-width-medium) solid var(--f-border-color-panel);
+        background-color: $expandablepanel-body-color-background-default;
+        border: var(--f-border-width-medium) solid $expandablepanel-heading-color-border;
         border-top: 0;
+        border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);
         line-height: inherit;
-        padding: core.densify(size.$padding-150) size.$padding-150;
+        padding: core.densify(size.$padding-100) size.$padding-100;
     }
 }
