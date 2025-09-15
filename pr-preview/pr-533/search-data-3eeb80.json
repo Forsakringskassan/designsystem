@@ -120,6 +120,11 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -139,11 +144,20 @@
     "scss",
     "css",
     "ikonbibliotek",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
     "Testverktyg",
     "testfall",
     "jest",
@@ -179,20 +193,6 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
-    "På gång",
-    "pågående arbete",
-    "planerat arbete",
-    "framtid",
-    "Releaser",
-    "deprekering",
-    "borttagna komponenter",
-    "Releaseanteckningar",
-    "version",
-    "Designsystemet",
-    "status",
-    "produktionsklar",
-    "beta",
-    "experimentell",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -901,6 +901,25 @@
       ]
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -940,22 +959,37 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
       "terms": [
-        "Vue 3"
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
     },
     {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
       "terms": [
-        "FCrudButton"
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
       ]
     },
     {
@@ -1019,40 +1053,6 @@
       "title": "Checklista vid publicering",
       "terms": [
         "personuppgifter"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
-      "terms": [
-        "pågående arbete",
-        "planerat arbete",
-        "framtid"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
-      "terms": [
-        "deprekering",
-        "borttagna komponenter"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
-      "terms": [
-        "version"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": [
-        "status",
-        "produktionsklar",
-        "beta",
-        "experimentell"
       ]
     },
     {
@@ -2353,75 +2353,75 @@
     "119": 31,
     "120": 32,
     "121": 32,
-    "122": 32,
-    "123": 32,
-    "124": 32,
-    "125": 32,
-    "126": 33,
-    "127": 33,
-    "128": 33,
-    "129": 34,
-    "130": 34,
-    "131": 34,
-    "132": 34,
-    "133": 35,
-    "134": 35,
-    "135": 35,
-    "136": 35,
-    "137": 35,
-    "138": 35,
-    "139": 36,
-    "140": 36,
-    "141": 37,
+    "122": 33,
+    "123": 34,
+    "124": 34,
+    "125": 35,
+    "126": 35,
+    "127": 35,
+    "128": 35,
+    "129": 35,
+    "130": 35,
+    "131": 36,
+    "132": 36,
+    "133": 36,
+    "134": 37,
+    "135": 37,
+    "136": 37,
+    "137": 37,
+    "138": 38,
+    "139": 38,
+    "140": 38,
+    "141": 38,
     "142": 38,
     "143": 38,
     "144": 39,
     "145": 39,
     "146": 39,
     "147": 39,
-    "148": 39,
-    "149": 39,
-    "150": 39,
-    "151": 39,
-    "152": 39,
-    "153": 39,
-    "154": 39,
-    "155": 39,
-    "156": 39,
-    "157": 39,
-    "158": 40,
-    "159": 40,
-    "160": 40,
-    "161": 40,
-    "162": 40,
-    "163": 40,
-    "164": 40,
-    "165": 40,
-    "166": 40,
-    "167": 41,
-    "168": 41,
-    "169": 41,
-    "170": 41,
-    "171": 41,
-    "172": 41,
-    "173": 41,
-    "174": 41,
-    "175": 42,
-    "176": 43,
+    "148": 40,
+    "149": 40,
+    "150": 40,
+    "151": 41,
+    "152": 41,
+    "153": 42,
+    "154": 42,
+    "155": 42,
+    "156": 42,
+    "157": 42,
+    "158": 43,
+    "159": 43,
+    "160": 43,
+    "161": 43,
+    "162": 43,
+    "163": 43,
+    "164": 43,
+    "165": 43,
+    "166": 43,
+    "167": 43,
+    "168": 43,
+    "169": 43,
+    "170": 43,
+    "171": 43,
+    "172": 44,
+    "173": 44,
+    "174": 44,
+    "175": 44,
+    "176": 44,
     "177": 44,
     "178": 44,
-    "179": 45,
-    "180": 45,
+    "179": 44,
+    "180": 44,
     "181": 45,
     "182": 45,
-    "183": 46,
-    "184": 46,
-    "185": 46,
-    "186": 47,
-    "187": 47,
-    "188": 48,
-    "189": 48,
-    "190": 48,
+    "183": 45,
+    "184": 45,
+    "185": 45,
+    "186": 45,
+    "187": 45,
+    "188": 45,
+    "189": 46,
+    "190": 47,
     "191": 48,
     "192": 48,
     "193": 49,
