@@ -27,8 +27,8 @@ function setup(options) {
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, inject, ref, useTemplateRef, watchEffect, withModifiers, withDirectives, toDisplayString, vShow, nextTick, createBlock, onMounted, vModelText, withCtx, renderList, mergeModels, useModel, useSlots, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, FButton, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
-var HOURS_MINUTES_REGEXP = /^(?<hours>[0-9]+)?(:(?<minutes>[0-5][0-9]))?$/;
-var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>[0-9]{2})(?<minutes>[0-5][0-9])$/;
+var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
+var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 var es_iterator_forEach = {};
 var globalThis_1;
 var hasRequiredGlobalThis;

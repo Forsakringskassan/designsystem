@@ -2004,7 +2004,9 @@ function $emit(type, ...args) {
   eventTarget().dispatchEvent(event);
 }
 function $on(type, callback) {
-  fn.set(callback, (event) => callback(...event.detail));
+  fn.set(callback, (event) => {
+    callback(...event.detail);
+  });
   eventTarget().addEventListener(type, fn.get(callback));
 }
 function $off(type, callback) {
@@ -2799,7 +2801,7 @@ function focusError(item) {
   }
   const focusElement3 = document.querySelector(`#${item.focusElementId}`);
   scrollTo(element, window.innerHeight * 0.25);
-  focus3(focusElement3 ? focusElement3 : element);
+  focus3(focusElement3 ?? element);
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
@@ -3491,7 +3493,7 @@ var FFormModal_default = defineComponent11({
       this.$emit("cancel");
       this.$emit("close", { reason: "close" });
     },
-    async onSubmit() {
+    onSubmit() {
       ValidationService3.resetState(this.$el);
       this.$emit("submit", { data: this.value });
       this.$emit("close", { reason: "submit", data: this.value });
