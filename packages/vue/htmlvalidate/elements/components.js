@@ -1477,4 +1477,12 @@ module.exports = defineMetadata({
         },
         slots: ["default"],
     },
+
+    "f-pagination": {
+        flow: true,
+    },
+
+    "f-paginator": {
+        flow: true,
+    },
 });
