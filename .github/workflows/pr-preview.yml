@@ -1,5 +1,7 @@
 name: Deploy PR previews
+
 concurrency: preview-${{ github.ref }}
+
 on:
     pull_request:
         types:
@@ -7,6 +9,11 @@ on:
             - reopened
             - synchronize
             - closed
+
+permissions:
+    contents: write
+    pull-requests: write
+
 jobs:
     deploy-preview:
         if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
