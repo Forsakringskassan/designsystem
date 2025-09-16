@@ -21,12 +21,8 @@ import {
     type NormalizedTableColumn,
     normalizeTableColumns,
 } from "./table-column";
-import ITableSelect from "./ITableSelect.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableRadio from "./ITableRadio.vue";
-import ITableAnchor from "./ITableAnchor.vue";
-import ITableButton from "./ITableButton.vue";
-import ITableText from "./ITableText.vue";
 import ITablePager from "./ITablePager.vue";
 import ITableHeader from "./ITableHeader.vue";
 import { stopEditKey } from "./start-stop-edit";
@@ -73,6 +69,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     type: "checkbox",
     header: "selectable",
     sortable: null,
+    component: ITableCheckbox,
     value(row) {
         if (!keyAttribute) {
             return false;
@@ -101,6 +98,7 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
     type: "radio",
     header: "Välj en rad",
     sortable: null,
+    component: ITableRadio,
     value(row) {
         if (!keyAttribute) {
             return false;
@@ -315,24 +313,8 @@ onMounted(() => {
                     <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
                     <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
                     <template v-for="column in columns" :key="column.header">
-                        <template v-if="column.type === 'checkbox'">
-                            <i-table-checkbox :row :column></i-table-checkbox>
-                        </template>
-                        <template v-else-if="column.type === 'text'">
-                            <i-table-text :row :column></i-table-text>
-                        </template>
-                        <template v-else-if="column.type === 'anchor'">
-                            <i-table-anchor :row :column></i-table-anchor>
-                        </template>
-                        <template v-else-if="column.type === 'button'">
-                            <i-table-button :row :column></i-table-button>
-                        </template>
-                        <template v-else-if="column.type === 'select'">
-                            <i-table-select :row :column></i-table-select>
-                        </template>
-                        <template v-else-if="'render' in column">
-                            <component :is="column.render(row)" :row></component>
-                        </template>
+                        <component :is="column.component" v-if="'component' in column" :row :column></component>
+                        <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
                     </template>
                 </template>
             </i-table-row>

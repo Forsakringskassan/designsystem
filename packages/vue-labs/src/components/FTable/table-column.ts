@@ -1,5 +1,11 @@
 import { type ValidatorConfigs } from "@fkui/logic";
 import { type Component, type VNode } from "vue";
+import ITableCheckbox from "./ITableCheckbox.vue";
+import ITableRadio from "./ITableRadio.vue";
+import ITableAnchor from "./ITableAnchor.vue";
+import ITableButton from "./ITableButton.vue";
+import ITableText from "./ITableText.vue";
+import ITableSelect from "./ITableSelect.vue";
 
 /**
  * @public
@@ -33,6 +39,10 @@ export interface NormalizedTableColumnCheckbox<T, K> {
     readonly type: "checkbox";
     readonly header: string;
     readonly sortable: K | null;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnCheckbox<T, K>;
+    }>;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
     editable(row: T): boolean;
@@ -56,6 +66,10 @@ export interface NormalizedTableColumnRadio<T, K> {
     readonly type: "radio";
     readonly header: string;
     readonly sortable: K | null;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnRadio<T, K>;
+    }>;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
 }
@@ -81,6 +95,10 @@ export interface NormalizedTableColumnText<T, K> {
     readonly header: string;
     readonly validation: ValidatorConfigs;
     readonly sortable: K | null;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnText<T, K>;
+    }>;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
     editable(row: T): boolean;
@@ -106,6 +124,10 @@ export interface NormalizedTableColumnAnchor<T, K> {
     readonly header: string;
     readonly href: string;
     readonly sortable: K | null;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnAnchor<T, K>;
+    }>;
     value(row: T): string | null;
     enabled(row: T): boolean;
 }
@@ -131,6 +153,10 @@ export interface NormalizedTableColumnButton<T, K> {
     readonly header: string;
     readonly icon: string | null;
     readonly sortable: K | null;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnButton<T, K>;
+    }>;
     value(row: T): string | null;
     onClick?(row: T): void;
     enabled(row: T): boolean;
@@ -157,6 +183,10 @@ export interface NormalizedTableColumnSelect<T, K> {
     readonly header: string;
     readonly options: string[];
     readonly sortable: K | null;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnSelect<T, K>;
+    }>;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
     editable(row: T): boolean;
@@ -270,6 +300,8 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
 ): NormalizedTableColumn<T, K>;
+
+/* eslint-disable-next-line complexity -- technical debt */
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
 ): NormalizedTableColumn<T, K> {
@@ -293,6 +325,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         ? column.editable
                         : () => Boolean(column.editable ?? false),
                 sortable: column.key ?? null,
+                component: ITableCheckbox,
             } satisfies NormalizedTableColumnCheckbox<T, K>;
         case "radio":
             return {
@@ -301,6 +334,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
                 sortable: column.key ?? null,
+                component: ITableRadio,
             } satisfies NormalizedTableColumnRadio<T, K>;
         case "text":
             return {
@@ -314,6 +348,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         : () => Boolean(column.editable ?? false),
                 validation: column.validation ?? {},
                 sortable: column.key ?? null,
+                component: ITableText,
             } satisfies NormalizedTableColumnText<T, K>;
         case "anchor":
             return {
@@ -326,6 +361,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         ? column.enabled
                         : () => Boolean(column.enabled ?? true),
                 sortable: column.key ?? null,
+                component: ITableAnchor,
             } satisfies NormalizedTableColumnAnchor<T, K>;
         case "button":
             return {
@@ -339,6 +375,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         : () => Boolean(column.enabled ?? true),
                 icon: column.icon ?? null,
                 sortable: column.key ?? null,
+                component: ITableButton,
             } satisfies NormalizedTableColumnButton<T, K>;
         case "select":
             return {
@@ -352,6 +389,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         : () => Boolean(column.editable ?? false),
                 options: column.options,
                 sortable: column.key ?? null,
+                component: ITableSelect,
             } satisfies NormalizedTableColumnSelect<T, K>;
         case undefined:
             return {
@@ -364,6 +402,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 editable: () => false,
                 sortable: column.key ?? null,
                 validation: {},
+                component: ITableText,
             } satisfies NormalizedTableColumnText<T, K>;
     }
 }
@@ -383,5 +422,7 @@ export function defineTableColumns<T, K extends keyof T = keyof T>(
 export function normalizeTableColumns<T, K extends keyof T = keyof T>(
     columns: Array<TableColumn<T, K>>,
 ): Array<NormalizedTableColumn<T, K>> {
-    return columns.map(normalizeTableColumn);
+    return columns.map((column) => {
+        return normalizeTableColumn(column);
+    });
 }
