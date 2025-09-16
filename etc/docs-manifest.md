@@ -68,6 +68,8 @@ components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
 components/table-and-list/flist.html
+components/table-and-list/fpagination.html
+components/table-and-list/fpaginator.html
 components/table-and-list/fsortfilterdataset.html
 components/table-and-list/table.html
 components/validation/ferrorlist.html
@@ -102,6 +104,7 @@ functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-foot
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html
+functions/cypress/pageobjects/fpaginatorpageobject.html
 functions/cypress/pageobjects/FProgressbarPageObject/el.html
 functions/cypress/pageobjects/FProgressbarPageObject/index.html
 functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html
