@@ -2907,10 +2907,14 @@ function normalizeTableColumn(column) {
       };
     case void 0:
       return {
-        type: void 0,
+        type: "text",
         header: column.header,
         value: getValueFn(column.value, column.key, String, ""),
-        sortable: column.key
+        update() {
+        },
+        editable: () => false,
+        sortable: column.key,
+        validation: {}
       };
   }
 }
