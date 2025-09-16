@@ -5,6 +5,14 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "f-pagination": {
+        flow: true,
+    },
+
+    "f-table-paginator": {
+        flow: true,
+    },
+
     "f-table": {
         flow: true,
     },
@@ -38,10 +46,6 @@ module.exports = defineMetadata({
     },
 
     "i-table-anchor": {
-        flow: true,
-    },
-
-    "i-table-pager": {
         flow: true,
     },
 

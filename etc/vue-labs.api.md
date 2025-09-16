@@ -34,6 +34,31 @@ export function forgivingParseTimeToNumber(value?: string | null): number | unde
 // @public (undocumented)
 export function formatNumberToTime(value?: number): HoursMinutesString | undefined;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal_2" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FPagination: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal_2<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_PrettifyLocal_2<Pick<Partial<{}> & Omit<{} & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>, never> & {
+        items: T[];
+        itemsPerPage?: number;
+    } & {}> & PublicProps;
+    expose(exposed: ShallowUnwrapRef<    {}>): void;
+    attrs: any;
+    slots: {
+        default?: (props: {
+            items: T[];
+            numberOfItems: number;
+            currentPage: number;
+            firstItemIndex: number;
+            lastItemIndex: number;
+            numberOfPages: number;
+        }) => any;
+    };
+    emit: {};
+}>) => VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
+};
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_PrettifyLocal" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -47,7 +72,6 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
         expandableAttribute?: ExpandableAttribute;
         striped?: boolean;
         selectable?: "single" | "multi";
-        paginerated?: boolean;
     } & {
         selectedRows?: T[];
     }) & {}> & PublicProps;
@@ -66,6 +90,11 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
 }>) => VNode & {
     __ctx?: Awaited<typeof __VLS_setup>;
 };
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_Props" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FTablePaginator: DefineComponent<__VLS_Props, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, false, {}, any>;
 
 // @public (undocumented)
 export const HOURS_MINUTES_REGEXP: RegExp;

@@ -1,35 +1,16 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { FTable } from "@fkui/vue-labs";
-import { defineTableColumns } from "../table-column";
-
-const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
-
-interface Row {
+/**
+ * @internal
+ */
+export interface PersonData {
     id: number;
     firstName: string;
     lastName: string;
 }
 
-const columns = defineTableColumns<Row>([
-    {
-        type: "text",
-        header: "ID",
-        key: "id",
-    },
-    {
-        type: "text",
-        header: "First name",
-        key: "firstName",
-    },
-    {
-        type: "text",
-        header: "Last name",
-        key: "lastName",
-    },
-]);
-
-const rows = ref<Row[]>([
+/**
+ * @internal
+ */
+export const persons: PersonData[] = [
     { id: 1, firstName: "Anabel", lastName: "Kolakovic" },
     { id: 2, firstName: "Karlotte", lastName: "Faich" },
     { id: 3, firstName: "John", lastName: "Rattery" },
@@ -1030,48 +1011,4 @@ const rows = ref<Row[]>([
     { id: 998, firstName: "Prudence", lastName: "Castello" },
     { id: 999, firstName: "Ada", lastName: "Philippsohn" },
     { id: 1000, firstName: "Merrie", lastName: "Iacabucci" },
-]);
-const mySelectedRows = ref<Row[]>([rows.value[0]]);
-
-function onButtonClick(id: string): void {
-    alert(`Du klickade på rad med id ${id}`);
-}
-</script>
-
-<template>
-    <f-table
-        v-model:selected-rows="mySelectedRows"
-        :rows
-        :columns
-        key-attribute="id"
-        striped
-        paginerated
-    >
-    </f-table>
-</template>
-
-<style>
-body {
-    padding: 1rem;
-}
-
-.icon-button {
-    margin: 0;
-    padding: 0;
-    background: inherit;
-    border: 0;
-    cursor: pointer;
-}
-
-.level-2 {
-    margin-left: 0.5rem;
-}
-
-.level-3 {
-    padding-left: 1rem;
-}
-
-.bar {
-    background: hotpink;
-}
-</style>
+];

@@ -1,0 +1,12 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+.paginator {
+    &__page {
+        &--gap-after::after,
+        &--gap-before::before {
+            content: "...";
+        }
+    }
+}
