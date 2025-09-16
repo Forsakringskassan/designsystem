@@ -539,6 +539,31 @@ export class FPageHeaderPageobject implements BasePageObject {
 }
 
 // @public
+export class FPaginatorPageObject implements BasePageObject {
+    constructor(selector: string);
+    // (undocumented)
+    currentPageButton(): DefaultCypressChainable;
+    // (undocumented)
+    el(): DefaultCypressChainable;
+    // (undocumented)
+    firstPageButton(): DefaultCypressChainable;
+    // (undocumented)
+    lastPageButton(): DefaultCypressChainable;
+    // (undocumented)
+    nextButton(): DefaultCypressChainable;
+    // (undocumented)
+    pageButton(page: number): DefaultCypressChainable;
+    // (undocumented)
+    pageButtons(): DefaultCypressChainable;
+    // (undocumented)
+    pageCounter(): DefaultCypressChainable;
+    // (undocumented)
+    previousButton(): DefaultCypressChainable;
+    // (undocumented)
+    selector: string;
+}
+
+// @public
 export class FProgressbarPageObject implements BasePageObject {
     constructor(selector?: string);
     el(): DefaultCypressChainable;
