@@ -98,7 +98,6 @@ describe("FEmailTextField", () => {
              *
              * Enable:a när buggen är fixad.
              */
-            /* eslint-disable-next-line sonarjs/no-commented-code -- technical debt */
             /*
             secondEmailTextField.label.errorIcon().should('be.visible');
             */
