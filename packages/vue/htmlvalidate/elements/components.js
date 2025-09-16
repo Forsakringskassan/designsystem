@@ -1481,4 +1481,41 @@ module.exports = defineMetadata({
         },
         slots: ["default"],
     },
+
+    "f-paginate-dataset": {
+        flow: true,
+        attributes: {
+            "fetch-data": {
+                allowed: allowedIfAttributeIsAbsent("items"),
+                required: false,
+            },
+            items: {
+                allowed: allowedIfAttributeIsAbsent("fetch-data"),
+                required: false,
+            },
+            "items-length": {
+                allowed: allowedIfAttributeIsAbsent("items"),
+                required: false,
+            },
+            "items-per-page": {
+                required: false,
+            },
+        },
+        slots: ["default"],
+    },
+
+    "f-paginator": {
+        flow: true,
+        attributes: {
+            "current-page": {
+                required: false,
+            },
+            "number-of-pages": {
+                required: false,
+            },
+            "number-of-pages-to-show": {
+                required: false,
+            },
+        },
+    },
 });
