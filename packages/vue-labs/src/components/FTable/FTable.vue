@@ -72,6 +72,7 @@ const viewRows = computed((): Array<MetaRow<T>> => {
 const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     type: "checkbox",
     header: "selectable",
+    sortable: null,
     value(row) {
         if (!keyAttribute) {
             return false;
@@ -99,6 +100,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
 const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
     type: "radio",
     header: "Välj en rad",
+    sortable: null,
     value(row) {
         if (!keyAttribute) {
             return false;
