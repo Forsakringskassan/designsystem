@@ -60,3 +60,4 @@ export { AlertScreenReaderPageObject } from "./AlertScreenReader.pageobject";
 export { Input } from "./Input";
 export { FDialogueTreePageObject } from "./FDialogueTree.pageobject";
 export { FDialogueTreeItemPageObject } from "./FDialogueTreeItem.pageobject";
+export { FPaginatorPageObject } from "./FPaginator.pageobject";
