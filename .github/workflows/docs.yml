@@ -5,6 +5,9 @@ on:
     workflow_dispatch:
     workflow_call:
 
+permissions:
+    contents: write
+
 jobs:
     docs:
         name: Deploy
