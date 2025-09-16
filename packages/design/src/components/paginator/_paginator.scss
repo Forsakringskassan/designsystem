@@ -1,0 +1,48 @@
+@use "../../core";
+@use "../../core/size";
+
+.paginator {
+    display: inline-flex;
+    gap: size.$margin-025;
+    align-items: center;
+    height: 2rem;
+
+    &__page,
+    &__previous,
+    &__next {
+        border: none;
+        color: black;
+        background-color: white;
+        padding: size.$padding-025;
+        border-radius: 2px;
+        cursor: pointer;
+
+        &--active {
+            color: white;
+            background-color: var(--fkds-color-action-background-primary-default);
+        }
+
+        &:hover:enabled {
+            color: black;
+            background-color: var(--fkds-color-action-background-secondary-hover);
+        }
+
+        &--gap {
+            content: "...";
+        }
+
+        /* &--gap-after::after,
+        &--gap-before::before {
+            content: "...";
+        } */
+    }
+
+    &__page {
+        width: 2.5rem;
+    }
+
+    &__previous,
+    &__next {
+        width: 8rem;
+    }
+}

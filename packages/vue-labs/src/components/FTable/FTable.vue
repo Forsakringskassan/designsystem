@@ -10,7 +10,7 @@ import {
     dispatchActivateCellEvent,
     getMetaRows,
     maybeNavigateToCell,
-    setDefaultCellTarget as setDefaultCellTarget,
+    // setDefaultCellTarget as setDefaultCellTarget,
     stopEdit,
 } from "./FTable.logic";
 import ITableRow from "./ITableRow.vue";
@@ -249,7 +249,7 @@ function onToggleSortOrder(sortable: string): void {
 
 onMounted(() => {
     assertRef(tableRef);
-    setDefaultCellTarget(tableRef.value);
+    // setDefaultCellTarget(tableRef.value);
     registerCallbackOnMount(callbackSortableColumns);
     registerCallbackOnSort(callbackOnSort);
 });
