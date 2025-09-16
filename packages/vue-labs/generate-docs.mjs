@@ -12,7 +12,7 @@ const require = module.createRequire(import.meta.url);
 
 const pkg = require("./package.json");
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     site: {
         name: "FKUI Labs",
         lang: "sv",
