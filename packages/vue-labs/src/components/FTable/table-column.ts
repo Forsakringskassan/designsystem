@@ -30,12 +30,12 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
  * @internal
  */
 export interface NormalizedTableColumnCheckbox<T, K> {
-    type: "checkbox";
-    header: string;
+    readonly type: "checkbox";
+    readonly header: string;
+    readonly sortable?: K;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
     editable(row: T): boolean;
-    sortable?: K;
 }
 
 /**
@@ -53,11 +53,11 @@ export interface TableColumnRadio<T, K extends keyof T> {
  * @internal
  */
 export interface NormalizedTableColumnRadio<T, K> {
-    type: "radio";
-    header: string;
+    readonly type: "radio";
+    readonly header: string;
+    readonly sortable?: K;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
-    sortable?: K;
 }
 
 /**
@@ -77,13 +77,13 @@ export interface TableColumnText<T, K extends keyof T> {
  * @internal
  */
 export interface NormalizedTableColumnText<T, K> {
-    type: "text";
-    header: string;
+    readonly type: "text";
+    readonly header: string;
+    readonly validation: ValidatorConfigs;
+    readonly sortable?: K;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
     editable(row: T): boolean;
-    validation: ValidatorConfigs;
-    sortable?: K;
 }
 
 /**
@@ -102,11 +102,11 @@ export interface TableColumnAnchor<T, K extends keyof T> {
  * @internal
  */
 export interface NormalizedTableColumnAnchor<T, K> {
-    type: "anchor";
-    header: string;
+    readonly type: "anchor";
+    readonly header: string;
+    readonly href: string;
+    readonly sortable?: K;
     value(row: T): string | null;
-    href: string;
-    sortable?: K;
     enabled(row: T): boolean;
 }
 
@@ -127,13 +127,13 @@ export interface TableColumnButton<T, K extends keyof T> {
  * @internal
  */
 export interface NormalizedTableColumnButton<T, K> {
-    type: "button";
-    header: string;
+    readonly type: "button";
+    readonly header: string;
+    readonly icon?: string;
+    readonly sortable?: K;
     value(row: T): string | null;
     onClick?(row: T): void;
     enabled(row: T): boolean;
-    icon?: string;
-    sortable?: K;
 }
 
 /**
@@ -153,13 +153,13 @@ export interface TableColumnSelect<T, K extends keyof T> {
  * @internal
  */
 export interface NormalizedTableColumnSelect<T, K> {
-    type: "select";
-    header: string;
+    readonly type: "select";
+    readonly header: string;
+    readonly options: string[];
+    readonly sortable?: K;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
     editable(row: T): boolean;
-    options: string[];
-    sortable?: K;
 }
 
 /**
@@ -175,10 +175,10 @@ export interface TableColumnRender<T, K> {
  * @internal
  */
 export interface NormalizedTableColumnRender<T> {
-    type: undefined;
-    header: string;
+    readonly type: undefined;
+    readonly header: string;
+    readonly sortable?: boolean;
     render(row: T): VNode | Component;
-    sortable?: boolean;
 }
 
 /**
