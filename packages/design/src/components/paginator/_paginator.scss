@@ -1,0 +1,83 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+$gap-size: size.$margin-050;
+$button-height: 2.5rem;
+$page-width: $button-height;
+$button-width: 8rem;
+$number-of-pages: 9; // References `upperLimit` in FPaginator.logic
+
+//                      ____________                _________________________________________________________________                 ____________
+//                     | Föregående |              | 1 |   | 2 |  | 3 |   | 4 |  | 5 |   | 6 |   | 7 |   | 8 |   | 9 |               |   Nästa    |
+$paginator-width-full: $button-width + $gap-size + $page-width * $number-of-pages + $gap-size * ($number-of-pages - 1) + $gap-size + $button-width;
+
+.paginator {
+    display: flex;
+    gap: $gap-size;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    container-type: inline-size;
+
+    &__icon {
+        align-items: center;
+    }
+
+    &__page,
+    &__previous,
+    &__next {
+        border: none;
+        color: black;
+        height: $button-height;
+        background-color: transparent;
+        padding: size.$padding-025;
+        border-radius: 2px;
+        cursor: pointer;
+
+        &--active {
+            color: white;
+            background-color: var(--fkds-color-action-background-primary-default);
+        }
+
+        &:hover:enabled:not(&--active) {
+            color: black;
+            background-color: var(--fkds-color-action-background-secondary-hover);
+        }
+    }
+
+    &__next,
+    &__previous {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: size.$margin-025;
+    }
+
+    &__page {
+        width: $page-width;
+        display: none;
+    }
+
+    &__next,
+    &__page-counter,
+    &__previous {
+        width: $button-width;
+    }
+
+    &__page-counter {
+        padding: size.$padding-025;
+        text-align: center;
+        color: $paginator-page-counter-color-text-default;
+    }
+
+    @container (width >= #{$paginator-width-full}) {
+        &__page-counter {
+            display: none;
+        }
+
+        &__page {
+            display: inline-block;
+        }
+    }
+}
