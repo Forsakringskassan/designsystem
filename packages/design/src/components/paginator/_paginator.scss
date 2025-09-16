@@ -1,0 +1,72 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+$gap-size: size.$margin-050;
+$button-height: 2.5rem;
+$page-width: $button-height;
+$button-width: 8rem;
+$number-of-pages: 9; // References `upperLimit` in FPaginator.logic
+$paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 20) * $gap-size));
+
+.paginator {
+    display: flex;
+    gap: $gap-size;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+
+    &__page,
+    &__previous,
+    &__next {
+        border: none;
+        color: black;
+        height: $button-height;
+        background-color: white;
+        padding: size.$padding-025;
+        border-radius: 2px;
+        cursor: pointer;
+
+        &--active {
+            color: white;
+            background-color: var(--fkds-color-action-background-primary-default);
+        }
+
+        &:hover:enabled:not(&--active) {
+            color: black;
+            background-color: var(--fkds-color-action-background-secondary-hover);
+        }
+    }
+
+    &__pages {
+        display: inline-flex;
+        gap: $gap-size;
+    }
+
+    &__page {
+        width: $page-width;
+    }
+
+    &__next,
+    &__page-counter,
+    &__previous {
+        width: $button-width;
+    }
+
+    &__page-counter {
+        display: none;
+        padding: size.$padding-025;
+        text-align: center;
+        color: $paginator-page-counter-color-text-default;
+    }
+
+    @media (max-width: #{$paginator-width-full}) {
+        &__page-counter {
+            display: inline;
+        }
+
+        &__pages {
+            display: none;
+        }
+    }
+}

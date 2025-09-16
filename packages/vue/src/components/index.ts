@@ -96,6 +96,8 @@ export {
     registerLayout,
     useAreaData,
 } from "./FPageLayout";
+export { FPaginateDataset } from "./FPaginateDataset";
+export { FPaginator } from "./FPaginator";
 export { FProgressbar } from "./FProgressbar";
 export { FRadioField } from "./FRadioField";
 export {

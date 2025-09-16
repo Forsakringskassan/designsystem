@@ -53,6 +53,25 @@ export function activateRow(
     table.activate(row, element);
 }
 
+function goToPreviousPage(table: FTableKeyboardAdapter<unknown>): void {
+    dispatchPaginationEvent(table, "previous");
+}
+
+function goToNextPage(table: FTableKeyboardAdapter<unknown>): void {
+    dispatchPaginationEvent(table, "next");
+}
+
+function dispatchPaginationEvent(
+    table: FTableKeyboardAdapter<unknown>,
+    type: "next" | "previous",
+): void {
+    assertRef(table.tr);
+    const paginationEvent = new CustomEvent(`pagination:${type}`, {
+        bubbles: true,
+    });
+    table.tr.value[0].dispatchEvent(paginationEvent);
+}
+
 export function onKeydown<T>(
     table: FTableKeyboardAdapter<T>,
     event: KeyboardEvent,
