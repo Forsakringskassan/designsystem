@@ -272,7 +272,7 @@ function cancel(): void {
     </td>
 </template>
 
-<style lang="scss">
+<style>
 .input {
     border: none;
     background: inherit;
