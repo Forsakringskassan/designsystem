@@ -64,6 +64,7 @@ components/page-layout/fnavigationmenu.html
 components/page-layout/fpageheader.html
 components/page-layout/fpagelayout.html
 components/page-layout/fresizepane.html
+components/pagination.html
 components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
@@ -102,6 +103,7 @@ functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-foot
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html
+functions/cypress/pageobjects/fpaginatorpageobject.html
 functions/cypress/pageobjects/FProgressbarPageObject/el.html
 functions/cypress/pageobjects/FProgressbarPageObject/index.html
 functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html
