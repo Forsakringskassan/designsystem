@@ -3721,8 +3721,13 @@ var _hoisted_5 = {
   tabindex: "-1",
   class: "table-ng__column"
 };
-var _hoisted_6 = ["colspan"];
-var _hoisted_7 = {
+var _hoisted_6 = {
+  key: 0,
+  class: "table-ng__row--empty"
+};
+var _hoisted_7 = ["colspan"];
+var _hoisted_8 = ["colspan"];
+var _hoisted_9 = {
   key: 0
 };
 var _sfc_main = /* @__PURE__ */ defineComponent({
@@ -3766,6 +3771,13 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     const rowsFromPaginator = ref(metaRows.value);
     const viewRows = computed(() => {
       return __props.paginerated ? rowsFromPaginator.value : metaRows.value;
+    });
+    const isEmpty2 = computed(() => {
+      return viewRows.value.length === 0;
+    });
+    const columnCount = computed(() => {
+      const selectableCol = __props.selectable ? 1 : 0;
+      return columns.value.length + selectableCol;
     });
     const multiSelectColumn = {
       type: "checkbox",
@@ -3954,7 +3966,12 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           class: "table-ng__column",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", null, [(openBlock(true), createElementBlock(Fragment, null, renderList(viewRows.value, ({
+      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_6, [createElementVNode("td", {
+        colspan: columnCount.value,
+        class: "table-ng__cell"
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[3] || (_cache[3] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_7)])) : (openBlock(true), createElementBlock(Fragment, {
+        key: 1
+      }, renderList(viewRows.value, ({
         key,
         row,
         rowIndex,
@@ -3983,17 +4000,17 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
             ref_for: true
           }, {
             row
-          }))], 8, _hoisted_6)) : (openBlock(), createElementBlock(Fragment, {
+          }))], 8, _hoisted_8)) : (openBlock(), createElementBlock(Fragment, {
             key: 1
           }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$8, {
             key: 0,
             row,
             column: multiSelectColumn
-          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$7, {
+          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$7, {
             key: 1,
             row,
             column: singleSelectColumn
-          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
             return openBlock(), createElementBlock(Fragment, {
               key: column.header
             }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
@@ -4007,10 +4024,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           }), 128))], 64))]),
           _: 2
         }, 1032, ["row-key", "aria-rowindex", "aria-level", "aria-setsize", "aria-posinset", "is-treegrid", "is-expandable", "is-expanded"]);
-      }), 128))])], 42, _hoisted_1), _cache[6] || (_cache[6] = createTextVNode()), _ctx.paginerated ? (openBlock(), createElementBlock("div", _hoisted_7, [createVNode(_sfc_main$2, {
+      }), 128))])], 42, _hoisted_1), _cache[7] || (_cache[7] = createTextVNode()), _ctx.paginerated ? (openBlock(), createElementBlock("div", _hoisted_9, [createVNode(_sfc_main$2, {
         items: metaRows.value,
         onItemRange: onItemRangeUpdate
-      }, null, 8, ["items"])])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
+      }, null, 8, ["items"])])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
     };
   }
 });
