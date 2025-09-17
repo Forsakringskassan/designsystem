@@ -271,6 +271,7 @@ onMounted(() => {
     <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
         <thead>
             <tr class="table-ng__row">
+                <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <th v-if="isMultiSelect" scope="col" class="table-ng__column table-ng__column--checkbox">
                     <input
                         ref="selectAll"
@@ -282,7 +283,6 @@ onMounted(() => {
                     />
                 </th>
                 <th v-if="isSingleSelect" scope="col">{{ singleSelectColumn.header }}</th>
-                <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <!-- [html-validate-disable-next element-permitted-content -- transparent th] -->
                 <i-table-header
                     v-for="column in columns"
