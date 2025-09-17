@@ -65,6 +65,15 @@ const viewRows = computed((): Array<MetaRow<T>> => {
     return paginerated ? (rowsFromPaginator.value as Array<MetaRow<T>>) : metaRows.value;
 });
 
+const isEmpty = computed((): boolean => {
+    return viewRows.value.length === 0;
+});
+
+const columnCount = computed((): number => {
+    const selectableCol = selectable ? 1 : 0;
+    return columns.value.length + selectableCol;
+});
+
 const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     type: "checkbox",
     header: "selectable",
@@ -289,35 +298,43 @@ onMounted(() => {
         </thead>
 
         <tbody>
-            <!-- [html-validate-disable-next element-permitted-content -- transparent tr] -->
-            <i-table-row
-                v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in viewRows"
-                :key
-                :row-key="key"
-                :aria-rowindex="rowIndex"
-                :aria-level="level"
-                :aria-setsize="setsize"
-                :aria-posinset="posinset"
-                :is-treegrid
-                :is-expandable
-                :is-expanded
-                @toggle="onToggleExpanded"
-            >
-                <template v-if="level! > 1 && hasExpandableSlot">
-                    <td :colspan="columns.length">
-                        <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
-                        <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
+            <template v-if="isEmpty">
+                <tr class="table-ng__row--empty">
+                    <td :colspan="columnCount" class="table-ng__cell">
+                        <slot name="empty"> Tabellen är tom </slot>
                     </td>
-                </template>
-                <template v-else>
-                    <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
-                    <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
-                    <template v-for="column in columns" :key="column.header">
-                        <component :is="column.component" v-if="'component' in column" :row :column></component>
-                        <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
+                </tr>
+            </template>
+            <template v-else>
+                <i-table-row
+                    v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in viewRows"
+                    :key
+                    :row-key="key"
+                    :aria-rowindex="rowIndex"
+                    :aria-level="level"
+                    :aria-setsize="setsize"
+                    :aria-posinset="posinset"
+                    :is-treegrid
+                    :is-expandable
+                    :is-expanded
+                    @toggle="onToggleExpanded"
+                >
+                    <template v-if="level! > 1 && hasExpandableSlot">
+                        <td :colspan="columns.length">
+                            <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
+                            <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
+                        </td>
                     </template>
-                </template>
-            </i-table-row>
+                    <template v-else>
+                        <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
+                        <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
+                        <template v-for="column in columns" :key="column.header">
+                            <component :is="column.component" v-if="'component' in column" :row :column></component>
+                            <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
+                        </template>
+                    </template>
+                </i-table-row>
+            </template>
         </tbody>
     </table>
     <div v-if="paginerated">
