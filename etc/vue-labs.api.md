@@ -111,6 +111,7 @@ export function splitHoursMinutes(valueString: string, extraForgiving?: boolean)
 // Warning: (ae-forgotten-export) The symbol "TableColumnSimple" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "TableColumnCheckbox" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "TableColumnRadio" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TableColumnRowHeader" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "TableColumnText" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "TableColumnAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "TableColumnButton" needs to be exported by the entry point index.d.ts
@@ -118,7 +119,7 @@ export function splitHoursMinutes(valueString: string, extraForgiving?: boolean)
 // Warning: (ae-forgotten-export) The symbol "TableColumnSelect" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRadio<T, K> | TableColumnText<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K>;
+export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRadio<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K>;
 
 // @public (undocumented)
 export const XTimeTextField: DefineComponent<ExtractPropTypes<    {
