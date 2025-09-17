@@ -52,6 +52,10 @@ $table-ng-header-font-weight: var(--f-font-weight-medium) !default;
         .table-ng__row {
             background: $table-ng-row-background;
             color: $table-ng-row-foreground;
+
+            &--empty {
+                text-align: center;
+            }
         }
     }
 
