@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 6.18.1 (2025-09-17)
+
+### Bug Fixes
+
+* bugfixes for FTable component (refs SFKUI-6500) 26611df
+
 ## 6.18.0 (2025-09-11)
 
 ### Features
