@@ -48,6 +48,6 @@ function onChange(e: Event): void {
         class="table-ng__cell table-ng__cell--checkbox"
         @table-activate-cell="onActivateCell"
     >
-        <input :checked="column.value(row)" type="checkbox" :aria-label="column.header" disabled />
+        <input :checked="column.value(row)" type="checkbox" :aria-label="column.header" />
     </td>
 </template>

@@ -6,6 +6,7 @@ import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
 import ITableSelect from "./ITableSelect.vue";
+import ITableRowheader from "./ITableRowheader.vue";
 
 /**
  * @public
@@ -18,6 +19,31 @@ export interface TableColumnSimple<T, K extends keyof T> {
     header: string;
     key?: K;
     value?(row: T): string;
+}
+
+/**
+ * @public
+ */
+export interface TableColumnRowHeader<T, K extends keyof T> {
+    type: "rowheader";
+    header: string;
+    key: K;
+    sortable?: K;
+    value?(row: T): string;
+}
+
+/**
+ * @internal
+ */
+export interface NormalizedTableColumnRowHeader<T, K> {
+    readonly type: "rowheader";
+    readonly header: string;
+    readonly sortable: K | null;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnRowHeader<T, K>;
+    }>;
+    value(row: T): string;
 }
 
 /**
@@ -218,6 +244,7 @@ export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnSimple<T, K>
     | TableColumnCheckbox<T, K>
     | TableColumnRadio<T, K>
+    | TableColumnRowHeader<T, K>
     | TableColumnText<T, K>
     | TableColumnAnchor<T, K>
     | TableColumnButton<T, K>
@@ -230,6 +257,7 @@ export type TableColumn<T, K extends keyof T = keyof T> =
 export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnCheckbox<T, K>
     | NormalizedTableColumnRadio<T, K>
+    | NormalizedTableColumnRowHeader<T, K>
     | NormalizedTableColumnText<T, K>
     | NormalizedTableColumnAnchor<T, K>
     | NormalizedTableColumnButton<T, K>
@@ -350,6 +378,14 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 sortable: column.key ?? null,
                 component: ITableText,
             } satisfies NormalizedTableColumnText<T, K>;
+        case "rowheader":
+            return {
+                type: "rowheader",
+                header: column.header,
+                value: getValueFn(column.value, column.key, String, ""),
+                sortable: column.key ?? null,
+                component: ITableRowheader,
+            } satisfies NormalizedTableColumnRowHeader<T, K>;
         case "anchor":
             return {
                 type: "anchor",

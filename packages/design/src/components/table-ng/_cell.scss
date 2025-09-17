@@ -107,6 +107,11 @@ $horizontal-padding: size.$padding-050;
             width: 100%;
         }
     }
+
+    &--rowheader {
+        font-weight: var(--f-font-weight-medium);
+        text-align: left;
+    }
 }
 
 .table-ng__textedit {
