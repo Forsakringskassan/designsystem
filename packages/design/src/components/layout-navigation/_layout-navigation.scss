@@ -76,7 +76,7 @@ $scrollbar-navigation: #{$palette-color-fk-black-50};
         display: flex;
         flex-direction: column;
         margin-right: #{$layout-navigation-inner-margin - $layout-navigation-content-padding - $layout-navigation-border-width};
-        word-wrap: break-word;
+        overflow-wrap: break-word;
         padding: 1rem;
 
         &__title {
