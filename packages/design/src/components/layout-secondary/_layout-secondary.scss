@@ -75,7 +75,7 @@ $scrollbar-secondary: #{$palette-color-fk-black-50};
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            word-wrap: break-word;
+            overflow-wrap: break-word;
             margin: #{$layout-secondary-inner-margin - $layout-secondary-content-padding};
             margin-left: #{$layout-secondary-inner-margin - $layout-secondary-content-padding - $layout-secondary-border-width};
 
