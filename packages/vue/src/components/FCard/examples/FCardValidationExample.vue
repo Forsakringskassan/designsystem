@@ -38,14 +38,6 @@ function setValid(): void {
             <template #footer="{ hasError }">
                 <div class="button-group">
                     <button
-                        class="button button-group__item button--tertiary button--medium button--align-text"
-                        type="button"
-                    >
-                        <f-icon name="trashcan"></f-icon>
-                        <span> Ta bort </span>
-                    </button>
-
-                    <button
                         id="focus"
                         ref="focus"
                         class="button button-group__item button--tertiary button--medium button--align-text"
@@ -58,6 +50,13 @@ function setValid(): void {
                                 på kortet, det innehåller fel
                             </span>
                         </span>
+                    </button>
+                    <button
+                        class="button button-group__item button--tertiary button--medium button--align-text"
+                        type="button"
+                    >
+                        <f-icon name="trashcan"></f-icon>
+                        <span> Ta bort </span>
                     </button>
                 </div>
             </template>
