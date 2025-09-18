@@ -1109,33 +1109,13 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-69a7da"></div>
+        <div id="example-3d4db3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-body {
-    padding: 1rem;
-}
-.icon-button {
-    margin: 0;
-    padding: 0;
-    background: inherit;
-    border: 0;
-    cursor: pointer;
-}
-.level-2 {
-    margin-left: 0.5rem;
-}
-.level-3 {
-    padding-left: 1rem;
-}
-.bar {
-    background: hotpink;
-}
-
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FPaginationTableExample-69a7da.js"></script>
+        <script type="module" src="./FPaginationTableExample-3d4db3.js"></script>
     </div>
                 <div>
             <button
@@ -1183,7 +1163,7 @@ body {
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems ?? rows&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-paginator</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">:current-page</span> /&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1191,32 +1171,6 @@ body {
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
-<span class="hljs-selector-tag">body</span> {
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
-}
-
-<span class="hljs-selector-class">.icon-button</span> {
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">background</span>: inherit;
-    <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">cursor</span>: pointer;
-}
-
-<span class="hljs-selector-class">.level-2</span> {
-    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0.5rem</span>;
-}
-
-<span class="hljs-selector-class">.level-3</span> {
-    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">1rem</span>;
-}
-
-<span class="hljs-selector-class">.bar</span> {
-    <span class="hljs-attribute">background</span>: hotpink;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
