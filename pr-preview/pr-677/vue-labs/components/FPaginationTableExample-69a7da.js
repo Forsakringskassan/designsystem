@@ -23,14 +23,14 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FPagination/examples/FPaginationTableExample.vue:FPaginationTableExample-944e08.js
+// virtual-entry:virtual:src/components/FPagination/examples/FPaginationTableExample.vue:FPaginationTableExample-69a7da.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref as ref2 } from "vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, useTemplateRef, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent, normalizeProps, guardReactiveProps } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected, FButton } from "@fkui/vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected, useTranslate, FButton } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 var es_iterator_forEach = {};
@@ -2729,7 +2729,7 @@ var _hoisted_1$8 = {
   key: 0,
   class: "table-ng__row"
 };
-var _hoisted_2$4 = {
+var _hoisted_2$3 = {
   key: 0,
   tabindex: "-1",
   class: "table-ng__column"
@@ -2773,7 +2773,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$4)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
         "aria-level": _ctx.ariaLevel
@@ -2795,7 +2795,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$7 = ["checked", "aria-label"];
-var _hoisted_2$3 = ["checked", "aria-label"];
+var _hoisted_2$2 = ["checked", "aria-label"];
 var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
@@ -2838,7 +2838,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
         type: "checkbox",
         "aria-label": _ctx.column.header,
         disabled: ""
-      }, null, 8, _hoisted_2$3)], 544));
+      }, null, 8, _hoisted_2$2)], 544));
     };
   }
 });
@@ -3170,7 +3170,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
 var _hoisted_1$2 = {
   class: "table-ng__editable"
 };
-var _hoisted_2$2 = {
+var _hoisted_2$1 = {
   class: "table-ng__editable__text"
 };
 var _hoisted_3$1 = ["aria-controls"];
@@ -3354,7 +3354,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"]),
         onTableActivateCell: onActivateCell
-      }, [withDirectives(createElementVNode("div", _hoisted_1$2, [createElementVNode("span", _hoisted_2$2, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$2, [createElementVNode("span", _hoisted_2$1, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
       })], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
@@ -3607,7 +3607,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$1 = ["role"];
-var _hoisted_2$1 = {
+var _hoisted_2 = {
   class: "table-ng__row"
 };
 var _hoisted_3 = {
@@ -3838,7 +3838,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2$1, [isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_3, [createElementVNode("input", {
+      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_3, [createElementVNode("input", {
         ref: "selectAll",
         type: "checkbox",
         "aria-label": "select all",
@@ -3919,19 +3919,42 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
 });
 var _hoisted_1 = {
   key: 0,
+  class: "paginator",
   ref: "paginator"
-};
-var _hoisted_2 = {
-  key: 1
 };
 var _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "FTablePaginator",
   props: {
     numberOfPages: {},
-    currentPage: {}
+    currentPage: {},
+    maxPagesShown: {
+      default: 8
+    }
   },
   setup(__props) {
     const paginatorRef = useTemplateRef("paginator");
+    const $t = useTranslate();
+    const pages = computed(() => {
+      let startPage = Math.max(__props.currentPage - Math.floor(__props.maxPagesShown / 2), 1);
+      let endPage = startPage + __props.maxPagesShown - 1;
+      if (endPage > __props.numberOfPages) {
+        endPage = __props.numberOfPages;
+        startPage = Math.max(endPage - __props.maxPagesShown + 1, 1);
+      }
+      const pages2 = [];
+      for (let i = startPage; i <= endPage; i++) {
+        pages2.push(i);
+      }
+      if (startPage > 1) {
+        pages2.shift();
+        pages2.unshift(1);
+      }
+      if (endPage < __props.numberOfPages) {
+        pages2.pop();
+        pages2.push(__props.numberOfPages);
+      }
+      return pages2;
+    });
     function onClickPreviousButton() {
       assertRef(paginatorRef);
       paginatorRef.value.dispatchEvent(new CustomEvent("pagination:previous", {
@@ -3951,9 +3974,19 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         detail: page
       }));
     }
-    function showPage(page) {
-      const numberOfAdjacentPagesShown = 2;
-      return page === 1 || Math.abs(__props.currentPage - page) <= numberOfAdjacentPagesShown || page === __props.numberOfPages;
+    function pageClasses(page) {
+      const rootClass = "paginator__page";
+      const classes = [rootClass];
+      if (page === __props.currentPage) {
+        classes.push(`${rootClass}--active`);
+      }
+      if (page === 1 && !pages.value.includes(2)) {
+        classes.push(`${rootClass}--gap-after`);
+      }
+      if (page === __props.numberOfPages && !pages.value.includes(__props.numberOfPages - 1)) {
+        classes.push(`${rootClass}--gap-before`);
+      }
+      return classes;
     }
     return (_ctx, _cache) => {
       return _ctx.numberOfPages > 1 ? (openBlock(), createElementBlock("div", _hoisted_1, [createVNode(unref(FButton), {
@@ -3961,31 +3994,31 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         variant: "tertiary",
         size: "small",
         "icon-left": "chevrons-left",
+        class: "paginator__previous",
         onClick: _cache[0] || (_cache[0] = ($event) => onClickPreviousButton())
       }, {
-        default: withCtx(() => [..._cache[2] || (_cache[2] = [createTextVNode("\n            F\xF6reg\xE5ende\n        ", -1)])]),
+        default: withCtx(() => [createTextVNode(toDisplayString(unref($t)("fkui.table.paginator.previous", "F\xF6reg\xE5ende")), 1)]),
         _: 1
-      }, 8, ["disabled"]), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.numberOfPages, (page) => {
-        return openBlock(), createElementBlock(Fragment, {
-          key: page
-        }, [showPage(page) ? (openBlock(), createBlock(unref(FButton), {
-          key: 0,
+      }, 8, ["disabled"]), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page) => {
+        return openBlock(), createBlock(unref(FButton), {
           size: "small",
           variant: "tertiary",
           disabled: page === _ctx.currentPage,
-          onClick: ($event) => onClickPageButton(page)
+          onClick: ($event) => onClickPageButton(page),
+          class: normalizeClass(pageClasses(page))
         }, {
           default: withCtx(() => [createTextVNode(toDisplayString(page), 1)]),
           _: 2
-        }, 1032, ["disabled", "onClick"])) : showPage(page + 1) ? (openBlock(), createElementBlock("span", _hoisted_2, "...")) : createCommentVNode("", true)], 64);
-      }), 128)), _cache[5] || (_cache[5] = createTextVNode()), createVNode(unref(FButton), {
+        }, 1032, ["disabled", "onClick", "class"]);
+      }), 256)), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref(FButton), {
         disabled: _ctx.currentPage === _ctx.numberOfPages,
         variant: "tertiary",
         size: "small",
         "icon-right": "arrow-right",
+        class: "paginator__next",
         onClick: _cache[1] || (_cache[1] = ($event) => onClickNextButton())
       }, {
-        default: withCtx(() => [..._cache[3] || (_cache[3] = [createTextVNode("\n            N\xE4sta\n        ", -1)])]),
+        default: withCtx(() => [createTextVNode(toDisplayString(unref($t)("fkui.table.paginator.next", "N\xE4sta")), 1)]),
         _: 1
       }, 8, ["disabled"])], 512)) : createCommentVNode("", true);
     };
@@ -4001,14 +4034,12 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const currentPage = ref(1);
-    const startIndex = computed(() => Math.max(0, __props.itemsPerPage * (currentPage.value - 1)));
-    const endIndex = computed(() => Math.min(__props.itemsPerPage * currentPage.value, numberOfItems.value));
-    const currentPageItems = computed(() => __props.items.slice(startIndex.value, endIndex.value));
+    const firstItemIndex = computed(() => Math.max(0, __props.itemsPerPage * (currentPage.value - 1)));
+    const lastItemIndex = computed(() => Math.min(__props.itemsPerPage * currentPage.value, numberOfItems.value));
+    const currentPageItems = computed(() => __props.items.slice(firstItemIndex.value, lastItemIndex.value));
     const currentPageItemLength = computed(() => currentPageItems.value.length);
     const numberOfPages = computed(() => Math.ceil(numberOfItems.value / __props.itemsPerPage));
-    const numberOfItems = computed(() => {
-      return __props.items.length;
-    });
+    const numberOfItems = computed(() => __props.items.length);
     function goToFirstPage() {
       currentPage.value = 1;
     }
@@ -4035,8 +4066,8 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         items: currentPageItems.value,
         numberOfItems: currentPageItemLength.value,
         currentPage: currentPage.value,
-        startIndex: startIndex.value,
-        endIndex: endIndex.value,
+        firstItemIndex: firstItemIndex.value,
+        lastItemIndex: lastItemIndex.value,
         numberOfPages: numberOfPages.value
       })))], 32);
     };
@@ -5047,7 +5078,7 @@ var persons = [
   { id: 1e3, firstName: "Merrie", lastName: "Iacabucci" }
 ];
 
-// virtual-entry:virtual:src/components/FPagination/examples/FPaginationTableExample.vue:FPaginationTableExample-944e08.js
+// virtual-entry:virtual:src/components/FPagination/examples/FPaginationTableExample.vue:FPaginationTableExample-69a7da.js
 import { createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FPaginationTableExample",
@@ -5071,10 +5102,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       }
     ]);
     const rows = ref2(persons);
-    function onButtonClick(id) {
-      alert(`Du klickade p\xE5 rad med id ${id}`);
-    }
-    const __returned__ = { columns, rows, onButtonClick, get FTable() {
+    const __returned__ = { columns, rows, get FTable() {
       return _sfc_main$2;
     }, get FPagination() {
       return _sfc_main;
@@ -5111,7 +5139,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-944e08"
+  selector: "#example-69a7da"
 });
 export {
   render

@@ -5260,6 +5260,10 @@ input[type=search]:focus,
   color: var(--f-text-color-default);
 }
 
+.paginator__page--gap-after::after, .paginator__page--gap-before::before {
+  content: "...";
+}
+
 .table-ng__cell {
   padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;
   text-wrap: nowrap;
