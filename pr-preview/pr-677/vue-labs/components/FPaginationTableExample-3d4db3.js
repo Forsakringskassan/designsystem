@@ -3919,8 +3919,8 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
 });
 var _hoisted_1 = {
   key: 0,
-  class: "paginator",
-  ref: "paginator"
+  ref: "paginator",
+  class: "paginator"
 };
 var _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "FTablePaginator",
@@ -4001,16 +4001,17 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         _: 1
       }, 8, ["disabled"]), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page) => {
         return openBlock(), createBlock(unref(FButton), {
+          key: page,
           size: "small",
           variant: "tertiary",
           disabled: page === _ctx.currentPage,
-          onClick: ($event) => onClickPageButton(page),
-          class: normalizeClass(pageClasses(page))
+          class: normalizeClass(pageClasses(page)),
+          onClick: ($event) => onClickPageButton(page)
         }, {
           default: withCtx(() => [createTextVNode(toDisplayString(page), 1)]),
           _: 2
-        }, 1032, ["disabled", "onClick", "class"]);
-      }), 256)), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref(FButton), {
+        }, 1032, ["disabled", "class", "onClick"]);
+      }), 128)), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref(FButton), {
         disabled: _ctx.currentPage === _ctx.numberOfPages,
         variant: "tertiary",
         size: "small",
