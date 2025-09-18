@@ -5,6 +5,13 @@
     $global: false
 );
 
+@use "@fkui/design/src/core/config-variables" with (
+    $asset-path-images: "./images"
+);
+
+$fk-logo-small-url: "#{config-variables.$asset-path-images}/fk-logo-primary-small.svg";
+$fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-large.svg";
+
 @media (prefers-color-scheme: light) {
     .code-preview__preview,
     .live-example__example {
@@ -24,9 +31,15 @@
 .user-theme {
     @media (prefers-color-scheme: light) {
         @include fkui-default.css-variables();
+        --f-logo-image-small: url("#{$fk-logo-small-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+
+        --f-logo-image-large: url("#{$fk-logo-large-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
     }
 
     @media (prefers-color-scheme: dark) {
         @include fkui-dark.css-variables();
+        --f-logo-image-small: url("#{$fk-logo-small-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+
+        --f-logo-image-large: url("#{$fk-logo-large-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
     }
 }
