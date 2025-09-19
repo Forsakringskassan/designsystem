@@ -107,17 +107,18 @@ function pageClasses(page: number): string[] {
             {{ $t("fkui.table.paginator.previous", "Föregående") }}
         </f-button>
 
-        <f-button
+        <button
             v-for="page in pages"
             :key="page"
             size="small"
             variant="tertiary"
+            type="button"
             :disabled="page === currentPage"
             :class="pageClasses(page)"
             @click="onClickPageButton(page)"
         >
             {{ page }}
-        </f-button>
+        </button>
 
         <f-button
             :disabled="currentPage === numberOfPages"
