@@ -26,6 +26,12 @@ FTableRadioExample.vue
 FTableExpandableRows.vue
 ```
 
+## Radrubriker
+
+```import
+FTableRowHeaderExample.vue
+```
+
 ## Paginering
 
 ```import
