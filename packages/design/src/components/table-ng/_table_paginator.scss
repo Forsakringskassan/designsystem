@@ -1,0 +1,29 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+.paginator {
+    &__page {
+        border: none;
+        color: black;
+        background-color: white;
+        min-width: 32px;
+        padding: 5px;
+        margin: 3px;
+
+        &--active {
+            color: white;
+            background-color: var(--fkds-color-action-background-primary-default);
+        }
+
+        &:hover {
+            color: black;
+            background-color: var(--fkds-color-action-background-secondary-hover);
+        }
+
+        &--gap-after::after,
+        &--gap-before::before {
+            content: "...";
+        }
+    }
+}

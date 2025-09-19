@@ -29,7 +29,7 @@ FTableExpandableRows.vue
 ## Paginering
 
 ```import
-FTablePages.vue
+FPaginationTableExample.vue
 ```
 
 ## Textnycklar
