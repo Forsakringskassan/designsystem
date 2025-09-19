@@ -5260,6 +5260,22 @@ input[type=search]:focus,
   color: var(--f-text-color-default);
 }
 
+.paginator__page {
+  border: none;
+  color: black;
+  background-color: white;
+  min-width: 32px;
+  padding: 5px;
+  margin: 3px;
+}
+.paginator__page--active {
+  color: white;
+  background-color: var(--fkds-color-action-background-primary-default);
+}
+.paginator__page:hover {
+  color: black;
+  background-color: var(--fkds-color-action-background-secondary-hover);
+}
 .paginator__page--gap-after::after, .paginator__page--gap-before::before {
   content: "...";
 }
