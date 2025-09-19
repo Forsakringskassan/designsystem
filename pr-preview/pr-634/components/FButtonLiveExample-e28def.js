@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FButton/examples/FButtonLiveExample.vue:FButtonLiveExample-1fa43c.js
+// virtual-entry:virtual:packages/vue/src/components/FButton/examples/FButtonLiveExample.vue:FButtonLiveExample-e28def.js
 import { defineComponent } from "vue";
 import { FCheckboxField, FFieldset, FRadioField, FIcon, FSelectField, FButton } from "@fkui/vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
@@ -332,7 +332,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         default: _withCtx(() => [..._cache[27] || (_cache[27] = [
           _createTextVNode(
-            " Asynkron \xE5tg\xE4rd ",
+            " Visa spinner ",
             -1
             /* CACHED */
           )
@@ -348,7 +348,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1fa43c"
+  selector: "#example-e28def"
 });
 export {
   render
