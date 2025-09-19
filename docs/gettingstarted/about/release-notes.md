@@ -9,6 +9,15 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.19.0
+
+2025-09-19
+
+### Spinner för knapp
+
+`FButton` har nu stöd för att visa en spinner vid operationer som tar lång tid.
+Knappen blir då inaktiv och förhindrar upprepade klick, {@link button#hantering_av_asynkrona_atgarder läs mer här}.
+
 ## Version 6.16.0
 
 2025-08-22
