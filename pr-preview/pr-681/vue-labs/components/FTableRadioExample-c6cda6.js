@@ -3445,7 +3445,7 @@ function getUpdateFn(fn, key) {
   return () => void 0;
 }
 function normalizeTableColumn(column) {
-  var _column$key, _column$key2, _column$validation, _column$key3, _column$key4, _column$icon, _column$key5, _column$key6, _column$key7;
+  var _column$key, _column$key2, _column$validation, _column$key3, _column$key4, _column$key5, _column$icon, _column$key6, _column$key7, _column$key8;
   if ("render" in column) {
     return {
       type: void 0,
@@ -3496,7 +3496,7 @@ function normalizeTableColumn(column) {
         type: "rowheader",
         header: column.header,
         value: getValueFn(column.value, column.key, String, ""),
-        sortable: column.key,
+        sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
         component: _sfc_main$3
       };
     case "anchor":
@@ -3509,7 +3509,7 @@ function normalizeTableColumn(column) {
           var _column$enabled;
           return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
         },
-        sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
+        sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
         component: _sfc_main$7
       };
     case "button":
@@ -3523,7 +3523,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$enabled2 = column.enabled) !== null && _column$enabled2 !== void 0 ? _column$enabled2 : true);
         },
         icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-        sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
+        sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
         component: _sfc_main$6
       };
     case "select":
@@ -3537,7 +3537,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$editable3 = column.editable) !== null && _column$editable3 !== void 0 ? _column$editable3 : false);
         },
         options: column.options,
-        sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
+        sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
         component: _sfc_main$4
       };
     case void 0:
@@ -3548,7 +3548,7 @@ function normalizeTableColumn(column) {
         update() {
         },
         editable: () => false,
-        sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
+        sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
         validation: {},
         component: _sfc_main$5
       };

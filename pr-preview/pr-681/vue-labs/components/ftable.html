@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FTable - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-277889.css"
+            href="../assets/docs-8448e3.css"
             crossorigin
-            integrity="sha384-tlblB7z2vhrd8qDKMcdCSudqwWQFg6LG3nUDEEXNqObXSRWwzfolzObEdpJ/2uuH"
+            integrity="sha384-3ER7fL5aPq2rkg4bFhgA4CloBGFqpf5FwVaYhljUBbsFeGKBHpT3aaOr+m1drkZr"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-457f26.css"
+            href="../assets/docs-fkui-611bd1.css"
             crossorigin
-            integrity="sha384-/wZqzuweT0NamyaBPebNQ65oCjcMnC8uhxC1HVjDhXvt5oDMd4DAzgeeecg4ZqY7"
+            integrity="sha384-nsx9Zcp+QMpaOlGPFqgfwmjysydFdvAs2r9CySxAUC29evLT9dPHX5047uzJYaPN"
             data-theme="fkui" disabled
         />
 
@@ -25,13 +25,13 @@
     "vue": "../assets/vendor-vue-1e9c30.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-09d3d2.js",
     "@fkui/date": "../assets/vendor-fkui-date-0135ed.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-ac834d.js"
+    "@fkui/vue": "../assets/vendor-fkui-vue-ef315b.js"
   },
   "integrity": {
     "../assets/vendor-vue-1e9c30.js": "sha384-oTNMClNyJrNOxWXWSceZCE9W49/ocSeTY9iMaFUMa9HtQHkRXLrqhqLV0YVbYUH2",
     "../assets/vendor-fkui-logic-09d3d2.js": "sha384-yyq9t5qGCT0boKTCjLxwUh+Swq3piDsG7G9VAQVd0Tg2p+8WWi82uV1BcrEANIBI",
     "../assets/vendor-fkui-date-0135ed.js": "sha384-VbttNGe46vzs2V4L3UUssyfBddbuQjvmByr6suMYjhdn/IsHzzHrw3YkpC/+RTVz",
-    "../assets/vendor-fkui-vue-ac834d.js": "sha384-cdIZJ+APfC1agbtLsocT/SsvsLhCptexe/gKXTGzrjfoC716baU1J3RLbT0fupPv"
+    "../assets/vendor-fkui-vue-ef315b.js": "sha384-Gc1UAItuk8hNJYrJP43JSvgmUQlKPFoa7HJBaU58P1Wc9yylcjQ8sc5FyMK2PTaf"
   }
 }
         </script><script
@@ -89,7 +89,7 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.18.0
+        6.18.1
     </span>
 </div>
 </div>
@@ -1111,33 +1111,13 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-78f7e9"></div>
+        <div id="example-f6f7c5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-body {
-    padding: 1rem;
-}
-.icon-button {
-    margin: 0;
-    padding: 0;
-    background: inherit;
-    border: 0;
-    cursor: pointer;
-}
-.level-2 {
-    margin-left: 0.5rem;
-}
-.level-3 {
-    padding-left: 1rem;
-}
-.bar {
-    background: hotpink;
-}
-
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRowHeaderExample-78f7e9.js"></script>
+        <script type="module" src="./FTableRowHeaderExample-f6f7c5.js"></script>
     </div>
                 <div>
             <button
@@ -1193,7 +1173,7 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Oformaterad text&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(row.<span class="hljs-property">antal</span>);
+            <span class="hljs-keyword">return</span> row.<span class="hljs-property">antal</span>;
         },
     },
     {
@@ -1225,38 +1205,6 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">validation</span>: {
             <span class="hljs-attr">required</span>: {},
             <span class="hljs-attr">maxLength</span>: { <span class="hljs-attr">length</span>: <span class="hljs-number">5</span> },
-        },
-    },
-    {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Knapp&quot;</span>,
-        <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
-        <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">`Ta bort <span class="hljs-subst">${row.id}</span>`</span>;
-        },
-        <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
-            <span class="hljs-title function_">onButtonClick</span>(row.<span class="hljs-property">id</span>);
-        },
-    },
-    {
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Länk&quot;</span>,
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;anchor&quot;</span>,
-        <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;#&quot;</span>,
-        <span class="hljs-title function_">value</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Länktext&quot;</span>;
-        },
-    },
-    {
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Dropplista&quot;</span>,
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;select&quot;</span>,
-        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;animal&quot;</span>,
-        <span class="hljs-attr">options</span>: selectFieldOptions,
-        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
-    },
-    {
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Render function&quot;</span>,
-        <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-title function_">h</span>(<span class="hljs-string">&quot;td&quot;</span>, { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-attr">class</span>: <span class="hljs-string">&quot;bar&quot;</span> }, [<span class="hljs-string">&quot;👻&quot;</span>]);
         },
     },
 ]);
@@ -1386,7 +1334,6 @@ interface <span class="hljs-title class_">Row</span> {
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>&gt;</span>Interagerbart element före<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span>
@@ -1402,38 +1349,7 @@ interface <span class="hljs-title class_">Row</span> {
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Selected rows ({{ mySelectedRows.length }} items):<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{{ mySelectedRows }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Rows ({{ rows.length }} items):<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{{ rows }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>&gt;</span>Interagerbart element efter<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
-<span class="hljs-selector-tag">body</span> {
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
-}
-
-<span class="hljs-selector-class">.icon-button</span> {
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">background</span>: inherit;
-    <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">cursor</span>: pointer;
-}
-
-<span class="hljs-selector-class">.level-2</span> {
-    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0.5rem</span>;
-}
-
-<span class="hljs-selector-class">.level-3</span> {
-    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">1rem</span>;
-}
-
-<span class="hljs-selector-class">.bar</span> {
-    <span class="hljs-attribute">background</span>: hotpink;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -2845,10 +2761,10 @@ interface <span class="hljs-title class_">Row</span> {
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../assets/main-2694d4.js"
+            src="../assets/main-859878.js"
             type="module"
             crossorigin
-            integrity="sha384-y4ABHTU9452mrsIwbdehTe7XGVVesvERqIKQ0Tvu//3dosOsD5qyRiin7UKD5n/7"
+            integrity="sha384-Rcguevz3B3a1qeQTGfn2IQUR/6Q/O5L0OCfGe0E//YIRCxc8sYYS56Fzi77DoXE/"
             
         ></script>
     </body>
