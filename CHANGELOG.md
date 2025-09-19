@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 6.19.0 (2025-09-19)
+
+### Features
+
+* **@fkui/design, @fkui/icon-lib-default, @fkui/theme-dark, @fkui/theme-default, @fkui/vue:** add spinner to `FButton` with async operation (refs SFKUI-7248) 142c630
+
 ## 6.18.1 (2025-09-17)
 
 ### Bug Fixes
