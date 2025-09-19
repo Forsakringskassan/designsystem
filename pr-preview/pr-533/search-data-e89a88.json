@@ -209,13 +209,12 @@
     "EventBus",
     "EventBus",
     "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -253,12 +252,13 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -599,14 +599,14 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -1097,20 +1097,24 @@
       ]
     },
     {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
       "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
+        "TranslationService"
       ]
     },
     {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
       "terms": [
-        "densitet",
-        "sass"
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
       ]
     },
     {
@@ -1176,24 +1180,20 @@
       ]
     },
     {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
       "terms": [
-        "TranslationService"
+        "fokus",
+        "fokusindikator",
+        "sass"
       ]
     },
     {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
       "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
+        "densitet",
+        "sass"
       ]
     },
     {
@@ -2115,6 +2115,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -2137,21 +2152,6 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -2442,52 +2442,52 @@
     "208": 53,
     "209": 54,
     "210": 54,
-    "211": 54,
-    "212": 54,
-    "213": 55,
-    "214": 55,
-    "215": 55,
-    "216": 56,
-    "217": 56,
-    "218": 56,
-    "219": 56,
-    "220": 56,
-    "221": 56,
-    "222": 56,
-    "223": 56,
-    "224": 56,
-    "225": 57,
-    "226": 57,
-    "227": 57,
-    "228": 58,
-    "229": 58,
-    "230": 58,
-    "231": 58,
-    "232": 58,
-    "233": 59,
-    "234": 59,
-    "235": 59,
-    "236": 59,
-    "237": 59,
-    "238": 59,
-    "239": 59,
-    "240": 59,
-    "241": 59,
-    "242": 59,
-    "243": 59,
-    "244": 59,
-    "245": 60,
-    "246": 60,
-    "247": 60,
-    "248": 60,
-    "249": 60,
-    "250": 60,
-    "251": 60,
-    "252": 60,
-    "253": 61,
-    "254": 61,
+    "211": 55,
+    "212": 55,
+    "213": 56,
+    "214": 56,
+    "215": 57,
+    "216": 57,
+    "217": 57,
+    "218": 57,
+    "219": 57,
+    "220": 57,
+    "221": 57,
+    "222": 57,
+    "223": 57,
+    "224": 58,
+    "225": 58,
+    "226": 58,
+    "227": 59,
+    "228": 59,
+    "229": 59,
+    "230": 59,
+    "231": 59,
+    "232": 60,
+    "233": 60,
+    "234": 60,
+    "235": 60,
+    "236": 60,
+    "237": 60,
+    "238": 60,
+    "239": 60,
+    "240": 60,
+    "241": 60,
+    "242": 60,
+    "243": 60,
+    "244": 61,
+    "245": 61,
+    "246": 61,
+    "247": 61,
+    "248": 61,
+    "249": 61,
+    "250": 61,
+    "251": 61,
+    "252": 62,
+    "253": 62,
+    "254": 62,
     "255": 62,
-    "256": 62,
+    "256": 63,
     "257": 63,
     "258": 63,
     "259": 64,
