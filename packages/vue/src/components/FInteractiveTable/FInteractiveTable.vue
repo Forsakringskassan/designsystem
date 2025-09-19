@@ -12,6 +12,7 @@ import {
     shallowRef,
     getCurrentInstance,
     watch,
+    useId,
 } from "vue";
 import { findTabbableElements, isVisible } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
@@ -30,6 +31,7 @@ import {
 import { ActivateItemInjected } from "../FCrudDataset";
 import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
 import { FCheckboxField } from "../FCheckboxField";
+import { FRadioField } from "../FRadioField";
 import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
@@ -41,6 +43,7 @@ const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
 const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete, setNestedKey } = ActivateItemInjected<T>();
 const internalKey = getInternalKey<T>();
+const radioName = useId();
 
 const activeRow = ref<T | undefined>(undefined);
 const columns = ref<FTableColumnData[]>([]);
@@ -101,8 +104,19 @@ const props = defineProps({
      * or deselected.
      */
     selectable: {
-        type: Boolean,
-        default: false,
+        type: [Boolean, String] as PropType<boolean | "radio" | "checkbox">,
+        default: "",
+        validator(value: unknown) {
+            if (typeof value === "boolean") {
+                return true;
+            }
+
+            if (value === "radio" || value === "checkbox") {
+                return true;
+            }
+
+            return false;
+        },
     },
     /**
      * When enabled alternating rows will use a different background color.
@@ -424,12 +438,17 @@ function rowDescription(row: T): string | undefined {
 }
 
 function onSelect(row: T): void {
-    if (includeItem(row, selectedRows.value, internalKey)) {
-        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
-        emit("unselect", row);
-    } else {
-        selectedRows.value.push(row);
+    if (props.selectable === "radio") {
+        selectedRows.value = [row];
         emit("select", row);
+    } else {
+        if (includeItem(row, selectedRows.value, internalKey)) {
+            selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
+            emit("unselect", row);
+        } else {
+            selectedRows.value.push(row);
+            emit("select", row);
+        }
     }
 
     updateVModelWithSelectedRows();
@@ -648,7 +667,15 @@ function setActiveRow(row: T | undefined): void {
 
                         <td v-if="selectable" class="table__column--selectable">
                             <div class="table__input">
+                                <f-radio-field
+                                    v-if="selectable === 'radio'"
+                                    :name="radioName"
+                                    :value="true"
+                                    :model-value="isSelected(row)"
+                                    @click.self="onSelect(row)"
+                                ></f-radio-field>
                                 <f-checkbox-field
+                                    v-if="selectable === 'checkbox'"
                                     :value="true"
                                     :model-value="isSelected(row)"
                                     @click.self="onSelect(row)"
