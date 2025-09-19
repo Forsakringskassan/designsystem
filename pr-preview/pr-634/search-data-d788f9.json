@@ -216,6 +216,12 @@
     "densify() function",
     "densitet",
     "sass",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -253,12 +259,6 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -1114,6 +1114,27 @@
       ]
     },
     {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": [
@@ -1173,27 +1194,6 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
       ]
     },
     {
@@ -2449,45 +2449,45 @@
     "215": 55,
     "216": 56,
     "217": 56,
-    "218": 56,
-    "219": 56,
-    "220": 56,
-    "221": 56,
-    "222": 56,
-    "223": 56,
-    "224": 56,
-    "225": 57,
-    "226": 57,
-    "227": 57,
-    "228": 58,
-    "229": 58,
-    "230": 58,
-    "231": 58,
-    "232": 58,
-    "233": 59,
-    "234": 59,
-    "235": 59,
-    "236": 59,
-    "237": 59,
-    "238": 59,
-    "239": 59,
-    "240": 59,
-    "241": 59,
-    "242": 59,
-    "243": 59,
-    "244": 59,
-    "245": 60,
-    "246": 60,
-    "247": 60,
-    "248": 60,
-    "249": 60,
-    "250": 60,
-    "251": 60,
-    "252": 60,
-    "253": 61,
-    "254": 61,
-    "255": 62,
-    "256": 62,
+    "218": 57,
+    "219": 57,
+    "220": 58,
+    "221": 58,
+    "222": 59,
+    "223": 59,
+    "224": 59,
+    "225": 59,
+    "226": 59,
+    "227": 59,
+    "228": 59,
+    "229": 59,
+    "230": 59,
+    "231": 60,
+    "232": 60,
+    "233": 60,
+    "234": 61,
+    "235": 61,
+    "236": 61,
+    "237": 61,
+    "238": 61,
+    "239": 62,
+    "240": 62,
+    "241": 62,
+    "242": 62,
+    "243": 62,
+    "244": 62,
+    "245": 62,
+    "246": 62,
+    "247": 62,
+    "248": 62,
+    "249": 62,
+    "250": 62,
+    "251": 63,
+    "252": 63,
+    "253": 63,
+    "254": 63,
+    "255": 63,
+    "256": 63,
     "257": 63,
     "258": 63,
     "259": 64,
