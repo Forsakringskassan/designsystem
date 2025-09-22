@@ -20,7 +20,7 @@ it.each`
     if (key === "Shift+Tab") {
         key = "Tab";
         event = new KeyboardEvent(KEY_EVENT, {
-            key: key,
+            key,
             shiftKey: true,
         });
     } else {

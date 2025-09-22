@@ -31,7 +31,7 @@ function createWrapper({ props = {}, stubs = [] as string[] }): VueWrapper {
         },
         slots,
         global: {
-            stubs: stubs,
+            stubs,
         },
     });
 }

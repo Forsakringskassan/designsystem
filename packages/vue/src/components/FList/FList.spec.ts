@@ -39,7 +39,7 @@ function createWrapper({
         slots: { ...preDefinedSlots, ...slots },
         global: {
             plugins: [TranslationPlugin],
-            stubs: stubs,
+            stubs,
         },
     });
 }
@@ -548,7 +548,7 @@ describe("keyboard navigation", () => {
                 },
             });
             // Need to use setProps to trigger Updated() on the component
-            await wrapper.setProps({ items: items });
+            await wrapper.setProps({ items });
             const li = wrapper.findAll("li")[1];
             await li.trigger("keydown", { key });
 

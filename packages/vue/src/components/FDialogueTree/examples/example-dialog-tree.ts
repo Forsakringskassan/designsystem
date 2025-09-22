@@ -6,7 +6,7 @@ import type {
 
 function generateOption(label: string): FDialogueTreeOption {
     return {
-        label: label,
+        label,
         question: {
             label: "Är du anställd på ett konsult eller bemanningsföretag?",
             options: [

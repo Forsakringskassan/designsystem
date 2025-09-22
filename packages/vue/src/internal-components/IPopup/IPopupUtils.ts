@@ -441,14 +441,14 @@ export function getFallbackPosition(
     const y = anchor.y + anchor.height + spacing;
     if (x >= clippedArea.x) {
         return {
-            x: x,
-            y: y,
+            x,
+            y,
         };
     } else {
         // no horizontal alignment
         return {
             x: clippedArea.x + spacing,
-            y: y,
+            y,
         };
     }
 }

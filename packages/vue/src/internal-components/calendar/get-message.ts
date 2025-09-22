@@ -23,7 +23,7 @@ export function getMessage(
         return $t(
             "fkui.calendar.error.below-min-date",
             "Du kan inte välja en dag före {{day}} {{month}} {{year}}",
-            { day: day, month: monthName, year: year },
+            { day, month: monthName, year },
         );
     }
 
@@ -32,7 +32,7 @@ export function getMessage(
         return $t(
             "fkui.calendar.error.above-max-date",
             "Du kan inte välja en dag efter {{day}} {{month}} {{year}}",
-            { day: day, month: monthName, year: year },
+            { day, month: monthName, year },
         );
     }
 }

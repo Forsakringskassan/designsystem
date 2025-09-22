@@ -700,7 +700,7 @@ describe("addValidatorsToElement", () => {
                     maxLength: 70,
                 },
             },
-            element: element,
+            element,
             instant: false,
             validatorConfigs: {
                 email: {
@@ -724,7 +724,7 @@ describe("addValidatorsToElement", () => {
                     maxLength: 70,
                 },
             },
-            element: element,
+            element,
             instant: false,
             validatorConfigs: {
                 email: {
@@ -769,7 +769,7 @@ describe("addValidatorsToElement", () => {
 
         expect(dangerous).toEqual({
             baseValidatorConfigs: undefined,
-            element: element,
+            element,
             instant: false,
             validatorConfigs: {
                 minLength: {
@@ -804,7 +804,7 @@ describe("addValidatorsToElement", () => {
                     maxLength: 70,
                 },
             },
-            element: element,
+            element,
             instant: false,
             validatorConfigs: {
                 email: {

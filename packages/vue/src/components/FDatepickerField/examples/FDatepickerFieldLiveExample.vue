@@ -27,7 +27,7 @@ export default defineComponent({
     },
     computed: {
         livedata(): object {
-            return { model: "", FDate: FDate, Weekday: Weekday };
+            return { model: "", FDate, Weekday };
         },
         components(): object {
             return {

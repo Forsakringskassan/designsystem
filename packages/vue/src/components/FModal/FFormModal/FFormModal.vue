@@ -54,7 +54,7 @@ export default defineComponent({
          */
         value: {
             type: Object,
-            default: function () {
+            default() {
                 return {};
             },
         },

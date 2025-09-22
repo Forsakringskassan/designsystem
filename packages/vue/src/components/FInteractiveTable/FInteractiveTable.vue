@@ -124,7 +124,7 @@ const props = defineProps({
     scroll: {
         type: String as PropType<TableScroll>,
         default: TableScroll.NONE,
-        validator: function (value: string): boolean {
+        validator(value: string): boolean {
             const types: string[] = Object.values(TableScroll);
             return types.includes(value);
         },

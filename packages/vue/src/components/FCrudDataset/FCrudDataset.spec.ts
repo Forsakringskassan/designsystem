@@ -428,7 +428,7 @@ describe("beforeSubmit", () => {
                 stubs: ["FConfirmModal"],
                 props: {
                     isOpen: true,
-                    beforeSubmit: beforeSubmit,
+                    beforeSubmit,
                 },
             },
         );
@@ -550,7 +550,7 @@ it("should call before validation", async () => {
             stubs: ["FConfirmModal"],
             props: {
                 isOpen: true,
-                beforeValidation: beforeValidation,
+                beforeValidation,
             },
         },
     );
@@ -577,7 +577,7 @@ describe("onCancel", () => {
                 stubs: ["FConfirmModal"],
                 props: {
                     isOpen: true,
-                    onCancel: onCancel,
+                    onCancel,
                 },
             },
         );
@@ -601,7 +601,7 @@ describe("onCancel", () => {
                 stubs: ["FConfirmModal"],
                 props: {
                     isOpen: true,
-                    onCancel: onCancel,
+                    onCancel,
                 },
             },
         );
@@ -622,7 +622,7 @@ describe("onCancel", () => {
                 stubs: ["FConfirmModal"],
                 props: {
                     isOpen: true,
-                    onCancel: onCancel,
+                    onCancel,
                 },
             },
         );

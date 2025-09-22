@@ -48,10 +48,10 @@ function mountTestComponent(
     cy.mount(TestComponent, {
         data() {
             return {
-                items: items,
+                items,
                 selectedItem: "",
                 focusedItem: "",
-                isOpen: isOpen,
+                isOpen,
             };
         },
     });

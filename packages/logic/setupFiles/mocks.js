@@ -9,22 +9,22 @@ const VISIBLE = "test-visible";
 
 Object.defineProperties(window.HTMLElement.prototype, {
     offsetLeft: {
-        get: function () {
+        get() {
             return this.classList.contains(VISIBLE) ? 1 : 0;
         },
     },
     offsetTop: {
-        get: function () {
+        get() {
             return this.classList.contains(VISIBLE) ? 1 : 0;
         },
     },
     offsetHeight: {
-        get: function () {
+        get() {
             return this.classList.contains(VISIBLE) ? 1 : 0;
         },
     },
     offsetWidth: {
-        get: function () {
+        get() {
             return this.classList.contains(VISIBLE) ? 1 : 0;
         },
     },
