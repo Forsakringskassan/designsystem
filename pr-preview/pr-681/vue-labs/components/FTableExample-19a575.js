@@ -3743,17 +3743,17 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   key: 0,
   scope: "col",
-  class: "table-ng__column table-ng__column--checkbox"
+  tabindex: "-1",
+  class: "table-ng__column"
 };
 var _hoisted_4 = {
   key: 1,
-  scope: "col"
+  scope: "col",
+  class: "table-ng__column table-ng__column--checkbox"
 };
 var _hoisted_5 = {
   key: 2,
-  scope: "col",
-  tabindex: "-1",
-  class: "table-ng__column"
+  scope: "col"
 };
 var _hoisted_6 = {
   key: 0,
@@ -3983,14 +3983,14 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_3, [createElementVNode("input", {
+      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_3)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, [createElementVNode("input", {
         ref: "selectAll",
         type: "checkbox",
         "aria-label": "select all",
         tabindex: "-1",
         indeterminate: "",
         onChange: onSelectAllChange
-      }, null, 544)])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+      }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$1, {
           key: column.header,
           column,
