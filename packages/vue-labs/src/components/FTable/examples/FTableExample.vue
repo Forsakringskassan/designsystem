@@ -3,7 +3,7 @@ import { h, ref } from "vue";
 import { FSortFilterDataset } from "@fkui/vue";
 import { FTable } from "@fkui/vue-labs";
 import { formatNumber } from "@fkui/logic";
-import { defineTableColumns } from "../table-column";
+import { defineTableColumns, TableColumn } from "../table-column";
 
 const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
 
@@ -81,6 +81,7 @@ const columns = defineTableColumns<Row>([
             return "Länktext";
         },
     },
+
     {
         header: "Dropplista",
         type: "select",
@@ -88,12 +89,36 @@ const columns = defineTableColumns<Row>([
         options: selectFieldOptions,
         editable: true,
     },
+
+    {
+        header: "Åtgärd",
+        type: "menu",
+        actions: [
+            {
+                label: "a",
+                onClick(row) {
+                    console.log("Run action A on row", { id: row.id });
+                },
+            },
+            {
+                label: "b",
+                onClick(row) {
+                    console.log("Run action B on row", { id: row.id });
+                },
+            },
+            {
+                label: "c",
+            },
+        ],
+    },
+
     {
         header: "Render function",
         render() {
             return h("td", { id: "foo", class: "bar" }, ["👻"]);
         },
     },
+
     // {
     //     header: "Custom component",
     //     type: "render",
@@ -206,8 +231,14 @@ const rows = ref<Row[]>([
     },
 ]);
 
+function hasKey<T, K extends keyof T>(
+    column: TableColumn<T, K>,
+): column is TableColumn<T, K> & { key: K } {
+    return Boolean("key" in column && column.key);
+}
+
 const sortableAttributes = Object.fromEntries(
-    columns.filter((it) => "key" in it && it.key).map((it) => [it.key, it.header]),
+    columns.filter(hasKey).map((it) => [it.key, it.header]),
 );
 
 const mySelectedRows = ref<Row[]>([rows.value[0]]);
