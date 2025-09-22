@@ -13,9 +13,6 @@ $fk-logo-small: "fk-logo-primary-small.svg";
 $fk-logo-large: "fk-logo-primary-large.svg";
 
 :root {
-    --docs-font-family: arial, "Helvetica Neue", sans-serif;
-    --docs-heading-family: arial, "Helvetica Neue", sans-serif;
-    --docs-heading-font-weight: 700;
     --f-logo-image-small:
         url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
         linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
