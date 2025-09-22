@@ -2843,8 +2843,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("input", {
         checked: _ctx.column.value(_ctx.row),
         type: "checkbox",
-        "aria-label": _ctx.column.header,
-        disabled: ""
+        "aria-label": _ctx.column.header
       }, null, 8, _hoisted_2$3)], 544));
     };
   }
@@ -4135,8 +4134,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode("input", {
         checked: $props.column.value($props.row),
         type: "checkbox",
-        "aria-label": $props.column.header,
-        disabled: ""
+        "aria-label": $props.column.header
       }, null, 8, _hoisted_22)
     ],
     544
