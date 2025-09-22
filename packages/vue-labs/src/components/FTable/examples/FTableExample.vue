@@ -83,6 +83,7 @@ const columns = defineTableColumns<Row>([
             return "Länktext";
         },
     },
+
     {
         header: "Dropplista",
         type: "select",
@@ -91,12 +92,36 @@ const columns = defineTableColumns<Row>([
         options: selectFieldOptions,
         editable: true,
     },
+
+    {
+        header: "Åtgärd",
+        type: "menu",
+        actions: [
+            {
+                label: "a",
+                onClick(row) {
+                    console.log("Run action A on row", { id: row.id });
+                },
+            },
+            {
+                label: "b",
+                onClick(row) {
+                    console.log("Run action B on row", { id: row.id });
+                },
+            },
+            {
+                label: "c",
+            },
+        ],
+    },
+
     {
         header: "Render function",
         render() {
             return h("td", { id: "foo", class: "bar" }, ["👻"]);
         },
     },
+
     // {
     //     header: "Custom component",
     //     type: "render",
