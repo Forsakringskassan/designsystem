@@ -223,7 +223,7 @@ export default defineComponent({
     watch: {
         modelValue: {
             immediate: true,
-            handler: function () {
+            handler() {
                 if (this.modelValue === undefined || this.modelValue === null) {
                     this.viewValue = "";
                     return;

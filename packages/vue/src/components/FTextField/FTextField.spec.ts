@@ -317,7 +317,7 @@ describe("formatting and parsing combined with validation", () => {
                         isValid: valid,
                         validityMode: valid ? "VALID" : "ERROR",
                         validationMessage: "Some validationmessage",
-                        nativeEvent: nativeEvent,
+                        nativeEvent,
                     },
                 }),
             );

@@ -6,7 +6,7 @@ import { mount, shallowMount } from "@vue/test-utils";
 import FModal from "./FModal.vue";
 
 const offsetFn = {
-    get: function () {
+    get() {
         return 1;
     },
 };

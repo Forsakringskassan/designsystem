@@ -6151,7 +6151,7 @@ default: string;
 };
 value: {
 type: ObjectConstructor;
-default: () => {};
+default(): {};
 };
 useErrorList: {
 type: BooleanConstructor;
@@ -6212,7 +6212,7 @@ default: string;
 };
 value: {
 type: ObjectConstructor;
-default: () => {};
+default(): {};
 };
 useErrorList: {
 type: BooleanConstructor;

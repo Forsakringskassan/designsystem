@@ -26,7 +26,7 @@ export default defineComponent({
     setup(props) {
         const { initialWidth } = toRefs(props);
         return useLayoutPanel({
-            initialWidth: initialWidth,
+            initialWidth,
             minWidth: "150" /* px */,
             maxWidth: 0.5 /* ratio [1..0] */,
             grow: "right",

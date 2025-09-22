@@ -231,7 +231,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         } else {
             elementValidatorsReference = {
                 validators: foundValidators,
-                validatorConfigs: validatorConfigs,
+                validatorConfigs,
                 element,
                 instant: useInstantValidation,
                 baseValidatorConfigs: isBaseConfigs
@@ -613,7 +613,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
             ...validationResult,
             target: params.elementValidatorsReference.element,
             elementId: params.elementValidatorsReference.element.id,
-            validityMode: validityMode,
+            validityMode,
             nativeEvent,
         });
     }

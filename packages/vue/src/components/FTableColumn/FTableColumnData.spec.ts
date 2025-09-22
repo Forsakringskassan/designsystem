@@ -20,7 +20,7 @@ function createColumns(sortable: boolean): FTableColumnData[] {
         size: FTableColumnSize.EXPAND,
         type: FTableColumnType.TEXT,
         visible: true,
-        sortable: sortable,
+        sortable,
         sort: FTableColumnSort.DESCENDING,
     });
     src = addColumn(src, {
@@ -30,7 +30,7 @@ function createColumns(sortable: boolean): FTableColumnData[] {
         size: FTableColumnSize.EXPAND,
         type: FTableColumnType.TEXT,
         visible: true,
-        sortable: sortable,
+        sortable,
         sort: FTableColumnSort.UNSORTED,
     });
     src = addColumn(src, {
@@ -40,7 +40,7 @@ function createColumns(sortable: boolean): FTableColumnData[] {
         size: FTableColumnSize.EXPAND,
         type: FTableColumnType.TEXT,
         visible: true,
-        sortable: sortable,
+        sortable,
         sort: FTableColumnSort.UNSORTED,
     });
     return src;

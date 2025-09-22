@@ -116,7 +116,7 @@ describe("events", () => {
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
-                beforeSubmit: beforeSubmit,
+                beforeSubmit,
             },
         });
         expect(beforeSubmit).toHaveBeenCalledTimes(0);

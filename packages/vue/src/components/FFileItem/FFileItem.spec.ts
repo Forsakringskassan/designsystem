@@ -4,7 +4,7 @@ import FFileItem from "./FFileItem.vue";
 
 function createWrapper({ slots = {}, attrs = {}, props = {} }): VueWrapper {
     return shallowMount(FFileItem, {
-        slots: slots,
+        slots,
         attrs: { ...attrs },
         props: {
             id: "123",
