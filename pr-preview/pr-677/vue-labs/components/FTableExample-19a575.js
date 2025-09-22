@@ -31,7 +31,7 @@ import { FSortFilterDataset } from "@fkui/vue";
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
 import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, useTemplateRef, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent, normalizeProps, guardReactiveProps } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected, useTranslate, FButton } from "@fkui/vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected, useTranslate } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 var es_iterator_forEach = {};
@@ -2735,8 +2735,8 @@ var _hoisted_2$4 = {
   tabindex: "-1",
   class: "table-ng__column"
 };
-var _hoisted_3$2 = ["aria-level"];
-var _hoisted_4$1 = {
+var _hoisted_3$3 = ["aria-level"];
+var _hoisted_4$2 = {
   key: 0,
   tabindex: "-1"
 };
@@ -2780,7 +2780,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
         "aria-level": _ctx.ariaLevel
       }, [_ctx.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
         key: 0
-      }, [_ctx.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_4$1, [createElementVNode("button", {
+      }, [_ctx.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_4$2, [createElementVNode("button", {
         "aria-label": "toggle",
         type: "button",
         class: normalizeClass(["expander", `level-${_ctx.ariaLevel}`]),
@@ -2791,7 +2791,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
       }, null, 8, ["name"])], 2)])) : (openBlock(), createElementBlock("td", {
         key: 1,
         class: normalizeClass(`level-${_ctx.ariaLevel}`)
-      }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$2));
+      }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$3));
     };
   }
 });
@@ -3174,7 +3174,7 @@ var _hoisted_1$2 = {
 var _hoisted_2$2 = {
   class: "table-ng__editable__text"
 };
-var _hoisted_3$1 = ["aria-controls"];
+var _hoisted_3$2 = ["aria-controls"];
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
@@ -3372,7 +3372,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         }, ["prevent"])),
         onKeydown: withModifiers(onEditKeyDown, ["stop"]),
         onFocusout: onEditBlur
-      }, toDisplayString(viewValue.value), 41, _hoisted_3$1), [[vShow, editing.value]]), _cache[4] || (_cache[4] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
+      }, toDisplayString(viewValue.value), 41, _hoisted_3$2), [[vShow, editing.value]]), _cache[4] || (_cache[4] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
         id: "dropdownId",
         "is-open": dropdownIsOpen.value,
         options: _ctx.column.options,
@@ -3608,12 +3608,12 @@ var _hoisted_1$1 = ["role"];
 var _hoisted_2$1 = {
   class: "table-ng__row"
 };
-var _hoisted_3 = {
+var _hoisted_3$1 = {
   key: 0,
   scope: "col",
   class: "table-ng__column table-ng__column--checkbox"
 };
-var _hoisted_4 = {
+var _hoisted_4$1 = {
   key: 1,
   scope: "col"
 };
@@ -3836,14 +3836,14 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2$1, [isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_3, [createElementVNode("input", {
+      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2$1, [isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_3$1, [createElementVNode("input", {
         ref: "selectAll",
         type: "checkbox",
         "aria-label": "select all",
         tabindex: "-1",
         indeterminate: "",
         onChange: onSelectAllChange
-      }, null, 544)])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+      }, null, 544)])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4$1, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$3, {
           key: column.header,
           column,
@@ -4648,7 +4648,7 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
 import { toDisplayString as _toDisplayString4, createElementVNode as _createElementVNode6, createVNode as _createVNode, vShow as _vShow, withDirectives as _withDirectives2, withModifiers as _withModifiers2, openBlock as _openBlock6, createElementBlock as _createElementBlock6 } from "vue";
 var _hoisted_16 = { class: "table-ng__editable" };
 var _hoisted_22 = { class: "table-ng__editable__text" };
-var _hoisted_32 = ["aria-controls"];
+var _hoisted_3 = ["aria-controls"];
 function render6(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.column.editable($props.row) ? (_openBlock6(), _createElementBlock6(
     "td",
@@ -4697,7 +4697,7 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
         }, ["prevent"])),
         onKeydown: _withModifiers2($setup.onEditKeyDown, ["stop"]),
         onFocusout: $setup.onEditBlur
-      }, _toDisplayString4($setup.viewValue), 41, _hoisted_32), [
+      }, _toDisplayString4($setup.viewValue), 41, _hoisted_3), [
         [_vShow, $setup.editing]
       ]),
       _withDirectives2(_createVNode($setup["IComboboxDropdown"], {

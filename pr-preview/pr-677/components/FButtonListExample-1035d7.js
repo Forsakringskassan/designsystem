@@ -33,7 +33,7 @@ import { defineComponent as _defineComponent2 } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
-import { computed } from "vue";
+import { computed, useAttrs } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
 import { defineComponent } from "vue";
@@ -150,8 +150,30 @@ FIcon_default.render = render;
 FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
 var FIcon_default2 = FIcon_default;
 
+// packages/vue/src/components/FButton/use-inflight.ts
+import { ref } from "vue";
+function useInflight(fn) {
+  const inflight = ref(false);
+  if (!fn || typeof fn !== "function") {
+    return { inflight, fn: void 0 };
+  }
+  const originalFn = fn;
+  async function wrapper() {
+    try {
+      inflight.value = true;
+      await originalFn();
+    } finally {
+      inflight.value = false;
+    }
+  }
+  return { inflight, fn: wrapper };
+}
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=script
 var FButton_default = /* @__PURE__ */ _defineComponent({
+  ...{
+    inheritAttrs: false
+  },
   __name: "FButton",
   props: {
     /**
@@ -240,6 +262,9 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
   },
   setup(__props, { expose: __expose }) {
     __expose();
+    const originalAttrs = useAttrs();
+    const { inflight, fn: onClick } = useInflight(originalAttrs.onClick);
+    const attrs = { ...originalAttrs, onClick };
     const props = __props;
     const hasIconLeft = computed(() => {
       return Boolean(props.iconLeft);
@@ -264,9 +289,12 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       if (props.mobileFullWidth && props.size !== "large") {
         classes.push(`button--full-width`);
       }
+      if (inflight.value) {
+        classes.push(`${classes} button__inflight`);
+      }
       return classes;
     });
-    const __returned__ = { props, hasIconLeft, hasIconRight, hasIcon, buttonClass, get FIcon() {
+    const __returned__ = { originalAttrs, inflight, onClick, attrs, props, hasIconLeft, hasIconRight, hasIcon, buttonClass, get FIcon() {
       return FIcon_default2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -275,26 +303,69 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=template
-import { openBlock as _openBlock2, createBlock as _createBlock, createCommentVNode as _createCommentVNode2, renderSlot as _renderSlot2, normalizeClass as _normalizeClass, createElementBlock as _createElementBlock2 } from "vue";
-var _hoisted_12 = ["type"];
+import { openBlock as _openBlock2, createBlock as _createBlock, createCommentVNode as _createCommentVNode2, Fragment as _Fragment2, createElementBlock as _createElementBlock2, renderSlot as _renderSlot2, createElementVNode as _createElementVNode2, mergeProps as _mergeProps2 } from "vue";
+var _hoisted_12 = ["disabled"];
+var _hoisted_22 = {
+  key: 1,
+  class: "spinner--before"
+};
+var _hoisted_3 = {
+  key: 3,
+  class: "spinner--after"
+};
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2("button", {
-    type: $props.type,
-    class: _normalizeClass($setup.buttonClass)
-  }, [
-    $setup.props.iconLeft ? (_openBlock2(), _createBlock($setup["FIcon"], {
-      key: 0,
-      class: "button__icon",
-      name: $setup.props.iconLeft
-    }, null, 8, ["name"])) : _createCommentVNode2("v-if", true),
+  return _openBlock2(), _createElementBlock2("button", _mergeProps2({
+    type: "button",
+    class: $setup.buttonClass,
+    disabled: $setup.inflight
+  }, $setup.attrs), [
+    $setup.hasIconLeft ? (_openBlock2(), _createElementBlock2(
+      _Fragment2,
+      { key: 0 },
+      [
+        $setup.inflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
+          key: 0,
+          name: "circle-notch-solid",
+          class: "button__icon button__spinner"
+        })) : $setup.props.iconLeft ? (_openBlock2(), _createBlock($setup["FIcon"], {
+          key: 1,
+          class: "button__icon",
+          name: $setup.props.iconLeft
+        }, null, 8, ["name"])) : _createCommentVNode2("v-if", true)
+      ],
+      64
+      /* STABLE_FRAGMENT */
+    )) : _createCommentVNode2("v-if", true),
+    !$setup.hasIcon ? (_openBlock2(), _createElementBlock2("span", _hoisted_22, [
+      $setup.inflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
+        key: 0,
+        name: "circle-notch-solid",
+        class: "button__icon button__spinner"
+      })) : _createCommentVNode2("v-if", true)
+    ])) : _createCommentVNode2("v-if", true),
     _createCommentVNode2("\n        @slot Slot for text to display in the button.\n        "),
-    _renderSlot2(_ctx.$slots, "default"),
-    $setup.props.iconRight ? (_openBlock2(), _createBlock($setup["FIcon"], {
-      key: 1,
-      class: "button__icon",
-      name: $setup.props.iconRight
-    }, null, 8, ["name"])) : _createCommentVNode2("v-if", true)
-  ], 10, _hoisted_12);
+    _createElementVNode2("span", null, [
+      _renderSlot2(_ctx.$slots, "default")
+    ]),
+    $setup.hasIconRight ? (_openBlock2(), _createElementBlock2(
+      _Fragment2,
+      { key: 2 },
+      [
+        $setup.inflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
+          key: 0,
+          name: "circle-notch-solid",
+          class: "button__icon button__spinner"
+        })) : $setup.props.iconRight ? (_openBlock2(), _createBlock($setup["FIcon"], {
+          key: 1,
+          class: "button__icon",
+          name: $setup.props.iconRight
+        }, null, 8, ["name"])) : _createCommentVNode2("v-if", true)
+      ],
+      64
+      /* STABLE_FRAGMENT */
+    )) : _createCommentVNode2("v-if", true),
+    !$setup.hasIcon ? (_openBlock2(), _createElementBlock2("span", _hoisted_3)) : _createCommentVNode2("v-if", true)
+  ], 16, _hoisted_12);
 }
 
 // packages/vue/src/components/FButton/FButton.vue
@@ -303,7 +374,7 @@ FButton_default.__file = "packages/vue/src/components/FButton/FButton.vue";
 var FButton_default2 = FButton_default;
 
 // virtual-entry:virtual:packages/vue/src/components/FButton/examples/FButtonListExample.vue:FButtonListExample-1035d7.js
-import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode2, openBlock as _openBlock3, createElementBlock as _createElementBlock3 } from "vue";
+import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode3, openBlock as _openBlock3, createElementBlock as _createElementBlock3 } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent2({
   __name: "FButtonListExample",
   setup(__props, { expose: __expose }) {
@@ -316,7 +387,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent2({
 var _hoisted_13 = { class: "button-list no-marker" };
 function render3(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock3(), _createElementBlock3("ul", _hoisted_13, [
-    _createElementVNode2("li", null, [
+    _createElementVNode3("li", null, [
       _createVNode($setup["FButton"], {
         variant: "tertiary",
         "icon-left": "success"
@@ -332,7 +403,7 @@ function render3(_ctx, _cache, $props, $setup, $data, $options) {
         /* STABLE */
       })
     ]),
-    _createElementVNode2("li", null, [
+    _createElementVNode3("li", null, [
       _createVNode($setup["FButton"], {
         variant: "tertiary",
         "icon-left": "cross"
@@ -348,7 +419,7 @@ function render3(_ctx, _cache, $props, $setup, $data, $options) {
         /* STABLE */
       })
     ]),
-    _createElementVNode2("li", null, [
+    _createElementVNode3("li", null, [
       _createVNode($setup["FButton"], {
         variant: "tertiary",
         "icon-left": "pen"
