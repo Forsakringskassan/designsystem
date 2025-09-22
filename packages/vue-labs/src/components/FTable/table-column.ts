@@ -7,6 +7,7 @@ import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
 import ITableSelect from "./ITableSelect.vue";
 import ITableRowheader from "./ITableRowheader.vue";
+import ITableMenu from "./ITableMenu.vue";
 
 /**
  * @public
@@ -227,6 +228,39 @@ export interface NormalizedTableColumnSelect<T, K> {
 /**
  * @public
  */
+export interface TableColumnMenu<T> {
+    type: "menu";
+    header: string;
+    enabled?: boolean | ((row: T) => boolean);
+    actions?: Array<{
+        label: string;
+        icon?: string;
+        onClick?(row: T): void;
+    }>;
+}
+
+/**
+ * @public
+ */
+export interface NormalizedTableColumnMenu<T> {
+    readonly type: "menu";
+    readonly header: string;
+    readonly sortable: null;
+    readonly actions: Array<{
+        readonly label: string;
+        readonly icon: string | null;
+        onClick(row: T): void;
+    }>;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnMenu<T>;
+    }>;
+    enabled(row: T): boolean;
+}
+
+/**
+ * @public
+ */
 export interface TableColumnRender<T, K> {
     header: string | Readonly<Ref<string>>;
     key?: K;
@@ -256,7 +290,8 @@ export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnAnchor<T, K>
     | TableColumnButton<T, K>
     | TableColumnRender<T, K>
-    | TableColumnSelect<T, K>;
+    | TableColumnSelect<T, K>
+    | TableColumnMenu<T>;
 
 /**
  * @internal
@@ -269,7 +304,8 @@ export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnAnchor<T, K>
     | NormalizedTableColumnButton<T, K>
     | NormalizedTableColumnRender<T>
-    | NormalizedTableColumnSelect<T, K>;
+    | NormalizedTableColumnSelect<T, K>
+    | NormalizedTableColumnMenu<T>;
 
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function getValueFn<TRow, TValue, K extends keyof TRow>(
@@ -305,7 +341,11 @@ function getUpdateFn<TRow, TValue, K extends keyof TRow>(
             row[key] = value as TRow[K]; // @todo This is not safe :/
         };
     }
-    return () => undefined;
+    return noop;
+}
+
+function noop(): void {
+    /* do nothing */
 }
 
 /**
@@ -445,6 +485,24 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 sortable: column.key ?? null,
                 component: ITableSelect,
             } satisfies NormalizedTableColumnSelect<T, K>;
+        case "menu":
+            return {
+                type: "menu",
+                header: column.header,
+                sortable: null,
+                actions: (column.actions ?? []).map((it) => {
+                    return {
+                        label: it.label,
+                        icon: it.icon ?? null,
+                        onClick: it.onClick ?? noop,
+                    };
+                }),
+                component: ITableMenu,
+                enabled:
+                    typeof column.enabled === "function"
+                        ? column.enabled
+                        : () => Boolean(column.enabled ?? true),
+            } satisfies NormalizedTableColumnMenu<T>;
         case undefined:
             return {
                 type: "text",
