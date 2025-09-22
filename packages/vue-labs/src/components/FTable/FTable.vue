@@ -27,6 +27,7 @@ import ITablePager from "./ITablePager.vue";
 import ITableHeader from "./ITableHeader.vue";
 import { stopEditKey } from "./start-stop-edit";
 import { type MetaRow } from "./MetaRow";
+import { type FTableActivateCellEvent } from "./events";
 
 type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
     ? Required<T>[ExpandableAttribute][number]
@@ -197,18 +198,34 @@ function onClick(e: MouseEvent): void {
     }
 }
 
+function isInExpandable(el: HTMLElement): boolean {
+    if (!el.parentElement) {
+        return false;
+    }
+    return Boolean(el.parentElement.closest(".table-ng__custom-expandable"));
+}
+
 function onTableFocusout(e: FocusEvent): void {
+    const { target, relatedTarget } = e;
+    const validFocus = target instanceof HTMLElement && relatedTarget instanceof HTMLElement;
+    if (!validFocus) {
+        return;
+    }
+    if (isInExpandable(target)) {
+        return;
+    }
+
     assertRef(tableRef);
-    const outsideTable = !e.relatedTarget || !tableRef.value.contains(e.relatedTarget as HTMLElement);
+    const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
 
     if (outsideTable) {
-        const td = (e.target as HTMLElement).closest("td");
+        const td = target.closest("td");
 
         if (td) {
             dispatchActivateCellEvent(td, { focus: false });
         }
     } else {
-        (e.target as HTMLElement).tabIndex = -1;
+        target.tabIndex = -1;
     }
 }
 
@@ -256,6 +273,16 @@ function onToggleSortOrder(sortable: string): void {
         }
     } else {
         sort(sortable, true);
+    }
+}
+
+function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
+    if (e.target instanceof HTMLElement) {
+        e.target.tabIndex = 0;
+
+        if (e.detail.focus) {
+            e.target.focus();
+        }
     }
 }
 
@@ -320,7 +347,12 @@ onMounted(() => {
                     @toggle="onToggleExpanded"
                 >
                     <template v-if="level! > 1 && hasExpandableSlot">
-                        <td :colspan="columns.length">
+                        <td
+                            class="table-ng__custom-expandable"
+                            :colspan="columns.length"
+                            tabindex="-1"
+                            @table-activate-cell="onActivateCell"
+                        >
                             <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
                             <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
                         </td>
