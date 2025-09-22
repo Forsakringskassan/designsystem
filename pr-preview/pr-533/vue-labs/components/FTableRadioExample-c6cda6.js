@@ -24,7 +24,7 @@ function setup(options) {
 }
 
 // virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-c6cda6.js
-import { defineComponent as _defineComponent7 } from "vue";
+import { defineComponent as _defineComponent8 } from "vue";
 import { h as h2, ref as ref4 } from "vue";
 
 // dist/esm/index.esm.js
@@ -2282,7 +2282,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$a = defineComponent({
+var _sfc_main$b = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2746,7 +2746,7 @@ var _hoisted_4$1 = {
   key: 0,
   tabindex: "-1"
 };
-var _sfc_main$9 = /* @__PURE__ */ defineComponent({
+var _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "ITableRow",
   props: {
     renderHeader: {
@@ -2803,7 +2803,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
 });
 var _hoisted_1$7 = ["checked", "aria-label"];
 var _hoisted_2$3 = ["checked", "aria-label"];
-var _sfc_main$8 = /* @__PURE__ */ defineComponent({
+var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
     column: {},
@@ -2843,14 +2843,13 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("input", {
         checked: _ctx.column.value(_ctx.row),
         type: "checkbox",
-        "aria-label": _ctx.column.header,
-        disabled: ""
+        "aria-label": _ctx.column.header
       }, null, 8, _hoisted_2$3)], 544));
     };
   }
 });
 var _hoisted_1$6 = ["checked", "aria-label"];
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
     column: {},
@@ -2885,7 +2884,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$5 = ["href"];
-var _sfc_main$6 = /* @__PURE__ */ defineComponent({
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
     column: {},
@@ -2927,7 +2926,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
 var _hoisted_1$4 = {
   class: "sr-only"
 };
-var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableButton",
   props: {
     column: {},
@@ -2991,7 +2990,7 @@ function isAlphanumeric(e) {
 var _hoisted_1$3 = {
   class: "table-ng__editable"
 };
-var _sfc_main$4 = /* @__PURE__ */ defineComponent({
+var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableText",
   props: {
     row: {},
@@ -3181,7 +3180,7 @@ var _hoisted_2$2 = {
   class: "table-ng__editable__text"
 };
 var _hoisted_3$1 = ["aria-controls"];
-var _sfc_main$3 = /* @__PURE__ */ defineComponent({
+var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
     row: {},
@@ -3397,6 +3396,31 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
+var _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  __name: "ITableRowheader",
+  props: {
+    row: {},
+    column: {}
+  },
+  setup(__props) {
+    const thRef = useTemplateRef("th");
+    function onActivateCell(e) {
+      assertRef(thRef);
+      thRef.value.tabIndex = 0;
+      if (e.detail.focus) {
+        thRef.value.focus();
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("th", {
+        ref: "th",
+        class: "table-ng__cell table-ng__cell--rowheader",
+        scope: "row",
+        onTableActivateCell: onActivateCell
+      }, toDisplayString(_ctx.column.value(_ctx.row)), 545);
+    };
+  }
+});
 function getValueFn(fn, key, coerce, defaultValue) {
   if (fn) {
     return fn;
@@ -3420,7 +3444,7 @@ function getUpdateFn(fn, key) {
   return () => void 0;
 }
 function normalizeTableColumn(column) {
-  var _column$key, _column$key2, _column$validation, _column$key3, _column$key4, _column$icon, _column$key5, _column$key6, _column$key7;
+  var _column$key, _column$key2, _column$validation, _column$key3, _column$key4, _column$key5, _column$icon, _column$key6, _column$key7, _column$key8;
   if ("render" in column) {
     return {
       type: void 0,
@@ -3441,7 +3465,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
         },
         sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
-        component: _sfc_main$8
+        component: _sfc_main$9
       };
     case "radio":
       return {
@@ -3450,7 +3474,7 @@ function normalizeTableColumn(column) {
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
-        component: _sfc_main$7
+        component: _sfc_main$8
       };
     case "text":
       return {
@@ -3464,7 +3488,15 @@ function normalizeTableColumn(column) {
         },
         validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
         sortable: (_column$key3 = column.key) !== null && _column$key3 !== void 0 ? _column$key3 : null,
-        component: _sfc_main$4
+        component: _sfc_main$5
+      };
+    case "rowheader":
+      return {
+        type: "rowheader",
+        header: column.header,
+        value: getValueFn(column.value, column.key, String, ""),
+        sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
+        component: _sfc_main$3
       };
     case "anchor":
       return {
@@ -3476,8 +3508,8 @@ function normalizeTableColumn(column) {
           var _column$enabled;
           return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
         },
-        sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
-        component: _sfc_main$6
+        sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
+        component: _sfc_main$7
       };
     case "button":
       return {
@@ -3490,8 +3522,8 @@ function normalizeTableColumn(column) {
           return Boolean((_column$enabled2 = column.enabled) !== null && _column$enabled2 !== void 0 ? _column$enabled2 : true);
         },
         icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-        sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
-        component: _sfc_main$5
+        sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
+        component: _sfc_main$6
       };
     case "select":
       return {
@@ -3504,8 +3536,8 @@ function normalizeTableColumn(column) {
           return Boolean((_column$editable3 = column.editable) !== null && _column$editable3 !== void 0 ? _column$editable3 : false);
         },
         options: column.options,
-        sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
-        component: _sfc_main$3
+        sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
+        component: _sfc_main$4
       };
     case void 0:
       return {
@@ -3515,9 +3547,9 @@ function normalizeTableColumn(column) {
         update() {
         },
         editable: () => false,
-        sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
+        sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
         validation: {},
-        component: _sfc_main$4
+        component: _sfc_main$5
       };
   }
 }
@@ -3709,17 +3741,17 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   key: 0,
   scope: "col",
-  class: "table-ng__column table-ng__column--checkbox"
+  tabindex: "-1",
+  class: "table-ng__column"
 };
 var _hoisted_4 = {
   key: 1,
-  scope: "col"
+  scope: "col",
+  class: "table-ng__column table-ng__column--checkbox"
 };
 var _hoisted_5 = {
   key: 2,
-  scope: "col",
-  tabindex: "-1",
-  class: "table-ng__column"
+  scope: "col"
 };
 var _hoisted_6 = {
   key: 0,
@@ -3783,7 +3815,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       type: "checkbox",
       header: "selectable",
       sortable: null,
-      component: _sfc_main$8,
+      component: _sfc_main$9,
       value(row) {
         if (!__props.keyAttribute) {
           return false;
@@ -3809,7 +3841,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       type: "radio",
       header: "V\xE4lj en rad",
       sortable: null,
-      component: _sfc_main$7,
+      component: _sfc_main$8,
       value(row) {
         if (!__props.keyAttribute) {
           return false;
@@ -3949,14 +3981,14 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_3, [createElementVNode("input", {
+      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_3)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, [createElementVNode("input", {
         ref: "selectAll",
         type: "checkbox",
         "aria-label": "select all",
         tabindex: "-1",
         indeterminate: "",
         onChange: onSelectAllChange
-      }, null, 544)])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+      }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$1, {
           key: column.header,
           column,
@@ -3981,7 +4013,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         isExpandable,
         isExpanded
       }) => {
-        return openBlock(), createBlock(_sfc_main$9, {
+        return openBlock(), createBlock(_sfc_main$a, {
           key,
           "row-key": key,
           "aria-rowindex": rowIndex,
@@ -4002,11 +4034,11 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
             row
           }))], 8, _hoisted_8)) : (openBlock(), createElementBlock(Fragment, {
             key: 1
-          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$8, {
+          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$9, {
             key: 0,
             row,
             column: multiSelectColumn
-          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$7, {
+          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$8, {
             key: 1,
             row,
             column: singleSelectColumn
@@ -4102,8 +4134,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode("input", {
         checked: $props.column.value($props.row),
         type: "checkbox",
-        "aria-label": $props.column.header,
-        disabled: ""
+        "aria-label": $props.column.header
       }, null, 8, _hoisted_22)
     ],
     544
@@ -4850,14 +4881,61 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
 ITableSelect_default.render = render6;
 ITableSelect_default.__file = "src/components/FTable/ITableSelect.vue";
 
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableRowheader.vue?type=script
+import { defineComponent as _defineComponent7 } from "vue";
+import { assertRef as assertRef7 } from "@fkui/logic";
+import { useTemplateRef as useTemplateRef8 } from "vue";
+var ITableRowheader_default = /* @__PURE__ */ _defineComponent7({
+  __name: "ITableRowheader",
+  props: {
+    row: { type: null, required: true },
+    column: { type: Object, required: true }
+  },
+  setup(__props, { expose: __expose }) {
+    __expose();
+    const thRef = useTemplateRef8("th");
+    function onActivateCell(e) {
+      assertRef7(thRef);
+      thRef.value.tabIndex = 0;
+      if (e.detail.focus) {
+        thRef.value.focus();
+      }
+    }
+    const __returned__ = { thRef, onActivateCell };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableRowheader.vue?type=template
+import { toDisplayString as _toDisplayString5, openBlock as _openBlock7, createElementBlock as _createElementBlock7 } from "vue";
+function render7(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock7(), _createElementBlock7(
+    "th",
+    {
+      ref: "th",
+      class: "table-ng__cell table-ng__cell--rowheader",
+      scope: "row",
+      onTableActivateCell: $setup.onActivateCell
+    },
+    _toDisplayString5($props.column.value($props.row)),
+    545
+    /* TEXT, NEED_HYDRATION, NEED_PATCH */
+  );
+}
+
+// src/components/FTable/ITableRowheader.vue
+ITableRowheader_default.render = render7;
+ITableRowheader_default.__file = "src/components/FTable/ITableRowheader.vue";
+
 // src/components/FTable/table-column.ts
 function defineTableColumns(columns) {
   return columns;
 }
 
 // virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-c6cda6.js
-import { createElementVNode as _createElementVNode7, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode2, toDisplayString as _toDisplayString5, Fragment as _Fragment, openBlock as _openBlock7, createElementBlock as _createElementBlock7 } from "vue";
-var exampleComponent = /* @__PURE__ */ _defineComponent7({
+import { createElementVNode as _createElementVNode7, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode2, toDisplayString as _toDisplayString6, Fragment as _Fragment, openBlock as _openBlock8, createElementBlock as _createElementBlock8 } from "vue";
+var exampleComponent = /* @__PURE__ */ _defineComponent8({
   __name: "FTableRadioExample",
   setup(__props, { expose: __expose }) {
     __expose();
@@ -5049,8 +5127,8 @@ var exampleComponent = /* @__PURE__ */ _defineComponent7({
     return __returned__;
   }
 });
-function render7(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock7(), _createElementBlock7(
+function render8(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock8(), _createElementBlock8(
     _Fragment,
     null,
     [
@@ -5086,28 +5164,28 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode7(
         "h3",
         null,
-        "Selected rows (" + _toDisplayString5($setup.mySelectedRows.length) + " items):",
+        "Selected rows (" + _toDisplayString6($setup.mySelectedRows.length) + " items):",
         1
         /* TEXT */
       ),
       _createElementVNode7(
         "pre",
         null,
-        _toDisplayString5($setup.mySelectedRows),
+        _toDisplayString6($setup.mySelectedRows),
         1
         /* TEXT */
       ),
       _createElementVNode7(
         "h3",
         null,
-        "Rows (" + _toDisplayString5($setup.rows.length) + " items):",
+        "Rows (" + _toDisplayString6($setup.rows.length) + " items):",
         1
         /* TEXT */
       ),
       _createElementVNode7(
         "pre",
         null,
-        _toDisplayString5($setup.rows),
+        _toDisplayString6($setup.rows),
         1
         /* TEXT */
       ),
@@ -5126,11 +5204,11 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE_FRAGMENT */
   );
 }
-exampleComponent.render = render7;
+exampleComponent.render = render8;
 setup({
   rootComponent: exampleComponent,
   selector: "#example-c6cda6"
 });
 export {
-  render7 as render
+  render8 as render
 };
