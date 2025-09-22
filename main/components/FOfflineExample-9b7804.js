@@ -3387,7 +3387,7 @@ var FFormModal_default = defineComponent11({
      */
     value: {
       type: Object,
-      default: function() {
+      default() {
         return {};
       }
     },
