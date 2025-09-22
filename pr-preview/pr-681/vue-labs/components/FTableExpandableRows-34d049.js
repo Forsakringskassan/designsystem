@@ -3404,12 +3404,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     column: {}
   },
   setup(__props) {
-    const thElement = useTemplateRef("th");
+    const thRef = useTemplateRef("th");
     function onActivateCell(e) {
-      assertRef(thElement);
-      thElement.value.tabIndex = 0;
+      assertRef(thRef);
+      thRef.value.tabIndex = 0;
       if (e.detail.focus) {
-        thElement.value.focus();
+        thRef.value.focus();
       }
     }
     return (_ctx, _cache) => {
@@ -4895,15 +4895,15 @@ var ITableRowheader_default = /* @__PURE__ */ _defineComponent7({
   },
   setup(__props, { expose: __expose }) {
     __expose();
-    const thElement = useTemplateRef8("th");
+    const thRef = useTemplateRef8("th");
     function onActivateCell(e) {
-      assertRef7(thElement);
-      thElement.value.tabIndex = 0;
+      assertRef7(thRef);
+      thRef.value.tabIndex = 0;
       if (e.detail.focus) {
-        thElement.value.focus();
+        thRef.value.focus();
       }
     }
-    const __returned__ = { thElement, onActivateCell };
+    const __returned__ = { thRef, onActivateCell };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
