@@ -23,7 +23,6 @@ import {
 } from "./table-column";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableRadio from "./ITableRadio.vue";
-import ITablePager from "./ITablePager.vue";
 import ITableHeader from "./ITableHeader.vue";
 import { stopEditKey } from "./start-stop-edit";
 import { type MetaRow } from "./MetaRow";
@@ -39,7 +38,6 @@ const {
     expandableAttribute = undefined,
     striped = false,
     selectable = undefined,
-    paginerated = false,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;
     rows: T[];
@@ -47,7 +45,6 @@ const {
     expandableAttribute?: ExpandableAttribute;
     striped?: boolean;
     selectable?: "single" | "multi";
-    paginerated?: boolean;
 }>();
 const selectedRows = defineModel<T[]>("selectedRows", { default: [] });
 const tableRef = useTemplateRef("table");
@@ -60,13 +57,8 @@ const metaRows = computed(
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 
-const rowsFromPaginator = ref(metaRows.value);
-const viewRows = computed((): Array<MetaRow<T>> => {
-    return paginerated ? (rowsFromPaginator.value as Array<MetaRow<T>>) : metaRows.value;
-});
-
 const isEmpty = computed((): boolean => {
-    return viewRows.value.length === 0;
+    return metaRows.value.length === 0;
 });
 
 const columnCount = computed((): number => {
@@ -212,10 +204,6 @@ function onTableFocusout(e: FocusEvent): void {
     }
 }
 
-function onItemRangeUpdate(items: T[]): void {
-    rowsFromPaginator.value = items as Array<MetaRow<T>>;
-}
-
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
 const sortableColumns = ref<string[]>([]);
 const sortedColumn = ref("");
@@ -307,7 +295,7 @@ onMounted(() => {
             </template>
             <template v-else>
                 <i-table-row
-                    v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in viewRows"
+                    v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in metaRows"
                     :key
                     :row-key="key"
                     :aria-rowindex="rowIndex"
@@ -337,8 +325,5 @@ onMounted(() => {
             </template>
         </tbody>
     </table>
-    <div v-if="paginerated">
-        <i-table-pager :items="metaRows as T[]" @item-range="onItemRangeUpdate" />
-    </div>
     <slot name="footer"></slot>
 </template>

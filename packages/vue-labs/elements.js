@@ -41,10 +41,6 @@ module.exports = defineMetadata({
         flow: true,
     },
 
-    "i-table-pager": {
-        flow: true,
-    },
-
     "i-table-rowheader": {
         flow: true,
     },

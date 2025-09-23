@@ -32,12 +32,6 @@ FTableExpandableRows.vue
 FTableRowHeaderExample.vue
 ```
 
-## Paginering
-
-```import
-FTablePages.vue
-```
-
 ## Textnycklar
 
 Läs mer om att anpassa och översätta text.
