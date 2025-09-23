@@ -47,7 +47,6 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
         expandableAttribute?: ExpandableAttribute;
         striped?: boolean;
         selectable?: "single" | "multi";
-        paginerated?: boolean;
     } & {
         selectedRows?: T[];
     }) & {}> & PublicProps;
