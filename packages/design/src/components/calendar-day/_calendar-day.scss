@@ -1,5 +1,6 @@
 @use "../../core/mixins/circle";
 @use "variables" as *;
+@use "../../core/mixins/forcedcolors";
 
 $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highlight-color-border-default;
 
@@ -27,12 +28,20 @@ $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highl
         &.calendar-day--selected {
             &::before {
                 border: var(--f-border-width-medium) solid $calendarday-highlight-color-border-selected;
+
+                @media (forced-colors: active) {
+                    border-color: highlightText;
+                }
             }
         }
 
         &:active:not(&--disabled) {
             &::before {
                 border: var(--f-border-width-medium) solid $calendarday-highlight-color-border-selected;
+
+                @media (forced-colors: active) {
+                    border-color: highlightText;
+                }
             }
         }
 
@@ -60,6 +69,8 @@ $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highl
     &--selected {
         color: $calendarday-color-text-selected;
         background-color: $calendarday-color-background-selected;
+
+        @include forcedcolors.selected-indicator;
     }
 
     &--disabled {
@@ -77,11 +88,15 @@ $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highl
     &--hover:not(&--disabled, &--selected) {
         background-color: $calendarday-color-background-hover;
         color: $calendarday-color-text-hover;
+
+        @include forcedcolors.hover-indicator(border, 2px);
     }
 
     &:active:not(&--disabled),
     &--active:not(&--disabled) {
         color: $calendarday-color-text-selected;
         background-color: $calendarday-color-background-selected;
+
+        @include forcedcolors.selected-indicator;
     }
 }

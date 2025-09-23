@@ -1,8 +1,10 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints" as bp;
+@use "../../core/mixins/forcedcolors";
 @use "variables" as *;
 
 $chip-border-radius: 20px;
+$chip-border-width: var(--f-border-width-medium);
 
 @mixin chip($group, $item, $type) {
     .#{$group}--chip {
@@ -24,6 +26,10 @@ $chip-border-radius: 20px;
                     border-color: $chip-color-border-disabled;
                     color: $chip-color-text-disabled;
                     cursor: not-allowed;
+
+                    @media (forced-colors: active) {
+                        color: GrayText;
+                    }
                 }
             }
         }
@@ -35,7 +41,7 @@ $chip-border-radius: 20px;
             font-weight: var(--f-font-weight-medium);
             padding: size.$padding-050 size.$padding-100;
             border-radius: $chip-border-radius;
-            border: var(--f-border-width-medium) solid $chip-color-border-default;
+            border: $chip-border-width solid $chip-color-border-default;
             background-color: $chip-color-background-default;
             color: $chip-color-text-default;
             justify-content: center;
@@ -56,12 +62,16 @@ $chip-border-radius: 20px;
             border-color: $chip-color-border-hover;
             background-color: $chip-color-background-hover;
             color: $chip-color-text-hover;
+
+            @include forcedcolors.hover-indicator(border, $chip-border-width);
         }
 
         input[type="#{$type}"]:checked + .#{$item}__label {
             background: $chip-color-background-selected;
             border-color: $chip-color-border-selected;
             color: $chip-color-text-selected;
+
+            @include forcedcolors.selected-indicator;
         }
 
         input[type="#{$type}"]:focus + label.#{$item}__label {
