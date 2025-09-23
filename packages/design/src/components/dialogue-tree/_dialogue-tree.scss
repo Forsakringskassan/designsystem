@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "../../core/mixins/forcedcolors" as fc;
 
 .dialogue-tree {
     margin: 0 0 var(--f-margin-component-bottom);
@@ -22,6 +23,8 @@
 
             &:hover {
                 background-color: $dialogue-tree-color-background-hover;
+
+                @include fc.hover-indicator(outline, 2px);
             }
 
             button {
@@ -49,7 +52,6 @@
                 .icon {
                     flex-shrink: 0;
                     margin-left: 1.25rem;
-                    color: currentcolor;
                 }
             }
         }
