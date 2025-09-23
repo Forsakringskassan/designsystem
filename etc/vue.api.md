@@ -6189,7 +6189,16 @@ preparedButtons(): FModalButton[];
 onClose(): void;
 onSubmit(): void;
 onCancel(): void;
-}, ComponentOptions, ComponentOptionsMixin, ("submit" | "close" | "cancel")[], "submit" | "close" | "cancel", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, {
+cancel(): true;
+close(_payload: {
+reason: string;
+data?: unknown;
+}): true;
+submit(_payload: {
+data: unknown;
+}): true;
+}, string, PublicProps, Readonly<ExtractPropTypes<    {
 fullscreen: {
 type: BooleanConstructor;
 required: false;
@@ -6245,9 +6254,14 @@ required: false;
 default: () => FModalButtonDescriptor[];
 };
 }>> & Readonly<{
-onSubmit?: ((...args: any[]) => any) | undefined;
-onClose?: ((...args: any[]) => any) | undefined;
-onCancel?: ((...args: any[]) => any) | undefined;
+onSubmit?: ((_payload: {
+data: unknown;
+}) => any) | undefined;
+onClose?: ((_payload: {
+reason: string;
+data?: unknown;
+}) => any) | undefined;
+onCancel?: (() => any) | undefined;
 }>, {
 value: Record<string, any>;
 size: string;
