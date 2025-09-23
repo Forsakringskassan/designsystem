@@ -107,8 +107,8 @@ describe("when in `<thead>`", () => {
         jest.restoreAllMocks();
     });
 
-    it("should not render", async () => {
-        expect.assertions(1);
+    it("should only render element on mount", async () => {
+        expect.assertions(2);
         const TestComponent = {
             components: { FTableColumn },
             template: /* HTML */ `
@@ -129,12 +129,55 @@ describe("when in `<thead>`", () => {
             },
         };
         const wrapper = mount(TestComponent);
+        expect(wrapper.element.querySelector("td")).toMatchInlineSnapshot(`
+            <td
+              class="table__column table__column--text"
+            >
+              <div
+                class="table__column__wrapper"
+              >
+                <!--v-if-->
+              </div>
+            </td>
+        `);
+
         await wrapper.vm.$nextTick();
         expect(wrapper.element.querySelector("tr")).toMatchInlineSnapshot(`
             <tr>
               <!--v-if-->
             </tr>
         `);
+    });
+
+    it("should not throw on undefined object in content", async () => {
+        expect.assertions(1);
+        const TestComponent = {
+            components: { FTableColumn },
+            template: /* HTML */ `
+                <table>
+                    <thead>
+                        <tr>
+                            <f-table-column title="Mock column">
+                                {{ row.content.deep }}
+                            </f-table-column>
+                        </tr>
+                    </thead>
+                </table>
+            `,
+            setup() {
+                provide("addColumn", jest.fn());
+                provide("setVisibilityColumn", jest.fn());
+                provide("renderColumns", true);
+            },
+            data() {
+                return {
+                    row: {},
+                };
+            },
+        };
+        expect(async () => {
+            mount(TestComponent);
+        }).not.toThrow();
     });
 
     it("should register when mounted", async () => {
