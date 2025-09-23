@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "../../core/mixins/forcedcolors";
 
 .popup .popup__wrapper.combobox__listbox {
     background-color: $combobox-color-background;
@@ -26,15 +27,19 @@
     padding: 0.75rem;
     white-space: nowrap;
 
-    &:hover {
+    &:hover:not(&--highlight) {
         background-color: $combobox-color-background-hover;
         color: $combobox-color-text-hover;
+
+        @include forcedcolors.hover-indicator(outline, 2px);
     }
 
     &--highlight {
         background-color: $combobox-color-background-selected;
         color: $combobox-color-text-selected;
         font-weight: var(--f-font-weight-medium);
+
+        @include forcedcolors.selected-indicator;
     }
 }
 

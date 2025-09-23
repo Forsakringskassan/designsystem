@@ -1,6 +1,7 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
 @use "../../core/config-variables";
+@use "../../core/mixins/forcedcolors";
 @use "variables" as *;
 
 .contextmenu {
@@ -31,6 +32,7 @@
             &:hover {
                 color: $contextmenu-color-text-hover;
                 background-color: $contextmenu-color-item-background-hover;
+                @include forcedcolors.hover-indicator(outline, 2px);
             }
 
             // when desktop, long texts expands popup
