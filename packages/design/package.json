@@ -32,7 +32,8 @@
   "scripts": {
     "build": "node build.mjs",
     "clean": "rimraf coverage lib temp test-results",
-    "test": "mkdir -p test-results && node --test --experimental-test-coverage --test-reporter=spec --test-reporter=junit --test-reporter-destination=stdout --test-reporter-destination=test-results/jest-junit.xml",
+    "pretest": "node pretest.mjs",
+    "test": "node --test --experimental-test-coverage --test-reporter=spec --test-reporter=junit --test-reporter-destination=stdout --test-reporter-destination=test-results/jest-junit.xml",
     "posttest": "sass -p node --no-source-map tests:temp/tests",
     "unit": "node --test",
     "unit:watch": "node --test --watch"
