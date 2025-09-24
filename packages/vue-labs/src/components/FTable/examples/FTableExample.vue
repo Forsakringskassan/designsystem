@@ -37,13 +37,14 @@ const columns = defineTableColumns<Row>([
         key: "aktiv",
         editable: true,
     },
+
     {
         type: "text",
         header: "Formatterad text",
         value(row) {
             return formatNumber(row.antal) ?? "";
         },
-        editable: true,
+        editable: false,
     },
 
     {
@@ -73,21 +74,14 @@ const columns = defineTableColumns<Row>([
             onButtonClick(row.id);
         },
     },
-    {
-        header: "Länk",
-        type: "anchor",
-        href: "#",
-        value() {
-            return "Länktext";
-        },
-    },
 
     {
-        header: "Dropplista",
-        type: "select",
-        key: "animal",
-        options: selectFieldOptions,
-        editable: true,
+        type: "text",
+        header: "Formatterad text",
+        value(row) {
+            return formatNumber(row.antal) ?? "";
+        },
+        editable: false,
     },
 
     {
