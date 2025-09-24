@@ -39,6 +39,7 @@ const columns = defineTableColumns<Row>([
         label: (row) => `Välj rad ${row.id}`,
         editable: true,
     },
+
     {
         type: "text",
         header: "Formatterad text",
@@ -46,7 +47,7 @@ const columns = defineTableColumns<Row>([
         value(row) {
             return formatNumber(row.antal) ?? "";
         },
-        editable: true,
+        editable: false,
     },
 
     {
@@ -74,14 +75,6 @@ const columns = defineTableColumns<Row>([
             return `Ta bort ${row.id}`;
         },
         onClick: onButtonClick,
-    },
-    {
-        header: "Länk",
-        type: "anchor",
-        href: "#",
-        value() {
-            return "Länktext";
-        },
     },
 
     {
