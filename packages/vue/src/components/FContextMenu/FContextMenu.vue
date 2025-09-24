@@ -77,7 +77,10 @@ export default defineComponent({
         "select",
     ],
     setup() {
-        return { contextmenu: ref<HTMLElement | null>(null) };
+        return {
+            contextmenu: ref<HTMLElement | null>(null),
+            listElements: ref<HTMLElement[] | null>(null)
+         };
     },
     data() {
         return {
@@ -214,14 +217,15 @@ export default defineComponent({
         :is-open="isOpen"
         :keyboard-trap="false"
         :anchor="anchor"
-        :set-focus="true"
-        :focus-element="() => contextmenu"
+        :set-focus="false"
+        :focus-element="() => listElements?.[0] ?? null"
         inline="never"
         @close="$emit('close')"
     >
+        <pre>{{ { listElements?.[0] } }}</pre>
         <nav class="contextmenu" :aria-label="ariaLabel" @keyup="onKeyUp" @keydown="onKeyDown">
             <ul ref="contextmenu" role="menu" tabindex="-1" class="contextmenu__list">
-                <li v-for="(item, index) in popupItems" :key="item.key" role="menuitem" @click="onClickItem(item)">
+                <li v-for="(item, index) in popupItems" :key="item.key" ref="listElements" role="menuitem" @click="onClickItem(item)">
                     <div ref="items" :tabindex="tabIndex(index)" class="contextmenu__list__item">
                         <f-icon
                             v-if="hasIcons"

@@ -2625,6 +2625,7 @@ default: string;
 };
 }>, {
 contextmenu: Ref<HTMLElement | null, HTMLElement | null>;
+listElements: Ref<HTMLElement[] | null, HTMLElement[] | null>;
 }, {
 selectedItem: string;
 currentFocusedItemIndex: number;
