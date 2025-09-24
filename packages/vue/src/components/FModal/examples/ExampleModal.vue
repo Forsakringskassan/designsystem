@@ -1,6 +1,11 @@
-<script>
-import { defineComponent } from "vue";
-import { FFormModal, FTextField } from "@fkui/vue";
+<script lang="ts">
+import { type PropType, defineComponent } from "vue";
+import {
+    type FModalButtonDescriptor,
+    type FValidationFormCallback,
+    FFormModal,
+    FTextField,
+} from "@fkui/vue";
 
 export default defineComponent({
     name: "ExampleModal",
@@ -21,7 +26,7 @@ export default defineComponent({
             required: false,
         },
         beforeSubmit: {
-            type: Function,
+            type: Function as PropType<FValidationFormCallback | undefined>,
             required: false,
             default: undefined,
         },
@@ -31,11 +36,9 @@ export default defineComponent({
             default: "",
         },
         buttons: {
-            type: Array,
+            type: Array as PropType<FModalButtonDescriptor[] | undefined>,
             required: false,
-            default() {
-                /* do nothing */
-            },
+            default: undefined,
         },
     },
     emits: ["cancel", "close", "submit"],
@@ -48,14 +51,14 @@ export default defineComponent({
         };
     },
     methods: {
-        onSubmit(event) {
+        onSubmit(event: { data: unknown }) {
             this.$emit("submit", event);
         },
 
-        onCancel(event) {
+        onCancel(event: unknown) {
             this.$emit("cancel", event);
         },
-        onClose(event) {
+        onClose(event: { reason: string; data?: unknown }) {
             this.$emit("close", event);
         },
     },
