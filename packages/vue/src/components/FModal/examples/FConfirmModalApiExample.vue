@@ -1,6 +1,10 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { confirmModal } from "@fkui/vue";
+
+interface Frukt {
+    namn: string;
+}
 
 export default defineComponent({
     name: "FConfirmModalApiExample",
@@ -8,11 +12,11 @@ export default defineComponent({
         return {
             frukt: {
                 namn: "Mango",
-            },
+            } satisfies Frukt,
         };
     },
     methods: {
-        confirmRemove(frukt) {
+        confirmRemove(frukt: Frukt) {
             return confirmModal(this, {
                 heading: "Ta bort frukt",
                 content: `Är du säker att du vill ta bort "${frukt.namn}"?`,

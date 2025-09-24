@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField } from "@fkui/vue";
 
@@ -7,7 +7,7 @@ export default defineComponent({
     components: { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField },
     data() {
         return {
-            current: null,
+            current: undefined as string | undefined,
             visible: true,
             done: false,
             date: "",

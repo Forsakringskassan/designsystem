@@ -1,13 +1,18 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FValidationForm, FTextField } from "@fkui/vue";
 
+interface Config {
+    minLength: number;
+}
+
 /* register a new validator named "notShorter" */
-ValidationService.registerValidator({
+ValidationService.registerValidator<Config>({
     name: "notShorter",
     validation(value, element, config) {
-        return value.length >= config.minLength;
+        const { minLength = 0 } = config;
+        return value.length >= minLength;
     },
 });
 

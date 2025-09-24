@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { FFileItem, FIcon, FProgressbar } from "@fkui/vue";
 
@@ -9,7 +9,7 @@ export default defineComponent({
         return {
             fileName: "bar.pdf",
             mimeType: "application/pdf",
-            progress: 30,
+            progress: 30 as number | "",
             filteredProgress: 30,
         };
     },
@@ -32,7 +32,7 @@ export default defineComponent({
         <f-file-item :file-name="fileName" :mime-type="mimeType">
             <template #row>
                 <button
-                    v-if="progress < 100"
+                    v-if="filteredProgress < 100"
                     type="button"
                     class="button button--tertiary button--medium file-item__file-remove file-item__abort"
                 >
@@ -40,7 +40,7 @@ export default defineComponent({
                     <span> Avbryt uppladdning </span>
                 </button>
                 <button
-                    v-else-if="progress === 100"
+                    v-else-if="filteredProgress === 100"
                     type="button"
                     class="button button--tertiary button--medium file-item__file-remove"
                 >
@@ -50,7 +50,7 @@ export default defineComponent({
             </template>
 
             <f-progressbar
-                v-if="progress < 100"
+                v-if="filteredProgress < 100"
                 aria-label="progress"
                 :value="filteredProgress"
             ></f-progressbar>

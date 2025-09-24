@@ -1,15 +1,26 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField } from "@fkui/vue";
+
+interface Frukt {
+    value: string;
+    text: string;
+}
+
+interface Fruktkorg {
+    id: number;
+    namn: string;
+    valdaFrukter: Frukt[];
+}
 
 export default defineComponent({
     name: "WizardExample",
     components: { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField },
     data() {
         return {
-            current: null,
+            current: undefined as string | undefined,
             visible: true,
-            fruktkorgar: [],
+            fruktkorgar: [] as Fruktkorg[],
             n: 1,
             frukter: [
                 { value: "BANAN", text: "Banan 🍌" },
@@ -25,10 +36,11 @@ export default defineComponent({
         addBasket() {
             this.fruktkorgar.push({
                 id: this.n++,
+                namn: "",
                 valdaFrukter: [],
             });
         },
-        removeBasket(item) {
+        removeBasket(item: Fruktkorg) {
             const index = this.fruktkorgar.findIndex((it) => it.id === item.id);
             if (index >= 0) {
                 this.fruktkorgar.splice(index, 1);

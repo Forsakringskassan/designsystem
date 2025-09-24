@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent, getCurrentInstance } from "vue";
 
 export default defineComponent({
@@ -14,8 +14,10 @@ export default defineComponent({
         },
         generateWarning() {
             const error = new Error();
-            const warnHandler = this.instance.appContext.config.warnHandler;
-            warnHandler("It's game over man!", null, error.stack);
+            const warnHandler = this.instance?.appContext.config.warnHandler;
+            if (warnHandler) {
+                warnHandler("It's game over man!", null, error.stack ?? "");
+            }
         },
     },
 });
