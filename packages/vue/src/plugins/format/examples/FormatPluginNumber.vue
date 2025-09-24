@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const number = 123456789.1234;
 const stringNumber = "123456789.1234";
 const precisionNumber = {

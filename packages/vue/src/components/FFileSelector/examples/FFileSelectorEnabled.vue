@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { FFileSelector } from "@fkui/vue";
 
