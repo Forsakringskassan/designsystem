@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 6.19.1 (2025-09-24)
+
+### Bug Fixes
+
+* **deps:** update dependency sass to v1.93.0 e21c4a3
+
 ## 6.19.0 (2025-09-19)
 
 ### Features
