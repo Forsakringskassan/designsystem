@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { FPageHeader, FLogo } from "@fkui/vue";
 

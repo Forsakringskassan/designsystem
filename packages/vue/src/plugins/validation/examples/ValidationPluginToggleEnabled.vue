@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FTextField } from "@fkui/vue";

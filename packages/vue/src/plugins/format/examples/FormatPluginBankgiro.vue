@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const bankgiro = "1234566";
 </script>
 

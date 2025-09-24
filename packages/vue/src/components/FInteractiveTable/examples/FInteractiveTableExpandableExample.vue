@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 import rows from "./expandable-rows-data";
 </script>

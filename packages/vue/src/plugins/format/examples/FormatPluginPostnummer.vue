@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const postnummer = "37332";
 </script>
 

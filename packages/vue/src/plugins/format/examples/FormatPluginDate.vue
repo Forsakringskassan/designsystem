@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { FDate } from "@fkui/date";
 
 const myDate = "20250408";

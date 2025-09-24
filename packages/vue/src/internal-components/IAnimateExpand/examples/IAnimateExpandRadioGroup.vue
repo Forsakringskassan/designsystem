@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { IAnimateExpand, FFieldset, FRadioField, FTextField } from "@fkui/vue";
 

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const myText = "24 december";
 </script>
 

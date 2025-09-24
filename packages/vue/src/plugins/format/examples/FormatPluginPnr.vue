@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const pnr = "189001019802";
 </script>
 

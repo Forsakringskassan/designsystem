@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { FStaticField, FTooltip } from "@fkui/vue";
 
