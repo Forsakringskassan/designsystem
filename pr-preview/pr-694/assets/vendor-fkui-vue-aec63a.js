@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, unref, createCommentVNode, Fragment, createBlock, createApp, resolveComponent, withKeys, createVNode, toDisplayString, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Transition, Teleport, normalizeStyle, withDirectives, vShow, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -5900,23 +5900,29 @@ var _sfc_main$1d = defineComponent({
       }]
     }
   },
-  emits: [
+  emits: {
     /**
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
      * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
-    "cancel",
+    cancel() {
+      return true;
+    },
     /**
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
      * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
-    "close",
+    close(_payload) {
+      return true;
+    },
     /**
      * Event that is dispatched when the submit button is is clicked.
      * The event payload is the data that has been submitted.
      */
-    "submit"
-  ],
+    submit(_payload) {
+      return true;
+    }
+  },
   data() {
     return {};
   },

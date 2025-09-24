@@ -3515,23 +3515,29 @@ var FFormModal_default = defineComponent11({
       ]
     }
   },
-  emits: [
+  emits: {
     /**
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
      * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
-    "cancel",
+    cancel() {
+      return true;
+    },
     /**
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
      * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
-    "close",
+    close(_payload) {
+      return true;
+    },
     /**
      * Event that is dispatched when the submit button is is clicked.
      * The event payload is the data that has been submitted.
      */
-    "submit"
-  ],
+    submit(_payload) {
+      return true;
+    }
+  },
   data() {
     return {};
   },
