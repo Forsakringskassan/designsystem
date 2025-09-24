@@ -1,5 +1,5 @@
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent, shallowRef } from "vue";
 import { FDate } from "@fkui/date";
 import { FCalendar } from "@fkui/vue";
 
@@ -35,7 +35,7 @@ const events = [
     "Designmöte",
 ];
 
-const randomEvents = [];
+const randomEvents = [] as string[];
 
 for (let i = 0; i < 31; i++) {
     const randomIndex = Math.floor(Math.random() * events.length);
@@ -51,15 +51,15 @@ export default defineComponent({
     },
     data() {
         return {
-            month: FDate.fromIso("2022-12-24"),
-            min: FDate.fromIso("2020-01-01"),
-            max: FDate.fromIso("2029-01-30"),
-            tabDay: FDate.fromIso("2022-12-24"),
-            selectedDay: undefined,
+            month: shallowRef(FDate.fromIso("2022-12-24")),
+            min: shallowRef(FDate.fromIso("2020-01-01")),
+            max: shallowRef(FDate.fromIso("2029-01-30")),
+            tabDay: shallowRef(FDate.fromIso("2022-12-24")),
+            selectedDay: shallowRef<FDate | undefined>(undefined),
         };
     },
     methods: {
-        getEvents(date) {
+        getEvents(date: FDate) {
             const dayOfYear = `${date.month}-${date.day}`;
 
             const match = holidays.find((it) => it.date === dayOfYear);
@@ -70,7 +70,7 @@ export default defineComponent({
             const eventIndex = date.day - 1;
             return randomEvents[eventIndex];
         },
-        eventClasses(date) {
+        eventClasses(date: FDate) {
             const classes = ["event"];
             const dayOfYear = `${date.month}-${date.day}`;
 
@@ -81,7 +81,7 @@ export default defineComponent({
 
             return classes;
         },
-        dayClasses(date) {
+        dayClasses(date: FDate) {
             const classes = ["my-custom-day"];
 
             if (this.selectedDay && date.equals(this.selectedDay)) {
@@ -90,7 +90,7 @@ export default defineComponent({
 
             return classes;
         },
-        onSelectDay(date) {
+        onSelectDay(date: FDate) {
             this.selectedDay = date;
         },
     },

@@ -1,5 +1,5 @@
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent, shallowRef } from "vue";
 import { FDate } from "@fkui/date";
 import { FCalendar, FCalendarDay } from "@fkui/vue";
 
@@ -11,14 +11,14 @@ export default defineComponent({
     },
     data() {
         return {
-            month: FDate.fromIso("2022-10-01"),
-            min: FDate.fromIso("2020-10-01"),
-            max: FDate.fromIso("2029-12-31"),
-            selected: [],
+            month: shallowRef(FDate.fromIso("2022-10-01")),
+            min: shallowRef(FDate.fromIso("2020-10-01")),
+            max: shallowRef(FDate.fromIso("2029-12-31")),
+            selected: [] as string[],
         };
     },
     methods: {
-        onSelectDay(date) {
+        onSelectDay(date: FDate) {
             const dateString = date.toString();
             if (this.selected.includes(dateString)) {
                 this.selected.splice(this.selected.indexOf(dateString), 1);
@@ -26,8 +26,7 @@ export default defineComponent({
                 this.selected.push(dateString);
             }
         },
-        isSelected(date) {
-            /* eslint-disable-next-line @typescript-eslint/no-confusing-void-expression -- false positive */
+        isSelected(date: FDate) {
             return this.selected.find((it) => date.equals(it)) !== undefined;
         },
     },
