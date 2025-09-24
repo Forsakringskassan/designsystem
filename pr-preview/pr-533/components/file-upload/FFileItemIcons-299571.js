@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemIcons.vue:FFileItemIcons-f867e7.js
+// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemIcons.vue:FFileItemIcons-299571.js
 import { defineComponent } from "vue";
 import { FFileItem } from "@fkui/vue";
 import { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, resolveComponent as _resolveComponent, createBlock as _createBlock } from "vue";
@@ -68,7 +68,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f867e7"
+  selector: "#example-299571"
 });
 export {
   render
