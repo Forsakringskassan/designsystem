@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-dc4942.json"
+            href="../../search-data-24fbf3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-h42Fw2UOhpag3dJleGbBw2CMGQ7s7Llxp7vigi1ZMVFgSZQzRvohJUyQdfpTL4NN"
+            integrity="sha384-xGOwEJAslIdNfnJ86z2tDyrFdCohyoJ0Oajo2OuIUv1vWZONFOkhjbos16A32SIZ"
             id="search-data"
         />
     </head>
@@ -1693,13 +1693,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-f547b2"></div>
+        <div id="example-41ea73"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ErrorPluginExample-f547b2.js"></script>
+        <script type="module" src="./ErrorPluginExample-41ea73.js"></script>
     </div>
                 <div>
             <button
@@ -1717,7 +1717,7 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent, getCurrentInstance } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
@@ -1733,8 +1733,10 @@
         },
         <span class="hljs-title function_">generateWarning</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">const</span> error = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>();
-            <span class="hljs-keyword">const</span> warnHandler = <span class="hljs-variable language_">this</span>.<span class="hljs-property">instance</span>.<span class="hljs-property">appContext</span>.<span class="hljs-property">config</span>.<span class="hljs-property">warnHandler</span>;
-            <span class="hljs-title function_">warnHandler</span>(<span class="hljs-string">&quot;It&#x27;s game over man!&quot;</span>, <span class="hljs-literal">null</span>, error.<span class="hljs-property">stack</span>);
+            <span class="hljs-keyword">const</span> warnHandler = <span class="hljs-variable language_">this</span>.<span class="hljs-property">instance</span>?.<span class="hljs-property">appContext</span>.<span class="hljs-property">config</span>.<span class="hljs-property">warnHandler</span>;
+            <span class="hljs-keyword">if</span> (warnHandler) {
+                <span class="hljs-title function_">warnHandler</span>(<span class="hljs-string">&quot;It&#x27;s game over man!&quot;</span>, <span class="hljs-literal">null</span>, error.<span class="hljs-property">stack</span> ?? <span class="hljs-string">&quot;&quot;</span>);
+            }
         },
     },
 });
@@ -1851,9 +1853,9 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/abf44f3dd6a80eb88fb2773e96ca90afac7bb92d">abf44f3</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/cfdb6d420715b6cbf6bcf7a739bf5ce4a1bd7e7b">cfdb6d4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/533">PR 533</a><br />
-        2025-09-24 20:04
+        2025-09-24 20:44
 </div>
 <div class="toolbar__item">
     <form id="version">

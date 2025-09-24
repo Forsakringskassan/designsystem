@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-dc4942.json"
+            href="../../search-data-24fbf3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-h42Fw2UOhpag3dJleGbBw2CMGQ7s7Llxp7vigi1ZMVFgSZQzRvohJUyQdfpTL4NN"
+            integrity="sha384-xGOwEJAslIdNfnJ86z2tDyrFdCohyoJ0Oajo2OuIUv1vWZONFOkhjbos16A32SIZ"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/abf44f3dd6a80eb88fb2773e96ca90afac7bb92d/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/cfdb6d420715b6cbf6bcf7a739bf5ce4a1bd7e7b/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue">
                 FConfirmModal
             </a>
             
@@ -1142,13 +1142,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-cd1ebd"></div>
+        <div id="example-a6cd7f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FConfirmModalApiExample-cd1ebd.js"></script>
+        <script type="module" src="./FConfirmModalApiExample-a6cd7f.js"></script>
     </div>
                 <div>
             <button
@@ -1166,9 +1166,13 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { confirmModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+interface <span class="hljs-title class_">Frukt</span> {
+    <span class="hljs-attr">namn</span>: string;
+}
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FConfirmModalApiExample&quot;</span>,
@@ -1176,11 +1180,11 @@
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">frukt</span>: {
                 <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Mango&quot;</span>,
-            },
+            } satisfies <span class="hljs-title class_">Frukt</span>,
         };
     },
     <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">confirmRemove</span>(<span class="hljs-params">frukt</span>) {
+        <span class="hljs-title function_">confirmRemove</span>(<span class="hljs-params">frukt: Frukt</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
                 <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt&quot;</span>,
                 <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${frukt.namn}</span>&quot;?`</span>,
@@ -1647,9 +1651,9 @@ En <a href="../button.html#primar_knapp">primärknapp</a> används för att utf�
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/abf44f3dd6a80eb88fb2773e96ca90afac7bb92d">abf44f3</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/cfdb6d420715b6cbf6bcf7a739bf5ce4a1bd7e7b">cfdb6d4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/533">PR 533</a><br />
-        2025-09-24 20:04
+        2025-09-24 20:44
 </div>
 <div class="toolbar__item">
     <form id="version">

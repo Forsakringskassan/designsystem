@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-dc4942.json"
+            href="../../search-data-24fbf3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-h42Fw2UOhpag3dJleGbBw2CMGQ7s7Llxp7vigi1ZMVFgSZQzRvohJUyQdfpTL4NN"
+            integrity="sha384-xGOwEJAslIdNfnJ86z2tDyrFdCohyoJ0Oajo2OuIUv1vWZONFOkhjbos16A32SIZ"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/abf44f3dd6a80eb88fb2773e96ca90afac7bb92d/packages/vue/src/components/FFileItem/FFileItem.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/cfdb6d420715b6cbf6bcf7a739bf5ce4a1bd7e7b/packages/vue/src/components/FFileItem/FFileItem.vue">
                 FFileItem
             </a>
             
@@ -1185,13 +1185,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-f85c2f"></div>
+        <div id="example-28bf13"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFileItemButtonProgress-f85c2f.js"></script>
+        <script type="module" src="./FFileItemButtonProgress-28bf13.js"></script>
     </div>
                 <div>
             <button
@@ -1209,7 +1209,7 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFileItem</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FProgressbar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1220,7 +1220,7 @@
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">fileName</span>: <span class="hljs-string">&quot;bar.pdf&quot;</span>,
             <span class="hljs-attr">mimeType</span>: <span class="hljs-string">&quot;application/pdf&quot;</span>,
-            <span class="hljs-attr">progress</span>: <span class="hljs-number">30</span>,
+            <span class="hljs-attr">progress</span>: <span class="hljs-number">30</span> <span class="hljs-keyword">as</span> number | <span class="hljs-string">&quot;&quot;</span>,
             <span class="hljs-attr">filteredProgress</span>: <span class="hljs-number">30</span>,
         };
     },
@@ -1242,7 +1242,7 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">f-file-item</span> <span class="hljs-attr">:file-name</span>=<span class="hljs-string">&quot;fileName&quot;</span> <span class="hljs-attr">:mime-type</span>=<span class="hljs-string">&quot;mimeType&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">row</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;progress &lt; 100&quot;</span>
+                    <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;filteredProgress &lt; 100&quot;</span>
                     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
                     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--tertiary button--medium file-item__file-remove file-item__abort&quot;</span>
                 &gt;</span>
@@ -1250,7 +1250,7 @@
                     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> Avbryt uppladdning <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">v-else-if</span>=<span class="hljs-string">&quot;progress === 100&quot;</span>
+                    <span class="hljs-attr">v-else-if</span>=<span class="hljs-string">&quot;filteredProgress === 100&quot;</span>
                     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
                     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--tertiary button--medium file-item__file-remove&quot;</span>
                 &gt;</span>
@@ -1260,7 +1260,7 @@
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">f-progressbar</span>
-                <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;progress &lt; 100&quot;</span>
+                <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;filteredProgress &lt; 100&quot;</span>
                 <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;progress&quot;</span>
                 <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;filteredProgress&quot;</span>
             &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-progressbar</span>&gt;</span>
@@ -1517,9 +1517,9 @@ If the prop is not set a random value will be generated.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/abf44f3dd6a80eb88fb2773e96ca90afac7bb92d">abf44f3</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/cfdb6d420715b6cbf6bcf7a739bf5ce4a1bd7e7b">cfdb6d4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/533">PR 533</a><br />
-        2025-09-24 20:04
+        2025-09-24 20:44
 </div>
 <div class="toolbar__item">
     <form id="version">
