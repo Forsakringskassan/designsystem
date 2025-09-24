@@ -34,7 +34,10 @@ import { formModal } from "@fkui/vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/ExampleModal.vue?type=script
 import { defineComponent } from "vue";
-import { FFormModal, FTextField } from "@fkui/vue";
+import {
+  FFormModal,
+  FTextField
+} from "@fkui/vue";
 var ExampleModal_default = defineComponent({
   name: "ExampleModal",
   components: { FFormModal, FTextField },
@@ -66,8 +69,7 @@ var ExampleModal_default = defineComponent({
     buttons: {
       type: Array,
       required: false,
-      default() {
-      }
+      default: void 0
     }
   },
   emits: ["cancel", "close", "submit"],
