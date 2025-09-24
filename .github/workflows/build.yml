@@ -22,8 +22,10 @@ jobs:
               run: npm run build
             - name: Build documentation
               run: npm run build:docs
-            - name: Jest
-              run: npm --ignore-scripts test
+            - name: Tests
+              run: |
+                  npm pkg delete scripts.pretest
+                  npm test
             - name: Publish test results
               if: github.event_name == 'push' && (success() || failure())
               uses: mikepenz/action-junit-report@v5
