@@ -15,13 +15,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js"
-  },
-  "jest": {
-    "preset": "@forsakringskassan/jest-config"
+    "test": "node --test --experimental-test-module-mocks"
   },
   "devDependencies": {
-    "@jest/globals": "29.7.0",
     "execa": "9.6.0",
     "prettier": "3.6.2",
     "yaml": "2.8.1"
