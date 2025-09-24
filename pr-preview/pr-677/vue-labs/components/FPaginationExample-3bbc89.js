@@ -4001,10 +4001,11 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
 var _hoisted_1 = {
   key: 0,
   ref: "paginator",
-  class: "paginator"
+  class: "paginator",
+  "aria-label": "Table paginator prop"
 };
 var _hoisted_2 = ["disabled"];
-var _hoisted_3 = ["disabled", "onClick"];
+var _hoisted_3 = ["disabled", "aria-current", "onClick"];
 var _hoisted_4 = ["disabled"];
 var _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "FPaginator",
@@ -4012,7 +4013,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     numberOfPages: {},
     currentPage: {},
     maxPagesShown: {
-      default: 8
+      default: 9
     }
   },
   setup(__props) {
@@ -4039,6 +4040,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       }
       return pages2;
     });
+    const showPaginator = computed(() => __props.numberOfPages > 1);
+    const previousButtonDisabled = computed(() => __props.currentPage === 1);
+    const nextButtonDisabled = computed(() => __props.currentPage === __props.numberOfPages);
     function onClickPreviousButton() {
       assertRef(paginatorRef);
       paginatorRef.value.dispatchEvent(new CustomEvent("pagination:previous", {
@@ -4064,20 +4068,19 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       if (page === __props.currentPage) {
         classes.push(`${rootClass}--active`);
       }
-      if (page === 1 && !pages.value.includes(2)) {
-        classes.push(`${rootClass}--gap-after`);
-      }
-      if (page === __props.numberOfPages && !pages.value.includes(__props.numberOfPages - 1)) {
-        classes.push(`${rootClass}--gap-before`);
+      if (pages.value.indexOf(page) === 0 || pages.value.indexOf(page) === pages.value.length - 1) {
+        classes.push(`${rootClass}--gap`);
       }
       return classes;
     }
+    function showPageNumberAsGap(page) {
+      return pages.value.indexOf(page) === 1 && page !== 2 || pages.value.indexOf(page) === pages.value.length - 2 && page !== __props.numberOfPages - 1;
+    }
     return (_ctx, _cache) => {
-      return _ctx.numberOfPages > 1 ? (openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("button", {
-        disabled: _ctx.currentPage === 1,
+      return showPaginator.value ? (openBlock(), createElementBlock("nav", _hoisted_1, [createElementVNode("button", {
+        disabled: previousButtonDisabled.value,
         type: "button",
         size: "small",
-        "icon-left": "chevrons-left",
         class: "paginator__previous",
         onClick: _cache[0] || (_cache[0] = ($event) => onClickPreviousButton())
       }, [createVNode(unref(FIcon), {
@@ -4085,17 +4088,18 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       }), createTextVNode(" " + toDisplayString(unref($t)("fkui.paginator.previous", "F\xF6reg\xE5ende")), 1)], 8, _hoisted_2), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page) => {
         return openBlock(), createElementBlock("button", {
           key: page,
-          size: "small",
           type: "button",
+          size: "small",
           disabled: page === _ctx.currentPage,
           class: normalizeClass(pageClasses(page)),
+          "aria-current": page === _ctx.currentPage,
+          "aria-label": "Go to page {{ page }}",
           onClick: ($event) => onClickPageButton(page)
-        }, toDisplayString(page), 11, _hoisted_3);
+        }, toDisplayString(showPageNumberAsGap(page) ? "..." : page), 11, _hoisted_3);
       }), 128)), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("button", {
-        disabled: _ctx.currentPage === _ctx.numberOfPages,
+        disabled: nextButtonDisabled.value,
         type: "button",
         size: "small",
-        "icon-right": "arrow-right",
         class: "paginator__next",
         onClick: _cache[1] || (_cache[1] = ($event) => onClickNextButton())
       }, [createTextVNode(toDisplayString(unref($t)("fkui.paginator.next", "N\xE4sta")) + " ", 1), createVNode(unref(FIcon), {
