@@ -56,6 +56,15 @@ const props = defineProps({
     },
 
     /**
+     * Icon library to use.
+     */
+    iconLibrary: {
+        type: String,
+        required: false,
+        default: "f",
+    },
+
+    /**
      * Tertiary button style, used in conjunction with button variant `tertiary`.
      * Can be one of:
      * - `standard`
@@ -144,7 +153,12 @@ const buttonClass = computed((): string[] => {
     <button :type :class="buttonClass" :disabled="inflight" v-bind="attrs">
         <template v-if="hasIconLeft">
             <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
-            <f-icon v-else-if="props.iconLeft" class="button__icon" :name="props.iconLeft"></f-icon>
+            <f-icon
+                v-else-if="props.iconLeft"
+                class="button__icon"
+                :name="props.iconLeft"
+                :library="props.iconLibrary"
+            ></f-icon>
         </template>
         <template v-if="!hasIcon">
             <span class="spinner--before">
@@ -158,7 +172,12 @@ const buttonClass = computed((): string[] => {
 
         <template v-if="hasIconRight">
             <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
-            <f-icon v-else-if="props.iconRight" class="button__icon" :name="props.iconRight"></f-icon>
+            <f-icon
+                v-else-if="props.iconRight"
+                class="button__icon"
+                :name="props.iconRight"
+                :library="props.iconLibrary"
+            ></f-icon>
         </template>
         <template v-if="!hasIcon">
             <span class="spinner--after"></span>
