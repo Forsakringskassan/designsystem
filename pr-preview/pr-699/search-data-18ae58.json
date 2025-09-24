@@ -120,25 +120,6 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "icons",
-    "icon-lib-builder",
-    "Kom igång",
-    "designer",
-    "utvecklare",
-    "utvecklingsverktyg",
-    "Ta fram applikation",
-    "tema",
-    "sass",
-    "scss",
-    "css",
-    "ikonbibliotek",
     "Version 5 migreringsguide",
     "Vue 3",
     "Fieldset migreringsguide",
@@ -179,6 +160,25 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "icons",
+    "icon-lib-builder",
+    "Kom igång",
+    "designer",
+    "utvecklare",
+    "utvecklingsverktyg",
+    "Ta fram applikation",
+    "tema",
+    "sass",
+    "scss",
+    "css",
+    "ikonbibliotek",
     "På gång",
     "pågående arbete",
     "planerat arbete",
@@ -599,17 +599,17 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FLabelPageObject: FLabelPageObject() constructor",
+    "FLabelPageObject: formatDescription() method",
+    "FLabelPageObject: errorMessage() method",
+    "FLabelPageObject: errorIcon() method",
+    "FLabelPageObject: description() method",
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
-    "FLabelPageObject: FLabelPageObject() constructor",
-    "FLabelPageObject: formatDescription() method",
-    "FLabelPageObject: errorMessage() method",
-    "FLabelPageObject: errorIcon() method",
-    "FLabelPageObject: description() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
@@ -901,45 +901,6 @@
       ]
     },
     {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": [
-        "icons",
-        "icon-lib-builder"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": [
-        "designer",
-        "utvecklare",
-        "utvecklingsverktyg"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
-      "terms": [
-        "tema",
-        "sass",
-        "scss",
-        "css",
-        "ikonbibliotek"
-      ]
-    },
-    {
       "url": "gettingstarted/migration/migrating-to-v5.html",
       "title": "Version 5 migreringsguide",
       "terms": [
@@ -1019,6 +980,45 @@
       "title": "Checklista vid publicering",
       "terms": [
         "personuppgifter"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
+      "terms": [
+        "icons",
+        "icon-lib-builder"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": [
+        "designer",
+        "utvecklare",
+        "utvecklingsverktyg"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
+      "terms": [
+        "tema",
+        "sass",
+        "scss",
+        "css",
+        "ikonbibliotek"
       ]
     },
     {
@@ -2115,6 +2115,31 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
+      "title": "FLabelPageObject: FLabelPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
+      "title": "FLabelPageObject: formatDescription() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
+      "title": "FLabelPageObject: errorMessage() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
+      "title": "FLabelPageObject: errorIcon() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
+      "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
       "title": "FInteractiveTablePageObject: header() method",
       "terms": []
@@ -2142,31 +2167,6 @@
     {
       "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
       "title": "FFileItemPageObject: fileName() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
-      "title": "FLabelPageObject: FLabelPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
-      "title": "FLabelPageObject: formatDescription() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
-      "title": "FLabelPageObject: errorMessage() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
-      "title": "FLabelPageObject: errorIcon() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
-      "title": "FLabelPageObject: description() method",
       "terms": []
     },
     {
@@ -2353,17 +2353,17 @@
     "119": 31,
     "120": 32,
     "121": 32,
-    "122": 32,
-    "123": 32,
-    "124": 32,
-    "125": 32,
-    "126": 33,
-    "127": 33,
-    "128": 33,
-    "129": 34,
-    "130": 34,
-    "131": 34,
-    "132": 34,
+    "122": 33,
+    "123": 34,
+    "124": 34,
+    "125": 35,
+    "126": 35,
+    "127": 35,
+    "128": 35,
+    "129": 35,
+    "130": 35,
+    "131": 35,
+    "132": 35,
     "133": 35,
     "134": 35,
     "135": 35,
@@ -2372,42 +2372,42 @@
     "138": 35,
     "139": 36,
     "140": 36,
-    "141": 37,
-    "142": 38,
-    "143": 38,
-    "144": 39,
-    "145": 39,
-    "146": 39,
-    "147": 39,
-    "148": 39,
-    "149": 39,
-    "150": 39,
-    "151": 39,
-    "152": 39,
-    "153": 39,
-    "154": 39,
-    "155": 39,
-    "156": 39,
+    "141": 36,
+    "142": 36,
+    "143": 36,
+    "144": 36,
+    "145": 36,
+    "146": 36,
+    "147": 36,
+    "148": 37,
+    "149": 37,
+    "150": 37,
+    "151": 37,
+    "152": 37,
+    "153": 37,
+    "154": 37,
+    "155": 37,
+    "156": 38,
     "157": 39,
     "158": 40,
     "159": 40,
-    "160": 40,
-    "161": 40,
-    "162": 40,
-    "163": 40,
-    "164": 40,
-    "165": 40,
-    "166": 40,
-    "167": 41,
-    "168": 41,
-    "169": 41,
-    "170": 41,
-    "171": 41,
-    "172": 41,
-    "173": 41,
-    "174": 41,
-    "175": 42,
-    "176": 43,
+    "160": 41,
+    "161": 41,
+    "162": 41,
+    "163": 41,
+    "164": 41,
+    "165": 41,
+    "166": 42,
+    "167": 42,
+    "168": 42,
+    "169": 43,
+    "170": 43,
+    "171": 43,
+    "172": 43,
+    "173": 44,
+    "174": 44,
+    "175": 44,
+    "176": 44,
     "177": 44,
     "178": 44,
     "179": 45,
