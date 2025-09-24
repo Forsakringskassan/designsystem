@@ -78,6 +78,14 @@ export default [
     },
 
     {
+        name: "local/stricter-rules",
+        files: ["**/*.vue"],
+        rules: {
+            "vue/no-import-compiler-macros": "error",
+        },
+    },
+
+    {
         /* @todo technical debt */
         name: "local/technical-debt",
         rules: {

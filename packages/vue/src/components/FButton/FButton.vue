@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineProps, useAttrs, type PropType } from "vue";
+import { computed, useAttrs, type PropType } from "vue";
 import { FIcon } from "../FIcon";
 import { useInflight } from "./use-inflight";
 
