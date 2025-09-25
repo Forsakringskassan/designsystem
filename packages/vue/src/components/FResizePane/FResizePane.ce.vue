@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef, watch, watchEffect } from "vue";
+import { computed, onMounted, ref, useTemplateRef, watch, watchEffect } from "vue";
 import { debounce } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 import { useAreaData } from "../FPageLayout";
@@ -79,9 +79,9 @@ defineOptions({
     inheritAttrs: false,
 });
 
-const root = shallowRef<HTMLElement>();
-const content = ref<HTMLElement>();
-const separator = ref<HTMLElement>();
+const root = useTemplateRef("root");
+const content = useTemplateRef("content");
+const separator = useTemplateRef("separator");
 const state = ref<SizeState>({ min: -1, max: -1, current: -1 });
 const layoutSize = ref(0);
 const storageKey = computed(() => (area.value ? `layout/${area.value}/size` : null));

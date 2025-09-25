@@ -1,5 +1,15 @@
 <script setup lang="ts" generic="T extends object">
-import { type Ref, computed, getCurrentInstance, onMounted, ref, useSlots, watch, type PropType } from "vue";
+import {
+    type PropType,
+    type Ref,
+    computed,
+    getCurrentInstance,
+    onMounted,
+    ref,
+    useSlots,
+    watch,
+    useTemplateRef,
+} from "vue";
 import { ElementIdService } from "@fkui/logic";
 import { FCheckboxField } from "../FCheckboxField";
 import { itemEquals, includeItem, handleKeyboardFocusNavigation, getElementFromVueRef } from "../../utils";
@@ -100,7 +110,7 @@ const internalKey = getInternalKey<T>();
 
 const selectedItems: Ref<T[]> = ref([]);
 const activeItem = ref<T | undefined>(undefined);
-const ulElement = ref<HTMLElement | null>();
+const ulElement = useTemplateRef("ulElement");
 
 const isEmpty = computed((): boolean => {
     return internalItems.value.length === 0;
