@@ -4,6 +4,7 @@ import { ElementIdService } from "@fkui/logic";
 import { FTableInjected } from "./FTableInterface";
 import { FTableColumnType, FTableColumnSize, FTableColumnSort, isTableColumnType } from "./FTableColumnData";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * Unique (per-table) identifier. Typically set to the row

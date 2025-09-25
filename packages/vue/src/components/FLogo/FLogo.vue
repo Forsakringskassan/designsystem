@@ -2,6 +2,7 @@
 import { defineComponent } from "vue";
 import { renderSlotText } from "../../utils";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * Size of the logo: `"small"`, `"large"`, or `"responsive"`.

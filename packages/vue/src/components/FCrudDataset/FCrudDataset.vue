@@ -10,6 +10,7 @@ import { type FValidationFormCallback } from "../FValidationForm";
 import { Operation } from "./operation";
 import { filterItem } from "./filter-item";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * The list of items that should be deleted, modified or added to.

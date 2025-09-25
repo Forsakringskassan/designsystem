@@ -3,6 +3,7 @@ import { computed, useAttrs, type PropType } from "vue";
 import { FIcon } from "../FIcon";
 import { useInflight } from "./use-inflight";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * Type of button, can be one of:

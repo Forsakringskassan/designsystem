@@ -18,6 +18,7 @@ import { FIcon } from "../FIcon";
 import { useTranslate } from "../../plugins";
 import { useSlotUtils } from "../../composables";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * The rows to be listed.

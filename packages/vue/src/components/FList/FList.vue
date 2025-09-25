@@ -17,6 +17,7 @@ import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import { useTranslate } from "../../plugins";
 import { ActivateItemInjected } from "../FCrudDataset";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * The items to be listed.
