@@ -217,6 +217,14 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       default: void 0
     },
     /**
+     * Icon library to use.
+     */
+    iconLibrary: {
+      type: String,
+      required: false,
+      default: "f"
+    },
+    /**
      * Tertiary button style, used in conjunction with button variant `tertiary`.
      * Can be one of:
      * - `standard`
@@ -304,7 +312,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=template
 import { openBlock as _openBlock2, createBlock as _createBlock, createCommentVNode as _createCommentVNode2, Fragment as _Fragment2, createElementBlock as _createElementBlock2, renderSlot as _renderSlot2, createElementVNode as _createElementVNode2, mergeProps as _mergeProps2 } from "vue";
-var _hoisted_12 = ["disabled"];
+var _hoisted_12 = ["type", "disabled"];
 var _hoisted_22 = {
   key: 1,
   class: "spinner--before"
@@ -315,7 +323,7 @@ var _hoisted_3 = {
 };
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock2(), _createElementBlock2("button", _mergeProps2({
-    type: "button",
+    type: $props.type,
     class: $setup.buttonClass,
     disabled: $setup.inflight
   }, $setup.attrs), [
@@ -330,8 +338,9 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
         })) : $setup.props.iconLeft ? (_openBlock2(), _createBlock($setup["FIcon"], {
           key: 1,
           class: "button__icon",
-          name: $setup.props.iconLeft
-        }, null, 8, ["name"])) : _createCommentVNode2("v-if", true)
+          name: $setup.props.iconLeft,
+          library: $setup.props.iconLibrary
+        }, null, 8, ["name", "library"])) : _createCommentVNode2("v-if", true)
       ],
       64
       /* STABLE_FRAGMENT */
@@ -358,8 +367,9 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
         })) : $setup.props.iconRight ? (_openBlock2(), _createBlock($setup["FIcon"], {
           key: 1,
           class: "button__icon",
-          name: $setup.props.iconRight
-        }, null, 8, ["name"])) : _createCommentVNode2("v-if", true)
+          name: $setup.props.iconRight,
+          library: $setup.props.iconLibrary
+        }, null, 8, ["name", "library"])) : _createCommentVNode2("v-if", true)
       ],
       64
       /* STABLE_FRAGMENT */
