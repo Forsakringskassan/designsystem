@@ -1675,7 +1675,7 @@ onClickDay(date: FDate): void;
 onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
 isDayFocused(date: FDate): boolean;
 getTabindex(date: FDate): 0 | -1;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "click")[], "update:modelValue" | "click", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -1694,7 +1694,6 @@ type: PropType<FDate>;
 required: true;
 };
 }>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
@@ -3783,7 +3782,7 @@ onClickDay(date: FDate): void;
 onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
 isDayFocused(date: FDate): boolean;
 getTabindex(date: FDate): 0 | -1;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "click")[], "update:modelValue" | "click", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -3802,7 +3801,6 @@ type: PropType<FDate>;
 required: true;
 };
 }>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
@@ -6041,7 +6039,7 @@ labelId(): string;
 ariaDisabled(): string | undefined;
 }, {
 onClick(event: Event): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, "change"[], "change", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -6058,7 +6056,6 @@ default: null;
 };
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
-"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {
 disabled: boolean;
 id: string;
@@ -12004,7 +12001,7 @@ onInput(event: Event): void;
 onChange(event: Event): void;
 onBlur(event: Event): void;
 onUpdate(event: Event): void;
-}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur" | "update")[], "update:modelValue" | "change" | "blur" | "update", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "change" | "blur")[], "update:modelValue" | "change" | "blur", PublicProps, Readonly<ExtractPropTypes<    {
 id: {
 type: StringConstructor;
 required: false;
@@ -12028,7 +12025,6 @@ default: number;
 onBlur?: ((...args: any[]) => any) | undefined;
 onChange?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
-onUpdate?: ((...args: any[]) => any) | undefined;
 }>, {
 id: string;
 modelValue: string | null;
@@ -14686,7 +14682,7 @@ onClickDay(date: FDate): void;
 onKeydownDay(date: FDate, event: KeyboardEvent): Promise<void>;
 isDayFocused(date: FDate): boolean;
 getTabindex(date: FDate): 0 | -1;
-}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "change" | "click")[], "update:modelValue" | "change" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+}, ComponentOptions, ComponentOptionsMixin, ("update:modelValue" | "click")[], "update:modelValue" | "click", PublicProps, Readonly<ExtractPropTypes<    {
 modelValue: {
 type: PropType<FDate>;
 required: true;
@@ -14705,7 +14701,6 @@ type: PropType<FDate>;
 required: true;
 };
 }>> & Readonly<{
-onChange?: ((...args: any[]) => any) | undefined;
 onClick?: ((...args: any[]) => any) | undefined;
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
 }>, {

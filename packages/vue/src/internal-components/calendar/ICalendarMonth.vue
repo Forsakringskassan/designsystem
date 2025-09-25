@@ -50,7 +50,6 @@ export default defineComponent({
         },
     },
     emits: [
-        "change",
         /**
          * `click` event.
          * @type {string}
