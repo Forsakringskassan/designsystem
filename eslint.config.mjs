@@ -96,6 +96,7 @@ export default [
                     version: pkg.peerDependencies.vue,
                 },
             ],
+            "vue/no-unused-emit-declarations": "error",
             "vue/object-shorthand": "error",
             "vue/v-bind-style": [
                 "error",

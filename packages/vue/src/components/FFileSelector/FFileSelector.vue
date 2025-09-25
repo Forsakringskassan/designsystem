@@ -40,7 +40,6 @@ export default defineComponent({
          * @type {FileList}
          */
         "change",
-        "update:modelValue",
     ],
     computed: {
         attrs(): Record<string, unknown> {

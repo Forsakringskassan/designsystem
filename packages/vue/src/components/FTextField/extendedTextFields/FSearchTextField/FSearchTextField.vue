@@ -40,7 +40,6 @@ export default defineComponent({
          * @type {string | number}
          */
         "change",
-        "update",
         /**
          * V-model event.
          *
