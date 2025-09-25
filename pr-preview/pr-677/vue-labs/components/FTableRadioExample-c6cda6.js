@@ -3650,15 +3650,15 @@ var _hoisted_4$1 = {
   scope: "col",
   class: "table-ng__column table-ng__column--checkbox"
 };
-var _hoisted_5 = {
+var _hoisted_5$1 = {
   key: 2,
   scope: "col"
 };
-var _hoisted_6 = {
+var _hoisted_6$1 = {
   key: 0,
   class: "table-ng__row--empty"
 };
-var _hoisted_7 = ["colspan"];
+var _hoisted_7$1 = ["colspan"];
 var _hoisted_8 = ["colspan"];
 var _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "FTable",
@@ -3874,7 +3874,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         indeterminate: "",
         onChange: onSelectAllChange
-      }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+      }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5$1, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$3, {
           key: column.header,
           column,
@@ -3884,10 +3884,10 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
           class: "table-ng__column",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_6, [createElementVNode("td", {
+      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_6$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[3] || (_cache[3] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_7)])) : (openBlock(true), createElementBlock(Fragment, {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[3] || (_cache[3] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_7$1)])) : (openBlock(true), createElementBlock(Fragment, {
         key: 1
       }, renderList(metaRows.value, ({
         key,

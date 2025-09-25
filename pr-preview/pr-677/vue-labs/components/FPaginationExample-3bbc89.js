@@ -3653,15 +3653,15 @@ var _hoisted_4$1 = {
   scope: "col",
   class: "table-ng__column table-ng__column--checkbox"
 };
-var _hoisted_5 = {
+var _hoisted_5$1 = {
   key: 2,
   scope: "col"
 };
-var _hoisted_6 = {
+var _hoisted_6$1 = {
   key: 0,
   class: "table-ng__row--empty"
 };
-var _hoisted_7 = ["colspan"];
+var _hoisted_7$1 = ["colspan"];
 var _hoisted_8 = ["colspan"];
 var _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "FTable",
@@ -3877,7 +3877,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         indeterminate: "",
         onChange: onSelectAllChange
-      }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+      }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5$1, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$3, {
           key: column.header,
           column,
@@ -3887,10 +3887,10 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
           class: "table-ng__column",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_6, [createElementVNode("td", {
+      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_6$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[3] || (_cache[3] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_7)])) : (openBlock(true), createElementBlock(Fragment, {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[3] || (_cache[3] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_7$1)])) : (openBlock(true), createElementBlock(Fragment, {
         key: 1
       }, renderList(metaRows.value, ({
         key,
@@ -4005,8 +4005,15 @@ var _hoisted_1 = {
   "aria-label": "Table paginator prop"
 };
 var _hoisted_2 = ["disabled"];
-var _hoisted_3 = ["disabled", "aria-current", "onClick"];
-var _hoisted_4 = ["disabled"];
+var _hoisted_3 = {
+  class: "paginator__pages"
+};
+var _hoisted_4 = ["disabled", "aria-current", "onClick"];
+var _hoisted_5 = {
+  class: "paginator__navigation"
+};
+var _hoisted_6 = ["disabled"];
+var _hoisted_7 = ["disabled"];
 var _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "FPaginator",
   props: {
@@ -4085,7 +4092,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         onClick: _cache[0] || (_cache[0] = ($event) => onClickPreviousButton())
       }, [createVNode(unref(FIcon), {
         name: "chevrons-left"
-      }), createTextVNode(" " + toDisplayString(unref($t)("fkui.paginator.previous", "F\xF6reg\xE5ende")), 1)], 8, _hoisted_2), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page) => {
+      }), createTextVNode(" " + toDisplayString(unref($t)("fkui.paginator.previous", "F\xF6reg\xE5ende")), 1)], 8, _hoisted_2), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("div", _hoisted_3, [(openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page) => {
         return openBlock(), createElementBlock("button", {
           key: page,
           type: "button",
@@ -4095,16 +4102,24 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           "aria-current": page === _ctx.currentPage,
           "aria-label": "Go to page",
           onClick: ($event) => onClickPageButton(page)
-        }, toDisplayString(showPageNumberAsGap(page) ? "..." : page), 11, _hoisted_3);
-      }), 128)), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("button", {
+        }, toDisplayString(showPageNumberAsGap(page) ? "..." : page), 11, _hoisted_4);
+      }), 128))]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_5, [createElementVNode("button", {
+        disabled: previousButtonDisabled.value,
+        type: "button",
+        size: "small",
+        class: "paginator__previous",
+        onClick: _cache[1] || (_cache[1] = ($event) => onClickPreviousButton())
+      }, [createVNode(unref(FIcon), {
+        name: "chevrons-left"
+      }), createTextVNode(" " + toDisplayString(unref($t)("fkui.paginator.previous", "F\xF6reg\xE5ende")), 1)], 8, _hoisted_6), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("button", {
         disabled: nextButtonDisabled.value,
         type: "button",
         size: "small",
         class: "paginator__next",
-        onClick: _cache[1] || (_cache[1] = ($event) => onClickNextButton())
+        onClick: _cache[2] || (_cache[2] = ($event) => onClickNextButton())
       }, [createTextVNode(toDisplayString(unref($t)("fkui.paginator.next", "N\xE4sta")) + " ", 1), createVNode(unref(FIcon), {
         name: "arrow-right"
-      })], 8, _hoisted_4)], 512)) : createCommentVNode("", true);
+      })], 8, _hoisted_7)])], 512)) : createCommentVNode("", true);
     };
   }
 });
