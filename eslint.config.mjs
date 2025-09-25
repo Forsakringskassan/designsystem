@@ -1,3 +1,4 @@
+import fs from "node:fs/promises";
 import defaultConfig, {
     docsConfig,
     examplesConfig,
@@ -9,6 +10,13 @@ import jestConfig from "@forsakringskassan/eslint-config-jest";
 import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
 import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
 import vueConfig from "@forsakringskassan/eslint-config-vue";
+
+async function readJsonFile(filePath) {
+    const content = await fs.readFile(filePath);
+    return JSON.parse(content);
+}
+
+const pkg = await readJsonFile("packages/vue/package.json");
 
 export default [
     {
@@ -82,6 +90,12 @@ export default [
         files: ["**/*.vue"],
         rules: {
             "vue/no-import-compiler-macros": "error",
+            "vue/no-unsupported-features": [
+                "error",
+                {
+                    version: pkg.peerDependencies.vue,
+                },
+            ],
         },
     },
 
