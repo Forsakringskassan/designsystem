@@ -43,7 +43,7 @@ export default defineComponent({
                     v-model="name"
                     v-validation.required.maxLength.notShorter="{
                         notShorter: {
-                            minLength: minLength,
+                            minLength,
                             errorMessage: 'Namn får inte vara kortare än minimum längd',
                         },
                         maxLength: { length: 100 },
