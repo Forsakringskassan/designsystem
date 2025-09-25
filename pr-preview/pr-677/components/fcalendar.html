@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Kalender - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-27a757.css"
+            href="../assets/docs-b6d34e.css"
             crossorigin
-            integrity="sha384-YLqf85Fzo2IAmGFmHe+i/x6XJXdwRXWKLZ2Cjk4bqakDXlbiOuUfPKcbo1/hJl2h"
+            integrity="sha384-hPzWP/ZjTCvo8tTW8UHh0TLpDJDFQaR9SujcmG10CoRjTCoE2mdLqXqYgXteXUbU"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-9bdff6.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-7d98e2.js",
     "@fkui/date": "../assets/vendor-fkui-date-8488a1.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-172da0.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-beb843.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../assets/vendor-vue-9bdff6.js": "sha384-8oH0NUHdXT0nInpNhr/pL7JrOVo1pF+bagVvVeAjhwn3Q2KgCKCdF5QcvegXXj/T",
     "../assets/vendor-fkui-logic-7d98e2.js": "sha384-uPqKzXQhi841rLqIXR9ok5Ah8ie/y7wNA6ejE8KsJsqvHpXYHMb38zCuNldsh5/d",
     "../assets/vendor-fkui-date-8488a1.js": "sha384-ghZefVQbU4i+0Kekr9srBLVa6/3DF9efvAvjmMryIfAp0j1zA/iaKAIw1+CGZRv9",
-    "../assets/vendor-fkui-vue-172da0.js": "sha384-hhoADL7SftkUhDrtEimDiEt9EDGGrdfZcch824lzDcnDv7+tUls8YIDkEJvZ162t",
+    "../assets/vendor-fkui-vue-beb843.js": "sha384-n5poTwL/XX3YBioUSfSc2jlyAXiKN9AKhjxYrN6dWRxYJCaNtXECmUGbBmIhZYSw",
     "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -1083,13 +1083,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/86bafef5313a79d29749811e209e6977fae98766/packages/vue/src/components/FCalendar/FCalendar.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ba0e71621240af95cce80bc8dcce58399a358207/packages/vue/src/components/FCalendar/FCalendar.vue">
                 FCalendar
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/86bafef5313a79d29749811e209e6977fae98766/packages/vue/src/components/FCalendar/FCalendarDay.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ba0e71621240af95cce80bc8dcce58399a358207/packages/vue/src/components/FCalendar/FCalendarDay.vue">
                 FCalendarDay
             </a>
             
@@ -1237,7 +1237,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-85198f"></div>
+        <div id="example-085bd5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1266,7 +1266,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCalendarCustom-85198f.js"></script>
+        <script type="module" src="./FCalendarCustom-085bd5.js"></script>
     </div>
                 <div>
             <button
@@ -1284,8 +1284,8 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent, shallowRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCalendar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1321,7 +1321,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
     <span class="hljs-string">&quot;Designmöte&quot;</span>,
 ];
 
-<span class="hljs-keyword">const</span> randomEvents = [];
+<span class="hljs-keyword">const</span> randomEvents = [] <span class="hljs-keyword">as</span> string[];
 
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">31</span>; i++) {
     <span class="hljs-keyword">const</span> randomIndex = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * events.<span class="hljs-property">length</span>);
@@ -1337,15 +1337,15 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">month</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-12-24&quot;</span>),
-            <span class="hljs-attr">min</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-01-01&quot;</span>),
-            <span class="hljs-attr">max</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-01-30&quot;</span>),
-            <span class="hljs-attr">tabDay</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-12-24&quot;</span>),
-            <span class="hljs-attr">selectedDay</span>: <span class="hljs-literal">undefined</span>,
+            <span class="hljs-attr">month</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-12-24&quot;</span>)),
+            <span class="hljs-attr">min</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-01-01&quot;</span>)),
+            <span class="hljs-attr">max</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-01-30&quot;</span>)),
+            <span class="hljs-attr">tabDay</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-12-24&quot;</span>)),
+            <span class="hljs-attr">selectedDay</span>: shallowRef&lt;<span class="hljs-title class_">FDate</span> | <span class="hljs-literal">undefined</span>&gt;(<span class="hljs-literal">undefined</span>),
         };
     },
     <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">getEvents</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">getEvents</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">const</span> dayOfYear = <span class="hljs-string">`<span class="hljs-subst">${date.month}</span>-<span class="hljs-subst">${date.day}</span>`</span>;
 
             <span class="hljs-keyword">const</span> match = holidays.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> it.<span class="hljs-property">date</span> === dayOfYear);
@@ -1356,7 +1356,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
             <span class="hljs-keyword">const</span> eventIndex = date.<span class="hljs-property">day</span> - <span class="hljs-number">1</span>;
             <span class="hljs-keyword">return</span> randomEvents[eventIndex];
         },
-        <span class="hljs-title function_">eventClasses</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">eventClasses</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">const</span> classes = [<span class="hljs-string">&quot;event&quot;</span>];
             <span class="hljs-keyword">const</span> dayOfYear = <span class="hljs-string">`<span class="hljs-subst">${date.month}</span>-<span class="hljs-subst">${date.day}</span>`</span>;
 
@@ -1367,7 +1367,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
             <span class="hljs-keyword">return</span> classes;
         },
-        <span class="hljs-title function_">dayClasses</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">dayClasses</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">const</span> classes = [<span class="hljs-string">&quot;my-custom-day&quot;</span>];
 
             <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedDay</span> &amp;&amp; date.<span class="hljs-title function_">equals</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedDay</span>)) {
@@ -1376,7 +1376,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
             <span class="hljs-keyword">return</span> classes;
         },
-        <span class="hljs-title function_">onSelectDay</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">onSelectDay</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedDay</span> = date;
         },
     },
@@ -1467,13 +1467,13 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-20a76d"></div>
+        <div id="example-8bb212"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCalendarSelectDays-20a76d.js"></script>
+        <script type="module" src="./FCalendarSelectDays-8bb212.js"></script>
     </div>
                 <div>
             <button
@@ -1491,8 +1491,8 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent, shallowRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCalendar</span>, <span class="hljs-title class_">FCalendarDay</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1504,14 +1504,14 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">month</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-10-01&quot;</span>),
-            <span class="hljs-attr">min</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-10-01&quot;</span>),
-            <span class="hljs-attr">max</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-12-31&quot;</span>),
-            <span class="hljs-attr">selected</span>: [],
+            <span class="hljs-attr">month</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-10-01&quot;</span>)),
+            <span class="hljs-attr">min</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-10-01&quot;</span>)),
+            <span class="hljs-attr">max</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-12-31&quot;</span>)),
+            <span class="hljs-attr">selected</span>: [] <span class="hljs-keyword">as</span> string[],
         };
     },
     <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onSelectDay</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">onSelectDay</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">const</span> dateString = date.<span class="hljs-title function_">toString</span>();
             <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">includes</span>(dateString)) {
                 <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">splice</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">indexOf</span>(dateString), <span class="hljs-number">1</span>);
@@ -1519,7 +1519,7 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
                 <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">push</span>(dateString);
             }
         },
-        <span class="hljs-title function_">isSelected</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">isSelected</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> date.<span class="hljs-title function_">equals</span>(it)) !== <span class="hljs-literal">undefined</span>;
         },
     },
@@ -1868,9 +1868,9 @@ If undefined, the first day of the month will gain focus.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/86bafef5313a79d29749811e209e6977fae98766">86bafef</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/ba0e71621240af95cce80bc8dcce58399a358207">ba0e716</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-09-24 12:49
+        2025-09-25 09:34
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1982,10 +1982,10 @@ If undefined, the first day of the month will gain focus.</p>
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-0692c6.js"
+            src="../assets/processors/selectable-version/select-version-3e31b7.js"
             type="module"
             crossorigin
-            integrity="sha384-GAZkhE+TsggQKD9ZXFi7udYUUnlYGv5IQZd0RkMAGWBQI0WcYpDmsMEB260AIDR6"
+            integrity="sha384-WYnseIriM6H7BsVv23pwh7t1b0oAx2WWzEkaDbKS/zZ7g/X5CUVqmW9VnnxfUdMp"
             
         ></script><script
             src="../assets/main-00b03c.js"
