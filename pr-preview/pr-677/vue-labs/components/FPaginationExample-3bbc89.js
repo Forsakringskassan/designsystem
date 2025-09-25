@@ -4051,7 +4051,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     const previousButtonDisabled = computed(() => __props.currentPage === 1);
     const nextButtonDisabled = computed(() => __props.currentPage === __props.numberOfPages);
     watchEffect(() => {
-      paginatorRef.value?.style.setProperty("--number-of-pages", pages.value.length.toString());
+      if (!paginatorRef.value) {
+        return;
+      }
+      paginatorRef.value.style.setProperty("--number-of-pages", pages.value.length.toString());
     });
     function onClickPreviousButton() {
       assertRef(paginatorRef);
@@ -4110,7 +4113,8 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         class: "paginator__previous",
         onClick: _cache[1] || (_cache[1] = ($event) => onClickPreviousButton())
       }, [createVNode(unref(FIcon), {
-        name: "chevrons-left"
+        name: "chevrons-left",
+        class: "paginator__icon"
       }), createTextVNode(" " + toDisplayString(unref($t)("fkui.paginator.previous", "F\xF6reg\xE5ende")), 1)], 8, _hoisted_6), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("button", {
         disabled: nextButtonDisabled.value,
         type: "button",
@@ -4118,7 +4122,8 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         class: "paginator__next",
         onClick: _cache[2] || (_cache[2] = ($event) => onClickNextButton())
       }, [createTextVNode(toDisplayString(unref($t)("fkui.paginator.next", "N\xE4sta")) + " ", 1), createVNode(unref(FIcon), {
-        name: "arrow-right"
+        name: "arrow-right",
+        class: "paginator__icon"
       })], 8, _hoisted_7)])], 512)) : createCommentVNode("", true);
     };
   }
