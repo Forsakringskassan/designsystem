@@ -13,5 +13,5 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-file-item :file-name="fileName" :mime-type="fileType"></f-file-item>
+    <f-file-item :file-name :mime-type="fileType"></f-file-item>
 </template>

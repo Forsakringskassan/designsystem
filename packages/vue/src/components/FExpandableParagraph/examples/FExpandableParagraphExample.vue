@@ -20,7 +20,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-expandable-paragraph :expanded="expanded" header-tag="span" @toggle="onToggle">
+    <f-expandable-paragraph :expanded header-tag="span" @toggle="onToggle">
         <template #title> Titel (span) </template>
         <template #default>
             <span> Innehåll </span>

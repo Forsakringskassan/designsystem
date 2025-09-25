@@ -274,15 +274,15 @@ export default defineComponent({
 <template>
     <i-popup
         class="ipopupmenu"
-        :is-open="isOpen"
+        :is-open
         :keyboard-trap="false"
-        :anchor="anchor"
-        :focus-element="focusElement"
+        :anchor
+        :focus-element
         @close="$emit('close')"
         @keyup="onKeyUp"
         @keydown="onKeyDown"
     >
-        <nav class="ipopupmenu ipopupmenu--vertical" :aria-label="ariaLabel">
+        <nav class="ipopupmenu ipopupmenu--vertical" :aria-label>
             <ul role="menu" class="ipopupmenu__list">
                 <li
                     v-for="(item, index) in items"

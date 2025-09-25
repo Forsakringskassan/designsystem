@@ -97,6 +97,11 @@ export default [
                 },
             ],
             "vue/object-shorthand": "error",
+            "vue/v-bind-style": [
+                "error",
+                "shorthand",
+                { sameNameShorthand: "always" },
+            ],
         },
     },
 

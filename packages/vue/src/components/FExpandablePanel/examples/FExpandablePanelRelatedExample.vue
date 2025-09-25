@@ -20,7 +20,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-expandable-panel :expanded="expanded" @toggle="onToggle">
+    <f-expandable-panel :expanded @toggle="onToggle">
         <template #title> Titel </template>
         <template #default> Innehåll </template>
         <template #outside>

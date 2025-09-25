@@ -108,7 +108,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <f-fieldset name="type">
             <template #label> Typ </template>
             <f-radio-field v-model="type" value="radio"> Enkelval (radioknappar)</f-radio-field>

@@ -18,7 +18,7 @@ const template = computed(() => {
 </script>
 
 <template>
-    <live-example :components="components" :template="template">
+    <live-example :components :template>
         <f-select-field v-model="logoSize">
             <template #label> Storlek </template>
             <option value="responsive">Responsiv</option>

@@ -256,7 +256,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <fieldset :id="id" class="fieldset" :class="classes" @validity="onValidity">
+    <fieldset :id class="fieldset" :class="classes" @validity="onValidity">
         <legend :key="legendKey" class="label" :class="legendClass">
             <!-- @slot Slot for label content. This slot is required. -->
             <slot name="label"></slot>

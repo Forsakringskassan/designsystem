@@ -183,7 +183,7 @@ export default defineComponent({
             </f-label>
         </div>
         <div class="select-field__icon-wrapper" :class="selectWrapperClass">
-            <select :id="id" v-model="vModel" class="select-field__select" v-bind="attrs">
+            <select :id v-model="vModel" class="select-field__select" v-bind="attrs">
                 <slot></slot>
             </select>
             <f-icon

@@ -130,15 +130,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-modal
-        :fullscreen="fullscreen"
-        :is-open="isOpen"
-        :aria-close-text="ariaCloseText"
-        type="warning"
-        :size="size"
-        :focus="focus"
-        @close="onClose"
-    >
+    <f-modal :fullscreen :is-open :aria-close-text type="warning" :size :focus @close="onClose">
         <template #header>
             <!--@slot Slot for advanced header. -->
             <slot name="heading">{{ heading }}</slot>

@@ -105,7 +105,7 @@ export default defineComponent({
 <template>
     <div class="file-item">
         <div class="file-item__row">
-            <a :id="id" class="file-item__file-open" v-bind="$attrs">
+            <a :id class="file-item__file-open" v-bind="$attrs">
                 <f-icon :name="iconName"></f-icon>
                 <span class="file-item__file-name">{{ fileName }}</span>
                 <span class="sr-only">&nbsp;{{ $t("fkui.file-item.file-open", "öppnas i nytt fönster") }}</span>

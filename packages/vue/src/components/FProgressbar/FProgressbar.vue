@@ -69,7 +69,7 @@ const progressText = computed(() => {
             class="progress__meter"
             :class="progressBarClass"
             role="progressbar"
-            :aria-label="ariaLabel"
+            :aria-label
             aria-valuemin="0"
             aria-valuemax="100"
             :aria-valuenow="progressValueNow"

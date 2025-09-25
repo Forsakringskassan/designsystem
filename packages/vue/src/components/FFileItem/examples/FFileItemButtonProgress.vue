@@ -29,7 +29,7 @@ export default defineComponent({
                 @input="filteredProgress = progress === '' ? 0 : progress"
         /></label>
 
-        <f-file-item :file-name="fileName" :mime-type="mimeType">
+        <f-file-item :file-name :mime-type>
             <template #row>
                 <button
                     v-if="filteredProgress < 100"

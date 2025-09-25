@@ -82,7 +82,7 @@ export default defineComponent({
 <template>
     <div class="file-selector">
         <input
-            :id="id"
+            :id
             ref="file-selector"
             type="file"
             :aria-labelledby="labelId"

@@ -87,9 +87,9 @@ export default defineComponent({
 <template>
     <div>
         <f-text-field
-            :id="id"
+            :id
             :maxlength="maxLength"
-            :model-value="modelValue"
+            :model-value
             v-bind="$attrs"
             type="search"
             class="text-field--search"

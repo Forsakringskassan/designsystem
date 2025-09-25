@@ -57,7 +57,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div ref="offline" class="offline__wrapper" :role="role">
+    <div ref="offline" class="offline__wrapper" :role>
         <div v-if="!isOnline" class="offline">
             <i-flex gap="2x">
                 <i-flex-item class="offline__icon" shrink align="center">

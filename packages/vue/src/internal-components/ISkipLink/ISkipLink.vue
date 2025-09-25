@@ -19,7 +19,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <a class="iskiplink" :href="href">
+    <a class="iskiplink" :href>
         <!-- @slot Slot for default skip link text. -->
         <slot>{{ $t("fkui.skip-link.text", "Gå direkt till innehåll") }}</slot>
     </a>

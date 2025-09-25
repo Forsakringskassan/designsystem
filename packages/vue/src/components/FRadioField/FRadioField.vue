@@ -174,7 +174,7 @@ export default defineComponent({
 
 <template>
     <div class="radio-button" :class="disabledClass" @validity="onValidity">
-        <input :id="id" type="radio" class="radio-button__input" :disabled="disabled" v-bind="attrs" />
+        <input :id type="radio" class="radio-button__input" :disabled v-bind="attrs" />
 
         <label :class="$slots.details ? 'radio-button__label radio-button__width' : 'radio-button__label'" :for="id">
             <!-- @slot Slot for label content. -->
@@ -194,7 +194,7 @@ export default defineComponent({
                     <span v-if="value === modelValue" class="radio-button__details">
                         <br />
                         <!-- @slot Slot for details, should only contain short text-->
-                        <slot name="details" :height="height"></slot>
+                        <slot name="details" :height></slot>
                     </span>
                 </transition>
             </template>

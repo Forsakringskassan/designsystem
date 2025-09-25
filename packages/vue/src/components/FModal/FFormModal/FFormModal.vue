@@ -185,14 +185,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-modal
-        :data-test="dataTest"
-        :fullscreen="fullscreen"
-        :is-open="isOpen"
-        :size="size"
-        :aria-close-text="ariaCloseText"
-        @close="onClose"
-    >
+    <f-modal :data-test :fullscreen :is-open :size :aria-close-text @close="onClose">
         <template #header>
             <!-- @slot Slot for the header. -->
             <slot name="header"></slot>
@@ -204,9 +197,9 @@ export default defineComponent({
             </div>
             <f-validation-form
                 :id="formId"
-                :before-submit="beforeSubmit"
-                :before-validation="beforeValidation"
-                :use-error-list="useErrorList"
+                :before-submit
+                :before-validation
+                :use-error-list
                 @submit="onSubmit"
                 @cancel="onCancel"
             >

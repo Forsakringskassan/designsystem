@@ -270,15 +270,15 @@ export default defineComponent({
             :key="animationId"
             :opacity="false"
             :expanded="isOpen"
-            :before-animation="beforeAnimation"
-            :after-animation="afterAnimation"
+            :before-animation
+            :after-animation
             class="wizard-step__content"
         >
             <f-validation-form
                 :id="formId"
                 :before-submit="beforeNextWrapper"
                 :before-validation="beforeValidationWrapper"
-                :use-error-list="useErrorList"
+                :use-error-list
                 class="wizard-step-body"
                 @submit="onSubmit"
             >

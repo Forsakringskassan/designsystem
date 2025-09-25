@@ -231,7 +231,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <!-- Styling -->
         <f-fieldset name="styling">
             <template #label> Styling </template>

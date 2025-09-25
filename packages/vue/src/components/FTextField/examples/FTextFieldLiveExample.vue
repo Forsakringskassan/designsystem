@@ -189,7 +189,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <f-select-field v-model="type">
             <template #label> Typ </template>
             <option value="f-text-field">Fritext</option>

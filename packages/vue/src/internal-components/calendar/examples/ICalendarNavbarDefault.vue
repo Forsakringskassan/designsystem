@@ -17,5 +17,5 @@ export default defineComponent({
 </script>
 
 <template>
-    <i-calendar-navbar v-model="month" :min-date="minDate" :max-date="maxDate"> </i-calendar-navbar>
+    <i-calendar-navbar v-model="month" :min-date :max-date> </i-calendar-navbar>
 </template>

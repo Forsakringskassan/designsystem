@@ -18,7 +18,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-error-list :items="items" :bullets="true">
+        <f-error-list :items :bullets="true">
             <template #title> Kolla på felen nedan </template>
         </f-error-list>
 

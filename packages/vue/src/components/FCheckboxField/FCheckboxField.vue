@@ -223,12 +223,12 @@ export default defineComponent({
 <template>
     <div class="checkbox" :class="disabledClass" @validity="onValidity">
         <input
-            :id="id"
+            :id
             v-bind="attrs"
             ref="checkboxInput"
             type="checkbox"
             class="checkbox__input"
-            :disabled="disabled"
+            :disabled
             @keydown.space="onKeydown"
             @change="updateExpandedFlag()"
         />
@@ -253,7 +253,7 @@ export default defineComponent({
                         @slot Slot for details, should only contain short text
                         @binding {number} height The height of the expanded details content.
                         -->
-                        <slot name="details" :height="height"></slot>
+                        <slot name="details" :height></slot>
                     </span>
                 </transition>
             </template>

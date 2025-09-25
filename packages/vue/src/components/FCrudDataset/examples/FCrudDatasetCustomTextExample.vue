@@ -43,7 +43,7 @@ export default defineComponent({
 <template>
     <f-crud-dataset
         v-model="fruits"
-        :before-create="beforeCreate"
+        :before-create
         add-new-modal-header="Lägg till ny frukt"
         modify-modal-header="Ändra land"
         delete-modal-header="Vill du ta bort frukten?"

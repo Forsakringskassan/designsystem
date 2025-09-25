@@ -47,7 +47,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <f-checkbox-field v-model="enableYearSelector" :value="true">
             Visa årsväljare
         </f-checkbox-field>

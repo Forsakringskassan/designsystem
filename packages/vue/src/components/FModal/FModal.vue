@@ -202,7 +202,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-if="isOpen" :id="id" class="modal" :class="modalClass">
+    <div v-if="isOpen" :id class="modal" :class="modalClass">
         <div class="modal__backdrop">
             <div
                 class="modal__outer-container scroll-target"

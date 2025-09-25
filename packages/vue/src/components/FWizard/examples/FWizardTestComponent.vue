@@ -20,7 +20,7 @@ export default defineComponent({
 <template>
     <div>
         <f-wizard id="wizard" header-tag="h2">
-            <f-wizard-step key="STEP1" title="STEP1" :before-next="beforeNext">
+            <f-wizard-step key="STEP1" title="STEP1" :before-next>
                 <f-fieldset v-validation.required name="kryss">
                     <template #label>
                         <h2>Underskrift</h2>

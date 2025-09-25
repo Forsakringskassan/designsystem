@@ -38,7 +38,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <component :is="errorComponent" v-if="hasError" :payload="payload"></component>
+        <component :is="errorComponent" v-if="hasError" :payload></component>
         <component :is="defaultComponent" v-else-if="defaultComponent"></component>
         <slot v-else></slot>
     </div>

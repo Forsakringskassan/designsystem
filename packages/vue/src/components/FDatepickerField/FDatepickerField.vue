@@ -330,10 +330,10 @@ export default defineComponent({
                 v-bind="$attrs"
                 v-model="textFieldValue"
                 maxlength="20"
-                :disabled="disabled"
+                :disabled
                 :formatter="dateFormatter"
-                :label-width="labelWidth"
-                :input-width="inputWidth"
+                :label-width
+                :input-width
                 @component-validity="onValidityTextField"
                 @change="onChangeTextField"
                 @validation-config-update="onValidationConfigUpdate"
@@ -368,7 +368,7 @@ export default defineComponent({
                 <template #input-right>
                     <button
                         ref="calendarButton"
-                        :disabled="disabled"
+                        :disabled
                         class="datepicker-field__button"
                         type="button"
                         :aria-expanded="isCalendarOpen ? 'true' : 'false'"
@@ -394,8 +394,8 @@ export default defineComponent({
                 <f-calendar
                     v-model="calendarMonth"
                     :tab-date="calendarValue"
-                    :min-date="minDate"
-                    :max-date="maxDate"
+                    :min-date
+                    :max-date
                     :year-selector
                     @click="onSelectCalendarDay"
                     @keyup.esc.stop="onKeyupEsc"
