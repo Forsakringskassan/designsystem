@@ -16,6 +16,7 @@ export default defineComponent({
          *
          *   `componentCount`: number of registered components
          */
+        /* eslint-disable-next-line vue/no-unused-properties -- one-way binding, we ignore whatever the consumer sets this to */
         modelValue: {
             type: Object as PropType<GroupValidityEvent>,
             required: false,

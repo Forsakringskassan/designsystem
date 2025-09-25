@@ -31,13 +31,6 @@ const props = defineProps({
         default: undefined,
     },
     /**
-     * If `true` the primary button in the modals will be placed to the right side instead of to the left.
-     */
-    primaryButtonRight: {
-        type: Boolean,
-        default: false,
-    },
-    /**
      * If given, this function is called before the [[submit]] event is emitted.
      * See <f-validation-form> `beforeSubmit` props for more info.
      */

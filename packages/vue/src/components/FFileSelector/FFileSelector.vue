@@ -1,5 +1,5 @@
 <script lang="ts">
-import { type PropType, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import FIcon from "../FIcon/FIcon.vue";
 
@@ -27,10 +27,6 @@ export default defineComponent({
             type: Boolean,
             required: false,
             default: false,
-        },
-        modelValue: {
-            type: Object as PropType<FileList | null>,
-            default: null,
         },
     },
     emits: [

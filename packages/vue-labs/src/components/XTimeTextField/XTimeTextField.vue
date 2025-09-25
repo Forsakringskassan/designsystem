@@ -10,11 +10,13 @@ export default defineComponent({
     extends: FTextField,
     mixins: [TranslationMixin],
     props: {
+        /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
         formatter: {
             type: Function as PropType<FormatFunction<HoursMinutesString>>,
             required: false,
             default: formatNumberToTime,
         },
+        /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
         parser: {
             type: Function as PropType<ParseFunction<number>>,
             required: false,

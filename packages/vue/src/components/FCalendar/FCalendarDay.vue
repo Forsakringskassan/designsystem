@@ -24,14 +24,6 @@ export default defineComponent({
             default: true,
         },
         /**
-         * Set to `true` if day is focused.
-         */
-        focused: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
-        /**
          * Set to `true` if day is selected.
          */
         selected: {

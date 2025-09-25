@@ -12,6 +12,7 @@ export default defineComponent({
     extends: FTextField,
     mixins: [TranslationMixin],
     props: {
+        /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
         formatter: {
             type: Function as PropType<FormatFunction<PostalCodeString>>,
             required: false,
