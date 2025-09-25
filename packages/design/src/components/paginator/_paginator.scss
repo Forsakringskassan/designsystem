@@ -1,11 +1,19 @@
 @use "../../core";
 @use "../../core/size";
 
+$gap-size: size.$margin-025;
+$page-width: 2.5rem;
+$button-width: 8rem;
+$number-of-pages: var(--number-of-pages);
+
+$paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 1) * $gap-size));
+
 .paginator {
     display: inline-flex;
-    gap: size.$margin-025;
+    flex-wrap: wrap;
+    gap: $gap-size;
     align-items: center;
-    height: 2rem;
+    height: 2.5rem;
 
     &__page,
     &__previous,
@@ -26,23 +34,20 @@
             color: black;
             background-color: var(--fkds-color-action-background-secondary-hover);
         }
-
-        &--gap {
-            content: "...";
-        }
-
-        /* &--gap-after::after,
-        &--gap-before::before {
-            content: "...";
-        } */
     }
 
     &__page {
-        width: 2.5rem;
+        width: $page-width;
     }
 
     &__previous,
     &__next {
-        width: 8rem;
+        width: $button-width;
+    }
+
+    @media (max-width: 670px) {
+        &__page {
+            order: -1;
+        }
     }
 }

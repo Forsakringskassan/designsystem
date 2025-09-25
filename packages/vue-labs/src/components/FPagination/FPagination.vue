@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
 import { computed, ref } from "vue";
 
-const { items, itemsPerPage = 10 } = defineProps<{
+const { items, itemsPerPage = 8 } = defineProps<{
     items: T[];
     itemsPerPage?: number;
 }>();

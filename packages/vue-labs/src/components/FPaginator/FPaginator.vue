@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { assertRef } from "@fkui/logic";
 import { FIcon, useTranslate } from "@fkui/vue";
-import { computed, useTemplateRef } from "vue";
+import { computed, useTemplateRef, watchEffect } from "vue";
 
 const {
     numberOfPages,
@@ -49,6 +49,10 @@ const previousButtonDisabled = computed((): boolean => currentPage === 1);
 
 const nextButtonDisabled = computed((): boolean => currentPage === numberOfPages);
 
+watchEffect(() => {
+    paginatorRef.value?.style.setProperty("--number-of-pages", pages.value.length.toString());
+});
+
 function onClickPreviousButton(): void {
     assertRef(paginatorRef);
     paginatorRef.value.dispatchEvent(
@@ -86,11 +90,6 @@ function pageClasses(page: number): string[] {
         classes.push(`${rootClass}--active`);
     }
 
-    // --gap
-    if (pages.value.indexOf(page) === 0 || pages.value.indexOf(page) === pages.value.length - 1) {
-        classes.push(`${rootClass}--gap`);
-    }
-
     return classes;
 }
 
@@ -123,7 +122,7 @@ function showPageNumberAsGap(page: number): boolean {
             :disabled="page === currentPage"
             :class="pageClasses(page)"
             :aria-current="page === currentPage"
-            aria-label="Go to page {{ page }}"
+            aria-label="Go to page"
             @click="onClickPageButton(page)"
         >
             {{ showPageNumberAsGap(page) ? "..." : page }}
