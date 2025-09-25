@@ -12,12 +12,6 @@ import { computeCssValue } from "./compute-css-value";
 import { aggregateCssValue } from "./aggregate-css-value";
 import { useStorage } from "./use-storage";
 
-const STEP_SIZE = 10;
-
-defineOptions({
-    inheritAttrs: false,
-});
-
 const props = withDefaults(
     defineProps<{
         /**
@@ -78,6 +72,12 @@ const props = withDefaults(
 const emit = defineEmits<{
     resize: [size: number];
 }>();
+
+const STEP_SIZE = 10;
+
+defineOptions({
+    inheritAttrs: false,
+});
 
 const root = shallowRef<HTMLElement>();
 const content = ref<HTMLElement>();

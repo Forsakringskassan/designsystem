@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-const MIN_VALUE = 0;
-const MAX_VALUE = 100;
-
 const props = defineProps({
     /**
      * Sets the progress. Higher value indicates further progress.
@@ -38,6 +35,8 @@ const props = defineProps({
         required: true,
     },
 });
+const MIN_VALUE = 0;
+const MAX_VALUE = 100;
 
 /* @ts-expect-error The prop name is actually normalized to ariaLabel but the type system does not realize */
 const ariaLabel = props.ariaLabel;

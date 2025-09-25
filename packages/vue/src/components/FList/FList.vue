@@ -7,15 +7,6 @@ import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import { useTranslate } from "../../plugins";
 import { ActivateItemInjected } from "../FCrudDataset";
 
-const $t = useTranslate();
-const slots = useSlots();
-const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
-const internalKey = getInternalKey<T>();
-
-const selectedItems: Ref<T[]> = ref([]);
-const activeItem = ref<T | undefined>(undefined);
-const ulElement = ref<HTMLElement | null>();
-
 const props = defineProps({
     /**
      * The items to be listed.
@@ -76,7 +67,6 @@ const props = defineProps({
         default: () => ElementIdService.generateElementId(),
     },
 });
-
 const emit = defineEmits<{
     /**
      * Emitted when item is activated, i.e. clicked
@@ -103,6 +93,14 @@ const emit = defineEmits<{
      */
     "update:modelValue": [item: T[]];
 }>();
+const $t = useTranslate();
+const slots = useSlots();
+const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
+const internalKey = getInternalKey<T>();
+
+const selectedItems: Ref<T[]> = ref([]);
+const activeItem = ref<T | undefined>(undefined);
+const ulElement = ref<HTMLElement | null>();
 
 const isEmpty = computed((): boolean => {
     return internalItems.value.length === 0;

@@ -3,13 +3,6 @@ import { computed, useAttrs, type PropType } from "vue";
 import { FIcon } from "../FIcon";
 import { useInflight } from "./use-inflight";
 
-defineOptions({
-    inheritAttrs: false,
-});
-const originalAttrs = useAttrs();
-const { inflight, fn: onClick } = useInflight(originalAttrs.onClick);
-const attrs = { ...originalAttrs, onClick };
-
 const props = defineProps({
     /**
      * Type of button, can be one of:
@@ -110,6 +103,12 @@ const props = defineProps({
         },
     },
 });
+defineOptions({
+    inheritAttrs: false,
+});
+const originalAttrs = useAttrs();
+const { inflight, fn: onClick } = useInflight(originalAttrs.onClick);
+const attrs = { ...originalAttrs, onClick };
 
 const hasIconLeft = computed((): boolean => {
     return Boolean(props.iconLeft);

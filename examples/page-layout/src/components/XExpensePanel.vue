@@ -2,9 +2,9 @@
 import { FDetailsPanel } from "@fkui/vue";
 import { type Expense } from "../expense";
 
-const XExpensePanel = FDetailsPanel<Expense>;
-
 const { name, exclusive } = defineProps<{ name: string; exclusive: string }>();
+
+const XExpensePanel = FDetailsPanel<Expense>;
 </script>
 <template>
     <x-expense-panel :name :exclusive>

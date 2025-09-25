@@ -10,19 +10,6 @@ import { type FValidationFormCallback } from "../FValidationForm";
 import { Operation } from "./operation";
 import { filterItem } from "./filter-item";
 
-const $t = useTranslate();
-const slots = useSlots();
-
-const result = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
-const operation = ref<Operation>(Operation.NONE);
-const item = ref<T | null>(null);
-const nestedKey = ref<keyof T | null | undefined>(null);
-const originalItemToUpdate = ref<T | null>(null);
-const isFormModalOpen = ref(false);
-const isConfirmModalOpen = ref(false);
-const callbackAfterItemAdd = ref<(item: T) => void>(() => ({}));
-const callbackBeforeItemDelete = ref<(item: T) => void>(() => ({}));
-
 const props = defineProps({
     /**
      * The list of items that should be deleted, modified or added to.
@@ -110,7 +97,6 @@ const props = defineProps({
         ),
     },
 });
-
 const emit = defineEmits<{
     /**
      * Emitted when an item is added.
@@ -141,6 +127,18 @@ const emit = defineEmits<{
      */
     "update:modelValue": [items: T[]];
 }>();
+const $t = useTranslate();
+const slots = useSlots();
+
+const result = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
+const operation = ref<Operation>(Operation.NONE);
+const item = ref<T | null>(null);
+const nestedKey = ref<keyof T | null | undefined>(null);
+const originalItemToUpdate = ref<T | null>(null);
+const isFormModalOpen = ref(false);
+const isConfirmModalOpen = ref(false);
+const callbackAfterItemAdd = ref<(item: T) => void>(() => ({}));
+const callbackBeforeItemDelete = ref<(item: T) => void>(() => ({}));
 
 const formModalButtons = computed((): FModalButtonDescriptor[] => {
     const confirmButtonText =

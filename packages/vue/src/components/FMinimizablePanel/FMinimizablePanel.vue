@@ -5,11 +5,6 @@ import { FIcon } from "../FIcon";
 import { useResize } from "../FResizePane";
 import MinimizablePanel from "./FMinimizablePanel.ce.vue";
 
-const ceTag = "ce-minimizable-panel";
-if (!customElements.get(ceTag)) {
-    customElements.define(ceTag, defineCustomElement(MinimizablePanel));
-}
-
 const { context = undefined, initial = "expanded" } = defineProps<{
     /**
      * Screenreader context for toggle button.
@@ -24,6 +19,10 @@ const { context = undefined, initial = "expanded" } = defineProps<{
      */
     initial?: "minimized" | "expanded";
 }>();
+const ceTag = "ce-minimizable-panel";
+if (!customElements.get(ceTag)) {
+    customElements.define(ceTag, defineCustomElement(MinimizablePanel));
+}
 
 const $t = useTranslate();
 
