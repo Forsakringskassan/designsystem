@@ -4,15 +4,19 @@
 $gap-size: size.$margin-025;
 $page-width: 2.5rem;
 $button-width: 8rem;
-$number-of-pages: var(--number-of-pages);
+// TODO Hämta antal sidor dynamiskt från paginator
+$number-of-pages: 9;
+$paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 2) * $gap-size));
 
-$paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 1) * $gap-size));
+.paginator:before {
+    // content: "Width: " + $gap-size;
+}
 
 .paginator {
-    display: inline-flex;
-    flex-wrap: wrap;
+    display: flex;
     gap: $gap-size;
     align-items: center;
+    justify-content: flex-start;
     height: 2.5rem;
 
     &__page,
@@ -36,6 +40,11 @@ $paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-widt
         }
     }
 
+    &__pages {
+        display: inline-flex;
+        gap: $gap-size;
+    }
+
     &__page {
         width: $page-width;
     }
@@ -45,9 +54,26 @@ $paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-widt
         width: $button-width;
     }
 
-    @media (max-width: 670px) {
-        &__page {
-            order: -1;
+    &__navigation .paginator__previous {
+        display: none;
+    }
+
+    @media (max-width: #{$paginator-width-full}) {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: $gap-size;
+
+        &__previous,
+        &__next {
+            display: inline-block;
+        }
+
+        &__previous {
+            display: none;
+        }
+
+        &__navigation .paginator__previous {
+            display: inline;
         }
     }
 }

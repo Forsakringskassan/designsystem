@@ -114,29 +114,43 @@ function showPageNumberAsGap(page: number): boolean {
             {{ $t("fkui.paginator.previous", "Föregående") }}
         </button>
 
-        <button
-            v-for="page in pages"
-            :key="page"
-            type="button"
-            size="small"
-            :disabled="page === currentPage"
-            :class="pageClasses(page)"
-            :aria-current="page === currentPage"
-            aria-label="Go to page"
-            @click="onClickPageButton(page)"
-        >
-            {{ showPageNumberAsGap(page) ? "..." : page }}
-        </button>
+        <div class="paginator__pages">
+            <button
+                v-for="page in pages"
+                :key="page"
+                type="button"
+                size="small"
+                :disabled="page === currentPage"
+                :class="pageClasses(page)"
+                :aria-current="page === currentPage"
+                aria-label="Go to page"
+                @click="onClickPageButton(page)"
+            >
+                {{ showPageNumberAsGap(page) ? "..." : page }}
+            </button>
+        </div>
 
-        <button
-            :disabled="nextButtonDisabled"
-            type="button"
-            size="small"
-            class="paginator__next"
-            @click="onClickNextButton()"
-        >
-            {{ $t("fkui.paginator.next", "Nästa") }}
-            <f-icon name="arrow-right" />
-        </button>
+        <div class="paginator__navigation">
+            <button
+                :disabled="previousButtonDisabled"
+                type="button"
+                size="small"
+                class="paginator__previous"
+                @click="onClickPreviousButton()"
+            >
+                <f-icon name="chevrons-left" />
+                {{ $t("fkui.paginator.previous", "Föregående") }}
+            </button>
+            <button
+                :disabled="nextButtonDisabled"
+                type="button"
+                size="small"
+                class="paginator__next"
+                @click="onClickNextButton()"
+            >
+                {{ $t("fkui.paginator.next", "Nästa") }}
+                <f-icon name="arrow-right" />
+            </button>
+        </div>
     </nav>
 </template>
