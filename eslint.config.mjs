@@ -96,6 +96,7 @@ export default [
                     version: pkg.peerDependencies.vue,
                 },
             ],
+            "vue/object-shorthand": "error",
         },
     },
 

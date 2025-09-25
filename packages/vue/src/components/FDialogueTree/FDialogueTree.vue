@@ -116,7 +116,7 @@ export default defineComponent({
                 @slot Slot for last dialogue step.
                 @binding {userData} userData Step information
             -->
-            <slot v-bind="{ userData: userData }"></slot>
+            <slot v-bind="{ userData }"></slot>
         </template>
     </div>
 </template>
