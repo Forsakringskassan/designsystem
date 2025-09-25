@@ -18,7 +18,6 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * The id for the input id attribute.

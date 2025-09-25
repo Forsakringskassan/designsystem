@@ -55,7 +55,6 @@ export default defineComponent({
         disableInitialFocus: {
             type: Boolean,
             required: false,
-            default: false,
         },
     },
     emits: [

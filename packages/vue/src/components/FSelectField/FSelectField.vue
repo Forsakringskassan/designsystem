@@ -27,7 +27,6 @@ export default defineComponent({
         inline: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * The value for the input.

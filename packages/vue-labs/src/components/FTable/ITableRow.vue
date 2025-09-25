@@ -3,12 +3,12 @@ import { computed, provide } from "vue";
 import { FIcon } from "@fkui/vue";
 
 const {
-    renderHeader = false,
+    renderHeader,
     ariaLevel = undefined,
     rowKey = "",
-    isTreegrid = false,
-    isExpandable = false,
-    isExpanded = false,
+    isTreegrid,
+    isExpandable,
+    isExpanded,
 } = defineProps<{
     renderHeader?: boolean;
     rowKey?: string;

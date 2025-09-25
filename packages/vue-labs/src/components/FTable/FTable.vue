@@ -37,7 +37,7 @@ const {
     rows,
     keyAttribute = undefined,
     expandableAttribute = undefined,
-    striped = false,
+    striped,
     selectable = undefined,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;

@@ -12,14 +12,12 @@ export default defineComponent({
          */
         grow: {
             type: Boolean,
-            default: false,
         },
         /**
          * If set this item will shrink to its smallest possible size.
          */
         shrink: {
             type: Boolean,
-            default: false,
         },
         /**
          * Vertical positioning of content.

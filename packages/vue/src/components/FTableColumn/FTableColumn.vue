@@ -23,6 +23,7 @@ const props = defineProps({
      */
     visible: {
         type: Boolean,
+        /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
         default: true,
     },
     /**
@@ -32,7 +33,6 @@ const props = defineProps({
     rowHeader: {
         type: Boolean,
         required: false,
-        default: false,
     },
     /**
      * Text to show in column header. In order to force newlines use `\n`.
@@ -57,7 +57,6 @@ const props = defineProps({
     shrink: {
         type: Boolean,
         required: false,
-        default: false,
     },
     /**
      * Set this column to expand as large as possible.
@@ -69,7 +68,6 @@ const props = defineProps({
     expand: {
         type: Boolean,
         required: false,
-        default: false,
     },
     /**
      * Type of data the rows contains.

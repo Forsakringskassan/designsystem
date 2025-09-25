@@ -35,7 +35,9 @@ export default defineComponent({
             type: Number,
             default: 80,
         },
-        extendedValidation: { type: Boolean, default: false },
+        extendedValidation: {
+            type: Boolean,
+        },
     },
     emits: [
         /**

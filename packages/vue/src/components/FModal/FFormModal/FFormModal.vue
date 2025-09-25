@@ -20,6 +20,7 @@ export default defineComponent({
         fullscreen: {
             type: Boolean,
             required: false,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
             default: true,
         },
         /**
@@ -29,6 +30,7 @@ export default defineComponent({
         isOpen: {
             type: Boolean,
             required: false,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
             default: true,
         },
         /**
@@ -64,6 +66,7 @@ export default defineComponent({
         useErrorList: {
             type: Boolean,
             required: false,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
             default: true,
         },
         /**

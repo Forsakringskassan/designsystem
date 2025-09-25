@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { FIcon } from "../FIcon";
 
-const { icon = undefined, label = undefined } = defineProps<{
+const { icon = undefined, label } = defineProps<{
     /**
      * When set to an icon name an icon is displayed next to the label.
      */

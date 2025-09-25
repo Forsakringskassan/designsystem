@@ -21,7 +21,6 @@ export default defineComponent({
         expanded: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Element to render for the header element inside the expandable panel.

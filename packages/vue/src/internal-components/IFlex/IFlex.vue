@@ -33,14 +33,12 @@ export default defineComponent({
          */
         collapse: {
             type: Boolean,
-            default: false,
         },
         /**
          * If set the IFlexItems will wrap when out of space
          */
         wrap: {
             type: Boolean,
-            default: false,
         },
         /**
          * Set how IFlexItems should float.

@@ -33,7 +33,6 @@ export default defineComponent({
         isOpen: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * The aria-label attribute text for the top right close button.
@@ -49,7 +48,6 @@ export default defineComponent({
         fullscreen: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * The type of modal. 'information', 'warning' and 'error' is valid.

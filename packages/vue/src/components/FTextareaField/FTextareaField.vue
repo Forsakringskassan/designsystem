@@ -65,14 +65,12 @@ export default defineComponent({
          */
         disabled: {
             type: Boolean,
-            default: false,
         },
         /**
          * Enabling vertical resizing of the textarea
          */
         resizable: {
             type: Boolean,
-            default: false,
         },
     },
     emits: [

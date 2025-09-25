@@ -17,7 +17,6 @@ export default defineComponent({
         show: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * If loader should be displayed as a fullscreen overlay.
@@ -25,7 +24,6 @@ export default defineComponent({
         overlay: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Delay the loader icon and text by 1 second
@@ -33,7 +31,6 @@ export default defineComponent({
         delay: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Language used for determining fallback value for the loading text. Useful if loader is displayed before
@@ -52,6 +49,7 @@ export default defineComponent({
         focusOnOverlay: {
             type: Boolean,
             required: false,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
             default: true,
         },
         /*

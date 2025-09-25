@@ -16,6 +16,7 @@ export default defineComponent({
          */
         animate: {
             type: Boolean,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
             default: true,
         },
         /**
@@ -23,7 +24,6 @@ export default defineComponent({
          */
         useVShow: {
             type: Boolean,
-            default: false,
         },
 
         /**
@@ -36,6 +36,7 @@ export default defineComponent({
         /* Toggle opacity in animation */
         opacity: {
             type: Boolean,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
             default: true,
         },
         /**

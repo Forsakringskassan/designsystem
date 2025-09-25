@@ -75,7 +75,6 @@ export default defineComponent({
         chip: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Displays a box with border around radiobuttons and checkboxes.

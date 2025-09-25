@@ -40,7 +40,9 @@ export default defineComponent({
             type: Number,
             default: 80,
         },
-        extendedValidation: { type: Boolean, default: false },
+        extendedValidation: {
+            type: Boolean,
+        },
         /**
          * The error message to be displayed on paste
          * If the prop is not set the default text "Du kan inte kopiera mejladressen. Du måste skriva in den igen." will be set
