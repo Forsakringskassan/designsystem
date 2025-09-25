@@ -3,11 +3,11 @@
     "display": "@fkui/tsconfig/cypress",
 
     "compilerOptions": {
-        "module": "node16",
-        "moduleResolution": "node16",
+        "module": "esnext",
+        "moduleResolution": "bundler",
         "resolveJsonModule": true,
         "strict": true,
-        "target": "es6",
+        "target": "esnext",
         "lib": ["es6", "dom"],
         "types": ["cypress", "node"]
     }
