@@ -89,6 +89,7 @@ export default [
         name: "local/stricter-rules",
         files: ["**/*.vue"],
         rules: {
+            "vue/define-emits-declaration": ["error", "type-based"],
             "vue/define-macros-order": [
                 "error",
                 {
