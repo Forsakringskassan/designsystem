@@ -104,6 +104,7 @@ const { filter, filteredRows } = erp;
     </div>
 </template>
 
+<!-- eslint-disable-next-line vue/no-restricted-block -- technical debt -->
 <style>
 .checkbox label {
     min-width: auto;

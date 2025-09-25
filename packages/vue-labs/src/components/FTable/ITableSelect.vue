@@ -272,6 +272,7 @@ function cancel(): void {
     </td>
 </template>
 
+<!-- eslint-disable-next-line vue/no-restricted-block -- technical debt -->
 <style>
 .input {
     border: none;
