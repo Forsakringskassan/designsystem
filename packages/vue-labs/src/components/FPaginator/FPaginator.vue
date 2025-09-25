@@ -13,7 +13,7 @@ const {
     maxPagesShown?: number;
 }>();
 
-const paginatorRef = useTemplateRef("paginator");
+const paginatorRef = useTemplateRef<HTMLElement>("paginator");
 const $t = useTranslate();
 
 const pages = computed(() => {
@@ -50,7 +50,10 @@ const previousButtonDisabled = computed((): boolean => currentPage === 1);
 const nextButtonDisabled = computed((): boolean => currentPage === numberOfPages);
 
 watchEffect(() => {
-    paginatorRef.value?.style.setProperty("--number-of-pages", pages.value.length.toString());
+    if (!paginatorRef.value) {
+        return;
+    }
+    paginatorRef.value.style.setProperty("--number-of-pages", pages.value.length.toString());
 });
 
 function onClickPreviousButton(): void {
@@ -138,7 +141,7 @@ function showPageNumberAsGap(page: number): boolean {
                 class="paginator__previous"
                 @click="onClickPreviousButton()"
             >
-                <f-icon name="chevrons-left" />
+                <f-icon name="chevrons-left" class="paginator__icon" />
                 {{ $t("fkui.paginator.previous", "Föregående") }}
             </button>
             <button
@@ -149,7 +152,7 @@ function showPageNumberAsGap(page: number): boolean {
                 @click="onClickNextButton()"
             >
                 {{ $t("fkui.paginator.next", "Nästa") }}
-                <f-icon name="arrow-right" />
+                <f-icon name="arrow-right" class="paginator__icon" />
             </button>
         </div>
     </nav>

@@ -4,14 +4,14 @@
 $gap-size: size.$margin-025;
 $page-width: 2.5rem;
 $button-width: 8rem;
-$number-of-pages: 9; // TODO Ska hämta antal sidor dynamiskt från paginator
+$number-of-pages: 9; // TODO Use "--number-of-pages" from FPaginator
 $paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 2) * $gap-size));
 
 .paginator {
     display: flex;
     gap: $gap-size;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     height: 2.5rem;
 
     &__page,
@@ -56,7 +56,7 @@ $paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-widt
     @media (max-width: #{$paginator-width-full}) {
         flex-direction: column;
         justify-content: flex-start;
-        gap: $gap-size;
+        gap: size.$margin-075;
 
         &__previous,
         &__next {
