@@ -111,6 +111,7 @@ export default [
             ],
             "vue/no-unused-emit-declarations": "error",
             "vue/object-shorthand": "error",
+            "vue/prefer-use-template-ref": "error",
             "vue/v-bind-style": [
                 "error",
                 "shorthand",
