@@ -4,7 +4,7 @@
 $gap-size: size.$margin-025;
 $page-width: 2.5rem;
 $button-width: 8rem;
-// TODO Hämta antal sidor dynamiskt från paginator
+// TODO Ska hämta antal sidor dynamiskt från paginator
 $number-of-pages: 9;
 $paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 2) * $gap-size));
 
