@@ -1755,11 +1755,6 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-focused: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
 selected: {
 type: BooleanConstructor;
 required: false;
@@ -1783,11 +1778,6 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-focused: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
 selected: {
 type: BooleanConstructor;
 required: false;
@@ -1799,7 +1789,6 @@ required: false;
 default: boolean;
 };
 }>> & Readonly<{}>, {
-focused: boolean;
 enabled: boolean;
 selected: boolean;
 highlight: boolean;
@@ -2851,7 +2840,6 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
         beforeSubmit: FValidationFormCallback;
         beforeValidation: FValidationFormCallback;
         onCancel: () => void;
-        primaryButtonRight: boolean;
         addNewModalHeader: string;
         modifyModalHeader: string;
         deleteModalHeader: string;
@@ -2859,7 +2847,6 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
         readonly modelValue: T[];
         readonly beforeSubmit: FValidationFormCallback;
         readonly beforeValidation: FValidationFormCallback;
-        readonly primaryButtonRight: boolean;
         readonly addNewModalHeader: string;
         readonly modifyModalHeader: string;
         readonly deleteModalHeader: string;
@@ -2869,7 +2856,7 @@ export const FCrudDataset: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_set
         readonly onUpdated?: ((item: T) => any) | undefined;
         readonly "onUpdate:modelValue"?: ((items: T[]) => any) | undefined;
         readonly onDeleted?: ((item: T) => any) | undefined;
-    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "primaryButtonRight" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader">, "onUpdate:modelValue" | "onCreated" | "onUpdated" | "onDeleted" | ("beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "primaryButtonRight" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader")> & {} & {}> & PublicProps;
+    } & VNodeProps & AllowedComponentProps & ComponentCustomProps, "beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader">, "onUpdate:modelValue" | "onCreated" | "onUpdated" | "onDeleted" | ("beforeCreate" | "modelValue" | "beforeSubmit" | "beforeValidation" | "onCancel" | "addNewModalHeader" | "modifyModalHeader" | "deleteModalHeader")> & {} & {}> & PublicProps;
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
@@ -4451,11 +4438,6 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-focused: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
 selected: {
 type: BooleanConstructor;
 required: false;
@@ -4479,11 +4461,6 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-focused: {
-type: BooleanConstructor;
-required: false;
-default: boolean;
-};
 selected: {
 type: BooleanConstructor;
 required: false;
@@ -4495,7 +4472,6 @@ required: false;
 default: boolean;
 };
 }>> & Readonly<{}>, {
-focused: boolean;
 enabled: boolean;
 selected: boolean;
 highlight: boolean;
@@ -6028,10 +6004,6 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-modelValue: {
-type: PropType<FileList | null>;
-default: null;
-};
 }>, {}, {}, {
 attrs(): Record<string, unknown>;
 labelClass(): string;
@@ -6050,16 +6022,11 @@ type: BooleanConstructor;
 required: false;
 default: boolean;
 };
-modelValue: {
-type: PropType<FileList | null>;
-default: null;
-};
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
 }>, {
 disabled: boolean;
 id: string;
-modelValue: FileList | null;
 }, {}, {
 FIcon: DefineComponent<ExtractPropTypes<    {
 name: {

@@ -46,6 +46,7 @@ export default defineComponent({
         /**
          * The CSS classes for the label, description and error-message slot.
          */
+        /* eslint-disable-next-line vue/no-unused-properties -- false positive, it is used by `labelClasses(this)` */
         labelClass: {
             type: String,
             required: false,
@@ -54,6 +55,7 @@ export default defineComponent({
         /**
          * The CSS classes for the default slot.
          */
+        /* eslint-disable-next-line vue/no-unused-properties -- false positive, it is used by `contentClasses(this)` */
         contentClass: {
             type: String,
             required: false,

@@ -5,6 +5,7 @@ import { type ErrorData } from "../../types";
 export default defineComponent({
     name: "FErrorPage",
     props: {
+        /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
         payload: {
             type: Object as PropType<ErrorData>,
             required: false,

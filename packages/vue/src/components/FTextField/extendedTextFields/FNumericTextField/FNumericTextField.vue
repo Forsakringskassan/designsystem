@@ -17,16 +17,19 @@ export default defineComponent({
         /**
          * The number of decimals to format number as.
          */
+        /* eslint-disable-next-line vue/no-unused-properties -- technical debt */
         decimals: {
             type: Number,
             required: false,
             default: undefined,
         },
+        /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
         formatter: {
             type: Function as PropType<FormatFunction<number>>,
             required: false,
             default: defaultFormatter as FormatFunction<number>,
         },
+        /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
         parser: {
             type: Function as PropType<ParseFunction<number>>,
             required: false,

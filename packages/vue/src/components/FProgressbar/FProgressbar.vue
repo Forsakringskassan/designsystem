@@ -30,7 +30,7 @@ const props = defineProps({
      * Accessible name for this progressbar. Should describe the purpose of this
      * progressbar.
      */
-    /* eslint-disable-next-line vue/prop-name-casing -- vue does not allow ariaLabel as a prop as it collides with internal types */
+    /* eslint-disable-next-line vue/prop-name-casing, vue/no-unused-properties -- vue does not allow ariaLabel as a prop as it collides with internal types */
     "aria-label": {
         type: String,
         required: true,

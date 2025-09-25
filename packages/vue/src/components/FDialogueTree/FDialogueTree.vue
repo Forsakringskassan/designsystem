@@ -21,6 +21,7 @@ export default defineComponent({
         /**
          * Current dialogue question
          */
+        /* eslint-disable-next-line vue/no-unused-properties -- one-way binding, we ignore what the consumer sets this to */
         modelValue: {
             type: Object as PropType<FDialogueTreeUserProgress>,
             required: true,
