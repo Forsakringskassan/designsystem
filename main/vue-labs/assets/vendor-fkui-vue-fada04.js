@@ -2043,7 +2043,7 @@ function useInflight(fn2) {
     fn: wrapper
   };
 }
-var _hoisted_1$$ = ["disabled"];
+var _hoisted_1$$ = ["type", "disabled"];
 var _hoisted_2$L = {
   key: 1,
   class: "spinner--before"
@@ -2097,6 +2097,14 @@ var _sfc_main$1l = /* @__PURE__ */ defineComponent({
     iconRight: {
       type: String,
       default: void 0
+    },
+    /**
+     * Icon library to use.
+     */
+    iconLibrary: {
+      type: String,
+      required: false,
+      default: "f"
     },
     /**
      * Tertiary button style, used in conjunction with button variant `tertiary`.
@@ -2183,7 +2191,7 @@ var _sfc_main$1l = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", mergeProps({
-        type: "button",
+        type: __props.type,
         class: buttonClass.value,
         disabled: unref(inflight)
       }, attrs), [hasIconLeft.value ? (openBlock(), createElementBlock(Fragment, {
@@ -2195,8 +2203,9 @@ var _sfc_main$1l = /* @__PURE__ */ defineComponent({
       })) : props.iconLeft ? (openBlock(), createBlock(unref(FIcon), {
         key: 1,
         class: "button__icon",
-        name: props.iconLeft
-      }, null, 8, ["name"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), !hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_2$L, [unref(inflight) ? (openBlock(), createBlock(unref(FIcon), {
+        name: props.iconLeft,
+        library: props.iconLibrary
+      }, null, 8, ["name", "library"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), !hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_2$L, [unref(inflight) ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: "circle-notch-solid",
         class: "button__icon button__spinner"
@@ -2209,8 +2218,9 @@ var _sfc_main$1l = /* @__PURE__ */ defineComponent({
       })) : props.iconRight ? (openBlock(), createBlock(unref(FIcon), {
         key: 1,
         class: "button__icon",
-        name: props.iconRight
-      }, null, 8, ["name"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), !hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_3$B)) : createCommentVNode("", true)], 16, _hoisted_1$$);
+        name: props.iconRight,
+        library: props.iconLibrary
+      }, null, 8, ["name", "library"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), !hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_3$B)) : createCommentVNode("", true)], 16, _hoisted_1$$);
     };
   }
 });
