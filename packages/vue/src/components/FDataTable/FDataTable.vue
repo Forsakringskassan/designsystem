@@ -18,17 +18,6 @@ import { FIcon } from "../FIcon";
 import { useTranslate } from "../../plugins";
 import { useSlotUtils } from "../../composables";
 
-const $t = useTranslate();
-const { hasSlot } = useSlotUtils();
-const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
-const internalKey = getInternalKey<T>();
-
-const columns = ref<FTableColumnData[]>([]);
-
-defineOptions({
-    inheritAttrs: false,
-});
-
 const props = defineProps({
     /**
      * The rows to be listed.
@@ -71,6 +60,16 @@ const props = defineProps({
             return types.includes(value);
         },
     },
+});
+const $t = useTranslate();
+const { hasSlot } = useSlotUtils();
+const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
+const internalKey = getInternalKey<T>();
+
+const columns = ref<FTableColumnData[]>([]);
+
+defineOptions({
+    inheritAttrs: false,
 });
 
 const hasCaption = computed(() => {

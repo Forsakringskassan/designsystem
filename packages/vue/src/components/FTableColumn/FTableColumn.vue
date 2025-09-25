@@ -4,18 +4,6 @@ import { ElementIdService } from "@fkui/logic";
 import { FTableInjected } from "./FTableInterface";
 import { FTableColumnType, FTableColumnSize, FTableColumnSort, isTableColumnType } from "./FTableColumnData";
 
-const { renderColumns, setVisibilityColumn, addColumn } = FTableInjected();
-
-const hasMounted = ref(false);
-const isHeader = ref(false);
-
-const id = ElementIdService.generateElementId("column");
-const el = useTemplateRef("element");
-
-defineOptions({
-    inheritAttrs: false,
-});
-
 const props = defineProps({
     /**
      * Unique (per-table) identifier. Typically set to the row
@@ -103,6 +91,18 @@ const props = defineProps({
             return isTableColumnType(value);
         },
     },
+});
+
+const { renderColumns, setVisibilityColumn, addColumn } = FTableInjected();
+
+const hasMounted = ref(false);
+const isHeader = ref(false);
+
+const id = ElementIdService.generateElementId("column");
+const el = useTemplateRef("element");
+
+defineOptions({
+    inheritAttrs: false,
 });
 
 const classes = computed(() => {

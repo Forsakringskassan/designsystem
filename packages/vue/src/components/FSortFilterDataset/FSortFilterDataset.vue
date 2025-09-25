@@ -15,24 +15,6 @@ import { sort } from "./FSortFilterSorter";
 import { filter } from "./FSortFilterFilter";
 import { type SortOrder } from "./sort-order";
 
-const $t = useTranslate();
-const searchField = useTemplateRef("search-field");
-
-const useDefaultSortOrder = ref(true);
-const searchString = ref("");
-const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 };
-const sortAttribute = ref<SortOrder>(defaultSortValue);
-const sortFilterResult = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
-const debouncedFilterResultset = debounce(filterResultset, 250);
-
-let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {
-    /* do nothing */
-};
-
-let tableCallbackSortableColumns: FSortFilterDatasetMountCallback = () => {
-    /* do nothing */
-};
-
 const props = defineProps({
     /**
      * The data that you wish to sort or filter.
@@ -100,7 +82,6 @@ const props = defineProps({
         default: undefined,
     },
 });
-
 const emit = defineEmits<{
     /**
      * Emitted when the data is sorted.
@@ -116,6 +97,23 @@ const emit = defineEmits<{
      */
     usedSortAttributes: [sortAttribute: SortOrder];
 }>();
+const $t = useTranslate();
+const searchField = useTemplateRef("search-field");
+
+const useDefaultSortOrder = ref(true);
+const searchString = ref("");
+const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 };
+const sortAttribute = ref<SortOrder>(defaultSortValue);
+const sortFilterResult = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
+const debouncedFilterResultset = debounce(filterResultset, 250);
+
+let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {
+    /* do nothing */
+};
+
+let tableCallbackSortableColumns: FSortFilterDatasetMountCallback = () => {
+    /* do nothing */
+};
 
 const showClearButton = computed(() => {
     return searchString.value.length > 0;

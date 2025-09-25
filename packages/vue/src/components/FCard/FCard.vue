@@ -6,15 +6,6 @@ import { dispatchComponentValidityEvent } from "../../utils";
 import { FIcon } from "../FIcon";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 
-const { hasSlot } = useSlotUtils();
-const validationMessage = ref("");
-const hasError = ref(false);
-const isMounted = ref(false);
-
-const hasHeaderSlot = computed(() => hasSlot("header"));
-const hasFooterSlot = computed(() => hasSlot("footer"));
-const cardClass = computed(() => `card card--${hasError.value ? "error" : "default"}`);
-
 const props = defineProps({
     /**
      * Element to focus on when card is invalid. Set when using validation.
@@ -33,6 +24,14 @@ const props = defineProps({
         default: () => ElementIdService.generateElementId(),
     },
 });
+const { hasSlot } = useSlotUtils();
+const validationMessage = ref("");
+const hasError = ref(false);
+const isMounted = ref(false);
+
+const hasHeaderSlot = computed(() => hasSlot("header"));
+const hasFooterSlot = computed(() => hasSlot("footer"));
+const cardClass = computed(() => `card card--${hasError.value ? "error" : "default"}`);
 
 onMounted(() => (isMounted.value = true));
 

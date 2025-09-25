@@ -31,6 +31,7 @@ type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
     ? Required<T>[ExpandableAttribute][number]
     : never;
 
+const selectedRows = defineModel<T[]>("selectedRows", { default: [] });
 const {
     columns: rawColumns,
     rows,
@@ -46,7 +47,6 @@ const {
     striped?: boolean;
     selectable?: "single" | "multi";
 }>();
-const selectedRows = defineModel<T[]>("selectedRows", { default: [] });
 const tableRef = useTemplateRef("table");
 const selectAllRef = useTemplateRef("selectAll");
 const expandedKeys: Ref<string[]> = ref([]);

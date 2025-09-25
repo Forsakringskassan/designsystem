@@ -2,8 +2,8 @@
 import { FIcon } from "../../components/FIcon";
 import { useTranslate } from "../../plugins";
 
-const $t = useTranslate();
 const emit = defineEmits<{ toggle: [] }>();
+const $t = useTranslate();
 const ariaLabel = $t("fkui.combobox.toggle", "Öppna förslagen");
 </script>
 

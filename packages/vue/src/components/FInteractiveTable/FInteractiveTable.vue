@@ -35,24 +35,6 @@ import { FIcon } from "../FIcon";
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
 import { type ExpandableTable, useExpandableTable } from "./useExpandableTable";
 
-const $t = useTranslate();
-const slots = useSlots();
-const { hasSlot } = useSlotUtils();
-const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
-const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete, setNestedKey } = ActivateItemInjected<T>();
-const internalKey = getInternalKey<T>();
-
-const activeRow = ref<T | undefined>(undefined);
-const columns = ref<FTableColumnData[]>([]);
-const selectedRows = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
-const tr = shallowRef<HTMLElement[]>([]);
-const trAll = shallowRef<HTMLElement[]>([]);
-const tbodyKey = ref(0);
-
-defineOptions({
-    inheritAttrs: false,
-});
-
 const props = defineProps({
     /**
      * The rows to be listed.
@@ -155,7 +137,6 @@ const props = defineProps({
         default: undefined,
     },
 });
-
 const emit = defineEmits<{
     /**
      * Emitted when row is activated.
@@ -214,6 +195,23 @@ const emit = defineEmits<{
      */
     "update:active": [row: T | undefined];
 }>();
+const $t = useTranslate();
+const slots = useSlots();
+const { hasSlot } = useSlotUtils();
+const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
+const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete, setNestedKey } = ActivateItemInjected<T>();
+const internalKey = getInternalKey<T>();
+
+const activeRow = ref<T | undefined>(undefined);
+const columns = ref<FTableColumnData[]>([]);
+const selectedRows = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
+const tr = shallowRef<HTMLElement[]>([]);
+const trAll = shallowRef<HTMLElement[]>([]);
+const tbodyKey = ref(0);
+
+defineOptions({
+    inheritAttrs: false,
+});
 
 const expandableTable: ExpandableTable<T> = useExpandableTable(
     props.expandableAttribute,

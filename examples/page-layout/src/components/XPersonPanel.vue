@@ -2,8 +2,8 @@
 import { FDetailsPanel } from "@fkui/vue";
 import { type Person } from "../person";
 
-const XPersonPanel = FDetailsPanel<Person>;
 const { name, exclusive } = defineProps<{ name: string; exclusive: string }>();
+const XPersonPanel = FDetailsPanel<Person>;
 </script>
 <template>
     <x-person-panel :name :exclusive>

@@ -2,12 +2,11 @@
 import { computed, useTemplateRef } from "vue";
 import { useAreaData } from "../FPageLayout/use-area-data";
 
-const rootElement = useTemplateRef("root");
-const { attachPanel } = useAreaData(rootElement);
-
 const emit = defineEmits<{
     closed: [];
 }>();
+const rootElement = useTemplateRef("root");
+const { attachPanel } = useAreaData(rootElement);
 
 const attachClass = computed(() => {
     switch (attachPanel.value) {

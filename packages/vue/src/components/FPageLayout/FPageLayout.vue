@@ -4,12 +4,11 @@ import { resetDetailPanels } from "../FDetailsPanel/use-details-panel";
 import { type FPageLayoutType, type FPageLayoutBindings } from "./types";
 import CeComponent from "./FPageLayout.ce.vue";
 
-const ceTag = "ce-page-layout";
 const { layout } = defineProps<{ layout: T }>();
 const emit = defineEmits<{
     update: [];
 }>();
-
+const ceTag = "ce-page-layout";
 const proxy = new Proxy(
     {},
     {

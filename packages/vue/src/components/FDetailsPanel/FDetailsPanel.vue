@@ -7,11 +7,6 @@ import { useResize } from "../FResizePane";
 import { createDetailsPanel } from "./use-details-panel";
 import FDetailsPanel from "./FDetailsPanel.ce.vue";
 
-const tagName = "ce-details-panel";
-if (!customElements.get(tagName)) {
-    customElements.define(tagName, defineCustomElement(FDetailsPanel));
-}
-
 const { name, exclusive = undefined } = defineProps<{
     /**
      * Name of this panel. Used when referencing the panel in useDetailsPanel.
@@ -23,6 +18,10 @@ const { name, exclusive = undefined } = defineProps<{
      */
     exclusive?: string;
 }>();
+const tagName = "ce-details-panel";
+if (!customElements.get(tagName)) {
+    customElements.define(tagName, defineCustomElement(FDetailsPanel));
+}
 
 const overlay = useMediaQuery("(width < 640px)");
 const panel = createDetailsPanel<T>(name, { exclusive });

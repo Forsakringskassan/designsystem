@@ -89,6 +89,18 @@ export default [
         name: "local/stricter-rules",
         files: ["**/*.vue"],
         rules: {
+            "vue/define-macros-order": [
+                "error",
+                {
+                    order: [
+                        "defineModel",
+                        "defineProps",
+                        "defineEmits",
+                        "defineSlots",
+                    ],
+                    defineExposeLast: false,
+                },
+            ],
             "vue/no-import-compiler-macros": "error",
             "vue/no-unsupported-features": [
                 "error",
