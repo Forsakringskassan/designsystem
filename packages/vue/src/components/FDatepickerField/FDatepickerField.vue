@@ -57,6 +57,7 @@ export default defineComponent({
         highlightToday: {
             type: Boolean,
             required: false,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
             default: true,
         },
         /**
@@ -64,7 +65,6 @@ export default defineComponent({
          */
         alwaysInline: {
             type: Boolean,
-            default: false,
         },
         /**
          * Includes a year selector when enabled.
@@ -72,7 +72,6 @@ export default defineComponent({
         yearSelector: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Set responsive width for label section.
@@ -104,7 +103,6 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             required: false,
-            default: false,
         },
     },
     emits: [

@@ -43,7 +43,6 @@ const props = defineProps({
      */
     selectable: {
         type: Boolean,
-        default: false,
     },
     /**
      * Only applies if selectable:true
@@ -52,6 +51,7 @@ const props = defineProps({
      */
     checkbox: {
         type: Boolean,
+        /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
         default: true,
     },
     /**

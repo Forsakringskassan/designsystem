@@ -56,7 +56,6 @@ export default defineComponent({
         enableKeyboardNavigation: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Unique accessible name for navigation landmark.

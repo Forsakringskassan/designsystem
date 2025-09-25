@@ -4,7 +4,7 @@ import { FPageLayout, FResizePane, FMinimizablePanel } from "@fkui/vue";
 
 const {
     area = "left",
-    resize = false,
+    resize,
     initial = undefined,
 } = defineProps<{
     area?: string;

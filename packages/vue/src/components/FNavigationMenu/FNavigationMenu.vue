@@ -60,7 +60,6 @@ export default defineComponent({
         vertical: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Screen reader text for selected item

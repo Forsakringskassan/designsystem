@@ -2,7 +2,7 @@
 import { computed, defineComponent } from "vue";
 import { FPageLayout, FResizePane, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
 
-const { area = "left", resize = false } = defineProps<{
+const { area = "left", resize } = defineProps<{
     area?: string;
     resize?: boolean;
 }>();

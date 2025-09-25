@@ -26,7 +26,6 @@ const props = defineProps({
      */
     icon: {
         type: Boolean,
-        default: false,
     },
     /**
      * The item that the action will be performed on.
@@ -41,7 +40,6 @@ const props = defineProps({
      */
     label: {
         type: Boolean,
-        default: false,
     },
 });
 

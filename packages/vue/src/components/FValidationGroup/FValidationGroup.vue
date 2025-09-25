@@ -30,7 +30,6 @@ export default defineComponent({
         stopPropagation: {
             type: Boolean,
             required: false,
-            default: false,
         },
     },
     emits: [

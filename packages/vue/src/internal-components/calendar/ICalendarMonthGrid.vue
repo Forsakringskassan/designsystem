@@ -20,7 +20,6 @@ export default defineComponent({
         hideWeekNumbers: {
             type: Boolean,
             required: false,
-            default: false,
         },
     },
     data() {

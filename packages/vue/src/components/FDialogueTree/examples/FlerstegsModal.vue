@@ -17,7 +17,6 @@ export default defineComponent({
     props: {
         isOpen: {
             type: Boolean,
-            default: false,
             required: false,
         },
     },

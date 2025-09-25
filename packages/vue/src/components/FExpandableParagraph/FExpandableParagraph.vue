@@ -19,7 +19,6 @@ export default defineComponent({
         expanded: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Element to render for the button elmement
@@ -50,7 +49,6 @@ export default defineComponent({
          */
         list: {
             type: Boolean,
-            default: false,
             required: false,
         },
         /**

@@ -103,6 +103,7 @@ export default [
                 },
             ],
             "vue/define-props-declaration": ["error", "type-based"],
+            "vue/no-boolean-default": "error",
             "vue/no-import-compiler-macros": "error",
             "vue/no-restricted-block": ["error", "style"],
             "vue/no-unsupported-features": [

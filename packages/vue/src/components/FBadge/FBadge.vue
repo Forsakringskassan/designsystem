@@ -19,7 +19,6 @@ const props = defineProps({
      */
     inverted: {
         type: Boolean,
-        default: false,
     },
 });
 

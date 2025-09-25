@@ -31,7 +31,6 @@ export default defineComponent({
         inline: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * The value for the input.
@@ -127,7 +126,6 @@ export default defineComponent({
         disabled: {
             type: Boolean,
             required: false,
-            default: false,
         },
     },
     emits: [

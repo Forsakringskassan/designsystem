@@ -60,9 +60,7 @@ const props = withDefaults(
         offset?: number;
     }>(),
     {
-        overlay: false,
         offset: 0,
-        disabled: false,
         min: "0",
         max: "100%",
         initial: "50%",

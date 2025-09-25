@@ -233,7 +233,6 @@ default: () => GroupValidityEvent;
 stopPropagation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 components: Record<string, ComponentValidityEvent>;
@@ -250,7 +249,6 @@ default: () => GroupValidityEvent;
 stopPropagation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 "onGroup-validity"?: ((...args: any[]) => any) | undefined;
@@ -267,7 +265,6 @@ required: true;
 bullets: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 beforeNavigate: {
 type: PropType<BeforeNavigate>;
@@ -287,7 +284,6 @@ required: true;
 bullets: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 beforeNavigate: {
 type: PropType<BeforeNavigate>;
@@ -360,11 +356,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -381,11 +375,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -401,11 +393,9 @@ float: string;
 IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -417,11 +407,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -543,7 +531,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -583,7 +570,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -641,7 +627,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -681,7 +666,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -999,7 +983,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -1039,7 +1022,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -1097,7 +1079,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -1137,7 +1118,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -1454,7 +1434,6 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -1496,7 +1475,6 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -1527,12 +1505,10 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 yearSelectorOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -1576,12 +1552,10 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 yearSelectorOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -1707,7 +1681,6 @@ required: true;
 hideWeekNumbers: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 weekdays: WeekdayNaming[];
@@ -1736,7 +1709,6 @@ required: true;
 hideWeekNumbers: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{}>, {
 hideWeekNumbers: boolean;
@@ -1758,12 +1730,10 @@ default: boolean;
 selected: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 highlight: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {}, {
 srText(): string;
@@ -1781,12 +1751,10 @@ default: boolean;
 selected: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 highlight: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{}>, {
 enabled: boolean;
@@ -1806,7 +1774,6 @@ export const FCheckboxField: DefineComponent<ExtractPropTypes<    {
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -1861,7 +1828,6 @@ leave(element: Element): void;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -1914,7 +1880,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -1954,7 +1919,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -2012,7 +1976,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -2052,7 +2015,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -2345,12 +2307,10 @@ export const FConfirmModal: DefineComponent<ExtractPropTypes<    {
 fullscreen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 isOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 content: {
 type: StringConstructor;
@@ -2391,12 +2351,10 @@ onClick(button: FModalButton): void;
 fullscreen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 isOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 content: {
 type: StringConstructor;
@@ -2449,7 +2407,6 @@ default: () => string;
 isOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaCloseText: {
 type: StringConstructor;
@@ -2459,7 +2416,6 @@ default: undefined;
 fullscreen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 type: {
 type: PropType<"" | "information" | "warning" | "error">;
@@ -2496,7 +2452,6 @@ default: () => string;
 isOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaCloseText: {
 type: StringConstructor;
@@ -2506,7 +2461,6 @@ default: undefined;
 fullscreen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 type: {
 type: PropType<"" | "information" | "warning" | "error">;
@@ -2931,7 +2885,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -2971,7 +2924,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -3029,7 +2981,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -3069,7 +3020,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -3420,12 +3370,10 @@ default: boolean;
 };
 alwaysInline: {
 type: BooleanConstructor;
-default: boolean;
 };
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 labelWidth: {
 type: StringConstructor;
@@ -3440,7 +3388,6 @@ default: string;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldValue: Ref<string, string>;
@@ -3492,12 +3439,10 @@ default: boolean;
 };
 alwaysInline: {
 type: BooleanConstructor;
-default: boolean;
 };
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 labelWidth: {
 type: StringConstructor;
@@ -3512,7 +3457,6 @@ default: string;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
@@ -3548,7 +3492,6 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -3590,7 +3533,6 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -3621,12 +3563,10 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 yearSelectorOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -3670,12 +3610,10 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 yearSelectorOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -3801,7 +3739,6 @@ required: true;
 hideWeekNumbers: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 weekdays: WeekdayNaming[];
@@ -3830,7 +3767,6 @@ required: true;
 hideWeekNumbers: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{}>, {
 hideWeekNumbers: boolean;
@@ -3957,7 +3893,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -3997,7 +3932,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -4055,7 +3989,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -4095,7 +4028,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -4441,12 +4373,10 @@ default: boolean;
 selected: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 highlight: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {}, {
 srText(): string;
@@ -4464,12 +4394,10 @@ default: boolean;
 selected: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 highlight: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{}>, {
 enabled: boolean;
@@ -4649,7 +4577,6 @@ default: number;
 };
 extendedValidation: {
 type: BooleanConstructor;
-default: boolean;
 };
 pasteErrorText: {
 type: StringConstructor;
@@ -4687,7 +4614,6 @@ default: number;
 };
 extendedValidation: {
 type: BooleanConstructor;
-default: boolean;
 };
 pasteErrorText: {
 type: StringConstructor;
@@ -4714,7 +4640,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -4754,7 +4679,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -4812,7 +4736,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -4852,7 +4775,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -5198,7 +5120,6 @@ required: true;
 bullets: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 beforeNavigate: {
 type: PropType<BeforeNavigate>;
@@ -5218,7 +5139,6 @@ required: true;
 bullets: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 beforeNavigate: {
 type: PropType<BeforeNavigate>;
@@ -5291,11 +5211,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -5312,11 +5230,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -5332,11 +5248,9 @@ float: string;
 IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -5348,11 +5262,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -5398,7 +5310,6 @@ export const FExpandablePanel: DefineComponent<ExtractPropTypes<    {
 expanded: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 headerTag: {
 default: string;
@@ -5431,7 +5342,6 @@ onClickHeadingButton(event: MouseEvent): void;
 expanded: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 headerTag: {
 default: string;
@@ -5548,7 +5458,6 @@ export const FExpandableParagraph: DefineComponent<ExtractPropTypes<    {
 expanded: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 headerTag: {
 default: string;
@@ -5563,7 +5472,6 @@ validator(value: string): boolean;
 };
 list: {
 type: BooleanConstructor;
-default: boolean;
 required: false;
 };
 id: {
@@ -5583,7 +5491,6 @@ onClickMinimize(event: MouseEvent): void;
 expanded: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 headerTag: {
 default: string;
@@ -5598,7 +5505,6 @@ validator(value: string): boolean;
 };
 list: {
 type: BooleanConstructor;
-default: boolean;
 required: false;
 };
 id: {
@@ -5725,7 +5631,6 @@ required: false;
 chip: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 border: {
 type: BooleanConstructor;
@@ -5795,7 +5700,6 @@ required: false;
 chip: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 border: {
 type: BooleanConstructor;
@@ -6002,7 +5906,6 @@ default: () => string;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {}, {
 attrs(): Record<string, unknown>;
@@ -6020,7 +5923,6 @@ default: () => string;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onChange?: ((...args: any[]) => any) | undefined;
@@ -6248,7 +6150,6 @@ default: () => string;
 isOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaCloseText: {
 type: StringConstructor;
@@ -6258,7 +6159,6 @@ default: undefined;
 fullscreen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 type: {
 type: PropType<"" | "information" | "warning" | "error">;
@@ -6295,7 +6195,6 @@ default: () => string;
 isOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaCloseText: {
 type: StringConstructor;
@@ -6305,7 +6204,6 @@ default: undefined;
 fullscreen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 type: {
 type: PropType<"" | "information" | "warning" | "error">;
@@ -6479,7 +6377,6 @@ default: () => GroupValidityEvent;
 stopPropagation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 components: Record<string, ComponentValidityEvent>;
@@ -6496,7 +6393,6 @@ default: () => GroupValidityEvent;
 stopPropagation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 "onGroup-validity"?: ((...args: any[]) => any) | undefined;
@@ -6513,7 +6409,6 @@ required: true;
 bullets: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 beforeNavigate: {
 type: PropType<BeforeNavigate>;
@@ -6533,7 +6428,6 @@ required: true;
 bullets: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 beforeNavigate: {
 type: PropType<BeforeNavigate>;
@@ -6606,11 +6500,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -6627,11 +6519,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -6647,11 +6537,9 @@ float: string;
 IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -6663,11 +6551,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -7234,17 +7120,14 @@ export const FLoader: DefineComponent<ExtractPropTypes<    {
 show: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 overlay: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 delay: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 language: {
 type: PropType<"sv" | "en">;
@@ -7277,17 +7160,14 @@ closeLoader(): void;
 show: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 overlay: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 delay: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 language: {
 type: PropType<"sv" | "en">;
@@ -7456,11 +7336,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -7477,11 +7355,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -7497,11 +7373,9 @@ float: string;
 IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -7513,11 +7387,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -7548,7 +7420,6 @@ default: () => string;
 isOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaCloseText: {
 type: StringConstructor;
@@ -7558,7 +7429,6 @@ default: undefined;
 fullscreen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 type: {
 type: PropType<"" | "information" | "warning" | "error">;
@@ -7595,7 +7465,6 @@ default: () => string;
 isOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaCloseText: {
 type: StringConstructor;
@@ -7605,7 +7474,6 @@ default: undefined;
 fullscreen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 type: {
 type: PropType<"" | "information" | "warning" | "error">;
@@ -7743,7 +7611,6 @@ required: true;
 vertical: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 selectedMenuItemScreenReaderText: {
 type: StringConstructor;
@@ -7813,7 +7680,6 @@ required: true;
 vertical: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 selectedMenuItemScreenReaderText: {
 type: StringConstructor;
@@ -7932,7 +7798,6 @@ required: true;
 enableKeyboardNavigation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaLabel: {
 type: StringConstructor;
@@ -7987,7 +7852,6 @@ required: true;
 enableKeyboardNavigation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaLabel: {
 type: StringConstructor;
@@ -8180,7 +8044,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -8220,7 +8083,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -8278,7 +8140,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -8318,7 +8179,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -8692,11 +8552,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -8713,11 +8571,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -8733,11 +8589,9 @@ float: string;
 IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -8749,11 +8603,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -8799,7 +8651,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -8839,7 +8690,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -8897,7 +8747,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -8937,7 +8786,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -9504,7 +9352,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -9544,7 +9391,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -9602,7 +9448,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -9642,7 +9487,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -9979,7 +9823,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -10019,7 +9862,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -10077,7 +9919,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -10117,7 +9958,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -10429,7 +10269,6 @@ default: number;
 };
 extendedValidation: {
 type: BooleanConstructor;
-default: boolean;
 };
 }>, {}, {
 validityMode: string;
@@ -10460,7 +10299,6 @@ default: number;
 };
 extendedValidation: {
 type: BooleanConstructor;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -10481,7 +10319,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -10521,7 +10358,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -10579,7 +10415,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -10619,7 +10454,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -10930,7 +10764,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -10970,7 +10803,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -11028,7 +10860,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -11068,7 +10899,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -11388,7 +11218,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -11428,7 +11257,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -11486,7 +11314,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -11526,7 +11353,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -11854,7 +11680,6 @@ export const FRadioField: DefineComponent<ExtractPropTypes<    {
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -11905,7 +11730,6 @@ leave(element: Element): void;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -12007,7 +11831,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -12047,7 +11870,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -12105,7 +11927,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -12145,7 +11966,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -12490,7 +12310,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | ArrayConstructor | NumberConstructor | null)[];
@@ -12534,7 +12353,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | BooleanConstructor | ObjectConstructor | ArrayConstructor | NumberConstructor | null)[];
@@ -12935,11 +12753,9 @@ default: string;
 };
 disabled: {
 type: BooleanConstructor;
-default: boolean;
 };
 resizable: {
 type: BooleanConstructor;
-default: boolean;
 };
 }>, {}, {
 validityMode: string;
@@ -12985,11 +12801,9 @@ default: string;
 };
 disabled: {
 type: BooleanConstructor;
-default: boolean;
 };
 resizable: {
 type: BooleanConstructor;
-default: boolean;
 };
 }>> & Readonly<{
 onInput?: ((...args: any[]) => any) | undefined;
@@ -13093,7 +12907,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -13133,7 +12946,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -13191,7 +13003,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -13231,7 +13042,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;
@@ -13674,11 +13484,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -13695,11 +13503,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -13715,11 +13521,9 @@ float: string;
 IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -13731,11 +13535,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -13776,7 +13578,6 @@ default: () => GroupValidityEvent;
 stopPropagation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 components: Record<string, ComponentValidityEvent>;
@@ -13793,7 +13594,6 @@ default: () => GroupValidityEvent;
 stopPropagation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 "onGroup-validity"?: ((...args: any[]) => any) | undefined;
@@ -13817,7 +13617,6 @@ validator(value: string): boolean;
 disableInitialFocus: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 steps: FWizardStepDefinition[];
@@ -13845,7 +13644,6 @@ validator(value: string): boolean;
 disableInitialFocus: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 "onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
@@ -13957,7 +13755,6 @@ default: boolean;
 };
 useVShow: {
 type: BooleanConstructor;
-default: boolean;
 };
 expanded: {
 type: (StringConstructor | BooleanConstructor | NumberConstructor)[];
@@ -14001,7 +13798,6 @@ default: boolean;
 };
 useVShow: {
 type: BooleanConstructor;
-default: boolean;
 };
 expanded: {
 type: (StringConstructor | BooleanConstructor | NumberConstructor)[];
@@ -14037,11 +13833,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -14058,11 +13852,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -14078,11 +13870,9 @@ float: string;
 IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -14094,11 +13884,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -14201,7 +13989,6 @@ default: () => GroupValidityEvent;
 stopPropagation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 components: Record<string, ComponentValidityEvent>;
@@ -14218,7 +14005,6 @@ default: () => GroupValidityEvent;
 stopPropagation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 "onGroup-validity"?: ((...args: any[]) => any) | undefined;
@@ -14235,7 +14021,6 @@ required: true;
 bullets: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 beforeNavigate: {
 type: PropType<BeforeNavigate>;
@@ -14255,7 +14040,6 @@ required: true;
 bullets: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 beforeNavigate: {
 type: PropType<BeforeNavigate>;
@@ -14328,11 +14112,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -14349,11 +14131,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -14369,11 +14149,9 @@ float: string;
 IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -14385,11 +14163,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -14552,7 +14328,6 @@ default: boolean;
 };
 useVShow: {
 type: BooleanConstructor;
-default: boolean;
 };
 expanded: {
 type: (StringConstructor | BooleanConstructor | NumberConstructor)[];
@@ -14596,7 +14371,6 @@ default: boolean;
 };
 useVShow: {
 type: BooleanConstructor;
-default: boolean;
 };
 expanded: {
 type: (StringConstructor | BooleanConstructor | NumberConstructor)[];
@@ -14681,7 +14455,6 @@ required: true;
 hideWeekNumbers: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 weekdays: WeekdayNaming[];
@@ -14710,7 +14483,6 @@ required: true;
 hideWeekNumbers: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{}>, {
 hideWeekNumbers: boolean;
@@ -14726,7 +14498,6 @@ required: true;
 hideWeekNumbers: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {}, {
 weekdays: WeekdayNaming[];
@@ -14755,7 +14526,6 @@ required: true;
 hideWeekNumbers: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{}>, {
 hideWeekNumbers: boolean;
@@ -14778,12 +14548,10 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 yearSelectorOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -14827,12 +14595,10 @@ required: true;
 yearSelector: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 yearSelectorOpen: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 id: {
 type: StringConstructor;
@@ -14931,11 +14697,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -14952,11 +14716,9 @@ validator(val: string): boolean;
 };
 collapse: {
 type: BooleanConstructor;
-default: boolean;
 };
 wrap: {
 type: BooleanConstructor;
-default: boolean;
 };
 float: {
 type: StringConstructor;
@@ -14974,11 +14736,9 @@ float: string;
 export const IFlexItem: DefineComponent<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -14990,11 +14750,9 @@ classList(): string[];
 }, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 grow: {
 type: BooleanConstructor;
-default: boolean;
 };
 shrink: {
 type: BooleanConstructor;
-default: boolean;
 };
 align: {
 type: StringConstructor;
@@ -15283,7 +15041,6 @@ required: true;
 enableKeyboardNavigation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaLabel: {
 type: StringConstructor;
@@ -15338,7 +15095,6 @@ required: true;
 enableKeyboardNavigation: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 ariaLabel: {
 type: StringConstructor;

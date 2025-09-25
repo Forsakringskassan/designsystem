@@ -7,6 +7,7 @@ const {
     openPrefix = "Återställ",
     closePrefix = "Minimera",
     context = "panel",
+    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
     modelValue = true,
 } = defineProps<{
     /**

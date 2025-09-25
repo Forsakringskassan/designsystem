@@ -79,7 +79,6 @@ const props = defineProps({
      */
     alignText: {
         type: Boolean,
-        default: false,
     },
 
     /**
@@ -88,7 +87,6 @@ const props = defineProps({
      */
     mobileFullWidth: {
         type: Boolean,
-        default: false,
     },
     /**
      * The default behavior of the button. Possible values are:

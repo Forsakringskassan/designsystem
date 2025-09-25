@@ -153,7 +153,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -193,7 +192,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>, {
 textFieldTableMode: boolean;
@@ -251,7 +249,6 @@ default: () => string;
 inline: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 modelValue: {
 type: (StringConstructor | NumberConstructor | null)[];
@@ -291,7 +288,6 @@ default: () => undefined;
 disabled: {
 type: BooleanConstructor;
 required: false;
-default: boolean;
 };
 }>> & Readonly<{
 onBlur?: ((...args: any[]) => any) | undefined;

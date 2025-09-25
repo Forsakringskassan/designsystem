@@ -26,7 +26,6 @@ export default defineComponent({
         bullets: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Optional callback for performing actions before navigation.

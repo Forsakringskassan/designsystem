@@ -46,6 +46,7 @@ const props = defineProps({
     showSort: {
         type: Boolean,
         required: false,
+        /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
         default: true,
     },
     /**
@@ -54,6 +55,7 @@ const props = defineProps({
     showFilter: {
         type: Boolean,
         required: false,
+        /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
         default: true,
     },
     /**
@@ -71,6 +73,7 @@ const props = defineProps({
     defaultSortAscending: {
         type: Boolean,
         required: false,
+        /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
         default: () => true,
     },
     /**

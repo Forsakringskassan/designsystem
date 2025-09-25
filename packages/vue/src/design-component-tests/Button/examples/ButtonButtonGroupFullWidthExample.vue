@@ -8,7 +8,6 @@ export default defineComponent({
         useFullWidth: {
             type: Boolean,
             required: false,
-            default: false,
         },
     },
 });

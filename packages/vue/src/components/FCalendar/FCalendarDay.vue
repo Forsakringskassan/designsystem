@@ -21,6 +21,7 @@ export default defineComponent({
         enabled: {
             type: Boolean,
             required: false,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
             default: true,
         },
         /**
@@ -29,7 +30,6 @@ export default defineComponent({
         selected: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Set to `true` if day should be highlighted.
@@ -37,7 +37,6 @@ export default defineComponent({
         highlight: {
             type: Boolean,
             required: false,
-            default: false,
         },
     },
     computed: {

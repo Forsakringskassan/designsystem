@@ -25,7 +25,6 @@ export default defineComponent({
         fullscreen: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Prop for opening modal
@@ -33,7 +32,6 @@ export default defineComponent({
         isOpen: {
             type: Boolean,
             required: false,
-            default: false,
         },
         /**
          * Simple text content
