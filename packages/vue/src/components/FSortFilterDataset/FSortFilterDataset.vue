@@ -15,6 +15,7 @@ import { sort } from "./FSortFilterSorter";
 import { filter } from "./FSortFilterFilter";
 import { type SortOrder } from "./sort-order";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * The data that you wish to sort or filter.

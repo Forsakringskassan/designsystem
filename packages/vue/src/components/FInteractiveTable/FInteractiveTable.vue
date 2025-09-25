@@ -35,6 +35,7 @@ import { FIcon } from "../FIcon";
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
 import { type ExpandableTable, useExpandableTable } from "./useExpandableTable";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * The rows to be listed.

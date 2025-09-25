@@ -6,6 +6,7 @@ import { dispatchComponentValidityEvent } from "../../utils";
 import { FIcon } from "../FIcon";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * Element to focus on when card is invalid. Set when using validation.

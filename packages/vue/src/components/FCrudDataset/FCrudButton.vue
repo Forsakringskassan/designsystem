@@ -8,6 +8,7 @@ import { FCrudDatasetInjected } from "./FCrudDatasetInterface";
  * @deprecated for table replace with <f-table-button> or <button> in other cases
  */
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * The action to be performed by the button.

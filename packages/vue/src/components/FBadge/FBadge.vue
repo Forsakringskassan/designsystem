@@ -2,6 +2,7 @@
 import { type PropType, computed } from "vue";
 import { statuses } from "./statuses";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * The status of the badge, can be either 'default', 'warning', 'error', 'success' or 'info'.

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
     /**
      * Sets the progress. Higher value indicates further progress.
