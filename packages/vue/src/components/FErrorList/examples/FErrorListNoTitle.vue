@@ -18,7 +18,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-error-list :items="items" :bullets="true"></f-error-list>
+        <f-error-list :items :bullets="true"></f-error-list>
 
         <f-text-field id="fornamn-utan-text" v-validation.maxLength> Förnamn </f-text-field>
         <f-text-field id="efternamn-utan-text" v-validation.maxLength> Efternamn </f-text-field>

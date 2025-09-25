@@ -25,7 +25,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <i-calendar-month v-model="month" :min-date="minDate" :max-date="maxDate" @click="onClick">
+    <i-calendar-month v-model="month" :min-date :max-date @click="onClick">
         <template #default="{ date, isFocused }">
             <f-calendar-day :day="date" :focused="isFocused"> </f-calendar-day>
         </template>

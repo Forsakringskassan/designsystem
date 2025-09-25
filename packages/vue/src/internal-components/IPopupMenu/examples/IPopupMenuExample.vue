@@ -90,7 +90,7 @@ export default defineComponent({
             id="popup-menu"
             v-model="selectedItem"
             v-model:focused-item="focusedItem"
-            :items="items"
+            :items
             :is-open="popupOpen"
             :anchor="getAnchor()"
             enable-keyboard-navigation

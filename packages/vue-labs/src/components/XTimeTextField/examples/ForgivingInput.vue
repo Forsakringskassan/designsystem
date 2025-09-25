@@ -48,7 +48,7 @@ export default defineComponent({
                     parser: [parser],
                 },
             }"
-            :parser="parser"
+            :parser
         >
             Ange arbetstid
             <template #description="{ formatDescriptionClass }">

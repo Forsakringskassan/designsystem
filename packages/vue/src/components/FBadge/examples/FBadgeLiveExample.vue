@@ -38,7 +38,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template">
+    <live-example :components :template>
         <f-select-field v-model="badgeType">
             <template #label> Typ </template>
             <option value="standard">Standard</option>

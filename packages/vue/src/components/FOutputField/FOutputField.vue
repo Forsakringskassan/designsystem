@@ -51,7 +51,7 @@ export default defineComponent({
                 <slot name="tooltip"></slot>
             </template>
         </f-label>
-        <output :id="id" :for="htmlFor" class="output-field__output" v-bind="$attrs">
+        <output :id :for="htmlFor" class="output-field__output" v-bind="$attrs">
             <!-- @slot Slot for output field content. -->
             <slot name="default"></slot>
         </output>

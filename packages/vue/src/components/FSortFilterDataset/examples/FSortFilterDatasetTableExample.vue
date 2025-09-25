@@ -22,7 +22,7 @@ export default defineComponent({
         :data="fruits"
         default-sort-attribute="name"
         :default-sort-ascending="true"
-        :sortable-attributes="sortableAttributes"
+        :sortable-attributes
     >
         <template #header="{ slotClass }">
             <h3 :class="slotClass">Frukter</h3>

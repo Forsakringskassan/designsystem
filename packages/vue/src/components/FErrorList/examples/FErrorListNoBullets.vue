@@ -18,7 +18,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-error-list :items="items">
+        <f-error-list :items>
             <template #title> Kolla på felen nedan </template>
         </f-error-list>
 

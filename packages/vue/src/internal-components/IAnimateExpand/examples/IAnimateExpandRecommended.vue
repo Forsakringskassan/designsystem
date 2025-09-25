@@ -51,12 +51,12 @@ export default defineComponent({
             :expanded="isExpanded"
             :opacity="hasOpacity"
             :animate="isAnimated"
-            :use-v-show="useVShow"
+            :use-v-show
             :before-animation="beforeAnimationCallback"
             :after-animation="afterAnimationCallback"
         >
             <!-- [html-validate-disable-next no-inline-style] -->
-            <div ref="content-div" :style="style">Ett animerat innehåll kan visas här.</div>
+            <div ref="content-div" :style>Ett animerat innehåll kan visas här.</div>
         </i-animate-expand>
     </div>
 </template>

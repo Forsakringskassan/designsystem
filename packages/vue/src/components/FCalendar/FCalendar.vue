@@ -164,9 +164,9 @@ export default defineComponent({
             :id
             ref="calendarNavbar"
             v-model:year-selector-open="yearSelectorOpen"
-            :model-value="modelValue"
-            :min-date="minDate"
-            :max-date="maxDate"
+            :model-value
+            :min-date
+            :max-date
             :year-selector
             @update:model-value="onChangeDate"
         ></i-calendar-navbar>
@@ -199,10 +199,10 @@ export default defineComponent({
         <i-calendar-month
             v-else
             ref="calendar"
-            :model-value="modelValue"
-            :min-date="minDate"
-            :max-date="maxDate"
-            :tab-date="tabDate"
+            :model-value
+            :min-date
+            :max-date
+            :tab-date
             @click="onClickDay"
             @update:model-value="onChangeDate"
         >
@@ -212,7 +212,7 @@ export default defineComponent({
                 @binding {FDate} date The date object for the current day.
                 @binding {boolean} is-focused Indicates whether the current day is focused.
                 -->
-                <slot :date="date" :is-focused="focused"></slot>
+                <slot :date :is-focused="focused"></slot>
             </template>
         </i-calendar-month>
     </div>

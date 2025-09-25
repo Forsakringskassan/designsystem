@@ -188,7 +188,7 @@ function escapeNewlines(value: string): string {
 
 <template>
     <div :class="wrapperClasses">
-        <table class="table" :class="tableClasses" :tabindex="tabindex" v-bind="$attrs">
+        <table class="table" :class="tableClasses" :tabindex v-bind="$attrs">
             <caption v-if="hasCaption">
                 <!-- @slot Slot for table caption. -->
                 <slot name="caption"></slot>

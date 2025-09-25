@@ -171,7 +171,7 @@ function isTableHeader(): boolean {
 </script>
 
 <template>
-    <component :is="tagName" v-if="renderElement" ref="element" :class="classes" :scope="scope" v-bind="$attrs">
+    <component :is="tagName" v-if="renderElement" ref="element" :class="classes" :scope v-bind="$attrs">
         <template v-if="renderColumns">
             <!-- @slot Content to be rendered in table cell. -->
             <slot></slot>

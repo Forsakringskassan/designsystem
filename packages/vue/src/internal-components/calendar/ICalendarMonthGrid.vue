@@ -137,7 +137,7 @@ export default defineComponent({
                     @binding {FDate} date Date of day.
                     @binding {bool} focused If month component is focused or not.
                     -->
-                    <slot :date="day" :focused="focused"></slot>
+                    <slot :date="day" :focused></slot>
                 </td>
 
                 <td

@@ -12,5 +12,5 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-error-list :items="items" :bullets="true"></f-error-list>
+    <f-error-list :items :bullets="true"></f-error-list>
 </template>

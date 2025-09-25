@@ -25,11 +25,11 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-error-list :items="items" :before-navigate="beforeNavigate">
+        <f-error-list :items :before-navigate>
             <template #title> Kolla på felen nedan </template>
         </f-error-list>
 
-        <f-expandable-panel :expanded="expanded" @toggle="expanded = !expanded">
+        <f-expandable-panel :expanded @toggle="expanded = !expanded">
             <template #title> Favoriter </template>
             <template #default>
                 <f-text-field id="favorit-frukt" maxlength="100"> Favoritfrukt 🍎 </f-text-field>

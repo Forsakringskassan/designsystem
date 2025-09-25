@@ -157,7 +157,7 @@ export default defineComponent({
 <template>
     <f-validation-group :key="groupKey" v-model="validity" :stop-propagation="true">
         <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
-        <form :id="id" v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
+        <form :id v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
             <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
                 <f-error-list :items="errors" :bullets="errorListBullets" :before-navigate="errorListBeforeNavigate">
                     <template #title>

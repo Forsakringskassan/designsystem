@@ -46,7 +46,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-crud-dataset v-model="fruits" :before-create="beforeCreate">
+    <f-crud-dataset v-model="fruits" :before-create>
         <template #default="{ updateItem, deleteItem }">
             <f-sort-filter-dataset
                 :data="fruits"

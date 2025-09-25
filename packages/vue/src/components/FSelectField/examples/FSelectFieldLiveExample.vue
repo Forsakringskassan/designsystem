@@ -91,7 +91,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <f-checkbox-field v-model="isRequired" :value="true"> Obligatoriskt fält </f-checkbox-field>
         <f-checkbox-field v-model="isDisabled" :value="true"> Inaktivt fält </f-checkbox-field>
         <f-fieldset name="SelectField-label">

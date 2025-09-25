@@ -23,7 +23,7 @@ export default defineComponent({
         :data="fruits"
         default-sort-attribute="name"
         :default-sort-ascending="true"
-        :sortable-attributes="sortableAttributes"
+        :sortable-attributes
     >
         <template #header>
             <div class="button-group">

@@ -31,7 +31,7 @@ export default defineComponent({
                 <option :value="populatedList">Inläst data med rader</option>
             </template>
         </f-select-field>
-        <f-sort-filter-dataset :data="fruits" :sortable-attributes="sortableAttributes">
+        <f-sort-filter-dataset :data="fruits" :sortable-attributes>
             <template #header="{ slotClass }">
                 <h3 :class="slotClass">Frukter</h3>
             </template>

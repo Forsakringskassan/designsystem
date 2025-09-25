@@ -89,7 +89,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <f-fieldset name="checkbox-label">
             <template #label> Etiketten </template>
             <f-checkbox-field v-model="tooltipVisible" :value="true"> Tooltip </f-checkbox-field>

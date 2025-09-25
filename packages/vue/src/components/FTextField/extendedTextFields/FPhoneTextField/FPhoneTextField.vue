@@ -122,11 +122,11 @@ export default defineComponent({
 <template>
     <div>
         <f-text-field
-            :id="id"
+            :id
             type="tel"
             :maxlength="maxLength"
             v-bind="$attrs"
-            :model-value="modelValue"
+            :model-value
             @change="onChange"
             @blur="onBlur"
             @update:model-value="onUpdate"

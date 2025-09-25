@@ -85,7 +85,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <f-select-field v-model="listOption">
             <template #label> Interaktivitet </template>
             <option value="static">Statisk</option>

@@ -35,5 +35,5 @@ export default defineComponent({
 </script>
 
 <template>
-    <span :class="`logo logo--${props.size}`" :aria-label="ariaLabel" role="img" />
+    <span :class="`logo logo--${props.size}`" :aria-label role="img" />
 </template>

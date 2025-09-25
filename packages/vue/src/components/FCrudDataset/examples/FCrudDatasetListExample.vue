@@ -43,7 +43,7 @@ export default defineComponent({
     <f-crud-dataset
         v-model="fruits"
         data-test="f-crud-dataset-list-example"
-        :before-create="beforeCreate"
+        :before-create
         @created="saveModel"
         @updated="saveModel"
         @deleted="saveModel"

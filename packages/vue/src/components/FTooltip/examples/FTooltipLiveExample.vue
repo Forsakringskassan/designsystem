@@ -50,7 +50,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template">
+    <live-example :components :template>
         <f-checkbox-field v-model="hasHeader" :value="true"> Rubrik i tooltip </f-checkbox-field>
         <f-checkbox-field v-model="longText" :value="true"> Lång text </f-checkbox-field>
     </live-example>

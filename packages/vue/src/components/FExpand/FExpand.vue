@@ -66,6 +66,6 @@ export default defineComponent({
 <template>
     <transition @enter="enter" @after-enter="afterEnter" @leave="leave">
         <!-- @slot Content to expand -->
-        <slot :height="height"></slot>
+        <slot :height></slot>
     </transition>
 </template>

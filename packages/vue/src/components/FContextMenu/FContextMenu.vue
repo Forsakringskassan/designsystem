@@ -211,15 +211,15 @@ export default defineComponent({
 
 <template>
     <i-popup
-        :is-open="isOpen"
+        :is-open
         :keyboard-trap="false"
-        :anchor="anchor"
+        :anchor
         :set-focus="true"
         :focus-element="() => contextmenu"
         inline="never"
         @close="$emit('close')"
     >
-        <nav class="contextmenu" :aria-label="ariaLabel" @keyup="onKeyUp" @keydown="onKeyDown">
+        <nav class="contextmenu" :aria-label @keyup="onKeyUp" @keydown="onKeyDown">
             <ul ref="contextmenu" role="menu" tabindex="-1" class="contextmenu__list">
                 <li v-for="(item, index) in popupItems" :key="item.key" role="menuitem" @click="onClickItem(item)">
                     <div ref="items" :tabindex="tabIndex(index)" class="contextmenu__list__item">

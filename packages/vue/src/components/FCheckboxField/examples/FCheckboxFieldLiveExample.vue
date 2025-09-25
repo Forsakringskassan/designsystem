@@ -122,7 +122,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <f-checkbox-field v-model="isDisabled" :value="true"> Inaktiverad </f-checkbox-field>
         <f-checkbox-field v-model="isRequired" :value="true"> Obligatorisk </f-checkbox-field>
         <f-checkbox-field v-model="isBorder" :value="true"> Ram </f-checkbox-field>

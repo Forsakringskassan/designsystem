@@ -77,14 +77,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-form-modal
-        :is-open="isOpen"
-        :value="value"
-        :buttons="buttons"
-        @submit="onSubmit"
-        @cancel="onCancel"
-        @close="onClose"
-    >
+    <f-form-modal :is-open :value :buttons @submit="onSubmit" @cancel="onCancel" @close="onClose">
         <template #header> {{ current.label }} </template>
         <template #error-message>Oj, du har glömt fylla i något. Gå till:</template>
         <template #input-text-fields>

@@ -67,12 +67,12 @@ export default defineComponent({
 
 <template>
     <f-form-modal
-        :size="size"
+        :size
         :data-test="testId"
         :use-error-list="false"
-        :is-open="isOpen"
-        :value="value"
-        :before-submit="beforeSubmit"
+        :is-open
+        :value
+        :before-submit
         :buttons="buttons ? buttons : undefined"
         @submit="onSubmit"
         @cancel="onCancel"

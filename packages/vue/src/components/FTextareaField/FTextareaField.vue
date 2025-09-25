@@ -218,10 +218,10 @@ export default defineComponent({
             </template>
         </f-label>
         <textarea
-            :id="id"
+            :id
             :class="textareaClass"
             v-bind="attrs"
-            :disabled="disabled"
+            :disabled
             @input="onInput"
             @validity="onValidity"
             @pending-validity="onPendingValidity"

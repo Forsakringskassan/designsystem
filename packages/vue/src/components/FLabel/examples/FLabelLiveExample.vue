@@ -70,7 +70,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components="components" :template="template" :livedata="livedata">
+    <live-example :components :template :livedata>
         <f-fieldset name="etikett">
             <template #label> Egenskaper </template>
             <f-checkbox-field v-model="descriptionVisible" :value="true">

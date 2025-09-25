@@ -55,8 +55,8 @@ export default defineComponent({
         </button>
         <pre>Selected: {{ selected }}</pre>
         <f-context-menu
-            :is-open="isOpen"
-            :items="items"
+            :is-open
+            :items
             :anchor="getAnchor()"
             @close="onClose"
             @select="onSelect"

@@ -443,12 +443,13 @@ export default defineComponent({
             <slot name="input-left" />
 
             <div class="text-field__icon-wrapper">
+                <!-- [html-validate-disable-next fkui/required-max-length -- the consumer need to set this] -->
                 <input
-                    :id="id"
+                    :id
                     ref="input"
                     v-model="viewValue"
                     :disabled
-                    :type="type"
+                    :type
                     class="text-field__input"
                     v-bind="$attrs"
                     @blur="onBlur"
