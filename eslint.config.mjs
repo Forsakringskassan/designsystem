@@ -102,6 +102,7 @@ export default [
                 },
             ],
             "vue/no-import-compiler-macros": "error",
+            "vue/no-restricted-block": ["error", "style"],
             "vue/no-unsupported-features": [
                 "error",
                 {
@@ -115,6 +116,18 @@ export default [
                 "shorthand",
                 { sameNameShorthand: "always" },
             ],
+        },
+    },
+
+    {
+        name: "local/vue-allow-style",
+        files: [
+            "**/examples/*.vue",
+            "**/*.ce.vue",
+            "{docs,examples,internal}/**/*.vue",
+        ],
+        rules: {
+            "vue/no-restricted-block": "off",
         },
     },
 

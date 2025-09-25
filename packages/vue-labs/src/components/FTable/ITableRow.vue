@@ -56,6 +56,7 @@ const toggleIcon = computed(() => (isExpanded ? "arrow-down" : "arrow-right"));
     </template>
 </template>
 
+<!-- eslint-disable-next-line vue/no-restricted-block -- technical debt -->
 <style>
 .expander {
     margin: 0;
