@@ -147,7 +147,8 @@ export default defineComponent({
          * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
          * In most use cases the isOpen prop should be set to false when this event is triggered.
          */
-        close(_payload: { reason: string; data?: unknown }) {
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
+        close(_payload: { reason: string; data?: any }) {
             return true;
         },
 
@@ -155,7 +156,8 @@ export default defineComponent({
          * Event that is dispatched when the submit button is is clicked.
          * The event payload is the data that has been submitted.
          */
-        submit(_payload: { data: unknown }) {
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
+        submit(_payload: { data: any }) {
             return true;
         },
     },
