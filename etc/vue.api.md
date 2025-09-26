@@ -6193,10 +6193,10 @@ onCancel(): void;
 cancel(): true;
 close(_payload: {
 reason: string;
-data?: unknown;
+data?: any;
 }): true;
 submit(_payload: {
-data: unknown;
+data: any;
 }): true;
 }, string, PublicProps, Readonly<ExtractPropTypes<    {
 fullscreen: {
@@ -6255,11 +6255,11 @@ default: () => FModalButtonDescriptor[];
 };
 }>> & Readonly<{
 onSubmit?: ((_payload: {
-data: unknown;
+data: any;
 }) => any) | undefined;
 onClose?: ((_payload: {
 reason: string;
-data?: unknown;
+data?: any;
 }) => any) | undefined;
 onCancel?: (() => any) | undefined;
 }>, {
