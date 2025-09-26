@@ -106,7 +106,6 @@ var FlerstegsModal_default = defineComponent({
   props: {
     isOpen: {
       type: Boolean,
-      default: false,
       required: false
     }
   },
