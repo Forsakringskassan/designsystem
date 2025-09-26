@@ -2288,11 +2288,13 @@ var _sfc_main$a = defineComponent({
   extends: FTextField,
   mixins: [TranslationMixin],
   props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     formatter: {
       type: Function,
       required: false,
       default: formatNumberToTime
     },
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     parser: {
       type: Function,
       required: false,
@@ -2751,8 +2753,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "ITableRow",
   props: {
     renderHeader: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     rowKey: {
       default: ""
@@ -2761,16 +2762,13 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
       default: () => void 0
     },
     isTreegrid: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     isExpandable: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     isExpanded: {
-      type: Boolean,
-      default: false
+      type: Boolean
     }
   },
   emits: ["toggle"],
@@ -3680,8 +3678,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       default: () => void 0
     },
     striped: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     selectable: {
       default: () => void 0
