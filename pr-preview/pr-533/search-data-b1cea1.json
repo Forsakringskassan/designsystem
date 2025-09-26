@@ -259,13 +259,6 @@
     "TranslationService",
     "I18nextProvider",
     "TranslationService",
-    "Hjälpklasser",
-    "helpers",
-    "h-no-margin",
-    "h-root-size",
-    "h-display-flex",
-    "Skärmläsare",
-    "NVDA",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -289,6 +282,13 @@
     "assertRef() function",
     "clamp() function",
     "datum",
+    "Hjälpklasser",
+    "helpers",
+    "h-no-margin",
+    "h-root-size",
+    "h-display-flex",
+    "Skärmläsare",
+    "NVDA",
     "Validatorer",
     "identisk",
     "matches",
@@ -1197,23 +1197,6 @@
       ]
     },
     {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
-      ]
-    },
-    {
       "url": "functions/functions/use-resize.html",
       "title": "useResize() composable",
       "terms": [
@@ -1302,6 +1285,23 @@
       "title": "clamp() function",
       "terms": [
         "datum"
+      ]
+    },
+    {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
       ]
     },
     {
@@ -2492,31 +2492,31 @@
     "258": 63,
     "259": 64,
     "260": 64,
-    "261": 64,
-    "262": 64,
-    "263": 64,
+    "261": 65,
+    "262": 65,
+    "263": 65,
     "264": 65,
     "265": 65,
     "266": 66,
     "267": 66,
     "268": 67,
-    "269": 67,
-    "270": 67,
-    "271": 67,
-    "272": 67,
-    "273": 68,
-    "274": 68,
-    "275": 69,
-    "276": 70,
-    "277": 71,
-    "278": 72,
-    "279": 73,
-    "280": 74,
-    "281": 75,
-    "282": 76,
-    "283": 77,
-    "284": 78,
-    "285": 79,
+    "269": 68,
+    "270": 69,
+    "271": 70,
+    "272": 71,
+    "273": 72,
+    "274": 73,
+    "275": 74,
+    "276": 75,
+    "277": 76,
+    "278": 77,
+    "279": 78,
+    "280": 79,
+    "281": 79,
+    "282": 80,
+    "283": 80,
+    "284": 80,
+    "285": 80,
     "286": 80,
     "287": 81,
     "288": 81,
