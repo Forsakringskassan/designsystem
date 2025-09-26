@@ -1,0 +1,20 @@
+@mixin selected-indicator() {
+    @media (forced-colors: active) {
+        background-color: highlight;
+        color: highlightText;
+        forced-color-adjust: none;
+    }
+}
+
+@mixin hover-indicator($stroke-type, $stroke-width) {
+    $stroke-style: solid;
+    $stroke-color: highlight;
+
+    @media (forced-colors: active) {
+        @if $stroke-type == outline {
+            outline: $stroke-width $stroke-style $stroke-color;
+        } @else if $stroke-type == border {
+            border: $stroke-width $stroke-style $stroke-color;
+        }
+    }
+}
