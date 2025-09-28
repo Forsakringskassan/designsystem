@@ -307,6 +307,9 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnSimple<T, K> | TableColumnText<T, K>,
 ): NormalizedTableColumnText<T, K>;
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnRowHeader<T, K>,
+): NormalizedTableColumnRowHeader<T, K>;
+export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnCheckbox<T, K>,
 ): NormalizedTableColumnCheckbox<T, K>;
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
