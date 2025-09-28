@@ -1088,7 +1088,7 @@ function iterator(self2, method, wrapValue) {
     iter._next = iter.next;
     iter.next = () => {
       const result = iter._next();
-      if (result.value) {
+      if (!result.done) {
         result.value = wrapValue(result.value);
       }
       return result;
@@ -1214,7 +1214,8 @@ var BaseReactiveHandler = class {
       return res;
     }
     if (isRef2(res)) {
-      return targetIsArray && isIntegerKey(key) ? res : res.value;
+      const value = targetIsArray && isIntegerKey(key) ? res : res.value;
+      return isReadonly2 && isObject(value) ? readonly(value) : value;
     }
     if (isObject(res)) {
       return isReadonly2 ? readonly(res) : reactive(res);
@@ -2540,14 +2541,11 @@ function checkRecursiveUpdates(seen, fn) {
 var isHmrUpdating = false;
 var hmrDirtyComponents = /* @__PURE__ */ new Map();
 if (true) {
-  const g = getGlobalThis();
-  if (!g.__VUE_HMR_RUNTIME__) {
-    g.__VUE_HMR_RUNTIME__ = {
-      createRecord: tryWrap(createRecord),
-      rerender: tryWrap(rerender),
-      reload: tryWrap(reload)
-    };
-  }
+  getGlobalThis().__VUE_HMR_RUNTIME__ = {
+    createRecord: tryWrap(createRecord),
+    rerender: tryWrap(rerender),
+    reload: tryWrap(reload)
+  };
 }
 var map = /* @__PURE__ */ new Map();
 function registerHMR(instance) {
@@ -2923,9 +2921,6 @@ var TeleportImpl = {
       insert(mainAnchor, container, anchor);
       const mount = (container2, anchor2) => {
         if (shapeFlag & 16) {
-          if (parentComponent && parentComponent.isCE) {
-            parentComponent.ce._teleportTarget = container2;
-          }
           mountChildren(
             children,
             container2,
@@ -2946,6 +2941,9 @@ var TeleportImpl = {
             namespace = "svg";
           } else if (namespace !== "mathml" && isTargetMathML(target)) {
             namespace = "mathml";
+          }
+          if (parentComponent && parentComponent.isCE) {
+            (parentComponent.ce._teleportTargets || (parentComponent.ce._teleportTargets = /* @__PURE__ */ new Set())).add(target);
           }
           if (!disabled) {
             mount(target, targetAnchor);
@@ -5141,12 +5139,13 @@ function createSlots(slots, dynamicSlots) {
 }
 function renderSlot(slots, name, props = {}, fallback, noSlotted) {
   if (currentRenderingInstance.ce || currentRenderingInstance.parent && isAsyncWrapper(currentRenderingInstance.parent) && currentRenderingInstance.parent.ce) {
+    const hasProps = Object.keys(props).length > 0;
     if (name !== "default") props.name = name;
     return openBlock(), createBlock(
       Fragment,
       null,
       [createVNode("slot", props, fallback && fallback())],
-      64
+      hasProps ? -2 : 64
     );
   }
   let slot = slots[name];
@@ -10369,31 +10368,28 @@ var computed2 = (getterOrOptions, debugOptions) => {
   return c;
 };
 function h(type, propsOrChildren, children) {
-  const doCreateVNode = (type2, props, children2) => {
+  try {
     setBlockTracking(-1);
-    try {
-      return createVNode(type2, props, children2);
-    } finally {
-      setBlockTracking(1);
-    }
-  };
-  const l = arguments.length;
-  if (l === 2) {
-    if (isObject(propsOrChildren) && !isArray(propsOrChildren)) {
-      if (isVNode(propsOrChildren)) {
-        return doCreateVNode(type, null, [propsOrChildren]);
+    const l = arguments.length;
+    if (l === 2) {
+      if (isObject(propsOrChildren) && !isArray(propsOrChildren)) {
+        if (isVNode(propsOrChildren)) {
+          return createVNode(type, null, [propsOrChildren]);
+        }
+        return createVNode(type, propsOrChildren);
+      } else {
+        return createVNode(type, null, propsOrChildren);
       }
-      return doCreateVNode(type, propsOrChildren);
     } else {
-      return doCreateVNode(type, null, propsOrChildren);
+      if (l > 3) {
+        children = Array.prototype.slice.call(arguments, 2);
+      } else if (l === 3 && isVNode(children)) {
+        children = [children];
+      }
+      return createVNode(type, propsOrChildren, children);
     }
-  } else {
-    if (l > 3) {
-      children = Array.prototype.slice.call(arguments, 2);
-    } else if (l === 3 && isVNode(children)) {
-      children = [children];
-    }
-    return doCreateVNode(type, propsOrChildren, children);
+  } finally {
+    setBlockTracking(1);
   }
 }
 function initCustomFormatter() {
@@ -10600,7 +10596,7 @@ function isMemoSame(cached, memo) {
   }
   return true;
 }
-var version = "3.5.21";
+var version = "3.5.22";
 var warn2 = true ? warn$1 : NOOP;
 var ErrorTypeStrings = ErrorTypeStrings$1;
 var devtools = true ? devtools$1 : void 0;
@@ -10829,11 +10825,11 @@ function resolveTransitionProps(rawProps) {
       const resolve2 = () => finishLeave(el, done);
       addTransitionClass(el, leaveFromClass);
       if (!el._enterCancelled) {
-        forceReflow();
+        forceReflow(el);
         addTransitionClass(el, leaveActiveClass);
       } else {
         addTransitionClass(el, leaveActiveClass);
-        forceReflow();
+        forceReflow(el);
       }
       nextFrame(() => {
         if (!el._isLeaving) {
@@ -10979,8 +10975,9 @@ function toMs(s) {
   if (s === "auto") return 0;
   return Number(s.slice(0, -1).replace(",", ".")) * 1e3;
 }
-function forceReflow() {
-  return document.body.offsetHeight;
+function forceReflow(el) {
+  const targetDocument = el ? el.ownerDocument : document;
+  return targetDocument.body.offsetHeight;
 }
 function patchClass(el, value, isSVG) {
   const transitionClasses = el[vtcKey];
@@ -11475,7 +11472,11 @@ var VueElement = class _VueElement extends BaseClass {
         );
       }
       if (_def.shadowRoot !== false) {
-        this.attachShadow({ mode: "open" });
+        this.attachShadow(
+          extend({}, _def.shadowRootOptions, {
+            mode: "open"
+          })
+        );
         this._root = this.shadowRoot;
       } else {
         this._root = this;
@@ -11535,8 +11536,17 @@ var VueElement = class _VueElement extends BaseClass {
         this._app && this._app.unmount();
         if (this._instance) this._instance.ce = void 0;
         this._app = this._instance = null;
+        if (this._teleportTargets) {
+          this._teleportTargets.clear();
+          this._teleportTargets = void 0;
+        }
       }
     });
+  }
+  _processMutations(mutations) {
+    for (const m of mutations) {
+      this._setAttr(m.attributeName);
+    }
   }
   /**
    * resolve inner component definition (handle possible async component)
@@ -11548,11 +11558,7 @@ var VueElement = class _VueElement extends BaseClass {
     for (let i = 0; i < this.attributes.length; i++) {
       this._setAttr(this.attributes[i].name);
     }
-    this._ob = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        this._setAttr(m.attributeName);
-      }
-    });
+    this._ob = new MutationObserver(this._processMutations.bind(this));
     this._ob.observe(this, { attributes: true });
     const resolve2 = (def2, isAsync = false) => {
       this._resolved = true;
@@ -11668,7 +11674,10 @@ var VueElement = class _VueElement extends BaseClass {
       }
       if (shouldReflect) {
         const ob = this._ob;
-        ob && ob.disconnect();
+        if (ob) {
+          this._processMutations(ob.takeRecords());
+          ob.disconnect();
+        }
         if (val === true) {
           this.setAttribute(hyphenate(key), "");
         } else if (typeof val === "string" || typeof val === "number") {
@@ -11772,7 +11781,7 @@ var VueElement = class _VueElement extends BaseClass {
    * Only called when shadowRoot is false
    */
   _renderSlots() {
-    const outlets = (this._teleportTarget || this).querySelectorAll("slot");
+    const outlets = this._getSlots();
     const scopeId = this._instance.type.__scopeId;
     for (let i = 0; i < outlets.length; i++) {
       const o = outlets[i];
@@ -11797,6 +11806,19 @@ var VueElement = class _VueElement extends BaseClass {
       }
       parent.removeChild(o);
     }
+  }
+  /**
+   * @internal
+   */
+  _getSlots() {
+    const roots = [this];
+    if (this._teleportTargets) {
+      roots.push(...this._teleportTargets);
+    }
+    return roots.reduce((res, i) => {
+      res.push(...Array.from(i.querySelectorAll("slot")));
+      return res;
+    }, []);
   }
   /**
    * @internal
@@ -11897,7 +11919,7 @@ var TransitionGroupImpl = /* @__PURE__ */ decorate({
       prevChildren.forEach(callPendingCbs);
       prevChildren.forEach(recordPosition);
       const movedChildren = prevChildren.filter(applyTranslation);
-      forceReflow();
+      forceReflow(instance.vnode.el);
       movedChildren.forEach((c) => {
         const el = c.el;
         const style = el.style;
@@ -12646,35 +12668,35 @@ export {
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.5.21
+  * @vue/shared v3.5.22
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/reactivity/dist/reactivity.esm-bundler.js:
   (**
-  * @vue/reactivity v3.5.21
+  * @vue/reactivity v3.5.22
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-core/dist/runtime-core.esm-bundler.js:
   (**
-  * @vue/runtime-core v3.5.21
+  * @vue/runtime-core v3.5.22
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (**
-  * @vue/runtime-dom v3.5.21
+  * @vue/runtime-dom v3.5.22
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 vue/dist/vue.runtime.esm-bundler.js:
   (**
-  * vue v3.5.21
+  * vue v3.5.22
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)

@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, unref, createCommentVNode, Fragment, createBlock, createApp, resolveComponent, withKeys, createVNode, toDisplayString, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Transition, Teleport, normalizeStyle, withDirectives, vShow, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -9783,7 +9783,7 @@ var _sfc_main$11 = /* @__PURE__ */ defineComponent({
       }
     }
     return (_ctx, _cache) => {
-      return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
+      return __props.isOpen ? (openBlock(), createBlock(Teleport, {
         key: 0,
         to: teleportTarget.value,
         disabled: teleportDisabled
@@ -10652,22 +10652,22 @@ var _sfc_main$Z = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1$J, [createVNode(unref(_sfc_main$11), {
-        "is-open": _ctx.isOpen,
-        anchor: _ctx.inputNode,
-        "num-of-items": _ctx.options.length,
+        "is-open": __props.isOpen,
+        anchor: __props.inputNode,
+        "num-of-items": __props.options.length,
         "active-element": activeElement.value,
         class: "combobox__listbox",
         onClose: onListboxClose
       }, {
         default: withCtx(() => [createElementVNode("ul", {
-          id: _ctx.id,
+          id: __props.id,
           ref: "listbox",
           role: "listbox",
           "aria-label": "F\xF6rslag",
           class: "combobox__listbox__list"
-        }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (item) => {
+        }, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.options, (item) => {
           return openBlock(), createElementBlock("li", {
-            id: isOptionActive(item) ? _ctx.activeOptionId : void 0,
+            id: isOptionActive(item) ? __props.activeOptionId : void 0,
             key: item,
             role: "option",
             "aria-selected": isOptionActive(item) ? "true" : void 0,
@@ -12276,11 +12276,11 @@ var _sfc_main$S = /* @__PURE__ */ defineComponent({
         type: "button",
         class: "button table__button",
         onClick: _cache[0] || (_cache[0] = ($event) => emit("click"))
-      }, [_ctx.icon ? (openBlock(), createBlock(unref(FIcon), {
+      }, [__props.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         class: "button__icon",
-        name: _ctx.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), !_ctx.label ? (openBlock(), createElementBlock("span", _hoisted_1$C, [renderSlot(_ctx.$slots, "default")])) : renderSlot(_ctx.$slots, "default", {
+        name: __props.icon
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), !__props.label ? (openBlock(), createElementBlock("span", _hoisted_1$C, [renderSlot(_ctx.$slots, "default")])) : renderSlot(_ctx.$slots, "default", {
         key: 2
       })]);
     };
@@ -15572,7 +15572,7 @@ var _sfc_main$v = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(ceTag$2), {
-        layout: _ctx.layout,
+        layout: __props.layout,
         onUpdate: _cache[0] || (_cache[0] = ($event) => emit("update"))
       }, {
         default: withCtx(() => [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(unref(proxy))))]),
@@ -15968,7 +15968,7 @@ var _sfc_main$u = /* @__PURE__ */ defineComponent({
       }
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [_ctx.overlay && _ctx.offset ? (openBlock(), createElementBlock("div", _hoisted_1$s)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("div", mergeProps({
+      return openBlock(), createElementBlock(Fragment, null, [__props.overlay && __props.offset ? (openBlock(), createElementBlock("div", _hoisted_1$s)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("div", mergeProps({
         ref_key: "root",
         ref: root,
         class: ["resize", classes.value]
@@ -16213,7 +16213,7 @@ var _sfc_main$r = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return visible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName), {
         key: 0,
-        "data-panel-name": _ctx.name,
+        "data-panel-name": __props.name,
         onClosed: _cache[0] || (_cache[0] = ($event) => onClose())
       }, {
         default: withCtx(() => [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({

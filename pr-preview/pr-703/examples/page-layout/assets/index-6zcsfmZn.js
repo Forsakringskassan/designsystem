@@ -28,7 +28,7 @@
   }
 })();
 /**
-* @vue/shared v3.5.21
+* @vue/shared v3.5.22
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -283,7 +283,7 @@ const stringifySymbol = (v, i = "") => {
   );
 };
 /**
-* @vue/reactivity v3.5.21
+* @vue/reactivity v3.5.22
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -977,7 +977,7 @@ function iterator(self2, method, wrapValue) {
     iter._next = iter.next;
     iter.next = () => {
       const result = iter._next();
-      if (result.value) {
+      if (!result.done) {
         result.value = wrapValue(result.value);
       }
       return result;
@@ -1103,7 +1103,8 @@ class BaseReactiveHandler {
       return res;
     }
     if (isRef(res)) {
-      return targetIsArray && isIntegerKey(key) ? res : res.value;
+      const value = targetIsArray && isIntegerKey(key) ? res : res.value;
+      return isReadonly2 && isObject$2(value) ? readonly(value) : value;
     }
     if (isObject$2(res)) {
       return isReadonly2 ? readonly(res) : reactive(res);
@@ -1843,7 +1844,7 @@ function traverse(value, depth = Infinity, seen) {
   return value;
 }
 /**
-* @vue/runtime-core v3.5.21
+* @vue/runtime-core v3.5.22
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -2275,9 +2276,6 @@ const TeleportImpl = {
       insert(mainAnchor, container, anchor);
       const mount = (container2, anchor2) => {
         if (shapeFlag & 16) {
-          if (parentComponent && parentComponent.isCE) {
-            parentComponent.ce._teleportTarget = container2;
-          }
           mountChildren(
             children,
             container2,
@@ -2298,6 +2296,9 @@ const TeleportImpl = {
             namespace = "svg";
           } else if (namespace !== "mathml" && isTargetMathML(target)) {
             namespace = "mathml";
+          }
+          if (parentComponent && parentComponent.isCE) {
+            (parentComponent.ce._teleportTargets || (parentComponent.ce._teleportTargets = /* @__PURE__ */ new Set())).add(target);
           }
           if (!disabled) {
             mount(target, targetAnchor);
@@ -3242,12 +3243,13 @@ function createSlots(slots, dynamicSlots) {
 }
 function renderSlot(slots, name, props = {}, fallback, noSlotted) {
   if (currentRenderingInstance.ce || currentRenderingInstance.parent && isAsyncWrapper(currentRenderingInstance.parent) && currentRenderingInstance.parent.ce) {
+    const hasProps = Object.keys(props).length > 0;
     if (name !== "default") props.name = name;
     return openBlock(), createBlock(
       Fragment,
       null,
       [createVNode("slot", props, fallback && fallback())],
-      64
+      hasProps ? -2 : 64
     );
   }
   let slot = slots[name];
@@ -6651,36 +6653,33 @@ const computed = (getterOrOptions, debugOptions) => {
   return c;
 };
 function h(type, propsOrChildren, children) {
-  const doCreateVNode = (type2, props, children2) => {
+  try {
     setBlockTracking(-1);
-    try {
-      return createVNode(type2, props, children2);
-    } finally {
-      setBlockTracking(1);
-    }
-  };
-  const l = arguments.length;
-  if (l === 2) {
-    if (isObject$2(propsOrChildren) && !isArray$2(propsOrChildren)) {
-      if (isVNode(propsOrChildren)) {
-        return doCreateVNode(type, null, [propsOrChildren]);
+    const l = arguments.length;
+    if (l === 2) {
+      if (isObject$2(propsOrChildren) && !isArray$2(propsOrChildren)) {
+        if (isVNode(propsOrChildren)) {
+          return createVNode(type, null, [propsOrChildren]);
+        }
+        return createVNode(type, propsOrChildren);
+      } else {
+        return createVNode(type, null, propsOrChildren);
       }
-      return doCreateVNode(type, propsOrChildren);
     } else {
-      return doCreateVNode(type, null, propsOrChildren);
+      if (l > 3) {
+        children = Array.prototype.slice.call(arguments, 2);
+      } else if (l === 3 && isVNode(children)) {
+        children = [children];
+      }
+      return createVNode(type, propsOrChildren, children);
     }
-  } else {
-    if (l > 3) {
-      children = Array.prototype.slice.call(arguments, 2);
-    } else if (l === 3 && isVNode(children)) {
-      children = [children];
-    }
-    return doCreateVNode(type, propsOrChildren, children);
+  } finally {
+    setBlockTracking(1);
   }
 }
-const version = "3.5.21";
+const version = "3.5.22";
 /**
-* @vue/runtime-dom v3.5.21
+* @vue/runtime-dom v3.5.22
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -6889,11 +6888,11 @@ function resolveTransitionProps(rawProps) {
       const resolve2 = () => finishLeave(el, done);
       addTransitionClass(el, leaveFromClass);
       if (!el._enterCancelled) {
-        forceReflow();
+        forceReflow(el);
         addTransitionClass(el, leaveActiveClass);
       } else {
         addTransitionClass(el, leaveActiveClass);
-        forceReflow();
+        forceReflow(el);
       }
       nextFrame(() => {
         if (!el._isLeaving) {
@@ -7036,8 +7035,9 @@ function toMs(s) {
   if (s === "auto") return 0;
   return Number(s.slice(0, -1).replace(",", ".")) * 1e3;
 }
-function forceReflow() {
-  return document.body.offsetHeight;
+function forceReflow(el) {
+  const targetDocument = el ? el.ownerDocument : document;
+  return targetDocument.body.offsetHeight;
 }
 function patchClass(el, value, isSVG) {
   const transitionClasses = el[vtcKey];
@@ -7382,7 +7382,11 @@ class VueElement extends BaseClass {
       this._root = this.shadowRoot;
     } else {
       if (_def.shadowRoot !== false) {
-        this.attachShadow({ mode: "open" });
+        this.attachShadow(
+          extend({}, _def.shadowRootOptions, {
+            mode: "open"
+          })
+        );
         this._root = this.shadowRoot;
       } else {
         this._root = this;
@@ -7442,8 +7446,17 @@ class VueElement extends BaseClass {
         this._app && this._app.unmount();
         if (this._instance) this._instance.ce = void 0;
         this._app = this._instance = null;
+        if (this._teleportTargets) {
+          this._teleportTargets.clear();
+          this._teleportTargets = void 0;
+        }
       }
     });
+  }
+  _processMutations(mutations) {
+    for (const m of mutations) {
+      this._setAttr(m.attributeName);
+    }
   }
   /**
    * resolve inner component definition (handle possible async component)
@@ -7455,11 +7468,7 @@ class VueElement extends BaseClass {
     for (let i = 0; i < this.attributes.length; i++) {
       this._setAttr(this.attributes[i].name);
     }
-    this._ob = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        this._setAttr(m.attributeName);
-      }
-    });
+    this._ob = new MutationObserver(this._processMutations.bind(this));
     this._ob.observe(this, { attributes: true });
     const resolve2 = (def2, isAsync = false) => {
       this._resolved = true;
@@ -7566,7 +7575,10 @@ class VueElement extends BaseClass {
       }
       if (shouldReflect) {
         const ob = this._ob;
-        ob && ob.disconnect();
+        if (ob) {
+          this._processMutations(ob.takeRecords());
+          ob.disconnect();
+        }
         if (val === true) {
           this.setAttribute(hyphenate(key), "");
         } else if (typeof val === "string" || typeof val === "number") {
@@ -7645,7 +7657,7 @@ class VueElement extends BaseClass {
    * Only called when shadowRoot is false
    */
   _renderSlots() {
-    const outlets = (this._teleportTarget || this).querySelectorAll("slot");
+    const outlets = this._getSlots();
     const scopeId = this._instance.type.__scopeId;
     for (let i = 0; i < outlets.length; i++) {
       const o = outlets[i];
@@ -7670,6 +7682,19 @@ class VueElement extends BaseClass {
       }
       parent.removeChild(o);
     }
+  }
+  /**
+   * @internal
+   */
+  _getSlots() {
+    const roots = [this];
+    if (this._teleportTargets) {
+      roots.push(...this._teleportTargets);
+    }
+    return roots.reduce((res, i) => {
+      res.push(...Array.from(i.querySelectorAll("slot")));
+      return res;
+    }, []);
   }
   /**
    * @internal
@@ -19996,7 +20021,7 @@ const _sfc_main$11 = /* @__PURE__ */ defineComponent({
       }
     }
     return (_ctx, _cache) => {
-      return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
+      return __props.isOpen ? (openBlock(), createBlock(Teleport, {
         key: 0,
         to: teleportTarget.value,
         disabled: teleportDisabled
@@ -20655,22 +20680,22 @@ const _sfc_main$Z = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1$J, [createVNode(unref(_sfc_main$11), {
-        "is-open": _ctx.isOpen,
-        anchor: _ctx.inputNode,
-        "num-of-items": _ctx.options.length,
+        "is-open": __props.isOpen,
+        anchor: __props.inputNode,
+        "num-of-items": __props.options.length,
         "active-element": activeElement.value,
         class: "combobox__listbox",
         onClose: onListboxClose
       }, {
         default: withCtx(() => [createBaseVNode("ul", {
-          id: _ctx.id,
+          id: __props.id,
           ref: "listbox",
           role: "listbox",
           "aria-label": "Förslag",
           class: "combobox__listbox__list"
-        }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (item) => {
+        }, [(openBlock(true), createElementBlock(Fragment, null, renderList(__props.options, (item) => {
           return openBlock(), createElementBlock("li", {
-            id: isOptionActive(item) ? _ctx.activeOptionId : void 0,
+            id: isOptionActive(item) ? __props.activeOptionId : void 0,
             key: item,
             role: "option",
             "aria-selected": isOptionActive(item) ? "true" : void 0,
@@ -23745,7 +23770,7 @@ const _sfc_main$v = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(ceTag$2), {
-        layout: _ctx.layout,
+        layout: __props.layout,
         onUpdate: _cache[0] || (_cache[0] = ($event) => emit2("update"))
       }, {
         default: withCtx(() => [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(unref(proxy))))]),
@@ -24141,7 +24166,7 @@ const _sfc_main$u = /* @__PURE__ */ defineComponent({
       }
     }
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [_ctx.overlay && _ctx.offset ? (openBlock(), createElementBlock("div", _hoisted_1$s)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", mergeProps({
+      return openBlock(), createElementBlock(Fragment, null, [__props.overlay && __props.offset ? (openBlock(), createElementBlock("div", _hoisted_1$s)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", mergeProps({
         ref_key: "root",
         ref: root,
         class: ["resize", classes.value]
@@ -24386,7 +24411,7 @@ const _sfc_main$r = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return visible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName), {
         key: 0,
-        "data-panel-name": _ctx.name,
+        "data-panel-name": __props.name,
         onClosed: _cache[0] || (_cache[0] = ($event) => onClose())
       }, {
         default: withCtx(() => [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
@@ -26030,8 +26055,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const XExpensePanel = _sfc_main$r;
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(XExpensePanel), {
-        name: _ctx.name,
-        exclusive: _ctx.exclusive
+        name: __props.name,
+        exclusive: __props.exclusive
       }, {
         default: withCtx(({ item, content: content2 }) => [
           createBaseVNode("div", { slot: content2 }, [
@@ -26089,8 +26114,8 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     const XPersonPanel = _sfc_main$r;
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(XPersonPanel), {
-        name: _ctx.name,
-        exclusive: _ctx.exclusive
+        name: __props.name,
+        exclusive: __props.exclusive
       }, {
         default: withCtx(({ item, header: header2, content: content2 }) => [
           createBaseVNode("h2", { slot: header2 }, "Detaljer om person", 8, _hoisted_1$2),
