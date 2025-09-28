@@ -3524,6 +3524,7 @@ var FFormModal_default = defineComponent11({
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
      * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
     close(_payload) {
       return true;
     },
@@ -3531,6 +3532,7 @@ var FFormModal_default = defineComponent11({
      * Event that is dispatched when the submit button is is clicked.
      * The event payload is the data that has been submitted.
      */
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
     submit(_payload) {
       return true;
     }
