@@ -27,7 +27,7 @@ export interface TableColumnSimple<T, K extends keyof T> {
 export interface TableColumnRowHeader<T, K extends keyof T> {
     type: "rowheader";
     header: string;
-    key: K;
+    key?: K;
     sortable?: K;
     value?(row: T): string;
 }
