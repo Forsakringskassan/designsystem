@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 6.20.0 (2025-09-28)
+
+### Features
+
+* **@fkui/icon-lib-default:** add ellipsis icon (refs SFKUI-6500) ded7a01
+
+### Bug Fixes
+
+* **@fkui/vue:** add missing `iconLibrary` prop to `FButton` (refs SFKUI-6500) aec9d97
+* **@fkui/vue:** f-form-modal event typing (refs SFKUI-6500) 6cfd9cf
+* **@fkui/vue:** fix `FButton` `type` attribute not being set (refs SFKUI-6500) cb7cf47
+* **deps:** update dependency sass to v1.93.1 5225028
+* **deps:** update dependency sass to v1.93.2 c5ba8de
+* **deps:** update vue monorepo to v3.5.22 caa295a
+
 ## 6.19.1 (2025-09-24)
 
 ### Bug Fixes
