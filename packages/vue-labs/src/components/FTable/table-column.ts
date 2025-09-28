@@ -28,7 +28,6 @@ export interface TableColumnRowHeader<T, K extends keyof T> {
     type: "rowheader";
     header: string;
     key?: K;
-    sortable?: K;
     value?(row: T): string;
 }
 
