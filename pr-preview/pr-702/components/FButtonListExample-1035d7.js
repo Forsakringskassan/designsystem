@@ -243,16 +243,14 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
      * Used in conjunction with button variant `tertiary`.
      */
     alignText: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     /**
      *
      * Enable full width on mobile for sizes `small` and `medium`, always active for button size `large`.
      */
     mobileFullWidth: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     /**
      * The default behavior of the button. Possible values are:
@@ -270,10 +268,10 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
   },
   setup(__props, { expose: __expose }) {
     __expose();
+    const props = __props;
     const originalAttrs = useAttrs();
     const { inflight, fn: onClick } = useInflight(originalAttrs.onClick);
     const attrs = { ...originalAttrs, onClick };
-    const props = __props;
     const hasIconLeft = computed(() => {
       return Boolean(props.iconLeft);
     });
@@ -302,7 +300,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       }
       return classes;
     });
-    const __returned__ = { originalAttrs, inflight, onClick, attrs, props, hasIconLeft, hasIconRight, hasIcon, buttonClass, get FIcon() {
+    const __returned__ = { props, originalAttrs, inflight, onClick, attrs, hasIconLeft, hasIconRight, hasIcon, buttonClass, get FIcon() {
       return FIcon_default2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
