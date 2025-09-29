@@ -3,6 +3,7 @@ import { createApp, h } from "vue";
 import {
   ErrorPlugin,
   FErrorHandlingApp,
+  FormatPlugin,
   TestPlugin,
   TranslationPlugin,
   ValidationPlugin,
@@ -23,6 +24,7 @@ function setup(options) {
   app.use(ValidationPlugin);
   app.use(TestPlugin);
   app.use(TranslationPlugin);
+  app.use(FormatPlugin);
   app.mount(selector);
 }
 
@@ -36,7 +38,7 @@ var metadata_default = {
       "name": "--fkds-color-text-primary",
       "value": "#1b1e23",
       "palette": "fk-black-100",
-      "comment": "Standard text f\xE4rg"
+      "comment": null
     },
     {
       "name": "--fkds-color-text-secondary",
@@ -48,7 +50,7 @@ var metadata_default = {
       "name": "--fkds-color-text-inverted",
       "value": "#ffffff",
       "palette": "white-100",
-      "comment": "Inverterad text f\xE4rg"
+      "comment": null
     },
     {
       "name": "--fkds-color-text-disabled",
@@ -81,18 +83,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-color-action-background-select-hover",
-      "value": "#dbe9e2",
-      "palette": "green-a-15",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-select-default",
-      "value": "#35805b",
-      "palette": "green-a-85",
-      "comment": null
-    },
-    {
       "name": "--fkds-color-border-primary",
       "value": "#8d8e91",
       "palette": "fk-black-50",
@@ -108,6 +98,18 @@ var metadata_default = {
       "name": "--fkds-color-border-weak",
       "value": "#ddddde",
       "palette": "fk-black-15",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-border-disabled",
+      "value": "#8d8e91",
+      "palette": "fk-black-50",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-border-inverted",
+      "value": "#ffffff",
+      "palette": "white-100",
       "comment": null
     },
     {
@@ -183,12 +185,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-color-action-text-disabled",
-      "value": "#8d8e91",
-      "palette": "fk-black-50",
-      "comment": null
-    },
-    {
       "name": "--fkds-color-action-background-primary-default",
       "value": "#4a52b6",
       "palette": "bluebell-100",
@@ -237,36 +233,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-color-action-background-accent-default",
-      "value": "#116a3e",
-      "palette": "green-a-100",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-accent-hover",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-accent-active",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-accent-focus",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-background-disabled",
-      "value": "#f4f4f4",
-      "palette": "fk-black-5",
-      "comment": null
-    },
-    {
       "name": "--fkds-color-action-border-primary-default",
       "value": "#4a52b6",
       "palette": "bluebell-100",
@@ -288,36 +254,6 @@ var metadata_default = {
       "name": "--fkds-color-action-border-primary-focus",
       "value": "#3b4292",
       "palette": "bluebell-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-accent-default",
-      "value": "#116a3e",
-      "palette": "green-a-100",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-accent-hover",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-accent-active",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-accent-focus",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-color-action-border-disabled",
-      "value": "#8d8e91",
-      "palette": "fk-black-50",
       "comment": null
     },
     {
@@ -417,25 +353,55 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-color-select-background-primary-default",
+      "name": "--fkds-color-feedback-text-positive",
       "value": "#35805b",
       "palette": "green-a-85",
       "comment": null
     },
     {
+      "name": "--fkds-color-select-background-primary-default",
+      "value": "#4a52b6",
+      "palette": "bluebell-100",
+      "comment": null
+    },
+    {
       "name": "--fkds-color-select-background-primary-hover",
-      "value": "#dbe9e2",
-      "palette": "green-a-15",
+      "value": "#e5e5f5",
+      "palette": "bluebell-15",
       "comment": null
     },
     {
       "name": "--fkds-color-select-background-primary-active",
+      "value": "#e5e5f5",
+      "palette": "bluebell-15",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-select-background-primary-focus",
+      "value": "#e5e5f5",
+      "palette": "bluebell-15",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-select-background-secondary-default",
+      "value": "#35805b",
+      "palette": "green-a-85",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-select-background-secondary-hover",
       "value": "#dbe9e2",
       "palette": "green-a-15",
       "comment": null
     },
     {
-      "name": "--fkds-color-select-background-primary-focus",
+      "name": "--fkds-color-select-background-secondary-active",
+      "value": "#dbe9e2",
+      "palette": "green-a-15",
+      "comment": null
+    },
+    {
+      "name": "--fkds-color-select-background-secondary-focus",
       "value": "#dbe9e2",
       "palette": "green-a-15",
       "comment": null
@@ -465,15 +431,15 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-icon-color-action-content-primary-default",
-      "value": "#4a52b6",
-      "palette": "bluebell-100",
+      "name": "--fkds-icon-color-content-inverted",
+      "value": "#ffffff",
+      "palette": "white-100",
       "comment": null
     },
     {
-      "name": "--fkds-icon-color-action-content-primary-disabled",
-      "value": "#8d8e91",
-      "palette": "fk-black-50",
+      "name": "--fkds-icon-color-action-content-primary-default",
+      "value": "#4a52b6",
+      "palette": "bluebell-100",
       "comment": null
     },
     {
@@ -519,30 +485,6 @@ var metadata_default = {
       "comment": null
     },
     {
-      "name": "--fkds-icon-color-action-content-accent-default",
-      "value": "#116a3e",
-      "palette": "green-a-100",
-      "comment": null
-    },
-    {
-      "name": "--fkds-icon-color-action-content-accent-hover",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-icon-color-action-content-accent-active",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
-      "name": "--fkds-icon-color-action-content-accent-focus",
-      "value": "#0e5532",
-      "palette": "green-a-120",
-      "comment": null
-    },
-    {
       "name": "--fkds-icon-color-action-content-weak-default",
       "value": "#5f6165",
       "palette": "fk-black-70",
@@ -556,6 +498,18 @@ var metadata_default = {
     },
     {
       "name": "--fkds-icon-color-action-content-inverted-hover",
+      "value": "#ffffff",
+      "palette": "white-100",
+      "comment": null
+    },
+    {
+      "name": "--fkds-icon-color-action-content-inverted-active",
+      "value": "#ffffff",
+      "palette": "white-100",
+      "comment": null
+    },
+    {
+      "name": "--fkds-icon-color-action-content-inverted-focus",
       "value": "#ffffff",
       "palette": "white-100",
       "comment": null
@@ -664,15 +618,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: "F\xE4rgkod"
     }
   }, {
-    header: _withCtx(() => _cache[0] || (_cache[0] = [
+    header: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
         "h2",
         { id: "semantiska_farger" },
         "Semantiska f\xE4rger",
         -1
-        /* HOISTED */
+        /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(({ sortFilterResult }) => [
       _createVNode($setup["FDataTable"], {
         rows: sortFilterResult,
@@ -762,9 +716,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* DYNAMIC_SLOTS */
           )
         ]),
-        _: 2
-        /* DYNAMIC */
-      }, 1032, ["rows"])
+        _: 1
+        /* STABLE */
+      }, 8, ["rows"])
     ]),
     _: 1
     /* STABLE */
