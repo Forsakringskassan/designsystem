@@ -2294,11 +2294,13 @@ var _sfc_main$c = defineComponent({
   extends: FTextField,
   mixins: [TranslationMixin],
   props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     formatter: {
       type: Function,
       required: false,
       default: formatNumberToTime
     },
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     parser: {
       type: Function,
       required: false,

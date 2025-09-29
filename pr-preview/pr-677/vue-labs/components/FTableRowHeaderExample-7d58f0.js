@@ -2288,11 +2288,13 @@ var _sfc_main$c = defineComponent({
   extends: FTextField,
   mixins: [TranslationMixin],
   props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     formatter: {
       type: Function,
       required: false,
       default: formatNumberToTime
     },
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     parser: {
       type: Function,
       required: false,
@@ -2744,8 +2746,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "ITableRow",
   props: {
     renderHeader: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     rowKey: {
       default: ""
@@ -2754,16 +2755,13 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
       default: () => void 0
     },
     isTreegrid: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     isExpandable: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     isExpanded: {
-      type: Boolean,
-      default: false
+      type: Boolean
     }
   },
   emits: ["toggle"],
@@ -2774,23 +2772,23 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$4)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return __props.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [__props.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$4)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
-        "aria-level": _ctx.ariaLevel
-      }, [_ctx.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
+        "aria-level": __props.ariaLevel
+      }, [__props.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
         key: 0
-      }, [_ctx.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_4$2, [createElementVNode("button", {
+      }, [__props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_4$2, [createElementVNode("button", {
         "aria-label": "toggle",
         type: "button",
-        class: normalizeClass(["expander", `level-${_ctx.ariaLevel}`]),
-        onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle", _ctx.rowKey))
+        class: normalizeClass(["expander", `level-${__props.ariaLevel}`]),
+        onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle", __props.rowKey))
       }, [createVNode(unref(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
       }, null, 8, ["name"])], 2)])) : (openBlock(), createElementBlock("td", {
         key: 1,
-        class: normalizeClass(`level-${_ctx.ariaLevel}`)
+        class: normalizeClass(`level-${__props.ariaLevel}`)
       }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$3));
     };
   }
@@ -2817,15 +2815,15 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
       __props.column.update(__props.row, checked, !checked);
     }
     return (_ctx, _cache) => {
-      return _ctx.column.editable(_ctx.row) ? (openBlock(), createElementBlock("td", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
         class: "table-ng__cell table-ng__cell--checkbox",
         onTableActivateCell: onActivateCell
       }, [createElementVNode("input", {
         ref: "target",
-        checked: _ctx.column.value(_ctx.row),
+        checked: __props.column.value(__props.row),
         type: "checkbox",
-        "aria-label": _ctx.column.header,
+        "aria-label": __props.column.header,
         tabindex: "-1",
         onChange
       }, null, 40, _hoisted_1$7)], 32)) : (openBlock(), createElementBlock("td", {
@@ -2835,9 +2833,9 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
         class: "table-ng__cell table-ng__cell--checkbox",
         onTableActivateCell: onActivateCell
       }, [createElementVNode("input", {
-        checked: _ctx.column.value(_ctx.row),
+        checked: __props.column.value(__props.row),
         type: "checkbox",
-        "aria-label": _ctx.column.header
+        "aria-label": __props.column.header
       }, null, 8, _hoisted_2$3)], 544));
     };
   }
@@ -2869,8 +2867,8 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("input", {
         ref: "input",
         type: "radio",
-        checked: _ctx.column.value(_ctx.row),
-        "aria-label": _ctx.column.header,
+        checked: __props.column.value(__props.row),
+        "aria-label": __props.column.header,
         tabindex: "-1",
         onChange
       }, null, 40, _hoisted_1$6)], 32);
@@ -2905,9 +2903,9 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
-        href: _ctx.column.href,
+        href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$5)], 32)) : (openBlock(), createElementBlock("td", {
+      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_1$5)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "target",
         tabindex: "-1",
@@ -2958,10 +2956,10 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         type: "button",
         tabindex: "-1",
         onClick: onClickButton
-      }, [_ctx.column.icon ? (openBlock(), createBlock(unref(FIcon), {
+      }, [__props.column.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
-        name: _ctx.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$4, toDisplayString(_ctx.column.value(_ctx.row)), 1)], 512)], 32)) : (openBlock(), createElementBlock("td", {
+        name: __props.column.icon
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$4, toDisplayString(__props.column.value(__props.row)), 1)], 512)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "td",
         tabindex: "-1",
@@ -3129,7 +3127,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
       };
     }
     return (_ctx, _cache) => {
-      return _ctx.column.editable(_ctx.row) ? (openBlock(), createElementBlock("td", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
         ref: "td",
         tabindex: "-1",
@@ -3140,7 +3138,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("div", _hoisted_1$3, [createElementVNode("span", {
         ref: "view",
         class: "table-ng__editable__text"
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
+      }, toDisplayString(__props.column.value(__props.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
         ref: "input",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => model.value = $event),
         class: normalizeClass(inputClasses.value),
@@ -3163,7 +3161,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         class: "table-ng__cell table-ng__cell--static",
         onTableActivateCell: onActivateCell
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 545));
+      }, toDisplayString(__props.column.value(__props.row)), 545));
     };
   }
 });
@@ -3346,7 +3344,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       stopEdit2(editRef.value, "escape");
     }
     return (_ctx, _cache) => {
-      return _ctx.column.editable(_ctx.row) ? (openBlock(), createElementBlock("td", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
         ref: "td",
         class: "table-ng__cell table-ng__cell--select",
@@ -3374,7 +3372,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       }, toDisplayString(viewValue.value), 41, _hoisted_3$2), [[vShow, editing.value]]), _cache[4] || (_cache[4] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
         id: "dropdownId",
         "is-open": dropdownIsOpen.value,
-        options: _ctx.column.options,
+        options: __props.column.options,
         "active-option": activeOption.value,
         "active-option-id": unref(activeOptionId),
         "input-node": editRef.value,
@@ -3386,7 +3384,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         class: "table-ng__cell table-ng__cell--static",
         onTableActivateCell: onActivateCell
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 545));
+      }, toDisplayString(__props.column.value(__props.row)), 545));
     };
   }
 });
@@ -3411,7 +3409,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         class: "table-ng__cell table-ng__cell--rowheader",
         scope: "row",
         onTableActivateCell: onActivateCell
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 545);
+      }, toDisplayString(__props.column.value(__props.row)), 545);
     };
   }
 });
@@ -3618,9 +3616,9 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         default: withCtx(() => [createVNode(unref(IFlexItem), {
           shrink: ""
         }, {
-          default: withCtx(() => [createTextVNode(toDisplayString(_ctx.column.header), 1)]),
+          default: withCtx(() => [createTextVNode(toDisplayString(__props.column.header), 1)]),
           _: 1
-        }), _cache[0] || (_cache[0] = createTextVNode()), _ctx.sortEnabled ? (openBlock(), createBlock(unref(IFlexItem), {
+        }), _cache[0] || (_cache[0] = createTextVNode()), __props.sortEnabled ? (openBlock(), createBlock(unref(IFlexItem), {
           key: 0,
           shrink: "",
           align: "center"
@@ -3673,8 +3671,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
       default: () => void 0
     },
     striped: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     selectable: {
       default: () => void 0
