@@ -76,9 +76,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               slot: panelScope.footer
             }, "[footer]", 8, _hoisted_4)
           ]),
-          _: 2
-          /* DYNAMIC */
-        }, 1032, ["slot"]),
+          _: 1
+          /* STABLE */
+        }, 8, ["slot"]),
         _createElementVNode("p", {
           slot: layoutScope.content
         }, "Inneh\xE5llsyta", 8, _hoisted_5)

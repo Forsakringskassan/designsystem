@@ -157,158 +157,158 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: _withCtx(() => [
       _createVNode(_component_f_fieldset, { name: "styling" }, {
-        label: _withCtx(() => _cache[8] || (_cache[8] = [
+        label: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createTextVNode(
             " Styling ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.isStriped,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isStriped = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[9] || (_cache[9] = [
+            default: _withCtx(() => [..._cache[9] || (_cache[9] = [
               _createTextVNode(
                 " Zebrarandig ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [9]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.hasRowHeader,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.hasRowHeader = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[10] || (_cache[10] = [
+            default: _withCtx(() => [..._cache[10] || (_cache[10] = [
               _createTextVNode(
                 " Radrubriker ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [10]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.hasRowDescription,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasRowDescription = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[11] || (_cache[11] = [
+            default: _withCtx(() => [..._cache[11] || (_cache[11] = [
               _createTextVNode(
                 " Kolumnbeskrivnig ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [11]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.hasHiddenCaption,
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.hasHiddenCaption = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[12] || (_cache[12] = [
+            default: _withCtx(() => [..._cache[12] || (_cache[12] = [
               _createTextVNode(
                 " Dold caption ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [12]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.showHorizontalScroll,
             "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.showHorizontalScroll = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[13] || (_cache[13] = [
+            default: _withCtx(() => [..._cache[13] || (_cache[13] = [
               _createTextVNode(
                 " Horisontal skroll ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [13]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"])
         ]),
         _: 1
         /* STABLE */
       }),
       _createVNode(_component_f_fieldset, { name: "interaktion" }, {
-        label: _withCtx(() => _cache[14] || (_cache[14] = [
+        label: _withCtx(() => [..._cache[14] || (_cache[14] = [
           _createTextVNode(
             " Interaktion ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.isEmpty,
             "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.isEmpty = $event),
             value: true
           }, {
-            default: _withCtx(() => _cache[15] || (_cache[15] = [
+            default: _withCtx(() => [..._cache[15] || (_cache[15] = [
               _createTextVNode(
                 " Tom tabell ",
                 -1
                 /* CACHED */
               )
-            ])),
-            _: 1,
-            __: [15]
+            ])]),
+            _: 1
+            /* STABLE */
           }, 8, ["modelValue"]),
           _ctx.isEmpty ? (_openBlock(), _createBlock(_component_f_fieldset, {
             key: 0,
             name: "radio-empty-text"
           }, {
-            label: _withCtx(() => _cache[16] || (_cache[16] = [
+            label: _withCtx(() => [..._cache[16] || (_cache[16] = [
               _createTextVNode(
                 " Meddelande f\xF6r tom tabell ",
                 -1
                 /* CACHED */
               )
-            ])),
+            ])]),
             default: _withCtx(() => [
               _createVNode(_component_f_radio_field, {
                 modelValue: _ctx.hasCustomEmptyText,
                 "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasCustomEmptyText = $event),
                 value: false
               }, {
-                default: _withCtx(() => _cache[17] || (_cache[17] = [
+                default: _withCtx(() => [..._cache[17] || (_cache[17] = [
                   _createTextVNode(
                     " Standardmeddelande ",
                     -1
                     /* CACHED */
                   )
-                ])),
-                _: 1,
-                __: [17]
+                ])]),
+                _: 1
+                /* STABLE */
               }, 8, ["modelValue"]),
               _createVNode(_component_f_radio_field, {
                 modelValue: _ctx.hasCustomEmptyText,
                 "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasCustomEmptyText = $event),
                 value: true
               }, {
-                default: _withCtx(() => _cache[18] || (_cache[18] = [
+                default: _withCtx(() => [..._cache[18] || (_cache[18] = [
                   _createTextVNode(
                     " Eget meddelande ",
                     -1
                     /* CACHED */
                   )
-                ])),
-                _: 1,
-                __: [18]
+                ])]),
+                _: 1
+                /* STABLE */
               }, 8, ["modelValue"])
             ]),
             _: 1

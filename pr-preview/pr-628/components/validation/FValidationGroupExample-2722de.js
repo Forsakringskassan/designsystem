@@ -54,15 +54,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           id: "frukt",
           maxlength: "100"
         }, {
-          default: _withCtx(() => _cache[1] || (_cache[1] = [
+          default: _withCtx(() => [..._cache[1] || (_cache[1] = [
             _createTextVNode(
               " Favoritfrukt ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [1]
+          ])]),
+          _: 1
+          /* STABLE */
         })), [
           [
             _directive_validation,
@@ -75,15 +75,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           id: "godis",
           maxlength: "100"
         }, {
-          default: _withCtx(() => _cache[2] || (_cache[2] = [
+          default: _withCtx(() => [..._cache[2] || (_cache[2] = [
             _createTextVNode(
               " Favoritgodis ",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [2]
+          ])]),
+          _: 1
+          /* STABLE */
         })), [
           [
             _directive_validation,

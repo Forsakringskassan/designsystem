@@ -106,7 +106,6 @@ var FlerstegsModal_default = defineComponent({
   props: {
     isOpen: {
       type: Boolean,
-      default: false,
       required: false
     }
   },
@@ -187,13 +186,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
       )
     ]),
-    "error-message": _withCtx(() => _cache[2] || (_cache[2] = [
+    "error-message": _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createTextVNode(
         "Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till:",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     "input-text-fields": _withCtx(() => [
       _createVNode(_component_f_dialogue_tree, {
         modelValue: _ctx.current,

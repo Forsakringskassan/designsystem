@@ -66,13 +66,13 @@ var _hoisted_1 = {
 var _hoisted_2 = { class: "sr-only" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FInteractiveTable"], { rows: $setup.rows }, {
-    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+    caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
         " Tabell exempel ",
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(({ row }) => [
       _createVNode(
         $setup["FTableColumn"],

@@ -93,14 +93,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $setup.a,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.a = $event)
       }, {
-        label: _withCtx(() => _cache[3] || (_cache[3] = [
+        label: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createTextVNode(
             " Kolumn A ",
             -1
             /* CACHED */
           )
-        ])),
-        default: _withCtx(() => _cache[4] || (_cache[4] = [
+        ])]),
+        default: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createElementVNode(
             "option",
             { value: "" },
@@ -122,7 +122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -130,14 +130,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $setup.b,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $setup.b = $event)
       }, {
-        label: _withCtx(() => _cache[5] || (_cache[5] = [
+        label: _withCtx(() => [..._cache[5] || (_cache[5] = [
           _createTextVNode(
             " Kolumn B ",
             -1
             /* CACHED */
           )
-        ])),
-        default: _withCtx(() => _cache[6] || (_cache[6] = [
+        ])]),
+        default: _withCtx(() => [..._cache[6] || (_cache[6] = [
           _createElementVNode(
             "option",
             { value: "" },
@@ -159,7 +159,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -167,14 +167,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $setup.c,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $setup.c = $event)
       }, {
-        label: _withCtx(() => _cache[7] || (_cache[7] = [
+        label: _withCtx(() => [..._cache[7] || (_cache[7] = [
           _createTextVNode(
             " Kolumn C ",
             -1
             /* CACHED */
           )
-        ])),
-        default: _withCtx(() => _cache[8] || (_cache[8] = [
+        ])]),
+        default: _withCtx(() => [..._cache[8] || (_cache[8] = [
           _createElementVNode(
             "option",
             { value: "" },
@@ -196,7 +196,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])

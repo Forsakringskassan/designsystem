@@ -24,11 +24,11 @@ function setup(options) {
 }
 
 // dist/esm/index.esm.js
-import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService } from "@fkui/logic";
-import { defineComponent } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
-var HOURS_MINUTES_REGEXP = /^(?<hours>[0-9]+)?(:(?<minutes>[0-5][0-9]))?$/;
-var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>[0-9]{2})(?<minutes>[0-5][0-9])$/;
+import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
+import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, useTemplateRef, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
+var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
+var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 var es_iterator_forEach = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
@@ -443,10 +443,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.45.0",
+    version: "3.45.1",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.45.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.45.1/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -2289,16 +2289,18 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main = defineComponent({
+var _sfc_main$a = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
   props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     formatter: {
       type: Function,
       required: false,
       default: formatNumberToTime
     },
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     parser: {
       type: Function,
       required: false,
@@ -2323,6 +2325,151 @@ var _sfc_main = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
+var es_array_push = {};
+var isArray;
+var hasRequiredIsArray;
+function requireIsArray() {
+  if (hasRequiredIsArray) return isArray;
+  hasRequiredIsArray = 1;
+  var classof2 = requireClassofRaw();
+  isArray = Array.isArray || function isArray2(argument) {
+    return classof2(argument) === "Array";
+  };
+  return isArray;
+}
+var arraySetLength;
+var hasRequiredArraySetLength;
+function requireArraySetLength() {
+  if (hasRequiredArraySetLength) return arraySetLength;
+  hasRequiredArraySetLength = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var isArray2 = requireIsArray();
+  var $TypeError = TypeError;
+  var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS && !(function() {
+    if (this !== void 0) return true;
+    try {
+      Object.defineProperty([], "length", {
+        writable: false
+      }).length = 1;
+    } catch (error) {
+      return error instanceof TypeError;
+    }
+  })();
+  arraySetLength = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function(O, length) {
+    if (isArray2(O) && !getOwnPropertyDescriptor(O, "length").writable) {
+      throw new $TypeError("Cannot set read only .length");
+    }
+    return O.length = length;
+  } : function(O, length) {
+    return O.length = length;
+  };
+  return arraySetLength;
+}
+var doesNotExceedSafeInteger;
+var hasRequiredDoesNotExceedSafeInteger;
+function requireDoesNotExceedSafeInteger() {
+  if (hasRequiredDoesNotExceedSafeInteger) return doesNotExceedSafeInteger;
+  hasRequiredDoesNotExceedSafeInteger = 1;
+  var $TypeError = TypeError;
+  var MAX_SAFE_INTEGER = 9007199254740991;
+  doesNotExceedSafeInteger = function(it) {
+    if (it > MAX_SAFE_INTEGER) throw $TypeError("Maximum allowed index exceeded");
+    return it;
+  };
+  return doesNotExceedSafeInteger;
+}
+var hasRequiredEs_array_push;
+function requireEs_array_push() {
+  if (hasRequiredEs_array_push) return es_array_push;
+  hasRequiredEs_array_push = 1;
+  var $ = require_export();
+  var toObject2 = requireToObject();
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  var setArrayLength = requireArraySetLength();
+  var doesNotExceedSafeInteger2 = requireDoesNotExceedSafeInteger();
+  var fails2 = requireFails();
+  var INCORRECT_TO_LENGTH = fails2(function() {
+    return [].push.call({
+      length: 4294967296
+    }, 1) !== 4294967297;
+  });
+  var properErrorOnNonWritableLength = function() {
+    try {
+      Object.defineProperty([], "length", {
+        writable: false
+      }).push();
+    } catch (error) {
+      return error instanceof TypeError;
+    }
+  };
+  var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
+  $({
+    target: "Array",
+    proto: true,
+    arity: 1,
+    forced: FORCED
+  }, {
+    // eslint-disable-next-line no-unused-vars -- required for `.length`
+    push: function push(item) {
+      var O = toObject2(this);
+      var len = lengthOfArrayLike2(O);
+      var argCount = arguments.length;
+      doesNotExceedSafeInteger2(len + argCount);
+      for (var i = 0; i < argCount; i++) {
+        O[len] = arguments[i];
+        len++;
+      }
+      setArrayLength(O, len);
+      return len;
+    }
+  });
+  return es_array_push;
+}
+requireEs_array_push();
+var es_iterator_some = {};
+var hasRequiredEs_iterator_some;
+function requireEs_iterator_some() {
+  if (hasRequiredEs_iterator_some) return es_iterator_some;
+  hasRequiredEs_iterator_some = 1;
+  var $ = require_export();
+  var call = requireFunctionCall();
+  var iterate2 = requireIterate();
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var someWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError2("some", TypeError);
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: someWithoutClosingOnEarlyError
+  }, {
+    some: function some(predicate) {
+      anObject2(this);
+      try {
+        aCallable2(predicate);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (someWithoutClosingOnEarlyError) return call(someWithoutClosingOnEarlyError, this, predicate);
+      var record = getIteratorDirect2(this);
+      var counter = 0;
+      return iterate2(record, function(value, stop) {
+        if (predicate(value, counter++)) return stop();
+      }, {
+        IS_RECORD: true,
+        INTERRUPTED: true
+      }).stopped;
+    }
+  });
+  return es_iterator_some;
+}
+requireEs_iterator_some();
+var internalKey = getInternalKey();
+var stopEditKey = Symbol();
 
 // virtual-entry:virtual:src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-01cf1c.js
 import { defineComponent as defineComponent2 } from "vue";
@@ -2330,7 +2477,7 @@ import { normalizeClass as _normalizeClass, createElementVNode as _createElement
 var exampleComponent = defineComponent2({
   name: "XTimeComponentExample",
   components: {
-    XTimeTextField: _sfc_main
+    XTimeTextField: _sfc_main$a
   },
   data() {
     return {
@@ -2375,8 +2522,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* CACHED */
         ))
       ]),
-      _: 1,
-      __: [1]
+      _: 1
+      /* STABLE */
     }, 8, ["modelValue"])), [
       [
         _directive_validation,

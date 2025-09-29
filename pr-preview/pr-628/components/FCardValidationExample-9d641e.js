@@ -97,7 +97,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 /* CLASS */
               )
             ]),
-            default: _withCtx(() => _cache[0] || (_cache[0] = [
+            default: _withCtx(() => [..._cache[0] || (_cache[0] = [
               _createElementVNode(
                 "p",
                 null,
@@ -128,7 +128,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 -1
                 /* CACHED */
               )
-            ])),
+            ])]),
             footer: _withCtx(({ hasError }) => [
               _createElementVNode("div", _hoisted_1, [
                 _createElementVNode("button", _hoisted_2, [
@@ -176,8 +176,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           ))
         ]),
-        _: 1,
-        __: [3]
+        _: 1
+        /* STABLE */
       }),
       _createElementVNode("button", {
         type: "button",
