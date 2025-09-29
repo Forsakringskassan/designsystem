@@ -1912,6 +1912,7 @@ import { defineComponent as defineComponent2 } from "vue";
 var FErrorPage_default = defineComponent2({
   name: "FErrorPage",
   props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
     payload: {
       type: Object,
       required: false,
@@ -2088,8 +2089,7 @@ var FModal_default = defineComponent4({
      */
     isOpen: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * The aria-label attribute text for the top right close button.
@@ -2104,8 +2104,7 @@ var FModal_default = defineComponent4({
      */
     fullscreen: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * The type of modal. 'information', 'warning' and 'error' is valid.
@@ -2414,16 +2413,14 @@ var FConfirmModal_default = defineComponent5({
      */
     fullscreen: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * Prop for opening modal
      */
     isOpen: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * Simple text content
@@ -2641,15 +2638,13 @@ var IFlex_default = defineComponent6({
      * stacked on top of each other when breakpoint is small (aka mobile).
      */
     collapse: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     /**
      * If set the IFlexItems will wrap when out of space
      */
     wrap: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     /**
      * Set how IFlexItems should float.
@@ -2720,15 +2715,13 @@ var IFlexItem_default = defineComponent7({
      * If set this item will grow to its largest possible size.
      */
     grow: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     /**
      * If set this item will shrink to its smallest possible size.
      */
     shrink: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     /**
      * Vertical positioning of content.
@@ -2813,8 +2806,7 @@ var FErrorList_default = defineComponent8({
      */
     bullets: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * Optional callback for performing actions before navigation.
@@ -3052,6 +3044,7 @@ var FValidationGroup_default = defineComponent9({
      *
      *   `componentCount`: number of registered components
      */
+    /* eslint-disable-next-line vue/no-unused-properties -- one-way binding, we ignore whatever the consumer sets this to */
     modelValue: {
       type: Object,
       required: false,
@@ -3064,8 +3057,7 @@ var FValidationGroup_default = defineComponent9({
      */
     stopPropagation: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     }
   },
   emits: [
@@ -3183,6 +3175,7 @@ var FValidationForm_default = defineComponent10({
     useErrorList: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3191,6 +3184,7 @@ var FValidationForm_default = defineComponent10({
     errorListBullets: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3343,6 +3337,7 @@ var FFormModal_default = defineComponent11({
     fullscreen: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3352,6 +3347,7 @@ var FFormModal_default = defineComponent11({
     isOpen: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3377,7 +3373,7 @@ var FFormModal_default = defineComponent11({
      */
     value: {
       type: Object,
-      default: function() {
+      default() {
         return {};
       }
     },
@@ -3387,6 +3383,7 @@ var FFormModal_default = defineComponent11({
     useErrorList: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3452,23 +3449,31 @@ var FFormModal_default = defineComponent11({
       ]
     }
   },
-  emits: [
+  emits: {
     /**
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
      * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
-    "cancel",
+    cancel() {
+      return true;
+    },
     /**
      * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
      * In most use cases the isOpen prop should be set to false when this event is triggered.
      */
-    "close",
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
+    close(_payload) {
+      return true;
+    },
     /**
      * Event that is dispatched when the submit button is is clicked.
      * The event payload is the data that has been submitted.
      */
-    "submit"
-  ],
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
+    submit(_payload) {
+      return true;
+    }
+  },
   data() {
     return {};
   },
