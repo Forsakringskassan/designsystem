@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 6.20.1 (2025-09-29)
+
+### Bug Fixes
+
+* **@fkui/tsconfig:** modern tsconfig for Cypress preset (refs SB-4982) cd49e06
+
 ## 6.20.0 (2025-09-28)
 
 ### Features
