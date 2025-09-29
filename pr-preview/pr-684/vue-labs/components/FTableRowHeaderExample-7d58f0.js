@@ -2745,7 +2745,7 @@ var _hoisted_2$3 = {
   class: "table-ng__column"
 };
 var _hoisted_3$2 = ["aria-level"];
-var _hoisted_4$1 = ["aria-expanded"];
+var _hoisted_4$1 = ["aria-label", "aria-expanded"];
 var _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "ITableRow",
   props: {
@@ -2772,10 +2772,11 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
   setup(__props, {
     emit: __emit
   }) {
-    const expandableRef = useTemplateRef("expandable");
     const emit = __emit;
+    const expandableRef = useTemplateRef("expandable");
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
+    const expandLabel = computed(() => __props.isExpanded ? "St\xE4ng rad" : "Expandera rad");
     function onActivateCell(e) {
       assertRef(expandableRef);
       expandableRef.value.tabIndex = 0;
@@ -2797,7 +2798,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("button", {
         ref: "expandable",
         tabindex: "-1",
-        "aria-label": "Expandera rad",
+        "aria-label": expandLabel.value,
         "aria-expanded": __props.isExpanded,
         type: "button",
         class: normalizeClass(`level-${__props.ariaLevel}`),
