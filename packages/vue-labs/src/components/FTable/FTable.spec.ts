@@ -660,6 +660,63 @@ describe("footer", () => {
     });
 });
 
+describe("caption", () => {
+    it("should not render if missing slot 'caption'", () => {
+        const wrapper = mount(FTable, {
+            attrs: {
+                columns: [],
+                rows: [],
+            },
+            slots: {},
+        });
+        expect(wrapper.find("[data-test='caption']").exists()).toBeFalsy();
+    });
+
+    it("should not render if slot 'caption' is empty", () => {
+        const wrapper = mount(FTable, {
+            attrs: {
+                columns: [],
+                rows: [],
+            },
+            slots: {
+                caption: "",
+            },
+        });
+        expect(wrapper.find("[data-test='caption']").exists()).toBeFalsy();
+    });
+
+    it("should render if slot 'caption' is present", () => {
+        const wrapper = mount(FTable, {
+            attrs: {
+                columns: [],
+                rows: [],
+            },
+            slots: {
+                caption: "Table caption",
+            },
+        });
+        const caption = wrapper.find("[data-test='caption']");
+        expect(caption.exists()).toBeTruthy();
+        expect(caption.text()).toBe("Table caption");
+    });
+
+    it("should render with class 'sr-only' if slot 'caption' with class 'sr-only' is present", () => {
+        const wrapper = mount(FTable, {
+            attrs: {
+                columns: [],
+                rows: [],
+            },
+            slots: {
+                caption: '<span class="sr-only">Table caption</span>',
+            },
+        });
+        const caption = wrapper.find("[data-test='caption']");
+        expect(caption.exists()).toBeTruthy();
+        expect(caption.find(".sr-only").exists()).toBeTruthy();
+        expect(caption.text()).toBe("Table caption");
+    });
+});
+
 describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
     it("should render bulk checkbox in first column header for regular table", () => {
         const rows = [{ text: "Foo" }, { text: "Bar" }];

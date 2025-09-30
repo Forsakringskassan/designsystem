@@ -9,6 +9,7 @@
 // @public (undocumented)
 export class FTablePageObject implements BasePageObject {
     constructor(selector?: string);
+    caption(): Cypress.Chainable<JQuery<HTMLTableSectionElement>>;
     cell(descriptor: {
         row: number;
         col: number;

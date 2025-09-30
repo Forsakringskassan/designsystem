@@ -260,6 +260,13 @@ export default defineComponent({
         components(): object {
             return { FTable };
         },
+        captionSlotTemplate(): string {
+            return /* HTML */ `<template #caption>
+                <span ${this.hasHiddenCaption ? `class="sr-only"` : ""}>
+                    Tabell över exempel på kolumntyper
+                </span>
+            </template>`;
+        },
         expandableAttribute(): string | undefined {
             if (!this.isExpandable) {
                 return;
@@ -298,7 +305,7 @@ export default defineComponent({
                     selectable,
                     expandableAttribute,
                 },
-                [this.expandableSlotTemplate, this.emptyTemplate],
+                [this.captionSlotTemplate, this.expandableSlotTemplate, this.emptyTemplate],
             );
         },
     },
@@ -320,7 +327,7 @@ export default defineComponent({
             <template #label> Visuellt </template>
             <f-checkbox-field v-model="striped" :value="true"> Zebrarandig </f-checkbox-field>
             <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
-            <f-checkbox-field v-model="hasHiddenCaption" disabled :value="true">
+            <f-checkbox-field v-model="hasHiddenCaption" :value="true">
                 Dold caption
             </f-checkbox-field>
         </f-fieldset>
