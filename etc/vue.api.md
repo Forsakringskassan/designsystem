@@ -1714,6 +1714,59 @@ required: false;
 hideWeekNumbers: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+ICalendarYearSelector: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>, {
+yearSelectorOpen: Ref<boolean, boolean>;
+activeYear: Ref<FYear, FYear>;
+selectableYears: Readonly<ShallowRef<FYear[]>>;
+onChangeDate: (date: FDate) => void;
+onClickSelectYear: (year: FYear) => void;
+}, {}, {
+yearNounText(): string;
+}, {
+getSelectableYearId(year: FYear): string;
+onClickDay(date: FDate): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "click")[], "update:modelValue" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>> & Readonly<{
+onClick?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // @public (undocumented)
@@ -3772,6 +3825,59 @@ required: false;
 hideWeekNumbers: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+ICalendarYearSelector: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>, {
+yearSelectorOpen: Ref<boolean, boolean>;
+activeYear: Ref<FYear, FYear>;
+selectableYears: Readonly<ShallowRef<FYear[]>>;
+onChangeDate: (date: FDate) => void;
+onClickSelectYear: (year: FYear) => void;
+}, {}, {
+yearNounText(): string;
+}, {
+getSelectableYearId(year: FYear): string;
+onClickDay(date: FDate): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "click")[], "update:modelValue" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>> & Readonly<{
+onClick?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
 IPopup: DefineComponent<ExtractPropTypes<    {
 isOpen: {
@@ -14669,6 +14775,61 @@ flip: string;
 rotate: string;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 }, {}, string, ComponentProvideOptions, true, {}, any>;
+
+// @public (undocumented)
+export const ICalendarYearSelector: DefineComponent<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>, {
+yearSelectorOpen: Ref<boolean, boolean>;
+activeYear: Ref<FYear, FYear>;
+selectableYears: Readonly<ShallowRef<FYear[]>>;
+onChangeDate: (date: FDate) => void;
+onClickSelectYear: (year: FYear) => void;
+}, {}, {
+yearNounText(): string;
+}, {
+getSelectableYearId(year: FYear): string;
+onClickDay(date: FDate): void;
+}, ComponentOptionsMixin, ComponentOptionsMixin, ("update:modelValue" | "click")[], "update:modelValue" | "click", PublicProps, Readonly<ExtractPropTypes<    {
+modelValue: {
+type: PropType<FDate>;
+required: true;
+};
+minDate: {
+type: PropType<FDate>;
+required: true;
+};
+maxDate: {
+type: PropType<FDate>;
+required: true;
+};
+id: {
+type: StringConstructor;
+required: false;
+default: () => string;
+};
+}>> & Readonly<{
+onClick?: ((...args: any[]) => any) | undefined;
+"onUpdate:modelValue"?: ((...args: any[]) => any) | undefined;
+}>, {
+id: string;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_Props_4" needs to be exported by the entry point index.d.ts
 //
