@@ -71,6 +71,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     type: "checkbox",
     id: Symbol("multi-select"),
     header: ref("selectable"),
+    description: null,
     sortable: null,
     component: ITableCheckbox,
     value(row) {
@@ -101,6 +102,7 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
     type: "radio",
     id: Symbol("single-select"),
     header: ref("Välj en rad"),
+    description: null,
     sortable: null,
     component: ITableRadio,
     value(row) {

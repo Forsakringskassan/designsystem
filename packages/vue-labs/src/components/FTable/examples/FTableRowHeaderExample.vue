@@ -45,6 +45,7 @@ const columns = defineTableColumns<Row>([
     {
         type: "text",
         header: "Formatterad text",
+        description: "Belopp",
         value(row) {
             return formatNumber(row.antal) ?? "";
         },
@@ -54,6 +55,7 @@ const columns = defineTableColumns<Row>([
     {
         type: "text",
         header: "Redigerbar text",
+        description: "Förmån",
         editable: true,
         key: "level",
         value(row) {
