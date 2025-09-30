@@ -53,6 +53,8 @@ export const FTable: <T, KeyAttribute extends keyof T = keyof T, ExpandableAttri
     expose(exposed: ShallowUnwrapRef<    {}>): void;
     attrs: any;
     slots: {
+        caption?: (props: {}) => any;
+    } & {
         empty?: (props: {}) => any;
     } & {
         expandable?: (props: {
