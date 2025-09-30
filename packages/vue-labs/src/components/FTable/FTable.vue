@@ -16,7 +16,7 @@ import {
     watchEffect,
 } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
-import { FSortFilterDatasetInjected, setInternalKeys, useTranslate } from "@fkui/vue";
+import { FSortFilterDatasetInjected, setInternalKeys, useSlotUtils, useTranslate } from "@fkui/vue";
 import { activateCell, getMetaRows, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableExpandButton from "./ITableExpandButton.vue";
@@ -58,6 +58,7 @@ const {
     selectable?: "single" | "multi";
 }>();
 const $t = useTranslate();
+const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const selectAllRef = ref<HTMLInputElement | null>(null);
 const expandedKeys: Ref<string[]> = ref([]);
@@ -67,6 +68,10 @@ const metaRows = computed(
 );
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
+
+const hasCaption = computed(() => {
+    return hasSlot("caption", {}, { stripClasses: [] });
+});
 
 const isEmpty = computed((): boolean => {
     return metaRows.value.length === 0;
@@ -349,6 +354,9 @@ onMounted(() => {
         @click="onClick"
         @keydown="onKeydown"
     >
+        <caption v-if="hasCaption">
+            <slot name="caption"></slot>
+        </caption>
         <thead>
             <tr class="table-ng__row" aria-rowindex="1">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
