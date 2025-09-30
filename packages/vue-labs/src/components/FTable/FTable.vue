@@ -60,6 +60,10 @@ const metaRows = computed(
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 
+const hasCaption = computed(() => {
+    return hasSlot("caption", {}, { stripClasses: [] });
+});
+
 const isEmpty = computed((): boolean => {
     return metaRows.value.length === 0;
 });
@@ -256,6 +260,9 @@ onMounted(() => {
         @click="onClick"
         @keydown="onKeydown"
     >
+        <caption v-if="hasCaption" data-test="caption">
+            <slot name="caption"></slot>
+        </caption>
         <thead>
             <tr class="table-ng__row" aria-rowindex="1">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
