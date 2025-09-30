@@ -267,6 +267,26 @@ describe("footer", () => {
         });
     });
 });
+describe("caption", () => {
+    it("should not render if missing slot 'caption'", () => {
+        const wrapper = mount(FTable, {
+            attrs: {
+                columns: [],
+                rows: [],
+            },
+            slots: {},
+        });
+        expect(wrapper.find("[data-test='caption']").exists()).toBeFalsy();
+    });
+
+    it.todo("should not render if slot 'caption' is empty");
+
+    it.todo("should render if slot 'caption' is present");
+
+    it.todo(
+        "should render with class 'sr-only' if slot 'caption' with class 'sr-only' is present",
+    );
+});
 
 describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
     it("should render bulk checkbox in first column header for regular table", () => {
