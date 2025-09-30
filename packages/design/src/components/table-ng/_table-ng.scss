@@ -12,6 +12,11 @@ $table-ng-header-separator: 1px solid var(--f-border-color-grid) !default;
 $table-ng-header-padding: core.densify(size.$padding-025) size.$padding-050 !default;
 $table-ng-header-font-weight: var(--f-font-weight-medium) !default;
 
+// Column description
+$table-ng-description-foreground: var(--f-text-color-discrete) !default;
+$table-ng-description-background: transparent !default;
+$table-ng-description-font-weight: var(--f-font-weight-normal) !default;
+
 .table-ng {
     border-collapse: separate;
     border-spacing: 0;
@@ -56,6 +61,14 @@ $table-ng-header-font-weight: var(--f-font-weight-medium) !default;
             &--empty {
                 text-align: center;
             }
+        }
+    }
+
+    &__column {
+        &__description {
+            background: $table-ng-description-background;
+            color: $table-ng-description-foreground;
+            font-weight: $table-ng-description-font-weight;
         }
     }
 

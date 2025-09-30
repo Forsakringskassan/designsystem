@@ -26,7 +26,7 @@ FTableRadioExample.vue
 FTableExpandableRows.vue
 ```
 
-## Radrubriker
+## Radrubriker och kolumnbeskrivningar
 
 ```import
 FTableRowHeaderExample.vue

@@ -17,6 +17,7 @@ export interface TableColumnSimple<T, K extends keyof T> {
      * to set `type` at all but this simplifies the normalization */
     type?: undefined;
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     value?(row: T): string;
 }
@@ -27,6 +28,7 @@ export interface TableColumnSimple<T, K extends keyof T> {
 export interface TableColumnRowHeader<T, K extends keyof T> {
     type: "rowheader";
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     value?(row: T): string;
 }
@@ -38,6 +40,7 @@ export interface NormalizedTableColumnRowHeader<T, K> {
     readonly type: "rowheader";
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
+    readonly description: string | null;
     readonly sortable: K | null;
     readonly component: Component<{
         row: T;
@@ -52,6 +55,7 @@ export interface NormalizedTableColumnRowHeader<T, K> {
 export interface TableColumnCheckbox<T, K extends keyof T> {
     type: "checkbox";
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     value?(row: T): boolean;
     update?(row: T, newValue: boolean, oldValue: boolean): void;
@@ -65,6 +69,7 @@ export interface NormalizedTableColumnCheckbox<T, K> {
     readonly type: "checkbox";
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
+    readonly description: string | null;
     readonly sortable: K | null;
     readonly component: Component<{
         row: T;
@@ -81,6 +86,7 @@ export interface NormalizedTableColumnCheckbox<T, K> {
 export interface TableColumnRadio<T, K extends keyof T> {
     type: "radio";
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     value?(row: T): boolean;
     update?(row: T, newValue: boolean, oldValue: boolean): void;
@@ -93,6 +99,7 @@ export interface NormalizedTableColumnRadio<T, K> {
     readonly type: "radio";
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
+    readonly description: string | null;
     readonly sortable: K | null;
     readonly component: Component<{
         row: T;
@@ -108,6 +115,7 @@ export interface NormalizedTableColumnRadio<T, K> {
 export interface TableColumnText<T, K extends keyof T> {
     type: "text";
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     value?(row: T): string;
     update?(row: T, newValue: string, oldValue: string): void;
@@ -122,6 +130,7 @@ export interface NormalizedTableColumnText<T, K> {
     readonly type: "text";
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
+    readonly description: string | null;
     readonly validation: ValidatorConfigs;
     readonly sortable: K | null;
     readonly component: Component<{
@@ -139,6 +148,7 @@ export interface NormalizedTableColumnText<T, K> {
 export interface TableColumnAnchor<T, K extends keyof T> {
     type: "anchor";
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     value(row: T): string | null;
     enabled?: boolean | ((row: T) => boolean);
@@ -152,6 +162,7 @@ export interface NormalizedTableColumnAnchor<T, K> {
     readonly type: "anchor";
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
+    readonly description: string | null;
     readonly href: string;
     readonly sortable: K | null;
     readonly component: Component<{
@@ -168,6 +179,7 @@ export interface NormalizedTableColumnAnchor<T, K> {
 export interface TableColumnButton<T, K extends keyof T> {
     type: "button";
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     value(row: T): string | null;
     onClick?(row: T): void;
@@ -182,6 +194,7 @@ export interface NormalizedTableColumnButton<T, K> {
     readonly type: "button";
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
+    readonly description: string | null;
     readonly icon: string | null;
     readonly sortable: K | null;
     readonly component: Component<{
@@ -199,6 +212,7 @@ export interface NormalizedTableColumnButton<T, K> {
 export interface TableColumnSelect<T, K extends keyof T> {
     type: "select";
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     value?(row: T): string;
     update?(row: T, newValue: string, oldValue: string): void;
@@ -213,6 +227,7 @@ export interface NormalizedTableColumnSelect<T, K> {
     readonly type: "select";
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
+    readonly description: string | null;
     readonly options: string[];
     readonly sortable: K | null;
     readonly component: Component<{
@@ -229,6 +244,7 @@ export interface NormalizedTableColumnSelect<T, K> {
  */
 export interface TableColumnRender<T, K> {
     header: string | Readonly<Ref<string>>;
+    description?: string;
     key?: K;
     render(row: T): VNode | Component;
 }
@@ -240,6 +256,7 @@ export interface NormalizedTableColumnRender<T> {
     readonly type: undefined;
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
+    readonly description: string | null;
     readonly sortable: boolean | null;
     render(row: T): VNode | Component;
 }
@@ -348,6 +365,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
             type: undefined,
             id: Symbol(),
             header: toRef(column.header),
+            description: column.description ?? null,
             render: column.render,
             sortable: null,
         } satisfies NormalizedTableColumnRender<T>;
@@ -358,6 +376,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "checkbox",
                 id: Symbol(),
                 header: toRef(column.header),
+                description: column.description ?? null,
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
                 editable:
@@ -372,6 +391,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "radio",
                 id: Symbol(),
                 header: toRef(column.header),
+                description: column.description ?? null,
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
                 sortable: column.key ?? null,
@@ -382,6 +402,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "text",
                 id: Symbol(),
                 header: toRef(column.header),
+                description: column.description ?? null,
                 value: getValueFn(column.value, column.key, String, ""),
                 update: getUpdateFn(column.update, column.key),
                 editable:
@@ -397,6 +418,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "rowheader",
                 id: Symbol(),
                 header: toRef(column.header),
+                description: column.description ?? null,
                 value: getValueFn(column.value, column.key, String, ""),
                 sortable: column.key ?? null,
                 component: ITableRowheader,
@@ -406,6 +428,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "anchor",
                 id: Symbol(),
                 header: toRef(column.header),
+                description: column.description ?? null,
                 value: column.value,
                 href: column.href,
                 enabled:
@@ -420,6 +443,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "button",
                 id: Symbol(),
                 header: toRef(column.header),
+                description: column.description ?? null,
                 value: column.value,
                 onClick: column.onClick,
                 enabled:
@@ -435,6 +459,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "select",
                 id: Symbol(),
                 header: toRef(column.header),
+                description: column.description ?? null,
                 value: getValueFn(column.value, column.key, String, ""),
                 update: getUpdateFn(column.update, column.key),
                 editable:
@@ -450,6 +475,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 type: "text",
                 id: Symbol(),
                 header: toRef(column.header),
+                description: column.description ?? null,
                 value: getValueFn(column.value, column.key, String, ""),
                 update() {
                     /* do nothing */
