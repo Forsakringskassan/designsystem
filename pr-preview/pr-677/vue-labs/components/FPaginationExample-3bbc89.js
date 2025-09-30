@@ -2626,6 +2626,13 @@ function getTd(element) {
     return closest;
   }
 }
+function setDefaultCellTarget(table) {
+  const target = getCellTarget(table, 1, 0);
+  dispatchActivateCellEvent(target, {
+    focus: false
+  });
+  return target;
+}
 function maybeNavigateToCell(e) {
   let newCellTarget = e.target;
   const td = getTd(e.target);
@@ -3856,6 +3863,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
     }
     onMounted(() => {
       assertRef(tableRef);
+      setDefaultCellTarget(tableRef.value);
       registerCallbackOnMount(callbackSortableColumns);
       registerCallbackOnSort(callbackOnSort);
     });
