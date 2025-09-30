@@ -178,7 +178,7 @@
                                 
                                 <li><a href="#expanderbar_tabell">Expanderbar tabell</a></li>
                                 
-                                <li><a href="#radrubriker">Radrubriker</a></li>
+                                <li><a href="#radrubriker_och_kolumnbeskrivningar">Radrubriker och kolumnbeskrivningar</a></li>
                                 
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
@@ -1099,7 +1099,7 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="radrubriker"><a class="header-anchor" href="#radrubriker">Radrubriker</a></h2>
+        <h2 id="radrubriker_och_kolumnbeskrivningar"><a class="header-anchor" href="#radrubriker_och_kolumnbeskrivningar">Radrubriker och kolumnbeskrivningar</a></h2>
             <div
                 id="example-9d5dbb"
                 class="code-preview code-preview--default"
@@ -1109,13 +1109,13 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-968d37"></div>
+        <div id="example-0f16fa"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRowHeaderExample-968d37.js"></script>
+        <script type="module" src="./FTableRowHeaderExample-0f16fa.js"></script>
     </div>
                 <div>
             <button
@@ -1167,7 +1167,6 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Oformaterad text&quot;</span>,
-        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Kolumnbeskrivning&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> row.<span class="hljs-property">antal</span>;
         },
@@ -1181,6 +1180,7 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Formatterad text&quot;</span>,
+        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Belopp&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">formatNumber</span>(row.<span class="hljs-property">antal</span>) ?? <span class="hljs-string">&quot;&quot;</span>;
         },
@@ -1190,6 +1190,7 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Redigerbar text&quot;</span>,
+        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Förmån&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;level&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
