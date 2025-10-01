@@ -2735,7 +2735,7 @@ function stopEdit(element, reason) {
   }
   return newCellTarget;
 }
-var _hoisted_1$7 = {
+var _hoisted_1$8 = {
   key: 0,
   class: "table-ng__row"
 };
@@ -2779,7 +2779,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     return (_ctx, _cache) => {
-      return __props.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$7, [__props.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return __props.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [__props.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
         "aria-level": __props.ariaLevel
@@ -2800,7 +2800,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$6 = ["checked", "aria-label"];
+var _hoisted_1$7 = ["checked", "aria-label"];
 var _hoisted_2$2 = ["checked", "aria-label"];
 var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
@@ -2833,7 +2833,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         "aria-label": __props.column.header,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$6)], 32)) : (openBlock(), createElementBlock("td", {
+      }, null, 40, _hoisted_1$7)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "target",
         tabindex: "-1",
@@ -2847,7 +2847,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$5 = ["checked", "aria-label"];
+var _hoisted_1$6 = ["checked", "aria-label"];
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
@@ -2878,11 +2878,11 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         "aria-label": __props.column.header,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$5)], 32);
+      }, null, 40, _hoisted_1$6)], 32);
     };
   }
 });
-var _hoisted_1$4 = ["href"];
+var _hoisted_1$5 = ["href"];
 var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
@@ -2912,7 +2912,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_1$4)], 32)) : (openBlock(), createElementBlock("td", {
+      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_1$5)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "target",
         tabindex: "-1",
@@ -2922,7 +2922,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$3 = {
+var _hoisted_1$4 = {
   class: "sr-only"
 };
 var _sfc_main$5 = /* @__PURE__ */ defineComponent({
@@ -2966,7 +2966,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       }, [__props.column.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: __props.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$3, toDisplayString(__props.column.value(__props.row)), 1)], 512)], 32)) : (openBlock(), createElementBlock("td", {
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$4, toDisplayString(__props.column.value(__props.row)), 1)], 512)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "td",
         tabindex: "-1",
@@ -2986,7 +2986,7 @@ function useStartStopEdit() {
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$2 = {
+var _hoisted_1$3 = {
   class: "table-ng__editable"
 };
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
@@ -3142,7 +3142,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         onClick: withModifiers(onClickCell, ["stop"]),
         onKeydown,
         onTableActivateCell: onActivateCell
-      }, [createElementVNode("div", _hoisted_1$2, [createElementVNode("span", {
+      }, [createElementVNode("div", _hoisted_1$3, [createElementVNode("span", {
         ref: "view",
         class: "table-ng__editable__text"
       }, toDisplayString(__props.column.value(__props.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
@@ -3172,7 +3172,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$1 = {
+var _hoisted_1$2 = {
   class: "table-ng__editable"
 };
 var _hoisted_2$1 = {
@@ -3359,7 +3359,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"]),
         onTableActivateCell: onActivateCell
-      }, [withDirectives(createElementVNode("div", _hoisted_1$1, [createElementVNode("span", _hoisted_2$1, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$2, [createElementVNode("span", _hoisted_2$1, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
       })], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
@@ -3443,12 +3443,13 @@ function getUpdateFn(fn, key) {
   return () => void 0;
 }
 function normalizeTableColumn(column) {
-  var _column$key, _column$key2, _column$validation, _column$key3, _column$key4, _column$key5, _column$icon, _column$key6, _column$key7, _column$key8;
+  var _column$description2, _column$key, _column$description3, _column$key2, _column$description4, _column$validation, _column$key3, _column$description5, _column$key4, _column$description6, _column$key5, _column$description7, _column$icon, _column$key6, _column$description8, _column$key7, _column$description9, _column$key8;
   if ("render" in column) {
+    var _column$description;
     return {
       type: void 0,
       header: column.header,
-      description: column.description,
+      description: (_column$description = column.description) !== null && _column$description !== void 0 ? _column$description : null,
       render: column.render,
       sortable: null
     };
@@ -3458,7 +3459,7 @@ function normalizeTableColumn(column) {
       return {
         type: "checkbox",
         header: column.header,
-        description: column.description,
+        description: (_column$description2 = column.description) !== null && _column$description2 !== void 0 ? _column$description2 : null,
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3472,7 +3473,7 @@ function normalizeTableColumn(column) {
       return {
         type: "radio",
         header: column.header,
-        description: column.description,
+        description: (_column$description3 = column.description) !== null && _column$description3 !== void 0 ? _column$description3 : null,
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
@@ -3482,7 +3483,7 @@ function normalizeTableColumn(column) {
       return {
         type: "text",
         header: column.header,
-        description: column.description,
+        description: (_column$description4 = column.description) !== null && _column$description4 !== void 0 ? _column$description4 : null,
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3497,7 +3498,7 @@ function normalizeTableColumn(column) {
       return {
         type: "rowheader",
         header: column.header,
-        description: column.description,
+        description: (_column$description5 = column.description) !== null && _column$description5 !== void 0 ? _column$description5 : null,
         value: getValueFn(column.value, column.key, String, ""),
         sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
         component: _sfc_main$2
@@ -3506,7 +3507,7 @@ function normalizeTableColumn(column) {
       return {
         type: "anchor",
         header: column.header,
-        description: column.description,
+        description: (_column$description6 = column.description) !== null && _column$description6 !== void 0 ? _column$description6 : null,
         value: column.value,
         href: column.href,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
@@ -3520,7 +3521,7 @@ function normalizeTableColumn(column) {
       return {
         type: "button",
         header: column.header,
-        description: column.description,
+        description: (_column$description7 = column.description) !== null && _column$description7 !== void 0 ? _column$description7 : null,
         value: column.value,
         onClick: column.onClick,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
@@ -3535,7 +3536,7 @@ function normalizeTableColumn(column) {
       return {
         type: "select",
         header: column.header,
-        description: column.description,
+        description: (_column$description8 = column.description) !== null && _column$description8 !== void 0 ? _column$description8 : null,
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3550,7 +3551,7 @@ function normalizeTableColumn(column) {
       return {
         type: "text",
         header: column.header,
-        description: column.description,
+        description: (_column$description9 = column.description) !== null && _column$description9 !== void 0 ? _column$description9 : null,
         value: getValueFn(column.value, column.key, String, ""),
         update() {
         },
@@ -3566,6 +3567,9 @@ function normalizeTableColumns(columns) {
     return normalizeTableColumn(column);
   });
 }
+var _hoisted_1$1 = {
+  class: "table-ng__column__description"
+};
 var _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "ITableHeader",
   props: {
@@ -3646,18 +3650,7 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref(IFlex), {
-        gap: "1x",
-        class: "table-ng__column__description"
-      }, {
-        default: withCtx(() => [createVNode(unref(IFlexItem), {
-          shrink: ""
-        }, {
-          default: withCtx(() => [createTextVNode(toDisplayString(__props.column.description), 1)]),
-          _: 1
-        })]),
-        _: 1
-      })], 544);
+      }), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("div", _hoisted_1$1, toDisplayString(__props.column.description), 1)], 544);
     };
   }
 });
@@ -3729,6 +3722,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     const multiSelectColumn = {
       type: "checkbox",
       header: "selectable",
+      description: null,
       sortable: null,
       component: _sfc_main$8,
       value(row) {
@@ -3755,6 +3749,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     const singleSelectColumn = {
       type: "radio",
       header: "V\xE4lj en rad",
+      description: null,
       sortable: null,
       component: _sfc_main$7,
       value(row) {
