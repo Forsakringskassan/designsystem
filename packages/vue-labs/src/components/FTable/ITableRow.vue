@@ -30,6 +30,8 @@ provide("renderHeader", renderHeader);
 
 const toggleIcon = computed(() => (isExpanded ? "arrow-down" : "arrow-right"));
 
+const expandLabel = computed(() => (isExpanded ? "Stäng rad" : "Expandera rad"));
+
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
     assertRef(expandableRef);
     expandableRef.value.tabIndex = 0;
@@ -55,7 +57,14 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
                     class="table-ng__cell table-ng__cell--expand"
                     @table-activate-cell="onActivateCell"
                 >
-                    <button ref="expandable" tabindex="-1" type="button" @click="emit('toggle', rowKey)">
+                    <button
+                        ref="expandable"
+                        tabindex="-1"
+                        :aria-label="expandLabel"
+                        :aria-expanded="isExpanded"
+                        type="button"
+                        @click="emit('toggle', rowKey)"
+                    >
                         <f-icon class="button__icon" :name="toggleIcon"></f-icon>
                     </button>
                 </td>
