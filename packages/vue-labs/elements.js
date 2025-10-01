@@ -45,6 +45,10 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "i-table-expandable": {
+        flow: true,
+    },
+
     "x-order-filter": {
         flow: true,
     },
