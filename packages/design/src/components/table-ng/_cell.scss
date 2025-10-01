@@ -96,16 +96,25 @@ $horizontal-padding: size.$padding-050;
         }
     }
 
+    &--expand,
     &--button {
         button {
-            background: inherit;
-            border: 0;
-            cursor: pointer;
-            margin: 0;
-            min-width: var(--f-icon-size-medium);
             padding: 0;
+            margin: 0;
+            border: 0;
+            min-width: var(--f-icon-size-medium);
             width: 100%;
+            background: inherit;
+            cursor: pointer;
+
+            svg {
+                vertical-align: middle;
+            }
         }
+    }
+
+    &--expand {
+        width: var(--f-icon-size-medium);
     }
 
     &--rowheader {
@@ -144,6 +153,16 @@ $horizontal-padding: size.$padding-050;
         visibility: hidden;
         margin-left: 1rem;
         flex: none;
+    }
+}
+
+.table-ng__custom-expandable {
+    padding: $vertical-padding $horizontal-padding;
+    border: 2px solid transparent;
+
+    &:focus {
+        box-shadow: none;
+        border: 2px solid var(--f-color-focus);
     }
 }
 

@@ -1,6 +1,8 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>, K extends keyof T">
-import { computed, provide } from "vue";
+import { computed, provide, useTemplateRef } from "vue";
+import { assertRef } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
+import { type FTableActivateCellEvent } from "./events";
 
 const {
     renderHeader,
@@ -22,9 +24,20 @@ const emit = defineEmits<{
     toggle: [key: string];
 }>();
 
+const expandableRef = useTemplateRef("expandable");
+
 provide("renderHeader", renderHeader);
 
 const toggleIcon = computed(() => (isExpanded ? "arrow-down" : "arrow-right"));
+
+function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
+    assertRef(expandableRef);
+    expandableRef.value.tabIndex = 0;
+
+    if (e.detail.focus) {
+        expandableRef.value.focus();
+    }
+}
 </script>
 
 <template>
@@ -37,40 +50,19 @@ const toggleIcon = computed(() => (isExpanded ? "arrow-down" : "arrow-right"));
     <template v-else>
         <tr class="table-ng__row" :aria-level>
             <template v-if="isTreegrid">
-                <td v-if="isExpandable" tabindex="-1">
-                    <button
-                        aria-label="toggle"
-                        type="button"
-                        class="expander"
-                        :class="`level-${ariaLevel}`"
-                        @click="emit('toggle', rowKey)"
-                    >
+                <td
+                    v-if="isExpandable"
+                    class="table-ng__cell table-ng__cell--expand"
+                    @table-activate-cell="onActivateCell"
+                >
+                    <button ref="expandable" tabindex="-1" type="button" @click="emit('toggle', rowKey)">
                         <f-icon class="button__icon" :name="toggleIcon"></f-icon>
                     </button>
                 </td>
-                <td v-else :class="`level-${ariaLevel}`"></td>
+                <td v-else ref="expandable" class="table-ng__cell" @table-activate-cell="onActivateCell"></td>
             </template>
 
             <slot></slot>
         </tr>
     </template>
 </template>
-
-<!-- eslint-disable-next-line vue/no-restricted-block -- technical debt -->
-<style>
-.expander {
-    margin: 0;
-    padding: 0;
-    background: inherit;
-    border: 0;
-    cursor: pointer;
-}
-
-.level-2 {
-    margin-left: 0.5rem;
-}
-
-.level-3 {
-    padding-left: 1rem;
-}
-</style>

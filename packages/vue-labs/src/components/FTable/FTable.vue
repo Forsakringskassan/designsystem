@@ -24,6 +24,7 @@ import {
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableRadio from "./ITableRadio.vue";
 import ITableHeader from "./ITableHeader.vue";
+import ITableExpandable from "./ITableExpandable.vue";
 import { stopEditKey } from "./start-stop-edit";
 import { type MetaRow } from "./MetaRow";
 
@@ -189,18 +190,34 @@ function onClick(e: MouseEvent): void {
     }
 }
 
+function isInExpandable(el: HTMLElement): boolean {
+    if (!el.parentElement) {
+        return false;
+    }
+    return Boolean(el.parentElement.closest(".table-ng__custom-expandable"));
+}
+
 function onTableFocusout(e: FocusEvent): void {
+    const { target, relatedTarget } = e;
+    const validFocus = target instanceof HTMLElement && relatedTarget instanceof HTMLElement;
+    if (!validFocus) {
+        return;
+    }
+    if (isInExpandable(target)) {
+        return;
+    }
+
     assertRef(tableRef);
-    const outsideTable = !e.relatedTarget || !tableRef.value.contains(e.relatedTarget as HTMLElement);
+    const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
 
     if (outsideTable) {
-        const td = (e.target as HTMLElement).closest("td");
+        const td = target.closest("td");
 
         if (td) {
             dispatchActivateCellEvent(td, { focus: false });
         }
     } else {
-        (e.target as HTMLElement).tabIndex = -1;
+        target.tabIndex = -1;
     }
 }
 
@@ -307,12 +324,10 @@ onMounted(() => {
                     :is-expanded
                     @toggle="onToggleExpanded"
                 >
-                    <template v-if="level! > 1 && hasExpandableSlot">
-                        <td :colspan="columns.length">
-                            <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
-                            <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
-                        </td>
-                    </template>
+                    <i-table-expandable v-if="level! > 1 && hasExpandableSlot" :colspan="columns.length">
+                        <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
+                        <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
+                    </i-table-expandable>
                     <template v-else>
                         <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
                         <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
