@@ -5,7 +5,7 @@
 >
 import { type Ref, computed, onMounted, provide, ref, useSlots, useTemplateRef, watchEffect } from "vue";
 import { assertRef } from "@fkui/logic";
-import { FSortFilterDatasetInjected, setInternalKeys } from "@fkui/vue";
+import { FSortFilterDatasetInjected, setInternalKeys, useSlotUtils } from "@fkui/vue";
 import {
     dispatchActivateCellEvent,
     getMetaRows,
@@ -50,6 +50,7 @@ const {
 }>();
 const tableRef = useTemplateRef("table");
 const selectAllRef = useTemplateRef("selectAll");
+const { hasSlot } = useSlotUtils();
 const expandedKeys: Ref<string[]> = ref([]);
 const keyedRows = computed(() => setInternalKeys(rows, keyAttribute, expandableAttribute));
 const metaRows = computed(
@@ -57,6 +58,10 @@ const metaRows = computed(
 );
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
+
+const hasCaption = computed(() => {
+    return hasSlot("caption", {}, { stripClasses: [] });
+});
 
 const isEmpty = computed((): boolean => {
     return metaRows.value.length === 0;
@@ -274,6 +279,9 @@ onMounted(() => {
 
 <template>
     <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
+        <caption v-if="hasCaption">
+            <slot name="caption"></slot>
+        </caption>
         <thead>
             <tr class="table-ng__row">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>

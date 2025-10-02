@@ -229,6 +229,7 @@ function onButtonClick(id: string): void {
                 striped
                 selectable="multi"
             >
+                <template #caption>Tabell</template>
                 <template #footer>Footer</template>
             </f-table>
         </template>
