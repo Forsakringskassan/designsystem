@@ -418,15 +418,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     rows: _ctx.colors,
     "key-attribute": "name"
   }, {
-    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+    caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
         "span",
         { class: "sr-only" },
         " F\xE4rgpaletten ",
         -1
-        /* HOISTED */
+        /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(({ row }) => [
       _createVNode(
         _component_f_table_column,
