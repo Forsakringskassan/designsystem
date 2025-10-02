@@ -5362,14 +5362,20 @@ input[type=search]:focus,
   height: var(--f-icon-size-medium);
   width: var(--f-icon-size-medium);
 }
-.table-ng__cell--button button {
-  background: inherit;
-  border: 0;
-  cursor: pointer;
-  margin: 0;
-  min-width: var(--f-icon-size-medium);
+.table-ng__cell--expand button, .table-ng__cell--button button {
   padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: var(--f-icon-size-medium);
   width: 100%;
+  background: inherit;
+  cursor: pointer;
+}
+.table-ng__cell--expand button svg, .table-ng__cell--button button svg {
+  vertical-align: middle;
+}
+.table-ng__cell--expand {
+  width: var(--f-icon-size-medium);
 }
 .table-ng__cell--rowheader {
   font-weight: var(--f-font-weight-medium);
@@ -5403,6 +5409,15 @@ input[type=search]:focus,
   visibility: hidden;
   margin-left: 1rem;
   flex: none;
+}
+
+.table-ng__custom-expandable {
+  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;
+  border: 2px solid transparent;
+}
+.table-ng__custom-expandable:focus {
+  box-shadow: none;
+  border: 2px solid var(--f-color-focus);
 }
 
 .table-ng__cell--select:hover .table-ng__editable, .table-ng__cell--text:hover .table-ng__editable {
