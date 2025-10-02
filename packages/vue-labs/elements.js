@@ -7,6 +7,7 @@ module.exports = defineMetadata({
 
     "f-table": {
         flow: true,
+        slots: ["default", "caption", "empty", "expandable", "footer"],
     },
 
     "i-table-row": {
