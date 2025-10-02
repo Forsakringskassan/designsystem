@@ -30,7 +30,7 @@ import { FSortFilterDataset } from "@fkui/vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, useTemplateRef, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { defineComponent, useTemplateRef, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, createVNode, unref, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, normalizeClass, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
@@ -2283,16 +2283,18 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$a = defineComponent({
+var _sfc_main$b = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
   props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     formatter: {
       type: Function,
       required: false,
       default: formatNumberToTime
     },
+    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
     parser: {
       type: Function,
       required: false,
@@ -2733,7 +2735,7 @@ function stopEdit(element, reason) {
   }
   return newCellTarget;
 }
-var _hoisted_1$7 = {
+var _hoisted_1$8 = {
   key: 0,
   class: "table-ng__row"
 };
@@ -2743,16 +2745,12 @@ var _hoisted_2$3 = {
   class: "table-ng__column"
 };
 var _hoisted_3$2 = ["aria-level"];
-var _hoisted_4$1 = {
-  key: 0,
-  tabindex: "-1"
-};
-var _sfc_main$9 = /* @__PURE__ */ defineComponent({
+var _hoisted_4$1 = ["aria-label", "aria-expanded"];
+var _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "ITableRow",
   props: {
     renderHeader: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     rowKey: {
       default: ""
@@ -2761,16 +2759,13 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
       default: () => void 0
     },
     isTreegrid: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     isExpandable: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     isExpanded: {
-      type: Boolean,
-      default: false
+      type: Boolean
     }
   },
   emits: ["toggle"],
@@ -2778,33 +2773,50 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
     emit: __emit
   }) {
     const emit = __emit;
+    const expandableRef = useTemplateRef("expandable");
     provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
+    const expandLabel = computed(() => __props.isExpanded ? "St\xE4ng rad" : "Expandera rad");
+    function onActivateCell(e) {
+      assertRef(expandableRef);
+      expandableRef.value.tabIndex = 0;
+      if (e.detail.focus) {
+        expandableRef.value.focus();
+      }
+    }
     return (_ctx, _cache) => {
-      return _ctx.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$7, [_ctx.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
+      return __props.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$8, [__props.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$3)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
         key: 1,
         class: "table-ng__row",
-        "aria-level": _ctx.ariaLevel
-      }, [_ctx.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
+        "aria-level": __props.ariaLevel
+      }, [__props.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
         key: 0
-      }, [_ctx.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_4$1, [createElementVNode("button", {
-        "aria-label": "toggle",
+      }, [__props.isExpandable ? (openBlock(), createElementBlock("td", {
+        key: 0,
+        class: "table-ng__cell table-ng__cell--expand",
+        onTableActivateCell: onActivateCell
+      }, [createElementVNode("button", {
+        ref: "expandable",
+        tabindex: "-1",
+        "aria-label": expandLabel.value,
+        "aria-expanded": __props.isExpanded,
         type: "button",
-        class: normalizeClass(["expander", `level-${_ctx.ariaLevel}`]),
-        onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle", _ctx.rowKey))
+        onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle", __props.rowKey))
       }, [createVNode(unref(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 2)])) : (openBlock(), createElementBlock("td", {
+      }, null, 8, ["name"])], 8, _hoisted_4$1)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
-        class: normalizeClass(`level-${_ctx.ariaLevel}`)
-      }, null, 2))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$2));
+        ref: "expandable",
+        class: "table-ng__cell",
+        onTableActivateCell: onActivateCell
+      }, null, 544))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$2));
     };
   }
 });
-var _hoisted_1$6 = ["checked", "aria-label"];
+var _hoisted_1$7 = ["checked", "aria-label"];
 var _hoisted_2$2 = ["checked", "aria-label"];
-var _sfc_main$8 = /* @__PURE__ */ defineComponent({
+var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
     column: {},
@@ -2824,33 +2836,33 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       __props.column.update(__props.row, checked, !checked);
     }
     return (_ctx, _cache) => {
-      return _ctx.column.editable(_ctx.row) ? (openBlock(), createElementBlock("td", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
         class: "table-ng__cell table-ng__cell--checkbox",
         onTableActivateCell: onActivateCell
       }, [createElementVNode("input", {
         ref: "target",
-        checked: _ctx.column.value(_ctx.row),
+        checked: __props.column.value(__props.row),
         type: "checkbox",
-        "aria-label": _ctx.column.header,
+        "aria-label": __props.column.header,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$6)], 32)) : (openBlock(), createElementBlock("td", {
+      }, null, 40, _hoisted_1$7)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "target",
         tabindex: "-1",
         class: "table-ng__cell table-ng__cell--checkbox",
         onTableActivateCell: onActivateCell
       }, [createElementVNode("input", {
-        checked: _ctx.column.value(_ctx.row),
+        checked: __props.column.value(__props.row),
         type: "checkbox",
-        "aria-label": _ctx.column.header
+        "aria-label": __props.column.header
       }, null, 8, _hoisted_2$2)], 544));
     };
   }
 });
-var _hoisted_1$5 = ["checked", "aria-label"];
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _hoisted_1$6 = ["checked", "aria-label"];
+var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
     column: {},
@@ -2876,16 +2888,16 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("input", {
         ref: "input",
         type: "radio",
-        checked: _ctx.column.value(_ctx.row),
-        "aria-label": _ctx.column.header,
+        checked: __props.column.value(__props.row),
+        "aria-label": __props.column.header,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$5)], 32);
+      }, null, 40, _hoisted_1$6)], 32);
     };
   }
 });
-var _hoisted_1$4 = ["href"];
-var _sfc_main$6 = /* @__PURE__ */ defineComponent({
+var _hoisted_1$5 = ["href"];
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
     column: {},
@@ -2912,9 +2924,9 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
-        href: _ctx.column.href,
+        href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 9, _hoisted_1$4)], 32)) : (openBlock(), createElementBlock("td", {
+      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_1$5)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "target",
         tabindex: "-1",
@@ -2924,10 +2936,10 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$3 = {
+var _hoisted_1$4 = {
   class: "sr-only"
 };
-var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableButton",
   props: {
     column: {},
@@ -2965,10 +2977,10 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         type: "button",
         tabindex: "-1",
         onClick: onClickButton
-      }, [_ctx.column.icon ? (openBlock(), createBlock(unref(FIcon), {
+      }, [__props.column.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
-        name: _ctx.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$3, toDisplayString(_ctx.column.value(_ctx.row)), 1)], 512)], 32)) : (openBlock(), createElementBlock("td", {
+        name: __props.column.icon
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$4, toDisplayString(__props.column.value(__props.row)), 1)], 512)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "td",
         tabindex: "-1",
@@ -2988,10 +3000,10 @@ function useStartStopEdit() {
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$2 = {
+var _hoisted_1$3 = {
   class: "table-ng__editable"
 };
-var _sfc_main$4 = /* @__PURE__ */ defineComponent({
+var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableText",
   props: {
     row: {},
@@ -3136,7 +3148,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
       };
     }
     return (_ctx, _cache) => {
-      return _ctx.column.editable(_ctx.row) ? (openBlock(), createElementBlock("td", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
         ref: "td",
         tabindex: "-1",
@@ -3144,10 +3156,10 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         onClick: withModifiers(onClickCell, ["stop"]),
         onKeydown,
         onTableActivateCell: onActivateCell
-      }, [createElementVNode("div", _hoisted_1$2, [createElementVNode("span", {
+      }, [createElementVNode("div", _hoisted_1$3, [createElementVNode("span", {
         ref: "view",
         class: "table-ng__editable__text"
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
+      }, toDisplayString(__props.column.value(__props.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
         ref: "input",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => model.value = $event),
         class: normalizeClass(inputClasses.value),
@@ -3170,18 +3182,18 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         class: "table-ng__cell table-ng__cell--static",
         onTableActivateCell: onActivateCell
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 545));
+      }, toDisplayString(__props.column.value(__props.row)), 545));
     };
   }
 });
-var _hoisted_1$1 = {
+var _hoisted_1$2 = {
   class: "table-ng__editable"
 };
 var _hoisted_2$1 = {
   class: "table-ng__editable__text"
 };
 var _hoisted_3$1 = ["aria-controls"];
-var _sfc_main$3 = /* @__PURE__ */ defineComponent({
+var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
     row: {},
@@ -3353,7 +3365,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       stopEdit2(editRef.value, "escape");
     }
     return (_ctx, _cache) => {
-      return _ctx.column.editable(_ctx.row) ? (openBlock(), createElementBlock("td", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
         ref: "td",
         class: "table-ng__cell table-ng__cell--select",
@@ -3361,7 +3373,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"]),
         onTableActivateCell: onActivateCell
-      }, [withDirectives(createElementVNode("div", _hoisted_1$1, [createElementVNode("span", _hoisted_2$1, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$2, [createElementVNode("span", _hoisted_2$1, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
       })], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
@@ -3381,7 +3393,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       }, toDisplayString(viewValue.value), 41, _hoisted_3$1), [[vShow, editing.value]]), _cache[4] || (_cache[4] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
         id: "dropdownId",
         "is-open": dropdownIsOpen.value,
-        options: _ctx.column.options,
+        options: __props.column.options,
         "active-option": activeOption.value,
         "active-option-id": unref(activeOptionId),
         "input-node": editRef.value,
@@ -3393,11 +3405,11 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         class: "table-ng__cell table-ng__cell--static",
         onTableActivateCell: onActivateCell
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 545));
+      }, toDisplayString(__props.column.value(__props.row)), 545));
     };
   }
 });
-var _sfc_main$2 = /* @__PURE__ */ defineComponent({
+var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "ITableRowheader",
   props: {
     row: {},
@@ -3418,7 +3430,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         class: "table-ng__cell table-ng__cell--rowheader",
         scope: "row",
         onTableActivateCell: onActivateCell
-      }, toDisplayString(_ctx.column.value(_ctx.row)), 545);
+      }, toDisplayString(__props.column.value(__props.row)), 545);
     };
   }
 });
@@ -3466,7 +3478,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
         },
         sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
-        component: _sfc_main$8
+        component: _sfc_main$9
       };
     case "radio":
       return {
@@ -3475,7 +3487,7 @@ function normalizeTableColumn(column) {
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
-        component: _sfc_main$7
+        component: _sfc_main$8
       };
     case "text":
       return {
@@ -3489,7 +3501,7 @@ function normalizeTableColumn(column) {
         },
         validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
         sortable: (_column$key3 = column.key) !== null && _column$key3 !== void 0 ? _column$key3 : null,
-        component: _sfc_main$4
+        component: _sfc_main$5
       };
     case "rowheader":
       return {
@@ -3497,7 +3509,7 @@ function normalizeTableColumn(column) {
         header: column.header,
         value: getValueFn(column.value, column.key, String, ""),
         sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
-        component: _sfc_main$2
+        component: _sfc_main$3
       };
     case "anchor":
       return {
@@ -3510,7 +3522,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
         },
         sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
-        component: _sfc_main$6
+        component: _sfc_main$7
       };
     case "button":
       return {
@@ -3524,7 +3536,7 @@ function normalizeTableColumn(column) {
         },
         icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
         sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
-        component: _sfc_main$5
+        component: _sfc_main$6
       };
     case "select":
       return {
@@ -3538,7 +3550,7 @@ function normalizeTableColumn(column) {
         },
         options: column.options,
         sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
-        component: _sfc_main$3
+        component: _sfc_main$4
       };
     case void 0:
       return {
@@ -3550,7 +3562,7 @@ function normalizeTableColumn(column) {
         editable: () => false,
         sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
         validation: {},
-        component: _sfc_main$4
+        component: _sfc_main$5
       };
   }
 }
@@ -3559,7 +3571,7 @@ function normalizeTableColumns(columns) {
     return normalizeTableColumn(column);
   });
 }
-var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+var _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "ITableHeader",
   props: {
     column: {},
@@ -3625,9 +3637,9 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         default: withCtx(() => [createVNode(unref(IFlexItem), {
           shrink: ""
         }, {
-          default: withCtx(() => [createTextVNode(toDisplayString(_ctx.column.header), 1)]),
+          default: withCtx(() => [createTextVNode(toDisplayString(__props.column.header), 1)]),
           _: 1
-        }), _cache[0] || (_cache[0] = createTextVNode()), _ctx.sortEnabled ? (openBlock(), createBlock(unref(IFlexItem), {
+        }), _cache[0] || (_cache[0] = createTextVNode()), __props.sortEnabled ? (openBlock(), createBlock(unref(IFlexItem), {
           key: 0,
           shrink: "",
           align: "center"
@@ -3640,6 +3652,32 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         })) : createCommentVNode("", true)]),
         _: 1
       })], 544);
+    };
+  }
+});
+var _hoisted_1$1 = ["colspan"];
+var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "ITableExpandable",
+  props: {
+    colspan: {}
+  },
+  setup(__props) {
+    const rootRef = useTemplateRef("root");
+    function onActivateCell(e) {
+      assertRef(rootRef);
+      rootRef.value.tabIndex = 0;
+      if (e.detail.focus) {
+        rootRef.value.focus();
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("td", {
+        ref: "root",
+        class: "table-ng__custom-expandable",
+        colspan: __props.colspan,
+        tabindex: "-1",
+        onTableActivateCell: onActivateCell
+      }, [renderSlot(_ctx.$slots, "default")], 40, _hoisted_1$1);
     };
   }
 });
@@ -3667,7 +3705,6 @@ var _hoisted_6 = {
   class: "table-ng__row--empty"
 };
 var _hoisted_7 = ["colspan"];
-var _hoisted_8 = ["colspan"];
 var _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
@@ -3680,8 +3717,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       default: () => void 0
     },
     striped: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     selectable: {
       default: () => void 0
@@ -3713,7 +3749,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       type: "checkbox",
       header: "selectable",
       sortable: null,
-      component: _sfc_main$8,
+      component: _sfc_main$9,
       value(row) {
         if (!__props.keyAttribute) {
           return false;
@@ -3739,7 +3775,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       type: "radio",
       header: "V\xE4lj en rad",
       sortable: null,
-      component: _sfc_main$7,
+      component: _sfc_main$8,
       value(row) {
         if (!__props.keyAttribute) {
           return false;
@@ -3809,18 +3845,35 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         });
       }
     }
+    function isInExpandable(el) {
+      if (!el.parentElement) {
+        return false;
+      }
+      return Boolean(el.parentElement.closest(".table-ng__custom-expandable"));
+    }
     function onTableFocusout(e) {
+      const {
+        target,
+        relatedTarget
+      } = e;
+      const validFocus = target instanceof HTMLElement && relatedTarget instanceof HTMLElement;
+      if (!validFocus) {
+        return;
+      }
+      if (isInExpandable(target)) {
+        return;
+      }
       assertRef(tableRef);
-      const outsideTable = !e.relatedTarget || !tableRef.value.contains(e.relatedTarget);
+      const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
       if (outsideTable) {
-        const td = e.target.closest("td");
+        const td = target.closest("td");
         if (td) {
           dispatchActivateCellEvent(td, {
             focus: false
           });
         }
       } else {
-        e.target.tabIndex = -1;
+        target.tabIndex = -1;
       }
     }
     const {
@@ -3884,7 +3937,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         indeterminate: "",
         onChange: onSelectAllChange
       }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-        return openBlock(), createBlock(_sfc_main$1, {
+        return openBlock(), createBlock(_sfc_main$2, {
           key: column.header,
           column,
           "sort-enabled": isSortEnabled(column),
@@ -3908,7 +3961,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         isExpandable,
         isExpanded
       }) => {
-        return openBlock(), createBlock(_sfc_main$9, {
+        return openBlock(), createBlock(_sfc_main$a, {
           key,
           "row-key": key,
           "aria-rowindex": rowIndex,
@@ -3920,20 +3973,23 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           "is-expanded": isExpanded,
           onToggle: onToggleExpanded
         }, {
-          default: withCtx(() => [level > 1 && hasExpandableSlot.value ? (openBlock(), createElementBlock("td", {
+          default: withCtx(() => [level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$1, {
             key: 0,
             colspan: columns.value.length
-          }, [renderSlot(_ctx.$slots, "expandable", mergeProps({
-            ref_for: true
           }, {
-            row
-          }))], 8, _hoisted_8)) : (openBlock(), createElementBlock(Fragment, {
+            default: withCtx(() => [renderSlot(_ctx.$slots, "expandable", mergeProps({
+              ref_for: true
+            }, {
+              row
+            }))]),
+            _: 2
+          }, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment, {
             key: 1
-          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$8, {
+          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$9, {
             key: 0,
             row,
             column: multiSelectColumn
-          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$7, {
+          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$8, {
             key: 1,
             row,
             column: singleSelectColumn
