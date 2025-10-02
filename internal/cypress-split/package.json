@@ -26,6 +26,6 @@
   },
   "devDependencies": {
     "esbuild": "0.25.10",
-    "globby": "14.1.0"
+    "globby": "15.0.0"
   }
 }
