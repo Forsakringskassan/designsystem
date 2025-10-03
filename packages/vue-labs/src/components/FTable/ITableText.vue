@@ -6,6 +6,8 @@ import { type NormalizedTableColumnText } from "./table-column";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type FTableActivateCellEvent } from "./events";
 import { isAlphanumeric } from "./is-alphanumeric";
+import { addSubtypeValidators } from "./input-validators";
+import { specializedInputFieldConfig } from "./specialized-input-fields-config";
 
 const { row, column } = defineProps<{
     row: T;
@@ -33,6 +35,12 @@ const inputClasses = computed(() => {
         "table-ng__textedit": true,
     };
 });
+
+const formatedValue = computed((): string => {
+    const value = column.value(row);
+    return specializedInputFieldConfig[column.subtype].formatter(value, column.decimals);
+});
+
 const tdElement = useTemplateRef("td");
 const viewElement = useTemplateRef("view");
 const inputElement = useTemplateRef("input");
@@ -40,6 +48,7 @@ const { stopEdit } = useStartStopEdit();
 
 onMounted(() => {
     if (inputElement.value) {
+        addSubtypeValidators(inputElement.value, column.subtype);
         ValidationService.addValidatorsToElement(inputElement.value, column.validation);
     }
 });
@@ -76,7 +85,7 @@ function onClickCell(event: MouseEvent): void {
     assertRef(tdElement);
 
     if (tdElement.value.contains(event.target as Node)) {
-        const value = column.value(row);
+        const value = formatedValue.value;
         onStartEdit(value);
     }
 }
@@ -89,7 +98,7 @@ function onViewingKeydown(event: KeyboardEvent): void {
 
     if (event.key === "Enter") {
         event.stopPropagation();
-        const value = column.value(row);
+        const value = formatedValue.value;
         onStartEdit(value);
     }
 }
@@ -102,8 +111,8 @@ function onEditingKeydown(event: KeyboardEvent): void {
 
     if (event.key === "Enter") {
         event.preventDefault();
-        const oldValue = column.value(row);
-        const newValue = model.value;
+        const oldValue = formatedValue.value;
+        const newValue = specializedInputFieldConfig[column.subtype].parser(model.value);
         column.update(row, newValue, oldValue);
         model.value = "";
         onStopEdit({ reason: "enter" });
@@ -117,8 +126,8 @@ function onEditingKeydown(event: KeyboardEvent): void {
 
     if (event.key === "Tab") {
         event.preventDefault();
-        const oldValue = column.value(row);
-        const newValue = model.value;
+        const oldValue = formatedValue.value;
+        const newValue = specializedInputFieldConfig[column.subtype].parser(model.value);
         column.update(row, newValue, oldValue);
         model.value = "";
         onStopEdit({ reason: event.shiftKey ? "shift-tab" : "tab" });
@@ -140,8 +149,8 @@ function onBlur(): void {
     tdElement.value.style.removeProperty("width");
     const isDirty = model.value !== "";
     if (isDirty) {
-        const oldValue = column.value(row);
-        const newValue = model.value;
+        const oldValue = formatedValue.value;
+        const newValue = specializedInputFieldConfig[column.subtype].parser(model.value);
         column.update(row, newValue, oldValue);
     }
 }
@@ -163,7 +172,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
         @table-activate-cell="onActivateCell"
     >
         <div class="table-ng__editable">
-            <span ref="view" class="table-ng__editable__text">{{ column.value(row) }}</span>
+            <span ref="view" class="table-ng__editable__text">{{ formatedValue }}</span>
             <input
                 ref="input"
                 v-model="model"
@@ -185,6 +194,6 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
         class="table-ng__cell table-ng__cell--static"
         @table-activate-cell="onActivateCell"
     >
-        {{ column.value(row) }}
+        {{ formatedValue }}
     </td>
 </template>
