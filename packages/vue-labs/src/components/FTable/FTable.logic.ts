@@ -61,7 +61,7 @@ function getRowIndexes<T, K extends keyof T = keyof T>(
     return array;
 }
 
-function getCellTarget(
+export function getCellTarget(
     tableElement: HTMLTableElement,
     rowIndex: number,
     cellIndex: number,
@@ -92,7 +92,7 @@ function getLastCellIndex(tableElement: HTMLTableElement): number {
     return tableElement.rows[0].cells.length - 1;
 }
 
-function getVerticalNavIndex(
+export function getVerticalNavIndex(
     table: HTMLTableElement,
     from: TableCellIndex,
     to: TableCellIndex,
