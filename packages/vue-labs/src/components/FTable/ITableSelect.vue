@@ -28,7 +28,9 @@ const viewValue = ref(column.value(row));
 const tdRef = useTemplateRef("td");
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(tdRef);
+    if (!tdRef.value) {
+        return; // may be undefined if row is removed
+    }
     tdRef.value.tabIndex = 0;
 
     if (e.detail.focus) {
