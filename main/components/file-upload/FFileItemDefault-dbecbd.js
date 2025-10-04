@@ -28,32 +28,29 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorEnabled.vue:FFileSelectorEnabled-a46343.js
+// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemDefault.vue:FFileItemDefault-dbecbd.js
 import { defineComponent } from "vue";
-import { FFileSelector } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FFileItem } from "@fkui/vue";
+import { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "FFileSelectorEnabled",
-  components: { FFileSelector }
+  name: "FFileItemDefault",
+  components: { FFileItem },
+  data() {
+    return { fileName: "bar.jpg", fileType: "image/jpeg" };
+  },
+  methods: {}
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_file_selector = _resolveComponent("f-file-selector");
-  return _openBlock(), _createBlock(_component_f_file_selector, { accept: "application/pdf, image/jpeg, image/tiff, image/png" }, {
-    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
-      _createTextVNode(
-        " L\xE4gg till fil ",
-        -1
-        /* CACHED */
-      )
-    ])]),
-    _: 1
-    /* STABLE */
-  });
+  const _component_f_file_item = _resolveComponent("f-file-item");
+  return _openBlock(), _createBlock(_component_f_file_item, {
+    "file-name": _ctx.fileName,
+    "mime-type": _ctx.fileType
+  }, null, 8, ["file-name", "mime-type"]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a46343"
+  selector: "#example-dbecbd"
 });
 export {
   render
