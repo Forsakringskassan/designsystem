@@ -28,24 +28,18 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/WithParserFormatterExample.vue:WithParserFormatterExample-50c00a.js
+// virtual-entry:virtual:docs/guides/validation/examples/FormatterExample.vue:FormatterExample-cc7a63.js
 import { defineComponent } from "vue";
+import { formatNumber } from "@fkui/logic";
 import { FTextField, FOutputField } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createVNode as _createVNode, createElementBlock as _createElementBlock } from "vue";
-function myParser(value) {
-  return value.toUpperCase();
-}
-function myFormatter(value) {
-  return value.toLowerCase();
-}
+import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, toDisplayString as _toDisplayString, createVNode as _createVNode, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "WithParserFormatterExample",
+  name: "FormatterExample",
   components: { FTextField, FOutputField },
   data() {
     return {
       modelValue: "",
-      myParser,
-      myFormatter
+      formatNumber
     };
   }
 });
@@ -60,11 +54,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createElementBlock("div", _hoisted_1, [
     _createElementVNode("div", _hoisted_2, [
       _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
-        id: "with-parser-formatter",
+        id: "formatter-example",
         modelValue: _ctx.modelValue,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.modelValue = $event),
-        parser: _ctx.myParser,
-        formatter: _ctx.myFormatter
+        formatter: _ctx.formatNumber
       }, {
         default: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
@@ -73,19 +66,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* CACHED */
           )
         ])]),
+        description: _withCtx(({ descriptionClass }) => [
+          _createElementVNode(
+            "span",
+            {
+              class: _normalizeClass(descriptionClass)
+            },
+            " Fyll i ett heltal ",
+            2
+            /* CLASS */
+          )
+        ]),
         _: 1
         /* STABLE */
-      }, 8, ["modelValue", "parser", "formatter"])), [
+      }, 8, ["modelValue", "formatter"])), [
         [
           _directive_validation,
-          { maxLength: { length: 100 } },
+          { maxLength: { length: 20 } },
           void 0,
           { maxLength: true }
         ]
       ])
     ]),
     _createElementVNode("div", _hoisted_3, [
-      _createVNode(_component_f_output_field, { for: "with-parser-formatter" }, {
+      _createVNode(_component_f_output_field, { for: "formatter-example" }, {
         label: _withCtx(() => [..._cache[2] || (_cache[2] = [
           _createTextVNode(
             " modelValue ",
@@ -111,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-50c00a"
+  selector: "#example-cc7a63"
 });
 export {
   render
