@@ -130,3 +130,28 @@ function createComponent(
         },
     });
 }
+
+
+it("Should set correct headertext 1.3", () => {
+    cy.mount(createComponent());
+        table.header(1).should("contain.text", "Name");
+        table.header(2).should("contain.text", "Input");
+        table.header(3).should("contain.text", "Kryssruta");
+        table.header(4).should("contain.text", "Button");
+        table.header(5).should("contain.text", "Anchor");
+        table.header(6).should("contain.text", "ID");
+});
+
+it.skip("should set rowheader 1.4", () => {
+    cy.mount(createComponent());
+    table.cell({row:1, col:1}).should("have.prop", "tagName", "TH");
+    table.cell({row:2, col:1}).should("have.prop", "tagName", "TH");
+    table.cell({row:3, col:1}).should("have.prop", "tagName", "TH");
+});
+
+it.skip("should set rowheader on expandable rows 1.4", () => {
+    cy.mount(createComponent("rows"));
+    table.expandButton(1).click();
+    table.cell({row:2, col:1}).should("have.prop", "tagName", "TH");
+});
+
