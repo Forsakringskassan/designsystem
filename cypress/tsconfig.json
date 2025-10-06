@@ -1,7 +1,14 @@
 {
     "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/cypress"],
     "compilerOptions": {
-        "types": ["cypress", "node", "cypress-html-validate/commands"],
+        "types": [
+            "cypress",
+            "node",
+            "cy-mount",
+            "cypress-html-validate/commands",
+            "@forsakringskassan/cypress-visual-regression/commands"
+        ],
+        "typeRoots": ["../node_modules", "../node_modules/@types", "./types"],
         "paths": {
             "@fkui/date": ["./packages/date/src/index.ts"],
             "@fkui/logic": ["./packages/logic/src/index.ts"],

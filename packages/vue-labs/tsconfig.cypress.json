@@ -14,11 +14,6 @@
         },
         "skipLibCheck": true
     },
-    "include": [
-        "src/@types/cypress.d.ts",
-        "src/**/*.ts",
-        "src/**/*.vue",
-        "src/**/*.cy.ts"
-    ],
+    "include": ["src/**/*.ts", "src/**/*.vue", "src/**/*.cy.ts"],
     "exclude": ["src/**/*.spec.ts"]
 }
