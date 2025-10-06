@@ -1488,43 +1488,43 @@ input[type=search]:focus,
     margin-right: 0;
   }
 }
-.button-group > .button.button--discrete, .button-group > .button--discrete.calendar-navbar__year-selector-button, .button-group > .button.button--text, .button-group > .button--text.calendar-navbar__year-selector-button {
+.button-group > .button.button--discrete, .button-group > .button--discrete.calendar-navbar__year-selector-button, .button-group > .button--discrete.docs-example-button, .button-group > .button.button--text, .button-group > .button--text.calendar-navbar__year-selector-button, .button-group > .button--text.docs-example-button {
   margin-bottom: calc(1rem * var(--f-density-factor));
   margin-right: 1.5rem;
 }
-.button-group > .button.button--discrete:last-child, .button-group > .button--discrete.calendar-navbar__year-selector-button:last-child, .button-group > .button.button--text:last-child, .button-group > .button--text.calendar-navbar__year-selector-button:last-child {
+.button-group > .button.button--discrete:last-child, .button-group > .button--discrete.calendar-navbar__year-selector-button:last-child, .button-group > .button--discrete.docs-example-button:last-child, .button-group > .button.button--text:last-child, .button-group > .button--text.calendar-navbar__year-selector-button:last-child, .button-group > .button--text.docs-example-button:last-child {
   margin-right: 0;
 }
-.button-group > .button.button--small, .button-group > .button--small.calendar-navbar__year-selector-button {
+.button-group > .button.button--small, .button-group > .button--small.calendar-navbar__year-selector-button, .button-group > .docs-example-button {
   margin-bottom: calc(0.75rem * var(--f-density-factor));
   margin-right: 0.75rem;
 }
-.button-group > .button.button--small:last-child, .button-group > .button--small.calendar-navbar__year-selector-button:last-child {
+.button-group > .button.button--small:last-child, .button-group > .button--small.calendar-navbar__year-selector-button:last-child, .button-group > .docs-example-button:last-child {
   margin-right: 0;
 }
 @media (max-width: 639.98px) {
-  .button-group > .button.button--small.button--full-width, .button-group > .button--small.button--full-width.calendar-navbar__year-selector-button {
+  .button-group > .button.button--small.button--full-width, .button-group > .button--small.button--full-width.calendar-navbar__year-selector-button, .button-group > .button--full-width.docs-example-button {
     margin-right: 0;
   }
 }
-.button-group > .button.button--medium, .button-group > .button--medium.calendar-navbar__year-selector-button {
+.button-group > .button.button--medium, .button-group > .button--medium.calendar-navbar__year-selector-button, .button-group > .button--medium.docs-example-button {
   margin-bottom: calc(0.75rem * var(--f-density-factor));
   margin-right: 1rem;
 }
-.button-group > .button.button--medium:last-child, .button-group > .button--medium.calendar-navbar__year-selector-button:last-child {
+.button-group > .button.button--medium:last-child, .button-group > .button--medium.calendar-navbar__year-selector-button:last-child, .button-group > .button--medium.docs-example-button:last-child {
   margin-right: 0;
 }
 @media (max-width: 639.98px) {
-  .button-group > .button.button--medium.button--full-width, .button-group > .button--medium.button--full-width.calendar-navbar__year-selector-button {
+  .button-group > .button.button--medium.button--full-width, .button-group > .button--medium.button--full-width.calendar-navbar__year-selector-button, .button-group > .button--medium.button--full-width.docs-example-button {
     margin-right: 0;
   }
 }
 @media (min-width: 640px) {
-  .button-group > .button.button--large, .button-group > .button--large.calendar-navbar__year-selector-button {
+  .button-group > .button.button--large, .button-group > .button--large.calendar-navbar__year-selector-button, .button-group > .button--large.docs-example-button {
     margin-bottom: calc(1rem * var(--f-density-factor));
     margin-right: 1.25rem;
   }
-  .button-group > .button.button--large:last-child, .button-group > .button--large.calendar-navbar__year-selector-button:last-child {
+  .button-group > .button.button--large:last-child, .button-group > .button--large.calendar-navbar__year-selector-button:last-child, .button-group > .button--large.docs-example-button:last-child {
     margin-right: 0;
   }
 }
@@ -1541,14 +1541,14 @@ input[type=search]:focus,
   margin: 0;
   margin-bottom: calc(1rem * var(--f-density-factor));
 }
-.button-list > li button.button.button--small, .button-list > li button.button--small.calendar-navbar__year-selector-button, .button-list > li button.button.button--medium, .button-list > li button.button--medium.calendar-navbar__year-selector-button {
+.button-list > li button.button.button--small, .button-list > li button.button--small.calendar-navbar__year-selector-button, .button-list > li button.docs-example-button, .button-list > li button.button.button--medium, .button-list > li button.button--medium.calendar-navbar__year-selector-button {
   margin-bottom: calc(0.75rem * var(--f-density-factor));
 }
-.button-list > li button.button.button--large, .button-list > li button.button--large.calendar-navbar__year-selector-button {
+.button-list > li button.button.button--large, .button-list > li button.button--large.calendar-navbar__year-selector-button, .button-list > li button.button--large.docs-example-button {
   margin-bottom: calc(1rem * var(--f-density-factor));
 }
 
-.button, .calendar-navbar__year-selector-button {
+.button, .calendar-navbar__year-selector-button, .docs-example-button {
   border-color: transparent;
   border-radius: var(--f-border-radius-medium);
   border-style: solid;
@@ -1575,7 +1575,7 @@ input[type=search]:focus,
   transition: background-color var(--f-animation-duration-medium) ease-out;
 }
 @media (max-width: 639.98px) {
-  .button, .calendar-navbar__year-selector-button {
+  .button, .calendar-navbar__year-selector-button, .docs-example-button {
     max-width: var(--f-width-full);
     width: var(--f-width-full);
   }
@@ -1589,7 +1589,7 @@ input[type=search]:focus,
   color: var(--fkds-color-action-text-secondary-default);
 }
 
-.button, .calendar-navbar__year-selector-button {
+.button, .calendar-navbar__year-selector-button, .docs-example-button {
   display: inline-flex;
   position: relative;
   background-color: var(--fkds-color-action-background-secondary-default);
@@ -1599,13 +1599,13 @@ input[type=search]:focus,
   color: var(--fkds-color-action-text-primary-default);
   padding: calc(var(--f-button-standard-padding-top) * var(--f-density-factor)) var(--f-button-standard-padding-right) calc(var(--f-button-standard-padding-bottom) * var(--f-density-factor)) var(--f-button-standard-padding-left);
 }
-.button:hover, .calendar-navbar__year-selector-button:hover {
+.button:hover, .calendar-navbar__year-selector-button:hover, .docs-example-button:hover {
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: var(--fkds-color-action-border-primary-default);
   color: var(--fkds-color-action-text-primary-default);
   box-shadow: var(--f-button-shadow-hover);
 }
-.button:active, .calendar-navbar__year-selector-button:active, .button:focus, .calendar-navbar__year-selector-button:focus {
+.button:active, .calendar-navbar__year-selector-button:active, .docs-example-button:active, .button:focus, .calendar-navbar__year-selector-button:focus, .docs-example-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
   outline: 2px solid transparent;
@@ -1613,12 +1613,12 @@ input[type=search]:focus,
   border-color: var(--fkds-color-action-border-primary-default);
   color: var(--fkds-color-action-text-primary-default);
 }
-.button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button.button--disabled:hover {
+.button.disabled, .disabled.calendar-navbar__year-selector-button, .disabled.docs-example-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .docs-example-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button--disabled.docs-example-button, .button.button--disabled:hover {
   background-color: var(--fkds-color-background-disabled);
   border-color: var(--fkds-color-border-disabled);
   color: var(--fkds-color-text-disabled);
 }
-.button.button--primary, .button--primary.calendar-navbar__year-selector-button {
+.button.button--primary, .button--primary.calendar-navbar__year-selector-button, .button--primary.docs-example-button {
   background-color: var(--fkds-color-action-background-primary-default);
   border-color: transparent;
   border-width: var(--f-border-width-medium);
@@ -1626,13 +1626,13 @@ input[type=search]:focus,
   color: var(--fkds-color-action-text-inverted-default);
   padding: calc(var(--f-button-primary-padding-top) * var(--f-density-factor)) var(--f-button-primary-padding-right) calc(var(--f-button-primary-padding-bottom) * var(--f-density-factor)) var(--f-button-primary-padding-left);
 }
-.button.button--primary:hover, .button--primary.calendar-navbar__year-selector-button:hover {
+.button.button--primary:hover, .button--primary.calendar-navbar__year-selector-button:hover, .button--primary.docs-example-button:hover {
   background-color: var(--fkds-color-action-background-primary-hover);
   border-color: transparent;
   color: var(--fkds-color-action-text-inverted-default);
   box-shadow: var(--f-button-shadow-hover);
 }
-.button.button--primary:active, .button--primary.calendar-navbar__year-selector-button:active, .button.button--primary:focus, .button--primary.calendar-navbar__year-selector-button:focus {
+.button.button--primary:active, .button--primary.calendar-navbar__year-selector-button:active, .button--primary.docs-example-button:active, .button.button--primary:focus, .button--primary.calendar-navbar__year-selector-button:focus, .button--primary.docs-example-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
   outline: 2px solid transparent;
@@ -1640,12 +1640,12 @@ input[type=search]:focus,
   border-color: transparent;
   color: var(--fkds-color-action-text-inverted-default);
 }
-.button.button--primary.disabled, .button--primary.disabled.calendar-navbar__year-selector-button, .button.button--primary.disabled:hover, .button.button--primary:disabled, .button--primary.calendar-navbar__year-selector-button:disabled, .button.button--primary:disabled:hover, .button.button--primary.button--disabled, .button--primary.button--disabled.calendar-navbar__year-selector-button, .button.button--primary.button--disabled:hover {
+.button.button--primary.disabled, .button--primary.disabled.calendar-navbar__year-selector-button, .button--primary.disabled.docs-example-button, .button.button--primary.disabled:hover, .button.button--primary:disabled, .button--primary.calendar-navbar__year-selector-button:disabled, .button--primary.docs-example-button:disabled, .button.button--primary:disabled:hover, .button.button--primary.button--disabled, .button--primary.button--disabled.calendar-navbar__year-selector-button, .button--primary.button--disabled.docs-example-button, .button.button--primary.button--disabled:hover {
   background-color: var(--fkds-color-background-disabled);
   border-color: var(--fkds-color-border-disabled);
   color: var(--fkds-color-text-disabled);
 }
-.button.button--secondary, .button--secondary.calendar-navbar__year-selector-button {
+.button.button--secondary, .button--secondary.calendar-navbar__year-selector-button, .button--secondary.docs-example-button {
   background-color: var(--fkds-color-action-background-secondary-default);
   border-color: var(--fkds-color-action-border-primary-default);
   border-width: var(--f-border-width-medium);
@@ -1653,13 +1653,13 @@ input[type=search]:focus,
   color: var(--fkds-color-action-text-primary-default);
   padding: calc(var(--f-button-secondary-padding-top) * var(--f-density-factor)) var(--f-button-secondary-padding-right) calc(var(--f-button-secondary-padding-bottom) * var(--f-density-factor)) var(--f-button-secondary-padding-left);
 }
-.button.button--secondary:hover, .button--secondary.calendar-navbar__year-selector-button:hover {
+.button.button--secondary:hover, .button--secondary.calendar-navbar__year-selector-button:hover, .button--secondary.docs-example-button:hover {
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: var(--fkds-color-action-border-primary-default);
   color: var(--fkds-color-action-text-primary-default);
   box-shadow: var(--f-button-shadow-hover);
 }
-.button.button--secondary:active, .button--secondary.calendar-navbar__year-selector-button:active, .button.button--secondary:focus, .button--secondary.calendar-navbar__year-selector-button:focus {
+.button.button--secondary:active, .button--secondary.calendar-navbar__year-selector-button:active, .button--secondary.docs-example-button:active, .button.button--secondary:focus, .button--secondary.calendar-navbar__year-selector-button:focus, .button--secondary.docs-example-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
   outline: 2px solid transparent;
@@ -1667,12 +1667,12 @@ input[type=search]:focus,
   border-color: var(--fkds-color-action-border-primary-default);
   color: var(--fkds-color-action-text-primary-default);
 }
-.button.button--secondary.disabled, .button--secondary.disabled.calendar-navbar__year-selector-button, .button.button--secondary.disabled:hover, .button.button--secondary:disabled, .button--secondary.calendar-navbar__year-selector-button:disabled, .button.button--secondary:disabled:hover, .button.button--secondary.button--disabled, .button--secondary.button--disabled.calendar-navbar__year-selector-button, .button.button--secondary.button--disabled:hover {
+.button.button--secondary.disabled, .button--secondary.disabled.calendar-navbar__year-selector-button, .button--secondary.disabled.docs-example-button, .button.button--secondary.disabled:hover, .button.button--secondary:disabled, .button--secondary.calendar-navbar__year-selector-button:disabled, .button--secondary.docs-example-button:disabled, .button.button--secondary:disabled:hover, .button.button--secondary.button--disabled, .button--secondary.button--disabled.calendar-navbar__year-selector-button, .button--secondary.button--disabled.docs-example-button, .button.button--secondary.button--disabled:hover {
   background-color: var(--fkds-color-background-disabled);
   border-color: var(--fkds-color-border-disabled);
   color: var(--fkds-color-text-disabled);
 }
-.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button {
+.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button--discrete.docs-example-button, .button.button--text, .button--text.calendar-navbar__year-selector-button, .button--text.docs-example-button {
   width: inherit;
   min-width: 0;
   font-weight: var(--f-font-weight-bold);
@@ -1685,13 +1685,13 @@ input[type=search]:focus,
   color: var(--fkds-color-action-text-primary-default);
   padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);
 }
-.button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover {
+.button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button--discrete.docs-example-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover, .button--text.docs-example-button:hover {
   background-color: var(--f-background-button-discrete-hover);
   border-color: transparent;
   color: var(--f-text-color-button-discrete-hover);
   box-shadow: var(--f-button-shadow-hover);
 }
-.button.button--discrete:active, .button--discrete.calendar-navbar__year-selector-button:active, .button.button--text:active, .button--text.calendar-navbar__year-selector-button:active, .button.button--discrete:focus, .button--discrete.calendar-navbar__year-selector-button:focus, .button.button--text:focus, .button--text.calendar-navbar__year-selector-button:focus {
+.button.button--discrete:active, .button--discrete.calendar-navbar__year-selector-button:active, .button--discrete.docs-example-button:active, .button.button--text:active, .button--text.calendar-navbar__year-selector-button:active, .button--text.docs-example-button:active, .button.button--discrete:focus, .button--discrete.calendar-navbar__year-selector-button:focus, .button--discrete.docs-example-button:focus, .button.button--text:focus, .button--text.calendar-navbar__year-selector-button:focus, .button--text.docs-example-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
   outline: 2px solid transparent;
@@ -1699,17 +1699,17 @@ input[type=search]:focus,
   border-color: transparent;
   color: var(--f-text-color-button-discrete-hover);
 }
-.button.button--discrete.disabled, .button--discrete.disabled.calendar-navbar__year-selector-button, .button.disabled.button--text, .disabled.button--text.calendar-navbar__year-selector-button, .button.button--discrete.disabled:hover, .button.button--discrete:disabled, .button--discrete.calendar-navbar__year-selector-button:disabled, .button.button--text:disabled, .button--text.calendar-navbar__year-selector-button:disabled, .button.button--discrete:disabled:hover, .button.button--discrete.button--disabled, .button--discrete.button--disabled.calendar-navbar__year-selector-button, .button.button--disabled.button--text, .button--disabled.button--text.calendar-navbar__year-selector-button, .button.button--discrete.button--disabled:hover {
+.button.button--discrete.disabled, .button--discrete.disabled.calendar-navbar__year-selector-button, .button--discrete.disabled.docs-example-button, .button.disabled.button--text, .disabled.button--text.calendar-navbar__year-selector-button, .disabled.button--text.docs-example-button, .button.button--discrete.disabled:hover, .button.button--discrete:disabled, .button--discrete.calendar-navbar__year-selector-button:disabled, .button--discrete.docs-example-button:disabled, .button.button--text:disabled, .button--text.calendar-navbar__year-selector-button:disabled, .button--text.docs-example-button:disabled, .button.button--discrete:disabled:hover, .button.button--discrete.button--disabled, .button--discrete.button--disabled.calendar-navbar__year-selector-button, .button--discrete.button--disabled.docs-example-button, .button.button--disabled.button--text, .button--disabled.button--text.calendar-navbar__year-selector-button, .button--disabled.button--text.docs-example-button, .button.button--discrete.button--disabled:hover {
   background-color: transparent;
   border-color: transparent;
   color: var(--fkds-color-text-disabled);
 }
 @media (max-width: 639.98px) {
-  .button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button {
+  .button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button--discrete.docs-example-button, .button.button--text, .button--text.calendar-navbar__year-selector-button, .button--text.docs-example-button {
     width: auto;
   }
 }
-.button.button--discrete--black, .button--discrete--black.calendar-navbar__year-selector-button, .button.button--text--black, .button--text--black.calendar-navbar__year-selector-button {
+.button.button--discrete--black, .button--discrete--black.calendar-navbar__year-selector-button, .button--discrete--black.docs-example-button, .button.button--text--black, .button--text--black.calendar-navbar__year-selector-button, .button--text--black.docs-example-button {
   /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
   padding-top: calc(var(--f-button-discrete-black-padding-top) * var(--f-density-factor));
   padding-right: var(--f-button-discrete-black-padding-right);
@@ -1718,14 +1718,14 @@ input[type=search]:focus,
   /* stylelint-enable declaration-block-no-redundant-longhand-properties */
   color: var(--fkds-color-action-text-secondary-default);
 }
-.button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover {
+.button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button--discrete.docs-example-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover, .button--text.docs-example-button:hover {
   box-shadow: none;
   mix-blend-mode: multiply;
 }
-.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button, .button.button--discrete:focus, .button.button--discrete:active, .button.button--discrete:hover {
+.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button--discrete.docs-example-button, .button.button--text, .button--text.calendar-navbar__year-selector-button, .button--text.docs-example-button, .button.button--discrete:focus, .button.button--discrete:active, .button.button--discrete:hover {
   border-radius: var(--f-button-discrete-radius-hover);
 }
-.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button {
+.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button, .button--discrete-inverted.docs-example-button {
   width: inherit;
   min-width: 0;
   font-weight: var(--f-font-weight-bold);
@@ -1744,13 +1744,13 @@ input[type=search]:focus,
   color: var(--fkds-color-action-text-inverted-default);
   padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);
 }
-.button.button--discrete-inverted:hover, .button--discrete-inverted.calendar-navbar__year-selector-button:hover {
+.button.button--discrete-inverted:hover, .button--discrete-inverted.calendar-navbar__year-selector-button:hover, .button--discrete-inverted.docs-example-button:hover {
   background-color: transparent;
   border-color: transparent;
   color: var(--f-text-color-button-discrete-inverted-hover);
   box-shadow: var(--f-button-shadow-hover);
 }
-.button.button--discrete-inverted:active, .button--discrete-inverted.calendar-navbar__year-selector-button:active, .button.button--discrete-inverted:focus, .button--discrete-inverted.calendar-navbar__year-selector-button:focus {
+.button.button--discrete-inverted:active, .button--discrete-inverted.calendar-navbar__year-selector-button:active, .button--discrete-inverted.docs-example-button:active, .button.button--discrete-inverted:focus, .button--discrete-inverted.calendar-navbar__year-selector-button:focus, .button--discrete-inverted.docs-example-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
   outline: 2px solid transparent;
@@ -1758,20 +1758,20 @@ input[type=search]:focus,
   border-color: transparent;
   color: var(--f-text-color-button-discrete-inverted-hover);
 }
-.button.button--discrete-inverted.disabled, .button--discrete-inverted.disabled.calendar-navbar__year-selector-button, .button.button--discrete-inverted.disabled:hover, .button.button--discrete-inverted:disabled, .button--discrete-inverted.calendar-navbar__year-selector-button:disabled, .button.button--discrete-inverted:disabled:hover, .button.button--discrete-inverted.button--disabled, .button--discrete-inverted.button--disabled.calendar-navbar__year-selector-button, .button.button--discrete-inverted.button--disabled:hover {
+.button.button--discrete-inverted.disabled, .button--discrete-inverted.disabled.calendar-navbar__year-selector-button, .button--discrete-inverted.disabled.docs-example-button, .button.button--discrete-inverted.disabled:hover, .button.button--discrete-inverted:disabled, .button--discrete-inverted.calendar-navbar__year-selector-button:disabled, .button--discrete-inverted.docs-example-button:disabled, .button.button--discrete-inverted:disabled:hover, .button.button--discrete-inverted.button--disabled, .button--discrete-inverted.button--disabled.calendar-navbar__year-selector-button, .button--discrete-inverted.button--disabled.docs-example-button, .button.button--discrete-inverted.button--disabled:hover {
   background-color: transparent;
   border-color: transparent;
   color: var(--fkds-color-text-disabled);
 }
 @media (max-width: 639.98px) {
-  .button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button {
+  .button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button, .button--discrete-inverted.docs-example-button {
     width: auto;
   }
 }
-.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button, .button.button--discrete-inverted:focus, .button.button--discrete-inverted:active, .button.button--discrete-inverted:hover {
+.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button, .button--discrete-inverted.docs-example-button, .button.button--discrete-inverted:focus, .button.button--discrete-inverted:active, .button.button--discrete-inverted:hover {
   border-radius: var(--f-button-discrete-radius-hover);
 }
-.button.button--tertiary, .calendar-navbar__year-selector-button {
+.button.button--tertiary, .button--tertiary.docs-example-button, .calendar-navbar__year-selector-button {
   width: inherit;
   min-width: 0;
   font-weight: var(--f-font-weight-medium);
@@ -1783,13 +1783,13 @@ input[type=search]:focus,
   color: var(--fkds-color-action-text-primary-default);
   padding: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor)) var(--f-button-tertiary-padding-right) calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor)) var(--f-button-tertiary-padding-left);
 }
-.button.button--tertiary:hover, .calendar-navbar__year-selector-button:hover {
+.button.button--tertiary:hover, .button--tertiary.docs-example-button:hover, .calendar-navbar__year-selector-button:hover {
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: transparent;
   color: var(--fkds-color-action-text-primary-default);
   box-shadow: none;
 }
-.button.button--tertiary:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary:focus, .calendar-navbar__year-selector-button:focus {
+.button.button--tertiary:active, .button--tertiary.docs-example-button:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary:focus, .button--tertiary.docs-example-button:focus, .calendar-navbar__year-selector-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
   outline: 2px solid transparent;
@@ -1797,55 +1797,55 @@ input[type=search]:focus,
   border-color: transparent;
   color: var(--fkds-color-action-text-primary-default);
 }
-.button.button--tertiary.disabled, .disabled.calendar-navbar__year-selector-button, .button.button--tertiary.disabled:hover, .button.button--tertiary:disabled, .calendar-navbar__year-selector-button:disabled, .button.button--tertiary:disabled:hover, .button.button--tertiary.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button.button--tertiary.button--disabled:hover {
+.button.button--tertiary.disabled, .button--tertiary.disabled.docs-example-button, .disabled.calendar-navbar__year-selector-button, .button.button--tertiary.disabled:hover, .button.button--tertiary:disabled, .button--tertiary.docs-example-button:disabled, .calendar-navbar__year-selector-button:disabled, .button.button--tertiary:disabled:hover, .button.button--tertiary.button--disabled, .button--tertiary.button--disabled.docs-example-button, .button--disabled.calendar-navbar__year-selector-button, .button.button--tertiary.button--disabled:hover {
   background-color: transparent;
   border-color: transparent;
   color: var(--fkds-color-text-disabled);
 }
 @media (max-width: 639.98px) {
-  .button.button--tertiary, .calendar-navbar__year-selector-button {
+  .button.button--tertiary, .button--tertiary.docs-example-button, .calendar-navbar__year-selector-button {
     width: auto;
   }
 }
-.button.button--tertiary--black, .calendar-navbar__year-selector-button {
+.button.button--tertiary--black, .button--tertiary--black.docs-example-button, .calendar-navbar__year-selector-button {
   color: var(--fkds-color-action-text-secondary-default);
 }
-.button.button--tertiary--black:hover, .calendar-navbar__year-selector-button:hover, .button.button--tertiary--black:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary--black:focus, .calendar-navbar__year-selector-button:focus {
+.button.button--tertiary--black:hover, .button--tertiary--black.docs-example-button:hover, .calendar-navbar__year-selector-button:hover, .button.button--tertiary--black:active, .button--tertiary--black.docs-example-button:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary--black:focus, .button--tertiary--black.docs-example-button:focus, .calendar-navbar__year-selector-button:focus {
   color: var(--fkds-color-action-text-secondary-default);
 }
-.button.button--tertiary:disabled, .calendar-navbar__year-selector-button:disabled {
+.button.button--tertiary:disabled, .button--tertiary.docs-example-button:disabled, .calendar-navbar__year-selector-button:disabled {
   border: none;
 }
-.button.button--tertiary--inverted, .button--tertiary--inverted.calendar-navbar__year-selector-button {
+.button.button--tertiary--inverted, .button--tertiary--inverted.calendar-navbar__year-selector-button, .button--tertiary--inverted.docs-example-button {
   color: var(--fkds-color-action-text-inverted-default);
 }
-.button.button--tertiary--inverted:hover, .button--tertiary--inverted.calendar-navbar__year-selector-button:hover, .button.button--tertiary--inverted:active, .button--tertiary--inverted.calendar-navbar__year-selector-button:active, .button.button--tertiary--inverted:focus, .button--tertiary--inverted.calendar-navbar__year-selector-button:focus {
+.button.button--tertiary--inverted:hover, .button--tertiary--inverted.calendar-navbar__year-selector-button:hover, .button--tertiary--inverted.docs-example-button:hover, .button.button--tertiary--inverted:active, .button--tertiary--inverted.calendar-navbar__year-selector-button:active, .button--tertiary--inverted.docs-example-button:active, .button.button--tertiary--inverted:focus, .button--tertiary--inverted.calendar-navbar__year-selector-button:focus, .button--tertiary--inverted.docs-example-button:focus {
   color: var(--fkds-color-action-text-inverted-focus);
   background-color: transparent;
 }
-.button.button--tertiary--inverted:disabled, .button--tertiary--inverted.calendar-navbar__year-selector-button:disabled {
+.button.button--tertiary--inverted:disabled, .button--tertiary--inverted.calendar-navbar__year-selector-button:disabled, .button--tertiary--inverted.docs-example-button:disabled {
   color: var(--fkds-color-text-disabled);
   border: none;
   border-width: 0;
   background-color: transparent;
 }
-.button.button--tertiary--underline, .button--tertiary--underline.calendar-navbar__year-selector-button {
+.button.button--tertiary--underline, .button--tertiary--underline.calendar-navbar__year-selector-button, .button--tertiary--underline.docs-example-button {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
-.button.button--tertiary--underline:disabled, .button--tertiary--underline.calendar-navbar__year-selector-button:disabled {
+.button.button--tertiary--underline:disabled, .button--tertiary--underline.calendar-navbar__year-selector-button:disabled, .button--tertiary--underline.docs-example-button:disabled {
   text-decoration: none;
 }
-.button.button--tertiary.button--small, .button--small.calendar-navbar__year-selector-button {
+.button.button--tertiary.button--small, .button--small.calendar-navbar__year-selector-button, .button--tertiary.docs-example-button, .calendar-navbar__year-selector-button.docs-example-button {
   min-width: 24px;
   padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;
   text-underline-offset: 3.5px;
 }
-.button.button--tertiary.button--small.button--align-text, .button--small.button--align-text.calendar-navbar__year-selector-button {
+.button.button--tertiary.button--small.button--align-text, .button--small.button--align-text.calendar-navbar__year-selector-button, .button--tertiary.button--align-text.docs-example-button, .button--align-text.calendar-navbar__year-selector-button.docs-example-button {
   margin-left: -0.25rem;
 }
-.button.button--tertiary.button--medium, .button--medium.calendar-navbar__year-selector-button {
+.button.button--tertiary.button--medium, .button--tertiary.button--medium.docs-example-button, .button--medium.calendar-navbar__year-selector-button {
   min-width: 8rem;
   /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
   padding-top: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor));
@@ -1854,79 +1854,79 @@ input[type=search]:focus,
   padding-left: var(--f-button-tertiary-padding-left);
   /* stylelint-enable declaration-block-no-redundant-longhand-properties */
 }
-.button.button--tertiary.button--medium.button--align-text, .button--medium.button--align-text.calendar-navbar__year-selector-button {
+.button.button--tertiary.button--medium.button--align-text, .button--tertiary.button--medium.button--align-text.docs-example-button, .button--medium.button--align-text.calendar-navbar__year-selector-button {
   margin-left: -0.5rem;
 }
-.button.button--tertiary.button--large, .button--large.calendar-navbar__year-selector-button {
+.button.button--tertiary.button--large, .button--tertiary.button--large.docs-example-button, .button--large.calendar-navbar__year-selector-button {
   min-width: var(--f-button-min-width);
   padding: calc(1.125rem * var(--f-density-factor)) 0.75rem;
 }
-.button.button--tertiary.button--large.button--align-text, .button--large.button--align-text.calendar-navbar__year-selector-button {
+.button.button--tertiary.button--large.button--align-text, .button--tertiary.button--large.button--align-text.docs-example-button, .button--large.button--align-text.calendar-navbar__year-selector-button {
   margin-left: -0.75rem;
 }
-.button.button--tertiary.button--align-text, .button--align-text.calendar-navbar__year-selector-button {
+.button.button--tertiary.button--align-text, .button--tertiary.button--align-text.docs-example-button, .button--align-text.calendar-navbar__year-selector-button {
   margin-left: -0.5rem;
   min-width: 0;
 }
 @media (max-width: 639.98px) {
-  .button.button--tertiary.button--full-width, .button--full-width.calendar-navbar__year-selector-button {
+  .button.button--tertiary.button--full-width, .button--tertiary.button--full-width.docs-example-button, .button--full-width.calendar-navbar__year-selector-button {
     min-width: var(--f-width-full);
   }
 }
-.button.button--full-width, .button--full-width.calendar-navbar__year-selector-button {
+.button.button--full-width, .button--full-width.calendar-navbar__year-selector-button, .button--full-width.docs-example-button {
   min-width: var(--f-width-full);
 }
-.button.button--margin-bottom-0, .calendar-navbar__year-selector-button {
+.button.button--margin-bottom-0, .button--margin-bottom-0.docs-example-button, .calendar-navbar__year-selector-button {
   margin-bottom: 0;
 }
-.button.button--small, .button--small.calendar-navbar__year-selector-button {
+.button.button--small, .button--small.calendar-navbar__year-selector-button, .docs-example-button {
   font-size: 14px;
   line-height: 1.25rem;
   min-width: 4rem;
   padding: calc(0.25rem * var(--f-density-factor)) 0.75rem;
 }
 @media (max-width: 639.98px) {
-  .button.button--small:not(.button--full-width), .button--small.calendar-navbar__year-selector-button:not(.button--full-width) {
+  .button.button--small:not(.button--full-width), .button--small.calendar-navbar__year-selector-button:not(.button--full-width), .docs-example-button:not(.button--full-width) {
     width: auto;
   }
 }
-.button.button--small > .button__icon, .button--small.calendar-navbar__year-selector-button > .button__icon {
+.button.button--small > .button__icon, .button--small.calendar-navbar__year-selector-button > .button__icon, .docs-example-button > .button__icon {
   height: 14px;
   width: 14px;
 }
-.button.button--medium, .button--medium.calendar-navbar__year-selector-button {
+.button.button--medium, .button--medium.calendar-navbar__year-selector-button, .button--medium.docs-example-button {
   line-height: 1.5rem;
   min-width: 8rem;
   padding: calc(0.625rem * var(--f-density-factor)) 1.25rem;
 }
 @media (max-width: 639.98px) {
-  .button.button--medium:not(.button--full-width), .button--medium.calendar-navbar__year-selector-button:not(.button--full-width) {
+  .button.button--medium:not(.button--full-width), .button--medium.calendar-navbar__year-selector-button:not(.button--full-width), .button--medium.docs-example-button:not(.button--full-width) {
     width: auto;
   }
 }
-.button.button--large, .button--large.calendar-navbar__year-selector-button {
+.button.button--large, .button--large.calendar-navbar__year-selector-button, .button--large.docs-example-button {
   line-height: 1.5rem;
   min-width: 9.5rem;
   padding: calc(1rem * var(--f-density-factor)) 1.5rem;
 }
 @media (max-width: 639.98px) {
-  .button.button--large, .button--large.calendar-navbar__year-selector-button {
+  .button.button--large, .button--large.calendar-navbar__year-selector-button, .button--large.docs-example-button {
     max-width: var(--f-width-full);
     width: var(--f-width-full);
   }
 }
-.button .button__icon, .calendar-navbar__year-selector-button .button__icon {
+.button .button__icon, .calendar-navbar__year-selector-button .button__icon, .docs-example-button .button__icon {
   margin-right: 0.25rem;
 }
-.button .button__icon:not(:first-child), .calendar-navbar__year-selector-button .button__icon:not(:first-child) {
+.button .button__icon:not(:first-child), .calendar-navbar__year-selector-button .button__icon:not(:first-child), .docs-example-button .button__icon:not(:first-child) {
   margin-left: 0.25rem;
   margin-right: 0;
 }
-.button > .button__icon--end, .calendar-navbar__year-selector-button > .button__icon--end {
+.button > .button__icon--end, .calendar-navbar__year-selector-button > .button__icon--end, .docs-example-button > .button__icon--end {
   position: absolute;
   right: 1.25rem;
 }
-.button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button {
+.button.disabled, .disabled.calendar-navbar__year-selector-button, .disabled.docs-example-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .docs-example-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button--disabled.docs-example-button {
   border-width: var(--f-border-width-medium);
   box-shadow: none;
   cursor: default;
@@ -1947,41 +1947,43 @@ input[type=search]:focus,
     opacity: 1;
   }
 }
-.button .button__spinner, .calendar-navbar__year-selector-button .button__spinner {
+.button .button__spinner, .calendar-navbar__year-selector-button .button__spinner, .docs-example-button .button__spinner {
   display: inline-block;
   width: var(--f-icon-size-small);
   height: var(--f-icon-size-small);
   animation: button-spinner-rotation 1250ms linear infinite, button-spinner-delay 300ms linear;
 }
-.button.button.button--small .button__spinner, .button--small.calendar-navbar__year-selector-button .button__spinner {
+.button.button.button--small .button__spinner, .button--small.calendar-navbar__year-selector-button .button__spinner, .docs-example-button .button__spinner {
   width: 14px;
   height: 14px;
 }
-.button.button.button--small .spinner--before, .button--small.calendar-navbar__year-selector-button .spinner--before,
+.button.button.button--small .spinner--before, .button--small.calendar-navbar__year-selector-button .spinner--before, .docs-example-button .spinner--before,
 .button.button.button--small .spinner--after,
-.button--small.calendar-navbar__year-selector-button .spinner--after {
+.button--small.calendar-navbar__year-selector-button .spinner--after,
+.docs-example-button .spinner--after {
   width: calc(7px + 0.125rem);
   height: 14px;
 }
-.button .spinner--before, .calendar-navbar__year-selector-button .spinner--before,
+.button .spinner--before, .calendar-navbar__year-selector-button .spinner--before, .docs-example-button .spinner--before,
 .button .spinner--after,
-.calendar-navbar__year-selector-button .spinner--after {
+.calendar-navbar__year-selector-button .spinner--after,
+.docs-example-button .spinner--after {
   display: inline-flex;
   width: calc(var(--f-icon-size-small) * 0.5 + 0.125rem);
   height: var(--f-icon-size-small);
   align-self: center;
   transition: width 300ms ease-out;
 }
-.button.button__inflight.button.button--small .spinner--after, .button__inflight.button--small.calendar-navbar__year-selector-button .spinner--after {
+.button.button__inflight.button.button--small .spinner--after, .button__inflight.button--small.calendar-navbar__year-selector-button .spinner--after, .button__inflight.docs-example-button .spinner--after {
   width: 0;
 }
-.button.button__inflight.button.button--small .spinner--before, .button__inflight.button--small.calendar-navbar__year-selector-button .spinner--before {
+.button.button__inflight.button.button--small .spinner--before, .button__inflight.button--small.calendar-navbar__year-selector-button .spinner--before, .button__inflight.docs-example-button .spinner--before {
   width: calc(14px + 0.25rem);
 }
-.button.button__inflight .spinner--after, .button__inflight.calendar-navbar__year-selector-button .spinner--after {
+.button.button__inflight .spinner--after, .button__inflight.calendar-navbar__year-selector-button .spinner--after, .button__inflight.docs-example-button .spinner--after {
   width: 0;
 }
-.button.button__inflight .spinner--before, .button__inflight.calendar-navbar__year-selector-button .spinner--before {
+.button.button__inflight .spinner--before, .button__inflight.calendar-navbar__year-selector-button .spinner--before, .button__inflight.docs-example-button .spinner--before {
   width: calc(var(--f-icon-size-small) + 0.25rem);
 }
 
@@ -2127,7 +2129,7 @@ input[type=search]:focus,
   color: inherit;
   --f-margin-component-bottom: 0.5rem;
 }
-.list__item__itempane .button {
+.list__item__itempane .button, .list__item__itempane .docs-example-button {
   margin-bottom: 0;
 }
 .list__item__itempane ul {
@@ -3820,7 +3822,7 @@ input[type=search]:focus,
   left: 0;
   bottom: 0;
 }
-.layout-navigation__navigation .button.button--tertiary:hover {
+.layout-navigation__navigation .button.button--tertiary:hover, .layout-navigation__navigation .button--tertiary.docs-example-button:hover {
   background-color: var(--f-background-sidepanel-button-tertiary-hover);
 }
 .layout-navigation__navigation__border {
@@ -3908,7 +3910,7 @@ input[type=search]:focus,
   bottom: 0;
   z-index: 9994;
 }
-.layout-secondary__secondary .button.button--tertiary:hover {
+.layout-secondary__secondary .button.button--tertiary:hover, .layout-secondary__secondary .button--tertiary.docs-example-button:hover {
   background-color: var(--f-background-sidepanel-button-tertiary-hover);
 }
 .layout-secondary__secondary__border {
@@ -3950,7 +3952,7 @@ input[type=search]:focus,
   margin: 0;
   min-width: 40%;
 }
-.layout-secondary__secondary__inner__close.button {
+.layout-secondary__secondary__inner__close.button, .layout-secondary__secondary__inner__close.docs-example-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -4143,23 +4145,18 @@ input[type=search]:focus,
 }
 
 .message-box {
-  padding: calc(1.5rem * var(--f-density-factor)) 1.5rem;
-  margin: 0.5rem 0 calc(2rem * var(--f-density-factor)) 0;
+  padding: calc(1rem * var(--f-density-factor)) 1rem;
+  margin: 1.5rem 0 calc(1.5rem * var(--f-density-factor)) 0;
   color: var(--fkds-color-text-primary);
 }
 .message-box__heading {
-  font-size: var(--f-font-size-h3);
+  font-size: var(--f-font-size-large);
   font-weight: var(--f-font-weight-medium);
   color: var(--fkds-color-text-primary);
   line-height: var(--f-line-height-medium);
   align-items: flex-start;
   margin-bottom: calc(0.5rem * var(--f-density-factor));
   margin-top: 0;
-}
-@media (max-width: 639.98px) {
-  .message-box__heading {
-    font-size: var(--f-font-size-large);
-  }
 }
 .message-box__icon {
   line-height: var(--f-line-height-large);
@@ -4348,13 +4345,6 @@ input[type=search]:focus,
 .message-box--banner .iflex__item > p {
   margin-bottom: 0;
 }
-@media (max-width: 639.98px) {
-  .message-box {
-    margin-bottom: calc(1.5rem * var(--f-density-factor));
-    margin-top: calc(1.5rem * var(--f-density-factor));
-    padding: calc(1rem * var(--f-density-factor)) 1rem;
-  }
-}
 
 .modal__backdrop {
   background: var(--f-background-overlay);
@@ -4466,7 +4456,7 @@ input[type=search]:focus,
 .modal__dialog .modal__footer > .button-group {
   margin-bottom: 0;
 }
-.modal__dialog .modal__footer > .button-group .button-group__item:last-child:not(.button--small, .button--medium) {
+.modal__dialog .modal__footer > .button-group .button-group__item:last-child:not(.button--small, .docs-example-button, .button--medium) {
   margin-bottom: 0;
 }
 @media (min-width: 640px) {
@@ -7564,7 +7554,8 @@ main #aside dd {
 
 /* Increased specificity to override button styling */
 .code-preview .code-preview__fullscreen,
-.code-preview .button.code-preview__toggle-markup {
+.code-preview .button.code-preview__toggle-markup,
+.code-preview .code-preview__toggle-markup.docs-example-button {
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -7993,4 +7984,207 @@ body {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* sfc-style:/home/runner/work/docs-live-example/docs-live-example/src/LiveExampleSourcecode.vue?type=style&index=0 */
+.collapsed[data-v-7a98eb26] {
+  display: none;
+}
+
+.collapsed[aria-expanded=true][data-v-7a98eb26] {
+  display: block;
+}
+
+:root {
+  --live-example-space: 1.5rem;
+  --live-example-controls-width: 17rem;
+}
+
+.code-preview {
+  container-type: inline-size;
+  container-name: example-container;
+}
+
+.live-example__container {
+  border: var(--f-border-width-small) solid #ddddde;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "example" "controls" "code";
+}
+
+@container example-container (width >= 43.0379746835rem) {
+  .live-example__container {
+    grid-template-columns: 1fr var(--live-example-controls-width);
+    grid-template-areas: "example controls" "code code";
+  }
+}
+.live-example__example {
+  grid-area: example;
+  padding: var(--live-example-space);
+  background: repeating-conic-gradient(#fff 0 90deg, rgb(235, 235, 235) 0 180deg) 0 0/20px 20px round;
+  overflow: auto;
+}
+
+.live-example__controls {
+  grid-area: controls;
+  padding: var(--live-example-space);
+  border-left: var(--f-border-width-small) solid #ddddde;
+}
+
+.live-example__code {
+  grid-area: code;
+  border-top: var(--f-border-width-small) solid #ddddde;
+  background-color: #f4f4f4;
+}
+
+.live-example__code pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+.live-example__code pre code {
+  margin: 0;
+  padding: var(--live-example-space);
+}
+
+.live-example__code-toggle {
+  padding-left: var(--live-example-space);
+}
+
+.live-example__code .live-example__code-toggle button {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+  margin-left: -0.5rem;
+  padding: 0.5rem;
+  font-weight: 600;
+  color: var(--f-text-color-default);
+}
+
+.live-example__code-languages {
+  display: flex;
+  align-items: center;
+  margin: 0.75rem var(--live-example-space) 0 var(--live-example-space);
+  border-bottom: var(--f-border-width-small) solid #ddddde;
+}
+
+:root {
+  --f-logo-image-small:
+      url("./images/fk-logo-primary-small.svg"),
+      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+  --f-logo-image-large:
+      url("./images/fk-logo-primary-large.svg"),
+      linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+  color-scheme: light dark;
+}
+
+.sandbox-link {
+  padding: 0 0.75rem;
+}
+
+#content a.button.docs-button, #content a.docs-button.docs-example-button {
+  color: #fff;
+}
+
+.mermaid p {
+  margin-bottom: 0;
+}
+
+.color-table__color {
+  display: inline-block;
+  width: 3rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: 1px solid #000;
+}
+
+.docs-pre {
+  display: inline-block;
+  white-space: pre;
+  font-family: monospace;
+  margin: 1em 0px;
+}
+
+footer {
+  background: #35805b;
+  color: var(--fkds-color-text-inverted);
+  padding: 3rem;
+}
+@media (min-width: 1024px) {
+  footer {
+    display: flex;
+    gap: 5rem;
+  }
+}
+footer h1,
+footer .heading--h1 {
+  font-size: 1.5rem;
+  font-weight: var(--f-font-weight-medium);
+}
+footer ul {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+footer li,
+footer #version button {
+  margin-bottom: 0.5rem;
+}
+footer .anchor {
+  color: var(--fkds-color-text-inverted);
+  font-weight: var(--f-font-weight-normal);
+  text-decoration-color: var(--fkds-color-text-inverted);
+}
+footer .anchor:hover,
+footer #version button:hover {
+  color: #1b1e23;
+  text-decoration-color: #1b1e23;
+}
+footer .footer__left {
+  flex: 0 0 auto;
+}
+footer .footer__center {
+  flex: 1 1 auto;
+}
+footer .footer__right {
+  flex: 0 0 auto;
+}
+footer .version {
+  color: var(--fkds-color-text-inverted);
+  margin-left: 0;
+}
+footer #version button {
+  appearance: none;
+}
+footer #version button:focus {
+  border-radius: 0;
+  box-shadow: var(--f-focus-box-shadow);
+  outline: 2px solid transparent;
+}
+footer #version button:hover, footer #version button:active {
+  background: transparent;
+  cursor: pointer;
+}
+footer #version-dialog .list__item {
+  margin: 0;
+}
+
+.support-table .table__row.obsolete {
+  background: #f7dcdc;
+  color: #1b1e23;
+}
+.support-table .table__row.supported {
+  background: #fff5db;
+  color: #1b1e23;
+}
+.support-table .table__row.active {
+  background: #dbe9e2;
+  color: #1b1e23;
+}
+
+.docs-example-button {
+  margin: 0 0.75rem 0 0;
+  padding: 0.25rem 0.75rem !important;
 }

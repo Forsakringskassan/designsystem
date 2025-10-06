@@ -4143,23 +4143,18 @@ input[type=search]:focus,
 }
 
 .message-box {
-  padding: calc(1.5rem * var(--f-density-factor)) 1.5rem;
-  margin: 0.5rem 0 calc(2rem * var(--f-density-factor)) 0;
+  padding: calc(1rem * var(--f-density-factor)) 1rem;
+  margin: 1.5rem 0 calc(1.5rem * var(--f-density-factor)) 0;
   color: var(--fkds-color-text-primary);
 }
 .message-box__heading {
-  font-size: var(--f-font-size-h3);
+  font-size: var(--f-font-size-large);
   font-weight: var(--f-font-weight-medium);
   color: var(--fkds-color-text-primary);
   line-height: var(--f-line-height-medium);
   align-items: flex-start;
   margin-bottom: calc(0.5rem * var(--f-density-factor));
   margin-top: 0;
-}
-@media (max-width: 639.98px) {
-  .message-box__heading {
-    font-size: var(--f-font-size-large);
-  }
 }
 .message-box__icon {
   line-height: var(--f-line-height-large);
@@ -4347,13 +4342,6 @@ input[type=search]:focus,
 }
 .message-box--banner .iflex__item > p {
   margin-bottom: 0;
-}
-@media (max-width: 639.98px) {
-  .message-box {
-    margin-bottom: calc(1.5rem * var(--f-density-factor));
-    margin-top: calc(1.5rem * var(--f-density-factor));
-    padding: calc(1rem * var(--f-density-factor)) 1rem;
-  }
 }
 
 .modal__backdrop {
