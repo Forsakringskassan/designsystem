@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { useTemplateRef } from "vue";
+import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnCheckbox } from "./table-column";
@@ -10,6 +10,7 @@ const { column, row } = defineProps<{
 }>();
 
 const targetElement = useTemplateRef("target");
+const ariaLabel = computed(() => column.header.value);
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
     assertRef(targetElement);
@@ -32,14 +33,7 @@ function onChange(e: Event): void {
         class="table-ng__cell table-ng__cell--checkbox"
         @table-activate-cell="onActivateCell"
     >
-        <input
-            ref="target"
-            :checked="column.value(row)"
-            type="checkbox"
-            :aria-label="column.header"
-            tabindex="-1"
-            @change="onChange"
-        />
+        <input ref="target" :checked="column.value(row)" type="checkbox" :aria-label tabindex="-1" @change="onChange" />
     </td>
     <td
         v-else
@@ -48,6 +42,6 @@ function onChange(e: Event): void {
         class="table-ng__cell table-ng__cell--checkbox"
         @table-activate-cell="onActivateCell"
     >
-        <input :checked="column.value(row)" type="checkbox" :aria-label="column.header" />
+        <input :checked="column.value(row)" type="checkbox" :aria-label />
     </td>
 </template>

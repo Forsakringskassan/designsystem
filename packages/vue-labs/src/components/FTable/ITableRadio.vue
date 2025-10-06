@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { useTemplateRef } from "vue";
+import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnRadio } from "./table-column";
@@ -10,6 +10,7 @@ const { column, row } = defineProps<{
 }>();
 
 const inputElement = useTemplateRef("input");
+const ariaLabel = computed(() => column.header.value);
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
     assertRef(inputElement);
@@ -28,13 +29,6 @@ function onChange(_e: Event): void {
 
 <template>
     <td class="table-ng__cell table-ng__cell--radio" @table-activate-cell="onActivateCell">
-        <input
-            ref="input"
-            type="radio"
-            :checked="column.value(row)"
-            :aria-label="column.header"
-            tabindex="-1"
-            @change="onChange"
-        />
+        <input ref="input" type="radio" :checked="column.value(row)" :aria-label tabindex="-1" @change="onChange" />
     </td>
 </template>
