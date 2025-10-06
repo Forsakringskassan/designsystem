@@ -276,8 +276,12 @@ onMounted(() => {
     <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
         <thead>
             <tr class="table-ng__row">
-                <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
-                <th v-if="isMultiSelect" scope="col" class="table-ng__column table-ng__column--checkbox">
+                <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column table-ng__column--expand"></th>
+                <th
+                    v-if="isMultiSelect"
+                    scope="col"
+                    class="table-ng__column table-ng__column--checkbox table-ng__column--selectable"
+                >
                     <input
                         ref="selectAll"
                         type="checkbox"
@@ -329,8 +333,18 @@ onMounted(() => {
                         <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
                     </i-table-expandable>
                     <template v-else>
-                        <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
-                        <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
+                        <i-table-checkbox
+                            v-if="isMultiSelect"
+                            :row
+                            :column="multiSelectColumn"
+                            class="table-ng__cell--selectable"
+                        ></i-table-checkbox>
+                        <i-table-radio
+                            v-if="isSingleSelect"
+                            :row
+                            :column="singleSelectColumn"
+                            class="table-ng__cell--selectable"
+                        ></i-table-radio>
                         <template v-for="column in columns" :key="column.header">
                             <component :is="column.component" v-if="'component' in column" :row :column></component>
                             <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
