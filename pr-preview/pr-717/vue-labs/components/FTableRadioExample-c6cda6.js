@@ -25,7 +25,7 @@ function setup(options) {
 
 // virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-c6cda6.js
 import { defineComponent as _defineComponent8 } from "vue";
-import { h as h2, ref as ref5 } from "vue";
+import { h as h2, ref as ref4 } from "vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
@@ -4330,7 +4330,7 @@ ITableButton_default.__file = "src/components/FTable/ITableButton.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableText.vue?type=script
 import { defineComponent as _defineComponent5 } from "vue";
-import { computed as computed6, onMounted as onMounted2, ref as ref3, useTemplateRef as useTemplateRef6 } from "vue";
+import { computed as computed6, onMounted as onMounted2, ref as ref2, useTemplateRef as useTemplateRef6 } from "vue";
 import { assertRef as assertRef5, ValidationService as ValidationService2 } from "@fkui/logic";
 import { FIcon as FIcon3 } from "@fkui/vue";
 
@@ -4356,8 +4356,8 @@ var ITableText_default = /* @__PURE__ */ _defineComponent5({
   },
   setup(__props, { expose: __expose }) {
     __expose();
-    const model = ref3("");
-    const validity = ref3({
+    const model = ref2("");
+    const validity = ref2({
       isValid: true,
       validationMessage: "",
       validityMode: "INITIAL"
@@ -4560,7 +4560,7 @@ ITableText_default.__file = "src/components/FTable/ITableText.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableSelect.vue?type=script
 import { defineComponent as _defineComponent6 } from "vue";
-import { nextTick as nextTick3, ref as ref4, useTemplateRef as useTemplateRef7, watchEffect as watchEffect2 } from "vue";
+import { nextTick as nextTick3, ref as ref3, useTemplateRef as useTemplateRef7, watchEffect as watchEffect2 } from "vue";
 import { assertRef as assertRef6, assertSet as assertSet3, ElementIdService as ElementIdService2 } from "@fkui/logic";
 import { IComboboxDropdown as IComboboxDropdown2, FIcon as FIcon4 } from "@fkui/vue";
 var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
@@ -4571,10 +4571,10 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
   },
   setup(__props, { expose: __expose }) {
     __expose();
-    const editing = ref4(false);
+    const editing = ref3(false);
     const editRef = useTemplateRef7("edit");
     const { stopEdit: stopEdit2 } = useStartStopEdit2();
-    const viewValue = ref4(__props.column.value(__props.row));
+    const viewValue = ref3(__props.column.value(__props.row));
     const tdRef = useTemplateRef7("td");
     function onActivateCell(e) {
       assertRef6(tdRef);
@@ -4617,9 +4617,9 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
       stopEdit2(editRef.value, "escape");
     }
     const dropdownId = ElementIdService2.generateElementId();
-    const dropdownIsOpen = ref4(false);
+    const dropdownIsOpen = ref3(false);
     const activeOptionId = ElementIdService2.generateElementId();
-    const activeOption = ref4(null);
+    const activeOption = ref3(null);
     watchEffect2(async () => {
       if (!editRef.value) {
         return;
@@ -4968,7 +4968,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent8({
       //     },
       // },
     ]);
-    const rows = ref5([
+    const rows = ref4([
       {
         id: "1",
         animal: "Katt",
@@ -5070,7 +5070,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent8({
         ]
       }
     ]);
-    const mySelectedRows = ref5([rows.value[0]]);
+    const mySelectedRows = ref4([rows.value[0]]);
     function onButtonClick(id) {
       alert(`Du klickade p\xE5 rad med id ${id}`);
     }
