@@ -10,7 +10,6 @@
     "include": [
         "**/*.cy.ts",
         "**/*.vue",
-        "src/@types/cypress.d.ts",
         "components/table-and-list/examples/table-data.ts"
     ],
     "exclude": ["node_modules/**", "playground/**"]
