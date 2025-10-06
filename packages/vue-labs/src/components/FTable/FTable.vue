@@ -69,7 +69,7 @@ const columnCount = computed((): number => {
 
 const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     type: "checkbox",
-    header: "selectable",
+    header: ref("selectable"),
     sortable: null,
     component: ITableCheckbox,
     value(row) {
@@ -98,7 +98,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
 
 const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
     type: "radio",
-    header: "Välj en rad",
+    header: ref("Välj en rad"),
     sortable: null,
     component: ITableRadio,
     value(row) {
@@ -291,7 +291,7 @@ onMounted(() => {
                 <!-- [html-validate-disable-next element-permitted-content -- transparent th] -->
                 <i-table-header
                     v-for="column in columns"
-                    :key="column.header"
+                    :key="column.header as unknown as string"
                     :column
                     :sort-enabled="isSortEnabled(column)"
                     :sort-order="getSortOrder(column)"
