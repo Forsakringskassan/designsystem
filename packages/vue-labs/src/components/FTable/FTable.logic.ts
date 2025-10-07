@@ -354,12 +354,11 @@ export function stopEdit(
             } else {
                 dispatchActivateCellEvent(newCellTarget, { focus: true });
             }
-            break;
+            return newCellTarget;
         }
         case "escape": {
             dispatchActivateCellEvent(newCellTarget, { focus: true });
-
-            break;
+            return newCellTarget;
         }
         case "tab": {
             if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
@@ -371,7 +370,7 @@ export function stopEdit(
                 newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
                 dispatchActivateCellEvent(newCellTarget, { focus: true });
             }
-            break;
+            return newCellTarget;
         }
         case "shift-tab": {
             if (cellIndex === 0 && rowIndex === 1) {
@@ -383,18 +382,12 @@ export function stopEdit(
                 newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
                 dispatchActivateCellEvent(newCellTarget, { focus: true });
             }
-            break;
+            return newCellTarget;
         }
         case "blur": {
             // eslint-disable-next-line no-console -- ev ta bort
             console.log("stopEdit", "blur");
-            break;
-        }
-
-        default: {
-            throw new Error(`invalid stop edit reason: ${reason}`);
+            return newCellTarget;
         }
     }
-
-    return newCellTarget;
 }
