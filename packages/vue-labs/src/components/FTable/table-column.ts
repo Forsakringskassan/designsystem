@@ -7,6 +7,7 @@ import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
 import ITableSelect from "./ITableSelect.vue";
 import ITableRowheader from "./ITableRowheader.vue";
+import { type InputType } from "./specialized-input-fields-config";
 
 /**
  * @public
@@ -99,11 +100,9 @@ export interface NormalizedTableColumnRadio<T, K> {
     update(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
-/**
- * @public
- */
-export interface TableColumnText<T, K extends keyof T> {
+interface TableColumnTextBase<T, K extends keyof T> {
     type: "text";
+    subtype?: Exclude<InputType, "number" | "percent">;
     header: string;
     key?: K;
     value?(row: T): string;
@@ -112,11 +111,26 @@ export interface TableColumnText<T, K extends keyof T> {
     validation?: ValidatorConfigs;
 }
 
+interface TableColumnTextDecimal<T, K extends keyof T>
+    extends Omit<TableColumnTextBase<T, K>, "subtype"> {
+    subtype: Extract<InputType, "number" | "percent">;
+    decimals: number;
+}
+
+/**
+ * @public
+ */
+export type TableColumnText<T, K extends keyof T> =
+    | TableColumnTextBase<T, K>
+    | TableColumnTextDecimal<T, K>;
+
 /**
  * @internal
  */
 export interface NormalizedTableColumnText<T, K> {
     readonly type: "text";
+    readonly subtype: InputType;
+    readonly decimals: number | undefined;
     readonly header: string;
     readonly validation: ValidatorConfigs;
     readonly sortable: K | null;
@@ -369,7 +383,12 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "text":
             return {
                 type: "text",
+                subtype: column.subtype ?? "text",
                 header: column.header,
+                decimals:
+                    column.subtype === "number" || column.subtype === "percent"
+                        ? column.decimals
+                        : undefined,
                 value: getValueFn(column.value, column.key, String, ""),
                 update: getUpdateFn(column.update, column.key),
                 editable:
@@ -433,6 +452,8 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
             return {
                 type: "text",
                 header: column.header,
+                subtype: "text",
+                decimals: undefined,
                 value: getValueFn(column.value, column.key, String, ""),
                 update() {
                     /* do nothing */
