@@ -196,7 +196,7 @@ export function getElementFromVueRef(ref: unknown): Element | never {
     const element = findElementFromVueRef(ref);
 
     if (!isSet(element)) {
-        throw new Error(`Unable to find element from ${ref}.`);
+        throw new Error(`Unable to find element from ${String(ref)}.`);
     }
 
     return element;
@@ -214,12 +214,12 @@ export function getHTMLElementFromVueRef(ref: unknown): HTMLElement | never {
     const element = findElementFromVueRef(ref);
 
     if (!isSet(element)) {
-        throw new Error(`Unable to find element from ${ref}.`);
+        throw new Error(`Unable to find element from ${String(ref)}.`);
     }
 
     if (element instanceof HTMLElement) {
         return element;
     }
 
-    throw new Error(`Not instance of HTMLELement ${ref}.`);
+    throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
 }

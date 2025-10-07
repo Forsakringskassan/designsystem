@@ -60,7 +60,7 @@ export default defineComponent({
     },
     methods: {
         getEvents(date: FDate) {
-            const dayOfYear = `${date.month}-${date.day}`;
+            const dayOfYear = `${String(date.month)}-${String(date.day)}`;
 
             const match = holidays.find((it) => it.date === dayOfYear);
             if (match) {
@@ -72,7 +72,7 @@ export default defineComponent({
         },
         eventClasses(date: FDate) {
             const classes = ["event"];
-            const dayOfYear = `${date.month}-${date.day}`;
+            const dayOfYear = `${String(date.month)}-${String(date.day)}`;
 
             const match = holidays.find((it) => it.date === dayOfYear);
             if (match) {

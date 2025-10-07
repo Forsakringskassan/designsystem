@@ -90,7 +90,7 @@ const ValidationPrefixDirective: Directive<HTMLElement, string> = {
     beforeMount(el: HTMLElement, binding: DirectiveBinding) {
         el.addEventListener("component-validity", (event) => {
             const e = event as CustomEvent<ComponentValidityEvent>;
-            e.detail.errorMessage = `${binding.value}${e.detail.errorMessage}`;
+            e.detail.errorMessage = `${String(binding.value)}${e.detail.errorMessage}`;
         });
     },
 };

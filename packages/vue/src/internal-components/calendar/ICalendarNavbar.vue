@@ -162,7 +162,7 @@ export default defineComponent({
             this.$emit("update:yearSelectorOpen", value);
         },
         getDateText(value: FDate): string {
-            return `${capitalize(value.monthName)} ${value.year}`;
+            return `${capitalize(value.monthName)} ${String(value.year)}`;
         },
         isFocused(ref: string): boolean {
             return document.activeElement === this.$refs[ref];

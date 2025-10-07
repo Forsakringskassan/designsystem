@@ -51,8 +51,8 @@ export class FInteractiveTablePageObject implements BasePageObject {
             [
                 this.selector,
                 `tbody`,
-                `tr:not(.table__expandable-row--collapsed):nth(${rowIndex})`,
-                `> .table__column:nth(${colIndex})`,
+                `tr:not(.table__expandable-row--collapsed):nth(${String(rowIndex)})`,
+                `> .table__column:nth(${String(colIndex)})`,
             ].join(" "),
         );
     }
@@ -79,7 +79,9 @@ export class FInteractiveTablePageObject implements BasePageObject {
         col: number,
     ): Cypress.Chainable<JQuery<HTMLTableCellElement>> {
         const index = col - 1;
-        return cy.get(`${this.selector} thead .table__column:nth(${index})`);
+        return cy.get(
+            `${this.selector} thead .table__column:nth(${String(index)})`,
+        );
     }
 
     /**
@@ -99,7 +101,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
      * @param index - Row number (0-indexed).
      */
     public row(index: number): DefaultCypressChainable {
-        return cy.get(`${this.selector} tbody tr:nth(${index})`);
+        return cy.get(`${this.selector} tbody tr:nth(${String(index)})`);
     }
 
     /**
@@ -131,7 +133,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
             [
                 this.selector,
                 `tbody`,
-                `tr:not(.table__expandable-row--collapsed):nth(${index})`,
+                `tr:not(.table__expandable-row--collapsed):nth(${String(index)})`,
                 `.checkbox`,
             ].join(" "),
         );
@@ -167,7 +169,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
         }
 
         return cy.get(
-            `${this.selector} thead th:nth(${index}) svg.${iconName}`,
+            `${this.selector} thead th:nth(${String(index)}) svg.${iconName}`,
         );
     }
 

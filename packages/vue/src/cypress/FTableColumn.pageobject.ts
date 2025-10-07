@@ -10,7 +10,7 @@ export class FTableColumnPageObject implements BasePageObject {
     public el: () => DefaultCypressChainable;
     public index: number;
     public constructor(selector: string, index: number) {
-        this.selector = `${selector}:nth(${index})`;
+        this.selector = `${selector}:nth(${String(index)})`;
         this.index = index;
         this.el = () => cy.get(this.selector);
     }
@@ -19,7 +19,7 @@ export class FTableColumnPageObject implements BasePageObject {
      * @deprecated Use ´FInteractiveTablePageObject.cell()´ instead. Deprecated since v6.11.0.
      */
     public tableRowBodyContent(position: number): DefaultCypressChainable {
-        return cy.get(`${this.selector} td:nth(${position})`);
+        return cy.get(`${this.selector} td:nth(${String(position)})`);
     }
 
     /**

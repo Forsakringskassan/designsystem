@@ -85,8 +85,8 @@ export default defineComponent({
                 SPACING,
                 area.height - anchor.height - SPACING - 2,
             );
-            anchorElement.style.left = `${left}px`;
-            anchorElement.style.top = `${top}px`;
+            anchorElement.style.left = `${String(left)}px`;
+            anchorElement.style.top = `${String(top)}px`;
             this.updatePosition();
         },
         updatePosition() {
@@ -113,8 +113,8 @@ export default defineComponent({
                 target.style.removeProperty("top");
             } else {
                 target.classList.remove("pos-target--inline");
-                target.style.left = `${result.x}px`;
-                target.style.top = `${result.y}px`;
+                target.style.left = `${String(result.x)}px`;
+                target.style.top = `${String(result.y)}px`;
             }
 
             target.innerText = `Popup (${result.placement})`;

@@ -18,7 +18,7 @@ async function importIcons(): Promise<IconPackage> {
 }
 
 function decamelize(value: string): string {
-    return value.replace(/([A-Z])/g, (_, ch) => `-${ch.toLowerCase()}`);
+    return value.replace(/([A-Z])/g, (_, ch: string) => `-${ch.toLowerCase()}`);
 }
 
 const iconsPromise = importIcons();

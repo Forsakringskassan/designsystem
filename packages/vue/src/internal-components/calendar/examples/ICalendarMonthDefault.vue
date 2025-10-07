@@ -15,7 +15,7 @@ export default defineComponent({
     },
     methods: {
         onClick(date: FDate) {
-            alert(`Du klickade på dag ${date.day}`);
+            alert(`Du klickade på dag ${String(date.day)}`);
         },
     },
 });

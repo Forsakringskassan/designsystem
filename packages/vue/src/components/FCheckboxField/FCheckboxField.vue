@@ -166,11 +166,12 @@ export default defineComponent({
             let errorMessage = "";
 
             if (hasSlot(this, "default")) {
-                const labelText = this.injected.getFieldsetLabelText();
+                const labelText = this.injected.getFieldsetLabelText() as string | undefined;
+                const slotText = renderSlotText(this.$slots.default) ?? "";
                 if (labelText) {
-                    errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
+                    errorMessage = `${labelText} ${slotText}`;
                 } else {
-                    errorMessage = `${renderSlotText(this.$slots.default)}`;
+                    errorMessage = slotText;
                 }
             }
 

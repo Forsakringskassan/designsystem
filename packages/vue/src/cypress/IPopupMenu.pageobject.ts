@@ -44,7 +44,7 @@ export class IPopupMenuPageObject implements BasePageObject {
      */
     public getItemLink(index: number): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .ipopupmenu__list__item a:nth(${index})`,
+            `${this.selector} .ipopupmenu__list__item a:nth(${String(index)})`,
         );
     }
 

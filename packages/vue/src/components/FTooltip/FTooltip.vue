@@ -112,7 +112,7 @@ export default defineComponent({
             if (!wrapper.value) {
                 return;
             }
-            wrapper.value.style.setProperty("--f-tooltip-offset", `${offset.value}px`);
+            wrapper.value.style.setProperty("--f-tooltip-offset", `${String(offset.value)}px`);
             ready.value = true;
         });
         return { animate, iconTarget, ready };

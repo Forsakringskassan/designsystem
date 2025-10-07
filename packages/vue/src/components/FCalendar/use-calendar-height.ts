@@ -29,7 +29,10 @@ export function useCalendarHeight(options: UseCalendarHeightOptions): void {
 
     watchEffect(() => {
         if (cachedHeight.value) {
-            dst.value?.style.setProperty(property, `${cachedHeight.value}px`);
+            dst.value?.style.setProperty(
+                property,
+                `${String(cachedHeight.value)}px`,
+            );
         }
     });
 }

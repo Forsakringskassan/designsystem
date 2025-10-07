@@ -131,7 +131,7 @@ export default defineComponent({
         },
         getMonthYearString(date: string): string {
             const fdate = FDate.fromIso(date);
-            return `${fdate.monthName} ${fdate.year}`;
+            return `${fdate.monthName} ${String(fdate.year)}`;
         },
         getInvalidDates(): string[] {
             return [FDate.now().addDays(-7).toString(), FDate.now().addDays(-3).toString()];

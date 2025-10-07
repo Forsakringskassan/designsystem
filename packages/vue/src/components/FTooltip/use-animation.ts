@@ -83,7 +83,7 @@ export function useAnimation(options: {
 
             if (state === "expand") {
                 animation = element.animate(
-                    [{ height: 0 }, { height: `${h}px` }],
+                    [{ height: 0 }, { height: `${String(h)}px` }],
                     {
                         duration,
                         easing,
@@ -91,7 +91,7 @@ export function useAnimation(options: {
                 );
             } else {
                 animation = element.animate(
-                    [{ height: `${h}px` }, { height: 0 }],
+                    [{ height: `${String(h)}px` }, { height: 0 }],
                     {
                         duration,
                         easing,

@@ -136,7 +136,7 @@ export default defineComponent({
         openModal(): void {
             const root = document.documentElement;
             const scroll = root.scrollTop;
-            root.style.top = `-${scroll}px`;
+            root.style.top = `-${String(scroll)}px`;
             root.style.left = "0";
             root.style.right = "0";
             // both of these properties is used to prevent scrolling in the background

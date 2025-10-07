@@ -5,7 +5,10 @@ function generateExampleLabelsAndRoutes(
 ): NavigationMenuItem[] {
     const res = [];
     for (let i = 0; i < nbRoutes; i++) {
-        res.push({ label: `label${i + 1}`, route: `ROUTE_${i + 1}` });
+        res.push({
+            label: `label${String(i + 1)}`,
+            route: `ROUTE_${String(i + 1)}`,
+        });
     }
     return res;
 }

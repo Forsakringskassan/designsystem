@@ -59,7 +59,7 @@ export class FNavigationMenuPageobject implements BasePageObject {
      */
     public itemLink(index: number): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .imenu__list__item:not(.imenu__list__item--hidden) a:nth(${index})`,
+            `${this.selector} .imenu__list__item:not(.imenu__list__item--hidden) a:nth(${String(index)})`,
         );
     }
 

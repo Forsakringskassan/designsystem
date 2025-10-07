@@ -18,7 +18,7 @@ export class FDialogueTreePageObject implements BasePageObject {
 
     public option(index: number): FDialogueTreeItemPageObject {
         return new FDialogueTreeItemPageObject(
-            `${this.selector} li:nth(${index})`,
+            `${this.selector} li:nth(${String(index)})`,
         );
     }
 }

@@ -30,7 +30,7 @@ export class FWizardPageobject implements BasePageObject {
      */
     public getStep(index: number): FWizardStepPageobject {
         return new FWizardStepPageobject(
-            `${this.selector} .wizard-step:nth(${index})`,
+            `${this.selector} .wizard-step:nth(${String(index)})`,
         );
     }
 

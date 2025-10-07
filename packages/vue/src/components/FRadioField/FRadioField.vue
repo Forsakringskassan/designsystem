@@ -119,10 +119,11 @@ export default defineComponent({
 
             if (hasSlot(this, "default")) {
                 const labelText = this.getFieldsetLabelText();
+                const slotText = renderSlotText(this.$slots.default) ?? "";
                 if (labelText) {
-                    errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
+                    errorMessage = `${labelText} ${slotText}`;
                 } else {
-                    errorMessage = `${renderSlotText(this.$slots.default)}`;
+                    errorMessage = slotText;
                 }
             }
 

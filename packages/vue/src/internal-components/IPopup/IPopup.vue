@@ -215,8 +215,8 @@ export default defineComponent({
                 this.placement = result.placement;
                 const useOverlay = this.forceOverlay || result.placement !== Placement.Fallback;
                 if (useOverlay) {
-                    wrapper.style.left = `${result.x}px`;
-                    wrapper.style.top = `${result.y}px`;
+                    wrapper.style.left = `${String(result.x)}px`;
+                    wrapper.style.top = `${String(result.y)}px`;
                     return;
                 }
             }
