@@ -41,21 +41,21 @@ export default defineComponent({
     computed: {
         navigationStyle(): Record<string, string> {
             if (this.isOpen) {
-                return { width: `${this.panelWidth}px`, top: `${this.offsetTop}px` };
+                return { width: `${String(this.panelWidth)}px`, top: `${String(this.offsetTop)}px` };
             } else {
-                return { top: `${this.offsetTop}px` };
+                return { top: `${String(this.offsetTop)}px` };
             }
         },
         primaryStyle(): Record<string, string> {
             if (this.isOpen) {
-                return { "margin-left": `${this.panelWidth}px` };
+                return { "margin-left": `${String(this.panelWidth)}px` };
             } else {
                 return { "margin-left": `3.5rem` };
             }
         },
         // This is to make word-wrap work in IE11
         contentStyle(): Record<string, string> {
-            return { "max-width": `${this.panelWidth - 35}px` };
+            return { "max-width": `${String(this.panelWidth - 35)}px` };
         },
     },
     mounted(): void {

@@ -47,7 +47,7 @@ function clamp(val: number): number {
 }
 
 const progressValueNow = computed(() => clamp(props.value));
-const cssWidth = computed(() => `width: ${progressValueNow.value}%`);
+const cssWidth = computed(() => `width: ${String(progressValueNow.value)}%`);
 const progressBarClass = computed(() => {
     if (progressValueNow.value === MIN_VALUE) {
         return "progress__meter--pending";

@@ -117,7 +117,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     ): FDate {
         const paddedMonth = month.toString().padStart(2, "0");
         const paddedDay = day.toString().padStart(2, "0");
-        const iso = `${year}-${paddedMonth}-${paddedDay}`;
+        const iso = `${String(year)}-${paddedMonth}-${paddedDay}`;
 
         return FDate.fromIso(iso);
     }

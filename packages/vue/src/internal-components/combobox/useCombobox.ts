@@ -84,7 +84,10 @@ export function useCombobox(
         if (!inputRef.value) {
             return;
         }
-        inputRef.value.setAttribute("aria-expanded", `${dropdownIsOpen.value}`);
+        inputRef.value.setAttribute(
+            "aria-expanded",
+            String(dropdownIsOpen.value),
+        );
 
         if (dropdownIsOpen.value) {
             inputRef.value.setAttribute("aria-controls", dropdownId);

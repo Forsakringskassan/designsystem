@@ -13,7 +13,7 @@ export interface DecimalValidatorConfig extends ValidatorOptions {
 
 function createNumberRegexp(minDecimals = 0, maxDecimals = 2): RegExp {
     return new RegExp(
-        `^([-\u2212]?[0-9]+)([,.][0-9]{${minDecimals},${maxDecimals}})(?<![,.])$`,
+        `^([-\u2212]?[0-9]+)([,.][0-9]{${String(minDecimals)},${String(maxDecimals)}})(?<![,.])$`,
     );
 }
 

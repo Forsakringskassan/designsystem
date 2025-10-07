@@ -25,7 +25,7 @@ export function setCookie(options: CookieOptions): void {
     }
 
     const timeout = timeLimitSeconds ?? TWELVE_HOURS;
-    const cookieString = `${name}=${encodeURIComponent(value)}; path=/; max-age=${timeout};`;
+    const cookieString = `${name}=${encodeURIComponent(value)}; path=/; max-age=${String(timeout)};`;
 
     document.cookie = cookieString;
 }

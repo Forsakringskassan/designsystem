@@ -152,11 +152,11 @@ async function calculatePosition(): Promise<void> {
         const offsetLeft = offsetRect?.x ?? 0;
         /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
-        wrapperElement.style.top = `${top - offSetTop}px`;
-        wrapperElement.style.left = `${left - offsetLeft}px`;
-        wrapperElement.style.width = `${width}px`;
-        contentWrapper.style.maxHeight = `${height}px`;
-        contentWrapper.style.width = `${width}px`;
+        wrapperElement.style.top = `${String(top - offSetTop)}px`;
+        wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+        wrapperElement.style.width = `${String(width)}px`;
+        contentWrapper.style.maxHeight = `${String(height)}px`;
+        contentWrapper.style.width = `${String(width)}px`;
     }
 }
 </script>

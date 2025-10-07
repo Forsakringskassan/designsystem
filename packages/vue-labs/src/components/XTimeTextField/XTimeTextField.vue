@@ -30,7 +30,7 @@ export default defineComponent({
         const inputElement: HTMLInputElement = this.$el.querySelector("input");
 
         if (!isSet(inputElement)) {
-            throw new Error(`Could not find input element in XTimeTextField with id ${this.$el.id}`);
+            throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
         }
 
         ValidationService.addValidatorsToElement(

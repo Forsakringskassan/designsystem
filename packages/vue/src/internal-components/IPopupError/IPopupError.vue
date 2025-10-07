@@ -56,7 +56,7 @@ export default defineComponent({
             return `popup-error popup-error--arrow popup-error--${this.arrowPosition}`;
         },
         errorStyle(): string {
-            return `--i-popup-error-offset: ${this.arrowOffset}px`;
+            return `--i-popup-error-offset: ${String(this.arrowOffset)}px`;
         },
         teleportTarget() {
             return config.teleportTarget;
@@ -138,8 +138,8 @@ export default defineComponent({
             this.placement = result.placement;
             if (result.placement !== Placement.Fallback) {
                 this.teleportDisabled = false;
-                wrapper.style.left = `${result.x}px`;
-                wrapper.style.top = `${result.y}px`;
+                wrapper.style.left = `${String(result.x)}px`;
+                wrapper.style.top = `${String(result.y)}px`;
                 this.setArrowOffset();
                 return;
             }

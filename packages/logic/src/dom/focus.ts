@@ -253,7 +253,7 @@ export function popFocus(handle: StackHandle): void {
     }
     const top = _focusElementStack.pop();
     if (top?.id !== handle[sym]) {
-        const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top?.id} but got ${handle[sym]}`;
+        const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym])}`;
         if (configLogic.production) {
             // eslint-disable-next-line no-console -- expected to log
             console.error(outOfOrderErrorMsg);

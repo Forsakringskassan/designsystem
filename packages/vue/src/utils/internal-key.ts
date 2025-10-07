@@ -53,13 +53,13 @@ export function setInternalKeys<T>(
 
         if (invalidValue) {
             throw new Error(
-                `Key [${keyString}] is missing or has invalid value in item index ${index}`,
+                `Key [${keyString}] is missing or has invalid value in item index ${String(index)}`,
             );
         }
         if (seenValues.has(value)) {
             throw new Error(
                 /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
-                `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${value}" in item index ${index}.`,
+                `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`,
             );
         }
 

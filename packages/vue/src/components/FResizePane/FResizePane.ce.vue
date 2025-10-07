@@ -142,8 +142,8 @@ const orientation = computed((): Orientation => {
 
 const classes = computed(() => {
     return [
-        `resize--${attachment.value}`,
-        `resize--${direction.value}`,
+        `resize--${String(attachment.value)}`,
+        `resize--${String(direction.value)}`,
         props.overlay ? "resize--overlay" : undefined,
         props.disabled ? "resize--disabled" : undefined,
     ];
@@ -167,9 +167,9 @@ watchEffect(() => {
         const shadowRoot = root.value.getRootNode() as ShadowRoot;
         const host = shadowRoot.host as HTMLElement;
         host.style.setProperty("--size", `${String(value)}px`);
-        host.style.setProperty("--min", `${min}px`);
-        host.style.setProperty("--max", `${max}px`);
-        host.style.setProperty("--offset", `${props.offset}px`);
+        host.style.setProperty("--min", `${String(min)}px`);
+        host.style.setProperty("--max", `${String(max)}px`);
+        host.style.setProperty("--offset", `${String(props.offset)}px`);
     }
     if (separator.value) {
         separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));

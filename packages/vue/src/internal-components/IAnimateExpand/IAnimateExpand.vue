@@ -105,7 +105,7 @@ export default defineComponent({
             return this.cssClasses;
         },
         heightStyle(): string {
-            return this.height === "" ? "" : `height: ${this.height}px`;
+            return this.height === "" ? "" : `height: ${String(this.height)}px`;
         },
         shouldVIf(): boolean {
             if (this.useVShow) {

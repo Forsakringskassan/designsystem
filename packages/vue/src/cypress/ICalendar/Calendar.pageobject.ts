@@ -66,15 +66,15 @@ export class CalendarPageObject implements BasePageObject {
      */
     public dayButton(day = 1): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .calendar-month__button:nth(${day - 1})`,
+            `${this.selector} .calendar-month__button:nth(${String(day - 1)})`,
         );
     }
 
     public day(day: number = 1): FCalendarDayPageObject {
         return new FCalendarDayPageObject(
-            `${this.selector} .calendar-month__button:nth(${
-                day - 1
-            }) .calendar-day`,
+            `${this.selector} .calendar-month__button:nth(${String(
+                day - 1,
+            )}) .calendar-day`,
         );
     }
 
@@ -85,14 +85,14 @@ export class CalendarPageObject implements BasePageObject {
      * @param targetMonth - Selected month 0-11, 0 = Jan 11 = dec
      */
     public navigateTo(targetYear: number, targetMonth: number): void {
-        cy.log(`Navigate to ${monthList[targetMonth]} ${targetYear}`);
+        cy.log(`Navigate to ${monthList[targetMonth]} ${String(targetYear)}`);
         this.navigationBar.text().then((el) => {
             let currYear = 2023;
             let currentMonth = 0;
             el.text().replace(/(\w+)\s+(\d+)/, (match, p1, p2) => {
                 currentMonth = monthList.findIndex((month) => month === p1);
                 currYear = parseInt(p2, 10);
-                return `${currYear}`;
+                return String(currYear);
             });
 
             const yearDiff = Math.abs(currYear - targetYear);

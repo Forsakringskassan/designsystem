@@ -56,19 +56,19 @@ export default defineComponent({
     computed: {
         secondaryStyle(): Record<string, string> {
             if (this.isOpen) {
-                return { width: `${this.panelWidth}px`, top: `${this.offsetTop}px` };
+                return { width: `${String(this.panelWidth)}px`, top: `${String(this.offsetTop)}px` };
             }
-            return { top: `${this.offsetTop}px` };
+            return { top: `${String(this.offsetTop)}px` };
         },
         primaryStyle(): Record<string, string> {
             if (this.isOpen && !this.isAbsolutePositioned) {
-                return { "margin-right": `${this.panelWidth}px` };
+                return { "margin-right": `${String(this.panelWidth)}px` };
             }
             return {};
         },
         // This is to make word-wrap work in IE11
         contentStyle(): Record<string, string> {
-            return { "max-width": `${this.panelWidth - 35}px` };
+            return { "max-width": `${String(this.panelWidth - 35)}px` };
         },
     },
     mounted(): void {

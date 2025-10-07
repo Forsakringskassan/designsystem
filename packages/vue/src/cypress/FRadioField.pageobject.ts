@@ -13,7 +13,7 @@ export class FRadioFieldPageObject implements BasePageObject {
      */
     public constructor(selector: string, index?: number) {
         if (index) {
-            this.selector = `${selector}:nth(${index})`;
+            this.selector = `${selector}:nth(${String(index)})`;
         } else {
             this.selector = selector;
         }

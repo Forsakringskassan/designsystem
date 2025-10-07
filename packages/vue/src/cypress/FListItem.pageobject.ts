@@ -14,7 +14,7 @@ export class FListItemPageObject implements BasePageObject {
      * @param index - the index of matched li:s.
      */
     public constructor(selector: string, index: number) {
-        this.selector = `${selector}:nth(${index})`;
+        this.selector = `${selector}:nth(${String(index)})`;
         this.index = index;
         this.el = () => cy.get(this.selector);
     }

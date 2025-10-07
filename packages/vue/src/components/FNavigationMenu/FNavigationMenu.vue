@@ -335,7 +335,7 @@ export default defineComponent({
             const firstHiddenItemRect = getAbsolutePosition(firstHiddenItem);
             const wrapperRect = getAbsolutePosition(wrapper);
             const offset = wrapperRect.x - firstHiddenItemRect.x;
-            wrapper.style.left = `-${offset}px`;
+            wrapper.style.left = `-${String(offset)}px`;
 
             this.popupOpen = popupWasOpen;
         },

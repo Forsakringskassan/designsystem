@@ -33,7 +33,7 @@ export class FErrorListPageObject {
     }
 
     public getLink(index: number): DefaultCypressChainable {
-        return cy.get(`${this.selector} a:nth(${index})`);
+        return cy.get(`${this.selector} a:nth(${String(index)})`);
     }
 
     public getLinkByName(

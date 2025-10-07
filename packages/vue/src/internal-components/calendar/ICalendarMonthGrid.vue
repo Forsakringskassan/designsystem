@@ -33,7 +33,7 @@ export default defineComponent({
     },
     computed: {
         ariaLabel(): string {
-            return `${this.value.monthName} ${this.value.year}`;
+            return `${this.value.monthName} ${String(this.value.year)}`;
         },
         totalCols(): number {
             return this.hideWeekNumbers ? 7 : 8;

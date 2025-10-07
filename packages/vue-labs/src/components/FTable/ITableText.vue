@@ -59,7 +59,7 @@ function onStartEdit(modelValue: string): void {
 
     const { width } = tdElement.value.getBoundingClientRect();
     model.value = modelValue;
-    tdElement.value.style.setProperty("width", `${width}px`);
+    tdElement.value.style.setProperty("width", `${String(width)}px`);
 
     inputElement.value.focus();
 }

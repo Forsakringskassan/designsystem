@@ -98,7 +98,7 @@ export default defineComponent({
 
             if (this.maxLength > 0) {
                 validators += ".maxLength";
-                settings.push(` maxLength: { length: ${this.maxLength} }`);
+                settings.push(` maxLength: { length: ${String(this.maxLength)} }`);
             }
 
             if (settings.length > 0) {

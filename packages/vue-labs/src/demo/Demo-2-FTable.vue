@@ -106,7 +106,9 @@ const columns = defineTableColumns<FruitOrder>([
         header: "Totalbelopp",
         type: "text",
         value(row) {
-            return `${formatNumber(String(erp.getOrderTotal(row)), 2)} kr`;
+            const total = erp.getOrderTotal(row);
+            const formatted = formatNumber(String(total), 2);
+            return `${String(formatted)} kr`;
         },
     },
     {

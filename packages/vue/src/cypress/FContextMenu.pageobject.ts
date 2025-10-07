@@ -42,7 +42,7 @@ export class FContextMenuPageObject implements BasePageObject {
      */
     public getItemLink(index: number): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .contextmenu__list__item a:nth(${index})`,
+            `${this.selector} .contextmenu__list__item a:nth(${String(index)})`,
         );
     }
 }
