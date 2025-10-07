@@ -25,7 +25,7 @@ function setup(options) {
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, normalizeClass, createVNode, unref, useTemplateRef, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent, normalizeProps, guardReactiveProps } from "vue";
+import { defineComponent, useTemplateRef, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, createVNode, unref, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, normalizeClass, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent, normalizeProps, guardReactiveProps } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected, useTranslate } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
@@ -2289,7 +2289,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$c = defineComponent({
+var _sfc_main$d = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2477,7 +2477,7 @@ import { normalizeClass as _normalizeClass, createElementVNode as _createElement
 var exampleComponent = defineComponent2({
   name: "XTimeComponentExample",
   components: {
-    XTimeTextField: _sfc_main$c
+    XTimeTextField: _sfc_main$d
   },
   data() {
     return {
