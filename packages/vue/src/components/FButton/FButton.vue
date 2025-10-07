@@ -139,8 +139,9 @@ const buttonClass = computed((): string[] => {
     if (props.mobileFullWidth && props.size !== "large") {
         classes.push(`button--full-width`);
     }
+
     if (inflight.value) {
-        classes.push(`${classes} button__inflight`);
+        classes.push(`button__inflight`);
     }
 
     return classes;
