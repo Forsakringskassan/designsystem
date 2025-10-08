@@ -139,11 +139,6 @@
     "scss",
     "css",
     "ikonbibliotek",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Testverktyg",
     "testfall",
     "jest",
@@ -179,6 +174,11 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "På gång",
     "pågående arbete",
     "planerat arbete",
@@ -206,9 +206,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -253,6 +250,9 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "EventBus",
+    "EventBus",
+    "services",
     "i18next",
     "TranslationService",
     "i18nextProvider",
@@ -610,15 +610,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -940,25 +940,6 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
-    },
-    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": [
@@ -1019,6 +1000,25 @@
       "title": "Checklista vid publicering",
       "terms": [
         "personuppgifter"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
       ]
     },
     {
@@ -1086,14 +1086,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -1173,6 +1165,14 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2170,6 +2170,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2197,21 +2212,6 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -2372,40 +2372,40 @@
     "138": 35,
     "139": 36,
     "140": 36,
-    "141": 37,
-    "142": 38,
-    "143": 38,
-    "144": 39,
-    "145": 39,
-    "146": 39,
-    "147": 39,
-    "148": 39,
-    "149": 39,
-    "150": 39,
-    "151": 39,
-    "152": 39,
-    "153": 39,
-    "154": 39,
-    "155": 39,
-    "156": 39,
-    "157": 39,
-    "158": 40,
-    "159": 40,
-    "160": 40,
-    "161": 40,
-    "162": 40,
-    "163": 40,
-    "164": 40,
-    "165": 40,
-    "166": 40,
-    "167": 41,
-    "168": 41,
-    "169": 41,
-    "170": 41,
-    "171": 41,
+    "141": 36,
+    "142": 36,
+    "143": 36,
+    "144": 36,
+    "145": 36,
+    "146": 36,
+    "147": 36,
+    "148": 36,
+    "149": 36,
+    "150": 36,
+    "151": 36,
+    "152": 36,
+    "153": 37,
+    "154": 37,
+    "155": 37,
+    "156": 37,
+    "157": 37,
+    "158": 37,
+    "159": 37,
+    "160": 37,
+    "161": 37,
+    "162": 38,
+    "163": 38,
+    "164": 38,
+    "165": 38,
+    "166": 38,
+    "167": 38,
+    "168": 38,
+    "169": 38,
+    "170": 39,
+    "171": 40,
     "172": 41,
     "173": 41,
-    "174": 41,
+    "174": 42,
     "175": 42,
     "176": 43,
     "177": 44,
@@ -2440,47 +2440,47 @@
     "206": 53,
     "207": 53,
     "208": 53,
-    "209": 54,
+    "209": 53,
     "210": 54,
     "211": 54,
     "212": 54,
     "213": 55,
     "214": 55,
     "215": 55,
-    "216": 56,
-    "217": 56,
-    "218": 56,
-    "219": 56,
-    "220": 56,
-    "221": 56,
+    "216": 55,
+    "217": 55,
+    "218": 55,
+    "219": 55,
+    "220": 55,
+    "221": 55,
     "222": 56,
     "223": 56,
     "224": 56,
     "225": 57,
     "226": 57,
     "227": 57,
-    "228": 58,
-    "229": 58,
+    "228": 57,
+    "229": 57,
     "230": 58,
     "231": 58,
     "232": 58,
-    "233": 59,
-    "234": 59,
-    "235": 59,
-    "236": 59,
-    "237": 59,
-    "238": 59,
-    "239": 59,
-    "240": 59,
-    "241": 59,
+    "233": 58,
+    "234": 58,
+    "235": 58,
+    "236": 58,
+    "237": 58,
+    "238": 58,
+    "239": 58,
+    "240": 58,
+    "241": 58,
     "242": 59,
     "243": 59,
     "244": 59,
-    "245": 60,
-    "246": 60,
-    "247": 60,
-    "248": 60,
-    "249": 60,
+    "245": 59,
+    "246": 59,
+    "247": 59,
+    "248": 59,
+    "249": 59,
     "250": 60,
     "251": 60,
     "252": 60,
