@@ -2182,7 +2182,7 @@ var _sfc_main$1l = /* @__PURE__ */ defineComponent({
         classes.push(`button--full-width`);
       }
       if (inflight.value) {
-        classes.push(`${classes} button__inflight`);
+        classes.push(`button__inflight`);
       }
       return classes;
     });
