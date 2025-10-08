@@ -3,9 +3,9 @@ import { type ComponentPublicInstance } from "vue";
 import flushPromises from "flush-promises";
 import { EventBus } from "../../utils";
 import {
+    UNHANDLED_ERROR_EVENT,
     errorHandler,
     warnHandler,
-    UNHANDLED_ERROR_EVENT,
 } from "./ErrorPlugin";
 
 const fakeVm: ComponentPublicInstance = {

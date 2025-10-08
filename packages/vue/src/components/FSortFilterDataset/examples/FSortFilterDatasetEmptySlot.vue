@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FSelectField, FSortFilterDataset, FDataTable, FTableColumn } from "@fkui/vue";
+import { FDataTable, FSelectField, FSortFilterDataset, FTableColumn } from "@fkui/vue";
 import { type FruitData, fruits } from "./fruit-data";
 
 const emptyList: FruitData[] = [];

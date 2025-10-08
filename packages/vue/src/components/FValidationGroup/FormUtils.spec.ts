@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { VueWrapper, mount } from "@vue/test-utils";
 import { ComponentValidityEvent, FormErrorList } from "../../types";
 import { cleanUpElements } from "./FormUtils";
 

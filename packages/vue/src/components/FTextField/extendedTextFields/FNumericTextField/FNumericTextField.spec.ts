@@ -1,6 +1,6 @@
 import "html-validate/jest";
-import { mount, VueWrapper } from "@vue/test-utils";
 import { defineComponent } from "vue";
+import { VueWrapper, mount } from "@vue/test-utils";
 import { ValidationPlugin } from "../../../../plugins";
 import FNumericTextField from "./FNumericTextField.vue";
 

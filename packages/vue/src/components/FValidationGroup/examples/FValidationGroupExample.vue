@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from "vue";
-import { FValidationGroup, FTextField } from "@fkui/vue";
+import { FTextField, FValidationGroup } from "@fkui/vue";
 
 export default defineComponent({
     name: "FValidationGroupExample",

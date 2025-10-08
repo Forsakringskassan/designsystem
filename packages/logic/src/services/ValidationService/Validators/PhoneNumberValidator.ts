@@ -1,5 +1,5 @@
+import { isEmpty, isString } from "../../../utils";
 import { type Validator } from "../Validator";
-import { isString, isEmpty } from "../../../utils";
 
 const PHONE_NUMBER_REGEXP = /^(\+?[-_/() ]*(\d[-_/() ]*?){3,17})$/;
 

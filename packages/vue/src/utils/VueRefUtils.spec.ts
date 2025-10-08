@@ -1,17 +1,17 @@
 import { defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import {
+    findElementFromVueRef,
+    getElementFromVueRef,
+    getElementsFromVueRef,
+    getHTMLElementFromVueRef,
+    getHTMLElementsFromVueRef,
+    getSortedHTMLElementsFromVueRef,
     refIsElement,
     refIsElementArray,
     refIsHTMLElementArray,
     refIsVue,
     refIsVueArray,
-    getElementsFromVueRef,
-    findElementFromVueRef,
-    getElementFromVueRef,
-    getHTMLElementFromVueRef,
-    getHTMLElementsFromVueRef,
-    getSortedHTMLElementsFromVueRef,
 } from "./VueRefUtils";
 
 const REF_NAME = "myReference";

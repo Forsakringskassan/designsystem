@@ -1,8 +1,8 @@
 import { defineComponent } from "vue";
 import {
     FInteractiveTable,
-    FTableColumn,
     FSortFilterDataset,
+    FTableColumn,
 } from "../components";
 import { FInteractiveTablePageObject } from "./FInteractiveTable.pageobject";
 

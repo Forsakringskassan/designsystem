@@ -1,12 +1,12 @@
 import { mount } from "@vue/test-utils";
 import {
-    cjsResolver,
     FileSystemConfigLoader,
     HtmlValidate,
+    cjsResolver,
 } from "html-validate/node";
 import "html-validate/jest";
-import { ALIGNMENT } from "./constants";
 import IFlexItem from "./IFlexItem.vue";
+import { ALIGNMENT } from "./constants";
 
 describe("prop align", () => {
     it("should have top alignment by default", () => {

@@ -1,15 +1,15 @@
 import "html-validate/jest";
+import { defineComponent } from "vue";
 import {
-    ValidationService,
     type PendingValidityEvent,
     type ValidatableHTMLElement,
-    type ValidityEvent,
     type ValidatorConfigs,
+    type ValidityEvent,
+    ValidationService,
 } from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
-import { defineComponent } from "vue";
 import { ValidationPlugin } from "../../../../plugins";
 import FPhoneTextField from "./FPhoneTextField.vue";
 

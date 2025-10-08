@@ -1,5 +1,5 @@
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
 import { FValidationFormPageObject } from "./FValidationForm.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public

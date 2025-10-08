@@ -4,8 +4,8 @@ import { useMediaQuery } from "@vueuse/core";
 import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
 import { useResize } from "../FResizePane";
-import { createDetailsPanel } from "./use-details-panel";
 import FDetailsPanel from "./FDetailsPanel.ce.vue";
+import { createDetailsPanel } from "./use-details-panel";
 
 const { name, exclusive = undefined } = defineProps<{
     /**

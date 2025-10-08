@@ -1,4 +1,4 @@
-import { parseNumber, formatNumber } from "./numberConverter";
+import { formatNumber, parseNumber } from "./numberConverter";
 
 describe("formatting", () => {
     it.each`

@@ -1,6 +1,6 @@
 import "html-validate/jest";
-import { mount } from "@vue/test-utils";
 import { defineComponent } from "vue";
+import { mount } from "@vue/test-utils";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";
 

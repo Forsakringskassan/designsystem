@@ -6,8 +6,8 @@ import {
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
 import { FFieldsetPageObject } from "../../cypress";
-import { FTooltip } from "../FTooltip";
 import { FFieldset } from "../FFieldset";
+import { FTooltip } from "../FTooltip";
 import FCheckboxField from "./FCheckboxField.vue";
 
 function createComponent(template: string): DefineComponent {

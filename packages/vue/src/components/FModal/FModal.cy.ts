@@ -7,10 +7,10 @@ import {
     FValidationForm,
 } from "..";
 import {
-    FModalPageObject,
     type DefaultCypressChainable,
-    FSelectFieldPageObject,
     FFormModalPageObject,
+    FModalPageObject,
+    FSelectFieldPageObject,
 } from "../../cypress";
 
 function generateModalMarkup(focusStrategy = "on"): string {

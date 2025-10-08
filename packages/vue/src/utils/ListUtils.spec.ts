@@ -1,8 +1,8 @@
 import { UnknownItem } from "../types";
 import {
-    itemEquals,
-    includeItem,
     handleKeyboardFocusNavigation,
+    includeItem,
+    itemEquals,
 } from "./ListUtils";
 
 afterAll(() => {

@@ -1,12 +1,12 @@
 import { defineComponent } from "vue";
-import { mount, VueWrapper } from "@vue/test-utils";
 import {
-    ValidationService,
     type ValidatableHTMLElement,
     type ValidatorConfigs,
+    ValidationService,
 } from "@fkui/logic";
+import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
-import { FTextField, FFieldset, FCheckboxField } from "../../components";
+import { FCheckboxField, FFieldset, FTextField } from "../../components";
 import { ComponentValidityEvent } from "../../types";
 import { dispatchComponentValidityEvent } from "../../utils";
 import { ValidationPlugin } from "./ValidationPlugin";

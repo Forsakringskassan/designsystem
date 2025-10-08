@@ -1,4 +1,4 @@
-import { testLuhnChecksum, isEmpty } from "../../utils";
+import { isEmpty, testLuhnChecksum } from "../../utils";
 
 const BANKGIRO_REGEXP_HYPHEN = /^(\d{3,4})-?(\d{4})$/;
 

@@ -1,8 +1,8 @@
 import { SCREEN_READER_DELAY } from "../wait-for-screen-reader";
 import {
+    REMOVE_TEXT_DELAY,
     alertScreenReader,
     createScreenReaderWrapper,
-    REMOVE_TEXT_DELAY,
 } from "./alert-screen-reader";
 
 jest.useFakeTimers();

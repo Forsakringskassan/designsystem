@@ -1,5 +1,5 @@
 export {
-    type FLayoutRightPanelInteface,
     type FLayoutRightPanelContentEvent,
+    type FLayoutRightPanelInteface,
     FLayoutRightPanelService,
 } from "./FLayoutRightPanelService";

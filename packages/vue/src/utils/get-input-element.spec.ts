@@ -1,7 +1,7 @@
 import "html-validate/jest";
-import { shallowMount, VueWrapper } from "@vue/test-utils";
-import { FTextField } from "../components/FTextField";
+import { VueWrapper, shallowMount } from "@vue/test-utils";
 import { FLabel } from "../components/FLabel";
+import { FTextField } from "../components/FTextField";
 import { getInputElement } from "./get-input-element";
 
 const inputWrapper: VueWrapper = shallowMount(FTextField);

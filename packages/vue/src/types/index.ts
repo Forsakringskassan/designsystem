@@ -1,6 +1,6 @@
 export {
-    type ComponentValidityEvent,
     type ComponentUnmountEvent,
+    type ComponentValidityEvent,
 } from "./ComponentValidityEvent";
 export { ErrorData } from "./ErrorData";
 export { ErrorViewData } from "./ErrorViewData";

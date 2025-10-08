@@ -1,5 +1,5 @@
-import { type Validator } from "../Validator";
 import { type ValidatorOptions } from "../ValidationServiceInterface";
+import { type Validator } from "../Validator";
 
 /**
  * @public

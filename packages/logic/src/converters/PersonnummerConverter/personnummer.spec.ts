@@ -1,9 +1,9 @@
 import { FDate } from "@fkui/date";
 import {
+    formatPersonnummerToDate,
+    isValidDate,
     parsePersonnummer,
     parsePersonnummerLuhn,
-    isValidDate,
-    formatPersonnummerToDate,
 } from "./personnummerConverter";
 
 //The test social security numbers(personnummer) used is approved by Skatteverket.

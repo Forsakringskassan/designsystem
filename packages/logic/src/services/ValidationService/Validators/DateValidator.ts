@@ -1,6 +1,6 @@
 import { FDate } from "@fkui/date";
-import { type Validator } from "../Validator";
 import { isEmpty, normalizeDateFormat } from "../../../utils";
+import { type Validator } from "../Validator";
 
 export const dateValidator: Validator = {
     name: "date",

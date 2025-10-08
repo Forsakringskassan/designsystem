@@ -1,10 +1,10 @@
 import { MenuAction } from "../../types";
-import { type ContextMenuItem } from "./contextmenuitem";
 import {
     MenuActionTarget,
-    getNewItemIndexFromMenuAction,
     doMenuAction,
+    getNewItemIndexFromMenuAction,
 } from "./contextmenu-logic";
+import { type ContextMenuItem } from "./contextmenuitem";
 
 describe("getNewItemIndexFromMenuAction", () => {
     const items = ["A", "B", "C"];

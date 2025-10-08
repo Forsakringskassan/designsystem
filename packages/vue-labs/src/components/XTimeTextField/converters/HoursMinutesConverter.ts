@@ -1,6 +1,6 @@
 import {
-    minutesToHoursMinutesString,
     hoursMinutesStringToMinutes,
+    minutesToHoursMinutesString,
 } from "../utils";
 
 /**

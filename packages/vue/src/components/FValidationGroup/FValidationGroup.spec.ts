@@ -1,12 +1,12 @@
 import "html-validate/jest";
-import { VueWrapper, mount } from "@vue/test-utils";
 import { defineComponent } from "vue";
 import { type ValidatableHTMLElement } from "@fkui/logic";
+import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import {
-    cjsResolver,
     FileSystemConfigLoader,
     HtmlValidate,
+    cjsResolver,
 } from "html-validate/node";
 import {
     type ComponentUnmountEvent,

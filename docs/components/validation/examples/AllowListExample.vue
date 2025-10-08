@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { FTextField } from "@fkui/vue";
 import { ref } from "vue";
+import { FTextField } from "@fkui/vue";
 
 const model = ref("");
 </script>

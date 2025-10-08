@@ -1,6 +1,6 @@
-import { type BasePageObject, type DefaultCypressChainable } from "../common";
 import { FErrorListPageObject } from "../FErrorList.pageobject";
 import { IAnimateExpandPageobject } from "../IAnimateExpand.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "../common";
 import { FWizardStepHeaderPageobject } from "./FWizardStepHeader.pageobject";
 
 /**

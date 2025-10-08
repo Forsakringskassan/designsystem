@@ -7,11 +7,11 @@ import {
     FTableButton,
     FTableColumn,
 } from "..";
-import { ListItem } from "../../types";
 import { FInteractiveTablePageObject } from "../../cypress";
-import ListExample from "./examples/FCrudDatasetListExample.vue";
-import FCrudDataset from "./FCrudDataset.vue";
+import { ListItem } from "../../types";
 import FCrudButton from "./FCrudButton.vue";
+import FCrudDataset from "./FCrudDataset.vue";
+import ListExample from "./examples/FCrudDatasetListExample.vue";
 
 const ADD_TEMPLATE = /* HTML */ `
     <template #add="{ item }">

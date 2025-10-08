@@ -1,6 +1,6 @@
 import { ExamplePageobject } from "./examples/Example.pageobject";
-import WithErrorListExample from "./examples/WithErrorList.vue";
 import NoErrorListExample from "./examples/NoErrorList.vue";
+import WithErrorListExample from "./examples/WithErrorList.vue";
 import WithErrorListAndCbFunctionExample from "./examples/WithErrorListAndCbFunction.vue";
 import WithErrorListAndNoBulletsExample from "./examples/WithErrorListAndNoBullets.vue";
 

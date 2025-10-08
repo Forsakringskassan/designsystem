@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { FPageLayout, FResizePane, registerLayout, FPageHeader, FLogo } from "@fkui/vue";
-import { XContextBar, XToolbar, XLeftPanel, XPersonPanel, XExpensePanel } from "./components";
+import { FLogo, FPageHeader, FPageLayout, FResizePane, registerLayout } from "@fkui/vue";
+import { XContextBar, XExpensePanel, XLeftPanel, XPersonPanel, XToolbar } from "./components";
 
 declare module "@fkui/vue" {
     interface FPageLayoutSlotMapping {

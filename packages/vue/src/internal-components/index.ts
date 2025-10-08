@@ -6,11 +6,11 @@ export { IPopupMenu } from "./IPopupMenu";
 export { type AnimationCallback, IAnimateExpand } from "./IAnimateExpand";
 export { ISkipLink } from "./ISkipLink";
 export {
-    getDayEndOffset,
-    getDayStartOffset,
     ICalendarMonth,
     ICalendarMonthGrid,
     ICalendarNavbar,
+    getDayEndOffset,
+    getDayStartOffset,
 } from "./calendar";
 
 export {

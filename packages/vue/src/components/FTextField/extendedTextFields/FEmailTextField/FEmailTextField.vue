@@ -4,12 +4,12 @@ import {
     type ValidatorConfigs,
     type ValidityEvent,
     ElementIdService,
-    ValidationService,
     TranslationService,
+    ValidationService,
 } from "@fkui/logic";
 import { FTextField } from "../..";
 import { TranslationMixin } from "../../../../plugins";
-import { renderSlotText, dispatchComponentValidityEvent } from "../../../../utils";
+import { dispatchComponentValidityEvent, renderSlotText } from "../../../../utils";
 
 export default defineComponent({
     name: "FEmailTextField",

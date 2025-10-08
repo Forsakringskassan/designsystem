@@ -1,9 +1,9 @@
 import { defineComponent } from "vue";
 import { FWizardPageobject, FWizardStepPageobject } from "../../cypress";
 import { FValidationFormAction } from "../FValidationForm";
-import FWizardTestComponent from "./examples/FWizardTestComponent.vue";
 import FWizard from "./FWizard.vue";
 import FWizardStep from "./FWizardStep.vue";
+import FWizardTestComponent from "./examples/FWizardTestComponent.vue";
 
 const TestComponent = defineComponent({
     template: /* HTML */ `

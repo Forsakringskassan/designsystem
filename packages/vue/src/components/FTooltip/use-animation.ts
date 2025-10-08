@@ -1,4 +1,4 @@
-import { type Ref, ref, computed, onMounted, watchEffect } from "vue";
+import { type Ref, computed, onMounted, ref, watchEffect } from "vue";
 
 let initialized = false;
 const reducedMotion = ref(false);

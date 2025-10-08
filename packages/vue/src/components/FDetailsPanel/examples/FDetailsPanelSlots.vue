@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { FPageLayout, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
+import { FDetailsPanel, FPageLayout, useDetailsPanel } from "@fkui/vue";
 
 const name = "details-panel-slots";
 const panel = useDetailsPanel(name);

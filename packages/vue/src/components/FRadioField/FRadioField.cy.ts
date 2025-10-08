@@ -6,8 +6,8 @@ import {
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
 import { FFieldsetPageObject } from "../../cypress";
-import { FTooltip } from "../FTooltip";
 import FFieldset from "../FFieldset/FFieldset.vue";
+import { FTooltip } from "../FTooltip";
 import FRadioField from "./FRadioField.vue";
 
 function createComponent(template: string): DefineComponent {

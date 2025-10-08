@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
-import { FValidationForm, FTextField } from "@fkui/vue";
+import { FTextField, FValidationForm } from "@fkui/vue";
 
 interface Config {
     minLength: number;

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, type PropType, provide, useTemplateRef } from "vue";
+import { type PropType, defineComponent, provide, useTemplateRef } from "vue";
 import { hasSlot } from "../../utils";
 import { FIcon } from "../FIcon";
 import { tooltipAttachTo } from "../FTooltip";

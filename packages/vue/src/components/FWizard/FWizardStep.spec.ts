@@ -1,7 +1,7 @@
 import "html-validate/jest";
 import { defineComponent } from "vue";
-import { mount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import FWizard from "./FWizard.vue";
 import FWizardStep from "./FWizardStep.vue";

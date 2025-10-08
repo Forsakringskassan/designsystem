@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import { type ErrorItem } from "../../types";
-import { FIcon } from "../FIcon";
-import { hasSlot } from "../../utils";
+import { type PropType, defineComponent } from "vue";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
+import { type ErrorItem } from "../../types";
+import { hasSlot } from "../../utils";
+import { FIcon } from "../FIcon";
 import { type BeforeNavigate } from "./BeforeNavigate";
 import { focusError } from "./focus-error";
 

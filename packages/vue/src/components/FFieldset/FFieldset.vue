@@ -1,13 +1,13 @@
 <script lang="ts">
 import { type PropType, defineComponent, provide, useSlots, useTemplateRef } from "vue";
-import { ElementIdService, type ValidityEvent, debounce } from "@fkui/logic";
-import { renderSlotText, dispatchComponentValidityEvent, hasSlot } from "../../utils";
-import { type ComponentValidityEvent } from "../../types";
-import { FIcon } from "../FIcon";
+import { type ValidityEvent, ElementIdService, debounce } from "@fkui/logic";
 import { TranslationMixin } from "../../plugins";
+import { type ComponentValidityEvent } from "../../types";
+import { dispatchComponentValidityEvent, hasSlot, renderSlotText } from "../../utils";
+import { FIcon } from "../FIcon";
 import { tooltipAttachTo } from "../FTooltip";
-import { labelClasses } from "./label-classes";
 import { contentClasses } from "./content-classes";
+import { labelClasses } from "./label-classes";
 import { injectionKeys } from "./use-fieldset";
 
 function isEqual<T>(a: T[], b: T[]): boolean {

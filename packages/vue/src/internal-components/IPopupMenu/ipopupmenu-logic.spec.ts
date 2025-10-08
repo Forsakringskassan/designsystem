@@ -1,9 +1,9 @@
-import { MenuAction } from "../../types";
 import { type MenuItem } from "../../components";
+import { MenuAction } from "../../types";
 import {
     MenuActionTarget,
-    getNewItemIndexFromMenuAction,
     doMenuAction,
+    getNewItemIndexFromMenuAction,
 } from "./ipopupmenu-logic";
 
 describe("getNewItemIndexFromMenuAction", () => {

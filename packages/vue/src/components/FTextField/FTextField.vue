@@ -1,11 +1,11 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import { ElementIdService, isSet, ValidationService, type ValidityEvent } from "@fkui/logic";
-import { FLabel } from "../FLabel";
-import { FIcon } from "../FIcon";
+import { type PropType, defineComponent } from "vue";
+import { type ValidityEvent, ElementIdService, ValidationService, isSet } from "@fkui/logic";
 import { IPopupError } from "../../internal-components/IPopupError";
-import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
 import { IComboboxDropdown, IComboboxToggleButton } from "../../internal-components/combobox";
+import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
+import { FIcon } from "../FIcon";
+import { FLabel } from "../FLabel";
 import { resolveWidthClass } from "./FTextField.logic";
 import { useTextFieldSetup } from "./useTextFieldSetup";
 import { type FormatFunction, type ParseFunction } from "./index";

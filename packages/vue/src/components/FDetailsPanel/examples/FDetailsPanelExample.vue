@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPageLayout, FDetailsPanel, useDetailsPanel, FResizePane } from "@fkui/vue";
+import { FDetailsPanel, FPageLayout, FResizePane, useDetailsPanel } from "@fkui/vue";
 
 interface Item {
     name: string;

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FRadioField, FCheckboxField, FTooltip, FFieldset } from "@fkui/vue";
+import { FCheckboxField, FFieldset, FRadioField, FTooltip } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({

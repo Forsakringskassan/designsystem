@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
-import { FTextField, FFieldset, FRadioField, getElementFromVueRef } from "@fkui/vue";
+import { FFieldset, FRadioField, FTextField, getElementFromVueRef } from "@fkui/vue";
 
 export default defineComponent({
     name: "ValidationPluginToggleDisable",

@@ -1,6 +1,6 @@
 import { FDate } from "@fkui/date";
-import { type Validator } from "../Validator";
 import { formatPersonnummerToDate } from "../../../converters";
+import { type Validator } from "../Validator";
 
 export const personnummerOlder: Validator = {
     name: "personnummerOlder",

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { type IconPackage } from "@fkui/icon-lib-default";
-import { FDataTable, FTableColumn, FIcon } from "@fkui/vue";
+import { FDataTable, FIcon, FTableColumn } from "@fkui/vue";
 
 interface IconEntry {
     id: string;

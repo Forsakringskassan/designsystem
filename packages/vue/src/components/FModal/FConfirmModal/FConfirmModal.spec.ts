@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { config, FKUIConfigButtonOrder } from "../../../config";
+import { FKUIConfigButtonOrder, config } from "../../../config";
 import FConfirmModal from "./FConfirmModal.vue";
 
 describe("events", () => {

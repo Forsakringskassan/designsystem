@@ -1,10 +1,10 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { nextTick, type Ref, ref, useTemplateRef, watchEffect } from "vue";
-import { assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { IComboboxDropdown, FIcon } from "@fkui/vue";
+import { type Ref, nextTick, ref, useTemplateRef, watchEffect } from "vue";
+import { ElementIdService, assertRef, assertSet } from "@fkui/logic";
+import { FIcon, IComboboxDropdown } from "@fkui/vue";
+import { type FTableActivateCellEvent } from "./events";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnSelect } from "./table-column";
-import { type FTableActivateCellEvent } from "./events";
 
 // Props
 // const { modelValue, options, title } = defineProps<{

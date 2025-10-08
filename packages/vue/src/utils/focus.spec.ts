@@ -1,7 +1,7 @@
 import "@fkui/test-utils/jest";
 import { defineComponent } from "vue";
-import { mount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { mount } from "@vue/test-utils";
 import { focus } from "./focus";
 
 it("should focus Vue component", () => {

@@ -1,26 +1,26 @@
 import { isRadiobuttonOrCheckbox, isValidatableFormElement } from "../../dom";
 import { isSet } from "../../utils";
+import { createFieldsetValidator } from "./FieldsetValidationHandler";
 import {
-    type ValidatorConfig,
+    type ElementValidatorsReference,
+    type PendingValidityEvent,
+    type ValidatableHTMLElement,
+    type ValidateEvent,
+    type ValidationConfigUpdateDetail,
+    type ValidationResult,
     type ValidationServiceInterface,
+    type ValidationState,
+    type ValidatorConfig,
     type ValidatorConfigs,
     type ValidityEvent,
-    type ValidationState,
-    type ValidatableHTMLElement,
     type ValidityMode,
-    type PendingValidityEvent,
-    type ValidateEvent,
     type ValidityNativeEvent,
-    type ElementValidatorsReference,
-    type ValidationResult,
-    type ValidationConfigUpdateDetail,
 } from "./ValidationServiceInterface";
-import { type Validator, type ValidatorName } from "./Validator";
 import { getErrorMessages } from "./ValidationTranslations/get-error-messages";
-import { createFieldsetValidator } from "./FieldsetValidationHandler";
-import { registry } from "./registry";
+import { type Validator, type ValidatorName } from "./Validator";
 import { getCandidates } from "./getCandidates";
 import { getElementType } from "./getElementType";
+import { registry } from "./registry";
 
 /**
  * Returns true if given element is a validatable element.

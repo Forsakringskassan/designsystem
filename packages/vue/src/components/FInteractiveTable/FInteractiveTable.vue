@@ -3,35 +3,35 @@ import {
     type PropType,
     type Ref,
     computed,
-    onUpdated,
+    getCurrentInstance,
     onMounted,
+    onUpdated,
     provide,
     ref,
+    shallowRef,
     useSlots,
     useTemplateRef,
-    shallowRef,
-    getCurrentInstance,
     watch,
 } from "vue";
 import { findTabbableElements, isVisible } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
-import { TableScroll, tableScrollClasses, itemEquals, includeItem, renderSlotText } from "../../utils";
+import { useTranslate } from "../../plugins";
+import { TableScroll, includeItem, itemEquals, renderSlotText, tableScrollClasses } from "../../utils";
 import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
+import { FCheckboxField } from "../FCheckboxField";
+import { ActivateItemInjected } from "../FCrudDataset";
+import { FIcon } from "../FIcon";
+import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
 import {
     type FTableColumnData,
     FTableColumnSort,
     addColumn,
+    getSortableIconClasses,
+    getSortableIconName,
+    setSortableColumns,
     setVisibilityColumn,
     updateSortOrder,
-    setSortableColumns,
-    getSortableIconName,
-    getSortableIconClasses,
 } from "../FTableColumn";
-import { ActivateItemInjected } from "../FCrudDataset";
-import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
-import { FCheckboxField } from "../FCheckboxField";
-import { useTranslate } from "../../plugins";
-import { FIcon } from "../FIcon";
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
 import { type ExpandableTable, useExpandableTable } from "./useExpandableTable";
 

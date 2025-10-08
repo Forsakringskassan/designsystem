@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IFlex, IFlexItem, FIcon } from "@fkui/vue";
+import { FIcon, IFlex, IFlexItem } from "@fkui/vue";
 
 export default defineComponent({
     name: "IFlexExample",

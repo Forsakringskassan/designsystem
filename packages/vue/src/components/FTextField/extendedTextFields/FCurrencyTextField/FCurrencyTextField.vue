@@ -1,10 +1,10 @@
 <script lang="ts">
-import { formatNumber, parseNumber, ValidationService } from "@fkui/logic";
-import { defineComponent, type PropType } from "vue";
-import { type FormatFunction, type ParseFunction } from "../../index";
-import FTextField from "../../FTextField.vue";
-import { getInputElement } from "../../../../utils";
+import { type PropType, defineComponent } from "vue";
+import { ValidationService, formatNumber, parseNumber } from "@fkui/logic";
 import { TranslationMixin } from "../../../../plugins";
+import { getInputElement } from "../../../../utils";
+import FTextField from "../../FTextField.vue";
+import { type FormatFunction, type ParseFunction } from "../../index";
 import { useTextFieldSetup } from "../../useTextFieldSetup";
 
 export default defineComponent({

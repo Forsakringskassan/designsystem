@@ -1,9 +1,9 @@
 import "html-validate/jest";
 import "@fkui/test-utils/jest";
-import { VueWrapper, mount } from "@vue/test-utils";
 import { defineComponent } from "vue";
-import flushPromises from "flush-promises";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { VueWrapper, mount } from "@vue/test-utils";
+import flushPromises from "flush-promises";
 import IPopup from "./IPopup.vue";
 
 jest.useFakeTimers();
