@@ -2680,13 +2680,13 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "escape": {
       dispatchActivateCellEvent(newCellTarget, {
         focus: true
       });
-      break;
+      return newCellTarget;
     }
     case "tab": {
       if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
@@ -2704,7 +2704,7 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "shift-tab": {
       if (cellIndex === 0 && rowIndex === 1) {
@@ -2722,17 +2722,13 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "blur": {
       console.log("stopEdit", "blur");
-      break;
-    }
-    default: {
-      throw new Error(`invalid stop edit reason: ${reason}`);
+      return newCellTarget;
     }
   }
-  return newCellTarget;
 }
 var _hoisted_1$8 = {
   key: 0,
