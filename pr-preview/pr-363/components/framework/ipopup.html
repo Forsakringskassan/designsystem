@@ -23,16 +23,16 @@
             {
   "imports": {
     "vue": "../../assets/vendor-vue-fd23ba.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-7d98e2.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-8488a1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-d8ea4f.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-adde2b.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-131ba7.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-a78644.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd23ba.js": "sha384-fgWjDRyjtEXyEeb3gQxn5cMLQnaLJ/+raE5Ku0VLWBP2RlzpzrpvJFEC1FCSIWMk",
-    "../../assets/vendor-fkui-logic-7d98e2.js": "sha384-uPqKzXQhi841rLqIXR9ok5Ah8ie/y7wNA6ejE8KsJsqvHpXYHMb38zCuNldsh5/d",
-    "../../assets/vendor-fkui-date-8488a1.js": "sha384-ghZefVQbU4i+0Kekr9srBLVa6/3DF9efvAvjmMryIfAp0j1zA/iaKAIw1+CGZRv9",
-    "../../assets/vendor-fkui-vue-d8ea4f.js": "sha384-sMIe0DwmC4hBSrZjT2NrnHLftaJIKW19BQNTDsKa4N4RQRudP9L563mM0VJ6k/yQ",
+    "../../assets/vendor-fkui-logic-adde2b.js": "sha384-bfazXnBDJ7Ed0qf3RVAUZ6goj4YqAxvefQ9anoRbA6R0iwxzyihd8DWgpS2bg5Ry",
+    "../../assets/vendor-fkui-date-131ba7.js": "sha384-1ousGnX+TtYBjw6BVR/x9Yg2jMIjTjuSOD+VpUdpe9Eo7r1KF2LHHKhc8hzYQQlC",
+    "../../assets/vendor-fkui-vue-a78644.js": "sha384-EcjZh0J+K7/SAb/3QJ9iUQ+CcRvq2mtIK8aoCTRD9Ng5892H7x58+2ulZdzv7LDP",
     "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-81ec2e.json"
+            href="../../search-data-a65a58.json"
             as="fetch"
             crossorigin
-            integrity="sha384-XgwBwXxRx2SdBntrFv4E5AtZM1GtvZlAYLKZPiFwPZ+y+gJS5OKXnGJL897NDveP"
+            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/819f476982e0cab009ff45c2f71b8e6d5b7f9c7c/packages/vue/src/internal-components/IPopup/IPopup.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/9a5844ef411cdb838d03a9a0b78d4b7792b1a1e3/packages/vue/src/internal-components/IPopup/IPopup.vue">
                 IPopup
             </a>
             
@@ -1353,7 +1353,7 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-962f4c"></div>
+        <div id="example-c6fbdb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1402,7 +1402,7 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupPositioning-962f4c.js"></script>
+        <script type="module" src="./IPopupPositioning-c6fbdb.js"></script>
     </div>
                 <div>
             <button
@@ -1505,8 +1505,8 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
                 <span class="hljs-variable constant_">SPACING</span>,
                 area.<span class="hljs-property">height</span> - anchor.<span class="hljs-property">height</span> - <span class="hljs-variable constant_">SPACING</span> - <span class="hljs-number">2</span>,
             );
-            anchorElement.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-string">`<span class="hljs-subst">${left}</span>px`</span>;
-            anchorElement.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = <span class="hljs-string">`<span class="hljs-subst">${top}</span>px`</span>;
+            anchorElement.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">String</span>(left)}</span>px`</span>;
+            anchorElement.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">String</span>(top)}</span>px`</span>;
             <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updatePosition</span>();
         },
         <span class="hljs-title function_">updatePosition</span>(<span class="hljs-params"></span>) {
@@ -1533,8 +1533,8 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
                 target.<span class="hljs-property">style</span>.<span class="hljs-title function_">removeProperty</span>(<span class="hljs-string">&quot;top&quot;</span>);
             } <span class="hljs-keyword">else</span> {
                 target.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&quot;pos-target--inline&quot;</span>);
-                target.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-string">`<span class="hljs-subst">${result.x}</span>px`</span>;
-                target.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = <span class="hljs-string">`<span class="hljs-subst">${result.y}</span>px`</span>;
+                target.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">String</span>(result.x)}</span>px`</span>;
+                target.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">String</span>(result.y)}</span>px`</span>;
             }
 
             target.<span class="hljs-property">innerText</span> = <span class="hljs-string">`Popup (<span class="hljs-subst">${result.placement}</span>)`</span>;
@@ -1865,9 +1865,9 @@ Om popup inte hittar en förälder med <code>scroll-target</code> så kommer den
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-vueuse-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/819f476982e0cab009ff45c2f71b8e6d5b7f9c7c">819f476</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-vueuse-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/9a5844ef411cdb838d03a9a0b78d4b7792b1a1e3">9a5844e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/363">PR 363</a><br />
-        2025-10-08 07:12
+        2025-10-08 09:43
 </div>
 <div class="toolbar__item">
     <form id="version">
