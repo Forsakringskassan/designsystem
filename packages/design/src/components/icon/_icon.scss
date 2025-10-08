@@ -85,12 +85,12 @@
 
     &--tooltip {
         .f-icon-circle {
-            fill: var(--f-icon-color-info);
-            color: var(--f-icon-color-info);
+            fill: $icon-tooltip-color-background;
+            color: $icon-tooltip-color-border;
         }
 
         .f-icon-i {
-            color: var(--f-icon-color-white);
+            color: $icon-tooltip-color-content;
         }
     }
 
@@ -99,6 +99,10 @@
             color: $icon-info-color-background;
             fill: $icon-info-color-border;
         }
+
+        .f-icon-i {
+            color: $icon-info-color-content;
+        }
     }
 
     &--warning {
@@ -106,12 +110,20 @@
             color: $icon-warning-color-background;
             fill: $icon-warning-color-border;
         }
+
+        .f-icon-alert {
+            color: $icon-warning-color-content;
+        }
     }
 
     &--error {
         .f-icon-triangle {
             color: $icon-error-color-background;
             fill: $icon-error-color-border;
+        }
+
+        .f-icon-alert {
+            color: $icon-error-color-content;
         }
     }
 
@@ -121,6 +133,7 @@
             fill: $icon-success-color-border;
         }
         .f-icon-success {
+            color: $icon-success-color-content;
             transform: scale(0.6);
         }
     }
