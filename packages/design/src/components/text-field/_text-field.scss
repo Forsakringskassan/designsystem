@@ -25,7 +25,7 @@
     }
 
     &__error-popup-icon {
-        color: var(--f-text-color-error);
+        color: $textfield-color-icon-error;
         height: 16px;
     }
 
@@ -113,6 +113,10 @@
             color: $textfield-icon-close-color-content-default;
             height: var(--f-icon-size-x-small);
             width: var(--f-icon-size-x-small);
+
+            @media (forced-colors: active) {
+                color: buttonText;
+            }
         }
     }
 
