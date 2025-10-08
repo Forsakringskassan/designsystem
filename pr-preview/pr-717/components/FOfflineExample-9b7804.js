@@ -1973,19 +1973,19 @@ function findElementFromVueRef(ref) {
 function getElementFromVueRef(ref) {
   const element = findElementFromVueRef(ref);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${ref}.`);
+    throw new Error(`Unable to find element from ${String(ref)}.`);
   }
   return element;
 }
 function getHTMLElementFromVueRef(ref) {
   const element = findElementFromVueRef(ref);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${ref}.`);
+    throw new Error(`Unable to find element from ${String(ref)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${ref}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -2378,7 +2378,7 @@ var FModal_default = defineComponent6({
     openModal() {
       const root = document.documentElement;
       const scroll = root.scrollTop;
-      root.style.top = `-${scroll}px`;
+      root.style.top = `-${String(scroll)}px`;
       root.style.left = "0";
       root.style.right = "0";
       root.style.overflow = "hidden";
@@ -2788,11 +2788,13 @@ import { defineComponent as defineComponent8 } from "vue";
 // packages/vue/src/components/FErrorList/focus-error.ts
 import { focus as focus3, scrollTo } from "@fkui/logic";
 function focusError(item) {
-  const element = document.querySelector(`#${item.id}`);
+  const element = document.querySelector(`#${String(item.id)}`);
   if (!element) {
-    throw new Error(`Can not find element with id "${item.id}"`);
+    throw new Error(`Can not find element with id "${String(item.id)}"`);
   }
-  const focusElement3 = document.querySelector(`#${item.focusElementId}`);
+  const focusElement3 = document.querySelector(
+    `#${String(item.focusElementId)}`
+  );
   scrollTo(element, window.innerHeight * 0.25);
   focus3(focusElement3 ?? element);
 }

@@ -8918,7 +8918,7 @@ class FDate {
   static fromYearMonthDay(year, month, day) {
     const paddedMonth = month.toString().padStart(2, "0");
     const paddedDay = day.toString().padStart(2, "0");
-    const iso = `${year}-${paddedMonth}-${paddedDay}`;
+    const iso = `${String(year)}-${paddedMonth}-${paddedDay}`;
     return FDate.fromIso(iso);
   }
   /**
@@ -9540,7 +9540,7 @@ function popFocus(handle) {
   }
   const top = _focusElementStack.pop();
   if (top?.id !== handle[sym]) {
-    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top?.id} but got ${handle[sym]}`;
+    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym])}`;
     if (configLogic.production) {
       console.error(outOfOrderErrorMsg);
       return;
@@ -10298,7 +10298,7 @@ const dateFormatValidator = {
   }
 };
 function createNumberRegexp(minDecimals = 0, maxDecimals = 2) {
-  return new RegExp(`^([-−]?[0-9]+)([,.][0-9]{${minDecimals},${maxDecimals}})(?<![,.])$`);
+  return new RegExp(`^([-−]?[0-9]+)([,.][0-9]{${String(minDecimals)},${String(maxDecimals)}})(?<![,.])$`);
 }
 const decimalValidator = {
   name: "decimal",
@@ -10328,7 +10328,7 @@ const emailValidator = {
   name: "email",
   validation(value, _element, config2) {
     const maxLength = config2.maxLength ?? 254;
-    const EMAIL_REGEXP = new RegExp(`^(?=.{1,${maxLength}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
+    const EMAIL_REGEXP = new RegExp(`^(?=.{1,${String(maxLength)}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
     return isEmpty(value) || EMAIL_REGEXP.test(value);
   }
 };
@@ -15301,12 +15301,12 @@ function findElementFromVueRef(ref2) {
 function getHTMLElementFromVueRef(ref2) {
   const element = findElementFromVueRef(ref2);
   if (!isSet(element)) {
-    throw new Error(`Unable to find element from ${ref2}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${ref2}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
 function lazyLoad(fn2) {
   let cache;
@@ -15535,7 +15535,7 @@ const _sfc_main$1k = /* @__PURE__ */ defineComponent({
     openModal() {
       const root = document.documentElement;
       const scroll = root.scrollTop;
-      root.style.top = `-${scroll}px`;
+      root.style.top = `-${String(scroll)}px`;
       root.style.left = "0";
       root.style.right = "0";
       root.style.overflow = "hidden";
@@ -15955,11 +15955,11 @@ function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const IFlexItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$1h, [["render", _sfc_render$M]]);
 function focusError(item) {
-  const element = document.querySelector(`#${item.id}`);
+  const element = document.querySelector(`#${String(item.id)}`);
   if (!element) {
-    throw new Error(`Can not find element with id "${item.id}"`);
+    throw new Error(`Can not find element with id "${String(item.id)}"`);
   }
-  const focusElement2 = document.querySelector(`#${item.focusElementId}`);
+  const focusElement2 = document.querySelector(`#${String(item.focusElementId)}`);
   scrollTo(element, window.innerHeight * 0.25);
   focus$1(focusElement2 !== null && focusElement2 !== void 0 ? focusElement2 : element);
 }
@@ -17462,12 +17462,12 @@ function setInternalKeys(items, key, nestedKey, seenValues = /* @__PURE__ */ new
       value === void 0 || value === null || String(value).length === 0
     );
     if (invalidValue) {
-      throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${index}`);
+      throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${String(index)}`);
     }
     if (seenValues.has(value)) {
       throw new Error(
         /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
-        `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${value}" in item index ${index}.`
+        `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
       );
     }
     setInternalKey(item, String(value));
@@ -17535,7 +17535,7 @@ const ValidationPrefixDirective = {
   beforeMount(el, binding) {
     el.addEventListener("component-validity", (event) => {
       const e = event;
-      e.detail.errorMessage = `${binding.value}${e.detail.errorMessage}`;
+      e.detail.errorMessage = `${String(binding.value)}${e.detail.errorMessage}`;
     });
   }
 };
@@ -17961,7 +17961,7 @@ const _sfc_main$12 = /* @__PURE__ */ defineComponent({
       return `popup-error popup-error--arrow popup-error--${this.arrowPosition}`;
     },
     errorStyle() {
-      return `--i-popup-error-offset: ${this.arrowOffset}px`;
+      return `--i-popup-error-offset: ${String(this.arrowOffset)}px`;
     },
     teleportTarget() {
       return config.teleportTarget;
@@ -18035,8 +18035,8 @@ const _sfc_main$12 = /* @__PURE__ */ defineComponent({
       this.placement = result.placement;
       if (result.placement !== Placement.Fallback) {
         this.teleportDisabled = false;
-        wrapper2.style.left = `${result.x}px`;
-        wrapper2.style.top = `${result.y}px`;
+        wrapper2.style.left = `${String(result.x)}px`;
+        wrapper2.style.top = `${String(result.y)}px`;
         this.setArrowOffset();
         return;
       }
@@ -18281,11 +18281,11 @@ const _sfc_main$11 = /* @__PURE__ */ defineComponent({
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
         const offsetLeft = (_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
         const offSetTop = Math.floor(((_offsetRect$top = offsetRect?.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
-        wrapperElement.style.top = `${top - offSetTop}px`;
-        wrapperElement.style.left = `${left - offsetLeft}px`;
-        wrapperElement.style.width = `${width}px`;
-        contentWrapper.style.maxHeight = `${height}px`;
-        contentWrapper.style.width = `${width}px`;
+        wrapperElement.style.top = `${String(top - offSetTop)}px`;
+        wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+        wrapperElement.style.width = `${String(width)}px`;
+        contentWrapper.style.maxHeight = `${String(height)}px`;
+        contentWrapper.style.width = `${String(width)}px`;
       }
     }
     return (_ctx, _cache) => {
@@ -18357,7 +18357,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
     if (!inputRef.value) {
       return;
     }
-    inputRef.value.setAttribute("aria-expanded", `${dropdownIsOpen.value}`);
+    inputRef.value.setAttribute("aria-expanded", String(dropdownIsOpen.value));
     if (dropdownIsOpen.value) {
       inputRef.value.setAttribute("aria-controls", dropdownId);
     } else {
@@ -18699,14 +18699,14 @@ function useAnimation(options) {
         animation = element.animate([{
           height: 0
         }, {
-          height: `${h2}px`
+          height: `${String(h2)}px`
         }], {
           duration,
           easing
         });
       } else {
         animation = element.animate([{
-          height: `${h2}px`
+          height: `${String(h2)}px`
         }, {
           height: 0
         }], {
@@ -18862,7 +18862,7 @@ function useHorizontalOffset(options) {
       if (!wrapper2.value) {
         return;
       }
-      wrapper2.value.style.setProperty("--f-tooltip-offset", `${offset2.value}px`);
+      wrapper2.value.style.setProperty("--f-tooltip-offset", `${String(offset2.value)}px`);
       ready.value = true;
     });
     return {
@@ -19081,11 +19081,13 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
       }
       let errorMessage = "";
       if (hasSlot(this, "default")) {
+        var _renderSlotText;
         const labelText = this.injected.getFieldsetLabelText();
+        const slotText = (_renderSlotText = renderSlotText(this.$slots.default)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
         if (labelText) {
-          errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
+          errorMessage = `${labelText} ${slotText}`;
         } else {
-          errorMessage = `${renderSlotText(this.$slots.default)}`;
+          errorMessage = slotText;
         }
       }
       const element = this.$el.querySelector(`#${detail.elementId}`);

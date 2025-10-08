@@ -1,4 +1,4 @@
-// ../date/lib/esm/index.js
+// packages/date/lib/esm/index.js
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
@@ -559,7 +559,7 @@ var FDate = class _FDate {
   static fromYearMonthDay(year, month, day) {
     const paddedMonth = month.toString().padStart(2, "0");
     const paddedDay = day.toString().padStart(2, "0");
-    const iso = `${year}-${paddedMonth}-${paddedDay}`;
+    const iso = `${String(year)}-${paddedMonth}-${paddedDay}`;
     return _FDate.fromIso(iso);
   }
   /**

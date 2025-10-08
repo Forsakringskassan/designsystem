@@ -2182,7 +2182,7 @@ var _sfc_main$1l = /* @__PURE__ */ defineComponent({
         classes.push(`button--full-width`);
       }
       if (inflight.value) {
-        classes.push(`${classes} button__inflight`);
+        classes.push(`button__inflight`);
       }
       return classes;
     });
@@ -4472,19 +4472,19 @@ function findHTMLElementFromVueRef(ref2) {
 function getElementFromVueRef(ref2) {
   const element = findElementFromVueRef(ref2);
   if (!isSet(element)) {
-    throw new Error(`Unable to find element from ${ref2}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   return element;
 }
 function getHTMLElementFromVueRef(ref2) {
   const element = findElementFromVueRef(ref2);
   if (!isSet(element)) {
-    throw new Error(`Unable to find element from ${ref2}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${ref2}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
 function lazyLoad(fn2) {
   let cache;
@@ -4846,7 +4846,7 @@ var _sfc_main$1k = defineComponent({
     openModal() {
       const root = document.documentElement;
       const scroll = root.scrollTop;
-      root.style.top = `-${scroll}px`;
+      root.style.top = `-${String(scroll)}px`;
       root.style.left = "0";
       root.style.right = "0";
       root.style.overflow = "hidden";
@@ -5266,11 +5266,11 @@ function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$M]]);
 function focusError(item) {
-  const element = document.querySelector(`#${item.id}`);
+  const element = document.querySelector(`#${String(item.id)}`);
   if (!element) {
-    throw new Error(`Can not find element with id "${item.id}"`);
+    throw new Error(`Can not find element with id "${String(item.id)}"`);
   }
-  const focusElement2 = document.querySelector(`#${item.focusElementId}`);
+  const focusElement2 = document.querySelector(`#${String(item.focusElementId)}`);
   scrollTo(element, window.innerHeight * 0.25);
   focus$1(focusElement2 !== null && focusElement2 !== void 0 ? focusElement2 : element);
 }
@@ -6910,12 +6910,12 @@ function setInternalKeys(items, key, nestedKey, seenValues = /* @__PURE__ */ new
       value === void 0 || value === null || String(value).length === 0
     );
     if (invalidValue) {
-      throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${index}`);
+      throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${String(index)}`);
     }
     if (seenValues.has(value)) {
       throw new Error(
         /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
-        `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${value}" in item index ${index}.`
+        `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
       );
     }
     setInternalKey(item, String(value));
@@ -6983,7 +6983,7 @@ var ValidationPrefixDirective = {
   beforeMount(el, binding) {
     el.addEventListener("component-validity", (event) => {
       const e = event;
-      e.detail.errorMessage = `${binding.value}${e.detail.errorMessage}`;
+      e.detail.errorMessage = `${String(binding.value)}${e.detail.errorMessage}`;
     });
   }
 };
@@ -7447,7 +7447,7 @@ var _sfc_main$1a = defineComponent({
       this.$emit("update:yearSelectorOpen", value);
     },
     getDateText(value) {
-      return `${capitalize(value.monthName)} ${value.year}`;
+      return `${capitalize(value.monthName)} ${String(value.year)}`;
     },
     isFocused(ref2) {
       return document.activeElement === this.$refs[ref2];
@@ -7555,7 +7555,7 @@ var _sfc_main$19 = defineComponent({
   },
   computed: {
     ariaLabel() {
-      return `${this.value.monthName} ${this.value.year}`;
+      return `${this.value.monthName} ${String(this.value.year)}`;
     },
     totalCols() {
       return this.hideWeekNumbers ? 7 : 8;
@@ -8272,7 +8272,7 @@ function useCalendarHeight(options) {
   });
   watchEffect(() => {
     if (cachedHeight.value) {
-      dst.value?.style.setProperty(property, `${cachedHeight.value}px`);
+      dst.value?.style.setProperty(property, `${String(cachedHeight.value)}px`);
     }
   });
 }
@@ -9234,8 +9234,8 @@ var _sfc_main$13 = defineComponent({
         this.placement = result.placement;
         const useOverlay = this.forceOverlay || result.placement !== Placement.Fallback;
         if (useOverlay) {
-          wrapper.style.left = `${result.x}px`;
-          wrapper.style.top = `${result.y}px`;
+          wrapper.style.left = `${String(result.x)}px`;
+          wrapper.style.top = `${String(result.y)}px`;
           return;
         }
       }
@@ -9457,7 +9457,7 @@ var _sfc_main$12 = defineComponent({
       return `popup-error popup-error--arrow popup-error--${this.arrowPosition}`;
     },
     errorStyle() {
-      return `--i-popup-error-offset: ${this.arrowOffset}px`;
+      return `--i-popup-error-offset: ${String(this.arrowOffset)}px`;
     },
     teleportTarget() {
       return config.teleportTarget;
@@ -9531,8 +9531,8 @@ var _sfc_main$12 = defineComponent({
       this.placement = result.placement;
       if (result.placement !== Placement.Fallback) {
         this.teleportDisabled = false;
-        wrapper.style.left = `${result.x}px`;
-        wrapper.style.top = `${result.y}px`;
+        wrapper.style.left = `${String(result.x)}px`;
+        wrapper.style.top = `${String(result.y)}px`;
         this.setArrowOffset();
         return;
       }
@@ -9777,11 +9777,11 @@ var _sfc_main$11 = /* @__PURE__ */ defineComponent({
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
         const offsetLeft = (_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
         const offSetTop = Math.floor(((_offsetRect$top = offsetRect?.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
-        wrapperElement.style.top = `${top - offSetTop}px`;
-        wrapperElement.style.left = `${left - offsetLeft}px`;
-        wrapperElement.style.width = `${width}px`;
-        contentWrapper.style.maxHeight = `${height}px`;
-        contentWrapper.style.width = `${width}px`;
+        wrapperElement.style.top = `${String(top - offSetTop)}px`;
+        wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+        wrapperElement.style.width = `${String(width)}px`;
+        contentWrapper.style.maxHeight = `${String(height)}px`;
+        contentWrapper.style.width = `${String(width)}px`;
       }
     }
     return (_ctx, _cache) => {
@@ -10236,7 +10236,7 @@ var _sfc_main$$ = defineComponent({
       return this.cssClasses;
     },
     heightStyle() {
-      return this.height === "" ? "" : `height: ${this.height}px`;
+      return this.height === "" ? "" : `height: ${String(this.height)}px`;
     },
     shouldVIf() {
       if (this.useVShow) {
@@ -10418,7 +10418,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
     if (!inputRef.value) {
       return;
     }
-    inputRef.value.setAttribute("aria-expanded", `${dropdownIsOpen.value}`);
+    inputRef.value.setAttribute("aria-expanded", String(dropdownIsOpen.value));
     if (dropdownIsOpen.value) {
       inputRef.value.setAttribute("aria-controls", dropdownId);
     } else {
@@ -10760,14 +10760,14 @@ function useAnimation(options) {
         animation = element.animate([{
           height: 0
         }, {
-          height: `${h}px`
+          height: `${String(h)}px`
         }], {
           duration,
           easing
         });
       } else {
         animation = element.animate([{
-          height: `${h}px`
+          height: `${String(h)}px`
         }, {
           height: 0
         }], {
@@ -10923,7 +10923,7 @@ var _sfc_main$X = defineComponent({
       if (!wrapper.value) {
         return;
       }
-      wrapper.value.style.setProperty("--f-tooltip-offset", `${offset2.value}px`);
+      wrapper.value.style.setProperty("--f-tooltip-offset", `${String(offset2.value)}px`);
       ready.value = true;
     });
     return {
@@ -11521,11 +11521,13 @@ var _sfc_main$V = defineComponent({
       }
       let errorMessage = "";
       if (hasSlot(this, "default")) {
+        var _renderSlotText;
         const labelText = this.injected.getFieldsetLabelText();
+        const slotText = (_renderSlotText = renderSlotText(this.$slots.default)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
         if (labelText) {
-          errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
+          errorMessage = `${labelText} ${slotText}`;
         } else {
-          errorMessage = `${renderSlotText(this.$slots.default)}`;
+          errorMessage = slotText;
         }
       }
       const element = this.$el.querySelector(`#${detail.elementId}`);
@@ -15903,7 +15905,7 @@ var _sfc_main$u = /* @__PURE__ */ defineComponent({
       }
     });
     const classes = computed(() => {
-      return [`resize--${attachment.value}`, `resize--${direction.value}`, props.overlay ? "resize--overlay" : void 0, props.disabled ? "resize--disabled" : void 0];
+      return [`resize--${String(attachment.value)}`, `resize--${String(direction.value)}`, props.overlay ? "resize--overlay" : void 0, props.disabled ? "resize--disabled" : void 0];
     });
     const layoutElement = computed(() => {
       var _host$closest;
@@ -15926,9 +15928,9 @@ var _sfc_main$u = /* @__PURE__ */ defineComponent({
         const shadowRoot = root.value.getRootNode();
         const host = shadowRoot.host;
         host.style.setProperty("--size", `${String(value)}px`);
-        host.style.setProperty("--min", `${min}px`);
-        host.style.setProperty("--max", `${max}px`);
-        host.style.setProperty("--offset", `${props.offset}px`);
+        host.style.setProperty("--min", `${String(min)}px`);
+        host.style.setProperty("--max", `${String(max)}px`);
+        host.style.setProperty("--offset", `${String(props.offset)}px`);
       }
       if (separator.value) {
         separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
@@ -17778,19 +17780,19 @@ var _sfc_main$h = defineComponent({
     navigationStyle() {
       if (this.isOpen) {
         return {
-          width: `${this.panelWidth}px`,
-          top: `${this.offsetTop}px`
+          width: `${String(this.panelWidth)}px`,
+          top: `${String(this.offsetTop)}px`
         };
       } else {
         return {
-          top: `${this.offsetTop}px`
+          top: `${String(this.offsetTop)}px`
         };
       }
     },
     primaryStyle() {
       if (this.isOpen) {
         return {
-          "margin-left": `${this.panelWidth}px`
+          "margin-left": `${String(this.panelWidth)}px`
         };
       } else {
         return {
@@ -17801,7 +17803,7 @@ var _sfc_main$h = defineComponent({
     // This is to make word-wrap work in IE11
     contentStyle() {
       return {
-        "max-width": `${this.panelWidth - 35}px`
+        "max-width": `${String(this.panelWidth - 35)}px`
       };
     }
   },
@@ -17971,18 +17973,18 @@ var _sfc_main$g = defineComponent({
     secondaryStyle() {
       if (this.isOpen) {
         return {
-          width: `${this.panelWidth}px`,
-          top: `${this.offsetTop}px`
+          width: `${String(this.panelWidth)}px`,
+          top: `${String(this.offsetTop)}px`
         };
       }
       return {
-        top: `${this.offsetTop}px`
+        top: `${String(this.offsetTop)}px`
       };
     },
     primaryStyle() {
       if (this.isOpen && !this.isAbsolutePositioned) {
         return {
-          "margin-right": `${this.panelWidth}px`
+          "margin-right": `${String(this.panelWidth)}px`
         };
       }
       return {};
@@ -17990,7 +17992,7 @@ var _sfc_main$g = defineComponent({
     // This is to make word-wrap work in IE11
     contentStyle() {
       return {
-        "max-width": `${this.panelWidth - 35}px`
+        "max-width": `${String(this.panelWidth - 35)}px`
       };
     }
   },
@@ -19119,7 +19121,7 @@ var _sfc_main$b = defineComponent({
       const firstHiddenItemRect = getAbsolutePosition(firstHiddenItem);
       const wrapperRect = getAbsolutePosition(wrapper);
       const offset2 = wrapperRect.x - firstHiddenItemRect.x;
-      wrapper.style.left = `-${offset2}px`;
+      wrapper.style.left = `-${String(offset2)}px`;
       this.popupOpen = popupWasOpen;
     },
     onKeyUp(event) {
@@ -19716,7 +19718,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
     }
     const progressValueNow = computed(() => clamp2(props.value));
-    const cssWidth = computed(() => `width: ${progressValueNow.value}%`);
+    const cssWidth = computed(() => `width: ${String(progressValueNow.value)}%`);
     const progressBarClass = computed(() => {
       if (progressValueNow.value === MIN_VALUE) {
         return "progress__meter--pending";
@@ -19861,11 +19863,13 @@ var _sfc_main$4 = defineComponent({
       await this.$nextTick();
       let errorMessage = "";
       if (hasSlot(this, "default")) {
+        var _renderSlotText;
         const labelText = this.getFieldsetLabelText();
+        const slotText = (_renderSlotText = renderSlotText(this.$slots.default)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
         if (labelText) {
-          errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
+          errorMessage = `${labelText} ${slotText}`;
         } else {
-          errorMessage = `${renderSlotText(this.$slots.default)}`;
+          errorMessage = slotText;
         }
       }
       const element = this.$el.querySelector(`#${detail.elementId}`);

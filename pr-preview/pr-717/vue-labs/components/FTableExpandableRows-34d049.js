@@ -2306,7 +2306,7 @@ var _sfc_main$b = defineComponent({
   mounted() {
     const inputElement = this.$el.querySelector("input");
     if (!isSet(inputElement)) {
-      throw new Error(`Could not find input element in XTimeTextField with id ${this.$el.id}`);
+      throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
     }
     ValidationService.addValidatorsToElement(inputElement, {
       maxLength: {
@@ -2680,13 +2680,13 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "escape": {
       dispatchActivateCellEvent(newCellTarget, {
         focus: true
       });
-      break;
+      return newCellTarget;
     }
     case "tab": {
       if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
@@ -2704,7 +2704,7 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "shift-tab": {
       if (cellIndex === 0 && rowIndex === 1) {
@@ -2722,17 +2722,13 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "blur": {
       console.log("stopEdit", "blur");
-      break;
-    }
-    default: {
-      throw new Error(`invalid stop edit reason: ${reason}`);
+      return newCellTarget;
     }
   }
-  return newCellTarget;
 }
 var _hoisted_1$8 = {
   key: 0,
@@ -3057,7 +3053,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         width
       } = tdElement.value.getBoundingClientRect();
       model.value = modelValue;
-      tdElement.value.style.setProperty("width", `${width}px`);
+      tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.focus();
     }
     function onStopEdit(options) {
@@ -4398,7 +4394,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent5({
       assertRef5(inputElement);
       const { width } = tdElement.value.getBoundingClientRect();
       model.value = modelValue;
-      tdElement.value.style.setProperty("width", `${width}px`);
+      tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.focus();
     }
     function onStopEdit(options) {

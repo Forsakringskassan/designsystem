@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FDatepickerField/examples/FDatepickerFieldLiveExample.vue:FDatepickerFieldLiveExample-f3f297.js
+// virtual-entry:virtual:packages/vue/src/components/FDatepickerField/examples/FDatepickerFieldLiveExample.vue:FDatepickerFieldLiveExample-3c1dad.js
 import { defineComponent } from "vue";
 import { FDatepickerField, FFieldset, FCheckboxField, FSelectField, FTooltip } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
@@ -162,7 +162,7 @@ var exampleComponent = defineComponent({
     },
     getMonthYearString(date) {
       const fdate = FDate.fromIso(date);
-      return `${fdate.monthName} ${fdate.year}`;
+      return `${fdate.monthName} ${String(fdate.year)}`;
     },
     getInvalidDates() {
       return [FDate.now().addDays(-7).toString(), FDate.now().addDays(-3).toString()];
@@ -444,7 +444,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f3f297"
+  selector: "#example-3c1dad"
 });
 export {
   render
