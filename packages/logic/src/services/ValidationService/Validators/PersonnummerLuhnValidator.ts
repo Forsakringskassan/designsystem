@@ -1,6 +1,6 @@
-import { type Validator } from "../Validator";
-import { isEmpty, isSet } from "../../../utils";
 import { parsePersonnummerLuhn } from "../../../converters/PersonnummerConverter";
+import { isEmpty, isSet } from "../../../utils";
+import { type Validator } from "../Validator";
 
 export const personnummerLuhnValidator: Validator = {
     name: "personnummerLuhn",

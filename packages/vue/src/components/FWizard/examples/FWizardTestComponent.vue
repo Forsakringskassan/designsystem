@@ -1,7 +1,7 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import { FCheckboxField, FFieldset, type FValidationFormCallback } from "../..";
+import { type PropType, defineComponent } from "vue";
 import { FWizard, FWizardStep } from "..";
+import { type FValidationFormCallback, FCheckboxField, FFieldset } from "../..";
 
 export default defineComponent({
     components: { FWizard, FWizardStep, FFieldset, FCheckboxField },

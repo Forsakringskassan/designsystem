@@ -1,5 +1,5 @@
-import { MenuAction } from "../../types";
 import { type MenuItem } from "../../components";
+import { MenuAction } from "../../types";
 
 export interface MenuActionTarget {
     readonly currentFocusedItemIndex: number;

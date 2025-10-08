@@ -1,4 +1,4 @@
-import { getLocale, isLocale, Locale, resetLocale, setLocale } from "./locale";
+import { Locale, getLocale, isLocale, resetLocale, setLocale } from "./locale";
 
 beforeEach(() => {
     resetLocale();

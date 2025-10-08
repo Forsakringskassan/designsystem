@@ -1,6 +1,6 @@
 import { type App, type ComponentPublicInstance, type Plugin } from "vue";
-import { EventBus } from "../../utils";
 import { ErrorData } from "../../types";
+import { EventBus } from "../../utils";
 
 declare module "../../utils/event-bus" {
     export interface EventBusMap {

@@ -1,7 +1,7 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import { FDataTable, FTableColumn } from "@fkui/vue";
+import { type PropType, defineComponent } from "vue";
 import { type SassVariable } from "@fkui/theme-default/dist/palette.json";
+import { FDataTable, FTableColumn } from "@fkui/vue";
 
 export default defineComponent({
     components: { FDataTable, FTableColumn },

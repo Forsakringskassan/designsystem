@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import { XOverviewView, XDocumentView, XJournalView } from "./views";
+import { XDocumentView, XJournalView, XOverviewView } from "./views";
 
 const router = createRouter({
     history: createWebHashHistory(),

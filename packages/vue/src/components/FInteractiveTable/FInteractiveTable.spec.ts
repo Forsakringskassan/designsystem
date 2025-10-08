@@ -1,6 +1,6 @@
 import "html-validate/jest";
-import { mount, VueWrapper } from "@vue/test-utils";
 import { type ComponentOptions, defineComponent } from "vue";
+import { VueWrapper, mount } from "@vue/test-utils";
 import { FSortFilterDatasetMountCallback } from "../FSortFilterDataset";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";

@@ -1,7 +1,7 @@
 import "html-validate/jest";
+import { FDate } from "@fkui/date";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
-import { FDate } from "@fkui/date";
 import { ValidationPlugin } from "../../plugins";
 import FDatepickerField from "./FDatepickerField.vue";
 

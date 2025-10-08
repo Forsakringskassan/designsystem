@@ -5,7 +5,7 @@ import { bankgiroValidator } from "./BankgiroValidator";
 import { blacklistValidator } from "./BlacklistValidator";
 import { clearingNumberValidator } from "./ClearingNumberValidator";
 import { currencyValidator } from "./CurrencyValidator";
-import { dateValidator, dateFormatValidator } from "./DateValidator";
+import { dateFormatValidator, dateValidator } from "./DateValidator";
 import { decimalValidator } from "./DecimalValidator";
 import { emailValidator } from "./EmailValidator";
 import { greaterThanValidator } from "./GreaterThanValidator";

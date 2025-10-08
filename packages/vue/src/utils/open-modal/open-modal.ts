@@ -1,8 +1,8 @@
-import { mountComponent } from "../mount-component";
 import { type MaybeWithFKUIContext, config } from "../../config";
 import { type MaybeComponent } from "../maybe-component";
-import { type ModalResult, type AsyncModalResult } from "./modal-result";
+import { mountComponent } from "../mount-component";
 import { type ModalOptions } from "./modal-options";
+import { type AsyncModalResult, type ModalResult } from "./modal-result";
 
 /**
  * @public

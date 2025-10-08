@@ -101,26 +101,26 @@ declare namespace DomUtils {
     export {
         addFocusListener,
         documentOrderComparator,
-        focus_2 as focus,
-        isFocusable,
-        isTabbable,
+        FocusOptions_2 as FocusOptions,
+        StackHandle,
         findTabbableElements,
+        focus_2 as focus,
         focusFirst,
         focusLast,
-        restoreFocus,
-        saveFocus,
-        FocusOptions_2 as FocusOptions,
+        isFocusable,
+        isTabbable,
         popFocus,
         pushFocus,
-        StackHandle,
+        restoreFocus,
+        saveFocus,
         handleTab,
         isRadiobuttonOrCheckbox,
         isValidatableFormElement,
         isVisible,
         isVisibleInViewport,
         removeFocusListener,
-        scrollTo_2 as scrollTo,
-        ScrollToOptions_2 as ScrollToOptions
+        ScrollToOptions_2 as ScrollToOptions,
+        scrollTo_2 as scrollTo
     }
 }
 export { DomUtils }

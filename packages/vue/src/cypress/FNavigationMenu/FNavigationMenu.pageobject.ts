@@ -1,5 +1,5 @@
-import { type BasePageObject, type DefaultCypressChainable } from "../common";
 import { IPopupMenuPageObject } from "../IPopupMenu.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "../common";
 
 /**
  * Represents `f-navigation-menu` with access to its elements

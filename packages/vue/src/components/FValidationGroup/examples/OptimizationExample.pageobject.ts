@@ -1,8 +1,8 @@
 import {
-    FRadioGroupPageObject,
-    type FRadioFieldPageObject,
-    FTextFieldPageObject,
     type DefaultCypressChainable,
+    type FRadioFieldPageObject,
+    FRadioGroupPageObject,
+    FTextFieldPageObject,
 } from "../../../cypress";
 
 export class OptimizationExamplePageobject {

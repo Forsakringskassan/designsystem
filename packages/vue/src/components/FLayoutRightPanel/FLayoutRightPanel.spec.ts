@@ -1,7 +1,7 @@
 import "html-validate/jest";
 import "@fkui/test-utils/jest";
-import { flushPromises, mount, VueWrapper } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { VueWrapper, flushPromises, mount } from "@vue/test-utils";
 import FLayoutRightPanel from "./FLayoutRightPanel.vue";
 import { FLayoutRightPanelService } from "./services/FLayoutRightPanelService";
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FIcon } from "../FIcon";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { getElementFromVueRef } from "../../utils";
+import { FIcon } from "../FIcon";
 
 const EVENTS = ["online", "offline"];
 

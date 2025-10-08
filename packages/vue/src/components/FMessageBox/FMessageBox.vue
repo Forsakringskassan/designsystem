@@ -1,8 +1,8 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import { TranslationService } from "@fkui/logic";
-import FIcon from "../FIcon/FIcon.vue";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
+import FIcon from "../FIcon/FIcon.vue";
 
 const iconClasses = {
     success: {

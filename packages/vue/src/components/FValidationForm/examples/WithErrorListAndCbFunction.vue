@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField, FValidationForm, FExpandablePanel } from "@fkui/vue";
+import { FExpandablePanel, FTextField, FValidationForm } from "@fkui/vue";
 
 export default defineComponent({
     name: "ErrorListWithOptionsExample",

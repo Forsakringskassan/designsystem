@@ -1,6 +1,6 @@
-import * as openModalModule from "../open-modal/open-modal";
-import { type MaybeComponent } from "../maybe-component";
 import { MaybeWithFKUIContext } from "../../config";
+import { type MaybeComponent } from "../maybe-component";
+import * as openModalModule from "../open-modal/open-modal";
 import { formModal } from "./form-modal";
 
 const callingInstance = { $fkui: {} } as MaybeWithFKUIContext;

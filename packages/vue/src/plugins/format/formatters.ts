@@ -9,9 +9,9 @@ import {
     parsePostalCode,
 } from "@fkui/logic";
 import { type DateRange } from "./date-range";
-import { type NumberFormat } from "./number-format";
-import { isNumberFormat } from "./is-number-format";
 import { isDateRange } from "./is-date-range";
+import { isNumberFormat } from "./is-number-format";
+import { type NumberFormat } from "./number-format";
 
 /**
  * @internal

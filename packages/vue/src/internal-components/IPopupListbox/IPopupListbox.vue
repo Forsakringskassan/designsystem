@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watchEffect, useTemplateRef, nextTick, computed, onUnmounted, watch } from "vue";
+import { computed, nextTick, onUnmounted, useTemplateRef, watch, watchEffect } from "vue";
 import { debounce } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 import { config } from "../../config";

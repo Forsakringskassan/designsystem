@@ -1,5 +1,5 @@
-import { documentOrderComparator } from "@fkui/logic";
 import { inject } from "vue";
+import { documentOrderComparator } from "@fkui/logic";
 import { type FValidationFormResult } from "../FValidationForm";
 
 /**

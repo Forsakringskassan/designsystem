@@ -1,5 +1,5 @@
-import { requiredValidator } from "./Validators/RequiredValidator";
 import { ValidationService } from "./ValidationService";
+import { requiredValidator } from "./Validators/RequiredValidator";
 
 ValidationService.registerValidator(requiredValidator);
 

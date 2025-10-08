@@ -1,6 +1,6 @@
-import { type Ref, watchEffect, ref } from "vue";
-import { type SizeState } from "./size-state";
+import { type Ref, ref, watchEffect } from "vue";
 import { clamp } from "./clamp";
+import { type SizeState } from "./size-state";
 
 /**
  * @internal

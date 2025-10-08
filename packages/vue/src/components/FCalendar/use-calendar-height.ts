@@ -1,5 +1,5 @@
-import { useElementBounding } from "@vueuse/core";
 import { type ShallowRef, ref, watchEffect } from "vue";
+import { useElementBounding } from "@vueuse/core";
 
 /**
  * @internal

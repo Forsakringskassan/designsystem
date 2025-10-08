@@ -1,11 +1,11 @@
 import "html-validate/jest";
-import { VueWrapper, mount } from "@vue/test-utils";
 import { defineComponent } from "vue";
+import { VueWrapper, mount } from "@vue/test-utils";
+import FSortFilterDataset from "./FSortFilterDataset.vue";
 import {
     FSortFilterDatasetInjected,
     FSortFilterDatasetInterface,
 } from "./FSortFilterDatasetInterface";
-import FSortFilterDataset from "./FSortFilterDataset.vue";
 import { type SortOrder } from "./sort-order";
 
 const DATA = [

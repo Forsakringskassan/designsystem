@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField } from "@fkui/vue";
+import { FDatepickerField, FSelectField, FTextField, FWizard, FWizardStep } from "@fkui/vue";
 
 export default defineComponent({
     name: "WizardExampleDefault",

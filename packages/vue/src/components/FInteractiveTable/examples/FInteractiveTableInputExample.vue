@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FDatepickerField, FInteractiveTable, FTableColumn, FNumericTextField } from "@fkui/vue";
+import { FDatepickerField, FInteractiveTable, FNumericTextField, FTableColumn } from "@fkui/vue";
 
 export default defineComponent({
     name: "FInteractiveTableInputExample",

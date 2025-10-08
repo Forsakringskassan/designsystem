@@ -1,6 +1,6 @@
-import { type ValidatorConfig } from "../../ValidationServiceInterface";
 import { parseNumber } from "../../../../converters";
 import { isSet } from "../../../../utils";
+import { type ValidatorConfig } from "../../ValidationServiceInterface";
 
 /**
  * @internal

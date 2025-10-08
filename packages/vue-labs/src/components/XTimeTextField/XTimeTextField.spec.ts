@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
 import { ValidationPlugin } from "@fkui/vue";
+import { VueWrapper, mount } from "@vue/test-utils";
 import XTimeTextField from "./XTimeTextField.vue";
 
 function createWrapper(

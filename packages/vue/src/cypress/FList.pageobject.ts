@@ -1,5 +1,5 @@
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
 import { FListItemPageObject } from "./FListItem.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public

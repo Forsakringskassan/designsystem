@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { formatNumber } from "@fkui/logic";
-import { FTextField, FOutputField } from "@fkui/vue";
+import { FOutputField, FTextField } from "@fkui/vue";
 
 export default defineComponent({
     name: "FormatterExample",

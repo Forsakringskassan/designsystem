@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends FPageLayoutType">
 import { defineCustomElement, onMounted, onUnmounted } from "vue";
 import { resetDetailPanels } from "../FDetailsPanel/use-details-panel";
-import { type FPageLayoutType, type FPageLayoutBindings } from "./types";
 import CeComponent from "./FPageLayout.ce.vue";
+import { type FPageLayoutBindings, type FPageLayoutType } from "./types";
 
 const { layout } = defineProps<{ layout: T }>();
 const emit = defineEmits<{

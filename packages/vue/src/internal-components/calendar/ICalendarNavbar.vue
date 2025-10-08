@@ -1,11 +1,11 @@
 <script lang="ts">
-import { capitalize, defineComponent, type PropType } from "vue";
+import { type PropType, capitalize, defineComponent } from "vue";
 import { type FDate } from "@fkui/date";
-import { alertScreenReader, ElementIdService } from "@fkui/logic";
+import { ElementIdService, alertScreenReader } from "@fkui/logic";
 import { FIcon } from "../../components/FIcon";
 import { TranslationMixin } from "../../plugins";
-import { isInvalidMonth } from "./is-invalid-month";
 import { getMessage } from "./get-message";
+import { isInvalidMonth } from "./is-invalid-month";
 
 export default defineComponent({
     name: "ICalendarNavbar",

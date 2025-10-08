@@ -1,7 +1,7 @@
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
+import { FCheckboxFieldPageObject } from "./FCheckboxField.pageobject";
 import { FLabelPageObject } from "./FLabel.pageobject";
 import { FTooltipPageObject } from "./FTooltip.pageobject";
-import { FCheckboxFieldPageObject } from "./FCheckboxField.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public

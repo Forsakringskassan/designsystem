@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent, inject } from "vue";
-import { ElementIdService, type ValidityEvent } from "@fkui/logic";
+import { type ValidityEvent, ElementIdService } from "@fkui/logic";
+import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
 import { FIcon } from "../FIcon";
 import { FLabel } from "../FLabel";
-import { renderSlotText, dispatchComponentValidityEvent } from "../../utils";
 import { resolveWidthClass } from "./FSelectField.logic";
 
 export default defineComponent({

@@ -1,18 +1,18 @@
 import "html-validate/jest";
 import "@fkui/test-utils/jest";
-import { VueWrapper, mount } from "@vue/test-utils";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { defineComponent } from "vue";
-import flushPromises from "flush-promises";
 import logic from "@fkui/logic";
+import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { VueWrapper, mount } from "@vue/test-utils";
+import flushPromises from "flush-promises";
 import {
-    cjsResolver,
     FileSystemConfigLoader,
     HtmlValidate,
+    cjsResolver,
 } from "html-validate/node";
+import { IFlexItem } from "../../internal-components/IFlex";
 import { ErrorItem } from "../../types";
 import { FIcon } from "../FIcon";
-import { IFlexItem } from "../../internal-components/IFlex";
 import FErrorList from "./FErrorList.vue";
 
 function createWrapper({

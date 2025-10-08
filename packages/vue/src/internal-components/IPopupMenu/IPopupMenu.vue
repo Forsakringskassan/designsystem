@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { type PropType, defineComponent } from "vue";
 import { focus } from "@fkui/logic";
-import { IPopup } from "../IPopup";
 import { type MenuItem } from "../../components";
 import { actionFromKeyboardEvent, getSortedHTMLElementsFromVueRef } from "../../utils";
+import { IPopup } from "../IPopup";
 import { doMenuAction } from "./ipopupmenu-logic";
 
 const preventKeys: string[] = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];

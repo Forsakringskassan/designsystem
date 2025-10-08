@@ -1,8 +1,8 @@
 /* include typescript declarations for vite static asset handling (e.g. `?raw`) */
 /// <reference types="vite/client" />
 
-import { enableAutoUnmount } from "@vue/test-utils";
 import { ElementIdService } from "@fkui/logic";
+import { enableAutoUnmount } from "@vue/test-utils";
 
 enableAutoUnmount(afterEach);
 

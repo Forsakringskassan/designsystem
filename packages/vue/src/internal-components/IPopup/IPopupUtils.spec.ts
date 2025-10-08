@@ -2,13 +2,13 @@ import { Rect } from "../../utils";
 import {
     Candidate,
     CandidateOrder,
+    Placement,
+    SpacingDirection,
     clipRect,
     fitInsideArea,
     getCandidates,
     getFallbackPosition,
     isInside,
-    Placement,
-    SpacingDirection,
 } from "./IPopupUtils";
 
 const numberOfCandidates = 9;

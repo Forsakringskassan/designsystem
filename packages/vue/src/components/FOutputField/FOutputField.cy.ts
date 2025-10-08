@@ -1,11 +1,11 @@
 import { defineComponent } from "vue";
 import {
-    SizeWrapper,
-    sizeWrapperWidth,
-    sizeWrapperHeight,
     DensityWrapper,
-    densityWrapperWidth,
+    SizeWrapper,
     densityWrapperHeight,
+    densityWrapperWidth,
+    sizeWrapperHeight,
+    sizeWrapperWidth,
 } from "@fkui/test-utils/vue";
 import { FOutputFieldPageobject } from "../../cypress";
 import { FTextField } from "../FTextField";

@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, readonly, type Ref, ref, watch } from "vue";
+import { type Ref, onMounted, onUnmounted, readonly, ref, watch } from "vue";
 
 /**
  * Compute the offset from an alement to an ancestor container.

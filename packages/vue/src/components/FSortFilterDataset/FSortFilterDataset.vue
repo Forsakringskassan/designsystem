@@ -1,18 +1,18 @@
 <script setup lang="ts" generic="T">
 import { type PropType, type Ref, computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from "vue";
-import { debounce, alertScreenReader, TranslationService } from "@fkui/logic";
-import { getHTMLElementFromVueRef } from "../../utils";
+import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
-import { FSelectField } from "../FSelectField";
-import { FIcon } from "../FIcon";
-import { FTextField } from "../FTextField";
 import { useTranslate } from "../../plugins";
+import { getHTMLElementFromVueRef } from "../../utils";
+import { FIcon } from "../FIcon";
+import { FSelectField } from "../FSelectField";
+import { FTextField } from "../FTextField";
 import {
-    type FSortFilterDatasetSortCallback,
     type FSortFilterDatasetMountCallback,
+    type FSortFilterDatasetSortCallback,
 } from "./FSortFilterDatasetInterface";
-import { sort } from "./FSortFilterSorter";
 import { filter } from "./FSortFilterFilter";
+import { sort } from "./FSortFilterSorter";
 import { type SortOrder } from "./sort-order";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */

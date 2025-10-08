@@ -1,5 +1,5 @@
 import "html-validate/jest";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { VueWrapper, mount } from "@vue/test-utils";
 import FFileSelector from "./FFileSelector.vue";
 
 function createWrapper({

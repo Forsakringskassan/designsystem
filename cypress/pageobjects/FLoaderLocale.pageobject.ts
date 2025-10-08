@@ -1,6 +1,6 @@
 import {
-    type DefaultCypressChainable,
     type BasePageObject,
+    type DefaultCypressChainable,
 } from "@pageobject/common";
 
 export class FLoaderLocalePageobject implements BasePageObject {

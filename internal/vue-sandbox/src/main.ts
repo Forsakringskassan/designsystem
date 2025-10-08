@@ -7,8 +7,8 @@ import {
     setRunningContext,
 } from "@fkui/vue";
 import "@fkui/logic/polyfills";
-import router from "./router";
 import App from "./App.vue";
+import router from "./router";
 
 config.production = false;
 config.popupContainer = "#app";

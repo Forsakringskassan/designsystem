@@ -1,8 +1,8 @@
 import {
     type ValidatableHTMLElement,
     type Validator,
-    type ValidatorName,
     type ValidatorConfig,
+    type ValidatorName,
     isEmpty,
     isSet,
 } from "@fkui/logic";

@@ -1,11 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
-    FFormModal,
-    FDialogueTree,
-    FOrganisationsnummerTextField,
     type FDialogueTreeUserProgress,
     type FModalButtonDescriptor,
+    FDialogueTree,
+    FFormModal,
+    FOrganisationsnummerTextField,
 } from "@fkui/vue";
 import { exampleDialogTree } from "./example-dialog-tree";
 

@@ -1,11 +1,11 @@
 import "html-validate/jest";
 import { defineComponent } from "vue";
-import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import {
-    type ValidityEvent,
     type ValidatableHTMLElement,
+    type ValidityEvent,
     type ValidityMode,
 } from "@fkui/logic";
+import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";

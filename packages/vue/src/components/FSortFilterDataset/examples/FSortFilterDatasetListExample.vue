@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FSortFilterDataset, FList } from "@fkui/vue";
+import { FList, FSortFilterDataset } from "@fkui/vue";
 import { fruits } from "./fruit-data";
 
 export default defineComponent({

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { FTextField, TranslationMixin, type ParseFunction, type FormatFunction, useTextFieldSetup } from "@fkui/vue";
-import { isSet, ValidationService } from "@fkui/logic";
+import { ValidationService, isSet } from "@fkui/logic";
+import { type FormatFunction, type ParseFunction, FTextField, TranslationMixin, useTextFieldSetup } from "@fkui/vue";
 import { type HoursMinutesString, formatNumberToTime, parseTimeToNumber } from "./converters";
 import "./validators";
 

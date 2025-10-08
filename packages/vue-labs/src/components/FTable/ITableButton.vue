@@ -2,8 +2,8 @@
 import { computed, nextTick, useTemplateRef } from "vue";
 import { assertSet } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
-import { type NormalizedTableColumnButton } from "./table-column";
 import { type FTableActivateCellEvent } from "./events";
+import { type NormalizedTableColumnButton } from "./table-column";
 
 const { column, row } = defineProps<{
     column: NormalizedTableColumnButton<T, K>;

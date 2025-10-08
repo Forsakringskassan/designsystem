@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { type PropType, defineComponent } from "vue";
 import { focus, focusFirst } from "@fkui/logic";
 
-import { FIcon } from "../FIcon";
 import { getHTMLElementsFromVueRef } from "../../utils";
+import { FIcon } from "../FIcon";
 import { type FDialogueTreeData } from "./FDialogueTreeData";
 import {
     type FDialogueTreeOption,

@@ -1,7 +1,7 @@
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
 import { FLabelPageObject } from "./FLabel.pageobject";
-import { FTooltipPageObject } from "./FTooltip.pageobject";
 import { FRadioFieldPageObject } from "./FRadioField.pageobject";
+import { FTooltipPageObject } from "./FTooltip.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public

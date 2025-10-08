@@ -1,5 +1,5 @@
-import { type BasePageObject, type DefaultCypressChainable } from "./common";
 import { FModalPageObject } from "./FModal.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public

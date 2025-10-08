@@ -1,10 +1,10 @@
 import { defineCustomElement, ref } from "vue";
-import { mount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { mount } from "@vue/test-utils";
 import {
+    type UseAreaData,
     LayoutAreaAttachPanel,
     LayoutAreaDirection,
-    type UseAreaData,
 } from "../FPageLayout";
 import FResizePane from "./FResizePane.ce.vue";
 

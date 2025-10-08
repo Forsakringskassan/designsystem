@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type ModalResult, openModal, FConfirmModal } from "@fkui/vue";
+import { type ModalResult, FConfirmModal, openModal } from "@fkui/vue";
 
 export default defineComponent({
     name: "FConfirmModalCustomButtons",

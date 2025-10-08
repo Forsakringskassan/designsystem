@@ -1,5 +1,5 @@
-import { isSet } from "../utils/is";
 import { MissingValueError } from "../utils/ensure-set";
+import { isSet } from "../utils/is";
 
 /**
  * [Assertion function][ts-handbook] to assert that a value is set.

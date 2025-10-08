@@ -1,13 +1,13 @@
 export {
-    type FPageLayoutType,
     type FPageLayoutBindings,
     type FPageLayoutSlotMapping,
+    type FPageLayoutType,
 } from "./types";
 export {
-    type LayoutDefinition,
     type LayoutAreaAttachPanel,
     type LayoutAreaDefinition,
     type LayoutAreaDirection,
+    type LayoutDefinition,
     registerLayout,
 } from "./define-layout";
 export { default as FPageLayout } from "./FPageLayout.vue";

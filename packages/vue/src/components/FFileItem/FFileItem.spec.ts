@@ -1,4 +1,4 @@
-import { shallowMount, VueWrapper } from "@vue/test-utils";
+import { VueWrapper, shallowMount } from "@vue/test-utils";
 import { TranslationPlugin } from "../../plugins";
 import FFileItem from "./FFileItem.vue";
 

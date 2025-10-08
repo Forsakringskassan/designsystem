@@ -86,7 +86,45 @@ export default [
     },
 
     {
-        name: "local/stricter-rules",
+        name: "local/stricter-rules/ts",
+        files: ["**/*.ts", "**/*.vue"],
+        rules: {
+            "import/order": [
+                "warn",
+                {
+                    pathGroups: [
+                        {
+                            pattern: "{vue,vite}",
+                            group: "external",
+                            position: "before",
+                        },
+                        {
+                            pattern: "{cypress,cypress/vue}",
+                            group: "external",
+                            position: "before",
+                        },
+                        {
+                            pattern: "@/**",
+                            group: "parent",
+                            position: "before",
+                        },
+                    ],
+                    pathGroupsExcludedImportTypes: ["builtin", "object"],
+                    alphabetize: {
+                        order: "asc",
+                        orderImportKind: "asc",
+                    },
+                    named: {
+                        enabled: true,
+                        types: "types-first",
+                    },
+                },
+            ],
+        },
+    },
+
+    {
+        name: "local/stricter-rules/vue",
         files: ["**/*.vue"],
         rules: {
             "vue/define-emits-declaration": ["error", "type-based"],

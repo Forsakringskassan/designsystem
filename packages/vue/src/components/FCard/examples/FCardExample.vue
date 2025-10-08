@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FCard, FButton } from "@fkui/vue";
+import { FButton, FCard } from "@fkui/vue";
 
 export default defineComponent({
     name: "FCardExample",

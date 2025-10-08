@@ -1,5 +1,5 @@
-import { enableAutoUnmount } from "@vue/test-utils";
 import { ElementIdService } from "@fkui/logic";
+import { enableAutoUnmount } from "@vue/test-utils";
 
 enableAutoUnmount(afterEach);
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type ValidityEvent, isSet, ElementIdService } from "@fkui/logic";
+import { type ValidityEvent, ElementIdService, isSet } from "@fkui/logic";
+import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
 import { FLabel } from "../FLabel";
-import { renderSlotText, dispatchComponentValidityEvent } from "../../utils";
 
 export default defineComponent({
     name: "FTextareaField",

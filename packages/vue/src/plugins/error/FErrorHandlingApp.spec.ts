@@ -1,10 +1,10 @@
 import { defineComponent, h, markRaw } from "vue";
-import { createRouter, createWebHashHistory } from "vue-router";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { createRouter, createWebHashHistory } from "vue-router";
 import { EventBus } from "../../utils";
-import FErrorHandlingApp from "./FErrorHandlingApp.vue";
 import { UNHANDLED_ERROR_EVENT } from "./ErrorPlugin";
+import FErrorHandlingApp from "./FErrorHandlingApp.vue";
 
 const defaultComponent = defineComponent({
     name: "DefaultComponent",
