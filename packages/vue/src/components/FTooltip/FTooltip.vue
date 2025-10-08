@@ -1,5 +1,15 @@
 <script lang="ts">
-import { computed, defineComponent, inject, ref, toRef, useTemplateRef, watchEffect, useSlots } from "vue";
+import {
+    type PropType,
+    computed,
+    defineComponent,
+    inject,
+    ref,
+    toRef,
+    useTemplateRef,
+    watchEffect,
+    useSlots,
+} from "vue";
 import { TranslationService } from "@fkui/logic";
 import { FExpand } from "../FExpand";
 import { IFlex, IFlexItem } from "../../internal-components";
@@ -21,7 +31,7 @@ export default defineComponent({
          * `FLabel` you do not need to set this prop.
          */
         attachTo: {
-            type: HTMLElement,
+            type: HTMLElement as PropType<HTMLElement | null | undefined>,
             required: false,
             default: null,
         },
