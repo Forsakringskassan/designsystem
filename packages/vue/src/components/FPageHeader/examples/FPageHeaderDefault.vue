@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FPageHeader, FLogo } from "@fkui/vue";
+import { FLogo, FPageHeader } from "@fkui/vue";
 
 export default defineComponent({
     name: "FPageHeaderDefault",

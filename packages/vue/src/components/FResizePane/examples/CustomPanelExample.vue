@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, defineComponent, h, ref } from "vue";
-import { FPageLayout, FResizePane, FCheckboxField, useResize } from "@fkui/vue";
+import { FCheckboxField, FPageLayout, FResizePane, useResize } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 const enabled = ref(true);

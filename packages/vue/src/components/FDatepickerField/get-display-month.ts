@@ -1,8 +1,8 @@
 import { FDate } from "@fkui/date";
 import {
+    isInvalidMonth,
     isMonthAfter,
     isMonthBefore,
-    isInvalidMonth,
 } from "../../internal-components/calendar/is-invalid-month";
 
 /**

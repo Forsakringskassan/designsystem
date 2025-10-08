@@ -1,12 +1,12 @@
 <script lang="ts">
-import { defineComponent, getCurrentInstance, type PropType } from "vue";
+import { type PropType, defineComponent, getCurrentInstance } from "vue";
 import { DomUtils } from "@fkui/logic";
+import { IAnimateExpand, IFlex, IFlexItem } from "../../internal-components";
 import { TranslationMixin } from "../../plugins";
 import { type GroupValidityEvent } from "../../types";
 import { getHTMLElementFromVueRef } from "../../utils";
-import { IAnimateExpand, IFlex, IFlexItem } from "../../internal-components";
-import { FValidationForm, type FValidationFormResult } from "../FValidationForm";
 import { FIcon } from "../FIcon";
+import { type FValidationFormResult, FValidationForm } from "../FValidationForm";
 import {
     type FWizardApi,
     type FWizardStepDefinition,

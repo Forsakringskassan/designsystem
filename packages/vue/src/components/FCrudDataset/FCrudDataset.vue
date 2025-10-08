@@ -1,14 +1,14 @@
 <script setup lang="ts" generic="T">
 import { type PropType, type Ref, computed, onMounted, provide, ref, useSlots, watch } from "vue";
-import { deepClone, alertScreenReader, TranslationService } from "@fkui/logic";
+import { TranslationService, alertScreenReader, deepClone } from "@fkui/logic";
 
-import { FIcon } from "../FIcon";
-import { FFormModal, FConfirmModal } from "../FModal";
-import { type FModalButtonDescriptor } from "../FModal/modal-button";
 import { useTranslate } from "../../plugins";
+import { FIcon } from "../FIcon";
+import { FConfirmModal, FFormModal } from "../FModal";
+import { type FModalButtonDescriptor } from "../FModal/modal-button";
 import { type FValidationFormCallback } from "../FValidationForm";
-import { Operation } from "./operation";
 import { filterItem } from "./filter-item";
+import { Operation } from "./operation";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({

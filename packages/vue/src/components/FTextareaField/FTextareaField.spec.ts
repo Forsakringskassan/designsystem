@@ -1,11 +1,11 @@
 import "html-validate/jest";
-import { VueWrapper, mount } from "@vue/test-utils";
 import {
-    type ValidityEvent,
-    type ValidatableHTMLElement,
     type PendingValidityEvent,
+    type ValidatableHTMLElement,
+    type ValidityEvent,
 } from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import FTextareaField from "./FTextareaField.vue";
 

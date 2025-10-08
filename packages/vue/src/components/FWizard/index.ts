@@ -3,9 +3,9 @@ export { default as FWizardStep } from "./FWizardStep.vue";
 export { FWizardStepAction } from "./action";
 export type {
     FWizardApi,
-    FWizardStepDefinition,
     FWizardKey,
-    StepNumber,
+    FWizardStepDefinition,
     FWizardValidationCallback,
     FWizardValidationData,
+    StepNumber,
 } from "./FWizardApi";

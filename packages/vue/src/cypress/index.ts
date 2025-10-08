@@ -1,4 +1,4 @@
-export { type DefaultCypressChainable, type BasePageObject } from "./common";
+export { type BasePageObject, type DefaultCypressChainable } from "./common";
 export {
     FCalendarDayPageObject,
     FCalenderDayPageobject,

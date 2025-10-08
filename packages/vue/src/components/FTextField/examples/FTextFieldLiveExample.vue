@@ -3,11 +3,11 @@ import { defineComponent } from "vue";
 import {
     FBankAccountNumberTextField,
     FBankgiroTextField,
-    FFieldset,
     FCheckboxField,
     FClearingnumberTextField,
     FCurrencyTextField,
     FEmailTextField,
+    FFieldset,
     FIcon,
     FNumericTextField,
     FOrganisationsnummerTextField,

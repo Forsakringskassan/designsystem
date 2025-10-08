@@ -52,12 +52,12 @@ export * from "./text";
 export type * from "./types";
 export * from "./utils";
 export {
-    alertScreenReader,
     type AlertScreenReaderOptions,
+    alertScreenReader,
 } from "./alert-screen-reader";
 export {
-    waitForScreenReader,
     SCREEN_READER_DELAY,
+    waitForScreenReader,
 } from "./wait-for-screen-reader";
 
 import * as DomUtils from "./dom";

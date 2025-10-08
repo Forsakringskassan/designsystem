@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import { FButton } from "@fkui/vue";
 import { formatNumber } from "@fkui/logic";
+import { FButton } from "@fkui/vue";
 import { FTable, defineTableColumns } from "../components";
-import data, { type FruitOrder, OrderStatus, statusString } from "./example-data";
-import { useERPService } from "./erp-service";
 import XOrderFilter from "./OrderFilter.vue";
+import { useERPService } from "./erp-service";
+import data, { type FruitOrder, OrderStatus, statusString } from "./example-data";
 
 const rows = reactive(data);
 

@@ -1,6 +1,6 @@
-import { type Validator } from "../Validator";
-import { isEmpty, isSet } from "../../../utils";
 import { parseBankgiro } from "../../../converters";
+import { isEmpty, isSet } from "../../../utils";
+import { type Validator } from "../Validator";
 
 export const bankgiroValidator: Validator = {
     name: "bankgiro",

@@ -1,5 +1,5 @@
 import { FDate } from "@fkui/date";
-import { normalizeDateFormat, isEmpty } from "../../utils";
+import { isEmpty, normalizeDateFormat } from "../../utils";
 
 /**
  * A string in format YYYY-MM-DD, for example 2021-02-03

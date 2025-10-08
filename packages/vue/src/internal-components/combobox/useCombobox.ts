@@ -1,13 +1,13 @@
-import { ElementIdService, isEmpty } from "@fkui/logic";
 import {
+    type Ref,
+    type ShallowRef,
     computed,
     nextTick,
     onMounted,
     ref,
-    type Ref,
-    type ShallowRef,
     watchEffect,
 } from "vue";
+import { ElementIdService, isEmpty } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 import { useTranslate } from "../../plugins";
 import { filterOptions } from "./filter-options";

@@ -1,13 +1,13 @@
 import "html-validate/jest";
-import flushPromises from "flush-promises";
 import { defineComponent } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { VueWrapper, mount } from "@vue/test-utils";
+import flushPromises from "flush-promises";
 import { ValidationPlugin } from "../../../plugins";
 import { FTextField } from "../../FTextField";
 import FModal from "../FModal.vue";
-import { FFormModalAction } from "./action";
 import FFormModal from "./FFormModal.vue";
+import { FFormModalAction } from "./action";
 
 function generateFFormModalTemplate(errorMessage: string): string {
     return /* HTML */ `

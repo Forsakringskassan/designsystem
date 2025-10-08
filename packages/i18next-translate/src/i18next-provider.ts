@@ -1,9 +1,9 @@
-import { createInstance } from "i18next";
 import {
     type TranslateFunction,
     type TranslationProviderInterface,
     flatten,
 } from "@fkui/logic";
+import { createInstance } from "i18next";
 
 /**
  * @public

@@ -1,7 +1,7 @@
 import {
+    getInternalKey,
     setInternalKey,
     setInternalKeys,
-    getInternalKey,
 } from "./internal-key";
 
 describe("`internalKey`", () => {

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FFieldset, FCheckboxField } from "@fkui/vue";
+import { FCheckboxField, FFieldset } from "@fkui/vue";
 
 export default defineComponent({
     name: "FCheckboxGroupValues",

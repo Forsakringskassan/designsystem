@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type ValidatorConfigs, type ValidityEvent, ValidationService, ElementIdService } from "@fkui/logic";
+import { type ValidatorConfigs, type ValidityEvent, ElementIdService, ValidationService } from "@fkui/logic";
 import { FTextField } from "../..";
 import { TranslationMixin } from "../../../../plugins";
-import { renderSlotText, dispatchComponentValidityEvent } from "../../../../utils";
+import { dispatchComponentValidityEvent, renderSlotText } from "../../../../utils";
 
 export default defineComponent({
     name: "FPhoneTextField",

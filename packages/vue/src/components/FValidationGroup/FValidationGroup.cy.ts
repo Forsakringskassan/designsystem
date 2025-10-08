@@ -1,6 +1,6 @@
-import { ValidationPlugin, TestPlugin } from "../../plugins";
-import OptimizationExample from "./examples/OptimizationExample.vue";
+import { TestPlugin, ValidationPlugin } from "../../plugins";
 import { OptimizationExamplePageobject } from "./examples/OptimizationExample.pageobject";
+import OptimizationExample from "./examples/OptimizationExample.vue";
 
 describe("FValidationGroup tests", () => {
     it("should list correct errors when components are added and removed", () => {

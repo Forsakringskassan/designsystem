@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPageLayout, FMinimizablePanel } from "@fkui/vue";
+import { FMinimizablePanel, FPageLayout } from "@fkui/vue";
 </script>
 
 <template>

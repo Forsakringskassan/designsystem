@@ -1,14 +1,14 @@
 import {
     FTableColumnData,
-    FTableColumnType,
     FTableColumnSize,
     FTableColumnSort,
+    FTableColumnType,
     addColumn,
+    getSortableIconClasses,
+    getSortableIconName,
+    setSortableColumns,
     setVisibilityColumn,
     updateSortOrder,
-    setSortableColumns,
-    getSortableIconName,
-    getSortableIconClasses,
 } from "./FTableColumnData";
 
 function createColumns(sortable: boolean): FTableColumnData[] {

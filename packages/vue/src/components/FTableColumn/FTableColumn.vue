@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { type PropType, computed, onMounted, ref, useTemplateRef, watch } from "vue";
 import { ElementIdService } from "@fkui/logic";
+import { FTableColumnSize, FTableColumnSort, FTableColumnType, isTableColumnType } from "./FTableColumnData";
 import { FTableInjected } from "./FTableInterface";
-import { FTableColumnType, FTableColumnSize, FTableColumnSort, isTableColumnType } from "./FTableColumnData";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({

@@ -1,6 +1,6 @@
-import { type Validator } from "../Validator";
-import { type ValidatorOptions } from "../ValidationServiceInterface";
 import { isSet } from "../../../utils";
+import { type ValidatorOptions } from "../ValidationServiceInterface";
+import { type Validator } from "../Validator";
 
 /**
  * @public

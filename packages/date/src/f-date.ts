@@ -1,10 +1,10 @@
-import dayjs, { type Dayjs, type ConfigType } from "dayjs";
+import dayjs, { type ConfigType, type Dayjs } from "dayjs";
+import { type Clampable } from "./clamp";
 import { DateFormat } from "./date-format";
-import { getLocale, Locale } from "./locale";
+import { type FYear } from "./f-year";
+import { Locale, getLocale } from "./locale";
 import { type IterableDate } from "./range";
 import { Weekday } from "./weekday";
-import { type FYear } from "./f-year";
-import { type Clampable } from "./clamp";
 
 type Formatter = Record<DateFormat, string>;
 

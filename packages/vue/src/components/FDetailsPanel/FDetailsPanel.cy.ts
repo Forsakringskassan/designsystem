@@ -1,6 +1,6 @@
 import { FDetailsPanelPageObject } from "../../cypress";
-import Testbed from "./examples/FDetailsPanelTestbed.vue";
 import Exclusive from "./examples/FDetailsPanelExclusive.vue";
+import Testbed from "./examples/FDetailsPanelTestbed.vue";
 
 const mobile = [500, 480] as [number, number];
 const desktop = [640, 480] as [number, number];

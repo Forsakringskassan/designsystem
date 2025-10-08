@@ -1,6 +1,6 @@
 import { defineComponent, h } from "vue";
-import flushPromises from "flush-promises";
 import { mount } from "@vue/test-utils";
+import flushPromises from "flush-promises";
 import { TranslationPlugin } from "./TranslationPlugin";
 
 const TestComponent = defineComponent({

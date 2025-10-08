@@ -1,5 +1,5 @@
-import { type Validator } from "../Validator";
 import { isRadiobuttonOrCheckbox } from "../../../dom";
+import { type Validator } from "../Validator";
 
 const REQUIRED_REGEXP = /^\S+/;
 

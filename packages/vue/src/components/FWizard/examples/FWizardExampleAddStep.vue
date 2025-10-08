@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField } from "@fkui/vue";
+import { FCheckboxField, FFieldset, FIcon, FTextField, FWizard, FWizardStep } from "@fkui/vue";
 
 interface Frukt {
     value: string;

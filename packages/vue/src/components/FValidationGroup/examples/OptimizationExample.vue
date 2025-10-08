@@ -2,10 +2,10 @@
 import { defineComponent } from "vue";
 import {
     type GroupValidityEvent,
-    FValidationGroup,
-    FTextField,
     FFieldset,
     FRadioField,
+    FTextField,
+    FValidationGroup,
 } from "@fkui/vue";
 
 export default defineComponent({

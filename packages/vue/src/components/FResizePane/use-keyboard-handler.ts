@@ -1,4 +1,4 @@
-import { type ShallowRef, type Ref } from "vue";
+import { type Ref, type ShallowRef } from "vue";
 import { useEventListener } from "@vueuse/core";
 import { type LayoutAreaAttachPanel } from "../FPageLayout";
 

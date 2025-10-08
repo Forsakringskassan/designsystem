@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { FDataTable, FSelectField, FTableColumn } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { FDataTable, FTableColumn, FSelectField } from "@fkui/vue";
 
 const a = ref("");
 const b = ref("");

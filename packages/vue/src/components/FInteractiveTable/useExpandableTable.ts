@@ -1,5 +1,5 @@
-import { type ComputedRef, type Ref, type Slots, ref, computed } from "vue";
-import { itemEquals, includeItem } from "../../utils";
+import { type ComputedRef, type Ref, type Slots, computed, ref } from "vue";
+import { includeItem, itemEquals } from "../../utils";
 
 /**
  * @internal

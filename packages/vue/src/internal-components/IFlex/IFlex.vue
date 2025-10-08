@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { GAP, FLOAT } from "./constants";
+import { FLOAT, GAP } from "./constants";
 
 export default defineComponent({
     name: "IFlex",

@@ -8,11 +8,11 @@ export {
     useSlotUtils,
 } from "./composables";
 export {
-    config,
     type FKUIConfig,
-    FKUIConfigButtonOrder,
     type FKUIContext,
     type MaybeWithFKUIContext,
+    FKUIConfigButtonOrder,
+    config,
     setRunningContext,
 } from "./config";
 export * from "./internal-components";

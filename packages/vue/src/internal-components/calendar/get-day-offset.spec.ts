@@ -1,5 +1,5 @@
 import { FDate } from "@fkui/date";
-import { getDayStartOffset, getDayEndOffset } from "./get-day-offset";
+import { getDayEndOffset, getDayStartOffset } from "./get-day-offset";
 
 describe("getDayStartOffset", () => {
     it.each`

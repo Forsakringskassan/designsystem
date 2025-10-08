@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, defineComponent } from "vue";
-import { FPageLayout, FResizePane, FDetailsPanel, useDetailsPanel } from "@fkui/vue";
+import { FDetailsPanel, FPageLayout, FResizePane, useDetailsPanel } from "@fkui/vue";
 
 const { area = "left", resize } = defineProps<{
     area?: string;

@@ -1,12 +1,12 @@
 <script lang="ts">
-import { computed, defineComponent, shallowRef, useTemplateRef, watch, type PropType } from "vue";
+import { type PropType, computed, defineComponent, shallowRef, useTemplateRef, watch } from "vue";
 import { type FDate, type FYear } from "@fkui/date";
 import { ElementIdService, focus } from "@fkui/logic";
-import ICalendarNavbar from "../../internal-components/calendar/ICalendarNavbar.vue";
 import ICalendarMonth from "../../internal-components/calendar/ICalendarMonth.vue";
+import ICalendarNavbar from "../../internal-components/calendar/ICalendarNavbar.vue";
 import { findHTMLElementFromVueRef } from "../../utils";
-import { useYearSelector } from "./useYearSelector";
 import { useCalendarHeight } from "./use-calendar-height";
+import { useYearSelector } from "./useYearSelector";
 
 export default defineComponent({
     name: "FCalendar",

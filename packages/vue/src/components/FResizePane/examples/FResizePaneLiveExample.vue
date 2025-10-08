@@ -4,9 +4,9 @@ import {
     FCheckboxField,
     FFieldset,
     FPageLayout,
-    FSelectField,
     FRadioField,
     FResizePane,
+    FSelectField,
     useResize,
 } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";

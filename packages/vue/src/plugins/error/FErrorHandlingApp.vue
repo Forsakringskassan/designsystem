@@ -1,9 +1,9 @@
 <script lang="ts">
-import { type Component, defineComponent, type PropType } from "vue";
-import { EventBus } from "../../utils";
+import { type Component, type PropType, defineComponent } from "vue";
 import { ErrorViewData } from "../../types";
-import FErrorPage from "./FErrorPage.vue";
+import { EventBus } from "../../utils";
 import { UNHANDLED_ERROR_EVENT } from "./ErrorPlugin";
+import FErrorPage from "./FErrorPage.vue";
 
 export default defineComponent({
     name: "FErrorHandlingApp",

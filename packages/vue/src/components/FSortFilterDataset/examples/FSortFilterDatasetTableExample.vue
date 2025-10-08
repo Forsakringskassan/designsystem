@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FSortFilterDataset, FInteractiveTable, FTableColumn } from "@fkui/vue";
+import { FInteractiveTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
 import { fruits } from "./fruit-data";
 
 export default defineComponent({

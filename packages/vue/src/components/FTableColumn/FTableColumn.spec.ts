@@ -1,5 +1,5 @@
 import { provide, ref } from "vue";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { VueWrapper, mount } from "@vue/test-utils";
 import FTableColumn from "./FTableColumn.vue";
 import "html-validate/jest";
 import { FTableColumnSize, FTableColumnSort } from "./FTableColumnData";

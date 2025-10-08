@@ -1,7 +1,7 @@
-import { type Validator } from "../Validator";
 import { stripWhitespace } from "../../../text";
 import { isEmpty, isSet } from "../../../utils";
 import { type ValidatorOptions } from "../ValidationServiceInterface";
+import { type Validator } from "../Validator";
 
 /**
  * @public

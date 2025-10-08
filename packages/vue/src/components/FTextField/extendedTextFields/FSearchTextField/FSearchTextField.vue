@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { alertScreenReader, ElementIdService, TranslationService } from "@fkui/logic";
-import { FIcon } from "../../../FIcon";
+import { ElementIdService, TranslationService, alertScreenReader } from "@fkui/logic";
 import { FTextField } from "../..";
+import { FIcon } from "../../../FIcon";
 
 export default defineComponent({
     name: "FSearchTextField",

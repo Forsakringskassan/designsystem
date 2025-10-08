@@ -1,8 +1,8 @@
 export { default as FContextMenu } from "./FContextMenu.vue";
 export {
     type ContextMenuItem,
-    type ContextMenuTextItem,
     type ContextMenuSeparatorItem,
+    type ContextMenuTextItem,
     isContextMenuSeparatorItem,
     isContextMenuTextItem,
 } from "./contextmenuitem";

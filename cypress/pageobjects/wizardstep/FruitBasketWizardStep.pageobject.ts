@@ -1,7 +1,7 @@
 import {
-    FWizardStepPageobject,
     FFieldsetPageObject,
     FTextFieldPageObject,
+    FWizardStepPageobject,
 } from "@fkui/vue/cypress";
 
 export enum FRUIT {

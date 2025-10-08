@@ -1,10 +1,10 @@
-import { MyOrderWizardStepPageobject } from "../pageobjects/wizardstep/MyOrderWizardStep.pageobject";
-import { MyInfoWizardStepPageobject } from "../pageobjects/wizardstep/MyInfoWizardStep.pageobject";
 import {
     FRUIT,
     FruitBasketWizardStepPageobject,
 } from "../pageobjects/wizardstep/FruitBasketWizardStep.pageobject";
-import { STATUS, FWizardPageobject } from "@fkui/vue/cypress";
+import { MyInfoWizardStepPageobject } from "../pageobjects/wizardstep/MyInfoWizardStep.pageobject";
+import { MyOrderWizardStepPageobject } from "../pageobjects/wizardstep/MyOrderWizardStep.pageobject";
+import { FWizardPageobject, STATUS } from "@fkui/vue/cypress";
 
 describe("FWizardStep", () => {
     before(() => {

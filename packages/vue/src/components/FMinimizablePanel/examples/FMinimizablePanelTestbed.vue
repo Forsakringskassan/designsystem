@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, defineComponent } from "vue";
-import { FPageLayout, FResizePane, FMinimizablePanel } from "@fkui/vue";
+import { FMinimizablePanel, FPageLayout, FResizePane } from "@fkui/vue";
 
 const {
     area = "left",

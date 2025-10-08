@@ -6,15 +6,15 @@ import {
     inject,
     ref,
     toRef,
+    useSlots,
     useTemplateRef,
     watchEffect,
-    useSlots,
 } from "vue";
 import { TranslationService } from "@fkui/logic";
-import { FExpand } from "../FExpand";
 import { IFlex, IFlexItem } from "../../internal-components";
-import { FIcon } from "../FIcon";
 import { focus, hasSlot } from "../../utils";
+import { FExpand } from "../FExpand";
+import { FIcon } from "../FIcon";
 import { tooltipAttachTo } from "./tooltip-attach-to";
 import { useAnimation } from "./use-animation";
 import { useHorizontalOffset } from "./use-horizontal-offset";

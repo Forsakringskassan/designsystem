@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FCheckboxField, FList, FFieldset, FRadioField, FSelectField } from "@fkui/vue";
+import { FCheckboxField, FFieldset, FList, FRadioField, FSelectField } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 enum ListOption {

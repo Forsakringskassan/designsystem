@@ -13,20 +13,20 @@ import {
     setDefaultCellTarget as setDefaultCellTarget,
     stopEdit,
 } from "./FTable.logic";
+import ITableCheckbox from "./ITableCheckbox.vue";
+import ITableExpandable from "./ITableExpandable.vue";
+import ITableHeader from "./ITableHeader.vue";
+import ITableRadio from "./ITableRadio.vue";
 import ITableRow from "./ITableRow.vue";
+import { type MetaRow } from "./MetaRow";
+import { stopEditKey } from "./start-stop-edit";
 import {
-    type NormalizedTableColumnCheckbox,
-    type TableColumn,
-    type NormalizedTableColumnRadio,
     type NormalizedTableColumn,
+    type NormalizedTableColumnCheckbox,
+    type NormalizedTableColumnRadio,
+    type TableColumn,
     normalizeTableColumns,
 } from "./table-column";
-import ITableCheckbox from "./ITableCheckbox.vue";
-import ITableRadio from "./ITableRadio.vue";
-import ITableHeader from "./ITableHeader.vue";
-import ITableExpandable from "./ITableExpandable.vue";
-import { stopEditKey } from "./start-stop-edit";
-import { type MetaRow } from "./MetaRow";
 
 type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
     ? Required<T>[ExpandableAttribute][number]

@@ -1,11 +1,11 @@
 export * from "../lib";
 export {
     SizeWrapper,
-    sizeWrapperWidth,
     sizeWrapperHeight,
+    sizeWrapperWidth,
 } from "./size-wrapper";
 export {
     DensityWrapper,
-    densityWrapperWidth,
     densityWrapperHeight,
+    densityWrapperWidth,
 } from "./density-wrapper";

@@ -1,12 +1,12 @@
+import { type Component, type Ref, type VNode, toRef } from "vue";
 import { type ValidatorConfigs } from "@fkui/logic";
-import { toRef, type Component, type Ref, type VNode } from "vue";
-import ITableCheckbox from "./ITableCheckbox.vue";
-import ITableRadio from "./ITableRadio.vue";
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
-import ITableText from "./ITableText.vue";
-import ITableSelect from "./ITableSelect.vue";
+import ITableCheckbox from "./ITableCheckbox.vue";
+import ITableRadio from "./ITableRadio.vue";
 import ITableRowheader from "./ITableRowheader.vue";
+import ITableSelect from "./ITableSelect.vue";
+import ITableText from "./ITableText.vue";
 
 /**
  * @public

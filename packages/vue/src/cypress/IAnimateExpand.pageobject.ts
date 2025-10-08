@@ -1,4 +1,4 @@
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * pageobject for the IAnimateExpand component

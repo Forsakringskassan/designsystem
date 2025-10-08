@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive } from "vue";
+import { formatNumber } from "@fkui/logic";
 import {
     FButton,
     FCheckboxField,
@@ -9,10 +10,9 @@ import {
     FTableColumn,
     FTextField,
 } from "@fkui/vue";
-import { formatNumber } from "@fkui/logic";
-import data, { OrderStatus, statusString } from "./example-data";
-import { useERPService } from "./erp-service";
 import XOrderFilter from "./OrderFilter.vue";
+import { useERPService } from "./erp-service";
+import data, { OrderStatus, statusString } from "./example-data";
 
 const rows = reactive(data);
 

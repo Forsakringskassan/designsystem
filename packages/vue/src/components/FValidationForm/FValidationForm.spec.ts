@@ -1,14 +1,14 @@
 import path from "node:path";
 import "html-validate/jest";
+import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { VueWrapper, mount } from "@vue/test-utils";
 import {
-    cjsResolver,
     FileSystemConfigLoader,
     HtmlValidate,
+    cjsResolver,
 } from "html-validate/node";
-import { VueWrapper, mount } from "@vue/test-utils";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { FTextField } from "../FTextField";
 import { ValidationPlugin } from "../../plugins";
+import { FTextField } from "../FTextField";
 import FValidationForm from "./FValidationForm.vue";
 import { FValidationFormAction } from "./types";
 

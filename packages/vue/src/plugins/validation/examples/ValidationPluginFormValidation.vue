@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FValidationForm, FTextField } from "@fkui/vue";
+import { FTextField, FValidationForm } from "@fkui/vue";
 
 export default defineComponent({
     name: "ValidationPluginFormValidation",

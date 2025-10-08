@@ -1,6 +1,6 @@
 import { FLabelPageObject } from "./FLabel.pageobject";
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
 import { FTooltipPageObject } from "./FTooltip.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public

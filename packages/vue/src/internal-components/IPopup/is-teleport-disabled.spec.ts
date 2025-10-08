@@ -1,6 +1,6 @@
-import { isTeleportDisabled } from "./is-teleport-disabled";
-import { MIN_DESKTOP_WIDTH } from "./constants";
 import { Placement } from "./IPopupUtils";
+import { MIN_DESKTOP_WIDTH } from "./constants";
+import { isTeleportDisabled } from "./is-teleport-disabled";
 
 const MOBILE_WIDTH = MIN_DESKTOP_WIDTH - 1;
 const VALID_CANDIDATE = Placement.B;

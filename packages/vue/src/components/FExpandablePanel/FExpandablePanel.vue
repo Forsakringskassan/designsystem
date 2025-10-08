@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
-import { FIcon } from "../FIcon";
-import { FExpand } from "../FExpand";
-import { hasSlot } from "../../utils";
 import { TranslationMixin } from "../../plugins";
+import { hasSlot } from "../../utils";
+import { FExpand } from "../FExpand";
+import { FIcon } from "../FIcon";
 
 export default defineComponent({
     name: "FExpandablePanel",

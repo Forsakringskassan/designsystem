@@ -1,5 +1,5 @@
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
-import { FTableColumnPageObject, FCheckboxFieldPageObject } from ".";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
+import { FCheckboxFieldPageObject, FTableColumnPageObject } from ".";
 
 /**
  * @public

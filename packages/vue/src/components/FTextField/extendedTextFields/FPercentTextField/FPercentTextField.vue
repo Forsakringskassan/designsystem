@@ -1,10 +1,10 @@
 <script lang="ts">
-import { formatPercent, parsePercent, ValidationService } from "@fkui/logic";
-import { defineComponent, type PropType } from "vue";
+import { type PropType, defineComponent } from "vue";
+import { ValidationService, formatPercent, parsePercent } from "@fkui/logic";
+import { TranslationMixin } from "../../../../plugins";
+import { getInputElement } from "../../../../utils";
 import FTextField from "../../FTextField.vue";
 import { type FormatFunction, type ParseFunction } from "../../index";
-import { getInputElement } from "../../../../utils";
-import { TranslationMixin } from "../../../../plugins";
 import { useTextFieldSetup } from "../../useTextFieldSetup";
 
 function defaultFormatter(this: { decimals: number }, modelValue: number): string | undefined {

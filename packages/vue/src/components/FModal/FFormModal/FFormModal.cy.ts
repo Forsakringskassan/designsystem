@@ -4,8 +4,8 @@ import {
     FFormModalPageObject,
     FTextFieldPageObject,
 } from "../../../cypress";
-import { FTextField } from "../../FTextField";
 import { formModal } from "../../../utils/form-modal/form-modal";
+import { FTextField } from "../../FTextField";
 import ExampleModal from "../examples/ExampleModal.vue";
 import FFormModal from "./FFormModal.vue";
 

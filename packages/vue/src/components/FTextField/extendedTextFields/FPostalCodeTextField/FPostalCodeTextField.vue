@@ -1,10 +1,10 @@
 <script lang="ts">
-import { type PostalCodeString, formatPostalCode, ValidationService } from "@fkui/logic";
-import { defineComponent, type PropType } from "vue";
+import { type PropType, defineComponent } from "vue";
+import { type PostalCodeString, ValidationService, formatPostalCode } from "@fkui/logic";
+import { TranslationMixin } from "../../../../plugins";
+import { getInputElement } from "../../../../utils";
 import FTextField from "../../FTextField.vue";
 import { type FormatFunction } from "../../index";
-import { getInputElement } from "../../../../utils";
-import { TranslationMixin } from "../../../../plugins";
 import { useTextFieldSetup } from "../../useTextFieldSetup";
 
 export default defineComponent({

@@ -1,20 +1,20 @@
 <script lang="ts">
-import { defineComponent, ref, type PropType } from "vue";
+import { type PropType, defineComponent, ref } from "vue";
 import { debounce } from "@fkui/logic";
+import { IPopupMenu } from "../../internal-components/IPopupMenu";
 import { TranslationMixin } from "../../plugins";
 import {
     actionFromKeyboardEvent,
+    focus,
     getAbsolutePosition,
     getHTMLElementFromVueRef,
     getSortedHTMLElementsFromVueRef,
-    focus,
 } from "../../utils";
-import { IPopupMenu } from "../../internal-components/IPopupMenu";
 import { FIcon } from "../FIcon";
 import { type FNavigationMenuData } from "./f-navigation-menu-data";
+import { findOverflowIndex } from "./find-overflow-index";
 import { type MenuItem } from "./menu-item";
 import { type NavigationMenuItem } from "./navigation-menu-item";
-import { findOverflowIndex } from "./find-overflow-index";
 import { doMenuAction } from "./navigation-menu-logic";
 
 const upKeys = ["Up", "ArrowUp"];

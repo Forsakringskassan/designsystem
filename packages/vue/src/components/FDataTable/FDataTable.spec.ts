@@ -1,9 +1,9 @@
 import "html-validate/jest";
 import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
+import { TranslationPlugin } from "../../plugins";
 import { FSortFilterDatasetMountCallback } from "../FSortFilterDataset";
 import { FTableColumn } from "../FTableColumn";
-import { TranslationPlugin } from "../../plugins";
 import FDataTable from "./FDataTable.vue";
 
 afterEach(() => {

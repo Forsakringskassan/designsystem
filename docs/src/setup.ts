@@ -1,6 +1,4 @@
 import { createApp, h } from "vue";
-import { type SetupOptions } from "@forsakringskassan/docs-generator";
-
 import {
     ErrorPlugin,
     FErrorHandlingApp,
@@ -10,6 +8,7 @@ import {
     ValidationPlugin,
     setRunningContext,
 } from "@fkui/vue";
+import { type SetupOptions } from "@forsakringskassan/docs-generator";
 
 export function setup(options: SetupOptions): void {
     const { rootComponent, selector } = options;

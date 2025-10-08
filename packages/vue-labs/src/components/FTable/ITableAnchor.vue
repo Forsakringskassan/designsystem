@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { assertRef } from "@fkui/logic";
 import { computed, useTemplateRef } from "vue";
+import { assertRef } from "@fkui/logic";
 import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnAnchor } from "./table-column";
 

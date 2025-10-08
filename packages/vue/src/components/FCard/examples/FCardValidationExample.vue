@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ValidationService } from "@fkui/logic";
 import { useTemplateRef } from "vue";
+import { ValidationService } from "@fkui/logic";
 import { FCard, FIcon, FValidationForm, getElementFromVueRef } from "@fkui/vue";
 
 const cardRef = useTemplateRef("card");

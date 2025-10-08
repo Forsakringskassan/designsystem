@@ -7,14 +7,14 @@ import {
     onMounted,
     ref,
     useSlots,
-    watch,
     useTemplateRef,
+    watch,
 } from "vue";
 import { ElementIdService } from "@fkui/logic";
-import { FCheckboxField } from "../FCheckboxField";
-import { itemEquals, includeItem, handleKeyboardFocusNavigation, getElementFromVueRef } from "../../utils";
-import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import { useTranslate } from "../../plugins";
+import { getElementFromVueRef, handleKeyboardFocusNavigation, includeItem, itemEquals } from "../../utils";
+import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
+import { FCheckboxField } from "../FCheckboxField";
 import { ActivateItemInjected } from "../FCrudDataset";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */

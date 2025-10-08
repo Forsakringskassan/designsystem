@@ -1,6 +1,6 @@
 import { type FDate } from "../f-date";
-import { Weekday } from "../weekday";
 import { range } from "../range";
+import { Weekday } from "../weekday";
 
 /**
  * Returns days in period grouped by week.

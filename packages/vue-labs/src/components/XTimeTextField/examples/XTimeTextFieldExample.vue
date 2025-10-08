@@ -1,11 +1,11 @@
 <script lang="ts">
+import { defineComponent } from "vue";
 import {
     XTimeTextField,
-    minutesToUserFriendlyString,
     minutesToHoursFloat,
     minutesToObject,
+    minutesToUserFriendlyString,
 } from "@fkui/vue-labs";
-import { defineComponent } from "vue";
 
 export default defineComponent({
     name: "XTimeComponentExample",

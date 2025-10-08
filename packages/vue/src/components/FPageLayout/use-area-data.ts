@@ -1,21 +1,21 @@
 import {
-    computed,
     type Ref,
-    ref,
     type ShallowRef,
+    computed,
+    ref,
     toValue,
     watchEffect,
 } from "vue";
 import { useEventListener } from "@vueuse/core";
 import {
-    type LayoutAreaAttachPanel,
-    type LayoutAreaDirection,
-} from "./define-layout";
-import {
     VAR_NAME_AREA,
     VAR_NAME_ATTACH_PANEL,
     VAR_NAME_DIRECTION,
 } from "./constants";
+import {
+    type LayoutAreaAttachPanel,
+    type LayoutAreaDirection,
+} from "./define-layout";
 
 /**
  * @public

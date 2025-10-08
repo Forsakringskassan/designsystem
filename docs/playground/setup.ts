@@ -1,6 +1,6 @@
 import { type App, onMounted } from "vue";
-import { ValidationPlugin } from "@fkui/vue";
 import { injectSpritesheet } from "@fkui/icon-lib-default/dist/f/injectSpritesheet";
+import { ValidationPlugin } from "@fkui/vue";
 
 export function setup(app: App | undefined): void {
     if (!app) {

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type GroupValidityEvent, FValidationGroup, FTextField } from "@fkui/vue";
+import { type GroupValidityEvent, FTextField, FValidationGroup } from "@fkui/vue";
 
 export default defineComponent({
     name: "FValidationGroupExample",

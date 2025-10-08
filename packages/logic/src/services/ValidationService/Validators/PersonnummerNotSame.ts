@@ -1,5 +1,5 @@
-import { type Validator } from "../Validator";
 import { parsePersonnummer } from "../../../converters";
+import { type Validator } from "../Validator";
 
 export const personnummerNotSame: Validator = {
     name: "personnummerNotSame",

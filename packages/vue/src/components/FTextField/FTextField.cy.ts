@@ -7,10 +7,10 @@ import {
     sizeWrapperHeight,
     sizeWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FIcon } from "../FIcon";
 import { FTextFieldPageObject } from "../../cypress";
-import FTextFieldGridExample from "./examples/FTextFieldGrid.vue";
+import { FIcon } from "../FIcon";
 import FTextField from "./FTextField.vue";
+import FTextFieldGridExample from "./examples/FTextFieldGrid.vue";
 
 const ValidationComponent = defineComponent({
     template: /* HTML */ `

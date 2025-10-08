@@ -1,4 +1,4 @@
-import { defineComponent, type Component } from "vue";
+import { type Component, defineComponent } from "vue";
 import { FTextFieldPageObject } from "../../../../cypress";
 import FNumericTextField from "./FNumericTextField.vue";
 

@@ -1,10 +1,10 @@
-import { defineComponent, type PropType } from "vue";
-import { FInteractiveTable } from "../FInteractiveTable";
-import { FTableColumn } from "../FTableColumn";
+import { type PropType, defineComponent } from "vue";
 import {
     FInteractiveTablePageObject,
     FSortFilterDatasetPageObject,
 } from "../../cypress";
+import { FInteractiveTable } from "../FInteractiveTable";
+import { FTableColumn } from "../FTableColumn";
 import FSortFilterDataset from "./FSortFilterDataset.vue";
 import FSortFilterDatasetEmptySlot from "./examples/FSortFilterDatasetEmptySlot.vue";
 

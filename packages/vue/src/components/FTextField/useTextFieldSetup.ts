@@ -1,4 +1,4 @@
-import { inject, nextTick, type Ref, ref, useTemplateRef, toRef } from "vue";
+import { type Ref, inject, nextTick, ref, toRef, useTemplateRef } from "vue";
 import { type PendingValidityEvent } from "@fkui/logic";
 import { useCombobox } from "../../internal-components";
 import { type FormatFunction } from "./FormatFunction";

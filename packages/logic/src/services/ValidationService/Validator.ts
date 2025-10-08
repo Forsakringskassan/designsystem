@@ -1,6 +1,6 @@
 import {
-    type ValidatorConfig,
     type ValidatableHTMLElement,
+    type ValidatorConfig,
 } from "./ValidationServiceInterface";
 
 /**

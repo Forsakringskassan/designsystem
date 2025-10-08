@@ -1,6 +1,6 @@
-import { type Validator } from "../Validator";
 import { stripWhitespace } from "../../../text";
 import { isEmpty, isSet } from "../../../utils";
+import { type Validator } from "../Validator";
 
 const PERCENT_REGEXP = /^([-+]?\d+)([,.]\d+)?$/;
 

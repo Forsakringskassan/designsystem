@@ -1,11 +1,11 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import { ElementIdService, ValidationService, TranslationService } from "@fkui/logic";
-import FModal from "../FModal.vue";
-import { FValidationForm, type FValidationFormCallback } from "../../FValidationForm";
+import { type PropType, defineComponent } from "vue";
+import { ElementIdService, TranslationService, ValidationService } from "@fkui/logic";
 import { TranslationMixin } from "../../../plugins/translation";
-import { sizes } from "../sizes";
+import { type FValidationFormCallback, FValidationForm } from "../../FValidationForm";
+import FModal from "../FModal.vue";
 import { type FModalButton, type FModalButtonDescriptor, prepareButtonList } from "../modal-button";
+import { sizes } from "../sizes";
 
 export default defineComponent({
     name: "FFormModal",

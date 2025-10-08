@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, type PropType, onMounted } from "vue";
-import { ElementIdService, type ValidityEvent } from "@fkui/logic";
+import { type PropType, computed, onMounted, ref } from "vue";
+import { type ValidityEvent, ElementIdService } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
+import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { dispatchComponentValidityEvent } from "../../utils";
 import { FIcon } from "../FIcon";
-import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
