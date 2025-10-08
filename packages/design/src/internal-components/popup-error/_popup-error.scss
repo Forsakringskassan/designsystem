@@ -41,6 +41,7 @@
             position: absolute;
             z-index: z-index.$POPUP_ZINDEX;
             white-space: nowrap;
+            color: $popuperror-color-text-default;
         }
     }
 

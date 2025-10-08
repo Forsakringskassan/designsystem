@@ -1,15 +1,24 @@
 // INFO
-$icon-info-color-border: var(--fkds-icon-color-feedback-border-info) !default;
-$icon-info-color-background: var(--fkds-icon-color-feedback-background-info) !default;
+$icon-info-color-border: var(--fkds-color-feedback-border-info) !default;
+$icon-info-color-background: var(--fkds-color-feedback-background-info) !default;
+$icon-info-color-content: var(--fkds-color-text-primary) !default;
 
 // WARNING
-$icon-warning-color-border: var(--fkds-icon-color-feedback-border-warning) !default;
-$icon-warning-color-background: var(--fkds-icon-color-feedback-background-warning) !default;
+$icon-warning-color-border: var(--fkds-color-feedback-border-warning) !default;
+$icon-warning-color-background: var(--fkds-color-feedback-background-warning) !default;
+$icon-warning-color-content: var(--fkds-color-text-primary) !default;
 
 // ERROR
-$icon-error-color-border: var(--fkds-icon-color-feedback-border-negative) !default;
-$icon-error-color-background: var(--fkds-icon-color-feedback-background-negative) !default;
+$icon-error-color-border: var(--fkds-color-feedback-border-negative) !default;
+$icon-error-color-background: var(--fkds-color-feedback-background-negative) !default;
+$icon-error-color-content: var(--fkds-color-text-primary) !default;
 
 // SUCCESS
-$icon-success-color-border: var(--fkds-icon-color-feedback-border-positive) !default;
-$icon-success-color-background: var(--fkds-icon-color-feedback-background-positive) !default;
+$icon-success-color-border: var(--fkds-color-feedback-border-positive) !default;
+$icon-success-color-background: var(--fkds-color-feedback-background-positive) !default;
+$icon-success-color-content: var(--fkds-color-text-primary) !default;
+
+// TOOLTIP
+$icon-tooltip-color-background: var(--fkds-color-action-background-primary-default);
+$icon-tooltip-color-border: var(--fkds-color-action-border-primary-default);
+$icon-tooltip-color-content: var(--fkds-color-text-inverted);

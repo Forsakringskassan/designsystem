@@ -9,7 +9,6 @@
     --f-text-color-default: #{$palette-color-fk-black-100}; // global
     --f-text-color-default-inverted: #{$palette-color-white-100}; // global
     --f-text-color-discrete: #{$palette-color-fk-black-70}; // label, table
-    --f-text-color-error: #{$palette-color-red-85}; // label, error-list
 
     --f-text-color-link: #{$palette-color-bluebell-100};
     --f-text-color-link-hover: #{$palette-color-fk-black-100};
@@ -39,10 +38,9 @@
     // ICON COLORS
     // ***********
     --f-icon-color-white: #{$palette-color-white-100}; // global
-    --f-icon-color-info: #{$palette-color-bluebell-100}; // message-box, modal, tooltip
+
     --f-icon-color-primary: #{$palette-color-bluebell-100}; // select-field, file-item, file-selector, calendar
     --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field, form-step
-    --f-icon-color-error: #{$palette-color-red-100}; // message-box, text-field, textarea, modal, file-item
     --f-icon-color-notice: #{$palette-color-tegel-100}; // expandable-panel
     --f-icon-color-loader: #{$palette-color-green-a-85};
     --f-icon-color-expandable-panel: #{$palette-color-white-100};

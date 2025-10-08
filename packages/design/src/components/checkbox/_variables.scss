@@ -3,8 +3,8 @@ $checkbox-color-text-default: var(--fkds-color-text-primary) !default;
 $checkbox-color-text-disabled: var(--fkds-color-text-disabled) !default;
 
 // ICON
-$checkbox-icon-color-content: var(--fkds-icon-color-content-inverted) !default;
-$checkbox-icon-color-content-disabled: var(--fkds-icon-color-content-disabled) !default;
+$checkbox-icon-color-content: var(--fkds-color-text-inverted) !default;
+$checkbox-icon-color-content-disabled: var(--fkds-color-text-disabled) !default;
 
 // BACKGROUND
 $checkbox-color-background-default: var(--fkds-color-background-primary) !default;
