@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
-import { FValidationGroup, FTextField } from "@fkui/vue";
+import { type GroupValidityEvent, FValidationGroup, FTextField } from "@fkui/vue";
 
 export default defineComponent({
     name: "FValidationGroupExample",
     components: { FValidationGroup, FTextField },
     data() {
-        return { favoritGrupp: {} };
+        return { favoritGrupp: {} as GroupValidityEvent };
     },
 });
 </script>

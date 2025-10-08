@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
-import { FContextMenu } from "@fkui/vue";
+import { type ContextMenuItem, FContextMenu } from "@fkui/vue";
 
-/** @type {ContextMenuItem[]} */
-const exampleItems = [
+const exampleItems: ContextMenuItem[] = [
     { label: "Påminnelse", key: "MENU_2", icon: "bell" },
     { label: "Ändra", key: "MENU_3", icon: "pen" },
     { separator: true },
@@ -23,7 +22,7 @@ export default defineComponent({
     },
     methods: {
         getAnchor() {
-            return this.$refs.popupAnchor;
+            return this.$refs.popupAnchor as HTMLElement | undefined;
         },
         onClose() {
             this.isOpen = false;
@@ -31,7 +30,7 @@ export default defineComponent({
         onClick() {
             this.isOpen = !this.isOpen;
         },
-        onSelect(value) {
+        onSelect(value: string) {
             this.selected = value;
         },
     },

@@ -1,4 +1,4 @@
-<script lang="js">
+<script lang="ts">
 import {
     XTimeTextField,
     minutesToUserFriendlyString,
@@ -14,12 +14,13 @@ export default defineComponent({
     },
     data() {
         return {
-            time: undefined,
+            time: undefined as number | undefined,
         };
     },
     computed: {
         userFriendlyValue() {
-            return minutesToUserFriendlyString(this.time);
+            /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+            return minutesToUserFriendlyString(this.time!);
         },
         timeInHours() {
             return minutesToHoursFloat(this.time);

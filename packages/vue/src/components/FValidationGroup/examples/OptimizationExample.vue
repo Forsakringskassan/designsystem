@@ -1,13 +1,19 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
-import { FValidationGroup, FTextField, FFieldset, FRadioField } from "@fkui/vue";
+import {
+    type GroupValidityEvent,
+    FValidationGroup,
+    FTextField,
+    FFieldset,
+    FRadioField,
+} from "@fkui/vue";
 
 export default defineComponent({
     name: "OptimizationExample",
     components: { FTextField, FValidationGroup, FFieldset, FRadioField },
     data() {
         return {
-            favoritGrupp: {},
+            favoritGrupp: {} as GroupValidityEvent,
             val: true,
             kaka: "",
             frukt: "",

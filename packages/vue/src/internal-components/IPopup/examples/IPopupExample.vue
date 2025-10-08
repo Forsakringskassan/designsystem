@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { IPopup } from "@fkui/vue";
 
@@ -35,7 +35,7 @@ export default defineComponent({
             Öppna popup
         </button>
 
-        <i-popup :is-open :anchor="$refs.popupAnchor" @close="onClose">
+        <i-popup :is-open :anchor="$refs.popupAnchor as HTMLElement" @close="onClose">
             <div class="my-awesome-popup">
                 <p>
                     Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor, för trevnadens,
