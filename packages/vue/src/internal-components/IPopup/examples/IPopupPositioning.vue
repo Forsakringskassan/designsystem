@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
-import { fitInsideArea, clamp, Placement } from "../IPopupUtils";
+import { fitInsideArea, clamp, Placement, CandidateOrder } from "../IPopupUtils";
 
 const SPACING = 10;
 
@@ -9,21 +9,27 @@ export default defineComponent({
     data() {
         return {
             constraint: "viewport",
-            drag: null,
+            drag: null as [x: number, y: number] | null,
         };
     },
     computed: {
+        anchorElement() {
+            return this.$refs.anchor as HTMLElement;
+        },
         areaElement() {
             switch (this.constraint) {
                 case "combo":
-                    return this.$refs.area;
+                    return this.$refs.area as HTMLElement;
                 case "viewport":
                     return document.body;
                 case "container":
-                    return this.$refs.area;
+                    return this.$refs.area as HTMLElement;
                 default:
                     return undefined;
             }
+        },
+        targetElement() {
+            return this.$refs.target as HTMLElement;
         },
         viewportElement() {
             switch (this.constraint) {
@@ -51,12 +57,12 @@ export default defineComponent({
     },
     methods: {
         onChangeConstraint() {
-            const { anchor: anchorElement } = this.$refs;
+            const { anchorElement } = this;
             anchorElement.style.top = "10px";
             anchorElement.style.left = "10px";
         },
-        onMouseDown(event) {
-            const { anchor: anchorElement } = this.$refs;
+        onMouseDown(event: MouseEvent) {
+            const { anchorElement } = this;
             const { clientX, clientY } = event;
             this.drag = [anchorElement.offsetLeft - clientX, anchorElement.offsetTop - clientY];
         },
@@ -64,23 +70,22 @@ export default defineComponent({
             this.drag = null;
             this.updatePosition();
         },
-        onMouseMove(event) {
+        onMouseMove(event: MouseEvent) {
             if (!this.drag) {
                 return;
             }
             event.preventDefault();
-            const { anchor: anchorElement, area: areaElement } = this.$refs;
+            const { anchorElement } = this;
             const { clientX, clientY } = event;
+            const areaElement = this.$refs.area as HTMLElement;
             const area = areaElement.getBoundingClientRect();
             const anchor = anchorElement.getBoundingClientRect();
             const left = clamp(
-                /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
                 clientX + this.drag[0],
                 SPACING,
                 area.width - anchor.width - SPACING - 2,
             );
             const top = clamp(
-                /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
                 clientY + this.drag[1],
                 SPACING,
                 area.height - anchor.height - SPACING - 2,
@@ -93,10 +98,11 @@ export default defineComponent({
             if (!this.drag) {
                 return;
             }
-            const { anchor, target } = this.$refs;
+            const { targetElement: target } = this;
+            const anchor = this.$refs.anchor as HTMLElement | undefined;
             const area = this.areaElement;
             const viewport = this.viewportElement;
-            if (!anchor) {
+            if (!area || !anchor) {
                 return;
             }
             const result = fitInsideArea({
@@ -105,6 +111,7 @@ export default defineComponent({
                 target,
                 viewport,
                 spacing: SPACING,
+                candidateOrder: CandidateOrder.Default,
             });
 
             if (result.placement === Placement.Fallback) {

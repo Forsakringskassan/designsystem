@@ -1,4 +1,4 @@
-<script lang="js">
+<script lang="ts">
 import {
     XTimeTextField,
     forgivingParseTimeToNumber,
@@ -15,13 +15,14 @@ export default defineComponent({
     },
     data() {
         return {
-            time: undefined,
-            parser: (value) => forgivingParseTimeToNumber(value),
+            time: undefined as number | undefined,
+            parser: (value: string) => forgivingParseTimeToNumber(value),
         };
     },
     computed: {
         userFriendlyValue() {
-            return minutesToUserFriendlyString(this.time);
+            /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+            return minutesToUserFriendlyString(this.time!);
         },
         timeInHours() {
             return minutesToHoursFloat(this.time);

@@ -121,6 +121,14 @@ export default [
                 "shorthand",
                 { sameNameShorthand: "always" },
             ],
+            "vue/block-lang": [
+                "error",
+                {
+                    script: {
+                        lang: "ts",
+                    },
+                },
+            ],
         },
     },
 
