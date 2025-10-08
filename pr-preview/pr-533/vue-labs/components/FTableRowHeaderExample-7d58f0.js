@@ -2307,7 +2307,7 @@ var _sfc_main$b = defineComponent({
   mounted() {
     const inputElement = this.$el.querySelector("input");
     if (!isSet(inputElement)) {
-      throw new Error(`Could not find input element in XTimeTextField with id ${this.$el.id}`);
+      throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
     }
     ValidationService.addValidatorsToElement(inputElement, {
       maxLength: {
@@ -3052,7 +3052,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         width
       } = tdElement.value.getBoundingClientRect();
       model.value = modelValue;
-      tdElement.value.style.setProperty("width", `${width}px`);
+      tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.focus();
     }
     function onStopEdit(options) {
@@ -4388,7 +4388,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent5({
       assertRef5(inputElement);
       const { width } = tdElement.value.getBoundingClientRect();
       model.value = modelValue;
-      tdElement.value.style.setProperty("width", `${width}px`);
+      tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.focus();
     }
     function onStopEdit(options) {
