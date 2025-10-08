@@ -45,9 +45,9 @@ export { FExpandableParagraph } from "./FExpandableParagraph";
 export { FFieldset } from "./FFieldset";
 export { type FFileItemIconName, FFileItem } from "./FFileItem";
 export { FFileSelector } from "./FFileSelector";
+export { FFixedPane } from "./FFixedPane";
 export { FIcon } from "./FIcon";
 export { FInteractiveTable } from "./FInteractiveTable";
-export { FFixedPane } from "./FFixedPane";
 export { FLabel } from "./FLabel";
 export { FLayoutApplicationTemplate } from "./FLayoutApplicationTemplate";
 export {
@@ -55,8 +55,8 @@ export {
     FLayoutLeftPanel,
 } from "./FLayoutLeftPanel";
 export {
-    type FLayoutRightPanelInteface,
     type FLayoutRightPanelContentEvent,
+    type FLayoutRightPanelInteface,
     FLayoutRightPanel,
     FLayoutRightPanelService,
 } from "./FLayoutRightPanel";
@@ -64,6 +64,7 @@ export { FList } from "./FList";
 export { FLoader } from "./FLoader";
 export { FLogo } from "./FLogo";
 export { FMessageBox } from "./FMessageBox";
+export { FMinimizablePanel } from "./FMinimizablePanel";
 export {
     type FModalButton,
     type FModalButtonDescriptor,
@@ -95,7 +96,6 @@ export {
     registerLayout,
     useAreaData,
 } from "./FPageLayout";
-export { FMinimizablePanel } from "./FMinimizablePanel";
 export { FProgressbar } from "./FProgressbar";
 export { FRadioField } from "./FRadioField";
 export {
@@ -123,6 +123,7 @@ export {
     FTableColumnSort,
     FTableColumnType,
 } from "./FTableColumn";
+export { FTextareaField } from "./FTextareaField";
 export {
     type FormatFunction,
     type ParseFunction,
@@ -143,7 +144,6 @@ export {
     FTextField,
     useTextFieldSetup,
 } from "./FTextField";
-export { FTextareaField } from "./FTextareaField";
 export { FTooltip, tooltipAttachTo } from "./FTooltip";
 export {
     type FValidationFormCallback,
@@ -157,9 +157,9 @@ export {
     type FWizardApi,
     type FWizardStepDefinition,
     type FWizardKey,
-    type StepNumber,
     type FWizardValidationData,
     type FWizardValidationCallback,
+    type StepNumber,
     FWizard,
     FWizardStep,
     FWizardStepAction,
