@@ -69,6 +69,7 @@ const columnCount = computed((): number => {
 
 const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     type: "checkbox",
+    id: Symbol("multi-select"),
     header: ref("selectable"),
     sortable: null,
     component: ITableCheckbox,
@@ -98,6 +99,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
 
 const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
     type: "radio",
+    id: Symbol("single-select"),
     header: ref("Välj en rad"),
     sortable: null,
     component: ITableRadio,
@@ -291,7 +293,7 @@ onMounted(() => {
                 <!-- [html-validate-disable-next element-permitted-content -- transparent th] -->
                 <i-table-header
                     v-for="column in columns"
-                    :key="column.header as unknown as string"
+                    :key="column.id"
                     :column
                     :sort-enabled="isSortEnabled(column)"
                     :sort-order="getSortOrder(column)"
@@ -331,7 +333,7 @@ onMounted(() => {
                     <template v-else>
                         <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
                         <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
-                        <template v-for="column in columns" :key="column.header">
+                        <template v-for="column in columns" :key="column.id">
                             <component :is="column.component" v-if="'component' in column" :row :column></component>
                             <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
                         </template>
