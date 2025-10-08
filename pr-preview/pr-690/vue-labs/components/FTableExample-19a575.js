@@ -30,7 +30,7 @@ import { FSortFilterDataset } from "@fkui/vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, useTemplateRef, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, createVNode, unref, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, normalizeClass, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { defineComponent, useTemplateRef, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, createVNode, unref, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, normalizeClass, withDirectives, vModelText, watchEffect, vShow, toRef, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
@@ -2307,7 +2307,7 @@ var _sfc_main$b = defineComponent({
   mounted() {
     const inputElement = this.$el.querySelector("input");
     if (!isSet(inputElement)) {
-      throw new Error(`Could not find input element in XTimeTextField with id ${this.$el.id}`);
+      throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
     }
     ValidationService.addValidatorsToElement(inputElement, {
       maxLength: {
@@ -2820,6 +2820,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const targetElement = useTemplateRef("target");
+    const ariaLabel = computed(() => __props.column.header.value);
     function onActivateCell(e) {
       assertRef(targetElement);
       targetElement.value.tabIndex = 0;
@@ -2840,7 +2841,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
         ref: "target",
         checked: __props.column.value(__props.row),
         type: "checkbox",
-        "aria-label": __props.column.header,
+        "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
       }, null, 40, _hoisted_1$7)], 32)) : (openBlock(), createElementBlock("td", {
@@ -2852,7 +2853,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("input", {
         checked: __props.column.value(__props.row),
         type: "checkbox",
-        "aria-label": __props.column.header
+        "aria-label": ariaLabel.value
       }, null, 8, _hoisted_2$2)], 544));
     };
   }
@@ -2866,6 +2867,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const inputElement = useTemplateRef("input");
+    const ariaLabel = computed(() => __props.column.header.value);
     function onActivateCell(e) {
       assertRef(inputElement);
       inputElement.value.tabIndex = 0;
@@ -2885,7 +2887,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         ref: "input",
         type: "radio",
         checked: __props.column.value(__props.row),
-        "aria-label": __props.column.header,
+        "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
       }, null, 40, _hoisted_1$6)], 32);
@@ -3052,7 +3054,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         width
       } = tdElement.value.getBoundingClientRect();
       model.value = modelValue;
-      tdElement.value.style.setProperty("width", `${width}px`);
+      tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.focus();
     }
     function onStopEdit(options) {
@@ -3457,7 +3459,8 @@ function normalizeTableColumn(column) {
   if ("render" in column) {
     return {
       type: void 0,
-      header: column.header,
+      id: Symbol(),
+      header: toRef(column.header),
       render: column.render,
       sortable: null
     };
@@ -3466,7 +3469,8 @@ function normalizeTableColumn(column) {
     case "checkbox":
       return {
         type: "checkbox",
-        header: column.header,
+        id: Symbol(),
+        header: toRef(column.header),
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3479,7 +3483,8 @@ function normalizeTableColumn(column) {
     case "radio":
       return {
         type: "radio",
-        header: column.header,
+        id: Symbol(),
+        header: toRef(column.header),
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
@@ -3488,7 +3493,8 @@ function normalizeTableColumn(column) {
     case "text":
       return {
         type: "text",
-        header: column.header,
+        id: Symbol(),
+        header: toRef(column.header),
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3502,7 +3508,8 @@ function normalizeTableColumn(column) {
     case "rowheader":
       return {
         type: "rowheader",
-        header: column.header,
+        id: Symbol(),
+        header: toRef(column.header),
         value: getValueFn(column.value, column.key, String, ""),
         sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
         component: _sfc_main$3
@@ -3510,7 +3517,8 @@ function normalizeTableColumn(column) {
     case "anchor":
       return {
         type: "anchor",
-        header: column.header,
+        id: Symbol(),
+        header: toRef(column.header),
         value: column.value,
         href: column.href,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
@@ -3523,7 +3531,8 @@ function normalizeTableColumn(column) {
     case "button":
       return {
         type: "button",
-        header: column.header,
+        id: Symbol(),
+        header: toRef(column.header),
         value: column.value,
         onClick: column.onClick,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
@@ -3537,7 +3546,8 @@ function normalizeTableColumn(column) {
     case "select":
       return {
         type: "select",
-        header: column.header,
+        id: Symbol(),
+        header: toRef(column.header),
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3551,7 +3561,8 @@ function normalizeTableColumn(column) {
     case void 0:
       return {
         type: "text",
-        header: column.header,
+        id: Symbol(),
+        header: toRef(column.header),
         value: getValueFn(column.value, column.key, String, ""),
         update() {
         },
@@ -3743,7 +3754,8 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     });
     const multiSelectColumn = {
       type: "checkbox",
-      header: "selectable",
+      id: Symbol("multi-select"),
+      header: ref("selectable"),
       sortable: null,
       component: _sfc_main$9,
       value(row) {
@@ -3769,7 +3781,8 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     };
     const singleSelectColumn = {
       type: "radio",
-      header: "V\xE4lj en rad",
+      id: Symbol("single-select"),
+      header: ref("V\xE4lj en rad"),
       sortable: null,
       component: _sfc_main$8,
       value(row) {
@@ -3934,7 +3947,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         onChange: onSelectAllChange
       }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$2, {
-          key: column.header,
+          key: column.id,
           column,
           "sort-enabled": isSortEnabled(column),
           "sort-order": getSortOrder(column),
@@ -3991,7 +4004,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
             column: singleSelectColumn
           }, null, 8, ["row"])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
             return openBlock(), createElementBlock(Fragment, {
-              key: column.header
+              key: column.id
             }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
               key: 0,
               row,
@@ -4011,9 +4024,12 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
 // virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-19a575.js
 import { formatNumber } from "@fkui/logic";
 
+// src/components/FTable/table-column.ts
+import { toRef as toRef2 } from "vue";
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableCheckbox.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
-import { useTemplateRef as useTemplateRef2 } from "vue";
+import { computed as computed2, useTemplateRef as useTemplateRef2 } from "vue";
 import { assertRef as assertRef2 } from "@fkui/logic";
 var ITableCheckbox_default = /* @__PURE__ */ _defineComponent({
   __name: "ITableCheckbox",
@@ -4024,6 +4040,7 @@ var ITableCheckbox_default = /* @__PURE__ */ _defineComponent({
   setup(__props, { expose: __expose }) {
     __expose();
     const targetElement = useTemplateRef2("target");
+    const ariaLabel = computed2(() => __props.column.header.value);
     function onActivateCell(e) {
       assertRef2(targetElement);
       targetElement.value.tabIndex = 0;
@@ -4035,7 +4052,7 @@ var ITableCheckbox_default = /* @__PURE__ */ _defineComponent({
       const checked = e.target.checked;
       __props.column.update(__props.row, checked, !checked);
     }
-    const __returned__ = { targetElement, onActivateCell, onChange };
+    const __returned__ = { targetElement, ariaLabel, onActivateCell, onChange };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -4058,7 +4075,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ref: "target",
         checked: $props.column.value($props.row),
         type: "checkbox",
-        "aria-label": $props.column.header,
+        "aria-label": $setup.ariaLabel,
         tabindex: "-1",
         onChange: $setup.onChange
       }, null, 40, _hoisted_12)
@@ -4078,7 +4095,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode("input", {
         checked: $props.column.value($props.row),
         type: "checkbox",
-        "aria-label": $props.column.header
+        "aria-label": $setup.ariaLabel
       }, null, 8, _hoisted_22)
     ],
     544
@@ -4092,7 +4109,7 @@ ITableCheckbox_default.__file = "src/components/FTable/ITableCheckbox.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableRadio.vue?type=script
 import { defineComponent as _defineComponent2 } from "vue";
-import { useTemplateRef as useTemplateRef3 } from "vue";
+import { computed as computed3, useTemplateRef as useTemplateRef3 } from "vue";
 import { assertRef as assertRef3 } from "@fkui/logic";
 var ITableRadio_default = /* @__PURE__ */ _defineComponent2({
   __name: "ITableRadio",
@@ -4103,6 +4120,7 @@ var ITableRadio_default = /* @__PURE__ */ _defineComponent2({
   setup(__props, { expose: __expose }) {
     __expose();
     const inputElement = useTemplateRef3("input");
+    const ariaLabel = computed3(() => __props.column.header.value);
     function onActivateCell(e) {
       assertRef3(inputElement);
       inputElement.value.tabIndex = 0;
@@ -4114,7 +4132,7 @@ var ITableRadio_default = /* @__PURE__ */ _defineComponent2({
       assertRef3(inputElement);
       __props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
     }
-    const __returned__ = { inputElement, onActivateCell, onChange };
+    const __returned__ = { inputElement, ariaLabel, onActivateCell, onChange };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -4135,7 +4153,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
         ref: "input",
         type: "radio",
         checked: $props.column.value($props.row),
-        "aria-label": $props.column.header,
+        "aria-label": $setup.ariaLabel,
         tabindex: "-1",
         onChange: $setup.onChange
       }, null, 40, _hoisted_13)
@@ -4152,7 +4170,7 @@ ITableRadio_default.__file = "src/components/FTable/ITableRadio.vue";
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableAnchor.vue?type=script
 import { defineComponent as _defineComponent3 } from "vue";
 import { assertRef as assertRef4 } from "@fkui/logic";
-import { computed as computed2, useTemplateRef as useTemplateRef4 } from "vue";
+import { computed as computed4, useTemplateRef as useTemplateRef4 } from "vue";
 var ITableAnchor_default = /* @__PURE__ */ _defineComponent3({
   __name: "ITableAnchor",
   props: {
@@ -4169,7 +4187,7 @@ var ITableAnchor_default = /* @__PURE__ */ _defineComponent3({
         targetElement.value.focus();
       }
     }
-    const renderAnchor = computed2(() => {
+    const renderAnchor = computed4(() => {
       return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
     });
     const __returned__ = { targetElement, onActivateCell, renderAnchor };
@@ -4221,7 +4239,7 @@ ITableAnchor_default.__file = "src/components/FTable/ITableAnchor.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableButton.vue?type=script
 import { defineComponent as _defineComponent4 } from "vue";
-import { computed as computed3, nextTick as nextTick2, useTemplateRef as useTemplateRef5 } from "vue";
+import { computed as computed5, nextTick as nextTick2, useTemplateRef as useTemplateRef5 } from "vue";
 import { assertSet as assertSet2 } from "@fkui/logic";
 import { FIcon as FIcon2 } from "@fkui/vue";
 var ITableButton_default = /* @__PURE__ */ _defineComponent4({
@@ -4248,7 +4266,7 @@ var ITableButton_default = /* @__PURE__ */ _defineComponent4({
         __props.column.onClick(__props.row);
       }
     }
-    const renderButton = computed3(() => {
+    const renderButton = computed5(() => {
       return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
     });
     const __returned__ = { buttonElement, tdElement, onActivateCell, onClickButton, renderButton, get FIcon() {
@@ -4320,7 +4338,7 @@ ITableButton_default.__file = "src/components/FTable/ITableButton.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableText.vue?type=script
 import { defineComponent as _defineComponent5 } from "vue";
-import { computed as computed4, onMounted as onMounted2, ref as ref2, useTemplateRef as useTemplateRef6 } from "vue";
+import { computed as computed6, onMounted as onMounted2, ref as ref2, useTemplateRef as useTemplateRef6 } from "vue";
 import { assertRef as assertRef5, ValidationService as ValidationService2 } from "@fkui/logic";
 import { FIcon as FIcon3 } from "@fkui/vue";
 
@@ -4352,8 +4370,8 @@ var ITableText_default = /* @__PURE__ */ _defineComponent5({
       validationMessage: "",
       validityMode: "INITIAL"
     });
-    const hasError = computed4(() => validity.value.validityMode === "ERROR");
-    const wrapperClasses = computed4(() => {
+    const hasError = computed6(() => validity.value.validityMode === "ERROR");
+    const wrapperClasses = computed6(() => {
       return {
         "table-ng__cell": true,
         "table-ng__cell--text": true,
@@ -4361,7 +4379,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent5({
         "table-ng__cell--error": hasError.value
       };
     });
-    const inputClasses = computed4(() => {
+    const inputClasses = computed6(() => {
       return {
         foobar: true,
         "table-ng__textedit": true
@@ -4388,7 +4406,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent5({
       assertRef5(inputElement);
       const { width } = tdElement.value.getBoundingClientRect();
       model.value = modelValue;
-      tdElement.value.style.setProperty("width", `${width}px`);
+      tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.focus();
     }
     function onStopEdit(options) {

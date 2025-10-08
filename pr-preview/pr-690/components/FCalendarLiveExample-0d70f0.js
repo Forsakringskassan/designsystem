@@ -1738,12 +1738,12 @@ function findElementFromVueRef(ref6) {
 function getHTMLElementFromVueRef(ref6) {
   const element = findElementFromVueRef(ref6);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${ref6}.`);
+    throw new Error(`Unable to find element from ${String(ref6)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${ref6}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref6)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -2256,7 +2256,7 @@ var FModal_default = defineComponent4({
     openModal() {
       const root = document.documentElement;
       const scroll = root.scrollTop;
-      root.style.top = `-${scroll}px`;
+      root.style.top = `-${String(scroll)}px`;
       root.style.left = "0";
       root.style.right = "0";
       root.style.overflow = "hidden";
@@ -2841,11 +2841,13 @@ var IFlexItem_default2 = IFlexItem_default;
 // packages/vue/src/components/FErrorList/focus-error.ts
 import { focus as focus3, scrollTo } from "@fkui/logic";
 function focusError(item) {
-  const element = document.querySelector(`#${item.id}`);
+  const element = document.querySelector(`#${String(item.id)}`);
   if (!element) {
-    throw new Error(`Can not find element with id "${item.id}"`);
+    throw new Error(`Can not find element with id "${String(item.id)}"`);
   }
-  const focusElement3 = document.querySelector(`#${item.focusElementId}`);
+  const focusElement3 = document.querySelector(
+    `#${String(item.focusElementId)}`
+  );
   scrollTo(element, window.innerHeight * 0.25);
   focus3(focusElement3 ?? element);
 }
@@ -4346,8 +4348,8 @@ var IPopup_default = defineComponent13({
         this.placement = result.placement;
         const useOverlay = this.forceOverlay || result.placement !== "Fallback" /* Fallback */;
         if (useOverlay) {
-          wrapper.style.left = `${result.x}px`;
-          wrapper.style.top = `${result.y}px`;
+          wrapper.style.left = `${String(result.x)}px`;
+          wrapper.style.top = `${String(result.y)}px`;
           return;
         }
       }
@@ -4559,7 +4561,7 @@ var IPopupError_default = defineComponent14({
       return `popup-error popup-error--arrow popup-error--${this.arrowPosition}`;
     },
     errorStyle() {
-      return `--i-popup-error-offset: ${this.arrowOffset}px`;
+      return `--i-popup-error-offset: ${String(this.arrowOffset)}px`;
     },
     teleportTarget() {
       return config.teleportTarget;
@@ -4633,8 +4635,8 @@ var IPopupError_default = defineComponent14({
       this.placement = result.placement;
       if (result.placement !== "Fallback" /* Fallback */) {
         this.teleportDisabled = false;
-        wrapper.style.left = `${result.x}px`;
-        wrapper.style.top = `${result.y}px`;
+        wrapper.style.left = `${String(result.x)}px`;
+        wrapper.style.top = `${String(result.y)}px`;
         this.setArrowOffset();
         return;
       }
@@ -4926,11 +4928,11 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
         const offsetLeft = offsetRect?.x ?? 0;
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
-        wrapperElement.style.top = `${top - offSetTop}px`;
-        wrapperElement.style.left = `${left - offsetLeft}px`;
-        wrapperElement.style.width = `${width}px`;
-        contentWrapper.style.maxHeight = `${height}px`;
-        contentWrapper.style.width = `${width}px`;
+        wrapperElement.style.top = `${String(top - offSetTop)}px`;
+        wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+        wrapperElement.style.width = `${String(width)}px`;
+        contentWrapper.style.maxHeight = `${String(height)}px`;
+        contentWrapper.style.width = `${String(width)}px`;
       }
     }
     const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, get guessedItemHeight() {
@@ -5471,7 +5473,7 @@ var IAnimateExpand_default = defineComponent16({
       return this.cssClasses;
     },
     heightStyle() {
-      return this.height === "" ? "" : `height: ${this.height}px`;
+      return this.height === "" ? "" : `height: ${String(this.height)}px`;
     },
     shouldVIf() {
       if (this.useVShow) {
@@ -5705,7 +5707,7 @@ var ICalendarMonthGrid_default = defineComponent18({
   },
   computed: {
     ariaLabel() {
-      return `${this.value.monthName} ${this.value.year}`;
+      return `${this.value.monthName} ${String(this.value.year)}`;
     },
     totalCols() {
       return this.hideWeekNumbers ? 7 : 8;
@@ -6294,7 +6296,7 @@ var ICalendarNavbar_default = defineComponent20({
       this.$emit("update:yearSelectorOpen", value);
     },
     getDateText(value) {
-      return `${capitalize(value.monthName)} ${value.year}`;
+      return `${capitalize(value.monthName)} ${String(value.year)}`;
     },
     isFocused(ref6) {
       return document.activeElement === this.$refs[ref6];
@@ -6609,7 +6611,7 @@ function useAnimation(options) {
       const h2 = element.offsetHeight;
       if (state === "expand") {
         animation = element.animate(
-          [{ height: 0 }, { height: `${h2}px` }],
+          [{ height: 0 }, { height: `${String(h2)}px` }],
           {
             duration,
             easing
@@ -6617,7 +6619,7 @@ function useAnimation(options) {
         );
       } else {
         animation = element.animate(
-          [{ height: `${h2}px` }, { height: 0 }],
+          [{ height: `${String(h2)}px` }, { height: 0 }],
           {
             duration,
             easing
@@ -6764,7 +6766,7 @@ var FTooltip_default = defineComponent21({
       if (!wrapper.value) {
         return;
       }
-      wrapper.value.style.setProperty("--f-tooltip-offset", `${offset2.value}px`);
+      wrapper.value.style.setProperty("--f-tooltip-offset", `${String(offset2.value)}px`);
       ready.value = true;
     });
     return { animate, iconTarget, ready };
@@ -7496,10 +7498,11 @@ var FCheckboxField_default = defineComponent23({
       let errorMessage = "";
       if (hasSlot(this, "default")) {
         const labelText = this.injected.getFieldsetLabelText();
+        const slotText = renderSlotText(this.$slots.default) ?? "";
         if (labelText) {
-          errorMessage = `${labelText} ${renderSlotText(this.$slots.default)}`;
+          errorMessage = `${labelText} ${slotText}`;
         } else {
-          errorMessage = `${renderSlotText(this.$slots.default)}`;
+          errorMessage = slotText;
         }
       }
       const element = this.$el.querySelector(`#${detail.elementId}`);
