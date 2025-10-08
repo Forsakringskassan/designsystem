@@ -2681,13 +2681,13 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "escape": {
       dispatchActivateCellEvent(newCellTarget, {
         focus: true
       });
-      break;
+      return newCellTarget;
     }
     case "tab": {
       if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
@@ -2705,7 +2705,7 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "shift-tab": {
       if (cellIndex === 0 && rowIndex === 1) {
@@ -2723,17 +2723,13 @@ function stopEdit(element, reason) {
           focus: true
         });
       }
-      break;
+      return newCellTarget;
     }
     case "blur": {
       console.log("stopEdit", "blur");
-      break;
-    }
-    default: {
-      throw new Error(`invalid stop edit reason: ${reason}`);
+      return newCellTarget;
     }
   }
-  return newCellTarget;
 }
 var _hoisted_1$8 = {
   key: 0,
@@ -3461,7 +3457,7 @@ function normalizeTableColumn(column) {
   if ("render" in column) {
     return {
       type: void 0,
-      key: Symbol(),
+      id: Symbol(),
       header: column.header,
       render: column.render,
       sortable: null
@@ -3471,7 +3467,7 @@ function normalizeTableColumn(column) {
     case "checkbox":
       return {
         type: "checkbox",
-        key: Symbol(),
+        id: Symbol(),
         header: column.header,
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
@@ -3485,7 +3481,7 @@ function normalizeTableColumn(column) {
     case "radio":
       return {
         type: "radio",
-        key: Symbol(),
+        id: Symbol(),
         header: column.header,
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
@@ -3495,7 +3491,7 @@ function normalizeTableColumn(column) {
     case "text":
       return {
         type: "text",
-        key: Symbol(),
+        id: Symbol(),
         header: column.header,
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
@@ -3510,7 +3506,7 @@ function normalizeTableColumn(column) {
     case "rowheader":
       return {
         type: "rowheader",
-        key: Symbol(),
+        id: Symbol(),
         header: column.header,
         value: getValueFn(column.value, column.key, String, ""),
         sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
@@ -3519,7 +3515,7 @@ function normalizeTableColumn(column) {
     case "anchor":
       return {
         type: "anchor",
-        key: Symbol(),
+        id: Symbol(),
         header: column.header,
         value: column.value,
         href: column.href,
@@ -3533,7 +3529,7 @@ function normalizeTableColumn(column) {
     case "button":
       return {
         type: "button",
-        key: Symbol(),
+        id: Symbol(),
         header: column.header,
         value: column.value,
         onClick: column.onClick,
@@ -3548,7 +3544,7 @@ function normalizeTableColumn(column) {
     case "select":
       return {
         type: "select",
-        key: Symbol(),
+        id: Symbol(),
         header: column.header,
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
@@ -3563,7 +3559,7 @@ function normalizeTableColumn(column) {
     case void 0:
       return {
         type: "text",
-        key: Symbol(),
+        id: Symbol(),
         header: column.header,
         value: getValueFn(column.value, column.key, String, ""),
         update() {
@@ -3756,7 +3752,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     });
     const multiSelectColumn = {
       type: "checkbox",
-      key: Symbol("multi-select"),
+      id: Symbol("multi-select"),
       header: "selectable",
       sortable: null,
       component: _sfc_main$9,
@@ -3783,7 +3779,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     };
     const singleSelectColumn = {
       type: "radio",
-      key: Symbol("single-select"),
+      id: Symbol("single-select"),
       header: "V\xE4lj en rad",
       sortable: null,
       component: _sfc_main$8,
@@ -3949,7 +3945,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         onChange: onSelectAllChange
       }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$2, {
-          key: column.key,
+          key: column.id,
           column,
           "sort-enabled": isSortEnabled(column),
           "sort-order": getSortOrder(column),
@@ -4006,7 +4002,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
             column: singleSelectColumn
           }, null, 8, ["row"])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
             return openBlock(), createElementBlock(Fragment, {
-              key: column.header
+              key: column.id
             }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
               key: 0,
               row,
