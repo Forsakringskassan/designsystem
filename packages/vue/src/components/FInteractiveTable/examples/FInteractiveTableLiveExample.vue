@@ -1,12 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
+    FCheckboxField,
+    FFieldset,
     FInteractiveTable,
+    FRadioField,
     FTableButton,
     FTableColumn,
-    FCheckboxField,
-    FRadioField,
-    FFieldset,
 } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 

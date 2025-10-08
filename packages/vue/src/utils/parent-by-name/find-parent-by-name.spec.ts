@@ -1,5 +1,5 @@
-import { mount, VueWrapper } from "@vue/test-utils";
 import { type ComponentPublicInstance, defineComponent } from "vue";
+import { VueWrapper, mount } from "@vue/test-utils";
 import { findParentByName } from "./find-parent-by-name";
 
 const TEMPLATE_WITH_GRANDCHILD = /* HTML */ `

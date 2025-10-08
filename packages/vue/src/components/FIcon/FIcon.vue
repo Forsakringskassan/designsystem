@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { type PropType, defineComponent } from "vue";
 
 const Flip = ["horizontal", "vertical"];
 const Rotate = ["90", "180", "270"];

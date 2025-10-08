@@ -1,12 +1,12 @@
 <script lang="ts">
-import { FTextField } from "@fkui/vue";
+import { defineComponent } from "vue";
 import {
+    type Validator,
     ValidationErrorMessageBuilder,
     ValidationService,
-    type Validator,
     isEmpty,
 } from "@fkui/logic";
-import { defineComponent } from "vue";
+import { FTextField } from "@fkui/vue";
 
 function startsWithPattern(input: string, pattern: string): boolean {
     return input.startsWith(pattern);

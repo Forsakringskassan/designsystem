@@ -1,6 +1,6 @@
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
 import { FSelectFieldPageObject } from "./FSelectField.pageobject";
 import { FTextFieldPageObject } from "./FTextField.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public

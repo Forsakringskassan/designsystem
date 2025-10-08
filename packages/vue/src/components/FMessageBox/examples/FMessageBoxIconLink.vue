@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FMessageBox, FIcon } from "@fkui/vue";
+import { FIcon, FMessageBox } from "@fkui/vue";
 
 export default defineComponent({
     name: "FMessageBoxIconLink",

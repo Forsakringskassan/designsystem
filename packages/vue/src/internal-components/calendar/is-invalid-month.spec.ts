@@ -1,8 +1,8 @@
 import { FDate } from "@fkui/date";
 import {
     isInvalidMonth,
-    isMonthBefore,
     isMonthAfter,
+    isMonthBefore,
 } from "./is-invalid-month";
 
 describe("isInvalidMonth", () => {

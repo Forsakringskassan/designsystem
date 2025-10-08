@@ -1,12 +1,12 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { ElementIdService, pushFocus, popFocus, findTabbableElements, focus } from "@fkui/logic";
-import { FIcon } from "../FIcon";
+import { ElementIdService, findTabbableElements, focus, popFocus, pushFocus } from "@fkui/logic";
 import { TranslationMixin } from "../../plugins";
 import { findElementFromVueRef, getHTMLElementFromVueRef, hasSlot } from "../../utils";
-import { sizes, sizeClass } from "./sizes";
-import { focusElement } from "./focus-element";
+import { FIcon } from "../FIcon";
 import { type FModalData } from "./fmodal-data";
+import { focusElement } from "./focus-element";
+import { sizeClass, sizes } from "./sizes";
 
 /**
  * Level: Ready

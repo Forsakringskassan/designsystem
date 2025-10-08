@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FDataTable, FTableColumn, FMessageBox } from "@fkui/vue";
+import { FDataTable, FMessageBox, FTableColumn } from "@fkui/vue";
 
 const showError = ref(true);
 </script>

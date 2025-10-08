@@ -1,4 +1,4 @@
-import { setCookie, deleteCookie, findCookie } from "./cookies";
+import { deleteCookie, findCookie, setCookie } from "./cookies";
 
 const document = {
     cookie: ``,

@@ -1,9 +1,9 @@
 <script lang="ts">
+import { type PropType, defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import { alertScreenReader, focus } from "@fkui/logic";
-import { defineComponent, type PropType } from "vue";
-import { getHTMLElementFromVueRef } from "../../utils";
 import { TranslationMixin } from "../../plugins";
+import { getHTMLElementFromVueRef } from "../../utils";
 import ICalendarMonthGrid from "./ICalendarMonthGrid.vue";
 import { getDayStep, isDayStepKey } from "./get-day-step";
 import { getDayTabindex } from "./get-day-tabindex";

@@ -1,1 +1,1 @@
-export { mountComponent, type MountOptions } from "./mount-component";
+export { type MountOptions, mountComponent } from "./mount-component";

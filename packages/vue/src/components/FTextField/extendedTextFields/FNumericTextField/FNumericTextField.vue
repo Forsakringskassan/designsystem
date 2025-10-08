@@ -1,9 +1,9 @@
 <script lang="ts">
-import { formatNumber, parseNumber, ValidationService } from "@fkui/logic";
-import { defineComponent, type PropType } from "vue";
+import { type PropType, defineComponent } from "vue";
+import { ValidationService, formatNumber, parseNumber } from "@fkui/logic";
+import { getInputElement } from "../../../../utils";
 import FTextField from "../../FTextField.vue";
 import { type FormatFunction, type ParseFunction } from "../../index";
-import { getInputElement } from "../../../../utils";
 import { useTextFieldSetup } from "../../useTextFieldSetup";
 
 function defaultFormatter(this: { decimals: number }, modelValue: number): string | undefined {

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FLoader, FCheckboxField } from "@fkui/vue";
-import { createElement, LiveExample } from "@forsakringskassan/docs-live-example";
+import { FCheckboxField, FLoader } from "@fkui/vue";
+import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
     name: "FLoaderLiveExample",

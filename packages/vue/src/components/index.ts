@@ -85,12 +85,12 @@ export { FOutputField } from "./FOutputField";
 export { FPageHeader } from "./FPageHeader";
 export {
     type FPageLayoutBindings,
-    type FPageLayoutType,
     type FPageLayoutSlotMapping,
-    type LayoutDefinition,
+    type FPageLayoutType,
     type LayoutAreaAttachPanel,
     type LayoutAreaDefinition,
     type LayoutAreaDirection,
+    type LayoutDefinition,
     type UseAreaData,
     FPageLayout,
     registerLayout,
@@ -155,10 +155,10 @@ export {
 export { FValidationGroup } from "./FValidationGroup";
 export {
     type FWizardApi,
-    type FWizardStepDefinition,
     type FWizardKey,
-    type FWizardValidationData,
+    type FWizardStepDefinition,
     type FWizardValidationCallback,
+    type FWizardValidationData,
     type StepNumber,
     FWizard,
     FWizardStep,

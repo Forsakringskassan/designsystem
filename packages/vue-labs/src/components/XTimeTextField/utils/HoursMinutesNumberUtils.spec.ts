@@ -1,11 +1,11 @@
 import { TranslationService } from "@fkui/logic";
 import {
+    hoursMinutesStringToMinutes,
     minutesToHoursFloat,
-    minutesToObject,
     minutesToHoursMinutesString,
+    minutesToObject,
     minutesToUserFriendlyString,
     splitHoursMinutes,
-    hoursMinutesStringToMinutes,
 } from "./HoursMinutesNumberUtils";
 
 beforeEach(() => {

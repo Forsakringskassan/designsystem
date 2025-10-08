@@ -1,6 +1,6 @@
-import { openModal } from "../open-modal/open-modal";
-import { type MaybeComponent } from "../maybe-component";
 import { type MaybeWithFKUIContext } from "../../config";
+import { type MaybeComponent } from "../maybe-component";
+import { openModal } from "../open-modal/open-modal";
 import { type ModalOptions } from "./modal-options";
 
 /**

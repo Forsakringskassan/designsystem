@@ -1,9 +1,9 @@
 export { type FDialogueTreeData } from "./FDialogueTreeData";
 export {
-    type FDialogueTreeQuestion,
-    type FDialogueTreeSubQuestion,
     type FDialogueTreeEndQuestion,
     type FDialogueTreeOption,
+    type FDialogueTreeQuestion,
+    type FDialogueTreeSubQuestion,
     type FDialogueTreeUserProgress,
     isDialogueTreeEndQuestion,
 } from "./FDialogueTreeModel";

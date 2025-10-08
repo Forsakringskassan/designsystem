@@ -1,8 +1,8 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import { addFocusListener, findTabbableElements, removeFocusListener, restoreFocus, saveFocus } from "@fkui/logic";
-import { TranslationMixin } from "../../plugins";
 import { config } from "../../config";
+import { TranslationMixin } from "../../plugins";
 import { focus } from "../../utils";
 
 export default defineComponent({

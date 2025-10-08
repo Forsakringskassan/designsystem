@@ -1,13 +1,13 @@
+import { type App } from "vue";
 import { mount } from "cypress/vue";
 import { injectSpritesheet } from "@fkui/icon-lib-default/dist/f/injectSpritesheet";
-import { type App } from "vue";
+import { config, setRunningContext } from "../../packages/vue/src/config";
 import {
     FormatPlugin,
     TestPlugin,
     TranslationPlugin,
     ValidationPlugin,
 } from "../../packages/vue/src/plugins";
-import { config, setRunningContext } from "../../packages/vue/src/config";
 import "@fkui/theme-default/src/fkui-css-variables.scss";
 
 import "./main.scss";

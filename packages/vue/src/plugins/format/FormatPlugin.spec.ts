@@ -1,6 +1,6 @@
-import { mount, VueWrapper } from "@vue/test-utils";
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
+import { VueWrapper, mount } from "@vue/test-utils";
 import { FormatPlugin } from "./FormatPlugin";
 
 function createWrapper(

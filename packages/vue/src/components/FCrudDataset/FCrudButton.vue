@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { FTableButton } from "../FTableButton";
 import { useTranslate } from "../../plugins";
+import { FTableButton } from "../FTableButton";
 import { FCrudDatasetInjected } from "./FCrudDatasetInterface";
 
 /**

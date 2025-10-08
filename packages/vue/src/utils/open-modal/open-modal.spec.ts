@@ -1,5 +1,5 @@
-import flushPromises from "flush-promises";
 import { type VNodeArrayChildren, defineComponent, h } from "vue";
+import flushPromises from "flush-promises";
 import { MaybeWithFKUIContext } from "../../config";
 import { openModal } from "./open-modal";
 

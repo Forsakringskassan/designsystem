@@ -1,9 +1,9 @@
 import "html-validate/jest";
-import { VueWrapper, mount } from "@vue/test-utils";
 import { defineComponent } from "vue";
+import { VueWrapper, mount } from "@vue/test-utils";
+import { TranslationPlugin } from "../../plugins";
 import { ListArray, UnknownItem } from "../../types";
 import * as ListUtils from "../../utils/ListUtils";
-import { TranslationPlugin } from "../../plugins";
 import FList from "./FList.vue";
 
 const items = [

@@ -1,11 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
+    FEmailTextField,
     FInteractiveTable,
+    FPostalCodeTextField,
     FTableColumn,
     FValidationForm,
-    FEmailTextField,
-    FPostalCodeTextField,
 } from "@fkui/vue";
 
 export default defineComponent({

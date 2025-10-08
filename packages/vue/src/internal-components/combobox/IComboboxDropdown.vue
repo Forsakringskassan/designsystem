@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, ref, type Ref, useTemplateRef, watchEffect } from "vue";
+import { type Ref, nextTick, ref, useTemplateRef, watchEffect } from "vue";
 import { IPopupListbox } from "../IPopupListbox";
 
 const { id, isOpen, options, activeOption, activeOptionId, inputNode } = defineProps<{

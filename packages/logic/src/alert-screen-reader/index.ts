@@ -1,6 +1,6 @@
 export {
-    alertScreenReader,
     type AlertScreenReaderOptions,
+    alertScreenReader,
 } from "./alert-screen-reader";
 
 import { createScreenReaderWrapper } from "./alert-screen-reader";

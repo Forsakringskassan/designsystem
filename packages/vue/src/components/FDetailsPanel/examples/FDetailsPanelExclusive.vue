@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FPageLayout, FDetailsPanel, useDetailsPanel, FFixedPane } from "@fkui/vue";
+import { FDetailsPanel, FFixedPane, FPageLayout, useDetailsPanel } from "@fkui/vue";
 
 const { exclusive } = defineProps<{
     exclusive: boolean;

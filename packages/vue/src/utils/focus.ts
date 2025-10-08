@@ -1,4 +1,4 @@
-import { focus as focusElement, type FocusOptions } from "@fkui/logic";
+import { type FocusOptions, focus as focusElement } from "@fkui/logic";
 
 /**
  * An object that looks like a Vue instance.

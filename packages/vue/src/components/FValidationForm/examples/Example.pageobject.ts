@@ -1,6 +1,6 @@
 import {
-    FValidationFormPageObject,
     type DefaultCypressChainable,
+    FValidationFormPageObject,
 } from "../../../cypress";
 
 export class ExamplePageobject extends FValidationFormPageObject {

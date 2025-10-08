@@ -4,13 +4,13 @@ import { type SetupOptions } from "@forsakringskassan/vite-lib-config";
 import "@fkui/icon-lib-default/dist/f";
 import "./local.scss";
 
+import { setRunningContext } from "./config";
 import {
+    FormatPlugin,
     TestPlugin,
     TranslationPlugin,
     ValidationPlugin,
-    FormatPlugin,
 } from "./plugins";
-import { setRunningContext } from "./config";
 
 export function setup(options: SetupOptions): void {
     const { rootComponent, selector } = options;

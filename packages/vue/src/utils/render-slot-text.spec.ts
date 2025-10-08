@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { VueWrapper, mount } from "@vue/test-utils";
 import { FBadge as SfcComponent } from "../components";
 import { type RenderSlotOptions, renderSlotText } from "./render-slot-text";
 

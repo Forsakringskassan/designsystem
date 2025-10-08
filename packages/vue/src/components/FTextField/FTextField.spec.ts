@@ -2,13 +2,13 @@ import "html-validate/jest";
 import {
     type PendingValidityEvent,
     type ValidatableHTMLElement,
-    ValidationService,
     type ValidatorConfigs,
     type ValidityEvent,
+    ValidationService,
 } from "@fkui/logic";
-import flushPromises from "flush-promises";
-import { mount, VueWrapper } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { VueWrapper, mount } from "@vue/test-utils";
+import flushPromises from "flush-promises";
 import { ValidationPlugin } from "../../plugins";
 import FTextField from "./FTextField.vue";
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, shallowRef } from "vue";
-import { ICalendarMonthGrid } from "@fkui/vue";
 import { FDate } from "@fkui/date";
+import { ICalendarMonthGrid } from "@fkui/vue";
 
 export default defineComponent({
     name: "ICalendarMonthDefaultExample",

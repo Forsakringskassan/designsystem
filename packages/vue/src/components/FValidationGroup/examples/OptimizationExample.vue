@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from "vue";
-import { FValidationGroup, FTextField, FFieldset, FRadioField } from "@fkui/vue";
+import { FFieldset, FRadioField, FTextField, FValidationGroup } from "@fkui/vue";
 
 export default defineComponent({
     name: "OptimizationExample",

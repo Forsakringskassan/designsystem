@@ -1,6 +1,6 @@
-import { requiredValidator } from "./Validators/RequiredValidator";
 import { ValidationService } from "./ValidationService";
 import { type ValidatableHTMLElement } from "./ValidationServiceInterface";
+import { requiredValidator } from "./Validators/RequiredValidator";
 
 ValidationService.registerValidator(requiredValidator);
 

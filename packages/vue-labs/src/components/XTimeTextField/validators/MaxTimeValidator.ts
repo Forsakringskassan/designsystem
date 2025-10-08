@@ -1,8 +1,8 @@
 import {
-    type Validator,
-    type ValidatorName,
     type ValidatableHTMLElement,
+    type Validator,
     type ValidatorConfig,
+    type ValidatorName,
 } from "@fkui/logic";
 import { HoursMinutesValidatorUtils } from "../utils";
 

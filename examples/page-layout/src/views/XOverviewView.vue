@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDetailsPanel, FInteractiveTable, FTableColumn } from "@fkui/vue";
+import { FInteractiveTable, FTableColumn, useDetailsPanel } from "@fkui/vue";
 import { type Expense } from "../expense";
 import { type Person } from "../person";
 

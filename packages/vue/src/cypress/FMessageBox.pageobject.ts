@@ -1,5 +1,5 @@
-import { type DefaultCypressChainable, type BasePageObject } from "./common";
 import { FErrorListPageObject } from "./FErrorList.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public

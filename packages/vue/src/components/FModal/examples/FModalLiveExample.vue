@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LiveExample } from "@forsakringskassan/docs-live-example";
 import { FCheckboxField, FModal, FSelectField } from "@fkui/vue";
+import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
     name: "FModalLiveExample",

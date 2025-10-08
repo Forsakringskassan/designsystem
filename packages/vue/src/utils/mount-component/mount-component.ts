@@ -1,6 +1,6 @@
 import { type App, createApp } from "vue";
-import { type MaybeComponent } from "../maybe-component";
 import { type MaybeWithFKUIContext, getRunningContext } from "../../config";
+import { type MaybeComponent } from "../maybe-component";
 
 /**
  * @public

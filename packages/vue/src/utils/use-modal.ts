@@ -1,12 +1,12 @@
 import { type Component, getCurrentInstance } from "vue";
 import { type MaybeWithFKUIContext } from "../config";
+import { type ConfirmModalTexts, confirmModal } from "./confirm-modal";
+import { formModal } from "./form-modal";
 import {
     type AsyncModalResult,
     type ModalOptions,
     openModal,
 } from "./open-modal";
-import { type ConfirmModalTexts, confirmModal } from "./confirm-modal";
-import { formModal } from "./form-modal";
 
 /**
  * Composable to get access to modal functions.

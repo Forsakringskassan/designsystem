@@ -1,10 +1,9 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import { type PropType, defineComponent } from "vue";
+import { FKUIConfigButtonOrder, config } from "../../../config";
 import FModal from "../FModal.vue";
-import { sizes } from "../sizes";
-
 import { type FModalButton, type FModalButtonDescriptor, prepareButtonList } from "../modal-button";
-import { config, FKUIConfigButtonOrder } from "../../../config";
+import { sizes } from "../sizes";
 
 const defaultButtons: FModalButtonDescriptor[] = [
     { label: "Primärknapp", event: "confirm", type: "primary" },

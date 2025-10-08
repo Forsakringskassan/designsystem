@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
-import { FIcon } from "../FIcon";
 import { hasSlot } from "../../utils";
 import { FExpand } from "../FExpand";
+import { FIcon } from "../FIcon";
 
 export default defineComponent({
     name: "FExpandableParagraph",

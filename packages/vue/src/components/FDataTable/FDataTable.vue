@@ -1,22 +1,22 @@
 <script setup lang="ts" generic="T extends object">
 import { type PropType, computed, onMounted, provide, ref } from "vue";
+import { useSlotUtils } from "../../composables";
+import { useTranslate } from "../../plugins";
 import { TableScroll, tableScrollClasses } from "../../utils";
 import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
+import { FIcon } from "../FIcon";
+import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
 import {
     type FTableColumnData,
     FTableColumnSort,
+    FTableColumnType,
     addColumn,
+    getSortableIconClasses,
+    getSortableIconName,
+    setSortableColumns,
     setVisibilityColumn,
     updateSortOrder,
-    setSortableColumns,
-    getSortableIconName,
-    getSortableIconClasses,
-    FTableColumnType,
 } from "../FTableColumn";
-import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
-import { FIcon } from "../FIcon";
-import { useTranslate } from "../../plugins";
-import { useSlotUtils } from "../../composables";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({

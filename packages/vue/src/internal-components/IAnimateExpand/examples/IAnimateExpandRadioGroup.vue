@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IAnimateExpand, FFieldset, FRadioField, FTextField } from "@fkui/vue";
+import { FFieldset, FRadioField, FTextField, IAnimateExpand } from "@fkui/vue";
 
 export default defineComponent({
     namne: "IAnimateExpandRadioGroup",

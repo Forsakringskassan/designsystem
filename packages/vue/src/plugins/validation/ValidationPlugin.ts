@@ -4,16 +4,16 @@ import {
     type DirectiveBinding,
     type Plugin,
 } from "vue";
-import isEqual from "lodash/isEqual";
 import {
     type ValidatableHTMLElement,
-    type ValidatorName,
-    type ValidatorConfigs,
     type ValidatorConfig,
+    type ValidatorConfigs,
+    type ValidatorName,
+    ValidationService,
     availableValidators,
     isValidatableHTMLElement,
-    ValidationService,
 } from "@fkui/logic";
+import isEqual from "lodash/isEqual";
 import { type ComponentValidityEvent } from "../../types";
 
 import { dispatchComponentUnmountEvent } from "../../utils";

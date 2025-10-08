@@ -1,6 +1,6 @@
 import { FDate } from "@fkui/date";
-import { validChecksum, isSet } from "../../utils";
 import { stripWhitespace } from "../../text";
+import { isSet, validChecksum } from "../../utils";
 import { parseDate } from "../DateConverter";
 import { resolveCentury } from "./resolve-century";
 

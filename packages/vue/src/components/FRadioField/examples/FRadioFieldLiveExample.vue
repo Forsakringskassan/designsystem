@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FCheckboxField, FTooltip, FFieldset, FRadioField, FSelectField } from "@fkui/vue";
-import { FDate, DateFormat } from "@fkui/date";
+import { DateFormat, FDate } from "@fkui/date";
+import { FCheckboxField, FFieldset, FRadioField, FSelectField, FTooltip } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 const todaysDate = FDate.now().toString(DateFormat.ISO8601);

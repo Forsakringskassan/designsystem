@@ -1,14 +1,14 @@
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import { debounce, handleTab, pushFocus, popFocus } from "@fkui/logic";
+import { type PropType, defineComponent } from "vue";
+import { debounce, handleTab, popFocus, pushFocus } from "@fkui/logic";
 import { config } from "../../config";
 import { getHTMLElementFromVueRef } from "../../utils";
-import { getElement, fitInsideArea, getScrollToPopup, Placement, CandidateOrder } from "./IPopupUtils";
+import { CandidateOrder, Placement, fitInsideArea, getElement, getScrollToPopup } from "./IPopupUtils";
+import { MIN_DESKTOP_WIDTH, POPUP_SPACING } from "./constants";
 import { getContainer } from "./get-container";
 import { getFocusableElement } from "./get-focusable-element";
-import { isTeleportDisabled } from "./is-teleport-disabled";
-import { MIN_DESKTOP_WIDTH, POPUP_SPACING } from "./constants";
 import { type IPopupData } from "./ipopup-data";
+import { isTeleportDisabled } from "./is-teleport-disabled";
 
 export default defineComponent({
     name: "IPopup",

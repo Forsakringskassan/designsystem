@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
-    FDialogueTree,
     type FDialogueTreeOption,
     type FDialogueTreeUserProgress,
+    FDialogueTree,
     FTextField,
 } from "@fkui/vue";
 

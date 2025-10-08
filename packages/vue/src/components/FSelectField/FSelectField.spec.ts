@@ -1,8 +1,8 @@
 import "html-validate/jest";
 import { defineComponent, h } from "vue";
+import { type ValidatableHTMLElement, type ValidityEvent } from "@fkui/logic";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
-import { type ValidityEvent, type ValidatableHTMLElement } from "@fkui/logic";
 import FSelectField from "./FSelectField.vue";
 
 function createTestComponentWithOptions(

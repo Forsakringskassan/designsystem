@@ -1,8 +1,8 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 import {
-    cjsResolver,
     FileSystemConfigLoader,
     HtmlValidate,
+    cjsResolver,
 } from "html-validate/node";
 import "html-validate/jest";
 import FTooltip from "./FTooltip.vue";

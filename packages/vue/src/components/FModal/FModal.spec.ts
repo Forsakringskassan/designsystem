@@ -1,8 +1,8 @@
 import "@fkui/test-utils/jest";
 import { defineComponent } from "vue";
-import flushPromises from "flush-promises";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { mount, shallowMount } from "@vue/test-utils";
+import flushPromises from "flush-promises";
 import FModal from "./FModal.vue";
 
 const offsetFn = {

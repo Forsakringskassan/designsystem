@@ -1,5 +1,5 @@
-import { type TranslateFunction } from "./translate-function";
 import { translate } from "./translate";
+import { type TranslateFunction } from "./translate-function";
 
 /**
  * Translation function.

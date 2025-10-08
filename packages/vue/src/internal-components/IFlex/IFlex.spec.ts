@@ -1,12 +1,12 @@
 import { mount } from "@vue/test-utils";
 import {
-    cjsResolver,
     FileSystemConfigLoader,
     HtmlValidate,
+    cjsResolver,
 } from "html-validate/node";
 import "html-validate/jest";
-import { GAP } from "./constants";
 import IFlex from "./IFlex.vue";
+import { GAP } from "./constants";
 
 describe("gap", () => {
     it("should have no gap class when gap is unspecified", () => {

@@ -1,9 +1,9 @@
 import { FRadioFieldPageObject, FTextFieldPageObject } from "../../cypress";
 import ValidationPluginDynamicValidation from "./examples/ValidationPluginDynamicValidation.vue";
 import ValidationPluginFormValidation from "./examples/ValidationPluginFormValidation.vue";
+import ValidationPluginRevalidateList from "./examples/ValidationPluginRevalidateList.vue";
 import ValidationPluginToggleDisable from "./examples/ValidationPluginToggleDisable.vue";
 import ValidationPluginToggleEnabled from "./examples/ValidationPluginToggleEnabled.vue";
-import ValidationPluginRevalidateList from "./examples/ValidationPluginRevalidateList.vue";
 
 describe("ValidationPlugin", () => {
     it("should support dynamic validation via value sent from configuration", () => {

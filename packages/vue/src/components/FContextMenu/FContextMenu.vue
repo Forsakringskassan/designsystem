@@ -1,17 +1,17 @@
 <script lang="ts">
-import { defineComponent, ref, type PropType } from "vue";
+import { type PropType, defineComponent, ref } from "vue";
 import { focus } from "@fkui/logic";
 import { IPopup } from "../../internal-components/IPopup";
-import { FIcon } from "../FIcon";
-import { actionFromKeyboardEvent, getHTMLElementsFromVueRef } from "../../utils";
 import { MenuAction } from "../../types";
+import { actionFromKeyboardEvent, getHTMLElementsFromVueRef } from "../../utils";
+import { FIcon } from "../FIcon";
+import { doMenuAction } from "./contextmenu-logic";
 import {
     type ContextMenuItem,
     type ContextMenuTextItem,
     isContextMenuSeparatorItem,
     isContextMenuTextItem,
 } from "./contextmenuitem";
-import { doMenuAction } from "./contextmenu-logic";
 
 const preventKeys: string[] = [
     "Tab",

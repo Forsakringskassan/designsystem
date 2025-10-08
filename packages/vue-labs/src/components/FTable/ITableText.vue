@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, onMounted, ref, useTemplateRef } from "vue";
-import { assertRef, ValidationService, type ValidityEvent } from "@fkui/logic";
+import { type ValidityEvent, ValidationService, assertRef } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
-import { type NormalizedTableColumnText } from "./table-column";
-import { useStartStopEdit } from "./start-stop-edit";
 import { type FTableActivateCellEvent } from "./events";
 import { isAlphanumeric } from "./is-alphanumeric";
+import { useStartStopEdit } from "./start-stop-edit";
+import { type NormalizedTableColumnText } from "./table-column";
 
 const { row, column } = defineProps<{
     row: T;

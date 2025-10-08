@@ -1,6 +1,6 @@
-import { type BasePageObject, type DefaultCypressChainable } from "../common";
-import { ICalendarNavbarPageObject } from "../ICalendarNavbar.pageobject";
 import { FCalendarDayPageObject } from "../FCalendarDay.pageobject";
+import { ICalendarNavbarPageObject } from "../ICalendarNavbar.pageobject";
+import { type BasePageObject, type DefaultCypressChainable } from "../common";
 
 const monthList = [
     "Januari",

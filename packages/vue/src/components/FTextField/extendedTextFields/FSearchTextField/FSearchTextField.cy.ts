@@ -4,11 +4,11 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
-import { FTooltip } from "../../../FTooltip";
 import {
     AlertScreenReaderPageObject,
     FTextFieldPageObject,
 } from "../../../../cypress";
+import { FTooltip } from "../../../FTooltip";
 import FSearchTextField from "./FSearchTextField.vue";
 
 const alertScreenReader = new AlertScreenReaderPageObject();

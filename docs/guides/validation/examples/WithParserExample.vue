@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField, FOutputField } from "@fkui/vue";
+import { FOutputField, FTextField } from "@fkui/vue";
 
 function myParser(value: string): string {
     return value.toUpperCase();
