@@ -85,12 +85,12 @@
 
     &--tooltip {
         .f-icon-circle {
-            fill: var(--f-icon-color-info);
-            color: var(--f-icon-color-info);
+            fill: $icon-tooltip-color-background;
+            color: $icon-tooltip-color-border;
         }
 
         .f-icon-i {
-            color: var(--f-icon-color-white);
+            color: $icon-tooltip-color-content;
         }
     }
 

@@ -1,5 +1,6 @@
 @use "../anchor/anchor";
 @use "../../core/size";
+@use "variables" as *;
 
 .file-item-list {
     list-style-type: none;
@@ -45,7 +46,7 @@
         flex: 0 0 auto;
 
         svg {
-            color: var(--f-icon-color-error);
+            color: $fileitem-color-icon-error;
         }
     }
 
