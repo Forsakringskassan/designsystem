@@ -1,4 +1,5 @@
 import { type ShallowRef } from "vue";
+import { assertRef } from "@fkui/logic";
 
 interface FTableKeyboardAdapter<T> {
     readonly rows: T[];
@@ -18,6 +19,8 @@ const keybindings: Partial<Record<string, Callback>> = {
     ArrowDown: focusTrBelow,
     " ": activateRow,
     Spacebar: activateRow,
+    PageUp: goToPreviousPage,
+    PageDown: goToNextPage,
 };
 
 export function focusTrAbove(
@@ -54,22 +57,22 @@ export function activateRow(
 }
 
 function goToPreviousPage(table: FTableKeyboardAdapter<unknown>): void {
-    dispatchPaginationEvent(table, "previous");
+    dispatchPaginateDatasetEvent(table, "previous");
 }
 
 function goToNextPage(table: FTableKeyboardAdapter<unknown>): void {
-    dispatchPaginationEvent(table, "next");
+    dispatchPaginateDatasetEvent(table, "next");
 }
 
-function dispatchPaginationEvent(
+function dispatchPaginateDatasetEvent(
     table: FTableKeyboardAdapter<unknown>,
     type: "next" | "previous",
 ): void {
     assertRef(table.tr);
-    const paginationEvent = new CustomEvent(`pagination:${type}`, {
+    const event = new CustomEvent(`paginateDataset:${type}`, {
         bubbles: true,
     });
-    table.tr.value[0].dispatchEvent(paginationEvent);
+    table.tr.value[0].dispatchEvent(event);
 }
 
 export function onKeydown<T>(
