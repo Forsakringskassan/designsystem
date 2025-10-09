@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FValidationGroup/examples/FValidationGroupExample.vue:FValidationGroupExample-2722de.js
+// virtual-entry:virtual:packages/vue/src/components/FValidationGroup/examples/FValidationGroupExample.vue:FValidationGroupExample-0b25f1.js
 import { defineComponent } from "vue";
 import { FValidationGroup, FTextField } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createElementBlock as _createElementBlock } from "vue";
@@ -115,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-2722de"
+  selector: "#example-0b25f1"
 });
 export {
   render

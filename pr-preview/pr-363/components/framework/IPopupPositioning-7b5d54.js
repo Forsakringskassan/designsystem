@@ -1656,7 +1656,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-c6fbdb.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-7b5d54.js
 import { defineComponent as defineComponent12 } from "vue";
 
 // packages/vue/src/utils/ListUtils.ts
@@ -3889,7 +3889,7 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
   }
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-c6fbdb.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-7b5d54.js
 import { createElementVNode as _createElementVNode8, vModelSelect as _vModelSelect, withDirectives as _withDirectives, createTextVNode as _createTextVNode3, openBlock as _openBlock12, createElementBlock as _createElementBlock12 } from "vue";
 var SPACING = 10;
 var exampleComponent = defineComponent12({
@@ -3901,6 +3901,9 @@ var exampleComponent = defineComponent12({
     };
   },
   computed: {
+    anchorElement() {
+      return this.$refs.anchor;
+    },
     areaElement() {
       switch (this.constraint) {
         case "combo":
@@ -3912,6 +3915,9 @@ var exampleComponent = defineComponent12({
         default:
           return void 0;
       }
+    },
+    targetElement() {
+      return this.$refs.target;
     },
     viewportElement() {
       switch (this.constraint) {
@@ -3939,12 +3945,12 @@ var exampleComponent = defineComponent12({
   },
   methods: {
     onChangeConstraint() {
-      const { anchor: anchorElement } = this.$refs;
+      const { anchorElement } = this;
       anchorElement.style.top = "10px";
       anchorElement.style.left = "10px";
     },
     onMouseDown(event) {
-      const { anchor: anchorElement } = this.$refs;
+      const { anchorElement } = this;
       const { clientX, clientY } = event;
       this.drag = [anchorElement.offsetLeft - clientX, anchorElement.offsetTop - clientY];
     },
@@ -3957,18 +3963,17 @@ var exampleComponent = defineComponent12({
         return;
       }
       event.preventDefault();
-      const { anchor: anchorElement, area: areaElement } = this.$refs;
+      const { anchorElement } = this;
       const { clientX, clientY } = event;
+      const areaElement = this.$refs.area;
       const area = areaElement.getBoundingClientRect();
       const anchor = anchorElement.getBoundingClientRect();
       const left = clamp(
-        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
         clientX + this.drag[0],
         SPACING,
         area.width - anchor.width - SPACING - 2
       );
       const top = clamp(
-        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
         clientY + this.drag[1],
         SPACING,
         area.height - anchor.height - SPACING - 2
@@ -3981,10 +3986,11 @@ var exampleComponent = defineComponent12({
       if (!this.drag) {
         return;
       }
-      const { anchor, target } = this.$refs;
+      const { targetElement: target } = this;
+      const anchor = this.$refs.anchor;
       const area = this.areaElement;
       const viewport = this.viewportElement;
-      if (!anchor) {
+      if (!area || !anchor) {
         return;
       }
       const result = fitInsideArea({
@@ -3992,7 +3998,8 @@ var exampleComponent = defineComponent12({
         anchor,
         target,
         viewport,
-        spacing: SPACING
+        spacing: SPACING,
+        candidateOrder: "Default" /* Default */
       });
       if (result.placement === "Fallback" /* Fallback */) {
         target.classList.add("pos-target--inline");
@@ -4102,7 +4109,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render12;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-c6fbdb"
+  selector: "#example-7b5d54"
 });
 export {
   render12 as render

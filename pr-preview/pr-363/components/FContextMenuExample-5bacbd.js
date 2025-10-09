@@ -28,22 +28,19 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FContextMenu/examples/FContextMenuExampleTextOnly.vue:FContextMenuExampleTextOnly-cb23ed.js
+// virtual-entry:virtual:packages/vue/src/components/FContextMenu/examples/FContextMenuExample.vue:FContextMenuExample-5bacbd.js
 import { defineComponent } from "vue";
 import { FContextMenu } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleItems = [
-  { label: "Skriv ut", key: "MENU_1" },
-  { label: "P\xE5minnelse", key: "MENU_2" },
-  { label: "\xC4ndra", key: "MENU_3" },
+  { label: "P\xE5minnelse", key: "MENU_2", icon: "bell" },
+  { label: "\xC4ndra", key: "MENU_3", icon: "pen" },
   { separator: true },
-  { label: "Ta bort", key: "MENU_4" },
-  { label: "Utan ikon", key: "MENU_5" },
-  { separator: true },
-  { label: "Sista menyval med l\xE4ngsta bredd som \xF6verstiger 260px", key: "MENU_6" }
+  { label: "Ta bort", key: "MENU_4", icon: "trashcan" },
+  { label: "Utan ikon", key: "MENU_5" }
 ];
 var exampleComponent = defineComponent({
-  name: "FContextMenuExampleTextOnly",
+  name: "FContextMenuExample",
   components: { FContextMenu },
   data() {
     return {
@@ -67,7 +64,7 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = { "data-testid": "fcontextmenu-exempel2" };
+var _hoisted_1 = { "data-testid": "fcontextmenu-exempel1" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_context_menu = _resolveComponent("f-context-menu");
   return _openBlock(), _createElementBlock("div", _hoisted_1, [
@@ -93,6 +90,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* TEXT */
     ),
     _createVNode(_component_f_context_menu, {
+      "data-test": "contextmenu-open",
       "is-open": _ctx.isOpen,
       items: _ctx.items,
       anchor: _ctx.getAnchor(),
@@ -104,7 +102,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-cb23ed"
+  selector: "#example-5bacbd"
 });
 export {
   render

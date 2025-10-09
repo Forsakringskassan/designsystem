@@ -2220,6 +2220,9 @@ function parseTimeToNumberUsingConfig(value, extraForgiving) {
 function parseTimeToNumber(value) {
   return parseTimeToNumberUsingConfig(value, false);
 }
+function forgivingParseTimeToNumber(value) {
+  return parseTimeToNumberUsingConfig(value, true);
+}
 var HoursMinutesValidatorUtils = class _HoursMinutesValidatorUtils {
   static validate(value, config, name, compare) {
     if (value === "") {
@@ -2471,7 +2474,7 @@ requireEs_iterator_some();
 var internalKey = getInternalKey();
 var stopEditKey = Symbol();
 
-// virtual-entry:virtual:src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-01cf1c.js
+// virtual-entry:virtual:src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-04dbf8.js
 import { defineComponent as defineComponent2 } from "vue";
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, toDisplayString as _toDisplayString, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent2({
@@ -2481,7 +2484,8 @@ var exampleComponent = defineComponent2({
   },
   data() {
     return {
-      time: void 0
+      time: void 0,
+      parser: (value) => forgivingParseTimeToNumber(value)
     };
   },
   computed: {
@@ -2502,7 +2506,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createElementBlock("div", null, [
     _withDirectives((_openBlock(), _createBlock(_component_x_time_text_field, {
       modelValue: _ctx.time,
-      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.time = $event)
+      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.time = $event),
+      parser: _ctx.parser
     }, {
       description: _withCtx(({ formatDescriptionClass }) => [
         _createElementVNode(
@@ -2524,16 +2529,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ]),
       _: 1
       /* STABLE */
-    }, 8, ["modelValue"])), [
+    }, 8, ["modelValue", "parser"])), [
       [
         _directive_validation,
         {
-          hoursMinutes: { errorMessage: "Du har skrivit in ett felaktigt tidformat" }
+          hoursMinutes: {
+            errorMessage: "Du har skrivit in ett felaktigt tidformat.",
+            parser: [_ctx.parser]
+          },
+          maxTime: {
+            maxTime: "24:00",
+            errorMessage: "Du kan inte fylla i en tid \xF6verstigande 24 timmar.",
+            parser: [_ctx.parser]
+          }
         },
         void 0,
         {
           required: true,
-          hoursMinutes: true
+          hoursMinutes: true,
+          maxTime: true
         }
       ]
     ]),
@@ -2585,7 +2599,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-01cf1c"
+  selector: "#example-04dbf8"
 });
 export {
   render

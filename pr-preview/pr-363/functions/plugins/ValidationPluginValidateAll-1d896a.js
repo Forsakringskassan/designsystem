@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginValidateAll.vue:ValidationPluginValidateAll-d263de.js
+// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginValidateAll.vue:ValidationPluginValidateAll-1d896a.js
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -39,9 +39,7 @@ var exampleComponent = defineComponent({
       const selector = "input, textarea, select";
       const elements = Array.from(document.querySelectorAll(selector));
       for (const element of elements.filter((element2) => element2.id)) {
-        ValidationService.setError(element, {
-          serverError: `Server fel p\xE5 f\xE4lt med id ${element.id} `
-        });
+        ValidationService.setError(element, `Server fel p\xE5 f\xE4lt med id ${element.id} `);
       }
       ValidationService.validateAllElements("rsg-root");
     }
@@ -57,7 +55,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d263de"
+  selector: "#example-1d896a"
 });
 export {
   render

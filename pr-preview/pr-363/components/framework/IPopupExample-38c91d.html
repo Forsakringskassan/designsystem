@@ -96,56 +96,29 @@
             integrity="sha384-/9IUspUSYXNlUH6/W7VzWqm+N/7TZXtwcfcwjpNvz0LKo6eD+4nJJwykckVckNCb"
             
         ></script> 
-        <div id="example-c6fbdb"></div>
+        <div id="example-38c91d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.wrapper {
-    position: relative;
+.my-awesome-popup {
+    border: 1px dashed lightgray;
+    padding: 2rem;
+    background: white;
+.button {
+        margin-bottom: 0px;
+        width: auto;
 }
-.area {
-    margin-top: 1rem;
-    height: 400px;
-    border: 1px dashed grey;
-    position: relative;
 }
-.pos-anchor {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 75px;
-    height: 75px;
-    top: 10px;
-    left: 10px;
-    color: #000;
-    background: rgb(200, 200, 255);
-    border: 1px solid rgb(0, 0, 0);
-    cursor: move;
-    user-select: none;
-    z-index: 1;
+.popup--overlay .my-awesome-popup {
+    width: 25rem;
 }
-.pos-target {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 250px;
-    max-width: calc(100% - 20px);
-    top: 100px;
-    left: 25px;
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(0, 0, 0);
-    z-index: 1;
-}
-.pos-target--inline {
-    position: static;
+.popup--inline .my-awesome-popup {
+    width: 100%;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupPositioning-c6fbdb.js"></script>
+        <script type="module" src="./IPopupExample-38c91d.js"></script>
     
     </body>
 </html>

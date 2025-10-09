@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Validation Plugin - FK Designsystem</title>
+        <title>Popup - FK Designsystem</title>
 
         <!-- prettier-ignore -->
         <link
@@ -96,13 +96,56 @@
             integrity="sha384-/9IUspUSYXNlUH6/W7VzWqm+N/7TZXtwcfcwjpNvz0LKo6eD+4nJJwykckVckNCb"
             
         ></script> 
-        <div id="example-d263de"></div>
+        <div id="example-7b5d54"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
+.wrapper {
+    position: relative;
+}
+.area {
+    margin-top: 1rem;
+    height: 400px;
+    border: 1px dashed grey;
+    position: relative;
+}
+.pos-anchor {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    top: 10px;
+    left: 10px;
+    color: #000;
+    background: rgb(200, 200, 255);
+    border: 1px solid rgb(0, 0, 0);
+    cursor: move;
+    user-select: none;
+    z-index: 1;
+}
+.pos-target {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 250px;
+    max-width: calc(100% - 20px);
+    top: 100px;
+    left: 25px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
+    z-index: 1;
+}
+.pos-target--inline {
+    position: static;
+}
+
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginValidateAll-d263de.js"></script>
+        <script type="module" src="./IPopupPositioning-7b5d54.js"></script>
     
     </body>
 </html>

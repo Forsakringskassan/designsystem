@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupExample.vue:IPopupExample-cc86b2.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupExample.vue:IPopupExample-38c91d.js
 import { defineComponent } from "vue";
 import { IPopup } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -97,7 +97,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-cc86b2"
+  selector: "#example-38c91d"
 });
 export {
   render
