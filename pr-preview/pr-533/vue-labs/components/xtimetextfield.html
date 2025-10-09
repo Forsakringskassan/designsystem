@@ -232,13 +232,13 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-01cf1c"></div>
+        <div id="example-98bdbb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XTimeTextFieldExample-01cf1c.js"></script>
+        <script type="module" src="./XTimeTextFieldExample-98bdbb.js"></script>
     </div>
                 <div>
             <button
@@ -256,7 +256,7 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">XTimeTextField</span>,
     minutesToUserFriendlyString,
@@ -272,12 +272,12 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span>,
+            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> number | <span class="hljs-literal">undefined</span>,
         };
     },
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">userFriendlyValue</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>!);
         },
         <span class="hljs-title function_">timeInHours</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToHoursFloat</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
@@ -366,13 +366,13 @@ Exempel:</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-a02ae7"></div>
+        <div id="example-04dbf8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ForgivingInput-a02ae7.js"></script>
+        <script type="module" src="./ForgivingInput-04dbf8.js"></script>
     </div>
                 <div>
             <button
@@ -390,7 +390,7 @@ Exempel:</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">XTimeTextField</span>,
     forgivingParseTimeToNumber,
@@ -407,13 +407,13 @@ Exempel:</p>
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span>,
-            <span class="hljs-attr">parser</span>: <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> <span class="hljs-title function_">forgivingParseTimeToNumber</span>(value),
+            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> number | <span class="hljs-literal">undefined</span>,
+            <span class="hljs-attr">parser</span>: <span class="hljs-function">(<span class="hljs-params">value: string</span>) =&gt;</span> <span class="hljs-title function_">forgivingParseTimeToNumber</span>(value),
         };
     },
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">userFriendlyValue</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>!);
         },
         <span class="hljs-title function_">timeInHours</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToHoursFloat</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);

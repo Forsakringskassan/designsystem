@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-3987a6.json"
+            href="../search-data-203b3f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-XZOejRYqYA5hEsey9GvpctX1T5diWR9ymZpTsf+YlU/Os1EgC+3dUy69wJUC+Bzy"
+            integrity="sha384-R0lB/wes0E5PLBXWGkuXC4vQsk8Gk082N7lH3ab3TzbegwWV6xUQwVCUlQrWq2hA"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/71dda8f6fdf9cd13a4b95966bf4943092e0a48fa/packages/vue/src/components/FContextMenu/FContextMenu.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c8d14b0600906a796b7f90f27bd02e7a52ec9f94/packages/vue/src/components/FContextMenu/FContextMenu.vue">
                 FContextMenu
             </a>
             
@@ -1138,13 +1138,13 @@
             >
                 <!-- [html-validate-disable-block element-name, no-unused-disable -- teleport casing issue in html-validate-vue] -->
                 <div class="code-preview__preview">
-        <div id="example-cb23ed"></div>
+        <div id="example-2e775e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FContextMenuExampleTextOnly-cb23ed.js"></script>
+        <script type="module" src="./FContextMenuExampleTextOnly-2e775e.js"></script>
     </div>
                 <div>
             <button
@@ -1162,12 +1162,11 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FContextMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ContextMenuItem</span>, <span class="hljs-title class_">FContextMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-comment">/** <span class="hljs-doctag">@type</span> {<span class="hljs-type">ContextMenuItem[]</span>} */</span>
-<span class="hljs-keyword">const</span> exampleItems = [
+<span class="hljs-keyword">const</span> <span class="hljs-attr">exampleItems</span>: <span class="hljs-title class_">ContextMenuItem</span>[] = [
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Skriv ut&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;MENU_1&quot;</span> },
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Påminnelse&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;MENU_2&quot;</span> },
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ändra&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;MENU_3&quot;</span> },
@@ -1190,7 +1189,7 @@
     },
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-title function_">getAnchor</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">popupAnchor</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">popupAnchor</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-literal">undefined</span>;
         },
         <span class="hljs-title function_">onClose</span>(<span class="hljs-params"></span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
@@ -1198,7 +1197,7 @@
         <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span>;
         },
-        <span class="hljs-title function_">onSelect</span>(<span class="hljs-params">value</span>) {
+        <span class="hljs-title function_">onSelect</span>(<span class="hljs-params">value: string</span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span> = value;
         },
     },
@@ -1240,13 +1239,13 @@
             >
                 <!-- [html-validate-disable-block element-name, no-unused-disable -- teleport casing issue in html-validate-vue] -->
                 <div class="code-preview__preview">
-        <div id="example-4f2fb4"></div>
+        <div id="example-5bacbd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FContextMenuExample-4f2fb4.js"></script>
+        <script type="module" src="./FContextMenuExample-5bacbd.js"></script>
     </div>
                 <div>
             <button
@@ -1264,12 +1263,11 @@
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FContextMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ContextMenuItem</span>, <span class="hljs-title class_">FContextMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-comment">/** <span class="hljs-doctag">@type</span> {<span class="hljs-type">ContextMenuItem[]</span>} */</span>
-<span class="hljs-keyword">const</span> exampleItems = [
+<span class="hljs-keyword">const</span> <span class="hljs-attr">exampleItems</span>: <span class="hljs-title class_">ContextMenuItem</span>[] = [
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Påminnelse&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;MENU_2&quot;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;bell&quot;</span> },
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ändra&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;MENU_3&quot;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span> },
     { <span class="hljs-attr">separator</span>: <span class="hljs-literal">true</span> },
@@ -1289,7 +1287,7 @@
     },
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-title function_">getAnchor</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">popupAnchor</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">popupAnchor</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-literal">undefined</span>;
         },
         <span class="hljs-title function_">onClose</span>(<span class="hljs-params"></span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
@@ -1297,7 +1295,7 @@
         <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span>;
         },
-        <span class="hljs-title function_">onSelect</span>(<span class="hljs-params">value</span>) {
+        <span class="hljs-title function_">onSelect</span>(<span class="hljs-params">value: string</span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span> = value;
         },
     },
@@ -1546,9 +1544,9 @@ after pressing for example esc in the menu</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/71dda8f6fdf9cd13a4b95966bf4943092e0a48fa">71dda8f</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/c8d14b0600906a796b7f90f27bd02e7a52ec9f94">c8d14b0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/533">PR 533</a><br />
-        2025-10-09 18:32
+        2025-10-09 18:49
 </div>
 <div class="toolbar__item">
     <form id="version">
