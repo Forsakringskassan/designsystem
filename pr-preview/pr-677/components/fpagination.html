@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-fd23ba.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-adde2b.js",
     "@fkui/date": "../assets/vendor-fkui-date-131ba7.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-082201.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-495815.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd23ba.js": "sha384-fgWjDRyjtEXyEeb3gQxn5cMLQnaLJ/+raE5Ku0VLWBP2RlzpzrpvJFEC1FCSIWMk",
     "../assets/vendor-fkui-logic-adde2b.js": "sha384-bfazXnBDJ7Ed0qf3RVAUZ6goj4YqAxvefQ9anoRbA6R0iwxzyihd8DWgpS2bg5Ry",
     "../assets/vendor-fkui-date-131ba7.js": "sha384-1ousGnX+TtYBjw6BVR/x9Yg2jMIjTjuSOD+VpUdpe9Eo7r1KF2LHHKhc8hzYQQlC",
-    "../assets/vendor-fkui-vue-082201.js": "sha384-cyXIpQVxsqO6LBmdf/aqXWxI98sQUCS3HXhk9o1GV6tHNFsUXub3Y9aOMxznMaep",
+    "../assets/vendor-fkui-vue-495815.js": "sha384-KqhXhqtIy9mKPR2zCvUL/ULUeZXPAHNrYApfnDBf9OBq4XF3aVbFNyt+QjPn4N89",
     "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-79f81c.json"
+            href="../search-data-666ee1.json"
             as="fetch"
             crossorigin
-            integrity="sha384-41vKOOoCTrVqPBrSrDtt9u9RssuCPUALdJpJ4DCF2NaJCwhClq3hk16ZRGeT/RJS"
+            integrity="sha384-zbQaP8ujwaKgviX/Q3b9l7jzky5ehfwCsg7VSESs/9n1PhvmmtMwF5weUH33xVJ/"
             id="search-data"
         />
     </head>
@@ -1094,7 +1094,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/29a6649df5da7d4eabc4686e01db8584eb36c483/packages/vue/src/components/FPagination/FPagination.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/d479796952c633947e7906b4895df9031a7d965e/packages/vue/src/components/FPagination/FPagination.vue">
                 FPagination
             </a>
             
@@ -1127,13 +1127,13 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-93a20c"></div>
+        <div id="example-b63039"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FPaginationExample-93a20c.js"></script>
+        <script type="module" src="./FPaginationExample-b63039.js"></script>
     </div>
                 <div>
             <button
@@ -1153,7 +1153,7 @@
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FPagination</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FPaginator</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FPagination</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FPaginator</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { persons } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./person-data&quot;</span>;
 
 <span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">ref</span>(persons);
@@ -1185,7 +1185,7 @@
 
     <span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items-length</span>=<span class="hljs-string">&quot;rows.length&quot;</span> <span class="hljs-attr">:fetch-data</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;7&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-data-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:show-active</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>:items-length=&quot;rows.length&quot; :fetch-data<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;ID&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;numeric&quot;</span>&gt;</span>{{ row.id }}<span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
@@ -1196,7 +1196,7 @@
                         {{ row.lastName }}
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-data-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">:current-page</span> /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span>
@@ -1228,9 +1228,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/29a6649df5da7d4eabc4686e01db8584eb36c483">29a6649</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/d479796952c633947e7906b4895df9031a7d965e">d479796</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-10-09 12:01
+        2025-10-09 13:42
 </div>
 <div class="toolbar__item">
     <form id="version">
