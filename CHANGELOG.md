@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 6.21.0 (2025-10-09)
+
+### Features
+
+* **@fkui/design:** changed size of heading, padding and margins on `FMessageBox` (fixes SFKUI-6815) b41b7f0
+
+### Bug Fixes
+
+* **@fkui/vue:** fix redundant classes being added to FButton (refs SFKUI-6500) eef7377
+* **deps:** update dependency i18next to v25.5.3 45172b6
+
 ## 6.20.1 (2025-09-29)
 
 ### Bug Fixes
