@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineComponent } from "vue";
+import { type Component, computed, defineComponent } from "vue";
 import { FDetailsPanel, FPageLayout, FResizePane, useDetailsPanel } from "@fkui/vue";
 
 const { area = "left", resize } = defineProps<{
@@ -17,8 +17,8 @@ const DummyWrapper = defineComponent({
 
 const name = `example-panel`;
 const panel = useDetailsPanel<string>(name);
-const is = computed(() => {
-    return resize ? FResizePane : DummyWrapper;
+const is = computed((): Component => {
+    return resize ? (FResizePane as Component) : DummyWrapper;
 });
 
 function openPanel(): void {

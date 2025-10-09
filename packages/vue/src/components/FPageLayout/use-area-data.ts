@@ -35,7 +35,7 @@ function getProperty<T>(style: CSSStyleDeclaration, key: string): T | null {
     if (value === "") {
         return null;
     } else {
-        return JSON.parse(value);
+        return JSON.parse(value) as T;
     }
 }
 

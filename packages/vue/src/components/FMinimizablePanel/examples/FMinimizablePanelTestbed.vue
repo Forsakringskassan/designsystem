@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineComponent } from "vue";
+import { type Component, computed, defineComponent } from "vue";
 import { FMinimizablePanel, FPageLayout, FResizePane } from "@fkui/vue";
 
 const {
@@ -20,8 +20,8 @@ const DummyWrapper = defineComponent({
     `,
 });
 
-const is = computed(() => {
-    return resize ? FResizePane : DummyWrapper;
+const is = computed((): Component => {
+    return resize ? (FResizePane as Component) : DummyWrapper;
 });
 </script>
 

@@ -79,7 +79,7 @@ export function getElementsFromVueRef(ref: unknown): Element[] {
     let result: Element[] = [];
 
     if (refIsVueArray(ref)) {
-        result = ref.map((vueRef) => vueRef.$el);
+        result = ref.map((vueRef) => vueRef.$el as Element);
     } else if (refIsElementArray(ref)) {
         result = ref;
     } else if (isSet(ref)) {
@@ -163,7 +163,7 @@ export function findElementFromVueRef(ref: unknown): Element | undefined {
     if (refIsElement(ref)) {
         return ref;
     } else if (refIsVue(ref)) {
-        return ref.$el;
+        return ref.$el as Element;
     }
 }
 

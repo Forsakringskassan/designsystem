@@ -41,12 +41,12 @@ export class FExpandablePanelPageObject implements BasePageObject {
         let nrOfNotifications = 0;
         this.notificationIcon()
             .invoke("text")
-            .then((text: string) =>
-                text.replace(/(\d+)/, (match, matchGroup1) => {
-                    nrOfNotifications = parseInt(matchGroup1, 10);
-                    return matchGroup1;
-                }),
-            );
+            .then((text: string) => {
+                const match = /(\d+)/.exec(text);
+                if (match) {
+                    nrOfNotifications = parseInt(match[1], 10);
+                }
+            });
 
         return cy.wrap("Count number of notifications").then(() => {
             return nrOfNotifications;
