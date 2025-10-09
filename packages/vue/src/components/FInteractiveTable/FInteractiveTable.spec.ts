@@ -601,6 +601,14 @@ describe("events", () => {
         },
     );
 
+    it.todo(
+        'should emit event "paginateDataset:previous" when getting page key "Page Up" down event',
+    );
+
+    it.todo(
+        'should emit event "paginateDataset:next" when getting page key "Page Down" down event',
+    );
+
     describe("active row", () => {
         it("should emit click event when clicking on active item", async () => {
             const wrapper = mount(TestComponent);
