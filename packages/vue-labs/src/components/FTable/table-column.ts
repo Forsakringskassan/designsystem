@@ -7,6 +7,7 @@ import ITableButton from "./ITableButton.vue";
 import ITableText from "./ITableText.vue";
 import ITableSelect from "./ITableSelect.vue";
 import ITableRowheader from "./ITableRowheader.vue";
+import { type InputType } from "./input-fields-config";
 
 /**
  * @public
@@ -99,33 +100,48 @@ export interface NormalizedTableColumnRadio<T, K> {
     update(row: T, newValue: boolean, oldValue: boolean): void;
 }
 
+interface TableColumnTextBase<TRow, TValue, K extends keyof TRow> {
+    type: "text";
+    subtype?: Exclude<InputType, "number" | "percent">;
+    header: string;
+    key?: K;
+    value?(row: TRow): TValue;
+    update?(row: TRow, newValue: TValue, oldValue: TValue): void;
+    editable?: boolean | ((row: TRow) => boolean);
+    validation?: ValidatorConfigs;
+    parser?(value: string): TValue;
+    formatter?(value: TValue | TRow[K]): string;
+}
+
+interface TableColumnTextDecimal<TRow, TValue, K extends keyof TRow>
+    extends Omit<TableColumnTextBase<TRow, TValue, K>, "subtype"> {
+    subtype: Extract<InputType, "number" | "percent">;
+    decimals: number;
+}
+
 /**
  * @public
  */
-export interface TableColumnText<T, K extends keyof T> {
-    type: "text";
-    header: string;
-    key?: K;
-    value?(row: T): string;
-    update?(row: T, newValue: string, oldValue: string): void;
-    editable?: boolean | ((row: T) => boolean);
-    validation?: ValidatorConfigs;
-}
+export type TableColumnText<TRow, TValue, K extends keyof TRow> =
+    | TableColumnTextBase<TRow, TValue, K>
+    | TableColumnTextDecimal<TRow, TValue, K>;
 
 /**
  * @internal
  */
-export interface NormalizedTableColumnText<T, K> {
+export interface NormalizedTableColumnText<T, TValue, K> {
     readonly type: "text";
+    readonly subtype: InputType;
+    readonly decimals: number | undefined;
     readonly header: string;
     readonly validation: ValidatorConfigs;
     readonly sortable: K | null;
     readonly component: Component<{
         row: T;
-        column: NormalizedTableColumnText<T, K>;
+        column: NormalizedTableColumnText<T, TValue, K>;
     }>;
     value(row: T): string;
-    update(row: T, newValue: string, oldValue: string): void;
+    update(row: T, newValue: TValue, oldValue: TValue): void;
     editable(row: T): boolean;
 }
 
@@ -239,25 +255,25 @@ export interface NormalizedTableColumnRender<T> {
 /**
  * @public
  */
-export type TableColumn<T, K extends keyof T = keyof T> =
-    | TableColumnSimple<T, K>
-    | TableColumnCheckbox<T, K>
-    | TableColumnRadio<T, K>
-    | TableColumnRowHeader<T, K>
-    | TableColumnText<T, K>
-    | TableColumnAnchor<T, K>
-    | TableColumnButton<T, K>
-    | TableColumnRender<T, K>
-    | TableColumnSelect<T, K>;
+export type TableColumn<TRow, TValue, K extends keyof TRow = keyof TRow> =
+    | TableColumnSimple<TRow, K>
+    | TableColumnCheckbox<TRow, K>
+    | TableColumnRadio<TRow, K>
+    | TableColumnRowHeader<TRow, K>
+    | TableColumnText<TRow, TValue, K>
+    | TableColumnAnchor<TRow, K>
+    | TableColumnButton<TRow, K>
+    | TableColumnRender<TRow, K>
+    | TableColumnSelect<TRow, K>;
 
 /**
  * @internal
  */
-export type NormalizedTableColumn<T, K> =
+export type NormalizedTableColumn<T, TValue, K> =
     | NormalizedTableColumnCheckbox<T, K>
     | NormalizedTableColumnRadio<T, K>
     | NormalizedTableColumnRowHeader<T, K>
-    | NormalizedTableColumnText<T, K>
+    | NormalizedTableColumnText<T, TValue, K>
     | NormalizedTableColumnAnchor<T, K>
     | NormalizedTableColumnButton<T, K>
     | NormalizedTableColumnRender<T>
@@ -276,6 +292,27 @@ function getValueFn<TRow, TValue, K extends keyof TRow>(
     if (key) {
         return (row: TRow): TValue => {
             return coerce(row[key]);
+        };
+    }
+    return () => defaultValue;
+}
+
+function getValueTextFn<TRow, TValue, K extends keyof TRow>(
+    fn: ((row: TRow) => TValue) | undefined,
+    key: K | undefined,
+    formatter: (value: TValue | TRow[K]) => string,
+    defaultValue: string,
+): (row: TRow) => string {
+    if (fn) {
+        return (row: TRow): string => {
+            const value = fn(row);
+            return formatter(value);
+        };
+    }
+    if (key) {
+        return (row: TRow): string => {
+            const value = row[key];
+            return formatter(value);
         };
     }
     return () => defaultValue;
@@ -303,9 +340,38 @@ function getUpdateFn<TRow, TValue, K extends keyof TRow>(
 /**
  * @internal
  */
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnSimple<T, K> | TableColumnText<T, K>,
-): NormalizedTableColumnText<T, K>;
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
+function getUpdateTextFn<TRow, TValue, K extends keyof TRow>(
+    fn: ((row: TRow, newValue: TValue, oldValue: TValue) => void) | undefined,
+    key: K | undefined,
+    parser: (value: string) => TValue,
+): (row: TRow, newValue: string, oldValue: string) => void {
+    if (fn) {
+        return (row: TRow, newValue, oldValue): void => {
+            const paresdNewValue = parser(newValue);
+            const paresdOldValue = parser(oldValue);
+            fn(row, paresdNewValue, paresdOldValue);
+        };
+    }
+    if (key) {
+        return (row: TRow, value): void => {
+            const newValue = parser(value);
+            row[key] = newValue as TRow[K]; // @todo This is not safe :/
+        };
+    }
+    return () => undefined;
+}
+
+/**
+ * @internal
+ */
+export function normalizeTableColumn<
+    TRow,
+    TValue,
+    K extends keyof TRow = keyof TRow,
+>(
+    column: TableColumnSimple<TRow, K> | TableColumnText<TRow, TValue, K>,
+): NormalizedTableColumnText<TRow, TValue, K>;
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnRowHeader<T, K>,
 ): NormalizedTableColumnRowHeader<T, K>;
@@ -327,21 +393,25 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnSelect<T, K>,
 ): NormalizedTableColumnSelect<T, K>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
+export function normalizeTableColumn<T, TValue, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
-): NormalizedTableColumn<T, K>;
+): NormalizedTableColumn<T, TValue, K>;
 
 /* eslint-disable-next-line complexity -- technical debt */
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumn<T, K>,
-): NormalizedTableColumn<T, K> {
+export function normalizeTableColumn<
+    TRow,
+    TValue,
+    K extends keyof TRow = keyof TRow,
+>(
+    column: TableColumn<TRow, TValue, K>,
+): NormalizedTableColumn<TRow, TValue, K> {
     if ("render" in column) {
         return {
             type: undefined,
             header: column.header,
             render: column.render,
             sortable: null,
-        } satisfies NormalizedTableColumnRender<T>;
+        } satisfies NormalizedTableColumnRender<TRow>;
     }
     switch (column.type) {
         case "checkbox":
@@ -356,7 +426,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         : () => Boolean(column.editable ?? false),
                 sortable: column.key ?? null,
                 component: ITableCheckbox,
-            } satisfies NormalizedTableColumnCheckbox<T, K>;
+            } satisfies NormalizedTableColumnCheckbox<TRow, K>;
         case "radio":
             return {
                 type: "radio",
@@ -365,13 +435,30 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 update: getUpdateFn(column.update, column.key),
                 sortable: column.key ?? null,
                 component: ITableRadio,
-            } satisfies NormalizedTableColumnRadio<T, K>;
-        case "text":
+            } satisfies NormalizedTableColumnRadio<TRow, K>;
+        case "text": {
+            const defaultParser = (value: string): TValue => {
+                return value as TValue;
+            };
             return {
                 type: "text",
+                subtype: column.subtype ?? "text",
                 header: column.header,
-                value: getValueFn(column.value, column.key, String, ""),
-                update: getUpdateFn(column.update, column.key),
+                decimals:
+                    column.subtype === "number" || column.subtype === "percent"
+                        ? column.decimals
+                        : undefined,
+                value: getValueTextFn(
+                    column.value,
+                    column.key,
+                    column.formatter ? column.formatter.bind(column) : String,
+                    "",
+                ),
+                update: getUpdateTextFn<TRow, TValue, K>(
+                    column.update,
+                    column.key,
+                    column.parser ?? defaultParser,
+                ),
                 editable:
                     typeof column.editable === "function"
                         ? column.editable
@@ -379,7 +466,8 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 validation: column.validation ?? {},
                 sortable: column.key ?? null,
                 component: ITableText,
-            } satisfies NormalizedTableColumnText<T, K>;
+            } satisfies NormalizedTableColumnText<TRow, TValue, K>;
+        }
         case "rowheader":
             return {
                 type: "rowheader",
@@ -387,7 +475,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 value: getValueFn(column.value, column.key, String, ""),
                 sortable: column.key ?? null,
                 component: ITableRowheader,
-            } satisfies NormalizedTableColumnRowHeader<T, K>;
+            } satisfies NormalizedTableColumnRowHeader<TRow, K>;
         case "anchor":
             return {
                 type: "anchor",
@@ -400,7 +488,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                         : () => Boolean(column.enabled ?? true),
                 sortable: column.key ?? null,
                 component: ITableAnchor,
-            } satisfies NormalizedTableColumnAnchor<T, K>;
+            } satisfies NormalizedTableColumnAnchor<TRow, K>;
         case "button":
             return {
                 type: "button",
@@ -414,7 +502,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 icon: column.icon ?? null,
                 sortable: column.key ?? null,
                 component: ITableButton,
-            } satisfies NormalizedTableColumnButton<T, K>;
+            } satisfies NormalizedTableColumnButton<TRow, K>;
         case "select":
             return {
                 type: "select",
@@ -428,11 +516,13 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 options: column.options,
                 sortable: column.key ?? null,
                 component: ITableSelect,
-            } satisfies NormalizedTableColumnSelect<T, K>;
+            } satisfies NormalizedTableColumnSelect<TRow, K>;
         case undefined:
             return {
                 type: "text",
                 header: column.header,
+                subtype: "text",
+                decimals: undefined,
                 value: getValueFn(column.value, column.key, String, ""),
                 update() {
                     /* do nothing */
@@ -441,25 +531,29 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 sortable: column.key ?? null,
                 validation: {},
                 component: ITableText,
-            } satisfies NormalizedTableColumnText<T, K>;
+            } satisfies NormalizedTableColumnText<TRow, TValue, K>;
     }
 }
 
 /**
  * @public
  */
-export function defineTableColumns<T, K extends keyof T = keyof T>(
-    columns: Array<TableColumn<T, K>>,
-): Array<TableColumn<T, K>> {
+export function defineTableColumns<
+    Trow,
+    TValue,
+    K extends keyof Trow = keyof Trow,
+>(
+    columns: Array<TableColumn<Trow, TValue, K>>,
+): Array<TableColumn<Trow, TValue, K>> {
     return columns;
 }
 
 /**
  * @internal
  */
-export function normalizeTableColumns<T, K extends keyof T = keyof T>(
-    columns: Array<TableColumn<T, K>>,
-): Array<NormalizedTableColumn<T, K>> {
+export function normalizeTableColumns<T, TValue, K extends keyof T = keyof T>(
+    columns: Array<TableColumn<T, TValue, K>>,
+): Array<NormalizedTableColumn<T, TValue, K>> {
     return columns.map((column) => {
         return normalizeTableColumn(column);
     });

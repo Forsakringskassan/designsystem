@@ -1,7 +1,7 @@
 <script
     setup
     lang="ts"
-    generic="T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
+    generic="T, TValue, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
 >
 import { type Ref, computed, onMounted, provide, ref, useSlots, useTemplateRef, watchEffect } from "vue";
 import { assertRef } from "@fkui/logic";
@@ -41,7 +41,7 @@ const {
     striped,
     selectable = undefined,
 } = defineProps<{
-    columns: Array<TableColumn<T, KeyAttribute>>;
+    columns: Array<TableColumn<T, TValue, KeyAttribute>>;
     rows: T[];
     keyAttribute?: KeyAttribute;
     expandableAttribute?: ExpandableAttribute;
