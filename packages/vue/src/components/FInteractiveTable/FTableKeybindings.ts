@@ -1,4 +1,5 @@
 import { type ShallowRef } from "vue";
+import { assertRef } from "@fkui/logic";
 
 interface FTableKeyboardAdapter<T> {
     readonly rows: T[];
@@ -18,6 +19,8 @@ const keybindings: Partial<Record<string, Callback>> = {
     ArrowDown: focusTrBelow,
     " ": activateRow,
     Spacebar: activateRow,
+    PageUp: goToPreviousPage,
+    PageDown: goToNextPage,
 };
 
 export function focusTrAbove(
