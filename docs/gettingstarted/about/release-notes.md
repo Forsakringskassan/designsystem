@@ -9,6 +9,12 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.21.0
+
+2025-10-09
+
+Meddelanderutan har nu samma storlek och rubrikstorlek oavsett skärmstorlek.
+
 ## Version 6.19.0
 
 2025-09-19
