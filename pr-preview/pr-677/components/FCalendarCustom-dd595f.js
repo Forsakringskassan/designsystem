@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarCustom.vue:FCalendarCustom-085bd5.js
+// virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarCustom.vue:FCalendarCustom-dd595f.js
 import { defineComponent, shallowRef } from "vue";
 import { FDate } from "@fkui/date";
 import { FCalendar } from "@fkui/vue";
@@ -85,7 +85,7 @@ var exampleComponent = defineComponent({
   },
   methods: {
     getEvents(date) {
-      const dayOfYear = `${date.month}-${date.day}`;
+      const dayOfYear = `${String(date.month)}-${String(date.day)}`;
       const match = holidays.find((it) => it.date === dayOfYear);
       if (match) {
         return match.text;
@@ -95,7 +95,7 @@ var exampleComponent = defineComponent({
     },
     eventClasses(date) {
       const classes = ["event"];
-      const dayOfYear = `${date.month}-${date.day}`;
+      const dayOfYear = `${String(date.month)}-${String(date.day)}`;
       const match = holidays.find((it) => it.date === dayOfYear);
       if (match) {
         classes.push("holiday");
@@ -160,7 +160,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-085bd5"
+  selector: "#example-dd595f"
 });
 export {
   render

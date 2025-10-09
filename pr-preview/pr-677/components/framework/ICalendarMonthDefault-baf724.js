@@ -28,17 +28,14 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/calendar/examples/ICalendarMonthWithFCalendarDay.vue:ICalendarMonthWithFCalendarDay-b1ab00.js
+// virtual-entry:virtual:packages/vue/src/internal-components/calendar/examples/ICalendarMonthDefault.vue:ICalendarMonthDefault-baf724.js
 import { defineComponent, shallowRef } from "vue";
-import { ICalendarMonth, FCalendarDay } from "@fkui/vue";
+import { ICalendarMonth } from "@fkui/vue";
 import { FDate } from "@fkui/date";
-import { resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "ICalendarMonthWithFCalendarDayExample",
-  components: {
-    ICalendarMonth,
-    FCalendarDay
-  },
+  name: "ICalendarMonthDefaultExample",
+  components: { ICalendarMonth },
   data() {
     return {
       month: shallowRef(FDate.fromIso("2022-10-01")),
@@ -48,12 +45,11 @@ var exampleComponent = defineComponent({
   },
   methods: {
     onClick(date) {
-      alert(`Du klickade p\xE5 dag ${date.day}`);
+      alert(`Du klickade p\xE5 dag ${String(date.day)}`);
     }
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_calendar_day = _resolveComponent("f-calendar-day");
   const _component_i_calendar_month = _resolveComponent("i-calendar-month");
   return _openBlock(), _createBlock(_component_i_calendar_month, {
     modelValue: _ctx.month,
@@ -62,11 +58,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "max-date": _ctx.maxDate,
     onClick: _ctx.onClick
   }, {
-    default: _withCtx(({ date, isFocused }) => [
-      _createVNode(_component_f_calendar_day, {
-        day: date,
-        focused: isFocused
-      }, null, 8, ["day", "focused"])
+    default: _withCtx(({ date }) => [
+      _createTextVNode(
+        _toDisplayString(date.day),
+        1
+        /* TEXT */
+      )
     ]),
     _: 1
     /* STABLE */
@@ -75,7 +72,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b1ab00"
+  selector: "#example-baf724"
 });
 export {
   render

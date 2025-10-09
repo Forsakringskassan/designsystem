@@ -1656,7 +1656,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-962f4c.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-c6fbdb.js
 import { defineComponent as defineComponent12 } from "vue";
 
 // packages/vue/src/utils/ListUtils.ts
@@ -1680,12 +1680,12 @@ function findElementFromVueRef(ref) {
 function getHTMLElementFromVueRef(ref) {
   const element = findElementFromVueRef(ref);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${ref}.`);
+    throw new Error(`Unable to find element from ${String(ref)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${ref}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -2193,7 +2193,7 @@ var FModal_default = defineComponent4({
     openModal() {
       const root = document.documentElement;
       const scroll = root.scrollTop;
-      root.style.top = `-${scroll}px`;
+      root.style.top = `-${String(scroll)}px`;
       root.style.left = "0";
       root.style.right = "0";
       root.style.overflow = "hidden";
@@ -2778,11 +2778,13 @@ var IFlexItem_default2 = IFlexItem_default;
 // packages/vue/src/components/FErrorList/focus-error.ts
 import { focus as focus3, scrollTo } from "@fkui/logic";
 function focusError(item) {
-  const element = document.querySelector(`#${item.id}`);
+  const element = document.querySelector(`#${String(item.id)}`);
   if (!element) {
-    throw new Error(`Can not find element with id "${item.id}"`);
+    throw new Error(`Can not find element with id "${String(item.id)}"`);
   }
-  const focusElement3 = document.querySelector(`#${item.focusElementId}`);
+  const focusElement3 = document.querySelector(
+    `#${String(item.focusElementId)}`
+  );
   scrollTo(element, window.innerHeight * 0.25);
   focus3(focusElement3 ?? element);
 }
@@ -3887,7 +3889,7 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
   }
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-962f4c.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-c6fbdb.js
 import { createElementVNode as _createElementVNode8, vModelSelect as _vModelSelect, withDirectives as _withDirectives, createTextVNode as _createTextVNode3, openBlock as _openBlock12, createElementBlock as _createElementBlock12 } from "vue";
 var SPACING = 10;
 var exampleComponent = defineComponent12({
@@ -3971,8 +3973,8 @@ var exampleComponent = defineComponent12({
         SPACING,
         area.height - anchor.height - SPACING - 2
       );
-      anchorElement.style.left = `${left}px`;
-      anchorElement.style.top = `${top}px`;
+      anchorElement.style.left = `${String(left)}px`;
+      anchorElement.style.top = `${String(top)}px`;
       this.updatePosition();
     },
     updatePosition() {
@@ -3998,8 +4000,8 @@ var exampleComponent = defineComponent12({
         target.style.removeProperty("top");
       } else {
         target.classList.remove("pos-target--inline");
-        target.style.left = `${result.x}px`;
-        target.style.top = `${result.y}px`;
+        target.style.left = `${String(result.x)}px`;
+        target.style.top = `${String(result.y)}px`;
       }
       target.innerText = `Popup (${result.placement})`;
     }
@@ -4100,7 +4102,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render12;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-962f4c"
+  selector: "#example-c6fbdb"
 });
 export {
   render12 as render

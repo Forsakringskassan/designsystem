@@ -25,8 +25,8 @@ function setup(options) {
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, useTemplateRef, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, createVNode, unref, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, normalizeClass, withDirectives, vModelText, watchEffect, vShow, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent, normalizeProps, guardReactiveProps } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected, useTranslate } from "@fkui/vue";
+import { defineComponent, useTemplateRef, provide, computed, createElementBlock, openBlock, createCommentVNode, createTextVNode, renderSlot, Fragment, createElementVNode, createVNode, unref, toDisplayString, createBlock, nextTick, inject, ref, onMounted, withModifiers, normalizeClass, withDirectives, vModelText, watchEffect, vShow, toRef, withCtx, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IComboboxDropdown, IFlex, IFlexItem, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 var es_iterator_forEach = {};
@@ -2292,7 +2292,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$d = defineComponent({
+var _sfc_main$b = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2316,7 +2316,7 @@ var _sfc_main$d = defineComponent({
   mounted() {
     const inputElement = this.$el.querySelector("input");
     if (!isSet(inputElement)) {
-      throw new Error(`Could not find input element in XTimeTextField with id ${this.$el.id}`);
+      throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
     }
     ValidationService.addValidatorsToElement(inputElement, {
       maxLength: {
@@ -2480,7 +2480,7 @@ import { normalizeClass as _normalizeClass, createElementVNode as _createElement
 var exampleComponent = defineComponent2({
   name: "XTimeComponentExample",
   components: {
-    XTimeTextField: _sfc_main$d
+    XTimeTextField: _sfc_main$b
   },
   data() {
     return {

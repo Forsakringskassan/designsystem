@@ -1,4 +1,4 @@
-// packages/logic/lib/esm/index.js
+// ../logic/lib/esm/index.js
 function isEmpty(value) {
   return !value;
 }
@@ -60,7 +60,7 @@ var DecoratedError = class _DecoratedError extends Error {
     super(message);
     Object.setPrototypeOf(this, _DecoratedError.prototype);
     this.stack += `
-Caused by: ${cause.stack}`;
+Caused by: ${String(cause.stack)}`;
     this.cause = cause;
   }
   /**
@@ -749,7 +749,7 @@ function setCookie(options) {
     return;
   }
   const timeout = timeLimitSeconds ?? TWELVE_HOURS;
-  const cookieString = `${name}=${encodeURIComponent(value)}; path=/; max-age=${timeout};`;
+  const cookieString = `${name}=${encodeURIComponent(value)}; path=/; max-age=${String(timeout)};`;
   document.cookie = cookieString;
 }
 function deleteCookie(name) {
@@ -1338,7 +1338,7 @@ var FDate = class _FDate {
   static fromYearMonthDay(year, month, day) {
     const paddedMonth = month.toString().padStart(2, "0");
     const paddedDay = day.toString().padStart(2, "0");
-    const iso = `${year}-${paddedMonth}-${paddedDay}`;
+    const iso = `${String(year)}-${paddedMonth}-${paddedDay}`;
     return _FDate.fromIso(iso);
   }
   /**
@@ -2025,7 +2025,7 @@ function popFocus(handle) {
   }
   const top = _focusElementStack.pop();
   if (top?.id !== handle[sym]) {
-    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${top?.id} but got ${handle[sym]}`;
+    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym])}`;
     if (configLogic.production) {
       console.error(outOfOrderErrorMsg);
       return;
@@ -2914,7 +2914,7 @@ var dateFormatValidator = {
   }
 };
 function createNumberRegexp(minDecimals = 0, maxDecimals = 2) {
-  return new RegExp(`^([-\u2212]?[0-9]+)([,.][0-9]{${minDecimals},${maxDecimals}})(?<![,.])$`);
+  return new RegExp(`^([-\u2212]?[0-9]+)([,.][0-9]{${String(minDecimals)},${String(maxDecimals)}})(?<![,.])$`);
 }
 var decimalValidator = {
   name: "decimal",
@@ -2944,7 +2944,7 @@ var emailValidator = {
   name: "email",
   validation(value, _element, config) {
     const maxLength = config.maxLength ?? 254;
-    const EMAIL_REGEXP = new RegExp(`^(?=.{1,${maxLength}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~\xE5\xE4\xF6\xC5\xC4\xD6]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~\xE5\xE4\xF6\xC5\xC4\xD6]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
+    const EMAIL_REGEXP = new RegExp(`^(?=.{1,${String(maxLength)}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~\xE5\xE4\xF6\xC5\xC4\xD6]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~\xE5\xE4\xF6\xC5\xC4\xD6]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
     return isEmpty(value) || EMAIL_REGEXP.test(value);
   }
 };
