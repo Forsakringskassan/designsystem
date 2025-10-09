@@ -3824,7 +3824,16 @@ import { defineComponent as defineComponent22, provide, useSlots as useSlots3, u
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=script
-import { computed as computed4, defineComponent as defineComponent21, inject, ref as ref5, toRef, useTemplateRef as useTemplateRef3, watchEffect as watchEffect5, useSlots as useSlots2 } from "vue";
+import {
+  computed as computed4,
+  defineComponent as defineComponent21,
+  inject,
+  ref as ref5,
+  toRef,
+  useTemplateRef as useTemplateRef3,
+  watchEffect as watchEffect5,
+  useSlots as useSlots2
+} from "vue";
 import { TranslationService as TranslationService3 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
