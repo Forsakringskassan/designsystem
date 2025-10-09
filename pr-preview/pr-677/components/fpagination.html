@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-343a8d.json"
+            href="../search-data-79f81c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-NmZTSCf/DEjV3ILdhSQgaTcB+5JS4YfMJr+CJ7spCOacNpzkhAr8+MLFnqjctR4S"
+            integrity="sha384-41vKOOoCTrVqPBrSrDtt9u9RssuCPUALdJpJ4DCF2NaJCwhClq3hk16ZRGeT/RJS"
             id="search-data"
         />
     </head>
@@ -1094,7 +1094,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/134ae85692a99e46665473f105fa4d69b24e27f2/packages/vue/src/components/FPagination/FPagination.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/29a6649df5da7d4eabc4686e01db8584eb36c483/packages/vue/src/components/FPagination/FPagination.vue">
                 FPagination
             </a>
             
@@ -1118,6 +1118,93 @@
 
                     <div id="content"><p class="docs-paragraph">Komponent för paginering.</p>
 
+            <div
+                id="example-e4f945"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-93a20c"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FPaginationExample-93a20c.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FPagination</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FPaginator</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { persons } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./person-data&quot;</span>;
+
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">ref</span>(persons);
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchData</span>(<span class="hljs-params">first: number, last: number</span>) {
+    <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">500</span>));
+    <span class="hljs-keyword">return</span> rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">slice</span>(first, last);
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-data-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>:items = &quot;rows&quot;<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;ID&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;numeric&quot;</span>&gt;</span>{{ row.id }}<span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;First name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+                        {{ row.firstName }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Last name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+                        {{ row.lastName }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-data-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">:current-page</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items-length</span>=<span class="hljs-string">&quot;rows.length&quot;</span> <span class="hljs-attr">:fetch-data</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;7&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-data-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>:items-length=&quot;rows.length&quot; :fetch-data<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;ID&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;numeric&quot;</span>&gt;</span>{{ row.id }}<span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;First name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+                        {{ row.firstName }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Last name&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+                        {{ row.lastName }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-data-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">:current-page</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        
 
                     </div>
                 </main>
@@ -1141,9 +1228,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/134ae85692a99e46665473f105fa4d69b24e27f2">134ae85</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/29a6649df5da7d4eabc4686e01db8584eb36c483">29a6649</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-10-09 11:54
+        2025-10-09 12:01
 </div>
 <div class="toolbar__item">
     <form id="version">
