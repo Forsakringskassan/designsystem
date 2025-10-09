@@ -88,6 +88,8 @@ FDataTableErrorExample.vue
 
 Använd en interaktiv tabell när användaren behöver interagera med tabellen. Det kan handla om att välja, lägga till, ändra, ta bort en rad eller utföra andra åtgärder via knappar eller genom att klicka på hela raden.
 
+Komponenten stöder {@link pagination paginering} med <kbd>Page Up</kbd> och <kbd>Page Down</kbd>.
+
 ```import live-example
 FInteractiveTableLiveExample.vue
 ```
