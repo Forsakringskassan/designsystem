@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-c8d6a8.js
+// virtual-entry:virtual:src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-a85d9e.js
 import { defineComponent as defineComponent2 } from "vue";
 
 // dist/esm/index.esm.js
@@ -2474,7 +2474,7 @@ requireEs_iterator_some();
 var internalKey = getInternalKey();
 var stopEditKey = Symbol();
 
-// virtual-entry:virtual:src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-c8d6a8.js
+// virtual-entry:virtual:src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-a85d9e.js
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, toDisplayString as _toDisplayString, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent2({
   name: "XTimeComponentExample",
@@ -2587,7 +2587,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-c8d6a8"
+  selector: "#example-a85d9e"
 });
 export {
   render

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Validation Plugin - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-07f38d.css"
+            href="../../assets/docs-569691.css"
             crossorigin
-            integrity="sha384-2ZtjwSfj5XXQYGYsc7mPHWPYWrzMcwG5X/7W5LAKGjbq67+6hp5Vu0J6dncBxI1S"
+            integrity="sha384-qeNxNkQ50l4YQR7gqlkRIBAr8tEbcMM61dsLAQRPri+Zs736aagfQhxFD2/isRW/"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-38650b.json"
+            href="../../search-data-a65a58.json"
             as="fetch"
             crossorigin
-            integrity="sha384-CikctbJdQ15mrfgrNCwjm+Zl1hgDWpuupG2Nj5as7CEVvU6Y2otwRL+3YAB1QSiv"
+            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
             id="search-data"
         />
     </head>
@@ -2215,13 +2215,13 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-d263de"></div>
+        <div id="example-1d896a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginValidateAll-d263de.js"></script>
+        <script type="module" src="./ValidationPluginValidateAll-1d896a.js"></script>
     </div>
                 <div>
             <button
@@ -2239,7 +2239,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
@@ -2250,9 +2250,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
             <span class="hljs-keyword">const</span> selector = <span class="hljs-string">&quot;input, textarea, select&quot;</span>;
             <span class="hljs-keyword">const</span> elements = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(selector));
             <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> element <span class="hljs-keyword">of</span> elements.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">element</span>) =&gt;</span> element.<span class="hljs-property">id</span>)) {
-                <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(element, {
-                    <span class="hljs-attr">serverError</span>: <span class="hljs-string">`Server fel på fält med id <span class="hljs-subst">${element.id}</span> `</span>,
-                });
+                <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(element, <span class="hljs-string">`Server fel på fält med id <span class="hljs-subst">${element.id}</span> `</span>);
             }
             <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">validateAllElements</span>(<span class="hljs-string">&quot;rsg-root&quot;</span>);
         },
@@ -2408,9 +2406,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">refactor/import-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/448928c3b921c61d14de33bf145686ad6b50cb82">448928c</a>)<br />
+<div class="footer__right"><div class="version">refactor/import-order (<a href="https://github.com/Forsakringskassan/designsystem/commits/07fcc67dfbdd1cf483dd34a3204230b78b68c18e">07fcc67</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/728">PR 728</a><br />
-        2025-10-08 17:57
+        2025-10-09 19:04
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2522,10 +2520,10 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-64fda0.js"
+            src="../../assets/processors/selectable-version/select-version-db93c9.js"
             type="module"
             crossorigin
-            integrity="sha384-js/dDLj20VuLRedP8hjFufz8pG51l/3lV9DYWFwkf6sVTrCNMB2uGFBoBtoWCZfy"
+            integrity="sha384-PnxS4Tk+mOoklDMG6ttdDgS2GuE6rVa05zvJ5QqJ8OLsDIJHi/Ikk4cKRgmwnqN9"
             
         ></script><script
             src="../../assets/main-76627e.js"

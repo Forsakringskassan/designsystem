@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-98fffe.js
+// virtual-entry:virtual:src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-1275e4.js
 import { defineComponent as defineComponent2 } from "vue";
 
 // dist/esm/index.esm.js
@@ -2477,7 +2477,7 @@ requireEs_iterator_some();
 var internalKey = getInternalKey();
 var stopEditKey = Symbol();
 
-// virtual-entry:virtual:src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-98fffe.js
+// virtual-entry:virtual:src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-1275e4.js
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, toDisplayString as _toDisplayString, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent2({
   name: "XTimeComponentExample",
@@ -2601,7 +2601,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-98fffe"
+  selector: "#example-1275e4"
 });
 export {
   render
