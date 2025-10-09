@@ -6,6 +6,10 @@ import { type DefaultCypressChainable, type BasePageObject } from "./common";
 export class FTablePageObject implements BasePageObject {
     public selector: string;
 
+    private readonly cellClass = ".table-ng__cell";
+    private readonly selectClass = ".table-ng__cell--selectable";
+    private readonly expandClass = ".table-ng__cell--expandable";
+
     /**
      * @param selector - root element selector for `FTable`, usually `.table-ng`.
      */
@@ -20,6 +24,28 @@ export class FTablePageObject implements BasePageObject {
      */
     public el(): DefaultCypressChainable {
         return cy.get(this.selector);
+    }
+
+    /**
+     * Get table header cell (`<th>` in `<thead>`).
+     *
+     * Column for expandable buttons and selectable checkboxes are not included.
+     *
+     * @public
+     * @param col - Column number of header (1-indexed).
+     * @returns The header cell element (`<th>`).
+     */
+    public header(
+        col: number,
+    ): Cypress.Chainable<JQuery<HTMLTableCellElement>> {
+        const colIndex = col - 1;
+        return cy.get(
+            [
+                this.selector,
+                `thead`,
+                `th:not(${this.selectClass}, ${this.expandClass}):nth(${colIndex})`,
+            ].join(" "),
+        );
     }
 
     /**
@@ -47,44 +73,25 @@ export class FTablePageObject implements BasePageObject {
     }): Cypress.Chainable<JQuery<HTMLTableCellElement>> {
         const rowIndex = descriptor.row - 1;
         const colIndex = descriptor.col - 1;
-
-        const cell = ".table-ng__cell";
-        const selectable = ".table-ng__cell--selectable";
-        const expandable = ".table-ng__cell--expand";
-
         return cy.get(
             [
                 this.selector,
                 `tbody`,
                 `tr:nth(${rowIndex})`,
-                `> ${cell}:not(${selectable}, ${expandable}):nth(${colIndex})`,
+                `> ${this.cellClass}:not(${this.selectClass}, ${this.expandClass}):nth(${colIndex})`,
             ].join(" "),
         );
     }
 
     /**
-     * Get table header cell (`<th>` in `<thead>`).
+     * Get expand button of given row.
      *
-     * Column for expandable buttons and selectable checkboxes are not included.
+     * Only applicable if using an expandable table.
      *
      * @public
-     * @param col - column number of header (1-indexed).
-     * @returns The header cell element.
+     * @param row - Row number for the expand button (1-indexed).
+     * @returns Expand button of given row.
      */
-    public header(col: number): Cypress.Chainable<JQuery<HTMLButtonElement>> {
-        const rowIndex = col - 1;
-        const selectable = ".table-ng__column--selectable";
-        const expandable = ".table-ng__column--expand";
-
-        return cy.get(
-            [
-                this.selector,
-                `thead`,
-                `th:not(${selectable}, ${expandable}):nth(${rowIndex})`,
-            ].join(" "),
-        );
-    }
-
     public expandButton(
         row: number,
     ): Cypress.Chainable<JQuery<HTMLButtonElement>> {
@@ -100,7 +107,31 @@ export class FTablePageObject implements BasePageObject {
         );
     }
 
-    public selectCheckbox(
+    /**
+     * Get checkbox in the table header for selectable column.
+     *
+     * Only applicable if using a multiselect table.
+     *
+     * @public
+     * @returns Checkbox in selectable column header.
+     */
+    public selectHeaderInput(): Cypress.Chainable<JQuery<HTMLInputElement>> {
+        return cy.get(
+            [this.selector, `thead`, `th${this.selectClass}`, `input`].join(
+                " ",
+            ),
+        );
+    }
+
+    /**
+     * Get select input of given row.
+     *
+     * Only applicable if using a selectable table.
+     *
+     * @param row - Row number for the select input (1-indexed).
+     * @returns Select input of given row.
+     */
+    public selectInput(
         row: number,
     ): Cypress.Chainable<JQuery<HTMLInputElement>> {
         const rowIndex = row - 1;
@@ -109,10 +140,23 @@ export class FTablePageObject implements BasePageObject {
                 this.selector,
                 `tbody`,
                 `tr:nth(${rowIndex})`,
-                `.table-ng__cell--selectable`,
+                this.selectClass,
                 `input`,
             ].join(" "),
         );
+    }
+
+    /**
+     * Get current tabbable element in the table.
+     *
+     * If table is untouched, it is the first cell in the table body (including columns for expandable and selectable).
+     * If the cell has an interactable element, it is instead the interactable that is returned and not the cell.
+     *
+     * @public
+     * @returns The current tabbable element.
+     */
+    public tabbableElement(): DefaultCypressChainable {
+        return cy.get(`${this.selector} [tabindex=0]`);
     }
 
     /**
