@@ -30,7 +30,7 @@ import { formatNumber } from "@fkui/logic";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, createTextVNode, unref, withCtx, createBlock, createCommentVNode, toDisplayString, normalizeClass, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, createTextVNode, createCommentVNode, unref, withCtx, createBlock, toDisplayString, normalizeClass, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, IFlex, IFlexItem, FIcon, IComboboxDropdown, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
@@ -2806,6 +2806,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   }
 });
 var _hoisted_1$7 = {
+  key: 0,
   class: "table-ng__column__description"
 };
 var _sfc_main$8 = /* @__PURE__ */ defineComponent({
@@ -2888,7 +2889,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("div", _hoisted_1$7, toDisplayString(__props.column.description), 1)], 544);
+      }), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description ? (openBlock(), createElementBlock("div", _hoisted_1$7, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
     };
   }
 });
