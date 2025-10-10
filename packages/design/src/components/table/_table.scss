@@ -8,13 +8,13 @@ $table-focus-size: 2px !default;
 $table-margin: 0 0 core.densify(var(--f-margin-component-bottom)) !default;
 
 // Header
-$table-header-separator: 1px solid var(--f-border-color-grid) !default;
+$table-header-separator: 1px solid var(--fkds-color-border-primary) !default;
 $table-header-padding: core.densify(size.$padding-025) size.$padding-050 !default;
 $table-header-font-weight: var(--f-font-weight-medium) !default;
 
 // Column description
-$table-description-foreground: var(--f-text-color-discrete) !default;
-$table-description-background: transparent !default;
+$table-color-description-text: var(--fkds-color-text-secondary) !default;
+$table-color-description-background: transparent !default;
 $table-description-font-weight: var(--f-font-weight-normal) !default;
 
 // Rows
@@ -37,42 +37,42 @@ $table-input-offset-horizontal: 0.25rem;
 }
 
 %table-row-normal {
-    background: $table-row-background;
-    color: $table-row-foreground;
+    background: $table-color-row-background;
+    color: $table-color-row-text;
 }
 
 %table-row-striped {
-    background: $table-row-background-alt;
-    color: $table-row-foreground;
+    background: $table-color-row-background-alt;
+    color: $table-color-row-text;
 }
 
 %table-row-hover {
-    background: var(--f-background-grid-hover);
-    color: $table-row-foreground;
-    outline: 1px solid var(--f-border-color-grid-hover);
+    background: var(--fkds-color-select-background-primary-hover);
+    color: $table-color-row-text;
+    outline: 1px solid var(--fkds-color-border-primary);
 }
 
 %table-row-focus-within {
-    background: var(--f-background-grid-focus-inner);
-    color: $table-row-foreground;
+    background: var(--fkds-color-select-background-primary-hover);
+    color: $table-color-row-text;
 }
 
 %table-row-focus {
-    background: var(--f-background-grid-hover);
-    color: $table-row-foreground;
-    outline: $table-focus-size solid var(--f-color-focus);
+    background: var(--fkds-color-select-background-primary-hover);
+    color: $table-color-row-text;
+    outline: $table-focus-size solid var(--fkds-color-border-strong);
 
     // override shadow set by [tabindex]
     box-shadow: none;
 }
 
 %table-row-active {
-    background: var(--f-background-grid-active);
-    color: $table-row-foreground;
+    background: var(--fkds-color-select-background-primary-hover);
+    color: $table-color-row-text;
 }
 
 %table-row-expanded-border {
-    border-bottom-color: var(--f-border-color-grid-expanded);
+    border-bottom-color: var(--fkds-color-border-weak);
 }
 
 %table-row-expandable {
@@ -98,15 +98,15 @@ $table-input-offset-horizontal: 0.25rem;
         // border color is used instead of dual-color shadow because when
         // combined with scroll the edges are cut by overflow of the container
         // element, especially on the right side.
-        border-color: var(--f-color-focus);
+        border-color: var(--fkds-color-border-strong);
 
         // override shadow set by [tabindex]
         box-shadow: none;
     }
 
     caption {
-        background: $table-caption-background;
-        color: $table-caption-foreground;
+        background: $table-color-caption-background;
+        color: $table-color-caption-text;
         font-size: var(--f-font-size-standard);
         font-weight: var(--f-font-weight-medium);
         line-height: var(--f-line-height-large);
@@ -117,10 +117,10 @@ $table-input-offset-horizontal: 0.25rem;
 
     thead {
         th {
-            background: $table-header-background;
+            background: $table-color-header-background;
             border-bottom: $table-header-border;
             border-right: $table-header-separator;
-            color: $table-header-foreground;
+            color: $table-color-header-text;
             font-weight: $table-header-font-weight;
             line-height: var(--f-line-height-large);
             padding: $table-header-padding;
@@ -132,13 +132,12 @@ $table-input-offset-horizontal: 0.25rem;
             }
 
             .table__column__header__icon {
-                color: var(--f-icon-color-table-header);
                 height: var(--f-icon-size-x-small);
                 width: var(--f-icon-size-x-small);
                 min-width: var(--f-icon-size-x-small);
 
                 &--discrete {
-                    color: var(--f-icon-color-table-header-discrete);
+                    color: var(--fkds-color-text-disabled);
                 }
             }
         }
@@ -292,8 +291,8 @@ $table-input-offset-horizontal: 0.25rem;
 
         &__description {
             display: block;
-            background: $table-description-background;
-            color: $table-description-foreground;
+            background: $table-color-description-background;
+            color: $table-color-description-text;
             font-weight: $table-description-font-weight;
         }
     }
@@ -374,7 +373,7 @@ $table-input-offset-horizontal: 0.25rem;
     }
 
     &__expand-icon {
-        color: var(--f-icon-color-primary);
+        color: var(--fkds-color-action-text-primary-default);
         background: transparent;
         border: 0;
         flex: 0 0 auto;
@@ -385,5 +384,9 @@ $table-input-offset-horizontal: 0.25rem;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media (forced-colors: active) {
+            color: ButtonText;
+        }
     }
 }
