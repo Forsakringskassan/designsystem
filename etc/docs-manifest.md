@@ -25,7 +25,6 @@ components/flabel.html
 components/flogo.html
 components/fmessagebox.html
 components/foffline.html
-components/fpagination.html
 components/framework/about.html
 components/framework/ianimateexpand.html
 components/framework/icalendarmonth.html
@@ -69,6 +68,8 @@ components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
 components/table-and-list/flist.html
+components/table-and-list/fpagination.html
+components/table-and-list/fpaginator.html
 components/table-and-list/fsortfilterdataset.html
 components/table-and-list/table.html
 components/validation/ferrorlist.html
