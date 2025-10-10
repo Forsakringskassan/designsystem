@@ -94,20 +94,24 @@ export default defineComponent({
 
 <template>
     <live-example :components :template :livedata>
-        <f-fieldset name="component">
+        <f-fieldset name="component" show-details="when-selected">
             <template #label>Komponent</template>
             <f-radio-field v-model="componentType" value="dataTable">Datatabell</f-radio-field>
             <f-radio-field v-model="componentType" value="interactiveTable">
-                Interaktiv tabell (stöder paginering med <kbd>PgUp</kbd> och <kbd>PgDn</kbd>)
+                Interaktiv tabell
+                <template #details>
+                    Stöder paginering med <kbd>PgUp</kbd> och <kbd>PgDn</kbd>.
+                </template>
             </f-radio-field>
         </f-fieldset>
         <f-numeric-text-field v-model="numberOfItemsPerPage">
             <template #default>Antal objekt per sida (maximalt)</template>
         </f-numeric-text-field>
-        <f-fieldset name="alternatives">
+        <f-fieldset name="alternatives" show-details="when-selected">
             <template #label>Alternativ</template>
             <f-checkbox-field v-model="fetchDataDynamically" :value="true">
-                Hämta data dymaniskt (med fördröjning)
+                Hämta data dynamiskt
+                <template #details>Sker med fördröjning om 3 sekunder.</template>
             </f-checkbox-field>
             <f-checkbox-field v-model="showPaginator" :value="true">
                 Visa paginator
