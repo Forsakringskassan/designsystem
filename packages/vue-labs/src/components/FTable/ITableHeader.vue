@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, useTemplateRef } from "vue";
-import { assertRef } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem } from "@fkui/vue";
 import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumn } from "./table-column";
@@ -38,7 +37,9 @@ const sortIcon = computed(() => {
 });
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(thElement);
+    if (!thElement.value) {
+        return; // may be undefined if row is removed
+    }
     thElement.value.tabIndex = 0;
 
     if (e.detail.focus) {

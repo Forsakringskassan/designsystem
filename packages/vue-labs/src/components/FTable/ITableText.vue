@@ -45,7 +45,9 @@ onMounted(() => {
 });
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(tdElement);
+    if (!tdElement.value) {
+        return; // may be undefined if row is removed
+    }
     tdElement.value.tabIndex = 0;
 
     if (e.detail.focus) {

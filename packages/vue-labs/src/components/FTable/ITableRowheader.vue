@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { useTemplateRef } from "vue";
-import { assertRef } from "@fkui/logic";
 import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnRowHeader } from "./table-column";
 
@@ -12,7 +11,9 @@ const { row, column } = defineProps<{
 const thRef = useTemplateRef("th");
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(thRef);
+    if (!thRef.value) {
+        return; // may be undefined if row is removed
+    }
     thRef.value.tabIndex = 0;
 
     if (e.detail.focus) {
