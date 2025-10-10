@@ -447,9 +447,9 @@ Inmatningsfält för telefonnummer finns med enkel validering som beskrivs nedan
 
 ### Format
 
-| Egenskap     | Värde    | Beskrivning                   |
-| ------------ | -------- | ----------------------------- |
-| v-model type | `number` | Modellen hanteras som nummer. |
+| Egenskap     | Värde    | Beskrivning |
+| ------------ | -------- | ----------- |
+| v-model type | `string` | Sträng      |
 
 ### Validering
 
@@ -481,9 +481,9 @@ Inmatningsfält för telefonnummer finns med [enkel validering](#telefonnummer) 
 
 ### Format
 
-| Egenskap     | Värde    | Beskrivning                   |
-| ------------ | -------- | ----------------------------- |
-| v-model type | `number` | Modellen hanteras som nummer. |
+| Egenskap     | Värde    | Beskrivning |
+| ------------ | -------- | ----------- |
+| v-model type | `string` | Sträng      |
 
 ### Validering
 
