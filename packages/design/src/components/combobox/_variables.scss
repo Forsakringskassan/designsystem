@@ -5,5 +5,5 @@ $combobox-color-text-hover: var(--fkds-color-text-primary) !default;
 $combobox-color-text-selected: var(--fkds-color-text-inverted) !default;
 $combobox-color-text: var(--fkds-color-text-primary) !default;
 $combobox-color-border: var(--fkds-color-border-primary) !default;
-$combobox-f-icon-arrow-down-color-content-default: var(--fkds-icon-color-action-content-primary-default) !default;
-$combobox-f-icon-arrow-down-color-content-disabled: var(--fkds-icon-color-content-disabled) !default;
+$combobox-f-icon-arrow-down-color-content-default: var(--fkds-color-action-text-primary-default) !default;
+$combobox-f-icon-arrow-down-color-content-disabled: var(--fkds-color-text-disabled) !default;

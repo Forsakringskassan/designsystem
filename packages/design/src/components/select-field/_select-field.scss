@@ -69,7 +69,7 @@
     }
 
     &__error-popup-icon {
-        color: var(--f-text-color-error);
+        color: $selectfield-color-icon-error;
         display: inline;
         position: absolute;
         right: calc(var(--f-icon-size-large) + 0.75rem);

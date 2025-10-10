@@ -25,7 +25,7 @@
     }
 
     &__error-popup-icon {
-        color: var(--f-text-color-error);
+        color: $textfield-color-icon-error;
         height: 16px;
     }
 
