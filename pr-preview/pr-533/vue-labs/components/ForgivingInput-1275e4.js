@@ -28,7 +28,7 @@ import { defineComponent as defineComponent2 } from "vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, unref, withCtx, createTextVNode, createBlock, createCommentVNode, toDisplayString, normalizeClass, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, createTextVNode, createCommentVNode, unref, withCtx, createBlock, toDisplayString, normalizeClass, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, IFlex, IFlexItem, FIcon, IComboboxDropdown, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
