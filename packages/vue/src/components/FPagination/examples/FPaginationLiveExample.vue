@@ -100,7 +100,7 @@ export default defineComponent({
             <f-radio-field v-model="componentType" value="interactiveTable">
                 Interaktiv tabell
                 <template #details>
-                    Stöder paginering med <kbd>PgUp</kbd> och <kbd>PgDn</kbd>.
+                    Stöder paginering med <kbd>Page Up</kbd> och <kbd>Page Down</kbd>.
                 </template>
             </f-radio-field>
         </f-fieldset>
