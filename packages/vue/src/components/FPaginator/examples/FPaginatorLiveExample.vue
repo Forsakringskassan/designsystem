@@ -1,21 +1,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import {
-    FDataTable,
-    FFieldset,
-    FPagination,
-    FPaginator,
-    FRadioField,
-    FSelectField,
-    FTableColumn,
-} from "@fkui/vue";
+import { FDataTable, FPagination, FPaginator, FSelectField, FTableColumn } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 import { template } from "lodash";
 import { persons } from "./person-data";
 
 export default defineComponent({
     name: "FPaginationLiveExample",
-    components: { FRadioField, FSelectField, LiveExample },
+    components: { FSelectField, LiveExample },
     data() {
         return {
             numberOfPagesOptions: [5, 6, 7, 8, 9],
@@ -26,10 +18,8 @@ export default defineComponent({
         components(): object {
             return {
                 FDataTable,
-                FFieldset,
                 FPagination,
                 FPaginator,
-                FRadioField,
                 FSelectField,
                 FTableColumn,
             };
