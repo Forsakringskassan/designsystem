@@ -8,5 +8,5 @@ component: FPaginator
 Paginator för användning vid paginering.
 
 ```import live-example
-FPaginationLiveExample.vue
+FPaginatorLiveExample.vue
 ```
