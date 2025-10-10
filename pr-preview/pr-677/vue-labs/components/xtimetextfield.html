@@ -23,15 +23,15 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-fd4a2d.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-7c823e.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-cb1d47.js",
     "@fkui/date": "../assets/vendor-fkui-date-024cc2.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-f6a573.js"
+    "@fkui/vue": "../assets/vendor-fkui-vue-663721.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd4a2d.js": "sha384-kmC4T0C5ZzwbUEm2knIR443x2ILwlEZgPawQWZvqbegtVKkhK/F5ifTqm7n0M6rE",
-    "../assets/vendor-fkui-logic-7c823e.js": "sha384-YS5TPJyhdGlgnR/ugkmeBytha19DC9KTsUx19STXOmiBoyKvHnioeMGJEzT603DC",
+    "../assets/vendor-fkui-logic-cb1d47.js": "sha384-cYyAMpzX6o+Mx1ahOrF5blFq85m9utKy9qg8GmepiyZ+c/Ha6q7usDcijN+bsdK1",
     "../assets/vendor-fkui-date-024cc2.js": "sha384-p0OHhMI0IsoyIh+/1Cyvu2qD+riXRyL6F/I3NNxpdud8wBwA0pXVP6Vdo3y0bdMO",
-    "../assets/vendor-fkui-vue-f6a573.js": "sha384-Z+oFCkYleNuFsLcIBHFelxn8VzMG/MLDU3qy7L5lRRoqL6KskiSCXznMmnFAQNsT"
+    "../assets/vendor-fkui-vue-663721.js": "sha384-hs+nK49YQ9sGSK7dlHMaxSue2ctQeczNPJ7jvwVDLikhZIzEEIMpji8jVVkY2RG4"
   }
 }
         </script><script
@@ -232,13 +232,13 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-01cf1c"></div>
+        <div id="example-a85d9e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XTimeTextFieldExample-01cf1c.js"></script>
+        <script type="module" src="./XTimeTextFieldExample-a85d9e.js"></script>
     </div>
                 <div>
             <button
@@ -256,14 +256,14 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">XTimeTextField</span>,
-    minutesToUserFriendlyString,
     minutesToHoursFloat,
     minutesToObject,
+    minutesToUserFriendlyString,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;XTimeComponentExample&quot;</span>,
@@ -272,12 +272,12 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span>,
+            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> number | <span class="hljs-literal">undefined</span>,
         };
     },
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">userFriendlyValue</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>!);
         },
         <span class="hljs-title function_">timeInHours</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToHoursFloat</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
@@ -366,13 +366,13 @@ Exempel:</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-a02ae7"></div>
+        <div id="example-1275e4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ForgivingInput-a02ae7.js"></script>
+        <script type="module" src="./ForgivingInput-1275e4.js"></script>
     </div>
                 <div>
             <button
@@ -390,7 +390,8 @@ Exempel:</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">XTimeTextField</span>,
     forgivingParseTimeToNumber,
@@ -398,7 +399,6 @@ Exempel:</p>
     minutesToObject,
     minutesToUserFriendlyString,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;XTimeComponentExample&quot;</span>,
@@ -407,13 +407,13 @@ Exempel:</p>
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span>,
-            <span class="hljs-attr">parser</span>: <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> <span class="hljs-title function_">forgivingParseTimeToNumber</span>(value),
+            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> number | <span class="hljs-literal">undefined</span>,
+            <span class="hljs-attr">parser</span>: <span class="hljs-function">(<span class="hljs-params">value: string</span>) =&gt;</span> <span class="hljs-title function_">forgivingParseTimeToNumber</span>(value),
         };
     },
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">userFriendlyValue</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>!);
         },
         <span class="hljs-title function_">timeInHours</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToHoursFloat</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);

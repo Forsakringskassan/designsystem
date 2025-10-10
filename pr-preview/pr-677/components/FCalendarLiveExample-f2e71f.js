@@ -1773,9 +1773,6 @@ var EventBus = {
   $off
 };
 
-// packages/vue/src/utils/mount-component/mount-component.ts
-import { createApp as createApp2 } from "vue";
-
 // packages/vue/src/config/config.ts
 import { configLogic } from "@fkui/logic";
 var popupContainer = document.body;
@@ -1808,15 +1805,170 @@ var config = {
   }
 };
 
+// packages/vue/src/utils/mount-component/mount-component.ts
+import { createApp as createApp2 } from "vue";
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
 import { defineComponent as defineComponent4 } from "vue";
-import { ElementIdService, pushFocus, popFocus, findTabbableElements, focus as focus2 } from "@fkui/logic";
+import { ElementIdService, findTabbableElements, focus as focus2, popFocus, pushFocus } from "@fkui/logic";
+
+// packages/vue/src/plugins/translation/translate.ts
+import { TranslationService } from "@fkui/logic";
+function translate(key, defaultValueOrArgs, args) {
+  const { provider } = TranslationService;
+  return provider.translate(key, defaultValueOrArgs, args);
+}
+
+// packages/vue/src/plugins/translation/TranslationPlugin.ts
+var TranslationMixin = {
+  methods: {
+    $t: translate
+  }
+};
+
+// packages/vue/src/plugins/translation/use-translate.ts
+function useTranslate() {
+  return translate;
+}
+
+// packages/vue/src/plugins/validation/ValidationPlugin.ts
+var import_isEqual = __toESM(require_isEqual());
+import {
+  ValidationService,
+  availableValidators,
+  isValidatableHTMLElement
+} from "@fkui/logic";
+
+// packages/vue/src/types/ErrorViewData.ts
+var ErrorViewData = class {
+  hasError;
+  payload;
+  constructor(hasError = false, payload) {
+    this.hasError = hasError;
+    this.payload = payload;
+  }
+};
+
+// packages/vue/src/plugins/error/ErrorPlugin.ts
+var UNHANDLED_ERROR_EVENT = "unhandled-error";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
+import { defineComponent as defineComponent2 } from "vue";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=script
+import { defineComponent } from "vue";
+var FErrorPage_default = defineComponent({
+  name: "FErrorPage",
+  props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
+    payload: {
+      type: Object,
+      required: false,
+      default: null
+    }
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+var _hoisted_1 = { "data-test": "f-error-page" };
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock(), _createElementBlock("div", _hoisted_1, [..._cache[0] || (_cache[0] = [
+    _createElementVNode(
+      "h1",
+      null,
+      "Fel",
+      -1
+      /* CACHED */
+    ),
+    _createElementVNode(
+      "p",
+      null,
+      "Ett fel har uppst\xE5tt.",
+      -1
+      /* CACHED */
+    ),
+    _createElementVNode(
+      "a",
+      { href: "/" },
+      "G\xE5 till startsidan",
+      -1
+      /* CACHED */
+    )
+  ])]);
+}
+
+// packages/vue/src/plugins/error/FErrorPage.vue
+FErrorPage_default.render = render;
+FErrorPage_default.__file = "packages/vue/src/plugins/error/FErrorPage.vue";
+var FErrorPage_default2 = FErrorPage_default;
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
+var FErrorHandlingApp_default = defineComponent2({
+  name: "FErrorHandlingApp",
+  props: {
+    defaultComponent: {
+      type: [Function, Object],
+      required: false,
+      default: void 0
+    },
+    errorComponent: {
+      type: [Function, Object],
+      required: false,
+      default: FErrorPage_default2
+    }
+  },
+  data() {
+    return new ErrorViewData();
+  },
+  watch: {
+    $route() {
+      this.hasError = false;
+    }
+  },
+  created() {
+    EventBus.$on(UNHANDLED_ERROR_EVENT, (payload) => {
+      this.hasError = true;
+      this.payload = payload;
+    });
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=template
+import { resolveDynamicComponent as _resolveDynamicComponent, openBlock as _openBlock2, createBlock as _createBlock, renderSlot as _renderSlot, createElementBlock as _createElementBlock2 } from "vue";
+function render2(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock2(), _createElementBlock2("div", null, [
+    _ctx.hasError ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
+      key: 0,
+      payload: _ctx.payload
+    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot(_ctx.$slots, "default", { key: 2 })
+  ]);
+}
+
+// packages/vue/src/plugins/error/FErrorHandlingApp.vue
+FErrorHandlingApp_default.render = render2;
+FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
+
+// packages/vue/src/plugins/format/formatters.ts
+import { DateFormat, FDate as FDate2 } from "@fkui/date";
+import {
+  formatNumber as numberFormater,
+  parseBankgiro,
+  parseDate,
+  parseOrganisationsnummer,
+  parsePersonnummer,
+  parsePlusgiro,
+  parsePostalCode
+} from "@fkui/logic";
+
+// packages/vue/src/plugins/format/is-date-range.ts
+import { FDate } from "@fkui/date";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
-import { defineComponent } from "vue";
+import { defineComponent as defineComponent3 } from "vue";
 var Flip = ["horizontal", "vertical"];
 var Rotate = ["90", "180", "270"];
-var FIcon_default = defineComponent({
+var FIcon_default = defineComponent3({
   name: "FIcon",
   inheritAttrs: false,
   props: {
@@ -1899,23 +2051,23 @@ var FIcon_default = defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=template
-import { createCommentVNode as _createCommentVNode, renderSlot as _renderSlot, createElementVNode as _createElementVNode, mergeProps as _mergeProps, openBlock as _openBlock, createElementBlock as _createElementBlock, Fragment as _Fragment } from "vue";
-var _hoisted_1 = ["aria-hidden"];
+import { createCommentVNode as _createCommentVNode2, renderSlot as _renderSlot2, createElementVNode as _createElementVNode2, mergeProps as _mergeProps, openBlock as _openBlock3, createElementBlock as _createElementBlock3, Fragment as _Fragment } from "vue";
+var _hoisted_12 = ["aria-hidden"];
 var _hoisted_2 = ["href"];
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock(
+function render3(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock3(), _createElementBlock3(
     _Fragment,
     null,
     [
-      _createCommentVNode(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
-      (_openBlock(), _createElementBlock("svg", _mergeProps(_ctx.$attrs, {
+      _createCommentVNode2(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
+      (_openBlock3(), _createElementBlock3("svg", _mergeProps(_ctx.$attrs, {
         focusable: "false",
         class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
         "aria-hidden": _ctx.ariaHidden
       }), [
-        _renderSlot(_ctx.$slots, "default"),
-        _createElementVNode("use", { href: _ctx.spriteId }, null, 8, _hoisted_2)
-      ], 16, _hoisted_1))
+        _renderSlot2(_ctx.$slots, "default"),
+        _createElementVNode2("use", { href: _ctx.spriteId }, null, 8, _hoisted_2)
+      ], 16, _hoisted_12))
     ],
     2112
     /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
@@ -1923,183 +2075,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FIcon/FIcon.vue
-FIcon_default.render = render;
+FIcon_default.render = render3;
 FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
 var FIcon_default2 = FIcon_default;
-
-// packages/vue/src/plugins/translation/translate.ts
-import { TranslationService } from "@fkui/logic";
-function translate(key, defaultValueOrArgs, args) {
-  const { provider } = TranslationService;
-  return provider.translate(key, defaultValueOrArgs, args);
-}
-
-// packages/vue/src/plugins/translation/TranslationPlugin.ts
-var TranslationMixin = {
-  methods: {
-    $t: translate
-  }
-};
-
-// packages/vue/src/plugins/translation/use-translate.ts
-function useTranslate() {
-  return translate;
-}
-
-// packages/vue/src/plugins/validation/ValidationPlugin.ts
-var import_isEqual = __toESM(require_isEqual());
-import {
-  availableValidators,
-  isValidatableHTMLElement,
-  ValidationService
-} from "@fkui/logic";
-
-// packages/vue/src/types/ErrorViewData.ts
-var ErrorViewData = class {
-  hasError;
-  payload;
-  constructor(hasError = false, payload) {
-    this.hasError = hasError;
-    this.payload = payload;
-  }
-};
-
-// packages/vue/src/plugins/error/ErrorPlugin.ts
-var UNHANDLED_ERROR_EVENT = "unhandled-error";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
-import { defineComponent as defineComponent3 } from "vue";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=script
-import { defineComponent as defineComponent2 } from "vue";
-var FErrorPage_default = defineComponent2({
-  name: "FErrorPage",
-  props: {
-    /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
-    payload: {
-      type: Object,
-      required: false,
-      default: null
-    }
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
-import { createElementVNode as _createElementVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock2 } from "vue";
-var _hoisted_12 = { "data-test": "f-error-page" };
-function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2("div", _hoisted_12, [..._cache[0] || (_cache[0] = [
-    _createElementVNode2(
-      "h1",
-      null,
-      "Fel",
-      -1
-      /* CACHED */
-    ),
-    _createElementVNode2(
-      "p",
-      null,
-      "Ett fel har uppst\xE5tt.",
-      -1
-      /* CACHED */
-    ),
-    _createElementVNode2(
-      "a",
-      { href: "/" },
-      "G\xE5 till startsidan",
-      -1
-      /* CACHED */
-    )
-  ])]);
-}
-
-// packages/vue/src/plugins/error/FErrorPage.vue
-FErrorPage_default.render = render2;
-FErrorPage_default.__file = "packages/vue/src/plugins/error/FErrorPage.vue";
-var FErrorPage_default2 = FErrorPage_default;
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
-var FErrorHandlingApp_default = defineComponent3({
-  name: "FErrorHandlingApp",
-  props: {
-    defaultComponent: {
-      type: [Function, Object],
-      required: false,
-      default: void 0
-    },
-    errorComponent: {
-      type: [Function, Object],
-      required: false,
-      default: FErrorPage_default2
-    }
-  },
-  data() {
-    return new ErrorViewData();
-  },
-  watch: {
-    $route() {
-      this.hasError = false;
-    }
-  },
-  created() {
-    EventBus.$on(UNHANDLED_ERROR_EVENT, (payload) => {
-      this.hasError = true;
-      this.payload = payload;
-    });
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=template
-import { resolveDynamicComponent as _resolveDynamicComponent, openBlock as _openBlock3, createBlock as _createBlock, renderSlot as _renderSlot2, createElementBlock as _createElementBlock3 } from "vue";
-function render3(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock3(), _createElementBlock3("div", null, [
-    _ctx.hasError ? (_openBlock3(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
-      key: 0,
-      payload: _ctx.payload
-    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock3(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot2(_ctx.$slots, "default", { key: 2 })
-  ]);
-}
-
-// packages/vue/src/plugins/error/FErrorHandlingApp.vue
-FErrorHandlingApp_default.render = render3;
-FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
-
-// packages/vue/src/plugins/format/formatters.ts
-import { DateFormat, FDate as FDate2 } from "@fkui/date";
-import {
-  formatNumber as numberFormater,
-  parseBankgiro,
-  parseDate,
-  parseOrganisationsnummer,
-  parsePersonnummer,
-  parsePlusgiro,
-  parsePostalCode
-} from "@fkui/logic";
-
-// packages/vue/src/plugins/format/is-date-range.ts
-import { FDate } from "@fkui/date";
-
-// packages/vue/src/components/FModal/sizes.ts
-var sizes = [
-  "",
-  "small",
-  "medium",
-  "large",
-  "fullscreen",
-  "fullwidth"
-];
-function sizeClass(size) {
-  if (!sizes.includes(size)) {
-    throw new Error(`"${size}" is not a valid size`);
-  }
-  if (!size) {
-    return [];
-  } else if (size === "fullscreen") {
-    return [`modal__dialog-container--fullwidth`];
-  } else {
-    return [`modal__dialog-container--${size}`];
-  }
-}
 
 // packages/vue/src/components/FModal/focus-element.ts
 import { focus } from "@fkui/logic";
@@ -2128,6 +2106,28 @@ function elementIsRadioButton(element) {
 }
 function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
+}
+
+// packages/vue/src/components/FModal/sizes.ts
+var sizes = [
+  "",
+  "small",
+  "medium",
+  "large",
+  "fullscreen",
+  "fullwidth"
+];
+function sizeClass(size) {
+  if (!sizes.includes(size)) {
+    throw new Error(`"${size}" is not a valid size`);
+  }
+  if (!size) {
+    return [];
+  } else if (size === "fullscreen") {
+    return [`modal__dialog-container--fullwidth`];
+  } else {
+    return [`modal__dialog-container--${size}`];
+  }
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
@@ -2654,11 +2654,11 @@ FConfirmModal_default.__file = "packages/vue/src/components/FModal/FConfirmModal
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=script
 import { defineComponent as defineComponent11 } from "vue";
-import { ElementIdService as ElementIdService3, ValidationService as ValidationService3, TranslationService as TranslationService2 } from "@fkui/logic";
+import { ElementIdService as ElementIdService3, TranslationService as TranslationService2, ValidationService as ValidationService3 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
 import { defineComponent as defineComponent10 } from "vue";
-import { ValidationService as ValidationService2, focus as focus4, ElementIdService as ElementIdService2 } from "@fkui/logic";
+import { ElementIdService as ElementIdService2, ValidationService as ValidationService2, focus as focus4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
 import { defineComponent as defineComponent8 } from "vue";
@@ -3824,90 +3824,21 @@ import { defineComponent as defineComponent22, provide, useSlots as useSlots3, u
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=script
-import { computed as computed4, defineComponent as defineComponent21, inject, ref as ref5, toRef, useTemplateRef as useTemplateRef3, watchEffect as watchEffect5, useSlots as useSlots2 } from "vue";
+import {
+  computed as computed4,
+  defineComponent as defineComponent21,
+  inject,
+  ref as ref5,
+  toRef,
+  useSlots as useSlots2,
+  useTemplateRef as useTemplateRef3,
+  watchEffect as watchEffect5
+} from "vue";
 import { TranslationService as TranslationService3 } from "@fkui/logic";
 
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
-import { defineComponent as defineComponent12 } from "vue";
-var FExpand_default = defineComponent12({
-  name: "FExpand",
-  data() {
-    return {
-      height: 0,
-      initialStyle: {
-        overflow: "hidden",
-        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
-      },
-      hiddenStyle: {
-        height: "auto",
-        position: "absolute",
-        visibility: "hidden"
-      },
-      visibleStyle: {
-        width: "",
-        position: "",
-        visibility: "",
-        height: "0px"
-      },
-      openedStyle: {
-        height: "auto"
-      }
-    };
-  },
-  methods: {
-    enter(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      Object.assign(htmlElement.style, this.initialStyle);
-      Object.assign(htmlElement.style, this.hiddenStyle);
-      htmlElement.style.width = getComputedStyle(element).width;
-      const height = getComputedStyle(element).height;
-      Object.assign(htmlElement.style, this.visibleStyle);
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        this.height = parseInt(height, 10);
-        htmlElement.style.height = height;
-      });
-    },
-    afterEnter(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      Object.assign(htmlElement.style, this.openedStyle);
-    },
-    leave(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      const height = getComputedStyle(element).height;
-      htmlElement.style.height = height;
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        Object.assign(htmlElement.style, this.visibleStyle);
-      });
-    }
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=template
-import { renderSlot as _renderSlot11, Transition as _Transition, withCtx as _withCtx5, openBlock as _openBlock12, createBlock as _createBlock6 } from "vue";
-function render12(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock12(), _createBlock6(_Transition, {
-    onEnter: _ctx.enter,
-    onAfterEnter: _ctx.afterEnter,
-    onLeave: _ctx.leave
-  }, {
-    default: _withCtx5(() => [
-      _renderSlot11(_ctx.$slots, "default", { height: _ctx.height })
-    ]),
-    _: 3
-    /* FORWARDED */
-  }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
-}
-
-// packages/vue/src/components/FExpand/FExpand.vue
-FExpand_default.render = render12;
-FExpand_default.__file = "packages/vue/src/components/FExpand/FExpand.vue";
-var FExpand_default2 = FExpand_default;
-
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
-import { defineComponent as defineComponent13 } from "vue";
-import { debounce, handleTab, pushFocus as pushFocus2, popFocus as popFocus2 } from "@fkui/logic";
+import { defineComponent as defineComponent12 } from "vue";
+import { debounce, handleTab, popFocus as popFocus2, pushFocus as pushFocus2 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
 function offset(page, el) {
@@ -4119,6 +4050,10 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
   }
 }
 
+// packages/vue/src/internal-components/IPopup/constants.ts
+var MIN_DESKTOP_WIDTH = 640;
+var POPUP_SPACING = 20;
+
 // packages/vue/src/internal-components/IPopup/get-container.ts
 function getContainer(element, prop) {
   if (prop) {
@@ -4142,10 +4077,6 @@ function getFocusableElement(rootElement, callback) {
   return elements[0] ?? null;
 }
 
-// packages/vue/src/internal-components/IPopup/constants.ts
-var MIN_DESKTOP_WIDTH = 640;
-var POPUP_SPACING = 20;
-
 // packages/vue/src/internal-components/IPopup/is-teleport-disabled.ts
 function isTeleportDisabled(options) {
   const { window: window2, placement, forceInline, forceOverlay } = options;
@@ -4162,7 +4093,7 @@ function isTeleportDisabled(options) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
-var IPopup_default = defineComponent13({
+var IPopup_default = defineComponent12({
   name: "IPopup",
   inheritAttrs: false,
   props: {
@@ -4426,9 +4357,9 @@ var IPopup_default = defineComponent13({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=template
-import { normalizeProps as _normalizeProps, guardReactiveProps as _guardReactiveProps, renderSlot as _renderSlot12, withModifiers as _withModifiers3, withKeys as _withKeys2, createElementVNode as _createElementVNode8, mergeProps as _mergeProps3, Teleport as _Teleport, openBlock as _openBlock13, createBlock as _createBlock7, createCommentVNode as _createCommentVNode11 } from "vue";
-function render13(_ctx, _cache, $props, $setup, $data, $options) {
-  return _ctx.isOpen ? (_openBlock13(), _createBlock7(_Teleport, {
+import { normalizeProps as _normalizeProps, guardReactiveProps as _guardReactiveProps, renderSlot as _renderSlot11, withModifiers as _withModifiers3, withKeys as _withKeys2, createElementVNode as _createElementVNode8, mergeProps as _mergeProps3, Teleport as _Teleport, openBlock as _openBlock12, createBlock as _createBlock6, createCommentVNode as _createCommentVNode10 } from "vue";
+function render12(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.isOpen ? (_openBlock12(), _createBlock6(_Teleport, {
     key: 0,
     to: _ctx.teleportTarget,
     disabled: _ctx.teleportDisabled
@@ -4448,7 +4379,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
             onKeydown: _cache[2] || (_cache[2] = _withKeys2((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
           },
           [
-            _renderSlot12(_ctx.$slots, "default", _normalizeProps(_guardReactiveProps({ toggleIsOpen: _ctx.toggleIsOpen, placement: _ctx.placement })))
+            _renderSlot11(_ctx.$slots, "default", _normalizeProps(_guardReactiveProps({ toggleIsOpen: _ctx.toggleIsOpen, placement: _ctx.placement })))
           ],
           544
           /* NEED_HYDRATION, NEED_PATCH */
@@ -4457,16 +4388,16 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
       16
       /* FULL_PROPS */
     )
-  ], 8, ["to", "disabled"])) : _createCommentVNode11("v-if", true);
+  ], 8, ["to", "disabled"])) : _createCommentVNode10("v-if", true);
 }
 
 // packages/vue/src/internal-components/IPopup/IPopup.vue
-IPopup_default.render = render13;
+IPopup_default.render = render12;
 IPopup_default.__file = "packages/vue/src/internal-components/IPopup/IPopup.vue";
 var IPopup_default2 = IPopup_default;
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=script
-import { defineComponent as defineComponent14 } from "vue";
+import { defineComponent as defineComponent13 } from "vue";
 
 // packages/vue/src/internal-components/IPopupError/compute-arrow-offset.ts
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
@@ -4513,7 +4444,7 @@ function computeArrowOffset(placement, inputIconRect, wrapperRect) {
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=script
 var POPUP_SPACING2 = 10;
-var IPopupError_default = defineComponent14({
+var IPopupError_default = defineComponent13({
   name: "IPopupError",
   components: { FIcon: FIcon_default2 },
   inheritAttrs: false,
@@ -4649,14 +4580,14 @@ var IPopupError_default = defineComponent14({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=template
-import { createCommentVNode as _createCommentVNode12, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, resolveComponent as _resolveComponent6, createVNode as _createVNode5, normalizeClass as _normalizeClass7, normalizeStyle as _normalizeStyle, Teleport as _Teleport2, openBlock as _openBlock14, createBlock as _createBlock8 } from "vue";
+import { createCommentVNode as _createCommentVNode11, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, resolveComponent as _resolveComponent6, createVNode as _createVNode5, normalizeClass as _normalizeClass7, normalizeStyle as _normalizeStyle, Teleport as _Teleport2, openBlock as _openBlock13, createBlock as _createBlock7 } from "vue";
 var _hoisted_18 = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
-function render14(_ctx, _cache, $props, $setup, $data, $options) {
+function render13(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent6("f-icon");
-  return _ctx.isOpen ? (_openBlock14(), _createBlock8(_Teleport2, {
+  return _ctx.isOpen ? (_openBlock13(), _createBlock7(_Teleport2, {
     key: 0,
     to: _ctx.teleportTarget,
     disabled: _ctx.teleportDisabled
@@ -4673,7 +4604,7 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
           "div",
           _hoisted_18,
           [
-            _createCommentVNode12(" [html-validate-disable-next no-inline-style] "),
+            _createCommentVNode11(" [html-validate-disable-next no-inline-style] "),
             _createElementVNode9(
               "div",
               {
@@ -4688,8 +4619,8 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
                   1
                   /* TEXT */
                 ),
-                _createCommentVNode12(' `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.\n                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .\n                    '),
-                _createCommentVNode12(" [html-validate-disable-next fkui/class-deprecated -- technical debt] "),
+                _createCommentVNode11(' `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.\n                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .\n                    '),
+                _createCommentVNode11(" [html-validate-disable-next fkui/class-deprecated -- technical debt] "),
                 _createElementVNode9("button", {
                   tabindex: "-1",
                   type: "button",
@@ -4714,16 +4645,16 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
       2
       /* CLASS */
     )
-  ], 8, ["to", "disabled"])) : _createCommentVNode12("v-if", true);
+  ], 8, ["to", "disabled"])) : _createCommentVNode11("v-if", true);
 }
 
 // packages/vue/src/internal-components/IPopupError/IPopupError.vue
-IPopupError_default.render = render14;
+IPopupError_default.render = render13;
 IPopupError_default.__file = "packages/vue/src/internal-components/IPopupError/IPopupError.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
-import { watchEffect, useTemplateRef, nextTick, computed, onUnmounted as onUnmounted2, watch } from "vue";
+import { computed, nextTick, onUnmounted as onUnmounted2, useTemplateRef, watch, watchEffect } from "vue";
 import { debounce as debounce2 } from "@fkui/logic";
 
 // packages/vue/src/composables/useEventListener.ts
@@ -4950,11 +4881,11 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=template
-import { renderSlot as _renderSlot13, createElementVNode as _createElementVNode10, withModifiers as _withModifiers4, withKeys as _withKeys3, mergeProps as _mergeProps4, normalizeClass as _normalizeClass8, Teleport as _Teleport3, openBlock as _openBlock15, createBlock as _createBlock9, createCommentVNode as _createCommentVNode13 } from "vue";
+import { renderSlot as _renderSlot12, createElementVNode as _createElementVNode10, withModifiers as _withModifiers4, withKeys as _withKeys3, mergeProps as _mergeProps4, normalizeClass as _normalizeClass8, Teleport as _Teleport3, openBlock as _openBlock14, createBlock as _createBlock8, createCommentVNode as _createCommentVNode12 } from "vue";
 var _hoisted_19 = ["onKeyup"];
 var _hoisted_27 = { ref: "content" };
-function render15(_ctx, _cache, $props, $setup, $data, $options) {
-  return $props.isOpen ? (_openBlock15(), _createBlock9(_Teleport3, {
+function render14(_ctx, _cache, $props, $setup, $data, $options) {
+  return $props.isOpen ? (_openBlock14(), _createBlock8(_Teleport3, {
     key: 0,
     to: $setup.teleportTarget,
     disabled: $setup.teleportDisabled
@@ -4977,7 +4908,7 @@ function render15(_ctx, _cache, $props, $setup, $data, $options) {
             "div",
             _hoisted_27,
             [
-              _renderSlot13(_ctx.$slots, "default")
+              _renderSlot12(_ctx.$slots, "default")
             ],
             512
             /* NEED_PATCH */
@@ -4987,16 +4918,16 @@ function render15(_ctx, _cache, $props, $setup, $data, $options) {
       512
       /* NEED_PATCH */
     )
-  ], 8, ["to"])) : _createCommentVNode13("v-if", true);
+  ], 8, ["to"])) : _createCommentVNode12("v-if", true);
 }
 
 // packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue
-IPopupListbox_default.render = render15;
+IPopupListbox_default.render = render14;
 IPopupListbox_default.__file = "packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue";
 var IPopupListbox_default2 = IPopupListbox_default;
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
-import { defineComponent as defineComponent15 } from "vue";
+import { defineComponent as defineComponent14 } from "vue";
 import { focus as focus6 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/IPopupMenu/ipopupmenu-logic.ts
@@ -5046,7 +4977,7 @@ async function doMenuAction(action, target) {
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
 var preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
-var IPopupMenu_default = defineComponent15({
+var IPopupMenu_default = defineComponent14({
   name: "IPopupMenu",
   components: { IPopup: IPopup_default2 },
   props: {
@@ -5289,7 +5220,7 @@ var IPopupMenu_default = defineComponent15({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=template
-import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock16, createElementBlock as _createElementBlock12, toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode11, createCommentVNode as _createCommentVNode14, createTextVNode as _createTextVNode3, normalizeClass as _normalizeClass9, resolveComponent as _resolveComponent7, withCtx as _withCtx6, createBlock as _createBlock10 } from "vue";
+import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock15, createElementBlock as _createElementBlock12, toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode11, createCommentVNode as _createCommentVNode13, createTextVNode as _createTextVNode3, normalizeClass as _normalizeClass9, resolveComponent as _resolveComponent7, withCtx as _withCtx5, createBlock as _createBlock9 } from "vue";
 var _hoisted_110 = ["aria-label"];
 var _hoisted_28 = {
   role: "menu",
@@ -5301,9 +5232,9 @@ var _hoisted_53 = {
   key: 0,
   class: "sr-only"
 };
-function render16(_ctx, _cache, $props, $setup, $data, $options) {
+function render15(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_popup = _resolveComponent7("i-popup");
-  return _openBlock16(), _createBlock10(_component_i_popup, {
+  return _openBlock15(), _createBlock9(_component_i_popup, {
     class: "ipopupmenu",
     "is-open": _ctx.isOpen,
     "keyboard-trap": false,
@@ -5313,17 +5244,17 @@ function render16(_ctx, _cache, $props, $setup, $data, $options) {
     onKeyup: _ctx.onKeyUp,
     onKeydown: _ctx.onKeyDown
   }, {
-    default: _withCtx6(() => [
+    default: _withCtx5(() => [
       _createElementVNode11("nav", {
         class: "ipopupmenu ipopupmenu--vertical",
         "aria-label": _ctx.ariaLabel
       }, [
         _createElementVNode11("ul", _hoisted_28, [
-          (_openBlock16(true), _createElementBlock12(
+          (_openBlock15(true), _createElementBlock12(
             _Fragment5,
             null,
             _renderList4(_ctx.items, (item, index) => {
-              return _openBlock16(), _createElementBlock12("li", {
+              return _openBlock15(), _createElementBlock12("li", {
                 ref_for: true,
                 ref: "items",
                 key: item.key,
@@ -5340,7 +5271,7 @@ function render16(_ctx, _cache, $props, $setup, $data, $options) {
                   target: item.target,
                   tabindex: "0"
                 }, [
-                  _ctx.isSelected(index) ? (_openBlock16(), _createElementBlock12("span", _hoisted_53, [
+                  _ctx.isSelected(index) ? (_openBlock15(), _createElementBlock12("span", _hoisted_53, [
                     _createElementVNode11(
                       "span",
                       null,
@@ -5348,7 +5279,7 @@ function render16(_ctx, _cache, $props, $setup, $data, $options) {
                       1
                       /* TEXT */
                     )
-                  ])) : _createCommentVNode14("v-if", true),
+                  ])) : _createCommentVNode13("v-if", true),
                   _createTextVNode3(
                     " " + _toDisplayString6(item.label),
                     1
@@ -5369,17 +5300,17 @@ function render16(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue
-IPopupMenu_default.render = render16;
+IPopupMenu_default.render = render15;
 IPopupMenu_default.__file = "packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue?type=script
-import { defineComponent as defineComponent16 } from "vue";
+import { defineComponent as defineComponent15 } from "vue";
 var ANIMATION_DURATION = 500;
 var NO_CSS_CLASSES = "";
 var CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
 var CLOSED_CSS_CLASS = "animate-expand";
 var ANIMATION_CSS_CLASSES = "animate-expand animate-expand--expanded";
-var IAnimateExpand_default = defineComponent16({
+var IAnimateExpand_default = defineComponent15({
   name: "IAnimateExpand",
   props: {
     /**
@@ -5574,18 +5505,18 @@ var IAnimateExpand_default = defineComponent16({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue?type=template
-import { createCommentVNode as _createCommentVNode15, renderSlot as _renderSlot14, vShow as _vShow, withDirectives as _withDirectives, openBlock as _openBlock17, createElementBlock as _createElementBlock13, normalizeClass as _normalizeClass10, normalizeStyle as _normalizeStyle2, createElementVNode as _createElementVNode12, Fragment as _Fragment6 } from "vue";
+import { createCommentVNode as _createCommentVNode14, renderSlot as _renderSlot13, vShow as _vShow, withDirectives as _withDirectives, openBlock as _openBlock16, createElementBlock as _createElementBlock13, normalizeClass as _normalizeClass10, normalizeStyle as _normalizeStyle2, createElementVNode as _createElementVNode12, Fragment as _Fragment6 } from "vue";
 var _hoisted_111 = {
   key: 0,
   ref: "content",
   "data-test": "animation-content"
 };
-function render17(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock17(), _createElementBlock13(
+function render16(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock16(), _createElementBlock13(
     _Fragment6,
     null,
     [
-      _createCommentVNode15(" [html-validate-disable-next no-inline-style] "),
+      _createCommentVNode14(" [html-validate-disable-next no-inline-style] "),
       _createElementVNode12(
         "div",
         {
@@ -5593,18 +5524,18 @@ function render17(_ctx, _cache, $props, $setup, $data, $options) {
           style: _normalizeStyle2(_ctx.heightStyle)
         },
         [
-          _ctx.shouldVIf ? _withDirectives((_openBlock17(), _createElementBlock13(
+          _ctx.shouldVIf ? _withDirectives((_openBlock16(), _createElementBlock13(
             "div",
             _hoisted_111,
             [
-              _createCommentVNode15(" @slot Slot used for content shown when component is expanded "),
-              _renderSlot14(_ctx.$slots, "default")
+              _createCommentVNode14(" @slot Slot used for content shown when component is expanded "),
+              _renderSlot13(_ctx.$slots, "default")
             ],
             512
             /* NEED_PATCH */
           )), [
             [_vShow, _ctx.shouldVShow]
-          ]) : _createCommentVNode15("v-if", true)
+          ]) : _createCommentVNode14("v-if", true)
         ],
         6
         /* CLASS, STYLE */
@@ -5616,12 +5547,12 @@ function render17(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue
-IAnimateExpand_default.render = render17;
+IAnimateExpand_default.render = render16;
 IAnimateExpand_default.__file = "packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/ISkipLink/ISkipLink.vue?type=script
-import { defineComponent as defineComponent17 } from "vue";
-var ISkipLink_default = defineComponent17({
+import { defineComponent as defineComponent16 } from "vue";
+var ISkipLink_default = defineComponent16({
   name: "ISkipLink",
   mixins: [TranslationMixin],
   props: {
@@ -5637,15 +5568,15 @@ var ISkipLink_default = defineComponent17({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/ISkipLink/ISkipLink.vue?type=template
-import { createCommentVNode as _createCommentVNode16, renderSlot as _renderSlot15, toDisplayString as _toDisplayString7, createTextVNode as _createTextVNode4, openBlock as _openBlock18, createElementBlock as _createElementBlock14 } from "vue";
+import { createCommentVNode as _createCommentVNode15, renderSlot as _renderSlot14, toDisplayString as _toDisplayString7, createTextVNode as _createTextVNode4, openBlock as _openBlock17, createElementBlock as _createElementBlock14 } from "vue";
 var _hoisted_112 = ["href"];
-function render18(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock18(), _createElementBlock14("a", {
+function render17(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock17(), _createElementBlock14("a", {
     class: "iskiplink",
     href: _ctx.href
   }, [
-    _createCommentVNode16(" @slot Slot for default skip link text. "),
-    _renderSlot15(_ctx.$slots, "default", {}, () => [
+    _createCommentVNode15(" @slot Slot for default skip link text. "),
+    _renderSlot14(_ctx.$slots, "default", {}, () => [
       _createTextVNode4(
         _toDisplayString7(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")),
         1
@@ -5656,17 +5587,17 @@ function render18(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/ISkipLink/ISkipLink.vue
-ISkipLink_default.render = render18;
+ISkipLink_default.render = render17;
 ISkipLink_default.__file = "packages/vue/src/internal-components/ISkipLink/ISkipLink.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonth.vue?type=script
+import { defineComponent as defineComponent18 } from "vue";
 import { FDate as FDate3 } from "@fkui/date";
 import { alertScreenReader, focus as focus7 } from "@fkui/logic";
-import { defineComponent as defineComponent19 } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=script
-import { defineComponent as defineComponent18 } from "vue";
-import { groupByWeek, getWeekdayNamings } from "@fkui/date";
+import { defineComponent as defineComponent17 } from "vue";
+import { getWeekdayNamings, groupByWeek } from "@fkui/date";
 import { debounce as debounce3 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/calendar/get-day-offset.ts
@@ -5678,7 +5609,7 @@ function getDayEndOffset(days) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=script
-var ICalendarMonthGrid_default = defineComponent18({
+var ICalendarMonthGrid_default = defineComponent17({
   name: "ICalendarMonthGrid",
   props: {
     /**
@@ -5752,7 +5683,7 @@ var ICalendarMonthGrid_default = defineComponent18({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=template
-import { openBlock as _openBlock19, createElementBlock as _createElementBlock15, createCommentVNode as _createCommentVNode17, createElementVNode as _createElementVNode13, renderList as _renderList5, Fragment as _Fragment7, toDisplayString as _toDisplayString8, renderSlot as _renderSlot16 } from "vue";
+import { openBlock as _openBlock18, createElementBlock as _createElementBlock15, createCommentVNode as _createCommentVNode16, createElementVNode as _createElementVNode13, renderList as _renderList5, Fragment as _Fragment7, toDisplayString as _toDisplayString8, renderSlot as _renderSlot15 } from "vue";
 var _hoisted_113 = ["aria-label"];
 var _hoisted_29 = {
   key: 0,
@@ -5783,8 +5714,8 @@ var _hoisted_114 = {
   "aria-hidden": "true"
 };
 var _hoisted_122 = ["colspan"];
-function render19(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock19(), _createElementBlock15("table", {
+function render18(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock18(), _createElementBlock15("table", {
     class: "calendar-month__table",
     role: "grid",
     "aria-label": _ctx.ariaLabel,
@@ -5792,7 +5723,7 @@ function render19(_ctx, _cache, $props, $setup, $data, $options) {
     onFocusout: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusout && _ctx.onFocusout(...args))
   }, [
     _createElementVNode13("colgroup", null, [
-      !_ctx.internalHideWeekNumbers ? (_openBlock19(), _createElementBlock15("col", _hoisted_29)) : _createCommentVNode17("v-if", true),
+      !_ctx.internalHideWeekNumbers ? (_openBlock18(), _createElementBlock15("col", _hoisted_29)) : _createCommentVNode16("v-if", true),
       _cache[2] || (_cache[2] = _createElementVNode13(
         "col",
         { class: "calendar-month__col--day" },
@@ -5845,21 +5776,21 @@ function render19(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _createElementVNode13("thead", null, [
       _createElementVNode13("tr", null, [
-        !_ctx.internalHideWeekNumbers ? (_openBlock19(), _createElementBlock15("th", _hoisted_36)) : _createCommentVNode17("v-if", true),
-        (_openBlock19(true), _createElementBlock15(
+        !_ctx.internalHideWeekNumbers ? (_openBlock18(), _createElementBlock15("th", _hoisted_36)) : _createCommentVNode16("v-if", true),
+        (_openBlock18(true), _createElementBlock15(
           _Fragment7,
           null,
           _renderList5(_ctx.weekdays, (weekday) => {
-            return _openBlock19(), _createElementBlock15("th", {
+            return _openBlock18(), _createElementBlock15("th", {
               key: weekday.name,
               scope: "col",
               "aria-hidden": "true",
               class: "calendar-month__header-cell"
             }, [
-              _ctx.showShortWeekdays ? (_openBlock19(), _createElementBlock15("abbr", {
+              _ctx.showShortWeekdays ? (_openBlock18(), _createElementBlock15("abbr", {
                 key: 0,
                 title: weekday.name
-              }, _toDisplayString8(weekday.shortName), 9, _hoisted_44)) : (_openBlock19(), _createElementBlock15(
+              }, _toDisplayString8(weekday.shortName), 9, _hoisted_44)) : (_openBlock18(), _createElementBlock15(
                 "span",
                 _hoisted_54,
                 _toDisplayString8(weekday.name),
@@ -5874,36 +5805,36 @@ function render19(_ctx, _cache, $props, $setup, $data, $options) {
       ])
     ]),
     _createElementVNode13("tbody", null, [
-      (_openBlock19(true), _createElementBlock15(
+      (_openBlock18(true), _createElementBlock15(
         _Fragment7,
         null,
         _renderList5(_ctx.weeks, (week) => {
-          return _openBlock19(), _createElementBlock15("tr", {
+          return _openBlock18(), _createElementBlock15("tr", {
             key: week.week
           }, [
-            !_ctx.internalHideWeekNumbers ? (_openBlock19(), _createElementBlock15(
+            !_ctx.internalHideWeekNumbers ? (_openBlock18(), _createElementBlock15(
               "td",
               _hoisted_62,
               _toDisplayString8(week.week),
               1
               /* TEXT */
-            )) : _createCommentVNode17("v-if", true),
-            _ctx.getDayStartOffset(week.days) ? (_openBlock19(), _createElementBlock15("td", {
+            )) : _createCommentVNode16("v-if", true),
+            _ctx.getDayStartOffset(week.days) ? (_openBlock18(), _createElementBlock15("td", {
               key: 1,
               class: "calendar-month__cell",
               colspan: _ctx.getDayStartOffset(week.days)
-            }, null, 8, _hoisted_72)) : _createCommentVNode17("v-if", true),
-            (_openBlock19(true), _createElementBlock15(
+            }, null, 8, _hoisted_72)) : _createCommentVNode16("v-if", true),
+            (_openBlock18(true), _createElementBlock15(
               _Fragment7,
               null,
               _renderList5(week.days, (day) => {
-                return _openBlock19(), _createElementBlock15("td", {
+                return _openBlock18(), _createElementBlock15("td", {
                   key: day.toString(),
                   class: "calendar-month__cell",
                   role: "presentation"
                 }, [
-                  _createCommentVNode17('\n                    @slot Slot for rendering of day content. Slot scope is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ date, focused }"`.\n                    @binding {FDate} date Date of day.\n                    @binding {bool} focused If month component is focused or not.\n                    '),
-                  _renderSlot16(_ctx.$slots, "default", {
+                  _createCommentVNode16('\n                    @slot Slot for rendering of day content. Slot scope is available through `v-slot="{ <propertyName> }"`, e.g. `v-slot="{ date, focused }"`.\n                    @binding {FDate} date Date of day.\n                    @binding {bool} focused If month component is focused or not.\n                    '),
+                  _renderSlot15(_ctx.$slots, "default", {
                     date: day,
                     focused: _ctx.focused
                   })
@@ -5912,37 +5843,37 @@ function render19(_ctx, _cache, $props, $setup, $data, $options) {
               128
               /* KEYED_FRAGMENT */
             )),
-            _ctx.getDayEndOffset(week.days) ? (_openBlock19(), _createElementBlock15("td", {
+            _ctx.getDayEndOffset(week.days) ? (_openBlock18(), _createElementBlock15("td", {
               key: 2,
               class: "calendar-month__cell",
               colspan: _ctx.getDayEndOffset(week.days),
               "aria-hidden": "true"
-            }, null, 8, _hoisted_82)) : _createCommentVNode17("v-if", true)
+            }, null, 8, _hoisted_82)) : _createCommentVNode16("v-if", true)
           ]);
         }),
         128
         /* KEYED_FRAGMENT */
       )),
-      _ctx.weeks.length < 5 ? (_openBlock19(), _createElementBlock15("tr", _hoisted_92, [
+      _ctx.weeks.length < 5 ? (_openBlock18(), _createElementBlock15("tr", _hoisted_92, [
         _createElementVNode13("td", {
           class: "calendar-month__cell",
           colspan: _ctx.totalCols,
           "aria-hidden": "true"
         }, null, 8, _hoisted_102)
-      ])) : _createCommentVNode17("v-if", true),
-      _ctx.weeks.length < 6 ? (_openBlock19(), _createElementBlock15("tr", _hoisted_114, [
+      ])) : _createCommentVNode16("v-if", true),
+      _ctx.weeks.length < 6 ? (_openBlock18(), _createElementBlock15("tr", _hoisted_114, [
         _createElementVNode13("td", {
           class: "calendar-month__cell",
           colspan: _ctx.totalCols,
           "aria-hidden": "true"
         }, null, 8, _hoisted_122)
-      ])) : _createCommentVNode17("v-if", true)
+      ])) : _createCommentVNode16("v-if", true)
     ])
   ], 40, _hoisted_113);
 }
 
 // packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue
-ICalendarMonthGrid_default.render = render19;
+ICalendarMonthGrid_default.render = render18;
 ICalendarMonthGrid_default.__file = "packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue";
 var ICalendarMonthGrid_default2 = ICalendarMonthGrid_default;
 
@@ -6010,7 +5941,7 @@ function getMessage($t2, date, minDate, maxDate) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonth.vue?type=script
-var ICalendarMonth_default = defineComponent19({
+var ICalendarMonth_default = defineComponent18({
   name: "ICalendarMonth",
   components: {
     ICalendarMonthGrid: ICalendarMonthGrid_default2
@@ -6110,12 +6041,12 @@ var ICalendarMonth_default = defineComponent19({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonth.vue?type=template
-import { createCommentVNode as _createCommentVNode18, renderSlot as _renderSlot17, withModifiers as _withModifiers5, createElementVNode as _createElementVNode14, resolveComponent as _resolveComponent8, withCtx as _withCtx7, openBlock as _openBlock20, createBlock as _createBlock11 } from "vue";
+import { createCommentVNode as _createCommentVNode17, renderSlot as _renderSlot16, withModifiers as _withModifiers5, createElementVNode as _createElementVNode14, resolveComponent as _resolveComponent8, withCtx as _withCtx6, openBlock as _openBlock19, createBlock as _createBlock10 } from "vue";
 var _hoisted_115 = ["data-date", "tabindex", "onClick", "onKeydown"];
-function render20(_ctx, _cache, $props, $setup, $data, $options) {
+function render19(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_calendar_month_grid = _resolveComponent8("i-calendar-month-grid");
-  return _openBlock20(), _createBlock11(_component_i_calendar_month_grid, { value: _ctx.modelValue }, {
-    default: _withCtx7(({ date }) => [
+  return _openBlock19(), _createBlock10(_component_i_calendar_month_grid, { value: _ctx.modelValue }, {
+    default: _withCtx6(({ date }) => [
       _createElementVNode14("div", {
         ref: date.toString(),
         role: "gridcell",
@@ -6126,8 +6057,8 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _withModifiers5(($event) => _ctx.onClickDay(date), ["stop", "prevent"]),
         onKeydown: ($event) => _ctx.onKeydownDay(date, $event)
       }, [
-        _createCommentVNode18("\n                    @slot Slot for rendering of day content.\n                    @binding {FDate} date The date object for the current day.\n                    @binding {boolean} is-focused Indicates whether the current day is focused.\n                "),
-        _renderSlot17(_ctx.$slots, "default", {
+        _createCommentVNode17("\n                    @slot Slot for rendering of day content.\n                    @binding {FDate} date The date object for the current day.\n                    @binding {boolean} is-focused Indicates whether the current day is focused.\n                "),
+        _renderSlot16(_ctx.$slots, "default", {
           date,
           isFocused: _ctx.isDayFocused(date)
         })
@@ -6139,13 +6070,13 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/calendar/ICalendarMonth.vue
-ICalendarMonth_default.render = render20;
+ICalendarMonth_default.render = render19;
 ICalendarMonth_default.__file = "packages/vue/src/internal-components/calendar/ICalendarMonth.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarNavbar.vue?type=script
-import { capitalize, defineComponent as defineComponent20 } from "vue";
-import { alertScreenReader as alertScreenReader2, ElementIdService as ElementIdService4 } from "@fkui/logic";
-var ICalendarNavbar_default = defineComponent20({
+import { capitalize, defineComponent as defineComponent19 } from "vue";
+import { ElementIdService as ElementIdService4, alertScreenReader as alertScreenReader2 } from "@fkui/logic";
+var ICalendarNavbar_default = defineComponent19({
   name: "ICalendarNavbar",
   components: {
     FIcon: FIcon_default2
@@ -6305,7 +6236,7 @@ var ICalendarNavbar_default = defineComponent20({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarNavbar.vue?type=template
-import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass11, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode19, resolveComponent as _resolveComponent9, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock21, createElementBlock as _createElementBlock16 } from "vue";
+import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass11, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode18, resolveComponent as _resolveComponent9, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock20, createElementBlock as _createElementBlock16 } from "vue";
 var _hoisted_116 = { class: "calendar-navbar" };
 var _hoisted_210 = { class: "calendar-navbar__month" };
 var _hoisted_37 = ["aria-live"];
@@ -6319,17 +6250,17 @@ var _hoisted_73 = ["aria-disabled", "aria-live"];
 var _hoisted_83 = { class: "sr-only" };
 var _hoisted_93 = ["aria-disabled", "aria-live"];
 var _hoisted_103 = { class: "sr-only" };
-function render21(_ctx, _cache, $props, $setup, $data, $options) {
+function render20(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent9("f-icon");
-  return _openBlock21(), _createElementBlock16("div", _hoisted_116, [
+  return _openBlock20(), _createElementBlock16("div", _hoisted_116, [
     _createElementVNode15("div", _hoisted_210, [
       _createElementVNode15("span", {
         class: _normalizeClass11([_ctx.monthTitleClass, "calendar-navbar__month--title"]),
         tabindex: "-1",
         "aria-live": _ctx.isFocused("yearSelectorButton") ? "polite" : "off"
       }, _toDisplayString9(_ctx.currentText), 11, _hoisted_37),
-      _createCommentVNode19(" Button - Open/close year selector "),
-      _ctx.yearSelector ? (_openBlock21(), _createElementBlock16("button", {
+      _createCommentVNode18(" Button - Open/close year selector "),
+      _ctx.yearSelector ? (_openBlock20(), _createElementBlock16("button", {
         key: 0,
         id: `${_ctx.id}`,
         ref: "yearSelectorButton",
@@ -6357,9 +6288,9 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
           class: _normalizeClass11(_ctx.yearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
           name: "arrow-down"
         }, null, 8, ["class"])
-      ], 8, _hoisted_45)) : _createCommentVNode19("v-if", true)
+      ], 8, _hoisted_45)) : _createCommentVNode18("v-if", true)
     ]),
-    !_ctx.yearSelectorOpen ? (_openBlock21(), _createElementBlock16("button", {
+    !_ctx.yearSelectorOpen ? (_openBlock20(), _createElementBlock16("button", {
       key: 0,
       ref: "previousButton",
       class: "calendar-navbar__arrow calendar-navbar__arrow--previous",
@@ -6379,8 +6310,8 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
         class: _normalizeClass11(_ctx.previousIconClasses),
         name: "arrow-right"
       }, null, 8, ["class"])
-    ], 8, _hoisted_73)) : _createCommentVNode19("v-if", true),
-    !_ctx.yearSelectorOpen ? (_openBlock21(), _createElementBlock16("button", {
+    ], 8, _hoisted_73)) : _createCommentVNode18("v-if", true),
+    !_ctx.yearSelectorOpen ? (_openBlock20(), _createElementBlock16("button", {
       key: 1,
       ref: "nextButton",
       class: "calendar-navbar__arrow calendar-navbar__arrow--next",
@@ -6400,16 +6331,15 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
         class: _normalizeClass11(_ctx.nextIconClasses),
         name: "arrow-right"
       }, null, 8, ["class"])
-    ], 8, _hoisted_93)) : _createCommentVNode19("v-if", true)
+    ], 8, _hoisted_93)) : _createCommentVNode18("v-if", true)
   ]);
 }
 
 // packages/vue/src/internal-components/calendar/ICalendarNavbar.vue
-ICalendarNavbar_default.render = render21;
+ICalendarNavbar_default.render = render20;
 ICalendarNavbar_default.__file = "packages/vue/src/internal-components/calendar/ICalendarNavbar.vue";
 
 // packages/vue/src/internal-components/combobox/useCombobox.ts
-import { ElementIdService as ElementIdService5, isEmpty as isEmpty2 } from "@fkui/logic";
 import {
   computed as computed2,
   nextTick as nextTick2,
@@ -6417,6 +6347,7 @@ import {
   ref,
   watchEffect as watchEffect2
 } from "vue";
+import { ElementIdService as ElementIdService5, isEmpty as isEmpty2 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/combobox/filter-options.ts
 import { isEmpty } from "@fkui/logic";
@@ -6468,12 +6399,12 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=template
-import { createCommentVNode as _createCommentVNode20, renderList as _renderList6, Fragment as _Fragment8, openBlock as _openBlock22, createElementBlock as _createElementBlock17, toDisplayString as _toDisplayString10, withModifiers as _withModifiers7, normalizeClass as _normalizeClass12, createElementVNode as _createElementVNode16, withCtx as _withCtx8, createVNode as _createVNode7 } from "vue";
+import { createCommentVNode as _createCommentVNode19, renderList as _renderList6, Fragment as _Fragment8, openBlock as _openBlock21, createElementBlock as _createElementBlock17, toDisplayString as _toDisplayString10, withModifiers as _withModifiers7, normalizeClass as _normalizeClass12, createElementVNode as _createElementVNode16, withCtx as _withCtx7, createVNode as _createVNode7 } from "vue";
 var _hoisted_117 = { class: "combobox" };
 var _hoisted_211 = ["id"];
 var _hoisted_38 = ["id", "aria-selected", "onClick"];
-function render22(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock22(), _createElementBlock17("div", _hoisted_117, [
+function render21(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock21(), _createElementBlock17("div", _hoisted_117, [
     _createVNode7($setup["IPopupListbox"], {
       "is-open": $props.isOpen,
       anchor: $props.inputNode,
@@ -6482,8 +6413,8 @@ function render22(_ctx, _cache, $props, $setup, $data, $options) {
       class: "combobox__listbox",
       onClose: $setup.onListboxClose
     }, {
-      default: _withCtx8(() => [
-        _createCommentVNode20(" [html-validate-disable-next prefer-native-element] "),
+      default: _withCtx7(() => [
+        _createCommentVNode19(" [html-validate-disable-next prefer-native-element] "),
         _createElementVNode16("ul", {
           id: $props.id,
           ref: "listbox",
@@ -6491,11 +6422,11 @@ function render22(_ctx, _cache, $props, $setup, $data, $options) {
           "aria-label": "F\xF6rslag",
           class: "combobox__listbox__list"
         }, [
-          (_openBlock22(true), _createElementBlock17(
+          (_openBlock21(true), _createElementBlock17(
             _Fragment8,
             null,
             _renderList6($props.options, (item) => {
-              return _openBlock22(), _createElementBlock17("li", {
+              return _openBlock21(), _createElementBlock17("li", {
                 id: $setup.isOptionActive(item) ? $props.activeOptionId : void 0,
                 key: item,
                 role: "option",
@@ -6516,7 +6447,7 @@ function render22(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/combobox/IComboboxDropdown.vue
-IComboboxDropdown_default.render = render22;
+IComboboxDropdown_default.render = render21;
 IComboboxDropdown_default.__file = "packages/vue/src/internal-components/combobox/IComboboxDropdown.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxToggleButton.vue?type=script
@@ -6538,10 +6469,10 @@ var IComboboxToggleButton_default = /* @__PURE__ */ _defineComponent3({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxToggleButton.vue?type=template
-import { createVNode as _createVNode8, openBlock as _openBlock23, createElementBlock as _createElementBlock18 } from "vue";
+import { createVNode as _createVNode8, openBlock as _openBlock22, createElementBlock as _createElementBlock18 } from "vue";
 var _hoisted_118 = ["aria-label"];
-function render23(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock23(), _createElementBlock18("button", {
+function render22(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock22(), _createElementBlock18("button", {
     class: "combobox__button",
     type: "button",
     "aria-label": $setup.ariaLabel,
@@ -6556,14 +6487,92 @@ function render23(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/combobox/IComboboxToggleButton.vue
-IComboboxToggleButton_default.render = render23;
+IComboboxToggleButton_default.render = render22;
 IComboboxToggleButton_default.__file = "packages/vue/src/internal-components/combobox/IComboboxToggleButton.vue";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
+import { defineComponent as defineComponent20 } from "vue";
+var FExpand_default = defineComponent20({
+  name: "FExpand",
+  data() {
+    return {
+      height: 0,
+      initialStyle: {
+        overflow: "hidden",
+        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
+      },
+      hiddenStyle: {
+        height: "auto",
+        position: "absolute",
+        visibility: "hidden"
+      },
+      visibleStyle: {
+        width: "",
+        position: "",
+        visibility: "",
+        height: "0px"
+      },
+      openedStyle: {
+        height: "auto"
+      }
+    };
+  },
+  methods: {
+    enter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.initialStyle);
+      Object.assign(htmlElement.style, this.hiddenStyle);
+      htmlElement.style.width = getComputedStyle(element).width;
+      const height = getComputedStyle(element).height;
+      Object.assign(htmlElement.style, this.visibleStyle);
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        this.height = parseInt(height, 10);
+        htmlElement.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.openedStyle);
+    },
+    leave(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const height = getComputedStyle(element).height;
+      htmlElement.style.height = height;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        Object.assign(htmlElement.style, this.visibleStyle);
+      });
+    }
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=template
+import { renderSlot as _renderSlot17, Transition as _Transition, withCtx as _withCtx8, openBlock as _openBlock23, createBlock as _createBlock11 } from "vue";
+function render23(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock23(), _createBlock11(_Transition, {
+    onEnter: _ctx.enter,
+    onAfterEnter: _ctx.afterEnter,
+    onLeave: _ctx.leave
+  }, {
+    default: _withCtx8(() => [
+      _renderSlot17(_ctx.$slots, "default", { height: _ctx.height })
+    ]),
+    _: 3
+    /* FORWARDED */
+  }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
+}
+
+// packages/vue/src/components/FExpand/FExpand.vue
+FExpand_default.render = render23;
+FExpand_default.__file = "packages/vue/src/components/FExpand/FExpand.vue";
+var FExpand_default2 = FExpand_default;
 
 // packages/vue/src/components/FTooltip/tooltip-attach-to.ts
 var tooltipAttachTo = Symbol("tooltipAttachTo");
 
 // packages/vue/src/components/FTooltip/use-animation.ts
-import { ref as ref3, computed as computed3, onMounted as onMounted3, watchEffect as watchEffect4 } from "vue";
+import { computed as computed3, onMounted as onMounted3, ref as ref3, watchEffect as watchEffect4 } from "vue";
 var initialized = false;
 var reducedMotion = ref3(false);
 function useAnimation(options) {
@@ -6916,13 +6925,6 @@ function render24(_ctx, _cache, $props, $setup, $data, $options) {
 FTooltip_default.render = render24;
 FTooltip_default.__file = "packages/vue/src/components/FTooltip/FTooltip.vue";
 
-// packages/vue/src/components/FFieldset/label-classes.ts
-function* labelClasses(options) {
-  const { labelClass } = options;
-  yield "fieldset__label";
-  yield labelClass;
-}
-
 // packages/vue/src/components/FFieldset/content-classes.ts
 function* contentClasses(options) {
   const { hasRadiobutton, hasCheckbox, contentClass } = options;
@@ -6934,6 +6936,13 @@ function* contentClasses(options) {
     yield "checkbox-group__content";
   }
   yield contentClass;
+}
+
+// packages/vue/src/components/FFieldset/label-classes.ts
+function* labelClasses(options) {
+  const { labelClass } = options;
+  yield "fieldset__label";
+  yield labelClass;
 }
 
 // packages/vue/src/components/FFieldset/use-fieldset.ts
