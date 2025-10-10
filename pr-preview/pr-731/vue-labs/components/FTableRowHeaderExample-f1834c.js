@@ -31,7 +31,7 @@ import { FSortFilterDataset } from "@fkui/vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, unref, withCtx, createTextVNode, createBlock, createCommentVNode, toDisplayString, normalizeClass, provide, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, unref, withCtx, createTextVNode, createBlock, createCommentVNode, toDisplayString, normalizeClass, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, IFlex, IFlexItem, FIcon, IComboboxDropdown, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
@@ -2926,23 +2926,11 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$5 = {
-  key: 0,
-  class: "table-ng__row"
-};
-var _hoisted_2$2 = {
-  key: 0,
-  tabindex: "-1",
-  class: "table-ng__column"
-};
-var _hoisted_3$2 = ["aria-level"];
-var _hoisted_4$1 = ["aria-label", "aria-expanded"];
+var _hoisted_1$5 = ["aria-level"];
+var _hoisted_2$2 = ["aria-label", "aria-expanded"];
 var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableRow",
   props: {
-    renderHeader: {
-      type: Boolean
-    },
     rowKey: {
       default: ""
     },
@@ -2965,7 +2953,6 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   }) {
     const emit = __emit;
     const expandableRef = useTemplateRef("expandable");
-    provide("renderHeader", __props.renderHeader);
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     const expandLabel = computed(() => __props.isExpanded ? "St\xE4ng rad" : "Expandera rad");
     function onActivateCell(e) {
@@ -2976,8 +2963,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
       }
     }
     return (_ctx, _cache) => {
-      return __props.renderHeader ? (openBlock(), createElementBlock("tr", _hoisted_1$5, [__props.isTreegrid ? (openBlock(), createElementBlock("th", _hoisted_2$2)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")])) : (openBlock(), createElementBlock("tr", {
-        key: 1,
+      return openBlock(), createElementBlock("tr", {
         class: "table-ng__row",
         "aria-level": __props.ariaLevel
       }, [__props.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
@@ -2996,12 +2982,12 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
       }, [createVNode(unref(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_4$1)], 32)) : (openBlock(), createElementBlock("td", {
+      }, null, 8, ["name"])], 8, _hoisted_2$2)], 32)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "expandable",
         class: "table-ng__cell",
         onTableActivateCell: onActivateCell
-      }, null, 544))], 64)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_3$2));
+      }, null, 544))], 64)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$5);
     };
   }
 });
