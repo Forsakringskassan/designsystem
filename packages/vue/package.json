@@ -88,7 +88,7 @@
     "@fkui/theme-default": "6.21.0",
     "@forsakringskassan/vite-lib-config": "4.2.1",
     "@vue/test-utils": "2.4.6",
-    "cypress": "15.3.0",
+    "cypress": "15.4.0",
     "esbuild": "0.25.10",
     "flush-promises": "1.0.2",
     "glob": "11.0.3",
