@@ -5298,6 +5298,11 @@ input[type=search]:focus,
 .table-ng tbody .table-ng__row--empty {
   text-align: center;
 }
+.table-ng__column__description {
+  background: transparent;
+  color: var(--f-text-color-discrete);
+  font-weight: var(--f-font-weight-normal);
+}
 .table-ng--striped tbody .table-ng__row:nth-child(even) {
   background: var(--f-background-grid-striped);
   color: var(--f-text-color-default);
