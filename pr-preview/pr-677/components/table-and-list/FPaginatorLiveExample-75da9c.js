@@ -28,17 +28,9 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FPaginator/examples/FPaginatorLiveExample.vue:FPaginatorLiveExample-b74164.js
+// virtual-entry:virtual:packages/vue/src/components/FPaginator/examples/FPaginatorLiveExample.vue:FPaginatorLiveExample-75da9c.js
 import { defineComponent } from "vue";
-import {
-  FDataTable,
-  FFieldset,
-  FPagination,
-  FPaginator,
-  FRadioField,
-  FSelectField,
-  FTableColumn
-} from "@fkui/vue";
+import { FDataTable, FPagination, FPaginator, FSelectField, FTableColumn } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 // packages/vue/src/components/FPaginator/examples/person-data.ts
@@ -145,11 +137,11 @@ var persons = [
   { id: 100, firstName: "Jeni", lastName: "Gummie" }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FPaginator/examples/FPaginatorLiveExample.vue:FPaginatorLiveExample-b74164.js
+// virtual-entry:virtual:packages/vue/src/components/FPaginator/examples/FPaginatorLiveExample.vue:FPaginatorLiveExample-75da9c.js
 import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
   name: "FPaginationLiveExample",
-  components: { FRadioField, FSelectField, LiveExample },
+  components: { FSelectField, LiveExample },
   data() {
     return {
       numberOfPagesOptions: [5, 6, 7, 8, 9],
@@ -160,10 +152,8 @@ var exampleComponent = defineComponent({
     components() {
       return {
         FDataTable,
-        FFieldset,
         FPagination,
         FPaginator,
-        FRadioField,
         FSelectField,
         FTableColumn
       };
@@ -268,7 +258,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b74164"
+  selector: "#example-75da9c"
 });
 export {
   render
