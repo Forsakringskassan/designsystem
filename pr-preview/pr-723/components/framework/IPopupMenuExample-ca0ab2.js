@@ -1663,42 +1663,6 @@ import { defineComponent as defineComponent14 } from "vue";
 import { defineComponent as defineComponent13 } from "vue";
 import { focus as focus6 } from "@fkui/logic";
 
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
-import { defineComponent as defineComponent12 } from "vue";
-import { debounce, handleTab, pushFocus as pushFocus2, popFocus as popFocus2 } from "@fkui/logic";
-
-// packages/vue/src/config/config.ts
-import { configLogic } from "@fkui/logic";
-var popupContainer = document.body;
-var production = true;
-var config = {
-  buttonOrder: 1 /* RIGHT_TO_LEFT */,
-  teleportTarget: document.body,
-  get popupContainer() {
-    if (typeof popupContainer === "string") {
-      const element = document.querySelector(popupContainer);
-      if (!element) {
-        throw new Error(
-          `Failed to find popupContainer element from selector "${popupContainer}"`
-        );
-      }
-      return element;
-    } else {
-      return popupContainer;
-    }
-  },
-  set popupContainer(value) {
-    popupContainer = value;
-  },
-  set production(value) {
-    production = value;
-    configLogic.production = value;
-  },
-  get production() {
-    return production;
-  }
-};
-
 // packages/vue/src/utils/ListUtils.ts
 import { isSet } from "@fkui/logic";
 
@@ -1795,18 +1759,197 @@ var EventBus = {
   $off
 };
 
+// packages/vue/src/config/config.ts
+import { configLogic } from "@fkui/logic";
+var popupContainer = document.body;
+var production = true;
+var config = {
+  buttonOrder: 1 /* RIGHT_TO_LEFT */,
+  teleportTarget: document.body,
+  get popupContainer() {
+    if (typeof popupContainer === "string") {
+      const element = document.querySelector(popupContainer);
+      if (!element) {
+        throw new Error(
+          `Failed to find popupContainer element from selector "${popupContainer}"`
+        );
+      }
+      return element;
+    } else {
+      return popupContainer;
+    }
+  },
+  set popupContainer(value) {
+    popupContainer = value;
+  },
+  set production(value) {
+    production = value;
+    configLogic.production = value;
+  },
+  get production() {
+    return production;
+  }
+};
+
 // packages/vue/src/utils/mount-component/mount-component.ts
 import { createApp as createApp2 } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
 import { defineComponent as defineComponent4 } from "vue";
-import { ElementIdService, pushFocus, popFocus, findTabbableElements, focus as focus2 } from "@fkui/logic";
+import { ElementIdService, findTabbableElements, focus as focus2, popFocus, pushFocus } from "@fkui/logic";
+
+// packages/vue/src/plugins/translation/translate.ts
+import { TranslationService } from "@fkui/logic";
+function translate(key, defaultValueOrArgs, args) {
+  const { provider } = TranslationService;
+  return provider.translate(key, defaultValueOrArgs, args);
+}
+
+// packages/vue/src/plugins/translation/TranslationPlugin.ts
+var TranslationMixin = {
+  methods: {
+    $t: translate
+  }
+};
+
+// packages/vue/src/plugins/validation/ValidationPlugin.ts
+var import_isEqual = __toESM(require_isEqual());
+import {
+  ValidationService,
+  availableValidators,
+  isValidatableHTMLElement
+} from "@fkui/logic";
+
+// packages/vue/src/types/ErrorViewData.ts
+var ErrorViewData = class {
+  hasError;
+  payload;
+  constructor(hasError = false, payload) {
+    this.hasError = hasError;
+    this.payload = payload;
+  }
+};
+
+// packages/vue/src/plugins/error/ErrorPlugin.ts
+var UNHANDLED_ERROR_EVENT = "unhandled-error";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
+import { defineComponent as defineComponent2 } from "vue";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=script
+import { defineComponent } from "vue";
+var FErrorPage_default = defineComponent({
+  name: "FErrorPage",
+  props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
+    payload: {
+      type: Object,
+      required: false,
+      default: null
+    }
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+var _hoisted_1 = { "data-test": "f-error-page" };
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock(), _createElementBlock("div", _hoisted_1, [..._cache[0] || (_cache[0] = [
+    _createElementVNode(
+      "h1",
+      null,
+      "Fel",
+      -1
+      /* CACHED */
+    ),
+    _createElementVNode(
+      "p",
+      null,
+      "Ett fel har uppst\xE5tt.",
+      -1
+      /* CACHED */
+    ),
+    _createElementVNode(
+      "a",
+      { href: "/" },
+      "G\xE5 till startsidan",
+      -1
+      /* CACHED */
+    )
+  ])]);
+}
+
+// packages/vue/src/plugins/error/FErrorPage.vue
+FErrorPage_default.render = render;
+FErrorPage_default.__file = "packages/vue/src/plugins/error/FErrorPage.vue";
+var FErrorPage_default2 = FErrorPage_default;
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
+var FErrorHandlingApp_default = defineComponent2({
+  name: "FErrorHandlingApp",
+  props: {
+    defaultComponent: {
+      type: [Function, Object],
+      required: false,
+      default: void 0
+    },
+    errorComponent: {
+      type: [Function, Object],
+      required: false,
+      default: FErrorPage_default2
+    }
+  },
+  data() {
+    return new ErrorViewData();
+  },
+  watch: {
+    $route() {
+      this.hasError = false;
+    }
+  },
+  created() {
+    EventBus.$on(UNHANDLED_ERROR_EVENT, (payload) => {
+      this.hasError = true;
+      this.payload = payload;
+    });
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=template
+import { resolveDynamicComponent as _resolveDynamicComponent, openBlock as _openBlock2, createBlock as _createBlock, renderSlot as _renderSlot, createElementBlock as _createElementBlock2 } from "vue";
+function render2(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock2(), _createElementBlock2("div", null, [
+    _ctx.hasError ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
+      key: 0,
+      payload: _ctx.payload
+    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot(_ctx.$slots, "default", { key: 2 })
+  ]);
+}
+
+// packages/vue/src/plugins/error/FErrorHandlingApp.vue
+FErrorHandlingApp_default.render = render2;
+FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
+
+// packages/vue/src/plugins/format/formatters.ts
+import { DateFormat, FDate as FDate2 } from "@fkui/date";
+import {
+  formatNumber as numberFormater,
+  parseBankgiro,
+  parseDate,
+  parseOrganisationsnummer,
+  parsePersonnummer,
+  parsePlusgiro,
+  parsePostalCode
+} from "@fkui/logic";
+
+// packages/vue/src/plugins/format/is-date-range.ts
+import { FDate } from "@fkui/date";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
-import { defineComponent } from "vue";
+import { defineComponent as defineComponent3 } from "vue";
 var Flip = ["horizontal", "vertical"];
 var Rotate = ["90", "180", "270"];
-var FIcon_default = defineComponent({
+var FIcon_default = defineComponent3({
   name: "FIcon",
   inheritAttrs: false,
   props: {
@@ -1889,23 +2032,23 @@ var FIcon_default = defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=template
-import { createCommentVNode as _createCommentVNode, renderSlot as _renderSlot, createElementVNode as _createElementVNode, mergeProps as _mergeProps, openBlock as _openBlock, createElementBlock as _createElementBlock, Fragment as _Fragment } from "vue";
-var _hoisted_1 = ["aria-hidden"];
+import { createCommentVNode as _createCommentVNode2, renderSlot as _renderSlot2, createElementVNode as _createElementVNode2, mergeProps as _mergeProps, openBlock as _openBlock3, createElementBlock as _createElementBlock3, Fragment as _Fragment } from "vue";
+var _hoisted_12 = ["aria-hidden"];
 var _hoisted_2 = ["href"];
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock(
+function render3(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock3(), _createElementBlock3(
     _Fragment,
     null,
     [
-      _createCommentVNode(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
-      (_openBlock(), _createElementBlock("svg", _mergeProps(_ctx.$attrs, {
+      _createCommentVNode2(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
+      (_openBlock3(), _createElementBlock3("svg", _mergeProps(_ctx.$attrs, {
         focusable: "false",
         class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
         "aria-hidden": _ctx.ariaHidden
       }), [
-        _renderSlot(_ctx.$slots, "default"),
-        _createElementVNode("use", { href: _ctx.spriteId }, null, 8, _hoisted_2)
-      ], 16, _hoisted_1))
+        _renderSlot2(_ctx.$slots, "default"),
+        _createElementVNode2("use", { href: _ctx.spriteId }, null, 8, _hoisted_2)
+      ], 16, _hoisted_12))
     ],
     2112
     /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
@@ -1913,178 +2056,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FIcon/FIcon.vue
-FIcon_default.render = render;
+FIcon_default.render = render3;
 FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
 var FIcon_default2 = FIcon_default;
-
-// packages/vue/src/plugins/translation/translate.ts
-import { TranslationService } from "@fkui/logic";
-function translate(key, defaultValueOrArgs, args) {
-  const { provider } = TranslationService;
-  return provider.translate(key, defaultValueOrArgs, args);
-}
-
-// packages/vue/src/plugins/translation/TranslationPlugin.ts
-var TranslationMixin = {
-  methods: {
-    $t: translate
-  }
-};
-
-// packages/vue/src/plugins/validation/ValidationPlugin.ts
-var import_isEqual = __toESM(require_isEqual());
-import {
-  availableValidators,
-  isValidatableHTMLElement,
-  ValidationService
-} from "@fkui/logic";
-
-// packages/vue/src/types/ErrorViewData.ts
-var ErrorViewData = class {
-  hasError;
-  payload;
-  constructor(hasError = false, payload) {
-    this.hasError = hasError;
-    this.payload = payload;
-  }
-};
-
-// packages/vue/src/plugins/error/ErrorPlugin.ts
-var UNHANDLED_ERROR_EVENT = "unhandled-error";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
-import { defineComponent as defineComponent3 } from "vue";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=script
-import { defineComponent as defineComponent2 } from "vue";
-var FErrorPage_default = defineComponent2({
-  name: "FErrorPage",
-  props: {
-    /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
-    payload: {
-      type: Object,
-      required: false,
-      default: null
-    }
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
-import { createElementVNode as _createElementVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock2 } from "vue";
-var _hoisted_12 = { "data-test": "f-error-page" };
-function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2("div", _hoisted_12, [..._cache[0] || (_cache[0] = [
-    _createElementVNode2(
-      "h1",
-      null,
-      "Fel",
-      -1
-      /* CACHED */
-    ),
-    _createElementVNode2(
-      "p",
-      null,
-      "Ett fel har uppst\xE5tt.",
-      -1
-      /* CACHED */
-    ),
-    _createElementVNode2(
-      "a",
-      { href: "/" },
-      "G\xE5 till startsidan",
-      -1
-      /* CACHED */
-    )
-  ])]);
-}
-
-// packages/vue/src/plugins/error/FErrorPage.vue
-FErrorPage_default.render = render2;
-FErrorPage_default.__file = "packages/vue/src/plugins/error/FErrorPage.vue";
-var FErrorPage_default2 = FErrorPage_default;
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
-var FErrorHandlingApp_default = defineComponent3({
-  name: "FErrorHandlingApp",
-  props: {
-    defaultComponent: {
-      type: [Function, Object],
-      required: false,
-      default: void 0
-    },
-    errorComponent: {
-      type: [Function, Object],
-      required: false,
-      default: FErrorPage_default2
-    }
-  },
-  data() {
-    return new ErrorViewData();
-  },
-  watch: {
-    $route() {
-      this.hasError = false;
-    }
-  },
-  created() {
-    EventBus.$on(UNHANDLED_ERROR_EVENT, (payload) => {
-      this.hasError = true;
-      this.payload = payload;
-    });
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=template
-import { resolveDynamicComponent as _resolveDynamicComponent, openBlock as _openBlock3, createBlock as _createBlock, renderSlot as _renderSlot2, createElementBlock as _createElementBlock3 } from "vue";
-function render3(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock3(), _createElementBlock3("div", null, [
-    _ctx.hasError ? (_openBlock3(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
-      key: 0,
-      payload: _ctx.payload
-    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock3(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot2(_ctx.$slots, "default", { key: 2 })
-  ]);
-}
-
-// packages/vue/src/plugins/error/FErrorHandlingApp.vue
-FErrorHandlingApp_default.render = render3;
-FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
-
-// packages/vue/src/plugins/format/formatters.ts
-import { DateFormat, FDate as FDate2 } from "@fkui/date";
-import {
-  formatNumber as numberFormater,
-  parseBankgiro,
-  parseDate,
-  parseOrganisationsnummer,
-  parsePersonnummer,
-  parsePlusgiro,
-  parsePostalCode
-} from "@fkui/logic";
-
-// packages/vue/src/plugins/format/is-date-range.ts
-import { FDate } from "@fkui/date";
-
-// packages/vue/src/components/FModal/sizes.ts
-var sizes = [
-  "",
-  "small",
-  "medium",
-  "large",
-  "fullscreen",
-  "fullwidth"
-];
-function sizeClass(size) {
-  if (!sizes.includes(size)) {
-    throw new Error(`"${size}" is not a valid size`);
-  }
-  if (!size) {
-    return [];
-  } else if (size === "fullscreen") {
-    return [`modal__dialog-container--fullwidth`];
-  } else {
-    return [`modal__dialog-container--${size}`];
-  }
-}
 
 // packages/vue/src/components/FModal/focus-element.ts
 import { focus } from "@fkui/logic";
@@ -2113,6 +2087,28 @@ function elementIsRadioButton(element) {
 }
 function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
+}
+
+// packages/vue/src/components/FModal/sizes.ts
+var sizes = [
+  "",
+  "small",
+  "medium",
+  "large",
+  "fullscreen",
+  "fullwidth"
+];
+function sizeClass(size) {
+  if (!sizes.includes(size)) {
+    throw new Error(`"${size}" is not a valid size`);
+  }
+  if (!size) {
+    return [];
+  } else if (size === "fullscreen") {
+    return [`modal__dialog-container--fullwidth`];
+  } else {
+    return [`modal__dialog-container--${size}`];
+  }
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
@@ -2639,11 +2635,11 @@ FConfirmModal_default.__file = "packages/vue/src/components/FModal/FConfirmModal
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=script
 import { defineComponent as defineComponent11 } from "vue";
-import { ElementIdService as ElementIdService3, ValidationService as ValidationService3, TranslationService as TranslationService2 } from "@fkui/logic";
+import { ElementIdService as ElementIdService3, TranslationService as TranslationService2, ValidationService as ValidationService3 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
 import { defineComponent as defineComponent10 } from "vue";
-import { ValidationService as ValidationService2, focus as focus4, ElementIdService as ElementIdService2 } from "@fkui/logic";
+import { ElementIdService as ElementIdService2, ValidationService as ValidationService2, focus as focus4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
 import { defineComponent as defineComponent8 } from "vue";
@@ -3787,6 +3783,10 @@ function getAbsolutePosition(src) {
 // packages/vue/src/utils/internal-key.ts
 var internalKey = Symbol("internal-key");
 
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
+import { defineComponent as defineComponent12 } from "vue";
+import { debounce, handleTab, popFocus as popFocus2, pushFocus as pushFocus2 } from "@fkui/logic";
+
 // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
 function offset(page, el) {
   const rect = el.getBoundingClientRect();
@@ -3997,6 +3997,10 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
   }
 }
 
+// packages/vue/src/internal-components/IPopup/constants.ts
+var MIN_DESKTOP_WIDTH = 640;
+var POPUP_SPACING = 20;
+
 // packages/vue/src/internal-components/IPopup/get-container.ts
 function getContainer(element, prop) {
   if (prop) {
@@ -4019,10 +4023,6 @@ function getFocusableElement(rootElement, callback) {
   const elements = findTabbableElements2(popupElement);
   return elements[0] ?? null;
 }
-
-// packages/vue/src/internal-components/IPopup/constants.ts
-var MIN_DESKTOP_WIDTH = 640;
-var POPUP_SPACING = 20;
 
 // packages/vue/src/internal-components/IPopup/is-teleport-disabled.ts
 function isTeleportDisabled(options) {
