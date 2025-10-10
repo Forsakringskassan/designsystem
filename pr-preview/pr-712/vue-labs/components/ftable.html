@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FTable - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-ea899f.css"
+            href="../assets/docs-c902e2.css"
             crossorigin
-            integrity="sha384-TWU6Fx/ULQRzJjBkXqmpqPg+ISBxoSmRjGOShcG9jxBgKjFXClPautRXlO13YN69"
+            integrity="sha384-HfKgc7PkESjuAyjJxYUuPmlHBNDsPQ/ikJrvlG82Xc8Na68MJfpcNa+5YgJgruu5"
             
         />
         <link
@@ -23,15 +23,15 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-fd4a2d.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-09d3d2.js",
-    "@fkui/date": "../assets/vendor-fkui-date-0135ed.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-510a2f.js"
+    "@fkui/logic": "../assets/vendor-fkui-logic-cb1d47.js",
+    "@fkui/date": "../assets/vendor-fkui-date-024cc2.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-9d4e66.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd4a2d.js": "sha384-kmC4T0C5ZzwbUEm2knIR443x2ILwlEZgPawQWZvqbegtVKkhK/F5ifTqm7n0M6rE",
-    "../assets/vendor-fkui-logic-09d3d2.js": "sha384-yyq9t5qGCT0boKTCjLxwUh+Swq3piDsG7G9VAQVd0Tg2p+8WWi82uV1BcrEANIBI",
-    "../assets/vendor-fkui-date-0135ed.js": "sha384-VbttNGe46vzs2V4L3UUssyfBddbuQjvmByr6suMYjhdn/IsHzzHrw3YkpC/+RTVz",
-    "../assets/vendor-fkui-vue-510a2f.js": "sha384-dzfid1ntJ+zuoUvxC7WrDbcadmM69EdYNasvvG5BSQD2F8Hsy/MdBbA8IDTfUMqv"
+    "../assets/vendor-fkui-logic-cb1d47.js": "sha384-cYyAMpzX6o+Mx1ahOrF5blFq85m9utKy9qg8GmepiyZ+c/Ha6q7usDcijN+bsdK1",
+    "../assets/vendor-fkui-date-024cc2.js": "sha384-p0OHhMI0IsoyIh+/1Cyvu2qD+riXRyL6F/I3NNxpdud8wBwA0pXVP6Vdo3y0bdMO",
+    "../assets/vendor-fkui-vue-9d4e66.js": "sha384-Fh40zrvg+rFDp/Oz4Jf+Cw0r4BzgpPzdooYK8k5yBLFNZN8CEpo3nIgBcxI5XpYR"
   }
 }
         </script><script
@@ -89,7 +89,7 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.20.1
+        6.21.0
     </span>
 </div>
 </div>
@@ -178,7 +178,7 @@
                                 
                                 <li><a href="#expanderbar_tabell">Expanderbar tabell</a></li>
                                 
-                                <li><a href="#radrubriker">Radrubriker</a></li>
+                                <li><a href="#radrubriker_och_kolumnbeskrivningar">Radrubriker och kolumnbeskrivningar</a></li>
                                 
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
@@ -201,7 +201,7 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-19a575"></div>
+        <div id="example-f4d3e4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -227,7 +227,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-19a575.js"></script>
+        <script type="module" src="./FTableExample-f4d3e4.js"></script>
     </div>
                 <div>
             <button
@@ -247,9 +247,9 @@ body {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
@@ -524,7 +524,7 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-c6cda6"></div>
+        <div id="example-842cdb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -550,7 +550,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRadioExample-c6cda6.js"></script>
+        <script type="module" src="./FTableRadioExample-842cdb.js"></script>
     </div>
                 <div>
             <button
@@ -570,8 +570,8 @@ body {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
@@ -834,7 +834,7 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-34d049"></div>
+        <div id="example-223dc0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -860,7 +860,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExpandableRows-34d049.js"></script>
+        <script type="module" src="./FTableExpandableRows-223dc0.js"></script>
     </div>
                 <div>
             <button
@@ -880,8 +880,8 @@ body {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
@@ -1099,7 +1099,7 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="radrubriker"><a class="header-anchor" href="#radrubriker">Radrubriker</a></h2>
+        <h2 id="radrubriker_och_kolumnbeskrivningar"><a class="header-anchor" href="#radrubriker_och_kolumnbeskrivningar">Radrubriker och kolumnbeskrivningar</a></h2>
             <div
                 id="example-9d5dbb"
                 class="code-preview code-preview--default"
@@ -1109,13 +1109,13 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-7d58f0"></div>
+        <div id="example-e277d3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRowHeaderExample-7d58f0.js"></script>
+        <script type="module" src="./FTableRowHeaderExample-e277d3.js"></script>
     </div>
                 <div>
             <button
@@ -1135,9 +1135,9 @@ interface <span class="hljs-title class_">Row</span> {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
@@ -1180,6 +1180,7 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Formatterad text&quot;</span>,
+        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Belopp&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">formatNumber</span>(row.<span class="hljs-property">antal</span>) ?? <span class="hljs-string">&quot;&quot;</span>;
         },
@@ -1189,6 +1190,7 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Redigerbar text&quot;</span>,
+        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Förmån&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;level&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
@@ -1449,23 +1451,6 @@ interface <span class="hljs-title class_">Row</span> {
                                 ><a class="docs-api__anchor" href="#ftable-prop-selectable"
                                     ><span class="docs-api__name"
                                         >selectable</span
-                                    >: union</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            &#8208;
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ftable-prop-tabfallback"
-                                ><a class="docs-api__anchor" href="#ftable-prop-tabfallback"
-                                    ><span class="docs-api__name"
-                                        >tabFallback</span
                                     >: union</a
                                 ></code
                             >
