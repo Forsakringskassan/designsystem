@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FPagination/examples/FPaginationLiveExample.vue:FPaginationLiveExample-ccb64d.js
+// virtual-entry:virtual:packages/vue/src/components/FPagination/examples/FPaginationLiveExample.vue:FPaginationLiveExample-f46101.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
@@ -147,7 +147,7 @@ var persons = [
   { id: 100, firstName: "Jeni", lastName: "Gummie" }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FPagination/examples/FPaginationLiveExample.vue:FPaginationLiveExample-ccb64d.js
+// virtual-entry:virtual:packages/vue/src/components/FPagination/examples/FPaginationLiveExample.vue:FPaginationLiveExample-f46101.js
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
   name: "FPaginationLiveExample",
@@ -282,7 +282,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               _createElementVNode(
                 "kbd",
                 null,
-                "PgUp",
+                "Page Up",
                 -1
                 /* CACHED */
               ),
@@ -294,7 +294,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               _createElementVNode(
                 "kbd",
                 null,
-                "PgDn",
+                "Page Down",
                 -1
                 /* CACHED */
               ),
@@ -393,7 +393,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ccb64d"
+  selector: "#example-f46101"
 });
 export {
   render
