@@ -6,6 +6,7 @@ import {
     FPagination,
     FPaginator,
     FRadioField,
+    FSelectField,
     FTableColumn,
 } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
@@ -14,7 +15,7 @@ import { persons } from "./person-data";
 
 export default defineComponent({
     name: "FPaginationLiveExample",
-    components: { FFieldset, FRadioField, LiveExample },
+    components: { FRadioField, FSelectField, LiveExample },
     data() {
         return {
             numberOfPagesOptions: [5, 6, 7, 8, 9],
@@ -29,6 +30,7 @@ export default defineComponent({
                 FPagination,
                 FPaginator,
                 FRadioField,
+                FSelectField,
                 FTableColumn,
             };
         },
@@ -67,22 +69,17 @@ export default defineComponent({
 
 <template>
     <live-example :components :template :livedata>
-        <f-fieldset name="numberOfPages" horizontal>
+        <f-select-field id="numberOfPages" v-model="numberOfPagesToShowAtMost">
             <template #label>Antal sidor att visa</template>
             <template #description="{ descriptionClass }">
                 <span :class="descriptionClass">
                     Det maximala antalet sidor som kan visas samtidigt.
                 </span>
             </template>
-            <f-radio-field v-model="numberOfPagesToShowAtMost" :value="null">Ej valt</f-radio-field>
-            <f-radio-field
-                v-for="option in numberOfPagesOptions"
-                :key="option"
-                v-model="numberOfPagesToShowAtMost"
-                :value="option"
-            >
+            <option :value="null">Standardvärde</option>
+            <option v-for="option in numberOfPagesOptions" :key="option" :value="option">
                 {{ option }}
-            </f-radio-field>
-        </f-fieldset>
+            </option>
+        </f-select-field>
     </live-example>
 </template>
