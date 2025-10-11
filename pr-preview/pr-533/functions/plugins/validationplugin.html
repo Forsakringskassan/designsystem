@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-75b81e.json"
+            href="../../search-data-a65a58.json"
             as="fetch"
             crossorigin
-            integrity="sha384-s488FE9QMZMiKcw+UFFzecGlLsdHOtAaowZckAsBYBhkRMRIbGQ6jlxp/mXFIa+V"
+            integrity="sha384-RtX1iUhCNGMTFoJKXFbSDzmUMeqexjZXN/zNwzpgbOhPYJ1oQI+Ra/VlizdjK5g0"
             id="search-data"
         />
     </head>
@@ -1660,14 +1660,14 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
             <p class="docs-paragraph">Använd <code>ValidationErrorMessageBuilder</code> för att få autocompletion av validatornamn:</p>
 
                 <div
-                    id="example-dfce42"
+                    id="example-e339db"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationErrorMessageBuilder</span>, <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-keyword">const</span> messages = <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
     .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;The field is required&quot;</span>)
@@ -1879,7 +1879,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
         <h2 id="utokade_komponenter_med_default_validering"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p class="docs-paragraph">Om du behöver utveckla en egen komponent med inbyggd validering som standard-beteende måste du lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
 
                 <div
-                    id="example-b68238"
+                    id="example-7abd4d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1887,7 +1887,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span>, <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">validatorConfigs</span>: <span class="hljs-title class_">ValidatorConfigs</span> = {
     <span class="hljs-attr">email</span>: { <span class="hljs-attr">errorMessage</span>: <span class="hljs-string">&quot;E-posten är inte korrekt ifylld&quot;</span> },
@@ -2406,9 +2406,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/3f20a22f42c32decffd007236140369cbfcc78a4">3f20a22</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/ba67d9804e273a0272688464d21e9abfb9800d99">ba67d98</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/533">PR 533</a><br />
-        2025-10-11 00:59
+        2025-10-11 15:15
 </div>
 <div class="toolbar__item">
     <form id="version">
