@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-c4ee6f.json"
+            href="../../search-data-630d2d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-z1ntfrt5fgCl5CLQDHpZVaZNjyNGzu1x1z5mB+KvLV2A09S8hguImBpuudTZsyD/"
+            integrity="sha384-ay4bhkEh4dhpbcXAOTMPQtJNxLeGZzENGOMCaKjX4k29LD+ZMqszEiJy9pthDv5Z"
             id="search-data"
         />
     </head>
@@ -593,15 +593,15 @@ Läs mer under respektive komponent om hur du anpassar och översätter texter.<
 <p class="docs-paragraph">Texterna kan hämtas med REST-anrop, importeras statiskt och bundlas med i javascript eller hårdkodas direkt in i filen:</p>
 
                 <div
-                    id="example-b79896"
+                    id="example-b4489f"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">TranslationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { i18nextProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/i18next-translate&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { i18nextProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/i18next-translate&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">TranslationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-comment">/* create a new 18next translation provider */</span>
 <span class="hljs-keyword">const</span> provider = <span class="hljs-keyword">await</span> <span class="hljs-title function_">i18nextProvider</span>({
@@ -695,14 +695,14 @@ Vi använder endast interpolering med parametrar.</p>
 <h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Standard-feltexter som visas vid validering hämtas från <a href="../../logic/variables/ValidationService.html">ValidationService</a> och mappas med namnet på validatorn som ger felet:</p>
 
                 <div
-                    id="example-9e38b4"
+                    id="example-1e6e52"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationErrorMessageBuilder</span>, <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-keyword">const</span> messages = <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
     .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;Fyll i text&quot;</span>)
@@ -725,7 +725,7 @@ Vi använder endast interpolering med parametrar.</p>
         <p class="docs-paragraph">Du kan använda textnycklar för översättning genom att kombinera <code>TranslationService</code> och <code>ValidationErrorMessageBuilder</code>:</p>
 
                 <div
-                    id="example-a308df"
+                    id="example-2e2942"
                     class="code-preview code-preview--default"
                     
                     
@@ -734,8 +734,8 @@ Vi använder endast interpolering med parametrar.</p>
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">TranslationService</span>,
-    <span class="hljs-title class_">ValidationService</span>,
     <span class="hljs-title class_">ValidationErrorMessageBuilder</span>,
+    <span class="hljs-title class_">ValidationService</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-keyword">const</span> $t = <span class="hljs-title class_">TranslationService</span>.<span class="hljs-property">provider</span>.<span class="hljs-property">translate</span>;
@@ -779,9 +779,9 @@ Vi använder endast interpolering med parametrar.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/38d1f09a99f408c57fbae175ef0df99382f6c1d0">38d1f09</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/4d4d96afd52d55d5c6ebecfc830d0828f3cdb305">4d4d96a</a>)<br />
         
-        2025-10-11 00:53
+        2025-10-11 15:09
 </div>
 <div class="toolbar__item">
     <form id="version">

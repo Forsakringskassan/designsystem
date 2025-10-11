@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-c4ee6f.json"
+            href="../../search-data-630d2d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-z1ntfrt5fgCl5CLQDHpZVaZNjyNGzu1x1z5mB+KvLV2A09S8hguImBpuudTZsyD/"
+            integrity="sha384-ay4bhkEh4dhpbcXAOTMPQtJNxLeGZzENGOMCaKjX4k29LD+ZMqszEiJy9pthDv5Z"
             id="search-data"
         />
     </head>
@@ -1660,14 +1660,14 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
             <p class="docs-paragraph">Använd <code>ValidationErrorMessageBuilder</code> för att få autocompletion av validatornamn:</p>
 
                 <div
-                    id="example-dfce42"
+                    id="example-e339db"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationErrorMessageBuilder</span>, <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-keyword">const</span> messages = <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
     .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;The field is required&quot;</span>)
@@ -1695,13 +1695,13 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-ca0450"></div>
+        <div id="example-c0fbdb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginExample-ca0450.js"></script>
+        <script type="module" src="./ValidationPluginExample-c0fbdb.js"></script>
     </div>
                 <div>
             <button
@@ -1753,13 +1753,13 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-2d54c7"></div>
+        <div id="example-295107"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginVariables-2d54c7.js"></script>
+        <script type="module" src="./ValidationPluginVariables-295107.js"></script>
     </div>
                 <div>
             <button
@@ -1818,13 +1818,13 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-757976"></div>
+        <div id="example-54fedf"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginValidityEvent-757976.js"></script>
+        <script type="module" src="./ValidationPluginValidityEvent-54fedf.js"></script>
     </div>
                 <div>
             <button
@@ -1879,7 +1879,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
         <h2 id="utokade_komponenter_med_default_validering"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p class="docs-paragraph">Om du behöver utveckla en egen komponent med inbyggd validering som standard-beteende måste du lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
 
                 <div
-                    id="example-b68238"
+                    id="example-7abd4d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1887,7 +1887,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span>, <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">validatorConfigs</span>: <span class="hljs-title class_">ValidatorConfigs</span> = {
     <span class="hljs-attr">email</span>: { <span class="hljs-attr">errorMessage</span>: <span class="hljs-string">&quot;E-posten är inte korrekt ifylld&quot;</span> },
@@ -1911,13 +1911,13 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-9a19de"></div>
+        <div id="example-da7c81"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginErrorMessage-9a19de.js"></script>
+        <script type="module" src="./ValidationPluginErrorMessage-da7c81.js"></script>
     </div>
                 <div>
             <button
@@ -1976,13 +1976,13 @@ Det innebär att du kan lägga direktivet på flera platser för att kontinuerli
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-7f574d"></div>
+        <div id="example-8d4d0d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginFormValidation-7f574d.js"></script>
+        <script type="module" src="./ValidationPluginFormValidation-8d4d0d.js"></script>
     </div>
                 <div>
             <button
@@ -2074,13 +2074,13 @@ Ett use-case för detta är till exempel om ett fält längre ned skall vara req
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-8efe3a"></div>
+        <div id="example-e7df5e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginToggleEnabled-8efe3a.js"></script>
+        <script type="module" src="./ValidationPluginToggleEnabled-e7df5e.js"></script>
     </div>
                 <div>
             <button
@@ -2153,13 +2153,13 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-20e66d"></div>
+        <div id="example-8d5d9b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginRevalidate-20e66d.js"></script>
+        <script type="module" src="./ValidationPluginRevalidate-8d5d9b.js"></script>
     </div>
                 <div>
             <button
@@ -2215,13 +2215,13 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-1d896a"></div>
+        <div id="example-16a199"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginValidateAll-1d896a.js"></script>
+        <script type="module" src="./ValidationPluginValidateAll-16a199.js"></script>
     </div>
                 <div>
             <button
@@ -2280,13 +2280,13 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-d316cf"></div>
+        <div id="example-4a9e41"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginToggleDisable-d316cf.js"></script>
+        <script type="module" src="./ValidationPluginToggleDisable-4a9e41.js"></script>
     </div>
                 <div>
             <button
@@ -2406,9 +2406,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/38d1f09a99f408c57fbae175ef0df99382f6c1d0">38d1f09</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/4d4d96afd52d55d5c6ebecfc830d0828f3cdb305">4d4d96a</a>)<br />
         
-        2025-10-11 00:53
+        2025-10-11 15:09
 </div>
 <div class="toolbar__item">
     <form id="version">
