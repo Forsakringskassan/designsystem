@@ -1,11 +1,11 @@
-import path from "node:path";
 import module from "node:module";
+import path from "node:path";
 import {
-    frontMatterFileReader,
-    vueFileReader,
     Generator,
-    versionProcessor,
+    frontMatterFileReader,
     searchProcessor,
+    versionProcessor,
+    vueFileReader,
 } from "@forsakringskassan/docs-generator";
 
 const require = module.createRequire(import.meta.url);

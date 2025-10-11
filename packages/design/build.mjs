@@ -1,19 +1,17 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
-import { glob } from "glob";
-import * as sass from "sass";
-import picocolors from "picocolors";
-import postcss from "postcss";
-import { optimize } from "svgo";
-
-/* postcss plugins */
+import fkuiTheme from "@fkui/theme-default/dist/fkui-css-variables.js";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
+import { glob } from "glob";
+import picocolors from "picocolors";
+import postcss from "postcss";
+
+/* postcss plugins */
 import postcssUrl from "postcss-url";
 import varFuncFallback from "postcss-var-func-fallback";
-
-/* fkui theme */
-import fkuiTheme from "@fkui/theme-default/dist/fkui-css-variables.js";
+import * as sass from "sass";
+import { optimize } from "svgo";
 
 const themes = {
     fkui: fkuiTheme,

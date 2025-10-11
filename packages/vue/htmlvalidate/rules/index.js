@@ -1,11 +1,11 @@
 const buttongroup = require("./buttongroup.rule");
 const classdeprecated = require("./classdeprecated.rule");
-const PreferFIcon = require("./prefer-ficon.rule");
-const requiredmaxlength = require("./requiredmaxlength.rule");
-const ftextfieldFormatterValidation = require("./ftextfieldFormatterValidation.rule");
-const NoTemplateModal = require("./no-template-modal.rule");
 const FInteractiveTableCheckboxDescription = require("./finteractivetable-checkbox-description.rule");
 const FTableColumnName = require("./ftablecolumn-name.rule");
+const ftextfieldFormatterValidation = require("./ftextfieldFormatterValidation.rule");
+const NoTemplateModal = require("./no-template-modal.rule");
+const PreferFIcon = require("./prefer-ficon.rule");
+const requiredmaxlength = require("./requiredmaxlength.rule");
 
 module.exports = {
     "fkui/button-group": buttongroup,

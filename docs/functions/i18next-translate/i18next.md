@@ -14,8 +14,8 @@ Provider till `TranslationService` som använder [`i18next`][i18next] för över
 ## Användning
 
 ```ts
-import { TranslationService } from "@fkui/logic";
 import { i18nextProvider } from "@fkui/i18next-translate";
+import { TranslationService } from "@fkui/logic";
 
 /* create a new 18next translation provider */
 const provider = await i18nextProvider({

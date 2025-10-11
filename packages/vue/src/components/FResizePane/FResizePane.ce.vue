@@ -71,11 +71,11 @@ const emit = defineEmits<{
     resize: [size: number];
 }>();
 
-const STEP_SIZE = 10;
-
 defineOptions({
     inheritAttrs: false,
 });
+
+const STEP_SIZE = 10;
 
 const root = useTemplateRef("root");
 const content = useTemplateRef("content");

@@ -1,5 +1,5 @@
-const stylelint = require("stylelint");
 const deprecatedVariables = require("@fkui/theme-default/dist/deprecated-variables.json");
+const stylelint = require("stylelint");
 
 /**
  * @typedef { import("postcss").Root } Root
@@ -89,5 +89,5 @@ function rule(actual) {
 }
 
 module.exports = stylelint.createPlugin(ruleName, rule);
-module.exports.ruleName = ruleName;
 module.exports.messages = messages;
+module.exports.ruleName = ruleName;

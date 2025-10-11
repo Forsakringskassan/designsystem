@@ -25,7 +25,7 @@ FKUIConfig.ts
 Görs lämpligtvis i applikationens `main.ts`.
 
 ```js
-import { config, FKUIConfigButtonOrder } from "@fkui/vue";
+import { FKUIConfigButtonOrder, config } from "@fkui/vue";
 
 config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
 ```

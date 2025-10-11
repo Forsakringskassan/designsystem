@@ -1,7 +1,7 @@
 const {
     Rule,
-    classifyNodeText,
     TextClassification,
+    classifyNodeText,
 } = require("html-validate/node");
 const { getDocumentationUrl } = require("./common");
 

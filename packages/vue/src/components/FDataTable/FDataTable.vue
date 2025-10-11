@@ -61,16 +61,17 @@ const props = defineProps({
         },
     },
 });
+
+defineOptions({
+    inheritAttrs: false,
+});
+
 const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
 const internalKey = getInternalKey<T>();
 
 const columns = ref<FTableColumnData[]>([]);
-
-defineOptions({
-    inheritAttrs: false,
-});
 
 const hasCaption = computed(() => {
     return hasSlot("caption", {}, { stripClasses: [] });

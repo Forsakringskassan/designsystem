@@ -81,9 +81,9 @@ Notera att det är metoden `onBeforeNext` som ska skickas in i sin helhelt, anro
 I `onBeforeNext` har du möjlighet att sätta nya valideringsfel på inmatningsfält:
 
 ```ts
+import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { getElementFromVueRef } from "@fkui/vue";
-import { defineComponent } from "vue";
 
 defineComponent({
     data() {
@@ -107,8 +107,8 @@ defineComponent({
 Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera `FWizardStepAction.CANCEL` från `onBeforeNext`:
 
 ```ts
-import { FWizardStepAction } from "@fkui/vue";
 import { defineComponent } from "vue";
+import { FWizardStepAction } from "@fkui/vue";
 
 defineComponent({
     data() {

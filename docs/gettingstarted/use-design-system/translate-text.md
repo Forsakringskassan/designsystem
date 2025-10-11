@@ -28,8 +28,8 @@ För att kunna översätta text måste din applikation sätta upp en Translation
 Texterna kan hämtas med REST-anrop, importeras statiskt och bundlas med i javascript eller hårdkodas direkt in i filen:
 
 ```ts
-import { TranslationService } from "@fkui/logic";
 import { i18nextProvider } from "@fkui/i18next-translate";
+import { TranslationService } from "@fkui/logic";
 
 /* create a new 18next translation provider */
 const provider = await i18nextProvider({
@@ -108,7 +108,7 @@ Textnycklar som saknas kommer visa standardtexter från designsystemet, vilket i
 Standard-feltexter som visas vid validering hämtas från [ValidationService][ValidationService] och mappas med namnet på validatorn som ger felet:
 
 ```ts
-import { ValidationService, ValidationErrorMessageBuilder } from "@fkui/logic";
+import { ValidationErrorMessageBuilder, ValidationService } from "@fkui/logic";
 
 const messages = ValidationErrorMessageBuilder.create()
     .map("required", "Fyll i text")
@@ -136,8 +136,8 @@ Du kan använda textnycklar för översättning genom att kombinera `Translation
 ```ts
 import {
     TranslationService,
-    ValidationService,
     ValidationErrorMessageBuilder,
+    ValidationService,
 } from "@fkui/logic";
 
 const $t = TranslationService.provider.translate;

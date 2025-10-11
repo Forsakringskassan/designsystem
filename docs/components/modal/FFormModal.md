@@ -281,9 +281,9 @@ Notera att det är metoden `onBeforeSubmit` som ska skickas in i sin helhelt, an
 I `onBeforeSubmit` har du möjlighet att sätta nya valideringsfel på inmatningsfält:
 
 ```ts
-import { ValidationService } from "@fkui/logic";
-import { getElementFromVueRef, FFormModalAction } from "@fkui/vue";
 import { defineComponent } from "vue";
+import { ValidationService } from "@fkui/logic";
+import { FFormModalAction, getElementFromVueRef } from "@fkui/vue";
 
 defineComponent({
     data() {
@@ -307,8 +307,8 @@ defineComponent({
 Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera `FFormModalAction.CANCEL` från `onBeforeSubmit`:
 
 ```ts
-import { FFormModalAction } from "@fkui/vue";
 import { defineComponent } from "vue";
+import { FFormModalAction } from "@fkui/vue";
 
 defineComponent({
     data() {

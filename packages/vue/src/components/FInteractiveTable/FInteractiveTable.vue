@@ -194,6 +194,11 @@ const emit = defineEmits<{
      */
     "update:active": [row: T | undefined];
 }>();
+
+defineOptions({
+    inheritAttrs: false,
+});
+
 const $t = useTranslate();
 const slots = useSlots();
 const { hasSlot } = useSlotUtils();
@@ -207,10 +212,6 @@ const selectedRows = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescrip
 const tr = shallowRef<HTMLElement[]>([]);
 const trAll = shallowRef<HTMLElement[]>([]);
 const tbodyKey = ref(0);
-
-defineOptions({
-    inheritAttrs: false,
-});
 
 const expandableTable: ExpandableTable<T> = useExpandableTable(
     props.expandableAttribute,

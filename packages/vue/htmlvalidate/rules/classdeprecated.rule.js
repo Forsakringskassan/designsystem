@@ -1,4 +1,4 @@
-const { Rule, DOMTokenList } = require("html-validate");
+const { DOMTokenList, Rule } = require("html-validate");
 const { getDocumentationUrl } = require("./common");
 
 /**

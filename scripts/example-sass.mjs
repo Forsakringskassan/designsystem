@@ -1,6 +1,6 @@
+import { moduleImporter } from "@forsakringskassan/sass-module-importer";
 import { glob } from "glob";
 import { compileAsync } from "sass";
-import { moduleImporter } from "@forsakringskassan/sass-module-importer";
 
 const args = process.argv.slice(2);
 const filenames = await glob(args, {

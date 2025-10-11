@@ -48,7 +48,7 @@ ValidationService.setErrorMessages({
 Använd `ValidationErrorMessageBuilder` för att få autocompletion av validatornamn:
 
 ```ts
-import { ValidationService, ValidationErrorMessageBuilder } from "@fkui/logic";
+import { ValidationErrorMessageBuilder, ValidationService } from "@fkui/logic";
 
 const messages = ValidationErrorMessageBuilder.create()
     .map("required", "The field is required")
@@ -93,7 +93,7 @@ Om du behöver utveckla en egen komponent med inbyggd validering som standard-be
 
 ```ts
 import { useTemplateRef } from "vue";
-import { ValidationService, type ValidatorConfigs } from "@fkui/logic";
+import { type ValidatorConfigs, ValidationService } from "@fkui/logic";
 
 const validatorConfigs: ValidatorConfigs = {
     email: { errorMessage: "E-posten är inte korrekt ifylld" },

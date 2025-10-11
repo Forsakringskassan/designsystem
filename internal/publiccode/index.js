@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { parse, stringify } from "yaml";
 import prettier from "prettier";
+import { parse, stringify } from "yaml";
 // eslint-disable-next-line import/extensions -- esm needs extensions
 import { gitAdd } from "./git-add.js";
 
