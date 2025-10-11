@@ -1,13 +1,13 @@
-import path from "node:path";
 import fs from "node:fs/promises";
+import path from "node:path";
 import { globSync } from "glob";
-import { optimize } from "svgo";
 import sass from "sass";
+import { optimize } from "svgo";
 
-import { capitalize } from "./common.js";
 import { buildDemo } from "./build-demo.js";
-import { generatePackageDts } from "./generate-package-dts.js";
+import { capitalize } from "./common.js";
 import { generateIndexFile } from "./generate-index-file.js";
+import { generatePackageDts } from "./generate-package-dts.js";
 
 const __dirname = import.meta.dirname;
 const dest = "dist";

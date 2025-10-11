@@ -92,6 +92,10 @@ const props = defineProps({
     },
 });
 
+defineOptions({
+    inheritAttrs: false,
+});
+
 const { renderColumns, setVisibilityColumn, addColumn } = FTableInjected();
 
 const hasMounted = ref(false);
@@ -99,10 +103,6 @@ const isHeader = ref(false);
 
 const id = ElementIdService.generateElementId("column");
 const el = useTemplateRef("element");
-
-defineOptions({
-    inheritAttrs: false,
-});
 
 const classes = computed(() => {
     return ["table__column", `table__column--${props.type}`];

@@ -2,8 +2,8 @@
 
 const fs = require("fs");
 const path = require("path");
-const { globSync } = require("glob");
 const { moduleReturnVariables } = require("get-css-variables");
+const { globSync } = require("glob");
 
 globSync("dist/*.css").forEach((file) => {
     const content = moduleReturnVariables(fs.readFileSync(file, "utf-8"));

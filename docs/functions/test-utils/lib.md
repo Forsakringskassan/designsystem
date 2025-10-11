@@ -31,8 +31,8 @@ const MyComponent = defineComponent({});
 
 /* --- cut above --- */
 
-import { shallowMount } from "@vue/test-utils";
 import { createPlaceholderInDocument } from "@fkui/test-utils";
+import { shallowMount } from "@vue/test-utils";
 
 shallowMount(MyComponent, {
     attachTo: createPlaceholderInDocument(),

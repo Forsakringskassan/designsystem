@@ -1,26 +1,26 @@
-import fs from "node:fs/promises";
-import { existsSync } from "node:fs";
-import path from "node:path";
-import module from "node:module";
 import { execSync } from "node:child_process";
-import { strFromU8, strToU8, zlibSync } from "fflate";
-import fse from "fs-extra";
-import { glob } from "glob";
-import isCI from "is-ci";
+import { existsSync } from "node:fs";
+import fs from "node:fs/promises";
+import module from "node:module";
+import path from "node:path";
 import {
     Generator,
+    cookieProcessor,
     extractExamplesProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     matomoProcessor,
+    motdProcessor,
     searchProcessor,
     selectableVersionProcessor,
     sourceUrlProcessor,
     topnavProcessor,
     versionProcessor,
-    cookieProcessor,
-    motdProcessor,
 } from "@forsakringskassan/docs-generator";
+import { strFromU8, strToU8, zlibSync } from "fflate";
+import fse from "fs-extra";
+import { glob } from "glob";
+import isCI from "is-ci";
 import config from "./docs.config.js";
 
 const require = module.createRequire(import.meta.url);

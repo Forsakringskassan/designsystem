@@ -86,78 +86,14 @@ export default [
     },
 
     {
-        name: "local/stricter-rules/ts",
-        files: ["**/*.ts", "**/*.vue"],
-        rules: {
-            "import/order": [
-                "warn",
-                {
-                    pathGroups: [
-                        {
-                            pattern: "{vue,vite}",
-                            group: "external",
-                            position: "before",
-                        },
-                        {
-                            pattern: "{cypress,cypress/vue}",
-                            group: "external",
-                            position: "before",
-                        },
-                        {
-                            pattern: "@/**",
-                            group: "parent",
-                            position: "before",
-                        },
-                    ],
-                    pathGroupsExcludedImportTypes: ["builtin", "object"],
-                    alphabetize: {
-                        order: "asc",
-                        orderImportKind: "asc",
-                    },
-                    named: {
-                        enabled: true,
-                        types: "types-first",
-                    },
-                },
-            ],
-        },
-    },
-
-    {
         name: "local/stricter-rules/vue",
         files: ["**/*.vue"],
         rules: {
-            "vue/define-emits-declaration": ["error", "type-based"],
-            "vue/define-macros-order": [
-                "error",
-                {
-                    order: [
-                        "defineModel",
-                        "defineProps",
-                        "defineEmits",
-                        "defineSlots",
-                    ],
-                    defineExposeLast: false,
-                },
-            ],
-            "vue/define-props-declaration": ["error", "type-based"],
-            "vue/no-boolean-default": "error",
-            "vue/no-import-compiler-macros": "error",
-            "vue/no-restricted-block": ["error", "style"],
             "vue/no-unsupported-features": [
                 "error",
                 {
                     version: pkg.peerDependencies.vue,
                 },
-            ],
-            "vue/no-unused-emit-declarations": "error",
-            "vue/no-unused-properties": "error",
-            "vue/object-shorthand": "error",
-            "vue/prefer-use-template-ref": "error",
-            "vue/v-bind-style": [
-                "error",
-                "shorthand",
-                { sameNameShorthand: "always" },
             ],
             "vue/block-lang": [
                 "error",

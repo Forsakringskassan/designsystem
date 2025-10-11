@@ -53,9 +53,9 @@ const AwesomeComponent = defineComponent({});
 /* --- cut above --- */
 
 import {
-    sizeWrapperWidth,
-    sizeWrapperHeight,
     SizeWrapper,
+    sizeWrapperHeight,
+    sizeWrapperWidth,
 } from "@fkui/test-utils/vue";
 
 const SizesButtonsComponent = defineComponent({
@@ -118,9 +118,9 @@ const AwesomeComponent = defineComponent({});
 /* --- cut above --- */
 
 import {
+    DensityWrapper,
     densityWrapperHeight,
     densityWrapperWidth,
-    DensityWrapper,
 } from "@fkui/test-utils/vue";
 
 const DensityComponent = defineComponent({

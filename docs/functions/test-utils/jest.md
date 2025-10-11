@@ -22,7 +22,7 @@ function toHaveFocus(element: HTMLElement): void;
 
 ```ts
 import { defineComponent } from "vue";
-import { it, expect } from "@jest/globals";
+import { expect, it } from "@jest/globals";
 import { mount } from "@vue/test-utils";
 
 const AwesomeComponent = defineComponent({});
