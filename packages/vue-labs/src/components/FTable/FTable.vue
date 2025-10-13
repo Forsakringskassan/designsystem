@@ -280,7 +280,7 @@ onMounted(() => {
                 <th
                     v-if="isMultiSelect"
                     scope="col"
-                    class="table-ng__column table-ng__column--checkbox table-ng__column--selectable"
+                    class="table-ng__column table-ng__column--checkbox table-ng__column--select"
                 >
                     <input
                         ref="selectAll"
@@ -337,13 +337,13 @@ onMounted(() => {
                             v-if="isMultiSelect"
                             :row
                             :column="multiSelectColumn"
-                            class="table-ng__cell--selectable"
+                            class="table-ng__cell--select"
                         ></i-table-checkbox>
                         <i-table-radio
                             v-if="isSingleSelect"
                             :row
                             :column="singleSelectColumn"
-                            class="table-ng__cell--selectable"
+                            class="table-ng__cell--select"
                         ></i-table-radio>
                         <template v-for="column in columns" :key="column.header">
                             <component :is="column.component" v-if="'component' in column" :row :column></component>
