@@ -66,4 +66,5 @@ class FRightPanelServiceImpl implements FLayoutRightPanelInteface {
  * @public
  */
 export const FLayoutRightPanelService: FLayoutRightPanelInteface =
+    /* @__PURE__ */
     new FRightPanelServiceImpl();
