@@ -1,6 +1,7 @@
 import { type DefineComponent, defineComponent } from "vue";
 import { FTablePageObject } from "../../cypress/FTable.pageobject";
 import { FTable, defineTableColumns } from ".";
+import { should } from "chai";
 
 const table = new FTablePageObject();
 
@@ -60,6 +61,7 @@ const columns = defineTableColumns<Row>([
 function createComponent(
     expandable?: "custom" | "rows",
     selectable?: "multi" | "single",
+    empty?: string
 ): DefineComponent {
     const expandableSlot =
         expandable === "custom"
@@ -68,10 +70,11 @@ function createComponent(
     return defineComponent({
         template: /* HTML */ `
             <f-table
-                :rows
+                :rows="${empty==="true" ? []:"rows"}"
                 :columns
                 selectable="${selectable}"
                 expandable-attribute="${expandable ? "nested" : undefined}"
+                striped
             >
                 ${expandableSlot}
             </f-table>
@@ -131,6 +134,9 @@ function createComponent(
     });
 }
 
+beforeEach(()=>{
+    cy.viewport(1024, 768);
+})
 
 it("Should set correct headertext 1.3", () => {
     cy.mount(createComponent());
@@ -154,4 +160,46 @@ it.skip("should set rowheader on expandable rows 1.4", () => {
     table.expandButton(1).click();
     table.cell({row:2, col:1}).should("have.prop", "tagName", "TH");
 });
+
+it.skip("should have correct class for striped 1.5", () => {
+    cy.mount(createComponent("rows", "multi"));
+    table.el().should("have.class", "table-ng--striped");
+});
+
+it.skip("should have correct strip 1.5", () => {
+    cy.mount(createComponent("rows", "multi"));    
+    cy.toMatchScreenshot();
+});
+it.skip("should have correct seperator when not striped 1.5", () => {
+    cy.mount(createComponent("rows", "multi"));    
+    cy.toMatchScreenshot();
+});
+
+it.skip("should have correct class for expandable 1.5", () => {
+    cy.mount(createComponent("rows", "multi"));
+    table.expandButton(1).click();
+    cy.toMatchScreenshot();
+});
+
+it.skip("should have empty row 1.8", () => {
+    cy.mount(createComponent("rows", "multi", "true"));
+    table.cell({row:1, col:1}).should("have.attr", "colspan", "8");
+    table.rows().should("have.length", 1);
+     table.cell({row:1, col:1}).should("contain.text", "Tabellen är tom");
+   
+});
+it("should have correct focus 1.10", () => {
+    cy.mount(createComponent("rows", "multi"));
+    table.tabbableElement().focus();
+    cy.focused().trigger("keydown", {code:"ArrowRight"});
+    table.selectInput(1).should("have.focus");
+});
+
+it("should have correct checkbox labels 7.6", () => {
+    cy.mount(createComponent("rows", "multi"));
+    table.selectInput(1).should("have.attr", "aria-label", "selectable");
+});
+
+
+
 
