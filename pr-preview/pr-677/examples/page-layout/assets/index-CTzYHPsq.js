@@ -77,11 +77,11 @@ const isReservedProp = /* @__PURE__ */ makeMap(
   // the leading comma is intentional so empty string "" is also included
   ",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"
 );
-const cacheStringFunction = (fn2) => {
+const cacheStringFunction = (fn) => {
   const cache = /* @__PURE__ */ Object.create(null);
   return ((str) => {
     const hit = cache[str];
-    return hit || (cache[str] = fn2(str));
+    return hit || (cache[str] = fn(str));
   });
 };
 const camelizeRE = /-\w/g;
@@ -339,12 +339,12 @@ class EffectScope {
       }
     }
   }
-  run(fn2) {
+  run(fn) {
     if (this._active) {
       const currentEffectScope = activeEffectScope;
       try {
         activeEffectScope = this;
-        return fn2();
+        return fn();
       } finally {
         activeEffectScope = currentEffectScope;
       }
@@ -405,16 +405,16 @@ function effectScope(detached) {
 function getCurrentScope() {
   return activeEffectScope;
 }
-function onScopeDispose(fn2, failSilently = false) {
+function onScopeDispose(fn, failSilently = false) {
   if (activeEffectScope) {
-    activeEffectScope.cleanups.push(fn2);
+    activeEffectScope.cleanups.push(fn);
   }
 }
 let activeSub;
 const pausedQueueEffects = /* @__PURE__ */ new WeakSet();
 class ReactiveEffect {
-  constructor(fn2) {
-    this.fn = fn2;
+  constructor(fn) {
+    this.fn = fn;
     this.deps = void 0;
     this.depsTail = void 0;
     this.flags = 1 | 4;
@@ -894,27 +894,27 @@ const arrayInstrumentations = {
       return value;
     });
   },
-  every(fn2, thisArg) {
-    return apply(this, "every", fn2, thisArg, void 0, arguments);
+  every(fn, thisArg) {
+    return apply(this, "every", fn, thisArg, void 0, arguments);
   },
-  filter(fn2, thisArg) {
-    return apply(this, "filter", fn2, thisArg, (v) => v.map(toReactive), arguments);
+  filter(fn, thisArg) {
+    return apply(this, "filter", fn, thisArg, (v) => v.map(toReactive), arguments);
   },
-  find(fn2, thisArg) {
-    return apply(this, "find", fn2, thisArg, toReactive, arguments);
+  find(fn, thisArg) {
+    return apply(this, "find", fn, thisArg, toReactive, arguments);
   },
-  findIndex(fn2, thisArg) {
-    return apply(this, "findIndex", fn2, thisArg, void 0, arguments);
+  findIndex(fn, thisArg) {
+    return apply(this, "findIndex", fn, thisArg, void 0, arguments);
   },
-  findLast(fn2, thisArg) {
-    return apply(this, "findLast", fn2, thisArg, toReactive, arguments);
+  findLast(fn, thisArg) {
+    return apply(this, "findLast", fn, thisArg, toReactive, arguments);
   },
-  findLastIndex(fn2, thisArg) {
-    return apply(this, "findLastIndex", fn2, thisArg, void 0, arguments);
+  findLastIndex(fn, thisArg) {
+    return apply(this, "findLastIndex", fn, thisArg, void 0, arguments);
   },
   // flat, flatMap could benefit from ARRAY_ITERATE but are not straight-forward to implement
-  forEach(fn2, thisArg) {
-    return apply(this, "forEach", fn2, thisArg, void 0, arguments);
+  forEach(fn, thisArg) {
+    return apply(this, "forEach", fn, thisArg, void 0, arguments);
   },
   includes(...args) {
     return searchProxy(this, "includes", args);
@@ -929,8 +929,8 @@ const arrayInstrumentations = {
   lastIndexOf(...args) {
     return searchProxy(this, "lastIndexOf", args);
   },
-  map(fn2, thisArg) {
-    return apply(this, "map", fn2, thisArg, void 0, arguments);
+  map(fn, thisArg) {
+    return apply(this, "map", fn, thisArg, void 0, arguments);
   },
   pop() {
     return noTracking(this, "pop");
@@ -938,18 +938,18 @@ const arrayInstrumentations = {
   push(...args) {
     return noTracking(this, "push", args);
   },
-  reduce(fn2, ...args) {
-    return reduce(this, "reduce", fn2, args);
+  reduce(fn, ...args) {
+    return reduce(this, "reduce", fn, args);
   },
-  reduceRight(fn2, ...args) {
-    return reduce(this, "reduceRight", fn2, args);
+  reduceRight(fn, ...args) {
+    return reduce(this, "reduceRight", fn, args);
   },
   shift() {
     return noTracking(this, "shift");
   },
   // slice could use ARRAY_ITERATE but also seems to beg for range tracking
-  some(fn2, thisArg) {
-    return apply(this, "some", fn2, thisArg, void 0, arguments);
+  some(fn, thisArg) {
+    return apply(this, "some", fn, thisArg, void 0, arguments);
   },
   splice(...args) {
     return noTracking(this, "splice", args);
@@ -986,7 +986,7 @@ function iterator(self2, method, wrapValue) {
   return iter;
 }
 const arrayProto = Array.prototype;
-function apply(self2, method, fn2, thisArg, wrappedRetFn, args) {
+function apply(self2, method, fn, thisArg, wrappedRetFn, args) {
   const arr = shallowReadArray(self2);
   const needsWrap = arr !== self2 && !isShallow(self2);
   const methodFn = arr[method];
@@ -994,32 +994,32 @@ function apply(self2, method, fn2, thisArg, wrappedRetFn, args) {
     const result2 = methodFn.apply(self2, args);
     return needsWrap ? toReactive(result2) : result2;
   }
-  let wrappedFn = fn2;
+  let wrappedFn = fn;
   if (arr !== self2) {
     if (needsWrap) {
       wrappedFn = function(item, index) {
-        return fn2.call(this, toReactive(item), index, self2);
+        return fn.call(this, toReactive(item), index, self2);
       };
-    } else if (fn2.length > 2) {
+    } else if (fn.length > 2) {
       wrappedFn = function(item, index) {
-        return fn2.call(this, item, index, self2);
+        return fn.call(this, item, index, self2);
       };
     }
   }
   const result = methodFn.call(arr, wrappedFn, thisArg);
   return needsWrap && wrappedRetFn ? wrappedRetFn(result) : result;
 }
-function reduce(self2, method, fn2, args) {
+function reduce(self2, method, fn, args) {
   const arr = shallowReadArray(self2);
-  let wrappedFn = fn2;
+  let wrappedFn = fn;
   if (arr !== self2) {
     if (!isShallow(self2)) {
       wrappedFn = function(acc, item, index) {
-        return fn2.call(this, acc, toReactive(item), index, self2);
+        return fn.call(this, acc, toReactive(item), index, self2);
       };
-    } else if (fn2.length > 3) {
+    } else if (fn.length > 3) {
       wrappedFn = function(acc, item, index) {
-        return fn2.call(this, acc, item, index, self2);
+        return fn.call(this, acc, item, index, self2);
       };
     }
   }
@@ -1077,9 +1077,9 @@ class BaseReactiveHandler {
     }
     const targetIsArray = isArray$2(target);
     if (!isReadonly2) {
-      let fn2;
-      if (targetIsArray && (fn2 = arrayInstrumentations[key])) {
-        return fn2;
+      let fn;
+      if (targetIsArray && (fn = arrayInstrumentations[key])) {
+        return fn;
       }
       if (key === "hasOwnProperty") {
         return hasOwnProperty;
@@ -1607,8 +1607,8 @@ function propertyToRef(source, key, defaultValue) {
   return isRef(val) ? val : new ObjectRefImpl(source, key, defaultValue);
 }
 class ComputedRefImpl {
-  constructor(fn2, setter, isSSR) {
-    this.fn = fn2;
+  constructor(fn, setter, isSSR) {
+    this.fn = fn;
     this.setter = setter;
     this._value = void 0;
     this.dep = new Dep(this);
@@ -1783,7 +1783,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
   }
   effect2 = new ReactiveEffect(getter);
   effect2.scheduler = scheduler ? () => scheduler(job, false) : job;
-  boundCleanup = (fn2) => onWatcherCleanup(fn2, false, effect2);
+  boundCleanup = (fn) => onWatcherCleanup(fn, false, effect2);
   cleanup = effect2.onStop = () => {
     const cleanups = cleanupMap.get(effect2);
     if (cleanups) {
@@ -1954,16 +1954,16 @@ function formatProp(key, value, raw) {
     return raw ? value : [`${key}=`, value];
   }
 }
-function callWithErrorHandling(fn2, instance, type, args) {
+function callWithErrorHandling(fn, instance, type, args) {
   try {
-    return args ? fn2(...args) : fn2();
+    return args ? fn(...args) : fn();
   } catch (err) {
     handleError(err, instance, type);
   }
 }
-function callWithAsyncErrorHandling(fn2, instance, type, args) {
-  if (isFunction(fn2)) {
-    const res = callWithErrorHandling(fn2, instance, type, args);
+function callWithAsyncErrorHandling(fn, instance, type, args) {
+  if (isFunction(fn)) {
+    const res = callWithErrorHandling(fn, instance, type, args);
     if (res && isPromise(res)) {
       res.catch((err) => {
         handleError(err, instance, type);
@@ -1971,10 +1971,10 @@ function callWithAsyncErrorHandling(fn2, instance, type, args) {
     }
     return res;
   }
-  if (isArray$2(fn2)) {
+  if (isArray$2(fn)) {
     const values = [];
-    for (let i = 0; i < fn2.length; i++) {
-      values.push(callWithAsyncErrorHandling(fn2[i], instance, type, args));
+    for (let i = 0; i < fn.length; i++) {
+      values.push(callWithAsyncErrorHandling(fn[i], instance, type, args));
     }
     return values;
   }
@@ -2024,9 +2024,9 @@ let activePostFlushCbs = null;
 let postFlushIndex = 0;
 const resolvedPromise = /* @__PURE__ */ Promise.resolve();
 let currentFlushPromise = null;
-function nextTick(fn2) {
+function nextTick(fn) {
   const p2 = currentFlushPromise || resolvedPromise;
-  return fn2 ? p2.then(this ? fn2.bind(this) : fn2) : p2;
+  return fn ? p2.then(this ? fn.bind(this) : fn) : p2;
 }
 function findInsertionIndex$1(id) {
   let start = flushIndex + 1;
@@ -2161,10 +2161,10 @@ function setCurrentRenderingInstance(instance) {
   currentScopeId = instance && instance.type.__scopeId || null;
   return prev;
 }
-function withCtx(fn2, ctx = currentRenderingInstance, isNonScopedSlot) {
-  if (!ctx) return fn2;
-  if (fn2._n) {
-    return fn2;
+function withCtx(fn, ctx = currentRenderingInstance, isNonScopedSlot) {
+  if (!ctx) return fn;
+  if (fn._n) {
+    return fn;
   }
   const renderFnWithContext = (...args) => {
     if (renderFnWithContext._d) {
@@ -2173,7 +2173,7 @@ function withCtx(fn2, ctx = currentRenderingInstance, isNonScopedSlot) {
     const prevInstance = setCurrentRenderingInstance(ctx);
     let res;
     try {
-      res = fn2(...args);
+      res = fn(...args);
     } finally {
       setCurrentRenderingInstance(prevInstance);
       if (renderFnWithContext._d) {
@@ -3890,11 +3890,11 @@ function createAppAPI(render2, hydrate) {
         context.provides[key] = value;
         return app2;
       },
-      runWithContext(fn2) {
+      runWithContext(fn) {
         const lastApp = currentApp;
         currentApp = app2;
         try {
-          return fn2();
+          return fn();
         } finally {
           currentApp = lastApp;
         }
@@ -5671,7 +5671,7 @@ function doWatch(source, cb, options = EMPTY_OBJ) {
     }
   }
   const instance = currentInstance;
-  baseWatchOptions.call = (fn2, type, args) => callWithAsyncErrorHandling(fn2, instance, type, args);
+  baseWatchOptions.call = (fn, type, args) => callWithAsyncErrorHandling(fn, instance, type, args);
   let isPre = false;
   if (flush === "post") {
     baseWatchOptions.scheduler = (job) => {
@@ -6025,15 +6025,15 @@ function updateHOCHostEl({ vnode, parent }, el) {
   }
 }
 const isSuspense = (type) => type.__isSuspense;
-function queueEffectWithSuspense(fn2, suspense) {
+function queueEffectWithSuspense(fn, suspense) {
   if (suspense && suspense.pendingBranch) {
-    if (isArray$2(fn2)) {
-      suspense.effects.push(...fn2);
+    if (isArray$2(fn)) {
+      suspense.effects.push(...fn);
     } else {
-      suspense.effects.push(fn2);
+      suspense.effects.push(fn);
     }
   } else {
-    queuePostFlushCb(fn2);
+    queuePostFlushCb(fn);
   }
 }
 const Fragment = Symbol.for("v-fgt");
@@ -7278,7 +7278,7 @@ function patchStopImmediatePropagation(e, value) {
       e._stopped = true;
     };
     return value.map(
-      (fn2) => (e2) => !e2._stopped && fn2 && fn2(e2)
+      (fn) => (e2) => !e2._stopped && fn && fn(e2)
     );
   } else {
     return value;
@@ -7709,8 +7709,8 @@ class VueElement extends BaseClass {
   }
 }
 const getModelAssigner = (vnode) => {
-  const fn2 = vnode.props["onUpdate:modelValue"] || false;
-  return isArray$2(fn2) ? (value) => invokeArrayFns(fn2, value) : fn2;
+  const fn = vnode.props["onUpdate:modelValue"] || false;
+  return isArray$2(fn) ? (value) => invokeArrayFns(fn, value) : fn;
 };
 function onCompositionStart(e) {
   e.target.composing = true;
@@ -7947,8 +7947,8 @@ function callModelHook(el, binding, vnode, prevVNode, hook) {
     el.tagName,
     vnode.props && vnode.props.type
   );
-  const fn2 = modelToUse[hook];
-  fn2 && fn2(el, binding, vnode, prevVNode);
+  const fn = modelToUse[hook];
+  fn && fn(el, binding, vnode, prevVNode);
 }
 const systemModifiers = ["ctrl", "shift", "alt", "meta"];
 const modifierGuards = {
@@ -7964,15 +7964,15 @@ const modifierGuards = {
   right: (e) => "button" in e && e.button !== 2,
   exact: (e, modifiers) => systemModifiers.some((m) => e[`${m}Key`] && !modifiers.includes(m))
 };
-const withModifiers = (fn2, modifiers) => {
-  const cache = fn2._withMods || (fn2._withMods = {});
+const withModifiers = (fn, modifiers) => {
+  const cache = fn._withMods || (fn._withMods = {});
   const cacheKey = modifiers.join(".");
   return cache[cacheKey] || (cache[cacheKey] = ((event, ...args) => {
     for (let i = 0; i < modifiers.length; i++) {
       const guard = modifierGuards[modifiers[i]];
       if (guard && guard(event, modifiers)) return;
     }
-    return fn2(event, ...args);
+    return fn(event, ...args);
   }));
 };
 const keyNames = {
@@ -7984,8 +7984,8 @@ const keyNames = {
   down: "arrow-down",
   delete: "backspace"
 };
-const withKeys = (fn2, modifiers) => {
-  const cache = fn2._withKeys || (fn2._withKeys = {});
+const withKeys = (fn, modifiers) => {
+  const cache = fn._withKeys || (fn._withKeys = {});
   const cacheKey = modifiers.join(".");
   return cache[cacheKey] || (cache[cacheKey] = ((event) => {
     if (!("key" in event)) {
@@ -7995,7 +7995,7 @@ const withKeys = (fn2, modifiers) => {
     if (modifiers.some(
       (k) => k === eventKey || keyNames[k] === eventKey
     )) {
-      return fn2(event);
+      return fn(event);
     }
   }));
 };
@@ -10895,10 +10895,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.45.1",
+    version: "3.46.0",
     mode: IS_PURE ? "pure" : "global",
-    copyright: "© 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.45.1/LICENSE",
+    copyright: "© 2014-2025 Denis Pushkarev (zloirock.ru), 2025 CoreJS Company (core-js.io)",
+    license: "https://github.com/zloirock/core-js/blob/v3.46.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -14644,33 +14644,6 @@ function getHTMLElementFromVueRef(ref2) {
   }
   throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
-function lazyLoad(fn2) {
-  let cache;
-  return () => cache !== null && cache !== void 0 ? cache : cache = fn2();
-}
-const eventTarget = lazyLoad(() => new EventTarget());
-const fn = /* @__PURE__ */ new Map();
-function $emit(type, ...args) {
-  const event = new CustomEvent(type, {
-    detail: args
-  });
-  eventTarget().dispatchEvent(event);
-}
-function $on(type, callback) {
-  fn.set(callback, (event) => {
-    callback(...event.detail);
-  });
-  eventTarget().addEventListener(type, fn.get(callback));
-}
-function $off(type, callback) {
-  eventTarget().removeEventListener(type, fn.get(callback));
-  fn.delete(callback);
-}
-const EventBus = {
-  $emit,
-  $on,
-  $off
-};
 var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
   FKUIConfigButtonOrder2[FKUIConfigButtonOrder2["LEFT_TO_RIGHT"] = 0] = "LEFT_TO_RIGHT";
   FKUIConfigButtonOrder2[FKUIConfigButtonOrder2["RIGHT_TO_LEFT"] = 1] = "RIGHT_TO_LEFT";
@@ -16117,36 +16090,6 @@ function hasSlot(vm, name, props = {}, options = {}) {
     ...options
   };
   return Boolean(renderSlotText(slot, props, effectiveOptions));
-}
-function _typeof(o) {
-  "@babel/helpers - typeof";
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof(o);
-}
-function toPrimitive(t, r) {
-  if ("object" != _typeof(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
-function toPropertyKey(t) {
-  var i = toPrimitive(t, "string");
-  return "symbol" == _typeof(i) ? i : i + "";
-}
-function _defineProperty(e, r, t) {
-  return (r = toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
-    value: t,
-    enumerable: true,
-    configurable: true,
-    writable: true
-  }) : e[r] = t, e;
 }
 var MenuAction = /* @__PURE__ */ ((MenuAction2) => {
   MenuAction2[MenuAction2["MOVE_NEXT"] = 0] = "MOVE_NEXT";
@@ -23301,35 +23244,6 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
     };
   }
 });
-class FRightPanelServiceImpl {
-  constructor() {
-    _defineProperty(this, "focusedElementBeforeOpenining", null);
-  }
-  open() {
-    this.focusedElementBeforeOpenining = window.document.activeElement;
-    this.emit("open");
-  }
-  openDialog(title) {
-    this.focusedElementBeforeOpenining = window.document.activeElement;
-    this.emit("open-dialog", title);
-  }
-  close() {
-    this.emit("close");
-    if (this.focusedElementBeforeOpenining) {
-      this.focusedElementBeforeOpenining.focus();
-    }
-  }
-  on(event, callback) {
-    EventBus.$on(`application-layout:${event}`, callback);
-  }
-  off(event, callback) {
-    EventBus.$off(`application-layout:${event}`, callback);
-  }
-  emit(event, arg) {
-    EventBus.$emit(`application-layout:${event}`, arg);
-  }
-}
-new FRightPanelServiceImpl();
 const _hoisted_1$e = ["aria-label"];
 const __default__ = /* @__PURE__ */ defineComponent({
   computed: {
@@ -24231,11 +24145,11 @@ function isESModule(obj) {
   obj.default && isRouteComponent(obj.default);
 }
 const assign = Object.assign;
-function applyToParams(fn2, params) {
+function applyToParams(fn, params) {
   const newParams = {};
   for (const key in params) {
     const value = params[key];
-    newParams[key] = isArray(value) ? value.map(fn2) : fn2(value);
+    newParams[key] = isArray(value) ? value.map(fn) : fn(value);
   }
   return newParams;
 }
@@ -25300,7 +25214,7 @@ function useCallbacks() {
     reset
   };
 }
-function guardToPromiseFn(guard, to, from, record, name, runWithContext = (fn2) => fn2()) {
+function guardToPromiseFn(guard, to, from, record, name, runWithContext = (fn) => fn()) {
   const enterCallbackArray = record && // name is defined if record is because of the function overload
   (record.enterCallbacks[name] = record.enterCallbacks[name] || []);
   return () => new Promise((resolve2, reject) => {
@@ -25332,7 +25246,7 @@ function guardToPromiseFn(guard, to, from, record, name, runWithContext = (fn2) 
     guardCall.catch((err) => reject(err));
   });
 }
-function extractComponentsGuards(matched, guardType, to, from, runWithContext = (fn2) => fn2()) {
+function extractComponentsGuards(matched, guardType, to, from, runWithContext = (fn) => fn()) {
   const guards = [];
   for (const record of matched) {
     for (const name in record.components) {
@@ -25786,9 +25700,9 @@ function createRouter(options) {
     const error = checkCanceledNavigation(to, from);
     return error ? Promise.reject(error) : Promise.resolve();
   }
-  function runWithContext(fn2) {
+  function runWithContext(fn) {
     const app2 = installedApps.values().next().value;
-    return app2 && typeof app2.runWithContext === "function" ? app2.runWithContext(fn2) : fn2();
+    return app2 && typeof app2.runWithContext === "function" ? app2.runWithContext(fn) : fn();
   }
   function navigate(to, from) {
     let guards;
