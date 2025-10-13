@@ -218,7 +218,7 @@ export function getMetaRows<T, K extends keyof T = keyof T>(
     expandedKeys: string[],
     expandableAttribute?: K,
 ): Array<MetaRow<T>> {
-    const rowIndexes = getRowIndexes(keyedRows);
+    const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
     const array: Array<MetaRow<T>> = [];
 
     walk(
@@ -230,10 +230,13 @@ export function getMetaRows<T, K extends keyof T = keyof T>(
             const isExpanded =
                 isExpandable && expandedKeys.includes(rowKey(row));
 
+            // +2 since header row has rowindex 1.
+            const rowIndex = rowIndexes.indexOf(rowKey(row)) + 2;
+
             array.push({
                 key: rowKey(row),
                 row,
-                rowIndex: rowIndexes.indexOf(rowKey(row)) + 1,
+                rowIndex,
                 level: expandableAttribute ? level : undefined,
                 isExpandable,
                 isExpanded,
