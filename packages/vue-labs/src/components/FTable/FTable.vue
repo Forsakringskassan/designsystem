@@ -279,7 +279,7 @@ onMounted(() => {
 <template>
     <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
         <thead>
-            <tr class="table-ng__row">
+            <tr class="table-ng__row" aria-rowindex="1">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <th v-if="isMultiSelect" scope="col" class="table-ng__column table-ng__column--checkbox">
                     <input
