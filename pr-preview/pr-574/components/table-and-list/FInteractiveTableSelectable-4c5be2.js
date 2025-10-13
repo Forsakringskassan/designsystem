@@ -64,7 +64,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         rows: $setup.rows,
         selectable: ""
       }, {
-        caption: _withCtx(() => _cache[1] || (_cache[1] = [
+        caption: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createElementVNode(
             "span",
             { class: "sr-only" },
@@ -72,7 +72,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(({ row }) => [
           _withDirectives(_createVNode(
             $setup["FTableColumn"],

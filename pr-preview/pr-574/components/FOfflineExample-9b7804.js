@@ -1480,8 +1480,8 @@ var require_Set = __commonJS({
     "use strict";
     var getNative = require_getNative();
     var root = require_root();
-    var Set = getNative(root, "Set");
-    module.exports = Set;
+    var Set2 = getNative(root, "Set");
+    module.exports = Set2;
   }
 });
 
@@ -1503,7 +1503,7 @@ var require_getTag = __commonJS({
     var DataView = require_DataView();
     var Map2 = require_Map();
     var Promise2 = require_Promise();
-    var Set = require_Set();
+    var Set2 = require_Set();
     var WeakMap = require_WeakMap();
     var baseGetTag = require_baseGetTag();
     var toSource = require_toSource();
@@ -1516,10 +1516,10 @@ var require_getTag = __commonJS({
     var dataViewCtorString = toSource(DataView);
     var mapCtorString = toSource(Map2);
     var promiseCtorString = toSource(Promise2);
-    var setCtorString = toSource(Set);
+    var setCtorString = toSource(Set2);
     var weakMapCtorString = toSource(WeakMap);
     var getTag = baseGetTag;
-    if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set && getTag(new Set()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
+    if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
       getTag = function(value) {
         var result = baseGetTag(value), Ctor = result == objectTag ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : "";
         if (ctorString) {
@@ -1662,11 +1662,435 @@ import { defineComponent as defineComponent13 } from "vue";
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=script
 import { defineComponent as defineComponent12 } from "vue";
 
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlex.vue?type=script
 import { defineComponent } from "vue";
+
+// packages/vue/src/internal-components/IFlex/constants.ts
+var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
+var ALIGNMENT = ["top", "center", "bottom"];
+var FLOAT = ["left", "center", "right"];
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlex.vue?type=script
+var IFlex_default = defineComponent({
+  name: "IFlex",
+  inheritAttrs: true,
+  props: {
+    /**
+     * Set gap (gutter) between items.
+     *
+     * Must be one of:
+     *
+     * - `"1x"`
+     * - `"2x"`
+     * - `"3x"`
+     * - ...
+     * - `"8x"`
+     *
+     * Example: a value of `"3x"` corresponds to a gap of `3 * 0.25 = 0.75rem`.
+     */
+    gap: {
+      type: String,
+      default: "",
+      validator(val) {
+        return val === "" || GAP.includes(val);
+      }
+    },
+    /**
+     * If set the IFlexItems will be fullwidth and
+     * stacked on top of each other when breakpoint is small (aka mobile).
+     */
+    collapse: {
+      type: Boolean
+    },
+    /**
+     * If set the IFlexItems will wrap when out of space
+     */
+    wrap: {
+      type: Boolean
+    },
+    /**
+     * Set how IFlexItems should float.
+     *
+     * Must be one of:
+     *
+     * - `"left"`
+     * - `"center"`
+     * - `"right"`
+     */
+    float: {
+      type: String,
+      default: "",
+      validator(val) {
+        return val === "" || FLOAT.includes(val);
+      }
+    }
+  },
+  computed: {
+    classList() {
+      const classes = [];
+      if (this.collapse) {
+        classes.push("iflex--collapse");
+      }
+      if (this.gap) {
+        classes.push(`iflex--gap-${this.gap}`);
+      }
+      if (this.wrap) {
+        classes.push(`iflex--wrap`);
+      }
+      if (this.float) {
+        classes.push(`iflex--float-${this.float}`);
+      }
+      return classes;
+    }
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlex.vue?type=template
+import { createCommentVNode as _createCommentVNode, renderSlot as _renderSlot, normalizeClass as _normalizeClass, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock(), _createElementBlock(
+    "div",
+    {
+      class: _normalizeClass(["iflex", _ctx.classList])
+    },
+    [
+      _createCommentVNode(" @slot Slot for IFlexItem's "),
+      _renderSlot(_ctx.$slots, "default")
+    ],
+    2
+    /* CLASS */
+  );
+}
+
+// packages/vue/src/internal-components/IFlex/IFlex.vue
+IFlex_default.render = render;
+IFlex_default.__file = "packages/vue/src/internal-components/IFlex/IFlex.vue";
+var IFlex_default2 = IFlex_default;
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlexItem.vue?type=script
+import { defineComponent as defineComponent2 } from "vue";
+var IFlexItem_default = defineComponent2({
+  name: "IFlexItem",
+  inheritAttrs: true,
+  props: {
+    /**
+     * If set this item will grow to its largest possible size.
+     */
+    grow: {
+      type: Boolean
+    },
+    /**
+     * If set this item will shrink to its smallest possible size.
+     */
+    shrink: {
+      type: Boolean
+    },
+    /**
+     * Vertical positioning of content.
+     *
+     * Must be one of:
+     *
+     * - `"top"`
+     * - `"center"`
+     * - `"bottom"`
+     */
+    align: {
+      type: String,
+      default: "top",
+      validator(val) {
+        return ALIGNMENT.includes(val);
+      }
+    }
+  },
+  computed: {
+    classList() {
+      const classList = [`iflex--align-${this.align}`];
+      if (this.grow) {
+        classList.push("iflex--grow");
+      } else if (this.shrink) {
+        classList.push("iflex--shrink");
+      }
+      return classList;
+    }
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlexItem.vue?type=template
+import { createCommentVNode as _createCommentVNode2, renderSlot as _renderSlot2, normalizeClass as _normalizeClass2, openBlock as _openBlock2, createElementBlock as _createElementBlock2 } from "vue";
+function render2(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock2(), _createElementBlock2(
+    "div",
+    {
+      class: _normalizeClass2(["iflex__item", _ctx.classList])
+    },
+    [
+      _createCommentVNode2(" @slot Content "),
+      _renderSlot2(_ctx.$slots, "default")
+    ],
+    2
+    /* CLASS */
+  );
+}
+
+// packages/vue/src/internal-components/IFlex/IFlexItem.vue
+IFlexItem_default.render = render2;
+IFlexItem_default.__file = "packages/vue/src/internal-components/IFlex/IFlexItem.vue";
+var IFlexItem_default2 = IFlexItem_default;
+
+// packages/vue/src/utils/ListUtils.ts
+import { isSet } from "@fkui/logic";
+
+// packages/vue/src/utils/VueRefUtils.ts
+import { isSet as isSet2 } from "@fkui/logic";
+function refIsElement(value) {
+  return value instanceof Element;
+}
+function refIsVue(value) {
+  return value?.$el !== void 0;
+}
+function findElementFromVueRef(ref) {
+  if (refIsElement(ref)) {
+    return ref;
+  } else if (refIsVue(ref)) {
+    return ref.$el;
+  }
+}
+function getElementFromVueRef(ref) {
+  const element = findElementFromVueRef(ref);
+  if (!isSet2(element)) {
+    throw new Error(`Unable to find element from ${String(ref)}.`);
+  }
+  return element;
+}
+function getHTMLElementFromVueRef(ref) {
+  const element = findElementFromVueRef(ref);
+  if (!isSet2(element)) {
+    throw new Error(`Unable to find element from ${String(ref)}.`);
+  }
+  if (element instanceof HTMLElement) {
+    return element;
+  }
+  throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
+}
+
+// packages/vue/src/utils/event-bus.ts
+function lazyLoad(fn2) {
+  let cache;
+  return () => cache ?? (cache = fn2());
+}
+var eventTarget = lazyLoad(() => new EventTarget());
+var fn = /* @__PURE__ */ new Map();
+function $emit(type, ...args) {
+  const event = new CustomEvent(type, { detail: args });
+  eventTarget().dispatchEvent(event);
+}
+function $on(type, callback) {
+  fn.set(callback, (event) => {
+    callback(...event.detail);
+  });
+  eventTarget().addEventListener(type, fn.get(callback));
+}
+function $off(type, callback) {
+  eventTarget().removeEventListener(type, fn.get(callback));
+  fn.delete(callback);
+}
+var EventBus = {
+  $emit,
+  $on,
+  $off
+};
+
+// packages/vue/src/config/config.ts
+import { configLogic } from "@fkui/logic";
+var popupContainer = document.body;
+var production = true;
+var config = {
+  buttonOrder: 1 /* RIGHT_TO_LEFT */,
+  teleportTarget: document.body,
+  get popupContainer() {
+    if (typeof popupContainer === "string") {
+      const element = document.querySelector(popupContainer);
+      if (!element) {
+        throw new Error(
+          `Failed to find popupContainer element from selector "${popupContainer}"`
+        );
+      }
+      return element;
+    } else {
+      return popupContainer;
+    }
+  },
+  set popupContainer(value) {
+    popupContainer = value;
+  },
+  set production(value) {
+    production = value;
+    configLogic.production = value;
+  },
+  get production() {
+    return production;
+  }
+};
+
+// packages/vue/src/utils/mount-component/mount-component.ts
+import { createApp as createApp2 } from "vue";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
+import { defineComponent as defineComponent6 } from "vue";
+import { ElementIdService, findTabbableElements, focus as focus2, popFocus, pushFocus } from "@fkui/logic";
+
+// packages/vue/src/plugins/translation/translate.ts
+import { TranslationService } from "@fkui/logic";
+function translate(key, defaultValueOrArgs, args) {
+  const { provider } = TranslationService;
+  return provider.translate(key, defaultValueOrArgs, args);
+}
+
+// packages/vue/src/plugins/translation/TranslationPlugin.ts
+var TranslationMixin = {
+  methods: {
+    $t: translate
+  }
+};
+
+// packages/vue/src/plugins/validation/ValidationPlugin.ts
+var import_isEqual = __toESM(require_isEqual());
+import {
+  ValidationService,
+  availableValidators,
+  isValidatableHTMLElement
+} from "@fkui/logic";
+
+// packages/vue/src/types/ErrorViewData.ts
+var ErrorViewData = class {
+  hasError;
+  payload;
+  constructor(hasError = false, payload) {
+    this.hasError = hasError;
+    this.payload = payload;
+  }
+};
+
+// packages/vue/src/plugins/error/ErrorPlugin.ts
+var UNHANDLED_ERROR_EVENT = "unhandled-error";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
+import { defineComponent as defineComponent4 } from "vue";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=script
+import { defineComponent as defineComponent3 } from "vue";
+var FErrorPage_default = defineComponent3({
+  name: "FErrorPage",
+  props: {
+    /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */
+    payload: {
+      type: Object,
+      required: false,
+      default: null
+    }
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
+import { createElementVNode as _createElementVNode, openBlock as _openBlock3, createElementBlock as _createElementBlock3 } from "vue";
+var _hoisted_1 = { "data-test": "f-error-page" };
+function render3(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock3(), _createElementBlock3("div", _hoisted_1, [..._cache[0] || (_cache[0] = [
+    _createElementVNode(
+      "h1",
+      null,
+      "Fel",
+      -1
+      /* CACHED */
+    ),
+    _createElementVNode(
+      "p",
+      null,
+      "Ett fel har uppst\xE5tt.",
+      -1
+      /* CACHED */
+    ),
+    _createElementVNode(
+      "a",
+      { href: "/" },
+      "G\xE5 till startsidan",
+      -1
+      /* CACHED */
+    )
+  ])]);
+}
+
+// packages/vue/src/plugins/error/FErrorPage.vue
+FErrorPage_default.render = render3;
+FErrorPage_default.__file = "packages/vue/src/plugins/error/FErrorPage.vue";
+var FErrorPage_default2 = FErrorPage_default;
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
+var FErrorHandlingApp_default = defineComponent4({
+  name: "FErrorHandlingApp",
+  props: {
+    defaultComponent: {
+      type: [Function, Object],
+      required: false,
+      default: void 0
+    },
+    errorComponent: {
+      type: [Function, Object],
+      required: false,
+      default: FErrorPage_default2
+    }
+  },
+  data() {
+    return new ErrorViewData();
+  },
+  watch: {
+    $route() {
+      this.hasError = false;
+    }
+  },
+  created() {
+    EventBus.$on(UNHANDLED_ERROR_EVENT, (payload) => {
+      this.hasError = true;
+      this.payload = payload;
+    });
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=template
+import { resolveDynamicComponent as _resolveDynamicComponent, openBlock as _openBlock4, createBlock as _createBlock, renderSlot as _renderSlot3, createElementBlock as _createElementBlock4 } from "vue";
+function render4(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock4(), _createElementBlock4("div", null, [
+    _ctx.hasError ? (_openBlock4(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
+      key: 0,
+      payload: _ctx.payload
+    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock4(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot3(_ctx.$slots, "default", { key: 2 })
+  ]);
+}
+
+// packages/vue/src/plugins/error/FErrorHandlingApp.vue
+FErrorHandlingApp_default.render = render4;
+FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
+
+// packages/vue/src/plugins/format/formatters.ts
+import { DateFormat, FDate as FDate2 } from "@fkui/date";
+import {
+  formatNumber as numberFormater,
+  parseBankgiro,
+  parseDate,
+  parseOrganisationsnummer,
+  parsePersonnummer,
+  parsePlusgiro,
+  parsePostalCode
+} from "@fkui/logic";
+
+// packages/vue/src/plugins/format/is-date-range.ts
+import { FDate } from "@fkui/date";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
+import { defineComponent as defineComponent5 } from "vue";
 var Flip = ["horizontal", "vertical"];
 var Rotate = ["90", "180", "270"];
-var FIcon_default = defineComponent({
+var FIcon_default = defineComponent5({
   name: "FIcon",
   inheritAttrs: false,
   props: {
@@ -1749,23 +2173,23 @@ var FIcon_default = defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=template
-import { createCommentVNode as _createCommentVNode, renderSlot as _renderSlot, createElementVNode as _createElementVNode, mergeProps as _mergeProps, openBlock as _openBlock, createElementBlock as _createElementBlock, Fragment as _Fragment } from "vue";
-var _hoisted_1 = ["aria-hidden"];
+import { createCommentVNode as _createCommentVNode4, renderSlot as _renderSlot4, createElementVNode as _createElementVNode2, mergeProps as _mergeProps, openBlock as _openBlock5, createElementBlock as _createElementBlock5, Fragment as _Fragment } from "vue";
+var _hoisted_12 = ["aria-hidden"];
 var _hoisted_2 = ["href"];
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock(
+function render5(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock5(), _createElementBlock5(
     _Fragment,
     null,
     [
-      _createCommentVNode(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
-      (_openBlock(), _createElementBlock("svg", _mergeProps(_ctx.$attrs, {
+      _createCommentVNode4(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
+      (_openBlock5(), _createElementBlock5("svg", _mergeProps(_ctx.$attrs, {
         focusable: "false",
         class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
         "aria-hidden": _ctx.ariaHidden
       }), [
-        _renderSlot(_ctx.$slots, "default"),
-        _createElementVNode("use", { href: _ctx.spriteId }, null, 8, _hoisted_2)
-      ], 16, _hoisted_1))
+        _renderSlot4(_ctx.$slots, "default"),
+        _createElementVNode2("use", { href: _ctx.spriteId }, null, 8, _hoisted_2)
+      ], 16, _hoisted_12))
     ],
     2112
     /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
@@ -1773,456 +2197,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FIcon/FIcon.vue
-FIcon_default.render = render;
+FIcon_default.render = render5;
 FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
 var FIcon_default2 = FIcon_default;
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlex.vue?type=script
-import { defineComponent as defineComponent2 } from "vue";
-
-// packages/vue/src/internal-components/IFlex/constants.ts
-var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
-var ALIGNMENT = ["top", "center", "bottom"];
-var FLOAT = ["left", "center", "right"];
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlex.vue?type=script
-var IFlex_default = defineComponent2({
-  name: "IFlex",
-  inheritAttrs: true,
-  props: {
-    /**
-     * Set gap (gutter) between items.
-     *
-     * Must be one of:
-     *
-     * - `"1x"`
-     * - `"2x"`
-     * - `"3x"`
-     * - ...
-     * - `"8x"`
-     *
-     * Example: a value of `"3x"` corresponds to a gap of `3 * 0.25 = 0.75rem`.
-     */
-    gap: {
-      type: String,
-      default: "",
-      validator(val) {
-        return val === "" || GAP.includes(val);
-      }
-    },
-    /**
-     * If set the IFlexItems will be fullwidth and
-     * stacked on top of each other when breakpoint is small (aka mobile).
-     */
-    collapse: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If set the IFlexItems will wrap when out of space
-     */
-    wrap: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Set how IFlexItems should float.
-     *
-     * Must be one of:
-     *
-     * - `"left"`
-     * - `"center"`
-     * - `"right"`
-     */
-    float: {
-      type: String,
-      default: "",
-      validator(val) {
-        return val === "" || FLOAT.includes(val);
-      }
-    }
-  },
-  computed: {
-    classList() {
-      const classes = [];
-      if (this.collapse) {
-        classes.push("iflex--collapse");
-      }
-      if (this.gap) {
-        classes.push(`iflex--gap-${this.gap}`);
-      }
-      if (this.wrap) {
-        classes.push(`iflex--wrap`);
-      }
-      if (this.float) {
-        classes.push(`iflex--float-${this.float}`);
-      }
-      return classes;
-    }
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlex.vue?type=template
-import { createCommentVNode as _createCommentVNode2, renderSlot as _renderSlot2, normalizeClass as _normalizeClass, openBlock as _openBlock2, createElementBlock as _createElementBlock2 } from "vue";
-function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2(
-    "div",
-    {
-      class: _normalizeClass(["iflex", _ctx.classList])
-    },
-    [
-      _createCommentVNode2(" @slot Slot for IFlexItem's "),
-      _renderSlot2(_ctx.$slots, "default")
-    ],
-    2
-    /* CLASS */
-  );
-}
-
-// packages/vue/src/internal-components/IFlex/IFlex.vue
-IFlex_default.render = render2;
-IFlex_default.__file = "packages/vue/src/internal-components/IFlex/IFlex.vue";
-var IFlex_default2 = IFlex_default;
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlexItem.vue?type=script
-import { defineComponent as defineComponent3 } from "vue";
-var IFlexItem_default = defineComponent3({
-  name: "IFlexItem",
-  inheritAttrs: true,
-  props: {
-    /**
-     * If set this item will grow to its largest possible size.
-     */
-    grow: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If set this item will shrink to its smallest possible size.
-     */
-    shrink: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Vertical positioning of content.
-     *
-     * Must be one of:
-     *
-     * - `"top"`
-     * - `"center"`
-     * - `"bottom"`
-     */
-    align: {
-      type: String,
-      default: "top",
-      validator(val) {
-        return ALIGNMENT.includes(val);
-      }
-    }
-  },
-  computed: {
-    classList() {
-      const classList = [`iflex--align-${this.align}`];
-      if (this.grow) {
-        classList.push("iflex--grow");
-      } else if (this.shrink) {
-        classList.push("iflex--shrink");
-      }
-      return classList;
-    }
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlexItem.vue?type=template
-import { createCommentVNode as _createCommentVNode3, renderSlot as _renderSlot3, normalizeClass as _normalizeClass2, openBlock as _openBlock3, createElementBlock as _createElementBlock3 } from "vue";
-function render3(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock3(), _createElementBlock3(
-    "div",
-    {
-      class: _normalizeClass2(["iflex__item", _ctx.classList])
-    },
-    [
-      _createCommentVNode3(" @slot Content "),
-      _renderSlot3(_ctx.$slots, "default")
-    ],
-    2
-    /* CLASS */
-  );
-}
-
-// packages/vue/src/internal-components/IFlex/IFlexItem.vue
-IFlexItem_default.render = render3;
-IFlexItem_default.__file = "packages/vue/src/internal-components/IFlex/IFlexItem.vue";
-var IFlexItem_default2 = IFlexItem_default;
-
-// packages/vue/src/utils/ListUtils.ts
-import { isSet } from "@fkui/logic";
-
-// packages/vue/src/utils/VueRefUtils.ts
-import { isSet as isSet2 } from "@fkui/logic";
-function refIsElement(value) {
-  return value instanceof Element;
-}
-function refIsVue(value) {
-  return value?.$el !== void 0;
-}
-function findElementFromVueRef(ref) {
-  if (refIsElement(ref)) {
-    return ref;
-  } else if (refIsVue(ref)) {
-    return ref.$el;
-  }
-}
-function getElementFromVueRef(ref) {
-  const element = findElementFromVueRef(ref);
-  if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${ref}.`);
-  }
-  return element;
-}
-function getHTMLElementFromVueRef(ref) {
-  const element = findElementFromVueRef(ref);
-  if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${ref}.`);
-  }
-  if (element instanceof HTMLElement) {
-    return element;
-  }
-  throw new Error(`Not instance of HTMLELement ${ref}.`);
-}
-
-// packages/vue/src/utils/event-bus.ts
-function lazyLoad(fn2) {
-  let cache;
-  return () => cache ?? (cache = fn2());
-}
-var eventTarget = lazyLoad(() => new EventTarget());
-var fn = /* @__PURE__ */ new Map();
-function $emit(type, ...args) {
-  const event = new CustomEvent(type, { detail: args });
-  eventTarget().dispatchEvent(event);
-}
-function $on(type, callback) {
-  fn.set(callback, (event) => callback(...event.detail));
-  eventTarget().addEventListener(type, fn.get(callback));
-}
-function $off(type, callback) {
-  eventTarget().removeEventListener(type, fn.get(callback));
-  fn.delete(callback);
-}
-var EventBus = {
-  $emit,
-  $on,
-  $off
-};
-
-// packages/vue/src/utils/mount-component/mount-component.ts
-import { createApp as createApp2 } from "vue";
-
-// packages/vue/src/config/config.ts
-import { configLogic } from "@fkui/logic";
-var popupContainer = document.body;
-var production = true;
-var config = {
-  buttonOrder: 1 /* RIGHT_TO_LEFT */,
-  teleportTarget: document.body,
-  get popupContainer() {
-    if (typeof popupContainer === "string") {
-      const element = document.querySelector(popupContainer);
-      if (!element) {
-        throw new Error(
-          `Failed to find popupContainer element from selector "${popupContainer}"`
-        );
-      }
-      return element;
-    } else {
-      return popupContainer;
-    }
-  },
-  set popupContainer(value) {
-    popupContainer = value;
-  },
-  set production(value) {
-    production = value;
-    configLogic.production = value;
-  },
-  get production() {
-    return production;
-  }
-};
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
-import { defineComponent as defineComponent6 } from "vue";
-import { ElementIdService, pushFocus, popFocus, findTabbableElements, focus as focus2 } from "@fkui/logic";
-
-// packages/vue/src/plugins/translation/translate.ts
-import { TranslationService } from "@fkui/logic";
-function translate(key, defaultValueOrArgs, args) {
-  const { provider } = TranslationService;
-  return provider.translate(key, defaultValueOrArgs, args);
-}
-
-// packages/vue/src/plugins/translation/TranslationPlugin.ts
-var TranslationMixin = {
-  methods: {
-    $t: translate
-  }
-};
-
-// packages/vue/src/plugins/validation/ValidationPlugin.ts
-var import_isEqual = __toESM(require_isEqual());
-import {
-  availableValidators,
-  isValidatableHTMLElement,
-  ValidationService
-} from "@fkui/logic";
-
-// packages/vue/src/types/ErrorViewData.ts
-var ErrorViewData = class {
-  hasError;
-  payload;
-  constructor(hasError = false, payload) {
-    this.hasError = hasError;
-    this.payload = payload;
-  }
-};
-
-// packages/vue/src/plugins/error/ErrorPlugin.ts
-var UNHANDLED_ERROR_EVENT = "unhandled-error";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
-import { defineComponent as defineComponent5 } from "vue";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=script
-import { defineComponent as defineComponent4 } from "vue";
-var FErrorPage_default = defineComponent4({
-  name: "FErrorPage",
-  props: {
-    payload: {
-      type: Object,
-      required: false,
-      default: null
-    }
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorPage.vue?type=template
-import { createElementVNode as _createElementVNode2, openBlock as _openBlock4, createElementBlock as _createElementBlock4 } from "vue";
-var _hoisted_12 = { "data-test": "f-error-page" };
-function render4(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock4(), _createElementBlock4("div", _hoisted_12, _cache[0] || (_cache[0] = [
-    _createElementVNode2(
-      "h1",
-      null,
-      "Fel",
-      -1
-      /* CACHED */
-    ),
-    _createElementVNode2(
-      "p",
-      null,
-      "Ett fel har uppst\xE5tt.",
-      -1
-      /* CACHED */
-    ),
-    _createElementVNode2(
-      "a",
-      { href: "/" },
-      "G\xE5 till startsidan",
-      -1
-      /* CACHED */
-    )
-  ]));
-}
-
-// packages/vue/src/plugins/error/FErrorPage.vue
-FErrorPage_default.render = render4;
-FErrorPage_default.__file = "packages/vue/src/plugins/error/FErrorPage.vue";
-var FErrorPage_default2 = FErrorPage_default;
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
-var FErrorHandlingApp_default = defineComponent5({
-  name: "FErrorHandlingApp",
-  props: {
-    defaultComponent: {
-      type: [Function, Object],
-      required: false,
-      default: void 0
-    },
-    errorComponent: {
-      type: [Function, Object],
-      required: false,
-      default: FErrorPage_default2
-    }
-  },
-  data() {
-    return new ErrorViewData();
-  },
-  watch: {
-    $route() {
-      this.hasError = false;
-    }
-  },
-  created() {
-    EventBus.$on(UNHANDLED_ERROR_EVENT, (payload) => {
-      this.hasError = true;
-      this.payload = payload;
-    });
-  }
-});
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=template
-import { resolveDynamicComponent as _resolveDynamicComponent, openBlock as _openBlock5, createBlock as _createBlock, renderSlot as _renderSlot4, createElementBlock as _createElementBlock5 } from "vue";
-function render5(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock5(), _createElementBlock5("div", null, [
-    _ctx.hasError ? (_openBlock5(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
-      key: 0,
-      payload: _ctx.payload
-    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock5(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot4(_ctx.$slots, "default", { key: 2 })
-  ]);
-}
-
-// packages/vue/src/plugins/error/FErrorHandlingApp.vue
-FErrorHandlingApp_default.render = render5;
-FErrorHandlingApp_default.__file = "packages/vue/src/plugins/error/FErrorHandlingApp.vue";
-
-// packages/vue/src/plugins/format/formatters.ts
-import { DateFormat, FDate as FDate2 } from "@fkui/date";
-import {
-  formatNumber as numberFormater,
-  parseBankgiro,
-  parseDate,
-  parseOrganisationsnummer,
-  parsePersonnummer,
-  parsePlusgiro,
-  parsePostalCode
-} from "@fkui/logic";
-
-// packages/vue/src/plugins/format/is-date-range.ts
-import { FDate } from "@fkui/date";
-
-// packages/vue/src/components/FModal/sizes.ts
-var sizes = [
-  "",
-  "small",
-  "medium",
-  "large",
-  "fullscreen",
-  "fullwidth"
-];
-function sizeClass(size) {
-  if (!sizes.includes(size)) {
-    throw new Error(`"${size}" is not a valid size`);
-  }
-  if (!size) {
-    return [];
-  } else if (size === "fullscreen") {
-    return [`modal__dialog-container--fullwidth`];
-  } else {
-    return [`modal__dialog-container--${size}`];
-  }
-}
 
 // packages/vue/src/components/FModal/focus-element.ts
 import { focus } from "@fkui/logic";
@@ -2253,6 +2230,28 @@ function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
 }
 
+// packages/vue/src/components/FModal/sizes.ts
+var sizes = [
+  "",
+  "small",
+  "medium",
+  "large",
+  "fullscreen",
+  "fullwidth"
+];
+function sizeClass(size) {
+  if (!sizes.includes(size)) {
+    throw new Error(`"${size}" is not a valid size`);
+  }
+  if (!size) {
+    return [];
+  } else if (size === "fullscreen") {
+    return [`modal__dialog-container--fullwidth`];
+  } else {
+    return [`modal__dialog-container--${size}`];
+  }
+}
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FModal.vue?type=script
 var FModal_default = defineComponent6({
   name: "FModal",
@@ -2275,8 +2274,7 @@ var FModal_default = defineComponent6({
      */
     isOpen: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * The aria-label attribute text for the top right close button.
@@ -2291,8 +2289,7 @@ var FModal_default = defineComponent6({
      */
     fullscreen: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * The type of modal. 'information', 'warning' and 'error' is valid.
@@ -2328,7 +2325,13 @@ var FModal_default = defineComponent6({
       }
     }
   },
-  emits: ["close"],
+  emits: [
+    /**
+     * Event that is dispatched when the escape button is pressed.
+     * In most use cases the `isOpen` prop should be set to false when this event is triggered.
+     */
+    "close"
+  ],
   data() {
     return {
       nonModalFocusableElements: [],
@@ -2375,7 +2378,7 @@ var FModal_default = defineComponent6({
     openModal() {
       const root = document.documentElement;
       const scroll = root.scrollTop;
-      root.style.top = `-${scroll}px`;
+      root.style.top = `-${String(scroll)}px`;
       root.style.left = "0";
       root.style.right = "0";
       root.style.overflow = "hidden";
@@ -2595,16 +2598,14 @@ var FConfirmModal_default = defineComponent7({
      */
     fullscreen: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * Prop for opening modal
      */
     isOpen: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * Simple text content
@@ -2664,7 +2665,13 @@ var FConfirmModal_default = defineComponent7({
       }
     }
   },
-  emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
+  emits: [
+    /**
+     * Emits reason for closing modal
+     */
+    "close",
+    ...defaultButtons.map((it) => it.event ?? "")
+  ],
   computed: {
     preparedButtons() {
       const preparedButtonList = prepareButtonList(this.buttons);
@@ -2769,11 +2776,11 @@ FConfirmModal_default.__file = "packages/vue/src/components/FModal/FConfirmModal
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=script
 import { defineComponent as defineComponent11 } from "vue";
-import { ElementIdService as ElementIdService3, ValidationService as ValidationService3, TranslationService as TranslationService2 } from "@fkui/logic";
+import { ElementIdService as ElementIdService3, TranslationService as TranslationService2, ValidationService as ValidationService3 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
 import { defineComponent as defineComponent10 } from "vue";
-import { ValidationService as ValidationService2, focus as focus4, ElementIdService as ElementIdService2 } from "@fkui/logic";
+import { ElementIdService as ElementIdService2, ValidationService as ValidationService2, focus as focus4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
 import { defineComponent as defineComponent8 } from "vue";
@@ -2781,13 +2788,15 @@ import { defineComponent as defineComponent8 } from "vue";
 // packages/vue/src/components/FErrorList/focus-error.ts
 import { focus as focus3, scrollTo } from "@fkui/logic";
 function focusError(item) {
-  const element = document.querySelector(`#${item.id}`);
+  const element = document.querySelector(`#${String(item.id)}`);
   if (!element) {
-    throw new Error(`Can not find element with id "${item.id}"`);
+    throw new Error(`Can not find element with id "${String(item.id)}"`);
   }
-  const focusElement3 = document.querySelector(`#${item.focusElementId}`);
+  const focusElement3 = document.querySelector(
+    `#${String(item.focusElementId)}`
+  );
   scrollTo(element, window.innerHeight * 0.25);
-  focus3(focusElement3 ? focusElement3 : element);
+  focus3(focusElement3 ?? element);
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
@@ -2809,8 +2818,7 @@ var FErrorList_default = defineComponent8({
      */
     bullets: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     },
     /**
      * Optional callback for performing actions before navigation.
@@ -2876,15 +2884,15 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           key: 1,
           shrink: ""
         }, {
-          default: _withCtx2(() => _cache[0] || (_cache[0] = [
+          default: _withCtx2(() => [..._cache[0] || (_cache[0] = [
             _createTextVNode2(
               "\xA0",
               -1
               /* CACHED */
             )
-          ])),
-          _: 1,
-          __: [0]
+          ])]),
+          _: 1
+          /* STABLE */
         })) : _createCommentVNode7("v-if", true),
         _createVNode2(_component_i_flex_item, { grow: "" }, {
           default: _withCtx2(() => [
@@ -3048,6 +3056,7 @@ var FValidationGroup_default = defineComponent9({
      *
      *   `componentCount`: number of registered components
      */
+    /* eslint-disable-next-line vue/no-unused-properties -- one-way binding, we ignore whatever the consumer sets this to */
     modelValue: {
       type: Object,
       required: false,
@@ -3060,11 +3069,22 @@ var FValidationGroup_default = defineComponent9({
      */
     stopPropagation: {
       type: Boolean,
-      required: false,
-      default: false
+      required: false
     }
   },
-  emits: ["group-validity", "update:modelValue"],
+  emits: [
+    /**
+     * Emitted when validation group has been updated.
+     *
+     * @type {GroupValidityEvent}
+     */
+    "group-validity",
+    /**
+     * V-model event.
+     * @type {GroupValidityEvent}
+     */
+    "update:modelValue"
+  ],
   data() {
     return {
       components: {}
@@ -3167,6 +3187,7 @@ var FValidationForm_default = defineComponent10({
     useErrorList: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3175,6 +3196,7 @@ var FValidationForm_default = defineComponent10({
     errorListBullets: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3189,7 +3211,12 @@ var FValidationForm_default = defineComponent10({
       }
     }
   },
-  emits: ["submit"],
+  emits: [
+    /**
+     * Emitted when form is successfully submitted.
+     */
+    "submit"
+  ],
   data() {
     return {
       validity: { isValid: true, componentsWithError: [], componentCount: 0 },
@@ -3322,6 +3349,7 @@ var FFormModal_default = defineComponent11({
     fullscreen: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3331,6 +3359,7 @@ var FFormModal_default = defineComponent11({
     isOpen: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3356,7 +3385,7 @@ var FFormModal_default = defineComponent11({
      */
     value: {
       type: Object,
-      default: function() {
+      default() {
         return {};
       }
     },
@@ -3366,6 +3395,7 @@ var FFormModal_default = defineComponent11({
     useErrorList: {
       type: Boolean,
       required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
     /**
@@ -3431,7 +3461,31 @@ var FFormModal_default = defineComponent11({
       ]
     }
   },
-  emits: ["cancel", "close", "submit"],
+  emits: {
+    /**
+     * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+     * In most use cases the isOpen prop should be set to false when this event is triggered.
+     */
+    cancel() {
+      return true;
+    },
+    /**
+     * Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+     * In most use cases the isOpen prop should be set to false when this event is triggered.
+     */
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
+    close(_payload) {
+      return true;
+    },
+    /**
+     * Event that is dispatched when the submit button is is clicked.
+     * The event payload is the data that has been submitted.
+     */
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, should use generics */
+    submit(_payload) {
+      return true;
+    }
+  },
   data() {
     return {};
   },
@@ -3446,7 +3500,7 @@ var FFormModal_default = defineComponent11({
       this.$emit("cancel");
       this.$emit("close", { reason: "close" });
     },
-    async onSubmit() {
+    onSubmit() {
       ValidationService3.resetState(this.$el);
       this.$emit("submit", { data: this.value });
       this.$emit("close", { reason: "submit", data: this.value });
@@ -3635,6 +3689,9 @@ function hasSlot(vm, name, props = {}, options = {}) {
 
 // packages/vue/src/utils/use-modal.ts
 import { getCurrentInstance } from "vue";
+
+// packages/vue/src/utils/internal-key.ts
+var internalKey = Symbol("internal-key");
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=script
 var EVENTS = ["online", "offline"];

@@ -87,15 +87,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isVertical = $event),
         value: true
       }, {
-        default: _withCtx(() => _cache[1] || (_cache[1] = [
+        default: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode(
             " Vertikal ",
             -1
             /* CACHED */
           )
-        ])),
-        _: 1,
-        __: [1]
+        ])]),
+        _: 1
+        /* STABLE */
       }, 8, ["modelValue"])
     ]),
     _: 1

@@ -74,7 +74,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_layout_left_panel = _resolveComponent("f-layout-left-panel");
   const _component_f_layout_application_template = _resolveComponent("f-layout-application-template");
   return _openBlock(), _createBlock(_component_f_layout_application_template, null, {
-    header: _withCtx(() => _cache[1] || (_cache[1] = [
+    header: _withCtx(() => [..._cache[1] || (_cache[1] = [
       _createElementVNode(
         "div",
         { style: { "background-color": "green", "color": "white" } },
@@ -84,8 +84,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
-    "top-navigation": _withCtx(() => _cache[2] || (_cache[2] = [
+    ])]),
+    "top-navigation": _withCtx(() => [..._cache[2] || (_cache[2] = [
       _createElementVNode(
         "div",
         { style: { "background-color": "lightgray" } },
@@ -95,8 +95,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
-    footer: _withCtx(() => _cache[7] || (_cache[7] = [
+    ])]),
+    footer: _withCtx(() => [..._cache[7] || (_cache[7] = [
       _createElementVNode(
         "div",
         { style: { "background-color": "green", "color": "white", "text-align": "center" } },
@@ -106,10 +106,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(() => [
       _createVNode(_component_f_layout_left_panel, null, {
-        heading: _withCtx(() => _cache[3] || (_cache[3] = [
+        heading: _withCtx(() => [..._cache[3] || (_cache[3] = [
           _createElementVNode(
             "h3",
             null,
@@ -117,14 +117,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             -1
             /* CACHED */
           )
-        ])),
-        content: _withCtx(() => _cache[4] || (_cache[4] = [
+        ])]),
+        content: _withCtx(() => [..._cache[4] || (_cache[4] = [
           _createTextVNode(
             " [content] ",
             -1
             /* CACHED */
           )
-        ])),
+        ])]),
         default: _withCtx(() => [
           _createVNode(_component_f_layout_right_panel, null, {
             heading: _withCtx(() => [

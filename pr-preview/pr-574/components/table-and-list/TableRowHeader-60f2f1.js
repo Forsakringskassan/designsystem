@@ -53,7 +53,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_format = _resolveDirective("format");
   return _openBlock(), _createBlock($setup["FDataTable"], { rows: $setup.rows }, {
-    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+    caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
         "span",
         { class: "sr-only" },
@@ -61,7 +61,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         -1
         /* CACHED */
       )
-    ])),
+    ])]),
     default: _withCtx(({ row }) => [
       _withDirectives(_createVNode(
         $setup["FTableColumn"],
