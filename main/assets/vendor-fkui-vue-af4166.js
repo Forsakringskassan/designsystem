@@ -17917,7 +17917,7 @@ var FRightPanelServiceImpl = class {
     EventBus.$emit(`application-layout:${event}`, arg);
   }
 };
-var FLayoutRightPanelService = new FRightPanelServiceImpl();
+var FLayoutRightPanelService = /* @__PURE__ */ new FRightPanelServiceImpl();
 var _sfc_main$g = defineComponent({
   name: "FLayoutRightPanel",
   components: {
