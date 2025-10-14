@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-d9f3cc.json"
+            href="../../../search-data-3bcc3b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-t6pXLF2cR5Y0D5wMth+h7oXnhcwYyEJiJG+j8776K46G6UFqGZ7xaaParlXficsi"
+            integrity="sha384-3LdFaRDYYoKjHKeCs/oXDDk81/qykWD9oPAyWNhAYBxpbUze9vZ4IxbZk/YoW9lA"
             id="search-data"
         />
     </head>
@@ -647,7 +647,7 @@
             data-path="functions/cypress/pageobjects/fpaginatorpageobject.html"
             
         >
-            FPaginatorPageObject
+            FPaginatorPageObject()
         </a>
     </li></ol>
 
@@ -1670,17 +1670,7 @@
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span></code></pre>
                 </div>
             
                 <div
@@ -1718,9 +1708,9 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/21860f0df62c1499b9effd20e013850b91040cec">21860f0</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/5a7f78b8fb78f5bbf3e416b8a6c67110f3e7ccff">5a7f78b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-10-14 14:36
+        2025-10-14 15:00
 </div>
 <div class="toolbar__item">
     <form id="version">
