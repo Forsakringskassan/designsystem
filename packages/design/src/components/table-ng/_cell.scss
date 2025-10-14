@@ -149,6 +149,10 @@ $horizontal-padding: size.$padding-050;
         flex: 1 1 auto;
     }
 
+    &__numeric {
+        font-variant-numeric: tabular-nums;
+    }
+
     &__icon {
         visibility: hidden;
         margin-left: 1rem;

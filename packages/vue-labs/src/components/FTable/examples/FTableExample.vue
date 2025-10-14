@@ -3,7 +3,7 @@ import { h, ref } from "vue";
 import { formatNumber } from "@fkui/logic";
 import { FSortFilterDataset } from "@fkui/vue";
 import { FTable } from "@fkui/vue-labs";
-import { defineTableColumns } from "../table-column";
+import { type TableColumnText, TableColumn, defineTableColumns } from "../table-column";
 
 const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
 
@@ -22,7 +22,7 @@ interface Row {
     aktiv?: boolean;
 }
 
-const columns = defineTableColumns<Row>([
+const columns = defineTableColumns<Row, keyof Row>([
     {
         type: "text",
         header: "Oformaterad text",
@@ -61,7 +61,7 @@ const columns = defineTableColumns<Row>([
             required: {},
             maxLength: { length: 5 },
         },
-    },
+    } satisfies TableColumnText<Row, keyof Row>,
     {
         type: "button",
         header: "Knapp",
