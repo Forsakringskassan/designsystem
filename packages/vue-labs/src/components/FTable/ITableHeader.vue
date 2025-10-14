@@ -3,7 +3,12 @@ import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem } from "@fkui/vue";
 import { type FTableActivateCellEvent } from "./events";
-import { type NormalizedTableColumn } from "./table-column";
+import { isInputTypeNumber, isInputTypeText } from "./input-fields-config";
+import {
+    type NormalizedTableColumn,
+    type NormalizedTableColumnNumber,
+    type NormalizedTableColumnText,
+} from "./table-column";
 
 const { column, sortEnabled, sortOrder } = defineProps<{
     column: NormalizedTableColumn<T, K>;
@@ -35,6 +40,16 @@ const sortIcon = computed(() => {
         default:
             return "";
     }
+});
+
+function isAlignableColumn(
+    column: NormalizedTableColumn<T, K>,
+): column is NormalizedTableColumnText<T, K> | NormalizedTableColumnNumber<T, K> {
+    return isInputTypeText(column.type) || isInputTypeNumber(column.type);
+}
+
+const alignment = computed(() => {
+    return isAlignableColumn(column) ? column.align : "left";
 });
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
@@ -71,7 +86,7 @@ function onKeydownCell(e: KeyboardEvent): void {
         @click.stop="onClickCell"
         @table-activate-cell="onActivateCell"
     >
-        <i-flex gap="1x">
+        <i-flex gap="1x" :float="alignment">
             <i-flex-item shrink>
                 {{ column.header }}
             </i-flex-item>
