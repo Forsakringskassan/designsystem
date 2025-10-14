@@ -54,6 +54,7 @@ search:
         - personnummerOlder
         - personnummerYounger
         - mejladress
+        - epost
         - email
         - postnummer
         - postalCode
@@ -69,7 +70,9 @@ search:
 
 ## Generella validatorer
 
-### Identisk `matches`
+### Identisk
+
+`matches`
 
 Validatorn kontrollerar att det värde som användaren har fyllt i är identiskt med värdet i ett annat inmatningsfält (referensvärde).
 
@@ -100,7 +103,9 @@ Kända buggar:
 - Validatorn ger alltid ett felmeddelande om `id` refererar till ett element som inte är ett inmatningsfält.
 - Validatorn fungerar inte om referensvärdet uppdateras. Du behöver hantera det manuellt, se {@link cross-validation korsvalidering}.
 
-### Maxlängd `maxLength`
+### Maxlängd
+
+`maxLength`
 
 Validatorn kontrollerar att antalet tecken som fylls i inte överstiger det angivna gränsvärdet.
 
@@ -126,7 +131,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - plusgiro `plusgiro`: Fyll i plusgironumret.
 - postnummer `postalCode`: Fyll i ett postnummer.
 
-### Minlängd `minLength`
+### Minlängd
+
+`minLength`
 
 Validatorn kontrollerar att antalet tecken som fylls i inte understiger det angivna gränsvärdet.
 
@@ -144,7 +151,9 @@ Skriv så här i kod för att sätta en minlängd på fyra tecken:
 
 Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MINLENGTH.
 
-### Obligatoriskt `required`
+### Obligatoriskt
+
+`required`
 
 Validatorn kontrollerar att inmatningskomponenten har ett värde.
 
@@ -192,7 +201,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - telefonnummer `phoneNumber`: Kolla att telefonnumret stämmer.
 - valutabelopp `currency`: Fyll i ett belopp.
 
-### Tillåtna tecken `whitelist`
+### Tillåtna tecken
+
+`whitelist`
 
 Validatorn kontrollerar att de tecken som användaren har fyllt i är tillåtna tecken.
 
@@ -216,7 +227,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:
 
 - Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och ".
 
-### Val från lista `allowList`
+### Val från lista
+
+`allowList`
 
 Validatorn kontrollerar att värdet som användaren angivit exakt matchar något av valen i listan.
 
@@ -240,7 +253,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:
 
 ## Datum
 
-### Datum `date`
+### Datum
+
+`date`
 
 Validatorn kontrollerar att det ifyllda värdet är ett giltigt datum.
 
@@ -270,7 +285,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du 
 
 Felmeddelandet när validatorn för datum `date` är kombinerad med validatorn för obligatoriskt fält `required` är:<br> Välj ett datum.
 
-### Datumformat `dateFormat`
+### Datumformat
+
+`dateFormat`
 
 Validatorn kontrollerar att det ifyllda värde stämmer överens mot de här valideringskriterierna:
 
@@ -293,7 +310,9 @@ Skriv så här i kod:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i datumet med åtta siffror.
 
-### Inte valbara datum `invalidDates`
+### Inte valbara datum
+
+`invalidDates`
 
 Validatorn kontrollerar att det datum som användaren har valt är ett valbart datum.
 
@@ -311,7 +330,9 @@ Skriv så här i kod för att 1 januari 2022, 5 maj 2022 och 20 juni 2022 inte s
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du kan inte välja det här datumet.
 
-### Inte valbara veckodagar `invalidWeekdays`
+### Inte valbara veckodagar
+
+`invalidWeekdays`
 
 Validatorn kontrollerar att det datum som användaren har valt är en valbar veckodag.
 
@@ -329,7 +350,9 @@ Skriv så här i kod för att sätta måndagar, tisdagar, onsdagar och torsdagar
 
 Felmeddelandet till användaren när valideringern inte är godkänd är:<br> Du kan inte välja det här datumet.
 
-### Maxdatum `maxDate`
+### Maxdatum
+
+`maxDate`
 
 Validatorn kontrollerar att det datum som användaren har fyllt i **inte** ligger längre fram än angivet datum. Använd maxdatum-validatorn tillsammans med datum-validatorn.
 
@@ -351,7 +374,9 @@ Skriv så här i kod när användaren ska välja ett datum fram till och med 30 
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt fram i tiden.
 
-### Mindatum `minDate`
+### Mindatum
+
+`minDate`
 
 Validatorn kontrollerar att det datum som användaren har fyllt i **inte** ligger tidigare än angivet datum. Använd mindatum-validatorn tillsammans med datum-validatorn.
 
@@ -375,7 +400,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Dat
 
 ## Tal och valutabelopp
 
-### Nummer `number`
+### Nummer
+
+`number`
 
 Validatorn kontrollerat att det ifyllda värdet stämmer överens med valideringskriterierna:
 
@@ -407,7 +434,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - maxvärde `maxValue`: Du har fyllt i en för hög siffra.
 - minvärde `minValue`: Fyll i en högre siffra.
 
-### Heltal `integer`
+### Heltal
+
+`integer`
 
 Validatorn kontrollerar att det ifyllda värdet är ett heltal.
 
@@ -436,7 +465,9 @@ Det finns särskilda felmeddelanden när den här validatorn komponbineras med a
 - obligatorisk `required`: Fyll i en siffra.
 - procent `percent`: Fyll i procent utan decimal.
 
-### Decimaltal `decimal`
+### Decimaltal
+
+`decimal`
 
 Validatorn kontrollerar att det ifyllda värdet är ett decimaltal.
 
@@ -467,7 +498,9 @@ Skriv så här i kod när användaren måste fylla i ett tal med minst en decima
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett värde med rätt antal decimaler.
 
-### Maxvärde `maxValue`
+### Maxvärde
+
+`maxValue`
 
 Validatorn kontrollerar att det ifyllda värdet inte överstiger det angivna gränsvärdet.
 
@@ -502,7 +535,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - procent `percent`: Fyll i en lägre siffra.
 - valutabelopp `currency`: Fyll i ett belopp.
 
-### Minvärde `minValue`
+### Minvärde
+
+`minValue`
 
 Validatorn kontrollerar att det ifyllda värdet inte understiger det angivna gränsvärdet.
 
@@ -537,7 +572,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - procent `percent`: Fyll i en högre siffra.
 - valutabelopp `currency`: Fyll i ett belopp.
 
-### Mindre än `lessThan`
+### Mindre än
+
+`lessThan`
 
 Validatorn kontrollerar att det ifyllda värdet är mindre än det angivna gränsvärdet.
 
@@ -566,7 +603,9 @@ Skriv så här i kod när användaren fylla i ett tal som är mindre än 100:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.
 
-### Större än `greaterThan`
+### Större än
+
+`greaterThan`
 
 Validatorn kontrollerar att det ifyllda värdet är större än det angivna gränsvärdet.
 
@@ -595,7 +634,9 @@ Skriv så här i kod när användaren ska fylla i ett tal som är större än 0.
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.
 
-### Procent `percent`
+### Procent
+
+`percent`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med valideringskriterierna:
 
@@ -627,7 +668,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - minvärde `minValue`: Fyll i en högre siffra.
 - obligatorisk `required`: Fyll i en siffra.
 
-### Valutabelopp `currency`
+### Valutabelopp
+
+`currency`
 
 Validatorn baseras på [nummer-validatorn](#nummer-number).
 
@@ -653,7 +696,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 
 ## Identifiering
 
-### Organisationsnummer `organisationsnummer`
+### Organisationsnummer
+
+`organisationsnummer`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för organisationsnummer och att checksumman stämmer.
 
@@ -685,7 +730,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 
 - maxlängd `maxLength`: Organisationsnumret kan inte ha mer än 11 tecken.
 
-### Personnummer - format `personnummerFormat`
+### Personnummer - format
+
+`personnummerFormat`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för personnummer.
 
@@ -721,7 +768,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - obligatorisk `required`: Fyll i personnumret med 10 siffror.
 - maxlängd `maxLength`: Fyll i personnumret med 10 siffror.
 
-### Personnummer - checksumma `personnummerLuhn`
+### Personnummer - checksumma
+
+`personnummerLuhn`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med checksumman för personnummer.
 
@@ -741,7 +790,9 @@ Skriv så här i kod när användaren ska fylla i personnummer:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.
 
-### Personnummer - inte samma `personnummerNotSame`
+### Personnummer - inte samma
+
+`personnummerNotSame`
 
 Validatorn kontrollerar att det ifyllda personnumret inte är samma som personnumret i annat fält.
 
@@ -761,7 +812,9 @@ Skriv så här i kod för att jämföra med ett inmatningsfält med `v-model="re
 
 Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.
 
-### Personnummer - äldre `personnummerOlder`
+### Personnummer - äldre
+
+`personnummerOlder`
 
 Validatorn kontrollerar att det ifyllda personnumret är äldre än eller är i samma ålder som personnumret i annat fält.
 
@@ -781,7 +834,9 @@ Skriv så här i kod för att jämföra med ett inmatningsfält med `v-model="re
 
 Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.
 
-### Personnummer - yngre `personnummerYounger`
+### Personnummer - yngre
+
+`personnummerYounger`
 
 Validatorn kontrollerar att det ifyllda personnumret är yngre än eller är i samma ålder som personnumret i annat fält.
 
@@ -803,9 +858,12 @@ Felmeddelandet till användaren när valideringen inte är godkänd måste skapa
 
 ## Adress och kontaktuppgifter
 
-### Mejladress `email`
+### Mejladress
 
-Validatorn kontrollerar att det ifyllda värdet stämmer med giltigt format för mejladress. Max antal tecken är konfigurerbart. Utgångsvärdet för max antal tecken är 64.
+`email`
+
+Validatorn kontrollerar att det ifyllda värdet stämmer med giltigt format för mejladress.
+Max antal tecken är konfigurerbart.
 
 Valideringskriterier:
 
@@ -815,6 +873,8 @@ Valideringskriterier:
 - **localpart** ska innehålla minst ett tecken.
 - **domain** ska innehålla minst ett tecken och får inte börja eller avslutas med punkt.
 - Max antal tecken följer det angivna värdet (konfigurerbart).
+
+Utgångsvärdet för max antal tecken för hela mejladressen är 254 tecken och för **localpart** är utgångsvärdet för max antal tecken 64.
 
 ```import nomarkup
 EmailExample.vue
@@ -830,7 +890,9 @@ Skriv så här i kod när användaren ska fylla i mejladress:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Mejladressen är inte rätt ifylld.
 
-### Postnummer `postalCode`
+### Postnummer
+
+`postalCode`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för postnummer.
 
@@ -862,7 +924,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - obligatorisk `required`: Fyll i ett postnummer.
 - maxLängd `maxLength`: Postnumret kan inte ha mer än 13 tecken.
 
-### Telefonnummer `phoneNumber`
+### Telefonnummer
+
+`phoneNumber`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för telefonnummer.
 
@@ -893,7 +957,9 @@ Felmeddelandet när den här validatorn kombineras med validatorn för obligator
 
 ## Bank
 
-### Bankgiro `bankgiro`
+### Bankgiro
+
+`bankgiro`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för bankgiro.
 
@@ -925,7 +991,9 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 - obligatorisk `required`: Fyll i bankgironumret.
 - maxlängd `maxLength`: Bankgironumret kan ha mer än 9 tecken.
 
-### Clearingnummer `clearingNumber`
+### Clearingnummer
+
+`clearingNumber`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för clearingnummer.
 
@@ -954,7 +1022,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Cle
 
 Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:<br> Fyll i ett clearingnummer.
 
-### Kontonummer `bankAccountNumber`
+### Kontonummer
+
+`bankAccountNumber`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för kontonummer.
 
@@ -981,7 +1051,9 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kon
 
 Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:<br> Fyll i ett kontonummer.
 
-### Plusgiro `plusgiro`
+### Plusgiro
+
+`plusgiro`
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för plusgiro.
 
