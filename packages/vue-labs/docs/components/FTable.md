@@ -32,6 +32,12 @@ FTableExpandableRows.vue
 FTableRowHeaderExample.vue
 ```
 
+## Specialiserade inmatningsfält
+
+```import
+FTableInputFieldsExample.vue
+```
+
 ## Textnycklar
 
 Läs mer om att anpassa och översätta text.

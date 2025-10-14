@@ -2,7 +2,12 @@
 import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem } from "@fkui/vue";
-import { type NormalizedTableColumn } from "./table-column";
+import { isInputTypeNumber, isInputTypeText } from "./input-fields-config";
+import {
+    type NormalizedTableColumn,
+    type NormalizedTableColumnNumber,
+    type NormalizedTableColumnText,
+} from "./table-column";
 
 const { column, sortEnabled, sortOrder } = defineProps<{
     column: NormalizedTableColumn<T, K>;
@@ -36,6 +41,20 @@ const sortIcon = computed(() => {
     }
 });
 
+function isAlignableColumn(
+    column: NormalizedTableColumn<T, K>,
+): column is NormalizedTableColumnText<T, K> | NormalizedTableColumnNumber<T, K> {
+    if (column.type === undefined) {
+        return false;
+    }
+
+    return isInputTypeText(column.type) || isInputTypeNumber(column.type);
+}
+
+const alignment = computed(() => {
+    return isAlignableColumn(column) ? column.align : "left";
+});
+
 function onClickCell(): void {
     assertRef(thElement);
     thElement.value.tabIndex = 0;
@@ -57,7 +76,7 @@ function onKeydownCell(e: KeyboardEvent): void {
 
 <template>
     <th ref="th" class="table-ng__column" tabindex="-1" @keydown="onKeydownCell" @click.stop="onClickCell">
-        <i-flex gap="1x">
+        <i-flex gap="1x" :float="alignment">
             <i-flex-item shrink class="table-ng__column__title">
                 {{ column.header }}
             </i-flex-item>

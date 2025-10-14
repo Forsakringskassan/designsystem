@@ -24,6 +24,20 @@ $horizontal-padding: size.$padding-050;
         }
     }
 
+    &--align-left {
+        span,
+        input {
+            text-align: left;
+        }
+    }
+
+    &--align-right {
+        span,
+        input {
+            text-align: right;
+        }
+    }
+
     &--select,
     &--text {
         padding: 0 0.25rem;
@@ -163,6 +177,13 @@ $horizontal-padding: size.$padding-050;
 
     &__text {
         flex: 1 1 auto;
+    }
+
+    &__numeric {
+        span,
+        input {
+            font-feature-settings: "tnum" 1;
+        }
     }
 
     &__icon {
