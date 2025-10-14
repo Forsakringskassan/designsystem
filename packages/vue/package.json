@@ -76,7 +76,7 @@
     ]
   },
   "dependencies": {
-    "@vueuse/core": "12.8.2",
+    "@vueuse/core": "13.9.0",
     "lodash": "4.17.21"
   },
   "devDependencies": {
