@@ -1,4 +1,48 @@
 @charset "UTF-8";
+.contextbar[data-v-f3c4fc0f] {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+.contextbar__forman[data-v-f3c4fc0f] {
+    font-weight: bold;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+[data-v-637cea1a]::part(grid awesome-layout) {
+    grid-template:
+        "header header header" min-content
+        "left contextbar contextbar" min-content
+        "left toolbar toolbar" min-content
+        "left content right" 1fr
+        / min-content 1fr;
+}
+[data-v-637cea1a]::part(area header) {
+    --f-page-layout-background: var(--f-background-pageheader-primary);
+    --f-page-layout-color: var(--fkds-color-text-inverted);
+}
+[data-v-637cea1a]::part(area contextbar) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-637cea1a]::part(area toolbar) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-637cea1a]::part(area left) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-637cea1a]::part(area right) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+
 :root {
   --fkui-theme-default-version: "6.21.0";
   --fkds-color-text-primary: #1b1e23;
@@ -549,7 +593,7 @@ input[type=search]:focus,
 [tabindex]:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
 }
 
 [tabindex="-1"]:focus {
@@ -1608,7 +1652,7 @@ input[type=search]:focus,
 .button:active, .calendar-navbar__year-selector-button:active, .button:focus, .calendar-navbar__year-selector-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: var(--fkds-color-action-border-primary-default);
   color: var(--fkds-color-action-text-primary-default);
@@ -1635,7 +1679,7 @@ input[type=search]:focus,
 .button.button--primary:active, .button--primary.calendar-navbar__year-selector-button:active, .button.button--primary:focus, .button--primary.calendar-navbar__year-selector-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-primary-hover);
   border-color: transparent;
   color: var(--fkds-color-action-text-inverted-default);
@@ -1662,7 +1706,7 @@ input[type=search]:focus,
 .button.button--secondary:active, .button--secondary.calendar-navbar__year-selector-button:active, .button.button--secondary:focus, .button--secondary.calendar-navbar__year-selector-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: var(--fkds-color-action-border-primary-default);
   color: var(--fkds-color-action-text-primary-default);
@@ -1694,7 +1738,7 @@ input[type=search]:focus,
 .button.button--discrete:active, .button--discrete.calendar-navbar__year-selector-button:active, .button.button--text:active, .button--text.calendar-navbar__year-selector-button:active, .button.button--discrete:focus, .button--discrete.calendar-navbar__year-selector-button:focus, .button.button--text:focus, .button--text.calendar-navbar__year-selector-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
   background-color: var(--f-background-button-discrete-hover);
   border-color: transparent;
   color: var(--f-text-color-button-discrete-hover);
@@ -1753,7 +1797,7 @@ input[type=search]:focus,
 .button.button--discrete-inverted:active, .button--discrete-inverted.calendar-navbar__year-selector-button:active, .button.button--discrete-inverted:focus, .button--discrete-inverted.calendar-navbar__year-selector-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
   background-color: transparent;
   border-color: transparent;
   color: var(--f-text-color-button-discrete-inverted-hover);
@@ -1792,7 +1836,7 @@ input[type=search]:focus,
 .button.button--tertiary:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary:focus, .calendar-navbar__year-selector-button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: transparent;
   color: var(--fkds-color-action-text-primary-default);
@@ -1985,6 +2029,7 @@ input[type=search]:focus,
   width: calc(var(--f-icon-size-small) + 0.25rem);
 }
 
+/* stylelint-disable no-invalid-position-declaration -- the selector is set when the mixin is included */
 .calendar-day {
   align-items: center;
   display: inline-flex;
@@ -2009,8 +2054,18 @@ input[type=search]:focus,
 .calendar-day--highlight.calendar-day--selected::before {
   border: var(--f-border-width-medium) solid var(--fkds-color-border-inverted);
 }
+@media (forced-colors: active) {
+  .calendar-day--highlight.calendar-day--selected::before {
+    border-color: highlightText;
+  }
+}
 .calendar-day--highlight:active:not(.calendar-day--highlight--disabled)::before {
   border: var(--f-border-width-medium) solid var(--fkds-color-border-inverted);
+}
+@media (forced-colors: active) {
+  .calendar-day--highlight:active:not(.calendar-day--highlight--disabled)::before {
+    border-color: highlightText;
+  }
 }
 .calendar-day--highlight.calendar-day--disabled {
   position: relative;
@@ -2035,6 +2090,13 @@ input[type=search]:focus,
   color: var(--fkds-color-text-inverted);
   background-color: var(--fkds-color-select-background-primary-default);
 }
+@media (forced-colors: active) {
+  .calendar-day--selected {
+    background-color: highlight;
+    color: highlightText;
+    forced-color-adjust: none;
+  }
+}
 .calendar-day--disabled {
   position: relative;
 }
@@ -2048,9 +2110,21 @@ input[type=search]:focus,
   background-color: var(--fkds-color-select-background-primary-hover);
   color: var(--fkds-color-text-primary);
 }
+@media (forced-colors: active) {
+  .calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {
+    border: 2px solid highlight;
+  }
+}
 .calendar-day:active:not(.calendar-day--disabled), .calendar-day--active:not(.calendar-day--disabled) {
   color: var(--fkds-color-text-inverted);
   background-color: var(--fkds-color-select-background-primary-default);
+}
+@media (forced-colors: active) {
+  .calendar-day:active:not(.calendar-day--disabled), .calendar-day--active:not(.calendar-day--disabled) {
+    background-color: highlight;
+    color: highlightText;
+    forced-color-adjust: none;
+  }
 }
 
 .card {
@@ -2313,7 +2387,7 @@ input[type=search]:focus,
 .checkbox input[type=checkbox]:focus + .checkbox__label {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
 }
 
 .radio-button-group--chip .radio-button-group__label {
@@ -2331,6 +2405,11 @@ input[type=search]:focus,
   border-color: var(--fkds-color-border-primary);
   color: var(--fkds-color-text-disabled);
   cursor: not-allowed;
+}
+@media (forced-colors: active) {
+  .radio-button-group--chip .radio-button.disabled .radio-button__label {
+    color: GrayText;
+  }
 }
 .radio-button-group--chip .radio-button__label {
   display: flex;
@@ -2357,10 +2436,22 @@ input[type=search]:focus,
   background-color: var(--fkds-color-select-background-secondary-hover);
   color: var(--fkds-color-text-primary);
 }
+@media (forced-colors: active) {
+  .radio-button-group--chip .radio-button__label:hover {
+    border: var(--f-border-width-medium) solid highlight;
+  }
+}
 .radio-button-group--chip input[type=radio]:checked + .radio-button__label {
   background: var(--fkds-color-select-background-secondary-default);
   border-color: transparent;
   color: var(--fkds-color-text-inverted);
+}
+@media (forced-colors: active) {
+  .radio-button-group--chip input[type=radio]:checked + .radio-button__label {
+    background-color: highlight;
+    color: highlightText;
+    forced-color-adjust: none;
+  }
 }
 .radio-button-group--chip input[type=radio]:focus + label.radio-button__label {
   border-radius: 20px;
@@ -2397,6 +2488,11 @@ input[type=search]:focus,
   color: var(--fkds-color-text-disabled);
   cursor: not-allowed;
 }
+@media (forced-colors: active) {
+  .checkbox-group--chip .checkbox.disabled .checkbox__label {
+    color: GrayText;
+  }
+}
 .checkbox-group--chip .checkbox__label {
   display: flex;
   align-items: center;
@@ -2422,10 +2518,22 @@ input[type=search]:focus,
   background-color: var(--fkds-color-select-background-secondary-hover);
   color: var(--fkds-color-text-primary);
 }
+@media (forced-colors: active) {
+  .checkbox-group--chip .checkbox__label:hover {
+    border: var(--f-border-width-medium) solid highlight;
+  }
+}
 .checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {
   background: var(--fkds-color-select-background-secondary-default);
   border-color: transparent;
   color: var(--fkds-color-text-inverted);
+}
+@media (forced-colors: active) {
+  .checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {
+    background-color: highlight;
+    color: highlightText;
+    forced-color-adjust: none;
+  }
 }
 .checkbox-group--chip input[type=checkbox]:focus + label.checkbox__label {
   border-radius: 20px;
@@ -2484,14 +2592,26 @@ input[type=search]:focus,
   padding: 0.75rem;
   white-space: nowrap;
 }
-.calendar__year-selector__year:hover, .combobox__listbox__option:hover {
+.calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight), .combobox__listbox__option:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight) {
   background-color: var(--fkds-color-select-background-primary-hover);
   color: var(--fkds-color-text-primary);
+}
+@media (forced-colors: active) {
+  .calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight), .combobox__listbox__option:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight) {
+    outline: 2px solid highlight;
+  }
 }
 .calendar__year-selector__year--highlight, .combobox__listbox__option--highlight {
   background-color: var(--fkds-color-select-background-primary-default);
   color: var(--fkds-color-text-inverted);
   font-weight: var(--f-font-weight-medium);
+}
+@media (forced-colors: active) {
+  .calendar__year-selector__year--highlight, .combobox__listbox__option--highlight {
+    background-color: highlight;
+    color: highlightText;
+    forced-color-adjust: none;
+  }
 }
 
 .combobox__button {
@@ -2532,6 +2652,11 @@ input[type=search]:focus,
 .contextmenu__list__item:hover {
   color: var(--fkds-color-text-primary);
   background-color: var(--fkds-color-action-background-secondary-hover);
+}
+@media (forced-colors: active) {
+  .contextmenu__list__item:hover {
+    outline: 2px solid highlight;
+  }
 }
 @media (min-width: 640px) {
   .contextmenu__list__item {
@@ -2665,7 +2790,6 @@ input[type=search]:focus,
 .dialogue-tree__list-item button .icon {
   flex-shrink: 0;
   margin-left: 1.25rem;
-  color: currentcolor;
 }
 
 .entrypoint {
@@ -3111,7 +3235,7 @@ input[type=search]:focus,
 .file-selector input[type=file]:focus + label {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
 }
 .file-selector label {
   cursor: pointer;
@@ -4731,9 +4855,6 @@ input[type=search]:focus,
 .paginator__previous, .paginator__next {
   width: 8rem;
 }
-.paginator__navigation .paginator__previous {
-  display: none;
-}
 @media (max-width: 41.25rem) {
   .paginator {
     flex-direction: column;
@@ -4742,9 +4863,6 @@ input[type=search]:focus,
   }
   .paginator__previous, .paginator__next {
     display: inline-block;
-  }
-  .paginator__previous {
-    display: none;
   }
   .paginator__navigation .paginator__previous {
     display: inline;
@@ -4880,7 +4998,7 @@ input[type=search]:focus,
 .radio-button input[type=radio]:focus + label {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
 }
 
 .radio-button-group__content {
@@ -5285,7 +5403,7 @@ input[type=search]:focus,
 .table__button:active, .table__button:focus {
   border-radius: 0;
   box-shadow: var(--f-focus-box-shadow);
-  outline: 2px solid transparent;
+  outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: transparent;
   color: var(--fkds-color-action-text-primary-default);
@@ -6341,13 +6459,13 @@ input[type=search]:focus,
 body {
   font-family: var(--f-font-family);
 }
-.sandbox-root {
-    width: min(100% - 2rem, 80ch);
-    margin: auto;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
-h1 {
-    margin-top: 2rem;
-}
-hr {
-    margin-bottom: 2rem;
+
+main {
+  padding: 1rem;
 }
