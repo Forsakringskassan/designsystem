@@ -19,6 +19,7 @@ import ITableHeader from "./ITableHeader.vue";
 import ITableRadio from "./ITableRadio.vue";
 import ITableRow from "./ITableRow.vue";
 import { type MetaRow } from "./MetaRow";
+import { getBodyRowCount } from "./get-body-row-count";
 import { stopEditKey } from "./start-stop-edit";
 import {
     type NormalizedTableColumn,
@@ -60,6 +61,11 @@ const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 
 const isEmpty = computed((): boolean => {
     return metaRows.value.length === 0;
+});
+
+const ariaRowcount = computed((): number => {
+    // +1 to include header row.
+    return getBodyRowCount(keyedRows.value, expandableAttribute) + 1;
 });
 
 const columnCount = computed((): number => {
@@ -277,7 +283,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
+    <table
+        ref="table"
+        :role
+        :class="tableClasses"
+        :aria-rowcount
+        @focusout="onTableFocusout"
+        @click="onClick"
+        @keydown="onKeydown"
+    >
         <thead>
             <tr class="table-ng__row" aria-rowindex="1">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
