@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, nextTick, useTemplateRef } from "vue";
-import { assertSet } from "@fkui/logic";
+import { assertRef } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
 import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnButton } from "./table-column";
@@ -16,7 +16,10 @@ const tdElement = useTemplateRef("td");
 async function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): Promise<void> {
     await nextTick();
     const element = buttonElement.value ?? tdElement.value;
-    assertSet(element);
+    if (!element) {
+        return; // may be undefined if row is removed
+    }
+
     element.tabIndex = 0;
 
     if (e.detail.focus) {
@@ -25,6 +28,9 @@ async function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): Promise<
 }
 
 function onClickButton(): void {
+    assertRef(buttonElement);
+    buttonElement.value.tabIndex = 0;
+
     if (column.onClick) {
         column.onClick(row);
     }

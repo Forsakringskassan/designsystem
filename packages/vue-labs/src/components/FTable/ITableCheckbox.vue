@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, useTemplateRef } from "vue";
-import { assertRef } from "@fkui/logic";
 import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnCheckbox } from "./table-column";
 
@@ -13,7 +12,9 @@ const targetElement = useTemplateRef("target");
 const ariaLabel = computed(() => column.header.value);
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(targetElement);
+    if (!targetElement.value) {
+        return; // may be undefined if row is removed
+    }
     targetElement.value.tabIndex = 0;
 
     if (e.detail.focus) {

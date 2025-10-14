@@ -10,7 +10,7 @@ import {
     dispatchActivateCellEvent,
     getMetaRows,
     maybeNavigateToCell,
-    setDefaultCellTarget as setDefaultCellTarget,
+    setDefaultCellTarget,
     stopEdit,
 } from "./FTable.logic";
 import ITableCheckbox from "./ITableCheckbox.vue";
@@ -27,6 +27,7 @@ import {
     type TableColumn,
     normalizeTableColumns,
 } from "./table-column";
+import { useTabstop } from "./use-tabstop";
 
 type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
     ? Required<T>[ExpandableAttribute][number]
@@ -194,6 +195,16 @@ function onClick(e: MouseEvent): void {
     }
 }
 
+function onTableFocusin(e: FocusEvent): void {
+    assertRef(tableRef);
+
+    tableRef.value.querySelectorAll(`[tabindex="0"]`).forEach((it) => {
+        if (it !== e.target) {
+            it.setAttribute("tabindex", "-1");
+        }
+    });
+}
+
 function isInExpandable(el: HTMLElement): boolean {
     if (!el.parentElement) {
         return false;
@@ -211,7 +222,9 @@ function onTableFocusout(e: FocusEvent): void {
         return;
     }
 
-    assertRef(tableRef);
+    if (!tableRef.value) {
+        return;
+    }
     const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
 
     if (outsideTable) {
@@ -268,6 +281,9 @@ function onToggleSortOrder(sortable: string): void {
     }
 }
 
+const tableApi = useTabstop(tableRef, metaRows);
+defineExpose(tableApi);
+
 onMounted(() => {
     assertRef(tableRef);
     setDefaultCellTarget(tableRef.value);
@@ -277,7 +293,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <table ref="table" :role :class="tableClasses" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
+    <table
+        ref="table"
+        :role
+        :class="tableClasses"
+        @focusin="onTableFocusin"
+        @focusout="onTableFocusout"
+        @click="onClick"
+        @keydown="onKeydown"
+    >
         <thead>
             <tr class="table-ng__row">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>

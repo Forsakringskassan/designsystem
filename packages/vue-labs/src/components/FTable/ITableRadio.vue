@@ -13,7 +13,9 @@ const inputElement = useTemplateRef("input");
 const ariaLabel = computed(() => column.header.value);
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(inputElement);
+    if (!inputElement.value) {
+        return; // may be undefined if row is removed
+    }
     inputElement.value.tabIndex = 0;
 
     if (e.detail.focus) {

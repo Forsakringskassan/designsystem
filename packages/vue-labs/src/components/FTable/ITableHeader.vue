@@ -38,7 +38,9 @@ const sortIcon = computed(() => {
 });
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(thElement);
+    if (!thElement.value) {
+        return; // may be undefined if row is removed
+    }
     thElement.value.tabIndex = 0;
 
     if (e.detail.focus) {
@@ -47,6 +49,9 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 }
 
 function onClickCell(): void {
+    assertRef(thElement);
+    thElement.value.tabIndex = 0;
+
     if (!column.sortable || !sortEnabled) {
         return;
     }

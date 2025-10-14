@@ -36,6 +36,13 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
         expandableRef.value.focus();
     }
 }
+
+function onClick(): void {
+    assertRef(expandableRef);
+    expandableRef.value.tabIndex = 0;
+
+    emit("toggle", rowKey);
+}
 </script>
 
 <template>
@@ -48,7 +55,7 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
                     :aria-label="expandLabel"
                     :aria-expanded="isExpanded"
                     type="button"
-                    @click="emit('toggle', rowKey)"
+                    @click="onClick"
                 >
                     <f-icon class="button__icon" :name="toggleIcon"></f-icon>
                 </button>
