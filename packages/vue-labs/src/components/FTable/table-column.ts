@@ -493,6 +493,43 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 }
 
 /**
+ * @internal
+ */
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnSimple<T, K> | TableColumnText<T, K>,
+): TableColumnText<T, K>;
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnRowHeader<T, K>,
+): TableColumnRowHeader<T, K>;
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnCheckbox<T, K>,
+): TableColumnCheckbox<T, K>;
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnRadio<T, K>,
+): TableColumnRadio<T, K>;
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnAnchor<T, K>,
+): TableColumnAnchor<T, K>;
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnButton<T, K>,
+): TableColumnButton<T, K>;
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnRender<T, K>,
+): TableColumnRender<T, K>;
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumnSelect<T, K>,
+): TableColumnSelect<T, K>;
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumn<T, K>,
+): TableColumn<T, K>;
+
+export function defineTableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumn<T, K>,
+): TableColumn<T, K> {
+    return column;
+}
+
+/**
  * @public
  */
 export function defineTableColumns<T, K extends keyof T = keyof T>(
