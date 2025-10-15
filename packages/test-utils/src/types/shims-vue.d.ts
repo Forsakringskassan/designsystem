@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type, @typescript-eslint/no-explicit-any -- needed to work */
 declare module "*.vue" {
-    import Vue from "vue";
+    import { type DefineComponent } from "vue";
 
-    export default Vue;
+    const component: DefineComponent<{}, {}, any>;
+    export default component;
 }
