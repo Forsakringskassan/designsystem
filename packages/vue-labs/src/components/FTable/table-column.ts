@@ -361,18 +361,17 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
 ): NormalizedTableColumn<T, K> {
     const header =
-        typeof column.header !== "undefined"
-         ? toRef(column.header)
-          : ref("");
+        typeof column.header !== "undefined" ? toRef(column.header) : ref("");
     const description =
         typeof column.description !== "undefined"
             ? toRef(column.description)
             : ref("");
+    const id = Symbol();
 
     if ("render" in column) {
         return {
             type: undefined,
-            id: Symbol(),
+            id,
             header,
             description,
             render: column.render,
@@ -383,7 +382,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "checkbox":
             return {
                 type: "checkbox",
-                id: Symbol(),
+                id,
                 header,
                 description,
                 value: getValueFn(column.value, column.key, Boolean, false),
@@ -398,7 +397,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "radio":
             return {
                 type: "radio",
-                id: Symbol(),
+                id,
                 header,
                 description,
                 value: getValueFn(column.value, column.key, Boolean, false),
@@ -409,7 +408,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "text":
             return {
                 type: "text",
-                id: Symbol(),
+                id,
                 header,
                 description,
                 value: getValueFn(column.value, column.key, String, ""),
@@ -425,7 +424,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "rowheader":
             return {
                 type: "rowheader",
-                id: Symbol(),
+                id,
                 header,
                 description,
                 value: getValueFn(column.value, column.key, String, ""),
@@ -435,7 +434,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "anchor":
             return {
                 type: "anchor",
-                id: Symbol(),
+                id,
                 header,
                 description,
                 value: column.value,
@@ -450,7 +449,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "button":
             return {
                 type: "button",
-                id: Symbol(),
+                id,
                 header,
                 description,
                 value: column.value,
@@ -466,7 +465,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "select":
             return {
                 type: "select",
-                id: Symbol(),
+                id,
                 header,
                 description,
                 value: getValueFn(column.value, column.key, String, ""),
@@ -482,7 +481,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case undefined:
             return {
                 type: "text",
-                id: Symbol(),
+                id,
                 header,
                 description,
                 value: getValueFn(column.value, column.key, String, ""),
