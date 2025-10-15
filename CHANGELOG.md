@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 6.22.0 (2025-10-15)
+
+### Features
+
+* **@fkui/design:** hover and selected in forced colors mode  (refs SFKUI-7361) 14949ad
+* **@fkui/design:** update table component with semantic variables  (refs SFKUI-6500) 2dc82d6
+
+### Bug Fixes
+
+* **@fkui/vue:** `FLayoutRightPanelService` treeshakable (refs SFKUI-6500) 5efe06f
+* **@fkui/vue:** `FTooltip` `attachTo` accepts `undefined` for easier usage with `useTemplateRef()` (refs SFKUI-6500) 8f310f1
+* **deps:** update dependency i18next to v25.6.0 3c3fcc3
+
 ## 6.21.0 (2025-10-09)
 
 ### Features
