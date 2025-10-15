@@ -74,6 +74,9 @@
     "vue": "^3.0.0"
   },
   "peerDependenciesMeta": {
+    "jest": {
+      "optional": true
+    },
     "vue": {
       "optional": true
     }
