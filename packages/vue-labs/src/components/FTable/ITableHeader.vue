@@ -79,7 +79,7 @@ function onKeydownCell(e: KeyboardEvent): void {
                 <f-icon :name="sortIcon" :class="sortIconClass"></f-icon>
             </i-flex-item>
         </i-flex>
-        <div v-if="column.description" class="table-ng__column__description">
+        <div v-if="column.description.value" class="table-ng__column__description">
             {{ column.description }}
         </div>
     </th>
