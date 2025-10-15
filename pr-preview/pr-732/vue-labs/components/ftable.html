@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FTable - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-f11b8d.css"
+            href="../assets/docs-a898d4.css"
             crossorigin
-            integrity="sha384-xTcPIqluDId0OCkR5MDiCU7cn17VciGLIf5Cv/Q2uh4pKtHJtRXy5mcfjrjyWits"
+            integrity="sha384-vWFGCiWrvnZKRkVwp8A5yBuweWu+fg6khKJcznQF2Q4MSh78fL7QnsYS8i2HXIBi"
             
         />
         <link
@@ -25,13 +25,13 @@
     "vue": "../assets/vendor-vue-fd4a2d.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-cb1d47.js",
     "@fkui/date": "../assets/vendor-fkui-date-024cc2.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-c9c1f1.js"
+    "@fkui/vue": "../assets/vendor-fkui-vue-1128f8.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd4a2d.js": "sha384-kmC4T0C5ZzwbUEm2knIR443x2ILwlEZgPawQWZvqbegtVKkhK/F5ifTqm7n0M6rE",
     "../assets/vendor-fkui-logic-cb1d47.js": "sha384-cYyAMpzX6o+Mx1ahOrF5blFq85m9utKy9qg8GmepiyZ+c/Ha6q7usDcijN+bsdK1",
     "../assets/vendor-fkui-date-024cc2.js": "sha384-p0OHhMI0IsoyIh+/1Cyvu2qD+riXRyL6F/I3NNxpdud8wBwA0pXVP6Vdo3y0bdMO",
-    "../assets/vendor-fkui-vue-c9c1f1.js": "sha384-KqdUGDbu45PbRlm5m7Qvm22cf+GXWH98NbHHzbzh3kcK+8sK4i0MPMvZdM9IAxj7"
+    "../assets/vendor-fkui-vue-1128f8.js": "sha384-YihyloQrluByMFXy7YrVaRcGXXndy61Wi5qc6rSg+m/vmrSUjruOQypeAJNV3u1p"
   }
 }
         </script><script
@@ -178,7 +178,7 @@
                                 
                                 <li><a href="#expanderbar_tabell">Expanderbar tabell</a></li>
                                 
-                                <li><a href="#radrubriker">Radrubriker</a></li>
+                                <li><a href="#radrubriker_och_kolumnbeskrivningar">Radrubriker och kolumnbeskrivningar</a></li>
                                 
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
@@ -1099,7 +1099,7 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="radrubriker"><a class="header-anchor" href="#radrubriker">Radrubriker</a></h2>
+        <h2 id="radrubriker_och_kolumnbeskrivningar"><a class="header-anchor" href="#radrubriker_och_kolumnbeskrivningar">Radrubriker och kolumnbeskrivningar</a></h2>
             <div
                 id="example-9d5dbb"
                 class="code-preview code-preview--default"
@@ -1109,13 +1109,13 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-f1834c"></div>
+        <div id="example-e277d3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRowHeaderExample-f1834c.js"></script>
+        <script type="module" src="./FTableRowHeaderExample-e277d3.js"></script>
     </div>
                 <div>
             <button
@@ -1180,6 +1180,7 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Formatterad text&quot;</span>,
+        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Belopp&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">formatNumber</span>(row.<span class="hljs-property">antal</span>) ?? <span class="hljs-string">&quot;&quot;</span>;
         },
@@ -1189,6 +1190,7 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Redigerbar text&quot;</span>,
+        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Förmån&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;level&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {

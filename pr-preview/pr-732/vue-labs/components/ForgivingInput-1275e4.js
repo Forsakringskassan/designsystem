@@ -28,7 +28,7 @@ import { defineComponent as defineComponent2 } from "vue";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, unref, withCtx, createTextVNode, createBlock, createCommentVNode, toDisplayString, normalizeClass, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, createTextVNode, createCommentVNode, unref, withCtx, createBlock, toDisplayString, normalizeClass, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, IFlex, IFlexItem, FIcon, IComboboxDropdown, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
@@ -446,10 +446,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.45.1",
+    version: "3.46.0",
     mode: IS_PURE ? "pure" : "global",
-    copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.45.1/LICENSE",
+    copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru), 2025 CoreJS Company (core-js.io)",
+    license: "https://github.com/zloirock/core-js/blob/v3.46.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
