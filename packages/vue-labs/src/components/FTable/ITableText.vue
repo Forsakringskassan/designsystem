@@ -3,6 +3,8 @@ import { computed, onMounted, ref, useTemplateRef } from "vue";
 import { type ValidityEvent, ValidationService, assertRef } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
 import { type FTableActivateCellEvent } from "./events";
+import { type InputType } from "./input-fields-config";
+import { addSubtypeValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnText } from "./table-column";
@@ -13,12 +15,35 @@ const { row, column } = defineProps<{
 }>();
 
 const model = ref("");
+const inEdit = ref(false);
 const validity = ref<Pick<ValidityEvent, "isValid" | "validationMessage" | "validityMode">>({
     isValid: true,
     validationMessage: "",
     validityMode: "INITIAL",
 });
 const hasError = computed(() => validity.value.validityMode === "ERROR");
+const isNumeric = computed(() => {
+    const numericTypes: InputType[] = [
+        "bankAccountNumber",
+        "bankgiro",
+        "clearingNumber",
+        "currency",
+        "number",
+        "organisationsnummer",
+        "percent",
+        "personnummer",
+        "phoneNumber",
+        "plusgiro",
+        "postalCode",
+    ];
+    return numericTypes.includes(column.subtype);
+});
+const spanClasses = computed(() => {
+    return {
+        "table-ng__editable__text": true,
+        "table-ng__editable__numeric": isNumeric,
+    };
+});
 const wrapperClasses = computed(() => {
     return {
         "table-ng__cell": true,
@@ -40,6 +65,7 @@ const { stopEdit } = useStartStopEdit();
 
 onMounted(() => {
     if (inputElement.value) {
+        addSubtypeValidators(inputElement.value, column.subtype);
         ValidationService.addValidatorsToElement(inputElement.value, column.validation);
     }
 });
@@ -54,6 +80,10 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
 }
 
 function onStartEdit(modelValue: string): void {
+    if (inEdit.value) {
+        return;
+    }
+    inEdit.value = true;
     assertRef(tdElement);
     assertRef(inputElement);
 
@@ -66,7 +96,7 @@ function onStartEdit(modelValue: string): void {
 
 function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" }): void {
     const { reason } = options;
-
+    inEdit.value = false;
     assertRef(inputElement);
     inputElement.value.tabIndex = -1;
     stopEdit(inputElement.value, reason);
@@ -136,6 +166,7 @@ function onKeydown(event: KeyboardEvent): void {
 }
 
 function onBlur(): void {
+    inEdit.value = false;
     assertRef(tdElement);
     tdElement.value.style.removeProperty("width");
     const isDirty = model.value !== "";
@@ -163,7 +194,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
         @table-activate-cell="onActivateCell"
     >
         <div class="table-ng__editable">
-            <span ref="view" class="table-ng__editable__text">{{ column.value(row) }}</span>
+            <span ref="view" :class="spanClasses">{{ column.value(row) }}</span>
             <input
                 ref="input"
                 v-model="model"
