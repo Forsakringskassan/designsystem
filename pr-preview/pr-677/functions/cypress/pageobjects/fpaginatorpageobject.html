@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FPaginatorPageObject - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-f95049.css"
+            href="../../../assets/docs-920304.css"
             crossorigin
-            integrity="sha384-KqIStatmNOyxxrbUjxEf6aqHlBJUkEwni79XjDNZNJQeIuzW9iTLtfk8JyPOF0DH"
+            integrity="sha384-UjBp0Pg0TZclFKCeftYLt6Mq5P8Pkw5E6hvo5FNu5AJW6vYdfrGyqQNJviq3H8LW"
             
         />
         <link
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-4c670c.json"
+            href="../../../search-data-605d69.json"
             as="fetch"
             crossorigin
-            integrity="sha384-KBqyEncb20tLFyPIKdog4P63WAIiEfUYMY6NAi+ta/O5k3Rr3Dp1/kqfsLCoF1pb"
+            integrity="sha384-3mB7AwOdtoDINnpNgnT74g12b3+qwICEia14ds6+EOxcCP5zkbgAAtzudv/0Nn6W"
             id="search-data"
         />
     </head>
@@ -1680,7 +1680,17 @@
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span></code></pre>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
@@ -1719,7 +1729,17 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span></code></pre>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
@@ -1763,7 +1783,17 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span></code></pre>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
@@ -1807,7 +1837,17 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span></code></pre>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
@@ -1854,7 +1894,17 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span></code></pre>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
@@ -1894,7 +1944,17 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span></code></pre>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
@@ -1937,9 +1997,9 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/c4e3ee59c748a4111663ac538bfa03295d181a85">c4e3ee5</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/9ea6702b12c01bb588d99c166fb34f6c3a82f51d">9ea6702</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-10-15 08:50
+        2025-10-15 10:44
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2051,10 +2111,10 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-db93c9.js"
+            src="../../../assets/processors/selectable-version/select-version-006d7e.js"
             type="module"
             crossorigin
-            integrity="sha384-PnxS4Tk+mOoklDMG6ttdDgS2GuE6rVa05zvJ5QqJ8OLsDIJHi/Ikk4cKRgmwnqN9"
+            integrity="sha384-CIRGVRwJq8PFxAI/thpfCA4IDUf0qUanDnVTkyYd16HIF5R4t3CrFARrZ9VI/lkB"
             
         ></script><script
             src="../../../assets/main-76627e.js"
