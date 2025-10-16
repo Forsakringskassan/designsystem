@@ -313,6 +313,12 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-text-color-button-discrete-disabled: #{$palette-color-fk-black-50};
     --f-text-color-button-discrete-inverted: #{$palette-color-white-100};
     --f-text-color-button-discrete-inverted-disabled: #{$palette-color-bluebell-15};
+
+    // Deprecated since %version%
+    --f-text-color-link: #{$palette-color-bluebell-100};
+    --f-text-color-link-hover: #{$palette-color-fk-black-100};
+    --f-text-color-link-discrete: #{$palette-color-fk-black-100};
+    --f-text-color-link-discrete-hover: #{$palette-color-bluebell-100};
 }
 
 @if $global {

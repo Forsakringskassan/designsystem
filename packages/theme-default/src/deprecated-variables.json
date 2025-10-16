@@ -202,5 +202,9 @@
     "--f-text-color-button-discrete-disabled",
     "--f-text-color-button-discrete-inverted",
     "--f-text-color-button-discrete-inverted-disabled",
-    " --f-icon-color-discrete"
+    " --f-icon-color-discrete",
+    "--f-text-color-link",
+    "--f-text-color-link-hover",
+    "--f-text-color-link-discrete",
+    "--f-text-color-link-discrete-hover"
 ]
