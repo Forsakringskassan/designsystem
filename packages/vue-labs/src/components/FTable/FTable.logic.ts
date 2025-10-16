@@ -2,6 +2,7 @@ import { isVisible } from "@fkui/logic";
 import { getInternalKey } from "@fkui/vue";
 import { type MetaRow } from "./MetaRow";
 import { type FTableActivateCellEvent } from "./events";
+import { walk } from "./walk";
 
 interface TableCellIndex {
     row: number;
@@ -24,22 +25,6 @@ let prevCellIndex: number | undefined = undefined;
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function rowKey<T>(row: T): string {
     return String(row[internalKey]);
-}
-
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
-function walk<T, K extends keyof T = keyof T>(
-    array: T[],
-    visit: (item: T, level: number) => boolean,
-    childKey?: K,
-    level = 1,
-): void {
-    for (const item of array) {
-        const visitChildren = visit(item, level);
-
-        if (visitChildren && childKey && item[childKey]) {
-            walk(item[childKey] as T[], visit, childKey, level + 1);
-        }
-    }
 }
 
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
