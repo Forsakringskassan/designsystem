@@ -6,7 +6,7 @@ it("firstPageButton() should navigate to first page", () => {
     cy.viewport("macbook-13");
 
     /* --- cut above --- */
-    const paginator = new FPaginatorPageObject();
+    const paginator = new FPaginatorPageObject(".myPaginator");
     paginator.pageButton(3).click();
     paginator.currentPageButton().should("contain.text", "3");
 

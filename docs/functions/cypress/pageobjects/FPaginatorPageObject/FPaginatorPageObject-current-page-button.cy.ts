@@ -6,7 +6,7 @@ it("currentPageButton() should select current page button", () => {
     cy.viewport("macbook-13");
 
     /* --- cut above --- */
-    const paginator = new FPaginatorPageObject();
+    const paginator = new FPaginatorPageObject(".myPaginator");
     paginator.currentPageButton().should("contain.text", "1");
     /* --- cut below --- */
 });

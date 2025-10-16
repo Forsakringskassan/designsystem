@@ -11,7 +11,7 @@ export class FPaginatorPageObject implements BasePageObject {
     /**
      * @param selector - the root of the definition list
      */
-    public constructor(selector: string = ".paginator") {
+    public constructor(selector: string) {
         this.selector = selector;
     }
 
@@ -19,31 +19,27 @@ export class FPaginatorPageObject implements BasePageObject {
         return cy.get(this.selector);
     }
 
-    public paginator(): DefaultCypressChainable {
-        return this.el().get(".paginator");
-    }
-
     public currentPageButton(): DefaultCypressChainable {
-        return cy.get(`.paginator__page--active`);
+        return cy.get(`${this.selector} .paginator__page--active`);
     }
 
     public previousButton(): DefaultCypressChainable {
-        return cy.get(`.paginator__previous`);
+        return cy.get(`${this.selector} .paginator__previous`);
     }
 
     public nextButton(): DefaultCypressChainable {
-        return cy.get(`.paginator__next`);
+        return cy.get(`${this.selector} .paginator__next`);
     }
 
     public pageButton(page: number): DefaultCypressChainable {
-        return cy.contains(`.paginator__page`, page);
+        return cy.contains(`${this.selector} .paginator__page`, page);
     }
 
     public firstPageButton(): DefaultCypressChainable {
-        return cy.get(`.paginator__pages`).children().first();
+        return cy.get(`${this.selector} .paginator__pages`).children().first();
     }
 
     public lastPageButton(): DefaultCypressChainable {
-        return cy.get(`.paginator__pages`).children().last();
+        return cy.get(`${this.selector} .paginator__pages`).children().last();
     }
 }

@@ -6,7 +6,7 @@ it("pageButton() should navigate to specific page", () => {
     cy.viewport("macbook-13");
 
     /* --- cut above --- */
-    const paginator = new FPaginatorPageObject();
+    const paginator = new FPaginatorPageObject(".myPaginator");
     paginator.pageButton(4).click();
     paginator.currentPageButton().should("contain.text", "4");
     /* --- cut below --- */
