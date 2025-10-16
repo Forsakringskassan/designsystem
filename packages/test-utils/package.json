@@ -66,7 +66,7 @@
     "@vue/server-renderer": "3.5.22",
     "@vue/test-utils": "2.4.6",
     "esbuild": "0.25.10",
-    "jest-environment-jsdom": "29.7.0",
+    "jest-environment-jsdom": "30.2.0",
     "vue": "3.5.22"
   },
   "peerDependencies": {
