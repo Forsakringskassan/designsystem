@@ -2463,12 +2463,6 @@ function requireEs_iterator_some() {
   return es_iterator_some;
 }
 requireEs_iterator_some();
-var internalKey = getInternalKey();
-var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
-var prevCellIndex = void 0;
-function rowKey(row) {
-  return String(row[internalKey]);
-}
 function walk(array, visit, childKey, level = 1) {
   for (const item of array) {
     const visitChildren = visit(item, level);
@@ -2476,6 +2470,12 @@ function walk(array, visit, childKey, level = 1) {
       walk(item[childKey], visit, childKey, level + 1);
     }
   }
+}
+var internalKey = getInternalKey();
+var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
+var prevCellIndex = void 0;
+function rowKey(row) {
+  return String(row[internalKey]);
 }
 function getRowIndexes(rows, expandableAttribute) {
   const array = [];
@@ -2600,15 +2600,16 @@ function navigate(e, table, from, last) {
   }
 }
 function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
-  const rowIndexes = getRowIndexes(keyedRows);
+  const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
   const array = [];
   walk(keyedRows, (row, level) => {
     const isExpandable = Boolean(expandableAttribute && row[expandableAttribute]);
     const isExpanded = isExpandable && expandedKeys.includes(rowKey(row));
+    const rowIndex = rowIndexes.indexOf(rowKey(row)) + 2;
     array.push({
       key: rowKey(row),
       row,
-      rowIndex: rowIndexes.indexOf(rowKey(row)) + 1,
+      rowIndex,
       level: expandableAttribute ? level : void 0,
       isExpandable,
       isExpanded
@@ -2995,6 +2996,14 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
+function getBodyRowCount(rows, childKey) {
+  let count = 0;
+  walk(rows, () => {
+    count++;
+    return true;
+  }, childKey);
+  return count;
+}
 var stopEditKey = Symbol();
 function useStartStopEdit() {
   const stopEdit2 = inject(stopEditKey, () => Promise.resolve());
@@ -3689,9 +3698,10 @@ function normalizeTableColumns(columns) {
     return normalizeTableColumn(column);
   });
 }
-var _hoisted_1 = ["role"];
+var _hoisted_1 = ["role", "aria-rowcount"];
 var _hoisted_2 = {
-  class: "table-ng__row"
+  class: "table-ng__row",
+  "aria-rowindex": "1"
 };
 var _hoisted_3 = {
   key: 0,
@@ -3748,6 +3758,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     const role = computed(() => isTreegrid.value ? "treegrid" : "grid");
     const isEmpty2 = computed(() => {
       return metaRows.value.length === 0;
+    });
+    const ariaRowcount = computed(() => {
+      return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + 1;
     });
     const columnCount = computed(() => {
       const selectableCol = __props.selectable ? 1 : 0;
@@ -3938,6 +3951,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
+        "aria-rowcount": ariaRowcount.value,
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
