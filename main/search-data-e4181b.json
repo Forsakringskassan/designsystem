@@ -120,6 +120,11 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -139,11 +144,6 @@
     "scss",
     "css",
     "ikonbibliotek",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Testverktyg",
     "testfall",
     "jest",
@@ -193,6 +193,9 @@
     "produktionsklar",
     "beta",
     "experimentell",
+    "EventBus",
+    "EventBus",
+    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -206,9 +209,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -902,6 +902,25 @@
       ]
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -938,25 +957,6 @@
         "scss",
         "css",
         "ikonbibliotek"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
       ]
     },
     {
@@ -1057,6 +1057,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1087,14 +1095,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -2355,26 +2355,26 @@
     "119": 31,
     "120": 32,
     "121": 32,
-    "122": 32,
-    "123": 32,
-    "124": 32,
-    "125": 32,
-    "126": 33,
-    "127": 33,
-    "128": 33,
-    "129": 34,
-    "130": 34,
-    "131": 34,
-    "132": 34,
-    "133": 35,
-    "134": 35,
-    "135": 35,
-    "136": 35,
-    "137": 35,
-    "138": 35,
-    "139": 36,
-    "140": 36,
-    "141": 37,
+    "122": 33,
+    "123": 34,
+    "124": 34,
+    "125": 35,
+    "126": 35,
+    "127": 35,
+    "128": 35,
+    "129": 35,
+    "130": 35,
+    "131": 36,
+    "132": 36,
+    "133": 36,
+    "134": 37,
+    "135": 37,
+    "136": 37,
+    "137": 37,
+    "138": 38,
+    "139": 38,
+    "140": 38,
+    "141": 38,
     "142": 38,
     "143": 38,
     "144": 39,
@@ -2429,17 +2429,17 @@
     "193": 49,
     "194": 49,
     "195": 49,
-    "196": 49,
+    "196": 50,
     "197": 50,
     "198": 50,
     "199": 50,
-    "200": 50,
+    "200": 51,
     "201": 51,
     "202": 51,
     "203": 51,
     "204": 52,
     "205": 52,
-    "206": 53,
+    "206": 52,
     "207": 53,
     "208": 53,
     "209": 54,
