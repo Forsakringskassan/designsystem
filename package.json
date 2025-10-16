@@ -87,7 +87,7 @@
     "@forsakringskassan/eslint-config-cypress": "13.1.0",
     "@forsakringskassan/eslint-config-jest": "13.1.0",
     "@forsakringskassan/eslint-config-typescript": "13.1.0",
-    "@forsakringskassan/eslint-config-typescript-typeinfo": "13.1.0",
+    "@forsakringskassan/eslint-config-typescript-typeinfo": "13.1.2",
     "@forsakringskassan/eslint-config-vue": "13.1.0",
     "@forsakringskassan/jest-config": "29.9.0",
     "@forsakringskassan/jest-config-vue": "29.9.0",
