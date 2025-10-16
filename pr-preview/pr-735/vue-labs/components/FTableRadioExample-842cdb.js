@@ -25,7 +25,7 @@ function setup(options) {
 
 // virtual-entry:virtual:src/components/FTable/examples/FTableRadioExample.vue:FTableRadioExample-842cdb.js
 import { defineComponent as _defineComponent8 } from "vue";
-import { h as h2, ref as ref4 } from "vue";
+import { h as h2, ref as ref5 } from "vue";
 import { formatNumber } from "@fkui/logic";
 
 // dist/esm/index.esm.js
@@ -2462,12 +2462,6 @@ function requireEs_iterator_some() {
   return es_iterator_some;
 }
 requireEs_iterator_some();
-var internalKey = getInternalKey();
-var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
-var prevCellIndex = void 0;
-function rowKey(row) {
-  return String(row[internalKey]);
-}
 function walk(array, visit, childKey, level = 1) {
   for (const item of array) {
     const visitChildren = visit(item, level);
@@ -2476,6 +2470,12 @@ function walk(array, visit, childKey, level = 1) {
     }
   }
 }
+var internalKey = getInternalKey();
+var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
+var prevCellIndex = void 0;
+function rowKey(row) {
+  return String(row[internalKey]);
+}
 function getRowIndexes(rows, expandableAttribute) {
   const array = [];
   walk(rows, (row) => {
@@ -2483,14 +2483,6 @@ function getRowIndexes(rows, expandableAttribute) {
     return true;
   }, expandableAttribute);
   return array;
-}
-function getBodyRowCount(rows, expandableAttribute) {
-  let count = 0;
-  walk(rows, () => {
-    count++;
-    return true;
-  }, expandableAttribute);
-  return count;
 }
 function getCellTarget(tableElement, rowIndex, cellIndex) {
   return tableElement.rows[rowIndex].cells[cellIndex];
@@ -2898,7 +2890,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description ? (openBlock(), createElementBlock("div", _hoisted_1$7, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
+      }), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$7, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
     };
   }
 });
@@ -3003,6 +2995,14 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
+function getBodyRowCount(rows, childKey) {
+  let count = 0;
+  walk(rows, () => {
+    count++;
+    return true;
+  }, childKey);
+  return count;
+}
 var stopEditKey = Symbol();
 function useStartStopEdit() {
   const stopEdit2 = inject(stopEditKey, () => Promise.resolve());
@@ -3564,14 +3564,14 @@ function getUpdateFn(fn, key) {
   return () => void 0;
 }
 function normalizeTableColumn(column) {
-  var _column$description2, _column$key, _column$description3, _column$key2, _column$description4, _column$validation, _column$key3, _column$description5, _column$key4, _column$description6, _column$key5, _column$description7, _column$icon, _column$key6, _column$description8, _column$key7, _column$description9, _column$key8;
+  var _column$key, _column$key2, _column$validation, _column$key3, _column$key4, _column$key5, _column$icon, _column$key6, _column$key7, _column$key8;
+  const description = typeof column.description !== "undefined" ? toRef(column.description) : ref("");
   if ("render" in column) {
-    var _column$description;
     return {
       type: void 0,
       id: Symbol(),
       header: toRef(column.header),
-      description: (_column$description = column.description) !== null && _column$description !== void 0 ? _column$description : null,
+      description,
       render: column.render,
       sortable: null
     };
@@ -3582,7 +3582,7 @@ function normalizeTableColumn(column) {
         type: "checkbox",
         id: Symbol(),
         header: toRef(column.header),
-        description: (_column$description2 = column.description) !== null && _column$description2 !== void 0 ? _column$description2 : null,
+        description,
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3597,7 +3597,7 @@ function normalizeTableColumn(column) {
         type: "radio",
         id: Symbol(),
         header: toRef(column.header),
-        description: (_column$description3 = column.description) !== null && _column$description3 !== void 0 ? _column$description3 : null,
+        description,
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
@@ -3608,7 +3608,7 @@ function normalizeTableColumn(column) {
         type: "text",
         id: Symbol(),
         header: toRef(column.header),
-        description: (_column$description4 = column.description) !== null && _column$description4 !== void 0 ? _column$description4 : null,
+        description,
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3624,7 +3624,7 @@ function normalizeTableColumn(column) {
         type: "rowheader",
         id: Symbol(),
         header: toRef(column.header),
-        description: (_column$description5 = column.description) !== null && _column$description5 !== void 0 ? _column$description5 : null,
+        description,
         value: getValueFn(column.value, column.key, String, ""),
         sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
         component: _sfc_main$3
@@ -3634,7 +3634,7 @@ function normalizeTableColumn(column) {
         type: "anchor",
         id: Symbol(),
         header: toRef(column.header),
-        description: (_column$description6 = column.description) !== null && _column$description6 !== void 0 ? _column$description6 : null,
+        description,
         value: column.value,
         href: column.href,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
@@ -3649,7 +3649,7 @@ function normalizeTableColumn(column) {
         type: "button",
         id: Symbol(),
         header: toRef(column.header),
-        description: (_column$description7 = column.description) !== null && _column$description7 !== void 0 ? _column$description7 : null,
+        description,
         value: column.value,
         onClick: column.onClick,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
@@ -3665,7 +3665,7 @@ function normalizeTableColumn(column) {
         type: "select",
         id: Symbol(),
         header: toRef(column.header),
-        description: (_column$description8 = column.description) !== null && _column$description8 !== void 0 ? _column$description8 : null,
+        description,
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
@@ -3681,7 +3681,7 @@ function normalizeTableColumn(column) {
         type: "text",
         id: Symbol(),
         header: toRef(column.header),
-        description: (_column$description9 = column.description) !== null && _column$description9 !== void 0 ? _column$description9 : null,
+        description,
         value: getValueFn(column.value, column.key, String, ""),
         update() {
         },
@@ -3769,7 +3769,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       type: "checkbox",
       id: Symbol("multi-select"),
       header: ref("selectable"),
-      description: null,
+      description: ref(null),
       sortable: null,
       component: _sfc_main$a,
       value(row) {
@@ -3797,7 +3797,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       type: "radio",
       id: Symbol("single-select"),
       header: ref("V\xE4lj en rad"),
-      description: null,
+      description: ref(null),
       sortable: null,
       component: _sfc_main$7,
       value(row) {
@@ -4038,7 +4038,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
 });
 
 // src/components/FTable/table-column.ts
-import { toRef as toRef2 } from "vue";
+import { ref as ref4, toRef as toRef2 } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableAnchor.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
@@ -4991,7 +4991,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent8({
       //     },
       // },
     ]);
-    const rows = ref4([
+    const rows = ref5([
       {
         id: "1",
         animal: "Katt",
@@ -5093,7 +5093,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent8({
         ]
       }
     ]);
-    const mySelectedRows = ref4([rows.value[0]]);
+    const mySelectedRows = ref5([rows.value[0]]);
     function onButtonClick(id) {
       alert(`Du klickade p\xE5 rad med id ${id}`);
     }
