@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-b0c052.json"
+            href="../../../search-data-aed8ed.json"
             as="fetch"
             crossorigin
-            integrity="sha384-vYNoaEaBXYVFWYd11g4gvxo3kN1Rk5JuzJX6gtzuIekL0kNlj/bEJgkzcH9lRo1b"
+            integrity="sha384-rnuat/crgJ93xdGxnqGlFDPQ7JX1JDRVG5spCSX1gsuZ8jgwOl7JGB0lPdpJ7TY/"
             id="search-data"
         />
     </head>
@@ -1688,7 +1688,7 @@
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
@@ -1701,7 +1701,7 @@
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;.myPaginator&quot;</span>);
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);</code></pre>
                 </div>
             <h2 id="firstpagebutton"><a class="header-anchor" href="#firstpagebutton">firstPageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till den första sidan.</p>
@@ -1737,7 +1737,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
@@ -1750,7 +1750,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;.myPaginator&quot;</span>);
 paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>);
 
@@ -1791,7 +1791,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
@@ -1804,7 +1804,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;.myPaginator&quot;</span>);
 paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>);
 
@@ -1845,7 +1845,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
@@ -1858,7 +1858,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;.myPaginator&quot;</span>);
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);
 
 <span class="hljs-comment">// Go to next page</span>
@@ -1902,7 +1902,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
@@ -1915,7 +1915,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;.myPaginator&quot;</span>);
 paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">4</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>);</code></pre>
                 </div>
@@ -1952,7 +1952,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
@@ -1965,7 +1965,7 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;.myPaginator&quot;</span>);
 paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>);
 
@@ -1997,9 +1997,9 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/d95d9a505c40efb6c39ffaeb8903351ea42a73c1">d95d9a5</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/a9b517306022e9f4b0b94de4ce02c3611b970ffd">a9b5173</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-10-16 11:50
+        2025-10-16 12:54
 </div>
 <div class="toolbar__item">
     <form id="version">
