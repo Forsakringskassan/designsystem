@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FPaginatorPageObject - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-e55a1b.css"
+            href="../../../assets/docs-ac329e.css"
             crossorigin
-            integrity="sha384-Fg1nNGjuHIvUvLZY7bXvvMH0dHriK9UumrzWcvRCrRP5xFEAtP7EPyFICs7xUwDW"
+            integrity="sha384-2fO+EpKeR0z1lIrx0wmPQvU8n9z0tHKOkE4kR7rQDgWa8E1e06sYt4iEigPar6hg"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../../assets/vendor-vue-fd23ba.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-277994.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-131ba7.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-806f83.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-c437fe.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-fd23ba.js": "sha384-fgWjDRyjtEXyEeb3gQxn5cMLQnaLJ/+raE5Ku0VLWBP2RlzpzrpvJFEC1FCSIWMk",
     "../../../assets/vendor-fkui-logic-277994.js": "sha384-o6DN+xTHp12Ot0+4FNZEoyGS6m3b75MezBhapCvFqCaF1IS9W5ox/P2dcvqGKt+i",
     "../../../assets/vendor-fkui-date-131ba7.js": "sha384-1ousGnX+TtYBjw6BVR/x9Yg2jMIjTjuSOD+VpUdpe9Eo7r1KF2LHHKhc8hzYQQlC",
-    "../../../assets/vendor-fkui-vue-806f83.js": "sha384-r+my0qXC4OpTnQPNUAWWJpTfDEe0hDgemz9LzHVF0vNvbi42ntDb7OdxUnxcsIrQ",
+    "../../../assets/vendor-fkui-vue-c437fe.js": "sha384-eV9q+iP9KBQypoTXkFaJQ9z2wmjRWVoGRoayg1jIDbsH5SuNYH9iTKdbtgACWZYy",
     "../../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-aed8ed.json"
+            href="../../../search-data-58adf1.json"
             as="fetch"
             crossorigin
-            integrity="sha384-rnuat/crgJ93xdGxnqGlFDPQ7JX1JDRVG5spCSX1gsuZ8jgwOl7JGB0lPdpJ7TY/"
+            integrity="sha384-WGh1e8w4yle2MDNMa6AIwIgqAqqws59kHu8mzrlFK3+vc6YFw9FHPLrcRiNawvx7"
             id="search-data"
         />
     </head>
@@ -1646,6 +1646,8 @@
                                 
                                 <li><a href="#pagebutton">pageButton()</a></li>
                                 
+                                <li><a href="#pagecounter">pageCounter()</a></li>
+                                
                                 <li><a href="#previousbutton">previousButton()</a></li>
                                 
                             </ul>
@@ -1919,20 +1921,20 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
 paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">4</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>);</code></pre>
                 </div>
-            <h2 id="previousbutton"><a class="header-anchor" href="#previousbutton">previousButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till föregående sida.</p>
+            <h2 id="pagecounter"><a class="header-anchor" href="#pagecounter">pageCounter()</a></h2><p class="docs-paragraph">Används för att komma åt element för sidräknare.</p>
 <h3 id="syntax--13"><a class="header-anchor" href="#syntax--13">Syntax</a></h3>
                 <div
-                    id="example-376a22"
+                    id="example-e09fd7"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">previousButton</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">pageButton</span>();
 </code></pre>
                 </div>
-            <h3 id="returvarde--14"><a class="header-anchor" href="#returvarde--14">Returvärde</a></h3><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till föregående sida.</p>
+            <h3 id="returvarde--14"><a class="header-anchor" href="#returvarde--14">Returvärde</a></h3><p class="docs-paragraph"><code>HTMLElement</code> med sidräknare.</p>
 <h3 id="exempel--15"><a class="header-anchor" href="#exempel--15">Exempel</a></h3>
                 <div
                     id="example-bac1b4"
@@ -1958,7 +1960,56 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                 </div>
             
                 <div
-                    id="example-623754"
+                    id="example-b313ab"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;.myPaginator&quot;</span>);
+paginator.<span class="hljs-title function_">pageCounter</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Sida 1 av 20&quot;</span>);</code></pre>
+                </div>
+            <h2 id="previousbutton"><a class="header-anchor" href="#previousbutton">previousButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till föregående sida.</p>
+<h3 id="syntax--16"><a class="header-anchor" href="#syntax--16">Syntax</a></h3>
+                <div
+                    id="example-a6d21c"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">previousButton</span>();
+</code></pre>
+                </div>
+            <h3 id="returvarde--17"><a class="header-anchor" href="#returvarde--17">Returvärde</a></h3><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till föregående sida.</p>
+<h3 id="exempel--18"><a class="header-anchor" href="#exempel--18">Exempel</a></h3>
+                <div
+                    id="example-3e645a"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;C&quot;</span>&gt;</span> {{ row.c }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
+                </div>
+            
+                <div
+                    id="example-8adc1b"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1997,9 +2048,9 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/a9b517306022e9f4b0b94de4ce02c3611b970ffd">a9b5173</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/89fa7493bc2069106c832eeabec1a91463207b7a">89fa749</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-10-16 12:54
+        2025-10-16 13:54
 </div>
 <div class="toolbar__item">
     <form id="version">
