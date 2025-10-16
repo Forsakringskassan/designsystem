@@ -131,6 +131,30 @@ FPaginatorPageObject.vue
 FPaginatorPageObject-page-button.cy.ts
 ```
 
+## pageCounter()
+
+Används för att komma åt element för sidräknare.
+
+### Syntax
+
+```ts nocompile
+pageButton();
+```
+
+### Returvärde
+
+`HTMLElement` med sidräknare.
+
+### Exempel
+
+```import static
+FPaginatorPageObject.vue
+```
+
+```import static
+FPaginatorPageObject-page-counter.cy.ts
+```
+
 ## previousButton()
 
 Används för att komma åt knapp för att gå till föregående sida.

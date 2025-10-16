@@ -23,8 +23,12 @@ export class FPaginatorPageObject implements BasePageObject {
         return cy.get(`${this.selector} .paginator__page--active`);
     }
 
-    public previousButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__previous`);
+    public firstPageButton(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .paginator__pages`).children().first();
+    }
+
+    public lastPageButton(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .paginator__pages`).children().last();
     }
 
     public nextButton(): DefaultCypressChainable {
@@ -35,11 +39,11 @@ export class FPaginatorPageObject implements BasePageObject {
         return cy.contains(`${this.selector} .paginator__page`, page);
     }
 
-    public firstPageButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__pages`).children().first();
+    public pageCounter(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .paginator__page-counter`);
     }
 
-    public lastPageButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__pages`).children().last();
+    public previousButton(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .paginator__previous`);
     }
 }

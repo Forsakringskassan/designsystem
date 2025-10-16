@@ -5,7 +5,7 @@ $gap-size: size.$margin-025;
 $page-width: 2.5rem;
 $button-width: 8rem;
 $number-of-pages: 9; // References `maxNumberOfPagesUpperLimit` in FPaginator
-$paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 2) * $gap-size));
+$paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 3) * $gap-size));
 
 .paginator {
     display: flex;
