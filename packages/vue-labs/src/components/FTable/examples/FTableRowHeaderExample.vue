@@ -207,6 +207,7 @@ function onButtonClick(id: string): void {
                 selectable="multi"
                 expandable-attribute="expandableRows"
             >
+                <template #caption><span class="sr-only">Dold caption för tabell</span></template>
                 <template #footer>Footer</template>
             </f-table>
         </template>
