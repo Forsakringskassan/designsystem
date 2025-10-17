@@ -10,3 +10,9 @@ Komponent för paginering.
 ```import live-example
 FPaginationLiveExample.vue
 ```
+
+## API
+
+:::api
+vue:FPagination
+:::

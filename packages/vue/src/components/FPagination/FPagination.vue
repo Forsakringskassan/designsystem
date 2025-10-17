@@ -3,13 +3,26 @@ import { computed, onMounted, ref, watch } from "vue";
 
 // Defines component props
 const {
-    items = [],
-    itemsPerPage = 8,
+    items,
+    itemsPerPage = 10,
     itemsLength = 0,
     fetchData = () => null,
 } = defineProps<{
-    items?: T[];
+    /**
+     * The items to be used. The items will be used in the given array order.
+     */
+    items: T[];
+
+    /**
+     * The number of items per page (at most).
+     */
     itemsPerPage?: number;
+
+    /**
+     * The number of items to be used.
+     *
+     * Used together with `fetchData`.
+     */
     itemsLength?: number;
     fetchData?(firstItemIndex: number, lastItemIndex: number, currentPage: number): T[] | Promise<T[]>;
 }>();
@@ -89,6 +102,16 @@ function goToPage(event: CustomEvent): void {
         @pagination:last="goToLastPage"
         @pagination:page="goToPage"
     >
+        <!--
+            @slot Slot for the page.
+
+            @binding {T[]} items The items on the current page.
+            @binding {number} numberOfItems The number of items on the current page.
+            @binding {number} currentPage The number of the current page.
+            @binding {number} firstItemIndex The index of the first item on the current page.
+            @binding {number} lastItemIndex The index of the last item on the current page.
+            @binding {number} numberOfPages The number of pages.
+        -->
         <slot
             name="default"
             v-bind="{

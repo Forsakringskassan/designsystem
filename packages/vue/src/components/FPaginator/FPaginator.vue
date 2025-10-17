@@ -10,8 +10,17 @@ const {
     currentPage,
     numberOfPagesToShow = 9,
 } = defineProps<{
+    /**
+     * The number of pages available.
+     */
     numberOfPages: number;
+    /**
+     * The number of the current page.
+     */
     currentPage: number;
+    /**
+     * The number of pages to show in the paginator (at most).
+     */
     numberOfPagesToShow?: number;
 }>();
 

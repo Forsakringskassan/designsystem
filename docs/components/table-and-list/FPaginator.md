@@ -10,3 +10,9 @@ Paginator för användning vid paginering.
 ```import live-example
 FPaginatorLiveExample.vue
 ```
+
+## API
+
+:::api
+vue:FPaginator
+:::
