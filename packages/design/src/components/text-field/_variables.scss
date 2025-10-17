@@ -8,8 +8,9 @@ $textfield-color-border-disabled: var(--fkds-color-border-disabled) !default;
 $textfield-color-border-error: var(--fkds-color-feedback-border-negative) !default;
 
 // ICON
-$textfield-icon-close-color-content-default: var(--fkds-icon-color-action-content-weak-default) !default;
-$textfield-icon-close-color-content-disabled: var(--fkds-icon-color-content-disabled) !default;
+$textfield-icon-close-color-content-default: var(--fkds-color-text-secondary) !default;
+$textfield-icon-close-color-content-disabled: var(--fkds-color-text-disabled) !default;
+$textfield-color-icon-error: var(--fkds-color-feedback-text-negative) !default;
 
 // TEXT
 $textfield-color-text-default: var(--fkds-color-text-primary) !default;
