@@ -1,7 +1,8 @@
+import { nextTick, toValue } from "vue";
 import { isVisible } from "@fkui/logic";
 import { getInternalKey } from "@fkui/vue";
 import { type MetaRow } from "./MetaRow";
-import { type FTableActivateCellEvent } from "./events";
+import { tableCellApiSymbol } from "./f-table-api";
 import { walk } from "./walk";
 
 interface TableCellIndex {
@@ -52,12 +53,6 @@ function getCellTarget(
     cellIndex: number,
 ): HTMLElement {
     return tableElement.rows[rowIndex].cells[cellIndex];
-}
-
-function isTd(
-    element: (HTMLElement & { cellIndex?: number }) | null,
-): element is HTMLTableCellElement & { parentElement: HTMLTableRowElement } {
-    return element?.cellIndex !== undefined;
 }
 
 function getTr(td: HTMLTableCellElement): HTMLTableRowElement {
@@ -235,17 +230,13 @@ export function getMetaRows<T, K extends keyof T = keyof T>(
     return array;
 }
 
-export function getTd(element: HTMLElement): HTMLTableCellElement {
-    if (isTd(element)) {
-        return element;
-    } else {
-        const closest = element.closest("td");
-        if (!closest) {
-            throw new Error("expected td parent");
-        }
-
-        return closest;
+export function getCell(element: HTMLElement): HTMLTableCellElement {
+    const closest = element.closest<HTMLTableCellElement>("td, th");
+    if (!closest) {
+        throw new Error("expected th or td parent");
     }
+
+    return closest;
 }
 
 export function findAction(
@@ -277,11 +268,12 @@ export function switchTabbable(
     setTabbable(newElement, true);
 }
 
-export function setDefaultCellTarget(
+export async function setDefaultCellTarget(
     table: HTMLTableElement,
-): HTMLElement | null {
+): Promise<HTMLElement | null> {
+    await nextTick(); // wait for dynamic refs to be applied after table onMounted lifecycle hook
     const target = getCellTarget(table, 1, 0);
-    dispatchActivateCellEvent(target, { focus: false });
+    activateCell(target, { focus: false });
 
     return target;
 }
@@ -289,12 +281,12 @@ export function setDefaultCellTarget(
 export function maybeNavigateToCell(e: KeyboardEvent): void {
     let newCellTarget: HTMLElement = e.target as HTMLElement;
 
-    const td = getTd(e.target as HTMLElement);
-    const tr = getTr(td);
+    const cell = getCell(e.target as HTMLElement);
+    const tr = getTr(cell);
     const table = getTable(tr);
     const fromIndex = {
         row: tr.rowIndex,
-        cell: td.cellIndex,
+        cell: cell.cellIndex,
     };
     const lastIndex = {
         row: getLastRowIndex(table),
@@ -304,26 +296,28 @@ export function maybeNavigateToCell(e: KeyboardEvent): void {
     const navigateTo = navigate(e, table, fromIndex, lastIndex);
     if (navigateTo) {
         newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
-        dispatchActivateCellEvent(newCellTarget, { focus: true });
+        activateCell(newCellTarget, { focus: true });
     }
 }
 
-export function dispatchActivateCellEvent(
+export function activateCell(
     element: HTMLElement,
-    detail: FTableActivateCellEvent,
+    options?: { focus: boolean },
 ): void {
-    element.dispatchEvent(
-        new CustomEvent<FTableActivateCellEvent>("table-activate-cell", {
-            detail,
-        }),
-    );
+    const api = element[tableCellApiSymbol];
+    const targetEl = toValue(api?.tabstopEl) ?? element;
+    targetEl.tabIndex = 0;
+
+    if (options?.focus) {
+        targetEl.focus();
+    }
 }
 
 export function stopEdit(
     element: HTMLElement,
     reason: "enter" | "escape" | "tab" | "shift-tab" | "blur",
 ): HTMLElement {
-    const td = getTd(element);
+    const td = getCell(element);
     const tr = getTr(td);
     const table = getTable(tr);
 
@@ -338,37 +332,37 @@ export function stopEdit(
         case "enter": {
             if (rowIndex !== lastRowIndex) {
                 newCellTarget = getCellTarget(table, rowIndex + 1, cellIndex);
-                dispatchActivateCellEvent(newCellTarget, { focus: true });
+                activateCell(newCellTarget, { focus: true });
             } else {
-                dispatchActivateCellEvent(newCellTarget, { focus: true });
+                activateCell(newCellTarget, { focus: true });
             }
             return newCellTarget;
         }
         case "escape": {
-            dispatchActivateCellEvent(newCellTarget, { focus: true });
+            activateCell(newCellTarget, { focus: true });
             return newCellTarget;
         }
         case "tab": {
             if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
-                dispatchActivateCellEvent(newCellTarget, { focus: true });
+                activateCell(newCellTarget, { focus: true });
             } else if (cellIndex === lastCellIndex) {
                 newCellTarget = getCellTarget(table, rowIndex + 1, 0);
-                dispatchActivateCellEvent(newCellTarget, { focus: true });
+                activateCell(newCellTarget, { focus: true });
             } else {
                 newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
-                dispatchActivateCellEvent(newCellTarget, { focus: true });
+                activateCell(newCellTarget, { focus: true });
             }
             return newCellTarget;
         }
         case "shift-tab": {
             if (cellIndex === 0 && rowIndex === 1) {
-                dispatchActivateCellEvent(newCellTarget, { focus: true });
+                activateCell(newCellTarget, { focus: true });
             } else if (cellIndex === 0) {
                 newCellTarget = getCellTarget(table, rowIndex - 1, 0);
-                dispatchActivateCellEvent(newCellTarget, { focus: true });
+                activateCell(newCellTarget, { focus: true });
             } else {
                 newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
-                dispatchActivateCellEvent(newCellTarget, { focus: true });
+                activateCell(newCellTarget, { focus: true });
             }
             return newCellTarget;
         }

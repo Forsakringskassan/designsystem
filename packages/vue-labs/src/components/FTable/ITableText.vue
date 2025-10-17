@@ -2,7 +2,6 @@
 import { computed, onMounted, ref, useTemplateRef } from "vue";
 import { type ValidityEvent, ValidationService, assertRef } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
-import { type FTableActivateCellEvent } from "./events";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnText } from "./table-column";
@@ -43,15 +42,6 @@ onMounted(() => {
         ValidationService.addValidatorsToElement(inputElement.value, column.validation);
     }
 });
-
-function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(tdElement);
-    tdElement.value.tabIndex = 0;
-
-    if (e.detail.focus) {
-        tdElement.value.focus();
-    }
-}
 
 function onStartEdit(modelValue: string): void {
     assertRef(tdElement);
@@ -160,7 +150,6 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
         :class="wrapperClasses"
         @click.stop="onClickCell"
         @keydown="onKeydown"
-        @table-activate-cell="onActivateCell"
     >
         <div class="table-ng__editable">
             <span ref="view" class="table-ng__editable__text">{{ column.value(row) }}</span>
@@ -171,6 +160,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
                 type="text"
                 maxlength="40"
                 tabindex="-1"
+                aria-label="temp"
                 @blur="onBlur"
                 @validity="onValidity"
             />
@@ -178,13 +168,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
             <f-icon v-else name="pen" class="table-ng__editable__icon"></f-icon>
         </div>
     </td>
-    <td
-        v-else
-        ref="td"
-        tabindex="-1"
-        class="table-ng__cell table-ng__cell--static"
-        @table-activate-cell="onActivateCell"
-    >
+    <td v-else ref="td" tabindex="-1" class="table-ng__cell table-ng__cell--static">
         {{ column.value(row) }}
     </td>
 </template>
