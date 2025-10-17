@@ -35,6 +35,7 @@ import {
     type TableColumn,
     normalizeTableColumns,
 } from "./table-column";
+import { useTabstop } from "./use-tabstop";
 
 type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
     ? Required<T>[ExpandableAttribute][number]
@@ -216,6 +217,16 @@ function onClick(e: MouseEvent): void {
     }
 }
 
+function onTableFocusin(e: FocusEvent): void {
+    assertRef(tableRef);
+
+    tableRef.value.querySelectorAll(`[tabindex="0"]`).forEach((it) => {
+        if (it !== e.target) {
+            it.setAttribute("tabindex", "-1");
+        }
+    });
+}
+
 function isInExpandable(el: HTMLElement): boolean {
     if (!el.parentElement) {
         return false;
@@ -233,7 +244,9 @@ function onTableFocusout(e: FocusEvent): void {
         return;
     }
 
-    assertRef(tableRef);
+    if (!tableRef.value) {
+        return;
+    }
     const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
 
     if (outsideTable) {
@@ -314,6 +327,9 @@ function bindSelectableCellApiRef(ref: Element | ComponentPublicInstance | null)
     selectAllRef.value = toValue(ref.tabstopEl) as HTMLInputElement | null;
 }
 
+const tableApi = useTabstop(tableRef, metaRows);
+defineExpose(tableApi);
+
 onMounted(() => {
     assertRef(tableRef);
     registerCallbackOnMount(callbackSortableColumns);
@@ -328,6 +344,7 @@ onMounted(() => {
         :role
         :class="tableClasses"
         :aria-rowcount
+        @focusin="onTableFocusin"
         @focusout="onTableFocusout"
         @click="onClick"
         @keydown="onKeydown"

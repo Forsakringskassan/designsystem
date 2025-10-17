@@ -1,19 +1,10 @@
 import { type VNode, ref } from "vue";
 import { h } from "vue";
+import { assertSet } from "@fkui/logic";
+import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
+import { type FTableApi } from "./f-table-api";
 import { defineTableColumns } from "./table-column";
-
-interface AwesomeRow {
-    staticText: string;
-    editText: string;
-    select: string;
-    checkbox: boolean;
-    radio: boolean;
-    button: string;
-    anchor: string;
-    custom: string;
-    children?: AwesomeRow[];
-}
 
 function renderButton(
     text: string,
@@ -35,107 +26,300 @@ function getTestSelector(value: string): string {
     return `[data-test="${value}"]`;
 }
 
-function mountDefaultTestbed(): {
-    buttonBeforeTable: string;
-} {
-    const rows = ref([
-        {
-            staticText: "awesome static text",
-            editText: "awesome edit text",
-            select: "awesome option",
-            checkbox: true,
-            radio: true,
-            button: "awesome button",
-            anchor: "awesome anchor",
-            custom: "awesome custom",
-            children: [
-                {
-                    staticText: "child static text",
-                    editText: "child edit text",
-                    select: "another option",
-                    checkbox: false,
-                    radio: false,
-                    button: "child button",
-                    anchor: "child anchor",
-                    custom: "child custom",
+describe("5 tabstop", () => {
+    interface TabstopRow {
+        foo: string;
+        bar: string;
+    }
+
+    function mountTabstopTestbed(): {
+        buttonBeforeTable: string;
+        buttonAfterTable: string;
+        buttonAddRow: string;
+    } {
+        const rows = ref([
+            { foo: "1", bar: "alpha" },
+            { foo: "2", bar: "beta" },
+            { foo: "3", bar: "gamma" },
+        ]);
+
+        const columns = defineTableColumns<TabstopRow>([
+            {
+                type: "text",
+                header: "foo",
+                key: "foo",
+            },
+            {
+                type: "button",
+                header: "remove",
+                icon: "trashcan",
+                value(row) {
+                    return row.bar;
                 },
-            ],
-        },
-    ]);
-
-    const columns = defineTableColumns<AwesomeRow>([
-        {
-            type: "text",
-            header: "static text header",
-            key: "staticText",
-        },
-        {
-            type: "text",
-            editable: true,
-            header: "edit text header",
-            key: "editText",
-            label: () => "edit text label",
-        },
-        {
-            type: "select",
-            header: "select header",
-            options: ["awesome option", "catastrophic option"],
-            key: "select",
-            label: () => "select label",
-        },
-        {
-            type: "checkbox",
-            header: "checkbox header",
-            key: "checkbox",
-            editable: true,
-            label: () => "checkbox label",
-        },
-        {
-            type: "radio",
-            header: "radio header",
-            key: "radio",
-            label: () => "radio label",
-        },
-        {
-            type: "button",
-            header: "button header",
-            value(row) {
-                return row.button;
+                onClick(row) {
+                    rows.value.splice(rows.value.indexOf(row), 1);
+                },
             },
-            icon: "bell",
-        },
-        {
-            type: "anchor",
-            header: "anchor header",
-            value(row) {
-                return row.anchor;
+        ]);
+
+        const buttonBeforeTable = "button-before-table";
+        const buttonAfterTable = "button-after-table";
+        const buttonAddRow = "button-add-row";
+        const counter = ref(4);
+
+        cy.mount(() =>
+            h("div", [
+                renderButton("Before table", buttonBeforeTable),
+                h(FTable<TabstopRow>, {
+                    rows: rows.value,
+                    columns,
+                }),
+                renderButton("After table", buttonAfterTable),
+                renderButton("Add row", buttonAddRow, () =>
+                    rows.value.push({
+                        foo: String(counter.value++),
+                        bar: "Added row",
+                    }),
+                ),
+            ]),
+        );
+
+        return {
+            buttonBeforeTable: getTestSelector(buttonBeforeTable),
+            buttonAfterTable: getTestSelector(buttonAfterTable),
+            buttonAddRow: getTestSelector(buttonAddRow),
+        };
+    }
+
+    function mountRowRemovalTestbed(): void {
+        let api: FTableApi | undefined = undefined;
+
+        const rows = ref([
+            { foo: "1", bar: "alpha" },
+            { foo: "2", bar: "beta" },
+            { foo: "3", bar: "gamma" },
+        ]);
+
+        const columns = defineTableColumns<TabstopRow>([
+            {
+                type: "text",
+                header: "foo",
+                key: "foo",
             },
-            href: "awesome href",
-        },
-    ]);
+            {
+                type: "button",
+                header: "remove",
+                icon: "trashcan",
+                value(row) {
+                    return row.bar;
+                },
+                onClick(row) {
+                    assertSet(api);
+                    api.withTabstopBehaviour("row-removal", () => {
+                        rows.value.splice(rows.value.indexOf(row), 1);
+                    });
+                },
+            },
+        ]);
 
-    const buttonBeforeTable = "button-before-table";
-
-    cy.mount(() =>
-        h("div", [
-            renderButton("Before table", buttonBeforeTable),
-            h(FTable<AwesomeRow>, {
+        cy.mount(() =>
+            h(FTable<TabstopRow>, {
                 rows: rows.value,
                 columns,
-                expandableAttribute: "children",
-                selectable: "multi",
+                ref: (exposed: unknown) => (api = exposed as FTableApi),
             }),
-        ]),
-    );
+        );
+    }
 
-    return {
-        buttonBeforeTable: getTestSelector(buttonBeforeTable),
-    };
-}
+    interface NavigationRow {
+        staticText: string;
+        editText: string;
+        select: string;
+        checkbox: boolean;
+        radio: boolean;
+        button: string;
+        anchor: string;
+        custom: string;
+        children?: NavigationRow[];
+    }
 
-describe("navigation", () => {
-    it("should activate correct cell elements", () => {
-        const { buttonBeforeTable } = mountDefaultTestbed();
+    function mountNavigationTestbed(): {
+        buttonBeforeTable: string;
+    } {
+        const rows = ref([
+            {
+                staticText: "awesome static text",
+                editText: "awesome edit text",
+                select: "awesome option",
+                checkbox: true,
+                radio: true,
+                button: "awesome button",
+                anchor: "awesome anchor",
+                custom: "awesome custom",
+                children: [
+                    {
+                        staticText: "child static text",
+                        editText: "child edit text",
+                        select: "another option",
+                        checkbox: false,
+                        radio: false,
+                        button: "child button",
+                        anchor: "child anchor",
+                        custom: "child custom",
+                    },
+                ],
+            },
+        ]);
+
+        const columns = defineTableColumns<NavigationRow>([
+            {
+                type: "text",
+                header: "static text header",
+                key: "staticText",
+            },
+            {
+                type: "text",
+                editable: true,
+                header: "edit text header",
+                key: "editText",
+                label: () => "edit text label",
+            },
+            {
+                type: "select",
+                header: "select header",
+                options: ["awesome option", "catastrophic option"],
+                key: "select",
+                label: () => "select label",
+            },
+            {
+                type: "checkbox",
+                header: "checkbox header",
+                key: "checkbox",
+                editable: true,
+                label: () => "checkbox label",
+            },
+            {
+                type: "radio",
+                header: "radio header",
+                key: "radio",
+                label: () => "radio label",
+            },
+            {
+                type: "button",
+                header: "button header",
+                value(row) {
+                    return row.button;
+                },
+                icon: "bell",
+            },
+            {
+                type: "anchor",
+                header: "anchor header",
+                value(row) {
+                    return row.anchor;
+                },
+                href: "awesome href",
+            },
+        ]);
+
+        const buttonBeforeTable = "button-before-table";
+
+        cy.mount(() =>
+            h("div", [
+                renderButton("Before table", buttonBeforeTable),
+                h(FTable<NavigationRow>, {
+                    rows: rows.value,
+                    columns,
+                    expandableAttribute: "children",
+                    selectable: "multi",
+                }),
+            ]),
+        );
+
+        return {
+            buttonBeforeTable: getTestSelector(buttonBeforeTable),
+        };
+    }
+
+    const table = new FTablePageObject();
+
+    it("5.1 should default to first datacell", () => {
+        const { buttonBeforeTable } = mountTabstopTestbed();
+        cy.get(buttonBeforeTable).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+
+        table.cell({ row: 1, col: 1 }).should("have.focus");
+    });
+
+    it("5.1 should leave table on tab", () => {
+        const { buttonBeforeTable, buttonAfterTable } = mountTabstopTestbed();
+        cy.get(buttonBeforeTable).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.get(buttonAfterTable).should("have.focus");
+    });
+
+    it("5.2 should only have one tabstop", () => {
+        const { buttonBeforeTable } = mountTabstopTestbed();
+        table.cell({ row: 2, col: 1 }).as("td").click();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.focused().should("contain.text", "After table");
+        cy.get(buttonBeforeTable).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.get("@td").should("have.focus");
+    });
+
+    it("5.3 should have tabstop on focused element", () => {
+        const { buttonBeforeTable } = mountTabstopTestbed();
+        cy.get(buttonBeforeTable).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.focused().should("contain.text", "1");
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().should("contain.text", "alpha");
+    });
+
+    it("5.4 should fallback according to first-cell mode when current tabstop is removed", () => {
+        const { buttonBeforeTable } = mountTabstopTestbed();
+        cy.get(buttonBeforeTable).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.focused().should("contain.text", "1");
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().click();
+        cy.focused().should("contain.text", "2");
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().click();
+        cy.focused().should("contain.text", "3");
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().click();
+        cy.focused().should("contain.text", "Tabellen är tom");
+    });
+
+    it("5.5 should fallback according to sticky mode when current tabstop is removed", () => {
+        mountRowRemovalTestbed();
+        table.cell({ row: 2, col: 2 }).click();
+        cy.focused().should("contain.text", "alpha");
+        cy.focused().click();
+        cy.focused().should("contain.text", "gamma");
+        cy.focused().click();
+        cy.focused().should("contain.text", "Tabellen är tom");
+    });
+
+    it("should set tabstop to first cell when a first row is added", () => {
+        const { buttonBeforeTable, buttonAddRow } = mountTabstopTestbed();
+        cy.get(buttonBeforeTable).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().click();
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().click();
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().click();
+        cy.get(buttonAddRow).click();
+        table.cell({ row: 1, col: 1 }).should("have.attr", "tabindex", "0");
+    });
+
+    it("should set correct tabstop for all types of headers and cells on navigation", () => {
+        const { buttonBeforeTable } = mountNavigationTestbed();
         cy.get(buttonBeforeTable).focus();
         cy.focused().press(Cypress.Keyboard.Keys.TAB);
         // {1, 1}: expand button
