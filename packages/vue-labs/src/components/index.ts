@@ -1,2 +1,7 @@
 export * from "./XTimeTextField";
-export { type TableColumn, FTable, defineTableColumns } from "./FTable";
+export {
+    type FTableApi,
+    type TableColumn,
+    FTable,
+    defineTableColumns,
+} from "./FTable";

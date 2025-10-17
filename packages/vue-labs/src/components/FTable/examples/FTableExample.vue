@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { h, ref } from "vue";
-import { formatNumber } from "@fkui/logic";
+import { h, ref, useTemplateRef } from "vue";
+import { assertRef, formatNumber } from "@fkui/logic";
 import { FSortFilterDataset } from "@fkui/vue";
 import { FTable } from "@fkui/vue-labs";
 import { defineTableColumns } from "../table-column";
+
+const tableRef = useTemplateRef("table");
 
 const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
 
@@ -72,9 +74,7 @@ const columns = defineTableColumns<Row>([
         value(row) {
             return `Ta bort ${row.id}`;
         },
-        onClick(row) {
-            onButtonClick(row.id);
-        },
+        onClick: onButtonClick,
     },
     {
         header: "Länk",
@@ -216,8 +216,11 @@ const sortableAttributes = Object.fromEntries(
 
 const mySelectedRows = ref<Row[]>([rows.value[0]]);
 
-function onButtonClick(id: string): void {
-    alert(`Du klickade på rad med id ${id}`);
+function onButtonClick(row: Row): void {
+    assertRef(tableRef);
+    tableRef.value.withTabstopBehaviour("row-removal", () => {
+        rows.value.splice(rows.value.indexOf(row), 1);
+    });
 }
 </script>
 
@@ -226,6 +229,7 @@ function onButtonClick(id: string): void {
     <f-sort-filter-dataset :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
             <f-table
+                ref="table"
                 v-model:selected-rows="mySelectedRows"
                 :rows="sortFilterResult"
                 :columns
