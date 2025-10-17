@@ -3,22 +3,29 @@
     lang="ts"
     generic="T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
 >
-import { type Ref, computed, onMounted, provide, ref, useSlots, useTemplateRef, watchEffect } from "vue";
-import { assertRef } from "@fkui/logic";
-import { FSortFilterDatasetInjected, setInternalKeys } from "@fkui/vue";
 import {
-    dispatchActivateCellEvent,
-    getMetaRows,
-    maybeNavigateToCell,
-    setDefaultCellTarget as setDefaultCellTarget,
-    stopEdit,
-} from "./FTable.logic";
+    type ComponentPublicInstance,
+    type Ref,
+    computed,
+    onMounted,
+    provide,
+    ref,
+    toValue,
+    useSlots,
+    useTemplateRef,
+    watchEffect,
+} from "vue";
+import { assertRef, assertSet } from "@fkui/logic";
+import { FSortFilterDatasetInjected, setInternalKeys } from "@fkui/vue";
+import { activateCell, getMetaRows, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
 import ITableHeader from "./ITableHeader.vue";
+import ITableHeaderSelectable from "./ITableHeaderSelectable.vue";
 import ITableRadio from "./ITableRadio.vue";
 import { type MetaRow } from "./MetaRow";
+import { isFTableCellApi, tableCellApiSymbol } from "./f-table-api";
 import { getBodyRowCount } from "./get-body-row-count";
 import { stopEditKey } from "./start-stop-edit";
 import {
@@ -50,7 +57,7 @@ const {
     selectable?: "single" | "multi";
 }>();
 const tableRef = useTemplateRef("table");
-const selectAllRef = useTemplateRef("selectAll");
+const selectAllRef = ref<HTMLInputElement | null>(null);
 const expandedKeys: Ref<string[]> = ref([]);
 const keyedRows = computed(() => setInternalKeys(rows, keyAttribute, expandableAttribute));
 const metaRows = computed(
@@ -196,7 +203,7 @@ function onClick(e: MouseEvent): void {
     const td = (e.target as HTMLElement).closest("td");
 
     if (td) {
-        dispatchActivateCellEvent(td, { focus: true });
+        activateCell(td, { focus: true });
     }
 }
 
@@ -224,7 +231,7 @@ function onTableFocusout(e: FocusEvent): void {
         const td = target.closest("td");
 
         if (td) {
-            dispatchActivateCellEvent(td, { focus: false });
+            activateCell(td, { focus: false });
         }
     } else {
         target.tabIndex = -1;
@@ -274,11 +281,35 @@ function onToggleSortOrder(sortable: string): void {
     }
 }
 
+function bindCellApiRef(ref: Element | ComponentPublicInstance | null): void {
+    if (!isFTableCellApi(ref)) {
+        return;
+    }
+
+    const apiEl = toValue(ref.tabstopEl);
+    if (!apiEl) {
+        return;
+    }
+
+    const cell = apiEl.closest<HTMLElement>("td, th");
+    assertSet(cell);
+    cell[tableCellApiSymbol] = ref;
+}
+
+function bindSelectableCellApiRef(ref: Element | ComponentPublicInstance | null): void {
+    if (!isFTableCellApi(ref)) {
+        return;
+    }
+
+    bindCellApiRef(ref);
+    selectAllRef.value = toValue(ref.tabstopEl) as HTMLInputElement | null;
+}
+
 onMounted(() => {
     assertRef(tableRef);
-    setDefaultCellTarget(tableRef.value);
     registerCallbackOnMount(callbackSortableColumns);
     registerCallbackOnSort(callbackOnSort);
+    setDefaultCellTarget(tableRef.value);
 });
 </script>
 
@@ -295,16 +326,11 @@ onMounted(() => {
         <thead>
             <tr class="table-ng__row" aria-rowindex="1">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
-                <th v-if="isMultiSelect" scope="col" class="table-ng__column table-ng__column--checkbox">
-                    <input
-                        ref="selectAll"
-                        type="checkbox"
-                        aria-label="select all"
-                        tabindex="-1"
-                        indeterminate
-                        @change="onSelectAllChange"
-                    />
-                </th>
+                <i-table-header-selectable
+                    v-if="isMultiSelect"
+                    :ref="bindSelectableCellApiRef"
+                    @change="onSelectAllChange"
+                />
                 <th v-if="isSingleSelect" scope="col">{{ singleSelectColumn.header }}</th>
                 <i-table-header
                     v-for="column in columns"
@@ -339,6 +365,7 @@ onMounted(() => {
             >
                 <i-table-expand-button
                     v-if="isTreegrid"
+                    :ref="bindCellApiRef"
                     :is-expandable
                     :is-expanded
                     :row-key="key"
@@ -350,10 +377,26 @@ onMounted(() => {
                     <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
                 </i-table-expandable>
                 <template v-else>
-                    <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
-                    <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
+                    <i-table-checkbox
+                        v-if="isMultiSelect"
+                        :ref="bindCellApiRef"
+                        :row
+                        :column="multiSelectColumn"
+                    ></i-table-checkbox>
+                    <i-table-radio
+                        v-if="isSingleSelect"
+                        :ref="bindCellApiRef"
+                        :row
+                        :column="singleSelectColumn"
+                    ></i-table-radio>
                     <template v-for="column in columns" :key="column.id">
-                        <component :is="column.component" v-if="'component' in column" :row :column></component>
+                        <component
+                            :is="column.component"
+                            v-if="'component' in column"
+                            :ref="bindCellApiRef"
+                            :row
+                            :column
+                        ></component>
                         <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
                     </template>
                 </template>

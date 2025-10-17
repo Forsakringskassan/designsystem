@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, useTemplateRef } from "vue";
-import { assertRef } from "@fkui/logic";
-import { type FTableActivateCellEvent } from "./events";
+import { type FTableCellApi } from "./f-table-api";
 import { type NormalizedTableColumnCheckbox } from "./table-column";
 
 const { column, row } = defineProps<{
@@ -12,36 +11,20 @@ const { column, row } = defineProps<{
 const targetElement = useTemplateRef("target");
 const ariaLabel = computed(() => column.header.value);
 
-function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(targetElement);
-    targetElement.value.tabIndex = 0;
-
-    if (e.detail.focus) {
-        targetElement.value.focus();
-    }
-}
-
 function onChange(e: Event): void {
     const checked = (e.target as HTMLInputElement).checked;
     column.update(row, checked, !checked);
 }
+
+const expose: FTableCellApi = { tabstopEl: targetElement };
+defineExpose(expose);
 </script>
 
 <template>
-    <td
-        v-if="column.editable(row)"
-        class="table-ng__cell table-ng__cell--checkbox"
-        @table-activate-cell="onActivateCell"
-    >
+    <td v-if="column.editable(row)" class="table-ng__cell table-ng__cell--checkbox">
         <input ref="target" :checked="column.value(row)" type="checkbox" :aria-label tabindex="-1" @change="onChange" />
     </td>
-    <td
-        v-else
-        ref="target"
-        tabindex="-1"
-        class="table-ng__cell table-ng__cell--checkbox"
-        @table-activate-cell="onActivateCell"
-    >
+    <td v-else ref="target" tabindex="-1" class="table-ng__cell table-ng__cell--checkbox">
         <input :checked="column.value(row)" type="checkbox" :aria-label />
     </td>
 </template>

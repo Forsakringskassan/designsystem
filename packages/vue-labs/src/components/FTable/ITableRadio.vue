@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import { type FTableActivateCellEvent } from "./events";
+import { type FTableCellApi } from "./f-table-api";
 import { type NormalizedTableColumnRadio } from "./table-column";
 
 const { column, row } = defineProps<{
@@ -12,23 +12,17 @@ const { column, row } = defineProps<{
 const inputElement = useTemplateRef("input");
 const ariaLabel = computed(() => column.header.value);
 
-function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(inputElement);
-    inputElement.value.tabIndex = 0;
-
-    if (e.detail.focus) {
-        inputElement.value.focus();
-    }
-}
-
 function onChange(_e: Event): void {
     assertRef(inputElement);
     column.update(row, inputElement.value.checked, !inputElement.value.checked);
 }
+
+const expose: FTableCellApi = { tabstopEl: inputElement };
+defineExpose(expose);
 </script>
 
 <template>
-    <td class="table-ng__cell table-ng__cell--radio" @table-activate-cell="onActivateCell">
+    <td class="table-ng__cell table-ng__cell--radio">
         <input ref="input" type="radio" :checked="column.value(row)" :aria-label tabindex="-1" @change="onChange" />
     </td>
 </template>

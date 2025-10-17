@@ -2,7 +2,6 @@
 import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem } from "@fkui/vue";
-import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumn } from "./table-column";
 
 const { column, sortEnabled, sortOrder } = defineProps<{
@@ -37,16 +36,10 @@ const sortIcon = computed(() => {
     }
 });
 
-function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
+function onClickCell(): void {
     assertRef(thElement);
     thElement.value.tabIndex = 0;
 
-    if (e.detail.focus) {
-        thElement.value.focus();
-    }
-}
-
-function onClickCell(): void {
     if (!column.sortable || !sortEnabled) {
         return;
     }
@@ -63,14 +56,7 @@ function onKeydownCell(e: KeyboardEvent): void {
 </script>
 
 <template>
-    <th
-        ref="th"
-        class="table-ng__column"
-        tabindex="-1"
-        @keydown="onKeydownCell"
-        @click.stop="onClickCell"
-        @table-activate-cell="onActivateCell"
-    >
+    <th ref="th" class="table-ng__column" tabindex="-1" @keydown="onKeydownCell" @click.stop="onClickCell">
         <i-flex gap="1x">
             <i-flex-item shrink>
                 {{ column.header }}
