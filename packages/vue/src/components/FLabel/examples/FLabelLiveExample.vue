@@ -31,9 +31,13 @@ export default defineComponent({
             const formatDescription = this.formatDescriptionVisible
                 ? `<span :class="formatDescriptionClass">Formatbeskrivning</span>`
                 : "";
+            const slotProps = [
+                ...(this.descriptionVisible ? ["descriptionClass"] : []),
+                ...(this.formatDescriptionVisible ? ["formatDescriptionClass"] : []),
+            ];
 
             const template = /* HTML */ `
-                <template #description="{ descriptionClass, formatDescriptionClass }">
+                <template #description="{ ${slotProps.join(", ")} }">
                     ${description} ${formatDescription}
                 </template>
             `;
