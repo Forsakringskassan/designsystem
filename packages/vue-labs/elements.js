@@ -9,10 +9,6 @@ module.exports = defineMetadata({
         flow: true,
     },
 
-    "i-table-row": {
-        flow: true,
-    },
-
     "i-table-header": {
         flow: true,
     },
@@ -34,6 +30,10 @@ module.exports = defineMetadata({
     },
 
     "i-table-button": {
+        flow: true,
+    },
+
+    "i-table-expand-button": {
         flow: true,
     },
 
