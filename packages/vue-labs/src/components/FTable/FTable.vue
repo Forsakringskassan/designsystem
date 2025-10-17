@@ -14,10 +14,10 @@ import {
     stopEdit,
 } from "./FTable.logic";
 import ITableCheckbox from "./ITableCheckbox.vue";
+import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
 import ITableHeader from "./ITableHeader.vue";
 import ITableRadio from "./ITableRadio.vue";
-import ITableRow from "./ITableRow.vue";
 import { type MetaRow } from "./MetaRow";
 import { getBodyRowCount } from "./get-body-row-count";
 import { stopEditKey } from "./start-stop-edit";
@@ -306,7 +306,6 @@ onMounted(() => {
                     />
                 </th>
                 <th v-if="isSingleSelect" scope="col">{{ singleSelectColumn.header }}</th>
-                <!-- [html-validate-disable-next element-permitted-content -- transparent th] -->
                 <i-table-header
                     v-for="column in columns"
                     :key="column.id"
@@ -328,34 +327,37 @@ onMounted(() => {
                     </td>
                 </tr>
             </template>
-            <template v-else>
-                <i-table-row
-                    v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in metaRows"
-                    :key
-                    :row-key="key"
-                    :aria-rowindex="rowIndex"
-                    :aria-level="level"
-                    :aria-setsize="setsize"
-                    :aria-posinset="posinset"
-                    :is-treegrid
+            <tr
+                v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in metaRows"
+                v-else
+                :key
+                class="table-ng__row"
+                :aria-level="level"
+                :aria-rowindex="rowIndex"
+                :aria-setsize="setsize"
+                :aria-posinset="posinset"
+            >
+                <i-table-expand-button
+                    v-if="isTreegrid"
                     :is-expandable
                     :is-expanded
+                    :row-key="key"
                     @toggle="onToggleExpanded"
-                >
-                    <i-table-expandable v-if="level! > 1 && hasExpandableSlot" :colspan="columns.length">
-                        <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
-                        <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
-                    </i-table-expandable>
-                    <template v-else>
-                        <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
-                        <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
-                        <template v-for="column in columns" :key="column.id">
-                            <component :is="column.component" v-if="'component' in column" :row :column></component>
-                            <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
-                        </template>
+                ></i-table-expand-button>
+
+                <i-table-expandable v-if="level! > 1 && hasExpandableSlot" :colspan="columns.length">
+                    <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
+                    <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
+                </i-table-expandable>
+                <template v-else>
+                    <i-table-checkbox v-if="isMultiSelect" :row :column="multiSelectColumn"></i-table-checkbox>
+                    <i-table-radio v-if="isSingleSelect" :row :column="singleSelectColumn"></i-table-radio>
+                    <template v-for="column in columns" :key="column.id">
+                        <component :is="column.component" v-if="'component' in column" :row :column></component>
+                        <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
                     </template>
-                </i-table-row>
-            </template>
+                </template>
+            </tr>
         </tbody>
     </table>
     <slot name="footer"></slot>
