@@ -16,7 +16,7 @@ defineExpose(expose);
 </script>
 
 <template>
-    <th scope="col" class="table-ng__column table-ng__column--checkbox">
+    <th scope="col" class="table-ng__column table-ng__column--checkbox table-ng__column--select">
         <input
             ref="selectAll"
             type="checkbox"
