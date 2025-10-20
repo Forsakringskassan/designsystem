@@ -296,7 +296,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
         classes.push(`button--full-width`);
       }
       if (inflight.value) {
-        classes.push(`${classes} button__inflight`);
+        classes.push(`button__inflight`);
       }
       return classes;
     });

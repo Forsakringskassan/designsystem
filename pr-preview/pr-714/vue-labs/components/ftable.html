@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FTable - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-ea899f.css"
+            href="../assets/docs-a0b9e3.css"
             crossorigin
-            integrity="sha384-TWU6Fx/ULQRzJjBkXqmpqPg+ISBxoSmRjGOShcG9jxBgKjFXClPautRXlO13YN69"
+            integrity="sha384-khv6e7553LlfG+ZAOdwptFdIDOppAPJ2yI5tRfNdPy4jG1MgDtnE102Uj/K8H9y2"
             
         />
         <link
@@ -23,15 +23,15 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-fd4a2d.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-09d3d2.js",
-    "@fkui/date": "../assets/vendor-fkui-date-0135ed.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-510a2f.js"
+    "@fkui/logic": "../assets/vendor-fkui-logic-cb1d47.js",
+    "@fkui/date": "../assets/vendor-fkui-date-024cc2.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-52bffe.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd4a2d.js": "sha384-kmC4T0C5ZzwbUEm2knIR443x2ILwlEZgPawQWZvqbegtVKkhK/F5ifTqm7n0M6rE",
-    "../assets/vendor-fkui-logic-09d3d2.js": "sha384-yyq9t5qGCT0boKTCjLxwUh+Swq3piDsG7G9VAQVd0Tg2p+8WWi82uV1BcrEANIBI",
-    "../assets/vendor-fkui-date-0135ed.js": "sha384-VbttNGe46vzs2V4L3UUssyfBddbuQjvmByr6suMYjhdn/IsHzzHrw3YkpC/+RTVz",
-    "../assets/vendor-fkui-vue-510a2f.js": "sha384-dzfid1ntJ+zuoUvxC7WrDbcadmM69EdYNasvvG5BSQD2F8Hsy/MdBbA8IDTfUMqv"
+    "../assets/vendor-fkui-logic-cb1d47.js": "sha384-cYyAMpzX6o+Mx1ahOrF5blFq85m9utKy9qg8GmepiyZ+c/Ha6q7usDcijN+bsdK1",
+    "../assets/vendor-fkui-date-024cc2.js": "sha384-p0OHhMI0IsoyIh+/1Cyvu2qD+riXRyL6F/I3NNxpdud8wBwA0pXVP6Vdo3y0bdMO",
+    "../assets/vendor-fkui-vue-52bffe.js": "sha384-Vkt8K4+naZr7XZQ+edrhbIKEIIg/sP5+zu5CcOddpVKHEFbKLRiYv7OxF0NAwd7b"
   }
 }
         </script><script
@@ -89,7 +89,7 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.20.1
+        6.22.0
     </span>
 </div>
 </div>
@@ -178,7 +178,7 @@
                                 
                                 <li><a href="#expanderbar_tabell">Expanderbar tabell</a></li>
                                 
-                                <li><a href="#radrubriker">Radrubriker</a></li>
+                                <li><a href="#radrubriker_och_kolumnbeskrivningar">Radrubriker och kolumnbeskrivningar</a></li>
                                 
                                 <li><a href="#specialiserade_inmatningsfallt">Specialiserade inmatningsfällt</a></li>
                                 
@@ -203,7 +203,7 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-19a575"></div>
+        <div id="example-4a8e9a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -229,7 +229,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-19a575.js"></script>
+        <script type="module" src="./FTableExample-4a8e9a.js"></script>
     </div>
                 <div>
             <button
@@ -249,10 +249,10 @@ body {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumnText</span>, <span class="hljs-title class_">TableColumn</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
 
@@ -271,7 +271,7 @@ interface <span class="hljs-title class_">Row</span> {
     aktiv?: boolean;
 }
 
-<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>, keyof <span class="hljs-title class_">Row</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Oformaterad text&quot;</span>,
@@ -309,7 +309,7 @@ interface <span class="hljs-title class_">Row</span> {
             <span class="hljs-attr">required</span>: {},
             <span class="hljs-attr">maxLength</span>: { <span class="hljs-attr">length</span>: <span class="hljs-number">5</span> },
         },
-    },
+    } satisfies <span class="hljs-title class_">TableColumnText</span>&lt;<span class="hljs-title class_">Row</span>, keyof <span class="hljs-title class_">Row</span>&gt;,
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Knapp&quot;</span>,
@@ -526,7 +526,7 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-c6cda6"></div>
+        <div id="example-842cdb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -552,7 +552,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRadioExample-c6cda6.js"></script>
+        <script type="module" src="./FTableRadioExample-842cdb.js"></script>
     </div>
                 <div>
             <button
@@ -572,8 +572,8 @@ body {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
@@ -836,7 +836,7 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-34d049"></div>
+        <div id="example-223dc0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -862,7 +862,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExpandableRows-34d049.js"></script>
+        <script type="module" src="./FTableExpandableRows-223dc0.js"></script>
     </div>
                 <div>
             <button
@@ -882,8 +882,8 @@ body {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
@@ -1101,7 +1101,7 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="radrubriker"><a class="header-anchor" href="#radrubriker">Radrubriker</a></h2>
+        <h2 id="radrubriker_och_kolumnbeskrivningar"><a class="header-anchor" href="#radrubriker_och_kolumnbeskrivningar">Radrubriker och kolumnbeskrivningar</a></h2>
             <div
                 id="example-9d5dbb"
                 class="code-preview code-preview--default"
@@ -1111,13 +1111,13 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-7d58f0"></div>
+        <div id="example-e277d3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRowHeaderExample-7d58f0.js"></script>
+        <script type="module" src="./FTableRowHeaderExample-e277d3.js"></script>
     </div>
                 <div>
             <button
@@ -1137,9 +1137,9 @@ interface <span class="hljs-title class_">Row</span> {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
@@ -1182,6 +1182,7 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Formatterad text&quot;</span>,
+        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Belopp&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">formatNumber</span>(row.<span class="hljs-property">antal</span>) ?? <span class="hljs-string">&quot;&quot;</span>;
         },
@@ -1191,6 +1192,7 @@ interface <span class="hljs-title class_">Row</span> {
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Redigerbar text&quot;</span>,
+        <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;Förmån&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;level&quot;</span>,
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
@@ -1360,13 +1362,13 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-6c1a10"></div>
+        <div id="example-33dbab"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-6c1a10.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-33dbab.js"></script>
     </div>
                 <div>
             <button
@@ -1385,28 +1387,29 @@ interface <span class="hljs-title class_">Row</span> {
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { computed, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
-interface <span class="hljs-title class_">Row</span> {
+interface <span class="hljs-title class_">TableRow</span> {
     <span class="hljs-attr">id</span>: string;
     <span class="hljs-attr">text</span>: string;
     <span class="hljs-attr">pnr</span>: string;
     <span class="hljs-attr">bankAccountNumber</span>: string;
     <span class="hljs-attr">bankgiro</span>: string;
     <span class="hljs-attr">clearingNumber</span>: string;
-    <span class="hljs-attr">currency</span>: string;
-    <span class="hljs-attr">number</span>: string;
     <span class="hljs-attr">epost</span>: string;
     <span class="hljs-attr">orgnr</span>: string;
     <span class="hljs-attr">tele</span>: string;
-    <span class="hljs-attr">percent</span>: string;
     <span class="hljs-attr">postnr</span>: string;
     <span class="hljs-attr">plusgiro</span>: string;
+    <span class="hljs-attr">currency</span>: number | string;
+    <span class="hljs-attr">percent</span>: number | string;
+    <span class="hljs-attr">number</span>: number | string;
 }
 
-<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Text&quot;</span>,
@@ -1414,94 +1417,82 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;personnummer&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:personnummer&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pnr&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pnr&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;bankAccountNumber&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:bankAccountNumber&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Kontonr&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;bankAccountNumber&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;bankgiro&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:bankgiro&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Bankgiro&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;bankgiro&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;clearingNumber&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:clearingNumber&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Clearingnr&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;clearingNumber&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;currency&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Valuta&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;currency&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;number&quot;</span>,
-        <span class="hljs-attr">decimals</span>: <span class="hljs-number">2</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Nummer två decimaler&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:number&quot;</span>,
+        <span class="hljs-attr">decimals</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Nummer, tre decimaler&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;number&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;percent&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:percent&quot;</span>,
         <span class="hljs-attr">decimals</span>: <span class="hljs-number">2</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;% två decimaler&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;percent&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;email&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:email&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Epost&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;epost&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;organisationsnummer&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:organisationsnummer&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Orgnr&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;orgnr&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;phoneNumber&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:phoneNumber&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Tele&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;tele&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;postalCode&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:postalCode&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Postnr&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;postnr&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">subtype</span>: <span class="hljs-string">&quot;plusgiro&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:plusgiro&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Plusgiro&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;plusgiro&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
 ]);
 
-<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">TableRow</span>[]&gt;([
     {
         <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
         <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;aaa&quot;</span>,
@@ -1509,9 +1500,9 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">bankAccountNumber</span>: <span class="hljs-string">&quot;12345678&quot;</span>,
         <span class="hljs-attr">bankgiro</span>: <span class="hljs-string">&quot;9999996&quot;</span>,
         <span class="hljs-attr">clearingNumber</span>: <span class="hljs-string">&quot;5678&quot;</span>,
-        <span class="hljs-attr">currency</span>: <span class="hljs-string">&quot;3453455&quot;</span>,
-        <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;5&quot;</span>,
-        <span class="hljs-attr">percent</span>: <span class="hljs-string">&quot;9,987&quot;</span>,
+        <span class="hljs-attr">currency</span>: <span class="hljs-number">3453455</span>,
+        <span class="hljs-attr">number</span>: <span class="hljs-number">5.4</span>,
+        <span class="hljs-attr">percent</span>: <span class="hljs-number">9.987</span>,
         <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@c.com&quot;</span>,
         <span class="hljs-attr">orgnr</span>: <span class="hljs-string">&quot;9999999999&quot;</span>,
         <span class="hljs-attr">tele</span>: <span class="hljs-string">&quot;12345678901234567&quot;</span>,
@@ -1525,9 +1516,9 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">bankAccountNumber</span>: <span class="hljs-string">&quot;0012345678&quot;</span>,
         <span class="hljs-attr">bankgiro</span>: <span class="hljs-string">&quot;999-9996&quot;</span>,
         <span class="hljs-attr">clearingNumber</span>: <span class="hljs-string">&quot;56781&quot;</span>,
-        <span class="hljs-attr">currency</span>: <span class="hljs-string">&quot;24233&quot;</span>,
-        <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;5.5&quot;</span>,
-        <span class="hljs-attr">percent</span>: <span class="hljs-string">&quot;19,987&quot;</span>,
+        <span class="hljs-attr">currency</span>: <span class="hljs-number">24233</span>,
+        <span class="hljs-attr">number</span>: <span class="hljs-number">5.5</span>,
+        <span class="hljs-attr">percent</span>: <span class="hljs-number">19.987</span>,
         <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@c.com&quot;</span>,
         <span class="hljs-attr">orgnr</span>: <span class="hljs-string">&quot;9999999999&quot;</span>,
         <span class="hljs-attr">tele</span>: <span class="hljs-string">&quot;12345678901234567&quot;</span>,
@@ -1541,9 +1532,9 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">bankAccountNumber</span>: <span class="hljs-string">&quot;123456&quot;</span>,
         <span class="hljs-attr">bankgiro</span>: <span class="hljs-string">&quot;999-9996&quot;</span>,
         <span class="hljs-attr">clearingNumber</span>: <span class="hljs-string">&quot;5678-1&quot;</span>,
-        <span class="hljs-attr">currency</span>: <span class="hljs-string">&quot;234623546&quot;</span>,
-        <span class="hljs-attr">number</span>: <span class="hljs-string">&quot;5.55&quot;</span>,
-        <span class="hljs-attr">percent</span>: <span class="hljs-string">&quot;3,1&quot;</span>,
+        <span class="hljs-attr">currency</span>: <span class="hljs-number">234623546</span>,
+        <span class="hljs-attr">number</span>: <span class="hljs-number">5.55</span>,
+        <span class="hljs-attr">percent</span>: <span class="hljs-number">3.1</span>,
         <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@c.com&quot;</span>,
         <span class="hljs-attr">orgnr</span>: <span class="hljs-string">&quot;9999999999&quot;</span>,
         <span class="hljs-attr">tele</span>: <span class="hljs-string">&quot;12345678901234567&quot;</span>,
@@ -1551,16 +1542,37 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">plusgiro</span>: <span class="hljs-string">&quot;111112&quot;</span>,
     },
 ]);
+
+<span class="hljs-keyword">const</span> sum = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">return</span> rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">sum, row</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> row.<span class="hljs-property">number</span> === <span class="hljs-string">&quot;number&quot;</span>) {
+            <span class="hljs-keyword">return</span> sum + row.<span class="hljs-property">number</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> sum;
+        }
+    }, <span class="hljs-number">0</span>);
+});
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">validataAll</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">validateAllElements</span>(<span class="hljs-string">&quot;all&quot;</span>);
+}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>&gt;</span>Interagerbart element före<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(0, 5)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(5, 10)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(10)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validataAll&quot;</span>&gt;</span>
+        Interagerbart element före
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;all&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(0, 5)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(5, 10)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(10)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Summa: {{ { sum } }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Rows ({{ rows.length }} items):<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{{ rows }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>&gt;</span>Interagerbart element efter<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validataAll&quot;</span>&gt;</span>
+        Interagerbart element efter
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
@@ -1822,10 +1834,10 @@ interface <span class="hljs-title class_">Row</span> {
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../assets/main-a5ddff.js"
+            src="../assets/main-8a3e62.js"
             type="module"
             crossorigin
-            integrity="sha384-tfJzyrVlAPSq3K6yopcYUgX+BOQ5sYXiAdqfizxfzMXCkUZShRbfElpErqGY6YnW"
+            integrity="sha384-0RlHNrQgJvdxR4N7lQSd3sc3MQDrTPlAovPWpFZDaeI8hkGn544BhbzOJxQzGpcO"
             
         ></script>
     </body>

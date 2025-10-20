@@ -35,8 +35,8 @@ import { formModal } from "@fkui/vue";
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FDialogueTree/examples/FlerstegsModal.vue?type=script
 import { defineComponent } from "vue";
 import {
-  FFormModal,
   FDialogueTree,
+  FFormModal,
   FOrganisationsnummerTextField
 } from "@fkui/vue";
 
