@@ -7,10 +7,30 @@
 // Warning: (ae-forgotten-export) The symbol "BasePageObject" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
+export class FTablePageObject implements BasePageObject {
+    constructor(selector?: string);
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
+    // Warning: (ae-forgotten-export) The symbol "DefaultCypressChainable" needs to be exported by the entry point index.d.ts
+    el(): DefaultCypressChainable;
+    expandButton(row: number): Cypress.Chainable<JQuery<HTMLButtonElement>>;
+    header(col: number): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
+    headerDescription(col: number): DefaultCypressChainable;
+    headerTitle(col: number): DefaultCypressChainable;
+    rows(): Cypress.Chainable<JQuery<HTMLTableRowElement>>;
+    selectHeaderInput(): Cypress.Chainable<JQuery<HTMLInputElement>>;
+    selectInput(row: number): Cypress.Chainable<JQuery<HTMLInputElement>>;
+    // (undocumented)
+    selector: string;
+    // @internal
+    tabbableElement(): DefaultCypressChainable;
+}
+
+// @public (undocumented)
 export class XDummyPageObject implements BasePageObject {
     constructor(selector: string);
-    // Warning: (ae-forgotten-export) The symbol "DefaultCypressChainable" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     el: () => DefaultCypressChainable;
     heading(): DefaultCypressChainable;

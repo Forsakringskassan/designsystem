@@ -58,7 +58,7 @@ function onKeydownCell(e: KeyboardEvent): void {
 <template>
     <th ref="th" class="table-ng__column" tabindex="-1" @keydown="onKeydownCell" @click.stop="onClickCell">
         <i-flex gap="1x">
-            <i-flex-item shrink>
+            <i-flex-item shrink class="table-ng__column__title">
                 {{ column.header }}
             </i-flex-item>
             <i-flex-item v-if="sortEnabled" shrink align="center">

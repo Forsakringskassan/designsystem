@@ -42,5 +42,5 @@ defineExpose(expose);
             <f-icon class="button__icon" :name="toggleIcon"></f-icon>
         </button>
     </td>
-    <td v-else ref="expandable" tabindex="-1" class="table-ng__cell"></td>
+    <td v-else ref="expandable" tabindex="-1" class="table-ng__cell table-ng__cell--expand"></td>
 </template>
