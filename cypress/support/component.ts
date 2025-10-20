@@ -8,7 +8,7 @@ import {
     TranslationPlugin,
     ValidationPlugin,
 } from "../../packages/vue/src/plugins";
-import "@fkui/theme-default/src/fkui-css-variables.scss";
+import "@fkui/theme-default";
 
 import "./main.scss";
 import "./common";

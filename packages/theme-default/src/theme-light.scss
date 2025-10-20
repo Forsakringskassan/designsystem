@@ -2,14 +2,6 @@
 
 @use "light/theme" as light;
 
-@mixin css-variables {
+:root {
     @include light.theme;
-}
-
-$global: true !default;
-
-@if $global {
-    :root {
-        @include css-variables;
-    }
 }

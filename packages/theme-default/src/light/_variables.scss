@@ -1,6 +1,6 @@
-@use "palette-variables" as *;
+@use "../palette-variables" as *;
 
-@mixin css-variables {
+@mixin variables {
     // TEXT
     --fkds-color-text-primary: #{$palette-color-fk-black-100};
     --fkds-color-text-secondary: #{$palette-color-fk-black-70};

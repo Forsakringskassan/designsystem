@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
-import fkuiTheme from "@fkui/theme-default/dist/fkui-css-variables.js";
+import fkuiTheme from "@fkui/theme-default/dist/theme-light.js";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import { glob } from "glob";

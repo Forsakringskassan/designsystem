@@ -13,7 +13,7 @@ export function setup(app: App | undefined): void {
         const themeDefaultLink = document.createElement("link");
         themeDefaultLink.rel = "stylesheet";
         themeDefaultLink.href =
-            "https://unpkg.com/@fkui/theme-default@latest/dist/fkui-css-variables.css";
+            "https://unpkg.com/@fkui/theme-default@latest/dist/theme-light.css";
         document.head.append(themeDefaultLink);
 
         const designLink = document.createElement("link");
