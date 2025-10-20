@@ -1,7 +1,4 @@
-@use "@fkui/theme-default/src/fkui-css-variables" as fkui-default with (
-    $global: false
-);
-@use "@fkui/theme-dark/src/fkui-css-variables" as fkui-dark with (
+@use "@fkui/theme-default" as theme with (
     $global: false
 );
 
@@ -15,14 +12,14 @@ $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-larg
 @media (prefers-color-scheme: light) {
     .code-preview__preview,
     .live-example__example {
-        @include fkui-default.css-variables();
+        @include theme.light;
     }
 }
 
 @media (prefers-color-scheme: dark) {
     .code-preview__preview,
     .live-example__example {
-        @include fkui-dark.css-variables();
+        @include theme.dark;
     }
 }
 
@@ -30,14 +27,14 @@ $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-larg
 .live-example__example,
 .user-theme {
     @media (prefers-color-scheme: light) {
-        @include fkui-default.css-variables();
+        @include theme.light;
         --f-logo-image-small: url("#{$fk-logo-small-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 
         --f-logo-image-large: url("#{$fk-logo-large-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
     }
 
     @media (prefers-color-scheme: dark) {
-        @include fkui-dark.css-variables();
+        @include theme.dark;
         --f-logo-image-small: url("#{$fk-logo-small-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 
         --f-logo-image-large: url("#{$fk-logo-large-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));

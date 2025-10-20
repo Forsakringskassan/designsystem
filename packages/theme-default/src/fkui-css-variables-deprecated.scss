@@ -1,6 +1,6 @@
 // stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
 
-@use "./palette-variables" as *;
+@use "palette-variables" as *;
 
 $global: true !default;
 $palette-color-red-10: #fdeaea !default;

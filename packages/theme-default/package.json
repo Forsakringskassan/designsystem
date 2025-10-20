@@ -20,7 +20,7 @@
     "./dist/**/*.css",
     "./src/**/*.scss"
   ],
-  "main": "./dist/fkui-css-variables.css",
+  "main": "./dist/theme-light.css",
   "types": "type-stub.d.ts",
   "files": [
     "dist",
@@ -35,7 +35,7 @@
     "prepack": "npm run build",
     "presass": "node generate-version.js",
     "sass": "sass src:dist --style expanded --no-source-map",
-    "postsass": "node scripts/extract-sass-variables.mjs src/_palette-variables.scss dist/palette.json"
+    "postsass": "node scripts/extract-sass-variables.mjs src/palette-variables.scss dist/palette.json"
   },
   "devDependencies": {
     "@adobe/css-tools": "4.4.4",
@@ -51,5 +51,5 @@
     "node": ">= 20",
     "npm": ">= 7"
   },
-  "sass": "./src/fkui-css-variables.scss"
+  "sass": "./src/_default.scss"
 }

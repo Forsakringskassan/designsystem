@@ -1,7 +1,4 @@
-@use "@fkui/theme-default/src/fkui-css-variables" as fkui-default with (
-    $global: false
-);
-@use "@fkui/theme-dark/src/fkui-css-variables" as fkui-dark with (
+@use "@fkui/theme-default" as theme with (
     $global: false
 );
 @use "@fkui/design";
@@ -9,19 +6,7 @@
 @use "@forsakringskassan/docs-live-example";
 
 :root {
-    color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        @include fkui-default.css-variables;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        @include fkui-dark.css-variables;
-    }
+    @include theme.auto;
 }
 
 html,

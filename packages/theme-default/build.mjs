@@ -97,4 +97,4 @@ async function buildMetadata(src, dst) {
     await fs.writeFile(`${dst}.d.mts`, metadataDts, "utf-8");
 }
 
-await buildMetadata("./dist/fkui-css-variables.css", "./dist/metadata");
+await buildMetadata("./dist/theme-light.css", "./dist/metadata");

@@ -70,13 +70,13 @@ Om du behöver applicera tema på en egen selector (exempelvis kanske du har fle
 Det finns begränsat stöd för att importera CSS-variabler från temat på en egen selector:
 
 ```scss compare=sass-base
-@use "@fkui/theme-default" as fkui with (
+@use "@fkui/theme-default" as theme with (
     $global: false
 );
 @use "@fkui/design";
 
 .my-scope {
-    @include fkui.css-variables;
+    @include theme.light;
 }
 ```
 

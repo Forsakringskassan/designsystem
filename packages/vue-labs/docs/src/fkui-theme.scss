@@ -1,4 +1,4 @@
-@use "@fkui/theme-default/src/fkui-css-variables" as fkui with (
+@use "@fkui/theme-default" as theme with (
     $global: false
 );
 
@@ -7,5 +7,5 @@ html {
 }
 
 .code-preview__preview {
-    @include fkui.css-variables();
+    @include theme.light;
 }
