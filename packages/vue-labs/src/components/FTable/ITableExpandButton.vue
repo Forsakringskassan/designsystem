@@ -41,5 +41,11 @@ function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
             <f-icon class="button__icon" :name="toggleIcon"></f-icon>
         </button>
     </td>
-    <td v-else ref="expandable" tabindex="-1" class="table-ng__cell" @table-activate-cell="onActivateCell"></td>
+    <td
+        v-else
+        ref="expandable"
+        tabindex="-1"
+        class="table-ng__cell table-ng__cell--expand"
+        @table-activate-cell="onActivateCell"
+    ></td>
 </template>

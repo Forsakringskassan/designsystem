@@ -72,7 +72,7 @@ function onKeydownCell(e: KeyboardEvent): void {
         @table-activate-cell="onActivateCell"
     >
         <i-flex gap="1x">
-            <i-flex-item shrink>
+            <i-flex-item shrink class="table-ng__column__title">
                 {{ column.header }}
             </i-flex-item>
             <i-flex-item v-if="sortEnabled" shrink align="center">
