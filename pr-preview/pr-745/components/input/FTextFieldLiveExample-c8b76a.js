@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTextField/examples/FTextFieldLiveExample.vue:FTextFieldLiveExample-f07672.js
+// virtual-entry:virtual:packages/vue/src/components/FTextField/examples/FTextFieldLiveExample.vue:FTextFieldLiveExample-c8b76a.js
 import { defineComponent } from "vue";
 import {
   FBankAccountNumberTextField,
@@ -136,10 +136,14 @@ var exampleComponent = defineComponent({
     description() {
       const description = this.descriptionVisible ? `<span :class="descriptionClass">Hj\xE4lptext</span>` : "";
       const formatDescription = this.formatDescriptionVisible ? `<span :class="formatDescriptionClass">Formatbeskrivning</span>` : "";
+      const slotProps = [
+        ...this.descriptionVisible ? ["descriptionClass"] : [],
+        ...this.formatDescriptionVisible ? ["formatDescriptionClass"] : []
+      ];
       const template = (
         /* HTML */
         `
-                <template #description="{ descriptionClass, formatDescriptionClass }">
+                <template #description="{ ${slotProps.join(", ")} }">
                     ${description} ${formatDescription}
                 </template>
             `
@@ -536,7 +540,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f07672"
+  selector: "#example-c8b76a"
 });
 export {
   render

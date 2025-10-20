@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FLabel/examples/FLabelLiveExample.vue:FLabelLiveExample-29112b.js
+// virtual-entry:virtual:packages/vue/src/components/FLabel/examples/FLabelLiveExample.vue:FLabelLiveExample-370b92.js
 import { defineComponent } from "vue";
 import { FCheckboxField, FFieldset, FLabel, FTooltip } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
@@ -57,10 +57,14 @@ var exampleComponent = defineComponent({
     description() {
       const description = this.descriptionVisible ? `<span :class="descriptionClass">Hj\xE4lptext</span>` : "";
       const formatDescription = this.formatDescriptionVisible ? `<span :class="formatDescriptionClass">Formatbeskrivning</span>` : "";
+      const slotProps = [
+        ...this.descriptionVisible ? ["descriptionClass"] : [],
+        ...this.formatDescriptionVisible ? ["formatDescriptionClass"] : []
+      ];
       const template = (
         /* HTML */
         `
-                <template #description="{ descriptionClass, formatDescriptionClass }">
+                <template #description="{ ${slotProps.join(", ")} }">
                     ${description} ${formatDescription}
                 </template>
             `
@@ -193,7 +197,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-29112b"
+  selector: "#example-370b92"
 });
 export {
   render
