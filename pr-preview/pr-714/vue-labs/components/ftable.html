@@ -203,7 +203,7 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-4a8e9a"></div>
+        <div id="example-f4d3e4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -229,7 +229,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-4a8e9a.js"></script>
+        <script type="module" src="./FTableExample-f4d3e4.js"></script>
     </div>
                 <div>
             <button
@@ -252,7 +252,7 @@ body {
 <span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumnText</span>, <span class="hljs-title class_">TableColumn</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
+<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
 
@@ -271,7 +271,7 @@ interface <span class="hljs-title class_">Row</span> {
     aktiv?: boolean;
 }
 
-<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>, keyof <span class="hljs-title class_">Row</span>&gt;([
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Oformaterad text&quot;</span>,
@@ -309,7 +309,7 @@ interface <span class="hljs-title class_">Row</span> {
             <span class="hljs-attr">required</span>: {},
             <span class="hljs-attr">maxLength</span>: { <span class="hljs-attr">length</span>: <span class="hljs-number">5</span> },
         },
-    } satisfies <span class="hljs-title class_">TableColumnText</span>&lt;<span class="hljs-title class_">Row</span>, keyof <span class="hljs-title class_">Row</span>&gt;,
+    },
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Knapp&quot;</span>,
