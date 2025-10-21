@@ -19825,12 +19825,10 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
       maxPagesShown: maxPagesShown.value
     }));
     const previousButtonLabel = computed(() => $t2("fkui.paginator.previous", "F\xF6reg\xE5ende"));
-    function pageCounterLabel(currentPage, numberOfPages) {
-      return $t2("fkui.paginator.page-counter", "Sida {{ currentPage }} av {{ numberOfPages }}", {
-        currentPage,
-        numberOfPages
-      });
-    }
+    const pageCounterLabel = computed(() => $t2("fkui.paginator.page-counter", "Sida {{ currentPage }} av {{ numberOfPages }}", {
+      currentPage: __props.currentPage,
+      numberOfPages: __props.numberOfPages
+    }));
     function pageLabel(page) {
       return $t2("fkui.paginator.page-label", "Sida {{ page }}", {
         page
@@ -19884,7 +19882,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
           "aria-label": pageLabel(page),
           onClick: ($event) => onClickPageButton(page)
         }, toDisplayString(showPageNumberAsGap(page) ? "..." : page), 11, _hoisted_4$2);
-      }), 128))]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("div", _hoisted_5$1, toDisplayString(pageCounterLabel(__props.currentPage, __props.numberOfPages)), 1), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("button", {
+      }), 128))]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("div", _hoisted_5$1, toDisplayString(pageCounterLabel.value), 1), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("button", {
         type: "button",
         class: "paginator__next",
         "aria-label": nextButtonLabel.value,
