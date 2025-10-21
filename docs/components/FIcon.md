@@ -67,8 +67,8 @@ Rotation:
 FIconRotate.vue
 ```
 
-Ikon innuti cirkel:
-Wrappa ikoner med klassen `icon-stack--circle` alternativt `icon-stack--circle-bottom` för att applicera ikon innuti en cirkel.
+Ikon inuti cirkel:
+Wrappa ikoner med klassen `icon-stack--circle` alternativt `icon-stack--circle-bottom` för att applicera ikon inuti en cirkel.
 
 ```import
 FIconCircleBackground.vue
