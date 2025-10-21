@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Ta fram applikation - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-fe7f51.css"
+            href="../../assets/docs-ffd9c1.css"
             crossorigin
-            integrity="sha384-sZ/dKtAp8a3Q5ehPQFYmG6/8WMllteFJuhltiI3PhX+P2MdDF5XZC2Ix1UuneKre"
+            integrity="sha384-P4Pi86aDECc7yXV1Wb6V2Ar8NBUeiCRXFw9zEELZxp9IiqhJVw2UCw7F8nw9ghKX"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-1e56c7.css"
+            href="../../assets/docs-fkui-b7df9e.css"
             crossorigin
-            integrity="sha384-BX6L4A2+/LrsepjzPVH/gQBYPUdyNA2p9s67LmLCJms0xVLIJn5O4yzJPEGMyngx"
+            integrity="sha384-RmYNU/EM6E27IBOzBHxgcwHl83mRIw0MecqFn0O6MxvKY4WWTl6Uuj5uFuP9VwvH"
             
         />
 
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-fd23ba.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-277994.js",
     "@fkui/date": "../../assets/vendor-fkui-date-131ba7.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-2c547d.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-1d16bc.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd23ba.js": "sha384-fgWjDRyjtEXyEeb3gQxn5cMLQnaLJ/+raE5Ku0VLWBP2RlzpzrpvJFEC1FCSIWMk",
     "../../assets/vendor-fkui-logic-277994.js": "sha384-o6DN+xTHp12Ot0+4FNZEoyGS6m3b75MezBhapCvFqCaF1IS9W5ox/P2dcvqGKt+i",
     "../../assets/vendor-fkui-date-131ba7.js": "sha384-1ousGnX+TtYBjw6BVR/x9Yg2jMIjTjuSOD+VpUdpe9Eo7r1KF2LHHKhc8hzYQQlC",
-    "../../assets/vendor-fkui-vue-2c547d.js": "sha384-Y/K9fWcQx7LPc0QfS4CJ1EzzpJaoxnEqRWEGiN+VkNaCwD6zPugu/SdPo195dILk",
+    "../../assets/vendor-fkui-vue-1d16bc.js": "sha384-X/w2NnHq5zNakl+E6rXdhqkOpMBGpcMK+wrUvSN85qOj0XlqAMIC+fhTxlXCNcsc",
     "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0bfb7d.json"
+            href="../../search-data-707502.json"
             as="fetch"
             crossorigin
-            integrity="sha384-0Fl7EvkEZuLUP52HjH1cBwM2jGWSxYyB7CkoXCSTUBJH9ziv0hL9tHqM+CJydAj2"
+            integrity="sha384-EWGXoMR/uKP/UlpICXCokLci3XgA7wXPuuCB7BDvL3SA4l7qR/mqgg/cRVrs2fHG"
             id="search-data"
         />
     </head>
@@ -637,7 +637,7 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
 <p class="docs-paragraph">Det finns begränsat stöd för att importera CSS-variabler från temat på en egen selector:</p>
 
                 <div
-                    id="example-68d6ec"
+                    id="example-6bbf5d"
                     class="code-preview code-preview--default"
                     
                     
@@ -645,7 +645,9 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/theme-default&quot;;</span>
-<span class="hljs-addition">+@use &quot;@fkui/theme-default&quot; as theme;</span>
+<span class="hljs-addition">+@use &quot;@fkui/theme-default&quot; as theme with (</span>
+<span class="hljs-addition">+    $global: false</span>
+<span class="hljs-addition">+);</span>
  @use &quot;@fkui/design&quot;;
 <span class="hljs-addition">+</span>
 <span class="hljs-addition">+.my-scope {</span>
@@ -653,11 +655,12 @@ I exemplet nedan importeras styling för enbart inmatningsfält och flerradigt i
 <span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
-            <h3 id="css"><a class="header-anchor" href="#css">CSS</a></h3><p class="docs-paragraph">Om din applikation inte använder Sass ska du istället placera <code>@fkui/design/lib/fkui.min.css</code> i en assets-katalog.
+            <p class="docs-paragraph">Notera: variabeln <code>$global</code> måste sättas till <code>false</code> annars sätts samtliga variabler på <code>:root</code> selector.</p>
+<h3 id="css"><a class="header-anchor" href="#css">CSS</a></h3><p class="docs-paragraph">Om din applikation inte använder Sass ska du istället placera <code>@fkui/design/lib/fkui.min.css</code> i en assets-katalog.
 Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
 
                 <div
-                    id="example-0dc099"
+                    id="example-535788"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -670,7 +673,7 @@ Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
             <p class="docs-paragraph">Om du behöver importera styling till javascript:</p>
 
                 <div
-                    id="example-aa2c8c"
+                    id="example-d8fa29"
                     class="code-preview code-preview--default"
                     
                     
@@ -687,7 +690,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 <p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
 
                 <div
-                    id="example-02a563"
+                    id="example-897921"
                     class="code-preview code-preview--default"
                     
                     
@@ -702,7 +705,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 <p class="docs-paragraph">Om du vill ha tillgång till <code>injectSpritesheet</code>-funktionen kan du anropa den själv. Importera den genom:</p>
 
                 <div
-                    id="example-9c9356"
+                    id="example-3f96f2"
                     class="code-preview code-preview--default"
                     
                     
@@ -740,9 +743,9 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">SFKUI-74O9-theme-default-light-dark (<a href="https://github.com/Forsakringskassan/designsystem/commits/1e2f8bdf36d7212d0ae1eaf24ca525e4933a7205">1e2f8bd</a>)<br />
+<div class="footer__right"><div class="version">SFKUI-74O9-theme-default-light-dark (<a href="https://github.com/Forsakringskassan/designsystem/commits/0c77c2bd325f9e31cd3bba6a3aa0e13c3da30c06">0c77c2b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/748">PR 748</a><br />
-        2025-10-20 16:24
+        2025-10-21 09:39
 </div>
 <div class="toolbar__item">
     <form id="version">
