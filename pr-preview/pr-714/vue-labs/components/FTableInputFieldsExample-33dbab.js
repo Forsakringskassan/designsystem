@@ -30,8 +30,8 @@ import { ValidationService as ValidationService4 } from "@fkui/logic";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, renderSlot, withModifiers, createVNode, createTextVNode, createCommentVNode, unref, withCtx, createBlock, toDisplayString, normalizeClass, Fragment, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, renderList, mergeProps, resolveDynamicComponent } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, IFlex, IFlexItem, FIcon, IComboboxDropdown, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
+import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 var es_iterator_forEach = {};
@@ -2733,7 +2733,7 @@ function stopEdit(element, reason) {
   }
 }
 var _hoisted_1$8 = ["checked", "aria-label"];
-var _hoisted_2$3 = ["checked", "aria-label"];
+var _hoisted_2$2 = ["checked", "aria-label"];
 var _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
@@ -2776,12 +2776,64 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
         checked: __props.column.value(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value
-      }, null, 8, _hoisted_2$3)], 544));
+      }, null, 8, _hoisted_2$2)], 544));
     };
   }
 });
-var _hoisted_1$7 = ["colspan"];
+var _hoisted_1$7 = ["aria-label", "aria-expanded"];
 var _sfc_main$9 = /* @__PURE__ */ defineComponent({
+  __name: "ITableExpandButton",
+  props: {
+    isExpandable: {
+      type: Boolean
+    },
+    isExpanded: {
+      type: Boolean
+    },
+    rowKey: {}
+  },
+  emits: ["toggle"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit = __emit;
+    const expandableRef = useTemplateRef("expandable");
+    const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
+    const expandLabel = computed(() => __props.isExpanded ? "St\xE4ng rad" : "Expandera rad");
+    function onActivateCell(e) {
+      assertRef(expandableRef);
+      expandableRef.value.tabIndex = 0;
+      if (e.detail.focus) {
+        expandableRef.value.focus();
+      }
+    }
+    return (_ctx, _cache) => {
+      return __props.isExpandable ? (openBlock(), createElementBlock("td", {
+        key: 0,
+        class: "table-ng__cell table-ng__cell--expand",
+        onTableActivateCell: onActivateCell
+      }, [createElementVNode("button", {
+        ref: "expandable",
+        tabindex: "-1",
+        "aria-label": expandLabel.value,
+        "aria-expanded": __props.isExpanded,
+        type: "button",
+        onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle", __props.rowKey))
+      }, [createVNode(unref(FIcon), {
+        class: "button__icon",
+        name: toggleIcon.value
+      }, null, 8, ["name"])], 8, _hoisted_1$7)], 32)) : (openBlock(), createElementBlock("td", {
+        key: 1,
+        ref: "expandable",
+        tabindex: "-1",
+        class: "table-ng__cell",
+        onTableActivateCell: onActivateCell
+      }, null, 544));
+    };
+  }
+});
+var _hoisted_1$6 = ["colspan"];
+var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableExpandable",
   props: {
     colspan: {}
@@ -2802,7 +2854,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
         colspan: __props.colspan,
         tabindex: "-1",
         onTableActivateCell: onActivateCell
-      }, [renderSlot(_ctx.$slots, "default")], 40, _hoisted_1$7);
+      }, [renderSlot(_ctx.$slots, "default")], 40, _hoisted_1$6);
     };
   }
 });
@@ -2839,7 +2891,7 @@ var inputFieldConfig = {
   },
   "text:bankAccountNumber": {
     formatter(value) {
-      return parseBankAccountNumber(value);
+      return value;
     },
     parser(value) {
       return parseBankAccountNumber(value);
@@ -2920,7 +2972,13 @@ var inputFieldConfig = {
         length: 80
       }
     },
-    attributes: () => []
+    attributes: () => [{
+      name: "type",
+      value: "email"
+    }, {
+      name: "maxlength",
+      value: "80"
+    }]
   },
   "text:number": {
     formatter(value) {
@@ -3003,11 +3061,11 @@ var inputFieldConfig = {
       phoneNumber: {}
     },
     attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
       name: "maxlength",
-      value: "20"
+      value: "80"
+    }, {
+      name: "type",
+      value: "tel"
     }]
   },
   "text:plusgiro": {
@@ -3063,11 +3121,11 @@ var inputFieldConfig = {
     attributes: () => []
   }
 };
-var _hoisted_1$6 = {
+var _hoisted_1$5 = {
   key: 0,
   class: "table-ng__column__description"
 };
-var _sfc_main$8 = /* @__PURE__ */ defineComponent({
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableHeader",
   props: {
     column: {},
@@ -3154,12 +3212,12 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$6, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
+      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$5, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
     };
   }
 });
-var _hoisted_1$5 = ["checked", "aria-label"];
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _hoisted_1$4 = ["checked", "aria-label"];
+var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
     column: {},
@@ -3190,72 +3248,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$5)], 32);
-    };
-  }
-});
-var _hoisted_1$4 = ["aria-level"];
-var _hoisted_2$2 = ["aria-label", "aria-expanded"];
-var _sfc_main$6 = /* @__PURE__ */ defineComponent({
-  __name: "ITableRow",
-  props: {
-    rowKey: {
-      default: ""
-    },
-    ariaLevel: {
-      default: () => void 0
-    },
-    isTreegrid: {
-      type: Boolean
-    },
-    isExpandable: {
-      type: Boolean
-    },
-    isExpanded: {
-      type: Boolean
-    }
-  },
-  emits: ["toggle"],
-  setup(__props, {
-    emit: __emit
-  }) {
-    const emit = __emit;
-    const expandableRef = useTemplateRef("expandable");
-    const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
-    const expandLabel = computed(() => __props.isExpanded ? "St\xE4ng rad" : "Expandera rad");
-    function onActivateCell(e) {
-      assertRef(expandableRef);
-      expandableRef.value.tabIndex = 0;
-      if (e.detail.focus) {
-        expandableRef.value.focus();
-      }
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("tr", {
-        class: "table-ng__row",
-        "aria-level": __props.ariaLevel
-      }, [__props.isTreegrid ? (openBlock(), createElementBlock(Fragment, {
-        key: 0
-      }, [__props.isExpandable ? (openBlock(), createElementBlock("td", {
-        key: 0,
-        class: "table-ng__cell table-ng__cell--expand",
-        onTableActivateCell: onActivateCell
-      }, [createElementVNode("button", {
-        ref: "expandable",
-        tabindex: "-1",
-        "aria-label": expandLabel.value,
-        "aria-expanded": __props.isExpanded,
-        type: "button",
-        onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle", __props.rowKey))
-      }, [createVNode(unref(FIcon), {
-        class: "button__icon",
-        name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$2)], 32)) : (openBlock(), createElementBlock("td", {
-        key: 1,
-        ref: "expandable",
-        class: "table-ng__cell",
-        onTableActivateCell: onActivateCell
-      }, null, 544))], 64)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$4);
+      }, null, 40, _hoisted_1$4)], 32);
     };
   }
 });
@@ -3958,7 +3951,7 @@ function normalizeTableColumn(column) {
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
-        component: _sfc_main$7
+        component: _sfc_main$6
       };
     case "text:currency":
     case "text:number":
@@ -4126,6 +4119,7 @@ var _hoisted_6 = {
   class: "table-ng__row--empty"
 };
 var _hoisted_7 = ["colspan"];
+var _hoisted_8 = ["aria-level", "aria-rowindex", "aria-setsize", "aria-posinset"];
 var _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
@@ -4203,7 +4197,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       header: ref("V\xE4lj en rad"),
       description: ref(null),
       sortable: null,
-      component: _sfc_main$7,
+      component: _sfc_main$6,
       value(row) {
         if (!__props.keyAttribute) {
           return false;
@@ -4366,7 +4360,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         indeterminate: "",
         onChange: onSelectAllChange
       }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-        return openBlock(), createBlock(_sfc_main$8, {
+        return openBlock(), createBlock(_sfc_main$7, {
           key: column.id,
           column,
           "sort-enabled": isSortEnabled(column),
@@ -4375,7 +4369,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           class: "table-ng__column",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_6, [createElementVNode("td", {
+      }), 128))])]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_6, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[3] || (_cache[3] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_7)])) : (openBlock(true), createElementBlock(Fragment, {
@@ -4390,53 +4384,52 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         isExpandable,
         isExpanded
       }) => {
-        return openBlock(), createBlock(_sfc_main$6, {
+        return openBlock(), createElementBlock("tr", {
           key,
-          "row-key": key,
-          "aria-rowindex": rowIndex,
+          class: "table-ng__row",
           "aria-level": level,
+          "aria-rowindex": rowIndex,
           "aria-setsize": setsize,
-          "aria-posinset": posinset,
-          "is-treegrid": isTreegrid.value,
+          "aria-posinset": posinset
+        }, [isTreegrid.value ? (openBlock(), createBlock(_sfc_main$9, {
+          key: 0,
           "is-expandable": isExpandable,
           "is-expanded": isExpanded,
+          "row-key": key,
           onToggle: onToggleExpanded
+        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$8, {
+          key: 1,
+          colspan: columns.value.length
         }, {
-          default: withCtx(() => [level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$9, {
-            key: 0,
-            colspan: columns.value.length
+          default: withCtx(() => [renderSlot(_ctx.$slots, "expandable", mergeProps({
+            ref_for: true
           }, {
-            default: withCtx(() => [renderSlot(_ctx.$slots, "expandable", mergeProps({
-              ref_for: true
-            }, {
-              row
-            }))]),
-            _: 2
-          }, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment, {
-            key: 1
-          }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$a, {
+            row
+          }))]),
+          _: 2
+        }, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment, {
+          key: 2
+        }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$a, {
+          key: 0,
+          row,
+          column: multiSelectColumn
+        }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$6, {
+          key: 1,
+          row,
+          column: singleSelectColumn
+        }, null, 8, ["row"])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+          return openBlock(), createElementBlock(Fragment, {
+            key: column.id
+          }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
             key: 0,
             row,
-            column: multiSelectColumn
-          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$7, {
+            column
+          }, null, 8, ["row", "column"])) : "render" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.render(row)), {
             key: 1,
-            row,
-            column: singleSelectColumn
-          }, null, 8, ["row"])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-            return openBlock(), createElementBlock(Fragment, {
-              key: column.id
-            }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
-              key: 0,
-              row,
-              column
-            }, null, 8, ["row", "column"])) : "render" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.render(row)), {
-              key: 1,
-              row
-            }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
-          }), 128))], 64))]),
-          _: 2
-        }, 1032, ["row-key", "aria-rowindex", "aria-level", "aria-setsize", "aria-posinset", "is-treegrid", "is-expandable", "is-expanded"]);
-      }), 128))])], 42, _hoisted_1), _cache[7] || (_cache[7] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
+            row
+          }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
+        }), 128))], 64))], 8, _hoisted_8);
+      }), 128))])], 42, _hoisted_1), _cache[8] || (_cache[8] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
     };
   }
 });
@@ -5130,7 +5123,7 @@ var inputFieldConfig2 = {
   },
   "text:bankAccountNumber": {
     formatter(value) {
-      return parseBankAccountNumber2(value);
+      return value;
     },
     parser(value) {
       return parseBankAccountNumber2(value);
@@ -5198,7 +5191,10 @@ var inputFieldConfig2 = {
       email: {},
       maxLength: { length: 80 }
     },
-    attributes: () => []
+    attributes: () => [
+      { name: "type", value: "email" },
+      { name: "maxlength", value: "80" }
+    ]
   },
   "text:number": {
     formatter(value) {
@@ -5265,8 +5261,8 @@ var inputFieldConfig2 = {
       phoneNumber: {}
     },
     attributes: () => [
-      { name: "inputmode", value: "numeric" },
-      { name: "maxlength", value: "20" }
+      { name: "maxlength", value: "80" },
+      { name: "type", value: "tel" }
     ]
   },
   "text:plusgiro": {
