@@ -1,0 +1,21 @@
+* började som konsult år xxxx
+* tidigt insåg vi att det är svårt att göra en tillgänglig komponent
+** flera sprintar bara för att göra ett inmatningsfält för personnummer
+** det kan verka trivialt: "hur svårt kan det vara?"
+** men växer snabbt med frågor som "hur ska validering fungera?" "hur gör vi texten begriplig?" "skärmläsare? vad är det ens?"
+* och att flera applikationer behövde samma komponenter, design, copy, osv
+** vi skapade upp kitchensink (eller exp_angular som utvecklare kanske känner igen det som)
+** då var vi inte så många team och vi satt tätt
+** en gång i veckan så skickade alla teamen en representat till det vi kallade frontendsynk
+*** vi var aldrig så många 5-6 personer bara, lätt för alla att prata och mycket var nytt för alla
+*** lätt för alla att komma till tal, sällan som något team inte hade någon fråga eller fundering
+* vi flyttade ut de komponeter vi hade mer eller mindre rakt in i kitchensink
+** inner sourcing
+** fanns egentligen ingen som höll ihop det, alla och ingen ägde det
+** behovet fanns tekniskt, det var koden som delades (räknar in css osv här men det kom inte direkt från designers utan från utvecklare)
+** idag skulle jag nog kalla det för en slaskhink men det var ändå ett stort kliv att gå från att allt låg i applikationer till ett centralt bibliotek med komponenter
+** ett nödvändigt steg
+** utvecklare gjorde allt: kod, styling, texter, dokumentation
+** det var ofta i osynk med hur designskisser såg ut, hur texter skulle vara osv
+** exempel som inte alltid var så realistiska
+** men det höll ihop!
