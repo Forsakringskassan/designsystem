@@ -2742,9 +2742,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const targetElement = useTemplateRef("target");
-    const ariaLabelledby = computed(() => {
-      return __props.column.labelId;
-    });
+    const ariaLabelledby = computed(() => __props.column.labelId);
     function onActivateCell(e) {
       assertRef(targetElement);
       targetElement.value.tabIndex = 0;
@@ -2958,9 +2956,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const inputElement = useTemplateRef("input");
-    const ariaLabelledby = computed(() => {
-      return __props.column.labelId;
-    });
+    const ariaLabelledby = computed(() => __props.column.labelId);
     function onActivateCell(e) {
       assertRef(inputElement);
       inputElement.value.tabIndex = 0;
@@ -3379,9 +3375,7 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         "table-ng__textedit": true
       };
     });
-    const ariaLabelledby = computed(() => {
-      return __props.column.labelId;
-    });
+    const ariaLabelledby = computed(() => __props.column.labelId);
     const tdElement = useTemplateRef("td");
     const viewElement = useTemplateRef("view");
     const inputElement = useTemplateRef("input");
@@ -4232,9 +4226,7 @@ var ITableCheckbox_default = /* @__PURE__ */ _defineComponent3({
   setup(__props, { expose: __expose }) {
     __expose();
     const targetElement = useTemplateRef4("target");
-    const ariaLabelledby = computed4(() => {
-      return __props.column.labelId;
-    });
+    const ariaLabelledby = computed4(() => __props.column.labelId);
     function onActivateCell(e) {
       assertRef3(targetElement);
       targetElement.value.tabIndex = 0;
@@ -4314,9 +4306,7 @@ var ITableRadio_default = /* @__PURE__ */ _defineComponent4({
   setup(__props, { expose: __expose }) {
     __expose();
     const inputElement = useTemplateRef5("input");
-    const ariaLabelledby = computed5(() => {
-      return __props.column.labelId;
-    });
+    const ariaLabelledby = computed5(() => __props.column.labelId);
     function onActivateCell(e) {
       assertRef4(inputElement);
       inputElement.value.tabIndex = 0;
@@ -4738,9 +4728,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
         "table-ng__textedit": true
       };
     });
-    const ariaLabelledby = computed6(() => {
-      return __props.column.labelId;
-    });
+    const ariaLabelledby = computed6(() => __props.column.labelId);
     const tdElement = useTemplateRef8("td");
     const viewElement = useTemplateRef8("view");
     const inputElement = useTemplateRef8("input");
