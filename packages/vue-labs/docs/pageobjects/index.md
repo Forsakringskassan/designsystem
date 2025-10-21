@@ -1,11 +1,11 @@
 ---
-title: Komponenter
-name: components
-layout: content-with-menu
+title: Pageobjekt
+name: pageobjects
+layout: article
 visible: false
 ---
 
-Experimentella komponenter som kan ändras när som helst.
+Cypress pageobjekt för experimentella komponenter.
 Även vid brytande ändringar hanteras det som vilka andra ändringar som helst (dvs ej semantisk versionshantering).
 
 Använd på egen risk!

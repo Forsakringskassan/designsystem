@@ -4,6 +4,7 @@ import {
     Generator,
     frontMatterFileReader,
     searchProcessor,
+    topnavProcessor,
     versionProcessor,
     vueFileReader,
 } from "@forsakringskassan/docs-generator";
@@ -19,9 +20,13 @@ const docs = new Generator(import.meta.url, {
     },
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
-    exampleFolders: ["./src"],
+    exampleFolders: ["./src", "./docs"],
     vendor: ["vue", "@fkui/logic", "@fkui/date", "@fkui/vue"],
-    processors: [searchProcessor(), versionProcessor(pkg, "toolbar")],
+    processors: [
+        searchProcessor(),
+        topnavProcessor("docs/topmenu.json", "FKUI Vue Labs"),
+        versionProcessor(pkg, "toolbar"),
+    ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
 
