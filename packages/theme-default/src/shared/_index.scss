@@ -6,9 +6,6 @@
     // ***********
     // TEXT COLORS
     // ***********
-    --f-text-color-default: #{$palette-color-fk-black-100}; // global
-    --f-text-color-default-inverted: #{$palette-color-white-100}; // global
-    --f-text-color-discrete: #{$palette-color-fk-black-70}; // label, table
 
     --f-text-color-link: #{$palette-color-bluebell-100};
     --f-text-color-link-hover: #{$palette-color-fk-black-100};
@@ -24,9 +21,6 @@
 
     --f-text-color-heading-expandable-panel: #{$palette-color-white-100};
 
-    --f-text-color-button-discrete-hover: #{$palette-color-bluebell-120};
-    --f-text-color-button-discrete-inverted-hover: #{$palette-color-white-100};
-
     --f-text-color-menu: #{$palette-color-fk-black-100};
     --f-text-color-menu-hover: #{$palette-color-fk-black-100};
     --f-text-color-menu-horizontal-highlight: #{$palette-color-fk-black-100};
@@ -39,15 +33,11 @@
     // ***********
     --f-icon-color-white: #{$palette-color-white-100}; // global
 
-    --f-icon-color-primary: #{$palette-color-bluebell-100}; // select-field, file-item, file-selector, calendar
     --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field, form-step
     --f-icon-color-notice: #{$palette-color-tegel-100}; // expandable-panel
-    --f-icon-color-loader: #{$palette-color-green-a-85};
+
     --f-icon-color-expandable-panel: #{$palette-color-white-100};
-    --f-icon-color-table-header: #{$palette-color-fk-black-100}; // table
-    --f-icon-color-table-header-discrete: #{$palette-color-fk-black-50}; // table
-    --f-icon-color-sort-filter-dataset-close: #{$palette-color-fk-black-100}; // sort-filter-dataset
-    --f-icon-color-sort-filter-dataset-search: #{$palette-color-fk-black-50}; // sort-filter-dataset
+
     --f-icon-color-success-background: #{$palette-color-green-a-15};
 
     // *****************
@@ -61,20 +51,8 @@
     --f-background-heading-expandable-panel-hover: #{$palette-color-green-a-85};
     --f-background-expandable-panel: #{$palette-color-white-100};
     --f-background-heading-static-panel: #{$palette-color-green-b-50};
-    --f-background-code: #{$palette-color-fk-black-5};
 
-    --f-background-button-discrete-hover: none;
     --f-background-sidepanel-button-tertiary-hover: #{$palette-color-bluebell-15}; //  FLeftPanel and FRightPanel
-
-    --f-background-grid-default: #{$palette-color-white-100}; // list, table
-    --f-background-grid-active: #{$palette-color-bluebell-15}; // list, table
-    --f-background-grid-hover: #{$palette-color-bluebell-5}; // list, table (also focus)
-    --f-background-grid-striped: #{$palette-color-fk-black-5}; // list, table
-    --f-background-grid-header: #{$palette-color-fk-black-5}; // table
-    --f-background-grid-focus-inner: #{$palette-color-bluebell-5}; // table
-
-    --f-background-tab-active: #{$palette-color-white-100};
-    --f-background-tab-inactive: #{$palette-color-bluebell-5};
 
     --f-background-menu: #{$palette-color-fk-black-5};
     --f-background-menu-vertical-hover: #{$palette-color-fk-black-15};
@@ -100,10 +78,6 @@
     --f-border-color-link-discrete: #{$palette-color-fk-black-50};
     --f-border-color-link-discrete-hover: #{$palette-color-bluebell-100};
 
-    --f-border-color-grid: #{$palette-color-fk-black-50}; // list, table
-    --f-border-color-grid-header: #{$palette-color-fk-black-50}; // list, table
-    --f-border-color-grid-hover: #{$palette-color-fk-black-50}; // list, table
-    --f-border-color-grid-expanded: #{$palette-color-fk-black-15}; // table
     --f-border-color-expandable-panel-closed: none;
 
     --f-border-color-menu-horizontal: #{$palette-color-green-a-100};

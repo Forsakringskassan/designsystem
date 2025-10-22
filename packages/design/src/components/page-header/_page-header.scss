@@ -1,4 +1,5 @@
 @use "../../core/size";
+@use "variables" as *;
 
 $page-header-separator-width: 1px !default;
 
@@ -6,7 +7,7 @@ $page-header-separator-width: 1px !default;
     display: flex;
     flex-direction: row;
     width: 100%;
-    color: var(--f-text-color-default-inverted);
+    color: $pageheader-color-text-inverted;
     background-color: var(--f-background-pageheader-primary);
     padding: size.$padding-100 0 size.$padding-100 size.$padding-100;
     align-items: center;
@@ -36,7 +37,7 @@ $page-header-separator-width: 1px !default;
         margin: 0;
         font-size: var(--f-font-size-h3);
         font-weight: var(--f-font-weight-medium);
-        color: var(--f-text-color-default-inverted);
+        color: $pageheader-appname-color-text-inverted;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
