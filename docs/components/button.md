@@ -18,7 +18,8 @@ FButtonLiveExample.vue
 ## Primär knapp
 
 Använd primär knapp för det primära och det mest troliga alternativet för användaren.
-Det får bara finnas en primär knapp per sida.
+Generellt ska endast en primär knapp finnas på en sida.
+I fallet när en sida består av flera olika delar kan varje del ha en primär knapp.
 
 ## Sekundär knapp
 
@@ -35,6 +36,7 @@ Använd tertiär knapp om en sekundär knapp blir för framträdande.
 Tertiär knapp passar bra när flera knappar ska grupperas,
 till exempel om ett kort ska ha knappar för att ändra eller ta bort objekt som kortet representerar.
 Den kan användas som en tredje knapp tillsammans med en primär och en sekundär knapp i en grupp.
+Tertiär knapp ska alltid ha ikon, förutom när den används i en grupp tillsammans med en primär eller sekundär knapp.
 Knapptexten är understruken om en tertiär knapp används utan en ikon.
 
 ```diff
