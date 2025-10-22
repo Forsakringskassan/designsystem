@@ -8,12 +8,12 @@ $table-ng-focus-size: 2px !default;
 $table-ng-margin: 0 0 core.densify(var(--f-margin-component-bottom)) !default;
 
 // Header
-$table-ng-header-separator: 1px solid var(--f-border-color-grid) !default;
+$table-ng-header-separator: 1px solid var(--fkds-color-border-primary) !default;
 $table-ng-header-padding: core.densify(size.$padding-025) size.$padding-050 !default;
 $table-ng-header-font-weight: var(--f-font-weight-medium) !default;
 
 // Column description
-$table-ng-description-foreground: var(--f-text-color-discrete) !default;
+$table-ng-description-foreground: var(--fkds-color-text-secondary) !default;
 $table-ng-description-background: transparent !default;
 $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
 

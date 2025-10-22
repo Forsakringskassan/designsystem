@@ -12,7 +12,7 @@ html {
 
 body {
     // only applies when using FKUI in a non scoped application
-    color: var(--f-text-color-default);
+    color: var(--fkds-color-text-primary);
     font-size: var(--f-font-size-standard);
     font-weight: var(--f-font-weight-normal);
     line-height: var(--f-line-height-large);
@@ -34,7 +34,7 @@ code {
     font-size: var(--f-font-size-standard);
     border-radius: var(--f-border-radius-small);
     font-family: var(--f-font-family-code);
-    background-color: var(--f-background-code);
+    background-color: var(--fkds-color-background-secondary);
     display: inline-block;
     margin: 0 #{size.$margin-025};
     padding: 0 #{size.$padding-025};

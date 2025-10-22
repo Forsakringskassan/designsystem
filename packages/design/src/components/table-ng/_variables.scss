@@ -1,14 +1,18 @@
 // Caption
 $table-ng-caption-background: transparent !default;
-$table-ng-caption-foreground: var(--f-text-color-default) !default;
+$table-ng-caption-foreground: var(--fkds-color-text-primary) !default;
 
 // Header
-$table-ng-header-background: var(--f-background-grid-header) !default;
-$table-ng-header-foreground: var(--f-text-color-default) !default;
-$table-ng-header-border: 2px solid var(--f-border-color-grid-header) !default;
+$table-ng-header-background: var(--fkds-color-background-secondary) !default;
+$table-ng-header-foreground: var(--fkds-color-text-primary) !default;
+$table-ng-header-border: 2px solid var(--fkds-color-border-primary) !default;
 
 // Rows -- Flytta till table-ng-rows.scss?
-$table-ng-row-background: var(--f-background-grid-default) !default;
-$table-ng-row-background-alt: var(--f-background-grid-striped) !default;
-$table-ng-row-foreground: var(--f-text-color-default) !default;
-$table-ng-row-separator: 1px solid var(--f-border-color-grid) !default;
+$table-ng-row-background: var(--fkds-color-background-primary) !default;
+$table-ng-row-background-alt: var(--fkds-color-background-secondary) !default;
+$table-ng-row-foreground: var(--fkds-color-text-primary) !default;
+$table-ng-row-separator: 1px solid var(--fkds-color-border-primary) !default;
+
+// Column
+$table-ng-color-icon-sort-selected: var(--fkds-color-text-primary) !default;
+$table-ng-color-icon-sort-default: var(--fkds-color-text-secondary) !default;

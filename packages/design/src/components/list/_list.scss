@@ -1,9 +1,10 @@
 @use "../../core";
 @use "../../core/config-variables";
 @use "../../core/size";
+@use "variables" as *;
 
 // list item specific variables
-$list-border: var(--f-border-width-medium) solid var(--f-border-color-grid);
+$list-border: var(--f-border-width-medium) solid $list-row-color-border;
 $list-padding: size.$padding-075;
 $list-margin: 0 0 core.densify(var(--f-margin-component-bottom));
 $list-input-margin-top: 0.1rem;
@@ -14,15 +15,15 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
 %list-item {
     display: flex;
     border: $list-border;
-    background: var(--f-background-grid-default);
+    background: $list-row-color-background-default;
 }
 
 %list-item-hover:not(.disabled) {
-    background: var(--f-background-grid-hover);
+    background: $list-row-color-background-hover;
 }
 
 %list-item-active {
-    background: var(--f-background-grid-active);
+    background: $list-row-color-background-active;
 }
 
 .list {

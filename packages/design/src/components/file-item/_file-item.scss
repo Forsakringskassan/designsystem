@@ -63,6 +63,6 @@
 
     &__separator {
         margin-bottom: size.$margin-125;
-        border: var(--f-border-width-medium) solid var(--f-border-color-separator);
+        border: var(--f-border-width-medium) solid $fileitem-color-separator;
     }
 }

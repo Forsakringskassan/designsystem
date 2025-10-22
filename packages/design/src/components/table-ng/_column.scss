@@ -1,5 +1,6 @@
 @use "../../core";
 @use "../../core/size";
+@use "variables" as *;
 
 $vertical-padding: core.densify(size.$padding-025);
 $horizontal-padding: size.$padding-050;
@@ -32,13 +33,13 @@ $horizontal-padding: size.$padding-050;
     }
 
     &__sort-icon {
-        color: var(--f-icon-color-table-header);
+        color: $table-ng-color-icon-sort-selected;
         height: var(--f-icon-size-x-small);
         width: var(--f-icon-size-x-small);
         min-width: var(--f-icon-size-x-small);
 
         &--discrete {
-            color: var(--f-icon-color-table-header-discrete);
+            color: $table-ng-color-icon-sort-default;
         }
     }
 }
