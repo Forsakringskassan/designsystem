@@ -1,0 +1,43 @@
+{
+  "name": "@fkui/logo-default",
+  "version": "6.22.0",
+  "description": "Försäkringskassan logotyper",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "css"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/logo-default"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "./src/**/*.scss"
+  ],
+  "main": "./src/f-logo.scss",
+  "files": [
+    "assets",
+    "metadata.json",
+    "metadata.json.d.ts",
+    "src"
+  ],
+  "scripts": {
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "sass": "1.93.2"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  },
+  "sass": "./src/f-logo.scss"
+}

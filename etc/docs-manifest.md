@@ -168,6 +168,7 @@ functions/i18next-translate/i18next-provider-interface.html
 functions/i18next-translate/i18next-provider.html
 functions/i18next-translate/i18next.html
 functions/index.html
+functions/logo-default.html
 functions/plugins/errorplugin.html
 functions/plugins/formatplugin.html
 functions/plugins/testplugin.html
