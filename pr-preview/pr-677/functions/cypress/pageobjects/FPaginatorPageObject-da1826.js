@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FPaginatorPageObject/FPaginatorPageObject.vue:FPaginatorPageObject-2644d6.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FPaginatorPageObject/FPaginatorPageObject.vue:FPaginatorPageObject-da1826.js
 import { defineComponent as _defineComponent } from "vue";
 import { FInteractiveTable, FPagination, FPaginator, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -154,7 +154,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-2644d6"
+  selector: "#example-da1826"
 });
 export {
   render

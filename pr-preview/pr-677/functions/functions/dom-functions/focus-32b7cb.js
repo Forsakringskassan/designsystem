@@ -28,62 +28,38 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/functions/dom-functions/focus.md:focus-58adb2.js
+// virtual-entry:virtual:docs/functions/functions/dom-functions/focus.md:focus-32b7cb.js
 import { defineComponent } from "vue";
 import { focus } from "@fkui/vue";
-import { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
-var MyButton = defineComponent({
-  template: (
-    /* HTML */
-    `
-        <p>I have a button</p>
-        <button ref="foo" type="button">My button</button>
-    `
-  ),
-  computed: {
-    focusTarget() {
-      return this.$refs.foo;
-    }
-  }
-});
+import { createElementVNode as _createElementVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent({
-  components: { MyButton },
-  computed: {
-    focusTarget() {
-      return this.$refs.myButton;
-    }
-  },
   mounted() {
-    focus(this);
+    focus(this.$refs.header);
   }
 });
+var _hoisted_1 = {
+  ref: "header",
+  tabindex: "-1"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_my_button = _resolveComponent("my-button");
   return _openBlock(), _createElementBlock(
     _Fragment,
     null,
     [
-      _cache[0] || (_cache[0] = _createElementVNode(
+      _createElementVNode(
         "h1",
-        null,
+        _hoisted_1,
         "Important Section",
-        -1
-        /* CACHED */
-      )),
-      _cache[1] || (_cache[1] = _createElementVNode(
+        512
+        /* NEED_PATCH */
+      ),
+      _cache[0] || (_cache[0] = _createElementVNode(
         "p",
         null,
         "Some interesting content.",
         -1
         /* CACHED */
-      )),
-      _createVNode(
-        _component_my_button,
-        { ref: "myButton" },
-        null,
-        512
-        /* NEED_PATCH */
-      )
+      ))
     ],
     64
     /* STABLE_FRAGMENT */
@@ -92,7 +68,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-58adb2"
+  selector: "#example-32b7cb"
 });
 export {
   render
