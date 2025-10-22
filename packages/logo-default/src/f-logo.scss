@@ -1,0 +1,21 @@
+$global: true !default;
+$asset-path: "" !default;
+
+@mixin f-logo {
+    @if $asset-path == "" {
+        --f-logo-image-small: url("../assets/fk-logo-primary-small.svg");
+        --f-logo-image-large: url("../assets/fk-logo-primary-large.svg");
+    } @else {
+        --f-logo-image-small: url("#{$asset-path}/fk-logo-primary-small.svg");
+        --f-logo-image-large: url("#{$asset-path}/fk-logo-primary-large.svg");
+    }
+
+    --f-logo-size-small: 0.6rem;
+    --f-logo-size-large: 0.6rem 4rem;
+}
+
+@if $global {
+    :root {
+        @include f-logo;
+    }
+}

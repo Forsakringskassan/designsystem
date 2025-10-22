@@ -37,8 +37,14 @@ Logotypen kommer att centreras samt växa eller krympa för att passa inom given
 }
 ```
 
+För att använda Försäkringskassan's logotyp finns ett {@link @fkui/logo-default logotyp-paket} som konfigurerar ovanstående.
+
 ## API
 
 :::api
 vue:FLogo
 :::
+
+## Relaterat
+
+- {@link @fkui/logo-default Logotyp-paket}
