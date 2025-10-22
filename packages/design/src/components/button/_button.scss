@@ -125,9 +125,9 @@ $button--standard: (
 /// Discrete button
 $button--discrete: (
     color: $button-tertiary-color-text-default,
-    color--hover: var(--f-text-color-button-discrete-hover),
+    color--hover: $button-discrete-color-text-hover,
     color--disabled: $button-tertiary-color-text-disabled,
-    background-color--hover: var(--f-background-button-discrete-hover),
+    background-color--hover: none,
     background-color: transparent,
     background-color--disabled: transparent,
     border-color--disabled: transparent,
@@ -143,7 +143,7 @@ $button--discrete: (
 /// Discrete inverted button
 $button--discrete-inverted: (
     color: $button-tertiary-inverted-color-text-default,
-    color--hover: var(--f-text-color-button-discrete-inverted-hover),
+    color--hover: $button-discrete-inverted-color-text-hover,
     color--disabled: $button-tertiary-inverted-color-text-disabled,
     background-color: transparent,
     background-color--disabled: transparent,

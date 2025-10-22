@@ -32,3 +32,9 @@ $button-tertiary-inverted-color-text-disabled: var(--fkds-color-text-disabled) !
 // Inflight animation
 $button-spinner-animation-duration: 1250ms !default;
 $button-spinner-animation-delay: 300ms !default;
+
+// Discrete
+$button-discrete-color-text-hover: var(--fkds-color-action-text-primary-hover) !default;
+
+// Discrete-inverted
+$button-discrete-inverted-color-text-hover: var(--fkds-color-action-text-inverted-hover) !default;

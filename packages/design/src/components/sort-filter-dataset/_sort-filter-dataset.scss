@@ -1,5 +1,6 @@
 @use "../../core";
 @use "../../core/size";
+@use "variables" as *;
 
 // Selectfield
 $sortfilter-field-margin-bottom: 0.85rem !default;
@@ -39,7 +40,7 @@ $sortfilter-header-padding-top: size.$padding-025 !default;
 
             /* In front of input field */
             width: 1.2rem;
-            color: var(--f-icon-color-sort-filter-dataset-search);
+            color: $sort-filter-dateset-color-icon-search;
 
             @include core.breakpoint-down(sm) {
                 top: size.$margin-150;
@@ -51,7 +52,7 @@ $sortfilter-header-padding-top: size.$padding-025 !default;
             position: absolute;
             top: calc(-1 * size.$margin-075);
             right: 0;
-            color: var(--f-icon-color-sort-filter-dataset-close);
+            color: $sort-filter-dateset-color-icon-clear;
             cursor: pointer;
             padding: 1rem;
 
