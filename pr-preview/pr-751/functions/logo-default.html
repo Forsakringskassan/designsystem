@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>@fkui/logo-default - FK Designsystem</title><link
+        <title>Logotyp-paket - FK Designsystem</title><link
             rel="stylesheet"
             href="../assets/docs-ffd9c1.css"
             crossorigin
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-2168b8.json"
+            href="../search-data-4337d3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-kDxeBfncoPQCqgTkbLNUZIIc4xZjBcSQEnN4QdSv12JK+ReMfOlq0F15ax8Awf03"
+            integrity="sha384-ZpS06Rk6cKKu49n6ayIrM7gz9vnnUoI5FoqqFiTmzYsEdUppfEjJsHBe51Cck2tu"
             id="search-data"
         />
     </head>
@@ -235,18 +235,7 @@
             <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
-<ol><li class="link active">
-        <a
-            href="./logo-default.html"
-            
-            
-            
-            data-path="functions/logo-default.html"
-            
-        >
-            @fkui/logo-default
-        </a>
-    </li><li class="expandable ">
+<ol><li class="expandable ">
         <details >
             <summary>Cypress</summary>
             
@@ -1442,6 +1431,17 @@
         >
             Logik-paket
         </a>
+    </li><li class="link active">
+        <a
+            href="./logo-default.html"
+            
+            
+            
+            data-path="functions/logo-default.html"
+            
+        >
+            Logotyp-paket
+        </a>
     </li><li class="expandable ">
         <details >
             <summary>Plugins</summary>
@@ -1625,7 +1625,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">@fkui/logo-default</h1>
+                    <h1 id="title">Logotyp-paket</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -1648,7 +1648,7 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Innehåller Försäkringskassan logotyp som SVG och som shim för att sätta rätt logotyp till <code>FLogo</code>-komponenten.</p>
+                    <div id="content"><p class="docs-paragraph">Innehåller Försäkringskassan logotyp som SVG och som shim för att sätta rätt logotyp till <a href="../components/flogo.html"><code>FLogo</code>-komponenten</a>.</p>
 <h2 id="svg"><a class="header-anchor" href="#svg">SVG</a></h2><table class="table">
 <thead>
 <tr class="table__row">
@@ -1680,10 +1680,11 @@
 </tr>
 </tbody>
 </table>
+<p class="docs-paragraph">Samtliga logotyper har transparent bakgrund men visas här med vit samt svart bakgrund för förhandsgranskning.</p>
 <h2 id="flogo"><a class="header-anchor" href="#flogo">FLogo</a></h2><p class="docs-paragraph">Du använder <code>FLogo</code>-komponenten från <code>@fkui/vue</code> genom att importera <code>@fkui/default-logo</code> efter tema (exempelvis <code>@fkui/theme-default</code>):</p>
 
                 <div
-                    id="example-8ca5f6"
+                    id="example-ba2b3e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1697,7 +1698,7 @@
             <p class="docs-paragraph">För att applicera CSS på en egen selector sätter du <code>$global: false</code> och använder den som en mixin istället:</p>
 
                 <div
-                    id="example-f9d674"
+                    id="example-2bdfc7"
                     class="code-preview code-preview--default"
                     
                     
@@ -1713,10 +1714,14 @@
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du inte använder Vite behöver du manuellt kopiera över och därefter sätta <code>$asset-path</code> till en relativ sökväg från den byggda css-filen till katalogen som innehåller filerna:</p>
+            <p class="docs-paragraph">Om du inte använder Vite behöver du:</p>
+<ol>
+<li>Manuellt kopiera över filer till den katalog som innehåller dina kompilerade css-filer.</li>
+<li>Sätta <code>$asset-path</code> till en relativ sökväg från den byggda css-filen till katalogen som innehåller filerna.</li>
+</ol>
 
                 <div
-                    id="example-9e32eb"
+                    id="example-542fb9"
                     class="code-preview code-preview--default"
                     
                     
@@ -1732,7 +1737,7 @@
             <h2 id="metadata"><a class="header-anchor" href="#metadata">Metadata</a></h2><p class="docs-paragraph">Paketet levererar metadata i <code>@fkui/logo-default/metadata.json</code> med följande format:</p>
 
                 <div
-                    id="example-e3b050"
+                    id="example-193197"
                     class="code-preview code-preview--default"
                     
                     
@@ -1774,9 +1779,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/icon-package (<a href="https://github.com/Forsakringskassan/designsystem/commits/99cc8635f1afeeebe126e61f91c12c98254a7a76">99cc863</a>)<br />
+<div class="footer__right"><div class="version">feature/icon-package (<a href="https://github.com/Forsakringskassan/designsystem/commits/486cd2b517621453b24a02cdfa14acdab3702f0a">486cd2b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/751">PR 751</a><br />
-        2025-10-22 09:38
+        2025-10-22 09:56
 </div>
 <div class="toolbar__item">
     <form id="version">
