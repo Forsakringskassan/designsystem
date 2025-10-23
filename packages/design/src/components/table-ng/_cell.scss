@@ -149,6 +149,20 @@ $horizontal-padding: size.$padding-050;
         flex: 1 1 auto;
     }
 
+    &__numeric {
+        span,
+        input {
+            font-feature-settings: "tnum" 1;
+        }
+    }
+
+    &__align-right {
+        span,
+        input {
+            text-align: right;
+        }
+    }
+
     &__icon {
         visibility: hidden;
         margin-left: 1rem;
