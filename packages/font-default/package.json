@@ -1,0 +1,47 @@
+{
+  "name": "@fkui/font-default",
+  "version": "6.22.0",
+  "description": "Försäkringskassan standardfont",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "css"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/font-default"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "./src/**/*.scss"
+  ],
+  "main": "./src/font.scss",
+  "files": [
+    "assets",
+    "metadata.json",
+    "metadata.json.d.ts",
+    "src"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "inter-ui": "4.1.1"
+  },
+  "devDependencies": {
+    "sass": "1.93.2"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  },
+  "sass": "./src/font.scss"
+}
