@@ -103,7 +103,8 @@ export default defineComponent({
 <template>
     <div class="dialogue-tree">
         <template v-if="options.length > 0">
-            <ul class="dialogue-tree__list">
+            <!-- [html-validate-disable-next aria-label-misuse -- well supported] -->
+            <ul :key="currentStep.label" class="dialogue-tree__list" :aria-label="currentStep.label">
                 <li v-for="(option, index) in options" :key="option.label" class="dialogue-tree__list-item">
                     <button :ref="`dialogueButton-${index}`" type="button" @click="onClickedOption(option, index)">
                         <span>{{ option.label }}</span>

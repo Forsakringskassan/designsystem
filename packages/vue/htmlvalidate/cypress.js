@@ -18,4 +18,7 @@ module.exports = [
 
     /* FWizardStep uses an anchor with role="button" for completed steps */
     ".wizard-step__header__title",
+
+    /* FDialogueTree uses aria-label on ul element */
+    ".dialogue-tree__list",
 ];

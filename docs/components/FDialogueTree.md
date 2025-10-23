@@ -37,6 +37,7 @@ Låter användaren navigera genom X antal dialoger som leder till en slutvy base
 ## Användning
 
 ```html static
+<!-- [html-validate-disable-block aria-label-misuse -- well supported]-->
 <f-dialogue-tree v-model="current" dialogue-tree="tree">
     <template #default="{ userData }">
         <template v-if="userData.id === '1'"> 1 </template>
@@ -48,6 +49,7 @@ Låter användaren navigera genom X antal dialoger som leder till en slutvy base
 ## Exempel
 
 ```import
+<!-- [html-validate-disable-block aria-label-misuse -- well supported]-->
 ExampleFDialogueTree.vue
 ```
 
@@ -56,6 +58,7 @@ ExampleFDialogueTree.vue
 Exempel på en kombination av komponenterna FFormModal och FDialogueTree för att skapa en modal som inehåller flera steg.
 
 ```jsx
+<!-- [html-validate-disable-block aria-label-misuse -- well supported]-->
 const myAwesomeDialogTree: FDialogueTreeSubQuestion = {
   label: "Vad vill du lägga till?",
   options: [ /* ... */ ],
@@ -69,6 +72,7 @@ const myAwesomeDialogTree: FDialogueTreeSubQuestion = {
 ```
 
 ```import nomarkup
+<!-- [html-validate-disable-block aria-label-misuse -- well supported]-->
 FlerstegsModalExample.vue
 ```
 
