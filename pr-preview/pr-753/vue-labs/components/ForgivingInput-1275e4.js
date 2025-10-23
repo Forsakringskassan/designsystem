@@ -2474,9 +2474,9 @@ function requireEs_iterator_some() {
   return es_iterator_some;
 }
 requireEs_iterator_some();
+var tableCellApiSymbol = Symbol("table:cell-api");
 var internalKey = getInternalKey();
 var stopEditKey = Symbol();
-var tableCellApiSymbol = Symbol("table:cell-api");
 
 // virtual-entry:virtual:src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-1275e4.js
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, toDisplayString as _toDisplayString, createElementBlock as _createElementBlock } from "vue";

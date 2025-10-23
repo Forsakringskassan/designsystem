@@ -2462,6 +2462,10 @@ function requireEs_iterator_some() {
   return es_iterator_some;
 }
 requireEs_iterator_some();
+function isFTableCellApi(value) {
+  return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
+}
+var tableCellApiSymbol = Symbol("table:cell-api");
 function walk(array, visit, childKey, level = 1) {
   for (const item of array) {
     const visitChildren = visit(item, level);
@@ -2994,9 +2998,6 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function isFTableCellApi(value) {
-  return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
-}
 function getBodyRowCount(rows, childKey) {
   let count = 0;
   walk(rows, () => {
@@ -4026,7 +4027,6 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var tableCellApiSymbol = Symbol("table:cell-api");
 
 // src/components/FTable/table-column.ts
 import { ref as ref4, toRef as toRef2 } from "vue";
