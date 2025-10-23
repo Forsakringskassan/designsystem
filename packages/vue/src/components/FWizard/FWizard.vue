@@ -1,5 +1,7 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
+import { alertScreenReader } from "@fkui/logic";
+import { getHTMLElementFromVueRef, hasSlot } from "../../utils";
 import {
     type FWizardApi,
     type FWizardKey,
@@ -102,6 +104,13 @@ export default defineComponent({
             },
         },
     },
+    mounted() {
+        // If description slot is present alert screen reader of its content
+        if (this.hasDescriptionSlot()) {
+            const descriptionElement = getHTMLElementFromVueRef(this.$refs.description);
+            alertScreenReader(descriptionElement.innerText);
+        }
+    },
     methods: {
         register(key: FWizardKey, element: Element): FWizardStepDefinition {
             const step = addStep(this.steps, key, element);
@@ -128,6 +137,9 @@ export default defineComponent({
         },
         getCurrentOpen(): FWizardStepDefinition | null {
             return this.steps.find((it) => it.isOpen) ?? null;
+        },
+        hasDescriptionSlot(): boolean {
+            return hasSlot(this, "description");
         },
         openStep(step: FWizardStepDefinition): void {
             this.doOpen(step.stepNumber);
@@ -176,6 +188,10 @@ export default defineComponent({
 
 <template>
     <div class="wizard">
+        <!-- @slot **Optional** Slot for description. -->
+        <div v-if="hasDescriptionSlot()" ref="description" class="wizard-description">
+            <slot name="description"></slot>
+        </div>
         <!-- @slot One or more <f-wizard-step> elements -->
         <slot></slot>
     </div>
