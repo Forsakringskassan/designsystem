@@ -1,0 +1,84 @@
+$global: true !default;
+$asset-path: "" !default;
+
+@mixin font-face {
+    @if $asset-path == "" {
+        @font-face {
+            font-family: Inter;
+            font-weight: 300;
+            src: url("../fonts/Inter-Light.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: Inter;
+            font-weight: 400;
+            src: url("../fonts/Inter-Regular.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: Inter;
+            font-weight: 500;
+            src: url("../fonts/Inter-Medium.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: Inter;
+            font-weight: 600;
+            src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: Inter;
+            font-weight: 700;
+            src: url("../fonts/Inter-Bold.woff2") format("woff2");
+        }
+    } @else {
+        @font-face {
+            font-family: Inter;
+            font-weight: 300;
+            src: url("#{$asset-path}/Inter-Light.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: Inter;
+            font-weight: 400;
+            src: url("#{$asset-path}/Inter-Regular.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: Inter;
+            font-weight: 500;
+            src: url("#{$asset-path}/Inter-Medium.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: Inter;
+            font-weight: 600;
+            src: url("#{$asset-path}/Inter-SemiBold.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: Inter;
+            font-weight: 700;
+            src: url("#{$asset-path}/Inter-Bold.woff2") format("woff2");
+        }
+    }
+}
+
+@mixin font-family {
+    --f-font-family: "Inter", arial, "Helvetica Neue", sans-serif;
+    --f-font-weight-normal: 400;
+    --f-font-weight-medium: 500;
+    --f-font-weight-bold: 700;
+}
+
+@mixin font {
+    @include font-face;
+    @include font-family;
+}
+
+@if $global {
+    :root {
+        @include font;
+    }
+}

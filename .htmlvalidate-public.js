@@ -39,6 +39,7 @@ module.exports = {
                         "^https://gitlab.com/",
                         "^https://help.figma.com/",
                         "^https://html-validate.org/",
+                        "^https://rsms.me/inter/",
                         "^https://www.i18next.com/",
                         "^https://support.atlassian.com/",
                         "^https://typedoc.org/",

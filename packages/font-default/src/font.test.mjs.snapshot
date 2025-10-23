@@ -1,0 +1,105 @@
+exports[`should compile global as default 1`] = `
+@font-face {
+  font-family: Inter;
+  font-weight: 300;
+  src: url("../fonts/Inter-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 400;
+  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 500;
+  src: url("../fonts/Inter-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 600;
+  src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 700;
+  src: url("../fonts/Inter-Bold.woff2") format("woff2");
+}
+:root {
+  --f-font-family: "Inter", arial, "Helvetica Neue", sans-serif;
+  --f-font-weight-normal: 400;
+  --f-font-weight-medium: 500;
+  --f-font-weight-bold: 700;
+}
+`;
+
+exports[`should not include any styling if global is disabled 1`] = `
+
+`;
+
+exports[`should support compile with custom asset path 1`] = `
+@font-face {
+  font-family: Inter;
+  font-weight: 300;
+  src: url("awesome-fonts/Inter-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 400;
+  src: url("awesome-fonts/Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 500;
+  src: url("awesome-fonts/Inter-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 600;
+  src: url("awesome-fonts/Inter-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 700;
+  src: url("awesome-fonts/Inter-Bold.woff2") format("woff2");
+}
+:root {
+  --f-font-family: "Inter", arial, "Helvetica Neue", sans-serif;
+  --f-font-weight-normal: 400;
+  --f-font-weight-medium: 500;
+  --f-font-weight-bold: 700;
+}
+`;
+
+exports[`should support compile with custom selector 1`] = `
+@font-face {
+  font-family: Inter;
+  font-weight: 300;
+  src: url("../fonts/Inter-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 400;
+  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 500;
+  src: url("../fonts/Inter-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 600;
+  src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 700;
+  src: url("../fonts/Inter-Bold.woff2") format("woff2");
+}
+.awesome-selector {
+  --f-font-family: "Inter", arial, "Helvetica Neue", sans-serif;
+  --f-font-weight-normal: 400;
+  --f-font-weight-medium: 500;
+  --f-font-weight-bold: 700;
+}
+`;
