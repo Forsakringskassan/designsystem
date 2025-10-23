@@ -15,5 +15,6 @@ for (const filename of filenames.flat()) {
         });
     } catch (err) {
         console.error(`Failed to compile "${filename}":`, err.message);
+        process.exitCode = 1;
     }
 }
