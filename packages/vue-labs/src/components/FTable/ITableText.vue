@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, onMounted, ref, useTemplateRef } from "vue";
+import { computed, onMounted, ref, toRef, useTemplateRef } from "vue";
 import { type ValidityEvent, ValidationService, assertRef } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
 import { type FTableActivateCellEvent } from "./events";
@@ -32,6 +32,10 @@ const inputClasses = computed(() => {
         foobar: true,
         "table-ng__textedit": true,
     };
+});
+const ariaLabel = computed(() => {
+    const value = toRef(column.label(row)).value;
+    return value ?? undefined;
 });
 const tdElement = useTemplateRef("td");
 const viewElement = useTemplateRef("view");
@@ -171,6 +175,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
                 type="text"
                 maxlength="40"
                 tabindex="-1"
+                :aria-label
                 @blur="onBlur"
                 @validity="onValidity"
             />

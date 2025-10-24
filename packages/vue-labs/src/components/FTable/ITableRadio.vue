@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, useTemplateRef } from "vue";
+import { computed, toRef, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { type FTableActivateCellEvent } from "./events";
 import { type NormalizedTableColumnRadio } from "./table-column";
@@ -10,7 +10,10 @@ const { column, row } = defineProps<{
 }>();
 
 const inputElement = useTemplateRef("input");
-const ariaLabel = computed(() => column.header.value);
+const ariaLabel = computed(() => {
+    const value = toRef(column.label(row)).value;
+    return value ?? undefined;
+});
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
     assertRef(inputElement);

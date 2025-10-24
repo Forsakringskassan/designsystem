@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { type Ref, nextTick, ref, useTemplateRef, watchEffect } from "vue";
+import { type Ref, computed, nextTick, ref, toRef, useTemplateRef, watchEffect } from "vue";
 import { ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { FIcon, IComboboxDropdown } from "@fkui/vue";
 import { type FTableActivateCellEvent } from "./events";
@@ -26,6 +26,11 @@ const { stopEdit } = useStartStopEdit();
 
 const viewValue = ref(column.value(row));
 const tdRef = useTemplateRef("td");
+
+const ariaLabel = computed(() => {
+    const value = toRef(column.label(row)).value;
+    return value ?? undefined;
+});
 
 function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
     assertRef(tdRef);
@@ -241,6 +246,7 @@ function cancel(): void {
             :aria-controls="dropdownId"
             aria-autocomplete="list"
             class="table-ng__editable"
+            :aria-label
             @click.stop
             @dblclick.prevent
             @keydown.stop="onEditKeyDown"
