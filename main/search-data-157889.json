@@ -208,9 +208,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -255,6 +252,9 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "EventBus",
+    "EventBus",
+    "services",
     "i18next",
     "TranslationService",
     "i18nextProvider",
@@ -418,6 +418,12 @@
     "FFixedPane",
     "Detaljpanel",
     "FDetailsPanel",
+    "Modal dialogruta",
+    "FModal",
+    "Formulärsmodal",
+    "FFormModal",
+    "Bekräftelsemodal",
+    "FConfirmModal",
     "Förloppsindikator",
     "FProgressbar",
     "ladda",
@@ -426,12 +432,6 @@
     "FLoader",
     "ladda",
     "laddning",
-    "Modal dialogruta",
-    "FModal",
-    "Formulärsmodal",
-    "FFormModal",
-    "Bekräftelsemodal",
-    "FConfirmModal",
     "Startpunkt",
     "entrypoint",
     "länk",
@@ -1102,14 +1102,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1186,6 +1178,14 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -1540,24 +1540,6 @@
       ]
     },
     {
-      "url": "components/load/fprogressbar.html",
-      "title": "Förloppsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FProgressbar"
-      ]
-    },
-    {
-      "url": "components/load/floader.html",
-      "title": "Laddningsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FLoader"
-      ]
-    },
-    {
       "url": "components/modal/fmodal.html",
       "title": "Modal dialogruta",
       "terms": [
@@ -1576,6 +1558,24 @@
       "title": "Bekräftelsemodal",
       "terms": [
         "FConfirmModal"
+      ]
+    },
+    {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FLoader"
       ]
     },
     {
@@ -2456,47 +2456,47 @@
     "208": 55,
     "209": 55,
     "210": 55,
-    "211": 56,
+    "211": 55,
     "212": 56,
     "213": 56,
     "214": 56,
     "215": 57,
     "216": 57,
     "217": 57,
-    "218": 58,
-    "219": 58,
-    "220": 58,
-    "221": 58,
-    "222": 58,
-    "223": 58,
+    "218": 57,
+    "219": 57,
+    "220": 57,
+    "221": 57,
+    "222": 57,
+    "223": 57,
     "224": 58,
     "225": 58,
     "226": 58,
     "227": 59,
     "228": 59,
     "229": 59,
-    "230": 60,
-    "231": 60,
+    "230": 59,
+    "231": 59,
     "232": 60,
     "233": 60,
     "234": 60,
-    "235": 61,
-    "236": 61,
-    "237": 61,
-    "238": 61,
-    "239": 61,
-    "240": 61,
-    "241": 61,
-    "242": 61,
-    "243": 61,
+    "235": 60,
+    "236": 60,
+    "237": 60,
+    "238": 60,
+    "239": 60,
+    "240": 60,
+    "241": 60,
+    "242": 60,
+    "243": 60,
     "244": 61,
     "245": 61,
     "246": 61,
-    "247": 62,
-    "248": 62,
-    "249": 62,
-    "250": 62,
-    "251": 62,
+    "247": 61,
+    "248": 61,
+    "249": 61,
+    "250": 61,
+    "251": 61,
     "252": 62,
     "253": 62,
     "254": 62,
@@ -2665,16 +2665,16 @@
     "417": 102,
     "418": 103,
     "419": 103,
-    "420": 103,
-    "421": 103,
-    "422": 104,
-    "423": 104,
-    "424": 104,
-    "425": 104,
-    "426": 105,
-    "427": 105,
-    "428": 106,
-    "429": 106,
+    "420": 104,
+    "421": 104,
+    "422": 105,
+    "423": 105,
+    "424": 106,
+    "425": 106,
+    "426": 106,
+    "427": 106,
+    "428": 107,
+    "429": 107,
     "430": 107,
     "431": 107,
     "432": 108,

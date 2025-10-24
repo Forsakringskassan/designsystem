@@ -16327,14 +16327,15 @@ var _sfc_main$q = defineComponent({
 var _hoisted_1$o = {
   class: "dialogue-tree"
 };
-var _hoisted_2$k = {
-  key: 0,
-  class: "dialogue-tree__list"
-};
+var _hoisted_2$k = ["aria-label"];
 var _hoisted_3$f = ["onClick"];
 function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
-  return openBlock(), createElementBlock("div", _hoisted_1$o, [_ctx.options.length > 0 ? (openBlock(), createElementBlock("ul", _hoisted_2$k, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
+  return openBlock(), createElementBlock("div", _hoisted_1$o, [_ctx.options.length > 0 ? (openBlock(), createElementBlock("ul", {
+    key: _ctx.currentStep.label,
+    class: "dialogue-tree__list",
+    "aria-label": _ctx.currentStep.label
+  }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
     return openBlock(), createElementBlock("li", {
       key: option.label,
       class: "dialogue-tree__list-item"
@@ -16346,7 +16347,7 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     }, [createElementVNode("span", null, toDisplayString(option.label), 1), _cache[0] || (_cache[0] = createTextVNode()), createVNode(_component_f_icon, {
       name: "arrow-right"
     })], 8, _hoisted_3$f)]);
-  }), 128))])) : renderSlot(_ctx.$slots, "default", normalizeProps(mergeProps({
+  }), 128))], 8, _hoisted_2$k)) : renderSlot(_ctx.$slots, "default", normalizeProps(mergeProps({
     key: 1
   }, {
     userData: _ctx.userData

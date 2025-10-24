@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FProgressbar/examples/FProgressbarExample.vue:FProgressbarExample-bc14cf.js
+// virtual-entry:virtual:packages/vue/src/components/FProgressbar/examples/FProgressbarExample.vue:FProgressbarExample-ae17f7.js
 import { defineComponent } from "vue";
 import { FProgressbar } from "@fkui/vue";
 import { resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, vModelText as _vModelText, withDirectives as _withDirectives, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -112,7 +112,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-bc14cf"
+  selector: "#example-ae17f7"
 });
 export {
   render

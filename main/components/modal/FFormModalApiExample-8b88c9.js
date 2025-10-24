@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-778ec5.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-8b88c9.js
 import { defineComponent as defineComponent2 } from "vue";
 import { formModal } from "@fkui/vue";
 
@@ -197,7 +197,7 @@ ExampleModal_default.render = render;
 ExampleModal_default.__file = "packages/vue/src/components/FModal/examples/ExampleModal.vue";
 var ExampleModal_default2 = ExampleModal_default;
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-778ec5.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-8b88c9.js
 import { createElementVNode as _createElementVNode2, toDisplayString as _toDisplayString, openBlock as _openBlock2, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode } from "vue";
 var exampleComponent = defineComponent2({
   name: "FFormModalApiExample",
@@ -254,7 +254,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-778ec5"
+  selector: "#example-8b88c9"
 });
 export {
   render2 as render
