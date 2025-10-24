@@ -483,7 +483,7 @@ it("noisy test", () => {
 });
 ```
 
-Undvik `console.log = jest.fn()` då det gör det svårare att åerställa mellan testfall.
+Undvik `console.log = jest.fn()` då det gör det svårare att återställa mellan testfall.
 Är du inte försiktig när du mockar `console.log` försvårar du för andra som försöker använda `console.log` och du kan dölja riktiga fel som skrivs ut i console.
 
 ### Följ best practice för jest
