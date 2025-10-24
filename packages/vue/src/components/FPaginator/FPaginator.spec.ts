@@ -1,4 +1,4 @@
-import { DOMWrapper, VueWrapper, flushPromises, mount } from "@vue/test-utils";
+import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
 import FPaginator from "./FPaginator.vue";
 
 describe("page counter", () => {
