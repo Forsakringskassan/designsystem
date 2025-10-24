@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 6.23.0 (2025-10-24)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue-labs, @fkui/vue:** support light, dark, auto in theme-default (refs SFKUI-7409) 6e73ca1
+* **@fkui/design, @fkui/theme-default:** change semantic tokens for icon  (refs SFKUI-7369) c3f0015
+* **@fkui/font-default:** new `@fkui/font-default` package (refs SFKUI-7370) 78919e5
+* **@fkui/logo-default:** new `@fkui/logo-default` package (refs SFKUI-7370) 12cda4d
+* **@fkui/theme-desktop:** add `@fkui/theme-desktop` (refs SFKUI-7371) 159d0df
+
+### Bug Fixes
+
+* **@fkui/design:** `FFormModal` mobile scroll (fixes SFKUI-5960) bbf96ca
+* **@fkui/test-utils:** jest support is optional (refs SFKUI-6500) 02af2b5
+* **@fkui/test-utils:** support jest v30 (refs SFKUI-6500) 1edec12
+* **@fkui/vue:** missing screenreader context for dialogue-tree questions (refs SFKUI-7416) c91cf06
+* **deps:** update dependency vue-router to v4.6.0 5bd841c
+* **deps:** update dependency vue-router to v4.6.2 2ab8ada
+* **deps:** update dependency vue-router to v4.6.3 bccc35f
+
 ## 6.22.0 (2025-10-15)
 
 ### Features
