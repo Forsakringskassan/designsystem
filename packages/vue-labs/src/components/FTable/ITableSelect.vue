@@ -2,7 +2,6 @@
 import { type Ref, nextTick, ref, useTemplateRef, watchEffect } from "vue";
 import { ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { FIcon, IComboboxDropdown } from "@fkui/vue";
-import { type FTableActivateCellEvent } from "./events";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnSelect } from "./table-column";
 
@@ -25,16 +24,6 @@ const editRef = useTemplateRef("edit");
 const { stopEdit } = useStartStopEdit();
 
 const viewValue = ref(column.value(row));
-const tdRef = useTemplateRef("td");
-
-function onActivateCell(e: CustomEvent<FTableActivateCellEvent>): void {
-    assertRef(tdRef);
-    tdRef.value.tabIndex = 0;
-
-    if (e.detail.focus) {
-        tdRef.value.focus();
-    }
-}
 
 /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
@@ -221,12 +210,10 @@ function cancel(): void {
 <template>
     <td
         v-if="column.editable(row)"
-        ref="td"
         class="table-ng__cell table-ng__cell--select"
         tabindex="-1"
         @keydown="onCellKeyDown"
         @click.stop="onCellClick"
-        @table-activate-cell="onActivateCell"
     >
         <div v-show="!editing" class="table-ng__editable">
             <span class="table-ng__editable__text">{{ viewValue }}</span>
@@ -261,13 +248,7 @@ function cancel(): void {
             @close="onDropdownClose"
         ></i-combobox-dropdown>
     </td>
-    <td
-        v-else
-        ref="td"
-        tabindex="-1"
-        class="table-ng__cell table-ng__cell--static"
-        @table-activate-cell="onActivateCell"
-    >
+    <td v-else tabindex="-1" class="table-ng__cell table-ng__cell--static">
         {{ column.value(row) }}
     </td>
 </template>

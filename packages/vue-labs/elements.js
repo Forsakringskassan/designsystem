@@ -10,25 +10,29 @@ module.exports = defineMetadata({
     },
 
     tr: {
-        inherit: "tr",
         permittedContent: [
             "@script",
             "td",
             "th",
-            "i-table-header",
-            "i-table-text",
-            "i-table-select",
-            "i-table-checkbox",
-            "i-table-radio",
-            "i-table-button",
-            "i-table-expand-button",
             "i-table-anchor",
-            "i-table-rowheader",
+            "i-table-button",
+            "i-table-checkbox",
             "i-table-expandable",
+            "i-table-expand-button",
+            "i-table-header",
+            "i-table-header-selectable",
+            "i-table-radio",
+            "i-table-rowheader",
+            "i-table-select",
+            "i-table-text",
         ],
     },
 
     "i-table-header": {
+        flow: true,
+    },
+
+    "i-table-header-selectable": {
         flow: true,
     },
 
