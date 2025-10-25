@@ -52,7 +52,7 @@
     "@fkui/logic": "6.23.0",
     "@rollup/plugin-commonjs": "28.0.8",
     "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-typescript": "12.1.4",
+    "@rollup/plugin-typescript": "12.2.0",
     "rollup": "4.52.5"
   },
   "peerDependencies": {
