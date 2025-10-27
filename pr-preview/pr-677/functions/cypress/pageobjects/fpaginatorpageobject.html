@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-cf0a36.json"
+            href="../../../search-data-0fc4c9.json"
             as="fetch"
             crossorigin
-            integrity="sha384-SSh6gBV0YE8HSrs0YZ4v+smbbih87+7cqXrn560d6u0tl7jLj9Cxe77SbZksN+ac"
+            integrity="sha384-q2ZAhtCE+ttjdP3CSeBkVMsCsFmG04WC+tWXSqNSl2q7pk+x4OfaCk6WHfT1RsuR"
             id="search-data"
         />
     </head>
@@ -1658,6 +1658,8 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
+                                <li><a href="#fpaginatorpageobject">FPaginatorPageObject()</a></li>
+                                
                                 <li><a href="#currentpagebutton">currentPageButton()</a></li>
                                 
                                 <li><a href="#firstpagebutton">firstPageButton()</a></li>
@@ -1681,10 +1683,54 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Använd <code>FPaginatorPageObject</code> för att hämta information relaterat till <a href="../../../components/table-and-list/fpaginator.html">paginator</a>.</p>
-<h2 id="currentpagebutton"><a class="header-anchor" href="#currentpagebutton">currentPageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för den nuvarande sidan.</p>
+<h2 id="fpaginatorpageobject"><a class="header-anchor" href="#fpaginatorpageobject">FPaginatorPageObject()</a></h2><p class="docs-paragraph">Skapar ett nytt Cypress-pageobjekt för att hämta information relaterat till <a href="../../../components/table-and-list/fpaginator.html">paginator</a>.</p>
 <h3 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h3>
                 <div
-                    id="example-a04fef"
+                    id="example-135325"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(selector);
+</code></pre>
+                </div>
+            <h4 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h4><dl>
+<dt><code>selector: string</code></dt>
+<dd>Selector till <code>FPaginator</code> elementet. Du kan med fördel använda <a href="../../plugins/testplugin.html"><code>v-test</code></a> direktivet för din selector.</dd>
+</dl>
+<h3 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h3>
+                <div
+                    id="example-a5da24"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
+                </div>
+            
+                <div
+                    id="example-9ae1a8"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
+paginator.<span class="hljs-title function_">el</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.attr&quot;</span>, <span class="hljs-string">&quot;data-test&quot;</span>, <span class="hljs-string">&quot;myPaginator&quot;</span>);</code></pre>
+                </div>
+            <h2 id="currentpagebutton"><a class="header-anchor" href="#currentpagebutton">currentPageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för den nuvarande sidan.</p>
+<h3 id="syntax--1"><a class="header-anchor" href="#syntax--1">Syntax</a></h3>
+                <div
+                    id="example-d4da10"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1695,9 +1741,9 @@
 </code></pre>
                 </div>
             <h4 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för den nuvarande sidan.</p>
-<h3 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h3>
+<h3 id="exempel--2"><a class="header-anchor" href="#exempel--2">Exempel</a></h3>
                 <div
-                    id="example-10a14e"
+                    id="example-3b67a6"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1706,13 +1752,13 @@
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
-                    id="example-5feedf"
+                    id="example-2e5010"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1723,9 +1769,9 @@
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);</code></pre>
                 </div>
             <h2 id="firstpagebutton"><a class="header-anchor" href="#firstpagebutton">firstPageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till den första sidan.</p>
-<h3 id="syntax--1"><a class="header-anchor" href="#syntax--1">Syntax</a></h3>
+<h3 id="syntax--3"><a class="header-anchor" href="#syntax--3">Syntax</a></h3>
                 <div
-                    id="example-2382df"
+                    id="example-b8d0d0"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1735,10 +1781,10 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">firstPageButton</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--2"><a class="header-anchor" href="#returvarde--2">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den första sidan.</p>
-<h3 id="exempel--3"><a class="header-anchor" href="#exempel--3">Exempel</a></h3>
+            <h4 id="returvarde--4"><a class="header-anchor" href="#returvarde--4">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den första sidan.</p>
+<h3 id="exempel--5"><a class="header-anchor" href="#exempel--5">Exempel</a></h3>
                 <div
-                    id="example-02c459"
+                    id="example-9d0ff9"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1747,13 +1793,13 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
-                    id="example-31cb22"
+                    id="example-e6eb6a"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1769,9 +1815,9 @@ paginator.<span class="hljs-title function_">firstPageButton</span>().<span clas
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);</code></pre>
                 </div>
             <h2 id="lastpagebutton"><a class="header-anchor" href="#lastpagebutton">lastPageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till den sista sidan.</p>
-<h3 id="syntax--4"><a class="header-anchor" href="#syntax--4">Syntax</a></h3>
+<h3 id="syntax--6"><a class="header-anchor" href="#syntax--6">Syntax</a></h3>
                 <div
-                    id="example-fbd7ba"
+                    id="example-3f4f36"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1781,10 +1827,10 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">lastPageButton</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--5"><a class="header-anchor" href="#returvarde--5">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den sista sidan.</p>
-<h3 id="exempel--6"><a class="header-anchor" href="#exempel--6">Exempel</a></h3>
+            <h4 id="returvarde--7"><a class="header-anchor" href="#returvarde--7">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den sista sidan.</p>
+<h3 id="exempel--8"><a class="header-anchor" href="#exempel--8">Exempel</a></h3>
                 <div
-                    id="example-be1ec0"
+                    id="example-836605"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1793,13 +1839,13 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
-                    id="example-437a75"
+                    id="example-e92d24"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1815,9 +1861,9 @@ paginator.<span class="hljs-title function_">lastPageButton</span>().<span class
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;20&quot;</span>);</code></pre>
                 </div>
             <h2 id="nextbutton"><a class="header-anchor" href="#nextbutton">nextButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till nästa sida.</p>
-<h3 id="syntax--7"><a class="header-anchor" href="#syntax--7">Syntax</a></h3>
+<h3 id="syntax--9"><a class="header-anchor" href="#syntax--9">Syntax</a></h3>
                 <div
-                    id="example-42a58e"
+                    id="example-70f0c0"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1827,10 +1873,10 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">nextButton</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--8"><a class="header-anchor" href="#returvarde--8">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till nästa sida.</p>
-<h3 id="exempel--9"><a class="header-anchor" href="#exempel--9">Exempel</a></h3>
+            <h4 id="returvarde--10"><a class="header-anchor" href="#returvarde--10">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till nästa sida.</p>
+<h3 id="exempel--11"><a class="header-anchor" href="#exempel--11">Exempel</a></h3>
                 <div
-                    id="example-4ca025"
+                    id="example-fa4d84"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1839,13 +1885,13 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
-                    id="example-3ca2ae"
+                    id="example-2c02a4"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1860,9 +1906,9 @@ paginator.<span class="hljs-title function_">nextButton</span>().<span class="hl
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>);</code></pre>
                 </div>
             <h2 id="pagebutton"><a class="header-anchor" href="#pagebutton">pageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till en specifik sida.</p>
-<h3 id="syntax--10"><a class="header-anchor" href="#syntax--10">Syntax</a></h3>
+<h3 id="syntax--12"><a class="header-anchor" href="#syntax--12">Syntax</a></h3>
                 <div
-                    id="example-985d17"
+                    id="example-901d4d"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1872,14 +1918,14 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">pageButton</span>(page);
 </code></pre>
                 </div>
-            <h4 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h4><dl>
+            <h4 id="parametrar--13"><a class="header-anchor" href="#parametrar--13">Parametrar</a></h4><dl>
 <dt><code>page: number</code></dt>
 <dd>Nummer för den sida som knappen har.</dd>
 </dl>
-<h4 id="returvarde--11"><a class="header-anchor" href="#returvarde--11">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den specifika sidan.</p>
-<h3 id="exempel--12"><a class="header-anchor" href="#exempel--12">Exempel</a></h3>
+<h4 id="returvarde--14"><a class="header-anchor" href="#returvarde--14">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den specifika sidan.</p>
+<h3 id="exempel--15"><a class="header-anchor" href="#exempel--15">Exempel</a></h3>
                 <div
-                    id="example-f16098"
+                    id="example-3bd52c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1888,13 +1934,13 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
-                    id="example-333c21"
+                    id="example-e08518"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1906,9 +1952,9 @@ paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>);</code></pre>
                 </div>
             <h2 id="pagebuttons"><a class="header-anchor" href="#pagebuttons">pageButtons()</a></h2><p class="docs-paragraph">Används för att komma åt samtliga sidknappar.</p>
-<h3 id="syntax--13"><a class="header-anchor" href="#syntax--13">Syntax</a></h3>
+<h3 id="syntax--16"><a class="header-anchor" href="#syntax--16">Syntax</a></h3>
                 <div
-                    id="example-99939d"
+                    id="example-b334f3"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1918,10 +1964,10 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">pageButtons</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--14"><a class="header-anchor" href="#returvarde--14">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement[]</code> med samtliga sidknappar.</p>
-<h3 id="exempel--15"><a class="header-anchor" href="#exempel--15">Exempel</a></h3>
+            <h4 id="returvarde--17"><a class="header-anchor" href="#returvarde--17">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement[]</code> med samtliga sidknappar.</p>
+<h3 id="exempel--18"><a class="header-anchor" href="#exempel--18">Exempel</a></h3>
                 <div
-                    id="example-bac1b4"
+                    id="example-a78311"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1930,13 +1976,13 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
-                    id="example-2e1faa"
+                    id="example-b77b91"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1948,9 +1994,9 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
 pageButtons.<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.length&quot;</span>, <span class="hljs-number">9</span>);</code></pre>
                 </div>
             <h2 id="pagecounter"><a class="header-anchor" href="#pagecounter">pageCounter()</a></h2><p class="docs-paragraph">Används för att komma åt element för sidräknare som visas i kompakt läge.</p>
-<h3 id="syntax--16"><a class="header-anchor" href="#syntax--16">Syntax</a></h3>
+<h3 id="syntax--19"><a class="header-anchor" href="#syntax--19">Syntax</a></h3>
                 <div
-                    id="example-46db6a"
+                    id="example-1782bc"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1960,10 +2006,10 @@ pageButtons.<span class="hljs-title function_">should</span>(<span class="hljs-s
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">pageButton</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--17"><a class="header-anchor" href="#returvarde--17">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med sidräknare.</p>
-<h3 id="exempel--18"><a class="header-anchor" href="#exempel--18">Exempel</a></h3>
+            <h4 id="returvarde--20"><a class="header-anchor" href="#returvarde--20">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med sidräknare.</p>
+<h3 id="exempel--21"><a class="header-anchor" href="#exempel--21">Exempel</a></h3>
                 <div
-                    id="example-3e645a"
+                    id="example-bdbf7a"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1972,13 +2018,13 @@ pageButtons.<span class="hljs-title function_">should</span>(<span class="hljs-s
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
-                    id="example-7b040b"
+                    id="example-4a7904"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1989,9 +2035,9 @@ pageButtons.<span class="hljs-title function_">should</span>(<span class="hljs-s
 paginator.<span class="hljs-title function_">pageCounter</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Sida 1 av 20&quot;</span>);</code></pre>
                 </div>
             <h2 id="previousbutton"><a class="header-anchor" href="#previousbutton">previousButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till föregående sida.</p>
-<h3 id="syntax--19"><a class="header-anchor" href="#syntax--19">Syntax</a></h3>
+<h3 id="syntax--22"><a class="header-anchor" href="#syntax--22">Syntax</a></h3>
                 <div
-                    id="example-34ebab"
+                    id="example-b99998"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -2001,10 +2047,10 @@ paginator.<span class="hljs-title function_">pageCounter</span>().<span class="h
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">previousButton</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--20"><a class="header-anchor" href="#returvarde--20">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till föregående sida.</p>
-<h3 id="exempel--21"><a class="header-anchor" href="#exempel--21">Exempel</a></h3>
+            <h4 id="returvarde--23"><a class="header-anchor" href="#returvarde--23">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till föregående sida.</p>
+<h3 id="exempel--24"><a class="header-anchor" href="#exempel--24">Exempel</a></h3>
                 <div
-                    id="example-4aae31"
+                    id="example-c3f44f"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2013,13 +2059,13 @@ paginator.<span class="hljs-title function_">pageCounter</span>().<span class="h
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-pagination</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems, currentPage, numberOfPages }&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;myPaginator&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myPaginator&#x27;&quot;</span> <span class="hljs-attr">:current-page</span> <span class="hljs-attr">:number-of-pages</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-pagination</span>&gt;</span></code></pre>
                 </div>
             
                 <div
-                    id="example-f59bf7"
+                    id="example-e9c302"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2058,9 +2104,9 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/3f67a1818c499aca6a17094a1976eabd992efb38">3f67a18</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/6980c4f7502d951bc5dfc8aaf5f724ccd40d7bca">6980c4f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-10-24 14:19
+        2025-10-27 10:33
 </div>
 <div class="toolbar__item">
     <form id="version">
