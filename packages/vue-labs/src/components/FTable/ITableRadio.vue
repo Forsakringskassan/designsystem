@@ -10,7 +10,10 @@ const { column, row } = defineProps<{
 }>();
 
 const inputElement = useTemplateRef("input");
-const ariaLabel = computed(() => column.header.value);
+const ariaLabel = computed(() => {
+    const value = column.label(row);
+    return value.length > 0 ? value : undefined;
+});
 
 function onChange(_e: Event): void {
     assertRef(inputElement);

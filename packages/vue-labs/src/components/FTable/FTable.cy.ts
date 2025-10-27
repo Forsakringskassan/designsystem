@@ -74,23 +74,27 @@ function mountDefaultTestbed(): {
             editable: true,
             header: "edit text header",
             key: "editText",
+            label: () => "edit text label",
         },
         {
             type: "select",
             header: "select header",
             options: ["awesome option", "catastrophic option"],
             key: "select",
+            label: () => "select label",
         },
         {
             type: "checkbox",
             header: "checkbox header",
             key: "checkbox",
             editable: true,
+            label: () => "checkbox label",
         },
         {
             type: "radio",
             header: "radio header",
             key: "radio",
+            label: () => "radio label",
         },
         {
             type: "button",

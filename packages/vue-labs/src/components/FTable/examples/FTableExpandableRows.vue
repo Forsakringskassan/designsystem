@@ -19,12 +19,6 @@ interface Row {
 
 const columns = defineTableColumns<Row>([
     {
-        type: "checkbox",
-        header: "Kryssruta",
-        key: "aktiv",
-    },
-
-    {
         type: "text",
         header: "Oformaterad text",
         value(row) {
@@ -32,19 +26,28 @@ const columns = defineTableColumns<Row>([
             return String(row.antal);
         },
     },
-
+    {
+        type: "checkbox",
+        header: "Kryssruta",
+        key: "aktiv",
+        label: (row) => `Välj rad ${row.id}`,
+        editable: true,
+    },
     {
         type: "text",
         header: "Formatterad text",
+        label: (row) => `Text för rad ${row.id}`,
         value(row) {
             return formatNumber(row.antal) ?? "";
         },
+        editable: true,
     },
-
     {
         type: "text",
         header: "Redigerbar text",
         editable: true,
+        key: "level",
+        label: (row) => `Text för rad ${row.id}`,
         value(row) {
             return row.level;
         },
@@ -56,7 +59,6 @@ const columns = defineTableColumns<Row>([
             maxLength: { length: 5 },
         },
     },
-
     {
         type: "button",
         header: "Knapp",
@@ -80,7 +82,9 @@ const columns = defineTableColumns<Row>([
         header: "Dropplista",
         type: "select",
         key: "animal",
+        label: (row) => `Djur för rad ${row.id}`,
         options: selectFieldOptions,
+        editable: true,
     },
     {
         header: "Render function",
