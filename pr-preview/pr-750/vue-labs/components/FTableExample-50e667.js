@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-805661.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-50e667.js
 import { defineComponent as _defineComponent8 } from "vue";
 import { h as h2, ref as ref5 } from "vue";
 import { formatNumber } from "@fkui/logic";
@@ -4864,7 +4864,7 @@ function defineTableColumns(columns) {
   return columns;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-805661.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-50e667.js
 import { createElementVNode as _createElementVNode7, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode2, toDisplayString as _toDisplayString6, Fragment as _Fragment, openBlock as _openBlock8, createElementBlock as _createElementBlock8 } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent8({
   __name: "FTableExample",
@@ -4883,7 +4883,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent8({
         type: "checkbox",
         header: "Kryssruta",
         key: "aktiv",
-        label: (row) => ``,
+        label: (row) => `V\xE4lj rad ${row.id}`,
         editable: true
       },
       {
@@ -5160,7 +5160,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render8;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-805661"
+  selector: "#example-50e667"
 });
 export {
   render8 as render
