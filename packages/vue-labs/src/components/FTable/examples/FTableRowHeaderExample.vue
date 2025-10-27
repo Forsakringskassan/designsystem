@@ -40,24 +40,26 @@ const columns = defineTableColumns<Row>([
         type: "checkbox",
         header: "Kryssruta",
         key: "aktiv",
+        label: (row) => `Välj rad ${row.id}`,
         editable: true,
     },
     {
         type: "text",
         header: "Formatterad text",
         description: "Belopp",
+        label: (row) => `Text för rad ${row.id}`,
         value(row) {
             return formatNumber(row.antal) ?? "";
         },
         editable: true,
     },
-
     {
         type: "text",
         header: "Redigerbar text",
         description: "Förmån",
         editable: true,
         key: "level",
+        label: (row) => `Text för rad ${row.id}`,
         value(row) {
             return row.level;
         },

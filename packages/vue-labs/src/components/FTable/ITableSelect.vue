@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { type Ref, nextTick, ref, useTemplateRef, watchEffect } from "vue";
+import { type Ref, computed, nextTick, ref, useTemplateRef, watchEffect } from "vue";
 import { ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { FIcon, IComboboxDropdown } from "@fkui/vue";
 import { useStartStopEdit } from "./start-stop-edit";
@@ -24,6 +24,11 @@ const editRef = useTemplateRef("edit");
 const { stopEdit } = useStartStopEdit();
 
 const viewValue = ref(column.value(row));
+
+const ariaLabel = computed(() => {
+    const value = column.label(row);
+    return value.length > 0 ? value : undefined;
+});
 
 /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
@@ -228,6 +233,7 @@ function cancel(): void {
             :aria-controls="dropdownId"
             aria-autocomplete="list"
             class="table-ng__editable"
+            :aria-label
             @click.stop
             @dblclick.prevent
             @keydown.stop="onEditKeyDown"

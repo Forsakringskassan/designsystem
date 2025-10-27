@@ -16,7 +16,7 @@ import {
     watchEffect,
 } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
-import { FSortFilterDatasetInjected, setInternalKeys } from "@fkui/vue";
+import { FSortFilterDatasetInjected, setInternalKeys, useTranslate } from "@fkui/vue";
 import { activateCell, getMetaRows, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableExpandButton from "./ITableExpandButton.vue";
@@ -56,6 +56,7 @@ const {
     striped?: boolean;
     selectable?: "single" | "multi";
 }>();
+const $t = useTranslate();
 const tableRef = useTemplateRef("table");
 const selectAllRef = ref<HTMLInputElement | null>(null);
 const expandedKeys: Ref<string[]> = ref([]);
@@ -87,6 +88,10 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     description: ref(null),
     sortable: null,
     component: ITableCheckbox,
+    label() {
+        /** Screen reader text for checkbox in multi select table row. */
+        return $t("fkui.table.selectable.checkbox", "Välj rad");
+    },
     value(row) {
         if (!keyAttribute) {
             return false;
@@ -118,6 +123,10 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
     description: ref(null),
     sortable: null,
     component: ITableRadio,
+    label() {
+        /** Screen reader text for radio button in single select table row. */
+        return $t("fkui.table.selectable.radio", "Välj rad");
+    },
     value(row) {
         if (!keyAttribute) {
             return false;

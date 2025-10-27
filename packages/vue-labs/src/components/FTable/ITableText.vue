@@ -32,6 +32,10 @@ const inputClasses = computed(() => {
         "table-ng__textedit": true,
     };
 });
+const ariaLabel = computed(() => {
+    const value = column.label(row);
+    return value.length > 0 ? value : undefined;
+});
 const tdElement = useTemplateRef("td");
 const viewElement = useTemplateRef("view");
 const inputElement = useTemplateRef("input");
@@ -160,7 +164,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
                 type="text"
                 maxlength="40"
                 tabindex="-1"
-                aria-label="temp"
+                :aria-label
                 @blur="onBlur"
                 @validity="onValidity"
             />
