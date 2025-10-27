@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableRowHeaderExample.vue:FTableRowHeaderExample-bcd165.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableRowHeaderExample.vue:FTableRowHeaderExample-1587c4.js
 import { defineComponent as _defineComponent8 } from "vue";
 import { ref as ref5 } from "vue";
 import { formatNumber } from "@fkui/logic";
@@ -4864,7 +4864,7 @@ function defineTableColumns(columns) {
   return columns;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableRowHeaderExample.vue:FTableRowHeaderExample-bcd165.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableRowHeaderExample.vue:FTableRowHeaderExample-1587c4.js
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode2, openBlock as _openBlock8, createBlock as _createBlock3 } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent8({
   __name: "FTableRowHeaderExample",
@@ -4907,7 +4907,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent8({
         description: "F\xF6rm\xE5n",
         editable: true,
         key: "level",
-        label: (row) => `Text f\xF6r rad${row.id}`,
+        label: (row) => `Text f\xF6r rad ${row.id}`,
         value(row) {
           return row.level;
         },
@@ -5082,7 +5082,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render8;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-bcd165"
+  selector: "#example-1587c4"
 });
 export {
   render8 as render
