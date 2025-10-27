@@ -29,8 +29,8 @@ import { h as h2, ref as ref5 } from "vue";
 import { formatNumber } from "@fkui/logic";
 
 // dist/esm/index.esm.js
-import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, assertSet, ElementIdService } from "@fkui/logic";
-import { defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, nextTick, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, ElementIdService, assertSet } from "@fkui/logic";
+import { defineComponent, nextTick, toValue, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
@@ -2283,7 +2283,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$b = defineComponent({
+var _sfc_main$c = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2462,6 +2462,10 @@ function requireEs_iterator_some() {
   return es_iterator_some;
 }
 requireEs_iterator_some();
+function isFTableCellApi(value) {
+  return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
+}
+var tableCellApiSymbol = Symbol("table:cell-api");
 function walk(array, visit, childKey, level = 1) {
   for (const item of array) {
     const visitChildren = visit(item, level);
@@ -2486,9 +2490,6 @@ function getRowIndexes(rows, expandableAttribute) {
 }
 function getCellTarget(tableElement, rowIndex, cellIndex) {
   return tableElement.rows[rowIndex].cells[cellIndex];
-}
-function isTd(element) {
-  return element?.cellIndex !== void 0;
 }
 function getTr(td) {
   return td.parentElement;
@@ -2617,32 +2618,29 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
   }, expandableAttribute);
   return array;
 }
-function getTd(element) {
-  if (isTd(element)) {
-    return element;
-  } else {
-    const closest = element.closest("td");
-    if (!closest) {
-      throw new Error("expected td parent");
-    }
-    return closest;
+function getCell(element) {
+  const closest = element.closest("td, th");
+  if (!closest) {
+    throw new Error("expected th or td parent");
   }
+  return closest;
 }
-function setDefaultCellTarget(table) {
+async function setDefaultCellTarget(table) {
+  await nextTick();
   const target = getCellTarget(table, 1, 0);
-  dispatchActivateCellEvent(target, {
+  activateCell(target, {
     focus: false
   });
   return target;
 }
 function maybeNavigateToCell(e) {
   let newCellTarget = e.target;
-  const td = getTd(e.target);
-  const tr = getTr(td);
+  const cell = getCell(e.target);
+  const tr = getTr(cell);
   const table = getTable(tr);
   const fromIndex = {
     row: tr.rowIndex,
-    cell: td.cellIndex
+    cell: cell.cellIndex
   };
   const lastIndex = {
     row: getLastRowIndex(table),
@@ -2651,18 +2649,22 @@ function maybeNavigateToCell(e) {
   const navigateTo = navigate(e, table, fromIndex, lastIndex);
   if (navigateTo) {
     newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
-    dispatchActivateCellEvent(newCellTarget, {
+    activateCell(newCellTarget, {
       focus: true
     });
   }
 }
-function dispatchActivateCellEvent(element, detail) {
-  element.dispatchEvent(new CustomEvent("table-activate-cell", {
-    detail
-  }));
+function activateCell(element, options) {
+  var _toValue;
+  const api = element[tableCellApiSymbol];
+  const targetEl = (_toValue = toValue(api?.tabstopEl)) !== null && _toValue !== void 0 ? _toValue : element;
+  targetEl.tabIndex = 0;
+  if (options?.focus) {
+    targetEl.focus();
+  }
 }
 function stopEdit(element, reason) {
-  const td = getTd(element);
+  const td = getCell(element);
   const tr = getTr(td);
   const table = getTable(tr);
   const rowIndex = tr.rowIndex;
@@ -2674,35 +2676,35 @@ function stopEdit(element, reason) {
     case "enter": {
       if (rowIndex !== lastRowIndex) {
         newCellTarget = getCellTarget(table, rowIndex + 1, cellIndex);
-        dispatchActivateCellEvent(newCellTarget, {
+        activateCell(newCellTarget, {
           focus: true
         });
       } else {
-        dispatchActivateCellEvent(newCellTarget, {
+        activateCell(newCellTarget, {
           focus: true
         });
       }
       return newCellTarget;
     }
     case "escape": {
-      dispatchActivateCellEvent(newCellTarget, {
+      activateCell(newCellTarget, {
         focus: true
       });
       return newCellTarget;
     }
     case "tab": {
       if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
-        dispatchActivateCellEvent(newCellTarget, {
+        activateCell(newCellTarget, {
           focus: true
         });
       } else if (cellIndex === lastCellIndex) {
         newCellTarget = getCellTarget(table, rowIndex + 1, 0);
-        dispatchActivateCellEvent(newCellTarget, {
+        activateCell(newCellTarget, {
           focus: true
         });
       } else {
         newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
-        dispatchActivateCellEvent(newCellTarget, {
+        activateCell(newCellTarget, {
           focus: true
         });
       }
@@ -2710,17 +2712,17 @@ function stopEdit(element, reason) {
     }
     case "shift-tab": {
       if (cellIndex === 0 && rowIndex === 1) {
-        dispatchActivateCellEvent(newCellTarget, {
+        activateCell(newCellTarget, {
           focus: true
         });
       } else if (cellIndex === 0) {
         newCellTarget = getCellTarget(table, rowIndex - 1, 0);
-        dispatchActivateCellEvent(newCellTarget, {
+        activateCell(newCellTarget, {
           focus: true
         });
       } else {
         newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
-        dispatchActivateCellEvent(newCellTarget, {
+        activateCell(newCellTarget, {
           focus: true
         });
       }
@@ -2732,56 +2734,65 @@ function stopEdit(element, reason) {
     }
   }
 }
-var _hoisted_1$9 = ["checked", "aria-label"];
-var _hoisted_2$2 = ["checked", "aria-label"];
-var _sfc_main$a = /* @__PURE__ */ defineComponent({
+var _hoisted_1$a = {
+  key: 0,
+  class: "table-ng__cell table-ng__cell--checkbox"
+};
+var _hoisted_2$6 = ["checked", "aria-label"];
+var _hoisted_3$5 = {
+  key: 1,
+  ref: "target",
+  tabindex: "-1",
+  class: "table-ng__cell table-ng__cell--checkbox"
+};
+var _hoisted_4$2 = ["checked", "aria-label"];
+var _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
     column: {},
     row: {}
   },
-  setup(__props) {
+  setup(__props, {
+    expose: __expose
+  }) {
     const targetElement = useTemplateRef("target");
     const ariaLabel = computed(() => __props.column.header.value);
-    function onActivateCell(e) {
-      assertRef(targetElement);
-      targetElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        targetElement.value.focus();
-      }
-    }
     function onChange(e) {
       const checked = e.target.checked;
       __props.column.update(__props.row, checked, !checked);
     }
+    const expose = {
+      tabstopEl: targetElement
+    };
+    __expose(expose);
     return (_ctx, _cache) => {
-      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
-        key: 0,
-        class: "table-ng__cell table-ng__cell--checkbox",
-        onTableActivateCell: onActivateCell
-      }, [createElementVNode("input", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
         ref: "target",
         checked: __props.column.value(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$9)], 32)) : (openBlock(), createElementBlock("td", {
-        key: 1,
-        ref: "target",
-        tabindex: "-1",
-        class: "table-ng__cell table-ng__cell--checkbox",
-        onTableActivateCell: onActivateCell
-      }, [createElementVNode("input", {
+      }, null, 40, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, [createElementVNode("input", {
         checked: __props.column.value(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value
-      }, null, 8, _hoisted_2$2)], 544));
+      }, null, 8, _hoisted_4$2)], 512));
     };
   }
 });
-var _hoisted_1$8 = ["aria-label", "aria-expanded"];
-var _sfc_main$9 = /* @__PURE__ */ defineComponent({
+var _hoisted_1$9 = {
+  key: 0,
+  class: "table-ng__cell table-ng__cell--expand"
+};
+var _hoisted_2$5 = ["aria-label", "aria-expanded"];
+var _hoisted_3$4 = {
+  key: 1,
+  ref: "expandable",
+  tabindex: "-1",
+  class: "table-ng__cell"
+};
+var _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "ITableExpandButton",
   props: {
     isExpandable: {
@@ -2794,75 +2805,58 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   },
   emits: ["toggle"],
   setup(__props, {
+    expose: __expose,
     emit: __emit
   }) {
     const emit = __emit;
     const expandableRef = useTemplateRef("expandable");
     const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
     const expandLabel = computed(() => __props.isExpanded ? "St\xE4ng rad" : "Expandera rad");
-    function onActivateCell(e) {
+    function onClick() {
       assertRef(expandableRef);
       expandableRef.value.tabIndex = 0;
-      if (e.detail.focus) {
-        expandableRef.value.focus();
-      }
+      emit("toggle", __props.rowKey);
     }
+    const expose = {
+      tabstopEl: expandableRef
+    };
+    __expose(expose);
     return (_ctx, _cache) => {
-      return __props.isExpandable ? (openBlock(), createElementBlock("td", {
-        key: 0,
-        class: "table-ng__cell table-ng__cell--expand",
-        onTableActivateCell: onActivateCell
-      }, [createElementVNode("button", {
+      return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$9, [createElementVNode("button", {
         ref: "expandable",
         tabindex: "-1",
         "aria-label": expandLabel.value,
         "aria-expanded": __props.isExpanded,
         type: "button",
-        onClick: _cache[0] || (_cache[0] = ($event) => emit("toggle", __props.rowKey))
+        onClick
       }, [createVNode(unref(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_1$8)], 32)) : (openBlock(), createElementBlock("td", {
-        key: 1,
-        ref: "expandable",
-        tabindex: "-1",
-        class: "table-ng__cell",
-        onTableActivateCell: onActivateCell
-      }, null, 544));
+      }, null, 8, ["name"])], 8, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
-var _hoisted_1$7 = ["colspan"];
-var _sfc_main$8 = /* @__PURE__ */ defineComponent({
+var _hoisted_1$8 = ["colspan"];
+var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "ITableExpandable",
   props: {
     colspan: {}
   },
   setup(__props) {
-    const rootRef = useTemplateRef("root");
-    function onActivateCell(e) {
-      assertRef(rootRef);
-      rootRef.value.tabIndex = 0;
-      if (e.detail.focus) {
-        rootRef.value.focus();
-      }
-    }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("td", {
-        ref: "root",
         class: "table-ng__custom-expandable",
         colspan: __props.colspan,
-        tabindex: "-1",
-        onTableActivateCell: onActivateCell
-      }, [renderSlot(_ctx.$slots, "default")], 40, _hoisted_1$7);
+        tabindex: "-1"
+      }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$8);
     };
   }
 });
-var _hoisted_1$6 = {
+var _hoisted_1$7 = {
   key: 0,
   class: "table-ng__column__description"
 };
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableHeader",
   props: {
     column: {},
@@ -2895,14 +2889,9 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
           return "";
       }
     });
-    function onActivateCell(e) {
+    function onClickCell() {
       assertRef(thElement);
       thElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        thElement.value.focus();
-      }
-    }
-    function onClickCell() {
       if (!__props.column.sortable || !__props.sortEnabled) {
         return;
       }
@@ -2920,8 +2909,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         class: "table-ng__column",
         tabindex: "-1",
         onKeydown: onKeydownCell,
-        onClick: withModifiers(onClickCell, ["stop"]),
-        onTableActivateCell: onActivateCell
+        onClick: withModifiers(onClickCell, ["stop"])
       }, [createVNode(unref(IFlex), {
         gap: "1x"
       }, {
@@ -2942,43 +2930,71 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$6, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
+      }), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$7, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
     };
   }
 });
-var _hoisted_1$5 = ["checked", "aria-label"];
+var _hoisted_1$6 = {
+  scope: "col",
+  class: "table-ng__column table-ng__column--checkbox"
+};
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+  __name: "ITableHeaderSelectable",
+  emits: ["change"],
+  setup(__props, {
+    expose: __expose,
+    emit: __emit
+  }) {
+    const emit = __emit;
+    const selectAllRef = useTemplateRef("selectAll");
+    const expose = {
+      tabstopEl: selectAllRef
+    };
+    __expose(expose);
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("th", _hoisted_1$6, [createElementVNode("input", {
+        ref: "selectAll",
+        type: "checkbox",
+        "aria-label": "select all",
+        tabindex: "-1",
+        indeterminate: "",
+        onChange: _cache[0] || (_cache[0] = ($event) => emit("change"))
+      }, null, 544)]);
+    };
+  }
+});
+var _hoisted_1$5 = {
+  class: "table-ng__cell table-ng__cell--radio"
+};
+var _hoisted_2$4 = ["checked", "aria-label"];
 var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
     column: {},
     row: {}
   },
-  setup(__props) {
+  setup(__props, {
+    expose: __expose
+  }) {
     const inputElement = useTemplateRef("input");
     const ariaLabel = computed(() => __props.column.header.value);
-    function onActivateCell(e) {
-      assertRef(inputElement);
-      inputElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        inputElement.value.focus();
-      }
-    }
     function onChange(_e) {
       assertRef(inputElement);
       __props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
     }
+    const expose = {
+      tabstopEl: inputElement
+    };
+    __expose(expose);
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", {
-        class: "table-ng__cell table-ng__cell--radio",
-        onTableActivateCell: onActivateCell
-      }, [createElementVNode("input", {
+      return openBlock(), createElementBlock("td", _hoisted_1$5, [createElementVNode("input", {
         ref: "input",
         type: "radio",
         checked: __props.column.value(__props.row),
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_1$5)], 32);
+      }, null, 40, _hoisted_2$4)]);
     };
   }
 });
@@ -2997,48 +3013,57 @@ function useStartStopEdit() {
     stopEdit: stopEdit2
   };
 }
-var _hoisted_1$4 = ["href"];
+var _hoisted_1$4 = {
+  key: 0,
+  class: "table-ng__cell table-ng__cell--anchor"
+};
+var _hoisted_2$3 = ["href"];
+var _hoisted_3$3 = {
+  key: 1,
+  ref: "target",
+  tabindex: "-1",
+  class: "table-ng__cell"
+};
 var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
     column: {},
     row: {}
   },
-  setup(__props) {
+  setup(__props, {
+    expose: __expose
+  }) {
     const targetElement = useTemplateRef("target");
-    function onActivateCell(e) {
-      assertRef(targetElement);
-      targetElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        targetElement.value.focus();
-      }
-    }
     const renderAnchor = computed(() => {
       return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
     });
+    const expose = {
+      tabstopEl: targetElement
+    };
+    __expose(expose);
     return (_ctx, _cache) => {
-      return renderAnchor.value ? (openBlock(), createElementBlock("td", {
-        key: 0,
-        class: "table-ng__cell table-ng__cell--anchor",
-        onTableActivateCell: onActivateCell
-      }, [createElementVNode("a", {
+      return renderAnchor.value ? (openBlock(), createElementBlock("td", _hoisted_1$4, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_1$4)], 32)) : (openBlock(), createElementBlock("td", {
-        key: 1,
-        ref: "target",
-        tabindex: "-1",
-        class: "table-ng__cell",
-        onTableActivateCell: onActivateCell
-      }, null, 544));
+      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_2$3)])) : (openBlock(), createElementBlock("td", _hoisted_3$3, null, 512));
     };
   }
 });
 var _hoisted_1$3 = {
+  key: 0,
+  class: "table-ng__cell table-ng__cell--button"
+};
+var _hoisted_2$2 = {
   class: "sr-only"
+};
+var _hoisted_3$2 = {
+  key: 1,
+  ref: "td",
+  tabindex: "-1",
+  class: "table-ng__cell"
 };
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableButton",
@@ -3046,20 +3071,14 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
     column: {},
     row: {}
   },
-  setup(__props) {
+  setup(__props, {
+    expose: __expose
+  }) {
     const buttonElement = useTemplateRef("button");
     const tdElement = useTemplateRef("td");
-    async function onActivateCell(e) {
-      var _buttonElement$value;
-      await nextTick();
-      const element = (_buttonElement$value = buttonElement.value) !== null && _buttonElement$value !== void 0 ? _buttonElement$value : tdElement.value;
-      assertSet(element);
-      element.tabIndex = 0;
-      if (e.detail.focus) {
-        element.focus();
-      }
-    }
     function onClickButton() {
+      assertRef(buttonElement);
+      buttonElement.value.tabIndex = 0;
       if (__props.column.onClick) {
         __props.column.onClick(__props.row);
       }
@@ -3067,12 +3086,12 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const renderButton = computed(() => {
       return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
     });
+    const expose = {
+      tabstopEl: renderButton.value ? buttonElement : tdElement
+    };
+    __expose(expose);
     return (_ctx, _cache) => {
-      return renderButton.value ? (openBlock(), createElementBlock("td", {
-        key: 0,
-        class: "table-ng__cell table-ng__cell--button",
-        onTableActivateCell: onActivateCell
-      }, [createElementVNode("button", {
+      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$3, [createElementVNode("button", {
         ref: "button",
         class: "icon-button",
         type: "button",
@@ -3081,13 +3100,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
       }, [__props.column.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: __props.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$3, toDisplayString(__props.column.value(__props.row)), 1)], 512)], 32)) : (openBlock(), createElementBlock("td", {
-        key: 1,
-        ref: "td",
-        tabindex: "-1",
-        class: "table-ng__cell",
-        onTableActivateCell: onActivateCell
-      }, null, 544));
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$2, toDisplayString(__props.column.value(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$2, null, 512));
     };
   }
 });
@@ -3098,21 +3111,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     column: {}
   },
   setup(__props) {
-    const thRef = useTemplateRef("th");
-    function onActivateCell(e) {
-      assertRef(thRef);
-      thRef.value.tabIndex = 0;
-      if (e.detail.focus) {
-        thRef.value.focus();
-      }
-    }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("th", {
         ref: "th",
         class: "table-ng__cell table-ng__cell--rowheader",
-        scope: "row",
-        onTableActivateCell: onActivateCell
-      }, toDisplayString(__props.column.value(__props.row)), 545);
+        scope: "row"
+      }, toDisplayString(__props.column.value(__props.row)), 513);
     };
   }
 });
@@ -3123,6 +3127,11 @@ var _hoisted_2$1 = {
   class: "table-ng__editable__text"
 };
 var _hoisted_3$1 = ["aria-controls"];
+var _hoisted_4$1 = {
+  key: 1,
+  tabindex: "-1",
+  class: "table-ng__cell table-ng__cell--static"
+};
 var _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
@@ -3136,14 +3145,6 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
       stopEdit: stopEdit2
     } = useStartStopEdit();
     const viewValue = ref(__props.column.value(__props.row));
-    const tdRef = useTemplateRef("td");
-    function onActivateCell(e) {
-      assertRef(tdRef);
-      tdRef.value.tabIndex = 0;
-      if (e.detail.focus) {
-        tdRef.value.focus();
-      }
-    }
     async function onCellKeyDown(e) {
       if (e.code === "Enter" || e.code === "NumpadEnter") {
         startEditing(e);
@@ -3297,12 +3298,10 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
-        ref: "td",
         class: "table-ng__cell table-ng__cell--select",
         tabindex: "-1",
         onKeydown: onCellKeyDown,
-        onClick: withModifiers(onCellClick, ["stop"]),
-        onTableActivateCell: onActivateCell
+        onClick: withModifiers(onCellClick, ["stop"])
       }, [withDirectives(createElementVNode("div", _hoisted_1$2, [createElementVNode("span", _hoisted_2$1, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
@@ -3329,13 +3328,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         "input-node": editRef.value,
         onSelect: onDropdownSelect,
         onClose: onDropdownClose
-      }, null, 8, ["is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 544)) : (openBlock(), createElementBlock("td", {
-        key: 1,
-        ref: "td",
-        tabindex: "-1",
-        class: "table-ng__cell table-ng__cell--static",
-        onTableActivateCell: onActivateCell
-      }, toDisplayString(__props.column.value(__props.row)), 545));
+      }, null, 8, ["is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_4$1, toDisplayString(__props.column.value(__props.row)), 1));
     };
   }
 });
@@ -3384,13 +3377,6 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         ValidationService.addValidatorsToElement(inputElement.value, __props.column.validation);
       }
     });
-    function onActivateCell(e) {
-      assertRef(tdElement);
-      tdElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        tdElement.value.focus();
-      }
-    }
     function onStartEdit(modelValue) {
       assertRef(tdElement);
       assertRef(inputElement);
@@ -3496,8 +3482,7 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         class: normalizeClass(wrapperClasses.value),
         onClick: withModifiers(onClickCell, ["stop"]),
-        onKeydown,
-        onTableActivateCell: onActivateCell
+        onKeydown
       }, [createElementVNode("div", _hoisted_1$1, [createElementVNode("span", {
         ref: "view",
         class: "table-ng__editable__text"
@@ -3508,6 +3493,7 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         type: "text",
         maxlength: "40",
         tabindex: "-1",
+        "aria-label": "temp",
         onBlur,
         onValidity
       }, null, 34), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), hasError.value ? (openBlock(), createBlock(unref(FIcon), {
@@ -3522,9 +3508,8 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         key: 1,
         ref: "td",
         tabindex: "-1",
-        class: "table-ng__cell table-ng__cell--static",
-        onTableActivateCell: onActivateCell
-      }, toDisplayString(__props.column.value(__props.row)), 545));
+        class: "table-ng__cell table-ng__cell--static"
+      }, toDisplayString(__props.column.value(__props.row)), 513));
     };
   }
 });
@@ -3577,7 +3562,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
         },
         sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
-        component: _sfc_main$a
+        component: _sfc_main$b
       };
     case "radio":
       return {
@@ -3696,20 +3681,15 @@ var _hoisted_3 = {
   class: "table-ng__column"
 };
 var _hoisted_4 = {
-  key: 1,
-  scope: "col",
-  class: "table-ng__column table-ng__column--checkbox"
-};
-var _hoisted_5 = {
   key: 2,
   scope: "col"
 };
-var _hoisted_6 = {
+var _hoisted_5 = {
   key: 0,
   class: "table-ng__row--empty"
 };
-var _hoisted_7 = ["colspan"];
-var _hoisted_8 = ["aria-level", "aria-rowindex", "aria-setsize", "aria-posinset"];
+var _hoisted_6 = ["colspan"];
+var _hoisted_7 = ["aria-level", "aria-rowindex", "aria-setsize", "aria-posinset"];
 var _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
@@ -3737,7 +3717,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const selectedRows = useModel(__props, "selectedRows");
     const tableRef = useTemplateRef("table");
-    const selectAllRef = useTemplateRef("selectAll");
+    const selectAllRef = ref(null);
     const expandedKeys = ref([]);
     const keyedRows = computed(() => setInternalKeys(__props.rows, __props.keyAttribute, __props.expandableAttribute));
     const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
@@ -3759,7 +3739,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       header: ref("selectable"),
       description: ref(null),
       sortable: null,
-      component: _sfc_main$a,
+      component: _sfc_main$b,
       value(row) {
         if (!__props.keyAttribute) {
           return false;
@@ -3852,7 +3832,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     function onClick(e) {
       const td = e.target.closest("td");
       if (td) {
-        dispatchActivateCellEvent(td, {
+        activateCell(td, {
           focus: true
         });
       }
@@ -3880,7 +3860,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       if (outsideTable) {
         const td = target.closest("td");
         if (td) {
-          dispatchActivateCellEvent(td, {
+          activateCell(td, {
             focus: false
           });
         }
@@ -3927,11 +3907,30 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         sort(sortable, true);
       }
     }
+    function bindCellApiRef(ref22) {
+      if (!isFTableCellApi(ref22)) {
+        return;
+      }
+      const apiEl = toValue(ref22.tabstopEl);
+      if (!apiEl) {
+        return;
+      }
+      const cell = apiEl.closest("td, th");
+      assertSet(cell);
+      cell[tableCellApiSymbol] = ref22;
+    }
+    function bindSelectableCellApiRef(ref22) {
+      if (!isFTableCellApi(ref22)) {
+        return;
+      }
+      bindCellApiRef(ref22);
+      selectAllRef.value = toValue(ref22.tabstopEl);
+    }
     onMounted(() => {
       assertRef(tableRef);
-      setDefaultCellTarget(tableRef.value);
       registerCallbackOnMount(callbackSortableColumns);
       registerCallbackOnSort(callbackOnSort);
+      setDefaultCellTarget(tableRef.value);
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock(Fragment, null, [createElementVNode("table", {
@@ -3942,15 +3941,12 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_3)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isMultiSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, [createElementVNode("input", {
-        ref: "selectAll",
-        type: "checkbox",
-        "aria-label": "select all",
-        tabindex: "-1",
-        indeterminate: "",
+      }, [createElementVNode("thead", null, [createElementVNode("tr", _hoisted_2, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_3)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$7, {
+        key: 1,
+        ref: bindSelectableCellApiRef,
         onChange: onSelectAllChange
-      }, null, 544)])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_5, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-        return openBlock(), createBlock(_sfc_main$7, {
+      })) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), isSingleSelect.value ? (openBlock(), createElementBlock("th", _hoisted_4, toDisplayString(singleSelectColumn.header), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+        return openBlock(), createBlock(_sfc_main$8, {
           key: column.id,
           column,
           "sort-enabled": isSortEnabled(column),
@@ -3959,10 +3955,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           class: "table-ng__column",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_6, [createElementVNode("td", {
+      }), 128))])]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[3] || (_cache[3] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_7)])) : (openBlock(true), createElementBlock(Fragment, {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[3] || (_cache[3] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_6)])) : (openBlock(true), createElementBlock(Fragment, {
         key: 1
       }, renderList(metaRows.value, ({
         key,
@@ -3981,13 +3977,15 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           "aria-rowindex": rowIndex,
           "aria-setsize": setsize,
           "aria-posinset": posinset
-        }, [isTreegrid.value ? (openBlock(), createBlock(_sfc_main$9, {
+        }, [isTreegrid.value ? (openBlock(), createBlock(_sfc_main$a, {
           key: 0,
+          ref_for: true,
+          ref: bindCellApiRef,
           "is-expandable": isExpandable,
           "is-expanded": isExpanded,
           "row-key": key,
           onToggle: onToggleExpanded
-        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$8, {
+        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$9, {
           key: 1,
           colspan: columns.value.length
         }, {
@@ -3999,12 +3997,16 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
           _: 2
         }, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment, {
           key: 2
-        }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$a, {
+        }, [isMultiSelect.value ? (openBlock(), createBlock(_sfc_main$b, {
           key: 0,
+          ref_for: true,
+          ref: bindCellApiRef,
           row,
           column: multiSelectColumn
         }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$6, {
           key: 1,
+          ref_for: true,
+          ref: bindCellApiRef,
           row,
           column: singleSelectColumn
         }, null, 8, ["row"])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
@@ -4012,13 +4014,15 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
             key: column.id
           }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
             key: 0,
+            ref_for: true,
+            ref: bindCellApiRef,
             row,
             column
           }, null, 8, ["row", "column"])) : "render" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.render(row)), {
             key: 1,
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
-        }), 128))], 64))], 8, _hoisted_8);
+        }), 128))], 64))], 8, _hoisted_7);
       }), 128))])], 42, _hoisted_1), _cache[8] || (_cache[8] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
     };
   }
@@ -4030,7 +4034,6 @@ import { ref as ref4, toRef as toRef2 } from "vue";
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableAnchor.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
 import { computed as computed2, useTemplateRef as useTemplateRef2 } from "vue";
-import { assertRef as assertRef2 } from "@fkui/logic";
 var ITableAnchor_default = /* @__PURE__ */ _defineComponent({
   __name: "ITableAnchor",
   props: {
@@ -4038,19 +4041,13 @@ var ITableAnchor_default = /* @__PURE__ */ _defineComponent({
     row: { type: null, required: true }
   },
   setup(__props, { expose: __expose }) {
-    __expose();
     const targetElement = useTemplateRef2("target");
-    function onActivateCell(e) {
-      assertRef2(targetElement);
-      targetElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        targetElement.value.focus();
-      }
-    }
     const renderAnchor = computed2(() => {
       return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
     });
-    const __returned__ = { targetElement, onActivateCell, renderAnchor };
+    const expose = { tabstopEl: targetElement };
+    __expose(expose);
+    const __returned__ = { targetElement, renderAnchor, expose };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -4058,38 +4055,32 @@ var ITableAnchor_default = /* @__PURE__ */ _defineComponent({
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableAnchor.vue?type=template
 import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
-var _hoisted_12 = ["href"];
+var _hoisted_12 = {
+  key: 0,
+  class: "table-ng__cell table-ng__cell--anchor"
+};
+var _hoisted_22 = ["href"];
+var _hoisted_32 = {
+  key: 1,
+  ref: "target",
+  tabindex: "-1",
+  class: "table-ng__cell"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return $setup.renderAnchor ? (_openBlock(), _createElementBlock(
-    "td",
-    {
-      key: 0,
-      class: "table-ng__cell table-ng__cell--anchor",
-      onTableActivateCell: $setup.onActivateCell
-    },
-    [
-      _createElementVNode("a", {
-        ref: "target",
-        class: "anchor anchor--block",
-        target: "_blank",
-        href: $props.column.href,
-        tabindex: "-1"
-      }, _toDisplayString($props.column.value($props.row)), 9, _hoisted_12)
-    ],
-    32
-    /* NEED_HYDRATION */
-  )) : (_openBlock(), _createElementBlock(
-    "td",
-    {
-      key: 1,
+  return $setup.renderAnchor ? (_openBlock(), _createElementBlock("td", _hoisted_12, [
+    _createElementVNode("a", {
       ref: "target",
-      tabindex: "-1",
-      class: "table-ng__cell",
-      onTableActivateCell: $setup.onActivateCell
-    },
+      class: "anchor anchor--block",
+      target: "_blank",
+      href: $props.column.href,
+      tabindex: "-1"
+    }, _toDisplayString($props.column.value($props.row)), 9, _hoisted_22)
+  ])) : (_openBlock(), _createElementBlock(
+    "td",
+    _hoisted_32,
     null,
-    544
-    /* NEED_HYDRATION, NEED_PATCH */
+    512
+    /* NEED_PATCH */
   ));
 }
 
@@ -4099,8 +4090,8 @@ ITableAnchor_default.__file = "src/components/FTable/ITableAnchor.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableButton.vue?type=script
 import { defineComponent as _defineComponent2 } from "vue";
-import { computed as computed3, nextTick as nextTick2, useTemplateRef as useTemplateRef3 } from "vue";
-import { assertSet as assertSet2 } from "@fkui/logic";
+import { computed as computed3, useTemplateRef as useTemplateRef3 } from "vue";
+import { assertRef as assertRef2 } from "@fkui/logic";
 import { FIcon as FIcon2 } from "@fkui/vue";
 var ITableButton_default = /* @__PURE__ */ _defineComponent2({
   __name: "ITableButton",
@@ -4109,19 +4100,11 @@ var ITableButton_default = /* @__PURE__ */ _defineComponent2({
     row: { type: null, required: true }
   },
   setup(__props, { expose: __expose }) {
-    __expose();
     const buttonElement = useTemplateRef3("button");
     const tdElement = useTemplateRef3("td");
-    async function onActivateCell(e) {
-      await nextTick2();
-      const element = buttonElement.value ?? tdElement.value;
-      assertSet2(element);
-      element.tabIndex = 0;
-      if (e.detail.focus) {
-        element.focus();
-      }
-    }
     function onClickButton() {
+      assertRef2(buttonElement);
+      buttonElement.value.tabIndex = 0;
       if (__props.column.onClick) {
         __props.column.onClick(__props.row);
       }
@@ -4129,7 +4112,9 @@ var ITableButton_default = /* @__PURE__ */ _defineComponent2({
     const renderButton = computed3(() => {
       return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
     });
-    const __returned__ = { buttonElement, tdElement, onActivateCell, onClickButton, renderButton, get FIcon() {
+    const expose = { tabstopEl: renderButton.value ? buttonElement : tdElement };
+    __expose(expose);
+    const __returned__ = { buttonElement, tdElement, onClickButton, renderButton, expose, get FIcon() {
       return FIcon2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -4139,56 +4124,50 @@ var ITableButton_default = /* @__PURE__ */ _defineComponent2({
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableButton.vue?type=template
 import { openBlock as _openBlock2, createBlock as _createBlock, createCommentVNode as _createCommentVNode2, toDisplayString as _toDisplayString2, createElementVNode as _createElementVNode2, createElementBlock as _createElementBlock2 } from "vue";
-var _hoisted_13 = { class: "sr-only" };
+var _hoisted_13 = {
+  key: 0,
+  class: "table-ng__cell table-ng__cell--button"
+};
+var _hoisted_23 = { class: "sr-only" };
+var _hoisted_33 = {
+  key: 1,
+  ref: "td",
+  tabindex: "-1",
+  class: "table-ng__cell"
+};
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return $setup.renderButton ? (_openBlock2(), _createElementBlock2(
+  return $setup.renderButton ? (_openBlock2(), _createElementBlock2("td", _hoisted_13, [
+    _createElementVNode2(
+      "button",
+      {
+        ref: "button",
+        class: "icon-button",
+        type: "button",
+        tabindex: "-1",
+        onClick: $setup.onClickButton
+      },
+      [
+        $props.column.icon ? (_openBlock2(), _createBlock($setup["FIcon"], {
+          key: 0,
+          name: $props.column.icon
+        }, null, 8, ["name"])) : _createCommentVNode2("v-if", true),
+        _createElementVNode2(
+          "span",
+          _hoisted_23,
+          _toDisplayString2($props.column.value($props.row)),
+          1
+          /* TEXT */
+        )
+      ],
+      512
+      /* NEED_PATCH */
+    )
+  ])) : (_openBlock2(), _createElementBlock2(
     "td",
-    {
-      key: 0,
-      class: "table-ng__cell table-ng__cell--button",
-      onTableActivateCell: $setup.onActivateCell
-    },
-    [
-      _createElementVNode2(
-        "button",
-        {
-          ref: "button",
-          class: "icon-button",
-          type: "button",
-          tabindex: "-1",
-          onClick: $setup.onClickButton
-        },
-        [
-          $props.column.icon ? (_openBlock2(), _createBlock($setup["FIcon"], {
-            key: 0,
-            name: $props.column.icon
-          }, null, 8, ["name"])) : _createCommentVNode2("v-if", true),
-          _createElementVNode2(
-            "span",
-            _hoisted_13,
-            _toDisplayString2($props.column.value($props.row)),
-            1
-            /* TEXT */
-          )
-        ],
-        512
-        /* NEED_PATCH */
-      )
-    ],
-    32
-    /* NEED_HYDRATION */
-  )) : (_openBlock2(), _createElementBlock2(
-    "td",
-    {
-      key: 1,
-      ref: "td",
-      tabindex: "-1",
-      class: "table-ng__cell",
-      onTableActivateCell: $setup.onActivateCell
-    },
+    _hoisted_33,
     null,
-    544
-    /* NEED_HYDRATION, NEED_PATCH */
+    512
+    /* NEED_PATCH */
   ));
 }
 
@@ -4199,7 +4178,6 @@ ITableButton_default.__file = "src/components/FTable/ITableButton.vue";
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableCheckbox.vue?type=script
 import { defineComponent as _defineComponent3 } from "vue";
 import { computed as computed4, useTemplateRef as useTemplateRef4 } from "vue";
-import { assertRef as assertRef3 } from "@fkui/logic";
 var ITableCheckbox_default = /* @__PURE__ */ _defineComponent3({
   __name: "ITableCheckbox",
   props: {
@@ -4207,21 +4185,15 @@ var ITableCheckbox_default = /* @__PURE__ */ _defineComponent3({
     row: { type: null, required: true }
   },
   setup(__props, { expose: __expose }) {
-    __expose();
     const targetElement = useTemplateRef4("target");
     const ariaLabel = computed4(() => __props.column.header.value);
-    function onActivateCell(e) {
-      assertRef3(targetElement);
-      targetElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        targetElement.value.focus();
-      }
-    }
     function onChange(e) {
       const checked = e.target.checked;
       __props.column.update(__props.row, checked, !checked);
     }
-    const __returned__ = { targetElement, ariaLabel, onActivateCell, onChange };
+    const expose = { tabstopEl: targetElement };
+    __expose(expose);
+    const __returned__ = { targetElement, ariaLabel, onChange, expose };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -4229,46 +4201,40 @@ var ITableCheckbox_default = /* @__PURE__ */ _defineComponent3({
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableCheckbox.vue?type=template
 import { createElementVNode as _createElementVNode3, openBlock as _openBlock3, createElementBlock as _createElementBlock3 } from "vue";
-var _hoisted_14 = ["checked", "aria-label"];
-var _hoisted_22 = ["checked", "aria-label"];
+var _hoisted_14 = {
+  key: 0,
+  class: "table-ng__cell table-ng__cell--checkbox"
+};
+var _hoisted_24 = ["checked", "aria-label"];
+var _hoisted_34 = {
+  key: 1,
+  ref: "target",
+  tabindex: "-1",
+  class: "table-ng__cell table-ng__cell--checkbox"
+};
+var _hoisted_42 = ["checked", "aria-label"];
 function render3(_ctx, _cache, $props, $setup, $data, $options) {
-  return $props.column.editable($props.row) ? (_openBlock3(), _createElementBlock3(
-    "td",
-    {
-      key: 0,
-      class: "table-ng__cell table-ng__cell--checkbox",
-      onTableActivateCell: $setup.onActivateCell
-    },
-    [
-      _createElementVNode3("input", {
-        ref: "target",
-        checked: $props.column.value($props.row),
-        type: "checkbox",
-        "aria-label": $setup.ariaLabel,
-        tabindex: "-1",
-        onChange: $setup.onChange
-      }, null, 40, _hoisted_14)
-    ],
-    32
-    /* NEED_HYDRATION */
-  )) : (_openBlock3(), _createElementBlock3(
-    "td",
-    {
-      key: 1,
+  return $props.column.editable($props.row) ? (_openBlock3(), _createElementBlock3("td", _hoisted_14, [
+    _createElementVNode3("input", {
       ref: "target",
+      checked: $props.column.value($props.row),
+      type: "checkbox",
+      "aria-label": $setup.ariaLabel,
       tabindex: "-1",
-      class: "table-ng__cell table-ng__cell--checkbox",
-      onTableActivateCell: $setup.onActivateCell
-    },
+      onChange: $setup.onChange
+    }, null, 40, _hoisted_24)
+  ])) : (_openBlock3(), _createElementBlock3(
+    "td",
+    _hoisted_34,
     [
       _createElementVNode3("input", {
         checked: $props.column.value($props.row),
         type: "checkbox",
         "aria-label": $setup.ariaLabel
-      }, null, 8, _hoisted_22)
+      }, null, 8, _hoisted_42)
     ],
-    544
-    /* NEED_HYDRATION, NEED_PATCH */
+    512
+    /* NEED_PATCH */
   ));
 }
 
@@ -4279,7 +4245,7 @@ ITableCheckbox_default.__file = "src/components/FTable/ITableCheckbox.vue";
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableRadio.vue?type=script
 import { defineComponent as _defineComponent4 } from "vue";
 import { computed as computed5, useTemplateRef as useTemplateRef5 } from "vue";
-import { assertRef as assertRef4 } from "@fkui/logic";
+import { assertRef as assertRef3 } from "@fkui/logic";
 var ITableRadio_default = /* @__PURE__ */ _defineComponent4({
   __name: "ITableRadio",
   props: {
@@ -4287,21 +4253,15 @@ var ITableRadio_default = /* @__PURE__ */ _defineComponent4({
     row: { type: null, required: true }
   },
   setup(__props, { expose: __expose }) {
-    __expose();
     const inputElement = useTemplateRef5("input");
     const ariaLabel = computed5(() => __props.column.header.value);
-    function onActivateCell(e) {
-      assertRef4(inputElement);
-      inputElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        inputElement.value.focus();
-      }
-    }
     function onChange(_e) {
-      assertRef4(inputElement);
+      assertRef3(inputElement);
       __props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
     }
-    const __returned__ = { inputElement, ariaLabel, onActivateCell, onChange };
+    const expose = { tabstopEl: inputElement };
+    __expose(expose);
+    const __returned__ = { inputElement, ariaLabel, onChange, expose };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -4309,27 +4269,19 @@ var ITableRadio_default = /* @__PURE__ */ _defineComponent4({
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableRadio.vue?type=template
 import { createElementVNode as _createElementVNode4, openBlock as _openBlock4, createElementBlock as _createElementBlock4 } from "vue";
-var _hoisted_15 = ["checked", "aria-label"];
+var _hoisted_15 = { class: "table-ng__cell table-ng__cell--radio" };
+var _hoisted_25 = ["checked", "aria-label"];
 function render4(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock4(), _createElementBlock4(
-    "td",
-    {
-      class: "table-ng__cell table-ng__cell--radio",
-      onTableActivateCell: $setup.onActivateCell
-    },
-    [
-      _createElementVNode4("input", {
-        ref: "input",
-        type: "radio",
-        checked: $props.column.value($props.row),
-        "aria-label": $setup.ariaLabel,
-        tabindex: "-1",
-        onChange: $setup.onChange
-      }, null, 40, _hoisted_15)
-    ],
-    32
-    /* NEED_HYDRATION */
-  );
+  return _openBlock4(), _createElementBlock4("td", _hoisted_15, [
+    _createElementVNode4("input", {
+      ref: "input",
+      type: "radio",
+      checked: $props.column.value($props.row),
+      "aria-label": $setup.ariaLabel,
+      tabindex: "-1",
+      onChange: $setup.onChange
+    }, null, 40, _hoisted_25)
+  ]);
 }
 
 // src/components/FTable/ITableRadio.vue
@@ -4338,8 +4290,6 @@ ITableRadio_default.__file = "src/components/FTable/ITableRadio.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableRowheader.vue?type=script
 import { defineComponent as _defineComponent5 } from "vue";
-import { useTemplateRef as useTemplateRef6 } from "vue";
-import { assertRef as assertRef5 } from "@fkui/logic";
 var ITableRowheader_default = /* @__PURE__ */ _defineComponent5({
   __name: "ITableRowheader",
   props: {
@@ -4348,15 +4298,7 @@ var ITableRowheader_default = /* @__PURE__ */ _defineComponent5({
   },
   setup(__props, { expose: __expose }) {
     __expose();
-    const thRef = useTemplateRef6("th");
-    function onActivateCell(e) {
-      assertRef5(thRef);
-      thRef.value.tabIndex = 0;
-      if (e.detail.focus) {
-        thRef.value.focus();
-      }
-    }
-    const __returned__ = { thRef, onActivateCell };
+    const __returned__ = {};
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -4370,12 +4312,11 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
     {
       ref: "th",
       class: "table-ng__cell table-ng__cell--rowheader",
-      scope: "row",
-      onTableActivateCell: $setup.onActivateCell
+      scope: "row"
     },
     _toDisplayString3($props.column.value($props.row)),
-    545
-    /* TEXT, NEED_HYDRATION, NEED_PATCH */
+    513
+    /* TEXT, NEED_PATCH */
   );
 }
 
@@ -4385,8 +4326,8 @@ ITableRowheader_default.__file = "src/components/FTable/ITableRowheader.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableSelect.vue?type=script
 import { defineComponent as _defineComponent6 } from "vue";
-import { nextTick as nextTick3, ref as ref2, useTemplateRef as useTemplateRef7, watchEffect as watchEffect2 } from "vue";
-import { ElementIdService as ElementIdService2, assertRef as assertRef6, assertSet as assertSet3 } from "@fkui/logic";
+import { nextTick as nextTick2, ref as ref2, useTemplateRef as useTemplateRef6, watchEffect as watchEffect2 } from "vue";
+import { ElementIdService as ElementIdService2, assertRef as assertRef4, assertSet as assertSet2 } from "@fkui/logic";
 import { FIcon as FIcon3, IComboboxDropdown as IComboboxDropdown2 } from "@fkui/vue";
 
 // src/components/FTable/start-stop-edit.ts
@@ -4407,17 +4348,9 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
   setup(__props, { expose: __expose }) {
     __expose();
     const editing = ref2(false);
-    const editRef = useTemplateRef7("edit");
+    const editRef = useTemplateRef6("edit");
     const { stopEdit: stopEdit2 } = useStartStopEdit2();
     const viewValue = ref2(__props.column.value(__props.row));
-    const tdRef = useTemplateRef7("td");
-    function onActivateCell(e) {
-      assertRef6(tdRef);
-      tdRef.value.tabIndex = 0;
-      if (e.detail.focus) {
-        tdRef.value.focus();
-      }
-    }
     async function onCellKeyDown(e) {
       if (e.code === "Enter" || e.code === "NumpadEnter") {
         startEditing(e);
@@ -4430,25 +4363,25 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
       startEditing(e);
     }
     async function startEditing(e) {
-      assertRef6(editRef);
+      assertRef4(editRef);
       e.preventDefault();
       editing.value = true;
-      await nextTick3();
+      await nextTick2();
       editRef.value.tabIndex = 0;
       editRef.value.focus();
       openSelected("first");
     }
     async function onDropdownSelect(value) {
-      assertRef6(editRef);
-      assertSet3(stopEdit2);
+      assertRef4(editRef);
+      assertSet2(stopEdit2);
       close();
       submit();
       viewValue.value = value;
       stopEdit2(editRef.value, "enter");
     }
     function onDropdownClose() {
-      assertRef6(editRef);
-      assertSet3(stopEdit2);
+      assertRef4(editRef);
+      assertSet2(stopEdit2);
       stopEdit2(editRef.value, "escape");
     }
     const dropdownId = ElementIdService2.generateElementId();
@@ -4467,7 +4400,7 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
     });
     async function openSelected(fallback = null) {
       dropdownIsOpen.value = true;
-      await nextTick3();
+      await nextTick2();
       if (viewValue.value) {
         activeOption.value = viewValue.value;
       } else if (fallback === "first") {
@@ -4508,8 +4441,8 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
       }
     }
     async function onEditKeyDown(e) {
-      assertRef6(editRef);
-      assertSet3(stopEdit2);
+      assertRef4(editRef);
+      assertSet2(stopEdit2);
       switch (e.code) {
         case "Escape":
           e.preventDefault();
@@ -4553,24 +4486,24 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
     }
     async function onEditBlur() {
       if (editing.value) {
-        assertSet3(stopEdit2);
-        assertRef6(editRef);
+        assertSet2(stopEdit2);
+        assertRef4(editRef);
         dropdownIsOpen.value = false;
         editing.value = false;
-        await nextTick3();
+        await nextTick2();
         stopEdit2(editRef.value, "blur");
       }
     }
     async function submit() {
       editing.value = false;
-      await nextTick3();
+      await nextTick2();
     }
     function cancel() {
-      assertSet3(stopEdit2);
-      assertRef6(editRef);
+      assertSet2(stopEdit2);
+      assertRef4(editRef);
       stopEdit2(editRef.value, "escape");
     }
-    const __returned__ = { editing, editRef, stopEdit: stopEdit2, viewValue, tdRef, onActivateCell, onCellKeyDown, onCellClick, startEditing, onDropdownSelect, onDropdownClose, dropdownId, dropdownIsOpen, activeOptionId, activeOption, openSelected, close, setNextOption, setPreviousOption, onEditKeyDown, onEditBlur, submit, cancel, get FIcon() {
+    const __returned__ = { editing, editRef, stopEdit: stopEdit2, viewValue, onCellKeyDown, onCellClick, startEditing, onDropdownSelect, onDropdownClose, dropdownId, dropdownIsOpen, activeOptionId, activeOption, openSelected, close, setNextOption, setPreviousOption, onEditKeyDown, onEditBlur, submit, cancel, get FIcon() {
       return FIcon3;
     }, get IComboboxDropdown() {
       return IComboboxDropdown2;
@@ -4583,19 +4516,22 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent6({
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableSelect.vue?type=template
 import { toDisplayString as _toDisplayString4, createElementVNode as _createElementVNode5, createVNode as _createVNode, vShow as _vShow, withDirectives as _withDirectives, withModifiers as _withModifiers, openBlock as _openBlock6, createElementBlock as _createElementBlock6 } from "vue";
 var _hoisted_16 = { class: "table-ng__editable" };
-var _hoisted_23 = { class: "table-ng__editable__text" };
-var _hoisted_32 = ["aria-controls"];
+var _hoisted_26 = { class: "table-ng__editable__text" };
+var _hoisted_35 = ["aria-controls"];
+var _hoisted_43 = {
+  key: 1,
+  tabindex: "-1",
+  class: "table-ng__cell table-ng__cell--static"
+};
 function render6(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.column.editable($props.row) ? (_openBlock6(), _createElementBlock6(
     "td",
     {
       key: 0,
-      ref: "td",
       class: "table-ng__cell table-ng__cell--select",
       tabindex: "-1",
       onKeydown: $setup.onCellKeyDown,
-      onClick: _withModifiers($setup.onCellClick, ["stop"]),
-      onTableActivateCell: $setup.onActivateCell
+      onClick: _withModifiers($setup.onCellClick, ["stop"])
     },
     [
       _withDirectives(_createElementVNode5(
@@ -4604,7 +4540,7 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
         [
           _createElementVNode5(
             "span",
-            _hoisted_23,
+            _hoisted_26,
             _toDisplayString4($setup.viewValue),
             1
             /* TEXT */
@@ -4633,7 +4569,7 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
         }, ["prevent"])),
         onKeydown: _withModifiers($setup.onEditKeyDown, ["stop"]),
         onFocusout: $setup.onEditBlur
-      }, _toDisplayString4($setup.viewValue), 41, _hoisted_32), [
+      }, _toDisplayString4($setup.viewValue), 41, _hoisted_35), [
         [_vShow, $setup.editing]
       ]),
       _withDirectives(_createVNode($setup["IComboboxDropdown"], {
@@ -4649,20 +4585,14 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
         [_vShow, $setup.editing]
       ])
     ],
-    544
-    /* NEED_HYDRATION, NEED_PATCH */
+    32
+    /* NEED_HYDRATION */
   )) : (_openBlock6(), _createElementBlock6(
     "td",
-    {
-      key: 1,
-      ref: "td",
-      tabindex: "-1",
-      class: "table-ng__cell table-ng__cell--static",
-      onTableActivateCell: $setup.onActivateCell
-    },
+    _hoisted_43,
     _toDisplayString4($props.column.value($props.row)),
-    545
-    /* TEXT, NEED_HYDRATION, NEED_PATCH */
+    1
+    /* TEXT */
   ));
 }
 
@@ -4672,8 +4602,8 @@ ITableSelect_default.__file = "src/components/FTable/ITableSelect.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableText.vue?type=script
 import { defineComponent as _defineComponent7 } from "vue";
-import { computed as computed6, onMounted as onMounted2, ref as ref3, useTemplateRef as useTemplateRef8 } from "vue";
-import { ValidationService as ValidationService2, assertRef as assertRef7 } from "@fkui/logic";
+import { computed as computed6, onMounted as onMounted2, ref as ref3, useTemplateRef as useTemplateRef7 } from "vue";
+import { ValidationService as ValidationService2, assertRef as assertRef5 } from "@fkui/logic";
 import { FIcon as FIcon4 } from "@fkui/vue";
 
 // src/components/FTable/is-alphanumeric.ts
@@ -4711,25 +4641,18 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
         "table-ng__textedit": true
       };
     });
-    const tdElement = useTemplateRef8("td");
-    const viewElement = useTemplateRef8("view");
-    const inputElement = useTemplateRef8("input");
+    const tdElement = useTemplateRef7("td");
+    const viewElement = useTemplateRef7("view");
+    const inputElement = useTemplateRef7("input");
     const { stopEdit: stopEdit2 } = useStartStopEdit2();
     onMounted2(() => {
       if (inputElement.value) {
         ValidationService2.addValidatorsToElement(inputElement.value, __props.column.validation);
       }
     });
-    function onActivateCell(e) {
-      assertRef7(tdElement);
-      tdElement.value.tabIndex = 0;
-      if (e.detail.focus) {
-        tdElement.value.focus();
-      }
-    }
     function onStartEdit(modelValue) {
-      assertRef7(tdElement);
-      assertRef7(inputElement);
+      assertRef5(tdElement);
+      assertRef5(inputElement);
       const { width } = tdElement.value.getBoundingClientRect();
       model.value = modelValue;
       tdElement.value.style.setProperty("width", `${String(width)}px`);
@@ -4737,12 +4660,12 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
     }
     function onStopEdit(options) {
       const { reason } = options;
-      assertRef7(inputElement);
+      assertRef5(inputElement);
       inputElement.value.tabIndex = -1;
       stopEdit2(inputElement.value, reason);
     }
     function onClickCell(event) {
-      assertRef7(tdElement);
+      assertRef5(tdElement);
       if (tdElement.value.contains(event.target)) {
         const value = __props.column.value(__props.row);
         onStartEdit(value);
@@ -4760,8 +4683,8 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
       }
     }
     function onEditingKeydown(event) {
-      assertRef7(viewElement);
-      assertRef7(inputElement);
+      assertRef5(viewElement);
+      assertRef5(inputElement);
       event.stopPropagation();
       if (event.key === "Enter") {
         event.preventDefault();
@@ -4794,7 +4717,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
       }
     }
     function onBlur() {
-      assertRef7(tdElement);
+      assertRef5(tdElement);
       tdElement.value.style.removeProperty("width");
       const isDirty = model.value !== "";
       if (isDirty) {
@@ -4807,7 +4730,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
       const { isValid, validationMessage, validityMode } = event.detail;
       validity.value = { isValid, validationMessage, validityMode };
     }
-    const __returned__ = { model, validity, hasError, wrapperClasses, inputClasses, tdElement, viewElement, inputElement, stopEdit: stopEdit2, onActivateCell, onStartEdit, onStopEdit, onClickCell, onViewingKeydown, onEditingKeydown, onKeydown, onBlur, onValidity, get FIcon() {
+    const __returned__ = { model, validity, hasError, wrapperClasses, inputClasses, tdElement, viewElement, inputElement, stopEdit: stopEdit2, onStartEdit, onStopEdit, onClickCell, onViewingKeydown, onEditingKeydown, onKeydown, onBlur, onValidity, get FIcon() {
       return FIcon4;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -4827,8 +4750,7 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
       tabindex: "-1",
       class: _normalizeClass($setup.wrapperClasses),
       onClick: _withModifiers2($setup.onClickCell, ["stop"]),
-      onKeydown: $setup.onKeydown,
-      onTableActivateCell: $setup.onActivateCell
+      onKeydown: $setup.onKeydown
     },
     [
       _createElementVNode6("div", _hoisted_17, [
@@ -4851,6 +4773,7 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
             type: "text",
             maxlength: "40",
             tabindex: "-1",
+            "aria-label": "temp",
             onBlur: $setup.onBlur,
             onValidity: $setup.onValidity
           },
@@ -4879,12 +4802,11 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
       key: 1,
       ref: "td",
       tabindex: "-1",
-      class: "table-ng__cell table-ng__cell--static",
-      onTableActivateCell: $setup.onActivateCell
+      class: "table-ng__cell table-ng__cell--static"
     },
     _toDisplayString5($props.column.value($props.row)),
-    545
-    /* TEXT, NEED_HYDRATION, NEED_PATCH */
+    513
+    /* TEXT, NEED_PATCH */
   ));
 }
 
