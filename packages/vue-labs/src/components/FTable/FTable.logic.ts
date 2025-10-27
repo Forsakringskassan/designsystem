@@ -1,5 +1,4 @@
 import { nextTick, toValue } from "vue";
-import { isVisible } from "@fkui/logic";
 import { getInternalKey } from "@fkui/vue";
 import { type MetaRow } from "./MetaRow";
 import { tableCellApiSymbol } from "./f-table-api";
@@ -47,6 +46,7 @@ function getRowIndexes<T, K extends keyof T = keyof T>(
     return array;
 }
 
+/** @internal */
 export function getCellTarget(
     tableElement: HTMLTableElement,
     rowIndex: number,
@@ -72,6 +72,7 @@ function getLastCellIndex(tableElement: HTMLTableElement): number {
     return tableElement.rows[0].cells.length - 1;
 }
 
+/** @internal */
 export function getVerticalNavIndex(
     table: HTMLTableElement,
     from: TableCellIndex,
@@ -192,6 +193,7 @@ function navigate(
     }
 }
 
+/** @internal */
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function getMetaRows<T, K extends keyof T = keyof T>(
     keyedRows: T[],
@@ -230,7 +232,7 @@ export function getMetaRows<T, K extends keyof T = keyof T>(
     return array;
 }
 
-export function getCell(element: HTMLElement): HTMLTableCellElement {
+function getCell(element: HTMLElement): HTMLTableCellElement {
     const closest = element.closest<HTMLTableCellElement>("td, th");
     if (!closest) {
         throw new Error("expected th or td parent");
@@ -239,35 +241,7 @@ export function getCell(element: HTMLElement): HTMLTableCellElement {
     return closest;
 }
 
-export function findAction(
-    cell: HTMLTableCellElement,
-): HTMLElement | undefined {
-    const action = cell.querySelector<HTMLElement>(
-        "button, a, input:not(.foobar), [role='button']",
-    );
-
-    if (action && isVisible(action)) {
-        return action;
-    }
-}
-
-export function setTabbable(
-    element: HTMLElement | null,
-    tabbable: boolean,
-): void {
-    if (element) {
-        element.tabIndex = tabbable ? 0 : -1;
-    }
-}
-
-export function switchTabbable(
-    newElement: HTMLElement,
-    currentElement: HTMLElement | null,
-): void {
-    setTabbable(currentElement, false);
-    setTabbable(newElement, true);
-}
-
+/** @internal */
 export async function setDefaultCellTarget(
     table: HTMLTableElement,
 ): Promise<HTMLElement | null> {
@@ -278,6 +252,7 @@ export async function setDefaultCellTarget(
     return target;
 }
 
+/** @internal */
 export function maybeNavigateToCell(e: KeyboardEvent): void {
     let newCellTarget: HTMLElement = e.target as HTMLElement;
 
@@ -300,6 +275,7 @@ export function maybeNavigateToCell(e: KeyboardEvent): void {
     }
 }
 
+/** @internal */
 export function activateCell(
     element: HTMLElement,
     options?: { focus: boolean },
@@ -313,6 +289,7 @@ export function activateCell(
     }
 }
 
+/** @internal */
 export function stopEdit(
     element: HTMLElement,
     reason: "enter" | "escape" | "tab" | "shift-tab" | "blur",
