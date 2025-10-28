@@ -22,6 +22,7 @@ runs:
           run: |
               npm exec lerna -- run build \
                   --include-dependencies \
+                  --scope=@fkui/font-default \
                   --scope=@fkui/i18next-translate \
                   --scope=@fkui/theme-default \
                   --scope=@fkui/vue \
