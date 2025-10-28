@@ -1,3 +1,22 @@
-@use "@fkui/theme-default";
+@use "@fkui/theme-default" as theme with (
+    $global: false
+);
+@use "@fkui/font-default" as font with (
+    $global: false
+);
 @use "@fkui/design";
 @use "@fkui/design/lib/fonts.css";
+@use "@forsakringskassan/docs-live-example";
+
+@include font.font-face;
+
+:root {
+    @include theme.auto;
+    @include font.font-family;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
