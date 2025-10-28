@@ -6364,27 +6364,27 @@ body {
 @font-face {
   font-family: Inter;
   font-weight: 300;
-  src: url("../../../packages/font-default/fonts/Inter-Light.woff2") format("woff2");
+  src: url("./Inter-Light-14LG-y7V.woff2") format("woff2");
 }
 @font-face {
   font-family: Inter;
   font-weight: 400;
-  src: url("../../../packages/font-default/fonts/Inter-Regular.woff2") format("woff2");
+  src: url("./Inter-Regular-COLGFB3M.woff2") format("woff2");
 }
 @font-face {
   font-family: Inter;
   font-weight: 500;
-  src: url("../../../packages/font-default/fonts/Inter-Medium.woff2") format("woff2");
+  src: url("./Inter-Medium-CDhBSFyE.woff2") format("woff2");
 }
 @font-face {
   font-family: Inter;
   font-weight: 600;
-  src: url("../../../packages/font-default/fonts/Inter-SemiBold.woff2") format("woff2");
+  src: url("./Inter-SemiBold-BAEEcJ4E.woff2") format("woff2");
 }
 @font-face {
   font-family: Inter;
   font-weight: 700;
-  src: url("../../../packages/font-default/fonts/Inter-Bold.woff2") format("woff2");
+  src: url("./Inter-Bold-BOs3KVhN.woff2") format("woff2");
 }
 :root {
   --f-font-family: "Inter", arial, "Helvetica Neue", sans-serif;
