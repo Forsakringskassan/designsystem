@@ -1,5 +1,22 @@
 @use "../palette-variables" as *;
 
+@mixin hapoLight {
+    --fkds-color-action-border-primary-default: #{$palette-color-fk-black-50};
+    --fkds-color-action-background-primary-default: #{$palette-color-green-a-100};
+    --fkds-color-action-background-primary-hover: #{$palette-color-green-a-120};
+    --fkds-color-action-text-primary-default: #{$palette-color-green-a-100};
+
+    .button--secondary {
+        --fkds-color-action-text-primary-default: #{$palette-color-fk-black-100};
+    }
+
+    .button--tertiary {
+        &:hover {
+            --fkds-color-action-background-secondary-hover: #{$palette-color-fk-black-5};
+        }
+    }
+}
+
 @mixin variables {
     // TEXT
     --fkds-color-text-primary: #{$palette-color-fk-black-100};
@@ -82,4 +99,6 @@
     --fkds-color-select-background-secondary-hover: #{$palette-color-green-a-15};
     --fkds-color-select-background-secondary-active: #{$palette-color-green-a-15};
     --fkds-color-select-background-secondary-focus: #{$palette-color-green-a-15};
+
+    @include hapoLight;
 }
