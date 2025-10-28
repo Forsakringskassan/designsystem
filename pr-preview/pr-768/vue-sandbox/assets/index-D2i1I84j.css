@@ -27,7 +27,6 @@
   --f-icon-color-notice: #d34503;
   --f-icon-color-loader: #35805b;
   --f-icon-color-expandable-panel: #ffffff;
-  --f-icon-color-expandable-paragraph: #35805b;
   --f-icon-color-table-header: #1b1e23;
   --f-icon-color-table-header-discrete: #8d8e91;
   --f-icon-color-sort-filter-dataset-close: #1b1e23;
@@ -3024,6 +3023,7 @@ input[type=search]:focus,
 }
 
 .expandable-paragraph {
+  color: var(--fkds-color-text-primary);
   margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));
 }
 .expandable-paragraph__heading {
@@ -3042,13 +3042,13 @@ input[type=search]:focus,
 }
 .expandable-paragraph__icon {
   border-radius: 50%;
-  background-color: var(--f-icon-color-expandable-paragraph);
+  background-color: var(--fkds-color-select-background-secondary-default);
   width: var(--f-icon-size-small);
   height: var(--f-icon-size-small);
   margin-top: calc((var(--f-line-height-medium) * 1em - var(--f-icon-size-small)) / 2);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   display: flex;
-  color: var(--f-icon-color-white);
+  color: var(--fkds-color-text-inverted);
   padding: 3px;
   flex-shrink: 0;
   margin-right: 0.5rem;
@@ -3074,7 +3074,7 @@ input[type=search]:focus,
   margin-left: calc(var(--f-icon-size-small) + 0.5rem);
 }
 .expandable-paragraph__related-information {
-  color: var(--f-text-color-discrete);
+  color: var(--fkds-color-text-secondary);
   font-size: 0.875rem;
 }
 .expandable-paragraph__content {
@@ -3082,13 +3082,13 @@ input[type=search]:focus,
   margin-bottom: calc(1rem * var(--f-density-factor));
 }
 .expandable-paragraph__separator {
-  border-bottom: var(--f-border-width-medium) solid var(--f-border-color-separator);
+  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
   margin: 0 0.5rem calc(0.5rem * var(--f-density-factor)) 0.5rem;
 }
 .expandable-paragraph--list {
   margin-bottom: calc(0.5rem * var(--f-density-factor));
   padding-bottom: calc(0.5rem * var(--f-density-factor));
-  border-bottom: var(--f-border-width-small) solid var(--f-border-color-separator);
+  border-bottom: var(--f-border-width-small) solid var(--fkds-color-border-primary);
 }
 
 .fieldset {
