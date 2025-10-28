@@ -21,7 +21,7 @@
   ],
   "main": "./src/font.scss",
   "files": [
-    "assets",
+    "fonts",
     "metadata.json",
     "metadata.json.d.ts",
     "src"
