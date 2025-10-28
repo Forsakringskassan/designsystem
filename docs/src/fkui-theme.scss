@@ -37,8 +37,10 @@ $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-larg
 .user-theme {
     @include font.font-family;
 
-    --f-logo-image-small: url("#{$fk-logo-small-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
-    --f-logo-image-large: url("#{$fk-logo-large-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+    $solid-color: linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+
+    --f-logo-image-small: url("#{$fk-logo-small-url}"), $solid-color;
+    --f-logo-image-large: url("#{$fk-logo-large-url}"), $solid-color;
 
     font-family: var(--f-font-family);
 }
