@@ -2,6 +2,11 @@
     $global: false
 );
 
+@use "@fkui/font-default" as font with (
+    $global: false,
+    $asset-path: "./assets/fonts"
+);
+
 @use "@fkui/design/src/core/config-variables" with (
     $asset-path-images: "./images"
 );
@@ -9,16 +14,20 @@
 $fk-logo-small-url: "#{config-variables.$asset-path-images}/fk-logo-primary-small.svg";
 $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-large.svg";
 
+@include font.font-face;
+
 @media (prefers-color-scheme: light) {
     .code-preview__preview,
-    .live-example__example {
+    .live-example__example,
+    .user-theme {
         @include theme.light;
     }
 }
 
 @media (prefers-color-scheme: dark) {
     .code-preview__preview,
-    .live-example__example {
+    .live-example__example,
+    .user-theme {
         @include theme.dark;
     }
 }
@@ -26,17 +35,10 @@ $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-larg
 .code-preview__preview,
 .live-example__example,
 .user-theme {
-    @media (prefers-color-scheme: light) {
-        @include theme.light;
-        --f-logo-image-small: url("#{$fk-logo-small-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+    @include font.font-family;
 
-        --f-logo-image-large: url("#{$fk-logo-large-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
-    }
+    --f-logo-image-small: url("#{$fk-logo-small-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+    --f-logo-image-large: url("#{$fk-logo-large-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
 
-    @media (prefers-color-scheme: dark) {
-        @include theme.dark;
-        --f-logo-image-small: url("#{$fk-logo-small-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
-
-        --f-logo-image-large: url("#{$fk-logo-large-url}"), linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
-    }
+    font-family: var(--f-font-family);
 }

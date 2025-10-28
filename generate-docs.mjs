@@ -203,6 +203,7 @@ docs.compileStyle("docs-fkui", "./docs/src/fkui-theme.scss", {
 });
 
 docs.copyResource("images", "docs/src/assets/images");
+docs.copyResource("fonts", "packages/font-default/fonts");
 
 try {
     await docs.build(config.sourceFiles);
