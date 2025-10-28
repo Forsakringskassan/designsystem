@@ -8,7 +8,7 @@ export class XDummyPageObject implements BasePageObject {
     public el: () => DefaultCypressChainable;
 
     /**
-     * @param selector - the root of the label, usually `<label class="label">...</label>`.
+     * @param selector - the root of the dummy, usually `<dummy class="dummy">...</dummy>`.
      */
     public constructor(selector: string) {
         this.selector = selector;
