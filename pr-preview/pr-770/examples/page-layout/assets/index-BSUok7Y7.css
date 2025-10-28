@@ -6405,6 +6405,38 @@ body {
   font-family: var(--f-font-family);
 }
 
+@font-face {
+  font-family: Inter;
+  font-weight: 300;
+  src: url("./Inter-Light-14LG-y7V.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 400;
+  src: url("./Inter-Regular-COLGFB3M.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 500;
+  src: url("./Inter-Medium-CDhBSFyE.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 600;
+  src: url("./Inter-SemiBold-BAEEcJ4E.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 700;
+  src: url("./Inter-Bold-BOs3KVhN.woff2") format("woff2");
+}
+:root {
+  --f-font-family: "Inter", arial, "Helvetica Neue", sans-serif;
+  --f-font-weight-normal: 400;
+  --f-font-weight-medium: 500;
+  --f-font-weight-bold: 700;
+}
+
 html,
 body {
   margin: 0;
