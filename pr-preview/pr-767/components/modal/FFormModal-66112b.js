@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/modal/FFormModal.md:FFormModal-74a779.js
+// virtual-entry:virtual:docs/components/modal/FFormModal.md:FFormModal-66112b.js
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = {};
 function render(_ctx, _cache) {
@@ -79,7 +79,7 @@ function render(_ctx, _cache) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-74a779"
+  selector: "#example-66112b"
 });
 export {
   render
