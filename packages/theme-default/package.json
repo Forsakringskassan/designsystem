@@ -31,7 +31,7 @@
     "build": "run-s clean sass extract-variables build:metadata",
     "build:metadata": "node build.mjs",
     "clean": "rimraf dist src/_version.scss",
-    "extract-variables": "node extractVariables.js",
+    "extract-variables": "node extractVariables.mjs",
     "prepack": "npm run build",
     "presass": "node generate-version.js",
     "sass": "sass src:dist --style expanded --no-source-map",
