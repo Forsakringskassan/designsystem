@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/pagination/examples/PaginationExample.vue:PaginationExample-855f2c.js
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-855f2c.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
@@ -44,7 +44,7 @@ import {
 } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
-// docs/components/pagination/examples/pagination-data.ts
+// packages/vue/src/design-component-tests/Pagination/examples/pagination-data.ts
 var persons = [
   { id: 1, firstName: "Anabel", lastName: "Kolakovic" },
   { id: 2, firstName: "Karlotte", lastName: "Faich" },
@@ -148,7 +148,7 @@ var persons = [
   { id: 100, firstName: "Jeni", lastName: "Gummie" }
 ];
 
-// virtual-entry:virtual:docs/components/pagination/examples/PaginationExample.vue:PaginationExample-855f2c.js
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-855f2c.js
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, normalizeClass as _normalizeClass, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
   name: "PaginationExample",
