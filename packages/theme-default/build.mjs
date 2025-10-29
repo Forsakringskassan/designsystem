@@ -1,5 +1,7 @@
 import fs from "node:fs/promises";
+import path from "node:path";
 import { parse } from "@adobe/css-tools";
+import { getVariables } from "get-css-variables";
 
 /**
  * @typedef {import("@adobe/css-tools").CssAtRuleAST} CssAtRuleAST
@@ -73,6 +75,31 @@ function* getTokens(rule, palette) {
     }
 }
 
+/**
+ * @param {string} pattern
+ * @returns {Promise<void>}
+ */
+async function extractCssVariables(pattern) {
+    console.group("Extracting variables from:");
+
+    for await (const file of fs.glob(pattern)) {
+        const content = await fs.readFile(file, "utf-8");
+        const variables = getVariables(content);
+        const value = `const value = ${JSON.stringify(variables, null, 2)};`;
+        const cjs = [value, `module.exports = value;`].join("\n");
+        const cts = [
+            `declare const value: Record<string, string>;`,
+            `export = value;`,
+        ].join("\n");
+        const { name } = path.parse(file);
+        console.log(file, "->", `dist/${name}.js`);
+        await fs.writeFile(`dist/${name}.js`, cjs, "utf-8");
+        await fs.writeFile(`dist/${name}.d.ts`, cts, "utf-8");
+    }
+
+    console.groupEnd();
+}
+
 async function buildMetadata(src, dst) {
     const css = await fs.readFile(src, "utf-8");
     const rawPalette = await fs.readFile("./dist/palette.json", "utf-8");
@@ -98,3 +125,9 @@ async function buildMetadata(src, dst) {
 }
 
 await buildMetadata("./dist/theme-light.css", "./dist/metadata");
+await extractCssVariables("dist/*.css");
+
+await fs.copyFile(
+    "src/deprecated-variables.json",
+    "dist/deprecated-variables.json",
+);
