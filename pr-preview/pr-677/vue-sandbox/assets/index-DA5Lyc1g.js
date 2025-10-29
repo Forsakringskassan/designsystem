@@ -21487,17 +21487,17 @@ function activateRow(table, current) {
   table.activate(row, element);
 }
 function goToPreviousPage(table) {
-  dispatchPaginationEvent(table, "previous");
+  dispatchPaginateDatasetEvent(table, "previous");
 }
 function goToNextPage(table) {
-  dispatchPaginationEvent(table, "next");
+  dispatchPaginateDatasetEvent(table, "next");
 }
-function dispatchPaginationEvent(table, type) {
+function dispatchPaginateDatasetEvent(table, type) {
   assertRef(table.tr);
-  const paginationEvent = new CustomEvent(`paginateDataset:${type}`, {
+  const event = new CustomEvent(`paginateDataset:${type}`, {
     bubbles: true
   });
-  table.tr.value[0].dispatchEvent(paginationEvent);
+  table.tr.value[0].dispatchEvent(event);
 }
 function onKeydown(table, event, current) {
   const fn2 = keybindings[event.key];
