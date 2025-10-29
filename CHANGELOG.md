@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 6.24.1 (2025-10-29)
+
+### Bug Fixes
+
+* **@fkui/font-default:** f-font-weight-medium updated to 600 (refs SFKUI-6500) 2212c4d
+* **@fkui/theme-default, @fkui/theme-desktop:** add missing type declaration for theme css-variables (refs SFKUI-6500) 2eae261
+
 ## 6.24.0 (2025-10-29)
 
 ### Features
