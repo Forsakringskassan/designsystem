@@ -127,6 +127,7 @@ async function parse(filename) {
  * @param {string} dst
  */
 export async function extractSassVariables(src, dst) {
+    console.log();
     console.group("Extracting Sass variables from:");
     console.log(src, "->", dst);
 
