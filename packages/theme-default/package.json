@@ -33,8 +33,7 @@
     "clean": "rimraf dist src/_version.scss",
     "prepack": "npm run build",
     "presass": "node generate-version.js",
-    "sass": "sass src:dist --style expanded --no-source-map",
-    "postsass": "node scripts/extract-sass-variables.mjs src/palette-variables.scss dist/palette.json"
+    "sass": "sass src:dist --style expanded --no-source-map"
   },
   "devDependencies": {
     "@adobe/css-tools": "4.4.4",

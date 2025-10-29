@@ -53,9 +53,9 @@ function parseDoc(text) {
 
 /**
  * @param {string} filename
- * @returns {VariableGroup[]}
+ * @returns {Promise<VariableGroup[]>}
  */
-async function extractSassVariables(filename) {
+async function parse(filename) {
     console.log("Parsing", filename);
     const content = await fs.readFile(filename, "utf-8");
     const cssProcessor = postcss();
@@ -126,14 +126,16 @@ async function extractSassVariables(filename) {
  * @param {string} src
  * @param {string} dst
  */
-async function run(src, dst) {
+export async function extractSassVariables(src, dst) {
+    console.group("Extracting Sass variables from:");
+    console.log(src, "->", dst);
+
     const parsed = path.parse(dst);
     const dts = `${dst}.d.ts`;
-    const variables = await extractSassVariables(src);
+    const variables = await parse(src);
     await fs.mkdir(parsed.dir, { recursive: true });
     await fs.writeFile(dst, JSON.stringify(variables, null, 2), "utf-8");
     await fs.writeFile(dts, dtsContent, "utf-8");
-}
 
-const [src, dst] = process.argv.slice(2);
-run(src, dst);
+    console.groupEnd();
+}

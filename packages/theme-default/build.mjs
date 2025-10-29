@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { parse } from "@adobe/css-tools";
 import { getVariables } from "get-css-variables";
+import { extractSassVariables } from "./scripts/extract-sass-variables.mjs";
 
 /**
  * @typedef {import("@adobe/css-tools").CssAtRuleAST} CssAtRuleAST
@@ -80,7 +81,8 @@ function* getTokens(rule, palette) {
  * @returns {Promise<void>}
  */
 async function extractCssVariables(pattern) {
-    console.group("Extracting variables from:");
+    console.log();
+    console.group("Extracting CSS variables from:");
 
     for await (const file of fs.glob(pattern)) {
         const content = await fs.readFile(file, "utf-8");
@@ -124,8 +126,9 @@ async function buildMetadata(src, dst) {
     await fs.writeFile(`${dst}.d.mts`, metadataDts, "utf-8");
 }
 
-await buildMetadata("./dist/theme-light.css", "./dist/metadata");
+await extractSassVariables("src/palette-variables.scss", "dist/palette.json");
 await extractCssVariables("dist/*.css");
+await buildMetadata("./dist/theme-light.css", "./dist/metadata");
 
 await fs.copyFile(
     "src/deprecated-variables.json",
