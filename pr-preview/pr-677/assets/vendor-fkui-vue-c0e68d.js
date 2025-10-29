@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, unref, createCommentVNode, Fragment, createBlock, createApp, resolveComponent, withKeys, createVNode, toDisplayString, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Teleport, normalizeStyle, withDirectives, vShow, Transition, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, debounce, alertScreenReader, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -16902,7 +16902,7 @@ function goToNextPage(table) {
 }
 function dispatchPaginationEvent(table, type) {
   assertRef(table.tr);
-  const paginationEvent = new CustomEvent(`pagination:${type}`, {
+  const paginationEvent = new CustomEvent(`paginateDataset:${type}`, {
     bubbles: true
   });
   table.tr.value[0].dispatchEvent(paginationEvent);
@@ -19682,9 +19682,9 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   })), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("div", _hoisted_5$2, [createElementVNode("div", _hoisted_6$2, [renderSlot(_ctx.$slots, "right")])])], 512)]);
 }
 var FPageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$5]]);
-var paginationKey = Symbol("pagination");
+var paginateDatasetKey = Symbol("paginateDataset");
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
-  __name: "FPagination",
+  __name: "FPaginateDataset",
   props: {
     items: {
       default: () => []
@@ -19716,7 +19716,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     onMounted(() => {
       refetchData();
     });
-    provide(paginationKey, {
+    provide(paginateDatasetKey, {
       currentPage,
       numberOfPages
     });
@@ -19749,11 +19749,11 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
-        "onPagination:first": goToFirstPage,
-        "onPagination:previous": goToPreviousPage2,
-        "onPagination:next": goToNextPage2,
-        "onPagination:last": goToLastPage,
-        "onPagination:page": goToPage
+        "on:paginateDataset:first": goToFirstPage,
+        "on:paginateDataset:previous": goToPreviousPage2,
+        "on:paginateDataset:next": goToNextPage2,
+        "on:paginateDataset:last": goToLastPage,
+        "on:paginateDataset:page": goToPage
       }, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         items: currentPageItems.value,
         numberOfItems: currentPageItemLength.value,
@@ -19846,7 +19846,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     }
   },
   setup(__props) {
-    const pagination = inject(paginationKey, {
+    const paginateDataset = inject(paginateDatasetKey, {
       currentPage: ref(1),
       numberOfPages: ref(1)
     });
@@ -19854,11 +19854,11 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     const $t2 = useTranslate();
     const currentPage = computed(() => {
       var _props$currentPage;
-      return (_props$currentPage = __props.currentPage) !== null && _props$currentPage !== void 0 ? _props$currentPage : pagination.currentPage.value;
+      return (_props$currentPage = __props.currentPage) !== null && _props$currentPage !== void 0 ? _props$currentPage : paginateDataset.currentPage.value;
     });
     const numberOfPages = computed(() => {
       var _props$numberOfPages;
-      return (_props$numberOfPages = __props.numberOfPages) !== null && _props$numberOfPages !== void 0 ? _props$numberOfPages : pagination.numberOfPages.value;
+      return (_props$numberOfPages = __props.numberOfPages) !== null && _props$numberOfPages !== void 0 ? _props$numberOfPages : paginateDataset.numberOfPages.value;
     });
     const maxPagesShown$1 = computed(() => maxPagesShown(__props.numberOfPagesToShow));
     const pages = computed(() => computePages({
@@ -19909,19 +19909,19 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     }
     function onClickPreviousButton() {
       assertRef(paginatorRef);
-      paginatorRef.value.dispatchEvent(new CustomEvent(`pagination:previous`, {
+      paginatorRef.value.dispatchEvent(new CustomEvent(`paginateDataset:previous`, {
         bubbles: true
       }));
     }
     function onClickNextButton() {
       assertRef(paginatorRef);
-      paginatorRef.value.dispatchEvent(new CustomEvent(`pagination:next`, {
+      paginatorRef.value.dispatchEvent(new CustomEvent(`paginateDataset:next`, {
         bubbles: true
       }));
     }
     function onClickPageButton(page) {
       assertRef(paginatorRef);
-      paginatorRef.value.dispatchEvent(new CustomEvent(`pagination:page`, {
+      paginatorRef.value.dispatchEvent(new CustomEvent(`paginateDataset:page`, {
         bubbles: true,
         detail: {
           page
@@ -21085,7 +21085,7 @@ export {
   FOutputField,
   FPageHeader,
   _sfc_main$x as FPageLayout,
-  _sfc_main$7 as FPagination,
+  _sfc_main$7 as FPaginateDataset,
   _sfc_main$6 as FPaginator,
   _sfc_main$E as FPercentTextField,
   _sfc_main$H as FPersonnummerTextField,

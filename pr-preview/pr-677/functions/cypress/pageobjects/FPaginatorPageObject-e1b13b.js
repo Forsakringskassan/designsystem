@@ -28,9 +28,9 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FPaginatorPageObject/FPaginatorPageObject.vue:FPaginatorPageObject-18c791.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FPaginatorPageObject/FPaginatorPageObject.vue:FPaginatorPageObject-e1b13b.js
 import { defineComponent as _defineComponent } from "vue";
-import { FInteractiveTable, FPagination, FPaginator, FTableColumn } from "@fkui/vue";
+import { FInteractiveTable, FPaginateDataset, FPaginator, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FPaginatorPageObject",
@@ -60,8 +60,8 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     ];
     const __returned__ = { rows, get FInteractiveTable() {
       return FInteractiveTable;
-    }, get FPagination() {
-      return FPagination;
+    }, get FPaginateDataset() {
+      return FPaginateDataset;
     }, get FPaginator() {
       return FPaginator;
     }, get FTableColumn() {
@@ -73,7 +73,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
-  return _openBlock(), _createBlock($setup["FPagination"], {
+  return _openBlock(), _createBlock($setup["FPaginateDataset"], {
     items: $setup.rows,
     "items-per-page": 1
   }, {
@@ -156,7 +156,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-18c791"
+  selector: "#example-e1b13b"
 });
 export {
   render

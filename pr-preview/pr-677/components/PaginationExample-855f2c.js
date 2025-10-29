@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/pagination/examples/PaginationExample.vue:PaginationExample-fb4ae0.js
+// virtual-entry:virtual:docs/components/pagination/examples/PaginationExample.vue:PaginationExample-855f2c.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
@@ -36,7 +36,7 @@ import {
   FFieldset,
   FInteractiveTable,
   FNumericTextField,
-  FPagination,
+  FPaginateDataset,
   FPaginator,
   FRadioField,
   FSelectField,
@@ -148,10 +148,10 @@ var persons = [
   { id: 100, firstName: "Jeni", lastName: "Gummie" }
 ];
 
-// virtual-entry:virtual:docs/components/pagination/examples/PaginationExample.vue:PaginationExample-fb4ae0.js
+// virtual-entry:virtual:docs/components/pagination/examples/PaginationExample.vue:PaginationExample-855f2c.js
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, normalizeClass as _normalizeClass, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "FPaginationLiveExample",
+  name: "PaginationExample",
   components: {
     FCheckboxField,
     FFieldset,
@@ -180,7 +180,7 @@ var exampleComponent = defineComponent({
         FFieldset,
         FInteractiveTable,
         FNumericTextField,
-        FPagination,
+        FPaginateDataset,
         FPaginator,
         FRadioField,
         FSelectField,
@@ -237,7 +237,7 @@ var exampleComponent = defineComponent({
       return (
         /* HTML */
         `
-                <f-pagination ${this.items} ${this.itemsPerPage}>
+                <f-paginate-dataset ${this.items} ${this.itemsPerPage}>
                     <template #default="{ items: currentPageItems }">
                         ${this.headerPaginator}
                         <${this.component} ${this.componentAttributes} :rows="currentPageItems">
@@ -252,7 +252,7 @@ var exampleComponent = defineComponent({
                         </${this.component}>
                         ${this.footerPaginator}
                     </template>
-                </f-pagination>
+                </f-paginate-dataset>
             `
       );
     }
@@ -498,7 +498,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-fb4ae0"
+  selector: "#example-855f2c"
 });
 export {
   render
