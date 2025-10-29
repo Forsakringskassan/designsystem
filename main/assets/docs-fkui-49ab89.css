@@ -272,7 +272,7 @@
     --fkds-color-select-background-secondary-hover: #dbe9e2;
     --fkds-color-select-background-secondary-active: #dbe9e2;
     --fkds-color-select-background-secondary-focus: #dbe9e2;
-    --fkui-theme-default-version: "6.23.0";
+    --fkui-theme-default-version: "6.24.0";
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -524,7 +524,7 @@
     --fkds-color-select-background-secondary-hover: #35805b;
     --fkds-color-select-background-secondary-active: #35805b;
     --fkds-color-select-background-secondary-focus: #35805b;
-    --fkui-theme-default-version: "6.23.0";
+    --fkui-theme-default-version: "6.24.0";
   }
 }
 .code-preview__preview,
