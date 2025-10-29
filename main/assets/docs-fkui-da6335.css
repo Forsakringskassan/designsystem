@@ -532,7 +532,7 @@
 .user-theme {
   --f-font-family: "Inter", arial, "Helvetica Neue", sans-serif;
   --f-font-weight-normal: 400;
-  --f-font-weight-medium: 500;
+  --f-font-weight-medium: 600;
   --f-font-weight-bold: 700;
   --f-logo-image-small: url("./images/fk-logo-primary-small.svg"), $solid-color;
   --f-logo-image-large: url("./images/fk-logo-primary-large.svg"), $solid-color;
