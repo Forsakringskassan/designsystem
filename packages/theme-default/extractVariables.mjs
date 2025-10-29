@@ -1,11 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { getVariables } from "get-css-variables";
-import { glob } from "glob";
 
 console.group("Extracting variables from:");
 
-for (const file of await glob("dist/*.css")) {
+for await (const file of fs.glob("dist/*.css")) {
     const content = await fs.readFile(file, "utf-8");
     const variables = getVariables(content);
     const value = `const value = ${JSON.stringify(variables, null, 2)};`;

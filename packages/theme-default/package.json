@@ -40,7 +40,6 @@
   "devDependencies": {
     "@adobe/css-tools": "4.4.4",
     "get-css-variables": "1.0.0",
-    "glob": "11.0.3",
     "npm-run-all2": "8.0.4",
     "postcss": "8.5.6",
     "postcss-scss": "4.0.9",
