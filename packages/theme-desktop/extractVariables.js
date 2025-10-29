@@ -8,7 +8,12 @@ const { globSync } = require("glob");
 globSync("dist/*.css").forEach((file) => {
     const content = moduleReturnVariables(fs.readFileSync(file, "utf-8"));
     const fileName = path.basename(file, path.extname(file));
+    const dts = [
+        `declare const value: Record<string, string>;`,
+        `export = value;`,
+    ].join("\n");
     fs.writeFileSync(`dist/${fileName}.js`, content);
+    fs.writeFileSync(`dist/${fileName}.d.ts`, dts);
 });
 
 fs.mkdirSync("dist", { recursive: true });
