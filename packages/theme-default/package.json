@@ -28,20 +28,16 @@
     "type-stub.d.ts"
   ],
   "scripts": {
-    "build": "run-s clean sass build:metadata",
-    "build:metadata": "node build.mjs",
-    "clean": "rimraf dist src/_version.scss",
-    "prepack": "npm run build",
-    "presass": "node generate-version.js",
-    "sass": "sass src:dist --style expanded --no-source-map"
+    "build": "node build.mjs",
+    "prepack": "npm run build"
   },
   "devDependencies": {
     "@adobe/css-tools": "4.4.4",
+    "@forsakringskassan/sass-module-importer": "1.1.5",
+    "cssnano": "7.1.1",
     "get-css-variables": "1.0.0",
-    "npm-run-all2": "8.0.4",
     "postcss": "8.5.6",
     "postcss-scss": "4.0.9",
-    "rimraf": "6.0.1",
     "sass": "1.93.2"
   },
   "engines": {
