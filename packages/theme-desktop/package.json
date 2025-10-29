@@ -1,6 +1,6 @@
 {
   "name": "@fkui/theme-desktop",
-  "version": "6.23.0",
+  "version": "6.24.0",
   "description": "FK Themes",
   "keywords": [
     "fkui",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@adobe/css-tools": "4.4.4",
-    "@fkui/theme-default": "6.23.0",
+    "@fkui/theme-default": "6.24.0",
     "@forsakringskassan/sass-module-importer": "1.1.5",
     "cssnano": "7.1.1",
     "get-css-variables": "1.0.0",

@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 6.24.0 (2025-10-29)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** semantic tokens expandable paragraph (refs SFKUI-6500) ff25669
+* **@fkui/vue-labs:** table cell api (refs SFKUI-6500) e1a91dd
+
+### Bug Fixes
+
+* **@fkui/font-default:** add missing font directory to NPM package (refs SFKUI-6500) 1488ceb
+
 ## 6.23.0 (2025-10-24)
 
 ### Features

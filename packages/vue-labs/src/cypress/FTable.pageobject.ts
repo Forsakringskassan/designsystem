@@ -2,7 +2,7 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public
- * @since %version%
+ * @since v6.24.0
  */
 export class FTablePageObject implements BasePageObject {
     public selector: string;
