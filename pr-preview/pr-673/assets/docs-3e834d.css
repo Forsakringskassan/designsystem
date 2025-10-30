@@ -2960,7 +2960,7 @@ input[type=search]:focus,
   margin-bottom: 0 !important;
 }
 .expandable-panel__heading button {
-  background-color: var(--fkds-color-background-primary);
+  background-color: var(--fkds-color-background-secondary);
   border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
   border-radius: var(--f-border-radius-medium);
   color: var(--fkds-color-text-primary);
@@ -3014,7 +3014,7 @@ input[type=search]:focus,
   transition: height var(--f-animation-duration-medium) ease-in;
 }
 .expandable-panel__body {
-  background-color: var(--fkds-color-background-primary);
+  background-color: var(--fkds-color-background-secondary);
   border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);
   border-top: 0;
   border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);
