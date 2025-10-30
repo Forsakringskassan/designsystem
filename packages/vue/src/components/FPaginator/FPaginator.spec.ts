@@ -4,9 +4,9 @@ import FPaginator from "./FPaginator.vue";
 describe("page counter", () => {
     it.each`
         currentPage | numberOfPages | expectedText
-        ${1}        | ${3}          | ${"Sida 1 av 3"}
-        ${2}        | ${3}          | ${"Sida 2 av 3"}
-        ${3}        | ${3}          | ${"Sida 3 av 3"}
+        ${1}        | ${3}          | ${"1 av 3"}
+        ${2}        | ${3}          | ${"2 av 3"}
+        ${3}        | ${3}          | ${"3 av 3"}
     `(
         "should display correct text",
         ({ currentPage, numberOfPages, expectedText }) => {
