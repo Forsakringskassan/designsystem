@@ -4925,7 +4925,7 @@ var _hoisted_7$d = {
   class: "modal__title",
   tabindex: "-1"
 };
-var _hoisted_8$a = {
+var _hoisted_8$9 = {
   ref: "modalContent",
   class: "modal__content",
   tabindex: "-1"
@@ -4955,7 +4955,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("div", _hoisted_4$u, [createElementVNode("div", _hoisted_5$o, [createElementVNode("div", _hoisted_6$i, [createElementVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$a, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$4, [createElementVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$4, [createElementVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -7347,7 +7347,7 @@ var _hoisted_6$h = {
   "aria-hidden": "true"
 };
 var _hoisted_7$c = ["colspan"];
-var _hoisted_8$9 = ["colspan"];
+var _hoisted_8$8 = ["colspan"];
 var _hoisted_9$6 = {
   key: 0,
   "aria-hidden": "true"
@@ -7410,7 +7410,7 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
       class: "calendar-month__cell",
       colspan: _ctx.getDayEndOffset(week.days),
       "aria-hidden": "true"
-    }, null, 8, _hoisted_8$9)) : createCommentVNode("", true)]);
+    }, null, 8, _hoisted_8$8)) : createCommentVNode("", true)]);
   }), 128)), _cache[20] || (_cache[20] = createTextVNode()), _ctx.weeks.length < 5 ? (openBlock(), createElementBlock("tr", _hoisted_9$6, [createElementVNode("td", {
     class: "calendar-month__cell",
     colspan: _ctx.totalCols,
@@ -7792,7 +7792,7 @@ var _hoisted_6$g = {
   class: "sr-only"
 };
 var _hoisted_7$b = ["aria-disabled", "aria-live"];
-var _hoisted_8$8 = {
+var _hoisted_8$7 = {
   class: "sr-only"
 };
 var _hoisted_9$5 = ["aria-disabled", "aria-live"];
@@ -7825,7 +7825,7 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-disabled": _ctx.previousDisabled,
     "aria-live": _ctx.isFocused("previousButton") ? "polite" : "off",
     onClick: _cache[1] || (_cache[1] = withModifiers((...args) => _ctx.onClickPreviousButton && _ctx.onClickPreviousButton(...args), ["stop"]))
-  }, [createElementVNode("span", _hoisted_8$8, toDisplayString(_ctx.previousSrText), 1), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
+  }, [createElementVNode("span", _hoisted_8$7, toDisplayString(_ctx.previousSrText), 1), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.previousIconClasses),
     name: "arrow-right"
   }, null, 8, ["class"])], 8, _hoisted_7$b)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), !_ctx.yearSelectorOpen ? (openBlock(), createElementBlock("button", {
@@ -11324,7 +11324,7 @@ var _hoisted_7$a = {
   ref: "tooltipAttachTo",
   class: "label"
 };
-var _hoisted_8$7 = {
+var _hoisted_8$6 = {
   "aria-hidden": "true"
 };
 var _hoisted_9$4 = {
@@ -11351,7 +11351,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)), _cache[7] || (_cache[7] = createTextVNode()), _ctx.hasCheckbox ? (openBlock(), createElementBlock("span", _hoisted_4$m, [_ctx.children.length === 1 ? (openBlock(), createElementBlock("span", _hoisted_5$i, toDisplayString(_ctx.checkboxCheckedScreenReaderText), 1)) : (openBlock(), createElementBlock("span", _hoisted_6$e, toDisplayString(_ctx.numberOfCheckedCheckboxesScreenText), 1))])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.hasTooltipSlot ? (openBlock(), createElementBlock(Fragment, {
     key: 1
-  }, [createElementVNode("div", _hoisted_7$a, [createElementVNode("span", _hoisted_8$7, [renderSlot(_ctx.$slots, "label")])], 512), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", _hoisted_7$a, [createElementVNode("span", _hoisted_8$6, [renderSlot(_ctx.$slots, "label")])], 512), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(["label", _ctx.groupLabelClass]),
     "aria-hidden": "true"
@@ -14626,7 +14626,7 @@ var _hoisted_6$a = {
 var _hoisted_7$7 = {
   key: 1
 };
-var _hoisted_8$6 = ["colspan"];
+var _hoisted_8$5 = ["colspan"];
 var _sfc_main$A = /* @__PURE__ */ defineComponent({
   ...{
     inheritAttrs: false
@@ -14811,7 +14811,7 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(
         /** Text som visas som standardinnehåll i slotten `empty` (när tabellen är tom). */
         unref($t2)("fkui.data-table.empty", "Tabellen \xE4r tom")
-      ), 1)])], 8, _hoisted_8$6)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
+      ), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
         return openBlock(), createElementBlock("tr", {
           key: rowKey(row),
           class: "table__row"
@@ -16452,7 +16452,7 @@ var _hoisted_6$9 = ["id"];
 var _hoisted_7$6 = {
   class: "expandable-panel__body"
 };
-var _hoisted_8$5 = {
+var _hoisted_8$4 = {
   key: 0,
   class: "expandable-panel__outside"
 };
@@ -16489,7 +16489,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [withDirectives(createElementVNode("div", {
       id: _ctx.id,
       class: "expandable-panel__content"
-    }, [createElementVNode("div", _hoisted_7$6, [renderSlot(_ctx.$slots, "default")]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasOutsideSlot ? (openBlock(), createElementBlock("div", _hoisted_8$5, [renderSlot(_ctx.$slots, "outside")])) : createCommentVNode("", true)], 8, _hoisted_6$9), [[vShow, _ctx.expanded]])]),
+    }, [createElementVNode("div", _hoisted_7$6, [renderSlot(_ctx.$slots, "default")]), _cache[5] || (_cache[5] = createTextVNode()), _ctx.hasOutsideSlot ? (openBlock(), createElementBlock("div", _hoisted_8$4, [renderSlot(_ctx.$slots, "outside")])) : createCommentVNode("", true)], 8, _hoisted_6$9), [[vShow, _ctx.expanded]])]),
     _: 3
   })], 2);
 }
@@ -17032,7 +17032,7 @@ var _hoisted_6$6 = {
 var _hoisted_7$4 = {
   class: "sr-only"
 };
-var _hoisted_8$4 = {
+var _hoisted_8$3 = {
   key: 1,
   scope: "col"
 };
@@ -17518,7 +17518,7 @@ var _sfc_main$l = /* @__PURE__ */ defineComponent({
       }))), _cache[4] || (_cache[4] = createTextVNode()), unref(isExpandableTable) ? (openBlock(), createElementBlock("th", _hoisted_6$6, [createElementVNode("span", _hoisted_7$4, toDisplayString(
         /** Kolumnrubrik som visas för skärmläsare om funktionen för expanderbara rader (`expandable-attribute`) aktiveras */
         unref($t2)("fkui.interactive-table.expand", "Expandera")
-      ), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$4, [createElementVNode("span", _hoisted_9$3, toDisplayString(
+      ), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$3, [createElementVNode("span", _hoisted_9$3, toDisplayString(
         /** Kolumnrubrik som visas för skärmläsare om funktionen för valbara rader (`selectable`) aktiveras */
         unref($t2)("fkui.interactive-table.select", "Markera")
       ), 1)])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
@@ -18111,7 +18111,7 @@ var _hoisted_6$5 = {
   class: "list__item__selectpane__input"
 };
 var _hoisted_7$3 = ["id"];
-var _hoisted_8$3 = {
+var _hoisted_8$2 = {
   key: 0,
   class: "list__item"
 };
@@ -18408,7 +18408,7 @@ var _sfc_main$h = /* @__PURE__ */ defineComponent({
           }))]),
           _: 2
         }, 1032, ["href", "onClick"]))], 42, _hoisted_4$7);
-      }), 128)), _cache[2] || (_cache[2] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("li", _hoisted_8$3, [createElementVNode("div", _hoisted_9$2, [renderSlot(_ctx.$slots, "empty", {}, () => [createElementVNode("em", null, toDisplayString(unref($t2)("fkui.list.empty", "Listan \xE4r tom")), 1)])])])) : createCommentVNode("", true)], 512));
+      }), 128)), _cache[2] || (_cache[2] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("li", _hoisted_8$2, [createElementVNode("div", _hoisted_9$2, [renderSlot(_ctx.$slots, "empty", {}, () => [createElementVNode("em", null, toDisplayString(unref($t2)("fkui.list.empty", "Listan \xE4r tom")), 1)])])])) : createCommentVNode("", true)], 512));
     };
   }
 });
@@ -19381,7 +19381,7 @@ var _hoisted_6$3 = {
 var _hoisted_7$2 = {
   class: "imenu__list__anchor-container"
 };
-var _hoisted_8$2 = ["aria-expanded"];
+var _hoisted_8$1 = ["aria-expanded"];
 var _hoisted_9$1 = {
   class: "sr-only"
 };
@@ -19430,7 +19430,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("span", _hoisted_9$1, [createElementVNode("span", null, toDisplayString(_ctx.popupMenuSrText) + "\xA0", 1)]), createTextVNode(" " + toDisplayString(_ctx.popupLabel) + " ", 1), createVNode(_component_f_icon, {
     name: "arrow-down",
     class: "imenu__list__anchor-icon-right"
-  })], 8, _hoisted_8$2)])], 2)])) : createCommentVNode("", true)], 32), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_popup_menu, {
+  })], 8, _hoisted_8$1)])], 2)])) : createCommentVNode("", true)], 32), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_popup_menu, {
     ref: "popup-menu",
     modelValue: _ctx.selectedItem,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.selectedItem = $event),
@@ -19819,17 +19819,13 @@ var _hoisted_2$4 = ["aria-label"];
 var _hoisted_3$3 = {
   "data-test": "label"
 };
-var _hoisted_4$2 = {
-  "data-test": "page-buttons",
-  class: "paginator__pages"
-};
-var _hoisted_5$1 = ["data-test", "aria-current", "aria-label", "onClick"];
-var _hoisted_6$1 = {
+var _hoisted_4$2 = ["data-test", "aria-current", "aria-label", "onClick"];
+var _hoisted_5$1 = {
   "data-test": "page-counter",
   class: "paginator__page-counter"
 };
-var _hoisted_7$1 = ["aria-label"];
-var _hoisted_8$1 = {
+var _hoisted_6$1 = ["aria-label"];
+var _hoisted_7$1 = {
   "data-test": "label"
 };
 var _sfc_main$6 = /* @__PURE__ */ defineComponent({
@@ -19948,7 +19944,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
         onClick: _cache[0] || (_cache[0] = ($event) => onClickPreviousButton())
       }, [createVNode(FIcon, {
         name: "chevrons-left"
-      }), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("span", _hoisted_3$3, toDisplayString(previousButtonLabel.value), 1)], 8, _hoisted_2$4), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("div", _hoisted_4$2, [(openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page) => {
+      }), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("span", _hoisted_3$3, toDisplayString(previousButtonLabel.value), 1)], 8, _hoisted_2$4), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page) => {
         return openBlock(), createElementBlock("button", {
           key: page,
           "data-test": "page-" + page + "-button",
@@ -19957,17 +19953,17 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
           "aria-current": page === currentPage.value ? "page" : "false",
           "aria-label": pageLabel(page),
           onClick: ($event) => onClickPageButton(page)
-        }, toDisplayString(showGap(page) ? "..." : page), 11, _hoisted_5$1);
-      }), 128))]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_6$1, toDisplayString(pageCounterLabel.value), 1), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("button", {
+        }, toDisplayString(showGap(page) ? "..." : page), 11, _hoisted_4$2);
+      }), 128)), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_5$1, toDisplayString(pageCounterLabel.value), 1), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("button", {
         "data-test": "next-button",
         type: "button",
         class: "paginator__next",
         "aria-label": nextButtonLabel.value,
         onClick: _cache[1] || (_cache[1] = ($event) => onClickNextButton())
-      }, [createElementVNode("span", _hoisted_8$1, toDisplayString(nextButtonLabel.value), 1), _cache[3] || (_cache[3] = createTextVNode()), createVNode(FIcon, {
+      }, [createElementVNode("span", _hoisted_7$1, toDisplayString(nextButtonLabel.value), 1), _cache[3] || (_cache[3] = createTextVNode()), createVNode(FIcon, {
         name: "arrow-right",
         class: "paginator__icon"
-      })], 8, _hoisted_7$1)], 8, _hoisted_1$6);
+      })], 8, _hoisted_6$1)], 8, _hoisted_1$6);
     };
   }
 });
