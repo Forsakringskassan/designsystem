@@ -7,7 +7,10 @@ $button-height: 2.5rem;
 $page-width: $button-height;
 $button-width: 8rem;
 $number-of-pages: 9; // References `upperLimit` in FPaginator.logic
-$paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-width) + (($number-of-pages + 20) * $gap-size));
+
+//                      ____________                _________________________________________________________________                 ____________
+//                     | Föregående |              | 1 |   | 2 |  | 3 |   | 4 |  | 5 |   | 6 |   | 7 |   | 8 |   | 9 |               |   Nästa    |
+$paginator-width-full: $button-width + $gap-size + $page-width * $number-of-pages + $gap-size * ($number-of-pages - 1) + $gap-size + $button-width;
 
 .paginator {
     display: flex;
@@ -60,12 +63,12 @@ $paginator-width-full: calc((2 * $button-width) + ($number-of-pages * $page-widt
         color: $paginator-page-counter-color-text-default;
     }
 
-    @media (max-width: #{$paginator-width-full}) {
+    @media (width < $paginator-width-full) {
         &__page-counter {
             display: inline;
         }
 
-        &__pages {
+        &__page {
             display: none;
         }
     }
