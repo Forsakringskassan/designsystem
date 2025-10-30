@@ -84,11 +84,27 @@ const previousButtonLabel = computed(() =>
     $t("fkui.paginator.previous", "Föregående"),
 );
 
+const pageCounterAriaLabel = computed(() =>
+    /**
+     * Page counter (shown for screen readers).
+     */
+    $t("fkui.paginator.page-counter-aria", "Sida {{ currentPage }} av {{ numberOfPages }}", {
+        /**
+         * The current page number.
+         */
+        currentPage: currentPage.value,
+        /**
+         * The total number of pages.
+         */
+        numberOfPages: numberOfPages.value,
+    }),
+);
+
 const pageCounterLabel = computed(() =>
     /**
      * Page counter.
      */
-    $t("fkui.paginator.page-counter", "Sida {{ currentPage }} av {{ numberOfPages }}", {
+    $t("fkui.paginator.page-counter", "{{ currentPage }} av {{ numberOfPages }}", {
         /**
          * The current page number.
          */
@@ -174,7 +190,10 @@ function showGap(page: number): boolean {
             {{ showGap(page) ? "..." : page }}
         </button>
 
-        <div data-test="page-counter" class="paginator__page-counter">{{ pageCounterLabel }}</div>
+        <div data-test="page-counter" class="paginator__page-counter">
+            <span class="sr-only">{{ pageCounterAriaLabel }}</span>
+            <span aria-hidden>{{ pageCounterLabel }}</span>
+        </div>
 
         <button
             data-test="next-button"

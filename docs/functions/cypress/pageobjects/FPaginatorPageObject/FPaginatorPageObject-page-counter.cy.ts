@@ -6,6 +6,6 @@ it("pageCounter() should contain correct text", () => {
 
     /* --- cut above --- */
     const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
-    paginator.pageCounter().should("contain.text", "Sida 1 av 20");
+    paginator.pageCounter().should("contain.text", "1 av 20");
     /* --- cut below --- */
 });

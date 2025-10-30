@@ -3,13 +3,13 @@ import FPaginator from "./FPaginator.vue";
 
 describe("page counter", () => {
     it.each`
-        currentPage | numberOfPages | expectedText
-        ${1}        | ${3}          | ${"Sida 1 av 3"}
-        ${2}        | ${3}          | ${"Sida 2 av 3"}
-        ${3}        | ${3}          | ${"Sida 3 av 3"}
+        currentPage | numberOfPages | expectedText | exceptedAriaText
+        ${1}        | ${3}          | ${"1 av 3"}  | ${"Sida 1 av 3"}
+        ${2}        | ${3}          | ${"2 av 3"}  | ${"Sida 2 av 3"}
+        ${3}        | ${3}          | ${"3 av 3"}  | ${"Sida 3 av 3"}
     `(
         "should display correct text",
-        ({ currentPage, numberOfPages, expectedText }) => {
+        ({ currentPage, numberOfPages, expectedText, exceptedAriaText }) => {
             const wrapper = mount(FPaginator, {
                 attrs: {
                     currentPage,
@@ -17,8 +17,13 @@ describe("page counter", () => {
                 },
             });
             expect(
-                wrapper.find("[data-test='page-counter']").element.innerHTML,
+                wrapper.find("[data-test='page-counter'] [aria-hidden]").element
+                    .innerHTML,
             ).toEqual(expectedText);
+            expect(
+                wrapper.find("[data-test='page-counter'] .sr-only").element
+                    .innerHTML,
+            ).toEqual(exceptedAriaText);
         },
     );
 });
