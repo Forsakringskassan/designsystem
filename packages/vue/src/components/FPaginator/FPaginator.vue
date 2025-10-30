@@ -2,7 +2,6 @@
 import { computed, inject, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { useTranslate } from "../../plugins";
-import FIcon from "../FIcon/FIcon.vue";
 import { paginateDatasetKey } from "../FPaginateDataset";
 import { maxPagesShown as maxPagesShownFn, pageClasses } from "./FPaginator.logic";
 import { computePages } from "./compute-pages";
@@ -148,7 +147,6 @@ function showGap(page: number): boolean {
             :aria-label="previousButtonLabel"
             @click="onClickPreviousButton()"
         >
-            <f-icon name="chevrons-left" />
             <span data-test="label">{{ previousButtonLabel }}</span>
         </button>
 
@@ -175,7 +173,6 @@ function showGap(page: number): boolean {
             @click="onClickNextButton()"
         >
             <span data-test="label">{{ nextButtonLabel }}</span>
-            <f-icon name="arrow-right" class="paginator__icon" />
         </button>
     </nav>
 </template>
