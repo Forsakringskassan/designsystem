@@ -1490,7 +1490,7 @@ module.exports = defineMetadata({
                 required: false,
             },
             "items-length": {
-                allowed: allowedIfAttributeIsPresent("fetch-data"),
+                allowed: allowedIfAttributeIsAbsent("items"),
                 required: false,
             },
             "items-per-page": {
