@@ -166,7 +166,7 @@ Elementet ersätter sidknapparna i kompakt läge.
 ### Syntax
 
 ```ts nocompile
-pageButton();
+pageCounter();
 ```
 
 #### Returvärde
