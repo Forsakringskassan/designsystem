@@ -42,10 +42,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-2cd3c0.json"
+            href="../search-data-f0ae84.json"
             as="fetch"
             crossorigin
-            integrity="sha384-zaqxr7LFzxV3pcXAc5oJckcRQ1md7xs6bC7olrriMHpYGr4na3Twwn9lte3c9OV3"
+            integrity="sha384-dZ9g0/X4h0qBNZGqSLu+uPIc1TeTl3IScKwbih7PM/p6sTedyOIJskkTJcCezl/A"
             id="search-data"
         />
     </head>
@@ -204,7 +204,7 @@
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-50e667"></div>
+        <div id="example-7a8d5a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -230,7 +230,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-50e667.js"></script>
+        <script type="module" src="./FTableExample-7a8d5a.js"></script>
     </div>
                 <div>
             <button
@@ -249,11 +249,13 @@ body {
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
+
+<span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
 
@@ -321,9 +323,7 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">`Ta bort <span class="hljs-subst">${row.id}</span>`</span>;
         },
-        <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
-            <span class="hljs-title function_">onButtonClick</span>(row.<span class="hljs-property">id</span>);
-        },
+        <span class="hljs-attr">onClick</span>: onButtonClick,
     },
     {
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Länk&quot;</span>,
@@ -465,8 +465,11 @@ interface <span class="hljs-title class_">Row</span> {
 
 <span class="hljs-keyword">const</span> mySelectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>]]);
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">onButtonClick</span>(<span class="hljs-params">id: string</span>): <span class="hljs-keyword">void</span> {
-    <span class="hljs-title function_">alert</span>(<span class="hljs-string">`Du klickade på rad med id <span class="hljs-subst">${id}</span>`</span>);
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onButtonClick</span>(<span class="hljs-params">row: Row</span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-title function_">assertRef</span>(tableRef);
+    tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+        rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">splice</span>(rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(row), <span class="hljs-number">1</span>);
+    });
 }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -475,6 +478,7 @@ interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span>
+                <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span>
                 <span class="hljs-attr">v-model:selected-rows</span>=<span class="hljs-string">&quot;mySelectedRows&quot;</span>
                 <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span>
                 <span class="hljs-attr">:columns</span>
@@ -531,7 +535,7 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-535874"></div>
+        <div id="example-0bab3e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -557,7 +561,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRadioExample-535874.js"></script>
+        <script type="module" src="./FTableRadioExample-0bab3e.js"></script>
     </div>
                 <div>
             <button
@@ -843,7 +847,7 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-c2d3c7"></div>
+        <div id="example-09626f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -869,7 +873,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExpandableRows-c2d3c7.js"></script>
+        <script type="module" src="./FTableExpandableRows-09626f.js"></script>
     </div>
                 <div>
             <button
@@ -1122,13 +1126,13 @@ interface <span class="hljs-title class_">Row</span> {
             >
                 
                 <div class="code-preview__preview">
-        <div id="example-1587c4"></div>
+        <div id="example-877336"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRowHeaderExample-1587c4.js"></script>
+        <script type="module" src="./FTableRowHeaderExample-877336.js"></script>
     </div>
                 <div>
             <button
