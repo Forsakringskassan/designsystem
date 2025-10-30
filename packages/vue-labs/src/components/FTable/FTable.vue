@@ -78,8 +78,10 @@ const ariaRowcount = computed((): number => {
 });
 
 const columnCount = computed((): number => {
-    const selectableCol = selectable ? 1 : 0;
-    return columns.value.length + selectableCol;
+    const expandCol = isTreegrid.value ? 1 : 0;
+    const selectCol = selectable ? 1 : 0;
+    const count = columns.value.length + expandCol + selectCol;
+    return Math.max(1, count);
 });
 
 const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
