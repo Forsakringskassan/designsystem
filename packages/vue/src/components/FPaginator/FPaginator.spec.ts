@@ -126,6 +126,7 @@ describe("page buttons", () => {
 });
 
 describe("number of pages to show", () => {
+    // eslint-disable-next-line jest/no-disabled-tests -- Await adjustments in FPaginatorPageObject
     it.skip("should show 9 pages as default", () => {
         const wrapper = mount(FPaginator, {
             attrs: {
@@ -141,6 +142,7 @@ describe("number of pages to show", () => {
 });
 
 describe("pages and gaps", () => {
+    // eslint-disable-next-line jest/no-disabled-tests -- Await adjustments in FPaginatorPageObject
     it.skip("should show the correct pages and gaps", () => {
         const wrapper = mount(FPaginator, {
             attrs: {
