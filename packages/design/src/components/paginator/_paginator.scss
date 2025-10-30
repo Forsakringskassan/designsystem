@@ -18,6 +18,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
     justify-content: center;
     height: 2.5rem;
     white-space: nowrap;
+    container-type: inline-size;
 
     &__page,
     &__previous,
@@ -62,7 +63,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
         color: $paginator-page-counter-color-text-default;
     }
 
-    @media (width < $paginator-width-full) {
+    @container (width < #{$paginator-width-full}) {
         &__page-counter {
             display: inline;
         }
