@@ -6,6 +6,12 @@ layout: api.class
 
 Använd `FPaginatorPageObject` för att hämta information relaterat till {@link pagination FPaginator}.
 
+Samtliga exempel använder detta underlag:
+
+```import static
+FPaginatorPageObject.vue
+```
+
 ## FPaginatorPageObject()
 
 Skapar ett nytt Cypress-pageobjekt.
@@ -22,10 +28,6 @@ new FPaginatorPageObject(selector);
 : Selector till `FPaginator` elementet. Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
 
 ### Exempel
-
-```import static
-FPaginatorPageObject.vue
-```
 
 ```import static
 FPaginatorPageObject.cy.ts
@@ -48,10 +50,6 @@ currentPageButton();
 ### Exempel
 
 ```import static
-FPaginatorPageObject.vue
-```
-
-```import static
 FPaginatorPageObject-current-page-button.cy.ts
 ```
 
@@ -70,10 +68,6 @@ firstPageButton();
 `HTMLElement` med knappen för att gå till den första sidan.
 
 ### Exempel
-
-```import static
-FPaginatorPageObject.vue
-```
 
 ```import static
 FPaginatorPageObject-first-page-button.cy.ts
@@ -96,10 +90,6 @@ lastPageButton();
 ### Exempel
 
 ```import static
-FPaginatorPageObject.vue
-```
-
-```import static
 FPaginatorPageObject-last-page-button.cy.ts
 ```
 
@@ -118,10 +108,6 @@ nextButton();
 `HTMLElement` med knappen för att gå till nästa sida.
 
 ### Exempel
-
-```import static
-FPaginatorPageObject.vue
-```
 
 ```import static
 FPaginatorPageObject-next-button.cy.ts
@@ -149,10 +135,6 @@ pageButton(page);
 ### Exempel
 
 ```import static
-FPaginatorPageObject.vue
-```
-
-```import static
 FPaginatorPageObject-page-button.cy.ts
 ```
 
@@ -171,10 +153,6 @@ pageButtons();
 `HTMLElement[]` med samtliga sidknappar.
 
 ### Exempel
-
-```import static
-FPaginatorPageObject.vue
-```
 
 ```import static
 FPaginatorPageObject-page-buttons.cy.ts
@@ -198,10 +176,6 @@ pageButton();
 ### Exempel
 
 ```import static
-FPaginatorPageObject.vue
-```
-
-```import static
 FPaginatorPageObject-page-counter.cy.ts
 ```
 
@@ -220,10 +194,6 @@ previousButton();
 `HTMLElement` med knappen för att gå till föregående sida.
 
 ### Exempel
-
-```import static
-FPaginatorPageObject.vue
-```
 
 ```import static
 FPaginatorPageObject-previous-button.cy.ts
