@@ -5,31 +5,12 @@
 @use "../icon/icon";
 @use "variables" as *;
 
-$EXPANDABLE_PANEL_LINE_HEIGHT: var(--f-line-height-medium);
-$ICON_WIDTH: var(--f-icon-size-medium);
-$icon-notification-size: var(--f-icon-size-large);
-
 .expandable-panel {
     margin-bottom: core.densify(size.$margin-200);
 
-    &__icon {
-        @include circle.circle($background: transparent, $size: $ICON_WIDTH);
-
-        margin-top: calc((#{$EXPANDABLE_PANEL_LINE_HEIGHT} * 1em - #{$ICON_WIDTH}) / 2); // Unit "em" intended here, align icon to header
-
-        position: absolute;
-        right: 1rem;
-
-        .icon {
-            transition: transform var(--f-animation-duration-long) ease;
-        }
-    }
-
     &.expandable-panel--expanded {
-        .expandable-panel__icon {
-            svg {
-                transform: rotate(180deg);
-            }
+        .expandable-panel__icon svg {
+            transform: rotate(180deg);
         }
 
         .expandable-panel__content {
@@ -42,16 +23,12 @@ $icon-notification-size: var(--f-icon-size-large);
     }
 
     &.expandable-panel--collapsed {
-        .expandable-panel__icon {
-            svg {
-                transform: rotate(0);
-            }
+        .expandable-panel__icon svg {
+            transform: rotate(0);
         }
     }
 
     &__heading {
-        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
-
         margin-bottom: 0 !important;
 
         button {
@@ -61,22 +38,25 @@ $icon-notification-size: var(--f-icon-size-large);
             color: $expandablepanel-heading-color-text-default;
             cursor: pointer;
             display: inline-flex;
-            flex-wrap: wrap;
             align-items: baseline;
             margin: 0;
             padding: core.densify(size.$padding-100) size.$padding-100;
-            position: relative;
             text-align: left;
-            text-wrap: pretty;
             width: 100%;
             font-size: var(--f-font-size-large);
             font-weight: var(--f-font-weight-bold);
             line-height: var(--f-line-height-large);
+
             &:focus,
             &:hover {
                 background-color: $expandablepanel-heading-color-background-hover;
             }
         }
+    }
+
+    &__title {
+        flex-grow: 1;
+        text-wrap: pretty;
     }
 
     &__notification {
@@ -85,8 +65,8 @@ $icon-notification-size: var(--f-icon-size-large);
         .icon-container {
             background: $expandablepanel-heading-notification-color-background;
             border: var(--f-border-radius-small) solid transparent; // forced-colors
-            width: $icon-notification-size;
-            height: $icon-notification-size;
+            width: $expandablepanel-heading-notification-icon-size;
+            height: $expandablepanel-heading-notification-icon-size;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -113,7 +93,7 @@ $icon-notification-size: var(--f-icon-size-large);
     }
 
     &__body {
-        background-color: $expandablepanel-heading-color-background-default;
+        background-color: $expandablepanel-body-color-background-default;
         border: var(--f-border-width-medium) solid $expandablepanel-heading-color-border;
         border-top: 0;
         border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);

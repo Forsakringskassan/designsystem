@@ -102,28 +102,30 @@ export default defineComponent({
                 v-bind="$attrs"
                 @click="onClickHeadingButton"
             >
-                <div class="expandable-panel__icon">
-                    <f-icon name="arrow-down"></f-icon>
-                </div>
+                <span class="expandable-panel__title">
+                    <!-- @slot Slot used for title content -->
+                    <slot name="title"></slot>
 
-                <!-- @slot Slot used for title content -->
-                <slot name="title"></slot>
+                    <span
+                        v-if="haveNotifications"
+                        class="expandable-panel__notification"
+                        :title="
+                            $t('fkui.expandable-panel.notification.title', '{{ count }} notifiering{{ suffix }}', {
+                                count: notifications,
+                                suffix: notifications > 1 ? 'ar' : '',
+                            })
+                        "
+                    >
+                        <span class="sr-only">{{ screenReaderNotificationText }}</span>
+                    </span>
 
-                <span
-                    v-if="haveNotifications"
-                    class="expandable-panel__notification"
-                    :title="
-                        $t('fkui.expandable-panel.notification.title', '{{ count }} notifiering{{ suffix }}', {
-                            count: notifications,
-                            suffix: notifications > 1 ? 'ar' : '',
-                        })
-                    "
-                >
-                    <span class="sr-only">{{ screenReaderNotificationText }}</span>
-                    <!--<f-icon name="bell"></f-icon>-->
                     <span class="icon-container">
                         <f-icon name="bell"></f-icon>
                     </span>
+                </span>
+
+                <span class="expandable-panel__icon">
+                    <f-icon name="arrow-down"></f-icon>
                 </span>
             </button>
         </component>
