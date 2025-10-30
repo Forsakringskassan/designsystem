@@ -1,8 +1,7 @@
 import { FPaginatorPageObject } from "@fkui/vue/cypress";
 import Example from "./FPaginatorPageObject.vue";
 
-// eslint-disable-next-line mocha/no-pending-tests -- Await adjustments in FPaginatorPageObject
-it.skip("lastPageButton() should navigate to last page", () => {
+it("lastPageButton() should navigate to last page", () => {
     cy.mount(Example);
     cy.viewport("macbook-13");
 

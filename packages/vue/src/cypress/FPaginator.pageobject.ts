@@ -39,7 +39,7 @@ export class FPaginatorPageObject implements BasePageObject {
      * @returns The button for the first page.
      */
     public firstPageButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__pages :first-child`);
+        return cy.get(`${this.selector} .paginator__page`).first();
     }
 
     /**
@@ -48,7 +48,7 @@ export class FPaginatorPageObject implements BasePageObject {
      * @returns The button for the last page.
      */
     public lastPageButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__pages :last-child`);
+        return cy.get(`${this.selector} .paginator__page`).last();
     }
 
     /**

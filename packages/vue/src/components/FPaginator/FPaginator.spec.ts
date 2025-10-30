@@ -126,24 +126,19 @@ describe("page buttons", () => {
 });
 
 describe("number of pages to show", () => {
-    // eslint-disable-next-line jest/no-disabled-tests -- Await adjustments in FPaginatorPageObject
-    it.skip("should show 9 pages as default", () => {
+    it("should show 9 pages as default", () => {
         const wrapper = mount(FPaginator, {
             attrs: {
                 currentPage: 10,
                 numberOfPages: 20,
             },
         });
-        expect(
-            wrapper.find("[data-test='page-buttons']").element
-                .childElementCount,
-        ).toBe(9);
+        expect(wrapper.findAll(".paginator__page")).toHaveLength(9);
     });
 });
 
 describe("pages and gaps", () => {
-    // eslint-disable-next-line jest/no-disabled-tests -- Await adjustments in FPaginatorPageObject
-    it.skip("should show the correct pages and gaps", () => {
+    it("should show the correct pages and gaps", () => {
         const wrapper = mount(FPaginator, {
             attrs: {
                 currentPage: 10,
@@ -163,9 +158,8 @@ describe("pages and gaps", () => {
         ];
         expectedPageButtons.forEach((expectedPageButton, index) => {
             expect(
-                wrapper
-                    .find("[data-test='page-buttons']")
-                    .element.children.item(index)?.innerHTML,
+                wrapper.findAll(".paginator__page").at(index)?.element
+                    .innerHTML,
             ).toEqual(expectedPageButton);
         });
     });
