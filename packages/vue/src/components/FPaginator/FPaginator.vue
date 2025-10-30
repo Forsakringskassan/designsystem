@@ -79,7 +79,7 @@ const pageCounterLabel = computed(() =>
     /**
      * Page counter.
      */
-    $t("fkui.paginator.page-counter", "Sida {{ currentPage }} av {{ numberOfPages }}", {
+    $t("fkui.paginator.page-counter", "{{ currentPage }} av {{ numberOfPages }}", {
         /**
          * The current page number.
          */
