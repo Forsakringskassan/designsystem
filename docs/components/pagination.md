@@ -24,7 +24,11 @@ Attributet `fetchData` anger den funktion som ska användas för hämtning av de
 Denna funktion används i exemplet ovan:
 
 ```ts static
-async fetchData(first: number, last: number) {
+const persons = [] as unknown[];
+
+/* --- cut above --- */
+
+async function fetchData(first: number, last: number) {
     await new Promise((resolve) => setTimeout(resolve, 3000));
     return persons.slice(first, last);
 }
