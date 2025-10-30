@@ -42,13 +42,9 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
         }
     }
 
-    &__pages {
-        display: inline-flex;
-        gap: $gap-size;
-    }
-
     &__page {
         width: $page-width;
+        display: none;
     }
 
     &__next,
@@ -58,19 +54,18 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
     }
 
     &__page-counter {
-        display: none;
         padding: size.$padding-025;
         text-align: center;
         color: $paginator-page-counter-color-text-default;
     }
 
-    @container (width < #{$paginator-width-full}) {
+    @container (width >= #{$paginator-width-full}) {
         &__page-counter {
-            display: inline;
+            display: none;
         }
 
         &__page {
-            display: none;
+            display: inline-block;
         }
     }
 }
