@@ -4769,6 +4769,7 @@ input[type=search]:focus,
   container-type: inline-size;
 }
 .paginator__page, .paginator__previous, .paginator__next {
+  width: 2.5rem;
   border: none;
   color: black;
   background-color: white;
@@ -4785,11 +4786,10 @@ input[type=search]:focus,
   background-color: var(--fkds-color-action-background-secondary-hover);
 }
 .paginator__page {
-  width: 2.5rem;
   display: none;
 }
-.paginator__next, .paginator__page-counter, .paginator__previous {
-  width: 2.5rem;
+.paginator__page-counter {
+  width: 8rem;
 }
 .paginator__page-counter {
   padding: 0.25rem;
