@@ -30,7 +30,7 @@ import { formatNumber } from "@fkui/logic";
 
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, ElementIdService, assertSet } from "@fkui/logic";
-import { defineComponent, nextTick, toValue, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent } from "vue";
+import { defineComponent, nextTick, toValue, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent } from "vue";
 import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, useTranslate, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
@@ -3697,6 +3697,131 @@ function normalizeTableColumns(columns) {
     return normalizeTableColumn(column);
   });
 }
+function useTabstop(tableRef, metaRows) {
+  let pendingRowRemoval = false;
+  const renderOptions = ref({
+    fallbackToFirstCell: false,
+    focus: false
+  });
+  function fallbackToFirstCell(newRows, oldRows, focus) {
+    assertRef(tableRef);
+    const newFirstRowOldIndex = oldRows.findIndex((it) => it.key === newRows[0].key);
+    if (newFirstRowOldIndex > -1) {
+      const target = getCellTarget(tableRef.value, newFirstRowOldIndex + 1, 0);
+      activateCell(target, {
+        focus
+      });
+    } else {
+      renderOptions.value.focus = focus;
+      renderOptions.value.fallbackToFirstCell = true;
+    }
+  }
+  watch(metaRows, (newRows, oldRows) => {
+    const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
+    pendingRowRemoval = false;
+    assertRef(tableRef);
+    const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
+    assertSet(oldTabstopElement);
+    const oldTabstopFocused = oldTabstopElement === document.activeElement;
+    if (oldTabstopElement.closest("th")) {
+      return;
+    }
+    if (oldRows.length === 0 || newRows.length === 0) {
+      renderOptions.value.fallbackToFirstCell = true;
+      renderOptions.value.focus = oldTabstopFocused;
+      return;
+    }
+    const oldTabstopTd = oldTabstopElement.closest("td");
+    assertSet(oldTabstopTd);
+    const oldTabstopTr = oldTabstopTd.parentElement;
+    const oldTabstopRowKey = oldRows[oldTabstopTr.rowIndex - 1].key;
+    const isBeingRemoved = !newRows.some((it) => it.key === oldTabstopRowKey);
+    if (oldTabstopFocused && !isBeingRemoved) {
+      return;
+    }
+    if (!isBeingRemoved) {
+      if (oldTabstopFocused) {
+        return;
+      } else {
+        fallbackToFirstCell(newRows, oldRows, false);
+        return;
+      }
+    }
+    if (tabFallback === "first-cell") {
+      fallbackToFirstCell(newRows, oldRows, oldTabstopFocused);
+      return;
+    }
+    if (oldTabstopTr.rowIndex === 1) {
+      const hasRowBelowInNewRows = newRows.some((it) => it.key === oldRows[1].key);
+      if (hasRowBelowInNewRows) {
+        const {
+          cell
+        } = getVerticalNavIndex(tableRef.value, {
+          row: 1,
+          cell: oldTabstopTd.cellIndex
+        }, {
+          row: 2,
+          cell: oldTabstopTd.cellIndex
+        });
+        const fallback = getCellTarget(tableRef.value, 2, cell);
+        activateCell(fallback, {
+          focus: true
+        });
+      } else {
+        fallbackToFirstCell(newRows, oldRows, true);
+      }
+    } else {
+      const hasRowAboveInNewRows = newRows.some((it) => it.key === oldRows[oldTabstopTr.rowIndex - 2].key);
+      if (hasRowAboveInNewRows) {
+        const {
+          row,
+          cell
+        } = getVerticalNavIndex(tableRef.value, {
+          row: oldTabstopTr.rowIndex,
+          cell: oldTabstopTd.cellIndex
+        }, {
+          row: oldTabstopTr.rowIndex - 1,
+          cell: oldTabstopTd.cellIndex
+        });
+        const fallback = getCellTarget(tableRef.value, row, cell);
+        activateCell(fallback, {
+          focus: true
+        });
+      } else {
+        fallbackToFirstCell(newRows, oldRows, true);
+      }
+    }
+  });
+  onUpdated(() => {
+    if (!renderOptions.value.fallbackToFirstCell) {
+      return;
+    }
+    assertRef(tableRef);
+    const target = getCellTarget(tableRef.value, 1, 0);
+    if (metaRows.value.length === 0) {
+      target.tabIndex = 0;
+      target.focus();
+    } else {
+      activateCell(target, {
+        focus: renderOptions.value.focus
+      });
+    }
+    renderOptions.value.fallbackToFirstCell = false;
+  });
+  async function withTabstopBehaviour(behaviour, action) {
+    if (behaviour === "row-removal") {
+      pendingRowRemoval = true;
+    }
+    try {
+      await action();
+    } finally {
+      pendingRowRemoval = false;
+    }
+  }
+  return {
+    withTabstopBehaviour
+  };
+}
 var _hoisted_1 = ["role", "aria-rowcount"];
 var _hoisted_2 = {
   class: "table-ng__row",
@@ -3742,7 +3867,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
     "selectedRowsModifiers": {}
   }),
   emits: ["update:selectedRows"],
-  setup(__props) {
+  setup(__props, {
+    expose: __expose
+  }) {
     const selectedRows = useModel(__props, "selectedRows");
     const $t = useTranslate();
     const tableRef = useTemplateRef("table");
@@ -3872,6 +3999,14 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         });
       }
     }
+    function onTableFocusin(e) {
+      assertRef(tableRef);
+      tableRef.value.querySelectorAll(`[tabindex="0"]`).forEach((it) => {
+        if (it !== e.target) {
+          it.setAttribute("tabindex", "-1");
+        }
+      });
+    }
     function isInExpandable(el) {
       if (!el.parentElement) {
         return false;
@@ -3890,7 +4025,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       if (isInExpandable(target)) {
         return;
       }
-      assertRef(tableRef);
+      if (!tableRef.value) {
+        return;
+      }
       const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
       if (outsideTable) {
         const td = target.closest("td");
@@ -3961,6 +4098,8 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       bindCellApiRef(ref22);
       selectAllRef.value = toValue(ref22.tabstopEl);
     }
+    const tableApi = useTabstop(tableRef, metaRows);
+    __expose(tableApi);
     onMounted(() => {
       assertRef(tableRef);
       registerCallbackOnMount(callbackSortableColumns);
@@ -3973,6 +4112,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
         role: role.value,
         class: normalizeClass(tableClasses.value),
         "aria-rowcount": ariaRowcount.value,
+        onFocusin: onTableFocusin,
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
