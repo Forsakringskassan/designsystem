@@ -152,20 +152,18 @@ function showGap(page: number): boolean {
             <span data-test="label">{{ previousButtonLabel }}</span>
         </button>
 
-        <div data-test="page-buttons" class="paginator__pages">
-            <button
-                v-for="page in pages"
-                :key="page"
-                :data-test="'page-' + page + '-button'"
-                type="button"
-                :class="pageClasses(page, currentPage)"
-                :aria-current="page === currentPage ? 'page' : 'false'"
-                :aria-label="pageLabel(page)"
-                @click="onClickPageButton(page)"
-            >
-                {{ showGap(page) ? "..." : page }}
-            </button>
-        </div>
+        <button
+            v-for="page in pages"
+            :key="page"
+            :data-test="'page-' + page + '-button'"
+            type="button"
+            :class="pageClasses(page, currentPage)"
+            :aria-current="page === currentPage ? 'page' : 'false'"
+            :aria-label="pageLabel(page)"
+            @click="onClickPageButton(page)"
+        >
+            {{ showGap(page) ? "..." : page }}
+        </button>
 
         <div data-test="page-counter" class="paginator__page-counter">{{ pageCounterLabel }}</div>
 
