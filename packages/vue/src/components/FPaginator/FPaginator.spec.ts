@@ -57,12 +57,6 @@ describe("previous button", () => {
         previousButton = wrapper.find("[data-test='previous-button']");
     });
 
-    it("should have the correct label", () => {
-        expect(
-            previousButton.find("[data-test='label']").element.innerHTML,
-        ).toBe("Föregående");
-    });
-
     it("should have the correct value for 'aria-label'", () => {
         expect(previousButton.attributes("aria-label")).toBe("Föregående");
     });
@@ -79,12 +73,6 @@ describe("next button", () => {
             },
         });
         nextButton = wrapper.find("[data-test='next-button']");
-    });
-
-    it("should have the correct label", () => {
-        expect(nextButton.find("[data-test='label']").element.innerHTML).toBe(
-            "Nästa",
-        );
     });
 
     it("should have the correct value for 'aria-label'", () => {

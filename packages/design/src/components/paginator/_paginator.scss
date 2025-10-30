@@ -4,7 +4,8 @@
 
 $gap-size: size.$margin-050;
 $page-width: 2.5rem;
-$button-width: 8rem;
+$button-width: $page-width;
+$page-counter-width: 8rem;
 $number-of-pages: 9; // References `upperLimit` in FPaginator.logic
 
 //                      ____________                _________________________________________________________________                 ____________
@@ -23,6 +24,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
     &__page,
     &__previous,
     &__next {
+        width: $page-width;
         border: none;
         color: black;
         background-color: white;
@@ -42,17 +44,11 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
     }
 
     &__page {
-        width: $page-width;
         display: none;
     }
 
-    &__next,
-    &__page-counter,
-    &__previous {
-        width: $button-width;
-    }
-
     &__page-counter {
+        width: $page-counter-width;
         padding: size.$padding-025;
         text-align: center;
         color: $paginator-page-counter-color-text-default;
