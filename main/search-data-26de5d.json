@@ -610,15 +610,15 @@
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
-    "FFileItemPageObject: FFileItemPageObject() constructor",
-    "FFileItemPageObject: typeOfFile() method",
-    "FFileItemPageObject: fileName() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
+    "FFileItemPageObject: FFileItemPageObject() constructor",
+    "FFileItemPageObject: typeOfFile() method",
+    "FFileItemPageObject: fileName() method",
     "FBadgePageObject: FBadgePageObject() constructor",
     "FFileItemPageObject: status() method",
     "FFileItemPageObject: inverted() method",
@@ -2169,21 +2169,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
-      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
-      "title": "FFileItemPageObject: typeOfFile() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
-      "title": "FFileItemPageObject: fileName() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2211,6 +2196,21 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
+      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
+      "title": "FFileItemPageObject: typeOfFile() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
+      "title": "FFileItemPageObject: fileName() method",
       "terms": []
     },
     {
