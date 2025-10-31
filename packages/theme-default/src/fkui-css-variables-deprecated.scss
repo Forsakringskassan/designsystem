@@ -351,6 +351,33 @@ $palette-color-hav-20: #dbe0ec !default;
 
     // Deprecated since v6.24.0
     --f-icon-color-expandable-paragraph: #{$palette-color-green-a-85};
+
+    // Deprecated since %version
+    --f-text-color-default: #{$palette-color-fk-black-100};
+    --f-text-color-default-inverted: #{$palette-color-white-100};
+    --f-text-color-discrete: #{$palette-color-fk-black-70};
+    --f-text-color-button-discrete-hover: #{$palette-color-bluebell-120};
+    --f-text-color-button-discrete-inverted-hover: #{$palette-color-white-100};
+    --f-icon-color-primary: #{$palette-color-bluebell-100};
+    --f-icon-color-loader: #{$palette-color-green-a-85};
+    --f-icon-color-table-header: #{$palette-color-fk-black-100};
+    --f-icon-color-table-header-discrete: #{$palette-color-fk-black-50};
+    --f-icon-color-sort-filter-dataset-close: #{$palette-color-fk-black-100};
+    --f-icon-color-sort-filter-dataset-search: #{$palette-color-fk-black-50};
+    --f-background-code: #{$palette-color-fk-black-5};
+    --f-border-color-grid: #{$palette-color-fk-black-50};
+    --f-border-color-grid-header: #{$palette-color-fk-black-50};
+    --f-border-color-grid-hover: #{$palette-color-fk-black-50};
+    --f-border-color-grid-expanded: #{$palette-color-fk-black-15};
+    --f-background-grid-default: #{$palette-color-white-100};
+    --f-background-grid-hover: #{$palette-color-bluebell-5};
+    --f-background-grid-striped: #{$palette-color-fk-black-5};
+    --f-background-grid-header: #{$palette-color-fk-black-5};
+    --f-background-grid-focus-inner: #{$palette-color-bluebell-5};
+    --f-background-grid-active: #{$palette-color-bluebell-15};
+    --f-background-tab-active: #{$palette-color-white-100};
+    --f-background-tab-inactive: #{$palette-color-bluebell-5};
+    --f-background-button-discrete-hover: none;
 }
 
 @if $global {
