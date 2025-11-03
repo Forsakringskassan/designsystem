@@ -3860,9 +3860,9 @@ function getUpdateFn(fn, key) {
 function getParsedUpdateFn(fn, key, parser) {
   if (fn) {
     return (row, newValue, oldValue) => {
-      const paresdNewValue = parser(newValue);
-      const paresdOldValue = parser(oldValue);
-      fn(row, paresdNewValue !== null && paresdNewValue !== void 0 ? paresdNewValue : newValue, paresdOldValue !== null && paresdOldValue !== void 0 ? paresdOldValue : oldValue);
+      const parsedNewValue = parser(newValue);
+      const parsedOldValue = parser(oldValue);
+      fn(row, parsedNewValue !== null && parsedNewValue !== void 0 ? parsedNewValue : newValue, parsedOldValue !== null && parsedOldValue !== void 0 ? parsedOldValue : oldValue);
     };
   }
   if (key) {
@@ -3877,9 +3877,9 @@ function getParsedNumberUpdateFn(fn, key, parser) {
   if (fn) {
     return (row, newValue, oldValue) => {
       var _parser, _parser2;
-      const paresdNewValue = (_parser = parser(newValue)) !== null && _parser !== void 0 ? _parser : newValue;
-      const paresdOldValue = (_parser2 = parser(oldValue)) !== null && _parser2 !== void 0 ? _parser2 : oldValue;
-      fn(row, paresdNewValue, paresdOldValue);
+      const parsedNewValue = (_parser = parser(newValue)) !== null && _parser !== void 0 ? _parser : newValue;
+      const parsedOldValue = (_parser2 = parser(oldValue)) !== null && _parser2 !== void 0 ? _parser2 : oldValue;
+      fn(row, parsedNewValue, parsedOldValue);
     };
   }
   if (key) {
