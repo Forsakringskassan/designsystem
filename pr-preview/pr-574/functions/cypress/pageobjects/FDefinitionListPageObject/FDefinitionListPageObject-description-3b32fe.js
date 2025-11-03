@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDefinitionListPageObject/FDefinitionListPageObject-description.vue:FDefinitionListPageObject-description-9b33c7.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDefinitionListPageObject/FDefinitionListPageObject-description.vue:FDefinitionListPageObject-description-3b32fe.js
 import { defineComponent as _defineComponent } from "vue";
 import { FDefinitionList } from "@fkui/vue";
 import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -63,7 +63,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-9b33c7"
+  selector: "#example-3b32fe"
 });
 export {
   render

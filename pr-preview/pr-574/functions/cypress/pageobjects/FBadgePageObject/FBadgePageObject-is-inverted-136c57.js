@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject-is-inverted.vue:FBadgePageObject-is-inverted-a2ffb4.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject-is-inverted.vue:FBadgePageObject-is-inverted-136c57.js
 import { defineComponent as _defineComponent } from "vue";
 import { FBadge } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createElementVNode as _createElementVNode, Fragment as _Fragment, createElementBlock as _createElementBlock } from "vue";
@@ -93,7 +93,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a2ffb4"
+  selector: "#example-136c57"
 });
 export {
   render
