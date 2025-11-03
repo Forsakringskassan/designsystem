@@ -15292,20 +15292,9 @@ var _hoisted_2$o = {
 var _sfc_main$x = /* @__PURE__ */ defineComponent({
   __name: "FDefinitionList",
   props: {
-    /**
-     * The definitions to be displayed in the definition list.
-     */
-    definitions: {
-      type: Array,
-      required: true
-    },
-    /**
-     * Show the definition list in a justified layout.
-     */
+    definitions: {},
     justified: {
-      type: Boolean,
-      required: false,
-      default: false
+      type: Boolean
     }
   },
   setup(__props) {
