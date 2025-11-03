@@ -51,7 +51,7 @@
     ]
   },
   "dependencies": {
-    "dayjs": "1.11.18"
+    "dayjs": "1.11.19"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "28.0.9",
