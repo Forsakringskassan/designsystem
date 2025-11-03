@@ -208,9 +208,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -218,6 +215,9 @@
     "densify() function",
     "densitet",
     "sass",
+    "EventBus",
+    "EventBus",
+    "services",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -505,16 +505,16 @@
     "ICalendarMonth",
     "Animerad expandering",
     "IAnimateExpand",
-    "Filväljare",
-    "FFileSelector",
-    "Filpresentatör",
-    "FFileItem",
     "Expanderbart stycke",
     "FExpandableParagraph",
     "Expanderbar panel",
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
+    "Filväljare",
+    "FFileSelector",
+    "Filpresentatör",
+    "FFileItem",
     "Version 6 migreringsguide: @fkui/vue",
     "Version 6 migreringsguide",
     "Version 6 migreringsguide: @fkui/logic",
@@ -1108,14 +1108,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1130,6 +1122,14 @@
       "terms": [
         "densitet",
         "sass"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -1777,20 +1777,6 @@
       ]
     },
     {
-      "url": "components/file-upload/ffileselector.html",
-      "title": "Filväljare",
-      "terms": [
-        "FFileSelector"
-      ]
-    },
-    {
-      "url": "components/file-upload/ffileitem.html",
-      "title": "Filpresentatör",
-      "terms": [
-        "FFileItem"
-      ]
-    },
-    {
       "url": "components/expandable/fexpandableparagraph.html",
       "title": "Expanderbart stycke",
       "terms": [
@@ -1809,6 +1795,20 @@
       "title": "Expanderbart innehåll",
       "terms": [
         "FExpand"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileselector.html",
+      "title": "Filväljare",
+      "terms": [
+        "FFileSelector"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileitem.html",
+      "title": "Filpresentatör",
+      "terms": [
+        "FFileItem"
       ]
     },
     {
@@ -2489,7 +2489,7 @@
     "208": 55,
     "209": 55,
     "210": 55,
-    "211": 56,
+    "211": 55,
     "212": 56,
     "213": 56,
     "214": 56,
