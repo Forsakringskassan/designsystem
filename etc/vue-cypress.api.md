@@ -217,8 +217,6 @@ export class FDefinitionListPageObject implements BasePageObject {
     // (undocumented)
     el(): DefaultCypressChainable;
     // (undocumented)
-    isJustified(): Cypress.Chainable<boolean>;
-    // (undocumented)
     numberOfDefinitions(): Cypress.Chainable<number>;
     // (undocumented)
     selector: string;

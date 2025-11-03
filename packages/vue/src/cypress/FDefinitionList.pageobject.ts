@@ -23,10 +23,6 @@ export class FDefinitionListPageObject implements BasePageObject {
         );
     }
 
-    public isJustified(): Cypress.Chainable<boolean> {
-        return this.el().invoke("hasClass", "definition-list--justified");
-    }
-
     public numberOfDefinitions(): Cypress.Chainable<number> {
         return cy.get(`${this.selector} .definition-list__term`).its("length");
     }

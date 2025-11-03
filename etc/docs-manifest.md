@@ -82,7 +82,6 @@ functions/cypress/pageobjects/FBadgePageObject/is-inverted.html
 functions/cypress/pageobjects/FBadgePageObject/status.html
 functions/cypress/pageobjects/FDefinitionListPageObject/description.html
 functions/cypress/pageobjects/FDefinitionListPageObject/index.html
-functions/cypress/pageobjects/FDefinitionListPageObject/is-justified.html
 functions/cypress/pageobjects/FDefinitionListPageObject/number-of-definitions.html
 functions/cypress/pageobjects/FDefinitionListPageObject/term.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html
