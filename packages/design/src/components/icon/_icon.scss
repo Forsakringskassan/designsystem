@@ -85,8 +85,8 @@
 
     &--tooltip {
         .f-icon-circle {
-            fill: $icon-tooltip-color-background;
-            color: $icon-tooltip-color-border;
+            fill: $icon-tooltip-color-border;
+            color: $icon-tooltip-color-background;
         }
 
         .f-icon-i {
