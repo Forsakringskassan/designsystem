@@ -12,14 +12,14 @@
     --f-text-color-link-discrete: #{$palette-color-fk-black-100};
     --f-text-color-link-discrete-hover: #{$palette-color-bluebell-100};
 
-    --f-text-color-heading-1: inherit;
-    --f-text-color-heading-2: inherit;
-    --f-text-color-heading-3: inherit;
-    --f-text-color-heading-4: inherit;
-    --f-text-color-heading-5: inherit;
-    --f-text-color-heading-6: inherit;
+    --f-text-color-heading-1: #{$palette-color-green-a-100};
+    --f-text-color-heading-2: #{$palette-color-green-a-85};
+    --f-text-color-heading-3: var(--fkds-color-text-primary);
+    --f-text-color-heading-4: var(--fkds-color-text-primary);
+    --f-text-color-heading-5: var(--fkds-color-text-primary);
+    --f-text-color-heading-6: var(--fkds-color-text-primary);
 
-    --f-text-color-heading-expandable-panel: #{$palette-color-white-100};
+    --f-text-color-heading-expandable-panel: var(--fkds-color-text-primary);
 
     --f-text-color-menu: #{$palette-color-fk-black-100};
     --f-text-color-menu-hover: #{$palette-color-fk-black-100};
@@ -92,17 +92,17 @@
 
     /// Shadow variables
     --f-box-modal-shadow: 0 0 20px rgba(0, 0, 0, 0.3); // Messagebox, modal, popup
-    --f-input-shadow-inset: inset 0 2px 3px rgba(0, 0, 0, 0.1); //  Inner shadow input fields
+    --f-input-shadow-inset: none; //  Inner shadow input fields
 
     /// Font variables
     --f-font-family: "ExpFont", "NeueHass", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
     --f-font-family-code: "Consolas", "Liberation Mono", "Courier", monospace;
 
     /// Default font size, 1 rem will be based on this value.
-    --f-font-size-default-rem: 16px;
+    --f-font-size-default-rem: 14px;
 
     /// Default font size for larger viewports, 1 rem will be based on this value.
-    --f-font-size-default-large-up-rem: 16px;
+    --f-font-size-default-large-up-rem: 14px;
 
     /// Font weight
     --f-font-weight-normal: 400;
@@ -115,34 +115,34 @@
     --f-line-height-large: 1.5;
 
     /// Font sizes, desktop and mobile
-    --f-font-size-h1: 2.5rem; // Desktop h1
-    --f-font-size-h2: 1.75rem; // Desktop h2, mobile h1
-    --f-font-size-xxx-large: 1.5rem; // Desktop h3, mobile h2
-    --f-font-size-h3: 1.375rem; // Desktop h4
-    $_f-font-size-h4: 1.25rem;
+    --f-font-size-h1: 1.65rem; // Desktop h1
+    --f-font-size-h2: 1.5rem; // Desktop h2, mobile h1
+    --f-font-size-xxx-large: 1.2rem; // Desktop h3, mobile h2
+    --f-font-size-h3: 1.2rem; // Desktop h4
+    $_f-font-size-h4: 1rem;
     --f-font-size-h4: #{$_f-font-size-h4}; // Desktop h5, mobile h3
-    --f-font-size-large: 1.125rem; // Desktop h6, mobile h4
+    --f-font-size-large: 1rem; // Desktop h6, mobile h4
     --f-font-size-standard: 1rem; // Desktop normal, mobile normal, h5, h6
 
     /// Height, width and icon size variables
     /// Default icon size
     --f-icon-size-x-small: 0.75rem;
-    --f-icon-size-small: 1rem;
+    --f-icon-size-small: 1.143rem;
     --f-icon-size-medium: 1.25rem;
     --f-icon-size-large: 1.5rem;
 
-    /// Larger icon size
+      /// Larger icon size
     --f-icon-size-x-large: 2rem;
 
     /// Smaller elements, for example progressbar
     --f-height-small: 0.75rem; // progressbar
     --f-height-medium: 1.25rem; // Form elements, for example checkbox and radio-button.
-    --f-height-large: 2.5rem; // Form elements, for example text field and select field.
+    --f-height-large: 2.3rem; // Form elements, for example text field and select field.
     --f-width-full: 100%; // Full-width, for example text field and select field.
 
     /// Borders
     --f-border-width-small: 1px; // Small used for progressbar
-    --f-border-width-medium: 2px; // button, chip, input elemenents, expandable panel, expandable paragraph, static panel, tooltip, file-item, messagebox, modal
+    --f-border-width-medium: 1px; // button, chip, input elemenents, expandable panel, expandable paragraph, static panel, tooltip, file-item, messagebox, modal
     --f-border-radius-small: 2px;
 
     $_f-border-radius-medium: 4px;
@@ -155,7 +155,7 @@
     --padding-input-fields: 0 2.25rem 0 0.75rem;
 
     /// Focus related
-    $_f-color-focus: $palette-color-fk-black-100;
+    $_f-color-focus: #ffcc00;
     --f-color-focus: #{$_f-color-focus};
     --f-focus-box-shadow: 0 0 0 2px #{$palette-color-white-100}, 0 0 0 4px #{$_f-color-focus}, 0 0 0 6px #{$palette-color-white-100};
 
@@ -172,26 +172,26 @@
     // ****************************
     // COMPONENT SPECIFIC VARIABLES
     // ****************************
-    --f-static-panel-heading-border: none;
-    --f-expandable-panel-heading-border-close: none;
-    --f-expandable-panel-heading-border-open: none;
-    --f-expandable-panel-heading-border-radius: #{$_f-border-radius-medium} #{$_f-border-radius-medium} 0 0;
-    --f-label-message-margin-top: 0.25rem;
+    --f-static-panel-heading-border: 1px solid var(--fkds-color-border-primary);
+    --f-expandable-panel-heading-border-close: 1px solid var(--fkds-color-border-primary);
+    --f-expandable-panel-heading-border-open: 1px solid var(--fkds-color-border-primary);
+    --f-expandable-panel-heading-border-radius: none;
+    --f-label-message-margin-top: initial;
 
     $_f-button-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --f-button-shadow: #{$_f-button-shadow};
-    --f-button-shadow-hover: #{$_f-button-shadow};
-    --f-button-min-width: 9.5rem;
-    --f-button-letter-spacing: 0.01rem;
-    --f-button-default-line-height: 1.5rem;
-    --f-button-discrete-radius-hover: none;
+    --f-button-shadow: none;
+    --f-button-shadow-hover: 0 1px 4px rgb(0, 0, 0, 0.4);
+    --f-button-min-width: 6rem;
+    --f-button-letter-spacing: normal;
+    --f-button-default-line-height: calc(1.25 * 1rem);
+    --f-button-discrete-radius-hover: 3rem;
     --f-button-tertiary-table-column-action-icon-margin: 0 8px 0 2px;
     --f-button-tertiary-table-column-action-margin: 0 0 0 0.5rem;
 
-    $_f-button-default-padding-top: 1rem;
-    $_f-button-default-padding-right: 1.5rem;
-    $_f-button-default-padding-bottom: 1rem;
-    $_f-button-default-padding-left: 1.5rem;
+    $_f-button-default-padding-top: 0.75rem;
+    $_f-button-default-padding-right: 1rem;
+    $_f-button-default-padding-bottom: 0.75rem;
+    $_f-button-default-padding-left: 1rem;
 
     --f-button-default-padding-top: #{$_f-button-default-padding-top};
     --f-button-default-padding-right: #{$_f-button-default-padding-right};
@@ -223,36 +223,36 @@
     $_f-button-discrete-padding-bottom: initial;
     $_f-button-discrete-padding-left: initial;
 
-    --f-button-discrete-padding-top: #{$_f-button-discrete-padding-top};
-    --f-button-discrete-padding-right: #{$_f-button-discrete-padding-right};
-    --f-button-discrete-padding-bottom: #{$_f-button-discrete-padding-bottom};
-    --f-button-discrete-padding-left: #{$_f-button-discrete-padding-left};
+    --f-button-discrete-padding-top: 0.6rem;
+    --f-button-discrete-padding-right: 1rem;
+    --f-button-discrete-padding-bottom: 0.6rem;
+    --f-button-discrete-padding-left: 1rem;
 
-    --f-button-discrete-black-padding-top: #{$_f-button-discrete-padding-top};
-    --f-button-discrete-black-padding-right: #{$_f-button-discrete-padding-right};
-    --f-button-discrete-black-padding-bottom: #{$_f-button-discrete-padding-bottom};
-    --f-button-discrete-black-padding-left: #{$_f-button-discrete-padding-left};
+    --f-button-discrete-black-padding-top: 0.4rem;
+    --f-button-discrete-black-padding-right: 0.4rem;
+    --f-button-discrete-black-padding-bottom: 0.4rem;
+    --f-button-discrete-black-padding-left: 0.4rem;
 
-    --f-modal-close-button-margin: 1rem 1rem 0;
-    --f-modal-close-button-padding: none;
+    --f-modal-close-button-margin: 2px;
+    --f-modal-close-button-padding: 0.5rem;
     --f-modal-size-small: 500px;
     --f-modal-size-medium: 700px;
     --f-modal-size-large: 1200px;
     --f-modal-size-fullwidth: 100%;
-    --f-modal-title-font-size: #{$_f-font-size-h4};
+    --f-modal-title-font-size: 1.5rem;
 
     --f-tooltip-close-button-margin: 0.375rem 0.375rem 0.625rem 0.625rem;
     --f-tooltip-border-color: #{$palette-color-fk-black-50};
-    --f-tooltip-border-width: var(--f-border-width-medium);
+    --f-tooltip-border-width: var(--f-border-width-small);
 
     --f-loader-size: 4rem;
     --f-loader-margin: 0 auto 3rem auto;
 
-    --f-table-body-row-padding: 0.5rem;
+    --f-table-body-row-padding: 0.4rem;
 
-    --f-list-item-itempane-padding: 1.25rem;
+    --f-list-item-itempane-padding: 0.8rem;
 
-    --i-popup-error-offset: 24px;
+    --i-popup-error-offset: 16px;
 
     --f-tooltip-offset: 0px;
     --f-tooltip-icon-size: 0px;
@@ -260,7 +260,7 @@
     --f-logo-image-small: none;
     --f-logo-image-large: none;
     --f-logo-size-small: 0.8rem;
-    --f-logo-size-large: 0.8rem 6.195rem;
+    --f-logo-size-large: 0.4rem 4rem;
 
     --f-calendar-height: 21rem;
 
