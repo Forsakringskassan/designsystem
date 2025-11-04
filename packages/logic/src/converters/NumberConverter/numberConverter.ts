@@ -1,5 +1,5 @@
 import { stripWhitespace } from "../../text";
-import { isEmpty } from "../../utils";
+import { isEmpty, isSet } from "../../utils";
 
 const NUMBER_REGEXP = /^(-?\d+)([,.]\d+)?$/;
 
@@ -58,7 +58,10 @@ export function formatNumber(
 /**
  * @public
  */
-export function parseNumber(value: string): number | undefined {
+export function parseNumber(
+    value: string,
+    fractionDigits?: number,
+): number | undefined {
     if (isEmpty(value)) {
         return undefined;
     }
@@ -73,6 +76,20 @@ export function parseNumber(value: string): number | undefined {
     }
 
     const number = Number(numberString);
+    const parsedNumber = isSet(fractionDigits)
+        ? getNumberWithFraction(number, fractionDigits)
+        : number;
 
-    return isNaN(number) ? undefined : number;
+    return isNaN(parsedNumber) ? undefined : parsedNumber;
+}
+
+/**
+ * @internal
+ */
+function getNumberWithFraction(value: number, fractionDigits: number): number {
+    if (fractionDigits < 0) {
+        return NaN;
+    }
+    const exp = 10 ** fractionDigits;
+    return Math.sign(value) * (Math.round(Math.abs(value) * exp) / exp);
 }
