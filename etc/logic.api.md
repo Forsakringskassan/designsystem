@@ -321,13 +321,13 @@ export function parseClearingNumber(value: string): ClearingnumberString | undef
 export function parseDate(value: string): DateString | undefined;
 
 // @public (undocumented)
-export function parseNumber(value: string): number | undefined;
+export function parseNumber(value: string, fractionDigits?: number): number | undefined;
 
 // @public (undocumented)
 export function parseOrganisationsnummer(value: string): OrganisationsnummerString | undefined;
 
 // @public (undocumented)
-export function parsePercent(viewValue: string): number;
+export function parsePercent(viewValue: string, fractionDigits?: number): number | undefined;
 
 // @public
 export function parsePersonnummer(value: string | null | undefined, now?: FDate): PersonnummerString | undefined;

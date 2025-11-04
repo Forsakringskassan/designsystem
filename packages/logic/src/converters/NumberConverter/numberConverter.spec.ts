@@ -94,3 +94,42 @@ describe("parse", () => {
         },
     );
 });
+
+describe("parse with fractionDigits", () => {
+    it("should round parsed value to given precision", () => {
+        expect.assertions(23);
+
+        //Invalid values
+        expect(parseNumber("", 2)).toBeUndefined();
+        expect(parseNumber("foo", 2)).toBeUndefined();
+        expect(parseNumber("123a", 2)).toBeUndefined();
+        expect(parseNumber("123e-1", 2)).toBeUndefined();
+        expect(parseNumber("-Infinity", 2)).toBeUndefined();
+        expect(parseNumber("5.5", -2)).toBeUndefined();
+
+        //No fractions
+        expect(parseNumber("0.4", 0)).toBe(0);
+        expect(parseNumber("0.5", 0)).toBe(1);
+        expect(parseNumber("0.6", 0)).toBe(1);
+
+        //One fraction
+        expect(parseNumber("0.10", 1)).toBe(0.1);
+        expect(parseNumber("0.14", 1)).toBe(0.1);
+        expect(parseNumber("0.15", 1)).toBe(0.2);
+        expect(parseNumber("0.16", 1)).toBe(0.2);
+
+        //Two fractions
+        expect(parseNumber("0.001", 2)).toBe(0);
+        expect(parseNumber("0.004", 2)).toBe(0);
+        expect(parseNumber("0.005", 2)).toBe(0.01);
+        expect(parseNumber("0.006", 2)).toBe(0.01);
+        expect(parseNumber("9.999", 2)).toBe(10);
+
+        //Negative value and 3 fractions
+        expect(parseNumber("-9.9111", 3)).toBe(-9.911);
+        expect(parseNumber("-9.4444", 3)).toBe(-9.444);
+        expect(parseNumber("-9.5555", 3)).toBe(-9.556);
+        expect(parseNumber("-9.6666", 3)).toBe(-9.667);
+        expect(parseNumber("-9.9999", 3)).toBe(-10);
+    });
+});
