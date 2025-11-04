@@ -89,7 +89,7 @@
     "@forsakringskassan/vite-lib-config": "4.2.3",
     "@vue/test-utils": "2.4.6",
     "cypress": "15.5.0",
-    "esbuild": "0.25.11",
+    "esbuild": "0.25.12",
     "flush-promises": "1.0.2",
     "glob": "11.0.3",
     "vite": "7.1.12",
