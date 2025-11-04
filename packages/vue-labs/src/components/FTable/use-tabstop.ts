@@ -155,16 +155,7 @@ export function useTabstop(
 
         assertRef(tableRef);
         const target = getCellTarget(tableRef.value, 1, 0);
-
-        if (metaRows.value.length === 0) {
-            target.tabIndex = 0;
-            target.focus();
-        } else {
-            activateCell(target, {
-                focus: renderOptions.value.focus,
-            });
-        }
-
+        activateCell(target, { focus: renderOptions.value.focus });
         renderOptions.value.fallbackToFirstCell = false;
     });
 

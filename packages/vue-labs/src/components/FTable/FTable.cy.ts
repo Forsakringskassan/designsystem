@@ -36,6 +36,7 @@ describe("5 tabstop", () => {
         buttonBeforeTable: string;
         buttonAfterTable: string;
         buttonAddRow: string;
+        buttonRemoveRow: string;
     } {
         const rows = ref([
             { foo: "1", bar: "alpha" },
@@ -65,6 +66,7 @@ describe("5 tabstop", () => {
         const buttonBeforeTable = "button-before-table";
         const buttonAfterTable = "button-after-table";
         const buttonAddRow = "button-add-row";
+        const buttonRemoveRow = "button-remove-row";
         const counter = ref(4);
 
         cy.mount(() =>
@@ -81,6 +83,9 @@ describe("5 tabstop", () => {
                         bar: "Added row",
                     }),
                 ),
+                renderButton("Remove row", buttonRemoveRow, () =>
+                    rows.value.shift(),
+                ),
             ]),
         );
 
@@ -88,6 +93,7 @@ describe("5 tabstop", () => {
             buttonBeforeTable: getTestSelector(buttonBeforeTable),
             buttonAfterTable: getTestSelector(buttonAfterTable),
             buttonAddRow: getTestSelector(buttonAddRow),
+            buttonRemoveRow: getTestSelector(buttonRemoveRow),
         };
     }
 
@@ -302,6 +308,17 @@ describe("5 tabstop", () => {
         cy.focused().should("contain.text", "gamma");
         cy.focused().click();
         cy.focused().should("contain.text", "Tabellen är tom");
+    });
+
+    it("should not set focus when removing rows from outside table", () => {
+        const { buttonRemoveRow } = mountTabstopTestbed();
+        cy.get(buttonRemoveRow).focus();
+        cy.focused().click();
+        cy.get(buttonRemoveRow).should("be.focused");
+        cy.focused().click();
+        cy.get(buttonRemoveRow).should("be.focused");
+        cy.focused().click();
+        cy.get(buttonRemoveRow).should("be.focused");
     });
 
     it("should set tabstop to first cell when a first row is added", () => {
