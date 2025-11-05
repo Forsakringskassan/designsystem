@@ -36,6 +36,10 @@ module.exports = defineMetadata({
         flow: true,
     },
 
+    "i-table-selectable": {
+        flow: true,
+    },
+
     "i-table-text": {
         flow: true,
     },
