@@ -1,29 +1,43 @@
 <script setup lang="ts">
-import { useTemplateRef } from "vue";
+import { computed, useTemplateRef } from "vue";
 import { type FTableCellApi } from "./f-table-api";
+
+const { selectable, state } = defineProps<{ selectable: "single" | "multi"; state: boolean | "indeterminate" }>();
 
 const emit = defineEmits<{
     /**
      * Emitted when checkbox value changes.
      */
-    change: [];
+    toggle: [];
 }>();
 
-const selectAllRef = useTemplateRef("selectAll");
+const indeterminate = computed(() => state === "indeterminate");
+const checked = computed(() => (state === "indeterminate" ? false : state));
+const columnClass = computed(() =>
+    selectable === "multi" ? "table-ng__column table-ng__column--checkbox table-ng__column--select" : "",
+);
 
-const expose: FTableCellApi = { tabstopEl: selectAllRef };
+const expose: Partial<FTableCellApi> = {};
+
+if (selectable === "multi") {
+    const inputRef = useTemplateRef("input");
+    expose.tabstopEl = inputRef;
+}
+
 defineExpose(expose);
 </script>
 
 <template>
-    <th scope="col" class="table-ng__column table-ng__column--checkbox table-ng__column--select">
+    <th scope="col" :class="columnClass">
         <input
-            ref="selectAll"
+            v-if="selectable === 'multi'"
+            ref="input"
+            :checked
+            :indeterminate
             type="checkbox"
             aria-label="select all"
             tabindex="-1"
-            indeterminate
-            @change="emit('change')"
+            @change="emit('toggle')"
         />
     </th>
 </template>
