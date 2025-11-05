@@ -24,6 +24,7 @@ module.exports = defineMetadata({
             "i-table-radio",
             "i-table-rowheader",
             "i-table-select",
+            "i-table-selectable",
             "i-table-text",
         ],
     },
@@ -33,6 +34,10 @@ module.exports = defineMetadata({
     },
 
     "i-table-header-selectable": {
+        flow: true,
+    },
+
+    "i-table-selectable": {
         flow: true,
     },
 

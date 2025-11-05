@@ -221,10 +221,23 @@ function onButtonClick(row: Row): void {
         rows.value.splice(rows.value.indexOf(row), 1);
     });
 }
+
+function onAddRow(): void {
+    rows.value.push({
+        id: String(rows.value.length + 1),
+        animal: "Älg",
+        level: "Föräldrapenning",
+        start: "2024-04-11",
+        end: "2025-04-20",
+        antal: "800",
+        aktiv: false,
+        expandableRows: [],
+    });
+}
 </script>
 
 <template>
-    <button type="button" class="button button--secondary">Interagerbart element före</button>
+    <button type="button" class="button button--secondary" @click="onAddRow">Lägg till rad</button>
     <f-sort-filter-dataset :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
             <f-table
