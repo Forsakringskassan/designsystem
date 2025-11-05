@@ -1,7 +1,3 @@
-@use "@fkui/theme-default" as theme with (
-    $global: false
-);
-
 @use "@fkui/font-default" as font with (
     $global: false,
     $asset-path: "./assets/fonts"
@@ -15,22 +11,6 @@ $fk-logo-small-url: "#{config-variables.$asset-path-images}/fk-logo-primary-smal
 $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-large.svg";
 
 @include font.font-face;
-
-@media (prefers-color-scheme: light) {
-    .code-preview__preview,
-    .live-example__example,
-    .user-theme {
-        @include theme.light;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .code-preview__preview,
-    .live-example__example,
-    .user-theme {
-        @include theme.dark;
-    }
-}
 
 .code-preview__preview,
 .live-example__example,

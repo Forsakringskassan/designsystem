@@ -1,4 +1,4 @@
-@use "pkg:@fkui/theme-default";
+@use "pkg:@fkui/theme-default" as theme;
 @use "@fkui/theme-default/src/palette-variables" as palette;
 @use "@fkui/design/src/core/config-variables" with (
     $asset-path: ".",
@@ -7,10 +7,23 @@
 @use "@fkui/design/src/core/mixins/breakpoints";
 @use "@fkui/design" as fkui;
 @use "@forsakringskassan/docs-generator/style";
+@use "@forsakringskassan/docs-generator/theme/fkui" as theme-fkui;
 @use "@forsakringskassan/docs-live-example";
 
 $fk-logo-small: "fk-logo-primary-small.svg";
 $fk-logo-large: "fk-logo-primary-large.svg";
+
+@media (prefers-color-scheme: light) {
+    :root {
+        @include theme.light;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include theme.dark;
+    }
+}
 
 :root {
     --f-logo-image-small:
