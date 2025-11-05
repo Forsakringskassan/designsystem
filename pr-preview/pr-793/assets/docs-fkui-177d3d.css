@@ -1,0 +1,36 @@
+@font-face {
+  font-family: Inter;
+  font-weight: 300;
+  src: url("./assets/fonts/Inter-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 400;
+  src: url("./assets/fonts/Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 500;
+  src: url("./assets/fonts/Inter-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 600;
+  src: url("./assets/fonts/Inter-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: Inter;
+  font-weight: 700;
+  src: url("./assets/fonts/Inter-Bold.woff2") format("woff2");
+}
+.code-preview__preview,
+.live-example__example,
+.user-theme {
+  --f-font-family: "Inter", arial, "Helvetica Neue", sans-serif;
+  --f-font-weight-normal: 400;
+  --f-font-weight-medium: 600;
+  --f-font-weight-bold: 700;
+  --f-logo-image-small: url("./images/fk-logo-primary-small.svg"), $solid-color;
+  --f-logo-image-large: url("./images/fk-logo-primary-large.svg"), $solid-color;
+  font-family: var(--f-font-family);
+}
