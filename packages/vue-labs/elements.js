@@ -1,4 +1,6 @@
-const { defineMetadata } = require("html-validate");
+const { defineMetadata, metadataHelper } = require("html-validate");
+
+const { allowedIfAttributeIsPresent } = metadataHelper;
 
 module.exports = defineMetadata({
     "x-file-dragdrop": {
@@ -11,6 +13,29 @@ module.exports = defineMetadata({
 
     "f-table": {
         flow: true,
+        attributes: {
+            columns: {
+                required: true,
+            },
+            rows: {
+                required: true,
+            },
+            "key-attribute": ["/.+/"],
+            "expandable-attribute": ["/.+/"],
+            striped: {
+                boolean: true,
+            },
+            selectable: ["/.+/"],
+            "selected-rows": {
+                allowed: allowedIfAttributeIsPresent("selectable"),
+                required: false,
+            },
+            "v-model:selected-rows": {
+                allowed: allowedIfAttributeIsPresent("selectable"),
+                required: false,
+            },
+        },
+        slots: ["empty", "expandable", "footer"],
     },
 
     tr: {
@@ -28,6 +53,7 @@ module.exports = defineMetadata({
             "i-table-radio",
             "i-table-rowheader",
             "i-table-select",
+            "i-table-selectable",
             "i-table-text",
         ],
     },
@@ -37,6 +63,10 @@ module.exports = defineMetadata({
     },
 
     "i-table-header-selectable": {
+        flow: true,
+    },
+
+    "i-table-selectable": {
         flow: true,
     },
 

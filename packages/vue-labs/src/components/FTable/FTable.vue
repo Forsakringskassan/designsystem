@@ -13,28 +13,21 @@ import {
     toValue,
     useSlots,
     useTemplateRef,
-    watchEffect,
 } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
-import { FSortFilterDatasetInjected, setInternalKeys, useSlotUtils, useTranslate } from "@fkui/vue";
+import { FSortFilterDatasetInjected, setInternalKeys, useSlotUtils } from "@fkui/vue";
 import { activateCell, getMetaRows, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
-import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
 import ITableHeader from "./ITableHeader.vue";
 import ITableHeaderSelectable from "./ITableHeaderSelectable.vue";
-import ITableRadio from "./ITableRadio.vue";
+import ITableSelectable from "./ITableSelectable.vue";
 import { type MetaRow } from "./MetaRow";
 import { isFTableCellApi, tableCellApiSymbol } from "./f-table-api";
 import { getBodyRowCount } from "./get-body-row-count";
 import { stopEditKey } from "./start-stop-edit";
-import {
-    type NormalizedTableColumn,
-    type NormalizedTableColumnCheckbox,
-    type NormalizedTableColumnRadio,
-    type TableColumn,
-    normalizeTableColumns,
-} from "./table-column";
+import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
+import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
 
 type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
@@ -57,10 +50,8 @@ const {
     striped?: boolean;
     selectable?: "single" | "multi";
 }>();
-const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
-const selectAllRef = ref<HTMLInputElement | null>(null);
 const expandedKeys: Ref<string[]> = ref([]);
 const keyedRows = computed(() => setInternalKeys(rows, keyAttribute, expandableAttribute));
 const metaRows = computed(
@@ -89,99 +80,6 @@ const columnCount = computed((): number => {
 const hasFooter = computed((): boolean => {
     return hasSlot("footer");
 });
-
-const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
-    type: "checkbox",
-    id: Symbol("multi-select"),
-    header: ref("selectable"),
-    description: ref(null),
-    sortable: null,
-    component: ITableCheckbox,
-    label() {
-        /** Screen reader text for checkbox in multi select table row. */
-        return $t("fkui.table.selectable.checkbox", "Välj rad");
-    },
-    value(row) {
-        if (!keyAttribute) {
-            return false;
-        }
-
-        return selectedRows.value.some((it) => {
-            return row[keyAttribute] === it[keyAttribute];
-        });
-    },
-    editable() {
-        return true;
-    },
-    update(row, _newValue, _oldValue) {
-        assertRef(selectedRows);
-        const index = selectedRows.value.indexOf(row);
-
-        if (index < 0) {
-            selectedRows.value.push(row);
-        } else {
-            selectedRows.value.splice(index, 1);
-        }
-    },
-};
-
-const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
-    type: "radio",
-    id: Symbol("single-select"),
-    header: ref("Välj en rad"),
-    description: ref(null),
-    sortable: null,
-    component: ITableRadio,
-    label() {
-        /** Screen reader text for radio button in single select table row. */
-        return $t("fkui.table.selectable.radio", "Välj rad");
-    },
-    value(row) {
-        if (!keyAttribute) {
-            return false;
-        }
-
-        return selectedRows.value.some((it) => {
-            return row[keyAttribute] === it[keyAttribute];
-        });
-    },
-    update(row, _newValue, _oldValue) {
-        assertRef(selectedRows);
-        selectedRows.value = [row];
-    },
-};
-
-const isIndeterminate = computed(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length < rows.length;
-});
-
-const isAllRowsSelected = computed((): boolean => {
-    return selectedRows.value.length > 0 && selectedRows.value.length === rows.length;
-});
-
-const isSingleSelect = computed(() => {
-    return selectable === "single";
-});
-
-const isMultiSelect = computed(() => {
-    return selectable === "multi";
-});
-
-watchEffect(() => {
-    if (selectAllRef.value) {
-        selectAllRef.value.indeterminate = isIndeterminate.value;
-        selectAllRef.value.checked = isAllRowsSelected.value;
-    }
-});
-
-function onSelectAllChange(): void {
-    if (selectAllRef.value?.checked) {
-        selectedRows.value = [...rows];
-    } else {
-        selectedRows.value = [];
-    }
-}
-
 const columns = computed(() => normalizeTableColumns(rawColumns));
 
 const tableClasses = computed(() => {
@@ -326,14 +224,15 @@ function bindCellApiRef(ref: Element | ComponentPublicInstance | null): void {
     cell[tableCellApiSymbol] = ref;
 }
 
-function bindSelectableCellApiRef(ref: Element | ComponentPublicInstance | null): void {
-    if (!isFTableCellApi(ref)) {
-        return;
-    }
-
-    bindCellApiRef(ref);
-    selectAllRef.value = toValue(ref.tabstopEl) as HTMLInputElement | null;
+function isAriaSelected(level: number = 1, row: T): boolean {
+    return level < 2 && selectableRowState(row);
 }
+
+const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggleSelectableRow } = useSelectable({
+    selectable,
+    selectedRows,
+    rows: () => rows, // wrap in getter since destructured prop
+});
 
 const tableApi = useTabstop(tableRef, metaRows);
 defineExpose(tableApi);
@@ -361,11 +260,13 @@ onMounted(() => {
             <tr class="table-ng__row" aria-rowindex="1">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <i-table-header-selectable
-                    v-if="isMultiSelect"
-                    :ref="bindSelectableCellApiRef"
-                    @change="onSelectAllChange"
+                    v-if="selectable"
+                    :ref="bindCellApiRef"
+                    :state="selectableHeaderState()"
+                    :selectable
+                    @toggle="toggleSelectableHeader"
                 />
-                <th v-if="isSingleSelect" scope="col">{{ singleSelectColumn.header }}</th>
+
                 <i-table-header
                     v-for="column in columns"
                     :key="column.id"
@@ -396,6 +297,7 @@ onMounted(() => {
                 :aria-rowindex="rowIndex"
                 :aria-setsize="setsize"
                 :aria-posinset="posinset"
+                :aria-selected="isAriaSelected(level, row)"
             >
                 <i-table-expand-button
                     v-if="isTreegrid"
@@ -410,21 +312,18 @@ onMounted(() => {
                     <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
                     <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
                 </i-table-expandable>
+
                 <template v-else>
-                    <i-table-checkbox
-                        v-if="isMultiSelect"
+                    <i-table-selectable
+                        v-if="selectable"
                         :ref="bindCellApiRef"
+                        :level
+                        :selectable
+                        :state="selectableRowState(row)"
                         :row
-                        :column="multiSelectColumn"
-                        class="table-ng__cell--selectable"
-                    ></i-table-checkbox>
-                    <i-table-radio
-                        v-if="isSingleSelect"
-                        :ref="bindCellApiRef"
-                        :row
-                        :column="singleSelectColumn"
-                        class="table-ng__cell--selectable"
-                    ></i-table-radio>
+                        @toggle="toggleSelectableRow"
+                    />
+
                     <template v-for="column in columns" :key="column.id">
                         <component
                             :is="column.component"
