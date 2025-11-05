@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Knapp - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-ffd9c1.css"
+            href="../assets/docs-875903.css"
             crossorigin
-            integrity="sha384-P4Pi86aDECc7yXV1Wb6V2Ar8NBUeiCRXFw9zEELZxp9IiqhJVw2UCw7F8nw9ghKX"
+            integrity="sha384-Z3hmoPLdmylByqj9TmCO1pSxfb9t7WpTYGK7dpnyYqdqFPCBjADyWyOO2iLgjy7x"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-b7df9e.css"
+            href="../assets/docs-fkui-203089.css"
             crossorigin
-            integrity="sha384-RmYNU/EM6E27IBOzBHxgcwHl83mRIw0MecqFn0O6MxvKY4WWTl6Uuj5uFuP9VwvH"
+            integrity="sha384-UbW+ktIc+EcM7vggNQO6vQfKehGu7Se90q+rlirCvNoLeb0lLvCertzpK1zJ4fOU"
             
         />
 
@@ -25,15 +25,15 @@
     "vue": "../assets/vendor-vue-fd23ba.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-277994.js",
     "@fkui/date": "../assets/vendor-fkui-date-131ba7.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-1d16bc.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
+    "@fkui/vue": "../assets/vendor-fkui-vue-9036bf.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
   },
   "integrity": {
     "../assets/vendor-vue-fd23ba.js": "sha384-fgWjDRyjtEXyEeb3gQxn5cMLQnaLJ/+raE5Ku0VLWBP2RlzpzrpvJFEC1FCSIWMk",
     "../assets/vendor-fkui-logic-277994.js": "sha384-o6DN+xTHp12Ot0+4FNZEoyGS6m3b75MezBhapCvFqCaF1IS9W5ox/P2dcvqGKt+i",
     "../assets/vendor-fkui-date-131ba7.js": "sha384-1ousGnX+TtYBjw6BVR/x9Yg2jMIjTjuSOD+VpUdpe9Eo7r1KF2LHHKhc8hzYQQlC",
-    "../assets/vendor-fkui-vue-1d16bc.js": "sha384-X/w2NnHq5zNakl+E6rXdhqkOpMBGpcMK+wrUvSN85qOj0XlqAMIC+fhTxlXCNcsc",
-    "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
+    "../assets/vendor-fkui-vue-9036bf.js": "sha384-sUOipiRSDDh3dyJ4rE/VWjDW3NBQZ98lrdAk4ZSIBfUcnu6sv9ifXpHgXZbm7wLu",
+    "../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
   }
 }
         </script><script
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-3e916c.json"
+            href="../search-data-2c5fa2.json"
             as="fetch"
             crossorigin
-            integrity="sha384-UqqFXpIL1dzrFh+wtZd1JCzCu8dhUch1XKO6ljo8zGudFRLI7l/pRdx16TWqrrNw"
+            integrity="sha384-CxJ9qnjTPfMEjIyMdrLB5pM7Kyz+uxDsGfemTGPcFBfWP+jHQaV951bOnxej15uo"
             id="search-data"
         />
     </head>
@@ -1083,7 +1083,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/9776b3f8edba63747831c6004a5b8886bacd30e7/packages/vue/src/components/FButton/FButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ca6999b8f5b046de319b2037fb28efcd6aaff4b9/packages/vue/src/components/FButton/FButton.vue">
                 FButton
             </a>
             
@@ -1161,11 +1161,12 @@ En knapp har en text och kan kompletteras med en ikon.</p>
     
                 </div>
             <h2 id="primar_knapp"><a class="header-anchor" href="#primar_knapp">Primär knapp</a></h2><p class="docs-paragraph">Använd primär knapp för det primära och det mest troliga alternativet för användaren.
-Det får bara finnas en primär knapp per sida.</p>
+Generellt ska endast en primär knapp finnas på en sida.
+I fallet när en sida består av flera olika delar kan varje del ha en primär knapp.</p>
 <h2 id="sekundar_knapp"><a class="header-anchor" href="#sekundar_knapp">Sekundär knapp</a></h2><p class="docs-paragraph">Använd sekundär knapp fristående eller tillsammans med en primär knapp.</p>
 
                 <div
-                    id="example-2f0c28"
+                    id="example-8fbd50"
                     class="code-preview code-preview--default"
                     
                     
@@ -1180,10 +1181,11 @@ Det får bara finnas en primär knapp per sida.</p>
 Tertiär knapp passar bra när flera knappar ska grupperas,
 till exempel om ett kort ska ha knappar för att ändra eller ta bort objekt som kortet representerar.
 Den kan användas som en tredje knapp tillsammans med en primär och en sekundär knapp i en grupp.
+Tertiär knapp ska alltid ha ikon, förutom när den används i en grupp tillsammans med en primär eller sekundär knapp.
 Knapptexten är understruken om en tertiär knapp används utan en ikon.</p>
 
                 <div
-                    id="example-a4955f"
+                    id="example-e09a8f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1197,7 +1199,7 @@ Knapptexten är understruken om en tertiär knapp används utan en ikon.</p>
             <p class="docs-paragraph">Svart tertiär knapp används för funktioner som inte har att göra med det huvudsakliga flödet eller innehållet på en sida, tex Skriv ut.</p>
 
                 <div
-                    id="example-e67d8d"
+                    id="example-8be1a5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1211,7 +1213,7 @@ Knapptexten är understruken om en tertiär knapp används utan en ikon.</p>
             <p class="docs-paragraph">Inverterad tertiär knapp används för att få en bättre kontrast mot en mörk bakgrund.</p>
 
                 <div
-                    id="example-0dd75f"
+                    id="example-86fe23"
                     class="code-preview code-preview--default"
                     
                     
@@ -1227,7 +1229,7 @@ Detta lägger på en negativ vänstermarginal.
 Observera att minimum bredd på knappen också tas bort.</p>
 
             <div
-                id="example-db5bd2"
+                id="example-fead7b"
                 class="code-preview code-preview--default"
                 
                 
@@ -1317,7 +1319,7 @@ Knappens bredd bestäms av längden på knapptexten.
 För varje knappstorlek finns en minsta bredd.</p>
 
                 <div
-                    id="example-de8dc6"
+                    id="example-460b12"
                     class="code-preview code-preview--default"
                     
                     
@@ -1333,7 +1335,7 @@ Knappar som har storleken Large sätts automatiskt till fullbredd när skärmbre
 <h3 id="fullbredd_i_mobillage"><a class="header-anchor" href="#fullbredd_i_mobillage">Fullbredd i mobilläge</a></h3><p class="docs-paragraph">Knappar (small &amp; medium) är som standard inte fullbredd i mobil men kan aktiveras med prop <code>mobile-full-width</code>.</p>
 
                 <div
-                    id="example-2016e5"
+                    id="example-cef379"
                     class="code-preview code-preview--default"
                     
                     
@@ -1348,7 +1350,7 @@ Knappar som har storleken Large sätts automatiskt till fullbredd när skärmbre
 Använd ikoner för att förtydliga knappens funktion och skapa snabbare igenkänning.</p>
 
                 <div
-                    id="example-3660be"
+                    id="example-b0a3f4"
                     class="code-preview code-preview--default"
                     
                     
@@ -1369,7 +1371,7 @@ så får knappen olika beteende.</p>
 </ul>
 
                 <div
-                    id="example-9b757e"
+                    id="example-d82741"
                     class="code-preview code-preview--default"
                     
                     
@@ -1400,7 +1402,7 @@ så får knappen olika beteende.</p>
 </ul>
 
                 <div
-                    id="example-358b29"
+                    id="example-0e09b7"
                     class="code-preview code-preview--default"
                     
                     
@@ -1431,7 +1433,7 @@ så får knappen olika beteende.</p>
 </ul>
 
                 <div
-                    id="example-a82ffe"
+                    id="example-1c07cb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1464,7 +1466,7 @@ Om bredden på ytan där knapparna visas inte räcker visas knapparna på flera 
 En button-group kan användas när knappar ska visas horisontellt i desktop och vertikalt och fullbredd i mobil.</p>
 
             <div
-                id="example-ab1322"
+                id="example-e19ef9"
                 class="code-preview code-preview--default"
                 
                 
@@ -1515,7 +1517,7 @@ En button-group kan användas när knappar ska visas horisontellt i desktop och 
 Alla knappar som är i en grupp ska ha samma storlek.</p>
 
             <div
-                id="example-2f3125"
+                id="example-05be5f"
                 class="code-preview code-preview--default"
                 
                 
@@ -1828,9 +1830,9 @@ Used in conjunction with button variant <code>tertiary</code>.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/table-update (<a href="https://github.com/Forsakringskassan/designsystem/commits/9776b3f8edba63747831c6004a5b8886bacd30e7">9776b3f</a>)<br />
+<div class="footer__right"><div class="version">docs/table-update (<a href="https://github.com/Forsakringskassan/designsystem/commits/ca6999b8f5b046de319b2037fb28efcd6aaff4b9">ca6999b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/752">PR 752</a><br />
-        2025-10-21 12:47
+        2025-11-05 10:00
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1942,10 +1944,10 @@ Used in conjunction with button variant <code>tertiary</code>.</p>
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-16fe68.js"
+            src="../assets/processors/selectable-version/select-version-cec529.js"
             type="module"
             crossorigin
-            integrity="sha384-DJFjfr+dJLwncmBiNlPmxtnGcs0SUhZgrVve9x6cQSj2+aTKB5DAkuHvsew8ymu5"
+            integrity="sha384-TRok7ZiWlbx0DVsCXEE+G+WyYin4CJxSKORmSHFtV+tQqQf0G4j9nQeI5MKWgyKu"
             
         ></script><script
             src="../assets/main-0e7d43.js"
