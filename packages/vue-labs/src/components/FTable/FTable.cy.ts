@@ -6,6 +6,8 @@ import FTable from "./FTable.vue";
 import { type FTableApi } from "./f-table-api";
 import { defineTableColumns } from "./table-column";
 
+const table = new FTablePageObject();
+
 function renderButton(
     text: string,
     dataTest: string,
@@ -25,6 +27,36 @@ function renderButton(
 function getTestSelector(value: string): string {
     return `[data-test="${value}"]`;
 }
+
+it("should show empty table", () => {
+    cy.mount(FTable, {
+        props: {
+            columns: [],
+            rows: [],
+        },
+    });
+
+    table.el().should("exist");
+    // table.cell({ row: 1, col: 1 }).should("not.have.attr", "colspan");
+});
+
+it.only("should foo", () => {
+    const rows = [{ foo: "Awesome text" }];
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        { header: "My awesome header", key: "foo" },
+    ]);
+
+    cy.mount(FTable<(typeof rows)[number]>, {
+        props: {
+            columns,
+            rows,
+        },
+    });
+
+    table.el().should("exist");
+    table.rows().should("have.length", 1);
+    table.cell({ row: 1, col: 1 }).should("have.text", "Awesome text");
+});
 
 describe("5 tabstop", () => {
     interface TabstopRow {
@@ -240,8 +272,6 @@ describe("5 tabstop", () => {
             buttonBeforeTable: getTestSelector(buttonBeforeTable),
         };
     }
-
-    const table = new FTablePageObject();
 
     it("5.1 should default to first datacell", () => {
         const { buttonBeforeTable } = mountTabstopTestbed();
