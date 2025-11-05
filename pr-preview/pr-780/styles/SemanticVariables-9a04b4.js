@@ -48,8 +48,8 @@ var metadata_default = {
     },
     {
       "name": "--fkds-color-text-inverted",
-      "value": "#ffffff",
-      "palette": "white-100",
+      "value": "#fff",
+      "palette": null,
       "comment": null
     },
     {
@@ -60,8 +60,8 @@ var metadata_default = {
     },
     {
       "name": "--fkds-color-background-primary",
-      "value": "#ffffff",
-      "palette": "white-100",
+      "value": "#fff",
+      "palette": null,
       "comment": null
     },
     {
@@ -108,8 +108,8 @@ var metadata_default = {
     },
     {
       "name": "--fkds-color-border-inverted",
-      "value": "#ffffff",
-      "palette": "white-100",
+      "value": "#fff",
+      "palette": null,
       "comment": null
     },
     {
@@ -162,26 +162,26 @@ var metadata_default = {
     },
     {
       "name": "--fkds-color-action-text-inverted-default",
-      "value": "#ffffff",
-      "palette": "white-100",
+      "value": "#fff",
+      "palette": null,
       "comment": null
     },
     {
       "name": "--fkds-color-action-text-inverted-hover",
-      "value": "#ffffff",
-      "palette": "white-100",
+      "value": "#fff",
+      "palette": null,
       "comment": null
     },
     {
       "name": "--fkds-color-action-text-inverted-active",
-      "value": "#ffffff",
-      "palette": "white-100",
+      "value": "#fff",
+      "palette": null,
       "comment": null
     },
     {
       "name": "--fkds-color-action-text-inverted-focus",
-      "value": "#ffffff",
-      "palette": "white-100",
+      "value": "#fff",
+      "palette": null,
       "comment": null
     },
     {
