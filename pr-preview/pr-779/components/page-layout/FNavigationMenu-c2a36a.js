@@ -33,7 +33,6 @@ import { defineComponent as _defineComponent } from "vue";
 
 // node_modules/vue-router/dist/devtools-BLCumUwL.mjs
 import { getCurrentInstance, inject, onActivated, onDeactivated, onUnmounted, watch } from "vue";
-var isArray = Array.isArray;
 var ErrorTypes = /* @__PURE__ */ (function(ErrorTypes$1) {
   ErrorTypes$1[ErrorTypes$1["MATCHER_NOT_FOUND"] = 1] = "MATCHER_NOT_FOUND";
   ErrorTypes$1[ErrorTypes$1["NAVIGATION_GUARD_REDIRECT"] = 2] = "NAVIGATION_GUARD_REDIRECT";
