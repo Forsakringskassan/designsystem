@@ -6,6 +6,8 @@ import FTable from "./FTable.vue";
 import { type FTableApi } from "./f-table-api";
 import { defineTableColumns } from "./table-column";
 
+const table = new FTablePageObject();
+
 function renderButton(
     text: string,
     dataTest: string,
@@ -25,6 +27,82 @@ function renderButton(
 function getTestSelector(value: string): string {
     return `[data-test="${value}"]`;
 }
+
+describe("1.8 when table is empty", () => {
+    const rows: never[] = [];
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "text",
+            header: "A",
+        },
+        {
+            type: "text",
+            header: "B",
+        },
+        {
+            type: "text",
+            header: "C",
+        },
+    ]);
+
+    it("should have a single empty row with default text", () => {
+        cy.mount(FTable<(typeof rows)[number]>, { props: { rows, columns } });
+        table.rows().should("have.length", 1);
+        table
+            .cell({ row: 1, col: 1 })
+            .should("contain.text", "Tabellen är tom");
+    });
+
+    it("should be able to change text of empty row", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+            slots: { empty: "Foo" },
+        });
+
+        table.cell({ row: 1, col: 1 }).should("contain.text", "Foo");
+    });
+
+    it("should span all columns", () => {
+        cy.mount(FTable<(typeof rows)[number]>, { props: { rows, columns } });
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "3");
+    });
+
+    it("should span all columns when expandable", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "4");
+    });
+
+    it("should span all columns when selectable", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows: [], columns, selectable: "multi" },
+        });
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "4");
+    });
+
+    it("should span all columns when selectable and expandable", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute: "nested",
+                selectable: "multi",
+            },
+        });
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "5");
+    });
+
+    it("should span one column when table has no columns", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns: [],
+            },
+        });
+        table.cell({ row: 1, col: 1 }).should("have.attr", "colspan", "1");
+    });
+});
 
 describe("5 tabstop", () => {
     interface TabstopRow {
@@ -246,8 +324,6 @@ describe("5 tabstop", () => {
             buttonBeforeTable: getTestSelector(buttonBeforeTable),
         };
     }
-
-    const table = new FTablePageObject();
 
     it("5.1 should default to first datacell", () => {
         const { buttonBeforeTable } = mountTabstopTestbed();
