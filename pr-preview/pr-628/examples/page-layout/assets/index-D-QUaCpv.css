@@ -1376,6 +1376,10 @@ input[type=search]:focus,
   color: var(--fkds-color-action-text-secondary-default);
   text-decoration-color: var(--fkds-color-border-primary);
 }
+.anchor.anchor--discrete:hover, .anchor--discrete.file-item__file-open:hover {
+  color: var(--fkds-color-action-text-secondary-default);
+  text-decoration-color: var(--fkds-color-border-primary);
+}
 
 .badge {
   border-radius: var(--f-border-radius-medium);
