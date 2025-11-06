@@ -354,7 +354,7 @@ onMounted(() => {
         @click="onClick"
         @keydown="onKeydown"
     >
-        <caption v-if="hasCaption">
+        <caption v-if="hasCaption" data-test="caption">
             <slot name="caption"></slot>
         </caption>
         <thead>
