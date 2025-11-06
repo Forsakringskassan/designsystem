@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-cell.vue:FInteractiveTablePageObject-cell-20d217.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-checkbox.vue:FInteractiveTablePageObject-checkbox-c7a088.js
 import { defineComponent as _defineComponent } from "vue";
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FInteractiveTablePageObject-cell",
+  __name: "FInteractiveTablePageObject-checkbox",
   setup(__props, { expose: __expose }) {
     __expose();
     const rows = [
@@ -52,8 +52,8 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FInteractiveTable"], {
-    "key-attribute": "id",
-    rows: $setup.rows
+    rows: $setup.rows,
+    selectable: ""
   }, {
     caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createTextVNode(
@@ -62,6 +62,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       )
     ])]),
+    "checkbox-description": _withCtx(({ row }) => [
+      _createTextVNode(
+        " Select row " + _toDisplayString(row.a),
+        1
+        /* TEXT */
+      )
+    ]),
     default: _withCtx(({ row }) => [
       _createVNode(
         $setup["FTableColumn"],
@@ -122,7 +129,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-20d217"
+  selector: "#example-c7a088"
 });
 export {
   render
