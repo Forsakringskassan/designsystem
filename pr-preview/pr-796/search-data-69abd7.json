@@ -122,11 +122,6 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -146,6 +141,11 @@
     "scss",
     "css",
     "ikonbibliotek",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Testverktyg",
     "testfall",
     "jest",
@@ -914,25 +914,6 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
-    },
-    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -969,6 +950,25 @@
         "scss",
         "css",
         "ikonbibliotek"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
       ]
     },
     {
@@ -2369,26 +2369,26 @@
     "121": 33,
     "122": 34,
     "123": 34,
-    "124": 35,
-    "125": 36,
-    "126": 36,
-    "127": 37,
-    "128": 37,
-    "129": 37,
-    "130": 37,
-    "131": 37,
-    "132": 37,
-    "133": 38,
-    "134": 38,
-    "135": 38,
-    "136": 39,
-    "137": 39,
-    "138": 39,
-    "139": 39,
-    "140": 40,
-    "141": 40,
-    "142": 40,
-    "143": 40,
+    "124": 34,
+    "125": 34,
+    "126": 34,
+    "127": 34,
+    "128": 35,
+    "129": 35,
+    "130": 35,
+    "131": 36,
+    "132": 36,
+    "133": 36,
+    "134": 36,
+    "135": 37,
+    "136": 37,
+    "137": 37,
+    "138": 37,
+    "139": 37,
+    "140": 37,
+    "141": 38,
+    "142": 38,
+    "143": 39,
     "144": 40,
     "145": 40,
     "146": 41,
