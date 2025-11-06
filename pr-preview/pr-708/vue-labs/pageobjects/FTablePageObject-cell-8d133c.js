@@ -3826,7 +3826,8 @@ function useTabstop(tableRef, metaRows) {
 }
 var _hoisted_1 = ["role", "aria-rowcount"];
 var _hoisted_2 = {
-  key: 0
+  key: 0,
+  "data-test": "caption"
 };
 var _hoisted_3 = {
   class: "table-ng__row",
