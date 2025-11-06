@@ -1320,6 +1320,8 @@ input[type=search]:focus,
 }
 .anchor:hover, .file-item__file-open:hover {
   text-decoration-thickness: 3px;
+  color: var(--fkds-color-action-text-primary-default);
+  text-decoration-color: var(--fkds-color-action-text-primary-default);
 }
 .anchor.anchor--block, .file-item__file-open {
   display: inline-flex;
