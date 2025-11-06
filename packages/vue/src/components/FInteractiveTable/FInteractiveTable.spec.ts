@@ -718,7 +718,7 @@ it("should call provided sort method when clicking columnheader that is registra
 });
 
 describe("Expandable rows", () => {
-    it("Should handle slot content in expanded rows", () => {
+    it("Should handle slot content in expanded rows", async () => {
         expect.assertions(3);
         const TestComponent = defineComponent({
             components: { FInteractiveTable, FTableColumn },
@@ -752,6 +752,8 @@ describe("Expandable rows", () => {
             },
         });
         const wrapper = mount(TestComponent);
+        await wrapper.vm.$nextTick();
+
         const tr = wrapper.findAll("tr");
         tr[0].element.click();
         expect(tr[1].text()).toBe("Juicy apples");

@@ -485,6 +485,38 @@ Typen anges genom att sätta propen `type`:
 +<f-table-column title="Kolumnrubrik" type="numeric">
 ```
 
+## Kända fel
+
+När tabellrubrikerna genereras från `<f-table-column>` så är radobjektet (`row`) tomt.
+Detta innebär att du måste kontrollera om egenskaperna på `row` finns innan du använder dem i ett attribut på `<f-table-column>`.
+
+```diff
+-<f-table-column title="My title" v-format:text="row.foo.bar">
++<f-table-column title="My title" v-format:text="row.foo?.bar">
+```
+
+Om du anropar en funktion med `row` som argument bör du returnera ett standardvärde om egenskapen inte existerar.
+
+```html static
+<f-table-column title="My title" v-format:text="getText(row)"></f-table-column>
+```
+
+```ts nolint
+interface MyRow {
+    foo: { bar: string };
+}
+
+/* --- cut above --- */
+
+function getText(row: MyRow | {}): string {
+    if (!("foo" in row)) {
+        return "";
+    }
+
+    return row.foo.bar;
+}
+```
+
 ## Textnycklar
 
 Läs mer om att {@link translate-text anpassa och översätta text}.
