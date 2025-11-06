@@ -38,7 +38,7 @@
   "devDependencies": {
     "@adobe/css-tools": "4.4.4",
     "@forsakringskassan/jest-config": "29.9.0",
-    "@forsakringskassan/sass-module-importer": "1.1.5",
+    "@forsakringskassan/sass-module-importer": "1.1.6",
     "@html-validate/release-scripts": "7.1.0",
     "@types/node": "22.18.13",
     "@types/yargs": "17.0.34",
