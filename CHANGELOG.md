@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 6.25.0 (2025-11-06)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** deprecate color variables  (refs SFKUI-7420) 3172739
+* **@fkui/theme-builder, @fkui/theme-default, @fkui/theme-desktop:** new `@fkui/theme-builder` with build scripts for FKDS themes (refs SFKUI-7370) b1ba1ca
+* **@fkui/vue-labs:** add tabstop logic (refs SFKUI-7353) f763bd0
+
+### Bug Fixes
+
+* **@fkui/theme-desktop:** theme-desktop deps (refs SFKUI-6500) 4b5d986
+* **deps:** update dependency dayjs to v1.11.19 c070292
+
 ## 6.24.1 (2025-10-29)
 
 ### Bug Fixes
