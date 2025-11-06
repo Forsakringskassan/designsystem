@@ -121,11 +121,19 @@ const tagName = computed(() => {
 });
 
 /**
- * Always render element until `onMounted` finished to determine if it's a header.
+ * Always render root element until `onMounted` finished to determine if it's a header.
  */
 const renderElement = computed(() => {
     const shouldRender = !isHeader.value && renderColumns.value && props.visible;
     return !hasMounted.value || shouldRender;
+});
+
+/**
+ * Only render content after it has finished mounted to avoid
+ * error on undefined object in content for headers.
+ */
+const renderContent = computed(() => {
+    return hasMounted.value && renderColumns.value;
 });
 
 watch(
@@ -171,13 +179,15 @@ function isTableHeader(): boolean {
 
 <template>
     <component :is="tagName" v-if="renderElement" ref="element" :class="classes" :scope v-bind="$attrs">
-        <template v-if="renderColumns">
-            <!-- @slot Content to be rendered in table cell. -->
-            <slot></slot>
-            <!-- Extra space between columns for screen reader. Otherwise it can sometimes read two numbers as one longer number.
-            For example a table with | 2 | 200 | can be read as 2200 in some languages.
-            -->
-            <span class="sr-only">&nbsp;</span>
-        </template>
+        <div class="table__column__wrapper">
+            <template v-if="renderContent">
+                <!-- @slot Content to be rendered in table cell. -->
+                <slot></slot>
+                <!-- Extra space between columns for screen reader. Otherwise it can sometimes read two numbers as one longer number.
+                For example a table with | 2 | 200 | can be read as 2200 in some languages.
+                -->
+                <span class="sr-only">&nbsp;</span>
+            </template>
+        </div>
     </component>
 </template>
