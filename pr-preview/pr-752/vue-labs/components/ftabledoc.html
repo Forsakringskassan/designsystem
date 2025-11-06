@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tabell - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-e3a826.css"
+            href="../assets/docs-f00727.css"
             crossorigin
-            integrity="sha384-el4GzRYmoGq+7P4lOsphGzUhaYDA14nsCaaN39Fh2GdUrcedunClhVuibQhltLow"
+            integrity="sha384-BS6EsmxQzaCwa/6dHdup2NZ6saGt9SfiEFeWwSHhvJsA4nqa52VybD5ABYFk/r6o"
             
         />
         <link
@@ -42,10 +42,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-85b215.json"
+            href="../search-data-8a7895.json"
             as="fetch"
             crossorigin
-            integrity="sha384-PdQ0ZdwhZHCqoxPJYqHF7WQb1JGkR9BR9TJABb1DdfmJJkxMizga8kWath06kIVJ"
+            integrity="sha384-CB/+8V2sqYojf18yI5Dd+d6oBLzXkG4hN6kqwNqxHP0n1owIrgx5Y59CdKpUYmwP"
             id="search-data"
         />
     </head>
@@ -140,25 +140,14 @@
         </a>
     </li><li class="link ">
         <a
-            href="./presentdata.html"
+            href="./usetable.html"
             
             
             
-            data-path="components/presentdata.html"
-            
-        >
-            Presentera data
-        </a>
-    </li><li class="link ">
-        <a
-            href="./ftablefunctions.html"
-            
-            
-            
-            data-path="components/ftablefunctions.html"
+            data-path="components/usetable.html"
             
         >
-            Tabellfunktioner
+            Användning
         </a>
     </li><li class="link ">
         <a
@@ -221,11 +210,25 @@
                                 
                                 <li><a href="#navigering_i_tabell">Navigering i tabell</a></li>
                                 
+                                <li><a href="#valja_en_eller_flera_rader">Välja en eller flera rader</a></li>
+                                
+                                <li><a href="#expandera_rader">Expandera rader</a></li>
+                                
+                                <li><a href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></li>
+                                
+                                <li><a href="#bulkoperation">Bulkoperation</a></li>
+                                
+                                <li><a href="#redigera">Redigera</a></li>
+                                
+                                <li><a href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></li>
+                                
+                                <li><a href="#sortera_och_filtrera">Sortera och filtrera</a></li>
+                                
                                 <li><a href="#utforma_en_tabell">Utforma en tabell</a></li>
                                 
-                                <li><a href="#presentera_data">Presentera data</a></li>
+                                <li><a href="#anvandning">Användning</a></li>
                                 
-                                <li><a href="#tabellfunktioner">Tabellfunktioner</a></li>
+                                <li><a href="#relaterat">Relaterat</a></li>
                                 
                             </ul>
                         </details>
@@ -243,14 +246,10 @@ Tabeller kan antingen vara enkla tabeller för presentation eller vara mer avanc
 <li>sätta upp innehåll på en sida</li>
 <li>visa enkel information utan kolumnrubriker.</li>
 </ul>
-<h2 id="navigering_i_tabell"><a class="header-anchor" href="#navigering_i_tabell">Navigering i tabell</a></h2><p class="docs-paragraph">Navigering i en tabell styrs av vilken role som tabellen har.</p>
-<p class="docs-paragraph">Du sätter ingen role om tabellen enbart ska presentera data.
-Om tabellen har expanderbara rader ska du sätta role:treegrid oavsett vilka andra funktioner som ingår i tabellen.
-För tabeller som innehåller andra funktioner än expanderbara rader ska du sätta role:grid.
-Det går inte att navigera till eller i en tabell som saknar role.
-Användare med skärmläsare kommer kunna navigera i tabellen och få den uppläst förutsatt att du....(fråga)
-Vid role:grid eller role:treegrid navigerar användren till tabellen genom tabbning.
-När användaren tabbat sig till tabellen sker navigering inom tabellen med hjälp av piltangenterna.</p>
+<h2 id="navigering_i_tabell"><a class="header-anchor" href="#navigering_i_tabell">Navigering i tabell</a></h2><p class="docs-paragraph">I tabellen navigerar användaren med hjälp av piltangenterna.
+Undantag är interagerbara objekt som ligger i tabellen kan tillåta att exempelvis tabbning och enter förflyttar användaren till närliggande cell. Därefter gäller pilning som vanligt.
+Användaren tar sig till och från tabellen med hjälp av tabbning.</p>
+<p class="docs-paragraph">Länk till kodexempel</p>
 <h3 id="tangentbordsnavigering"><a class="header-anchor" href="#tangentbordsnavigering">Tangentbordsnavigering</a></h3><p class="docs-paragraph">Tabellen har stöd för följande tangenter:</p>
 <ul>
 <li>pil upp: flyttar fokus till cell com ligger ovanför</li>
@@ -262,10 +261,47 @@ När användaren tabbat sig till tabellen sker navigering inom tabellen med hjä
 <li>ctrl + Home: flyttar fokus till cell längst till vänster i översta raden</li>
 <li>ctrl + End: flyttar fokus till cell längst till höger i nedersta raden.</li>
 </ul>
-<h2 id="utforma_en_tabell"><a class="header-anchor" href="#utforma_en_tabell">Utforma en tabell</a></h2><p class="docs-paragraph">(länk design-table Läs om hur du utformar en tabell.)</p>
-<h2 id="presentera_data"><a class="header-anchor" href="#presentera_data">Presentera data</a></h2><p class="docs-paragraph">(länk present-data Läs om hur du presenterar data i tabell.)</p>
-<h2 id="tabellfunktioner"><a class="header-anchor" href="#tabellfunktioner">Tabellfunktioner</a></h2><p class="docs-paragraph">(länk f-table-functions Läs om vilka funktioner som kan finnas i tabellen.)</p>
-
+<h2 id="valja_en_eller_flera_rader"><a class="header-anchor" href="#valja_en_eller_flera_rader">Välja en eller flera rader</a></h2><p class="docs-paragraph">Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
+Om tabellen har kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.</p>
+<p class="docs-paragraph">Länk till kodexempel</p>
+<h2 id="expandera_rader"><a class="header-anchor" href="#expandera_rader">Expandera rader</a></h2><p class="docs-paragraph">Det går att skapa ytterligare tabellrader som visas genom att expandera en rad.
+Raderna kan presenteras på två sätt:</p>
+<ul>
+<li>raden följer existerande kolumner</li>
+<li>raden är utsträckt över alla kolumner och med valfritt innehåll.</li>
+</ul>
+<p class="docs-paragraph">Länk till kodexempel</p>
+<h2 id="atgardsknappar_och_lankar"><a class="header-anchor" href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></h2><p class="docs-paragraph">Tabellen kan ha åtgärdsknappar för att utföra en operation på en rad som till exempel ta bort, ändra eller visa mer information.
+Det går också att placera länkar i tabellen.</p>
+<p class="docs-paragraph">Länk till kodexempel</p>
+<h2 id="bulkoperation"><a class="header-anchor" href="#bulkoperation">Bulkoperation</a></h2><p class="docs-paragraph">Användaren kan göra bulkoperationer i tabell när ...</p>
+<p class="docs-paragraph">Om antal synliga rader ändras i tabellen kommer alla markeringar i kryssrutor tas bort och status för bulkoperation nollställs.
+Till exempel innebär en filtrering och att lägga till/ta bort rader ändringar som nollställer bulkoperation.</p>
+<p class="docs-paragraph">Länk till kodexempel</p>
+<h2 id="redigera"><a class="header-anchor" href="#redigera">Redigera</a></h2><p class="docs-paragraph">För tabell finns det två typer av redigeringar</p>
+<ul>
+<li>inline-redigering: användaren redigerar direkt innehållet på en rad genom att stå i aktuell cell</li>
+<li>via formulär: användaren öppnar separat formulär/panel/modal för att redigera innehåll på rad.</li>
+</ul>
+<p class="docs-paragraph">Utvärdera först vilken typ av redigering som passar användaren bäst utifrån den utformning som tabellen har.
+Tabell stödjer inline-redigering, men om det passar bättre med redigering via formulär/modal kan du lägga till det själv.</p>
+<h3 id="inline_redigering"><a class="header-anchor" href="#inline_redigering">Inline-redigering</a></h3><p class="docs-paragraph">Länk till kodexempel</p>
+<h2 id="lagga_till_ta_bort_rader"><a class="header-anchor" href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></h2><p class="docs-paragraph">Om användaren behöver lägga till och ta bort rader i tabellen får du som konsument sätta upp detta.</p>
+<p class="docs-paragraph">Tänk på att när användaren tar bort en rad ska cell få fokus enligt följande ordning:</p>
+<ul>
+<li>samma kolumnindex på cell i rad ovanför den borttagna raden</li>
+<li>samma kolumnindex på cell i rad nedanför den borttagna raden</li>
+<li>cell/rad för tomt läge i tabell.</li>
+</ul>
+<p class="docs-paragraph">Exempel på tabell med knappar för ta bort/lägga till.</p>
+<h2 id="sortera_och_filtrera"><a class="header-anchor" href="#sortera_och_filtrera">Sortera och filtrera</a></h2><p class="docs-paragraph">När tabellerna är stora och innehåller många rader behöver användaren kunna sortera och/eller filtrera innehållet.
+Med datamängsorteraren (FSortFilterDataset) kan du lägga till funktionalitet för sortering och filtrering i tabell.</p>
+<p class="docs-paragraph">Tänk på att tabell med sortering bör ha en förvald aktiverad kolumn som är sorterad i stigande/fallande.
+Du väljer den kolumn som är mest trolig att användaren vill sortera på och som vanligtvis är den första kolumnen.</p>
+<p class="docs-paragraph">Läs mer om hur du använder komponent (länk FSortFilterDataset datamängdsorteraren).</p>
+<h2 id="utforma_en_tabell"><a class="header-anchor" href="#utforma_en_tabell">Utforma en tabell</a></h2><p class="docs-paragraph">(länk design-table Läs om hur du utformar/designar en tabell för din applikation.)</p>
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">(länk use-table Läs om hur du sätter upp/kodar en tabell för din applikation.)</p>
+<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2>
 
                     </div>
                 </main>
@@ -347,10 +383,10 @@ När användaren tabbat sig till tabellen sker navigering inom tabellen med hjä
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../assets/main-8a3e62.js"
+            src="../assets/main-423e10.js"
             type="module"
             crossorigin
-            integrity="sha384-0RlHNrQgJvdxR4N7lQSd3sc3MQDrTPlAovPWpFZDaeI8hkGn544BhbzOJxQzGpcO"
+            integrity="sha384-VCLVRLwS7hROrBBi8IO07y/nt7EnH4UvFhDvHr2repK+Yvpuxa/H4ZuyrBHbKPfN"
             
         ></script>
     </body>

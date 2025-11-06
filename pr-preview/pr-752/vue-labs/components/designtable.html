@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Utforma tabell - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-e3a826.css"
+            href="../assets/docs-f00727.css"
             crossorigin
-            integrity="sha384-el4GzRYmoGq+7P4lOsphGzUhaYDA14nsCaaN39Fh2GdUrcedunClhVuibQhltLow"
+            integrity="sha384-BS6EsmxQzaCwa/6dHdup2NZ6saGt9SfiEFeWwSHhvJsA4nqa52VybD5ABYFk/r6o"
             
         />
         <link
@@ -42,10 +42,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-85b215.json"
+            href="../search-data-8a7895.json"
             as="fetch"
             crossorigin
-            integrity="sha384-PdQ0ZdwhZHCqoxPJYqHF7WQb1JGkR9BR9TJABb1DdfmJJkxMizga8kWath06kIVJ"
+            integrity="sha384-CB/+8V2sqYojf18yI5Dd+d6oBLzXkG4hN6kqwNqxHP0n1owIrgx5Y59CdKpUYmwP"
             id="search-data"
         />
     </head>
@@ -140,25 +140,14 @@
         </a>
     </li><li class="link ">
         <a
-            href="./presentdata.html"
+            href="./usetable.html"
             
             
             
-            data-path="components/presentdata.html"
-            
-        >
-            Presentera data
-        </a>
-    </li><li class="link ">
-        <a
-            href="./ftablefunctions.html"
-            
-            
-            
-            data-path="components/ftablefunctions.html"
+            data-path="components/usetable.html"
             
         >
-            Tabellfunktioner
+            Användning
         </a>
     </li><li class="link ">
         <a
@@ -197,7 +186,19 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#utforma_en_tabell">Utforma en tabell</a></li>
+                                <li><a href="#sortering_och_filtrering">Sortering och filtrering</a></li>
+                                
+                                <li><a href="#formatera_innehall">Formatera innehåll</a></li>
+                                
+                                <li><a href="#anpassa_tabellen">Anpassa tabellen</a></li>
+                                
+                                <li><a href="#valja_en_eller_flera_rader">Välja en eller flera rader</a></li>
+                                
+                                <li><a href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></li>
+                                
+                                <li><a href="#redigering_av_innehall">Redigering av innehåll</a></li>
+                                
+                                <li><a href="#relaterat">Relaterat</a></li>
                                 
                             </ul>
                         </details>
@@ -205,30 +206,42 @@
                     </div>
                     
 
-                    <div id="content"><h2 id="utforma_en_tabell"><a class="header-anchor" href="#utforma_en_tabell">Utforma en tabell</a></h2><p class="docs-paragraph">När du ska utforma din tabell är det många saker att tänka på:</p>
-<ul>
-<li>Gör en ordentlig analys av vilken information som måste visas i tabellen.
-Målet bör vara att alla kolumner får plats på skärmen.</li>
-<li>Hjälp användaren att hitta i en tabell med mycket information genom att lägga till möjlighet att söka eller sortera.
-Använd komponent datamängdsorteraren.</li>
-<li>Formatera datan i tabellen så den blir lätt att läsa.
-Använd med fördel Format Plugin för att både formatera och undvika radbryt mitt i ett värde.</li>
-<li>Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara.
-Samma princip gäller för kolumner.</li>
-<li>Du kan ange vilka kolumner som tar maximal bredd och vilka som får ta minsta möjliga. (länk)</li>
-<li>Text i en tabellcell ska i regel vara vänsterställd.
-Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras. (länk)
-Undvik långa texter i tabellceller.
-Håll innehållet kort och koncist så att det blir lätt och överskådligt för användaren att hitta.</li>
-<li>Använd zebra-randiga rader när du har långa och många rader.
-Det gör det enklare att visuellt skanna av tabellen och följa rader.</li>
-</ul>
-<p class="docs-paragraph">Live-exmepel med</p>
-<ul>
-<li>zebra-randig</li>
-<li>expanderbara rader.</li>
-</ul>
-
+                    <div id="content"><p class="docs-paragraph">Den här sidan innehåller information om hur du utformar/designar en tabell för din applikation.</p>
+<p class="docs-paragraph">När du ska utforma en tabell är det många saker du behöver tänka på.
+Gör en ordentlig analys av vilken information som måste visas i tabellen.
+Målet bör vara att alla kolumner får plats på skärmen.</p>
+<h2 id="sortering_och_filtrering"><a class="header-anchor" href="#sortering_och_filtrering">Sortering och filtrering</a></h2><p class="docs-paragraph">Om tabellen är stor och innehåller många rader behöver användaren kunna sortera och/eller filtrera innehållet.</p>
+<p class="docs-paragraph">Tabell med sortering bör ha en förvald aktiverad kolumn som är sorterad i stigande/fallande.
+Du väljer den kolumn som är mest trolig att användaren vill sortera på och som vanligtvis är den första kolumnen.</p>
+<h2 id="formatera_innehall"><a class="header-anchor" href="#formatera_innehall">Formatera innehåll</a></h2><p class="docs-paragraph">Underlätta för användaren genom att formatera innehållet i tabellen så det blir mer lättläst.
+Du behöver bestämma hur tabellens kolumnrubriker ska vara placerade och hur data i kolumnerna ska presenteras.</p>
+<p class="docs-paragraph">Text i en tabellecell ska som regel vara vänsterjusterad.
+Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.</p>
+<p class="docs-paragraph">Undvik långa texter i tabellceller.
+Håll innehållet kort och koncist så att det blir lätt och överskådligt för användaren att hitta.</p>
+<p class="docs-paragraph">Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
+Till exempel kommer talet 111 ta samma plats som 000.
+Vid numeriska värden ska innehållet i kolumn visas med tnum.</p>
+<h2 id="anpassa_tabellen"><a class="header-anchor" href="#anpassa_tabellen">Anpassa tabellen</a></h2><p class="docs-paragraph">Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara.
+Samma princip gäller för kolumner.
+Sätt vilka kolumner som ska ta maximal bredd och vilka som får ta minsta möjliga.</p>
+<p class="docs-paragraph">Bestäm också vilka celler som ska radbryta och vilka som inte ska göra det.</p>
+<p class="docs-paragraph">Innehåller tabellen många kolumner eller är det svårt att följa en och samma rad genom flera kolumner?
+Gör tabellen zebrarandig för att enklare visuellt skanna av tabellen och följa rader.</p>
+<p class="docs-paragraph">Hur ska tabellen se ut när den är tom?
+Bestäm vilken information användaren ska få.</p>
+<p class="docs-paragraph">Om inte användaren behöver all information direkt kan expanderbara rader vara ett sätt att visa mer information vid behov.</p>
+<h2 id="valja_en_eller_flera_rader"><a class="header-anchor" href="#valja_en_eller_flera_rader">Välja en eller flera rader</a></h2><p class="docs-paragraph">Ska användaren kunna välja en eller flera rader samtidigt?
+Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
+Om du använder kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.</p>
+<h2 id="atgardsknappar_och_lankar"><a class="header-anchor" href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></h2><p class="docs-paragraph">För att låta användaren utföra en operation på en rad kan du placera åtgärdsknappar i tabellen.
+Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig. Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
+Om du behöver förtydliga sammanhanget för användare med skärmläsare kan du använda en sr-only för etiketten.</p>
+<h2 id="redigering_av_innehall"><a class="header-anchor" href="#redigering_av_innehall">Redigering av innehåll</a></h2><p class="docs-paragraph">Behöver användaren redigera innehållet i tabellen?
+Ändra, radera eller lägga till rader?</p>
+<p class="docs-paragraph">Tabellen har stöd för inline-redigering, det vill säga att användaren redigerar direkt i en cell i tabellen.
+Beroende på vad som redigeras och hur van användaren är kan det istället vara bättre att använda formulär för att ändra i tabell.</p>
+<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2>
 
                     </div>
                 </main>
@@ -310,10 +323,10 @@ Det gör det enklare att visuellt skanna av tabellen och följa rader.</li>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../assets/main-8a3e62.js"
+            src="../assets/main-423e10.js"
             type="module"
             crossorigin
-            integrity="sha384-0RlHNrQgJvdxR4N7lQSd3sc3MQDrTPlAovPWpFZDaeI8hkGn544BhbzOJxQzGpcO"
+            integrity="sha384-VCLVRLwS7hROrBBi8IO07y/nt7EnH4UvFhDvHr2repK+Yvpuxa/H4ZuyrBHbKPfN"
             
         ></script>
     </body>
