@@ -208,6 +208,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -252,9 +255,6 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "EventBus",
-    "EventBus",
-    "services",
     "i18next",
     "TranslationService",
     "i18nextProvider",
@@ -602,14 +602,14 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -1102,6 +1102,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1178,14 +1186,6 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -2129,6 +2129,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -2151,21 +2166,6 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -2456,47 +2456,47 @@
     "208": 55,
     "209": 55,
     "210": 55,
-    "211": 55,
+    "211": 56,
     "212": 56,
     "213": 56,
     "214": 56,
     "215": 57,
     "216": 57,
     "217": 57,
-    "218": 57,
-    "219": 57,
-    "220": 57,
-    "221": 57,
-    "222": 57,
-    "223": 57,
+    "218": 58,
+    "219": 58,
+    "220": 58,
+    "221": 58,
+    "222": 58,
+    "223": 58,
     "224": 58,
     "225": 58,
     "226": 58,
     "227": 59,
     "228": 59,
     "229": 59,
-    "230": 59,
-    "231": 59,
+    "230": 60,
+    "231": 60,
     "232": 60,
     "233": 60,
     "234": 60,
-    "235": 60,
-    "236": 60,
-    "237": 60,
-    "238": 60,
-    "239": 60,
-    "240": 60,
-    "241": 60,
-    "242": 60,
-    "243": 60,
+    "235": 61,
+    "236": 61,
+    "237": 61,
+    "238": 61,
+    "239": 61,
+    "240": 61,
+    "241": 61,
+    "242": 61,
+    "243": 61,
     "244": 61,
     "245": 61,
     "246": 61,
-    "247": 61,
-    "248": 61,
-    "249": 61,
-    "250": 61,
-    "251": 61,
+    "247": 62,
+    "248": 62,
+    "249": 62,
+    "250": 62,
+    "251": 62,
     "252": 62,
     "253": 62,
     "254": 62,
