@@ -29,6 +29,7 @@ const { filter, filteredRows } = erp;
 
         <x-order-filter v-model="filter"></x-order-filter>
 
+        <!-- [html-validate-disable-next aria-label-misuse -- tested ok for this usage]-->
         <f-interactive-table :rows="filteredRows" aria-labelledby="fruktbestallningar">
             <template #caption></template>
             <template #default="{ row }">
