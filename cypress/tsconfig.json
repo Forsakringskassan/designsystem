@@ -16,5 +16,6 @@
             "@fkui/vue-labs": ["./packages/vue-labs/src/index.ts"]
         }
     },
-    "include": ["**/*.ts"]
+    "include": ["**/*.ts"],
+    "exclude": ["packages/theme-builder/**/*"]
 }
