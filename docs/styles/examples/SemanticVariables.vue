@@ -22,7 +22,8 @@ const rows = theme.tokens;
             <h2 id="semantiska_farger">Semantiska färger</h2>
         </template>
         <template #default="{ sortFilterResult }">
-            <!-- [html-validate-disable-next vue/required-slots -- bug in fkui metadata, should require either caption or aria-labelledby]-->
+            <!-- [html-validate-disable-block aria-label-misuse -- tested ok for this usage]-->
+            <!-- [html-validate-disable-block vue/required-slots -- bug in fkui metadata, should require either caption or aria-labelledby]-->
             <f-data-table
                 :rows="sortFilterResult"
                 key-attribute="name"
