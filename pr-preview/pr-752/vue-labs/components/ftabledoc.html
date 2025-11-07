@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tabell - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-f00727.css"
+            href="../assets/docs-2e1ab6.css"
             crossorigin
-            integrity="sha384-BS6EsmxQzaCwa/6dHdup2NZ6saGt9SfiEFeWwSHhvJsA4nqa52VybD5ABYFk/r6o"
+            integrity="sha384-b/VaNbK8X5mKd+uaUEy1jRHk1ylE2WhxySILkunmX77W1MC6PYUWcnOzRJuwoDFi"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-2b1efe.css"
+            href="../assets/docs-fkui-46ce2c.css"
             crossorigin
-            integrity="sha384-H0kRsyVWOYMAmXQhwXPZ1MsPKifnoKMKEM22fL6gg5sczb1oFGTvqK10erhn2G1e"
+            integrity="sha384-QoOi0INENPxaKVT/MlcvjREWsoo7V/Nn9mtGRSueDEA+8em1ULgL8q1nAHLbVTd4"
             data-theme="fkui" disabled
         />
 
@@ -103,7 +103,7 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.24.1
+        6.25.1
     </span>
 </div>
 </div>
@@ -212,11 +212,11 @@
                                 
                                 <li><a href="#valja_en_eller_flera_rader">Välja en eller flera rader</a></li>
                                 
+                                <li><a href="#bulkoperation">Bulkoperation</a></li>
+                                
                                 <li><a href="#expandera_rader">Expandera rader</a></li>
                                 
                                 <li><a href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></li>
-                                
-                                <li><a href="#bulkoperation">Bulkoperation</a></li>
                                 
                                 <li><a href="#redigera">Redigera</a></li>
                                 
@@ -246,11 +246,11 @@ Tabeller kan antingen vara enkla tabeller för presentation eller vara mer avanc
 <li>sätta upp innehåll på en sida</li>
 <li>visa enkel information utan kolumnrubriker.</li>
 </ul>
-<h2 id="navigering_i_tabell"><a class="header-anchor" href="#navigering_i_tabell">Navigering i tabell</a></h2><p class="docs-paragraph">I tabellen navigerar användaren med hjälp av piltangenterna.
-Undantag är interagerbara objekt som ligger i tabellen kan tillåta att exempelvis tabbning och enter förflyttar användaren till närliggande cell. Därefter gäller pilning som vanligt.
+<h2 id="navigering_i_tabell"><a class="header-anchor" href="#navigering_i_tabell">Navigering i tabell</a></h2><p class="docs-paragraph">I tabellen navigerar användaren med hjälp av piltangenterna. Pilningen är inte cirkulär.
+Om en cell innehåller ett interagerbart objekt som exempelvis inmatningsfält eller dropplista kommer objektet få fokus direkt.
 Användaren tar sig till och från tabellen med hjälp av tabbning.</p>
 <p class="docs-paragraph">Länk till kodexempel</p>
-<h3 id="tangentbordsnavigering"><a class="header-anchor" href="#tangentbordsnavigering">Tangentbordsnavigering</a></h3><p class="docs-paragraph">Tabellen har stöd för följande tangenter:</p>
+<h3 id="tangentbordsnavigering"><a class="header-anchor" href="#tangentbordsnavigering">Tangentbordsnavigering</a></h3><p class="docs-paragraph">Tabellen har stöd för följande tangentbordsnavigering:</p>
 <ul>
 <li>pil upp: flyttar fokus till cell com ligger ovanför</li>
 <li>pil ner: flyttar fokus till cell som ligger nedanför</li>
@@ -264,6 +264,10 @@ Användaren tar sig till och från tabellen med hjälp av tabbning.</p>
 <h2 id="valja_en_eller_flera_rader"><a class="header-anchor" href="#valja_en_eller_flera_rader">Välja en eller flera rader</a></h2><p class="docs-paragraph">Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
 Om tabellen har kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.</p>
 <p class="docs-paragraph">Länk till kodexempel</p>
+<h2 id="bulkoperation"><a class="header-anchor" href="#bulkoperation">Bulkoperation</a></h2><p class="docs-paragraph">Bulkoperation innebär att användaren kan välja ett antal rader och utföra åtgärd/operation för alla valda rader samtidigt. Bulkoperation ingår som standard för kolumn med kryssrutor.</p>
+<p class="docs-paragraph">Om antal synliga rader ändras i tabellen kommer alla markeringar i kryssrutor tas bort och status för bulkoperation nollställs.
+Till exempel innebär en filtrering och att lägga till/ta bort rader ändringar som nollställer bulkoperation.</p>
+<p class="docs-paragraph">Länk till kodexempel</p>
 <h2 id="expandera_rader"><a class="header-anchor" href="#expandera_rader">Expandera rader</a></h2><p class="docs-paragraph">Det går att skapa ytterligare tabellrader som visas genom att expandera en rad.
 Raderna kan presenteras på två sätt:</p>
 <ul>
@@ -274,25 +278,16 @@ Raderna kan presenteras på två sätt:</p>
 <h2 id="atgardsknappar_och_lankar"><a class="header-anchor" href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></h2><p class="docs-paragraph">Tabellen kan ha åtgärdsknappar för att utföra en operation på en rad som till exempel ta bort, ändra eller visa mer information.
 Det går också att placera länkar i tabellen.</p>
 <p class="docs-paragraph">Länk till kodexempel</p>
-<h2 id="bulkoperation"><a class="header-anchor" href="#bulkoperation">Bulkoperation</a></h2><p class="docs-paragraph">Användaren kan göra bulkoperationer i tabell när ...</p>
-<p class="docs-paragraph">Om antal synliga rader ändras i tabellen kommer alla markeringar i kryssrutor tas bort och status för bulkoperation nollställs.
-Till exempel innebär en filtrering och att lägga till/ta bort rader ändringar som nollställer bulkoperation.</p>
-<p class="docs-paragraph">Länk till kodexempel</p>
 <h2 id="redigera"><a class="header-anchor" href="#redigera">Redigera</a></h2><p class="docs-paragraph">För tabell finns det två typer av redigeringar</p>
 <ul>
 <li>inline-redigering: användaren redigerar direkt innehållet på en rad genom att stå i aktuell cell</li>
-<li>via formulär: användaren öppnar separat formulär/panel/modal för att redigera innehåll på rad.</li>
+<li>via formulär: användaren öppnar separat formulär eller modal för att redigera innehåll på rad.</li>
 </ul>
-<p class="docs-paragraph">Utvärdera först vilken typ av redigering som passar användaren bäst utifrån den utformning som tabellen har.
-Tabell stödjer inline-redigering, men om det passar bättre med redigering via formulär/modal kan du lägga till det själv.</p>
-<h3 id="inline_redigering"><a class="header-anchor" href="#inline_redigering">Inline-redigering</a></h3><p class="docs-paragraph">Länk till kodexempel</p>
+<p class="docs-paragraph">Tabellen har stöd för inline-redigering.</p>
+<h3 id="inline_redigering"><a class="header-anchor" href="#inline_redigering">Inline-redigering</a></h3><p class="docs-paragraph">Tabellen har stöd för inline-redigering vilket innebär att användaren direkt kan redigera innehåll i cell med hjälp av inmatningsfält.
+Förutom vanligt textfält har tabellen även stöd för att lägga de specialiserade inmatningsfälten och dropplista i en cell.</p>
+<p class="docs-paragraph">Länk till kodexempel</p>
 <h2 id="lagga_till_ta_bort_rader"><a class="header-anchor" href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></h2><p class="docs-paragraph">Om användaren behöver lägga till och ta bort rader i tabellen får du som konsument sätta upp detta.</p>
-<p class="docs-paragraph">Tänk på att när användaren tar bort en rad ska cell få fokus enligt följande ordning:</p>
-<ul>
-<li>samma kolumnindex på cell i rad ovanför den borttagna raden</li>
-<li>samma kolumnindex på cell i rad nedanför den borttagna raden</li>
-<li>cell/rad för tomt läge i tabell.</li>
-</ul>
 <p class="docs-paragraph">Exempel på tabell med knappar för ta bort/lägga till.</p>
 <h2 id="sortera_och_filtrera"><a class="header-anchor" href="#sortera_och_filtrera">Sortera och filtrera</a></h2><p class="docs-paragraph">När tabellerna är stora och innehåller många rader behöver användaren kunna sortera och/eller filtrera innehållet.
 Med datamängsorteraren (FSortFilterDataset) kan du lägga till funktionalitet för sortering och filtrering i tabell.</p>

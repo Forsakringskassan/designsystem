@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Användning - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-f00727.css"
+            href="../assets/docs-2e1ab6.css"
             crossorigin
-            integrity="sha384-BS6EsmxQzaCwa/6dHdup2NZ6saGt9SfiEFeWwSHhvJsA4nqa52VybD5ABYFk/r6o"
+            integrity="sha384-b/VaNbK8X5mKd+uaUEy1jRHk1ylE2WhxySILkunmX77W1MC6PYUWcnOzRJuwoDFi"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-2b1efe.css"
+            href="../assets/docs-fkui-46ce2c.css"
             crossorigin
-            integrity="sha384-H0kRsyVWOYMAmXQhwXPZ1MsPKifnoKMKEM22fL6gg5sczb1oFGTvqK10erhn2G1e"
+            integrity="sha384-QoOi0INENPxaKVT/MlcvjREWsoo7V/Nn9mtGRSueDEA+8em1ULgL8q1nAHLbVTd4"
             data-theme="fkui" disabled
         />
 
@@ -103,7 +103,7 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.24.1
+        6.25.1
     </span>
 </div>
 </div>
@@ -214,6 +214,8 @@
                                 
                                 <li><a href="#kryssruta_radioknapp">Kryssruta/radioknapp</a></li>
                                 
+                                <li><a href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></li>
+                                
                                 <li><a href="#felhantering">Felhantering</a></li>
                                 
                                 <li><a href="#textnycklar">Textnycklar</a></li>
@@ -230,8 +232,8 @@
 <h2 id="navigering"><a class="header-anchor" href="#navigering">Navigering</a></h2><p class="docs-paragraph">Navigering i en tabell styrs av vilken role som tabellen har.</p>
 <p class="docs-paragraph">Du sätter ingen role om tabellen enbart ska presentera data.
 Om tabellen har expanderbara rader ska du sätta role:treegrid oavsett vilka andra funktioner som ingår i tabellen.
-För tabeller som innehåller andra funktioner än expanderbara rader ska du sätta role:grid.
-Det går inte att navigera till eller i en tabell som saknar role.
+För tabeller som innehåller andra funktioner men inte expanderbara rader ska du sätta role:grid.</p>
+<p class="docs-paragraph">Det går inte att navigera till eller i en tabell som saknar role.
 Användare med skärmläsare kommer kunna navigera i tabellen och få den uppläst förutsatt att du....(fråga)
 Vid role:grid eller role:treegrid navigerar användren till tabellen genom tabbning.
 När användaren tabbat sig till tabellen sker navigering inom tabellen med hjälp av piltangenterna.</p>
@@ -339,6 +341,14 @@ Texten sätts i slot <code>#empty</code>:</p>
 <h2 id="kryssruta_radioknapp"><a class="header-anchor" href="#kryssruta_radioknapp">Kryssruta/radioknapp</a></h2><p class="docs-paragraph">Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
 Om du använder kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.
 För att definiera kolumnen som kryssruta eller radioknapp, se avsnitt Kolumntyper (länk).</p>
+<h2 id="lagga_till_ta_bort_rader"><a class="header-anchor" href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></h2><p class="docs-paragraph">Om användaren behöver lägga till och ta bort rader i tabellen får du som konsument sätta upp detta.</p>
+<p class="docs-paragraph">Tänk på att när användaren tar bort en rad ska cell få fokus enligt följande ordning:</p>
+<ul>
+<li>samma kolumnindex på cell i rad ovanför den borttagna raden</li>
+<li>samma kolumnindex på cell i rad nedanför den borttagna raden</li>
+<li>cell/rad för tomt läge i tabell.</li>
+</ul>
+<p class="docs-paragraph">Exempel på tabell med knappar för ta bort/lägga till.</p>
 <h2 id="felhantering"><a class="header-anchor" href="#felhantering">Felhantering</a></h2><p class="docs-paragraph">Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av <code>#empty</code>-sloten och en meddelanderuta (länk).</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
