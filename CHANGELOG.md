@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.25.1 (2025-11-07)
+
+### Bug Fixes
+
+* **deps:** add missing dependencies to `@fkui/theme-builder` (refs SFKUI-6500) 724e7cb
+* **deps:** update dependency cssnano to v7.1.2 d1662dc
+* **deps:** update dependency sass to v1.93.3 b796dec
+
 ## 6.25.0 (2025-11-06)
 
 ### Features
