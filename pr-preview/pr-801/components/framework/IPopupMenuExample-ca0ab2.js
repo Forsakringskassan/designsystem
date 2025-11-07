@@ -1871,7 +1871,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ),
     _createElementVNode(
       "a",
-      { href: "/" },
+      {
+        class: "anchor",
+        href: "/"
+      },
       "G\xE5 till startsidan",
       -1
       /* CACHED */
