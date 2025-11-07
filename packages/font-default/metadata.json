@@ -1,7 +1,7 @@
 [
-    { "filename": "Inter-Bold.woff2" },
-    { "filename": "Inter-Light.woff2" },
-    { "filename": "Inter-Medium.woff2" },
-    { "filename": "Inter-Regular.woff2" },
-    { "filename": "Inter-SemiBold.woff2" }
+    { "filename": "fonts/Inter-Bold.woff2" },
+    { "filename": "fonts/Inter-Light.woff2" },
+    { "filename": "fonts/Inter-Medium.woff2" },
+    { "filename": "fonts/Inter-Regular.woff2" },
+    { "filename": "fonts/Inter-SemiBold.woff2" }
 ]
