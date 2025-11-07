@@ -7675,7 +7675,6 @@ kbd {
   border: 1px solid #bbbbbd;
   color: #5f6165;
   padding: 0.1rem 0.5rem;
-  margin-left: 0.5rem;
   border-radius: 6px;
   font-family: var(--docs-font-family);
 }
