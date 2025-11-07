@@ -19,6 +19,6 @@ export default defineComponent({
     <div data-test="f-error-page">
         <h1>Fel</h1>
         <p>Ett fel har uppstått.</p>
-        <a href="/">Gå till startsidan</a>
+        <a class="anchor" href="/">Gå till startsidan</a>
     </div>
 </template>
