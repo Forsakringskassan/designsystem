@@ -27,11 +27,6 @@
     fetch(link.href, fetchOpts);
   }
 })();
-/**
-* @vue/shared v3.5.22
-* (c) 2018-present Yuxi (Evan) You and Vue contributors
-* @license MIT
-**/
 // @__NO_SIDE_EFFECTS__
 function makeMap(str) {
   const map = /* @__PURE__ */ Object.create(null);
@@ -282,11 +277,6 @@ const stringifySymbol = (v, i = "") => {
     isSymbol$1(v) ? `Symbol(${(_a = v.description) != null ? _a : i})` : v
   );
 };
-/**
-* @vue/reactivity v3.5.22
-* (c) 2018-present Yuxi (Evan) You and Vue contributors
-* @license MIT
-**/
 let activeEffectScope;
 class EffectScope {
   constructor(detached = false) {
@@ -1843,11 +1833,6 @@ function traverse(value, depth = Infinity, seen) {
   }
   return value;
 }
-/**
-* @vue/runtime-core v3.5.22
-* (c) 2018-present Yuxi (Evan) You and Vue contributors
-* @license MIT
-**/
 const stack = [];
 let isWarning = false;
 function warn$1(msg, ...args) {
@@ -6678,11 +6663,6 @@ function h(type, propsOrChildren, children) {
   }
 }
 const version = "3.5.22";
-/**
-* @vue/runtime-dom v3.5.22
-* (c) 2018-present Yuxi (Evan) You and Vue contributors
-* @license MIT
-**/
 let policy = void 0;
 const tt = typeof window !== "undefined" && window.trustedTypes;
 if (tt) {
@@ -24105,11 +24085,6 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-/*!
- * vue-router v4.6.3
- * (c) 2025 Eduardo San Martin Morote
- * @license MIT
- */
 const isBrowser = typeof document !== "undefined";
 function isRouteComponent(component) {
   return typeof component === "object" || "displayName" in component || "props" in component || "__vccOpts" in component;
@@ -24506,11 +24481,6 @@ function extractChangingRecords(to, from) {
     enteringRecords
   ];
 }
-/*!
- * vue-router v4.6.3
- * (c) 2025 Eduardo San Martin Morote
- * @license MIT
- */
 let createBaseLocation = () => location.protocol + "//" + location.host;
 function createCurrentLocation(base, location$1) {
   const { pathname, search, hash } = location$1;
