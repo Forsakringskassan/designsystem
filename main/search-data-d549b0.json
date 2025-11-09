@@ -208,6 +208,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -252,15 +255,6 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "EventBus",
-    "EventBus",
-    "services",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -268,6 +262,12 @@
     "h-display-flex",
     "Skärmläsare",
     "NVDA",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -613,15 +613,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -1102,6 +1102,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1181,11 +1189,20 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
       "terms": [
-        "services",
-        "EventBus"
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
       ]
     },
     {
@@ -1207,23 +1224,6 @@
       "title": "I18nextProvider",
       "terms": [
         "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
       ]
     },
     {
@@ -2184,6 +2184,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2211,21 +2226,6 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -2456,59 +2456,59 @@
     "208": 55,
     "209": 55,
     "210": 55,
-    "211": 55,
+    "211": 56,
     "212": 56,
     "213": 56,
     "214": 56,
     "215": 57,
     "216": 57,
     "217": 57,
-    "218": 57,
-    "219": 57,
-    "220": 57,
-    "221": 57,
-    "222": 57,
-    "223": 57,
+    "218": 58,
+    "219": 58,
+    "220": 58,
+    "221": 58,
+    "222": 58,
+    "223": 58,
     "224": 58,
     "225": 58,
     "226": 58,
     "227": 59,
     "228": 59,
     "229": 59,
-    "230": 59,
-    "231": 59,
+    "230": 60,
+    "231": 60,
     "232": 60,
     "233": 60,
     "234": 60,
-    "235": 60,
-    "236": 60,
-    "237": 60,
-    "238": 60,
-    "239": 60,
-    "240": 60,
-    "241": 60,
-    "242": 60,
-    "243": 60,
+    "235": 61,
+    "236": 61,
+    "237": 61,
+    "238": 61,
+    "239": 61,
+    "240": 61,
+    "241": 61,
+    "242": 61,
+    "243": 61,
     "244": 61,
     "245": 61,
     "246": 61,
-    "247": 61,
-    "248": 61,
-    "249": 61,
-    "250": 61,
-    "251": 61,
+    "247": 62,
+    "248": 62,
+    "249": 62,
+    "250": 62,
+    "251": 62,
     "252": 62,
     "253": 62,
     "254": 62,
     "255": 63,
     "256": 63,
-    "257": 64,
-    "258": 64,
-    "259": 65,
-    "260": 65,
-    "261": 66,
-    "262": 66,
-    "263": 66,
+    "257": 63,
+    "258": 63,
+    "259": 63,
+    "260": 64,
+    "261": 64,
+    "262": 65,
+    "263": 65,
     "264": 66,
     "265": 66,
     "266": 67,
