@@ -25,7 +25,7 @@
     "@fkui/logic": "6.25.0",
     "@fkui/theme-default": "6.25.1",
     "@fkui/vue": "6.25.1",
-    "vue": "3.5.22",
+    "vue": "3.5.23",
     "vue-router": "4.6.3"
   },
   "devDependencies": {
