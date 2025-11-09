@@ -3799,14 +3799,9 @@ function useTabstop(tableRef, metaRows) {
     }
     assertRef(tableRef);
     const target = getCellTarget(tableRef.value, 1, 0);
-    if (metaRows.value.length === 0) {
-      target.tabIndex = 0;
-      target.focus();
-    } else {
-      activateCell(target, {
-        focus: renderOptions.value.focus
-      });
-    }
+    activateCell(target, {
+      focus: renderOptions.value.focus
+    });
     renderOptions.value.fallbackToFirstCell = false;
   });
   async function withTabstopBehaviour(behaviour, action) {
@@ -3887,8 +3882,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + 1;
     });
     const columnCount = computed(() => {
-      const selectableCol = __props.selectable ? 1 : 0;
-      return columns.value.length + selectableCol;
+      const expandCol = isTreegrid.value ? 1 : 0;
+      const selectCol = __props.selectable ? 1 : 0;
+      const count = columns.value.length + expandCol + selectCol;
+      return Math.max(1, count);
     });
     const multiSelectColumn = {
       type: "checkbox",
