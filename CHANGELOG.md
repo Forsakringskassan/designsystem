@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 6.26.0 (2025-11-10)
+
+### Features
+
+* **@fkui/logic:** add fraction digits optional option to `parseNumber` and `parsePercent` (refs SFKUI-6500) a64030d
+
+### Bug Fixes
+
+* **@fkui/design:** bold headings in modals (refs SFKUI-6500) 084230d
+* **@fkui/theme-builder:** include semantic metadata for all themes (refs SFKUI-6500) 053d92a
+* **deps:** update dependency i18next to v25.6.1 e6bfe30
+* **deps:** update vue monorepo to v3.5.23 0b7da29
+* **deps:** update vue monorepo to v3.5.24 cb5c232
+
 ## 6.25.1 (2025-11-07)
 
 ### Bug Fixes
