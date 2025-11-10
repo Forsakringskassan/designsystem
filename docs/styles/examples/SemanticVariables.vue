@@ -6,6 +6,7 @@ import theme from "@fkui/theme-default/dist/metadata.mjs";
 import { FDataTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
 
 const rows = theme.tokens;
+const themes = theme.themes;
 </script>
 
 <template>
@@ -31,17 +32,22 @@ const rows = theme.tokens;
                 class="density-densest"
                 aria-labelledby="semantiska_farger"
             >
-                <template #default="{ row }">
+                <template #default="{ row: token }">
                     <f-table-column name="name" title="Semantisk variabel" shrink>
-                        <code>{{ row.name }}</code>
+                        <code>{{ token.name }}</code>
                     </f-table-column>
-                    <f-table-column name="palette" title="Palettfärg" expand>
-                        <code>{{ row.palette }}</code>
-                    </f-table-column>
-                    <f-table-column name="value" title="Färgkod" shrink>
+                    <f-table-column v-for="name in themes" :key="name" :name :title="name" shrink>
                         <!-- [html-validate-disable-next no-inline-style -- variable only] -->
-                        <span class="color" :style="`--value: ${row.value}`"></span>
-                        <code>{{ row.value }}</code>
+                        <span
+                            class="color"
+                            :style="`--value: ${token.values?.[name].value}`"
+                        ></span>
+                        <code>{{
+                            token.values?.[name].palette ?? token.values?.[name].value
+                        }}</code>
+                    </f-table-column>
+                    <f-table-column name="description" title="Beskrivning" expand>
+                        -
                     </f-table-column>
                 </template>
             </f-data-table>
@@ -64,7 +70,14 @@ code {
     height: 1.2em;
     display: inline-block;
     border-radius: 4px;
-    border: 1px solid black;
     vertical-align: text-bottom;
+
+    @media (prefers-color-scheme: light) {
+        border: 1px solid black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        border: 1px solid white;
+    }
 }
 </style>

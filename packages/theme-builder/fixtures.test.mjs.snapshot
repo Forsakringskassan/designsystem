@@ -37,27 +37,29 @@ exports[`should build simple theme 5`] = `
 
 exports[`should build simple theme 6`] = `
 export default {
-  "tokens": [
-    {
-      "name": "--x-foobar",
-      "value": "#f0a",
-      "palette": null,
-      "comment": null
-    }
-  ]
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "tokens": []
 }
 `;
 
 exports[`should build simple theme 7`] = `
 
+export interface TokenValue {
+    readonly value: string | null;
+    readonly palette: string | null;
+}
+
 export interface Token {
     readonly name: string;
-    readonly value: string;
-    readonly palette: string | null;
     readonly comment: string | null;
+    readonly values: Record<string, TokenValue>;
 }
 
 export interface Metadata {
+    readonly themes: string[];
     readonly tokens: Token[];
 }
 
