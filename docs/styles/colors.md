@@ -10,6 +10,8 @@ search:
 Försäkringskassans digitala färgpalett är baserad på färgerna som finns i den grafiska profilen.
 Dessa färger har tagits fram för att skapa ett konsekvent och inbjudande gränssnitt för alla Försäkringskassans digitala kanaler.
 
+## Semantiska färger
+
 ```import nomarkup borderless
 SemanticVariables.vue
 ```

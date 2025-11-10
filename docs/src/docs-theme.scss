@@ -38,10 +38,25 @@ $fk-logo-large: "fk-logo-primary-large.svg";
 
 .color-table__color {
     display: inline-block;
-    width: 3rem;
-    height: 2rem;
+    background: var(--value);
+    width: 1.4em;
+    height: 1.4em;
     border-radius: 0.25rem;
-    border: 1px solid #000;
+    vertical-align: text-bottom;
+    margin-right: 0.25rem;
+
+    @media (prefers-color-scheme: light) {
+        border: 1px solid black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        border: 1px solid white;
+    }
+}
+
+.color-table__term {
+    background: transparent;
+    white-space: nowrap;
 }
 
 .docs-pre {

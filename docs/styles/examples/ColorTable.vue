@@ -15,18 +15,16 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-data-table :rows="colors" key-attribute="name">
+    <f-data-table :rows="colors" key-attribute="name" class="density-densest">
         <template #caption> <span class="sr-only"> Färgpaletten </span> </template>
         <template #default="{ row }">
             <f-table-column title="Namn" type="text" shrink>
-                {{ row.name }}
+                <code class="color-table__term">{{ row.name }}</code>
             </f-table-column>
-            <f-table-column title="Exempel" type="text" shrink>
+            <f-table-column title="Färg" type="text" expand>
                 <!-- [html-validate-disable-next no-inline-style] -->
-                <span class="color-table__color" :style="{ 'background-color': row.value }"></span>
-            </f-table-column>
-            <f-table-column title="Färgkod" type="text" shrink>
-                <code>{{ row.value }}</code>
+                <span class="color-table__color" :style="`--value: ${row.value}`"></span>
+                <code class="color-table__term">{{ row.value }}</code>
             </f-table-column>
         </template>
     </f-data-table>
