@@ -1,4 +1,4 @@
-// ../logic/lib/esm/index.js
+// packages/logic/lib/esm/index.js
 function isEmpty(value) {
   return !value;
 }
@@ -1711,7 +1711,7 @@ function formatNumber(value, decimals) {
   }
   return formatSwedishNotation(value, decimals);
 }
-function parseNumber(value) {
+function parseNumber(value, fractionDigits) {
   if (isEmpty(value)) {
     return void 0;
   }
@@ -1721,7 +1721,15 @@ function parseNumber(value) {
     return void 0;
   }
   const number = Number(numberString);
-  return isNaN(number) ? void 0 : number;
+  const parsedNumber = isSet(fractionDigits) ? getNumberWithFraction(number, fractionDigits) : number;
+  return isNaN(parsedNumber) ? void 0 : parsedNumber;
+}
+function getNumberWithFraction(value, fractionDigits) {
+  if (fractionDigits < 0) {
+    return NaN;
+  }
+  const exp = 10 ** fractionDigits;
+  return Math.sign(value) * (Math.round(Math.abs(value) * exp) / exp);
 }
 function getNowDetails(now) {
   const nowIso = now.toString();
@@ -1861,8 +1869,8 @@ function parseOrganisationsnummer(value) {
 function formatPercent(modelValue, decimals) {
   return formatNumber(modelValue, decimals);
 }
-function parsePercent(viewValue) {
-  return parseNumber(viewValue);
+function parsePercent(viewValue, fractionDigits) {
+  return parseNumber(viewValue, fractionDigits);
 }
 function addFocusListener(elements, listener) {
   for (const element of elements) {
