@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-4f2dc5.js
+// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-3fed42.js
 import { defineComponent as _defineComponent } from "vue";
 
 // packages/theme-default/dist/metadata.mjs
@@ -909,9 +909,9 @@ var metadata_default = {
   ]
 };
 
-// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-4f2dc5.js
+// virtual-entry:virtual:docs/styles/examples/SemanticVariables.vue:SemanticVariables-3fed42.js
 import { FDataTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
-import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, normalizeStyle as _normalizeStyle, createBlock as _createBlock, createTextVNode as _createTextVNode } from "vue";
+import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, normalizeStyle as _normalizeStyle, createBlock as _createBlock, createTextVNode as _createTextVNode } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "SemanticVariables",
   setup(__props, { expose: __expose }) {
@@ -929,6 +929,8 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     return __returned__;
   }
 });
+var _hoisted_1 = { class: "color-table__term" };
+var _hoisted_2 = { class: "color-table__term" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FSortFilterDataset"], {
     data: $setup.rows,
@@ -939,15 +941,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: "F\xE4rgkod"
     }
   }, {
-    header: _withCtx(() => [..._cache[0] || (_cache[0] = [
-      _createElementVNode(
-        "h2",
-        { id: "semantiska_farger" },
-        "Semantiska f\xE4rger",
-        -1
-        /* CACHED */
-      )
-    ])]),
     default: _withCtx(({ sortFilterResult }) => [
       _createVNode($setup["FDataTable"], {
         rows: sortFilterResult,
@@ -968,7 +961,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               default: _withCtx(() => [
                 _createElementVNode(
                   "code",
-                  null,
+                  _hoisted_1,
                   _toDisplayString(token.name),
                   1
                   /* TEXT */
@@ -994,7 +987,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   _createElementVNode(
                     "span",
                     {
-                      class: "color",
+                      class: "color-table__color",
                       style: _normalizeStyle(`--value: ${token.values?.[name].value}`)
                     },
                     null,
@@ -1003,7 +996,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   ),
                   _createElementVNode(
                     "code",
-                    null,
+                    _hoisted_2,
                     _toDisplayString(token.values?.[name].palette ?? token.values?.[name].value),
                     1
                     /* TEXT */
@@ -1021,7 +1014,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             title: "Beskrivning",
             expand: ""
           }, {
-            default: _withCtx(() => [..._cache[1] || (_cache[1] = [
+            default: _withCtx(() => [..._cache[0] || (_cache[0] = [
               _createTextVNode(
                 " - ",
                 -1
@@ -1041,10 +1034,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["data"]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-4f2dc5";
+exampleComponent.__scopeId = "data-v-3fed42";
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4f2dc5"
+  selector: "#example-3fed42"
 });
 export {
   render
