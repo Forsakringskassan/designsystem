@@ -2988,7 +2988,8 @@ var inputFieldConfig = {
       return formatNumber(value, (_this$decimals = this.decimals) !== null && _this$decimals !== void 0 ? _this$decimals : 2);
     },
     parser(value) {
-      return parseNumber(value);
+      var _this$decimals2;
+      return parseNumber(value, (_this$decimals2 = this.decimals) !== null && _this$decimals2 !== void 0 ? _this$decimals2 : 2);
     },
     validationConfig: {
       number: {}
@@ -3024,11 +3025,12 @@ var inputFieldConfig = {
   },
   "text:percent": {
     formatter(value) {
-      var _this$decimals2;
-      return formatNumber(value, (_this$decimals2 = this.decimals) !== null && _this$decimals2 !== void 0 ? _this$decimals2 : 2);
+      var _this$decimals3;
+      return formatNumber(value, (_this$decimals3 = this.decimals) !== null && _this$decimals3 !== void 0 ? _this$decimals3 : 2);
     },
     parser(value) {
-      return parseNumber(value);
+      var _this$decimals4;
+      return parseNumber(value, (_this$decimals4 = this.decimals) !== null && _this$decimals4 !== void 0 ? _this$decimals4 : 2);
     },
     validationConfig: {
       percent: {},
@@ -3974,7 +3976,7 @@ function normalizeTableColumn(column) {
       var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key3;
       const type = column.type;
       const config = inputFieldConfig[type];
-      const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
+      const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
       const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter.bind(column);
       const decimals = type === "text:currency" ? 0 : column.decimals;
       return {
@@ -4217,14 +4219,9 @@ function useTabstop(tableRef, metaRows) {
     }
     assertRef(tableRef);
     const target = getCellTarget(tableRef.value, 1, 0);
-    if (metaRows.value.length === 0) {
-      target.tabIndex = 0;
-      target.focus();
-    } else {
-      activateCell(target, {
-        focus: renderOptions.value.focus
-      });
-    }
+    activateCell(target, {
+      focus: renderOptions.value.focus
+    });
     renderOptions.value.fallbackToFirstCell = false;
   });
   async function withTabstopBehaviour(behaviour, action) {
@@ -4305,8 +4302,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + 1;
     });
     const columnCount = computed(() => {
-      const selectableCol = __props.selectable ? 1 : 0;
-      return columns.value.length + selectableCol;
+      const expandCol = isTreegrid.value ? 1 : 0;
+      const selectCol = __props.selectable ? 1 : 0;
+      const count = columns.value.length + expandCol + selectCol;
+      return Math.max(1, count);
     });
     const multiSelectColumn = {
       type: "checkbox",
