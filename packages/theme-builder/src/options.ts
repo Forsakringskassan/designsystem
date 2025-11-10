@@ -22,4 +22,5 @@ export interface NormalizedOptions {
     outdir: string;
     prefix: string;
     version: string;
+    themes: Array<{ name: string; filename: string }>;
 }

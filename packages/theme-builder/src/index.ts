@@ -24,7 +24,7 @@ async function run(options: NormalizedOptions): Promise<void> {
     );
 
     if (files.length > 0) {
-        await buildMetadata(files[0], "metadata", paletteVariables, options);
+        await buildMetadata(files, "metadata", paletteVariables, options);
     }
 
     try {
@@ -72,5 +72,9 @@ export async function cli(argv: string[], options: Options): Promise<void> {
         outdir: path.isAbsolute(outdir) ? outdir : path.join(cwd, outdir),
         prefix,
         version,
+        themes: [
+            { name: "light", filename: "theme-light" },
+            { name: "dark", filename: "theme-dark" },
+        ],
     });
 }
