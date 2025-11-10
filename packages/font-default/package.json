@@ -19,11 +19,22 @@
   "sideEffects": [
     "./src/**/*.scss"
   ],
+  "exports": {
+    ".": {
+      "sass": "./src/font.scss"
+    },
+    "./metadata": {
+      "types": "./metadata.d.mts",
+      "import": "./metadata.mjs"
+    },
+    "./fonts/*": "./fonts/*",
+    "./src/*": "./src/*"
+  },
   "main": "./src/font.scss",
   "files": [
     "fonts",
-    "metadata.json",
-    "metadata.json.d.ts",
+    "metadata.mjs",
+    "metadata.d.mts",
     "src"
   ],
   "scripts": {

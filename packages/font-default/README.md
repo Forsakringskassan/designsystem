@@ -39,7 +39,7 @@ Om du inte använder Vite behöver du:
 
 ## Metadata
 
-Paketet levererar metadata i `@fkui/font-default/metadata.json` med följande format:
+Paketet levererar metadata i `@fkui/font-default/metadata` med följande format:
 
 ```ts
 export interface Asset {
