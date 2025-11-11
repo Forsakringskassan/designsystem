@@ -24,19 +24,20 @@ På sikt kommer dagens komponenter för applikationslayout ({@link application-l
 {@link FMinimizablePanel minimerbar panel} och {@link FDetailsPanel detaljpanel}.
 De nya komponenterna är mer flexibla, till exempel kan du fylla en yta med valfritt innehåll oberoende var den ligger.
 Till att börja med kommer ett antal olika varianter av layouter släppas.
-De nya komponenterna är släppta med {@link about#status_for_komponenter status beta} och kommer släppas som produktionsklara under hösten.
+De nya komponenterna är släppta med {@link about#status_for_komponenter status beta} och kommer släppas som produktionsklara vid ett senare tillfälle.
 
 ### Ny komponent för tabell
 
-Vi tar fram en ny komponent för tabell som underlättar navigering för användaren.
+Vi tar fram en ny komponent för tabell som underlättar navigering för användaren. Den nya tabellen kommer ha stöd för inline-redigering, dvs att användaren direkt kan redigera innehåll i en tabellcell.
 Samtidigt rättar vi buggar, uppdaterar dokumentationen och lägger till mindre förbättringar för tabell.
 Den nya komponenten kommer på sikt att ersätta dagens komponenter för tabell (datatabell och interaktiv tabell).
 
-### Förhindra dubbelklick på knapp och knapp i väntande läge
+### Pagineringskomponent
 
-Vi inför ett väntande läge på knapp när användare har klickat på knapp och det är en fördröjning innan knappens åtgärd är utförd.
-Vi ser också till att förhindra dubbelklick på knapp.
-Första steget är den nya Vue-komponenten för knapp som har släppts.
+Komponent för paginering är på gång.
+Den kan användas för att låta användaren navigera mellan innehåll som är uppdelat på flera sidor.
+Till att börja med stöds inte paginering av tabell, varken för befintliga tabellkomponenter (datatabell eller interaktiv tabell) eller den nya tabellen.
+När den nya tabellen är släppt kommer vi att arbeta vidare med hur pagineringen ska fungera tillsammans med den.
 
 ### Omskrivning av valideringsservice
 
