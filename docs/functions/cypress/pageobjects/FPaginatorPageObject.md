@@ -6,6 +6,10 @@ layout: api.class
 
 Använd `FPaginatorPageObject` för att hämta information relaterat till {@link pagination FPaginator}.
 
+```import live-example
+FPaginatorPageObjectLiveExample.vue
+```
+
 ## FPaginatorPageObject()
 
 Skapar ett nytt Cypress-pageobjekt.
