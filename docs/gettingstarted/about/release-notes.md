@@ -9,11 +9,57 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.26.0
+
+2025-11-10
+
+Möjliggör för konsumenten att sätta antal decimaler för `parseNumber` och `parsePercent`.  
+Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-26-0)
+
+## Version 6.25.0
+
+2025-11-06
+
+Deprekering av gamla färgvariabler.  
+Temabyggare släppt med byggskript för designsystemets tema (theme-default och theme-desktop).  
+Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-25-0)
+
+## Version 6.24.0
+
+2025-10-29
+
+Semantiska färgvariabler för expanderbart stycke.  
+Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-24-0)
+
+## Version 6.23.0
+
+2025-10-24
+
+Stöd för ljust och mörkt tema infört för standard-temat (theme-default).  
+Semantiska färgvariabler uppdaterade för ikon.  
+Nya paket för logotyp, font och desktop-tema (theme-desktop).  
+Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-23-0)
+
+## Version 6.22.0
+
+2025-10-15
+
+Status för hover och vald justerat för högkontrastläge.  
+Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-22-0)
+
 ## Version 6.21.0
 
 2025-10-09
 
-Meddelanderutan har nu samma storlek och rubrikstorlek oavsett skärmstorlek.
+Meddelanderutan har nu samma storlek och rubrikstorlek oavsett skärmstorlek.  
+Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-21-0)
+
+## Version 6.20.0
+
+2025-09-28
+
+Lagt till ellipsis icon till ikon biblioteket.  
+Buggfixar, [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-20-0)
 
 ## Version 6.19.0
 
