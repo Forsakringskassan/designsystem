@@ -148,6 +148,11 @@ const docs = new Generator(import.meta.url, {
             expose: "named",
             alias: "vue/dist/vue.esm-bundler.js",
         },
+        {
+            package: "@fkui/vue/pageobjects",
+            expose: "named",
+            alias: "./packages/vue/dist/esm/pageobjects.esm.js",
+        },
         "@fkui/logic",
         "@fkui/date",
         "@fkui/vue",
