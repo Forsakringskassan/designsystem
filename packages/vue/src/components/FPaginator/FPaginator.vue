@@ -153,9 +153,19 @@ function showGap(page: number): boolean {
         </button>
 
         <button
-            v-for="page in pages"
+            v-for="(page, index) in pages"
             :key="page"
             :data-test="'page-' + page + '-button'"
+            :data-page="
+                [
+                    'button-' + index,
+                    'page-' + page,
+                    page === 1 ? 'first' : undefined,
+                    page === numberOfPages ? 'last' : undefined,
+                ]
+                    .filter(Boolean)
+                    .join(' ')
+            "
             type="button"
             :class="pageClasses(page, currentPage)"
             :aria-current="page === currentPage ? 'page' : 'false'"

@@ -1,1 +1,1 @@
-export {};
+export { FPaginatorPageobject } from "./FPaginator.pageobject";

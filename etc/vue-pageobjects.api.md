@@ -9,11 +9,8 @@ export class FPaginatorPageobject {
     constructor(selector?: string);
     currentPageButton(): string;
     el(): string;
-    firstPageButton(): string;
-    lastPageButton(): string;
     nextButton(): string;
-    pageButton(page: number): string;
-    pageButtons(): string;
+    pageButton(page?: number | string): string;
     pageCounter(): string;
     previousButton(): string;
     // (undocumented)

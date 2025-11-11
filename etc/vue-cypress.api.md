@@ -539,16 +539,14 @@ export class FPageHeaderPageobject implements BasePageObject {
 }
 
 // @public
-export class FPaginatorPageobject implements BasePageObject {
-    constructor(selector: string);
+export class FPaginatorPageobject {
+    constructor(selector?: string);
     currentPageButton(): DefaultCypressChainable;
     el(): DefaultCypressChainable;
     nextButton(): DefaultCypressChainable;
     pageButton(page?: number | string): DefaultCypressChainable;
     pageCounter(): DefaultCypressChainable;
     previousButton(): DefaultCypressChainable;
-    // (undocumented)
-    selector: string;
 }
 
 // @public
