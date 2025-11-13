@@ -104,6 +104,103 @@ describe("1.8 when table is empty", () => {
     });
 });
 
+describe("footer", () => {
+    const rows: never[] = [];
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "text",
+            header: "A",
+        },
+        {
+            type: "text",
+            header: "B",
+        },
+        {
+            type: "text",
+            header: "C",
+        },
+    ]);
+
+    it("should add footer slot content to table footer", () => {
+        cy.mount(FTable, {
+            props: {
+                rows: [],
+                columns: [],
+            },
+            slots: {
+                footer: "Footer",
+            },
+        });
+        table.footer().should("contain.text", "Footer");
+    });
+
+    it("should not render table footer if footer slot is not used", () => {
+        cy.mount(FTable, {
+            props: {
+                rows: [],
+                columns: [],
+            },
+        });
+        table.footer().should("not.exist");
+    });
+
+    it("footer cell should span all columns", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+            slots: {
+                footer: "Footer",
+            },
+        });
+        table.footerCell().should("have.prop", "colspan", 3);
+    });
+
+    it("footer cell should span all columns when selectable", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                selectable: "multi",
+            },
+            slots: {
+                footer: "Footer",
+            },
+        });
+        table.footerCell().should("have.prop", "colspan", 4);
+    });
+
+    it("footer cell should span all columns when expandable", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute: "nested",
+            },
+            slots: {
+                footer: "Footer",
+            },
+        });
+        table.footerCell().should("have.prop", "colspan", 4);
+    });
+
+    it("footer cell should span all columns when selectable and expandable", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute: "nested",
+                selectable: "multi",
+            },
+            slots: {
+                footer: "Footer",
+            },
+        });
+        table.footerCell().should("have.prop", "colspan", 5);
+    });
+});
+
 describe("5 tabstop", () => {
     interface TabstopRow {
         foo: string;
