@@ -80,7 +80,7 @@ describe("when selectable", () => {
         <f-interactive-table
             v-model="selectedRows"
             :rows
-            selectable
+            selectable="multi"
             v-test="'table-example'"
         >
             ${defaultTemplateContent}
@@ -216,7 +216,11 @@ describe("when `rows` is empty", () => {
 
     it("cell of empty row should span all columns when selectable", () => {
         const template = /* HTML */ `
-            <f-interactive-table :rows="[]" selectable v-test="'table-example'">
+            <f-interactive-table
+                :rows="[]"
+                selectable="multi"
+                v-test="'table-example'"
+            >
                 ${defaultTemplateContent}
             </f-interactive-table>
         `;
@@ -258,7 +262,7 @@ describe("when `rows` is empty", () => {
         const template = /* HTML */ `
             <f-interactive-table
                 :rows="[]"
-                selectable
+                selectable="multi"
                 expandable-attribute="expandable"
                 v-test="'table-example'"
             >
@@ -281,7 +285,7 @@ describe("when `rows` is empty", () => {
         const template = /* HTML */ `
             <f-interactive-table
                 :rows="[]"
-                selectable
+                selectable="multi"
                 expandable-attribute="expandable"
                 v-test="'table-example'"
             >

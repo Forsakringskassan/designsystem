@@ -45,7 +45,12 @@ export default defineComponent({
         </template>
 
         <template #default="{ sortFilterResult }">
-            <f-interactive-table :rows="sortFilterResult" striped selectable key-attribute="id">
+            <f-interactive-table
+                :rows="sortFilterResult"
+                striped
+                selectable="multi"
+                key-attribute="id"
+            >
                 <template #caption>
                     <span class="sr-only"> Frukter </span>
                 </template>

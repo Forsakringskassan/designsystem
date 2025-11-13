@@ -9,6 +9,7 @@ import {
     provide,
     ref,
     shallowRef,
+    useId,
     useSlots,
     useTemplateRef,
     watch,
@@ -21,6 +22,7 @@ import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import { FCheckboxField } from "../FCheckboxField";
 import { ActivateItemInjected } from "../FCrudDataset";
 import { FIcon } from "../FIcon";
+import { FRadioField } from "../FRadioField";
 import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
 import {
     type FTableColumnData,
@@ -75,7 +77,10 @@ const props = defineProps({
         default: "",
     },
     /**
-     * When enabled the table rows will be selectable.
+     * When set the table rows will be selectable.
+     *
+     * For multiselect, set value to `"multi"` (or `true`).
+     * For single select, set value to `"single"`.
      *
      * The current set of selected rows can be accessed with `v-model`.
      *
@@ -83,7 +88,19 @@ const props = defineProps({
      * or deselected.
      */
     selectable: {
-        type: Boolean,
+        type: [Boolean, String] as PropType<boolean | "single" | "multi">,
+        default: false,
+        validator(value: unknown) {
+            if (typeof value === "boolean") {
+                return true;
+            }
+
+            if (value === "single" || value === "multi") {
+                return true;
+            }
+
+            return false;
+        },
     },
     /**
      * When enabled alternating rows will use a different background color.
@@ -422,12 +439,17 @@ function rowDescription(row: T): string | undefined {
 }
 
 function onSelect(row: T): void {
-    if (includeItem(row, selectedRows.value, internalKey)) {
-        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
-        emit("unselect", row);
-    } else {
-        selectedRows.value.push(row);
+    if (props.selectable === "single") {
+        selectedRows.value = [row];
         emit("select", row);
+    } else {
+        if (includeItem(row, selectedRows.value, internalKey)) {
+            selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
+            emit("unselect", row);
+        } else {
+            selectedRows.value.push(row);
+            emit("select", row);
+        }
     }
 
     updateVModelWithSelectedRows();
@@ -646,7 +668,23 @@ function setActiveRow(row: T | undefined): void {
 
                         <td v-if="selectable" class="table__column--selectable">
                             <div class="table__input">
+                                <f-radio-field
+                                    v-if="selectable === 'single'"
+                                    :name="rowKey(row)"
+                                    :value="true"
+                                    :model-value="isSelected(row)"
+                                    @click.self="onSelect(row)"
+                                >
+                                    <span v-if="hasCheckboxDescription" class="sr-only">
+                                        <!--
+                                             @slot Screenreader label for the checkbox when using `selectable`.
+                                             @binding {T} row Current row being rendered.
+                                        -->
+                                        <slot name="checkbox-description" v-bind="{ row }" />
+                                    </span>
+                                </f-radio-field>
                                 <f-checkbox-field
+                                    v-else
                                     :value="true"
                                     :model-value="isSelected(row)"
                                     @click.self="onSelect(row)"

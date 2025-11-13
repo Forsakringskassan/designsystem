@@ -23,6 +23,7 @@ export default defineComponent({
             hasActions: false,
             hasRowHeader: false,
             isSelectable: true,
+            isMultiSelect: true,
             isExpandable: false,
             hasCustomExpandContent: false,
             hasHover: false,
@@ -156,7 +157,15 @@ export default defineComponent({
                 : "Utbetalningar";
         },
         selectable(): string {
-            return this.isSelectable ? "selectable" : "";
+            if (!this.isSelectable) {
+                return "";
+            }
+
+            if (this.isMultiSelect) {
+                return `selectable="multi"`;
+            }
+
+            return `selectable="single"`;
         },
         expandable(): string {
             const expandableType = this.hasCustomExpandContent
@@ -252,6 +261,11 @@ export default defineComponent({
             <f-checkbox-field v-model="isSelectable" :value="true">
                 Valbara rader
             </f-checkbox-field>
+            <f-fieldset v-if="isSelectable" name="radio-selectable-type">
+                <template #label> Flerval </template>
+                <f-radio-field v-model="isMultiSelect" :value="true"> Ja </f-radio-field>
+                <f-radio-field v-model="isMultiSelect" :value="false"> Nej </f-radio-field>
+            </f-fieldset>
             <f-checkbox-field v-model="isExpandable" :value="true">
                 Expanderbara rader
             </f-checkbox-field>

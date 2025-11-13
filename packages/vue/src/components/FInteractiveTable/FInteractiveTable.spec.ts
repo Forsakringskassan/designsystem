@@ -337,7 +337,7 @@ describe("showActive flag", () => {
                 :rows="rows"
                 :show-active="showActive"
                 key-attribute="id"
-                selectable
+                selectable="multi"
             ></f-interactive-table>
         `,
         data() {
@@ -388,7 +388,11 @@ it("should add an extra column when selectable is enabled", async () => {
     const TestComponent = {
         components: { FInteractiveTable, FTableColumn },
         template: /* HTML */ `
-            <f-interactive-table :rows="rows" key-attribute="id" selectable>
+            <f-interactive-table
+                :rows="rows"
+                key-attribute="id"
+                selectable="multi"
+            >
                 <template #default="{ row }">
                     <f-table-column title="A"></f-table-column>
                 </template>
@@ -438,7 +442,7 @@ it("should mark initial rows as selected", async () => {
                 :rows="rows"
                 key-attribute="id"
                 v-model="selected"
-                selectable
+                selectable="multi"
             ></f-interactive-table>
         `,
         data() {
@@ -464,7 +468,11 @@ it("should set row-description as aria-label", async () => {
     const TestComponent = {
         components: { FInteractiveTable },
         template: /* HTML */ `
-            <f-interactive-table :rows="rows" key-attribute="id" selectable>
+            <f-interactive-table
+                :rows="rows"
+                key-attribute="id"
+                selectable="multi"
+            >
                 <template #row-description="{ row }">
                     {{ row.name }} (id: {{ row.id }})
                 </template>
@@ -491,7 +499,11 @@ it("should set checkbox-description as label on checkbox", async () => {
     const TestComponent = {
         components: { FInteractiveTable },
         template: /* HTML */ `
-            <f-interactive-table :rows="rows" key-attribute="id" selectable>
+            <f-interactive-table
+                :rows="rows"
+                key-attribute="id"
+                selectable="multi"
+            >
                 <template #checkbox-description="{ row }">
                     {{ row.name }} (id: {{ row.id }})
                 </template>
@@ -542,7 +554,7 @@ describe("events", () => {
                 key-attribute="id"
                 v-model="selected"
                 v-model:active="active"
-                selectable
+                selectable="multi"
             ></f-interactive-table>
         `,
         data() {
@@ -560,7 +572,7 @@ describe("events", () => {
             props: {
                 rows: [{ id: 1 }, { id: 2 }],
                 modelValue: [{ id: 1 }],
-                selectable: true,
+                selectable: "multi",
                 keyAttribute: "id",
             },
         });
@@ -802,6 +814,33 @@ describe("`keyAttribute`", () => {
             });
         }).not.toThrow();
     });
+});
+
+it("should act as multiselect when selectable is `true`", async () => {
+    expect.assertions(1);
+    const TestComponent = {
+        components: { FInteractiveTable, FTableColumn },
+        template: /* HTML */ `
+            <f-interactive-table :rows key-attribute="id" :selectable="true">
+                <template #default="{ row }">
+                    <f-table-column title="A"></f-table-column>
+                </template>
+            </f-interactive-table>
+        `,
+        data() {
+            return {
+                rows: [{ id: 1 }],
+            };
+        },
+    };
+    const wrapper = mount(TestComponent, {
+        global: {
+            stubs: ["f-checkbox-field"],
+        },
+    });
+    await wrapper.vm.$nextTick();
+    const td = wrapper.findAll("f-checkbox-field-stub");
+    expect(td).toHaveLength(1);
 });
 
 describe("html-validate", () => {
