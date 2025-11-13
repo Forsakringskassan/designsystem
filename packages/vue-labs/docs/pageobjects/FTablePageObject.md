@@ -131,6 +131,30 @@ FTablePageObject-expandButton.vue
 FTablePageObject-expandButton.cy.ts
 ```
 
+## footer()
+
+Hämtar tabellens footer.
+
+### Syntax
+
+```ts nocompile nolint
+footer();
+```
+
+#### Returvärde
+
+`HTMLTableSectionElement` för tabellens footer.
+
+### Exempel
+
+```import static
+FTablePageObject-footer.vue
+```
+
+```import static
+FTablePageObject-footer.cy.ts
+```
+
 ## header()
 
 Hämtar en cell i tabellhuvudet.

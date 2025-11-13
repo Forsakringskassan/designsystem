@@ -10,8 +10,6 @@ export class FTablePageObject implements BasePageObject {
     private readonly selectHeader = ".table-ng__column--select";
     private readonly columnTitle = ".table-ng__column__title";
     private readonly columnDescription = ".table-ng__column__description";
-    private readonly tableCell = ".table-ng__cell";
-    private readonly customExpandable = ".table-ng__custom-expandable";
     private readonly expandCell = ".table-ng__cell--expand";
     private readonly selectCell = ".table-ng__cell--select";
 
@@ -151,6 +149,18 @@ export class FTablePageObject implements BasePageObject {
     }
 
     /**
+     * Get table footer.
+     *
+     * Only applicable if footer slot is used.
+     *
+     * @public
+     * @returns The table footer.
+     */
+    public footer(): Cypress.Chainable<JQuery<HTMLTableSectionElement>> {
+        return cy.get(this.tfoot);
+    }
+
+    /**
      * Get current tabbable element in the table.
      *
      * If table is untouched, it is the first cell in the table body (including columns for expandable and selectable).
@@ -189,5 +199,10 @@ export class FTablePageObject implements BasePageObject {
     /** @internal */
     private get tbody(): string {
         return `${this.selector} tbody`;
+    }
+
+    /** @internal */
+    private get tfoot(): string {
+        return `${this.selector} tfoot`;
     }
 }
