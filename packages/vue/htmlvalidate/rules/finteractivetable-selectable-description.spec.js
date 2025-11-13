@@ -4,15 +4,15 @@ import plugin from "../index";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
-    rules: { "fkui/finteractivetable-checkbox-description": "error" },
+    rules: { "fkui/finteractivetable-selectable-description": "error" },
 });
 
-it("should not report error when selectable is used with non-empty checkbox description", async () => {
+it("should not report error when selectable is used with non-empty selectable description", async () => {
     expect.assertions(2);
     const markup = /* HTML */ `
         <f-interactive-table selectable>
             <template #default="{ row }"></template>
-            <template #checkbox-description> Select this row </template>
+            <template #selectable-description> Select this row </template>
         </f-interactive-table>
     `;
     const report = await htmlvalidate.validateString(markup);
@@ -20,7 +20,7 @@ it("should not report error when selectable is used with non-empty checkbox desc
     expect(report).toMatchInlineCodeframe(`""`);
 });
 
-it("should report error when selectable is used without checkbox description", async () => {
+it("should report error when selectable is used without selectable description", async () => {
     expect.assertions(2);
     const markup = /* HTML */ `
         <f-interactive-table selectable>
@@ -30,7 +30,7 @@ it("should report error when selectable is used without checkbox description", a
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: #checkbox-description slot must be implemented when selectable is enabled (fkui/finteractivetable-checkbox-description) at inline:2:30:
+        "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description) at inline:2:30:
           1 |
         > 2 |         <f-interactive-table selectable>
             |                              ^^^^^^^^^^
@@ -41,21 +41,21 @@ it("should report error when selectable is used without checkbox description", a
     `);
 });
 
-it("should report error when selectable is used with empty checkbox description", async () => {
+it("should report error when selectable is used with empty selectable description", async () => {
     expect.assertions(2);
     const markup = /* HTML */ `
         <f-interactive-table selectable>
             <template #default="{ row }"></template>
-            <template #checkbox-description></template>
+            <template #selectable-description></template>
         </f-interactive-table>
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: #checkbox-description cannot be empty when selectable is enabled (fkui/finteractivetable-checkbox-description) at inline:4:14:
+        "error: #selectable-description cannot be empty when selectable is enabled (fkui/finteractivetable-selectable-description) at inline:4:14:
           2 |         <f-interactive-table selectable>
           3 |             <template #default="{ row }"></template>
-        > 4 |             <template #checkbox-description></template>
+        > 4 |             <template #selectable-description></template>
             |              ^^^^^^^^
           5 |         </f-interactive-table>
           6 |
@@ -71,7 +71,7 @@ it("should handle when no slots are implemented", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: #checkbox-description slot must be implemented when selectable is enabled (fkui/finteractivetable-checkbox-description) at inline:2:30:
+        "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description) at inline:2:30:
           1 |
         > 2 |         <f-interactive-table selectable></f-interactive-table>
             |                              ^^^^^^^^^^
@@ -90,7 +90,7 @@ it("should handle when non-slot template element is used", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: #checkbox-description slot must be implemented when selectable is enabled (fkui/finteractivetable-checkbox-description) at inline:2:30:
+        "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description) at inline:2:30:
           1 |
         > 2 |         <f-interactive-table selectable>
             |                              ^^^^^^^^^^
