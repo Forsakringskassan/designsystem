@@ -2,8 +2,7 @@
 import { h, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
 import { FSortFilterDataset } from "@fkui/vue";
-import { FTable } from "@fkui/vue-labs";
-import { defineTableColumns } from "../table-column";
+import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
 

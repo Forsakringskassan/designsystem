@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { h, ref } from "vue";
 import { formatNumber } from "@fkui/logic";
-import { FTable } from "@fkui/vue-labs";
-import { defineTableColumns } from "../table-column";
+import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
 
