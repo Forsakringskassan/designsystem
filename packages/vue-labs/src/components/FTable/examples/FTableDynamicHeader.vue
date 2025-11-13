@@ -2,8 +2,7 @@
 import { h, ref } from "vue";
 import { formatNumber } from "@fkui/logic";
 import { FSortFilterDataset, FTextField } from "@fkui/vue";
-import { FTable } from "@fkui/vue-labs";
-import { defineTableColumns } from "../table-column";
+import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     value1: string;
