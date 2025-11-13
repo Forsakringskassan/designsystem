@@ -16,7 +16,7 @@ import {
     watchEffect,
 } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
-import { FSortFilterDatasetInjected, setInternalKeys, useTranslate } from "@fkui/vue";
+import { FSortFilterDatasetInjected, setInternalKeys, useSlotUtils, useTranslate } from "@fkui/vue";
 import { activateCell, getMetaRows, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableExpandButton from "./ITableExpandButton.vue";
@@ -58,6 +58,7 @@ const {
     selectable?: "single" | "multi";
 }>();
 const $t = useTranslate();
+const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const selectAllRef = ref<HTMLInputElement | null>(null);
 const expandedKeys: Ref<string[]> = ref([]);
@@ -73,8 +74,9 @@ const isEmpty = computed((): boolean => {
 });
 
 const ariaRowcount = computed((): number => {
-    // +1 to include header row.
-    return getBodyRowCount(keyedRows.value, expandableAttribute) + 1;
+    const headerRow = 1;
+    const footerRow = hasFooter.value ? 1 : 0;
+    return getBodyRowCount(keyedRows.value, expandableAttribute) + headerRow + footerRow;
 });
 
 const columnCount = computed((): number => {
@@ -82,6 +84,10 @@ const columnCount = computed((): number => {
     const selectCol = selectable ? 1 : 0;
     const count = columns.value.length + expandCol + selectCol;
     return Math.max(1, count);
+});
+
+const hasFooter = computed((): boolean => {
+    return hasSlot("footer");
 });
 
 const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
@@ -432,6 +438,12 @@ onMounted(() => {
                 </template>
             </tr>
         </tbody>
+        <tfoot v-if="hasFooter">
+            <tr class="table-ng__row" :aria-rowindex="ariaRowcount">
+                <td :colspan="columnCount" class="table-ng__cell--custom">
+                    <slot name="footer"></slot>
+                </td>
+            </tr>
+        </tfoot>
     </table>
-    <slot name="footer"></slot>
 </template>

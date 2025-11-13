@@ -377,6 +377,20 @@ it("selectHeaderInput() should get input when table is multiselect", () => {
     table.selectHeaderInput().should("have.prop", "tagName", "INPUT");
 });
 
+it("footer() should get table footer when footer slot is used", () => {
+    cy.mount(FTable<(typeof rows)[number]>, {
+        props: {
+            columns,
+            rows,
+        },
+        slots: {
+            footer: "Footer",
+        },
+    });
+    table.footer().should("have.prop", "tagName", "TFOOT");
+    table.footer().should("contain.text", "Footer");
+});
+
 describe("tabbableElement()", () => {
     it("should get current tabbable element", () => {
         cy.mount(FTable<(typeof rows)[number]>, {
