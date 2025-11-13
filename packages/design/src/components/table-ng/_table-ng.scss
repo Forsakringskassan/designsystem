@@ -53,7 +53,8 @@ $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
         }
     }
 
-    tbody {
+    tbody,
+    tfoot {
         .table-ng__row {
             background: $table-ng-row-background;
             color: $table-ng-row-foreground;

@@ -5,7 +5,7 @@ const { colspan } = defineProps<{
 </script>
 
 <template>
-    <td class="table-ng__custom-expandable" :colspan tabindex="-1">
+    <td class="table-ng__cell--custom" :colspan tabindex="-1">
         <slot></slot>
     </td>
 </template>
