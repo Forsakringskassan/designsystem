@@ -36,7 +36,7 @@ const TestComponent = defineComponent({
         rows: Array,
         rowHeader: Boolean,
         expandable: Boolean,
-        selectable: Boolean,
+        selectable: String,
     },
     template: /* HTML */ `
         <f-interactive-table
@@ -46,7 +46,7 @@ const TestComponent = defineComponent({
             :expandable-attribute="expandable ? 'nested' : undefined"
         >
             <template #caption> Test table </template>
-            <template #checkbox-description="{ row }">
+            <template #selectable-description="{ row }">
                 Select row {{ row.a }}
             </template>
             <template #default="{ row }">
@@ -69,7 +69,6 @@ describe("cell()", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: false,
             },
         });
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -89,7 +88,6 @@ describe("cell()", () => {
                 rows,
                 rowHeader: true,
                 expandable: false,
-                selectable: false,
             },
         });
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -109,7 +107,7 @@ describe("cell()", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: true,
+                selectable: "multi",
             },
         });
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -129,7 +127,6 @@ describe("cell()", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -149,7 +146,6 @@ describe("cell()", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
         table.row(0).click();
@@ -182,7 +178,6 @@ it("`caption()` should get `<caption>` element", () => {
             rows,
             rowHeader: false,
             expandable: false,
-            selectable: false,
         },
     });
 
@@ -197,7 +192,6 @@ describe("`header()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: false,
             },
         });
 
@@ -212,7 +206,6 @@ describe("`header()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -227,7 +220,7 @@ describe("`header()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: true,
+                selectable: "multi",
             },
         });
 
@@ -243,7 +236,7 @@ it("`headersRow()` should get all `<th>` elements in `<thead>`", () => {
             rows,
             rowHeader: true,
             expandable: true,
-            selectable: true,
+            selectable: "multi",
         },
     });
 
@@ -264,7 +257,6 @@ describe("`bodyRow()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: false,
             },
         });
 
@@ -283,7 +275,6 @@ describe("`bodyRow()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -314,7 +305,6 @@ describe("`bodyRow()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -348,7 +338,6 @@ describe("`row()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: false,
             },
         });
 
@@ -367,7 +356,6 @@ describe("`row()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -382,7 +370,6 @@ describe("`row()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -400,7 +387,7 @@ describe("`checkbox()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: true,
+                selectable: "multi",
             },
         });
 
@@ -415,7 +402,7 @@ describe("`checkbox()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: true,
+                selectable: "multi",
             },
         });
 
@@ -431,7 +418,7 @@ describe("`checkbox()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: true,
+                selectable: "multi",
             },
         });
 
@@ -441,13 +428,41 @@ describe("`checkbox()`", () => {
     });
 });
 
+describe("`selectable()`", () => {
+    it("should return checkbox for given row when multi selectable ", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: false,
+                selectable: "multi",
+            },
+        });
+
+        table.selectable(1).should("have.attr", "type", "checkbox");
+    });
+
+    it("should return radio for given row when single selectable ", () => {
+        cy.mount(TestComponent, {
+            props: {
+                rows,
+                rowHeader: false,
+                expandable: false,
+                selectable: "single",
+            },
+        });
+
+        table.selectable(1).should("have.attr", "type", "radio");
+    });
+});
+
 it("`columnItem()` should get `FTableColumnPageObject` for given row index", () => {
     cy.mount(TestComponent, {
         props: {
             rows,
             rowHeader: false,
             expandable: true,
-            selectable: true,
+            selectable: "multi",
         },
     });
 
@@ -477,7 +492,7 @@ it("`headerRowItem()` should get `FTableColumnPageObject` for header row", () =>
             rows,
             rowHeader: false,
             expandable: true,
-            selectable: true,
+            selectable: "multi",
         },
     });
 
@@ -524,11 +539,13 @@ it("`getColumnSortedByIcon()` should get sort icon of given column and order", (
                 <template #default="{ sortFilterResult }">
                     <f-interactive-table
                         :rows="sortFilterResult"
-                        selectable
+                        selectable="multi"
                         expandable-attribute="nested"
                     >
                         <template #caption> Test table </template>
-                        <template #checkbox-description> Select row </template>
+                        <template #selectable-description>
+                            Select row
+                        </template>
                         <template #default="{ row }">
                             <f-table-column name="a" title="A">
                                 {{ row.a }}

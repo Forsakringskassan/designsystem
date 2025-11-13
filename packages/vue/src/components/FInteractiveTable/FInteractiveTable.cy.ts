@@ -75,16 +75,83 @@ it("should move focus to previous row (circular) with arrow-up-key", () => {
     table.row(2).should("have.focus");
 });
 
-describe("when selectable", () => {
+describe("when single selectable", () => {
     const selectableTemplate = /* HTML */ `
         <f-interactive-table
             v-model="selectedRows"
             :rows
-            selectable
+            selectable="single"
             v-test="'table-example'"
         >
             ${defaultTemplateContent}
-            <template #checkbox-description> Välj denna rad </template>
+            <template #selectable-description> Välj denna rad </template>
+        </f-interactive-table>
+    `;
+    const selectedRows = [rows[2]];
+
+    it("should pre-select radio", () => {
+        const TestComponent = defineComponent({
+            template: selectableTemplate,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+            data() {
+                return {
+                    selectedRows,
+                    rows,
+                };
+            },
+        });
+        cy.mount(TestComponent);
+
+        table.selectable(1).should("not.be.checked");
+        table.selectable(2).should("not.be.checked");
+        table.selectable(3).should("be.checked");
+    });
+
+    it("should update selected radio on `v-model` change", () => {
+        const TestComponent = defineComponent({
+            template: selectableTemplate,
+            components: {
+                FInteractiveTable,
+                FTableColumn,
+            },
+            data() {
+                return {
+                    selectedRows,
+                    rows,
+                };
+            },
+        });
+        cy.mount(TestComponent);
+
+        table.selectable(1).should("not.be.checked");
+        table.selectable(2).should("not.be.checked");
+        table.selectable(3).should("be.checked");
+
+        table.selectable(1).click({ force: true });
+        table.selectable(1).should("be.checked");
+        table.selectable(2).should("not.be.checked");
+        table.selectable(3).should("not.be.checked");
+
+        table.selectable(3).click({ force: true });
+        table.selectable(1).should("not.be.checked");
+        table.selectable(2).should("not.be.checked");
+        table.selectable(3).should("be.checked");
+    });
+});
+
+describe("when multi selectable", () => {
+    const selectableTemplate = /* HTML */ `
+        <f-interactive-table
+            v-model="selectedRows"
+            :rows
+            selectable="multi"
+            v-test="'table-example'"
+        >
+            ${defaultTemplateContent}
+            <template #selectable-description> Välj denna rad </template>
         </f-interactive-table>
     `;
     const selectedRows = [rows[0], rows[2]];
@@ -105,9 +172,9 @@ describe("when selectable", () => {
         });
         cy.mount(TestComponent);
 
-        table.checkbox(1).isSelected().should("be.true");
-        table.checkbox(2).isSelected().should("be.false");
-        table.checkbox(3).isSelected().should("be.true");
+        table.selectable(1).should("be.checked");
+        table.selectable(2).should("not.be.checked");
+        table.selectable(3).should("be.checked");
     });
 
     it("should update checkboxes on `v-model` change", () => {
@@ -152,24 +219,24 @@ describe("when selectable", () => {
         });
         cy.mount(TestComponent);
 
-        table.checkbox(1).isSelected().should("be.true");
-        table.checkbox(2).isSelected().should("be.false");
-        table.checkbox(3).isSelected().should("be.true");
+        table.selectable(1).should("be.checked");
+        table.selectable(2).should("not.be.checked");
+        table.selectable(3).should("be.checked");
 
         cy.get("#remove-all").click();
-        table.checkbox(1).isSelected().should("be.false");
-        table.checkbox(2).isSelected().should("be.false");
-        table.checkbox(3).isSelected().should("be.false");
+        table.selectable(1).should("not.be.checked");
+        table.selectable(2).should("not.be.checked");
+        table.selectable(3).should("not.be.checked");
 
         cy.get("#add-one").click();
-        table.checkbox(1).isSelected().should("be.false");
-        table.checkbox(2).isSelected().should("be.true");
-        table.checkbox(3).isSelected().should("be.false");
+        table.selectable(1).should("not.be.checked");
+        table.selectable(2).should("be.checked");
+        table.selectable(3).should("not.be.checked");
 
         cy.get("#select-all").click();
-        table.checkbox(1).isSelected().should("be.true");
-        table.checkbox(2).isSelected().should("be.true");
-        table.checkbox(3).isSelected().should("be.true");
+        table.selectable(1).should("be.checked");
+        table.selectable(2).should("be.checked");
+        table.selectable(3).should("be.checked");
     });
 });
 
@@ -216,7 +283,11 @@ describe("when `rows` is empty", () => {
 
     it("cell of empty row should span all columns when selectable", () => {
         const template = /* HTML */ `
-            <f-interactive-table :rows="[]" selectable v-test="'table-example'">
+            <f-interactive-table
+                :rows="[]"
+                selectable="multi"
+                v-test="'table-example'"
+            >
                 ${defaultTemplateContent}
             </f-interactive-table>
         `;
@@ -258,7 +329,7 @@ describe("when `rows` is empty", () => {
         const template = /* HTML */ `
             <f-interactive-table
                 :rows="[]"
-                selectable
+                selectable="multi"
                 expandable-attribute="expandable"
                 v-test="'table-example'"
             >
@@ -281,7 +352,7 @@ describe("when `rows` is empty", () => {
         const template = /* HTML */ `
             <f-interactive-table
                 :rows="[]"
-                selectable
+                selectable="multi"
                 expandable-attribute="expandable"
                 v-test="'table-example'"
             >

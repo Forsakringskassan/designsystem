@@ -175,7 +175,7 @@ describe("item delete", () => {
                             :rows
                             expandable-attribute="nested"
                         >
-                            <template #checkbox-description>
+                            <template #selectable-description>
                                 Select row
                             </template>
                             <template #default="{ row }">

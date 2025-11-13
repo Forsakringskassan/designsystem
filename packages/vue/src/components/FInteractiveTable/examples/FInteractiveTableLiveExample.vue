@@ -5,6 +5,7 @@ import {
     FFieldset,
     FInteractiveTable,
     FRadioField,
+    FSelectField,
     FTableButton,
     FTableColumn,
 } from "@fkui/vue";
@@ -12,7 +13,7 @@ import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
     name: "FInteractiveTableLiveExample",
-    components: { LiveExample, FCheckboxField, FRadioField, FFieldset },
+    components: { LiveExample, FCheckboxField, FRadioField, FFieldset, FSelectField },
     data() {
         return {
             isEmpty: false,
@@ -22,7 +23,8 @@ export default defineComponent({
             hasHiddenCaption: false,
             hasActions: false,
             hasRowHeader: false,
-            isSelectable: true,
+            isSelectable: "",
+            isMultiSelect: true,
             isExpandable: false,
             hasCustomExpandContent: false,
             hasHover: false,
@@ -156,7 +158,11 @@ export default defineComponent({
                 : "Utbetalningar";
         },
         selectable(): string {
-            return this.isSelectable ? "selectable" : "";
+            if (!this.isSelectable) {
+                return "";
+            }
+
+            return `selectable="${this.isSelectable}"`;
         },
         expandable(): string {
             const expandableType = this.hasCustomExpandContent
@@ -218,7 +224,7 @@ export default defineComponent({
                         ${this.actions}
                     </template>
                     ${this.expandableSlot}
-                    <template #checkbox-description> Välj denna rad </template>
+                    <template #selectable-description> Välj denna rad </template>
                     ${this.empty}
                 </f-interactive-table>
             `;
@@ -249,9 +255,12 @@ export default defineComponent({
         <!-- Interaktion -->
         <f-fieldset name="interaktion">
             <template #label> Interaktion </template>
-            <f-checkbox-field v-model="isSelectable" :value="true">
-                Valbara rader
-            </f-checkbox-field>
+            <f-select-field v-model="isSelectable">
+                <template #label> Valbara rader </template>
+                <option value="">Nej</option>
+                <option value="multi">Ja, flerval</option>
+                <option value="single">Ja, enkelval</option>
+            </f-select-field>
             <f-checkbox-field v-model="isExpandable" :value="true">
                 Expanderbara rader
             </f-checkbox-field>

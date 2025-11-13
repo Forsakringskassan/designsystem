@@ -30,7 +30,7 @@ export class FTableColumnPageObject implements BasePageObject {
     }
 
     /**
-     * @deprecated Use ´FInteractiveTablePageObject.checkbox()´ instead. Deprecated since v6.11.0.
+     * @deprecated Use ´FInteractiveTablePageObject.selectable()´ instead. Deprecated since v6.11.0.
      */
     public checkbox(): FCheckboxFieldPageObject {
         return new FCheckboxFieldPageObject(this.selector);
