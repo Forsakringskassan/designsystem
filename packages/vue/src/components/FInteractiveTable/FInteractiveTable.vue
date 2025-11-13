@@ -35,6 +35,7 @@ import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import { FCheckboxField } from "../FCheckboxField";
 import { ActivateItemInjected } from "../FCrudDataset";
 import { FIcon } from "../FIcon";
+import { FRadioField } from "../FRadioField";
 import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
 import {
     type FTableColumnData,
@@ -55,7 +56,7 @@ const {
     keyAttribute = undefined,
     expandableAttribute = undefined,
     expandableDescribedby = "",
-    selectable,
+    selectable = false,
     striped: isStriped,
     scroll = TableScroll.NONE,
     /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
@@ -86,14 +87,18 @@ const {
      */
     expandableDescribedby?: string;
     /**
-     * When enabled the table rows will be selectable.
+     * When set the table rows will be selectable.
+     *
+     * For multiselect, set value to `"multi"` (or `true`).
+     * For single select, set value to `"single"`.
      *
      * The current set of selected rows can be accessed with `v-model`.
      *
      * The `select` and `unselect` events will be emitted when a row is selected
      * or deselected.
      */
-    selectable?: boolean;
+    selectable?: boolean | "single" | "multi";
+
     /**
      * When enabled alternating rows will use a different background color.
      */
@@ -227,6 +232,15 @@ const hasCheckboxDescription = computed((): boolean => {
      * should be good enough for now */
     const firstRow = internalRows.value[0];
     return hasSlot("checkbox-description", { row: firstRow });
+});
+
+const hasSelectableDescription = computed((): boolean => {
+    /* this is under the assumption that `hasSelectableDescription` is
+     * only used when there is one or more rows present, if this is to be
+     * called under other circumstances we need a stub object but this
+     * should be good enough for now */
+    const firstRow = internalRows.value[0];
+    return hasSlot("selectable-description", { row: firstRow });
 });
 
 const isEmpty = computed((): boolean => {
@@ -400,12 +414,17 @@ function rowDescription(row: T): string | undefined {
 }
 
 function onSelect(row: T): void {
-    if (includeItem(row, selectedRows.value, internalKey)) {
-        selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
-        emit("unselect", row);
-    } else {
-        selectedRows.value.push(row);
+    if (selectable === "single") {
+        selectedRows.value = [row];
         emit("select", row);
+    } else {
+        if (includeItem(row, selectedRows.value, internalKey)) {
+            selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
+            emit("unselect", row);
+        } else {
+            selectedRows.value.push(row);
+            emit("select", row);
+        }
     }
 
     updateVModelWithSelectedRows();
@@ -623,7 +642,31 @@ function setActiveRow(row: T | undefined): void {
 
                         <td v-if="selectable" class="table__column--selectable">
                             <div class="table__input">
+                                <f-radio-field
+                                    v-if="selectable === 'single'"
+                                    :name="rowKey(row)"
+                                    :value="true"
+                                    :model-value="isSelected(row)"
+                                    @click.self="onSelect(row)"
+                                >
+                                    <span v-if="hasCheckboxDescription" class="sr-only">
+                                        <!--
+                                             @slot Screenreader label for the checkbox when using `selectable`.
+                                             @binding {T} row Current row being rendered.
+                                             @deprecated Use `selectable-description` slot instead.
+                                        -->
+                                        <slot name="checkbox-description" v-bind="{ row }" />
+                                    </span>
+                                    <span v-if="hasSelectableDescription" class="sr-only">
+                                        <!--
+                                             @slot Screenreader label for selectable radio or checkbox when using `selectable`.
+                                             @binding {T} row Current row being rendered.
+                                        -->
+                                        <slot name="selectable-description" v-bind="{ row }" />
+                                    </span>
+                                </f-radio-field>
                                 <f-checkbox-field
+                                    v-else
                                     :value="true"
                                     :model-value="isSelected(row)"
                                     @click.self="onSelect(row)"
@@ -634,6 +677,13 @@ function setActiveRow(row: T | undefined): void {
                                              @binding {T} row Current row being rendered.
                                         -->
                                         <slot name="checkbox-description" v-bind="{ row }" />
+                                    </span>
+                                    <span v-if="hasSelectableDescription" class="sr-only">
+                                        <!--
+                                             @slot Screenreader label for selectable radio or checkbox when using `selectable`.
+                                             @binding {T} row Current row being rendered.
+                                        -->
+                                        <slot name="selectable-description" v-bind="{ row }" />
                                     </span>
                                 </f-checkbox-field>
                             </div>

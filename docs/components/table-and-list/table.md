@@ -216,15 +216,17 @@ TableLink.vue
 
 ### Välja rader
 
-En interaktiv tabell med `selectable` prop lägger till kryssrutor som kan användas för att välja rader.
-När en rad väljs uppdateras `v-model` med referens till alla rader som är valda.
+En interaktiv tabell med `selectable` prop gör en eller flera rader valbara.
+När en rad väljs uppdateras `v-model` med referens till rader som är valda.
+
+Ange `selectable="multi"` för flerval eller `selectable="single"` för val av enbart en rad.
 
 ```diff
 -<f-interactive-table :rows="myRows">
  <f-interactive-table
 +   v-model="selectedRows"
     :rows="myRows"
-+   selectable
++   selectable="multi"
  >
 ```
 
@@ -399,14 +401,16 @@ Texten sätts i slot `#empty`:
 
 ## Valbara rader
 
-För interaktiv tabell kan rader kan göras valbara med propen `selectable`.
+För interaktiv tabell kan en eller flera rader göras valbara med propen `selectable`.
 `v-model` kan användas för att komma åt lista med valda rader.
 
-Slotten `checkbox-description` måste användas för att ge en beskrivning av kryssrutan för skärmläsare.
+Ange `selectable="multi"` för flerval eller `selectable="single"` för val av enbart en rad.
+
+Slotten `selectable-description` måste användas för att ge en beskrivning av valet för skärmläsare.
 Texten bör innehålla något som tydligt identifierar raden från andra rader.
 
 ```html compare=interactivetable-base
-<f-interactive-table :rows selectable v-model="selectedRows">
+<f-interactive-table :rows selectable="multi" v-model="selectedRows">
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">
         <f-table-column title="Kolumn A" type="text">
@@ -419,7 +423,7 @@ Texten bör innehålla något som tydligt identifierar raden från andra rader.
             {{ row.baz }}
         </f-table-column>
     </template>
-    <template #checkbox-description="{ row }">
+    <template #selectable-description="{ row }">
         Välj rad {{ row.value }}
     </template>
 </f-interactive-table>
