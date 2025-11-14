@@ -17,7 +17,7 @@ const rows: Row[] = [
 
 <template>
     <!-- cut above -->
-    <f-interactive-table :rows selectable>
+    <f-interactive-table :rows selectable="multi">
         <template #caption> Tabell </template>
         <template #checkbox-description="{ row }"> Select row {{ row.a }} </template>
         <template #default="{ row }">

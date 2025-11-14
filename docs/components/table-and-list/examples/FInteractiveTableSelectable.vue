@@ -11,7 +11,7 @@ const rows = [
 </script>
 
 <template>
-    <f-interactive-table v-model="selectedRows" :rows selectable>
+    <f-interactive-table v-model="selectedRows" :rows selectable="multi">
         <template #caption> <span class="sr-only">Tabell</span> </template>
         <template #default="{ row }">
             <f-table-column v-format:text="row.name" title="Namn" type="text"></f-table-column>

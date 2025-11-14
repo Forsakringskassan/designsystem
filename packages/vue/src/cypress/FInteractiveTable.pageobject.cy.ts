@@ -36,7 +36,7 @@ const TestComponent = defineComponent({
         rows: Array,
         rowHeader: Boolean,
         expandable: Boolean,
-        selectable: Boolean,
+        selectable: String,
     },
     template: /* HTML */ `
         <f-interactive-table
@@ -69,7 +69,6 @@ describe("cell()", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: false,
             },
         });
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -89,7 +88,6 @@ describe("cell()", () => {
                 rows,
                 rowHeader: true,
                 expandable: false,
-                selectable: false,
             },
         });
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -109,7 +107,7 @@ describe("cell()", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: true,
+                selectable: "multi",
             },
         });
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -129,7 +127,6 @@ describe("cell()", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -149,7 +146,6 @@ describe("cell()", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
         table.row(0).click();
@@ -182,7 +178,6 @@ it("`caption()` should get `<caption>` element", () => {
             rows,
             rowHeader: false,
             expandable: false,
-            selectable: false,
         },
     });
 
@@ -197,7 +192,6 @@ describe("`header()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: false,
             },
         });
 
@@ -212,7 +206,6 @@ describe("`header()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -227,7 +220,7 @@ describe("`header()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: true,
+                selectable: "multi",
             },
         });
 
@@ -243,7 +236,7 @@ it("`headersRow()` should get all `<th>` elements in `<thead>`", () => {
             rows,
             rowHeader: true,
             expandable: true,
-            selectable: true,
+            selectable: "multi",
         },
     });
 
@@ -264,7 +257,6 @@ describe("`bodyRow()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: false,
             },
         });
 
@@ -283,7 +275,6 @@ describe("`bodyRow()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -314,7 +305,6 @@ describe("`bodyRow()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -348,7 +338,6 @@ describe("`row()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: false,
             },
         });
 
@@ -367,7 +356,6 @@ describe("`row()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -382,7 +370,6 @@ describe("`row()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: false,
             },
         });
 
@@ -400,7 +387,7 @@ describe("`checkbox()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: false,
-                selectable: true,
+                selectable: "multi",
             },
         });
 
@@ -415,7 +402,7 @@ describe("`checkbox()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: true,
+                selectable: "multi",
             },
         });
 
@@ -431,7 +418,7 @@ describe("`checkbox()`", () => {
                 rows,
                 rowHeader: false,
                 expandable: true,
-                selectable: true,
+                selectable: "multi",
             },
         });
 
@@ -447,7 +434,7 @@ it("`columnItem()` should get `FTableColumnPageObject` for given row index", () 
             rows,
             rowHeader: false,
             expandable: true,
-            selectable: true,
+            selectable: "multi",
         },
     });
 
@@ -477,7 +464,7 @@ it("`headerRowItem()` should get `FTableColumnPageObject` for header row", () =>
             rows,
             rowHeader: false,
             expandable: true,
-            selectable: true,
+            selectable: "multi",
         },
     });
 
@@ -524,7 +511,7 @@ it("`getColumnSortedByIcon()` should get sort icon of given column and order", (
                 <template #default="{ sortFilterResult }">
                     <f-interactive-table
                         :rows="sortFilterResult"
-                        selectable
+                        selectable="multi"
                         expandable-attribute="nested"
                     >
                         <template #caption> Test table </template>

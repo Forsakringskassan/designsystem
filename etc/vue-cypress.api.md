@@ -379,6 +379,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
     // @deprecated
     headerRowItem(): FTableColumnPageObject;
     headersRow(): DefaultCypressChainable;
+    radio(row: number): FRadioFieldPageObject;
     row(index: number): DefaultCypressChainable;
     // (undocumented)
     selector: string;
