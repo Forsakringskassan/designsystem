@@ -1,3 +1,4 @@
+//import { text } from "stream/consumers";
 import { type VNode, ref } from "vue";
 import { h } from "vue";
 import { assertSet } from "@fkui/logic";
@@ -27,6 +28,345 @@ function renderButton(
 function getTestSelector(value: string): string {
     return `[data-test="${value}"]`;
 }
+
+describe("1.4 Rowheader", () => {
+    it("should set rowheader on expandable rows 1.4", () => {
+        const rows = [
+            { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+            { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+        ];
+
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "rowheader",
+                header: "A",
+                key: "text",
+            },
+        ]);
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+        table.expandButton(2).click();
+        table.expandButton(1).click();
+
+        table.cell({ row: 1, col: 2 }).should("have.prop", "tagName", "TH");
+        table.cell({ row: 2, col: 2 }).should("have.prop", "tagName", "TH");
+        table.cell({ row: 3, col: 2 }).should("have.prop", "tagName", "TH");
+        table.cell({ row: 4, col: 2 }).should("have.prop", "tagName", "TH");
+        table.cell({ row: 5, col: 2 }).should("have.prop", "tagName", "TH");
+        table.cell({ row: 6, col: 2 }).should("have.prop", "tagName", "TH");
+    });
+});
+
+describe("1.12 ARIA-attribute", () => {
+    it("should set aria-rowcount to total number of rows including hidden", () => {
+        const rows = [{ text: "A1" }, { text: "B1" }];
+
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "rowheader",
+                header: "A",
+                key: "text",
+            },
+        ]);
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+        });
+
+        table.el().should("have.attr", "aria-rowcount", "3");
+    });
+
+    it("should preserve aria-rowindex and rowcount with expandable rows", () => {
+        const rows = [
+            { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+            { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+        ];
+
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "rowheader",
+                header: "A",
+                key: "text",
+            },
+        ]);
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.el().should("have.attr", "aria-rowcount", "7");
+
+        table.rows().eq(0).should("have.attr", "aria-rowindex", "2");
+        table.rows().eq(1).should("have.attr", "aria-rowindex", "5");
+
+        table.expandButton(2).click();
+        table.expandButton(1).click();
+
+        table.rows().eq(0).should("have.attr", "aria-rowindex", "2");
+        table.rows().eq(1).should("have.attr", "aria-rowindex", "3");
+        table.rows().eq(2).should("have.attr", "aria-rowindex", "4");
+        table.rows().eq(3).should("have.attr", "aria-rowindex", "5");
+        table.rows().eq(4).should("have.attr", "aria-rowindex", "6");
+        table.rows().eq(5).should("have.attr", "aria-rowindex", "7");
+    });
+    // eslint-disable-next-line mocha/no-pending-tests -- will be added later
+    it.skip("should preserve aria-rowindex even when rows are filtered", () => {
+        //  filterfunktionen? todo
+        cy.mount(createComponent({ expandable: "rows" }));
+
+        // FSortFilterDataset kan filtrera.
+
+        table.el().should("have.attr", "aria-rowcount", "4");
+        table.rows().eq(0).should("have.attr", "aria-rowindex", "3");
+    });
+});
+
+describe("6.1 Expandable row interaction", () => {
+    const rows = [
+        { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ];
+
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "rowheader",
+            header: "A",
+            key: "text",
+        },
+    ]);
+
+    it("should expand row when user presses Enter on expand cell", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.expandButton(2).focus();
+        table.expandButton(2).type("{enter}");
+        table.expandButton(1).focus();
+        table.expandButton(1).type("{enter}");
+
+        table.rows().should("have.length", 6);
+        table.cell({ row: 2, col: 2 }).should("contain.text", "A2");
+        table.cell({ row: 3, col: 2 }).should("contain.text", "A3");
+
+        table.cell({ row: 5, col: 2 }).should("contain.text", "B2");
+        table.cell({ row: 6, col: 2 }).should("contain.text", "B3");
+    });
+
+    it("should expand row when user presses Space on expand cell", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.expandButton(2).focus();
+        table.expandButton(2).type(" ");
+        table.expandButton(1).focus();
+        table.expandButton(1).type(" ");
+
+        table.rows().should("have.length", 6);
+        table.cell({ row: 2, col: 2 }).should("contain.text", "A2");
+        table.cell({ row: 3, col: 2 }).should("contain.text", "A3");
+
+        table.cell({ row: 5, col: 2 }).should("contain.text", "B2");
+        table.cell({ row: 6, col: 2 }).should("contain.text", "B3");
+    });
+
+    it("should expand row when user clicks expand cell", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.expandButton(2).focus().click();
+        table.expandButton(1).focus().click();
+
+        table.rows().should("have.length", 6);
+        table.cell({ row: 2, col: 2 }).should("contain.text", "A2");
+        table.cell({ row: 3, col: 2 }).should("contain.text", "A3");
+
+        table.cell({ row: 5, col: 2 }).should("contain.text", "B2");
+        table.cell({ row: 6, col: 2 }).should("contain.text", "B3");
+    });
+});
+
+describe("6.2 Keyboard navigation in expandable table", () => {
+    const rows = [
+        { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ];
+
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "rowheader",
+            header: "A",
+            key: "text",
+        },
+        {
+            type: "rowheader",
+            header: "B",
+            key: "text",
+        },
+        {
+            type: "rowheader",
+            header: "C",
+            key: "text",
+        },
+    ]);
+
+    it("should render child row with colspan spanning all columns", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+            slots: { expandable: "Foo" },
+        });
+
+        table.expandButton(1).focus().click();
+        table.cell({ row: 2, col: 2 }).should("have.attr", "colspan", "3");
+    });
+
+    it("should arrow navigation in table with colspan cell", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+            slots: { expandable: "Foo" },
+        });
+
+        table.expandButton(1).click();
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.LEFT);
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.UP);
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().press(Cypress.Keyboard.Keys.UP);
+        cy.focused().press(Cypress.Keyboard.Keys.UP); //not cirular
+        table.header(3).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.UP); //not cirular
+        table.header(3).should("have.focus");
+
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+
+        table.cell({ row: 1, col: 3 }).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        table.cell({ row: 2, col: 2 }).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        table.cell({ row: 3, col: 2 }).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        table.cell({ row: 3, col: 2 }).should("have.focus"); //not cirkular
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        table.cell({ row: 4, col: 3 }).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN); //not cirkular
+        table.cell({ row: 4, col: 3 }).should("have.focus");
+    });
+});
+
+describe("6.3 Collapse expanded row", () => {
+    const rows = [
+        { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ];
+
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "rowheader",
+            header: "A",
+            key: "text",
+        },
+    ]);
+
+    it("should collapse expanded row when pressing Enter on expand button", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.rows().should("have.length", 2);
+        //expand
+        table.expandButton(2).focus().type("{enter}");
+        table.expandButton(1).focus().type("{enter}");
+
+        table.rows().should("have.length", 6);
+
+        table.expandButton(4).focus().type("{enter}");
+        table.expandButton(1).focus().type("{enter}");
+
+        table.rows().should("have.length", 2);
+    });
+
+    it("should collapse expanded row when pressing Space on expand button", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.rows().should("have.length", 2);
+        //expand
+        table.expandButton(2).focus().type(" ");
+        table.expandButton(1).focus().type(" ");
+
+        table.rows().should("have.length", 6);
+
+        //collapse
+        table.expandButton(4).focus().type(" ");
+        table.expandButton(1).focus().type(" ");
+
+        table.rows().should("have.length", 2);
+    });
+
+    it("should collapse expanded row when clicking expand button again", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.rows().should("have.length", 2);
+        //expand
+        table.expandButton(2).click();
+        table.expandButton(1).click();
+
+        table.rows().should("have.length", 6);
+
+        //collapse
+        table.expandButton(1).click();
+        table.expandButton(2).click();
+
+        table.rows().should("have.length", 2);
+    });
+});
+
+describe("6.4 ARIA attributes for expandable rows", () => {
+    const rows = [
+        { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ];
+
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "rowheader",
+            header: "A",
+            key: "text",
+        },
+    ]);
+    it("should set correct aria-expanded on expandable rows", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.expandButton(1).should("have.attr", "aria-expanded", "false"); //ska den sitta på knappen?
+        table.expandButton(1).click();
+        table.expandButton(1).should("have.attr", "aria-expanded", "true");
+    });
+
+    it("should set correct aria-level ", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute: "nested" },
+        });
+
+        table.expandButton(2).click();
+        table.expandButton(1).click();
+
+        table.rows().eq(0).should("have.attr", "aria-level", "1");
+        table.rows().eq(1).should("have.attr", "aria-level", "2");
+        table.rows().eq(2).should("have.attr", "aria-level", "2");
+        table.rows().eq(3).should("have.attr", "aria-level", "1");
+        table.rows().eq(4).should("have.attr", "aria-level", "2");
+        table.rows().eq(5).should("have.attr", "aria-level", "2");
+    });
+});
 
 describe("1.8 when table is empty", () => {
     const rows: never[] = [];
@@ -227,7 +567,7 @@ describe("5 tabstop", () => {
         children?: NavigationRow[];
     }
 
-    function mountNavigationTestbed(): {
+    function mountNavigationTestbed(hasSlots: boolean): {
         buttonBeforeTable: string;
     } {
         const rows = ref([
@@ -307,16 +647,21 @@ describe("5 tabstop", () => {
         ]);
 
         const buttonBeforeTable = "button-before-table";
+        const slots = hasSlots ? { expandable: "Foo" } : undefined;
 
         cy.mount(() =>
             h("div", [
                 renderButton("Before table", buttonBeforeTable),
-                h(FTable<NavigationRow>, {
-                    rows: rows.value,
-                    columns,
-                    expandableAttribute: "children",
-                    selectable: "multi",
-                }),
+                h(
+                    FTable<NavigationRow>,
+                    {
+                        rows: rows.value,
+                        columns,
+                        expandableAttribute: "children",
+                        selectable: "multi",
+                    },
+                    slots,
+                ),
             ]),
         );
 
@@ -513,5 +858,32 @@ describe("5 tabstop", () => {
         cy.focused()
             .should("have.prop", "tagName", "TD")
             .should("not.have.text");
+    });
+    it("should allow tab navigation into and out of child rows ", () => {
+        const { buttonBeforeTable } = mountNavigationTestbed(true);
+
+        cy.get(buttonBeforeTable).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.focused().press(Cypress.Keyboard.Keys.SPACE);
+
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        table.cell({ row: 2, col: 2 }).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.UP);
+        table
+            .cell({ row: 1, col: 3 })
+            .should("have.prop", "tagName", "TD")
+            .should("contain.text", "awesome static text");
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+
+        table.cell({ row: 2, col: 2 }).should("have.focus");
+
+        cy.focused().realPress(["Shift", "Tab"]);
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+
+        table.cell({ row: 2, col: 2 }).should("have.focus");
     });
 });
