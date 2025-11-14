@@ -6,32 +6,32 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FTable - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-7b397e.css"
+            href="../assets/docs-d1a35c.css"
             crossorigin
-            integrity="sha384-TjAKSicrCnVdBoS7+qMPGUtUuHG+3WmJvH9RwaoflhKb7l44ydxDUHOQE3NbNAGJ"
+            integrity="sha384-DOxK3EfTgDUB1biGxh9w8cbq3uguC4ZsTUTrTwA6/BpKn+zN/RgTxpp3Ug9aZFQX"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-46ce2c.css"
+            href="../assets/docs-fkui-a7fce6.css"
             crossorigin
-            integrity="sha384-QoOi0INENPxaKVT/MlcvjREWsoo7V/Nn9mtGRSueDEA+8em1ULgL8q1nAHLbVTd4"
+            integrity="sha384-wPQp2MYhtpIjhEjr9vHU+Mmg/dvhfCZBR4dF1+HkHxYJVlwMQh9YWib6GDGHa6Da"
             data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-f090aa.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-dfc48a.js",
-    "@fkui/date": "../assets/vendor-fkui-date-024cc2.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-168281.js"
+    "vue": "../assets/vendor-vue-c0b472.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-3a853f.js",
+    "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-5b431f.js"
   },
   "integrity": {
-    "../assets/vendor-vue-f090aa.js": "sha384-GYus5gsZRjUl58ZMY/tHO4S/qPLJJu+PsBEyXopx3XBb9WUoAEjALz+Y86nsF0el",
-    "../assets/vendor-fkui-logic-dfc48a.js": "sha384-kY7WDWcEi0asZ9yMETucTs/Zeved0bGKxhj2NeDJcn2TtwIT4v4mWk1vtEpgC/FG",
-    "../assets/vendor-fkui-date-024cc2.js": "sha384-p0OHhMI0IsoyIh+/1Cyvu2qD+riXRyL6F/I3NNxpdud8wBwA0pXVP6Vdo3y0bdMO",
-    "../assets/vendor-fkui-vue-168281.js": "sha384-wb+ha1iMqh10jsQrJfWNYwqM8fbssoOjrl4qVS8LmJItxlOV5I50Gne7ZFfC0Iu+"
+    "../assets/vendor-vue-c0b472.js": "sha384-vbQkxi/Mwr2sqMtUoLu0YSRaMnGni67qxzYwbFDEwsqTqis1/VrDXNcSdOeX+QBs",
+    "../assets/vendor-fkui-logic-3a853f.js": "sha384-eNzHIF+XdI48V/LchdWJI4N9ybKlaqylYmJ6Jt1hKG3nFtDmG9RgR0oW6hILmIep",
+    "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
+    "../assets/vendor-fkui-vue-5b431f.js": "sha384-BIolVEHKOrAqHFFGbusy/yeeC0/ip4XeSgGeQblNBbL3vzpTmtt3IVbgvROLzb41"
   }
 }
         </script><script
@@ -42,10 +42,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-f0ae84.json"
+            href="../search-data-2cd3c0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dZ9g0/X4h0qBNZGqSLu+uPIc1TeTl3IScKwbih7PM/p6sTedyOIJskkTJcCezl/A"
+            integrity="sha384-zaqxr7LFzxV3pcXAc5oJckcRQ1md7xs6bC7olrriMHpYGr4na3Twwn9lte3c9OV3"
             id="search-data"
         />
     </head>
@@ -94,16 +94,17 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.25.1
+        6.26.0
     </span>
 </div>
 </div>
@@ -205,8 +206,9 @@
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-7a8d5a"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-a196d0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -232,8 +234,9 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-7a8d5a.js"></script>
-    </div>
+        <script type="module" src="./FTableExample-a196d0.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -254,8 +257,7 @@ body {
 <span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
 
@@ -536,8 +538,9 @@ interface <span class="hljs-title class_">Row</span> {
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-0bab3e"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-28825e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -563,8 +566,9 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRadioExample-0bab3e.js"></script>
-    </div>
+        <script type="module" src="./FTableRadioExample-28825e.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -584,8 +588,7 @@ body {
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
 
@@ -848,8 +851,9 @@ interface <span class="hljs-title class_">Row</span> {
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-09626f"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-0a45fe"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -875,8 +879,9 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExpandableRows-09626f.js"></script>
-    </div>
+        <script type="module" src="./FTableExpandableRows-0a45fe.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -896,8 +901,7 @@ body {
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
 
@@ -1127,15 +1131,17 @@ interface <span class="hljs-title class_">Row</span> {
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-877336"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-186c8d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableRowHeaderExample-877336.js"></script>
-    </div>
+        <script type="module" src="./FTableRowHeaderExample-186c8d.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1156,8 +1162,7 @@ interface <span class="hljs-title class_">Row</span> {
 <span class="hljs-keyword">import</span> { h, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../table-column&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
 
@@ -1380,15 +1385,17 @@ interface <span class="hljs-title class_">Row</span> {
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-655f75"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-d21847"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-655f75.js"></script>
-    </div>
+        <script type="module" src="./FTableInputFieldsExample-d21847.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1522,7 +1529,7 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">currency</span>: <span class="hljs-number">3453455</span>,
         <span class="hljs-attr">number</span>: <span class="hljs-number">5.4</span>,
         <span class="hljs-attr">percent</span>: <span class="hljs-number">9.987</span>,
-        <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@c.com&quot;</span>,
+        <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@example.net&quot;</span>,
         <span class="hljs-attr">orgnr</span>: <span class="hljs-string">&quot;9999999999&quot;</span>,
         <span class="hljs-attr">tele</span>: <span class="hljs-string">&quot;12345678901234567&quot;</span>,
         <span class="hljs-attr">postnr</span>: <span class="hljs-string">&quot;37324&quot;</span>,
@@ -1538,7 +1545,7 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">currency</span>: <span class="hljs-number">24233</span>,
         <span class="hljs-attr">number</span>: <span class="hljs-number">5.5</span>,
         <span class="hljs-attr">percent</span>: <span class="hljs-number">19.987</span>,
-        <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@c.com&quot;</span>,
+        <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@example.net&quot;</span>,
         <span class="hljs-attr">orgnr</span>: <span class="hljs-string">&quot;9999999999&quot;</span>,
         <span class="hljs-attr">tele</span>: <span class="hljs-string">&quot;12345678901234567&quot;</span>,
         <span class="hljs-attr">postnr</span>: <span class="hljs-string">&quot;39359&quot;</span>,
@@ -1554,7 +1561,7 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">currency</span>: <span class="hljs-number">234623546</span>,
         <span class="hljs-attr">number</span>: <span class="hljs-number">5.55</span>,
         <span class="hljs-attr">percent</span>: <span class="hljs-number">3.1</span>,
-        <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@c.com&quot;</span>,
+        <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@example.net&quot;</span>,
         <span class="hljs-attr">orgnr</span>: <span class="hljs-string">&quot;9999999999&quot;</span>,
         <span class="hljs-attr">tele</span>: <span class="hljs-string">&quot;12345678901234567&quot;</span>,
         <span class="hljs-attr">postnr</span>: <span class="hljs-string">&quot;37332&quot;</span>,
