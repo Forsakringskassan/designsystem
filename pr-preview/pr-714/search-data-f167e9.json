@@ -45,6 +45,7 @@
     "production",
     "globala inställningar",
     "config",
+    "CHANGELOG v5",
     "Chip",
     "chip",
     "Knapp",
@@ -87,7 +88,6 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -529,6 +529,18 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -564,18 +576,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -613,15 +613,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -726,6 +726,11 @@
         "globala inställningar",
         "config"
       ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
     },
     {
       "url": "components/chip.html",
@@ -838,11 +843,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1850,6 +1850,38 @@
       ]
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -1967,38 +1999,6 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
       ]
     },
     {
@@ -2184,21 +2184,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2226,6 +2211,21 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -2291,47 +2291,47 @@
     "43": 11,
     "44": 11,
     "45": 12,
-    "46": 12,
+    "46": 13,
     "47": 13,
-    "48": 13,
+    "48": 14,
     "49": 14,
-    "50": 14,
-    "51": 14,
-    "52": 14,
-    "53": 14,
+    "50": 15,
+    "51": 15,
+    "52": 15,
+    "53": 15,
     "54": 15,
-    "55": 15,
+    "55": 16,
     "56": 16,
-    "57": 16,
+    "57": 17,
     "58": 17,
-    "59": 17,
-    "60": 17,
-    "61": 17,
-    "62": 17,
-    "63": 17,
+    "59": 18,
+    "60": 18,
+    "61": 18,
+    "62": 18,
+    "63": 18,
     "64": 18,
-    "65": 18,
+    "65": 19,
     "66": 19,
-    "67": 19,
-    "68": 19,
+    "67": 20,
+    "68": 20,
     "69": 20,
-    "70": 20,
-    "71": 20,
+    "70": 21,
+    "71": 21,
     "72": 21,
-    "73": 21,
+    "73": 22,
     "74": 22,
-    "75": 22,
-    "76": 22,
+    "75": 23,
+    "76": 23,
     "77": 23,
-    "78": 23,
+    "78": 24,
     "79": 24,
-    "80": 24,
-    "81": 24,
-    "82": 24,
-    "83": 24,
-    "84": 24,
+    "80": 25,
+    "81": 25,
+    "82": 25,
+    "83": 25,
+    "84": 25,
     "85": 25,
-    "86": 25,
+    "86": 26,
     "87": 26,
     "88": 27,
     "89": 27,
@@ -2776,49 +2776,49 @@
     "528": 143,
     "529": 144,
     "530": 144,
-    "531": 145,
+    "531": 144,
     "532": 145,
-    "533": 146,
-    "534": 146,
-    "535": 147,
-    "536": 147,
-    "537": 148,
-    "538": 148,
-    "539": 149,
-    "540": 149,
-    "541": 150,
-    "542": 150,
-    "543": 151,
-    "544": 151,
-    "545": 152,
-    "546": 152,
-    "547": 153,
-    "548": 153,
-    "549": 154,
-    "550": 154,
-    "551": 155,
-    "552": 155,
-    "553": 156,
-    "554": 156,
-    "555": 157,
-    "556": 157,
-    "557": 157,
-    "558": 158,
-    "559": 158,
-    "560": 159,
-    "561": 159,
-    "562": 160,
-    "563": 160,
-    "564": 161,
-    "565": 161,
-    "566": 161,
-    "567": 162,
-    "568": 162,
-    "569": 162,
-    "570": 163,
-    "571": 163,
+    "533": 145,
+    "534": 145,
+    "535": 146,
+    "536": 146,
+    "537": 146,
+    "538": 147,
+    "539": 147,
+    "540": 147,
+    "541": 148,
+    "542": 148,
+    "543": 149,
+    "544": 149,
+    "545": 150,
+    "546": 150,
+    "547": 151,
+    "548": 151,
+    "549": 152,
+    "550": 152,
+    "551": 153,
+    "552": 153,
+    "553": 154,
+    "554": 154,
+    "555": 155,
+    "556": 155,
+    "557": 156,
+    "558": 156,
+    "559": 157,
+    "560": 157,
+    "561": 158,
+    "562": 158,
+    "563": 159,
+    "564": 159,
+    "565": 160,
+    "566": 160,
+    "567": 161,
+    "568": 161,
+    "569": 161,
+    "570": 162,
+    "571": 162,
     "572": 163,
-    "573": 164,
+    "573": 163,
     "574": 164,
     "575": 164,
     "576": 165,
