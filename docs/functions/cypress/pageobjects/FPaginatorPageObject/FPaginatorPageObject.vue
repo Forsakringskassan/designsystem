@@ -1,0 +1,53 @@
+<script setup lang="ts">
+import { FInteractiveTable, FPaginateDataset, FPaginator, FTableColumn } from "@fkui/vue";
+
+interface Row {
+    id: string;
+    a: string;
+    b: string;
+    c: string;
+}
+
+const rows: Row[] = [
+    { id: "1", a: "A1", b: "B1", c: "C1" },
+    { id: "2", a: "A2", b: "B2", c: "C2" },
+    { id: "3", a: "A3", b: "B3", c: "C3" },
+    { id: "4", a: "A4", b: "B4", c: "C4" },
+    { id: "5", a: "A5", b: "B5", c: "C5" },
+    { id: "6", a: "A6", b: "B6", c: "C6" },
+    { id: "7", a: "A7", b: "B7", c: "C7" },
+    { id: "8", a: "A8", b: "B8", c: "C8" },
+    { id: "9", a: "A9", b: "B9", c: "C9" },
+    { id: "10", a: "A10", b: "B10", c: "C10" },
+    { id: "11", a: "A11", b: "B11", c: "C11" },
+    { id: "12", a: "A12", b: "B12", c: "C12" },
+    { id: "13", a: "A13", b: "B13", c: "C13" },
+    { id: "14", a: "A14", b: "B14", c: "C14" },
+    { id: "15", a: "A15", b: "B15", c: "C15" },
+    { id: "16", a: "A16", b: "B16", c: "C16" },
+    { id: "17", a: "A17", b: "B17", c: "C17" },
+    { id: "18", a: "A18", b: "B18", c: "C18" },
+    { id: "19", a: "A19", b: "B19", c: "C19" },
+    { id: "20", a: "A20", b: "B20", c: "C20" },
+];
+</script>
+
+<template>
+    <!-- cut above -->
+    <f-paginate-dataset :items="rows" :items-per-page="1">
+        <template #default="{ items: currentPageItems, currentPage, numberOfPages }">
+            <!-- cut begin -->
+            <f-interactive-table :rows="currentPageItems">
+                <template #caption> Tabell </template>
+                <template #default="{ row }">
+                    <f-table-column title="A"> {{ row.a }} </f-table-column>
+                    <f-table-column title="B"> {{ row.b }} </f-table-column>
+                    <f-table-column title="C"> {{ row.c }} </f-table-column>
+                </template>
+            </f-interactive-table>
+            <!-- cut end -->
+            <f-paginator v-test="'myPaginator'" :current-page :number-of-pages />
+        </template>
+    </f-paginate-dataset>
+    <!-- cut below -->
+</template>
