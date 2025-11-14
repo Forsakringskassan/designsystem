@@ -101,7 +101,7 @@
     "@types/lodash": "4.17.20",
     "@types/node": "20.19.24",
     "@vue/server-renderer": "3.5.24",
-    "autoprefixer": "10.4.21",
+    "autoprefixer": "10.4.22",
     "cli-table": "0.3.11",
     "core-js": "3.46.0",
     "cypress": "15.6.0",
