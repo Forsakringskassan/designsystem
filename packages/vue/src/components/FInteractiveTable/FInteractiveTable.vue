@@ -1,4 +1,8 @@
-<script setup lang="ts" generic="T extends object, KeyAttribute extends keyof T = keyof T">
+<script
+    setup
+    lang="ts"
+    generic="T extends object, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
+>
 import {
     type Ref,
     computed,
@@ -53,7 +57,7 @@ const props = withDefaults(
          * Attribute of expandable content in rows.
          * If provided, the table can contain expandable rows.
          */
-        expandableAttribute?: string;
+        expandableAttribute?: ExpandableAttribute;
         /**
          * Element id for aria-describedby on expandable rows to describe expanded content.
          */
@@ -264,7 +268,7 @@ const internalRows = computed((): T[] => {
     const { keyAttribute, expandableAttribute } = props;
 
     if (isExpandableTable) {
-        return setInternalKeys(props.rows, keyAttribute, expandableAttribute as keyof T);
+        return setInternalKeys(props.rows, keyAttribute, expandableAttribute);
     }
     return setInternalKeys(props.rows, keyAttribute);
 });
@@ -337,7 +341,7 @@ onMounted(() => {
         updateTr(tbody.value);
     }
     if (isExpandableTable) {
-        setNestedKey(props.expandableAttribute as keyof T);
+        setNestedKey(props.expandableAttribute);
     }
     registerCallbackOnSort(callbackOnSort);
     registerCallbackOnMount(callbackSortableColumns);
