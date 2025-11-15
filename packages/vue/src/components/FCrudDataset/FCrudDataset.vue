@@ -317,7 +317,7 @@ function updateItem(current: T): void {
     isFormModalOpen.value = true;
 }
 
-function setNestedKey(key: keyof T): void {
+function setNestedKey(key: keyof T | null | undefined): void {
     nestedKey.value = key;
 }
 </script>

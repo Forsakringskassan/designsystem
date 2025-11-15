@@ -24,7 +24,7 @@ type Emit<T> = ((evt: "expand", row: T) => void) &
  * @internal
  */
 export function useExpandableTable<T extends object>(
-    expandableAttribute: string | undefined,
+    expandableAttribute: keyof T | undefined,
     keyAttribute: keyof T,
     describedby: string | undefined,
     emit: Emit<T>,
@@ -61,7 +61,7 @@ export function useExpandableTable<T extends object>(
             return undefined;
         }
 
-        const expandedRow = row[expandableAttribute as keyof T];
+        const expandedRow = row[expandableAttribute];
         if (!expandedRow) {
             return undefined;
         }
@@ -105,7 +105,7 @@ export function useExpandableTable<T extends object>(
             return undefined;
         }
 
-        const expandableRows = row[expandableAttribute as keyof T];
+        const expandableRows = row[expandableAttribute];
 
         /* eslint-disable-next-line sonarjs/different-types-comparison -- false positive (https://sonarsource.atlassian.net/browse/JS-619) */
         if (expandableRows === undefined || expandableRows === null) {
