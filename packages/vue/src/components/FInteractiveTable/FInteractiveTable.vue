@@ -38,79 +38,80 @@ import {
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
 import { type ExpandableTable, useExpandableTable } from "./useExpandableTable";
 
-const props = withDefaults(
-    defineProps<{
-        /**
-         * The rows to be listed.
-         * The rows will be listed in the given array order.
-         */
-        rows: T[];
-        /**
-         * When enabled hovering over a row will be highlighted.
-         */
-        hover?: boolean;
-        /**
-         * Unique attribute in rows.
-         */
-        keyAttribute?: KeyAttribute;
-        /**
-         * Attribute of expandable content in rows.
-         * If provided, the table can contain expandable rows.
-         */
-        expandableAttribute?: ExpandableAttribute;
-        /**
-         * Element id for aria-describedby on expandable rows to describe expanded content.
-         */
-        expandableDescribedby?: string;
-        /**
-         * When enabled the table rows will be selectable.
-         *
-         * The current set of selected rows can be accessed with `v-model`.
-         *
-         * The `select` and `unselect` events will be emitted when a row is selected
-         * or deselected.
-         */
-        selectable?: boolean;
-        /**
-         * When enabled alternating rows will use a different background color.
-         */
-        striped?: boolean;
-        /**
-         * Enable scrolling inside table.
-         *
-         * Can be one of the following values:
-         *
-         * - `"horizontal"`: Enables horizontal scrolling
-         * - `"vertical"`: Does nothing (deprecated)
-         * - `"both"`: Acts as horizontal (deprecated)
-         * - `"none"`: Disables scrolling (default)
-         */
-        scroll?: TableScroll;
-        /**
-         * Enable showing the active row.
-         */
-        showActive?: boolean;
-        /**
-         * Currently selected rows.
-         * Requires `selectable` to be set.
-         */
-        modelValue?: T[];
-        /**
-         * Current active row.
-         */
-        active?: T;
-    }>(),
-    {
-        keyAttribute: undefined,
-        expandableAttribute: undefined,
-        expandableDescribedby: "",
-        scroll: TableScroll.NONE,
-        /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-        showActive: true,
-        modelValue: undefined,
-        active: undefined,
-    },
-);
+const {
+    rows,
+    hover,
+    keyAttribute = undefined,
+    expandableAttribute = undefined,
+    expandableDescribedby = "",
+    selectable,
+    striped: isStriped,
+    scroll = TableScroll.NONE,
+    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+    showActive = true,
+    modelValue = undefined,
+    active = undefined,
+} = defineProps<{
+    /**
+     * The rows to be listed.
+     * The rows will be listed in the given array order.
+     */
+    rows: T[];
+    /**
+     * When enabled hovering over a row will be highlighted.
+     */
+    hover?: boolean;
+    /**
+     * Unique attribute in rows.
+     */
+    keyAttribute?: KeyAttribute;
+    /**
+     * Attribute of expandable content in rows.
+     * If provided, the table can contain expandable rows.
+     */
+    expandableAttribute?: ExpandableAttribute;
+    /**
+     * Element id for aria-describedby on expandable rows to describe expanded content.
+     */
+    expandableDescribedby?: string;
+    /**
+     * When enabled the table rows will be selectable.
+     *
+     * The current set of selected rows can be accessed with `v-model`.
+     *
+     * The `select` and `unselect` events will be emitted when a row is selected
+     * or deselected.
+     */
+    selectable?: boolean;
+    /**
+     * When enabled alternating rows will use a different background color.
+     */
+    striped?: boolean;
+    /**
+     * Enable scrolling inside table.
+     *
+     * Can be one of the following values:
+     *
+     * - `"horizontal"`: Enables horizontal scrolling
+     * - `"vertical"`: Does nothing (deprecated)
+     * - `"both"`: Acts as horizontal (deprecated)
+     * - `"none"`: Disables scrolling (default)
+     */
+    scroll?: TableScroll;
+    /**
+     * Enable showing the active row.
+     */
+    showActive?: boolean;
+    /**
+     * Currently selected rows.
+     * Requires `selectable` to be set.
+     */
+    modelValue?: T[];
+    /**
+     * Current active row.
+     */
+    active?: T;
+}>();
 
 const emit = defineEmits<{
     /**
@@ -190,9 +191,9 @@ const trAll = shallowRef<HTMLElement[]>([]);
 const tbodyKey = ref(0);
 
 const expandableTable: ExpandableTable<T> = useExpandableTable(
-    props.expandableAttribute,
+    expandableAttribute,
     internalKey,
-    props.expandableDescribedby,
+    expandableDescribedby,
     emit,
     slots,
 );
@@ -235,10 +236,10 @@ const visibleColumns = computed((): FTableColumnData[] => {
 
 const tableClasses = computed((): string[] => {
     const classes = [];
-    if (props.selectable) {
+    if (selectable) {
         classes.push("table--selectable");
     }
-    if (props.hover) {
+    if (hover) {
         classes.push("table--hover");
     }
     return classes;
@@ -249,12 +250,12 @@ const tableRole = computed((): string => {
 });
 
 const wrapperClasses = computed((): string[] => {
-    return tableScrollClasses(props.scroll);
+    return tableScrollClasses(scroll);
 });
 
 const nbOfColumns = computed((): number => {
     let columnCount = visibleColumns.value.length;
-    if (props.selectable) {
+    if (selectable) {
         columnCount++;
     }
     if (isExpandableTable.value) {
@@ -265,12 +266,10 @@ const nbOfColumns = computed((): number => {
 });
 
 const internalRows = computed((): T[] => {
-    const { keyAttribute, expandableAttribute } = props;
-
     if (isExpandableTable) {
-        return setInternalKeys(props.rows, keyAttribute, expandableAttribute);
+        return setInternalKeys(rows, keyAttribute, expandableAttribute);
     }
-    return setInternalKeys(props.rows, keyAttribute);
+    return setInternalKeys(rows, keyAttribute);
 });
 
 provide("addColumn", (column: FTableColumnData) => {
@@ -289,7 +288,7 @@ provide(
 );
 
 watch(
-    () => props.rows,
+    () => rows,
     () => {
         setSelectedRows();
     },
@@ -297,7 +296,7 @@ watch(
 );
 
 watch(
-    () => props.active,
+    () => active,
     () => {
         updateActiveRowFromVModel();
     },
@@ -305,7 +304,7 @@ watch(
 );
 
 watch(
-    () => props.showActive,
+    () => showActive,
     (val) => {
         if (!val) {
             tbodyKey.value ^= 1;
@@ -315,7 +314,7 @@ watch(
 );
 
 watch(
-    () => props.modelValue,
+    () => modelValue,
     () => {
         setSelectedRows();
     },
@@ -341,7 +340,7 @@ onMounted(() => {
         updateTr(tbody.value);
     }
     if (isExpandableTable) {
-        setNestedKey(props.expandableAttribute);
+        setNestedKey(expandableAttribute);
     }
     registerCallbackOnSort(callbackOnSort);
     registerCallbackOnMount(callbackSortableColumns);
@@ -350,7 +349,7 @@ onMounted(() => {
 });
 
 function isActive(row: T): boolean {
-    if (!props.showActive) {
+    if (!showActive) {
         return false;
     }
     return itemEquals(row, activeRow.value, internalKey);
@@ -411,18 +410,18 @@ function onSelect(row: T): void {
 }
 
 function setSelectedRows(): void {
-    if (!props.modelValue?.length) {
+    if (!modelValue?.length) {
         selectedRows.value = [];
         return;
     }
-    selectedRows.value = props.modelValue.filter((row: T) => {
+    selectedRows.value = modelValue.filter((row: T) => {
         /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
         return includeItem<T, KeyAttribute>(row, internalRows.value, internalKey as KeyAttribute);
     });
 }
 
 function updateVModelWithSelectedRows(): void {
-    if (props.modelValue) {
+    if (modelValue) {
         emit("update:modelValue", selectedRows.value);
     }
 }
@@ -433,7 +432,7 @@ function rowClasses(row: T, index: number): string[] {
     const isExpandableRow = isExpandableTable.value && hasExpandableContent(row);
     const expandable = isExpandableRow ? ["table__row--expandable"] : [];
     const expanded = isExpanded(row) ? ["table__row--expanded-border"] : [];
-    const striped = props.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
+    const striped = isStriped && index % 2 !== 0 ? ["table__row--striped"] : [];
     return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
 }
 
@@ -539,11 +538,10 @@ function escapeNewlines(value: string): string {
 }
 
 function updateActiveRowFromVModel(): void {
-    if (props.active === undefined) {
+    if (active === undefined) {
         setActiveRow(undefined);
-    } else if (!itemEquals(props.active, activeRow.value, internalKey)) {
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
-        setActiveRow(props.active as T);
+    } else if (!itemEquals(active, activeRow.value, internalKey)) {
+        setActiveRow(active);
     }
 }
 
