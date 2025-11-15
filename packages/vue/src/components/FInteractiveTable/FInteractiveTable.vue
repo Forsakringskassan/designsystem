@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T extends object, K extends keyof T">
 import {
-    type PropType,
     type Ref,
     computed,
     getCurrentInstance,
@@ -35,107 +34,80 @@ import {
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
 import { type ExpandableTable, useExpandableTable } from "./useExpandableTable";
 
-/* eslint-disable-next-line vue/define-props-declaration -- technical debt */
-const props = defineProps({
-    /**
-     * The rows to be listed.
-     * The rows will be listed in the given array order.
-     */
-    rows: {
-        type: Array as PropType<T[]>,
-        required: true,
-    },
-    /**
-     * When enabled hovering over a row will be highlighted.
-     */
-    hover: {
-        type: Boolean,
-    },
-    /**
-     * Unique attribute in rows.
-     */
-    keyAttribute: {
-        type: String,
-        required: false,
-        default: undefined,
-    },
-    /**
-     * Attribute of expandable content in rows.
-     * If provided, the table can contain expandable rows.
-     */
-    expandableAttribute: {
-        type: String,
-        default: "",
-    },
-    /**
-     * Element id for aria-describedby on expandable rows to describe expanded content.
-     */
-    expandableDescribedby: {
-        type: String,
-        default: "",
-    },
-    /**
-     * When enabled the table rows will be selectable.
-     *
-     * The current set of selected rows can be accessed with `v-model`.
-     *
-     * The `select` and `unselect` events will be emitted when a row is selected
-     * or deselected.
-     */
-    selectable: {
-        type: Boolean,
-    },
-    /**
-     * When enabled alternating rows will use a different background color.
-     */
-    striped: {
-        type: Boolean,
-    },
-    /**
-     * Enable scrolling inside table.
-     *
-     * Can be one of the following values:
-     *
-     * - `"horizontal"`: Enables horizontal scrolling
-     * - `"vertical"`: Does nothing (deprecated)
-     * - `"both"`: Acts as horizontal (deprecated)
-     * - `"none"`: Disables scrolling (default)
-     */
-    scroll: {
-        type: String as PropType<TableScroll>,
-        default: TableScroll.NONE,
-        validator(value: string): boolean {
-            const types: string[] = Object.values(TableScroll);
-            return types.includes(value);
-        },
-    },
-    /**
-     * Enable showing the active row.
-     */
-    showActive: {
-        type: Boolean,
-        required: false,
+const props = withDefaults(
+    defineProps<{
+        /**
+         * The rows to be listed.
+         * The rows will be listed in the given array order.
+         */
+        rows: T[];
+        /**
+         * When enabled hovering over a row will be highlighted.
+         */
+        hover?: boolean;
+        /**
+         * Unique attribute in rows.
+         */
+        keyAttribute?: string;
+        /**
+         * Attribute of expandable content in rows.
+         * If provided, the table can contain expandable rows.
+         */
+        expandableAttribute?: string;
+        /**
+         * Element id for aria-describedby on expandable rows to describe expanded content.
+         */
+        expandableDescribedby?: string;
+        /**
+         * When enabled the table rows will be selectable.
+         *
+         * The current set of selected rows can be accessed with `v-model`.
+         *
+         * The `select` and `unselect` events will be emitted when a row is selected
+         * or deselected.
+         */
+        selectable?: boolean;
+        /**
+         * When enabled alternating rows will use a different background color.
+         */
+        striped?: boolean;
+        /**
+         * Enable scrolling inside table.
+         *
+         * Can be one of the following values:
+         *
+         * - `"horizontal"`: Enables horizontal scrolling
+         * - `"vertical"`: Does nothing (deprecated)
+         * - `"both"`: Acts as horizontal (deprecated)
+         * - `"none"`: Disables scrolling (default)
+         */
+        scroll?: TableScroll;
+        /**
+         * Enable showing the active row.
+         */
+        showActive?: boolean;
+        /**
+         * Currently selected rows.
+         * Requires `selectable` to be set.
+         */
+        modelValue?: T[];
+        /**
+         * Current active row.
+         */
+        active?: T;
+    }>(),
+    {
+        keyAttribute: undefined,
+        expandableAttribute: undefined,
+        expandableDescribedby: "",
+        scroll: TableScroll.NONE,
         /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-        default: true,
+        showActive: true,
+        modelValue: undefined,
+        active: undefined,
     },
-    /**
-     * Currently selected rows.
-     * Requires `selectable` to be set.
-     */
-    modelValue: {
-        type: Array as PropType<T[] | undefined>,
-        required: false,
-        default: undefined,
-    },
-    /**
-     * Current active row.
-     */
-    active: {
-        type: Object as PropType<T | undefined>,
-        required: false,
-        default: undefined,
-    },
-});
+);
+
 const emit = defineEmits<{
     /**
      * Emitted when row is activated.
