@@ -14,7 +14,7 @@ export interface ActivateItemInterface<T> {
     // When an item is deleted the item above it should be set to active and have focus.
     registerCallbackBeforeItemDelete(callback: ActivateItemCallback<T>): void;
     // Set key for nested items to enable deletion.
-    setNestedKey(key: keyof T): void;
+    setNestedKey(key: keyof T | null | undefined): void;
 }
 
 /**
