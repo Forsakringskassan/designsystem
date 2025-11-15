@@ -556,7 +556,7 @@ describe("events", () => {
 
     it("should emit select event when checkbox is clicked", async () => {
         expect.assertions(2);
-        const wrapper = mount(FInteractiveTable, {
+        const wrapper = mount(FInteractiveTable<{ id: number }>, {
             props: {
                 rows: [{ id: 1 }, { id: 2 }],
                 modelValue: [{ id: 1 }],
@@ -767,7 +767,7 @@ describe("`keyAttribute`", () => {
         expect.assertions(1);
 
         expect(() => {
-            mount(FInteractiveTable, {
+            mount(FInteractiveTable<{ id: string }>, {
                 props: {
                     keyAttribute: "id",
                     rows: [{ id: "a" }, { id: "b" }, { id: "c" }],
@@ -780,7 +780,7 @@ describe("`keyAttribute`", () => {
         expect.assertions(1);
 
         expect(() => {
-            mount(FInteractiveTable, {
+            mount(FInteractiveTable<{ id: string }>, {
                 props: {
                     keyAttribute: "id",
                     rows: [{ id: "a" }, { id: "b" }, { id: "b" }],

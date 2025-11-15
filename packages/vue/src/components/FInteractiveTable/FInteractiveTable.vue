@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends object, K extends keyof T">
+<script setup lang="ts" generic="T extends object, KeyAttribute extends keyof T = keyof T">
 import {
     type Ref,
     computed,
@@ -48,7 +48,7 @@ const props = withDefaults(
         /**
          * Unique attribute in rows.
          */
-        keyAttribute?: string;
+        keyAttribute?: KeyAttribute;
         /**
          * Attribute of expandable content in rows.
          * If provided, the table can contain expandable rows.
@@ -264,9 +264,9 @@ const internalRows = computed((): T[] => {
     const { keyAttribute, expandableAttribute } = props;
 
     if (isExpandableTable) {
-        return setInternalKeys(props.rows, keyAttribute as K, expandableAttribute as K);
+        return setInternalKeys(props.rows, keyAttribute, expandableAttribute as keyof T);
     }
-    return setInternalKeys(props.rows, keyAttribute as K);
+    return setInternalKeys(props.rows, keyAttribute);
 });
 
 provide("addColumn", (column: FTableColumnData) => {
@@ -413,7 +413,7 @@ function setSelectedRows(): void {
     }
     selectedRows.value = props.modelValue.filter((row: T) => {
         /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
-        return includeItem<T, K>(row, internalRows.value, internalKey as K);
+        return includeItem<T, KeyAttribute>(row, internalRows.value, internalKey as KeyAttribute);
     });
 }
 
