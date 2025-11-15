@@ -82,7 +82,12 @@ function serve(port, folders, options) {
         app.use(path, express.static(folder));
     }
 
-    const server = app.listen(port, "::", () => {
+    const server = app.listen(port, "::", (error) => {
+        if (error) {
+            console.error(error);
+            process.exitCode = 1;
+            return;
+        }
         if (options.onReady) {
             options.onReady(server.address(), normalized);
         }
