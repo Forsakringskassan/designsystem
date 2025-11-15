@@ -1,7 +1,18 @@
+<script lang="ts">
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any -- this is needed to ensure any array is allowed, not only an array of literal unknown */
+type IsArray<T, U> = T extends any[] | undefined ? U : never;
+type AnyPropertyOf<T> = keyof T;
+type ArrayPropertyOf<T> = { [K in keyof T]: IsArray<T[K], K> }[keyof T];
+</script>
+
 <script
     setup
     lang="ts"
-    generic="T extends object, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
+    generic="
+        T extends object,
+        KeyAttribute extends AnyPropertyOf<T> = AnyPropertyOf<T>,
+        ExpandableAttribute extends ArrayPropertyOf<T> = ArrayPropertyOf<T>
+    "
 >
 import {
     type Ref,
@@ -36,7 +47,7 @@ import {
     updateSortOrder,
 } from "../FTableColumn";
 import { onKeydown as onKeydown2 } from "./FTableKeybindings";
-import { type ExpandableTable, useExpandableTable } from "./useExpandableTable";
+import { useExpandableTable } from "./useExpandableTable";
 
 const {
     rows,
@@ -190,14 +201,6 @@ const tr = shallowRef<HTMLElement[]>([]);
 const trAll = shallowRef<HTMLElement[]>([]);
 const tbodyKey = ref(0);
 
-const expandableTable: ExpandableTable<T> = useExpandableTable(
-    expandableAttribute,
-    internalKey,
-    expandableDescribedby,
-    emit,
-    slots,
-);
-
 const {
     isExpandableTable,
     hasExpandableSlot,
@@ -209,7 +212,7 @@ const {
     expandableRows,
     hasExpandableContent,
     getExpandedIndex,
-} = expandableTable;
+} = useExpandableTable<T>(expandableAttribute, internalKey, expandableDescribedby, emit, slots);
 
 const tbody = useTemplateRef<HTMLElement>("tbodyElement");
 
@@ -664,10 +667,18 @@ function setActiveRow(row: T | undefined): void {
                             <td v-else class="table__column table__column--indented" :colspan="columns.length">
                                 <!--
                                      @slot Slot for expandable table row.
-                                     @binding {T} expandableRow Current expandable row being rendered.
+                                     @binding {T[ExpandableAttribute][number]} expandableRow Current expandable row being rendered.
                                      @binding {T} parentRow The parent row of the expandable rows.
                                 -->
-                                <slot name="expandable" v-bind="{ expandableRow, parentRow: row }" />
+                                <slot
+                                    name="expandable"
+                                    v-bind="{
+                                        expandableRow: expandableRow as T[ExpandableAttribute] extends any[]
+                                            ? T[ExpandableAttribute][number]
+                                            : never,
+                                        parentRow: row,
+                                    }"
+                                />
                             </td>
                         </tr>
                     </template>

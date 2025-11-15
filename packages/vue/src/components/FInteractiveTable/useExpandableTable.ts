@@ -120,6 +120,10 @@ export function useExpandableTable<T extends object>(
             return undefined;
         }
 
+        /* technical debt: we are lying here as `expandableRows` is actually
+         * `T[ExpandableAttribute]` but it breaks lots of other functions as they
+         * always expect `T[]` (often but not always `T[]` and
+         * `T[ExpandableAttribute]` have the same shape though) */
         return expandableRows as T[];
     }
 
