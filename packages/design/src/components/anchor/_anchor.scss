@@ -1,5 +1,6 @@
 $anchor-svg-margin: 0.25rem;
 @use "../../core/mixins/anchor";
+@use "variables" as *;
 
 .anchor {
     @include anchor.anchor;
@@ -15,12 +16,12 @@ $anchor-svg-margin: 0.25rem;
     }
 
     &.anchor--discrete {
-        color: var(--f-text-color-link-discrete);
-        text-decoration-color: var(--f-border-color-link-discrete);
+        color: $anchor-color-text-discrete-default;
+        text-decoration-color: $anchor-color-text-decoration-discrete-default;
 
         &:hover {
-            color: var(--f-text-color-link-discrete-hover);
-            text-decoration-color: var(--f-text-color-link-discrete-hover);
+            color: $anchor-color-text-discrete-default;
+            text-decoration-color: $anchor-color-text-decoration-discrete-default;
         }
     }
 }

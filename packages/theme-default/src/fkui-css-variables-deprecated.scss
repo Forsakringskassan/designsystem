@@ -378,6 +378,11 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-background-tab-active: #{$palette-color-white-100};
     --f-background-tab-inactive: #{$palette-color-bluebell-5};
     --f-background-button-discrete-hover: none;
+    // Deprecated since %version%
+    --f-text-color-link: #{$palette-color-bluebell-100};
+    --f-text-color-link-hover: #{$palette-color-fk-black-100};
+    --f-text-color-link-discrete: #{$palette-color-fk-black-100};
+    --f-text-color-link-discrete-hover: #{$palette-color-bluebell-100};
 }
 
 @if $global {
