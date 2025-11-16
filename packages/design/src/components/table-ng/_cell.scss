@@ -93,6 +93,7 @@ $horizontal-padding: size.$padding-050;
         input {
             height: var(--f-icon-size-medium);
             width: var(--f-icon-size-medium);
+            vertical-align: middle;
         }
     }
 
@@ -114,6 +115,11 @@ $horizontal-padding: size.$padding-050;
     }
 
     &--expand {
+        width: var(--f-icon-size-medium);
+        padding: core.densify(size.$padding-025);
+    }
+
+    &--select {
         width: var(--f-icon-size-medium);
     }
 
