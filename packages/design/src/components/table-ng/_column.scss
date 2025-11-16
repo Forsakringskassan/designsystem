@@ -17,13 +17,14 @@ $horizontal-padding: size.$padding-050;
         border-right: 1px solid var(--f-color-focus);
     }
 
-    &--checkbox {
+    &--select {
         text-align: center;
         padding: core.densify(size.$padding-025);
 
         input {
             height: var(--f-icon-size-medium);
             width: var(--f-icon-size-medium);
+            vertical-align: middle;
         }
     }
 
