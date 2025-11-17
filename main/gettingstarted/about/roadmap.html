@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-69abd7.json"
+            href="../../search-data-a104b6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-XLA56WGhGwHupPFZDD04ZEIj54N4wM6ursZjR5rmryUPLXrU+DrJG4mlIbS25HI6"
+            integrity="sha384-kYWqVJGHuxqumehxCzREui1tSJvsZ7dlmB2RxHH5Vv42DOo9SqvtlbGPQFW1yPnN"
             id="search-data"
         />
     </head>
@@ -591,13 +591,14 @@ Det är en förutsättning för att kunna ha dark mode, men underlättar framfö
 <a href="../../components/page-layout/fminimizablepanel.html">minimerbar panel</a> och <a href="../../components/page-layout/fdetailspanel.html">detaljpanel</a>.
 De nya komponenterna är mer flexibla, till exempel kan du fylla en yta med valfritt innehåll oberoende var den ligger.
 Till att börja med kommer ett antal olika varianter av layouter släppas.
-De nya komponenterna är släppta med <a href="./#status_for_komponenter">status beta</a> och kommer släppas som produktionsklara under hösten.</p>
-<h3 id="ny_komponent_for_tabell"><a class="header-anchor" href="#ny_komponent_for_tabell">Ny komponent för tabell</a></h3><p class="docs-paragraph">Vi tar fram en ny komponent för tabell som underlättar navigering för användaren.
+De nya komponenterna är släppta med <a href="./#status_for_komponenter">status beta</a> och kommer släppas som produktionsklara vid ett senare tillfälle.</p>
+<h3 id="ny_komponent_for_tabell"><a class="header-anchor" href="#ny_komponent_for_tabell">Ny komponent för tabell</a></h3><p class="docs-paragraph">Vi tar fram en ny komponent för tabell som underlättar navigering för användaren. Den nya tabellen kommer ha stöd för inline-redigering, dvs att användaren direkt kan redigera innehåll i en tabellcell.
 Samtidigt rättar vi buggar, uppdaterar dokumentationen och lägger till mindre förbättringar för tabell.
 Den nya komponenten kommer på sikt att ersätta dagens komponenter för tabell (datatabell och interaktiv tabell).</p>
-<h3 id="forhindra_dubbelklick_pa_knapp_och_knapp_i_vantande_lage"><a class="header-anchor" href="#forhindra_dubbelklick_pa_knapp_och_knapp_i_vantande_lage">Förhindra dubbelklick på knapp och knapp i väntande läge</a></h3><p class="docs-paragraph">Vi inför ett väntande läge på knapp när användare har klickat på knapp och det är en fördröjning innan knappens åtgärd är utförd.
-Vi ser också till att förhindra dubbelklick på knapp.
-Första steget är den nya Vue-komponenten för knapp som har släppts.</p>
+<h3 id="pagineringskomponent"><a class="header-anchor" href="#pagineringskomponent">Pagineringskomponent</a></h3><p class="docs-paragraph">Komponent för paginering är på gång.
+Den kan användas för att låta användaren navigera mellan innehåll som är uppdelat på flera sidor.
+Till att börja med stöds inte paginering av tabell, varken för befintliga tabellkomponenter (datatabell eller interaktiv tabell) eller den nya tabellen.
+När den nya tabellen är släppt kommer vi att arbeta vidare med hur pagineringen ska fungera tillsammans med den.</p>
 <h3 id="omskrivning_av_valideringsservice"><a class="header-anchor" href="#omskrivning_av_valideringsservice">Omskrivning av valideringsservice</a></h3><p class="docs-paragraph">Vi vill förenkla för hur du som konsument använder valideringsservice vid</p>
 <ul>
 <li>att vänta ut om ett inmatningsfält är giltigt eller ej</li>
@@ -642,9 +643,9 @@ Nästa komponent i ordningen är datamängdredigeraren.</li>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/e51be2451659e3784710625b440ea1e794d19dd8">e51be24</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/2f9e6f947e7915eb8f3eacefc778a80138f828a2">2f9e6f9</a>)<br />
         
-        2025-11-17 07:51
+        2025-11-17 10:29
 </div>
 <div class="toolbar__item">
     <form id="version">
