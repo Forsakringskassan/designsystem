@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-footer.vue:FDetailsPanelPageObject-footer-07cccf.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-footer.vue:FDetailsPanelPageObject-footer-24eb07.js
 import { defineComponent as _defineComponent } from "vue";
 import { onMounted } from "vue";
 import { FDetailsPanel, FPageLayout, useDetailsPanel } from "@fkui/vue";
@@ -73,7 +73,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-07cccf"
+  selector: "#example-24eb07"
 });
 export {
   render
