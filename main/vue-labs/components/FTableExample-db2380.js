@@ -2941,7 +2941,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
 });
 var _hoisted_1$6 = {
   scope: "col",
-  class: "table-ng__column table-ng__column--checkbox table-ng__column--select"
+  class: "table-ng__column table-ng__column--select"
 };
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableHeaderSelectable",
