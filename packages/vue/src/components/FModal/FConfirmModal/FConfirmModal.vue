@@ -3,7 +3,7 @@ import { type PropType, defineComponent } from "vue";
 import { FKUIConfigButtonOrder, config } from "../../../config";
 import FModal from "../FModal.vue";
 import { type FModalButton, type FModalButtonDescriptor, prepareButtonList } from "../modal-button";
-import { sizes } from "../sizes";
+import { type sizes } from "../sizes";
 
 const defaultButtons: FModalButtonDescriptor[] = [
     { label: "Primärknapp", event: "confirm", type: "primary" },
@@ -52,11 +52,8 @@ export default defineComponent({
          * The size of modal. 'large' and 'fullscreen' is valid.
          */
         size: {
-            type: String,
+            type: String as PropType<(typeof sizes)[number]>,
             default: "",
-            validator(value: string): boolean {
-                return sizes.includes(value);
-            },
         },
         /**
          * The aria-label attribute text for the top right close button.
