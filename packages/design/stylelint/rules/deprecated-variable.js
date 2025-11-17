@@ -73,11 +73,11 @@ function rule(actual) {
                 for (const variable of extractVariables(node)) {
                     if (isDeprecated(variable)) {
                         stylelint.utils.report({
-                            index: 0,
+                            result,
+                            ruleName,
                             message: messages.deprecated(variable.name),
                             node,
-                            ruleName,
-                            result,
+                            word: variable.name,
                         });
                     }
                 }

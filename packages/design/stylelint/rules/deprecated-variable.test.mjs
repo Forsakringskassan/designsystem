@@ -29,8 +29,8 @@ it("should warn when using deprecated variable", async (t) => {
     t.assert.deepStrictEqual(parseErrors, []);
     t.assert.partialDeepStrictEqual(warnings, [
         {
-            column: 13,
-            endColumn: 42,
+            column: 24,
+            endColumn: 40,
             endLine: 3,
             fix: undefined,
             line: 3,
@@ -54,8 +54,8 @@ it("should handle whitespace", async (t) => {
     t.assert.deepStrictEqual(parseErrors, []);
     t.assert.partialDeepStrictEqual(warnings, [
         {
-            column: 13,
-            endColumn: 39,
+            column: 21,
+            endColumn: 37,
             endLine: 3,
             fix: undefined,
             line: 3,
@@ -65,8 +65,8 @@ it("should handle whitespace", async (t) => {
             url: undefined,
         },
         {
-            column: 13,
-            endColumn: 39,
+            column: 20,
+            endColumn: 36,
             endLine: 4,
             fix: undefined,
             line: 4,
@@ -76,8 +76,8 @@ it("should handle whitespace", async (t) => {
             url: undefined,
         },
         {
-            column: 13,
-            endColumn: 40,
+            column: 21,
+            endColumn: 37,
             endLine: 5,
             fix: undefined,
             line: 5,
@@ -99,8 +99,8 @@ it("should handle fallback value", async (t) => {
     t.assert.deepStrictEqual(parseErrors, []);
     t.assert.partialDeepStrictEqual(warnings, [
         {
-            column: 13,
-            endColumn: 51,
+            column: 24,
+            endColumn: 40,
             endLine: 3,
             fix: undefined,
             line: 3,
@@ -122,8 +122,8 @@ it("should handle properties with multiple declarations", async (t) => {
     t.assert.deepStrictEqual(parseErrors, []);
     t.assert.partialDeepStrictEqual(warnings, [
         {
-            column: 13,
-            endColumn: 72,
+            column: 29,
+            endColumn: 45,
             endLine: 3,
             fix: undefined,
             line: 3,
@@ -133,8 +133,8 @@ it("should handle properties with multiple declarations", async (t) => {
             url: undefined,
         },
         {
-            column: 13,
-            endColumn: 72,
+            column: 52,
+            endColumn: 70,
             endLine: 3,
             fix: undefined,
             line: 3,
@@ -156,8 +156,8 @@ it("should handle malformed var", async (t) => {
     t.assert.deepStrictEqual(parseErrors, []);
     t.assert.partialDeepStrictEqual(warnings, [
         {
-            column: 13,
-            endColumn: 39,
+            column: 20,
+            endColumn: 36,
             endLine: 4,
             fix: undefined,
             line: 4,
