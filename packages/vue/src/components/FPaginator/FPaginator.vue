@@ -2,7 +2,7 @@
 import { computed, inject, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { useTranslate } from "../../plugins";
-import FIcon from "../FIcon/FIcon.vue";
+import { FButton } from "../FButton";
 import { paginateDatasetKey } from "../FPaginateDataset";
 import { maxPagesShown as maxPagesShownFn, pageClasses } from "./FPaginator.logic";
 import { computePages } from "./compute-pages";
@@ -141,41 +141,42 @@ function showGap(page: number): boolean {
 
 <template>
     <nav ref="paginator" data-test="nav" class="paginator" :aria-label="navigatorLabel">
-        <button
+        <f-button
             data-test="previous-button"
-            type="button"
-            class="paginator__previous"
+            variant="tertiary"
+            size="small"
             :aria-label="previousButtonLabel"
+            icon-left="chevrons-left"
             @click="onClickPreviousButton()"
         >
-            <f-icon name="chevrons-left" />
             <span data-test="label">{{ previousButtonLabel }}</span>
-        </button>
+        </f-button>
 
-        <button
+        <f-button
             v-for="page in pages"
             :key="page"
             :data-test="'page-' + page + '-button'"
-            type="button"
+            variant="tertiary"
+            size="small"
             :class="pageClasses(page, currentPage)"
             :aria-current="page === currentPage ? 'page' : 'false'"
             :aria-label="pageLabel(page)"
             @click="onClickPageButton(page)"
         >
             {{ showGap(page) ? "..." : page }}
-        </button>
+        </f-button>
 
         <div data-test="page-counter" class="paginator__page-counter">{{ pageCounterLabel }}</div>
 
-        <button
+        <f-button
             data-test="next-button"
-            type="button"
-            class="paginator__next"
+            variant="tertiary"
+            size="small"
+            icon-right="arrow-right"
             :aria-label="nextButtonLabel"
             @click="onClickNextButton()"
         >
             <span data-test="label">{{ nextButtonLabel }}</span>
-            <f-icon name="arrow-right" />
-        </button>
+        </f-button>
     </nav>
 </template>
