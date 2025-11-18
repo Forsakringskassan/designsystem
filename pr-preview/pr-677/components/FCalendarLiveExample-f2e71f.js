@@ -1890,7 +1890,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ),
     _createElementVNode(
       "a",
-      { href: "/" },
+      {
+        class: "anchor",
+        href: "/"
+      },
       "G\xE5 till startsidan",
       -1
       /* CACHED */
@@ -2109,18 +2112,7 @@ function isHTMLInputElement(element) {
 }
 
 // packages/vue/src/components/FModal/sizes.ts
-var sizes = [
-  "",
-  "small",
-  "medium",
-  "large",
-  "fullscreen",
-  "fullwidth"
-];
 function sizeClass(size) {
-  if (!sizes.includes(size)) {
-    throw new Error(`"${size}" is not a valid size`);
-  }
   if (!size) {
     return [];
   } else if (size === "fullscreen") {
@@ -2184,10 +2176,7 @@ var FModal_default = defineComponent4({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * Default behavior is that the modal will restore focus to previous element once closed.
@@ -2506,10 +2495,7 @@ var FConfirmModal_default = defineComponent5({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * The aria-label attribute text for the top right close button.
@@ -3420,10 +3406,7 @@ var FFormModal_default = defineComponent11({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * @ignore
