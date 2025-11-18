@@ -1,1 +1,8 @@
-// stylelint-disable no-empty-source -- placeholder file
+$navigationmenu-vertical-color-background-hover: var(--fkds-color-navigation-background-hover) !default;
+$navigationmenu-vertical-color-background-selected: var(--fkds-color-navigation-background-selected) !default;
+$navigationmenu-horizontal-color-border-hover: var(--fkds-color-navigation-border-hover) !default;
+$navigationmenu-horizontal-color-border-selected: var(--fkds-color-navigation-border-selected) !default;
+$navigationmenu-color-background: var(--fkds-color-background-secondary) !default;
+$navigationmenu-menuitem-color-text-active: var(--fkds-color-text-primary) !default;
+$navigationmenu-menuitem-color-text-hover: var(--fkds-color-text-primary) !default;
+$navigationmenu-vertical-menuitem-color-text-selected: var(--fkds-color-text-inverted) !default;
