@@ -14693,11 +14693,7 @@ function elementIsRadioButton(element) {
 function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
 }
-const sizes = ["", "small", "medium", "large", "fullscreen", "fullwidth"];
 function sizeClass(size) {
-  if (!sizes.includes(size)) {
-    throw new Error(`"${size}" is not a valid size`);
-  }
   if (!size) {
     return [];
   } else if (size === "fullscreen") {
@@ -14761,10 +14757,7 @@ const _sfc_main$1k = /* @__PURE__ */ defineComponent({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * Default behavior is that the modal will restore focus to previous element once closed.
@@ -15019,10 +15012,7 @@ const _sfc_main$1j = /* @__PURE__ */ defineComponent({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * The aria-label attribute text for the top right close button.
@@ -15799,10 +15789,7 @@ const _sfc_main$1d = /* @__PURE__ */ defineComponent({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * @ignore
@@ -19474,6 +19461,14 @@ const _hoisted_2$t = {
       type: String,
       required: false,
       default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?")
+    },
+    /**
+     * Property for changing the "add" and "modify" modal size
+     */
+    formModalSize: {
+      type: String,
+      required: false,
+      default: ""
     }
   },
   emits: ["created", "deleted", "updated", "update:modelValue"],
@@ -19664,6 +19659,7 @@ const _hoisted_2$t = {
         "is-open": isFormModalOpen.value,
         "aria-close-text": unref($t2)("fkui.crud-dataset.modal.close", "Stäng"),
         buttons: formModalButtons.value,
+        size: __props.formModalSize,
         "use-error-list": false,
         "before-submit": __props.beforeSubmit,
         "before-validation": __props.beforeValidation,
@@ -19683,7 +19679,7 @@ const _hoisted_2$t = {
           item: item.value
         }))) : createCommentVNode("", true)]),
         _: 3
-      }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(FConfirmModal), {
+      }, 8, ["is-open", "aria-close-text", "buttons", "size", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(FConfirmModal), {
         "is-open": isConfirmModalOpen.value,
         buttons: confirmDeleteButtons.value,
         onConfirm: onDeleteConfirm,
