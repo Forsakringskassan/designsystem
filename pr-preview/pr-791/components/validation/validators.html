@@ -6,33 +6,33 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Validatorer - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-9aa5b3.css"
+            href="../../assets/docs-323752.css"
             crossorigin
-            integrity="sha384-THNqojJJny1SwJi8SqY5Z7TF8aHb7wt7HDPwTTqPVq5Mf9kj7Lr0ifQHX5VBxAt5"
+            integrity="sha384-E4urTjz/S6sdQnu6Wkjoq9sRioQIYo1OKEAVlC+XJIDGBSGn8BwGMOX2HEMd7TsO"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-f290e8.css"
+            href="../../assets/docs-fkui-492765.css"
             crossorigin
-            integrity="sha384-fTQ13HnH1iNlLzXD4AxYCwGxdb6FNTrpZ/t8HO94je+UqPqFSENzQu/gm22gDp4u"
+            integrity="sha384-sW4MLCB1Xz4+leHvcKK9BzL/98p+/M1/MXCsrn8z5ltjs+wVFjDMdValKCK1CGkz"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-fd23ba.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-277994.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-131ba7.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-00e22b.js",
+    "vue": "../../assets/vendor-vue-f965e7.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-1242a6.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-808bee.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-1f6cc5.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-fd23ba.js": "sha384-fgWjDRyjtEXyEeb3gQxn5cMLQnaLJ/+raE5Ku0VLWBP2RlzpzrpvJFEC1FCSIWMk",
-    "../../assets/vendor-fkui-logic-277994.js": "sha384-o6DN+xTHp12Ot0+4FNZEoyGS6m3b75MezBhapCvFqCaF1IS9W5ox/P2dcvqGKt+i",
-    "../../assets/vendor-fkui-date-131ba7.js": "sha384-1ousGnX+TtYBjw6BVR/x9Yg2jMIjTjuSOD+VpUdpe9Eo7r1KF2LHHKhc8hzYQQlC",
-    "../../assets/vendor-fkui-vue-00e22b.js": "sha384-kTblbQQ8JHLSc7yW2RSbPgtozq4lncpqABp9ze2bSnRyZSKkssRUoX0cbw9lLq48",
+    "../../assets/vendor-vue-f965e7.js": "sha384-SD5eJUf0EHrq5fdKUiIi6kjU+Gg9zAN37N/XjLlRqaDcP3C61KatsvLwJMQrZdKO",
+    "../../assets/vendor-fkui-logic-1242a6.js": "sha384-Lt4fZk8RFzg4VwI02lBf3fz87u9QQ+gxRqIn5ulgzu+Ar18v06n87RPnxLq1fguH",
+    "../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
+    "../../assets/vendor-fkui-vue-1f6cc5.js": "sha384-F1bqUAYrKqyU2BlI1m7jaRgNoGmAxbcWC4MqkLkDyTlULsJZjDHKHYvBfkKaJ5C+",
     "../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-119f01.json"
+            href="../../search-data-69abd7.json"
             as="fetch"
             crossorigin
-            integrity="sha384-1sDzlJI4B3tboJglh7qIRzeLLENffN8K22G4lLCss2NSjtzJREtoiEoFhoStF1QG"
+            integrity="sha384-XLA56WGhGwHupPFZDD04ZEIj54N4wM6ursZjR5rmryUPLXrU+DrJG4mlIbS25HI6"
             id="search-data"
         />
     </head>
@@ -215,10 +215,11 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
@@ -1119,7 +1120,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-d3cce9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1127,7 +1129,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./MatchesExample-d3cce9.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod för att jämföra med ett inmatningsfält med <code>id=&quot;reference&quot;</code>:</p>
 
@@ -1177,7 +1180,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-488273"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1185,7 +1189,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./MaxLengthExample-488273.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod för att sätta en maxlängd på tio tecken:</p>
 
@@ -1222,7 +1227,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-8a79d1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1230,7 +1236,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./MinLengthExample-8a79d1.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod för att sätta en minlängd på fyra tecken:</p>
 
@@ -1269,7 +1276,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-1e0244"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1277,7 +1285,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./RequiredExample-1e0244.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod:</p>
 
@@ -1329,7 +1338,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-c07d48"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1337,7 +1347,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./WhitelistExample-c07d48.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod:</p>
 
@@ -1370,7 +1381,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-9e75d3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1378,7 +1390,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./AllowListExample-9e75d3.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod:</p>
 
@@ -1419,7 +1432,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-41ec72"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1427,7 +1441,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./DateExample-41ec72.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod:</p>
 
@@ -1463,7 +1478,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-a35bee"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1471,7 +1487,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./DateFormatExample-a35bee.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod:</p>
 
@@ -1500,7 +1517,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-69c098"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1508,7 +1526,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./InvalidDatesExample-69c098.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod för att 1 januari 2022, 5 maj 2022 och 20 juni 2022 inte ska vara valbara datum:</p>
 
@@ -1537,7 +1556,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-50de08"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1545,7 +1565,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./InvalidWeekdaysExample-50de08.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod för att sätta måndagar, tisdagar, onsdagar och torsdagar som inte valbara veckodagar:</p>
 
@@ -1578,7 +1599,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-7c7dd3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1586,7 +1608,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./MaxDateExample-7c7dd3.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska välja ett datum fram till och med 30 januari 2020:</p>
 
@@ -1619,7 +1642,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-3016c9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1627,7 +1651,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./MinDateExample-3016c9.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska välja ett datum från och med 1 januari 2020:</p>
 
@@ -1665,7 +1690,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-fc5220"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1673,7 +1699,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./NumberExample-fc5220.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod:</p>
 
@@ -1714,7 +1741,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-9c6825"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1722,7 +1750,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./IntegerExample-9c6825.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren måste fylla i ett heltal:</p>
 
@@ -1768,7 +1797,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-d08ce0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1776,7 +1806,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./DecimalExample-d08ce0.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren måste fylla i ett tal med minst en decimal och max sex decimaler:</p>
 
@@ -1816,7 +1847,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-129ac9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1824,7 +1856,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./MaxValueExample-129ac9.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren måste fylla i ett tal som inte överstiger 50:</p>
 
@@ -1870,7 +1903,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-aea4ec"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1878,7 +1912,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./MinValueExample-aea4ec.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i ett tal som inte understiger 10:</p>
 
@@ -1924,7 +1959,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-b8687b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1932,7 +1968,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./LessThanExample-b8687b.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren fylla i ett tal som är mindre än 100:</p>
 
@@ -1972,7 +2009,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-c9d486"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -1980,7 +2018,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./GreaterThanExample-c9d486.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i ett tal som är större än 0.123:</p>
 
@@ -2017,7 +2056,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-beaac7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2025,7 +2065,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PercentExample-beaac7.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i ett tal i procent:</p>
 
@@ -2061,7 +2102,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-8f74ba"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2069,7 +2111,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./CurrencyExample-8f74ba.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i ett valutabelopp:</p>
 
@@ -2112,7 +2155,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-869cd3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2120,7 +2164,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./OrganisationsnummerExample-869cd3.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i organisationsnummer:</p>
 
@@ -2170,7 +2215,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-6c7f5f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2178,7 +2224,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PersonnummerFormatExample-6c7f5f.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i personnummer:</p>
 
@@ -2213,7 +2260,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-4835ed"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2221,7 +2269,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PersonnummerLuhnExample-4835ed.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i personnummer:</p>
 
@@ -2251,7 +2300,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-0dd420"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2259,7 +2309,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PersonnummerNotSameExample-0dd420.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
 
@@ -2289,7 +2340,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-e1ebbc"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2297,7 +2349,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PersonnummerOlderExample-e1ebbc.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
 
@@ -2327,7 +2380,8 @@
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-e1ef12"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2335,7 +2389,8 @@
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PersonnummerYoungerExample-e1ef12.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod för att jämföra med ett inmatningsfält med <code>v-model=&quot;reference&quot;</code>:</p>
 
@@ -2375,7 +2430,8 @@ Max antal tecken är konfigurerbart.</p>
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-46c270"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2383,7 +2439,8 @@ Max antal tecken är konfigurerbart.</p>
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./EmailExample-46c270.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i mejladress:</p>
 
@@ -2421,7 +2478,8 @@ Max antal tecken är konfigurerbart.</p>
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-e6cfa6"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2429,7 +2487,8 @@ Max antal tecken är konfigurerbart.</p>
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PostalCodeExample-e6cfa6.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användare ska fylla i postnummer:</p>
 
@@ -2472,7 +2531,8 @@ Max antal tecken är konfigurerbart.</p>
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-48a58d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2480,7 +2540,8 @@ Max antal tecken är konfigurerbart.</p>
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PhoneNumberExample-48a58d.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i telefonnummer:</p>
 
@@ -2519,7 +2580,8 @@ Max antal tecken är konfigurerbart.</p>
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-51e581"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2527,7 +2589,8 @@ Max antal tecken är konfigurerbart.</p>
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./BankgiroExample-51e581.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i bankgiro:</p>
 
@@ -2570,7 +2633,8 @@ Max antal tecken är konfigurerbart.</p>
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-cc9327"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2578,7 +2642,8 @@ Max antal tecken är konfigurerbart.</p>
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./ClearingNumberExample-cc9327.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i clearingnummer:</p>
 
@@ -2615,7 +2680,8 @@ Max antal tecken är konfigurerbart.</p>
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-0e89a6"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2623,7 +2689,8 @@ Max antal tecken är konfigurerbart.</p>
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./BankAccountNumberExample-0e89a6.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i kontonummer:<br></p>
 
@@ -2661,7 +2728,8 @@ Max antal tecken är konfigurerbart.</p>
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
+                    <div class="code-preview__preview user-background">
+                        
         <div id="example-5cad42"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
@@ -2669,7 +2737,8 @@ Max antal tecken är konfigurerbart.</p>
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script type="module" src="./PlusgiroExample-5cad42.js"></script>
-    </div>
+    
+                    </div>
                 </div>
             <p class="docs-paragraph">Skriv så här i kod när användaren ska fylla i plusgiro:</p>
 
@@ -2720,9 +2789,9 @@ Max antal tecken är konfigurerbart.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">nytt_hapotema (<a href="https://github.com/Forsakringskassan/designsystem/commits/19e38d3ab34c40259b0af8122b5b5649952045ab">19e38d3</a>)<br />
+<div class="footer__right"><div class="version">nytt_hapotema (<a href="https://github.com/Forsakringskassan/designsystem/commits/439a4b278d665c07d056f15396b285c27ee6f90b">439a4b2</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/791">PR 791</a><br />
-        2025-11-05 12:03
+        2025-11-18 09:18
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2834,10 +2903,10 @@ Max antal tecken är konfigurerbart.</p>
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-cec529.js"
+            src="../../assets/processors/selectable-version/select-version-c21898.js"
             type="module"
             crossorigin
-            integrity="sha384-TRok7ZiWlbx0DVsCXEE+G+WyYin4CJxSKORmSHFtV+tQqQf0G4j9nQeI5MKWgyKu"
+            integrity="sha384-ORSkXjTR9Dd3kY15Oo7HXImv0W0aC6qWBP+raNfN9UUX6lNoQBhFu4HYwp29rpZz"
             
         ></script><script
             src="../../assets/main-9cd53d.js"
