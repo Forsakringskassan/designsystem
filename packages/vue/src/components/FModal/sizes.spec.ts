@@ -23,8 +23,3 @@ it("should return empty array if size is empty", () => {
     expect.assertions(1);
     expect(sizeClass("")).toEqual([]);
 });
-
-it("should throw error on invalid sizes", () => {
-    expect.assertions(1);
-    expect(() => sizeClass("invalid")).toThrow(`"invalid" is not a valid size`);
-});

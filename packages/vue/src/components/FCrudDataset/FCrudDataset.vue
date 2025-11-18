@@ -4,7 +4,7 @@ import { TranslationService, alertScreenReader, deepClone } from "@fkui/logic";
 
 import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
-import { FConfirmModal, FFormModal } from "../FModal";
+import { type sizes, FConfirmModal, FFormModal } from "../FModal";
 import { type FModalButtonDescriptor } from "../FModal/modal-button";
 import { type FValidationFormCallback } from "../FValidationForm";
 import { filterItem } from "./filter-item";
@@ -89,6 +89,14 @@ const props = defineProps({
             "fkui.crud-dataset.modal.header.delete",
             "Är du säker på att du vill ta bort raden?",
         ),
+    },
+    /**
+     * Property for changing the "add" and "modify" modal size
+     */
+    formModalSize: {
+        type: String as PropType<(typeof sizes)[number]>,
+        required: false,
+        default: "",
     },
 });
 const emit = defineEmits<{
@@ -356,6 +364,7 @@ function setNestedKey(key: keyof T): void {
             :is-open="isFormModalOpen"
             :aria-close-text="$t('fkui.crud-dataset.modal.close', 'Stäng')"
             :buttons="formModalButtons"
+            :size="formModalSize"
             :use-error-list="false"
             :before-submit
             :before-validation

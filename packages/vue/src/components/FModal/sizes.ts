@@ -5,12 +5,9 @@ export const sizes = [
     "large",
     "fullscreen",
     "fullwidth",
-];
+] as const;
 
 export function sizeClass(size: string): string[] {
-    if (!sizes.includes(size)) {
-        throw new Error(`"${size}" is not a valid size`);
-    }
     if (!size) {
         return [];
     } else if (size === "fullscreen") {

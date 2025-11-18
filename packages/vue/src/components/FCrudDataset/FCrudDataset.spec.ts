@@ -6,7 +6,7 @@ import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { ValidationPlugin } from "../../plugins";
 import { ListItem } from "../../types";
-import { FFormModal, FFormModalAction, FModal } from "../FModal";
+import { type sizes, FFormModal, FFormModalAction, FModal } from "../FModal";
 import { FTextField } from "../FTextField";
 import { type FValidationFormCallback } from "../FValidationForm";
 import FCrudButton from "./FCrudButton.vue";
@@ -86,6 +86,11 @@ const TestComponent = defineComponent({
                 /* do nothing */
             },
         },
+        formModalSize: {
+            type: String as PropType<(typeof sizes)[number]>,
+            required: false,
+            default: "",
+        },
     },
     data() {
         return {
@@ -123,6 +128,7 @@ function createWrapper(
             :on-cancel="onCancel"
             :before-validation="beforeValidation"
             :before-submit="beforeSubmit"
+            :form-modal-size="formModalSize"
             @created="onCreatedEvent"
             @updated="onUpdatedEvent"
             @deleted="onDeletedEvent"
@@ -633,6 +639,69 @@ describe("onCancel", () => {
         wrapper.find(".button-group .button--secondary").trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(1);
+    });
+});
+
+describe("formModalSize", () => {
+    it("should pass size prop to FFormModal when opening add modal", async () => {
+        const wrapper = createWrapper([ADD_TEMPLATE], {
+            stubs: ["FConfirmModal"],
+            props: { formModalSize: "large" },
+        });
+
+        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await flushPromises();
+
+        const formModal = wrapper.findComponent(FFormModal);
+        expect(formModal.props("size")).toBe("large");
+    });
+
+    it("should pass size prop to FFormModal when opening modify modal", async () => {
+        const wrapper = createWrapper([MODIFY_TEMPLATE], {
+            stubs: ["FConfirmModal"],
+            props: { formModalSize: "small" },
+        });
+
+        await wrapper.find("#modifyButton").trigger("click");
+        await flushPromises();
+
+        const formModal = wrapper.findComponent(FFormModal);
+        expect(formModal.props("size")).toBe("small");
+    });
+
+    it("should use default size (empty string) when prop not provided", async () => {
+        const wrapper = createWrapper([ADD_TEMPLATE], {
+            stubs: ["FConfirmModal"],
+        });
+
+        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await flushPromises();
+
+        const formModal = wrapper.findComponent(FFormModal);
+        expect(formModal.props("size")).toBe("");
+    });
+
+    it.each`
+        size
+        ${""}
+        ${"small"}
+        ${"medium"}
+        ${"large"}
+        ${"fullscreen"}
+        ${"fullwidth"}
+    `("should accept valid size '$size'", ({ size }) => {
+        const consoleSpy = jest.spyOn(console, "warn").mockImplementation();
+
+        createWrapper([ADD_TEMPLATE], {
+            stubs: ["FConfirmModal"],
+            props: { formModalSize: size },
+        });
+
+        expect(consoleSpy).not.toHaveBeenCalledWith(
+            expect.stringMatching(/Invalid prop.*formModalSize/),
+        );
+
+        consoleSpy.mockRestore();
     });
 });
 

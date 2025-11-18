@@ -1050,6 +1050,9 @@ module.exports = defineMetadata({
         attributes: {
             value: ["/.*/"],
             beforeCreate: ["/.*/"],
+            "form-modal-size": {
+                enum: ["small", "medium", "large", "fullwidth"],
+            },
         },
     },
 

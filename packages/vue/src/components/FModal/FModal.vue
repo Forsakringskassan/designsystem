@@ -6,7 +6,7 @@ import { findElementFromVueRef, getHTMLElementFromVueRef, hasSlot } from "../../
 import { FIcon } from "../FIcon";
 import { type FModalData } from "./fmodal-data";
 import { focusElement } from "./focus-element";
-import { sizeClass, sizes } from "./sizes";
+import { type sizes, sizeClass } from "./sizes";
 
 /**
  * Level: Ready
@@ -63,11 +63,8 @@ export default defineComponent({
          * The size of modal in desktop mode.
          */
         size: {
-            type: String,
+            type: String as PropType<(typeof sizes)[number]>,
             default: "",
-            validator(value: string): boolean {
-                return sizes.includes(value);
-            },
         },
         /**
          * Default behavior is that the modal will restore focus to previous element once closed.

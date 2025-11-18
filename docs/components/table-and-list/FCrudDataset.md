@@ -132,6 +132,28 @@ Knapptexter för åtgärdsknappar kan anpassas med textnycklar eller med knappen
 FCrudDatasetCustomTextExample.vue
 ```
 
+## Modalstorlek
+
+Storleken på modalerna för "Lägg till" och "Ändra" kan anpassas med propen `addAndModifyModalSize`.
+
+Giltiga värden är:
+
+- `""` (tom sträng, standard)
+- `"small"`
+- `"medium"`
+- `"large"`
+- `"fullwidth"`
+
+```html static
+<f-crud-dataset form-modal-size="large">
+    <template #default> ... </template>
+    <template #add> ... </template>
+    <template #modify> ... </template>
+</f-crud-dataset>
+```
+
+Se {@link FFormModal} för mer information om modalstorlekar.
+
 ## Textnycklar
 
 Läs mer om att {@link translate-text anpassa och översätta text}.
