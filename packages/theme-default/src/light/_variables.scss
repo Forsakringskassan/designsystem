@@ -82,4 +82,12 @@
     --fkds-color-select-background-secondary-hover: #{$palette-color-green-a-15};
     --fkds-color-select-background-secondary-active: #{$palette-color-green-a-15};
     --fkds-color-select-background-secondary-focus: #{$palette-color-green-a-15};
+
+    // NAVIGATION - BORDER
+    --fkds-color-navigation-border-hover: #{$palette-color-green-a-50};
+    --fkds-color-navigation-border-selected: #{$palette-color-green-a-85};
+
+    // NAVIGATION - BACKGROUND
+    --fkds-color-navigation-background-hover: #{$palette-color-green-a-15};
+    --fkds-color-navigation-background-selected: #{$palette-color-green-a-85};
 }

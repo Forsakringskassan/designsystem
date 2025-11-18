@@ -1,10 +1,11 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
 @use "../../core/config-variables";
+@use "variables" as *;
 
 .imenu {
     &__list {
-        background-color: var(--f-background-menu);
+        background-color: $navigationmenu-color-background;
         margin: 0;
         padding: 0;
 
@@ -16,11 +17,11 @@
             a,
             a:visited,
             a:active {
-                color: var(--f-text-color-menu);
+                color: $navigationmenu-menuitem-color-text-active;
             }
 
             a:hover {
-                color: var(--f-text-color-menu-hover);
+                color: $navigationmenu-menuitem-color-text-hover;
             }
         }
     }
@@ -51,16 +52,22 @@
 
             &:hover {
                 font-weight: var(--f-font-weight-normal);
-                background-color: var(--f-background-menu-vertical-hover);
+                background-color: $navigationmenu-vertical-color-background-hover;
             }
 
             &--highlight {
-                background-color: var(--f-background-menu-vertical-highlight);
                 font-weight: var(--f-font-weight-medium);
+                background-color: $navigationmenu-vertical-color-background-selected;
+
+                .imenu__list__anchor {
+                    color: $navigationmenu-vertical-menuitem-color-text-selected;
+                }
             }
 
             &--highlight:hover {
+                background-color: $navigationmenu-vertical-color-background-selected;
                 font-weight: var(--f-font-weight-medium);
+                color: $navigationmenu-vertical-menuitem-color-text-selected;
             }
         }
     }
@@ -79,11 +86,10 @@
             padding-right: size.$padding-075;
 
             &--highlight {
-                color: var(--f-text-color-menu-horizontal-highlight);
                 font-weight: var(--f-font-weight-medium);
 
                 .imenu__list__anchor-container {
-                    border-bottom: 5px solid var(--f-border-color-menu-horizontal-highlight);
+                    border-bottom: 5px solid $navigationmenu-horizontal-color-border-selected;
                 }
 
                 .imenu__list__anchor:hover {
@@ -101,7 +107,7 @@
             border-bottom: 5px solid transparent;
 
             &:hover {
-                border-bottom: 5px solid var(--f-border-color-menu-horizontal-hover);
+                border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
             }
         }
 
@@ -111,8 +117,7 @@
             &-icon-right {
                 flex: 1 0 auto;
                 padding-top: size.$padding-025;
-                margin-left: size.$padding-075;
-                color: var(--f-border-color-menu-horizontal-highlight);
+                margin-left: size.$padding-025;
             }
         }
     }

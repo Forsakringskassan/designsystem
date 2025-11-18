@@ -392,6 +392,24 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-expandable-panel-heading-border-open: none;
     --f-expandable-panel-heading-border-close: none;
     --f-expandable-panel-heading-border-radius: 4px 4px 0 0;
+
+    // Deprecated since %version%
+    --f-background-menu: #{$palette-color-fk-black-5};
+    --f-background-menu-vertical-hover: #{$palette-color-fk-black-15};
+    --f-background-menu-vertical-highlight: #{$palette-color-green-b-15};
+    --f-text-color-menu: #{$palette-color-fk-black-100};
+    --f-text-color-menu-hover: #{$palette-color-fk-black-100};
+    --f-text-color-menu-horizontal-highlight: #{$palette-color-fk-black-100};
+    --f-border-color-menu-horizontal: #{$palette-color-green-a-100};
+    --f-border-color-menu-horizontal-hover: #{$palette-color-green-b-50};
+    --f-border-color-menu-horizontal-highlight: #{$palette-color-green-a-100};
+    --f-background-popupmenu: #{$palette-color-white-100};
+    --f-background-popupmenu-vertical-hover: #{$palette-color-fk-black-15};
+    --f-background-popupmenu-vertical-highlight: #{$palette-color-green-b-15};
+    --f-border-color-popupmenu: #{$palette-color-fk-black-15};
+    --f-text-color-popupmenu: #{$palette-color-fk-black-100};
+    --f-text-color-popupmenu-hover: #{$palette-color-fk-black-100};
+    --f-border-color-separator-contextmenu: #{$palette-color-fk-black-50};
 }
 
 @if $global {

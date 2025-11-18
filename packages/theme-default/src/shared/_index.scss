@@ -19,38 +19,20 @@
     --f-text-color-heading-5: inherit;
     --f-text-color-heading-6: inherit;
 
-    --f-text-color-menu: #{$palette-color-fk-black-100};
-    --f-text-color-menu-hover: #{$palette-color-fk-black-100};
-    --f-text-color-menu-horizontal-highlight: #{$palette-color-fk-black-100};
-
-    --f-text-color-popupmenu: #{$palette-color-fk-black-100};
-    --f-text-color-popupmenu-hover: #{$palette-color-fk-black-100};
-
     // ***********
     // ICON COLORS
     // ***********
     --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field, form-step
-
     --f-icon-color-success-background: #{$palette-color-green-a-15};
 
     // *****************
     // BACKGROUND COLORS
     // *****************
     --f-background-overlay: rgba(0, 0, 0, 0.75); // modal, loader
-
     --f-background-pageheader-primary: #{$palette-color-green-a-100}; // page-header
     --f-background-skiplink-focus: #{$palette-color-bluebell-5};
-    --f-background-heading-static-panel: #{$palette-color-green-b-50};
-
     --f-background-sidepanel-button-tertiary-hover: #{$palette-color-bluebell-15}; //  FLeftPanel and FRightPanel
-
-    --f-background-menu: #{$palette-color-fk-black-5};
-    --f-background-menu-vertical-hover: #{$palette-color-fk-black-15};
-    --f-background-menu-vertical-highlight: #{$palette-color-green-b-15};
-
-    --f-background-popupmenu: #{$palette-color-white-100};
-    --f-background-popupmenu-vertical-hover: #{$palette-color-fk-black-15};
-    --f-background-popupmenu-vertical-highlight: #{$palette-color-green-b-15};
+    --f-background-heading-static-panel: #{$palette-color-green-b-50};
 
     // *************
     // BORDER COLORS
@@ -61,17 +43,10 @@
 
     --f-border-color-separator: #{$palette-color-fk-black-15}; // radio-button-group, file-item, expandable-paragraph
     --f-border-color-separator-pageheader-primary: #{$palette-color-white-100}; // page-header
-    --f-border-color-separator-contextmenu: #{$palette-color-fk-black-50};
     --f-border-color-link: #{$palette-color-bluebell-100};
     --f-border-color-link-hover: #{$palette-color-fk-black-50};
     --f-border-color-link-discrete: #{$palette-color-fk-black-50};
     --f-border-color-link-discrete-hover: #{$palette-color-bluebell-100};
-
-    --f-border-color-menu-horizontal: #{$palette-color-green-a-100};
-    --f-border-color-menu-horizontal-hover: #{$palette-color-green-b-50};
-    --f-border-color-menu-horizontal-highlight: #{$palette-color-green-a-100};
-
-    --f-border-color-popupmenu: #{$palette-color-fk-black-15};
 
     // *******************
     // COLOR VARIABLES END
