@@ -5403,6 +5403,7 @@ input[type=search]:focus,
 .table-ng__cell--checkbox input, .table-ng__cell--radio input {
   height: var(--f-icon-size-medium);
   width: var(--f-icon-size-medium);
+  vertical-align: middle;
 }
 .table-ng__cell--expand button, .table-ng__cell--button button {
   padding: 0;
@@ -5417,6 +5418,10 @@ input[type=search]:focus,
   vertical-align: middle;
 }
 .table-ng__cell--expand {
+  width: var(--f-icon-size-medium);
+  padding: calc(0.25rem * var(--f-density-factor));
+}
+.table-ng__cell--select {
   width: var(--f-icon-size-medium);
 }
 .table-ng__cell--rowheader {
@@ -5480,13 +5485,14 @@ input[type=search]:focus,
   border-bottom: 2px solid var(--f-color-focus);
   border-right: 1px solid var(--f-color-focus);
 }
-.table-ng__column--checkbox {
+.table-ng__column--select {
   text-align: center;
   padding: calc(0.25rem * var(--f-density-factor));
 }
-.table-ng__column--checkbox input {
+.table-ng__column--select input {
   height: var(--f-icon-size-medium);
   width: var(--f-icon-size-medium);
+  vertical-align: middle;
 }
 .table-ng__column--rowheader {
   text-align: left;
