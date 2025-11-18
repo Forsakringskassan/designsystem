@@ -8,6 +8,14 @@
 .expandable-panel {
     margin-bottom: core.densify(size.$margin-200);
 
+    .expandable-panel__icon svg {
+        width: $expandablepanel-heading-expand-icon-size;
+        height: $expandablepanel-heading-expand-icon-size;
+        max-height: initial;
+        max-width: initial;
+        vertical-align: middle;
+    }
+
     &.expandable-panel--expanded {
         .expandable-panel__icon svg {
             transform: rotate(180deg);
@@ -38,7 +46,7 @@
             color: $expandablepanel-heading-color-text-default;
             cursor: pointer;
             display: inline-flex;
-            align-items: baseline;
+            align-items: center;
             margin: 0;
             padding: core.densify(size.$padding-100) size.$padding-100;
             text-align: left;
@@ -65,8 +73,8 @@
         .icon-container {
             background: $expandablepanel-heading-notification-color-background;
             border: var(--f-border-radius-small) solid transparent; // forced-colors
-            width: $expandablepanel-heading-notification-icon-size;
-            height: $expandablepanel-heading-notification-icon-size;
+            width: $expandablepanel-heading-notification-icon-container-size;
+            height: $expandablepanel-heading-notification-icon-container-size;
             border-radius: 50%;
             display: inline-flex;
             justify-content: center;
@@ -76,8 +84,10 @@
                 background: canvas;
             }
 
-            .f-icon-bell {
+            svg {
                 color: $expandablepanel-heading-notification-icon-color-fill;
+                width: $expandablepanel-heading-notification-icon-size;
+                height: $expandablepanel-heading-notification-icon-size;
 
                 @media (forced-colors: active) {
                     color: buttonText;
@@ -98,6 +108,6 @@
         border-top: 0;
         border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);
         line-height: inherit;
-        padding: core.densify(size.$padding-150) size.$padding-150;
+        padding: core.densify(size.$padding-100) size.$padding-100;
     }
 }
