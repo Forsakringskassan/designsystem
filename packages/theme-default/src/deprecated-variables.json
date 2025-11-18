@@ -261,5 +261,21 @@
     "--f-background-grid-active",
     "--f-background-tab-active",
     "--f-background-tab-inactive",
-    "--f-background-button-discrete-hover"
+    "--f-background-button-discrete-hover",
+    "--f-background-menu",
+    "--f-background-menu-vertical-hover",
+    "--f-background-menu-vertical-highlight",
+    "--f-text-color-menu",
+    "--f-text-color-menu-hover",
+    "--f-text-color-menu-horizontal-highlight",
+    "--f-border-color-menu-horizontal",
+    "--f-border-color-menu-horizontal-hover",
+    "--f-border-color-menu-horizontal-highlight",
+    "--f-background-popupmenu",
+    "--f-background-popupmenu-vertical-hover",
+    "--f-background-popupmenu-vertical-highlight",
+    "--f-border-color-popupmenu",
+    "--f-text-color-popupmenu",
+    "--f-text-color-popupmenu-hover",
+    "--f-border-color-separator-contextmenu"
 ]
