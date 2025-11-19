@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>På gång - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-b6c24a.css"
+            href="../../assets/docs-da087b.css"
             crossorigin
-            integrity="sha384-BiUNBlXlSu6Vgixh8E+XYXN5bfoa9Sj1mMOEW+CoLXtpcgWifkkULDeu5sAiUUCd"
+            integrity="sha384-6ICTNVr7SlhhemRezQ20yODYl4gFb5oYdTOSSP9f7UUS36/MceYy5X32pb2CwKK4"
             
         />
         <link
@@ -23,18 +23,18 @@
             {
   "imports": {
     "vue": "../../assets/vendor-vue-f965e7.js",
-    "@fkui/vue/pageobjects": "../../assets/vendor-fkui-vue-pageobjects-6652ec.js",
+    "@fkui/vue/pageobjects": "../../assets/vendor-fkui-vue-pageobjects-844cd3.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-1242a6.js",
     "@fkui/date": "../../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-45d466.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-b437ae.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
   },
   "integrity": {
     "../../assets/vendor-vue-f965e7.js": "sha384-SD5eJUf0EHrq5fdKUiIi6kjU+Gg9zAN37N/XjLlRqaDcP3C61KatsvLwJMQrZdKO",
-    "../../assets/vendor-fkui-vue-pageobjects-6652ec.js": "sha384-ahJ2Q7MU+haX53yWLuCa+sZyqzfEYWeaBY19X95vh5VZC3wDHWFaDKUn3ctJmT2o",
+    "../../assets/vendor-fkui-vue-pageobjects-844cd3.js": "sha384-PyH5zlWL1lGgJND7sy/Y+9r/cuAmN3ZIx5EN/0diXqrRTEBUb9iCpigWx7E0x1gV",
     "../../assets/vendor-fkui-logic-1242a6.js": "sha384-Lt4fZk8RFzg4VwI02lBf3fz87u9QQ+gxRqIn5ulgzu+Ar18v06n87RPnxLq1fguH",
     "../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../../assets/vendor-fkui-vue-45d466.js": "sha384-MtGZNGzBK1jEHqu38RD19hq9xvimWar/Pe/l+t/851m/+pRdUVRljsCcLuxnbH29",
+    "../../assets/vendor-fkui-vue-b437ae.js": "sha384-LnNyntVSnGqLO+raR5X0dKjy9fkqRCyFTm8difRrfCMDRcgir7XbGffrQ+LDHaUJ",
     "../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-e7dfff.json"
+            href="../../search-data-56e59c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-FqLeM0e0NEgsXhXMsRxp3G5Bf488Jw3BqL5Zcj7W4whCUx136ANdJhTrEJZPVSMR"
+            integrity="sha384-8nLw1FB0QYiAcCnecFefEvTDpc28BrMwDp5rtiGuqR7U/6+pXUzXHu3QBIuSP5IH"
             id="search-data"
         />
     </head>
@@ -593,13 +593,14 @@ Det är en förutsättning för att kunna ha dark mode, men underlättar framfö
 <a href="../../components/page-layout/fminimizablepanel.html">minimerbar panel</a> och <a href="../../components/page-layout/fdetailspanel.html">detaljpanel</a>.
 De nya komponenterna är mer flexibla, till exempel kan du fylla en yta med valfritt innehåll oberoende var den ligger.
 Till att börja med kommer ett antal olika varianter av layouter släppas.
-De nya komponenterna är släppta med <a href="./#status_for_komponenter">status beta</a> och kommer släppas som produktionsklara under hösten.</p>
-<h3 id="ny_komponent_for_tabell"><a class="header-anchor" href="#ny_komponent_for_tabell">Ny komponent för tabell</a></h3><p class="docs-paragraph">Vi tar fram en ny komponent för tabell som underlättar navigering för användaren.
+De nya komponenterna är släppta med <a href="./#status_for_komponenter">status beta</a> och kommer släppas som produktionsklara vid ett senare tillfälle.</p>
+<h3 id="ny_komponent_for_tabell"><a class="header-anchor" href="#ny_komponent_for_tabell">Ny komponent för tabell</a></h3><p class="docs-paragraph">Vi tar fram en ny komponent för tabell som underlättar navigering för användaren. Den nya tabellen kommer ha stöd för inline-redigering, dvs att användaren direkt kan redigera innehåll i en tabellcell.
 Samtidigt rättar vi buggar, uppdaterar dokumentationen och lägger till mindre förbättringar för tabell.
 Den nya komponenten kommer på sikt att ersätta dagens komponenter för tabell (datatabell och interaktiv tabell).</p>
-<h3 id="forhindra_dubbelklick_pa_knapp_och_knapp_i_vantande_lage"><a class="header-anchor" href="#forhindra_dubbelklick_pa_knapp_och_knapp_i_vantande_lage">Förhindra dubbelklick på knapp och knapp i väntande läge</a></h3><p class="docs-paragraph">Vi inför ett väntande läge på knapp när användare har klickat på knapp och det är en fördröjning innan knappens åtgärd är utförd.
-Vi ser också till att förhindra dubbelklick på knapp.
-Första steget är den nya Vue-komponenten för knapp som har släppts.</p>
+<h3 id="pagineringskomponent"><a class="header-anchor" href="#pagineringskomponent">Pagineringskomponent</a></h3><p class="docs-paragraph">Komponent för paginering är på gång.
+Den kan användas för att låta användaren navigera mellan innehåll som är uppdelat på flera sidor.
+Till att börja med stöds inte paginering av tabell, varken för befintliga tabellkomponenter (datatabell eller interaktiv tabell) eller den nya tabellen.
+När den nya tabellen är släppt kommer vi att arbeta vidare med hur pagineringen ska fungera tillsammans med den.</p>
 <h3 id="omskrivning_av_valideringsservice"><a class="header-anchor" href="#omskrivning_av_valideringsservice">Omskrivning av valideringsservice</a></h3><p class="docs-paragraph">Vi vill förenkla för hur du som konsument använder valideringsservice vid</p>
 <ul>
 <li>att vänta ut om ett inmatningsfält är giltigt eller ej</li>
@@ -644,9 +645,9 @@ Nästa komponent i ordningen är datamängdredigeraren.</li>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/pageobject-highlight (<a href="https://github.com/Forsakringskassan/designsystem/commits/a9c9a152f995fb90ec352c63075ef3d16d0417ec">a9c9a15</a>)<br />
+<div class="footer__right"><div class="version">feature/pageobject-highlight (<a href="https://github.com/Forsakringskassan/designsystem/commits/1e7c615b89a3174e092a51a9484e8210e71adfce">1e7c615</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/805">PR 805</a><br />
-        2025-11-11 18:09
+        2025-11-19 16:42
 </div>
 <div class="toolbar__item">
     <form id="version">
