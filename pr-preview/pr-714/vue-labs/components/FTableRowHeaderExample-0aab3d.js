@@ -3222,7 +3222,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
 });
 var _hoisted_1$6 = {
   scope: "col",
-  class: "table-ng__column table-ng__column--checkbox table-ng__column--select"
+  class: "table-ng__column table-ng__column--select"
 };
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableHeaderSelectable",
@@ -3847,23 +3847,6 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function getLabelFn(fn) {
-  if (fn) {
-    return fn;
-  }
-  return () => "";
-}
-function getValueFn(fn, key, coerce, defaultValue) {
-  if (fn) {
-    return fn;
-  }
-  if (key) {
-    return (row) => {
-      return coerce(row[key]);
-    };
-  }
-  return () => defaultValue;
-}
 function getUpdateFn(fn, key) {
   if (fn) {
     return fn;
@@ -3908,6 +3891,17 @@ function getParsedNumberUpdateFn(fn, key, parser) {
   }
   return () => void 0;
 }
+function getValueFn(fn, key, coerce, defaultValue) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row) => {
+      return coerce(row[key]);
+    };
+  }
+  return () => defaultValue;
+}
 function getFormattedValueFn(fn, key, formatter, defaultValue) {
   if (fn) {
     return (row) => {
@@ -3941,6 +3935,12 @@ function getFormattedNumberValueFn(fn, key, formatter, defaultValue) {
     };
   }
   return () => defaultValue;
+}
+function getLabelFn(fn) {
+  if (fn) {
+    return fn;
+  }
+  return () => "";
 }
 function defaultTnumValue(type) {
   const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
