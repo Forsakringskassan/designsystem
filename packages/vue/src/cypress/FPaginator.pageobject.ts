@@ -34,24 +34,6 @@ export class FPaginatorPageobject implements BasePageObject {
     }
 
     /**
-     * Get the button for the first page.
-     *
-     * @returns The button for the first page.
-     */
-    public firstPageButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__page`).first();
-    }
-
-    /**
-     * Get the button for the last page.
-     *
-     * @returns The button for the last page.
-     */
-    public lastPageButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__page`).last();
-    }
-
-    /**
      * Get the button for navigating to the next page.
      *
      * @returns The button for navigating to the next page.
@@ -61,22 +43,21 @@ export class FPaginatorPageobject implements BasePageObject {
     }
 
     /**
-     * Get the buttons for all pages shown.
+     * Gets the button/buttons for the specified page/pages.
      *
-     * @returns The buttons for all pages shown.
+     * @param page - The index of the page button (if number); the number of the page (if string)
+     * @returns The button for the specified page (if param `page` is defined); the buttons for all pages shown (if param `page` is undefined).
      */
-    public pageButtons(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__page`);
-    }
-
-    /**
-     * Get the button for a specified page.
-     *
-     * @param page - The number of the page.
-     * @returns The button for the specified page.
-     */
-    public pageButton(page: number): DefaultCypressChainable {
-        return cy.contains(`${this.selector} .paginator__page`, page);
+    public pageButton(page?: number | string): DefaultCypressChainable {
+        const pageButtons = cy.get(`${this.selector} .paginator__page`);
+        switch (typeof page) {
+            case "number":
+                return pageButtons.eq(page);
+            case "string":
+                return pageButtons.contains(page);
+            default:
+                return pageButtons;
+        }
     }
 
     /**
