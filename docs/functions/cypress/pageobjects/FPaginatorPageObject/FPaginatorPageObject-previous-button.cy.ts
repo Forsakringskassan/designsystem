@@ -7,7 +7,7 @@ it("previousButton() should navigate to previous page", () => {
 
     /* --- cut above --- */
     const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
-    paginator.pageButton(3).click();
+    paginator.pageButton("3").click();
     paginator.currentPageButton().should("contain.text", "3");
 
     // Go to previous page

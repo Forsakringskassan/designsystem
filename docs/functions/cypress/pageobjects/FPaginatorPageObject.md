@@ -53,46 +53,6 @@ currentPageButton();
 FPaginatorPageObject-current-page-button.cy.ts
 ```
 
-## firstPageButton()
-
-Används för att komma åt knapp för att gå till den första sidan.
-
-### Syntax
-
-```ts nocompile
-firstPageButton();
-```
-
-#### Returvärde
-
-`HTMLElement` med knappen för att gå till den första sidan.
-
-### Exempel
-
-```import static
-FPaginatorPageObject-first-page-button.cy.ts
-```
-
-## lastPageButton()
-
-Används för att komma åt knapp för att gå till den sista sidan.
-
-### Syntax
-
-```ts nocompile
-lastPageButton();
-```
-
-#### Returvärde
-
-`HTMLElement` med knappen för att gå till den sista sidan.
-
-### Exempel
-
-```import static
-FPaginatorPageObject-last-page-button.cy.ts
-```
-
 ## nextButton()
 
 Används för att komma åt knapp för att gå till nästa sida.
@@ -115,7 +75,7 @@ FPaginatorPageObject-next-button.cy.ts
 
 ## pageButton()
 
-Används för att komma åt knapp för att gå till en specifik sida.
+Används för att komma åt knapp för att gå till en specifik sida eller samtliga sidknappar.
 
 ### Syntax
 
@@ -125,37 +85,17 @@ pageButton(page);
 
 #### Parametrar
 
-`page: number`
-: Nummer för den sida som knappen har.
+`page?: number | string`
+: Nummer för knappens index; sträng för knappens sidnummer; odefinierat för samtliga sidknappar.
 
 #### Returvärde
 
-`HTMLElement` med knappen för att gå till den specifika sidan.
+`HTMLElement` med knappen för att gå till den specifika sidan (om `page` är definerat); `HTMLElement[]` med samtliga sidknappar (om `page` är odefinerat).
 
 ### Exempel
 
 ```import static
 FPaginatorPageObject-page-button.cy.ts
-```
-
-## pageButtons()
-
-Används för att komma åt samtliga sidknappar.
-
-### Syntax
-
-```ts nocompile
-pageButtons();
-```
-
-#### Returvärde
-
-`HTMLElement[]` med samtliga sidknappar.
-
-### Exempel
-
-```import static
-FPaginatorPageObject-page-buttons.cy.ts
 ```
 
 ## pageCounter()

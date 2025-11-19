@@ -545,11 +545,8 @@ export class FPaginatorPageobject implements BasePageObject {
     constructor(selector: string);
     currentPageButton(): DefaultCypressChainable;
     el(): DefaultCypressChainable;
-    firstPageButton(): DefaultCypressChainable;
-    lastPageButton(): DefaultCypressChainable;
     nextButton(): DefaultCypressChainable;
-    pageButton(page: number): DefaultCypressChainable;
-    pageButtons(): DefaultCypressChainable;
+    pageButton(page?: number | string): DefaultCypressChainable;
     pageCounter(): DefaultCypressChainable;
     previousButton(): DefaultCypressChainable;
     // (undocumented)
