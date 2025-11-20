@@ -19,6 +19,10 @@ PaginationExample.vue
 Sidknappar visas som standard.
 Sidräknare ersätter sidknapparna om paginatorn är för smal för att kunna visa sidknappar.
 
+```import live-example
+PaginationPageButtonsExample.vue
+```
+
 ## Dynamisk hämtning av data
 
 Det går att använda dynamisk hämtning av data. Det innebär att komponenten hämtar enbart det data som visas på den aktuella sidan istället för att göra ett urval av alla objekt.
