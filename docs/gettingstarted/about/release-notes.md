@@ -9,6 +9,13 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.27.0
+
+2025-11-21
+
+Lagt till en prop i Datamängdredigeraren för att kunna kontrollera storleken på modalen, läs mer {@link FCrudDataset Datamängdredigeraren}.  
+Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html)
+
 ## Version 6.26.0
 
 2025-11-10
@@ -126,7 +133,7 @@ Läs {@link FormatPlugin här} om hur du får formatering på till exempel datum
 
 ### Applikationslayout i beta
 
-Alla nya komponenter för applikationslayout är nu släppta i {@link about#beta status beta).
+Alla nya komponenter för applikationslayout är nu släppta i {@link about#beta status beta}.
 Observera att de nya komponenterna inte ska användas i produktion förrän de har status produktionsklar.
 Vi räknar med att kunna sätta status produktionsklar i någon av de närmast kommande releaserna.
 Läs mer om de nya komponenterna {@link FPageLayout applikationsmall}, {@link FResizePane justerbar yta},
