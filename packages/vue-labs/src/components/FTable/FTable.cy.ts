@@ -605,6 +605,160 @@ describe("2.4 active components", () => {
         //todo
     });
 });
+describe("3.1 Feedback to user on invalid input components", () => {
+    it("should display feedback for the cell with invalid input", () => {
+        //todo feature not implemented
+        // Navigera till sidan med formuläret
+        // Steg 1: Hitta cellen/inmatningsfältet
+        // Steg 2: Ange ett ogiltigt värde (exempel: fel format)
+        // Steg 3: Försök att skicka formuläret
+        // Steg 4: Kontrollera att återkoppling visas för just den cellen
+        // Steg 5: Kontrollera att inga felmeddelanden visas för andra celler
+    });
+});
+describe("3.2 Feedback to user on input components - Default status", () => {
+    it("should display a thick red underline for untouched cell (Default)", () => {
+        //todo feature not implemented
+        // Steg 1: Hitta cellen/inmatningsfältet som är orörd
+        // Steg 2: Kontrollera att cellen inte har fått fokus eller inmatning
+        // Steg 3: Verifiera att ett tjockt rött streck visas i nederkant
+    });
+});
+describe("3.3 Feedback to user on input components - Hover status", () => {
+    it("should display hover feedback with red underline, background change, and delayed error message", () => {
+        //todo feature not implemented
+        // Steg 1: Hitta cellen/inmatningsfältet
+        // Steg 2: Simulera hover över cellen
+        // Steg 3: Kontrollera att ett tjockt rött streck visas i nederkant
+        // Steg 4: Kontrollera att cellens bakgrund ändras
+        // Steg 5: Kontrollera att felmeddelande visas med 200ms fördröjning
+    });
+
+    it("should display error list with bullets if consumer chooses that option", () => {
+        //todo feature not implemented
+        // // Steg 1: Hitta fellistan
+        // Steg 2: Kontrollera om punkter används
+        // konsumenten väljer punkter eller ej
+    });
+
+    it("should handle scrolling when navigating to input component from error list", () => {
+        //todo feature not implemented
+        // Steg 1: Klicka på ett fel i fellistan
+        // Steg 2: Kontrollera att komponenten visas med 25% av skärmens höjd ovanför
+    });
+});
+describe("3.4 Feedback to user on input components - Focus status", () => {
+    it("should display thick border, background change, and delayed error message on focus", () => {
+        //todo feature not implemented
+        // Steg 1: Hitta cellen/inmatningsfältet
+        // Steg 2: Sätt fokus på cellen
+        // Steg 3: Kontrollera att ett tjockt streck visas runt hela cellen
+        // Steg 4: Kontrollera att cellens bakgrund ändras
+        // Steg 5: Kontrollera att felmeddelande visas med 200ms fördröjning
+    });
+
+    it("should display error list with or without bullets depending on consumer choice", () => {
+        //todo feature not implemented
+        // Steg 1: Hitta fellistan
+        // Steg 2: Kontrollera om punkter används eller ej
+    });
+
+    it("should handle scrolling when navigating to input component from error list", () => {
+        //todo feature not implemented
+        // Steg 1: Klicka på ett fel i fellistan
+        // Steg 2: Kontrollera att komponenten visas med 25% av skärmens höjd ovanför
+    });
+});
+describe("3.5 Feedback to user on input components - Active status", () => {
+    it("should show thick border and error message when input field is activated", () => {
+        //todo feature not implemented
+        // Steg 1: Aktivera inmatningsfältet via musklick
+        // Steg 2: Kontrollera att tjock ram visas runt cellen
+        // Steg 3: Kontrollera att felmeddelande visas på rätt plats
+        // Steg 4: När användaren skriver in tecken ska felmeddelande försvinna och ram återgå till svart
+    });
+
+    it("should show thick border and error message when radio button is activated", () => {
+        //todo feature not implemented
+        // Steg 1: Aktivera radioknapp
+        // Steg 2: Kontrollera att tjock ram och felmeddelande visas
+        // Steg 3: När användaren ändrar val ska felmeddelande försvinna
+    });
+    it("should show thick border and error message when radio checkbox is activated", () => {
+        //todo feature not implemented
+        // Steg 1: Aktivera kryssruta
+        // Steg 2: Kontrollera att tjock ram och felmeddelande visas
+        // Steg 3: När användaren ändrar val ska felmeddelande försvinna
+    });
+    it("should show thick border and error message when dropdown is activated", () => {
+        //todo feature not implemented
+        // Steg 1: Aktivera dropplista
+        // Steg 2: Kontrollera att tjock ram och felmeddelande visas
+        // Steg 3: När användaren väljer alternativ ska felmeddelande försvinna
+    });
+
+    it("should show thick border and error message when combobox is activated", () => {
+        //todo feature not implemented
+        // Steg 1: Aktivera kombobox via enter
+        // Steg 2: Kontrollera att tjock ram och felmeddelande visas
+        // Steg 3: När användaren skriver eller navigerar med piltangenter ska felmeddelande försvinna
+    });
+});
+
+describe("3.6 Feedback to user on table validation errors at submit", () => {
+    it("should highlight invalid cells and set focus on the first invalid cell after submit", () => {
+        //todo feature not implemented
+        // Steg 1: Hitta tabellens celler
+        // Steg 2: Ange ogiltiga värden i flera celler
+        // Steg 3: Klicka på submit-knappen
+        // Steg 4: Kontrollera att felmeddelanden visas för alla ogiltiga celler
+        // Steg 5: Kontrollera att första ogiltiga cellen får fokus
+    });
+});
+
+describe("3.7 Table row validation (cross-validation)", () => {
+    //todo not included in MVP
+    it("should show error message when row validation fails", () => {
+        //todo feature not implemented
+        // Steg 1: Hitta en rad i tabellen
+        // Steg 2: Ange värden som bryter mot korsvalidering (ex: startdatum > slutdatum)
+        // Steg 3: Klicka på submit-knappen
+        // Steg 4: Kontrollera att felmeddelande visas för hela raden
+        // Steg 5: Kontrollera att raden markeras med röd ram
+    });
+
+    it("should not show error message when row validation passes", () => {
+        //todo feature not implemented
+        // Steg 1: Hitta en rad i tabellen
+        // Steg 2: Ange värden som uppfyller korsvalidering (exempel: startdatum < slutdatum)
+        // Steg 3: Klicka på submit-knappen
+        // Steg 4: Kontrollera att inget felmeddelande visas
+        // Steg 5: Kontrollera att raden inte är markerad med röd ram
+    });
+});
+describe("3.8 Error list overview and navigation in table", () => {
+    //todo not included in MVP
+
+    it("should display a consolidated error list with all table errors after submit", () => {
+        //todo feature not implemented
+        // Steg 1: Ange ogiltiga värden i flera celler
+        // Steg 2: Klicka på submit-knappen
+        // Steg 3: Kontrollera att fellistan visas
+        // Steg 4: Kontrollera att alla fel från tabellen finns med i fellistan
+    });
+
+    it("should navigate to the corresponding cell when clicking an error in the list", () => {
+        //todo feature not implemented
+        // Steg 1: Klicka på första fel i fellistan
+        // Steg 2: Kontrollera att fokus sätts på motsvarande cell
+        // Steg 3: Kontrollera att cellen är markerad med röd ram
+    });
+    it("should navigate through all errors in the list", () => {
+        //todo feature not implemented
+        // Steg 1: Iterera över alla fel i fellistan
+        // Steg 2: Kontrollera att motsvarande cell får fokus
+    });
+});
 
 describe("4.2 Arrow key navigation", () => {
     const rows = [
@@ -841,6 +995,168 @@ describe("7.7 Dataset change resets selection ", () => {
     });
     it.skip("should clear all selected rows and bulk checkbox when a row is removed", () => {
         //todo
+    });
+});
+
+describe("9.1 Table sorting and filtering with dataset sorter", () => {
+    it("should allow sorting of table columns and update aria-sort attribute", () => {
+        //todo feature not implemented
+        // Steg 1: Hitta kolumnhuvudet
+        // Steg 2: Klicka för att sortera stigande
+        // Steg 3: Kontrollera att aria-sort är "ascending"
+        // Steg 4: Klicka igen för att sortera fallande
+        // Steg 5: Kontrollera att aria-sort är "descending"
+        // Steg 6: Klicka en tredje gång för att ta bort sortering
+        // Steg 7: Kontrollera att aria-sort är "none"
+    });
+
+    it("should allow filtering of table content using dataset sorter", () => {
+        //todo feature not implemented
+        // Steg 1: Ange filtervärde i datamängdsorteraren
+        // Steg 2: Kontrollera att tabellen endast visar rader som matchar filter
+    });
+});
+
+it("should combine sorting and filtering correctly", () => {
+    //todo feature not implemented
+    // Steg 1: Ange filtervärde
+    // Steg 2: Sortera kolumnen
+    // Steg 3: Kontrollera att filtrerade rader är sorterade
+    // Steg 4: Kontrollera aria-sort attributet
+});
+
+describe("9.2 Table sorting with dataset sorter", () => {
+    it("should allow user to sort column and apply sorting to entire table", () => {
+        //todo
+        // Steg 1: Hitta kolumnhuvudet som ska sorteras
+        // Steg 2: Klicka för att sortera stigande
+        // Steg 3: Kontrollera att hela tabellen, inte bara kolumnen är sorterad stigande
+        // Steg 4: Klicka igen för att sortera fallande
+        // Steg 5: Kontrollera att hela tabellen är sorterad fallande
+    });
+
+    it("should not limit sorting to only visible rows", () => {
+        //todo
+        // Steg 1: Applicera en filtrering som döljer vissa rader
+        // Steg 2: Sortera kolumnen
+        // Steg 3: Kontrollera att även dolda rader är sorterade i datamängden
+    });
+});
+
+describe("9.3 Table filtering with dataset sorter", () => {
+    it("should allow user to filter table content across the entire dataset", () => {
+        //todo
+        // Steg 1: Ange filtervärde i datamängdsorteraren
+        // Steg 2: Kontrollera att tabellen endast visar rader som matchar filter
+        // Steg 3: Kontrollera att filtreringen gäller hela datamängden, inte bara synliga rader
+        // Alla värden i dataset ska matcha filter
+    });
+
+    it("should remove filter and show all rows when filter is cleared", () => {
+        //todo
+        // Steg 1: Ange filtervärde
+        // Steg 2: Rensa filter
+        // Steg 3: Kontrollera att alla rader visas igen
+    });
+});
+
+describe("9.4 Expandable table - sorting and filtering on level 1 rows", () => {
+    it("should sort only level 1 rows when column header is clicked", () => {
+        //todo
+        // Steg 1: Hitta kolumnhuvudet
+        // Steg 2: Klicka för att sortera stigande
+        // Steg 3: Kontrollera att endast nivå 1-rader är sorterade
+        // Steg 4: Kontrollera att nivå 2-rader inte påverkas av sorteringen
+    });
+
+    it("should filter only level 1 rows when filter is applied", () => {
+        //todo
+        // Steg 1: Sätt filtervärde
+        // Steg 2: Kontrollera att nivå 1-rader filtreras
+        // Steg 3: Kontrollera att nivå 2-rader fortfarande visas under sina nivå 1-rader
+    });
+
+    it("should allow expanding and collapsing rows without affecting sorting/filtering rules", () => {
+        //todo
+        // Steg 1: Expandera en nivå 1-rad
+        // Steg 2: Kontrollera att nivå 2-rader visas
+        // Steg 3: Kollapsa samma rad
+        // Steg 4: Kontrollera att nivå 2-rader döljs
+    });
+});
+
+describe("10.1 Add and remove rows in table", () => {
+    it("should allow user to add a new row and set focus on first cell", () => {
+        //todo
+        // Steg 1: Klicka på knappen för att lägga till rad
+        // Steg 2: Kontrollera att en ny rad har lagts till
+        // Steg 3: Kontrollera att fokus hamnar i första cellen i nya raden
+    });
+
+    it("should allow user to remove a row", () => {
+        //todo
+        // Steg 1: Klicka på ta bort-knappen för en rad
+        // Steg 2: Kontrollera att raden har tagits bort
+    });
+
+    it("should re-sort and re-filter table when data changes", () => {
+        //todo
+        // Steg 1: Lägg till en ny rad
+        // Steg 2: Ange data i nya raden
+        // Steg 3: Kontrollera att tabellen sorteras om (exempel: stigande ordning)
+        // Steg 4: Kontrollera att filtrering fortfarande fungerar efter dataändring
+    });
+});
+
+describe("10.2 Table pagination requirements", () => {
+    //todo not MVP
+
+    it("should render and allow usage of pagination component in table", () => {
+        // todo 8.1: Det ska gå att använda pagineringskomponent i tabell
+    });
+
+    it("should display correct subset of rows when user selects a page", () => {
+        //todo 8.2: Visa tabellen i delvyer baserat på vald sida
+    });
+
+    it("should set focus order when tabbing from table to pagination", () => {
+        //todo 8.3: Tab-ordning från tabell till paginering
+    });
+
+    it("should move focus back to first table cell when shift+tab from first pagination item", () => {
+        //todo 8.4: Shift+Tab från första interagerbara objekt
+    });
+
+    it("should move focus to next interactive element after pagination when tabbing from last item", () => {
+        // todo 8.5: Tab från sista interagerbara objekt
+    });
+
+    it("should not change pagination when expanding/collapsing rows", () => {
+        //todo 8.6: Expanderbara rader ska inte påverka paginering
+    });
+
+    it("should reset pagination to page 1 when sorting or filtering", () => {
+        // todo 8.7: Sortering/filtrering ska återställa till sida 1
+    });
+
+    it("should allow user to change page using keyboard keys", () => {
+        // todo 8.8: Tangentbord (page up, page home)
+    });
+});
+
+describe("10.3 Add and remove rows in table - Expandable rows", () => {
+    it("should update table when adding level 1 row", () => {
+        //todo
+        // Steg 1: Klicka på knappen för att lägga till nivå 1-rad
+        // Steg 2: Kontrollera att tabellen uppdaterats (antal nivå 1-rader ökar)
+    });
+
+    it("should not count adding lower-level rows ", () => {
+        //todo
+        // Steg 1: Hitta en nivå 1-rad och expandera den
+        // Steg 2: Lägg till en nivå 2-rad under den expanderade raden
+        // Steg 3: Kontrollera att tabellen inte räknas som ny (antal nivå 1-rader oförändrat)
+        // Steg 4: Kontrollera att nivå 2-raden faktiskt lagts till under rätt nivå 1-rad
     });
 });
 
