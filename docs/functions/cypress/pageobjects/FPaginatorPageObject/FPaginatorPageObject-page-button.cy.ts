@@ -24,6 +24,10 @@ it("pageButton() should navigate to specific page or pages", () => {
     paginator.pageButton(-1).click();
     paginator.currentPageButton().should("contain.text", "20");
 
+    // Number param with value "-2"
+    paginator.pageButton(-2).click();
+    paginator.currentPageButton().should("contain.text", "19");
+
     // Number param with value "0"
     paginator.pageButton(0).click();
     paginator.currentPageButton().should("contain.text", "1");

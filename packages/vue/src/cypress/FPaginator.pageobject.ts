@@ -41,13 +41,13 @@ export class FPaginatorPageobject implements BasePageObject {
      */
     public pageButton(page?: number | string): DefaultCypressChainable {
         const pageButtons = cy.get(`${this.selector} .paginator__page`);
-
-        if (page === undefined) {
-            return pageButtons;
-        } else if (typeof page === "number") {
-            return page < 0 ? pageButtons.last() : pageButtons.eq(page);
-        } else {
-            return pageButtons.contains(page);
+        switch (typeof page) {
+            case "number":
+                return pageButtons.eq(page);
+            case "string":
+                return pageButtons.contains(page);
+            default:
+                return pageButtons;
         }
     }
 
