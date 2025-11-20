@@ -14,6 +14,11 @@ Innehållet kan till exempel vara sökresultat eller tabeller.
 PaginationExample.vue
 ```
 
+## Sidknappar eller sidräknare
+
+Sidknappar visas som standard.
+Sidräknare ersätter sidknapparna om paginatorn är för smal för att kunna visa sidknappar.
+
 ## Dynamisk hämtning av data
 
 Det går att använda dynamisk hämtning av data. Det innebär att komponenten hämtar enbart det data som visas på den aktuella sidan istället för att göra ett urval av alla objekt.
