@@ -47,13 +47,13 @@ export class FPaginatorPageobject {
      * @returns The button for the specified page (if param `page` is defined); the buttons for all pages shown (if param `page` is undefined).
      */
     public pageButton(page?: number | string): string {
-        if (page === undefined) {
-            return `${this.selector} .paginator__page`;
-        } else if (typeof page === "number") {
-            const buttonText = `button-${page}`;
-            return `${this.selector} [data-page~=${page < 0 ? "last" : buttonText}]`;
-        } else {
-            return `${this.selector} [data-page~="page-${page}"]`;
+        switch (typeof page) {
+            case "number":
+                return `${this.selector} [data-page~="button-${page}"]`;
+            case "string":
+                return `${this.selector} [data-page~="page-${page}"]`;
+            default:
+                return `${this.selector} .paginator__page`;
         }
     }
 
