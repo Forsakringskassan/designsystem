@@ -134,7 +134,7 @@ FCrudDatasetCustomTextExample.vue
 
 ## Modalstorlek
 
-Storleken på modalerna för "Lägg till" och "Ändra" kan anpassas med propen `addAndModifyModalSize`.
+Storleken på modalerna för "Lägg till" och "Ändra" kan anpassas med propen `formModalSize`.
 
 Giltiga värden är:
 
