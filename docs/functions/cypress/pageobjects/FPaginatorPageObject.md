@@ -1,25 +1,25 @@
 ---
-name: FPaginatorPageObject
-title: "FPaginatorPageObject"
+name: FPaginatorPageobject
+title: "FPaginatorPageobject"
 layout: api.class
 ---
 
-Använd `FPaginatorPageObject` för att hämta information relaterat till {@link pagination FPaginator}.
+Använd `FPaginatorPageobject` för att hämta information relaterat till {@link pagination FPaginator}.
 
 Samtliga exempel använder detta underlag:
 
 ```import static
-FPaginatorPageObject.vue
+FPaginatorPageobject.vue
 ```
 
-## FPaginatorPageObject()
+## FPaginatorPageobject()
 
 Skapar ett nytt Cypress-pageobjekt.
 
 ### Syntax
 
 ```ts nocompile nolint
-new FPaginatorPageObject(selector);
+new FPaginatorPageobject(selector);
 ```
 
 #### Parametrar
@@ -30,7 +30,7 @@ new FPaginatorPageObject(selector);
 ### Exempel
 
 ```import static
-FPaginatorPageObject.cy.ts
+FPaginatorPageobject.cy.ts
 ```
 
 ## currentPageButton()
@@ -50,7 +50,7 @@ currentPageButton();
 ### Exempel
 
 ```import static
-FPaginatorPageObject-current-page-button.cy.ts
+FPaginatorPageobject-current-page-button.cy.ts
 ```
 
 ## nextButton()
@@ -70,7 +70,7 @@ nextButton();
 ### Exempel
 
 ```import static
-FPaginatorPageObject-next-button.cy.ts
+FPaginatorPageobject-next-button.cy.ts
 ```
 
 ## pageButton()
@@ -95,7 +95,7 @@ pageButton(page);
 ### Exempel
 
 ```import static
-FPaginatorPageObject-page-button.cy.ts
+FPaginatorPageobject-page-button.cy.ts
 ```
 
 ## pageCounter()
@@ -116,7 +116,7 @@ pageCounter();
 ### Exempel
 
 ```import static
-FPaginatorPageObject-page-counter.cy.ts
+FPaginatorPageobject-page-counter.cy.ts
 ```
 
 ## previousButton()
@@ -136,5 +136,5 @@ previousButton();
 ### Exempel
 
 ```import static
-FPaginatorPageObject-previous-button.cy.ts
+FPaginatorPageobject-previous-button.cy.ts
 ```
