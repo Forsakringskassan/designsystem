@@ -78,4 +78,13 @@ export class FPaginatorPageobject implements BasePageObject {
     public previousButton(): DefaultCypressChainable {
         return cy.get(`${this.selector} .paginator__previous`);
     }
+
+    public pageCounter(): DefaultCypressChainable {
+    return cy.get(`${this.selector} .paginator__page-counter`);
+}
+
+ public PageButtons(): DefaultCypressChainable {
+        return cy.get('.paginator_pages button.paginator_page');
+    }
+
 }

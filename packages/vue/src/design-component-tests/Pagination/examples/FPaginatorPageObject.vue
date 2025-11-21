@@ -34,7 +34,7 @@ const rows: Row[] = [
 
 <template>
     <!-- cut above -->
-    <f-pagination :items="rows" :items-per-page="1">
+    <f-pagination :items="rows" :items-per-page="5">
         <template #default="{ items: currentPageItems, currentPage, numberOfPages }">
             <f-interactive-table :rows="currentPageItems">
                 <template #caption> Tabell </template>
