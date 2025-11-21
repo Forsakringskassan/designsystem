@@ -4706,11 +4706,7 @@ function elementIsRadioButton(element) {
 function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
 }
-var sizes = ["", "small", "medium", "large", "fullscreen", "fullwidth"];
 function sizeClass(size) {
-  if (!sizes.includes(size)) {
-    throw new Error(`"${size}" is not a valid size`);
-  }
   if (!size) {
     return [];
   } else if (size === "fullscreen") {
@@ -4774,10 +4770,7 @@ var _sfc_main$1k = defineComponent({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * Default behavior is that the modal will restore focus to previous element once closed.
@@ -5032,10 +5025,7 @@ var _sfc_main$1j = defineComponent({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * The aria-label attribute text for the top right close button.
@@ -5812,10 +5802,7 @@ var _sfc_main$1d = defineComponent({
      */
     size: {
       type: String,
-      default: "",
-      validator(value) {
-        return sizes.includes(value);
-      }
+      default: ""
     },
     /**
      * @ignore
@@ -12033,6 +12020,14 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
       type: String,
       required: false,
       default: TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "\xC4r du s\xE4ker p\xE5 att du vill ta bort raden?")
+    },
+    /**
+     * Property for changing the "add" and "modify" modal size
+     */
+    formModalSize: {
+      type: String,
+      required: false,
+      default: ""
     }
   },
   emits: ["created", "deleted", "updated", "update:modelValue"],
@@ -12223,6 +12218,7 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
         "is-open": isFormModalOpen.value,
         "aria-close-text": unref($t2)("fkui.crud-dataset.modal.close", "St\xE4ng"),
         buttons: formModalButtons.value,
+        size: __props.formModalSize,
         "use-error-list": false,
         "before-submit": __props.beforeSubmit,
         "before-validation": __props.beforeValidation,
@@ -12242,7 +12238,7 @@ var _sfc_main$T = /* @__PURE__ */ defineComponent({
           item: item.value
         }))) : createCommentVNode("", true)]),
         _: 3
-      }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(FConfirmModal), {
+      }, 8, ["is-open", "aria-close-text", "buttons", "size", "before-submit", "before-validation", "on-cancel", "onCancel"]), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref(FConfirmModal), {
         "is-open": isConfirmModalOpen.value,
         buttons: confirmDeleteButtons.value,
         onConfirm: onDeleteConfirm,

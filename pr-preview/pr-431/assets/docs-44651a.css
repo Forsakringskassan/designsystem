@@ -6903,10 +6903,7 @@ main {
 }
 
 .navigation {
-  --active-background: #ddd;
-  --highlight-color: #116a3e;
   --highlight-width: 4px;
-  --hover-color: #ddd;
   display: none;
   padding: 1.5rem;
   width: var(--sidenav-width);
@@ -6932,13 +6929,13 @@ main {
 }
 
 .navigation li.link.active {
-  border-color: var(--highlight-color);
-  background: var(--active-background);
+  border-color: var(--docs-navigation-highlight-color);
+  background: var(--docs-navigation-active-background);
 }
 
 .navigation li.link a {
   display: block;
-  color: var(--f-text-color-default);
+  color: var(--docs-text-color-default);
   padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
   line-height: 1.2;
   text-decoration: none;
@@ -6947,8 +6944,8 @@ main {
 }
 
 .navigation li.link a:hover {
-  background: var(--hover-color);
-  border-color: var(--highlight-color);
+  background: var(--docs-navigation-hover-color);
+  border-color: var(--docs-navigation-highlight-color);
 }
 
 .navigation summary {
@@ -6960,8 +6957,8 @@ main {
 }
 
 .navigation summary:hover {
-  background: var(--hover-color);
-  border-color: var(--highlight-color);
+  background: var(--docs-navigation-hover-color);
+  border-color: var(--docs-navigation-highlight-color);
 }
 
 .navigation summary::after {
@@ -7331,7 +7328,7 @@ p:not(.code-preview p) {
 
 main h1:not(.code-preview h1) {
   font-size: 2.5rem;
-  color: #1b1e23;
+  color: var(--docs-text-color-default);
 }
 
 main h2:not(.code-preview h2) {
@@ -7345,30 +7342,6 @@ main h3:not(.code-preview h3) {
 
 main h4:not(.code-preview h4) {
   font-size: 1rem;
-}
-
-h1 .header-anchor {
-  color: var(--f-text-color-heading-1);
-}
-
-h2 .header-anchor {
-  color: var(--f-text-color-heading-2);
-}
-
-h3 .header-anchor {
-  color: var(--f-text-color-heading-3);
-}
-
-h4 .header-anchor {
-  color: var(--f-text-color-heading-4);
-}
-
-h5 .header-anchor {
-  color: var(--f-text-color-heading-5);
-}
-
-h6 .header-anchor {
-  color: var(--f-text-color-heading-6);
 }
 
 .header-anchor:hover {
@@ -7395,6 +7368,15 @@ h1 code {
   font-family: var(--docs-font-family);
   background-color: transparent;
   font-weight: 400;
+}
+
+h1 .header-anchor,
+h2 .header-anchor,
+h3 .header-anchor,
+h4 .header-anchor,
+h5 .header-anchor,
+h6 .header-anchor {
+  color: var(--docs-text-color-default);
 }
 
 h1 code,
@@ -7855,6 +7837,9 @@ kbd {
   --docs-cookie-border-color: #4a52b6;
   --docs-code-background-color: #f4f4f4;
   --docs-code-optional-background-color: #e5e5e5;
+  --docs-navigation-active-background: #ddd;
+  --docs-navigation-highlight-color: #116a3e;
+  --docs-navigation-hover-color: #ddd;
 }
 
 *,
