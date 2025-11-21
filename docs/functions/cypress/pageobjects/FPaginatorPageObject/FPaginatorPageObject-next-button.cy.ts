@@ -1,5 +1,5 @@
 import { FPaginatorPageobject } from "@fkui/vue/cypress";
-import Example from "./FPaginatorPageObject.vue";
+import Example from "./FPaginatorPageobject.vue";
 
 it("nextButton() should navigate to next page", () => {
     cy.mount(Example);

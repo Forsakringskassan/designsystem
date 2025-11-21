@@ -1,5 +1,5 @@
 import { FPaginatorPageobject } from "@fkui/vue/cypress";
-import Example from "./FPaginatorPageObject.vue";
+import Example from "./FPaginatorPageobject.vue";
 
 it("el() should select correct element", () => {
     cy.mount(Example);
