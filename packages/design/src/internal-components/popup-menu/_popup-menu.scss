@@ -1,13 +1,14 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
 @use "../../core/config-variables";
+@use "variables" as *;
 
 .ipopupmenu {
-    background-color: var(--f-background-popupmenu);
+    background-color: --fkds-color-background-primary;
 
     &__list {
         margin: 0;
-        border: 1px solid var(--f-border-color-popupmenu);
+        border: var(--f-border-width-small) solid $popupmenu-color-border;
         padding: size.$padding-050;
 
         &__item {
@@ -18,11 +19,11 @@
             a,
             a:visited,
             a:active {
-                color: var(--f-text-color-popupmenu);
+                color: $popupmenu-color-text-active;
             }
 
             a:hover {
-                color: var(--f-text-color-popupmenu-hover);
+                color: $popupmenu-color-text-hover;
             }
         }
     }
@@ -36,12 +37,16 @@
             padding: size.$padding-075;
             display: block;
             &:hover {
-                background-color: var(--f-background-popupmenu-vertical-hover);
+                background-color: $popupmenu-color-background-hover;
             }
 
             &--highlight {
-                background-color: var(--f-background-popupmenu-vertical-highlight);
+                background-color: $popupmenu-color-background-selected;
                 font-weight: var(--f-font-weight-medium);
+
+                & a {
+                    color: $popupmenu-color-text-selected;
+                }
             }
         }
     }
