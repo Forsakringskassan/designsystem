@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 6.27.0 (2025-11-21)
+
+### Features
+
+* **@fkui/vue:** exposes FFormModal size props (refs SFKUI-7464) ca6614d
+* **deps:** update dependency glob to v12 948a9ef
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** `FTableColumn` do not render content if header (fixes SFKUI-7322) 78f79cd
+* **@fkui/design:** fix deprecation warning from `@fkui/design` stylelint plugin (refs SFKUI-6500) 368778a
+* **deps:** update dependency glob to v11.1.0 [security] 5ca34ea
+* **deps:** update dependency i18next to v25.6.2 90f66d2
+* **deps:** update dependency sass to v1.94.0 568c2a2
+* **deps:** update dependency sass to v1.94.1 1e30049
+
 ## 6.26.0 (2025-11-10)
 
 ### Features
