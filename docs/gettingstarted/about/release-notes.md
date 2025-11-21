@@ -9,6 +9,13 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.27.0
+
+2025-11-21
+
+Lagt till en prop `formModalSize`i Datamängdredigeraren för att kunna kontrollera storleken på modalen, läs mer {@link FCrudDataset Datamängdredigeraren}.  
+Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html)
+
 ## Version 6.26.0
 
 2025-11-10
