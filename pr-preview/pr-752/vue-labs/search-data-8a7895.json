@@ -1,0 +1,113 @@
+{
+  "terms": [
+    "FKUI Vue Labs",
+    "FTablePageObject",
+    "Tidsinmatning",
+    "XTimeTextField",
+    "Användning",
+    "visa data",
+    "kolumn",
+    "rad",
+    "kolumnrubrik",
+    "radrubrik",
+    "kolumntyper",
+    "Tabell",
+    "FTable",
+    "navigering i tabell",
+    "tangentbordsnavigering",
+    "kolumn",
+    "rad",
+    "kolumnrubrik",
+    "radrubrik",
+    "kolumntyper",
+    "FTable",
+    "FTable",
+    "Utforma tabell",
+    "design"
+  ],
+  "results": [
+    {
+      "url": "index.html",
+      "title": "FKUI Vue Labs",
+      "terms": []
+    },
+    {
+      "url": "pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": []
+    },
+    {
+      "url": "components/xtimetextfield.html",
+      "title": "Tidsinmatning",
+      "terms": [
+        "XTimeTextField"
+      ]
+    },
+    {
+      "url": "components/usetable.html",
+      "title": "Användning",
+      "terms": [
+        "visa data",
+        "kolumn",
+        "rad",
+        "kolumnrubrik",
+        "radrubrik",
+        "kolumntyper"
+      ]
+    },
+    {
+      "url": "components/ftabledoc.html",
+      "title": "Tabell",
+      "terms": [
+        "navigering i tabell",
+        "tangentbordsnavigering",
+        "kolumn",
+        "rad",
+        "kolumnrubrik",
+        "radrubrik",
+        "kolumntyper",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/ftable.html",
+      "title": "FTable",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/designtable.html",
+      "title": "Utforma tabell",
+      "terms": [
+        "design"
+      ]
+    }
+  ],
+  "mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 3,
+    "5": 3,
+    "6": 3,
+    "7": 3,
+    "8": 3,
+    "9": 3,
+    "10": 3,
+    "11": 4,
+    "12": 4,
+    "13": 4,
+    "14": 4,
+    "15": 4,
+    "16": 4,
+    "17": 4,
+    "18": 4,
+    "19": 4,
+    "20": 5,
+    "21": 5,
+    "22": 6,
+    "23": 6
+  }
+}
