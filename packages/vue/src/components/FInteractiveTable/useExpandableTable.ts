@@ -24,7 +24,7 @@ type Emit<T> = ((evt: "expand", row: T) => void) &
  * @internal
  */
 export function useExpandableTable<T extends object>(
-    expandableAttribute: string,
+    expandableAttribute: keyof T | undefined,
     keyAttribute: keyof T,
     describedby: string | undefined,
     emit: Emit<T>,
@@ -33,7 +33,7 @@ export function useExpandableTable<T extends object>(
     const expandedRows: Ref<T[]> = ref([]);
 
     const isExpandableTable = computed(() => {
-        return expandableAttribute.length > 0;
+        return Boolean(expandableAttribute);
     });
 
     const hasExpandableSlot = computed(() => {
@@ -57,7 +57,12 @@ export function useExpandableTable<T extends object>(
     }
 
     function rowAriaExpanded(row: T): boolean | undefined {
-        if (!isExpandableTable || !row[expandableAttribute as keyof T]) {
+        if (!expandableAttribute) {
+            return undefined;
+        }
+
+        const expandedRow = row[expandableAttribute];
+        if (!expandedRow) {
             return undefined;
         }
 
@@ -96,18 +101,29 @@ export function useExpandableTable<T extends object>(
     }
 
     function expandableRows(row: T): T[] | undefined {
-        const expandableRows = row[expandableAttribute as keyof T] as unknown;
+        if (!expandableAttribute) {
+            return undefined;
+        }
 
+        const expandableRows = row[expandableAttribute];
+
+        /* eslint-disable-next-line sonarjs/different-types-comparison -- false positive (https://sonarsource.atlassian.net/browse/JS-619) */
         if (expandableRows === undefined || expandableRows === null) {
             return undefined;
         }
+
         if (!Array.isArray(expandableRows)) {
             throw new Error(`Expandable rows must be an array`);
         }
+
         if (expandableRows.length === 0) {
             return undefined;
         }
 
+        /* technical debt: we are lying here as `expandableRows` is actually
+         * `T[ExpandableAttribue]` but it breaks lots of other functions as they
+         * always expect `T[]` (often but not always `T[]` and
+         * `T[ExpandableAttribue]` have the same shape though) */
         return expandableRows as T[];
     }
 
