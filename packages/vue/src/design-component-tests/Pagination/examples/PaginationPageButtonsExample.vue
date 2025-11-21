@@ -38,5 +38,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components :template :livedata></live-example>
+    <live-example :components :template :livedata>
+        <span>Exempel</span>
+    </live-example>
 </template>
