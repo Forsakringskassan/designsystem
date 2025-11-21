@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-8027db.json"
+            href="../search-data-bacda3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-4V/ZM4CGdjKJ1YzlIQknmNxuQ5DoKyUpcGkdw3/+mWHkhXUryWCCqHNJ4Kb6WEXf"
+            integrity="sha384-Vmw0mQJJ2tYdsLsTJvDH3BfyEW+kOTYovthCon09D+W09hC6NQyftc1jRaz2vUDJ"
             id="search-data"
         />
     </head>
@@ -1095,13 +1095,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3703fe5abb8cd4a93612cd8e1a8eeacefecfe4c6/packages/vue/src/components/FPaginateDataset/FPaginateDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/d1ab51db5195403ec47472ac5b0733150b196919/packages/vue/src/components/FPaginateDataset/FPaginateDataset.vue">
                 FPaginateDataset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3703fe5abb8cd4a93612cd8e1a8eeacefecfe4c6/packages/vue/src/components/FPaginator/FPaginator.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/d1ab51db5195403ec47472ac5b0733150b196919/packages/vue/src/components/FPaginator/FPaginator.vue">
                 FPaginator
             </a>
             
@@ -1161,30 +1161,53 @@ Innehållet kan till exempel vara sökresultat eller tabeller.</p>
             <h2 id="sidknappar_eller_sidraknare"><a class="header-anchor" href="#sidknappar_eller_sidraknare">Sidknappar eller sidräknare</a></h2><p class="docs-paragraph">Sidknappar visas som standard.
 Sidräknare ersätter sidknapparna om paginatorn är för smal för att kunna visa sidknappar.</p>
 
-                <div
-                    id="example-0c290e"
-                    class="code-preview code-preview--borderless"
-                    
-                    data-tags="live-example"
-                    data-language="vue"
-                >
-                    
-        <div id="example-3a7eaf"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PaginationPageButtonsExample-3a7eaf.js"></script>
-    
+            <div
+                id="example-52421b"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="html"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    <f-paginate-dataset :items="rows">
+    <template #default="{ items: currentPageItems }">
+        <f-paginator />
+    </template>
+</f-paginate-dataset>
+
                 </div>
-            <h2 id="dynamisk_hamtning_av_data"><a class="header-anchor" href="#dynamisk_hamtning_av_data">Dynamisk hämtning av data</a></h2><p class="docs-paragraph">Det går att använda dynamisk hämtning av data. Det innebär att komponenten hämtar enbart det data som visas på den aktuella sidan istället för att göra ett urval av alla objekt.</p>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-paginate-dataset</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-paginate-dataset</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="dynamisk_hamtning_av_data"><a class="header-anchor" href="#dynamisk_hamtning_av_data">Dynamisk hämtning av data</a></h2><p class="docs-paragraph">Det går att använda dynamisk hämtning av data. Det innebär att komponenten hämtar enbart det data som visas på den aktuella sidan istället för att göra ett urval av alla objekt.</p>
 <p class="docs-paragraph">Attributet <code>itemsLength</code> anger hur många objekt det finns totalt och utgör grunden för siduppdelningen.</p>
 <p class="docs-paragraph">Attributet <code>fetchData</code> anger den funktion som ska användas för hämtning av det data som ska visas på sidan.
 Denna funktion används i exemplet ovan:</p>
 
                 <div
-                    id="example-f2d584"
+                    id="example-1780eb"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1465,9 +1488,9 @@ Denna funktion används i exemplet ovan:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/3703fe5abb8cd4a93612cd8e1a8eeacefecfe4c6">3703fe5</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/d1ab51db5195403ec47472ac5b0733150b196919">d1ab51d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-11-21 07:46
+        2025-11-21 07:57
 </div>
 <div class="toolbar__item">
     <form id="version">
