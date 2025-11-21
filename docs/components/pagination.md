@@ -19,8 +19,12 @@ PaginationExample.vue
 Sidknappar visas som standard.
 Sidräknare ersätter sidknapparna om paginatorn är för smal för att kunna visa sidknappar.
 
-```import live-example
-PaginationPageButtonsExample.vue
+```html
+<f-paginate-dataset :items="rows">
+    <template #default="{ items: currentPageItems }">
+        <f-paginator />
+    </template>
+</f-paginate-dataset>
 ```
 
 ## Dynamisk hämtning av data
