@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FInteractiveTable, FPagination, FPaginator, FTableColumn } from "@fkui/vue";
+import { FInteractiveTable, FPaginateDataset, FPaginator, FTableColumn } from "@fkui/vue";
 
 interface Row {
     id: string;
@@ -34,7 +34,7 @@ const rows: Row[] = [
 
 <template>
     <!-- cut above -->
-    <f-pagination :items="rows" :items-per-page="5">
+    <f-paginate-dataset :items="rows" :items-per-page="5">
         <template #default="{ items: currentPageItems, currentPage, numberOfPages }">
             <f-interactive-table :rows="currentPageItems">
                 <template #caption> Tabell </template>
@@ -46,6 +46,6 @@ const rows: Row[] = [
             </f-interactive-table>
             <f-paginator :current-page :number-of-pages />
         </template>
-    </f-pagination>
+    </f-paginate-dataset>
     <!-- cut below -->
 </template>

@@ -1,5 +1,5 @@
 import { FInteractiveTablePageObject } from "../../../cypress";
-import { FPaginatorPageObject } from "../../../cypress/FPaginator.pageobject";
+import { FPaginatorPageobject } from "../../../cypress/FPaginator.pageobject";
 import Example1 from "./FPaginatorExample.vue";
 import Example from "./FPaginatorPageObject.vue";
 
@@ -12,7 +12,7 @@ describe("Requirement 1.1: splitting data across multiple pages", () => {
     it("should display multiple pages and allow navigation between them", () => {
         const nav = '[data-test="nav"]';
 
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
         paginator.currentPageButton().should("contain.text", "1");
 
         // Go to next page
@@ -22,10 +22,10 @@ describe("Requirement 1.1: splitting data across multiple pages", () => {
         paginator.nextButton().click();
         paginator.currentPageButton().should("contain.text", "3");
 
-        paginator.lastPageButton().click();
+        paginator.pageButton(-1).click();
         paginator.currentPageButton().should("contain.text", "4");
 
-        paginator.firstPageButton().click();
+        paginator.pageButton(0).click();
         paginator.currentPageButton().should("contain.text", "1");
 
         paginator.previousButton().click();
@@ -42,7 +42,7 @@ describe("Requirement 1.2", () => {
     //subset
     it("should be able to fetch a subset", () => {
         const table = new FInteractiveTablePageObject();
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         table.bodyRow().should("have.length", 5); //check the first page (subset)
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
@@ -56,7 +56,7 @@ describe("Requirement 1.2", () => {
         table.cell({ row: 1, col: 1 }).should("contain.text", "A11");
         table.cell({ row: 5, col: 3 }).should("contain.text", "C15");
 
-        paginator.lastPageButton().click();
+        paginator.pageButton(-1).click();
         table.cell({ row: 1, col: 1 }).should("contain.text", "A16");
         table.cell({ row: 5, col: 3 }).should("contain.text", "C20");
     });
@@ -64,7 +64,7 @@ describe("Requirement 1.2", () => {
     // the entire dataset
     it("should be able to fetch the entire dataset", () => {
         const table = new FInteractiveTablePageObject();
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         table.bodyRow().should("have.length", 10);
         table
@@ -86,7 +86,7 @@ describe("Requirement 1.2", () => {
             .should("contain.text", "Sherlocke Bowller");
         table.cell({ row: 10, col: 2 }).should("contain.text", "Maria Covotti");
 
-        paginator.lastPageButton().click();
+        paginator.pageButton(-1).click();
         table
             .cell({ row: 1, col: 2 })
             .should("contain.text", "Raymund Desorts");
@@ -101,7 +101,7 @@ describe("Requirement 1.3", () => {
     });
 
     it("should be able to set how many rows are displayed per page", () => {
-        const paginator = new FPaginatorPageObject(".paginator");
+        const paginator = new FPaginatorPageobject(".paginator");
 
         paginator.currentPageButton().should("contain.text", "1");
 
@@ -146,7 +146,7 @@ describe("Requirement 1.5: display navigable pages", () => {
     });
 
     it("should show which pages are available for navigation", () => {
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         paginator.currentPageButton().should("contain.text", "1");
 
@@ -171,7 +171,7 @@ describe("Requirement 1.6: Navigation & visual page information", () => {
     });
 
     it("should display the current page when navigation & visual page information", () => {
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         paginator.currentPageButton().should("contain.text", "1");
 
@@ -184,17 +184,17 @@ describe("Requirement 1.6: Navigation & visual page information", () => {
         paginator.pageButton(3).click();
         paginator.currentPageButton().should("contain.text", "3");
 
-        paginator.firstPageButton().click();
+        paginator.pageButton(0).click();
         paginator.currentPageButton().should("contain.text", "1");
 
-        paginator.lastPageButton().click();
+        paginator.pageButton(-1).click();
         paginator.currentPageButton().should("contain.text", "10");
     });
 
     it("should display previous/Next below the page on mobile", () => {
         cy.viewport("iphone-6");
 
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         paginator.previousButton().should("be.visible");
 
@@ -209,7 +209,7 @@ describe("Requirement 1.9: focus during navigation", () => {
     });
 
     it("should show which pages are available for navigation", () => {
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         paginator.nextButton().click();
 
@@ -219,7 +219,7 @@ describe("Requirement 1.9: focus during navigation", () => {
     });
 
     it("should retain focus on the Next button after click", () => {
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         paginator.nextButton().click().should("be.focused");
     });
@@ -232,7 +232,7 @@ describe("Requirement 1.10: aria-current", () => {
     });
 
     it("should have aria-current on the active page", () => {
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         paginator
             .currentPageButton()
@@ -258,7 +258,7 @@ describe("Requirement 1.11: Mobile mode", () => {
     });
 
     it("should display and navigate between pages on mobile", () => {
-        const paginator = new FPaginatorPageObject();
+        const paginator = new FPaginatorPageobject("[data-test='myPaginator']");
 
         paginator.currentPageButton().should("contain.text", "1");
 

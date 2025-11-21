@@ -1,4 +1,4 @@
-import { FPaginatorPageObject } from "../../../cypress/FPaginator.pageobject";
+import { FPaginatorPageobject } from "../../../cypress/FPaginator.pageobject";
 import Example from "./FPaginatorPageObject.vue";
 
 describe("FPaginator - Funktionalitet enligt krav 1.6", () => {
@@ -9,9 +9,11 @@ describe("FPaginator - Funktionalitet enligt krav 1.6", () => {
     });
 
     it(" ska mounta komponenten och visa första sidan", () => {
-        const paginator = new FPaginatorPageObject("myPaginator");
+        const paginator = new FPaginatorPageobject("myPaginator");
         paginator.currentPageButton().should("contain.text", "1");
         cy.viewport("iphone-8");
-        paginator.P().should("contain.text", `sida 1 av ${totalpage}`);
+        paginator
+            .pageCounter()
+            .should("contain.text", `sida 1 av ${totalpage}`);
     });
 });
