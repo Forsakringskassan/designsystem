@@ -34,6 +34,15 @@ export class FPaginatorPageobject implements BasePageObject {
     }
 
     /**
+     * Get the button for navigating to the next page.
+     *
+     * @returns The button for navigating to the next page.
+     */
+    public nextButton(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .paginator__next`);
+    }
+
+    /**
      * Gets the button/buttons for the specified page/pages.
      *
      * @param page - The index of the page button (if number); the number of the page (if string)
@@ -49,15 +58,6 @@ export class FPaginatorPageobject implements BasePageObject {
             default:
                 return pageButtons;
         }
-    }
-
-    /**
-     * Get the button for navigating to the next page.
-     *
-     * @returns The button for navigating to the next page.
-     */
-    public nextButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__next`);
     }
 
     /**
