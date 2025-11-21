@@ -370,6 +370,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
         row: number;
         col: number;
     }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
+    // @deprecated
     checkbox(row: number): FCheckboxFieldPageObject;
     // @deprecated
     columnItem(index: number): FTableColumnPageObject;
@@ -380,6 +381,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
     headerRowItem(): FTableColumnPageObject;
     headersRow(): DefaultCypressChainable;
     row(index: number): DefaultCypressChainable;
+    selectable(row: number): DefaultCypressChainable;
     // (undocumented)
     selector: string;
 }

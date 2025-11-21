@@ -448,6 +448,7 @@ module.exports = defineMetadata({
             "caption",
             "row-description",
             "checkbox-description",
+            "selectable-description",
             "empty",
             "expandable",
         ],

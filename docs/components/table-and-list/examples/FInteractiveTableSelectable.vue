@@ -11,7 +11,7 @@ const rows = [
 </script>
 
 <template>
-    <f-interactive-table v-model="selectedRows" :rows selectable>
+    <f-interactive-table v-model="selectedRows" :rows selectable="multi">
         <template #caption> <span class="sr-only">Tabell</span> </template>
         <template #default="{ row }">
             <f-table-column v-format:text="row.name" title="Namn" type="text"></f-table-column>
@@ -22,7 +22,7 @@ const rows = [
                 shrink
             ></f-table-column>
         </template>
-        <template #checkbox-description="{ row }"> Välj "{{ row.name }}" </template>
+        <template #selectable-description="{ row }"> Välj "{{ row.name }}" </template>
     </f-interactive-table>
     <p>Valda rader:</p>
     <pre>{{ JSON.stringify(selectedRows, null, 2) }}</pre>

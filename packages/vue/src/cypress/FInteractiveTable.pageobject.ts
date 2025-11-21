@@ -28,7 +28,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
      * Both row and column are 1-indexed, i.e. 1:1 selects the first cell in the
      * first row.
      *
-     * Neither the marker for expandable rows or the checkbox for selectable
+     * Neither the marker for expandable rows or the radio/checkbox for selectable
      * rows are included in the column count, i.e. `1` always refers to the
      * first column with content.
      *
@@ -67,7 +67,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
     /**
      * Get table header cell (`<th>` in `<thead>`).
      *
-     * Neither the marker for expandable rows or the checkbox for selectable
+     * Neither the marker for expandable rows or the radio/checkbox for selectable
      * rows are included in the column count, i.e. `1` always refers to the
      * first column with content.
      *
@@ -87,7 +87,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
     /**
      * Get all table headers (`<th>` in `<thead>`).
      *
-     * Includes the headers for checkboxes in selectable rows and markers in expandable rows.
+     * Includes the headers for radios/checkboxes in selectable rows and markers in expandable rows.
      */
     public headersRow(): DefaultCypressChainable {
         return cy.get(`${this.selector} thead th`);
@@ -121,9 +121,10 @@ export class FInteractiveTablePageObject implements BasePageObject {
      * parent row while if the first row is expanded the second row refers to
      * the first expanded row under the first row.
      *
-     * Requires a `selectable` table.
+     * Requires a `selectable` table of type `multi`.
      *
      * @public
+     * @deprecated Use ´.selectable()´ instead. Deprecated since %version%.
      * @param row - Row number (1-indexed).
      * @returns Page object for `FCheckboxField`.
      */
@@ -140,9 +141,39 @@ export class FInteractiveTablePageObject implements BasePageObject {
     }
 
     /**
+     * Get selectable input element (checkbox or radio) in given row.
+     *
+     * For expandable rows the row count depend on whenever a row is expanded or
+     * not. If the first row is collapsed the second row refers to the next
+     * parent row while if the first row is expanded the second row refers to
+     * the first expanded row under the first row.
+     *
+     * Requires a `selectable` table.
+     *
+     * @public
+     * @since %version%
+     * @param row - Row number (1-indexed).
+     * @returns Input element.
+     */
+    public selectable(row: number): DefaultCypressChainable {
+        const index = row - 1;
+
+        return cy
+            .get(
+                [
+                    this.selector,
+                    `tbody`,
+                    `tr:not(.table__expandable-row--collapsed):nth(${String(index)})`,
+                    `input`,
+                ].join(" "),
+            )
+            .first();
+    }
+
+    /**
      * Get sort order icon in given column.
      *
-     * Index includes the columns for checkboxes in selectable rows and markers in expandable rows.
+     * Index includes the columns for radios/checkboxes in selectable rows and markers in expandable rows.
      *
      * @param index - Column index (0-indexed).
      * @param order - Column sort order.
