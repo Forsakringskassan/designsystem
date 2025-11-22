@@ -7,6 +7,22 @@ import ITableRadio from "./ITableRadio.vue";
 import ITableRowheader from "./ITableRowheader.vue";
 import ITableSelect from "./ITableSelect.vue";
 import ITableText from "./ITableText.vue";
+import {
+    getParsedNumberUpdateFn,
+    getParsedUpdateFn,
+    getUpdateFn,
+} from "./get-update-fn";
+import {
+    getFormattedNumberValueFn,
+    getFormattedValueFn,
+    getValueFn,
+} from "./get-value-fn";
+import {
+    type InputType,
+    type InputTypeNumber,
+    type InputTypeText,
+    inputFieldConfig,
+} from "./input-fields-config";
 
 /**
  * @public
@@ -118,27 +134,33 @@ export interface NormalizedTableColumnRadio<T, K> {
  * @public
  */
 export interface TableColumnText<T, K extends keyof T> {
-    type: "text";
+    type: InputTypeText;
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     label?(row: T): string;
+    tnum?: boolean;
+    align?: "left" | "right";
     value?(row: T): string;
     update?(row: T, newValue: string, oldValue: string): void;
     editable?: boolean | ((row: T) => boolean);
     validation?: ValidatorConfigs;
+    parser?(value: string): string;
+    formatter?(value: string): string;
 }
 
 /**
  * @internal
  */
 export interface NormalizedTableColumnText<T, K> {
-    readonly type: "text";
+    readonly type: InputTypeText;
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
     readonly description: Readonly<Ref<string | null>>;
     readonly validation: ValidatorConfigs;
     readonly sortable: K | null;
+    readonly tnum: boolean;
+    readonly align: "left" | "right";
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnText<T, K>;
@@ -146,6 +168,49 @@ export interface NormalizedTableColumnText<T, K> {
     label(row: T): string;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
+    editable(row: T): boolean;
+}
+
+/**
+ * @public
+ */
+export interface TableColumnNumber<T, K extends keyof T> {
+    type: InputTypeNumber;
+    header: string | Readonly<Ref<string>>;
+    description?: string | Readonly<Ref<string | null>>;
+    decimals?: number;
+    key?: K;
+    label?(row: T): string;
+    tnum?: boolean;
+    align?: "left" | "right";
+    value?(row: T): string | number;
+    update?(row: T, newValue: number | string, oldValue: number | string): void;
+    editable?: boolean | ((row: T) => boolean);
+    validation?: ValidatorConfigs;
+    parser?(value: string): number | string;
+    formatter?(value: number | string): string | undefined;
+}
+
+/**
+ * @internal
+ */
+export interface NormalizedTableColumnNumber<T, K> {
+    readonly type: InputTypeNumber;
+    readonly id: symbol;
+    readonly header: Readonly<Ref<string>>;
+    readonly description: Readonly<Ref<string | null>>;
+    readonly decimals?: number;
+    readonly validation: ValidatorConfigs;
+    readonly sortable: K | null;
+    readonly tnum: boolean;
+    readonly align: "left" | "right";
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnText<T, K>;
+    }>;
+    label(row: T): string;
+    value(row: T): string | number;
+    update(row: T, newValue: number | string, oldValue: number | string): void;
     editable(row: T): boolean;
 }
 
@@ -279,6 +344,7 @@ export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnRadio<T, K>
     | TableColumnRowHeader<T, K>
     | TableColumnText<T, K>
+    | TableColumnNumber<T, K>
     | TableColumnAnchor<T, K>
     | TableColumnButton<T, K>
     | TableColumnRender<T, K>
@@ -292,6 +358,7 @@ export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnRadio<T, K>
     | NormalizedTableColumnRowHeader<T, K>
     | NormalizedTableColumnText<T, K>
+    | NormalizedTableColumnNumber<T, K>
     | NormalizedTableColumnAnchor<T, K>
     | NormalizedTableColumnButton<T, K>
     | NormalizedTableColumnRender<T>
@@ -306,41 +373,25 @@ function getLabelFn<TRow>(
     return () => "";
 }
 
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
-function getValueFn<TRow, TValue, K extends keyof TRow>(
-    fn: ((row: TRow) => TValue) | undefined,
-    key: K | undefined,
-    coerce: (value: unknown) => TValue,
-    defaultValue: TValue,
-): (row: TRow) => TValue {
-    if (fn) {
-        return fn;
-    }
-    if (key) {
-        return (row: TRow): TValue => {
-            return coerce(row[key]);
-        };
-    }
-    return () => defaultValue;
-}
-
 /**
  * @internal
  */
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
-function getUpdateFn<TRow, TValue, K extends keyof TRow>(
-    fn: ((row: TRow, newValue: TValue, oldValue: TValue) => void) | undefined,
-    key: K | undefined,
-): (row: TRow, newValue: TValue, oldValue: TValue) => void {
-    if (fn) {
-        return fn;
-    }
-    if (key) {
-        return (row: TRow, value: TValue): void => {
-            row[key] = value as TRow[K]; // @todo This is not safe :/
-        };
-    }
-    return () => undefined;
+function defaultTnumValue(type: InputType): boolean {
+    const tnumTypes = [
+        "text:bankAccountNumber",
+        "text:bankgiro",
+        "text:clearingNumber",
+        "text:currency",
+        "text:number",
+        "text:organisationsnummer",
+        "text:percent",
+        "text:personnummer",
+        "text:phoneNumber",
+        "text:plusgiro",
+        "text:postalCode",
+    ];
+
+    return tnumTypes.includes(type);
 }
 
 /**
@@ -421,15 +472,72 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 sortable: column.key ?? null,
                 component: ITableRadio,
             } satisfies NormalizedTableColumnRadio<T, K>;
-        case "text":
+        case "text:currency":
+        case "text:number":
+        case "text:percent": {
+            const type = column.type;
+            const config = inputFieldConfig[type];
+            const parser = column.parser ?? config.parser.bind(column);
+            const formatter = column.formatter ?? config.formatter.bind(column);
+            const decimals = type === "text:currency" ? 0 : column.decimals;
             return {
-                type: "text",
+                type,
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
                 label: getLabelFn(column.label),
-                value: getValueFn(column.value, column.key, String, ""),
-                update: getUpdateFn(column.update, column.key),
+                decimals,
+                tnum: column.tnum ?? defaultTnumValue(type),
+                align: column.align ?? "right",
+                value: getFormattedNumberValueFn(
+                    column.value,
+                    column.key,
+                    formatter,
+                    "",
+                ),
+                update: getParsedNumberUpdateFn(
+                    column.update,
+                    column.key,
+                    parser,
+                ),
+                editable:
+                    typeof column.editable === "function"
+                        ? column.editable
+                        : () => Boolean(column.editable ?? false),
+                validation: column.validation ?? {},
+                sortable: column.key ?? null,
+                component: ITableText,
+            } satisfies NormalizedTableColumnNumber<T, K>;
+        }
+        case "text":
+        case "text:bankAccountNumber":
+        case "text:bankgiro":
+        case "text:clearingNumber":
+        case "text:email":
+        case "text:organisationsnummer":
+        case "text:personnummer":
+        case "text:phoneNumber":
+        case "text:plusgiro":
+        case "text:postalCode": {
+            const type = column.type;
+            const config = inputFieldConfig[type];
+            const parser = column.parser ?? config.parser;
+            const formatter = column.formatter ?? config.formatter;
+            return {
+                type,
+                id: Symbol(),
+                header: toRef(column.header),
+                description,
+                tnum: column.tnum ?? defaultTnumValue(type),
+                align: column.align ?? "left",
+                label: getLabelFn(column.label),
+                value: getFormattedValueFn(
+                    column.value,
+                    column.key,
+                    formatter,
+                    "",
+                ),
+                update: getParsedUpdateFn(column.update, column.key, parser),
                 editable:
                     typeof column.editable === "function"
                         ? column.editable
@@ -438,6 +546,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 sortable: column.key ?? null,
                 component: ITableText,
             } satisfies NormalizedTableColumnText<T, K>;
+        }
         case "rowheader":
             return {
                 type: "rowheader",
@@ -503,6 +612,8 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: toRef(column.header),
                 description,
                 label: () => "",
+                tnum: false,
+                align: "left",
                 value: getValueFn(column.value, column.key, String, ""),
                 update() {
                     /* do nothing */
