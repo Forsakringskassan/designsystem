@@ -1,7 +1,7 @@
 import { nextTick, toValue } from "vue";
 import { getInternalKey } from "@fkui/vue";
 import { type MetaRow } from "./MetaRow";
-import { tableCellApiSymbol } from "./f-table-api";
+import { type FTableCellApi, tableCellApiSymbol } from "./f-table-api";
 import { walk } from "./walk";
 
 interface TableCellIndex {
@@ -277,7 +277,7 @@ export function maybeNavigateToCell(e: KeyboardEvent): void {
 
 /** @internal */
 export function activateCell(
-    element: HTMLElement,
+    element: HTMLElement & { [tableCellApiSymbol]?: FTableCellApi },
     options?: { focus: boolean },
 ): void {
     const api = element[tableCellApiSymbol];
