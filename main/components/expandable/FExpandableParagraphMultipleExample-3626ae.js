@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FExpandableParagraph/examples/FExpandableParagraphListExample.vue:FExpandableParagraphListExample-9cb43b.js
+// virtual-entry:virtual:packages/vue/src/components/FExpandableParagraph/examples/FExpandableParagraphMultipleExample.vue:FExpandableParagraphMultipleExample-3626ae.js
 import { defineComponent } from "vue";
 import { FExpandableParagraph } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -60,7 +60,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _createVNode(_component_f_expandable_paragraph, {
       expanded: _ctx.expanded1,
       "header-tag": "h2",
-      list: true,
       onToggle: _ctx.onToggle1
     }, {
       title: _withCtx(() => [..._cache[0] || (_cache[0] = [
@@ -70,14 +69,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* CACHED */
         )
       ])]),
-      related: _withCtx(() => [..._cache[1] || (_cache[1] = [
-        _createTextVNode(
-          " 2020-06-25 ",
-          -1
-          /* CACHED */
-        )
-      ])]),
-      default: _withCtx(() => [..._cache[2] || (_cache[2] = [
+      default: _withCtx(() => [..._cache[1] || (_cache[1] = [
         _createElementVNode(
           "span",
           null,
@@ -92,25 +84,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _createVNode(_component_f_expandable_paragraph, {
       expanded: _ctx.expanded2,
       "header-tag": "h3",
-      "header-visual-tag": "h6",
-      list: true,
       onToggle: _ctx.onToggle2
     }, {
-      title: _withCtx(() => [..._cache[3] || (_cache[3] = [
+      title: _withCtx(() => [..._cache[2] || (_cache[2] = [
         _createTextVNode(
-          " Titel (h3) (visuell h6) ",
+          " Titel (h3) ",
           -1
           /* CACHED */
         )
       ])]),
-      related: _withCtx(() => [..._cache[4] || (_cache[4] = [
-        _createTextVNode(
-          " 2020-06-25 ",
-          -1
-          /* CACHED */
-        )
-      ])]),
-      default: _withCtx(() => [..._cache[5] || (_cache[5] = [
+      default: _withCtx(() => [..._cache[3] || (_cache[3] = [
         _createElementVNode(
           "span",
           null,
@@ -124,26 +107,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 8, ["expanded", "onToggle"]),
     _createVNode(_component_f_expandable_paragraph, {
       expanded: _ctx.expanded3,
-      "header-tag": "h6",
-      "header-visual-tag": "h2",
-      list: true,
+      "header-tag": "h4",
       onToggle: _ctx.onToggle3
     }, {
-      title: _withCtx(() => [..._cache[6] || (_cache[6] = [
+      title: _withCtx(() => [..._cache[4] || (_cache[4] = [
         _createTextVNode(
-          " Titel (h6) (visuell h2) ",
+          " Titel (h4) ",
           -1
           /* CACHED */
         )
       ])]),
-      related: _withCtx(() => [..._cache[7] || (_cache[7] = [
+      related: _withCtx(() => [..._cache[5] || (_cache[5] = [
         _createTextVNode(
           " 2020-06-25 ",
           -1
           /* CACHED */
         )
       ])]),
-      default: _withCtx(() => [..._cache[8] || (_cache[8] = [
+      default: _withCtx(() => [..._cache[6] || (_cache[6] = [
         _createElementVNode(
           "span",
           null,
@@ -160,7 +141,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-9cb43b"
+  selector: "#example-3626ae"
 });
 export {
   render

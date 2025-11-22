@@ -28,29 +28,36 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemDefault.vue:FFileItemDefault-f75b2d.js
+// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorDisabled.vue:FFileSelectorDisabled-fee643.js
 import { defineComponent } from "vue";
-import { FFileItem } from "@fkui/vue";
-import { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FFileSelector } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "FFileItemDefault",
-  components: { FFileItem },
-  data() {
-    return { fileName: "bar.jpg", fileType: "image/jpeg" };
-  },
-  methods: {}
+  name: "FFileSelectorDisabled",
+  components: { FFileSelector }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_file_item = _resolveComponent("f-file-item");
-  return _openBlock(), _createBlock(_component_f_file_item, {
-    "file-name": _ctx.fileName,
-    "mime-type": _ctx.fileType
-  }, null, 8, ["file-name", "mime-type"]);
+  const _component_f_file_selector = _resolveComponent("f-file-selector");
+  return _openBlock(), _createBlock(_component_f_file_selector, {
+    id: "dis",
+    accept: "image/jpeg, image/tiff",
+    disabled: ""
+  }, {
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
+      _createTextVNode(
+        " L\xE4gg till fil ",
+        -1
+        /* CACHED */
+      )
+    ])]),
+    _: 1
+    /* STABLE */
+  });
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f75b2d"
+  selector: "#example-fee643"
 });
 export {
   render
