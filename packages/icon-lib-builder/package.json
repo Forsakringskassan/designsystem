@@ -33,7 +33,7 @@
     "preset": "@forsakringskassan/jest-config"
   },
   "dependencies": {
-    "glob": "12.0.0",
+    "glob": "13.0.0",
     "sass": "1.94.2",
     "svgo": "4.0.0"
   },
