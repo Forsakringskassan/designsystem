@@ -22543,7 +22543,7 @@ function onKeydown(table, event, current) {
 function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit2, slots) {
   const expandedRows = ref([]);
   const isExpandableTable = computed(() => {
-    return expandableAttribute.length > 0;
+    return Boolean(expandableAttribute);
   });
   const hasExpandableSlot = computed(() => {
     return Boolean(slots.expandable);
@@ -22561,7 +22561,11 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
     return includeItem(row, expandedRows.value, keyAttribute);
   }
   function rowAriaExpanded(row) {
-    if (!isExpandableTable || !row[expandableAttribute]) {
+    if (!expandableAttribute) {
+      return void 0;
+    }
+    const expandedRow = row[expandableAttribute];
+    if (!expandedRow) {
       return void 0;
     }
     return isExpanded(row);
@@ -22588,6 +22592,9 @@ function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit
     return describedby;
   }
   function expandableRows(row) {
+    if (!expandableAttribute) {
+      return void 0;
+    }
     const expandableRows2 = row[expandableAttribute];
     if (expandableRows2 === void 0 || expandableRows2 === null) {
       return void 0;
@@ -22707,110 +22714,43 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
   },
   __name: "FInteractiveTable",
   props: {
-    /**
-     * The rows to be listed.
-     * The rows will be listed in the given array order.
-     */
-    rows: {
-      type: Array,
-      required: true
-    },
-    /**
-     * When enabled hovering over a row will be highlighted.
-     */
+    rows: {},
     hover: {
       type: Boolean
     },
-    /**
-     * Unique attribute in rows.
-     */
     keyAttribute: {
-      type: String,
-      required: false,
-      default: void 0
+      default: () => void 0
     },
-    /**
-     * Attribute of expandable content in rows.
-     * If provided, the table can contain expandable rows.
-     */
     expandableAttribute: {
-      type: String,
-      default: ""
+      default: () => void 0
     },
-    /**
-     * Element id for aria-describedby on expandable rows to describe expanded content.
-     */
     expandableDescribedby: {
-      type: String,
       default: ""
     },
-    /**
-     * When enabled the table rows will be selectable.
-     *
-     * The current set of selected rows can be accessed with `v-model`.
-     *
-     * The `select` and `unselect` events will be emitted when a row is selected
-     * or deselected.
-     */
     selectable: {
       type: Boolean
     },
-    /**
-     * When enabled alternating rows will use a different background color.
-     */
     striped: {
       type: Boolean
     },
-    /**
-     * Enable scrolling inside table.
-     *
-     * Can be one of the following values:
-     *
-     * - `"horizontal"`: Enables horizontal scrolling
-     * - `"vertical"`: Does nothing (deprecated)
-     * - `"both"`: Acts as horizontal (deprecated)
-     * - `"none"`: Disables scrolling (default)
-     */
     scroll: {
-      type: String,
-      default: TableScroll.NONE,
-      validator(value) {
-        const types = Object.values(TableScroll);
-        return types.includes(value);
-      }
+      default: () => TableScroll.NONE
     },
-    /**
-     * Enable showing the active row.
-     */
     showActive: {
       type: Boolean,
-      required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
-    /**
-     * Currently selected rows.
-     * Requires `selectable` to be set.
-     */
     modelValue: {
-      type: Array,
-      required: false,
-      default: void 0
+      default: () => void 0
     },
-    /**
-     * Current active row.
-     */
     active: {
-      type: Object,
-      required: false,
-      default: void 0
+      default: () => void 0
     }
   },
   emits: ["change", "click", "select", "unselect", "expand", "collapse", "update:modelValue", "update:active"],
   setup(__props, {
     emit: __emit
   }) {
-    const props = __props;
     const emit2 = __emit;
     const $t2 = useTranslate();
     const slots = useSlots();
@@ -22834,7 +22774,6 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
     const tr = shallowRef([]);
     const trAll = shallowRef([]);
     const tbodyKey = ref(0);
-    const expandableTable = useExpandableTable(props.expandableAttribute, internalKey2, props.expandableDescribedby, emit2, slots);
     const {
       isExpandableTable,
       hasExpandableSlot,
@@ -22846,7 +22785,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
       expandableRows,
       hasExpandableContent,
       getExpandedIndex
-    } = expandableTable;
+    } = useExpandableTable(__props.expandableAttribute, internalKey2, __props.expandableDescribedby, emit2, slots);
     const tbody = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
@@ -22867,10 +22806,10 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
     });
     const tableClasses = computed(() => {
       const classes = [];
-      if (props.selectable) {
+      if (__props.selectable) {
         classes.push("table--selectable");
       }
-      if (props.hover) {
+      if (__props.hover) {
         classes.push("table--hover");
       }
       return classes;
@@ -22879,11 +22818,11 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
       return isExpandableTable.value ? "treegrid" : "grid";
     });
     const wrapperClasses = computed(() => {
-      return tableScrollClasses(props.scroll);
+      return tableScrollClasses(__props.scroll);
     });
     const nbOfColumns = computed(() => {
       let columnCount = visibleColumns.value.length;
-      if (props.selectable) {
+      if (__props.selectable) {
         columnCount++;
       }
       if (isExpandableTable.value) {
@@ -22892,14 +22831,10 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
       return columnCount;
     });
     const internalRows = computed(() => {
-      const {
-        keyAttribute,
-        expandableAttribute
-      } = props;
       if (isExpandableTable) {
-        return setInternalKeys(props.rows, keyAttribute, expandableAttribute);
+        return setInternalKeys(__props.rows, __props.keyAttribute, __props.expandableAttribute);
       }
-      return setInternalKeys(props.rows, keyAttribute);
+      return setInternalKeys(__props.rows, __props.keyAttribute);
     });
     provide("addColumn", (column) => {
       columns.value = addColumn(columns.value, column);
@@ -22909,25 +22844,25 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
     });
     provide("textFieldTableMode", true);
     provide("renderColumns", computed(() => internalRows.value.length > 0));
-    watch(() => props.rows, () => {
+    watch(() => __props.rows, () => {
       setSelectedRows();
     }, {
       immediate: true,
       deep: true
     });
-    watch(() => props.active, () => {
+    watch(() => __props.active, () => {
       updateActiveRowFromVModel();
     }, {
       immediate: true
     });
-    watch(() => props.showActive, (val) => {
+    watch(() => __props.showActive, (val) => {
       if (!val) {
         tbodyKey.value ^= 1;
       }
     }, {
       immediate: true
     });
-    watch(() => props.modelValue, () => {
+    watch(() => __props.modelValue, () => {
       setSelectedRows();
     }, {
       immediate: true,
@@ -22950,7 +22885,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
         updateTr(tbody.value);
       }
       if (isExpandableTable) {
-        setNestedKey(props.expandableAttribute);
+        setNestedKey(__props.expandableAttribute);
       }
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
@@ -22958,7 +22893,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
       registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
     });
     function isActive(row) {
-      if (!props.showActive) {
+      if (!__props.showActive) {
         return false;
       }
       return itemEquals(row, activeRow.value, internalKey2);
@@ -23014,16 +22949,16 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
       getCurrentInstance()?.proxy?.$forceUpdate();
     }
     function setSelectedRows() {
-      if (!props.modelValue?.length) {
+      if (!__props.modelValue?.length) {
         selectedRows.value = [];
         return;
       }
-      selectedRows.value = props.modelValue.filter((row) => {
+      selectedRows.value = __props.modelValue.filter((row) => {
         return includeItem(row, internalRows.value, internalKey2);
       });
     }
     function updateVModelWithSelectedRows() {
-      if (props.modelValue) {
+      if (__props.modelValue) {
         emit2("update:modelValue", selectedRows.value);
       }
     }
@@ -23033,7 +22968,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
       const isExpandableRow = isExpandableTable.value && hasExpandableContent(row);
       const expandable = isExpandableRow ? ["table__row--expandable"] : [];
       const expanded = isExpanded(row) ? ["table__row--expanded-border"] : [];
-      const striped = props.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
+      const striped = __props.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
       return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
     }
     function rowKey(row) {
@@ -23118,10 +23053,10 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
       return value.replace(/\n/g, "<br/>");
     }
     function updateActiveRowFromVModel() {
-      if (props.active === void 0) {
+      if (__props.active === void 0) {
         setActiveRow(void 0);
-      } else if (!itemEquals(props.active, activeRow.value, internalKey2)) {
-        setActiveRow(props.active);
+      } else if (!itemEquals(__props.active, activeRow.value, internalKey2)) {
+        setActiveRow(__props.active);
       }
     }
     function setActiveRow(row) {
