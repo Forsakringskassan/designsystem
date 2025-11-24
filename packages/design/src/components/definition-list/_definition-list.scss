@@ -1,0 +1,24 @@
+@use "../../core/size";
+
+.definition-list {
+    margin: 0;
+
+    &__term {
+        float: left;
+        clear: left;
+        margin-right: size.$margin-025;
+    }
+
+    &__term::after {
+        content: ":";
+    }
+
+    &__description {
+        margin-left: 0;
+    }
+
+    &--justified {
+        display: grid;
+        grid-template-columns: max-content auto;
+    }
+}

@@ -11,6 +11,7 @@ export { FCheckboxGroupPageObject } from "./FCheckboxGroup.pageobject";
 export { FContextMenuPageObject } from "./FContextMenu.pageobject";
 export { FCrudDatasetPageObject } from "./FCrudDataset.pageobject";
 export { FDetailsPanelPageObject } from "./FDetailsPanel.pageobject";
+export { FDefinitionListPageObject } from "./FDefinitionList.pageobject";
 export { FErrorListPageObject } from "./FErrorList.pageobject";
 export { FExpandablePanelPageObject } from "./FExpandablePanel.pageobject";
 export { FFieldsetPageObject } from "./FFieldset.pageobject";

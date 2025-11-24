@@ -12,6 +12,8 @@ Lista används när användaren behöver gå igenom ett antal poster för att hi
 FListLiveExample.vue
 ```
 
+{@link FDefinitionList Definitionslistor} kan användas för att presentera information i ett kompakt format.
+
 ## Ange nyckel (`keyAttribute`)
 
 Med `keyAttribute` så kan du ange namnet för en nyckel (`key`) som finns i varje list-ojekt och innehåller ett värde som kan användas för att identifiera olika objekt.
