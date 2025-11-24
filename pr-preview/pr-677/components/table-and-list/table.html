@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-f965e7.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-1242a6.js",
     "@fkui/date": "../../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-e5b928.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8b06c0.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
   },
   "integrity": {
     "../../assets/vendor-vue-f965e7.js": "sha384-SD5eJUf0EHrq5fdKUiIi6kjU+Gg9zAN37N/XjLlRqaDcP3C61KatsvLwJMQrZdKO",
     "../../assets/vendor-fkui-logic-1242a6.js": "sha384-Lt4fZk8RFzg4VwI02lBf3fz87u9QQ+gxRqIn5ulgzu+Ar18v06n87RPnxLq1fguH",
     "../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../../assets/vendor-fkui-vue-e5b928.js": "sha384-yjInEHWK4JgKxcyyJ7ouuo+RzCk+goRu++9orFUdP041eOXJm9LB84aDbif57EzE",
+    "../../assets/vendor-fkui-vue-8b06c0.js": "sha384-2tfB9qie1p1lQEpRd3LF/gVfAxvYyQ+dxo9kDT/eAEUFuq9M3ylNxN2FaPi0kn8y",
     "../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-20a34d.json"
+            href="../../search-data-e0cb2a.json"
             as="fetch"
             crossorigin
-            integrity="sha384-9KWMrldJhg3B4qo6GHXJDuhsl3W/Y5tPtitopvb8GIyDaYO2R8MYT+bsetrdGF0k"
+            integrity="sha384-bKcb+gt3kxdp3Cd+hfSLOX/CIwTGnl3BqChrUhi/ggTOER7vE+uLDBCcG6zN04CL"
             id="search-data"
         />
     </head>
@@ -1095,25 +1095,25 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/85f8b59f88d514990351909995e994b92f949f86/packages/vue/src/components/FDataTable/FDataTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e32d9ffb9b21c5869b3dac1e2c7875a973bfda99/packages/vue/src/components/FDataTable/FDataTable.vue">
                 FDataTable
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/85f8b59f88d514990351909995e994b92f949f86/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e32d9ffb9b21c5869b3dac1e2c7875a973bfda99/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
                 FInteractiveTable
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/85f8b59f88d514990351909995e994b92f949f86/packages/vue/src/components/FTableButton/FTableButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e32d9ffb9b21c5869b3dac1e2c7875a973bfda99/packages/vue/src/components/FTableButton/FTableButton.vue">
                 FTableButton
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/85f8b59f88d514990351909995e994b92f949f86/packages/vue/src/components/FTableColumn/FTableColumn.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e32d9ffb9b21c5869b3dac1e2c7875a973bfda99/packages/vue/src/components/FTableColumn/FTableColumn.vue">
                 FTableColumn
             </a>
             
@@ -2667,7 +2667,7 @@ width numbers).</p>
                                 ><a class="docs-api__anchor" href="#finteractivetable-model-v-model"
                                     ><span class="docs-api__name"
                                         >v-model</span
-                                    >: T[] | undefined</a
+                                    >: Array</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -2677,7 +2677,7 @@ width numbers).</p>
                             <p>Currently selected rows.
 Requires <code>selectable</code> to be set.</p>
 
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
                             
                         </dd>
                     
@@ -2686,7 +2686,7 @@ Requires <code>selectable</code> to be set.</p>
                                 ><a class="docs-api__anchor" href="#finteractivetable-model-v-model-active"
                                     ><span class="docs-api__name"
                                         >v-model:active</span
-                                    >: T | undefined</a
+                                    >: T</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -2695,7 +2695,7 @@ Requires <code>selectable</code> to be set.</p>
                         <dd>
                             <p>Current active row.</p>
 
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
                             
                         </dd>
                     
@@ -2711,7 +2711,7 @@ Requires <code>selectable</code> to be set.</p>
                                 ><a class="docs-api__anchor" href="#finteractivetable-prop-rows"
                                     ><span class="docs-api__name"
                                         >rows</span
-                                    >: T[]</a
+                                    >: Array</a
                                 ></code
                             >
                             
@@ -2748,7 +2748,7 @@ The rows will be listed in the given array order.</p>
                                 ><a class="docs-api__anchor" href="#finteractivetable-prop-keyattribute"
                                     ><span class="docs-api__name"
                                         >keyAttribute</span
-                                    >: string</a
+                                    >: KeyAttribute</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -2757,7 +2757,7 @@ The rows will be listed in the given array order.</p>
                         <dd>
                             <p>Unique attribute in rows.</p>
 
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
                             
                         </dd>
                     
@@ -2766,7 +2766,7 @@ The rows will be listed in the given array order.</p>
                                 ><a class="docs-api__anchor" href="#finteractivetable-prop-expandableattribute"
                                     ><span class="docs-api__name"
                                         >expandableAttribute</span
-                                    >: string</a
+                                    >: ExpandableAttribute</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -2776,7 +2776,7 @@ The rows will be listed in the given array order.</p>
                             <p>Attribute of expandable content in rows.
 If provided, the table can contain expandable rows.</p>
 
-                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
                             
                         </dd>
                     
@@ -2794,7 +2794,7 @@ If provided, the table can contain expandable rows.</p>
                         <dd>
                             <p>Element id for aria-describedby on expandable rows to describe expanded content.</p>
 
-                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
                             
                         </dd>
                     
@@ -2858,7 +2858,7 @@ or deselected.</p>
 <li><code>&quot;none&quot;</code>: Disables scrolling (default)</li>
 </ul>
 
-                            <p class="doc-api__item">Default: <code>TableScroll.NONE</code></p>
+                            
                             
                         </dd>
                     
@@ -2876,7 +2876,7 @@ or deselected.</p>
                         <dd>
                             <p>Enable showing the active row.</p>
 
-                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
                             
                         </dd>
                     
@@ -3102,7 +3102,7 @@ or deselected.</p>
                             <p>Slot for expandable table row.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>expandableRow: T</code> <span role="presentation">&mdash;</span> Current expandable row being rendered.</li><li><code>parentRow: T</code> <span role="presentation">&mdash;</span> The parent row of the expandable rows.</li>
+                            <li><code>expandableRow: T[ExpandableAttribute][number]</code> <span role="presentation">&mdash;</span> Current expandable row being rendered.</li><li><code>parentRow: T</code> <span role="presentation">&mdash;</span> The parent row of the expandable rows.</li>
                             </ul>
                             
                         </dd>
@@ -3151,9 +3151,9 @@ or deselected.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/85f8b59f88d514990351909995e994b92f949f86">85f8b59</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/e32d9ffb9b21c5869b3dac1e2c7875a973bfda99">e32d9ff</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-11-21 16:19
+        2025-11-24 11:12
 </div>
 <div class="toolbar__item">
     <form id="version">
