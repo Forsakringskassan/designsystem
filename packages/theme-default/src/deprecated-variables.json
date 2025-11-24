@@ -262,4 +262,9 @@
     "--f-background-tab-active",
     "--f-background-tab-inactive",
     "--f-background-button-discrete-hover"
+    " --f-icon-color-discrete",
+    "--f-text-color-link",
+    "--f-text-color-link-hover",
+    "--f-text-color-link-discrete",
+    "--f-text-color-link-discrete-hover"
 ]
