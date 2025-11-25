@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, inject, ref, useTemplateRef } from "vue";
-import { assertRef } from "@fkui/logic";
+import { ElementIdService, assertRef } from "@fkui/logic";
 import { useTranslate } from "../../plugins";
 import FIcon from "../FIcon/FIcon.vue";
 import { paginateDatasetKey } from "../FPaginateDataset";
@@ -13,6 +13,7 @@ const {
     numberOfPages: numberOfPagesProp = undefined,
     currentPage: currentPageProp = undefined,
     numberOfPagesToShow = 9,
+    navigatorLabel = ElementIdService.generateElementId(),
 } = defineProps<{
     /**
      * The number of pages available.
@@ -26,6 +27,11 @@ const {
      * The number of pages to show in the paginator (at most).
      */
     numberOfPagesToShow?: number;
+    /**
+     * The label for the navigator.
+     * If the prop is not set a random value will be generated.
+     */
+    navigatorLabel?: string;
 }>();
 
 const paginateDataset = inject(paginateDatasetKey, {
@@ -52,13 +58,6 @@ const pages = computed(() =>
         numberOfPages: numberOfPages.value,
         maxPagesShown: maxPagesShown.value,
     }),
-);
-
-const navigatorLabel = computed(() =>
-    /**
-     * ARIA label for navigator.
-     */
-    $t("fkui.paginator.navigatorLabel", "Navigera mellan sidor"),
 );
 
 const nextButtonLabel = computed(() =>
