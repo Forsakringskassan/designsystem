@@ -269,22 +269,15 @@ export class FErrorListPageObject {
 
 // @public (undocumented)
 export class FExpandablePanelPageObject implements BasePageObject {
-    constructor(selector: string);
-    // (undocumented)
-    body: () => DefaultCypressChainable;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
-    // (undocumented)
-    expandCollapseIcon: () => DefaultCypressChainable;
-    // (undocumented)
-    header: () => DefaultCypressChainable;
-    // (undocumented)
+    constructor(selector?: string);
+    body(): DefaultCypressChainable;
+    el(): DefaultCypressChainable;
+    expandCollapseIcon(): DefaultCypressChainable;
+    header(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
     isOpen(): Cypress.Chainable<boolean>;
-    // (undocumented)
-    notificationIcon: () => DefaultCypressChainable;
+    notificationIcon(): DefaultCypressChainable;
     numberOfNotifications(): Cypress.Chainable<number>;
-    // (undocumented)
-    relatedInfo: () => DefaultCypressChainable;
+    relatedInfo(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
 }
