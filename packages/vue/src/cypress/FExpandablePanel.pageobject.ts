@@ -5,37 +5,97 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
  */
 export class FExpandablePanelPageObject implements BasePageObject {
     public selector: string;
-    public el: () => DefaultCypressChainable;
-    public expandCollapseIcon: () => DefaultCypressChainable;
-    public header: () => DefaultCypressChainable;
-    public body: () => DefaultCypressChainable;
-    public notificationIcon: () => DefaultCypressChainable;
-    public relatedInfo: () => DefaultCypressChainable;
 
     /**
      * @param selector - the root of the expandablepanel, usually `<div class="expandable-panel">...</div>`.
      */
-    public constructor(selector: string) {
+    public constructor(selector: string = ".expandable-panel") {
         this.selector = selector;
-        this.el = () => cy.get(this.selector);
+    }
 
-        this.expandCollapseIcon = () =>
-            cy.get(`${this.selector} .expandable-panel__icon`);
-        this.header = () =>
-            cy.get(`${this.selector} .expandable-panel__heading button`);
+    /**
+     * Get root element.
+     *
+     * @public
+     * @returns Root element of the expandable panel.
+     */
+    public el(): DefaultCypressChainable {
+        return cy.get(this.selector);
+    }
 
-        this.notificationIcon = () =>
-            cy.get(
-                `${this.selector} .expandable-panel__heading .expandable-panel__notification`,
-            );
+    /**
+     * Get the body of the expandable panel.
+     *
+     * @public
+     * @returns Body of the expandable panel.
+     */
+    public body(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .expandable-panel__body`);
+    }
 
-        this.body = () => cy.get(`${this.selector} .expandable-panel__body`);
-        this.relatedInfo = () =>
-            cy.get(`${this.selector} .expandable-panel__outside`);
+    /**
+     * Get the expand icon.
+     *
+     * @public
+     * @returns Expand icon element.
+     */
+    public expandCollapseIcon(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .expandable-panel__icon`);
+    }
+
+    /**
+     * Get the header button element.
+     *
+     * @public
+     * @returns Header button element.
+     */
+    public header(): Cypress.Chainable<JQuery<HTMLButtonElement>> {
+        return cy.get(`${this.selector} .expandable-panel__heading button`);
+    }
+
+    /**
+     * Get boolean state of the expandable panel for if it
+     * is open (true) or closed (false).
+     *
+     * @public
+     * @returns Boolean for panel being open (true) or closed (false).
+     */
+    public isOpen(): Cypress.Chainable<boolean> {
+        let isPanelOpen = false;
+        this.el()
+            .invoke("attr", "class")
+            .then((classes) => {
+                const panelClasses = classes ? classes.split(" ") : [];
+
+                isPanelOpen = panelClasses.includes(
+                    "expandable-panel--expanded",
+                );
+            });
+
+        return cy.wrap("Check if panel is expanded").then(() => {
+            return isPanelOpen;
+        });
+    }
+
+    /**
+     * Get the notification icon.
+     *
+     * Only applicable if notifications are above zero.
+     *
+     * @public
+     * @returns Notification icon element.
+     */
+    public notificationIcon(): DefaultCypressChainable {
+        return cy.get(
+            `${this.selector} .expandable-panel__heading .expandable-panel__notification`,
+        );
     }
 
     /**
      * Returns the number of notifications
+     *
+     * @public
+     * @returns Number of notifications.
      */
     public numberOfNotifications(): Cypress.Chainable<number> {
         let nrOfNotifications = 0;
@@ -53,20 +113,15 @@ export class FExpandablePanelPageObject implements BasePageObject {
         });
     }
 
-    public isOpen(): Cypress.Chainable<boolean> {
-        let isPanelOpen = false;
-        this.el()
-            .invoke("attr", "class")
-            .then((classes) => {
-                const panelClasses = classes ? classes.split(" ") : [];
-
-                isPanelOpen = panelClasses.includes(
-                    "expandable-panel--expanded",
-                );
-            });
-
-        return cy.wrap("Check if panel is expanded").then(() => {
-            return isPanelOpen;
-        });
+    /**
+     * Get container element for the `outside` slot.
+     *
+     * Only applicable if the `outside` slot is used.
+     *
+     * @public
+     * @returns Container element for the `outside` slot.
+     */
+    public relatedInfo(): DefaultCypressChainable {
+        return cy.get(`${this.selector} .expandable-panel__outside`);
     }
 }
