@@ -20,6 +20,10 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
     white-space: nowrap;
     container-type: inline-size;
 
+    &__icon {
+        align-items: center;
+    }
+
     &__page,
     &__previous,
     &__next {
@@ -40,6 +44,14 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
             color: black;
             background-color: var(--fkds-color-action-background-secondary-hover);
         }
+    }
+
+    &__next,
+    &__previous {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: size.$margin-025;
     }
 
     &__page {
