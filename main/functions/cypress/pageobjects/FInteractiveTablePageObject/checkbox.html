@@ -25,14 +25,14 @@
     "vue": "../../../../assets/vendor-vue-f965e7.js",
     "@fkui/logic": "../../../../assets/vendor-fkui-logic-1242a6.js",
     "@fkui/date": "../../../../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../../../../assets/vendor-fkui-vue-f6cab4.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-cef21c.js",
     "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
   },
   "integrity": {
     "../../../../assets/vendor-vue-f965e7.js": "sha384-SD5eJUf0EHrq5fdKUiIi6kjU+Gg9zAN37N/XjLlRqaDcP3C61KatsvLwJMQrZdKO",
     "../../../../assets/vendor-fkui-logic-1242a6.js": "sha384-Lt4fZk8RFzg4VwI02lBf3fz87u9QQ+gxRqIn5ulgzu+Ar18v06n87RPnxLq1fguH",
     "../../../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../../../../assets/vendor-fkui-vue-f6cab4.js": "sha384-lpmm2boERiIQKkldenL/rMZUhAIpIZR3kibP33DDtb2JexgDKGJWWjm03bW72R/o",
+    "../../../../assets/vendor-fkui-vue-cef21c.js": "sha384-LGlIfw7jmwkiJOxEfmpjC8aq7Pvu1WNZZ7hPHtrN/wEgrPF2aqlg1IWAZmqvcz5c",
     "../../../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-75f8d4.json"
+            href="../../../../search-data-186960.json"
             as="fetch"
             crossorigin
-            integrity="sha384-tUZFLA113H4mZC+VTTJHRDIf7wfFYGA2pYfKL1liRv62F0llu41mjCwyjjaN0JLA"
+            integrity="sha384-A6l7XBVzVzWyWEciIxtWzA6Vh0F8YzDr0Gd9pI7CPcCeYSwpKHnn+ys0J5a5T35+"
             id="search-data"
         />
     </head>
@@ -1692,13 +1692,13 @@ Om första raden är expanderad refererar andra raden till den första expandera
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-c7a088"></div>
+        <div id="example-370662"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTablePageObject-checkbox-c7a088.js"></script>
+        <script type="module" src="./FInteractiveTablePageObject-checkbox-370662.js"></script>
     
                     </div>
                 </div>
@@ -1711,9 +1711,9 @@ Om första raden är expanderad refererar andra raden till den första expandera
                     data-language="vue"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">selectable</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">checkbox-description</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span> Select row {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">selectable-description</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span> Select row {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
@@ -1763,9 +1763,9 @@ table.<span class="hljs-title function_">checkbox</span>(<span class="hljs-numbe
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/900e0c42ee7419ff3e8cf8751b1deb124866c035">900e0c4</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/ecf0aa79d50768e4401ebb5f8ac32e34a2855491">ecf0aa7</a>)<br />
         
-        2025-11-25 11:08
+        2025-11-25 12:09
 </div>
 <div class="toolbar__item">
     <form id="version">
