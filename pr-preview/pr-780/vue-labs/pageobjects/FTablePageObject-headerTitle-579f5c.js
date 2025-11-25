@@ -447,10 +447,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.46.0",
+    version: "3.47.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru), 2025 CoreJS Company (core-js.io)",
-    license: "https://github.com/zloirock/core-js/blob/v3.46.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.47.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -2939,7 +2939,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
 });
 var _hoisted_1$6 = {
   scope: "col",
-  class: "table-ng__column table-ng__column--checkbox table-ng__column--select"
+  class: "table-ng__column table-ng__column--select"
 };
 var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableHeaderSelectable",
@@ -3800,14 +3800,9 @@ function useTabstop(tableRef, metaRows) {
     }
     assertRef(tableRef);
     const target = getCellTarget(tableRef.value, 1, 0);
-    if (metaRows.value.length === 0) {
-      target.tabIndex = 0;
-      target.focus();
-    } else {
-      activateCell(target, {
-        focus: renderOptions.value.focus
-      });
-    }
+    activateCell(target, {
+      focus: renderOptions.value.focus
+    });
     renderOptions.value.fallbackToFirstCell = false;
   });
   async function withTabstopBehaviour(behaviour, action) {
@@ -3888,8 +3883,10 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + 1;
     });
     const columnCount = computed(() => {
-      const selectableCol = __props.selectable ? 1 : 0;
-      return columns.value.length + selectableCol;
+      const expandCol = isTreegrid.value ? 1 : 0;
+      const selectCol = __props.selectable ? 1 : 0;
+      const count = columns.value.length + expandCol + selectCol;
+      return Math.max(1, count);
     });
     const multiSelectColumn = {
       type: "checkbox",

@@ -6,33 +6,33 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FPaginatorPageObject - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-b25f61.css"
+            href="../../../assets/docs-ca2473.css"
             crossorigin
-            integrity="sha384-eaCMkvqFUJc3sya4QL4TNPg+FHx2Jdm4qCqFnygv2HnsFO5Q1Y4oW3K1x7/UaM4I"
+            integrity="sha384-9Q350WAWVajqkVHzNPJaGH/XSSWRDqJSEe/r3mtoY5gNXfnz+TuTpsc5Wi/FM0U0"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-203089.css"
+            href="../../../assets/docs-fkui-7d009b.css"
             crossorigin
-            integrity="sha384-UbW+ktIc+EcM7vggNQO6vQfKehGu7Se90q+rlirCvNoLeb0lLvCertzpK1zJ4fOU"
+            integrity="sha384-kFzenHMowujpLVDLbyj/9siJkyZtWzsQPPrTCFaVREBPM7VBT1a+FPeqstvAkaKi"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../../assets/vendor-vue-fd23ba.js",
-    "@fkui/logic": "../../../assets/vendor-fkui-logic-277994.js",
-    "@fkui/date": "../../../assets/vendor-fkui-date-131ba7.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-ac5fe8.js",
+    "vue": "../../../assets/vendor-vue-f965e7.js",
+    "@fkui/logic": "../../../assets/vendor-fkui-logic-1242a6.js",
+    "@fkui/date": "../../../assets/vendor-fkui-date-808bee.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-f11dde.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
   },
   "integrity": {
-    "../../../assets/vendor-vue-fd23ba.js": "sha384-fgWjDRyjtEXyEeb3gQxn5cMLQnaLJ/+raE5Ku0VLWBP2RlzpzrpvJFEC1FCSIWMk",
-    "../../../assets/vendor-fkui-logic-277994.js": "sha384-o6DN+xTHp12Ot0+4FNZEoyGS6m3b75MezBhapCvFqCaF1IS9W5ox/P2dcvqGKt+i",
-    "../../../assets/vendor-fkui-date-131ba7.js": "sha384-1ousGnX+TtYBjw6BVR/x9Yg2jMIjTjuSOD+VpUdpe9Eo7r1KF2LHHKhc8hzYQQlC",
-    "../../../assets/vendor-fkui-vue-ac5fe8.js": "sha384-s/ywgg+nIis1510UcyHEgT8+phOL4iZl5H0GZmbjqbO1ZsxcsY/w5qZKTrbzXstB",
+    "../../../assets/vendor-vue-f965e7.js": "sha384-SD5eJUf0EHrq5fdKUiIi6kjU+Gg9zAN37N/XjLlRqaDcP3C61KatsvLwJMQrZdKO",
+    "../../../assets/vendor-fkui-logic-1242a6.js": "sha384-Lt4fZk8RFzg4VwI02lBf3fz87u9QQ+gxRqIn5ulgzu+Ar18v06n87RPnxLq1fguH",
+    "../../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
+    "../../../assets/vendor-fkui-vue-f11dde.js": "sha384-IKag1pz1VpK2sopJX6AckKV6D7QXph87svDURtir5cqkM7Nb6+BYv3iPww5uyczj",
     "../../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-71d59b.json"
+            href="../../../search-data-ccbd89.json"
             as="fetch"
             crossorigin
-            integrity="sha384-waEwubfMBYxuTqOzg6W90dSCyHIjIUNL4pLk/q+dg7t6Oo1kDWMy4dFL1MyxPQt1"
+            integrity="sha384-uDa2phkiqaIcy0fawqGDp4ZybTMZ//NNn9xyzyk2EL4wIUqC0ba92AO8ZKCOmfkI"
             id="search-data"
         />
     </head>
@@ -215,10 +215,11 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
@@ -1662,15 +1663,9 @@
                                 
                                 <li><a href="#currentpagebutton">currentPageButton()</a></li>
                                 
-                                <li><a href="#firstpagebutton">firstPageButton()</a></li>
-                                
-                                <li><a href="#lastpagebutton">lastPageButton()</a></li>
-                                
                                 <li><a href="#nextbutton">nextButton()</a></li>
                                 
                                 <li><a href="#pagebutton">pageButton()</a></li>
-                                
-                                <li><a href="#pagebuttons">pageButtons()</a></li>
                                 
                                 <li><a href="#pagecounter">pageCounter()</a></li>
                                 
@@ -1725,7 +1720,7 @@
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageobject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
 paginator.<span class="hljs-title function_">el</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.attr&quot;</span>, <span class="hljs-string">&quot;data-test&quot;</span>, <span class="hljs-string">&quot;myPaginator&quot;</span>);</code></pre>
                 </div>
             <h2 id="currentpagebutton"><a class="header-anchor" href="#currentpagebutton">currentPageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för den nuvarande sidan.</p>
@@ -1751,75 +1746,13 @@ paginator.<span class="hljs-title function_">el</span>().<span class="hljs-title
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageobject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);</code></pre>
-                </div>
-            <h2 id="firstpagebutton"><a class="header-anchor" href="#firstpagebutton">firstPageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till den första sidan.</p>
-<h3 id="syntax--3"><a class="header-anchor" href="#syntax--3">Syntax</a></h3>
-                <div
-                    id="example-919707"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="nocompile"
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">firstPageButton</span>();
-</code></pre>
-                </div>
-            <h4 id="returvarde--4"><a class="header-anchor" href="#returvarde--4">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den första sidan.</p>
-<h3 id="exempel--5"><a class="header-anchor" href="#exempel--5">Exempel</a></h3>
-                <div
-                    id="example-387e69"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="static"
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
-paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
-paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>);
-
-<span class="hljs-comment">// Go to first page</span>
-paginator.<span class="hljs-title function_">firstPageButton</span>().<span class="hljs-title function_">click</span>();
-paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);</code></pre>
-                </div>
-            <h2 id="lastpagebutton"><a class="header-anchor" href="#lastpagebutton">lastPageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till den sista sidan.</p>
-<h3 id="syntax--6"><a class="header-anchor" href="#syntax--6">Syntax</a></h3>
-                <div
-                    id="example-ef7043"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="nocompile"
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">lastPageButton</span>();
-</code></pre>
-                </div>
-            <h4 id="returvarde--7"><a class="header-anchor" href="#returvarde--7">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den sista sidan.</p>
-<h3 id="exempel--8"><a class="header-anchor" href="#exempel--8">Exempel</a></h3>
-                <div
-                    id="example-cba6a7"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="static"
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
-paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
-paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>);
-
-<span class="hljs-comment">// Go to last page</span>
-paginator.<span class="hljs-title function_">lastPageButton</span>().<span class="hljs-title function_">click</span>();
-paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;20&quot;</span>);</code></pre>
                 </div>
             <h2 id="nextbutton"><a class="header-anchor" href="#nextbutton">nextButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till nästa sida.</p>
-<h3 id="syntax--9"><a class="header-anchor" href="#syntax--9">Syntax</a></h3>
+<h3 id="syntax--3"><a class="header-anchor" href="#syntax--3">Syntax</a></h3>
                 <div
-                    id="example-d826f9"
+                    id="example-8ab912"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1829,27 +1762,27 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">nextButton</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--10"><a class="header-anchor" href="#returvarde--10">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till nästa sida.</p>
-<h3 id="exempel--11"><a class="header-anchor" href="#exempel--11">Exempel</a></h3>
+            <h4 id="returvarde--4"><a class="header-anchor" href="#returvarde--4">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till nästa sida.</p>
+<h3 id="exempel--5"><a class="header-anchor" href="#exempel--5">Exempel</a></h3>
                 <div
-                    id="example-f5977d"
+                    id="example-fcaa70"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageobject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);
 
 <span class="hljs-comment">// Go to next page</span>
 paginator.<span class="hljs-title function_">nextButton</span>().<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>);</code></pre>
                 </div>
-            <h2 id="pagebutton"><a class="header-anchor" href="#pagebutton">pageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till en specifik sida.</p>
-<h3 id="syntax--12"><a class="header-anchor" href="#syntax--12">Syntax</a></h3>
+            <h2 id="pagebutton"><a class="header-anchor" href="#pagebutton">pageButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till en specifik sida eller samtliga sidknappar.</p>
+<h3 id="syntax--6"><a class="header-anchor" href="#syntax--6">Syntax</a></h3>
                 <div
-                    id="example-fcba72"
+                    id="example-d6be9b"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1859,56 +1792,51 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">pageButton</span>(page);
 </code></pre>
                 </div>
-            <h4 id="parametrar--13"><a class="header-anchor" href="#parametrar--13">Parametrar</a></h4><dl>
-<dt><code>page: number</code></dt>
-<dd>Nummer för den sida som knappen har.</dd>
+            <h4 id="parametrar--7"><a class="header-anchor" href="#parametrar--7">Parametrar</a></h4><dl>
+<dt><code>page?: number | string</code></dt>
+<dd>Nummer för knappens index; sträng för knappens sidnummer; odefinierat för samtliga sidknappar.</dd>
 </dl>
-<h4 id="returvarde--14"><a class="header-anchor" href="#returvarde--14">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den specifika sidan.</p>
-<h3 id="exempel--15"><a class="header-anchor" href="#exempel--15">Exempel</a></h3>
+<h4 id="returvarde--8"><a class="header-anchor" href="#returvarde--8">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till den specifika sidan (om <code>page</code> är definerat); <code>HTMLElement[]</code> med samtliga sidknappar (om <code>page</code> är odefinerat).</p>
+<h3 id="exempel--9"><a class="header-anchor" href="#exempel--9">Exempel</a></h3>
                 <div
-                    id="example-017271"
+                    id="example-27f261"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
-paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">4</span>).<span class="hljs-title function_">click</span>();
-paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>);</code></pre>
-                </div>
-            <h2 id="pagebuttons"><a class="header-anchor" href="#pagebuttons">pageButtons()</a></h2><p class="docs-paragraph">Används för att komma åt samtliga sidknappar.</p>
-<h3 id="syntax--16"><a class="header-anchor" href="#syntax--16">Syntax</a></h3>
-                <div
-                    id="example-b7c9a1"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="nocompile"
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">pageButtons</span>();
-</code></pre>
-                </div>
-            <h4 id="returvarde--17"><a class="header-anchor" href="#returvarde--17">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement[]</code> med samtliga sidknappar.</p>
-<h3 id="exempel--18"><a class="header-anchor" href="#exempel--18">Exempel</a></h3>
-                <div
-                    id="example-acb1a3"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="static"
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
-<span class="hljs-keyword">const</span> pageButtons = paginator.<span class="hljs-title function_">pageButtons</span>();
-pageButtons.<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.length&quot;</span>, <span class="hljs-number">9</span>);</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageobject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
+
+<span class="hljs-comment">// No param</span>
+<span class="hljs-keyword">const</span> pageButtons = paginator.<span class="hljs-title function_">pageButton</span>();
+pageButtons.<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.length&quot;</span>, <span class="hljs-number">9</span>);
+
+<span class="hljs-comment">// String param</span>
+paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-string">&quot;3&quot;</span>).<span class="hljs-title function_">click</span>();
+paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>);
+
+<span class="hljs-comment">// Number param</span>
+paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
+paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>);
+
+<span class="hljs-comment">// Number param with value &quot;-1&quot;</span>
+paginator.<span class="hljs-title function_">pageButton</span>(-<span class="hljs-number">1</span>).<span class="hljs-title function_">click</span>();
+paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;20&quot;</span>);
+
+<span class="hljs-comment">// Number param with value &quot;-2&quot;</span>
+paginator.<span class="hljs-title function_">pageButton</span>(-<span class="hljs-number">2</span>).<span class="hljs-title function_">click</span>();
+paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;19&quot;</span>);
+
+<span class="hljs-comment">// Number param with value &quot;0&quot;</span>
+paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">click</span>();
+paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);</code></pre>
                 </div>
             <h2 id="pagecounter"><a class="header-anchor" href="#pagecounter">pageCounter()</a></h2><p class="docs-paragraph">Används för att komma åt element för sidräknare.
 Elementet ersätter sidknapparna i kompakt läge.</p>
-<h3 id="syntax--19"><a class="header-anchor" href="#syntax--19">Syntax</a></h3>
+<h3 id="syntax--10"><a class="header-anchor" href="#syntax--10">Syntax</a></h3>
                 <div
-                    id="example-90712a"
+                    id="example-32a8f0"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1918,23 +1846,23 @@ Elementet ersätter sidknapparna i kompakt läge.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">pageCounter</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--20"><a class="header-anchor" href="#returvarde--20">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med sidräknare.</p>
-<h3 id="exempel--21"><a class="header-anchor" href="#exempel--21">Exempel</a></h3>
+            <h4 id="returvarde--11"><a class="header-anchor" href="#returvarde--11">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med sidräknare.</p>
+<h3 id="exempel--12"><a class="header-anchor" href="#exempel--12">Exempel</a></h3>
                 <div
-                    id="example-7b040b"
+                    id="example-c849be"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageobject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
 paginator.<span class="hljs-title function_">pageCounter</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1 av 20&quot;</span>);</code></pre>
                 </div>
             <h2 id="previousbutton"><a class="header-anchor" href="#previousbutton">previousButton()</a></h2><p class="docs-paragraph">Används för att komma åt knapp för att gå till föregående sida.</p>
-<h3 id="syntax--22"><a class="header-anchor" href="#syntax--22">Syntax</a></h3>
+<h3 id="syntax--13"><a class="header-anchor" href="#syntax--13">Syntax</a></h3>
                 <div
-                    id="example-34ebab"
+                    id="example-65983e"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1944,18 +1872,18 @@ paginator.<span class="hljs-title function_">pageCounter</span>().<span class="h
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">previousButton</span>();
 </code></pre>
                 </div>
-            <h4 id="returvarde--23"><a class="header-anchor" href="#returvarde--23">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till föregående sida.</p>
-<h3 id="exempel--24"><a class="header-anchor" href="#exempel--24">Exempel</a></h3>
+            <h4 id="returvarde--14"><a class="header-anchor" href="#returvarde--14">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med knappen för att gå till föregående sida.</p>
+<h3 id="exempel--15"><a class="header-anchor" href="#exempel--15">Exempel</a></h3>
                 <div
-                    id="example-c88286"
+                    id="example-73e2fb"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageObject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
-paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageobject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
+paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-string">&quot;3&quot;</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>);
 
 <span class="hljs-comment">// Go to previous page</span>
@@ -1986,9 +1914,9 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-shorter-page-counter-label (<a href="https://github.com/Forsakringskassan/designsystem/commits/61546b11f8e66f4d8f81c7c19ebce4b1a9757c28">61546b1</a>)<br />
+<div class="footer__right"><div class="version">paginator-shorter-page-counter-label (<a href="https://github.com/Forsakringskassan/designsystem/commits/51838c634e97b422beb6b1e54c227b65a15e77e8">51838c6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/780">PR 780</a><br />
-        2025-11-05 13:23
+        2025-11-25 12:39
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2100,10 +2028,10 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-cec529.js"
+            src="../../../assets/processors/selectable-version/select-version-9ccbf7.js"
             type="module"
             crossorigin
-            integrity="sha384-TRok7ZiWlbx0DVsCXEE+G+WyYin4CJxSKORmSHFtV+tQqQf0G4j9nQeI5MKWgyKu"
+            integrity="sha384-u+jDW7+S+KSxeYarWQsDKUMJ52R0GvYJLJHLbJbWAMDXZzi6bj/PxhyUp0VUwj7a"
             
         ></script><script
             src="../../../assets/main-9cd53d.js"
