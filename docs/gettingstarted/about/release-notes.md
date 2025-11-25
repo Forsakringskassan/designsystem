@@ -9,19 +9,36 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.29.0
+
+2025-11-27
+
+Vi släpper en ny pagineringskomponent.  
+Om du kombinerar paginering med tabell kan vissa funktioner i tabell skapa oönskade beteenden vid paginering.
+Stöd för paginering till tabell kommer senare.  
+Buggfixar, se {@link changelog Changelog}
+
+## Version 6.28.0
+
+2025-11-25
+
+Komponenten {@link FExpandablePanel expanderbar panel} har fått ny design och semantiska färgvariabler.
+{@link table#valja_rader Interaktiv tabell} har nu stöd för radioknappar (att välja en rad).  
+Buggfixar, se {@link changelog#v6-28-0 Changelog}
+
 ## Version 6.27.0
 
 2025-11-21
 
 Lagt till en prop `formModalSize`i Datamängdredigeraren för att kunna kontrollera storleken på modalen, läs mer {@link FCrudDataset Datamängdredigeraren}.  
-Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html)
+Buggfixar, se {@link changelog#v6-27-0 Changelog}
 
 ## Version 6.26.0
 
 2025-11-10
 
 Möjliggör för konsumenten att sätta antal decimaler för `parseNumber` och `parsePercent`.  
-Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-26-0)
+Buggfixar, se {@link changelog#v6-26-0 Changelog}
 
 ## Version 6.25.0
 
@@ -29,14 +46,14 @@ Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/chang
 
 Deprekering av gamla färgvariabler.  
 Temabyggare släppt med byggskript för designsystemets tema (theme-default och theme-desktop).  
-Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-25-0)
+Buggfixar, se {@link changelog#v6-25-0 Changelog}
 
 ## Version 6.24.0
 
 2025-10-29
 
 Semantiska färgvariabler för expanderbart stycke.  
-Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-24-0)
+Buggfixar, se se {@link changelog#v6-24-0 Changelog}
 
 ## Version 6.23.0
 
@@ -45,28 +62,28 @@ Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/chang
 Stöd för ljust och mörkt tema infört för standard-temat (theme-default).  
 Semantiska färgvariabler uppdaterade för ikon.  
 Nya paket för logotyp, font och desktop-tema (theme-desktop).  
-Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-23-0)
+Buggfixar, se {@link changelog#v6-23-0 Changelog}
 
 ## Version 6.22.0
 
 2025-10-15
 
 Status för hover och vald justerat för högkontrastläge.  
-Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-22-0)
+Buggfixar, se {@link changelog#v6-22-0 Changelog}
 
 ## Version 6.21.0
 
 2025-10-09
 
 Meddelanderutan har nu samma storlek och rubrikstorlek oavsett skärmstorlek.  
-Buggfixar, se [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-21-0)
+Buggfixar, se {@link changelog#v6-21-0 Changelog}
 
 ## Version 6.20.0
 
 2025-09-28
 
 Lagt till ellipsis icon till ikon biblioteket.  
-Buggfixar, [Changelog](https://designsystem.forsakringskassan.se/latest/changelog.html#v6-20-0)
+Buggfixar, se {@link changelog#v6-20-0 Changelog}
 
 ## Version 6.19.0
 
