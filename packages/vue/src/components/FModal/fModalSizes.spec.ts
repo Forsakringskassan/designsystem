@@ -1,4 +1,4 @@
-import { sizeClass } from "./sizes";
+import { fModalSizeClass } from "./fModalSizes";
 
 describe("should return correct class for", () => {
     it.each`
@@ -8,18 +8,18 @@ describe("should return correct class for", () => {
         ${"fullwidth"} | ${"modal__dialog-container--fullwidth"}
     `("$size", ({ size, expected }) => {
         expect.assertions(1);
-        expect(sizeClass(size)).toEqual([expected]);
+        expect(fModalSizeClass(size)).toEqual([expected]);
     });
 });
 
 it("should rewrite fullscreen to fullwidth", () => {
     expect.assertions(1);
-    expect(sizeClass("fullscreen")).toEqual([
+    expect(fModalSizeClass("fullscreen")).toEqual([
         "modal__dialog-container--fullwidth",
     ]);
 });
 
 it("should return empty array if size is empty", () => {
     expect.assertions(1);
-    expect(sizeClass("")).toEqual([]);
+    expect(fModalSizeClass("")).toEqual([]);
 });

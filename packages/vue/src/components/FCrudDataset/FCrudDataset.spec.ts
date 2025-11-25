@@ -6,7 +6,7 @@ import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { ValidationPlugin } from "../../plugins";
 import { ListItem } from "../../types";
-import { type sizes, FFormModal, FFormModalAction, FModal } from "../FModal";
+import { FFormModal, FFormModalAction, FModal, FModalSizes } from "../FModal";
 import { FTextField } from "../FTextField";
 import { type FValidationFormCallback } from "../FValidationForm";
 import FCrudButton from "./FCrudButton.vue";
@@ -87,7 +87,7 @@ const TestComponent = defineComponent({
             },
         },
         formModalSize: {
-            type: String as PropType<(typeof sizes)[number]>,
+            type: String as PropType<(typeof FModalSizes)[number]>,
             required: false,
             default: "",
         },

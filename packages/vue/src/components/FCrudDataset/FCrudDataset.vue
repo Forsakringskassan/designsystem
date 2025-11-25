@@ -4,7 +4,7 @@ import { TranslationService, alertScreenReader, deepClone } from "@fkui/logic";
 
 import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
-import { type sizes, FConfirmModal, FFormModal } from "../FModal";
+import { type FModalSizes, FConfirmModal, FFormModal } from "../FModal";
 import { type FModalButtonDescriptor } from "../FModal/modal-button";
 import { type FValidationFormCallback } from "../FValidationForm";
 import { filterItem } from "./filter-item";
@@ -92,9 +92,10 @@ const props = defineProps({
     },
     /**
      * Property for changing the "add" and "modify" modal size
+     * See <f-modal> `size` props.
      */
     formModalSize: {
-        type: String as PropType<(typeof sizes)[number]>,
+        type: String as PropType<(typeof FModalSizes)[number]>,
         required: false,
         default: "",
     },

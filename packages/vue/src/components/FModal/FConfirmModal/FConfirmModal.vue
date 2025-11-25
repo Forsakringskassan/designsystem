@@ -2,8 +2,9 @@
 import { type PropType, defineComponent } from "vue";
 import { FKUIConfigButtonOrder, config } from "../../../config";
 import FModal from "../FModal.vue";
+import { type FModalFocus } from "../fModalFocus";
+import { type FModalSizes } from "../fModalSizes";
 import { type FModalButton, type FModalButtonDescriptor, prepareButtonList } from "../modal-button";
-import { type sizes } from "../sizes";
 
 const defaultButtons: FModalButtonDescriptor[] = [
     { label: "Primärknapp", event: "confirm", type: "primary" },
@@ -49,10 +50,10 @@ export default defineComponent({
             default: "Rubrik",
         },
         /**
-         * The size of modal. 'large' and 'fullscreen' is valid.
+         * See <f-modal> `size` props.
          */
         size: {
-            type: String as PropType<(typeof sizes)[number]>,
+            type: String as PropType<(typeof FModalSizes)[number]>,
             default: "",
         },
         /**
@@ -80,11 +81,8 @@ export default defineComponent({
          * - "open" - focus will only be applied once modal is opened
          */
         focus: {
-            type: String as PropType<"on" | "off" | "open">,
+            type: String as PropType<(typeof FModalFocus)[number]>,
             default: "on",
-            validator(value: string): boolean {
-                return ["on", "off", "open"].includes(value);
-            },
         },
     },
     emits: [

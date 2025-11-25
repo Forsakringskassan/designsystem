@@ -4,9 +4,11 @@ import { ElementIdService, findTabbableElements, focus, popFocus, pushFocus } fr
 import { TranslationMixin } from "../../plugins";
 import { findElementFromVueRef, getHTMLElementFromVueRef, hasSlot } from "../../utils";
 import { FIcon } from "../FIcon";
+import { type FModalFocus } from "./fModalFocus";
+import { type FModalSizes, fModalSizeClass } from "./fModalSizes";
+import { type FModalTypes, fModalTypeClass } from "./fModalTypes";
 import { type FModalData } from "./fmodal-data";
 import { focusElement } from "./focus-element";
-import { type sizes, sizeClass } from "./sizes";
 
 /**
  * Level: Ready
@@ -50,20 +52,23 @@ export default defineComponent({
             required: false,
         },
         /**
-         * The type of modal. 'information', 'warning' and 'error' is valid.
+         * The type of modal. '', 'information', 'warning' and 'error' is valid.
          */
         type: {
-            type: String as PropType<"" | "information" | "warning" | "error">,
-            default: "",
-            validator(value: string): boolean {
-                return ["", "information", "warning", "error"].includes(value);
-            },
+            type: String as PropType<(typeof FModalTypes)[number]>,
+            default: "information",
         },
         /**
          * The size of modal in desktop mode.
+         * - "" (default) - Will render the modal as "small",
+         * - "small",
+         * - "medium",
+         * - "large",
+         * - "fullwidth",
+         * - "fullscreen" (deprecated) - Acts as fullwidth. Recommended to use "fullwidth" instead.
          */
         size: {
-            type: String as PropType<(typeof sizes)[number]>,
+            type: String as PropType<(typeof FModalSizes)[number]>,
             default: "",
         },
         /**
@@ -73,11 +78,8 @@ export default defineComponent({
          * - "open" - focus will only be applied once modal is opened
          */
         focus: {
-            type: String as PropType<"on" | "off" | "open">,
+            type: String as PropType<(typeof FModalFocus)[number]>,
             default: "on",
-            validator(value: string): boolean {
-                return ["on", "off", "open"].includes(value);
-            },
         },
     },
     emits: [
@@ -96,10 +98,10 @@ export default defineComponent({
     },
     computed: {
         modalClass(): string[] {
-            return this.type ? [`modal--${this.type}`] : [];
+            return fModalTypeClass(this.type);
         },
         containerClasses(): string[] {
-            const size = sizeClass(this.size);
+            const size = fModalSizeClass(this.size);
             if (this.fullscreen) {
                 return [...size, "modal__dialog-container--fullscreen"];
             } else {

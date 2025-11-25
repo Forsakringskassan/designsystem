@@ -76,7 +76,7 @@ describe("button order", () => {
 });
 
 describe("props", () => {
-    it("should change heading text via headring prop", () => {
+    it("should change heading text via heading prop", () => {
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
