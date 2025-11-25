@@ -124,7 +124,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
      * Requires a `selectable` table of type `multi`.
      *
      * @public
-     * @deprecated Use ´.selectable()´ instead. Deprecated since %version%.
+     * @deprecated Use ´.selectable()´ instead. Deprecated since v6.28.0.
      * @param row - Row number (1-indexed).
      * @returns Page object for `FCheckboxField`.
      */
@@ -151,7 +151,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
      * Requires a `selectable` table.
      *
      * @public
-     * @since %version%
+     * @since v6.28.0
      * @param row - Row number (1-indexed).
      * @returns Input element.
      */

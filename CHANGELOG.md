@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 6.28.0 (2025-11-25)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** expandable panel with semantic tokens and new design (refs SFKUI-7326) 51d2580
+* **@fkui/vue:** selectable radio in f-interactive-table (refs SFKUI-6500) ecf0aa7
+* **deps:** update dependency glob to v13 141e73d
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** align `FTableButton` icon´s with text (fixes SFKUI-7424) f340d9b
+* **@fkui/vue:** handle expandable row in `FInteractiveTable` not having same shape as parent (refs SFKUI-6500) d45fb4e
+* **@fkui/vue:** require `expandableAttribute` in `FInteractiveTable` to be property of `row` (refs SFKUI-6500) 5a6ebc5
+* **@fkui/vue:** require `keyAttribute` in `FInteractiveTable` to be a property of `row` (refs SFKUI-6500) cd387ba
+* **deps:** update dependency i18next to v25.6.3 d4305ed
+* **deps:** update dependency sass to v1.94.2 bde1709
+
 ## 6.27.0 (2025-11-21)
 
 ### Features
