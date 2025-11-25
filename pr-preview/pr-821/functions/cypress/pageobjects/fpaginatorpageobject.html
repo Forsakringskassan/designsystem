@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FPaginatorPageObject - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-da087b.css"
+            href="../../../assets/docs-ca2473.css"
             crossorigin
-            integrity="sha384-6ICTNVr7SlhhemRezQ20yODYl4gFb5oYdTOSSP9f7UUS36/MceYy5X32pb2CwKK4"
+            integrity="sha384-9Q350WAWVajqkVHzNPJaGH/XSSWRDqJSEe/r3mtoY5gNXfnz+TuTpsc5Wi/FM0U0"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-82b0c1.css"
+            href="../../../assets/docs-fkui-7d009b.css"
             crossorigin
-            integrity="sha384-0GfuYTuJ/BgVqCHcQjyzelpw2qLmj5T5hiDNrpst57faGK1Tp9bQWqxE6zzJ+8PL"
+            integrity="sha384-kFzenHMowujpLVDLbyj/9siJkyZtWzsQPPrTCFaVREBPM7VBT1a+FPeqstvAkaKi"
             
         />
 
@@ -25,14 +25,14 @@
     "vue": "../../../assets/vendor-vue-f965e7.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-1242a6.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-09f97f.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-64a413.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-f965e7.js": "sha384-SD5eJUf0EHrq5fdKUiIi6kjU+Gg9zAN37N/XjLlRqaDcP3C61KatsvLwJMQrZdKO",
     "../../../assets/vendor-fkui-logic-1242a6.js": "sha384-Lt4fZk8RFzg4VwI02lBf3fz87u9QQ+gxRqIn5ulgzu+Ar18v06n87RPnxLq1fguH",
     "../../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../../../assets/vendor-fkui-vue-09f97f.js": "sha384-SS0xymeozBfLbjKTHyjaWZXa0/Fa9154tgI2nIwweql5EICQEWJ5qG9vMq5fRcBH",
+    "../../../assets/vendor-fkui-vue-64a413.js": "sha384-1Y+6tRW1kIZPsE06+dDawJBycJjAonAzvzQazrvViPilNwWSX8MyKRhRbYsrMN05",
     "../../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-bfd5cb.json"
+            href="../../../search-data-c3a60e.json"
             as="fetch"
             crossorigin
-            integrity="sha384-nWDURet8K/d+kHBcRKjmzBk07hBlrzQFCMrsNf8Dx/Oe6f7x3lyf6YyaA5BplQiX"
+            integrity="sha384-WiFvlerVXm95FnlikyaRE8z53KxHScnP6Bce+edaVmsATCbHEt68VBK1STZDoWVE"
             id="search-data"
         />
     </head>
@@ -1824,6 +1824,10 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
 paginator.<span class="hljs-title function_">pageButton</span>(-<span class="hljs-number">1</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;20&quot;</span>);
 
+<span class="hljs-comment">// Number param with value &quot;-2&quot;</span>
+paginator.<span class="hljs-title function_">pageButton</span>(-<span class="hljs-number">2</span>).<span class="hljs-title function_">click</span>();
+paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;19&quot;</span>);
+
 <span class="hljs-comment">// Number param with value &quot;0&quot;</span>
 paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>);</code></pre>
@@ -1879,7 +1883,7 @@ paginator.<span class="hljs-title function_">pageCounter</span>().<span class="h
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> paginator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FPaginatorPageobject</span>(<span class="hljs-string">&quot;[data-test=&#x27;myPaginator&#x27;]&quot;</span>);
-paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
+paginator.<span class="hljs-title function_">pageButton</span>(<span class="hljs-string">&quot;3&quot;</span>).<span class="hljs-title function_">click</span>();
 paginator.<span class="hljs-title function_">currentPageButton</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>);
 
 <span class="hljs-comment">// Go to previous page</span>
@@ -1910,9 +1914,9 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-with-f-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/43cd68f199ce69148e2c85a6c9caa54557b5767b">43cd68f</a>)<br />
+<div class="footer__right"><div class="version">paginator-with-f-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/d4a6d9ce90b478030247ab328eee18c48cb53019">d4a6d9c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/821">PR 821</a><br />
-        2025-11-19 15:30
+        2025-11-25 15:42
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2024,10 +2028,10 @@ paginator.<span class="hljs-title function_">currentPageButton</span>().<span cl
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-c21898.js"
+            src="../../../assets/processors/selectable-version/select-version-9ccbf7.js"
             type="module"
             crossorigin
-            integrity="sha384-ORSkXjTR9Dd3kY15Oo7HXImv0W0aC6qWBP+raNfN9UUX6lNoQBhFu4HYwp29rpZz"
+            integrity="sha384-u+jDW7+S+KSxeYarWQsDKUMJ52R0GvYJLJHLbJbWAMDXZzi6bj/PxhyUp0VUwj7a"
             
         ></script><script
             src="../../../assets/main-9cd53d.js"

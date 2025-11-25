@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FInteractiveTablePageObject: checkbox() method - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../../assets/docs-da087b.css"
+            href="../../../../assets/docs-ca2473.css"
             crossorigin
-            integrity="sha384-6ICTNVr7SlhhemRezQ20yODYl4gFb5oYdTOSSP9f7UUS36/MceYy5X32pb2CwKK4"
+            integrity="sha384-9Q350WAWVajqkVHzNPJaGH/XSSWRDqJSEe/r3mtoY5gNXfnz+TuTpsc5Wi/FM0U0"
             
         />
         <link
             rel="stylesheet"
-            href="../../../../assets/docs-fkui-82b0c1.css"
+            href="../../../../assets/docs-fkui-7d009b.css"
             crossorigin
-            integrity="sha384-0GfuYTuJ/BgVqCHcQjyzelpw2qLmj5T5hiDNrpst57faGK1Tp9bQWqxE6zzJ+8PL"
+            integrity="sha384-kFzenHMowujpLVDLbyj/9siJkyZtWzsQPPrTCFaVREBPM7VBT1a+FPeqstvAkaKi"
             
         />
 
@@ -25,14 +25,14 @@
     "vue": "../../../../assets/vendor-vue-f965e7.js",
     "@fkui/logic": "../../../../assets/vendor-fkui-logic-1242a6.js",
     "@fkui/date": "../../../../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../../../../assets/vendor-fkui-vue-09f97f.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-64a413.js",
     "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
   },
   "integrity": {
     "../../../../assets/vendor-vue-f965e7.js": "sha384-SD5eJUf0EHrq5fdKUiIi6kjU+Gg9zAN37N/XjLlRqaDcP3C61KatsvLwJMQrZdKO",
     "../../../../assets/vendor-fkui-logic-1242a6.js": "sha384-Lt4fZk8RFzg4VwI02lBf3fz87u9QQ+gxRqIn5ulgzu+Ar18v06n87RPnxLq1fguH",
     "../../../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../../../../assets/vendor-fkui-vue-09f97f.js": "sha384-SS0xymeozBfLbjKTHyjaWZXa0/Fa9154tgI2nIwweql5EICQEWJ5qG9vMq5fRcBH",
+    "../../../../assets/vendor-fkui-vue-64a413.js": "sha384-1Y+6tRW1kIZPsE06+dDawJBycJjAonAzvzQazrvViPilNwWSX8MyKRhRbYsrMN05",
     "../../../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-bfd5cb.json"
+            href="../../../../search-data-c3a60e.json"
             as="fetch"
             crossorigin
-            integrity="sha384-nWDURet8K/d+kHBcRKjmzBk07hBlrzQFCMrsNf8Dx/Oe6f7x3lyf6YyaA5BplQiX"
+            integrity="sha384-WiFvlerVXm95FnlikyaRE8z53KxHScnP6Bce+edaVmsATCbHEt68VBK1STZDoWVE"
             id="search-data"
         />
     </head>
@@ -1703,13 +1703,13 @@ Om första raden är expanderad refererar andra raden till den första expandera
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-1d3646"></div>
+        <div id="example-527193"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTablePageObject-checkbox-1d3646.js"></script>
+        <script type="module" src="./FInteractiveTablePageObject-checkbox-527193.js"></script>
     
                     </div>
                 </div>
@@ -1722,9 +1722,9 @@ Om första raden är expanderad refererar andra raden till den första expandera
                     data-language="vue"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">selectable</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">checkbox-description</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span> Select row {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">selectable-description</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span> Select row {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;A&quot;</span>&gt;</span> {{ row.a }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span> {{ row.b }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
@@ -1774,9 +1774,9 @@ table.<span class="hljs-title function_">checkbox</span>(<span class="hljs-numbe
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-with-f-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/43cd68f199ce69148e2c85a6c9caa54557b5767b">43cd68f</a>)<br />
+<div class="footer__right"><div class="version">paginator-with-f-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/d4a6d9ce90b478030247ab328eee18c48cb53019">d4a6d9c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/821">PR 821</a><br />
-        2025-11-19 15:30
+        2025-11-25 15:42
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1888,10 +1888,10 @@ table.<span class="hljs-title function_">checkbox</span>(<span class="hljs-numbe
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../../../assets/processors/selectable-version/select-version-c21898.js"
+            src="../../../../assets/processors/selectable-version/select-version-9ccbf7.js"
             type="module"
             crossorigin
-            integrity="sha384-ORSkXjTR9Dd3kY15Oo7HXImv0W0aC6qWBP+raNfN9UUX6lNoQBhFu4HYwp29rpZz"
+            integrity="sha384-u+jDW7+S+KSxeYarWQsDKUMJ52R0GvYJLJHLbJbWAMDXZzi6bj/PxhyUp0VUwj7a"
             
         ></script><script
             src="../../../../assets/main-9cd53d.js"
