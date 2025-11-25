@@ -19,6 +19,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
     justify-content: center;
     white-space: nowrap;
     container-type: inline-size;
+    font-weight: var(--f-font-weight-medium);
 
     &__icon {
         align-items: center;
