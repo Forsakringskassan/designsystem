@@ -20,7 +20,6 @@ Sidknappar visas som standard.
 Sidräknare ersätter sidknapparna om paginatorn är för smal för att kunna visa sidknappar.
 
 ```vue
-<!-- [html-validate-disable-block unique-landmark -- for demo purpose only] -->
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FPaginateDataset, FPaginator } from "@fkui/vue";
@@ -38,6 +37,7 @@ export default defineComponent({
 });
 </script>
 
+<!-- [html-validate-disable-block unique-landmark -- for demo purpose only] -->
 <template>
     <f-paginate-dataset :items="rows" :itemsPerPage="1">
         <template #default="{ items: currentPageItems }">
