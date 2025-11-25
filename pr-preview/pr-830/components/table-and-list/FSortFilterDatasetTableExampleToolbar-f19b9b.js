@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-181d2a.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-f19b9b.js
 import { defineComponent } from "vue";
 import { FIcon, FInteractiveTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
 
@@ -60,7 +60,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-181d2a.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetTableExampleToolbar.vue:FSortFilterDatasetTableExampleToolbar-f19b9b.js
 import { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent({
   components: { FSortFilterDataset, FInteractiveTable, FTableColumn, FIcon },
@@ -139,7 +139,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(_component_f_interactive_table, {
             rows: sortFilterResult,
             striped: "",
-            selectable: "",
+            selectable: "multi",
             "key-attribute": "id"
           }, {
             caption: _withCtx(() => [..._cache[2] || (_cache[2] = [
@@ -151,7 +151,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 /* CACHED */
               )
             ])]),
-            "checkbox-description": _withCtx(() => [..._cache[3] || (_cache[3] = [
+            "selectable-description": _withCtx(() => [..._cache[3] || (_cache[3] = [
               _createTextVNode(
                 " V\xE4lj denna raden ",
                 -1
@@ -241,7 +241,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-181d2a"
+  selector: "#example-f19b9b"
 });
 export {
   render

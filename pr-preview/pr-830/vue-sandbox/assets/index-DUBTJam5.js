@@ -21153,7 +21153,7 @@ registerLayout({
     }
   }
 });
-const _hoisted_1$d = ["aria-label"];
+const _hoisted_1$c = ["aria-label"];
 const __default__ = /* @__PURE__ */ defineComponent({
   computed: {
     ariaLabel() {
@@ -21189,7 +21189,7 @@ const __default__ = /* @__PURE__ */ defineComponent({
         class: normalizeClass(`logo logo--${props.size}`),
         "aria-label": _ctx.ariaLabel,
         role: "img"
-      }, null, 10, _hoisted_1$d);
+      }, null, 10, _hoisted_1$c);
     };
   }
 });

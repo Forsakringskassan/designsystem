@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/table-and-list/examples/FInteractiveTableSelectable.vue:FInteractiveTableSelectable-4c5be2.js
+// virtual-entry:virtual:docs/components/table-and-list/examples/FInteractiveTableSelectable.vue:FInteractiveTableSelectable-58a2c8.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
@@ -62,7 +62,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: $setup.selectedRows,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.selectedRows = $event),
         rows: $setup.rows,
-        selectable: ""
+        selectable: "multi"
       }, {
         caption: _withCtx(() => [..._cache[1] || (_cache[1] = [
           _createElementVNode(
@@ -100,7 +100,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             [_directive_format, row.value, "number"]
           ])
         ]),
-        "checkbox-description": _withCtx(({ row }) => [
+        "selectable-description": _withCtx(({ row }) => [
           _createTextVNode(
             ' V\xE4lj "' + _toDisplayString(row.name) + '" ',
             1
@@ -132,7 +132,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4c5be2"
+  selector: "#example-58a2c8"
 });
 export {
   render

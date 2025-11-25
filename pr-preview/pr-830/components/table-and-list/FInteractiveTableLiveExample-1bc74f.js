@@ -28,21 +28,22 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableLiveExample.vue:FInteractiveTableLiveExample-65db45.js
+// virtual-entry:virtual:packages/vue/src/components/FInteractiveTable/examples/FInteractiveTableLiveExample.vue:FInteractiveTableLiveExample-1bc74f.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
   FFieldset,
   FInteractiveTable,
   FRadioField,
+  FSelectField,
   FTableButton,
   FTableColumn
 } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode } from "vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode } from "vue";
 var exampleComponent = defineComponent({
   name: "FInteractiveTableLiveExample",
-  components: { LiveExample, FCheckboxField, FRadioField, FFieldset },
+  components: { LiveExample, FCheckboxField, FRadioField, FFieldset, FSelectField },
   data() {
     return {
       isEmpty: false,
@@ -52,7 +53,8 @@ var exampleComponent = defineComponent({
       hasHiddenCaption: false,
       hasActions: false,
       hasRowHeader: false,
-      isSelectable: true,
+      isSelectable: "",
+      isMultiSelect: true,
       isExpandable: false,
       hasCustomExpandContent: false,
       hasHover: false,
@@ -184,7 +186,10 @@ var exampleComponent = defineComponent({
       return this.hasHiddenCaption ? `<span class="sr-only">Utbetalningar</span>` : "Utbetalningar";
     },
     selectable() {
-      return this.isSelectable ? "selectable" : "";
+      if (!this.isSelectable) {
+        return "";
+      }
+      return `selectable="${this.isSelectable}"`;
     },
     expandable() {
       const expandableType = this.hasCustomExpandContent ? "expandableContent" : "expandableRows";
@@ -255,7 +260,7 @@ var exampleComponent = defineComponent({
                         ${this.actions}
                     </template>
                     ${this.expandableSlot}
-                    <template #checkbox-description> V\xE4lj denna rad </template>
+                    <template #selectable-description> V\xE4lj denna rad </template>
                     ${this.empty}
                 </f-interactive-table>
             `
@@ -269,6 +274,7 @@ var exampleComponent = defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_checkbox_field = _resolveComponent("f-checkbox-field");
   const _component_f_fieldset = _resolveComponent("f-fieldset");
+  const _component_f_select_field = _resolveComponent("f-select-field");
   const _component_f_radio_field = _resolveComponent("f-radio-field");
   const _component_live_example = _resolveComponent("live-example");
   return _openBlock(), _createBlock(_component_live_example, {
@@ -374,18 +380,40 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           )
         ])]),
         default: _withCtx(() => [
-          _createVNode(_component_f_checkbox_field, {
+          _createVNode(_component_f_select_field, {
             modelValue: _ctx.isSelectable,
-            "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.isSelectable = $event),
-            value: true
+            "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.isSelectable = $event)
           }, {
-            default: _withCtx(() => [..._cache[20] || (_cache[20] = [
+            label: _withCtx(() => [..._cache[20] || (_cache[20] = [
               _createTextVNode(
                 " Valbara rader ",
                 -1
                 /* CACHED */
               )
             ])]),
+            default: _withCtx(() => [
+              _cache[21] || (_cache[21] = _createElementVNode(
+                "option",
+                { value: "" },
+                "Nej",
+                -1
+                /* CACHED */
+              )),
+              _cache[22] || (_cache[22] = _createElementVNode(
+                "option",
+                { value: "multi" },
+                "Ja, flerval",
+                -1
+                /* CACHED */
+              )),
+              _cache[23] || (_cache[23] = _createElementVNode(
+                "option",
+                { value: "single" },
+                "Ja, enkelval",
+                -1
+                /* CACHED */
+              ))
+            ]),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
@@ -394,7 +422,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.isExpandable = $event),
             value: true
           }, {
-            default: _withCtx(() => [..._cache[21] || (_cache[21] = [
+            default: _withCtx(() => [..._cache[24] || (_cache[24] = [
               _createTextVNode(
                 " Expanderbara rader ",
                 -1
@@ -408,7 +436,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             key: 0,
             name: "radio-expandable-type"
           }, {
-            label: _withCtx(() => [..._cache[22] || (_cache[22] = [
+            label: _withCtx(() => [..._cache[25] || (_cache[25] = [
               _createTextVNode(
                 " Typ av expanderat inneh\xE5ll ",
                 -1
@@ -421,7 +449,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasCustomExpandContent = $event),
                 value: false
               }, {
-                default: _withCtx(() => [..._cache[23] || (_cache[23] = [
+                default: _withCtx(() => [..._cache[26] || (_cache[26] = [
                   _createTextVNode(
                     " Tabellrad ",
                     -1
@@ -436,7 +464,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.hasCustomExpandContent = $event),
                 value: true
               }, {
-                default: _withCtx(() => [..._cache[24] || (_cache[24] = [
+                default: _withCtx(() => [..._cache[27] || (_cache[27] = [
                   _createTextVNode(
                     " Valfritt inneh\xE5ll ",
                     -1
@@ -455,7 +483,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.hasActions = $event),
             value: true
           }, {
-            default: _withCtx(() => [..._cache[25] || (_cache[25] = [
+            default: _withCtx(() => [..._cache[28] || (_cache[28] = [
               _createTextVNode(
                 " \xC5tg\xE4rdsknappar ",
                 -1
@@ -470,7 +498,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => _ctx.isEmpty = $event),
             value: true
           }, {
-            default: _withCtx(() => [..._cache[26] || (_cache[26] = [
+            default: _withCtx(() => [..._cache[29] || (_cache[29] = [
               _createTextVNode(
                 " Tom tabell ",
                 -1
@@ -484,7 +512,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             key: 1,
             name: "radio-empty-text"
           }, {
-            label: _withCtx(() => [..._cache[27] || (_cache[27] = [
+            label: _withCtx(() => [..._cache[30] || (_cache[30] = [
               _createTextVNode(
                 " Meddelande f\xF6r tom tabell ",
                 -1
@@ -497,7 +525,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => _ctx.hasCustomEmptyText = $event),
                 value: false
               }, {
-                default: _withCtx(() => [..._cache[28] || (_cache[28] = [
+                default: _withCtx(() => [..._cache[31] || (_cache[31] = [
                   _createTextVNode(
                     " Standardmeddelande ",
                     -1
@@ -512,7 +540,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "onUpdate:modelValue": _cache[12] || (_cache[12] = ($event) => _ctx.hasCustomEmptyText = $event),
                 value: true
               }, {
-                default: _withCtx(() => [..._cache[29] || (_cache[29] = [
+                default: _withCtx(() => [..._cache[32] || (_cache[32] = [
                   _createTextVNode(
                     " Eget meddelande ",
                     -1
@@ -538,7 +566,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-65db45"
+  selector: "#example-1bc74f"
 });
 export {
   render
