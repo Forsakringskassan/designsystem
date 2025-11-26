@@ -559,6 +559,14 @@ describe("keyboard navigation", () => {
             );
         },
     );
+
+    it.todo(
+        'should emit event "paginateDataset:previous" when getting page key "Page Up" down event',
+    );
+
+    it.todo(
+        'should emit event "paginateDataset:next" when getting page key "Page Down" down event',
+    );
 });
 
 describe("screenreader slot", () => {

@@ -10,12 +10,13 @@ import {
     useTemplateRef,
     watch,
 } from "vue";
-import { ElementIdService } from "@fkui/logic";
+import { ElementIdService, assertRef } from "@fkui/logic";
 import { useTranslate } from "../../plugins";
 import { getElementFromVueRef, handleKeyboardFocusNavigation, includeItem, itemEquals } from "../../utils";
 import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
 import { FCheckboxField } from "../FCheckboxField";
 import { ActivateItemInjected } from "../FCrudDataset";
+import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
@@ -241,12 +242,26 @@ function onItemKeyDown(event: KeyboardEvent, item: T): void {
             event.preventDefault();
             handleKeyboardFocusNavigation(event.key, event.target as HTMLElement, getLiElements());
             break;
-
         case " ":
         case "Spacebar":
             event.preventDefault();
             setActiveItem(item);
             break;
+        case "PageUp":
+            event.preventDefault();
+            dispatchPaginateDatasetEvent("previous");
+            break;
+        case "PageDown":
+            event.preventDefault();
+            dispatchPaginateDatasetEvent("next");
+    }
+
+    function dispatchPaginateDatasetEvent(type: "next" | "previous"): void {
+        assertRef(ulElement);
+        const event = new CustomEvent<FPaginateDatasetPageEventDetail>(`paginateDataset:${type}`, {
+            bubbles: true,
+        });
+        ulElement.value.dispatchEvent(event);
     }
 }
 

@@ -29,6 +29,7 @@ export default defineComponent({
             numberOfItemsPerPage: 10,
             numberOfPagesOptions: [5, 6, 7, 8, 9],
             numberOfPagesToShowAtMost: null as number | null,
+            showInteractiveListWithCheckboxes: false,
             showPaginator: true,
             showPaginatorInHeader: false,
             showPaginatorInFooter: true,
@@ -50,6 +51,7 @@ export default defineComponent({
         livedata(): object {
             return {
                 rows: persons,
+                selectedRows: [],
             };
         },
         livemethods(): object {
@@ -67,7 +69,7 @@ export default defineComponent({
             return this.showPaginatorInHeader ? this.paginator : ``;
         },
         items(): string {
-            return /* HTML */ this.fetchDataDynamically
+            return this.fetchDataDynamically
                 ? `:items-length="rows.length" :fetch-data`
                 : `:items="rows"`;
         },
@@ -85,15 +87,34 @@ export default defineComponent({
                 navigator-label="Navigate between persons"
             />`;
         },
+        screenreaderTemplate(): string {
+            return this.showInteractiveListWithCheckboxes /* HTML */
+                ? `<template #screenreader="{ item }">
+                      Person {{ item.firstName }} {{ item.lastName }} ({{item.id}})
+                  </template>`
+                : ``;
+        },
+        selectable(): string {
+            return this.showInteractiveListWithCheckboxes ? `selectable` : ``;
+        },
+        vModel(): string {
+            return this.showInteractiveListWithCheckboxes ? `v-model="selectedRows"` : ``;
+        },
         template(): string {
             return /* HTML */ `
                 <f-paginate-dataset ${this.items} ${this.itemsPerPage}>
                     <template #default="{ items: currentPageItems }">
                         ${this.headerPaginator}
-                        <f-list :items="currentPageItems" key-attribute="id">
+                        <f-list
+                            ${this.vModel}
+                            :items="currentPageItems"
+                            key-attribute="id"
+                            ${this.selectable}
+                        >
                             <template #default="{ item }">
                                 <h6>{{ item.firstName }} {{ item.lastName }} ({{item.id}})</h6>
                             </template>
+                            ${this.screenreaderTemplate}
                         </f-list>
                         ${this.footerPaginator}
                     </template>
@@ -114,6 +135,12 @@ export default defineComponent({
         </f-numeric-text-field>
         <f-fieldset name="alternatives" show-details="when-selected">
             <template #label>Alternativ</template>
+            <f-checkbox-field v-model="showInteractiveListWithCheckboxes" :value="true">
+                Visa interaktiv lista med kryssrutor
+                <template #details>
+                    Stöder paginering med <kbd>Page Up</kbd> och <kbd>Page Down</kbd>.
+                </template>
+            </f-checkbox-field>
             <f-checkbox-field v-model="fetchDataDynamically" :value="true">
                 Hämta data dynamiskt
                 <template #details>Sker med fördröjning om 3 sekunder.</template>
