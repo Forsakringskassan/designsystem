@@ -33,6 +33,10 @@ const myItems = [
 ];
 ```
 
+## Paginering
+
+Komponenten stöder {@link pagination paginering} med <kbd>Page Up</kbd> och <kbd>Page Down</kbd> då listan är interaktiv med kryssruta.
+
 ## Användning av komponent
 
 **Komponent motsvarar följande HTML element:** [Unordered List](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul)
