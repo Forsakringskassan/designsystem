@@ -111,8 +111,9 @@ $inner-border:
         &,
         .icon,
         .icon-stack {
-            width: 1em;
-            height: 1em;
+            width: 24px;
+            height: 24px;
+            padding: 2px;
         }
     }
 
