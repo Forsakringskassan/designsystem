@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, inject, ref, useTemplateRef } from "vue";
-import { ElementIdService, assertRef } from "@fkui/logic";
+import { assertRef } from "@fkui/logic";
 import { useTranslate } from "../../plugins";
 import FIcon from "../FIcon/FIcon.vue";
 import { paginateDatasetKey } from "../FPaginateDataset";
@@ -13,7 +13,7 @@ const {
     numberOfPages: numberOfPagesProp = undefined,
     currentPage: currentPageProp = undefined,
     numberOfPagesToShow = 9,
-    navigatorLabel = ElementIdService.generateElementId(),
+    navigatorLabel = undefined,
 } = defineProps<{
     /**
      * The number of pages available.
@@ -34,13 +34,23 @@ const {
     navigatorLabel?: string;
 }>();
 
+const resolvedNavigatorLabel = computed(
+    () =>
+        navigatorLabel ??
+        /**
+         * ARIA label for navigator.
+         */
+        $t("fkui.paginator.navigatorLabel", "Navigera mellan sidor"),
+);
+
+const $t = useTranslate();
+
 const paginateDataset = inject(paginateDatasetKey, {
     currentPage: ref(1),
     numberOfPages: ref(1),
 });
 
 const paginatorRef = useTemplateRef<HTMLElement>("paginator");
-const $t = useTranslate();
 
 // Computes the current page number
 const currentPage = computed(() => currentPageProp ?? paginateDataset.currentPage.value);
@@ -139,7 +149,7 @@ function showGap(page: number): boolean {
 </script>
 
 <template>
-    <nav ref="paginator" data-test="nav" class="paginator" :aria-label="navigatorLabel">
+    <nav ref="paginator" data-test="nav" class="paginator" :aria-label="resolvedNavigatorLabel">
         <button
             data-test="previous-button"
             type="button"

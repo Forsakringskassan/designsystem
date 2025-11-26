@@ -91,7 +91,10 @@ export default defineComponent({
                 : ``;
         },
         paginator(): string {
-            return /* HTML */ `<f-paginator ${this.numberOfPagesToShow} />`;
+            return /* HTML */ `<f-paginator
+                ${this.numberOfPagesToShow}
+                navigator-label="Navigate between persons"
+            />`;
         },
         template(): string {
             return /* HTML */ `
