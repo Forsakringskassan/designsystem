@@ -6,7 +6,7 @@ $gap-size: size.$margin-050;
 $button-height: 2.5rem;
 $page-width: $button-height;
 $button-width: 8rem;
-$number-of-pages: 9; // References `upperLimit` in FPaginator.logic
+$number-of-pages: 9; // References `upperLimit` in max-pages-shown.ts
 
 //                      ____________                _________________________________________________________________                 ____________
 //                     | Föregående |              | 1 |   | 2 |  | 3 |   | 4 |  | 5 |   | 6 |   | 7 |   | 8 |   | 9 |               |   Nästa    |

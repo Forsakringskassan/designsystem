@@ -4,9 +4,10 @@ import { assertRef } from "@fkui/logic";
 import { useTranslate } from "../../plugins";
 import FIcon from "../FIcon/FIcon.vue";
 import { paginateDatasetKey } from "../FPaginateDataset";
-import { maxPagesShown as maxPagesShownFn, pageClasses } from "./FPaginator.logic";
 import { computePages } from "./compute-pages";
 import { type FPaginateDatasetPageEventDetail } from "./events";
+import { maxPagesShown as maxPagesShownFn } from "./max-pages-shown";
+import { pageClasses } from "./page-classes";
 import { showPageNumberAsGap } from "./show-page-number-as-gap";
 
 const {
