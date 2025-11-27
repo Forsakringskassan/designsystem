@@ -13,7 +13,7 @@ redirect_from:
 
 2025-11-27
 
-Vi släpper en ny pagineringskomponent.  
+Vi släpper en ny {@link pagination pagineringskomponent}.  
 Om du kombinerar paginering med tabell kan vissa funktioner i tabell skapa oönskade beteenden vid paginering.
 Stöd för paginering till tabell kommer senare.  
 Buggfixar, se {@link changelog Changelog}
