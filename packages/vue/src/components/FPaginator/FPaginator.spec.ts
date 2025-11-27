@@ -62,9 +62,9 @@ describe("previous button", () => {
     });
 
     it("should have the correct label", () => {
-        expect(
-            previousButton.find("[data-test='label']").element.innerHTML,
-        ).toBe("Föregående");
+        expect(previousButton.find("[data-test='label']").text()).toBe(
+            "Föregående",
+        );
     });
 
     it("should have the correct value for 'aria-label'", () => {
@@ -86,9 +86,7 @@ describe("next button", () => {
     });
 
     it("should have the correct label", () => {
-        expect(nextButton.find("[data-test='label']").element.innerHTML).toBe(
-            "Nästa",
-        );
+        expect(nextButton.find("[data-test='label']").text()).toBe("Nästa");
     });
 
     it("should have the correct value for 'aria-label'", () => {
@@ -112,8 +110,7 @@ describe("page buttons", () => {
     it("should have the correct label", () => {
         for (let page = 1; page <= numberOfPages; page++) {
             expect(
-                wrapper.find(`[data-test='page-${page}-button']`).element
-                    .innerHTML,
+                wrapper.find(`[data-test='page-${page}-button']`).text(),
             ).toEqual(page.toString());
         }
     });
@@ -162,8 +159,7 @@ describe("pages and gaps", () => {
         ];
         expectedPageButtons.forEach((expectedPageButton, index) => {
             expect(
-                wrapper.findAll(".paginator__page").at(index)?.element
-                    .innerHTML,
+                wrapper.findAll(".paginator__page").at(index)?.text(),
             ).toEqual(expectedPageButton);
         });
     });
