@@ -98,7 +98,12 @@ export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const XTimeTextField: typeof __VLS_export_2;
+export const XFileDragdrop: typeof __VLS_export_2;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_3" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const XTimeTextField: typeof __VLS_export_3;
 
 // (No @packageDocumentation comment for this package)
 
