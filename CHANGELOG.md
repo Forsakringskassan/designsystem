@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 6.29.0 (2025-11-27)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** new `FPaginateDataset` and `FPaginator` components (refs SFKUI-7352) ce1daff
+* **@fkui/vue:** add `PageUp` and `PageDown` pagination on component `FList` (refs SFKUI-7352) 90f95db
+
+### Bug Fixes
+
+* **@fkui/logic:** use untrimmed value for whitelist validation (fixes SFKUI-7421) 2548121
+
 ## 6.28.0 (2025-11-25)
 
 ### Features
