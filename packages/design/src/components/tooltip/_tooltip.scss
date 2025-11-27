@@ -75,18 +75,6 @@ $inner-border:
             display: inline;
             width: max-content;
         }
-
-        &:has(h1) .tooltip__button {
-            bottom: 0.2lh;
-        }
-
-        &:has(h2) .tooltip__button {
-            bottom: 0.1lh;
-        }
-
-        &:has(h3) .tooltip__button {
-            bottom: 0;
-        }
     }
 
     &__button {
@@ -94,13 +82,15 @@ $inner-border:
         appearance: none;
         background: none;
         border: 0;
-        padding: 0;
         cursor: pointer;
-        margin-left: 0.25rem;
+        min-height: 24px;
+        min-width: 24px;
+        margin-left: 6px;
+        padding: 0;
 
         // shift it slightly downwards so it aligns better with text
         position: relative;
-        bottom: -0.1lh;
+        transform: translateY(2px);
 
         // bug in icon?
         .icon {
@@ -108,11 +98,12 @@ $inner-border:
             left: 0;
         }
 
-        &,
         .icon,
         .icon-stack {
-            width: 1em;
-            height: 1em;
+            height: var(--f-icon-size-medium);
+            width: var(--f-icon-size-medium);
+            padding: 0;
+            margin: auto;
         }
     }
 
