@@ -1,39 +1,29 @@
 import { showPageNumberAsGap } from "./show-page-number-as-gap";
 
 describe("show page number as gap", () => {
-    it.each`
-        pages              | gapForSecondPage | gapForSecondToLastPage
-        ${[1]}             | ${false}         | ${false}
-        ${[1, 2]}          | ${false}         | ${false}
-        ${[1, 3]}          | ${true}          | ${true}
-        ${[1, 2, 3]}       | ${false}         | ${false}
-        ${[1, 3, 4]}       | ${true}          | ${false}
-        ${[1, 2, 4]}       | ${false}         | ${true}
-        ${[1, 3, 5]}       | ${true}          | ${true}
-        ${[1, 2, 3, 4]}    | ${false}         | ${false}
-        ${[1, 3, 4, 5]}    | ${true}          | ${false}
-        ${[1, 2, 3, 5]}    | ${false}         | ${true}
-        ${[1, 3, 4, 6]}    | ${true}          | ${true}
-        ${[1, 2, 3, 4, 5]} | ${false}         | ${false}
-        ${[1, 3, 4, 5, 6]} | ${true}          | ${false}
-        ${[1, 2, 3, 4, 6]} | ${false}         | ${true}
-        ${[1, 3, 4, 5, 7]} | ${true}          | ${true}
+    describe.each`
+        pages              | expectedPageNumbers
+        ${[1]}             | ${["1"]}
+        ${[1, 2]}          | ${["1", "2"]}
+        ${[1, 2, 3]}       | ${["1", "2", "3"]}
+        ${[1, 2, 3, 4]}    | ${["1", "2", "3", "4"]}
+        ${[1, 2, 3, 4, 5]} | ${["1", "2", "3", "4", "5"]}
+        ${[1, 3, 4, 5, 6]} | ${["1", "...", "4", "5", "6"]}
+        ${[1, 2, 3, 4, 6]} | ${["1", "2", "3", "...", "6"]}
+        ${[1, 3, 4, 5, 7]} | ${["1", "...", "4", "...", "7"]}
     `(
-        "check gaps for pages: $pages",
-        ({ pages, gapForSecondPage, gapForSecondToLastPage }) => {
+        'should return page numbers "$expectedPageNumbers" for pages "$pages"',
+        ({ pages, expectedPageNumbers }) => {
             pages.forEach((page: number, id: number) => {
-                // Get gap status
-                const isGap = showPageNumberAsGap({ page, pages });
+                const gap = showPageNumberAsGap({
+                    page,
+                    pages,
+                });
+                const expectedGap = expectedPageNumbers[id] === "...";
 
-                // Get expected gap status
-                const isSecondPage = id === 1;
-                const isSecondToLastPage = id === pages.length - 2;
-                const expectedGap =
-                    (isSecondPage && gapForSecondPage) ||
-                    (isSecondToLastPage && gapForSecondToLastPage);
-
-                // Check gap
-                expect(isGap).toEqual(expectedGap);
+                it(`should show page ${page} as "${expectedPageNumbers[id]}"`, () => {
+                    expect(gap).toEqual(expectedGap);
+                });
             });
         },
     );
