@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-89cff1.json"
+            href="../search-data-ccbd89.json"
             as="fetch"
             crossorigin
-            integrity="sha384-VxqUtXAc5Sem9wnUyIE0kTMK9zKtoCH6C1iKd4SbNxIy0tG+HjL5f2XA6wKwKtqC"
+            integrity="sha384-uDa2phkiqaIcy0fawqGDp4ZybTMZ//NNn9xyzyk2EL4wIUqC0ba92AO8ZKCOmfkI"
             id="search-data"
         />
     </head>
@@ -1095,13 +1095,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/0a6ec781891c6eb20662e88f62fee25a4f76791d/packages/vue/src/components/FPaginateDataset/FPaginateDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ce3b68c1de4336b3c9ea98cc327011ec88901c93/packages/vue/src/components/FPaginateDataset/FPaginateDataset.vue">
                 FPaginateDataset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/0a6ec781891c6eb20662e88f62fee25a4f76791d/packages/vue/src/components/FPaginator/FPaginator.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ce3b68c1de4336b3c9ea98cc327011ec88901c93/packages/vue/src/components/FPaginator/FPaginator.vue">
                 FPaginator
             </a>
             
@@ -1124,9 +1124,13 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#sidknappar_eller_sidraknare">Sidknappar eller sidräknare</a></li>
+                                <li><a href="#hur_anvands_komponenten">Hur används komponenten?</a></li>
                                 
-                                <li><a href="#dynamisk_hamtning_av_data">Dynamisk hämtning av data</a></li>
+                                <li><a href="#tank_pa_att">Tänk på att</a></li>
+                                
+                                <li><a href="#responsivitet">Responsivitet</a></li>
+                                
+                                <li><a href="#hamtning_av_data">Hämtning av data</a></li>
                                 
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
@@ -1138,11 +1142,8 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Paginering används för att låta användaren navigera mellan innehåll som är uppdelat på flera sidor.
-Innehållet kan till exempel vara sökresultat eller tabeller.</p>
-
-                <div
-                    id="example-625dfe"
+                    <div id="content"><div
+                    id="example-b4974c"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="live-example"
@@ -1158,11 +1159,17 @@ Innehållet kan till exempel vara sökresultat eller tabeller.</p>
         <script type="module" src="./PaginationExample-186ecc.js"></script>
     
                 </div>
-            <h2 id="sidknappar_eller_sidraknare"><a class="header-anchor" href="#sidknappar_eller_sidraknare">Sidknappar eller sidräknare</a></h2><p class="docs-paragraph">Sidknappar visas som standard.
-Sidräknare ersätter sidknapparna om paginatorn är för smal för att kunna visa sidknappar.</p>
+            <h2 id="hur_anvands_komponenten"><a class="header-anchor" href="#hur_anvands_komponenten">Hur används komponenten?</a></h2><p class="docs-paragraph">Paginering används för att låta användaren navigera mellan innehåll som är uppdelat på flera sidor.
+Innehållet kan till exempel vara sökresultat eller tabeller.</p>
+<h2 id="tank_pa_att"><a class="header-anchor" href="#tank_pa_att">Tänk på att</a></h2><ul>
+<li>Fundera på hur många objekt som ska visas på en sida så att det blir optimalt för användaren.</li>
+<li>Om du kombinerar paginering med tabell kan vissa funktioner i tabell skapa oönskade beteenden vid paginering.</li>
+</ul>
+<h2 id="responsivitet"><a class="header-anchor" href="#responsivitet">Responsivitet</a></h2><p class="docs-paragraph">Paginering visar sidor som standard tillsammans med knappar för föregående och nästa sida, se exempel nedan.
+När fönstret blir smalare och paginering inte får plats ersätts sidorna med en text som visar vilken sida användaren befinner sig på, se exempel överst.</p>
 
             <div
-                id="example-2ca254"
+                id="example-e77129"
                 class="code-preview code-preview--default"
                 
                 
@@ -1223,13 +1230,14 @@ Sidräknare ersätter sidknapparna om paginatorn är för smal för att kunna vi
 </code></pre>
                 </div>
             </div>
-        <h2 id="dynamisk_hamtning_av_data"><a class="header-anchor" href="#dynamisk_hamtning_av_data">Dynamisk hämtning av data</a></h2><p class="docs-paragraph">Det går att använda dynamisk hämtning av data. Det innebär att komponenten hämtar enbart det data som visas på den aktuella sidan istället för att göra ett urval av alla objekt.</p>
-<p class="docs-paragraph">Attributet <code>itemsLength</code> anger hur många objekt det finns totalt och utgör grunden för siduppdelningen.</p>
-<p class="docs-paragraph">Attributet <code>fetchData</code> anger den funktion som ska användas för hämtning av det data som ska visas på sidan.
-Denna funktion används i exemplet ovan:</p>
+        <h2 id="hamtning_av_data"><a class="header-anchor" href="#hamtning_av_data">Hämtning av data</a></h2><p class="docs-paragraph">Om du inte har tillgång till hela datamängden direkt kan du använda dynamisk hämtning av data.
+Då hämtar du bara den data som ska visas på aktuell sida.
+Använd attributen <code>itemsLength</code> och <code>fetchData</code>.
+Med attributet <code>itemsLength</code> anger du hur stor den totala datamängden är och som kommer ligga till grund för siduppdelning.
+Attributet <code>fetchData</code> anger den funktion som ska användas för hämtning av det data ska visas på aktuell sida.</p>
 
                 <div
-                    id="example-e4f3e9"
+                    id="example-186f33"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1547,9 +1555,9 @@ If the prop is not set a random value will be generated.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/0a6ec781891c6eb20662e88f62fee25a4f76791d">0a6ec78</a>)<br />
+<div class="footer__right"><div class="version">paginator-improvements (<a href="https://github.com/Forsakringskassan/designsystem/commits/ce3b68c1de4336b3c9ea98cc327011ec88901c93">ce3b68c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/677">PR 677</a><br />
-        2025-11-27 09:09
+        2025-11-27 10:03
 </div>
 <div class="toolbar__item">
     <form id="version">
