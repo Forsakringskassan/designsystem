@@ -2,7 +2,7 @@
 import { computed, inject, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { useTranslate } from "../../plugins";
-import FIcon from "../FIcon/FIcon.vue";
+import { FIcon } from "../FIcon";
 import { paginateDatasetKey } from "../FPaginateDataset";
 import { computePages } from "./compute-pages";
 import { type FPaginateDatasetPageEventDetail } from "./events";
