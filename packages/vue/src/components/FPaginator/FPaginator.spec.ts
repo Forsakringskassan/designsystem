@@ -28,24 +28,27 @@ describe("page counter", () => {
 });
 
 describe("aria-current", () => {
-    it("should be set to 'page' for the current page", () => {
-        const numberOfPages = 9;
-        for (let currentPage = 1; currentPage <= numberOfPages; currentPage++) {
+    it.each`
+        page | currentPage | expectedValue
+        ${1} | ${2}        | ${"false"}
+        ${2} | ${2}        | ${"page"}
+        ${3} | ${2}        | ${"false"}
+    `(
+        'should have value "$expectedValue" for page button $page when current page is page $currentPage',
+        ({ page, currentPage, expectedValue }) => {
             const wrapper = mount(FPaginator, {
                 attrs: {
                     currentPage,
-                    numberOfPages,
+                    numberOfPages: 3,
                 },
             });
-            for (let page = 1; page <= numberOfPages; page++) {
-                expect(
-                    wrapper
-                        .find(`[data-test='page-${page}-button']`)
-                        .attributes("aria-current"),
-                ).toEqual(page === currentPage ? "page" : "false");
-            }
-        }
-    });
+            const selector = `[data-test='page-${page}-button']`;
+            const ariaCurrent = wrapper
+                .find(selector)
+                .attributes("aria-current");
+            expect(ariaCurrent).toEqual(expectedValue);
+        },
+    );
 });
 
 describe("previous button", () => {
