@@ -10,7 +10,7 @@ export function useHorizontalOffset(options: {
     parent: Ref<HTMLElement | null>;
 }): Readonly<Ref<number>> {
     const { element: elementRef, parent: parentRef } = options;
-    const offset = ref(0);
+    const offset = ref(16);
 
     watch(() => elementRef.value, updateOffset);
     watch(() => parentRef, updateOffset);
