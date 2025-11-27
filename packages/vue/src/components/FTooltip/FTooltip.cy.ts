@@ -8,6 +8,7 @@ import { FTooltipPageObject } from "../../cypress";
 import { FLabel } from "../FLabel";
 import { FTextField } from "../FTextField";
 import FTooltip from "./FTooltip.vue";
+import FTooltipHeadingExample from "./examples/FTooltipHeadingExample.vue";
 
 describe("FTooltip", () => {
     it("Should have a page object that can access any necessary elements", () => {
@@ -65,6 +66,18 @@ describe("FTooltip", () => {
         cy.mount(TestComponent);
         cy.get("#collapsed .tooltip__body").should("not.be.visible");
         cy.get("#expanded .tooltip__body").should("be.visible");
+        cy.toMatchScreenshot();
+    });
+
+    it("should appear visually correct with all heading sizes and tooltip", () => {
+        cy.viewport(800, 600);
+        cy.mount(FTooltipHeadingExample, { props: { expanded: false } });
+        cy.toMatchScreenshot();
+    });
+
+    it("should appear visually correct with all heading sizes and expanded tooltip", () => {
+        cy.viewport(800, 1280);
+        cy.mount(FTooltipHeadingExample, { props: { expanded: true } });
         cy.toMatchScreenshot();
     });
 
