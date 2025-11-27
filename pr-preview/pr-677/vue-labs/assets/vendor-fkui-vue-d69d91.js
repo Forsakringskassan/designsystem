@@ -19952,10 +19952,10 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var lowerLimit = ref(5);
+var lowerLimit = 5;
 var upperLimit = ref(9);
 function maxPagesShown(numberOfPagesToShow) {
-  return Math.max(lowerLimit.value, Math.min(numberOfPagesToShow, upperLimit.value));
+  return Math.max(lowerLimit, Math.min(numberOfPagesToShow, upperLimit.value));
 }
 function pageClasses(page, currentPage) {
   const rootClass = "paginator__page";

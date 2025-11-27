@@ -24192,7 +24192,6 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   })), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", _hoisted_5$2, [createBaseVNode("div", _hoisted_6$2, [renderSlot(_ctx.$slots, "right")])])], 512)]);
 }
 const FPageHeader = /* @__PURE__ */ _export_sfc$1(_sfc_main$7$1, [["render", _sfc_render$4]]);
-ref(5);
 ref(9);
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
