@@ -23,16 +23,7 @@ jobs:
             - name: Build documentation
               run: npm run build:docs
             - name: Tests
-              run: |
-                  npm pkg delete scripts.pretest
-                  npm test
-            - name: Publish test results
-              if: github.event_name == 'push' && (success() || failure())
-              uses: mikepenz/action-junit-report@v6
-              with:
-                  report_paths: "packages/*/test-results/jest-junit.xml"
-                  include_passed: true
-                  check_name: Jest
+              uses: Forsakringskassan/jest-config@v30.1.0
 
     cypress-e2e:
         name: Cypress E2E Tests
