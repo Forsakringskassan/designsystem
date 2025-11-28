@@ -9,6 +9,7 @@ import {
     ValidationPlugin,
 } from "../../packages/vue/src/plugins";
 import "@fkui/theme-default";
+import "cypress-real-events";
 
 import "./main.scss";
 import "./common";
