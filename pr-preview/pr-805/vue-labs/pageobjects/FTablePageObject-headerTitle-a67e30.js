@@ -30,7 +30,7 @@ import { ref as ref2 } from "vue";
 // dist/esm/index.esm.js
 import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, ElementIdService, assertSet } from "@fkui/logic";
 import { defineComponent, nextTick, toValue, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, useTranslate, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
+import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, useTranslate, useSlotUtils, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 var es_iterator_forEach = {};
@@ -447,10 +447,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.46.0",
+    version: "3.47.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru), 2025 CoreJS Company (core-js.io)",
-    license: "https://github.com/zloirock/core-js/blob/v3.46.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.47.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -2847,7 +2847,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("td", {
-        class: "table-ng__custom-expandable",
+        class: "table-ng__cell--custom",
         colspan: __props.colspan,
         tabindex: "-1"
       }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$8);
@@ -3840,6 +3840,11 @@ var _hoisted_5 = {
 };
 var _hoisted_6 = ["colspan"];
 var _hoisted_7 = ["aria-level", "aria-rowindex", "aria-setsize", "aria-posinset"];
+var _hoisted_8 = {
+  key: 0
+};
+var _hoisted_9 = ["aria-rowindex"];
+var _hoisted_10 = ["colspan"];
 var _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
@@ -3869,6 +3874,9 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
   }) {
     const selectedRows = useModel(__props, "selectedRows");
     const $t = useTranslate();
+    const {
+      hasSlot
+    } = useSlotUtils();
     const tableRef = useTemplateRef("table");
     const selectAllRef = ref(null);
     const expandedKeys = ref([]);
@@ -3880,13 +3888,18 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       return metaRows.value.length === 0;
     });
     const ariaRowcount = computed(() => {
-      return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + 1;
+      const headerRow = 1;
+      const footerRow = hasFooter.value ? 1 : 0;
+      return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + headerRow + footerRow;
     });
     const columnCount = computed(() => {
       const expandCol = isTreegrid.value ? 1 : 0;
       const selectCol = __props.selectable ? 1 : 0;
       const count = columns.value.length + expandCol + selectCol;
       return Math.max(1, count);
+    });
+    const hasFooter = computed(() => {
+      return hasSlot("footer");
     });
     const multiSelectColumn = {
       type: "checkbox",
@@ -4106,7 +4119,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
       setDefaultCellTarget(tableRef.value);
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [createElementVNode("table", {
+      return openBlock(), createElementBlock("table", {
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
@@ -4199,7 +4212,13 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
         }), 128))], 64))], 8, _hoisted_7);
-      }), 128))])], 42, _hoisted_1), _cache[8] || (_cache[8] = createTextVNode()), renderSlot(_ctx.$slots, "footer")], 64);
+      }), 128))]), _cache[8] || (_cache[8] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+        class: "table-ng__row",
+        "aria-rowindex": ariaRowcount.value
+      }, [createElementVNode("td", {
+        colspan: columnCount.value,
+        class: "table-ng__cell--custom"
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1);
     };
   }
 });
