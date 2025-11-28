@@ -2,14 +2,14 @@ import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
 import FPaginator from "./FPaginator.vue";
 
 describe("page counter", () => {
-    it.each`
-        currentPage | numberOfPages | expectedText | exceptedAriaText
+    describe.each`
+        currentPage | numberOfPages | expectedText | expectedAriaText
         ${1}        | ${3}          | ${"1 av 3"}  | ${"Sida 1 av 3"}
         ${2}        | ${3}          | ${"2 av 3"}  | ${"Sida 2 av 3"}
         ${3}        | ${3}          | ${"3 av 3"}  | ${"Sida 3 av 3"}
     `(
         "should display correct texts for page $currentPage of $numberOfPages",
-        ({ currentPage, numberOfPages, expectedText, exceptedAriaText }) => {
+        ({ currentPage, numberOfPages, expectedText, expectedAriaText }) => {
             const wrapper = mount(FPaginator, {
                 attrs: {
                     currentPage,
@@ -17,12 +17,18 @@ describe("page counter", () => {
                 },
             });
             const selector = "[data-test='page-counter']";
-            expect(wrapper.find(`${selector} [aria-hidden]`).text()).toEqual(
-                expectedText,
-            );
-            expect(wrapper.find(`${selector} .sr-only`).text()).toEqual(
-                exceptedAriaText,
-            );
+
+            it(`should display "${expectedText}" when "aria-hidden"`, () => {
+                expect(
+                    wrapper.find(`${selector} [aria-hidden]`).text(),
+                ).toEqual(expectedText);
+            });
+
+            it(`should display "${expectedAriaText}" for screen readers`, () => {
+                expect(wrapper.find(`${selector} .sr-only`).text()).toEqual(
+                    expectedAriaText,
+                );
+            });
         },
     );
 });
