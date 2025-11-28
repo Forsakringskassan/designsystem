@@ -1,0 +1,2895 @@
+{
+  "terms": [
+    "Försäkringskassans designsystem",
+    "Typografi",
+    "rubrik",
+    "rubriknivå",
+    "paragraf",
+    "textformatering",
+    "textelement",
+    "teckenstorlek",
+    "Tema",
+    "scss",
+    "css",
+    "theme",
+    "Ikoner",
+    "Grid",
+    "responsiv",
+    "container",
+    "marginal",
+    "mellanrum",
+    "gutter",
+    "rader",
+    "kolumner",
+    "brytpunkter",
+    "placering",
+    "dynamisk placering",
+    "dynamisk ordning",
+    "Densitet",
+    "kompakt utseende",
+    "luftigt utseende",
+    "densify",
+    "Färger",
+    "semantiska",
+    "färgpalett",
+    "Hjälp och support",
+    "@fkui/tsconfig",
+    "konfiguration TypeScript",
+    "Logotyp-paket",
+    "Typsnittspaket",
+    "Konfiguration",
+    "knappordning bekräftelsemodal",
+    "buttonOrder",
+    "teleportTarget",
+    "popupContainer",
+    "production",
+    "globala inställningar",
+    "config",
+    "CHANGELOG v5",
+    "Paginering",
+    "FPaginateDataset",
+    "FPaginator",
+    "Chip",
+    "chip",
+    "Knapp",
+    "FButton",
+    "Steg för steg-guide",
+    "FWizard",
+    "FWizardStep",
+    "guidesteg",
+    "formulär",
+    "Tooltip",
+    "FTooltip",
+    "Offline",
+    "FOffline",
+    "Meddelanderuta",
+    "FMessageBox",
+    "informationsmeddelande",
+    "varningsmeddelande",
+    "felmeddelande",
+    "banner",
+    "Logotyp",
+    "FLogo",
+    "Etikett",
+    "FLabel",
+    "feltext",
+    "Ikon",
+    "FIcon",
+    "spritesheet",
+    "Dialogträd",
+    "FDialogueTree",
+    "Kontextmeny",
+    "FContextMenu",
+    "menyval",
+    "Kort",
+    "FCard",
+    "Kalender",
+    "FCalendar",
+    "FCalendarDay",
+    "valbara dagar",
+    "dagkomponent",
+    "kalenderdag",
+    "Bricka",
+    "FBadge",
+    "Validering och felhantering",
+    "obligatoriska fält",
+    "submit",
+    "Längdvalidering",
+    "maxlängd",
+    "maxlength",
+    "validator",
+    "attribut",
+    "Validator - anpassad",
+    "egen validator",
+    "Felmeddelande - anpassat",
+    "eget felmeddelande",
+    "Korsvalidering",
+    "datumperiod",
+    "Formatering och parsning",
+    "formaterare",
+    "formatter",
+    "parser",
+    "vyvärde",
+    "vy-värde",
+    "viewValue",
+    "modellvärde",
+    "modell-värde",
+    "modelValue",
+    "Formaterare och parser - anpassad",
+    "formaterare",
+    "formatter",
+    "parser",
+    "vyvärde",
+    "vy-värde",
+    "viewValue",
+    "modellvärde",
+    "modell-värde",
+    "modelValue",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "icons",
+    "icon-lib-builder",
+    "Kom igång",
+    "designer",
+    "utvecklare",
+    "utvecklingsverktyg",
+    "Ta fram applikation",
+    "tema",
+    "sass",
+    "scss",
+    "css",
+    "ikonbibliotek",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
+    "Testverktyg",
+    "testfall",
+    "jest",
+    "enhetstest",
+    "cypress",
+    "komponenttest",
+    "e2e-test",
+    "statisk kodanalys",
+    "lintning",
+    "eslint",
+    "prettier",
+    "html-validate",
+    "styleint",
+    "pnr-scanner",
+    "Releaseprocess",
+    "implementation",
+    "branch",
+    "branchnamn",
+    "commits",
+    "brytande ändringar",
+    "pull request",
+    "releaseanteckningar",
+    "release",
+    "För utvecklare",
+    "installation",
+    "kommandon",
+    "kodstandard",
+    "lintning",
+    "paketering",
+    "commit",
+    "commit-meddelande",
+    "Commits och commitmeddelanden",
+    "Riktlinjer för kod",
+    "Checklista vid publicering",
+    "personuppgifter",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
+    "Vue.js",
+    "testverktyg",
+    "cypress",
+    "DensityWrapper",
+    "Om testverktyg",
+    "automatiska testfall",
+    "Jest",
+    "Cypress",
+    "Generella funktioner",
+    "automatiska testfall",
+    "testverktyg",
+    "Jest",
+    "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
+    "Validation Plugin",
+    "validering",
+    "v-validation",
+    "ValidationService",
+    "valideringsdirektiv",
+    "inaktivera validering",
+    "revalidera fält",
+    "serverfel",
+    "inaktiva fält",
+    "Translation Plugin",
+    "översätta textnycklar globalt",
+    "TranslationService",
+    "Test Plugin",
+    "data-test",
+    "testautomation",
+    "enhetstest",
+    "e2e-test",
+    "Format Plugin",
+    "formateringsdirektiv",
+    "v-format",
+    "radbrytning",
+    "bankgiro",
+    "datum",
+    "nummer",
+    "organisationsnummer",
+    "personnummer",
+    "plusgiro",
+    "postnummer",
+    "text",
+    "Error Plugin",
+    "ErrorPlugin",
+    "FErrorHandlingApp",
+    "generell felsida",
+    "egen felsida",
+    "captureWarnings",
+    "logToConsole",
+    "errorHandler",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
+    "Hjälpklasser",
+    "helpers",
+    "h-no-margin",
+    "h-root-size",
+    "h-display-flex",
+    "Skärmläsare",
+    "NVDA",
+    "useResize() composable",
+    "justerbar yta",
+    "useModal() composable",
+    "openModal",
+    "confirmModal",
+    "formModal",
+    "composition API",
+    "useDetailsPanel() composable",
+    "detaljpanel",
+    "useAreaData() composable",
+    "TableScroll",
+    "tableScrollClasses",
+    "renderSlotText",
+    "mountComponent",
+    "MaybeComponent",
+    "itemEquals",
+    "includeItem",
+    "handleKeyboardFocusNavigation",
+    "dispatchComponentValidityEvent",
+    "assertSet() function",
+    "assertRef() function",
+    "clamp() function",
+    "datum",
+    "Validatorer",
+    "identisk",
+    "matches",
+    "maxlängd",
+    "maxLength",
+    "minlängd",
+    "minLength",
+    "obligatorisk",
+    "required",
+    "tillåtna tecken",
+    "whitelist",
+    "val från lista",
+    "allowList",
+    "datum",
+    "date",
+    "datumformat",
+    "dateFormat",
+    "inte valbara datum",
+    "invalidDates",
+    "inte valbara veckodagar",
+    "invalidWeekdays",
+    "maxdatum",
+    "maxDate",
+    "mindatum",
+    "minDate",
+    "nummer",
+    "number",
+    "heltal",
+    "integer",
+    "decimaltal",
+    "decimal",
+    "maxvärde",
+    "maxValue",
+    "minvärde",
+    "minValue",
+    "mindre än",
+    "lessThan",
+    "större än",
+    "greaterThan",
+    "procent",
+    "percent",
+    "valutabelopp",
+    "currency",
+    "organisationsnummer",
+    "personnummer",
+    "personnummerFormat",
+    "checksumma",
+    "personnummerLuhn",
+    "personnummerNotSame",
+    "personnummerOlder",
+    "personnummerYounger",
+    "mejladress",
+    "epost",
+    "email",
+    "postnummer",
+    "postalCode",
+    "telefonnummer",
+    "phoneNumber",
+    "bankgiro",
+    "clearingnummer",
+    "clearingNumber",
+    "kontonummer",
+    "bankAccountNumber",
+    "plusgiro",
+    "Formaterare och parsers",
+    "bankgiro",
+    "clearingnummer",
+    "datum",
+    "kontonummer",
+    "nummer",
+    "organisationsnummer",
+    "personnummer",
+    "plusgiro",
+    "postnummer",
+    "procent",
+    "Validering samlad",
+    "FValidationGroup",
+    "Valideringsformulär",
+    "FValidationForm",
+    "felhantering",
+    "submit",
+    "servervalidering",
+    "Fellista",
+    "FErrorList",
+    "validering",
+    "Tabell",
+    "FDataTable",
+    "FInteractiveTable",
+    "FTableButton",
+    "FTableColumn",
+    "Datamängdsorterare",
+    "FSortFilterDataset",
+    "sortera",
+    "filtrera",
+    "Lista",
+    "FList",
+    "Datamängdredigerare",
+    "FCrudDataset",
+    "redigera",
+    "redigering",
+    "ändra",
+    "ta bort",
+    "lägg till",
+    "Presentationsfält - statiskt",
+    "FStaticField",
+    "Presentationsfält - dynamiskt",
+    "FOutputField",
+    "Applikationslayout",
+    "FLayoutApplicationTemplate",
+    "FLayoutLeftPanel",
+    "FLayoutRightPanel",
+    "Justerbar yta",
+    "FResizePane",
+    "Applikationsmall",
+    "FPageLayout",
+    "landmärken",
+    "Sidhuvud",
+    "FPageHeader",
+    "skiplink",
+    "Navigeringsmeny",
+    "FNavigationMenu",
+    "Minimerbar panel",
+    "FMinimizablePanel",
+    "Fixerad yta",
+    "FFixedPane",
+    "Detaljpanel",
+    "FDetailsPanel",
+    "Modal dialogruta",
+    "FModal",
+    "Formulärsmodal",
+    "FFormModal",
+    "Bekräftelsemodal",
+    "FConfirmModal",
+    "Förloppsindikator",
+    "FProgressbar",
+    "ladda",
+    "laddning",
+    "Laddningsindikator",
+    "FLoader",
+    "ladda",
+    "laddning",
+    "Startpunkt",
+    "entrypoint",
+    "länk",
+    "Länk",
+    "anchor",
+    "Specialiserade inmatningsfält",
+    "bankgiro",
+    "clearingnummer",
+    "kontonummer",
+    "mejladress",
+    "numeriskt",
+    "organisationsnummer",
+    "personnummer",
+    "plusgiro",
+    "postnummer",
+    "procent",
+    "sökfält",
+    "telefonnummer",
+    "valuta",
+    "Kombobox",
+    "FTextField",
+    "Flerradigt inmatningsfält",
+    "FTextareaField",
+    "Inmatningsfält",
+    "FTextField",
+    "validation",
+    "formatering",
+    "parsning",
+    "inline",
+    "Dropplista",
+    "FSelectField",
+    "Radioknapp",
+    "FFieldset",
+    "FRadioField",
+    "Datumväljare",
+    "FDatepickerField",
+    "Kryssruta",
+    "FFieldset",
+    "FCheckboxField",
+    "Komponentgrupp",
+    "group",
+    "gruppera",
+    "gruppering",
+    "Fältgruppering",
+    "FFieldset",
+    "inmatningskomponenter",
+    "kryssruta",
+    "radioknapp",
+    "gruppera",
+    "gruppering",
+    "Om ramverkskomponenter",
+    "Gå till innehåll",
+    "ISkipLink",
+    "Popup-meny",
+    "IPopupMenu",
+    "PopupError",
+    "IPopupError",
+    "Popup",
+    "IPopup",
+    "Flex Item",
+    "IFlexItem",
+    "Flexibel positionering",
+    "IFlex",
+    "Kalendernavigering",
+    "ICalendarNavbar",
+    "Kalenderrutnät",
+    "ICalendarMonthGrid",
+    "Kalendermånad",
+    "ICalendarMonth",
+    "Animerad expandering",
+    "IAnimateExpand",
+    "Filväljare",
+    "FFileSelector",
+    "Filpresentatör",
+    "FFileItem",
+    "Expanderbart stycke",
+    "FExpandableParagraph",
+    "Expanderbar panel",
+    "FExpandablePanel",
+    "Expanderbart innehåll",
+    "FExpand",
+    "Version 6 migreringsguide: @fkui/vue",
+    "Version 6 migreringsguide",
+    "Version 6 migreringsguide: @fkui/logic",
+    "Version 6 migreringsguide: @fkui/design",
+    "Version 6 migreringsguide: Cypress Pageobjects",
+    "openModal",
+    "modalfunktion",
+    "options API",
+    "formModal() function",
+    "modalfunktion",
+    "formulärsmodal",
+    "options API",
+    "confirmModal() function",
+    "modalfunktion",
+    "bekräftelsemodal",
+    "options API",
+    "refIsVue",
+    "DOM-funktion",
+    "refIsVueArray",
+    "DOM-funktion",
+    "refIsHTMLElementArray",
+    "DOM-funktion",
+    "refIsElement",
+    "DOM-funktion",
+    "refIsElementArray",
+    "DOM-funktion",
+    "hasSlot() function",
+    "DOM-funktion",
+    "hasParentByName",
+    "DOM-funktion",
+    "getParentByName",
+    "DOM-funktion",
+    "getInputElement",
+    "DOM-funktion",
+    "getHTMLElementsFromVueRef",
+    "DOM-funktion",
+    "getHTMLElementFromVueRef",
+    "DOM-funktion",
+    "getElementsFromVueRef",
+    "DOM-funktion",
+    "getElementFromVueRef",
+    "DOM-funktion",
+    "focus",
+    "DOM-funktion",
+    "focusTarget",
+    "findParentByName",
+    "DOM-funktion",
+    "findHTMLElementFromVueRef",
+    "DOM-funktion",
+    "findElementFromVueRef",
+    "DOM-funktion",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
+    "FYear",
+    "årtal",
+    "FYear: value property",
+    "FYear: toString() method",
+    "FYear: toJSON() method",
+    "FYear: now() function",
+    "FYear: isValid() method",
+    "FYear: isBefore() method",
+    "FYear: isAfter() method",
+    "FYear: fromYear() function",
+    "FYear: fromDate() function",
+    "FYear: equals() method",
+    "FYear: compare() function",
+    "FYear: addYears() method",
+    "FYear: previous() method",
+    "FYear: next() method",
+    "FPaginatorPageObject",
+    "FProgressbarPageObject: FProgressbarPageObject() constructor",
+    "FProgressbarPageObject: value() method",
+    "FProgressbarPageObject: progressStatus() method",
+    "FProgressbarPageObject: el() method",
+    "FMinimizablePanelPageObject: constructor",
+    "FMinimizablePanelPageObject: toggleButton() method",
+    "FMinimizablePanelPageObject: header() method",
+    "FMinimizablePanelPageObject: footer() method",
+    "FMinimizablePanelPageObject: el() method",
+    "FMinimizablePanelPageObject: content() method",
+    "FLabelPageObject: FLabelPageObject() constructor",
+    "FLabelPageObject: formatDescription() method",
+    "FLabelPageObject: errorMessage() method",
+    "FLabelPageObject: errorIcon() method",
+    "FLabelPageObject: description() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
+    "FFileItemPageObject: FFileItemPageObject() constructor",
+    "FFileItemPageObject: typeOfFile() method",
+    "FFileItemPageObject: fileName() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
+    "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
+    "FDetailsPanelPageObject: header() method",
+    "FDetailsPanelPageObject: footer() method",
+    "FDetailsPanelPageObject: el() method",
+    "FDetailsPanelPageObject: content() method",
+    "FDetailsPanelPageObject: closeButton() method",
+    "CHANGELOG",
+    "Bidra till designsystemet",
+    "Automatisk testning"
+  ],
+  "results": [
+    {
+      "url": "index.html",
+      "title": "Försäkringskassans designsystem",
+      "terms": []
+    },
+    {
+      "url": "styles/typography.html",
+      "title": "Typografi",
+      "terms": [
+        "rubrik",
+        "rubriknivå",
+        "paragraf",
+        "textformatering",
+        "textelement",
+        "teckenstorlek"
+      ]
+    },
+    {
+      "url": "styles/theme.html",
+      "title": "Tema",
+      "terms": [
+        "scss",
+        "css",
+        "theme"
+      ]
+    },
+    {
+      "url": "styles/icons.html",
+      "title": "Ikoner",
+      "terms": []
+    },
+    {
+      "url": "styles/grid.html",
+      "title": "Grid",
+      "terms": [
+        "responsiv",
+        "container",
+        "marginal",
+        "mellanrum",
+        "gutter",
+        "rader",
+        "kolumner",
+        "brytpunkter",
+        "placering",
+        "dynamisk placering",
+        "dynamisk ordning"
+      ]
+    },
+    {
+      "url": "styles/density.html",
+      "title": "Densitet",
+      "terms": [
+        "kompakt utseende",
+        "luftigt utseende",
+        "densify"
+      ]
+    },
+    {
+      "url": "styles/colors.html",
+      "title": "Färger",
+      "terms": [
+        "semantiska",
+        "färgpalett"
+      ]
+    },
+    {
+      "url": "gettingstarted/help-and-support.html",
+      "title": "Hjälp och support",
+      "terms": []
+    },
+    {
+      "url": "functions/tsconfig.html",
+      "title": "@fkui/tsconfig",
+      "terms": [
+        "konfiguration TypeScript"
+      ]
+    },
+    {
+      "url": "functions/logo-default.html",
+      "title": "Logotyp-paket",
+      "terms": []
+    },
+    {
+      "url": "functions/font-default.html",
+      "title": "Typsnittspaket",
+      "terms": []
+    },
+    {
+      "url": "functions/config.html",
+      "title": "Konfiguration",
+      "terms": [
+        "knappordning bekräftelsemodal",
+        "buttonOrder",
+        "teleportTarget",
+        "popupContainer",
+        "production",
+        "globala inställningar",
+        "config"
+      ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
+      "url": "components/pagination.html",
+      "title": "Paginering",
+      "terms": [
+        "FPaginateDataset",
+        "FPaginator"
+      ]
+    },
+    {
+      "url": "components/chip.html",
+      "title": "Chip",
+      "terms": [
+        "chip"
+      ]
+    },
+    {
+      "url": "components/button.html",
+      "title": "Knapp",
+      "terms": [
+        "FButton"
+      ]
+    },
+    {
+      "url": "components/fwizard.html",
+      "title": "Steg för steg-guide",
+      "terms": [
+        "guidesteg",
+        "formulär",
+        "FWizard",
+        "FWizardStep"
+      ]
+    },
+    {
+      "url": "components/ftooltip.html",
+      "title": "Tooltip",
+      "terms": [
+        "FTooltip"
+      ]
+    },
+    {
+      "url": "components/foffline.html",
+      "title": "Offline",
+      "terms": [
+        "FOffline"
+      ]
+    },
+    {
+      "url": "components/fmessagebox.html",
+      "title": "Meddelanderuta",
+      "terms": [
+        "informationsmeddelande",
+        "varningsmeddelande",
+        "felmeddelande",
+        "banner",
+        "FMessageBox"
+      ]
+    },
+    {
+      "url": "components/flogo.html",
+      "title": "Logotyp",
+      "terms": [
+        "FLogo"
+      ]
+    },
+    {
+      "url": "components/flabel.html",
+      "title": "Etikett",
+      "terms": [
+        "feltext",
+        "FLabel"
+      ]
+    },
+    {
+      "url": "components/ficon.html",
+      "title": "Ikon",
+      "terms": [
+        "spritesheet",
+        "FIcon"
+      ]
+    },
+    {
+      "url": "components/fdialoguetree.html",
+      "title": "Dialogträd",
+      "terms": [
+        "FDialogueTree"
+      ]
+    },
+    {
+      "url": "components/fcontextmenu.html",
+      "title": "Kontextmeny",
+      "terms": [
+        "menyval",
+        "FContextMenu"
+      ]
+    },
+    {
+      "url": "components/fcard.html",
+      "title": "Kort",
+      "terms": [
+        "FCard"
+      ]
+    },
+    {
+      "url": "components/fcalendar.html",
+      "title": "Kalender",
+      "terms": [
+        "valbara dagar",
+        "dagkomponent",
+        "kalenderdag",
+        "FCalendar",
+        "FCalendarDay"
+      ]
+    },
+    {
+      "url": "components/fbadge.html",
+      "title": "Bricka",
+      "terms": [
+        "FBadge"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/validation.html",
+      "title": "Validering och felhantering",
+      "terms": [
+        "obligatoriska fält",
+        "submit"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/length-validation.html",
+      "title": "Längdvalidering",
+      "terms": [
+        "maxlängd",
+        "maxlength",
+        "validator",
+        "attribut"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-validator.html",
+      "title": "Validator - anpassad",
+      "terms": [
+        "egen validator"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-error-message.html",
+      "title": "Felmeddelande - anpassat",
+      "terms": [
+        "eget felmeddelande"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/cross-validation.html",
+      "title": "Korsvalidering",
+      "terms": [
+        "datumperiod"
+      ]
+    },
+    {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": [
+        "formaterare",
+        "formatter",
+        "parser",
+        "vyvärde",
+        "vy-värde",
+        "viewValue",
+        "modellvärde",
+        "modell-värde",
+        "modelValue"
+      ]
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": [
+        "formaterare",
+        "formatter",
+        "parser",
+        "vyvärde",
+        "vy-värde",
+        "viewValue",
+        "modellvärde",
+        "modell-värde",
+        "modelValue"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
+      "terms": [
+        "icons",
+        "icon-lib-builder"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": [
+        "designer",
+        "utvecklare",
+        "utvecklingsverktyg"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
+      "terms": [
+        "tema",
+        "sass",
+        "scss",
+        "css",
+        "ikonbibliotek"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
+      "title": "Testverktyg",
+      "terms": [
+        "testfall",
+        "jest",
+        "enhetstest",
+        "cypress",
+        "komponenttest",
+        "e2e-test",
+        "statisk kodanalys",
+        "lintning",
+        "eslint",
+        "prettier",
+        "html-validate",
+        "styleint",
+        "pnr-scanner"
+      ]
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/release.html",
+      "title": "Releaseprocess",
+      "terms": [
+        "implementation",
+        "branch",
+        "branchnamn",
+        "commits",
+        "brytande ändringar",
+        "pull request",
+        "releaseanteckningar",
+        "release"
+      ]
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/contributing-developers.html",
+      "title": "För utvecklare",
+      "terms": [
+        "installation",
+        "kommandon",
+        "kodstandard",
+        "lintning",
+        "paketering",
+        "commit",
+        "commit-meddelande"
+      ]
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/commits.html",
+      "title": "Commits och commitmeddelanden",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/code-guidelines.html",
+      "title": "Riktlinjer för kod",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/checklist-publication.html",
+      "title": "Checklista vid publicering",
+      "terms": [
+        "personuppgifter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": [
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": [
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
+      ]
+    },
+    {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": [
+        "testverktyg",
+        "cypress",
+        "DensityWrapper"
+      ]
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": [
+        "automatiska testfall",
+        "Jest",
+        "Cypress"
+      ]
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": [
+        "automatiska testfall",
+        "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
+      "terms": [
+        "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/plugins/validationplugin.html",
+      "title": "Validation Plugin",
+      "terms": [
+        "validering",
+        "v-validation",
+        "ValidationService",
+        "valideringsdirektiv",
+        "inaktivera validering",
+        "revalidera fält",
+        "serverfel",
+        "inaktiva fält"
+      ]
+    },
+    {
+      "url": "functions/plugins/translationplugin.html",
+      "title": "Translation Plugin",
+      "terms": [
+        "översätta textnycklar globalt",
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/plugins/testplugin.html",
+      "title": "Test Plugin",
+      "terms": [
+        "data-test",
+        "testautomation",
+        "enhetstest",
+        "e2e-test"
+      ]
+    },
+    {
+      "url": "functions/plugins/formatplugin.html",
+      "title": "Format Plugin",
+      "terms": [
+        "formateringsdirektiv",
+        "v-format",
+        "radbrytning",
+        "bankgiro",
+        "datum",
+        "nummer",
+        "organisationsnummer",
+        "personnummer",
+        "plusgiro",
+        "postnummer",
+        "text"
+      ]
+    },
+    {
+      "url": "functions/plugins/errorplugin.html",
+      "title": "Error Plugin",
+      "terms": [
+        "generell felsida",
+        "egen felsida",
+        "captureWarnings",
+        "logToConsole",
+        "errorHandler",
+        "ErrorPlugin",
+        "FErrorHandlingApp"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
+      ]
+    },
+    {
+      "url": "functions/functions/use-resize.html",
+      "title": "useResize() composable",
+      "terms": [
+        "justerbar yta"
+      ]
+    },
+    {
+      "url": "functions/functions/use-modal.html",
+      "title": "useModal() composable",
+      "terms": [
+        "openModal",
+        "confirmModal",
+        "formModal",
+        "composition API"
+      ]
+    },
+    {
+      "url": "functions/functions/use-details-panel.html",
+      "title": "useDetailsPanel() composable",
+      "terms": [
+        "detaljpanel"
+      ]
+    },
+    {
+      "url": "functions/functions/use-area-data.html",
+      "title": "useAreaData() composable",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/table-scroll.html",
+      "title": "TableScroll",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/table-scroll-classes.html",
+      "title": "tableScrollClasses",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/render-slot-text.html",
+      "title": "renderSlotText",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/mount-component.html",
+      "title": "mountComponent",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/maybe-component.html",
+      "title": "MaybeComponent",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/item-equals.html",
+      "title": "itemEquals",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/include-item.html",
+      "title": "includeItem",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/handle-keyboard-focus-navigation.html",
+      "title": "handleKeyboardFocusNavigation",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/dispatch-component-validity-event.html",
+      "title": "dispatchComponentValidityEvent",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/assert-set.html",
+      "title": "assertSet() function",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/assert-ref.html",
+      "title": "assertRef() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/clamp.html",
+      "title": "clamp() function",
+      "terms": [
+        "datum"
+      ]
+    },
+    {
+      "url": "components/validation/validators.html",
+      "title": "Validatorer",
+      "terms": [
+        "identisk",
+        "matches",
+        "maxlängd",
+        "maxLength",
+        "minlängd",
+        "minLength",
+        "obligatorisk",
+        "required",
+        "tillåtna tecken",
+        "whitelist",
+        "val från lista",
+        "allowList",
+        "datum",
+        "date",
+        "datumformat",
+        "dateFormat",
+        "inte valbara datum",
+        "invalidDates",
+        "inte valbara veckodagar",
+        "invalidWeekdays",
+        "maxdatum",
+        "maxDate",
+        "mindatum",
+        "minDate",
+        "nummer",
+        "number",
+        "heltal",
+        "integer",
+        "decimaltal",
+        "decimal",
+        "maxvärde",
+        "maxValue",
+        "minvärde",
+        "minValue",
+        "mindre än",
+        "lessThan",
+        "större än",
+        "greaterThan",
+        "procent",
+        "percent",
+        "valutabelopp",
+        "currency",
+        "organisationsnummer",
+        "personnummer",
+        "personnummerFormat",
+        "checksumma",
+        "personnummerLuhn",
+        "personnummerNotSame",
+        "personnummerOlder",
+        "personnummerYounger",
+        "mejladress",
+        "epost",
+        "email",
+        "postnummer",
+        "postalCode",
+        "telefonnummer",
+        "phoneNumber",
+        "bankgiro",
+        "clearingnummer",
+        "clearingNumber",
+        "kontonummer",
+        "bankAccountNumber",
+        "plusgiro"
+      ]
+    },
+    {
+      "url": "components/validation/formatters-and-parsers.html",
+      "title": "Formaterare och parsers",
+      "terms": [
+        "bankgiro",
+        "clearingnummer",
+        "datum",
+        "kontonummer",
+        "nummer",
+        "organisationsnummer",
+        "personnummer",
+        "plusgiro",
+        "postnummer",
+        "procent"
+      ]
+    },
+    {
+      "url": "components/validation/fvalidationgroup.html",
+      "title": "Validering samlad",
+      "terms": [
+        "FValidationGroup"
+      ]
+    },
+    {
+      "url": "components/validation/fvalidationform.html",
+      "title": "Valideringsformulär",
+      "terms": [
+        "felhantering",
+        "submit",
+        "servervalidering",
+        "FValidationForm"
+      ]
+    },
+    {
+      "url": "components/validation/ferrorlist.html",
+      "title": "Fellista",
+      "terms": [
+        "validering",
+        "FErrorList"
+      ]
+    },
+    {
+      "url": "components/table-and-list/table.html",
+      "title": "Tabell",
+      "terms": [
+        "FDataTable",
+        "FInteractiveTable",
+        "FTableButton",
+        "FTableColumn"
+      ]
+    },
+    {
+      "url": "components/table-and-list/fsortfilterdataset.html",
+      "title": "Datamängdsorterare",
+      "terms": [
+        "sortera",
+        "filtrera",
+        "FSortFilterDataset"
+      ]
+    },
+    {
+      "url": "components/table-and-list/flist.html",
+      "title": "Lista",
+      "terms": [
+        "FList"
+      ]
+    },
+    {
+      "url": "components/table-and-list/fcruddataset.html",
+      "title": "Datamängdredigerare",
+      "terms": [
+        "redigera",
+        "redigering",
+        "ändra",
+        "ta bort",
+        "lägg till",
+        "FCrudDataset"
+      ]
+    },
+    {
+      "url": "components/presentation/fstaticfield.html",
+      "title": "Presentationsfält - statiskt",
+      "terms": [
+        "FStaticField"
+      ]
+    },
+    {
+      "url": "components/presentation/foutputfield.html",
+      "title": "Presentationsfält - dynamiskt",
+      "terms": [
+        "FOutputField"
+      ]
+    },
+    {
+      "url": "components/page-layout/application-layout.html",
+      "title": "Applikationslayout",
+      "terms": [
+        "FLayoutApplicationTemplate",
+        "FLayoutLeftPanel",
+        "FLayoutRightPanel"
+      ]
+    },
+    {
+      "url": "components/page-layout/fresizepane.html",
+      "title": "Justerbar yta",
+      "terms": [
+        "FResizePane"
+      ]
+    },
+    {
+      "url": "components/page-layout/fpagelayout.html",
+      "title": "Applikationsmall",
+      "terms": [
+        "landmärken",
+        "FPageLayout"
+      ]
+    },
+    {
+      "url": "components/page-layout/fpageheader.html",
+      "title": "Sidhuvud",
+      "terms": [
+        "skiplink",
+        "FPageHeader"
+      ]
+    },
+    {
+      "url": "components/page-layout/fnavigationmenu.html",
+      "title": "Navigeringsmeny",
+      "terms": [
+        "FNavigationMenu"
+      ]
+    },
+    {
+      "url": "components/page-layout/fminimizablepanel.html",
+      "title": "Minimerbar panel",
+      "terms": [
+        "FMinimizablePanel"
+      ]
+    },
+    {
+      "url": "components/page-layout/ffixedpane.html",
+      "title": "Fixerad yta",
+      "terms": [
+        "FFixedPane"
+      ]
+    },
+    {
+      "url": "components/page-layout/fdetailspanel.html",
+      "title": "Detaljpanel",
+      "terms": [
+        "FDetailsPanel"
+      ]
+    },
+    {
+      "url": "components/modal/fmodal.html",
+      "title": "Modal dialogruta",
+      "terms": [
+        "FModal"
+      ]
+    },
+    {
+      "url": "components/modal/fformmodal.html",
+      "title": "Formulärsmodal",
+      "terms": [
+        "FFormModal"
+      ]
+    },
+    {
+      "url": "components/modal/fconfirmmodal.html",
+      "title": "Bekräftelsemodal",
+      "terms": [
+        "FConfirmModal"
+      ]
+    },
+    {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FLoader"
+      ]
+    },
+    {
+      "url": "components/links/entrypoint.html",
+      "title": "Startpunkt",
+      "terms": [
+        "länk",
+        "entrypoint"
+      ]
+    },
+    {
+      "url": "components/links/anchor.html",
+      "title": "Länk",
+      "terms": [
+        "anchor"
+      ]
+    },
+    {
+      "url": "components/input/textfield-specialized.html",
+      "title": "Specialiserade inmatningsfält",
+      "terms": [
+        "bankgiro",
+        "clearingnummer",
+        "kontonummer",
+        "mejladress",
+        "numeriskt",
+        "organisationsnummer",
+        "personnummer",
+        "plusgiro",
+        "postnummer",
+        "procent",
+        "sökfält",
+        "telefonnummer",
+        "valuta"
+      ]
+    },
+    {
+      "url": "components/input/combobox.html",
+      "title": "Kombobox",
+      "terms": [
+        "FTextField"
+      ]
+    },
+    {
+      "url": "components/input/ftextareafield.html",
+      "title": "Flerradigt inmatningsfält",
+      "terms": [
+        "FTextareaField"
+      ]
+    },
+    {
+      "url": "components/input/ftextfield.html",
+      "title": "Inmatningsfält",
+      "terms": [
+        "validation",
+        "formatering",
+        "parsning",
+        "inline",
+        "FTextField"
+      ]
+    },
+    {
+      "url": "components/input/fselectfield.html",
+      "title": "Dropplista",
+      "terms": [
+        "FSelectField"
+      ]
+    },
+    {
+      "url": "components/input/fradiofield.html",
+      "title": "Radioknapp",
+      "terms": [
+        "FFieldset",
+        "FRadioField"
+      ]
+    },
+    {
+      "url": "components/input/fdatepickerfield.html",
+      "title": "Datumväljare",
+      "terms": [
+        "FDatepickerField"
+      ]
+    },
+    {
+      "url": "components/input/fcheckboxfield.html",
+      "title": "Kryssruta",
+      "terms": [
+        "FFieldset",
+        "FCheckboxField"
+      ]
+    },
+    {
+      "url": "components/group/index.html",
+      "title": "Komponentgrupp",
+      "terms": [
+        "gruppera",
+        "gruppering",
+        "group"
+      ]
+    },
+    {
+      "url": "components/group/ffieldset.html",
+      "title": "Fältgruppering",
+      "terms": [
+        "inmatningskomponenter",
+        "kryssruta",
+        "radioknapp",
+        "gruppera",
+        "gruppering",
+        "FFieldset"
+      ]
+    },
+    {
+      "url": "components/framework/about.html",
+      "title": "Om ramverkskomponenter",
+      "terms": []
+    },
+    {
+      "url": "components/framework/iskiplink.html",
+      "title": "Gå till innehåll",
+      "terms": [
+        "ISkipLink"
+      ]
+    },
+    {
+      "url": "components/framework/ipopupmenu.html",
+      "title": "Popup-meny",
+      "terms": [
+        "IPopupMenu"
+      ]
+    },
+    {
+      "url": "components/framework/ipopuperror.html",
+      "title": "PopupError",
+      "terms": [
+        "IPopupError"
+      ]
+    },
+    {
+      "url": "components/framework/ipopup.html",
+      "title": "Popup",
+      "terms": [
+        "IPopup"
+      ]
+    },
+    {
+      "url": "components/framework/iflexitem.html",
+      "title": "Flex Item",
+      "terms": [
+        "IFlexItem"
+      ]
+    },
+    {
+      "url": "components/framework/iflex.html",
+      "title": "Flexibel positionering",
+      "terms": [
+        "IFlex"
+      ]
+    },
+    {
+      "url": "components/framework/icalendarnavbar.html",
+      "title": "Kalendernavigering",
+      "terms": [
+        "ICalendarNavbar"
+      ]
+    },
+    {
+      "url": "components/framework/icalendarmonthgrid.html",
+      "title": "Kalenderrutnät",
+      "terms": [
+        "ICalendarMonthGrid"
+      ]
+    },
+    {
+      "url": "components/framework/icalendarmonth.html",
+      "title": "Kalendermånad",
+      "terms": [
+        "ICalendarMonth"
+      ]
+    },
+    {
+      "url": "components/framework/ianimateexpand.html",
+      "title": "Animerad expandering",
+      "terms": [
+        "IAnimateExpand"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileselector.html",
+      "title": "Filväljare",
+      "terms": [
+        "FFileSelector"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileitem.html",
+      "title": "Filpresentatör",
+      "terms": [
+        "FFileItem"
+      ]
+    },
+    {
+      "url": "components/expandable/fexpandableparagraph.html",
+      "title": "Expanderbart stycke",
+      "terms": [
+        "FExpandableParagraph"
+      ]
+    },
+    {
+      "url": "components/expandable/fexpandablepanel.html",
+      "title": "Expanderbar panel",
+      "terms": [
+        "FExpandablePanel"
+      ]
+    },
+    {
+      "url": "components/expandable/fexpand.html",
+      "title": "Expanderbart innehåll",
+      "terms": [
+        "FExpand"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
+      "title": "Version 6 migreringsguide: @fkui/vue",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
+      "title": "Version 6 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
+      "title": "Version 6 migreringsguide: @fkui/logic",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/design.html",
+      "title": "Version 6 migreringsguide: @fkui/design",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
+      "title": "Version 6 migreringsguide: Cypress Pageobjects",
+      "terms": []
+    },
+    {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": [
+        "modalfunktion",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": [
+        "modalfunktion",
+        "formulärsmodal",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
+      "terms": [
+        "modalfunktion",
+        "bekräftelsemodal",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/ref-is-vue.html",
+      "title": "refIsVue",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/ref-is-vue-array.html",
+      "title": "refIsVueArray",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/ref-is-html-element-array.html",
+      "title": "refIsHTMLElementArray",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/ref-is-element.html",
+      "title": "refIsElement",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/ref-is-element-array.html",
+      "title": "refIsElementArray",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/has-slot.html",
+      "title": "hasSlot() function",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/has-parent-by-name.html",
+      "title": "hasParentByName",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/get-parent-by-name.html",
+      "title": "getParentByName",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/get-input-element.html",
+      "title": "getInputElement",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/get-html-elements-from-vue-ref.html",
+      "title": "getHTMLElementsFromVueRef",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/get-html-element-from-vue-ref.html",
+      "title": "getHTMLElementFromVueRef",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/get-elements-from-vue-ref.html",
+      "title": "getElementsFromVueRef",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/get-element-from-vue-ref.html",
+      "title": "getElementFromVueRef",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/focus.html",
+      "title": "focus",
+      "terms": [
+        "DOM-funktion",
+        "focusTarget"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/find-parent-by-name.html",
+      "title": "findParentByName",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/find-html-element-from-vue-ref.html",
+      "title": "findHTMLElementFromVueRef",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/dom-functions/find-element-from-vue-ref.html",
+      "title": "findElementFromVueRef",
+      "terms": [
+        "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/date/f-year/index.html",
+      "title": "FYear",
+      "terms": [
+        "årtal"
+      ]
+    },
+    {
+      "url": "functions/date/f-year/value.html",
+      "title": "FYear: value property",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/tostring.html",
+      "title": "FYear: toString() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/tojson.html",
+      "title": "FYear: toJSON() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/now.html",
+      "title": "FYear: now() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-valid.html",
+      "title": "FYear: isValid() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-before.html",
+      "title": "FYear: isBefore() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-after.html",
+      "title": "FYear: isAfter() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/from-year.html",
+      "title": "FYear: fromYear() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/from-date.html",
+      "title": "FYear: fromDate() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/equals.html",
+      "title": "FYear: equals() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/compare.html",
+      "title": "FYear: compare() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/add-years.html",
+      "title": "FYear: addYears() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/f-date-previous.html",
+      "title": "FYear: previous() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/f-date-next.html",
+      "title": "FYear: next() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
+      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
+      "title": "FProgressbarPageObject: value() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
+      "title": "FProgressbarPageObject: progressStatus() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
+      "title": "FProgressbarPageObject: el() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
+      "title": "FMinimizablePanelPageObject: constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html",
+      "title": "FMinimizablePanelPageObject: toggleButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html",
+      "title": "FMinimizablePanelPageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html",
+      "title": "FMinimizablePanelPageObject: footer() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html",
+      "title": "FMinimizablePanelPageObject: el() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
+      "title": "FMinimizablePanelPageObject: content() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
+      "title": "FLabelPageObject: FLabelPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
+      "title": "FLabelPageObject: formatDescription() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
+      "title": "FLabelPageObject: errorMessage() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
+      "title": "FLabelPageObject: errorIcon() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
+      "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
+      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
+      "title": "FFileItemPageObject: typeOfFile() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
+      "title": "FFileItemPageObject: fileName() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
+      "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/header.html",
+      "title": "FDetailsPanelPageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/footer.html",
+      "title": "FDetailsPanelPageObject: footer() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/el.html",
+      "title": "FDetailsPanelPageObject: el() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/content.html",
+      "title": "FDetailsPanelPageObject: content() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
+      "title": "FDetailsPanelPageObject: closeButton() method",
+      "terms": []
+    },
+    {
+      "url": "changelog.html",
+      "title": "CHANGELOG",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/index.html",
+      "title": "Bidra till designsystemet",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/contribute-to-fkds/testing.html",
+      "title": "Automatisk testning",
+      "terms": []
+    }
+  ],
+  "mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 2,
+    "9": 2,
+    "10": 2,
+    "11": 2,
+    "12": 3,
+    "13": 4,
+    "14": 4,
+    "15": 4,
+    "16": 4,
+    "17": 4,
+    "18": 4,
+    "19": 4,
+    "20": 4,
+    "21": 4,
+    "22": 4,
+    "23": 4,
+    "24": 4,
+    "25": 5,
+    "26": 5,
+    "27": 5,
+    "28": 5,
+    "29": 6,
+    "30": 6,
+    "31": 6,
+    "32": 7,
+    "33": 8,
+    "34": 8,
+    "35": 9,
+    "36": 10,
+    "37": 11,
+    "38": 11,
+    "39": 11,
+    "40": 11,
+    "41": 11,
+    "42": 11,
+    "43": 11,
+    "44": 11,
+    "45": 12,
+    "46": 13,
+    "47": 13,
+    "48": 13,
+    "49": 14,
+    "50": 14,
+    "51": 15,
+    "52": 15,
+    "53": 16,
+    "54": 16,
+    "55": 16,
+    "56": 16,
+    "57": 16,
+    "58": 17,
+    "59": 17,
+    "60": 18,
+    "61": 18,
+    "62": 19,
+    "63": 19,
+    "64": 19,
+    "65": 19,
+    "66": 19,
+    "67": 19,
+    "68": 20,
+    "69": 20,
+    "70": 21,
+    "71": 21,
+    "72": 21,
+    "73": 22,
+    "74": 22,
+    "75": 22,
+    "76": 23,
+    "77": 23,
+    "78": 24,
+    "79": 24,
+    "80": 24,
+    "81": 25,
+    "82": 25,
+    "83": 26,
+    "84": 26,
+    "85": 26,
+    "86": 26,
+    "87": 26,
+    "88": 26,
+    "89": 27,
+    "90": 27,
+    "91": 28,
+    "92": 28,
+    "93": 28,
+    "94": 29,
+    "95": 29,
+    "96": 29,
+    "97": 29,
+    "98": 29,
+    "99": 30,
+    "100": 30,
+    "101": 31,
+    "102": 31,
+    "103": 32,
+    "104": 32,
+    "105": 33,
+    "106": 33,
+    "107": 33,
+    "108": 33,
+    "109": 33,
+    "110": 33,
+    "111": 33,
+    "112": 33,
+    "113": 33,
+    "114": 33,
+    "115": 34,
+    "116": 34,
+    "117": 34,
+    "118": 34,
+    "119": 34,
+    "120": 34,
+    "121": 34,
+    "122": 34,
+    "123": 34,
+    "124": 34,
+    "125": 35,
+    "126": 35,
+    "127": 35,
+    "128": 35,
+    "129": 35,
+    "130": 35,
+    "131": 36,
+    "132": 36,
+    "133": 36,
+    "134": 37,
+    "135": 37,
+    "136": 37,
+    "137": 37,
+    "138": 38,
+    "139": 38,
+    "140": 38,
+    "141": 38,
+    "142": 38,
+    "143": 38,
+    "144": 39,
+    "145": 39,
+    "146": 40,
+    "147": 41,
+    "148": 41,
+    "149": 42,
+    "150": 42,
+    "151": 42,
+    "152": 42,
+    "153": 42,
+    "154": 42,
+    "155": 42,
+    "156": 42,
+    "157": 42,
+    "158": 42,
+    "159": 42,
+    "160": 42,
+    "161": 42,
+    "162": 42,
+    "163": 43,
+    "164": 43,
+    "165": 43,
+    "166": 43,
+    "167": 43,
+    "168": 43,
+    "169": 43,
+    "170": 43,
+    "171": 43,
+    "172": 44,
+    "173": 44,
+    "174": 44,
+    "175": 44,
+    "176": 44,
+    "177": 44,
+    "178": 44,
+    "179": 44,
+    "180": 45,
+    "181": 46,
+    "182": 47,
+    "183": 47,
+    "184": 48,
+    "185": 48,
+    "186": 48,
+    "187": 48,
+    "188": 49,
+    "189": 49,
+    "190": 49,
+    "191": 50,
+    "192": 50,
+    "193": 51,
+    "194": 51,
+    "195": 51,
+    "196": 51,
+    "197": 51,
+    "198": 52,
+    "199": 52,
+    "200": 52,
+    "201": 52,
+    "202": 53,
+    "203": 53,
+    "204": 53,
+    "205": 53,
+    "206": 54,
+    "207": 54,
+    "208": 54,
+    "209": 55,
+    "210": 55,
+    "211": 56,
+    "212": 56,
+    "213": 56,
+    "214": 57,
+    "215": 57,
+    "216": 57,
+    "217": 57,
+    "218": 58,
+    "219": 58,
+    "220": 58,
+    "221": 59,
+    "222": 59,
+    "223": 59,
+    "224": 59,
+    "225": 59,
+    "226": 59,
+    "227": 59,
+    "228": 59,
+    "229": 59,
+    "230": 60,
+    "231": 60,
+    "232": 60,
+    "233": 61,
+    "234": 61,
+    "235": 61,
+    "236": 61,
+    "237": 61,
+    "238": 62,
+    "239": 62,
+    "240": 62,
+    "241": 62,
+    "242": 62,
+    "243": 62,
+    "244": 62,
+    "245": 62,
+    "246": 62,
+    "247": 62,
+    "248": 62,
+    "249": 62,
+    "250": 63,
+    "251": 63,
+    "252": 63,
+    "253": 63,
+    "254": 63,
+    "255": 63,
+    "256": 63,
+    "257": 63,
+    "258": 64,
+    "259": 64,
+    "260": 65,
+    "261": 65,
+    "262": 66,
+    "263": 66,
+    "264": 67,
+    "265": 67,
+    "266": 67,
+    "267": 67,
+    "268": 67,
+    "269": 68,
+    "270": 68,
+    "271": 69,
+    "272": 69,
+    "273": 70,
+    "274": 70,
+    "275": 70,
+    "276": 70,
+    "277": 70,
+    "278": 71,
+    "279": 71,
+    "280": 72,
+    "281": 73,
+    "282": 74,
+    "283": 75,
+    "284": 76,
+    "285": 77,
+    "286": 78,
+    "287": 79,
+    "288": 80,
+    "289": 81,
+    "290": 82,
+    "291": 83,
+    "292": 84,
+    "293": 84,
+    "294": 85,
+    "295": 85,
+    "296": 85,
+    "297": 85,
+    "298": 85,
+    "299": 85,
+    "300": 85,
+    "301": 85,
+    "302": 85,
+    "303": 85,
+    "304": 85,
+    "305": 85,
+    "306": 85,
+    "307": 85,
+    "308": 85,
+    "309": 85,
+    "310": 85,
+    "311": 85,
+    "312": 85,
+    "313": 85,
+    "314": 85,
+    "315": 85,
+    "316": 85,
+    "317": 85,
+    "318": 85,
+    "319": 85,
+    "320": 85,
+    "321": 85,
+    "322": 85,
+    "323": 85,
+    "324": 85,
+    "325": 85,
+    "326": 85,
+    "327": 85,
+    "328": 85,
+    "329": 85,
+    "330": 85,
+    "331": 85,
+    "332": 85,
+    "333": 85,
+    "334": 85,
+    "335": 85,
+    "336": 85,
+    "337": 85,
+    "338": 85,
+    "339": 85,
+    "340": 85,
+    "341": 85,
+    "342": 85,
+    "343": 85,
+    "344": 85,
+    "345": 85,
+    "346": 85,
+    "347": 85,
+    "348": 85,
+    "349": 85,
+    "350": 85,
+    "351": 85,
+    "352": 85,
+    "353": 85,
+    "354": 85,
+    "355": 85,
+    "356": 85,
+    "357": 85,
+    "358": 86,
+    "359": 86,
+    "360": 86,
+    "361": 86,
+    "362": 86,
+    "363": 86,
+    "364": 86,
+    "365": 86,
+    "366": 86,
+    "367": 86,
+    "368": 86,
+    "369": 87,
+    "370": 87,
+    "371": 88,
+    "372": 88,
+    "373": 88,
+    "374": 88,
+    "375": 88,
+    "376": 89,
+    "377": 89,
+    "378": 89,
+    "379": 90,
+    "380": 90,
+    "381": 90,
+    "382": 90,
+    "383": 90,
+    "384": 91,
+    "385": 91,
+    "386": 91,
+    "387": 91,
+    "388": 92,
+    "389": 92,
+    "390": 93,
+    "391": 93,
+    "392": 93,
+    "393": 93,
+    "394": 93,
+    "395": 93,
+    "396": 93,
+    "397": 94,
+    "398": 94,
+    "399": 95,
+    "400": 95,
+    "401": 96,
+    "402": 96,
+    "403": 96,
+    "404": 96,
+    "405": 97,
+    "406": 97,
+    "407": 98,
+    "408": 98,
+    "409": 98,
+    "410": 99,
+    "411": 99,
+    "412": 99,
+    "413": 100,
+    "414": 100,
+    "415": 101,
+    "416": 101,
+    "417": 102,
+    "418": 102,
+    "419": 103,
+    "420": 103,
+    "421": 104,
+    "422": 104,
+    "423": 105,
+    "424": 105,
+    "425": 106,
+    "426": 106,
+    "427": 107,
+    "428": 107,
+    "429": 107,
+    "430": 107,
+    "431": 108,
+    "432": 108,
+    "433": 108,
+    "434": 108,
+    "435": 109,
+    "436": 109,
+    "437": 109,
+    "438": 110,
+    "439": 110,
+    "440": 111,
+    "441": 111,
+    "442": 111,
+    "443": 111,
+    "444": 111,
+    "445": 111,
+    "446": 111,
+    "447": 111,
+    "448": 111,
+    "449": 111,
+    "450": 111,
+    "451": 111,
+    "452": 111,
+    "453": 111,
+    "454": 112,
+    "455": 112,
+    "456": 113,
+    "457": 113,
+    "458": 114,
+    "459": 114,
+    "460": 114,
+    "461": 114,
+    "462": 114,
+    "463": 114,
+    "464": 115,
+    "465": 115,
+    "466": 116,
+    "467": 116,
+    "468": 116,
+    "469": 117,
+    "470": 117,
+    "471": 118,
+    "472": 118,
+    "473": 118,
+    "474": 119,
+    "475": 119,
+    "476": 119,
+    "477": 119,
+    "478": 120,
+    "479": 120,
+    "480": 120,
+    "481": 120,
+    "482": 120,
+    "483": 120,
+    "484": 120,
+    "485": 121,
+    "486": 122,
+    "487": 122,
+    "488": 123,
+    "489": 123,
+    "490": 124,
+    "491": 124,
+    "492": 125,
+    "493": 125,
+    "494": 126,
+    "495": 126,
+    "496": 127,
+    "497": 127,
+    "498": 128,
+    "499": 128,
+    "500": 129,
+    "501": 129,
+    "502": 130,
+    "503": 130,
+    "504": 131,
+    "505": 131,
+    "506": 132,
+    "507": 132,
+    "508": 133,
+    "509": 133,
+    "510": 134,
+    "511": 134,
+    "512": 135,
+    "513": 135,
+    "514": 136,
+    "515": 136,
+    "516": 137,
+    "517": 138,
+    "518": 139,
+    "519": 140,
+    "520": 141,
+    "521": 142,
+    "522": 142,
+    "523": 142,
+    "524": 143,
+    "525": 143,
+    "526": 143,
+    "527": 143,
+    "528": 144,
+    "529": 144,
+    "530": 144,
+    "531": 144,
+    "532": 145,
+    "533": 145,
+    "534": 146,
+    "535": 146,
+    "536": 147,
+    "537": 147,
+    "538": 148,
+    "539": 148,
+    "540": 149,
+    "541": 149,
+    "542": 150,
+    "543": 150,
+    "544": 151,
+    "545": 151,
+    "546": 152,
+    "547": 152,
+    "548": 153,
+    "549": 153,
+    "550": 154,
+    "551": 154,
+    "552": 155,
+    "553": 155,
+    "554": 156,
+    "555": 156,
+    "556": 157,
+    "557": 157,
+    "558": 158,
+    "559": 158,
+    "560": 158,
+    "561": 159,
+    "562": 159,
+    "563": 160,
+    "564": 160,
+    "565": 161,
+    "566": 161,
+    "567": 162,
+    "568": 162,
+    "569": 162,
+    "570": 163,
+    "571": 163,
+    "572": 163,
+    "573": 164,
+    "574": 164,
+    "575": 164,
+    "576": 165,
+    "577": 165,
+    "578": 165,
+    "579": 166,
+    "580": 166,
+    "581": 167,
+    "582": 168,
+    "583": 169,
+    "584": 170,
+    "585": 171,
+    "586": 172,
+    "587": 173,
+    "588": 174,
+    "589": 175,
+    "590": 176,
+    "591": 177,
+    "592": 178,
+    "593": 179,
+    "594": 180,
+    "595": 181,
+    "596": 182,
+    "597": 183,
+    "598": 184,
+    "599": 185,
+    "600": 186,
+    "601": 187,
+    "602": 188,
+    "603": 189,
+    "604": 190,
+    "605": 191,
+    "606": 192,
+    "607": 193,
+    "608": 194,
+    "609": 195,
+    "610": 196,
+    "611": 197,
+    "612": 198,
+    "613": 199,
+    "614": 200,
+    "615": 201,
+    "616": 202,
+    "617": 203,
+    "618": 204,
+    "619": 205,
+    "620": 206,
+    "621": 207,
+    "622": 208,
+    "623": 209,
+    "624": 210,
+    "625": 211,
+    "626": 212,
+    "627": 213,
+    "628": 214
+  }
+}
