@@ -579,6 +579,7 @@
     "ValidationErrorMessageBuilder: build() method",
     "feltext",
     "validator",
+    "FPaginatorPageObject",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -595,7 +596,6 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
-    "FPaginatorPageObject",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -2014,6 +2014,11 @@
       ]
     },
     {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": []
+    },
+    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2088,11 +2093,6 @@
     {
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
       "terms": []
     },
     {
@@ -2842,7 +2842,7 @@
     "577": 165,
     "578": 165,
     "579": 166,
-    "580": 166,
+    "580": 167,
     "581": 167,
     "582": 168,
     "583": 169,
