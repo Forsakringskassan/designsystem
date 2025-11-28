@@ -1,19 +1,16 @@
-import { FPaginatorPageObject as SelectorPageObject } from "../pageobjects";
-import { type DefaultCypressChainable } from "./common";
-
 /**
- * Cypress pageobject for `FPaginator`.
+ * Pageobject for `FPaginator`.
  *
  * @public
  */
 export class FPaginatorPageObject {
-    private selector: SelectorPageObject;
+    public selector: string;
 
     /**
      * @param selector - The root of the FPaginator component
      */
     public constructor(selector: string = ".paginator") {
-        this.selector = new SelectorPageObject(selector);
+        this.selector = selector;
     }
 
     /**
@@ -21,8 +18,8 @@ export class FPaginatorPageObject {
      *
      * @returns The element itself.
      */
-    public el(): DefaultCypressChainable {
-        return cy.get(this.selector.el());
+    public el(): string {
+        return this.selector;
     }
 
     /**
@@ -30,8 +27,8 @@ export class FPaginatorPageObject {
      *
      * @returns The button for the current page.
      */
-    public currentPageButton(): DefaultCypressChainable {
-        return cy.get(this.selector.currentPageButton());
+    public currentPageButton(): string {
+        return `${this.selector} .paginator__page--active`;
     }
 
     /**
@@ -39,8 +36,8 @@ export class FPaginatorPageObject {
      *
      * @returns The button for navigating to the next page.
      */
-    public nextButton(): DefaultCypressChainable {
-        return cy.get(this.selector.nextButton());
+    public nextButton(): string {
+        return `${this.selector} .paginator__next`;
     }
 
     /**
@@ -49,8 +46,15 @@ export class FPaginatorPageObject {
      * @param page - The index of the page button (if number); the number of the page (if string)
      * @returns The button for the specified page (if param `page` is defined); the buttons for all pages shown (if param `page` is undefined).
      */
-    public pageButton(page?: number | string): DefaultCypressChainable {
-        return cy.get(this.selector.pageButton(page));
+    public pageButton(page?: number | string): string {
+        switch (typeof page) {
+            case "number":
+                return `${this.selector} [data-page~="button-${page}"]`;
+            case "string":
+                return `${this.selector} [data-page~="page-${page}"]`;
+            default:
+                return `${this.selector} .paginator__page`;
+        }
     }
 
     /**
@@ -59,8 +63,8 @@ export class FPaginatorPageObject {
      *
      * @returns The page counter.
      */
-    public pageCounter(): DefaultCypressChainable {
-        return cy.get(this.selector.pageCounter());
+    public pageCounter(): string {
+        return `${this.selector} .paginator__page-counter`;
     }
 
     /**
@@ -68,7 +72,7 @@ export class FPaginatorPageObject {
      *
      * @returns The button for navigating to the previous page.
      */
-    public previousButton(): DefaultCypressChainable {
-        return cy.get(this.selector.previousButton());
+    public previousButton(): string {
+        return `${this.selector} .paginator__previous`;
     }
 }
