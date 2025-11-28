@@ -67,7 +67,9 @@ export class FPaginatorPageObject implements BasePageObject {
      * @returns The page counter.
      */
     public pageCounter(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .paginator__page-counter`);
+        return cy.get(
+            `${this.selector} .paginator__page-counter [aria-hidden]`,
+        );
     }
 
     /**
