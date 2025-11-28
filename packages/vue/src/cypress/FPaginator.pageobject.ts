@@ -1,4 +1,4 @@
-import { FPaginatorPageobject as SelectorPageObject } from "../pageobjects";
+import { FPaginatorPageObject as SelectorPageObject } from "../pageobjects";
 import { type DefaultCypressChainable } from "./common";
 
 /**
@@ -6,7 +6,7 @@ import { type DefaultCypressChainable } from "./common";
  *
  * @public
  */
-export class FPaginatorPageobject {
+export class FPaginatorPageObject {
     private selector: SelectorPageObject;
 
     /**

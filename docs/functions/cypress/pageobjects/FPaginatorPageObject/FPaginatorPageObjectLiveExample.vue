@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { FList, FPaginateDataset, FPaginator } from "@fkui/vue";
-import { FPaginatorPageobject } from "@fkui/vue/pageobjects";
+import { FPaginatorPageObject } from "@fkui/vue/pageobjects";
 
-const pageobject = new FPaginatorPageobject();
+const pageobject = new FPaginatorPageObject();
 
-const methods = Object.getOwnPropertyNames(FPaginatorPageobject.prototype).filter(
+const methods = Object.getOwnPropertyNames(FPaginatorPageObject.prototype).filter(
     (name) => name !== "constructor",
-) as Array<keyof FPaginatorPageobject>;
+) as Array<keyof FPaginatorPageObject>;
 
-const parameters: Partial<Record<keyof FPaginatorPageobject, unknown[]>> = {
+const parameters: Partial<Record<keyof FPaginatorPageObject, unknown[]>> = {
     pageButton: [3],
 };
 

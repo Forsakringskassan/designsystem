@@ -541,8 +541,8 @@ export class FPageHeaderPageobject implements BasePageObject {
 }
 
 // @public
-export class FPaginatorPageObject implements BasePageObject {
-    constructor(selector: string);
+export class FPaginatorPageObject {
+    constructor(selector?: string);
     currentPageButton(): DefaultCypressChainable;
     el(): DefaultCypressChainable;
     nextButton(): DefaultCypressChainable;

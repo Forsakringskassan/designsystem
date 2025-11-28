@@ -5,7 +5,7 @@
 ```ts
 
 // @public
-export class FPaginatorPageobject {
+export class FPaginatorPageObject {
     constructor(selector?: string);
     currentPageButton(): string;
     el(): string;

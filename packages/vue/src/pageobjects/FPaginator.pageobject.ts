@@ -3,7 +3,7 @@
  *
  * @public
  */
-export class FPaginatorPageobject {
+export class FPaginatorPageObject {
     public selector: string;
 
     /**
