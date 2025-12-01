@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject.vue:FMinimizablePanelPageObject-10ef78.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-el.vue:FMinimizablePanelPageObject-el-e0ef59.js
 import { defineComponent as _defineComponent } from "vue";
 import { FMinimizablePanel, FPageLayout } from "@fkui/vue";
 import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject",
+  __name: "FMinimizablePanelPageObject-el",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FMinimizablePanel() {
@@ -59,7 +59,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-10ef78"
+  selector: "#example-e0ef59"
 });
 export {
   render
