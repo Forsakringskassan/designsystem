@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/CustomValidatorExample.vue:CustomValidatorExample-9e431f.js
+// virtual-entry:virtual:docs/guides/validation/examples/CustomValidatorExample.vue:CustomValidatorExample-a132cf.js
 import { defineComponent } from "vue";
 import {
   ValidationErrorMessageBuilder,
@@ -193,7 +193,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-9e431f"
+  selector: "#example-a132cf"
 });
 export {
   render,
