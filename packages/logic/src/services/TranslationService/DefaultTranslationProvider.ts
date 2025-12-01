@@ -1,9 +1,7 @@
 import { isSet } from "../../utils";
 import { type TranslationProviderInterface } from "./TranslationProviderInterface";
 
-export class DefaultTranslationProvider
-    implements TranslationProviderInterface
-{
+export class DefaultTranslationProvider implements TranslationProviderInterface {
     private language = "sv";
 
     public get currentLanguage(): string {
