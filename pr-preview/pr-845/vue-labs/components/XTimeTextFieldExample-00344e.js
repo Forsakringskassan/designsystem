@@ -27,12 +27,10 @@ function setup(options) {
 import { defineComponent as defineComponent2 } from "vue";
 
 // dist/esm/index.esm.js
-import { isEmpty, stripWhitespace, isSet, TranslationService, ValidationService, assertRef, ElementIdService, assertSet } from "@fkui/logic";
-import { defineComponent, nextTick, toValue, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent } from "vue";
-import { TranslationMixin, FTextField, useTextFieldSetup, getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, useTranslate, useSlotUtils, setInternalKeys, FSortFilterDatasetInjected } from "@fkui/vue";
-var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
-var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
-var es_iterator_forEach = {};
+import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective } from "vue";
+import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
+import { getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, useTranslate, useSlotUtils, setInternalKeys, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+var es_iterator_constructor = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
 function requireGlobalThis() {
@@ -157,10 +155,10 @@ function requireClassofRaw() {
   if (hasRequiredClassofRaw) return classofRaw;
   hasRequiredClassofRaw = 1;
   var uncurryThis = requireFunctionUncurryThis();
-  var toString = uncurryThis({}.toString);
+  var toString2 = uncurryThis({}.toString);
   var stringSlice = uncurryThis("".slice);
   classofRaw = function(it) {
-    return stringSlice(toString(it), 8, -1);
+    return stringSlice(toString2(it), 8, -1);
   };
   return classofRaw;
 }
@@ -283,8 +281,8 @@ function requireEnvironmentV8Version() {
   var globalThis2 = requireGlobalThis();
   var userAgent = requireEnvironmentUserAgent();
   var process = globalThis2.process;
-  var Deno = globalThis2.Deno;
-  var versions = process && process.versions || Deno && Deno.version;
+  var Deno2 = globalThis2.Deno;
+  var versions = process && process.versions || Deno2 && Deno2.version;
   var v8 = versions && versions.v8;
   var match, version;
   if (v8) {
@@ -498,9 +496,9 @@ function requireUid() {
   var uncurryThis = requireFunctionUncurryThis();
   var id = 0;
   var postfix = Math.random();
-  var toString = uncurryThis(1.1.toString);
+  var toString2 = uncurryThis(1.1.toString);
   uid = function(key) {
-    return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString(++id + postfix, 36);
+    return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString2(++id + postfix, 36);
   };
   return uid;
 }
@@ -915,7 +913,7 @@ function requireMakeBuiltIn() {
     }
     return value;
   };
-  Function.prototype.toString = makeBuiltIn$1(function toString() {
+  Function.prototype.toString = makeBuiltIn$1(function toString2() {
     return isCallable2(this) && getInternalState(this).source || inspectSource2(this);
   }, "toString");
   return makeBuiltIn.exports;
@@ -1210,6 +1208,302 @@ function require_export() {
   };
   return _export;
 }
+var anInstance;
+var hasRequiredAnInstance;
+function requireAnInstance() {
+  if (hasRequiredAnInstance) return anInstance;
+  hasRequiredAnInstance = 1;
+  var isPrototypeOf = requireObjectIsPrototypeOf();
+  var $TypeError = TypeError;
+  anInstance = function(it, Prototype) {
+    if (isPrototypeOf(Prototype, it)) return it;
+    throw new $TypeError("Incorrect invocation");
+  };
+  return anInstance;
+}
+var correctPrototypeGetter;
+var hasRequiredCorrectPrototypeGetter;
+function requireCorrectPrototypeGetter() {
+  if (hasRequiredCorrectPrototypeGetter) return correctPrototypeGetter;
+  hasRequiredCorrectPrototypeGetter = 1;
+  var fails2 = requireFails();
+  correctPrototypeGetter = !fails2(function() {
+    function F() {
+    }
+    F.prototype.constructor = null;
+    return Object.getPrototypeOf(new F()) !== F.prototype;
+  });
+  return correctPrototypeGetter;
+}
+var objectGetPrototypeOf;
+var hasRequiredObjectGetPrototypeOf;
+function requireObjectGetPrototypeOf() {
+  if (hasRequiredObjectGetPrototypeOf) return objectGetPrototypeOf;
+  hasRequiredObjectGetPrototypeOf = 1;
+  var hasOwn = requireHasOwnProperty();
+  var isCallable2 = requireIsCallable();
+  var toObject2 = requireToObject();
+  var sharedKey2 = requireSharedKey();
+  var CORRECT_PROTOTYPE_GETTER = requireCorrectPrototypeGetter();
+  var IE_PROTO = sharedKey2("IE_PROTO");
+  var $Object = Object;
+  var ObjectPrototype = $Object.prototype;
+  objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
+    var object = toObject2(O);
+    if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
+    var constructor = object.constructor;
+    if (isCallable2(constructor) && object instanceof constructor) {
+      return constructor.prototype;
+    }
+    return object instanceof $Object ? ObjectPrototype : null;
+  };
+  return objectGetPrototypeOf;
+}
+var defineBuiltInAccessor;
+var hasRequiredDefineBuiltInAccessor;
+function requireDefineBuiltInAccessor() {
+  if (hasRequiredDefineBuiltInAccessor) return defineBuiltInAccessor;
+  hasRequiredDefineBuiltInAccessor = 1;
+  var makeBuiltIn2 = requireMakeBuiltIn();
+  var defineProperty = requireObjectDefineProperty();
+  defineBuiltInAccessor = function(target, name, descriptor) {
+    if (descriptor.get) makeBuiltIn2(descriptor.get, name, {
+      getter: true
+    });
+    if (descriptor.set) makeBuiltIn2(descriptor.set, name, {
+      setter: true
+    });
+    return defineProperty.f(target, name, descriptor);
+  };
+  return defineBuiltInAccessor;
+}
+var createProperty;
+var hasRequiredCreateProperty;
+function requireCreateProperty() {
+  if (hasRequiredCreateProperty) return createProperty;
+  hasRequiredCreateProperty = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var definePropertyModule = requireObjectDefineProperty();
+  var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
+  createProperty = function(object, key, value) {
+    if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor2(0, value));
+    else object[key] = value;
+  };
+  return createProperty;
+}
+var objectDefineProperties = {};
+var objectKeys;
+var hasRequiredObjectKeys;
+function requireObjectKeys() {
+  if (hasRequiredObjectKeys) return objectKeys;
+  hasRequiredObjectKeys = 1;
+  var internalObjectKeys = requireObjectKeysInternal();
+  var enumBugKeys2 = requireEnumBugKeys();
+  objectKeys = Object.keys || function keys(O) {
+    return internalObjectKeys(O, enumBugKeys2);
+  };
+  return objectKeys;
+}
+var hasRequiredObjectDefineProperties;
+function requireObjectDefineProperties() {
+  if (hasRequiredObjectDefineProperties) return objectDefineProperties;
+  hasRequiredObjectDefineProperties = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var V8_PROTOTYPE_DEFINE_BUG = requireV8PrototypeDefineBug();
+  var definePropertyModule = requireObjectDefineProperty();
+  var anObject2 = requireAnObject();
+  var toIndexedObject2 = requireToIndexedObject();
+  var objectKeys2 = requireObjectKeys();
+  objectDefineProperties.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
+    anObject2(O);
+    var props = toIndexedObject2(Properties);
+    var keys = objectKeys2(Properties);
+    var length = keys.length;
+    var index = 0;
+    var key;
+    while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
+    return O;
+  };
+  return objectDefineProperties;
+}
+var html;
+var hasRequiredHtml;
+function requireHtml() {
+  if (hasRequiredHtml) return html;
+  hasRequiredHtml = 1;
+  var getBuiltIn2 = requireGetBuiltIn();
+  html = getBuiltIn2("document", "documentElement");
+  return html;
+}
+var objectCreate;
+var hasRequiredObjectCreate;
+function requireObjectCreate() {
+  if (hasRequiredObjectCreate) return objectCreate;
+  hasRequiredObjectCreate = 1;
+  var anObject2 = requireAnObject();
+  var definePropertiesModule = requireObjectDefineProperties();
+  var enumBugKeys2 = requireEnumBugKeys();
+  var hiddenKeys2 = requireHiddenKeys();
+  var html2 = requireHtml();
+  var documentCreateElement2 = requireDocumentCreateElement();
+  var sharedKey2 = requireSharedKey();
+  var GT = ">";
+  var LT = "<";
+  var PROTOTYPE = "prototype";
+  var SCRIPT = "script";
+  var IE_PROTO = sharedKey2("IE_PROTO");
+  var EmptyConstructor = function() {
+  };
+  var scriptTag = function(content) {
+    return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
+  };
+  var NullProtoObjectViaActiveX = function(activeXDocument2) {
+    activeXDocument2.write(scriptTag(""));
+    activeXDocument2.close();
+    var temp = activeXDocument2.parentWindow.Object;
+    activeXDocument2 = null;
+    return temp;
+  };
+  var NullProtoObjectViaIFrame = function() {
+    var iframe = documentCreateElement2("iframe");
+    var JS = "java" + SCRIPT + ":";
+    var iframeDocument;
+    iframe.style.display = "none";
+    html2.appendChild(iframe);
+    iframe.src = String(JS);
+    iframeDocument = iframe.contentWindow.document;
+    iframeDocument.open();
+    iframeDocument.write(scriptTag("document.F=Object"));
+    iframeDocument.close();
+    return iframeDocument.F;
+  };
+  var activeXDocument;
+  var NullProtoObject = function() {
+    try {
+      activeXDocument = new ActiveXObject("htmlfile");
+    } catch (error) {
+    }
+    NullProtoObject = typeof document != "undefined" ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument);
+    var length = enumBugKeys2.length;
+    while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys2[length]];
+    return NullProtoObject();
+  };
+  hiddenKeys2[IE_PROTO] = true;
+  objectCreate = Object.create || function create(O, Properties) {
+    var result;
+    if (O !== null) {
+      EmptyConstructor[PROTOTYPE] = anObject2(O);
+      result = new EmptyConstructor();
+      EmptyConstructor[PROTOTYPE] = null;
+      result[IE_PROTO] = O;
+    } else result = NullProtoObject();
+    return Properties === void 0 ? result : definePropertiesModule.f(result, Properties);
+  };
+  return objectCreate;
+}
+var iteratorsCore;
+var hasRequiredIteratorsCore;
+function requireIteratorsCore() {
+  if (hasRequiredIteratorsCore) return iteratorsCore;
+  hasRequiredIteratorsCore = 1;
+  var fails2 = requireFails();
+  var isCallable2 = requireIsCallable();
+  var isObject2 = requireIsObject();
+  var create = requireObjectCreate();
+  var getPrototypeOf = requireObjectGetPrototypeOf();
+  var defineBuiltIn2 = requireDefineBuiltIn();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var IS_PURE = requireIsPure();
+  var ITERATOR = wellKnownSymbol2("iterator");
+  var BUGGY_SAFARI_ITERATORS = false;
+  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+  if ([].keys) {
+    arrayIterator = [].keys();
+    if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+    else {
+      PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+      if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+    }
+  }
+  var NEW_ITERATOR_PROTOTYPE = !isObject2(IteratorPrototype) || fails2(function() {
+    var test = {};
+    return IteratorPrototype[ITERATOR].call(test) !== test;
+  });
+  if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
+  else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
+  if (!isCallable2(IteratorPrototype[ITERATOR])) {
+    defineBuiltIn2(IteratorPrototype, ITERATOR, function() {
+      return this;
+    });
+  }
+  iteratorsCore = {
+    IteratorPrototype,
+    BUGGY_SAFARI_ITERATORS
+  };
+  return iteratorsCore;
+}
+var hasRequiredEs_iterator_constructor;
+function requireEs_iterator_constructor() {
+  if (hasRequiredEs_iterator_constructor) return es_iterator_constructor;
+  hasRequiredEs_iterator_constructor = 1;
+  var $ = require_export();
+  var globalThis2 = requireGlobalThis();
+  var anInstance2 = requireAnInstance();
+  var anObject2 = requireAnObject();
+  var isCallable2 = requireIsCallable();
+  var getPrototypeOf = requireObjectGetPrototypeOf();
+  var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
+  var createProperty2 = requireCreateProperty();
+  var fails2 = requireFails();
+  var hasOwn = requireHasOwnProperty();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
+  var DESCRIPTORS = requireDescriptors();
+  var IS_PURE = requireIsPure();
+  var CONSTRUCTOR = "constructor";
+  var ITERATOR = "Iterator";
+  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
+  var $TypeError = TypeError;
+  var NativeIterator = globalThis2[ITERATOR];
+  var FORCED = IS_PURE || !isCallable2(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails2(function() {
+    NativeIterator({});
+  });
+  var IteratorConstructor = function Iterator2() {
+    anInstance2(this, IteratorPrototype);
+    if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
+  };
+  var defineIteratorPrototypeAccessor = function(key, value) {
+    if (DESCRIPTORS) {
+      defineBuiltInAccessor2(IteratorPrototype, key, {
+        configurable: true,
+        get: function() {
+          return value;
+        },
+        set: function(replacement) {
+          anObject2(this);
+          if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
+          if (hasOwn(this, key)) this[key] = replacement;
+          else createProperty2(this, key, replacement);
+        }
+      });
+    } else IteratorPrototype[key] = value;
+  };
+  if (!hasOwn(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
+  if (FORCED || !hasOwn(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
+    defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
+  }
+  IteratorConstructor.prototype = IteratorPrototype;
+  $({
+    global: true,
+    constructor: true,
+    forced: FORCED
+  }, {
+    Iterator: IteratorConstructor
+  });
+  return es_iterator_constructor;
+}
+requireEs_iterator_constructor();
+var es_iterator_forEach = {};
 var functionUncurryThisClause;
 var hasRequiredFunctionUncurryThisClause;
 function requireFunctionUncurryThisClause() {
@@ -1514,303 +1808,153 @@ function requireEs_iterator_forEach() {
 }
 requireEs_iterator_forEach();
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
-var es_iterator_constructor = {};
-var anInstance;
-var hasRequiredAnInstance;
-function requireAnInstance() {
-  if (hasRequiredAnInstance) return anInstance;
-  hasRequiredAnInstance = 1;
-  var isPrototypeOf = requireObjectIsPrototypeOf();
+var es_array_push = {};
+var isArray;
+var hasRequiredIsArray;
+function requireIsArray() {
+  if (hasRequiredIsArray) return isArray;
+  hasRequiredIsArray = 1;
+  var classof2 = requireClassofRaw();
+  isArray = Array.isArray || function isArray2(argument) {
+    return classof2(argument) === "Array";
+  };
+  return isArray;
+}
+var arraySetLength;
+var hasRequiredArraySetLength;
+function requireArraySetLength() {
+  if (hasRequiredArraySetLength) return arraySetLength;
+  hasRequiredArraySetLength = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var isArray2 = requireIsArray();
   var $TypeError = TypeError;
-  anInstance = function(it, Prototype) {
-    if (isPrototypeOf(Prototype, it)) return it;
-    throw new $TypeError("Incorrect invocation");
-  };
-  return anInstance;
-}
-var correctPrototypeGetter;
-var hasRequiredCorrectPrototypeGetter;
-function requireCorrectPrototypeGetter() {
-  if (hasRequiredCorrectPrototypeGetter) return correctPrototypeGetter;
-  hasRequiredCorrectPrototypeGetter = 1;
-  var fails2 = requireFails();
-  correctPrototypeGetter = !fails2(function() {
-    function F() {
-    }
-    F.prototype.constructor = null;
-    return Object.getPrototypeOf(new F()) !== F.prototype;
-  });
-  return correctPrototypeGetter;
-}
-var objectGetPrototypeOf;
-var hasRequiredObjectGetPrototypeOf;
-function requireObjectGetPrototypeOf() {
-  if (hasRequiredObjectGetPrototypeOf) return objectGetPrototypeOf;
-  hasRequiredObjectGetPrototypeOf = 1;
-  var hasOwn = requireHasOwnProperty();
-  var isCallable2 = requireIsCallable();
-  var toObject2 = requireToObject();
-  var sharedKey2 = requireSharedKey();
-  var CORRECT_PROTOTYPE_GETTER = requireCorrectPrototypeGetter();
-  var IE_PROTO = sharedKey2("IE_PROTO");
-  var $Object = Object;
-  var ObjectPrototype = $Object.prototype;
-  objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
-    var object = toObject2(O);
-    if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
-    var constructor = object.constructor;
-    if (isCallable2(constructor) && object instanceof constructor) {
-      return constructor.prototype;
-    }
-    return object instanceof $Object ? ObjectPrototype : null;
-  };
-  return objectGetPrototypeOf;
-}
-var defineBuiltInAccessor;
-var hasRequiredDefineBuiltInAccessor;
-function requireDefineBuiltInAccessor() {
-  if (hasRequiredDefineBuiltInAccessor) return defineBuiltInAccessor;
-  hasRequiredDefineBuiltInAccessor = 1;
-  var makeBuiltIn2 = requireMakeBuiltIn();
-  var defineProperty = requireObjectDefineProperty();
-  defineBuiltInAccessor = function(target, name, descriptor) {
-    if (descriptor.get) makeBuiltIn2(descriptor.get, name, {
-      getter: true
-    });
-    if (descriptor.set) makeBuiltIn2(descriptor.set, name, {
-      setter: true
-    });
-    return defineProperty.f(target, name, descriptor);
-  };
-  return defineBuiltInAccessor;
-}
-var createProperty;
-var hasRequiredCreateProperty;
-function requireCreateProperty() {
-  if (hasRequiredCreateProperty) return createProperty;
-  hasRequiredCreateProperty = 1;
-  var DESCRIPTORS = requireDescriptors();
-  var definePropertyModule = requireObjectDefineProperty();
-  var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
-  createProperty = function(object, key, value) {
-    if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor2(0, value));
-    else object[key] = value;
-  };
-  return createProperty;
-}
-var objectDefineProperties = {};
-var objectKeys;
-var hasRequiredObjectKeys;
-function requireObjectKeys() {
-  if (hasRequiredObjectKeys) return objectKeys;
-  hasRequiredObjectKeys = 1;
-  var internalObjectKeys = requireObjectKeysInternal();
-  var enumBugKeys2 = requireEnumBugKeys();
-  objectKeys = Object.keys || function keys(O) {
-    return internalObjectKeys(O, enumBugKeys2);
-  };
-  return objectKeys;
-}
-var hasRequiredObjectDefineProperties;
-function requireObjectDefineProperties() {
-  if (hasRequiredObjectDefineProperties) return objectDefineProperties;
-  hasRequiredObjectDefineProperties = 1;
-  var DESCRIPTORS = requireDescriptors();
-  var V8_PROTOTYPE_DEFINE_BUG = requireV8PrototypeDefineBug();
-  var definePropertyModule = requireObjectDefineProperty();
-  var anObject2 = requireAnObject();
-  var toIndexedObject2 = requireToIndexedObject();
-  var objectKeys2 = requireObjectKeys();
-  objectDefineProperties.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-    anObject2(O);
-    var props = toIndexedObject2(Properties);
-    var keys = objectKeys2(Properties);
-    var length = keys.length;
-    var index = 0;
-    var key;
-    while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
-    return O;
-  };
-  return objectDefineProperties;
-}
-var html;
-var hasRequiredHtml;
-function requireHtml() {
-  if (hasRequiredHtml) return html;
-  hasRequiredHtml = 1;
-  var getBuiltIn2 = requireGetBuiltIn();
-  html = getBuiltIn2("document", "documentElement");
-  return html;
-}
-var objectCreate;
-var hasRequiredObjectCreate;
-function requireObjectCreate() {
-  if (hasRequiredObjectCreate) return objectCreate;
-  hasRequiredObjectCreate = 1;
-  var anObject2 = requireAnObject();
-  var definePropertiesModule = requireObjectDefineProperties();
-  var enumBugKeys2 = requireEnumBugKeys();
-  var hiddenKeys2 = requireHiddenKeys();
-  var html2 = requireHtml();
-  var documentCreateElement2 = requireDocumentCreateElement();
-  var sharedKey2 = requireSharedKey();
-  var GT = ">";
-  var LT = "<";
-  var PROTOTYPE = "prototype";
-  var SCRIPT = "script";
-  var IE_PROTO = sharedKey2("IE_PROTO");
-  var EmptyConstructor = function() {
-  };
-  var scriptTag = function(content) {
-    return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
-  };
-  var NullProtoObjectViaActiveX = function(activeXDocument2) {
-    activeXDocument2.write(scriptTag(""));
-    activeXDocument2.close();
-    var temp = activeXDocument2.parentWindow.Object;
-    activeXDocument2 = null;
-    return temp;
-  };
-  var NullProtoObjectViaIFrame = function() {
-    var iframe = documentCreateElement2("iframe");
-    var JS = "java" + SCRIPT + ":";
-    var iframeDocument;
-    iframe.style.display = "none";
-    html2.appendChild(iframe);
-    iframe.src = String(JS);
-    iframeDocument = iframe.contentWindow.document;
-    iframeDocument.open();
-    iframeDocument.write(scriptTag("document.F=Object"));
-    iframeDocument.close();
-    return iframeDocument.F;
-  };
-  var activeXDocument;
-  var NullProtoObject = function() {
+  var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS && !(function() {
+    if (this !== void 0) return true;
     try {
-      activeXDocument = new ActiveXObject("htmlfile");
+      Object.defineProperty([], "length", {
+        writable: false
+      }).length = 1;
     } catch (error) {
+      return error instanceof TypeError;
     }
-    NullProtoObject = typeof document != "undefined" ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument);
-    var length = enumBugKeys2.length;
-    while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys2[length]];
-    return NullProtoObject();
-  };
-  hiddenKeys2[IE_PROTO] = true;
-  objectCreate = Object.create || function create(O, Properties) {
-    var result;
-    if (O !== null) {
-      EmptyConstructor[PROTOTYPE] = anObject2(O);
-      result = new EmptyConstructor();
-      EmptyConstructor[PROTOTYPE] = null;
-      result[IE_PROTO] = O;
-    } else result = NullProtoObject();
-    return Properties === void 0 ? result : definePropertiesModule.f(result, Properties);
-  };
-  return objectCreate;
-}
-var iteratorsCore;
-var hasRequiredIteratorsCore;
-function requireIteratorsCore() {
-  if (hasRequiredIteratorsCore) return iteratorsCore;
-  hasRequiredIteratorsCore = 1;
-  var fails2 = requireFails();
-  var isCallable2 = requireIsCallable();
-  var isObject2 = requireIsObject();
-  var create = requireObjectCreate();
-  var getPrototypeOf = requireObjectGetPrototypeOf();
-  var defineBuiltIn2 = requireDefineBuiltIn();
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var IS_PURE = requireIsPure();
-  var ITERATOR = wellKnownSymbol2("iterator");
-  var BUGGY_SAFARI_ITERATORS = false;
-  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
-  if ([].keys) {
-    arrayIterator = [].keys();
-    if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
-    else {
-      PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
-      if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+  })();
+  arraySetLength = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function(O, length) {
+    if (isArray2(O) && !getOwnPropertyDescriptor(O, "length").writable) {
+      throw new $TypeError("Cannot set read only .length");
     }
-  }
-  var NEW_ITERATOR_PROTOTYPE = !isObject2(IteratorPrototype) || fails2(function() {
-    var test = {};
-    return IteratorPrototype[ITERATOR].call(test) !== test;
-  });
-  if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
-  else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
-  if (!isCallable2(IteratorPrototype[ITERATOR])) {
-    defineBuiltIn2(IteratorPrototype, ITERATOR, function() {
-      return this;
-    });
-  }
-  iteratorsCore = {
-    IteratorPrototype,
-    BUGGY_SAFARI_ITERATORS
+    return O.length = length;
+  } : function(O, length) {
+    return O.length = length;
   };
-  return iteratorsCore;
+  return arraySetLength;
 }
-var hasRequiredEs_iterator_constructor;
-function requireEs_iterator_constructor() {
-  if (hasRequiredEs_iterator_constructor) return es_iterator_constructor;
-  hasRequiredEs_iterator_constructor = 1;
-  var $ = require_export();
-  var globalThis2 = requireGlobalThis();
-  var anInstance2 = requireAnInstance();
-  var anObject2 = requireAnObject();
-  var isCallable2 = requireIsCallable();
-  var getPrototypeOf = requireObjectGetPrototypeOf();
-  var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
-  var createProperty2 = requireCreateProperty();
-  var fails2 = requireFails();
-  var hasOwn = requireHasOwnProperty();
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
-  var DESCRIPTORS = requireDescriptors();
-  var IS_PURE = requireIsPure();
-  var CONSTRUCTOR = "constructor";
-  var ITERATOR = "Iterator";
-  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
+var doesNotExceedSafeInteger;
+var hasRequiredDoesNotExceedSafeInteger;
+function requireDoesNotExceedSafeInteger() {
+  if (hasRequiredDoesNotExceedSafeInteger) return doesNotExceedSafeInteger;
+  hasRequiredDoesNotExceedSafeInteger = 1;
   var $TypeError = TypeError;
-  var NativeIterator = globalThis2[ITERATOR];
-  var FORCED = IS_PURE || !isCallable2(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails2(function() {
-    NativeIterator({});
+  var MAX_SAFE_INTEGER = 9007199254740991;
+  doesNotExceedSafeInteger = function(it) {
+    if (it > MAX_SAFE_INTEGER) throw $TypeError("Maximum allowed index exceeded");
+    return it;
+  };
+  return doesNotExceedSafeInteger;
+}
+var hasRequiredEs_array_push;
+function requireEs_array_push() {
+  if (hasRequiredEs_array_push) return es_array_push;
+  hasRequiredEs_array_push = 1;
+  var $ = require_export();
+  var toObject2 = requireToObject();
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  var setArrayLength = requireArraySetLength();
+  var doesNotExceedSafeInteger2 = requireDoesNotExceedSafeInteger();
+  var fails2 = requireFails();
+  var INCORRECT_TO_LENGTH = fails2(function() {
+    return [].push.call({
+      length: 4294967296
+    }, 1) !== 4294967297;
   });
-  var IteratorConstructor = function Iterator2() {
-    anInstance2(this, IteratorPrototype);
-    if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
+  var properErrorOnNonWritableLength = function() {
+    try {
+      Object.defineProperty([], "length", {
+        writable: false
+      }).push();
+    } catch (error) {
+      return error instanceof TypeError;
+    }
   };
-  var defineIteratorPrototypeAccessor = function(key, value) {
-    if (DESCRIPTORS) {
-      defineBuiltInAccessor2(IteratorPrototype, key, {
-        configurable: true,
-        get: function() {
-          return value;
-        },
-        set: function(replacement) {
-          anObject2(this);
-          if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
-          if (hasOwn(this, key)) this[key] = replacement;
-          else createProperty2(this, key, replacement);
-        }
-      });
-    } else IteratorPrototype[key] = value;
-  };
-  if (!hasOwn(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
-  if (FORCED || !hasOwn(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
-    defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
-  }
-  IteratorConstructor.prototype = IteratorPrototype;
+  var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
   $({
-    global: true,
-    constructor: true,
+    target: "Array",
+    proto: true,
+    arity: 1,
     forced: FORCED
   }, {
-    Iterator: IteratorConstructor
+    // eslint-disable-next-line no-unused-vars -- required for `.length`
+    push: function push(item) {
+      var O = toObject2(this);
+      var len = lengthOfArrayLike2(O);
+      var argCount = arguments.length;
+      doesNotExceedSafeInteger2(len + argCount);
+      for (var i = 0; i < argCount; i++) {
+        O[len] = arguments[i];
+        len++;
+      }
+      setArrayLength(O, len);
+      return len;
+    }
   });
-  return es_iterator_constructor;
+  return es_array_push;
 }
-requireEs_iterator_constructor();
-var es_iterator_filter = {};
+requireEs_array_push();
+var es_iterator_some = {};
+var hasRequiredEs_iterator_some;
+function requireEs_iterator_some() {
+  if (hasRequiredEs_iterator_some) return es_iterator_some;
+  hasRequiredEs_iterator_some = 1;
+  var $ = require_export();
+  var call = requireFunctionCall();
+  var iterate2 = requireIterate();
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var someWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError2("some", TypeError);
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: someWithoutClosingOnEarlyError
+  }, {
+    some: function some(predicate) {
+      anObject2(this);
+      try {
+        aCallable2(predicate);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (someWithoutClosingOnEarlyError) return call(someWithoutClosingOnEarlyError, this, predicate);
+      var record = getIteratorDirect2(this);
+      var counter = 0;
+      return iterate2(record, function(value, stop) {
+        if (predicate(value, counter++)) return stop();
+      }, {
+        IS_RECORD: true,
+        INTERRUPTED: true
+      }).stopped;
+    }
+  });
+  return es_iterator_some;
+}
+requireEs_iterator_some();
+var tableCellApiSymbol = Symbol("table:cell-api");
+var internalKey = getInternalKey();
+var stopEditKey = Symbol();
+var es_iterator_map = {};
 var defineBuiltIns;
 var hasRequiredDefineBuiltIns;
 function requireDefineBuiltIns() {
@@ -1971,61 +2115,6 @@ function requireIteratorHelperThrowsOnInvalidIterator() {
   };
   return iteratorHelperThrowsOnInvalidIterator;
 }
-var hasRequiredEs_iterator_filter;
-function requireEs_iterator_filter() {
-  if (hasRequiredEs_iterator_filter) return es_iterator_filter;
-  hasRequiredEs_iterator_filter = 1;
-  var $ = require_export();
-  var call = requireFunctionCall();
-  var aCallable2 = requireACallable();
-  var anObject2 = requireAnObject();
-  var getIteratorDirect2 = requireGetIteratorDirect();
-  var createIteratorProxy = requireIteratorCreateProxy();
-  var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
-  var IS_PURE = requireIsPure();
-  var iteratorClose2 = requireIteratorClose();
-  var iteratorHelperThrowsOnInvalidIterator2 = requireIteratorHelperThrowsOnInvalidIterator();
-  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
-  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator2("filter", function() {
-  });
-  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
-  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
-  var IteratorProxy = createIteratorProxy(function() {
-    var iterator = this.iterator;
-    var predicate = this.predicate;
-    var next = this.next;
-    var result, done, value;
-    while (true) {
-      result = anObject2(call(next, iterator));
-      done = this.done = !!result.done;
-      if (done) return;
-      value = result.value;
-      if (callWithSafeIterationClosing2(iterator, predicate, [value, this.counter++], true)) return value;
-    }
-  });
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: FORCED
-  }, {
-    filter: function filter(predicate) {
-      anObject2(this);
-      try {
-        aCallable2(predicate);
-      } catch (error) {
-        iteratorClose2(this, "throw", error);
-      }
-      if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
-      return new IteratorProxy(getIteratorDirect2(this), {
-        predicate
-      });
-    }
-  });
-  return es_iterator_filter;
-}
-requireEs_iterator_filter();
-var es_iterator_map = {};
 var hasRequiredEs_iterator_map;
 function requireEs_iterator_map() {
   if (hasRequiredEs_iterator_map) return es_iterator_map;
@@ -2073,6 +2162,318 @@ function requireEs_iterator_map() {
   return es_iterator_map;
 }
 requireEs_iterator_map();
+var es_arrayBuffer_detached = {};
+var arrayBufferBasicDetection;
+var hasRequiredArrayBufferBasicDetection;
+function requireArrayBufferBasicDetection() {
+  if (hasRequiredArrayBufferBasicDetection) return arrayBufferBasicDetection;
+  hasRequiredArrayBufferBasicDetection = 1;
+  arrayBufferBasicDetection = typeof ArrayBuffer != "undefined" && typeof DataView != "undefined";
+  return arrayBufferBasicDetection;
+}
+var functionUncurryThisAccessor;
+var hasRequiredFunctionUncurryThisAccessor;
+function requireFunctionUncurryThisAccessor() {
+  if (hasRequiredFunctionUncurryThisAccessor) return functionUncurryThisAccessor;
+  hasRequiredFunctionUncurryThisAccessor = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var aCallable2 = requireACallable();
+  functionUncurryThisAccessor = function(object, key, method) {
+    try {
+      return uncurryThis(aCallable2(Object.getOwnPropertyDescriptor(object, key)[method]));
+    } catch (error) {
+    }
+  };
+  return functionUncurryThisAccessor;
+}
+var arrayBufferByteLength;
+var hasRequiredArrayBufferByteLength;
+function requireArrayBufferByteLength() {
+  if (hasRequiredArrayBufferByteLength) return arrayBufferByteLength;
+  hasRequiredArrayBufferByteLength = 1;
+  var globalThis2 = requireGlobalThis();
+  var uncurryThisAccessor = requireFunctionUncurryThisAccessor();
+  var classof2 = requireClassofRaw();
+  var ArrayBuffer2 = globalThis2.ArrayBuffer;
+  var TypeError2 = globalThis2.TypeError;
+  arrayBufferByteLength = ArrayBuffer2 && uncurryThisAccessor(ArrayBuffer2.prototype, "byteLength", "get") || function(O) {
+    if (classof2(O) !== "ArrayBuffer") throw new TypeError2("ArrayBuffer expected");
+    return O.byteLength;
+  };
+  return arrayBufferByteLength;
+}
+var arrayBufferIsDetached;
+var hasRequiredArrayBufferIsDetached;
+function requireArrayBufferIsDetached() {
+  if (hasRequiredArrayBufferIsDetached) return arrayBufferIsDetached;
+  hasRequiredArrayBufferIsDetached = 1;
+  var globalThis2 = requireGlobalThis();
+  var NATIVE_ARRAY_BUFFER = requireArrayBufferBasicDetection();
+  var arrayBufferByteLength2 = requireArrayBufferByteLength();
+  var DataView2 = globalThis2.DataView;
+  arrayBufferIsDetached = function(O) {
+    if (!NATIVE_ARRAY_BUFFER || arrayBufferByteLength2(O) !== 0) return false;
+    try {
+      new DataView2(O);
+      return false;
+    } catch (error) {
+      return true;
+    }
+  };
+  return arrayBufferIsDetached;
+}
+var hasRequiredEs_arrayBuffer_detached;
+function requireEs_arrayBuffer_detached() {
+  if (hasRequiredEs_arrayBuffer_detached) return es_arrayBuffer_detached;
+  hasRequiredEs_arrayBuffer_detached = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
+  var isDetached = requireArrayBufferIsDetached();
+  var ArrayBufferPrototype = ArrayBuffer.prototype;
+  if (DESCRIPTORS && !("detached" in ArrayBufferPrototype)) {
+    defineBuiltInAccessor2(ArrayBufferPrototype, "detached", {
+      configurable: true,
+      get: function detached() {
+        return isDetached(this);
+      }
+    });
+  }
+  return es_arrayBuffer_detached;
+}
+requireEs_arrayBuffer_detached();
+var es_arrayBuffer_transfer = {};
+var toIndex;
+var hasRequiredToIndex;
+function requireToIndex() {
+  if (hasRequiredToIndex) return toIndex;
+  hasRequiredToIndex = 1;
+  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
+  var toLength2 = requireToLength();
+  var $RangeError = RangeError;
+  toIndex = function(it) {
+    if (it === void 0) return 0;
+    var number = toIntegerOrInfinity2(it);
+    var length = toLength2(number);
+    if (number !== length) throw new $RangeError("Wrong length or index");
+    return length;
+  };
+  return toIndex;
+}
+var arrayBufferNotDetached;
+var hasRequiredArrayBufferNotDetached;
+function requireArrayBufferNotDetached() {
+  if (hasRequiredArrayBufferNotDetached) return arrayBufferNotDetached;
+  hasRequiredArrayBufferNotDetached = 1;
+  var isDetached = requireArrayBufferIsDetached();
+  var $TypeError = TypeError;
+  arrayBufferNotDetached = function(it) {
+    if (isDetached(it)) throw new $TypeError("ArrayBuffer is detached");
+    return it;
+  };
+  return arrayBufferNotDetached;
+}
+var environment;
+var hasRequiredEnvironment;
+function requireEnvironment() {
+  if (hasRequiredEnvironment) return environment;
+  hasRequiredEnvironment = 1;
+  var globalThis2 = requireGlobalThis();
+  var userAgent = requireEnvironmentUserAgent();
+  var classof2 = requireClassofRaw();
+  var userAgentStartsWith = function(string) {
+    return userAgent.slice(0, string.length) === string;
+  };
+  environment = (function() {
+    if (userAgentStartsWith("Bun/")) return "BUN";
+    if (userAgentStartsWith("Cloudflare-Workers")) return "CLOUDFLARE";
+    if (userAgentStartsWith("Deno/")) return "DENO";
+    if (userAgentStartsWith("Node.js/")) return "NODE";
+    if (globalThis2.Bun && typeof Bun.version == "string") return "BUN";
+    if (globalThis2.Deno && typeof Deno.version == "object") return "DENO";
+    if (classof2(globalThis2.process) === "process") return "NODE";
+    if (globalThis2.window && globalThis2.document) return "BROWSER";
+    return "REST";
+  })();
+  return environment;
+}
+var environmentIsNode;
+var hasRequiredEnvironmentIsNode;
+function requireEnvironmentIsNode() {
+  if (hasRequiredEnvironmentIsNode) return environmentIsNode;
+  hasRequiredEnvironmentIsNode = 1;
+  var ENVIRONMENT = requireEnvironment();
+  environmentIsNode = ENVIRONMENT === "NODE";
+  return environmentIsNode;
+}
+var getBuiltInNodeModule;
+var hasRequiredGetBuiltInNodeModule;
+function requireGetBuiltInNodeModule() {
+  if (hasRequiredGetBuiltInNodeModule) return getBuiltInNodeModule;
+  hasRequiredGetBuiltInNodeModule = 1;
+  var globalThis2 = requireGlobalThis();
+  var IS_NODE = requireEnvironmentIsNode();
+  getBuiltInNodeModule = function(name) {
+    if (IS_NODE) {
+      try {
+        return globalThis2.process.getBuiltinModule(name);
+      } catch (error) {
+      }
+      try {
+        return Function('return require("' + name + '")')();
+      } catch (error) {
+      }
+    }
+  };
+  return getBuiltInNodeModule;
+}
+var structuredCloneProperTransfer;
+var hasRequiredStructuredCloneProperTransfer;
+function requireStructuredCloneProperTransfer() {
+  if (hasRequiredStructuredCloneProperTransfer) return structuredCloneProperTransfer;
+  hasRequiredStructuredCloneProperTransfer = 1;
+  var globalThis2 = requireGlobalThis();
+  var fails2 = requireFails();
+  var V8 = requireEnvironmentV8Version();
+  var ENVIRONMENT = requireEnvironment();
+  var structuredClone = globalThis2.structuredClone;
+  structuredCloneProperTransfer = !!structuredClone && !fails2(function() {
+    if (ENVIRONMENT === "DENO" && V8 > 92 || ENVIRONMENT === "NODE" && V8 > 94 || ENVIRONMENT === "BROWSER" && V8 > 97) return false;
+    var buffer = new ArrayBuffer(8);
+    var clone = structuredClone(buffer, {
+      transfer: [buffer]
+    });
+    return buffer.byteLength !== 0 || clone.byteLength !== 8;
+  });
+  return structuredCloneProperTransfer;
+}
+var detachTransferable;
+var hasRequiredDetachTransferable;
+function requireDetachTransferable() {
+  if (hasRequiredDetachTransferable) return detachTransferable;
+  hasRequiredDetachTransferable = 1;
+  var globalThis2 = requireGlobalThis();
+  var getBuiltInNodeModule2 = requireGetBuiltInNodeModule();
+  var PROPER_STRUCTURED_CLONE_TRANSFER = requireStructuredCloneProperTransfer();
+  var structuredClone = globalThis2.structuredClone;
+  var $ArrayBuffer = globalThis2.ArrayBuffer;
+  var $MessageChannel = globalThis2.MessageChannel;
+  var detach = false;
+  var WorkerThreads, channel, buffer, $detach;
+  if (PROPER_STRUCTURED_CLONE_TRANSFER) {
+    detach = function(transferable) {
+      structuredClone(transferable, {
+        transfer: [transferable]
+      });
+    };
+  } else if ($ArrayBuffer) try {
+    if (!$MessageChannel) {
+      WorkerThreads = getBuiltInNodeModule2("worker_threads");
+      if (WorkerThreads) $MessageChannel = WorkerThreads.MessageChannel;
+    }
+    if ($MessageChannel) {
+      channel = new $MessageChannel();
+      buffer = new $ArrayBuffer(2);
+      $detach = function(transferable) {
+        channel.port1.postMessage(null, [transferable]);
+      };
+      if (buffer.byteLength === 2) {
+        $detach(buffer);
+        if (buffer.byteLength === 0) detach = $detach;
+      }
+    }
+  } catch (error) {
+  }
+  detachTransferable = detach;
+  return detachTransferable;
+}
+var arrayBufferTransfer;
+var hasRequiredArrayBufferTransfer;
+function requireArrayBufferTransfer() {
+  if (hasRequiredArrayBufferTransfer) return arrayBufferTransfer;
+  hasRequiredArrayBufferTransfer = 1;
+  var globalThis2 = requireGlobalThis();
+  var uncurryThis = requireFunctionUncurryThis();
+  var uncurryThisAccessor = requireFunctionUncurryThisAccessor();
+  var toIndex2 = requireToIndex();
+  var notDetached = requireArrayBufferNotDetached();
+  var arrayBufferByteLength2 = requireArrayBufferByteLength();
+  var detachTransferable2 = requireDetachTransferable();
+  var PROPER_STRUCTURED_CLONE_TRANSFER = requireStructuredCloneProperTransfer();
+  var structuredClone = globalThis2.structuredClone;
+  var ArrayBuffer2 = globalThis2.ArrayBuffer;
+  var DataView2 = globalThis2.DataView;
+  var min = Math.min;
+  var ArrayBufferPrototype = ArrayBuffer2.prototype;
+  var DataViewPrototype = DataView2.prototype;
+  var slice = uncurryThis(ArrayBufferPrototype.slice);
+  var isResizable = uncurryThisAccessor(ArrayBufferPrototype, "resizable", "get");
+  var maxByteLength = uncurryThisAccessor(ArrayBufferPrototype, "maxByteLength", "get");
+  var getInt8 = uncurryThis(DataViewPrototype.getInt8);
+  var setInt8 = uncurryThis(DataViewPrototype.setInt8);
+  arrayBufferTransfer = (PROPER_STRUCTURED_CLONE_TRANSFER || detachTransferable2) && function(arrayBuffer, newLength, preserveResizability) {
+    var byteLength = arrayBufferByteLength2(arrayBuffer);
+    var newByteLength = newLength === void 0 ? byteLength : toIndex2(newLength);
+    var fixedLength = !isResizable || !isResizable(arrayBuffer);
+    var newBuffer;
+    notDetached(arrayBuffer);
+    if (PROPER_STRUCTURED_CLONE_TRANSFER) {
+      arrayBuffer = structuredClone(arrayBuffer, {
+        transfer: [arrayBuffer]
+      });
+      if (byteLength === newByteLength && (preserveResizability || fixedLength)) return arrayBuffer;
+    }
+    if (byteLength >= newByteLength && (!preserveResizability || fixedLength)) {
+      newBuffer = slice(arrayBuffer, 0, newByteLength);
+    } else {
+      var options = preserveResizability && !fixedLength && maxByteLength ? {
+        maxByteLength: maxByteLength(arrayBuffer)
+      } : void 0;
+      newBuffer = new ArrayBuffer2(newByteLength, options);
+      var a = new DataView2(arrayBuffer);
+      var b = new DataView2(newBuffer);
+      var copyLength = min(newByteLength, byteLength);
+      for (var i = 0; i < copyLength; i++) setInt8(b, i, getInt8(a, i));
+    }
+    if (!PROPER_STRUCTURED_CLONE_TRANSFER) detachTransferable2(arrayBuffer);
+    return newBuffer;
+  };
+  return arrayBufferTransfer;
+}
+var hasRequiredEs_arrayBuffer_transfer;
+function requireEs_arrayBuffer_transfer() {
+  if (hasRequiredEs_arrayBuffer_transfer) return es_arrayBuffer_transfer;
+  hasRequiredEs_arrayBuffer_transfer = 1;
+  var $ = require_export();
+  var $transfer = requireArrayBufferTransfer();
+  if ($transfer) $({
+    target: "ArrayBuffer",
+    proto: true
+  }, {
+    transfer: function transfer() {
+      return $transfer(this, arguments.length ? arguments[0] : void 0, true);
+    }
+  });
+  return es_arrayBuffer_transfer;
+}
+requireEs_arrayBuffer_transfer();
+var es_arrayBuffer_transferToFixedLength = {};
+var hasRequiredEs_arrayBuffer_transferToFixedLength;
+function requireEs_arrayBuffer_transferToFixedLength() {
+  if (hasRequiredEs_arrayBuffer_transferToFixedLength) return es_arrayBuffer_transferToFixedLength;
+  hasRequiredEs_arrayBuffer_transferToFixedLength = 1;
+  var $ = require_export();
+  var $transfer = requireArrayBufferTransfer();
+  if ($transfer) $({
+    target: "ArrayBuffer",
+    proto: true
+  }, {
+    transferToFixedLength: function transferToFixedLength() {
+      return $transfer(this, arguments.length ? arguments[0] : void 0, false);
+    }
+  });
+  return es_arrayBuffer_transferToFixedLength;
+}
+requireEs_arrayBuffer_transferToFixedLength();
 var es_iterator_reduce = {};
 var functionApply;
 var hasRequiredFunctionApply;
@@ -2145,6 +2546,1162 @@ function requireEs_iterator_reduce() {
   return es_iterator_reduce;
 }
 requireEs_iterator_reduce();
+var es_typedArray_toReversed = {};
+var arrayToReversed;
+var hasRequiredArrayToReversed;
+function requireArrayToReversed() {
+  if (hasRequiredArrayToReversed) return arrayToReversed;
+  hasRequiredArrayToReversed = 1;
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  arrayToReversed = function(O, C) {
+    var len = lengthOfArrayLike2(O);
+    var A = new C(len);
+    var k = 0;
+    for (; k < len; k++) A[k] = O[len - k - 1];
+    return A;
+  };
+  return arrayToReversed;
+}
+var isPossiblePrototype;
+var hasRequiredIsPossiblePrototype;
+function requireIsPossiblePrototype() {
+  if (hasRequiredIsPossiblePrototype) return isPossiblePrototype;
+  hasRequiredIsPossiblePrototype = 1;
+  var isObject2 = requireIsObject();
+  isPossiblePrototype = function(argument) {
+    return isObject2(argument) || argument === null;
+  };
+  return isPossiblePrototype;
+}
+var aPossiblePrototype;
+var hasRequiredAPossiblePrototype;
+function requireAPossiblePrototype() {
+  if (hasRequiredAPossiblePrototype) return aPossiblePrototype;
+  hasRequiredAPossiblePrototype = 1;
+  var isPossiblePrototype2 = requireIsPossiblePrototype();
+  var $String = String;
+  var $TypeError = TypeError;
+  aPossiblePrototype = function(argument) {
+    if (isPossiblePrototype2(argument)) return argument;
+    throw new $TypeError("Can't set " + $String(argument) + " as a prototype");
+  };
+  return aPossiblePrototype;
+}
+var objectSetPrototypeOf;
+var hasRequiredObjectSetPrototypeOf;
+function requireObjectSetPrototypeOf() {
+  if (hasRequiredObjectSetPrototypeOf) return objectSetPrototypeOf;
+  hasRequiredObjectSetPrototypeOf = 1;
+  var uncurryThisAccessor = requireFunctionUncurryThisAccessor();
+  var isObject2 = requireIsObject();
+  var requireObjectCoercible2 = requireRequireObjectCoercible();
+  var aPossiblePrototype2 = requireAPossiblePrototype();
+  objectSetPrototypeOf = Object.setPrototypeOf || ("__proto__" in {} ? (function() {
+    var CORRECT_SETTER = false;
+    var test = {};
+    var setter;
+    try {
+      setter = uncurryThisAccessor(Object.prototype, "__proto__", "set");
+      setter(test, []);
+      CORRECT_SETTER = test instanceof Array;
+    } catch (error) {
+    }
+    return function setPrototypeOf(O, proto) {
+      requireObjectCoercible2(O);
+      aPossiblePrototype2(proto);
+      if (!isObject2(O)) return O;
+      if (CORRECT_SETTER) setter(O, proto);
+      else O.__proto__ = proto;
+      return O;
+    };
+  })() : void 0);
+  return objectSetPrototypeOf;
+}
+var arrayBufferViewCore;
+var hasRequiredArrayBufferViewCore;
+function requireArrayBufferViewCore() {
+  if (hasRequiredArrayBufferViewCore) return arrayBufferViewCore;
+  hasRequiredArrayBufferViewCore = 1;
+  var NATIVE_ARRAY_BUFFER = requireArrayBufferBasicDetection();
+  var DESCRIPTORS = requireDescriptors();
+  var globalThis2 = requireGlobalThis();
+  var isCallable2 = requireIsCallable();
+  var isObject2 = requireIsObject();
+  var hasOwn = requireHasOwnProperty();
+  var classof2 = requireClassof();
+  var tryToString2 = requireTryToString();
+  var createNonEnumerableProperty2 = requireCreateNonEnumerableProperty();
+  var defineBuiltIn2 = requireDefineBuiltIn();
+  var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
+  var isPrototypeOf = requireObjectIsPrototypeOf();
+  var getPrototypeOf = requireObjectGetPrototypeOf();
+  var setPrototypeOf = requireObjectSetPrototypeOf();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var uid2 = requireUid();
+  var InternalStateModule = requireInternalState();
+  var enforceInternalState = InternalStateModule.enforce;
+  var getInternalState = InternalStateModule.get;
+  var Int8Array2 = globalThis2.Int8Array;
+  var Int8ArrayPrototype = Int8Array2 && Int8Array2.prototype;
+  var Uint8ClampedArray = globalThis2.Uint8ClampedArray;
+  var Uint8ClampedArrayPrototype = Uint8ClampedArray && Uint8ClampedArray.prototype;
+  var TypedArray = Int8Array2 && getPrototypeOf(Int8Array2);
+  var TypedArrayPrototype = Int8ArrayPrototype && getPrototypeOf(Int8ArrayPrototype);
+  var ObjectPrototype = Object.prototype;
+  var TypeError2 = globalThis2.TypeError;
+  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
+  var TYPED_ARRAY_TAG = uid2("TYPED_ARRAY_TAG");
+  var TYPED_ARRAY_CONSTRUCTOR = "TypedArrayConstructor";
+  var NATIVE_ARRAY_BUFFER_VIEWS = NATIVE_ARRAY_BUFFER && !!setPrototypeOf && classof2(globalThis2.opera) !== "Opera";
+  var TYPED_ARRAY_TAG_REQUIRED = false;
+  var NAME, Constructor, Prototype;
+  var TypedArrayConstructorsList = {
+    Int8Array: 1,
+    Uint8Array: 1,
+    Uint8ClampedArray: 1,
+    Int16Array: 2,
+    Uint16Array: 2,
+    Int32Array: 4,
+    Uint32Array: 4,
+    Float32Array: 4,
+    Float64Array: 8
+  };
+  var BigIntArrayConstructorsList = {
+    BigInt64Array: 8,
+    BigUint64Array: 8
+  };
+  var isView = function isView2(it) {
+    if (!isObject2(it)) return false;
+    var klass = classof2(it);
+    return klass === "DataView" || hasOwn(TypedArrayConstructorsList, klass) || hasOwn(BigIntArrayConstructorsList, klass);
+  };
+  var getTypedArrayConstructor = function(it) {
+    var proto = getPrototypeOf(it);
+    if (!isObject2(proto)) return;
+    var state = getInternalState(proto);
+    return state && hasOwn(state, TYPED_ARRAY_CONSTRUCTOR) ? state[TYPED_ARRAY_CONSTRUCTOR] : getTypedArrayConstructor(proto);
+  };
+  var isTypedArray = function(it) {
+    if (!isObject2(it)) return false;
+    var klass = classof2(it);
+    return hasOwn(TypedArrayConstructorsList, klass) || hasOwn(BigIntArrayConstructorsList, klass);
+  };
+  var aTypedArray = function(it) {
+    if (isTypedArray(it)) return it;
+    throw new TypeError2("Target is not a typed array");
+  };
+  var aTypedArrayConstructor = function(C) {
+    if (isCallable2(C) && (!setPrototypeOf || isPrototypeOf(TypedArray, C))) return C;
+    throw new TypeError2(tryToString2(C) + " is not a typed array constructor");
+  };
+  var exportTypedArrayMethod = function(KEY, property, forced, options) {
+    if (!DESCRIPTORS) return;
+    if (forced) for (var ARRAY in TypedArrayConstructorsList) {
+      var TypedArrayConstructor = globalThis2[ARRAY];
+      if (TypedArrayConstructor && hasOwn(TypedArrayConstructor.prototype, KEY)) try {
+        delete TypedArrayConstructor.prototype[KEY];
+      } catch (error) {
+        try {
+          TypedArrayConstructor.prototype[KEY] = property;
+        } catch (error2) {
+        }
+      }
+    }
+    if (!TypedArrayPrototype[KEY] || forced) {
+      defineBuiltIn2(TypedArrayPrototype, KEY, forced ? property : NATIVE_ARRAY_BUFFER_VIEWS && Int8ArrayPrototype[KEY] || property, options);
+    }
+  };
+  var exportTypedArrayStaticMethod = function(KEY, property, forced) {
+    var ARRAY, TypedArrayConstructor;
+    if (!DESCRIPTORS) return;
+    if (setPrototypeOf) {
+      if (forced) for (ARRAY in TypedArrayConstructorsList) {
+        TypedArrayConstructor = globalThis2[ARRAY];
+        if (TypedArrayConstructor && hasOwn(TypedArrayConstructor, KEY)) try {
+          delete TypedArrayConstructor[KEY];
+        } catch (error) {
+        }
+      }
+      if (!TypedArray[KEY] || forced) {
+        try {
+          return defineBuiltIn2(TypedArray, KEY, forced ? property : NATIVE_ARRAY_BUFFER_VIEWS && TypedArray[KEY] || property);
+        } catch (error) {
+        }
+      } else return;
+    }
+    for (ARRAY in TypedArrayConstructorsList) {
+      TypedArrayConstructor = globalThis2[ARRAY];
+      if (TypedArrayConstructor && (!TypedArrayConstructor[KEY] || forced)) {
+        defineBuiltIn2(TypedArrayConstructor, KEY, property);
+      }
+    }
+  };
+  for (NAME in TypedArrayConstructorsList) {
+    Constructor = globalThis2[NAME];
+    Prototype = Constructor && Constructor.prototype;
+    if (Prototype) enforceInternalState(Prototype)[TYPED_ARRAY_CONSTRUCTOR] = Constructor;
+    else NATIVE_ARRAY_BUFFER_VIEWS = false;
+  }
+  for (NAME in BigIntArrayConstructorsList) {
+    Constructor = globalThis2[NAME];
+    Prototype = Constructor && Constructor.prototype;
+    if (Prototype) enforceInternalState(Prototype)[TYPED_ARRAY_CONSTRUCTOR] = Constructor;
+  }
+  if (!NATIVE_ARRAY_BUFFER_VIEWS || !isCallable2(TypedArray) || TypedArray === Function.prototype) {
+    TypedArray = function TypedArray2() {
+      throw new TypeError2("Incorrect invocation");
+    };
+    if (NATIVE_ARRAY_BUFFER_VIEWS) for (NAME in TypedArrayConstructorsList) {
+      if (globalThis2[NAME]) setPrototypeOf(globalThis2[NAME], TypedArray);
+    }
+  }
+  if (!NATIVE_ARRAY_BUFFER_VIEWS || !TypedArrayPrototype || TypedArrayPrototype === ObjectPrototype) {
+    TypedArrayPrototype = TypedArray.prototype;
+    if (NATIVE_ARRAY_BUFFER_VIEWS) for (NAME in TypedArrayConstructorsList) {
+      if (globalThis2[NAME]) setPrototypeOf(globalThis2[NAME].prototype, TypedArrayPrototype);
+    }
+  }
+  if (NATIVE_ARRAY_BUFFER_VIEWS && getPrototypeOf(Uint8ClampedArrayPrototype) !== TypedArrayPrototype) {
+    setPrototypeOf(Uint8ClampedArrayPrototype, TypedArrayPrototype);
+  }
+  if (DESCRIPTORS && !hasOwn(TypedArrayPrototype, TO_STRING_TAG)) {
+    TYPED_ARRAY_TAG_REQUIRED = true;
+    defineBuiltInAccessor2(TypedArrayPrototype, TO_STRING_TAG, {
+      configurable: true,
+      get: function() {
+        return isObject2(this) ? this[TYPED_ARRAY_TAG] : void 0;
+      }
+    });
+    for (NAME in TypedArrayConstructorsList) if (globalThis2[NAME]) {
+      createNonEnumerableProperty2(globalThis2[NAME], TYPED_ARRAY_TAG, NAME);
+    }
+  }
+  arrayBufferViewCore = {
+    NATIVE_ARRAY_BUFFER_VIEWS,
+    TYPED_ARRAY_TAG: TYPED_ARRAY_TAG_REQUIRED && TYPED_ARRAY_TAG,
+    aTypedArray,
+    aTypedArrayConstructor,
+    exportTypedArrayMethod,
+    exportTypedArrayStaticMethod,
+    getTypedArrayConstructor,
+    isView,
+    isTypedArray,
+    TypedArray,
+    TypedArrayPrototype
+  };
+  return arrayBufferViewCore;
+}
+var hasRequiredEs_typedArray_toReversed;
+function requireEs_typedArray_toReversed() {
+  if (hasRequiredEs_typedArray_toReversed) return es_typedArray_toReversed;
+  hasRequiredEs_typedArray_toReversed = 1;
+  var arrayToReversed2 = requireArrayToReversed();
+  var ArrayBufferViewCore = requireArrayBufferViewCore();
+  var aTypedArray = ArrayBufferViewCore.aTypedArray;
+  var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+  var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
+  exportTypedArrayMethod("toReversed", function toReversed() {
+    return arrayToReversed2(aTypedArray(this), getTypedArrayConstructor(this));
+  });
+  return es_typedArray_toReversed;
+}
+requireEs_typedArray_toReversed();
+var es_typedArray_toSorted = {};
+var arrayFromConstructorAndList;
+var hasRequiredArrayFromConstructorAndList;
+function requireArrayFromConstructorAndList() {
+  if (hasRequiredArrayFromConstructorAndList) return arrayFromConstructorAndList;
+  hasRequiredArrayFromConstructorAndList = 1;
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  arrayFromConstructorAndList = function(Constructor, list, $length) {
+    var index = 0;
+    var length = arguments.length > 2 ? $length : lengthOfArrayLike2(list);
+    var result = new Constructor(length);
+    while (length > index) result[index] = list[index++];
+    return result;
+  };
+  return arrayFromConstructorAndList;
+}
+var hasRequiredEs_typedArray_toSorted;
+function requireEs_typedArray_toSorted() {
+  if (hasRequiredEs_typedArray_toSorted) return es_typedArray_toSorted;
+  hasRequiredEs_typedArray_toSorted = 1;
+  var ArrayBufferViewCore = requireArrayBufferViewCore();
+  var uncurryThis = requireFunctionUncurryThis();
+  var aCallable2 = requireACallable();
+  var arrayFromConstructorAndList2 = requireArrayFromConstructorAndList();
+  var aTypedArray = ArrayBufferViewCore.aTypedArray;
+  var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
+  var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+  var sort = uncurryThis(ArrayBufferViewCore.TypedArrayPrototype.sort);
+  exportTypedArrayMethod("toSorted", function toSorted(compareFn) {
+    if (compareFn !== void 0) aCallable2(compareFn);
+    var O = aTypedArray(this);
+    var A = arrayFromConstructorAndList2(getTypedArrayConstructor(O), O);
+    return sort(A, compareFn);
+  });
+  return es_typedArray_toSorted;
+}
+requireEs_typedArray_toSorted();
+var es_typedArray_with = {};
+var arrayWith;
+var hasRequiredArrayWith;
+function requireArrayWith() {
+  if (hasRequiredArrayWith) return arrayWith;
+  hasRequiredArrayWith = 1;
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
+  var $RangeError = RangeError;
+  arrayWith = function(O, C, index, value) {
+    var len = lengthOfArrayLike2(O);
+    var relativeIndex = toIntegerOrInfinity2(index);
+    var actualIndex = relativeIndex < 0 ? len + relativeIndex : relativeIndex;
+    if (actualIndex >= len || actualIndex < 0) throw new $RangeError("Incorrect index");
+    var A = new C(len);
+    var k = 0;
+    for (; k < len; k++) A[k] = k === actualIndex ? value : O[k];
+    return A;
+  };
+  return arrayWith;
+}
+var isBigIntArray;
+var hasRequiredIsBigIntArray;
+function requireIsBigIntArray() {
+  if (hasRequiredIsBigIntArray) return isBigIntArray;
+  hasRequiredIsBigIntArray = 1;
+  var classof2 = requireClassof();
+  isBigIntArray = function(it) {
+    var klass = classof2(it);
+    return klass === "BigInt64Array" || klass === "BigUint64Array";
+  };
+  return isBigIntArray;
+}
+var toBigInt;
+var hasRequiredToBigInt;
+function requireToBigInt() {
+  if (hasRequiredToBigInt) return toBigInt;
+  hasRequiredToBigInt = 1;
+  var toPrimitive2 = requireToPrimitive();
+  var $TypeError = TypeError;
+  toBigInt = function(argument) {
+    var prim = toPrimitive2(argument, "number");
+    if (typeof prim == "number") throw new $TypeError("Can't convert number to bigint");
+    return BigInt(prim);
+  };
+  return toBigInt;
+}
+var hasRequiredEs_typedArray_with;
+function requireEs_typedArray_with() {
+  if (hasRequiredEs_typedArray_with) return es_typedArray_with;
+  hasRequiredEs_typedArray_with = 1;
+  var arrayWith2 = requireArrayWith();
+  var ArrayBufferViewCore = requireArrayBufferViewCore();
+  var isBigIntArray2 = requireIsBigIntArray();
+  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
+  var toBigInt2 = requireToBigInt();
+  var aTypedArray = ArrayBufferViewCore.aTypedArray;
+  var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
+  var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+  var PROPER_ORDER = (function() {
+    try {
+      new Int8Array(1)["with"](2, {
+        valueOf: function() {
+          throw 8;
+        }
+      });
+    } catch (error) {
+      return error === 8;
+    }
+  })();
+  var THROW_ON_NEGATIVE_FRACTIONAL_INDEX = PROPER_ORDER && (function() {
+    try {
+      new Int8Array(1)["with"](-0.5, 1);
+    } catch (error) {
+      return true;
+    }
+  })();
+  exportTypedArrayMethod("with", {
+    "with": function(index, value) {
+      var O = aTypedArray(this);
+      var relativeIndex = toIntegerOrInfinity2(index);
+      var actualValue = isBigIntArray2(O) ? toBigInt2(value) : +value;
+      return arrayWith2(O, getTypedArrayConstructor(O), relativeIndex, actualValue);
+    }
+  }["with"], !PROPER_ORDER || THROW_ON_NEGATIVE_FRACTIONAL_INDEX);
+  return es_typedArray_with;
+}
+requireEs_typedArray_with();
+var esnext_uint8Array_setFromBase64 = {};
+var es_uint8Array_setFromBase64 = {};
+var anObjectOrUndefined;
+var hasRequiredAnObjectOrUndefined;
+function requireAnObjectOrUndefined() {
+  if (hasRequiredAnObjectOrUndefined) return anObjectOrUndefined;
+  hasRequiredAnObjectOrUndefined = 1;
+  var isObject2 = requireIsObject();
+  var $String = String;
+  var $TypeError = TypeError;
+  anObjectOrUndefined = function(argument) {
+    if (argument === void 0 || isObject2(argument)) return argument;
+    throw new $TypeError($String(argument) + " is not an object or undefined");
+  };
+  return anObjectOrUndefined;
+}
+var aString;
+var hasRequiredAString;
+function requireAString() {
+  if (hasRequiredAString) return aString;
+  hasRequiredAString = 1;
+  var $TypeError = TypeError;
+  aString = function(argument) {
+    if (typeof argument == "string") return argument;
+    throw new $TypeError("Argument is not a string");
+  };
+  return aString;
+}
+var base64Map;
+var hasRequiredBase64Map;
+function requireBase64Map() {
+  if (hasRequiredBase64Map) return base64Map;
+  hasRequiredBase64Map = 1;
+  var commonAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var base64Alphabet = commonAlphabet + "+/";
+  var base64UrlAlphabet = commonAlphabet + "-_";
+  var inverse = function(characters) {
+    var result = {};
+    var index = 0;
+    for (; index < 64; index++) result[characters.charAt(index)] = index;
+    return result;
+  };
+  base64Map = {
+    i2c: base64Alphabet,
+    c2i: inverse(base64Alphabet),
+    i2cUrl: base64UrlAlphabet,
+    c2iUrl: inverse(base64UrlAlphabet)
+  };
+  return base64Map;
+}
+var getAlphabetOption;
+var hasRequiredGetAlphabetOption;
+function requireGetAlphabetOption() {
+  if (hasRequiredGetAlphabetOption) return getAlphabetOption;
+  hasRequiredGetAlphabetOption = 1;
+  var $TypeError = TypeError;
+  getAlphabetOption = function(options) {
+    var alphabet = options && options.alphabet;
+    if (alphabet === void 0 || alphabet === "base64" || alphabet === "base64url") return alphabet || "base64";
+    throw new $TypeError("Incorrect `alphabet` option");
+  };
+  return getAlphabetOption;
+}
+var uint8FromBase64;
+var hasRequiredUint8FromBase64;
+function requireUint8FromBase64() {
+  if (hasRequiredUint8FromBase64) return uint8FromBase64;
+  hasRequiredUint8FromBase64 = 1;
+  var globalThis2 = requireGlobalThis();
+  var uncurryThis = requireFunctionUncurryThis();
+  var anObjectOrUndefined2 = requireAnObjectOrUndefined();
+  var aString2 = requireAString();
+  var hasOwn = requireHasOwnProperty();
+  var base64Map2 = requireBase64Map();
+  var getAlphabetOption2 = requireGetAlphabetOption();
+  var notDetached = requireArrayBufferNotDetached();
+  var base64Alphabet = base64Map2.c2i;
+  var base64UrlAlphabet = base64Map2.c2iUrl;
+  var SyntaxError = globalThis2.SyntaxError;
+  var TypeError2 = globalThis2.TypeError;
+  var at = uncurryThis("".charAt);
+  var skipAsciiWhitespace = function(string, index) {
+    var length = string.length;
+    for (; index < length; index++) {
+      var chr = at(string, index);
+      if (chr !== " " && chr !== "	" && chr !== "\n" && chr !== "\f" && chr !== "\r") break;
+    }
+    return index;
+  };
+  var decodeBase64Chunk = function(chunk, alphabet, throwOnExtraBits) {
+    var chunkLength = chunk.length;
+    if (chunkLength < 4) {
+      chunk += chunkLength === 2 ? "AA" : "A";
+    }
+    var triplet = (alphabet[at(chunk, 0)] << 18) + (alphabet[at(chunk, 1)] << 12) + (alphabet[at(chunk, 2)] << 6) + alphabet[at(chunk, 3)];
+    var chunkBytes = [triplet >> 16 & 255, triplet >> 8 & 255, triplet & 255];
+    if (chunkLength === 2) {
+      if (throwOnExtraBits && chunkBytes[1] !== 0) {
+        throw new SyntaxError("Extra bits");
+      }
+      return [chunkBytes[0]];
+    }
+    if (chunkLength === 3) {
+      if (throwOnExtraBits && chunkBytes[2] !== 0) {
+        throw new SyntaxError("Extra bits");
+      }
+      return [chunkBytes[0], chunkBytes[1]];
+    }
+    return chunkBytes;
+  };
+  var writeBytes = function(bytes, elements, written) {
+    var elementsLength = elements.length;
+    for (var index = 0; index < elementsLength; index++) {
+      bytes[written + index] = elements[index];
+    }
+    return written + elementsLength;
+  };
+  uint8FromBase64 = function(string, options, into, maxLength) {
+    aString2(string);
+    anObjectOrUndefined2(options);
+    var alphabet = getAlphabetOption2(options) === "base64" ? base64Alphabet : base64UrlAlphabet;
+    var lastChunkHandling = options ? options.lastChunkHandling : void 0;
+    if (lastChunkHandling === void 0) lastChunkHandling = "loose";
+    if (lastChunkHandling !== "loose" && lastChunkHandling !== "strict" && lastChunkHandling !== "stop-before-partial") {
+      throw new TypeError2("Incorrect `lastChunkHandling` option");
+    }
+    if (into) notDetached(into.buffer);
+    var stringLength = string.length;
+    var bytes = into || [];
+    var written = 0;
+    var read = 0;
+    var chunk = "";
+    var index = 0;
+    if (maxLength) while (true) {
+      index = skipAsciiWhitespace(string, index);
+      if (index === stringLength) {
+        if (chunk.length > 0) {
+          if (lastChunkHandling === "stop-before-partial") {
+            break;
+          }
+          if (lastChunkHandling === "loose") {
+            if (chunk.length === 1) {
+              throw new SyntaxError("Malformed padding: exactly one additional character");
+            }
+            written = writeBytes(bytes, decodeBase64Chunk(chunk, alphabet, false), written);
+          } else {
+            throw new SyntaxError("Missing padding");
+          }
+        }
+        read = stringLength;
+        break;
+      }
+      var chr = at(string, index);
+      ++index;
+      if (chr === "=") {
+        if (chunk.length < 2) {
+          throw new SyntaxError("Padding is too early");
+        }
+        index = skipAsciiWhitespace(string, index);
+        if (chunk.length === 2) {
+          if (index === stringLength) {
+            if (lastChunkHandling === "stop-before-partial") {
+              break;
+            }
+            throw new SyntaxError("Malformed padding: only one =");
+          }
+          if (at(string, index) === "=") {
+            ++index;
+            index = skipAsciiWhitespace(string, index);
+          }
+        }
+        if (index < stringLength) {
+          throw new SyntaxError("Unexpected character after padding");
+        }
+        written = writeBytes(bytes, decodeBase64Chunk(chunk, alphabet, lastChunkHandling === "strict"), written);
+        read = stringLength;
+        break;
+      }
+      if (!hasOwn(alphabet, chr)) {
+        throw new SyntaxError("Unexpected character");
+      }
+      var remainingBytes = maxLength - written;
+      if (remainingBytes === 1 && chunk.length === 2 || remainingBytes === 2 && chunk.length === 3) {
+        break;
+      }
+      chunk += chr;
+      if (chunk.length === 4) {
+        written = writeBytes(bytes, decodeBase64Chunk(chunk, alphabet, false), written);
+        chunk = "";
+        read = index;
+        if (written === maxLength) {
+          break;
+        }
+      }
+    }
+    return {
+      bytes,
+      read,
+      written
+    };
+  };
+  return uint8FromBase64;
+}
+var anUint8Array;
+var hasRequiredAnUint8Array;
+function requireAnUint8Array() {
+  if (hasRequiredAnUint8Array) return anUint8Array;
+  hasRequiredAnUint8Array = 1;
+  var classof2 = requireClassof();
+  var $TypeError = TypeError;
+  anUint8Array = function(argument) {
+    if (classof2(argument) === "Uint8Array") return argument;
+    throw new $TypeError("Argument is not an Uint8Array");
+  };
+  return anUint8Array;
+}
+var hasRequiredEs_uint8Array_setFromBase64;
+function requireEs_uint8Array_setFromBase64() {
+  if (hasRequiredEs_uint8Array_setFromBase64) return es_uint8Array_setFromBase64;
+  hasRequiredEs_uint8Array_setFromBase64 = 1;
+  var $ = require_export();
+  var globalThis2 = requireGlobalThis();
+  var $fromBase64 = requireUint8FromBase64();
+  var anUint8Array2 = requireAnUint8Array();
+  var Uint8Array2 = globalThis2.Uint8Array;
+  var INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS = !Uint8Array2 || !Uint8Array2.prototype.setFromBase64 || !(function() {
+    var target = new Uint8Array2([255, 255, 255, 255, 255]);
+    try {
+      target.setFromBase64("", null);
+      return;
+    } catch (error) {
+    }
+    try {
+      target.setFromBase64("a");
+      return;
+    } catch (error) {
+    }
+    try {
+      target.setFromBase64("MjYyZg===");
+    } catch (error) {
+      return target[0] === 50 && target[1] === 54 && target[2] === 50 && target[3] === 255 && target[4] === 255;
+    }
+  })();
+  if (Uint8Array2) $({
+    target: "Uint8Array",
+    proto: true,
+    forced: INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS
+  }, {
+    setFromBase64: function setFromBase64(string) {
+      anUint8Array2(this);
+      var result = $fromBase64(string, arguments.length > 1 ? arguments[1] : void 0, this, this.length);
+      return {
+        read: result.read,
+        written: result.written
+      };
+    }
+  });
+  return es_uint8Array_setFromBase64;
+}
+var hasRequiredEsnext_uint8Array_setFromBase64;
+function requireEsnext_uint8Array_setFromBase64() {
+  if (hasRequiredEsnext_uint8Array_setFromBase64) return esnext_uint8Array_setFromBase64;
+  hasRequiredEsnext_uint8Array_setFromBase64 = 1;
+  requireEs_uint8Array_setFromBase64();
+  return esnext_uint8Array_setFromBase64;
+}
+requireEsnext_uint8Array_setFromBase64();
+var esnext_uint8Array_setFromHex = {};
+var es_uint8Array_setFromHex = {};
+var uint8FromHex;
+var hasRequiredUint8FromHex;
+function requireUint8FromHex() {
+  if (hasRequiredUint8FromHex) return uint8FromHex;
+  hasRequiredUint8FromHex = 1;
+  var globalThis2 = requireGlobalThis();
+  var uncurryThis = requireFunctionUncurryThis();
+  var Uint8Array2 = globalThis2.Uint8Array;
+  var SyntaxError = globalThis2.SyntaxError;
+  var parseInt2 = globalThis2.parseInt;
+  var min = Math.min;
+  var NOT_HEX = /[^\da-f]/i;
+  var exec = uncurryThis(NOT_HEX.exec);
+  var stringSlice = uncurryThis("".slice);
+  uint8FromHex = function(string, into) {
+    var stringLength = string.length;
+    if (stringLength % 2 !== 0) throw new SyntaxError("String should be an even number of characters");
+    var maxLength = into ? min(into.length, stringLength / 2) : stringLength / 2;
+    var bytes = into || new Uint8Array2(maxLength);
+    var read = 0;
+    var written = 0;
+    while (written < maxLength) {
+      var hexits = stringSlice(string, read, read += 2);
+      if (exec(NOT_HEX, hexits)) throw new SyntaxError("String should only contain hex characters");
+      bytes[written++] = parseInt2(hexits, 16);
+    }
+    return {
+      bytes,
+      read
+    };
+  };
+  return uint8FromHex;
+}
+var hasRequiredEs_uint8Array_setFromHex;
+function requireEs_uint8Array_setFromHex() {
+  if (hasRequiredEs_uint8Array_setFromHex) return es_uint8Array_setFromHex;
+  hasRequiredEs_uint8Array_setFromHex = 1;
+  var $ = require_export();
+  var globalThis2 = requireGlobalThis();
+  var aString2 = requireAString();
+  var anUint8Array2 = requireAnUint8Array();
+  var notDetached = requireArrayBufferNotDetached();
+  var $fromHex = requireUint8FromHex();
+  if (globalThis2.Uint8Array) $({
+    target: "Uint8Array",
+    proto: true
+  }, {
+    setFromHex: function setFromHex(string) {
+      anUint8Array2(this);
+      aString2(string);
+      notDetached(this.buffer);
+      var read = $fromHex(string, this).read;
+      return {
+        read,
+        written: read / 2
+      };
+    }
+  });
+  return es_uint8Array_setFromHex;
+}
+var hasRequiredEsnext_uint8Array_setFromHex;
+function requireEsnext_uint8Array_setFromHex() {
+  if (hasRequiredEsnext_uint8Array_setFromHex) return esnext_uint8Array_setFromHex;
+  hasRequiredEsnext_uint8Array_setFromHex = 1;
+  requireEs_uint8Array_setFromHex();
+  return esnext_uint8Array_setFromHex;
+}
+requireEsnext_uint8Array_setFromHex();
+var esnext_uint8Array_toBase64 = {};
+var es_uint8Array_toBase64 = {};
+var hasRequiredEs_uint8Array_toBase64;
+function requireEs_uint8Array_toBase64() {
+  if (hasRequiredEs_uint8Array_toBase64) return es_uint8Array_toBase64;
+  hasRequiredEs_uint8Array_toBase64 = 1;
+  var $ = require_export();
+  var globalThis2 = requireGlobalThis();
+  var uncurryThis = requireFunctionUncurryThis();
+  var anObjectOrUndefined2 = requireAnObjectOrUndefined();
+  var anUint8Array2 = requireAnUint8Array();
+  var notDetached = requireArrayBufferNotDetached();
+  var base64Map2 = requireBase64Map();
+  var getAlphabetOption2 = requireGetAlphabetOption();
+  var base64Alphabet = base64Map2.i2c;
+  var base64UrlAlphabet = base64Map2.i2cUrl;
+  var charAt = uncurryThis("".charAt);
+  var Uint8Array2 = globalThis2.Uint8Array;
+  var INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS = !Uint8Array2 || !Uint8Array2.prototype.toBase64 || !(function() {
+    try {
+      var target = new Uint8Array2();
+      target.toBase64(null);
+    } catch (error) {
+      return true;
+    }
+  })();
+  if (Uint8Array2) $({
+    target: "Uint8Array",
+    proto: true,
+    forced: INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS
+  }, {
+    toBase64: function toBase64() {
+      var array = anUint8Array2(this);
+      var options = arguments.length ? anObjectOrUndefined2(arguments[0]) : void 0;
+      var alphabet = getAlphabetOption2(options) === "base64" ? base64Alphabet : base64UrlAlphabet;
+      var omitPadding = !!options && !!options.omitPadding;
+      notDetached(this.buffer);
+      var result = "";
+      var i = 0;
+      var length = array.length;
+      var triplet;
+      var at = function(shift) {
+        return charAt(alphabet, triplet >> 6 * shift & 63);
+      };
+      for (; i + 2 < length; i += 3) {
+        triplet = (array[i] << 16) + (array[i + 1] << 8) + array[i + 2];
+        result += at(3) + at(2) + at(1) + at(0);
+      }
+      if (i + 2 === length) {
+        triplet = (array[i] << 16) + (array[i + 1] << 8);
+        result += at(3) + at(2) + at(1) + (omitPadding ? "" : "=");
+      } else if (i + 1 === length) {
+        triplet = array[i] << 16;
+        result += at(3) + at(2) + (omitPadding ? "" : "==");
+      }
+      return result;
+    }
+  });
+  return es_uint8Array_toBase64;
+}
+var hasRequiredEsnext_uint8Array_toBase64;
+function requireEsnext_uint8Array_toBase64() {
+  if (hasRequiredEsnext_uint8Array_toBase64) return esnext_uint8Array_toBase64;
+  hasRequiredEsnext_uint8Array_toBase64 = 1;
+  requireEs_uint8Array_toBase64();
+  return esnext_uint8Array_toBase64;
+}
+requireEsnext_uint8Array_toBase64();
+var esnext_uint8Array_toHex = {};
+var es_uint8Array_toHex = {};
+var hasRequiredEs_uint8Array_toHex;
+function requireEs_uint8Array_toHex() {
+  if (hasRequiredEs_uint8Array_toHex) return es_uint8Array_toHex;
+  hasRequiredEs_uint8Array_toHex = 1;
+  var $ = require_export();
+  var globalThis2 = requireGlobalThis();
+  var uncurryThis = requireFunctionUncurryThis();
+  var anUint8Array2 = requireAnUint8Array();
+  var notDetached = requireArrayBufferNotDetached();
+  var numberToString = uncurryThis(1.1.toString);
+  var Uint8Array2 = globalThis2.Uint8Array;
+  var INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS = !Uint8Array2 || !Uint8Array2.prototype.toHex || !(function() {
+    try {
+      var target = new Uint8Array2([255, 255, 255, 255, 255, 255, 255, 255]);
+      return target.toHex() === "ffffffffffffffff";
+    } catch (error) {
+      return false;
+    }
+  })();
+  if (Uint8Array2) $({
+    target: "Uint8Array",
+    proto: true,
+    forced: INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS
+  }, {
+    toHex: function toHex() {
+      anUint8Array2(this);
+      notDetached(this.buffer);
+      var result = "";
+      for (var i = 0, length = this.length; i < length; i++) {
+        var hex = numberToString(this[i], 16);
+        result += hex.length === 1 ? "0" + hex : hex;
+      }
+      return result;
+    }
+  });
+  return es_uint8Array_toHex;
+}
+var hasRequiredEsnext_uint8Array_toHex;
+function requireEsnext_uint8Array_toHex() {
+  if (hasRequiredEsnext_uint8Array_toHex) return esnext_uint8Array_toHex;
+  hasRequiredEsnext_uint8Array_toHex = 1;
+  requireEs_uint8Array_toHex();
+  return esnext_uint8Array_toHex;
+}
+requireEsnext_uint8Array_toHex();
+var web_domException_stack = {};
+var inheritIfRequired;
+var hasRequiredInheritIfRequired;
+function requireInheritIfRequired() {
+  if (hasRequiredInheritIfRequired) return inheritIfRequired;
+  hasRequiredInheritIfRequired = 1;
+  var isCallable2 = requireIsCallable();
+  var isObject2 = requireIsObject();
+  var setPrototypeOf = requireObjectSetPrototypeOf();
+  inheritIfRequired = function($this, dummy, Wrapper) {
+    var NewTarget, NewTargetPrototype;
+    if (
+      // it can work only with native `setPrototypeOf`
+      setPrototypeOf && // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
+      isCallable2(NewTarget = dummy.constructor) && NewTarget !== Wrapper && isObject2(NewTargetPrototype = NewTarget.prototype) && NewTargetPrototype !== Wrapper.prototype
+    ) setPrototypeOf($this, NewTargetPrototype);
+    return $this;
+  };
+  return inheritIfRequired;
+}
+var toString;
+var hasRequiredToString;
+function requireToString() {
+  if (hasRequiredToString) return toString;
+  hasRequiredToString = 1;
+  var classof2 = requireClassof();
+  var $String = String;
+  toString = function(argument) {
+    if (classof2(argument) === "Symbol") throw new TypeError("Cannot convert a Symbol value to a string");
+    return $String(argument);
+  };
+  return toString;
+}
+var normalizeStringArgument;
+var hasRequiredNormalizeStringArgument;
+function requireNormalizeStringArgument() {
+  if (hasRequiredNormalizeStringArgument) return normalizeStringArgument;
+  hasRequiredNormalizeStringArgument = 1;
+  var toString2 = requireToString();
+  normalizeStringArgument = function(argument, $default) {
+    return argument === void 0 ? arguments.length < 2 ? "" : $default : toString2(argument);
+  };
+  return normalizeStringArgument;
+}
+var domExceptionConstants;
+var hasRequiredDomExceptionConstants;
+function requireDomExceptionConstants() {
+  if (hasRequiredDomExceptionConstants) return domExceptionConstants;
+  hasRequiredDomExceptionConstants = 1;
+  domExceptionConstants = {
+    IndexSizeError: {
+      s: "INDEX_SIZE_ERR",
+      c: 1,
+      m: 1
+    },
+    DOMStringSizeError: {
+      s: "DOMSTRING_SIZE_ERR",
+      c: 2,
+      m: 0
+    },
+    HierarchyRequestError: {
+      s: "HIERARCHY_REQUEST_ERR",
+      c: 3,
+      m: 1
+    },
+    WrongDocumentError: {
+      s: "WRONG_DOCUMENT_ERR",
+      c: 4,
+      m: 1
+    },
+    InvalidCharacterError: {
+      s: "INVALID_CHARACTER_ERR",
+      c: 5,
+      m: 1
+    },
+    NoDataAllowedError: {
+      s: "NO_DATA_ALLOWED_ERR",
+      c: 6,
+      m: 0
+    },
+    NoModificationAllowedError: {
+      s: "NO_MODIFICATION_ALLOWED_ERR",
+      c: 7,
+      m: 1
+    },
+    NotFoundError: {
+      s: "NOT_FOUND_ERR",
+      c: 8,
+      m: 1
+    },
+    NotSupportedError: {
+      s: "NOT_SUPPORTED_ERR",
+      c: 9,
+      m: 1
+    },
+    InUseAttributeError: {
+      s: "INUSE_ATTRIBUTE_ERR",
+      c: 10,
+      m: 1
+    },
+    InvalidStateError: {
+      s: "INVALID_STATE_ERR",
+      c: 11,
+      m: 1
+    },
+    SyntaxError: {
+      s: "SYNTAX_ERR",
+      c: 12,
+      m: 1
+    },
+    InvalidModificationError: {
+      s: "INVALID_MODIFICATION_ERR",
+      c: 13,
+      m: 1
+    },
+    NamespaceError: {
+      s: "NAMESPACE_ERR",
+      c: 14,
+      m: 1
+    },
+    InvalidAccessError: {
+      s: "INVALID_ACCESS_ERR",
+      c: 15,
+      m: 1
+    },
+    ValidationError: {
+      s: "VALIDATION_ERR",
+      c: 16,
+      m: 0
+    },
+    TypeMismatchError: {
+      s: "TYPE_MISMATCH_ERR",
+      c: 17,
+      m: 1
+    },
+    SecurityError: {
+      s: "SECURITY_ERR",
+      c: 18,
+      m: 1
+    },
+    NetworkError: {
+      s: "NETWORK_ERR",
+      c: 19,
+      m: 1
+    },
+    AbortError: {
+      s: "ABORT_ERR",
+      c: 20,
+      m: 1
+    },
+    URLMismatchError: {
+      s: "URL_MISMATCH_ERR",
+      c: 21,
+      m: 1
+    },
+    QuotaExceededError: {
+      s: "QUOTA_EXCEEDED_ERR",
+      c: 22,
+      m: 1
+    },
+    TimeoutError: {
+      s: "TIMEOUT_ERR",
+      c: 23,
+      m: 1
+    },
+    InvalidNodeTypeError: {
+      s: "INVALID_NODE_TYPE_ERR",
+      c: 24,
+      m: 1
+    },
+    DataCloneError: {
+      s: "DATA_CLONE_ERR",
+      c: 25,
+      m: 1
+    }
+  };
+  return domExceptionConstants;
+}
+var errorStackClear;
+var hasRequiredErrorStackClear;
+function requireErrorStackClear() {
+  if (hasRequiredErrorStackClear) return errorStackClear;
+  hasRequiredErrorStackClear = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var $Error = Error;
+  var replace = uncurryThis("".replace);
+  var TEST = (function(arg) {
+    return String(new $Error(arg).stack);
+  })("zxcasd");
+  var V8_OR_CHAKRA_STACK_ENTRY = /\n\s*at [^:]*:[^\n]*/;
+  var IS_V8_OR_CHAKRA_STACK = V8_OR_CHAKRA_STACK_ENTRY.test(TEST);
+  errorStackClear = function(stack, dropEntries) {
+    if (IS_V8_OR_CHAKRA_STACK && typeof stack == "string" && !$Error.prepareStackTrace) {
+      while (dropEntries--) stack = replace(stack, V8_OR_CHAKRA_STACK_ENTRY, "");
+    }
+    return stack;
+  };
+  return errorStackClear;
+}
+var hasRequiredWeb_domException_stack;
+function requireWeb_domException_stack() {
+  if (hasRequiredWeb_domException_stack) return web_domException_stack;
+  hasRequiredWeb_domException_stack = 1;
+  var $ = require_export();
+  var globalThis2 = requireGlobalThis();
+  var getBuiltIn2 = requireGetBuiltIn();
+  var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
+  var defineProperty = requireObjectDefineProperty().f;
+  var hasOwn = requireHasOwnProperty();
+  var anInstance2 = requireAnInstance();
+  var inheritIfRequired2 = requireInheritIfRequired();
+  var normalizeStringArgument2 = requireNormalizeStringArgument();
+  var DOMExceptionConstants = requireDomExceptionConstants();
+  var clearErrorStack = requireErrorStackClear();
+  var DESCRIPTORS = requireDescriptors();
+  var IS_PURE = requireIsPure();
+  var DOM_EXCEPTION = "DOMException";
+  var Error2 = getBuiltIn2("Error");
+  var NativeDOMException = getBuiltIn2(DOM_EXCEPTION);
+  var $DOMException = function DOMException() {
+    anInstance2(this, DOMExceptionPrototype);
+    var argumentsLength = arguments.length;
+    var message = normalizeStringArgument2(argumentsLength < 1 ? void 0 : arguments[0]);
+    var name = normalizeStringArgument2(argumentsLength < 2 ? void 0 : arguments[1], "Error");
+    var that = new NativeDOMException(message, name);
+    var error = new Error2(message);
+    error.name = DOM_EXCEPTION;
+    defineProperty(that, "stack", createPropertyDescriptor2(1, clearErrorStack(error.stack, 1)));
+    inheritIfRequired2(that, this, $DOMException);
+    return that;
+  };
+  var DOMExceptionPrototype = $DOMException.prototype = NativeDOMException.prototype;
+  var ERROR_HAS_STACK = "stack" in new Error2(DOM_EXCEPTION);
+  var DOM_EXCEPTION_HAS_STACK = "stack" in new NativeDOMException(1, 2);
+  var descriptor = NativeDOMException && DESCRIPTORS && Object.getOwnPropertyDescriptor(globalThis2, DOM_EXCEPTION);
+  var BUGGY_DESCRIPTOR = !!descriptor && !(descriptor.writable && descriptor.configurable);
+  var FORCED_CONSTRUCTOR = ERROR_HAS_STACK && !BUGGY_DESCRIPTOR && !DOM_EXCEPTION_HAS_STACK;
+  $({
+    global: true,
+    constructor: true,
+    forced: IS_PURE || FORCED_CONSTRUCTOR
+  }, {
+    // TODO: fix export logic
+    DOMException: FORCED_CONSTRUCTOR ? $DOMException : NativeDOMException
+  });
+  var PolyfilledDOMException = getBuiltIn2(DOM_EXCEPTION);
+  var PolyfilledDOMExceptionPrototype = PolyfilledDOMException.prototype;
+  if (PolyfilledDOMExceptionPrototype.constructor !== PolyfilledDOMException) {
+    if (!IS_PURE) {
+      defineProperty(PolyfilledDOMExceptionPrototype, "constructor", createPropertyDescriptor2(1, PolyfilledDOMException));
+    }
+    for (var key in DOMExceptionConstants) if (hasOwn(DOMExceptionConstants, key)) {
+      var constant = DOMExceptionConstants[key];
+      var constantName = constant.s;
+      if (!hasOwn(PolyfilledDOMException, constantName)) {
+        defineProperty(PolyfilledDOMException, constantName, createPropertyDescriptor2(6, constant.c));
+      }
+    }
+  }
+  return web_domException_stack;
+}
+requireWeb_domException_stack();
+var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
+var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
+var es_iterator_filter = {};
+var hasRequiredEs_iterator_filter;
+function requireEs_iterator_filter() {
+  if (hasRequiredEs_iterator_filter) return es_iterator_filter;
+  hasRequiredEs_iterator_filter = 1;
+  var $ = require_export();
+  var call = requireFunctionCall();
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var createIteratorProxy = requireIteratorCreateProxy();
+  var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
+  var IS_PURE = requireIsPure();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperThrowsOnInvalidIterator2 = requireIteratorHelperThrowsOnInvalidIterator();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator2("filter", function() {
+  });
+  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
+  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
+  var IteratorProxy = createIteratorProxy(function() {
+    var iterator = this.iterator;
+    var predicate = this.predicate;
+    var next = this.next;
+    var result, done, value;
+    while (true) {
+      result = anObject2(call(next, iterator));
+      done = this.done = !!result.done;
+      if (done) return;
+      value = result.value;
+      if (callWithSafeIterationClosing2(iterator, predicate, [value, this.counter++], true)) return value;
+    }
+  });
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    filter: function filter(predicate) {
+      anObject2(this);
+      try {
+        aCallable2(predicate);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
+      return new IteratorProxy(getIteratorDirect2(this), {
+        predicate
+      });
+    }
+  });
+  return es_iterator_filter;
+}
+requireEs_iterator_filter();
 function findMatch(regexps, value) {
   for (const regexp of regexps) {
     const match = value.match(regexp);
@@ -2292,7 +3849,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main$c = defineComponent({
+var _sfc_main = defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
@@ -2328,159 +3885,13 @@ var _sfc_main$c = defineComponent({
     ValidationService.validateElement(inputElement);
   }
 });
-var es_array_push = {};
-var isArray;
-var hasRequiredIsArray;
-function requireIsArray() {
-  if (hasRequiredIsArray) return isArray;
-  hasRequiredIsArray = 1;
-  var classof2 = requireClassofRaw();
-  isArray = Array.isArray || function isArray2(argument) {
-    return classof2(argument) === "Array";
-  };
-  return isArray;
-}
-var arraySetLength;
-var hasRequiredArraySetLength;
-function requireArraySetLength() {
-  if (hasRequiredArraySetLength) return arraySetLength;
-  hasRequiredArraySetLength = 1;
-  var DESCRIPTORS = requireDescriptors();
-  var isArray2 = requireIsArray();
-  var $TypeError = TypeError;
-  var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-  var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS && !(function() {
-    if (this !== void 0) return true;
-    try {
-      Object.defineProperty([], "length", {
-        writable: false
-      }).length = 1;
-    } catch (error) {
-      return error instanceof TypeError;
-    }
-  })();
-  arraySetLength = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function(O, length) {
-    if (isArray2(O) && !getOwnPropertyDescriptor(O, "length").writable) {
-      throw new $TypeError("Cannot set read only .length");
-    }
-    return O.length = length;
-  } : function(O, length) {
-    return O.length = length;
-  };
-  return arraySetLength;
-}
-var doesNotExceedSafeInteger;
-var hasRequiredDoesNotExceedSafeInteger;
-function requireDoesNotExceedSafeInteger() {
-  if (hasRequiredDoesNotExceedSafeInteger) return doesNotExceedSafeInteger;
-  hasRequiredDoesNotExceedSafeInteger = 1;
-  var $TypeError = TypeError;
-  var MAX_SAFE_INTEGER = 9007199254740991;
-  doesNotExceedSafeInteger = function(it) {
-    if (it > MAX_SAFE_INTEGER) throw $TypeError("Maximum allowed index exceeded");
-    return it;
-  };
-  return doesNotExceedSafeInteger;
-}
-var hasRequiredEs_array_push;
-function requireEs_array_push() {
-  if (hasRequiredEs_array_push) return es_array_push;
-  hasRequiredEs_array_push = 1;
-  var $ = require_export();
-  var toObject2 = requireToObject();
-  var lengthOfArrayLike2 = requireLengthOfArrayLike();
-  var setArrayLength = requireArraySetLength();
-  var doesNotExceedSafeInteger2 = requireDoesNotExceedSafeInteger();
-  var fails2 = requireFails();
-  var INCORRECT_TO_LENGTH = fails2(function() {
-    return [].push.call({
-      length: 4294967296
-    }, 1) !== 4294967297;
-  });
-  var properErrorOnNonWritableLength = function() {
-    try {
-      Object.defineProperty([], "length", {
-        writable: false
-      }).push();
-    } catch (error) {
-      return error instanceof TypeError;
-    }
-  };
-  var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
-  $({
-    target: "Array",
-    proto: true,
-    arity: 1,
-    forced: FORCED
-  }, {
-    // eslint-disable-next-line no-unused-vars -- required for `.length`
-    push: function push(item) {
-      var O = toObject2(this);
-      var len = lengthOfArrayLike2(O);
-      var argCount = arguments.length;
-      doesNotExceedSafeInteger2(len + argCount);
-      for (var i = 0; i < argCount; i++) {
-        O[len] = arguments[i];
-        len++;
-      }
-      setArrayLength(O, len);
-      return len;
-    }
-  });
-  return es_array_push;
-}
-requireEs_array_push();
-var es_iterator_some = {};
-var hasRequiredEs_iterator_some;
-function requireEs_iterator_some() {
-  if (hasRequiredEs_iterator_some) return es_iterator_some;
-  hasRequiredEs_iterator_some = 1;
-  var $ = require_export();
-  var call = requireFunctionCall();
-  var iterate2 = requireIterate();
-  var aCallable2 = requireACallable();
-  var anObject2 = requireAnObject();
-  var getIteratorDirect2 = requireGetIteratorDirect();
-  var iteratorClose2 = requireIteratorClose();
-  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
-  var someWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError2("some", TypeError);
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: someWithoutClosingOnEarlyError
-  }, {
-    some: function some(predicate) {
-      anObject2(this);
-      try {
-        aCallable2(predicate);
-      } catch (error) {
-        iteratorClose2(this, "throw", error);
-      }
-      if (someWithoutClosingOnEarlyError) return call(someWithoutClosingOnEarlyError, this, predicate);
-      var record = getIteratorDirect2(this);
-      var counter = 0;
-      return iterate2(record, function(value, stop) {
-        if (predicate(value, counter++)) return stop();
-      }, {
-        IS_RECORD: true,
-        INTERRUPTED: true
-      }).stopped;
-    }
-  });
-  return es_iterator_some;
-}
-requireEs_iterator_some();
-var tableCellApiSymbol = Symbol("table:cell-api");
-var internalKey = getInternalKey();
-var stopEditKey = Symbol();
 
 // virtual-entry:virtual:src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-00344e.js
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, toDisplayString as _toDisplayString, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent2({
   name: "XTimeComponentExample",
   components: {
-    XTimeTextField: _sfc_main$c
+    XTimeTextField: _sfc_main
   },
   data() {
     return {
