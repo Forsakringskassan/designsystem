@@ -12,9 +12,9 @@ import { type SimplePersistenceServiceInterface } from "./SimplePersistenceServi
  *
  * @public
  */
-export class SimplePersistenceService<T>
-    implements SimplePersistenceServiceInterface<T>
-{
+export class SimplePersistenceService<
+    T,
+> implements SimplePersistenceServiceInterface<T> {
     private persistenceService: PersistenceService<T>;
     private key: string;
 
