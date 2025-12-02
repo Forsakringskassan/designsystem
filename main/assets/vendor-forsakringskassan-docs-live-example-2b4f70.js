@@ -5388,7 +5388,7 @@ Mt2(Nu, { builders: () => wa2, printer: () => Oa2, utils: () => Pa2 });
 var wa2 = { join: Pe2, line: et2, softline: Zu, hardline: V2, literalline: Xe2, group: $t, conditionalGroup: Hu, fill: zu, lineSuffix: ke2, lineSuffixBoundary: er2, cursor: ee2, breakParent: ce2, ifBreak: Xu, trim: tr, indent: ae, indentIfBreak: qu, align: De2, addAlignmentToDoc: Ze2, markAsRoot: Qe2, dedentToRoot: Ju, dedent: Gu, hardlineWithoutBreakParent: Ie2, literallineWithoutBreakParent: Vt2, label: Qu, concat: (e) => e };
 var Oa2 = { printDocToString: Ce2 };
 var Pa2 = { willBreak: Yu, traverseDoc: Se2, findInDoc: ze2, mapDoc: Oe2, removeLines: Uu, stripTrailingHardline: He, replaceEndOfLine: Wu, canBreak: $u };
-var In2 = "3.7.2";
+var In2 = "3.7.3";
 var wu = {};
 Mt2(wu, { addDanglingComment: () => ue2, addLeadingComment: () => fe2, addTrailingComment: () => le2, getAlignmentSize: () => he2, getIndentSize: () => kn2, getMaxContinuousCount: () => vn2, getNextNonSpaceNonCommentCharacter: () => Rn2, getNextNonSpaceNonCommentCharacterIndex: () => Va2, getPreferredQuote: () => Ln2, getStringWidth: () => ve2, hasNewline: () => G2, hasNewlineInRange: () => Mn2, hasSpaces: () => Yn2, isNextLineEmpty: () => Ha2, isNextLineEmptyAfterIndex: () => It2, isPreviousLineEmpty: () => Ja2, makeString: () => za2, skip: () => ge2, skipEverythingButNewLine: () => rt2, skipInlineComment: () => _e2, skipNewline: () => K2, skipSpaces: () => Y2, skipToLineEnd: () => ut, skipTrailingComment: () => xe2, skipWhitespace: () => cr2 });
 function Ia2(e, t) {
