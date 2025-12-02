@@ -3413,6 +3413,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       } = tdElement.value.getBoundingClientRect();
       model.value = modelValue;
       tdElement.value.style.setProperty("width", `${String(width)}px`);
+      inputElement.value.tabIndex = 0;
       inputElement.value.focus();
     }
     function onStopEdit(options) {
@@ -4139,9 +4140,9 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
       maybeNavigateToCell(e);
     }
     function onClick(e) {
-      const td = e.target.closest("td");
-      if (td) {
-        activateCell(td, {
+      const cell = e.target.closest("td, th");
+      if (cell) {
+        activateCell(cell, {
           focus: true
         });
       }
@@ -4177,9 +4178,9 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
       }
       const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
       if (outsideTable) {
-        const td = target.closest("td");
-        if (td) {
-          activateCell(td, {
+        const cell = target.closest("td, th");
+        if (cell) {
+          activateCell(cell, {
             focus: false
           });
         }
