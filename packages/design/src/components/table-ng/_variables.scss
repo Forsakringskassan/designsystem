@@ -6,6 +6,7 @@ $table-ng-caption-foreground: var(--fkds-color-text-primary) !default;
 $table-ng-header-background: var(--fkds-color-background-secondary) !default;
 $table-ng-header-foreground: var(--fkds-color-text-primary) !default;
 $table-ng-header-border: 2px solid var(--fkds-color-border-primary) !default;
+$table-ng-header-separator: inset 0px -2px 0px var(--fkds-color-border-primary) !default;
 
 // Rows -- Flytta till table-ng-rows.scss?
 $table-ng-row-background: var(--fkds-color-background-primary) !default;
@@ -16,3 +17,7 @@ $table-ng-row-separator: inset 0px -1px 0px var(--fkds-color-border-primary) !de
 // Column
 $table-ng-color-icon-sort-selected: var(--fkds-color-text-primary) !default;
 $table-ng-color-icon-sort-default: var(--fkds-color-text-secondary) !default;
+$table-ng-column-separator: 1px 0px 0px var(--fkds-color-border-primary) !default;
+
+// Cell
+$table-ng-rowheader-separator: 1px 0px 0px var(--fkds-color-border-primary) !default;

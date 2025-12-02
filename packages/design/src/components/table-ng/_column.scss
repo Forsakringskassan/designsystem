@@ -7,14 +7,15 @@ $horizontal-padding: size.$padding-050;
 
 .table-ng__column {
     padding: $vertical-padding $horizontal-padding;
-    border-bottom: 2px solid transparent;
-    border-right: 1px solid transparent;
+    border: 2px solid transparent;
+
+    &:not(:last-child) {
+        box-shadow: $table-ng-column-separator;
+    }
 
     &:focus,
     &:focus-within {
-        box-shadow: none;
-        border-bottom: 2px solid var(--f-color-focus);
-        border-right: 1px solid var(--f-color-focus);
+        border: 2px solid var(--f-color-focus);
     }
 
     &--select {
@@ -25,6 +26,10 @@ $horizontal-padding: size.$padding-050;
             height: var(--f-icon-size-medium);
             width: var(--f-icon-size-medium);
             vertical-align: middle;
+        }
+
+        &:focus-within {
+            border: 2px solid transparent;
         }
     }
 

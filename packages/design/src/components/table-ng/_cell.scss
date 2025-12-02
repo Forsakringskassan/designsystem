@@ -1,5 +1,6 @@
 @use "../../core";
 @use "../../core/size";
+@use "variables" as *;
 
 $vertical-padding: core.densify(size.$padding-025);
 $horizontal-padding: size.$padding-050;
@@ -126,6 +127,7 @@ $horizontal-padding: size.$padding-050;
     &--rowheader {
         font-weight: var(--f-font-weight-medium);
         text-align: left;
+        box-shadow: $table-ng-rowheader-separator;
     }
 
     &--custom {

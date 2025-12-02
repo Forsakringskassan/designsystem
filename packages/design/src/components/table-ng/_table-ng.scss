@@ -36,10 +36,12 @@ $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
     }
 
     thead {
-        th {
+        tr {
             background: $table-ng-header-background;
-            border-bottom: $table-ng-header-border;
-            border-right: $table-ng-header-separator;
+            box-shadow: $table-ng-header-separator;
+        }
+
+        th {
             color: $table-ng-header-foreground;
             font-weight: $table-ng-header-font-weight;
             line-height: var(--f-line-height-large);
