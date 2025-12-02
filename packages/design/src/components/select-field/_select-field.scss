@@ -52,6 +52,10 @@
             background-color: $selectfield-color-background-disabled;
             opacity: 1;
         }
+
+        &:open + .select-field__icon {
+            transform: rotate(180deg);
+        }
     }
 
     &__select:disabled + &__icon {
