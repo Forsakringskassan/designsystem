@@ -2,7 +2,7 @@
 import { h, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
 import { FSortFilterDataset } from "@fkui/vue";
-import { FTable, defineTableColumns } from "@fkui/vue-labs";
+import { type TableColumn, FTable, defineTableColumns } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
 
@@ -209,8 +209,14 @@ const rows = ref<Row[]>([
     },
 ]);
 
+function hasKey<T, K extends keyof T>(
+    column: TableColumn<T, K>,
+): column is TableColumn<T, K> & { key: K } {
+    return Boolean("key" in column && column.key);
+}
+
 const sortableAttributes = Object.fromEntries(
-    columns.filter((it) => "key" in it && it.key).map((it) => [it.key, it.header]),
+    columns.filter(hasKey).map((it) => [it.key, it.header]),
 );
 
 const mySelectedRows = ref<Row[]>([rows.value[0]]);
