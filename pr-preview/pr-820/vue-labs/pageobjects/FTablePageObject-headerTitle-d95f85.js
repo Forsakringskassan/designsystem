@@ -29,7 +29,7 @@ import { ref as ref2 } from "vue";
 
 // dist/esm/index.esm.js
 import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective } from "vue";
-import { assertRef, ElementIdService, assertSet, ValidationService, alertScreenReader, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
+import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
 import { getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, useTranslate, useSlotUtils, setInternalKeys, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 var es_iterator_constructor = {};
 var globalThis_1;
@@ -2228,7 +2228,7 @@ var _hoisted_1$b = {
   key: 0,
   class: "table-ng__cell table-ng__cell--checkbox"
 };
-var _hoisted_2$8 = ["checked", "aria-label"];
+var _hoisted_2$7 = ["checked", "aria-label"];
 var _hoisted_3$6 = {
   key: 1,
   ref: "target",
@@ -2266,7 +2266,7 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
+      }, null, 40, _hoisted_2$7)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
         checked: __props.column.value(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value
@@ -2278,7 +2278,7 @@ var _hoisted_1$a = {
   key: 0,
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _hoisted_2$7 = ["aria-label", "aria-expanded"];
+var _hoisted_2$6 = ["aria-label", "aria-expanded"];
 var _hoisted_3$5 = {
   key: 1,
   ref: "expandable",
@@ -2325,7 +2325,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
       }, [createVNode(unref(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$7)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -2345,6 +2345,277 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
     };
   }
 });
+var textTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:email", "text:organisationsnummer", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode", "text"];
+var numberTypes = ["text:currency", "text:number", "text:percent"];
+function isInputTypeNumber(value) {
+  return numberTypes.includes(value);
+}
+function isInputTypeText(value) {
+  return textTypes.includes(value);
+}
+var inputFieldConfig = {
+  "text:personnummer": {
+    formatter(value) {
+      return formatPersonnummer(parsePersonnummer(value));
+    },
+    parser(value) {
+      return parsePersonnummer(value);
+    },
+    validationConfig: {
+      maxLength: {
+        length: 20
+      },
+      personnummerFormat: {},
+      personnummerLuhn: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "23"
+    }]
+  },
+  "text:bankAccountNumber": {
+    formatter(value) {
+      return value;
+    },
+    parser(value) {
+      return parseBankAccountNumber(value);
+    },
+    validationConfig: {
+      bankAccountNumber: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "40"
+    }]
+  },
+  "text:bankgiro": {
+    formatter(value) {
+      return parseBankgiro(value);
+    },
+    parser(value) {
+      return parseBankgiro(value);
+    },
+    validationConfig: {
+      maxLength: {
+        length: 9
+      },
+      bankgiro: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "40"
+    }]
+  },
+  "text:clearingNumber": {
+    formatter(value) {
+      return parseClearingNumber(value.trim());
+    },
+    parser(value) {
+      return parseClearingNumber(value.trim());
+    },
+    validationConfig: {
+      clearingNumber: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "16"
+    }]
+  },
+  "text:currency": {
+    formatter(value) {
+      return formatNumber(value);
+    },
+    parser(value) {
+      return parseNumber(value);
+    },
+    validationConfig: {
+      currency: {},
+      integer: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "20"
+    }]
+  },
+  "text:email": {
+    formatter(value) {
+      return value;
+    },
+    parser(value) {
+      return value;
+    },
+    validationConfig: {
+      email: {},
+      maxLength: {
+        length: 80
+      }
+    },
+    attributes: () => [{
+      name: "type",
+      value: "email"
+    }, {
+      name: "maxlength",
+      value: "80"
+    }]
+  },
+  "text:number": {
+    formatter(value) {
+      var _this$decimals;
+      return formatNumber(value, (_this$decimals = this.decimals) !== null && _this$decimals !== void 0 ? _this$decimals : 2);
+    },
+    parser(value) {
+      var _this$decimals2;
+      return parseNumber(value, (_this$decimals2 = this.decimals) !== null && _this$decimals2 !== void 0 ? _this$decimals2 : 2);
+    },
+    validationConfig: {
+      number: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "20"
+    }]
+  },
+  "text:organisationsnummer": {
+    formatter(value) {
+      return parseOrganisationsnummer(value);
+    },
+    parser(value) {
+      return parseOrganisationsnummer(value);
+    },
+    validationConfig: {
+      maxLength: {
+        length: 11
+      },
+      organisationsnummer: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "20"
+    }]
+  },
+  "text:percent": {
+    formatter(value) {
+      var _this$decimals3;
+      return formatNumber(value, (_this$decimals3 = this.decimals) !== null && _this$decimals3 !== void 0 ? _this$decimals3 : 2);
+    },
+    parser(value) {
+      var _this$decimals4;
+      return parseNumber(value, (_this$decimals4 = this.decimals) !== null && _this$decimals4 !== void 0 ? _this$decimals4 : 2);
+    },
+    validationConfig: {
+      percent: {},
+      minValue: {
+        minValue: 0
+      },
+      maxValue: {
+        maxValue: 999
+      }
+    },
+    attributes: (decimals) => {
+      return [{
+        name: "inputmode",
+        value: decimals ? "decimal" : "numeric"
+      }, {
+        name: "maxlength",
+        value: "10"
+      }];
+    }
+  },
+  "text:phoneNumber": {
+    formatter(value) {
+      return value;
+    },
+    parser(value) {
+      return value;
+    },
+    validationConfig: {
+      maxLength: {
+        length: 80
+      },
+      phoneNumber: {}
+    },
+    attributes: () => [{
+      name: "maxlength",
+      value: "80"
+    }, {
+      name: "type",
+      value: "tel"
+    }]
+  },
+  "text:plusgiro": {
+    formatter(value) {
+      return parsePlusgiro(value);
+    },
+    parser(value) {
+      return parsePlusgiro(value);
+    },
+    validationConfig: {
+      maxLength: {
+        length: 11
+      },
+      plusgiro: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "16"
+    }]
+  },
+  "text:postalCode": {
+    formatter(value) {
+      return formatPostalCode(value.trim());
+    },
+    parser(value) {
+      return formatPostalCode(value.trim());
+    },
+    validationConfig: {
+      maxLength: {
+        length: 13
+      },
+      postalCode: {}
+    },
+    attributes: () => [{
+      name: "inputmode",
+      value: "numeric"
+    }, {
+      name: "maxlength",
+      value: "15"
+    }]
+  },
+  text: {
+    formatter(value) {
+      return value;
+    },
+    parser(value) {
+      return value;
+    },
+    validationConfig: {},
+    attributes: () => []
+  }
+};
 var _hoisted_1$8 = {
   key: 0,
   class: "table-ng__column__description"
@@ -2382,6 +2653,15 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
           return "";
       }
     });
+    function isAlignableColumn(column) {
+      if (column.type === void 0) {
+        return false;
+      }
+      return isInputTypeText(column.type) || isInputTypeNumber(column.type);
+    }
+    const alignment = computed(() => {
+      return isAlignableColumn(__props.column) ? __props.column.align : "left";
+    });
     function onClickCell() {
       assertRef(thElement);
       thElement.value.tabIndex = 0;
@@ -2404,7 +2684,8 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
         onKeydown: onKeydownCell,
         onClick: withModifiers(onClickCell, ["stop"])
       }, [createVNode(unref(IFlex), {
-        gap: "1x"
+        gap: "1x",
+        float: alignment.value
       }, {
         default: withCtx(() => [createVNode(unref(IFlexItem), {
           shrink: "",
@@ -2424,7 +2705,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$8, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
+      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$8, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
     };
   }
 });
@@ -2460,7 +2741,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
 var _hoisted_1$6 = {
   class: "table-ng__cell table-ng__cell--radio"
 };
-var _hoisted_2$6 = ["checked", "aria-label"];
+var _hoisted_2$5 = ["checked", "aria-label"];
 var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
@@ -2491,7 +2772,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$6)]);
+      }, null, 40, _hoisted_2$5)]);
     };
   }
 });
@@ -2722,7 +3003,7 @@ var _hoisted_1$5 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--anchor"
 };
-var _hoisted_2$5 = ["href"];
+var _hoisted_2$4 = ["href"];
 var _hoisted_3$4 = {
   key: 1,
   ref: "target",
@@ -2753,7 +3034,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_2$4)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
@@ -2761,7 +3042,7 @@ var _hoisted_1$4 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--button"
 };
-var _hoisted_2$4 = {
+var _hoisted_2$3 = {
   class: "sr-only"
 };
 var _hoisted_3$3 = {
@@ -2805,7 +3086,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
       }, [__props.column.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: __props.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.value(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$3, null, 512));
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$3, toDisplayString(__props.column.value(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$3, null, 512));
     };
   }
 });
@@ -2828,7 +3109,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
 var _hoisted_1$3 = {
   class: "table-ng__editable"
 };
-var _hoisted_2$3 = {
+var _hoisted_2$2 = {
   class: "table-ng__editable__text"
 };
 var _hoisted_3$2 = ["aria-controls", "aria-label"];
@@ -3011,7 +3292,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"])
-      }, [withDirectives(createElementVNode("div", _hoisted_1$3, [createElementVNode("span", _hoisted_2$3, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$3, [createElementVNode("span", _hoisted_2$2, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
       })], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
@@ -3042,13 +3323,22 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
+function addInputValidators(inputElement, type, decimals) {
+  ValidationService.addValidatorsToElement(inputElement, inputFieldConfig[type].validationConfig, true);
+  const options = void 0;
+  const attributes = inputFieldConfig[type].attributes(options);
+  for (const {
+    name,
+    value
+  } of attributes) {
+    inputElement.setAttribute(name, value);
+  }
+  ValidationService.validateElement(inputElement);
+}
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$2 = {
-  class: "table-ng__editable"
-};
-var _hoisted_2$2 = ["aria-label"];
+var _hoisted_1$2 = ["aria-label"];
 var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "ITableText",
   props: {
@@ -3057,18 +3347,35 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const model = ref("");
+    const inEdit = ref(false);
     const validity = ref({
       isValid: true,
       validationMessage: "",
       validityMode: "INITIAL"
     });
     const hasError = computed(() => validity.value.validityMode === "ERROR");
+    const divClasses = computed(() => {
+      return {
+        "table-ng__editable": true,
+        "table-ng__editable__numeric": __props.column.tnum
+      };
+    });
     const wrapperClasses = computed(() => {
       return {
         "table-ng__cell": true,
         "table-ng__cell--text": true,
         "table-ng__cell--valid": !hasError.value,
-        "table-ng__cell--error": hasError.value
+        "table-ng__cell--error": hasError.value,
+        "table-ng__cell--align-left": __props.column.align === "left",
+        "table-ng__cell--align-right": __props.column.align === "right"
+      };
+    });
+    const staticClasses = computed(() => {
+      return {
+        "table-ng__cell": true,
+        "table-ng__cell--static": true,
+        "table-ng__cell--align-left": __props.column.align === "left",
+        "table-ng__cell--align-right": __props.column.align === "right"
       };
     });
     const inputClasses = computed(() => {
@@ -3089,10 +3396,15 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     } = useStartStopEdit();
     onMounted(() => {
       if (inputElement.value) {
+        addInputValidators(inputElement.value, __props.column.type);
         ValidationService.addValidatorsToElement(inputElement.value, __props.column.validation);
       }
     });
     function onStartEdit(modelValue) {
+      if (inEdit.value) {
+        return;
+      }
+      inEdit.value = true;
       assertRef(tdElement);
       assertRef(inputElement);
       const {
@@ -3106,6 +3418,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       const {
         reason
       } = options;
+      inEdit.value = false;
       assertRef(inputElement);
       inputElement.value.tabIndex = -1;
       stopEdit2(inputElement.value, reason);
@@ -3169,6 +3482,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       }
     }
     function onBlur() {
+      inEdit.value = false;
       assertRef(tdElement);
       tdElement.value.style.removeProperty("width");
       const isDirty = model.value !== "";
@@ -3198,7 +3512,9 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         class: normalizeClass(wrapperClasses.value),
         onClick: withModifiers(onClickCell, ["stop"]),
         onKeydown
-      }, [createElementVNode("div", _hoisted_1$2, [createElementVNode("span", {
+      }, [createElementVNode("div", {
+        class: normalizeClass(divClasses.value)
+      }, [createElementVNode("span", {
         ref: "view",
         class: "table-ng__editable__text"
       }, toDisplayString(__props.column.value(__props.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
@@ -3211,7 +3527,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         "aria-label": ariaLabel.value,
         onBlur,
         onValidity
-      }, null, 42, _hoisted_2$2), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), hasError.value ? (openBlock(), createBlock(unref(FIcon), {
+      }, null, 42, _hoisted_1$2), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), hasError.value ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: "error",
         class: "table-ng__editable__icon"
@@ -3219,20 +3535,58 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         key: 1,
         name: "pen",
         class: "table-ng__editable__icon"
-      }))])], 34)) : (openBlock(), createElementBlock("td", {
+      }))], 2)], 34)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "td",
         tabindex: "-1",
-        class: "table-ng__cell table-ng__cell--static"
-      }, toDisplayString(__props.column.value(__props.row)), 513));
+        class: normalizeClass(staticClasses.value)
+      }, toDisplayString(__props.column.value(__props.row)), 3));
     };
   }
 });
-function getLabelFn(fn) {
+function getUpdateFn(fn, key) {
   if (fn) {
     return fn;
   }
-  return () => "";
+  if (key) {
+    return (row, value) => {
+      row[key] = value;
+    };
+  }
+  return () => void 0;
+}
+function getParsedUpdateFn(fn, key, parser) {
+  if (fn) {
+    return (row, newValue, oldValue) => {
+      const parsedNewValue = parser(newValue);
+      const parsedOldValue = parser(oldValue);
+      fn(row, parsedNewValue !== null && parsedNewValue !== void 0 ? parsedNewValue : newValue, parsedOldValue !== null && parsedOldValue !== void 0 ? parsedOldValue : oldValue);
+    };
+  }
+  if (key) {
+    return (row, value) => {
+      const newValue = parser(value);
+      row[key] = isSet(newValue) ? newValue : value;
+    };
+  }
+  return () => void 0;
+}
+function getParsedNumberUpdateFn(fn, key, parser) {
+  if (fn) {
+    return (row, newValue, oldValue) => {
+      var _parser, _parser2;
+      const parsedNewValue = (_parser = parser(newValue)) !== null && _parser !== void 0 ? _parser : newValue;
+      const parsedOldValue = (_parser2 = parser(oldValue)) !== null && _parser2 !== void 0 ? _parser2 : oldValue;
+      fn(row, parsedNewValue, parsedOldValue);
+    };
+  }
+  if (key) {
+    return (row, value) => {
+      const newValue = parser(value);
+      row[key] = isSet(newValue) ? newValue : value;
+    };
+  }
+  return () => void 0;
 }
 function getValueFn(fn, key, coerce, defaultValue) {
   if (fn) {
@@ -3245,19 +3599,52 @@ function getValueFn(fn, key, coerce, defaultValue) {
   }
   return () => defaultValue;
 }
-function getUpdateFn(fn, key) {
+function getFormattedValueFn(fn, key, formatter, defaultValue) {
+  if (fn) {
+    return (row) => {
+      const value = fn(row);
+      const result = formatter(value);
+      return result !== null && result !== void 0 ? result : value;
+    };
+  }
+  if (key) {
+    return (row) => {
+      const value = row[key];
+      const result = formatter(value);
+      return result !== null && result !== void 0 ? result : value;
+    };
+  }
+  return () => defaultValue;
+}
+function getFormattedNumberValueFn(fn, key, formatter, defaultValue) {
+  if (fn) {
+    return (row) => {
+      var _formatter;
+      const value = fn(row);
+      return (_formatter = formatter(value)) !== null && _formatter !== void 0 ? _formatter : value;
+    };
+  }
+  if (key) {
+    return (row) => {
+      var _formatter2;
+      const value = row[key];
+      return (_formatter2 = formatter(value)) !== null && _formatter2 !== void 0 ? _formatter2 : value;
+    };
+  }
+  return () => defaultValue;
+}
+function getLabelFn(fn) {
   if (fn) {
     return fn;
   }
-  if (key) {
-    return (row, value) => {
-      row[key] = value;
-    };
-  }
-  return () => void 0;
+  return () => "";
+}
+function defaultTnumValue(type) {
+  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
+  return tnumTypes.includes(type);
 }
 function normalizeTableColumn(column) {
-  var _column$key, _column$key2, _column$validation, _column$key3, _column$key4, _column$key5, _column$icon, _column$key6, _column$key7, _column$key8;
+  var _column$key, _column$key2, _column$key5, _column$key6, _column$icon, _column$key7, _column$key8, _column$key9;
   const description = typeof column.description !== "undefined" ? toRef(column.description) : ref("");
   if ("render" in column) {
     return {
@@ -3298,15 +3685,26 @@ function normalizeTableColumn(column) {
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
         component: _sfc_main$8
       };
-    case "text":
+    case "text:currency":
+    case "text:number":
+    case "text:percent": {
+      var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key3;
+      const type = column.type;
+      const config = inputFieldConfig[type];
+      const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
+      const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter.bind(column);
+      const decimals = type === "text:currency" ? 0 : column.decimals;
       return {
-        type: "text",
+        type,
         id: Symbol(),
         header: toRef(column.header),
         description,
         label: getLabelFn(column.label),
-        value: getValueFn(column.value, column.key, String, ""),
-        update: getUpdateFn(column.update, column.key),
+        decimals,
+        tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
+        align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
+        value: getFormattedNumberValueFn(column.value, column.key, formatter, ""),
+        update: getParsedNumberUpdateFn(column.update, column.key, parser),
         editable: typeof column.editable === "function" ? column.editable : () => {
           var _column$editable2;
           return Boolean((_column$editable2 = column.editable) !== null && _column$editable2 !== void 0 ? _column$editable2 : false);
@@ -3315,6 +3713,41 @@ function normalizeTableColumn(column) {
         sortable: (_column$key3 = column.key) !== null && _column$key3 !== void 0 ? _column$key3 : null,
         component: _sfc_main$3
       };
+    }
+    case "text":
+    case "text:bankAccountNumber":
+    case "text:bankgiro":
+    case "text:clearingNumber":
+    case "text:email":
+    case "text:organisationsnummer":
+    case "text:personnummer":
+    case "text:phoneNumber":
+    case "text:plusgiro":
+    case "text:postalCode": {
+      var _column$parser2, _column$formatter2, _column$tnum2, _column$align2, _column$validation2, _column$key4;
+      const type = column.type;
+      const config = inputFieldConfig[type];
+      const parser = (_column$parser2 = column.parser) !== null && _column$parser2 !== void 0 ? _column$parser2 : config.parser;
+      const formatter = (_column$formatter2 = column.formatter) !== null && _column$formatter2 !== void 0 ? _column$formatter2 : config.formatter;
+      return {
+        type,
+        id: Symbol(),
+        header: toRef(column.header),
+        description,
+        tnum: (_column$tnum2 = column.tnum) !== null && _column$tnum2 !== void 0 ? _column$tnum2 : defaultTnumValue(type),
+        align: (_column$align2 = column.align) !== null && _column$align2 !== void 0 ? _column$align2 : "left",
+        label: getLabelFn(column.label),
+        value: getFormattedValueFn(column.value, column.key, formatter, ""),
+        update: getParsedUpdateFn(column.update, column.key, parser),
+        editable: typeof column.editable === "function" ? column.editable : () => {
+          var _column$editable3;
+          return Boolean((_column$editable3 = column.editable) !== null && _column$editable3 !== void 0 ? _column$editable3 : false);
+        },
+        validation: (_column$validation2 = column.validation) !== null && _column$validation2 !== void 0 ? _column$validation2 : {},
+        sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
+        component: _sfc_main$3
+      };
+    }
     case "rowheader":
       return {
         type: "rowheader",
@@ -3322,7 +3755,7 @@ function normalizeTableColumn(column) {
         header: toRef(column.header),
         description,
         value: getValueFn(column.value, column.key, String, ""),
-        sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
+        sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
         component: _sfc_main$5
       };
     case "anchor":
@@ -3337,7 +3770,7 @@ function normalizeTableColumn(column) {
           var _column$enabled;
           return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
         },
-        sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
+        sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
         component: _sfc_main$7
       };
     case "button":
@@ -3353,7 +3786,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$enabled2 = column.enabled) !== null && _column$enabled2 !== void 0 ? _column$enabled2 : true);
         },
         icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-        sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
+        sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
         component: _sfc_main$6
       };
     case "select":
@@ -3366,11 +3799,11 @@ function normalizeTableColumn(column) {
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable3;
-          return Boolean((_column$editable3 = column.editable) !== null && _column$editable3 !== void 0 ? _column$editable3 : false);
+          var _column$editable4;
+          return Boolean((_column$editable4 = column.editable) !== null && _column$editable4 !== void 0 ? _column$editable4 : false);
         },
         options: column.options,
-        sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
+        sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
         component: _sfc_main$4
       };
     case void 0:
@@ -3380,11 +3813,13 @@ function normalizeTableColumn(column) {
         header: toRef(column.header),
         description,
         label: () => "",
+        tnum: false,
+        align: "left",
         value: getValueFn(column.value, column.key, String, ""),
         update() {
         },
         editable: () => false,
-        sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
+        sortable: (_column$key9 = column.key) !== null && _column$key9 !== void 0 ? _column$key9 : null,
         validation: {},
         component: _sfc_main$3
       };
