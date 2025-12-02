@@ -218,10 +218,10 @@ function onKeydown(e: KeyboardEvent): void {
 }
 
 function onClick(e: MouseEvent): void {
-    const td = (e.target as HTMLElement).closest("td");
+    const cell = (e.target as HTMLElement).closest<HTMLElement>("td, th");
 
-    if (td) {
-        activateCell(td, { focus: true });
+    if (cell) {
+        activateCell(cell, { focus: true });
     }
 }
 
@@ -258,10 +258,10 @@ function onTableFocusout(e: FocusEvent): void {
     const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
 
     if (outsideTable) {
-        const td = target.closest("td");
+        const cell = target.closest<HTMLElement>("td, th");
 
-        if (td) {
-            activateCell(td, { focus: false });
+        if (cell) {
+            activateCell(cell, { focus: false });
         }
     } else {
         target.tabIndex = -1;

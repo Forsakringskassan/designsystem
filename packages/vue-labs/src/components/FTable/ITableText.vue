@@ -80,6 +80,7 @@ function onStartEdit(modelValue: string): void {
     model.value = modelValue;
     tdElement.value.style.setProperty("width", `${String(width)}px`);
 
+    inputElement.value.tabIndex = 0;
     inputElement.value.focus();
 }
 
