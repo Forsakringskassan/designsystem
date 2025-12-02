@@ -58,6 +58,7 @@ $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
         .table-ng__row {
             background: $table-ng-row-background;
             color: $table-ng-row-foreground;
+            box-shadow: $table-ng-row-separator;
 
             &--empty {
                 text-align: center;

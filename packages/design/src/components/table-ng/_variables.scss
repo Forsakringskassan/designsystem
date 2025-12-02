@@ -11,7 +11,7 @@ $table-ng-header-border: 2px solid var(--fkds-color-border-primary) !default;
 $table-ng-row-background: var(--fkds-color-background-primary) !default;
 $table-ng-row-background-alt: var(--fkds-color-background-secondary) !default;
 $table-ng-row-foreground: var(--fkds-color-text-primary) !default;
-$table-ng-row-separator: 1px solid var(--fkds-color-border-primary) !default;
+$table-ng-row-separator: inset 0px -1px 0px var(--fkds-color-border-primary) !default;
 
 // Column
 $table-ng-color-icon-sort-selected: var(--fkds-color-text-primary) !default;
