@@ -4,6 +4,26 @@
 
 ```ts
 
+// @public
+export class FPaginatorPageObject {
+    constructor(selector?: string);
+    currentPageButton(): string;
+    el(): string;
+    firstPageButton(): string;
+    lastPageButton(): string;
+    nextButton(): string;
+    pageButton(page: {
+        byLabel: number | string;
+    } | {
+        byIndex: number | string;
+    }): string;
+    pageButtons(): string;
+    pageCounter(): string;
+    previousButton(): string;
+    // (undocumented)
+    readonly selector: string;
+}
+
 // (No @packageDocumentation comment for this package)
 
 ```
