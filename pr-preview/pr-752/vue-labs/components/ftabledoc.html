@@ -42,10 +42,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-79a13f.json"
+            href="../search-data-2e831f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-iVaxHbYgQz/HGNCkIZqXcmwn7FTafZFLv12keTmWui9ACKImX8Inswz5yO6qqrcl"
+            integrity="sha384-RUShEa9iQbbAgf3sJndTWMe4cVLbsiICzD6wx7FAmvf52YAOErch5zzd19rBGPaO"
             id="search-data"
         />
     </head>
@@ -130,17 +130,6 @@
         </a>
     </li><li class="link ">
         <a
-            href="./designtable.html"
-            
-            
-            
-            data-path="components/designtable.html"
-            
-        >
-            Utforma tabell
-        </a>
-    </li><li class="link ">
-        <a
             href="./usetable.html"
             
             
@@ -148,7 +137,7 @@
             data-path="components/usetable.html"
             
         >
-            Användning
+            Kod
         </a>
     </li><li class="link ">
         <a
@@ -224,9 +213,9 @@
                                 
                                 <li><a href="#tank_pa_att">Tänk på att</a></li>
                                 
-                                <li><a href="#navigering_i_tabell">Navigering i tabell</a></li>
+                                <li><a href="#navigera_i_tabell">Navigera i tabell</a></li>
                                 
-                                <li><a href="#valja_en_eller_flera_rader">Välja en eller flera rader</a></li>
+                                <li><a href="#valja_rader">Välja rader</a></li>
                                 
                                 <li><a href="#bulkoperation">Bulkoperation</a></li>
                                 
@@ -234,15 +223,13 @@
                                 
                                 <li><a href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></li>
                                 
-                                <li><a href="#redigera">Redigera</a></li>
+                                <li><a href="#redigera_innehall">Redigera innehåll</a></li>
                                 
-                                <li><a href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></li>
+                                <li><a href="#andra_lagga_till_eller_ta_bort_rader">Ändra, lägga till eller ta bort rader</a></li>
                                 
                                 <li><a href="#sortera_och_filtrera">Sortera och filtrera</a></li>
                                 
-                                <li><a href="#utforma_en_tabell">Utforma en tabell</a></li>
-                                
-                                <li><a href="#anvandning">Användning</a></li>
+                                <li><a href="#kod">Kod</a></li>
                                 
                                 <li><a href="#relaterat">Relaterat</a></li>
                                 
@@ -257,12 +244,29 @@
 Tabeller kan antingen vara enkla tabeller för presentation eller vara mer avancerade tabeller med olika typer av interaktioner.</p>
 <p class="docs-paragraph">I en tabell har varje rad samma grupper av information som visas kolumnvis, till exempel namn, datum, belopp och diarienummer.</p>
 <p class="docs-paragraph">(länk table Här hittar du information om de gamla tabellkomponenerna datatabell och interaktiv tabell.)</p>
-<h2 id="tank_pa_att"><a class="header-anchor" href="#tank_pa_att">Tänk på att</a></h2><p class="docs-paragraph">Använd inte tabell för att</p>
+<h2 id="tank_pa_att"><a class="header-anchor" href="#tank_pa_att">Tänk på att</a></h2><p class="docs-paragraph">När du ska utforma en tabell är det många saker du behöver tänka på.
+Gör en ordentlig analys av vilken information som måste visas i tabellen.
+Målet bör vara att alla kolumner får plats på skärmen.</p>
+<p class="docs-paragraph">Använd inte tabell för att</p>
 <ul>
 <li>sätta upp innehåll på en sida</li>
 <li>visa enkel information utan kolumnrubriker.</li>
 </ul>
-<h2 id="navigering_i_tabell"><a class="header-anchor" href="#navigering_i_tabell">Navigering i tabell</a></h2><p class="docs-paragraph">I tabellen navigerar användaren med hjälp av piltangenterna. Pilningen är inte cirkulär.
+<h3 id="anpassa_tabell"><a class="header-anchor" href="#anpassa_tabell">Anpassa tabell</a></h3><p class="docs-paragraph">Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara.
+Samma princip gäller för kolumner.
+Sätt vilka kolumner som ska ta maximal bredd och vilka som får ta minsta möjliga.</p>
+<p class="docs-paragraph">Bestäm också vilka celler som ska radbryta och vilka som inte ska göra det.</p>
+<p class="docs-paragraph">Innehåller tabellen många kolumner eller är det svårt att följa en och samma rad genom flera kolumner?
+Gör tabellen zebrarandig för att enklare visuellt skanna av tabellen och följa rader.</p>
+<p class="docs-paragraph">Hur ska tabellen se ut när den är tom?
+Bestäm vilken information användaren ska få.</p>
+<p class="docs-paragraph">Om inte användaren behöver all information direkt kan expanderbara rader vara ett sätt att visa mer information vid behov.</p>
+<h4 id="interagerbara_objekt"><a class="header-anchor" href="#interagerbara_objekt">Interagerbara objekt</a></h4><p class="docs-paragraph">Tänk på att en cell i tabellen bara ska innehålla ett interagerbart objekt.
+När användaren navigerar med piltangenter till en cell (eller tabbar in till första cellen) som innehåller ett interagerbart objekt kommer det interagerbara objektet i cellen få fokus.</p>
+<h3 id="formatera_innehall"><a class="header-anchor" href="#formatera_innehall">Formatera innehåll</a></h3><p class="docs-paragraph">Underlätta för användaren genom att formatera innehållet i tabellen så det blir mer lättläst.</p>
+<p class="docs-paragraph">Undvik långa texter i tabellceller.
+Håll innehållet kort och koncist så att det blir lätt och överskådligt för användaren att hitta.</p>
+<h2 id="navigera_i_tabell"><a class="header-anchor" href="#navigera_i_tabell">Navigera i tabell</a></h2><p class="docs-paragraph">I tabellen navigerar användaren med hjälp av piltangenterna. Pilningen är inte cirkulär.
 Om en cell innehåller ett interagerbart objekt som exempelvis inmatningsfält eller dropplista kommer objektet få fokus direkt.
 Användaren tar sig till och från tabellen med hjälp av tabbning.</p>
 <p class="docs-paragraph">Länk till kodexempel</p>
@@ -277,7 +281,7 @@ Användaren tar sig till och från tabellen med hjälp av tabbning.</p>
 <li>ctrl + Home: flyttar fokus till cell längst till vänster i översta raden</li>
 <li>ctrl + End: flyttar fokus till cell längst till höger i nedersta raden.</li>
 </ul>
-<h2 id="valja_en_eller_flera_rader"><a class="header-anchor" href="#valja_en_eller_flera_rader">Välja en eller flera rader</a></h2><p class="docs-paragraph">Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
+<h2 id="valja_rader"><a class="header-anchor" href="#valja_rader">Välja rader</a></h2><p class="docs-paragraph">Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
 Om tabellen har kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.</p>
 <p class="docs-paragraph">Länk till kodexempel</p>
 <h2 id="bulkoperation"><a class="header-anchor" href="#bulkoperation">Bulkoperation</a></h2><p class="docs-paragraph">Bulkoperation innebär att användaren kan välja ett antal rader och utföra åtgärd/operation för alla valda rader samtidigt. Bulkoperation ingår som standard för kolumn med kryssrutor.</p>
@@ -292,26 +296,29 @@ Raderna kan presenteras på två sätt:</p>
 </ul>
 <p class="docs-paragraph">Länk till kodexempel</p>
 <h2 id="atgardsknappar_och_lankar"><a class="header-anchor" href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></h2><p class="docs-paragraph">Tabellen kan ha åtgärdsknappar för att utföra en operation på en rad som till exempel ta bort, ändra eller visa mer information.
-Det går också att placera länkar i tabellen.</p>
+Det går också att placera länkar i tabellen.
+Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig.
+Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis som förklarar vilken rad som påverkas).
+Om du behöver förtydliga sammanhanget för användare med skärmläsare kan du använda en sr-only för etiketten.</p>
 <p class="docs-paragraph">Länk till kodexempel</p>
-<h2 id="redigera"><a class="header-anchor" href="#redigera">Redigera</a></h2><p class="docs-paragraph">För tabell finns det två typer av redigeringar</p>
+<h2 id="redigera_innehall"><a class="header-anchor" href="#redigera_innehall">Redigera innehåll</a></h2><p class="docs-paragraph">För tabell finns det två typer av redigeringar</p>
 <ul>
 <li>inline-redigering: användaren redigerar direkt innehållet på en rad genom att stå i aktuell cell</li>
-<li>via formulär: användaren öppnar separat formulär eller modal för att redigera innehåll på rad.</li>
+<li>via formulär: användaren öppnar separat formulär eller modal för att redigera innehåll på rad, se avsnitt nedan (länk till Ändra, lägga till och ta bort).</li>
 </ul>
-<p class="docs-paragraph">Tabellen har stöd för inline-redigering.</p>
+<p class="docs-paragraph">Tabellen har stöd för inline-redigering.
+Använd gärna de specialiserade inmatningsfälten (länk) eller dropplistan (länk) som tabellen stödjer.</p>
 <h3 id="inline_redigering"><a class="header-anchor" href="#inline_redigering">Inline-redigering</a></h3><p class="docs-paragraph">Tabellen har stöd för inline-redigering vilket innebär att användaren direkt kan redigera innehåll i cell med hjälp av inmatningsfält.
 Förutom vanligt textfält har tabellen även stöd för att lägga de specialiserade inmatningsfälten och dropplista i en cell.</p>
 <p class="docs-paragraph">Länk till kodexempel</p>
-<h2 id="lagga_till_ta_bort_rader"><a class="header-anchor" href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></h2><p class="docs-paragraph">Om användaren behöver lägga till och ta bort rader i tabellen får du som konsument sätta upp detta.</p>
+<h2 id="andra_lagga_till_eller_ta_bort_rader"><a class="header-anchor" href="#andra_lagga_till_eller_ta_bort_rader">Ändra, lägga till eller ta bort rader</a></h2><p class="docs-paragraph">Om användaren behöver ändra innehåll i rad, lägga till och/eller ta bort rader i tabellen kan du använda datamängdredigeraren (länk).</p>
 <p class="docs-paragraph">Exempel på tabell med knappar för ta bort/lägga till.</p>
 <h2 id="sortera_och_filtrera"><a class="header-anchor" href="#sortera_och_filtrera">Sortera och filtrera</a></h2><p class="docs-paragraph">När tabellerna är stora och innehåller många rader behöver användaren kunna sortera och/eller filtrera innehållet.
-Med datamängsorteraren (FSortFilterDataset) kan du lägga till funktionalitet för sortering och filtrering i tabell.</p>
-<p class="docs-paragraph">Tänk på att tabell med sortering bör ha en förvald aktiverad kolumn som är sorterad i stigande/fallande.
+Med datamängsorteraren (länk FSortFilterDataset) kan du lägga till funktionalitet för att sortera och filtrera i tabell.</p>
+<p class="docs-paragraph">Tänk på att tabell med sortering bör ha en förvald aktiverad kolumn som är sorterad i stigande/fallande ordning.
 Du väljer den kolumn som är mest trolig att användaren vill sortera på och som vanligtvis är den första kolumnen.</p>
 <p class="docs-paragraph">Läs mer om hur du använder komponent (länk FSortFilterDataset datamängdsorteraren).</p>
-<h2 id="utforma_en_tabell"><a class="header-anchor" href="#utforma_en_tabell">Utforma en tabell</a></h2><p class="docs-paragraph">(länk design-table Läs om hur du utformar/designar en tabell för din applikation.)</p>
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">(länk use-table Läs om hur du sätter upp/kodar en tabell för din applikation.)</p>
+<h2 id="kod"><a class="header-anchor" href="#kod">Kod</a></h2><p class="docs-paragraph">(länk use-table Läs om hur du sätter upp/kodar en tabell för din applikation.)</p>
 <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2>
 
                     </div>

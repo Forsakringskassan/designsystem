@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Användning - FKUI Labs</title><link
+        <title>Kod - FKUI Labs</title><link
             rel="stylesheet"
             href="../assets/docs-0bcb87.css"
             crossorigin
@@ -42,10 +42,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-79a13f.json"
+            href="../search-data-2e831f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-iVaxHbYgQz/HGNCkIZqXcmwn7FTafZFLv12keTmWui9ACKImX8Inswz5yO6qqrcl"
+            integrity="sha384-RUShEa9iQbbAgf3sJndTWMe4cVLbsiICzD6wx7FAmvf52YAOErch5zzd19rBGPaO"
             id="search-data"
         />
     </head>
@@ -128,17 +128,6 @@
         >
             Tabell
         </a>
-    </li><li class="link ">
-        <a
-            href="./designtable.html"
-            
-            
-            
-            data-path="components/designtable.html"
-            
-        >
-            Utforma tabell
-        </a>
     </li><li class="link active">
         <a
             href="./usetable.html"
@@ -148,7 +137,7 @@
             data-path="components/usetable.html"
             
         >
-            Användning
+            Kod
         </a>
     </li><li class="link ">
         <a
@@ -187,7 +176,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Användning</h1>
+                    <h1 id="title">Kod</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -233,6 +222,8 @@
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
                                 <li><a href="#api">API</a></li>
+                                
+                                <li><a href="#ftable">FTable</a></li>
                                 
                                 <li><a href="#relaterat">Relaterat</a></li>
                                 
@@ -302,11 +293,15 @@ Det är fel att sätta både <code>expand</code> och <code>shrink</code> samtidi
 <li>länk: <code>anchor</code></li>
 <li>dropplista: <code>select</code></li>
 <li>kontextmeny: <code>contextmenu</code></li>
+<li>specialiserade inmatningsfält:</li>
 </ul>
 <p class="docs-paragraph">Du anger kolumntypen genom att sätta propen <code>type</code>.</p>
 <p class="docs-paragraph">Kolumntypen text innebär att cellen kan presentera data i olika format och den kan även vara redigerbar.
 Läs mer om redigering i tabell. (länk)</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
+<h3 id="tnum"><a class="header-anchor" href="#tnum">Tnum</a></h3><p class="docs-paragraph">Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
+Till exempel kommer talet 111 ta samma plats som 000.
+Vid numeriska värden ska innehållet i kolumn visas med tnum.</p>
 <h2 id="rad_id"><a class="header-anchor" href="#rad_id">Rad-id</a></h2><p class="docs-paragraph">För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med <code>keyAttribute</code>. Nyckeln finns i varje radobjekt.<br>
 Om du anger keyAttribute, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.</p>
 <p class="docs-paragraph">Att använda keyAttribute är valfritt och det behövs inte om det finns ett naturligt id att ange för dina rader.
@@ -367,8 +362,220 @@ För att definiera kolumnen som kryssruta eller radioknapp, se avsnitt Kolumntyp
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att (länk till translate-text, anpassa och översätta text).</p>
-<p class="docs-paragraph">Komplettera textnycklarna.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2>
+
+        <dl class="docs-api docs-api--translation">
+            
+                        <dt>
+                            <code id="ftable-translation-fkui-table-selectable-checkbox"
+                                ><a class="docs-api__anchor" href="#ftable-translation-fkui-table-selectable-checkbox"
+                                    ><span class="docs-api__name"
+                                        >fkui.table.selectable.checkbox</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Screen reader text for checkbox in multi select table row.</p>
+
+                            <p class="doc-api__item">Default: "Välj rad"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-translation-fkui-table-selectable-radio"
+                                ><a class="docs-api__anchor" href="#ftable-translation-fkui-table-selectable-radio"
+                                    ><span class="docs-api__name"
+                                        >fkui.table.selectable.radio</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Screen reader text for radio button in single select table row.</p>
+
+                            <p class="doc-api__item">Default: "Välj rad"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><h2 id="ftable"><a class="header-anchor" href="#ftable">FTable</a></h2>
+        <h3 id="ftable-props">
+            <a class="header-anchor" href="#ftable-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftable-prop-columns"
+                                ><a class="docs-api__anchor" href="#ftable-prop-columns"
+                                    ><span class="docs-api__name"
+                                        >columns</span
+                                    >: Array</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-prop-rows"
+                                ><a class="docs-api__anchor" href="#ftable-prop-rows"
+                                    ><span class="docs-api__name"
+                                        >rows</span
+                                    >: Array</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-prop-keyattribute"
+                                ><a class="docs-api__anchor" href="#ftable-prop-keyattribute"
+                                    ><span class="docs-api__name"
+                                        >keyAttribute</span
+                                    >: KeyAttribute</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-prop-expandableattribute"
+                                ><a class="docs-api__anchor" href="#ftable-prop-expandableattribute"
+                                    ><span class="docs-api__name"
+                                        >expandableAttribute</span
+                                    >: ExpandableAttribute</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-prop-striped"
+                                ><a class="docs-api__anchor" href="#ftable-prop-striped"
+                                    ><span class="docs-api__name"
+                                        >striped</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-prop-selectable"
+                                ><a class="docs-api__anchor" href="#ftable-prop-selectable"
+                                    ><span class="docs-api__name"
+                                        >selectable</span
+                                    >: union</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="ftable-slots">
+            <a class="header-anchor" href="#ftable-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftable-slot-empty"
+                                ><a class="docs-api__anchor" href="#ftable-slot-empty"
+                                    ><span class="docs-api__name"
+                                        >empty</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-slot-expandable"
+                                ><a class="docs-api__anchor" href="#ftable-slot-expandable"
+                                    ><span class="docs-api__name"
+                                        >expandable</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>row: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftable-slot-footer"
+                                ><a class="docs-api__anchor" href="#ftable-slot-footer"
+                                    ><span class="docs-api__name"
+                                        >footer</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph">Datamängdredigeraren (länk)
+Datamängdsorteraren (länk)
+Tabell (länk)</p>
+
 
                     </div>
                 </main>
