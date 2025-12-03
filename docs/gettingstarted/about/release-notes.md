@@ -9,6 +9,18 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.30.0
+
+2025-12-04
+
+Buggfix för tooltip som ger följande ändringar:
+
+- återställd till den större klickytan som var tidigare
+- större ikon
+- ikonens placering är inte vertikalt centrerad (förskjuten neråt).
+
+Övriga buggfixar, se {@link changelog Changelog}.
+
 ## Version 6.29.0
 
 2025-11-27
