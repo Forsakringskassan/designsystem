@@ -1,4 +1,4 @@
-import { type PropType, defineComponent } from "vue";
+import { type PropType, defineComponent, ref } from "vue";
 import {
     FInteractiveTablePageObject,
     FSortFilterDatasetPageObject,
@@ -195,6 +195,23 @@ describe("sort", () => {
         sortFilterDataset.selectField
             .selectedOption()
             .should("contain.text", "Välj");
+    });
+
+    it("should handle dynamic column label", () => {
+        const name = ref("foo");
+        cy.mount(FSortFilterDataset, {
+            props: {
+                data: [],
+                sortableAttributes: { column: name },
+            },
+            attrs: {
+                "data-test": "sort-filter-dataset-example",
+            },
+        });
+        name.value = "bar";
+        sortFilterDataset.selectField
+            .listOfOptions()
+            .should("deep.equal", ["Välj", "bar (stigande)", "bar (fallande)"]);
     });
 });
 
