@@ -1,5 +1,16 @@
 <script setup lang="ts" generic="T">
-import { type PropType, type Ref, computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from "vue";
+import {
+    type PropType,
+    type Ref,
+    computed,
+    nextTick,
+    onMounted,
+    provide,
+    ref,
+    toValue,
+    useTemplateRef,
+    watch,
+} from "vue";
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
@@ -14,6 +25,7 @@ import {
 import { filter } from "./FSortFilterFilter";
 import { sort } from "./FSortFilterSorter";
 import { type SortOrder } from "./sort-order";
+import { type SortableAttribute } from "./sortable-attribute";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
@@ -29,7 +41,7 @@ const props = defineProps({
      * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
      */
     sortableAttributes: {
-        type: Object as PropType<Record<string, string>>,
+        type: Object as PropType<Record<string, string | Readonly<Ref<string>>>>,
         required: true,
     },
     /**
@@ -106,8 +118,8 @@ const searchField = useTemplateRef("search-field");
 
 const useDefaultSortOrder = ref(true);
 const searchString = ref("");
-const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 };
-const sortAttribute = ref<SortOrder>(defaultSortValue);
+const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 } satisfies SortOrder;
+const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
 const sortFilterResult = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
 const debouncedFilterResultset = debounce(filterResultset, 250);
 
@@ -123,8 +135,8 @@ const showClearButton = computed(() => {
     return searchString.value.length > 0;
 });
 
-const sortOrders = computed((): SortOrder[] => {
-    const arr = [] as SortOrder[];
+const sortOrders = computed((): SortableAttribute[] => {
+    const arr = [] as SortableAttribute[];
     let id = 0;
     Object.keys(props.sortableAttributes).forEach((key: string) => {
         arr.push({
@@ -158,9 +170,12 @@ provide("sort", (attribute: string, ascending: boolean) => {
     });
 
     if (foundAttribute) {
-        sortAttribute.value = foundAttribute;
+        sortAttribute.value = {
+            ...foundAttribute,
+            name: toValue(foundAttribute.name),
+        };
     } else {
-        sortAttribute.value = { attribute: "", ascending: false } as SortOrder;
+        sortAttribute.value = { ...defaultSortValue };
     }
 
     sortFilterData();
@@ -188,7 +203,10 @@ watch(
                 return item.attribute === props.defaultSortAttribute && item.ascending === props.defaultSortAscending;
             });
             if (foundAttribute) {
-                sortAttribute.value = foundAttribute;
+                sortAttribute.value = {
+                    ...foundAttribute,
+                    name: toValue(foundAttribute.name),
+                };
             }
             useDefaultSortOrder.value = false;
         }

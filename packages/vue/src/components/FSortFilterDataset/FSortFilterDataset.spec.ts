@@ -187,6 +187,7 @@ it("should emit event with used attributes when sorting using table heading", as
     getUnderlyingComponent(wrapper).triggersort("b", true);
     await wrapper.vm.$nextTick();
 
+    expect(spyGetUsedSortAttributes).toHaveBeenCalledTimes(1);
     expect(spyGetUsedSortAttributes).toHaveBeenCalledWith({
         attribute: "b",
         name: "Column B",
@@ -195,8 +196,10 @@ it("should emit event with used attributes when sorting using table heading", as
         id: 2,
     });
 
+    spyGetUsedSortAttributes.mockClear();
     getUnderlyingComponent(wrapper).triggersort("b", false);
 
+    expect(spyGetUsedSortAttributes).toHaveBeenCalledTimes(1);
     expect(spyGetUsedSortAttributes).toHaveBeenCalledWith({
         attribute: "b",
         name: "Column B",
@@ -205,11 +208,16 @@ it("should emit event with used attributes when sorting using table heading", as
         id: 3,
     });
 
+    spyGetUsedSortAttributes.mockClear();
     getUnderlyingComponent(wrapper).triggersort("", true);
 
+    expect(spyGetUsedSortAttributes).toHaveBeenCalledTimes(1);
     expect(spyGetUsedSortAttributes).toHaveBeenCalledWith({
         attribute: "",
         ascending: false,
+        ascendingName: "",
+        id: 0,
+        name: "",
     });
 });
 
