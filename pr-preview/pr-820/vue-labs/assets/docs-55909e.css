@@ -7109,14 +7109,14 @@ main {
 #outline .outline__heading {
   font-size: 1rem;
   font-weight: normal;
-  color: #5f6165;
+  color: var(--docs-outline-heading-color);
   margin: 0 0 0.5rem;
 }
 
 #outline ul {
   margin: 0;
   padding: 0;
-  border-left: 1px solid #ddddde;
+  border-left: 1px solid var(--docs-outline-list-border-color);
 }
 
 #outline li {
@@ -7158,7 +7158,7 @@ main {
   width: 100%;
   font-size: 16px;
   line-height: 20px;
-  color: var(--f-font-color-primary);
+  color: var(--docs-text-color-default);
   padding: 0.5rem;
   text-decoration: none;
 }
@@ -7457,7 +7457,7 @@ h6 code {
 }
 
 #content a:where(:hover:not(.code-preview a, h2 a, h3 a, h4 a, h5 a)) {
-  color: var(--f-text-color-default);
+  color: var(--docs-text-color-default);
   text-decoration-color: var(--docs-text-link-hover);
 }
 
@@ -7672,7 +7672,7 @@ main #aside dd {
   padding: 0.5rem;
   font-weight: 600;
   line-height: var(--f-line-height-medium);
-  color: var(--f-text-color-default);
+  color: var(--docs-text-color-default);
 }
 
 .code-preview code {
@@ -7780,7 +7780,7 @@ kbd {
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: var(--f-text-color-default);
+  color: var(--docs-text-color-default);
 }
 
 #search-results {
@@ -7792,7 +7792,7 @@ kbd {
 
 #search-results a,
 #search-results a:visited {
-  color: var(--f-text-color-default);
+  color: var(--docs-text-color-default);
   text-decoration: none;
 }
 
@@ -7863,6 +7863,8 @@ kbd {
   --docs-motd-info-background-color: #f5f6fa;
   --docs-motd-link-color: var(--docs-text-color-discrete);
   --docs-motd-hover-color: var(--docs-text-color-default);
+  --docs-outline-heading-heading-color: #5f6165;
+  --docs-outline-list-border-color: #ddddde;
   --docs-outline-active-border-color: #116a3e;
   --docs-outline-hover-background-color: #ddddde;
   --docs-tags-optional-background-color: transparent;
