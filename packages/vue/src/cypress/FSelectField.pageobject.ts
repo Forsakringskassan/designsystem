@@ -43,7 +43,7 @@ export class FSelectFieldPageObject implements BasePageObject {
             .get(`${this.selector} select option`)
             .not('[disabled="disabled"]')
             .each((el) => {
-                return listItem.push(el.get(0).innerText);
+                return listItem.push(el.get(0).innerText.trim());
             })
             .then(() => listItem);
     }
