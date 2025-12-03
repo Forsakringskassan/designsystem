@@ -198,9 +198,6 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "EventBus",
-    "EventBus",
-    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -214,6 +211,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -258,6 +258,12 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -265,12 +271,6 @@
     "h-display-flex",
     "Skärmläsare",
     "NVDA",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -521,17 +521,6 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "modalfunktion",
-    "options API",
-    "formModal() function",
-    "modalfunktion",
-    "formulärsmodal",
-    "options API",
-    "confirmModal() function",
-    "modalfunktion",
-    "bekräftelsemodal",
-    "options API",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -567,6 +556,17 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
+    "openModal",
+    "modalfunktion",
+    "options API",
+    "formModal() function",
+    "modalfunktion",
+    "formulärsmodal",
+    "options API",
+    "confirmModal() function",
+    "modalfunktion",
+    "bekräftelsemodal",
+    "options API",
     "ValidationErrorMessageBuilder: map() method",
     "feltext",
     "validator",
@@ -1081,14 +1081,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1119,6 +1111,14 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -1201,23 +1201,6 @@
       ]
     },
     {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
-      ]
-    },
-    {
       "url": "functions/i18next-translate/i18next.html",
       "title": "i18next",
       "terms": [
@@ -1236,6 +1219,23 @@
       "title": "I18nextProvider",
       "terms": [
         "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
       ]
     },
     {
@@ -1836,32 +1836,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": [
-        "modalfunktion",
-        "options API"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": [
-        "modalfunktion",
-        "formulärsmodal",
-        "options API"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": [
-        "modalfunktion",
-        "bekräftelsemodal",
-        "options API"
-      ]
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -1979,6 +1953,32 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": [
+        "modalfunktion",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": [
+        "modalfunktion",
+        "formulärsmodal",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
+      "terms": [
+        "modalfunktion",
+        "bekräftelsemodal",
+        "options API"
       ]
     },
     {
@@ -2463,17 +2463,17 @@
     "198": 52,
     "199": 52,
     "200": 52,
-    "201": 53,
+    "201": 52,
     "202": 53,
     "203": 53,
     "204": 53,
-    "205": 54,
+    "205": 53,
     "206": 54,
     "207": 54,
     "208": 54,
     "209": 55,
     "210": 55,
-    "211": 55,
+    "211": 56,
     "212": 56,
     "213": 56,
     "214": 57,
@@ -2522,13 +2522,13 @@
     "257": 63,
     "258": 64,
     "259": 64,
-    "260": 64,
-    "261": 64,
-    "262": 64,
-    "263": 65,
-    "264": 65,
-    "265": 66,
-    "266": 66,
+    "260": 65,
+    "261": 65,
+    "262": 66,
+    "263": 66,
+    "264": 67,
+    "265": 67,
+    "266": 67,
     "267": 67,
     "268": 67,
     "269": 68,
@@ -2785,48 +2785,48 @@
     "520": 141,
     "521": 142,
     "522": 142,
-    "523": 142,
+    "523": 143,
     "524": 143,
-    "525": 143,
-    "526": 143,
-    "527": 143,
-    "528": 144,
-    "529": 144,
-    "530": 144,
-    "531": 144,
-    "532": 145,
-    "533": 145,
-    "534": 146,
-    "535": 146,
-    "536": 147,
-    "537": 147,
-    "538": 148,
-    "539": 148,
-    "540": 149,
-    "541": 149,
-    "542": 150,
-    "543": 150,
-    "544": 151,
-    "545": 151,
-    "546": 152,
-    "547": 152,
-    "548": 153,
-    "549": 153,
-    "550": 154,
-    "551": 154,
-    "552": 155,
-    "553": 155,
-    "554": 156,
-    "555": 156,
-    "556": 157,
-    "557": 157,
-    "558": 158,
-    "559": 158,
-    "560": 158,
-    "561": 159,
-    "562": 159,
-    "563": 160,
-    "564": 160,
+    "525": 144,
+    "526": 144,
+    "527": 145,
+    "528": 145,
+    "529": 146,
+    "530": 146,
+    "531": 147,
+    "532": 147,
+    "533": 148,
+    "534": 148,
+    "535": 149,
+    "536": 149,
+    "537": 150,
+    "538": 150,
+    "539": 151,
+    "540": 151,
+    "541": 152,
+    "542": 152,
+    "543": 153,
+    "544": 153,
+    "545": 154,
+    "546": 154,
+    "547": 155,
+    "548": 155,
+    "549": 155,
+    "550": 156,
+    "551": 156,
+    "552": 157,
+    "553": 157,
+    "554": 158,
+    "555": 158,
+    "556": 159,
+    "557": 159,
+    "558": 159,
+    "559": 160,
+    "560": 160,
+    "561": 160,
+    "562": 160,
+    "563": 161,
+    "564": 161,
     "565": 161,
     "566": 161,
     "567": 162,
