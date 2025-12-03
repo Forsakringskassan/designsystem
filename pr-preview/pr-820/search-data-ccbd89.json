@@ -258,6 +258,12 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -288,12 +294,6 @@
     "assertRef() function",
     "clamp() function",
     "datum",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Validatorer",
     "identisk",
     "matches",
@@ -506,16 +506,16 @@
     "ICalendarMonth",
     "Animerad expandering",
     "IAnimateExpand",
+    "Filväljare",
+    "FFileSelector",
+    "Filpresentatör",
+    "FFileItem",
     "Expanderbart stycke",
     "FExpandableParagraph",
     "Expanderbar panel",
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
-    "Filväljare",
-    "FFileSelector",
-    "Filpresentatör",
-    "FFileItem",
     "Version 6 migreringsguide: @fkui/vue",
     "Version 6 migreringsguide",
     "Version 6 migreringsguide: @fkui/logic",
@@ -1201,6 +1201,27 @@
       ]
     },
     {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
       "url": "functions/helpers/index.html",
       "title": "Hjälpklasser",
       "terms": [
@@ -1306,27 +1327,6 @@
       "title": "clamp() function",
       "terms": [
         "datum"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
       ]
     },
     {
@@ -1776,6 +1776,20 @@
       ]
     },
     {
+      "url": "components/file-upload/ffileselector.html",
+      "title": "Filväljare",
+      "terms": [
+        "FFileSelector"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileitem.html",
+      "title": "Filpresentatör",
+      "terms": [
+        "FFileItem"
+      ]
+    },
+    {
       "url": "components/expandable/fexpandableparagraph.html",
       "title": "Expanderbart stycke",
       "terms": [
@@ -1794,20 +1808,6 @@
       "title": "Expanderbart innehåll",
       "terms": [
         "FExpand"
-      ]
-    },
-    {
-      "url": "components/file-upload/ffileselector.html",
-      "title": "Filväljare",
-      "terms": [
-        "FFileSelector"
-      ]
-    },
-    {
-      "url": "components/file-upload/ffileitem.html",
-      "title": "Filpresentatör",
-      "terms": [
-        "FFileItem"
       ]
     },
     {
@@ -2522,37 +2522,37 @@
     "257": 63,
     "258": 64,
     "259": 64,
-    "260": 64,
-    "261": 64,
-    "262": 64,
-    "263": 65,
-    "264": 65,
-    "265": 66,
-    "266": 66,
+    "260": 65,
+    "261": 65,
+    "262": 66,
+    "263": 66,
+    "264": 67,
+    "265": 67,
+    "266": 67,
     "267": 67,
     "268": 67,
-    "269": 67,
-    "270": 67,
-    "271": 67,
-    "272": 68,
-    "273": 68,
-    "274": 69,
+    "269": 68,
+    "270": 68,
+    "271": 69,
+    "272": 69,
+    "273": 70,
+    "274": 70,
     "275": 70,
-    "276": 71,
-    "277": 72,
-    "278": 73,
-    "279": 74,
-    "280": 75,
-    "281": 76,
-    "282": 77,
-    "283": 78,
-    "284": 79,
-    "285": 80,
-    "286": 81,
-    "287": 81,
-    "288": 82,
-    "289": 82,
-    "290": 83,
+    "276": 70,
+    "277": 70,
+    "278": 71,
+    "279": 71,
+    "280": 72,
+    "281": 73,
+    "282": 74,
+    "283": 75,
+    "284": 76,
+    "285": 77,
+    "286": 78,
+    "287": 79,
+    "288": 80,
+    "289": 81,
+    "290": 82,
     "291": 83,
     "292": 84,
     "293": 84,

@@ -28,18 +28,17 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FExpandableParagraph/examples/FExpandableParagraphMultipleExample.vue:FExpandableParagraphMultipleExample-1b12ba.js
+// virtual-entry:virtual:packages/vue/src/components/FExpandablePanel/examples/FExpandablePanelNotificationExample.vue:FExpandablePanelNotificationExample-f7e5aa.js
 import { defineComponent } from "vue";
-import { FExpandableParagraph } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+import { FExpandablePanel } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "FExpandableParagraphMultipleExample",
-  components: { FExpandableParagraph },
+  name: "FExpandablePanelExample",
+  components: { FExpandablePanel },
   data() {
     return {
       expanded1: false,
-      expanded2: false,
-      expanded3: false
+      expanded2: false
     };
   },
   methods: {
@@ -48,31 +47,26 @@ var exampleComponent = defineComponent({
     },
     onToggle2() {
       this.expanded2 = !this.expanded2;
-    },
-    onToggle3() {
-      this.expanded3 = !this.expanded3;
     }
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_expandable_paragraph = _resolveComponent("f-expandable-paragraph");
+  const _component_f_expandable_panel = _resolveComponent("f-expandable-panel");
   return _openBlock(), _createElementBlock("div", null, [
-    _createVNode(_component_f_expandable_paragraph, {
+    _createVNode(_component_f_expandable_panel, {
       expanded: _ctx.expanded1,
-      "header-tag": "h2",
+      notifications: 1,
       onToggle: _ctx.onToggle1
     }, {
       title: _withCtx(() => [..._cache[0] || (_cache[0] = [
         _createTextVNode(
-          " Titel (h2) ",
+          " Titel med en notifiering ",
           -1
           /* CACHED */
         )
       ])]),
       default: _withCtx(() => [..._cache[1] || (_cache[1] = [
-        _createElementVNode(
-          "span",
-          null,
+        _createTextVNode(
           " Inneh\xE5ll ",
           -1
           /* CACHED */
@@ -81,53 +75,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]),
-    _createVNode(_component_f_expandable_paragraph, {
+    _createVNode(_component_f_expandable_panel, {
       expanded: _ctx.expanded2,
-      "header-tag": "h3",
+      notifications: 2,
       onToggle: _ctx.onToggle2
     }, {
       title: _withCtx(() => [..._cache[2] || (_cache[2] = [
         _createTextVNode(
-          " Titel (h3) ",
+          " Titel med tv\xE5 notifieringar ",
           -1
           /* CACHED */
         )
       ])]),
       default: _withCtx(() => [..._cache[3] || (_cache[3] = [
-        _createElementVNode(
-          "span",
-          null,
-          " Inneh\xE5ll ",
-          -1
-          /* CACHED */
-        )
-      ])]),
-      _: 1
-      /* STABLE */
-    }, 8, ["expanded", "onToggle"]),
-    _createVNode(_component_f_expandable_paragraph, {
-      expanded: _ctx.expanded3,
-      "header-tag": "h4",
-      onToggle: _ctx.onToggle3
-    }, {
-      title: _withCtx(() => [..._cache[4] || (_cache[4] = [
         _createTextVNode(
-          " Titel (h4) ",
-          -1
-          /* CACHED */
-        )
-      ])]),
-      related: _withCtx(() => [..._cache[5] || (_cache[5] = [
-        _createTextVNode(
-          " 2020-06-25 ",
-          -1
-          /* CACHED */
-        )
-      ])]),
-      default: _withCtx(() => [..._cache[6] || (_cache[6] = [
-        _createElementVNode(
-          "span",
-          null,
           " Inneh\xE5ll ",
           -1
           /* CACHED */
@@ -141,7 +102,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1b12ba"
+  selector: "#example-f7e5aa"
 });
 export {
   render
