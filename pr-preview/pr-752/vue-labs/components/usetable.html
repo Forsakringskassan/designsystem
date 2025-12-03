@@ -6,32 +6,32 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Användning - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-8175ba.css"
+            href="../assets/docs-0bcb87.css"
             crossorigin
-            integrity="sha384-oeieyVIhUpl8BZGw6SJnkOnnSJYt15ULNE7aiDAOuG84KZAgvADto27jKqBUQ51S"
+            integrity="sha384-PETmbePp0+kyDOO3Bz7Wq70zPhBaRu/OdqOJ4TbQDOQZIglMb4/uLVzg38aDXG5Q"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-70c993.css"
+            href="../assets/docs-fkui-d7a107.css"
             crossorigin
-            integrity="sha384-SIPaaUTwESFQ4iWAYM3lJPbpFs1kHF1zttN6x0IZNmVJo5U/Zttf3Yqb7ZXq6YHn"
+            integrity="sha384-27wzEUhU9QIcuuq/0nMPAePQYioR9/b74KBWyj59zWy6UYfFxnreSS/3T7blajY5"
             data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-c0b472.js",
+    "vue": "../assets/vendor-vue-9e9e90.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-b0075f.js",
     "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-ab6012.js"
+    "@fkui/vue": "../assets/vendor-fkui-vue-4b2475.js"
   },
   "integrity": {
-    "../assets/vendor-vue-c0b472.js": "sha384-vbQkxi/Mwr2sqMtUoLu0YSRaMnGni67qxzYwbFDEwsqTqis1/VrDXNcSdOeX+QBs",
+    "../assets/vendor-vue-9e9e90.js": "sha384-JyjQby9Ih+Xp0YBPzzlKuoCLrmKKg7F9EjpfpMrntDM1PeFOpUyTQQ+aotcPWYYH",
     "../assets/vendor-fkui-logic-b0075f.js": "sha384-8+BulV9pwaaof6GCYzDYWUpbIvcu9fc2Uh+6BPuhF2mi1O4YlXtNBWTy7IzL6v7N",
     "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
-    "../assets/vendor-fkui-vue-ab6012.js": "sha384-rkAMvaLIXzj3XOjbE8jImsV5hZj+KZoWfJ9JspeXq6HQug2it/8r3XGs0776PRoB"
+    "../assets/vendor-fkui-vue-4b2475.js": "sha384-uYhtxcZkS5iWs80jbHdu78lXwtKvJ1gAcWmI0n3daDEm+Mw+B9ekxYSLpmjh9aI3"
   }
 }
         </script><script
@@ -42,10 +42,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-8a7895.json"
+            href="../search-data-79a13f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-CB/+8V2sqYojf18yI5Dd+d6oBLzXkG4hN6kqwNqxHP0n1owIrgx5Y59CdKpUYmwP"
+            integrity="sha384-iVaxHbYgQz/HGNCkIZqXcmwn7FTafZFLv12keTmWui9ACKImX8Inswz5yO6qqrcl"
             id="search-data"
         />
     </head>
@@ -104,7 +104,7 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.28.0
+        6.29.0
     </span>
 </div>
 </div>
@@ -172,6 +172,17 @@
         >
             Tidsinmatning
         </a>
+    </li><li class="link ">
+        <a
+            href="./xfiledragdrop.html"
+            
+            
+            
+            data-path="components/xfiledragdrop.html"
+            
+        >
+            XFileDragdrop
+        </a>
     </li></ol>
 </nav>
 </div><main>
@@ -221,6 +232,8 @@
                                 
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
+                                <li><a href="#api">API</a></li>
+                                
                                 <li><a href="#relaterat">Relaterat</a></li>
                                 
                             </ul>
@@ -232,11 +245,11 @@
                     <div id="content"><p class="docs-paragraph">Den här sidan innehåller information om hur du sätter upp komponenten tabell i din applikation.</p>
 <h2 id="navigering"><a class="header-anchor" href="#navigering">Navigering</a></h2><p class="docs-paragraph">Navigering i en tabell styrs av vilken role som tabellen har.</p>
 <p class="docs-paragraph">Du sätter ingen role om tabellen enbart ska presentera data.
-Om tabellen har expanderbara rader ska du sätta role:treegrid oavsett vilka andra funktioner som ingår i tabellen.
-För tabeller som innehåller andra funktioner men inte expanderbara rader ska du sätta role:grid.</p>
+Om tabellen har expanderbara rader ska du sätta <code>role:treegrid</code> oavsett vilka andra funktioner som ingår i tabellen.
+För tabeller som innehåller andra funktioner men inte expanderbara rader ska du sätta <code>role:grid</code>.</p>
 <p class="docs-paragraph">Det går inte att navigera till eller i en tabell som saknar role.
 Användare med skärmläsare kommer kunna navigera i tabellen och få den uppläst förutsatt att du....(fråga)
-Vid role:grid eller role:treegrid navigerar användren till tabellen genom tabbning.
+Vid <code>role:grid</code> eller <code>role:treegrid</code> navigerar användren till tabellen genom tabbning.
 När användaren tabbat sig till tabellen sker navigering inom tabellen med hjälp av piltangenterna.</p>
 <h2 id="tabellrubrik"><a class="header-anchor" href="#tabellrubrik">Tabellrubrik</a></h2><p class="docs-paragraph">En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad rubrik (heading).
 Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå tabellen.</p>
@@ -355,7 +368,7 @@ För att definiera kolumnen som kryssruta eller radioknapp, se avsnitt Kolumntyp
 <p class="docs-paragraph">// plats för kodexempel</p>
 <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att (länk till translate-text, anpassa och översätta text).</p>
 <p class="docs-paragraph">Komplettera textnycklarna.</p>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2>
 
                     </div>
                 </main>
