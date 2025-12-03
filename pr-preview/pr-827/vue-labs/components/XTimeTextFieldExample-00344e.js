@@ -28,7 +28,7 @@ import { defineComponent as defineComponent2 } from "vue";
 
 // dist/esm/index.esm.js
 import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, inject, ref, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective } from "vue";
-import { assertRef, ElementIdService, assertSet, ValidationService, alertScreenReader, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
+import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
 import { getInternalKey, FIcon, IFlex, IFlexItem, IComboboxDropdown, useTranslate, useSlotUtils, setInternalKeys, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 var es_iterator_constructor = {};
 var globalThis_1;
