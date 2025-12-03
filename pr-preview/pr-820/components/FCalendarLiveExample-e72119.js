@@ -6629,7 +6629,7 @@ function useAnimation(options) {
 import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref4, watch as watch2 } from "vue";
 function useHorizontalOffset(options) {
   const { element: elementRef, parent: parentRef } = options;
-  const offset2 = ref4(0);
+  const offset2 = ref4(16);
   watch2(() => elementRef.value, updateOffset);
   watch2(() => parentRef, updateOffset);
   onMounted4(() => {
