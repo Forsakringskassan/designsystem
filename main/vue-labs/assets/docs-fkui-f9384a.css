@@ -19,9 +19,6 @@ html {
   --f-background-pageheader-primary: #116a3e;
   --f-background-skiplink-focus: #f5f6fa;
   --f-background-sidepanel-button-tertiary-hover: #e5e5f5;
-  --f-background-heading-static-panel: #afcfb5;
-  --f-border-color-panel: #e7f0e9;
-  --f-border-color-static-panel: #afcfb5;
   --f-border-color-separator: #ddddde;
   --f-border-color-separator-pageheader-primary: #ffffff;
   --f-border-color-link: #4a52b6;
@@ -70,7 +67,6 @@ html {
   --f-animation-expand-open: all 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   --f-animation-expand-close: all 500ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
   --f-density-factor: 1;
-  --f-static-panel-heading-border: none;
   --f-label-message-margin-top: 0.25rem;
   --f-button-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --f-button-shadow-hover: 0 1px 3px rgba(0, 0, 0, 0.3);

@@ -45,6 +45,7 @@
     "production",
     "globala inställningar",
     "config",
+    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -90,7 +91,6 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -221,6 +221,12 @@
     "densify() function",
     "densitet",
     "sass",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -258,12 +264,6 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -611,12 +611,12 @@
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FFileItemPageObject: FFileItemPageObject() constructor",
-    "FFileItemPageObject: typeOfFile() method",
-    "FFileItemPageObject: fileName() method",
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
+    "FFileItemPageObject: FFileItemPageObject() constructor",
+    "FFileItemPageObject: typeOfFile() method",
+    "FFileItemPageObject: fileName() method",
     "FBadgePageObject: FBadgePageObject() constructor",
     "FFileItemPageObject: status() method",
     "FFileItemPageObject: inverted() method",
@@ -730,6 +730,11 @@
         "globala inställningar",
         "config"
       ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
     },
     {
       "url": "components/pagination.html",
@@ -850,11 +855,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1139,6 +1139,27 @@
       ]
     },
     {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": [
@@ -1198,27 +1219,6 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
       ]
     },
     {
@@ -2171,21 +2171,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
-      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
-      "title": "FFileItemPageObject: typeOfFile() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
-      "title": "FFileItemPageObject: fileName() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
       "title": "FInteractiveTablePageObject: header() method",
       "terms": []
@@ -2198,6 +2183,21 @@
     {
       "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
       "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
+      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
+      "title": "FFileItemPageObject: typeOfFile() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
+      "title": "FFileItemPageObject: fileName() method",
       "terms": []
     },
     {
@@ -2308,50 +2308,50 @@
     "43": 11,
     "44": 11,
     "45": 12,
-    "46": 12,
-    "47": 12,
+    "46": 13,
+    "47": 13,
     "48": 13,
-    "49": 13,
+    "49": 14,
     "50": 14,
-    "51": 14,
+    "51": 15,
     "52": 15,
-    "53": 15,
-    "54": 15,
-    "55": 15,
-    "56": 15,
+    "53": 16,
+    "54": 16,
+    "55": 16,
+    "56": 16,
     "57": 16,
-    "58": 16,
+    "58": 17,
     "59": 17,
-    "60": 17,
+    "60": 18,
     "61": 18,
-    "62": 18,
-    "63": 18,
-    "64": 18,
-    "65": 18,
-    "66": 18,
+    "62": 19,
+    "63": 19,
+    "64": 19,
+    "65": 19,
+    "66": 19,
     "67": 19,
-    "68": 19,
+    "68": 20,
     "69": 20,
-    "70": 20,
-    "71": 20,
+    "70": 21,
+    "71": 21,
     "72": 21,
-    "73": 21,
-    "74": 21,
+    "73": 22,
+    "74": 22,
     "75": 22,
-    "76": 22,
+    "76": 23,
     "77": 23,
-    "78": 23,
-    "79": 23,
+    "78": 24,
+    "79": 24,
     "80": 24,
-    "81": 24,
+    "81": 25,
     "82": 25,
-    "83": 25,
-    "84": 25,
-    "85": 25,
-    "86": 25,
-    "87": 25,
+    "83": 26,
+    "84": 26,
+    "85": 26,
+    "86": 26,
+    "87": 26,
     "88": 26,
-    "89": 26,
+    "89": 27,
     "90": 27,
     "91": 28,
     "92": 28,
@@ -2485,45 +2485,45 @@
     "220": 58,
     "221": 59,
     "222": 59,
-    "223": 59,
-    "224": 59,
-    "225": 59,
-    "226": 59,
-    "227": 59,
-    "228": 59,
-    "229": 59,
-    "230": 60,
-    "231": 60,
-    "232": 60,
-    "233": 61,
-    "234": 61,
-    "235": 61,
-    "236": 61,
-    "237": 61,
-    "238": 62,
-    "239": 62,
-    "240": 62,
-    "241": 62,
-    "242": 62,
-    "243": 62,
-    "244": 62,
-    "245": 62,
-    "246": 62,
-    "247": 62,
-    "248": 62,
-    "249": 62,
-    "250": 63,
-    "251": 63,
-    "252": 63,
-    "253": 63,
-    "254": 63,
-    "255": 63,
-    "256": 63,
-    "257": 63,
-    "258": 64,
-    "259": 64,
-    "260": 65,
-    "261": 65,
+    "223": 60,
+    "224": 60,
+    "225": 61,
+    "226": 61,
+    "227": 62,
+    "228": 62,
+    "229": 62,
+    "230": 62,
+    "231": 62,
+    "232": 62,
+    "233": 62,
+    "234": 62,
+    "235": 62,
+    "236": 63,
+    "237": 63,
+    "238": 63,
+    "239": 64,
+    "240": 64,
+    "241": 64,
+    "242": 64,
+    "243": 64,
+    "244": 65,
+    "245": 65,
+    "246": 65,
+    "247": 65,
+    "248": 65,
+    "249": 65,
+    "250": 65,
+    "251": 65,
+    "252": 65,
+    "253": 65,
+    "254": 65,
+    "255": 65,
+    "256": 66,
+    "257": 66,
+    "258": 66,
+    "259": 66,
+    "260": 66,
+    "261": 66,
     "262": 66,
     "263": 66,
     "264": 67,
