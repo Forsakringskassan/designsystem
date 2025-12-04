@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-bbac98.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-b87ad6.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref as ref2, useTemplateRef as useTemplateRef2 } from "vue";
 import { assertRef as assertRef2, formatNumber as formatNumber2 } from "@fkui/logic";
@@ -6072,7 +6072,7 @@ var _sfc_main = defineComponent({
   }
 });
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-bbac98.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-b87ad6.js
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FTableExample",
@@ -6262,8 +6262,11 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         ]
       }
     ]);
+    function hasKey(column) {
+      return Boolean("key" in column && column.key);
+    }
     const sortableAttributes = Object.fromEntries(
-      columns.filter((it) => "key" in it && it.key).map((it) => [it.key, it.header])
+      columns.filter(hasKey).map((it) => [it.key, it.header])
     );
     const mySelectedRows = ref2([rows.value[0]]);
     function onButtonClick(row) {
@@ -6272,7 +6275,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         rows.value.splice(rows.value.indexOf(row), 1);
       });
     }
-    const __returned__ = { tableRef, selectFieldOptions, columns, rows, sortableAttributes, mySelectedRows, onButtonClick, get FSortFilterDataset() {
+    const __returned__ = { tableRef, selectFieldOptions, columns, rows, hasKey, sortableAttributes, mySelectedRows, onButtonClick, get FSortFilterDataset() {
       return FSortFilterDataset;
     }, get FTable() {
       return _sfc_main$2;
@@ -6371,7 +6374,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-bbac98"
+  selector: "#example-b87ad6"
 });
 export {
   render

@@ -506,16 +506,16 @@
     "ICalendarMonth",
     "Animerad expandering",
     "IAnimateExpand",
-    "Filväljare",
-    "FFileSelector",
-    "Filpresentatör",
-    "FFileItem",
     "Expanderbart stycke",
     "FExpandableParagraph",
     "Expanderbar panel",
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
+    "Filväljare",
+    "FFileSelector",
+    "Filpresentatör",
+    "FFileItem",
     "Version 6 migreringsguide: @fkui/vue",
     "Version 6 migreringsguide",
     "Version 6 migreringsguide: @fkui/logic",
@@ -1776,20 +1776,6 @@
       ]
     },
     {
-      "url": "components/file-upload/ffileselector.html",
-      "title": "Filväljare",
-      "terms": [
-        "FFileSelector"
-      ]
-    },
-    {
-      "url": "components/file-upload/ffileitem.html",
-      "title": "Filpresentatör",
-      "terms": [
-        "FFileItem"
-      ]
-    },
-    {
       "url": "components/expandable/fexpandableparagraph.html",
       "title": "Expanderbart stycke",
       "terms": [
@@ -1808,6 +1794,20 @@
       "title": "Expanderbart innehåll",
       "terms": [
         "FExpand"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileselector.html",
+      "title": "Filväljare",
+      "terms": [
+        "FFileSelector"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileitem.html",
+      "title": "Filpresentatör",
+      "terms": [
+        "FFileItem"
       ]
     },
     {

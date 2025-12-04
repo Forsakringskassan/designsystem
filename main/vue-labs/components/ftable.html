@@ -219,7 +219,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-bbac98"></div>
+        <div id="example-b87ad6"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -245,7 +245,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-bbac98.js"></script>
+        <script type="module" src="./FTableExample-b87ad6.js"></script>
     
                 </div>
                 <div>
@@ -268,7 +268,7 @@ body {
 <span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumn</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
 
@@ -474,8 +474,14 @@ interface <span class="hljs-title class_">Row</span> {
     },
 ]);
 
+<span class="hljs-keyword">function</span> hasKey&lt;T, K <span class="hljs-keyword">extends</span> keyof T&gt;(
+    <span class="hljs-attr">column</span>: <span class="hljs-title class_">TableColumn</span>&lt;T, K&gt;,
+): column is <span class="hljs-title class_">TableColumn</span>&lt;T, K&gt; &amp; { <span class="hljs-attr">key</span>: K } {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Boolean</span>(<span class="hljs-string">&quot;key&quot;</span> <span class="hljs-keyword">in</span> column &amp;&amp; column.<span class="hljs-property">key</span>);
+}
+
 <span class="hljs-keyword">const</span> sortableAttributes = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">fromEntries</span>(
-    columns.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> <span class="hljs-string">&quot;key&quot;</span> <span class="hljs-keyword">in</span> it &amp;&amp; it.<span class="hljs-property">key</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> [it.<span class="hljs-property">key</span>, it.<span class="hljs-property">header</span>]),
+    columns.<span class="hljs-title function_">filter</span>(hasKey).<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> [it.<span class="hljs-property">key</span>, it.<span class="hljs-property">header</span>]),
 );
 
 <span class="hljs-keyword">const</span> mySelectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>]]);
