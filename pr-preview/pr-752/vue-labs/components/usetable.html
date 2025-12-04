@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Kod - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-0bcb87.css"
+            href="../assets/docs-55909e.css"
             crossorigin
-            integrity="sha384-PETmbePp0+kyDOO3Bz7Wq70zPhBaRu/OdqOJ4TbQDOQZIglMb4/uLVzg38aDXG5Q"
+            integrity="sha384-hNnk1deht78TKIk8gpXvNjo0b8u33Uzhz5QKCGFdKVt/QMlnl+XKj4bfwG7iEL+j"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-d7a107.css"
+            href="../assets/docs-fkui-01cdee.css"
             crossorigin
-            integrity="sha384-27wzEUhU9QIcuuq/0nMPAePQYioR9/b74KBWyj59zWy6UYfFxnreSS/3T7blajY5"
+            integrity="sha384-Q3astoP0pZ6vKJrHJX6RcHSyztBavusZ48SOxCh49u4Bw5Oxfyatcm3VdNIIRTqk"
             data-theme="fkui" disabled
         />
 
@@ -25,13 +25,13 @@
     "vue": "../assets/vendor-vue-9e9e90.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-b0075f.js",
     "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-4b2475.js"
+    "@fkui/vue": "../assets/vendor-fkui-vue-519a44.js"
   },
   "integrity": {
     "../assets/vendor-vue-9e9e90.js": "sha384-JyjQby9Ih+Xp0YBPzzlKuoCLrmKKg7F9EjpfpMrntDM1PeFOpUyTQQ+aotcPWYYH",
     "../assets/vendor-fkui-logic-b0075f.js": "sha384-8+BulV9pwaaof6GCYzDYWUpbIvcu9fc2Uh+6BPuhF2mi1O4YlXtNBWTy7IzL6v7N",
     "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
-    "../assets/vendor-fkui-vue-4b2475.js": "sha384-uYhtxcZkS5iWs80jbHdu78lXwtKvJ1gAcWmI0n3daDEm+Mw+B9ekxYSLpmjh9aI3"
+    "../assets/vendor-fkui-vue-519a44.js": "sha384-HJx+LKwpVQNW92vIPPJjZ1BdABUG5VHTGd8Idhlaaib9wAm4DjTWmjV99rLx3kWF"
   }
 }
         </script><script
@@ -203,9 +203,7 @@
                                 
                                 <li><a href="#rad_id">Rad-id</a></li>
                                 
-                                <li><a href="#skroll">Skroll</a></li>
-                                
-                                <li><a href="#framhava_rader_zebrarandig">Framhäva rader/zebrarandig</a></li>
+                                <li><a href="#framhava_rader">Framhäva rader</a></li>
                                 
                                 <li><a href="#expanderbara_rader">Expanderbara rader</a></li>
                                 
@@ -283,7 +281,7 @@ Med <code>shrink</code> kommer cellernas innehåll att radbrytas om du inte anv�
 <p class="docs-paragraph">Om inget anges fungerar kolumnen som om <code>expand</code> är satt.
 Det är fel att sätta både <code>expand</code> och <code>shrink</code> samtidigt.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="kolumntyper"><a class="header-anchor" href="#kolumntyper">Kolumntyper</a></h2><p class="docs-paragraph">Tabellen har sju olika kolumntyper som påverkar hur cellen presenteras:</p>
+<h2 id="kolumntyper"><a class="header-anchor" href="#kolumntyper">Kolumntyper</a></h2><p class="docs-paragraph">Tabellen har nio olika kolumntyper som påverkar hur cellen presenteras:</p>
 <ul>
 <li>radrubrik: <code>rowheader</code> (länk till avsnitt ovan?)</li>
 <li>text: <code>text</code></li>
@@ -293,24 +291,27 @@ Det är fel att sätta både <code>expand</code> och <code>shrink</code> samtidi
 <li>länk: <code>anchor</code></li>
 <li>dropplista: <code>select</code></li>
 <li>kontextmeny: <code>contextmenu</code></li>
-<li>specialiserade inmatningsfält:</li>
+<li>specialiserade inmatningsfält: <code>text:namn på specialiserat inmatningsfält </code></li>
 </ul>
-<p class="docs-paragraph">Du anger kolumntypen genom att sätta propen <code>type</code>.</p>
+<p class="docs-paragraph">Du anger kolumntypen genom att sätta propen <code>type</code>.
+Utgångsvärdet för <code>type</code> är text.</p>
 <p class="docs-paragraph">Kolumntypen text innebär att cellen kan presentera data i olika format och den kan även vara redigerbar.
+Använd med fördel de specialiserade inmatningsfälten eftersom de exempelvis formaterar tal med tusenavskiljare.
 Läs mer om redigering i tabell. (länk)</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h3 id="tnum"><a class="header-anchor" href="#tnum">Tnum</a></h3><p class="docs-paragraph">Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
+<h3 id="vanster_och_hogerjustering"><a class="header-anchor" href="#vanster_och_hogerjustering">Vänster- och högerjustering</a></h3><p class="docs-paragraph">Använd <code>align</code> för att justera kolumner till höger eller vänster i tabellen.
+Text ska vara vänsterjusterad medan tal ska vara högerjusterade.
+Vissa kolumntyper är redan justerade utifrån ovan.</p>
+<h3 id="tabular_figures"><a class="header-anchor" href="#tabular_figures">Tabular figures</a></h3><p class="docs-paragraph">Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
 Till exempel kommer talet 111 ta samma plats som 000.
-Vid numeriska värden ska innehållet i kolumn visas med tnum.</p>
+Vid numeriska värden ska innehållet i kolumn visas med <code>tnum</code>.</p>
 <h2 id="rad_id"><a class="header-anchor" href="#rad_id">Rad-id</a></h2><p class="docs-paragraph">För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med <code>keyAttribute</code>. Nyckeln finns i varje radobjekt.<br>
 Om du anger keyAttribute, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.</p>
 <p class="docs-paragraph">Att använda keyAttribute är valfritt och det behövs inte om det finns ett naturligt id att ange för dina rader.
 Du måste använda keyAttribute om dina rader ska bibehålla aktuell status vid omladdning från REST-api eller liknande.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="skroll"><a class="header-anchor" href="#skroll">Skroll</a></h2><p class="docs-paragraph">För att lägga till skroll i tabell använder du prop <code>scroll</code>:</p>
-<p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="framhava_rader_zebrarandig"><a class="header-anchor" href="#framhava_rader_zebrarandig">Framhäva rader/zebrarandig</a></h2><p class="docs-paragraph">Framhäv varannan rad när tabellen innehåller många rader och kolumner.
+<h2 id="framhava_rader"><a class="header-anchor" href="#framhava_rader">Framhäva rader</a></h2><p class="docs-paragraph">Framhäv varannan rad när tabellen innehåller många rader och kolumner.
 Det underlättar för användaren att läsa innehållet i tabellen genom att hen lättare kan läsa samma rad över flera kolumner.
 Du gör tabellen zebrarandig genom att...</p>
 <h2 id="expanderbara_rader"><a class="header-anchor" href="#expanderbara_rader">Expanderbara rader</a></h2><p class="docs-paragraph">Med expanderbara rader går det att skapa ytterligare tabellrader som visas när användaren trycker på en expanderbar rad.</p>
