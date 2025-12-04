@@ -21,7 +21,18 @@ const docs = new Generator(import.meta.url, {
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
     exampleFolders: ["./src", "./docs"],
-    vendor: ["vue", "@fkui/logic", "@fkui/date", "@fkui/vue"],
+    vendor: [
+        {
+            package: "vue",
+            expose: "named",
+            alias: "vue/dist/vue.esm-bundler.js",
+        },
+        "@fkui/logic",
+        "@fkui/date",
+        "@fkui/vue",
+        "@fkui/vue-labs",
+        "@forsakringskassan/docs-live-example",
+    ],
     processors: [
         searchProcessor(),
         topnavProcessor("docs/topmenu.json", "FKUI Vue Labs"),

@@ -10,6 +10,10 @@ Poc av tabell med pilnavigering och redigeringsläge. Kolumntyper läggs till ef
 
 ## Tabell
 
+```import live-example
+FTableLiveExample.vue
+```
+
 ```import
 FTableExample.vue
 ```
