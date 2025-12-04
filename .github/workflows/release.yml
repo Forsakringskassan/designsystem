@@ -4,37 +4,21 @@ concurrency: release-${{ github.ref }}
 on:
     workflow_dispatch:
 
+permissions:
+    contents: write
+    issues: write
+    pull-requests: write
+    id-token: write
+
 jobs:
     release:
         name: Release
-        runs-on: ubuntu-latest
-        env:
-            HUSKY: 0
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-                  ssh-key: "${{ secrets.RELEASE_KEY }}"
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 24.x
-            - name: Install dependencies
-              run: npm ci
-            - name: Build
-              run: npm run build
-            - name: Release
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-              run: |
-                  npm config set access public
-                  npm install --no-save "@forsakringskassan/semantic-release-monorepo-config"
-                  npm exec semantic-release
-                  git log -n 1
-                  git status
-                  sleep 5
+        uses: Forsakringskassan/.github/.github/workflows/npm-release.yaml@main
+        with:
+            app-id: ${{ vars.RELEASE_APP_ID }}
+        secrets:
+            app-key: ${{ secrets.RELEASE_APP_KEY }}
+
     deploy-documentation:
         needs: [release]
         name: Deploy new documentation
