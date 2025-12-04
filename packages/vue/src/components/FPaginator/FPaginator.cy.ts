@@ -1,11 +1,11 @@
 import { FInteractiveTablePageObject } from "../../cypress";
 import { FPaginatorPageObject } from "../../cypress/FPaginator.pageobject";
-import Example1 from "./examples/FPaginatorExample.vue";
-import Example from "./examples/FPaginatorPageObjectExample.vue";
+import paginatorDynamicDataExample from "./examples/FPaginatorDynamicDataExample.vue";
+import paginatorStaticDataExample from "./examples/FPaginatorStaticDataExample.vue";
 
 describe("Requirement 1.1: splitting data across multiple pages", () => {
     beforeEach(() => {
-        cy.mount(Example);
+        cy.mount(paginatorStaticDataExample);
         cy.viewport("macbook-13");
     });
 
@@ -38,7 +38,7 @@ describe("Requirement 1.2", () => {
 
     //subset
     it("should be able to fetch a subset", () => {
-        cy.mount(Example);
+        cy.mount(paginatorStaticDataExample);
 
         const table = new FInteractiveTablePageObject();
         const paginator = new FPaginatorPageObject("[data-test='myPaginator']");
@@ -62,7 +62,7 @@ describe("Requirement 1.2", () => {
 
     // the entire dataset
     it("should be able to fetch the entire dataset", () => {
-        cy.mount(Example1);
+        cy.mount(paginatorDynamicDataExample);
 
         const table = new FInteractiveTablePageObject();
         const paginator = new FPaginatorPageObject("[data-test='myPaginator']");
@@ -97,7 +97,7 @@ describe("Requirement 1.2", () => {
 
 describe("Requirement 1.3", () => {
     beforeEach(() => {
-        cy.mount(Example);
+        cy.mount(paginatorStaticDataExample);
         cy.viewport("macbook-13");
     });
 
@@ -113,7 +113,7 @@ describe("Requirement 1.3", () => {
 
 describe("Requirement 1.4", () => {
     beforeEach(() => {
-        cy.mount(Example);
+        cy.mount(paginatorStaticDataExample);
         cy.viewport("macbook-13");
     });
 
@@ -141,7 +141,7 @@ describe("Requirement 1.4", () => {
 
 describe("Requirement 1.5: display navigable pages", () => {
     beforeEach(() => {
-        cy.mount(Example);
+        cy.mount(paginatorStaticDataExample);
         cy.viewport("macbook-13");
     });
 
@@ -166,7 +166,7 @@ describe("Requirement 1.5: display navigable pages", () => {
 
 describe("Requirement 1.6: Navigation & visual page information", () => {
     beforeEach(() => {
-        cy.mount(Example1);
+        cy.mount(paginatorDynamicDataExample);
         cy.viewport("macbook-13");
     });
 
@@ -204,7 +204,7 @@ describe("Requirement 1.6: Navigation & visual page information", () => {
 
 describe("Requirement 1.9: focus during navigation", () => {
     beforeEach(() => {
-        cy.mount(Example);
+        cy.mount(paginatorStaticDataExample);
         cy.viewport("macbook-13");
     });
 
@@ -227,7 +227,7 @@ describe("Requirement 1.9: focus during navigation", () => {
 
 describe("Requirement 1.10: aria-current", () => {
     beforeEach(() => {
-        cy.mount(Example);
+        cy.mount(paginatorStaticDataExample);
         cy.viewport("macbook-13");
     });
 
@@ -253,7 +253,7 @@ describe("Requirement 1.10: aria-current", () => {
 
 describe("Requirement 1.11: Mobile mode", () => {
     beforeEach(() => {
-        cy.mount(Example);
+        cy.mount(paginatorStaticDataExample);
         cy.viewport("iphone-8");
     });
 
