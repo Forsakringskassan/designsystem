@@ -1,5 +1,6 @@
 import { FInteractiveTablePageObject } from "../../cypress";
 import { FPaginatorPageObject } from "../../cypress/FPaginator.pageobject";
+import { FPaginateDataset } from "../FPaginateDataset";
 import paginatorDynamicDataExample from "./examples/FPaginatorDynamicDataExample.vue";
 import paginatorStaticDataExample from "./examples/FPaginatorStaticDataExample.vue";
 
@@ -264,5 +265,26 @@ describe("Requirement 1.11: Mobile mode", () => {
 
         paginator.previousButton().click();
         paginator.currentPageButton().should("contain.text", "2");
+    });
+});
+
+describe("visual regression", () => {
+    beforeEach(() => {
+        cy.mount(FPaginateDataset, {
+            props: {
+                numberOfPages: 15,
+                currentPage: 7,
+            },
+        });
+    });
+
+    it("should have approved design for desktop", () => {
+        cy.viewport(800, 80);
+        cy.toMatchScreenshot();
+    });
+
+    it("should have approved design for mobile", () => {
+        cy.viewport(400, 80);
+        cy.toMatchScreenshot();
     });
 });
