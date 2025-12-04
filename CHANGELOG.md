@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 5.46.5 (2025-12-04)
+
+### Bug Fixes
+
+* use shared actions (refs SFKUI-6500) d9c3014
+
 ## 5.46.4 (2025-12-04)
 
 ### Bug Fixes
