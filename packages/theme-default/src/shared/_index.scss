@@ -32,14 +32,10 @@
     --f-background-pageheader-primary: #{$palette-color-green-a-100}; // page-header
     --f-background-skiplink-focus: #{$palette-color-bluebell-5};
     --f-background-sidepanel-button-tertiary-hover: #{$palette-color-bluebell-15}; //  FLeftPanel and FRightPanel
-    --f-background-heading-static-panel: #{$palette-color-green-b-50};
 
     // *************
     // BORDER COLORS
     // *************
-
-    --f-border-color-panel: #{$palette-color-green-b-15}; // expandable-panel, static-panel palettfärg!?
-    --f-border-color-static-panel: #{$palette-color-green-b-50};
 
     --f-border-color-separator: #{$palette-color-fk-black-15}; // radio-button-group, file-item, expandable-paragraph
     --f-border-color-separator-pageheader-primary: #{$palette-color-white-100}; // page-header
@@ -134,7 +130,7 @@
     // ****************************
     // COMPONENT SPECIFIC VARIABLES
     // ****************************
-    --f-static-panel-heading-border: none;
+
     --f-label-message-margin-top: 0.25rem;
 
     $_f-button-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);

@@ -410,6 +410,10 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-text-color-popupmenu: #{$palette-color-fk-black-100};
     --f-text-color-popupmenu-hover: #{$palette-color-fk-black-100};
     --f-border-color-separator-contextmenu: #{$palette-color-fk-black-50};
+    --f-background-heading-static-panel: #{$palette-color-green-b-50};
+    --f-border-color-panel: #{$palette-color-green-b-15};
+    --f-border-color-static-panel: #{$palette-color-green-b-50};
+    --f-static-panel-heading-border: none;
 }
 
 @if $global {
