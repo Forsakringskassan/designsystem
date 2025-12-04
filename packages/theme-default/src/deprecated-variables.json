@@ -277,5 +277,9 @@
     "--f-border-color-popupmenu",
     "--f-text-color-popupmenu",
     "--f-text-color-popupmenu-hover",
-    "--f-border-color-separator-contextmenu"
+    "--f-border-color-separator-contextmenu",
+    "--f-background-heading-static-panel",
+    "--f-border-color-panel",
+    "--f-border-color-static-panel",
+    "--f-static-panel-heading-border"
 ]

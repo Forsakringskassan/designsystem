@@ -1,22 +1,29 @@
+@use "../../core";
 @use "../../core/size";
+@use "variables" as *;
 
 .static-panel {
     margin-bottom: 2.5rem;
 
     &__heading {
-        background: var(--f-background-heading-static-panel);
-        border: var(--f-static-panel-heading-border);
+        background: $staticpanel-heading-color-background;
+        border: var(--f-border-width-medium) solid $staticpanel-color-border;
+        border-radius: var(--f-border-radius-medium) var(--f-border-radius-medium) 0 0;
         border-bottom: 0;
-        font-size: var(--f-font-size-h3);
-        line-height: 2rem;
-        margin-bottom: 0;
-        padding: size.$padding-025 size.$padding-100;
+        color: $staticpanel-heading-color-text-default;
+        font-size: var(--f-font-size-large);
+        font-weight: var(--f-font-weight-bold);
+        line-height: var(--f-line-height-large);
+        margin: 0;
+        padding: core.densify(size.$padding-100) size.$padding-100;
     }
 
     &__content {
         border-top: 0;
-        border: var(--f-border-width-medium) solid var(--f-border-color-panel);
+        border: var(--f-border-width-medium) solid $staticpanel-color-border;
+        border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);
         padding: size.$padding-175 size.$padding-150;
+        background: $staticpanel-color-background;
     }
 
     &__icon {
