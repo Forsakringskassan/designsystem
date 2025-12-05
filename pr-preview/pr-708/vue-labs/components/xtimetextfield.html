@@ -6,32 +6,32 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tidsinmatning - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-f00727.css"
+            href="../assets/docs-b62a23.css"
             crossorigin
-            integrity="sha384-BS6EsmxQzaCwa/6dHdup2NZ6saGt9SfiEFeWwSHhvJsA4nqa52VybD5ABYFk/r6o"
+            integrity="sha384-QyAoRKUR8qGTeAOcDJvJQ5/M5Rq3efoBlNSuJICtHiq9XgzhQWrlzGb1GRNvPrn3"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-2b1efe.css"
+            href="../assets/docs-fkui-739a55.css"
             crossorigin
-            integrity="sha384-H0kRsyVWOYMAmXQhwXPZ1MsPKifnoKMKEM22fL6gg5sczb1oFGTvqK10erhn2G1e"
+            integrity="sha384-uz+6WPO4Mojvx2NlswR+QRzFsZqeoXdLpko5BOEQMd1J4KWaLn1oTX1tCO+HRqOb"
             data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-fd4a2d.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-cb1d47.js",
-    "@fkui/date": "../assets/vendor-fkui-date-024cc2.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-71e268.js"
+    "vue": "../assets/vendor-vue-9e9e90.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-b0075f.js",
+    "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-a3354e.js"
   },
   "integrity": {
-    "../assets/vendor-vue-fd4a2d.js": "sha384-kmC4T0C5ZzwbUEm2knIR443x2ILwlEZgPawQWZvqbegtVKkhK/F5ifTqm7n0M6rE",
-    "../assets/vendor-fkui-logic-cb1d47.js": "sha384-cYyAMpzX6o+Mx1ahOrF5blFq85m9utKy9qg8GmepiyZ+c/Ha6q7usDcijN+bsdK1",
-    "../assets/vendor-fkui-date-024cc2.js": "sha384-p0OHhMI0IsoyIh+/1Cyvu2qD+riXRyL6F/I3NNxpdud8wBwA0pXVP6Vdo3y0bdMO",
-    "../assets/vendor-fkui-vue-71e268.js": "sha384-uyReBn75bNVnbq/7aZt6mTbIDwvbkqvn+705Oz0QSMAYNGXqT+w3usDxcRkWa2Wk"
+    "../assets/vendor-vue-9e9e90.js": "sha384-JyjQby9Ih+Xp0YBPzzlKuoCLrmKKg7F9EjpfpMrntDM1PeFOpUyTQQ+aotcPWYYH",
+    "../assets/vendor-fkui-logic-b0075f.js": "sha384-8+BulV9pwaaof6GCYzDYWUpbIvcu9fc2Uh+6BPuhF2mi1O4YlXtNBWTy7IzL6v7N",
+    "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
+    "../assets/vendor-fkui-vue-a3354e.js": "sha384-MNl3EyQ4xkfpekfbkdB3Gxl/EHkjbkK2SMchPpLlD1fkMpGgT2kbKB477VaaiMGV"
   }
 }
         </script><script
@@ -42,10 +42,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-f0ae84.json"
+            href="../search-data-67e2f4.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dZ9g0/X4h0qBNZGqSLu+uPIc1TeTl3IScKwbih7PM/p6sTedyOIJskkTJcCezl/A"
+            integrity="sha384-qap5T4Ywhnk/jbBbD2k2uh/h3EyhXvJdAYmTI3scXHcQPwTJxJE9lcxLB9Y7VkUT"
             id="search-data"
         />
     </head>
@@ -94,16 +94,17 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.24.1
+        6.30.0
     </span>
 </div>
 </div>
@@ -137,6 +138,17 @@
             
         >
             Tidsinmatning
+        </a>
+    </li><li class="link ">
+        <a
+            href="./xfiledragdrop.html"
+            
+            
+            
+            data-path="components/xfiledragdrop.html"
+            
+        >
+            XFileDragdrop
         </a>
     </li></ol>
 </nav>
@@ -234,15 +246,17 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-a26e0a"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-00344e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XTimeTextFieldExample-a26e0a.js"></script>
-    </div>
+        <script type="module" src="./XTimeTextFieldExample-00344e.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -368,15 +382,17 @@ Exempel:</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-63f4e6"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-423032"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ForgivingInput-63f4e6.js"></script>
-    </div>
+        <script type="module" src="./ForgivingInput-423032.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"

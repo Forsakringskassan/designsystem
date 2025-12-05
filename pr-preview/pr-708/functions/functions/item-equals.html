@@ -6,34 +6,34 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>itemEquals - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-bfc249.css"
+            href="../../assets/docs-c4cc1c.css"
             crossorigin
-            integrity="sha384-1u7RzhKaedQi/ocQjuZ5RuE5hLphkR9yJZNiQ3H4kAfrjPwTksskkbktwGpU8ekX"
+            integrity="sha384-fu0WhdRIlY4ddXn42dtBZKDkG2za+PiiJbyh/tqBvZFygOPuDRGHySLtQ53+T30P"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-203089.css"
+            href="../../assets/docs-fkui-7b398a.css"
             crossorigin
-            integrity="sha384-UbW+ktIc+EcM7vggNQO6vQfKehGu7Se90q+rlirCvNoLeb0lLvCertzpK1zJ4fOU"
+            integrity="sha384-35tn8v4ZYcyP0kYThKt+JEQWKvVXo+gmxMJ8Ff5nA1MZXd+nbvuNLgtuhRRga0yS"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-fd23ba.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-277994.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-131ba7.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-9036bf.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js"
+    "vue": "../../assets/vendor-vue-ef313e.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-b28e36.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-808bee.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-dc338c.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-7c7086.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-fd23ba.js": "sha384-fgWjDRyjtEXyEeb3gQxn5cMLQnaLJ/+raE5Ku0VLWBP2RlzpzrpvJFEC1FCSIWMk",
-    "../../assets/vendor-fkui-logic-277994.js": "sha384-o6DN+xTHp12Ot0+4FNZEoyGS6m3b75MezBhapCvFqCaF1IS9W5ox/P2dcvqGKt+i",
-    "../../assets/vendor-fkui-date-131ba7.js": "sha384-1ousGnX+TtYBjw6BVR/x9Yg2jMIjTjuSOD+VpUdpe9Eo7r1KF2LHHKhc8hzYQQlC",
-    "../../assets/vendor-fkui-vue-9036bf.js": "sha384-sUOipiRSDDh3dyJ4rE/VWjDW3NBQZ98lrdAk4ZSIBfUcnu6sv9ifXpHgXZbm7wLu",
-    "../../assets/vendor-forsakringskassan-docs-live-example-8aa7b5.js": "sha384-Vh+O3Zhex/T8/8QKRVxF3qty56fRReDfDQ5+oTwmPkAMbEcpIJWXmI7+Lk3IEb4S"
+    "../../assets/vendor-vue-ef313e.js": "sha384-41jHIDRbXQqKZT4QR509ppgT+/l9C3jn3mhzKUpMLFZ4PibexL7JhqVcdpH1DRYJ",
+    "../../assets/vendor-fkui-logic-b28e36.js": "sha384-RNuO/Z6O9w5N8xFj2rFwSjmZachX8pnoA3guUqL274gQoVE8pjD1x81AD5x4QzLh",
+    "../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
+    "../../assets/vendor-fkui-vue-dc338c.js": "sha384-UmkSlS6MLpna75/g7dApcXXsroWGP08OjFFpZK7iAOZxc5TvqzO4ZrMbldHreV1m",
+    "../../assets/vendor-forsakringskassan-docs-live-example-7c7086.js": "sha384-Uv8cnY6wvK1p4UqN4yiS2jmATbaggJTLBhnQrGoOdnthNQwW0x2gaYM/HtEqP1e0"
   }
 }
         </script><script
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-486957.json"
+            href="../../search-data-385cbe.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Sz7ywTFrGo9QhYyaOUA79ogGB7aW/v4WEpMCR47kyZ/3Smu8XPpF7TBctZYibgta"
+            integrity="sha384-6/9byHDgQYk66kiJzygG1lCuRhR7wkJaTxD1AdcMszNrsAj47Aa0iXFQusDWd510"
             id="search-data"
         />
     </head>
@@ -215,10 +215,11 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
@@ -638,6 +639,17 @@
 
             
         </details>
+    </li><li class="link ">
+        <a
+            href="../cypress/pageobjects/fpaginatorpageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/fpaginatorpageobject.html"
+            
+        >
+            FPaginatorPageObject
+        </a>
     </li></ol>
 
             
@@ -1681,9 +1693,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">new-caption-slot-to-f-table (<a href="https://github.com/Forsakringskassan/designsystem/commits/9b4f713d2a6a636e28c049428ff6c707dd468e70">9b4f713</a>)<br />
+<div class="footer__right"><div class="version">new-caption-slot-to-f-table (<a href="https://github.com/Forsakringskassan/designsystem/commits/756f76881ba45b23488754f52317a3ba88f2b26d">756f768</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/708">PR 708</a><br />
-        2025-11-06 15:12
+        2025-12-05 14:17
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1795,10 +1807,10 @@
             integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-cec529.js"
+            src="../../assets/processors/selectable-version/select-version-cd6103.js"
             type="module"
             crossorigin
-            integrity="sha384-TRok7ZiWlbx0DVsCXEE+G+WyYin4CJxSKORmSHFtV+tQqQf0G4j9nQeI5MKWgyKu"
+            integrity="sha384-bigIp3NCkcityHi0CRj3NXzKiciJcTCFiQTZNLZFzgmbfJX4rT4TLt6snQzvY94I"
             
         ></script><script
             src="../../assets/main-9cd53d.js"
