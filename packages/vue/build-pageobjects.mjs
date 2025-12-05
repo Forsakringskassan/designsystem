@@ -25,3 +25,24 @@ for (const format of ["cjs", "esm"]) {
         console.log(output);
     }
 }
+
+for (const format of ["cjs", "esm"]) {
+    const result = await esbuild.build({
+        entryPoints: ["src/pageobjects/index.ts"],
+        outfile: `dist/${format}/pageobjects.${format}.js`,
+        bundle: true,
+        platform: "browser",
+        format,
+        target: "chrome119",
+        sourcemap: true,
+        outExtension: {
+            ".js": extension[format],
+        },
+        logLevel: "info",
+        metafile: true,
+    });
+    if (format === "esm") {
+        const output = await esbuild.analyzeMetafile(result.metafile);
+        console.log(output);
+    }
+}

@@ -27,6 +27,11 @@
       "require": "./dist/cjs/cypress.cjs.js",
       "import": "./dist/esm/cypress.esm.js"
     },
+    "./pageobjects": {
+      "types": "./dist/types/pageobjects.d.ts",
+      "require": "./dist/cjs/pageobjects.cjs.js",
+      "import": "./dist/esm/pageobjects.esm.js"
+    },
     "./htmlvalidate": "./htmlvalidate/index.cjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
     "./package.json": "./package.json",

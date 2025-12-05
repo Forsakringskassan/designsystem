@@ -542,7 +542,7 @@ export class FPageHeaderPageobject implements BasePageObject {
 
 // @public
 export class FPaginatorPageObject implements BasePageObject {
-    constructor(selector: string);
+    constructor(selector?: string);
     currentPageButton(): DefaultCypressChainable;
     el(): DefaultCypressChainable;
     nextButton(): DefaultCypressChainable;
@@ -550,7 +550,7 @@ export class FPaginatorPageObject implements BasePageObject {
     pageCounter(): DefaultCypressChainable;
     previousButton(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
 }
 
 // @public
