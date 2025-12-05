@@ -6,6 +6,20 @@ name: changelog-v5
 Detta är Changelog för version 5.x.
 För senaste version se {@link changelog ordinarie Changelog}.
 
+## 5.46.6 (2025-12-05)
+
+(no user visible changes)
+
+## 5.46.5 (2025-12-04)
+
+(no user visible changes)
+
+## 5.46.4 (2025-12-04)
+
+### Bug Fixes
+
+- **@fkui/logic:** use untrimmed value for whitelist validation (fixes SFKUI-7421) b414fd5
+
 ## 5.46.3 (2025-04-04)
 
 ### Bug Fixes
