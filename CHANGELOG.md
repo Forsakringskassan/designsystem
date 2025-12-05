@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 6.30.0 (2025-12-05)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** static panel with semantic tokens  (refs SFKUI-7519) c981234
+* **@fkui/vue-labs:** new `XFileDragdrop` component (refs SFKUI-6500) 6a5cda8
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** larger click area for `FTooltip` button (fixes SFKUI-7459) c065e0e
+* **@fkui/design:** `FSelectField` flip arrow icon vertically when open(fixes SFKUI-7422) 6ecf07b
+* **@fkui/vue-labs:** retain tabindex for f-table headers (refs SFKUI-7512) 6368bf9
+* **@fkui/vue:** `FSelectFieldPageobject.listOfOptions()` trim leading and trailing whitespace from options (refs SFKUI-6500) 91d685d
+* **@fkui/vue:** `pageCounter` selector in `FPaginator.pageobject` includes `sr-only` element (refs SFKUI-6500) 1d50807
+* **@fkui/vue:** `sortableAttributes` can be `Ref<string>` (refs SFKUI-6500) 4a7f9bb
+* **deps:** update dependency express to v5.2.0 [security] ebf3645
+* **deps:** update dependency express to v5.2.1 e44234b
+* **deps:** update vue monorepo to v3.5.25 20dc2e1
+
 ## 6.29.0 (2025-11-27)
 
 ### Features
