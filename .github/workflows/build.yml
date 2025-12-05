@@ -23,7 +23,7 @@ jobs:
             - name: Build documentation
               run: npm run build:docs
             - name: Tests
-              uses: Forsakringskassan/jest-config@v30.1.0
+              uses: Forsakringskassan/jest-config@v30.1.1
 
     cypress-e2e:
         name: Cypress E2E Tests
