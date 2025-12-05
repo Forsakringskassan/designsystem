@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 5.46.6 (2025-12-05)
+
+### Bug Fixes
+
+* bump lerna to v9.0.3 (refs SFKUI-6500) af3db81
+
 ## 5.46.5 (2025-12-04)
 
 ### Bug Fixes
