@@ -210,7 +210,7 @@ describe("6 Expandable table", () => {
             table.cell({ row: 2, col: 1 }).should("have.focus");
         });
 
-        it("should arrow navigation in table with colspan cell", () => {
+        it("should have correct arrow navigation in custom expanded row", () => {
             cy.mount(FTable<(typeof navRows)[number]>, {
                 props: {
                     rows: navRows,
