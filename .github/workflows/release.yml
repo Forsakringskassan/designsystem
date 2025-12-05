@@ -16,6 +16,7 @@ jobs:
         uses: Forsakringskassan/.github/.github/workflows/npm-release.yaml@main
         with:
             app-id: ${{ vars.RELEASE_APP_ID }}
+            config-preset: "@forsakringskassan/semantic-release-monorepo-config"
         secrets:
             app-key: ${{ secrets.RELEASE_APP_KEY }}
 
