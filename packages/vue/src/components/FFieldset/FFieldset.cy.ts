@@ -3,6 +3,10 @@ import { FFieldsetPageObject } from "../../cypress";
 import { FCheckboxField } from "../FCheckboxField";
 import { FRadioField } from "../FRadioField";
 import FFieldset from "./FFieldset.vue";
+import Checkbox from "./examples/FFieldsetCheckboxScreenshot.vue";
+import Chip from "./examples/FFieldsetChipScreenshot.vue";
+import Radiobutton from "./examples/FFieldsetRadiobuttonScreenshot.vue";
+import FFieldsetScreenshot from "./examples/FFieldsetScreenshot.vue";
 
 const fieldSetRadio = new FFieldsetPageObject(".radio-button-group");
 const fieldSetCheckbox = new FFieldsetPageObject(".checkbox-group");
@@ -245,5 +249,30 @@ describe("checkbox", () => {
             .radioButton(checkBoxOptions.fifth)
             .isSelected()
             .should("be.false");
+    });
+});
+
+describe("Screenshot", () => {
+    it("should have correct styling", () => {
+        cy.mount(FFieldsetScreenshot);
+        cy.get("#screenshot").toMatchScreenshot();
+    });
+
+    it("should have correct styling with radiobuttons", () => {
+        cy.mount(Radiobutton);
+        cy.get("#button").click();
+        cy.get("#screenshot").toMatchScreenshot();
+    });
+
+    it("should have correct styling with checkboxes", () => {
+        cy.mount(Checkbox);
+        cy.get("#button").click();
+        cy.get("#screenshot").toMatchScreenshot();
+    });
+
+    it("should have correct styling with chips", () => {
+        cy.mount(Chip);
+        cy.get("#button").click();
+        cy.get("#screenshot").toMatchScreenshot();
     });
 });
