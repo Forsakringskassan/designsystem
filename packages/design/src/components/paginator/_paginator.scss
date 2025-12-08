@@ -28,7 +28,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
     &__previous,
     &__next {
         border: none;
-        color: black;
+        color: var(--fkds-color-text-primary);
         height: $button-height;
         background-color: transparent;
         padding: size.$padding-025;
@@ -36,12 +36,11 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
         cursor: pointer;
 
         &--active {
-            color: white;
+            color: var(--fkds-color-action-text-inverted-default);
             background-color: var(--fkds-color-action-background-primary-default);
         }
 
         &:hover:enabled:not(&--active) {
-            color: black;
             background-color: var(--fkds-color-action-background-secondary-hover);
         }
     }
