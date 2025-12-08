@@ -5,9 +5,9 @@ const table = new FTablePageObject();
 
 const TABLE_CLASS = {
     HEADER_EXPAND: "table-ng__column--expand",
-    HEADER_SELECT: "table-ng__column--select",
+    HEADER_SELECT: "table-ng__column--selectable",
     CELL_EXPAND: "table-ng__cell--expand",
-    CELL_SELECT: "table-ng__cell--select",
+    CELL_SELECT: "table-ng__cell--selectable",
 };
 
 const rows = [
