@@ -410,13 +410,16 @@ var ColorTable_default = defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/docs/styles/examples/ColorTable.vue?type=template
-import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createCommentVNode as _createCommentVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createCommentVNode as _createCommentVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+var _hoisted_1 = { class: "color-table__term" };
+var _hoisted_2 = { class: "color-table__term" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_table_column = _resolveComponent("f-table-column");
   const _component_f_data_table = _resolveComponent("f-data-table");
   return _openBlock(), _createBlock(_component_f_data_table, {
     rows: _ctx.colors,
-    "key-attribute": "name"
+    "key-attribute": "name",
+    class: "density-densest"
   }, {
     caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
       _createElementVNode(
@@ -437,7 +440,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         },
         {
           default: _withCtx(() => [
-            _createTextVNode(
+            _createElementVNode(
+              "code",
+              _hoisted_1,
               _toDisplayString(row.name),
               1
               /* TEXT */
@@ -452,9 +457,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(
         _component_f_table_column,
         {
-          title: "Exempel",
+          title: "F\xE4rg",
           type: "text",
-          shrink: ""
+          expand: ""
         },
         {
           default: _withCtx(() => [
@@ -463,31 +468,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "span",
               {
                 class: "color-table__color",
-                style: _normalizeStyle({ "background-color": row.value })
+                style: _normalizeStyle(`--value: ${row.value}`)
               },
               null,
               4
               /* STYLE */
-            )
-          ]),
-          _: 2
-          /* DYNAMIC */
-        },
-        1024
-        /* DYNAMIC_SLOTS */
-      ),
-      _createVNode(
-        _component_f_table_column,
-        {
-          title: "F\xE4rgkod",
-          type: "text",
-          shrink: ""
-        },
-        {
-          default: _withCtx(() => [
+            ),
             _createElementVNode(
               "code",
-              null,
+              _hoisted_2,
               _toDisplayString(row.value),
               1
               /* TEXT */
