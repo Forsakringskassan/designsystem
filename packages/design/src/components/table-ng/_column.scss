@@ -17,7 +17,7 @@ $horizontal-padding: size.$padding-050;
         border-right: 1px solid var(--f-color-focus);
     }
 
-    &--select {
+    &--selectable {
         text-align: center;
         padding: core.densify(size.$padding-025);
 

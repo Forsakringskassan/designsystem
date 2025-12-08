@@ -7,11 +7,11 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
 export class FTablePageObject implements BasePageObject {
     public selector: string;
 
-    private readonly selectHeader = ".table-ng__column--select";
+    private readonly selectHeader = ".table-ng__column--selectable";
     private readonly columnTitle = ".table-ng__column__title";
     private readonly columnDescription = ".table-ng__column__description";
     private readonly expandCell = ".table-ng__cell--expand";
-    private readonly selectCell = ".table-ng__cell--select";
+    private readonly selectCell = ".table-ng__cell--selectable";
 
     /**
      * @param selector - root element selector for `FTable`, usually `.table-ng`.

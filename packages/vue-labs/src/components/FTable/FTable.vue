@@ -416,14 +416,14 @@ onMounted(() => {
                         :ref="bindCellApiRef"
                         :row
                         :column="multiSelectColumn"
-                        class="table-ng__cell--select"
+                        class="table-ng__cell--selectable"
                     ></i-table-checkbox>
                     <i-table-radio
                         v-if="isSingleSelect"
                         :ref="bindCellApiRef"
                         :row
                         :column="singleSelectColumn"
-                        class="table-ng__cell--select"
+                        class="table-ng__cell--selectable"
                     ></i-table-radio>
                     <template v-for="column in columns" :key="column.id">
                         <component
