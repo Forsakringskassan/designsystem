@@ -14,26 +14,10 @@ Poc av tabell med pilnavigering och redigeringsläge. Kolumntyper läggs till ef
 FTableLiveExample.vue
 ```
 
+## Exempel för test
+
 ```import
 FTableExample.vue
-```
-
-## Välja en rad
-
-```import
-FTableRadioExample.vue
-```
-
-## Expanderbar tabell
-
-```import
-FTableExpandableRows.vue
-```
-
-## Radrubriker och kolumnbeskrivningar
-
-```import
-FTableRowHeaderExample.vue
 ```
 
 ## Specialiserade inmatningsfält

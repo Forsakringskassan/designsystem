@@ -73,7 +73,7 @@ const columns = defineTableColumns<Row>([
         value(row) {
             return `Ta bort ${row.id}`;
         },
-        onClick: onButtonClick,
+        onClick: onRemoveRow,
     },
     {
         header: "Länk",
@@ -221,16 +221,35 @@ const sortableAttributes = Object.fromEntries(
 
 const mySelectedRows = ref<Row[]>([rows.value[0]]);
 
-function onButtonClick(row: Row): void {
+function onAddRow(): void {
+    rows.value.push({
+        id: String(rows.value.length + 1),
+        animal: "Katt",
+        level: "Föräldrapenning",
+        start: "2022-04-11",
+        end: "2022-04-20",
+        antal: "10000",
+        aktiv: false,
+    });
+}
+
+function onRemoveRow(row: Row): void {
     assertRef(tableRef);
+
     tableRef.value.withTabstopBehaviour("row-removal", () => {
         rows.value.splice(rows.value.indexOf(row), 1);
     });
 }
+
+function onRemoveSelectedRows(): void {
+    rows.value = rows.value.filter((row) => !mySelectedRows.value.includes(row));
+}
 </script>
 
 <template>
-    <button type="button" class="button button--secondary">Interagerbart element före</button>
+    <button type="button" class="button button--secondary" @click="onRemoveSelectedRows">
+        Ta bort markerade rader
+    </button>
     <f-sort-filter-dataset :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
             <f-table
@@ -246,11 +265,7 @@ function onButtonClick(row: Row): void {
             </f-table>
         </template>
     </f-sort-filter-dataset>
-    <h3>Selected rows ({{ mySelectedRows.length }} items):</h3>
-    <pre>{{ mySelectedRows }}</pre>
-    <h3>Rows ({{ rows.length }} items):</h3>
-    <pre>{{ rows }}</pre>
-    <button type="button" class="button button--secondary">Interagerbart element efter</button>
+    <button type="button" class="button button--secondary" @click="onAddRow">Lägg till rad</button>
 </template>
 
 <style>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { h, ref } from "vue";
-import { formatNumber } from "@fkui/logic";
-import { FSortFilterDataset, FTextField } from "@fkui/vue";
+import { ref } from "vue";
+import { FTextField } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
