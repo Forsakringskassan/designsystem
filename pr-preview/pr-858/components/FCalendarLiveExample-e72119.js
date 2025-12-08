@@ -3799,9 +3799,6 @@ function getAbsolutePosition(src) {
   };
 }
 
-// packages/vue/src/utils/internal-key.ts
-var internalKey = Symbol("internal-key");
-
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
@@ -6552,7 +6549,7 @@ FExpand_default.__file = "packages/vue/src/components/FExpand/FExpand.vue";
 var FExpand_default2 = FExpand_default;
 
 // packages/vue/src/components/FTooltip/tooltip-attach-to.ts
-var tooltipAttachTo = Symbol("tooltipAttachTo");
+var tooltipAttachTo = /* @__PURE__ */ Symbol("tooltipAttachTo");
 
 // packages/vue/src/components/FTooltip/use-animation.ts
 import { computed as computed3, onMounted as onMounted3, ref as ref3, watchEffect as watchEffect4 } from "vue";
@@ -6931,9 +6928,9 @@ function* labelClasses(options) {
 // packages/vue/src/components/FFieldset/use-fieldset.ts
 import { inject as inject2 } from "vue";
 var injectionKeys = {
-  sharedName: Symbol("sharedName"),
-  showDetails: Symbol("showDetails"),
-  getFieldsetLabelText: Symbol("getFieldsetLabelText")
+  sharedName: /* @__PURE__ */ Symbol("sharedName"),
+  showDetails: /* @__PURE__ */ Symbol("showDetails"),
+  getFieldsetLabelText: /* @__PURE__ */ Symbol("getFieldsetLabelText")
 };
 function useFieldset() {
   return {
