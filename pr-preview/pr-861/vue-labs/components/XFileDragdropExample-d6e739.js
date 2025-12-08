@@ -309,7 +309,7 @@ function requireSymbolConstructorDetection() {
   var globalThis2 = requireGlobalThis();
   var $String = globalThis2.String;
   symbolConstructorDetection = !!Object.getOwnPropertySymbols && !fails2(function() {
-    var symbol = Symbol("symbol detection");
+    var symbol = /* @__PURE__ */ Symbol("symbol detection");
     return !$String(symbol) || !(Object(symbol) instanceof Symbol) || // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
     !Symbol.sham && V8_VERSION && V8_VERSION < 41;
   });
@@ -1951,9 +1951,7 @@ function requireEs_iterator_some() {
   return es_iterator_some;
 }
 requireEs_iterator_some();
-var tableCellApiSymbol = Symbol("table:cell-api");
 var internalKey = getInternalKey();
-var stopEditKey = Symbol();
 var es_iterator_map = {};
 var defineBuiltIns;
 var hasRequiredDefineBuiltIns;

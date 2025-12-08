@@ -310,7 +310,7 @@ function requireSymbolConstructorDetection() {
   var globalThis2 = requireGlobalThis();
   var $String = globalThis2.String;
   symbolConstructorDetection = !!Object.getOwnPropertySymbols && !fails2(function() {
-    var symbol = Symbol("symbol detection");
+    var symbol = /* @__PURE__ */ Symbol("symbol detection");
     return !$String(symbol) || !(Object(symbol) instanceof Symbol) || // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
     !Symbol.sham && V8_VERSION && V8_VERSION < 41;
   });
@@ -1955,7 +1955,7 @@ requireEs_iterator_some();
 function isFTableCellApi(value) {
   return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
 }
-var tableCellApiSymbol = Symbol("table:cell-api");
+var tableCellApiSymbol = /* @__PURE__ */ Symbol("table:cell-api");
 function walk(array, visit, childKey, level = 1) {
   for (const item of array) {
     const visitChildren = visit(item, level);
@@ -2784,7 +2784,7 @@ function getBodyRowCount(rows, childKey) {
   }, childKey);
   return count;
 }
-var stopEditKey = Symbol();
+var stopEditKey = /* @__PURE__ */ Symbol();
 function useStartStopEdit() {
   const stopEdit2 = inject(stopEditKey, () => Promise.resolve());
   return {
@@ -3650,7 +3650,7 @@ function normalizeTableColumn(column) {
   if ("render" in column) {
     return {
       type: void 0,
-      id: Symbol(),
+      id: /* @__PURE__ */ Symbol(),
       header: toRef(column.header),
       description,
       render: column.render,
@@ -3661,7 +3661,7 @@ function normalizeTableColumn(column) {
     case "checkbox":
       return {
         type: "checkbox",
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         label: getLabelFn(column.label),
@@ -3677,7 +3677,7 @@ function normalizeTableColumn(column) {
     case "radio":
       return {
         type: "radio",
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         label: getLabelFn(column.label),
@@ -3697,7 +3697,7 @@ function normalizeTableColumn(column) {
       const decimals = type === "text:currency" ? 0 : column.decimals;
       return {
         type,
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         label: getLabelFn(column.label),
@@ -3732,7 +3732,7 @@ function normalizeTableColumn(column) {
       const formatter = (_column$formatter2 = column.formatter) !== null && _column$formatter2 !== void 0 ? _column$formatter2 : config.formatter;
       return {
         type,
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         tnum: (_column$tnum2 = column.tnum) !== null && _column$tnum2 !== void 0 ? _column$tnum2 : defaultTnumValue(type),
@@ -3752,7 +3752,7 @@ function normalizeTableColumn(column) {
     case "rowheader":
       return {
         type: "rowheader",
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         value: getValueFn(column.value, column.key, String, ""),
@@ -3762,7 +3762,7 @@ function normalizeTableColumn(column) {
     case "anchor":
       return {
         type: "anchor",
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         value: column.value,
@@ -3777,7 +3777,7 @@ function normalizeTableColumn(column) {
     case "button":
       return {
         type: "button",
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         value: column.value,
@@ -3793,7 +3793,7 @@ function normalizeTableColumn(column) {
     case "select":
       return {
         type: "select",
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         label: getLabelFn(column.label),
@@ -3810,7 +3810,7 @@ function normalizeTableColumn(column) {
     case void 0:
       return {
         type: "text",
-        id: Symbol(),
+        id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
         label: () => "",
@@ -4038,7 +4038,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
     });
     const multiSelectColumn = {
       type: "checkbox",
-      id: Symbol("multi-select"),
+      id: /* @__PURE__ */ Symbol("multi-select"),
       header: ref("selectable"),
       description: ref(null),
       sortable: null,
@@ -4069,7 +4069,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
     };
     const singleSelectColumn = {
       type: "radio",
-      id: Symbol("single-select"),
+      id: /* @__PURE__ */ Symbol("single-select"),
       header: ref("V\xE4lj en rad"),
       description: ref(null),
       sortable: null,
