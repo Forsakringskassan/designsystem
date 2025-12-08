@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="sv" class="layout--api--class" data-root-url="..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>FTablePageObject - FKUI Labs</title><link
+            rel="stylesheet"
+            href="../assets/docs-5206cb.css"
+            crossorigin
+            integrity="sha384-BYI/jNFivC7bHRA/vWCpoXoWyMZ54HUVtgckf7rbnAVM7OSG/hv3AbIGepKGGscz"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-fkui-739a55.css"
+            crossorigin
+            integrity="sha384-uz+6WPO4Mojvx2NlswR+QRzFsZqeoXdLpko5BOEQMd1J4KWaLn1oTX1tCO+HRqOb"
+            data-theme="fkui" disabled
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../assets/vendor-vue-65d7e0.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-b0075f.js",
+    "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-629a55.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-ef733e.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-c58cb4.js"
+  },
+  "integrity": {
+    "../assets/vendor-vue-65d7e0.js": "sha384-MgeF33e4jkQ2EjO0v2n9zQ80YVIYPj41Yccdg07ykaiJRlxfzYv+oKmgqHz6HWqA",
+    "../assets/vendor-fkui-logic-b0075f.js": "sha384-8+BulV9pwaaof6GCYzDYWUpbIvcu9fc2Uh+6BPuhF2mi1O4YlXtNBWTy7IzL6v7N",
+    "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
+    "../assets/vendor-fkui-vue-629a55.js": "sha384-qTB8XJxL8Eir3MOIY//AjANCZQtJVdokxvFJp1Mlwj7utJRL4j9oX5IKn+T/bFp8",
+    "../assets/vendor-fkui-vue-labs-ef733e.js": "sha384-y4Nhi96g42XUG2AjIy/SePD0704Qreyrp9noy38DMkdv1gw7kVXNhFSOYDFnbRfR",
+    "../assets/vendor-forsakringskassan-docs-live-example-c58cb4.js": "sha384-xAUwr4rpouMt+o7vHGbabas4vhkvbIiXbvpNEtactlSt/BvMgnkkbyLQQoZt0IZ+"
+  }
+}
+        </script><script
+            src="../assets/bootstrap-dfc010.js"
+            
+            crossorigin
+            integrity="sha384-4CY3mj1uza2HPzeViyHD3gIMd8d3TDJDCoq1h22Ak/QLHgKLnc2ymTmUrjDIDy3M"
+            
+        ></script><link
+            rel="preload"
+            href="../search-data-67e2f4.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-qap5T4Ywhnk/jbBbD2k2uh/h3EyhXvJdAYmTI3scXHcQPwTJxJE9lcxLB9Y7VkUT"
+            id="search-data"
+        />
+    </head>
+    <body><div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../index.html">
+            <span aria-label="FKUI Labs" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../index.html"> FKUI Labs </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../components/"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="./"> Pageobjekt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../components/"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./"> Pageobjekt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <span class="version">
+        6.30.0
+    </span>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol><li class="link active">
+        <a
+            href="./ftablepageobject.html"
+            
+            
+            
+            data-path="pageobjects/ftablepageobject.html"
+            
+        >
+            FTablePageObject
+        </a>
+    </li></ol>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">FTablePageObject</h1>
+
+                    
+                    <div id="aside"><dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#ftablepageobject">FTablePageObject()</a></li>
+                                
+                                <li><a href="#cell">cell()</a></li>
+                                
+                                <li><a href="#el">el()</a></li>
+                                
+                                <li><a href="#expandbutton">expandButton()</a></li>
+                                
+                                <li><a href="#footer">footer()</a></li>
+                                
+                                <li><a href="#header">header()</a></li>
+                                
+                                <li><a href="#headerdescription">headerDescription()</a></li>
+                                
+                                <li><a href="#headertitle">headerTitle()</a></li>
+                                
+                                <li><a href="#rows">rows()</a></li>
+                                
+                                <li><a href="#selectheaderinput">selectHeaderInput()</a></li>
+                                
+                                <li><a href="#selectinput">selectInput()</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content"><p class="docs-paragraph">Använd <code>FTablePageObject</code> för att hämta information relaterat till <code>FTable</code> komponenten.</p>
+<h2 id="ftablepageobject"><a class="header-anchor" href="#ftablepageobject">FTablePageObject()</a></h2><h3 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h3>
+                <div
+                    id="example-e334fb"
+                    class="code-preview code-preview--default"
+                    data-test="syntax"
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(selector);
+</code></pre>
+                </div>
+            <h4 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h4><dl>
+<dt><code>selector: string</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Selector till det <code>FTable</code>-element som avses testas.</p>
+<p class="docs-paragraph">Du kan med fördel använda direktivet <code>v-test</code> för din selector.</p>
+<p class="docs-paragraph">Default: <code>.table-ng</code>.</p>
+</dd>
+</dl>
+<h3 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h3>
+                <div
+                    id="example-d74b22"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-fcec1e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Foo&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Bar&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Baz&quot;</span>);</code></pre>
+                </div>
+            <h2 id="cell"><a class="header-anchor" href="#cell">cell()</a></h2><p class="docs-paragraph">Hämtar en tabellcell.</p>
+<p class="docs-paragraph">Både rad och kolumn är 1-indexerade.</p>
+<p class="docs-paragraph">Kolumnnumreringen inkluderar kolumnen för expanderingsknapparna i en expanderbar tabell eller kolumnen för checkboxarna/radioknapparna i en valbar tabell.</p>
+<p class="docs-paragraph">För expanderbara rader beror radnummer på om rader är expanderade eller ej.
+Om man anger rad 2 när rad 1 är kollapsad så refererar det till nästa ej expanderade rad under rad 1.
+Men om rad 1 är expanderad refererar rad 2 till den första expanderade raden under rad 1.</p>
+<h3 id="syntax--1"><a class="header-anchor" href="#syntax--1">Syntax</a></h3>
+                <div
+                    id="example-c1c65c"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">cell</span>(descriptor);
+</code></pre>
+                </div>
+            <h4 id="parametrar--2"><a class="header-anchor" href="#parametrar--2">Parametrar</a></h4><dl>
+<dt><code>descriptor</code></dt>
+<dd>
+<p class="docs-paragraph">Rad och kolumn</p>
+<dl>
+<dt><code>row: number</code></dt>
+<dd>Radnummer (1-indexerat).</dd>
+<dt><code>col: number</code></dt>
+<dd>Kolumnnummer (1-indexerat).</dd>
+</dl>
+</dd>
+</dl>
+<h4 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLTableCellElement</code> med tabellcellen beskriven av <code>descriptor</code>.</p>
+<h3 id="exempel--3"><a class="header-anchor" href="#exempel--3">Exempel</a></h3>
+                <div
+                    id="example-976401"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-4c02c7"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Foo&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Bar&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Baz&quot;</span>);</code></pre>
+                </div>
+            <h2 id="el"><a class="header-anchor" href="#el">el()</a></h2><p class="docs-paragraph">Hämtar tabellens root-element.</p>
+<h3 id="syntax--4"><a class="header-anchor" href="#syntax--4">Syntax</a></h3>
+                <div
+                    id="example-10787c"
+                    class="code-preview code-preview--default"
+                    data-test="syntax"
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">el</span>();
+</code></pre>
+                </div>
+            <h4 id="returvarde--5"><a class="header-anchor" href="#returvarde--5">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> för tabellen.</p>
+<h3 id="exempel--6"><a class="header-anchor" href="#exempel--6">Exempel</a></h3>
+                <div
+                    id="example-b32a00"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-69b7fc"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">el</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;exist&quot;</span>);</code></pre>
+                </div>
+            <h2 id="expandbutton"><a class="header-anchor" href="#expandbutton">expandButton()</a></h2><p class="docs-paragraph">Hämtar expanderingsknappen i en expanderbar tabell.</p>
+<p class="docs-paragraph">Radnumreringen är 1-indexerade och inkluderar expanderade rader.
+Notera att expanderade rader ej har någon expanderingsknapp och bör därför inte väljas med denna metod.</p>
+<h3 id="syntax--7"><a class="header-anchor" href="#syntax--7">Syntax</a></h3>
+                <div
+                    id="example-e044e2"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">expandButton</span>(row);
+</code></pre>
+                </div>
+            <h4 id="parametrar--8"><a class="header-anchor" href="#parametrar--8">Parametrar</a></h4><dl>
+<dt><code>row: number</code></dt>
+<dd>Radnummer (1-indexerat).</dd>
+</dl>
+<h4 id="returvarde--9"><a class="header-anchor" href="#returvarde--9">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLButtonElement</code> med expanderingsknappen beskriven av <code>row</code>.</p>
+<h3 id="exempel--10"><a class="header-anchor" href="#exempel--10">Exempel</a></h3>
+                <div
+                    id="example-e046ff"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;nested&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-174235"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">expandButton</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">click</span>();
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">3</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Expanded 1&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">3</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Expanded 2&quot;</span>);</code></pre>
+                </div>
+            <h2 id="footer"><a class="header-anchor" href="#footer">footer()</a></h2><p class="docs-paragraph">Hämtar tabellens footer.</p>
+<h3 id="syntax--11"><a class="header-anchor" href="#syntax--11">Syntax</a></h3>
+                <div
+                    id="example-8e17a8"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">footer</span>();
+</code></pre>
+                </div>
+            <h4 id="returvarde--12"><a class="header-anchor" href="#returvarde--12">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLTableSectionElement</code> för tabellens footer.</p>
+<h3 id="exempel--13"><a class="header-anchor" href="#exempel--13">Exempel</a></h3>
+                <div
+                    id="example-3c5082"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span> My awesome footer <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-ea1d4a"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">footer</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;My awesome footer&quot;</span>);</code></pre>
+                </div>
+            <h2 id="header"><a class="header-anchor" href="#header">header()</a></h2><p class="docs-paragraph">Hämtar en cell i tabellhuvudet.</p>
+<p class="docs-paragraph">Kolumnumreringen är 1-indexerad och inkluderar kolumnen för expanderingsknapparna i en expanderbar tabell och kolumnen för checkboxarna/radioknapparna i en valbar tabell.</p>
+<h3 id="syntax--14"><a class="header-anchor" href="#syntax--14">Syntax</a></h3>
+                <div
+                    id="example-55512f"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">header</span>(col);
+</code></pre>
+                </div>
+            <h4 id="parametrar--15"><a class="header-anchor" href="#parametrar--15">Parametrar</a></h4><dl>
+<dt><code>col: number</code></dt>
+<dd>Kolumnnummer (1-indexerat).</dd>
+</dl>
+<h4 id="returvarde--16"><a class="header-anchor" href="#returvarde--16">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLTableCellElement</code> med en cell från tabellhuvudet beskriven av <code>col</code>.</p>
+<h3 id="exempel--17"><a class="header-anchor" href="#exempel--17">Exempel</a></h3>
+                <div
+                    id="example-c2d6de"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-b68fbb"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">header</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;ID&quot;</span>);
+table.<span class="hljs-title function_">header</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Namn&quot;</span>);</code></pre>
+                </div>
+            <h2 id="headerdescription"><a class="header-anchor" href="#headerdescription">headerDescription()</a></h2><p class="docs-paragraph">Hämtar en kolumnbeskrivning från tabellhuvudet.</p>
+<p class="docs-paragraph">Kolumnumreringen är 1-indexerad och inkluderar kolumnen för expanderingsknapparna i en expanderbar tabell och kolumnen för checkboxarna/radioknapparna i en valbar tabell.</p>
+<h3 id="syntax--18"><a class="header-anchor" href="#syntax--18">Syntax</a></h3>
+                <div
+                    id="example-598463"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">header</span>(col);
+</code></pre>
+                </div>
+            <h4 id="parametrar--19"><a class="header-anchor" href="#parametrar--19">Parametrar</a></h4><dl>
+<dt><code>col: number</code></dt>
+<dd>Kolumnnummer (1-indexerat).</dd>
+</dl>
+<h4 id="returvarde--20"><a class="header-anchor" href="#returvarde--20">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> som innehåller kolumnbeskrivning beskriven av <code>col</code>.</p>
+<h3 id="exempel--21"><a class="header-anchor" href="#exempel--21">Exempel</a></h3>
+                <div
+                    id="example-a63f12"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-35ff37"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">headerTitle</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;ID&quot;</span>);
+table.<span class="hljs-title function_">headerTitle</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Namn&quot;</span>);</code></pre>
+                </div>
+            <h2 id="headertitle"><a class="header-anchor" href="#headertitle">headerTitle()</a></h2><p class="docs-paragraph">Hämtar en kolumntitel från tabellhuvudet.</p>
+<p class="docs-paragraph">Kolumnumreringen är 1-indexerad och inkluderar kolumnen för expanderingsknapparna i en expanderbar tabell och kolumnen för checkboxarna/radioknapparna i en valbar tabell.</p>
+<h3 id="syntax--22"><a class="header-anchor" href="#syntax--22">Syntax</a></h3>
+                <div
+                    id="example-0ef448"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">header</span>(col);
+</code></pre>
+                </div>
+            <h4 id="parametrar--23"><a class="header-anchor" href="#parametrar--23">Parametrar</a></h4><dl>
+<dt><code>col: number</code></dt>
+<dd>Kolumnnummer (1-indexerat).</dd>
+</dl>
+<h4 id="returvarde--24"><a class="header-anchor" href="#returvarde--24">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> som innehåller en kolumntitel beskriven av <code>col</code>.</p>
+<h3 id="exempel--25"><a class="header-anchor" href="#exempel--25">Exempel</a></h3>
+                <div
+                    id="example-d89c21"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-5d65b9"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">headerTitle</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;ID&quot;</span>);
+table.<span class="hljs-title function_">headerTitle</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Namn&quot;</span>);</code></pre>
+                </div>
+            <h2 id="rows"><a class="header-anchor" href="#rows">rows()</a></h2><p class="docs-paragraph">Hämtar alla synliga rader i tabellen.</p>
+<p class="docs-paragraph">Inkluderar expanderade rader.</p>
+<h3 id="syntax--26"><a class="header-anchor" href="#syntax--26">Syntax</a></h3>
+                <div
+                    id="example-88fbb8"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">rows</span>();
+</code></pre>
+                </div>
+            <h4 id="returvarde--27"><a class="header-anchor" href="#returvarde--27">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLTableRowElement</code> för alla synliga rader.</p>
+<h3 id="exempel--28"><a class="header-anchor" href="#exempel--28">Exempel</a></h3>
+                <div
+                    id="example-89bb08"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-6aa182"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">rows</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.length&quot;</span>, <span class="hljs-number">3</span>);</code></pre>
+                </div>
+            <h2 id="selectheaderinput"><a class="header-anchor" href="#selectheaderinput">selectHeaderInput()</a></h2><p class="docs-paragraph">Hämtar checkboxen för bulkoperation från kolumnhuvudet för en flervalstabell.</p>
+<p class="docs-paragraph">Notera att denna metod kan endast användas om tabellen är en flervalstabell (den använder <code>selectable=&quot;multi&quot;</code>).</p>
+<h3 id="syntax--29"><a class="header-anchor" href="#syntax--29">Syntax</a></h3>
+                <div
+                    id="example-dee459"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">selectHeaderInput</span>();
+</code></pre>
+                </div>
+            <h4 id="returvarde--30"><a class="header-anchor" href="#returvarde--30">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLInputElement</code> med checkboxen för bulkoperation.</p>
+<h3 id="exempel--31"><a class="header-anchor" href="#exempel--31">Exempel</a></h3>
+                <div
+                    id="example-e2f2cd"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span>
+        <span class="hljs-attr">v-model:selected-rows</span>=<span class="hljs-string">&quot;selectedRows&quot;</span>
+        <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span>
+        <span class="hljs-attr">:columns</span>
+        <span class="hljs-attr">:rows</span>
+        <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>
+        <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-b38c96"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">selectHeaderInput</span>().<span class="hljs-title function_">click</span>();
+table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;be.checked&quot;</span>);
+table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;be.checked&quot;</span>);
+table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;be.checked&quot;</span>);</code></pre>
+                </div>
+            <h2 id="selectinput"><a class="header-anchor" href="#selectinput">selectInput()</a></h2><p class="docs-paragraph">Hämtar inmatning för att välja en rad i en valbar tabell.</p>
+<p class="docs-paragraph">För en flervalstabell så är inmatningselementet en checkbox, annars en radioknapp.</p>
+<p class="docs-paragraph">Radnumreringen är 1-indexerad och inkluderar expanderade rader.</p>
+<h3 id="syntax--32"><a class="header-anchor" href="#syntax--32">Syntax</a></h3>
+                <div
+                    id="example-c89e76"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">selectInput</span>(row);
+</code></pre>
+                </div>
+            <h4 id="parametrar--33"><a class="header-anchor" href="#parametrar--33">Parametrar</a></h4><dl>
+<dt><code>row: number</code></dt>
+<dd>Radnummer (1-indexerat).</dd>
+</dl>
+<h4 id="returvarde--34"><a class="header-anchor" href="#returvarde--34">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLInputElement</code> med checkbox eller radioknapp för en valbar tabell.</p>
+<h3 id="exempel--35"><a class="header-anchor" href="#exempel--35">Exempel</a></h3>
+                <div
+                    id="example-5d5679"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span>
+        <span class="hljs-attr">v-model:selected-rows</span>=<span class="hljs-string">&quot;selectedRows&quot;</span>
+        <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span>
+        <span class="hljs-attr">:columns</span>
+        <span class="hljs-attr">:rows</span>
+        <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>
+        <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-ac2480"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">click</span>();
+table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;be.checked&quot;</span>);
+table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;not.be.checked&quot;</span>);
+table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;not.be.checked&quot;</span>);</code></pre>
+                </div>
+            
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="../changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content"></div>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Sök</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog><script
+            src="../assets/main-07fd53.js"
+            type="module"
+            crossorigin
+            integrity="sha384-a+r1YAkm2Z8i9EAlrXJtUwWeeyVl3nmXeE5QZxfNHgvwSuC86xWs+tVaTg6Myv/d"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/pageobjects/FTablePageObject.md
+         Document ID: fs:docs/pageobjects/FTablePageObject.md
+         Document name: FTablePageObject
+         Document alias: 
+
+    -->
+</html>
