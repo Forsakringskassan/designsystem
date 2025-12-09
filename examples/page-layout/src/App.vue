@@ -88,7 +88,7 @@ registerLayout({
 }
 
 ::part(area header) {
-    --f-page-layout-background: var(--f-background-pageheader-primary);
+    --f-page-layout-background: var(--fkds-color-header-background-primary);
     --f-page-layout-color: var(--fkds-color-text-inverted);
 }
 

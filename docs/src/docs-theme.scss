@@ -15,11 +15,11 @@ $fk-logo-large: "fk-logo-primary-large.svg";
 :root {
     --f-logo-image-small:
         url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
-        linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+        linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
 
     --f-logo-image-large:
         url("#{config-variables.$asset-path-images}/#{$fk-logo-large}"),
-        linear-gradient(var(--f-background-pageheader-primary), var(--f-background-pageheader-primary));
+        linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
 
     color-scheme: light dark;
 }
