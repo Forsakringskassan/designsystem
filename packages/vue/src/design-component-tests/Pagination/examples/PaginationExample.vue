@@ -7,7 +7,6 @@ import {
     FNumericTextField,
     FPaginateDataset,
     FPaginator,
-    FSelectField,
     FTableColumn,
 } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
@@ -19,7 +18,6 @@ export default defineComponent({
         FCheckboxField,
         FFieldset,
         FNumericTextField,
-        FSelectField,
         LiveExample,
     },
     data() {
@@ -27,8 +25,6 @@ export default defineComponent({
             componentType: "dataTable",
             fetchDataDynamically: false,
             numberOfItemsPerPage: 10,
-            numberOfPagesOptions: [5, 6, 7, 8, 9],
-            numberOfPagesToShowAtMost: null as number | null,
             showInteractiveListWithCheckboxes: false,
             showPaginator: true,
             showPaginatorInHeader: false,
@@ -44,7 +40,6 @@ export default defineComponent({
                 FNumericTextField,
                 FPaginateDataset,
                 FPaginator,
-                FSelectField,
                 FTableColumn,
             };
         },
@@ -76,16 +71,8 @@ export default defineComponent({
         itemsPerPage(): string {
             return `:itemsPerPage="${this.numberOfItemsPerPage.toString()}"`;
         },
-        numberOfPagesToShow(): string {
-            return /* HTML */ this.numberOfPagesToShowAtMost
-                ? `:number-of-pages-to-show="${this.numberOfPagesToShowAtMost.toString()}"`
-                : ``;
-        },
         paginator(): string {
-            return /* HTML */ `<f-paginator
-                ${this.numberOfPagesToShow}
-                navigator-label="Navigate between persons"
-            />`;
+            return /* HTML */ `<f-paginator navigator-label="Navigate between persons" />`;
         },
         screenreaderTemplate(): string {
             return this.showInteractiveListWithCheckboxes /* HTML */
@@ -152,17 +139,5 @@ export default defineComponent({
                 Visa paginator i sidfot
             </f-checkbox-field>
         </f-fieldset>
-        <f-select-field id="numberOfPages" v-model="numberOfPagesToShowAtMost">
-            <template #label>Antal sidor att visa</template>
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass">
-                    Det maximala antalet sidor som kan visas samtidigt.
-                </span>
-            </template>
-            <option :value="null">Standardvärde</option>
-            <option v-for="option in numberOfPagesOptions" :key="option" :value="option">
-                {{ option }}
-            </option>
-        </f-select-field>
     </live-example>
 </template>
