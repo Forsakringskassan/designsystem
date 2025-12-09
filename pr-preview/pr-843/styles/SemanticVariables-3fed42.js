@@ -739,6 +739,62 @@ var metadata_default = {
       }
     },
     {
+      "name": "--fkds-color-navigation-background-hover",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#dbe9e2",
+          "palette": "green-a-15"
+        },
+        "dark": {
+          "value": "#88b49f",
+          "palette": "green-a-50"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-navigation-background-selected",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#35805b",
+          "palette": "green-a-85"
+        },
+        "dark": {
+          "value": "#35805b",
+          "palette": "green-a-85"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-navigation-border-hover",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#88b49f",
+          "palette": "green-a-50"
+        },
+        "dark": {
+          "value": "#dbe9e2",
+          "palette": "green-a-15"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-navigation-border-selected",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#35805b",
+          "palette": "green-a-85"
+        },
+        "dark": {
+          "value": "#35805b",
+          "palette": "green-a-85"
+        }
+      }
+    },
+    {
       "name": "--fkds-color-select-background-primary-active",
       "comment": null,
       "values": {
