@@ -90,7 +90,7 @@ export default defineComponent({
         screenreaderTemplate(): string {
             return this.showInteractiveListWithCheckboxes /* HTML */
                 ? `<template #screenreader="{ item }">
-                      Person {{ item.firstName }} {{ item.lastName }} ({{item.id}})
+                      Person {{ item.name }} ({{item.id}})
                   </template>`
                 : ``;
         },
@@ -112,7 +112,7 @@ export default defineComponent({
                             ${this.selectable}
                         >
                             <template #default="{ item }">
-                                <h6>{{ item.firstName }} {{ item.lastName }} ({{item.id}})</h6>
+                                <h6>{{ item.name }} ({{item.id}})</h6>
                             </template>
                             ${this.screenreaderTemplate}
                         </f-list>
