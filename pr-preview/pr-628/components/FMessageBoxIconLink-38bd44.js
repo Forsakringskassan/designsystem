@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FMessageBox/examples/FMessageBoxIconLink.vue:FMessageBoxIconLink-4ce3a1.js
+// virtual-entry:virtual:packages/vue/src/components/FMessageBox/examples/FMessageBoxIconLink.vue:FMessageBoxIconLink-38bd44.js
 import { defineComponent } from "vue";
 import { FIcon, FMessageBox } from "@fkui/vue";
 import { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -55,6 +55,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         2
         /* CLASS */
       ),
+      _cache[2] || (_cache[2] = _createElementVNode(
+        "p",
+        null,
+        "Gl\xF6m inte att klicka p\xE5 l\xE4nken.",
+        -1
+        /* CACHED */
+      )),
       _createElementVNode("a", _hoisted_1, [
         _cache[0] || (_cache[0] = _createTextVNode(
           " L\xE4nk ",
@@ -78,7 +85,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4ce3a1"
+  selector: "#example-38bd44"
 });
 export {
   render
