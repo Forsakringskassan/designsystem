@@ -41,7 +41,6 @@ var ErrorTypes = /* @__PURE__ */ (function(ErrorTypes$1) {
   ErrorTypes$1[ErrorTypes$1["NAVIGATION_DUPLICATED"] = 16] = "NAVIGATION_DUPLICATED";
   return ErrorTypes$1;
 })({});
-var NavigationFailureSymbol = Symbol(true ? "navigation failure" : "");
 var ErrorTypeMessages = {
   [ErrorTypes.MATCHER_NOT_FOUND]({ location: location2, currentLocation }) {
     return `No match for
@@ -72,11 +71,7 @@ function stringifyRoute(to) {
   for (const key of propertiesToLog) if (key in to) location2[key] = to[key];
   return JSON.stringify(location2, null, 2);
 }
-var matchedRouteKey = Symbol(true ? "router view location matched" : "");
-var viewDepthKey = Symbol(true ? "router view depth" : "");
-var routerKey = Symbol(true ? "router" : "");
-var routeLocationKey = Symbol(true ? "route location" : "");
-var routerViewLocationKey = Symbol(true ? "router view location" : "");
+var routerKey = /* @__PURE__ */ Symbol(true ? "router" : "");
 
 // node_modules/vue-router/dist/vue-router.mjs
 import { computed, defineComponent, getCurrentInstance as getCurrentInstance2, h as h2, inject as inject2, nextTick, provide, reactive, ref, shallowReactive, shallowRef, unref, watch as watch2, watchEffect } from "vue";

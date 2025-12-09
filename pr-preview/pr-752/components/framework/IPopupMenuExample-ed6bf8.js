@@ -3763,9 +3763,6 @@ function getAbsolutePosition(src) {
   };
 }
 
-// packages/vue/src/utils/internal-key.ts
-var internalKey = Symbol("internal-key");
-
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
 import { defineComponent as defineComponent12 } from "vue";
 import { debounce, handleTab, popFocus as popFocus2, pushFocus as pushFocus2 } from "@fkui/logic";
