@@ -218,7 +218,7 @@ exports[`snapshots should match snapshot with label, content and tooltip 1`] = `
   <!--v-if-->
   
   <div
-    class="label"
+    class="label fieldset__label"
   >
     <span
       aria-hidden="true"

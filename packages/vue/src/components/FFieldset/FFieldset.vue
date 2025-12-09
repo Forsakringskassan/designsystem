@@ -146,6 +146,13 @@ export default defineComponent({
         groupLabelClass(): string[] {
             return Array.from(labelClasses(this));
         },
+        groupLabelClassTooltip(): string[] {
+            if (this.hasDescriptionSlot || this.hasErrorMessageSlot || this.hasError) {
+                return [];
+            } else {
+                return this.groupLabelClass;
+            }
+        },
         groupContentClass(): string[] {
             return Array.from(contentClasses(this));
         },
@@ -291,7 +298,7 @@ export default defineComponent({
         so the tooltip button can be positioned correctly when a description is
         also present -->
         <template v-if="hasTooltipSlot">
-            <div ref="tooltipAttachTo" class="label">
+            <div ref="tooltipAttachTo" class="label" :class="groupLabelClassTooltip">
                 <span aria-hidden="true">
                     <slot name="label"></slot>
                 </span>
