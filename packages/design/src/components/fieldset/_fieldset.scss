@@ -10,8 +10,11 @@
     width: var(--f-width-full);
 
     &__label {
-        padding: 0;
-        margin-bottom: core.densify(size.$margin-075);
+        // make this selector more specific than .label
+        &.label {
+            padding: 0;
+            margin-bottom: core.densify(size.$margin-075);
+        }
     }
 
     &__content {
