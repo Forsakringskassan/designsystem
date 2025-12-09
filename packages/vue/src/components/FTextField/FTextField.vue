@@ -199,7 +199,7 @@ export default defineComponent({
             return this.validityMode === "VALID";
         },
         hasError(): boolean {
-            return this.validityMode === "ERROR";
+            return this.validityMode === "ERROR" && !this.dropdownIsOpen;
         },
         rootClass(): Record<string, boolean> {
             return {
@@ -306,7 +306,9 @@ export default defineComponent({
                 }
             }
 
-            this.triggerComponentValidityEvent(detail);
+            if (!this.dropdownIsOpen) {
+                this.triggerComponentValidityEvent(detail);
+            }
         },
         onPendingValidity(): void {
             this.validityMode = "INITIAL";
