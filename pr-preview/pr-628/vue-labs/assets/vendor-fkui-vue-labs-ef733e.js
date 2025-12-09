@@ -2682,7 +2682,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
 });
 var _hoisted_1$7 = {
   scope: "col",
-  class: "table-ng__column table-ng__column--select"
+  class: "table-ng__column table-ng__column--selectable"
 };
 var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "ITableHeaderSelectable",
@@ -4296,14 +4296,14 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
           ref: bindCellApiRef,
           row,
           column: multiSelectColumn,
-          class: "table-ng__cell--select"
+          class: "table-ng__cell--selectable"
         }, null, 8, ["row"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), isSingleSelect.value ? (openBlock(), createBlock(_sfc_main$8, {
           key: 1,
           ref_for: true,
           ref: bindCellApiRef,
           row,
           column: singleSelectColumn,
-          class: "table-ng__cell--select"
+          class: "table-ng__cell--selectable"
         }, null, 8, ["row"])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
           return openBlock(), createElementBlock(Fragment, {
             key: column.id

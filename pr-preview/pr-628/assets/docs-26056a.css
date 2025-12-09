@@ -14,10 +14,6 @@
   --f-background-sidepanel-button-tertiary-hover: #e5e5f5;
   --f-border-color-separator: #ddddde;
   --f-border-color-separator-pageheader-primary: #ffffff;
-  --f-border-color-link: #4a52b6;
-  --f-border-color-link-hover: #8d8e91;
-  --f-border-color-link-discrete: #8d8e91;
-  --f-border-color-link-discrete-hover: #4a52b6;
   --f-box-modal-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   --f-input-shadow-inset: inset 0 2px 3px rgba(0, 0, 0, 0.1);
   --f-font-family: "ExpFont", "NeueHass", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
@@ -5469,7 +5465,7 @@ input[type=search]:focus,
   width: var(--f-icon-size-medium);
   padding: calc(0.25rem * var(--f-density-factor));
 }
-.table-ng__cell--select {
+.table-ng__cell--selectable {
   width: var(--f-icon-size-medium);
 }
 .table-ng__cell--rowheader {
@@ -5537,11 +5533,11 @@ input[type=search]:focus,
   border-bottom: 2px solid var(--f-color-focus);
   border-right: 1px solid var(--f-color-focus);
 }
-.table-ng__column--select {
+.table-ng__column--selectable {
   text-align: center;
   padding: calc(0.25rem * var(--f-density-factor));
 }
-.table-ng__column--select input {
+.table-ng__column--selectable input {
   height: var(--f-icon-size-medium);
   width: var(--f-icon-size-medium);
   vertical-align: middle;
