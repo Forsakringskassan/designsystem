@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleDefault.vue:FWizardExampleDefault-318fb9.js
+// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleDefault.vue:FWizardExampleDefault-b07d22.js
 import { defineComponent } from "vue";
 import { FDatepickerField, FSelectField, FTextField, FWizard, FWizardStep } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode, createElementVNode as _createElementVNode, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode } from "vue";
@@ -63,6 +63,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       modelValue: _ctx.current,
       "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.current = $event),
       "header-tag": "h2",
+      "disable-initial-focus": "",
       onCompleted: _ctx.onCompleted
     }, {
       default: _withCtx(() => [
@@ -225,7 +226,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-318fb9"
+  selector: "#example-b07d22"
 });
 export {
   render
