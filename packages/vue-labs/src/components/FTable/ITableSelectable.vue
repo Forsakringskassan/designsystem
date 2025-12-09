@@ -35,6 +35,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, K> = {
     header: ref("selectable"),
     description: ref(null),
     sortable: null,
+    size: ref(null),
     component: ITableCheckbox,
     label() {
         /** Screen reader text for checkbox in multi select table row. */
@@ -57,6 +58,7 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, K> = {
     header: ref("Välj en rad"),
     description: ref(null),
     sortable: null,
+    size: ref(null),
     component: ITableRadio,
     label() {
         /** Screen reader text for radio button in single select table row. */

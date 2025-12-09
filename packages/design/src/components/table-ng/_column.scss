@@ -33,6 +33,11 @@ $horizontal-padding: size.$padding-050;
         padding: core.densify(size.$padding-025);
     }
 
+    &--shrink {
+        width: 1px;
+        white-space: nowrap;
+    }
+
     &__sort-icon {
         color: $table-ng-color-icon-sort-selected;
         height: var(--f-icon-size-x-small);
