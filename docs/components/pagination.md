@@ -26,31 +26,8 @@ Innehållet kan till exempel vara sökresultat eller tabeller.
 Paginering visar sidor som standard tillsammans med knappar för föregående och nästa sida, se exempel nedan.
 När fönstret blir smalare och paginering inte får plats ersätts sidorna med en text som visar vilken sida användaren befinner sig på, se exempel överst.
 
-```vue
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FPaginateDataset, FPaginator } from "@fkui/vue";
-
-export default defineComponent({
-    components: {
-        FPaginateDataset,
-        FPaginator,
-    },
-    data() {
-        return {
-            rows: Array.from({ length: 100 }),
-        };
-    },
-});
-</script>
-
-<template>
-    <f-paginate-dataset :items="rows" :itemsPerPage="1">
-        <template #default="{ items: currentPageItems }">
-            <f-paginator />
-        </template>
-    </f-paginate-dataset>
-</template>
+```import vue
+PaginationPageButtonExample.vue
 ```
 
 ## Hämtning av data
