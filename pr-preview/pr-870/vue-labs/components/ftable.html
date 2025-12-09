@@ -237,7 +237,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-6a39cb"></div>
+        <div id="example-b3d66f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -263,7 +263,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-6a39cb.js"></script>
+        <script type="module" src="./FTableExample-b3d66f.js"></script>
     
                 </div>
                 <div>
@@ -374,6 +374,12 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Djur för rad <span class="hljs-subst">${row.id}</span>`</span>,
         <span class="hljs-attr">options</span>: selectFieldOptions,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Render function&quot;</span>,
+        <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">h</span>(<span class="hljs-string">&quot;td&quot;</span>, { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-attr">class</span>: <span class="hljs-string">&quot;bar&quot;</span> }, [<span class="hljs-string">&quot;👻&quot;</span>]);
+        },
     },
     <span class="hljs-comment">// {</span>
     <span class="hljs-comment">//     header: &quot;Custom component&quot;,</span>
