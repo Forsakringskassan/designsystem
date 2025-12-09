@@ -27,6 +27,11 @@ import {
 /**
  * @public
  */
+export type TableColumnSize = "grow" | "shrink";
+
+/**
+ * @public
+ */
 export interface TableColumnSimple<T, K extends keyof T> {
     /* eslint-disable-next-line sonarjs/no-redundant-optional -- this is used as
      * a discriminator in the union, for the simple column we are not expected
@@ -35,6 +40,7 @@ export interface TableColumnSimple<T, K extends keyof T> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(row: T): string;
     value?(row: T): string;
 }
@@ -47,6 +53,7 @@ export interface TableColumnRowHeader<T, K extends keyof T> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     value?(row: T): string;
 }
 
@@ -63,6 +70,7 @@ export interface NormalizedTableColumnRowHeader<T, K> {
         row: T;
         column: NormalizedTableColumnRowHeader<T, K>;
     }>;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     value(row: T): string;
 }
 
@@ -74,6 +82,7 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(row: T): string;
     value?(row: T): boolean;
     update?(row: T, newValue: boolean, oldValue: boolean): void;
@@ -93,6 +102,7 @@ export interface NormalizedTableColumnCheckbox<T, K> {
         row: T;
         column: NormalizedTableColumnCheckbox<T, K>;
     }>;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(row: T): string;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
@@ -107,6 +117,7 @@ export interface TableColumnRadio<T, K extends keyof T> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(row: T): string;
     value?(row: T): boolean;
     update?(row: T, newValue: boolean, oldValue: boolean): void;
@@ -125,6 +136,7 @@ export interface NormalizedTableColumnRadio<T, K> {
         row: T;
         column: NormalizedTableColumnRadio<T, K>;
     }>;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(row: T): string;
     value(row: T): boolean;
     update(row: T, newValue: boolean, oldValue: boolean): void;
@@ -138,6 +150,7 @@ export interface TableColumnText<T, K extends keyof T> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(row: T): string;
     tnum?: boolean;
     align?: "left" | "right";
@@ -165,6 +178,7 @@ export interface NormalizedTableColumnText<T, K> {
         row: T;
         column: NormalizedTableColumnText<T, K>;
     }>;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(row: T): string;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
@@ -180,6 +194,7 @@ export interface TableColumnNumber<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     decimals?: number;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(row: T): string;
     tnum?: boolean;
     align?: "left" | "right";
@@ -208,6 +223,7 @@ export interface NormalizedTableColumnNumber<T, K> {
         row: T;
         column: NormalizedTableColumnText<T, K>;
     }>;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(row: T): string;
     value(row: T): string | number;
     update(row: T, newValue: number | string, oldValue: number | string): void;
@@ -222,6 +238,7 @@ export interface TableColumnAnchor<T, K extends keyof T> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     value(row: T): string | null;
     enabled?: boolean | ((row: T) => boolean);
     href: string;
@@ -241,6 +258,7 @@ export interface NormalizedTableColumnAnchor<T, K> {
         row: T;
         column: NormalizedTableColumnAnchor<T, K>;
     }>;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     value(row: T): string | null;
     enabled(row: T): boolean;
 }
@@ -253,6 +271,7 @@ export interface TableColumnButton<T, K extends keyof T> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     value(row: T): string | null;
     onClick?(row: T): void;
     enabled?: boolean | ((row: T) => boolean);
@@ -273,6 +292,7 @@ export interface NormalizedTableColumnButton<T, K> {
         row: T;
         column: NormalizedTableColumnButton<T, K>;
     }>;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     value(row: T): string | null;
     onClick?(row: T): void;
     enabled(row: T): boolean;
@@ -286,6 +306,7 @@ export interface TableColumnSelect<T, K extends keyof T> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(row: T): string;
     value?(row: T): string;
     update?(row: T, newValue: string, oldValue: string): void;
@@ -307,6 +328,7 @@ export interface NormalizedTableColumnSelect<T, K> {
         row: T;
         column: NormalizedTableColumnSelect<T, K>;
     }>;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(row: T): string;
     value(row: T): string;
     update(row: T, newValue: string, oldValue: string): void;
@@ -320,6 +342,7 @@ export interface TableColumnRender<T, K> {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     render(row: T): VNode | Component;
 }
 
@@ -332,6 +355,7 @@ export interface NormalizedTableColumnRender<T> {
     readonly header: Readonly<Ref<string>>;
     readonly description: Readonly<Ref<string | null>>;
     readonly sortable: boolean | null;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
     render(row: T): VNode | Component;
 }
 
@@ -433,12 +457,15 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         typeof column.description !== "undefined"
             ? toRef(column.description)
             : ref("");
+    const size: Readonly<Ref<TableColumnSize | null>> =
+        typeof column.size !== "undefined" ? toRef(column.size) : ref("grow");
     if ("render" in column) {
         return {
             type: undefined,
             id: Symbol(),
             header: toRef(column.header),
             description,
+            size,
             render: column.render,
             sortable: null,
         } satisfies NormalizedTableColumnRender<T>;
@@ -450,6 +477,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 label: getLabelFn(column.label),
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
@@ -466,6 +494,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 label: getLabelFn(column.label),
                 value: getValueFn(column.value, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
@@ -485,6 +514,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 label: getLabelFn(column.label),
                 decimals,
                 tnum: column.tnum ?? defaultTnumValue(type),
@@ -528,6 +558,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 tnum: column.tnum ?? defaultTnumValue(type),
                 align: column.align ?? "left",
                 label: getLabelFn(column.label),
@@ -553,6 +584,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 value: getValueFn(column.value, column.key, String, ""),
                 sortable: column.key ?? null,
                 component: ITableRowheader,
@@ -563,6 +595,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 value: column.value,
                 href: column.href,
                 enabled:
@@ -578,6 +611,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 value: column.value,
                 onClick: column.onClick,
                 enabled:
@@ -594,6 +628,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 label: getLabelFn(column.label),
                 value: getValueFn(column.value, column.key, String, ""),
                 update: getUpdateFn(column.update, column.key),
@@ -611,6 +646,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 id: Symbol(),
                 header: toRef(column.header),
                 description,
+                size,
                 label: () => "",
                 tnum: false,
                 align: "left",

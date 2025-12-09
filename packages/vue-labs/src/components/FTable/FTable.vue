@@ -274,7 +274,6 @@ onMounted(() => {
                     :sort-enabled="isSortEnabled(column)"
                     :sort-order="getSortOrder(column)"
                     scope="col"
-                    class="table-ng__column"
                     @toggle-sort-order="onToggleSortOrder"
                 ></i-table-header>
             </tr>

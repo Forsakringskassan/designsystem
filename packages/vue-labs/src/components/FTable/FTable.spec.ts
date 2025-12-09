@@ -1,6 +1,82 @@
+import { ref } from "vue";
 import { flushPromises, mount } from "@vue/test-utils";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
+
+describe("1.6 column size", () => {
+    const rows: never[] = [];
+
+    it("should have grow class if not set", () => {
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "A",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+        const header = wrapper.get("thead th");
+        expect(header.classes()).toContain("table-ng__column--grow");
+    });
+
+    it("should have grow class if set to null", () => {
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "A",
+                size: ref(null),
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+        const header = wrapper.get("thead th");
+        expect(header.classes()).toContain("table-ng__column--grow");
+    });
+
+    it("should have grow class if set to grow", () => {
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "A",
+                size: "grow",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+        const header = wrapper.get("thead th");
+        expect(header.classes()).toContain("table-ng__column--grow");
+    });
+
+    it("should have shrink class if set to shrink", () => {
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "A",
+                size: "shrink",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+        const header = wrapper.get("thead th");
+        expect(header.classes()).toContain("table-ng__column--shrink");
+    });
+});
 
 describe("1.12 aria-rowcount", () => {
     it("should include body rows and header", () => {
