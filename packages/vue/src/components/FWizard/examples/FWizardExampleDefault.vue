@@ -24,7 +24,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-wizard v-model="current" header-tag="h2" @completed="onCompleted">
+        <f-wizard v-model="current" header-tag="h2" disable-initial-focus @completed="onCompleted">
             <f-wizard-step key="foo" :use-error-list="false" title="Stegrubrik 1">
                 <f-text-field v-validation.required.maxLength="{ maxLength: { length: 100 } }">
                     Etikett-rubrik
