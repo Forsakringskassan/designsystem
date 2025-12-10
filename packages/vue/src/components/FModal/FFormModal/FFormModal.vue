@@ -5,7 +5,7 @@ import { TranslationMixin } from "../../../plugins/translation";
 import { type FValidationFormCallback, FValidationForm } from "../../FValidationForm";
 import FModal from "../FModal.vue";
 import { type FModalButton, type FModalButtonDescriptor, prepareButtonList } from "../modal-button";
-import { type sizes } from "../sizes";
+import { type FModalSize } from "../sizes";
 
 export default defineComponent({
     name: "FFormModal",
@@ -37,7 +37,7 @@ export default defineComponent({
          * See <f-modal> `size` props.
          */
         size: {
-            type: String as PropType<(typeof sizes)[number]>,
+            type: String as PropType<FModalSize | "fullscreen" | "">,
             default: "",
         },
         /**

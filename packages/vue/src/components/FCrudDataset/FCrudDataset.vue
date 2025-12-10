@@ -4,7 +4,7 @@ import { TranslationService, alertScreenReader, deepClone } from "@fkui/logic";
 
 import { useTranslate } from "../../plugins";
 import { FIcon } from "../FIcon";
-import { type sizes, FConfirmModal, FFormModal } from "../FModal";
+import { type FModalSize, FConfirmModal, FFormModal } from "../FModal";
 import { type FModalButtonDescriptor } from "../FModal/modal-button";
 import { type FValidationFormCallback } from "../FValidationForm";
 import { filterItem } from "./filter-item";
@@ -94,7 +94,7 @@ const props = defineProps({
      * Property for changing the "add" and "modify" modal size
      */
     formModalSize: {
-        type: String as PropType<(typeof sizes)[number]>,
+        type: String as PropType<FModalSize | "fullscreen" | "">,
         required: false,
         default: "",
     },
