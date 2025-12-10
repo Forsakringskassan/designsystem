@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableContextmenuExample.vue:FTableContextmenuExample-ef774e.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableContextmenuExample.vue:FTableContextmenuExample-2d9a67.js
 import { defineComponent as _defineComponent } from "vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 import { openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -32,6 +32,11 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   setup(__props, { expose: __expose }) {
     __expose();
     const columns = defineTableColumns([
+      {
+        type: "text",
+        header: "ID",
+        key: "id"
+      },
       {
         type: "text",
         header: "Text 1",
@@ -58,14 +63,14 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
             label: "a",
             icon: "trashcan",
             onClick(row) {
-              console.log("Run action A on row", { row });
+              window.alert(`Run action A on row "${row.id}"`);
             }
           },
           {
             label: "b",
             icon: "pen",
             onClick(row) {
-              console.log("Run action B on row", { row });
+              window.alert(`Run action B on row "${row.id}"`);
             }
           },
           {
@@ -113,7 +118,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ef774e"
+  selector: "#example-2d9a67"
 });
 export {
   render
