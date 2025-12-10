@@ -21,6 +21,11 @@ const emit = defineEmits<{
 
 const thElement = useTemplateRef("th");
 
+const columnClasses = computed(() => {
+    const size = column.size.value === "shrink" ? "table-ng__column--shrink" : "table-ng__column--grow";
+    return ["table-ng__column", size];
+});
+
 const sortIconClass = computed(() => {
     return {
         "table-ng__column__sort-icon": true,
@@ -75,7 +80,7 @@ function onKeydownCell(e: KeyboardEvent): void {
 </script>
 
 <template>
-    <th ref="th" class="table-ng__column" tabindex="-1" @keydown="onKeydownCell" @click.stop="onClickCell">
+    <th ref="th" :class="columnClasses" tabindex="-1" @keydown="onKeydownCell" @click.stop="onClickCell">
         <i-flex gap="1x" :float="alignment">
             <i-flex-item shrink class="table-ng__column__title">
                 {{ column.header }}

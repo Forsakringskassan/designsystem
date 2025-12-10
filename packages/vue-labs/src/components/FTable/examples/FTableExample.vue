@@ -36,6 +36,7 @@ const columns = defineTableColumns<Row>([
         type: "checkbox",
         header: "Kryssruta",
         key: "aktiv",
+        size: "shrink",
         label: (row) => `Välj rad ${row.id}`,
         editable: true,
     },
@@ -48,7 +49,6 @@ const columns = defineTableColumns<Row>([
         },
         editable: true,
     },
-
     {
         type: "text",
         header: "Redigerbar text",
@@ -70,6 +70,7 @@ const columns = defineTableColumns<Row>([
         type: "button",
         header: "Knapp",
         icon: "trashcan",
+        size: "shrink",
         value(row) {
             return `Ta bort ${row.id}`;
         },

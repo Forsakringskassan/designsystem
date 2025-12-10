@@ -96,6 +96,9 @@ export function splitHoursMinutes(valueString: string, extraForgiving?: boolean)
 // @public (undocumented)
 export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRadio<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnNumber<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K>;
 
+// @public (undocumented)
+export type TableColumnSize = "grow" | "shrink";
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)

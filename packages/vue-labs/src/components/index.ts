@@ -1,6 +1,7 @@
 export {
     type FTableApi,
     type TableColumn,
+    type TableColumnSize,
     FTable,
     defineTableColumns,
 } from "./FTable";

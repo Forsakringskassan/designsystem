@@ -96,6 +96,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, KeyAttribute> = {
     header: ref("selectable"),
     description: ref(null),
     sortable: null,
+    size: ref(null),
     component: ITableCheckbox,
     label() {
         /** Screen reader text for checkbox in multi select table row. */
@@ -131,6 +132,7 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, KeyAttribute> = {
     header: ref("Välj en rad"),
     description: ref(null),
     sortable: null,
+    size: ref(null),
     component: ITableRadio,
     label() {
         /** Screen reader text for radio button in single select table row. */
@@ -373,7 +375,6 @@ onMounted(() => {
                     :sort-enabled="isSortEnabled(column)"
                     :sort-order="getSortOrder(column)"
                     scope="col"
-                    class="table-ng__column"
                     @toggle-sort-order="onToggleSortOrder"
                 ></i-table-header>
             </tr>
