@@ -48,7 +48,7 @@ var ExampleModal_default = defineComponent({
     },
     size: {
       type: String,
-      default: ""
+      default: "small"
     },
     testId: {
       type: String,
