@@ -3,7 +3,7 @@ import { type PropType, defineComponent } from "vue";
 import { FKUIConfigButtonOrder, config } from "../../../config";
 import FModal from "../FModal.vue";
 import { type FModalButton, type FModalButtonDescriptor, prepareButtonList } from "../modal-button";
-import { type sizes } from "../sizes";
+import { type FModalSize } from "../sizes";
 
 const defaultButtons: FModalButtonDescriptor[] = [
     { label: "Primärknapp", event: "confirm", type: "primary" },
@@ -52,7 +52,7 @@ export default defineComponent({
          * The size of modal. 'large' and 'fullscreen' is valid.
          */
         size: {
-            type: String as PropType<(typeof sizes)[number]>,
+            type: String as PropType<FModalSize | "fullscreen" | "">,
             default: "",
         },
         /**

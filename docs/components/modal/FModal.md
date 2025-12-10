@@ -3,6 +3,10 @@ title: Modal dialogruta
 status: Produktionsklar
 layout: component
 component: FModal
+search:
+    terms:
+        - FModalSize
+        - modalSizes
 ---
 
 Använd modala dialogrutor för korta interaktioner som är en del av ett flöde. Modaler kan användas för att låta användaren bekräfta ett val, för att förmedla information eller för enkel inmatning.
@@ -69,6 +73,20 @@ Använd `size`-prop för att välja storlek på modalen.
 ```diff
 -<f-modal>
 +<f-modal size="small">
+```
+
+Den som skapar egna modaler och vill återanvända `size`-propen kan importera `FModalSize` (typ) eller `modalSizes` (array):
+
+```ts
+declare function defineProps<T>(): void;
+
+/* --- cut above --- */
+
+import { type FModalSize } from "@fkui/vue";
+
+defineProps<{
+    size: FModalSize;
+}>();
 ```
 
 För mobil finns det en `fullscreen`-prop för att säkerställa att modal täcker hela skärmen och är utan ram.

@@ -46,7 +46,7 @@ exports[`snapshot should match snapshot 1`] = `
   <div><button type="button" class="button button--tertiary crud-dataset__add-button">
       <f-icon-stub name="plus" library="f" class="button__icon"></f-icon-stub>Lägg till ny
     </button></div>
-  <f-form-modal-stub fullscreen="true" isopen="false" size="" datatest="" useerrorlist="false" formid="fkui-vue-element-0001" ariaclosetext="Stäng" beforesubmit="[Function]" beforevalidation="[Function]" buttons="[object Object],[object Object]" value="[object Object]"></f-form-modal-stub>
+  <f-form-modal-stub fullscreen="true" isopen="false" size="small" datatest="" useerrorlist="false" formid="fkui-vue-element-0001" ariaclosetext="Stäng" beforesubmit="[Function]" beforevalidation="[Function]" buttons="[object Object],[object Object]" value="[object Object]"></f-form-modal-stub>
   <f-confirm-modal-stub fullscreen="false" isopen="false" content="Brödtext" heading="Rubrik" size="" buttons="[object Object],[object Object]"></f-confirm-modal-stub>
 </div>
 `;
