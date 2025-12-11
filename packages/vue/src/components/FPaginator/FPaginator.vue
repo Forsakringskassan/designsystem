@@ -166,22 +166,26 @@ function showGap(page: number): boolean {
 </script>
 
 <template>
-    <nav ref="paginator" data-test="nav" class="paginator" :aria-label="resolvedNavigatorLabel">
+    <nav ref="paginator" class="paginator" :aria-label="resolvedNavigatorLabel">
         <button
-            data-test="previous-button"
             type="button"
             class="paginator__previous"
             :aria-label="previousButtonLabel"
             @click="onClickPreviousButton"
         >
             <f-icon name="chevrons-left" />
-            <span data-test="label">{{ previousButtonLabel }}</span>
+            <span>{{ previousButtonLabel }}</span>
         </button>
 
         <button
-            v-for="page in pages"
+            v-for="(page, index) in pages"
             :key="page"
-            :data-test="'page-' + page + '-button'"
+            :data-index="[index, -pages.length + index].join(' ')"
+            :data-page="
+                [page, page === 1 ? 'first' : undefined, page === numberOfPages ? 'last' : undefined]
+                    .filter(Boolean)
+                    .join(' ')
+            "
             type="button"
             :class="pageClasses(page, currentPage)"
             :aria-current="page === currentPage ? 'page' : 'false'"
@@ -191,19 +195,13 @@ function showGap(page: number): boolean {
             {{ showGap(page) ? "..." : page }}
         </button>
 
-        <div data-test="page-counter" class="paginator__page-counter">
+        <div class="paginator__page-counter">
             <span class="sr-only">{{ pageCounterAriaLabel }}</span>
             <span aria-hidden>{{ pageCounterLabel }}</span>
         </div>
 
-        <button
-            data-test="next-button"
-            type="button"
-            class="paginator__next"
-            :aria-label="nextButtonLabel"
-            @click="onClickNextButton"
-        >
-            <span data-test="label">{{ nextButtonLabel }}</span>
+        <button type="button" class="paginator__next" :aria-label="nextButtonLabel" @click="onClickNextButton">
+            <span>{{ nextButtonLabel }}</span>
             <f-icon name="arrow-right" />
         </button>
     </nav>
