@@ -27,6 +27,11 @@
       "require": "./dist/cjs/cypress.cjs.js",
       "import": "./dist/esm/cypress.esm.js"
     },
+    "./selectors": {
+      "types": "./dist/types/selectors.d.ts",
+      "require": "./dist/cjs/selectors.cjs.js",
+      "import": "./dist/esm/selectors.esm.js"
+    },
     "./htmlvalidate": "./htmlvalidate/index.cjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
     "./package.json": "./package.json",
