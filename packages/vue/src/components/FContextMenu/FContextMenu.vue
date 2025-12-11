@@ -5,7 +5,7 @@ import { IPopup } from "../../internal-components/IPopup";
 import { MenuAction } from "../../types";
 import { actionFromKeyboardEvent } from "../../utils";
 import { FIcon } from "../FIcon";
-import { doMenuAction } from "./contextmenu-logic";
+import { useMenuAction } from "./contextmenu-logic";
 import { type ContextMenuItem, isContextMenuSeparatorItem, isContextMenuTextItem } from "./contextmenuitem";
 
 const {
@@ -69,6 +69,13 @@ const separatorPositions = computed((): number[] => {
         });
     }
     return res;
+});
+
+const { doMenuAction } = useMenuAction({
+    currentFocusedItemIndex,
+    popupItems,
+    setFocusOnItem,
+    activateItem,
 });
 
 watch(
@@ -149,13 +156,7 @@ async function onKeyDown(event: KeyboardEvent): Promise<void> {
     }
     event.preventDefault();
 
-    /** technical debt: should be refactored into a composable and use the refs directly */
-    await doMenuAction(action, {
-        currentFocusedItemIndex: currentFocusedItemIndex.value,
-        popupItems: popupItems.value,
-        setFocusOnItem,
-        activateItem,
-    });
+    await doMenuAction(action);
 }
 
 async function setFocusOnItem(index: number): Promise<void> {
