@@ -4923,7 +4923,7 @@ var _hoisted_8$a = {
   class: "modal__content",
   tabindex: "-1"
 };
-var _hoisted_9$9 = {
+var _hoisted_9$8 = {
   class: "modal__footer"
 };
 var _hoisted_10$4 = {
@@ -4948,7 +4948,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("div", _hoisted_4$u, [createElementVNode("div", _hoisted_5$o, [createElementVNode("div", _hoisted_6$i, [createElementVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$a, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$9, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$4, [createElementVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$a, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$4, [createElementVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -7334,7 +7334,7 @@ var _hoisted_6$h = {
 };
 var _hoisted_7$c = ["colspan"];
 var _hoisted_8$9 = ["colspan"];
-var _hoisted_9$8 = {
+var _hoisted_9$7 = {
   key: 0,
   "aria-hidden": "true"
 };
@@ -7397,7 +7397,7 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
       colspan: _ctx.getDayEndOffset(week.days),
       "aria-hidden": "true"
     }, null, 8, _hoisted_8$9)) : createCommentVNode("", true)]);
-  }), 128)), _cache[20] || (_cache[20] = createTextVNode()), _ctx.weeks.length < 5 ? (openBlock(), createElementBlock("tr", _hoisted_9$8, [createElementVNode("td", {
+  }), 128)), _cache[20] || (_cache[20] = createTextVNode()), _ctx.weeks.length < 5 ? (openBlock(), createElementBlock("tr", _hoisted_9$7, [createElementVNode("td", {
     class: "calendar-month__cell",
     colspan: _ctx.totalCols,
     "aria-hidden": "true"
@@ -7781,7 +7781,7 @@ var _hoisted_7$b = ["aria-disabled", "aria-live"];
 var _hoisted_8$8 = {
   class: "sr-only"
 };
-var _hoisted_9$7 = ["aria-disabled", "aria-live"];
+var _hoisted_9$6 = ["aria-disabled", "aria-live"];
 var _hoisted_10$2 = {
   class: "sr-only"
 };
@@ -7825,7 +7825,7 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("span", _hoisted_10$2, toDisplayString(_ctx.nextSrText), 1), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.nextIconClasses),
     name: "arrow-right"
-  }, null, 8, ["class"])], 8, _hoisted_9$7)) : createCommentVNode("", true)]);
+  }, null, 8, ["class"])], 8, _hoisted_9$6)) : createCommentVNode("", true)]);
 }
 var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$D]]);
 function tryOnScopeDispose(fn2) {
@@ -11183,6 +11183,13 @@ var _sfc_main$Y = defineComponent({
     groupLabelClass() {
       return Array.from(labelClasses(this));
     },
+    groupLabelClassTooltip() {
+      if (this.hasDescriptionSlot || this.hasErrorMessageSlot || this.hasError) {
+        return [];
+      } else {
+        return this.groupLabelClass;
+      }
+    },
     groupContentClass() {
       return Array.from(contentClasses(this));
     },
@@ -11307,13 +11314,9 @@ var _hoisted_6$e = {
   key: 1
 };
 var _hoisted_7$a = {
-  ref: "tooltipAttachTo",
-  class: "label"
-};
-var _hoisted_8$7 = {
   "aria-hidden": "true"
 };
-var _hoisted_9$6 = {
+var _hoisted_8$7 = {
   key: 0,
   class: "label__message label__message--error"
 };
@@ -11337,7 +11340,10 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     name: "error"
   }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)), _cache[7] || (_cache[7] = createTextVNode()), _ctx.hasCheckbox ? (openBlock(), createElementBlock("span", _hoisted_4$m, [_ctx.children.length === 1 ? (openBlock(), createElementBlock("span", _hoisted_5$i, toDisplayString(_ctx.checkboxCheckedScreenReaderText), 1)) : (openBlock(), createElementBlock("span", _hoisted_6$e, toDisplayString(_ctx.numberOfCheckedCheckboxesScreenText), 1))])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), _ctx.hasTooltipSlot ? (openBlock(), createElementBlock(Fragment, {
     key: 1
-  }, [createElementVNode("div", _hoisted_7$a, [createElementVNode("span", _hoisted_8$7, [renderSlot(_ctx.$slots, "label")])], 512), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? (openBlock(), createElementBlock("div", {
+  }, [createElementVNode("div", {
+    ref: "tooltipAttachTo",
+    class: normalizeClass(["label", _ctx.groupLabelClassTooltip])
+  }, [createElementVNode("span", _hoisted_7$a, [renderSlot(_ctx.$slots, "label")])], 2), _cache[5] || (_cache[5] = createTextVNode()), renderSlot(_ctx.$slots, "tooltip"), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasDescriptionSlot || _ctx.hasErrorMessageSlot || _ctx.hasError ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass(["label", _ctx.groupLabelClass]),
     "aria-hidden": "true"
@@ -11347,7 +11353,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
     hasError: _ctx.hasError,
     validationMessage: _ctx.validity.validationMessage
-  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_9$6, [createVNode(_component_f_icon, {
+  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_8$7, [createVNode(_component_f_icon, {
     class: "label__icon--left",
     name: "error"
   }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", {
