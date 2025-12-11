@@ -84,6 +84,7 @@ jobs:
                   summary-title: "Component tests"
                   browser: chrome
                   component: true
+                  install: false
                   quiet: true
             - uses: actions/upload-artifact@v5
               if: always()
