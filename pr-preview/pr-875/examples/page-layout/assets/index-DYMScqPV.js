@@ -14677,6 +14677,13 @@ function findElementFromVueRef(ref2) {
     return ref2.$el;
   }
 }
+function findHTMLElementFromVueRef(ref2) {
+  const result = findElementFromVueRef(ref2);
+  if (result instanceof HTMLElement) {
+    return result;
+  }
+  return void 0;
+}
 function getHTMLElementFromVueRef(ref2) {
   const element = findElementFromVueRef(ref2);
   if (!isSet(element)) {
@@ -18478,9 +18485,6 @@ function useCombobox(inputRef, options, onOptionSelected) {
       inputRef.value.setAttribute("aria-controls", dropdownId);
     } else {
       inputRef.value.removeAttribute("aria-controls");
-      if (inputRef.value.hasAttribute("data-validation")) {
-        ValidationService.validateElement(inputRef.value);
-      }
     }
   });
   watchEffect(() => {
@@ -20298,6 +20302,18 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
         }
         this.setViewValueToFormattedValueOrFallbackToValue();
         this.lastModelValue = this.modelValue;
+      }
+    },
+    dropdownIsOpen: {
+      handler() {
+        if (this.dropdownIsOpen) {
+          return;
+        }
+        const input = findHTMLElementFromVueRef(this.$refs.input);
+        if (!input?.hasAttribute("data-validation")) {
+          return;
+        }
+        ValidationService.validateElement(this.$refs.input);
       }
     }
   },

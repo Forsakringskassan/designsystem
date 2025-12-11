@@ -6327,7 +6327,7 @@ import {
   ref,
   watchEffect as watchEffect2
 } from "vue";
-import { ElementIdService as ElementIdService5, ValidationService as ValidationService4, isEmpty as isEmpty2 } from "@fkui/logic";
+import { ElementIdService as ElementIdService5, isEmpty as isEmpty2 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/combobox/filter-options.ts
 import { isEmpty } from "@fkui/logic";
