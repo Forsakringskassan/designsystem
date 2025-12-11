@@ -6,9 +6,14 @@
     top: -200px;
 
     &:focus {
-        color: black;
-        background-color: var(--f-background-skiplink-focus);
-        left: 10px;
-        top: 45px;
+        color: var(--fkds-color-action-text-primary-default);
+        background-color: var(--fkds-color-background-primary);
+        left: 20px;
+        top: 20px;
+        font-size: var(--f-font-size-standard);
+        font-weight: var(--f-font-weight-medium);
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+        padding: size.$padding-025 size.$padding-050;
     }
 }
