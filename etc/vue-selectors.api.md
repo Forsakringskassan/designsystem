@@ -4,6 +4,20 @@
 
 ```ts
 
+// @public
+export function FPaginatorSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    currentPageButton(this: void): string;
+    firstPageButton(this: void): string;
+    lastPageButton(this: void): string;
+    nextPageButton(this: void): string;
+    pageButtonByText(this: void, text: number | string): string;
+    pageButtonByIndex(this: void, index: number | string): string;
+    pageButtons(this: void): string;
+    pageCounter(this: void): string;
+    previousPageButton(this: void): string;
+}>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
