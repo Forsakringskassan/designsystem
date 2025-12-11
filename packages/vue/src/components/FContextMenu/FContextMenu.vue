@@ -1,212 +1,188 @@
-<script lang="ts">
-import { type PropType, defineComponent, ref } from "vue";
+<script lang="ts" setup>
+import { computed, nextTick, ref, useTemplateRef, watch } from "vue";
 import { focus } from "@fkui/logic";
 import { IPopup } from "../../internal-components/IPopup";
 import { MenuAction } from "../../types";
-import { actionFromKeyboardEvent, getHTMLElementsFromVueRef } from "../../utils";
+import { actionFromKeyboardEvent } from "../../utils";
 import { FIcon } from "../FIcon";
 import { doMenuAction } from "./contextmenu-logic";
-import {
-    type ContextMenuItem,
-    type ContextMenuTextItem,
-    isContextMenuSeparatorItem,
-    isContextMenuTextItem,
-} from "./contextmenuitem";
+import { type ContextMenuItem, isContextMenuSeparatorItem, isContextMenuTextItem } from "./contextmenuitem";
 
-const preventKeys: string[] = [
-    "Tab",
-    "Up",
-    "Down",
-    "ArrowUp",
-    "ArrowDown",
-    "Home",
-    "End",
-    " ",
-    "Spacebar",
-    "Enter",
-    "Escape",
-];
+const {
+    isOpen,
+    anchor = undefined,
+    items,
+    ariaLabel = "Kontextuell meny",
+} = defineProps<{
+    /**
+     * Toggle open/closed popup.
+     */
+    isOpen: boolean;
+    /**
+     * DOM element to position popup at.
+     */
+    anchor?: HTMLElement;
+    /**
+     * The items to be displayed in the menu.
+     */
+    items: ContextMenuItem[];
+    /**
+     * Unique accessible name for navigation landmark.
+     */
+    ariaLabel?: string;
+}>();
 
+const emit = defineEmits<{
+    /**
+     * Event that is dispatched after an item is selected or
+     * after pressing for example esc in the menu
+     */
+    close: [];
+    /**
+     * Event that is dispatched when an item is selected.
+     * @type {string} item key
+     */
+    select: [key: string];
+}>();
+
+const preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter", "Escape"];
 const keyUp = ["ArrowUp", "Up"];
 
-export default defineComponent({
-    name: "FContextMenu",
-    components: { IPopup, FIcon },
-    props: {
-        /**
-         * Toggle open/closed popup.
-         */
-        isOpen: {
-            type: Boolean,
-            required: true,
-        },
-        /**
-         * DOM element to position popup at.
-         */
-        anchor: {
-            type: HTMLElement as PropType<HTMLElement | undefined>,
-            required: false,
-            default: undefined,
-        },
-        /**
-         * The items to be displayed in the menu.
-         */
-        items: {
-            type: Array as PropType<ContextMenuItem[]>,
-            required: true,
-        },
-        /**
-         * Unique accessible name for navigation landmark.
-         */
-        ariaLabel: {
-            type: String,
-            required: false,
-            default: "Kontextuell meny",
-        },
-    },
-    emits: [
-        /**
-         * Event that is dispatched after an item is selected or
-         * after pressing for example esc in the menu
-         */
-        "close",
-        /**
-         * Event that is dispatched when an item is selected.
-         * @type {string} item key
-         */
-        "select",
-    ],
-    setup() {
-        return { contextmenu: ref<HTMLElement | null>(null) };
-    },
-    data() {
-        return {
-            selectedItem: "",
-            currentFocusedItemIndex: -1,
-        };
-    },
-    computed: {
-        popupItems(): ContextMenuTextItem[] {
-            return this.items.filter(isContextMenuTextItem);
-        },
-        separatorPositions(): number[] {
-            const res: number[] = [];
-            if (this.items.length > 1) {
-                this.items.forEach((it, i) => {
-                    if (isContextMenuSeparatorItem(it)) {
-                        const pos = i - 1 - res.length;
-                        if (pos >= 0 && pos < this.items.length - 1) {
-                            res.push(pos);
-                        }
-                    }
-                });
-            }
-            return res;
-        },
-        hasIcons(): boolean {
-            return this.items.some((it) => isContextMenuTextItem(it) && it.icon);
-        },
-    },
-    watch: {
-        isOpen: {
-            immediate: true,
-            handler() {
-                if (this.isOpen) {
-                    this.currentFocusedItemIndex = -1;
-                    this.selectedItem = "";
-                }
-            },
-        },
-    },
-    methods: {
-        hasSeparatorAfterItemAt(index: number): boolean {
-            return this.separatorPositions.includes(index);
-        },
-        closePopup(): void {
-            this.$emit("close");
-        },
-        onClickItem(item: ContextMenuItem): void {
-            if (isContextMenuTextItem(item) && item.key) {
-                this.selectedItem = item.key;
-                this.$emit("select", this.selectedItem);
-                this.closePopup();
-            }
-        },
-        tabIndex(index: number): number {
-            return index === this.currentFocusedItemIndex ? 0 : -1;
-        },
-        onKeyUp(event: KeyboardEvent) {
-            if (preventKeys.includes(event.key)) {
-                event.preventDefault();
-            }
-        },
-        doHandlePopupMenuTabKey(action: MenuAction): boolean {
-            // Detect if tab (MOVE_NEXT) or shift+tab (MOVE_PREV) reaches the limits, to avoid trapping tab
-            // returns true to indicate that one should NOT continue processing this keyboard action or false otherwise
-            if (action === MenuAction.MOVE_NEXT && this.currentFocusedItemIndex + 1 === this.popupItems.length) {
-                this.closePopup();
-                return true;
-            } else if (
-                action === MenuAction.MOVE_PREV &&
-                (this.currentFocusedItemIndex === 0 || this.currentFocusedItemIndex === -1)
-            ) {
-                // shift-tab (MOVE_PREV) inside the popup on the first element of the popup will close the popup and
-                // adjust currentFocusedItemIndex and will resume processing this keyboard action
-                this.closePopup();
-                return false;
-            }
-            return false;
-        },
-        async onKeyDown(event: KeyboardEvent) {
-            if (!preventKeys.includes(event.key)) {
-                return;
-            }
+const contextmenuRef = useTemplateRef("contextmenu");
+const itemElementsRef = useTemplateRef("items");
 
-            if (event.key === "Escape") {
-                this.$emit("close");
-                return;
+const selectedItem = ref("");
+const currentFocusedItemIndex = ref(-1);
+
+const popupItems = computed(() => items.filter(isContextMenuTextItem));
+const hasIcons = computed(() => items.some((it) => isContextMenuTextItem(it) && it.icon));
+const separatorPositions = computed((): number[] => {
+    const res: number[] = [];
+    if (items.length > 1) {
+        items.forEach((it, i) => {
+            if (isContextMenuSeparatorItem(it)) {
+                const pos = i - 1 - res.length;
+                if (pos >= 0 && pos < items.length - 1) {
+                    res.push(pos);
+                }
             }
-            const action = actionFromKeyboardEvent(event);
-            if (action === null) {
-                return;
-            }
-            if (event.key === "Tab" && this.doHandlePopupMenuTabKey(action)) {
-                return;
-            }
-            if (keyUp.includes(event.key) && this.currentFocusedItemIndex === -1) {
-                // If the user presses arrow up key (action MOVE_PREV) but there are no items in focus
-                // adjust currentFocusedItemIndex so that MOVE_PREV will put focus on last item
-                this.currentFocusedItemIndex = this.popupItems.length > 0 ? this.popupItems.length : 1;
-            }
-            event.preventDefault();
-            await doMenuAction(action, this);
-        },
-        async setFocusOnItem(index: number): Promise<void> {
-            if (index < 0 || index >= this.popupItems.length) {
-                return;
-            }
-            this.currentFocusedItemIndex = index;
-            await this.$nextTick();
-            if (!this.isOpen) {
-                return;
-            }
-            const items = getHTMLElementsFromVueRef(this.$refs.items);
-            if (items.length > 0) {
-                const popupMenuItem = items[index];
-                focus(popupMenuItem, { preventScroll: true });
-            }
-        },
-        async activateItem(index: number): Promise<void> {
-            if (index < 0 || index >= this.popupItems.length) {
-                return;
-            }
-            if (index !== this.currentFocusedItemIndex) {
-                await this.setFocusOnItem(index);
-            }
-            this.onClickItem(this.popupItems[this.currentFocusedItemIndex]);
-        },
-    },
+        });
+    }
+    return res;
 });
+
+watch(
+    () => isOpen,
+    (isOpen) => {
+        if (isOpen) {
+            currentFocusedItemIndex.value = -1;
+            selectedItem.value = "";
+        }
+    },
+    { immediate: true },
+);
+
+function hasSeparatorAfterItemAt(index: number): boolean {
+    return separatorPositions.value.includes(index);
+}
+
+function closePopup(): void {
+    emit("close");
+}
+
+function onClickItem(item: ContextMenuItem): void {
+    if (isContextMenuTextItem(item) && item.key) {
+        selectedItem.value = item.key;
+        emit("select", selectedItem.value);
+        closePopup();
+    }
+}
+
+function tabIndex(index: number): number {
+    return index === currentFocusedItemIndex.value ? 0 : -1;
+}
+
+function onKeyUp(event: KeyboardEvent): void {
+    if (preventKeys.includes(event.key)) {
+        event.preventDefault();
+    }
+}
+
+function doHandlePopupMenuTabKey(action: MenuAction): boolean {
+    // Detect if tab (MOVE_NEXT) or shift+tab (MOVE_PREV) reaches the limits, to avoid trapping tab
+    // returns true to indicate that one should NOT continue processing this keyboard action or false otherwise
+    if (action === MenuAction.MOVE_NEXT && currentFocusedItemIndex.value + 1 === popupItems.value.length) {
+        closePopup();
+        return true;
+    } else if (
+        action === MenuAction.MOVE_PREV &&
+        (currentFocusedItemIndex.value === 0 || currentFocusedItemIndex.value === -1)
+    ) {
+        // shift-tab (MOVE_PREV) inside the popup on the first element of the popup will close the popup and
+        // adjust currentFocusedItemIndex and will resume processing this keyboard action
+        closePopup();
+        return false;
+    }
+    return false;
+}
+
+async function onKeyDown(event: KeyboardEvent): Promise<void> {
+    if (!preventKeys.includes(event.key)) {
+        return;
+    }
+
+    if (event.key === "Escape") {
+        closePopup();
+        return;
+    }
+    const action = actionFromKeyboardEvent(event);
+    if (action === null) {
+        return;
+    }
+    if (event.key === "Tab" && doHandlePopupMenuTabKey(action)) {
+        return;
+    }
+    if (keyUp.includes(event.key) && currentFocusedItemIndex.value === -1) {
+        // If the user presses arrow up key (action MOVE_PREV) but there are no items in focus
+        // adjust currentFocusedItemIndex so that MOVE_PREV will put focus on last item
+        currentFocusedItemIndex.value = popupItems.value.length > 0 ? popupItems.value.length : 1;
+    }
+    event.preventDefault();
+
+    /** technical debt: should be refactored into a composable and use the refs directly */
+    await doMenuAction(action, {
+        currentFocusedItemIndex: currentFocusedItemIndex.value,
+        popupItems: popupItems.value,
+        setFocusOnItem,
+        activateItem,
+    });
+}
+
+async function setFocusOnItem(index: number): Promise<void> {
+    if (index < 0 || index >= popupItems.value.length) {
+        return;
+    }
+    currentFocusedItemIndex.value = index;
+    await nextTick();
+    if (!isOpen) {
+        return;
+    }
+    const items = itemElementsRef.value ?? [];
+    if (items.length > 0) {
+        const popupMenuItem = items[index];
+        focus(popupMenuItem, { preventScroll: true });
+    }
+}
+
+async function activateItem(index: number): Promise<void> {
+    if (index < 0 || index >= popupItems.value.length) {
+        return;
+    }
+    if (index !== currentFocusedItemIndex.value) {
+        await setFocusOnItem(index);
+    }
+    onClickItem(popupItems.value[currentFocusedItemIndex.value]);
+}
 </script>
 
 <template>
@@ -215,9 +191,9 @@ export default defineComponent({
         :keyboard-trap="false"
         :anchor
         :set-focus="true"
-        :focus-element="() => contextmenu"
+        :focus-element="() => contextmenuRef"
         inline="never"
-        @close="$emit('close')"
+        @close="closePopup()"
     >
         <nav class="contextmenu" :aria-label @keyup="onKeyUp" @keydown="onKeyDown">
             <ul ref="contextmenu" role="menu" tabindex="-1" class="contextmenu__list">
