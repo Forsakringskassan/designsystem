@@ -2,6 +2,7 @@
 import { computed, nextTick, ref, useTemplateRef, watch } from "vue";
 import { focus } from "@fkui/logic";
 import { IPopup } from "../../internal-components/IPopup";
+import { useTranslate } from "../../plugins/translation";
 import { MenuAction } from "../../types";
 import { actionFromKeyboardEvent } from "../../utils";
 import { FIcon } from "../FIcon";
@@ -12,7 +13,7 @@ const {
     isOpen,
     anchor = undefined,
     items,
-    ariaLabel = "Kontextuell meny",
+    ariaLabel: ariaLabelProp = undefined,
 } = defineProps<{
     /**
      * Toggle open/closed popup.
@@ -45,6 +46,8 @@ const emit = defineEmits<{
     select: [key: string];
 }>();
 
+const $t = useTranslate();
+
 const preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter", "Escape"];
 const keyUp = ["ArrowUp", "Up"];
 
@@ -56,6 +59,15 @@ const currentFocusedItemIndex = ref(-1);
 
 const popupItems = computed(() => items.filter(isContextMenuTextItem));
 const hasIcons = computed(() => items.some((it) => isContextMenuTextItem(it) && it.icon));
+
+const ariaLabel = computed(() => {
+    if (ariaLabelProp) {
+        return ariaLabelProp;
+    }
+    /** Skärmläsartext för `<nav>` elementet. Används bara när `ariaLabel`-propen inte är satt. */
+    return $t("fkui.contextmenu.aria-label", "Kontextmeny");
+});
+
 const separatorPositions = computed((): number[] => {
     const res: number[] = [];
     if (items.length > 1) {
