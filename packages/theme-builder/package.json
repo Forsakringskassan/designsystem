@@ -37,7 +37,7 @@
     "get-css-variables": "1.1.0",
     "postcss-scss": "4.0.9",
     "sass": "1.94.2",
-    "yargs": "16.2.0"
+    "yargs": "18.0.0"
   },
   "devDependencies": {
     "@html-validate/release-scripts": "7.1.0",
@@ -54,7 +54,7 @@
     "postcss": "^8.0.0"
   },
   "engines": {
-    "node": ">= 22",
+    "node": ">= 22.12",
     "npm": ">= 7"
   },
   "externalDependencies": [
