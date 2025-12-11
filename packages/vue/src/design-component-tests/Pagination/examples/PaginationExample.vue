@@ -126,7 +126,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components :template :livedata :livemethods>
+    <live-example :components :template :livedata :livemethods force-single-column>
         <f-numeric-text-field v-model="numberOfItemsPerPage">
             <template #default>Antal objekt per sida</template>
             <template #description="{ descriptionClass }">
