@@ -6,6 +6,10 @@
         "emitDeclarationOnly": true,
         "skipLibCheck": true
     },
-    "include": ["src/cypress/**/*.ts", "src/**/*.pageobject.ts"],
-    "exclude": ["src/cypress/**/*.cy.ts"]
+    "include": [
+        "src/cypress/**/*.ts",
+        "src/selectors/**/*.ts",
+        "src/**/*.pageobject.ts"
+    ],
+    "exclude": ["src/**/*.cy.ts", "src/**/*.spec.ts"]
 }
