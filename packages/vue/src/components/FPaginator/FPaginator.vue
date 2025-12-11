@@ -172,7 +172,7 @@ function showGap(page: number): boolean {
             type="button"
             class="paginator__previous"
             :aria-label="previousButtonLabel"
-            @click="onClickPreviousButton()"
+            @click="onClickPreviousButton"
         >
             <f-icon name="chevrons-left" />
             <span data-test="label">{{ previousButtonLabel }}</span>
@@ -201,7 +201,7 @@ function showGap(page: number): boolean {
             type="button"
             class="paginator__next"
             :aria-label="nextButtonLabel"
-            @click="onClickNextButton()"
+            @click="onClickNextButton"
         >
             <span data-test="label">{{ nextButtonLabel }}</span>
             <f-icon name="arrow-right" />
