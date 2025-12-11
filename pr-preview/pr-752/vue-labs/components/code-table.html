@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Kod - FKUI Labs</title><link
+        <title>Kod (tabelldokumentation) - FKUI Labs</title><link
             rel="stylesheet"
             href="../assets/docs-f31c77.css"
             crossorigin
@@ -46,10 +46,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-2a9fef.json"
+            href="../search-data-38d3f1.json"
             as="fetch"
             crossorigin
-            integrity="sha384-txmlRU5tq3LpL1W4Zs7mc2fKLxW2pX7l2jbI4MxTkLOq7OSST7C+NNYnlSpHUzQq"
+            integrity="sha384-vafcK9Hb/mSuGdfVr/79fcU0ShU8mpvHWKEq/uqU0rAFYqkd8Fw4HYo9/M4zIC6l"
             id="search-data"
         />
     </head>
@@ -141,7 +141,7 @@
             data-path="components/code-table.html"
             
         >
-            Kod
+            Kod (tabelldokumentation)
         </a>
     </li><li class="link ">
         <a
@@ -169,7 +169,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Kod</h1>
+                    <h1 id="title">Kod (tabelldokumentation)</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -180,23 +180,13 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#navigering">Navigering</a></li>
+                                <li><a href="#navigering_plocka_bort_avsnitt_helt">Navigering (plocka bort avsnitt helt?)</a></li>
                                 
                                 <li><a href="#tabellrubrik">Tabellrubrik</a></li>
                                 
-                                <li><a href="#rader_och_kolumner">Rader och kolumner</a></li>
+                                <li><a href="#kolumner">Kolumner</a></li>
                                 
-                                <li><a href="#kolumner_och_kolumnrubrik">Kolumner och kolumnrubrik</a></li>
-                                
-                                <li><a href="#radrubrik">Radrubrik</a></li>
-                                
-                                <li><a href="#kolumnbredder">Kolumnbredder</a></li>
-                                
-                                <li><a href="#kolumntyper">Kolumntyper</a></li>
-                                
-                                <li><a href="#rad_id">Rad-id</a></li>
-                                
-                                <li><a href="#framhava_rader">Framhäva rader</a></li>
+                                <li><a href="#rader">Rader</a></li>
                                 
                                 <li><a href="#expanderbara_rader">Expanderbara rader</a></li>
                                 
@@ -225,7 +215,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Den här sidan innehåller information om hur du sätter upp komponenten tabell i din applikation.</p>
-<h2 id="navigering"><a class="header-anchor" href="#navigering">Navigering</a></h2><p class="docs-paragraph">Navigering i en tabell styrs av vilken role som tabellen har.</p>
+<h2 id="navigering_plocka_bort_avsnitt_helt"><a class="header-anchor" href="#navigering_plocka_bort_avsnitt_helt">Navigering (plocka bort avsnitt helt?)</a></h2><p class="docs-paragraph">Navigering i en tabell styrs av vilken role som tabellen har.</p>
 <p class="docs-paragraph">Tabellen är som standard uppsatt med <code>role:grid</code>.</p>
 <p class="docs-paragraph">Om tabellen har expanderbara rader ska du sätta <code>role:treegrid</code> oavsett vilka andra funktioner som ingår i tabellen.</p>
 <p class="docs-paragraph">Vid <code>role:grid</code> eller <code>role:treegrid</code> navigerar användren till tabellen genom tabbning.
@@ -238,40 +228,28 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="rader_och_kolumner"><a class="header-anchor" href="#rader_och_kolumner">Rader och kolumner</a></h2><p class="docs-paragraph">Tabellen har en prop rows som du sätter till de rader som ska presenteras.</p>
-<p class="docs-paragraph">Slotten <code>default</code> renderas för varje item i <code>rows</code> och har en slot attribute <code>row</code> som innehåller nuvarande rad.</p>
-<p class="docs-paragraph">Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten tabellkolumn (FTableColumn).</p>
-<p class="docs-paragraph">// plats för kodexempel</p>
-<p class="docs-paragraph">Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använda direktivet <code>v-format</code> för att formatera och undvika radbryt i cellen.</p>
-<h2 id="kolumner_och_kolumnrubrik"><a class="header-anchor" href="#kolumner_och_kolumnrubrik">Kolumner och kolumnrubrik</a></h2><p class="docs-paragraph">Du behöver bestämma hur tabellens kolumnrubriker ska vara placerade och hur data i kolumnerna ska presenteras.
+<h2 id="kolumner"><a class="header-anchor" href="#kolumner">Kolumner</a></h2><p class="docs-paragraph">Du konfigurerar kolumner i tabellen med funktionen <code>defineTableColumns</code>.</p>
+<p class="docs-paragraph">I funktionen definierar du upp kolumnerna i tabell genom att bland annat bestämma/sätta kolumnrubrik, vänster-/högerjustering av innehåll, formatering, validering, kolumntyp med mera.</p>
+<h3 id="kolumnrubrik"><a class="header-anchor" href="#kolumnrubrik">Kolumnrubrik</a></h3><p class="docs-paragraph">Bestäm hur tabellens kolumnrubriker ska vara placerade och hur data i kolumnerna ska presenteras.
 Kolumnrubriker är som standard vänsterjusterade, men om innehållet i kolumnen är numeriska tal ska du ändra till högerjusterad.
 Vid kolumnrubrik kan du också lägga till</p>
 <ul>
-<li>ikon</li>
 <li>beskrivning</li>
 <li>hjälpformat.</li>
 </ul>
-<p class="docs-paragraph">Det är också möjligt att lägga till text för skärmläsare på kolumnrubriken.</p>
+<p class="docs-paragraph">Du kan lägga till text för skärmläsare på kolumnrubriken.</p>
 <p class="docs-paragraph">Om innehållet i kolumnens celler är text ska den vara vänsterjusterad och utan tnum.
 Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
 Till exempel kommer talet 111 ta samma plats som 000.
 Vid numeriska tal ska innehållet i kolumnen däremot vara högerjusterat och med tnum.</p>
-<h2 id="radrubrik"><a class="header-anchor" href="#radrubrik">Radrubrik</a></h2><p class="docs-paragraph">Tabellen kan använda radrubriker utöver kolumnrubriker.
-En radrubrik underlättar för användare med skärmläsare genom att markera vilken eller vilka celler som utgör en rubrik och blir upplästa automatiskt när skärmläsaren navigerar i tabellen.</p>
-<p class="docs-paragraph">Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.
-För att definiera kolumnen som radrubrik, se avsnitt Kolumntyper (länk).</p>
-<p class="docs-paragraph">// plats för kodexempel</p>
-<p class="docs-paragraph">// plats för kodexempel</p>
-<p class="docs-paragraph">Är slot <code>row-description</code> samma sak som radrubrik? Eller hör det ihop med rad-id?</p>
-<h2 id="kolumnbredder"><a class="header-anchor" href="#kolumnbredder">Kolumnbredder</a></h2><p class="docs-paragraph">Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna <code>expand</code> och <code>shrink</code> kan du indikera att en kolumn ska använda så mycket eller så lite utrymme som möjligt.</p>
+<h3 id="kolumnbredder"><a class="header-anchor" href="#kolumnbredder">Kolumnbredder</a></h3><p class="docs-paragraph">Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna <code>expand</code> och <code>shrink</code> kan du indikera att en kolumn ska använda så mycket eller så lite utrymme som möjligt.</p>
 <p class="docs-paragraph">En kolumn med <code>expand</code> tar så mycket utrymme den kan.
-En kolumn med <code>shrink</code> tar så lite utrymme den kan.
-Med <code>shrink</code> kommer cellernas innehåll att radbrytas om du inte använder direktivet <code>v-format</code> (länk) eller på annat sätt förbindrar radbrytning.</p>
+En kolumn med <code>shrink</code> tar så lite utrymme den kan.</p>
 <p class="docs-paragraph">Om flera kolumner har <code>expand</code> fördelas storleken godtycklingt efter webbläsarens preferens.</p>
 <p class="docs-paragraph">Om inget anges fungerar kolumnen som om <code>expand</code> är satt.
 Det är fel att sätta både <code>expand</code> och <code>shrink</code> samtidigt.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="kolumntyper"><a class="header-anchor" href="#kolumntyper">Kolumntyper</a></h2><p class="docs-paragraph">Tabellen har nio olika kolumntyper som påverkar hur cellen presenteras:</p>
+<h3 id="kolumntyper"><a class="header-anchor" href="#kolumntyper">Kolumntyper</a></h3><p class="docs-paragraph">Tabellen har nio olika kolumntyper som påverkar hur cellen presenteras:</p>
 <ul>
 <li>radrubrik: <code>rowheader</code> (länk till avsnitt ovan?)</li>
 <li>text: <code>text</code></li>
@@ -282,6 +260,22 @@ Det är fel att sätta både <code>expand</code> och <code>shrink</code> samtidi
 <li>dropplista: <code>select</code></li>
 <li>kontextmeny: <code>contextmenu</code></li>
 <li>specialiserade inmatningsfält: <code>text:namn på specialiserat inmatningsfält </code></li>
+<li>eget innehåll: <code>render</code></li>
+</ul>
+<p class="docs-paragraph">Specialiserade inmatningsfält som tabellen stödjer:</p>
+<ul>
+<li>text:bankAccountNumber</li>
+<li>text:bankgiro</li>
+<li>txt:clearingNumber</li>
+<li>text:currency</li>
+<li>text:email</li>
+<li>text:number</li>
+<li>text:organisationsnummer</li>
+<li>text:percent</li>
+<li>text:personnummer</li>
+<li>text:phoneNumber</li>
+<li>text:plusgiro</li>
+<li>text:postalCode.</li>
 </ul>
 <p class="docs-paragraph">Du anger kolumntypen genom att sätta propen <code>type</code>.
 Utgångsvärdet för <code>type</code> är text.</p>
@@ -291,17 +285,38 @@ Läs mer om redigering i tabell. (länk)</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <h3 id="vanster_och_hogerjustering"><a class="header-anchor" href="#vanster_och_hogerjustering">Vänster- och högerjustering</a></h3><p class="docs-paragraph">Använd <code>align</code> för att justera kolumner till höger eller vänster i tabellen.
 Text ska vara vänsterjusterad medan tal ska vara högerjusterade.
-Vissa kolumntyper är redan justerade utifrån ovan.</p>
+Kolumner av typ <code>text:currency</code>, <code>text:number</code> och <code>text:percent</code> blir automatiskt högerjusterade.
+Alla andra blir vänsterjusterade som standard.</p>
 <h3 id="tabular_figures"><a class="header-anchor" href="#tabular_figures">Tabular figures</a></h3><p class="docs-paragraph">Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
 Till exempel kommer talet 111 ta samma plats som 000.
-Vid numeriska värden ska innehållet i kolumn visas med <code>tnum</code>.</p>
-<h2 id="rad_id"><a class="header-anchor" href="#rad_id">Rad-id</a></h2><p class="docs-paragraph">För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med <code>keyAttribute</code>. Nyckeln finns i varje radobjekt.<br>
+Vid numeriska värden ska innehållet i kolumn visas med <code>tnum</code>.
+Tnum sätts automatiskt på följande:</p>
+<ul>
+<li>text:bankAccountNumber</li>
+<li>text:bankgiro</li>
+<li>txt:clearingNumber</li>
+<li>text:currency</li>
+<li>text:number</li>
+<li>text:organisationsnummer</li>
+<li>text:percent</li>
+<li>text:personnummer</li>
+<li>text:phoneNumber</li>
+<li>text:plusgiro</li>
+<li>text:postalCode.</li>
+</ul>
+<h2 id="rader"><a class="header-anchor" href="#rader">Rader</a></h2><p class="docs-paragraph">Tabellen kan använda radrubriker utöver kolumnrubriker.
+En radrubrik underlättar för användare med skärmläsare genom att markera vilken eller vilka celler som utgör en rubrik och blir upplästa automatiskt när skärmläsaren navigerar i tabellen.</p>
+<p class="docs-paragraph">Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.
+För att definiera kolumnen som radrubrik, se avsnitt Kolumntyper (länk).</p>
+<p class="docs-paragraph">// plats för kodexempel</p>
+<p class="docs-paragraph">// plats för kodexempel</p>
+<h3 id="rad_id"><a class="header-anchor" href="#rad_id">Rad-id</a></h3><p class="docs-paragraph">För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med <code>keyAttribute</code>. Nyckeln finns i varje radobjekt.<br>
 Om du anger keyAttribute, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.</p>
 <p class="docs-paragraph">Att använda keyAttribute är valfritt och det behövs inte om det finns ett naturligt id att ange för dina rader.
 Du måste använda keyAttribute om dina rader ska bibehålla aktuell status vid omladdning från REST-api eller liknande.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="framhava_rader"><a class="header-anchor" href="#framhava_rader">Framhäva rader</a></h2><p class="docs-paragraph">Framhäv varannan rad när tabellen innehåller många rader och kolumner.
+<h3 id="framhava_rader"><a class="header-anchor" href="#framhava_rader">Framhäva rader</a></h3><p class="docs-paragraph">Framhäv varannan rad när tabellen innehåller många rader och kolumner.
 Det underlättar för användaren att läsa innehållet i tabellen genom att hen lättare kan läsa samma rad över flera kolumner.
 Du gör tabellen zebrarandig genom att...</p>
 <h2 id="expanderbara_rader"><a class="header-anchor" href="#expanderbara_rader">Expanderbara rader</a></h2><p class="docs-paragraph">Med expanderbara rader går det att skapa ytterligare tabellrader som visas när användaren trycker på en expanderbar rad.</p>
