@@ -1,5 +1,8 @@
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
+import { FPaginatorSelectors } from "../../selectors";
 import FPaginator from "./FPaginator.vue";
+
+const paginator = FPaginatorSelectors();
 
 describe("page counter", () => {
     describe.each`
@@ -16,16 +19,16 @@ describe("page counter", () => {
                     numberOfPages,
                 },
             });
-            const selector = "[data-test='page-counter']";
+            const selector = paginator.pageCounter();
 
             it(`should display "${expectedText}" when "aria-hidden"`, () => {
-                expect(
-                    wrapper.find(`${selector} [aria-hidden]`).text(),
-                ).toEqual(expectedText);
+                expect(wrapper.get(`${selector} [aria-hidden]`).text()).toEqual(
+                    expectedText,
+                );
             });
 
             it(`should display "${expectedAriaText}" for screen readers`, () => {
-                expect(wrapper.find(`${selector} .sr-only`).text()).toEqual(
+                expect(wrapper.get(`${selector} .sr-only`).text()).toEqual(
                     expectedAriaText,
                 );
             });
@@ -48,17 +51,16 @@ describe("aria-current", () => {
                     numberOfPages: 3,
                 },
             });
-            const selector = `[data-test='page-${page}-button']`;
-            const ariaCurrent = wrapper
-                .find(selector)
-                .attributes("aria-current");
+            const selector = paginator.pageButtonByText(page);
+            const button = wrapper.get(selector);
+            const ariaCurrent = button.attributes("aria-current");
             expect(ariaCurrent).toEqual(expectedValue);
         },
     );
 });
 
 describe("previous button", () => {
-    let previousButton: DOMWrapper<Element>;
+    let previousButton: Omit<DOMWrapper<Element>, "exists">;
 
     beforeAll(() => {
         const wrapper = mount(FPaginator, {
@@ -67,13 +69,11 @@ describe("previous button", () => {
                 numberOfPages: 10,
             },
         });
-        previousButton = wrapper.find("[data-test='previous-button']");
+        previousButton = wrapper.get(paginator.previousPageButton());
     });
 
     it("should have the correct label", () => {
-        expect(previousButton.find("[data-test='label']").text()).toBe(
-            "Föregående",
-        );
+        expect(previousButton.text()).toBe("Föregående");
     });
 
     it("should have the correct value for 'aria-label'", () => {
@@ -82,7 +82,7 @@ describe("previous button", () => {
 });
 
 describe("next button", () => {
-    let nextButton: DOMWrapper<Element>;
+    let nextButton: Omit<DOMWrapper<Element>, "exists">;
 
     beforeAll(() => {
         const wrapper = mount(FPaginator, {
@@ -91,11 +91,11 @@ describe("next button", () => {
                 numberOfPages: 10,
             },
         });
-        nextButton = wrapper.find("[data-test='next-button']");
+        nextButton = wrapper.get(paginator.nextPageButton());
     });
 
     it("should have the correct label", () => {
-        expect(nextButton.find("[data-test='label']").text()).toBe("Nästa");
+        expect(nextButton.text()).toBe("Nästa");
     });
 
     it("should have the correct value for 'aria-label'", () => {
@@ -118,19 +118,17 @@ describe("page buttons", () => {
 
     it("should have the correct label", () => {
         for (let page = 1; page <= numberOfPages; page++) {
-            expect(
-                wrapper.find(`[data-test='page-${page}-button']`).text(),
-            ).toEqual(page.toString());
+            const selector = paginator.pageButtonByText(page);
+            const button = wrapper.get(selector);
+            expect(button.text()).toEqual(page.toString());
         }
     });
 
     it("should have the correct value for 'aria-label'", () => {
         for (let page = 1; page <= numberOfPages; page++) {
-            expect(
-                wrapper
-                    .find(`[data-test='page-${page}-button']`)
-                    .attributes("aria-label"),
-            ).toBe(`Sida ${page}`);
+            const selector = paginator.pageButtonByText(page);
+            const button = wrapper.get(selector);
+            expect(button.attributes("aria-label")).toBe(`Sida ${page}`);
         }
     });
 });
@@ -143,7 +141,8 @@ describe("number of pages to show", () => {
                 numberOfPages: 20,
             },
         });
-        expect(wrapper.findAll(".paginator__page")).toHaveLength(9);
+        const buttons = wrapper.findAll(paginator.pageButtons());
+        expect(buttons).toHaveLength(9);
     });
 });
 
@@ -167,9 +166,9 @@ describe("pages and gaps", () => {
             "20",
         ];
         expectedPageButtons.forEach((expectedPageButton, index) => {
-            expect(
-                wrapper.findAll(".paginator__page").at(index)?.text(),
-            ).toEqual(expectedPageButton);
+            const selector = paginator.pageButtonByIndex(index);
+            const button = wrapper.get(selector);
+            expect(button.text()).toEqual(expectedPageButton);
         });
     });
 });

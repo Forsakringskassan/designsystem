@@ -1,1 +1,1 @@
-export {};
+export { FPaginatorSelectors } from "./FPaginator.selectors";
