@@ -33,6 +33,12 @@
             "compression": false
         },
         {
+            "id": "@fkui/vue/selectors",
+            "name": "@fkui/vue/selectors",
+            "include": ["packages/vue/dist/esm/selectors.esm.js"],
+            "compression": false
+        },
+        {
             "id": "@fkui/vue-labs",
             "name": "@fkui/vue-labs (esm)",
             "include": ["packages/vue-labs/dist/esm/index.esm.js"],

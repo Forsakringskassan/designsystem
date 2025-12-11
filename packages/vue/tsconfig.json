@@ -23,6 +23,9 @@
         },
         {
             "path": "./tsconfig.cypress.json"
+        },
+        {
+            "path": "./tsconfig.selectors.json"
         }
     ]
 }
