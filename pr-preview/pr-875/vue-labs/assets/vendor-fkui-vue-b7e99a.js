@@ -4706,6 +4706,16 @@ function elementIsRadioButton(element) {
 function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
 }
+var modalSizes = [
+  "small",
+  "medium",
+  "large",
+  "fullwidth",
+  /** @deprecated deprecated default value */
+  "",
+  /** @deprecated deprecated alias for fullwidth */
+  "fullscreen"
+];
 function sizeClass(size) {
   if (!size) {
     return [];
@@ -12885,7 +12895,8 @@ var _sfc_main$Q = defineComponent({
       descriptionText: "",
       descriptionScreenReaderText: "",
       discreteDescriptionText: "",
-      discreteDescriptionScreenReaderText: ""
+      discreteDescriptionScreenReaderText: "",
+      dropdownOpenedWithoutVisibleError: false
     };
   },
   computed: {
@@ -12899,6 +12910,9 @@ var _sfc_main$Q = defineComponent({
       return this.validityMode === "VALID";
     },
     hasError() {
+      if (this.dropdownIsOpen && this.dropdownOpenedWithoutVisibleError) {
+        return false;
+      }
       return this.validityMode === "ERROR";
     },
     rootClass() {
@@ -12936,13 +12950,8 @@ var _sfc_main$Q = defineComponent({
     dropdownIsOpen: {
       handler() {
         if (this.dropdownIsOpen) {
-          return;
+          this.dropdownOpenedWithoutVisibleError = this.validityMode === "INITIAL";
         }
-        const input = findHTMLElementFromVueRef(this.$refs.input);
-        if (!input?.hasAttribute("data-validation")) {
-          return;
-        }
-        ValidationService.validateElement(this.$refs.input);
       }
     }
   },
@@ -12990,9 +12999,6 @@ var _sfc_main$Q = defineComponent({
     async onValidity({
       detail
     }) {
-      if (this.dropdownIsOpen && this.validityMode !== "ERROR" && detail.validityMode === "ERROR") {
-        detail.validityMode = "INITIAL";
-      }
       this.validationMessage = detail.validationMessage;
       this.validityMode = detail.validityMode;
       if (detail.nativeEvent === "change" || detail.nativeEvent === "blur") {
@@ -21198,6 +21204,7 @@ export {
   isContextMenuTextItem,
   isDialogueTreeEndQuestion,
   itemEquals,
+  modalSizes,
   mountComponent,
   openModal,
   refIsElement,
