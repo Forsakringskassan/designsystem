@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, unref, createCommentVNode, Fragment, createBlock, createApp, resolveComponent, withKeys, createVNode, toDisplayString, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Teleport, normalizeStyle, withDirectives, vShow, Transition, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, debounce, alertScreenReader, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -4706,6 +4706,16 @@ function elementIsRadioButton(element) {
 function isHTMLInputElement(element) {
   return element instanceof HTMLInputElement;
 }
+var modalSizes = [
+  "small",
+  "medium",
+  "large",
+  "fullwidth",
+  /** @deprecated deprecated default value */
+  "",
+  /** @deprecated deprecated alias for fullwidth */
+  "fullscreen"
+];
 function sizeClass(size) {
   if (!size) {
     return [];
@@ -21183,6 +21193,7 @@ export {
   isContextMenuTextItem,
   isDialogueTreeEndQuestion,
   itemEquals,
+  modalSizes,
   mountComponent,
   openModal,
   refIsElement,
