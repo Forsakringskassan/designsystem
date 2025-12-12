@@ -7077,6 +7077,13 @@ var FFieldset_default = defineComponent22({
     groupLabelClass() {
       return Array.from(labelClasses(this));
     },
+    groupLabelClassTooltip() {
+      if (this.hasDescriptionSlot || this.hasErrorMessageSlot || this.hasError) {
+        return [];
+      } else {
+        return this.groupLabelClass;
+      }
+    },
     groupContentClass() {
       return Array.from(contentClasses(this));
     },
@@ -7195,12 +7202,8 @@ var _hoisted_47 = {
 };
 var _hoisted_57 = { key: 0 };
 var _hoisted_65 = { key: 1 };
-var _hoisted_74 = {
-  ref: "tooltipAttachTo",
-  class: "label"
-};
-var _hoisted_84 = { "aria-hidden": "true" };
-var _hoisted_94 = {
+var _hoisted_74 = { "aria-hidden": "true" };
+var _hoisted_84 = {
   key: 0,
   class: "label__message label__message--error"
 };
@@ -7273,14 +7276,17 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
       [
         _createElementVNode18(
           "div",
-          _hoisted_74,
+          {
+            ref: "tooltipAttachTo",
+            class: _normalizeClass13(["label", _ctx.groupLabelClassTooltip])
+          },
           [
-            _createElementVNode18("span", _hoisted_84, [
+            _createElementVNode18("span", _hoisted_74, [
               _renderSlot19(_ctx.$slots, "label")
             ])
           ],
-          512
-          /* NEED_PATCH */
+          2
+          /* CLASS */
         ),
         _createCommentVNode22(" @slot Slot for tooltip. "),
         _renderSlot19(_ctx.$slots, "tooltip"),
@@ -7299,7 +7305,7 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
             }),
             _createCommentVNode22("\n                    @slot Slot for displaying single or several error messages.\n                    @binding {boolean} hasError Set to true when a validation error is present\n                    @binding {string} validationMessage Descriptive validation error message for current error\n                "),
             _renderSlot19(_ctx.$slots, "error-message", _normalizeProps2(_guardReactiveProps2({ hasError: _ctx.hasError, validationMessage: _ctx.validity.validationMessage })), () => [
-              _ctx.hasError ? (_openBlock25(), _createElementBlock20("span", _hoisted_94, [
+              _ctx.hasError ? (_openBlock25(), _createElementBlock20("span", _hoisted_84, [
                 _createVNode10(_component_f_icon, {
                   class: "label__icon--left",
                   name: "error"
