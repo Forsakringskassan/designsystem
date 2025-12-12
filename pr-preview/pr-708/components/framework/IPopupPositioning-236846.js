@@ -3686,9 +3686,6 @@ function getAbsolutePosition(src) {
   };
 }
 
-// packages/vue/src/utils/internal-key.ts
-var internalKey = Symbol("internal-key");
-
 // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
 function clamp(value, min, max) {
   return Math.max(Math.min(value, max), min);

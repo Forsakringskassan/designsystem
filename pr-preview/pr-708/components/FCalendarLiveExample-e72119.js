@@ -3799,9 +3799,6 @@ function getAbsolutePosition(src) {
   };
 }
 
-// packages/vue/src/utils/internal-key.ts
-var internalKey = Symbol("internal-key");
-
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
@@ -6552,7 +6549,7 @@ FExpand_default.__file = "packages/vue/src/components/FExpand/FExpand.vue";
 var FExpand_default2 = FExpand_default;
 
 // packages/vue/src/components/FTooltip/tooltip-attach-to.ts
-var tooltipAttachTo = Symbol("tooltipAttachTo");
+var tooltipAttachTo = /* @__PURE__ */ Symbol("tooltipAttachTo");
 
 // packages/vue/src/components/FTooltip/use-animation.ts
 import { computed as computed3, onMounted as onMounted3, ref as ref3, watchEffect as watchEffect4 } from "vue";
@@ -6931,9 +6928,9 @@ function* labelClasses(options) {
 // packages/vue/src/components/FFieldset/use-fieldset.ts
 import { inject as inject2 } from "vue";
 var injectionKeys = {
-  sharedName: Symbol("sharedName"),
-  showDetails: Symbol("showDetails"),
-  getFieldsetLabelText: Symbol("getFieldsetLabelText")
+  sharedName: /* @__PURE__ */ Symbol("sharedName"),
+  showDetails: /* @__PURE__ */ Symbol("showDetails"),
+  getFieldsetLabelText: /* @__PURE__ */ Symbol("getFieldsetLabelText")
 };
 function useFieldset() {
   return {
@@ -7080,6 +7077,13 @@ var FFieldset_default = defineComponent22({
     groupLabelClass() {
       return Array.from(labelClasses(this));
     },
+    groupLabelClassTooltip() {
+      if (this.hasDescriptionSlot || this.hasErrorMessageSlot || this.hasError) {
+        return [];
+      } else {
+        return this.groupLabelClass;
+      }
+    },
     groupContentClass() {
       return Array.from(contentClasses(this));
     },
@@ -7198,12 +7202,8 @@ var _hoisted_47 = {
 };
 var _hoisted_57 = { key: 0 };
 var _hoisted_65 = { key: 1 };
-var _hoisted_74 = {
-  ref: "tooltipAttachTo",
-  class: "label"
-};
-var _hoisted_84 = { "aria-hidden": "true" };
-var _hoisted_94 = {
+var _hoisted_74 = { "aria-hidden": "true" };
+var _hoisted_84 = {
   key: 0,
   class: "label__message label__message--error"
 };
@@ -7276,14 +7276,17 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
       [
         _createElementVNode18(
           "div",
-          _hoisted_74,
+          {
+            ref: "tooltipAttachTo",
+            class: _normalizeClass13(["label", _ctx.groupLabelClassTooltip])
+          },
           [
-            _createElementVNode18("span", _hoisted_84, [
+            _createElementVNode18("span", _hoisted_74, [
               _renderSlot19(_ctx.$slots, "label")
             ])
           ],
-          512
-          /* NEED_PATCH */
+          2
+          /* CLASS */
         ),
         _createCommentVNode22(" @slot Slot for tooltip. "),
         _renderSlot19(_ctx.$slots, "tooltip"),
@@ -7302,7 +7305,7 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
             }),
             _createCommentVNode22("\n                    @slot Slot for displaying single or several error messages.\n                    @binding {boolean} hasError Set to true when a validation error is present\n                    @binding {string} validationMessage Descriptive validation error message for current error\n                "),
             _renderSlot19(_ctx.$slots, "error-message", _normalizeProps2(_guardReactiveProps2({ hasError: _ctx.hasError, validationMessage: _ctx.validity.validationMessage })), () => [
-              _ctx.hasError ? (_openBlock25(), _createElementBlock20("span", _hoisted_94, [
+              _ctx.hasError ? (_openBlock25(), _createElementBlock20("span", _hoisted_84, [
                 _createVNode10(_component_f_icon, {
                   class: "label__icon--left",
                   name: "error"
