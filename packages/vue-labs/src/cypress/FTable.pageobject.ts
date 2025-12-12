@@ -149,6 +149,18 @@ export class FTablePageObject implements BasePageObject {
     }
 
     /**
+     * Get table caption.
+     *
+     * Only applicable if caption slot is used.
+     *
+     * @public
+     * @returns The table caption.
+     */
+    public caption(): Cypress.Chainable<JQuery<HTMLTableSectionElement>> {
+        return cy.get(`${this.selector} caption`);
+    }
+
+    /**
      * Get table footer.
      *
      * Only applicable if footer slot is used.
