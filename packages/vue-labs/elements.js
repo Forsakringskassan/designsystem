@@ -35,7 +35,7 @@ module.exports = defineMetadata({
                 required: false,
             },
         },
-        slots: ["empty", "expandable", "footer"],
+        slots: ["caption", "empty", "expandable", "footer"],
     },
 
     tr: {
