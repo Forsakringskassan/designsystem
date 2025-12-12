@@ -3,7 +3,6 @@ import { computed, nextTick, ref, useTemplateRef, watch } from "vue";
 import { focus } from "@fkui/logic";
 import { IPopup } from "../../internal-components/IPopup";
 import { useTranslate } from "../../plugins/translation";
-import { MenuAction } from "../../types";
 import { actionFromKeyboardEvent } from "../../utils";
 import { FIcon } from "../FIcon";
 import { useMenuAction } from "./contextmenu-logic";
@@ -127,40 +126,30 @@ function onKeyUp(event: KeyboardEvent): void {
     }
 }
 
-function doHandlePopupMenuTabKey(action: MenuAction): boolean {
-    // Detect if tab (MOVE_NEXT) or shift+tab (MOVE_PREV) reaches the limits, to avoid trapping tab
-    // returns true to indicate that one should NOT continue processing this keyboard action or false otherwise
-    if (action === MenuAction.MOVE_NEXT && currentFocusedItemIndex.value + 1 === popupItems.value.length) {
-        closePopup();
-        return true;
-    } else if (
-        action === MenuAction.MOVE_PREV &&
-        (currentFocusedItemIndex.value === 0 || currentFocusedItemIndex.value === -1)
-    ) {
-        // shift-tab (MOVE_PREV) inside the popup on the first element of the popup will close the popup and
-        // adjust currentFocusedItemIndex and will resume processing this keyboard action
-        closePopup();
-        return false;
-    }
-    return false;
-}
-
 async function onKeyDown(event: KeyboardEvent): Promise<void> {
     if (!preventKeys.includes(event.key)) {
         return;
     }
 
+    /* escape should close the popup, focus is restored from IPopupMenu */
     if (event.key === "Escape") {
         closePopup();
         return;
     }
+
+    /* tab (forward or reverse) also closes the popup but we need to
+     * stop the tabbing from also moving the focus */
+    if (event.key === "Tab") {
+        event.preventDefault();
+        closePopup();
+        return;
+    }
+
     const action = actionFromKeyboardEvent(event);
     if (action === null) {
         return;
     }
-    if (event.key === "Tab" && doHandlePopupMenuTabKey(action)) {
-        return;
-    }
+
     if (keyUp.includes(event.key) && currentFocusedItemIndex.value === -1) {
         // If the user presses arrow up key (action MOVE_PREV) but there are no items in focus
         // adjust currentFocusedItemIndex so that MOVE_PREV will put focus on last item
