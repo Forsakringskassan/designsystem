@@ -125,25 +125,6 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
-    "Anpassa och översätt text",
-    "translate",
-    "translation",
-    "översättning",
-    "översätta",
-    "i18n",
-    "Skapa eget ikonbibliotek",
-    "icons",
-    "icon-lib-builder",
-    "Kom igång",
-    "designer",
-    "utvecklare",
-    "utvecklingsverktyg",
-    "Ta fram applikation",
-    "tema",
-    "sass",
-    "scss",
-    "css",
-    "ikonbibliotek",
     "Version 5 migreringsguide",
     "Vue 3",
     "Fieldset migreringsguide",
@@ -198,6 +179,35 @@
     "produktionsklar",
     "beta",
     "experimentell",
+    "Anpassa och översätt text",
+    "translate",
+    "translation",
+    "översättning",
+    "översätta",
+    "i18n",
+    "Skapa eget ikonbibliotek",
+    "icons",
+    "icon-lib-builder",
+    "Kom igång",
+    "designer",
+    "utvecklare",
+    "utvecklingsverktyg",
+    "Ta fram applikation",
+    "tema",
+    "sass",
+    "scss",
+    "css",
+    "ikonbibliotek",
+    "EventBus",
+    "EventBus",
+    "services",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -211,16 +221,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -534,18 +534,6 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -581,6 +569,18 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -608,14 +608,14 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -928,45 +928,6 @@
       ]
     },
     {
-      "url": "gettingstarted/use-design-system/translate-text.html",
-      "title": "Anpassa och översätt text",
-      "terms": [
-        "translate",
-        "translation",
-        "översättning",
-        "översätta",
-        "i18n"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/icon-library.html",
-      "title": "Skapa eget ikonbibliotek",
-      "terms": [
-        "icons",
-        "icon-lib-builder"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started.html",
-      "title": "Kom igång",
-      "terms": [
-        "designer",
-        "utvecklare",
-        "utvecklingsverktyg"
-      ]
-    },
-    {
-      "url": "gettingstarted/use-design-system/getting-started-application.html",
-      "title": "Ta fram applikation",
-      "terms": [
-        "tema",
-        "sass",
-        "scss",
-        "css",
-        "ikonbibliotek"
-      ]
-    },
-    {
       "url": "gettingstarted/migration/migrating-to-v5.html",
       "title": "Version 5 migreringsguide",
       "terms": [
@@ -1083,6 +1044,70 @@
       ]
     },
     {
+      "url": "gettingstarted/use-design-system/translate-text.html",
+      "title": "Anpassa och översätt text",
+      "terms": [
+        "translate",
+        "translation",
+        "översättning",
+        "översätta",
+        "i18n"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/icon-library.html",
+      "title": "Skapa eget ikonbibliotek",
+      "terms": [
+        "icons",
+        "icon-lib-builder"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started.html",
+      "title": "Kom igång",
+      "terms": [
+        "designer",
+        "utvecklare",
+        "utvecklingsverktyg"
+      ]
+    },
+    {
+      "url": "gettingstarted/use-design-system/getting-started-application.html",
+      "title": "Ta fram applikation",
+      "terms": [
+        "tema",
+        "sass",
+        "scss",
+        "css",
+        "ikonbibliotek"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1113,31 +1138,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
       ]
     },
     {
@@ -1866,38 +1866,6 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2015,6 +1983,38 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
       ]
     },
     {
@@ -2150,21 +2150,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -2187,6 +2172,21 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -2393,17 +2393,17 @@
     "124": 34,
     "125": 35,
     "126": 35,
-    "127": 35,
-    "128": 35,
-    "129": 35,
-    "130": 35,
-    "131": 36,
-    "132": 36,
-    "133": 36,
-    "134": 37,
-    "135": 37,
-    "136": 37,
-    "137": 37,
+    "127": 36,
+    "128": 37,
+    "129": 37,
+    "130": 38,
+    "131": 38,
+    "132": 38,
+    "133": 38,
+    "134": 38,
+    "135": 38,
+    "136": 38,
+    "137": 38,
     "138": 38,
     "139": 38,
     "140": 38,
@@ -2412,53 +2412,53 @@
     "143": 38,
     "144": 39,
     "145": 39,
-    "146": 40,
-    "147": 41,
-    "148": 41,
-    "149": 42,
-    "150": 42,
-    "151": 42,
-    "152": 42,
-    "153": 42,
-    "154": 42,
-    "155": 42,
-    "156": 42,
-    "157": 42,
-    "158": 42,
-    "159": 42,
-    "160": 42,
-    "161": 42,
+    "146": 39,
+    "147": 39,
+    "148": 39,
+    "149": 39,
+    "150": 39,
+    "151": 39,
+    "152": 39,
+    "153": 40,
+    "154": 40,
+    "155": 40,
+    "156": 40,
+    "157": 40,
+    "158": 40,
+    "159": 40,
+    "160": 40,
+    "161": 41,
     "162": 42,
     "163": 43,
     "164": 43,
-    "165": 43,
-    "166": 43,
-    "167": 43,
-    "168": 43,
-    "169": 43,
-    "170": 43,
-    "171": 43,
-    "172": 44,
-    "173": 44,
-    "174": 44,
-    "175": 44,
-    "176": 44,
-    "177": 44,
-    "178": 44,
-    "179": 44,
-    "180": 45,
-    "181": 46,
-    "182": 47,
-    "183": 47,
+    "165": 44,
+    "166": 44,
+    "167": 44,
+    "168": 44,
+    "169": 45,
+    "170": 45,
+    "171": 45,
+    "172": 46,
+    "173": 46,
+    "174": 47,
+    "175": 47,
+    "176": 47,
+    "177": 47,
+    "178": 47,
+    "179": 48,
+    "180": 48,
+    "181": 48,
+    "182": 48,
+    "183": 48,
     "184": 48,
-    "185": 48,
-    "186": 48,
-    "187": 48,
-    "188": 49,
-    "189": 49,
-    "190": 49,
+    "185": 49,
+    "186": 49,
+    "187": 49,
+    "188": 50,
+    "189": 50,
+    "190": 50,
     "191": 50,
-    "192": 50,
+    "192": 51,
     "193": 51,
     "194": 51,
     "195": 51,
@@ -2467,24 +2467,24 @@
     "198": 52,
     "199": 52,
     "200": 52,
-    "201": 52,
+    "201": 53,
     "202": 53,
     "203": 53,
     "204": 53,
-    "205": 53,
+    "205": 54,
     "206": 54,
     "207": 54,
-    "208": 54,
+    "208": 55,
     "209": 55,
     "210": 55,
-    "211": 56,
+    "211": 55,
     "212": 56,
     "213": 56,
-    "214": 57,
-    "215": 57,
+    "214": 56,
+    "215": 56,
     "216": 57,
     "217": 57,
-    "218": 58,
+    "218": 57,
     "219": 58,
     "220": 58,
     "221": 59,
@@ -2802,49 +2802,49 @@
     "533": 144,
     "534": 145,
     "535": 145,
-    "536": 145,
+    "536": 146,
     "537": 146,
-    "538": 146,
-    "539": 146,
-    "540": 147,
-    "541": 147,
-    "542": 147,
-    "543": 148,
-    "544": 148,
-    "545": 148,
-    "546": 149,
-    "547": 149,
-    "548": 150,
-    "549": 150,
-    "550": 151,
-    "551": 151,
-    "552": 152,
-    "553": 152,
-    "554": 153,
-    "555": 153,
-    "556": 154,
-    "557": 154,
-    "558": 155,
-    "559": 155,
-    "560": 156,
-    "561": 156,
-    "562": 157,
-    "563": 157,
-    "564": 158,
-    "565": 158,
-    "566": 159,
-    "567": 159,
-    "568": 160,
-    "569": 160,
-    "570": 161,
-    "571": 161,
-    "572": 162,
-    "573": 162,
-    "574": 162,
-    "575": 163,
-    "576": 163,
+    "538": 147,
+    "539": 147,
+    "540": 148,
+    "541": 148,
+    "542": 149,
+    "543": 149,
+    "544": 150,
+    "545": 150,
+    "546": 151,
+    "547": 151,
+    "548": 152,
+    "549": 152,
+    "550": 153,
+    "551": 153,
+    "552": 154,
+    "553": 154,
+    "554": 155,
+    "555": 155,
+    "556": 156,
+    "557": 156,
+    "558": 157,
+    "559": 157,
+    "560": 158,
+    "561": 158,
+    "562": 158,
+    "563": 159,
+    "564": 159,
+    "565": 160,
+    "566": 160,
+    "567": 161,
+    "568": 161,
+    "569": 162,
+    "570": 162,
+    "571": 162,
+    "572": 163,
+    "573": 163,
+    "574": 163,
+    "575": 164,
+    "576": 164,
     "577": 164,
-    "578": 164,
+    "578": 165,
     "579": 165,
     "580": 165,
     "581": 166,

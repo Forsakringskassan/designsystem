@@ -2010,7 +2010,7 @@ var _export_sfc = (sfc, props) => {
 };
 var _hoisted_1$12 = ["aria-hidden"];
 var _hoisted_2$N = ["href"];
-function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps(_ctx.$attrs, {
     focusable: "false",
     class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
@@ -2019,7 +2019,7 @@ function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.spriteId
   }, null, 8, _hoisted_2$N)], 16, _hoisted_1$12);
 }
-var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["render", _sfc_render$Q]]);
+var FIcon = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["render", _sfc_render$P]]);
 function useInflight(fn2) {
   const inflight = ref(false);
   if (!fn2 || typeof fn2 !== "function") {
@@ -4335,14 +4335,14 @@ function includeItem(item, itemList, compareAttribute) {
 function handleKeyboardFocusNavigation(key, focusedElement, focusableElements) {
   let tabPosition = focusableElements.indexOf(focusedElement);
   const keyDown = ["ArrowDown", "Down"];
-  const keyUp2 = ["ArrowUp", "Up"];
+  const keyUp = ["ArrowUp", "Up"];
   if (keyDown.includes(key)) {
     tabPosition++;
     if (tabPosition === focusableElements.length) {
       tabPosition = 0;
     }
   }
-  if (keyUp2.includes(key)) {
+  if (keyUp.includes(key)) {
     tabPosition--;
     if (tabPosition === -1) {
       tabPosition = focusableElements.length - 1;
@@ -4940,7 +4940,7 @@ var _hoisted_10$4 = {
   class: "modal__shelf"
 };
 var _hoisted_11$3 = ["aria-label"];
-function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
     key: 0,
@@ -4970,7 +4970,7 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
   }, null, 32)])])], 2)])], 32)])], 10, _hoisted_1$10)) : createCommentVNode("", true);
 }
-var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["render", _sfc_render$P]]);
+var FModal = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["render", _sfc_render$O]]);
 function prepareButtonList(src) {
   return src.map((it) => {
     var _it$event, _ref, _it$reason, _it$type;
@@ -5107,7 +5107,7 @@ var _hoisted_3$A = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
     fullscreen: _ctx.fullscreen,
@@ -5131,7 +5131,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
-var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1l, [["render", _sfc_render$O]]);
+var FConfirmModal = /* @__PURE__ */ _export_sfc(_sfc_main$1l, [["render", _sfc_render$N]]);
 var GAP = ["1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x"];
 var ALIGNMENT = ["top", "center", "bottom"];
 var FLOAT = ["left", "center", "right"];
@@ -5208,12 +5208,12 @@ var _sfc_main$1k = defineComponent({
     }
   }
 });
-function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$1k, [["render", _sfc_render$N]]);
+var IFlex = /* @__PURE__ */ _export_sfc(_sfc_main$1k, [["render", _sfc_render$M]]);
 var _sfc_main$1j = defineComponent({
   name: "IFlexItem",
   inheritAttrs: true,
@@ -5259,12 +5259,12 @@ var _sfc_main$1j = defineComponent({
     }
   }
 });
-function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["iflex__item", _ctx.classList])
   }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$M]]);
+var IFlexItem = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$L]]);
 function focusError(item) {
   const element = document.querySelector(`#${String(item.id)}`);
   if (!element) {
@@ -5342,7 +5342,7 @@ var _hoisted_4$t = ["onClick"];
 var _hoisted_5$n = {
   class: "error-list__link"
 };
-function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   const _component_i_flex_item = resolveComponent("i-flex-item");
   const _component_i_flex = resolveComponent("i-flex");
@@ -5396,7 +5396,7 @@ function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   })]);
 }
-var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$L]]);
+var FErrorList = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$K]]);
 var es_iterator_every = {};
 var hasRequiredEs_iterator_every;
 function requireEs_iterator_every() {
@@ -5587,13 +5587,13 @@ var _sfc_main$1h = defineComponent({
     }
   }
 });
-function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
     onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
   }, [renderSlot(_ctx.$slots, "default")], 32);
 }
-var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$K]]);
+var FValidationGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$J]]);
 var FValidationFormAction = /* @__PURE__ */ ((FValidationFormAction2) => {
   FValidationFormAction2[FValidationFormAction2["CONTINUE"] = 0] = "CONTINUE";
   FValidationFormAction2[FValidationFormAction2["CANCEL"] = 1] = "CANCEL";
@@ -5752,7 +5752,7 @@ var _hoisted_2$I = {
   tabindex: "-1",
   role: "group"
 };
-function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = resolveComponent("f-error-list");
   const _component_f_validation_group = resolveComponent("f-validation-group");
   return openBlock(), createBlock(_component_f_validation_group, {
@@ -5778,7 +5778,7 @@ function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["modelValue"]);
 }
-var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["render", _sfc_render$J]]);
+var FValidationForm = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["render", _sfc_render$I]]);
 var _sfc_main$1f = defineComponent({
   name: "FFormModal",
   components: {
@@ -5968,7 +5968,7 @@ var _hoisted_3$y = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = resolveComponent("f-validation-form");
   const _component_f_modal = resolveComponent("f-modal");
   return openBlock(), createBlock(_component_f_modal, {
@@ -6004,7 +6004,7 @@ function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
-var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["render", _sfc_render$I]]);
+var FFormModal = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["render", _sfc_render$H]]);
 async function confirmModal(callingInstance, texts) {
   const buttons = [{
     label: texts.confirm,
@@ -7044,13 +7044,13 @@ var _sfc_main$1e = defineComponent({
 var _hoisted_1$X = {
   "data-test": "f-error-page"
 };
-function _sfc_render$H(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", _hoisted_1$X, [..._cache[0] || (_cache[0] = [createElementVNode("h1", null, "Fel", -1), createTextVNode(), createElementVNode("p", null, "Ett fel har uppst\xE5tt.", -1), createTextVNode(), createElementVNode("a", {
     class: "anchor",
     href: "/"
   }, "G\xE5 till startsidan", -1)])]);
 }
-var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$H]]);
+var FErrorPage = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$G]]);
 var _sfc_main$1d = defineComponent({
   name: "FErrorHandlingApp",
   props: {
@@ -7080,7 +7080,7 @@ var _sfc_main$1d = defineComponent({
     });
   }
 });
-function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", null, [_ctx.hasError ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.errorComponent), {
     key: 0,
     payload: _ctx.payload
@@ -7090,7 +7090,7 @@ function _sfc_render$G(_ctx, _cache, $props, $setup, $data, $options) {
     key: 2
   })]);
 }
-var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$G]]);
+var FErrorHandlingApp = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$F]]);
 function isDateRange(value) {
   if (!value || typeof value !== "object") {
     return false;
@@ -7354,7 +7354,7 @@ var _hoisted_11$2 = {
   "aria-hidden": "true"
 };
 var _hoisted_12$2 = ["colspan"];
-function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("table", {
     class: "calendar-month__table",
     role: "grid",
@@ -7417,7 +7417,7 @@ function _sfc_render$F(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-hidden": "true"
   }, null, 8, _hoisted_12$2)])) : createCommentVNode("", true)])], 40, _hoisted_1$W);
 }
-var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$F]]);
+var ICalendarMonthGrid = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$E]]);
 var DayStep = {
   ArrowRight: 1,
   ArrowLeft: -1,
@@ -7582,7 +7582,7 @@ var _sfc_main$1b = defineComponent({
   }
 });
 var _hoisted_1$V = ["data-date", "tabindex", "onClick", "onKeydown"];
-function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_calendar_month_grid = resolveComponent("i-calendar-month-grid");
   return openBlock(), createBlock(_component_i_calendar_month_grid, {
     value: _ctx.modelValue
@@ -7605,7 +7605,7 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["value"]);
 }
-var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$E]]);
+var ICalendarMonth = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$D]]);
 var _sfc_main$1a = defineComponent({
   name: "ICalendarNavbar",
   components: {
@@ -7795,7 +7795,7 @@ var _hoisted_9$6 = ["aria-disabled", "aria-live"];
 var _hoisted_10$2 = {
   class: "sr-only"
 };
-function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return openBlock(), createElementBlock("div", _hoisted_1$U, [createElementVNode("div", _hoisted_2$F, [createElementVNode("span", {
     class: normalizeClass([_ctx.monthTitleClass, "calendar-navbar__month--title"]),
@@ -7837,7 +7837,7 @@ function _sfc_render$D(_ctx, _cache, $props, $setup, $data, $options) {
     name: "arrow-right"
   }, null, 8, ["class"])], 8, _hoisted_9$6)) : createCommentVNode("", true)]);
 }
-var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$D]]);
+var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$C]]);
 function tryOnScopeDispose(fn2) {
   if (getCurrentScope()) {
     onScopeDispose(fn2);
@@ -8423,7 +8423,7 @@ var _hoisted_2$E = {
 };
 var _hoisted_3$v = ["aria-activedescendant", "aria-label"];
 var _hoisted_4$q = ["id", "tabindex", "aria-selected", "onClick"];
-function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_calendar_navbar = resolveComponent("i-calendar-navbar");
   const _component_i_calendar_month = resolveComponent("i-calendar-month");
   return openBlock(), createElementBlock("div", _hoisted_1$T, [createVNode(_component_i_calendar_navbar, {
@@ -8475,7 +8475,7 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["model-value", "min-date", "max-date", "tab-date", "onClick", "onUpdate:modelValue"]))]);
 }
-var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$C]]);
+var FCalendar = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$B]]);
 function getCalendarDaySrText(day, enabled, selected, t) {
   const parts = [];
   if (!enabled) {
@@ -8556,12 +8556,12 @@ var _hoisted_1$S = {
 var _hoisted_2$D = {
   class: "sr-only"
 };
-function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass(_ctx.dayClasses)
   }, [createElementVNode("span", _hoisted_1$S, toDisplayString(_ctx.day.day), 1), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$D, toDisplayString(_ctx.srText), 1)], 2);
 }
-var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$B]]);
+var FCalendarDay = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$A]]);
 function useEventListener(target, event, callback) {
   onMounted(() => {
     toValue(target)?.addEventListener(event, callback);
@@ -9251,7 +9251,7 @@ var _sfc_main$16 = defineComponent({
     }
   }
 });
-function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
     key: 0,
     to: _ctx.teleportTarget,
@@ -9272,7 +9272,7 @@ function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     placement: _ctx.placement
   })))], 544)], 16)], 8, ["to", "disabled"])) : createCommentVNode("", true);
 }
-var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$A]]);
+var IPopup = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$z]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   switch (placement) {
     case Placement.A: {
@@ -9476,7 +9476,7 @@ var _hoisted_1$Q = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
-function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
     key: 0,
@@ -9500,7 +9500,7 @@ function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
     class: "button__icon"
   })])], 6)], 512)], 2)], 8, ["to", "disabled"])) : createCommentVNode("", true);
 }
-var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$z]]);
+var IPopupError = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$y]]);
 function numItems(itemHeight, availableHeight, verticalSpacing) {
   const itemsFit = Math.floor((availableHeight - verticalSpacing) / itemHeight);
   return Math.min(itemsFit, 7);
@@ -9756,7 +9756,7 @@ function getNewItemIndexFromMenuAction$2(action, index, n) {
   }
   return newIndex;
 }
-async function doMenuAction$2(action, target) {
+async function doMenuAction$1(action, target) {
   const itemsLength = target.items.length;
   const currentIndex = target.currentFocusedItemIndex;
   const newFocusedItemIndex = getNewItemIndexFromMenuAction$2(action, currentIndex, itemsLength);
@@ -9772,7 +9772,7 @@ async function doMenuAction$2(action, target) {
       break;
   }
 }
-var preventKeys$2 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
+var preventKeys$1 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
 var _sfc_main$13 = defineComponent({
   name: "IPopupMenu",
   components: {
@@ -9987,7 +9987,7 @@ var _sfc_main$13 = defineComponent({
       if (!this.enableKeyboardNavigation) {
         return;
       }
-      if (preventKeys$2.includes(event.key)) {
+      if (preventKeys$1.includes(event.key)) {
         event.preventDefault();
       }
     },
@@ -9995,7 +9995,7 @@ var _sfc_main$13 = defineComponent({
       if (!this.enableKeyboardNavigation) {
         return;
       }
-      if (!preventKeys$2.includes(event.key)) {
+      if (!preventKeys$1.includes(event.key)) {
         return;
       }
       const firstItemFocused = this.currentFocusedItemIndex === 0;
@@ -10014,7 +10014,7 @@ var _sfc_main$13 = defineComponent({
         return;
       }
       event.preventDefault();
-      await doMenuAction$2(action, this);
+      await doMenuAction$1(action, this);
     }
   }
 });
@@ -10029,7 +10029,7 @@ var _hoisted_5$k = {
   key: 0,
   class: "sr-only"
 };
-function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_popup = resolveComponent("i-popup");
   return openBlock(), createBlock(_component_i_popup, {
     class: "ipopupmenu",
@@ -10065,7 +10065,7 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
 }
-var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$y]]);
+var IPopupMenu = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$x]]);
 var ANIMATION_DURATION = 500;
 var NO_CSS_CLASSES = "";
 var CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
@@ -10269,13 +10269,13 @@ var _hoisted_1$N = {
   ref: "content",
   "data-test": "animation-content"
 };
-function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.animationClasses),
     style: normalizeStyle(_ctx.heightStyle)
   }, [_ctx.shouldVIf ? withDirectives((openBlock(), createElementBlock("div", _hoisted_1$N, [renderSlot(_ctx.$slots, "default")], 512)), [[vShow, _ctx.shouldVShow]]) : createCommentVNode("", true)], 6);
 }
-var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$x]]);
+var IAnimateExpand = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$w]]);
 var _sfc_main$11 = defineComponent({
   name: "ISkipLink",
   mixins: [TranslationMixin],
@@ -10291,13 +10291,13 @@ var _sfc_main$11 = defineComponent({
   }
 });
 var _hoisted_1$M = ["href"];
-function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("a", {
     class: "iskiplink",
     href: _ctx.href
   }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.skip-link.text", "G\xE5 direkt till inneh\xE5ll")), 1)])], 8, _hoisted_1$M);
 }
-var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$w]]);
+var ISkipLink = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$v]]);
 function filterOptions(options, filter2, selectMode) {
   if (isEmpty(filter2) || selectMode) {
     return options;
@@ -10691,7 +10691,7 @@ var _sfc_main$_ = defineComponent({
     }
   }
 });
-function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Transition, {
     onEnter: _ctx.enter,
     onAfterEnter: _ctx.afterEnter,
@@ -10703,7 +10703,7 @@ function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
 }
-var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$v]]);
+var FExpand = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$u]]);
 var tooltipAttachTo = /* @__PURE__ */ Symbol("tooltipAttachTo");
 var initialized = false;
 var reducedMotion = ref(false);
@@ -10992,7 +10992,7 @@ var _hoisted_5$j = {
 var _hoisted_6$f = {
   class: "tooltip__footer"
 };
-function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return openBlock(), createElementBlock(Fragment, null, [(openBlock(), createBlock(Teleport, {
     disabled: _ctx.iconTarget === null,
@@ -11025,7 +11025,7 @@ function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
     name: "close"
   })])])])) : createCommentVNode("", true)], 16)], 64);
 }
-var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$u]]);
+var FTooltip = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$t]]);
 function* contentClasses(options) {
   const {
     hasRadiobutton,
@@ -11330,7 +11330,7 @@ var _hoisted_8$7 = {
   key: 0,
   class: "label__message label__message--error"
 };
-function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = resolveComponent("f-icon");
   return openBlock(), createElementBlock("fieldset", {
     id: _ctx.id,
@@ -11370,7 +11370,7 @@ function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass(_ctx.groupContentClass)
   }, [renderSlot(_ctx.$slots, "default")], 2)], 42, _hoisted_1$I);
 }
-var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$t]]);
+var FFieldset = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$s]]);
 var anyType$1 = [String, Object, Array, Number, Date, Boolean];
 var _sfc_main$X = defineComponent({
   name: "FCheckboxField",
@@ -11580,7 +11580,7 @@ var _hoisted_4$l = {
   key: 0,
   class: "checkbox__details"
 };
-function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["checkbox", _ctx.disabledClass]),
     onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
@@ -11610,7 +11610,7 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$w)], 34);
 }
-var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$s]]);
+var FCheckboxField = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$r]]);
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
 function requireEs_iterator_some() {
@@ -11675,21 +11675,31 @@ function getNewItemIndexFromMenuAction$1(action, index, n) {
   }
   return newIndex;
 }
-async function doMenuAction$1(action, target) {
-  const itemsLength = target.popupItems.length;
-  const currentIndex = target.currentFocusedItemIndex;
-  const newFocusedItemIndex = getNewItemIndexFromMenuAction$1(action, currentIndex, itemsLength);
-  switch (action) {
-    case MenuAction.MOVE_NEXT:
-    case MenuAction.MOVE_PREV:
-    case MenuAction.MOVE_FIRST:
-    case MenuAction.MOVE_LAST:
-      await target.setFocusOnItem(newFocusedItemIndex);
-      break;
-    case MenuAction.ACTIVATE:
-      await target.activateItem(newFocusedItemIndex);
-      break;
-  }
+function useMenuAction(options) {
+  const {
+    currentFocusedItemIndex,
+    popupItems,
+    setFocusOnItem,
+    activateItem
+  } = options;
+  return {
+    async doMenuAction(action) {
+      const itemsLength = toValue(popupItems).length;
+      const currentIndex = toValue(currentFocusedItemIndex);
+      const newFocusedItemIndex = getNewItemIndexFromMenuAction$1(action, currentIndex, itemsLength);
+      switch (action) {
+        case MenuAction.MOVE_NEXT:
+        case MenuAction.MOVE_PREV:
+        case MenuAction.MOVE_FIRST:
+        case MenuAction.MOVE_LAST:
+          await setFocusOnItem(newFocusedItemIndex);
+          break;
+        case MenuAction.ACTIVATE:
+          await activateItem(newFocusedItemIndex);
+          break;
+      }
+    }
+  };
 }
 function isContextMenuTextItem(value) {
   return typeof value.key === "string";
@@ -11697,183 +11707,6 @@ function isContextMenuTextItem(value) {
 function isContextMenuSeparatorItem(value) {
   return typeof value.separator === "boolean" && value.separator;
 }
-var preventKeys$1 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter", "Escape"];
-var keyUp = ["ArrowUp", "Up"];
-var _sfc_main$W = defineComponent({
-  name: "FContextMenu",
-  components: {
-    IPopup,
-    FIcon
-  },
-  props: {
-    /**
-     * Toggle open/closed popup.
-     */
-    isOpen: {
-      type: Boolean,
-      required: true
-    },
-    /**
-     * DOM element to position popup at.
-     */
-    anchor: {
-      type: HTMLElement,
-      required: false,
-      default: void 0
-    },
-    /**
-     * The items to be displayed in the menu.
-     */
-    items: {
-      type: Array,
-      required: true
-    },
-    /**
-     * Unique accessible name for navigation landmark.
-     */
-    ariaLabel: {
-      type: String,
-      required: false,
-      default: "Kontextuell meny"
-    }
-  },
-  emits: [
-    /**
-     * Event that is dispatched after an item is selected or
-     * after pressing for example esc in the menu
-     */
-    "close",
-    /**
-     * Event that is dispatched when an item is selected.
-     * @type {string} item key
-     */
-    "select"
-  ],
-  setup() {
-    return {
-      contextmenu: ref(null)
-    };
-  },
-  data() {
-    return {
-      selectedItem: "",
-      currentFocusedItemIndex: -1
-    };
-  },
-  computed: {
-    popupItems() {
-      return this.items.filter(isContextMenuTextItem);
-    },
-    separatorPositions() {
-      const res = [];
-      if (this.items.length > 1) {
-        this.items.forEach((it, i) => {
-          if (isContextMenuSeparatorItem(it)) {
-            const pos = i - 1 - res.length;
-            if (pos >= 0 && pos < this.items.length - 1) {
-              res.push(pos);
-            }
-          }
-        });
-      }
-      return res;
-    },
-    hasIcons() {
-      return this.items.some((it) => isContextMenuTextItem(it) && it.icon);
-    }
-  },
-  watch: {
-    isOpen: {
-      immediate: true,
-      handler() {
-        if (this.isOpen) {
-          this.currentFocusedItemIndex = -1;
-          this.selectedItem = "";
-        }
-      }
-    }
-  },
-  methods: {
-    hasSeparatorAfterItemAt(index) {
-      return this.separatorPositions.includes(index);
-    },
-    closePopup() {
-      this.$emit("close");
-    },
-    onClickItem(item) {
-      if (isContextMenuTextItem(item) && item.key) {
-        this.selectedItem = item.key;
-        this.$emit("select", this.selectedItem);
-        this.closePopup();
-      }
-    },
-    tabIndex(index) {
-      return index === this.currentFocusedItemIndex ? 0 : -1;
-    },
-    onKeyUp(event) {
-      if (preventKeys$1.includes(event.key)) {
-        event.preventDefault();
-      }
-    },
-    doHandlePopupMenuTabKey(action) {
-      if (action === MenuAction.MOVE_NEXT && this.currentFocusedItemIndex + 1 === this.popupItems.length) {
-        this.closePopup();
-        return true;
-      } else if (action === MenuAction.MOVE_PREV && (this.currentFocusedItemIndex === 0 || this.currentFocusedItemIndex === -1)) {
-        this.closePopup();
-        return false;
-      }
-      return false;
-    },
-    async onKeyDown(event) {
-      if (!preventKeys$1.includes(event.key)) {
-        return;
-      }
-      if (event.key === "Escape") {
-        this.$emit("close");
-        return;
-      }
-      const action = actionFromKeyboardEvent(event);
-      if (action === null) {
-        return;
-      }
-      if (event.key === "Tab" && this.doHandlePopupMenuTabKey(action)) {
-        return;
-      }
-      if (keyUp.includes(event.key) && this.currentFocusedItemIndex === -1) {
-        this.currentFocusedItemIndex = this.popupItems.length > 0 ? this.popupItems.length : 1;
-      }
-      event.preventDefault();
-      await doMenuAction$1(action, this);
-    },
-    async setFocusOnItem(index) {
-      if (index < 0 || index >= this.popupItems.length) {
-        return;
-      }
-      this.currentFocusedItemIndex = index;
-      await this.$nextTick();
-      if (!this.isOpen) {
-        return;
-      }
-      const items = getHTMLElementsFromVueRef(this.$refs.items);
-      if (items.length > 0) {
-        const popupMenuItem = items[index];
-        focus$1(popupMenuItem, {
-          preventScroll: true
-        });
-      }
-    },
-    async activateItem(index) {
-      if (index < 0 || index >= this.popupItems.length) {
-        return;
-      }
-      if (index !== this.currentFocusedItemIndex) {
-        await this.setFocusOnItem(index);
-      }
-      this.onClickItem(this.popupItems[this.currentFocusedItemIndex]);
-    }
-  }
-});
 var _hoisted_1$G = ["aria-label"];
 var _hoisted_2$v = {
   ref: "contextmenu",
@@ -11887,47 +11720,189 @@ var _hoisted_5$h = {
   key: 0,
   class: "contextmenu__separator"
 };
-function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = resolveComponent("f-icon");
-  const _component_i_popup = resolveComponent("i-popup");
-  return openBlock(), createBlock(_component_i_popup, {
-    "is-open": _ctx.isOpen,
-    "keyboard-trap": false,
-    anchor: _ctx.anchor,
-    "set-focus": true,
-    "focus-element": () => _ctx.contextmenu,
-    inline: "never",
-    onClose: _cache[2] || (_cache[2] = ($event) => _ctx.$emit("close"))
-  }, {
-    default: withCtx(() => [createElementVNode("nav", {
-      class: "contextmenu",
-      "aria-label": _ctx.ariaLabel,
-      onKeyup: _cache[0] || (_cache[0] = (...args) => _ctx.onKeyUp && _ctx.onKeyUp(...args)),
-      onKeydown: _cache[1] || (_cache[1] = (...args) => _ctx.onKeyDown && _ctx.onKeyDown(...args))
-    }, [createElementVNode("ul", _hoisted_2$v, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.popupItems, (item, index) => {
-      return openBlock(), createElementBlock("li", {
-        key: item.key,
-        role: "menuitem",
-        onClick: ($event) => _ctx.onClickItem(item)
-      }, [createElementVNode("div", {
-        ref_for: true,
-        ref: "items",
-        tabindex: _ctx.tabIndex(index),
-        class: "contextmenu__list__item"
-      }, [_ctx.hasIcons ? (openBlock(), createBlock(_component_f_icon, {
-        key: 0,
-        class: "contextmenu__lefticon",
-        name: item.icon ? item.icon : "",
-        library: item.iconLibrary ? item.iconLibrary : "f"
-      }, null, 8, ["name", "library"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("a", {
-        ref_for: true,
-        ref: "anchors"
-      }, toDisplayString(item.label), 513)], 8, _hoisted_4$k), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$h)) : createCommentVNode("", true)], 8, _hoisted_3$o);
-    }), 128))], 512)], 40, _hoisted_1$G)]),
-    _: 1
-  }, 8, ["is-open", "anchor", "focus-element"]);
-}
-var FContextMenu = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$r]]);
+var _sfc_main$W = /* @__PURE__ */ defineComponent({
+  __name: "FContextMenu",
+  props: {
+    isOpen: {
+      type: Boolean
+    },
+    anchor: {
+      default: () => void 0
+    },
+    items: {},
+    ariaLabel: {
+      default: () => void 0
+    }
+  },
+  emits: ["close", "select"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit = __emit;
+    const $t2 = useTranslate();
+    const preventKeys2 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter", "Escape"];
+    const keyUp = ["ArrowUp", "Up"];
+    const contextmenuRef = useTemplateRef("contextmenu");
+    const itemElementsRef = useTemplateRef("items");
+    const selectedItem = ref("");
+    const currentFocusedItemIndex = ref(-1);
+    const popupItems = computed(() => __props.items.filter(isContextMenuTextItem));
+    const hasIcons = computed(() => __props.items.some((it) => isContextMenuTextItem(it) && it.icon));
+    const ariaLabel = computed(() => {
+      if (__props.ariaLabel) {
+        return __props.ariaLabel;
+      }
+      return $t2("fkui.contextmenu.aria-label", "Kontextmeny");
+    });
+    const separatorPositions = computed(() => {
+      const res = [];
+      if (__props.items.length > 1) {
+        __props.items.forEach((it, i) => {
+          if (isContextMenuSeparatorItem(it)) {
+            const pos = i - 1 - res.length;
+            if (pos >= 0 && pos < __props.items.length - 1) {
+              res.push(pos);
+            }
+          }
+        });
+      }
+      return res;
+    });
+    const {
+      doMenuAction: doMenuAction2
+    } = useMenuAction({
+      currentFocusedItemIndex,
+      popupItems,
+      setFocusOnItem,
+      activateItem
+    });
+    watch(() => __props.isOpen, (isOpen) => {
+      if (isOpen) {
+        currentFocusedItemIndex.value = -1;
+        selectedItem.value = "";
+      }
+    }, {
+      immediate: true
+    });
+    function hasSeparatorAfterItemAt(index) {
+      return separatorPositions.value.includes(index);
+    }
+    function closePopup() {
+      emit("close");
+    }
+    function onClickItem(item) {
+      if (isContextMenuTextItem(item) && item.key) {
+        selectedItem.value = item.key;
+        emit("select", selectedItem.value);
+        closePopup();
+      }
+    }
+    function tabIndex(index) {
+      return index === currentFocusedItemIndex.value ? 0 : -1;
+    }
+    function onKeyUp(event) {
+      if (preventKeys2.includes(event.key)) {
+        event.preventDefault();
+      }
+    }
+    function doHandlePopupMenuTabKey(action) {
+      if (action === MenuAction.MOVE_NEXT && currentFocusedItemIndex.value + 1 === popupItems.value.length) {
+        closePopup();
+        return true;
+      } else if (action === MenuAction.MOVE_PREV && (currentFocusedItemIndex.value === 0 || currentFocusedItemIndex.value === -1)) {
+        closePopup();
+        return false;
+      }
+      return false;
+    }
+    async function onKeyDown2(event) {
+      if (!preventKeys2.includes(event.key)) {
+        return;
+      }
+      if (event.key === "Escape") {
+        closePopup();
+        return;
+      }
+      const action = actionFromKeyboardEvent(event);
+      if (action === null) {
+        return;
+      }
+      if (event.key === "Tab" && doHandlePopupMenuTabKey(action)) {
+        return;
+      }
+      if (keyUp.includes(event.key) && currentFocusedItemIndex.value === -1) {
+        currentFocusedItemIndex.value = popupItems.value.length > 0 ? popupItems.value.length : 1;
+      }
+      event.preventDefault();
+      await doMenuAction2(action);
+    }
+    async function setFocusOnItem(index) {
+      var _itemElementsRef$valu;
+      if (index < 0 || index >= popupItems.value.length) {
+        return;
+      }
+      currentFocusedItemIndex.value = index;
+      await nextTick();
+      if (!__props.isOpen) {
+        return;
+      }
+      const items = (_itemElementsRef$valu = itemElementsRef.value) !== null && _itemElementsRef$valu !== void 0 ? _itemElementsRef$valu : [];
+      if (items.length > 0) {
+        const popupMenuItem = items[index];
+        focus$1(popupMenuItem, {
+          preventScroll: true
+        });
+      }
+    }
+    async function activateItem(index) {
+      if (index < 0 || index >= popupItems.value.length) {
+        return;
+      }
+      if (index !== currentFocusedItemIndex.value) {
+        await setFocusOnItem(index);
+      }
+      onClickItem(popupItems.value[currentFocusedItemIndex.value]);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(IPopup), {
+        "is-open": __props.isOpen,
+        "keyboard-trap": false,
+        anchor: __props.anchor,
+        "set-focus": true,
+        "focus-element": () => contextmenuRef.value,
+        inline: "never",
+        onClose: _cache[0] || (_cache[0] = ($event) => closePopup())
+      }, {
+        default: withCtx(() => [createElementVNode("nav", {
+          class: "contextmenu",
+          "aria-label": ariaLabel.value,
+          onKeyup: onKeyUp,
+          onKeydown: onKeyDown2
+        }, [createElementVNode("ul", _hoisted_2$v, [(openBlock(true), createElementBlock(Fragment, null, renderList(popupItems.value, (item, index) => {
+          return openBlock(), createElementBlock("li", {
+            key: item.key,
+            role: "menuitem",
+            onClick: ($event) => onClickItem(item)
+          }, [createElementVNode("div", {
+            ref_for: true,
+            ref: "items",
+            tabindex: tabIndex(index),
+            class: "contextmenu__list__item"
+          }, [hasIcons.value ? (openBlock(), createBlock(unref(FIcon), {
+            key: 0,
+            class: "contextmenu__lefticon",
+            name: item.icon ? item.icon : "",
+            library: item.iconLibrary ? item.iconLibrary : "f"
+          }, null, 8, ["name", "library"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("a", {
+            ref_for: true,
+            ref: "anchors"
+          }, toDisplayString(item.label), 513)], 8, _hoisted_4$k), _cache[2] || (_cache[2] = createTextVNode()), hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$h)) : createCommentVNode("", true)], 8, _hoisted_3$o);
+        }), 128))], 512)], 40, _hoisted_1$G)]),
+        _: 1
+      }, 8, ["is-open", "anchor", "focus-element"]);
+    };
+  }
+});
 function filterItem(items, target, nested) {
   const newItems = [...items];
   for (let i = 0; i < newItems.length; i++) {
@@ -21074,7 +21049,7 @@ export {
   FCheckboxField,
   _sfc_main$J as FClearingnumberTextField,
   FConfirmModal,
-  FContextMenu,
+  _sfc_main$W as FContextMenu,
   _sfc_main$T as FCrudButton,
   _sfc_main$V as FCrudDataset,
   _sfc_main$N as FCurrencyTextField,

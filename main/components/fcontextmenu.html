@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-c5a790.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-b28e36.js",
     "@fkui/date": "../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-33850c.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-f0dbd5.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-69ea66.js"
   },
   "integrity": {
     "../assets/vendor-vue-c5a790.js": "sha384-hzAVTbJS6eimYLVZ6l3GsXeX8aFTLHN01gafHrTSmMNW9MEkzxauYeGwsqN0X/uX",
     "../assets/vendor-fkui-logic-b28e36.js": "sha384-RNuO/Z6O9w5N8xFj2rFwSjmZachX8pnoA3guUqL274gQoVE8pjD1x81AD5x4QzLh",
     "../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../assets/vendor-fkui-vue-33850c.js": "sha384-W74UqddC5xKbuS0Kklu9t5ctg3S+LvDUoe685NDg7fC5vFj9bBlgYpIH3r4QYbfU",
+    "../assets/vendor-fkui-vue-f0dbd5.js": "sha384-pQwKHKU06hFGyeTAkrgHnEaFsdBjRWHNDegagaC6K/JKt+WAm0nWkl4knMXSJLaF",
     "../assets/vendor-forsakringskassan-docs-live-example-69ea66.js": "sha384-MHWfcw/TQXE+d+3GbqpdsTIsy9HuBM2Rl+ilO6K0Qwt13yuBt27lEzOH7WbJp5MQ"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-35ba82.json"
+            href="../search-data-db3d63.json"
             as="fetch"
             crossorigin
-            integrity="sha384-fFcXTV7VvM6gpnb110q5IDVWD/Yx6vYboR2lkP4hogu3lKXTIK5qZRj3c8AVmwFf"
+            integrity="sha384-WuJ2Iz4u6MCp3NywDADP/0k9gihCu55jpnkxkK3g9p5L9XNaTO2O8+oToJG1u0vA"
             id="search-data"
         />
     </head>
@@ -1095,7 +1095,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/83eed652c2cce07e3c5d4a37f6fb745440372f47/packages/vue/src/components/FContextMenu/FContextMenu.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/5d0e6145441793b6bb6b8c0624b76b8ab49c2a51/packages/vue/src/components/FContextMenu/FContextMenu.vue">
                 FContextMenu
             </a>
             
@@ -1121,6 +1121,8 @@
                                 <li><a href="#bara_text">Bara text</a></li>
                                 
                                 <li><a href="#ikoner_och_text">Ikoner och text</a></li>
+                                
+                                <li><a href="#textnycklar">Textnycklar</a></li>
                                 
                                 <li><a href="#api">API</a></li>
                                 
@@ -1411,7 +1413,30 @@ import { ContextMenuItem } from &quot;@fkui/vue&quot;;
  ];
 </code></pre>
                 </div>
-            <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+            <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att <a href="../gettingstarted/use-design-system/translate-text.html">anpassa och översätta text</a>.</p>
+
+        <dl class="docs-api docs-api--translation">
+            
+                        <dt>
+                            <code id="fcontextmenu-translation-fkui-contextmenu-aria-label"
+                                ><a class="docs-api__anchor" href="#fcontextmenu-translation-fkui-contextmenu-aria-label"
+                                    ><span class="docs-api__name"
+                                        >fkui.contextmenu.aria-label</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Skärmläsartext för <code>&lt;nav&gt;</code> elementet. Används bara när <code>ariaLabel</code>-propen inte är satt.</p>
+
+                            <p class="doc-api__item">Default: "Kontextmeny"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
         <h3 id="fcontextmenu-props">
             <a class="header-anchor" href="#fcontextmenu-props">Props</a>
         </h3>
@@ -1440,7 +1465,7 @@ import { ContextMenuItem } from &quot;@fkui/vue&quot;;
                                 ><a class="docs-api__anchor" href="#fcontextmenu-prop-anchor"
                                     ><span class="docs-api__name"
                                         >anchor</span
-                                    >: HTMLElement | undefined</a
+                                    >: HTMLElement</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -1449,7 +1474,7 @@ import { ContextMenuItem } from &quot;@fkui/vue&quot;;
                         <dd>
                             <p>DOM element to position popup at.</p>
 
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
                             
                         </dd>
                     
@@ -1458,7 +1483,7 @@ import { ContextMenuItem } from &quot;@fkui/vue&quot;;
                                 ><a class="docs-api__anchor" href="#fcontextmenu-prop-items"
                                     ><span class="docs-api__name"
                                         >items</span
-                                    >: ContextMenuItem[]</a
+                                    >: Array</a
                                 ></code
                             >
                             
@@ -1485,7 +1510,7 @@ import { ContextMenuItem } from &quot;@fkui/vue&quot;;
                         <dd>
                             <p>Unique accessible name for navigation landmark.</p>
 
-                            <p class="doc-api__item">Default: <code>&quot;Kontextuell meny&quot;</code></p>
+                            
                             
                         </dd>
                     
@@ -1560,9 +1585,9 @@ after pressing for example esc in the menu</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/83eed652c2cce07e3c5d4a37f6fb745440372f47">83eed65</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/5d0e6145441793b6bb6b8c0624b76b8ab49c2a51">5d0e614</a>)<br />
         
-        2025-12-12 08:21
+        2025-12-12 09:13
 </div>
 <div class="toolbar__item">
     <form id="version">
