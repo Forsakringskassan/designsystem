@@ -28,13 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-30ba4d.js
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-16baab.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
   FFieldset,
   FList,
-  FNumericTextField,
   FPaginateDataset,
   FPaginator,
   FSelectField,
@@ -446,14 +445,13 @@ var persons = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-30ba4d.js
-import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createBlock as _createBlock } from "vue";
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-16baab.js
+import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
   name: "PaginationExample",
   components: {
     FCheckboxField,
     FFieldset,
-    FNumericTextField,
     FSelectField,
     LiveExample
   },
@@ -476,7 +474,6 @@ var exampleComponent = defineComponent({
         FCheckboxField,
         FFieldset,
         FList,
-        FNumericTextField,
         FPaginateDataset,
         FPaginator,
         FSelectField,
@@ -514,6 +511,9 @@ var exampleComponent = defineComponent({
         /* HTML */
         this.numberOfPagesToShowAtMost ? `:number-of-pages-to-show="${this.numberOfPagesToShowAtMost.toString()}"` : ``
       );
+    },
+    numberOfRows() {
+      return persons.length;
     },
     paginator() {
       return (
@@ -562,11 +562,11 @@ var exampleComponent = defineComponent({
   }
 });
 var _hoisted_1 = ["value"];
+var _hoisted_2 = ["value"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_numeric_text_field = _resolveComponent("f-numeric-text-field");
+  const _component_f_select_field = _resolveComponent("f-select-field");
   const _component_f_checkbox_field = _resolveComponent("f-checkbox-field");
   const _component_f_fieldset = _resolveComponent("f-fieldset");
-  const _component_f_select_field = _resolveComponent("f-select-field");
   const _component_live_example = _resolveComponent("live-example");
   return _openBlock(), _createBlock(_component_live_example, {
     components: _ctx.components,
@@ -575,11 +575,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     livemethods: _ctx.livemethods
   }, {
     default: _withCtx(() => [
-      _createVNode(_component_f_numeric_text_field, {
+      _createVNode(_component_f_select_field, {
+        id: "numberOfItemsPerPage",
         modelValue: _ctx.numberOfItemsPerPage,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.numberOfItemsPerPage = $event)
       }, {
-        default: _withCtx(() => [..._cache[6] || (_cache[6] = [
+        label: _withCtx(() => [..._cache[6] || (_cache[6] = [
           _createTextVNode(
             "Antal objekt per sida",
             -1
@@ -596,6 +597,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             2
             /* CLASS */
           )
+        ]),
+        default: _withCtx(() => [
+          (_openBlock(true), _createElementBlock(
+            _Fragment,
+            null,
+            _renderList(_ctx.numberOfRows, (option) => {
+              return _openBlock(), _createElementBlock("option", {
+                key: option,
+                value: option
+              }, _toDisplayString(option), 9, _hoisted_1);
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
         ]),
         _: 1
         /* STABLE */
@@ -752,7 +767,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return _openBlock(), _createElementBlock("option", {
                 key: option,
                 value: option
-              }, _toDisplayString(option), 9, _hoisted_1);
+              }, _toDisplayString(option), 9, _hoisted_2);
             }),
             128
             /* KEYED_FRAGMENT */
@@ -769,7 +784,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-30ba4d"
+  selector: "#example-16baab"
 });
 export {
   render
