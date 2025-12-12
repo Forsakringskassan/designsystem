@@ -264,7 +264,7 @@ function isAriaSelected(level: number = 1, row: T): boolean {
 const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggleSelectableRow } = useSelectable({
     selectable,
     selectedRows,
-    rows: () => rows, // wrap in getter since destructured prop
+    rows: keyedRows,
 });
 
 const tableApi = useTabstop(tableRef, metaRows);
