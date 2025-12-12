@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-619d92.js
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-614288.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
@@ -445,7 +445,7 @@ var persons = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-619d92.js
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-614288.js
 import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
   name: "PaginationExample",
@@ -460,7 +460,7 @@ var exampleComponent = defineComponent({
       componentType: "dataTable",
       fetchDataDynamically: false,
       numberOfItemsPerPage: 10,
-      numberOfItemsPerPageOptions: [5, 6, 7, 8, 9, 10, 12, 15, 20],
+      numberOfItemsPerPageOptions: [5, 10, 15, 20],
       numberOfPagesOptions: [5, 6, 7, 8, 9],
       numberOfPagesToShowAtMost: null,
       showInteractiveListWithCheckboxes: false,
@@ -785,7 +785,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-619d92"
+  selector: "#example-614288"
 });
 export {
   render
