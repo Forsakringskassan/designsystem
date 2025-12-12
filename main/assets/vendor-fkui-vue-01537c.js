@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, unref, createCommentVNode, Fragment, createBlock, createApp, resolveComponent, withKeys, createVNode, toDisplayString, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Teleport, normalizeStyle, withDirectives, vShow, Transition, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, debounce, alertScreenReader, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -11805,16 +11805,6 @@ var _sfc_main$W = /* @__PURE__ */ defineComponent({
         event.preventDefault();
       }
     }
-    function doHandlePopupMenuTabKey(action) {
-      if (action === MenuAction.MOVE_NEXT && currentFocusedItemIndex.value + 1 === popupItems.value.length) {
-        closePopup();
-        return true;
-      } else if (action === MenuAction.MOVE_PREV && (currentFocusedItemIndex.value === 0 || currentFocusedItemIndex.value === -1)) {
-        closePopup();
-        return false;
-      }
-      return false;
-    }
     async function onKeyDown2(event) {
       if (!preventKeys2.includes(event.key)) {
         return;
@@ -11823,11 +11813,13 @@ var _sfc_main$W = /* @__PURE__ */ defineComponent({
         closePopup();
         return;
       }
-      const action = actionFromKeyboardEvent(event);
-      if (action === null) {
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closePopup();
         return;
       }
-      if (event.key === "Tab" && doHandlePopupMenuTabKey(action)) {
+      const action = actionFromKeyboardEvent(event);
+      if (action === null) {
         return;
       }
       if (keyUp.includes(event.key) && currentFocusedItemIndex.value === -1) {
