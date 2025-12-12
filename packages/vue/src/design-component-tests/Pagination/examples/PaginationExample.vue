@@ -25,6 +25,7 @@ export default defineComponent({
             componentType: "dataTable",
             fetchDataDynamically: false,
             numberOfItemsPerPage: 10,
+            numberOfItemsPerPageOptions: [5, 10, 15, 20],
             numberOfPagesOptions: [5, 6, 7, 8, 9],
             numberOfPagesToShowAtMost: null as number | null,
             showInteractiveListWithCheckboxes: false,
@@ -132,7 +133,7 @@ export default defineComponent({
             <template #description="{ descriptionClass }">
                 <span :class="descriptionClass">Maximalt antal objekt per sida</span>
             </template>
-            <option v-for="option in numberOfRows" :key="option" :value="option">
+            <option v-for="option in numberOfItemsPerPageOptions" :key="option" :value="option">
                 {{ option }}
             </option>
         </f-select-field>
