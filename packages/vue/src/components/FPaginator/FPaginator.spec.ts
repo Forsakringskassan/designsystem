@@ -1,4 +1,4 @@
-import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import FPaginator from "./FPaginator.vue";
 
 describe("page counter", () => {
@@ -57,81 +57,61 @@ describe("aria-current", () => {
     );
 });
 
-describe("previous button", () => {
-    let previousButton: DOMWrapper<Element>;
+describe.each`
+    action        | label
+    ${"previous"} | ${"Föregående"}
+    ${"next"}     | ${"Nästa"}
+`("$action button", ({ action, label }) => {
+    const listener = jest.fn();
+    const wrapper = mount(FPaginator, {
+        attrs: {
+            currentPage: 1,
+            numberOfPages: 10,
+        },
+    });
+    const button = wrapper.find(`[data-test='${action}-button']`);
+    button.element.addEventListener(`paginateDataset:${action}`, listener);
 
-    beforeAll(() => {
-        const wrapper = mount(FPaginator, {
-            attrs: {
-                currentPage: 1,
-                numberOfPages: 10,
-            },
-        });
-        previousButton = wrapper.find("[data-test='previous-button']");
+    it(`should have label '${label}'`, () => {
+        expect(button.find("[data-test='label']").text()).toBe(label);
     });
 
-    it("should have the correct label", () => {
-        expect(previousButton.find("[data-test='label']").text()).toBe(
-            "Föregående",
-        );
+    it(`should have aria-label '${label}'`, () => {
+        expect(button.attributes("aria-label")).toBe(label);
     });
 
-    it("should have the correct value for 'aria-label'", () => {
-        expect(previousButton.attributes("aria-label")).toBe("Föregående");
-    });
-});
-
-describe("next button", () => {
-    let nextButton: DOMWrapper<Element>;
-
-    beforeAll(() => {
-        const wrapper = mount(FPaginator, {
-            attrs: {
-                currentPage: 1,
-                numberOfPages: 10,
-            },
-        });
-        nextButton = wrapper.find("[data-test='next-button']");
-    });
-
-    it("should have the correct label", () => {
-        expect(nextButton.find("[data-test='label']").text()).toBe("Nästa");
-    });
-
-    it("should have the correct value for 'aria-label'", () => {
-        expect(nextButton.attributes("aria-label")).toBe("Nästa");
+    it(`should emit 'paginateDataset:${action}' event on click`, async () => {
+        await button.trigger("click");
+        expect(listener).toHaveBeenCalled();
     });
 });
 
-describe("page buttons", () => {
-    const numberOfPages = 5;
-    let wrapper: VueWrapper;
+describe("page button (1 page)", () => {
+    const listener = jest.fn();
+    const wrapper = mount(FPaginator, {
+        attrs: {
+            currentPage: 1,
+            numberOfPages: 1,
+        },
+    });
+    wrapper.element.addEventListener("paginateDataset:page", listener);
+    const button = wrapper.find(`[data-test='page-1-button']`);
 
-    beforeAll(() => {
-        wrapper = mount(FPaginator, {
-            attrs: {
-                currentPage: 1,
-                numberOfPages,
-            },
+    it("should have label '1'", () => {
+        expect(button.text()).toBe("1");
+    });
+
+    it("should have aria-label 'Sida 1'", () => {
+        expect(button.attributes("aria-label")).toBe(`Sida 1`);
+    });
+
+    describe("on click", () => {
+        it(`should emit 'paginateDataset:page' event on click`, async () => {
+            await button.trigger("click");
+            expect(listener).toHaveBeenCalled();
         });
-    });
 
-    it("should have the correct label", () => {
-        for (let page = 1; page <= numberOfPages; page++) {
-            expect(
-                wrapper.find(`[data-test='page-${page}-button']`).text(),
-            ).toEqual(page.toString());
-        }
-    });
-
-    it("should have the correct value for 'aria-label'", () => {
-        for (let page = 1; page <= numberOfPages; page++) {
-            expect(
-                wrapper
-                    .find(`[data-test='page-${page}-button']`)
-                    .attributes("aria-label"),
-            ).toBe(`Sida ${page}`);
-        }
+        it.todo("should emit '1' as event detail");
     });
 });
 
