@@ -1,0 +1,55 @@
+{
+  "terms": [
+    "FKUI Vue Labs",
+    "FTablePageObject",
+    "Tidsinmatning",
+    "XTimeTextField",
+    "XFileDragdrop",
+    "XFileDragdrop",
+    "FTable",
+    "FTable"
+  ],
+  "results": [
+    {
+      "url": "index.html",
+      "title": "FKUI Vue Labs",
+      "terms": []
+    },
+    {
+      "url": "pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": []
+    },
+    {
+      "url": "components/xtimetextfield.html",
+      "title": "Tidsinmatning",
+      "terms": [
+        "XTimeTextField"
+      ]
+    },
+    {
+      "url": "components/xfiledragdrop.html",
+      "title": "XFileDragdrop",
+      "terms": [
+        "XFileDragdrop"
+      ]
+    },
+    {
+      "url": "components/ftable.html",
+      "title": "FTable",
+      "terms": [
+        "FTable"
+      ]
+    }
+  ],
+  "mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 3,
+    "5": 3,
+    "6": 4,
+    "7": 4
+  }
+}
