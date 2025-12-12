@@ -3169,7 +3169,6 @@ var _hoisted_2$3 = {
 };
 var _hoisted_3$3 = {
   key: 1,
-  ref: "td",
   tabindex: "-1",
   class: "table-ng__cell"
 };
@@ -3182,9 +3181,9 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   setup(__props, {
     expose: __expose
   }) {
-    const buttonElement = useTemplateRef("button");
+    const buttonRef = useTemplateRef("button");
     const expose = {
-      tabstopEl: buttonElement
+      tabstopEl: buttonRef
     };
     const isOpen = ref(false);
     const actions = computed(() => {
@@ -3222,7 +3221,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     }
     __expose(expose);
     return (_ctx, _cache) => {
-      var _buttonElement$value;
+      var _buttonRef$value;
       return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$4, [createElementVNode("button", {
         ref: "button",
         class: "icon-button",
@@ -3235,10 +3234,10 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
       }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$3, toDisplayString(__props.column.value(__props.row)), 1)], 512), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref(FContextMenu), {
         "is-open": isOpen.value,
         items: menuitems.value,
-        anchor: (_buttonElement$value = buttonElement.value) !== null && _buttonElement$value !== void 0 ? _buttonElement$value : void 0,
+        anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
         onClose,
         onSelect
-      }, null, 8, ["is-open", "items", "anchor"])])) : (openBlock(), createElementBlock("td", _hoisted_3$3, null, 512));
+      }, null, 8, ["is-open", "items", "anchor"])])) : (openBlock(), createElementBlock("td", _hoisted_3$3));
     };
   }
 });
