@@ -1027,3 +1027,242 @@ describe("5 tabstop", () => {
         table.cell({ row: 2, col: 2 }).should("have.focus");
     });
 });
+
+describe("7 Bulk Operation ", () => {
+    describe("7.2 Bulk Operation Checkbox States", () => {
+        interface Row {
+            text1: string;
+            text2: string;
+        }
+
+        const rows = ref([{ text1: "A1" }, { text1: "A2" }]);
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "A",
+                key: "text1",
+            },
+        ]);
+        it.only("shows empty checkbox when no rows are selected", () => {
+            // Ensure no rows are selected
+            // Bulk checkbox should be empty
+            //no background
+            ////not.be.checked"
+            //.should('have.prop', 'indeterminate');
+            //table.selectInput(1).should("not.be.checked");
+            // .should('have.prop', 'indeterminate');
+            // table.cell({ row: 1, col: 1 }).find("button").should("have.focus");
+            // table.selectHeaderInput().should("not.have.prop", "indeterminate");
+
+            /* cy.mount(FTable<(typeof rows)[number]>, {
+                props: {
+                    rows,
+                    columns,
+                    //  expandableAttribute: "nested",
+                    selectable: "multi",
+                },
+            });
+            */
+
+            const selectedRows: Row[] = [];
+            cy.mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                    selectable: "multi",
+                    selectedRows,
+                },
+            });
+
+            table.selectHeaderInput().should("be.empty");
+            table.selectInput(1).should("be.empty");
+            table.selectInput(2).should("be.empty");
+        });
+        // it("should show background when some rows are selected", () => {
+        //     //screenshot
+        //     // Select all rows
+        //     // Bulk checkbox should be checked
+        //     // Background color should be applied
+        //     cy.mount(FTable<Row>, {
+        //         props: {
+        //             rows,
+        //             columns,
+        //             selectable: "multi",
+        //         },
+        //     });
+        // });
+
+        // it("shows indeterminate state and background when some rows are selected with click", () => {
+        //     // Select one row
+        //     // Bulk checkbox should be indeterminate
+        //     // Background color should be set
+
+        //     cy.mount(FTable<Row>, {
+        //         props: {
+        //             rows,
+        //             columns,
+        //             selectable: "multi",
+        //             selectedRows,
+        //         },
+        //     });
+
+        //     table.selectInput(1).focus().click();
+
+        //     table.selectHeaderInput().should("not.be.checked");
+        //     table.selectHeaderInput().should("have.prop", "indeterminate");
+        //     table.selectInput(1).should("be.checked");
+        //     table.selectInput(2).should("not.be.checked");
+        // });
+
+        // it("should show checked state when all rows are selected with space", () => {
+        //     cy.mount(FTable<Row>, {
+        //         props: {
+        //             rows,
+        //             columns,
+        //             selectable: "multi",
+        //             selectedRows,
+        //         },
+        //     });
+
+        //     table
+        //         .selectHeaderInput()
+        //         .focus()
+        //         .press(Cypress.Keyboard.Keys.SPACE);
+
+        //     table.selectHeaderInput().should("be.checked");
+        //     table.selectInput(1).should("be.checked");
+        //     table.selectInput(2).should("be.checked");
+        // });
+        // it("shows indeterminate state and background when some rows are selected with space", () => {
+        //     // Select one row
+        //     // Bulk checkbox should be indeterminate
+        //     // Background color should be set
+        //     //göra
+
+        //     cy.mount(FTable<(typeof rows)[number]>, {
+        //         props: {
+        //             rows,
+        //             columns,
+        //             selectable: "multi",
+        //             selectedRows,
+        //         },
+        //     });
+
+        //     table.selectInput(1).focus().press(Cypress.Keyboard.Keys.SPACE);
+
+        //     table.selectHeaderInput().should("not.be.checked");
+        //     table.selectHeaderInput().should("have.prop", "indeterminate");
+        //     table.selectInput(1).should("be.checked");
+        //     table.selectInput(2).should("not.be.checked");
+        // });
+    });
+
+    describe("7.3 Row Selection Behavior with Filtering and Sorting", () => {
+        //filtring
+        it("should resets row selections when filtering is applied", () => {
+            // Select some rows
+            // Apply a filter (example: filter by a column value)
+            // After filtering, all row checkboxes should be unchecked
+            // Bulk checkbox should be reset (not checked, not indeterminate)
+        });
+
+        //Sorting"
+        it("should retains row selections when sorting is applied", () => {
+            // Select some rows
+            // Bulk checkbox should be indeterminate before sorting
+            // Apply sorting (example: click on column header)
+            // After sorting, previously selected rows should remain selected
+            // Bulk checkbox should still reflect the correct status (indeterminate or checked)
+        });
+    });
+    describe("7.4 Bulk selection in expandable", () => {
+        //todo
+        //  const rows = [{ text: "A1" }, { text: "B1" }];
+        const rows = [
+            { text: "A1", nested: [{ text: "A2" }] },
+            { text: "B1" },
+            { text: "C1", nested: [{ text: "C2" }] },
+        ];
+
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "A",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "B",
+                key: "text",
+            },
+        ]);
+
+        it("should allow selecting all rows for bulk select for expandable table", () => {
+            // Select both top-level rows
+            // Verify that both are checked
+            // Verify that child rows cannot be selected
+            // Simulate bulk action (e.g. delete?) and verify testa att deleta
+            cy.mount(FTable<(typeof rows)[number]>, {
+                props: {
+                    rows,
+                    columns,
+                    expandableAttribute: "nested",
+                    selectable: "multi",
+                },
+            });
+
+            table.expandButton(3).click();
+            table.expandButton(1).click();
+
+            table.selectHeaderInput().focus().click();
+
+            table.selectHeaderInput().should("be.checked");
+            table.selectInput(1).should("be.checked");
+            table.cell({ row: 2, col: 2 }).should("be.empty");
+            table.selectInput(3).should("be.checked");
+            table.selectInput(4).should("be.checked");
+            table.cell({ row: 5, col: 2 }).should("be.empty");
+        });
+
+        it("should allow selecting top-level rows ", () => {
+            // Select both top-level rows
+            // Verify that both are checked
+            // Verify that child rows cannot be selected
+            // Simulate bulk action (e.g. delete?) and verify testa att deleta
+            const selectedRows = [];
+
+            cy.mount(FTable<(typeof rows)[number]>, {
+                props: {
+                    rows,
+                    columns,
+                    expandableAttribute: "nested",
+                    selectable: "multi",
+                    selectedRows,
+                },
+            });
+
+            table.expandButton(3).click();
+            table.expandButton(1).click();
+
+            table.selectInput(1).focus().click();
+
+            table.selectHeaderInput().should("not.be.checked");
+            table.selectHeaderInput().should("have.prop", "indeterminate");
+            table.selectInput(1).should("be.checked");
+            table.cell({ row: 2, col: 2 }).should("be.empty");
+            table.selectInput(3).should("not.be.checked");
+            table.selectInput(4).should("not.be.checked");
+            table.cell({ row: 5, col: 2 }).should("be.empty");
+        });
+
+        describe("7.7 Dataset change resets selection ", () => {
+            it.skip("should clear all selected rows and bulk checkbox when a row is added", () => {
+                //todo lägg till
+            });
+            it.skip("should clear all selected rows and bulk checkbox when a row is removed", () => {
+                //todo lägg till förändrar i raderna tex ändra status tex textfält markeringen ligger kvar.
+            });
+        });
+    });
+});
