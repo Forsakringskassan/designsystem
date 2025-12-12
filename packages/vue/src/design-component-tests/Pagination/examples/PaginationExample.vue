@@ -25,7 +25,7 @@ export default defineComponent({
             componentType: "dataTable",
             fetchDataDynamically: false,
             numberOfItemsPerPage: 10,
-            numberOfItemsPerPageOptions: [5, 6, 7, 8, 9, 10, 12, 15, 20],
+            numberOfItemsPerPageOptions: [5, 10, 15, 20],
             numberOfPagesOptions: [5, 6, 7, 8, 9],
             numberOfPagesToShowAtMost: null as number | null,
             showInteractiveListWithCheckboxes: false,
