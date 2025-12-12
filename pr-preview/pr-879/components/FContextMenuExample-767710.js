@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FContextMenu/examples/FContextMenuExample.vue:FContextMenuExample-c42050.js
+// virtual-entry:virtual:packages/vue/src/components/FContextMenu/examples/FContextMenuExample.vue:FContextMenuExample-767710.js
 import { defineComponent } from "vue";
 import { FContextMenu } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -68,16 +68,6 @@ var _hoisted_1 = { "data-testid": "fcontextmenu-exempel1" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_context_menu = _resolveComponent("f-context-menu");
   return _openBlock(), _createElementBlock("div", _hoisted_1, [
-    _cache[1] || (_cache[1] = _createElementVNode(
-      "button",
-      {
-        type: "button",
-        class: "button button--secondary"
-      },
-      "F\xF6re",
-      -1
-      /* CACHED */
-    )),
     _createElementVNode(
       "button",
       {
@@ -92,16 +82,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       512
       /* NEED_PATCH */
     ),
-    _cache[2] || (_cache[2] = _createElementVNode(
-      "button",
-      {
-        type: "button",
-        class: "button button--secondary"
-      },
-      "Efter",
-      -1
-      /* CACHED */
-    )),
     _createElementVNode(
       "pre",
       null,
@@ -122,7 +102,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-c42050"
+  selector: "#example-767710"
 });
 export {
   render
