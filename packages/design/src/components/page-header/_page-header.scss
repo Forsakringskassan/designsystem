@@ -8,7 +8,7 @@ $page-header-separator-width: 1px !default;
     flex-direction: row;
     width: 100%;
     color: $pageheader-color-text-inverted;
-    background-color: var(--f-background-pageheader-primary);
+    background-color: $pageheader-color-background;
     padding: size.$padding-100 0 size.$padding-100 size.$padding-100;
     align-items: center;
     overflow: hidden;
@@ -25,7 +25,7 @@ $page-header-separator-width: 1px !default;
         }
         &::after {
             content: " ";
-            background-color: var(--f-border-color-separator-pageheader-primary);
+            background-color: $pageheader-color-separator-inverted;
             height: 1.38rem;
             padding: calc($page-header-separator-width / 2);
             margin: 0 size.$padding-100 0.155rem;
