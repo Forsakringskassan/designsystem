@@ -26,12 +26,19 @@
 
 @function get-min-for($key) {
     $value: map.get(config-variables.$f-breakpoints, $key);
-    @return if($value != 0, $value, null);
+    @if $value != 0 {
+        @return $value;
+    } @else {
+        @return null;
+    }
 }
 
 @function get-max-for($key) {
     $breakpoint-keys: map.keys(config-variables.$f-breakpoints);
     $index: list.index($breakpoint-keys, $key);
-    $next: if($index < list.length($breakpoint-keys), list.nth($breakpoint-keys, $index + 1), null);
-    @return if($next, get-min-for($next) - 0.02px, null);
+    @if $index < list.length($breakpoint-keys) {
+        @return get-min-for(list.nth($breakpoint-keys, $index + 1)) - 0.02px;
+    } @else {
+        @return null;
+    }
 }
