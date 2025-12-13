@@ -33,7 +33,7 @@
     "test": "node --test"
   },
   "devDependencies": {
-    "sass": "1.95.0"
+    "sass": "1.95.1"
   },
   "engines": {
     "node": ">= 20",
