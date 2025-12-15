@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Modal dialogruta - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-5cdc1f.css"
+            href="../../assets/docs-0731ce.css"
             crossorigin
-            integrity="sha384-aLqq+86MxJLP7Xn+MwIFycLddycbD3Z6YoIvAmfpvBvXTLxm5O6K+NVdNzh6V0Nl"
+            integrity="sha384-nNQQ4sj4RIYnSVVwMrmG2i9exhKy3awJzgcwHT1Qk0p891rqWo/0EmMrrt0c+qPg"
             
         />
         <link
@@ -25,14 +25,14 @@
     "vue": "../../assets/vendor-vue-c5a790.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-b28e36.js",
     "@fkui/date": "../../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-e5266d.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-1ac363.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-69ea66.js"
   },
   "integrity": {
     "../../assets/vendor-vue-c5a790.js": "sha384-hzAVTbJS6eimYLVZ6l3GsXeX8aFTLHN01gafHrTSmMNW9MEkzxauYeGwsqN0X/uX",
     "../../assets/vendor-fkui-logic-b28e36.js": "sha384-RNuO/Z6O9w5N8xFj2rFwSjmZachX8pnoA3guUqL274gQoVE8pjD1x81AD5x4QzLh",
     "../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../../assets/vendor-fkui-vue-e5266d.js": "sha384-pepiO8Q7yLRN8/9pEbhrfaWbdVPxOMjEOF+0pWkx28y2hAYmOSVD2FmdxoukQOWz",
+    "../../assets/vendor-fkui-vue-1ac363.js": "sha384-TvXKHVe/WvT0Ui67RndebNho2ajQZJxao8lhB4Aufj0Rh1cvEv+dNb3EQMdplrin",
     "../../assets/vendor-forsakringskassan-docs-live-example-69ea66.js": "sha384-MHWfcw/TQXE+d+3GbqpdsTIsy9HuBM2Rl+ilO6K0Qwt13yuBt27lEzOH7WbJp5MQ"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-ac5f7b.json"
+            href="../../search-data-3d09de.json"
             as="fetch"
             crossorigin
-            integrity="sha384-fgCkBPrtey2eHtPd+sbRgJWtus8C++iN8ouI0SZ26pGqZIhmTI+cRLWCioEkdVqk"
+            integrity="sha384-FGP50dHRBsharKPslAM1J6cy184okCTMdMZctjyonAPK6shSFRTcI1gzU4wdX5gS"
             id="search-data"
         />
     </head>
@@ -1095,7 +1095,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/aced25cc44dd1403019e9a1c905205f7c6d68367/packages/vue/src/components/FModal/FModal.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/97ae10a58a167091d6f111c249b92524f75e3b1b/packages/vue/src/components/FModal/FModal.vue">
                 FModal
             </a>
             
@@ -1267,11 +1267,28 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
 <span class="hljs-addition">+&lt;f-modal size=&quot;small&quot;&gt;</span>
 </code></pre>
                 </div>
+            <p class="docs-paragraph">Den som skapar egna modaler och vill återanvända <code>size</code>-propen kan importera <code>FModalSize</code> (typ) eller <code>modalSizes</code> (array):</p>
+
+                <div
+                    id="example-7f8ec6"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-keyword">type</span> <span class="hljs-title class_">FModalSize</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+defineProps&lt;{
+    <span class="hljs-attr">size</span>: <span class="hljs-title class_">FModalSize</span>;
+}&gt;();
+</code></pre>
+                </div>
             <p class="docs-paragraph">För mobil finns det en <code>fullscreen</code>-prop för att säkerställa att modal täcker hela skärmen och är utan ram.</p>
 <p class="docs-paragraph">Den här <code>fullscreen</code>-propen påverkar inte modalen i desktop-läge.</p>
 
                 <div
-                    id="example-1332ef"
+                    id="example-83b024"
                     class="code-preview code-preview--default"
                     
                     
@@ -1285,7 +1302,7 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
             <h3 id="anpassa_storlek"><a class="header-anchor" href="#anpassa_storlek">Anpassa storlek</a></h3><p class="docs-paragraph">Implementera en CSS-klass enligt följande:</p>
 
                 <div
-                    id="example-c4f75e"
+                    id="example-7554b7"
                     class="code-preview code-preview--default"
                     
                     
@@ -1300,7 +1317,7 @@ Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du a
             <p class="docs-paragraph">Använd inte <code>size</code>-prop utan lägg istället till din klass direkt enligt <code>class=&quot;..&quot;</code>:</p>
 
                 <div
-                    id="example-563c65"
+                    id="example-bbfc12"
                     class="code-preview code-preview--default"
                     
                     
@@ -1426,7 +1443,7 @@ Use this to toggle if the modal should be visible or not.</p>
                                 ><a class="docs-api__anchor" href="#fmodal-prop-size"
                                     ><span class="docs-api__name"
                                         >size</span
-                                    >: (typeof sizes)[number]</a
+                                    >: FModalSize | &quot;fullscreen&quot; | &quot;&quot;</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -1578,9 +1595,9 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/semantic_tokens_skiplink (<a href="https://github.com/Forsakringskassan/designsystem/commits/aced25cc44dd1403019e9a1c905205f7c6d68367">aced25c</a>)<br />
+<div class="footer__right"><div class="version">feature/semantic_tokens_skiplink (<a href="https://github.com/Forsakringskassan/designsystem/commits/97ae10a58a167091d6f111c249b92524f75e3b1b">97ae10a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/882">PR 882</a><br />
-        2025-12-11 14:08
+        2025-12-15 10:16
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1698,10 +1715,10 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
             integrity="sha384-8gOycNLyxeV9Th4G9xptjnuSdWDPn2HgT3lhA4cw9cU4wqSUSyw+K0kDwx54rOuB"
             
         ></script><script
-            src="../../assets/main-0ba438.js"
+            src="../../assets/main-f8637e.js"
             type="module"
             crossorigin
-            integrity="sha384-8r8jSmyRu1z9lhT1EWrau4+TWbD9mOtAUXKbO6pZ2h/udXdDN2AXYSonpThlDnko"
+            integrity="sha384-jzo/moGACvKxkccaNdVeDo4wKxEZb03EvtzuHt5dC8OWbc+DOsirYwhdTHC/7krD"
             
         ></script>
     </body>
