@@ -1,4 +1,4 @@
-@use "pkg:@fkui/theme-default";
+@use "pkg:@fkui/theme-default" as theme;
 @use "@fkui/theme-default/src/palette-variables" as palette;
 @use "@fkui/design/src/core/config-variables" with (
     $asset-path: ".",
@@ -8,6 +8,7 @@
 @use "@fkui/design" as fkui;
 @use "@forsakringskassan/docs-generator/style";
 @use "@forsakringskassan/docs-live-example";
+@use "@forsakringskassan/docs-generator/theme/fkui" as theme-fkui;
 
 $fk-logo-small: "fk-logo-primary-small.svg";
 $fk-logo-large: "fk-logo-primary-large.svg";
@@ -22,6 +23,18 @@ $fk-logo-large: "fk-logo-primary-large.svg";
         linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
 
     color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        @include theme.light;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include theme.dark;
+    }
 }
 
 .sandbox-link {
