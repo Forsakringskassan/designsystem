@@ -2,7 +2,7 @@
  * The sizes allowed by the `FModal` `size` prop.
  *
  * @public
- * @since %version%
+ * @since v6.31.0
  */
 export const modalSizes = [
     "small",
@@ -21,7 +21,7 @@ export const modalSizes = [
  * The sizes allowed by the `FModal` `size` prop.
  *
  * @public
- * @since %version%
+ * @since v6.31.0
  */
 export type FModalSize = Exclude<
     (typeof modalSizes)[number],

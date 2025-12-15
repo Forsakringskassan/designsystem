@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 6.31.0 (2025-12-15)
+
+### Features
+
+* **@fkui/design, @fkui/icon-lib-default, @fkui/theme-default, @fkui/vue:** add semantic tokens to anchor (refs SFKUI-7312) 5eddf3e
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** update Page Header with semantic color tokens (refs SFKUI-7535) 61834ce
+* **@fkui/design, @fkui/theme-default:** update skiplink with semantic color tokens (refs SFKUI-7541) d9831ae
+* **@fkui/vue:** `FContextMenu` no longer handles tab for interelement navigation (refs SFKUI-6500) 3996515
+* **deps:** update dependency yargs to v18 d94098d
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** set `FFieldset` label margin-bottom (refs SFKUI-7411) b297a95
+* **@fkui/design:** always use full width for content in `FWizardStep` (fixes SFKUI-7532) 991c652
+* **@fkui/design:** non-semantic colors in `_paginator.scss` (refs SFKUI-6500) 01478cc
+* **@fkui/design:** remove FBadge dark mode selector (refs SB-4982) a01535d
+* **@fkui/vue:** add translation support for `FContextMenu` (refs SFKUI-6500) 5d0e614
+* **@fkui/vue:** avoid combobox errormessage flickering (fixes SFKUI-7539) 6e72ce1
+* **@fkui/vue:** export `FModalSize` type for consumers creating custom modals (refs SFKUI-6500) 1d3ad0f
+* **deps:** update dependency i18next to v25.7.1 deaf19c
+* **deps:** update dependency i18next to v25.7.2 d07377f
+* **deps:** update dependency sass to v1.95.0 37ddae4
+* **deps:** update dependency sass to v1.95.1 4c504d5
+* **deps:** update dependency sass to v1.96.0 7f35818
+* **deps:** update dependency vue-router to v4.6.4 9f883f9
+
 ## 6.30.0 (2025-12-05)
 
 ### Features
