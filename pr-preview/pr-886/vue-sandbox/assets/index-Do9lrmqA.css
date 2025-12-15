@@ -5543,6 +5543,10 @@ input[type=search]:focus,
   text-align: left;
   padding: calc(0.25rem * var(--f-density-factor));
 }
+.table-ng__column--shrink {
+  width: 1px;
+  white-space: nowrap;
+}
 .table-ng__column__sort-icon {
   color: var(--fkds-color-text-primary);
   height: var(--f-icon-size-x-small);
@@ -5964,6 +5968,9 @@ input[type=search]:focus,
   border: 2px solid var(--fkds-color-border-strong);
   background-color: var(--fkds-color-background-primary);
   color: var(--fkds-color-text-primary);
+}
+.wizard-step--pending .wizard-step__line-down {
+  display: none;
 }
 @media (forced-colors: active) {
   .wizard-step .icon.f-icon-success {

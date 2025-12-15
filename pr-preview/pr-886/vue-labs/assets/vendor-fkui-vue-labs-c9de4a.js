@@ -1,5 +1,5 @@
 // dist/esm/index.esm.js
-import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, normalizeClass, ref, inject, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective } from "vue";
+import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, normalizeClass, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, ref, inject, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
 import { getInternalKey, FIcon, IFlex, IFlexItem, useTranslate, IComboboxDropdown, useSlotUtils, setInternalKeys, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 var es_iterator_constructor = {};
@@ -2515,6 +2515,10 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
   }) {
     const emit = __emit;
     const thElement = useTemplateRef("th");
+    const columnClasses = computed(() => {
+      const size = __props.column.size.value === "shrink" ? "table-ng__column--shrink" : "table-ng__column--grow";
+      return ["table-ng__column", size];
+    });
     const sortIconClass = computed(() => {
       return {
         "table-ng__column__sort-icon": true,
@@ -2559,7 +2563,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("th", {
         ref: "th",
-        class: "table-ng__column",
+        class: normalizeClass(columnClasses.value),
         tabindex: "-1",
         onKeydown: onKeydownCell,
         onClick: withModifiers(onClickCell, ["stop"])
@@ -2585,7 +2589,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$a, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 544);
+      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_1$a, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 34);
     };
   }
 });
@@ -2757,6 +2761,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       header: ref("selectable"),
       description: ref(null),
       sortable: null,
+      size: ref(null),
       component: _sfc_main$a,
       label() {
         return $t("fkui.table.selectable.checkbox", "V\xE4lj rad");
@@ -2777,6 +2782,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       header: ref("V\xE4lj en rad"),
       description: ref(null),
       sortable: null,
+      size: ref(null),
       component: _sfc_main$9,
       label() {
         return $t("fkui.table.selectable.radio", "V\xE4lj rad");
@@ -3676,12 +3682,14 @@ function defaultTnumValue(type) {
 function normalizeTableColumn(column) {
   var _column$key, _column$key2, _column$key5, _column$key6, _column$icon, _column$key7, _column$key8, _column$key9;
   const description = typeof column.description !== "undefined" ? toRef(column.description) : ref("");
+  const size = typeof column.size !== "undefined" ? toRef(column.size) : ref("grow");
   if ("render" in column) {
     return {
       type: void 0,
       id: /* @__PURE__ */ Symbol(),
       header: toRef(column.header),
       description,
+      size,
       render: column.render,
       sortable: null
     };
@@ -3693,6 +3701,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         label: getLabelFn(column.label),
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
@@ -3709,6 +3718,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         label: getLabelFn(column.label),
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
@@ -3729,6 +3739,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         label: getLabelFn(column.label),
         decimals,
         tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
@@ -3764,6 +3775,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         tnum: (_column$tnum2 = column.tnum) !== null && _column$tnum2 !== void 0 ? _column$tnum2 : defaultTnumValue(type),
         align: (_column$align2 = column.align) !== null && _column$align2 !== void 0 ? _column$align2 : "left",
         label: getLabelFn(column.label),
@@ -3784,6 +3796,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         value: getValueFn(column.value, column.key, String, ""),
         sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
         component: _sfc_main$5
@@ -3794,6 +3807,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         value: column.value,
         href: column.href,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
@@ -3809,6 +3823,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         value: column.value,
         onClick: column.onClick,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
@@ -3825,6 +3840,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         label: getLabelFn(column.label),
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
@@ -3842,6 +3858,7 @@ function normalizeTableColumn(column) {
         id: /* @__PURE__ */ Symbol(),
         header: toRef(column.header),
         description,
+        size,
         label: () => "",
         tnum: false,
         align: "left",
@@ -4346,7 +4363,6 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
           "sort-enabled": isSortEnabled(column),
           "sort-order": getSortOrder(column),
           scope: "col",
-          class: "table-ng__column",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
       }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_4$1, [createElementVNode("td", {

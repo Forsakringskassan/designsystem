@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-a34ecd.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-b7b14c.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
@@ -48,6 +48,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         type: "checkbox",
         header: "Kryssruta",
         key: "aktiv",
+        size: "shrink",
         label: (row) => `V\xE4lj rad ${row.id}`,
         editable: true
       },
@@ -81,6 +82,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         type: "button",
         header: "Knapp",
         icon: "trashcan",
+        size: "shrink",
         value(row) {
           return `Ta bort ${row.id}`;
         },
@@ -306,7 +308,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a34ecd"
+  selector: "#example-b7b14c"
 });
 export {
   render
