@@ -21371,11 +21371,11 @@ function isSameRouteRecord(a, b) {
 }
 function isSameRouteLocationParams(a, b) {
   if (Object.keys(a).length !== Object.keys(b).length) return false;
-  for (const key in a) if (!isSameRouteLocationParamsValue(a[key], b[key])) return false;
+  for (var key in a) if (!isSameRouteLocationParamsValue(a[key], b[key])) return false;
   return true;
 }
 function isSameRouteLocationParamsValue(a, b) {
-  return isArray(a) ? isEquivalentArray(a, b) : isArray(b) ? isEquivalentArray(b, a) : a === b;
+  return isArray(a) ? isEquivalentArray(a, b) : isArray(b) ? isEquivalentArray(b, a) : a?.valueOf() === b?.valueOf();
 }
 function isEquivalentArray(a, b) {
   return isArray(b) ? a.length === b.length && a.every((value, i) => value === b[i]) : a.length === 1 && a[0] === b;
@@ -22379,7 +22379,7 @@ function includesParams(outer, inner) {
     const outerValue = outer[key];
     if (typeof innerValue === "string") {
       if (innerValue !== outerValue) return false;
-    } else if (!isArray(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value !== outerValue[i])) return false;
+    } else if (!isArray(outerValue) || outerValue.length !== innerValue.length || innerValue.some((value, i) => value.valueOf() !== outerValue[i].valueOf())) return false;
   }
   return true;
 }
