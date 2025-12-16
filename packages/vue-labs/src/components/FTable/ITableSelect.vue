@@ -230,7 +230,7 @@ function cancel(): void {
             role="combobox"
             tabindex="-1"
             aria-expanded
-            :aria-controls="dropdownId"
+            :aria-controls="dropdownIsOpen ? dropdownId : undefined"
             aria-autocomplete="list"
             class="table-ng__editable"
             :aria-label
@@ -244,7 +244,7 @@ function cancel(): void {
 
         <i-combobox-dropdown
             v-show="editing"
-            id="dropdownId"
+            :id="dropdownId"
             :is-open="dropdownIsOpen"
             :options="column.options"
             :active-option
