@@ -231,7 +231,7 @@ function cancel(): void {
             ref="edit"
             role="combobox"
             tabindex="-1"
-            aria-expanded
+            :aria-expanded="dropdownIsOpen"
             :aria-controls="dropdownIsOpen ? dropdownId : undefined"
             :aria-activedescendant="dropdownIsOpen ? activeOptionId : undefined"
             aria-autocomplete="list"
