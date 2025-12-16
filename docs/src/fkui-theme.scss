@@ -39,8 +39,8 @@ $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-larg
 
     $solid-color: linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
 
-    --f-logo-image-small: url("#{$fk-logo-small-url}"), $solid-color;
-    --f-logo-image-large: url("#{$fk-logo-large-url}"), $solid-color;
+    --f-logo-image-small: url("#{$fk-logo-small-url}"), #{$solid-color};
+    --f-logo-image-large: url("#{$fk-logo-large-url}"), #{$solid-color};
 
     font-family: var(--f-font-family);
 }
