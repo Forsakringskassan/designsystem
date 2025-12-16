@@ -229,7 +229,7 @@ function cancel(): void {
             ref="edit"
             role="combobox"
             tabindex="-1"
-            aria-expanded
+            :aria-expanded="dropdownIsOpen"
             :aria-controls="dropdownIsOpen ? dropdownId : undefined"
             aria-autocomplete="list"
             class="table-ng__editable"
