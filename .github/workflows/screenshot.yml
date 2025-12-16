@@ -1,0 +1,50 @@
+name: Screenshot check
+
+on:
+    workflow_dispatch:
+    pull_request:
+    schedule:
+        - cron: "0 0 * * *"
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    screenshots:
+        name: Cypress screenshots check
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build (minimal)
+              run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/cypress-split build
+            - name: Cypress Component Testing
+              run: unset CI && npm run cypress run -- --env type=base --component
+            - name: Check for changes
+              id: changes
+              run: |
+                  git status
+                  if git status --porcelain | grep .; then
+                    echo "changed=true" >> $GITHUB_OUTPUT
+                  else
+                    echo "changed=false" >> $GITHUB_OUTPUT
+                  fi
+            - name: Create Pull Request
+              if: steps.changes.outputs.changed == 'true'
+              uses: peter-evans/create-pull-request@v8
+              with:
+                  commit-message: "test: update screenshots (refs SFKUI-6500)"
+                  branch: "screenshots-${{ github.head_ref || github.ref_name }}"
+                  title: "Update screenshots for branch `${{ github.head_ref || github.ref_name }}`"
+                  body: "Automatiskt uppdaterade screenshots"
+                  labels: screenshots
+                  base: "${{ github.head_ref || github.ref_name }}"
