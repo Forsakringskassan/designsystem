@@ -47,7 +47,7 @@ jobs:
               uses: peter-evans/create-pull-request@v8
               with:
                   commit-message: "test: update screenshots (refs SFKUI-6500)"
-                  branch: "update-screenshots-${{ github.ref_name }}"
-                  title: "Update screenshots for ${{ github.ref_name }}"
+                  branch: "update-screenshots-${{ github.head_ref || github.ref_name }}"
+                  title: "Update screenshots for ${{ github.head_ref || github.ref_name }}"
                   body: "Automatiskt uppdaterade screenshots"
                   labels: screenshots
