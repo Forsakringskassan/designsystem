@@ -3,6 +3,63 @@ import { flushPromises, mount } from "@vue/test-utils";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
 
+const expandableAttribute = "nested";
+
+describe("1.4 Rowheader", () => {
+    it("should set rowheader", () => {
+        const rows = [{ text: "Foo" }, { text: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "rowheader",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+        const rowheaders = wrapper.findAll("tbody th");
+        expect(rowheaders[0].text()).toBe("Foo");
+        expect(rowheaders[1].text()).toBe("Bar");
+    });
+
+    it("should set rowheader on expandable rows", async () => {
+        const rows = [
+            { text: "A", nested: [{ text: "A1" }, { text: "A2" }] },
+            { text: "B", nested: [{ text: "B1" }, { text: "B2" }] },
+        ];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "rowheader",
+                header: "A",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+
+        const rowheaders = wrapper.findAll("tbody th");
+        expect(rowheaders[0].text()).toBe("A");
+        expect(rowheaders[1].text()).toBe("A1");
+        expect(rowheaders[2].text()).toBe("A2");
+        expect(rowheaders[3].text()).toBe("B");
+        expect(rowheaders[4].text()).toBe("B1");
+        expect(rowheaders[5].text()).toBe("B2");
+    });
+});
+
 describe("1.6 column size", () => {
     const rows: never[] = [];
 
@@ -78,6 +135,109 @@ describe("1.6 column size", () => {
     });
 });
 
+describe("1.8 when table is empty", () => {
+    const rows: never[] = [];
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "text",
+            header: "A",
+        },
+        {
+            type: "text",
+            header: "B",
+        },
+        {
+            type: "text",
+            header: "C",
+        },
+    ]);
+
+    it("should have a single empty row with default text", () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+        const bodyRows = wrapper.findAll("tbody tr");
+        expect(bodyRows).toHaveLength(1);
+
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.text()).toBe("Tabellen är tom");
+    });
+
+    it("should be able to change text of empty row", () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+            slots: { empty: "Foo" },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.text()).toBe("Foo");
+    });
+
+    it("should span all columns", () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("3");
+    });
+
+    it("should span all columns when expandable", () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute,
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("4");
+    });
+
+    it("should span all columns when selectable", () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                selectable: "multi",
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("4");
+    });
+
+    it("should span all columns when selectable and expandable", () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute,
+                selectable: "multi",
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("5");
+    });
+
+    it("should span one column when table has no columns", () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns: [],
+            },
+        });
+        const emptyCell = wrapper.get("tbody td");
+        expect(emptyCell.attributes("colspan")).toBe("1");
+    });
+});
+
 describe("1.12 aria-rowcount", () => {
     it("should include body rows and header", () => {
         const rows = [{ text: "Foo" }, { text: "Bar" }];
@@ -136,7 +296,7 @@ describe("1.12 aria-rowcount", () => {
             props: {
                 rows,
                 columns,
-                expandableAttribute: "nested",
+                expandableAttribute,
             },
         });
         const table = wrapper.get("table");
@@ -200,7 +360,7 @@ describe("1.12 aria-rowindex", () => {
             props: {
                 rows,
                 columns,
-                expandableAttribute: "nested",
+                expandableAttribute,
             },
         });
 
@@ -237,6 +397,162 @@ describe("1.12 aria-rowindex", () => {
         });
         const footerRow = wrapper.get("tfoot tr");
         expect(footerRow.attributes("aria-rowindex")).toBe("4");
+    });
+});
+
+describe("6 Expandable table", () => {
+    const rows = [
+        { text: "A", nested: [{ text: "A1" }, { text: "A2" }] },
+        { text: "B", nested: [{ text: "B1" }, { text: "B2" }] },
+    ];
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "text",
+            header: "Header",
+            key: "text",
+        },
+    ]);
+
+    it("6.1 should expand row when clicking expand cell", async () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const withoutExpandedRows = wrapper.findAll("tbody tr");
+        expect(withoutExpandedRows).toHaveLength(2);
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        const withExpandedRows = wrapper.findAll("tbody tr");
+        expect(withExpandedRows).toHaveLength(6);
+
+        const textCells = wrapper.findAll("tbody td:nth-child(2)");
+        expect(textCells[0].text()).toBe("A");
+        expect(textCells[1].text()).toBe("A1");
+        expect(textCells[2].text()).toBe("A2");
+        expect(textCells[3].text()).toBe("B");
+        expect(textCells[4].text()).toBe("B1");
+        expect(textCells[5].text()).toBe("B2");
+    });
+
+    it("6.3 should collapse expanded row when pressing click on expand button", async () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        const withExpandedRows = wrapper.findAll("tbody tr");
+        expect(withExpandedRows).toHaveLength(6);
+
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        const withoutExpandedRows = wrapper.findAll("tbody tr");
+        expect(withoutExpandedRows).toHaveLength(2);
+
+        const textCells = wrapper.findAll("tbody td:nth-child(2)");
+        expect(textCells[0].text()).toBe("A");
+        expect(textCells[1].text()).toBe("B");
+    });
+
+    it("6.4 should set correct aria-expanded on expandable rows", async () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+
+        expect(expandButtons[0].attributes("aria-expanded")).toBe("false");
+        expect(expandButtons[1].attributes("aria-expanded")).toBe("false");
+
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        expect(expandButtons[0].attributes("aria-expanded")).toBe("true");
+        expect(expandButtons[1].attributes("aria-expanded")).toBe("true");
+
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+        expect(expandButtons[0].attributes("aria-expanded")).toBe("false");
+        expect(expandButtons[1].attributes("aria-expanded")).toBe("false");
+    });
+
+    it("6.4 should set correct aria-level on rows", async () => {
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+                expandableAttribute,
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+
+        const bodyRows = wrapper.findAll("tbody tr");
+        expect(bodyRows[0].attributes("aria-level")).toBe("1");
+        expect(bodyRows[1].attributes("aria-level")).toBe("2");
+        expect(bodyRows[2].attributes("aria-level")).toBe("2");
+        expect(bodyRows[3].attributes("aria-level")).toBe("1");
+        expect(bodyRows[4].attributes("aria-level")).toBe("2");
+        expect(bodyRows[5].attributes("aria-level")).toBe("2");
+    });
+
+    it("should render custom expanded row with colspan spanning all columns", async () => {
+        const customColumns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Header 1",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "Header 2",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "Header 3",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns: customColumns,
+                expandableAttribute,
+            },
+            slots: {
+                expandable: "Lorem ipsum",
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+
+        const customExpandedCell = wrapper.findAll(
+            'tbody tr[aria-level="2"] td:nth-child(2)',
+        );
+
+        expect(customExpandedCell[0].attributes("colspan")).toBe("3");
+        expect(customExpandedCell[1].attributes("colspan")).toBe("3");
+        expect(customExpandedCell[2].attributes("colspan")).toBe("3");
+        expect(customExpandedCell[3].attributes("colspan")).toBe("3");
     });
 });
 
@@ -316,7 +632,7 @@ describe("footer", () => {
                 props: {
                     rows,
                     columns,
-                    expandableAttribute: "nested",
+                    expandableAttribute,
                 },
                 slots: {
                     footer: "Footer",
@@ -331,7 +647,7 @@ describe("footer", () => {
                 props: {
                     rows,
                     columns,
-                    expandableAttribute: "nested",
+                    expandableAttribute,
                     selectable: "multi",
                 },
                 slots: {
