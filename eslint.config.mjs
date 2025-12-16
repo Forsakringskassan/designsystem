@@ -119,6 +119,15 @@ export default [
     },
 
     {
+        name: "local/selectors",
+        files: ["**/*.selectors.ts"],
+        rules: {
+            /* we explicitly want to use implicit typing for the selector objects */
+            "@typescript-eslint/explicit-function-return-type": "off",
+        },
+    },
+
+    {
         /* @todo technical debt */
         name: "local/technical-debt",
         rules: {

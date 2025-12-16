@@ -11,8 +11,19 @@ patterns=(
 	'**/*.vue'
 )
 
+exempt=(
+	# this is an example/skeleton where we want the placeholder intact
+	"packages/vue/src/selectors/XExample.selectors.ts"
+)
+
 for file in $(git ls-files "${patterns[@]}"); do
+	# ignore anything in these folders
 	if [[ "${file}" == scripts/* || "${file}" == etc/* ]]; then
+		continue
+	fi
+
+	# ignore files in the exempt list
+	if [[ " ${exempt[*]} " =~ [[:space:]]${file}[[:space:]] ]]; then
 		continue
 	fi
 
