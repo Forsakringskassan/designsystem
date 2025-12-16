@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { type Ref, computed, nextTick, ref, useTemplateRef, watchEffect } from "vue";
+import { type Ref, computed, nextTick, ref, useTemplateRef } from "vue";
 import { ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { FIcon, IComboboxDropdown } from "@fkui/vue";
 import { useStartStopEdit } from "./start-stop-edit";
@@ -83,22 +83,6 @@ const dropdownId = ElementIdService.generateElementId();
 const dropdownIsOpen = ref(false);
 const activeOptionId = ElementIdService.generateElementId();
 const activeOption: Ref<string | null> = ref(null);
-
-// activeOption trigger: sets input aria-activedescendant
-/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
-watchEffect(async () => {
-    if (!editRef.value) {
-        return;
-    }
-
-    if (activeOption.value) {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        editRef.value.setAttribute("aria-activedescendant", activeOptionId);
-    } else {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        editRef.value.removeAttribute("aria-activedescendant");
-    }
-});
 
 async function openSelected(fallback: null | "first" | "last" = null): Promise<void> {
     dropdownIsOpen.value = true;
@@ -248,7 +232,8 @@ function cancel(): void {
             role="combobox"
             tabindex="-1"
             aria-expanded
-            :aria-controls="dropdownId"
+            :aria-controls="dropdownIsOpen ? dropdownId : undefined"
+            :aria-activedescendant="dropdownIsOpen ? activeOptionId : undefined"
             aria-autocomplete="list"
             class="table-ng__editable"
             :aria-label
@@ -262,7 +247,7 @@ function cancel(): void {
 
         <i-combobox-dropdown
             v-show="editing"
-            id="dropdownId"
+            :id="dropdownId"
             :is-open="dropdownIsOpen"
             :options="column.options"
             :active-option
