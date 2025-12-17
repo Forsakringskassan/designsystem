@@ -50,7 +50,7 @@ jobs:
                   browser: chrome
                   wait-on: "http://127.0.0.1:8080"
                   quiet: true
-            - uses: actions/upload-artifact@v5
+            - uses: actions/upload-artifact@v6
               if: always()
               with:
                   name: cypress-e2e-screenshots
@@ -86,7 +86,7 @@ jobs:
                   component: true
                   install: false
                   quiet: true
-            - uses: actions/upload-artifact@v5
+            - uses: actions/upload-artifact@v6
               if: always()
               with:
                   name: cypress-screenshots
