@@ -543,6 +543,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "text:bankAccountNumber":
         case "text:bankgiro":
         case "text:clearingNumber":
+        case "text:date":
         case "text:email":
         case "text:organisationsnummer":
         case "text:personnummer":
