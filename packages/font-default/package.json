@@ -1,6 +1,6 @@
 {
   "name": "@fkui/font-default",
-  "version": "6.30.0",
+  "version": "6.31.0",
   "description": "Försäkringskassan standardfont",
   "keywords": [
     "fkui",
@@ -48,7 +48,7 @@
     "inter-ui": "4.1.1"
   },
   "devDependencies": {
-    "sass": "1.94.2"
+    "sass": "1.96.0"
   },
   "engines": {
     "node": ">= 20",

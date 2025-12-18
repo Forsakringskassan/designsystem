@@ -6,7 +6,7 @@ import { findElementFromVueRef, getHTMLElementFromVueRef, hasSlot } from "../../
 import { FIcon } from "../FIcon";
 import { type FModalData } from "./fmodal-data";
 import { focusElement } from "./focus-element";
-import { type sizes, sizeClass } from "./sizes";
+import { type FModalSize, sizeClass } from "./sizes";
 
 /**
  * Level: Ready
@@ -63,7 +63,7 @@ export default defineComponent({
          * The size of modal in desktop mode.
          */
         size: {
-            type: String as PropType<(typeof sizes)[number]>,
+            type: String as PropType<FModalSize | "fullscreen" | "">,
             default: "",
         },
         /**

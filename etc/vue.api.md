@@ -570,6 +570,9 @@ export interface FModalData {
     savedScroll: number | null;
 }
 
+// @public
+export type FModalSize = Exclude<(typeof modalSizes)[number], "" | "fullscreen">;
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_36" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -1179,6 +1182,9 @@ export interface ModalResult<T = void> {
     data: T;
     reason: ModalReason | string;
 }
+
+// @public
+export const modalSizes: readonly ["small", "medium", "large", "fullwidth", "", "fullscreen"];
 
 // @public
 export function mountComponent(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: Record<string, unknown> & MountOptions): App<Element>;

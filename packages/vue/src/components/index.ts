@@ -69,10 +69,12 @@ export {
     type FModalButton,
     type FModalButtonDescriptor,
     type FModalData,
+    type FModalSize,
     FConfirmModal,
     FFormModal,
     FFormModalAction,
     FModal,
+    modalSizes,
 } from "./FModal";
 export {
     type FNavigationMenuData,

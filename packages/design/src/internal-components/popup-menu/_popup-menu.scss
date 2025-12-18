@@ -4,7 +4,7 @@
 @use "variables" as *;
 
 .ipopupmenu {
-    background-color: --fkds-color-background-primary;
+    background-color: $popupmenu-color-background;
 
     &__list {
         margin: 0;

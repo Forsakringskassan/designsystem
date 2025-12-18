@@ -6,7 +6,7 @@ import { vuePlugin } from "@forsakringskassan/vite-lib-config/vite";
 export default defineConfig({
     optimizeDeps: {
         entries: [
-            "packages/*/src/**/*.{ts,vue}",
+            "packages/{date,logic,vue,vue-labs}/src/**/*.{ts,vue}",
             "cypress/**/*.{ts,vue}",
             "!**/*.spec.ts",
         ],

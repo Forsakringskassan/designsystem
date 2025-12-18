@@ -1,12 +1,17 @@
 import "html-validate/jest";
-import { type PropType, defineComponent } from "vue";
+import { type PropType, defineComponent, h } from "vue";
 import logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { ValidationPlugin } from "../../plugins";
 import { ListItem } from "../../types";
-import { type sizes, FFormModal, FFormModalAction, FModal } from "../FModal";
+import {
+    type FModalSize,
+    FFormModal,
+    FFormModalAction,
+    FModal,
+} from "../FModal";
 import { FTextField } from "../FTextField";
 import { type FValidationFormCallback } from "../FValidationForm";
 import FCrudButton from "./FCrudButton.vue";
@@ -87,9 +92,9 @@ const TestComponent = defineComponent({
             },
         },
         formModalSize: {
-            type: String as PropType<(typeof sizes)[number]>,
+            type: String as PropType<FModalSize>,
             required: false,
-            default: "",
+            default: "small",
         },
     },
     data() {
@@ -644,12 +649,12 @@ describe("onCancel", () => {
 
 describe("formModalSize", () => {
     it("should pass size prop to FFormModal when opening add modal", async () => {
-        const wrapper = createWrapper([ADD_TEMPLATE], {
-            stubs: ["FConfirmModal"],
+        const wrapper = shallowMount(FCrudDataset, {
             props: { formModalSize: "large" },
+            slots: { add: "..." },
         });
 
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
         await flushPromises();
 
         const formModal = wrapper.findComponent(FFormModal);
@@ -657,24 +662,32 @@ describe("formModalSize", () => {
     });
 
     it("should pass size prop to FFormModal when opening modify modal", async () => {
-        const wrapper = createWrapper([MODIFY_TEMPLATE], {
-            stubs: ["FConfirmModal"],
-            props: { formModalSize: "small" },
+        const wrapper = mount(FCrudDataset, {
+            props: { formModalSize: "large" },
+            slots: {
+                default: h(FCrudButton, {
+                    id: "modify-button",
+                    action: "modify",
+                    item: {},
+                }),
+                modify: "...",
+            },
+            stubs: [FFormModal],
         });
 
-        await wrapper.find("#modifyButton").trigger("click");
+        await wrapper.get("#modify-button").trigger("click");
         await flushPromises();
 
         const formModal = wrapper.findComponent(FFormModal);
-        expect(formModal.props("size")).toBe("small");
+        expect(formModal.props("size")).toBe("large");
     });
 
     it("should use default size (empty string) when prop not provided", async () => {
-        const wrapper = createWrapper([ADD_TEMPLATE], {
-            stubs: ["FConfirmModal"],
+        const wrapper = shallowMount(FCrudDataset, {
+            slots: { add: "..." },
         });
 
-        await wrapper.find(".crud-dataset__add-button").trigger("click");
+        await wrapper.get(".crud-dataset__add-button").trigger("click");
         await flushPromises();
 
         const formModal = wrapper.findComponent(FFormModal);

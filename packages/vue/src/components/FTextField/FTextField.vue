@@ -186,6 +186,7 @@ export default defineComponent({
             descriptionScreenReaderText: "",
             discreteDescriptionText: "",
             discreteDescriptionScreenReaderText: "",
+            dropdownOpenedWithoutVisibleError: false,
         };
     },
     computed: {
@@ -199,6 +200,10 @@ export default defineComponent({
             return this.validityMode === "VALID";
         },
         hasError(): boolean {
+            if (this.dropdownIsOpen && this.dropdownOpenedWithoutVisibleError) {
+                return false;
+            }
+
             return this.validityMode === "ERROR";
         },
         rootClass(): Record<string, boolean> {
@@ -233,6 +238,13 @@ export default defineComponent({
 
                 this.setViewValueToFormattedValueOrFallbackToValue();
                 this.lastModelValue = this.modelValue;
+            },
+        },
+        dropdownIsOpen: {
+            handler() {
+                if (this.dropdownIsOpen) {
+                    this.dropdownOpenedWithoutVisibleError = this.validityMode === "INITIAL";
+                }
             },
         },
     },

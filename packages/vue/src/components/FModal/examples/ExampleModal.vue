@@ -6,7 +6,7 @@ import {
     FFormModal,
     FTextField,
 } from "@fkui/vue";
-import type { sizes } from "../sizes";
+import type { FModalSize, modalSizes } from "../sizes";
 
 export default defineComponent({
     name: "ExampleModal",
@@ -17,8 +17,8 @@ export default defineComponent({
             required: false,
         },
         size: {
-            default: "",
-            type: String as PropType<(typeof sizes)[number]>,
+            type: String as PropType<FModalSize>,
+            default: "small",
         },
         testId: {
             type: String,

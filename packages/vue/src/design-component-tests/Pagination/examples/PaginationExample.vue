@@ -4,7 +4,6 @@ import {
     FCheckboxField,
     FFieldset,
     FList,
-    FNumericTextField,
     FPaginateDataset,
     FPaginator,
     FSelectField,
@@ -18,7 +17,6 @@ export default defineComponent({
     components: {
         FCheckboxField,
         FFieldset,
-        FNumericTextField,
         FSelectField,
         LiveExample,
     },
@@ -41,7 +39,6 @@ export default defineComponent({
                 FCheckboxField,
                 FFieldset,
                 FList,
-                FNumericTextField,
                 FPaginateDataset,
                 FPaginator,
                 FSelectField,
@@ -80,6 +77,9 @@ export default defineComponent({
             return /* HTML */ this.numberOfPagesToShowAtMost
                 ? `:number-of-pages-to-show="${this.numberOfPagesToShowAtMost.toString()}"`
                 : ``;
+        },
+        numberOfRows(): number {
+            return persons.length;
         },
         paginator(): string {
             return /* HTML */ `<f-paginator
@@ -127,12 +127,15 @@ export default defineComponent({
 
 <template>
     <live-example :components :template :livedata :livemethods>
-        <f-numeric-text-field v-model="numberOfItemsPerPage">
-            <template #default>Antal objekt per sida</template>
+        <f-select-field id="numberOfItemsPerPage" v-model="numberOfItemsPerPage">
+            <template #label>Antal objekt per sida</template>
             <template #description="{ descriptionClass }">
                 <span :class="descriptionClass">Maximalt antal objekt per sida</span>
             </template>
-        </f-numeric-text-field>
+            <option v-for="option in numberOfRows" :key="option" :value="option">
+                {{ option }}
+            </option>
+        </f-select-field>
         <f-fieldset name="alternatives" show-details="when-selected">
             <template #label>Alternativ</template>
             <f-checkbox-field v-model="showInteractiveListWithCheckboxes" :value="true">

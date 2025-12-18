@@ -72,6 +72,14 @@ import { ContextMenuItem } from "@fkui/vue";
  ];
 ```
 
+## Textnycklar
+
+Läs mer om att {@link translate-text anpassa och översätta text}.
+
+:::api
+translation:FContextMenu
+:::
+
 ## API
 
 :::api

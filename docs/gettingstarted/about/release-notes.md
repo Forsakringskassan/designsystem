@@ -9,9 +9,20 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.31.0
+
+2025-12-15
+
+Vi har ändrat i navigerigen för komponent kontextmeny.
+Det går inte längre att tabba mellan menyvalen i en kontextmeny.
+Användaren kan bara använda piltangenter för att navigera i kontextmeny.
+På så sätt kan användaren snabbare tabba sig ur från kontextmenyn och gå vidare i innehållet.
+
+Buggfixar, se {@link changelog Changelog}.
+
 ## Version 6.30.0
 
-2025-12-04
+2025-12-05
 
 Buggfix för tooltip som ger följande ändringar:
 

@@ -290,5 +290,9 @@
     "--f-border-color-link",
     "--f-border-color-link-hover",
     "--f-border-color-link-discrete",
-    "--f-border-color-link-discrete-hover"
+    "--f-border-color-link-discrete-hover",
+    "--f-background-skiplink-focus",
+    "--f-border-color-separator-pageheader-primary",
+    "--f-border-color-separator",
+    "--f-background-pageheader-primary"
 ]

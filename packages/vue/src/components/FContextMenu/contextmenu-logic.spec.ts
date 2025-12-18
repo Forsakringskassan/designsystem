@@ -1,8 +1,7 @@
 import { MenuAction } from "../../types";
 import {
-    MenuActionTarget,
-    doMenuAction,
     getNewItemIndexFromMenuAction,
+    useMenuAction,
 } from "./contextmenu-logic";
 import { type ContextMenuItem } from "./contextmenuitem";
 
@@ -44,31 +43,37 @@ describe("getNewItemIndexFromMenuAction", () => {
 });
 
 describe("Menu actions triggered with keyboard (doMenuAction)", () => {
-    const testItems: ContextMenuItem[] = [
+    const popupItems: ContextMenuItem[] = [
         { label: "label1", key: "MENU_1" },
         { label: "label2", key: "MENU_2" },
         { label: "label3", key: "MENU_3" },
     ];
+
     it("should move focus to first item", async () => {
-        const target: MenuActionTarget = {
+        const setFocusOnItem = jest.fn();
+        const activateItem = jest.fn();
+        const { doMenuAction } = useMenuAction({
             currentFocusedItemIndex: 1, // second item index
-            popupItems: testItems,
-            setFocusOnItem: jest.fn().mockResolvedValue(undefined),
-            activateItem: jest.fn().mockResolvedValue(undefined),
-        };
+            popupItems,
+            setFocusOnItem,
+            activateItem,
+        });
         // move to first item
-        await doMenuAction(MenuAction.MOVE_FIRST, target);
-        expect(target.setFocusOnItem).toHaveBeenCalledWith(0); // first item index
+        await doMenuAction(MenuAction.MOVE_FIRST);
+        expect(setFocusOnItem).toHaveBeenCalledWith(0); // first item index
     });
+
     it("should activate the current item", async () => {
-        const target: MenuActionTarget = {
+        const setFocusOnItem = jest.fn();
+        const activateItem = jest.fn();
+        const { doMenuAction } = useMenuAction({
             currentFocusedItemIndex: 1, // second item index
-            popupItems: testItems,
-            setFocusOnItem: jest.fn().mockResolvedValue(undefined),
-            activateItem: jest.fn().mockResolvedValue(undefined),
-        };
+            popupItems,
+            setFocusOnItem,
+            activateItem,
+        });
         // activate current item
-        await doMenuAction(MenuAction.ACTIVATE, target);
-        expect(target.activateItem).toHaveBeenCalledWith(1); // second item index
+        await doMenuAction(MenuAction.ACTIVATE);
+        expect(activateItem).toHaveBeenCalledWith(1); // second item index
     });
 });

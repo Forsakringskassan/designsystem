@@ -257,46 +257,6 @@ describe("Option selection", () => {
         );
     });
 
-    it("should update v-model value when option is selected and validation active", () => {
-        const TestComponentForSelectionWithValidation = defineComponent({
-            template: /* HTML */ `
-                <button type="button" data-test="button">test</button>
-                <f-text-field
-                    v-model="model"
-                    :options
-                    v-validation.required.maxLength="{ maxLength: { length: 1}}"
-                >
-                    Reactive options
-                </f-text-field>
-                <pre data-test="modelValue">modelValue: {{ model }}</pre>
-            `,
-            data() {
-                return {
-                    options: ["foo", "foobar"],
-                    model: "",
-                };
-            },
-            components: {
-                FTextField,
-            },
-        });
-        cy.mount(TestComponentForSelectionWithValidation);
-        cy.get(input).type("fo"); // bara början av "foo"
-        cy.get(`[data-test="button"]`).click();
-        // Check that the validation error exists
-        const po = new FTextFieldPageObject(".text-field");
-        po.label.errorMessage().should("exist");
-        cy.get(input).type("{downArrow}");
-        cy.get(activeOption).click();
-        cy.get(dropdown).should("not.exist");
-        // Check that the validation error does not exist
-        po.label.errorMessage().should("not.exist");
-        cy.get(`[data-test="modelValue"]`).should(
-            "have.text",
-            "modelValue: foo",
-        );
-    });
-
     it("should not select any option for invalid input value", () => {
         cy.mount(FTextField, defaultMountOptions);
         cy.get(input).click();
@@ -466,5 +426,92 @@ describe("Reactive options", () => {
         cy.get("#set-options").click();
         cy.get(input).click();
         cy.get(dropdown).should("exist");
+    });
+});
+
+describe("Validation", () => {
+    const TestComponentForSelectionWithValidation = defineComponent({
+        template: /* HTML */ `
+            <button type="button" data-test="button">test</button>
+            <f-text-field
+                v-model="model"
+                :options
+                v-validation.required.maxLength="{ maxLength: { length: 1}}"
+            >
+                Reactive options
+            </f-text-field>
+            <pre data-test="modelValue">modelValue: {{ model }}</pre>
+        `,
+        data() {
+            return {
+                options: ["foo", "foobar"],
+                model: "",
+            };
+        },
+        components: {
+            FTextField,
+        },
+    });
+
+    it("should not display error when dropdown is opened with no previously displayed error", () => {
+        cy.mount(TestComponentForSelectionWithValidation);
+        cy.get(input).type("fo"); // invalid
+        const po = new FTextFieldPageObject(".text-field");
+        po.label.errorMessage().should("not.exist");
+        cy.get(input).type("{downArrow}");
+        po.label.errorMessage().should("not.exist");
+    });
+
+    it("should continue to display error when dropdown is opened with previously displayed error", () => {
+        cy.mount(TestComponentForSelectionWithValidation);
+        const po = new FTextFieldPageObject(".text-field");
+        cy.get(input).type("fo"); // invalid
+        cy.get(`[data-test="button"]`).click();
+        po.label.errorMessage().should("exist");
+        cy.get(input).focus();
+        cy.get(input).type("{downArrow}");
+        po.label.errorMessage().should("exist");
+    });
+
+    it("should remove any displayed error when a valid option is selected", () => {
+        cy.mount(TestComponentForSelectionWithValidation);
+        const po = new FTextFieldPageObject(".text-field");
+        cy.get(input).type("fo"); // invalid
+        cy.get(`[data-test="button"]`).click();
+        po.label.errorMessage().should("exist");
+        cy.get(input).focus();
+        cy.get(input).type("{downArrow}");
+        cy.get(activeOption).click();
+        cy.get(dropdown).should("not.exist");
+        po.label.errorMessage().should("not.exist");
+    });
+
+    it("should show error when dropdown is opened with invalid value and click outside", () => {
+        cy.mount(TestComponentForSelectionWithValidation);
+        cy.get(input).type("fo"); // invalid
+        const po = new FTextFieldPageObject(".text-field");
+        po.label.errorMessage().should("not.exist");
+        cy.get(input).type("{downArrow}");
+        po.label.errorMessage().should("not.exist");
+        cy.get(`[data-test="button"]`).click();
+        po.label.errorMessage().should("exist");
+    });
+
+    it("should update v-model value when option is selected and validation active", () => {
+        cy.mount(TestComponentForSelectionWithValidation);
+        cy.get(input).type("fo"); // invalid
+        cy.get(`[data-test="button"]`).click();
+        // Check that the validation error exists
+        const po = new FTextFieldPageObject(".text-field");
+        po.label.errorMessage().should("exist");
+        cy.get(input).type("{downArrow}");
+        cy.get(activeOption).click();
+        cy.get(dropdown).should("not.exist");
+        // Check that the validation error does not exist
+        po.label.errorMessage().should("not.exist");
+        cy.get(`[data-test="modelValue"]`).should(
+            "have.text",
+            "modelValue: foo",
+        );
     });
 });

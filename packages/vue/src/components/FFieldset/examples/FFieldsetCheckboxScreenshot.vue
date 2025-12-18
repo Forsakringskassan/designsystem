@@ -77,6 +77,22 @@ const data = ref();
                 </template>
             </f-fieldset>
 
+            <f-fieldset id="checkbox-tooltip-only" name="checkbox-tooltip" show-details="always">
+                <template #label> Fieldset-etikett </template>
+
+                <template #tooltip>
+                    <f-tooltip screen-reader-text="Read more" header-tag="h2">
+                        <template #header> Kryssrutor </template>
+                        <template #body> Lite information. </template>
+                    </f-tooltip>
+                </template>
+
+                <template #default>
+                    <f-checkbox-field v-model="data" value="A"> Alternativ A </f-checkbox-field>
+                    <f-checkbox-field v-model="data" value="B"> Alternativ B </f-checkbox-field>
+                </template>
+            </f-fieldset>
+
             <f-button id="button" type="submit"> Validate </f-button>
         </template>
     </f-validation-form>

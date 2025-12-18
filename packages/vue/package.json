@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue",
-  "version": "6.30.0",
+  "version": "6.31.1",
   "description": "Vue implementation of FKUI components",
   "keywords": [
     "fkui",
@@ -80,26 +80,26 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@fkui/date": "6.30.0",
-    "@fkui/design": "6.30.0",
-    "@fkui/icon-lib-default": "6.30.0",
-    "@fkui/logic": "6.30.0",
-    "@fkui/test-utils": "6.30.0",
-    "@fkui/theme-default": "6.30.0",
-    "@forsakringskassan/vite-lib-config": "4.2.4",
+    "@fkui/date": "6.31.0",
+    "@fkui/design": "6.31.1",
+    "@fkui/icon-lib-default": "6.31.0",
+    "@fkui/logic": "6.31.0",
+    "@fkui/test-utils": "6.31.0",
+    "@fkui/theme-default": "6.31.1",
+    "@forsakringskassan/vite-lib-config": "4.3.0",
     "@vue/test-utils": "2.4.6",
     "cypress": "15.7.1",
     "esbuild": "0.27.1",
     "flush-promises": "1.0.2",
     "glob": "13.0.0",
-    "vite": "7.2.6",
+    "vite": "7.2.7",
     "vue": "3.5.25",
-    "vue-router": "4.6.3"
+    "vue-router": "4.6.4"
   },
   "peerDependencies": {
-    "@fkui/date": "^6.30.0",
-    "@fkui/design": "^6.30.0",
-    "@fkui/logic": "^6.30.0",
+    "@fkui/date": "^6.31.0",
+    "@fkui/design": "^6.31.1",
+    "@fkui/logic": "^6.31.0",
     "fk-icons": "^4.30.1",
     "html-validate": ">= 7.9.0",
     "vue": "^3.5.0"

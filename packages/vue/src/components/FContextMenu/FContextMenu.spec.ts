@@ -187,7 +187,7 @@ describe("events", () => {
 });
 
 describe("keyboard navigation", () => {
-    it("should focus on first element after Tab is pressed", async () => {
+    it("should close popup after tab is pressed when popup is open", async () => {
         jest.spyOn(window, "scrollTo").mockReturnValue();
 
         // Given
@@ -200,27 +200,6 @@ describe("keyboard navigation", () => {
 
         // When sending Tab to the element
         await imenuList.trigger("keydown", { key: "Tab" });
-        await wrapper.vm.$nextTick();
-        await flushPromises();
-
-        // Then the first element will have focus
-        const firstItem = imenuList.findAll(".contextmenu__list__item")[0];
-        expect(firstItem.element).toHaveFocus();
-    });
-
-    it("should close popup after shift Tab is pressed directly after opening the popup", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
-
-        // Given
-        await mountPopup(testItems1);
-        await openPopup();
-
-        // after opening the popup the list has focus
-        const imenuList = wrapper.get(".contextmenu__list");
-        expect(imenuList.element).toHaveFocus();
-
-        // When sending Shift+Tab to the element
-        await imenuList.trigger("keydown", { key: "Tab", shiftKey: true });
         await wrapper.vm.$nextTick();
         await flushPromises();
 
