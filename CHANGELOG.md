@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 6.31.1 (2025-12-18)
+
+### Bug Fixes
+
+* **@fkui/design:** ipopupmenu has a  transparent background (refs SFKUI-7548) 38aeb16
+
 ## 6.31.0 (2025-12-15)
 
 ### Features
