@@ -6,6 +6,7 @@ import {
     parseBankAccountNumber,
     parseBankgiro,
     parseClearingNumber,
+    parseDate,
     parseNumber,
     parseOrganisationsnummer,
     parsePersonnummer,
@@ -31,6 +32,7 @@ const textTypes = [
     "text:bankAccountNumber",
     "text:bankgiro",
     "text:clearingNumber",
+    "text:date",
     "text:email",
     "text:organisationsnummer",
     "text:personnummer",
@@ -199,6 +201,18 @@ export const inputFieldConfig = {
             { name: "maxlength", value: "20" },
         ],
     } satisfies InputTypeNumberConfig,
+    "text:date": {
+        formatter(value) {
+            return parseDate(value);
+        },
+        parser(value) {
+            return parseDate(value);
+        },
+        validationConfig: {
+            date: {},
+        },
+        attributes: () => [{ name: "type", value: "text" }],
+    } satisfies InputTypeTextConfig,
     "text:email": {
         formatter(value) {
             return value;

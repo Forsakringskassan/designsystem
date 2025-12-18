@@ -10,6 +10,7 @@ interface TableRow {
     bankAccountNumber: string;
     bankgiro: string;
     clearingNumber: string;
+    date: string;
     epost: string;
     orgnr: string;
     tele: string;
@@ -55,6 +56,12 @@ const columns = defineTableColumns<TableRow, keyof TableRow>([
         type: "text:currency",
         header: "Valuta",
         key: "currency",
+        editable: true,
+    },
+    {
+        type: "text:date",
+        header: "Datum",
+        key: "date",
         editable: true,
     },
     {
@@ -111,6 +118,7 @@ const rows = ref<TableRow[]>([
         bankAccountNumber: "12345678",
         bankgiro: "9999996",
         clearingNumber: "5678",
+        date: "2023-06-15",
         currency: 3453455,
         number: 5.4,
         percent: 9.987,
@@ -128,6 +136,7 @@ const rows = ref<TableRow[]>([
         bankgiro: "999-9996",
         clearingNumber: "56781",
         currency: 24233,
+        date: "2024-01-20",
         number: 5.5,
         percent: 19.987,
         epost: "a.b@example.net",
@@ -144,6 +153,7 @@ const rows = ref<TableRow[]>([
         bankgiro: "999-9996",
         clearingNumber: "5678-1",
         currency: 234623546,
+        date: "2022-11-05",
         number: 5.55,
         percent: 3.1,
         epost: "a.b@example.net",

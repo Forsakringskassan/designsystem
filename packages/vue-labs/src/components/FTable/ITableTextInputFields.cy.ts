@@ -8,6 +8,7 @@ interface Row {
     bankgiro?: string;
     bankAccountNumber?: string;
     clearingNumber?: string;
+    date?: string;
     email?: string;
     orgnr?: string;
     tele?: string;
@@ -347,6 +348,82 @@ describe("FTable, clearingNumber", () => {
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "maxlength").should("eq", "16");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
+    });
+});
+
+describe("FTable, date", () => {
+    const column: TableColumn<Row, keyof Row> = {
+        type: "text:date",
+        header: "Datum",
+        key: "date",
+        editable: true,
+        label: () => `Label`,
+    };
+
+    it("should format row value to viewvalue", () => {
+        const row = {
+            date: "20230615",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+        const span = cell.get("span");
+        // formatted view value
+        span.should("contain.text", "2023-06-15").then(() => {
+            // row value should be unchanged
+            expect(row.date).to.equal("20230615");
+        });
+    });
+
+    it("should format typed value and update row value with parsed value", () => {
+        const row = {
+            date: "",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+        cell.click();
+        const input = cell.get("input");
+        input.type("2024-01-20");
+        input.blur();
+
+        const span = cell.get("span");
+        // formatted view value
+        span.should("contain.text", "2024-01-20").then(() => {
+            // parsed row value
+            expect(row.date).to.equal("2024-01-20");
+        });
+    });
+
+    it("should validate with error and update modelvalue", () => {
+        const row = {
+            date: "",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+        cell.click();
+
+        const input = cell.get("input");
+        input.type("text").blur();
+
+        const td = cell.get("td");
+        td.should("have.class", "table-ng__cell--error").then(() => {
+            // row value should be typed value
+            expect(row.date).to.equal("text");
+        });
+    });
+
+    it("sholud have correct attributes", () => {
+        const row = {
+            date: "",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "type").should("eq", "text");
     });
 });
 
