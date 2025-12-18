@@ -237,10 +237,20 @@ export function pushFocus(element?: Element | null): StackHandle {
  * Restore the focus on the last element from the stack
  *
  * @public
+ * @param handle - The stack handle returned from the corresponding `pushFocus` call.
+ * @param options - Options for `popFocus`.
  * @throws Error when pop is called on an empty focus stack
  * @throws Error when pop is called without a valid StackHandle
  */
-export function popFocus(handle: StackHandle): void {
+export function popFocus(
+    handle: StackHandle,
+    options: {
+        /** Whether to restore focus after popping it from the stack. Defaults to true. */
+        restoreFocus?: boolean;
+    } = {},
+): void {
+    const { restoreFocus = true } = options;
+
     if (_focusElementStack.length === 0) {
         const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
         if (configLogic.production) {
@@ -251,6 +261,7 @@ export function popFocus(handle: StackHandle): void {
             throw new Error(emptyStackErrorMsg);
         }
     }
+
     const top = _focusElementStack.pop();
     if (top?.id !== handle[sym]) {
         const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym])}`;
@@ -262,7 +273,10 @@ export function popFocus(handle: StackHandle): void {
             throw new Error(outOfOrderErrorMsg);
         }
     }
-    focus(top?.element);
+
+    if (restoreFocus) {
+        focus(top?.element);
+    }
 }
 
 /**

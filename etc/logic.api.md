@@ -379,7 +379,9 @@ export type PersonnummerString = string;
 export type PlusgiroString = string;
 
 // @public
-export function popFocus(handle: StackHandle): void;
+export function popFocus(handle: StackHandle, options?: {
+    restoreFocus?: boolean;
+}): void;
 
 // @public
 export type PostalCodeString = string;
