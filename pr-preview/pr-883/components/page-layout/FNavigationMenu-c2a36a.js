@@ -31,7 +31,7 @@ function setup(options) {
 // virtual-entry:virtual:docs/components/page-layout/FNavigationMenu.md:FNavigationMenu-c2a36a.js
 import { defineComponent as _defineComponent } from "vue";
 
-// node_modules/vue-router/dist/devtools-BLCumUwL.mjs
+// node_modules/vue-router/dist/devtools-EWN81iOl.mjs
 import { getCurrentInstance, inject, onActivated, onDeactivated, onUnmounted, watch } from "vue";
 var ErrorTypes = /* @__PURE__ */ (function(ErrorTypes$1) {
   ErrorTypes$1[ErrorTypes$1["MATCHER_NOT_FOUND"] = 1] = "MATCHER_NOT_FOUND";
@@ -113,10 +113,10 @@ setup({
 });
 /*! Bundled license information:
 
-vue-router/dist/devtools-BLCumUwL.mjs:
+vue-router/dist/devtools-EWN81iOl.mjs:
 vue-router/dist/vue-router.mjs:
   (*!
-   * vue-router v4.6.3
+   * vue-router v4.6.4
    * (c) 2025 Eduardo San Martin Morote
    * @license MIT
    *)
