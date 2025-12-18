@@ -384,6 +384,44 @@ describe("focus stack", () => {
             expect(button).toHaveFocus();
         });
 
+        it("should restore focus to element when popFocus() focus option is true", () => {
+            expect.assertions(2);
+
+            document.body.innerHTML = /* HTML */ `
+                <button id="b1"></button>
+                <button id="b2"></button>
+            `;
+            const button1 = document.getElementById("b1")!;
+            const button2 = document.getElementById("b2")!;
+            button1.focus();
+
+            const handle = pushFocus(button2);
+            expect(button2).toHaveFocus();
+
+            /* focus should return to previous element after popFocus */
+            popFocus(handle, { restoreFocus: true });
+            expect(button1).toHaveFocus();
+        });
+
+        it("should retain focus on element when popFocus() focus option is false", () => {
+            expect.assertions(2);
+
+            document.body.innerHTML = /* HTML */ `
+                <button id="b1"></button>
+                <button id="b2"></button>
+            `;
+            const button1 = document.getElementById("b1")!;
+            const button2 = document.getElementById("b2")!;
+            button1.focus();
+
+            const handle = pushFocus(button2);
+            expect(button2).toHaveFocus();
+
+            /* focus should return to previous element after popFocus */
+            popFocus(handle, { restoreFocus: false });
+            expect(button2).toHaveFocus();
+        });
+
         it("should restore focus after 3 push followed by 3 pop", () => {
             expect.assertions(4);
             document.body.innerHTML = /* HTML */ `
