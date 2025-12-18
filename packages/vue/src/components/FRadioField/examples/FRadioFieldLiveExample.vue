@@ -115,6 +115,14 @@ export default defineComponent({
             `;
         },
     },
+    watch: {
+        isHorizontal: {
+            immediate: false,
+            handler() {
+                this.isBorder = this.isHorizontal ? false : this.isBorder;
+            },
+        },
+    },
 });
 </script>
 
@@ -128,7 +136,9 @@ export default defineComponent({
             <f-radio-field v-model="isHorizontal" :value="true"> Horisontellt </f-radio-field>
         </f-fieldset>
 
-        <f-checkbox-field v-model="isBorder" :value="true"> Ram </f-checkbox-field>
+        <f-checkbox-field v-if="!isHorizontal" v-model="isBorder" :value="true">
+            Ram
+        </f-checkbox-field>
         <f-checkbox-field v-model="isPreselected" :value="true">
             Förvald radioknapp
         </f-checkbox-field>
