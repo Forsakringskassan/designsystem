@@ -5,6 +5,7 @@
     "compilerOptions": {
         "module": "esnext",
         "moduleResolution": "bundler",
+        "noEmit": false,
         "resolveJsonModule": true,
         "strict": true,
         "target": "esnext",
