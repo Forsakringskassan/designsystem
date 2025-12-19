@@ -234,12 +234,27 @@ function onAddRow(): void {
     });
 }
 
-function onRemoveRow(row: Row): void {
+function onRemoveRow(rowToRemove: Row): void {
     assertRef(tableRef);
 
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        rows.value.splice(rows.value.indexOf(row), 1);
+        const rowIndex = rows.value.indexOf(rowToRemove);
+        if (rowIndex !== -1) {
+            rows.value.splice(rows.value.indexOf(rowToRemove), 1);
+        } else {
+            for (const row of rows.value) {
+                if (!row.expandableRows) {
+                    continue;
+                }
+
+                const expandableRowIndex = row.expandableRows.indexOf(rowToRemove);
+                if (expandableRowIndex !== -1) {
+                    row.expandableRows.splice(expandableRowIndex, 1);
+                    break;
+                }
+            }
+        }
     });
 }
 
@@ -262,6 +277,7 @@ function onRemoveSelectedRows(): void {
                 key-attribute="id"
                 striped
                 selectable="multi"
+                expandable-attribute="expandableRows"
             >
                 <template #caption>Tabell</template>
                 <template #footer>Footer</template>
