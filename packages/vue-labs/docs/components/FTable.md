@@ -22,6 +22,10 @@ Sidan är under omarbetning för nya tabellkomponenten och kan innehålla felakt
 FTableLiveExample.vue
 ```
 
+```import live-example
+FTableColumnLiveExample.vue
+```
+
 ## Hur används komponenten?
 
 Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner.

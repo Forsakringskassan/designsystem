@@ -424,7 +424,7 @@ function getLabelFn<TRow>(
 /**
  * @internal
  */
-function defaultTnumValue(type: InputType): boolean {
+export function defaultTnumValue(type: InputType): boolean {
     const tnumTypes = [
         "text:bankAccountNumber",
         "text:bankgiro",
@@ -440,6 +440,52 @@ function defaultTnumValue(type: InputType): boolean {
     ];
 
     return tnumTypes.includes(type);
+}
+
+/**
+ * @internal
+ */
+export function isTextColumn<T, K extends keyof T = keyof T>(
+    column: TableColumn<T, K> & { type?: string },
+): column is TableColumnText<T, K> {
+    if (!column.type) {
+        return false;
+    }
+
+    return column.type.startsWith("text");
+}
+
+/**
+ * @internal
+ */
+export function isEnableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumn<T, K> & { type?: TableColumnType },
+): column is TableColumnAnchor<T, K> | TableColumnButton<T, K> {
+    if (!column.type) {
+        return false;
+    }
+
+    return column.type === "anchor" || column.type === "button";
+}
+
+/**
+ * @internal
+ */
+export function isEditableColumn<T, K extends keyof T = keyof T>(
+    column: TableColumn<T, K> & { type?: TableColumnType },
+): column is
+    | TableColumnCheckbox<T, K>
+    | TableColumnText<T, K>
+    | TableColumnSelect<T, K> {
+    if (!column.type) {
+        return false;
+    }
+
+    return (
+        column.type === "checkbox" ||
+        isTextColumn(column) ||
+        column.type === "select"
+    );
 }
 
 /**
@@ -621,7 +667,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: toRef(column.header),
                 description,
                 size,
-                value: column.value,
+                value: getValueFn(column.value, column.key, String, ""),
                 href: column.href,
                 enabled:
                     typeof column.enabled === "function"
@@ -637,7 +683,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: toRef(column.header),
                 description,
                 size,
-                value: column.value,
+                value: getValueFn(column.value, column.key, String, ""),
                 onClick: column.onClick,
                 enabled:
                     typeof column.enabled === "function"
