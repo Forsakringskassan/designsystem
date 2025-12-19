@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, nextTick, ref, useTemplateRef, watch } from "vue";
-import { focus } from "@fkui/logic";
+import { type StackHandle, focus, popFocus, pushFocus } from "@fkui/logic";
 import { IPopup } from "../../internal-components/IPopup";
 import { useTranslate } from "../../plugins/translation";
 import { actionFromKeyboardEvent } from "../../utils";
@@ -59,6 +59,8 @@ const currentFocusedItemIndex = ref(-1);
 const popupItems = computed(() => items.filter(isContextMenuTextItem));
 const hasIcons = computed(() => items.some((it) => isContextMenuTextItem(it) && it.icon));
 
+let focusHandle: StackHandle | null = null;
+
 const ariaLabel = computed(() => {
     if (ariaLabelProp) {
         return ariaLabelProp;
@@ -95,6 +97,21 @@ watch(
         if (isOpen) {
             currentFocusedItemIndex.value = -1;
             selectedItem.value = "";
+
+            /* wait for popup to be rendered */
+            nextTick(() => {
+                if (contextmenuRef.value) {
+                    focusHandle = pushFocus(contextmenuRef.value);
+                }
+            });
+        } else {
+            /* this only runs when isOpen is changed programmatically from the
+             * outside, if the context menu is closed by selecting, keyboard etc
+             * the focus is handled from `closePopup()` */
+            if (focusHandle) {
+                popFocus(focusHandle, { restoreFocus: true });
+                focusHandle = null;
+            }
         }
     },
     { immediate: true },
@@ -104,7 +121,22 @@ function hasSeparatorAfterItemAt(index: number): boolean {
     return separatorPositions.value.includes(index);
 }
 
-function closePopup(): void {
+function closePopup(reason: string): void {
+    if (focusHandle) {
+        switch (reason) {
+            case "click-outside":
+                popFocus(focusHandle, { restoreFocus: false });
+                break;
+            case "tab":
+            case "escape":
+            case "select":
+            default:
+                popFocus(focusHandle, { restoreFocus: true });
+                break;
+        }
+        focusHandle = null;
+    }
+
     emit("close");
 }
 
@@ -112,7 +144,7 @@ function onClickItem(item: ContextMenuItem): void {
     if (isContextMenuTextItem(item) && item.key) {
         selectedItem.value = item.key;
         emit("select", selectedItem.value);
-        closePopup();
+        closePopup("select");
     }
 }
 
@@ -133,7 +165,7 @@ async function onKeyDown(event: KeyboardEvent): Promise<void> {
 
     /* escape should close the popup, focus is restored from IPopupMenu */
     if (event.key === "Escape") {
-        closePopup();
+        closePopup("escape");
         return;
     }
 
@@ -141,7 +173,7 @@ async function onKeyDown(event: KeyboardEvent): Promise<void> {
      * stop the tabbing from also moving the focus */
     if (event.key === "Tab") {
         event.preventDefault();
-        closePopup();
+        closePopup("tab");
         return;
     }
 
@@ -188,15 +220,7 @@ async function activateItem(index: number): Promise<void> {
 </script>
 
 <template>
-    <i-popup
-        :is-open
-        :keyboard-trap="false"
-        :anchor
-        :set-focus="true"
-        :focus-element="() => contextmenuRef"
-        inline="never"
-        @close="closePopup()"
-    >
+    <i-popup :is-open :keyboard-trap="false" :anchor :set-focus="false" inline="never" @close="closePopup($event)">
         <nav class="contextmenu" :aria-label @keyup="onKeyUp" @keydown="onKeyDown">
             <ul ref="contextmenu" role="menu" tabindex="-1" class="contextmenu__list">
                 <li v-for="(item, index) in popupItems" :key="item.key" role="menuitem" @click="onClickItem(item)">
