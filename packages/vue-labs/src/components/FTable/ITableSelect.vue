@@ -217,7 +217,7 @@ function cancel(): void {
 <template>
     <td
         v-if="column.editable(row)"
-        class="table-ng__cell table-ng__cell--selectable"
+        class="table-ng__cell table-ng__cell--select"
         tabindex="-1"
         @keydown="onCellKeyDown"
         @click.stop="onCellClick"
