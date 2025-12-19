@@ -30,6 +30,20 @@ import {
 export type TableColumnSize = "grow" | "shrink";
 
 /**
+ * Union of all possible table column types.
+ *
+ * @internal
+ */
+export type TableColumnType =
+    TableColumn<unknown, never> extends infer U
+        ? U extends { type: infer T }
+            ? T extends undefined
+                ? never
+                : T
+            : never
+        : never;
+
+/**
  * @public
  */
 export interface TableColumnSimple<T, K extends keyof T> {
