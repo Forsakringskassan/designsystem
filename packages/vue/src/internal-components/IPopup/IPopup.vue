@@ -96,6 +96,11 @@ export default defineComponent({
         "open",
         /**
          * Emitted when clicked outside of popup.
+         *
+         * Includes the reason for closing as event argument. One of:
+         *
+         * - `"click-outside"` - when clicking outside the popup with the mouse
+         * - `"escape"` - when closing the popup with the escape key.
          */
         "close",
     ],
@@ -260,7 +265,7 @@ export default defineComponent({
             return window.innerWidth < MIN_DESKTOP_WIDTH;
         },
         onDocumentClickHandler(): void {
-            this.$emit("close");
+            this.$emit("close", "click-outside");
         },
         onWindowResizeDebounced(): void {
             // Overwritten in created so that the debounced `onWindowResize`
@@ -297,7 +302,7 @@ export default defineComponent({
             event.stopPropagation();
         },
         onKeyEsc(): void {
-            this.$emit("close");
+            this.$emit("close", "escape");
         },
         onKeyTab(event: KeyboardEvent): void {
             if (this.keyboardTrap) {
