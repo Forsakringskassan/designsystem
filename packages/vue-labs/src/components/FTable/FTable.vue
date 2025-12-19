@@ -35,6 +35,7 @@ type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
     : never;
 
 const selectedRows = defineModel<T[]>("selectedRows", { default: [] });
+
 const {
     columns: rawColumns,
     rows,
@@ -50,6 +51,31 @@ const {
     striped?: boolean;
     selectable?: "single" | "multi";
 }>();
+
+defineSlots<{
+    /**
+     * Slot for table caption
+     */
+    caption?(): void;
+    /**
+     * Slot for content when table is empty
+     */
+    empty?(): void;
+    /**
+     * Slot for table footer
+     */
+    footer?(): void;
+    /**
+     * Slot for rendering custom expandable content
+     */
+    expandable?(bindings: {
+        /**
+         * The expanded row (from `expandableAttribute` of the parent row)
+         */
+        row: ExpandedContent;
+    }): void;
+}>();
+
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const expandedKeys: Ref<string[]> = ref([]);
