@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FValidationForm/examples/FValidationFormDefault.vue:FValidationFormDefault-c699e9.js
+// virtual-entry:virtual:packages/vue/src/components/FValidationForm/examples/FValidationFormDefault.vue:FValidationFormDefault-44065a.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
@@ -247,7 +247,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-c699e9"
+  selector: "#example-44065a"
 });
 export {
   render
