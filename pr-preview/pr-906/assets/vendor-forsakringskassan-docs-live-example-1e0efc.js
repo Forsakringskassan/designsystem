@@ -1,9 +1,9 @@
-// ../../node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
+// node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
 import { defineComponent as defineComponent2 } from "vue";
 import { defineComponent as _defineComponent } from "vue";
 import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from "vue";
 
-// ../../node_modules/prettier/plugins/html.mjs
+// node_modules/prettier/plugins/html.mjs
 var Jr = Object.defineProperty;
 var Zr = (e) => {
   throw TypeError(e);
@@ -2921,7 +2921,7 @@ var Al = dt({ name: "vue", isTagNameCaseSensitive: true, shouldParseAsRawText(e,
 var yl = dt({ name: "lwc", canSelfClose: false });
 var xl = { html: hs };
 
-// ../../node_modules/prettier/standalone.mjs
+// node_modules/prettier/standalone.mjs
 var Zn2 = Object.create;
 var Mt2 = Object.defineProperty;
 var eo2 = Object.getOwnPropertyDescriptor;
@@ -5495,10 +5495,10 @@ async function ci2(e, t) {
 var fi2 = me2(it2, 0);
 var li2 = { parse: me2(In2), formatAST: me2(kn2), formatDoc: me2(vn2), printToDoc: me2(Rn2), printDocToString: me2(Ln2) };
 
-// ../../node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
+// node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, createCommentVNode as _createCommentVNode, vModelRadio as _vModelRadio, withDirectives as _withDirectives, openBlock as _openBlock, createElementBlock as _createElementBlock, Fragment as _Fragment } from "vue";
 import { compile, defineComponent, h as h2 } from "vue";
-import { resolveComponent as _resolveComponent, createVNode as _createVNode, openBlock as _openBlock2, createElementBlock as _createElementBlock2, createCommentVNode as _createCommentVNode2, createElementVNode as _createElementVNode2, Fragment as _Fragment2, renderSlot as _renderSlot } from "vue";
+import { resolveComponent as _resolveComponent, createVNode as _createVNode, openBlock as _openBlock2, createElementBlock as _createElementBlock2, createCommentVNode as _createCommentVNode2, createElementVNode as _createElementVNode2, Fragment as _Fragment2, renderSlot as _renderSlot, normalizeClass as _normalizeClass } from "vue";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -7737,6 +7737,10 @@ var LiveExample_default = defineComponent2({
       default: () => {
         return {};
       }
+    },
+    forceSingleColumn: {
+      type: Boolean,
+      required: false
     }
   },
   data() {
@@ -7747,6 +7751,13 @@ var LiveExample_default = defineComponent2({
     };
   },
   computed: {
+    containerClasses() {
+      const classes = ["live-example__container"];
+      if (this.forceSingleColumn) {
+        classes.push("live-example__container--single-column");
+      }
+      return classes;
+    },
     templateLanguage() {
       if (this.language !== "auto") {
         return this.language;
@@ -7766,67 +7777,74 @@ var LiveExample_default = defineComponent2({
     this.exampleElement = this.$refs.example;
   }
 });
-var _hoisted_14 = { class: "live-example__container" };
-var _hoisted_22 = {
+var _hoisted_14 = {
   ref: "example",
   class: "live-example__example user-background"
 };
-var _hoisted_32 = { key: 0 };
-var _hoisted_42 = ["innerHTML"];
-var _hoisted_52 = { key: 2 };
-var _hoisted_62 = { class: "live-example__controls" };
-var _hoisted_72 = {
+var _hoisted_22 = { key: 0 };
+var _hoisted_32 = ["innerHTML"];
+var _hoisted_42 = { key: 2 };
+var _hoisted_52 = { class: "live-example__controls" };
+var _hoisted_62 = {
   key: 0,
   class: "live-example__code"
 };
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_live_vue_code = _resolveComponent("live-vue-code");
   const _component_live_example_sourcecode = _resolveComponent("live-example-sourcecode");
-  return _openBlock2(), _createElementBlock2("div", _hoisted_14, [
-    _createElementVNode2(
-      "div",
-      _hoisted_22,
-      [
-        _ctx.templateLanguage === "vue" ? (_openBlock2(), _createElementBlock2("div", _hoisted_32, [
-          _createVNode(_component_live_vue_code, {
-            components: _ctx.components,
-            template: _ctx.template,
-            livedata: _ctx.livedata,
-            livemethods: _ctx.livemethods
-          }, null, 8, ["components", "template", "livedata", "livemethods"])
-        ])) : _ctx.templateLanguage === "html" ? (_openBlock2(), _createElementBlock2(
-          _Fragment2,
-          { key: 1 },
-          [
-            _createCommentVNode2(" eslint-disable-next-line vue/no-v-html -- expected to show rendered html "),
-            _createElementVNode2("div", { innerHTML: _ctx.template }, null, 8, _hoisted_42)
-          ],
-          2112
-          /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-        )) : (_openBlock2(), _createElementBlock2("div", _hoisted_52, [..._cache[0] || (_cache[0] = [
-          _createElementVNode2(
-            "pre",
-            null,
-            "Unknown language, cannot render example",
-            -1
-            /* CACHED */
-          )
-        ])]))
-      ],
-      512
-      /* NEED_PATCH */
-    ),
-    _createElementVNode2("div", _hoisted_62, [
-      _renderSlot(_ctx.$slots, "default")
-    ]),
-    _ctx.exampleElement ? (_openBlock2(), _createElementBlock2("div", _hoisted_72, [
-      _createVNode(_component_live_example_sourcecode, {
-        element: _ctx.exampleElement,
-        template: _ctx.template,
-        "template-language": _ctx.templateLanguage
-      }, null, 8, ["element", "template", "template-language"])
-    ])) : _createCommentVNode2("v-if", true)
-  ]);
+  return _openBlock2(), _createElementBlock2(
+    "div",
+    {
+      class: _normalizeClass(_ctx.containerClasses)
+    },
+    [
+      _createElementVNode2(
+        "div",
+        _hoisted_14,
+        [
+          _ctx.templateLanguage === "vue" ? (_openBlock2(), _createElementBlock2("div", _hoisted_22, [
+            _createVNode(_component_live_vue_code, {
+              components: _ctx.components,
+              template: _ctx.template,
+              livedata: _ctx.livedata,
+              livemethods: _ctx.livemethods
+            }, null, 8, ["components", "template", "livedata", "livemethods"])
+          ])) : _ctx.templateLanguage === "html" ? (_openBlock2(), _createElementBlock2(
+            _Fragment2,
+            { key: 1 },
+            [
+              _createCommentVNode2(" eslint-disable-next-line vue/no-v-html -- expected to show rendered html "),
+              _createElementVNode2("div", { innerHTML: _ctx.template }, null, 8, _hoisted_32)
+            ],
+            2112
+            /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+          )) : (_openBlock2(), _createElementBlock2("div", _hoisted_42, [..._cache[0] || (_cache[0] = [
+            _createElementVNode2(
+              "pre",
+              null,
+              "Unknown language, cannot render example",
+              -1
+              /* CACHED */
+            )
+          ])]))
+        ],
+        512
+        /* NEED_PATCH */
+      ),
+      _createElementVNode2("div", _hoisted_52, [
+        _renderSlot(_ctx.$slots, "default")
+      ]),
+      _ctx.exampleElement ? (_openBlock2(), _createElementBlock2("div", _hoisted_62, [
+        _createVNode(_component_live_example_sourcecode, {
+          element: _ctx.exampleElement,
+          template: _ctx.template,
+          "template-language": _ctx.templateLanguage
+        }, null, 8, ["element", "template", "template-language"])
+      ])) : _createCommentVNode2("v-if", true)
+    ],
+    2
+    /* CLASS */
+  );
 }
 LiveExample_default.render = render2;
 LiveExample_default.__file = "src/LiveExample.vue";
