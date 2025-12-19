@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-16baab.js
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-614288.js
 import { defineComponent } from "vue";
 import {
   FCheckboxField,
@@ -445,7 +445,7 @@ var persons = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-16baab.js
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Pagination/examples/PaginationExample.vue:PaginationExample-614288.js
 import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
   name: "PaginationExample",
@@ -460,6 +460,7 @@ var exampleComponent = defineComponent({
       componentType: "dataTable",
       fetchDataDynamically: false,
       numberOfItemsPerPage: 10,
+      numberOfItemsPerPageOptions: [5, 10, 15, 20],
       numberOfPagesOptions: [5, 6, 7, 8, 9],
       numberOfPagesToShowAtMost: null,
       showInteractiveListWithCheckboxes: false,
@@ -602,7 +603,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           (_openBlock(true), _createElementBlock(
             _Fragment,
             null,
-            _renderList(_ctx.numberOfRows, (option) => {
+            _renderList(_ctx.numberOfItemsPerPageOptions, (option) => {
               return _openBlock(), _createElementBlock("option", {
                 key: option,
                 value: option
@@ -784,7 +785,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-16baab"
+  selector: "#example-614288"
 });
 export {
   render

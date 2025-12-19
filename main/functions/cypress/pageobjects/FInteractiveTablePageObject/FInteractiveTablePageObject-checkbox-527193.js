@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-checkbox.vue:FInteractiveTablePageObject-checkbox-1fd761.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-checkbox.vue:FInteractiveTablePageObject-checkbox-527193.js
 import { defineComponent as _defineComponent } from "vue";
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -129,7 +129,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1fd761"
+  selector: "#example-527193"
 });
 export {
   render
