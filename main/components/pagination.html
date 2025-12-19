@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-013633.json"
+            href="../search-data-2fa2c1.json"
             as="fetch"
             crossorigin
-            integrity="sha384-yRCzJjREw9AVK7OQnsXAy50p1rBruFFQBXi8ZSBwitbo+L88foNC8t+x+thq/lbX"
+            integrity="sha384-S7FY6KwggECcJuKkczDEJRzYedzmTSmTkdhSSYqOEFRTwcA5VtPcId6hVsOKVirf"
             id="search-data"
         />
     </head>
@@ -1095,13 +1095,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/45075dd58cdeddbff42755a49b211f9500ecd2d0/packages/vue/src/components/FPaginateDataset/FPaginateDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/2735f8b2904a85eb98b9811572b2b07705a68c14/packages/vue/src/components/FPaginateDataset/FPaginateDataset.vue">
                 FPaginateDataset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/45075dd58cdeddbff42755a49b211f9500ecd2d0/packages/vue/src/components/FPaginator/FPaginator.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/2735f8b2904a85eb98b9811572b2b07705a68c14/packages/vue/src/components/FPaginator/FPaginator.vue">
                 FPaginator
             </a>
             
@@ -1150,13 +1150,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-614288"></div>
+        <div id="example-82a06c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PaginationExample-614288.js"></script>
+        <script type="module" src="./PaginationExample-82a06c.js"></script>
     
                 </div>
             <h2 id="hur_anvands_komponenten"><a class="header-anchor" href="#hur_anvands_komponenten">Hur används komponenten?</a></h2><p class="docs-paragraph">Paginering används för att låta användaren navigera mellan innehåll som är uppdelat på flera sidor.
@@ -1165,79 +1165,16 @@ Innehållet kan till exempel vara sökresultat eller tabeller.</p>
 <li>Fundera på hur många objekt som ska visas på en sida så att det blir optimalt för användaren.</li>
 <li>Om du kombinerar paginering med tabell kan vissa funktioner i tabell skapa oönskade beteenden vid paginering.</li>
 </ul>
-<h2 id="responsivitet"><a class="header-anchor" href="#responsivitet">Responsivitet</a></h2><p class="docs-paragraph">Paginering visar sidor som standard tillsammans med knappar för föregående och nästa sida, se exempel nedan.
-När fönstret blir smalare och paginering inte får plats ersätts sidorna med en text som visar vilken sida användaren befinner sig på, se exempel överst.</p>
-
-            <div
-                id="example-e77129"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview user-background">
-                    
-        <div id="example-f74c45"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./pagination-f74c45.js"></script>
-    
-                </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FPaginateDataset</span>, <span class="hljs-title class_">FPaginator</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FPaginateDataset</span>,
-        <span class="hljs-title class_">FPaginator</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">rows</span>: <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">length</span>: <span class="hljs-number">100</span> }),
-        };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-paginate-dataset</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:itemsPerPage</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-paginate-dataset</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h2 id="hamtning_av_data"><a class="header-anchor" href="#hamtning_av_data">Hämtning av data</a></h2><p class="docs-paragraph">Om du inte har tillgång till hela datamängden direkt kan du använda dynamisk hämtning av data.
+<h2 id="responsivitet"><a class="header-anchor" href="#responsivitet">Responsivitet</a></h2><p class="docs-paragraph">Paginering visar sidor som standard tillsammans med knappar för föregående och nästa sida.
+När fönstret blir smalare och paginering inte får plats ersätts sidorna med en text som visar vilken sida användaren befinner sig på.</p>
+<h2 id="hamtning_av_data"><a class="header-anchor" href="#hamtning_av_data">Hämtning av data</a></h2><p class="docs-paragraph">Om du inte har tillgång till hela datamängden direkt kan du använda dynamisk hämtning av data.
 Då hämtar du bara den data som ska visas på aktuell sida.
 Använd attributen <code>itemsLength</code> och <code>fetchData</code>.
 Med attributet <code>itemsLength</code> anger du hur stor den totala datamängden är och som kommer ligga till grund för siduppdelning.
 Attributet <code>fetchData</code> anger den funktion som ska användas för hämtning av det data ska visas på aktuell sida.</p>
 
                 <div
-                    id="example-186f33"
+                    id="example-f04f86"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1555,9 +1492,9 @@ If the prop is not set the value of the text key <code>fkui.paginator.defaultNav
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/45075dd58cdeddbff42755a49b211f9500ecd2d0">45075dd</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/2735f8b2904a85eb98b9811572b2b07705a68c14">2735f8b</a>)<br />
         
-        2025-12-19 14:51
+        2025-12-19 15:20
 </div>
 <div class="toolbar__item">
     <form id="version">
