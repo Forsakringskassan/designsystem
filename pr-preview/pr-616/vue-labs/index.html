@@ -6,32 +6,36 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FKUI Vue Labs - FKUI Labs</title><link
             rel="stylesheet"
-            href="./assets/docs-57d28d.css"
+            href="./assets/docs-b41474.css"
             crossorigin
-            integrity="sha384-Wx7JdTUGimlK4YscLFBM1yuhB9ZUNc0jDMF4TyWUpZBSPe8rmSujX6CC+cJ5VJL9"
+            integrity="sha384-mPrIv5rkHg9AlkDs5szab0Yn0WZdS7QnrUJ6AIvcSGEcQzNoHJP0gjkCNW47Z7n2"
             
         />
         <link
             rel="stylesheet"
-            href="./assets/docs-fkui-7e095a.css"
+            href="./assets/docs-fkui-75bd89.css"
             crossorigin
-            integrity="sha384-PNJFElaJEMg/rBzjtDXJJsKVNaiAYrbzj2QUeKtdMkpj8kqZwstsdGv2DGoKJM0c"
+            integrity="sha384-diUuDFk2oqsMUPbgaLKBSOpu1jMvMPevAs7a+Z+8D8mKnJX7yi4NNma3uT7BDpxe"
             data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "./assets/vendor-vue-4637a8.js",
-    "@fkui/logic": "./assets/vendor-fkui-logic-8c84bb.js",
-    "@fkui/date": "./assets/vendor-fkui-date-706507.js",
-    "@fkui/vue": "./assets/vendor-fkui-vue-d9c288.js"
+    "vue": "./assets/vendor-vue-65d7e0.js",
+    "@fkui/logic": "./assets/vendor-fkui-logic-b0075f.js",
+    "@fkui/date": "./assets/vendor-fkui-date-1d9b40.js",
+    "@fkui/vue": "./assets/vendor-fkui-vue-7a35ec.js",
+    "@fkui/vue-labs": "./assets/vendor-fkui-vue-labs-c9de4a.js",
+    "@forsakringskassan/docs-live-example": "./assets/vendor-forsakringskassan-docs-live-example-c60a1e.js"
   },
   "integrity": {
-    "./assets/vendor-vue-4637a8.js": "sha384-Ny6ntWYTz77HLZUJdLBb6LhIpfmpKKBpRDaQlQlKhSfm28rJ917PQOdyS0DqDX3j",
-    "./assets/vendor-fkui-logic-8c84bb.js": "sha384-RrniwSfuMSlA7SjXKwCDe3WCFDAT7YzD5W9cZ72V2O+ra1SWGfl2cE+0tCxFMt0h",
-    "./assets/vendor-fkui-date-706507.js": "sha384-CtDnB5Oz96IJo7mwvbBUWqEgLh9d/PcPcFAceG7RNS3VCGKlFDaaEXdrK+JGR7Po",
-    "./assets/vendor-fkui-vue-d9c288.js": "sha384-KiOZKN9ob+K25jYJyFKF3pAltF/lzAOEfuRYD6tzXE2WPqCCiwcksjVqCLgNz6vV"
+    "./assets/vendor-vue-65d7e0.js": "sha384-MgeF33e4jkQ2EjO0v2n9zQ80YVIYPj41Yccdg07ykaiJRlxfzYv+oKmgqHz6HWqA",
+    "./assets/vendor-fkui-logic-b0075f.js": "sha384-8+BulV9pwaaof6GCYzDYWUpbIvcu9fc2Uh+6BPuhF2mi1O4YlXtNBWTy7IzL6v7N",
+    "./assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
+    "./assets/vendor-fkui-vue-7a35ec.js": "sha384-3wgjpawsly+lVfAvUzAAnZJ6zwP6MGO587d5olUnfZjdru5rjhZ1I9jJUk7BDre3",
+    "./assets/vendor-fkui-vue-labs-c9de4a.js": "sha384-jpJu2bhS9n1cfufQPTFU8zXRXk32h3Q/OYN+ZJYqdHUhPzJOGTXQbJJt/dZR2ebE",
+    "./assets/vendor-forsakringskassan-docs-live-example-c60a1e.js": "sha384-EfDXAfHkZWGo4Nl44hipgaFlVrbK9+OC7Ttnp4RNo2eCxop6CBrFM1CuU1iy2WEs"
   }
 }
         </script><script
@@ -42,10 +46,10 @@
             
         ></script><link
             rel="preload"
-            href="./search-data-cdf67f.json"
+            href="./search-data-3d31a0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-sUnhZOnckHbg1NZYpFxul1Ux/9MzFzeTaARsEl2YyKpRE8PVVTxzkzeE1ulqfv+j"
+            integrity="sha384-YCKHBUx/p9RW8w2RdV+vTTnZmAFh5YLjNi8QxuE1caKpMNZlOTzBlIPyMGw7xp91"
             id="search-data"
         />
     </head>
@@ -60,6 +64,13 @@
     <ul class="docs-topnav__list"><li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="./components/"> Komponenter </a>
         </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="./pageobjects/"> Pageobjekt </a>
+        </li>
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
@@ -71,6 +82,13 @@
                 <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="./components/"> Komponenter </a>
                     </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./pageobjects/"> Pageobjekt </a>
+                    </li>
                     </ul>
             </div>
         </li>
@@ -80,16 +98,17 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.15.0
+        6.31.1
     </span>
 </div>
 </div>
@@ -201,10 +220,10 @@ Den processen beskrivs på designsystem-sajten under &quot;Bidra till designsyst
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="./assets/main-ceda33.js"
+            src="./assets/main-3893bd.js"
             type="module"
             crossorigin
-            integrity="sha384-qY32m4kZH6xulZl6RPIzp6j00Uuqr8SReQcEWBniQ6rmqIFCh2gxrgaTfed4vl3a"
+            integrity="sha384-QnqFOTWAYDyMNzjW6B1++egFEdnx/l6Lz85o3oq0NwjAgMVFkKb1MUdAHnFIZP/Z"
             
         ></script>
     </body>

@@ -6,34 +6,34 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datamängdredigerare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-1e0e1d.css"
+            href="../../assets/docs-77b851.css"
             crossorigin
-            integrity="sha384-U13uoJQ9uwPPOcdiI0OyH0xPqSUM80yF5voFtTGIbdXrENd7Cm1mUmZxtWGOw1I+"
+            integrity="sha384-KlI1IZmyOlmaCcwSB+FVnySK3NLsqXvGgK5XB6+HaqiNqKYVI2LBZLBudWsZ+I1X"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-b2b541.css"
+            href="../../assets/docs-fkui-8db6e2.css"
             crossorigin
-            integrity="sha384-Ow4YptGUIBd4st02QSQjuUyIl6vlniCBY4Ykz20ux9lp0k21/KzAlYCNy9HjaMYU"
-            data-theme="fkui" disabled
+            integrity="sha384-vTovVyxgoau0TAxhQAbJ1x358WM8H9eQ1adHNjWcVKRfURbcLqXz0RYjgXEK36CD"
+            
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-99b838.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-3950ef.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-229d2a.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
+    "vue": "../../assets/vendor-vue-c5a790.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-b28e36.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-808bee.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-6c57c3.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-1e0efc.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
-    "../../assets/vendor-fkui-logic-3950ef.js": "sha384-vVD8JAtCNyiHUDRHLcQp35q8biQP7NfoGAJJjloLLaa86A/RabVq3qx1MWQ4ykOx",
-    "../../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../../assets/vendor-fkui-vue-229d2a.js": "sha384-GTkAZMZhTRNu6b9/0wcW5o5mn2iNenVVx26rZ8Z0dI8XnX3U/BhoDuCeMDFLzjM9",
-    "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
+    "../../assets/vendor-vue-c5a790.js": "sha384-hzAVTbJS6eimYLVZ6l3GsXeX8aFTLHN01gafHrTSmMNW9MEkzxauYeGwsqN0X/uX",
+    "../../assets/vendor-fkui-logic-b28e36.js": "sha384-RNuO/Z6O9w5N8xFj2rFwSjmZachX8pnoA3guUqL274gQoVE8pjD1x81AD5x4QzLh",
+    "../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
+    "../../assets/vendor-fkui-vue-6c57c3.js": "sha384-hWT3MqUW2Rd3HGCYNM2Ze+0pQoMXoEFtcxU6buMYwQGRip4mOeuyd4RvLympOv6N",
+    "../../assets/vendor-forsakringskassan-docs-live-example-1e0efc.js": "sha384-Oj8vEZy2tR2o2QOD+48F/usJ6aXfQb2mh/3tbNgVTpxUZeP+ynYXtsk4VJHWHwih"
   }
 }
         </script><script
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-f977ad.json"
+            href="../../search-data-963f70.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Ec/guVaF2koshxSArKy+IlAQLZA5eEqELBbANC8OOLpm73owONR8bjJIwQSq1zs4"
+            integrity="sha384-i9b5fmGET9jvOnWOZLSoy6lt7MrJuCP97B4laB1NeZS+W3wwPAhu+6+UGU82jinB"
             id="search-data"
         />
     </head>
@@ -215,15 +215,16 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
 <div class="toolbar__item">
-    <a class="sandbox-link docs-topnav__anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1zmzAQ/SsqJzxj4NCeXNv9SJ2ZZNok02R64kJgwYqFUPXhOuP6v3eFwGBc2xOPDwK9fdp92n1sPa3Siue0CF9Uxb2Jt405wV/spVUpKAN5LzStuIq9CWn23H7CWPXntn6vpYFxfy9dQro6sfeiNvZ97D1IUCDXEHsH+zqRBWgHWTzewQbXB4CyygzDqAuAn6AqZmzuDvrV8AzLGWDrKm5KUUlNefGkFhsNXLUF2+QdetdExd7awNUFaboS3ocfmviY498bewq0EaFWKDWtjyVbol8FkC9CjEnFf1SGa8jIjuSyKt15sfcx5nv0r4TRLLEnPzBTUN5BP+crQ6OjAMpfINWPQlINagmghxEUWyBg9DnIIE8M01FGlY7y6Ciw5o05bGrm3PDUpkHqmvxEiImtgvwlKDXklEM2mpB1RbNWHpoT/x3iRn29JEZLjsSNTm6BqNAo8IfVjuoMLGKvle+PyGzep8R6lCZ6CSV8cyV9p3xFZiSrUlMC12EqIdGwYIjg2o89hvuxZ8lbjmF0KIEhQ+wp/cp6cpzELyXkZNYBXG8stRZqEkWGi1UR4pBF7g7q8PYCPjNMDq/A3QNuB6lSwTqRNHnGs0N8Ojh7X9YSkixE6YBn/jChTrlOogwULfjbxeniLsnSQzpBzmjgsE3xlwvsqA9LO2pbv019ZxduDt10BGUijpzPbR2PdZMkZucc5WQZiGhvEKcqAlXiKGWwwZMG9uMCWFXQ9DxnDXkTaW0D5ygRcNBnHSOuTrG+wSrOnT2kOWz4/7ENbBR9JsQC8NqmKpVUaGdChCW8mKEDY/bzngWiHV8ZKbGDbrDtE57CGH0nP+Oy10/4YbmmwHpWfMJf3cl7VBjVLxqvdHNGm1Ox/Y9TqdvTeWiL+2R7/KpCd9tou3QN7rjw8wYMbdFYNiwCB9QN5zRyUmDh+KChFFZVfLLKTfPAkgV5XdI6qFlQqY4t9vD1em+3ONi/DZWQzRearkDradSnaGmFhPk0RZL5dktuH+/vQqUlfkpp/upvO/LdiOx206gGTiMbZPPt5ejt/gGfsNxE"> Sandlåda </a>
+    <a class="sandbox-link docs-topnav__anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1z2jAQ/SuqTmYG7EN7okDTpmQmmTbJNJmefHHttVGQZVUflAzlv3dlYWxMgQnDQbbePu0+7T5vqNFpJXJWhC+6EnRMN7Eg+ItpWpWScVAP0rBK6JiOyW7P7yecV3/u6vdGWRh299IFpMsTey967d7H9FGBBrWCmB7sm0QVYDxk/nQPa1wfAMoqsxyjLgB+gK64dbl76BcrMiynh62ruC1lpQwTxbOerw0I3RTskvfo7S4qpisL1xekaUt4H37YxccC/3RINRgrQ6NRalYfSzbEvEogn6Uckkp8r6wwkJEtyVVV+vNi+jEWezQTL5CaJ6mYAb0AMC32Kl9aFjG80RFnv0YZ5InlJsqYNlEeHQUe8v5MOMsSV9EjtwUTfdomkVjAug7JrUgdnNQ1BYmUY1cF+UtQasiZgGwwJquKZY08LCfBO8QNunopjFYCiXc6+QWiQqsh6Gc1qDNwiL1WQTAg01mXEgXQhpgFlPDVa/CNiSWZkqxKbQnChKmCxMCcI0KYIKYc92PqyBuOfnSogCNDTLV55R39TuIXCnIybQG+NxbGSD2OIivksghxyCKvbh3e3NgVx+TwzuqL8zucFQtMW2O3dQ7d17OAJAtRMxBZ0M+klazVJgPNCvF2Vdq4S3p0kF6JM8V77K7qywW21IelHTV40KS+dQs/gL7fR2UijyzPbx3P8y5JzM5byckyENFcHc5fBLrEoctgjSf1fMcH8Kpg6XnOGvIm0npOz1Ei4KDBWkZcnWJ9g6mcO7tPc5DIf9l6/okGE2IBeG0TnSomjXcfwhNRTNF6MftZx9TQh6+tUthBt9j2iUhhiIaTn7HXm2f8otww4B0PPjTAPdSfvEeFUf1iZ5J+ztjuVGz/41Tq9vTm2eA+uR6/rtDW1sYtfYN7LvyuAUc/tI4Ni8AB9cM5ibwUWDg+GCilUxWfnHKTfOTIRnld0mpUs6BSLVtM8fVq77M42L8tU5DN5oYtwZhJ1KVoaKWC2SRFktlmQ+6eHu5DbRR+Q1n+Gmxa8u2AbLeTqAZOIhfk8u3kSLf/AFHv2ZE="> Sandlåda </a>
 </div>
 </div>
             </div>
@@ -672,6 +673,17 @@
         >
             Offline
         </a>
+    </li><li class="link ">
+        <a
+            href="../pagination.html"
+            
+            
+            
+            data-path="components/pagination.html"
+            
+        >
+            Paginering
+        </a>
     </li><li class="expandable ">
         <details >
             <summary>Presentationsfält</summary>
@@ -1083,7 +1095,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/a4cff49222d437b2b323713964965ef4bd75b8da/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8dc9a3fe652dea1e7ac194b1e3bef5a9ff3d7fc3/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -1124,6 +1136,8 @@
                                 
                                 <li><a href="#anpassade_texter">Anpassade texter</a></li>
                                 
+                                <li><a href="#modalstorlek">Modalstorlek</a></li>
+                                
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
                                 <li><a href="#api">API</a></li>
@@ -1150,15 +1164,17 @@ som tydligör vad som läggs till.</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-05a07d"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-ef4921"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-05a07d.js"></script>
-    </div>
+        <script type="module" src="./FCrudDatasetTableExample-ef4921.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1212,7 +1228,7 @@ som tydligör vad som läggs till.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ updateItem, deleteItem }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;variant&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
@@ -1284,7 +1300,7 @@ som tydligör vad som läggs till.</p>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
-            Vill du verkligen radera fruken &quot;{{ item.name }}&quot; med ID {{ item.id }}
+            Vill du verkligen radera frukten &quot;{{ item.name }}&quot; med ID {{ item.id }}
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -1356,15 +1372,17 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     data-language="vue"
                 >
                     
-                    <div class="code-preview__preview">
-        <div id="example-e51959"></div>
+                    <div class="code-preview__preview user-background">
+                        
+        <div id="example-8236e9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetAdditionalButtons-e51959.js"></script>
-    </div>
+        <script type="module" src="./FCrudDatasetAdditionalButtons-8236e9.js"></script>
+    
+                    </div>
                 </div>
             <h2 id="datatabell_med_lagg_till_knapp"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
@@ -1375,15 +1393,17 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-bf5e75"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-c8ff89"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-bf5e75.js"></script>
-    </div>
+        <script type="module" src="./FCrudDatasetTableCreateExample-c8ff89.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1484,15 +1504,17 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-d242fa"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-aa3f93"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableUpdateExample-d242fa.js"></script>
-    </div>
+        <script type="module" src="./FCrudDatasetTableUpdateExample-aa3f93.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1511,7 +1533,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableButton</span>, <span class="hljs-title class_">FTableColumn</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableButton</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
@@ -1582,15 +1604,17 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-31ea98"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-bc2f38"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetListExample-31ea98.js"></script>
-    </div>
+        <script type="module" src="./FCrudDatasetListExample-bc2f38.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1652,7 +1676,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span>
         <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span>
         <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;f-crud-dataset-list-example&quot;</span>
-        <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>
+        <span class="hljs-attr">:before-create</span>
         @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
         @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
         @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
@@ -1753,15 +1777,17 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-459f32"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-c613c1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetSortListExample-459f32.js"></script>
-    </div>
+        <script type="module" src="./FCrudDatasetSortListExample-c613c1.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1826,7 +1852,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">:before-create</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ updateItem, deleteItem }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
                 <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span>
@@ -1946,15 +1972,17 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-9ec1aa"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-0e221c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetCustomTextExample-9ec1aa.js"></script>
-    </div>
+        <script type="module" src="./FCrudDatasetCustomTextExample-0e221c.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -2016,7 +2044,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span>
         <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span>
-        <span class="hljs-attr">:before-create</span>=<span class="hljs-string">&quot;beforeCreate&quot;</span>
+        <span class="hljs-attr">:before-create</span>
         <span class="hljs-attr">add-new-modal-header</span>=<span class="hljs-string">&quot;Lägg till ny frukt&quot;</span>
         <span class="hljs-attr">modify-modal-header</span>=<span class="hljs-string">&quot;Ändra land&quot;</span>
         <span class="hljs-attr">delete-modal-header</span>=<span class="hljs-string">&quot;Vill du ta bort frukten?&quot;</span>
@@ -2111,7 +2139,33 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 </code></pre>
                 </div>
             </div>
-        <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att <a href="../../gettingstarted/use-design-system/translate-text.html">anpassa och översätta text</a>.</p>
+        <h2 id="modalstorlek"><a class="header-anchor" href="#modalstorlek">Modalstorlek</a></h2><p class="docs-paragraph">Storleken på modalerna för &quot;Lägg till&quot; och &quot;Ändra&quot; kan anpassas med propen <code>formModalSize</code>.</p>
+<p class="docs-paragraph">Giltiga värden är:</p>
+<ul>
+<li><code>&quot;&quot;</code> (tom sträng, standard)</li>
+<li><code>&quot;small&quot;</code></li>
+<li><code>&quot;medium&quot;</code></li>
+<li><code>&quot;large&quot;</code></li>
+<li><code>&quot;fullwidth&quot;</code></li>
+</ul>
+
+                <div
+                    id="example-5284b3"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">form-modal-size</span>=<span class="hljs-string">&quot;large&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Se <a href="../modal/fformmodal.html"><code>FFormModal</code></a> för mer information om modalstorlekar.</p>
+<h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att <a href="../../gettingstarted/use-design-system/translate-text.html">anpassa och översätta text</a>.</p>
 
         <dl class="docs-api docs-api--translation">
             
@@ -2411,25 +2465,6 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
         <dl class="docs-api docs-api--slots">
             
                         <dt>
-                            <code id="fcruddataset-prop-v-model"
-                                ><a class="docs-api__anchor" href="#fcruddataset-prop-v-model"
-                                    ><span class="docs-api__name"
-                                        >v-model</span
-                                    >: T[]</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>The list of items that should be deleted, modified or added to.
-If the prop is not set an empty array will be used.</p>
-
-                            <p class="doc-api__item">Default: <code>() =&gt; []</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
                             <code id="fcruddataset-prop-beforecreate"
                                 ><a class="docs-api__anchor" href="#fcruddataset-prop-beforecreate"
                                     ><span class="docs-api__name"
@@ -2445,24 +2480,6 @@ If the prop is not set an empty array will be used.</p>
 Or to give the user suggestions for inputs. If the prop is not used an empty item will be returned.</p>
 
                             <p class="doc-api__item">Default: <code>undefined</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fcruddataset-prop-primarybuttonright"
-                                ><a class="docs-api__anchor" href="#fcruddataset-prop-primarybuttonright"
-                                    ><span class="docs-api__name"
-                                        >primaryButtonRight</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>If <code>true</code> the primary button in the modals will be placed to the right side instead of to the left.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
                             
                         </dd>
                     
@@ -2585,6 +2602,24 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             
                         </dd>
                     
+                        <dt>
+                            <code id="fcruddataset-prop-formmodalsize"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-formmodalsize"
+                                    ><span class="docs-api__name"
+                                        >formModalSize</span
+                                    >: FModalSize | &quot;fullscreen&quot; | &quot;&quot;</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Property for changing the &quot;add&quot; and &quot;modify&quot; modal size</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
         </dl>
     
         <h4 id="fcruddataset-events">
@@ -2670,7 +2705,7 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             <p>Slot for displaying the data.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger modification modal</li><li><code>deleteItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger deletion modal</li>
+                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger modification modal</li><li><code>deleteItem: (item: T, nested?: keyof T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger deletion modal</li>
                             </ul>
                             
                         </dd>
@@ -2793,13 +2828,13 @@ Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.ht
         <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
         <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
         <li><a class="anchor" href="https://www.figma.com/@fkds">Figma</a></li>
-        <li><a class="anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1zmzAQ/SsqJzxj4NCeXNv9SJ2ZZNok02R64kJgwYqFUPXhOuP6v3eFwGBc2xOPDwK9fdp92n1sPa3Siue0CF9Uxb2Jt405wV/spVUpKAN5LzStuIq9CWn23H7CWPXntn6vpYFxfy9dQro6sfeiNvZ97D1IUCDXEHsH+zqRBWgHWTzewQbXB4CyygzDqAuAn6AqZmzuDvrV8AzLGWDrKm5KUUlNefGkFhsNXLUF2+QdetdExd7awNUFaboS3ocfmviY498bewq0EaFWKDWtjyVbol8FkC9CjEnFf1SGa8jIjuSyKt15sfcx5nv0r4TRLLEnPzBTUN5BP+crQ6OjAMpfINWPQlINagmghxEUWyBg9DnIIE8M01FGlY7y6Ciw5o05bGrm3PDUpkHqmvxEiImtgvwlKDXklEM2mpB1RbNWHpoT/x3iRn29JEZLjsSNTm6BqNAo8IfVjuoMLGKvle+PyGzep8R6lCZ6CSV8cyV9p3xFZiSrUlMC12EqIdGwYIjg2o89hvuxZ8lbjmF0KIEhQ+wp/cp6cpzELyXkZNYBXG8stRZqEkWGi1UR4pBF7g7q8PYCPjNMDq/A3QNuB6lSwTqRNHnGs0N8Ojh7X9YSkixE6YBn/jChTrlOogwULfjbxeniLsnSQzpBzmjgsE3xlwvsqA9LO2pbv019ZxduDt10BGUijpzPbR2PdZMkZucc5WQZiGhvEKcqAlXiKGWwwZMG9uMCWFXQ9DxnDXkTaW0D5ygRcNBnHSOuTrG+wSrOnT2kOWz4/7ENbBR9JsQC8NqmKpVUaGdChCW8mKEDY/bzngWiHV8ZKbGDbrDtE57CGH0nP+Oy10/4YbmmwHpWfMJf3cl7VBjVLxqvdHNGm1Ox/Y9TqdvTeWiL+2R7/KpCd9tou3QN7rjw8wYMbdFYNiwCB9QN5zRyUmDh+KChFFZVfLLKTfPAkgV5XdI6qFlQqY4t9vD1em+3ONi/DZWQzRearkDradSnaGmFhPk0RZL5dktuH+/vQqUlfkpp/upvO/LdiOx206gGTiMbZPPt5ejt/gGfsNxE">Sandlåda</a></li>
+        <li><a class="anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1z2jAQ/SuqTmYG7EN7okDTpmQmmTbJNJmefHHttVGQZVUflAzlv3dlYWxMgQnDQbbePu0+7T5vqNFpJXJWhC+6EnRMN7Eg+ItpWpWScVAP0rBK6JiOyW7P7yecV3/u6vdGWRh299IFpMsTey967d7H9FGBBrWCmB7sm0QVYDxk/nQPa1wfAMoqsxyjLgB+gK64dbl76BcrMiynh62ruC1lpQwTxbOerw0I3RTskvfo7S4qpisL1xekaUt4H37YxccC/3RINRgrQ6NRalYfSzbEvEogn6Uckkp8r6wwkJEtyVVV+vNi+jEWezQTL5CaJ6mYAb0AMC32Kl9aFjG80RFnv0YZ5InlJsqYNlEeHQUe8v5MOMsSV9EjtwUTfdomkVjAug7JrUgdnNQ1BYmUY1cF+UtQasiZgGwwJquKZY08LCfBO8QNunopjFYCiXc6+QWiQqsh6Gc1qDNwiL1WQTAg01mXEgXQhpgFlPDVa/CNiSWZkqxKbQnChKmCxMCcI0KYIKYc92PqyBuOfnSogCNDTLV55R39TuIXCnIybQG+NxbGSD2OIivksghxyCKvbh3e3NgVx+TwzuqL8zucFQtMW2O3dQ7d17OAJAtRMxBZ0M+klazVJgPNCvF2Vdq4S3p0kF6JM8V77K7qywW21IelHTV40KS+dQs/gL7fR2UijyzPbx3P8y5JzM5byckyENFcHc5fBLrEoctgjSf1fMcH8Kpg6XnOGvIm0npOz1Ei4KDBWkZcnWJ9g6mcO7tPc5DIf9l6/okGE2IBeG0TnSomjXcfwhNRTNF6MftZx9TQh6+tUthBt9j2iUhhiIaTn7HXm2f8otww4B0PPjTAPdSfvEeFUf1iZ5J+ztjuVGz/41Tq9vTm2eA+uR6/rtDW1sYtfYN7LvyuAUc/tI4Ni8AB9cM5ibwUWDg+GCilUxWfnHKTfOTIRnld0mpUs6BSLVtM8fVq77M42L8tU5DN5oYtwZhJ1KVoaKWC2SRFktlmQ+6eHu5DbRR+Q1n+Gmxa8u2AbLeTqAZOIhfk8u3kSLf/AFHv2ZE=">Sandlåda</a></li>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">pageobject-same-page (<a href="https://github.com/Forsakringskassan/designsystem/commits/a4cff49222d437b2b323713964965ef4bd75b8da">a4cff49</a>)<br />
+<div class="footer__right"><div class="version">pageobject-same-page (<a href="https://github.com/Forsakringskassan/designsystem/commits/8dc9a3fe652dea1e7ac194b1e3bef5a9ff3d7fc3">8dc9a3f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/616">PR 616</a><br />
-        2025-08-13 12:21
+        2025-12-19 14:55
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2903,23 +2938,24 @@ Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.ht
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog><script
-            src="../../assets/processors/motd/index-26ba41.js"
+</dialog>
+<div id="teleport-target" class="user-theme"></div><script
+            src="../../assets/processors/motd/index-cda4cc.js"
             type="module"
             crossorigin
-            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
+            integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-faae45.js"
+            src="../../assets/processors/selectable-version/select-version-390b40.js"
             type="module"
             crossorigin
-            integrity="sha384-VebEbxY/p3c04mDpvDhP35IMs4bk932+mNK+qhKt6hmh7hE+01fUrUurMRetl1Mu"
+            integrity="sha384-ECE245jGAxbOVeD8dKCW23dMFdXL5CWxzajPqD6a8j+ab7zJ8xFR6602MfoYaGv3"
             
         ></script><script
-            src="../../assets/main-067e4b.js"
+            src="../../assets/main-f8637e.js"
             type="module"
             crossorigin
-            integrity="sha384-gTbvEIgdszA5YuhNiN3FhIPxq3+uUJp+XmtEHRSrZG3z25eKtfHJsLvjxZiv4ihA"
+            integrity="sha384-jzo/moGACvKxkccaNdVeDo4wKxEZb03EvtzuHt5dC8OWbc+DOsirYwhdTHC/7krD"
             
         ></script>
     </body>

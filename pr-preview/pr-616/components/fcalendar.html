@@ -6,34 +6,34 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Kalender - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-1e0e1d.css"
+            href="../assets/docs-77b851.css"
             crossorigin
-            integrity="sha384-U13uoJQ9uwPPOcdiI0OyH0xPqSUM80yF5voFtTGIbdXrENd7Cm1mUmZxtWGOw1I+"
+            integrity="sha384-KlI1IZmyOlmaCcwSB+FVnySK3NLsqXvGgK5XB6+HaqiNqKYVI2LBZLBudWsZ+I1X"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-b2b541.css"
+            href="../assets/docs-fkui-8db6e2.css"
             crossorigin
-            integrity="sha384-Ow4YptGUIBd4st02QSQjuUyIl6vlniCBY4Ykz20ux9lp0k21/KzAlYCNy9HjaMYU"
-            data-theme="fkui" disabled
+            integrity="sha384-vTovVyxgoau0TAxhQAbJ1x358WM8H9eQ1adHNjWcVKRfURbcLqXz0RYjgXEK36CD"
+            
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-99b838.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-3950ef.js",
-    "@fkui/date": "../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-229d2a.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
+    "vue": "../assets/vendor-vue-c5a790.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-b28e36.js",
+    "@fkui/date": "../assets/vendor-fkui-date-808bee.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-6c57c3.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-1e0efc.js"
   },
   "integrity": {
-    "../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
-    "../assets/vendor-fkui-logic-3950ef.js": "sha384-vVD8JAtCNyiHUDRHLcQp35q8biQP7NfoGAJJjloLLaa86A/RabVq3qx1MWQ4ykOx",
-    "../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../assets/vendor-fkui-vue-229d2a.js": "sha384-GTkAZMZhTRNu6b9/0wcW5o5mn2iNenVVx26rZ8Z0dI8XnX3U/BhoDuCeMDFLzjM9",
-    "../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
+    "../assets/vendor-vue-c5a790.js": "sha384-hzAVTbJS6eimYLVZ6l3GsXeX8aFTLHN01gafHrTSmMNW9MEkzxauYeGwsqN0X/uX",
+    "../assets/vendor-fkui-logic-b28e36.js": "sha384-RNuO/Z6O9w5N8xFj2rFwSjmZachX8pnoA3guUqL274gQoVE8pjD1x81AD5x4QzLh",
+    "../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
+    "../assets/vendor-fkui-vue-6c57c3.js": "sha384-hWT3MqUW2Rd3HGCYNM2Ze+0pQoMXoEFtcxU6buMYwQGRip4mOeuyd4RvLympOv6N",
+    "../assets/vendor-forsakringskassan-docs-live-example-1e0efc.js": "sha384-Oj8vEZy2tR2o2QOD+48F/usJ6aXfQb2mh/3tbNgVTpxUZeP+ynYXtsk4VJHWHwih"
   }
 }
         </script><script
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-f977ad.json"
+            href="../search-data-963f70.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Ec/guVaF2koshxSArKy+IlAQLZA5eEqELBbANC8OOLpm73owONR8bjJIwQSq1zs4"
+            integrity="sha384-i9b5fmGET9jvOnWOZLSoy6lt7MrJuCP97B4laB1NeZS+W3wwPAhu+6+UGU82jinB"
             id="search-data"
         />
     </head>
@@ -215,15 +215,16 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
 <div class="toolbar__item">
-    <a class="sandbox-link docs-topnav__anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1zmzAQ/SsqJzxj4NCeXNv9SJ2ZZNok02R64kJgwYqFUPXhOuP6v3eFwGBc2xOPDwK9fdp92n1sPa3Siue0CF9Uxb2Jt405wV/spVUpKAN5LzStuIq9CWn23H7CWPXntn6vpYFxfy9dQro6sfeiNvZ97D1IUCDXEHsH+zqRBWgHWTzewQbXB4CyygzDqAuAn6AqZmzuDvrV8AzLGWDrKm5KUUlNefGkFhsNXLUF2+QdetdExd7awNUFaboS3ocfmviY498bewq0EaFWKDWtjyVbol8FkC9CjEnFf1SGa8jIjuSyKt15sfcx5nv0r4TRLLEnPzBTUN5BP+crQ6OjAMpfINWPQlINagmghxEUWyBg9DnIIE8M01FGlY7y6Ciw5o05bGrm3PDUpkHqmvxEiImtgvwlKDXklEM2mpB1RbNWHpoT/x3iRn29JEZLjsSNTm6BqNAo8IfVjuoMLGKvle+PyGzep8R6lCZ6CSV8cyV9p3xFZiSrUlMC12EqIdGwYIjg2o89hvuxZ8lbjmF0KIEhQ+wp/cp6cpzELyXkZNYBXG8stRZqEkWGi1UR4pBF7g7q8PYCPjNMDq/A3QNuB6lSwTqRNHnGs0N8Ojh7X9YSkixE6YBn/jChTrlOogwULfjbxeniLsnSQzpBzmjgsE3xlwvsqA9LO2pbv019ZxduDt10BGUijpzPbR2PdZMkZucc5WQZiGhvEKcqAlXiKGWwwZMG9uMCWFXQ9DxnDXkTaW0D5ygRcNBnHSOuTrG+wSrOnT2kOWz4/7ENbBR9JsQC8NqmKpVUaGdChCW8mKEDY/bzngWiHV8ZKbGDbrDtE57CGH0nP+Oy10/4YbmmwHpWfMJf3cl7VBjVLxqvdHNGm1Ox/Y9TqdvTeWiL+2R7/KpCd9tou3QN7rjw8wYMbdFYNiwCB9QN5zRyUmDh+KChFFZVfLLKTfPAkgV5XdI6qFlQqY4t9vD1em+3ONi/DZWQzRearkDradSnaGmFhPk0RZL5dktuH+/vQqUlfkpp/upvO/LdiOx206gGTiMbZPPt5ejt/gGfsNxE"> Sandlåda </a>
+    <a class="sandbox-link docs-topnav__anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1z2jAQ/SuqTmYG7EN7okDTpmQmmTbJNJmefHHttVGQZVUflAzlv3dlYWxMgQnDQbbePu0+7T5vqNFpJXJWhC+6EnRMN7Eg+ItpWpWScVAP0rBK6JiOyW7P7yecV3/u6vdGWRh299IFpMsTey967d7H9FGBBrWCmB7sm0QVYDxk/nQPa1wfAMoqsxyjLgB+gK64dbl76BcrMiynh62ruC1lpQwTxbOerw0I3RTskvfo7S4qpisL1xekaUt4H37YxccC/3RINRgrQ6NRalYfSzbEvEogn6Uckkp8r6wwkJEtyVVV+vNi+jEWezQTL5CaJ6mYAb0AMC32Kl9aFjG80RFnv0YZ5InlJsqYNlEeHQUe8v5MOMsSV9EjtwUTfdomkVjAug7JrUgdnNQ1BYmUY1cF+UtQasiZgGwwJquKZY08LCfBO8QNunopjFYCiXc6+QWiQqsh6Gc1qDNwiL1WQTAg01mXEgXQhpgFlPDVa/CNiSWZkqxKbQnChKmCxMCcI0KYIKYc92PqyBuOfnSogCNDTLV55R39TuIXCnIybQG+NxbGSD2OIivksghxyCKvbh3e3NgVx+TwzuqL8zucFQtMW2O3dQ7d17OAJAtRMxBZ0M+klazVJgPNCvF2Vdq4S3p0kF6JM8V77K7qywW21IelHTV40KS+dQs/gL7fR2UijyzPbx3P8y5JzM5byckyENFcHc5fBLrEoctgjSf1fMcH8Kpg6XnOGvIm0npOz1Ei4KDBWkZcnWJ9g6mcO7tPc5DIf9l6/okGE2IBeG0TnSomjXcfwhNRTNF6MftZx9TQh6+tUthBt9j2iUhhiIaTn7HXm2f8otww4B0PPjTAPdSfvEeFUf1iZ5J+ztjuVGz/41Tq9vTm2eA+uR6/rtDW1sYtfYN7LvyuAUc/tI4Ni8AB9cM5ibwUWDg+GCilUxWfnHKTfOTIRnld0mpUs6BSLVtM8fVq77M42L8tU5DN5oYtwZhJ1KVoaKWC2SRFktlmQ+6eHu5DbRR+Q1n+Gmxa8u2AbLeTqAZOIhfk8u3kSLf/AFHv2ZE="> Sandlåda </a>
 </div>
 </div>
             </div>
@@ -672,6 +673,17 @@
         >
             Offline
         </a>
+    </li><li class="link ">
+        <a
+            href="./pagination.html"
+            
+            
+            
+            data-path="components/pagination.html"
+            
+        >
+            Paginering
+        </a>
     </li><li class="expandable ">
         <details >
             <summary>Presentationsfält</summary>
@@ -1083,13 +1095,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/a4cff49222d437b2b323713964965ef4bd75b8da/packages/vue/src/components/FCalendar/FCalendar.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8dc9a3fe652dea1e7ac194b1e3bef5a9ff3d7fc3/packages/vue/src/components/FCalendar/FCalendar.vue">
                 FCalendar
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/a4cff49222d437b2b323713964965ef4bd75b8da/packages/vue/src/components/FCalendar/FCalendarDay.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8dc9a3fe652dea1e7ac194b1e3bef5a9ff3d7fc3/packages/vue/src/components/FCalendar/FCalendarDay.vue">
                 FCalendarDay
             </a>
             
@@ -1114,6 +1126,8 @@
                                 
                                 <li><a href="#valbara_dagar">Valbara dagar</a></li>
                                 
+                                <li><a href="#arsvaljare">Årsväljare</a></li>
+                                
                                 <li><a href="#storlek">Storlek</a></li>
                                 
                                 <li><a href="#manad_som_visas">Månad som visas</a></li>
@@ -1123,6 +1137,8 @@
                                 <li><a href="#egen_dagkomponent">Egen dagkomponent</a></li>
                                 
                                 <li><a href="#valja_flera_dagar">Välja flera dagar</a></li>
+                                
+                                <li><a href="#textnycklar">Textnycklar</a></li>
                                 
                                 <li><a href="#props_events_slots">Props, Events &amp; Slots</a></li>
                                 
@@ -1134,71 +1150,24 @@
 
                     <div id="content"><p class="docs-paragraph">Kalendern används när en användare behöver välja flera dagar, välja dagar och fylla i information om dem, se mer information om en dag eller få en överblick över en månad.</p>
 
-            <div
-                id="example-aa8614"
-                class="code-preview code-preview--default"
-                data-test="calendar-default"
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview">
-        <div id="example-3ba029"></div>
+                <div
+                    id="example-fe6b09"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags="live-example"
+                    data-language="vue"
+                >
+                    
+        <div id="example-e72119"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCalendarDefault-3ba029.js"></script>
-    </div>
-                <div>
-            <button
-                type="button"
-                class="button button--discrete code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <i class="icon icon--code"></i>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCalendar</span>, <span class="hljs-title class_">FCalendarDay</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FCalendarDefault&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCalendar</span>,
-        <span class="hljs-title class_">FCalendarDay</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">month</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-10-01&quot;</span>),
-            <span class="hljs-attr">min</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-01-01&quot;</span>),
-            <span class="hljs-attr">max</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-01-30&quot;</span>),
-        };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ date, isFocused }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-calendar-day</span> <span class="hljs-attr">:day</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">:focused</span>=<span class="hljs-string">&quot;isFocused&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar-day</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
+        <script type="module" src="./FCalendarLiveExample-e72119.js"></script>
+    
                 </div>
-            </div>
-        <p class="docs-paragraph">Varje dag i kalendern är en knapp och det går att styra vad som ska hända när användaren väljer en dag.</p>
+            <p class="docs-paragraph">Varje dag i kalendern är en knapp och det går att styra vad som ska hända när användaren väljer en dag.</p>
 <p class="docs-paragraph">Till exempel kan ett klick på en dag i kalendern användas för att:</p>
 <ul>
 <li>Visa information om dagen</li>
@@ -1225,6 +1194,25 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-calendar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;month&quot;</span> <span class="hljs-attr">:min-date</span>=<span class="hljs-string">&quot;min&quot;</span> <span class="hljs-attr">:max-date</span>=<span class="hljs-string">&quot;max&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-calendar</span>&gt;</span>
 </code></pre>
                 </div>
+            <h2 id="arsvaljare"><a class="header-anchor" href="#arsvaljare">Årsväljare</a></h2><p class="docs-paragraph">En årsväljare gör det lättare för användaren att byta till ett annat år och används när kalendern sträcker sig över flera år.
+Årsväljaren är som standard inaktiverad och aktiveras genom att använda propen <code>year-selector</code>:</p>
+
+                <div
+                    id="example-9555e4"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-calendar
+     v-model=&quot;model&quot;
+     :min-date=&quot;min&quot;
+     :max-date=&quot;max&quot;
+<span class="hljs-addition">+    year-selector</span>
+ &gt;&lt;/f-calendar&gt;
+</code></pre>
+                </div>
             <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p class="docs-paragraph">Kalendern är 100% i bredd. För att ändra bredden placeras kalendern i en container som hanterar komponentens bredd.</p>
 <p class="docs-paragraph">Kolumnen med veckonummer visas inte på skärmar som är under 325px breda.</p>
 <h2 id="manad_som_visas"><a class="header-anchor" href="#manad_som_visas">Månad som visas</a></h2><p class="docs-paragraph">För att hantera vilken månad som visas används <code>v-model</code>.
@@ -1234,7 +1222,7 @@ För att ändra detta beteende skickar du in en <a href="../date/classes/FDate.h
 Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
                 <div
-                    id="example-61999d"
+                    id="example-759dd9"
                     class="code-preview code-preview--default"
                     
                     
@@ -1253,15 +1241,16 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 <p class="docs-paragraph">I följande exempel av kalendern har en egen dagkomponent använts för att skapa en kalender med olika schemalagda händelser.</p>
 
             <div
-                id="example-92e55f"
+                id="example-6d5beb"
                 class="code-preview code-preview--default"
                 data-test="calendar-custom"
                 
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-581d45"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-95eff2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1290,8 +1279,9 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCalendarCustom-581d45.js"></script>
-    </div>
+        <script type="module" src="./FCalendarCustom-95eff2.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1308,8 +1298,8 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent, shallowRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCalendar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1345,7 +1335,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
     <span class="hljs-string">&quot;Designmöte&quot;</span>,
 ];
 
-<span class="hljs-keyword">const</span> randomEvents = [];
+<span class="hljs-keyword">const</span> randomEvents = [] <span class="hljs-keyword">as</span> string[];
 
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">31</span>; i++) {
     <span class="hljs-keyword">const</span> randomIndex = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * events.<span class="hljs-property">length</span>);
@@ -1361,16 +1351,16 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">month</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-12-24&quot;</span>),
-            <span class="hljs-attr">min</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-01-01&quot;</span>),
-            <span class="hljs-attr">max</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-01-30&quot;</span>),
-            <span class="hljs-attr">tabDay</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-12-24&quot;</span>),
-            <span class="hljs-attr">selectedDay</span>: <span class="hljs-literal">undefined</span>,
+            <span class="hljs-attr">month</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-12-24&quot;</span>)),
+            <span class="hljs-attr">min</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-01-01&quot;</span>)),
+            <span class="hljs-attr">max</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-01-30&quot;</span>)),
+            <span class="hljs-attr">tabDay</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-12-24&quot;</span>)),
+            <span class="hljs-attr">selectedDay</span>: shallowRef&lt;<span class="hljs-title class_">FDate</span> | <span class="hljs-literal">undefined</span>&gt;(<span class="hljs-literal">undefined</span>),
         };
     },
     <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">getEvents</span>(<span class="hljs-params">date</span>) {
-            <span class="hljs-keyword">const</span> dayOfYear = <span class="hljs-string">`<span class="hljs-subst">${date.month}</span>-<span class="hljs-subst">${date.day}</span>`</span>;
+        <span class="hljs-title function_">getEvents</span>(<span class="hljs-params">date: FDate</span>) {
+            <span class="hljs-keyword">const</span> dayOfYear = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">String</span>(date.month)}</span>-<span class="hljs-subst">${<span class="hljs-built_in">String</span>(date.day)}</span>`</span>;
 
             <span class="hljs-keyword">const</span> match = holidays.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> it.<span class="hljs-property">date</span> === dayOfYear);
             <span class="hljs-keyword">if</span> (match) {
@@ -1380,9 +1370,9 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
             <span class="hljs-keyword">const</span> eventIndex = date.<span class="hljs-property">day</span> - <span class="hljs-number">1</span>;
             <span class="hljs-keyword">return</span> randomEvents[eventIndex];
         },
-        <span class="hljs-title function_">eventClasses</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">eventClasses</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">const</span> classes = [<span class="hljs-string">&quot;event&quot;</span>];
-            <span class="hljs-keyword">const</span> dayOfYear = <span class="hljs-string">`<span class="hljs-subst">${date.month}</span>-<span class="hljs-subst">${date.day}</span>`</span>;
+            <span class="hljs-keyword">const</span> dayOfYear = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">String</span>(date.month)}</span>-<span class="hljs-subst">${<span class="hljs-built_in">String</span>(date.day)}</span>`</span>;
 
             <span class="hljs-keyword">const</span> match = holidays.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> it.<span class="hljs-property">date</span> === dayOfYear);
             <span class="hljs-keyword">if</span> (match) {
@@ -1391,7 +1381,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
             <span class="hljs-keyword">return</span> classes;
         },
-        <span class="hljs-title function_">dayClasses</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">dayClasses</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">const</span> classes = [<span class="hljs-string">&quot;my-custom-day&quot;</span>];
 
             <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedDay</span> &amp;&amp; date.<span class="hljs-title function_">equals</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedDay</span>)) {
@@ -1400,7 +1390,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
 
             <span class="hljs-keyword">return</span> classes;
         },
-        <span class="hljs-title function_">onSelectDay</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">onSelectDay</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedDay</span> = date;
         },
     },
@@ -1454,7 +1444,7 @@ Då hamnar fokus på den dagen om den finns i den aktuella månaden.</p>
         <h2 id="valja_flera_dagar"><a class="header-anchor" href="#valja_flera_dagar">Välja flera dagar</a></h2><p class="docs-paragraph">I följande exempel av kalendern kan man välja flera dagar och visuellt se vilka dagar som är valda. Alla valda dagar sparas ner till en array.</p>
 
                 <div
-                    id="example-a74a35"
+                    id="example-609471"
                     class="code-preview code-preview--default"
                     
                     
@@ -1483,22 +1473,24 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
 <p class="docs-paragraph">Exemplet lagrar dagarna som <code>string</code> i arrayen.</p>
 
             <div
-                id="example-2334ed"
+                id="example-f9dbbd"
                 class="code-preview code-preview--default"
                 data-test="calendar-select-days"
                 
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-4e20d5"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-3e93b6"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCalendarSelectDays-4e20d5.js"></script>
-    </div>
+        <script type="module" src="./FCalendarSelectDays-3e93b6.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -1515,8 +1507,8 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent, shallowRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCalendar</span>, <span class="hljs-title class_">FCalendarDay</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
@@ -1528,14 +1520,14 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">month</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-10-01&quot;</span>),
-            <span class="hljs-attr">min</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-10-01&quot;</span>),
-            <span class="hljs-attr">max</span>: <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-12-31&quot;</span>),
-            <span class="hljs-attr">selected</span>: [],
+            <span class="hljs-attr">month</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2022-10-01&quot;</span>)),
+            <span class="hljs-attr">min</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2020-10-01&quot;</span>)),
+            <span class="hljs-attr">max</span>: <span class="hljs-title function_">shallowRef</span>(<span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2029-12-31&quot;</span>)),
+            <span class="hljs-attr">selected</span>: [] <span class="hljs-keyword">as</span> string[],
         };
     },
     <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onSelectDay</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">onSelectDay</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">const</span> dateString = date.<span class="hljs-title function_">toString</span>();
             <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">includes</span>(dateString)) {
                 <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">splice</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">indexOf</span>(dateString), <span class="hljs-number">1</span>);
@@ -1543,7 +1535,7 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
                 <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">push</span>(dateString);
             }
         },
-        <span class="hljs-title function_">isSelected</span>(<span class="hljs-params">date</span>) {
+        <span class="hljs-title function_">isSelected</span>(<span class="hljs-params">date: FDate</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">selected</span>.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> date.<span class="hljs-title function_">equals</span>(it)) !== <span class="hljs-literal">undefined</span>;
         },
     },
@@ -1569,15 +1561,41 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
 </code></pre>
                 </div>
             </div>
-        <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fcalendar"><a class="header-anchor" href="#fcalendar">FCalendar</a></h3>
-        <h4 id="fcalendar-props">
-            <a class="header-anchor" href="#fcalendar-props">Props</a>
-        </h4>
-        <dl class="docs-api docs-api--slots">
+        <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att <a href="../gettingstarted/use-design-system/translate-text.html">anpassa och översätta text</a>.</p>
+
+        <dl class="docs-api docs-api--translation">
             
                         <dt>
-                            <code id="fcalendar-prop-v-model"
-                                ><a class="docs-api__anchor" href="#fcalendar-prop-v-model"
+                            <code id="fcalendar-translation-fkui-calendar-year-noun"
+                                ><a class="docs-api__anchor" href="#fcalendar-translation-fkui-calendar-year-noun"
+                                    ><span class="docs-api__name"
+                                        >fkui.calendar.year-noun</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Årtal"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <dl class="docs-api docs-api--translation">
+            
+        </dl>
+    <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fcalendar"><a class="header-anchor" href="#fcalendar">FCalendar</a></h3>
+        <h4 id="fcalendar-models">
+            <a class="header-anchor" href="#fcalendar-models">Models</a>
+        </h4>
+        <dl class="docs-api docs-api--models">
+            
+                        <dt>
+                            <code id="fcalendar-model-v-model"
+                                ><a class="docs-api__anchor" href="#fcalendar-model-v-model"
                                     ><span class="docs-api__name"
                                         >v-model</span
                                     >: FDate</a
@@ -1593,6 +1611,13 @@ Metoden <code>isSelected(date)</code> kommer loopa igenom vår array där dagarn
                             
                         </dd>
                     
+        </dl>
+    
+        <h4 id="fcalendar-props">
+            <a class="header-anchor" href="#fcalendar-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
                         <dt>
                             <code id="fcalendar-prop-tabdate"
                                 ><a class="docs-api__anchor" href="#fcalendar-prop-tabdate"
@@ -1649,6 +1674,42 @@ If undefined, the first day of the month will gain focus.</p>
                             
                         </dd>
                     
+                        <dt>
+                            <code id="fcalendar-prop-yearselector"
+                                ><a class="docs-api__anchor" href="#fcalendar-prop-yearselector"
+                                    ><span class="docs-api__name"
+                                        >yearSelector</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Includes a year selector when enabled.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcalendar-prop-id"
+                                ><a class="docs-api__anchor" href="#fcalendar-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional id (generated by default).</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
         </dl>
     
         <h4 id="fcalendar-events">
@@ -1670,26 +1731,7 @@ If undefined, the first day of the month will gain focus.</p>
                             <p><code>click</code> event. Emitted when a calendar day is clicked.</p>
 
                             <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: FDate</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fcalendar-event-update-modelvalue"
-                                ><a class="docs-api__anchor" href="#fcalendar-event-update-modelvalue"
-                                    ><span class="docs-api__name"
-                                        >update:modelValue</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p><code>v-model</code> event. Emitted when changing to a different month in the calendar.</p>
-
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: FDate</code></li>
+                            <li><code>&lt;anonymous&gt;: undefined</code></li>
                             </ul>
                             
                         </dd>
@@ -1764,24 +1806,6 @@ If undefined, the first day of the month will gain focus.</p>
                         </dd>
                     
                         <dt>
-                            <code id="fcalendarday-prop-focused"
-                                ><a class="docs-api__anchor" href="#fcalendarday-prop-focused"
-                                    ><span class="docs-api__name"
-                                        >focused</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Set to <code>true</code> if day is focused.</p>
-
-                            <p class="doc-api__item">Default: <code>false</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
                             <code id="fcalendarday-prop-selected"
                                 ><a class="docs-api__anchor" href="#fcalendarday-prop-selected"
                                     ><span class="docs-api__name"
@@ -1795,7 +1819,7 @@ If undefined, the first day of the month will gain focus.</p>
                         <dd>
                             <p>Set to <code>true</code> if day is selected.</p>
 
-                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
                             
                         </dd>
                     
@@ -1813,7 +1837,7 @@ If undefined, the first day of the month will gain focus.</p>
                         <dd>
                             <p>Set to <code>true</code> if day should be highlighted.</p>
 
-                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
                             
                         </dd>
                     
@@ -1838,13 +1862,13 @@ If undefined, the first day of the month will gain focus.</p>
         <li><a class="anchor" href="../accessibility.html">Tillgänglighetsredogörelse</a></li>
         <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
         <li><a class="anchor" href="https://www.figma.com/@fkds">Figma</a></li>
-        <li><a class="anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1zmzAQ/SsqJzxj4NCeXNv9SJ2ZZNok02R64kJgwYqFUPXhOuP6v3eFwGBc2xOPDwK9fdp92n1sPa3Siue0CF9Uxb2Jt405wV/spVUpKAN5LzStuIq9CWn23H7CWPXntn6vpYFxfy9dQro6sfeiNvZ97D1IUCDXEHsH+zqRBWgHWTzewQbXB4CyygzDqAuAn6AqZmzuDvrV8AzLGWDrKm5KUUlNefGkFhsNXLUF2+QdetdExd7awNUFaboS3ocfmviY498bewq0EaFWKDWtjyVbol8FkC9CjEnFf1SGa8jIjuSyKt15sfcx5nv0r4TRLLEnPzBTUN5BP+crQ6OjAMpfINWPQlINagmghxEUWyBg9DnIIE8M01FGlY7y6Ciw5o05bGrm3PDUpkHqmvxEiImtgvwlKDXklEM2mpB1RbNWHpoT/x3iRn29JEZLjsSNTm6BqNAo8IfVjuoMLGKvle+PyGzep8R6lCZ6CSV8cyV9p3xFZiSrUlMC12EqIdGwYIjg2o89hvuxZ8lbjmF0KIEhQ+wp/cp6cpzELyXkZNYBXG8stRZqEkWGi1UR4pBF7g7q8PYCPjNMDq/A3QNuB6lSwTqRNHnGs0N8Ojh7X9YSkixE6YBn/jChTrlOogwULfjbxeniLsnSQzpBzmjgsE3xlwvsqA9LO2pbv019ZxduDt10BGUijpzPbR2PdZMkZucc5WQZiGhvEKcqAlXiKGWwwZMG9uMCWFXQ9DxnDXkTaW0D5ygRcNBnHSOuTrG+wSrOnT2kOWz4/7ENbBR9JsQC8NqmKpVUaGdChCW8mKEDY/bzngWiHV8ZKbGDbrDtE57CGH0nP+Oy10/4YbmmwHpWfMJf3cl7VBjVLxqvdHNGm1Ox/Y9TqdvTeWiL+2R7/KpCd9tou3QN7rjw8wYMbdFYNiwCB9QN5zRyUmDh+KChFFZVfLLKTfPAkgV5XdI6qFlQqY4t9vD1em+3ONi/DZWQzRearkDradSnaGmFhPk0RZL5dktuH+/vQqUlfkpp/upvO/LdiOx206gGTiMbZPPt5ejt/gGfsNxE">Sandlåda</a></li>
+        <li><a class="anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVU1z2jAQ/SuqTmYG7EN7okDTpmQmmTbJNJmefHHttVGQZVUflAzlv3dlYWxMgQnDQbbePu0+7T5vqNFpJXJWhC+6EnRMN7Eg+ItpWpWScVAP0rBK6JiOyW7P7yecV3/u6vdGWRh299IFpMsTey967d7H9FGBBrWCmB7sm0QVYDxk/nQPa1wfAMoqsxyjLgB+gK64dbl76BcrMiynh62ruC1lpQwTxbOerw0I3RTskvfo7S4qpisL1xekaUt4H37YxccC/3RINRgrQ6NRalYfSzbEvEogn6Uckkp8r6wwkJEtyVVV+vNi+jEWezQTL5CaJ6mYAb0AMC32Kl9aFjG80RFnv0YZ5InlJsqYNlEeHQUe8v5MOMsSV9EjtwUTfdomkVjAug7JrUgdnNQ1BYmUY1cF+UtQasiZgGwwJquKZY08LCfBO8QNunopjFYCiXc6+QWiQqsh6Gc1qDNwiL1WQTAg01mXEgXQhpgFlPDVa/CNiSWZkqxKbQnChKmCxMCcI0KYIKYc92PqyBuOfnSogCNDTLV55R39TuIXCnIybQG+NxbGSD2OIivksghxyCKvbh3e3NgVx+TwzuqL8zucFQtMW2O3dQ7d17OAJAtRMxBZ0M+klazVJgPNCvF2Vdq4S3p0kF6JM8V77K7qywW21IelHTV40KS+dQs/gL7fR2UijyzPbx3P8y5JzM5byckyENFcHc5fBLrEoctgjSf1fMcH8Kpg6XnOGvIm0npOz1Ei4KDBWkZcnWJ9g6mcO7tPc5DIf9l6/okGE2IBeG0TnSomjXcfwhNRTNF6MftZx9TQh6+tUthBt9j2iUhhiIaTn7HXm2f8otww4B0PPjTAPdSfvEeFUf1iZ5J+ztjuVGz/41Tq9vTm2eA+uR6/rtDW1sYtfYN7LvyuAUc/tI4Ni8AB9cM5ibwUWDg+GCilUxWfnHKTfOTIRnld0mpUs6BSLVtM8fVq77M42L8tU5DN5oYtwZhJ1KVoaKWC2SRFktlmQ+6eHu5DbRR+Q1n+Gmxa8u2AbLeTqAZOIhfk8u3kSLf/AFHv2ZE=">Sandlåda</a></li>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">pageobject-same-page (<a href="https://github.com/Forsakringskassan/designsystem/commits/a4cff49222d437b2b323713964965ef4bd75b8da">a4cff49</a>)<br />
+<div class="footer__right"><div class="version">pageobject-same-page (<a href="https://github.com/Forsakringskassan/designsystem/commits/8dc9a3fe652dea1e7ac194b1e3bef5a9ff3d7fc3">8dc9a3f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/616">PR 616</a><br />
-        2025-08-13 12:21
+        2025-12-19 14:55
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1948,23 +1972,24 @@ If undefined, the first day of the month will gain focus.</p>
         <div id="search-results"></div>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
-</dialog><script
-            src="../assets/processors/motd/index-26ba41.js"
+</dialog>
+<div id="teleport-target" class="user-theme"></div><script
+            src="../assets/processors/motd/index-cda4cc.js"
             type="module"
             crossorigin
-            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
+            integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-faae45.js"
+            src="../assets/processors/selectable-version/select-version-390b40.js"
             type="module"
             crossorigin
-            integrity="sha384-VebEbxY/p3c04mDpvDhP35IMs4bk932+mNK+qhKt6hmh7hE+01fUrUurMRetl1Mu"
+            integrity="sha384-ECE245jGAxbOVeD8dKCW23dMFdXL5CWxzajPqD6a8j+ab7zJ8xFR6602MfoYaGv3"
             
         ></script><script
-            src="../assets/main-067e4b.js"
+            src="../assets/main-f8637e.js"
             type="module"
             crossorigin
-            integrity="sha384-gTbvEIgdszA5YuhNiN3FhIPxq3+uUJp+XmtEHRSrZG3z25eKtfHJsLvjxZiv4ihA"
+            integrity="sha384-jzo/moGACvKxkccaNdVeDo4wKxEZb03EvtzuHt5dC8OWbc+DOsirYwhdTHC/7krD"
             
         ></script>
     </body>
