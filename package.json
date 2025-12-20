@@ -107,7 +107,7 @@
     "cypress": "15.8.0",
     "cypress-html-validate": "8.1.0",
     "cypress-real-events": "1.15.0",
-    "esbuild": "0.27.1",
+    "esbuild": "0.27.2",
     "fflate": "0.8.2",
     "flush-promises": "1.0.2",
     "fs-extra": "11.3.2",
