@@ -43,7 +43,7 @@
     "@html-validate/release-scripts": "7.1.0",
     "@types/node": "22.19.3",
     "@types/yargs": "17.0.35",
-    "dedent": "1.7.0",
+    "dedent": "1.7.1",
     "esbuild": "0.27.2",
     "memfs": "4.51.1",
     "postcss": "8.5.6",
