@@ -4,7 +4,7 @@ var __export = (target, all) => {
     __defProp(target, name, { get: all[name], enumerable: true });
 };
 
-// ../../node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+// node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
 var runtime_dom_esm_bundler_exports = {};
 __export(runtime_dom_esm_bundler_exports, {
   BaseTransition: () => BaseTransition,
@@ -179,7 +179,7 @@ __export(runtime_dom_esm_bundler_exports, {
   withScopeId: () => withScopeId
 });
 
-// ../../node_modules/@vue/shared/dist/shared.esm-bundler.js
+// node_modules/@vue/shared/dist/shared.esm-bundler.js
 // @__NO_SIDE_EFFECTS__
 function makeMap(str) {
   const map2 = /* @__PURE__ */ Object.create(null);
@@ -566,7 +566,7 @@ function normalizeCssVarValue(value) {
   return String(value);
 }
 
-// ../../node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+// node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
 function warn(msg, ...args) {
   console.warn(`[Vue warn] ${msg}`, ...args);
 }
@@ -2398,7 +2398,7 @@ function traverse(value, depth = Infinity, seen2) {
   return value;
 }
 
-// ../../node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+// node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
 var stack = [];
 function pushWarningContext(vnode) {
   stack.push(vnode);
@@ -3164,6 +3164,176 @@ function invokeDirectiveHook(vnode, prevVNode, instance, name) {
       resetTracking();
     }
   }
+}
+function provide(key, value) {
+  if (true) {
+    if (!currentInstance || currentInstance.isMounted) {
+      warn$1(`provide() can only be used inside setup().`);
+    }
+  }
+  if (currentInstance) {
+    let provides = currentInstance.provides;
+    const parentProvides = currentInstance.parent && currentInstance.parent.provides;
+    if (parentProvides === provides) {
+      provides = currentInstance.provides = Object.create(parentProvides);
+    }
+    provides[key] = value;
+  }
+}
+function inject(key, defaultValue, treatDefaultAsFactory = false) {
+  const instance = getCurrentInstance();
+  if (instance || currentApp) {
+    let provides = currentApp ? currentApp._context.provides : instance ? instance.parent == null || instance.ce ? instance.vnode.appContext && instance.vnode.appContext.provides : instance.parent.provides : void 0;
+    if (provides && key in provides) {
+      return provides[key];
+    } else if (arguments.length > 1) {
+      return treatDefaultAsFactory && isFunction(defaultValue) ? defaultValue.call(instance && instance.proxy) : defaultValue;
+    } else if (true) {
+      warn$1(`injection "${String(key)}" not found.`);
+    }
+  } else if (true) {
+    warn$1(`inject() can only be used inside setup() or functional components.`);
+  }
+}
+function hasInjectionContext() {
+  return !!(getCurrentInstance() || currentApp);
+}
+var ssrContextKey = /* @__PURE__ */ Symbol.for("v-scx");
+var useSSRContext = () => {
+  {
+    const ctx = inject(ssrContextKey);
+    if (!ctx) {
+      warn$1(
+        `Server rendering context not provided. Make sure to only call useSSRContext() conditionally in the server build.`
+      );
+    }
+    return ctx;
+  }
+};
+function watchEffect(effect2, options) {
+  return doWatch(effect2, null, options);
+}
+function watchPostEffect(effect2, options) {
+  return doWatch(
+    effect2,
+    null,
+    true ? extend({}, options, { flush: "post" }) : { flush: "post" }
+  );
+}
+function watchSyncEffect(effect2, options) {
+  return doWatch(
+    effect2,
+    null,
+    true ? extend({}, options, { flush: "sync" }) : { flush: "sync" }
+  );
+}
+function watch2(source, cb, options) {
+  if (!isFunction(cb)) {
+    warn$1(
+      `\`watch(fn, options?)\` signature has been moved to a separate API. Use \`watchEffect(fn, options?)\` instead. \`watch\` now only supports \`watch(source, cb, options?) signature.`
+    );
+  }
+  return doWatch(source, cb, options);
+}
+function doWatch(source, cb, options = EMPTY_OBJ) {
+  const { immediate, deep, flush, once } = options;
+  if (!cb) {
+    if (immediate !== void 0) {
+      warn$1(
+        `watch() "immediate" option is only respected when using the watch(source, callback, options?) signature.`
+      );
+    }
+    if (deep !== void 0) {
+      warn$1(
+        `watch() "deep" option is only respected when using the watch(source, callback, options?) signature.`
+      );
+    }
+    if (once !== void 0) {
+      warn$1(
+        `watch() "once" option is only respected when using the watch(source, callback, options?) signature.`
+      );
+    }
+  }
+  const baseWatchOptions = extend({}, options);
+  if (true) baseWatchOptions.onWarn = warn$1;
+  const runsImmediately = cb && immediate || !cb && flush !== "post";
+  let ssrCleanup;
+  if (isInSSRComponentSetup) {
+    if (flush === "sync") {
+      const ctx = useSSRContext();
+      ssrCleanup = ctx.__watcherHandles || (ctx.__watcherHandles = []);
+    } else if (!runsImmediately) {
+      const watchStopHandle = () => {
+      };
+      watchStopHandle.stop = NOOP;
+      watchStopHandle.resume = NOOP;
+      watchStopHandle.pause = NOOP;
+      return watchStopHandle;
+    }
+  }
+  const instance = currentInstance;
+  baseWatchOptions.call = (fn, type, args) => callWithAsyncErrorHandling(fn, instance, type, args);
+  let isPre = false;
+  if (flush === "post") {
+    baseWatchOptions.scheduler = (job) => {
+      queuePostRenderEffect(job, instance && instance.suspense);
+    };
+  } else if (flush !== "sync") {
+    isPre = true;
+    baseWatchOptions.scheduler = (job, isFirstRun) => {
+      if (isFirstRun) {
+        job();
+      } else {
+        queueJob(job);
+      }
+    };
+  }
+  baseWatchOptions.augmentJob = (job) => {
+    if (cb) {
+      job.flags |= 4;
+    }
+    if (isPre) {
+      job.flags |= 2;
+      if (instance) {
+        job.id = instance.uid;
+        job.i = instance;
+      }
+    }
+  };
+  const watchHandle = watch(source, cb, baseWatchOptions);
+  if (isInSSRComponentSetup) {
+    if (ssrCleanup) {
+      ssrCleanup.push(watchHandle);
+    } else if (runsImmediately) {
+      watchHandle();
+    }
+  }
+  return watchHandle;
+}
+function instanceWatch(source, value, options) {
+  const publicThis = this.proxy;
+  const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
+  let cb;
+  if (isFunction(value)) {
+    cb = value;
+  } else {
+    cb = value.handler;
+    options = value;
+  }
+  const reset2 = setCurrentInstance(this);
+  const res = doWatch(getter, cb.bind(publicThis), options);
+  reset2();
+  return res;
+}
+function createPathGetter(ctx, path) {
+  const segments = path.split(".");
+  return () => {
+    let cur = ctx;
+    for (let i = 0; i < segments.length && cur; i++) {
+      cur = cur[segments[i]];
+    }
+    return cur;
+  };
 }
 var TeleportEndKey = /* @__PURE__ */ Symbol("_vte");
 var isTeleport = (type) => type.__isTeleport;
@@ -5097,7 +5267,9 @@ var KeepAliveImpl = {
     }
     function pruneCache(filter) {
       cache.forEach((vnode, key) => {
-        const name = getComponentName(vnode.type);
+        const name = getComponentName(
+          isAsyncWrapper(vnode) ? vnode.type.__asyncResolved || {} : vnode.type
+        );
         if (name && !filter(name)) {
           pruneCacheEntry(key);
         }
@@ -6481,176 +6653,6 @@ If you want to remount the same app, move your app creation logic into a factory
   };
 }
 var currentApp = null;
-function provide(key, value) {
-  if (true) {
-    if (!currentInstance || currentInstance.isMounted) {
-      warn$1(`provide() can only be used inside setup().`);
-    }
-  }
-  if (currentInstance) {
-    let provides = currentInstance.provides;
-    const parentProvides = currentInstance.parent && currentInstance.parent.provides;
-    if (parentProvides === provides) {
-      provides = currentInstance.provides = Object.create(parentProvides);
-    }
-    provides[key] = value;
-  }
-}
-function inject(key, defaultValue, treatDefaultAsFactory = false) {
-  const instance = getCurrentInstance();
-  if (instance || currentApp) {
-    let provides = currentApp ? currentApp._context.provides : instance ? instance.parent == null || instance.ce ? instance.vnode.appContext && instance.vnode.appContext.provides : instance.parent.provides : void 0;
-    if (provides && key in provides) {
-      return provides[key];
-    } else if (arguments.length > 1) {
-      return treatDefaultAsFactory && isFunction(defaultValue) ? defaultValue.call(instance && instance.proxy) : defaultValue;
-    } else if (true) {
-      warn$1(`injection "${String(key)}" not found.`);
-    }
-  } else if (true) {
-    warn$1(`inject() can only be used inside setup() or functional components.`);
-  }
-}
-function hasInjectionContext() {
-  return !!(getCurrentInstance() || currentApp);
-}
-var ssrContextKey = /* @__PURE__ */ Symbol.for("v-scx");
-var useSSRContext = () => {
-  {
-    const ctx = inject(ssrContextKey);
-    if (!ctx) {
-      warn$1(
-        `Server rendering context not provided. Make sure to only call useSSRContext() conditionally in the server build.`
-      );
-    }
-    return ctx;
-  }
-};
-function watchEffect(effect2, options) {
-  return doWatch(effect2, null, options);
-}
-function watchPostEffect(effect2, options) {
-  return doWatch(
-    effect2,
-    null,
-    true ? extend({}, options, { flush: "post" }) : { flush: "post" }
-  );
-}
-function watchSyncEffect(effect2, options) {
-  return doWatch(
-    effect2,
-    null,
-    true ? extend({}, options, { flush: "sync" }) : { flush: "sync" }
-  );
-}
-function watch2(source, cb, options) {
-  if (!isFunction(cb)) {
-    warn$1(
-      `\`watch(fn, options?)\` signature has been moved to a separate API. Use \`watchEffect(fn, options?)\` instead. \`watch\` now only supports \`watch(source, cb, options?) signature.`
-    );
-  }
-  return doWatch(source, cb, options);
-}
-function doWatch(source, cb, options = EMPTY_OBJ) {
-  const { immediate, deep, flush, once } = options;
-  if (!cb) {
-    if (immediate !== void 0) {
-      warn$1(
-        `watch() "immediate" option is only respected when using the watch(source, callback, options?) signature.`
-      );
-    }
-    if (deep !== void 0) {
-      warn$1(
-        `watch() "deep" option is only respected when using the watch(source, callback, options?) signature.`
-      );
-    }
-    if (once !== void 0) {
-      warn$1(
-        `watch() "once" option is only respected when using the watch(source, callback, options?) signature.`
-      );
-    }
-  }
-  const baseWatchOptions = extend({}, options);
-  if (true) baseWatchOptions.onWarn = warn$1;
-  const runsImmediately = cb && immediate || !cb && flush !== "post";
-  let ssrCleanup;
-  if (isInSSRComponentSetup) {
-    if (flush === "sync") {
-      const ctx = useSSRContext();
-      ssrCleanup = ctx.__watcherHandles || (ctx.__watcherHandles = []);
-    } else if (!runsImmediately) {
-      const watchStopHandle = () => {
-      };
-      watchStopHandle.stop = NOOP;
-      watchStopHandle.resume = NOOP;
-      watchStopHandle.pause = NOOP;
-      return watchStopHandle;
-    }
-  }
-  const instance = currentInstance;
-  baseWatchOptions.call = (fn, type, args) => callWithAsyncErrorHandling(fn, instance, type, args);
-  let isPre = false;
-  if (flush === "post") {
-    baseWatchOptions.scheduler = (job) => {
-      queuePostRenderEffect(job, instance && instance.suspense);
-    };
-  } else if (flush !== "sync") {
-    isPre = true;
-    baseWatchOptions.scheduler = (job, isFirstRun) => {
-      if (isFirstRun) {
-        job();
-      } else {
-        queueJob(job);
-      }
-    };
-  }
-  baseWatchOptions.augmentJob = (job) => {
-    if (cb) {
-      job.flags |= 4;
-    }
-    if (isPre) {
-      job.flags |= 2;
-      if (instance) {
-        job.id = instance.uid;
-        job.i = instance;
-      }
-    }
-  };
-  const watchHandle = watch(source, cb, baseWatchOptions);
-  if (isInSSRComponentSetup) {
-    if (ssrCleanup) {
-      ssrCleanup.push(watchHandle);
-    } else if (runsImmediately) {
-      watchHandle();
-    }
-  }
-  return watchHandle;
-}
-function instanceWatch(source, value, options) {
-  const publicThis = this.proxy;
-  const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
-  let cb;
-  if (isFunction(value)) {
-    cb = value;
-  } else {
-    cb = value.handler;
-    options = value;
-  }
-  const reset2 = setCurrentInstance(this);
-  const res = doWatch(getter, cb.bind(publicThis), options);
-  reset2();
-  return res;
-}
-function createPathGetter(ctx, path) {
-  const segments = path.split(".");
-  return () => {
-    let cur = ctx;
-    for (let i = 0; i < segments.length && cur; i++) {
-      cur = cur[segments[i]];
-    }
-    return cur;
-  };
-}
 function useModel(props, name, options = EMPTY_OBJ) {
   const i = getCurrentInstance();
   if (!i) {
@@ -7864,7 +7866,15 @@ function baseCreateRenderer(options, createHydrationFns) {
     } else {
       const el = n2.el = n1.el;
       if (n2.children !== n1.children) {
-        hostSetText(el, n2.children);
+        if (isHmrUpdating && n2.patchFlag === -1 && "__elIndex" in n1) {
+          const childNodes = container.childNodes;
+          const newChild = hostCreateText(n2.children);
+          const oldChild = childNodes[n2.__elIndex = n1.__elIndex];
+          hostInsert(newChild, container, oldChild);
+          hostRemove(oldChild);
+        } else {
+          hostSetText(el, n2.children);
+        }
       }
     }
   };
@@ -8250,7 +8260,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     } else {
       if (patchFlag > 0 && patchFlag & 64 && dynamicChildren && // #2715 the previous fragment could've been a BAILed one as a result
       // of renderSlot() with no valid children
-      n1.dynamicChildren) {
+      n1.dynamicChildren && n1.dynamicChildren.length === dynamicChildren.length) {
         patchBlockChildren(
           n1.dynamicChildren,
           dynamicChildren,
@@ -8852,8 +8862,8 @@ function baseCreateRenderer(options, createHydrationFns) {
         const nextChild = c2[nextIndex];
         const anchorVNode = c2[nextIndex + 1];
         const anchor = nextIndex + 1 < l2 ? (
-          // #13559, fallback to el placeholder for unresolved async component
-          anchorVNode.el || anchorVNode.placeholder
+          // #13559, #14173 fallback to el placeholder for unresolved async component
+          anchorVNode.el || resolveAsyncComponentPlaceholder(anchorVNode)
         ) : parentAnchor;
         if (newIndexToOldIndexMap[i] === 0) {
           patch(
@@ -9109,9 +9119,11 @@ function baseCreateRenderer(options, createHydrationFns) {
   };
   let isFlushing = false;
   const render2 = (vnode, container, namespace) => {
+    let instance;
     if (vnode == null) {
       if (container._vnode) {
         unmount(container._vnode, null, null, true);
+        instance = container._vnode.component;
       }
     } else {
       patch(
@@ -9127,7 +9139,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     container._vnode = vnode;
     if (!isFlushing) {
       isFlushing = true;
-      flushPreFlushCbs();
+      flushPreFlushCbs(instance);
       flushPostFlushCbs();
       isFlushing = false;
     }
@@ -9187,9 +9199,13 @@ function traverseStaticChildren(n1, n2, shallow = false) {
         if (!shallow && c2.patchFlag !== -2)
           traverseStaticChildren(c1, c2);
       }
-      if (c2.type === Text && // avoid cached text nodes retaining detached dom nodes
-      c2.patchFlag !== -1) {
-        c2.el = c1.el;
+      if (c2.type === Text) {
+        if (c2.patchFlag !== -1) {
+          c2.el = c1.el;
+        } else {
+          c2.__elIndex = i + // take fragment start anchor into account
+          (n1.type === Fragment ? 1 : 0);
+        }
       }
       if (c2.type === Comment && !c2.el) {
         c2.el = c1.el;
@@ -9255,6 +9271,16 @@ function invalidateMount(hooks) {
     for (let i = 0; i < hooks.length; i++)
       hooks[i].flags |= 8;
   }
+}
+function resolveAsyncComponentPlaceholder(anchorVnode) {
+  if (anchorVnode.placeholder) {
+    return anchorVnode.placeholder;
+  }
+  const instance = anchorVnode.component;
+  if (instance) {
+    return resolveAsyncComponentPlaceholder(instance.subTree);
+  }
+  return null;
 }
 var isSuspense = (type) => type.__isSuspense;
 var suspenseId = 0;
@@ -10911,7 +10937,7 @@ function isMemoSame(cached, memo) {
   }
   return true;
 }
-var version = "3.5.25";
+var version = "3.5.26";
 var warn2 = true ? warn$1 : NOOP;
 var ErrorTypeStrings = ErrorTypeStrings$1;
 var devtools = true ? devtools$1 : void 0;
@@ -10933,7 +10959,7 @@ var resolveFilter = null;
 var compatUtils = null;
 var DeprecationTypes = null;
 
-// ../../node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+// node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
 var policy = void 0;
 var tt = typeof window !== "undefined" && window.trustedTypes;
 if (tt) {
@@ -12819,7 +12845,7 @@ var initDirectivesForSSR = () => {
   }
 };
 
-// ../../node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js
+// node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js
 var FRAGMENT = /* @__PURE__ */ Symbol(true ? `Fragment` : ``);
 var TELEPORT = /* @__PURE__ */ Symbol(true ? `Teleport` : ``);
 var SUSPENSE = /* @__PURE__ */ Symbol(true ? `Suspense` : ``);
@@ -13177,13 +13203,27 @@ var Tokenizer = class {
   getPos(index) {
     let line = 1;
     let column = index + 1;
-    for (let i = this.newlines.length - 1; i >= 0; i--) {
-      const newlineIndex = this.newlines[i];
-      if (index > newlineIndex) {
-        line = i + 2;
-        column = index - newlineIndex;
-        break;
+    const length = this.newlines.length;
+    let j = -1;
+    if (length > 100) {
+      let l = -1;
+      let r = length;
+      while (l + 1 < r) {
+        const m = l + r >>> 1;
+        this.newlines[m] < index ? l = m : r = m;
       }
+      j = l;
+    } else {
+      for (let i = length - 1; i >= 0; i--) {
+        if (index > this.newlines[i]) {
+          j = i;
+          break;
+        }
+      }
+    }
+    if (j >= 0) {
+      line = j + 2;
+      column = index - this.newlines[j];
     }
     return {
       column,
@@ -13999,7 +14039,7 @@ var errorMessages = {
   [32]: `v-for has invalid expression.`,
   [33]: `<template v-for> key should be placed on the <template> tag.`,
   [34]: `v-bind is missing expression.`,
-  [52]: `v-bind with same-name shorthand only allows static argument.`,
+  [53]: `v-bind with same-name shorthand only allows static argument.`,
   [35]: `v-on is missing expression.`,
   [36]: `Unexpected custom directive on <slot> outlet.`,
   [37]: `Mixed v-slot usage on both the component and nested <template>. When there are multiple named slots, all slots should use <template> syntax to avoid scope ambiguity.`,
@@ -14011,16 +14051,17 @@ var errorMessages = {
   [43]: `v-model cannot be used on v-for or v-slot scope variables because they are not writable.`,
   [44]: `v-model cannot be used on a prop, because local prop bindings are not writable.
 Use a v-bind binding combined with a v-on listener that emits update:x event instead.`,
-  [45]: `Error parsing JavaScript expression: `,
-  [46]: `<KeepAlive> expects exactly one child component.`,
-  [51]: `@vnode-* hooks in templates are no longer supported. Use the vue: prefix instead. For example, @vnode-mounted should be changed to @vue:mounted. @vnode-* hooks support has been removed in 3.4.`,
+  [45]: `v-model cannot be used on a const binding because it is not writable.`,
+  [46]: `Error parsing JavaScript expression: `,
+  [47]: `<KeepAlive> expects exactly one child component.`,
+  [52]: `@vnode-* hooks in templates are no longer supported. Use the vue: prefix instead. For example, @vnode-mounted should be changed to @vue:mounted. @vnode-* hooks support has been removed in 3.4.`,
   // generic errors
-  [47]: `"prefixIdentifiers" option is not supported in this build of compiler.`,
-  [48]: `ES module mode is not supported in this build of compiler.`,
-  [49]: `"cacheHandlers" option is only supported when the "prefixIdentifiers" option is enabled.`,
-  [50]: `"scopeId" option is only supported in module mode.`,
+  [48]: `"prefixIdentifiers" option is not supported in this build of compiler.`,
+  [49]: `ES module mode is not supported in this build of compiler.`,
+  [50]: `"cacheHandlers" option is only supported when the "prefixIdentifiers" option is enabled.`,
+  [51]: `"scopeId" option is only supported in module mode.`,
   // just to fulfill types
-  [53]: ``
+  [54]: ``
 };
 var isStaticExp = (p2) => p2.type === 4 && p2.isStatic;
 function isCoreComponent(tag) {
@@ -16235,7 +16276,7 @@ function validateBrowserExpression(node, context, asParams = false, asRawStateme
     }
     context.onError(
       createCompilerError(
-        45,
+        46,
         node.loc,
         void 0,
         message
@@ -16996,7 +17037,7 @@ var transformElement = (node, context) => {
         patchFlag |= 1024;
         if (node.children.length > 1) {
           context.onError(
-            createCompilerError(46, {
+            createCompilerError(47, {
               start: node.children[0].loc.start,
               end: node.children[node.children.length - 1].loc.end,
               source: ""
@@ -17581,7 +17622,7 @@ var transformOn = (dir, node, context, augmentor) => {
     if (arg.isStatic) {
       let rawName = arg.content;
       if (rawName.startsWith("vnode")) {
-        context.onError(createCompilerError(51, arg.loc));
+        context.onError(createCompilerError(52, arg.loc));
       }
       if (rawName.startsWith("vue:")) {
         rawName = `vnode-${rawName.slice(4)}`;
@@ -17810,6 +17851,10 @@ var transformModel = (dir, node, context) => {
     context.onError(createCompilerError(44, exp.loc));
     return createTransformProps();
   }
+  if (bindingType === "literal-const" || bindingType === "setup-const") {
+    context.onError(createCompilerError(45, exp.loc));
+    return createTransformProps();
+  }
   if (!expString.trim() || !isMemberExpression(exp) && true) {
     context.onError(
       createCompilerError(42, exp.loc)
@@ -18035,7 +18080,7 @@ var transformVBindShorthand = (node, context) => {
         if (arg.type !== 4 || !arg.isStatic) {
           context.onError(
             createCompilerError(
-              52,
+              53,
               arg.loc
             )
           );
@@ -18078,17 +18123,17 @@ function baseCompile(source, options = {}) {
   const isModuleMode = options.mode === "module";
   {
     if (options.prefixIdentifiers === true) {
-      onError(createCompilerError(47));
-    } else if (isModuleMode) {
       onError(createCompilerError(48));
+    } else if (isModuleMode) {
+      onError(createCompilerError(49));
     }
   }
   const prefixIdentifiers = false;
   if (options.cacheHandlers) {
-    onError(createCompilerError(49));
+    onError(createCompilerError(50));
   }
   if (options.scopeId && !isModuleMode) {
-    onError(createCompilerError(50));
+    onError(createCompilerError(51));
   }
   const resolvedOptions = extend({}, options, {
     prefixIdentifiers
@@ -18115,7 +18160,7 @@ function baseCompile(source, options = {}) {
 }
 var noopDirectiveTransform = () => ({ props: [] });
 
-// ../../node_modules/@vue/compiler-dom/dist/compiler-dom.esm-bundler.js
+// node_modules/@vue/compiler-dom/dist/compiler-dom.esm-bundler.js
 var V_MODEL_RADIO = /* @__PURE__ */ Symbol(true ? `vModelRadio` : ``);
 var V_MODEL_CHECKBOX = /* @__PURE__ */ Symbol(
   true ? `vModelCheckbox` : ``
@@ -18242,28 +18287,28 @@ function createDOMCompilerError(code, loc) {
   );
 }
 var DOMErrorMessages = {
-  [53]: `v-html is missing expression.`,
-  [54]: `v-html will override element children.`,
-  [55]: `v-text is missing expression.`,
-  [56]: `v-text will override element children.`,
-  [57]: `v-model can only be used on <input>, <textarea> and <select> elements.`,
-  [58]: `v-model argument is not supported on plain elements.`,
-  [59]: `v-model cannot be used on file inputs since they are read-only. Use a v-on:change listener instead.`,
-  [60]: `Unnecessary value binding used alongside v-model. It will interfere with v-model's behavior.`,
-  [61]: `v-show is missing expression.`,
-  [62]: `<Transition> expects exactly one child element or component.`,
-  [63]: `Tags with side effect (<script> and <style>) are ignored in client component templates.`
+  [54]: `v-html is missing expression.`,
+  [55]: `v-html will override element children.`,
+  [56]: `v-text is missing expression.`,
+  [57]: `v-text will override element children.`,
+  [58]: `v-model can only be used on <input>, <textarea> and <select> elements.`,
+  [59]: `v-model argument is not supported on plain elements.`,
+  [60]: `v-model cannot be used on file inputs since they are read-only. Use a v-on:change listener instead.`,
+  [61]: `Unnecessary value binding used alongside v-model. It will interfere with v-model's behavior.`,
+  [62]: `v-show is missing expression.`,
+  [63]: `<Transition> expects exactly one child element or component.`,
+  [64]: `Tags with side effect (<script> and <style>) are ignored in client component templates.`
 };
 var transformVHtml = (dir, node, context) => {
   const { exp, loc } = dir;
   if (!exp) {
     context.onError(
-      createDOMCompilerError(53, loc)
+      createDOMCompilerError(54, loc)
     );
   }
   if (node.children.length) {
     context.onError(
-      createDOMCompilerError(54, loc)
+      createDOMCompilerError(55, loc)
     );
     node.children.length = 0;
   }
@@ -18280,12 +18325,12 @@ var transformVText = (dir, node, context) => {
   const { exp, loc } = dir;
   if (!exp) {
     context.onError(
-      createDOMCompilerError(55, loc)
+      createDOMCompilerError(56, loc)
     );
   }
   if (node.children.length) {
     context.onError(
-      createDOMCompilerError(56, loc)
+      createDOMCompilerError(57, loc)
     );
     node.children.length = 0;
   }
@@ -18310,7 +18355,7 @@ var transformModel2 = (dir, node, context) => {
   if (dir.arg) {
     context.onError(
       createDOMCompilerError(
-        58,
+        59,
         dir.arg.loc
       )
     );
@@ -18320,7 +18365,7 @@ var transformModel2 = (dir, node, context) => {
     if (value && isStaticArgOf(value.arg, "value")) {
       context.onError(
         createDOMCompilerError(
-          60,
+          61,
           value.loc
         )
       );
@@ -18348,7 +18393,7 @@ var transformModel2 = (dir, node, context) => {
               isInvalidType = true;
               context.onError(
                 createDOMCompilerError(
-                  59,
+                  60,
                   dir.loc
                 )
               );
@@ -18374,7 +18419,7 @@ var transformModel2 = (dir, node, context) => {
   } else {
     context.onError(
       createDOMCompilerError(
-        57,
+        58,
         dir.loc
       )
     );
@@ -18480,7 +18525,7 @@ var transformShow = (dir, node, context) => {
   const { exp, loc } = dir;
   if (!exp) {
     context.onError(
-      createDOMCompilerError(61, loc)
+      createDOMCompilerError(62, loc)
     );
   }
   return {
@@ -18499,7 +18544,7 @@ var transformTransition = (node, context) => {
         if (hasMultipleChildren(node)) {
           context.onError(
             createDOMCompilerError(
-              62,
+              63,
               {
                 start: node.children[0].loc.start,
                 end: node.children[node.children.length - 1].loc.end,
@@ -18537,7 +18582,7 @@ var ignoreSideEffectTags = (node, context) => {
   if (node.type === 1 && node.tagType === 0 && (node.tag === "script" || node.tag === "style")) {
     context.onError(
       createDOMCompilerError(
-        63,
+        64,
         node.loc
       )
     );
@@ -18753,7 +18798,7 @@ function compile2(src, options = {}) {
   );
 }
 
-// ../../node_modules/vue/dist/vue.esm-bundler.js
+// node_modules/vue/dist/vue.esm-bundler.js
 function initDev() {
   {
     initCustomFormatter();
@@ -18988,49 +19033,49 @@ export {
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.5.25
+  * @vue/shared v3.5.26
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/reactivity/dist/reactivity.esm-bundler.js:
   (**
-  * @vue/reactivity v3.5.25
+  * @vue/reactivity v3.5.26
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-core/dist/runtime-core.esm-bundler.js:
   (**
-  * @vue/runtime-core v3.5.25
+  * @vue/runtime-core v3.5.26
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (**
-  * @vue/runtime-dom v3.5.25
+  * @vue/runtime-dom v3.5.26
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/compiler-core/dist/compiler-core.esm-bundler.js:
   (**
-  * @vue/compiler-core v3.5.25
+  * @vue/compiler-core v3.5.26
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/compiler-dom/dist/compiler-dom.esm-bundler.js:
   (**
-  * @vue/compiler-dom v3.5.25
+  * @vue/compiler-dom v3.5.26
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 vue/dist/vue.esm-bundler.js:
   (**
-  * vue v3.5.25
+  * vue v3.5.26
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)

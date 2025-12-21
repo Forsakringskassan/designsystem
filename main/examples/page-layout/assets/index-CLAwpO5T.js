@@ -2269,6 +2269,125 @@ function invokeDirectiveHook(vnode, prevVNode, instance, name) {
     }
   }
 }
+function provide(key, value) {
+  if (currentInstance) {
+    let provides = currentInstance.provides;
+    const parentProvides = currentInstance.parent && currentInstance.parent.provides;
+    if (parentProvides === provides) {
+      provides = currentInstance.provides = Object.create(parentProvides);
+    }
+    provides[key] = value;
+  }
+}
+function inject(key, defaultValue, treatDefaultAsFactory = false) {
+  const instance = getCurrentInstance();
+  if (instance || currentApp) {
+    let provides = currentApp ? currentApp._context.provides : instance ? instance.parent == null || instance.ce ? instance.vnode.appContext && instance.vnode.appContext.provides : instance.parent.provides : void 0;
+    if (provides && key in provides) {
+      return provides[key];
+    } else if (arguments.length > 1) {
+      return treatDefaultAsFactory && isFunction(defaultValue) ? defaultValue.call(instance && instance.proxy) : defaultValue;
+    } else ;
+  }
+}
+function hasInjectionContext() {
+  return !!(getCurrentInstance() || currentApp);
+}
+const ssrContextKey = /* @__PURE__ */ Symbol.for("v-scx");
+const useSSRContext = () => {
+  {
+    const ctx = inject(ssrContextKey);
+    return ctx;
+  }
+};
+function watchEffect(effect2, options) {
+  return doWatch(effect2, null, options);
+}
+function watch(source, cb, options) {
+  return doWatch(source, cb, options);
+}
+function doWatch(source, cb, options = EMPTY_OBJ) {
+  const { immediate, deep, flush, once } = options;
+  const baseWatchOptions = extend({}, options);
+  const runsImmediately = cb && immediate || !cb && flush !== "post";
+  let ssrCleanup;
+  if (isInSSRComponentSetup) {
+    if (flush === "sync") {
+      const ctx = useSSRContext();
+      ssrCleanup = ctx.__watcherHandles || (ctx.__watcherHandles = []);
+    } else if (!runsImmediately) {
+      const watchStopHandle = () => {
+      };
+      watchStopHandle.stop = NOOP;
+      watchStopHandle.resume = NOOP;
+      watchStopHandle.pause = NOOP;
+      return watchStopHandle;
+    }
+  }
+  const instance = currentInstance;
+  baseWatchOptions.call = (fn, type, args) => callWithAsyncErrorHandling(fn, instance, type, args);
+  let isPre = false;
+  if (flush === "post") {
+    baseWatchOptions.scheduler = (job) => {
+      queuePostRenderEffect(job, instance && instance.suspense);
+    };
+  } else if (flush !== "sync") {
+    isPre = true;
+    baseWatchOptions.scheduler = (job, isFirstRun) => {
+      if (isFirstRun) {
+        job();
+      } else {
+        queueJob(job);
+      }
+    };
+  }
+  baseWatchOptions.augmentJob = (job) => {
+    if (cb) {
+      job.flags |= 4;
+    }
+    if (isPre) {
+      job.flags |= 2;
+      if (instance) {
+        job.id = instance.uid;
+        job.i = instance;
+      }
+    }
+  };
+  const watchHandle = watch$1(source, cb, baseWatchOptions);
+  if (isInSSRComponentSetup) {
+    if (ssrCleanup) {
+      ssrCleanup.push(watchHandle);
+    } else if (runsImmediately) {
+      watchHandle();
+    }
+  }
+  return watchHandle;
+}
+function instanceWatch(source, value, options) {
+  const publicThis = this.proxy;
+  const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
+  let cb;
+  if (isFunction(value)) {
+    cb = value;
+  } else {
+    cb = value.handler;
+    options = value;
+  }
+  const reset = setCurrentInstance(this);
+  const res = doWatch(getter, cb.bind(publicThis), options);
+  reset();
+  return res;
+}
+function createPathGetter(ctx, path) {
+  const segments = path.split(".");
+  return () => {
+    let cur = ctx;
+    for (let i = 0; i < segments.length && cur; i++) {
+      cur = cur[segments[i]];
+    }
+    return cur;
+  };
+}
 const TeleportEndKey = /* @__PURE__ */ Symbol("_vte");
 const isTeleport = (type) => type.__isTeleport;
 const isTeleportDisabled$1 = (props) => props && (props.disabled || props.disabled === "");
@@ -3930,125 +4049,6 @@ function createAppAPI(render2, hydrate) {
   };
 }
 let currentApp = null;
-function provide(key, value) {
-  if (currentInstance) {
-    let provides = currentInstance.provides;
-    const parentProvides = currentInstance.parent && currentInstance.parent.provides;
-    if (parentProvides === provides) {
-      provides = currentInstance.provides = Object.create(parentProvides);
-    }
-    provides[key] = value;
-  }
-}
-function inject(key, defaultValue, treatDefaultAsFactory = false) {
-  const instance = getCurrentInstance();
-  if (instance || currentApp) {
-    let provides = currentApp ? currentApp._context.provides : instance ? instance.parent == null || instance.ce ? instance.vnode.appContext && instance.vnode.appContext.provides : instance.parent.provides : void 0;
-    if (provides && key in provides) {
-      return provides[key];
-    } else if (arguments.length > 1) {
-      return treatDefaultAsFactory && isFunction(defaultValue) ? defaultValue.call(instance && instance.proxy) : defaultValue;
-    } else ;
-  }
-}
-function hasInjectionContext() {
-  return !!(getCurrentInstance() || currentApp);
-}
-const ssrContextKey = /* @__PURE__ */ Symbol.for("v-scx");
-const useSSRContext = () => {
-  {
-    const ctx = inject(ssrContextKey);
-    return ctx;
-  }
-};
-function watchEffect(effect2, options) {
-  return doWatch(effect2, null, options);
-}
-function watch(source, cb, options) {
-  return doWatch(source, cb, options);
-}
-function doWatch(source, cb, options = EMPTY_OBJ) {
-  const { immediate, deep, flush, once } = options;
-  const baseWatchOptions = extend({}, options);
-  const runsImmediately = cb && immediate || !cb && flush !== "post";
-  let ssrCleanup;
-  if (isInSSRComponentSetup) {
-    if (flush === "sync") {
-      const ctx = useSSRContext();
-      ssrCleanup = ctx.__watcherHandles || (ctx.__watcherHandles = []);
-    } else if (!runsImmediately) {
-      const watchStopHandle = () => {
-      };
-      watchStopHandle.stop = NOOP;
-      watchStopHandle.resume = NOOP;
-      watchStopHandle.pause = NOOP;
-      return watchStopHandle;
-    }
-  }
-  const instance = currentInstance;
-  baseWatchOptions.call = (fn, type, args) => callWithAsyncErrorHandling(fn, instance, type, args);
-  let isPre = false;
-  if (flush === "post") {
-    baseWatchOptions.scheduler = (job) => {
-      queuePostRenderEffect(job, instance && instance.suspense);
-    };
-  } else if (flush !== "sync") {
-    isPre = true;
-    baseWatchOptions.scheduler = (job, isFirstRun) => {
-      if (isFirstRun) {
-        job();
-      } else {
-        queueJob(job);
-      }
-    };
-  }
-  baseWatchOptions.augmentJob = (job) => {
-    if (cb) {
-      job.flags |= 4;
-    }
-    if (isPre) {
-      job.flags |= 2;
-      if (instance) {
-        job.id = instance.uid;
-        job.i = instance;
-      }
-    }
-  };
-  const watchHandle = watch$1(source, cb, baseWatchOptions);
-  if (isInSSRComponentSetup) {
-    if (ssrCleanup) {
-      ssrCleanup.push(watchHandle);
-    } else if (runsImmediately) {
-      watchHandle();
-    }
-  }
-  return watchHandle;
-}
-function instanceWatch(source, value, options) {
-  const publicThis = this.proxy;
-  const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
-  let cb;
-  if (isFunction(value)) {
-    cb = value;
-  } else {
-    cb = value.handler;
-    options = value;
-  }
-  const reset = setCurrentInstance(this);
-  const res = doWatch(getter, cb.bind(publicThis), options);
-  reset();
-  return res;
-}
-function createPathGetter(ctx, path) {
-  const segments = path.split(".");
-  return () => {
-    let cur = ctx;
-    for (let i = 0; i < segments.length && cur; i++) {
-      cur = cur[segments[i]];
-    }
-    return cur;
-  };
-}
 const getModelModifiers = (props, modelName) => {
   return modelName === "modelValue" || modelName === "model-value" ? props.modelModifiers : props[`${modelName}Modifiers`] || props[`${camelize(modelName)}Modifiers`] || props[`${hyphenate(modelName)}Modifiers`];
 };
@@ -4836,7 +4836,9 @@ function baseCreateRenderer(options, createHydrationFns) {
     } else {
       const el = n2.el = n1.el;
       if (n2.children !== n1.children) {
-        hostSetText(el, n2.children);
+        {
+          hostSetText(el, n2.children);
+        }
       }
     }
   };
@@ -5181,7 +5183,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     } else {
       if (patchFlag > 0 && patchFlag & 64 && dynamicChildren && // #2715 the previous fragment could've been a BAILed one as a result
       // of renderSlot() with no valid children
-      n1.dynamicChildren) {
+      n1.dynamicChildren && n1.dynamicChildren.length === dynamicChildren.length) {
         patchBlockChildren(
           n1.dynamicChildren,
           dynamicChildren,
@@ -5678,8 +5680,8 @@ function baseCreateRenderer(options, createHydrationFns) {
         const nextChild = c2[nextIndex];
         const anchorVNode = c2[nextIndex + 1];
         const anchor = nextIndex + 1 < l2 ? (
-          // #13559, fallback to el placeholder for unresolved async component
-          anchorVNode.el || anchorVNode.placeholder
+          // #13559, #14173 fallback to el placeholder for unresolved async component
+          anchorVNode.el || resolveAsyncComponentPlaceholder(anchorVNode)
         ) : parentAnchor;
         if (newIndexToOldIndexMap[i] === 0) {
           patch(
@@ -5921,9 +5923,11 @@ function baseCreateRenderer(options, createHydrationFns) {
   };
   let isFlushing = false;
   const render2 = (vnode, container, namespace) => {
+    let instance;
     if (vnode == null) {
       if (container._vnode) {
         unmount(container._vnode, null, null, true);
+        instance = container._vnode.component;
       }
     } else {
       patch(
@@ -5939,7 +5943,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     container._vnode = vnode;
     if (!isFlushing) {
       isFlushing = true;
-      flushPreFlushCbs();
+      flushPreFlushCbs(instance);
       flushPostFlushCbs();
       isFlushing = false;
     }
@@ -5993,9 +5997,13 @@ function traverseStaticChildren(n1, n2, shallow = false) {
         if (!shallow && c2.patchFlag !== -2)
           traverseStaticChildren(c1, c2);
       }
-      if (c2.type === Text && // avoid cached text nodes retaining detached dom nodes
-      c2.patchFlag !== -1) {
-        c2.el = c1.el;
+      if (c2.type === Text) {
+        if (c2.patchFlag !== -1) {
+          c2.el = c1.el;
+        } else {
+          c2.__elIndex = i + // take fragment start anchor into account
+          (n1.type === Fragment ? 1 : 0);
+        }
       }
       if (c2.type === Comment && !c2.el) {
         c2.el = c1.el;
@@ -6058,6 +6066,16 @@ function invalidateMount(hooks) {
     for (let i = 0; i < hooks.length; i++)
       hooks[i].flags |= 8;
   }
+}
+function resolveAsyncComponentPlaceholder(anchorVnode) {
+  if (anchorVnode.placeholder) {
+    return anchorVnode.placeholder;
+  }
+  const instance = anchorVnode.component;
+  if (instance) {
+    return resolveAsyncComponentPlaceholder(instance.subTree);
+  }
+  return null;
 }
 const isSuspense = (type) => type.__isSuspense;
 function queueEffectWithSuspense(fn, suspense) {
@@ -6712,7 +6730,7 @@ function h(type, propsOrChildren, children) {
     setBlockTracking(1);
   }
 }
-const version = "3.5.25";
+const version = "3.5.26";
 let policy = void 0;
 const tt = typeof window !== "undefined" && window.trustedTypes;
 if (tt) {
