@@ -237,7 +237,7 @@ export default defineComponent({
         </template>
         <div class="wizard-step__icon-container">
             <div class="wizard-step__icon-container__circle">
-                <f-icon name="success" />
+                <f-icon class="wizard-step__icon-container__success" name="success" />
                 <div class="wizard-step__icon-container__number" data-test="step-number">{{ stepNumber }}</div>
             </div>
             <div class="wizard-step__icon-container__line-down"></div>
