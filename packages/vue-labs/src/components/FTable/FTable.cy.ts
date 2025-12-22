@@ -1122,7 +1122,7 @@ describe("7 Bulk Operation ", () => {
     });
 
     describe("7.3 Row Selection Behavior with Filtering and Sorting", () => {
-        it("should resets row selections when filtering is applied", () => {
+        it("should reset row selections when filtering is applied", () => {
             const sorter = new FSortFilterDatasetPageObject(
                 ".sort-filter-dataset",
             );
