@@ -1,8 +1,10 @@
 import { type VNode, ref } from "vue";
 import { h } from "vue";
 import { assertSet } from "@fkui/logic";
+import { FSortFilterDatasetPageObject } from "@fkui/vue/cypress";
 import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
+import FTableBulkExample from "./examples/FTableBulkExample.vue";
 import { type FTableApi } from "./f-table-api";
 import { defineTableColumns } from "./table-column";
 
@@ -816,5 +818,222 @@ describe("5 tabstop", () => {
 
         cy.focused().press(Cypress.Keyboard.Keys.TAB);
         table.cell({ row: 2, col: 2 }).should("have.focus");
+    });
+});
+
+describe("7 Bulk Operation ", () => {
+    describe("7.2 Bulk Operation Checkbox States", () => {
+        interface Row {
+            text: string;
+        }
+
+        const rows = ref([{ text: "A1" }, { text: "A2" }]);
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "A",
+                key: "text",
+            },
+        ]);
+
+        it("should show background when some rows are selected", () => {
+            const selectedRows: Row[] = [];
+            cy.mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                    selectable: "multi",
+                    selectedRows,
+                },
+            });
+            cy.toMatchScreenshot();
+        });
+
+        it("should show state when selected with click", () => {
+            const selectedRows: Row[] = [];
+            cy.mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                    selectable: "multi",
+                    selectedRows,
+                },
+            });
+
+            table.selectHeaderInput().should("be.empty");
+            table.selectInput(1).should("be.empty");
+            table.selectInput(2).should("be.empty");
+
+            table.selectInput(1).focus().click();
+            //select row
+            table
+                .selectHeaderInput()
+                .should("not.be.checked")
+                .and("have.prop", "indeterminate");
+
+            table.selectInput(1).should("be.checked");
+            table.selectInput(2).should("not.be.checked");
+            //select all rows
+            table.selectHeaderInput().focus().click();
+
+            table.selectHeaderInput().should("be.checked");
+            table.selectInput(1).should("be.checked");
+            table.selectInput(2).should("be.checked");
+        });
+
+        it("should show state when selected with space", () => {
+            const selectedRows: Row[] = [];
+            cy.mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                    selectable: "multi",
+                    selectedRows,
+                },
+            });
+            //select row
+            table.selectInput(1).focus().press(Cypress.Keyboard.Keys.SPACE);
+
+            table.selectHeaderInput().should("not.be.checked");
+            table.selectHeaderInput().should("have.prop", "indeterminate");
+            table.selectInput(1).should("be.checked");
+            table.selectInput(2).should("not.be.checked");
+
+            //select all rows
+            table
+                .selectHeaderInput()
+                .focus()
+                .press(Cypress.Keyboard.Keys.SPACE);
+
+            table.selectHeaderInput().should("be.checked");
+            table.selectInput(1).should("be.checked");
+            table.selectInput(2).should("be.checked");
+        });
+    });
+
+    describe("7.3 Row Selection Behavior with Filtering and Sorting", () => {
+        it("should reset row selections when filtering is applied", () => {
+            const sorter = new FSortFilterDatasetPageObject(
+                ".sort-filter-dataset",
+            );
+            cy.mount(FTableBulkExample);
+            table.selectInput(1).focus().click();
+            table.selectInput(1).should("be.checked");
+            table.selectHeaderInput().should("have.prop", "indeterminate");
+
+            sorter.textField.input().type("Ape");
+
+            table.selectInput(1).should("not.be.checked");
+            table.selectHeaderInput().should("have.prop", "indeterminate");
+        });
+
+        it("should retain row selections when sorting is applied", () => {
+            cy.mount(FTableBulkExample);
+
+            table.selectInput(2).focus().click();
+            table.selectInput(2).should("be.checked");
+            table.header(2).click();
+
+            table.selectInput(2).should("be.checked");
+        });
+    });
+    describe("7.4 Bulk selection in expandable", () => {
+        interface Row {
+            text: string;
+            expandableRows?: Row[];
+        }
+
+        const rows = ref([
+            { text: "A1", expandableRows: [{ text: "A2" }] },
+            { text: "B1" },
+            { text: "C1", expandableRows: [{ text: "C2" }] },
+        ]);
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "A",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "B",
+                key: "text",
+            },
+        ]);
+
+        it("should allow selecting all rows for bulk select in expandable table", () => {
+            const selectedRows: Row[] = [];
+            cy.mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                    expandableAttribute: "expandableRows",
+                    selectable: "multi",
+                    selectedRows,
+                },
+            });
+
+            table.expandButton(3).click();
+            table.expandButton(1).click();
+
+            table.selectHeaderInput().focus().click();
+
+            table.selectHeaderInput().should("be.checked");
+            table.selectInput(1).should("be.checked");
+            table.cell({ row: 2, col: 2 }).should("be.empty");
+            table.selectInput(3).should("be.checked");
+            table.selectInput(4).should("be.checked");
+            table.cell({ row: 5, col: 2 }).should("be.empty");
+        });
+
+        it("should allow selecting top-level rows in expandable table", () => {
+            const selectedRows: Row[] = [];
+            cy.mount(FTable<Row>, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                    expandableAttribute: "expandableRows",
+                    selectable: "multi",
+                    selectedRows,
+                },
+            });
+
+            table.expandButton(3).click();
+            table.expandButton(1).click();
+            table.selectInput(1).focus().click();
+
+            table.selectHeaderInput().should("not.be.checked");
+            table.selectHeaderInput().should("have.prop", "indeterminate");
+            table.selectInput(1).should("be.checked");
+            table.cell({ row: 2, col: 2 }).should("be.empty");
+            table.selectInput(3).should("not.be.checked");
+            table.selectInput(4).should("not.be.checked");
+            table.cell({ row: 5, col: 2 }).should("be.empty");
+        });
+
+        describe("7.7 Dataset change resets selection ", () => {
+            it("should clear all selected rows when row is removed or added", () => {
+                cy.mount(FTableBulkExample);
+
+                table.selectHeaderInput().focus().click();
+
+                table.selectHeaderInput().should("be.checked");
+                table.selectInput(1).should("be.checked");
+                table.selectInput(2).should("be.checked");
+
+                cy.contains("button", "Lägg till rad").click();
+
+                table.selectHeaderInput().should("not.be.checked");
+                table.selectInput(1).should("not.be.checked");
+                table.selectInput(2).should("not.be.checked");
+                table.selectInput(3).should("not.be.checked");
+
+                table.selectInput(3).focus().click();
+
+                cy.contains("button", "Ta bort markerade rader").click();
+            });
+        });
     });
 });
