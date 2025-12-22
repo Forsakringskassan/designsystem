@@ -99,6 +99,11 @@ export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K
 // @public (undocumented)
 export type TableColumnSize = "grow" | "shrink";
 
+// @internal
+export type TableColumnType = TableColumn<unknown, never> extends infer U ? U extends {
+    type: infer T;
+} ? T extends undefined ? never : T : never : never;
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
