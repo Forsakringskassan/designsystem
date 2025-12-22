@@ -4,6 +4,8 @@
 html {
     // only applies when using FKUI in a non scoped application
     font-size: var(--f-font-size-default-rem);
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
 
     @include breakpoints.breakpoint-up(lg) {
         font-size: var(--f-font-size-default-large-up-rem);
