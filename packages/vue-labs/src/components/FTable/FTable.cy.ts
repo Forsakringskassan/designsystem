@@ -1137,7 +1137,7 @@ describe("7 Bulk Operation ", () => {
             table.selectHeaderInput().should("have.prop", "indeterminate");
         });
 
-        it("should retains row selections when sorting is applied", () => {
+        it("should retain row selections when sorting is applied", () => {
             cy.mount(FTableBulkExample);
 
             table.selectInput(2).focus().click();
