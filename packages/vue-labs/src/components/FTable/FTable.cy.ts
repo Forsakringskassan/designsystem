@@ -28,6 +28,61 @@ function getTestSelector(value: string): string {
     return `[data-test="${value}"]`;
 }
 
+describe("4.4 Keyboard and shortcut navigation in table", () => {
+    const rows = [
+        { text: "A1", nested: [{ text: "A2" }] },
+        { text: "B1", nested: [{ text: "B2" }] },
+    ];
+
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "text",
+            header: "A",
+            key: "text",
+        },
+        {
+            type: "text",
+            header: "B",
+            key: "text",
+        },
+    ]);
+
+    const expandableAttribute = "nested";
+
+    it("should move focus correctly when pressing Home, End, Ctrl+Home and Ctrl+End", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute, selectable: "multi" },
+        });
+        table.expandButton(2).click();
+        table.expandButton(1).click();
+
+        cy.focused().press(Cypress.Keyboard.Keys.HOME);
+        table.expandButton(1).should("have.focus");
+
+        cy.focused().press(Cypress.Keyboard.Keys.END);
+        table.cell({ row: 1, col: 4 }).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+
+        cy.focused().press(Cypress.Keyboard.Keys.HOME);
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+
+        cy.focused().realPress(["Control", "End"]);
+        table.cell({ row: 4, col: 4 }).should("have.focus");
+
+        cy.focused().realPress(["Control", "Home"]);
+        table.expandButton(1).should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.UP);
+
+        cy.focused().press(Cypress.Keyboard.Keys.END);
+        cy.focused()
+            .should("have.prop", "tagName", "TH")
+            .should("contain.text", "B", true);
+
+        cy.focused().realPress(["Control", "End"]);
+        table.cell({ row: 4, col: 4 }).should("have.focus");
+    });
+});
+
 describe("6 Expandable table", () => {
     const rows = [
         { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
