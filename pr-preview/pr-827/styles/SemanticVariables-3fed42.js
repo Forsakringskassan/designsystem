@@ -739,6 +739,20 @@ var metadata_default = {
       }
     },
     {
+      "name": "--fkds-color-header-background-primary",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#116a3e",
+          "palette": "green-a-100"
+        },
+        "dark": {
+          "value": "#116a3e",
+          "palette": "green-a-100"
+        }
+      }
+    },
+    {
       "name": "--fkds-color-navigation-background-hover",
       "comment": null,
       "values": {
