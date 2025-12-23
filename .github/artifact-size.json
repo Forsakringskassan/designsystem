@@ -1,0 +1,42 @@
+{
+    "$schema": "../node_modules/artifact-size-analyzer/schema.json",
+    "artifacts": [
+        {
+            "id": "@fkui/date",
+            "name": "@fkui/date (esm)",
+            "include": ["packages/date/lib/esm/index.js"],
+            "compression": false
+        },
+        {
+            "id": "@fkui/design",
+            "name": "@fkui/design",
+            "include": ["packages/design/lib/*.css"],
+            "exclude": ["packages/design/lib/*.min.css"],
+            "compression": false
+        },
+        {
+            "id": "@fkui/logic",
+            "name": "@fkui/logic (esm)",
+            "include": ["packages/logic/lib/esm/index.js"],
+            "compression": false
+        },
+        {
+            "id": "@fkui/vue",
+            "name": "@fkui/vue (esm)",
+            "include": ["packages/vue/dist/esm/index.esm.js"],
+            "compression": false
+        },
+        {
+            "id": "@fkui/vue/cypress",
+            "name": "@fkui/vue/cypress",
+            "include": ["packages/vue/dist/esm/cypress.esm.js"],
+            "compression": false
+        },
+        {
+            "id": "@fkui/vue-labs",
+            "name": "@fkui/vue-labs (esm)",
+            "include": ["packages/vue-labs/dist/esm/index.esm.js"],
+            "compression": false
+        }
+    ]
+}
