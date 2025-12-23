@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-b7b14c.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-bd39d4.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
@@ -281,7 +281,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             striped: "",
             selectable: "multi"
           }, {
-            footer: _withCtx(() => [..._cache[1] || (_cache[1] = [
+            caption: _withCtx(() => [..._cache[1] || (_cache[1] = [
+              _createTextVNode(
+                "Tabell",
+                -1
+                /* CACHED */
+              )
+            ])]),
+            footer: _withCtx(() => [..._cache[2] || (_cache[2] = [
               _createTextVNode(
                 "Footer",
                 -1
@@ -308,7 +315,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b7b14c"
+  selector: "#example-bd39d4"
 });
 export {
   render

@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableLiveExample.vue:FTableLiveExample-2d01a6.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableLiveExample.vue:FTableLiveExample-caca00.js
 import { defineComponent, h as h2 } from "vue";
 import { formatNumber } from "@fkui/logic";
 import { FCheckboxField, FFieldset, FRadioField, FSelectField } from "@fkui/vue";
@@ -262,6 +262,16 @@ var exampleComponent = defineComponent({
     components() {
       return { FTable };
     },
+    captionSlotTemplate() {
+      return (
+        /* HTML */
+        `<template #caption>
+                <span ${this.hasHiddenCaption ? `class="sr-only"` : ""}>
+                    Tabell \xF6ver exempel p\xE5 kolumntyper
+                </span>
+            </template>`
+      );
+    },
     expandableAttribute() {
       if (!this.isExpandable) {
         return;
@@ -301,7 +311,7 @@ var exampleComponent = defineComponent({
           selectable,
           expandableAttribute
         },
-        [this.expandableSlotTemplate, this.emptyTemplate]
+        [this.captionSlotTemplate, this.expandableSlotTemplate, this.emptyTemplate]
       );
     }
   },
@@ -368,7 +378,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.hasHiddenCaption,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasHiddenCaption = $event),
-            disabled: "",
             value: true
           }, {
             default: _withCtx(() => [..._cache[13] || (_cache[13] = [
@@ -565,7 +574,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-2d01a6"
+  selector: "#example-caca00"
 });
 export {
   render
