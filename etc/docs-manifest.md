@@ -77,9 +77,7 @@ components/validation/fvalidationform.html
 components/validation/fvalidationgroup.html
 components/validation/validators.html
 functions/config.html
-functions/cypress/pageobjects/FBadgePageObject/index.html
-functions/cypress/pageobjects/FBadgePageObject/is-inverted.html
-functions/cypress/pageobjects/FBadgePageObject/status.html
+functions/cypress/pageobjects/fbadgepageobject.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/content.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/el.html
