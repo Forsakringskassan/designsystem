@@ -2,7 +2,6 @@
 @use "variables" as *;
 
 /* Selectors */
-$icon-success-selector: ".icon.f-icon-success" !default;
 $header-selector: ".wizard-step__header" !default;
 $title-selector: "#{$header-selector}__title" !default;
 $anchor-selector: "#{$title-selector} .anchor" !default;
@@ -13,6 +12,7 @@ $icon-line-down-selector: ".wizard-step__icon-container__line-down" !default;
 $icon-container-selector: ".wizard-step__icon-container" !default;
 $circle-selector: ".wizard-step__icon-container__circle" !default;
 $number-selector: ".wizard-step__icon-container__number" !default;
+$success-selector: ".wizard-step__icon-container__success" !default;
 $form-body-selector: ".wizard-step-body" !default;
 $form-border-container: "#{$form-body-selector}__border-container" !default;
 
@@ -90,7 +90,7 @@ $icon-size: 30px;
         }
     }
 
-    #{$icon-success-selector} {
+    #{$success-selector} {
         display: none;
     }
 
@@ -183,7 +183,7 @@ $icon-size: 30px;
             text-underline-offset: 0.25em;
         }
 
-        #{$icon-success-selector} {
+        #{$success-selector} {
             display: block;
             color: $wizardstep-color-circle-content-done;
             width: 20px;
@@ -221,7 +221,7 @@ $icon-size: 30px;
     }
 
     @media (forced-colors: active) {
-        #{$icon-success-selector} {
+        #{$success-selector} {
             color: CanvasText;
         }
     }

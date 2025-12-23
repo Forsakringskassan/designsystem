@@ -1,10 +1,17 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FDatepickerField, FSelectField, FTextField, FWizard, FWizardStep } from "@fkui/vue";
+import {
+    FDatepickerField,
+    FMessageBox,
+    FSelectField,
+    FTextField,
+    FWizard,
+    FWizardStep,
+} from "@fkui/vue";
 
 export default defineComponent({
     name: "WizardExampleDefault",
-    components: { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField },
+    components: { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField, FMessageBox },
     data() {
         return {
             current: undefined as string | undefined,
@@ -26,6 +33,8 @@ export default defineComponent({
     <div>
         <f-wizard v-model="current" header-tag="h2" disable-initial-focus @completed="onCompleted">
             <f-wizard-step key="foo" :use-error-list="false" title="Stegrubrik 1">
+                <f-message-box type="success" layout="short"> Kort meddelande </f-message-box>
+
                 <f-text-field v-validation.required.maxLength="{ maxLength: { length: 100 } }">
                     Etikett-rubrik
                 </f-text-field>
