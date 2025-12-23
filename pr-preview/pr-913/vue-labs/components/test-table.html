@@ -23,18 +23,18 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-a11a3e.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-b0075f.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-816467.js",
     "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-98aa87.js",
-    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-c9de4a.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-29777c.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-39bce6.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js"
   },
   "integrity": {
     "../assets/vendor-vue-a11a3e.js": "sha384-CmWdyBZbBnJTuQtj4rgouZN7cRC/czuJRdirc2pQQhKjKa6jjZCMhkpzU7jv7gFA",
-    "../assets/vendor-fkui-logic-b0075f.js": "sha384-8+BulV9pwaaof6GCYzDYWUpbIvcu9fc2Uh+6BPuhF2mi1O4YlXtNBWTy7IzL6v7N",
+    "../assets/vendor-fkui-logic-816467.js": "sha384-zHOPxLdWj9MBHzmR2JAn37NXWizZ4A/4tBt5WWNpco7/xVUgVzeKCzzQo4fosGMN",
     "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
-    "../assets/vendor-fkui-vue-98aa87.js": "sha384-r+46E2WvJ0LocfGvoqyj/GBSLuZZE6wDsvDzc+S4lmmkPe47uCh3Uy8HmFEOn7HX",
-    "../assets/vendor-fkui-vue-labs-c9de4a.js": "sha384-jpJu2bhS9n1cfufQPTFU8zXRXk32h3Q/OYN+ZJYqdHUhPzJOGTXQbJJt/dZR2ebE",
+    "../assets/vendor-fkui-vue-29777c.js": "sha384-0lkKkVYjD5WYvM1yVbg2DZ8L527DUE+G3QHz32nT/s8dJt541AGuZCZ4QQunZ96v",
+    "../assets/vendor-fkui-vue-labs-39bce6.js": "sha384-dLRgVS0ThqXl+ieNlM9brCS3gouHrgzuAbH1UcMRD496HwwsBMw27gj1lIQAFDbi",
     "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js": "sha384-EfDXAfHkZWGo4Nl44hipgaFlVrbK9+OC7Ttnp4RNo2eCxop6CBrFM1CuU1iy2WEs"
   }
 }
@@ -202,7 +202,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-b7b14c"></div>
+        <div id="example-bd39d4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -228,7 +228,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-b7b14c.js"></script>
+        <script type="module" src="./FTableExample-bd39d4.js"></script>
     
                 </div>
                 <div>
@@ -510,6 +510,7 @@ interface <span class="hljs-title class_">Row</span> {
                 <span class="hljs-attr">striped</span>
                 <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>
             &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>Tabell<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -556,13 +557,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-dfba5c"></div>
+        <div id="example-e7ed8a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-dfba5c.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-e7ed8a.js"></script>
     
                 </div>
                 <div>
@@ -593,6 +594,7 @@ interface <span class="hljs-title class_">TableRow</span> {
     <span class="hljs-attr">bankAccountNumber</span>: string;
     <span class="hljs-attr">bankgiro</span>: string;
     <span class="hljs-attr">clearingNumber</span>: string;
+    <span class="hljs-attr">date</span>: string;
     <span class="hljs-attr">epost</span>: string;
     <span class="hljs-attr">orgnr</span>: string;
     <span class="hljs-attr">tele</span>: string;
@@ -638,6 +640,12 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Valuta&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;currency&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:date&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Datum&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;date&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
     {
@@ -694,6 +702,7 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">bankAccountNumber</span>: <span class="hljs-string">&quot;12345678&quot;</span>,
         <span class="hljs-attr">bankgiro</span>: <span class="hljs-string">&quot;9999996&quot;</span>,
         <span class="hljs-attr">clearingNumber</span>: <span class="hljs-string">&quot;5678&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-06-15&quot;</span>,
         <span class="hljs-attr">currency</span>: <span class="hljs-number">3453455</span>,
         <span class="hljs-attr">number</span>: <span class="hljs-number">5.4</span>,
         <span class="hljs-attr">percent</span>: <span class="hljs-number">9.987</span>,
@@ -711,6 +720,7 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">bankgiro</span>: <span class="hljs-string">&quot;999-9996&quot;</span>,
         <span class="hljs-attr">clearingNumber</span>: <span class="hljs-string">&quot;56781&quot;</span>,
         <span class="hljs-attr">currency</span>: <span class="hljs-number">24233</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2024-01-20&quot;</span>,
         <span class="hljs-attr">number</span>: <span class="hljs-number">5.5</span>,
         <span class="hljs-attr">percent</span>: <span class="hljs-number">19.987</span>,
         <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@example.net&quot;</span>,
@@ -727,6 +737,7 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">bankgiro</span>: <span class="hljs-string">&quot;999-9996&quot;</span>,
         <span class="hljs-attr">clearingNumber</span>: <span class="hljs-string">&quot;5678-1&quot;</span>,
         <span class="hljs-attr">currency</span>: <span class="hljs-number">234623546</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2022-11-05&quot;</span>,
         <span class="hljs-attr">number</span>: <span class="hljs-number">5.55</span>,
         <span class="hljs-attr">percent</span>: <span class="hljs-number">3.1</span>,
         <span class="hljs-attr">epost</span>: <span class="hljs-string">&quot;a.b@example.net&quot;</span>,
