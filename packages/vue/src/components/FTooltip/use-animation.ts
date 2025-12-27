@@ -13,7 +13,7 @@ export interface UseAnimation {
      */
     enabled: Readonly<Ref<boolean>>;
 
-    animate(state: "expand" | "collapse"): void;
+    animate(this: void, state: "expand" | "collapse"): void;
 }
 
 /**

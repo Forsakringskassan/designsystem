@@ -9,7 +9,7 @@ export function updateCalendarValue(
         calendarValue: FDate | undefined;
         readonly minDate: FDate | undefined;
         readonly maxDate: FDate | undefined;
-        isDateEnabled(date: FDate): boolean;
+        isDateEnabled(this: void, date: FDate): boolean;
     },
     newValue: string,
 ): void {

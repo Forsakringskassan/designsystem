@@ -19,7 +19,7 @@ export interface UseYearSelector {
     readonly activeYear: Ref<FYear>;
     readonly yearSelectorOpen: Ref<boolean>;
     readonly selectableYears: Readonly<ShallowRef<FYear[]>>;
-    onClickSelectYear(year: FYear): void;
+    onClickSelectYear(this: void, year: FYear): void;
 }
 
 /**
@@ -46,9 +46,9 @@ export function onKeyDown(
         activeYear: ShallowRef<FYear>;
         firstYear: FYear;
         lastYear: FYear;
-        focus(year: FYear): void;
-        close(): void;
-        select(year: FYear): void;
+        focus(this: void, year: FYear): void;
+        close(this: void): void;
+        select(this: void, year: FYear): void;
     },
 ): void {
     const { activeYear, firstYear, lastYear, focus, close, select } = options;

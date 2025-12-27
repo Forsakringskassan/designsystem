@@ -30,6 +30,7 @@ export interface UseModal {
      * payload when the modal is closed.
      */
     openModal<T>(
+        this: void,
         component: Component,
         options?: Partial<ModalOptions>,
     ): AsyncModalResult<T>;
@@ -42,7 +43,7 @@ export interface UseModal {
      * @returns A promise resolved with a `true` if modal was dismissed in a
      * positive manner ("Yes, I want to ...") or `false` if dismissed in a negative manner ("No, don't ...")
      */
-    confirmModal(texts: ConfirmModalTexts): Promise<boolean>;
+    confirmModal(this: void, texts: ConfirmModalTexts): Promise<boolean>;
 
     /**
      * Open a form modal and return the results from the input fields.
@@ -52,6 +53,7 @@ export interface UseModal {
      * @returns A promise resolved with values from input fields or rejected if user cancels.
      */
     formModal<T>(
+        this: void,
         component: Component,
         options?: Partial<ModalOptions>,
     ): Promise<T>;

@@ -46,6 +46,7 @@ export interface I18nextOptions {
      * structure.
      */
     loadLanguage(
+        this: void,
         lang: string,
     ): NestedStringRecord | Promise<NestedStringRecord>;
 }

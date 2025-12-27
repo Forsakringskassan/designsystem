@@ -5,9 +5,11 @@ import { isSet } from "@fkui/logic";
  */
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function getUpdateFn<TRow, TValue, K extends keyof TRow>(
-    fn: ((row: TRow, newValue: TValue, oldValue: TValue) => void) | undefined,
+    fn:
+        | ((this: void, row: TRow, newValue: TValue, oldValue: TValue) => void)
+        | undefined,
     key: K | undefined,
-): (row: TRow, newValue: TValue, oldValue: TValue) => void {
+): (this: void, row: TRow, newValue: TValue, oldValue: TValue) => void {
     if (fn) {
         return fn;
     }
@@ -24,10 +26,12 @@ export function getUpdateFn<TRow, TValue, K extends keyof TRow>(
  */
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function getParsedUpdateFn<TRow, K extends keyof TRow>(
-    fn: ((row: TRow, newValue: string, oldValue: string) => void) | undefined,
+    fn:
+        | ((this: void, row: TRow, newValue: string, oldValue: string) => void)
+        | undefined,
     key: K | undefined,
     parser: (value: string) => string | undefined,
-): (row: TRow, newValue: string, oldValue: string) => void {
+): (this: void, row: TRow, newValue: string, oldValue: string) => void {
     if (fn) {
         return (row: TRow, newValue, oldValue): void => {
             const parsedNewValue = parser(newValue);
@@ -50,6 +54,7 @@ export function getParsedUpdateFn<TRow, K extends keyof TRow>(
 export function getParsedNumberUpdateFn<TRow>(
     fn:
         | ((
+              this: void,
               row: TRow,
               newValue: number | string,
               oldValue: number | string,
@@ -57,7 +62,7 @@ export function getParsedNumberUpdateFn<TRow>(
         | undefined,
     key: keyof TRow | undefined,
     parser: (value: string) => string | number | undefined,
-): (row: TRow, newValue: string, oldValue: string) => void {
+): (this: void, row: TRow, newValue: string, oldValue: string) => void {
     if (fn) {
         return (row: TRow, newValue, oldValue): void => {
             const parsedNewValue = parser(newValue) ?? newValue;

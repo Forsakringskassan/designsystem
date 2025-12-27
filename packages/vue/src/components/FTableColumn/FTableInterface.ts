@@ -11,12 +11,12 @@ export interface FTableInterface {
     /**
      * Called when a new column is added.
      */
-    addColumn(column: FTableColumnData): void;
+    addColumn(this: void, column: FTableColumnData): void;
 
     /**
      * Called when a column is hidden.
      */
-    setVisibilityColumn(id: string, visible: boolean): void;
+    setVisibilityColumn(this: void, id: string, visible: boolean): void;
 
     /**
      * Enables table mode when set to `true`.

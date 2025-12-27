@@ -41,8 +41,8 @@ export interface TableColumnSimple<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    label?(row: T): string;
-    value?(row: T): string;
+    label?(this: void, row: T): string;
+    value?(this: void, row: T): string;
 }
 
 /**
@@ -54,7 +54,7 @@ export interface TableColumnRowHeader<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    value?(row: T): string;
+    value?(this: void, row: T): string;
 }
 
 /**
@@ -71,7 +71,7 @@ export interface NormalizedTableColumnRowHeader<T, K> {
         column: NormalizedTableColumnRowHeader<T, K>;
     }>;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    value(row: T): string;
+    value(this: void, row: T): string;
 }
 
 /**
@@ -83,10 +83,10 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    label?(row: T): string;
-    value?(row: T): boolean;
-    update?(row: T, newValue: boolean, oldValue: boolean): void;
-    editable?: boolean | ((row: T) => boolean);
+    label?(this: void, row: T): string;
+    value?(this: void, row: T): boolean;
+    update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
+    editable?: boolean | ((this: void, row: T) => boolean);
 }
 
 /**
@@ -103,10 +103,10 @@ export interface NormalizedTableColumnCheckbox<T, K> {
         column: NormalizedTableColumnCheckbox<T, K>;
     }>;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    label(row: T): string;
-    value(row: T): boolean;
-    update(row: T, newValue: boolean, oldValue: boolean): void;
-    editable(row: T): boolean;
+    label(this: void, row: T): string;
+    value(this: void, row: T): boolean;
+    update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
+    editable(this: void, row: T): boolean;
 }
 
 /**
@@ -118,9 +118,9 @@ export interface TableColumnRadio<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    label?(row: T): string;
-    value?(row: T): boolean;
-    update?(row: T, newValue: boolean, oldValue: boolean): void;
+    label?(this: void, row: T): string;
+    value?(this: void, row: T): boolean;
+    update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
 }
 
 /**
@@ -137,9 +137,9 @@ export interface NormalizedTableColumnRadio<T, K> {
         column: NormalizedTableColumnRadio<T, K>;
     }>;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    label(row: T): string;
-    value(row: T): boolean;
-    update(row: T, newValue: boolean, oldValue: boolean): void;
+    label(this: void, row: T): string;
+    value(this: void, row: T): boolean;
+    update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
 }
 
 /**
@@ -151,15 +151,15 @@ export interface TableColumnText<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    label?(row: T): string;
+    label?(this: void, row: T): string;
     tnum?: boolean;
     align?: "left" | "right";
-    value?(row: T): string;
-    update?(row: T, newValue: string, oldValue: string): void;
-    editable?: boolean | ((row: T) => boolean);
+    value?(this: void, row: T): string;
+    update?(this: void, row: T, newValue: string, oldValue: string): void;
+    editable?: boolean | ((this: void, row: T) => boolean);
     validation?: ValidatorConfigs;
-    parser?(value: string): string;
-    formatter?(value: string): string;
+    parser?(this: void, value: string): string;
+    formatter?(this: void, value: string): string;
 }
 
 /**
@@ -179,10 +179,10 @@ export interface NormalizedTableColumnText<T, K> {
         column: NormalizedTableColumnText<T, K>;
     }>;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    label(row: T): string;
-    value(row: T): string;
-    update(row: T, newValue: string, oldValue: string): void;
-    editable(row: T): boolean;
+    label(this: void, row: T): string;
+    value(this: void, row: T): string;
+    update(this: void, row: T, newValue: string, oldValue: string): void;
+    editable(this: void, row: T): boolean;
 }
 
 /**
@@ -195,15 +195,20 @@ export interface TableColumnNumber<T, K extends keyof T> {
     decimals?: number;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    label?(row: T): string;
+    label?(this: void, row: T): string;
     tnum?: boolean;
     align?: "left" | "right";
-    value?(row: T): string | number;
-    update?(row: T, newValue: number | string, oldValue: number | string): void;
-    editable?: boolean | ((row: T) => boolean);
+    value?(this: void, row: T): string | number;
+    update?(
+        this: void,
+        row: T,
+        newValue: number | string,
+        oldValue: number | string,
+    ): void;
+    editable?: boolean | ((this: void, row: T) => boolean);
     validation?: ValidatorConfigs;
-    parser?(value: string): number | string;
-    formatter?(value: number | string): string | undefined;
+    parser?(this: void, value: string): number | string;
+    formatter?(this: void, value: number | string): string | undefined;
 }
 
 /**
@@ -224,10 +229,15 @@ export interface NormalizedTableColumnNumber<T, K> {
         column: NormalizedTableColumnText<T, K>;
     }>;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    label(row: T): string;
-    value(row: T): string | number;
-    update(row: T, newValue: number | string, oldValue: number | string): void;
-    editable(row: T): boolean;
+    label(this: void, row: T): string;
+    value(this: void, row: T): string | number;
+    update(
+        this: void,
+        row: T,
+        newValue: number | string,
+        oldValue: number | string,
+    ): void;
+    editable(this: void, row: T): boolean;
 }
 
 /**
@@ -239,8 +249,8 @@ export interface TableColumnAnchor<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    value(row: T): string | null;
-    enabled?: boolean | ((row: T) => boolean);
+    value(this: void, row: T): string | null;
+    enabled?: boolean | ((this: void, row: T) => boolean);
     href: string;
 }
 
@@ -259,8 +269,8 @@ export interface NormalizedTableColumnAnchor<T, K> {
         column: NormalizedTableColumnAnchor<T, K>;
     }>;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    value(row: T): string | null;
-    enabled(row: T): boolean;
+    value(this: void, row: T): string | null;
+    enabled(this: void, row: T): boolean;
 }
 
 /**
@@ -272,9 +282,9 @@ export interface TableColumnButton<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    value(row: T): string | null;
-    onClick?(row: T): void;
-    enabled?: boolean | ((row: T) => boolean);
+    value(this: void, row: T): string | null;
+    onClick?(this: void, row: T): void;
+    enabled?: boolean | ((this: void, row: T) => boolean);
     icon?: string;
 }
 
@@ -293,9 +303,9 @@ export interface NormalizedTableColumnButton<T, K> {
         column: NormalizedTableColumnButton<T, K>;
     }>;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    value(row: T): string | null;
-    onClick?(row: T): void;
-    enabled(row: T): boolean;
+    value(this: void, row: T): string | null;
+    onClick?(this: void, row: T): void;
+    enabled(this: void, row: T): boolean;
 }
 
 /**
@@ -307,10 +317,10 @@ export interface TableColumnSelect<T, K extends keyof T> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    label?(row: T): string;
-    value?(row: T): string;
-    update?(row: T, newValue: string, oldValue: string): void;
-    editable?: boolean | ((row: T) => boolean);
+    label?(this: void, row: T): string;
+    value?(this: void, row: T): string;
+    update?(this: void, row: T, newValue: string, oldValue: string): void;
+    editable?: boolean | ((this: void, row: T) => boolean);
     options: string[];
 }
 
@@ -329,10 +339,10 @@ export interface NormalizedTableColumnSelect<T, K> {
         column: NormalizedTableColumnSelect<T, K>;
     }>;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    label(row: T): string;
-    value(row: T): string;
-    update(row: T, newValue: string, oldValue: string): void;
-    editable(row: T): boolean;
+    label(this: void, row: T): string;
+    value(this: void, row: T): string;
+    update(this: void, row: T, newValue: string, oldValue: string): void;
+    editable(this: void, row: T): boolean;
 }
 
 /**
@@ -343,7 +353,7 @@ export interface TableColumnRender<T, K> {
     description?: string | Readonly<Ref<string | null>>;
     key?: K;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    render(row: T): VNode | Component;
+    render(this: void, row: T): VNode | Component;
 }
 
 /**
@@ -356,7 +366,7 @@ export interface NormalizedTableColumnRender<T> {
     readonly description: Readonly<Ref<string | null>>;
     readonly sortable: boolean | null;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
-    render(row: T): VNode | Component;
+    render(this: void, row: T): VNode | Component;
 }
 
 /**
@@ -389,8 +399,8 @@ export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnSelect<T, K>;
 
 function getLabelFn<TRow>(
-    fn: ((row: TRow) => string) | undefined,
-): (row: TRow) => string {
+    fn: ((this: void, row: TRow) => string) | undefined,
+): (this: void, row: TRow) => string {
     if (fn) {
         return fn;
     }

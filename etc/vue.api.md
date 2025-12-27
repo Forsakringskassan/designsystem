@@ -69,11 +69,11 @@ export function ActivateItemInjected<T>(): ActivateItemInterface<T>;
 // @public (undocumented)
 export interface ActivateItemInterface<T> {
     // (undocumented)
-    registerCallbackAfterItemAdd(callback: ActivateItemCallback<T>): void;
+    registerCallbackAfterItemAdd(this: void, callback: ActivateItemCallback<T>): void;
     // (undocumented)
-    registerCallbackBeforeItemDelete(callback: ActivateItemCallback<T>): void;
+    registerCallbackBeforeItemDelete(this: void, callback: ActivateItemCallback<T>): void;
     // (undocumented)
-    setNestedKey(key: keyof T | null | undefined): void;
+    setNestedKey(this: void, key: keyof T | null | undefined): void;
 }
 
 // @public
@@ -765,9 +765,9 @@ export function FSortFilterDatasetInjected(): FSortFilterDatasetInterface;
 
 // @public
 export interface FSortFilterDatasetInterface {
-    registerCallbackOnMount(callback: FSortFilterDatasetMountCallback): void;
-    registerCallbackOnSort(callback: FSortFilterDatasetSortCallback): void;
-    sort(attribute: string, ascending: boolean): void;
+    registerCallbackOnMount(this: void, callback: FSortFilterDatasetMountCallback): void;
+    registerCallbackOnSort(this: void, callback: FSortFilterDatasetSortCallback): void;
+    sort(this: void, attribute: string, ascending: boolean): void;
 }
 
 // @public (undocumented)
@@ -845,9 +845,9 @@ export enum FTableColumnType {
 
 // @public
 export interface FTableInterface {
-    addColumn(column: FTableColumnData): void;
+    addColumn(this: void, column: FTableColumnData): void;
     readonly renderColumns: Ref<boolean>;
-    setVisibilityColumn(id: string, visible: boolean): void;
+    setVisibilityColumn(this: void, id: string, visible: boolean): void;
     textFieldTableMode: boolean;
 }
 
@@ -896,22 +896,22 @@ export const FWizard: typeof __VLS_export_69;
 // @public (undocumented)
 export interface FWizardApi {
     // (undocumented)
-    cancel(isFinalStep: boolean): void;
+    cancel(this: void, isFinalStep: boolean): void;
     // (undocumented)
-    getStepCount(): number;
+    getStepCount(this: void): number;
     // (undocumented)
     inheritedProps: {
         readonly headerTag: string;
         readonly disableInitialFocus: boolean;
     };
     // (undocumented)
-    openNext(self: FWizardStepDefinition): void;
+    openNext(this: void, self: FWizardStepDefinition): void;
     // (undocumented)
-    openStep(step: FWizardStepDefinition): void;
+    openStep(this: void, step: FWizardStepDefinition): void;
     // (undocumented)
-    register(key: FWizardKey, element: Element): FWizardStepDefinition;
+    register(this: void, key: FWizardKey, element: Element): FWizardStepDefinition;
     // (undocumented)
-    unregister(key: FWizardKey): void;
+    unregister(this: void, key: FWizardKey): void;
 }
 
 // @public (undocumented)
@@ -1431,9 +1431,9 @@ export function useDetailsPanel<T = unknown>(name: string): UseDetailsPanel<T>;
 
 // @public
 export interface UseModal {
-    confirmModal(texts: ConfirmModalTexts): Promise<boolean>;
-    formModal<T>(component: Component, options?: Partial<OpenModalModaloptions>): Promise<T>;
-    openModal<T>(component: Component, options?: Partial<OpenModalModaloptions>): AsyncModalResult<T>;
+    confirmModal(this: void, texts: ConfirmModalTexts): Promise<boolean>;
+    formModal<T>(this: void, component: Component, options?: Partial<OpenModalModaloptions>): Promise<T>;
+    openModal<T>(this: void, component: Component, options?: Partial<OpenModalModaloptions>): AsyncModalResult<T>;
 }
 
 // @public (undocumented)

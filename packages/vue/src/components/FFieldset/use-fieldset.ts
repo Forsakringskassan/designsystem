@@ -30,7 +30,7 @@ export interface FFieldsetAPI {
      *
      * Defaults to returning `undefined`.
      */
-    getFieldsetLabelText(): string | undefined;
+    getFieldsetLabelText(this: void): string | undefined;
 }
 
 /**
