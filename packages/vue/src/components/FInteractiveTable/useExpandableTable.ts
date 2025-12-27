@@ -7,14 +7,14 @@ import { includeItem, itemEquals } from "../../utils";
 export interface ExpandableTable<T> {
     isExpandableTable: ComputedRef<boolean>;
     hasExpandableSlot: ComputedRef<boolean>;
-    toggleExpanded(row: T): void;
-    isExpanded(row: T): boolean;
-    rowAriaExpanded(row: T): boolean | undefined;
-    expandableRowClasses(row: T, index: number): string[];
-    getExpandableDescribedby(row: T): string | undefined;
-    expandableRows(row: T): T[] | undefined;
-    hasExpandableContent(row: T): boolean;
-    getExpandedIndex(row: T, rows: T[]): number;
+    toggleExpanded(this: void, row: T): void;
+    isExpanded(this: void, row: T): boolean;
+    rowAriaExpanded(this: void, row: T): boolean | undefined;
+    expandableRowClasses(this: void, row: T, index: number): string[];
+    getExpandableDescribedby(this: void, row: T): string | undefined;
+    expandableRows(this: void, row: T): T[] | undefined;
+    hasExpandableContent(this: void, row: T): boolean;
+    getExpandedIndex(this: void, row: T, rows: T[]): number;
 }
 
 type Emit<T> = ((evt: "expand", row: T) => void) &

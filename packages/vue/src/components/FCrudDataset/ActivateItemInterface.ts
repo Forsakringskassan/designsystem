@@ -10,11 +10,17 @@ export type ActivateItemCallback<T> = (item: T) => void;
  */
 export interface ActivateItemInterface<T> {
     // After an item is added it should be active
-    registerCallbackAfterItemAdd(callback: ActivateItemCallback<T>): void;
+    registerCallbackAfterItemAdd(
+        this: void,
+        callback: ActivateItemCallback<T>,
+    ): void;
     // When an item is deleted the item above it should be set to active and have focus.
-    registerCallbackBeforeItemDelete(callback: ActivateItemCallback<T>): void;
+    registerCallbackBeforeItemDelete(
+        this: void,
+        callback: ActivateItemCallback<T>,
+    ): void;
     // Set key for nested items to enable deletion.
-    setNestedKey(key: keyof T | null | undefined): void;
+    setNestedKey(this: void, key: keyof T | null | undefined): void;
 }
 
 /**

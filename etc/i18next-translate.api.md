@@ -10,7 +10,7 @@ import { TranslationProviderInterface } from '@fkui/logic';
 export interface I18nextOptions {
     debug?: boolean;
     defaultLanguage: string;
-    loadLanguage(lang: string): NestedStringRecord | Promise<NestedStringRecord>;
+    loadLanguage(this: void, lang: string): NestedStringRecord | Promise<NestedStringRecord>;
 }
 
 // @public (undocumented)

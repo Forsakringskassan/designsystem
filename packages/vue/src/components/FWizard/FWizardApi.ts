@@ -45,12 +45,16 @@ export type FWizardValidationCallback = (
  * @public
  */
 export interface FWizardApi {
-    register(key: FWizardKey, element: Element): FWizardStepDefinition;
-    unregister(key: FWizardKey): void;
-    getStepCount(): number;
-    openStep(step: FWizardStepDefinition): void;
-    openNext(self: FWizardStepDefinition): void;
-    cancel(isFinalStep: boolean): void;
+    register(
+        this: void,
+        key: FWizardKey,
+        element: Element,
+    ): FWizardStepDefinition;
+    unregister(this: void, key: FWizardKey): void;
+    getStepCount(this: void): number;
+    openStep(this: void, step: FWizardStepDefinition): void;
+    openNext(this: void, self: FWizardStepDefinition): void;
+    cancel(this: void, isFinalStep: boolean): void;
     inheritedProps: {
         readonly headerTag: string;
         readonly disableInitialFocus: boolean;

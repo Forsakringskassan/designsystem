@@ -6,7 +6,7 @@ import { type ContextMenuItem } from "./contextmenuitem";
  * @internal
  */
 export interface UseMenuAction {
-    doMenuAction(action: MenuAction | null): Promise<void>;
+    doMenuAction(this: void, action: MenuAction | null): Promise<void>;
 }
 
 /**
@@ -16,8 +16,8 @@ export interface UseMenuActionOptions {
     readonly currentFocusedItemIndex: Readonly<Ref<number>> | number;
     readonly popupItems: Readonly<Ref<ContextMenuItem[]>> | ContextMenuItem[];
 
-    setFocusOnItem(index: number): Promise<void>;
-    activateItem(index: number): Promise<void>;
+    setFocusOnItem(this: void, index: number): Promise<void>;
+    activateItem(this: void, index: number): Promise<void>;
 }
 
 /**

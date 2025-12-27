@@ -27,18 +27,24 @@ export interface FSortFilterDatasetInterface {
      * @param attribute - is the field that gets sorted
      * @param ascending - is the order the fields get sorted
      */
-    sort(attribute: string, ascending: boolean): void;
+    sort(this: void, attribute: string, ascending: boolean): void;
 
     /**
      * Callback function that is called when dataset get sorted
      */
-    registerCallbackOnSort(callback: FSortFilterDatasetSortCallback): void;
+    registerCallbackOnSort(
+        this: void,
+        callback: FSortFilterDatasetSortCallback,
+    ): void;
 
     /**
      * Called when FSortFilterDataset is mounted.
      * Returns the sortable field names.
      */
-    registerCallbackOnMount(callback: FSortFilterDatasetMountCallback): void;
+    registerCallbackOnMount(
+        this: void,
+        callback: FSortFilterDatasetMountCallback,
+    ): void;
 }
 
 /**

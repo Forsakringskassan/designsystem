@@ -2,11 +2,11 @@
  *  @internal
  */
 export function getValueFn<TRow, TValue>(
-    fn: ((row: TRow) => TValue) | undefined,
+    fn: ((this: void, row: TRow) => TValue) | undefined,
     key: keyof TRow | undefined,
     coerce: (value: unknown) => TValue,
     defaultValue: TValue,
-): (row: TRow) => TValue {
+): (this: void, row: TRow) => TValue {
     if (fn) {
         return fn;
     }
@@ -22,11 +22,11 @@ export function getValueFn<TRow, TValue>(
  *  @internal
  */
 export function getFormattedValueFn<TRow>(
-    fn: ((row: TRow) => string) | undefined,
+    fn: ((this: void, row: TRow) => string) | undefined,
     key: keyof TRow | undefined,
     formatter: (value: string) => string | undefined,
     defaultValue: string,
-): (row: TRow) => string {
+): (this: void, row: TRow) => string {
     if (fn) {
         return (row: TRow): string => {
             const value = fn(row);
@@ -49,11 +49,11 @@ export function getFormattedValueFn<TRow>(
  *  @internal
  */
 export function getFormattedNumberValueFn<TRow>(
-    fn: ((row: TRow) => string | number) | undefined,
+    fn: ((this: void, row: TRow) => string | number) | undefined,
     key: keyof TRow | undefined,
     formatter: (value: number | string) => string | undefined,
     defaultValue: string,
-): (row: TRow) => string | number {
+): (this: void, row: TRow) => string | number {
     if (fn) {
         return (row: TRow): string | number => {
             const value = fn(row);
