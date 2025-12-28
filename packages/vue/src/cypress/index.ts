@@ -1,6 +1,7 @@
 export { type BasePageObject, type DefaultCypressChainable } from "./common";
 export {
     FCalendarDayPageObject,
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
     FCalenderDayPageobject,
     dayType,
 } from "./FCalendarDay.pageobject";
@@ -40,6 +41,7 @@ export { FSelectFieldPageObject } from "./FSelectField.pageobject";
 export { FSortFilterDatasetPageObject } from "./FSortFilterDataset.pageobject";
 export { FStaticFieldPageObject } from "./FStaticField.pageobject";
 export { FInteractiveTablePageObject } from "./FInteractiveTable.pageobject";
+/* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
 export { FTableColumnPageObject } from "./FTableColumn.pageobject";
 export { FTextFieldPageObject } from "./FTextField.pageobject";
 export { FTextareaFieldPageObject } from "./FTextareaField.pageobject";

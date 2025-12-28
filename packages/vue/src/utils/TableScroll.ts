@@ -16,7 +16,9 @@ export enum TableScroll {
 
 const scrollClasses: Record<TableScroll, string[]> = {
     [TableScroll.HORIZONTAL]: ["table__scroll", "table__scroll--horizontal"],
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
     [TableScroll.VERTICAL]: ["table__scroll", "table__scroll--vertical"],
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
     [TableScroll.BOTH]: [
         "table__scroll",
         "table__scroll--horizontal",
