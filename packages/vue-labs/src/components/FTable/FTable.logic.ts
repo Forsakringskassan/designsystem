@@ -104,10 +104,15 @@ function navigate(
 ): TableCellIndex | undefined {
     /* @todo fix this */
     /* eslint-disable sonarjs/different-types-comparison -- the types does not allow this to be true so this "cannot happen" */
+
     if (
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         from.row === undefined ||
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         from.cell === undefined ||
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         last.row === undefined ||
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         last.cell === undefined
     ) {
         return;

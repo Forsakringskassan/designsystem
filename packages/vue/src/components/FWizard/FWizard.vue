@@ -106,6 +106,7 @@ export default defineComponent({
         register(key: FWizardKey, element: Element): FWizardStepDefinition {
             const step = addStep(this.steps, key, element);
 
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (this.modelValue !== null) {
                 if (step.key === this.modelValue) {
                     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */

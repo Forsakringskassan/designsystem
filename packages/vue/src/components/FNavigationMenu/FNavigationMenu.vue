@@ -135,6 +135,7 @@ export default defineComponent({
     },
     computed: {
         items(): MenuItem[] {
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (!this.routes || !Array.isArray(this.routes)) {
                 return [];
             }

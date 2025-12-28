@@ -16,6 +16,7 @@ function unpackPayload<T = void>(
     src: PartialResult<T>,
 ): ModalResult<T> {
     const defaultPayload: PartialResult<T> = {};
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     const { reason = event, data: rawData } = src ?? defaultPayload;
     /* this cast is needed when the caller lies about T, there is no sane way to
      * verify the type of the emitted event matches the caller requested type so

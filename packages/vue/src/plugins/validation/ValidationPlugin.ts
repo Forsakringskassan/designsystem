@@ -58,6 +58,7 @@ function registerValidators(
     /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
     (Object.keys(bindingModifiers) as ValidatorName[]).forEach(
         (validatorName) => {
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             validatorConfigs[validatorName] = bindingValue[validatorName] || {};
         },
     );

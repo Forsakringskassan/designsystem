@@ -77,6 +77,7 @@ export function mountComponent(
     const el = createContainer({ attachTo, attachFirst });
     const app = createApp(Component, data);
     const fkuiContext = getRunningContext(callingInstance);
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (fkuiContext) {
         Object.assign(app._context, fkuiContext.appContext); // must use Object.assign on _context
     }

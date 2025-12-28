@@ -38,6 +38,7 @@ const columns = defineTableColumns<FruitOrder>([
         header: "Orderdatum",
         type: "text",
         value(row) {
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             return row.orderedAt?.toString() ?? "";
         },
     },

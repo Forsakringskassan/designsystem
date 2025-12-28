@@ -43,6 +43,7 @@ export class HoursMinutesValidatorUtils {
         if (
             !isSet(config) ||
             !Array.isArray(config.parser) ||
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             !isSet(config.parser?.[0]) ||
             typeof config.parser[0] !== "function"
         ) {

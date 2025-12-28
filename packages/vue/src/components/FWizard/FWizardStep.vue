@@ -132,6 +132,7 @@ export default defineComponent({
         },
     },
     mounted() {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         const key = getCurrentInstance()?.vnode?.key;
 
         if (!key) {
@@ -141,6 +142,7 @@ export default defineComponent({
         this.step = this.register(key, this.$el);
     },
     beforeUnmount() {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         const key = getCurrentInstance()?.vnode?.key;
 
         if (key) {

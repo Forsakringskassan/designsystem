@@ -86,6 +86,7 @@ export function useExpandableTable<T extends object>(
     }
 
     function getExpandableDescribedby(row: T): string | undefined {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         if (!isExpandableTable) {
             return undefined;
         }

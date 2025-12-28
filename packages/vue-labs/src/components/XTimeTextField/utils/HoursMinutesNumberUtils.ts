@@ -80,7 +80,9 @@ export function splitHoursMinutes(
         return ["", ""];
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     const hours = padInitialZeros(match?.groups?.hours);
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     const minutes = padInitialZeros(match?.groups?.minutes);
 
     return [hours, minutes];

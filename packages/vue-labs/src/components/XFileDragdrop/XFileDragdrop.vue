@@ -91,6 +91,7 @@ function hanteraFil(filer: FileList): void {
     } else {
         currentStatus.value = STATUS_HAR_INTE_VALT_FIL;
 
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         Object.values(filer ? filer : valdFil.value).forEach(async (value) => {
             try {
                 const buffer = await value.arrayBuffer();

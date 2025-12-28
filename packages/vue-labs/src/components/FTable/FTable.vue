@@ -183,6 +183,7 @@ function onTableFocusout(e: FocusEvent): void {
     if (!tableRef.value) {
         return;
     }
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
 
     if (outsideTable) {
