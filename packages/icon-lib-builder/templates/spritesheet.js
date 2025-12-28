@@ -1,4 +1,3 @@
-/* eslint-env browser */
 /* eslint-disable no-undef -- IMPORT_SPRITESHEET, PACKAGE, LIBRARY */
 /* eslint-disable no-unused-vars -- injectSpritesheet function */
 function injectSpritesheet() {
