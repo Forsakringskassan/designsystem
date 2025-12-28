@@ -198,6 +198,7 @@ export default defineComponent({
     mounted() {
         this.isMounted = true;
         this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         this.resizeObserver.observe(this.$el);
         /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         this.onResize();

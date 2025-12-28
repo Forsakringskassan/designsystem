@@ -205,6 +205,7 @@ async function setFocusOnItem(index: number): Promise<void> {
     const items = itemElementsRef.value ?? [];
     if (items.length > 0) {
         const popupMenuItem = items[index];
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         focus(popupMenuItem, { preventScroll: true });
     }
 }

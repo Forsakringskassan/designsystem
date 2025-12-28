@@ -71,6 +71,7 @@ const ValidationDirective: Directive<
     Record<string, ValidatorConfig>
 > = {
     beforeMount(el: HTMLElement, binding: DirectiveBinding): void {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         registerValidators(el, binding);
     },
     beforeUnmount(el: HTMLElement, _binding: DirectiveBinding): void {

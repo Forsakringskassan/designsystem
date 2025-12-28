@@ -61,6 +61,7 @@ export class PersistenceService<T> implements PersistenceServiceInterface<T> {
             : null;
         if (persisted) {
             const value = JSON.parse(persisted);
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             this.cache.set(key, value);
         }
         return this.cache.get(key);

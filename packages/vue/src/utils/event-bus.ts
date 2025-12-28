@@ -66,12 +66,15 @@ function $emit(type: string, ...args: unknown[]): void {
 
 function $on(type: string, callback: (...data: unknown[]) => void): void {
     fn.set(callback, (event: CustomEvent) => {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         callback(...event.detail);
     });
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     eventTarget().addEventListener(type, fn.get(callback));
 }
 
 function $off(type: string, callback: (...data: unknown[]) => void): void {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     eventTarget().removeEventListener(type, fn.get(callback));
     fn.delete(callback);
 }

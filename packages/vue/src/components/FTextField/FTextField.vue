@@ -368,6 +368,7 @@ export default defineComponent({
             const errorMessage = renderSlotText(this.$slots.default, {}, { stripClasses: [] }) ?? this.defaultText;
             const element = this.$el.querySelector(`#${validityEvent.elementId}`);
             if (element) {
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
                 dispatchComponentValidityEvent(element, {
                     ...validityEvent,
                     errorMessage,
