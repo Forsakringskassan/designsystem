@@ -270,7 +270,7 @@ export const FContextMenu: typeof __VLS_export_7;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_8" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const FCrudButton: typeof __VLS_export_8;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_9" needs to be exported by the entry point index.d.ts
