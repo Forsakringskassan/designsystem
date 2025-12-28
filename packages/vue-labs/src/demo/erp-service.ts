@@ -65,6 +65,7 @@ export function useERPService(rows: Reactive<FruitOrder[]>): ERPService {
 
     function getOrderTotal(order: Pick<FruitOrder, "items">): number {
         return (
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             order.items?.reduce(
                 (total, item) => total + item.price * item.quantity,
                 0,

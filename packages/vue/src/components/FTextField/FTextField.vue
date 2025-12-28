@@ -227,6 +227,7 @@ export default defineComponent({
         modelValue: {
             immediate: true,
             handler() {
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
                 if (this.modelValue === undefined || this.modelValue === null) {
                     this.viewValue = "";
                     return;

@@ -283,6 +283,7 @@ const nbOfColumns = computed((): number => {
 });
 
 const internalRows = computed((): T[] => {
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (isExpandableTable) {
         return setInternalKeys(rows, keyAttribute, expandableAttribute);
     }
@@ -356,6 +357,7 @@ onMounted(() => {
     if (tbody.value) {
         updateTr(tbody.value);
     }
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (isExpandableTable) {
         setNestedKey(expandableAttribute);
     }
@@ -510,6 +512,7 @@ function callbackBeforeItemDelete(item: T): void {
     }
 
     let index;
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (isExpandableTable) {
         index = getExpandedIndex(item, internalRows.value);
     } else {
@@ -529,6 +532,7 @@ function getPreviousFocus(currentIndex: number): HTMLElement | undefined {
     }
 
     let targetRow = trAll.value[previousIndex];
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (!targetRow) {
         return undefined;
     }

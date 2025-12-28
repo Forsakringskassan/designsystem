@@ -77,6 +77,7 @@ watchEffect(() => {
         // that launches the popup (await nextTick doesnt work here)
         setTimeout(() => {
             // verify that it's still open
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (isOpen) {
                 addListeners();
             }
@@ -151,6 +152,7 @@ async function calculatePosition(): Promise<void> {
     const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems, verticalSpacing });
     if (rect) {
         const { top, left, width, height } = rect;
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
         const offsetLeft = offsetRect?.x ?? 0;
         /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */

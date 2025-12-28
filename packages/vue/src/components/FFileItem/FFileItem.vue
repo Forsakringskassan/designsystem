@@ -84,6 +84,7 @@ export default defineComponent({
             }
 
             /* search literal match */
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (iconMap[mimeType]) {
                 return iconMap[mimeType];
             }
@@ -91,6 +92,7 @@ export default defineComponent({
             /* search with subtype wildcard, e.g. image/* */
             const p = mimeType.split("/", 1);
             const wildcard = [p[0], "*"].join("/");
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (iconMap[wildcard]) {
                 return iconMap[wildcard];
             }

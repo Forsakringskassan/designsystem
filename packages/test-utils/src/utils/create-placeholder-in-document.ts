@@ -17,6 +17,7 @@
  */
 export function createPlaceholderInDocument(): HTMLElement {
     const elem = document.createElement("div");
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (document.body) {
         document.body.appendChild(elem);
     }

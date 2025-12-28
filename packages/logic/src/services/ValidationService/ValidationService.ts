@@ -460,6 +460,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         } else {
             const existingState = this.validationStates[element.id];
 
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (existingState) {
                 this.validationStates[element.id] = {
                     ...existingState,
@@ -561,6 +562,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     ): ValidationState {
         let validationState = this.getState(element.id);
 
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         if (!validationState) {
             validationState = { touched: false, submitted: false };
             /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
@@ -575,6 +577,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
 
         return validatorNames.map((validatorName) => {
             const validator = registry[validatorName];
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (validator) {
                 return validator;
             }

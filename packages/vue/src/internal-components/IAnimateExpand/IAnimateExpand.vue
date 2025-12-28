@@ -154,6 +154,7 @@ export default defineComponent({
     methods: {
         getContentHeight(): number {
             const content = this.$refs.content as HTMLElement;
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             return content ? content.getBoundingClientRect().height : 0;
         },
         async openNoAnimation(): Promise<void> {

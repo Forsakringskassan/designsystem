@@ -24,6 +24,7 @@ export default defineComponent({
             const BadgeType = this.badgeType;
             if (this.badgeType === "standard") {
                 const template = /* HTML */ ``;
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
                 return this.badgeType ? template : "";
             } else {
                 const template = /* HTML */ ` status="${BadgeType}" `;

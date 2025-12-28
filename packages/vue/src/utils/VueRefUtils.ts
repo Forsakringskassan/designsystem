@@ -50,6 +50,7 @@ export function refIsHTMLElementArray(value: unknown): value is HTMLElement[] {
  * @returns `true` if the ref is a `Vue` (component), otherwise false.
  */
 export function refIsVue(value: unknown): value is ComponentPublicInstance {
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     return (value as ComponentPublicInstance)?.$el !== undefined;
 }
 

@@ -132,6 +132,7 @@ export default defineComponent({
         async onSubmit(event: Event): Promise<void> {
             this.submitted = true;
 
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             const beforeValidation = this.beforeValidation ? await this.beforeValidation() : undefined;
             if (beforeValidation === FValidationFormAction.CANCEL) {
                 return;
@@ -141,6 +142,7 @@ export default defineComponent({
                 return;
             }
 
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : undefined;
             if (beforeAction === FValidationFormAction.CANCEL) {
                 return;

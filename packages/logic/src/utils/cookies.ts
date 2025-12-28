@@ -43,6 +43,7 @@ export function deleteCookie(name: string): void {
 export function findCookie(name: string): string | undefined {
     /* handle when document or cookie does not exist, e.g. when DOM isn't
      * present */
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (!document?.cookie) {
         return undefined;
     }

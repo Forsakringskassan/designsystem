@@ -99,6 +99,7 @@ export default defineComponent({
         setArrowOffset() {
             const wrapper = this.$refs.wrapper as HTMLElement;
             const inputIcon = this.anchor?.nextElementSibling;
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (!inputIcon || !wrapper) {
                 return;
             }

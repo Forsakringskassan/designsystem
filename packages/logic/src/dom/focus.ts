@@ -276,6 +276,7 @@ export function popFocus(
     }
 
     if (restoreFocus) {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         focus(top?.element);
     }
 }

@@ -46,6 +46,7 @@ export const FormatPlugin: Plugin = {
             "format",
             (el: HTMLElement, { value, arg }: DirectiveBinding) => {
                 const formatter = formatters[arg as keyof typeof formatters];
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
                 if (formatter) {
                     removeObsoleteClasses(el);
                     formatter(el, value);

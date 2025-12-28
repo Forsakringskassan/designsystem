@@ -70,6 +70,7 @@ export function alertScreenReader(
 export function createScreenReaderWrapper(
     options: AlertScreenReaderOptions,
 ): void {
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (!getWrapper()) {
         wrapper = document.createElement("div");
         wrapper.id = "fkui-alert-screen-reader";

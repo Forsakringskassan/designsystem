@@ -234,6 +234,7 @@ export default defineComponent({
             };
             this.validity = this.detail;
 
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (this.validityElement) {
                 dispatchComponentValidityEvent(this.validityElement, this.dispatchObject);
             }

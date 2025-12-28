@@ -280,12 +280,14 @@ function getItemId(item: T): string {
 // item and box-shadow is drawn with a higher z-index,
 // thus no focus border under other list items.
 function onItemFocus(event: FocusEvent): void {
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (event?.target) {
         (event.target as HTMLElement).style.position = "relative";
     }
 }
 
 function onItemBlur(event: FocusEvent): void {
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (event?.target) {
         (event.target as HTMLElement).style.position = "static";
     }
@@ -307,6 +309,7 @@ function callbackBeforeItemDelete(item: T): void {
     }
     setActiveItem(internalItems.value[targetIndex]);
     const targetElement = getLiElements()[targetIndex];
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (targetElement) {
         targetElement.focus();
     }

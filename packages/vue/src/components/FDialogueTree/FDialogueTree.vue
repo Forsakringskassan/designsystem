@@ -83,6 +83,7 @@ export default defineComponent({
                 this.emitChange(false);
                 await this.$nextTick();
                 const firstElement = getHTMLElementsFromVueRef(this.$refs["dialogueButton-0"])[0];
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
                 if (firstElement) {
                     focus(firstElement);
                 }

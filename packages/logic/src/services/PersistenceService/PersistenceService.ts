@@ -4,6 +4,7 @@ import { type PersistenceServiceInterface } from "./PersistenceServiceInterface"
 const haveSessionStorage = /* @__PURE__ */ (() => {
     const test = "fkui.sessionstorage.test";
     try {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         if (window.sessionStorage) {
             window.sessionStorage.setItem(test, "test");
             window.sessionStorage.removeItem(test);
