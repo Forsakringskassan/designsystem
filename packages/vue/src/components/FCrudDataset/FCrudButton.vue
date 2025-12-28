@@ -1,12 +1,15 @@
+<script lang="ts">
+/**
+ * @deprecated for table replace with <f-table-button> or <button> in other cases
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useTranslate } from "../../plugins";
 import { FTableButton } from "../FTableButton";
 import { FCrudDatasetInjected } from "./FCrudDatasetInterface";
-
-/**
- * @deprecated for table replace with <f-table-button> or <button> in other cases
- */
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({
