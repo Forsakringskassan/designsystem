@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 6.32.0 (2025-12-28)
+
+### Features
+
+* **@fkui/logic:** allow popping focus frame without restoring focus (refs SFKUI-6500) 044fabe
+* **@fkui/vue-labs:** new `text:date` table column type (fixes SFKUI-7527) 7931cb7
+
+### Bug Fixes
+
+* **@fkui/i18next-translate, @fkui/vue-labs, @fkui/vue:** make composables compatible with eslint `@typescript-eslint/unbound-method` (refs SFKUI-6500) ad6045e
+* **@fkui/vue:** clicking outside of `FContextMenu` no longer moves focus back to button (refs SFKUI-6500) 88b7d59
+* **deps:** update dependency i18next to v25.7.3 157bbf5
+* **deps:** update dependency sass to v1.97.0 88caed1
+* **deps:** update dependency sass to v1.97.1 bf4e565
+* **deps:** update vue monorepo to v3.5.26 d7f295a
+
 ## 6.31.1 (2025-12-18)
 
 ### Bug Fixes
