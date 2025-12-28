@@ -104,6 +104,7 @@ export default defineComponent({
             const errorMessage = renderSlotText(this.$slots.default) ?? this.defaultText;
             const element = this.$el.querySelector(`#${detail.elementId}`);
             if (element) {
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
                 dispatchComponentValidityEvent(element, {
                     ...detail,
                     errorMessage,
@@ -115,6 +116,7 @@ export default defineComponent({
             this.validityMode = "INITIAL";
         },
         configureValidators(): void {
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             const elements: HTMLInputElement[] = Array.from(this.$el.querySelectorAll("input"));
             const validatorEmailConfig: ValidatorConfigs = {
                 email: {},

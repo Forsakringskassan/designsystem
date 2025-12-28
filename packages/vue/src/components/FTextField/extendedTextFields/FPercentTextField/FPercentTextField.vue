@@ -46,6 +46,7 @@ export default defineComponent({
         };
     },
     mounted() {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const inputElement = getInputElement(this);
         inputElement.setAttribute("inputmode", this.decimals ? "decimal" : "numeric");
         inputElement.setAttribute("maxlength", "10");

@@ -43,6 +43,7 @@ export class FExpandablePanelPageObject implements BasePageObject {
             .invoke("text")
             .then((text: string) =>
                 text.replace(/(\d+)/, (match, matchGroup1) => {
+                    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
                     nrOfNotifications = parseInt(matchGroup1, 10);
                     return matchGroup1;
                 }),

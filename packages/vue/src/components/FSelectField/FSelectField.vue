@@ -135,6 +135,7 @@ export default defineComponent({
 
             const element = this.$el.querySelector(`#${detail.elementId}`);
             if (element) {
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
                 dispatchComponentValidityEvent(element, {
                     ...detail,
                     errorMessage,

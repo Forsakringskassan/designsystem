@@ -91,6 +91,7 @@ export class CalendarPageObject implements BasePageObject {
             let currentMonth = 0;
             el.text().replace(/(\w+)\s+(\d+)/, (match, p1, p2) => {
                 currentMonth = monthList.findIndex((month) => month === p1);
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
                 currYear = parseInt(p2, 10);
                 return String(currYear);
             });

@@ -155,7 +155,7 @@ async function calculatePosition(): Promise<void> {
         /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
         const offsetLeft = offsetRect?.x ?? 0;
-        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands -- technical debt */
+        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-unsafe-argument -- technical debt */
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
