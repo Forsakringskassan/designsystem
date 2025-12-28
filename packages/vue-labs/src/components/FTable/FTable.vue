@@ -271,6 +271,7 @@ onMounted(() => {
     assertRef(tableRef);
     registerCallbackOnMount(callbackSortableColumns);
     registerCallbackOnSort(callbackOnSort);
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     setDefaultCellTarget(tableRef.value);
 });
 </script>

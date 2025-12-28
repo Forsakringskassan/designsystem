@@ -237,6 +237,7 @@ export default defineComponent({
                 this.componentTouched = true;
                 const inputElement = getInputElement(this);
                 ValidationService.setTouched(inputElement);
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 ValidationService.validateElement(inputElement);
             }
         },
@@ -256,12 +257,14 @@ export default defineComponent({
         },
         onKeyupEsc(): void {
             this.isCalendarOpen = false;
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             waitForScreenReader(() => {
                 getHTMLElementFromVueRef(this.$refs.calendarButton).focus();
             });
         },
         onClickCloseCalendarButton(): void {
             this.isCalendarOpen = false;
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             waitForScreenReader(() => {
                 getHTMLElementFromVueRef(this.$refs.calendarButton).focus();
             });
@@ -315,6 +318,7 @@ export default defineComponent({
         async updateTextFieldValue(newValue: string): Promise<void> {
             this.textFieldValue = newValue;
             await this.$nextTick();
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             ValidationService.validateElement(getInputElement(this));
         },
     },

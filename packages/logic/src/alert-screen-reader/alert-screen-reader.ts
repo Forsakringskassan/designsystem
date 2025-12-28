@@ -44,6 +44,7 @@ export function alertScreenReader(
     const msg = document.createElement("p");
     msg.textContent = text;
 
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     waitForScreenReader(() => {
         while (wrapper.firstChild) {
             wrapper.removeChild(wrapper.firstChild);

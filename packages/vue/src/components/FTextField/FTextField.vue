@@ -335,6 +335,7 @@ export default defineComponent({
             }
 
             // revalidate field when config is updated
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             ValidationService.validateElement(this.$refs.input as HTMLElement);
         },
         resolveNewModelValue(viewValue: string): unknown {

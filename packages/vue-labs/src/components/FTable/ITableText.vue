@@ -89,6 +89,7 @@ function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" 
     inEdit.value = false;
     assertRef(inputElement);
     inputElement.value.tabIndex = -1;
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     stopEdit(inputElement.value, reason);
 }
 

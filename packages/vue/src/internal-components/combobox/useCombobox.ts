@@ -209,6 +209,7 @@ export function useCombobox(
 
     function toggleDropdown(): void {
         if (!dropdownIsOpen.value) {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             openSelected();
         } else {
             close();
@@ -274,6 +275,7 @@ export function useCombobox(
                     }
                     close();
                 } else {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     openSelected();
                 }
 
@@ -284,6 +286,7 @@ export function useCombobox(
                 if (dropdownIsOpen.value) {
                     setNextOption();
                 } else {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     openSelected("first");
                 }
 
@@ -295,6 +298,7 @@ export function useCombobox(
                 if (dropdownIsOpen.value) {
                     setPreviousOption();
                 } else {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     openSelected("last");
                 }
 
@@ -340,6 +344,7 @@ export function useCombobox(
         selectMode.value = false;
 
         if (!dropdownIsOpen.value) {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             openSelected();
         } else if (!hasOptions.value) {
             close();

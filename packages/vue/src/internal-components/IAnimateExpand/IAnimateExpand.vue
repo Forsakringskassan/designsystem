@@ -127,12 +127,16 @@ export default defineComponent({
             immediate: false,
             handler(): void {
                 if (this.expanded && this.animate) {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     this.openAnimation();
                 } else if (this.expanded) {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     this.openNoAnimation();
                 } else if (this.animate) {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     this.closeAnimation();
                 } else {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     this.closeNoAnimation();
                 }
             },

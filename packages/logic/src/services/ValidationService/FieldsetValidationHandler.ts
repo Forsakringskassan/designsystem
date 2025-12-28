@@ -98,6 +98,7 @@ class FieldsetValidationHandler {
 
         validatableElements.forEach((element) => {
             if (element.id) {
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 this.validationService.validateElement(element.id);
             }
         });

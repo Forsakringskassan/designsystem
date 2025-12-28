@@ -34,6 +34,7 @@ function getValidatableElement(element: HTMLElement): ValidatableHTMLElement {
 
 function triggerInitialValidation(el: HTMLElement): void {
     const target = getValidatableElement(el);
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     ValidationService.validateElement(target);
 }
 

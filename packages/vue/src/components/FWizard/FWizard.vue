@@ -108,11 +108,13 @@ export default defineComponent({
 
             if (this.modelValue !== null) {
                 if (step.key === this.modelValue) {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     this.doOpen(step.stepNumber);
                 }
             } else {
                 /* open this step if this is the first step being added */
                 if (this.steps.length === 1) {
+                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                     this.doOpen(step.stepNumber);
                 }
             }
@@ -130,6 +132,7 @@ export default defineComponent({
             return this.steps.find((it) => it.isOpen) ?? null;
         },
         openStep(step: FWizardStepDefinition): void {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             this.doOpen(step.stepNumber);
         },
         async openNext(step: FWizardStepDefinition): Promise<void> {

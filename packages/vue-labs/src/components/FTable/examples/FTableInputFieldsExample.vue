@@ -175,6 +175,7 @@ const sum = computed(() => {
 });
 
 function validataAll(): void {
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     ValidationService.validateAllElements("all");
 }
 </script>

@@ -62,6 +62,7 @@ const numberOfPages = computed(() => Math.ceil(numberOfItems.value / itemsPerPag
 const numberOfItems = computed(() => (itemsLength > 0 ? itemsLength : items.length));
 
 onMounted(() => {
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     refetchData();
 });
 
@@ -72,6 +73,7 @@ provide(paginateDatasetKey, {
 
 watch(currentPage, (newPageValue) => {
     currentPage.value = Math.max(1, Math.min(newPageValue, numberOfPages.value));
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     refetchData();
 });
 

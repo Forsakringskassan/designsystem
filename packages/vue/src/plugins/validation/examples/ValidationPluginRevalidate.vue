@@ -11,6 +11,7 @@ export default defineComponent({
             for (const element of elements.filter((element) => element.id)) {
                 ValidationService.setSubmitted(element);
             }
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             ValidationService.validateAllElements("rsg-root");
         },
     },

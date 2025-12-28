@@ -24,5 +24,6 @@ export function addInputValidators(
         inputElement.setAttribute(name, value);
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     ValidationService.validateElement(inputElement);
 }

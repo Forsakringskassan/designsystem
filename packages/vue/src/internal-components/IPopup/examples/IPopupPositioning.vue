@@ -47,6 +47,7 @@ export default defineComponent({
     mounted() {
         document.addEventListener("mouseup", this.onMouseUp);
         document.addEventListener("mousemove", this.onMouseMove);
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         this.$nextTick().then(() => {
             this.updatePosition();
         });

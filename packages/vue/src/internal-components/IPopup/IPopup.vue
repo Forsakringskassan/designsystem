@@ -144,6 +144,7 @@ export default defineComponent({
         isOpen: {
             immediate: true,
             handler(value: boolean): void {
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 this.toggleIsOpen(value);
                 if (value) {
                     const { placement, forceInline, forceOverlay } = this;

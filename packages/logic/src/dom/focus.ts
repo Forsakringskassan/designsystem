@@ -96,6 +96,7 @@ export function focus(
         element.focus(params);
         if (scrollToTop) {
             element.focus({ ...params, preventScroll: true });
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             scrollTo(element);
         } else {
             element.focus(params);

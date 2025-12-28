@@ -17,6 +17,7 @@ const bar2: NavigationMenuItem[] = [
 ];
 
 function onSelectRoute(route: string): void {
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     router.push({ name: route });
 }
 </script>

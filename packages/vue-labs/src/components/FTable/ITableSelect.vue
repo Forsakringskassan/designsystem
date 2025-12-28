@@ -33,6 +33,7 @@ const ariaLabel = computed(() => {
 /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
     if (e.code === "Enter" || e.code === "NumpadEnter") {
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         startEditing(e);
     }
 }
@@ -42,6 +43,7 @@ async function onCellClick(e: MouseEvent): Promise<void> {
     if (editing.value) {
         return;
     }
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     startEditing(e);
 }
 
@@ -52,6 +54,7 @@ async function startEditing(e: UIEvent): Promise<void> {
     await nextTick();
     editRef.value.tabIndex = 0;
     editRef.value.focus();
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     openSelected("first");
 }
 
@@ -61,14 +64,17 @@ async function onDropdownSelect(value: string): Promise<void> {
     assertSet(stopEdit);
 
     close();
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     submit();
     viewValue.value = value;
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     stopEdit(editRef.value, "enter");
 }
 
 function onDropdownClose(): void {
     assertRef(editRef);
     assertSet(stopEdit);
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     stopEdit(editRef.value, "escape");
 }
 
@@ -150,21 +156,25 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
         case "Escape":
             e.preventDefault();
             cancel();
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             stopEdit(editRef.value, "escape");
             break;
         case "Enter":
         case "NumpadEnter":
             e.preventDefault();
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             submit();
             if (activeOption.value) {
                 viewValue.value = activeOption.value;
             }
             close();
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             stopEdit(editRef.value, "enter");
             break;
         case "Tab":
             e.preventDefault();
             cancel();
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             stopEdit(editRef.value, e.shiftKey ? "shift-tab" : "tab");
             break;
         case "ArrowDown":
@@ -172,6 +182,7 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
             if (dropdownIsOpen.value) {
                 setNextOption();
             } else {
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 openSelected("first");
             }
             break;
@@ -180,6 +191,7 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
             if (dropdownIsOpen.value) {
                 setPreviousOption();
             } else {
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 openSelected("last");
             }
             break;
@@ -196,6 +208,7 @@ async function onEditBlur(): Promise<void> {
         dropdownIsOpen.value = false;
         editing.value = false;
         await nextTick();
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         stopEdit(editRef.value, "blur");
     }
 }
@@ -208,6 +221,7 @@ async function submit(): Promise<void> {
 function cancel(): void {
     assertSet(stopEdit);
     assertRef(editRef);
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     stopEdit(editRef.value, "escape");
 }
 </script>
