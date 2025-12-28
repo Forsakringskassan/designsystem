@@ -448,11 +448,13 @@ class ValidationServiceImpl implements ValidationServiceInterface {
             return;
         } else if (typeof element === "string") {
             const found = document.getElementById(element);
+            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
             this.setState(found, validationState);
         } else if (!isValidatableHTMLElement(element)) {
             const childElements = this.getValidatableElements(element);
 
             for (const childElement of childElements) {
+                /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
                 this.setState(childElement, validationState);
             }
         } else {
@@ -470,24 +472,28 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     }
 
     public setSubmitted(element: string | Element | null): void {
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
         this.setState(element, {
             submitted: true,
         });
     }
 
     public setTouched(element: string | Element | null): void {
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
         this.setState(element, {
             touched: true,
         });
     }
 
     public setError(element: string | Element | null, message: string): void {
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
         this.setState(element, {
             serverError: message,
         });
     }
 
     public resetState(element: string | Element | null): void {
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
         this.setState(element, {
             touched: false,
             submitted: false,
@@ -557,6 +563,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
 
         if (!validationState) {
             validationState = { touched: false, submitted: false };
+            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
             this.setState(element, validationState);
         }
 

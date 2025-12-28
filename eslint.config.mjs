@@ -122,7 +122,6 @@ export default [
         /* @todo technical debt */
         name: "local/technical-debt",
         rules: {
-            "@typescript-eslint/no-deprecated": "off",
             "@typescript-eslint/no-floating-promises": "off",
             "@typescript-eslint/no-unnecessary-condition": "off",
             "@typescript-eslint/no-unsafe-argument": "off",

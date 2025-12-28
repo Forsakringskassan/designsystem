@@ -210,7 +210,9 @@ export class FInteractiveTablePageObject implements BasePageObject {
      * @deprecated Use `header()` instead. Deprecated since v6.11.0.
      * @returns Page object for `FTableColumn`.
      */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
     public headerRowItem(): FTableColumnPageObject {
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         return new FTableColumnPageObject(`${this.selector} .table__row`, 0);
     }
 
@@ -224,7 +226,9 @@ export class FInteractiveTablePageObject implements BasePageObject {
      * @param index - Row number (0-indexed).
      * @returns Page object for `FTableColumn`.
      */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
     public columnItem(index: number): FTableColumnPageObject {
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         return new FTableColumnPageObject(
             `${this.selector} .table__row`,
             index,
