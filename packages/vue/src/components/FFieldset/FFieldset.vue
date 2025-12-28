@@ -201,6 +201,7 @@ export default defineComponent({
         this.hasCheckbox = types.includes("checkbox");
         this.hasRadiobutton = types.includes("radio");
         if (this.hasCheckbox) {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             this.updateCheckboxChildren();
         }
     },

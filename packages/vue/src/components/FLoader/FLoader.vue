@@ -100,6 +100,7 @@ export default defineComponent({
     watch: {
         show(show) {
             if (show) {
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 this.openLoader();
             } else {
                 this.closeLoader();
@@ -108,6 +109,7 @@ export default defineComponent({
     },
     mounted() {
         if (this.show) {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             this.openLoader();
         }
     },

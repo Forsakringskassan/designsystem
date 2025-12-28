@@ -99,6 +99,7 @@ watch(
             selectedItem.value = "";
 
             /* wait for popup to be rendered */
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             nextTick(() => {
                 if (contextmenuRef.value) {
                     focusHandle = pushFocus(contextmenuRef.value);

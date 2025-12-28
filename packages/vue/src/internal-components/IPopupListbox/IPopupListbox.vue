@@ -71,6 +71,7 @@ function isElementInsideViewport(element: Element): boolean {
 
 watchEffect(() => {
     if (isOpen) {
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         calculatePosition();
         // wait one tick so we dont get the click
         // that launches the popup (await nextTick doesnt work here)
@@ -89,6 +90,7 @@ watch(
     () => numOfItems,
     (oldValue, newValue) => {
         if (oldValue !== newValue && isOpen) {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             calculatePosition();
         }
     },
@@ -102,6 +104,7 @@ function onDocumentClickHandler(): void {
 
 function onResize(): void {
     if (isOpen) {
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         calculatePosition();
     }
 }

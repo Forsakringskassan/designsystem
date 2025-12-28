@@ -85,6 +85,7 @@ export default defineComponent({
     },
     methods: {
         onResize() {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             this.toggleIsOpen(this.isOpen);
         },
         onKeyEsc(event: KeyboardEvent): void {

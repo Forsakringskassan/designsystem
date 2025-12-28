@@ -42,6 +42,7 @@ export default defineComponent({
         inputElement.setAttribute("inputmode", "numeric");
         inputElement.setAttribute("maxlength", "16");
 
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         ValidationService.validateElement(inputElement);
     },
 });

@@ -54,6 +54,7 @@ onMounted(() => {
 
         /* allow slots to settle before we dispatch the update event otherwise
          * the updated data will not yet be available */
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         nextTick(() => {
             emit("update");
         });
@@ -62,6 +63,7 @@ onMounted(() => {
             host,
             () => {
                 slotNames.value = getSlotNames(host);
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 nextTick(() => {
                     emit("update");
                 });

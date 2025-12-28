@@ -11,6 +11,7 @@ export function focusError(item: ErrorItem): void {
         `#${String(item.focusElementId)}`,
     );
 
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     scrollTo(element, window.innerHeight * 0.25);
     focus(focusElement ?? element);
 }

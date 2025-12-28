@@ -189,6 +189,7 @@ export default defineComponent({
             deep: true,
             async handler() {
                 await this.$nextTick();
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 this.onResize();
             },
         },
@@ -197,6 +198,7 @@ export default defineComponent({
         this.isMounted = true;
         this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
         this.resizeObserver.observe(this.$el);
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         this.onResize();
     },
     unmounted() {

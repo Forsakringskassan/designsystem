@@ -8,11 +8,13 @@ const focusRef = useTemplateRef("focus");
 
 function setInvalid(): void {
     ValidationService.setError(getElementFromVueRef(cardRef.value), "Uppgifter saknas");
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     ValidationService.validateElement(getElementFromVueRef(cardRef.value));
 }
 
 function setValid(): void {
     ValidationService.resetState(getElementFromVueRef(cardRef.value));
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     ValidationService.validateElement(getElementFromVueRef(cardRef.value));
 }
 </script>
