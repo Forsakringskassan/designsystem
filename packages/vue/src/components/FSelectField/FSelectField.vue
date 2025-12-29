@@ -133,6 +133,7 @@ export default defineComponent({
 
             const errorMessage = renderSlotText(this.$slots.label) ?? "";
 
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             const element = this.$el.querySelector(`#${detail.elementId}`);
             if (element) {
                 /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */

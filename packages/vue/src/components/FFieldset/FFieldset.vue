@@ -222,15 +222,19 @@ export default defineComponent({
 
             const errorMessage = renderSlotText(this.$slots.label) ?? "";
 
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             const firstFocusableElement = this.$el.querySelector(
                 "input:not(disabled), select:not(disabled), textarea:not(disabled)",
             );
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             const focusElementId = firstFocusableElement ? firstFocusableElement.id : this.id;
 
             this.validityElement = this.$el as HTMLElement;
+
             this.dispatchObject = {
                 ...detail,
                 errorMessage,
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 focusElementId,
             };
             this.validity = this.detail;

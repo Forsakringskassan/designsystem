@@ -60,6 +60,7 @@ export class PersistenceService<T> implements PersistenceServiceInterface<T> {
             ? window.sessionStorage.getItem(key)
             : null;
         if (persisted) {
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             const value = JSON.parse(persisted);
             /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             this.cache.set(key, value);

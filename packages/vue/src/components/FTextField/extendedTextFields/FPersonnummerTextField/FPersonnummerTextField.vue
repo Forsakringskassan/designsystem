@@ -30,8 +30,11 @@ export default defineComponent({
     },
     data() {
         return {
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             defaultText: this.$t("fkui.personnummer-text-field.label-10-digits", "Personnummer"),
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             discreteDescriptionText: this.$t("fkui.personnummer-text-field.example-10-digits", "(ååmmdd-nnnn)"),
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             discreteDescriptionScreenReaderText: this.$t(
                 "fkui.personnummer-text-field.format-description-10-digits",
                 "Skriv personnumret med 10 siffror,",

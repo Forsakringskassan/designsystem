@@ -41,6 +41,7 @@ export function useStorage(options: UseStorageOptions): void {
         }
         const json = window.localStorage.getItem(storageKey.value);
         if (json) {
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             const value = JSON.parse(json);
             state.value.current = clamp(
                 /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
@@ -48,6 +49,7 @@ export function useStorage(options: UseStorageOptions): void {
                 state.value.min,
                 state.value.max,
             );
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             last = value;
         }
         loaded.value = true;

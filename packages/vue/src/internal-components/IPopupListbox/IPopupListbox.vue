@@ -152,8 +152,9 @@ async function calculatePosition(): Promise<void> {
     const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems, verticalSpacing });
     if (rect) {
         const { top, left, width, height } = rect;
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unsafe-assignment -- technical debt */
         const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         const offsetLeft = offsetRect?.x ?? 0;
         /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-unsafe-argument -- technical debt */
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
