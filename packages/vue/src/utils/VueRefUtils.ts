@@ -80,6 +80,7 @@ export function getElementsFromVueRef(ref: unknown): Element[] {
     let result: Element[] = [];
 
     if (refIsVueArray(ref)) {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         result = ref.map((vueRef) => vueRef.$el);
     } else if (refIsElementArray(ref)) {
         result = ref;

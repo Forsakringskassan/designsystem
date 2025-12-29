@@ -24,6 +24,7 @@ export default defineComponent({
     },
     data() {
         return {
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             defaultText: this.$t("fkui.bank-account-number-text-field.label", "Kontonummer"),
         };
     },

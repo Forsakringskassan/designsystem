@@ -27,6 +27,7 @@ export default defineComponent({
         return useTextFieldSetup(props);
     },
     mounted() {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         const inputElement: HTMLInputElement = this.$el.querySelector("input");
 
         if (!isSet(inputElement)) {

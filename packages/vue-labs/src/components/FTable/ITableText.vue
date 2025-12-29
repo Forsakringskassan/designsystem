@@ -76,6 +76,7 @@ function onStartEdit(modelValue: string): void {
     assertRef(tdElement);
     assertRef(inputElement);
 
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
     const { width } = tdElement.value.getBoundingClientRect();
     model.value = modelValue;
     tdElement.value.style.setProperty("width", `${String(width)}px`);

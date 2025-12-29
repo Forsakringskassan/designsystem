@@ -31,7 +31,9 @@ function onListboxClose(): void {
 watchEffect(async () => {
     if (activeOption !== null) {
         await nextTick();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         const activeOptionNode = listboxRef.value?.querySelector<HTMLElement>(`#${activeOptionId}`);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         activeElement.value = activeOptionNode ?? undefined;
     }
 });

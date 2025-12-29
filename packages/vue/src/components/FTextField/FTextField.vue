@@ -366,6 +366,7 @@ export default defineComponent({
         },
         triggerComponentValidityEvent(validityEvent: ValidityEvent) {
             const errorMessage = renderSlotText(this.$slots.default, {}, { stripClasses: [] }) ?? this.defaultText;
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             const element = this.$el.querySelector(`#${validityEvent.elementId}`);
             if (element) {
                 /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
@@ -388,6 +389,7 @@ export default defineComponent({
              * If the modelvalue is a `string` type, it can be both valid or invalid.
              * Otherwise it is expected to be a type understood by the formatter, i.e. `number`.
              */
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             const parsedValue =
                 isSet(this.parser) && typeof this.modelValue === "string"
                     ? this.parser(this.modelValue)

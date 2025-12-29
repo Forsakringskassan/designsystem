@@ -52,6 +52,7 @@ const isOpen = computed(() => modelValue);
 
 function updateIsOpen(value: boolean): void {
     if (value && !isDesktop.value && rootRef.value) {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         const offset = rootRef.value.getBoundingClientRect().width;
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         emit("toggle", value, true, offset);
