@@ -1095,13 +1095,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/5b2781683e6a858073a11ca7003346f5eb5130f0/packages/vue/src/components/FWizard/FWizard.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4ae5b506da10528e9d5d034f11c16d79ae789729/packages/vue/src/components/FWizard/FWizard.vue">
                 FWizard
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/5b2781683e6a858073a11ca7003346f5eb5130f0/packages/vue/src/components/FWizard/FWizardStep.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4ae5b506da10528e9d5d034f11c16d79ae789729/packages/vue/src/components/FWizard/FWizardStep.vue">
                 FWizardStep
             </a>
             
@@ -1152,13 +1152,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-f68e2a"></div>
+        <div id="example-3af458"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FWizardExampleDefault-f68e2a.js"></script>
+        <script type="module" src="./FWizardExampleDefault-3af458.js"></script>
     
                 </div>
                 <div>
@@ -1179,18 +1179,11 @@
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FDatepickerField</span>,
-    <span class="hljs-title class_">FMessageBox</span>,
-    <span class="hljs-title class_">FSelectField</span>,
-    <span class="hljs-title class_">FTextField</span>,
-    <span class="hljs-title class_">FWizard</span>,
-    <span class="hljs-title class_">FWizardStep</span>,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FSelectField</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;WizardExampleDefault&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FSelectField</span>, <span class="hljs-title class_">FMessageBox</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FSelectField</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">current</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> string | <span class="hljs-literal">undefined</span>,
@@ -1212,8 +1205,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;current&quot;</span> <span class="hljs-attr">header-tag</span>=<span class="hljs-string">&quot;h2&quot;</span> <span class="hljs-attr">disable-initial-focus</span> @<span class="hljs-attr">completed</span>=<span class="hljs-string">&quot;onCompleted&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;foo&quot;</span> <span class="hljs-attr">:use-error-list</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Stegrubrik 1&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-message-box</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;success&quot;</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">&quot;short&quot;</span>&gt;</span> Kort meddelande <span class="hljs-tag">&lt;/<span class="hljs-name">f-message-box</span>&gt;</span>
-
                 <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">v-validation.required.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>&gt;</span>
                     Etikett-rubrik
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
@@ -1866,9 +1857,9 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">f-wizard-icon-styling (<a href="https://github.com/Forsakringskassan/designsystem/commits/5b2781683e6a858073a11ca7003346f5eb5130f0">5b27816</a>)<br />
+<div class="footer__right"><div class="version">f-wizard-icon-styling (<a href="https://github.com/Forsakringskassan/designsystem/commits/4ae5b506da10528e9d5d034f11c16d79ae789729">4ae5b50</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/913">PR 913</a><br />
-        2025-12-29 10:12
+        2025-12-29 10:19
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -28,20 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleDefault.vue:FWizardExampleDefault-f68e2a.js
+// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleDefault.vue:FWizardExampleDefault-3af458.js
 import { defineComponent } from "vue";
-import {
-  FDatepickerField,
-  FMessageBox,
-  FSelectField,
-  FTextField,
-  FWizard,
-  FWizardStep
-} from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createElementVNode as _createElementVNode, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode } from "vue";
+import { FDatepickerField, FSelectField, FTextField, FWizard, FWizardStep } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode, createElementVNode as _createElementVNode, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode } from "vue";
 var exampleComponent = defineComponent({
   name: "WizardExampleDefault",
-  components: { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField, FMessageBox },
+  components: { FWizard, FWizardStep, FTextField, FDatepickerField, FSelectField },
   data() {
     return {
       current: void 0,
@@ -59,7 +52,6 @@ var exampleComponent = defineComponent({
 });
 var _hoisted_1 = { key: 0 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_message_box = _resolveComponent("f-message-box");
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_wizard_step = _resolveComponent("f-wizard-step");
   const _component_f_datepicker_field = _resolveComponent("f-datepicker-field");
@@ -81,22 +73,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           title: "Stegrubrik 1"
         }, {
           default: _withCtx(() => [
-            _createVNode(_component_f_message_box, {
-              type: "success",
-              layout: "short"
-            }, {
-              default: _withCtx(() => [..._cache[3] || (_cache[3] = [
-                _createTextVNode(
-                  " Kort meddelande ",
-                  -1
-                  /* CACHED */
-                )
-              ])]),
-              _: 1
-              /* STABLE */
-            }),
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
-              default: _withCtx(() => [..._cache[4] || (_cache[4] = [
+              default: _withCtx(() => [..._cache[3] || (_cache[3] = [
                 _createTextVNode(
                   " Etikett-rubrik ",
                   -1
@@ -117,7 +95,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               ]
             ]),
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
-              default: _withCtx(() => [..._cache[5] || (_cache[5] = [
+              default: _withCtx(() => [..._cache[4] || (_cache[4] = [
                 _createTextVNode(
                   " Etikett-rubrik (frivillig) ",
                   -1
@@ -148,7 +126,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               modelValue: _ctx.date,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.date = $event)
             }, {
-              default: _withCtx(() => [..._cache[6] || (_cache[6] = [
+              default: _withCtx(() => [..._cache[5] || (_cache[5] = [
                 _createTextVNode(
                   " Etikett-rubrik ",
                   -1
@@ -169,7 +147,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               modelValue: _ctx.options,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.options = $event)
             }, {
-              label: _withCtx(() => [..._cache[7] || (_cache[7] = [
+              label: _withCtx(() => [..._cache[6] || (_cache[6] = [
                 _createTextVNode(
                   " Etikett-rubrik ",
                   -1
@@ -177,7 +155,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 )
               ])]),
               default: _withCtx(() => [
-                _cache[8] || (_cache[8] = _createElementVNode(
+                _cache[7] || (_cache[7] = _createElementVNode(
                   "option",
                   {
                     disabled: true,
@@ -187,14 +165,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   -1
                   /* CACHED */
                 )),
-                _cache[9] || (_cache[9] = _createElementVNode(
+                _cache[8] || (_cache[8] = _createElementVNode(
                   "option",
                   { value: "ALTERNATIV1" },
                   "Alternativ 1",
                   -1
                   /* CACHED */
                 )),
-                _cache[10] || (_cache[10] = _createElementVNode(
+                _cache[9] || (_cache[9] = _createElementVNode(
                   "option",
                   { value: "ALTERNATIV2" },
                   "Alternativ 2",
@@ -221,7 +199,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "use-error-list": false,
           title: "Stegrubrik 3"
         }, {
-          "next-button-text": _withCtx(() => [..._cache[11] || (_cache[11] = [
+          "next-button-text": _withCtx(() => [..._cache[10] || (_cache[10] = [
             _createTextVNode(
               " Klar ",
               -1
@@ -229,7 +207,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             )
           ])]),
           default: _withCtx(() => [
-            _cache[12] || (_cache[12] = _createTextVNode(
+            _cache[11] || (_cache[11] = _createTextVNode(
               " En informationstext ",
               -1
               /* CACHED */
@@ -248,7 +226,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f68e2a"
+  selector: "#example-3af458"
 });
 export {
   render
