@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-a9034b.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-3ae13b.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
@@ -246,9 +246,12 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
           rows.value.splice(rows.value.indexOf(rowToRemove), 1);
         } else {
           for (const row of rows.value) {
-            const expandableRowIndex = row.expandableRows?.indexOf(rowToRemove);
-            if (expandableRowIndex !== void 0 && expandableRowIndex !== -1) {
-              row.expandableRows?.splice(expandableRowIndex, 1);
+            if (!row.expandableRows) {
+              continue;
+            }
+            const expandableRowIndex = row.expandableRows.indexOf(rowToRemove);
+            if (expandableRowIndex !== -1) {
+              row.expandableRows.splice(expandableRowIndex, 1);
               break;
             }
           }
@@ -327,7 +330,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a9034b"
+  selector: "#example-3ae13b"
 });
 export {
   render

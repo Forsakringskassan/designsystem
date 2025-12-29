@@ -202,7 +202,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a9034b"></div>
+        <div id="example-3ae13b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -228,7 +228,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-a9034b.js"></script>
+        <script type="module" src="./FTableExample-3ae13b.js"></script>
     
                 </div>
                 <div>
@@ -491,9 +491,13 @@ interface <span class="hljs-title class_">Row</span> {
             rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">splice</span>(rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(rowToRemove), <span class="hljs-number">1</span>);
         } <span class="hljs-keyword">else</span> {
             <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> row <span class="hljs-keyword">of</span> rows.<span class="hljs-property">value</span>) {
-                <span class="hljs-keyword">const</span> expandableRowIndex = row.<span class="hljs-property">expandableRows</span>?.<span class="hljs-title function_">indexOf</span>(rowToRemove);
-                <span class="hljs-keyword">if</span> (expandableRowIndex !== <span class="hljs-literal">undefined</span> &amp;&amp; expandableRowIndex !== -<span class="hljs-number">1</span>) {
-                    row.<span class="hljs-property">expandableRows</span>?.<span class="hljs-title function_">splice</span>(expandableRowIndex, <span class="hljs-number">1</span>);
+                <span class="hljs-keyword">if</span> (!row.<span class="hljs-property">expandableRows</span>) {
+                    <span class="hljs-keyword">continue</span>;
+                }
+
+                <span class="hljs-keyword">const</span> expandableRowIndex = row.<span class="hljs-property">expandableRows</span>.<span class="hljs-title function_">indexOf</span>(rowToRemove);
+                <span class="hljs-keyword">if</span> (expandableRowIndex !== -<span class="hljs-number">1</span>) {
+                    row.<span class="hljs-property">expandableRows</span>.<span class="hljs-title function_">splice</span>(expandableRowIndex, <span class="hljs-number">1</span>);
                     <span class="hljs-keyword">break</span>;
                 }
             }
