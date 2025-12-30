@@ -23,6 +23,7 @@ const emit = defineEmits<{ toggle: [row: T] }>();
 const expose: Partial<FTableCellApi> = {};
 if (level === 1) {
     const childRef = useTemplateRef("child");
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     expose.tabstopEl = computed(() => childRef.value?.tabstopEl ?? null);
 }
 defineExpose(expose);
