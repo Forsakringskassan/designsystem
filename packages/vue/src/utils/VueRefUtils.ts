@@ -80,7 +80,7 @@ export function getElementsFromVueRef(ref: unknown): Element[] {
     let result: Element[] = [];
 
     if (refIsVueArray(ref)) {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return -- technical debt */
         result = ref.map((vueRef) => vueRef.$el);
     } else if (refIsElementArray(ref)) {
         result = ref;
@@ -165,6 +165,7 @@ export function findElementFromVueRef(ref: unknown): Element | undefined {
     if (refIsElement(ref)) {
         return ref;
     } else if (refIsVue(ref)) {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
         return ref.$el;
     }
 }
