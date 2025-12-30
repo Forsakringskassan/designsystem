@@ -96,6 +96,7 @@ async function generateSpritesheetJs(library, data) {
         "utf8",
     );
     spritesheet = spritesheet
+        /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
         .replace(/.*eslint-disable.*/g, "")
         .replace(/PACKAGE/g, JSON.stringify(packageName))
         .replace(/LIBRARY/g, JSON.stringify(library))
@@ -107,6 +108,7 @@ async function generateSpritesheetJs(library, data) {
         path.join(templateFolder, "inject.js"),
         "utf-8",
     );
+    /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
     inject = inject.replace(/.*eslint-disable.*/g, "");
     const content = [spritesheet, inject].join("\n");
     const indexJs = path.join(dest, library, "index.js");
@@ -132,6 +134,7 @@ async function generateSpritesheetJsNoInject(library, data) {
         "export function injectSpritesheet",
     );
     spritesheet = spritesheet
+        /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
         .replace(/.*eslint-disable.*/g, "")
         .replace(/PACKAGE/g, JSON.stringify(packageName))
         .replace(/LIBRARY/g, JSON.stringify(library))

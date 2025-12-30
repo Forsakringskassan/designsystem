@@ -117,12 +117,4 @@ export default [
             "vue/no-restricted-block": "off",
         },
     },
-
-    {
-        /* @todo technical debt */
-        name: "local/technical-debt",
-        rules: {
-            "sonarjs/slow-regex": "off",
-        },
-    },
 ];

@@ -55,6 +55,7 @@ export class FFileItemPageObject implements BasePageObject {
      */
     public typeOfFile(): Cypress.Chainable<string> {
         return this._fileIcon().then((el) =>
+            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
             el[0].classList[1].replace(/.*f-icon-(\w+).*/, "$1"),
         );
     }
@@ -71,6 +72,7 @@ export class FFileItemPageObject implements BasePageObject {
      */
     public typeOfButtonIcon(): Cypress.Chainable<string> {
         return this._cancelDeleteButtonIcon().then((el) =>
+            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
             el[0].classList[2].replace(/.*f-icon-(\w+).*/, "$1"),
         );
     }

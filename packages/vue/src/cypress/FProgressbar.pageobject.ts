@@ -44,6 +44,7 @@ export class FProgressbarPageObject implements BasePageObject {
     public progressStatus(): Cypress.Chainable<ProgressbarStatus> {
         return this.progressMeter().then((el) => {
             return el[0].classList[1].replace(
+                /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
                 /.*progress__meter--(\w+).*/,
                 "$1",
             ) as ProgressbarStatus;

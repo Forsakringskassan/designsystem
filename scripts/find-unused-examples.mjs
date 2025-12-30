@@ -54,6 +54,7 @@ async function findDocsImported() {
     const found = /** @type {Set<string>} */ new Set();
     for (const filePath of filePaths) {
         const content = await fs.readFile(filePath, "utf-8");
+        /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
         const matches = content.matchAll(/```import[^\n]*([^`]*)```/gm);
         for (const match of matches) {
             const block = match[1];
