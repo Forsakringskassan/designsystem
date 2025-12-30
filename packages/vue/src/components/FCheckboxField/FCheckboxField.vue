@@ -159,6 +159,7 @@ export default defineComponent({
             event.stopPropagation();
         },
         onValidity({ detail }: CustomEvent<ValidityEvent>): void {
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             if (detail.target !== this.$el.querySelector("input")) {
                 return;
             }
@@ -166,6 +167,7 @@ export default defineComponent({
             let errorMessage = "";
 
             if (hasSlot(this, "default")) {
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
                 const labelText = this.injected.getFieldsetLabelText() as string | undefined;
                 const slotText = renderSlotText(this.$slots.default) ?? "";
                 if (labelText) {
@@ -175,7 +177,7 @@ export default defineComponent({
                 }
             }
 
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt */
             const element = this.$el.querySelector(`#${detail.elementId}`);
             if (element) {
                 /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */

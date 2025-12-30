@@ -195,7 +195,7 @@ export default defineComponent({
     async mounted(): Promise<void> {
         await this.$nextTick();
         const types = Array.from(
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument -- technical debt */
             this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
             (it: HTMLInputElement) => it.getAttribute("type"),
         );
@@ -222,7 +222,7 @@ export default defineComponent({
 
             const errorMessage = renderSlotText(this.$slots.label) ?? "";
 
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt */
             const firstFocusableElement = this.$el.querySelector(
                 "input:not(disabled), select:not(disabled), textarea:not(disabled)",
             );
@@ -260,7 +260,7 @@ export default defineComponent({
         },
         async updateCheckboxChildren(): Promise<void> {
             await this.$nextTick();
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-unsafe-argument -- technical debt */
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument -- technical debt */
             const checkboxes = Array.from(this.$el.querySelectorAll('input[type="checkbox"]')) as HTMLInputElement[];
             if (!isEqual(this.children, checkboxes)) {
                 this.children = checkboxes;

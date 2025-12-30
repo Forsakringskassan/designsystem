@@ -20,6 +20,7 @@ export function useInflight(fn: unknown): UseInflight {
     async function wrapper(): Promise<void> {
         try {
             inflight.value = true;
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await originalFn();
         } finally {
             inflight.value = false;
