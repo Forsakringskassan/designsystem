@@ -78,13 +78,18 @@ export default defineComponent({
         if (header) {
             this.offsetTop = header.offsetHeight;
         }
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         FLayoutRightPanelService.on("open", this.onOpenSecondary);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         FLayoutRightPanelService.on("close", this.onCloseSecondary);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         window.addEventListener("resize", this.onResize);
         this.onResize();
     },
     unmounted(): void {
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         FLayoutRightPanelService.off("open", this.onOpenSecondary);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         FLayoutRightPanelService.off("close", this.onCloseSecondary);
     },
     methods: {

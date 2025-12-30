@@ -22,11 +22,13 @@ export default defineComponent({
     },
     created() {
         EVENTS.forEach((event) => {
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             window.addEventListener(event, this.updateOnlineStatus);
         });
     },
     beforeUnmount() {
         EVENTS.forEach((event) => {
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             window.removeEventListener(event, this.updateOnlineStatus);
         });
     },

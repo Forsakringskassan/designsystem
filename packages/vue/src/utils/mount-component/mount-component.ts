@@ -85,6 +85,7 @@ export function mountComponent(
     app.mount(el);
 
     /* monkey-patch unmount function to do our own cleanup as well */
+    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
     const unmount = app.unmount;
     app.unmount = () => {
         unmount.call(app);
