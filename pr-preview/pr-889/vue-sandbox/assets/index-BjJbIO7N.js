@@ -9585,7 +9585,8 @@ function pushFocus(element) {
   focus$1(element);
   return { [sym]: stackFrame.id };
 }
-function popFocus(handle) {
+function popFocus(handle, options = {}) {
+  const { restoreFocus = true } = options;
   if (_focusElementStack.length === 0) {
     const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
     if (configLogic.production) {
@@ -9605,7 +9606,9 @@ function popFocus(handle) {
       throw new Error(outOfOrderErrorMsg);
     }
   }
-  focus$1(top?.element);
+  if (restoreFocus) {
+    focus$1(top?.element);
+  }
 }
 function isRadiobuttonOrCheckbox(element) {
   return element instanceof HTMLInputElement && (element.type === "radio" || element.type === "checkbox");

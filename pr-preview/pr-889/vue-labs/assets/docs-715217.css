@@ -181,7 +181,7 @@
   --fkds-color-navigation-background-hover: #dbe9e2;
   --fkds-color-navigation-background-selected: #35805b;
   --fkds-color-header-background-primary: #116a3e;
-  --fkui-theme-default-version: "6.31.1";
+  --fkui-theme-default-version: "6.32.0";
 }
 
 *,
@@ -5878,7 +5878,7 @@ input[type=search]:focus,
 .wizard-step .wizard-step-body__border-container .wizard-step__line-down {
   margin-top: 0;
 }
-.wizard-step .icon.f-icon-success {
+.wizard-step .wizard-step__icon-container__success {
   display: none;
 }
 .wizard-step .wizard-step__header {
@@ -5945,7 +5945,7 @@ input[type=search]:focus,
   text-decoration-thickness: 3px;
   text-underline-offset: 0.25em;
 }
-.wizard-step--done .icon.f-icon-success {
+.wizard-step--done .wizard-step__icon-container__success {
   display: block;
   color: var(--fkds-color-text-inverted);
   width: 20px;
@@ -5973,7 +5973,7 @@ input[type=search]:focus,
   display: none;
 }
 @media (forced-colors: active) {
-  .wizard-step .icon.f-icon-success {
+  .wizard-step .wizard-step__icon-container__success {
     color: CanvasText;
   }
 }
@@ -8161,7 +8161,7 @@ body {
 }
 
 @container example-container (width >= 43.0379746835rem) {
-  :not(.live-example__container--single-column) {
+  .live-example__container:not(.live-example__container--single-column) {
     grid-template-columns: 1fr var(--live-example-controls-width);
     grid-template-areas: "example controls" "code code";
   }

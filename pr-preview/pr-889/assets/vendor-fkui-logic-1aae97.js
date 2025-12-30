@@ -2021,7 +2021,8 @@ function pushFocus(element) {
   focus(element);
   return { [sym]: stackFrame.id };
 }
-function popFocus(handle) {
+function popFocus(handle, options = {}) {
+  const { restoreFocus: restoreFocus2 = true } = options;
   if (_focusElementStack.length === 0) {
     const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
     if (configLogic.production) {
@@ -2041,7 +2042,9 @@ function popFocus(handle) {
       throw new Error(outOfOrderErrorMsg);
     }
   }
-  focus(top?.element);
+  if (restoreFocus2) {
+    focus(top?.element);
+  }
 }
 function forcePopFocus() {
   if (_focusElementStack.length === 0) {
