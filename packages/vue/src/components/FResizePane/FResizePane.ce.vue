@@ -153,6 +153,7 @@ const layoutElement = computed(() => {
     if (!root.value) {
         return undefined;
     }
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     const shadow = root.value.getRootNode() as ShadowRoot;
     const host = shadow.host;
     return host.closest<HTMLElement>("ce-page-layout") ?? undefined;
@@ -164,6 +165,7 @@ watch(() => props.max, onResize);
 watchEffect(() => {
     const { min, max, current: value } = state.value;
     if (root.value) {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         const shadowRoot = root.value.getRootNode() as ShadowRoot;
         const host = shadowRoot.host as HTMLElement;
         host.style.setProperty("--size", `${String(value)}px`);
@@ -172,8 +174,11 @@ watchEffect(() => {
         host.style.setProperty("--offset", `${String(props.offset)}px`);
     }
     if (separator.value) {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
     }
     if (value >= 0) {

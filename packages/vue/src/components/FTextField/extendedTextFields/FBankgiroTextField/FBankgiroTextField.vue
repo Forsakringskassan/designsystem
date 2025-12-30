@@ -24,7 +24,7 @@ export default defineComponent({
     },
     data() {
         return {
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
             defaultText: this.$t("fkui.bankgiro-text-field.label", "Bankgironummer"),
         };
     },

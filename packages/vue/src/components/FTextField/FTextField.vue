@@ -366,7 +366,7 @@ export default defineComponent({
         },
         triggerComponentValidityEvent(validityEvent: ValidityEvent) {
             const errorMessage = renderSlotText(this.$slots.default, {}, { stripClasses: [] }) ?? this.defaultText;
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
             const element = this.$el.querySelector(`#${validityEvent.elementId}`);
             if (element) {
                 /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */

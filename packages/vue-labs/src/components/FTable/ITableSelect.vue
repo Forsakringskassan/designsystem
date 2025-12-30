@@ -53,6 +53,7 @@ async function startEditing(e: UIEvent): Promise<void> {
     editing.value = true;
     await nextTick();
     editRef.value.tabIndex = 0;
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     editRef.value.focus();
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     openSelected("first");
@@ -91,8 +92,10 @@ watchEffect(async () => {
     }
 
     if (activeOption.value) {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         editRef.value.setAttribute("aria-activedescendant", activeOptionId);
     } else {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         editRef.value.removeAttribute("aria-activedescendant");
     }
 });
@@ -111,6 +114,7 @@ async function openSelected(fallback: null | "first" | "last" = null): Promise<v
         activeOption.value = null;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     editRef.value?.focus();
 }
 

@@ -94,7 +94,7 @@ function hanteraFil(filer: FileList): void {
         /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         Object.values(filer ? filer : valdFil.value).forEach(async (value) => {
             try {
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
                 const buffer = await value.arrayBuffer();
                 const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), "");
                 uppladdatDokument.value = {

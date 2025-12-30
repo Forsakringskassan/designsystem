@@ -109,6 +109,7 @@ export default defineComponent({
     },
     methods: {
         async onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void> {
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             if (detail.target !== this.$el.querySelector("input")) {
                 return;
             }
@@ -127,7 +128,7 @@ export default defineComponent({
                 }
             }
 
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
             const element = this.$el.querySelector(`#${detail.elementId}`);
             if (element) {
                 /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */

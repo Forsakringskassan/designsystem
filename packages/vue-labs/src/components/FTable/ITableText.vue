@@ -76,12 +76,14 @@ function onStartEdit(modelValue: string): void {
     assertRef(tdElement);
     assertRef(inputElement);
 
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
     const { width } = tdElement.value.getBoundingClientRect();
     model.value = modelValue;
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     tdElement.value.style.setProperty("width", `${String(width)}px`);
 
     inputElement.value.tabIndex = 0;
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     inputElement.value.focus();
 }
 
@@ -97,6 +99,7 @@ function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" 
 function onClickCell(event: MouseEvent): void {
     assertRef(tdElement);
 
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     if (tdElement.value.contains(event.target as Node)) {
         const value = column.value(row);
         onStartEdit(value);
@@ -160,6 +163,7 @@ function onKeydown(event: KeyboardEvent): void {
 function onBlur(): void {
     inEdit.value = false;
     assertRef(tdElement);
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     tdElement.value.style.removeProperty("width");
     const isDirty = model.value !== "";
     if (isDirty) {
