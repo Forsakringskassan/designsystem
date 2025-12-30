@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginToggleDisable.vue:ValidationPluginToggleDisable-769e34.js
+// virtual-entry:virtual:packages/vue/src/plugins/validation/examples/ValidationPluginToggleDisable.vue:ValidationPluginToggleDisable-d469aa.js
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FFieldset, FRadioField, FTextField, getElementFromVueRef } from "@fkui/vue";
@@ -153,7 +153,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-769e34"
+  selector: "#example-d469aa"
 });
 export {
   render

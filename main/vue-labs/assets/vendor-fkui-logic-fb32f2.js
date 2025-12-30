@@ -2233,9 +2233,13 @@ var DefaultTranslationProvider = class {
     return isSet(args) ? this.interpolate(defaultValueOrArgs, args) : defaultValueOrArgs;
   }
   interpolate(defaultValue, args) {
-    return defaultValue.replace(/{{\s*([^\s]+)\s*}}/g, (match, key) => {
-      return String(args[key]) || match;
-    });
+    return defaultValue.replace(
+      /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
+      /{{\s*([^\s]+)\s*}}/g,
+      (match, key) => {
+        return String(args[key]) || match;
+      }
+    );
   }
 };
 var TranslationServiceImpl = class {

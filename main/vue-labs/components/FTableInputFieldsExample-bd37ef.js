@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableInputFieldsExample.vue:FTableInputFieldsExample-e7ed8a.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableInputFieldsExample.vue:FTableInputFieldsExample-bd37ef.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, ref } from "vue";
 import { ValidationService } from "@fkui/logic";
@@ -258,7 +258,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e7ed8a"
+  selector: "#example-bd37ef"
 });
 export {
   render

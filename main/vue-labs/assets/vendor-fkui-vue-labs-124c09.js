@@ -1941,7 +1941,13 @@ function getVerticalNavIndex(table, from, to) {
   return target;
 }
 function navigate(e, table, from, last) {
-  if (from.row === void 0 || from.cell === void 0 || last.row === void 0 || last.cell === void 0) {
+  if (
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+    from.row === void 0 || /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+    from.cell === void 0 || /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+    last.row === void 0 || /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+    last.cell === void 0
+  ) {
     return;
   }
   if (!navKeys.includes(e.code)) {
@@ -6056,7 +6062,9 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
             const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), "");
             uppladdatDokument.value = {
               dokument: {
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 filnamn: value.name,
+                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 mime: value.type,
                 data: btoa(reduced),
                 fel: ""
@@ -6350,7 +6358,8 @@ var HoursMinutesValidatorUtils = class _HoursMinutesValidatorUtils {
     return compare(valueAsNumber, limitAsNumber);
   }
   static getParserFromConfig(config) {
-    if (!isSet(config) || !Array.isArray(config.parser) || !isSet(config.parser?.[0]) || typeof config.parser[0] !== "function") {
+    if (!isSet(config) || !Array.isArray(config.parser) || /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+    !isSet(config.parser?.[0]) || typeof config.parser[0] !== "function") {
       return parseTimeToNumber;
     }
     return config.parser[0];

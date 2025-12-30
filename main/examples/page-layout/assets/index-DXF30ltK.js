@@ -9416,9 +9416,13 @@ class DefaultTranslationProvider {
     return isSet(args) ? this.interpolate(defaultValueOrArgs, args) : defaultValueOrArgs;
   }
   interpolate(defaultValue, args) {
-    return defaultValue.replace(/{{\s*([^\s]+)\s*}}/g, (match, key) => {
-      return String(args[key]) || match;
-    });
+    return defaultValue.replace(
+      /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
+      /{{\s*([^\s]+)\s*}}/g,
+      (match, key) => {
+        return String(args[key]) || match;
+      }
+    );
   }
 }
 class TranslationServiceImpl {
@@ -14623,10 +14627,12 @@ const scrollClasses = {
     "horizontal"
     /* HORIZONTAL */
   ]: ["table__scroll", "table__scroll--horizontal"],
+  /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
   [
     "vertical"
     /* VERTICAL */
   ]: ["table__scroll", "table__scroll--vertical"],
+  /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
   [
     "both"
     /* BOTH */
@@ -15017,6 +15023,7 @@ function prepareButtonList(src) {
       screenreader: it.screenreader,
       event: (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "dismiss",
       reason: (_ref = (_it$reason = it.reason) !== null && _it$reason !== void 0 ? _it$reason : it.event) !== null && _ref !== void 0 ? _ref : "dismiss",
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
       classlist: ["button", `button--${(_it$type = it.type) !== null && _it$type !== void 0 ? _it$type : "secondary"}`],
       buttonType: it.submitButton ? "submit" : "button"
     };
@@ -17963,7 +17970,8 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
     useEventListener(__props.anchor, "keyup", onKeyEsc);
     watchEffect(() => {
       if (wrapperRef.value && __props.activeElement !== void 0) {
-        const centerPosition = __props.activeElement.offsetTop - (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+        const centerPosition = __props.activeElement.offsetTop - /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
         if (!isElementInsideViewport(wrapperRef.value)) {
           wrapperRef.value.scrollIntoView({
             behavior: "instant",
@@ -22145,7 +22153,12 @@ function useStorage(options) {
     const json = window.localStorage.getItem(storageKey.value);
     if (json) {
       const value = JSON.parse(json);
-      state.value.current = clamp(value, state.value.min, state.value.max);
+      state.value.current = clamp(
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
+        value,
+        state.value.min,
+        state.value.max
+      );
       last = value;
     }
     loaded.value = true;

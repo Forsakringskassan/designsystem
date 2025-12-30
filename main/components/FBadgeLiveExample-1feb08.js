@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FBadge/examples/FBadgeLiveExample.vue:FBadgeLiveExample-fd714b.js
+// virtual-entry:virtual:packages/vue/src/components/FBadge/examples/FBadgeLiveExample.vue:FBadgeLiveExample-1feb08.js
 import { defineComponent } from "vue";
 import { FBadge, FCheckboxField, FSelectField } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
@@ -160,7 +160,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-fd714b"
+  selector: "#example-1feb08"
 });
 export {
   render

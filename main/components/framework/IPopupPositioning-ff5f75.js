@@ -1656,7 +1656,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-6ac8c6.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-ff5f75.js
 import { defineComponent as defineComponent12 } from "vue";
 
 // packages/vue/src/utils/ListUtils.ts
@@ -2382,6 +2382,7 @@ function prepareButtonList(src) {
     screenreader: it.screenreader,
     event: it.event ?? "dismiss",
     reason: it.reason ?? it.event ?? "dismiss",
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     classlist: ["button", `button--${it.type ?? "secondary"}`],
     buttonType: it.submitButton ? "submit" : "button"
   }));
@@ -3869,7 +3870,7 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
   }
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-6ac8c6.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-ff5f75.js
 import { createElementVNode as _createElementVNode8, vModelSelect as _vModelSelect, withDirectives as _withDirectives, createTextVNode as _createTextVNode3, openBlock as _openBlock12, createElementBlock as _createElementBlock12 } from "vue";
 var SPACING = 10;
 var exampleComponent = defineComponent12({
@@ -4089,7 +4090,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render12;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-6ac8c6"
+  selector: "#example-ff5f75"
 });
 export {
   render12 as render

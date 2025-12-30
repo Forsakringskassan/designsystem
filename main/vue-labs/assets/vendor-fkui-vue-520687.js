@@ -4364,10 +4364,12 @@ var scrollClasses = {
     "horizontal"
     /* HORIZONTAL */
   ]: ["table__scroll", "table__scroll--horizontal"],
+  /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
   [
     "vertical"
     /* VERTICAL */
   ]: ["table__scroll", "table__scroll--vertical"],
+  /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
   [
     "both"
     /* BOTH */
@@ -4979,6 +4981,7 @@ function prepareButtonList(src) {
       screenreader: it.screenreader,
       event: (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "dismiss",
       reason: (_ref = (_it$reason = it.reason) !== null && _it$reason !== void 0 ? _it$reason : it.event) !== null && _ref !== void 0 ? _ref : "dismiss",
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
       classlist: ["button", `button--${(_it$type = it.type) !== null && _it$type !== void 0 ? _it$type : "secondary"}`],
       buttonType: it.submitButton ? "submit" : "button"
     };
@@ -9606,7 +9609,8 @@ var _sfc_main$14 = /* @__PURE__ */ defineComponent({
     useEventListener(__props.anchor, "keyup", onKeyEsc);
     watchEffect(() => {
       if (wrapperRef.value && __props.activeElement !== void 0) {
-        const centerPosition = __props.activeElement.offsetTop - (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+        const centerPosition = __props.activeElement.offsetTop - /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
         if (!isElementInsideViewport(wrapperRef.value)) {
           wrapperRef.value.scrollIntoView({
             behavior: "instant",
@@ -11250,7 +11254,11 @@ var _sfc_main$Y = defineComponent({
   },
   async mounted() {
     await this.$nextTick();
-    const types = Array.from(this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`), (it) => it.getAttribute("type"));
+    const types = Array.from(
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument -- technical debt */
+      this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
+      (it) => it.getAttribute("type")
+    );
     this.hasCheckbox = types.includes("checkbox");
     this.hasRadiobutton = types.includes("radio");
     if (this.hasCheckbox) {
@@ -11279,6 +11287,7 @@ var _sfc_main$Y = defineComponent({
       this.dispatchObject = {
         ...detail,
         errorMessage,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         focusElementId
       };
       this.validity = this.detail;
@@ -13525,6 +13534,7 @@ var _sfc_main$N = defineComponent({
   },
   data() {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.currency-text-field.label", "Pengar")
     };
   },
@@ -13686,6 +13696,7 @@ var _sfc_main$L = defineComponent({
   },
   data() {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.bank-account-number-text-field.label", "Kontonummer")
     };
   },
@@ -13716,6 +13727,7 @@ var _sfc_main$K = defineComponent({
   },
   data() {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.bankgiro-text-field.label", "Bankgironummer")
     };
   },
@@ -13749,6 +13761,7 @@ var _sfc_main$J = defineComponent({
   },
   data() {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.clearingnumber-text-field.label", "Clearingnummer")
     };
   },
@@ -13827,8 +13840,11 @@ var _sfc_main$H = defineComponent({
   },
   data() {
     return {
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       defaultText: this.$t("fkui.personnummer-text-field.label-10-digits", "Personnummer"),
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       discreteDescriptionText: this.$t("fkui.personnummer-text-field.example-10-digits", "(\xE5\xE5mmdd-nnnn)"),
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       discreteDescriptionScreenReaderText: this.$t("fkui.personnummer-text-field.format-description-10-digits", "Skriv personnumret med 10 siffror,")
     };
   },
@@ -13863,6 +13879,7 @@ var _sfc_main$G = defineComponent({
   },
   data() {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.plusgiro-text-field.label", "Plusgironummer")
     };
   },
@@ -13896,8 +13913,11 @@ var _sfc_main$F = defineComponent({
   },
   data() {
     return {
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       defaultText: this.$t("fkui.postal-code-text-field.label", "Postnummer"),
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       discreteDescriptionText: this.$t("fkui.postal-code-text-field.example", "(123 45)"),
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       discreteDescriptionScreenReaderText: this.$t("fkui.postal-code-text-field.format-description", "Formatbeskrivning")
     };
   },
@@ -13948,6 +13968,7 @@ var _sfc_main$E = defineComponent({
   },
   data() {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.percent-text-field.label", "Procent")
     };
   },
@@ -13984,8 +14005,11 @@ var _sfc_main$D = defineComponent({
   },
   data() {
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.organisationsnummer-text-field.label", "Organisationsnummer"),
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       discreteDescriptionText: this.$t("fkui.organisationsnummer-text-field.example", "(999999-9999)"),
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       discreteDescriptionScreenReaderText: this.$t("fkui.organisationsnummer-text-field.format-description", "Formatbeskrivning")
     };
   },
@@ -15833,7 +15857,12 @@ function useStorage(options) {
     const json = window.localStorage.getItem(storageKey.value);
     if (json) {
       const value = JSON.parse(json);
-      state.value.current = clamp(value, state.value.min, state.value.max);
+      state.value.current = clamp(
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
+        value,
+        state.value.min,
+        state.value.max
+      );
       last = value;
     }
     loaded.value = true;
@@ -20601,12 +20630,17 @@ var _sfc_main$1 = defineComponent({
       }
     };
     return {
+      /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
       register: this.register,
+      /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
       unregister: this.unregister,
+      /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
       getStepCount: this.getStepCount,
+      /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
       openStep: this.openStep,
+      /* eslint-disable-next-line @typescript-eslint/no-misused-promises, @typescript-eslint/unbound-method -- technical debt */
       openNext: this.openNext,
-      // eslint-disable-line @typescript-eslint/no-misused-promises -- technical debt
+      /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
       cancel: this.cancel,
       inheritedProps
     };

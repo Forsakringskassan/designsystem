@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCard/examples/FCardValidationExample.vue:FCardValidationExample-1ab448.js
+// virtual-entry:virtual:packages/vue/src/components/FCard/examples/FCardValidationExample.vue:FCardValidationExample-84ea4d.js
 import { defineComponent as _defineComponent } from "vue";
 import { useTemplateRef } from "vue";
 import { ValidationService } from "@fkui/logic";
@@ -199,7 +199,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1ab448"
+  selector: "#example-84ea4d"
 });
 export {
   render
