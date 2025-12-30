@@ -155,23 +155,30 @@ export default defineComponent({
                     setTimeout(() => {
                         // verify that it's still open
                         if (this.isOpen) {
+                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                             document.addEventListener("click", this.onDocumentClickHandler);
+                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                             window.addEventListener("resize", this.onWindowResizeDebounced);
                         }
                     }, 0);
                 } else {
+                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     document.removeEventListener("click", this.onDocumentClickHandler);
+                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     window.removeEventListener("resize", this.onWindowResizeDebounced);
                 }
             },
         },
     },
     created() {
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
     },
     unmounted() {
         // Clean up if unmounted but still opened
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         document.removeEventListener("click", this.onDocumentClickHandler);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         window.removeEventListener("resize", this.onWindowResizeDebounced);
     },
     methods: {

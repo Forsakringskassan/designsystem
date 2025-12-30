@@ -22,11 +22,17 @@ export default defineComponent({
             },
         };
         return {
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             register: this.register,
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             unregister: this.unregister,
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             getStepCount: this.getStepCount,
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             openStep: this.openStep,
-            openNext: this.openNext, // eslint-disable-line @typescript-eslint/no-misused-promises -- technical debt
+            /* eslint-disable-next-line @typescript-eslint/no-misused-promises, @typescript-eslint/unbound-method -- technical debt */
+            openNext: this.openNext,
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             cancel: this.cancel,
             inheritedProps,
         };

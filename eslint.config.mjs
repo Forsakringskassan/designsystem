@@ -122,7 +122,6 @@ export default [
         /* @todo technical debt */
         name: "local/technical-debt",
         rules: {
-            "@typescript-eslint/unbound-method": "off",
             "sonarjs/slow-regex": "off",
         },
     },

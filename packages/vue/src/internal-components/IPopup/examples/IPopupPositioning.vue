@@ -45,7 +45,9 @@ export default defineComponent({
         },
     },
     mounted() {
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         document.addEventListener("mouseup", this.onMouseUp);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         document.addEventListener("mousemove", this.onMouseMove);
         /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         this.$nextTick().then(() => {
@@ -53,7 +55,9 @@ export default defineComponent({
         });
     },
     destroy() {
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         document.removeEventListener("mouseup", this.onMouseUp);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         document.removeEventListener("mousemove", this.onMouseMove);
     },
     methods: {

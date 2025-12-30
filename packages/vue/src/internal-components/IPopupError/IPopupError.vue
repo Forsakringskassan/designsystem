@@ -67,7 +67,9 @@ export default defineComponent({
             immediate: true,
             handler(anchor: HTMLElement | null | undefined): void {
                 if (anchor) {
+                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     anchor.addEventListener("keyup", this.onKeyEsc);
+                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     window.addEventListener("resize", this.onResize);
                 }
             },
@@ -80,7 +82,9 @@ export default defineComponent({
         },
     },
     unmounted() {
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         this.anchor?.removeEventListener("keyup", this.onKeyEsc);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         window.removeEventListener("resize", this.onResize);
     },
     methods: {
