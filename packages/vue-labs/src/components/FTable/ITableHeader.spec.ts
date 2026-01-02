@@ -49,3 +49,45 @@ describe("description", () => {
         expect(wrapper.find(selector).text()).toBe("dolor sit amet");
     });
 });
+
+describe("sorting aria attributes", () => {
+    it.each`
+        order
+        ${"ascending"}
+        ${"descending"}
+    `(
+        "should set aria-sort to '$order' when sortOrder is '$order'",
+        ({ order }) => {
+            expect.assertions(1);
+            const column = normalizeTableColumn({
+                header: "lorem ipsum",
+            });
+            const wrapper = shallowMount(ITableHeader, {
+                props: { column, sortEnabled: true, sortOrder: order },
+            });
+            expect(wrapper.find("th").attributes("aria-sort")).toBe(order);
+        },
+    );
+
+    it("should not define aria-sort when sortOrder is 'unsorted'", () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn({
+            header: "lorem ipsum",
+        });
+        const wrapper = shallowMount(ITableHeader, {
+            props: { column, sortEnabled: true, sortOrder: "unsorted" },
+        });
+        expect(wrapper.find("th").attributes("aria-sort")).toBeUndefined();
+    });
+
+    it("should not define aria-sort when sorting is disabled", () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn({
+            header: "lorem ipsum",
+        });
+        const wrapper = shallowMount(ITableHeader, {
+            props: { column, sortEnabled: false, sortOrder: "unsorted" },
+        });
+        expect(wrapper.find("th").attributes("aria-sort")).toBeUndefined();
+    });
+});
