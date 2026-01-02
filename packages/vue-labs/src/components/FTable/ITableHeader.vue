@@ -46,6 +46,16 @@ const sortIcon = computed(() => {
     }
 });
 
+const sortValue = computed(() => {
+    switch (sortOrder) {
+        case "ascending":
+        case "descending":
+            return sortOrder;
+        default:
+            return undefined;
+    }
+});
+
 function isAlignableColumn(
     column: NormalizedTableColumn<T, K>,
 ): column is NormalizedTableColumnText<T, K> | NormalizedTableColumnNumber<T, K> {
@@ -80,7 +90,14 @@ function onKeydownCell(e: KeyboardEvent): void {
 </script>
 
 <template>
-    <th ref="th" :class="columnClasses" tabindex="-1" @keydown="onKeydownCell" @click.stop="onClickCell">
+    <th
+        ref="th"
+        :aria-sort="sortValue"
+        :class="columnClasses"
+        tabindex="-1"
+        @keydown="onKeydownCell"
+        @click.stop="onClickCell"
+    >
         <i-flex gap="1x" :float="alignment">
             <i-flex-item shrink class="table-ng__column__title">
                 {{ column.header }}
