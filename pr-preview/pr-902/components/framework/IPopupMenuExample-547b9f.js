@@ -2426,6 +2426,7 @@ function prepareButtonList(src) {
     screenreader: it.screenreader,
     event: it.event ?? "dismiss",
     reason: it.reason ?? it.event ?? "dismiss",
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     classlist: ["button", `button--${it.type ?? "secondary"}`],
     buttonType: it.submitButton ? "submit" : "button"
   }));
@@ -4105,6 +4106,11 @@ var IPopup_default = defineComponent12({
     "open",
     /**
      * Emitted when clicked outside of popup.
+     *
+     * Includes the reason for closing as event argument. One of:
+     *
+     * - `"click-outside"` - when clicking outside the popup with the mouse
+     * - `"escape"` - when closing the popup with the escape key.
      */
     "close"
   ],
@@ -4245,7 +4251,7 @@ var IPopup_default = defineComponent12({
       return window.innerWidth < MIN_DESKTOP_WIDTH;
     },
     onDocumentClickHandler() {
-      this.$emit("close");
+      this.$emit("close", "click-outside");
     },
     onWindowResizeDebounced() {
     },
@@ -4272,7 +4278,7 @@ var IPopup_default = defineComponent12({
       event.stopPropagation();
     },
     onKeyEsc() {
-      this.$emit("close");
+      this.$emit("close", "escape");
     },
     onKeyTab(event) {
       if (this.keyboardTrap) {
