@@ -2,6 +2,7 @@ import { type FTableCellApi, type tableCellApiSymbol } from "./f-table-api";
 
 export { default as FTable } from "./FTable.vue";
 export { type FTableApi, type FTableCellApi } from "./f-table-api";
+export { removeRow } from "./remove-row";
 export {
     type TableColumn,
     type TableColumnAnchor,
