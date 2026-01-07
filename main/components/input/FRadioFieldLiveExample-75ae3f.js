@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FRadioField/examples/FRadioFieldLiveExample.vue:FRadioFieldLiveExample-4d4132.js
+// virtual-entry:virtual:packages/vue/src/components/FRadioField/examples/FRadioFieldLiveExample.vue:FRadioFieldLiveExample-75ae3f.js
 import { defineComponent } from "vue";
 import { DateFormat, FDate } from "@fkui/date";
 import { FCheckboxField, FFieldset, FRadioField, FSelectField, FTooltip } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createElementVNode as _createElementVNode } from "vue";
 var todaysDate = FDate.now().toString(DateFormat.ISO8601);
 var exampleComponent = defineComponent({
   name: "FRadioFieldLiveExample",
@@ -158,6 +158,11 @@ var exampleComponent = defineComponent({
             `
       );
     }
+  },
+  methods: {
+    onHorizontalChange() {
+      this.isBorder = this.isHorizontal ? false : this.isBorder;
+    }
   }
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -172,7 +177,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     livedata: _ctx.livedata
   }, {
     default: _withCtx(() => [
-      _createVNode(_component_f_fieldset, { name: "radio-orientation" }, {
+      _createVNode(_component_f_fieldset, {
+        name: "radio-orientation",
+        onChange: _ctx.onHorizontalChange
+      }, {
         label: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Placering ",
@@ -214,8 +222,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 1
         /* STABLE */
-      }),
-      _createVNode(_component_f_checkbox_field, {
+      }, 8, ["onChange"]),
+      !_ctx.isHorizontal ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
+        key: 0,
         modelValue: _ctx.isBorder,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.isBorder = $event),
         value: true
@@ -229,7 +238,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ])]),
         _: 1
         /* STABLE */
-      }, 8, ["modelValue"]),
+      }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_checkbox_field, {
         modelValue: _ctx.isPreselected,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.isPreselected = $event),
@@ -363,7 +372,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4d4132"
+  selector: "#example-75ae3f"
 });
 export {
   render
