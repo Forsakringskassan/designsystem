@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FRadioField/examples/FRadioFieldLiveExample.vue:FRadioFieldLiveExample-3a2036.js
+// virtual-entry:virtual:packages/vue/src/components/FRadioField/examples/FRadioFieldLiveExample.vue:FRadioFieldLiveExample-75ae3f.js
 import { defineComponent } from "vue";
 import { DateFormat, FDate } from "@fkui/date";
 import { FCheckboxField, FFieldset, FRadioField, FSelectField, FTooltip } from "@fkui/vue";
@@ -159,12 +159,9 @@ var exampleComponent = defineComponent({
       );
     }
   },
-  watch: {
-    isHorizontal: {
-      immediate: false,
-      handler() {
-        this.isBorder = this.isHorizontal ? false : this.isBorder;
-      }
+  methods: {
+    onHorizontalChange() {
+      this.isBorder = this.isHorizontal ? false : this.isBorder;
     }
   }
 });
@@ -180,7 +177,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     livedata: _ctx.livedata
   }, {
     default: _withCtx(() => [
-      _createVNode(_component_f_fieldset, { name: "radio-orientation" }, {
+      _createVNode(_component_f_fieldset, {
+        name: "radio-orientation",
+        onChange: _ctx.onHorizontalChange
+      }, {
         label: _withCtx(() => [..._cache[9] || (_cache[9] = [
           _createTextVNode(
             " Placering ",
@@ -222,7 +222,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 1
         /* STABLE */
-      }),
+      }, 8, ["onChange"]),
       !_ctx.isHorizontal ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
         key: 0,
         modelValue: _ctx.isBorder,
@@ -372,7 +372,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-3a2036"
+  selector: "#example-75ae3f"
 });
 export {
   render
