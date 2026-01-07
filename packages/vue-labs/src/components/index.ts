@@ -22,6 +22,7 @@ export {
     baseTypes,
     defineTableColumns,
     numberTypes,
+    removeRow,
     textTypes,
 } from "./FTable";
 export { XFileDragdrop } from "./XFileDragdrop";

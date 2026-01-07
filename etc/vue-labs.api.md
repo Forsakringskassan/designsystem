@@ -96,6 +96,9 @@ export const numberTypes: readonly ["text:currency", "text:number", "text:percen
 // @public (undocumented)
 export function parseTimeToNumber(value?: string | null): number | undefined;
 
+// @public
+export function removeRow<T>(rows: T[], row: T, expandableAttribute?: keyof T): T[];
+
 // @public (undocumented)
 export function splitHoursMinutes(valueString: string, extraForgiving?: boolean): string[];
 

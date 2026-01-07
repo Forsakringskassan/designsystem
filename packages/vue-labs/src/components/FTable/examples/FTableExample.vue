@@ -2,7 +2,7 @@
 import { h, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
 import { FSortFilterDataset } from "@fkui/vue";
-import { type TableColumn, FTable, defineTableColumns } from "@fkui/vue-labs";
+import { type TableColumn, FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
 
@@ -74,7 +74,9 @@ const columns = defineTableColumns<Row>([
         text(row) {
             return `Ta bort ${row.id}`;
         },
-        onClick: onRemoveRow,
+        onClick: (row) => {
+            onRemoveRow(row);
+        },
     },
     {
         header: "Länk",
@@ -234,27 +236,12 @@ function onAddRow(): void {
     });
 }
 
-function onRemoveRow(rowToRemove: Row): void {
+function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        const rowIndex = rows.value.indexOf(rowToRemove);
-        if (rowIndex !== -1) {
-            rows.value.splice(rows.value.indexOf(rowToRemove), 1);
-        } else {
-            for (const row of rows.value) {
-                if (!row.expandableRows) {
-                    continue;
-                }
-
-                const expandableRowIndex = row.expandableRows.indexOf(rowToRemove);
-                if (expandableRowIndex !== -1) {
-                    row.expandableRows.splice(expandableRowIndex, 1);
-                    break;
-                }
-            }
-        }
+        rows.value = removeRow(rows.value, row, "expandableRows");
     });
 }
 
