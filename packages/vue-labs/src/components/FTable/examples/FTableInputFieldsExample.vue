@@ -21,7 +21,7 @@ interface TableRow {
     number: number | string;
 }
 
-const columns = defineTableColumns<TableRow, keyof TableRow>([
+const columns1 = defineTableColumns<TableRow, keyof TableRow>([
     {
         type: "text",
         header: "Text",
@@ -52,6 +52,9 @@ const columns = defineTableColumns<TableRow, keyof TableRow>([
         key: "clearingNumber",
         editable: true,
     },
+]);
+
+const columns2 = defineTableColumns<TableRow, keyof TableRow>([
     {
         type: "text:currency",
         header: "Valuta",
@@ -84,6 +87,9 @@ const columns = defineTableColumns<TableRow, keyof TableRow>([
         key: "epost",
         editable: true,
     },
+]);
+
+const columns3 = defineTableColumns<TableRow, keyof TableRow>([
     {
         type: "text:organisationsnummer",
         header: "Orgnr",
@@ -185,9 +191,9 @@ function validataAll(): void {
         Interagerbart element före
     </button>
     <div id="all">
-        <f-table :rows :columns="columns.slice(0, 5)" key-attribute="id" striped> </f-table>
-        <f-table :rows :columns="columns.slice(5, 10)" key-attribute="id" striped> </f-table>
-        <f-table :rows :columns="columns.slice(10)" key-attribute="id" striped> </f-table>
+        <f-table :rows :columns="columns1" key-attribute="id" striped> </f-table>
+        <f-table :rows :columns="columns2" key-attribute="id" striped> </f-table>
+        <f-table :rows :columns="columns3" key-attribute="id" striped> </f-table>
     </div>
     <pre>Summa: {{ { sum } }}</pre>
     <h3>Rows ({{ rows.length }} items):</h3>
