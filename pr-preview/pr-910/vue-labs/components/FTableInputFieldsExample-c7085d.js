@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableInputFieldsExample.vue:FTableInputFieldsExample-bd37ef.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableInputFieldsExample.vue:FTableInputFieldsExample-c7085d.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, ref } from "vue";
 import { ValidationService } from "@fkui/logic";
@@ -33,7 +33,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FTableInputFieldsExample",
   setup(__props, { expose: __expose }) {
     __expose();
-    const columns = defineTableColumns([
+    const columns1 = defineTableColumns([
       {
         type: "text",
         header: "Text",
@@ -63,7 +63,9 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         header: "Clearingnr",
         key: "clearingNumber",
         editable: true
-      },
+      }
+    ]);
+    const columns2 = defineTableColumns([
       {
         type: "text:currency",
         header: "Valuta",
@@ -95,7 +97,9 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         header: "Epost",
         key: "epost",
         editable: true
-      },
+      }
+    ]);
+    const columns3 = defineTableColumns([
       {
         type: "text:organisationsnummer",
         header: "Orgnr",
@@ -186,7 +190,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     function validataAll() {
       ValidationService.validateAllElements("all");
     }
-    const __returned__ = { columns, rows, sum, validataAll, get FTable() {
+    const __returned__ = { columns1, columns2, columns3, rows, sum, validataAll, get FTable() {
       return FTable;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -207,19 +211,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode("div", _hoisted_1, [
         _createVNode($setup["FTable"], {
           rows: $setup.rows,
-          columns: $setup.columns.slice(0, 5),
+          columns: $setup.columns1,
           "key-attribute": "id",
           striped: ""
         }, null, 8, ["rows", "columns"]),
         _createVNode($setup["FTable"], {
           rows: $setup.rows,
-          columns: $setup.columns.slice(5, 10),
+          columns: $setup.columns2,
           "key-attribute": "id",
           striped: ""
         }, null, 8, ["rows", "columns"]),
         _createVNode($setup["FTable"], {
           rows: $setup.rows,
-          columns: $setup.columns.slice(10),
+          columns: $setup.columns3,
           "key-attribute": "id",
           striped: ""
         }, null, 8, ["rows", "columns"])
@@ -258,7 +262,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-bd37ef"
+  selector: "#example-c7085d"
 });
 export {
   render
