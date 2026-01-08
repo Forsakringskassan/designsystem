@@ -3,9 +3,10 @@
     "compilerOptions": {
         "composite": true,
         "types": ["cypress"],
-        "target": "es2021",
+        "target": "es2023",
         "emitDeclarationOnly": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "lib": ["es2023", "dom", "dom.iterable"]
     },
     "include": ["src/cypress/**/*.ts", "src/**/*.pageobject.ts"],
     "exclude": ["src/cypress/**/*.cy.ts"]

@@ -2,6 +2,7 @@
     "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"],
     "compilerOptions": {
         "composite": true,
+        "lib": ["es2023", "dom", "dom.iterable"],
         "paths": {
             "@fkui/vue-labs": ["./src/index.ts"]
         }

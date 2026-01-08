@@ -4,7 +4,7 @@
         "composite": true,
         "outDir": "temp",
         "rootDir": "src",
-        "target": "es2021",
+        "target": "es2023",
         "noEmit": false,
         "emitDeclarationOnly": true,
         "allowSyntheticDefaultImports": true,
@@ -13,7 +13,8 @@
         "paths": {
             "@fkui/vue-labs": ["./src/index.ts"]
         },
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "lib": ["es2023", "dom", "dom.iterable"]
     },
     "include": ["src/**/*.ts", "src/**/*.vue", "src/**/*.cy.ts"],
     "exclude": ["src/**/*.spec.ts"]

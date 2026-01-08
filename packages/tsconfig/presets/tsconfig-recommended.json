@@ -3,7 +3,7 @@
     "display": "@fkui/tsconfig/recommended",
 
     "compilerOptions": {
-        "target": "es2022",
+        "target": "es2023",
         "module": "esnext",
         "moduleResolution": "bundler",
         "lib": ["es2023", "dom", "dom.iterable"],
