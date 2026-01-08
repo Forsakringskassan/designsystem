@@ -2,12 +2,12 @@
     /* this config is picked up by vue3-jest which just refuses to read any
      * other file or config */
     "compilerOptions": {
-        "target": "es2021",
+        "target": "es2023",
         "module": "esnext",
         "moduleResolution": "node",
         "esModuleInterop": true,
         "strict": true,
-        "lib": ["es2021", "dom", "dom.iterable"],
+        "lib": ["es2023", "dom", "dom.iterable"],
         "emitDeclarationOnly": true,
         "declaration": true,
         "declarationMap": true,
