@@ -15,6 +15,7 @@ $number-selector: ".wizard-step__icon-container__number" !default;
 $success-selector: ".wizard-step__icon-container__success" !default;
 $form-body-selector: ".wizard-step-body" !default;
 $form-border-container: "#{$form-body-selector}__border-container" !default;
+$buttons: ".wizard-step__buttons" !default;
 
 /* position adjustments for lines */
 
@@ -46,7 +47,7 @@ $icon-size: 30px;
         }
     }
 
-    .button-group:last-of-type {
+    #{$buttons} {
         margin-top: calc(4rem * var(--f-density-factor));
     }
 

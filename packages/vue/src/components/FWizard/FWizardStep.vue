@@ -296,7 +296,7 @@ export default defineComponent({
                 <template #default>
                     <slot name="default"></slot>
 
-                    <div class="button-group">
+                    <div class="button-group wizard-step__buttons">
                         <button
                             data-test="submit-button"
                             :data-disabled="ignoreClick ? 'true' : 'false'"
