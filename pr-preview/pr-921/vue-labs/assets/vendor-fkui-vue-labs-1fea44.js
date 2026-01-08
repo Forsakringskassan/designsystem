@@ -4492,12 +4492,13 @@ function removeRow(rows, row, expandableAttribute) {
   }
   return rows;
 }
-function removeExpandableRowFromRows(rows, row, expandableAttribute) {
+function removeExpandableRowFromRows(rows, row, key) {
   for (const currentRow of rows) {
-    if (currentRow[expandableAttribute] && Array.isArray(currentRow[expandableAttribute])) {
-      const expandableRowIndex = currentRow[expandableAttribute].indexOf(row);
-      if (expandableRowIndex !== -1) {
-        currentRow[expandableAttribute].splice(expandableRowIndex, 1);
+    const expandableRows = currentRow[key];
+    if (expandableRows && Array.isArray(expandableRows)) {
+      const index = expandableRows.indexOf(row);
+      if (index !== -1) {
+        expandableRows.splice(index, 1);
         break;
       }
     }
