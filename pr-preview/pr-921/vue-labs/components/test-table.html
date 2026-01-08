@@ -26,7 +26,7 @@
     "@fkui/logic": "../assets/vendor-fkui-logic-fb32f2.js",
     "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
     "@fkui/vue": "../assets/vendor-fkui-vue-520687.js",
-    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-124c09.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-01966d.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
     "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
     "../assets/vendor-fkui-vue-520687.js": "sha384-iMLBZnceVqSV54H28s/7WxpTQOodOTFHJgq7uTZ/X1cguHk1CDN6GP2u+ytKIful",
-    "../assets/vendor-fkui-vue-labs-124c09.js": "sha384-C897WDKlqUrDK8YJzr75uxDhydCz4zHhvHKp868eruLr4gsiBW/BCQzBGiY8wkYN",
+    "../assets/vendor-fkui-vue-labs-01966d.js": "sha384-qIRNjBk9p5PsX3EH8K66Iw7Wq3oz4EzgpDhOQvQP2UTNkO2s+eZSoidBg8GDHqso",
     "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js": "sha384-EfDXAfHkZWGo4Nl44hipgaFlVrbK9+OC7Ttnp4RNo2eCxop6CBrFM1CuU1iy2WEs"
   }
 }
@@ -202,7 +202,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-ec9980"></div>
+        <div id="example-413944"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -228,7 +228,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-ec9980.js"></script>
+        <script type="module" src="./FTableExample-413944.js"></script>
     
                 </div>
                 <div>
@@ -251,8 +251,7 @@ body {
 <span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumn</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { removeRow } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../remove-row&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumn</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, removeRow } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
 
