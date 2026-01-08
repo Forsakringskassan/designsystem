@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 6.32.1 (2026-01-08)
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** message box icon not visible in `FWizardStep` (fixes SFKUI-7547) b0c19de, closes #888
+* **@fkui/design, @fkui/vue:** set `FWizardStep` button-group top margin (fixes SFKUI-7554) 61a81e4, closes #904
+
 ## 6.32.0 (2025-12-28)
 
 ### Features
