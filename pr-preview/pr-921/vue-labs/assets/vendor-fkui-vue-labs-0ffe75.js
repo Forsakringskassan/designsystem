@@ -4487,14 +4487,14 @@ function removeRow(rows, row, expandableAttribute) {
   const rowIndex = rows.indexOf(row);
   if (rowIndex !== -1) {
     rows.splice(rowIndex, 1);
-  } else {
+  } else if (expandableAttribute) {
     rows = removeExpandableRowFromRows(rows, row, expandableAttribute);
   }
   return rows;
 }
 function removeExpandableRowFromRows(rows, row, expandableAttribute) {
   for (const currentRow of rows) {
-    if (expandableAttribute && currentRow[expandableAttribute] && Array.isArray(currentRow[expandableAttribute])) {
+    if (currentRow[expandableAttribute] && Array.isArray(currentRow[expandableAttribute])) {
       const expandableRowIndex = currentRow[expandableAttribute].indexOf(row);
       if (expandableRowIndex !== -1) {
         currentRow[expandableAttribute].splice(expandableRowIndex, 1);

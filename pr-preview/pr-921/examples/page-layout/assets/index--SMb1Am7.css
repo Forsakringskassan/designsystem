@@ -5887,7 +5887,7 @@ input[type=search]:focus,
 .wizard-step:last-of-type .wizard-step__icon-container__line-down {
   border: 0;
 }
-.wizard-step .button-group:last-of-type {
+.wizard-step .wizard-step__buttons {
   margin-top: calc(4rem * var(--f-density-factor));
 }
 .wizard-step .wizard-step__header__title {
