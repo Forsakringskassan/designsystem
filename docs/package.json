@@ -22,7 +22,7 @@
     "@fkui/font-default": "6.32.0",
     "@fkui/logo-default": "6.32.0",
     "@forsakringskassan/docs-generator": "2.35.4",
-    "cypress": "15.8.1",
+    "cypress": "15.8.2",
     "vue": "3.5.26"
   }
 }
