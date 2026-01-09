@@ -25,6 +25,8 @@ $horizontal-padding: size.$padding-050;
     }
 
     &--align-left {
+        text-align: left;
+
         span,
         input {
             text-align: left;
@@ -32,6 +34,8 @@ $horizontal-padding: size.$padding-050;
     }
 
     &--align-right {
+        text-align: right;
+
         span,
         input {
             text-align: right;
