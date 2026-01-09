@@ -2445,6 +2445,7 @@ function prepareButtonList(src) {
     screenreader: it.screenreader,
     event: it.event ?? "dismiss",
     reason: it.reason ?? it.event ?? "dismiss",
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     classlist: ["button", `button--${it.type ?? "secondary"}`],
     buttonType: it.submitButton ? "submit" : "button"
   }));
@@ -4158,6 +4159,11 @@ var IPopup_default = defineComponent12({
     "open",
     /**
      * Emitted when clicked outside of popup.
+     *
+     * Includes the reason for closing as event argument. One of:
+     *
+     * - `"click-outside"` - when clicking outside the popup with the mouse
+     * - `"escape"` - when closing the popup with the escape key.
      */
     "close"
   ],
@@ -4298,7 +4304,7 @@ var IPopup_default = defineComponent12({
       return window.innerWidth < MIN_DESKTOP_WIDTH;
     },
     onDocumentClickHandler() {
-      this.$emit("close");
+      this.$emit("close", "click-outside");
     },
     onWindowResizeDebounced() {
     },
@@ -4325,7 +4331,7 @@ var IPopup_default = defineComponent12({
       event.stopPropagation();
     },
     onKeyEsc() {
-      this.$emit("close");
+      this.$emit("close", "escape");
     },
     onKeyTab(event) {
       if (this.keyboardTrap) {
@@ -4750,7 +4756,8 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     useEventListener(__props.anchor, "keyup", onKeyEsc);
     watchEffect(() => {
       if (wrapperRef.value && __props.activeElement !== void 0) {
-        const centerPosition = __props.activeElement.offsetTop - (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+        const centerPosition = __props.activeElement.offsetTop - /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
         if (!isElementInsideViewport(wrapperRef.value)) {
           wrapperRef.value.scrollIntoView({ behavior: "instant", block: "nearest" });
         }
@@ -7124,6 +7131,7 @@ var FFieldset_default = defineComponent22({
   async mounted() {
     await this.$nextTick();
     const types = Array.from(
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument -- technical debt */
       this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
       (it) => it.getAttribute("type")
     );
@@ -7154,6 +7162,7 @@ var FFieldset_default = defineComponent22({
       this.dispatchObject = {
         ...detail,
         errorMessage,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         focusElementId
       };
       this.validity = this.detail;
