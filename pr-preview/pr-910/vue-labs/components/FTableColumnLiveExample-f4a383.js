@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-2a3842.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-f4a383.js
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import {
@@ -1180,7 +1180,7 @@ function stringifyObject(obj) {
   return `{ ${props.join(", ")} }`;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-2a3842.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-f4a383.js
 import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode2, openBlock as _openBlock8, createBlock as _createBlock3, createCommentVNode as _createCommentVNode6, toDisplayString as _toDisplayString6 } from "vue";
 var columnData = {
   checkbox: {
@@ -1348,7 +1348,7 @@ var exampleComponent = defineComponent({
       textType: "text",
       descriptionChecked: false,
       tnum: false,
-      align: "right",
+      align: "left",
       editableChecked: true,
       enabledChecked: true
     };
@@ -1373,9 +1373,9 @@ var exampleComponent = defineComponent({
     },
     defaultAlign() {
       if (this.columnType === "text") {
-        return ["text:currency", "text:number", "text:percent"].includes(this.textType) ? "left" : "right";
+        return ["text:currency", "text:number", "text:percent"].includes(this.textType) ? "right" : "left";
       }
-      return "right";
+      return "left";
     },
     alignLeftText() {
       return this.defaultAlign === "left" ? "V\xE4nster (default)" : "V\xE4nster";
@@ -1662,7 +1662,10 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode6("v-if", true),
-      _createVNode2(_component_f_fieldset, { name: "visuellt" }, {
+      _ctx.alignSupport || _ctx.tnumSupport ? (_openBlock8(), _createBlock3(_component_f_fieldset, {
+        key: 3,
+        name: "visuellt"
+      }, {
         label: _withCtx(() => [..._cache[34] || (_cache[34] = [
           _createTextVNode(
             " Visuellt ",
@@ -1766,7 +1769,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 1
         /* STABLE */
-      }),
+      })) : _createCommentVNode6("v-if", true),
       _createVNode2(_component_f_fieldset, { name: "rubrik" }, {
         label: _withCtx(() => [..._cache[37] || (_cache[37] = [
           _createTextVNode(
@@ -1803,7 +1806,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render8;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-2a3842"
+  selector: "#example-f4a383"
 });
 export {
   render8 as render
