@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { shallowMount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import ITableHeader from "./ITableHeader.vue";
 import { normalizeTableColumn } from "./table-column";
 
@@ -11,7 +11,7 @@ describe("description", () => {
         const column = normalizeTableColumn({
             header: "lorem ipsum",
         });
-        const wrapper = shallowMount(ITableHeader, {
+        const wrapper = mount(ITableHeader, {
             props: { column, sortEnabled: false, sortOrder: "unsorted" },
         });
         const description = wrapper.find(selector);
@@ -24,7 +24,7 @@ describe("description", () => {
             header: "lorem ipsum",
             description: "dolor sit amet",
         });
-        const wrapper = shallowMount(ITableHeader, {
+        const wrapper = mount(ITableHeader, {
             props: { column, sortEnabled: false, sortOrder: "unsorted" },
         });
         const description = wrapper.find(selector);
@@ -39,7 +39,7 @@ describe("description", () => {
             header: "lorem ipsum",
             description: prop,
         });
-        const wrapper = shallowMount(ITableHeader, {
+        const wrapper = mount(ITableHeader, {
             props: { column, sortEnabled: false, sortOrder: "unsorted" },
         });
         expect(wrapper.find(selector).exists()).toBeFalsy();
@@ -62,7 +62,7 @@ describe("sorting aria attributes", () => {
             const column = normalizeTableColumn({
                 header: "lorem ipsum",
             });
-            const wrapper = shallowMount(ITableHeader, {
+            const wrapper = mount(ITableHeader, {
                 props: { column, sortEnabled: true, sortOrder: order },
             });
             expect(wrapper.find("th").attributes("aria-sort")).toBe(order);
@@ -74,7 +74,7 @@ describe("sorting aria attributes", () => {
         const column = normalizeTableColumn({
             header: "lorem ipsum",
         });
-        const wrapper = shallowMount(ITableHeader, {
+        const wrapper = mount(ITableHeader, {
             props: { column, sortEnabled: true, sortOrder: "unsorted" },
         });
         expect(wrapper.find("th").attributes("aria-sort")).toBeUndefined();
@@ -85,7 +85,7 @@ describe("sorting aria attributes", () => {
         const column = normalizeTableColumn({
             header: "lorem ipsum",
         });
-        const wrapper = shallowMount(ITableHeader, {
+        const wrapper = mount(ITableHeader, {
             props: { column, sortEnabled: false, sortOrder: "unsorted" },
         });
         expect(wrapper.find("th").attributes("aria-sort")).toBeUndefined();

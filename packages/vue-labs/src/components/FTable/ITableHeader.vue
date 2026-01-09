@@ -99,15 +99,13 @@ function onKeydownCell(e: KeyboardEvent): void {
         @click.stop="onClickCell"
     >
         <i-flex gap="1x" :float="alignment">
-            <i-flex-item shrink class="table-ng__column__title">
-                {{ column.header }}
-            </i-flex-item>
+            <i-flex-item shrink class="table-ng__column__title"> {{ column.header }} </i-flex-item>
             <i-flex-item v-if="sortEnabled" shrink align="center">
                 <f-icon :name="sortIcon" :class="sortIconClass"></f-icon>
             </i-flex-item>
         </i-flex>
-        <div v-if="column.description.value" class="table-ng__column__description">
-            {{ column.description }}
-        </div>
+        <i-flex v-if="column.description.value" gap="1x" :float="alignment" class="table-ng__column__description">
+            <i-flex-item shrink> {{ column.description }} </i-flex-item>
+        </i-flex>
     </th>
 </template>
