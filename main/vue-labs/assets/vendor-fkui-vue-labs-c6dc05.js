@@ -3841,7 +3841,7 @@ function normalizeTableColumn(column) {
         header: toRef(column.header),
         description,
         size,
-        value: column.value,
+        value: getValueFn(column.value, column.key, String, ""),
         href: column.href,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
           var _column$enabled;
@@ -3857,7 +3857,7 @@ function normalizeTableColumn(column) {
         header: toRef(column.header),
         description,
         size,
-        value: column.value,
+        value: getValueFn(column.value, column.key, String, ""),
         onClick: column.onClick,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
           var _column$enabled2;
