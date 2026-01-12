@@ -231,7 +231,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-5ac697"></div>
+        <div id="example-e9c489"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -256,7 +256,7 @@ label {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XSortFilterDatasetNgExample-5ac697.js"></script>
+        <script type="module" src="./XSortFilterDatasetNgExample-e9c489.js"></script>
     
                 </div>
                 <div>
@@ -277,13 +277,20 @@ label {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { computed, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCheckboxField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FSelectField</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCheckboxField</span>,
+    <span class="hljs-title class_">FFieldset</span>,
+    <span class="hljs-title class_">FSelectField</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    findHTMLElementFromVueRef,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">XSortFilterDatasetNg</span>, matchPropertyValue, uniqueValues } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
 
-<span class="hljs-keyword">const</span> searchElement = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;search&quot;</span>);
+<span class="hljs-keyword">const</span> searchRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;search&quot;</span>);
 <span class="hljs-keyword">const</span> actualElement = computed&lt;<span class="hljs-title class_">HTMLInputElement</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-keyword">return</span> searchElement.<span class="hljs-property">value</span>?.<span class="hljs-property">$el</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;input&quot;</span>);
+    <span class="hljs-keyword">const</span> searchEl = <span class="hljs-title function_">findHTMLElementFromVueRef</span>(searchRef);
+    <span class="hljs-keyword">return</span> searchEl ? searchEl.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;input&quot;</span>) : <span class="hljs-literal">null</span>;
 });
 
 <span class="hljs-keyword">const</span> flag = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>);
@@ -337,7 +344,7 @@ label {
                         <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-select-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;search&quot;</span> @<span class="hljs-attr">input</span>=<span class="hljs-string">&quot;update()&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;40&quot;</span> @<span class="hljs-attr">input</span>=<span class="hljs-string">&quot;update&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> Sök <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
