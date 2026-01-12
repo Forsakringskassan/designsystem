@@ -6,32 +6,36 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tidsinmatning - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-57d28d.css"
+            href="../assets/docs-8e41b4.css"
             crossorigin
-            integrity="sha384-Wx7JdTUGimlK4YscLFBM1yuhB9ZUNc0jDMF4TyWUpZBSPe8rmSujX6CC+cJ5VJL9"
+            integrity="sha384-GnceNS0kRaRj4Dj/2M4azZBYL5N6xl9yuddxuNsM+lQ8ZD3PNpyA1KLPY5mdl3Gt"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-7e095a.css"
+            href="../assets/docs-fkui-c11a0b.css"
             crossorigin
-            integrity="sha384-PNJFElaJEMg/rBzjtDXJJsKVNaiAYrbzj2QUeKtdMkpj8kqZwstsdGv2DGoKJM0c"
+            integrity="sha384-tldOOkAxqWoruMXgUNiqi9wTn3UybCXxZ0CjAhKV3L4Cy5UMfx2s0I/Vjm+7ySyg"
             data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-4637a8.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-8c84bb.js",
-    "@fkui/date": "../assets/vendor-fkui-date-706507.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-f68ccf.js"
+    "vue": "../assets/vendor-vue-a11a3e.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-fb32f2.js",
+    "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-9503b2.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-4621ec.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js"
   },
   "integrity": {
-    "../assets/vendor-vue-4637a8.js": "sha384-Ny6ntWYTz77HLZUJdLBb6LhIpfmpKKBpRDaQlQlKhSfm28rJ917PQOdyS0DqDX3j",
-    "../assets/vendor-fkui-logic-8c84bb.js": "sha384-RrniwSfuMSlA7SjXKwCDe3WCFDAT7YzD5W9cZ72V2O+ra1SWGfl2cE+0tCxFMt0h",
-    "../assets/vendor-fkui-date-706507.js": "sha384-CtDnB5Oz96IJo7mwvbBUWqEgLh9d/PcPcFAceG7RNS3VCGKlFDaaEXdrK+JGR7Po",
-    "../assets/vendor-fkui-vue-f68ccf.js": "sha384-EKo82/D/aJSX/Pr2o1Tq0Cd4pJgjBvXbC6lbqdPgl3cPQQH9lrPnvdQ2uYqdGb/G"
+    "../assets/vendor-vue-a11a3e.js": "sha384-CmWdyBZbBnJTuQtj4rgouZN7cRC/czuJRdirc2pQQhKjKa6jjZCMhkpzU7jv7gFA",
+    "../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
+    "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
+    "../assets/vendor-fkui-vue-9503b2.js": "sha384-3rc5rcRgJM6NI8zdJ+nxUu48RlEaqZFEd3flBxaPO/esXspDReN+0BwyehZGkJOr",
+    "../assets/vendor-fkui-vue-labs-4621ec.js": "sha384-1ZHyuXBOD+PevTQt+64auqJFBM22Z4tDyuKk4HkhiJ7dGWMbE6/LBmb9232k6Q0L",
+    "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js": "sha384-EfDXAfHkZWGo4Nl44hipgaFlVrbK9+OC7Ttnp4RNo2eCxop6CBrFM1CuU1iy2WEs"
   }
 }
         </script><script
@@ -42,10 +46,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-cdf67f.json"
+            href="../search-data-eb9d7c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-sUnhZOnckHbg1NZYpFxul1Ux/9MzFzeTaARsEl2YyKpRE8PVVTxzkzeE1ulqfv+j"
+            integrity="sha384-QTIkiS/7eiRc94rAKm04SSSmb4mHqFGK9RtoUsQ+K1w3OQOhUrOI03TgGQriOg4t"
             id="search-data"
         />
     </head>
@@ -60,6 +64,13 @@
     <ul class="docs-topnav__list"><li class="docs-topnav__item highlight">
             <a class="docs-topnav__anchor" href="./"> Komponenter </a>
         </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../pageobjects/"> Pageobjekt </a>
+        </li>
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
@@ -71,6 +82,13 @@
                 <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item highlight" style="display: none">
                         <a class="docs-contextmenu__anchor" href="./"> Komponenter </a>
                     </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../pageobjects/"> Pageobjekt </a>
+                    </li>
                     </ul>
             </div>
         </li>
@@ -80,16 +98,17 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.15.0
+        6.32.1
     </span>
 </div>
 </div>
@@ -104,14 +123,25 @@
 <nav class="navigation" aria-label="Sekundär">
 <ol><li class="link ">
         <a
-            href="./"
+            href="./ftable.html"
             
             
             
-            data-path="components/"
+            data-path="components/ftable.html"
             
         >
-            Komponenter
+            Tabell
+        </a>
+    </li><li class="link ">
+        <a
+            href="./code-table.html"
+            
+            
+            
+            data-path="components/code-table.html"
+            
+        >
+            Kod (tillhör nya tabellkomponenten)
         </a>
     </li><li class="link active">
         <a
@@ -123,6 +153,28 @@
             
         >
             Tidsinmatning
+        </a>
+    </li><li class="link ">
+        <a
+            href="./xfiledragdrop.html"
+            
+            
+            
+            data-path="components/xfiledragdrop.html"
+            
+        >
+            XFileDragdrop
+        </a>
+    </li><li class="link ">
+        <a
+            href="./xsortfilterdatasetng.html"
+            
+            
+            
+            data-path="components/xsortfilterdatasetng.html"
+            
+        >
+            XSortFilterDatasetNg
         </a>
     </li></ol>
 </nav>
@@ -220,15 +272,17 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-01cf1c"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-42b345"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XTimeTextFieldExample-01cf1c.js"></script>
-    </div>
+        <script type="module" src="./XTimeTextFieldExample-42b345.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -245,14 +299,14 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">XTimeTextField</span>,
-    minutesToUserFriendlyString,
     minutesToHoursFloat,
     minutesToObject,
+    minutesToUserFriendlyString,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;XTimeComponentExample&quot;</span>,
@@ -261,12 +315,12 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span>,
+            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> number | <span class="hljs-literal">undefined</span>,
         };
     },
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">userFriendlyValue</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>!);
         },
         <span class="hljs-title function_">timeInHours</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToHoursFloat</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
@@ -354,15 +408,17 @@ Exempel:</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-cc479c"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-109538"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ForgivingInput-cc479c.js"></script>
-    </div>
+        <script type="module" src="./ForgivingInput-109538.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -379,7 +435,8 @@ Exempel:</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;js&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">XTimeTextField</span>,
     forgivingParseTimeToNumber,
@@ -387,7 +444,6 @@ Exempel:</p>
     minutesToObject,
     minutesToUserFriendlyString,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;XTimeComponentExample&quot;</span>,
@@ -396,13 +452,13 @@ Exempel:</p>
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span>,
-            <span class="hljs-attr">parser</span>: <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> <span class="hljs-title function_">forgivingParseTimeToNumber</span>(value),
+            <span class="hljs-attr">time</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> number | <span class="hljs-literal">undefined</span>,
+            <span class="hljs-attr">parser</span>: <span class="hljs-function">(<span class="hljs-params">value: string</span>) =&gt;</span> <span class="hljs-title function_">forgivingParseTimeToNumber</span>(value),
         };
     },
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">userFriendlyValue</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToUserFriendlyString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>!);
         },
         <span class="hljs-title function_">timeInHours</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">minutesToHoursFloat</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">time</span>);
@@ -429,7 +485,7 @@ Exempel:</p>
                     parser: [parser],
                 },
             }&quot;</span>
-            <span class="hljs-attr">:parser</span>=<span class="hljs-string">&quot;parser&quot;</span>
+            <span class="hljs-attr">:parser</span>
         &gt;</span>
             Ange arbetstid
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ formatDescriptionClass }&quot;</span>&gt;</span>
@@ -529,10 +585,10 @@ Exempel:</p>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../assets/main-ceda33.js"
+            src="../assets/main-3893bd.js"
             type="module"
             crossorigin
-            integrity="sha384-qY32m4kZH6xulZl6RPIzp6j00Uuqr8SReQcEWBniQ6rmqIFCh2gxrgaTfed4vl3a"
+            integrity="sha384-QnqFOTWAYDyMNzjW6B1++egFEdnx/l6Lz85o3oq0NwjAgMVFkKb1MUdAHnFIZP/Z"
             
         ></script>
     </body>
