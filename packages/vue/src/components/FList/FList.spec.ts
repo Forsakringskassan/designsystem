@@ -560,12 +560,36 @@ describe("keyboard navigation", () => {
         },
     );
 
-    it.todo(
-        'should emit event "paginateDataset:previous" when getting page key "Page Up" down event',
-    );
+    it.each`
+        key           | action
+        ${"PageUp"}   | ${"previous"}
+        ${"PageDown"} | ${"next"}
+    `(
+        "should emit 'paginateDataset:$action' event on '$key' key press",
+        async ({ key, action }) => {
+            const listener = jest.fn();
+            const wrapper = mount(FList, {
+                props: {
+                    items: oneItem,
+                    selectable: true,
+                },
+                slots: {
+                    screenreader: "Default",
+                },
+            });
 
-    it.todo(
-        'should emit event "paginateDataset:next" when getting page key "Page Down" down event',
+            wrapper.element.addEventListener(
+                `paginateDataset:${action}`,
+                listener,
+            );
+
+            // Need to use setProps to trigger Updated() on the component
+            await wrapper.setProps({ items });
+            const li = wrapper.findAll("li")[1];
+            await li.trigger("keydown", { key });
+
+            expect(listener).toHaveBeenCalled();
+        },
     );
 });
 
