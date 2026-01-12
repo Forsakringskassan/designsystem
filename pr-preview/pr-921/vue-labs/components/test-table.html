@@ -26,7 +26,7 @@
     "@fkui/logic": "../assets/vendor-fkui-logic-fb32f2.js",
     "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
     "@fkui/vue": "../assets/vendor-fkui-vue-9503b2.js",
-    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-1fea44.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-446ded.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
     "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
     "../assets/vendor-fkui-vue-9503b2.js": "sha384-3rc5rcRgJM6NI8zdJ+nxUu48RlEaqZFEd3flBxaPO/esXspDReN+0BwyehZGkJOr",
-    "../assets/vendor-fkui-vue-labs-1fea44.js": "sha384-B0M54XmQu2RzlgQjbRawLzlnD1PBojND5tRsQA3ZGTwqJFW8mz8MRBOHKDnyLPJ0",
+    "../assets/vendor-fkui-vue-labs-446ded.js": "sha384-SR+YX+vpszXsQHq3JRkOEmTfk9dOh4hj0oddJuAxPevuz/1gYr2OjFBi5FE8lDiv",
     "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js": "sha384-EfDXAfHkZWGo4Nl44hipgaFlVrbK9+OC7Ttnp4RNo2eCxop6CBrFM1CuU1iy2WEs"
   }
 }
@@ -558,13 +558,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-bd37ef"></div>
+        <div id="example-c7085d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-bd37ef.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-c7085d.js"></script>
     
                 </div>
                 <div>
@@ -606,7 +606,7 @@ interface <span class="hljs-title class_">TableRow</span> {
     <span class="hljs-attr">number</span>: number | string;
 }
 
-<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
+<span class="hljs-keyword">const</span> columns1 = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Text&quot;</span>,
@@ -637,6 +637,9 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;clearingNumber&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
+]);
+
+<span class="hljs-keyword">const</span> columns2 = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Valuta&quot;</span>,
@@ -669,6 +672,9 @@ interface <span class="hljs-title class_">TableRow</span> {
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;epost&quot;</span>,
         <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
     },
+]);
+
+<span class="hljs-keyword">const</span> columns3 = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:organisationsnummer&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Orgnr&quot;</span>,
@@ -769,9 +775,9 @@ interface <span class="hljs-title class_">TableRow</span> {
         Interagerbart element före
     <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;all&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(0, 5)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(5, 10)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns.slice(10)&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns1&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns2&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns3&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Summa: {{ { sum } }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Rows ({{ rows.length }} items):<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
