@@ -1308,8 +1308,8 @@ export interface RenderSlotOptions {
 // @public
 export function renderSlotText(render: Slot | undefined, props?: Record<string, unknown>, options?: Partial<RenderSlotOptions>): string | undefined;
 
-// @public (undocumented)
-export function setInternalKeys<T>(items: T[], key?: keyof T, nestedKey?: keyof T, seenValues?: Set<unknown>): T[];
+// @public
+export function setInternalKeys<T>(items: T[], keyAttribute?: keyof T, expandableAttribute?: keyof T, seenValues?: Set<unknown>): T[];
 
 // @public (undocumented)
 export function setRunningContext(app: App): void;

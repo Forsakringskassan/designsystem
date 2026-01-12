@@ -22,19 +22,30 @@ export function setInternalKey<T>(item: T, value?: string): void {
     });
 }
 
-/** @public */
+/**
+ * Recursively assigns internal keys to items (and optionally to nested item arrays).
+ *
+ * @public
+ * @param items - The array of items to process. Items are mutated in place.
+ * @param keyAttribute - Optional property key on each item whose value should be used as the internal key. If omitted, an internal key is generated.
+ * @param expandableAttribute - Optional property key on each item whose value is expected to be an array of nested items to process recursively.
+ *
+ * @throws Error If an item is missing or has an invalid value for `key` when `key` is provided.
+ * @throws Error If a duplicate `key` value is encountered when `key` is provided.
+ * @returns The same `items` array (with items mutated to include internal keys).
+ */
 export function setInternalKeys<T>(
     items: T[],
-    key?: keyof T,
-    nestedKey?: keyof T,
+    keyAttribute?: keyof T,
+    expandableAttribute?: keyof T,
     seenValues = new Set<unknown>(),
 ): T[] {
-    if (key === undefined) {
+    if (keyAttribute === undefined) {
         return items.map((item) => {
             setInternalKey(item);
 
-            if (nestedKey !== undefined) {
-                const nestedItem = item[nestedKey];
+            if (expandableAttribute !== undefined) {
+                const nestedItem = item[expandableAttribute];
                 if (Array.isArray(nestedItem)) {
                     setInternalKeys(nestedItem);
                 }
@@ -45,8 +56,8 @@ export function setInternalKeys<T>(
     }
 
     return items.map((item, index) => {
-        const value = item[key] as unknown;
-        const keyString = String(key);
+        const value = item[keyAttribute] as unknown;
+        const keyString = String(keyAttribute);
         const invalidValue =
             /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- ok since we only test if the string is empty */
             value === undefined || value === null || String(value).length === 0;
@@ -67,10 +78,15 @@ export function setInternalKeys<T>(
         setInternalKey(item, String(value));
         seenValues.add(value);
 
-        if (nestedKey !== undefined) {
-            const nestedItem = item[nestedKey];
+        if (expandableAttribute !== undefined) {
+            const nestedItem = item[expandableAttribute];
             if (Array.isArray(nestedItem)) {
-                setInternalKeys(nestedItem, key, undefined, seenValues);
+                setInternalKeys(
+                    nestedItem,
+                    keyAttribute,
+                    undefined,
+                    seenValues,
+                );
             }
         }
 
