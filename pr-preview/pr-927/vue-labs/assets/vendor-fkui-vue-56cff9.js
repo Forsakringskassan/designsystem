@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, unref, createCommentVNode, Fragment, createBlock, createApp, resolveComponent, withKeys, createVNode, toDisplayString, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Teleport, normalizeStyle, withDirectives, vShow, Transition, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, debounce, alertScreenReader, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -6884,7 +6884,7 @@ function setInternalKey(item, value) {
   Object.defineProperty(item, internalKey, {
     value: value !== null && value !== void 0 ? value : String(internalIndex++),
     enumerable: false,
-    writable: true
+    writable: false
   });
 }
 function setInternalKeys(items, keyAttribute, expandableAttribute, seenValues = /* @__PURE__ */ new Set()) {
@@ -6893,7 +6893,7 @@ function setInternalKeys(items, keyAttribute, expandableAttribute, seenValues = 
     if (keyAttribute) {
       ensureUniqueKey(keyAttribute, value, index, seenValues);
     }
-    setInternalKey(item, String(value));
+    setInternalKey(item, value);
     if (expandableAttribute !== void 0) {
       const nestedItem = item[expandableAttribute];
       if (Array.isArray(nestedItem)) {

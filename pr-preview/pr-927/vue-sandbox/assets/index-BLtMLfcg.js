@@ -17415,7 +17415,7 @@ function setInternalKey(item, value) {
   Object.defineProperty(item, internalKey, {
     value: value !== null && value !== void 0 ? value : String(internalIndex++),
     enumerable: false,
-    writable: true
+    writable: false
   });
 }
 function setInternalKeys(items, keyAttribute, expandableAttribute, seenValues = /* @__PURE__ */ new Set()) {
@@ -17424,7 +17424,7 @@ function setInternalKeys(items, keyAttribute, expandableAttribute, seenValues = 
     if (keyAttribute) {
       ensureUniqueKey(keyAttribute, value, index, seenValues);
     }
-    setInternalKey(item, String(value));
+    setInternalKey(item, value);
     return item;
   });
 }
