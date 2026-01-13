@@ -11,7 +11,7 @@ describe("`internalKey`", () => {
         const item = {
             name: "foo",
         };
-        setInternalKey(item);
+        setInternalKey(item, undefined);
 
         expect(Object.keys(item)).toMatchInlineSnapshot(`
             [
@@ -44,7 +44,7 @@ describe("`setInternalKey`", () => {
         const internalKey = getInternalKey();
         const items = [{ name: "foo" }, { name: "bar" }];
         for (const item of items) {
-            setInternalKey(item);
+            setInternalKey(item, undefined);
         }
 
         expect(items[0]).toHaveProperty([internalKey]);
