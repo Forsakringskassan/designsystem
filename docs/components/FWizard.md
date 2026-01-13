@@ -135,6 +135,18 @@ defineComponent({
 FWizardExampleAddStep.vue
 ```
 
+## Textnycklar
+
+Läs mer om att {@link translate-text anpassa och översätta text}.
+
+:::api
+translation:FWizard
+:::
+
+:::api
+translation:FWizardStep
+:::
+
 ## Props, Events & Slots
 
 ### FWizard
