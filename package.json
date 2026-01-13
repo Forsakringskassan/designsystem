@@ -98,7 +98,7 @@
     "@html-validate/release-scripts": "7.1.0",
     "@types/estree": "1.0.8",
     "@types/jest": "29.5.14",
-    "@types/lodash": "4.17.21",
+    "@types/lodash": "4.17.23",
     "@types/node": "20.19.28",
     "@vue/server-renderer": "3.5.26",
     "artifact-size-analyzer": "1.2.0",
