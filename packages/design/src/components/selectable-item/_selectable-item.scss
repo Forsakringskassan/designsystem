@@ -1,3 +1,5 @@
+@use "../../core";
+@use "../../core/size";
 @use ".././list/list";
 @use "variables" as *;
 
@@ -41,6 +43,7 @@
 .checkbox {
     &__details {
         display: block;
+        margin-top: core.densify(size.$margin-025);
     }
 
     &__width {
