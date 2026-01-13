@@ -184,7 +184,6 @@ export default defineComponent({
             <slot></slot>
             <template v-if="$slots.details">
                 <span v-if="showDetails === 'always'" class="radio-button__details">
-                    <br />
                     <!-- @slot Slot for details, should only contain short text -->
                     <slot name="details"></slot>
                 </span>
@@ -195,7 +194,6 @@ export default defineComponent({
                     @leave="leave"
                 >
                     <span v-if="value === modelValue" class="radio-button__details">
-                        <br />
                         <!-- @slot Slot for details, should only contain short text-->
                         <slot name="details" :height></slot>
                     </span>
