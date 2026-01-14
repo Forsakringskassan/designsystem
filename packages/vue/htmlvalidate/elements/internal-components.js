@@ -204,6 +204,13 @@ module.exports = defineMetadata({
             anchor: {
                 required: true,
             },
+            arrowAnchor: {
+                required: false,
+            },
+            layout: {
+                required: true,
+                enum: ["f-table", "f-interactive-table"],
+            },
         },
     },
 
