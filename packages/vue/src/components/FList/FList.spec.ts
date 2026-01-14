@@ -515,7 +515,7 @@ describe("`keyAttribute`", () => {
                 },
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Expected each item to have key [id] with unique value but encountered duplicate of "b" in item index 2."`,
+            `"Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2."`,
         );
     });
 

@@ -1,5 +1,5 @@
 import { ref, toValue } from "vue";
-import { setInternalKeys } from "@fkui/vue";
+import { setItemIdentifiers } from "@fkui/vue";
 import { flushPromises } from "@vue/test-utils";
 import { useSelectable } from "./use-selectable";
 
@@ -11,7 +11,7 @@ interface Row {
 describe("selectableRowState(row)", () => {
     it("should return `true` when selected row", () => {
         const rows: Row[] = [{ id: 1 }, { id: 2 }];
-        setInternalKeys(rows);
+        setItemIdentifiers(rows);
         const selectedRows = ref([rows[1]]);
 
         const { selectableRowState } = useSelectable({
@@ -25,7 +25,7 @@ describe("selectableRowState(row)", () => {
 
     it("should return `false` when not selected row", () => {
         const rows: Row[] = [{ id: 1 }, { id: 2 }];
-        setInternalKeys(rows);
+        setItemIdentifiers(rows);
         const selectedRows = ref([rows[0]]);
 
         const { selectableRowState } = useSelectable({
@@ -42,7 +42,7 @@ describe("single select", () => {
     describe("toggleSelectableRow(row", () => {
         it("should select row when nothing selected", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([]);
 
             const { toggleSelectableRow, selectableRowState } = useSelectable({
@@ -60,7 +60,7 @@ describe("single select", () => {
 
         it("should select row and unselect previous selected row", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([rows[0]]);
 
             const { toggleSelectableRow, selectableRowState } = useSelectable({
@@ -92,7 +92,7 @@ describe("multi select", () => {
 
         it("should return `indeterminate` when some rows selected", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([rows[1]]);
 
             const { selectableHeaderState } = useSelectable({
@@ -106,7 +106,7 @@ describe("multi select", () => {
 
         it("should return `true` when all rows selected", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([...rows]);
 
             const { selectableHeaderState } = useSelectable({
@@ -122,7 +122,7 @@ describe("multi select", () => {
     describe("toggleSelectableHeader()", () => {
         it("should trigger checked state and select all rows when unchecked state", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([]);
 
             const { selectableHeaderState, toggleSelectableHeader } =
@@ -140,7 +140,7 @@ describe("multi select", () => {
 
         it("should trigger checked state and select all rows when indeterminate state", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([rows[1]]);
 
             const { selectableHeaderState, toggleSelectableHeader } =
@@ -158,7 +158,7 @@ describe("multi select", () => {
 
         it("should trigger unchecked state and unselect all rows when checked state", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([...rows]);
 
             const { selectableHeaderState, toggleSelectableHeader } =
@@ -178,7 +178,7 @@ describe("multi select", () => {
     describe("toggleSelectableRow(row)", () => {
         it("should get header state `indeterminate` and row state `checked` when nothing selected", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([]);
 
             const {
@@ -198,7 +198,7 @@ describe("multi select", () => {
 
         it("should get header state checked and all rows checked when selecting row by row", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([]);
 
             const {
@@ -220,7 +220,7 @@ describe("multi select", () => {
 
         it("should get header state `indeterminate` and row unchecked when all selected", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setInternalKeys(rows);
+            setItemIdentifiers(rows);
             const selectedRows = ref([...rows]);
 
             const {
@@ -245,7 +245,7 @@ describe("multi select", () => {
 describe("7.7 Dataset change resets selection", () => {
     it("should clear all selected rows and bulk checkbox when a row is added", async () => {
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
-        setInternalKeys(rows.value);
+        setItemIdentifiers(rows.value);
         const selectedRows = ref([toValue(rows)[0]]);
 
         const { selectableRowState, selectableHeaderState } = useSelectable({
@@ -258,7 +258,7 @@ describe("7.7 Dataset change resets selection", () => {
         expect(selectableRowState(toValue(rows)[0])).toBeTruthy();
 
         rows.value.push({ id: 3 });
-        setInternalKeys(rows.value);
+        setItemIdentifiers(rows.value);
         await flushPromises();
 
         expect(selectedRows.value).toEqual([]);
@@ -268,7 +268,7 @@ describe("7.7 Dataset change resets selection", () => {
 
     it("should clear all selected rows and bulk checkbox when a row is removed", async () => {
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
-        setInternalKeys(rows.value);
+        setItemIdentifiers(rows.value);
         const selectedRows = ref([toValue(rows)[0]]);
 
         const { selectableRowState, selectableHeaderState } = useSelectable({
@@ -290,7 +290,7 @@ describe("7.7 Dataset change resets selection", () => {
 
     it("should clear all selected rows and bulk checkbox when rows are replaced", async () => {
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
-        setInternalKeys(rows.value);
+        setItemIdentifiers(rows.value);
         const selectedRows = ref([toValue(rows)[0]]);
 
         const { selectableRowState, selectableHeaderState } = useSelectable({
@@ -303,7 +303,7 @@ describe("7.7 Dataset change resets selection", () => {
         expect(selectableRowState(toValue(rows)[0])).toBeTruthy();
 
         rows.value = [{ id: 2 }, { id: 3 }];
-        setInternalKeys(rows.value);
+        setItemIdentifiers(rows.value);
         await flushPromises();
 
         expect(selectedRows.value).toEqual([]);
@@ -316,7 +316,7 @@ describe("7.7 Dataset change resets selection", () => {
             { id: 1, value: "foo" },
             { id: 2, value: "baz" },
         ]);
-        setInternalKeys(rows.value);
+        setItemIdentifiers(rows.value);
         const selectedRows = ref([toValue(rows)[0]]);
         const { selectableRowState, selectableHeaderState } = useSelectable({
             selectable: "multi",
@@ -339,7 +339,7 @@ describe("7.7 Dataset change resets selection", () => {
             { id: 1, value: "foo" },
             { id: 2, value: "baz" },
         ]);
-        setInternalKeys(rows.value);
+        setItemIdentifiers(rows.value);
         const selectedRows = ref([toValue(rows)[0]]);
 
         const { selectableRowState, selectableHeaderState } = useSelectable({
@@ -353,7 +353,7 @@ describe("7.7 Dataset change resets selection", () => {
         expect(selectableRowState(toValue(rows)[1])).toBeFalsy();
 
         const newRows = [...rows.value].reverse();
-        setInternalKeys(newRows);
+        setItemIdentifiers(newRows);
         rows.value = newRows;
         await flushPromises();
 

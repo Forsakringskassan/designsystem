@@ -15,7 +15,7 @@ import {
     useTemplateRef,
 } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
-import { FSortFilterDatasetInjected, setInternalKeys, useSlotUtils } from "@fkui/vue";
+import { type ItemIdentifier, FSortFilterDatasetInjected, setItemIdentifiers, useSlotUtils } from "@fkui/vue";
 import { activateCell, getMetaRows, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
@@ -78,8 +78,8 @@ defineSlots<{
 
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
-const expandedKeys: Ref<string[]> = ref([]);
-const keyedRows = computed(() => setInternalKeys(rows, keyAttribute, expandableAttribute));
+const expandedKeys: Ref<ItemIdentifier[]> = ref([]);
+const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttribute));
 const metaRows = computed(
     (): Array<MetaRow<T>> => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute),
 );
@@ -131,7 +131,7 @@ async function stopEditHandler(
 
 provide(stopEditKey, stopEditHandler);
 
-function onToggleExpanded(key: string): void {
+function onToggleExpanded(key: ItemIdentifier): void {
     const index = expandedKeys.value.indexOf(key);
 
     if (index < 0) {

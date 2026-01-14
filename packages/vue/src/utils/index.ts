@@ -35,4 +35,12 @@ export {
     type Rect,
     getAbsolutePosition,
 } from "./get-absolute-position";
-export { getInternalKey, setInternalKeys } from "./internal-key";
+export {
+    type ItemIdentifier,
+    findItemIdentifier,
+    getItemIdentifier,
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- exported for backwards compatibility */
+    getLegacyInternalKey,
+    setItemIdentifier,
+    setItemIdentifiers,
+} from "./item-identifier";

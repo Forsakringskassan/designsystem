@@ -1,5 +1,5 @@
 import { nextTick, toValue } from "vue";
-import { getInternalKey } from "@fkui/vue";
+import { type ItemIdentifier, getItemIdentifier } from "@fkui/vue";
 import { type MetaRow } from "./MetaRow";
 import { type FTableCellApi, tableCellApiSymbol } from "./f-table-api";
 import { walk } from "./walk";
@@ -8,8 +8,6 @@ interface TableCellIndex {
     row: number;
     cell: number;
 }
-
-const internalKey = getInternalKey();
 
 const navKeys = [
     "ArrowLeft",
@@ -22,22 +20,21 @@ const navKeys = [
 
 let prevCellIndex: number | undefined = undefined;
 
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
-function rowKey<T>(row: T): string {
-    return String(row[internalKey]);
+function rowKey(row: unknown): ItemIdentifier {
+    return getItemIdentifier(row);
 }
 
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function getRowIndexes<T, K extends keyof T = keyof T>(
     rows: T[],
     expandableAttribute?: K,
-): string[] {
-    const array: string[] = [];
+): ItemIdentifier[] {
+    const array: ItemIdentifier[] = [];
 
     walk(
         rows,
         (row) => {
-            array.push(String(row[internalKey]));
+            array.push(getItemIdentifier(row));
             return true;
         },
         expandableAttribute,
@@ -202,7 +199,7 @@ function navigate(
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 export function getMetaRows<T, K extends keyof T = keyof T>(
     keyedRows: T[],
-    expandedKeys: string[],
+    expandedKeys: ItemIdentifier[],
     expandableAttribute?: K,
 ): Array<MetaRow<T>> {
     const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
