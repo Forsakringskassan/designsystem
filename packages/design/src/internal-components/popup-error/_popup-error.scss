@@ -59,10 +59,19 @@
     &--arrow {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 0.5em 10px;
         background: $popuperror-color-border-default;
         line-height: 24px;
         position: relative;
+
+        .popup-error__icon {
+            margin-right: 5px;
+            padding: 0;
+            color: var(--fkds-color-feedback-text-negative);
+            min-height: var(--f-icon-size-medium);
+            min-width: var(--f-icon-size-medium);
+        }
 
         .popup-error__button {
             margin: 0;
