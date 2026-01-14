@@ -17416,7 +17416,8 @@ function getItemIdentifier(item, fatal) {
   }
 }
 function setItemIdentifier(item, value) {
-  if (getItemIdentifier(item)) {
+  const existing = getItemIdentifier(item);
+  if (existing !== void 0) {
     return;
   }
   Object.defineProperty(item, sym, {
