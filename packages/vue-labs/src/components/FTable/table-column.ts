@@ -206,6 +206,7 @@ export interface NormalizedTableColumnText<
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnText<T, K>;
+        activeErrorAnchor?: HTMLElement;
     }>;
     label(this: void, row: T): string;
     value(this: void, row: T): string;
@@ -254,6 +255,7 @@ export interface NormalizedTableColumnNumber<
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnText<T, K>;
+        activeErrorAnchor?: HTMLElement;
     }>;
     label(this: void, row: T): string;
     value(this: void, row: T): string | number;

@@ -27,6 +27,7 @@ import { isFTableCellApi, tableCellApiSymbol } from "./f-table-api";
 import { getBodyRowCount } from "./get-body-row-count";
 import { stopEditKey } from "./start-stop-edit";
 import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
+import { usePopupError } from "./use-popup-error";
 import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
 
@@ -261,6 +262,8 @@ function isAriaSelected(level: number = 1, row: T): boolean {
     return level < 2 && selectableRowState(row);
 }
 
+const { onPopupError, onClosePopupError, activeErrorAnchor } = usePopupError();
+
 const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggleSelectableRow } = useSelectable({
     selectable,
     selectedRows,
@@ -367,6 +370,9 @@ onMounted(() => {
                             :ref="bindCellApiRef"
                             :row
                             :column
+                            :active-error-anchor
+                            @close-error="onClosePopupError"
+                            @on-error="onPopupError"
                         ></component>
                         <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
                     </template>

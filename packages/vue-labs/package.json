@@ -96,5 +96,8 @@
   "engines": {
     "node": ">= 20",
     "npm": ">= 7"
+  },
+  "dependencies": {
+    "@vueuse/core": "12.8.2"
   }
 }

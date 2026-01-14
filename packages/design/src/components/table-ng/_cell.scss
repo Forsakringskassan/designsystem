@@ -65,9 +65,6 @@ $horizontal-padding: size.$padding-050;
             .table-ng__editable {
                 @extend %text-error-state;
             }
-            .table-ng__editable__icon {
-                visibility: visible;
-            }
         }
 
         &.table-ng__cell--error:hover:not(:focus-within) {
@@ -190,6 +187,7 @@ $horizontal-padding: size.$padding-050;
         visibility: hidden;
         margin-left: 1rem;
         flex: none;
+        color: var(--fkds-color-action-text-primary-default);
     }
 }
 
@@ -198,6 +196,5 @@ $horizontal-padding: size.$padding-050;
 }
 
 %text-error-state {
-    color: var(--fkds-color-feedback-text-negative);
     border-bottom-color: var(--fkds-color-feedback-text-negative);
 }

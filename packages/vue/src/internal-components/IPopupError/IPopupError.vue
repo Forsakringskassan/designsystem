@@ -37,7 +37,7 @@ export default defineComponent({
             default: undefined,
         },
         /**
-         * DOM element to align arrorw with.
+         * DOM element to align arrow with.
          */
         arrowAnchor: {
             type: HTMLElement as PropType<HTMLElement | null | undefined>,
