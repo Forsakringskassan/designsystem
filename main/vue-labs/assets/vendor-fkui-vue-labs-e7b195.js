@@ -1,7 +1,7 @@
 // dist/esm/index.esm.js
 import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, normalizeClass, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, ref, inject, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, debounce, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
-import { getInternalKey, FIcon, IFlex, IFlexItem, useTranslate, IComboboxDropdown, useSlotUtils, setInternalKeys, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, IComboboxDropdown, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 var es_iterator_constructor = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
@@ -1894,16 +1894,15 @@ function walk(array, visit, childKey, level = 1) {
     }
   }
 }
-var internalKey$1 = getInternalKey();
 var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
 var prevCellIndex = void 0;
 function rowKey$1(row) {
-  return String(row[internalKey$1]);
+  return getItemIdentifier(row);
 }
 function getRowIndexes(rows, expandableAttribute) {
   const array = [];
   walk(rows, (row) => {
-    array.push(String(row[internalKey$1]));
+    array.push(getItemIdentifier(row));
     return true;
   }, expandableAttribute);
   return array;
@@ -3954,9 +3953,9 @@ function requireEs_iterator_some() {
   return es_iterator_some;
 }
 requireEs_iterator_some();
-var internalKey = getInternalKey();
 function rowKey(row) {
-  return String(row[internalKey]);
+  var _findItemIdentifier;
+  return (_findItemIdentifier = findItemIdentifier(row)) !== null && _findItemIdentifier !== void 0 ? _findItemIdentifier : "";
 }
 function useSelectable(options) {
   const {
@@ -4211,7 +4210,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     } = useSlotUtils();
     const tableRef = useTemplateRef("table");
     const expandedKeys = ref([]);
-    const keyedRows = computed(() => setInternalKeys(__props.rows, __props.keyAttribute, __props.expandableAttribute));
+    const keyedRows = computed(() => setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute));
     const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
     const isTreegrid = computed(() => Boolean(__props.expandableAttribute));
     const role = computed(() => isTreegrid.value ? "treegrid" : "grid");

@@ -232,16 +232,16 @@ function requireIsCallable() {
   };
   return isCallable;
 }
-var isObject$1;
+var isObject$2;
 var hasRequiredIsObject$1;
 function requireIsObject$1() {
-  if (hasRequiredIsObject$1) return isObject$1;
+  if (hasRequiredIsObject$1) return isObject$2;
   hasRequiredIsObject$1 = 1;
   var isCallable2 = requireIsCallable();
-  isObject$1 = function(it) {
+  isObject$2 = function(it) {
     return typeof it == "object" ? it !== null : isCallable2(it);
   };
-  return isObject$1;
+  return isObject$2;
 }
 var getBuiltIn;
 var hasRequiredGetBuiltIn;
@@ -6872,39 +6872,62 @@ function requireEs_set_union_v2() {
   return es_set_union_v2;
 }
 requireEs_set_union_v2();
-var internalKey = /* @__PURE__ */ Symbol("internal-key");
+var sym = /* @__PURE__ */ Symbol("item-identifier");
 var internalIndex = 0;
-function getInternalKey() {
-  return internalKey;
+function isObject$1(value) {
+  return Boolean(value && typeof value === "object");
 }
-function setInternalKey(item, value) {
-  if (item[internalKey]) {
+function getLegacyInternalKey() {
+  return sym;
+}
+function findItemIdentifier(item) {
+  if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
+    return item[sym];
+  } else {
+    return void 0;
+  }
+}
+function getItemIdentifier(item) {
+  const identifier = findItemIdentifier(item);
+  if (identifier !== void 0) {
+    return identifier;
+  } else {
+    throw new TypeError("Expected item to have an internal key but no key was set");
+  }
+}
+function setItemIdentifier(item, value) {
+  const existing = findItemIdentifier(item);
+  if (existing !== void 0) {
     return;
   }
-  Object.defineProperty(item, internalKey, {
-    value: value !== null && value !== void 0 ? value : String(internalIndex++),
+  Object.defineProperty(item, sym, {
+    value: value !== null && value !== void 0 ? value : internalIndex++,
     enumerable: false,
     writable: false
   });
 }
-function setInternalKeys(items, keyAttribute, expandableAttribute, seenValues = /* @__PURE__ */ new Set()) {
-  return items.map((item, index) => {
-    const value = keyAttribute ? item[keyAttribute] : void 0;
-    if (keyAttribute) {
-      ensureUniqueKey(keyAttribute, value, index, seenValues);
-    }
-    setInternalKey(item, value);
-    if (expandableAttribute !== void 0) {
-      const nestedItem = item[expandableAttribute];
-      if (Array.isArray(nestedItem)) {
-        setInternalKeys(nestedItem, keyAttribute, expandableAttribute, seenValues);
+function setItemIdentifiers(items, attribute, expandableAttribute) {
+  const seenValues = /* @__PURE__ */ new Set();
+  const process = (items2) => {
+    return items2.map((item, index) => {
+      const value = attribute ? item[attribute] : void 0;
+      if (attribute) {
+        ensureUniqueKey(attribute, value, index, seenValues);
       }
-    }
-    return item;
-  });
+      setItemIdentifier(item, value);
+      if (expandableAttribute !== void 0) {
+        const nestedItem = item[expandableAttribute];
+        if (Array.isArray(nestedItem)) {
+          process(nestedItem);
+        }
+      }
+      return item;
+    });
+  };
+  return process(items);
 }
-function ensureUniqueKey(keyAttribute, value, index, seenValues) {
-  const keyString = String(keyAttribute);
+function ensureUniqueKey(attribute, value, index, seenValues) {
+  const keyString = String(attribute);
   const invalidValue = (
     // eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt
     value === void 0 || value === null || String(value).length === 0
@@ -6915,7 +6938,7 @@ function ensureUniqueKey(keyAttribute, value, index, seenValues) {
   if (seenValues.has(value)) {
     throw new Error(
       /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
-      `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
+      `Expected each item to have identifier [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
     );
   }
   seenValues.add(value);
@@ -14741,7 +14764,6 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
       registerCallbackOnSort,
       registerCallbackOnMount
     } = FSortFilterDatasetInjected();
-    const internalKey2 = getInternalKey();
     const columns = ref([]);
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
@@ -14772,9 +14794,9 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
         keyAttribute
       } = props;
       if (keyAttribute) {
-        return setInternalKeys(props.rows, keyAttribute);
+        return setItemIdentifiers(props.rows, keyAttribute);
       }
-      return setInternalKeys(props.rows);
+      return setItemIdentifiers(props.rows);
     });
     provide("addColumn", (column) => {
       if (column.type === FTableColumnType.ACTION) {
@@ -14793,8 +14815,8 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
     });
-    function rowKey(item) {
-      return String(item[internalKey2]);
+    function rowKey(row) {
+      return findItemIdentifier(row);
     }
     function columnClasses(column) {
       const classes = ["table__column", `table__column--${column.type}`, column.size];
@@ -17406,7 +17428,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       registerCallbackBeforeItemDelete,
       setNestedKey
     } = ActivateItemInjected();
-    const internalKey2 = getInternalKey();
+    const internalKey = getLegacyInternalKey();
     const activeRow = ref(void 0);
     const columns = ref([]);
     const selectedRows = ref([]);
@@ -17424,7 +17446,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       expandableRows,
       hasExpandableContent,
       getExpandedIndex
-    } = useExpandableTable(__props.expandableAttribute, internalKey2, __props.expandableDescribedby, emit, slots);
+    } = useExpandableTable(__props.expandableAttribute, internalKey, __props.expandableDescribedby, emit, slots);
     const tbody = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
@@ -17477,9 +17499,9 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
     });
     const internalRows = computed(() => {
       if (isExpandableTable) {
-        return setInternalKeys(__props.rows, __props.keyAttribute, __props.expandableAttribute);
+        return setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute);
       }
-      return setInternalKeys(__props.rows, __props.keyAttribute);
+      return setItemIdentifiers(__props.rows, __props.keyAttribute);
     });
     provide("addColumn", (column) => {
       columns.value = addColumn(columns.value, column);
@@ -17541,10 +17563,10 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       if (!__props.showActive) {
         return false;
       }
-      return itemEquals(row, activeRow.value, internalKey2);
+      return itemEquals(row, activeRow.value, internalKey);
     }
     function isSelected(row) {
-      return includeItem(row, selectedRows.value, internalKey2);
+      return includeItem(row, selectedRows.value, internalKey);
     }
     function onKeydown$1(event, index) {
       onKeydown({
@@ -17568,7 +17590,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       if (isExpandableTable.value && hasExpandableContent(row)) {
         toggleExpanded(row);
       }
-      if (!itemEquals(row, activeRow.value, internalKey2)) {
+      if (!itemEquals(row, activeRow.value, internalKey)) {
         emit("change", row);
         setActiveRow(row);
         if (tr2) {
@@ -17587,8 +17609,8 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
         selectedRows.value = [row];
         emit("select", row);
       } else {
-        if (includeItem(row, selectedRows.value, internalKey2)) {
-          selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey2));
+        if (includeItem(row, selectedRows.value, internalKey)) {
+          selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
           emit("unselect", row);
         } else {
           selectedRows.value.push(row);
@@ -17604,7 +17626,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
         return;
       }
       selectedRows.value = __props.modelValue.filter((row) => {
-        return includeItem(row, internalRows.value, internalKey2);
+        return includeItem(row, internalRows.value, internalKey);
       });
     }
     function updateVModelWithSelectedRows() {
@@ -17622,7 +17644,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
     }
     function rowKey(row) {
-      return String(row[internalKey2]);
+      return String(row[internalKey]);
     }
     function columnClasses(column) {
       const sortable = column.sortable ? ["table__column--sortable"] : [];
@@ -17705,7 +17727,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
     function updateActiveRowFromVModel() {
       if (__props.active === void 0) {
         setActiveRow(void 0);
-      } else if (!itemEquals(__props.active, activeRow.value, internalKey2)) {
+      } else if (!itemEquals(__props.active, activeRow.value, internalKey)) {
         setActiveRow(__props.active);
       }
     }
@@ -18425,7 +18447,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       registerCallbackAfterItemAdd,
       registerCallbackBeforeItemDelete
     } = ActivateItemInjected();
-    const internalKey2 = getInternalKey();
+    const internalKey = getLegacyInternalKey();
     const selectedItems = ref([]);
     const activeItem = ref(void 0);
     const ulElement = useTemplateRef("ulElement");
@@ -18436,10 +18458,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       const {
         keyAttribute
       } = props;
-      if (keyAttribute) {
-        return setInternalKeys(props.items, keyAttribute);
-      }
-      return setInternalKeys(props.items);
+      return setItemIdentifiers(props.items, keyAttribute);
     });
     watch(() => props.items, () => {
       updateSelectedItemsFromVModel();
@@ -18471,11 +18490,11 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       const element = getElementFromVueRef(ulElement.value);
       return Array.from(element.children);
     }
-    function itemKey(item) {
-      return String(item[internalKey2]);
+    function itemKey(row) {
+      return findItemIdentifier(row);
     }
     function isSelected(item) {
-      return includeItem(item, selectedItems.value, internalKey2);
+      return includeItem(item, selectedItems.value, internalKey);
     }
     function itemClasses(item) {
       return {
@@ -18484,8 +18503,8 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       };
     }
     function onSelect(item) {
-      if (includeItem(item, selectedItems.value, internalKey2)) {
-        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, internalKey2));
+      if (includeItem(item, selectedItems.value, internalKey)) {
+        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, internalKey));
         emit("unselect", item);
       } else {
         selectedItems.value.push(item);
@@ -18496,7 +18515,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     }
     function setActiveItem(item) {
       emit("click", item);
-      if (!itemEquals(item, activeItem.value, internalKey2)) {
+      if (!itemEquals(item, activeItem.value, internalKey)) {
         emit("change", item);
         activeItem.value = item;
         emit("update:active", activeItem.value);
@@ -18513,7 +18532,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     function updateSelectedItemsFromVModel() {
       if (Array.isArray(props.modelValue)) {
         selectedItems.value = props.modelValue.filter((item) => {
-          return includeItem(item, internalItems.value, internalKey2);
+          return includeItem(item, internalItems.value, internalKey);
         });
       } else {
         selectedItems.value = [];
@@ -18522,7 +18541,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     function updateActiveItemFromVModel() {
       if (props.active === void 0) {
         activeItem.value = void 0;
-      } else if (!itemEquals(props.active, activeItem.value, internalKey2)) {
+      } else if (!itemEquals(props.active, activeItem.value, internalKey)) {
         activeItem.value = props.active;
       }
     }
@@ -18557,10 +18576,10 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       }
     }
     function getAriaLabelledbyId(item) {
-      return `${props.elementId}_${itemKey(item)}`;
+      return `${props.elementId}_${String(itemKey(item))}`;
     }
     function getItemId(item) {
-      return `${props.elementId}_item_${itemKey(item)}`;
+      return `${props.elementId}_item_${String(itemKey(item))}`;
     }
     function onItemFocus(event) {
       if (event?.target) {
@@ -18592,7 +18611,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       }
     }
     function isActive(item) {
-      return props.checkbox && itemEquals(activeItem.value, item, internalKey2);
+      return props.checkbox && itemEquals(activeItem.value, item, internalKey);
     }
     return (_ctx, _cache) => {
       return !__props.selectable ? (openBlock(), createElementBlock("ul", _hoisted_1$f, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalItems.value, (item) => {
@@ -21220,6 +21239,7 @@ export {
   dispatchComponentValidityEvent,
   findElementFromVueRef,
   findHTMLElementFromVueRef,
+  findItemIdentifier,
   findParentByName,
   focus,
   formModal,
@@ -21231,7 +21251,8 @@ export {
   getHTMLElementFromVueRef,
   getHTMLElementsFromVueRef,
   getInputElement,
-  getInternalKey,
+  getItemIdentifier,
+  getLegacyInternalKey,
   getParentByName,
   getSortedHTMLElementsFromVueRef,
   handleKeyboardFocusNavigation,
@@ -21252,7 +21273,8 @@ export {
   refIsVueArray,
   registerLayout,
   renderSlotText,
-  setInternalKeys,
+  setItemIdentifier,
+  setItemIdentifiers,
   setRunningContext,
   tableScrollClasses,
   tooltipAttachTo,

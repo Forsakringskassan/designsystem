@@ -57,9 +57,9 @@ const isDate = (val) => toTypeString(val) === "[object Date]";
 const isFunction = (val) => typeof val === "function";
 const isString = (val) => typeof val === "string";
 const isSymbol$1 = (val) => typeof val === "symbol";
-const isObject$2 = (val) => val !== null && typeof val === "object";
+const isObject$3 = (val) => val !== null && typeof val === "object";
 const isPromise = (val) => {
-  return (isObject$2(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
+  return (isObject$3(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
 };
 const objectToString = Object.prototype.toString;
 const toTypeString = (value) => objectToString.call(value);
@@ -137,7 +137,7 @@ function normalizeStyle(value) {
       }
     }
     return res;
-  } else if (isString(value) || isObject$2(value)) {
+  } else if (isString(value) || isObject$3(value)) {
     return value;
   }
 }
@@ -165,7 +165,7 @@ function normalizeClass(value) {
         res += normalized + " ";
       }
     }
-  } else if (isObject$2(value)) {
+  } else if (isObject$3(value)) {
     for (const name in value) {
       if (value[name]) {
         res += name + " ";
@@ -215,8 +215,8 @@ function looseEqual(a, b) {
   if (aValidType || bValidType) {
     return aValidType && bValidType ? looseCompareArrays(a, b) : false;
   }
-  aValidType = isObject$2(a);
-  bValidType = isObject$2(b);
+  aValidType = isObject$3(a);
+  bValidType = isObject$3(b);
   if (aValidType || bValidType) {
     if (!aValidType || !bValidType) {
       return false;
@@ -243,7 +243,7 @@ const isRef$1 = (val) => {
   return !!(val && val["__v_isRef"] === true);
 };
 const toDisplayString = (val) => {
-  return isString(val) ? val : val == null ? "" : isArray$2(val) || isObject$2(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+  return isString(val) ? val : val == null ? "" : isArray$2(val) || isObject$3(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
 };
 const replacer = (_key, val) => {
   if (isRef$1(val)) {
@@ -264,7 +264,7 @@ const replacer = (_key, val) => {
     };
   } else if (isSymbol$1(val)) {
     return stringifySymbol(val);
-  } else if (isObject$2(val) && !isArray$2(val) && !isPlainObject(val)) {
+  } else if (isObject$3(val) && !isArray$2(val) && !isPlainObject(val)) {
     return String(val);
   }
   return val;
@@ -1121,9 +1121,9 @@ class BaseReactiveHandler {
     }
     if (isRef(res)) {
       const value = targetIsArray && isIntegerKey(key) ? res : res.value;
-      return isReadonly2 && isObject$2(value) ? readonly(value) : value;
+      return isReadonly2 && isObject$3(value) ? readonly(value) : value;
     }
-    if (isObject$2(res)) {
+    if (isObject$3(res)) {
       return isReadonly2 ? readonly(res) : reactive(res);
     }
     return res;
@@ -1467,7 +1467,7 @@ function shallowReadonly(target) {
   );
 }
 function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
-  if (!isObject$2(target)) {
+  if (!isObject$3(target)) {
     return target;
   }
   if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) {
@@ -1513,8 +1513,8 @@ function markRaw(value) {
   }
   return value;
 }
-const toReactive = (value) => isObject$2(value) ? reactive(value) : value;
-const toReadonly = (value) => isObject$2(value) ? readonly(value) : value;
+const toReactive = (value) => isObject$3(value) ? reactive(value) : value;
+const toReadonly = (value) => isObject$3(value) ? readonly(value) : value;
 function isRef(r) {
   return r ? r["__v_isRef"] === true : false;
 }
@@ -1633,7 +1633,7 @@ function toRef(source, key, defaultValue) {
     return source;
   } else if (isFunction(source)) {
     return new GetterRefImpl(source);
-  } else if (isObject$2(source) && arguments.length > 1) {
+  } else if (isObject$3(source) && arguments.length > 1) {
     return propertyToRef(source, key, defaultValue);
   } else {
     return ref(source);
@@ -1848,7 +1848,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
   return watchHandle;
 }
 function traverse(value, depth = Infinity, seen) {
-  if (depth <= 0 || !isObject$2(value) || value["__v_skip"]) {
+  if (depth <= 0 || !isObject$3(value) || value["__v_skip"]) {
     return value;
   }
   seen = seen || /* @__PURE__ */ new Map();
@@ -3355,7 +3355,7 @@ function renderList(source, renderItem, cache, index) {
     for (let i = 0; i < source; i++) {
       ret[i] = renderItem(i + 1, i, void 0, cached);
     }
-  } else if (isObject$2(source)) {
+  } else if (isObject$3(source)) {
     if (source[Symbol.iterator]) {
       ret = Array.from(
         source,
@@ -3638,7 +3638,7 @@ function applyOptions(instance) {
   }
   if (dataOptions) {
     const data = dataOptions.call(publicThis, publicThis);
-    if (!isObject$2(data)) ;
+    if (!isObject$3(data)) ;
     else {
       instance.data = reactive(data);
     }
@@ -3727,7 +3727,7 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) 
   for (const key in injectOptions) {
     const opt = injectOptions[key];
     let injected;
-    if (isObject$2(opt)) {
+    if (isObject$3(opt)) {
       if ("default" in opt) {
         injected = inject(
           opt.from || key,
@@ -3772,7 +3772,7 @@ function createWatcher(raw, ctx, publicThis, key) {
     {
       watch(getter, raw.bind(publicThis));
     }
-  } else if (isObject$2(raw)) {
+  } else if (isObject$3(raw)) {
     if (isArray$2(raw)) {
       raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
     } else {
@@ -3808,7 +3808,7 @@ function resolveMergedOptions(instance) {
     }
     mergeOptions$1(resolved, base, optionMergeStrategies);
   }
-  if (isObject$2(base)) {
+  if (isObject$3(base)) {
     cache.set(base, resolved);
   }
   return resolved;
@@ -3946,7 +3946,7 @@ function createAppAPI(render2, hydrate) {
     if (!isFunction(rootComponent)) {
       rootComponent = extend({}, rootComponent);
     }
-    if (rootProps != null && !isObject$2(rootProps)) {
+    if (rootProps != null && !isObject$3(rootProps)) {
       rootProps = null;
     }
     const context = createAppContext();
@@ -4125,7 +4125,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject$2(comp)) {
+    if (isObject$3(comp)) {
       cache.set(comp, null);
     }
     return null;
@@ -4135,7 +4135,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
   } else {
     extend(normalized, raw);
   }
-  if (isObject$2(comp)) {
+  if (isObject$3(comp)) {
     cache.set(comp, normalized);
   }
   return normalized;
@@ -4564,7 +4564,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject$2(comp)) {
+    if (isObject$3(comp)) {
       cache.set(comp, EMPTY_ARR);
     }
     return EMPTY_ARR;
@@ -4614,7 +4614,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   const res = [normalized, needCastKeys];
-  if (isObject$2(comp)) {
+  if (isObject$3(comp)) {
     cache.set(comp, res);
   }
   return res;
@@ -6244,14 +6244,14 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
     if (klass && !isString(klass)) {
       props.class = normalizeClass(klass);
     }
-    if (isObject$2(style)) {
+    if (isObject$3(style)) {
       if (isProxy(style) && !isArray$2(style)) {
         style = extend({}, style);
       }
       props.style = normalizeStyle(style);
     }
   }
-  const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$2(type) ? 4 : isFunction(type) ? 2 : 0;
+  const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$3(type) ? 4 : isFunction(type) ? 2 : 0;
   return createBaseVNode(
     type,
     props,
@@ -6613,7 +6613,7 @@ function handleSetupResult(instance, setupResult, isSSR) {
     } else {
       instance.render = setupResult;
     }
-  } else if (isObject$2(setupResult)) {
+  } else if (isObject$3(setupResult)) {
     instance.setupState = proxyRefs(setupResult);
   } else ;
   finishComponentSetup(instance);
@@ -6710,7 +6710,7 @@ function h(type, propsOrChildren, children) {
     setBlockTracking(-1);
     const l = arguments.length;
     if (l === 2) {
-      if (isObject$2(propsOrChildren) && !isArray$2(propsOrChildren)) {
+      if (isObject$3(propsOrChildren) && !isArray$2(propsOrChildren)) {
         if (isVNode(propsOrChildren)) {
           return createVNode(type, null, [propsOrChildren]);
         }
@@ -6971,7 +6971,7 @@ function resolveTransitionProps(rawProps) {
 function normalizeDuration(duration) {
   if (duration == null) {
     return null;
-  } else if (isObject$2(duration)) {
+  } else if (isObject$3(duration)) {
     return [NumberOf(duration.enter), NumberOf(duration.leave)];
   } else {
     const n = NumberOf(duration);
@@ -9260,7 +9260,7 @@ function scrollToSlow(element, duration, offset2 = 0) {
     }, interval);
   });
 }
-const sym = /* @__PURE__ */ Symbol("focus-stack");
+const sym$1 = /* @__PURE__ */ Symbol("focus-stack");
 let _stackHandleCounter = 0;
 const _focusElementStack = [];
 const TABBABLE_ELEMENT_SELECTOR = /* @__PURE__ */ [
@@ -9321,7 +9321,7 @@ function pushFocus(element) {
   };
   _focusElementStack.push(stackFrame);
   focus$1(element);
-  return { [sym]: stackFrame.id };
+  return { [sym$1]: stackFrame.id };
 }
 function popFocus(handle, options = {}) {
   const { restoreFocus = true } = options;
@@ -9333,8 +9333,8 @@ function popFocus(handle, options = {}) {
     }
   }
   const top = _focusElementStack.pop();
-  if (top?.id !== handle[sym]) {
-    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym])}`;
+  if (top?.id !== handle[sym$1]) {
+    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym$1])}`;
     {
       console.error(outOfOrderErrorMsg);
       return;
@@ -10746,16 +10746,16 @@ function requireIsCallable() {
   };
   return isCallable;
 }
-var isObject$1;
+var isObject$2;
 var hasRequiredIsObject$1;
 function requireIsObject$1() {
-  if (hasRequiredIsObject$1) return isObject$1;
+  if (hasRequiredIsObject$1) return isObject$2;
   hasRequiredIsObject$1 = 1;
   var isCallable2 = requireIsCallable();
-  isObject$1 = function(it) {
+  isObject$2 = function(it) {
     return typeof it == "object" ? it !== null : isCallable2(it);
   };
-  return isObject$1;
+  return isObject$2;
 }
 var getBuiltIn;
 var hasRequiredGetBuiltIn;
@@ -16786,39 +16786,54 @@ function requireEs_set_union_v2() {
   return es_set_union_v2;
 }
 requireEs_set_union_v2();
-const internalKey = /* @__PURE__ */ Symbol("internal-key");
+const sym = /* @__PURE__ */ Symbol("item-identifier");
 let internalIndex = 0;
-function getInternalKey() {
-  return internalKey;
+function isObject$1(value) {
+  return Boolean(value && typeof value === "object");
 }
-function setInternalKey(item, value) {
-  if (item[internalKey]) {
+function getLegacyInternalKey() {
+  return sym;
+}
+function findItemIdentifier(item) {
+  if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
+    return item[sym];
+  } else {
+    return void 0;
+  }
+}
+function setItemIdentifier(item, value) {
+  const existing = findItemIdentifier(item);
+  if (existing !== void 0) {
     return;
   }
-  Object.defineProperty(item, internalKey, {
-    value: value !== null && value !== void 0 ? value : String(internalIndex++),
+  Object.defineProperty(item, sym, {
+    value: value !== null && value !== void 0 ? value : internalIndex++,
     enumerable: false,
     writable: false
   });
 }
-function setInternalKeys(items, keyAttribute, expandableAttribute, seenValues = /* @__PURE__ */ new Set()) {
-  return items.map((item, index) => {
-    const value = keyAttribute ? item[keyAttribute] : void 0;
-    if (keyAttribute) {
-      ensureUniqueKey(keyAttribute, value, index, seenValues);
-    }
-    setInternalKey(item, value);
-    if (expandableAttribute !== void 0) {
-      const nestedItem = item[expandableAttribute];
-      if (Array.isArray(nestedItem)) {
-        setInternalKeys(nestedItem, keyAttribute, expandableAttribute, seenValues);
+function setItemIdentifiers(items, attribute, expandableAttribute) {
+  const seenValues = /* @__PURE__ */ new Set();
+  const process = (items2) => {
+    return items2.map((item, index) => {
+      const value = attribute ? item[attribute] : void 0;
+      if (attribute) {
+        ensureUniqueKey(attribute, value, index, seenValues);
       }
-    }
-    return item;
-  });
+      setItemIdentifier(item, value);
+      if (expandableAttribute !== void 0) {
+        const nestedItem = item[expandableAttribute];
+        if (Array.isArray(nestedItem)) {
+          process(nestedItem);
+        }
+      }
+      return item;
+    });
+  };
+  return process(items);
 }
-function ensureUniqueKey(keyAttribute, value, index, seenValues) {
-  const keyString = String(keyAttribute);
+function ensureUniqueKey(attribute, value, index, seenValues) {
+  const keyString = String(attribute);
   const invalidValue = (
     // eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt
     value === void 0 || value === null || String(value).length === 0
@@ -16829,7 +16844,7 @@ function ensureUniqueKey(keyAttribute, value, index, seenValues) {
   if (seenValues.has(value)) {
     throw new Error(
       /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
-      `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
+      `Expected each item to have identifier [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
     );
   }
   seenValues.add(value);
@@ -21496,7 +21511,6 @@ const _hoisted_8$6 = ["colspan"];
       registerCallbackOnSort,
       registerCallbackOnMount
     } = FSortFilterDatasetInjected();
-    const internalKey2 = getInternalKey();
     const columns = ref([]);
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
@@ -21527,9 +21541,9 @@ const _hoisted_8$6 = ["colspan"];
         keyAttribute
       } = props;
       if (keyAttribute) {
-        return setInternalKeys(props.rows, keyAttribute);
+        return setItemIdentifiers(props.rows, keyAttribute);
       }
-      return setInternalKeys(props.rows);
+      return setItemIdentifiers(props.rows);
     });
     provide("addColumn", (column) => {
       if (column.type === FTableColumnType.ACTION) {
@@ -21548,8 +21562,8 @@ const _hoisted_8$6 = ["colspan"];
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
     });
-    function rowKey(item) {
-      return String(item[internalKey2]);
+    function rowKey(row) {
+      return findItemIdentifier(row);
     }
     function columnClasses(column) {
       const classes = ["table__column", `table__column--${column.type}`, column.size];
@@ -23072,7 +23086,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
       registerCallbackBeforeItemDelete,
       setNestedKey
     } = ActivateItemInjected();
-    const internalKey2 = getInternalKey();
+    const internalKey = getLegacyInternalKey();
     const activeRow = ref(void 0);
     const columns = ref([]);
     const selectedRows = ref([]);
@@ -23090,7 +23104,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
       expandableRows,
       hasExpandableContent,
       getExpandedIndex
-    } = useExpandableTable(__props.expandableAttribute, internalKey2, __props.expandableDescribedby, emit2, slots);
+    } = useExpandableTable(__props.expandableAttribute, internalKey, __props.expandableDescribedby, emit2, slots);
     const tbody = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
@@ -23143,9 +23157,9 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
     });
     const internalRows = computed(() => {
       if (isExpandableTable) {
-        return setInternalKeys(__props.rows, __props.keyAttribute, __props.expandableAttribute);
+        return setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute);
       }
-      return setInternalKeys(__props.rows, __props.keyAttribute);
+      return setItemIdentifiers(__props.rows, __props.keyAttribute);
     });
     provide("addColumn", (column) => {
       columns.value = addColumn(columns.value, column);
@@ -23207,10 +23221,10 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
       if (!__props.showActive) {
         return false;
       }
-      return itemEquals(row, activeRow.value, internalKey2);
+      return itemEquals(row, activeRow.value, internalKey);
     }
     function isSelected(row) {
-      return includeItem(row, selectedRows.value, internalKey2);
+      return includeItem(row, selectedRows.value, internalKey);
     }
     function onKeydown$1(event, index) {
       onKeydown({
@@ -23234,7 +23248,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
       if (isExpandableTable.value && hasExpandableContent(row)) {
         toggleExpanded(row);
       }
-      if (!itemEquals(row, activeRow.value, internalKey2)) {
+      if (!itemEquals(row, activeRow.value, internalKey)) {
         emit2("change", row);
         setActiveRow(row);
         if (tr2) {
@@ -23253,8 +23267,8 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
         selectedRows.value = [row];
         emit2("select", row);
       } else {
-        if (includeItem(row, selectedRows.value, internalKey2)) {
-          selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey2));
+        if (includeItem(row, selectedRows.value, internalKey)) {
+          selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
           emit2("unselect", row);
         } else {
           selectedRows.value.push(row);
@@ -23270,7 +23284,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
         return;
       }
       selectedRows.value = __props.modelValue.filter((row) => {
-        return includeItem(row, internalRows.value, internalKey2);
+        return includeItem(row, internalRows.value, internalKey);
       });
     }
     function updateVModelWithSelectedRows() {
@@ -23288,7 +23302,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
       return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
     }
     function rowKey(row) {
-      return String(row[internalKey2]);
+      return String(row[internalKey]);
     }
     function columnClasses(column) {
       const sortable = column.sortable ? ["table__column--sortable"] : [];
@@ -23371,7 +23385,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
     function updateActiveRowFromVModel() {
       if (__props.active === void 0) {
         setActiveRow(void 0);
-      } else if (!itemEquals(__props.active, activeRow.value, internalKey2)) {
+      } else if (!itemEquals(__props.active, activeRow.value, internalKey)) {
         setActiveRow(__props.active);
       }
     }
