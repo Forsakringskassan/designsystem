@@ -36,6 +36,22 @@ export default defineComponent({
             required: false,
             default: undefined,
         },
+        /**
+         * DOM element to align arrorw with.
+         */
+        arrowAnchor: {
+            type: HTMLElement as PropType<HTMLElement | null | undefined>,
+            required: false,
+            default: undefined,
+        },
+        /**
+         * - `f-table`: error icon left of text without close button.
+         * - `f-interactive-table`: close button right of text without error icon.
+         */
+        layout: {
+            type: String as PropType<"f-interactive-table" | "f-table">,
+            required: true,
+        },
     },
     emits: ["close"],
     data(): IPopupErrorData {
@@ -102,14 +118,15 @@ export default defineComponent({
         },
         setArrowOffset() {
             const wrapper = this.$refs.wrapper as HTMLElement;
-            const inputIcon = this.anchor?.nextElementSibling;
+            const arrowAnchor = this.arrowAnchor ?? this.anchor?.nextElementSibling;
+
             /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            if (!inputIcon || !wrapper) {
+            if (!arrowAnchor || !wrapper) {
                 return;
             }
-            const inputIconRect = inputIcon.getBoundingClientRect();
+            const arrowAnchorRect = arrowAnchor.getBoundingClientRect();
             const wrapperRect = wrapper.getBoundingClientRect();
-            const arrow = computeArrowOffset(this.placement, inputIconRect, wrapperRect);
+            const arrow = computeArrowOffset(this.placement, arrowAnchorRect, wrapperRect);
             this.arrowOffset = arrow.offset;
             this.arrowPosition = arrow.position;
         },
@@ -164,6 +181,7 @@ export default defineComponent({
             <div ref="wrapper" class="popup-error__wrapper">
                 <!-- [html-validate-disable-next no-inline-style] -->
                 <div :class="arrowClass" :style="errorStyle">
+                    <f-icon v-if="layout === 'f-table'" ref="icon" class="popup-error__icon" name="error"></f-icon>
                     <span>{{ errorMessage }}</span>
 
                     <!-- `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.
@@ -171,6 +189,7 @@ export default defineComponent({
                     -->
                     <!-- [html-validate-disable-next fkui/class-deprecated -- technical debt] -->
                     <button
+                        v-if="layout === 'f-interactive-table'"
                         tabindex="-1"
                         type="button"
                         class="button button--discrete button--discrete--black modal__close-button popup-error__button"
