@@ -6880,17 +6880,23 @@ function isObject$1(value) {
 function getLegacyInternalKey() {
   return sym;
 }
-function getItemIdentifier(item, fatal) {
+function findItemIdentifier(item) {
   if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
     return item[sym];
-  } else if (fatal) {
-    throw new TypeError("Expected item to have an internal key but no key was set");
   } else {
     return void 0;
   }
 }
+function getItemIdentifier(item) {
+  const identifier = findItemIdentifier(item);
+  if (identifier !== void 0) {
+    return identifier;
+  } else {
+    throw new TypeError("Expected item to have an internal key but no key was set");
+  }
+}
 function setItemIdentifier(item, value) {
-  const existing = getItemIdentifier(item);
+  const existing = findItemIdentifier(item);
   if (existing !== void 0) {
     return;
   }
@@ -6900,21 +6906,25 @@ function setItemIdentifier(item, value) {
     writable: false
   });
 }
-function setItemIdentifiers(items, attribute, expandableAttribute, seenValues = /* @__PURE__ */ new Set()) {
-  return items.map((item, index) => {
-    const value = attribute ? item[attribute] : void 0;
-    if (attribute) {
-      ensureUniqueKey(attribute, value, index, seenValues);
-    }
-    setItemIdentifier(item, value);
-    if (expandableAttribute !== void 0) {
-      const nestedItem = item[expandableAttribute];
-      if (Array.isArray(nestedItem)) {
-        setItemIdentifiers(nestedItem, attribute, expandableAttribute, seenValues);
+function setItemIdentifiers(items, attribute, expandableAttribute) {
+  const seenValues = /* @__PURE__ */ new Set();
+  const process = (items2) => {
+    return items2.map((item, index) => {
+      const value = attribute ? item[attribute] : void 0;
+      if (attribute) {
+        ensureUniqueKey(attribute, value, index, seenValues);
       }
-    }
-    return item;
-  });
+      setItemIdentifier(item, value);
+      if (expandableAttribute !== void 0) {
+        const nestedItem = item[expandableAttribute];
+        if (Array.isArray(nestedItem)) {
+          process(nestedItem);
+        }
+      }
+      return item;
+    });
+  };
+  return process(items);
 }
 function ensureUniqueKey(attribute, value, index, seenValues) {
   const keyString = String(attribute);
@@ -14806,7 +14816,7 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
       registerCallbackOnMount(callbackSortableColumns);
     });
     function rowKey(row) {
-      return getItemIdentifier(row);
+      return findItemIdentifier(row);
     }
     function columnClasses(column) {
       const classes = ["table__column", `table__column--${column.type}`, column.size];
@@ -18481,7 +18491,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       return Array.from(element.children);
     }
     function itemKey(row) {
-      return getItemIdentifier(row);
+      return findItemIdentifier(row);
     }
     function isSelected(item) {
       return includeItem(item, selectedItems.value, internalKey);
@@ -21229,6 +21239,7 @@ export {
   dispatchComponentValidityEvent,
   findElementFromVueRef,
   findHTMLElementFromVueRef,
+  findItemIdentifier,
   findParentByName,
   focus,
   formModal,

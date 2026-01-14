@@ -16794,7 +16794,7 @@ function isObject$1(value) {
 function getLegacyInternalKey() {
   return sym;
 }
-function getItemIdentifier(item, fatal) {
+function findItemIdentifier(item) {
   if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
     return item[sym];
   } else {
@@ -16802,7 +16802,7 @@ function getItemIdentifier(item, fatal) {
   }
 }
 function setItemIdentifier(item, value) {
-  const existing = getItemIdentifier(item);
+  const existing = findItemIdentifier(item);
   if (existing !== void 0) {
     return;
   }
@@ -16812,21 +16812,25 @@ function setItemIdentifier(item, value) {
     writable: false
   });
 }
-function setItemIdentifiers(items, attribute, expandableAttribute, seenValues = /* @__PURE__ */ new Set()) {
-  return items.map((item, index) => {
-    const value = attribute ? item[attribute] : void 0;
-    if (attribute) {
-      ensureUniqueKey(attribute, value, index, seenValues);
-    }
-    setItemIdentifier(item, value);
-    if (expandableAttribute !== void 0) {
-      const nestedItem = item[expandableAttribute];
-      if (Array.isArray(nestedItem)) {
-        setItemIdentifiers(nestedItem, attribute, expandableAttribute, seenValues);
+function setItemIdentifiers(items, attribute, expandableAttribute) {
+  const seenValues = /* @__PURE__ */ new Set();
+  const process = (items2) => {
+    return items2.map((item, index) => {
+      const value = attribute ? item[attribute] : void 0;
+      if (attribute) {
+        ensureUniqueKey(attribute, value, index, seenValues);
       }
-    }
-    return item;
-  });
+      setItemIdentifier(item, value);
+      if (expandableAttribute !== void 0) {
+        const nestedItem = item[expandableAttribute];
+        if (Array.isArray(nestedItem)) {
+          process(nestedItem);
+        }
+      }
+      return item;
+    });
+  };
+  return process(items);
 }
 function ensureUniqueKey(attribute, value, index, seenValues) {
   const keyString = String(attribute);
@@ -21559,7 +21563,7 @@ const _hoisted_8$6 = ["colspan"];
       registerCallbackOnMount(callbackSortableColumns);
     });
     function rowKey(row) {
-      return getItemIdentifier(row);
+      return findItemIdentifier(row);
     }
     function columnClasses(column) {
       const classes = ["table__column", `table__column--${column.type}`, column.size];

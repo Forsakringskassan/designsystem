@@ -1,7 +1,7 @@
 // dist/esm/index.esm.js
 import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, normalizeClass, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, ref, inject, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, debounce, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
-import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, IComboboxDropdown, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, IComboboxDropdown, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 var es_iterator_constructor = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
@@ -1897,12 +1897,12 @@ function walk(array, visit, childKey, level = 1) {
 var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
 var prevCellIndex = void 0;
 function rowKey$1(row) {
-  return getItemIdentifier(row, true);
+  return getItemIdentifier(row);
 }
 function getRowIndexes(rows, expandableAttribute) {
   const array = [];
   walk(rows, (row) => {
-    array.push(getItemIdentifier(row, true));
+    array.push(getItemIdentifier(row));
     return true;
   }, expandableAttribute);
   return array;
@@ -3954,8 +3954,8 @@ function requireEs_iterator_some() {
 }
 requireEs_iterator_some();
 function rowKey(row) {
-  var _getItemIdentifier;
-  return (_getItemIdentifier = getItemIdentifier(row)) !== null && _getItemIdentifier !== void 0 ? _getItemIdentifier : "";
+  var _findItemIdentifier;
+  return (_findItemIdentifier = findItemIdentifier(row)) !== null && _findItemIdentifier !== void 0 ? _findItemIdentifier : "";
 }
 function useSelectable(options) {
   const {
