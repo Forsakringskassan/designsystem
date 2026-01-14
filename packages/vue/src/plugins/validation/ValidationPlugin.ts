@@ -42,6 +42,7 @@ function registerValidators(
     el: HTMLElement,
     binding: DirectiveBinding<Record<string, ValidatorConfig>>,
 ): void | never {
+    /* eslint-disable-next-line @typescript-eslint/no-useless-default-assignment -- false positive, both modifiers and value can be undefined */
     const { modifiers: bindingModifiers = {}, value: bindingValue = {} } =
         binding;
     const target = getValidatableElement(el);
