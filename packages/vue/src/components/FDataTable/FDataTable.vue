@@ -2,8 +2,13 @@
 import { type PropType, computed, onMounted, provide, ref } from "vue";
 import { useSlotUtils } from "../../composables";
 import { useTranslate } from "../../plugins";
-import { TableScroll, tableScrollClasses } from "../../utils";
-import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
+import {
+    type ItemIdentifier,
+    TableScroll,
+    findItemIdentifier,
+    setItemIdentifiers,
+    tableScrollClasses,
+} from "../../utils";
 import { FIcon } from "../FIcon";
 import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
 import {
@@ -69,7 +74,6 @@ defineOptions({
 const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
-const internalKey = getInternalKey<T>();
 
 const columns = ref<FTableColumnData[]>([]);
 
@@ -104,10 +108,10 @@ const tabindex = computed(() => {
 const internalRows = computed((): T[] => {
     const { keyAttribute } = props;
     if (keyAttribute) {
-        return setInternalKeys(props.rows, keyAttribute as keyof T);
+        return setItemIdentifiers(props.rows, keyAttribute as keyof T);
     }
 
-    return setInternalKeys(props.rows);
+    return setItemIdentifiers(props.rows);
 });
 
 provide("addColumn", (column: FTableColumnData) => {
@@ -135,8 +139,8 @@ onMounted(() => {
     registerCallbackOnMount(callbackSortableColumns);
 });
 
-function rowKey(item: T): string {
-    return String(item[internalKey]);
+function rowKey(row: unknown): ItemIdentifier | undefined {
+    return findItemIdentifier(row);
 }
 
 function columnClasses(column: FTableColumnData): string[] {

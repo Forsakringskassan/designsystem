@@ -30,8 +30,15 @@ import {
 import { findTabbableElements, isVisible } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
 import { useTranslate } from "../../plugins";
-import { TableScroll, includeItem, itemEquals, renderSlotText, tableScrollClasses } from "../../utils";
-import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
+import {
+    TableScroll,
+    getLegacyInternalKey,
+    includeItem,
+    itemEquals,
+    renderSlotText,
+    setItemIdentifiers,
+    tableScrollClasses,
+} from "../../utils";
 import { FCheckboxField } from "../FCheckboxField";
 import { ActivateItemInjected } from "../FCrudDataset";
 import { FIcon } from "../FIcon";
@@ -197,7 +204,9 @@ const slots = useSlots();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
 const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete, setNestedKey } = ActivateItemInjected<T>();
-const internalKey = getInternalKey<T>();
+
+/* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
+const internalKey = getLegacyInternalKey<T>();
 
 const activeRow = ref<T | undefined>(undefined);
 const columns = ref<FTableColumnData[]>([]);
@@ -285,9 +294,9 @@ const nbOfColumns = computed((): number => {
 const internalRows = computed((): T[] => {
     /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     if (isExpandableTable) {
-        return setInternalKeys(rows, keyAttribute, expandableAttribute);
+        return setItemIdentifiers(rows, keyAttribute, expandableAttribute);
     }
-    return setInternalKeys(rows, keyAttribute);
+    return setItemIdentifiers(rows, keyAttribute);
 });
 
 provide("addColumn", (column: FTableColumnData) => {

@@ -12,8 +12,16 @@ import {
 } from "vue";
 import { ElementIdService, assertRef } from "@fkui/logic";
 import { useTranslate } from "../../plugins";
-import { getElementFromVueRef, handleKeyboardFocusNavigation, includeItem, itemEquals } from "../../utils";
-import { getInternalKey, setInternalKeys } from "../../utils/internal-key";
+import {
+    type ItemIdentifier,
+    findItemIdentifier,
+    getElementFromVueRef,
+    getLegacyInternalKey,
+    handleKeyboardFocusNavigation,
+    includeItem,
+    itemEquals,
+    setItemIdentifiers,
+} from "../../utils";
 import { FCheckboxField } from "../FCheckboxField";
 import { ActivateItemInjected } from "../FCrudDataset";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
@@ -108,7 +116,9 @@ const emit = defineEmits<{
 const $t = useTranslate();
 const slots = useSlots();
 const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete } = ActivateItemInjected<T>();
-const internalKey = getInternalKey<T>();
+
+/* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
+const internalKey = getLegacyInternalKey<T>();
 
 const selectedItems: Ref<T[]> = ref([]);
 const activeItem = ref<T | undefined>(undefined);
@@ -120,11 +130,7 @@ const isEmpty = computed((): boolean => {
 
 const internalItems = computed((): T[] => {
     const { keyAttribute } = props;
-    if (keyAttribute) {
-        return setInternalKeys(props.items, keyAttribute as keyof T);
-    }
-
-    return setInternalKeys(props.items);
+    return setItemIdentifiers(props.items, keyAttribute as keyof T | undefined);
 });
 
 watch(
@@ -166,8 +172,8 @@ function getLiElements(): HTMLElement[] {
     return Array.from(element.children) as HTMLElement[];
 }
 
-function itemKey(item: T): string {
-    return String(item[internalKey]);
+function itemKey(row: unknown): ItemIdentifier | undefined {
+    return findItemIdentifier(row);
 }
 
 function isSelected(item: T): boolean {
@@ -268,12 +274,12 @@ function onItemKeyDown(event: KeyboardEvent, item: T): void {
 
 // Unique id to connect aria-labelledby with readonly label
 function getAriaLabelledbyId(item: T): string {
-    return `${props.elementId}_${itemKey(item)}`;
+    return `${props.elementId}_${String(itemKey(item))}`;
 }
 
 // Unique id to connect aria-labelledby with readonly label
 function getItemId(item: T): string {
-    return `${props.elementId}_item_${itemKey(item)}`;
+    return `${props.elementId}_item_${String(itemKey(item))}`;
 }
 
 // Focus effect is done with box-shadow.

@@ -1,12 +1,9 @@
 import { type MaybeRefOrGetter, type Ref, computed, toValue, watch } from "vue";
 import { assertRef } from "@fkui/logic";
-import { getInternalKey } from "@fkui/vue";
+import { type ItemIdentifier, findItemIdentifier } from "@fkui/vue";
 
-const internalKey = getInternalKey();
-
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
-function rowKey<T>(row: T): string {
-    return String(row[internalKey]);
+function rowKey(row: unknown): ItemIdentifier {
+    return findItemIdentifier(row) ?? "";
 }
 
 export function useSelectable<T>(options: {
@@ -81,7 +78,7 @@ export function useSelectable<T>(options: {
         );
     }
 
-    let oldKeys: string[] | undefined = undefined;
+    let oldKeys: ItemIdentifier[] | undefined = undefined;
 
     watch(
         () => toValue(rows),

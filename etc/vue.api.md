@@ -426,6 +426,9 @@ export function findElementFromVueRef(ref: unknown): Element | undefined;
 export function findHTMLElementFromVueRef(ref: unknown): HTMLElement | undefined;
 
 // @public
+export function findItemIdentifier(item: unknown): ItemIdentifier | undefined;
+
+// @public
 export function findParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | undefined;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_23" needs to be exported by the entry point index.d.ts
@@ -977,8 +980,11 @@ export function getInputElement(vm: {
     $el: Element;
 }): ValidatableHTMLElement;
 
-// @public (undocumented)
-export function getInternalKey<T>(): keyof T;
+// @public
+export function getItemIdentifier(item: unknown): ItemIdentifier;
+
+// @public @deprecated
+export function getLegacyInternalKey<T>(): keyof T;
 
 // @public
 export function getParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | never;
@@ -1112,6 +1118,9 @@ export const ISkipLink: typeof __VLS_export_78;
 
 // @public (undocumented)
 export function itemEquals<T extends object, K extends keyof T>(item1: T | undefined, item2: T | undefined, compareAttribute: K): boolean;
+
+// @public
+export type ItemIdentifier = string | number | symbol;
 
 // @public (undocumented)
 export type LayoutAreaAttachPanel = "none" | "left" | "right" | "top" | "bottom";
@@ -1309,7 +1318,10 @@ export interface RenderSlotOptions {
 export function renderSlotText(render: Slot | undefined, props?: Record<string, unknown>, options?: Partial<RenderSlotOptions>): string | undefined;
 
 // @public
-export function setInternalKeys<T>(items: T[], keyAttribute?: keyof T, expandableAttribute?: keyof T, seenValues?: Set<unknown>): T[];
+export function setItemIdentifier(item: unknown, value?: ItemIdentifier): void;
+
+// @public
+export function setItemIdentifiers<T>(items: T[], attribute?: keyof T, expandableAttribute?: keyof T): T[];
 
 // @public (undocumented)
 export function setRunningContext(app: App): void;

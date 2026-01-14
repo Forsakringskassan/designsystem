@@ -1,17 +1,17 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import { FIcon } from "@fkui/vue";
+import { type ItemIdentifier, FIcon } from "@fkui/vue";
 import { type FTableCellApi } from "./f-table-api";
 
 const { isExpandable, isExpanded, rowKey } = defineProps<{
     isExpandable?: boolean;
     isExpanded?: boolean;
-    rowKey: string;
+    rowKey: ItemIdentifier;
 }>();
 
 const emit = defineEmits<{
-    toggle: [key: string];
+    toggle: [key: ItemIdentifier];
 }>();
 
 const expandableRef = useTemplateRef("expandable");
