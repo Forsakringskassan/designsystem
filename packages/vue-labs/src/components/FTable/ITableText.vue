@@ -1,19 +1,32 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, onMounted, ref, useTemplateRef } from "vue";
+import { computed, onMounted, ref, useTemplateRef, watchEffect } from "vue";
 import { type ValidityEvent, ValidationService, assertRef } from "@fkui/logic";
-import { FIcon } from "@fkui/vue";
+import { FIcon, IPopupError } from "@fkui/vue";
+import { useElementHover, useFocusWithin } from "@vueuse/core";
+import { type PopupError } from "./PopupEror";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnText } from "./table-column";
 
-const { row, column } = defineProps<{
+const {
+    row,
+    column,
+    activeErrorAnchor = undefined,
+} = defineProps<{
     row: T;
     column: NormalizedTableColumnText<T, K>;
+    activeErrorAnchor?: HTMLElement;
+}>();
+
+const emit = defineEmits<{
+    onError: [error: PopupError];
+    closeError: [error: PopupError];
 }>();
 
 const model = ref("");
 const inEdit = ref(false);
+
 const validity = ref<Pick<ValidityEvent, "isValid" | "validationMessage" | "validityMode">>({
     isValid: true,
     validationMessage: "",
@@ -53,18 +66,56 @@ const inputClasses = computed(() => {
     };
 });
 const ariaLabel = computed(() => {
-    const value = column.label(row);
+    let value = column.label(row);
+
+    if (hasError.value) {
+        value = `${value} ${validity.value.validationMessage}`;
+    }
+
     return value.length > 0 ? value : undefined;
 });
+
 const tdElement = useTemplateRef("td");
 const viewElement = useTemplateRef("view");
 const inputElement = useTemplateRef("input");
+const penElement = useTemplateRef("pen");
 const { stopEdit } = useStartStopEdit();
+const isHovered = useElementHover(tdElement, { delayEnter: 200 });
+const { focused } = useFocusWithin(tdElement);
+
+const openPopupError = computed(() => {
+    if (!tdElement.value) {
+        return false;
+    }
+    return tdElement.value === activeErrorAnchor;
+});
 
 onMounted(() => {
     if (inputElement.value) {
         addInputValidators(inputElement.value, column.type);
         ValidationService.addValidatorsToElement(inputElement.value, column.validation);
+    }
+});
+
+watchEffect(() => {
+    if (hasError.value) {
+        emit("onError", {
+            anchor: tdElement.value ?? undefined,
+            arrowAnchor: penElement.value ?? undefined,
+            message: validity.value.validationMessage,
+            hasFocus: focused.value,
+            hasHover: isHovered.value,
+            inEdit: inEdit.value,
+        });
+    } else {
+        emit("closeError", {
+            anchor: tdElement.value ?? undefined,
+            arrowAnchor: penElement.value ?? undefined,
+            message: validity.value.validationMessage,
+            hasFocus: focused.value,
+            hasHover: isHovered.value,
+            inEdit: inEdit.value,
+        });
     }
 });
 
@@ -201,9 +252,17 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
                 @blur="onBlur"
                 @validity="onValidity"
             />
-            <f-icon v-if="hasError" name="error" class="table-ng__editable__icon"></f-icon>
-            <f-icon v-else name="pen" class="table-ng__editable__icon"></f-icon>
+            <div ref="pen">
+                <f-icon name="pen" class="table-ng__editable__icon"></f-icon>
+            </div>
         </div>
+        <i-popup-error
+            :anchor="tdElement"
+            :is-open="openPopupError"
+            :error-message="validity.validationMessage"
+            :arrow-anchor="penElement"
+            layout="f-table"
+        ></i-popup-error>
     </td>
     <td v-else ref="td" tabindex="-1" :class="staticClasses">
         {{ column.value(row) }}
