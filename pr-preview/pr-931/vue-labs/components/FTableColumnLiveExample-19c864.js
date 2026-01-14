@@ -1181,12 +1181,14 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
       return value.length > 0 ? value : void 0;
     });
     const showPopupError = computed8(() => {
-      return hasError.value && (isHovered.value || hasFocus.value);
+      if (hasError.value) {
+        return isHovered.value && !inEdit.value || hasFocus.value;
+      }
+      return false;
     });
     const tdElement = useTemplateRef6("td");
     const viewElement = useTemplateRef6("view");
     const inputElement = useTemplateRef6("input");
-    const penElement = useTemplateRef6("pen");
     const { stopEdit } = useStartStopEdit();
     const isHovered = useElementHover(tdElement);
     const hasFocus = ref4(false);
@@ -1293,7 +1295,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
     function onTdBlur() {
       hasFocus.value = false;
     }
-    const __returned__ = { model, inEdit, validity, hasError, divClasses, wrapperClasses, staticClasses, inputClasses, ariaLabel, showPopupError, tdElement, viewElement, inputElement, penElement, stopEdit, isHovered, hasFocus, onStartEdit, onStopEdit, onClickCell, onViewingKeydown, onEditingKeydown, onKeydown, onBlur, onValidity, closePopupError, onTdFocus, onTdBlur, get FIcon() {
+    const __returned__ = { model, inEdit, validity, hasError, divClasses, wrapperClasses, staticClasses, inputClasses, ariaLabel, showPopupError, tdElement, viewElement, inputElement, stopEdit, isHovered, hasFocus, onStartEdit, onStopEdit, onClickCell, onViewingKeydown, onEditingKeydown, onKeydown, onBlur, onValidity, closePopupError, onTdFocus, onTdBlur, get FIcon() {
       return FIcon3;
     }, get IPopupError() {
       return IPopupError;
@@ -1306,7 +1308,6 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableText.vue?type=template
 import { toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode6, vModelText as _vModelText, normalizeClass as _normalizeClass, withDirectives as _withDirectives2, createVNode as _createVNode2, withModifiers as _withModifiers2, openBlock as _openBlock7, createElementBlock as _createElementBlock7 } from "vue";
 var _hoisted_16 = ["aria-label"];
-var _hoisted_26 = { ref: "pen" };
 function render7(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.column.editable($props.row) ? (_openBlock7(), _createElementBlock7(
     "td",
@@ -1354,22 +1355,14 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
             anchor: $setup.tdElement,
             "is-open": $setup.showPopupError,
             "error-message": $setup.validity.validationMessage,
-            "arrow-anchor": $setup.penElement,
+            "arrow-anchor": $setup.tdElement,
             "alternative-layout": "",
             onClose: $setup.closePopupError
           }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"]),
-          _createElementVNode6(
-            "div",
-            _hoisted_26,
-            [
-              _createVNode2($setup["FIcon"], {
-                name: "pen",
-                class: "table-ng__editable__icon"
-              })
-            ],
-            512
-            /* NEED_PATCH */
-          )
+          _createVNode2($setup["FIcon"], {
+            name: "pen",
+            class: "table-ng__editable__icon"
+          })
         ],
         2
         /* CLASS */
