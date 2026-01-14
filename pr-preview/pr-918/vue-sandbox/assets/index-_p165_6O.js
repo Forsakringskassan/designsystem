@@ -17474,8 +17474,8 @@ function triggerInitialValidation(el) {
 }
 function registerValidators(el, binding) {
   const {
-    modifiers: bindingModifiers = {},
-    value: bindingValue = {}
+    modifiers: bindingModifiers,
+    value: bindingValue
   } = binding;
   const target = getValidatableElement(el);
   Object.keys(bindingValue).forEach((validatorName) => {
