@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 6.33.0 (2026-01-14)
+
+### Features
+
+* **@fkui/vue-labs:** new `XSortFilterDatasetNg` component in labs (refs SFKUI-6500) d298c9a
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.7.4 3a21e3e
+* **deps:** update dependency sass to v1.97.2 a483487
+
 ## 6.32.1 (2026-01-08)
 
 ### Bug Fixes
