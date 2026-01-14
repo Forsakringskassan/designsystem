@@ -485,6 +485,7 @@ export default defineComponent({
                     :anchor="getErrorPopupAnchor()"
                     :is-open="showPopupError"
                     :error-message="validationMessage"
+                    layout="f-interactive-table"
                     @close="closePopupError"
                 ></i-popup-error>
                 <div v-if="$slots['append-inner']" class="text-field__append-inner">
