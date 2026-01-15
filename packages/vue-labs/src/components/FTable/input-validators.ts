@@ -6,6 +6,7 @@ import {
     inputFieldConfig,
 } from "./input-fields-config";
 
+/** @internal */
 export function addInputValidators(
     inputElement: HTMLInputElement,
     type: InputTypeText | InputTypeNumber,

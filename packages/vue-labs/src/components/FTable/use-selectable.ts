@@ -6,6 +6,7 @@ function rowKey(row: unknown): ItemIdentifier {
     return findItemIdentifier(row) ?? "";
 }
 
+/** @internal */
 export function useSelectable<T>(options: {
     selectable?: "single" | "multi";
     selectedRows: Ref<T[]>;

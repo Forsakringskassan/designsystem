@@ -8,6 +8,7 @@ export type StopEditCallback = (
     reason: "enter" | "escape" | "tab" | "shift-tab" | "blur",
 ) => Promise<void>;
 
+/** @internal */
 export interface UseStartStopEdit {
     stopEdit: StopEditCallback;
 }

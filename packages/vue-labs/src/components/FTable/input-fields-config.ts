@@ -13,7 +13,10 @@ import {
     parsePlusgiro,
 } from "@fkui/logic";
 
-const baseTypes = [
+/**
+ * @public
+ */
+export const baseTypes = [
     "anchor",
     "button",
     "checkbox",
@@ -24,11 +27,14 @@ const baseTypes = [
 ] as const;
 
 /**
- * @internal
+ * @public
  */
 export type InputTypeBase = (typeof baseTypes)[number];
 
-const textTypes = [
+/**
+ * @public
+ */
+export const textTypes = [
     "text:bankAccountNumber",
     "text:bankgiro",
     "text:clearingNumber",
@@ -43,19 +49,26 @@ const textTypes = [
 ] as const;
 
 /**
- * @internal
+ * @public
  */
 export type InputTypeText = (typeof textTypes)[number];
 
-const numberTypes = ["text:currency", "text:number", "text:percent"] as const;
+/**
+ * @public
+ */
+export const numberTypes = [
+    "text:currency",
+    "text:number",
+    "text:percent",
+] as const;
 
 /**
- * @internal
+ * @public
  */
 export type InputTypeNumber = (typeof numberTypes)[number];
 
 /**
- * @internal
+ * @public
  */
 export type InputType = InputTypeBase | InputTypeNumber | InputTypeText;
 
