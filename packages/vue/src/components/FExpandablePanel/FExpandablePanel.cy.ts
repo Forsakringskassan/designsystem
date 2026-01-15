@@ -26,37 +26,44 @@ function createComponent(template: string): DefineComponent {
 }
 
 describe("FExpandablePanel", () => {
-    const panel = new FExpandablePanelPageObject(
-        "[data-test=expandable-panel]",
+    const panelWithNotification = new FExpandablePanelPageObject(
+        "[data-test=notification-example]",
     );
 
-    const panelWithNotification = new FExpandablePanelPageObject(
-        "[data-test=notification-example] .expandable-panel",
-    );
+    const defaultTemplate = /* HTML */ `
+        <f-expandable-panel
+            :expanded="expanded"
+            @toggle="onToggle"
+            data-test="expandable-panel"
+            id="expandable-panel-id"
+        >
+            <template #title> Titel </template>
+            <template #default>
+                Innehåll
+                <p>
+                    <a class="anchor" href="" target="_blank">
+                        Länk till annan sida
+                    </a>
+                </p>
+            </template>
+        </f-expandable-panel>
+    `;
 
     beforeEach(() => {
         cy.clearLocalStorage();
     });
 
-    it("Should have a page object that can access any necessary elements for default expandable panel", () => {
-        const template = /* HTML */ `
-            <f-expandable-panel
-                :expanded="expanded"
-                @toggle="onToggle"
-                v-test="'expandable-panel'"
-            >
-                <template #title> Titel </template>
-                <template #default>
-                    Innehåll
-                    <p>
-                        <a class="anchor" href="" target="_blank">
-                            Länk till annan sida
-                        </a>
-                    </p>
-                </template>
-            </f-expandable-panel>
-        `;
-        cy.mount(createComponent(template));
+    it("Should have a page object that can access any necessary elements for default expandable panel with `id` selector ", () => {
+        cy.mount(createComponent(defaultTemplate));
+        const panel = new FExpandablePanelPageObject("#expandable-panel-id");
+        panel.header().should("have.trimmedText", "Titel");
+    });
+
+    it("Should have a page object that can access any necessary elements for default expandable panel with `data-*` selector ", () => {
+        cy.mount(createComponent(defaultTemplate));
+        const panel = new FExpandablePanelPageObject(
+            "[data-test=expandable-panel]",
+        );
         panel.el().should("be.visible");
         panel.isOpen().should("be.false");
         panel.expandCollapseIcon().click();
@@ -64,22 +71,22 @@ describe("FExpandablePanel", () => {
         panel.header().should("have.trimmedText", "Titel");
         panel.notificationIcon().should("not.exist");
     });
+
     it("Should have a page object that can access any necessary elements for expandable panel with notification icon", () => {
         const template = /* HTML */ `
-            <div v-test="'notification-example'">
-                <f-expandable-panel
-                    :expanded="expanded1"
-                    :notifications="1"
-                    @toggle="onToggle1"
-                >
-                    <template #title> Titel med en notifiering </template>
-                    <template #default> Innehåll </template>
-                    <template #outside>
-                        Relaterat innehåll som visas när panelen är expanderad
-                        men utanför body
-                    </template>
-                </f-expandable-panel>
-            </div>
+            <f-expandable-panel
+                :expanded="expanded1"
+                :notifications="1"
+                @toggle="onToggle1"
+                data-test="notification-example"
+            >
+                <template #title> Titel med en notifiering </template>
+                <template #default> Innehåll </template>
+                <template #outside>
+                    Relaterat innehåll som visas när panelen är expanderad men
+                    utanför body
+                </template>
+            </f-expandable-panel>
         `;
         cy.mount(createComponent(template));
         panelWithNotification.notificationIcon().should("be.visible");
