@@ -5,6 +5,7 @@ export {
     type InputTypeText,
     type TableColumn,
     type TableColumnAnchor,
+    type TableColumnBase,
     type TableColumnButton,
     type TableColumnCheckbox,
     type TableColumnNumber,

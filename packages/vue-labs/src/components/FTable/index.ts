@@ -5,6 +5,7 @@ export { type FTableApi, type FTableCellApi } from "./f-table-api";
 export {
     type TableColumn,
     type TableColumnAnchor,
+    type TableColumnBase,
     type TableColumnButton,
     type TableColumnCheckbox,
     type TableColumnNumber,

@@ -103,33 +103,33 @@ export function splitHoursMinutes(valueString: string, extraForgiving?: boolean)
 export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRadio<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnNumber<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K>;
 
 // @public (undocumented)
-export interface TableColumnAnchor<T, K extends keyof T> {
-    // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
+export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     enabled?: boolean | ((this: void, row: T) => boolean);
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
     // (undocumented)
     href: string;
     // (undocumented)
     key?: K;
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     type: "anchor";
     // (undocumented)
     value(this: void, row: T): string | null;
 }
 
-// @public (undocumented)
-export interface TableColumnButton<T, K extends keyof T> {
+// @public
+export interface TableColumnBase {
     // (undocumented)
     description?: string | Readonly<Ref<string | null>>;
     // (undocumented)
-    enabled?: boolean | ((this: void, row: T) => boolean);
-    // (undocumented)
     header: string | Readonly<Ref<string>>;
+    // (undocumented)
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
+}
+
+// @public (undocumented)
+export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    enabled?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
     icon?: string;
     // (undocumented)
@@ -137,27 +137,19 @@ export interface TableColumnButton<T, K extends keyof T> {
     // (undocumented)
     onClick?(this: void, row: T): void;
     // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    // (undocumented)
     type: "button";
     // (undocumented)
     value(this: void, row: T): string | null;
 }
 
 // @public (undocumented)
-export interface TableColumnCheckbox<T, K extends keyof T> {
-    // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
+export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
     // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     type: "checkbox";
     // (undocumented)
@@ -167,27 +159,21 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
 }
 
 // @public (undocumented)
-export interface TableColumnNumber<T, K extends keyof T> {
+export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     align?: "left" | "right";
     // (undocumented)
     decimals?: number;
     // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
-    // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
     formatter?(this: void, value: number | string): string | undefined;
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
     // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
     // (undocumented)
     parser?(this: void, value: string): number | string;
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     tnum?: boolean;
     // (undocumented)
@@ -201,17 +187,11 @@ export interface TableColumnNumber<T, K extends keyof T> {
 }
 
 // @public (undocumented)
-export interface TableColumnRadio<T, K extends keyof T> {
-    // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
+export interface TableColumnRadio<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     type: "radio";
     // (undocumented)
@@ -221,29 +201,17 @@ export interface TableColumnRadio<T, K extends keyof T> {
 }
 
 // @public (undocumented)
-export interface TableColumnRender<T, K> {
-    // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
+export interface TableColumnRender<T, K extends keyof T = keyof T> extends TableColumnBase {
     // (undocumented)
     key?: K;
     // (undocumented)
     render(this: void, row: T): VNode | Component;
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
 }
 
 // @public (undocumented)
-export interface TableColumnRowHeader<T, K extends keyof T> {
-    // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
+export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     key?: K;
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     type: "rowheader";
     // (undocumented)
@@ -251,21 +219,15 @@ export interface TableColumnRowHeader<T, K extends keyof T> {
 }
 
 // @public (undocumented)
-export interface TableColumnSelect<T, K extends keyof T> {
-    // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
+export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
     // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
     // (undocumented)
     options: string[];
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     type: "select";
     // (undocumented)
@@ -275,17 +237,11 @@ export interface TableColumnSelect<T, K extends keyof T> {
 }
 
 // @public (undocumented)
-export interface TableColumnSimple<T, K extends keyof T> {
-    // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
+export interface TableColumnSimple<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     type?: undefined;
     // (undocumented)
@@ -296,25 +252,19 @@ export interface TableColumnSimple<T, K extends keyof T> {
 export type TableColumnSize = "grow" | "shrink";
 
 // @public (undocumented)
-export interface TableColumnText<T, K extends keyof T> {
+export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     align?: "left" | "right";
-    // (undocumented)
-    description?: string | Readonly<Ref<string | null>>;
     // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
     formatter?(this: void, value: string): string;
-    // (undocumented)
-    header: string | Readonly<Ref<string>>;
     // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
     // (undocumented)
     parser?(this: void, value: string): string;
-    // (undocumented)
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     tnum?: boolean;
     // (undocumented)
