@@ -30,6 +30,30 @@ import {
 export type TableColumnSize = "grow" | "shrink";
 
 /**
+ * Base properties shared by all table column types.
+ *
+ * @public
+ */
+export interface TableColumnBase {
+    header: string | Readonly<Ref<string>>;
+    description?: string | Readonly<Ref<string | null>>;
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
+}
+
+/**
+ * Base properties shared by all normalized table column types.
+ *
+ * @internal
+ */
+export interface NormalizedTableColumnBase<K> {
+    readonly id: symbol;
+    readonly header: Readonly<Ref<string>>;
+    readonly description: Readonly<Ref<string | null>>;
+    readonly sortable: K | null;
+    readonly size: Readonly<Ref<TableColumnSize | null>>;
+}
+
+/**
  * Union of all possible table column types.
  *
  * @internal
@@ -46,15 +70,15 @@ export type TableColumnType =
 /**
  * @public
  */
-export interface TableColumnSimple<T, K extends keyof T> {
+export interface TableColumnSimple<
+    T,
+    K extends keyof T,
+> extends TableColumnBase {
     /* eslint-disable-next-line sonarjs/no-redundant-optional -- this is used as
      * a discriminator in the union, for the simple column we are not expected
      * to set `type` at all but this simplifies the normalization */
     type?: undefined;
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(this: void, row: T): string;
     value?(this: void, row: T): string;
 }
@@ -62,41 +86,39 @@ export interface TableColumnSimple<T, K extends keyof T> {
 /**
  * @public
  */
-export interface TableColumnRowHeader<T, K extends keyof T> {
+export interface TableColumnRowHeader<
+    T,
+    K extends keyof T,
+> extends TableColumnBase {
     type: "rowheader";
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     value?(this: void, row: T): string;
 }
 
 /**
  * @internal
  */
-export interface NormalizedTableColumnRowHeader<T, K> {
+export interface NormalizedTableColumnRowHeader<
+    T,
+    K,
+> extends NormalizedTableColumnBase<K> {
     readonly type: "rowheader";
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
-    readonly sortable: K | null;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnRowHeader<T, K>;
     }>;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     value(this: void, row: T): string;
 }
 
 /**
  * @public
  */
-export interface TableColumnCheckbox<T, K extends keyof T> {
+export interface TableColumnCheckbox<
+    T,
+    K extends keyof T,
+> extends TableColumnBase {
     type: "checkbox";
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(this: void, row: T): string;
     value?(this: void, row: T): boolean;
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
@@ -106,17 +128,15 @@ export interface TableColumnCheckbox<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnCheckbox<T, K> {
+export interface NormalizedTableColumnCheckbox<
+    T,
+    K,
+> extends NormalizedTableColumnBase<K> {
     readonly type: "checkbox";
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
-    readonly sortable: K | null;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnCheckbox<T, K>;
     }>;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(this: void, row: T): string;
     value(this: void, row: T): boolean;
     update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
@@ -126,12 +146,12 @@ export interface NormalizedTableColumnCheckbox<T, K> {
 /**
  * @public
  */
-export interface TableColumnRadio<T, K extends keyof T> {
+export interface TableColumnRadio<
+    T,
+    K extends keyof T,
+> extends TableColumnBase {
     type: "radio";
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(this: void, row: T): string;
     value?(this: void, row: T): boolean;
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
@@ -140,17 +160,15 @@ export interface TableColumnRadio<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnRadio<T, K> {
+export interface NormalizedTableColumnRadio<
+    T,
+    K,
+> extends NormalizedTableColumnBase<K> {
     readonly type: "radio";
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
-    readonly sortable: K | null;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnRadio<T, K>;
     }>;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(this: void, row: T): string;
     value(this: void, row: T): boolean;
     update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
@@ -159,12 +177,9 @@ export interface NormalizedTableColumnRadio<T, K> {
 /**
  * @public
  */
-export interface TableColumnText<T, K extends keyof T> {
+export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
     type: InputTypeText;
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(this: void, row: T): string;
     tnum?: boolean;
     align?: "left" | "right";
@@ -179,20 +194,18 @@ export interface TableColumnText<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnText<T, K> {
+export interface NormalizedTableColumnText<
+    T,
+    K,
+> extends NormalizedTableColumnBase<K> {
     readonly type: InputTypeText;
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
     readonly validation: ValidatorConfigs;
-    readonly sortable: K | null;
     readonly tnum: boolean;
     readonly align: "left" | "right";
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnText<T, K>;
     }>;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(this: void, row: T): string;
     value(this: void, row: T): string;
     update(this: void, row: T, newValue: string, oldValue: string): void;
@@ -202,13 +215,13 @@ export interface NormalizedTableColumnText<T, K> {
 /**
  * @public
  */
-export interface TableColumnNumber<T, K extends keyof T> {
+export interface TableColumnNumber<
+    T,
+    K extends keyof T,
+> extends TableColumnBase {
     type: InputTypeNumber;
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     decimals?: number;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(this: void, row: T): string;
     tnum?: boolean;
     align?: "left" | "right";
@@ -228,21 +241,19 @@ export interface TableColumnNumber<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnNumber<T, K> {
+export interface NormalizedTableColumnNumber<
+    T,
+    K,
+> extends NormalizedTableColumnBase<K> {
     readonly type: InputTypeNumber;
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
     readonly decimals?: number;
     readonly validation: ValidatorConfigs;
-    readonly sortable: K | null;
     readonly tnum: boolean;
     readonly align: "left" | "right";
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnText<T, K>;
     }>;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(this: void, row: T): string;
     value(this: void, row: T): string | number;
     update(
@@ -257,12 +268,12 @@ export interface NormalizedTableColumnNumber<T, K> {
 /**
  * @public
  */
-export interface TableColumnAnchor<T, K extends keyof T> {
+export interface TableColumnAnchor<
+    T,
+    K extends keyof T,
+> extends TableColumnBase {
     type: "anchor";
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     value(this: void, row: T): string | null;
     enabled?: boolean | ((this: void, row: T) => boolean);
     href: string;
@@ -271,18 +282,16 @@ export interface TableColumnAnchor<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnAnchor<T, K> {
+export interface NormalizedTableColumnAnchor<
+    T,
+    K,
+> extends NormalizedTableColumnBase<K> {
     readonly type: "anchor";
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
     readonly href: string;
-    readonly sortable: K | null;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnAnchor<T, K>;
     }>;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     value(this: void, row: T): string | null;
     enabled(this: void, row: T): boolean;
 }
@@ -290,12 +299,12 @@ export interface NormalizedTableColumnAnchor<T, K> {
 /**
  * @public
  */
-export interface TableColumnButton<T, K extends keyof T> {
+export interface TableColumnButton<
+    T,
+    K extends keyof T,
+> extends TableColumnBase {
     type: "button";
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     value(this: void, row: T): string | null;
     onClick?(this: void, row: T): void;
     enabled?: boolean | ((this: void, row: T) => boolean);
@@ -305,18 +314,16 @@ export interface TableColumnButton<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnButton<T, K> {
+export interface NormalizedTableColumnButton<
+    T,
+    K,
+> extends NormalizedTableColumnBase<K> {
     readonly type: "button";
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
     readonly icon: string | null;
-    readonly sortable: K | null;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnButton<T, K>;
     }>;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     value(this: void, row: T): string | null;
     onClick?(this: void, row: T): void;
     enabled(this: void, row: T): boolean;
@@ -325,12 +332,12 @@ export interface NormalizedTableColumnButton<T, K> {
 /**
  * @public
  */
-export interface TableColumnSelect<T, K extends keyof T> {
+export interface TableColumnSelect<
+    T,
+    K extends keyof T,
+> extends TableColumnBase {
     type: "select";
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     label?(this: void, row: T): string;
     value?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
@@ -341,18 +348,16 @@ export interface TableColumnSelect<T, K extends keyof T> {
 /**
  * @internal
  */
-export interface NormalizedTableColumnSelect<T, K> {
+export interface NormalizedTableColumnSelect<
+    T,
+    K,
+> extends NormalizedTableColumnBase<K> {
     readonly type: "select";
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
     readonly options: string[];
-    readonly sortable: K | null;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnSelect<T, K>;
     }>;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     label(this: void, row: T): string;
     value(this: void, row: T): string;
     update(this: void, row: T, newValue: string, oldValue: string): void;
@@ -362,24 +367,23 @@ export interface NormalizedTableColumnSelect<T, K> {
 /**
  * @public
  */
-export interface TableColumnRender<T, K> {
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
+export interface TableColumnRender<
+    T,
+    K extends keyof T = keyof T,
+> extends TableColumnBase {
     key?: K;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     render(this: void, row: T): VNode | Component;
 }
 
 /**
  * @internal
  */
-export interface NormalizedTableColumnRender<T> {
+export interface NormalizedTableColumnRender<T> extends Omit<
+    NormalizedTableColumnBase<never>,
+    "sortable"
+> {
     readonly type: undefined;
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
     readonly sortable: boolean | null;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
     render(this: void, row: T): VNode | Component;
 }
 
