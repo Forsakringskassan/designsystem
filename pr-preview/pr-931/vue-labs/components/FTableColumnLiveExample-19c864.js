@@ -1190,7 +1190,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
     const viewElement = useTemplateRef6("view");
     const inputElement = useTemplateRef6("input");
     const { stopEdit } = useStartStopEdit();
-    const isHovered = useElementHover(tdElement);
+    const isHovered = useElementHover(tdElement, { delayEnter: 200 });
     const hasFocus = ref4(false);
     onMounted3(() => {
       if (inputElement.value) {
@@ -1356,7 +1356,7 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
             "is-open": $setup.showPopupError,
             "error-message": $setup.validity.validationMessage,
             "arrow-anchor": $setup.tdElement,
-            "alternative-layout": "",
+            layout: "f-table",
             onClose: $setup.closePopupError
           }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"]),
           _createVNode2($setup["FIcon"], {

@@ -4467,13 +4467,12 @@ var IPopupError_default = defineComponent13({
       default: void 0
     },
     /**
-     * When set to `true`, the error popup renders an alternative layout.
-     * The default layout shows a close button, whereas the alternative layout displays an error icon
-     * and hides the button.
+     * - `f-table`: error icon left of text without close button.
+     * - `f-interactive-table`: close button right of text without error icon.
      */
-    alternativeLayout: {
-      type: Boolean,
-      required: false
+    layout: {
+      type: String,
+      required: true
     }
   },
   emits: ["close"],
@@ -4615,7 +4614,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                 style: _normalizeStyle(_ctx.errorStyle)
               },
               [
-                _ctx.alternativeLayout ? (_openBlock13(), _createBlock7(
+                _ctx.layout === "f-table" ? (_openBlock13(), _createBlock7(
                   _component_f_icon,
                   {
                     key: 0,
@@ -4636,7 +4635,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                 ),
                 _createCommentVNode11(' `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.\n                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .\n                    '),
                 _createCommentVNode11(" [html-validate-disable-next fkui/class-deprecated -- technical debt] "),
-                !_ctx.alternativeLayout ? (_openBlock13(), _createElementBlock12("button", {
+                _ctx.layout === "f-interactive-table" ? (_openBlock13(), _createElementBlock12("button", {
                   key: 1,
                   tabindex: "-1",
                   type: "button",
