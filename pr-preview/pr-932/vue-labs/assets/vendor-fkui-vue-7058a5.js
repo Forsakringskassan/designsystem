@@ -4938,7 +4938,7 @@ var _hoisted_8$9 = {
 var _hoisted_9$7 = {
   class: "modal__footer"
 };
-var _hoisted_10$5 = {
+var _hoisted_10$4 = {
   class: "modal__shelf"
 };
 var _hoisted_11$3 = ["aria-label"];
@@ -4960,7 +4960,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("div", _hoisted_4$u, [createElementVNode("div", _hoisted_5$o, [createElementVNode("div", _hoisted_6$i, [createElementVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$5, [createElementVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$4, [createElementVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -7367,7 +7367,7 @@ var _hoisted_9$6 = {
   key: 0,
   "aria-hidden": "true"
 };
-var _hoisted_10$4 = ["colspan"];
+var _hoisted_10$3 = ["colspan"];
 var _hoisted_11$2 = {
   key: 1,
   "aria-hidden": "true"
@@ -7430,7 +7430,7 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
     class: "calendar-month__cell",
     colspan: _ctx.totalCols,
     "aria-hidden": "true"
-  }, null, 8, _hoisted_10$4)])) : createCommentVNode("", true), _cache[21] || (_cache[21] = createTextVNode()), _ctx.weeks.length < 6 ? (openBlock(), createElementBlock("tr", _hoisted_11$2, [createElementVNode("td", {
+  }, null, 8, _hoisted_10$3)])) : createCommentVNode("", true), _cache[21] || (_cache[21] = createTextVNode()), _ctx.weeks.length < 6 ? (openBlock(), createElementBlock("tr", _hoisted_11$2, [createElementVNode("td", {
     class: "calendar-month__cell",
     colspan: _ctx.totalCols,
     "aria-hidden": "true"
@@ -7811,7 +7811,7 @@ var _hoisted_8$7 = {
   class: "sr-only"
 };
 var _hoisted_9$5 = ["aria-disabled", "aria-live"];
-var _hoisted_10$3 = {
+var _hoisted_10$2 = {
   class: "sr-only"
 };
 function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
@@ -7851,7 +7851,7 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-disabled": _ctx.nextDisabled,
     "aria-live": _ctx.isFocused("nextButton") ? "polite" : "off",
     onClick: _cache[2] || (_cache[2] = withModifiers((...args) => _ctx.onClickNextButton && _ctx.onClickNextButton(...args), ["stop"]))
-  }, [createElementVNode("span", _hoisted_10$3, toDisplayString(_ctx.nextSrText), 1), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_f_icon, {
+  }, [createElementVNode("span", _hoisted_10$2, toDisplayString(_ctx.nextSrText), 1), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.nextIconClasses),
     name: "arrow-right"
   }, null, 8, ["class"])], 8, _hoisted_9$5)) : createCommentVNode("", true)]);
@@ -16526,28 +16526,25 @@ var _sfc_main$r = defineComponent({
     }
   }
 });
-var _hoisted_1$o = ["id", "data-test"];
-var _hoisted_2$k = ["aria-expanded", "aria-controls"];
-var _hoisted_3$f = {
+var _hoisted_1$o = ["aria-expanded", "aria-controls"];
+var _hoisted_2$k = {
   class: "expandable-panel__title"
 };
-var _hoisted_4$d = {
+var _hoisted_3$f = {
   class: "expandable-panel__title__text"
 };
-var _hoisted_5$b = ["title"];
-var _hoisted_6$9 = {
+var _hoisted_4$d = ["title"];
+var _hoisted_5$b = {
   class: "sr-only"
 };
-var _hoisted_7$6 = {
+var _hoisted_6$9 = {
   class: "expandable-panel__icon"
 };
+var _hoisted_7$6 = ["id"];
 var _hoisted_8$4 = {
-  class: "expandable-panel__content"
-};
-var _hoisted_9$4 = {
   class: "expandable-panel__body"
 };
-var _hoisted_10$2 = {
+var _hoisted_9$4 = {
   key: 0,
   class: "expandable-panel__outside"
 };
@@ -16556,10 +16553,6 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_expand = resolveComponent("f-expand");
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(["expandable-panel", _ctx.expandedClass])
-  }, [createElementVNode("div", {
-    id: _ctx.id,
-    "data-test": _ctx.$attrs["data-test"],
-    class: "expandable-panel__header"
   }, [(openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), {
     class: "expandable-panel__heading"
   }, {
@@ -16569,18 +16562,21 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
       "aria-controls": _ctx.id
     }, _ctx.$attrs, {
       onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClickHeadingButton && _ctx.onClickHeadingButton(...args))
-    }), [createElementVNode("span", _hoisted_3$f, [createElementVNode("span", _hoisted_4$d, [renderSlot(_ctx.$slots, "title")]), _cache[2] || (_cache[2] = createTextVNode()), _ctx.haveNotifications ? (openBlock(), createElementBlock("span", {
+    }), [createElementVNode("span", _hoisted_2$k, [createElementVNode("span", _hoisted_3$f, [renderSlot(_ctx.$slots, "title")]), _cache[2] || (_cache[2] = createTextVNode()), _ctx.haveNotifications ? (openBlock(), createElementBlock("span", {
       key: 0,
       class: "expandable-panel__notification",
       title: _ctx.notificationTitle
-    }, [createElementVNode("span", _hoisted_6$9, toDisplayString(_ctx.screenReaderNotificationText), 1), _cache[1] || (_cache[1] = createTextVNode()), createVNode(_component_f_icon, {
+    }, [createElementVNode("span", _hoisted_5$b, toDisplayString(_ctx.screenReaderNotificationText), 1), _cache[1] || (_cache[1] = createTextVNode()), createVNode(_component_f_icon, {
       name: "bell"
-    })], 8, _hoisted_5$b)) : createCommentVNode("", true)]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_7$6, [createVNode(_component_f_icon, {
+    })], 8, _hoisted_4$d)) : createCommentVNode("", true)]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_6$9, [createVNode(_component_f_icon, {
       name: "arrow-down"
-    })])], 16, _hoisted_2$k)]),
+    })])], 16, _hoisted_1$o)]),
     _: 3
-  }))], 8, _hoisted_1$o), _cache[5] || (_cache[5] = createTextVNode()), createVNode(_component_f_expand, null, {
-    default: withCtx(() => [withDirectives(createElementVNode("div", _hoisted_8$4, [createElementVNode("div", _hoisted_9$4, [renderSlot(_ctx.$slots, "default")]), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasOutsideSlot ? (openBlock(), createElementBlock("div", _hoisted_10$2, [renderSlot(_ctx.$slots, "outside")])) : createCommentVNode("", true)], 512), [[vShow, _ctx.expanded]])]),
+  })), _cache[5] || (_cache[5] = createTextVNode()), createVNode(_component_f_expand, null, {
+    default: withCtx(() => [withDirectives(createElementVNode("div", {
+      id: _ctx.id,
+      class: "expandable-panel__content"
+    }, [createElementVNode("div", _hoisted_8$4, [renderSlot(_ctx.$slots, "default")]), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasOutsideSlot ? (openBlock(), createElementBlock("div", _hoisted_9$4, [renderSlot(_ctx.$slots, "outside")])) : createCommentVNode("", true)], 8, _hoisted_7$6), [[vShow, _ctx.expanded]])]),
     _: 3
   })], 2);
 }
