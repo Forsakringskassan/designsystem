@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-content.vue:FMinimizablePanelPageObject-content-04a198.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-footer.vue:FMinimizablePanelPageObject-footer-b9054b.js
 import { defineComponent as _defineComponent } from "vue";
 import { FMinimizablePanel, FPageLayout } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FMinimizablePanelPageObject-content",
+  __name: "FMinimizablePanelPageObject-footer",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FMinimizablePanel() {
@@ -49,21 +49,15 @@ var _hoisted_1 = ["slot"];
 var _hoisted_2 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
-    default: _withCtx((layoutScope) => [
-      _createVNode($setup["FMinimizablePanel"], {
-        slot: layoutScope.left
-      }, {
-        default: _withCtx((panelScope) => [
-          _createElementVNode("div", {
-            slot: panelScope.content
-          }, "Lorem ipsum", 8, _hoisted_1)
+    default: _withCtx(({ left, content }) => [
+      _createVNode($setup["FMinimizablePanel"], { slot: left }, {
+        default: _withCtx(({ footer }) => [
+          _createElementVNode("div", { slot: footer }, "Lorem ipsum", 8, _hoisted_1)
         ]),
         _: 1
         /* STABLE */
       }, 8, ["slot"]),
-      _createElementVNode("div", {
-        slot: layoutScope.content
-      }, "Inneh\xE5ll", 8, _hoisted_2)
+      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_2)
     ]),
     _: 1
     /* STABLE */
@@ -72,7 +66,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-04a198"
+  selector: "#example-b9054b"
 });
 export {
   render

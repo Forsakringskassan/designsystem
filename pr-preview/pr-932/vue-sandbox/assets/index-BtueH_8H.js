@@ -15628,12 +15628,12 @@ const _hoisted_7$d = {
   class: "modal__title",
   tabindex: "-1"
 };
-const _hoisted_8$a = {
+const _hoisted_8$9 = {
   ref: "modalContent",
   class: "modal__content",
   tabindex: "-1"
 };
-const _hoisted_9$8 = {
+const _hoisted_9$7 = {
   class: "modal__footer"
 };
 const _hoisted_10$5 = {
@@ -15658,7 +15658,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createBaseVNode("div", _hoisted_4$u, [createBaseVNode("div", _hoisted_5$o, [createBaseVNode("div", _hoisted_6$i, [createBaseVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$a, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$5, [createBaseVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$5, [createBaseVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -20945,7 +20945,7 @@ const _hoisted_6$a = {
 const _hoisted_7$7 = {
   key: 1
 };
-const _hoisted_8$6 = ["colspan"];
+const _hoisted_8$5 = ["colspan"];
 /* @__PURE__ */ defineComponent({
   ...{
     inheritAttrs: false
@@ -21129,7 +21129,7 @@ const _hoisted_8$6 = ["colspan"];
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(
         /** Text som visas som standardinnehåll i slotten `empty` (när tabellen är tom). */
         unref($t2)("fkui.data-table.empty", "Tabellen är tom")
-      ), 1)])], 8, _hoisted_8$6)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
+      ), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
         return openBlock(), createElementBlock("tr", {
           key: rowKey(row),
           class: "table__row"

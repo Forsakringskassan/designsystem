@@ -14972,12 +14972,12 @@ const _hoisted_7$d = {
   class: "modal__title",
   tabindex: "-1"
 };
-const _hoisted_8$a = {
+const _hoisted_8$9 = {
   ref: "modalContent",
   class: "modal__content",
   tabindex: "-1"
 };
-const _hoisted_9$8 = {
+const _hoisted_9$7 = {
   class: "modal__footer"
 };
 const _hoisted_10$5 = {
@@ -15002,7 +15002,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createBaseVNode("div", _hoisted_4$u, [createBaseVNode("div", _hoisted_5$o, [createBaseVNode("div", _hoisted_6$i, [createBaseVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$a, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$5, [createBaseVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$5, [createBaseVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -21452,7 +21452,7 @@ const _hoisted_6$a = {
 const _hoisted_7$7 = {
   key: 1
 };
-const _hoisted_8$6 = ["colspan"];
+const _hoisted_8$5 = ["colspan"];
 /* @__PURE__ */ defineComponent({
   ...{
     inheritAttrs: false
@@ -21636,7 +21636,7 @@ const _hoisted_8$6 = ["colspan"];
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(
         /** Text som visas som standardinnehåll i slotten `empty` (när tabellen är tom). */
         unref($t2)("fkui.data-table.empty", "Tabellen är tom")
-      ), 1)])], 8, _hoisted_8$6)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
+      ), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
         return openBlock(), createElementBlock("tr", {
           key: rowKey(row),
           class: "table__row"
@@ -22971,11 +22971,11 @@ const _hoisted_6$6 = {
 const _hoisted_7$4 = {
   class: "sr-only"
 };
-const _hoisted_8$4 = {
+const _hoisted_8$3 = {
   key: 1,
   scope: "col"
 };
-const _hoisted_9$4 = {
+const _hoisted_9$3 = {
   class: "sr-only"
 };
 const _hoisted_10$1 = ["innerHTML"];
@@ -23409,7 +23409,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
       }))), _cache[4] || (_cache[4] = createTextVNode()), unref(isExpandableTable) ? (openBlock(), createElementBlock("th", _hoisted_6$6, [createBaseVNode("span", _hoisted_7$4, toDisplayString(
         /** Kolumnrubrik som visas för skärmläsare om funktionen för expanderbara rader (`expandable-attribute`) aktiveras */
         unref($t2)("fkui.interactive-table.expand", "Expandera")
-      ), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$4, [createBaseVNode("span", _hoisted_9$4, toDisplayString(
+      ), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$3, [createBaseVNode("span", _hoisted_9$3, toDisplayString(
         /** Kolumnrubrik som visas för skärmläsare om funktionen för valbara rader (`selectable`) aktiveras */
         unref($t2)("fkui.interactive-table.select", "Markera")
       ), 1)])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
@@ -24148,8 +24148,8 @@ const _hoisted_6$3 = {
 const _hoisted_7$2 = {
   class: "imenu__list__anchor-container"
 };
-const _hoisted_8$2 = ["aria-expanded"];
-const _hoisted_9$2 = {
+const _hoisted_8$1 = ["aria-expanded"];
+const _hoisted_9$1 = {
   class: "sr-only"
 };
 function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
@@ -24194,10 +24194,10 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     role: "menuitem",
     "aria-haspopup": "menu",
     "aria-expanded": _ctx.popupOpen ? "true" : "false"
-  }, [createBaseVNode("span", _hoisted_9$2, [createBaseVNode("span", null, toDisplayString(_ctx.popupMenuSrText) + " ", 1)]), createTextVNode(" " + toDisplayString(_ctx.popupLabel) + " ", 1), createVNode(_component_f_icon, {
+  }, [createBaseVNode("span", _hoisted_9$1, [createBaseVNode("span", null, toDisplayString(_ctx.popupMenuSrText) + " ", 1)]), createTextVNode(" " + toDisplayString(_ctx.popupLabel) + " ", 1), createVNode(_component_f_icon, {
     name: "arrow-down",
     class: "imenu__list__anchor-icon-right"
-  })], 8, _hoisted_8$2)])], 2)])) : createCommentVNode("", true)], 32), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_popup_menu, {
+  })], 8, _hoisted_8$1)])], 2)])) : createCommentVNode("", true)], 32), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_popup_menu, {
     ref: "popup-menu",
     modelValue: _ctx.selectedItem,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.selectedItem = $event),
