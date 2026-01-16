@@ -4370,8 +4370,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     } = useSelectable({
       selectable: __props.selectable,
       selectedRows,
-      rows: () => __props.rows
-      // wrap in getter since destructured prop
+      rows: keyedRows
     });
     const tableApi = useTabstop(tableRef, metaRows);
     __expose(tableApi);
