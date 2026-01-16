@@ -45,6 +45,7 @@
     "production",
     "globala inställningar",
     "config",
+    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -90,7 +91,6 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -149,6 +149,20 @@
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
     "FCrudButton",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
     "Testverktyg",
     "testfall",
     "jest",
@@ -184,20 +198,6 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
-    "På gång",
-    "pågående arbete",
-    "planerat arbete",
-    "framtid",
-    "Releaser",
-    "deprekering",
-    "borttagna komponenter",
-    "Releaseanteckningar",
-    "version",
-    "Designsystemet",
-    "status",
-    "produktionsklar",
-    "beta",
-    "experimentell",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -221,6 +221,12 @@
     "densify() function",
     "densitet",
     "sass",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -258,12 +264,6 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -508,16 +508,16 @@
     "ICalendarMonth",
     "Animerad expandering",
     "IAnimateExpand",
-    "Filväljare",
-    "FFileSelector",
-    "Filpresentatör",
-    "FFileItem",
     "Expanderbart stycke",
     "FExpandableParagraph",
     "Expanderbar panel",
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
+    "Filväljare",
+    "FFileSelector",
+    "Filpresentatör",
+    "FFileItem",
     "Version 6 migreringsguide: @fkui/vue",
     "Version 6 migreringsguide",
     "Version 6 migreringsguide: @fkui/logic",
@@ -734,6 +734,11 @@
       ]
     },
     {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
       "url": "components/pagination.html",
       "title": "Paginering",
       "terms": [
@@ -852,11 +857,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -986,6 +986,40 @@
       ]
     },
     {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": [
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": [
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
+      ]
+    },
+    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": [
@@ -1049,40 +1083,6 @@
       ]
     },
     {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
-      "terms": [
-        "pågående arbete",
-        "planerat arbete",
-        "framtid"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
-      "terms": [
-        "deprekering",
-        "borttagna komponenter"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
-      "terms": [
-        "version"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": [
-        "status",
-        "produktionsklar",
-        "beta",
-        "experimentell"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1138,6 +1138,27 @@
       "terms": [
         "densitet",
         "sass"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
       ]
     },
     {
@@ -1200,27 +1221,6 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
       ]
     },
     {
@@ -1780,20 +1780,6 @@
       ]
     },
     {
-      "url": "components/file-upload/ffileselector.html",
-      "title": "Filväljare",
-      "terms": [
-        "FFileSelector"
-      ]
-    },
-    {
-      "url": "components/file-upload/ffileitem.html",
-      "title": "Filpresentatör",
-      "terms": [
-        "FFileItem"
-      ]
-    },
-    {
       "url": "components/expandable/fexpandableparagraph.html",
       "title": "Expanderbart stycke",
       "terms": [
@@ -1812,6 +1798,20 @@
       "title": "Expanderbart innehåll",
       "terms": [
         "FExpand"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileselector.html",
+      "title": "Filväljare",
+      "terms": [
+        "FFileSelector"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileitem.html",
+      "title": "Filpresentatör",
+      "terms": [
+        "FFileItem"
       ]
     },
     {
@@ -2312,50 +2312,50 @@
     "43": 11,
     "44": 11,
     "45": 12,
-    "46": 12,
-    "47": 12,
+    "46": 13,
+    "47": 13,
     "48": 13,
-    "49": 13,
+    "49": 14,
     "50": 14,
-    "51": 14,
+    "51": 15,
     "52": 15,
-    "53": 15,
-    "54": 15,
-    "55": 15,
-    "56": 15,
+    "53": 16,
+    "54": 16,
+    "55": 16,
+    "56": 16,
     "57": 16,
-    "58": 16,
+    "58": 17,
     "59": 17,
-    "60": 17,
+    "60": 18,
     "61": 18,
-    "62": 18,
-    "63": 18,
-    "64": 18,
-    "65": 18,
-    "66": 18,
+    "62": 19,
+    "63": 19,
+    "64": 19,
+    "65": 19,
+    "66": 19,
     "67": 19,
-    "68": 19,
+    "68": 20,
     "69": 20,
-    "70": 20,
-    "71": 20,
+    "70": 21,
+    "71": 21,
     "72": 21,
-    "73": 21,
-    "74": 21,
+    "73": 22,
+    "74": 22,
     "75": 22,
-    "76": 22,
+    "76": 23,
     "77": 23,
-    "78": 23,
-    "79": 23,
+    "78": 24,
+    "79": 24,
     "80": 24,
-    "81": 24,
+    "81": 25,
     "82": 25,
-    "83": 25,
-    "84": 25,
-    "85": 25,
-    "86": 25,
-    "87": 25,
+    "83": 26,
+    "84": 26,
+    "85": 26,
+    "86": 26,
+    "87": 26,
     "88": 26,
-    "89": 26,
+    "89": 27,
     "90": 27,
     "91": 28,
     "92": 28,
@@ -2419,49 +2419,49 @@
     "150": 42,
     "151": 42,
     "152": 42,
-    "153": 42,
-    "154": 42,
-    "155": 42,
-    "156": 42,
-    "157": 42,
-    "158": 42,
-    "159": 42,
-    "160": 42,
-    "161": 42,
-    "162": 42,
-    "163": 43,
-    "164": 43,
-    "165": 43,
-    "166": 43,
-    "167": 43,
-    "168": 43,
-    "169": 43,
-    "170": 43,
-    "171": 43,
-    "172": 44,
-    "173": 44,
-    "174": 44,
-    "175": 44,
-    "176": 44,
-    "177": 44,
-    "178": 44,
-    "179": 44,
-    "180": 45,
-    "181": 46,
+    "153": 43,
+    "154": 43,
+    "155": 43,
+    "156": 44,
+    "157": 44,
+    "158": 45,
+    "159": 45,
+    "160": 45,
+    "161": 45,
+    "162": 45,
+    "163": 46,
+    "164": 46,
+    "165": 46,
+    "166": 46,
+    "167": 46,
+    "168": 46,
+    "169": 46,
+    "170": 46,
+    "171": 46,
+    "172": 46,
+    "173": 46,
+    "174": 46,
+    "175": 46,
+    "176": 46,
+    "177": 47,
+    "178": 47,
+    "179": 47,
+    "180": 47,
+    "181": 47,
     "182": 47,
     "183": 47,
-    "184": 48,
-    "185": 48,
+    "184": 47,
+    "185": 47,
     "186": 48,
     "187": 48,
-    "188": 49,
-    "189": 49,
-    "190": 49,
-    "191": 50,
-    "192": 50,
-    "193": 51,
-    "194": 51,
-    "195": 51,
+    "188": 48,
+    "189": 48,
+    "190": 48,
+    "191": 48,
+    "192": 48,
+    "193": 48,
+    "194": 49,
+    "195": 50,
     "196": 51,
     "197": 51,
     "198": 52,
@@ -2489,45 +2489,45 @@
     "220": 58,
     "221": 59,
     "222": 59,
-    "223": 59,
-    "224": 59,
-    "225": 59,
-    "226": 59,
-    "227": 59,
-    "228": 59,
-    "229": 59,
-    "230": 60,
-    "231": 60,
-    "232": 60,
-    "233": 61,
-    "234": 61,
-    "235": 61,
-    "236": 61,
-    "237": 61,
-    "238": 62,
-    "239": 62,
-    "240": 62,
-    "241": 62,
-    "242": 62,
-    "243": 62,
-    "244": 62,
-    "245": 62,
-    "246": 62,
-    "247": 62,
-    "248": 62,
-    "249": 62,
-    "250": 63,
-    "251": 63,
-    "252": 63,
-    "253": 63,
-    "254": 63,
-    "255": 63,
-    "256": 63,
-    "257": 63,
-    "258": 64,
-    "259": 64,
-    "260": 65,
-    "261": 65,
+    "223": 60,
+    "224": 60,
+    "225": 61,
+    "226": 61,
+    "227": 62,
+    "228": 62,
+    "229": 62,
+    "230": 62,
+    "231": 62,
+    "232": 62,
+    "233": 62,
+    "234": 62,
+    "235": 62,
+    "236": 63,
+    "237": 63,
+    "238": 63,
+    "239": 64,
+    "240": 64,
+    "241": 64,
+    "242": 64,
+    "243": 64,
+    "244": 65,
+    "245": 65,
+    "246": 65,
+    "247": 65,
+    "248": 65,
+    "249": 65,
+    "250": 65,
+    "251": 65,
+    "252": 65,
+    "253": 65,
+    "254": 65,
+    "255": 65,
+    "256": 66,
+    "257": 66,
+    "258": 66,
+    "259": 66,
+    "260": 66,
+    "261": 66,
     "262": 66,
     "263": 66,
     "264": 67,
