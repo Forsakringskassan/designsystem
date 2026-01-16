@@ -28,19 +28,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-footer.vue:FDetailsPanelPageObject-footer-d5994c.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-el.vue:FDetailsPanelPageObject-el-4de4c8.js
 import { defineComponent as _defineComponent } from "vue";
-import { onMounted } from "vue";
 import { FDetailsPanel, FPageLayout, useDetailsPanel } from "@fkui/vue";
-import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createVNode as _createVNode, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject-footer",
+  __name: "FDetailsPanelPageObject-el",
   setup(__props, { expose: __expose }) {
     __expose();
-    onMounted(() => {
-      useDetailsPanel("awesome-panel").open("foo");
-    });
-    const __returned__ = { get FDetailsPanel() {
+    const panel = useDetailsPanel("awesome-panel");
+    const __returned__ = { panel, get FDetailsPanel() {
       return FDetailsPanel;
     }, get FPageLayout() {
       return FPageLayout;
@@ -50,21 +47,24 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   }
 });
 var _hoisted_1 = ["slot"];
-var _hoisted_2 = ["slot"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FPageLayout"], { layout: "three-column" }, {
     default: _withCtx(({ left, content }) => [
       _createVNode($setup["FDetailsPanel"], {
         slot: left,
         name: "awesome-panel"
-      }, {
-        default: _withCtx(({ footer }) => [
-          _createElementVNode("div", { slot: footer }, "Lorem ipsum", 8, _hoisted_1)
-        ]),
-        _: 1
-        /* STABLE */
-      }, 8, ["slot"]),
-      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_2)
+      }, null, 8, ["slot"]),
+      _createElementVNode("div", { slot: content }, [
+        _cache[1] || (_cache[1] = _createTextVNode(
+          " Inneh\xE5ll ",
+          -1
+          /* CACHED */
+        )),
+        _createElementVNode("button", {
+          type: "button",
+          onClick: _cache[0] || (_cache[0] = ($event) => $setup.panel.open("foo"))
+        }, "\xD6ppna")
+      ], 8, _hoisted_1)
     ]),
     _: 1
     /* STABLE */
@@ -73,7 +73,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d5994c"
+  selector: "#example-4de4c8"
 });
 export {
   render
