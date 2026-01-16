@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableLiveExample.vue:FTableLiveExample-4601ce.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableLiveExample.vue:FTableLiveExample-0858cf.js
 import { defineComponent, h as h2 } from "vue";
 import { formatNumber } from "@fkui/logic";
 import { FCheckboxField, FFieldset, FRadioField, FSelectField } from "@fkui/vue";
@@ -75,7 +75,7 @@ var columnsBase = defineTableColumns([
     type: "button",
     header: "Knapp",
     icon: "bell",
-    value(row) {
+    text(row) {
       return `Exempeltext f\xF6r knapp med id ${row.id}`;
     },
     onClick: (row) => {
@@ -86,7 +86,7 @@ var columnsBase = defineTableColumns([
     header: "L\xE4nk",
     type: "anchor",
     href: "#",
-    value() {
+    text() {
       return "L\xE4nktext";
     }
   },
@@ -122,7 +122,7 @@ var columnsWithHeader = [
     {
       type: "rowheader",
       header: "Oformaterad text",
-      value(row) {
+      text(row) {
         return String(row.antal);
       }
     }
@@ -574,7 +574,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4601ce"
+  selector: "#example-0858cf"
 });
 export {
   render

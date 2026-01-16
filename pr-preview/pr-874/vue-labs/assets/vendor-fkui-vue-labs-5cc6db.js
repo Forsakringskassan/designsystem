@@ -2703,13 +2703,13 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
         ref: "target",
-        checked: __props.column.value(__props.row),
+        checked: __props.column.checked(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
       }, null, 40, _hoisted_2$7)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
-        checked: __props.column.value(__props.row),
+        checked: __props.column.checked(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value
       }, null, 8, _hoisted_4$3)], 512));
@@ -2746,7 +2746,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("td", _hoisted_1$9, [createElementVNode("input", {
         ref: "input",
         type: "radio",
-        checked: __props.column.value(__props.row),
+        checked: __props.column.checked(__props.row),
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
@@ -2798,7 +2798,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
       label() {
         return $t("fkui.table.selectable.checkbox", "V\xE4lj rad");
       },
-      value() {
+      checked() {
         return __props.state;
       },
       editable() {
@@ -2819,7 +2819,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
       label() {
         return $t("fkui.table.selectable.radio", "V\xE4lj rad");
       },
-      value() {
+      checked() {
         return __props.state;
       },
       update() {
@@ -3088,7 +3088,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   }) {
     const targetElement = useTemplateRef("target");
     const renderAnchor = computed(() => {
-      return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
+      return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
     });
     const expose = {
       tabstopEl: targetElement
@@ -3101,7 +3101,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.value(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -3137,7 +3137,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       }
     }
     const renderButton = computed(() => {
-      return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
+      return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
     });
     const expose = {
       tabstopEl: renderButton.value ? buttonElement : tdElement
@@ -3153,7 +3153,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       }, [__props.column.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: __props.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.value(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
@@ -3268,7 +3268,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         onClick: onOpen
       }, [createVNode(unref(FIcon), {
         name: "bars"
-      }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$3, toDisplayString(__props.column.value(__props.row)), 1)], 512), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref(FContextMenu), {
+      }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$3, toDisplayString(__props.column.text(__props.row)), 1)], 512), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref(FContextMenu), {
         "is-open": isOpen.value,
         items: menuitems.value,
         anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
@@ -3290,7 +3290,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
         ref: "th",
         class: "table-ng__cell table-ng__cell--rowheader",
         scope: "row"
-      }, toDisplayString(__props.column.value(__props.row)), 513);
+      }, toDisplayString(__props.column.text(__props.row)), 513);
     };
   }
 });
@@ -3318,7 +3318,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     const {
       stopEdit: stopEdit2
     } = useStartStopEdit();
-    const viewValue = ref(__props.column.value(__props.row));
+    const viewValue = ref(__props.column.selected(__props.row));
     const ariaLabel = computed(() => {
       const value = __props.column.label(__props.row);
       return value.length > 0 ? value : void 0;
@@ -3507,7 +3507,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         "input-node": editRef.value,
         onSelect: onDropdownSelect,
         onClose: onDropdownClose
-      }, null, 8, ["is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_4$2, toDisplayString(__props.column.value(__props.row)), 1));
+      }, null, 8, ["is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_4$2, toDisplayString(__props.column.selected(__props.row)), 1));
     };
   }
 });
@@ -3858,7 +3858,7 @@ function normalizeTableColumn(column) {
         description,
         size,
         label: getLabelFn(column.label),
-        value: getValueFn(column.value, column.key, Boolean, false),
+        checked: getValueFn(column.checked, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
           var _column$editable;
@@ -3875,7 +3875,7 @@ function normalizeTableColumn(column) {
         description,
         size,
         label: getLabelFn(column.label),
-        value: getValueFn(column.value, column.key, Boolean, false),
+        checked: getValueFn(column.checked, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
         component: _sfc_main$b
@@ -3953,7 +3953,7 @@ function normalizeTableColumn(column) {
         header: toRef(column.header),
         description,
         size,
-        value: getValueFn(column.value, column.key, String, ""),
+        text: getValueFn(column.text, column.key, String, ""),
         sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
         component: _sfc_main$6
       };
@@ -3964,7 +3964,7 @@ function normalizeTableColumn(column) {
         header: toRef(column.header),
         description,
         size,
-        value: getValueFn(column.value, column.key, String, ""),
+        text: getValueFn(column.text, column.key, String, ""),
         href: column.href,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
           var _column$enabled;
@@ -3980,7 +3980,7 @@ function normalizeTableColumn(column) {
         header: toRef(column.header),
         description,
         size,
-        value: getValueFn(column.value, column.key, String, ""),
+        text: getValueFn(column.text, column.key, String, ""),
         onClick: column.onClick,
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
           var _column$enabled2;
@@ -3998,7 +3998,7 @@ function normalizeTableColumn(column) {
         description,
         size,
         label: getLabelFn(column.label),
-        value: getValueFn(column.value, column.key, String, ""),
+        selected: getValueFn(column.selected, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable: typeof column.editable === "function" ? column.editable : () => {
           var _column$editable4;
@@ -4012,7 +4012,7 @@ function normalizeTableColumn(column) {
       return {
         type: "menu",
         id: /* @__PURE__ */ Symbol(),
-        header: column.header,
+        header: toRef(column.header),
         description,
         size,
         sortable: null,
@@ -4025,7 +4025,7 @@ function normalizeTableColumn(column) {
           };
         }),
         component: _sfc_main$7,
-        value: column.value,
+        text: getValueFn(column.text, void 0, String, ""),
         enabled: typeof column.enabled === "function" ? column.enabled : () => {
           var _column$enabled3;
           return Boolean((_column$enabled3 = column.enabled) !== null && _column$enabled3 !== void 0 ? _column$enabled3 : true);
@@ -4517,8 +4517,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     } = useSelectable({
       selectable: __props.selectable,
       selectedRows,
-      rows: () => __props.rows
-      // wrap in getter since destructured prop
+      rows: keyedRows
     });
     const tableApi = useTabstop(tableRef, metaRows);
     __expose(tableApi);

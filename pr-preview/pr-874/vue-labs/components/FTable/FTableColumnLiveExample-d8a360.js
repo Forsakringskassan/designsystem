@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-0aa996.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-d8a360.js
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import {
@@ -54,7 +54,7 @@ var ITableAnchor_default = /* @__PURE__ */ _defineComponent({
   setup(__props, { expose: __expose }) {
     const targetElement = useTemplateRef("target");
     const renderAnchor = computed(() => {
-      return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
+      return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
     });
     const expose = { tabstopEl: targetElement };
     __expose(expose);
@@ -85,7 +85,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       target: "_blank",
       href: $props.column.href,
       tabindex: "-1"
-    }, _toDisplayString($props.column.value($props.row)), 9, _hoisted_2)
+    }, _toDisplayString($props.column.text($props.row)), 9, _hoisted_2)
   ])) : (_openBlock(), _createElementBlock(
     "td",
     _hoisted_3,
@@ -121,7 +121,7 @@ var ITableButton_default = /* @__PURE__ */ _defineComponent2({
       }
     }
     const renderButton = computed2(() => {
-      return __props.column.enabled(__props.row) && __props.column.value(__props.row) !== null;
+      return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
     });
     const expose = { tabstopEl: renderButton.value ? buttonElement : tdElement };
     __expose(expose);
@@ -165,7 +165,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
         _createElementVNode2(
           "span",
           _hoisted_22,
-          _toDisplayString2($props.column.value($props.row)),
+          _toDisplayString2($props.column.text($props.row)),
           1
           /* TEXT */
         )
@@ -231,7 +231,7 @@ function render3(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.column.editable($props.row) ? (_openBlock3(), _createElementBlock3("td", _hoisted_13, [
     _createElementVNode3("input", {
       ref: "target",
-      checked: $props.column.value($props.row),
+      checked: $props.column.checked($props.row),
       type: "checkbox",
       "aria-label": $setup.ariaLabel,
       tabindex: "-1",
@@ -242,7 +242,7 @@ function render3(_ctx, _cache, $props, $setup, $data, $options) {
     _hoisted_33,
     [
       _createElementVNode3("input", {
-        checked: $props.column.value($props.row),
+        checked: $props.column.checked($props.row),
         type: "checkbox",
         "aria-label": $setup.ariaLabel
       }, null, 8, _hoisted_4)
@@ -334,7 +334,7 @@ function render4(_ctx, _cache, $props, $setup, $data, $options) {
         _createElementVNode4(
           "span",
           _hoisted_24,
-          _toDisplayString3($props.column.value($props.row)),
+          _toDisplayString3($props.column.text($props.row)),
           1
           /* TEXT */
         )
@@ -393,7 +393,7 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
     _createElementVNode5("input", {
       ref: "input",
       type: "radio",
-      checked: $props.column.value($props.row),
+      checked: $props.column.checked($props.row),
       "aria-label": $setup.ariaLabel,
       tabindex: "-1",
       onChange: $setup.onChange
@@ -431,7 +431,7 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
       class: "table-ng__cell table-ng__cell--rowheader",
       scope: "row"
     },
-    _toDisplayString4($props.column.value($props.row)),
+    _toDisplayString4($props.column.text($props.row)),
     513
     /* TEXT, NEED_PATCH */
   );
@@ -467,7 +467,7 @@ var ITableSelect_default = /* @__PURE__ */ _defineComponent7({
     const editing = ref2(false);
     const editRef = useTemplateRef6("edit");
     const { stopEdit } = useStartStopEdit();
-    const viewValue = ref2(__props.column.value(__props.row));
+    const viewValue = ref2(__props.column.selected(__props.row));
     const ariaLabel = computed6(() => {
       const value = __props.column.label(__props.row);
       return value.length > 0 ? value : void 0;
@@ -712,7 +712,7 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
   )) : (_openBlock7(), _createElementBlock7(
     "td",
     _hoisted_42,
-    _toDisplayString5($props.column.value($props.row)),
+    _toDisplayString5($props.column.selected($props.row)),
     1
     /* TEXT */
   ));
@@ -1280,7 +1280,7 @@ function stringifyObject(obj) {
   return `{ ${props.join(", ")} }`;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-0aa996.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-d8a360.js
 import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode8, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode3, openBlock as _openBlock9, createBlock as _createBlock3, createCommentVNode as _createCommentVNode7, toDisplayString as _toDisplayString7 } from "vue";
 var columnData = {
   checkbox: {
@@ -1368,13 +1368,13 @@ var columnData = {
   anchor: {
     type: "anchor",
     header: "L\xE4nk",
-    value: () => "value",
+    text: () => "value",
     href: "#"
   },
   button: {
     type: "button",
     header: "Knapp",
-    value: () => "value",
+    text: () => "value",
     icon: "bell"
   },
   select: {
@@ -1391,7 +1391,7 @@ var columnData = {
   menu: {
     type: "menu",
     header: "Kontextmeny",
-    value() {
+    text() {
       return "Sk\xE4rml\xE4sartext";
     }
   }
@@ -1895,7 +1895,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render9;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-0aa996"
+  selector: "#example-d8a360"
 });
 export {
   render9 as render

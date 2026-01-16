@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableContextmenuExample.vue:FTableContextmenuExample-034f0c.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableContextmenuExample.vue:FTableContextmenuExample-e24c8e.js
 import { defineComponent as _defineComponent } from "vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 import { openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -55,7 +55,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       {
         header: "\xC5tg\xE4rd",
         type: "menu",
-        value(row) {
+        text(row) {
           return `Visa \xE5tg\xE4rder f\xF6r rad "${row.id}"`;
         },
         actions: [
@@ -118,7 +118,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-034f0c"
+  selector: "#example-e24c8e"
 });
 export {
   render
