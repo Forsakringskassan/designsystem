@@ -2746,7 +2746,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("td", _hoisted_1$8, [createElementVNode("input", {
         ref: "input",
         type: "radio",
-        checked: __props.column.selected(__props.row),
+        checked: __props.column.checked(__props.row),
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
@@ -2819,7 +2819,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
       label() {
         return $t("fkui.table.selectable.radio", "V\xE4lj rad");
       },
-      selected() {
+      checked() {
         return __props.state;
       },
       update() {
@@ -3752,7 +3752,7 @@ function normalizeTableColumn(column) {
         description,
         size,
         label: getLabelFn(column.label),
-        selected: getValueFn(column.selected, column.key, Boolean, false),
+        checked: getValueFn(column.checked, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
         component: _sfc_main$a
@@ -4371,8 +4371,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     } = useSelectable({
       selectable: __props.selectable,
       selectedRows,
-      rows: () => __props.rows
-      // wrap in getter since destructured prop
+      rows: keyedRows
     });
     const tableApi = useTabstop(tableRef, metaRows);
     __expose(tableApi);

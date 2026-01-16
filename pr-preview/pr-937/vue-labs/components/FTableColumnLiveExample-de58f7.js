@@ -293,7 +293,7 @@ function render4(_ctx, _cache, $props, $setup, $data, $options) {
     _createElementVNode4("input", {
       ref: "input",
       type: "radio",
-      checked: $props.column.selected($props.row),
+      checked: $props.column.checked($props.row),
       "aria-label": $setup.ariaLabel,
       tabindex: "-1",
       onChange: $setup.onChange
