@@ -113,8 +113,8 @@ export interface AttributeOptions {
  */
 export interface InputTypeTextConfig {
     attributes(): InputAttribute[];
-    formatter(this: AttributeOptions, value: string): string | undefined;
-    parser(this: AttributeOptions, value: string): string | undefined;
+    formatter(this: void, value: string): string | undefined;
+    parser(this: void, value: string): string | undefined;
     readonly validationConfig: ValidatorConfigs;
 }
 

@@ -1,6 +1,7 @@
 import { type VNode, ref } from "vue";
 import { h } from "vue";
 import { assertSet } from "@fkui/logic";
+import { FValidationForm } from "@fkui/vue";
 import { FSortFilterDatasetPageObject } from "@fkui/vue/cypress";
 import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
@@ -12,15 +13,14 @@ const table = new FTablePageObject();
 
 function renderButton(
     text: string,
-    dataTest: string,
-    onClick?: () => void,
+    options?: { dataTest?: string; onClick?: () => void; type?: string },
 ): VNode {
     return h(
         "button",
         {
-            type: "button",
-            "data-test": dataTest,
-            onClick,
+            type: options?.type ?? "button",
+            "data-test": options?.dataTest,
+            onClick: options?.onClick,
         },
         text,
     );
@@ -147,6 +147,433 @@ describe("1.5 Separator", () => {
         table.expandButton(3).click();
         table.expandButton(1).click();
         cy.toMatchScreenshot();
+    });
+});
+
+describe("3.1 Feedback to user on invalid input components", () => {
+    it("should not display error when initial value is valid", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "12345",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("not.have.class", "table-ng__cell--error");
+    });
+
+    it("should display error when initial value is invalid", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "123456",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+    });
+
+    it("should display error when invalid value is entered", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table.cell({ row: 1, col: 1 }).click();
+        cy.focused().type("123456");
+        cy.focused().blur();
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+    });
+
+    it("should not display error while editing value", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "123456",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table.cell({ row: 1, col: 1 }).click();
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+        cy.focused().type("7");
+        table
+            .cell({ row: 1, col: 1 })
+            .should("not.have.class", "table-ng__cell--error");
+        cy.focused().blur();
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+    });
+
+    it("should not display error after correction", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "123456",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table.cell({ row: 1, col: 1 }).click();
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+        cy.focused().clear();
+        cy.focused().type("12345");
+        cy.focused().blur();
+        table
+            .cell({ row: 1, col: 1 })
+            .should("not.have.class", "table-ng__cell--error");
+    });
+
+    it("should retain original value when directly pressing escape on started edit", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "12345",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("not.have.class", "table-ng__cell--error");
+        table.cell({ row: 1, col: 1 }).click();
+        table.cell({ row: 1, col: 1 }).get("input").should("have.focus");
+        table.cell({ row: 1, col: 1 }).press("Escape");
+        table.cell({ row: 1, col: 1 }).should("have.focus");
+        table
+            .cell({ row: 1, col: 1 })
+            .should("not.have.class", "table-ng__cell--error");
+    });
+
+    it("should retain original value when editing valid value and pressing escape", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "12345",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("not.have.class", "table-ng__cell--error");
+        table.cell({ row: 1, col: 1 }).click();
+        cy.focused().type("6");
+        cy.focused().press("Escape");
+        table.cell({ row: 1, col: 1 }).should("have.focus");
+        table.cell({ row: 1, col: 1 }).should("contain.text", "12345");
+        table
+            .cell({ row: 1, col: 1 })
+            .should("not.have.class", "table-ng__cell--error");
+    });
+
+    it("should retain original value when editing invalid value and pressing escape", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "123456",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+        table.cell({ row: 1, col: 1 }).click();
+        cy.focused().clear();
+        cy.focused().press("Escape");
+        table.cell({ row: 1, col: 1 }).should("have.focus");
+        table.cell({ row: 1, col: 1 }).should("contain.text", "123456");
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+    });
+
+    it("should emit validation events when validation is used", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text:number",
+                header: "Real validation",
+                editable: true,
+                key: "text",
+                label: () => "text",
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "1234",
+            },
+        ];
+
+        const onValidity = cy.spy().as("onValidity");
+        const onComponentValidity = cy.spy().as("onComponentValidity");
+        cy.mount(FTable<Row>, {
+            props: {
+                rows,
+                columns,
+                onValidity,
+                onComponentValidity,
+            },
+        });
+
+        cy.get("@onValidity").should("have.been.called");
+        cy.get("@onComponentValidity").should("have.been.called");
+
+        onValidity.resetHistory();
+        onComponentValidity.resetHistory();
+        table.cell({ row: 1, col: 1 }).click();
+        cy.focused().type("edit{enter}");
+
+        cy.get("@onValidity").should("have.been.called");
+        cy.get("@onComponentValidity").should("have.been.called");
+    });
+
+    it("should not emit validation events when no validation is used", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Fake validation",
+                editable: true,
+                key: "text",
+                label: () => "text",
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "1234",
+            },
+        ];
+
+        const onValidity = cy.spy().as("onValidity");
+        const onComponentValidity = cy.spy().as("onComponentValidity");
+        cy.mount(FTable<Row>, {
+            props: {
+                rows,
+                columns,
+                onValidity,
+                onComponentValidity,
+            },
+        });
+
+        cy.get("@onValidity").should("not.have.been.called");
+        cy.get("@onComponentValidity").should("not.have.been.called");
+
+        onValidity.resetHistory();
+        onComponentValidity.resetHistory();
+        table.cell({ row: 1, col: 1 }).click();
+        cy.focused().type("edit{enter}");
+
+        cy.get("@onValidity").should("not.have.been.called");
+        cy.get("@onComponentValidity").should("not.have.been.called");
+    });
+});
+
+describe("3.6 Feedback to user on table validation errors at submit", () => {
+    it("should focus on first error when form is submitted", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "1234",
+            },
+            {
+                text: "123456", // first invalid
+            },
+            {
+                text: "12345",
+            },
+            {
+                text: "1234567",
+            },
+        ];
+
+        cy.mount(() =>
+            h(FValidationForm, { useErrorList: false }, () => [
+                h(FTable<Row>, { rows, columns }),
+                renderButton("submit", { type: "submit" }),
+            ]),
+        );
+
+        cy.get("button").click();
+
+        table.cell({ row: 2, col: 1 }).should("have.focus");
     });
 });
 
@@ -407,21 +834,24 @@ describe("5 tabstop", () => {
 
         cy.mount(() =>
             h("div", [
-                renderButton("Before table", buttonBeforeTable),
+                renderButton("Before table", { dataTest: buttonBeforeTable }),
                 h(FTable<TabstopRow>, {
                     rows: rows.value,
                     columns,
                 }),
-                renderButton("After table", buttonAfterTable),
-                renderButton("Add row", buttonAddRow, () =>
-                    rows.value.push({
-                        foo: String(counter.value++),
-                        bar: "Added row",
-                    }),
-                ),
-                renderButton("Remove row", buttonRemoveRow, () =>
-                    rows.value.shift(),
-                ),
+                renderButton("After table", { dataTest: buttonAfterTable }),
+                renderButton("Add row", {
+                    dataTest: buttonAddRow,
+                    onClick: () =>
+                        rows.value.push({
+                            foo: String(counter.value++),
+                            bar: "Added row",
+                        }),
+                }),
+                renderButton("Remove row", {
+                    dataTest: buttonRemoveRow,
+                    onClick: () => rows.value.shift(),
+                }),
             ]),
         );
 
@@ -568,7 +998,7 @@ describe("5 tabstop", () => {
 
         cy.mount(() =>
             h("div", [
-                renderButton("Before table", buttonBeforeTable),
+                renderButton("Before table", { dataTest: buttonBeforeTable }),
                 h(
                     FTable<NavigationRow>,
                     {
