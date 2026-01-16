@@ -12,7 +12,7 @@
     }
 
     input:focus + label {
-        outline: 2px solid $radio-button-border-color-border-default;
+        outline: 2px solid $selectable-item-button-border-color-border-default;
         outline-offset: -2px;
     }
     input + label::after {

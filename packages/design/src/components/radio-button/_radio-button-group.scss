@@ -1,7 +1,7 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints" as bp;
+@use "../selectable-item/selectable-item";
 @use "./radio-button";
-@use "./item";
 
 .radio-button-group {
     &__content {
