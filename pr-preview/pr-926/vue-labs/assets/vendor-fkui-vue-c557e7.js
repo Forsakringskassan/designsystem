@@ -232,16 +232,16 @@ function requireIsCallable() {
   };
   return isCallable;
 }
-var isObject$1;
+var isObject$2;
 var hasRequiredIsObject$1;
 function requireIsObject$1() {
-  if (hasRequiredIsObject$1) return isObject$1;
+  if (hasRequiredIsObject$1) return isObject$2;
   hasRequiredIsObject$1 = 1;
   var isCallable2 = requireIsCallable();
-  isObject$1 = function(it) {
+  isObject$2 = function(it) {
     return typeof it == "object" ? it !== null : isCallable2(it);
   };
-  return isObject$1;
+  return isObject$2;
 }
 var getBuiltIn;
 var hasRequiredGetBuiltIn;
@@ -4930,12 +4930,12 @@ var _hoisted_7$d = {
   class: "modal__title",
   tabindex: "-1"
 };
-var _hoisted_8$a = {
+var _hoisted_8$9 = {
   ref: "modalContent",
   class: "modal__content",
   tabindex: "-1"
 };
-var _hoisted_9$8 = {
+var _hoisted_9$7 = {
   class: "modal__footer"
 };
 var _hoisted_10$4 = {
@@ -4960,7 +4960,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("div", _hoisted_4$u, [createElementVNode("div", _hoisted_5$o, [createElementVNode("div", _hoisted_6$i, [createElementVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$a, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$4, [createElementVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", _hoisted_10$4, [createElementVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -6872,60 +6872,76 @@ function requireEs_set_union_v2() {
   return es_set_union_v2;
 }
 requireEs_set_union_v2();
-var internalKey = /* @__PURE__ */ Symbol("internal-key");
+var sym = /* @__PURE__ */ Symbol("item-identifier");
 var internalIndex = 0;
-function getInternalKey() {
-  return internalKey;
+function isObject$1(value) {
+  return Boolean(value && typeof value === "object");
 }
-function setInternalKey(item, value) {
-  if (item[internalKey]) {
+function getLegacyInternalKey() {
+  return sym;
+}
+function findItemIdentifier(item) {
+  if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
+    return item[sym];
+  } else {
+    return void 0;
+  }
+}
+function getItemIdentifier(item) {
+  const identifier = findItemIdentifier(item);
+  if (identifier !== void 0) {
+    return identifier;
+  } else {
+    throw new TypeError("Expected item to have an internal key but no key was set");
+  }
+}
+function setItemIdentifier(item, value) {
+  const existing = findItemIdentifier(item);
+  if (existing !== void 0) {
     return;
   }
-  Object.defineProperty(item, internalKey, {
-    value: value !== null && value !== void 0 ? value : String(internalIndex++),
+  Object.defineProperty(item, sym, {
+    value: value !== null && value !== void 0 ? value : internalIndex++,
     enumerable: false,
-    writable: true
+    writable: false
   });
 }
-function setInternalKeys(items, key, nestedKey, seenValues = /* @__PURE__ */ new Set()) {
-  if (key === void 0) {
-    return items.map((item) => {
-      setInternalKey(item);
-      if (nestedKey !== void 0) {
-        const nestedItem = item[nestedKey];
+function setItemIdentifiers(items, attribute, expandableAttribute) {
+  const seenValues = /* @__PURE__ */ new Set();
+  const process = (items2) => {
+    return items2.map((item, index) => {
+      const value = attribute ? item[attribute] : void 0;
+      if (attribute) {
+        ensureUniqueKey(attribute, value, index, seenValues);
+      }
+      setItemIdentifier(item, value);
+      if (expandableAttribute !== void 0) {
+        const nestedItem = item[expandableAttribute];
         if (Array.isArray(nestedItem)) {
-          setInternalKeys(nestedItem);
+          process(nestedItem);
         }
       }
       return item;
     });
+  };
+  return process(items);
+}
+function ensureUniqueKey(attribute, value, index, seenValues) {
+  const keyString = String(attribute);
+  const invalidValue = (
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt
+    value === void 0 || value === null || String(value).length === 0
+  );
+  if (invalidValue) {
+    throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${String(index)}`);
   }
-  return items.map((item, index) => {
-    const value = item[key];
-    const keyString = String(key);
-    const invalidValue = (
-      /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- ok since we only test if the string is empty */
-      value === void 0 || value === null || String(value).length === 0
+  if (seenValues.has(value)) {
+    throw new Error(
+      /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
+      `Expected each item to have identifier [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
     );
-    if (invalidValue) {
-      throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${String(index)}`);
-    }
-    if (seenValues.has(value)) {
-      throw new Error(
-        /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
-        `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
-      );
-    }
-    setInternalKey(item, String(value));
-    seenValues.add(value);
-    if (nestedKey !== void 0) {
-      const nestedItem = item[nestedKey];
-      if (Array.isArray(nestedItem)) {
-        setInternalKeys(nestedItem, key, void 0, seenValues);
-      }
-    }
-    return item;
-  });
+  }
+  seenValues.add(value);
 }
 function getValidatableElement(element) {
   if (isValidatableHTMLElement(element)) {
@@ -7346,8 +7362,8 @@ var _hoisted_6$h = {
   "aria-hidden": "true"
 };
 var _hoisted_7$c = ["colspan"];
-var _hoisted_8$9 = ["colspan"];
-var _hoisted_9$7 = {
+var _hoisted_8$8 = ["colspan"];
+var _hoisted_9$6 = {
   key: 0,
   "aria-hidden": "true"
 };
@@ -7409,8 +7425,8 @@ function _sfc_render$E(_ctx, _cache, $props, $setup, $data, $options) {
       class: "calendar-month__cell",
       colspan: _ctx.getDayEndOffset(week.days),
       "aria-hidden": "true"
-    }, null, 8, _hoisted_8$9)) : createCommentVNode("", true)]);
-  }), 128)), _cache[20] || (_cache[20] = createTextVNode()), _ctx.weeks.length < 5 ? (openBlock(), createElementBlock("tr", _hoisted_9$7, [createElementVNode("td", {
+    }, null, 8, _hoisted_8$8)) : createCommentVNode("", true)]);
+  }), 128)), _cache[20] || (_cache[20] = createTextVNode()), _ctx.weeks.length < 5 ? (openBlock(), createElementBlock("tr", _hoisted_9$6, [createElementVNode("td", {
     class: "calendar-month__cell",
     colspan: _ctx.totalCols,
     "aria-hidden": "true"
@@ -7791,10 +7807,10 @@ var _hoisted_6$g = {
   class: "sr-only"
 };
 var _hoisted_7$b = ["aria-disabled", "aria-live"];
-var _hoisted_8$8 = {
+var _hoisted_8$7 = {
   class: "sr-only"
 };
-var _hoisted_9$6 = ["aria-disabled", "aria-live"];
+var _hoisted_9$5 = ["aria-disabled", "aria-live"];
 var _hoisted_10$2 = {
   class: "sr-only"
 };
@@ -7824,7 +7840,7 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-disabled": _ctx.previousDisabled,
     "aria-live": _ctx.isFocused("previousButton") ? "polite" : "off",
     onClick: _cache[1] || (_cache[1] = withModifiers((...args) => _ctx.onClickPreviousButton && _ctx.onClickPreviousButton(...args), ["stop"]))
-  }, [createElementVNode("span", _hoisted_8$8, toDisplayString(_ctx.previousSrText), 1), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
+  }, [createElementVNode("span", _hoisted_8$7, toDisplayString(_ctx.previousSrText), 1), _cache[6] || (_cache[6] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.previousIconClasses),
     name: "arrow-right"
   }, null, 8, ["class"])], 8, _hoisted_7$b)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), !_ctx.yearSelectorOpen ? (openBlock(), createElementBlock("button", {
@@ -7838,7 +7854,7 @@ function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createElementVNode("span", _hoisted_10$2, toDisplayString(_ctx.nextSrText), 1), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_f_icon, {
     class: normalizeClass(_ctx.nextIconClasses),
     name: "arrow-right"
-  }, null, 8, ["class"])], 8, _hoisted_9$6)) : createCommentVNode("", true)]);
+  }, null, 8, ["class"])], 8, _hoisted_9$5)) : createCommentVNode("", true)]);
 }
 var ICalendarNavbar = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$C]]);
 function tryOnScopeDispose(fn2) {
@@ -11340,7 +11356,7 @@ var _hoisted_6$e = {
 var _hoisted_7$a = {
   "aria-hidden": "true"
 };
-var _hoisted_8$7 = {
+var _hoisted_8$6 = {
   key: 0,
   class: "label__message label__message--error"
 };
@@ -11377,7 +11393,7 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
   }), _cache[4] || (_cache[4] = createTextVNode()), renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
     hasError: _ctx.hasError,
     validationMessage: _ctx.validity.validationMessage
-  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_8$7, [createVNode(_component_f_icon, {
+  })), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_8$6, [createVNode(_component_f_icon, {
     class: "label__icon--left",
     name: "error"
   }), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("", true)])], 2)) : createCommentVNode("", true)], 64)) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", {
@@ -14689,7 +14705,7 @@ var _hoisted_6$a = {
 var _hoisted_7$7 = {
   key: 1
 };
-var _hoisted_8$6 = ["colspan"];
+var _hoisted_8$5 = ["colspan"];
 var _sfc_main$A = /* @__PURE__ */ defineComponent({
   ...{
     inheritAttrs: false
@@ -14748,7 +14764,6 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
       registerCallbackOnSort,
       registerCallbackOnMount
     } = FSortFilterDatasetInjected();
-    const internalKey2 = getInternalKey();
     const columns = ref([]);
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
@@ -14779,9 +14794,9 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
         keyAttribute
       } = props;
       if (keyAttribute) {
-        return setInternalKeys(props.rows, keyAttribute);
+        return setItemIdentifiers(props.rows, keyAttribute);
       }
-      return setInternalKeys(props.rows);
+      return setItemIdentifiers(props.rows);
     });
     provide("addColumn", (column) => {
       if (column.type === FTableColumnType.ACTION) {
@@ -14800,8 +14815,8 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
     });
-    function rowKey(item) {
-      return String(item[internalKey2]);
+    function rowKey(row) {
+      return findItemIdentifier(row);
     }
     function columnClasses(column) {
       const classes = ["table__column", `table__column--${column.type}`, column.size];
@@ -14874,7 +14889,7 @@ var _sfc_main$A = /* @__PURE__ */ defineComponent({
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(
         /** Text som visas som standardinnehåll i slotten `empty` (när tabellen är tom). */
         unref($t2)("fkui.data-table.empty", "Tabellen \xE4r tom")
-      ), 1)])], 8, _hoisted_8$6)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
+      ), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
         return openBlock(), createElementBlock("tr", {
           key: rowKey(row),
           class: "table__row"
@@ -16526,10 +16541,10 @@ var _hoisted_6$9 = {
   class: "expandable-panel__icon"
 };
 var _hoisted_7$6 = ["id"];
-var _hoisted_8$5 = {
+var _hoisted_8$4 = {
   class: "expandable-panel__body"
 };
-var _hoisted_9$5 = {
+var _hoisted_9$4 = {
   key: 0,
   class: "expandable-panel__outside"
 };
@@ -16561,7 +16576,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [withDirectives(createElementVNode("div", {
       id: _ctx.id,
       class: "expandable-panel__content"
-    }, [createElementVNode("div", _hoisted_8$5, [renderSlot(_ctx.$slots, "default")]), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasOutsideSlot ? (openBlock(), createElementBlock("div", _hoisted_9$5, [renderSlot(_ctx.$slots, "outside")])) : createCommentVNode("", true)], 8, _hoisted_7$6), [[vShow, _ctx.expanded]])]),
+    }, [createElementVNode("div", _hoisted_8$4, [renderSlot(_ctx.$slots, "default")]), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasOutsideSlot ? (openBlock(), createElementBlock("div", _hoisted_9$4, [renderSlot(_ctx.$slots, "outside")])) : createCommentVNode("", true)], 8, _hoisted_7$6), [[vShow, _ctx.expanded]])]),
     _: 3
   })], 2);
 }
@@ -17298,11 +17313,11 @@ var _hoisted_6$6 = {
 var _hoisted_7$4 = {
   class: "sr-only"
 };
-var _hoisted_8$4 = {
+var _hoisted_8$3 = {
   key: 1,
   scope: "col"
 };
-var _hoisted_9$4 = {
+var _hoisted_9$3 = {
   class: "sr-only"
 };
 var _hoisted_10$1 = ["innerHTML"];
@@ -17413,7 +17428,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       registerCallbackBeforeItemDelete,
       setNestedKey
     } = ActivateItemInjected();
-    const internalKey2 = getInternalKey();
+    const internalKey = getLegacyInternalKey();
     const activeRow = ref(void 0);
     const columns = ref([]);
     const selectedRows = ref([]);
@@ -17431,7 +17446,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       expandableRows,
       hasExpandableContent,
       getExpandedIndex
-    } = useExpandableTable(__props.expandableAttribute, internalKey2, __props.expandableDescribedby, emit, slots);
+    } = useExpandableTable(__props.expandableAttribute, internalKey, __props.expandableDescribedby, emit, slots);
     const tbody = useTemplateRef("tbodyElement");
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
@@ -17484,9 +17499,9 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
     });
     const internalRows = computed(() => {
       if (isExpandableTable) {
-        return setInternalKeys(__props.rows, __props.keyAttribute, __props.expandableAttribute);
+        return setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute);
       }
-      return setInternalKeys(__props.rows, __props.keyAttribute);
+      return setItemIdentifiers(__props.rows, __props.keyAttribute);
     });
     provide("addColumn", (column) => {
       columns.value = addColumn(columns.value, column);
@@ -17548,10 +17563,10 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       if (!__props.showActive) {
         return false;
       }
-      return itemEquals(row, activeRow.value, internalKey2);
+      return itemEquals(row, activeRow.value, internalKey);
     }
     function isSelected(row) {
-      return includeItem(row, selectedRows.value, internalKey2);
+      return includeItem(row, selectedRows.value, internalKey);
     }
     function onKeydown$1(event, index) {
       onKeydown({
@@ -17575,7 +17590,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       if (isExpandableTable.value && hasExpandableContent(row)) {
         toggleExpanded(row);
       }
-      if (!itemEquals(row, activeRow.value, internalKey2)) {
+      if (!itemEquals(row, activeRow.value, internalKey)) {
         emit("change", row);
         setActiveRow(row);
         if (tr2) {
@@ -17594,8 +17609,8 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
         selectedRows.value = [row];
         emit("select", row);
       } else {
-        if (includeItem(row, selectedRows.value, internalKey2)) {
-          selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey2));
+        if (includeItem(row, selectedRows.value, internalKey)) {
+          selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
           emit("unselect", row);
         } else {
           selectedRows.value.push(row);
@@ -17611,7 +17626,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
         return;
       }
       selectedRows.value = __props.modelValue.filter((row) => {
-        return includeItem(row, internalRows.value, internalKey2);
+        return includeItem(row, internalRows.value, internalKey);
       });
     }
     function updateVModelWithSelectedRows() {
@@ -17629,7 +17644,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
     }
     function rowKey(row) {
-      return String(row[internalKey2]);
+      return String(row[internalKey]);
     }
     function columnClasses(column) {
       const sortable = column.sortable ? ["table__column--sortable"] : [];
@@ -17712,7 +17727,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
     function updateActiveRowFromVModel() {
       if (__props.active === void 0) {
         setActiveRow(void 0);
-      } else if (!itemEquals(__props.active, activeRow.value, internalKey2)) {
+      } else if (!itemEquals(__props.active, activeRow.value, internalKey)) {
         setActiveRow(__props.active);
       }
     }
@@ -17736,7 +17751,7 @@ var _sfc_main$k = /* @__PURE__ */ defineComponent({
       }))), _cache[4] || (_cache[4] = createTextVNode()), unref(isExpandableTable) ? (openBlock(), createElementBlock("th", _hoisted_6$6, [createElementVNode("span", _hoisted_7$4, toDisplayString(
         /** Kolumnrubrik som visas för skärmläsare om funktionen för expanderbara rader (`expandable-attribute`) aktiveras */
         unref($t2)("fkui.interactive-table.expand", "Expandera")
-      ), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$4, [createElementVNode("span", _hoisted_9$4, toDisplayString(
+      ), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$3, [createElementVNode("span", _hoisted_9$3, toDisplayString(
         /** Kolumnrubrik som visas för skärmläsare om funktionen för valbara rader (`selectable`) aktiveras */
         unref($t2)("fkui.interactive-table.select", "Markera")
       ), 1)])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
@@ -18351,11 +18366,11 @@ var _hoisted_6$5 = {
   class: "list__item__selectpane__input"
 };
 var _hoisted_7$3 = ["id"];
-var _hoisted_8$3 = {
+var _hoisted_8$2 = {
   key: 0,
   class: "list__item"
 };
-var _hoisted_9$3 = {
+var _hoisted_9$2 = {
   class: "list__item__itempane"
 };
 var _sfc_main$g = /* @__PURE__ */ defineComponent({
@@ -18432,7 +18447,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       registerCallbackAfterItemAdd,
       registerCallbackBeforeItemDelete
     } = ActivateItemInjected();
-    const internalKey2 = getInternalKey();
+    const internalKey = getLegacyInternalKey();
     const selectedItems = ref([]);
     const activeItem = ref(void 0);
     const ulElement = useTemplateRef("ulElement");
@@ -18443,10 +18458,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       const {
         keyAttribute
       } = props;
-      if (keyAttribute) {
-        return setInternalKeys(props.items, keyAttribute);
-      }
-      return setInternalKeys(props.items);
+      return setItemIdentifiers(props.items, keyAttribute);
     });
     watch(() => props.items, () => {
       updateSelectedItemsFromVModel();
@@ -18478,11 +18490,11 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       const element = getElementFromVueRef(ulElement.value);
       return Array.from(element.children);
     }
-    function itemKey(item) {
-      return String(item[internalKey2]);
+    function itemKey(row) {
+      return findItemIdentifier(row);
     }
     function isSelected(item) {
-      return includeItem(item, selectedItems.value, internalKey2);
+      return includeItem(item, selectedItems.value, internalKey);
     }
     function itemClasses(item) {
       return {
@@ -18491,8 +18503,8 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       };
     }
     function onSelect(item) {
-      if (includeItem(item, selectedItems.value, internalKey2)) {
-        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, internalKey2));
+      if (includeItem(item, selectedItems.value, internalKey)) {
+        selectedItems.value = selectedItems.value.filter((i) => !itemEquals(i, item, internalKey));
         emit("unselect", item);
       } else {
         selectedItems.value.push(item);
@@ -18503,7 +18515,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     }
     function setActiveItem(item) {
       emit("click", item);
-      if (!itemEquals(item, activeItem.value, internalKey2)) {
+      if (!itemEquals(item, activeItem.value, internalKey)) {
         emit("change", item);
         activeItem.value = item;
         emit("update:active", activeItem.value);
@@ -18520,7 +18532,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     function updateSelectedItemsFromVModel() {
       if (Array.isArray(props.modelValue)) {
         selectedItems.value = props.modelValue.filter((item) => {
-          return includeItem(item, internalItems.value, internalKey2);
+          return includeItem(item, internalItems.value, internalKey);
         });
       } else {
         selectedItems.value = [];
@@ -18529,7 +18541,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
     function updateActiveItemFromVModel() {
       if (props.active === void 0) {
         activeItem.value = void 0;
-      } else if (!itemEquals(props.active, activeItem.value, internalKey2)) {
+      } else if (!itemEquals(props.active, activeItem.value, internalKey)) {
         activeItem.value = props.active;
       }
     }
@@ -18564,10 +18576,10 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       }
     }
     function getAriaLabelledbyId(item) {
-      return `${props.elementId}_${itemKey(item)}`;
+      return `${props.elementId}_${String(itemKey(item))}`;
     }
     function getItemId(item) {
-      return `${props.elementId}_item_${itemKey(item)}`;
+      return `${props.elementId}_item_${String(itemKey(item))}`;
     }
     function onItemFocus(event) {
       if (event?.target) {
@@ -18599,7 +18611,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
       }
     }
     function isActive(item) {
-      return props.checkbox && itemEquals(activeItem.value, item, internalKey2);
+      return props.checkbox && itemEquals(activeItem.value, item, internalKey);
     }
     return (_ctx, _cache) => {
       return !__props.selectable ? (openBlock(), createElementBlock("ul", _hoisted_1$f, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalItems.value, (item) => {
@@ -18662,7 +18674,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
           }))]),
           _: 2
         }, 1032, ["href", "onClick"]))], 42, _hoisted_4$6);
-      }), 128)), _cache[2] || (_cache[2] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("li", _hoisted_8$3, [createElementVNode("div", _hoisted_9$3, [renderSlot(_ctx.$slots, "empty", {}, () => [createElementVNode("em", null, toDisplayString(unref($t2)("fkui.list.empty", "Listan \xE4r tom")), 1)])])])) : createCommentVNode("", true)], 512));
+      }), 128)), _cache[2] || (_cache[2] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("li", _hoisted_8$2, [createElementVNode("div", _hoisted_9$2, [renderSlot(_ctx.$slots, "empty", {}, () => [createElementVNode("em", null, toDisplayString(unref($t2)("fkui.list.empty", "Listan \xE4r tom")), 1)])])])) : createCommentVNode("", true)], 512));
     };
   }
 });
@@ -19635,8 +19647,8 @@ var _hoisted_6$3 = {
 var _hoisted_7$2 = {
   class: "imenu__list__anchor-container"
 };
-var _hoisted_8$2 = ["aria-expanded"];
-var _hoisted_9$2 = {
+var _hoisted_8$1 = ["aria-expanded"];
+var _hoisted_9$1 = {
   class: "sr-only"
 };
 function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19681,10 +19693,10 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     role: "menuitem",
     "aria-haspopup": "menu",
     "aria-expanded": _ctx.popupOpen ? "true" : "false"
-  }, [createElementVNode("span", _hoisted_9$2, [createElementVNode("span", null, toDisplayString(_ctx.popupMenuSrText) + "\xA0", 1)]), createTextVNode(" " + toDisplayString(_ctx.popupLabel) + " ", 1), createVNode(_component_f_icon, {
+  }, [createElementVNode("span", _hoisted_9$1, [createElementVNode("span", null, toDisplayString(_ctx.popupMenuSrText) + "\xA0", 1)]), createTextVNode(" " + toDisplayString(_ctx.popupLabel) + " ", 1), createVNode(_component_f_icon, {
     name: "arrow-down",
     class: "imenu__list__anchor-icon-right"
-  })], 8, _hoisted_8$2)])], 2)])) : createCommentVNode("", true)], 32), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_popup_menu, {
+  })], 8, _hoisted_8$1)])], 2)])) : createCommentVNode("", true)], 32), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_popup_menu, {
     ref: "popup-menu",
     modelValue: _ctx.selectedItem,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.selectedItem = $event),
@@ -20070,24 +20082,17 @@ function showPageNumberAsGap(options) {
 }
 var _hoisted_1$5 = ["aria-label"];
 var _hoisted_2$3 = ["aria-label"];
-var _hoisted_3$2 = {
-  "data-test": "label"
-};
-var _hoisted_4$1 = ["data-test", "aria-current", "aria-label", "onClick"];
-var _hoisted_5$1 = {
-  "data-test": "page-counter",
+var _hoisted_3$2 = ["data-index", "data-page", "aria-current", "aria-label", "onClick"];
+var _hoisted_4$1 = {
   class: "paginator__page-counter"
 };
-var _hoisted_6$1 = {
+var _hoisted_5$1 = {
   class: "sr-only"
 };
-var _hoisted_7$1 = {
+var _hoisted_6$1 = {
   "aria-hidden": ""
 };
-var _hoisted_8$1 = ["aria-label"];
-var _hoisted_9$1 = {
-  "data-test": "label"
-};
+var _hoisted_7$1 = ["aria-label"];
 var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "FPaginator",
   props: {
@@ -20214,36 +20219,34 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("nav", {
         ref: "paginator",
-        "data-test": "nav",
         class: "paginator",
         "aria-label": resolvedNavigatorLabel.value
       }, [createElementVNode("button", {
-        "data-test": "previous-button",
         type: "button",
         class: "paginator__previous",
         "aria-label": previousButtonLabel.value,
-        onClick: _cache[0] || (_cache[0] = ($event) => onClickPreviousButton())
+        onClick: onClickPreviousButton
       }, [createVNode(unref(FIcon), {
         name: "chevrons-left"
-      }), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("span", _hoisted_3$2, toDisplayString(previousButtonLabel.value), 1)], 8, _hoisted_2$3), _cache[5] || (_cache[5] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page) => {
+      }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", null, toDisplayString(previousButtonLabel.value), 1)], 8, _hoisted_2$3), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(pages.value, (page, index) => {
         return openBlock(), createElementBlock("button", {
           key: page,
-          "data-test": "page-" + page + "-button",
+          "data-index": [index, -pages.value.length + index].join(" "),
+          "data-page": [page, page === 1 ? "first" : void 0, page === numberOfPages.value ? "last" : void 0].filter(Boolean).join(" "),
           type: "button",
           class: normalizeClass(unref(pageClasses)(page, currentPage.value)),
           "aria-current": page === currentPage.value ? "page" : "false",
           "aria-label": pageLabel(page),
           onClick: ($event) => onClickPageButton(page)
-        }, toDisplayString(showGap(page) ? "..." : page), 11, _hoisted_4$1);
-      }), 128)), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("div", _hoisted_5$1, [createElementVNode("span", _hoisted_6$1, toDisplayString(pageCounterAriaLabel.value), 1), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("span", _hoisted_7$1, toDisplayString(pageCounterLabel.value), 1)]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("button", {
-        "data-test": "next-button",
+        }, toDisplayString(showGap(page) ? "..." : page), 11, _hoisted_3$2);
+      }), 128)), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("div", _hoisted_4$1, [createElementVNode("span", _hoisted_5$1, toDisplayString(pageCounterAriaLabel.value), 1), _cache[1] || (_cache[1] = createTextVNode()), createElementVNode("span", _hoisted_6$1, toDisplayString(pageCounterLabel.value), 1)]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("button", {
         type: "button",
         class: "paginator__next",
         "aria-label": nextButtonLabel.value,
-        onClick: _cache[1] || (_cache[1] = ($event) => onClickNextButton())
-      }, [createElementVNode("span", _hoisted_9$1, toDisplayString(nextButtonLabel.value), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref(FIcon), {
+        onClick: onClickNextButton
+      }, [createElementVNode("span", null, toDisplayString(nextButtonLabel.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "arrow-right"
-      })], 8, _hoisted_8$1)], 8, _hoisted_1$5);
+      })], 8, _hoisted_7$1)], 8, _hoisted_1$5);
     };
   }
 });
@@ -21227,6 +21230,7 @@ export {
   dispatchComponentValidityEvent,
   findElementFromVueRef,
   findHTMLElementFromVueRef,
+  findItemIdentifier,
   findParentByName,
   focus,
   formModal,
@@ -21238,7 +21242,8 @@ export {
   getHTMLElementFromVueRef,
   getHTMLElementsFromVueRef,
   getInputElement,
-  getInternalKey,
+  getItemIdentifier,
+  getLegacyInternalKey,
   getParentByName,
   getSortedHTMLElementsFromVueRef,
   handleKeyboardFocusNavigation,
@@ -21259,7 +21264,8 @@ export {
   refIsVueArray,
   registerLayout,
   renderSlotText,
-  setInternalKeys,
+  setItemIdentifier,
+  setItemIdentifiers,
   setRunningContext,
   tableScrollClasses,
   tooltipAttachTo,

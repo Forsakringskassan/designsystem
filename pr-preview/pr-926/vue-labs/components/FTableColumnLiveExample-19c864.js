@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-8b66f5.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-19c864.js
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import {
@@ -1180,7 +1180,7 @@ function stringifyObject(obj) {
   return `{ ${props.join(", ")} }`;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-8b66f5.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-19c864.js
 import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode2, openBlock as _openBlock8, createBlock as _createBlock3, createCommentVNode as _createCommentVNode6, toDisplayString as _toDisplayString6 } from "vue";
 var columnData = {
   checkbox: {
@@ -1787,7 +1787,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render8;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8b66f5"
+  selector: "#example-19c864"
 });
 export {
   render8 as render

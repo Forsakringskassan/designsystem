@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/XFileDragdrop/examples/XFileDragdropExample.vue:XFileDragdropExample-d52d47.js
+// virtual-entry:virtual:src/components/XFileDragdrop/examples/XFileDragdropExample.vue:XFileDragdropExample-b83320.js
 import { defineComponent as _defineComponent } from "vue";
 import { XFileDragdrop } from "@fkui/vue-labs";
 import { openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -44,7 +44,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d52d47"
+  selector: "#example-b83320"
 });
 export {
   render

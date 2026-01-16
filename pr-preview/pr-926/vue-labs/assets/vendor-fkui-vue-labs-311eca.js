@@ -1,7 +1,7 @@
 // dist/esm/index.esm.js
-import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, normalizeClass, createTextVNode, createBlock, createCommentVNode, withCtx, toDisplayString, ref, inject, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective } from "vue";
-import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
-import { getInternalKey, FIcon, IFlex, IFlexItem, useTranslate, IComboboxDropdown, useSlotUtils, setInternalKeys, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { nextTick, toValue, defineComponent, useTemplateRef, computed, createElementBlock, openBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, normalizeClass, createTextVNode, createBlock, createCommentVNode, withCtx, toDisplayString, ref, inject, watchEffect, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, mergeModels, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, debounce, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
+import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, IComboboxDropdown, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 var es_iterator_constructor = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
@@ -1894,16 +1894,15 @@ function walk(array, visit, childKey, level = 1) {
     }
   }
 }
-var internalKey$1 = getInternalKey();
 var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
 var prevCellIndex = void 0;
 function rowKey$1(row) {
-  return String(row[internalKey$1]);
+  return getItemIdentifier(row);
 }
 function getRowIndexes(rows, expandableAttribute) {
   const array = [];
   walk(rows, (row) => {
-    array.push(String(row[internalKey$1]));
+    array.push(getItemIdentifier(row));
     return true;
   }, expandableAttribute);
   return array;
@@ -2160,7 +2159,7 @@ function stopEdit(element, reason) {
     }
   }
 }
-var _hoisted_1$c = {
+var _hoisted_1$d = {
   key: 0,
   class: "table-ng__cell table-ng__cell--expand"
 };
@@ -2171,7 +2170,7 @@ var _hoisted_3$6 = {
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _sfc_main$e = /* @__PURE__ */ defineComponent({
+var _sfc_main$f = /* @__PURE__ */ defineComponent({
   __name: "ITableExpandButton",
   props: {
     isExpandable: {
@@ -2201,7 +2200,7 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$c, [createElementVNode("button", {
+      return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$d, [createElementVNode("button", {
         ref: "expandable",
         tabindex: "-1",
         "aria-label": expandLabel.value,
@@ -2215,8 +2214,8 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$b = ["colspan"];
-var _sfc_main$d = /* @__PURE__ */ defineComponent({
+var _hoisted_1$c = ["colspan"];
+var _sfc_main$e = /* @__PURE__ */ defineComponent({
   __name: "ITableExpandable",
   props: {
     colspan: {}
@@ -2227,7 +2226,7 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent({
         class: "table-ng__cell--custom",
         colspan: __props.colspan,
         tabindex: "-1"
-      }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$b);
+      }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$c);
     };
   }
 });
@@ -2517,8 +2516,8 @@ var inputFieldConfig = {
     attributes: () => []
   }
 };
-var _hoisted_1$a = ["aria-sort"];
-var _sfc_main$c = /* @__PURE__ */ defineComponent({
+var _hoisted_1$b = ["aria-sort"];
+var _sfc_main$d = /* @__PURE__ */ defineComponent({
   __name: "ITableHeader",
   props: {
     column: {},
@@ -2630,16 +2629,16 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
           _: 1
         })]),
         _: 1
-      }, 8, ["float"])) : createCommentVNode("", true)], 42, _hoisted_1$a);
+      }, 8, ["float"])) : createCommentVNode("", true)], 42, _hoisted_1$b);
     };
   }
 });
-var _hoisted_1$9 = {
+var _hoisted_1$a = {
   scope: "col",
   class: "table-ng__column table-ng__column--selectable"
 };
 var _hoisted_2$7 = ["checked", "indeterminate"];
-var _sfc_main$b = /* @__PURE__ */ defineComponent({
+var _sfc_main$c = /* @__PURE__ */ defineComponent({
   __name: "ITableHeaderSelectable",
   props: {
     selectable: {},
@@ -2662,7 +2661,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
     }
     __expose(expose);
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("th", _hoisted_1$9, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
+      return openBlock(), createElementBlock("th", _hoisted_1$a, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
         key: 0,
         ref: "input",
         checked: checked.value,
@@ -2675,7 +2674,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$8 = {
+var _hoisted_1$9 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--checkbox"
 };
@@ -2687,7 +2686,7 @@ var _hoisted_3$5 = {
   class: "table-ng__cell table-ng__cell--checkbox"
 };
 var _hoisted_4$3 = ["checked", "aria-label"];
-var _sfc_main$a = /* @__PURE__ */ defineComponent({
+var _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "ITableCheckbox",
   props: {
     column: {},
@@ -2710,7 +2709,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$8, [createElementVNode("input", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$9, [createElementVNode("input", {
         ref: "target",
         checked: __props.column.value(__props.row),
         type: "checkbox",
@@ -2725,11 +2724,11 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$7 = {
+var _hoisted_1$8 = {
   class: "table-ng__cell table-ng__cell--radio"
 };
 var _hoisted_2$5 = ["checked", "aria-label"];
-var _sfc_main$9 = /* @__PURE__ */ defineComponent({
+var _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "ITableRadio",
   props: {
     column: {},
@@ -2752,7 +2751,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("input", {
+      return openBlock(), createElementBlock("td", _hoisted_1$8, [createElementVNode("input", {
         ref: "input",
         type: "radio",
         checked: __props.column.value(__props.row),
@@ -2763,12 +2762,12 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$6 = {
+var _hoisted_1$7 = {
   key: 0,
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$8 = /* @__PURE__ */ defineComponent({
+var _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelectable",
   props: {
     selectable: {},
@@ -2803,7 +2802,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       description: ref(null),
       sortable: null,
       size: ref(null),
-      component: _sfc_main$a,
+      component: _sfc_main$b,
       label() {
         return $t("fkui.table.selectable.checkbox", "V\xE4lj rad");
       },
@@ -2824,7 +2823,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       description: ref(null),
       sortable: null,
       size: ref(null),
-      component: _sfc_main$9,
+      component: _sfc_main$a,
       label() {
         return $t("fkui.table.selectable.radio", "V\xE4lj rad");
       },
@@ -2836,13 +2835,13 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
       }
     };
     return (_ctx, _cache) => {
-      return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$6)) : __props.selectable === "multi" ? (openBlock(), createBlock(_sfc_main$a, {
+      return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$7)) : __props.selectable === "multi" ? (openBlock(), createBlock(_sfc_main$b, {
         key: 1,
         ref: "child",
         row: __props.row,
         column: multiSelectColumn,
         class: "table-ng__cell--selectable"
-      }, null, 8, ["row"])) : __props.selectable === "single" ? (openBlock(), createBlock(_sfc_main$9, {
+      }, null, 8, ["row"])) : __props.selectable === "single" ? (openBlock(), createBlock(_sfc_main$a, {
         key: 2,
         ref: "child",
         row: __props.row,
@@ -3075,7 +3074,7 @@ function requireEs_iterator_map() {
   return es_iterator_map;
 }
 requireEs_iterator_map();
-var _hoisted_1$5 = {
+var _hoisted_1$6 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--anchor"
 };
@@ -3086,7 +3085,7 @@ var _hoisted_3$4 = {
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "ITableAnchor",
   props: {
     column: {},
@@ -3104,7 +3103,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return renderAnchor.value ? (openBlock(), createElementBlock("td", _hoisted_1$5, [createElementVNode("a", {
+      return renderAnchor.value ? (openBlock(), createElementBlock("td", _hoisted_1$6, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
@@ -3114,7 +3113,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$4 = {
+var _hoisted_1$5 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--button"
 };
@@ -3127,7 +3126,7 @@ var _hoisted_3$3 = {
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$6 = /* @__PURE__ */ defineComponent({
+var _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "ITableButton",
   props: {
     column: {},
@@ -3153,7 +3152,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$4, [createElementVNode("button", {
+      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$5, [createElementVNode("button", {
         ref: "button",
         class: "icon-button",
         type: "button",
@@ -3166,7 +3165,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+var _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "ITableRowheader",
   props: {
     row: {},
@@ -3182,7 +3181,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _hoisted_1$3 = {
+var _hoisted_1$4 = {
   class: "table-ng__editable"
 };
 var _hoisted_2$2 = {
@@ -3194,7 +3193,7 @@ var _hoisted_4$2 = {
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--static"
 };
-var _sfc_main$4 = /* @__PURE__ */ defineComponent({
+var _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "ITableSelect",
   props: {
     row: {},
@@ -3368,7 +3367,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"])
-      }, [withDirectives(createElementVNode("div", _hoisted_1$3, [createElementVNode("span", _hoisted_2$2, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$4, [createElementVNode("span", _hoisted_2$2, toDisplayString(viewValue.value), 1), _cache[2] || (_cache[2] = createTextVNode()), createVNode(unref(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
       })], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
@@ -3414,8 +3413,8 @@ function addInputValidators(inputElement, type, decimals) {
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$2 = ["aria-label"];
-var _sfc_main$3 = /* @__PURE__ */ defineComponent({
+var _hoisted_1$3 = ["aria-label"];
+var _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "ITableText",
   props: {
     row: {},
@@ -3604,7 +3603,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         "aria-label": ariaLabel.value,
         onBlur,
         onValidity
-      }, null, 42, _hoisted_1$2), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), hasError.value ? (openBlock(), createBlock(unref(FIcon), {
+      }, null, 42, _hoisted_1$3), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), hasError.value ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         name: "error",
         class: "table-ng__editable__icon"
@@ -3751,7 +3750,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
         },
         sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
-        component: _sfc_main$a
+        component: _sfc_main$b
       };
     case "radio":
       return {
@@ -3764,7 +3763,7 @@ function normalizeTableColumn(column) {
         value: getValueFn(column.value, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
-        component: _sfc_main$9
+        component: _sfc_main$a
       };
     case "text:currency":
     case "text:number":
@@ -3793,7 +3792,7 @@ function normalizeTableColumn(column) {
         },
         validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
         sortable: (_column$key3 = column.key) !== null && _column$key3 !== void 0 ? _column$key3 : null,
-        component: _sfc_main$3
+        component: _sfc_main$4
       };
     }
     case "text":
@@ -3829,7 +3828,7 @@ function normalizeTableColumn(column) {
         },
         validation: (_column$validation2 = column.validation) !== null && _column$validation2 !== void 0 ? _column$validation2 : {},
         sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
-        component: _sfc_main$3
+        component: _sfc_main$4
       };
     }
     case "rowheader":
@@ -3841,7 +3840,7 @@ function normalizeTableColumn(column) {
         size,
         value: getValueFn(column.value, column.key, String, ""),
         sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
-        component: _sfc_main$5
+        component: _sfc_main$6
       };
     case "anchor":
       return {
@@ -3857,7 +3856,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
         },
         sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
-        component: _sfc_main$7
+        component: _sfc_main$8
       };
     case "button":
       return {
@@ -3874,7 +3873,7 @@ function normalizeTableColumn(column) {
         },
         icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
         sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
-        component: _sfc_main$6
+        component: _sfc_main$7
       };
     case "select":
       return {
@@ -3892,7 +3891,7 @@ function normalizeTableColumn(column) {
         },
         options: column.options,
         sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
-        component: _sfc_main$4
+        component: _sfc_main$5
       };
     case void 0:
       return {
@@ -3910,7 +3909,7 @@ function normalizeTableColumn(column) {
         editable: () => false,
         sortable: (_column$key9 = column.key) !== null && _column$key9 !== void 0 ? _column$key9 : null,
         validation: {},
-        component: _sfc_main$3
+        component: _sfc_main$4
       };
   }
 }
@@ -3963,9 +3962,9 @@ function requireEs_iterator_some() {
   return es_iterator_some;
 }
 requireEs_iterator_some();
-var internalKey = getInternalKey();
 function rowKey(row) {
-  return String(row[internalKey]);
+  var _findItemIdentifier;
+  return (_findItemIdentifier = findItemIdentifier(row)) !== null && _findItemIdentifier !== void 0 ? _findItemIdentifier : "";
 }
 function useSelectable(options) {
   const {
@@ -4161,7 +4160,7 @@ function useTabstop(tableRef, metaRows) {
     withTabstopBehaviour
   };
 }
-var _hoisted_1$1 = ["role", "aria-rowcount"];
+var _hoisted_1$2 = ["role", "aria-rowcount"];
 var _hoisted_2$1 = {
   key: 0,
   "data-test": "caption"
@@ -4187,7 +4186,7 @@ var _hoisted_8 = {
 };
 var _hoisted_9 = ["aria-rowindex"];
 var _hoisted_10 = ["colspan"];
-var _sfc_main$2 = /* @__PURE__ */ defineComponent({
+var _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
     columns: {},
@@ -4220,7 +4219,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
     } = useSlotUtils();
     const tableRef = useTemplateRef("table");
     const expandedKeys = ref([]);
-    const keyedRows = computed(() => setInternalKeys(__props.rows, __props.keyAttribute, __props.expandableAttribute));
+    const keyedRows = computed(() => setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute));
     const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
     const isTreegrid = computed(() => Boolean(__props.expandableAttribute));
     const role = computed(() => isTreegrid.value ? "treegrid" : "grid");
@@ -4401,14 +4400,14 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$b, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$c, {
         key: 1,
         ref: bindCellApiRef,
         state: unref(selectableHeaderState)(),
         selectable: __props.selectable,
         onToggle: unref(toggleSelectableHeader)
       }, null, 8, ["state", "selectable", "onToggle"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-        return openBlock(), createBlock(_sfc_main$c, {
+        return openBlock(), createBlock(_sfc_main$d, {
           key: column.id,
           column,
           "sort-enabled": isSortEnabled(column),
@@ -4439,7 +4438,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
           "aria-setsize": setsize,
           "aria-posinset": posinset,
           "aria-selected": isAriaSelected(level, row)
-        }, [isTreegrid.value ? (openBlock(), createBlock(_sfc_main$e, {
+        }, [isTreegrid.value ? (openBlock(), createBlock(_sfc_main$f, {
           key: 0,
           ref_for: true,
           ref: bindCellApiRef,
@@ -4447,7 +4446,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
           "is-expanded": isExpanded,
           "row-key": key,
           onToggle: onToggleExpanded
-        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$d, {
+        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$e, {
           key: 1,
           colspan: columns.value.length
         }, {
@@ -4459,7 +4458,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
           _: 2
         }, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment, {
           key: 2
-        }, [__props.selectable ? (openBlock(), createBlock(_sfc_main$8, {
+        }, [__props.selectable ? (openBlock(), createBlock(_sfc_main$9, {
           key: 0,
           ref_for: true,
           ref: bindCellApiRef,
@@ -4488,7 +4487,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
       }, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$1);
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
@@ -5975,7 +5974,7 @@ function requireWeb_domException_stack() {
   return web_domException_stack;
 }
 requireWeb_domException_stack();
-var _hoisted_1 = {
+var _hoisted_1$1 = {
   key: 0,
   class: "error-style"
 };
@@ -6000,7 +5999,7 @@ var _hoisted_7 = ["aria-label"];
 var STATUS_HAR_INTE_VALT_FIL = 0;
 var STATUS_HAR_VALT_FIL = 1;
 var STATUS_MISSLYCKATS = 2;
-var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+var _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "XFileDragdrop",
   setup(__props) {
     const valdFil = ref(File);
@@ -6181,7 +6180,7 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
         onDragover: dragover,
         onDragleave: dragleave,
         onDrop: drop
-      }, [renderSlot(_ctx.$slots, "image"), _cache[6] || (_cache[6] = createTextVNode()), _cache[7] || (_cache[7] = createElementVNode("h3", null, "Ladda upp ett dokument", -1)), _cache[8] || (_cache[8] = createTextVNode("\n        dra och sl\xE4pp eller\n        ", -1)), filValidering.value !== "" ? (openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("span", _hoisted_2, [createVNode(unref(FIcon), {
+      }, [renderSlot(_ctx.$slots, "image"), _cache[6] || (_cache[6] = createTextVNode()), _cache[7] || (_cache[7] = createElementVNode("h3", null, "Ladda upp ett dokument", -1)), _cache[8] || (_cache[8] = createTextVNode("\n        dra och sl\xE4pp eller\n        ", -1)), filValidering.value !== "" ? (openBlock(), createElementBlock("div", _hoisted_1$1, [createElementVNode("span", _hoisted_2, [createVNode(unref(FIcon), {
         name: "error"
       })]), createTextVNode(" " + toDisplayString(filValidering.value), 1)])) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", null, [withDirectives((openBlock(), createBlock(unref(FFileSelector), {
         id: "valjFil",
@@ -6219,8 +6218,594 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
-var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
+function matchPropertyValue(property) {
+  return (item, value) => {
+    return value === null || item[property] === value;
+  };
+}
+var es_set_difference_v2 = {};
+var setHelpers;
+var hasRequiredSetHelpers;
+function requireSetHelpers() {
+  if (hasRequiredSetHelpers) return setHelpers;
+  hasRequiredSetHelpers = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var SetPrototype = Set.prototype;
+  setHelpers = {
+    // eslint-disable-next-line es/no-set -- safe
+    Set,
+    add: uncurryThis(SetPrototype.add),
+    has: uncurryThis(SetPrototype.has),
+    remove: uncurryThis(SetPrototype["delete"]),
+    proto: SetPrototype
+  };
+  return setHelpers;
+}
+var aSet;
+var hasRequiredASet;
+function requireASet() {
+  if (hasRequiredASet) return aSet;
+  hasRequiredASet = 1;
+  var has = requireSetHelpers().has;
+  aSet = function(it) {
+    has(it);
+    return it;
+  };
+  return aSet;
+}
+var iterateSimple;
+var hasRequiredIterateSimple;
+function requireIterateSimple() {
+  if (hasRequiredIterateSimple) return iterateSimple;
+  hasRequiredIterateSimple = 1;
+  var call = requireFunctionCall();
+  iterateSimple = function(record, fn, ITERATOR_INSTEAD_OF_RECORD) {
+    var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
+    var next = record.next;
+    var step, result;
+    while (!(step = call(next, iterator)).done) {
+      result = fn(step.value);
+      if (result !== void 0) return result;
+    }
+  };
+  return iterateSimple;
+}
+var setIterate;
+var hasRequiredSetIterate;
+function requireSetIterate() {
+  if (hasRequiredSetIterate) return setIterate;
+  hasRequiredSetIterate = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var iterateSimple2 = requireIterateSimple();
+  var SetHelpers = requireSetHelpers();
+  var Set2 = SetHelpers.Set;
+  var SetPrototype = SetHelpers.proto;
+  var forEach = uncurryThis(SetPrototype.forEach);
+  var keys = uncurryThis(SetPrototype.keys);
+  var next = keys(new Set2()).next;
+  setIterate = function(set, fn, interruptible) {
+    return interruptible ? iterateSimple2({
+      iterator: keys(set),
+      next
+    }, fn) : forEach(set, fn);
+  };
+  return setIterate;
+}
+var setClone;
+var hasRequiredSetClone;
+function requireSetClone() {
+  if (hasRequiredSetClone) return setClone;
+  hasRequiredSetClone = 1;
+  var SetHelpers = requireSetHelpers();
+  var iterate2 = requireSetIterate();
+  var Set2 = SetHelpers.Set;
+  var add = SetHelpers.add;
+  setClone = function(set) {
+    var result = new Set2();
+    iterate2(set, function(it) {
+      add(result, it);
+    });
+    return result;
+  };
+  return setClone;
+}
+var setSize;
+var hasRequiredSetSize;
+function requireSetSize() {
+  if (hasRequiredSetSize) return setSize;
+  hasRequiredSetSize = 1;
+  var uncurryThisAccessor = requireFunctionUncurryThisAccessor();
+  var SetHelpers = requireSetHelpers();
+  setSize = uncurryThisAccessor(SetHelpers.proto, "size", "get") || function(set) {
+    return set.size;
+  };
+  return setSize;
+}
+var getSetRecord;
+var hasRequiredGetSetRecord;
+function requireGetSetRecord() {
+  if (hasRequiredGetSetRecord) return getSetRecord;
+  hasRequiredGetSetRecord = 1;
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var call = requireFunctionCall();
+  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var INVALID_SIZE = "Invalid size";
+  var $RangeError = RangeError;
+  var $TypeError = TypeError;
+  var max = Math.max;
+  var SetRecord = function(set, intSize) {
+    this.set = set;
+    this.size = max(intSize, 0);
+    this.has = aCallable2(set.has);
+    this.keys = aCallable2(set.keys);
+  };
+  SetRecord.prototype = {
+    getIterator: function() {
+      return getIteratorDirect2(anObject2(call(this.keys, this.set)));
+    },
+    includes: function(it) {
+      return call(this.has, this.set, it);
+    }
+  };
+  getSetRecord = function(obj) {
+    anObject2(obj);
+    var numSize = +obj.size;
+    if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
+    var intSize = toIntegerOrInfinity2(numSize);
+    if (intSize < 0) throw new $RangeError(INVALID_SIZE);
+    return new SetRecord(obj, intSize);
+  };
+  return getSetRecord;
+}
+var setDifference;
+var hasRequiredSetDifference;
+function requireSetDifference() {
+  if (hasRequiredSetDifference) return setDifference;
+  hasRequiredSetDifference = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var clone = requireSetClone();
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var has = SetHelpers.has;
+  var remove = SetHelpers.remove;
+  setDifference = function difference(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    var result = clone(O);
+    if (size(O) <= otherRec.size) iterateSet(O, function(e) {
+      if (otherRec.includes(e)) remove(result, e);
+    });
+    else iterateSimple2(otherRec.getIterator(), function(e) {
+      if (has(result, e)) remove(result, e);
+    });
+    return result;
+  };
+  return setDifference;
+}
+var setMethodAcceptSetLike;
+var hasRequiredSetMethodAcceptSetLike;
+function requireSetMethodAcceptSetLike() {
+  if (hasRequiredSetMethodAcceptSetLike) return setMethodAcceptSetLike;
+  hasRequiredSetMethodAcceptSetLike = 1;
+  var getBuiltIn2 = requireGetBuiltIn();
+  var createSetLike = function(size) {
+    return {
+      size,
+      has: function() {
+        return false;
+      },
+      keys: function() {
+        return {
+          next: function() {
+            return {
+              done: true
+            };
+          }
+        };
+      }
+    };
+  };
+  var createSetLikeWithInfinitySize = function(size) {
+    return {
+      size,
+      has: function() {
+        return true;
+      },
+      keys: function() {
+        throw new Error("e");
+      }
+    };
+  };
+  setMethodAcceptSetLike = function(name, callback) {
+    var Set2 = getBuiltIn2("Set");
+    try {
+      new Set2()[name](createSetLike(0));
+      try {
+        new Set2()[name](createSetLike(-1));
+        return false;
+      } catch (error2) {
+        if (!callback) return true;
+        try {
+          new Set2()[name](createSetLikeWithInfinitySize(-Infinity));
+          return false;
+        } catch (error) {
+          var set = new Set2([1, 2]);
+          return callback(set[name](createSetLikeWithInfinitySize(Infinity)));
+        }
+      }
+    } catch (error) {
+      return false;
+    }
+  };
+  return setMethodAcceptSetLike;
+}
+var hasRequiredEs_set_difference_v2;
+function requireEs_set_difference_v2() {
+  if (hasRequiredEs_set_difference_v2) return es_set_difference_v2;
+  hasRequiredEs_set_difference_v2 = 1;
+  var $ = require_export();
+  var difference = requireSetDifference();
+  var fails2 = requireFails();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var SET_LIKE_INCORRECT_BEHAVIOR = !setMethodAcceptSetLike2("difference", function(result) {
+    return result.size === 0;
+  });
+  var FORCED = SET_LIKE_INCORRECT_BEHAVIOR || fails2(function() {
+    var setLike = {
+      size: 1,
+      has: function() {
+        return true;
+      },
+      keys: function() {
+        var index = 0;
+        return {
+          next: function() {
+            var done = index++ > 1;
+            if (baseSet.has(1)) baseSet.clear();
+            return {
+              done,
+              value: 2
+            };
+          }
+        };
+      }
+    };
+    var baseSet = /* @__PURE__ */ new Set([1, 2, 3, 4]);
+    return baseSet.difference(setLike).size !== 3;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    difference
+  });
+  return es_set_difference_v2;
+}
+requireEs_set_difference_v2();
+var es_set_intersection_v2 = {};
+var setIntersection;
+var hasRequiredSetIntersection;
+function requireSetIntersection() {
+  if (hasRequiredSetIntersection) return setIntersection;
+  hasRequiredSetIntersection = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var Set2 = SetHelpers.Set;
+  var add = SetHelpers.add;
+  var has = SetHelpers.has;
+  setIntersection = function intersection(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    var result = new Set2();
+    if (size(O) > otherRec.size) {
+      iterateSimple2(otherRec.getIterator(), function(e) {
+        if (has(O, e)) add(result, e);
+      });
+    } else {
+      iterateSet(O, function(e) {
+        if (otherRec.includes(e)) add(result, e);
+      });
+    }
+    return result;
+  };
+  return setIntersection;
+}
+var hasRequiredEs_set_intersection_v2;
+function requireEs_set_intersection_v2() {
+  if (hasRequiredEs_set_intersection_v2) return es_set_intersection_v2;
+  hasRequiredEs_set_intersection_v2 = 1;
+  var $ = require_export();
+  var fails2 = requireFails();
+  var intersection = requireSetIntersection();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("intersection", function(result) {
+    return result.size === 2 && result.has(1) && result.has(2);
+  }) || fails2(function() {
+    return String(Array.from((/* @__PURE__ */ new Set([1, 2, 3])).intersection(/* @__PURE__ */ new Set([3, 2])))) !== "3,2";
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    intersection
+  });
+  return es_set_intersection_v2;
+}
+requireEs_set_intersection_v2();
+var es_set_isDisjointFrom_v2 = {};
+var setIsDisjointFrom;
+var hasRequiredSetIsDisjointFrom;
+function requireSetIsDisjointFrom() {
+  if (hasRequiredSetIsDisjointFrom) return setIsDisjointFrom;
+  hasRequiredSetIsDisjointFrom = 1;
+  var aSet2 = requireASet();
+  var has = requireSetHelpers().has;
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var iteratorClose2 = requireIteratorClose();
+  setIsDisjointFrom = function isDisjointFrom(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) <= otherRec.size) return iterateSet(O, function(e) {
+      if (otherRec.includes(e)) return false;
+    }, true) !== false;
+    var iterator = otherRec.getIterator();
+    return iterateSimple2(iterator, function(e) {
+      if (has(O, e)) return iteratorClose2(iterator, "normal", false);
+    }) !== false;
+  };
+  return setIsDisjointFrom;
+}
+var hasRequiredEs_set_isDisjointFrom_v2;
+function requireEs_set_isDisjointFrom_v2() {
+  if (hasRequiredEs_set_isDisjointFrom_v2) return es_set_isDisjointFrom_v2;
+  hasRequiredEs_set_isDisjointFrom_v2 = 1;
+  var $ = require_export();
+  var isDisjointFrom = requireSetIsDisjointFrom();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isDisjointFrom", function(result) {
+    return !result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isDisjointFrom
+  });
+  return es_set_isDisjointFrom_v2;
+}
+requireEs_set_isDisjointFrom_v2();
+var es_set_isSubsetOf_v2 = {};
+var setIsSubsetOf;
+var hasRequiredSetIsSubsetOf;
+function requireSetIsSubsetOf() {
+  if (hasRequiredSetIsSubsetOf) return setIsSubsetOf;
+  hasRequiredSetIsSubsetOf = 1;
+  var aSet2 = requireASet();
+  var size = requireSetSize();
+  var iterate2 = requireSetIterate();
+  var getSetRecord2 = requireGetSetRecord();
+  setIsSubsetOf = function isSubsetOf(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) > otherRec.size) return false;
+    return iterate2(O, function(e) {
+      if (!otherRec.includes(e)) return false;
+    }, true) !== false;
+  };
+  return setIsSubsetOf;
+}
+var hasRequiredEs_set_isSubsetOf_v2;
+function requireEs_set_isSubsetOf_v2() {
+  if (hasRequiredEs_set_isSubsetOf_v2) return es_set_isSubsetOf_v2;
+  hasRequiredEs_set_isSubsetOf_v2 = 1;
+  var $ = require_export();
+  var isSubsetOf = requireSetIsSubsetOf();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isSubsetOf", function(result) {
+    return result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isSubsetOf
+  });
+  return es_set_isSubsetOf_v2;
+}
+requireEs_set_isSubsetOf_v2();
+var es_set_isSupersetOf_v2 = {};
+var setIsSupersetOf;
+var hasRequiredSetIsSupersetOf;
+function requireSetIsSupersetOf() {
+  if (hasRequiredSetIsSupersetOf) return setIsSupersetOf;
+  hasRequiredSetIsSupersetOf = 1;
+  var aSet2 = requireASet();
+  var has = requireSetHelpers().has;
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  var iteratorClose2 = requireIteratorClose();
+  setIsSupersetOf = function isSupersetOf(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) < otherRec.size) return false;
+    var iterator = otherRec.getIterator();
+    return iterateSimple2(iterator, function(e) {
+      if (!has(O, e)) return iteratorClose2(iterator, "normal", false);
+    }) !== false;
+  };
+  return setIsSupersetOf;
+}
+var hasRequiredEs_set_isSupersetOf_v2;
+function requireEs_set_isSupersetOf_v2() {
+  if (hasRequiredEs_set_isSupersetOf_v2) return es_set_isSupersetOf_v2;
+  hasRequiredEs_set_isSupersetOf_v2 = 1;
+  var $ = require_export();
+  var isSupersetOf = requireSetIsSupersetOf();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isSupersetOf", function(result) {
+    return !result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isSupersetOf
+  });
+  return es_set_isSupersetOf_v2;
+}
+requireEs_set_isSupersetOf_v2();
+var es_set_symmetricDifference_v2 = {};
+var setSymmetricDifference;
+var hasRequiredSetSymmetricDifference;
+function requireSetSymmetricDifference() {
+  if (hasRequiredSetSymmetricDifference) return setSymmetricDifference;
+  hasRequiredSetSymmetricDifference = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var clone = requireSetClone();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  var add = SetHelpers.add;
+  var has = SetHelpers.has;
+  var remove = SetHelpers.remove;
+  setSymmetricDifference = function symmetricDifference(other) {
+    var O = aSet2(this);
+    var keysIter = getSetRecord2(other).getIterator();
+    var result = clone(O);
+    iterateSimple2(keysIter, function(e) {
+      if (has(O, e)) remove(result, e);
+      else add(result, e);
+    });
+    return result;
+  };
+  return setSymmetricDifference;
+}
+var setMethodGetKeysBeforeCloningDetection;
+var hasRequiredSetMethodGetKeysBeforeCloningDetection;
+function requireSetMethodGetKeysBeforeCloningDetection() {
+  if (hasRequiredSetMethodGetKeysBeforeCloningDetection) return setMethodGetKeysBeforeCloningDetection;
+  hasRequiredSetMethodGetKeysBeforeCloningDetection = 1;
+  setMethodGetKeysBeforeCloningDetection = function(METHOD_NAME) {
+    try {
+      var baseSet = /* @__PURE__ */ new Set();
+      var setLike = {
+        size: 0,
+        has: function() {
+          return true;
+        },
+        keys: function() {
+          return Object.defineProperty({}, "next", {
+            get: function() {
+              baseSet.clear();
+              baseSet.add(4);
+              return function() {
+                return {
+                  done: true
+                };
+              };
+            }
+          });
+        }
+      };
+      var result = baseSet[METHOD_NAME](setLike);
+      return result.size === 1 && result.values().next().value === 4;
+    } catch (error) {
+      return false;
+    }
+  };
+  return setMethodGetKeysBeforeCloningDetection;
+}
+var hasRequiredEs_set_symmetricDifference_v2;
+function requireEs_set_symmetricDifference_v2() {
+  if (hasRequiredEs_set_symmetricDifference_v2) return es_set_symmetricDifference_v2;
+  hasRequiredEs_set_symmetricDifference_v2 = 1;
+  var $ = require_export();
+  var symmetricDifference = requireSetSymmetricDifference();
+  var setMethodGetKeysBeforeCloning = requireSetMethodGetKeysBeforeCloningDetection();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var FORCED = !setMethodAcceptSetLike2("symmetricDifference") || !setMethodGetKeysBeforeCloning("symmetricDifference");
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    symmetricDifference
+  });
+  return es_set_symmetricDifference_v2;
+}
+requireEs_set_symmetricDifference_v2();
+var es_set_union_v2 = {};
+var setUnion;
+var hasRequiredSetUnion;
+function requireSetUnion() {
+  if (hasRequiredSetUnion) return setUnion;
+  hasRequiredSetUnion = 1;
+  var aSet2 = requireASet();
+  var add = requireSetHelpers().add;
+  var clone = requireSetClone();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  setUnion = function union(other) {
+    var O = aSet2(this);
+    var keysIter = getSetRecord2(other).getIterator();
+    var result = clone(O);
+    iterateSimple2(keysIter, function(it) {
+      add(result, it);
+    });
+    return result;
+  };
+  return setUnion;
+}
+var hasRequiredEs_set_union_v2;
+function requireEs_set_union_v2() {
+  if (hasRequiredEs_set_union_v2) return es_set_union_v2;
+  hasRequiredEs_set_union_v2 = 1;
+  var $ = require_export();
+  var union = requireSetUnion();
+  var setMethodGetKeysBeforeCloning = requireSetMethodGetKeysBeforeCloningDetection();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var FORCED = !setMethodAcceptSetLike2("union") || !setMethodGetKeysBeforeCloning("union");
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    union
+  });
+  return es_set_union_v2;
+}
+requireEs_set_union_v2();
+function uniqueValues(items, property) {
+  const values = items.map((it) => it[property]);
+  const unique = Array.from(new Set(values));
+  unique.sort();
+  return unique;
+}
 var es_iterator_filter = {};
 var hasRequiredEs_iterator_filter;
 function requireEs_iterator_filter() {
@@ -6276,6 +6861,46 @@ function requireEs_iterator_filter() {
   return es_iterator_filter;
 }
 requireEs_iterator_filter();
+var _hoisted_1 = {
+  class: "sort-filter-dataset-ng"
+};
+var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "XSortFilterDatasetNg",
+  props: {
+    data: {},
+    sort: {
+      type: Function,
+      default: (data) => {
+        return data;
+      }
+    },
+    filter: {
+      type: Function,
+      default: (data) => {
+        return data;
+      }
+    }
+  },
+  setup(__props) {
+    const props = __props;
+    const filtered = ref(props.filter(props.data));
+    const result = ref(props.data);
+    const debouncedUpdate = debounce(update, 250);
+    function update() {
+      filtered.value = props.filter(props.data);
+      result.value = props.sort(filtered.value);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1, [renderSlot(_ctx.$slots, "filter", normalizeProps(guardReactiveProps({
+        update: unref(debouncedUpdate)
+      }))), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        result: result.value
+      })))]);
+    };
+  }
+});
+var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
+var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 function findMatch(regexps, value) {
   for (const regexp of regexps) {
     const match = value.match(regexp);
@@ -6464,20 +7089,23 @@ var _sfc_main = defineComponent({
   }
 });
 export {
-  _sfc_main$2 as FTable,
+  _sfc_main$3 as FTable,
   HOURS_MINUTES_REGEXP,
   HOURS_MINUTES_WITHOUT_COLON_REGEXP,
   HoursMinutesValidatorUtils,
-  _sfc_main$1 as XFileDragdrop,
+  _sfc_main$2 as XFileDragdrop,
+  _sfc_main$1 as XSortFilterDatasetNg,
   _sfc_main as XTimeTextField,
   defineTableColumns,
   forgivingParseTimeToNumber,
   formatNumberToTime,
   hoursMinutesStringToMinutes,
+  matchPropertyValue,
   minutesToHoursFloat,
   minutesToHoursMinutesString,
   minutesToObject,
   minutesToUserFriendlyString,
   parseTimeToNumber,
-  splitHoursMinutes
+  splitHoursMinutes,
+  uniqueValues
 };

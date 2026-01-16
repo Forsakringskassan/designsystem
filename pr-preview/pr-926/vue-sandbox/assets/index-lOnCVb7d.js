@@ -9522,7 +9522,7 @@ function scrollToSlow(element, duration, offset = 0) {
     }, interval);
   });
 }
-const sym = /* @__PURE__ */ Symbol("focus-stack");
+const sym$1 = /* @__PURE__ */ Symbol("focus-stack");
 let _stackHandleCounter = 0;
 const _focusElementStack = [];
 const TABBABLE_ELEMENT_SELECTOR = /* @__PURE__ */ [
@@ -9583,7 +9583,7 @@ function pushFocus(element) {
   };
   _focusElementStack.push(stackFrame);
   focus$1(element);
-  return { [sym]: stackFrame.id };
+  return { [sym$1]: stackFrame.id };
 }
 function popFocus(handle, options = {}) {
   const { restoreFocus = true } = options;
@@ -9597,8 +9597,8 @@ function popFocus(handle, options = {}) {
     }
   }
   const top = _focusElementStack.pop();
-  if (top?.id !== handle[sym]) {
-    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym])}`;
+  if (top?.id !== handle[sym$1]) {
+    const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym$1])}`;
     if (configLogic.production) {
       console.error(outOfOrderErrorMsg);
       return;
@@ -11413,16 +11413,16 @@ function requireIsCallable() {
   };
   return isCallable;
 }
-var isObject$1;
+var isObject$2;
 var hasRequiredIsObject$1;
 function requireIsObject$1() {
-  if (hasRequiredIsObject$1) return isObject$1;
+  if (hasRequiredIsObject$1) return isObject$2;
   hasRequiredIsObject$1 = 1;
   var isCallable2 = requireIsCallable();
-  isObject$1 = function(it) {
+  isObject$2 = function(it) {
     return typeof it == "object" ? it !== null : isCallable2(it);
   };
-  return isObject$1;
+  return isObject$2;
 }
 var getBuiltIn;
 var hasRequiredGetBuiltIn;
@@ -15628,12 +15628,12 @@ const _hoisted_7$d = {
   class: "modal__title",
   tabindex: "-1"
 };
-const _hoisted_8$a = {
+const _hoisted_8$9 = {
   ref: "modalContent",
   class: "modal__content",
   tabindex: "-1"
 };
-const _hoisted_9$8 = {
+const _hoisted_9$7 = {
   class: "modal__footer"
 };
 const _hoisted_10$4 = {
@@ -15658,7 +15658,7 @@ function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createBaseVNode("div", _hoisted_4$u, [createBaseVNode("div", _hoisted_5$o, [createBaseVNode("div", _hoisted_6$i, [createBaseVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$a, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$4, [createBaseVNode("button", {
+  }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$d, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$4, [createBaseVNode("button", {
     type: "button",
     class: "close-button",
     "aria-label": _ctx.ariaCloseText,
@@ -17403,48 +17403,59 @@ function requireEs_set_union_v2() {
   return es_set_union_v2;
 }
 requireEs_set_union_v2();
-const internalKey = /* @__PURE__ */ Symbol("internal-key");
+const sym = /* @__PURE__ */ Symbol("item-identifier");
 let internalIndex = 0;
-function getInternalKey() {
-  return internalKey;
+function isObject$1(value) {
+  return Boolean(value && typeof value === "object");
 }
-function setInternalKey(item, value) {
-  if (item[internalKey]) {
+function findItemIdentifier(item) {
+  if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
+    return item[sym];
+  } else {
+    return void 0;
+  }
+}
+function setItemIdentifier(item, value) {
+  const existing = findItemIdentifier(item);
+  if (existing !== void 0) {
     return;
   }
-  Object.defineProperty(item, internalKey, {
-    value: value !== null && value !== void 0 ? value : String(internalIndex++),
+  Object.defineProperty(item, sym, {
+    value: value !== null && value !== void 0 ? value : internalIndex++,
     enumerable: false,
-    writable: true
+    writable: false
   });
 }
-function setInternalKeys(items, key, nestedKey, seenValues = /* @__PURE__ */ new Set()) {
-  if (key === void 0) {
-    return items.map((item) => {
-      setInternalKey(item);
+function setItemIdentifiers(items, attribute, expandableAttribute) {
+  const seenValues = /* @__PURE__ */ new Set();
+  const process = (items2) => {
+    return items2.map((item, index) => {
+      const value = attribute ? item[attribute] : void 0;
+      if (attribute) {
+        ensureUniqueKey(attribute, value, index, seenValues);
+      }
+      setItemIdentifier(item, value);
       return item;
     });
+  };
+  return process(items);
+}
+function ensureUniqueKey(attribute, value, index, seenValues) {
+  const keyString = String(attribute);
+  const invalidValue = (
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt
+    value === void 0 || value === null || String(value).length === 0
+  );
+  if (invalidValue) {
+    throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${String(index)}`);
   }
-  return items.map((item, index) => {
-    const value = item[key];
-    const keyString = String(key);
-    const invalidValue = (
-      /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- ok since we only test if the string is empty */
-      value === void 0 || value === null || String(value).length === 0
+  if (seenValues.has(value)) {
+    throw new Error(
+      /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
+      `Expected each item to have identifier [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
     );
-    if (invalidValue) {
-      throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${String(index)}`);
-    }
-    if (seenValues.has(value)) {
-      throw new Error(
-        /* eslint-disable-next-line @typescript-eslint/no-base-to-string -- technical debt */
-        `Expected each item to have key [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`
-      );
-    }
-    setInternalKey(item, String(value));
-    seenValues.add(value);
-    return item;
-  });
+  }
+  seenValues.add(value);
 }
 function getValidatableElement(element) {
   if (isValidatableHTMLElement(element)) {
@@ -20934,7 +20945,7 @@ const _hoisted_6$a = {
 const _hoisted_7$7 = {
   key: 1
 };
-const _hoisted_8$6 = ["colspan"];
+const _hoisted_8$5 = ["colspan"];
 /* @__PURE__ */ defineComponent({
   ...{
     inheritAttrs: false
@@ -20993,7 +21004,6 @@ const _hoisted_8$6 = ["colspan"];
       registerCallbackOnSort,
       registerCallbackOnMount
     } = FSortFilterDatasetInjected();
-    const internalKey2 = getInternalKey();
     const columns = ref([]);
     const hasCaption = computed(() => {
       return hasSlot2("caption", {}, {
@@ -21024,9 +21034,9 @@ const _hoisted_8$6 = ["colspan"];
         keyAttribute
       } = props;
       if (keyAttribute) {
-        return setInternalKeys(props.rows, keyAttribute);
+        return setItemIdentifiers(props.rows, keyAttribute);
       }
-      return setInternalKeys(props.rows);
+      return setItemIdentifiers(props.rows);
     });
     provide("addColumn", (column) => {
       if (column.type === FTableColumnType.ACTION) {
@@ -21045,8 +21055,8 @@ const _hoisted_8$6 = ["colspan"];
       registerCallbackOnSort(callbackOnSort);
       registerCallbackOnMount(callbackSortableColumns);
     });
-    function rowKey(item) {
-      return String(item[internalKey2]);
+    function rowKey(row) {
+      return findItemIdentifier(row);
     }
     function columnClasses(column) {
       const classes = ["table__column", `table__column--${column.type}`, column.size];
@@ -21119,7 +21129,7 @@ const _hoisted_8$6 = ["colspan"];
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(
         /** Text som visas som standardinnehåll i slotten `empty` (när tabellen är tom). */
         unref($t2)("fkui.data-table.empty", "Tabellen är tom")
-      ), 1)])], 8, _hoisted_8$6)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
+      ), 1)])], 8, _hoisted_8$5)])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row) => {
         return openBlock(), createElementBlock("tr", {
           key: rowKey(row),
           class: "table__row"

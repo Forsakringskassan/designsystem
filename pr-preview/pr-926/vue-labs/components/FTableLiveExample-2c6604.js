@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableLiveExample.vue:FTableLiveExample-caca00.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableLiveExample.vue:FTableLiveExample-2c6604.js
 import { defineComponent, h as h2 } from "vue";
 import { formatNumber } from "@fkui/logic";
 import { FCheckboxField, FFieldset, FRadioField, FSelectField } from "@fkui/vue";
@@ -574,7 +574,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-caca00"
+  selector: "#example-2c6604"
 });
 export {
   render

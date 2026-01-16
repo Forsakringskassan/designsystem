@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-ef757b.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-d89959.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
@@ -238,10 +238,24 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         aktiv: false
       });
     }
-    function onRemoveRow(row) {
+    function onRemoveRow(rowToRemove) {
       assertRef(tableRef);
       tableRef.value.withTabstopBehaviour("row-removal", () => {
-        rows.value.splice(rows.value.indexOf(row), 1);
+        const rowIndex = rows.value.indexOf(rowToRemove);
+        if (rowIndex !== -1) {
+          rows.value.splice(rows.value.indexOf(rowToRemove), 1);
+        } else {
+          for (const row of rows.value) {
+            if (!row.expandableRows) {
+              continue;
+            }
+            const expandableRowIndex = row.expandableRows.indexOf(rowToRemove);
+            if (expandableRowIndex !== -1) {
+              row.expandableRows.splice(expandableRowIndex, 1);
+              break;
+            }
+          }
+        }
       });
     }
     function onRemoveSelectedRows() {
@@ -279,7 +293,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             columns: $setup.columns,
             "key-attribute": "id",
             striped: "",
-            selectable: "multi"
+            selectable: "multi",
+            "expandable-attribute": "expandableRows"
           }, {
             caption: _withCtx(() => [..._cache[1] || (_cache[1] = [
               _createTextVNode(
@@ -315,7 +330,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ef757b"
+  selector: "#example-d89959"
 });
 export {
   render
