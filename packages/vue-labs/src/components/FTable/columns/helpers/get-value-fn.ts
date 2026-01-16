@@ -12,7 +12,8 @@ export function getValueFn<TRow, TValue>(
     }
     if (key) {
         return (row: TRow): TValue => {
-            return coerce(row[key]);
+            // return coerce(row[key]);
+            return row[key] as TValue;
         };
     }
     return () => defaultValue;

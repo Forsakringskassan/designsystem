@@ -189,7 +189,7 @@ export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase
     // (undocumented)
     label?(this: void, row: T): string;
     // (undocumented)
-    parser?(this: void, value: string): number | string;
+    parser?(this: void, value: string): number | string | undefined;
     // (undocumented)
     tnum?: boolean;
     // (undocumented)
@@ -274,13 +274,13 @@ export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
-    formatter?(this: void, value: string): string;
+    formatter?(this: void, value: string): string | undefined;
     // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
     // (undocumented)
-    parser?(this: void, value: string): string;
+    parser?(this: void, value: string): string | undefined;
     // (undocumented)
     tnum?: boolean;
     // (undocumented)
