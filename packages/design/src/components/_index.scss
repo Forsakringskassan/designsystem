@@ -39,6 +39,7 @@
 @forward "progressbar/variables";
 @forward "radio-button/variables";
 @forward "select-field/variables";
+@forward "selectable-item/variables";
 @forward "sort-filter-dataset/variables";
 @forward "static-panel/variables";
 @forward "table/variables";
@@ -89,6 +90,7 @@
 @use "progressbar";
 @use "radio-button";
 @use "select-field";
+@use "selectable-item";
 @use "sort-filter-dataset";
 @use "static-panel";
 @use "table";
