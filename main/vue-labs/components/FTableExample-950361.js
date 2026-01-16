@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-d89959.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-950361.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
@@ -83,7 +83,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         header: "Knapp",
         icon: "trashcan",
         size: "shrink",
-        value(row) {
+        text(row) {
           return `Ta bort ${row.id}`;
         },
         onClick: onRemoveRow
@@ -92,7 +92,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         header: "L\xE4nk",
         type: "anchor",
         href: "#",
-        value() {
+        text() {
           return "L\xE4nktext";
         }
       },
@@ -330,7 +330,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d89959"
+  selector: "#example-950361"
 });
 export {
   render

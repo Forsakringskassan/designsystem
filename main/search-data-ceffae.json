@@ -211,6 +211,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -218,9 +221,6 @@
     "densify() function",
     "densitet",
     "sass",
-    "EventBus",
-    "EventBus",
-    "services",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -421,14 +421,6 @@
     "FFixedPane",
     "Detaljpanel",
     "FDetailsPanel",
-    "Förloppsindikator",
-    "FProgressbar",
-    "ladda",
-    "laddning",
-    "Laddningsindikator",
-    "FLoader",
-    "ladda",
-    "laddning",
     "Modal dialogruta",
     "FModal",
     "FModalSize",
@@ -437,6 +429,14 @@
     "FFormModal",
     "Bekräftelsemodal",
     "FConfirmModal",
+    "Förloppsindikator",
+    "FProgressbar",
+    "ladda",
+    "laddning",
+    "Laddningsindikator",
+    "FLoader",
+    "ladda",
+    "laddning",
     "Startpunkt",
     "entrypoint",
     "länk",
@@ -1116,6 +1116,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1130,14 +1138,6 @@
       "terms": [
         "densitet",
         "sass"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -1554,24 +1554,6 @@
       ]
     },
     {
-      "url": "components/load/fprogressbar.html",
-      "title": "Förloppsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FProgressbar"
-      ]
-    },
-    {
-      "url": "components/load/floader.html",
-      "title": "Laddningsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FLoader"
-      ]
-    },
-    {
       "url": "components/modal/fmodal.html",
       "title": "Modal dialogruta",
       "terms": [
@@ -1592,6 +1574,24 @@
       "title": "Bekräftelsemodal",
       "terms": [
         "FConfirmModal"
+      ]
+    },
+    {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FLoader"
       ]
     },
     {
@@ -2480,7 +2480,7 @@
     "211": 56,
     "212": 56,
     "213": 56,
-    "214": 56,
+    "214": 57,
     "215": 57,
     "216": 57,
     "217": 57,
@@ -2693,14 +2693,14 @@
     "424": 104,
     "425": 105,
     "426": 105,
-    "427": 105,
-    "428": 105,
-    "429": 106,
-    "430": 106,
-    "431": 106,
-    "432": 106,
-    "433": 107,
-    "434": 107,
+    "427": 106,
+    "428": 106,
+    "429": 107,
+    "430": 107,
+    "431": 107,
+    "432": 107,
+    "433": 108,
+    "434": 108,
     "435": 108,
     "436": 108,
     "437": 109,

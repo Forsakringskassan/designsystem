@@ -28,20 +28,10 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/modal/FFormModal.md:FFormModal-fb2588.js
-import { defineComponent } from "vue";
-import { FFormModal, FTextField } from "@fkui/vue";
+// virtual-entry:virtual:docs/components/modal/FFormModal.md:FFormModal-38fd65.js
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
-var exampleComponent = defineComponent({
-  components: { FFormModal, FTextField },
-  props: {
-    value: {
-      type: Object,
-      required: true
-    }
-  }
-});
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+var exampleComponent = {};
+function render(_ctx, _cache) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_form_modal = _resolveComponent("f-form-modal", true);
   return _openBlock(), _createBlock(_component_f_form_modal, { value: _ctx.value }, {
@@ -89,7 +79,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-fb2588"
+  selector: "#example-38fd65"
 });
 export {
   render
