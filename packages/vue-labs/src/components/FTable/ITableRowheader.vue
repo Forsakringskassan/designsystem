@@ -9,6 +9,6 @@ const { row, column } = defineProps<{
 
 <template>
     <th ref="th" class="table-ng__cell table-ng__cell--rowheader" scope="row">
-        {{ column.value(row) }}
+        {{ column.text(row) }}
     </th>
 </template>

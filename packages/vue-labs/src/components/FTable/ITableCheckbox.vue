@@ -25,9 +25,16 @@ defineExpose(expose);
 
 <template>
     <td v-if="column.editable(row)" class="table-ng__cell table-ng__cell--checkbox">
-        <input ref="target" :checked="column.value(row)" type="checkbox" :aria-label tabindex="-1" @change="onChange" />
+        <input
+            ref="target"
+            :checked="column.checked(row)"
+            type="checkbox"
+            :aria-label
+            tabindex="-1"
+            @change="onChange"
+        />
     </td>
     <td v-else ref="target" tabindex="-1" class="table-ng__cell table-ng__cell--checkbox">
-        <input :checked="column.value(row)" type="checkbox" :aria-label />
+        <input :checked="column.checked(row)" type="checkbox" :aria-label />
     </td>
 </template>

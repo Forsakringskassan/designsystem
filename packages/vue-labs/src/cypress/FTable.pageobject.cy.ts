@@ -73,7 +73,7 @@ const columns = defineTableColumns<(typeof rows)[number]>([
         description: "Column 4",
         key: "button",
         icon: "trashcan",
-        value(row) {
+        text(row) {
             return row.button;
         },
     },
@@ -83,7 +83,7 @@ const columns = defineTableColumns<(typeof rows)[number]>([
         type: "anchor",
         key: "anchor",
         href: "#",
-        value(row) {
+        text(row) {
             return row.anchor;
         },
     },

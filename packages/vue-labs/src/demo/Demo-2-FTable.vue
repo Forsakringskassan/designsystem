@@ -79,7 +79,7 @@ const columns = defineTableColumns<FruitOrder>([
         editable(row) {
             return !erp.isReadonly(row);
         },
-        value(row) {
+        selected(row) {
             return row.orderflode;
         },
         update(row, value) {
@@ -116,7 +116,7 @@ const columns = defineTableColumns<FruitOrder>([
         header: "Spårningsnummer",
         type: "anchor",
         href: "#",
-        value(row) {
+        text(row) {
             return row.tracking;
         },
     },
@@ -127,7 +127,7 @@ const columns = defineTableColumns<FruitOrder>([
         enabled(row) {
             return row.status === OrderStatus.PENDING;
         },
-        value() {
+        text() {
             return "Bekräfta";
         },
         onClick(row) {
@@ -141,7 +141,7 @@ const columns = defineTableColumns<FruitOrder>([
         enabled(row) {
             return row.status === OrderStatus.CONFIRMED || row.status === OrderStatus.PROCESSING;
         },
-        value() {
+        text() {
             return "Plocka";
         },
         onClick(row) {
@@ -159,7 +159,7 @@ const columns = defineTableColumns<FruitOrder>([
         enabled(row) {
             return row.status === OrderStatus.INTRANSIT && row.invoice === null;
         },
-        value() {
+        text() {
             return "Fakturera";
         },
         onClick(row) {
@@ -173,7 +173,7 @@ const columns = defineTableColumns<FruitOrder>([
         enabled(row) {
             return row.status === OrderStatus.PENDING || row.status === OrderStatus.CONFIRMED;
         },
-        value() {
+        text() {
             return "Makulera";
         },
     },

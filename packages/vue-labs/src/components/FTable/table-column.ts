@@ -92,7 +92,7 @@ export interface TableColumnRowHeader<
 > extends TableColumnBase {
     type: "rowheader";
     key?: K;
-    value?(this: void, row: T): string;
+    text?(this: void, row: T): string;
 }
 
 /**
@@ -107,7 +107,7 @@ export interface NormalizedTableColumnRowHeader<
         row: T;
         column: NormalizedTableColumnRowHeader<T, K>;
     }>;
-    value(this: void, row: T): string;
+    text(this: void, row: T): string;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface TableColumnCheckbox<
     type: "checkbox";
     key?: K;
     label?(this: void, row: T): string;
-    value?(this: void, row: T): boolean;
+    checked?(this: void, row: T): boolean;
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
     editable?: boolean | ((this: void, row: T) => boolean);
 }
@@ -138,7 +138,7 @@ export interface NormalizedTableColumnCheckbox<
         column: NormalizedTableColumnCheckbox<T, K>;
     }>;
     label(this: void, row: T): string;
-    value(this: void, row: T): boolean;
+    checked(this: void, row: T): boolean;
     update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
     editable(this: void, row: T): boolean;
 }
@@ -153,7 +153,7 @@ export interface TableColumnRadio<
     type: "radio";
     key?: K;
     label?(this: void, row: T): string;
-    value?(this: void, row: T): boolean;
+    checked?(this: void, row: T): boolean;
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
 }
 
@@ -170,7 +170,7 @@ export interface NormalizedTableColumnRadio<
         column: NormalizedTableColumnRadio<T, K>;
     }>;
     label(this: void, row: T): string;
-    value(this: void, row: T): boolean;
+    checked(this: void, row: T): boolean;
     update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
 }
 
@@ -274,7 +274,7 @@ export interface TableColumnAnchor<
 > extends TableColumnBase {
     type: "anchor";
     key?: K;
-    value(this: void, row: T): string | null;
+    text(this: void, row: T): string | null;
     enabled?: boolean | ((this: void, row: T) => boolean);
     href: string;
 }
@@ -292,7 +292,7 @@ export interface NormalizedTableColumnAnchor<
         row: T;
         column: NormalizedTableColumnAnchor<T, K>;
     }>;
-    value(this: void, row: T): string | null;
+    text(this: void, row: T): string | null;
     enabled(this: void, row: T): boolean;
 }
 
@@ -305,7 +305,7 @@ export interface TableColumnButton<
 > extends TableColumnBase {
     type: "button";
     key?: K;
-    value(this: void, row: T): string | null;
+    text(this: void, row: T): string | null;
     onClick?(this: void, row: T): void;
     enabled?: boolean | ((this: void, row: T) => boolean);
     icon?: string;
@@ -324,7 +324,7 @@ export interface NormalizedTableColumnButton<
         row: T;
         column: NormalizedTableColumnButton<T, K>;
     }>;
-    value(this: void, row: T): string | null;
+    text(this: void, row: T): string | null;
     onClick?(this: void, row: T): void;
     enabled(this: void, row: T): boolean;
 }
@@ -339,7 +339,7 @@ export interface TableColumnSelect<
     type: "select";
     key?: K;
     label?(this: void, row: T): string;
-    value?(this: void, row: T): string;
+    selected?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
     editable?: boolean | ((this: void, row: T) => boolean);
     options: string[];
@@ -359,7 +359,7 @@ export interface NormalizedTableColumnSelect<
         column: NormalizedTableColumnSelect<T, K>;
     }>;
     label(this: void, row: T): string;
-    value(this: void, row: T): string;
+    selected(this: void, row: T): string;
     update(this: void, row: T, newValue: string, oldValue: string): void;
     editable(this: void, row: T): boolean;
 }
@@ -553,7 +553,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 description,
                 size,
                 label: getLabelFn(column.label),
-                value: getValueFn(column.value, column.key, Boolean, false),
+                checked: getValueFn(column.checked, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
                 editable:
                     typeof column.editable === "function"
@@ -570,7 +570,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 description,
                 size,
                 label: getLabelFn(column.label),
-                value: getValueFn(column.value, column.key, Boolean, false),
+                checked: getValueFn(column.checked, column.key, Boolean, false),
                 update: getUpdateFn(column.update, column.key),
                 sortable: column.key ?? null,
                 component: ITableRadio,
@@ -660,7 +660,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: toRef(column.header),
                 description,
                 size,
-                value: getValueFn(column.value, column.key, String, ""),
+                text: getValueFn(column.text, column.key, String, ""),
                 sortable: column.key ?? null,
                 component: ITableRowheader,
             } satisfies NormalizedTableColumnRowHeader<T, K>;
@@ -671,7 +671,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: toRef(column.header),
                 description,
                 size,
-                value: getValueFn(column.value, column.key, String, ""),
+                text: getValueFn(column.text, column.key, String, ""),
                 href: column.href,
                 enabled:
                     typeof column.enabled === "function"
@@ -687,7 +687,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 header: toRef(column.header),
                 description,
                 size,
-                value: getValueFn(column.value, column.key, String, ""),
+                text: getValueFn(column.text, column.key, String, ""),
                 onClick: column.onClick,
                 enabled:
                     typeof column.enabled === "function"
@@ -705,7 +705,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 description,
                 size,
                 label: getLabelFn(column.label),
-                value: getValueFn(column.value, column.key, String, ""),
+                selected: getValueFn(column.selected, column.key, String, ""),
                 update: getUpdateFn(column.update, column.key),
                 editable:
                     typeof column.editable === "function"

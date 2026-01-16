@@ -42,7 +42,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, K> = {
         /** Screen reader text for checkbox in multi select table row. */
         return $t("fkui.table.selectable.checkbox", "Välj rad");
     },
-    value() {
+    checked() {
         return state;
     },
     editable() {
@@ -65,7 +65,7 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, K> = {
         /** Screen reader text for radio button in single select table row. */
         return $t("fkui.table.selectable.radio", "Välj rad");
     },
-    value() {
+    checked() {
         return state;
     },
     update() {
