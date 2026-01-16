@@ -23,7 +23,7 @@ function onClickButton(): void {
 }
 
 const renderButton = computed(() => {
-    return column.enabled(row) && column.value(row) !== null;
+    return column.enabled(row) && column.text(row) !== null;
 });
 
 const expose: FTableCellApi = { tabstopEl: renderButton.value ? buttonElement : tdElement };
@@ -34,7 +34,7 @@ defineExpose(expose);
     <td v-if="renderButton" class="table-ng__cell table-ng__cell--button">
         <button ref="button" class="icon-button" type="button" tabindex="-1" @click="onClickButton">
             <f-icon v-if="column.icon" :name="column.icon"></f-icon>
-            <span class="sr-only">{{ column.value(row) }}</span>
+            <span class="sr-only">{{ column.text(row) }}</span>
         </button>
     </td>
     <td v-else ref="td" tabindex="-1" class="table-ng__cell"></td>

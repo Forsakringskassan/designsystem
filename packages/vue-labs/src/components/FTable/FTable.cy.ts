@@ -123,14 +123,14 @@ describe("1.5 Separator", () => {
             header: "Button",
             key: "button",
             icon: "trashcan",
-            value: (row) => row.button,
+            text: (row) => row.button,
         },
         {
             header: "Anchor",
             type: "anchor",
             key: "anchor",
             href: "#",
-            value: (row) => row.anchor,
+            text: (row) => row.anchor,
         },
     ]);
 
@@ -390,7 +390,7 @@ describe("5 tabstop", () => {
                 type: "button",
                 header: "remove",
                 icon: "trashcan",
-                value(row) {
+                text(row) {
                     return row.bar;
                 },
                 onClick(row) {
@@ -452,7 +452,7 @@ describe("5 tabstop", () => {
                 type: "button",
                 header: "remove",
                 icon: "trashcan",
-                value(row) {
+                text(row) {
                     return row.bar;
                 },
                 onClick(row) {
@@ -549,7 +549,7 @@ describe("5 tabstop", () => {
             {
                 type: "button",
                 header: "button header",
-                value(row) {
+                text(row) {
                     return row.button;
                 },
                 icon: "bell",
@@ -557,7 +557,7 @@ describe("5 tabstop", () => {
             {
                 type: "anchor",
                 header: "anchor header",
-                value(row) {
+                text(row) {
                     return row.anchor;
                 },
                 href: "awesome href",

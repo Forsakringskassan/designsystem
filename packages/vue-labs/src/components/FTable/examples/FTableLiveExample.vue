@@ -67,7 +67,7 @@ const columnsBase = defineTableColumns<Row>([
         type: "button",
         header: "Knapp",
         icon: "bell",
-        value(row) {
+        text(row) {
             return `Exempeltext för knapp med id ${row.id}`;
         },
         onClick: (row) => {
@@ -78,7 +78,7 @@ const columnsBase = defineTableColumns<Row>([
         header: "Länk",
         type: "anchor",
         href: "#",
-        value() {
+        text() {
             return "Länktext";
         },
     },
@@ -117,7 +117,7 @@ const columnsWithHeader = [
         {
             type: "rowheader",
             header: "Oformaterad text",
-            value(row) {
+            text(row) {
                 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
                 return String(row.antal);
             },

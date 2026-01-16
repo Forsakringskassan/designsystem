@@ -115,13 +115,13 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     anchor: {
         type: "anchor",
         header: "Länk",
-        value: () => "value",
+        text: () => "value",
         href: "#",
     },
     button: {
         type: "button",
         header: "Knapp",
-        value: () => "value",
+        text: () => "value",
         icon: "bell",
     },
     select: {

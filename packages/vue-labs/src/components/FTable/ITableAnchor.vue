@@ -11,7 +11,7 @@ const { column, row } = defineProps<{
 const targetElement = useTemplateRef("target");
 
 const renderAnchor = computed(() => {
-    return column.enabled(row) && column.value(row) !== null;
+    return column.enabled(row) && column.text(row) !== null;
 });
 
 const expose: FTableCellApi = { tabstopEl: targetElement };
@@ -21,7 +21,7 @@ defineExpose(expose);
 <template>
     <td v-if="renderAnchor" class="table-ng__cell table-ng__cell--anchor">
         <a ref="target" class="anchor anchor--block" target="_blank" :href="column.href" tabindex="-1">
-            {{ column.value(row) }}
+            {{ column.text(row) }}
         </a>
     </td>
     <td v-else ref="target" tabindex="-1" class="table-ng__cell"></td>

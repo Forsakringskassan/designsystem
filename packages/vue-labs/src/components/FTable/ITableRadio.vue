@@ -27,6 +27,6 @@ defineExpose(expose);
 
 <template>
     <td class="table-ng__cell table-ng__cell--radio">
-        <input ref="input" type="radio" :checked="column.value(row)" :aria-label tabindex="-1" @change="onChange" />
+        <input ref="input" type="radio" :checked="column.checked(row)" :aria-label tabindex="-1" @change="onChange" />
     </td>
 </template>

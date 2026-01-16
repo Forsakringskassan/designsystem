@@ -23,7 +23,7 @@ const editRef = useTemplateRef("edit");
 
 const { stopEdit } = useStartStopEdit();
 
-const viewValue = ref(column.value(row));
+const viewValue = ref(column.selected(row));
 
 const ariaLabel = computed(() => {
     const value = column.label(row);
@@ -273,7 +273,7 @@ function cancel(): void {
         ></i-combobox-dropdown>
     </td>
     <td v-else tabindex="-1" class="table-ng__cell table-ng__cell--static">
-        {{ column.value(row) }}
+        {{ column.selected(row) }}
     </td>
 </template>
 

@@ -71,7 +71,7 @@ const columns = defineTableColumns<Row>([
         header: "Knapp",
         icon: "trashcan",
         size: "shrink",
-        value(row) {
+        text(row) {
             return `Ta bort ${row.id}`;
         },
         onClick: onRemoveRow,
@@ -80,7 +80,7 @@ const columns = defineTableColumns<Row>([
         header: "Länk",
         type: "anchor",
         href: "#",
-        value() {
+        text() {
             return "Länktext";
         },
     },

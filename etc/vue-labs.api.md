@@ -111,9 +111,9 @@ export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase
     // (undocumented)
     key?: K;
     // (undocumented)
-    type: "anchor";
+    text(this: void, row: T): string | null;
     // (undocumented)
-    value(this: void, row: T): string | null;
+    type: "anchor";
 }
 
 // @public
@@ -137,13 +137,15 @@ export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase
     // (undocumented)
     onClick?(this: void, row: T): void;
     // (undocumented)
-    type: "button";
+    text(this: void, row: T): string | null;
     // (undocumented)
-    value(this: void, row: T): string | null;
+    type: "button";
 }
 
 // @public (undocumented)
 export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    checked?(this: void, row: T): boolean;
     // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
@@ -154,8 +156,6 @@ export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBa
     type: "checkbox";
     // (undocumented)
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
-    // (undocumented)
-    value?(this: void, row: T): boolean;
 }
 
 // @public (undocumented)
@@ -189,6 +189,8 @@ export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase
 // @public (undocumented)
 export interface TableColumnRadio<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
+    checked?(this: void, row: T): boolean;
+    // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
@@ -196,8 +198,6 @@ export interface TableColumnRadio<T, K extends keyof T> extends TableColumnBase 
     type: "radio";
     // (undocumented)
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
-    // (undocumented)
-    value?(this: void, row: T): boolean;
 }
 
 // @public (undocumented)
@@ -213,9 +213,9 @@ export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnB
     // (undocumented)
     key?: K;
     // (undocumented)
-    type: "rowheader";
+    text?(this: void, row: T): string;
     // (undocumented)
-    value?(this: void, row: T): string;
+    type: "rowheader";
 }
 
 // @public (undocumented)
@@ -229,11 +229,11 @@ export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase
     // (undocumented)
     options: string[];
     // (undocumented)
+    selected?(this: void, row: T): string;
+    // (undocumented)
     type: "select";
     // (undocumented)
     update?(this: void, row: T, newValue: string, oldValue: string): void;
-    // (undocumented)
-    value?(this: void, row: T): string;
 }
 
 // @public (undocumented)
