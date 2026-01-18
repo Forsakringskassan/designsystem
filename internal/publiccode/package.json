@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "execa": "9.6.1",
-    "prettier": "3.7.4",
+    "prettier": "3.8.0",
     "yaml": "2.8.2"
   },
   "engines": {
