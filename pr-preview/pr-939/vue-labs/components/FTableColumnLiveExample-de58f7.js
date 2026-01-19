@@ -624,7 +624,7 @@ ITableSelect_default.__file = "src/components/FTable/ITableSelect.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableText.vue?type=script
 import { defineComponent as _defineComponent7 } from "vue";
-import { computed as computed8, onMounted as onMounted3, ref as ref4, useTemplateRef as useTemplateRef6 } from "vue";
+import { computed as computed8, nextTick as nextTick4, onMounted as onMounted3, ref as ref4, useTemplateRef as useTemplateRef6 } from "vue";
 import { ValidationService as ValidationService2, assertRef as assertRef4 } from "@fkui/logic";
 import { FIcon as FIcon3, dispatchComponentValidityEvent } from "@fkui/vue";
 
@@ -986,7 +986,6 @@ function addInputValidators(inputElement, type, decimals) {
   for (const { name, value } of attributes) {
     inputElement.setAttribute(name, value);
   }
-  ValidationService.validateElement(inputElement);
 }
 
 // src/components/FTable/is-alphanumeric.ts
@@ -1003,7 +1002,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
   },
   setup(__props, { expose: __expose }) {
     __expose();
-    const model = ref4("");
+    const viewValue = ref4("");
     const inEdit = ref4(false);
     const validity = ref4({
       isValid: true,
@@ -1049,11 +1048,12 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
     const inputElement = useTemplateRef6("input");
     const { stopEdit } = useStartStopEdit();
     const hasValidation = __props.column.type.startsWith("text:") || Object.keys(__props.column.validation).length > 0;
-    let initialModelValue = "";
+    let initialViewValue = "";
     let pendingStopEditReason = null;
     function setUpValidation(el) {
       addInputValidators(el, __props.column.type);
       ValidationService2.addValidatorsToElement(el, __props.column.validation);
+      nextTick4().then(() => ValidationService2.validateElement(el));
     }
     function setUpFakeValidation(el) {
       assertRef4(inputElement);
@@ -1081,6 +1081,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
     }
     onMounted3(() => {
       if (inputElement.value) {
+        viewValue.value = fromColumnValue();
         if (hasValidation) {
           setUpValidation(inputElement.value);
         } else {
@@ -1088,7 +1089,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
         }
       }
     });
-    function onStartEdit(modelValue) {
+    function onStartEdit(value) {
       if (inEdit.value) {
         return;
       }
@@ -1096,8 +1097,8 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
       assertRef4(tdElement);
       assertRef4(inputElement);
       const { width } = tdElement.value.getBoundingClientRect();
-      initialModelValue = modelValue;
-      model.value = modelValue;
+      initialViewValue = viewValue.value;
+      viewValue.value = value;
       tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.tabIndex = 0;
       inputElement.value.focus();
@@ -1128,7 +1129,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
     }
     function updateColumnValue() {
       const oldValue = __props.column.value(__props.row);
-      const newValue = toColumnValue(model.value);
+      const newValue = toColumnValue(viewValue.value);
       if (oldValue !== newValue) {
         __props.column.update(__props.row, newValue, oldValue);
       }
@@ -1154,13 +1155,13 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
       assertRef4(inputElement);
       event.stopPropagation();
       if (event.key === "Enter") {
-        if (model.value === initialModelValue) {
+        if (viewValue.value === initialViewValue) {
           onStopEdit({ reason: "enter" });
         } else {
           pendingStopEditReason = "enter";
         }
       } else if (event.key === "Escape") {
-        model.value = initialModelValue;
+        viewValue.value = initialViewValue;
         onStopEdit({ reason: "escape" });
       } else if (event.key === "Tab") {
         pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
@@ -1194,10 +1195,10 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
       assertRef4(validity);
       validity.value.validityMode = "INITIAL";
     }
-    const __returned__ = { model, inEdit, validity, hasError, divClasses, wrapperClasses, staticClasses, inputClasses, ariaLabel, tdElement, viewElement, inputElement, stopEdit, hasValidation, get initialModelValue() {
-      return initialModelValue;
-    }, set initialModelValue(v) {
-      initialModelValue = v;
+    const __returned__ = { viewValue, inEdit, validity, hasError, divClasses, wrapperClasses, staticClasses, inputClasses, ariaLabel, tdElement, viewElement, inputElement, stopEdit, hasValidation, get initialViewValue() {
+      return initialViewValue;
+    }, set initialViewValue(v) {
+      initialViewValue = v;
     }, get pendingStopEditReason() {
       return pendingStopEditReason;
     }, set pendingStopEditReason(v) {
@@ -1243,7 +1244,7 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
           ),
           _withDirectives2(_createElementVNode6("input", {
             ref: "input",
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.model = $event),
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.viewValue = $event),
             class: _normalizeClass($setup.inputClasses),
             type: "text",
             maxlength: "40",
@@ -1252,7 +1253,7 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
             onValidity: $setup.onValidity,
             onPendingValidity: $setup.onPendingValidity
           }, null, 42, _hoisted_16), [
-            [_vModelText, $setup.model]
+            [_vModelText, $setup.viewValue]
           ]),
           $setup.hasError ? (_openBlock7(), _createBlock2($setup["FIcon"], {
             key: 0,
