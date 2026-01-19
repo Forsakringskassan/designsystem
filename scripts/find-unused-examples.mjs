@@ -50,7 +50,9 @@ async function findExamples() {
  * @returns {Promise<Set<string>>}
  */
 async function findDocsImported() {
-    const filePaths = await glob("{docs,packages/vue-labs/docs}/**/*.md");
+    const filePaths = await glob("{docs,packages/vue-labs/docs}/**/*.md", {
+        ignore: ["docs/examples/**"],
+    });
     const found = /** @type {Set<string>} */ new Set();
     for (const filePath of filePaths) {
         const content = await fs.readFile(filePath, "utf-8");
