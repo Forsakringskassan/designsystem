@@ -7,14 +7,8 @@ component: FFileSelector
 
 Filväljare används för att välja filer.
 
-```import
-FFileSelectorEnabled.vue
-```
-
-## Inaktiv filväljare
-
-```import
-FFileSelectorDisabled.vue
+```import live-example
+FFileSelectorLiveExample.vue
 ```
 
 ## API
