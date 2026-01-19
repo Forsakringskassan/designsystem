@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { type PropType, defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import FIcon from "../FIcon/FIcon.vue";
 
@@ -27,6 +27,20 @@ export default defineComponent({
             type: Boolean,
             required: false,
         },
+
+        /**
+         * Button size, can be one of:
+         * - `small`
+         * - `medium`
+         * - `large`
+         */
+        size: {
+            type: String as PropType<"small" | "medium" | "large">,
+            default: "medium",
+            validator(value: string) {
+                return ["small", "medium", "large"].includes(value);
+            },
+        },
     },
     emits: [
         /**
@@ -48,9 +62,8 @@ export default defineComponent({
                 },
             };
         },
-
-        labelClass(): string {
-            return this.disabled ? "disabled" : "enabled";
+        labelClass(): string[] {
+            return [this.disabled ? "disabled" : "enabled", "button", "button--tertiary", `button--${this.size}`];
         },
         labelId(): string {
             return `${this.id}_label`;
@@ -84,14 +97,7 @@ export default defineComponent({
             v-bind="attrs"
             @click="onClick"
         />
-        <label
-            :id="labelId"
-            role="button"
-            :class="labelClass"
-            :for="id"
-            class="button button--tertiary button--medium"
-            aria-hidden="true"
-        >
+        <label :id="labelId" role="button" :class="labelClass" :for="id" aria-hidden="true">
             <f-icon class="button__icon" name="paper-clip"></f-icon>
             <slot></slot>
         </label>
