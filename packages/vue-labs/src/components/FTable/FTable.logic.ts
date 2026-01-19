@@ -309,8 +309,13 @@ export function stopEdit(
 
     switch (reason) {
         case "enter": {
-            if (rowIndex !== lastRowIndex) {
-                newCellTarget = getCellTarget(table, rowIndex + 1, cellIndex);
+            const nextRowIndex = rowIndex + 1;
+            const hasFooter = Boolean(table.tFoot);
+            const isLastRow = rowIndex === lastRowIndex;
+            const footerNext = hasFooter && nextRowIndex === lastRowIndex;
+
+            if (!isLastRow && !footerNext) {
+                newCellTarget = getCellTarget(table, nextRowIndex, cellIndex);
                 activateCell(newCellTarget, { focus: true });
             } else {
                 activateCell(newCellTarget, { focus: true });
@@ -346,8 +351,6 @@ export function stopEdit(
             return newCellTarget;
         }
         case "blur": {
-            // eslint-disable-next-line no-console -- ev ta bort
-            console.log("stopEdit", "blur");
             return newCellTarget;
         }
     }
