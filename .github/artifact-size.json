@@ -27,6 +27,12 @@
             "compression": false
         },
         {
+            "id": "@fkui/vue-fbadge",
+            "name": "@fkui/vue (FBadge bundle)",
+            "include": ["packages/vue/temp/test-bundles/badge-bundle.js"],
+            "compression": false
+        },
+        {
             "id": "@fkui/vue/cypress",
             "name": "@fkui/vue/cypress",
             "include": ["packages/vue/dist/esm/cypress.esm.js"],

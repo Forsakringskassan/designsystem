@@ -126,4 +126,13 @@ export default [
             "@typescript-eslint/explicit-function-return-type": "off",
         },
     },
+
+    {
+        name: "local/test-bundles",
+        files: ["packages/vue/test-bundles/*.mjs"],
+        rules: {
+            /* we want to import @fkui/* packages without them explicitly being listed as dependencies */
+            "import/no-extraneous-dependencies": "off",
+        },
+    },
 ];
