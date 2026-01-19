@@ -25,7 +25,6 @@ $chip-border-width: var(--f-border-width-medium);
                     background: $chip-color-background-disabled;
                     border-color: $chip-color-border-disabled;
                     color: $chip-color-text-disabled;
-                    cursor: not-allowed;
 
                     @media (forced-colors: active) {
                         color: GrayText;
