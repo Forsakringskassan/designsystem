@@ -1339,3 +1339,127 @@ describe("7 Bulk Operation ", () => {
         });
     });
 });
+
+describe("select cell", () => {
+    const rows = [{ option: "Foo" }, { option: "Bar" }];
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "select",
+            header: "Header",
+            options: ["Foo", "Bar", "Baz"],
+            key: "option",
+            editable: true,
+            label: () => "Label",
+        },
+    ]);
+
+    it("should set value when selecting option with enter", () => {
+        const setValueRows = [{ option: "Foo" }, { option: "Bar" }];
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows: setValueRows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).should("contain.text", "Foo");
+        table.cell({ row: 2, col: 1 }).should("contain.text", "Bar");
+        table.cell({ row: 1, col: 1 }).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("exist");
+
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.cell({ row: 1, col: 1 }).should("contain.text", "Baz");
+        table.cell({ row: 2, col: 1 }).should("contain.text", "Bar");
+    });
+
+    it("should focus next row on selecting option with enter", () => {
+        cy.mount(FTable<(typeof rows)[number]>, { props: { rows, columns } });
+
+        table.cell({ row: 1, col: 1 }).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("exist");
+
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("not.exist");
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+
+    it("should focus same cell on selecting option with enter when on last row", () => {
+        cy.mount(FTable<(typeof rows)[number]>, { props: { rows, columns } });
+
+        table.cell({ row: 2, col: 1 }).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("exist");
+
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("not.exist");
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+
+    it("should focus same cell on selecting option with enter when on last row using table with footer", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+            slots: { footer: "Lorem ipsum" },
+        });
+
+        table.cell({ row: 2, col: 1 }).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("exist");
+
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("not.exist");
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+
+    it("should close dropdown and focus cell on pressing escape", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("exist");
+
+        cy.focused().press(Cypress.Keyboard.Keys.ESC);
+        table.selectDropdown().should("not.exist");
+        table.cell({ row: 1, col: 1 }).should("have.focus");
+    });
+
+    it("should close dropdown on tab", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("exist");
+
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        table.selectDropdown().should("not.exist");
+    });
+
+    it("should close dropdown on shift-tab", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).focus();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+        table.selectDropdown().should("exist");
+
+        cy.focused().realPress(["Shift", "Tab"]);
+        table.selectDropdown().should("not.exist");
+    });
+
+    it("should close dropdown on click outside", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).click();
+        table.selectDropdown().should("exist");
+
+        cy.get("body").realClick({ position: "topLeft" });
+        table.selectDropdown().should("not.exist");
+    });
+});

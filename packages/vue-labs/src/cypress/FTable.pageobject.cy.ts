@@ -462,3 +462,50 @@ describe("rows()", () => {
         table.rows().should("have.length", 4);
     });
 });
+
+it("selectDropdown() should get dropdown when open", () => {
+    const selectRows = [{ option: "Foo" }, { option: "Bar" }];
+    const selectColumns = defineTableColumns<(typeof selectRows)[number]>([
+        {
+            type: "select",
+            header: "Header",
+            options: ["Foo", "Bar", "Baz"],
+            key: "option",
+            editable: true,
+            label: () => "Label",
+        },
+    ]);
+    cy.mount(FTable<(typeof selectRows)[number]>, {
+        props: {
+            columns: selectColumns,
+            rows: selectRows,
+        },
+    });
+    table.selectDropdown().should("not.exist");
+    table.cell({ row: 1, col: 1 }).click();
+    table.selectDropdown().should("exist");
+});
+
+it("selectDropdownOption() should get options when dropdown is open", () => {
+    const selectRows = [{ option: "Foo" }, { option: "Bar" }];
+    const selectColumns = defineTableColumns<(typeof selectRows)[number]>([
+        {
+            type: "select",
+            header: "Header",
+            options: ["Foo", "Bar", "Baz"],
+            key: "option",
+            editable: true,
+            label: () => "Label",
+        },
+    ]);
+    cy.mount(FTable<(typeof selectRows)[number]>, {
+        props: {
+            columns: selectColumns,
+            rows: selectRows,
+        },
+    });
+    table.selectDropdownOption(1).should("not.exist");
+    table.cell({ row: 1, col: 1 }).click();
+    table.selectDropdownOption(1).should("contain.text", "Foo");
+    table.selectDropdownOption(2).should("contain.text", "Bar");
+});

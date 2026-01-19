@@ -911,3 +911,109 @@ describe("7.6 aria-selected", () => {
         ]);
     });
 });
+
+describe("select cell", () => {
+    Element.prototype.scrollTo = jest.fn();
+
+    it("should set value when selecting option with click", async () => {
+        const rows = [{ option: "Foo" }, { option: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "select",
+                header: "A",
+                options: ["Foo", "Bar", "Baz"],
+                key: "option",
+                editable: true,
+                label: () => "Label",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows,
+            },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        const cellView = wrapper.findAll(
+            "tbody td .table-ng__editable:nth-child(1)",
+        );
+        expect(cellView[0].text()).toBe("Foo");
+        expect(cellView[1].text()).toBe("Bar");
+
+        await cellView[0].trigger("click");
+        const thirdOption = wrapper.get(
+            ".combobox__listbox li.combobox__listbox__option:nth-child(3)",
+        );
+        await thirdOption.trigger("click");
+        expect(cellView[0].text()).toBe("Baz");
+        expect(cellView[1].text()).toBe("Bar");
+    });
+
+    it("should call update on selecting option with click", async () => {
+        const listener = jest.fn();
+        const rows = [{ option: "Foo" }, { option: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "select",
+                header: "A",
+                options: ["Foo", "Bar", "Baz"],
+                key: "option",
+                editable: true,
+                label: () => "Label",
+                update: listener,
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows,
+            },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        const cell = wrapper.get("tbody td:nth-child(1)");
+        await cell.trigger("click");
+        const options = wrapper.findAll(".combobox__listbox li");
+        await options[1].trigger("click");
+        expect(listener).toHaveBeenCalled();
+    });
+
+    it("should set correct aria-expanded", async () => {
+        const rows = [{ option: "Foo" }, { option: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "select",
+                header: "A",
+                options: ["Foo", "Bar", "Baz"],
+                key: "option",
+                editable: true,
+                label: () => "Label",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows,
+            },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        const cellEditable = wrapper.findAll(
+            "tbody td .table-ng__editable[aria-expanded]",
+        );
+        expect(cellEditable[0].attributes("aria-expanded")).toBe("false");
+        expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
+
+        const cell = wrapper.get("tbody tr:nth-child(1) td");
+        await cell.trigger("click");
+        expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
+        expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
+    });
+});

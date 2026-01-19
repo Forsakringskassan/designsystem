@@ -332,3 +332,37 @@ FTablePageObject-selectInput.vue
 ```import static
 FTablePageObject-selectInput.cy.ts
 ```
+
+## selectDropdownOption()
+
+Hämtar ett alternativ från en cell med en öppen dropplista.
+
+Alternativnumreringen är 1-indexerad.
+
+Dropplistans element teleporteras och använder därav inte `selector`.
+Se därför till att inte flera dropplistor är öppna samtidigt vid test.
+
+### Syntax
+
+```ts nocompile nolint
+selectDropdownOption(option);
+```
+
+#### Parametrar
+
+`option: number`
+: Alternativnummer (1-indexerat).
+
+#### Returvärde
+
+`HTMLElement` med ett alternativ för dropplistan.
+
+### Exempel
+
+```import static
+FTablePageObject-selectDropdownOption.vue
+```
+
+```import static
+FTablePageObject-selectDropdownOption.cy.ts
+```
