@@ -4799,7 +4799,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       setDefaultCellTarget(tableRef.value);
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment2, null, [createElementVNode("table", {
+      return openBlock(), createElementBlock("table", {
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
@@ -4808,7 +4808,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$c, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$c, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
@@ -4823,7 +4823,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
+      }), 128))])]), _cache[7] || (_cache[7] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[2] || (_cache[2] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
@@ -4891,19 +4891,19 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
         }), 128))], 64))], 8, _hoisted_7$1);
-      }), 128))]), _cache[7] || (_cache[7] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
-        class: "table-ng__row",
-        "aria-rowindex": ariaRowcount.value
-      }, [createElementVNode("td", {
-        colspan: columnCount.value,
-        class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2), _cache[8] || (_cache[8] = createTextVNode()), createVNode(unref3(IPopupError), {
+      }), 128)), _cache[5] || (_cache[5] = createTextVNode()), createVNode(unref3(IPopupError), {
         anchor: unref3(errorAnchor),
         "is-open": unref3(openPopupError),
         "error-message": unref3(errorMessage),
         "arrow-anchor": unref3(errorArrowAnchor),
         layout: "f-table"
-      }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])], 64);
+      }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])]), _cache[8] || (_cache[8] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+        class: "table-ng__row",
+        "aria-rowindex": ariaRowcount.value
+      }, [createElementVNode("td", {
+        colspan: columnCount.value,
+        class: "table-ng__cell--custom"
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
