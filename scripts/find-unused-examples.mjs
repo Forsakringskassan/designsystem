@@ -111,7 +111,8 @@ const extraneous = difference(
 
 const delimiter = process.argv.includes("-z") ? "\x00" : "\n";
 
-process.stderr.write(`${extraneous.size} extraneous dependencies found\n`);
+const s = extraneous.size !== 1 ? "s" : "";
+process.stderr.write(`${extraneous.size} extraneous example${s} found\n`);
 for (const example of extraneous) {
     const entry = examples.find((it) => it.name === example);
     process.stdout.write(`${entry.filePath}${delimiter}`);
