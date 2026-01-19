@@ -175,6 +175,40 @@ export class FTablePageObject implements BasePageObject {
     }
 
     /**
+     * Get the dropdown from a select cell.
+     *
+     * Only applicable if using a select cell.
+     *
+     * Element is teleported and does not use given selector. Method may
+     * not work properly if there are several dropdowns open simultaneously.
+     *
+     * @internal
+     * @returns Dropdown for a select cell.
+     */
+    public selectDropdown(): DefaultCypressChainable {
+        return cy.get(".combobox__listbox");
+    }
+
+    /**
+     * Get an option in a select cell dropdown.
+     *
+     * Only applicable if using a select cell.
+     *
+     * Element is teleported and does not use given selector. Method may
+     * not work properly if there are several dropdowns open simultaneously.
+     *
+     * @public
+     * @param option - option number (1-indexed).
+     * @returns Option of given number from a select cell dropdown.
+     */
+    public selectDropdownOption(option: number): DefaultCypressChainable {
+        const index = option - 1;
+        return cy.get(
+            `.combobox__listbox li.combobox__listbox__option:nth(${index})`,
+        );
+    }
+
+    /**
      * Get table caption.
      *
      * Only applicable if caption slot is used.

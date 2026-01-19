@@ -5,13 +5,6 @@ import { FIcon, IComboboxDropdown } from "@fkui/vue";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnSelect } from "./table-column";
 
-// Props
-// const { modelValue, options, title } = defineProps<{
-//     modelValue: string;
-//     options: string[];
-//     title: string;
-// }>();
-
 const { row, column } = defineProps<{
     row: T;
     column: NormalizedTableColumnSelect<T, K>;
@@ -30,80 +23,73 @@ const ariaLabel = computed(() => {
     return value.length > 0 ? value : undefined;
 });
 
-/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
-async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
-    if (e.code === "Enter" || e.code === "NumpadEnter") {
-        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-        startEditing(e);
-    }
-}
-
-/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
-async function onCellClick(e: MouseEvent): Promise<void> {
-    if (editing.value) {
-        return;
-    }
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    startEditing(e);
-}
-
-async function startEditing(e: UIEvent): Promise<void> {
-    assertRef(editRef);
-    e.preventDefault();
-    editing.value = true;
-    await nextTick();
-    editRef.value.tabIndex = 0;
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-    editRef.value.focus();
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    openSelected("first");
-}
-
-/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
-async function onDropdownSelect(value: string): Promise<void> {
-    assertRef(editRef);
-    assertSet(stopEdit);
-
-    close();
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    submit();
-    viewValue.value = value;
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    stopEdit(editRef.value, "enter");
-}
-
-function onDropdownClose(): void {
-    assertRef(editRef);
-    assertSet(stopEdit);
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    stopEdit(editRef.value, "escape");
-}
-
 const dropdownId = ElementIdService.generateElementId();
 const dropdownIsOpen = ref(false);
 const activeOptionId = ElementIdService.generateElementId();
 const activeOption: Ref<string | null> = ref(null);
 
-async function openSelected(fallback: null | "first" | "last" = null): Promise<void> {
+async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
+    if (e.code === "Enter" || e.code === "NumpadEnter") {
+        await startEditing(e);
+    }
+}
+
+async function onCellClick(e: MouseEvent): Promise<void> {
+    if (editing.value) {
+        return;
+    }
+    await startEditing(e);
+}
+
+async function startEditing(e: UIEvent): Promise<void> {
+    assertRef(editRef);
+    e.preventDefault();
+
+    editing.value = true;
+    await nextTick();
+    editRef.value.tabIndex = 0;
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+    editRef.value.focus();
+    await openDropdown();
+}
+
+async function selectDropdownOption(value: string): Promise<void> {
+    assertRef(editRef);
+    assertSet(stopEdit);
+
+    const oldValue = viewValue.value;
+    viewValue.value = value;
+    column.update(row, value, oldValue);
+    closeDropdown();
+    await stopEdit(editRef.value, "enter");
+}
+
+async function onDropdownClose(): Promise<void> {
+    assertSet(stopEdit);
+    assertRef(editRef);
+
+    closeDropdown();
+    await stopEdit(editRef.value, "blur");
+}
+
+async function openDropdown(): Promise<void> {
     dropdownIsOpen.value = true;
     await nextTick();
 
     if (viewValue.value) {
         activeOption.value = viewValue.value;
-    } else if (fallback === "first") {
-        activeOption.value = column.options[0];
-    } else if (fallback === "last") {
-        activeOption.value = column.options[column.options.length - 1];
     } else {
         activeOption.value = null;
     }
 
+    assertRef(editRef);
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-    editRef.value?.focus();
+    editRef.value.focus();
 }
 
-function close(): void {
+function closeDropdown(): void {
     dropdownIsOpen.value = false;
+    editing.value = false;
     activeOption.value = null;
 }
 
@@ -135,7 +121,6 @@ function setPreviousOption(): void {
     }
 }
 
-/* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
 async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
     assertRef(editRef);
     assertSet(stopEdit);
@@ -143,74 +128,44 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
     switch (e.code) {
         case "Escape":
             e.preventDefault();
-            cancel();
-            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-            stopEdit(editRef.value, "escape");
+            closeDropdown();
+            await stopEdit(editRef.value, "escape");
             break;
         case "Enter":
         case "NumpadEnter":
             e.preventDefault();
-            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-            submit();
-            if (activeOption.value) {
-                viewValue.value = activeOption.value;
-            }
-            close();
-            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-            stopEdit(editRef.value, "enter");
+            await selectDropdownOption(activeOption.value ?? viewValue.value);
+            await stopEdit(editRef.value, "enter");
             break;
         case "Tab":
             e.preventDefault();
-            cancel();
-            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-            stopEdit(editRef.value, e.shiftKey ? "shift-tab" : "tab");
+            closeDropdown();
+            await stopEdit(editRef.value, e.shiftKey ? "shift-tab" : "tab");
             break;
         case "ArrowDown":
             e.preventDefault();
-            if (dropdownIsOpen.value) {
-                setNextOption();
-            } else {
-                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                openSelected("first");
-            }
+            setNextOption();
             break;
         case "ArrowUp":
             e.preventDefault();
-            if (dropdownIsOpen.value) {
-                setPreviousOption();
-            } else {
-                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                openSelected("last");
-            }
+            setPreviousOption();
             break;
         default:
             break;
     }
 }
 
-async function onEditBlur(): Promise<void> {
-    if (editing.value) {
-        assertSet(stopEdit);
-        assertRef(editRef);
-
-        dropdownIsOpen.value = false;
-        editing.value = false;
-        await nextTick();
-        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-        stopEdit(editRef.value, "blur");
+async function onEditBlur(event: FocusEvent): Promise<void> {
+    const validTarget = event.relatedTarget && event.relatedTarget instanceof HTMLElement;
+    if (validTarget && event.relatedTarget.closest(".combobox__listbox")) {
+        return;
     }
-}
 
-async function submit(): Promise<void> {
-    editing.value = false;
-    await nextTick();
-}
-
-function cancel(): void {
     assertSet(stopEdit);
     assertRef(editRef);
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    stopEdit(editRef.value, "escape");
+    closeDropdown();
+    await nextTick();
+    await stopEdit(editRef.value, "blur");
 }
 </script>
 
@@ -240,7 +195,7 @@ function cancel(): void {
             @click.stop
             @dblclick.prevent
             @keydown.stop="onEditKeyDown"
-            @focusout="onEditBlur"
+            @focusout="(e) => onEditBlur(e)"
         >
             {{ viewValue }}
         </div>
@@ -253,7 +208,7 @@ function cancel(): void {
             :active-option
             :active-option-id
             :input-node="editRef as HTMLInputElement"
-            @select="onDropdownSelect"
+            @select="selectDropdownOption"
             @close="onDropdownClose"
         ></i-combobox-dropdown>
     </td>
@@ -261,11 +216,3 @@ function cancel(): void {
         {{ column.selected(row) }}
     </td>
 </template>
-
-<!-- eslint-disable-next-line vue/no-restricted-block -- technical debt -->
-<style>
-.input {
-    border: none;
-    background: inherit;
-}
-</style>
