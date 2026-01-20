@@ -2164,6 +2164,7 @@ input[type=search]:focus,
 .radio-button__details,
 .checkbox__details {
   display: block;
+  margin-top: calc(0.25rem * var(--f-density-factor));
 }
 .radio-button__width,
 .checkbox__width {
@@ -2300,7 +2301,6 @@ input[type=search]:focus,
   background: var(--fkds-color-background-disabled);
   border-color: var(--fkds-color-border-primary);
   color: var(--fkds-color-text-disabled);
-  cursor: not-allowed;
 }
 @media (forced-colors: active) {
   .radio-button-group--chip .radio-button.disabled .radio-button__label {
@@ -2382,7 +2382,6 @@ input[type=search]:focus,
   background: var(--fkds-color-background-disabled);
   border-color: var(--fkds-color-border-primary);
   color: var(--fkds-color-text-disabled);
-  cursor: not-allowed;
 }
 @media (forced-colors: active) {
   .checkbox-group--chip .checkbox.disabled .checkbox__label {
