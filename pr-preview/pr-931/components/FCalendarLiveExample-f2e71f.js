@@ -7616,13 +7616,6 @@ function render26(_ctx, _cache, $props, $setup, $data, $options) {
           { key: 0 },
           [
             _ctx.showDetails === "always" ? (_openBlock26(), _createElementBlock22("span", _hoisted_311, [
-              _cache[3] || (_cache[3] = _createElementVNode19(
-                "br",
-                null,
-                null,
-                -1
-                /* CACHED */
-              )),
               _createCommentVNode23(" @slot Slot for extended label, should only contain short text "),
               _renderSlot20(_ctx.$slots, "details")
             ])) : _createCommentVNode23("v-if", true),
@@ -7634,13 +7627,6 @@ function render26(_ctx, _cache, $props, $setup, $data, $options) {
             }, {
               default: _withCtx10(() => [
                 _ctx.expanded ? (_openBlock26(), _createElementBlock22("span", _hoisted_48, [
-                  _cache[4] || (_cache[4] = _createElementVNode19(
-                    "br",
-                    null,
-                    null,
-                    -1
-                    /* CACHED */
-                  )),
                   _createCommentVNode23("\n                        @slot Slot for details, should only contain short text\n                        @binding {number} height The height of the expanded details content.\n                        "),
                   _renderSlot20(_ctx.$slots, "details", { height: _ctx.height })
                 ])) : _createCommentVNode23("v-if", true)

@@ -626,7 +626,7 @@ ITableSelect_default.__file = "src/components/FTable/ITableSelect.vue";
 import { defineComponent as _defineComponent7 } from "vue";
 import { computed as computed8, onMounted as onMounted3, ref as ref4, useTemplateRef as useTemplateRef6, watchEffect as watchEffect4 } from "vue";
 import { ValidationService as ValidationService2, assertRef as assertRef4 } from "@fkui/logic";
-import { FIcon as FIcon3 } from "@fkui/vue";
+import { FIcon as FIcon3, IPopupError } from "@fkui/vue";
 
 // ../../node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect as watchEffect2, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject as inject2, provide, ref as ref2, isRef, unref, toValue as toValue$1, computed as computed6, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick as nextTick2, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -1200,7 +1200,8 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
   __name: "ITableText",
   props: {
     row: { type: null, required: true },
-    column: { type: Object, required: true }
+    column: { type: Object, required: true },
+    activeErrorAnchor: { type: null, required: false, default: () => void 0 }
   },
   emits: ["onError", "closeError"],
   setup(__props, { expose: __expose, emit: __emit }) {
@@ -1258,6 +1259,12 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
     const { stopEdit } = useStartStopEdit();
     const isHovered = useElementHover(tdElement, { delayEnter: 200 });
     const { focused } = useFocusWithin(tdElement);
+    const openPopupError = computed8(() => {
+      if (!tdElement.value) {
+        return false;
+      }
+      return tdElement.value === __props.activeErrorAnchor;
+    });
     onMounted3(() => {
       if (inputElement.value) {
         addInputValidators(inputElement.value, __props.column.type);
@@ -1372,8 +1379,10 @@ var ITableText_default = /* @__PURE__ */ _defineComponent7({
       const { isValid, validationMessage, validityMode } = event.detail;
       validity.value = { isValid, validationMessage, validityMode };
     }
-    const __returned__ = { emit, model, inEdit, validity, hasError, divClasses, wrapperClasses, staticClasses, inputClasses, ariaLabel, tdElement, viewElement, inputElement, penElement, stopEdit, isHovered, focused, onStartEdit, onStopEdit, onClickCell, onViewingKeydown, onEditingKeydown, onKeydown, onBlur, onValidity, get FIcon() {
+    const __returned__ = { emit, model, inEdit, validity, hasError, divClasses, wrapperClasses, staticClasses, inputClasses, ariaLabel, tdElement, viewElement, inputElement, penElement, stopEdit, isHovered, focused, openPopupError, onStartEdit, onStopEdit, onClickCell, onViewingKeydown, onEditingKeydown, onKeydown, onBlur, onValidity, get FIcon() {
       return FIcon3;
+    }, get IPopupError() {
+      return IPopupError;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -1440,7 +1449,14 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
         ],
         2
         /* CLASS */
-      )
+      ),
+      _createVNode2($setup["IPopupError"], {
+        anchor: $setup.tdElement,
+        "is-open": $setup.openPopupError,
+        "error-message": $setup.validity.validationMessage,
+        "arrow-anchor": $setup.penElement,
+        layout: "f-table"
+      }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])
     ],
     34
     /* CLASS, NEED_HYDRATION */
