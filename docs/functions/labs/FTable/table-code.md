@@ -16,17 +16,6 @@ Sidan är under omarbetning för nya tabellkomponenten och kan innehålla felakt
 
 Den här sidan innehåller information om hur du sätter upp komponenten tabell i din applikation.
 
-## Navigering (plocka bort avsnitt helt?)
-
-Navigering i en tabell styrs av vilken role som tabellen har.
-
-Tabellen är som standard uppsatt med `role:grid`.
-
-Om tabellen har expanderbara rader ska du sätta `role:treegrid` oavsett vilka andra funktioner som ingår i tabellen.
-
-Vid `role:grid` eller `role:treegrid` navigerar användren till tabellen genom tabbning.
-När användaren tabbat sig till tabellen sker navigering inom tabellen med hjälp av piltangenterna.
-
 ## Tabellrubrik
 
 En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad rubrik (heading).
@@ -175,7 +164,44 @@ Framhäv varannan rad när tabellen innehåller många rader och kolumner.
 Det underlättar för användaren att läsa innehållet i tabellen genom att hen lättare kan läsa samma rad över flera kolumner.
 Du gör tabellen zebrarandig genom att...
 
-## Expanderbara rader
+## Tomt läge i tabell
+
+När tabellen är tom (finns inget innehåll att presentera) visas en text som informerar användaren om att tabellen är tom.
+Du kan ändra texten för att bättre passa innehållet, till exempel "Det finns inga betalningar" eller "Ingen anslutning finns".
+Texten sätts i slot `#empty`:
+
+// plats för kodexempel
+
+## Åtgärdsknappar och länkar
+
+Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig. Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
+Kolumnens typ ska sättas till `action`.
+
+// plats för kodexempel
+
+Om etiketten ska vara synlig använder du propen `label`. En `<span>` med sr-only kan användas för att ge ytterligare kontext till skärmläsare:
+
+// plats för kodexempel
+
+Länkar i tabell använder `table__anchor`-klassen:
+
+// plats för kodexempel
+
+## Välja rader
+
+Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
+Om du använder kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.
+För att definiera kolumnen som kryssruta eller radioknapp, se avsnitt Kolumntyper (länk).
+
+## Bulkoperation
+
+## Lägga till/ta bort rader
+
+Tabellen har stöd för att lägga till och ta bort rader.
+
+Exempel på tabell med knappar för ta bort/lägga till.
+
+## Expandera rader
 
 Med expanderbara rader går det att skapa ytterligare tabellrader som visas när användaren trycker på en expanderbar rad.
 
@@ -213,48 +239,7 @@ Skapa inte ett för komplext expanderat innehåll som till exempel att placera y
 
 // plats för kodexempel
 
-// plats för kodexempel
-
-## Åtgärdsknappar och länkar
-
-Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig. Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
-Kolumnens typ ska sättas till `action`.
-
-// plats för kodexempel
-
-// plats för kodexempel
-
-Om etiketten ska vara synlig använder du propen `label`. En `<span>` med sr-only kan användas för att ge ytterligare kontext till skärmläsare:
-
-// plats för kodexempel
-
-// plats för kodexempel
-
-Länkar i tabell använder `table__anchor`-klassen:
-
-// plats för kodexempel
-
-// plats för kodexempel
-
-## Tomt läge i tabell
-
-När tabellen är tom (finns inget innehåll att presentera) visas en text som informerar användaren om att tabellen är tom.
-Du kan ändra texten för att bättre passa innehållet, till exempel "Det finns inga betalningar" eller "Ingen anslutning finns".
-Texten sätts i slot `#empty`:
-
-// plats för kodexempel
-
-## Kryssruta/radioknapp
-
-Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
-Om du använder kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.
-För att definiera kolumnen som kryssruta eller radioknapp, se avsnitt Kolumntyper (länk).
-
-## Lägga till/ta bort rader
-
-Tabellen har stöd för att lägga till och ta bort rader.
-
-Exempel på tabell med knappar för ta bort/lägga till.
+## Paginera
 
 ## Felhantering
 
@@ -279,6 +264,14 @@ translation:FTable
 :::api
 vue:FTable
 :::
+
+## Begränsningar i komponent
+
+(länk till andra sidan)
+
+## Återstående förbättringar i komponent
+
+(länk till andra sidan)
 
 ## Relaterat
 
