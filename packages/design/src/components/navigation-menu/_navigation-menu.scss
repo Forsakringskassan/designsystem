@@ -102,13 +102,13 @@
             }
         }
 
+        &__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
+            border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
+        }
+
         &__anchor-container {
             padding-bottom: size.$padding-050;
             border-bottom: 5px solid transparent;
-
-            &:hover {
-                border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
-            }
         }
 
         &__anchor {
