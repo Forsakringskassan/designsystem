@@ -235,7 +235,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-e24c8e"></div>
+        <div id="example-b19457"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -245,7 +245,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableContextmenuExample-e24c8e.js"></script>
+        <script type="module" src="./FTableContextmenuExample-b19457.js"></script>
     
                 </div>
                 <div>
@@ -303,22 +303,22 @@ interface <span class="hljs-title class_">Row</span> {
         },
         <span class="hljs-attr">actions</span>: [
             {
-                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;a&quot;</span>,
-                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Visa&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;search&quot;</span>,
                 <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
-                    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">`Run action A on row &quot;<span class="hljs-subst">${row.id}</span>&quot;`</span>);
+                    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">`Visa detaljer för rad &quot;<span class="hljs-subst">${row.id}</span>&quot;`</span>);
                 },
             },
             {
-                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;b&quot;</span>,
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Redigera&quot;</span>,
                 <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
                 <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
-                    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">`Run action B on row &quot;<span class="hljs-subst">${row.id}</span>&quot;`</span>);
+                    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">`Redigera rad &quot;<span class="hljs-subst">${row.id}</span>&quot;`</span>);
                 },
             },
             {
-                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;c&quot;</span>,
-                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;search&quot;</span>,
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
             },
         ],
     },
@@ -358,15 +358,12 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             </div>
-        
-            <div class="docs-messagebox docs-messagebox--warning">
-                <p class="docs-messagebox__title">WARNING</p>
-                <p class="docs-paragraph">Känd bugg: tabbning när meny är öppen stämmer inte med krav.</p>
+        <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Använd kolumntypen <code>menu</code> och sätt <code>actions</code> till en lista med åtgärder.
+Åtgärdens <code>onClick()</code> anropas med raden som parameter när åtgärden väljs.</p>
+<p class="docs-paragraph">Knappens skärmläsartext sätts med <code>text()</code> metoden och bör förtydliga vilken rad åtgärderna gäller för.</p>
 
-            </div>
-        <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2>
                 <div
-                    id="example-bb8fdb"
+                    id="example-248dd5"
                     class="code-preview code-preview--default"
                     
                     
@@ -374,8 +371,11 @@ interface <span class="hljs-title class_">Row</span> {
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0">{
-    <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Kolumnrubrik&quot;</span>,
+    <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärd&quot;</span>,
     <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
+    <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`Åtgärder för rad <span class="hljs-subst">${row.id}</span>`</span>;
+    }
     <span class="hljs-attr">actions</span>: [
         {
             <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Etikett&quot;</span>,
@@ -389,11 +389,12 @@ interface <span class="hljs-title class_">Row</span> {
 },</code></pre>
                 </div>
             <ul>
-<li><code>icon</code> är valfri</li>
-<li><code>onClick</code> anropas med raden som kontextmenyn tillhör.</li>
+<li><code>icon</code> är valfri och sätts till namnet på en <a href="https://designsystem.forsakringskassan.se/latest/styles/icons.html">ikon</a>.</li>
+<li><code>onClick</code> anropas med raden som kontextmenyn tillhör som parameter.</li>
 </ul>
 <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
 <li>FContextMenu</li>
+<li>FIcon</li>
 </ul>
 
 
