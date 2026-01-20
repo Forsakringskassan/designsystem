@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Testning av tabell - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-f3250a.css"
+            href="../assets/docs-5ee7b6.css"
             crossorigin
-            integrity="sha384-yyZHGoZFCuU4L/rIZBSgg/K5fT0O70ROF6cXPrVMuNI+HLHrG6zSvIp2cYGx+HVj"
+            integrity="sha384-bfZjJzhcuXTWkn02HjA/IsKSebvNFeRShozCoqwnFDYyN5jYz9+fFQHraW/RBEUm"
             
         />
         <link
@@ -25,17 +25,17 @@
     "vue": "../assets/vendor-vue-a11a3e.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-fb32f2.js",
     "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-d0d3f3.js",
-    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-e7b195.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js"
+    "@fkui/vue": "../assets/vendor-fkui-vue-ca4f6b.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-1ec5f1.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-f5710c.js"
   },
   "integrity": {
     "../assets/vendor-vue-a11a3e.js": "sha384-CmWdyBZbBnJTuQtj4rgouZN7cRC/czuJRdirc2pQQhKjKa6jjZCMhkpzU7jv7gFA",
     "../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
     "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
-    "../assets/vendor-fkui-vue-d0d3f3.js": "sha384-dxfuOxNVuDRi0HvNjQ+Q76EpzAf38HpCHGqOWHUg2I/yDm1lTBm6FTEparLcfrzo",
-    "../assets/vendor-fkui-vue-labs-e7b195.js": "sha384-E57sjobxN3Qso6N/RwbJDu28rfGjYI2geAhVtxWSBfxvgjsTHcGoXQ92QJZMd+Oo",
-    "../assets/vendor-forsakringskassan-docs-live-example-c60a1e.js": "sha384-EfDXAfHkZWGo4Nl44hipgaFlVrbK9+OC7Ttnp4RNo2eCxop6CBrFM1CuU1iy2WEs"
+    "../assets/vendor-fkui-vue-ca4f6b.js": "sha384-MAnvf/fEZ3MJg1Lbr9JpIlKwnB4uaYXjgbKe+1ejNonHwA2yGULzCMrUJyJQWaiT",
+    "../assets/vendor-fkui-vue-labs-1ec5f1.js": "sha384-tbtHndDuJADx2XRUAus6FpneP4npztlGNIOSsMNIecKqveI4IQbMYK2PaXt352iW",
+    "../assets/vendor-forsakringskassan-docs-live-example-f5710c.js": "sha384-K+tZVl+VUOdy5JzdwquyifEKiQltzVACtB3RB9z0aSAAHx+hGAT86qE0qNdRguDt"
   }
 }
         </script><script
@@ -213,7 +213,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-ef757b"></div>
+        <div id="example-950361"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -239,7 +239,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-ef757b.js"></script>
+        <script type="module" src="./FTableExample-950361.js"></script>
     
                 </div>
                 <div>
@@ -330,7 +330,7 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Knapp&quot;</span>,
         <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
         <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span>,
-        <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
+        <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">`Ta bort <span class="hljs-subst">${row.id}</span>`</span>;
         },
         <span class="hljs-attr">onClick</span>: onRemoveRow,
@@ -339,7 +339,7 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Länk&quot;</span>,
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;anchor&quot;</span>,
         <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;#&quot;</span>,
-        <span class="hljs-title function_">value</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-title function_">text</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Länktext&quot;</span>;
         },
     },
@@ -493,11 +493,26 @@ interface <span class="hljs-title class_">Row</span> {
     });
 }
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params">row: Row</span>): <span class="hljs-keyword">void</span> {
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params">rowToRemove: Row</span>): <span class="hljs-keyword">void</span> {
     <span class="hljs-title function_">assertRef</span>(tableRef);
 
     tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-        rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">splice</span>(rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(row), <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">const</span> rowIndex = rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(rowToRemove);
+        <span class="hljs-keyword">if</span> (rowIndex !== -<span class="hljs-number">1</span>) {
+            rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">splice</span>(rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(rowToRemove), <span class="hljs-number">1</span>);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> row <span class="hljs-keyword">of</span> rows.<span class="hljs-property">value</span>) {
+                <span class="hljs-keyword">if</span> (!row.<span class="hljs-property">expandableRows</span>) {
+                    <span class="hljs-keyword">continue</span>;
+                }
+
+                <span class="hljs-keyword">const</span> expandableRowIndex = row.<span class="hljs-property">expandableRows</span>.<span class="hljs-title function_">indexOf</span>(rowToRemove);
+                <span class="hljs-keyword">if</span> (expandableRowIndex !== -<span class="hljs-number">1</span>) {
+                    row.<span class="hljs-property">expandableRows</span>.<span class="hljs-title function_">splice</span>(expandableRowIndex, <span class="hljs-number">1</span>);
+                    <span class="hljs-keyword">break</span>;
+                }
+            }
+        }
     });
 }
 
@@ -520,6 +535,7 @@ interface <span class="hljs-title class_">Row</span> {
                 <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>
                 <span class="hljs-attr">striped</span>
                 <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>
+                <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;expandableRows&quot;</span>
             &gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>Tabell<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
