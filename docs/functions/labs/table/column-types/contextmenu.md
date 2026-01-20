@@ -1,12 +1,14 @@
 ---
-title: "FTable: Kontextmeny"
+title: Kolumntyp kontextmeny i tabell
 short-title: Kontextmeny
+name: column-type-menu
 layout: article
+search:
+    terms:
+        - menu
 ---
 
-Kontextmeny används för att visa åtgärder för en tabellrad och används istället för att lägga in flera knappar på raden.
-
-Använder FContextMenu.
+Använd kolumntypen kontextmeny (`menu`) när en rad ska erbjuda flera åtgärder utan att tabellen fylls med många knappar.
 
 ```import
 FTableContextmenuExample.vue
@@ -17,7 +19,7 @@ FTableContextmenuExample.vue
 Använd kolumntypen `menu` och sätt `actions` till en lista med åtgärder.
 Åtgärdens `onClick()` anropas med raden som parameter när åtgärden väljs.
 
-Knappens skärmläsartext sätts med `text()` metoden och bör förtydliga vilken rad åtgärderna gäller för.
+Knappens skärmläsartext sätts med `text()` metoden och du behöver förtydliga vilken rad åtgärderna gäller för.
 
 ```ts
 import { defineTableColumns } from "@fkui/vue-labs";
@@ -50,6 +52,29 @@ const columns = defineTableColumns<typeof row>([
 
 - `icon` är valfri och sätts till namnet på en [ikon](https://designsystem.forsakringskassan.se/latest/styles/icons.html).
 - `onClick` anropas med raden som kontextmenyn tillhör som parameter.
+
+## Parametrar
+
+**`type:`** `"menu"`
+: Kolumnens typ.
+
+**`header:`** `string | Readonly<Ref<string>>`
+: Kolumnrubrik som visas i thead.
+
+**`text:`** `(row: T): string | null => {}`
+: Skärmläsartext för menyknappen.
+
+**`actions:`** `Array<{ label: string, icon?: string, onClick?(row: T): void }>` {@optional}
+: Lista med menyval.
+
+**`description:`** `string | Readonly<Ref<string | null>>` {@optional}
+: Formatbeskrivning.
+
+**`size:`** `TableColumnSize | Readonly<Ref<TableColumnSize | null>>` {@optional}
+: Hur kolumnens bredd skalas.
+
+**`enabled:`** `boolean | Readonly<Ref<boolean>>` {@optional}
+: Om kolumnen är aktiv.
 
 ## Relaterat
 
