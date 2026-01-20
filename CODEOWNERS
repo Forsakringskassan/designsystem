@@ -1,14 +1,14 @@
 # Default reviewers
-* @ext @dvitamin @NicklasWei @MCFK @udenius
+* @ext @dvitamin @NicklasWei @MCFK @udenius @jensviklander
 
 # Code changes
-packages/ @atfkassan @ext @dvitamin @NicklasWei @MCFK @OlofFredriksson @TMFKse @jameseklund @udenius
+packages/ @atfkassan @ext @dvitamin @NicklasWei @MCFK @OlofFredriksson @TMFKse @jameseklund @udenius @jensviklander
 
 # Documentation changes
-docs/ @atfkassan @ext @dvitamin @NicklasWei @MCFK @Marie-Jakobsson @kristinalindstrom @udenius
+docs/ @atfkassan @ext @dvitamin @NicklasWei @MCFK @Marie-Jakobsson @kristinalindstrom @udenius @jensviklander
 
 # Dependency updates
-package.json @ext @dvitamin @MCFK @NicklasWei @udenius
-package-lock.json @ext @dvitamin @MCFK @NicklasWei @udenius
-internal/*/package.json @dvitamin @ext @MCFK @NicklasWei @udenius
-packages/*/package.json @dvitamin @ext @MCFK @NicklasWei @udenius
+package.json @ext @dvitamin @MCFK @NicklasWei @udenius @jensviklander
+package-lock.json @ext @dvitamin @MCFK @NicklasWei @udenius @jensviklander
+internal/*/package.json @dvitamin @ext @MCFK @NicklasWei @udenius @jensviklander
+packages/*/package.json @dvitamin @ext @MCFK @NicklasWei @udenius @jensviklander
