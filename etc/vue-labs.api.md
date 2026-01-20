@@ -100,7 +100,7 @@ export function parseTimeToNumber(value?: string | null): number | undefined;
 export function splitHoursMinutes(valueString: string, extraForgiving?: boolean): string[];
 
 // @public (undocumented)
-export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRadio<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnNumber<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K>;
+export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRadio<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnNumber<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K> | TableColumnMenu<T>;
 
 // @public (undocumented)
 export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase {
@@ -156,6 +156,22 @@ export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBa
     type: "checkbox";
     // (undocumented)
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
+}
+
+// @public (undocumented)
+export interface TableColumnMenu<T> extends TableColumnBase {
+    // (undocumented)
+    actions?: Array<{
+        label: string;
+        icon?: string;
+        onClick?(this: void, row: T): void;
+    }>;
+    // (undocumented)
+    enabled?: boolean | ((row: T) => boolean);
+    // (undocumented)
+    text(this: void, row: T): string | null;
+    // (undocumented)
+    type: "menu";
 }
 
 // @public (undocumented)

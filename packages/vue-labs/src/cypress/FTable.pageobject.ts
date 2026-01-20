@@ -149,6 +149,32 @@ export class FTablePageObject implements BasePageObject {
     }
 
     /**
+     * Get the currently open context menu.
+     *
+     * The context menu must have been opened for this to return an element.
+     *
+     * @internal
+     * @returns The opened context menu element.
+     */
+    public contextmenu(): Cypress.Chainable<JQuery<HTMLDivElement>> {
+        /* this element is teleported, so we cannot scope it to the table selector */
+        return cy.get(`ul.contextmenu__list`);
+    }
+
+    /**
+     * Get the menu items of the currently open context menu.
+     *
+     * The context menu must have been opened for this to return an element.
+     *
+     * @public
+     * @returns The context menu items.
+     */
+    public contextmenuItems(): Cypress.Chainable<JQuery<HTMLButtonElement>> {
+        /* this element is teleported, so we cannot scope it to the table selector */
+        return cy.get(`ul.contextmenu__list .contextmenu__list__item`);
+    }
+
+    /**
      * Get table caption.
      *
      * Only applicable if caption slot is used.
