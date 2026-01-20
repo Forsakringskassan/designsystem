@@ -135,6 +135,13 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
         header: "Datum",
         key: "value",
     },
+    menu: {
+        type: "menu",
+        header: "Kontextmeny",
+        text() {
+            return "Skärmläsartext";
+        },
+    },
 };
 
 const rowData: Record<TableColumnType, Array<string | number | boolean>> = {
@@ -158,6 +165,7 @@ const rowData: Record<TableColumnType, Array<string | number | boolean>> = {
     anchor: ["Six seven", "Skibidi"],
     button: ["Six seven", "Skibidi"],
     select: ["Foo"],
+    menu: ["Foo", "Bar", "Baz"],
 };
 
 function getColumn(options: {

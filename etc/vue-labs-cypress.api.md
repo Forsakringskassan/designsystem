@@ -14,6 +14,9 @@ export class FTablePageObject implements BasePageObject {
         row: number;
         col: number;
     }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
+    // @internal
+    contextmenu(): Cypress.Chainable<JQuery<HTMLDivElement>>;
+    contextmenuItems(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
     // Warning: (ae-forgotten-export) The symbol "DefaultCypressChainable" needs to be exported by the entry point index.d.ts
     el(): DefaultCypressChainable;
     expandButton(row: number): Cypress.Chainable<JQuery<HTMLButtonElement>>;

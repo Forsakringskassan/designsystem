@@ -3,6 +3,7 @@ import { type ValidatorConfigs } from "@fkui/logic";
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
+import ITableMenu from "./ITableMenu.vue";
 import ITableRadio from "./ITableRadio.vue";
 import ITableRowheader from "./ITableRowheader.vue";
 import ITableSelect from "./ITableSelect.vue";
@@ -367,6 +368,40 @@ export interface NormalizedTableColumnSelect<
 /**
  * @public
  */
+export interface TableColumnMenu<T> extends TableColumnBase {
+    type: "menu";
+    text(this: void, row: T): string | null;
+    enabled?: boolean | ((row: T) => boolean);
+    actions?: Array<{
+        label: string;
+        icon?: string;
+        onClick?(this: void, row: T): void;
+    }>;
+}
+
+/**
+ * @internal
+ */
+export interface NormalizedTableColumnMenu<
+    T,
+> extends NormalizedTableColumnBase<never> {
+    readonly type: "menu";
+    readonly actions: Array<{
+        readonly label: string;
+        readonly icon: string | null;
+        onClick(this: void, row: T): void;
+    }>;
+    readonly component: Component<{
+        row: T;
+        column: NormalizedTableColumnMenu<T>;
+    }>;
+    text(this: void, row: T): string | null;
+    enabled(this: void, row: T): boolean;
+}
+
+/**
+ * @public
+ */
 export interface TableColumnRender<
     T,
     K extends keyof T = keyof T,
@@ -400,7 +435,8 @@ export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnAnchor<T, K>
     | TableColumnButton<T, K>
     | TableColumnRender<T, K>
-    | TableColumnSelect<T, K>;
+    | TableColumnSelect<T, K>
+    | TableColumnMenu<T>;
 
 /**
  * @internal
@@ -414,7 +450,8 @@ export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnAnchor<T, K>
     | NormalizedTableColumnButton<T, K>
     | NormalizedTableColumnRender<T>
-    | NormalizedTableColumnSelect<T, K>;
+    | NormalizedTableColumnSelect<T, K>
+    | NormalizedTableColumnMenu<T>;
 
 function getLabelFn<TRow>(
     fn: ((this: void, row: TRow) => string) | undefined,
@@ -444,6 +481,10 @@ export function defaultTnumValue(type: InputType): boolean {
     ];
 
     return tnumTypes.includes(type);
+}
+
+function noop(): void {
+    /* do nothing */
 }
 
 /**
@@ -519,6 +560,9 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnSelect<T, K>,
 ): NormalizedTableColumnSelect<T, K>;
+export function normalizeTableColumn<T>(
+    column: TableColumnMenu<T>,
+): NormalizedTableColumnMenu<T>;
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
 ): NormalizedTableColumn<T, K>;
@@ -715,6 +759,28 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 sortable: column.key ?? null,
                 component: ITableSelect,
             } satisfies NormalizedTableColumnSelect<T, K>;
+        case "menu":
+            return {
+                type: "menu",
+                id: Symbol(),
+                header: toRef(column.header),
+                description,
+                size,
+                sortable: null,
+                actions: (column.actions ?? []).map((it) => {
+                    return {
+                        label: it.label,
+                        icon: it.icon ?? null,
+                        onClick: it.onClick ?? noop,
+                    };
+                }),
+                component: ITableMenu,
+                text: getValueFn(column.text, undefined, String, ""),
+                enabled:
+                    typeof column.enabled === "function"
+                        ? column.enabled
+                        : () => Boolean(column.enabled ?? true),
+            } satisfies NormalizedTableColumnMenu<T>;
         case undefined:
             return {
                 type: "text",

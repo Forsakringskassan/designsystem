@@ -8,6 +8,7 @@ export {
     type TableColumnBase,
     type TableColumnButton,
     type TableColumnCheckbox,
+    type TableColumnMenu,
     type TableColumnNumber,
     type TableColumnRadio,
     type TableColumnRender,
