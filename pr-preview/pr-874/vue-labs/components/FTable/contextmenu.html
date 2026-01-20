@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FTable: Kontextmeny - FKUI Labs</title><link
             rel="stylesheet"
-            href="../../assets/docs-141237.css"
+            href="../../assets/docs-5ee7b6.css"
             crossorigin
-            integrity="sha384-mMMlr1rodv8rq2drPKDTiIZMNPTzrHhIlOcf735SDIlPItvVGIrobFDD/VC6ud41"
+            integrity="sha384-bfZjJzhcuXTWkn02HjA/IsKSebvNFeRShozCoqwnFDYyN5jYz9+fFQHraW/RBEUm"
             
         />
         <link
@@ -25,7 +25,7 @@
     "vue": "../../assets/vendor-vue-a11a3e.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-fb32f2.js",
     "@fkui/date": "../../assets/vendor-fkui-date-1d9b40.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-2161f6.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-ca4f6b.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-5cc6db.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-f5710c.js"
   },
@@ -33,7 +33,7 @@
     "../../assets/vendor-vue-a11a3e.js": "sha384-CmWdyBZbBnJTuQtj4rgouZN7cRC/czuJRdirc2pQQhKjKa6jjZCMhkpzU7jv7gFA",
     "../../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
     "../../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
-    "../../assets/vendor-fkui-vue-2161f6.js": "sha384-pTrVzUUKsayeGFey0VmGneAdpyKUy7j1iouJFMM3Lnc+C24Umsx+JnreYXx8jgwH",
+    "../../assets/vendor-fkui-vue-ca4f6b.js": "sha384-MAnvf/fEZ3MJg1Lbr9JpIlKwnB4uaYXjgbKe+1ejNonHwA2yGULzCMrUJyJQWaiT",
     "../../assets/vendor-fkui-vue-labs-5cc6db.js": "sha384-/Q545bkUhGguroRAIij42AosNp4rkr/YN1Sr2sD7hD2KsxF3yDQElueXXmif9hAB",
     "../../assets/vendor-forsakringskassan-docs-live-example-f5710c.js": "sha384-K+tZVl+VUOdy5JzdwquyifEKiQltzVACtB3RB9z0aSAAHx+hGAT86qE0qNdRguDt"
   }
@@ -221,12 +221,11 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Använder FContextMenu.</p>
-<p class="docs-paragraph">I exemplet kommer åtgärd &quot;A&quot; och &quot;B&quot; visa ett meddelande.
-Åtgärd &quot;C&quot; saknar avsiktligen funktion men ska inte krascha exemplet.</p>
+                    <div id="content"><p class="docs-paragraph">Kontextmeny används för att visa åtgärder för en tabellrad och används istället för att lägga in flera knappar på raden.</p>
+<p class="docs-paragraph">Använder FContextMenu.</p>
 
             <div
-                id="example-b8a78d"
+                id="example-c49218"
                 class="code-preview code-preview--default"
                 
                 
@@ -235,7 +234,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-b19457"></div>
+        <div id="example-dee003"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -245,7 +244,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableContextmenuExample-b19457.js"></script>
+        <script type="module" src="./FTableContextmenuExample-dee003.js"></script>
     
                 </div>
                 <div>
@@ -319,6 +318,9 @@ interface <span class="hljs-title class_">Row</span> {
             {
                 <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
                 <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
+                    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">`Ta bort rad &quot;<span class="hljs-subst">${row.id}</span>&quot;`</span>);
+                },
             },
         ],
     },
@@ -363,7 +365,7 @@ interface <span class="hljs-title class_">Row</span> {
 <p class="docs-paragraph">Knappens skärmläsartext sätts med <code>text()</code> metoden och bör förtydliga vilken rad åtgärderna gäller för.</p>
 
                 <div
-                    id="example-248dd5"
+                    id="example-028e18"
                     class="code-preview code-preview--default"
                     
                     

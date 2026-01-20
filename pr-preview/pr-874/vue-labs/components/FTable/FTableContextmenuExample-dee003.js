@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableContextmenuExample.vue:FTableContextmenuExample-b19457.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableContextmenuExample.vue:FTableContextmenuExample-dee003.js
 import { defineComponent as _defineComponent } from "vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 import { openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -75,7 +75,10 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
           },
           {
             label: "Ta bort",
-            icon: "trashcan"
+            icon: "trashcan",
+            onClick(row) {
+              window.alert(`Ta bort rad "${row.id}"`);
+            }
           }
         ]
       }
@@ -118,7 +121,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b19457"
+  selector: "#example-dee003"
 });
 export {
   render

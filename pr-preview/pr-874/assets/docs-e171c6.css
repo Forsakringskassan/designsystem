@@ -247,6 +247,8 @@ textarea {
 
 html {
   font-size: var(--f-font-size-default-rem);
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 @media (min-width: 1024px) {
   html {
