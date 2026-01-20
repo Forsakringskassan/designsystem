@@ -533,39 +533,30 @@ export function isEditableColumn<T, K extends keyof T = keyof T>(
     );
 }
 
+// prettier-ignore
+type Mapping<T, K extends keyof T> =
+    | { input: TableColumnAnchor<T, K>; output: NormalizedTableColumnAnchor<T, K> }
+    | { input: TableColumnButton<T, K>; output: NormalizedTableColumnButton<T, K> }
+    | { input: TableColumnCheckbox<T, K>; output: NormalizedTableColumnCheckbox<T, K> }
+    | { input: TableColumnMenu<T>; output: NormalizedTableColumnMenu<T> }
+    | { input: TableColumnNumber<T, K>; output: NormalizedTableColumnNumber<T, K> }
+    | { input: TableColumnRadio<T, K>; output: NormalizedTableColumnRadio<T, K> }
+    | { input: TableColumnRender<T, K>; output: NormalizedTableColumnRender<T> }
+    | { input: TableColumnRowHeader<T, K>; output: NormalizedTableColumnRowHeader<T, K> }
+    | { input: TableColumnSelect<T, K>; output: NormalizedTableColumnSelect<T, K> }
+    | { input: TableColumnSimple<T, K>; output: NormalizedTableColumnText<T, K> }
+    | { input: TableColumnText<T, K>; output: NormalizedTableColumnText<T, K> };
+
 /**
+ * Normalize a single table column.
+ *
  * @internal
  */
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnSimple<T, K> | TableColumnText<T, K>,
-): NormalizedTableColumnText<T, K>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnRowHeader<T, K>,
-): NormalizedTableColumnRowHeader<T, K>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnCheckbox<T, K>,
-): NormalizedTableColumnCheckbox<T, K>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnRadio<T, K>,
-): NormalizedTableColumnRadio<T, K>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnAnchor<T, K>,
-): NormalizedTableColumnAnchor<T, K>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnButton<T, K>,
-): NormalizedTableColumnButton<T, K>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnRender<T, K>,
-): NormalizedTableColumnRender<T>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnSelect<T, K>,
-): NormalizedTableColumnSelect<T, K>;
-export function normalizeTableColumn<T>(
-    column: TableColumnMenu<T>,
-): NormalizedTableColumnMenu<T>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumn<T, K>,
-): NormalizedTableColumn<T, K>;
+export function normalizeTableColumn<
+    T,
+    K extends keyof T = keyof T,
+    I extends Mapping<T, K>["input"] = Mapping<T, K>["input"],
+>(column: I): Extract<Mapping<T, K>, { in: I }>["o"];
 
 /* eslint-disable-next-line complexity -- technical debt */
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
@@ -856,6 +847,6 @@ export function normalizeTableColumns<T, K extends keyof T = keyof T>(
     columns: Array<TableColumn<T, K>>,
 ): Array<NormalizedTableColumn<T, K>> {
     return columns.map((column) => {
-        return normalizeTableColumn(column);
+        return normalizeTableColumn<T, K>(column);
     });
 }
