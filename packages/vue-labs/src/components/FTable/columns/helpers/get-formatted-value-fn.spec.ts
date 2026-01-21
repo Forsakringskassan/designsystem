@@ -1,11 +1,11 @@
-import { getFormattedValueFn } from "./get-value-fn";
+import { getFormattedValueFn } from "./get-formatted-value-fn";
 
 interface TableRow {
     id: string;
     text: string;
 }
 
-describe("With formatter", () => {
+describe("getFormattedValueFn()", () => {
     it("should return and call provided value-function with formatted value", () => {
         const valueFnMock = jest.fn((_row: TableRow): string => {
             return "myValue";
