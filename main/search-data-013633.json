@@ -45,7 +45,6 @@
     "production",
     "globala inställningar",
     "config",
-    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -91,6 +90,7 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
+    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -198,6 +198,9 @@
     "produktionsklar",
     "beta",
     "experimentell",
+    "EventBus",
+    "EventBus",
+    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -211,9 +214,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -608,14 +608,14 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -732,11 +732,6 @@
         "globala inställningar",
         "config"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "components/pagination.html",
@@ -857,6 +852,11 @@
       "terms": [
         "FBadge"
       ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1083,6 +1083,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1113,14 +1121,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -2150,6 +2150,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -2172,21 +2187,6 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -2312,50 +2312,50 @@
     "43": 11,
     "44": 11,
     "45": 12,
-    "46": 13,
-    "47": 13,
+    "46": 12,
+    "47": 12,
     "48": 13,
-    "49": 14,
+    "49": 13,
     "50": 14,
-    "51": 15,
+    "51": 14,
     "52": 15,
-    "53": 16,
-    "54": 16,
-    "55": 16,
-    "56": 16,
+    "53": 15,
+    "54": 15,
+    "55": 15,
+    "56": 15,
     "57": 16,
-    "58": 17,
+    "58": 16,
     "59": 17,
-    "60": 18,
+    "60": 17,
     "61": 18,
-    "62": 19,
-    "63": 19,
-    "64": 19,
-    "65": 19,
-    "66": 19,
+    "62": 18,
+    "63": 18,
+    "64": 18,
+    "65": 18,
+    "66": 18,
     "67": 19,
-    "68": 20,
+    "68": 19,
     "69": 20,
-    "70": 21,
-    "71": 21,
+    "70": 20,
+    "71": 20,
     "72": 21,
-    "73": 22,
-    "74": 22,
+    "73": 21,
+    "74": 21,
     "75": 22,
-    "76": 23,
+    "76": 22,
     "77": 23,
-    "78": 24,
-    "79": 24,
+    "78": 23,
+    "79": 23,
     "80": 24,
-    "81": 25,
+    "81": 24,
     "82": 25,
-    "83": 26,
-    "84": 26,
-    "85": 26,
-    "86": 26,
-    "87": 26,
+    "83": 25,
+    "84": 25,
+    "85": 25,
+    "86": 25,
+    "87": 25,
     "88": 26,
-    "89": 27,
+    "89": 26,
     "90": 27,
     "91": 28,
     "92": 28,
@@ -2467,17 +2467,17 @@
     "198": 52,
     "199": 52,
     "200": 52,
-    "201": 52,
+    "201": 53,
     "202": 53,
     "203": 53,
     "204": 53,
-    "205": 53,
+    "205": 54,
     "206": 54,
     "207": 54,
     "208": 54,
     "209": 55,
     "210": 55,
-    "211": 56,
+    "211": 55,
     "212": 56,
     "213": 56,
     "214": 57,

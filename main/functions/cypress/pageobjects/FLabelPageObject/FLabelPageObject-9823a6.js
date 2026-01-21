@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-format-description.vue:FLabelPageObject-format-description-19a9b0.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject.vue:FLabelPageObject-9823a6.js
 import { defineComponent as _defineComponent } from "vue";
 import { FLabel } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FLabelPageObject-format-description",
+  __name: "FLabelPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FLabel() {
@@ -53,17 +53,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       )
     ])]),
-    description: _withCtx(({ formatDescriptionClass }) => [
-      _createElementVNode(
-        "span",
-        {
-          class: _normalizeClass(formatDescriptionClass)
-        },
-        " Formatbeskrivning ",
-        2
-        /* CLASS */
-      )
-    ]),
     _: 1
     /* STABLE */
   })), [
@@ -73,7 +62,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-19a9b0"
+  selector: "#example-9823a6"
 });
 export {
   render
