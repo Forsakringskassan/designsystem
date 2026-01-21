@@ -1,7 +1,7 @@
 // dist/esm/index.esm.js
 import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, createElementBlock, openBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, createTextVNode, createCommentVNode, withCtx, createBlock, toDisplayString, ref as ref3, inject as inject3, watchEffect as watchEffect3, withDirectives, vShow, onMounted as onMounted3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, mergeModels, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, debounce, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
-import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, IComboboxDropdown, IPopupError, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, FContextMenu, IComboboxDropdown, IPopupError, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
 // ../../node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -2470,18 +2470,18 @@ function stopEdit(element, reason) {
     }
   }
 }
-var _hoisted_1$d = {
+var _hoisted_1$e = {
   key: 0,
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _hoisted_2$a = ["aria-label", "aria-expanded"];
-var _hoisted_3$6 = {
+var _hoisted_2$b = ["aria-label", "aria-expanded"];
+var _hoisted_3$7 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _sfc_main$f = /* @__PURE__ */ defineComponent2({
+var _sfc_main$g = /* @__PURE__ */ defineComponent2({
   __name: "ITableExpandButton",
   props: {
     isExpandable: {
@@ -2511,7 +2511,7 @@ var _sfc_main$f = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$d, [createElementVNode("button", {
+      return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$e, [createElementVNode("button", {
         ref: "expandable",
         tabindex: "-1",
         "aria-label": expandLabel.value,
@@ -2521,12 +2521,12 @@ var _sfc_main$f = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$b)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, null, 512));
     };
   }
 });
-var _hoisted_1$c = ["colspan"];
-var _sfc_main$e = /* @__PURE__ */ defineComponent2({
+var _hoisted_1$d = ["colspan"];
+var _sfc_main$f = /* @__PURE__ */ defineComponent2({
   __name: "ITableExpandable",
   props: {
     colspan: {}
@@ -2537,7 +2537,7 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent2({
         class: "table-ng__cell--custom",
         colspan: __props.colspan,
         tabindex: "-1"
-      }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$c);
+      }, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$d);
     };
   }
 });
@@ -2828,12 +2828,12 @@ var inputFieldConfig = {
     attributes: () => []
   }
 };
-var _hoisted_1$b = ["aria-sort"];
-var _hoisted_2$9 = {
+var _hoisted_1$c = ["aria-sort"];
+var _hoisted_2$a = {
   key: 0,
   class: "table-ng__column__description"
 };
-var _sfc_main$d = /* @__PURE__ */ defineComponent2({
+var _sfc_main$e = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeader",
   props: {
     column: {},
@@ -2932,16 +2932,16 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_2$9, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 42, _hoisted_1$b);
+      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_2$a, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 42, _hoisted_1$c);
     };
   }
 });
-var _hoisted_1$a = {
+var _hoisted_1$b = {
   scope: "col",
   class: "table-ng__column table-ng__column--selectable"
 };
-var _hoisted_2$8 = ["checked", "indeterminate"];
-var _sfc_main$c = /* @__PURE__ */ defineComponent2({
+var _hoisted_2$9 = ["checked", "indeterminate"];
+var _sfc_main$d = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeaderSelectable",
   props: {
     selectable: {},
@@ -2964,7 +2964,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
     }
     __expose(expose);
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("th", _hoisted_1$a, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
+      return openBlock(), createElementBlock("th", _hoisted_1$b, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
         key: 0,
         ref: "input",
         checked: checked.value,
@@ -2973,23 +2973,23 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
         "aria-label": "select all",
         tabindex: "-1",
         onChange: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
-      }, null, 40, _hoisted_2$8)) : createCommentVNode("", true)]);
+      }, null, 40, _hoisted_2$9)) : createCommentVNode("", true)]);
     };
   }
 });
-var _hoisted_1$9 = {
+var _hoisted_1$a = {
   key: 0,
   class: "table-ng__cell table-ng__cell--checkbox"
 };
-var _hoisted_2$7 = ["checked", "aria-label"];
-var _hoisted_3$5 = {
+var _hoisted_2$8 = ["checked", "aria-label"];
+var _hoisted_3$6 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--checkbox"
 };
 var _hoisted_4$3 = ["checked", "aria-label"];
-var _sfc_main$b = /* @__PURE__ */ defineComponent2({
+var _sfc_main$c = /* @__PURE__ */ defineComponent2({
   __name: "ITableCheckbox",
   props: {
     column: {},
@@ -3012,14 +3012,14 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$9, [createElementVNode("input", {
+      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
         ref: "target",
         checked: __props.column.checked(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$7)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, [createElementVNode("input", {
+      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
         checked: __props.column.checked(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value
@@ -3027,11 +3027,11 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent2({
     };
   }
 });
-var _hoisted_1$8 = {
+var _hoisted_1$9 = {
   class: "table-ng__cell table-ng__cell--radio"
 };
-var _hoisted_2$6 = ["checked", "aria-label"];
-var _sfc_main$a = /* @__PURE__ */ defineComponent2({
+var _hoisted_2$7 = ["checked", "aria-label"];
+var _sfc_main$b = /* @__PURE__ */ defineComponent2({
   __name: "ITableRadio",
   props: {
     column: {},
@@ -3054,23 +3054,23 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", _hoisted_1$8, [createElementVNode("input", {
+      return openBlock(), createElementBlock("td", _hoisted_1$9, [createElementVNode("input", {
         ref: "input",
         type: "radio",
         checked: __props.column.checked(__props.row),
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$6)]);
+      }, null, 40, _hoisted_2$7)]);
     };
   }
 });
-var _hoisted_1$7 = {
+var _hoisted_1$8 = {
   key: 0,
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
+var _sfc_main$a = /* @__PURE__ */ defineComponent2({
   __name: "ITableSelectable",
   props: {
     selectable: {},
@@ -3105,7 +3105,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
       description: ref3(null),
       sortable: null,
       size: ref3(null),
-      component: _sfc_main$b,
+      component: _sfc_main$c,
       label() {
         return $t("fkui.table.selectable.checkbox", "V\xE4lj rad");
       },
@@ -3126,7 +3126,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
       description: ref3(null),
       sortable: null,
       size: ref3(null),
-      component: _sfc_main$a,
+      component: _sfc_main$b,
       label() {
         return $t("fkui.table.selectable.radio", "V\xE4lj rad");
       },
@@ -3138,13 +3138,13 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
       }
     };
     return (_ctx, _cache) => {
-      return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$7)) : __props.selectable === "multi" ? (openBlock(), createBlock(_sfc_main$b, {
+      return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$8)) : __props.selectable === "multi" ? (openBlock(), createBlock(_sfc_main$c, {
         key: 1,
         ref: "child",
         row: __props.row,
         column: multiSelectColumn,
         class: "table-ng__cell--selectable"
-      }, null, 8, ["row"])) : __props.selectable === "single" ? (openBlock(), createBlock(_sfc_main$a, {
+      }, null, 8, ["row"])) : __props.selectable === "single" ? (openBlock(), createBlock(_sfc_main$b, {
         key: 2,
         ref: "child",
         row: __props.row,
@@ -3377,18 +3377,18 @@ function requireEs_iterator_map() {
   return es_iterator_map;
 }
 requireEs_iterator_map();
-var _hoisted_1$6 = {
+var _hoisted_1$7 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--anchor"
 };
-var _hoisted_2$5 = ["href"];
-var _hoisted_3$4 = {
+var _hoisted_2$6 = ["href"];
+var _hoisted_3$5 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
+var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
   __name: "ITableAnchor",
   props: {
     column: {},
@@ -3406,30 +3406,30 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return renderAnchor.value ? (openBlock(), createElementBlock("td", _hoisted_1$6, [createElementVNode("a", {
+      return renderAnchor.value ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
-var _hoisted_1$5 = {
+var _hoisted_1$6 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--button"
 };
-var _hoisted_2$4 = {
+var _hoisted_2$5 = {
   class: "sr-only"
 };
-var _hoisted_3$3 = {
+var _hoisted_3$4 = {
   key: 1,
   ref: "td",
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
+var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
   __name: "ITableButton",
   props: {
     column: {},
@@ -3455,7 +3455,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$5, [createElementVNode("button", {
+      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$6, [createElementVNode("button", {
         ref: "button",
         class: "icon-button",
         type: "button",
@@ -3464,7 +3464,128 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
       }, [__props.column.icon ? (openBlock(), createBlock(unref3(FIcon), {
         key: 0,
         name: __props.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$3, null, 512));
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+    };
+  }
+});
+var es_iterator_find = {};
+var hasRequiredEs_iterator_find;
+function requireEs_iterator_find() {
+  if (hasRequiredEs_iterator_find) return es_iterator_find;
+  hasRequiredEs_iterator_find = 1;
+  var $ = require_export();
+  var call = requireFunctionCall();
+  var iterate2 = requireIterate();
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var findWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError2("find", TypeError);
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: findWithoutClosingOnEarlyError
+  }, {
+    find: function find(predicate) {
+      anObject2(this);
+      try {
+        aCallable2(predicate);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (findWithoutClosingOnEarlyError) return call(findWithoutClosingOnEarlyError, this, predicate);
+      var record = getIteratorDirect2(this);
+      var counter = 0;
+      return iterate2(record, function(value, stop) {
+        if (predicate(value, counter++)) return stop(value);
+      }, {
+        IS_RECORD: true,
+        INTERRUPTED: true
+      }).result;
+    }
+  });
+  return es_iterator_find;
+}
+requireEs_iterator_find();
+var _hoisted_1$5 = {
+  key: 0,
+  class: "table-ng__cell table-ng__cell--button"
+};
+var _hoisted_2$4 = {
+  class: "sr-only"
+};
+var _hoisted_3$3 = {
+  key: 1,
+  tabindex: "-1",
+  class: "table-ng__cell"
+};
+var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
+  __name: "ITableMenu",
+  props: {
+    column: {},
+    row: {}
+  },
+  setup(__props, {
+    expose: __expose
+  }) {
+    const buttonRef = useTemplateRef("button");
+    const expose = {
+      tabstopEl: buttonRef
+    };
+    const isOpen = ref3(false);
+    const actions = computed3(() => {
+      return __props.column.actions.map((it, index) => {
+        return {
+          ...it,
+          key: `item-${String(index + 1)}`
+        };
+      });
+    });
+    const menuitems = computed3(() => {
+      return actions.value.map((it) => {
+        var _it$icon;
+        return {
+          label: it.label,
+          icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : void 0,
+          key: it.key
+        };
+      });
+    });
+    const renderButton = computed3(() => {
+      return __props.column.enabled(__props.row);
+    });
+    function onOpen(event) {
+      event.stopPropagation();
+      isOpen.value = true;
+    }
+    function onClose() {
+      isOpen.value = false;
+    }
+    function onSelect(key) {
+      const action = actions.value.find((it) => it.key === key);
+      action?.onClick(__props.row);
+    }
+    __expose(expose);
+    return (_ctx, _cache) => {
+      var _buttonRef$value;
+      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$5, [createElementVNode("button", {
+        ref: "button",
+        class: "icon-button",
+        type: "button",
+        tabindex: "-1",
+        "aria-haspopup": "menu",
+        onClick: onOpen
+      }, [createVNode(unref3(FIcon), {
+        name: "bars"
+      }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.text(__props.row)), 1)], 512), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref3(FContextMenu), {
+        "is-open": isOpen.value,
+        items: menuitems.value,
+        anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
+        onClose,
+        onSelect
+      }, null, 8, ["is-open", "items", "anchor"])])) : (openBlock(), createElementBlock("td", _hoisted_3$3));
     };
   }
 });
@@ -4072,8 +4193,10 @@ function defaultTnumValue(type) {
   const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
   return tnumTypes.includes(type);
 }
+function noop2() {
+}
 function normalizeTableColumn(column) {
-  var _column$key, _column$key2, _column$key5, _column$key6, _column$icon, _column$key7, _column$key8, _column$key9;
+  var _column$key, _column$key2, _column$key5, _column$key6, _column$icon, _column$key7, _column$key8, _column$actions, _column$key9;
   const description = typeof column.description !== "undefined" ? toRef2(column.description) : ref3("");
   const size = typeof column.size !== "undefined" ? toRef2(column.size) : ref3("grow");
   if ("render" in column) {
@@ -4103,7 +4226,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
         },
         sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
-        component: _sfc_main$b
+        component: _sfc_main$c
       };
     case "radio":
       return {
@@ -4116,7 +4239,7 @@ function normalizeTableColumn(column) {
         checked: getValueFn(column.checked, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
         sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
-        component: _sfc_main$a
+        component: _sfc_main$b
       };
     case "text:currency":
     case "text:number":
@@ -4209,7 +4332,7 @@ function normalizeTableColumn(column) {
           return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
         },
         sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
-        component: _sfc_main$8
+        component: _sfc_main$9
       };
     case "button":
       return {
@@ -4226,7 +4349,7 @@ function normalizeTableColumn(column) {
         },
         icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
         sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
-        component: _sfc_main$7
+        component: _sfc_main$8
       };
     case "select":
       return {
@@ -4245,6 +4368,29 @@ function normalizeTableColumn(column) {
         options: column.options,
         sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
         component: _sfc_main$5
+      };
+    case "menu":
+      return {
+        type: "menu",
+        id: /* @__PURE__ */ Symbol(),
+        header: toRef2(column.header),
+        description,
+        size,
+        sortable: null,
+        actions: ((_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : []).map((it) => {
+          var _it$icon, _it$onClick;
+          return {
+            label: it.label,
+            icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : null,
+            onClick: (_it$onClick = it.onClick) !== null && _it$onClick !== void 0 ? _it$onClick : noop2
+          };
+        }),
+        component: _sfc_main$7,
+        text: getValueFn(column.text, void 0, String, ""),
+        enabled: typeof column.enabled === "function" ? column.enabled : () => {
+          var _column$enabled3;
+          return Boolean((_column$enabled3 = column.enabled) !== null && _column$enabled3 !== void 0 ? _column$enabled3 : true);
+        }
       };
     case void 0:
       return {
@@ -4811,7 +4957,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       setDefaultCellTarget(tableRef.value);
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", null, [createElementVNode("table", {
+      return openBlock(), createElementBlock("table", {
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
@@ -4820,14 +4966,14 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$c, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
         selectable: __props.selectable,
         onToggle: unref3(toggleSelectableHeader)
       }, null, 8, ["state", "selectable", "onToggle"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
-        return openBlock(), createBlock(_sfc_main$d, {
+        return openBlock(), createBlock(_sfc_main$e, {
           key: column.id,
           column,
           "sort-enabled": isSortEnabled(column),
@@ -4858,7 +5004,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           "aria-setsize": setsize,
           "aria-posinset": posinset,
           "aria-selected": isAriaSelected(level, row)
-        }, [isTreegrid.value ? (openBlock(), createBlock(_sfc_main$f, {
+        }, [isTreegrid.value ? (openBlock(), createBlock(_sfc_main$g, {
           key: 0,
           ref_for: true,
           ref: bindCellApiRef,
@@ -4866,7 +5012,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           "is-expanded": isExpanded,
           "row-key": key,
           onToggle: onToggleExpanded
-        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$e, {
+        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$f, {
           key: 1,
           colspan: columns.value.length
         }, {
@@ -4878,7 +5024,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           _: 2
         }, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment2, {
           key: 2
-        }, [__props.selectable ? (openBlock(), createBlock(_sfc_main$9, {
+        }, [__props.selectable ? (openBlock(), createBlock(_sfc_main$a, {
           key: 0,
           ref_for: true,
           ref: bindCellApiRef,
@@ -4910,7 +5056,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       }, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2)]);
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
