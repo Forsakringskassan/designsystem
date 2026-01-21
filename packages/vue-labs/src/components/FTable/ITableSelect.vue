@@ -179,7 +179,7 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
     >
         <div v-show="!editing" class="table-ng__editable">
             <span class="table-ng__editable__text">{{ viewValue }}</span>
-            <f-icon name="pen" class="table-ng__editable__icon"></f-icon>
+            <f-icon name="arrow-down" class="table-ng__editable__icon"></f-icon>
         </div>
         <div
             v-show="editing"
@@ -197,7 +197,8 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
             @keydown.stop="onEditKeyDown"
             @focusout="(e) => onEditBlur(e)"
         >
-            {{ viewValue }}
+            <span class="table-ng__editable__text">{{ viewValue }}</span>
+            <f-icon name="arrow-down" class="table-ng__editable__icon--active"></f-icon>
         </div>
 
         <i-combobox-dropdown

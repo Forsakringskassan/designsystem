@@ -38,6 +38,12 @@ $horizontal-padding: size.$padding-050;
         }
     }
 
+    &--select {
+        .table-ng__editable__icon--active {
+            rotate: 180deg;
+        }
+    }
+
     &--select,
     &--text {
         padding: 0 0.25rem;
