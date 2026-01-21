@@ -1,5 +1,5 @@
-import { type Component, type Ref, type VNode, ref, toRef } from "vue";
-import { type ValidatorConfigs } from "@fkui/logic";
+import { type Ref, ref, toRef } from "vue";
+
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
@@ -8,6 +8,30 @@ import ITableRadio from "./ITableRadio.vue";
 import ITableRowheader from "./ITableRowheader.vue";
 import ITableSelect from "./ITableSelect.vue";
 import ITableText from "./ITableText.vue";
+import {
+    type NormalizedTableColumnAnchor,
+    type NormalizedTableColumnButton,
+    type NormalizedTableColumnCheckbox,
+    type NormalizedTableColumnMenu,
+    type NormalizedTableColumnNumber,
+    type NormalizedTableColumnRadio,
+    type NormalizedTableColumnRender,
+    type NormalizedTableColumnRowHeader,
+    type NormalizedTableColumnSelect,
+    type NormalizedTableColumnText,
+    type TableColumnAnchor,
+    type TableColumnButton,
+    type TableColumnCheckbox,
+    type TableColumnMenu,
+    type TableColumnNumber,
+    type TableColumnRadio,
+    type TableColumnRender,
+    type TableColumnRowHeader,
+    type TableColumnSelect,
+    type TableColumnSimple,
+    type TableColumnSize,
+    type TableColumnText,
+} from "./columns";
 import {
     getParsedNumberUpdateFn,
     getParsedUpdateFn,
@@ -18,41 +42,34 @@ import {
     getFormattedValueFn,
     getValueFn,
 } from "./get-value-fn";
-import {
-    type InputType,
-    type InputTypeNumber,
-    type InputTypeText,
-    inputFieldConfig,
-} from "./input-fields-config";
+import { type InputType, inputFieldConfig } from "./input-fields-config";
 
-/**
- * @public
- */
-export type TableColumnSize = "grow" | "shrink";
-
-/**
- * Base properties shared by all table column types.
- *
- * @public
- */
-export interface TableColumnBase {
-    header: string | Readonly<Ref<string>>;
-    description?: string | Readonly<Ref<string | null>>;
-    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-}
-
-/**
- * Base properties shared by all normalized table column types.
- *
- * @internal
- */
-export interface NormalizedTableColumnBase<K> {
-    readonly id: symbol;
-    readonly header: Readonly<Ref<string>>;
-    readonly description: Readonly<Ref<string | null>>;
-    readonly sortable: K | null;
-    readonly size: Readonly<Ref<TableColumnSize | null>>;
-}
+export {
+    type NormalizedTableColumnAnchor,
+    type NormalizedTableColumnBase,
+    type NormalizedTableColumnButton,
+    type NormalizedTableColumnCheckbox,
+    type NormalizedTableColumnMenu,
+    type NormalizedTableColumnNumber,
+    type NormalizedTableColumnRadio,
+    type NormalizedTableColumnRender,
+    type NormalizedTableColumnRowHeader,
+    type NormalizedTableColumnSelect,
+    type NormalizedTableColumnText,
+    type TableColumnAnchor,
+    type TableColumnBase,
+    type TableColumnButton,
+    type TableColumnCheckbox,
+    type TableColumnMenu,
+    type TableColumnNumber,
+    type TableColumnRadio,
+    type TableColumnRender,
+    type TableColumnRowHeader,
+    type TableColumnSelect,
+    type TableColumnSimple,
+    type TableColumnSize,
+    type TableColumnText,
+} from "./columns";
 
 /**
  * Union of all possible table column types.
@@ -67,362 +84,6 @@ export type TableColumnType =
                 : T
             : never
         : never;
-
-/**
- * @public
- */
-export interface TableColumnSimple<
-    T,
-    K extends keyof T,
-> extends TableColumnBase {
-    /* eslint-disable-next-line sonarjs/no-redundant-optional -- this is used as
-     * a discriminator in the union, for the simple column we are not expected
-     * to set `type` at all but this simplifies the normalization */
-    type?: undefined;
-    key?: K;
-    label?(this: void, row: T): string;
-    value?(this: void, row: T): string;
-}
-
-/**
- * @public
- */
-export interface TableColumnRowHeader<
-    T,
-    K extends keyof T,
-> extends TableColumnBase {
-    type: "rowheader";
-    key?: K;
-    text?(this: void, row: T): string;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnRowHeader<
-    T,
-    K,
-> extends NormalizedTableColumnBase<K> {
-    readonly type: "rowheader";
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnRowHeader<T, K>;
-    }>;
-    text(this: void, row: T): string;
-}
-
-/**
- * @public
- */
-export interface TableColumnCheckbox<
-    T,
-    K extends keyof T,
-> extends TableColumnBase {
-    type: "checkbox";
-    key?: K;
-    label?(this: void, row: T): string;
-    checked?(this: void, row: T): boolean;
-    update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
-    editable?: boolean | ((this: void, row: T) => boolean);
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnCheckbox<
-    T,
-    K,
-> extends NormalizedTableColumnBase<K> {
-    readonly type: "checkbox";
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnCheckbox<T, K>;
-    }>;
-    label(this: void, row: T): string;
-    checked(this: void, row: T): boolean;
-    update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
-    editable(this: void, row: T): boolean;
-}
-
-/**
- * @public
- */
-export interface TableColumnRadio<
-    T,
-    K extends keyof T,
-> extends TableColumnBase {
-    type: "radio";
-    key?: K;
-    label?(this: void, row: T): string;
-    checked?(this: void, row: T): boolean;
-    update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnRadio<
-    T,
-    K,
-> extends NormalizedTableColumnBase<K> {
-    readonly type: "radio";
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnRadio<T, K>;
-    }>;
-    label(this: void, row: T): string;
-    checked(this: void, row: T): boolean;
-    update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
-}
-
-/**
- * @public
- */
-export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
-    type: InputTypeText;
-    key?: K;
-    label?(this: void, row: T): string;
-    tnum?: boolean;
-    align?: "left" | "right";
-    value?(this: void, row: T): string;
-    update?(this: void, row: T, newValue: string, oldValue: string): void;
-    editable?: boolean | ((this: void, row: T) => boolean);
-    validation?: ValidatorConfigs;
-    parser?(this: void, value: string): string;
-    formatter?(this: void, value: string): string;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnText<
-    T,
-    K,
-> extends NormalizedTableColumnBase<K> {
-    readonly type: InputTypeText;
-    readonly validation: ValidatorConfigs;
-    readonly tnum: boolean;
-    readonly align: "left" | "right";
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnText<T, K>;
-        activeErrorAnchor?: HTMLElement;
-    }>;
-    label(this: void, row: T): string;
-    value(this: void, row: T): string;
-    update(this: void, row: T, newValue: string, oldValue: string): void;
-    editable(this: void, row: T): boolean;
-}
-
-/**
- * @public
- */
-export interface TableColumnNumber<
-    T,
-    K extends keyof T,
-> extends TableColumnBase {
-    type: InputTypeNumber;
-    decimals?: number;
-    key?: K;
-    label?(this: void, row: T): string;
-    tnum?: boolean;
-    align?: "left" | "right";
-    value?(this: void, row: T): string | number;
-    update?(
-        this: void,
-        row: T,
-        newValue: number | string,
-        oldValue: number | string,
-    ): void;
-    editable?: boolean | ((this: void, row: T) => boolean);
-    validation?: ValidatorConfigs;
-    parser?(this: void, value: string): number | string;
-    formatter?(this: void, value: number | string): string | undefined;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnNumber<
-    T,
-    K,
-> extends NormalizedTableColumnBase<K> {
-    readonly type: InputTypeNumber;
-    readonly decimals?: number;
-    readonly validation: ValidatorConfigs;
-    readonly tnum: boolean;
-    readonly align: "left" | "right";
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnText<T, K>;
-        activeErrorAnchor?: HTMLElement;
-    }>;
-    label(this: void, row: T): string;
-    value(this: void, row: T): string | number;
-    update(
-        this: void,
-        row: T,
-        newValue: number | string,
-        oldValue: number | string,
-    ): void;
-    editable(this: void, row: T): boolean;
-}
-
-/**
- * @public
- */
-export interface TableColumnAnchor<
-    T,
-    K extends keyof T,
-> extends TableColumnBase {
-    type: "anchor";
-    key?: K;
-    text(this: void, row: T): string | null;
-    enabled?: boolean | ((this: void, row: T) => boolean);
-    href: string;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnAnchor<
-    T,
-    K,
-> extends NormalizedTableColumnBase<K> {
-    readonly type: "anchor";
-    readonly href: string;
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnAnchor<T, K>;
-    }>;
-    text(this: void, row: T): string | null;
-    enabled(this: void, row: T): boolean;
-}
-
-/**
- * @public
- */
-export interface TableColumnButton<
-    T,
-    K extends keyof T,
-> extends TableColumnBase {
-    type: "button";
-    key?: K;
-    text(this: void, row: T): string | null;
-    onClick?(this: void, row: T): void;
-    enabled?: boolean | ((this: void, row: T) => boolean);
-    icon?: string;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnButton<
-    T,
-    K,
-> extends NormalizedTableColumnBase<K> {
-    readonly type: "button";
-    readonly icon: string | null;
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnButton<T, K>;
-    }>;
-    text(this: void, row: T): string | null;
-    onClick?(this: void, row: T): void;
-    enabled(this: void, row: T): boolean;
-}
-
-/**
- * @public
- */
-export interface TableColumnSelect<
-    T,
-    K extends keyof T,
-> extends TableColumnBase {
-    type: "select";
-    key?: K;
-    label?(this: void, row: T): string;
-    selected?(this: void, row: T): string;
-    update?(this: void, row: T, newValue: string, oldValue: string): void;
-    editable?: boolean | ((this: void, row: T) => boolean);
-    options: string[];
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnSelect<
-    T,
-    K,
-> extends NormalizedTableColumnBase<K> {
-    readonly type: "select";
-    readonly options: string[];
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnSelect<T, K>;
-    }>;
-    label(this: void, row: T): string;
-    selected(this: void, row: T): string;
-    update(this: void, row: T, newValue: string, oldValue: string): void;
-    editable(this: void, row: T): boolean;
-}
-
-/**
- * @public
- */
-export interface TableColumnMenu<T> extends TableColumnBase {
-    type: "menu";
-    text(this: void, row: T): string | null;
-    enabled?: boolean | ((row: T) => boolean);
-    actions?: Array<{
-        label: string;
-        icon?: string;
-        onClick?(this: void, row: T): void;
-    }>;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnMenu<
-    T,
-> extends NormalizedTableColumnBase<never> {
-    readonly type: "menu";
-    readonly actions: Array<{
-        readonly label: string;
-        readonly icon: string | null;
-        onClick(this: void, row: T): void;
-    }>;
-    readonly component: Component<{
-        row: T;
-        column: NormalizedTableColumnMenu<T>;
-    }>;
-    text(this: void, row: T): string | null;
-    enabled(this: void, row: T): boolean;
-}
-
-/**
- * @public
- */
-export interface TableColumnRender<
-    T,
-    K extends keyof T = keyof T,
-> extends TableColumnBase {
-    key?: K;
-    render(this: void, row: T): VNode | Component;
-}
-
-/**
- * @internal
- */
-export interface NormalizedTableColumnRender<T> extends Omit<
-    NormalizedTableColumnBase<never>,
-    "sortable"
-> {
-    readonly type: undefined;
-    readonly sortable: boolean | null;
-    render(this: void, row: T): VNode | Component;
-}
 
 /**
  * @public
