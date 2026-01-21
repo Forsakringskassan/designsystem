@@ -32,17 +32,13 @@ import {
     type TableColumnSize,
     type TableColumnText,
 } from "./columns";
-import { getLabelFn } from "./columns/helpers";
+import { getLabelFn, getValueFn } from "./columns/helpers";
 import {
     getParsedNumberUpdateFn,
     getParsedUpdateFn,
     getUpdateFn,
 } from "./get-update-fn";
-import {
-    getFormattedNumberValueFn,
-    getFormattedValueFn,
-    getValueFn,
-} from "./get-value-fn";
+import { getFormattedNumberValueFn, getFormattedValueFn } from "./get-value-fn";
 import { type InputType, inputFieldConfig } from "./input-fields-config";
 
 export {
