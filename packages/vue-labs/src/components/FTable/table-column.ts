@@ -556,7 +556,7 @@ export function normalizeTableColumn<
     T,
     K extends keyof T = keyof T,
     I extends Mapping<T, K>["input"] = Mapping<T, K>["input"],
->(column: I): Extract<Mapping<T, K>, { in: I }>["o"];
+>(column: I): Extract<Mapping<T, K>, { input: I }>["output"];
 
 /* eslint-disable-next-line complexity -- technical debt */
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
@@ -795,35 +795,15 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 }
 
 /**
+ * Helper function to define table columns with proper type inference.
+ *
  * @internal
  */
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnSimple<T, K> | TableColumnText<T, K>,
-): TableColumnText<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnRowHeader<T, K>,
-): TableColumnRowHeader<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnCheckbox<T, K>,
-): TableColumnCheckbox<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnRadio<T, K>,
-): TableColumnRadio<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnAnchor<T, K>,
-): TableColumnAnchor<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnButton<T, K>,
-): TableColumnButton<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnRender<T, K>,
-): TableColumnRender<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnSelect<T, K>,
-): TableColumnSelect<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumn<T, K>,
-): TableColumn<T, K>;
+export function defineTableColumn<
+    T,
+    K extends keyof T = keyof T,
+    I extends TableColumn<T, K> = TableColumn<T, K>,
+>(column: I): I;
 
 export function defineTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
