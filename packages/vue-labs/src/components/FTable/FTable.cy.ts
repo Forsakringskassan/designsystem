@@ -1462,4 +1462,28 @@ describe("select cell", () => {
         cy.get("body").realClick({ position: "topLeft" });
         table.selectDropdown().should("not.exist");
     });
+
+    it("should have correct styling when open", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+            slots: {
+                caption: "select cell should have correct styling when open",
+            },
+        });
+
+        table.cell({ row: 2, col: 1 }).click();
+        cy.toMatchScreenshot();
+    });
+
+    it("should have correct styling when focused", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+            slots: {
+                caption: "select cell should have correct styling when focused",
+            },
+        });
+
+        table.cell({ row: 2, col: 1 }).focus();
+        cy.toMatchScreenshot();
+    });
 });
