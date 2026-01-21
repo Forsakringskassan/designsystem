@@ -22,10 +22,6 @@ Sidan är under omarbetning för nya tabellkomponenten och kan innehålla felakt
 FTableLiveExample.vue
 ```
 
-```import live-example
-FTableColumnLiveExample.vue
-```
-
 ## Hur används komponenten?
 
 Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner.
@@ -75,6 +71,28 @@ Underlätta för användaren genom att formatera innehållet i tabellen så det 
 
 Undvik långa texter i tabellceller.
 Håll innehållet kort och koncist så att det blir lätt och överskådligt för användaren att hitta.
+
+## Kolumntyper
+
+En kolumn i tabellen kan visa olika typer av innehåll.
+
+Tabellen stödjer kolumntyperna:
+
+- textfält (enbart visning av data eller redigerbar) samt motsvarande format som de specialiserade inmatningsfälten
+- radrubrik
+- knapp
+- länk
+- kryssruta
+- radioknapp
+- dropplista
+- kontextmeny.
+
+```import live-example
+FTableColumnLiveExample.vue
+```
+
+Tabellen kan bara visa en typ av innehåll per kolumn.
+Det går inte att blanda så att till exempel de översta raderna i en kolumn har kolumntypen dropplista och de nedersta raderna har radioknapp.
 
 ## Navigera i tabell
 
@@ -173,6 +191,7 @@ Läs mer om hur du använder komponent (länk FSortFilterDataset datamängdsorte
 Följande förbättringar av tabell återstår:
 
 - stöd för paginering
+- stöd för kolumntypen kombobox
 - laddning av data (spinner)
 - konsument ska kunna sätta kolumnbredd
 - användare ska kunna ändra kolumnbredd dynamiskt.
