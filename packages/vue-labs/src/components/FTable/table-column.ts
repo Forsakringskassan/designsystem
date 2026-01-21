@@ -32,6 +32,7 @@ import {
     type TableColumnSize,
     type TableColumnText,
 } from "./columns";
+import { getLabelFn } from "./columns/helpers";
 import {
     getParsedNumberUpdateFn,
     getParsedUpdateFn,
@@ -115,15 +116,6 @@ export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnRender<T>
     | NormalizedTableColumnSelect<T, K>
     | NormalizedTableColumnMenu<T>;
-
-function getLabelFn<TRow>(
-    fn: ((this: void, row: TRow) => string) | undefined,
-): (this: void, row: TRow) => string {
-    if (fn) {
-        return fn;
-    }
-    return () => "";
-}
 
 /**
  * @internal
