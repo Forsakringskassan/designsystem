@@ -100,7 +100,7 @@
     "@types/jest": "29.5.14",
     "@types/lodash": "4.17.23",
     "@types/node": "20.19.30",
-    "@vue/server-renderer": "3.5.26",
+    "@vue/server-renderer": "3.5.27",
     "artifact-size-analyzer": "1.2.2",
     "autoprefixer": "10.4.23",
     "cli-table": "0.3.11",
@@ -128,7 +128,7 @@
     "typedoc": "0.28.16",
     "typescript": "5.9.3",
     "vite": "7.3.1",
-    "vue": "3.5.26",
+    "vue": "3.5.27",
     "vue-tsc": "3.2.2"
   },
   "engines": {
