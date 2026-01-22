@@ -9,6 +9,12 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.34.0
+
+2026-01-23
+
+Vi har fixat en del små buggar och annat i den här releasen, se {@link changelog Changelog}.
+
 ## Version 6.31.0
 
 2025-12-15
