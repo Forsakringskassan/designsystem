@@ -33,6 +33,7 @@ import {
     type TableColumnText,
 } from "./columns";
 import {
+    defaultTnumValue,
     getFormattedNumberValueFn,
     getFormattedValueFn,
     getLabelFn,
@@ -41,7 +42,7 @@ import {
     getUpdateFn,
     getValueFn,
 } from "./columns/helpers";
-import { type InputType, inputFieldConfig } from "./input-fields-config";
+import { inputFieldConfig } from "./input-fields-config";
 
 export {
     type NormalizedTableColumnAnchor,
@@ -114,27 +115,6 @@ export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnRender<T>
     | NormalizedTableColumnSelect<T, K>
     | NormalizedTableColumnMenu<T>;
-
-/**
- * @internal
- */
-export function defaultTnumValue(type: InputType): boolean {
-    const tnumTypes = [
-        "text:bankAccountNumber",
-        "text:bankgiro",
-        "text:clearingNumber",
-        "text:currency",
-        "text:number",
-        "text:organisationsnummer",
-        "text:percent",
-        "text:personnummer",
-        "text:phoneNumber",
-        "text:plusgiro",
-        "text:postalCode",
-    ];
-
-    return tnumTypes.includes(type);
-}
 
 function noop(): void {
     /* do nothing */

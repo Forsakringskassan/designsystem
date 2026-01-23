@@ -14,10 +14,10 @@ import {
     defineTableColumns as defineTableColumnsFunc,
 } from "@fkui/vue-labs";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
+import { defaultTnumValue } from "../columns/helpers";
 import { type InputType } from "../input-fields-config";
 import {
     type TableColumnType,
-    defaultTnumValue,
     isEditableColumn,
     isEnableColumn,
     isTextColumn,
