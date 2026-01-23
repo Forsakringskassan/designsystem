@@ -1,3 +1,4 @@
+export { defaultTnumValue } from "./default-tnum-value";
 export { getFormattedNumberValueFn } from "./get-formatted-number-value-fn";
 export { getFormattedValueFn } from "./get-formatted-value-fn";
 export { getLabelFn } from "./get-label-fn";
