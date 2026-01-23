@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onUnmounted, useTemplateRef, watch, watchEffect } from "vue";
+import { computed, onUnmounted, useTemplateRef, watch, watchEffect } from "vue";
 import { debounce } from "@fkui/logic";
 import { useEventListener } from "../../composables";
 import { config } from "../../config";
@@ -22,8 +22,8 @@ const {
     activeElement = undefined,
 } = defineProps<IPopupListboxProps>();
 const emit = defineEmits<{ close: [] }>();
-const wrapperRef = useTemplateRef("wrapper");
-const contentRef = useTemplateRef("content");
+const wrapperRef = useTemplateRef<HTMLElement>("wrapper");
+const contentRef = useTemplateRef<HTMLElement>("content");
 
 const teleportDisabled = false;
 const popupClasses = ["popup", "popup--overlay"];
@@ -34,21 +34,21 @@ let verticalSpacing: number | undefined = undefined;
 useEventListener(anchor, "keyup", onKeyEsc);
 
 watchEffect(() => {
-    if (wrapperRef.value && activeElement !== undefined) {
-        const centerPosition =
-            activeElement.offsetTop -
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-            (wrapperRef.value.getBoundingClientRect().height - activeElement.getBoundingClientRect().height) / 2;
-
-        if (!isElementInsideViewport(wrapperRef.value)) {
-            // Scroll wrapper into viewport
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-            wrapperRef.value.scrollIntoView({ behavior: "instant", block: "nearest" });
-        }
-        // Scroll activeElement to center of wrapper.
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        wrapperRef.value.scrollTo({ top: centerPosition, behavior: "instant" });
+    if (!wrapperRef.value || activeElement === undefined) {
+        return;
     }
+
+    const centerPosition =
+        activeElement.offsetTop -
+        (wrapperRef.value.getBoundingClientRect().height - activeElement.getBoundingClientRect().height) / 2;
+
+    if (!isElementInsideViewport(wrapperRef.value)) {
+        // Scroll wrapper into viewport
+        wrapperRef.value.scrollIntoView({ behavior: "instant", block: "nearest" });
+    }
+
+    // Scroll activeElement to center of wrapper.
+    wrapperRef.value.scrollTo({ top: centerPosition, behavior: "instant" });
 });
 
 function addListeners(): void {
@@ -74,7 +74,6 @@ function isElementInsideViewport(element: Element): boolean {
 
 watchEffect(() => {
     if (isOpen) {
-        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         calculatePosition();
         // wait one tick so we dont get the click
         // that launches the popup (await nextTick doesnt work here)
@@ -94,7 +93,6 @@ watch(
     () => numOfItems,
     (oldValue, newValue) => {
         if (oldValue !== newValue && isOpen) {
-            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             calculatePosition();
         }
     },
@@ -108,7 +106,6 @@ function onDocumentClickHandler(): void {
 
 function onResize(): void {
     if (isOpen) {
-        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         calculatePosition();
     }
 }
@@ -123,9 +120,7 @@ function guessItemHeight(numOfItems: number, contentWrapper: HTMLElement): numbe
     return Math.ceil(contentWrapper.clientHeight / numOfItems);
 }
 
-async function calculatePosition(): Promise<void> {
-    await nextTick();
-
+function calculatePosition(): void {
     const wrapperElement = wrapperRef.value;
     const contentWrapper = contentRef.value;
 
@@ -155,11 +150,8 @@ async function calculatePosition(): Promise<void> {
     const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems, verticalSpacing });
     if (rect) {
         const { top, left, width, height } = rect;
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
-        const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
+        const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
         const offsetLeft = offsetRect?.x ?? 0;
-        /* eslint-disable-next-line @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-unsafe-argument -- technical debt */
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
