@@ -1,4 +1,4 @@
-import { getParsedUpdateFn } from "./get-update-fn";
+import { getParsedUpdateFn } from "./get-parsed-update-fn";
 
 interface TableRow {
     id: string;
