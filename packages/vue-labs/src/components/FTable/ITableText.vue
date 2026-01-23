@@ -240,6 +240,9 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
         @keydown="onKeydown"
     >
         <div :class="divClasses">
+            <div v-if="column.align === 'right'" ref="pen">
+                <f-icon name="pen" class="table-ng__editable__icon"></f-icon>
+            </div>
             <span ref="view" class="table-ng__editable__text">{{ column.value(row) }}</span>
             <input
                 ref="input"
@@ -252,7 +255,7 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
                 @blur="onBlur"
                 @validity="onValidity"
             />
-            <div ref="pen">
+            <div v-if="column.align === 'left'" ref="pen">
                 <f-icon name="pen" class="table-ng__editable__icon"></f-icon>
             </div>
         </div>
