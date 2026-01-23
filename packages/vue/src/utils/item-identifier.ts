@@ -2,7 +2,7 @@
  * Represents an item identifier used with `{get,set}ItemIdentifier()`.
  *
  * @public
- * @since %version%
+ * @since v6.34.0
  */
 export type ItemIdentifier = string | number | symbol;
 
@@ -29,7 +29,7 @@ export function getLegacyInternalKey<T>(): keyof T {
  * if no identifier was set.
  *
  * @public
- * @since %version%
+ * @since v6.34.0
  * @param item - An item to get identifier from.
  */
 export function findItemIdentifier(item: unknown): ItemIdentifier | undefined {
@@ -45,7 +45,7 @@ export function findItemIdentifier(item: unknown): ItemIdentifier | undefined {
  * if no identifier was set.
  *
  * @public
- * @since %version%
+ * @since v6.34.0
  * @param item - An item to get key from.
  */
 export function getItemIdentifier(item: unknown): ItemIdentifier {
@@ -66,7 +66,7 @@ export function getItemIdentifier(item: unknown): ItemIdentifier {
  * If an identifier already exists it will *not* be overwritten.
  *
  * @public
- * @since %version%
+ * @since v6.34.0
  * @param item - An item to set the identifier on.
  * @param value - Specific identifier to use instead of generated one.
  */

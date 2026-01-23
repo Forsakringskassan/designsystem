@@ -2,7 +2,7 @@
  * Selectors for `FPaginator`.
  *
  * @public
- * @since %version%
+ * @since v6.34.0
  * @param selector - The root selector of the FPaginator component.
  * @returns An object with selector methods for the FPaginator component.
  */
@@ -14,7 +14,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -25,7 +25,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * Get the button for the current page.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @returns A selector for the currently active page button.
          */
         currentPageButton(this: void): string {
@@ -36,7 +36,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * Get the button for the first page.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @returns A selector for the button that navigates to the first
          * page.
          */
@@ -48,7 +48,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * Get the button for the last page.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @returns A selector for the button that navigates to the last
          * page.
          */
@@ -60,7 +60,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * Get the button for navigating to the next page.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @returns A selector for the button that navigates to the next
          * page.
          */
@@ -74,7 +74,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * This returns the button that displays the given text.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @param text - The text displayed on the requested button. If a
          * numeric value is provided, it is converted to a string.
          * @returns A selector for the specified page button.
@@ -90,7 +90,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * selects buttons from the end, e.g. `-1` selects the last button.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @param index - The zero-based page index, or a negative index to
          * select from the end (e.g. `-1` selects the last button).
          * @returns A selector for the specified page button.
@@ -103,7 +103,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * Get the buttons for all pages shown.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @returns A selector for all displayed page buttons.
          */
         pageButtons(this: void): string {
@@ -117,7 +117,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * devices.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @returns A selector for the page counter element.
          */
         pageCounter(this: void): string {
@@ -128,7 +128,7 @@ export function FPaginatorSelectors(selector: string = ".paginator") {
          * Get the button for navigating to the previous page.
          *
          * @public
-         * @since %version%
+         * @since v6.34.0
          * @returns A selector for the button that navigates to the previous
          * page.
          */

@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 6.34.0 (2026-01-23)
+
+### Features
+
+* **@fkui/vue:** new `@fkui/vue/selectors` library with test framework-agnostic selectors (refs SFKUI-6500) 91ade58
+* **@fkui/vue:** new `size` prop in `FFileSelector` (fixes SFKUI-7505) 1e444da
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** checkbox/radio field `details` slot using `br` element as margin (refs SFKUI-7545) 345acb1
+* **@fkui/design:** `not-allowed` cursor displayed for disabled chips (fixes SFKUI-7537) 33e14b7
+* **@fkui/design:** stabilize scrollbar (refs SFKUI-6500) e3b9c1f
+* **@fkui/tsconfig, @fkui/vue-labs, @fkui/vue:** cypress typescript config should not emit compiled files (refs SB-4982) a29becb
+* **@fkui/vue:** revert `internal-key` being read-only (fixes SFKUI-7586) da5bcc1, closes #933
+* **deps:** update dependency lodash to v4.17.23 [security] 3fd11ac
+* **deps:** update vue monorepo to v3.5.27 d5d3978
+
 ## 6.33.0 (2026-01-14)
 
 ### Features
