@@ -79,7 +79,12 @@ export function setItemIdentifier(item: unknown, value?: ItemIdentifier): void {
     Object.defineProperty(item, sym, {
         value: value ?? internalIndex++,
         enumerable: false,
-        writable: false,
+
+        /* technical debt: this should be false to prevent modification after
+         * set, but the `deepClone` from `@fkui/logic` (based on `cloneDeep`
+         * from `lodash`) copies but does not preserve enumerable attribute
+         * causing components such as `FCrudDataset` to fail. */
+        writable: true,
     });
 }
 
