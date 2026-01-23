@@ -24,7 +24,7 @@ function setup(options) {
 }
 
 // virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-d90b2e.js
-import { defineComponent } from "vue";
+import { defineComponent as defineComponent2 } from "vue";
 import { FDate } from "@fkui/date";
 import {
   FCheckboxField,
@@ -40,7 +40,7 @@ import {
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 // src/components/FTable/table-column.ts
-import { ref as ref4, toRef } from "vue";
+import { ref as ref6, toRef as toRef2 } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableAnchor.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
@@ -695,9 +695,318 @@ ITableSelect_default.__file = "src/components/FTable/ITableSelect.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableText.vue?type=script
 import { defineComponent as _defineComponent8 } from "vue";
-import { computed as computed7, onMounted, ref as ref3, useTemplateRef as useTemplateRef7 } from "vue";
+import { computed as computed9, onMounted as onMounted3, ref as ref5, useTemplateRef as useTemplateRef7, watchEffect as watchEffect3 } from "vue";
 import { ValidationService as ValidationService2, assertRef as assertRef4 } from "@fkui/logic";
-import { FIcon as FIcon4 } from "@fkui/vue";
+import { FIcon as FIcon4, IPopupError } from "@fkui/vue";
+
+// ../../node_modules/@vueuse/shared/index.mjs
+import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject as inject2, provide, ref as ref3, isRef, unref, toValue as toValue$1, computed as computed7, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick as nextTick2, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
+function tryOnScopeDispose(fn) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn);
+    return true;
+  }
+  return false;
+}
+var isClient = typeof window !== "undefined" && typeof document !== "undefined";
+var isWorker = typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
+var notNullish = (val) => val != null;
+var toString = Object.prototype.toString;
+var isObject = (val) => toString.call(val) === "[object Object]";
+var noop = () => {
+};
+function cacheStringFunction(fn) {
+  const cache = /* @__PURE__ */ Object.create(null);
+  return (str) => {
+    const hit = cache[str];
+    return hit || (cache[str] = fn(str));
+  };
+}
+var hyphenateRE = /\B([A-Z])/g;
+var hyphenate = cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
+var camelizeRE = /-(\w)/g;
+var camelize = cacheStringFunction((str) => {
+  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
+});
+function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+function watchImmediate(source, cb, options) {
+  return watch(
+    source,
+    cb,
+    {
+      ...options,
+      immediate: true
+    }
+  );
+}
+
+// ../../node_modules/@vueuse/core/index.mjs
+import { isRef as isRef2, shallowRef as shallowRef2, ref as ref4, watchEffect as watchEffect2, computed as computed8, inject as inject3, defineComponent, h as h2, TransitionGroup, shallowReactive, Fragment, toValue, unref as unref2, getCurrentInstance as getCurrentInstance2, onMounted as onMounted2, watch as watch2, customRef as customRef2, onUpdated, readonly as readonly2, reactive as reactive2, hasInjectionContext as hasInjectionContext2, toRaw, nextTick as nextTick3, markRaw, getCurrentScope as getCurrentScope2, isReadonly, onBeforeUpdate } from "vue";
+var defaultWindow = isClient ? window : void 0;
+var defaultDocument = isClient ? window.document : void 0;
+var defaultNavigator = isClient ? window.navigator : void 0;
+var defaultLocation = isClient ? window.location : void 0;
+function unrefElement(elRef) {
+  var _a;
+  const plain = toValue(elRef);
+  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
+}
+function useEventListener(...args) {
+  const cleanups = [];
+  const cleanup = () => {
+    cleanups.forEach((fn) => fn());
+    cleanups.length = 0;
+  };
+  const register = (el, event, listener, options) => {
+    el.addEventListener(event, listener, options);
+    return () => el.removeEventListener(event, listener, options);
+  };
+  const firstParamTargets = computed8(() => {
+    const test = toArray(toValue(args[0])).filter((e) => e != null);
+    return test.every((e) => typeof e !== "string") ? test : void 0;
+  });
+  const stopWatch = watchImmediate(
+    () => {
+      var _a, _b;
+      return [
+        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
+        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
+        toArray(unref2(firstParamTargets.value ? args[2] : args[1])),
+        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
+        toValue(firstParamTargets.value ? args[3] : args[2])
+      ];
+    },
+    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
+      cleanup();
+      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
+        return;
+      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
+      cleanups.push(
+        ...raw_targets.flatMap(
+          (el) => raw_events.flatMap(
+            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
+          )
+        )
+      );
+    },
+    { flush: "post" }
+  );
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(cleanup);
+  return stop;
+}
+function useMounted() {
+  const isMounted = shallowRef2(false);
+  const instance = getCurrentInstance2();
+  if (instance) {
+    onMounted2(() => {
+      isMounted.value = true;
+    }, instance);
+  }
+  return isMounted;
+}
+function useSupported(callback) {
+  const isMounted = useMounted();
+  return computed8(() => {
+    isMounted.value;
+    return Boolean(callback());
+  });
+}
+function useMutationObserver(target, callback, options = {}) {
+  const { window: window2 = defaultWindow, ...mutationOptions } = options;
+  let observer;
+  const isSupported = useSupported(() => window2 && "MutationObserver" in window2);
+  const cleanup = () => {
+    if (observer) {
+      observer.disconnect();
+      observer = void 0;
+    }
+  };
+  const targets = computed8(() => {
+    const value = toValue(target);
+    const items = toArray(value).map(unrefElement).filter(notNullish);
+    return new Set(items);
+  });
+  const stopWatch = watch2(
+    () => targets.value,
+    (targets2) => {
+      cleanup();
+      if (isSupported.value && targets2.size) {
+        observer = new MutationObserver(callback);
+        targets2.forEach((el) => observer.observe(el, mutationOptions));
+      }
+    },
+    { immediate: true, flush: "post" }
+  );
+  const takeRecords = () => {
+    return observer == null ? void 0 : observer.takeRecords();
+  };
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(stop);
+  return {
+    isSupported,
+    stop,
+    takeRecords
+  };
+}
+function onElementRemoval(target, callback, options = {}) {
+  const {
+    window: window2 = defaultWindow,
+    document: document2 = window2 == null ? void 0 : window2.document,
+    flush = "sync"
+  } = options;
+  if (!window2 || !document2)
+    return noop;
+  let stopFn;
+  const cleanupAndUpdate = (fn) => {
+    stopFn == null ? void 0 : stopFn();
+    stopFn = fn;
+  };
+  const stopWatch = watchEffect2(() => {
+    const el = unrefElement(target);
+    if (el) {
+      const { stop } = useMutationObserver(
+        document2,
+        (mutationsList) => {
+          const targetRemoved = mutationsList.map((mutation) => [...mutation.removedNodes]).flat().some((node) => node === el || node.contains(el));
+          if (targetRemoved) {
+            callback(mutationsList);
+          }
+        },
+        {
+          window: window2,
+          childList: true,
+          subtree: true
+        }
+      );
+      cleanupAndUpdate(stop);
+    }
+  }, { flush });
+  const stopHandle = () => {
+    stopWatch();
+    cleanupAndUpdate();
+  };
+  tryOnScopeDispose(stopHandle);
+  return stopHandle;
+}
+function useActiveElement(options = {}) {
+  var _a;
+  const {
+    window: window2 = defaultWindow,
+    deep = true,
+    triggerOnRemoval = false
+  } = options;
+  const document2 = (_a = options.document) != null ? _a : window2 == null ? void 0 : window2.document;
+  const getDeepActiveElement = () => {
+    var _a2;
+    let element = document2 == null ? void 0 : document2.activeElement;
+    if (deep) {
+      while (element == null ? void 0 : element.shadowRoot)
+        element = (_a2 = element == null ? void 0 : element.shadowRoot) == null ? void 0 : _a2.activeElement;
+    }
+    return element;
+  };
+  const activeElement = shallowRef2();
+  const trigger = () => {
+    activeElement.value = getDeepActiveElement();
+  };
+  if (window2) {
+    const listenerOptions = {
+      capture: true,
+      passive: true
+    };
+    useEventListener(
+      window2,
+      "blur",
+      (event) => {
+        if (event.relatedTarget !== null)
+          return;
+        trigger();
+      },
+      listenerOptions
+    );
+    useEventListener(
+      window2,
+      "focus",
+      trigger,
+      listenerOptions
+    );
+  }
+  if (triggerOnRemoval) {
+    onElementRemoval(activeElement, trigger, { document: document2 });
+  }
+  trigger();
+  return activeElement;
+}
+function useElementHover(el, options = {}) {
+  const {
+    delayEnter = 0,
+    delayLeave = 0,
+    triggerOnRemoval = false,
+    window: window2 = defaultWindow
+  } = options;
+  const isHovered = shallowRef2(false);
+  let timer;
+  const toggle = (entering) => {
+    const delay = entering ? delayEnter : delayLeave;
+    if (timer) {
+      clearTimeout(timer);
+      timer = void 0;
+    }
+    if (delay)
+      timer = setTimeout(() => isHovered.value = entering, delay);
+    else
+      isHovered.value = entering;
+  };
+  if (!window2)
+    return isHovered;
+  useEventListener(el, "mouseenter", () => toggle(true), { passive: true });
+  useEventListener(el, "mouseleave", () => toggle(false), { passive: true });
+  if (triggerOnRemoval) {
+    onElementRemoval(
+      computed8(() => unrefElement(el)),
+      () => toggle(false)
+    );
+  }
+  return isHovered;
+}
+var EVENT_FOCUS_IN = "focusin";
+var EVENT_FOCUS_OUT = "focusout";
+var PSEUDO_CLASS_FOCUS_WITHIN = ":focus-within";
+function useFocusWithin(target, options = {}) {
+  const { window: window2 = defaultWindow } = options;
+  const targetElement = computed8(() => unrefElement(target));
+  const _focused = shallowRef2(false);
+  const focused = computed8(() => _focused.value);
+  const activeElement = useActiveElement(options);
+  if (!window2 || !activeElement.value) {
+    return { focused };
+  }
+  const listenerOptions = { passive: true };
+  useEventListener(targetElement, EVENT_FOCUS_IN, () => _focused.value = true, listenerOptions);
+  useEventListener(targetElement, EVENT_FOCUS_OUT, () => {
+    var _a, _b, _c;
+    return _focused.value = (_c = (_b = (_a = targetElement.value) == null ? void 0 : _a.matches) == null ? void 0 : _b.call(_a, PSEUDO_CLASS_FOCUS_WITHIN)) != null ? _c : false;
+  }, listenerOptions);
+  return { focused };
+}
+var DEFAULT_UNITS = [
+  { max: 6e4, value: 1e3, name: "second" },
+  { max: 276e4, value: 6e4, name: "minute" },
+  { max: 72e6, value: 36e5, name: "hour" },
+  { max: 5184e5, value: 864e5, name: "day" },
+  { max: 24192e5, value: 6048e5, name: "week" },
+  { max: 28512e6, value: 2592e6, name: "month" },
+  { max: Number.POSITIVE_INFINITY, value: 31536e6, name: "year" }
+];
 
 // src/components/FTable/input-validators.ts
 import { ValidationService } from "@fkui/logic";
@@ -962,25 +1271,28 @@ var ITableText_default = /* @__PURE__ */ _defineComponent8({
   __name: "ITableText",
   props: {
     row: { type: null, required: true },
-    column: { type: Object, required: true }
+    column: { type: Object, required: true },
+    activeErrorAnchor: { type: null, required: false, default: () => void 0 }
   },
-  setup(__props, { expose: __expose }) {
+  emits: ["onError", "closeError"],
+  setup(__props, { expose: __expose, emit: __emit }) {
     __expose();
-    const model = ref3("");
-    const inEdit = ref3(false);
-    const validity = ref3({
+    const emit = __emit;
+    const model = ref5("");
+    const inEdit = ref5(false);
+    const validity = ref5({
       isValid: true,
       validationMessage: "",
       validityMode: "INITIAL"
     });
-    const hasError = computed7(() => validity.value.validityMode === "ERROR");
-    const divClasses = computed7(() => {
+    const hasError = computed9(() => validity.value.validityMode === "ERROR");
+    const divClasses = computed9(() => {
       return {
         "table-ng__editable": true,
         "table-ng__editable__numeric": __props.column.tnum
       };
     });
-    const wrapperClasses = computed7(() => {
+    const wrapperClasses = computed9(() => {
       return {
         "table-ng__cell": true,
         "table-ng__cell--text": true,
@@ -990,7 +1302,7 @@ var ITableText_default = /* @__PURE__ */ _defineComponent8({
         "table-ng__cell--align-right": __props.column.align === "right"
       };
     });
-    const staticClasses = computed7(() => {
+    const staticClasses = computed9(() => {
       return {
         "table-ng__cell": true,
         "table-ng__cell--static": true,
@@ -998,24 +1310,57 @@ var ITableText_default = /* @__PURE__ */ _defineComponent8({
         "table-ng__cell--align-right": __props.column.align === "right"
       };
     });
-    const inputClasses = computed7(() => {
+    const inputClasses = computed9(() => {
       return {
         foobar: true,
         "table-ng__textedit": true
       };
     });
-    const ariaLabel = computed7(() => {
-      const value = __props.column.label(__props.row);
+    const ariaLabel = computed9(() => {
+      let value = __props.column.label(__props.row);
+      if (hasError.value) {
+        value = `${value} ${validity.value.validationMessage}`;
+      }
       return value.length > 0 ? value : void 0;
     });
     const tdElement = useTemplateRef7("td");
     const viewElement = useTemplateRef7("view");
     const inputElement = useTemplateRef7("input");
+    const penElement = useTemplateRef7("pen");
     const { stopEdit } = useStartStopEdit();
-    onMounted(() => {
+    const isHovered = useElementHover(tdElement, { delayEnter: 200 });
+    const { focused } = useFocusWithin(tdElement);
+    const openPopupError = computed9(() => {
+      if (!tdElement.value) {
+        return false;
+      }
+      return tdElement.value === __props.activeErrorAnchor;
+    });
+    onMounted3(() => {
       if (inputElement.value) {
         addInputValidators(inputElement.value, __props.column.type);
         ValidationService2.addValidatorsToElement(inputElement.value, __props.column.validation);
+      }
+    });
+    watchEffect3(() => {
+      if (hasError.value) {
+        emit("onError", {
+          anchor: tdElement.value ?? void 0,
+          arrowAnchor: penElement.value ?? void 0,
+          message: validity.value.validationMessage,
+          hasFocus: focused.value,
+          hasHover: isHovered.value,
+          inEdit: inEdit.value
+        });
+      } else {
+        emit("closeError", {
+          anchor: tdElement.value ?? void 0,
+          arrowAnchor: penElement.value ?? void 0,
+          message: validity.value.validationMessage,
+          hasFocus: focused.value,
+          hasHover: isHovered.value,
+          inEdit: inEdit.value
+        });
       }
     });
     function onStartEdit(modelValue) {
@@ -1105,8 +1450,10 @@ var ITableText_default = /* @__PURE__ */ _defineComponent8({
       const { isValid, validationMessage, validityMode } = event.detail;
       validity.value = { isValid, validationMessage, validityMode };
     }
-    const __returned__ = { model, inEdit, validity, hasError, divClasses, wrapperClasses, staticClasses, inputClasses, ariaLabel, tdElement, viewElement, inputElement, stopEdit, onStartEdit, onStopEdit, onClickCell, onViewingKeydown, onEditingKeydown, onKeydown, onBlur, onValidity, get FIcon() {
+    const __returned__ = { emit, model, inEdit, validity, hasError, divClasses, wrapperClasses, staticClasses, inputClasses, ariaLabel, tdElement, viewElement, inputElement, penElement, stopEdit, isHovered, focused, openPopupError, onStartEdit, onStopEdit, onClickCell, onViewingKeydown, onEditingKeydown, onKeydown, onBlur, onValidity, get FIcon() {
       return FIcon4;
+    }, get IPopupError() {
+      return IPopupError;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -1114,8 +1461,9 @@ var ITableText_default = /* @__PURE__ */ _defineComponent8({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue-labs/src/components/FTable/ITableText.vue?type=template
-import { toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode7, vModelText as _vModelText, normalizeClass as _normalizeClass, withDirectives as _withDirectives2, openBlock as _openBlock8, createBlock as _createBlock2, withModifiers as _withModifiers2, createElementBlock as _createElementBlock8 } from "vue";
+import { toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode7, vModelText as _vModelText, normalizeClass as _normalizeClass, withDirectives as _withDirectives2, createVNode as _createVNode3, withModifiers as _withModifiers2, openBlock as _openBlock8, createElementBlock as _createElementBlock8 } from "vue";
 var _hoisted_17 = ["aria-label"];
+var _hoisted_27 = { ref: "pen" };
 function render8(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.column.editable($props.row) ? (_openBlock8(), _createElementBlock8(
     "td",
@@ -1157,19 +1505,29 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           }, null, 42, _hoisted_17), [
             [_vModelText, $setup.model]
           ]),
-          $setup.hasError ? (_openBlock8(), _createBlock2($setup["FIcon"], {
-            key: 0,
-            name: "error",
-            class: "table-ng__editable__icon"
-          })) : (_openBlock8(), _createBlock2($setup["FIcon"], {
-            key: 1,
-            name: "pen",
-            class: "table-ng__editable__icon"
-          }))
+          _createElementVNode7(
+            "div",
+            _hoisted_27,
+            [
+              _createVNode3($setup["FIcon"], {
+                name: "pen",
+                class: "table-ng__editable__icon"
+              })
+            ],
+            512
+            /* NEED_PATCH */
+          )
         ],
         2
         /* CLASS */
-      )
+      ),
+      _createVNode3($setup["IPopupError"], {
+        anchor: $setup.tdElement,
+        "is-open": $setup.openPopupError,
+        "error-message": $setup.validity.validationMessage,
+        "arrow-anchor": $setup.penElement,
+        layout: "f-table"
+      }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])
     ],
     34
     /* CLASS, NEED_HYDRATION */
@@ -1252,7 +1610,7 @@ function stringifyObject(obj) {
 }
 
 // virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-d90b2e.js
-import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode8, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode3, openBlock as _openBlock9, createBlock as _createBlock3, createCommentVNode as _createCommentVNode7, toDisplayString as _toDisplayString7 } from "vue";
+import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode8, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode4, openBlock as _openBlock9, createBlock as _createBlock2, createCommentVNode as _createCommentVNode7, toDisplayString as _toDisplayString7 } from "vue";
 var columnData = {
   checkbox: {
     type: "checkbox",
@@ -1414,7 +1772,7 @@ function getRows(options) {
   const { columnType } = options;
   return rowData[columnType].map((it, index) => ({ id: index + 1, value: it }));
 }
-var exampleComponent = defineComponent({
+var exampleComponent = defineComponent2({
   name: "FTableColumnLiveExample",
   components: { LiveExample, FSelectField, FFieldset, FCheckboxField, FRadioField },
   data() {
@@ -1519,13 +1877,13 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_radio_field = _resolveComponent("f-radio-field");
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   const _component_live_example = _resolveComponent("live-example");
-  return _openBlock9(), _createBlock3(_component_live_example, {
+  return _openBlock9(), _createBlock2(_component_live_example, {
     components: _ctx.components,
     template: _ctx.template,
     livemethods: _ctx.livemethods
   }, {
     default: _withCtx(() => [
-      _createVNode3(_component_f_select_field, {
+      _createVNode4(_component_f_select_field, {
         modelValue: _ctx.columnType,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.columnType = $event)
       }, {
@@ -1590,7 +1948,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
-      _ctx.columnType === "text" ? (_openBlock9(), _createBlock3(_component_f_select_field, {
+      _ctx.columnType === "text" ? (_openBlock9(), _createBlock2(_component_f_select_field, {
         key: 0,
         modelValue: _ctx.textType,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.textType = $event),
@@ -1706,7 +2064,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       }, 8, ["modelValue", "onChange"])) : _createCommentVNode7("v-if", true),
-      _ctx.editableSupport ? (_openBlock9(), _createBlock3(_component_f_checkbox_field, {
+      _ctx.editableSupport ? (_openBlock9(), _createBlock2(_component_f_checkbox_field, {
         key: 1,
         modelValue: _ctx.editableChecked,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.editableChecked = $event),
@@ -1722,7 +2080,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode7("v-if", true),
-      _ctx.enabledSupport ? (_openBlock9(), _createBlock3(_component_f_checkbox_field, {
+      _ctx.enabledSupport ? (_openBlock9(), _createBlock2(_component_f_checkbox_field, {
         key: 2,
         modelValue: _ctx.enabledChecked,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.enabledChecked = $event),
@@ -1738,7 +2096,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode7("v-if", true),
-      _ctx.alignSupport ? (_openBlock9(), _createBlock3(_component_f_fieldset, {
+      _ctx.alignSupport ? (_openBlock9(), _createBlock2(_component_f_fieldset, {
         key: 3,
         name: "align"
       }, {
@@ -1750,7 +2108,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
           )
         ])]),
         default: _withCtx(() => [
-          _createVNode3(_component_f_radio_field, {
+          _createVNode4(_component_f_radio_field, {
             modelValue: _ctx.align,
             "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.align = $event),
             value: "left"
@@ -1765,7 +2123,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
-          _createVNode3(_component_f_radio_field, {
+          _createVNode4(_component_f_radio_field, {
             modelValue: _ctx.align,
             "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.align = $event),
             value: "right"
@@ -1784,7 +2142,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       })) : _createCommentVNode7("v-if", true),
-      _ctx.tnumSupport ? (_openBlock9(), _createBlock3(_component_f_fieldset, {
+      _ctx.tnumSupport ? (_openBlock9(), _createBlock2(_component_f_fieldset, {
         key: 4,
         name: "tnum"
       }, {
@@ -1796,7 +2154,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
           )
         ])]),
         default: _withCtx(() => [
-          _createVNode3(_component_f_radio_field, {
+          _createVNode4(_component_f_radio_field, {
             modelValue: _ctx.tnum,
             "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.tnum = $event),
             value: false
@@ -1811,7 +2169,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
-          _createVNode3(_component_f_radio_field, {
+          _createVNode4(_component_f_radio_field, {
             modelValue: _ctx.tnum,
             "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.tnum = $event),
             value: true
@@ -1830,7 +2188,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       })) : _createCommentVNode7("v-if", true),
-      _createVNode3(_component_f_fieldset, { name: "rubrik" }, {
+      _createVNode4(_component_f_fieldset, { name: "rubrik" }, {
         label: _withCtx(() => [..._cache[36] || (_cache[36] = [
           _createTextVNode(
             " Rubriken ",
@@ -1839,7 +2197,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
           )
         ])]),
         default: _withCtx(() => [
-          _createVNode3(_component_f_checkbox_field, {
+          _createVNode4(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionChecked,
             "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.descriptionChecked = $event),
             value: true
