@@ -1,5 +1,10 @@
 import { type Component } from "vue";
-import { type NormalizedTableColumnBase, type TableColumnBase } from "./base";
+import {
+    type NormalizedTableColumnBase,
+    type OmittedNormalizedColumnProperties,
+    type TableColumnBase,
+} from "./base";
+import { getValueFn } from "./helpers";
 
 /**
  * @public
@@ -26,4 +31,20 @@ export interface NormalizedTableColumnRowHeader<
         column: NormalizedTableColumnRowHeader<T, K>;
     }>;
     text(this: void, row: T): string;
+}
+
+/**
+ * @internal
+ */
+export function normalizeRowHeaderColumn<T, K extends keyof T>(
+    column: TableColumnRowHeader<T, K>,
+): Omit<
+    NormalizedTableColumnRowHeader<T, K>,
+    OmittedNormalizedColumnProperties
+> {
+    return {
+        type: "rowheader",
+        text: getValueFn(column.text, column.key, String, ""),
+        sortable: column.key ?? null,
+    };
 }

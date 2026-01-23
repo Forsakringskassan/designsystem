@@ -1,7 +1,17 @@
 import { type Component } from "vue";
 import { type ValidatorConfigs } from "@fkui/logic";
-import { type InputTypeNumber } from "../input-fields-config";
-import { type NormalizedTableColumnBase, type TableColumnBase } from "./base";
+import { type InputTypeNumber, inputFieldConfig } from "../input-fields-config";
+import {
+    type NormalizedTableColumnBase,
+    type OmittedNormalizedColumnProperties,
+    type TableColumnBase,
+} from "./base";
+import {
+    defaultTnumValue,
+    getFormattedNumberValueFn,
+    getLabelFn,
+    getParsedNumberUpdateFn,
+} from "./helpers";
 import { type NormalizedTableColumnText } from "./text";
 
 /**
@@ -56,4 +66,37 @@ export interface NormalizedTableColumnNumber<
         oldValue: number | string,
     ): void;
     editable(this: void, row: T): boolean;
+}
+
+/**
+ * @internal
+ */
+export function normalizeNumberColumn<T, K extends keyof T>(
+    column: TableColumnNumber<T, K>,
+): Omit<NormalizedTableColumnNumber<T, K>, OmittedNormalizedColumnProperties> {
+    const type = column.type;
+    const config = inputFieldConfig[type];
+    const parser = column.parser ?? config.parser.bind(column);
+    const formatter = column.formatter ?? config.formatter.bind(column);
+    const decimals = type === "text:currency" ? 0 : column.decimals;
+    return {
+        type,
+        label: getLabelFn(column.label),
+        decimals,
+        tnum: column.tnum ?? defaultTnumValue(type),
+        align: column.align ?? "right",
+        value: getFormattedNumberValueFn(
+            column.value,
+            column.key,
+            formatter,
+            "",
+        ),
+        update: getParsedNumberUpdateFn(column.update, column.key, parser),
+        editable:
+            typeof column.editable === "function"
+                ? column.editable
+                : () => Boolean(column.editable ?? false),
+        validation: column.validation ?? {},
+        sortable: column.key ?? null,
+    };
 }

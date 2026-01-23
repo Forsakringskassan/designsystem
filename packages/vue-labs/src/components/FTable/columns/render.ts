@@ -23,3 +23,19 @@ export interface NormalizedTableColumnRender<T> extends Omit<
     readonly sortable: boolean | null;
     render(this: void, row: T): VNode | Component;
 }
+
+/**
+ * @internal
+ */
+export function normalizeRenderColumn<T, K extends keyof T>(
+    column: TableColumnRender<T, K>,
+): Omit<
+    NormalizedTableColumnRender<T>,
+    "id" | "header" | "description" | "size"
+> {
+    return {
+        type: undefined,
+        render: column.render,
+        sortable: null,
+    };
+}

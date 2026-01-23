@@ -1,4 +1,4 @@
-import { type Ref } from "vue";
+import { type Ref, ref, toRef } from "vue";
 
 /**
  * @public
@@ -27,4 +27,43 @@ export interface NormalizedTableColumnBase<K> {
     readonly description: Readonly<Ref<string | null>>;
     readonly sortable: K | null;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
+}
+
+/**
+ * Properties that are omitted from column-specific normalization functions
+ * and added by the main normalizeTableColumn function.
+ *
+ * @internal
+ */
+export type OmittedNormalizedColumnProperties =
+    | "id"
+    | "header"
+    | "description"
+    | "size"
+    | "component";
+
+/**
+ * @internal
+ */
+export function normalizeBaseColumn(
+    column: TableColumnBase,
+): Pick<
+    NormalizedTableColumnBase<unknown>,
+    Exclude<OmittedNormalizedColumnProperties, "component">
+> {
+    const id = Symbol();
+    const header = toRef(column.header);
+    const description =
+        typeof column.description !== "undefined"
+            ? toRef(column.description)
+            : ref("");
+    const size: Readonly<Ref<TableColumnSize | null>> =
+        typeof column.size !== "undefined" ? toRef(column.size) : ref("grow");
+
+    return {
+        id,
+        header,
+        description,
+        size,
+    };
 }
