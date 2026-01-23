@@ -22,19 +22,19 @@
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-a11a3e.js",
+    "vue": "../assets/vendor-vue-abba52.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-fb32f2.js",
     "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-996f06.js",
-    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-75b3be.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-43723a.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-4f8ef4.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-f5710c.js"
   },
   "integrity": {
-    "../assets/vendor-vue-a11a3e.js": "sha384-CmWdyBZbBnJTuQtj4rgouZN7cRC/czuJRdirc2pQQhKjKa6jjZCMhkpzU7jv7gFA",
+    "../assets/vendor-vue-abba52.js": "sha384-SxKEyNX6tSTQsiQzh6XKyPXj6flm136L3+YapliZNb/JqTTA8owPUNKeRoca7sT6",
     "../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
     "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
-    "../assets/vendor-fkui-vue-996f06.js": "sha384-UlYPt/KbsHtduG6pFDBLd+m7vsEq55KESWeK30cjYHnyok6ojW/W3PpRepCFmkJ7",
-    "../assets/vendor-fkui-vue-labs-75b3be.js": "sha384-9/UkSjx0ciYKPJ8qo2693xjGeHtORTEOvC5B+ZN1k6mQglbvfiY1b+EEDfXZWsQn",
+    "../assets/vendor-fkui-vue-43723a.js": "sha384-9XS9V5ZWeBJ02HdmaZ12JIURHLZe8CzBVam8OoyUnDZeIqOkRnAHEnjD4qcsZmbA",
+    "../assets/vendor-fkui-vue-labs-4f8ef4.js": "sha384-uQcUlxnBaGBJFQEMrSV0QVjvkXLWoFcV0Yh6Ovp1Bp6iU1h1QJNeXzznzvn5/UaP",
     "../assets/vendor-forsakringskassan-docs-live-example-f5710c.js": "sha384-K+tZVl+VUOdy5JzdwquyifEKiQltzVACtB3RB9z0aSAAHx+hGAT86qE0qNdRguDt"
   }
 }
@@ -168,6 +168,8 @@
                                 <li><a href="#selectheaderinput">selectHeaderInput()</a></li>
                                 
                                 <li><a href="#selectinput">selectInput()</a></li>
+                                
+                                <li><a href="#selectdropdownoption">selectDropdownOption()</a></li>
                                 
                             </ul>
                         </details>
@@ -698,6 +700,59 @@ table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-nu
 table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;be.checked&quot;</span>);
 table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;not.be.checked&quot;</span>);
 table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;not.be.checked&quot;</span>);</code></pre>
+                </div>
+            <h2 id="selectdropdownoption"><a class="header-anchor" href="#selectdropdownoption">selectDropdownOption()</a></h2><p class="docs-paragraph">Hämtar ett alternativ från en cell med en öppen dropplista.</p>
+<p class="docs-paragraph">Alternativnumreringen är 1-indexerad.</p>
+<p class="docs-paragraph">Dropplistans element teleporteras och använder därav inte <code>selector</code>.
+Se därför till att inte flera dropplistor är öppna samtidigt vid test.</p>
+<h3 id="syntax--36"><a class="header-anchor" href="#syntax--36">Syntax</a></h3>
+                <div
+                    id="example-1594af"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">selectDropdownOption</span>(option);
+</code></pre>
+                </div>
+            <h4 id="parametrar--37"><a class="header-anchor" href="#parametrar--37">Parametrar</a></h4><dl>
+<dt><code>option: number</code></dt>
+<dd>Alternativnummer (1-indexerat).</dd>
+</dl>
+<h4 id="returvarde--38"><a class="header-anchor" href="#returvarde--38">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med ett alternativ för dropplistan.</p>
+<h3 id="exempel--39"><a class="header-anchor" href="#exempel--39">Exempel</a></h3>
+                <div
+                    id="example-e8f38b"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;table&#x27;&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-c8078f"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Foo&quot;</span>);
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">click</span>();
+table.<span class="hljs-title function_">selectDropdownOption</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Foo&quot;</span>);
+table.<span class="hljs-title function_">selectDropdownOption</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Bar&quot;</span>);
+table.<span class="hljs-title function_">selectDropdownOption</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Baz&quot;</span>);
+table.<span class="hljs-title function_">selectDropdownOption</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">click</span>();
+table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Baz&quot;</span>);</code></pre>
                 </div>
             
 

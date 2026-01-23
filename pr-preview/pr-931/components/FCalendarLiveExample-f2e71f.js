@@ -4459,7 +4459,7 @@ var IPopupError_default = defineComponent13({
       default: void 0
     },
     /**
-     * DOM element to align arrorw with.
+     * DOM element to align arrow with.
      */
     arrowAnchor: {
       type: HTMLElement,
