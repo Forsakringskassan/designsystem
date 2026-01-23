@@ -43,6 +43,7 @@ import {
     getValueFn,
 } from "./columns/helpers";
 import { inputFieldConfig } from "./input-fields-config";
+import { isTextColumn } from "./is-text-column";
 
 export {
     type NormalizedTableColumnAnchor,
@@ -118,19 +119,6 @@ export type NormalizedTableColumn<T, K> =
 
 function noop(): void {
     /* do nothing */
-}
-
-/**
- * @internal
- */
-export function isTextColumn<T, K extends keyof T = keyof T>(
-    column: TableColumn<T, K> & { type?: string },
-): column is TableColumnText<T, K> {
-    if (!column.type) {
-        return false;
-    }
-
-    return column.type.startsWith("text");
 }
 
 /**
