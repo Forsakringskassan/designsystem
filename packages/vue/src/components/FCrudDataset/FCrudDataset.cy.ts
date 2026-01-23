@@ -6,6 +6,7 @@ import {
     FModal,
     FTableButton,
     FTableColumn,
+    FTextField,
 } from "..";
 import { FInteractiveTablePageObject } from "../../cypress";
 import { ListItem } from "../../types";
@@ -136,6 +137,68 @@ function mountComponent(templates = new Array<string>()): void {
 
     cy.mount(TestComponent, {});
 }
+describe("Editing items", () => {
+    it("should modify item values and persist the changes", () => {
+        const rows = [{ name: "Adam" }, { name: "Carl" }];
+
+        const TestComponent = defineComponent({
+            components: {
+                FCrudDataset,
+                FInteractiveTable,
+                FTableButton,
+                FTableColumn,
+                FTextField,
+            },
+            data() {
+                return {
+                    name: rows,
+                };
+            },
+            template: /* HTML */ `
+                <f-crud-dataset v-model="name">
+                    <template #default="{ updateItem }">
+                        <f-interactive-table :rows="name">
+                            <template #caption> <b>Namn</b> </template>
+                            <template #default="{ row }">
+                                <f-table-column title="Namn" type="text" shrink>
+                                    {{ row.name }}
+                                </f-table-column>
+                                <f-table-column
+                                    title="Åtgärd"
+                                    type="action"
+                                    shrink
+                                >
+                                    <f-table-button
+                                        icon="pen"
+                                        @click="updateItem(row)"
+                                    >
+                                        Ändra {{ row.name }}
+                                    </f-table-button>
+                                </f-table-column>
+                            </template>
+                        </f-interactive-table>
+                    </template>
+                    <template #modify="{ item }">
+                        <f-text-field
+                            id="name"
+                            v-model="item.name"
+                            v-validation.required.maxLength="{ maxLength: { length: 32 } }"
+                            type="text"
+                        >
+                            Namn
+                        </f-text-field>
+                    </template>
+                </f-crud-dataset>
+            `,
+        });
+        cy.mount(TestComponent);
+        const table = new FInteractiveTablePageObject();
+
+        table.row(1).find(".button").click();
+        cy.get("#name").type("-Kalle");
+        cy.get(".modal .button--primary").click();
+    });
+});
 
 describe("item delete", () => {
     it("should delete item after click on delete and click on confirmation", () => {
