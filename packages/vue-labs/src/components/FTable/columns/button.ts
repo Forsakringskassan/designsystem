@@ -1,5 +1,10 @@
 import { type Component } from "vue";
-import { type NormalizedTableColumnBase, type TableColumnBase } from "./base";
+import {
+    type NormalizedTableColumnBase,
+    type OmittedNormalizedColumnProperties,
+    type TableColumnBase,
+} from "./base";
+import { getValueFn } from "./helpers";
 
 /**
  * @public
@@ -32,4 +37,23 @@ export interface NormalizedTableColumnButton<
     text(this: void, row: T): string | null;
     onClick?(this: void, row: T): void;
     enabled(this: void, row: T): boolean;
+}
+
+/**
+ * @internal
+ */
+export function normalizeButtonColumn<T, K extends keyof T>(
+    column: TableColumnButton<T, K>,
+): Omit<NormalizedTableColumnButton<T, K>, OmittedNormalizedColumnProperties> {
+    return {
+        type: "button",
+        text: getValueFn(column.text, column.key, String, ""),
+        onClick: column.onClick,
+        enabled:
+            typeof column.enabled === "function"
+                ? column.enabled
+                : () => Boolean(column.enabled ?? true),
+        icon: column.icon ?? null,
+        sortable: column.key ?? null,
+    };
 }

@@ -1,5 +1,10 @@
 import { type Component } from "vue";
-import { type NormalizedTableColumnBase, type TableColumnBase } from "./base";
+import {
+    type NormalizedTableColumnBase,
+    type OmittedNormalizedColumnProperties,
+    type TableColumnBase,
+} from "./base";
+import { getValueFn } from "./helpers";
 
 /**
  * @public
@@ -30,4 +35,22 @@ export interface NormalizedTableColumnAnchor<
     }>;
     text(this: void, row: T): string | null;
     enabled(this: void, row: T): boolean;
+}
+
+/**
+ * @internal
+ */
+export function normalizeAnchorColumn<T, K extends keyof T>(
+    column: TableColumnAnchor<T, K>,
+): Omit<NormalizedTableColumnAnchor<T, K>, OmittedNormalizedColumnProperties> {
+    return {
+        type: "anchor",
+        text: getValueFn(column.text, column.key, String, ""),
+        href: column.href,
+        enabled:
+            typeof column.enabled === "function"
+                ? column.enabled
+                : () => Boolean(column.enabled ?? true),
+        sortable: column.key ?? null,
+    };
 }

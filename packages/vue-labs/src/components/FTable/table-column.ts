@@ -1,5 +1,3 @@
-import { type Ref, ref, toRef } from "vue";
-
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
@@ -29,20 +27,20 @@ import {
     type TableColumnRowHeader,
     type TableColumnSelect,
     type TableColumnSimple,
-    type TableColumnSize,
     type TableColumnText,
+    normalizeAnchorColumn,
+    normalizeBaseColumn,
+    normalizeButtonColumn,
+    normalizeCheckboxColumn,
+    normalizeMenuColumn,
+    normalizeNumberColumn,
+    normalizeRadioColumn,
+    normalizeRenderColumn,
+    normalizeRowHeaderColumn,
+    normalizeSelectColumn,
+    normalizeSimpleColumn,
+    normalizeTextColumn,
 } from "./columns";
-import {
-    defaultTnumValue,
-    getFormattedNumberValueFn,
-    getFormattedValueFn,
-    getLabelFn,
-    getParsedNumberUpdateFn,
-    getParsedUpdateFn,
-    getUpdateFn,
-    getValueFn,
-} from "./columns/helpers";
-import { inputFieldConfig } from "./input-fields-config";
 
 export {
     type NormalizedTableColumnAnchor,
@@ -116,10 +114,6 @@ export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnSelect<T, K>
     | NormalizedTableColumnMenu<T>;
 
-function noop(): void {
-    /* do nothing */
-}
-
 /**
  * @internal
  */
@@ -158,92 +152,34 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
 ): NormalizedTableColumn<T, K> {
-    const description =
-        typeof column.description !== "undefined"
-            ? toRef(column.description)
-            : ref("");
-    const size: Readonly<Ref<TableColumnSize | null>> =
-        typeof column.size !== "undefined" ? toRef(column.size) : ref("grow");
+    const base = normalizeBaseColumn(column);
     if ("render" in column) {
         return {
-            type: undefined,
-            id: Symbol(),
-            header: toRef(column.header),
-            description,
-            size,
-            render: column.render,
-            sortable: null,
+            ...normalizeRenderColumn(column),
+            ...base,
         } satisfies NormalizedTableColumnRender<T>;
     }
     switch (column.type) {
         case "checkbox":
             return {
-                type: "checkbox",
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                label: getLabelFn(column.label),
-                checked: getValueFn(column.checked, column.key, Boolean, false),
-                update: getUpdateFn(column.update, column.key),
-                editable:
-                    typeof column.editable === "function"
-                        ? column.editable
-                        : () => Boolean(column.editable ?? false),
-                sortable: column.key ?? null,
+                ...normalizeCheckboxColumn(column),
+                ...base,
                 component: ITableCheckbox,
             } satisfies NormalizedTableColumnCheckbox<T, K>;
         case "radio":
             return {
-                type: "radio",
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                label: getLabelFn(column.label),
-                checked: getValueFn(column.checked, column.key, Boolean, false),
-                update: getUpdateFn(column.update, column.key),
-                sortable: column.key ?? null,
+                ...normalizeRadioColumn(column),
+                ...base,
                 component: ITableRadio,
             } satisfies NormalizedTableColumnRadio<T, K>;
         case "text:currency":
         case "text:number":
-        case "text:percent": {
-            const type = column.type;
-            const config = inputFieldConfig[type];
-            const parser = column.parser ?? config.parser.bind(column);
-            const formatter = column.formatter ?? config.formatter.bind(column);
-            const decimals = type === "text:currency" ? 0 : column.decimals;
+        case "text:percent":
             return {
-                type,
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                label: getLabelFn(column.label),
-                decimals,
-                tnum: column.tnum ?? defaultTnumValue(type),
-                align: column.align ?? "right",
-                value: getFormattedNumberValueFn(
-                    column.value,
-                    column.key,
-                    formatter,
-                    "",
-                ),
-                update: getParsedNumberUpdateFn(
-                    column.update,
-                    column.key,
-                    parser,
-                ),
-                editable:
-                    typeof column.editable === "function"
-                        ? column.editable
-                        : () => Boolean(column.editable ?? false),
-                validation: column.validation ?? {},
-                sortable: column.key ?? null,
+                ...normalizeNumberColumn(column),
+                ...base,
                 component: ITableText,
             } satisfies NormalizedTableColumnNumber<T, K>;
-        }
         case "text":
         case "text:bankAccountNumber":
         case "text:bankgiro":
@@ -254,137 +190,46 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "text:personnummer":
         case "text:phoneNumber":
         case "text:plusgiro":
-        case "text:postalCode": {
-            const type = column.type;
-            const config = inputFieldConfig[type];
-            const parser = column.parser ?? config.parser;
-            const formatter = column.formatter ?? config.formatter;
+        case "text:postalCode":
             return {
-                type,
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                tnum: column.tnum ?? defaultTnumValue(type),
-                align: column.align ?? "left",
-                label: getLabelFn(column.label),
-                value: getFormattedValueFn(
-                    column.value,
-                    column.key,
-                    formatter,
-                    "",
-                ),
-                update: getParsedUpdateFn(column.update, column.key, parser),
-                editable:
-                    typeof column.editable === "function"
-                        ? column.editable
-                        : () => Boolean(column.editable ?? false),
-                validation: column.validation ?? {},
-                sortable: column.key ?? null,
+                ...normalizeTextColumn(column),
+                ...base,
                 component: ITableText,
             } satisfies NormalizedTableColumnText<T, K>;
-        }
         case "rowheader":
             return {
-                type: "rowheader",
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                text: getValueFn(column.text, column.key, String, ""),
-                sortable: column.key ?? null,
+                ...normalizeRowHeaderColumn(column),
+                ...base,
                 component: ITableRowheader,
             } satisfies NormalizedTableColumnRowHeader<T, K>;
         case "anchor":
             return {
-                type: "anchor",
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                text: getValueFn(column.text, column.key, String, ""),
-                href: column.href,
-                enabled:
-                    typeof column.enabled === "function"
-                        ? column.enabled
-                        : () => Boolean(column.enabled ?? true),
-                sortable: column.key ?? null,
+                ...normalizeAnchorColumn(column),
+                ...base,
                 component: ITableAnchor,
             } satisfies NormalizedTableColumnAnchor<T, K>;
         case "button":
             return {
-                type: "button",
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                text: getValueFn(column.text, column.key, String, ""),
-                onClick: column.onClick,
-                enabled:
-                    typeof column.enabled === "function"
-                        ? column.enabled
-                        : () => Boolean(column.enabled ?? true),
-                icon: column.icon ?? null,
-                sortable: column.key ?? null,
+                ...normalizeButtonColumn(column),
+                ...base,
                 component: ITableButton,
             } satisfies NormalizedTableColumnButton<T, K>;
         case "select":
             return {
-                type: "select",
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                label: getLabelFn(column.label),
-                selected: getValueFn(column.selected, column.key, String, ""),
-                update: getUpdateFn(column.update, column.key),
-                editable:
-                    typeof column.editable === "function"
-                        ? column.editable
-                        : () => Boolean(column.editable ?? false),
-                options: column.options,
-                sortable: column.key ?? null,
+                ...normalizeSelectColumn(column),
+                ...base,
                 component: ITableSelect,
             } satisfies NormalizedTableColumnSelect<T, K>;
         case "menu":
             return {
-                type: "menu",
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                sortable: null,
-                actions: (column.actions ?? []).map((it) => {
-                    return {
-                        label: it.label,
-                        icon: it.icon ?? null,
-                        onClick: it.onClick ?? noop,
-                    };
-                }),
+                ...normalizeMenuColumn(column),
+                ...base,
                 component: ITableMenu,
-                text: getValueFn(column.text, undefined, String, ""),
-                enabled:
-                    typeof column.enabled === "function"
-                        ? column.enabled
-                        : () => Boolean(column.enabled ?? true),
             } satisfies NormalizedTableColumnMenu<T>;
         case undefined:
             return {
-                type: "text",
-                id: Symbol(),
-                header: toRef(column.header),
-                description,
-                size,
-                label: () => "",
-                tnum: false,
-                align: "left",
-                value: getValueFn(column.value, column.key, String, ""),
-                update() {
-                    /* do nothing */
-                },
-                editable: () => false,
-                sortable: column.key ?? null,
-                validation: {},
+                ...normalizeSimpleColumn(column),
+                ...base,
                 component: ITableText,
             } satisfies NormalizedTableColumnText<T, K>;
     }
