@@ -36,11 +36,11 @@ import {
     getFormattedNumberValueFn,
     getFormattedValueFn,
     getLabelFn,
+    getParsedNumberUpdateFn,
     getParsedUpdateFn,
     getUpdateFn,
     getValueFn,
 } from "./columns/helpers";
-import { getParsedNumberUpdateFn } from "./get-update-fn";
 import { type InputType, inputFieldConfig } from "./input-fields-config";
 
 export {
