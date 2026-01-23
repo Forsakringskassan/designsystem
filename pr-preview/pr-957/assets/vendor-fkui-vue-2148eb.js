@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, unref, Fragment, createBlock, createCommentVNode, createApp, resolveComponent, withKeys, toDisplayString, createVNode, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Teleport, normalizeStyle, withDirectives, vShow, Transition, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, findTabbableElements, popFocus, pushFocus, ElementIdService, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, debounce, alertScreenReader, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -6903,10 +6903,10 @@ function setItemIdentifier(item, value) {
   Object.defineProperty(item, sym, {
     value: value !== null && value !== void 0 ? value : internalIndex++,
     enumerable: false,
-    /* this should be false to prevent modification after set, but the
-     * `deepClone` from `@fkui/logic` (based on `cloneDeep` from `lodash`)
-     * copies but does not preserve enumerable attribute causing components
-     * such as `FCrudDataset` to fail. */
+    /* technical debt: this should be false to prevent modification after
+     * set, but the `deepClone` from `@fkui/logic` (based on `cloneDeep`
+     * from `lodash`) copies but does not preserve enumerable attribute
+     * causing components such as `FCrudDataset` to fail. */
     writable: true
   });
 }

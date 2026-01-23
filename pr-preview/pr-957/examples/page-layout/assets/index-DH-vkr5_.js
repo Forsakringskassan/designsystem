@@ -16823,10 +16823,10 @@ function setItemIdentifier(item, value) {
   Object.defineProperty(item, sym, {
     value: value !== null && value !== void 0 ? value : internalIndex++,
     enumerable: false,
-    /* this should be false to prevent modification after set, but the
-     * `deepClone` from `@fkui/logic` (based on `cloneDeep` from `lodash`)
-     * copies but does not preserve enumerable attribute causing components
-     * such as `FCrudDataset` to fail. */
+    /* technical debt: this should be false to prevent modification after
+     * set, but the `deepClone` from `@fkui/logic` (based on `cloneDeep`
+     * from `lodash`) copies but does not preserve enumerable attribute
+     * causing components such as `FCrudDataset` to fail. */
     writable: true
   });
 }
