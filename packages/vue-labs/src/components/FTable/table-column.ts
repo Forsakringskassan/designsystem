@@ -43,7 +43,6 @@ import {
     getValueFn,
 } from "./columns/helpers";
 import { inputFieldConfig } from "./input-fields-config";
-import { isTextColumn } from "./is-text-column";
 
 export {
     type NormalizedTableColumnAnchor,
@@ -119,26 +118,6 @@ export type NormalizedTableColumn<T, K> =
 
 function noop(): void {
     /* do nothing */
-}
-
-/**
- * @internal
- */
-export function isEditableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumn<T, K> & { type?: TableColumnType },
-): column is
-    | TableColumnCheckbox<T, K>
-    | TableColumnText<T, K>
-    | TableColumnSelect<T, K> {
-    if (!column.type) {
-        return false;
-    }
-
-    return (
-        column.type === "checkbox" ||
-        isTextColumn(column) ||
-        column.type === "select"
-    );
 }
 
 /**
