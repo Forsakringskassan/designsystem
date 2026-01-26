@@ -4069,57 +4069,23 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     };
   }
 });
-function getUpdateFn(fn, key) {
-  if (fn) {
-    return fn;
-  }
-  if (key) {
-    return (row, value) => {
-      row[key] = value;
-    };
-  }
-  return () => void 0;
+function defaultTnumValue(type) {
+  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
+  return tnumTypes.includes(type);
 }
-function getParsedUpdateFn(fn, key, parser) {
+function getFormattedNumberValueFn(fn, key, formatter, defaultValue) {
   if (fn) {
-    return (row, newValue, oldValue) => {
-      const parsedNewValue = parser(newValue);
-      const parsedOldValue = parser(oldValue);
-      fn(row, parsedNewValue !== null && parsedNewValue !== void 0 ? parsedNewValue : newValue, parsedOldValue !== null && parsedOldValue !== void 0 ? parsedOldValue : oldValue);
+    return (row) => {
+      var _formatter;
+      const value = fn(row);
+      return (_formatter = formatter(value)) !== null && _formatter !== void 0 ? _formatter : value;
     };
-  }
-  if (key) {
-    return (row, value) => {
-      const newValue = parser(value);
-      row[key] = isSet(newValue) ? newValue : value;
-    };
-  }
-  return () => void 0;
-}
-function getParsedNumberUpdateFn(fn, key, parser) {
-  if (fn) {
-    return (row, newValue, oldValue) => {
-      var _parser, _parser2;
-      const parsedNewValue = (_parser = parser(newValue)) !== null && _parser !== void 0 ? _parser : newValue;
-      const parsedOldValue = (_parser2 = parser(oldValue)) !== null && _parser2 !== void 0 ? _parser2 : oldValue;
-      fn(row, parsedNewValue, parsedOldValue);
-    };
-  }
-  if (key) {
-    return (row, value) => {
-      const newValue = parser(value);
-      row[key] = isSet(newValue) ? newValue : value;
-    };
-  }
-  return () => void 0;
-}
-function getValueFn(fn, key, coerce, defaultValue) {
-  if (fn) {
-    return fn;
   }
   if (key) {
     return (row) => {
-      return coerce(row[key]);
+      var _formatter2;
+      const value = row[key];
+      return (_formatter2 = formatter(value)) !== null && _formatter2 !== void 0 ? _formatter2 : value;
     };
   }
   return () => defaultValue;
@@ -4141,111 +4107,270 @@ function getFormattedValueFn(fn, key, formatter, defaultValue) {
   }
   return () => defaultValue;
 }
-function getFormattedNumberValueFn(fn, key, formatter, defaultValue) {
-  if (fn) {
-    return (row) => {
-      var _formatter;
-      const value = fn(row);
-      return (_formatter = formatter(value)) !== null && _formatter !== void 0 ? _formatter : value;
-    };
-  }
-  if (key) {
-    return (row) => {
-      var _formatter2;
-      const value = row[key];
-      return (_formatter2 = formatter(value)) !== null && _formatter2 !== void 0 ? _formatter2 : value;
-    };
-  }
-  return () => defaultValue;
-}
 function getLabelFn(fn) {
   if (fn) {
     return fn;
   }
   return () => "";
 }
-function defaultTnumValue(type) {
-  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
-  return tnumTypes.includes(type);
+function getParsedNumberUpdateFn(fn, key, parser) {
+  if (fn) {
+    return (row, newValue, oldValue) => {
+      var _parser, _parser2;
+      const parsedNewValue = (_parser = parser(newValue)) !== null && _parser !== void 0 ? _parser : newValue;
+      const parsedOldValue = (_parser2 = parser(oldValue)) !== null && _parser2 !== void 0 ? _parser2 : oldValue;
+      fn(row, parsedNewValue, parsedOldValue);
+    };
+  }
+  if (key) {
+    return (row, value) => {
+      const newValue = parser(value);
+      row[key] = isSet(newValue) ? newValue : value;
+    };
+  }
+  return () => void 0;
+}
+function getParsedUpdateFn(fn, key, parser) {
+  if (fn) {
+    return (row, newValue, oldValue) => {
+      const parsedNewValue = parser(newValue);
+      const parsedOldValue = parser(oldValue);
+      fn(row, parsedNewValue !== null && parsedNewValue !== void 0 ? parsedNewValue : newValue, parsedOldValue !== null && parsedOldValue !== void 0 ? parsedOldValue : oldValue);
+    };
+  }
+  if (key) {
+    return (row, value) => {
+      const newValue = parser(value);
+      row[key] = isSet(newValue) ? newValue : value;
+    };
+  }
+  return () => void 0;
+}
+function getUpdateFn(fn, key) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row, value) => {
+      row[key] = value;
+    };
+  }
+  return () => void 0;
+}
+function getValueFn(fn, key, coerce, defaultValue) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row) => {
+      return coerce(row[key]);
+    };
+  }
+  return () => defaultValue;
+}
+function normalizeAnchorColumn(column) {
+  var _column$key;
+  return {
+    type: "anchor",
+    text: getValueFn(column.text, column.key, String, ""),
+    href: column.href,
+    enabled: typeof column.enabled === "function" ? column.enabled : () => {
+      var _column$enabled;
+      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
+    },
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeBaseColumn(column) {
+  const id = /* @__PURE__ */ Symbol();
+  const header = toRef2(column.header);
+  const description = typeof column.description !== "undefined" ? toRef2(column.description) : ref3("");
+  const size = typeof column.size !== "undefined" ? toRef2(column.size) : ref3("grow");
+  return {
+    id,
+    header,
+    description,
+    size
+  };
+}
+function normalizeButtonColumn(column) {
+  var _column$icon, _column$key;
+  return {
+    type: "button",
+    text: getValueFn(column.text, column.key, String, ""),
+    onClick: column.onClick,
+    enabled: typeof column.enabled === "function" ? column.enabled : () => {
+      var _column$enabled;
+      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
+    },
+    icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeCheckboxColumn(column) {
+  var _column$key;
+  return {
+    type: "checkbox",
+    label: getLabelFn(column.label),
+    checked: getValueFn(column.checked, column.key, Boolean, false),
+    update: getUpdateFn(column.update, column.key),
+    editable: typeof column.editable === "function" ? column.editable : () => {
+      var _column$editable;
+      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+    },
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
 }
 function noop2() {
 }
+function normalizeMenuColumn(column) {
+  var _column$actions;
+  return {
+    type: "menu",
+    text: getValueFn(column.text, void 0, String, ""),
+    sortable: null,
+    actions: ((_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : []).map((it) => {
+      var _it$icon, _it$onClick;
+      return {
+        label: it.label,
+        icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : null,
+        onClick: (_it$onClick = it.onClick) !== null && _it$onClick !== void 0 ? _it$onClick : noop2
+      };
+    }),
+    enabled: typeof column.enabled === "function" ? column.enabled : () => {
+      var _column$enabled;
+      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
+    }
+  };
+}
+function normalizeNumberColumn(column) {
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  const type = column.type;
+  const config = inputFieldConfig[type];
+  const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
+  const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter.bind(column);
+  const decimals = type === "text:currency" ? 0 : column.decimals;
+  return {
+    type,
+    label: getLabelFn(column.label),
+    decimals,
+    tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
+    align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
+    value: getFormattedNumberValueFn(column.value, column.key, formatter, ""),
+    update: getParsedNumberUpdateFn(column.update, column.key, parser),
+    editable: typeof column.editable === "function" ? column.editable : () => {
+      var _column$editable;
+      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+    },
+    validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeRadioColumn(column) {
+  var _column$key;
+  return {
+    type: "radio",
+    label: getLabelFn(column.label),
+    checked: getValueFn(column.checked, column.key, Boolean, false),
+    update: getUpdateFn(column.update, column.key),
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeRenderColumn(column) {
+  return {
+    type: void 0,
+    render: column.render,
+    sortable: null
+  };
+}
+function normalizeRowHeaderColumn(column) {
+  var _column$key;
+  return {
+    type: "rowheader",
+    text: getValueFn(column.text, column.key, String, ""),
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeSelectColumn(column) {
+  var _column$key;
+  return {
+    type: "select",
+    label: getLabelFn(column.label),
+    selected: getValueFn(column.selected, column.key, String, ""),
+    update: getUpdateFn(column.update, column.key),
+    editable: typeof column.editable === "function" ? column.editable : () => {
+      var _column$editable;
+      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+    },
+    options: column.options,
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeSimpleColumn(column) {
+  var _column$key;
+  return {
+    type: "text",
+    label: () => "",
+    tnum: false,
+    align: "left",
+    value: getValueFn(column.value, column.key, String, ""),
+    update() {
+    },
+    editable: () => false,
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
+    validation: {}
+  };
+}
+function normalizeTextColumn(column) {
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  const type = column.type;
+  const config = inputFieldConfig[type];
+  const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
+  const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter;
+  return {
+    type,
+    tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
+    align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "left",
+    label: getLabelFn(column.label),
+    value: getFormattedValueFn(column.value, column.key, formatter, ""),
+    update: getParsedUpdateFn(column.update, column.key, parser),
+    editable: typeof column.editable === "function" ? column.editable : () => {
+      var _column$editable;
+      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+    },
+    validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
 function normalizeTableColumn(column) {
-  var _column$key, _column$key2, _column$key5, _column$key6, _column$icon, _column$key7, _column$key8, _column$actions, _column$key9;
-  const description = typeof column.description !== "undefined" ? toRef2(column.description) : ref3("");
-  const size = typeof column.size !== "undefined" ? toRef2(column.size) : ref3("grow");
+  const base = normalizeBaseColumn(column);
   if ("render" in column) {
     return {
-      type: void 0,
-      id: /* @__PURE__ */ Symbol(),
-      header: toRef2(column.header),
-      description,
-      size,
-      render: column.render,
-      sortable: null
+      ...normalizeRenderColumn(column),
+      ...base
     };
   }
   switch (column.type) {
     case "checkbox":
       return {
-        type: "checkbox",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        label: getLabelFn(column.label),
-        checked: getValueFn(column.checked, column.key, Boolean, false),
-        update: getUpdateFn(column.update, column.key),
-        editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable;
-          return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-        },
-        sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
+        ...normalizeCheckboxColumn(column),
+        ...base,
         component: _sfc_main$c
       };
     case "radio":
       return {
-        type: "radio",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        label: getLabelFn(column.label),
-        checked: getValueFn(column.checked, column.key, Boolean, false),
-        update: getUpdateFn(column.update, column.key),
-        sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
+        ...normalizeRadioColumn(column),
+        ...base,
         component: _sfc_main$b
       };
     case "text:currency":
     case "text:number":
-    case "text:percent": {
-      var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key3;
-      const type = column.type;
-      const config = inputFieldConfig[type];
-      const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
-      const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter.bind(column);
-      const decimals = type === "text:currency" ? 0 : column.decimals;
+    case "text:percent":
       return {
-        type,
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        label: getLabelFn(column.label),
-        decimals,
-        tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
-        align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
-        value: getFormattedNumberValueFn(column.value, column.key, formatter, ""),
-        update: getParsedNumberUpdateFn(column.update, column.key, parser),
-        editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable2;
-          return Boolean((_column$editable2 = column.editable) !== null && _column$editable2 !== void 0 ? _column$editable2 : false);
-        },
-        validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-        sortable: (_column$key3 = column.key) !== null && _column$key3 !== void 0 ? _column$key3 : null,
+        ...normalizeNumberColumn(column),
+        ...base,
         component: _sfc_main$4
       };
-    }
     case "text":
     case "text:bankAccountNumber":
     case "text:bankgiro":
@@ -4256,133 +4381,46 @@ function normalizeTableColumn(column) {
     case "text:personnummer":
     case "text:phoneNumber":
     case "text:plusgiro":
-    case "text:postalCode": {
-      var _column$parser2, _column$formatter2, _column$tnum2, _column$align2, _column$validation2, _column$key4;
-      const type = column.type;
-      const config = inputFieldConfig[type];
-      const parser = (_column$parser2 = column.parser) !== null && _column$parser2 !== void 0 ? _column$parser2 : config.parser;
-      const formatter = (_column$formatter2 = column.formatter) !== null && _column$formatter2 !== void 0 ? _column$formatter2 : config.formatter;
+    case "text:postalCode":
       return {
-        type,
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        tnum: (_column$tnum2 = column.tnum) !== null && _column$tnum2 !== void 0 ? _column$tnum2 : defaultTnumValue(type),
-        align: (_column$align2 = column.align) !== null && _column$align2 !== void 0 ? _column$align2 : "left",
-        label: getLabelFn(column.label),
-        value: getFormattedValueFn(column.value, column.key, formatter, ""),
-        update: getParsedUpdateFn(column.update, column.key, parser),
-        editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable3;
-          return Boolean((_column$editable3 = column.editable) !== null && _column$editable3 !== void 0 ? _column$editable3 : false);
-        },
-        validation: (_column$validation2 = column.validation) !== null && _column$validation2 !== void 0 ? _column$validation2 : {},
-        sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
+        ...normalizeTextColumn(column),
+        ...base,
         component: _sfc_main$4
       };
-    }
     case "rowheader":
       return {
-        type: "rowheader",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        text: getValueFn(column.text, column.key, String, ""),
-        sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
+        ...normalizeRowHeaderColumn(column),
+        ...base,
         component: _sfc_main$6
       };
     case "anchor":
       return {
-        type: "anchor",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        text: getValueFn(column.text, column.key, String, ""),
-        href: column.href,
-        enabled: typeof column.enabled === "function" ? column.enabled : () => {
-          var _column$enabled;
-          return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
-        },
-        sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
+        ...normalizeAnchorColumn(column),
+        ...base,
         component: _sfc_main$9
       };
     case "button":
       return {
-        type: "button",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        text: getValueFn(column.text, column.key, String, ""),
-        onClick: column.onClick,
-        enabled: typeof column.enabled === "function" ? column.enabled : () => {
-          var _column$enabled2;
-          return Boolean((_column$enabled2 = column.enabled) !== null && _column$enabled2 !== void 0 ? _column$enabled2 : true);
-        },
-        icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-        sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
+        ...normalizeButtonColumn(column),
+        ...base,
         component: _sfc_main$8
       };
     case "select":
       return {
-        type: "select",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        label: getLabelFn(column.label),
-        selected: getValueFn(column.selected, column.key, String, ""),
-        update: getUpdateFn(column.update, column.key),
-        editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable4;
-          return Boolean((_column$editable4 = column.editable) !== null && _column$editable4 !== void 0 ? _column$editable4 : false);
-        },
-        options: column.options,
-        sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
+        ...normalizeSelectColumn(column),
+        ...base,
         component: _sfc_main$5
       };
     case "menu":
       return {
-        type: "menu",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        sortable: null,
-        actions: ((_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : []).map((it) => {
-          var _it$icon, _it$onClick;
-          return {
-            label: it.label,
-            icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : null,
-            onClick: (_it$onClick = it.onClick) !== null && _it$onClick !== void 0 ? _it$onClick : noop2
-          };
-        }),
-        component: _sfc_main$7,
-        text: getValueFn(column.text, void 0, String, ""),
-        enabled: typeof column.enabled === "function" ? column.enabled : () => {
-          var _column$enabled3;
-          return Boolean((_column$enabled3 = column.enabled) !== null && _column$enabled3 !== void 0 ? _column$enabled3 : true);
-        }
+        ...normalizeMenuColumn(column),
+        ...base,
+        component: _sfc_main$7
       };
     case void 0:
       return {
-        type: "text",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef2(column.header),
-        description,
-        size,
-        label: () => "",
-        tnum: false,
-        align: "left",
-        value: getValueFn(column.value, column.key, String, ""),
-        update() {
-        },
-        editable: () => false,
-        sortable: (_column$key9 = column.key) !== null && _column$key9 !== void 0 ? _column$key9 : null,
-        validation: {},
+        ...normalizeSimpleColumn(column),
+        ...base,
         component: _sfc_main$4
       };
   }
