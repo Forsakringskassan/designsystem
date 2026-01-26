@@ -88,7 +88,7 @@ export function normalizeNumberColumn<T, K extends keyof T>(
         decimals,
         tnum: column.tnum ?? defaultTnumValue(type),
         align: column.align ?? "right",
-        value: getValueFn(column.value, column.key, Number, ""),
+        value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable:
             typeof column.editable === "function"

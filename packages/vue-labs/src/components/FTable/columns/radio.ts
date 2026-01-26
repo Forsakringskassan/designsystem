@@ -33,7 +33,7 @@ export interface NormalizedTableColumnRadio<
         column: NormalizedTableColumnRadio<T, K>;
     }>;
     label(this: void, row: T): string;
-    checked(this: void, row: T): boolean;
+    checked(this: void, row: T): boolean | string;
     update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
 }
 
