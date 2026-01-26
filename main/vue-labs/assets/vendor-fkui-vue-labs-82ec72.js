@@ -3616,6 +3616,9 @@ var _hoisted_2$3 = {
 };
 var _hoisted_3$2 = ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-label"];
 var _hoisted_4$2 = {
+  class: "table-ng__editable__text"
+};
+var _hoisted_5$2 = {
   key: 1,
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--static"
@@ -3766,9 +3769,9 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"])
       }, [withDirectives(createElementVNode("div", _hoisted_1$4, [createElementVNode("span", _hoisted_2$3, toDisplayString(viewValue.value), 1), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(FIcon), {
-        name: "pen",
+        name: "arrow-down",
         class: "table-ng__editable__icon"
-      })], 512), [[vShow, !editing.value]]), _cache[4] || (_cache[4] = createTextVNode()), withDirectives(createElementVNode("div", {
+      })], 512), [[vShow, !editing.value]]), _cache[5] || (_cache[5] = createTextVNode()), withDirectives(createElementVNode("div", {
         ref: "edit",
         role: "combobox",
         tabindex: "-1",
@@ -3784,7 +3787,10 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         }, ["prevent"])),
         onKeydown: withModifiers(onEditKeyDown, ["stop"]),
         onFocusout: _cache[2] || (_cache[2] = (e) => onEditBlur(e))
-      }, toDisplayString(viewValue.value), 41, _hoisted_3$2), [[vShow, editing.value]]), _cache[5] || (_cache[5] = createTextVNode()), withDirectives(createVNode(unref3(IComboboxDropdown), {
+      }, [createElementVNode("span", _hoisted_4$2, toDisplayString(viewValue.value), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(FIcon), {
+        name: "arrow-down",
+        class: "table-ng__editable__icon--active"
+      })], 40, _hoisted_3$2), [[vShow, editing.value]]), _cache[6] || (_cache[6] = createTextVNode()), withDirectives(createVNode(unref3(IComboboxDropdown), {
         id: unref3(dropdownId),
         "is-open": dropdownIsOpen.value,
         options: __props.column.options,
@@ -3793,7 +3799,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         "input-node": editRef.value,
         onSelect: selectDropdownOption,
         onClose: onDropdownClose
-      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_4$2, toDisplayString(__props.column.selected(__props.row)), 1));
+      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$2, toDisplayString(__props.column.selected(__props.row)), 1));
     };
   }
 });
