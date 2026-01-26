@@ -18128,8 +18128,7 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
       if (!wrapperRef.value || __props.activeElement === void 0) {
         return;
       }
-      const centerPosition = __props.activeElement.offsetTop - /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-      (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+      const centerPosition = __props.activeElement.offsetTop - (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
       if (!isElementInsideViewport(wrapperRef.value)) {
         wrapperRef.value.scrollIntoView({
           behavior: "instant",
@@ -18229,7 +18228,7 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
           width,
           height
         } = rect;
-        const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
+        const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
         const offsetLeft = (_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
         const offSetTop = Math.floor(((_offsetRect$top = offsetRect?.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
