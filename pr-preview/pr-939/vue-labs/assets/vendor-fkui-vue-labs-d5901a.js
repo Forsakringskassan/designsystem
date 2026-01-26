@@ -4271,7 +4271,7 @@ function normalizeNumberColumn(column) {
     decimals,
     tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
     align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
-    value: getValueFn(column.value, column.key, Number, ""),
+    value: getValueFn(column.value, column.key, String, ""),
     update: getUpdateFn(column.update, column.key),
     editable: typeof column.editable === "function" ? column.editable : () => {
       var _column$editable;
