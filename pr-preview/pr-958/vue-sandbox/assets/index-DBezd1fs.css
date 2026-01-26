@@ -181,7 +181,7 @@
   --fkds-color-navigation-background-hover: #dbe9e2;
   --fkds-color-navigation-background-selected: #35805b;
   --fkds-color-header-background-primary: #116a3e;
-  --fkui-theme-default-version: "6.33.0";
+  --fkui-theme-default-version: "6.34.0";
 }
 
 *,
@@ -5421,9 +5421,6 @@ input[type=search]:focus,
   outline: none !important;
   box-shadow: none !important;
 }
-.table-ng__cell--text.table-ng__cell--error:not(:focus-within) .table-ng__editable__icon {
-  visibility: visible;
-}
 .table-ng__cell--text .table-ng__editable {
   border-width: 2px;
   border-style: solid;
@@ -5507,6 +5504,7 @@ input[type=search]:focus,
   visibility: hidden;
   margin-left: 1rem;
   flex: none;
+  color: var(--fkds-color-action-text-primary-default);
 }
 
 .table-ng__cell--select:hover .table-ng__editable, .table-ng__cell--text:hover .table-ng__editable {
@@ -5514,7 +5512,6 @@ input[type=search]:focus,
 }
 
 .table-ng__cell--text.table-ng__cell--error:not(:focus-within) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:hover:not(:focus-within) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:focus .table-ng__editable {
-  color: var(--fkds-color-feedback-text-negative);
   border-bottom-color: var(--fkds-color-feedback-text-negative);
 }
 
@@ -6267,10 +6264,18 @@ input[type=search]:focus,
 .popup-error--arrow {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.5em 10px;
   background: var(--fkds-color-feedback-border-negative);
   line-height: 24px;
   position: relative;
+}
+.popup-error--arrow .popup-error__icon {
+  margin-right: 5px;
+  padding: 0;
+  color: var(--fkds-color-feedback-text-negative);
+  min-height: var(--f-icon-size-medium);
+  min-width: var(--f-icon-size-medium);
 }
 .popup-error--arrow .popup-error__button {
   margin: 0;

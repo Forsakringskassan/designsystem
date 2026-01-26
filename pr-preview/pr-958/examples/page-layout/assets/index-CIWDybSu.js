@@ -55,11 +55,11 @@ const isMap = (val) => toTypeString(val) === "[object Map]";
 const isSet$1 = (val) => toTypeString(val) === "[object Set]";
 const isDate = (val) => toTypeString(val) === "[object Date]";
 const isFunction = (val) => typeof val === "function";
-const isString$1 = (val) => typeof val === "string";
+const isString = (val) => typeof val === "string";
 const isSymbol$1 = (val) => typeof val === "symbol";
-const isObject = (val) => val !== null && typeof val === "object";
+const isObject$3 = (val) => val !== null && typeof val === "object";
 const isPromise = (val) => {
-  return (isObject(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
+  return (isObject$3(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
 };
 const objectToString = Object.prototype.toString;
 const toTypeString = (value) => objectToString.call(value);
@@ -67,7 +67,7 @@ const toRawType = (value) => {
   return toTypeString(value).slice(8, -1);
 };
 const isPlainObject = (val) => toTypeString(val) === "[object Object]";
-const isIntegerKey = (key) => isString$1(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
+const isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 const isReservedProp = /* @__PURE__ */ makeMap(
   // the leading comma is intentional so empty string "" is also included
   ",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"
@@ -117,7 +117,7 @@ const looseToNumber = (val) => {
   return isNaN(n) ? val : n;
 };
 const toNumber = (val) => {
-  const n = isString$1(val) ? Number(val) : NaN;
+  const n = isString(val) ? Number(val) : NaN;
   return isNaN(n) ? val : n;
 };
 let _globalThis;
@@ -129,7 +129,7 @@ function normalizeStyle(value) {
     const res = {};
     for (let i = 0; i < value.length; i++) {
       const item = value[i];
-      const normalized = isString$1(item) ? parseStringStyle(item) : normalizeStyle(item);
+      const normalized = isString(item) ? parseStringStyle(item) : normalizeStyle(item);
       if (normalized) {
         for (const key in normalized) {
           res[key] = normalized[key];
@@ -137,7 +137,7 @@ function normalizeStyle(value) {
       }
     }
     return res;
-  } else if (isString$1(value) || isObject(value)) {
+  } else if (isString(value) || isObject$3(value)) {
     return value;
   }
 }
@@ -156,7 +156,7 @@ function parseStringStyle(cssText) {
 }
 function normalizeClass(value) {
   let res = "";
-  if (isString$1(value)) {
+  if (isString(value)) {
     res = value;
   } else if (isArray$2(value)) {
     for (let i = 0; i < value.length; i++) {
@@ -165,7 +165,7 @@ function normalizeClass(value) {
         res += normalized + " ";
       }
     }
-  } else if (isObject(value)) {
+  } else if (isObject$3(value)) {
     for (const name in value) {
       if (value[name]) {
         res += name + " ";
@@ -177,7 +177,7 @@ function normalizeClass(value) {
 function normalizeProps(props) {
   if (!props) return null;
   let { class: klass, style } = props;
-  if (klass && !isString$1(klass)) {
+  if (klass && !isString(klass)) {
     props.class = normalizeClass(klass);
   }
   if (style) {
@@ -215,8 +215,8 @@ function looseEqual(a, b) {
   if (aValidType || bValidType) {
     return aValidType && bValidType ? looseCompareArrays(a, b) : false;
   }
-  aValidType = isObject(a);
-  bValidType = isObject(b);
+  aValidType = isObject$3(a);
+  bValidType = isObject$3(b);
   if (aValidType || bValidType) {
     if (!aValidType || !bValidType) {
       return false;
@@ -243,7 +243,7 @@ const isRef$1 = (val) => {
   return !!(val && val["__v_isRef"] === true);
 };
 const toDisplayString = (val) => {
-  return isString$1(val) ? val : val == null ? "" : isArray$2(val) || isObject(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+  return isString(val) ? val : val == null ? "" : isArray$2(val) || isObject$3(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
 };
 const replacer = (_key, val) => {
   if (isRef$1(val)) {
@@ -264,7 +264,7 @@ const replacer = (_key, val) => {
     };
   } else if (isSymbol$1(val)) {
     return stringifySymbol(val);
-  } else if (isObject(val) && !isArray$2(val) && !isPlainObject(val)) {
+  } else if (isObject$3(val) && !isArray$2(val) && !isPlainObject(val)) {
     return String(val);
   }
   return val;
@@ -389,8 +389,16 @@ class EffectScope {
     }
   }
 }
+function effectScope(detached) {
+  return new EffectScope(detached);
+}
 function getCurrentScope() {
   return activeEffectScope;
+}
+function onScopeDispose(fn, failSilently = false) {
+  if (activeEffectScope) {
+    activeEffectScope.cleanups.push(fn);
+  }
 }
 let activeSub;
 const pausedQueueEffects = /* @__PURE__ */ new WeakSet();
@@ -1113,9 +1121,9 @@ class BaseReactiveHandler {
     }
     if (/* @__PURE__ */ isRef(res)) {
       const value = targetIsArray && isIntegerKey(key) ? res : res.value;
-      return isReadonly2 && isObject(value) ? /* @__PURE__ */ readonly(value) : value;
+      return isReadonly2 && isObject$3(value) ? /* @__PURE__ */ readonly(value) : value;
     }
-    if (isObject(res)) {
+    if (isObject$3(res)) {
       return isReadonly2 ? /* @__PURE__ */ readonly(res) : /* @__PURE__ */ reactive(res);
     }
     return res;
@@ -1463,7 +1471,7 @@ function shallowReadonly(target) {
   );
 }
 function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
-  if (!isObject(target)) {
+  if (!isObject$3(target)) {
     return target;
   }
   if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) {
@@ -1514,8 +1522,8 @@ function markRaw(value) {
   }
   return value;
 }
-const toReactive = (value) => isObject(value) ? /* @__PURE__ */ reactive(value) : value;
-const toReadonly = (value) => isObject(value) ? /* @__PURE__ */ readonly(value) : value;
+const toReactive = (value) => isObject$3(value) ? /* @__PURE__ */ reactive(value) : value;
+const toReadonly = (value) => isObject$3(value) ? /* @__PURE__ */ readonly(value) : value;
 // @__NO_SIDE_EFFECTS__
 function isRef(r) {
   return r ? r["__v_isRef"] === true : false;
@@ -1638,7 +1646,7 @@ function toRef(source, key, defaultValue) {
     return source;
   } else if (isFunction(source)) {
     return new GetterRefImpl(source);
-  } else if (isObject(source) && arguments.length > 1) {
+  } else if (isObject$3(source) && arguments.length > 1) {
     return propertyToRef(source, key, defaultValue);
   } else {
     return /* @__PURE__ */ ref(source);
@@ -1854,7 +1862,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
   return watchHandle;
 }
 function traverse(value, depth = Infinity, seen) {
-  if (depth <= 0 || !isObject(value) || value["__v_skip"]) {
+  if (depth <= 0 || !isObject$3(value) || value["__v_skip"]) {
     return value;
   }
   seen = seen || /* @__PURE__ */ new Map();
@@ -1976,7 +1984,7 @@ function formatProps(props) {
   return res;
 }
 function formatProp(key, value, raw) {
-  if (isString$1(value)) {
+  if (isString(value)) {
     value = JSON.stringify(value);
     return raw ? value : [`${key}=${value}`];
   } else if (typeof value === "number" || typeof value === "boolean" || value == null) {
@@ -2296,6 +2304,9 @@ function inject(key, defaultValue, treatDefaultAsFactory = false) {
     } else ;
   }
 }
+function hasInjectionContext() {
+  return !!(getCurrentInstance() || currentApp);
+}
 const ssrContextKey = /* @__PURE__ */ Symbol.for("v-scx");
 const useSSRContext = () => {
   {
@@ -2368,7 +2379,7 @@ function doWatch(source, cb, options = EMPTY_OBJ) {
 }
 function instanceWatch(source, value, options) {
   const publicThis = this.proxy;
-  const getter = isString$1(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
+  const getter = isString(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
   let cb;
   if (isFunction(value)) {
     cb = value;
@@ -2393,13 +2404,13 @@ function createPathGetter(ctx, path) {
 }
 const TeleportEndKey = /* @__PURE__ */ Symbol("_vte");
 const isTeleport = (type) => type.__isTeleport;
-const isTeleportDisabled = (props) => props && (props.disabled || props.disabled === "");
+const isTeleportDisabled$1 = (props) => props && (props.disabled || props.disabled === "");
 const isTeleportDeferred = (props) => props && (props.defer || props.defer === "");
 const isTargetSVG = (target) => typeof SVGElement !== "undefined" && target instanceof SVGElement;
 const isTargetMathML = (target) => typeof MathMLElement === "function" && target instanceof MathMLElement;
 const resolveTarget = (props, select) => {
   const targetSelector = props && props.to;
-  if (isString$1(targetSelector)) {
+  if (isString(targetSelector)) {
     if (!select) {
       return null;
     } else {
@@ -2420,7 +2431,7 @@ const TeleportImpl = {
       pbc: patchBlockChildren,
       o: { insert, querySelector, createText, createComment }
     } = internals;
-    const disabled = isTeleportDisabled(n2.props);
+    const disabled = isTeleportDisabled$1(n2.props);
     let { shapeFlag, children, dynamicChildren } = n2;
     if (n1 == null) {
       const placeholder = n2.el = createText("");
@@ -2495,7 +2506,7 @@ const TeleportImpl = {
       const mainAnchor = n2.anchor = n1.anchor;
       const target = n2.target = n1.target;
       const targetAnchor = n2.targetAnchor = n1.targetAnchor;
-      const wasDisabled = isTeleportDisabled(n1.props);
+      const wasDisabled = isTeleportDisabled$1(n1.props);
       const currentContainer = wasDisabled ? container : target;
       const currentAnchor = wasDisabled ? mainAnchor : targetAnchor;
       if (namespace === "svg" || isTargetSVG(target)) {
@@ -2585,7 +2596,7 @@ const TeleportImpl = {
     }
     doRemove && hostRemove(anchor);
     if (shapeFlag & 16) {
-      const shouldRemove = doRemove || !isTeleportDisabled(props);
+      const shouldRemove = doRemove || !isTeleportDisabled$1(props);
       for (let i = 0; i < children.length; i++) {
         const child = children[i];
         unmount(
@@ -2610,7 +2621,7 @@ function moveTeleport(vnode, container, parentAnchor, { o: { insert }, m: move }
   if (isReorder) {
     insert(el, container, parentAnchor);
   }
-  if (!isReorder || isTeleportDisabled(props)) {
+  if (!isReorder || isTeleportDisabled$1(props)) {
     if (shapeFlag & 16) {
       for (let i = 0; i < children.length; i++) {
         move(
@@ -2646,7 +2657,7 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
     vnode.props,
     querySelector
   );
-  const disabled = isTeleportDisabled(vnode.props);
+  const disabled = isTeleportDisabled$1(vnode.props);
   if (target) {
     const targetNode = target._lpa || target.firstChild;
     if (vnode.shapeFlag & 16) {
@@ -3129,7 +3140,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   };
   if (oldRef != null && oldRef !== ref3) {
     invalidatePendingSetRef(oldRawRef);
-    if (isString$1(oldRef)) {
+    if (isString(oldRef)) {
       refs[oldRef] = null;
       if (canSetSetupRef(oldRef)) {
         setupState[oldRef] = null;
@@ -3145,7 +3156,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   if (isFunction(ref3)) {
     callWithErrorHandling(ref3, owner, 12, [value, refs]);
   } else {
-    const _isString = isString$1(ref3);
+    const _isString = isString(ref3);
     const _isRef = /* @__PURE__ */ isRef(ref3);
     if (_isString || _isRef) {
       const doSet = () => {
@@ -3292,26 +3303,22 @@ function onErrorCaptured(hook, target = currentInstance) {
   injectHook("ec", hook, target);
 }
 const COMPONENTS = "components";
-const DIRECTIVES = "directives";
 function resolveComponent(name, maybeSelfReference) {
   return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
 }
 const NULL_DYNAMIC_COMPONENT = /* @__PURE__ */ Symbol.for("v-ndc");
 function resolveDynamicComponent(component) {
-  if (isString$1(component)) {
+  if (isString(component)) {
     return resolveAsset(COMPONENTS, component, false) || component;
   } else {
     return component || NULL_DYNAMIC_COMPONENT;
   }
 }
-function resolveDirective(name) {
-  return resolveAsset(DIRECTIVES, name);
-}
 function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false) {
   const instance = currentRenderingInstance || currentInstance;
   if (instance) {
     const Component = instance.type;
-    if (type === COMPONENTS) {
+    {
       const selfName = getComponentName$1(
         Component,
         false
@@ -3339,7 +3346,7 @@ function renderList(source, renderItem, cache, index) {
   let ret;
   const cached = cache;
   const sourceIsArray = isArray$2(source);
-  if (sourceIsArray || isString$1(source)) {
+  if (sourceIsArray || isString(source)) {
     const sourceIsReactiveArray = sourceIsArray && /* @__PURE__ */ isReactive(source);
     let needsWrap = false;
     let isReadonlySource = false;
@@ -3362,7 +3369,7 @@ function renderList(source, renderItem, cache, index) {
     for (let i = 0; i < source; i++) {
       ret[i] = renderItem(i + 1, i, void 0, cached);
     }
-  } else if (isObject(source)) {
+  } else if (isObject$3(source)) {
     if (source[Symbol.iterator]) {
       ret = Array.from(
         source,
@@ -3616,7 +3623,7 @@ function applyOptions(instance) {
     beforeUnmount,
     destroyed,
     unmounted,
-    render,
+    render: render2,
     renderTracked,
     renderTriggered,
     errorCaptured,
@@ -3645,7 +3652,7 @@ function applyOptions(instance) {
   }
   if (dataOptions) {
     const data = dataOptions.call(publicThis, publicThis);
-    if (!isObject(data)) ;
+    if (!isObject$3(data)) ;
     else {
       instance.data = /* @__PURE__ */ reactive(data);
     }
@@ -3715,8 +3722,8 @@ function applyOptions(instance) {
       instance.exposed = {};
     }
   }
-  if (render && instance.render === NOOP) {
-    instance.render = render;
+  if (render2 && instance.render === NOOP) {
+    instance.render = render2;
   }
   if (inheritAttrs != null) {
     instance.inheritAttrs = inheritAttrs;
@@ -3734,7 +3741,7 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) 
   for (const key in injectOptions) {
     const opt = injectOptions[key];
     let injected;
-    if (isObject(opt)) {
+    if (isObject$3(opt)) {
       if ("default" in opt) {
         injected = inject(
           opt.from || key,
@@ -3768,7 +3775,7 @@ function callHook$1(hook, instance, type) {
 }
 function createWatcher(raw, ctx, publicThis, key) {
   let getter = key.includes(".") ? createPathGetter(publicThis, key) : () => publicThis[key];
-  if (isString$1(raw)) {
+  if (isString(raw)) {
     const handler = ctx[raw];
     if (isFunction(handler)) {
       {
@@ -3779,7 +3786,7 @@ function createWatcher(raw, ctx, publicThis, key) {
     {
       watch(getter, raw.bind(publicThis));
     }
-  } else if (isObject(raw)) {
+  } else if (isObject$3(raw)) {
     if (isArray$2(raw)) {
       raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
     } else {
@@ -3815,7 +3822,7 @@ function resolveMergedOptions(instance) {
     }
     mergeOptions$1(resolved, base, optionMergeStrategies);
   }
-  if (isObject(base)) {
+  if (isObject$3(base)) {
     cache.set(base, resolved);
   }
   return resolved;
@@ -3948,12 +3955,12 @@ function createAppContext() {
   };
 }
 let uid$1 = 0;
-function createAppAPI(render, hydrate) {
+function createAppAPI(render2, hydrate) {
   return function createApp2(rootComponent, rootProps = null) {
     if (!isFunction(rootComponent)) {
       rootComponent = extend({}, rootComponent);
     }
-    if (rootProps != null && !isObject(rootProps)) {
+    if (rootProps != null && !isObject$3(rootProps)) {
       rootProps = null;
     }
     const context = createAppContext();
@@ -4016,7 +4023,7 @@ function createAppAPI(render, hydrate) {
             namespace = void 0;
           }
           {
-            render(vnode, rootContainer, namespace);
+            render2(vnode, rootContainer, namespace);
           }
           isMounted = true;
           app2._container = rootContainer;
@@ -4034,7 +4041,7 @@ function createAppAPI(render, hydrate) {
             app2._instance,
             16
           );
-          render(null, app2._container);
+          render2(null, app2._container);
           delete app2._container.__vue_app__;
         }
       },
@@ -4067,7 +4074,7 @@ function emit(instance, event, ...rawArgs) {
   const modifiers = isModelListener2 && getModelModifiers(props, event.slice(7));
   if (modifiers) {
     if (modifiers.trim) {
-      args = rawArgs.map((a) => isString$1(a) ? a.trim() : a);
+      args = rawArgs.map((a) => isString(a) ? a.trim() : a);
     }
     if (modifiers.number) {
       args = rawArgs.map(looseToNumber);
@@ -4132,7 +4139,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject(comp)) {
+    if (isObject$3(comp)) {
       cache.set(comp, null);
     }
     return null;
@@ -4142,7 +4149,7 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
   } else {
     extend(normalized, raw);
   }
-  if (isObject(comp)) {
+  if (isObject$3(comp)) {
     cache.set(comp, normalized);
   }
   return normalized;
@@ -4166,7 +4173,7 @@ function renderComponentRoot(instance) {
     slots,
     attrs,
     emit: emit2,
-    render,
+    render: render2,
     renderCache,
     props,
     data,
@@ -4191,7 +4198,7 @@ function renderComponentRoot(instance) {
         }
       }) : proxyToUse;
       result = normalizeVNode(
-        render.call(
+        render2.call(
           thisProxy,
           proxyToUse,
           renderCache,
@@ -4203,10 +4210,10 @@ function renderComponentRoot(instance) {
       );
       fallthroughAttrs = attrs;
     } else {
-      const render2 = Component;
+      const render22 = Component;
       if (false) ;
       result = normalizeVNode(
-        render2.length > 1 ? render2(
+        render22.length > 1 ? render22(
           false ? /* @__PURE__ */ shallowReadonly(props) : props,
           false ? {
             get attrs() {
@@ -4216,7 +4223,7 @@ function renderComponentRoot(instance) {
             slots,
             emit: emit2
           } : { attrs, slots, emit: emit2 }
-        ) : render2(
+        ) : render22(
           false ? /* @__PURE__ */ shallowReadonly(props) : props,
           null
         )
@@ -4571,7 +4578,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   if (!raw && !hasExtends) {
-    if (isObject(comp)) {
+    if (isObject$3(comp)) {
       cache.set(comp, EMPTY_ARR);
     }
     return EMPTY_ARR;
@@ -4621,7 +4628,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
     }
   }
   const res = [normalized, needCastKeys];
-  if (isObject(comp)) {
+  if (isObject$3(comp)) {
     cache.set(comp, res);
   }
   return res;
@@ -5929,7 +5936,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     return teleportEnd ? hostNextSibling(teleportEnd) : el;
   };
   let isFlushing = false;
-  const render = (vnode, container, namespace) => {
+  const render2 = (vnode, container, namespace) => {
     let instance;
     if (vnode == null) {
       if (container._vnode) {
@@ -5969,9 +5976,9 @@ function baseCreateRenderer(options, createHydrationFns) {
   };
   let hydrate;
   return {
-    render,
+    render: render2,
     hydrate,
-    createApp: createAppAPI(render)
+    createApp: createAppAPI(render2)
   };
 }
 function resolveChildrenNamespace({ type, props }, currentNamespace) {
@@ -6164,7 +6171,7 @@ const normalizeRef = ({
   if (typeof ref3 === "number") {
     ref3 = "" + ref3;
   }
-  return ref3 != null ? isString$1(ref3) || /* @__PURE__ */ isRef(ref3) || isFunction(ref3) ? { i: currentRenderingInstance, r: ref3, k: ref_key, f: !!ref_for } : ref3 : null;
+  return ref3 != null ? isString(ref3) || /* @__PURE__ */ isRef(ref3) || isFunction(ref3) ? { i: currentRenderingInstance, r: ref3, k: ref_key, f: !!ref_for } : ref3 : null;
 };
 function createBaseVNode(type, props = null, children = null, patchFlag = 0, dynamicProps = null, shapeFlag = type === Fragment ? 0 : 1, isBlockNode = false, needFullChildrenNormalization = false) {
   const vnode = {
@@ -6202,7 +6209,7 @@ function createBaseVNode(type, props = null, children = null, patchFlag = 0, dyn
       type.normalize(vnode);
     }
   } else if (children) {
-    vnode.shapeFlag |= isString$1(children) ? 8 : 16;
+    vnode.shapeFlag |= isString(children) ? 8 : 16;
   }
   if (isBlockTreeEnabled > 0 && // avoid a block node from tracking itself
   !isBlockNode && // has current parent block
@@ -6248,17 +6255,17 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
   if (props) {
     props = guardReactiveProps(props);
     let { class: klass, style } = props;
-    if (klass && !isString$1(klass)) {
+    if (klass && !isString(klass)) {
       props.class = normalizeClass(klass);
     }
-    if (isObject(style)) {
+    if (isObject$3(style)) {
       if (/* @__PURE__ */ isProxy(style) && !isArray$2(style)) {
         style = extend({}, style);
       }
       props.style = normalizeStyle(style);
     }
   }
-  const shapeFlag = isString$1(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject(type) ? 4 : isFunction(type) ? 2 : 0;
+  const shapeFlag = isString(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$3(type) ? 4 : isFunction(type) ? 2 : 0;
   return createBaseVNode(
     type,
     props,
@@ -6620,7 +6627,7 @@ function handleSetupResult(instance, setupResult, isSSR) {
     } else {
       instance.render = setupResult;
     }
-  } else if (isObject(setupResult)) {
+  } else if (isObject$3(setupResult)) {
     instance.setupState = proxyRefs(setupResult);
   } else ;
   finishComponentSetup(instance);
@@ -6717,7 +6724,7 @@ function h(type, propsOrChildren, children) {
     setBlockTracking(-1);
     const l = arguments.length;
     if (l === 2) {
-      if (isObject(propsOrChildren) && !isArray$2(propsOrChildren)) {
+      if (isObject$3(propsOrChildren) && !isArray$2(propsOrChildren)) {
         if (isVNode(propsOrChildren)) {
           return createVNode(type, null, [propsOrChildren]);
         }
@@ -6788,7 +6795,7 @@ const nodeOps = {
   // Reason: innerHTML.
   // Static content here can only come from compiled templates.
   // As long as the user only uses trusted templates, this is safe.
-  insertStaticContent(content, parent, anchor, namespace, start, end) {
+  insertStaticContent(content2, parent, anchor, namespace, start, end) {
     const before = anchor ? anchor.previousSibling : parent.lastChild;
     if (start && (start === end || start.nextSibling)) {
       while (true) {
@@ -6797,7 +6804,7 @@ const nodeOps = {
       }
     } else {
       templateContainer.innerHTML = unsafeToTrustedHTML(
-        namespace === "svg" ? `<svg>${content}</svg>` : namespace === "mathml" ? `<math>${content}</math>` : content
+        namespace === "svg" ? `<svg>${content2}</svg>` : namespace === "mathml" ? `<math>${content2}</math>` : content2
       );
       const template = templateContainer.content;
       if (namespace === "svg" || namespace === "mathml") {
@@ -6978,7 +6985,7 @@ function resolveTransitionProps(rawProps) {
 function normalizeDuration(duration) {
   if (duration == null) {
     return null;
-  } else if (isObject(duration)) {
+  } else if (isObject$3(duration)) {
     return [NumberOf(duration.enter), NumberOf(duration.leave)];
   } else {
     const n = NumberOf(duration);
@@ -7113,11 +7120,11 @@ const CSS_VAR_TEXT = /* @__PURE__ */ Symbol("");
 const displayRE = /(?:^|;)\s*display\s*:/;
 function patchStyle(el, prev, next) {
   const style = el.style;
-  const isCssString = isString$1(next);
+  const isCssString = isString(next);
   let hasControlledDisplay = false;
   if (next && !isCssString) {
     if (prev) {
-      if (!isString$1(prev)) {
+      if (!isString(prev)) {
         for (const key in prev) {
           if (next[key] == null) {
             setStyle(style, key, "");
@@ -7358,7 +7365,7 @@ const patchProp = (el, key, prevValue, nextValue, namespace, parentComponent) =>
     }
   } else if (
     // #11081 force set props for possible async custom element
-    el._isVueCE && (/[A-Z]/.test(key) || !isString$1(nextValue))
+    el._isVueCE && (/[A-Z]/.test(key) || !isString(nextValue))
   ) {
     patchDOMProp(el, camelize(key), nextValue, parentComponent, key);
   } else {
@@ -7401,10 +7408,393 @@ function shouldSetAsProp(el, key, value, isSVG) {
       return false;
     }
   }
-  if (isNativeOn(key) && isString$1(value)) {
+  if (isNativeOn(key) && isString(value)) {
     return false;
   }
   return key in el;
+}
+const REMOVAL = {};
+// @__NO_SIDE_EFFECTS__
+function defineCustomElement(options, extraOptions, _createApp) {
+  let Comp = /* @__PURE__ */ defineComponent(options, extraOptions);
+  if (isPlainObject(Comp)) Comp = extend({}, Comp, extraOptions);
+  class VueCustomElement extends VueElement {
+    constructor(initialProps) {
+      super(Comp, initialProps, _createApp);
+    }
+  }
+  VueCustomElement.def = Comp;
+  return VueCustomElement;
+}
+const BaseClass = typeof HTMLElement !== "undefined" ? HTMLElement : class {
+};
+class VueElement extends BaseClass {
+  constructor(_def, _props = {}, _createApp = createApp) {
+    super();
+    this._def = _def;
+    this._props = _props;
+    this._createApp = _createApp;
+    this._isVueCE = true;
+    this._instance = null;
+    this._app = null;
+    this._nonce = this._def.nonce;
+    this._connected = false;
+    this._resolved = false;
+    this._patching = false;
+    this._dirty = false;
+    this._numberProps = null;
+    this._styleChildren = /* @__PURE__ */ new WeakSet();
+    this._ob = null;
+    if (this.shadowRoot && _createApp !== createApp) {
+      this._root = this.shadowRoot;
+    } else {
+      if (_def.shadowRoot !== false) {
+        this.attachShadow(
+          extend({}, _def.shadowRootOptions, {
+            mode: "open"
+          })
+        );
+        this._root = this.shadowRoot;
+      } else {
+        this._root = this;
+      }
+    }
+  }
+  connectedCallback() {
+    if (!this.isConnected) return;
+    if (!this.shadowRoot && !this._resolved) {
+      this._parseSlots();
+    }
+    this._connected = true;
+    let parent = this;
+    while (parent = parent && (parent.parentNode || parent.host)) {
+      if (parent instanceof VueElement) {
+        this._parent = parent;
+        break;
+      }
+    }
+    if (!this._instance) {
+      if (this._resolved) {
+        this._mount(this._def);
+      } else {
+        if (parent && parent._pendingResolve) {
+          this._pendingResolve = parent._pendingResolve.then(() => {
+            this._pendingResolve = void 0;
+            this._resolveDef();
+          });
+        } else {
+          this._resolveDef();
+        }
+      }
+    }
+  }
+  _setParent(parent = this._parent) {
+    if (parent) {
+      this._instance.parent = parent._instance;
+      this._inheritParentContext(parent);
+    }
+  }
+  _inheritParentContext(parent = this._parent) {
+    if (parent && this._app) {
+      Object.setPrototypeOf(
+        this._app._context.provides,
+        parent._instance.provides
+      );
+    }
+  }
+  disconnectedCallback() {
+    this._connected = false;
+    nextTick(() => {
+      if (!this._connected) {
+        if (this._ob) {
+          this._ob.disconnect();
+          this._ob = null;
+        }
+        this._app && this._app.unmount();
+        if (this._instance) this._instance.ce = void 0;
+        this._app = this._instance = null;
+        if (this._teleportTargets) {
+          this._teleportTargets.clear();
+          this._teleportTargets = void 0;
+        }
+      }
+    });
+  }
+  _processMutations(mutations) {
+    for (const m of mutations) {
+      this._setAttr(m.attributeName);
+    }
+  }
+  /**
+   * resolve inner component definition (handle possible async component)
+   */
+  _resolveDef() {
+    if (this._pendingResolve) {
+      return;
+    }
+    for (let i = 0; i < this.attributes.length; i++) {
+      this._setAttr(this.attributes[i].name);
+    }
+    this._ob = new MutationObserver(this._processMutations.bind(this));
+    this._ob.observe(this, { attributes: true });
+    const resolve2 = (def2, isAsync = false) => {
+      this._resolved = true;
+      this._pendingResolve = void 0;
+      const { props, styles } = def2;
+      let numberProps;
+      if (props && !isArray$2(props)) {
+        for (const key in props) {
+          const opt = props[key];
+          if (opt === Number || opt && opt.type === Number) {
+            if (key in this._props) {
+              this._props[key] = toNumber(this._props[key]);
+            }
+            (numberProps || (numberProps = /* @__PURE__ */ Object.create(null)))[camelize(key)] = true;
+          }
+        }
+      }
+      this._numberProps = numberProps;
+      this._resolveProps(def2);
+      if (this.shadowRoot) {
+        this._applyStyles(styles);
+      }
+      this._mount(def2);
+    };
+    const asyncDef = this._def.__asyncLoader;
+    if (asyncDef) {
+      this._pendingResolve = asyncDef().then((def2) => {
+        def2.configureApp = this._def.configureApp;
+        resolve2(this._def = def2, true);
+      });
+    } else {
+      resolve2(this._def);
+    }
+  }
+  _mount(def2) {
+    this._app = this._createApp(def2);
+    this._inheritParentContext();
+    if (def2.configureApp) {
+      def2.configureApp(this._app);
+    }
+    this._app._ceVNode = this._createVNode();
+    this._app.mount(this._root);
+    const exposed = this._instance && this._instance.exposed;
+    if (!exposed) return;
+    for (const key in exposed) {
+      if (!hasOwn(this, key)) {
+        Object.defineProperty(this, key, {
+          // unwrap ref to be consistent with public instance behavior
+          get: () => unref(exposed[key])
+        });
+      }
+    }
+  }
+  _resolveProps(def2) {
+    const { props } = def2;
+    const declaredPropKeys = isArray$2(props) ? props : Object.keys(props || {});
+    for (const key of Object.keys(this)) {
+      if (key[0] !== "_" && declaredPropKeys.includes(key)) {
+        this._setProp(key, this[key]);
+      }
+    }
+    for (const key of declaredPropKeys.map(camelize)) {
+      Object.defineProperty(this, key, {
+        get() {
+          return this._getProp(key);
+        },
+        set(val) {
+          this._setProp(key, val, true, !this._patching);
+        }
+      });
+    }
+  }
+  _setAttr(key) {
+    if (key.startsWith("data-v-")) return;
+    const has = this.hasAttribute(key);
+    let value = has ? this.getAttribute(key) : REMOVAL;
+    const camelKey = camelize(key);
+    if (has && this._numberProps && this._numberProps[camelKey]) {
+      value = toNumber(value);
+    }
+    this._setProp(camelKey, value, false, true);
+  }
+  /**
+   * @internal
+   */
+  _getProp(key) {
+    return this._props[key];
+  }
+  /**
+   * @internal
+   */
+  _setProp(key, val, shouldReflect = true, shouldUpdate = false) {
+    if (val !== this._props[key]) {
+      this._dirty = true;
+      if (val === REMOVAL) {
+        delete this._props[key];
+      } else {
+        this._props[key] = val;
+        if (key === "key" && this._app) {
+          this._app._ceVNode.key = val;
+        }
+      }
+      if (shouldUpdate && this._instance) {
+        this._update();
+      }
+      if (shouldReflect) {
+        const ob = this._ob;
+        if (ob) {
+          this._processMutations(ob.takeRecords());
+          ob.disconnect();
+        }
+        if (val === true) {
+          this.setAttribute(hyphenate(key), "");
+        } else if (typeof val === "string" || typeof val === "number") {
+          this.setAttribute(hyphenate(key), val + "");
+        } else if (!val) {
+          this.removeAttribute(hyphenate(key));
+        }
+        ob && ob.observe(this, { attributes: true });
+      }
+    }
+  }
+  _update() {
+    const vnode = this._createVNode();
+    if (this._app) vnode.appContext = this._app._context;
+    render(vnode, this._root);
+  }
+  _createVNode() {
+    const baseProps = {};
+    if (!this.shadowRoot) {
+      baseProps.onVnodeMounted = baseProps.onVnodeUpdated = this._renderSlots.bind(this);
+    }
+    const vnode = createVNode(this._def, extend(baseProps, this._props));
+    if (!this._instance) {
+      vnode.ce = (instance) => {
+        this._instance = instance;
+        instance.ce = this;
+        instance.isCE = true;
+        const dispatch = (event, args) => {
+          this.dispatchEvent(
+            new CustomEvent(
+              event,
+              isPlainObject(args[0]) ? extend({ detail: args }, args[0]) : { detail: args }
+            )
+          );
+        };
+        instance.emit = (event, ...args) => {
+          dispatch(event, args);
+          if (hyphenate(event) !== event) {
+            dispatch(hyphenate(event), args);
+          }
+        };
+        this._setParent();
+      };
+    }
+    return vnode;
+  }
+  _applyStyles(styles, owner) {
+    if (!styles) return;
+    if (owner) {
+      if (owner === this._def || this._styleChildren.has(owner)) {
+        return;
+      }
+      this._styleChildren.add(owner);
+    }
+    const nonce = this._nonce;
+    for (let i = styles.length - 1; i >= 0; i--) {
+      const s = document.createElement("style");
+      if (nonce) s.setAttribute("nonce", nonce);
+      s.textContent = styles[i];
+      this.shadowRoot.prepend(s);
+    }
+  }
+  /**
+   * Only called when shadowRoot is false
+   */
+  _parseSlots() {
+    const slots = this._slots = {};
+    let n;
+    while (n = this.firstChild) {
+      const slotName = n.nodeType === 1 && n.getAttribute("slot") || "default";
+      (slots[slotName] || (slots[slotName] = [])).push(n);
+      this.removeChild(n);
+    }
+  }
+  /**
+   * Only called when shadowRoot is false
+   */
+  _renderSlots() {
+    const outlets = this._getSlots();
+    const scopeId = this._instance.type.__scopeId;
+    for (let i = 0; i < outlets.length; i++) {
+      const o = outlets[i];
+      const slotName = o.getAttribute("name") || "default";
+      const content2 = this._slots[slotName];
+      const parent = o.parentNode;
+      if (content2) {
+        for (const n of content2) {
+          if (scopeId && n.nodeType === 1) {
+            const id = scopeId + "-s";
+            const walker = document.createTreeWalker(n, 1);
+            n.setAttribute(id, "");
+            let child;
+            while (child = walker.nextNode()) {
+              child.setAttribute(id, "");
+            }
+          }
+          parent.insertBefore(n, o);
+        }
+      } else {
+        while (o.firstChild) parent.insertBefore(o.firstChild, o);
+      }
+      parent.removeChild(o);
+    }
+  }
+  /**
+   * @internal
+   */
+  _getSlots() {
+    const roots = [this];
+    if (this._teleportTargets) {
+      roots.push(...this._teleportTargets);
+    }
+    const slots = /* @__PURE__ */ new Set();
+    for (const root of roots) {
+      const found = root.querySelectorAll("slot");
+      for (let i = 0; i < found.length; i++) {
+        slots.add(found[i]);
+      }
+    }
+    return Array.from(slots);
+  }
+  /**
+   * @internal
+   */
+  _injectChildStyle(comp) {
+    this._applyStyles(comp.styles, comp);
+  }
+  /**
+   * @internal
+   */
+  _beginPatch() {
+    this._patching = true;
+    this._dirty = false;
+  }
+  /**
+   * @internal
+   */
+  _endPatch() {
+    this._patching = false;
+    if (this._dirty && this._instance) {
+      this._update();
+    }
+  }
+  /**
+   * @internal
+   */
+  _removeChildStyle(comp) {
+  }
 }
 const getModelAssigner = (vnode) => {
   const fn = vnode.props["onUpdate:modelValue"] || false;
@@ -7621,8 +8011,8 @@ const vModelDynamic = {
     callModelHook(el, binding, vnode, prevVNode, "updated");
   }
 };
-function resolveDynamicModel(tagName, type) {
-  switch (tagName) {
+function resolveDynamicModel(tagName2, type) {
+  switch (tagName2) {
     case "SELECT":
       return vModelSelect;
     case "TEXTAREA":
@@ -7700,6 +8090,9 @@ let renderer;
 function ensureRenderer() {
   return renderer || (renderer = createRenderer(rendererOptions));
 }
+const render = ((...args) => {
+  ensureRenderer().render(...args);
+});
 const createApp = ((...args) => {
   const app2 = ensureRenderer().createApp(...args);
   const { mount } = app2;
@@ -7731,7 +8124,7 @@ function resolveRootNamespace(container) {
   }
 }
 function normalizeContainer(container) {
-  if (isString$1(container)) {
+  if (isString(container)) {
     const res = document.querySelector(container);
     return res;
   }
@@ -7759,23 +8152,6 @@ function isEmpty(value) {
 }
 function isSet(value) {
   return value !== void 0 && value !== null;
-}
-function isString(value) {
-  return typeof value === "string" || value instanceof String;
-}
-const configLogic = {
-  production: true
-};
-const DATE_REGEXP_WITH_DASH = /^\d{4}-\d{2}-\d{2}$/;
-function validLimit(limit) {
-  if (typeof limit !== "string" || isEmpty(limit)) {
-    throw new Error(`limit must be a non-empty string`);
-  }
-  const limitAsString = limit;
-  if (!DATE_REGEXP_WITH_DASH.test(limitAsString)) {
-    throw new Error(`limit has invalid format`);
-  }
-  return limitAsString;
 }
 function debounce(func, delay, immediate = false) {
   let timeout = null;
@@ -7843,9 +8219,9 @@ function requireLodash_clonedeep() {
       return array;
     }
     function arrayPush(array, values) {
-      var index = -1, length = values.length, offset = array.length;
+      var index = -1, length = values.length, offset2 = array.length;
       while (++index < length) {
-        array[offset + index] = values[index];
+        array[offset2 + index] = values[index];
       }
       return array;
     }
@@ -8383,70 +8759,6 @@ var cloneDeep = /* @__PURE__ */ getDefaultExportFromCjs$1$1(lodash_clonedeepExpo
 function deepClone(value) {
   return cloneDeep(value);
 }
-function normalizeDateFormat(value) {
-  const supportedFormats = [
-    /* yyyy-mm-dd */
-    /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/,
-    /* yyyymmdd */
-    /^(?<year>\d{4})(?<month>\d{2})(?<day>\d{2})$/,
-    /* yyyy-mm-dd */
-    /^(?<year>\d{4})\/(?<month>\d{2})\/(?<day>\d{2})$/
-  ];
-  const match = supportedFormats.map((pattern) => value.match(pattern)).find(Boolean);
-  if (!match?.groups) {
-    return void 0;
-  }
-  const { year, month, day } = match.groups;
-  return `${year}-${month}-${day}`;
-}
-function testLuhnChecksum(inputString) {
-  let sum = 0;
-  if (/^\d+$/.test(inputString) === false) {
-    throw new Error("Luhn Checksum test only works on strings containing numbers");
-  }
-  inputString.split("").reverse().forEach((numChar, index) => {
-    const digit = parseInt(numChar, 10) * ((index + 1) % 2 === 0 ? 2 : 1);
-    sum += digit >= 10 ? digit - 9 : digit;
-  });
-  return sum % 10 === 0;
-}
-function validChecksum(value) {
-  const yymmddxxxx = value.slice(2).replace(/-/g, "");
-  return testLuhnChecksum(yymmddxxxx);
-}
-const BANK_ACCOUNT_NUMBER_REGEXP = /^\d{3,16}$/;
-const BANK_ACCOUNT_NUMBER_TRIM_REGEXP = /[- .,]+/g;
-function parseBankAccountNumber(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  const trimmedValue = value.replace(BANK_ACCOUNT_NUMBER_TRIM_REGEXP, "");
-  return BANK_ACCOUNT_NUMBER_REGEXP.test(trimmedValue) ? trimmedValue : void 0;
-}
-const BANKGIRO_REGEXP_HYPHEN = /^(\d{3,4})-?(\d{4})$/;
-function parseBankgiro(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  const match = value.match(BANKGIRO_REGEXP_HYPHEN);
-  if (!match) {
-    return void 0;
-  }
-  if (!testLuhnChecksum(`${match[1]}${match[2]}`)) {
-    return void 0;
-  }
-  return `${match[1]}-${match[2]}`;
-}
-const CLEARINGNUMBER_REGEXP = /^\d{4}([-\s]?\d)?$/;
-function parseClearingNumber(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  if (!CLEARINGNUMBER_REGEXP.test(value)) {
-    return void 0;
-  }
-  return value.length === 5 ? `${value.substring(0, 4)}-${value.substring(4, 5)}` : value;
-}
 function getDefaultExportFromCjs$2(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
@@ -8803,13 +9115,6 @@ var Locale$1;
   Locale2["SWEDISH"] = "sv";
   Locale2["ENGLISH"] = "en";
 })(Locale$1 || (Locale$1 = {}));
-function getDefaultLocale() {
-  return Locale$1.SWEDISH;
-}
-let _locale = /* @__PURE__ */ getDefaultLocale();
-function getLocale() {
-  return _locale;
-}
 var Weekday$1;
 (function(Weekday2) {
   Weekday2[Weekday2["MONDAY"] = 1] = "MONDAY";
@@ -8897,7 +9202,7 @@ var Weekday$1;
   ]
 });
 const ISO8601_YYYY_MM_DD$1 = "YYYY-MM-DD";
-const formatter = {
+({
   [Locale$1.SWEDISH]: {
     [DateFormat$1.FULL]: "dddd D MMMM YYYY",
     [DateFormat$1.LONG]: "D MMMM YYYY",
@@ -8910,574 +9215,7 @@ const formatter = {
     [DateFormat$1.ISO8601]: ISO8601_YYYY_MM_DD$1,
     [DateFormat$1.YYYYMMDD]: "YYYYMMDD"
   }
-};
-class FDate {
-  value;
-  constructor(value) {
-    this.value = dayjs$1(value, ISO8601_YYYY_MM_DD$1, true).startOf("day");
-  }
-  /**
-   * Create {@link FDate} with an invalid state.
-   *
-   * @internal
-   */
-  static invalid() {
-    return new FDate("<invalid>");
-  }
-  /**
-   * Create {@link FDate} from current date.
-   *
-   * ```
-   * FDate.now()
-   * ```
-   *
-   * @public
-   */
-  static now() {
-    return new FDate();
-  }
-  /**
-   * Create {@link FDate} from ISO8601 string.
-   *
-   * ```
-   * FDate.fromIso("2022-04-20")
-   * ```
-   *
-   * @public
-   */
-  static fromIso(value) {
-    const match = value.match(/^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/);
-    if (match?.groups) {
-      const date = new FDate(value);
-      const { month } = match.groups;
-      if (date.isValid() && date.month === parseInt(month, 10)) {
-        return date;
-      }
-    }
-    return FDate.invalid();
-  }
-  /**
-   * Create {@link FDate} from `Date`.
-   *
-   * ```
-   * FDate.fromDate(new Date())
-   * ```
-   *
-   * @public
-   */
-  static fromDate(value) {
-    return new FDate(value);
-  }
-  /**
-   * Create {@link FDate} from year, month, day.
-   *
-   * ```
-   * FDate.fromYearMonthDay(2023, 1, 1) // => 2023-01-01
-   * FDate.fromYearMonthDay("2023", "01", "01") // => 2023-01-01
-   * ```
-   *
-   * @public
-   */
-  static fromYearMonthDay(year, month, day) {
-    const paddedMonth = month.toString().padStart(2, "0");
-    const paddedDay = day.toString().padStart(2, "0");
-    const iso = `${String(year)}-${paddedMonth}-${paddedDay}`;
-    return FDate.fromIso(iso);
-  }
-  /**
-   * Get the year.
-   *
-   * ```
-   * FDate.now().year()// => 2022
-   * ```
-   *
-   * @public
-   */
-  get year() {
-    return this.value.year();
-  }
-  /**
-   * Get the month.
-   *
-   * Months are one-indexed, so January is month 1.
-   *
-   * ```
-   * FDate.now().month()// => 1-12
-   * ```
-   *
-   * @public
-   */
-  get month() {
-    return this.value.month() + 1;
-  }
-  /**
-   * Get the week according to the Swedish locale.
-   *
-   * @public
-   */
-  get week() {
-    return this.value.locale(Locale$1.SWEDISH).week();
-  }
-  /**
-   * Get the day of the month.
-   *
-   * ```
-   * FDate.now().day// => 1-31
-   * ```
-   *
-   * @public
-   */
-  get day() {
-    return this.value.date();
-  }
-  /**
-   * Get the name of the month.
-   *
-   * ```
-   * FDate.now().monthName// => January
-   * ```
-   *
-   * @public
-   */
-  get monthName() {
-    if (this.isValid()) {
-      return this.value.locale(getLocale()).format("MMMM");
-    } else {
-      return "";
-    }
-  }
-  /**
-   * Get the short name of the month.
-   *
-   * ```
-   * FDate.now().monthNameShort// => Jan
-   * ```
-   *
-   * @public
-   */
-  get monthNameShort() {
-    if (this.isValid()) {
-      return this.value.locale(getLocale()).format("MMM");
-    } else {
-      return "";
-    }
-  }
-  /**
-   * Get the name of the day.
-   *
-   * ```
-   * FDate.now().dayName// => Monday
-   * ```
-   *
-   * @public
-   */
-  get dayName() {
-    if (this.isValid()) {
-      return this.value.locale(getLocale()).format("dddd");
-    } else {
-      return "";
-    }
-  }
-  /**
-   * Get the short name of the day.
-   *
-   * ```
-   * FDate.now().dayNameShort// => Mon
-   * ```
-   *
-   * @public
-   */
-  get dayNameShort() {
-    if (this.isValid()) {
-      return this.value.locale(getLocale()).format("ddd");
-    } else {
-      return "";
-    }
-  }
-  /**
-   * Get number of the day in a week.
-   * Returns `Weekday` enum.
-   * If date is invalid, `0` is returned.
-   *
-   * ```
-   * FDate.now().weekDay// => Weekday.MONDAY / 1
-   * ```
-   *
-   * @public
-   */
-  get weekDay() {
-    if (!this.isValid()) {
-      return 0;
-    }
-    const result = parseInt(this.value.format("d"), 10);
-    if (!result) {
-      return Weekday$1.SUNDAY;
-    }
-    return result;
-  }
-  /**
-   * This returns a `boolean` indicating whether the FDate object contains a valid date or not.
-   *
-   * ```
-   * FDate().isValid()// => boolean
-   * ```
-   *
-   * @public
-   */
-  isValid() {
-    return this.value.isValid();
-  }
-  /**
-   * Returns a cloned {@link FDate} object and set it to the start of month.
-   *
-   * @public
-   */
-  startOfMonth() {
-    return new FDate(this.value.startOf("month"));
-  }
-  /**
-   * Returns a cloned {@link FDate} object and set it to the end of month.
-   *
-   * @public
-   */
-  endOfMonth() {
-    return new FDate(this.value.endOf("month"));
-  }
-  /**
-   * Returns a new {@link FDate} object with a specified amount of days added.
-   * Specify a negative amount in order to subtract days.
-   *
-   * ```
-   * FDate().addDays(7)// => FDate
-   * ```
-   *
-   * @public
-   */
-  addDays(value) {
-    return new FDate(this.value.add(value, "day"));
-  }
-  /**
-   * Returns a cloned {@link FDate} object with a specified amount of months added.
-   * Specify a negative amount in order to subtract months.
-   *
-   * ```
-   * FDate().addMonths(7)// => FDate
-   * ```
-   *
-   * @public
-   */
-  addMonths(value) {
-    return new FDate(this.value.add(value, "month"));
-  }
-  /**
-   * Returns a new {@link FDate} object with a specified amount of years added.
-   * Specify a negative amount in order to subtract years.
-   *
-   * ```
-   * FDate().addYears(7)// => FDate
-   * ```
-   *
-   * @public
-   */
-  addYears(value) {
-    return new FDate(this.value.add(value, "year"));
-  }
-  /**
-   * Returns a new {@link FDate} object with the date before This one.
-   *
-   * @public
-   * @since v6.12.0
-   */
-  previous() {
-    return this.addDays(-1);
-  }
-  next() {
-    return this.addDays(1);
-  }
-  /**
-   * Compares two {@link FDate} objects and returns `true` if they represent the
-   * same date.
-   *
-   * Invalid dates always returns `false`.
-   *
-   * @public
-   * @param rhs - The date to compare with.
-   * @returns `true` if the dates represent the same date.
-   */
-  equals(rhs) {
-    if (typeof rhs === "string") {
-      rhs = FDate.fromIso(rhs);
-    }
-    return this.value.isSame(rhs.value, "day");
-  }
-  /**
-   * Returns true if this date is before given date.
-   *
-   * If the dates are the same this function returns false.
-   */
-  isBefore(rhs) {
-    if (typeof rhs === "string") {
-      rhs = FDate.fromIso(rhs);
-    }
-    return this.value.isBefore(rhs.value, "day");
-  }
-  /**
-   * Returns true if this date is after given date.
-   *
-   * If the dates are the same this function returns false.
-   */
-  isAfter(rhs) {
-    if (typeof rhs === "string") {
-      rhs = FDate.fromIso(rhs);
-    }
-    return this.value.isAfter(rhs.value, "day");
-  }
-  /**
-   * Compares two {@link FDate} objects. Returns and integer indicating whenever
-   * `a` comes before or after or is equal to `b`.
-   *
-   * - `-1` if `a` beomes before `b`.
-   * - `0` if `a` and `b` are the same date.
-   * - `1` if `a` beomes after `b`.
-   *
-   * If either or both date is invalid the result is undefined behaviour and
-   * should not be relied on. Use {@link FDate.isValid} to ensure validity
-   * first, e.g. `myArray.filter(it => it.isValid())` before sorting.
-   *
-   * @public
-   * @param a - First date object to compare.
-   * @param b - Second date object to compare.
-   * @returns `-1`, `0` or `1`
-   */
-  static compare(a, b) {
-    if (typeof a === "string") {
-      a = FDate.fromIso(a);
-    }
-    if (typeof b === "string") {
-      b = FDate.fromIso(b);
-    }
-    const aInvalid = !a.isValid();
-    const bInvalid = !b.isValid();
-    if (aInvalid || bInvalid) {
-      if (aInvalid && bInvalid) {
-        return 0;
-      } else if (aInvalid) {
-        return 1;
-      } else {
-        return -1;
-      }
-    }
-    if (a.equals(b)) {
-      return 0;
-    } else if (a.isBefore(b)) {
-      return -1;
-    } else {
-      return 1;
-    }
-  }
-  /**
-   * Returns a string representation of the date.
-   *
-   * ```
-   * FDate().toString() // "2022-05-04"
-   * FDate().toString(DateFormat.FULL) // "onsdag 4 maj 2022"
-   * FDate().toString(DateFormat.LONG) // "4 maj 2022"
-   * FDate().toString(DateFormat.ISO8601) // "2022-04-20"
-   * ```
-   *
-   * @public
-   * @param format - Format to use.
-   */
-  toString(format = DateFormat$1.ISO8601) {
-    if (this.isValid()) {
-      const template = formatter[getLocale()][format];
-      return this.value.locale(getLocale()).format(template);
-    } else {
-      return "";
-    }
-  }
-  /**
-   * To serialize as an ISO8601 string.
-   *
-   * ```
-   * FDate().toJSON() // "2019-01-25"
-   * ```
-   *
-   * @public
-   */
-  toJSON() {
-    return this.toString(DateFormat$1.ISO8601);
-  }
-}
-function parseDate(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  const normalized = normalizeDateFormat(value);
-  if (!normalized) {
-    return void 0;
-  }
-  const date = FDate.fromIso(normalized);
-  if (date.isValid()) {
-    return date.toString();
-  } else {
-    return void 0;
-  }
-}
-function stripWhitespace(text) {
-  return text.replace(/\s+/g, "");
-}
-const NUMBER_REGEXP$1 = /^(-?\d+)([,.]\d+)?$/;
-function replaceCommaWithDot(str) {
-  return str.replace(",", ".");
-}
-function replaceMinusSignWithDash(str) {
-  return str.replace("−", "-");
-}
-function parseNumber(value, fractionDigits) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  const stripped = stripWhitespace(value);
-  const numberString = replaceCommaWithDot(replaceMinusSignWithDash(stripped));
-  if (!NUMBER_REGEXP$1.test(numberString)) {
-    return void 0;
-  }
-  const number = Number(numberString);
-  const parsedNumber = isSet(fractionDigits) ? getNumberWithFraction(number, fractionDigits) : number;
-  return isNaN(parsedNumber) ? void 0 : parsedNumber;
-}
-function getNumberWithFraction(value, fractionDigits) {
-  if (fractionDigits < 0) {
-    return NaN;
-  }
-  const exp = 10 ** fractionDigits;
-  return Math.sign(value) * (Math.round(Math.abs(value) * exp) / exp);
-}
-function getNowDetails(now) {
-  const nowIso = now.toString();
-  return {
-    nowCentury: nowIso.substring(0, 2),
-    nowYear: nowIso.substring(2, 4),
-    nowMonthDay: nowIso.substring(5, 7) + nowIso.substring(8, 10)
-  };
-}
-function resolveCentury(year, month, day, hasPlus, now) {
-  const { nowCentury, nowYear, nowMonthDay } = getNowDetails(now);
-  let subtractCenturies = 0;
-  if (hasPlus) {
-    subtractCenturies += 1;
-  }
-  if (year > nowYear || year === nowYear && !hasPlus && `${month}${day}` > nowMonthDay) {
-    subtractCenturies += 1;
-  }
-  return (Number(nowCentury) - subtractCenturies).toString();
-}
-const PERSONNUMMER_REGEXP = /^(?<century>\d{2})?(?<year>\d{2})(?<month>\d{2})(?<day>\d{2})(?<sign>[-+])?(?<check>\d{4})$/;
-function getDayWithoutSamordning(day) {
-  return (Number(day) % 60).toString().padStart(2, "0");
-}
-function getPersonnummerString(century, year, month, day, check) {
-  return `${century}${year}${month}${day}-${check}`;
-}
-function isValidDate(date, now) {
-  if (!date.isValid() || date.isBefore("1840-05-06") || date.isAfter(now)) {
-    return false;
-  }
-  return true;
-}
-function parsePersonnummer(value, now = FDate.now()) {
-  if (!isSet(value)) {
-    return void 0;
-  }
-  const match = stripWhitespace(value).match(PERSONNUMMER_REGEXP);
-  if (!match) {
-    return void 0;
-  }
-  const { year, month, day, sign, check } = match.groups;
-  const dayWithoutSamordning = getDayWithoutSamordning(day);
-  const century = match.groups?.century ?? resolveCentury(year, month, dayWithoutSamordning, sign === "+", now);
-  if (day === "60") {
-    return getPersonnummerString(century, year, month, day, check);
-  }
-  const date = FDate.fromYearMonthDay(century + year, month, dayWithoutSamordning);
-  if (!isValidDate(date, now)) {
-    return void 0;
-  }
-  return getPersonnummerString(century, year, month, day, check);
-}
-function parsePersonnummerLuhn(value) {
-  const parsed = parsePersonnummer(value);
-  if (!parsed) {
-    return void 0;
-  }
-  if (!validChecksum(parsed)) {
-    return void 0;
-  }
-  return parsed;
-}
-function formatPersonnummerToDate(value) {
-  const datePart = parseDate(parsePersonnummer(value)?.slice(0, 8) ?? "");
-  if (!datePart) {
-    return void 0;
-  }
-  return FDate.fromIso(datePart);
-}
-const PLUSGIRO_REGEXP = /^\d{1,7}-?\d$/;
-function hyphenShouldBeAdded(value) {
-  return value.length >= 2 && value.length <= 8;
-}
-function parsePlusgiro(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  value = value.replace(/ /g, "");
-  value = value.replace(/\D/g, "");
-  if (!PLUSGIRO_REGEXP.test(value) || !testLuhnChecksum(value.replace(/\D/g, ""))) {
-    return void 0;
-  }
-  if (hyphenShouldBeAdded(value)) {
-    value = `${value.substring(0, value.length - 1)}-${value[value.length - 1]}`;
-  }
-  const startOffset = 4;
-  let formattedString = value.substring(value.length - startOffset, value.length);
-  const step = 2;
-  for (let i = value.length - startOffset; i >= (value.length === 9 ? 3 : 1); i -= step) {
-    formattedString = `${value.substring(Math.max(i - step, 0), i)} ${formattedString}`;
-  }
-  if (value.length === 9) {
-    formattedString = value.substring(0, 1) + formattedString;
-  }
-  return formattedString;
-}
-const POSTAL_CODE_REGEXP = /^([1-9]\d{2}) ?(\d{2})$/;
-function formatPostalCode(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  const match = value.match(POSTAL_CODE_REGEXP);
-  if (match === null) {
-    return void 0;
-  }
-  return `${match[1]} ${match[2]}`;
-}
-function parsePostalCode(value) {
-  return formatPostalCode(value);
-}
-const ORGANISATIONSNUMMER_REGEXP = /^(\d{6})-?(\d{4})$/;
-function parseOrganisationsnummer(value) {
-  if (isEmpty(value)) {
-    return void 0;
-  }
-  const match = value.match(ORGANISATIONSNUMMER_REGEXP);
-  if (!match) {
-    return void 0;
-  }
-  if (!testLuhnChecksum(`${match[1]}${match[2]}`)) {
-    return void 0;
-  }
-  return `${match[1]}-${match[2]}`;
-}
+});
 function documentOrderComparator(a, b) {
   if (!a) {
     return 1;
@@ -9504,20 +9242,20 @@ function elementTop(element) {
 }
 function scrollTo(element, arg = 0) {
   if (typeof arg === "number") {
-    const offset = arg;
+    const offset2 = arg;
     const bodyRect = document.body.getBoundingClientRect();
     const elemRect = element.getBoundingClientRect();
-    const scroll = elemRect.top - bodyRect.top - offset;
+    const scroll = elemRect.top - bodyRect.top - offset2;
     window.scrollTo({ top: scroll, behavior: "smooth" });
     return Promise.resolve();
   } else {
     return scrollToSlow(element, arg.duration ?? 500, arg.offset ?? 0);
   }
 }
-function scrollToSlow(element, duration, offset = 0) {
+function scrollToSlow(element, duration, offset2 = 0) {
   const steps = duration / 1e3 * FRAMERATE;
   const interval = duration / steps;
-  const target = elementTop(element) - offset;
+  const target = elementTop(element) - offset2;
   const scrollRange = target - window.pageYOffset;
   function tween(s) {
     return target - easeInEaseOut(scrollRange, 0, s);
@@ -9603,26 +9341,38 @@ function popFocus(handle, options = {}) {
   const { restoreFocus = true } = options;
   if (_focusElementStack.length === 0) {
     const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
-    if (configLogic.production) {
+    {
       console.error(emptyStackErrorMsg);
       return;
-    } else {
-      throw new Error(emptyStackErrorMsg);
     }
   }
   const top = _focusElementStack.pop();
   if (top?.id !== handle[sym$1]) {
     const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym$1])}`;
-    if (configLogic.production) {
+    {
       console.error(outOfOrderErrorMsg);
       return;
-    } else {
-      throw new Error(outOfOrderErrorMsg);
     }
   }
   if (restoreFocus) {
     focus$1(top?.element);
   }
+}
+function handleTab(event, container) {
+  const elements = findTabbableElements(container);
+  let targetIndex = elements.indexOf(event.target);
+  if (event.shiftKey) {
+    targetIndex--;
+  } else {
+    targetIndex++;
+  }
+  if (targetIndex < 0) {
+    targetIndex = elements.length - 1;
+  } else if (targetIndex >= elements.length) {
+    targetIndex = 0;
+  }
+  focus$1(elements[targetIndex]);
+  event.preventDefault();
 }
 function isRadiobuttonOrCheckbox(element) {
   return element instanceof HTMLInputElement && (element.type === "radio" || element.type === "checkbox");
@@ -10027,8 +9777,8 @@ class ValidationServiceImpl {
       src = element2;
     }
     if (!isValidatableHTMLElement(src)) {
-      const tagName = src.tagName.toLowerCase();
-      const ref2 = `${tagName}#${src.id}`;
+      const tagName2 = src.tagName.toLowerCase();
+      const ref2 = `${tagName2}#${src.id}`;
       throw new Error(`Element "${ref2}" is not a validatable element`);
     }
     const element = src;
@@ -10059,8 +9809,8 @@ class ValidationServiceImpl {
       };
       element.addEventListener("validity", once);
       const watchdog = setTimeout(() => {
-        const tagName = element.tagName.toLowerCase();
-        const ref2 = `${tagName}#${element.id}`;
+        const tagName2 = element.tagName.toLowerCase();
+        const ref2 = `${tagName2}#${element.id}`;
         element.removeEventListener("validity", once);
         reject(`Element "${ref2}" did not respond with validity event after 500ms`);
       }, 500);
@@ -10300,423 +10050,6 @@ class ValidationServiceImpl {
   }
 }
 const ValidationService = /* @__PURE__ */ new ValidationServiceImpl();
-const allowListValidator = {
-  name: "allowList",
-  validation(value, element, config2) {
-    if (isEmpty(value) || config2.list === void 0 || config2.list.length === 0) {
-      return true;
-    }
-    return config2.list.includes(value);
-  }
-};
-const bankAccountNumberValidator = {
-  name: "bankAccountNumber",
-  validation(value) {
-    return isEmpty(value) || isSet(parseBankAccountNumber(value));
-  }
-};
-const bankgiroValidator = {
-  name: "bankgiro",
-  validation(value) {
-    return isEmpty(value) || isSet(parseBankgiro(value));
-  }
-};
-function toArray(value) {
-  if (Array.isArray(value)) {
-    return value;
-  } else {
-    return [value];
-  }
-}
-const blacklistValidator = {
-  name: "blacklist",
-  validation(value, _element, config2) {
-    if (!config2.values) {
-      throw new Error("config.exclude must have values");
-    }
-    const values = toArray(config2.values);
-    const found = values.some((it) => String(it) === value);
-    return !found;
-  }
-};
-const clearingNumberValidator = {
-  name: "clearingNumber",
-  validation(value) {
-    return isEmpty(value) || isSet(parseClearingNumber(value));
-  }
-};
-const currencyValidator = {
-  name: "currency",
-  validation(value) {
-    return isEmpty(value) || isSet(parseNumber(value));
-  }
-};
-const dateValidator = {
-  name: "date",
-  validation(value) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalized = normalizeDateFormat(value);
-    if (!normalized) {
-      return false;
-    }
-    const parsed = FDate.fromIso(normalized);
-    return parsed.isValid();
-  }
-};
-const dateFormatValidator = {
-  name: "dateFormat",
-  validation(value) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalized = normalizeDateFormat(value);
-    return Boolean(normalized);
-  }
-};
-function createNumberRegexp(minDecimals = 0, maxDecimals = 2) {
-  return new RegExp(`^([-−]?[0-9]+)([,.][0-9]{${String(minDecimals)},${String(maxDecimals)}})(?<![,.])$`);
-}
-const decimalValidator = {
-  name: "decimal",
-  validation(value, _element, config2) {
-    const valueWithoutWhitespace = isSet(value) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-      stripWhitespace(String(value))
-    ) : value;
-    const minDecimalsAsNumber = isSet(config2.minDecimals) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-      Number(config2.minDecimals)
-    ) : void 0;
-    const maxDecimalsAsNumber = isSet(config2.maxDecimals) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-      Number(config2.maxDecimals)
-    ) : void 0;
-    if (config2.minDecimals && isNaN(minDecimalsAsNumber)) {
-      throw new Error("config.minDecimals must be a number");
-    }
-    if (config2.maxDecimals && isNaN(maxDecimalsAsNumber)) {
-      throw new Error("config.maxDecimals must be a number");
-    }
-    return isEmpty(valueWithoutWhitespace) || createNumberRegexp(minDecimalsAsNumber, maxDecimalsAsNumber).test(valueWithoutWhitespace);
-  }
-};
-const emailValidator = {
-  name: "email",
-  validation(value, _element, config2) {
-    const maxLength = config2.maxLength ?? 254;
-    const EMAIL_REGEXP = new RegExp(`^(?=.{1,${String(maxLength)}}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+(\\.[-!#$%&'*+/0-9=?A-Z^_\`a-z{|}~åäöÅÄÖ]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$`);
-    return isEmpty(value) || EMAIL_REGEXP.test(value);
-  }
-};
-function numberValidator$1(value, config2, name, compare2) {
-  if (value === "") {
-    return true;
-  }
-  const limit = config2[name];
-  if (!isSet(limit)) {
-    return false;
-  }
-  const limitAsNumber = parseNumber(String(config2[name]));
-  if (limitAsNumber === void 0) {
-    throw new Error(`config.${String(name)} must be a number`);
-  }
-  const valueAsNumber = parseNumber(value);
-  if (valueAsNumber === void 0) {
-    return false;
-  }
-  return compare2(valueAsNumber, limitAsNumber);
-}
-const greaterThanValidator = {
-  name: "greaterThan",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 > limit);
-  }
-};
-const NUMBER_REGEXP = /^([-−]?\d+)?$/;
-const integerValidator = {
-  name: "integer",
-  validation(value) {
-    const valueWithoutWhitespace = isSet(value) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-      stripWhitespace(String(value))
-    ) : value;
-    return isEmpty(valueWithoutWhitespace) || NUMBER_REGEXP.test(valueWithoutWhitespace);
-  }
-};
-function isInvalidDatesConfig(value) {
-  return Boolean(value.dates);
-}
-const invalidDatesValidator = {
-  name: "invalidDates",
-  validation(value, element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    if (!isInvalidDatesConfig(config2)) {
-      throw new Error(`Invalid invalidDates config for ${element.id}`);
-    }
-    return !config2.dates.includes(value);
-  }
-};
-function isInvalidWeekdaysConfig(value) {
-  return Boolean(value.days);
-}
-const invalidWeekdaysValidator = {
-  name: "invalidWeekdays",
-  validation(value, element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    if (!isInvalidWeekdaysConfig(config2)) {
-      throw new Error(`Invalid invalidWeekdays config for ${element.id}`);
-    }
-    const day = FDate.fromIso(value).weekDay;
-    return !config2.days.includes(day);
-  }
-};
-const lessThanValidator = {
-  name: "lessThan",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, "limit", (value2, limit) => value2 < limit);
-  }
-};
-const matchesValidator = {
-  name: "matches",
-  validation(value, _element, config2) {
-    if (!isSet(config2.id) || !isSet(value)) {
-      return true;
-    }
-    const el = document.getElementById(config2.id);
-    return el.value === value;
-  }
-};
-const maxDateValidator = {
-  name: "maxDate",
-  validation(value, _element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalizedValue = normalizeDateFormat(value);
-    if (!normalizedValue) {
-      return false;
-    }
-    const parsed = FDate.fromIso(normalizedValue);
-    const limit = FDate.fromIso(validLimit(config2.limit));
-    return parsed.equals(limit) || parsed.isBefore(limit);
-  }
-};
-const maxLengthValidator = {
-  name: "maxLength",
-  validation(value, _element, config2) {
-    return config2.length ? value.length <= config2.length : true;
-  }
-};
-const maxValueValidator = {
-  name: "maxValue",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, this.name, (value2, limit) => value2 <= limit);
-  }
-};
-const minDateValidator = {
-  name: "minDate",
-  validation(value, _element, config2) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    const normalizedValue = normalizeDateFormat(value);
-    if (!normalizedValue) {
-      return false;
-    }
-    const parsed = FDate.fromIso(normalizedValue);
-    const limit = FDate.fromIso(validLimit(config2.limit));
-    return parsed.equals(limit) || parsed.isAfter(limit);
-  }
-};
-const minLengthValidator = {
-  name: "minLength",
-  validation(value, _element, config2) {
-    return config2.length && value ? value.length >= config2.length : true;
-  }
-};
-const minValueValidator = {
-  name: "minValue",
-  validation(value, _element, config2) {
-    return numberValidator$1(value, config2, this.name, (value2, limit) => value2 >= limit);
-  }
-};
-const numberValidator = {
-  name: "number",
-  validation(value) {
-    return isEmpty(value) || isSet(parseNumber(value));
-  }
-};
-const organisationsnummerValidator = {
-  name: "organisationsnummer",
-  validation(value) {
-    return isEmpty(value) || isSet(parseOrganisationsnummer(value));
-  }
-};
-const PERCENT_REGEXP = /^([-+]?\d+)([,.]\d+)?$/;
-const percentValidator = {
-  name: "percent",
-  validation(value) {
-    const valueWithoutWhitespace = isSet(value) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-      stripWhitespace(String(value))
-    ) : value;
-    return isEmpty(valueWithoutWhitespace) || PERCENT_REGEXP.test(valueWithoutWhitespace);
-  }
-};
-const personnummerFormatValidator = {
-  name: "personnummerFormat",
-  validation(value) {
-    return isEmpty(value) || isSet(parsePersonnummer(value));
-  }
-};
-const personnummerLuhnValidator = {
-  name: "personnummerLuhn",
-  validation(value) {
-    return isEmpty(value) || isSet(parsePersonnummerLuhn(value));
-  }
-};
-const personnummerNotSame = {
-  name: "personnummerNotSame",
-  validation(value, _element, config2) {
-    const valuePnr = parsePersonnummer(String(value));
-    if (!valuePnr) {
-      return true;
-    }
-    const otherFieldPnr = parsePersonnummer(String(config2.otherField));
-    if (!otherFieldPnr) {
-      return true;
-    }
-    if (valuePnr === otherFieldPnr) {
-      return false;
-    }
-    return true;
-  }
-};
-const personnummerOlder = {
-  name: "personnummerOlder",
-  validation(value, _element, config2) {
-    const valueAsDate = formatPersonnummerToDate(value);
-    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
-    if (!valueAsDate || !otherAsDate) {
-      return true;
-    }
-    return FDate.compare(valueAsDate, otherAsDate) !== 1;
-  }
-};
-const personnummerYounger = {
-  name: "personnummerYounger",
-  validation(value, _element, config2) {
-    const valueAsDate = formatPersonnummerToDate(value);
-    const otherAsDate = formatPersonnummerToDate(String(config2.otherField));
-    if (!valueAsDate || !otherAsDate) {
-      return true;
-    }
-    return FDate.compare(valueAsDate, otherAsDate) !== -1;
-  }
-};
-const PHONE_NUMBER_REGEXP = /^(\+?[-_/() ]*(\d[-_/() ]*?){3,17})$/;
-const phoneNumberValidator = {
-  name: "phoneNumber",
-  validation(value) {
-    if (isEmpty(value)) {
-      return true;
-    }
-    if (!isString(value) || value.length > 21) {
-      return false;
-    }
-    return PHONE_NUMBER_REGEXP.test(value);
-  }
-};
-const plusgiroValidator = {
-  name: "plusgiro",
-  validation(value) {
-    return isEmpty(value) || isSet(parsePlusgiro(value));
-  }
-};
-const postalCodeValidator = {
-  name: "postalCode",
-  validation(value) {
-    return isEmpty(value) || isSet(parsePostalCode(value));
-  }
-};
-const REQUIRED_REGEXP = /^\S+/;
-function isRelevantElement(input) {
-  return isRadiobuttonOrCheckbox(input) && !input.disabled;
-}
-function validateFieldset(fieldset) {
-  const inputs = Array.from(fieldset.elements).filter(isRelevantElement);
-  return inputs.length > 0 ? inputs.some((input) => input.checked) : true;
-}
-function validateChecked(element) {
-  return element.checked;
-}
-function validateInput(value) {
-  return REQUIRED_REGEXP.test(value);
-}
-const requiredValidator = {
-  name: "required",
-  validation(value, element) {
-    if (element instanceof HTMLFieldSetElement) {
-      return validateFieldset(element);
-    } else if (isRadiobuttonOrCheckbox(element)) {
-      return validateChecked(element);
-    } else {
-      return validateInput(value);
-    }
-  }
-};
-const WHITELIST_REGEXP = /^[a-zA-Z0-9 .,\-()\r\n?+=!:@*\xC0-\xFF]*$/;
-const whitelistValidator = {
-  name: "whitelist",
-  instant: true,
-  validation(_value, element) {
-    const value = "value" in element ? element.value : "";
-    return isEmpty(value) || WHITELIST_REGEXP.test(value);
-  }
-};
-const availableValidators = [
-  allowListValidator,
-  bankAccountNumberValidator,
-  bankgiroValidator,
-  blacklistValidator,
-  clearingNumberValidator,
-  currencyValidator,
-  dateFormatValidator,
-  dateValidator,
-  decimalValidator,
-  emailValidator,
-  greaterThanValidator,
-  integerValidator,
-  invalidDatesValidator,
-  invalidWeekdaysValidator,
-  lessThanValidator,
-  matchesValidator,
-  maxDateValidator,
-  maxLengthValidator,
-  maxValueValidator,
-  minDateValidator,
-  minLengthValidator,
-  minValueValidator,
-  numberValidator,
-  organisationsnummerValidator,
-  percentValidator,
-  personnummerFormatValidator,
-  personnummerLuhnValidator,
-  personnummerNotSame,
-  personnummerOlder,
-  personnummerYounger,
-  phoneNumberValidator,
-  plusgiroValidator,
-  postalCodeValidator,
-  requiredValidator,
-  whitelistValidator
-];
 const SCREEN_READER_DELAY = 100;
 function waitForScreenReader(callback, delay = SCREEN_READER_DELAY) {
   return new Promise((resolve2, reject) => {
@@ -11644,10 +10977,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.47.0",
+    version: "3.48.0",
     mode: IS_PURE ? "pure" : "global",
-    copyright: "© 2014-2025 Denis Pushkarev (zloirock.ru), 2025 CoreJS Company (core-js.io)",
-    license: "https://github.com/zloirock/core-js/blob/v3.47.0/LICENSE",
+    copyright: "© 2013–2025 Denis Pushkarev (zloirock.ru), 2025–2026 CoreJS Company (core-js.io). All rights reserved.",
+    license: "https://github.com/zloirock/core-js/blob/v3.48.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -13215,31 +12548,6 @@ function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8, _hoisted_2$N)], 16, _hoisted_1$12);
 }
 const FIcon = /* @__PURE__ */ _export_sfc$1(_sfc_main$1o, [["render", _sfc_render$P]]);
-const DATA_TEST_ATTRIBUTE_NAME = "data-test";
-function throwErrorIfEmpty(value) {
-  if (!value) {
-    throw new Error(`Did you forgot to add a value to v-test?`);
-  }
-}
-const TestDirective = {
-  mounted(el, {
-    value
-  }) {
-    throwErrorIfEmpty(value);
-    el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
-  },
-  updated(el, {
-    value
-  }) {
-    throwErrorIfEmpty(value);
-    el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
-  }
-};
-const TestPlugin = {
-  install(app2) {
-    app2.directive("test", TestDirective);
-  }
-};
 function translate(key, defaultValueOrArgs, args) {
   const {
     provider
@@ -15302,6 +14610,25 @@ function requireEs_iterator_find() {
   return es_iterator_find;
 }
 requireEs_iterator_find();
+function itemEquals(item1, item2, compareAttribute) {
+  if (!isSet(item1) || !isSet(item2)) {
+    return false;
+  }
+  if (item1 === item2) {
+    return true;
+  }
+  return item1[compareAttribute] === item2[compareAttribute];
+}
+function includeItem(item, itemList, compareAttribute) {
+  if (!isSet(item) || !isSet(itemList)) {
+    return false;
+  }
+  const itemCompareValue = item[compareAttribute];
+  const match = itemList.find((it) => {
+    return it[compareAttribute] === itemCompareValue;
+  });
+  return Boolean(match);
+}
 var TableScroll = /* @__PURE__ */ ((TableScroll2) => {
   TableScroll2["HORIZONTAL"] = "horizontal";
   TableScroll2["VERTICAL"] = "vertical";
@@ -15338,20 +14665,51 @@ function dispatchComponentValidityEvent(element, detail) {
     bubbles: true
   }));
 }
-function dispatchComponentUnmountEvent(element) {
-  const event = new CustomEvent("component-unmount", {
-    detail: {
-      elementId: element.id
-    },
-    bubbles: true
-  });
-  element.dispatchEvent(event);
-}
 function refIsElement(value) {
   return value instanceof Element;
 }
+function refIsHTMLElementArray(value) {
+  return Array.isArray(value) && value.length > 0 && value[0] instanceof HTMLElement;
+}
 function refIsVue(value) {
   return value?.$el !== void 0;
+}
+function refIsVueArray(value) {
+  return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
+}
+function getSortedHTMLElementsFromVueRef(ref2) {
+  const htmlElements = getHTMLElementsFromVueRef(ref2);
+  htmlElements.sort((lhs, rhs) => {
+    const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
+    const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
+    return lhsIndex === rhsIndex ? 0 : lhsIndex - rhsIndex;
+  });
+  return htmlElements;
+}
+function parseIntOrDefault(value, defaultValue) {
+  if (typeof value === "string") {
+    const parsed = parseInt(value, 10);
+    if (!isNaN(parsed)) {
+      return parsed;
+    }
+  }
+  return defaultValue;
+}
+function getHTMLElementsFromVueRef(ref2) {
+  let result = [];
+  if (isEmptyArray(ref2)) {
+    result = [];
+  } else if (refIsVueArray(ref2)) {
+    result = ref2.map((vueRef) => vueRef.$el);
+  } else if (refIsHTMLElementArray(ref2)) {
+    result = [...ref2];
+  } else if (isSet(ref2)) {
+    result = [getHTMLElementFromVueRef(ref2)];
+  }
+  return result;
+}
+function isEmptyArray(value) {
+  return Array.isArray(value) && value.length === 0;
 }
 function findElementFromVueRef(ref2) {
   if (refIsElement(ref2)) {
@@ -15376,7 +14734,6 @@ var FKUIConfigButtonOrder = /* @__PURE__ */ ((FKUIConfigButtonOrder2) => {
   return FKUIConfigButtonOrder2;
 })(FKUIConfigButtonOrder || {});
 let popupContainer = document.body;
-let production = true;
 const config = {
   buttonOrder: FKUIConfigButtonOrder.RIGHT_TO_LEFT,
   teleportTarget: document.body,
@@ -15393,21 +14750,8 @@ const config = {
   },
   set popupContainer(value) {
     popupContainer = value;
-  },
-  set production(value) {
-    production = value;
-    configLogic.production = value;
-  },
-  get production() {
-    return production;
   }
 };
-function setRunningContext(app2) {
-  const fkuiContext = {
-    appContext: app2._context
-  };
-  app2.config.globalProperties.$fkui = fkuiContext;
-}
 function focusElement(element, container) {
   if (elementIsRadioButton(element)) {
     focusRadioButtonGroup(element, container);
@@ -16793,11 +16137,11 @@ function getTextContent(children, options) {
     }
   }).join("");
 }
-function renderSlotText(render, props = {}, options) {
-  if (!render) {
+function renderSlotText(render2, props = {}, options) {
+  if (!render2) {
     return void 0;
   }
-  const nodes = render(props);
+  const nodes = render2(props);
   if (nodes.length === 0) {
     return void 0;
   }
@@ -16818,6 +16162,45 @@ function hasSlot(vm, name, props = {}, options = {}) {
     ...options
   };
   return Boolean(renderSlotText(slot, props, effectiveOptions));
+}
+var MenuAction = /* @__PURE__ */ ((MenuAction2) => {
+  MenuAction2[MenuAction2["MOVE_NEXT"] = 0] = "MOVE_NEXT";
+  MenuAction2[MenuAction2["MOVE_PREV"] = 1] = "MOVE_PREV";
+  MenuAction2[MenuAction2["MOVE_FIRST"] = 2] = "MOVE_FIRST";
+  MenuAction2[MenuAction2["MOVE_LAST"] = 3] = "MOVE_LAST";
+  MenuAction2[MenuAction2["ACTIVATE"] = 4] = "ACTIVATE";
+  return MenuAction2;
+})(MenuAction || {});
+function actionFromKeyboardEvent(event) {
+  switch (event.key) {
+    case "End":
+      return MenuAction.MOVE_LAST;
+    case "Home":
+      return MenuAction.MOVE_FIRST;
+    case "Up":
+    case "ArrowUp":
+      return MenuAction.MOVE_PREV;
+    case "Down":
+    case "ArrowDown":
+      return MenuAction.MOVE_NEXT;
+    case "Left":
+    case "ArrowLeft":
+      return MenuAction.MOVE_PREV;
+    case "Right":
+    case "ArrowRight":
+      return MenuAction.MOVE_NEXT;
+    case "Tab":
+      if (event.shiftKey) {
+        return MenuAction.MOVE_PREV;
+      }
+      return MenuAction.MOVE_NEXT;
+    case " ":
+    case "Spacebar":
+    case "Enter":
+      return MenuAction.ACTIVATE;
+    default:
+      return null;
+  }
 }
 function getAbsolutePosition(src) {
   if (!src) {
@@ -17422,6 +16805,9 @@ let internalIndex = 0;
 function isObject$1(value) {
   return Boolean(value && typeof value === "object");
 }
+function getLegacyInternalKey() {
+  return sym;
+}
 function findItemIdentifier(item) {
   if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
     return item[sym];
@@ -17437,7 +16823,11 @@ function setItemIdentifier(item, value) {
   Object.defineProperty(item, sym, {
     value: value !== null && value !== void 0 ? value : internalIndex++,
     enumerable: false,
-    writable: false
+    /* technical debt: this should be false to prevent modification after
+     * set, but the `deepClone` from `@fkui/logic` (based on `cloneDeep`
+     * from `lodash`) copies but does not preserve enumerable attribute
+     * causing components such as `FCrudDataset` to fail. */
+    writable: true
   });
 }
 function setItemIdentifiers(items, attribute, expandableAttribute) {
@@ -17449,6 +16839,12 @@ function setItemIdentifiers(items, attribute, expandableAttribute) {
         ensureUniqueKey(attribute, value, index, seenValues);
       }
       setItemIdentifier(item, value);
+      if (expandableAttribute !== void 0) {
+        const nestedItem = item[expandableAttribute];
+        if (Array.isArray(nestedItem)) {
+          process(nestedItem);
+        }
+      }
       return item;
     });
   };
@@ -17471,74 +16867,196 @@ function ensureUniqueKey(attribute, value, index, seenValues) {
   }
   seenValues.add(value);
 }
-function getValidatableElement(element) {
-  if (isValidatableHTMLElement(element)) {
-    return element;
+function tryOnScopeDispose(fn2) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn2);
+    return true;
   }
-  const validatableInsideElement = element.querySelector("input, textarea, select");
-  if (validatableInsideElement) {
-    return validatableInsideElement;
-  } else {
-    throw new Error(`Couldn't find any validatable element`);
-  }
+  return false;
 }
-function triggerInitialValidation(el) {
-  const target = getValidatableElement(el);
-  ValidationService.validateElement(target);
-}
-function registerValidators(el, binding) {
-  const {
-    modifiers: bindingModifiers = {},
-    value: bindingValue = {}
-  } = binding;
-  const target = getValidatableElement(el);
-  Object.keys(bindingValue).forEach((validatorName) => {
-    if (!bindingModifiers[validatorName]) {
-      throw new Error(`Have you forget to add '${validatorName}' to v-validation.${validatorName}?`);
-    }
-  });
-  const validatorConfigs = {};
-  Object.keys(bindingModifiers).forEach((validatorName) => {
-    validatorConfigs[validatorName] = bindingValue[validatorName] || {};
-  });
-  ValidationService.addValidatorsToElement(target, validatorConfigs);
-}
-const ValidationDirective = {
-  beforeMount(el, binding) {
-    registerValidators(el, binding);
-  },
-  beforeUnmount(el, _binding) {
-    const validatableElement = getValidatableElement(el);
-    dispatchComponentUnmountEvent(validatableElement);
-    ValidationService.removeValidatorsFromElement(validatableElement);
-  },
-  updated(el, binding) {
-    if (!isEqual$1(binding.value, binding.oldValue)) {
-      registerValidators(el, binding);
-    }
-  },
-  mounted(el) {
-    triggerInitialValidation(el);
-  }
+const localProvidedStateMap = /* @__PURE__ */ new WeakMap();
+const injectLocal = (...args) => {
+  var _a;
+  const key = args[0];
+  const instance = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy;
+  if (instance == null && !hasInjectionContext())
+    throw new Error("injectLocal must be called in setup");
+  if (instance && localProvidedStateMap.has(instance) && key in localProvidedStateMap.get(instance))
+    return localProvidedStateMap.get(instance)[key];
+  return inject(...args);
 };
-const ValidationPrefixDirective = {
-  beforeMount(el, binding) {
-    el.addEventListener("component-validity", (event) => {
-      const e = event;
-      e.detail.errorMessage = `${String(binding.value)}${e.detail.errorMessage}`;
-    });
-  }
-};
-const ValidationPlugin = {
-  install(app2) {
-    for (const validator of availableValidators) {
-      ValidationService.registerValidator(validator);
-    }
-    app2.directive("validation", ValidationDirective);
-    app2.directive("validationPrefix", ValidationPrefixDirective);
-  }
-};
+const isClient = typeof window !== "undefined" && typeof document !== "undefined";
 typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
+const notNullish = (val) => val != null;
+const toString = Object.prototype.toString;
+const isObject = (val) => toString.call(val) === "[object Object]";
+function pxValue(px) {
+  return px.endsWith("rem") ? Number.parseFloat(px) * 16 : Number.parseFloat(px);
+}
+function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+function watchImmediate(source, cb, options) {
+  return watch(
+    source,
+    cb,
+    {
+      ...options,
+      immediate: true
+    }
+  );
+}
+const defaultWindow = isClient ? window : void 0;
+function unrefElement(elRef) {
+  var _a;
+  const plain = toValue(elRef);
+  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
+}
+function useEventListener$1(...args) {
+  const cleanups = [];
+  const cleanup = () => {
+    cleanups.forEach((fn2) => fn2());
+    cleanups.length = 0;
+  };
+  const register = (el, event, listener, options) => {
+    el.addEventListener(event, listener, options);
+    return () => el.removeEventListener(event, listener, options);
+  };
+  const firstParamTargets = computed(() => {
+    const test = toArray(toValue(args[0])).filter((e) => e != null);
+    return test.every((e) => typeof e !== "string") ? test : void 0;
+  });
+  const stopWatch = watchImmediate(
+    () => {
+      var _a, _b;
+      return [
+        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
+        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
+        toArray(unref(firstParamTargets.value ? args[2] : args[1])),
+        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
+        toValue(firstParamTargets.value ? args[3] : args[2])
+      ];
+    },
+    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
+      cleanup();
+      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
+        return;
+      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
+      cleanups.push(
+        ...raw_targets.flatMap(
+          (el) => raw_events.flatMap(
+            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
+          )
+        )
+      );
+    },
+    { flush: "post" }
+  );
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(cleanup);
+  return stop;
+}
+function useMounted() {
+  const isMounted = /* @__PURE__ */ shallowRef(false);
+  const instance = getCurrentInstance();
+  if (instance) {
+    onMounted(() => {
+      isMounted.value = true;
+    }, instance);
+  }
+  return isMounted;
+}
+function useSupported(callback) {
+  const isMounted = useMounted();
+  return computed(() => {
+    isMounted.value;
+    return Boolean(callback());
+  });
+}
+function useMutationObserver(target, callback, options = {}) {
+  const { window: window2 = defaultWindow, ...mutationOptions } = options;
+  let observer;
+  const isSupported = useSupported(() => window2 && "MutationObserver" in window2);
+  const cleanup = () => {
+    if (observer) {
+      observer.disconnect();
+      observer = void 0;
+    }
+  };
+  const targets = computed(() => {
+    const value = toValue(target);
+    const items = toArray(value).map(unrefElement).filter(notNullish);
+    return new Set(items);
+  });
+  const stopWatch = watch(
+    () => targets.value,
+    (targets2) => {
+      cleanup();
+      if (isSupported.value && targets2.size) {
+        observer = new MutationObserver(callback);
+        targets2.forEach((el) => observer.observe(el, mutationOptions));
+      }
+    },
+    { immediate: true, flush: "post" }
+  );
+  const takeRecords = () => {
+    return observer == null ? void 0 : observer.takeRecords();
+  };
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(stop);
+  return {
+    isSupported,
+    stop,
+    takeRecords
+  };
+}
+const ssrWidthSymbol = /* @__PURE__ */ Symbol("vueuse-ssr-width");
+function useSSRWidth() {
+  const ssrWidth = hasInjectionContext() ? injectLocal(ssrWidthSymbol, null) : null;
+  return typeof ssrWidth === "number" ? ssrWidth : void 0;
+}
+function useMediaQuery(query, options = {}) {
+  const { window: window2 = defaultWindow, ssrWidth = useSSRWidth() } = options;
+  const isSupported = useSupported(() => window2 && "matchMedia" in window2 && typeof window2.matchMedia === "function");
+  const ssrSupport = /* @__PURE__ */ shallowRef(typeof ssrWidth === "number");
+  const mediaQuery = /* @__PURE__ */ shallowRef();
+  const matches = /* @__PURE__ */ shallowRef(false);
+  const handler = (event) => {
+    matches.value = event.matches;
+  };
+  watchEffect(() => {
+    if (ssrSupport.value) {
+      ssrSupport.value = !isSupported.value;
+      const queryStrings = toValue(query).split(",");
+      matches.value = queryStrings.some((queryString) => {
+        const not = queryString.includes("not all");
+        const minWidth = queryString.match(/\(\s*min-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
+        const maxWidth = queryString.match(/\(\s*max-width:\s*(-?\d+(?:\.\d*)?[a-z]+\s*)\)/);
+        let res = Boolean(minWidth || maxWidth);
+        if (minWidth && res) {
+          res = ssrWidth >= pxValue(minWidth[1]);
+        }
+        if (maxWidth && res) {
+          res = ssrWidth <= pxValue(maxWidth[1]);
+        }
+        return not ? !res : res;
+      });
+      return;
+    }
+    if (!isSupported.value)
+      return;
+    mediaQuery.value = window2.matchMedia(toValue(query));
+    matches.value = mediaQuery.value.matches;
+  });
+  useEventListener$1(mediaQuery, "change", handler, { passive: true });
+  return computed(() => matches.value);
+}
 function useEventListener(target, event, callback) {
   onMounted(() => {
     toValue(target)?.addEventListener(event, callback);
@@ -17556,6 +17074,23 @@ function useSlotUtils() {
       }, ...args);
     }
   };
+}
+function offset(page, el) {
+  const rect = el.getBoundingClientRect();
+  return {
+    top: rect.top + page.pageYOffset,
+    left: rect.left + page.pageXOffset
+  };
+}
+function getElement(anchor) {
+  if (!anchor) {
+    return null;
+  }
+  if (typeof anchor === "string") {
+    return document.getElementById(anchor);
+  } else {
+    return anchor;
+  }
 }
 var Placement = /* @__PURE__ */ ((Placement2) => {
   Placement2["A"] = "A";
@@ -17756,6 +17291,19 @@ function fitInsideArea(options) {
     /* Fallback */
   };
 }
+function getScrollToPopup(param) {
+  const popupOffset = offset({
+    pageXOffset: 0,
+    pageYOffset: param.scrollTop
+  }, param.popup);
+  const popupHeight = param.popup.offsetHeight;
+  const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
+  if (neededScroll > param.scrollTop) {
+    return neededScroll;
+  } else {
+    return param.scrollTop;
+  }
+}
 function getFallbackPosition(anchor, target, clippedArea, spacing) {
   const x = anchor.x - (target.width + spacing);
   const y = anchor.y + anchor.height + spacing;
@@ -17771,6 +17319,355 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
     };
   }
 }
+const MIN_DESKTOP_WIDTH = 640;
+const POPUP_SPACING$1 = 20;
+function getContainer(element, prop) {
+  if (prop) {
+    return prop;
+  }
+  const parent = element.closest(".popup__container");
+  if (parent) {
+    return parent;
+  }
+  return config.popupContainer;
+}
+function getFocusableElement(rootElement, callback) {
+  var _elements$;
+  if (callback) {
+    return callback();
+  }
+  const popupElement = getHTMLElementFromVueRef(rootElement);
+  const elements = findTabbableElements(popupElement);
+  return (_elements$ = elements[0]) !== null && _elements$ !== void 0 ? _elements$ : null;
+}
+function isTeleportDisabled(options) {
+  const {
+    window: window2,
+    placement,
+    forceInline,
+    forceOverlay
+  } = options;
+  const isMobileSize = window2.innerWidth < MIN_DESKTOP_WIDTH;
+  let disableTeleport = isMobileSize || placement === Placement.Fallback;
+  if (forceInline) {
+    disableTeleport = true;
+  } else if (forceOverlay) {
+    disableTeleport = false;
+  } else if (placement === Placement.NotCalculated && !isMobileSize) {
+    disableTeleport = false;
+  }
+  return disableTeleport;
+}
+const _sfc_main$16 = /* @__PURE__ */ defineComponent({
+  name: "IPopup",
+  inheritAttrs: false,
+  props: {
+    /**
+     * Toggle open/closed popup.
+     */
+    isOpen: {
+      type: Boolean,
+      required: true
+    },
+    /**
+     * DOM element to position popup at.
+     */
+    anchor: {
+      type: HTMLElement,
+      required: false,
+      default: void 0
+    },
+    /**
+     * Type of inline behaviour.
+     * - `"auto"` changes between overlay or inline depending on window size.
+     * - `"always"` forces the popup to always be inline.
+     * - `"never"` forces the popup to never be inline.
+     */
+    inline: {
+      type: String,
+      required: false,
+      validator(value) {
+        return ["always", "never", "auto"].includes(value);
+      },
+      default: "auto"
+    },
+    /**
+     * Which element to use as container.
+     */
+    container: {
+      type: HTMLElement,
+      required: false,
+      default: void 0
+    },
+    /**
+     * Which element to use as viewport.
+     */
+    viewport: {
+      type: HTMLElement,
+      required: false,
+      default() {
+        return document.documentElement;
+      }
+    },
+    /**
+     * Prevents tabbing outside of component.
+     */
+    keyboardTrap: {
+      type: Boolean,
+      required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+      default: true
+    },
+    /**
+     * Function that returns the element that will receive focus
+     */
+    focusElement: {
+      type: Function,
+      required: false,
+      default: null
+    },
+    /**
+     * Set focus on first tabbable element (or element in the `focusElement` prop if provided) when opened.
+     */
+    setFocus: {
+      type: Boolean,
+      required: false,
+      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+      default: true
+    }
+  },
+  emits: [
+    /**
+     * Emitted when popup is visible and placement is fully calculated.
+     */
+    "open",
+    /**
+     * Emitted when clicked outside of popup.
+     *
+     * Includes the reason for closing as event argument. One of:
+     *
+     * - `"click-outside"` - when clicking outside the popup with the mouse
+     * - `"escape"` - when closing the popup with the escape key.
+     */
+    "close"
+  ],
+  data() {
+    return {
+      teleportDisabled: false,
+      placement: Placement.NotCalculated,
+      focus: null
+    };
+  },
+  computed: {
+    popupClasses() {
+      const popupState = this.isInline ? ["popup--inline"] : ["popup--overlay"];
+      return ["popup", ...popupState];
+    },
+    isInline() {
+      let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
+      if (this.forceInline) {
+        isInline = true;
+      } else if (this.forceOverlay) {
+        isInline = false;
+      } else if (this.placement === Placement.NotCalculated && !this.isMobileSize()) {
+        isInline = false;
+      }
+      return isInline;
+    },
+    forceInline() {
+      return this.inline === "always";
+    },
+    forceOverlay() {
+      return this.inline === "never";
+    },
+    teleportTarget() {
+      return config.teleportTarget;
+    }
+  },
+  watch: {
+    isOpen: {
+      immediate: true,
+      handler(value) {
+        this.toggleIsOpen(value);
+        if (value) {
+          const {
+            placement,
+            forceInline,
+            forceOverlay
+          } = this;
+          this.teleportDisabled = isTeleportDisabled({
+            window,
+            placement,
+            forceInline,
+            forceOverlay
+          });
+          setTimeout(() => {
+            if (this.isOpen) {
+              document.addEventListener("click", this.onDocumentClickHandler);
+              window.addEventListener("resize", this.onWindowResizeDebounced);
+            }
+          }, 0);
+        } else {
+          document.removeEventListener("click", this.onDocumentClickHandler);
+          window.removeEventListener("resize", this.onWindowResizeDebounced);
+        }
+      }
+    }
+  },
+  created() {
+    this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
+  },
+  unmounted() {
+    document.removeEventListener("click", this.onDocumentClickHandler);
+    window.removeEventListener("resize", this.onWindowResizeDebounced);
+  },
+  methods: {
+    async toggleIsOpen(isOpen) {
+      if (!isOpen) {
+        this.placement = Placement.NotCalculated;
+        if (this.focus) {
+          popFocus(this.focus);
+          this.focus = null;
+        }
+        return;
+      }
+      await this.$nextTick();
+      await this.calculatePlacement();
+      this.applyFocus();
+      this.$emit("open");
+    },
+    async calculatePlacement() {
+      const popup = getHTMLElementFromVueRef(this.$refs.popup);
+      const wrapper2 = getHTMLElementFromVueRef(this.$refs.wrapper);
+      const anchor = getElement(this.anchor);
+      if (!anchor) {
+        throw new Error("No anchor element found");
+      }
+      const shouldCheckCandidates = this.forceOverlay || !(this.isMobileSize() || this.forceInline);
+      if (shouldCheckCandidates) {
+        const area = getContainer(popup, this.container);
+        const viewport = this.viewport;
+        const result = fitInsideArea({
+          area,
+          anchor,
+          target: wrapper2,
+          viewport,
+          spacing: POPUP_SPACING$1,
+          candidateOrder: CandidateOrder.Default
+        });
+        this.placement = result.placement;
+        const useOverlay = this.forceOverlay || result.placement !== Placement.Fallback;
+        if (useOverlay) {
+          wrapper2.style.left = `${String(result.x)}px`;
+          wrapper2.style.top = `${String(result.y)}px`;
+          return;
+        }
+      }
+      this.teleportDisabled = true;
+      wrapper2.style.removeProperty("left");
+      wrapper2.style.removeProperty("top");
+      await new Promise((resolve2) => setTimeout(resolve2, 200));
+      const scrollTarget = popup.closest(".scroll-target");
+      const hasScrollTarget = scrollTarget !== null;
+      const top = getScrollToPopup({
+        popup: wrapper2,
+        windowInnerHeight: window.innerHeight,
+        scrollTop: hasScrollTarget ? scrollTarget.scrollTop : window.scrollY,
+        spacing: POPUP_SPACING$1
+      });
+      const scrollOptions = {
+        top,
+        behavior: "smooth"
+      };
+      if (hasScrollTarget) {
+        scrollTarget.scrollTo(scrollOptions);
+      } else {
+        window.scrollTo(scrollOptions);
+      }
+    },
+    applyFocus() {
+      if (!this.setFocus) {
+        return;
+      }
+      const wrapper2 = this.$refs.wrapper;
+      if (!wrapper2) {
+        return;
+      }
+      const focusableElement = getFocusableElement(wrapper2, this.focusElement);
+      this.focus = pushFocus(focusableElement);
+    },
+    isMobileSize() {
+      return window.innerWidth < MIN_DESKTOP_WIDTH;
+    },
+    onDocumentClickHandler() {
+      this.$emit("close", "click-outside");
+    },
+    onWindowResizeDebounced() {
+    },
+    async onWindowResize() {
+      if (!this.isOpen) {
+        return;
+      }
+      if (this.forceInline) {
+        return;
+      }
+      if (this.isInline && this.isMobileSize()) {
+        return;
+      }
+      if (this.isInline) {
+        this.placement = Placement.NotCalculated;
+        this.teleportDisabled = false;
+        await this.$nextTick();
+      }
+      await this.calculatePlacement();
+      const {
+        placement,
+        forceInline,
+        forceOverlay
+      } = this;
+      this.teleportDisabled = isTeleportDisabled({
+        window,
+        placement,
+        forceInline,
+        forceOverlay
+      });
+    },
+    onPopupClickHandler(event) {
+      event.stopPropagation();
+    },
+    onKeyEsc() {
+      this.$emit("close", "escape");
+    },
+    onKeyTab(event) {
+      if (this.keyboardTrap) {
+        const wrapper2 = getHTMLElementFromVueRef(this.$refs.wrapper);
+        handleTab(event, wrapper2);
+      }
+    }
+  }
+});
+function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
+    key: 0,
+    to: _ctx.teleportTarget,
+    disabled: _ctx.teleportDisabled
+  }, [createBaseVNode("div", mergeProps({
+    ref: "popup"
+  }, _ctx.$attrs, {
+    class: _ctx.popupClasses
+  }), [createBaseVNode("div", {
+    ref: "wrapper",
+    role: "presentation",
+    class: "popup__wrapper",
+    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onPopupClickHandler && _ctx.onPopupClickHandler(...args)),
+    onKeyup: _cache[1] || (_cache[1] = withKeys(withModifiers((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
+    onKeydown: _cache[2] || (_cache[2] = withKeys((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
+  }, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+    toggleIsOpen: _ctx.toggleIsOpen,
+    placement: _ctx.placement
+  })))], 544)], 16)], 8, ["to", "disabled"])) : createCommentVNode("", true);
+}
+const IPopup = /* @__PURE__ */ _export_sfc$1(_sfc_main$16, [["render", _sfc_render$z]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
   switch (placement) {
     case Placement.A: {
@@ -17863,6 +17760,22 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({
       type: HTMLElement,
       required: false,
       default: void 0
+    },
+    /**
+     * DOM element to align arrow with.
+     */
+    arrowAnchor: {
+      type: HTMLElement,
+      required: false,
+      default: void 0
+    },
+    /**
+     * - `f-table`: error icon left of text without close button.
+     * - `f-interactive-table`: close button right of text without error icon.
+     */
+    layout: {
+      type: String,
+      required: true
     }
   },
   emits: ["close"],
@@ -17924,14 +17837,15 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({
       this.$emit("close");
     },
     setArrowOffset() {
+      var _this$arrowAnchor;
       const wrapper2 = this.$refs.wrapper;
-      const inputIcon = this.anchor?.nextElementSibling;
-      if (!inputIcon || !wrapper2) {
+      const arrowAnchor = (_this$arrowAnchor = this.arrowAnchor) !== null && _this$arrowAnchor !== void 0 ? _this$arrowAnchor : this.anchor?.nextElementSibling;
+      if (!arrowAnchor || !wrapper2) {
         return;
       }
-      const inputIconRect = inputIcon.getBoundingClientRect();
+      const arrowAnchorRect = arrowAnchor.getBoundingClientRect();
       const wrapperRect = wrapper2.getBoundingClientRect();
-      const arrow = computeArrowOffset(this.placement, inputIconRect, wrapperRect);
+      const arrow = computeArrowOffset(this.placement, arrowAnchorRect, wrapperRect);
       this.arrowOffset = arrow.offset;
       this.arrowPosition = arrow.position;
     },
@@ -17987,7 +17901,13 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createBaseVNode("div", _hoisted_1$Q, [createBaseVNode("div", {
     class: normalizeClass(_ctx.arrowClass),
     style: normalizeStyle(_ctx.errorStyle)
-  }, [createBaseVNode("span", null, toDisplayString(_ctx.errorMessage), 1), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("button", {
+  }, [_ctx.layout === "f-table" ? (openBlock(), createBlock(_component_f_icon, {
+    key: 0,
+    ref: "icon",
+    class: "popup-error__icon",
+    name: "error"
+  }, null, 512)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("span", null, toDisplayString(_ctx.errorMessage), 1), _cache[2] || (_cache[2] = createTextVNode()), _ctx.layout === "f-interactive-table" ? (openBlock(), createElementBlock("button", {
+    key: 1,
     tabindex: "-1",
     type: "button",
     class: "button button--discrete button--discrete--black modal__close-button popup-error__button",
@@ -17996,7 +17916,7 @@ function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createVNode(_component_f_icon, {
     name: "close",
     class: "button__icon"
-  })])], 6)], 512)], 2)], 8, ["to", "disabled"])) : createCommentVNode("", true);
+  })])) : createCommentVNode("", true)], 6)], 512)], 2)], 8, ["to", "disabled"])) : createCommentVNode("", true);
 }
 const IPopupError = /* @__PURE__ */ _export_sfc$1(_sfc_main$15, [["render", _sfc_render$y]]);
 function numItems(itemHeight, availableHeight, verticalSpacing) {
@@ -18232,6 +18152,361 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
     };
   }
 });
+function getNewItemIndexFromMenuAction$2(action, index, n) {
+  let newIndex;
+  if (n <= 0) {
+    return 0;
+  }
+  switch (action) {
+    case MenuAction.MOVE_NEXT:
+      newIndex = (index + 1) % n;
+      break;
+    case MenuAction.MOVE_PREV:
+      newIndex = (index - 1 + n) % n;
+      break;
+    case MenuAction.MOVE_FIRST:
+      newIndex = 0;
+      break;
+    case MenuAction.MOVE_LAST:
+      newIndex = Math.max(n - 1, 0);
+      break;
+    default:
+      newIndex = index;
+  }
+  return newIndex;
+}
+async function doMenuAction$1(action, target) {
+  const itemsLength = target.items.length;
+  const currentIndex = target.currentFocusedItemIndex;
+  const newFocusedItemIndex = getNewItemIndexFromMenuAction$2(action, currentIndex, itemsLength);
+  switch (action) {
+    case MenuAction.MOVE_NEXT:
+    case MenuAction.MOVE_PREV:
+    case MenuAction.MOVE_FIRST:
+    case MenuAction.MOVE_LAST:
+      await target.setFocusOnItem(newFocusedItemIndex);
+      break;
+    case MenuAction.ACTIVATE:
+      await target.activateItem(newFocusedItemIndex);
+      break;
+  }
+}
+const preventKeys$1 = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
+const _sfc_main$13 = /* @__PURE__ */ defineComponent({
+  name: "IPopupMenu",
+  components: {
+    IPopup
+  },
+  props: {
+    /**
+     * Key of the currently selected and highlighted item.
+     */
+    modelValue: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * Key of the currently focused item.
+     * Sets focus on matching item element when value changes.
+     */
+    focusedItem: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * Toggle open/closed popup.
+     */
+    isOpen: {
+      type: Boolean,
+      required: true
+    },
+    /**
+     * DOM element to position popup at.
+     */
+    anchor: {
+      type: HTMLElement,
+      default: void 0
+    },
+    /**
+     * The items to be diplayed in the menu
+     */
+    items: {
+      type: Array,
+      required: true
+    },
+    /**
+     * If true, enable built-in keyboard navigation
+     */
+    enableKeyboardNavigation: {
+      type: Boolean,
+      required: false
+    },
+    /**
+     * Unique accessible name for navigation landmark.
+     */
+    ariaLabel: {
+      type: String,
+      required: false,
+      default: "Popupmeny"
+    },
+    /**
+     * Text for selected item for screen reader
+     */
+    selectedMenuItemScreenReaderText: {
+      type: String,
+      required: false,
+      default: "vald nu"
+    }
+  },
+  emits: [
+    /**
+     * Emitted when an item is selected and when tabbing out of the popup.
+     */
+    "close",
+    /**
+     * Emitted when an item is selected.
+     *
+     * @type {string} item key
+     */
+    "select",
+    /**
+     * V-model event. Emitted when an item is selected.
+     *
+     * @type {string} item key
+     */
+    "update:modelValue",
+    /**
+     * V-model event. Emitted when item focus changes.
+     *
+     * @type {string} Key of focused item, or empty if no item focused.
+     */
+    "update:focusedItem"
+  ],
+  data() {
+    return {
+      currentFocusedItemIndex: 0,
+      lastSelectedItem: ""
+    };
+  },
+  watch: {
+    isOpen: {
+      immediate: true,
+      handler(newVal) {
+        if (newVal) {
+          return;
+        }
+        this.currentFocusedItemIndex = 0;
+        this.lastSelectedItem = "";
+        this.$emit("update:focusedItem", "");
+      }
+    },
+    modelValue: {
+      async handler(newVal) {
+        if (this.enableKeyboardNavigation) {
+          return;
+        }
+        const index = this.indexOfItemByKey(newVal);
+        if (index >= 0) {
+          await this.activateItem(index);
+        } else {
+          this.setFocusedItemIndex(0);
+        }
+      }
+    },
+    focusedItem: {
+      async handler(newVal) {
+        if (newVal.length === 0) {
+          return;
+        }
+        const index = this.indexOfItemByKey(newVal);
+        if (index >= 0) {
+          await this.setFocusOnItem(index);
+        } else {
+          this.setFocusedItemIndex(0);
+        }
+      }
+    }
+  },
+  methods: {
+    isSelected(index) {
+      return this.items[index].key === this.modelValue;
+    },
+    focusElement() {
+      return null;
+    },
+    findItemByKey(key) {
+      return this.items.find((it) => it.key === key);
+    },
+    indexOfItemByKey(key) {
+      const item = this.findItemByKey(key);
+      if (!item) {
+        return -1;
+      }
+      return this.items.indexOf(item);
+    },
+    onClickItem(event, item) {
+      this.selectItem(item.key);
+      const target = event.target;
+      const isAnchor = target instanceof HTMLElement && target.tagName === "A";
+      if (!isAnchor) {
+        this.clickItemAnchor(item);
+      }
+    },
+    clickItemAnchor(item) {
+      if (!item.href) {
+        return;
+      }
+      const index = this.items.indexOf(item);
+      const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+      anchors[index].click();
+    },
+    selectItem(key) {
+      if (key !== this.lastSelectedItem) {
+        this.$emit("update:modelValue", key);
+        this.$emit("select", key);
+        this.lastSelectedItem = key;
+      }
+      this.$emit("close");
+    },
+    itemClasses(item) {
+      const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
+      return ["ipopupmenu__list__item", ...highlight];
+    },
+    async setFocusOnItem(index) {
+      this.setFocusedItemIndex(index);
+      await this.$nextTick();
+      if (!this.isOpen) {
+        return;
+      }
+      const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+      if (anchors.length === 0) {
+        return;
+      }
+      const itemAnchor = anchors[index];
+      focus$1(itemAnchor, {
+        preventScroll: true
+      });
+      const key = this.items[index].key;
+      this.$emit("update:focusedItem", key);
+    },
+    async activateItem(index) {
+      if (index !== this.currentFocusedItemIndex) {
+        await this.setFocusOnItem(index);
+      }
+      const item = this.items[index];
+      this.selectItem(item.key);
+      this.clickItemAnchor(item);
+    },
+    setFocusedItemIndex(index) {
+      this.currentFocusedItemIndex = index;
+    },
+    onKeyUp(event) {
+      if (!this.enableKeyboardNavigation) {
+        return;
+      }
+      if (preventKeys$1.includes(event.key)) {
+        event.preventDefault();
+      }
+    },
+    async onKeyDown(event) {
+      if (!this.enableKeyboardNavigation) {
+        return;
+      }
+      if (!preventKeys$1.includes(event.key)) {
+        return;
+      }
+      const firstItemFocused = this.currentFocusedItemIndex === 0;
+      const lastItemFocused = this.currentFocusedItemIndex === this.items.length - 1;
+      const tabOutPrev = event.key === "Tab" && event.shiftKey && firstItemFocused;
+      const tabOutNext = event.key === "Tab" && !event.shiftKey && lastItemFocused;
+      if (tabOutPrev || tabOutNext) {
+        if (tabOutPrev) {
+          event.preventDefault();
+        }
+        this.$emit("close");
+        return;
+      }
+      const action = actionFromKeyboardEvent(event);
+      if (action === null) {
+        return;
+      }
+      event.preventDefault();
+      await doMenuAction$1(action, this);
+    }
+  }
+});
+const _hoisted_1$O = ["aria-label"];
+const _hoisted_2$A = {
+  role: "menu",
+  class: "ipopupmenu__list"
+};
+const _hoisted_3$t = ["onClick"];
+const _hoisted_4$o = ["data-ref-index", "href", "target"];
+const _hoisted_5$k = {
+  key: 0,
+  class: "sr-only"
+};
+function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_i_popup = resolveComponent("i-popup");
+  return openBlock(), createBlock(_component_i_popup, {
+    class: "ipopupmenu",
+    "is-open": _ctx.isOpen,
+    "keyboard-trap": false,
+    anchor: _ctx.anchor,
+    "focus-element": _ctx.focusElement,
+    onClose: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("close")),
+    onKeyup: _ctx.onKeyUp,
+    onKeydown: _ctx.onKeyDown
+  }, {
+    default: withCtx(() => [createBaseVNode("nav", {
+      class: "ipopupmenu ipopupmenu--vertical",
+      "aria-label": _ctx.ariaLabel
+    }, [createBaseVNode("ul", _hoisted_2$A, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
+      return openBlock(), createElementBlock("li", {
+        ref_for: true,
+        ref: "items",
+        key: item.key,
+        role: "presentation",
+        class: normalizeClass(_ctx.itemClasses(item)),
+        onClick: (event) => _ctx.onClickItem(event, item)
+      }, [createBaseVNode("a", {
+        ref_for: true,
+        ref: "anchors",
+        "data-ref-index": index,
+        href: item.href,
+        role: "menuitem",
+        target: item.target,
+        tabindex: "0"
+      }, [_ctx.isSelected(index) ? (openBlock(), createElementBlock("span", _hoisted_5$k, [createBaseVNode("span", null, toDisplayString(_ctx.selectedMenuItemScreenReaderText) + " ", 1)])) : createCommentVNode("", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$o)], 10, _hoisted_3$t);
+    }), 128))])], 8, _hoisted_1$O)]),
+    _: 1
+  }, 8, ["is-open", "anchor", "focus-element", "onKeyup", "onKeydown"]);
+}
+const IPopupMenu = /* @__PURE__ */ _export_sfc$1(_sfc_main$13, [["render", _sfc_render$x]]);
+const _sfc_main$11 = /* @__PURE__ */ defineComponent({
+  name: "ISkipLink",
+  mixins: [TranslationMixin],
+  props: {
+    /**
+     * Target for skiplink.
+     */
+    href: {
+      type: String,
+      required: false,
+      default: "main"
+    }
+  }
+});
+const _hoisted_1$M = ["href"];
+function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("a", {
+    class: "iskiplink",
+    href: _ctx.href
+  }, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.skip-link.text", "Gå direkt till innehåll")), 1)])], 8, _hoisted_1$M);
+}
+const ISkipLink = /* @__PURE__ */ _export_sfc$1(_sfc_main$11, [["render", _sfc_render$v]]);
 function filterOptions(options, filter2, selectMode) {
   if (isEmpty(filter2) || selectMode) {
     return options;
@@ -18908,6 +19183,258 @@ function useHorizontalOffset(options) {
     }
   }
 });
+const injectionKeys = {
+  sharedName: /* @__PURE__ */ Symbol("sharedName"),
+  showDetails: /* @__PURE__ */ Symbol("showDetails"),
+  getFieldsetLabelText: /* @__PURE__ */ Symbol("getFieldsetLabelText")
+};
+function useFieldset() {
+  return {
+    sharedName: inject(injectionKeys.sharedName, void 0),
+    showDetails: inject(injectionKeys.showDetails, "never"),
+    getFieldsetLabelText: inject(injectionKeys.getFieldsetLabelText, () => void 0)
+  };
+}
+const anyType$1 = [String, Object, Array, Number, Date, Boolean];
+const _sfc_main$X = /* @__PURE__ */ defineComponent({
+  name: "FCheckboxField",
+  inheritAttrs: false,
+  props: {
+    /**
+     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     */
+    disabled: {
+      type: Boolean,
+      required: false
+    },
+    /**
+     * The id for the input id attribute.
+     * The id for the label for attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * The value for the input checked attribute.
+     */
+    // ? The rule is disabled so that the `checked` prop can be undefined or null.
+    /* eslint-disable-next-line vue/require-default-prop -- technical debt,
+    /* it should contain a default value of undefined and proptype should
+    /* include undefined (see comment on line above) */
+    modelValue: {
+      type: anyType$1,
+      required: false
+    },
+    /**
+     * The value for the input.
+     */
+    value: {
+      type: anyType$1,
+      required: true
+    }
+  },
+  emits: [
+    /**
+     * Emitted when the value of the checkbox changes.
+     *
+     * @type {anyType | anyType[]}
+     */
+    "change",
+    /**
+     * V-model event.
+     * @type {anyType | anyType[]}
+     */
+    "update:modelValue"
+  ],
+  setup() {
+    const {
+      showDetails,
+      getFieldsetLabelText
+    } = useFieldset();
+    return {
+      showDetails,
+      getFieldsetLabelText
+    };
+  },
+  data() {
+    return {
+      expanded: false,
+      height: 0,
+      initialStyle: {
+        overflow: "hidden",
+        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
+      },
+      hiddenStyle: {
+        height: "auto",
+        position: "absolute",
+        visibility: "hidden"
+      },
+      visibleStyle: {
+        width: "",
+        position: "",
+        visibility: "",
+        height: "0px"
+      },
+      openedStyle: {
+        height: "auto"
+      }
+    };
+  },
+  computed: {
+    attrs() {
+      let checked;
+      if (Array.isArray(this.modelValue)) {
+        checked = this.modelValue.findIndex((it) => isEqual$1(toValue(it), toValue(this.value))) >= 0;
+      } else {
+        checked = this.value === this.modelValue;
+      }
+      return {
+        ...this.$attrs,
+        value: this.value,
+        checked,
+        onChange: (event) => {
+          if (event.target instanceof HTMLInputElement) {
+            this.emitVModelEvent(event);
+          }
+        },
+        onInput: (event) => {
+          event.target.focus();
+        }
+      };
+    },
+    disabledClass() {
+      return this.disabled ? "disabled" : "";
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, nore sure whats going on here
+    injected() {
+      return this;
+    }
+  },
+  methods: {
+    updateExpandedFlag() {
+      const checkboxInput = getHTMLElementFromVueRef(this.$refs.checkboxInput);
+      this.expanded = checkboxInput.checked;
+    },
+    emitVModelEvent(event) {
+      let newModel;
+      if (Array.isArray(this.modelValue)) {
+        newModel = [...this.modelValue].filter((it) => !isEqual$1(toValue(it), toValue(this.value)));
+        if (this.modelValue.length <= newModel.length) {
+          newModel.push(this.value);
+        }
+      } else {
+        if (this.value === this.modelValue) {
+          newModel = typeof this.value === "boolean" ? false : void 0;
+        } else {
+          const target = event.target;
+          newModel = target.value === "true" ? true : this.value;
+        }
+      }
+      this.$emit("update:modelValue", newModel);
+      this.$emit("change", newModel);
+    },
+    onKeydown(event) {
+      event.stopPropagation();
+    },
+    onValidity({
+      detail
+    }) {
+      if (detail.target !== this.$el.querySelector("input")) {
+        return;
+      }
+      let errorMessage = "";
+      if (hasSlot(this, "default")) {
+        var _renderSlotText;
+        const labelText = this.injected.getFieldsetLabelText();
+        const slotText = (_renderSlotText = renderSlotText(this.$slots.default)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
+        if (labelText) {
+          errorMessage = `${labelText} ${slotText}`;
+        } else {
+          errorMessage = slotText;
+        }
+      }
+      const element = this.$el.querySelector(`#${detail.elementId}`);
+      if (element) {
+        dispatchComponentValidityEvent(element, {
+          ...detail,
+          errorMessage,
+          focusElementId: detail.elementId
+        });
+      }
+    },
+    enter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const computedStyle = getComputedStyle(element);
+      Object.assign(htmlElement.style, this.initialStyle);
+      Object.assign(htmlElement.style, this.hiddenStyle);
+      htmlElement.style.width = computedStyle.width;
+      const height = computedStyle.height;
+      Object.assign(htmlElement.style, this.visibleStyle);
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        this.height = parseInt(height, 10);
+        htmlElement.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.openedStyle);
+    },
+    leave(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const height = getComputedStyle(element).height;
+      htmlElement.style.height = height;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        Object.assign(htmlElement.style, this.visibleStyle);
+      });
+    }
+  }
+});
+const _hoisted_1$H = ["id", "disabled"];
+const _hoisted_2$w = ["for"];
+const _hoisted_3$p = {
+  key: 0,
+  class: "checkbox__details"
+};
+const _hoisted_4$l = {
+  key: 0,
+  class: "checkbox__details"
+};
+function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(["checkbox", _ctx.disabledClass]),
+    onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
+  }, [createBaseVNode("input", mergeProps({
+    id: _ctx.id
+  }, _ctx.attrs, {
+    ref: "checkboxInput",
+    type: "checkbox",
+    class: "checkbox__input",
+    disabled: _ctx.disabled,
+    onKeydown: _cache[0] || (_cache[0] = withKeys((...args) => _ctx.onKeydown && _ctx.onKeydown(...args), ["space"])),
+    onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag())
+  }), null, 16, _hoisted_1$H), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("label", {
+    class: normalizeClass(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
+    for: _ctx.id
+  }, [renderSlot(_ctx.$slots, "default"), _cache[4] || (_cache[4] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
+    key: 0
+  }, [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$p, [renderSlot(_ctx.$slots, "details")])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, {
+    key: 1,
+    onEnter: _ctx.enter,
+    onAfterEnter: _ctx.afterEnter,
+    onLeave: _ctx.leave
+  }, {
+    default: withCtx(() => [_ctx.expanded ? (openBlock(), createElementBlock("span", _hoisted_4$l, [renderSlot(_ctx.$slots, "details", {
+      height: _ctx.height
+    })])) : createCommentVNode("", true)]),
+    _: 3
+  }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$w)], 34);
+}
+const FCheckboxField = /* @__PURE__ */ _export_sfc$1(_sfc_main$X, [["render", _sfc_render$r]]);
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
 function requireEs_iterator_some() {
@@ -19288,6 +19815,13 @@ const _hoisted_2$u = {
     };
   }
 });
+function ActivateItemInjected() {
+  return {
+    registerCallbackAfterItemAdd: inject("registerCallbackAfterItemAdd", () => void 0),
+    registerCallbackBeforeItemDelete: inject("registerCallbackBeforeItemDelete", () => void 0),
+    setNestedKey: inject("setNestedKey", () => void 0)
+  };
+}
 function FSortFilterDatasetInjected() {
   return {
     sort: inject("sort", () => void 0),
@@ -20072,6 +20606,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     anchor: _ctx.getErrorPopupAnchor(),
     "is-open": _ctx.showPopupError,
     "error-message": _ctx.validationMessage,
+    layout: "f-interactive-table",
     onClose: _ctx.closePopupError
   }, null, 8, ["anchor", "is-open", "error-message", "onClose"])) : createCommentVNode("", true), _cache[15] || (_cache[15] = createTextVNode()), _ctx.$slots["append-inner"] ? (openBlock(), createElementBlock("div", _hoisted_6$c, [renderSlot(_ctx.$slots, "append-inner")])) : createCommentVNode("", true), _cache[16] || (_cache[16] = createTextVNode()), _ctx.options ? (openBlock(), createElementBlock("div", _hoisted_7$8, [createVNode(_component_i_combobox_toggle_button, {
     disabled: _ctx.disabled,
@@ -20771,7 +21306,7 @@ function FTableInjected() {
 const _hoisted_1$x = {
   class: "table__column__wrapper"
 };
-/* @__PURE__ */ defineComponent({
+const _sfc_main$B = /* @__PURE__ */ defineComponent({
   ...{
     inheritAttrs: false
   },
@@ -21156,7 +21691,16 @@ const _hoisted_8$5 = ["colspan"];
     };
   }
 });
+const layoutRegister = {};
+function getLayout(name) {
+  var _layoutRegister$name;
+  return (_layoutRegister$name = layoutRegister[name]) !== null && _layoutRegister$name !== void 0 ? _layoutRegister$name : null;
+}
 function setLayout(name, layout) {
+  layoutRegister[name] = layout;
+}
+function defineLayout(definition) {
+  return normalizeDefinition(definition);
 }
 function registerLayout(definition) {
   setLayout(definition.name, normalizeDefinition(definition));
@@ -21177,6 +21721,70 @@ function normalizeAreasDefinition(areas) {
     }];
   }));
 }
+let panels = [];
+const exclusiveGroups = /* @__PURE__ */ new Map();
+function resetDetailPanels() {
+  panels = [];
+}
+function createDetailsPanel(name, options) {
+  const {
+    exclusive
+  } = options;
+  const control = {
+    name: /* @__PURE__ */ ref(name),
+    item: /* @__PURE__ */ ref(null),
+    callback: /* @__PURE__ */ ref(null),
+    open(item, options2) {
+      var _options2$onClose;
+      if (exclusive) {
+        const existing = exclusiveGroups.get(exclusive);
+        if (existing) {
+          existing.closeMeMaybe();
+        }
+        exclusiveGroups.set(exclusive, {
+          closeMeMaybe: () => {
+            this.close();
+          }
+        });
+      }
+      this.item.value = item;
+      this.callback.value = (_options2$onClose = options2?.onClose) !== null && _options2$onClose !== void 0 ? _options2$onClose : null;
+    },
+    close() {
+      this.item.value = null;
+      this.callback.value = null;
+      if (exclusive) {
+        exclusiveGroups.delete(exclusive);
+      }
+    },
+    destroy() {
+    }
+  };
+  panels.push(control);
+  return control;
+}
+function findPanelByName(name) {
+  return panels.find((it) => it.name.value === name);
+}
+function useDetailsPanel(name) {
+  return {
+    open(item, options) {
+      const panel = findPanelByName(name);
+      if (panel) {
+        panel.open(item, options);
+      }
+    },
+    close() {
+      const panel = findPanelByName(name);
+      if (panel) {
+        panel.close();
+      }
+    }
+  };
+}
+const VAR_NAME_AREA = "--f-layout-area";
+const VAR_NAME_ATTACH_PANEL = "--f-layout-panel";
+const VAR_NAME_DIRECTION = "--f-layout-direction";
 registerLayout({
   name: "simple",
   areas: {
@@ -21265,6 +21873,1695 @@ registerLayout({
     }
   }
 });
+const _hoisted_1$u = ["part"];
+const _hoisted_2$o = ["part", "data-direction"];
+const _sfc_main$y = /* @__PURE__ */ defineComponent({
+  __name: "FPageLayout.ce",
+  props: {
+    layout: {
+      type: String
+    }
+  },
+  emits: ["update"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit2 = __emit;
+    const rootRef = useTemplateRef("root");
+    const slotNames = /* @__PURE__ */ ref([]);
+    const stubLayout = defineLayout({
+      name: "",
+      areas: {}
+    });
+    const layoutDefinition = computed(() => {
+      var _getLayout;
+      return (_getLayout = getLayout(__props.layout)) !== null && _getLayout !== void 0 ? _getLayout : stubLayout;
+    });
+    const part = computed(() => `grid ${__props.layout}`);
+    function getSlotNames(element) {
+      return Array.from(element.querySelectorAll(":scope > [slot]"), (it) => it.slot);
+    }
+    const resolvedSlots = computed(() => {
+      return slotNames.value.filter((it) => Boolean(layoutDefinition.value.areas[it])).map((slotName) => {
+        const area = layoutDefinition.value.areas[slotName];
+        const {
+          attachPanel: attach,
+          direction,
+          scroll
+        } = area;
+        const style = [`grid-area: ${slotName};`, `${VAR_NAME_AREA}: "${slotName}";`, `${VAR_NAME_ATTACH_PANEL}: "${attach}";`, `${VAR_NAME_DIRECTION}: "${direction}";`].join("\n");
+        return {
+          name: slotName,
+          part: `area ${slotName}`,
+          direction,
+          scroll,
+          style
+        };
+      });
+    });
+    onMounted(() => {
+      if (rootRef.value) {
+        const host = rootRef.value.getRootNode().host;
+        slotNames.value = getSlotNames(host);
+        nextTick(() => {
+          emit2("update");
+        });
+        useMutationObserver(host, () => {
+          slotNames.value = getSlotNames(host);
+          nextTick(() => {
+            emit2("update");
+          });
+        }, {
+          childList: true
+        });
+      }
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        ref: "root",
+        class: "page-layout",
+        part: part.value
+      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(resolvedSlots.value, (item) => {
+        return openBlock(), createElementBlock("div", {
+          key: item.name,
+          class: "page-layout__area",
+          part: item.part,
+          "data-direction": item.direction,
+          style: normalizeStyle(item.style)
+        }, [renderSlot(_ctx.$slots, item.name)], 12, _hoisted_2$o);
+      }), 128))], 8, _hoisted_1$u);
+    };
+  }
+});
+const _style_0$4 = ':host {\n  display: block;\n}\n.page-layout {\n  display: grid;\n  height: 100cqh;\n  width: min(100%, 100cqw);\n&[part~=simple] {\n    grid-template: "header" min-content "content" 1fr "footer" min-content/1fr;\n[part="area header"],\n    [part="area footer"] {\n      --f-page-layout-background: var(\n          --fkds-color-header-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-text-inverted);\n}\n[part="area content"] {\n      --f-page-layout-background: var(--fkds-color-background-primary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n}\n&[part~=left-panel] {\n    grid-template: "header header" min-content "left content" 1fr "footer footer" min-content/min-content 1fr;\n[part="area header"],\n    [part="area footer"] {\n      --f-page-layout-background: var(\n          --fkds-color-header-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-text-inverted);\n}\n[part="area left"] {\n      --f-page-layout-background: var(--fkds-color-background-secondary);\n}\n[part="area content"] {\n      --f-page-layout-background: var(--fkds-color-background-primary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n}\n&[part~=right-panel] {\n    grid-template: "header header" min-content "content right" 1fr "footer footer" min-content/1fr min-content;\n[part="area header"],\n    [part="area footer"] {\n      --f-page-layout-background: var(\n          --fkds-color-header-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-text-inverted);\n}\n[part="area right"] {\n      --f-page-layout-background: var(--fkds-color-background-secondary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n[part="area content"] {\n      --f-page-layout-background: var(--fkds-color-background-primary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n}\n&[part~=three-column] {\n    grid-template: "header header header" min-content "left content right" 1fr "footer footer footer" min-content/min-content 1fr min-content;\n[part="area header"],\n    [part="area footer"] {\n      --f-page-layout-background: var(\n          --fkds-color-header-background-primary\n      );\n      --f-page-layout-color: var(--fkds-color-text-inverted);\n}\n[part="area left"],\n    [part="area right"] {\n      --f-page-layout-background: var(--fkds-color-background-secondary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n[part="area content"] {\n      --f-page-layout-background: var(--fkds-color-background-primary);\n      --f-page-layout-color: var(--fkds-color-text-primary);\n}\n}\n}\n.page-layout__area {\n  display: flex;\n  position: relative;\n  background: var(--f-page-layout-background);\n  color: var(--f-page-layout-color);\n&[data-direction=column] {\n    flex-direction: column;\n}\n&[data-direction=row] {\n    flex-direction: row;\n}\n&[data-scroll] {\n    overflow-y: auto;\n}\n&:empty {\n    display: none;\n}\n}';
+const CeComponent$1 = /* @__PURE__ */ _export_sfc$1(_sfc_main$y, [["styles", [_style_0$4]]]);
+const ceTag$2 = "ce-page-layout";
+const _sfc_main$x = /* @__PURE__ */ defineComponent({
+  __name: "FPageLayout",
+  props: {
+    layout: {}
+  },
+  emits: ["update"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit2 = __emit;
+    const proxy = new Proxy({}, {
+      get(_, property) {
+        if (property.startsWith("__v")) {
+          return void 0;
+        }
+        return property;
+      }
+    });
+    onMounted(() => {
+      if (!customElements.get(ceTag$2)) {
+        customElements.define(ceTag$2, /* @__PURE__ */ defineCustomElement(CeComponent$1));
+      }
+    });
+    onUnmounted(() => {
+      resetDetailPanels();
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(resolveDynamicComponent(ceTag$2), {
+        layout: __props.layout,
+        onUpdate: _cache[0] || (_cache[0] = ($event) => emit2("update"))
+      }, {
+        default: withCtx(() => [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(unref(proxy))))]),
+        _: 3
+      }, 40, ["layout"]);
+    };
+  }
+});
+function getProperty(style, key) {
+  const value = style.getPropertyValue(key);
+  if (value === "") {
+    return null;
+  } else {
+    return JSON.parse(value);
+  }
+}
+function findLayoutElement(element) {
+  if (!element) {
+    return null;
+  }
+  const parent = element.closest("ce-page-layout");
+  if (parent) {
+    return parent;
+  }
+  const root = element.getRootNode();
+  if (root instanceof ShadowRoot) {
+    return findLayoutElement(root.host);
+  }
+  return null;
+}
+function useAreaData(element) {
+  const area = /* @__PURE__ */ ref(null);
+  const attachPanel = /* @__PURE__ */ ref(null);
+  const direction = /* @__PURE__ */ ref(null);
+  const layoutElement = computed(() => findLayoutElement(toValue(element)));
+  useEventListener$1(layoutElement, "update", () => {
+    if (element.value) {
+      update(element.value);
+    }
+  });
+  watchEffect(() => {
+    if (element.value) {
+      update(element.value);
+    }
+  });
+  return {
+    area,
+    attachPanel,
+    direction
+  };
+  function update(element2) {
+    const style = getComputedStyle(element2);
+    area.value = getProperty(style, VAR_NAME_AREA);
+    attachPanel.value = getProperty(style, VAR_NAME_ATTACH_PANEL);
+    direction.value = getProperty(style, VAR_NAME_DIRECTION);
+  }
+}
+function computeCssValue(raw, total, auto) {
+  if (raw.endsWith("px")) {
+    return parseInt(raw.slice(0, -2), 10);
+  } else if (raw.endsWith("%")) {
+    const value = parseInt(raw.slice(0, -1), 10);
+    const percent = value / 100;
+    return percent * total;
+  } else if (raw === "0") {
+    return 0;
+  } else if (raw === "auto" || raw === "") {
+    return auto;
+  } else {
+    throw new Error(`Cant parse size from "${raw}"`);
+  }
+}
+function aggregateCssValue(raw, total, auto, take) {
+  if (raw === "auto") {
+    return auto;
+  }
+  const parts = raw.split(/\s+/).map((it) => it.trim());
+  const parsed = parts.map((it) => computeCssValue(it, total, auto));
+  return take(...parsed);
+}
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+const keymap = {
+  left: {
+    ArrowLeft: "decrease",
+    ArrowRight: "increase",
+    Home: "minimize",
+    End: "maximize"
+  },
+  right: {
+    ArrowLeft: "increase",
+    ArrowRight: "decrease",
+    Home: "minimize",
+    End: "maximize"
+  },
+  top: {
+    ArrowUp: "decrease",
+    ArrowDown: "increase",
+    Home: "minimize",
+    End: "maximize"
+  },
+  bottom: {
+    ArrowUp: "increase",
+    ArrowDown: "decrease",
+    Home: "minimize",
+    End: "maximize"
+  },
+  none: {}
+};
+function useKeyboardHandler(options) {
+  const {
+    attachment,
+    separator
+  } = options;
+  useEventListener$1(separator, "keydown", (event) => {
+    if (!attachment.value) {
+      return;
+    }
+    const action = keymap[attachment.value][event.key];
+    if (action) {
+      event.preventDefault();
+      options[action]();
+    }
+  });
+}
+function usePointerHandler(options) {
+  const {
+    separator,
+    attachment
+  } = options;
+  const invert = computed(() => {
+    if (attachment.value === "right" || attachment.value === "bottom") {
+      return -1;
+    }
+    return 1;
+  });
+  const orientation = computed(() => {
+    if (attachment.value === "top" || attachment.value === "bottom") {
+      return "horizontal";
+    } else {
+      return "vertical";
+    }
+  });
+  useEventListener$1(separator, "pointerdown", (event) => {
+    const {
+      isPrimary,
+      button,
+      target,
+      pointerId
+    } = event;
+    if (!separator.value) {
+      return;
+    }
+    if (!isPrimary || button !== 0 || target !== separator.value) {
+      return;
+    }
+    const separatorElement = separator.value;
+    const property = orientation.value === "horizontal" ? "clientY" : "clientX";
+    const reference = event[property];
+    const resize = createResizer();
+    function onPointerMove(event2) {
+      if (event2.pointerId === pointerId) {
+        resize(event2[property] - reference);
+      }
+    }
+    function onLostPointerCapture(event2) {
+      if (event2.pointerId === pointerId) {
+        separatorElement.removeEventListener("pointermove", onPointerMove);
+        separatorElement.removeEventListener("lostpointercapture", onLostPointerCapture);
+      }
+    }
+    onPointerMove(event);
+    separatorElement.addEventListener("lostpointercapture", onLostPointerCapture);
+    separatorElement.addEventListener("pointermove", onPointerMove);
+    separatorElement.setPointerCapture(pointerId);
+    event.preventDefault();
+  });
+  function createResizer() {
+    const {
+      min,
+      max,
+      current: value
+    } = options.state.value;
+    return (amount) => {
+      options.movement(clamp(value + amount * invert.value, min, max));
+    };
+  }
+}
+function useStorage(options) {
+  const {
+    state,
+    storageKey
+  } = options;
+  const loaded = /* @__PURE__ */ ref(false);
+  let last = -1;
+  watchEffect(() => {
+    if (!loaded.value) {
+      return;
+    }
+    if (!storageKey.value) {
+      return;
+    }
+    if (state.value.current < 0 || state.value.current === last) {
+      return;
+    }
+    const json = JSON.stringify(state.value.current);
+    window.localStorage.setItem(storageKey.value, json);
+    last = state.value.current;
+  });
+  watchEffect(() => {
+    if (!storageKey.value) {
+      return;
+    }
+    const json = window.localStorage.getItem(storageKey.value);
+    if (json) {
+      const value = JSON.parse(json);
+      state.value.current = clamp(
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
+        value,
+        state.value.min,
+        state.value.max
+      );
+      last = value;
+    }
+    loaded.value = true;
+  });
+}
+const _hoisted_1$t = {
+  key: 0,
+  class: "resize__offset"
+};
+const _hoisted_2$n = ["aria-orientation"];
+const _hoisted_3$i = ["aria-orientation"];
+const STEP_SIZE = 10;
+const _sfc_main$w = /* @__PURE__ */ defineComponent({
+  ...{
+    inheritAttrs: false
+  },
+  __name: "FResizePane.ce",
+  props: {
+    disabled: {
+      type: Boolean
+    },
+    min: {
+      default: "0",
+      type: String
+    },
+    max: {
+      default: "100%",
+      type: String
+    },
+    initial: {
+      default: "50%",
+      type: String
+    },
+    overlay: {
+      type: Boolean
+    },
+    offset: {
+      default: 0,
+      type: Number
+    }
+  },
+  emits: ["resize"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const props = __props;
+    const emit2 = __emit;
+    const root = useTemplateRef("root");
+    const content2 = useTemplateRef("content");
+    const separator = useTemplateRef("separator");
+    const state = /* @__PURE__ */ ref({
+      min: -1,
+      max: -1,
+      current: -1
+    });
+    const layoutSize = /* @__PURE__ */ ref(0);
+    const storageKey = computed(() => area.value ? `layout/${area.value}/size` : null);
+    const {
+      attachPanel: attachment,
+      direction,
+      area
+    } = useAreaData(root);
+    useKeyboardHandler({
+      increase() {
+        state.value.current = Math.min(state.value.current + STEP_SIZE, state.value.max);
+      },
+      decrease() {
+        state.value.current = Math.max(state.value.current - STEP_SIZE, state.value.min);
+      },
+      maximize() {
+        state.value.current = state.value.max;
+      },
+      minimize() {
+        state.value.current = state.value.min;
+      },
+      attachment,
+      separator
+    });
+    useStorage({
+      state,
+      storageKey
+    });
+    usePointerHandler({
+      movement(value) {
+        state.value.current = value;
+      },
+      separator,
+      state,
+      attachment
+    });
+    const minSize = computed(() => {
+      const total = layoutSize.value;
+      return Math.floor(aggregateCssValue(props.min, total, 0, Math.max));
+    });
+    const maxSize = computed(() => {
+      const total = layoutSize.value;
+      return Math.max(Math.floor(aggregateCssValue(props.max, total, total, Math.min)), minSize.value);
+    });
+    const initialSize = computed(() => {
+      const total = layoutSize.value;
+      return Math.floor(computeCssValue(props.initial, total, total * 0.5));
+    });
+    const orientation = computed(() => {
+      if (attachment.value === "top" || attachment.value === "bottom") {
+        return "horizontal";
+      } else {
+        return "vertical";
+      }
+    });
+    const classes = computed(() => {
+      return [`resize--${String(attachment.value)}`, `resize--${String(direction.value)}`, props.overlay ? "resize--overlay" : void 0, props.disabled ? "resize--disabled" : void 0];
+    });
+    const layoutElement = computed(() => {
+      var _host$closest;
+      if (!root.value) {
+        return void 0;
+      }
+      const shadow = root.value.getRootNode();
+      const host = shadow.host;
+      return (_host$closest = host.closest("ce-page-layout")) !== null && _host$closest !== void 0 ? _host$closest : void 0;
+    });
+    watch(() => props.min, onResize);
+    watch(() => props.max, onResize);
+    watchEffect(() => {
+      const {
+        min,
+        max,
+        current: value
+      } = state.value;
+      if (root.value) {
+        const shadowRoot = root.value.getRootNode();
+        const host = shadowRoot.host;
+        host.style.setProperty("--size", `${String(value)}px`);
+        host.style.setProperty("--min", `${String(min)}px`);
+        host.style.setProperty("--max", `${String(max)}px`);
+        host.style.setProperty("--offset", `${String(props.offset)}px`);
+      }
+      if (separator.value) {
+        separator.value.setAttribute("aria-valuemin", String(Math.floor(min)));
+        separator.value.setAttribute("aria-valuemax", String(Math.floor(max)));
+        separator.value.setAttribute("aria-valuenow", String(Math.floor(value)));
+      }
+      if (value >= 0) {
+        emit2("resize", value);
+      }
+    });
+    onMounted(() => {
+      layoutSize.value = getLayoutSize();
+      state.value = {
+        min: minSize.value,
+        max: maxSize.value,
+        current: clamp(initialSize.value, minSize.value, maxSize.value)
+      };
+    });
+    useEventListener(window, "resize", debounce(onResize, 20));
+    function onResize() {
+      layoutSize.value = getLayoutSize();
+      state.value = {
+        min: minSize.value,
+        max: maxSize.value,
+        current: initialSize.value
+      };
+    }
+    function getLayoutSize() {
+      if (!layoutElement.value) {
+        return 0;
+      }
+      switch (orientation.value) {
+        case "horizontal": {
+          return layoutElement.value.offsetHeight;
+        }
+        case "vertical": {
+          return layoutElement.value.offsetWidth;
+        }
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock(Fragment, null, [__props.overlay && __props.offset ? (openBlock(), createElementBlock("div", _hoisted_1$t)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", mergeProps({
+        ref_key: "root",
+        ref: root,
+        class: ["resize", classes.value]
+      }, _ctx.$attrs), [createBaseVNode("div", {
+        ref_key: "content",
+        ref: content2,
+        class: "resize__content"
+      }, [renderSlot(_ctx.$slots, "content")], 512), _cache[0] || (_cache[0] = createTextVNode()), !props.disabled ? (openBlock(), createElementBlock("div", {
+        key: 0,
+        ref_key: "separator",
+        ref: separator,
+        role: "separator",
+        class: "resize__handle",
+        tabindex: "0",
+        "aria-orientation": orientation.value
+      }, null, 8, _hoisted_2$n)) : (openBlock(), createElementBlock("div", {
+        key: 1,
+        role: "separator",
+        class: "resize__handle disabled",
+        "aria-orientation": orientation.value
+      }, null, 8, _hoisted_3$i))], 16)], 64);
+    };
+  }
+});
+const _style_0$3 = '/* background color */\n/* highlight color */\n/* the width of the visible handle */\n/* how much extra click/hover area the handle has */\n/* how much extra space the handle occupies when hovering (not counting the click area) */\n/* how long before visually indicating the hover state */\n/* how long the animation for the visual indicator is */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted(*) {\n  display: contents;\n}\n.resize {\n  flex-grow: 1;\n  display: flex;\n  align-items: stretch;\n}\n.resize--overlay {\n  position: absolute;\n  z-index: 1;\n  background: var(--f-page-layout-background);\n}\n.resize--left {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) {\n  width: calc(var(--size) + 2px);\n}\n.resize--left .resize__content {\n  flex-direction: row;\n}\n.resize--left.resize--overlay {\n  left: 0;\n  top: 0;\n  bottom: 0;\n}\n.resize--right {\n  flex-direction: row-reverse;\n}\n.resize--right:not(.resize--disabled) {\n  width: calc(var(--size) + 2px);\n}\n.resize--right .resize__content {\n  flex-direction: row;\n}\n.resize--right.resize--overlay {\n  right: 0;\n  top: 0;\n  bottom: 0;\n}\n.resize--top {\n  flex-direction: column;\n}\n.resize--top:not(.resize--disabled) {\n  height: calc(var(--size) + 2px);\n}\n.resize--bottom {\n  flex-direction: column-reverse;\n}\n.resize--bottom:not(.resize--disabled) {\n  height: calc(var(--size) + 2px);\n}\n.resize__offset {\n  width: calc(var(--offset) + 2px);\n}\n.resize__content {\n  flex: 1 1 auto;\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n}\n.resize--column .resize__content {\n  flex-direction: column;\n}\n.resize--row .resize__content {\n  flex-direction: row;\n}\n.resize--left:not(.resize--disabled) .resize__content, .resize--right:not(.resize--disabled) .resize__content {\n  min-width: var(--min);\n  max-width: var(--max);\n  flex-basis: var(--size);\n}\n.resize--top:not(.resize--disabled) .resize__content, .resize--bottom:not(.resize--disabled) .resize__content {\n  min-height: var(--min);\n  max-height: var(--max);\n  flex-basis: var(--size);\n}\n.resize__handle {\n  flex: 0 0 2px;\n  background: var(--fkds-color-border-primary);\n  touch-action: none;\n  user-select: none;\n  z-index: 1;\n  position: relative;\n  transition: z-index 0s 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle {\n    background: CanvasText;\n}\n}\n.resize__handle[aria-orientation=horizontal] {\n  cursor: row-resize;\n  height: 2px;\n}\n.resize__handle[aria-orientation=horizontal]::before {\n  inset: -2px 0;\n}\n.resize__handle[aria-orientation=horizontal]::after {\n  inset: -4px 0;\n}\n.resize__handle[aria-orientation=vertical] {\n  cursor: col-resize;\n  width: 2px;\n}\n.resize__handle[aria-orientation=vertical]::before {\n  inset: 0 -2px;\n}\n.resize__handle[aria-orientation=vertical]::after {\n  inset: 0 -4px;\n}\n.resize__handle::before {\n  content: "";\n  pointer-events: none;\n  position: absolute;\n  background-color: transparent;\n  transition: background-color 200ms ease-in;\n}\n.resize__handle::after {\n  content: "";\n  position: absolute;\n}\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n  background-color: var(--fkds-color-action-border-primary-hover);\n  transition-delay: 200ms;\n}\n@media (forced-colors: active) {\n.resize__handle:focus::before, .resize__handle:hover::before, .resize__handle.drag::before {\n    background-color: Highlight;\n}\n}\n.resize__handle {\n  /* disable regular focus indicator as this component has its own */\n}\n.resize__handle:focus {\n  outline: none;\n  box-shadow: none;\n}\n.resize__handle {\n  /* when focus by keyboard we dont want the delay or transition */\n}\n.resize__handle:focus::before {\n  transition: none;\n}\n.resize__handle {\n  /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */\n}\n.resize__handle:hover, .resize__handle:focus, .resize__handle.drag {\n  z-index: 2;\n  transition: z-index 0s 0s;\n}\n.resize__handle.disabled {\n  cursor: auto;\n}\n.resize__handle.disabled::before {\n  display: none;\n}';
+const FResizePane = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["styles", [_style_0$3]]]);
+const injectionKey = /* @__PURE__ */ Symbol.for("FResizePane:useResize");
+function toOptionalRef(value) {
+  if (typeof value === "undefined") {
+    return value;
+  }
+  return /* @__PURE__ */ toRef(value);
+}
+function useResize(options = {}) {
+  const api = inject(injectionKey, {
+    register() {
+      return () => void 0;
+    },
+    size: /* @__PURE__ */ ref(0)
+  });
+  const unregister = api.register({
+    enabled: toOptionalRef(options.enabled),
+    visible: toOptionalRef(options.visible),
+    overlay: toOptionalRef(options.overlay),
+    offset: toOptionalRef(options.offset)
+  });
+  onUnmounted(unregister);
+  return {
+    size: api.size
+  };
+}
+const _hoisted_1$s = {
+  slot: "content"
+};
+const tagName$1 = "ce-resize-pane";
+const _sfc_main$v = /* @__PURE__ */ defineComponent({
+  __name: "FResizePane",
+  props: {
+    min: {
+      default: "0"
+    },
+    max: {
+      default: "100%"
+    },
+    initial: {
+      default: "50%"
+    }
+  },
+  setup(__props) {
+    const props = __props;
+    if (!customElements.get(tagName$1)) {
+      customElements.define(tagName$1, /* @__PURE__ */ defineCustomElement(FResizePane));
+    }
+    const anyEnabled = /* @__PURE__ */ ref(true);
+    const anyVisible = /* @__PURE__ */ ref(true);
+    const anyOverlay = /* @__PURE__ */ ref(false);
+    const size = /* @__PURE__ */ ref(-1);
+    const offset2 = /* @__PURE__ */ ref(0);
+    let components = [];
+    let n = 0;
+    function any(src, predicate) {
+      return src.length === 0 || src.some(predicate);
+    }
+    provide(injectionKey, {
+      register(options) {
+        const component = {
+          ...options,
+          id: n++
+        };
+        components.push(component);
+        const scope = effectScope();
+        scope.run(() => {
+          watchEffect(() => {
+            anyEnabled.value = any(components, (it) => {
+              var _it$enabled$value;
+              return (_it$enabled$value = it.enabled?.value) !== null && _it$enabled$value !== void 0 ? _it$enabled$value : true;
+            });
+          });
+          watchEffect(() => {
+            anyVisible.value = any(components, (it) => {
+              var _it$visible$value;
+              return (_it$visible$value = it.visible?.value) !== null && _it$visible$value !== void 0 ? _it$visible$value : true;
+            });
+          });
+          watchEffect(() => {
+            anyOverlay.value = any(components, (it) => {
+              var _it$overlay$value;
+              return (_it$overlay$value = it.overlay?.value) !== null && _it$overlay$value !== void 0 ? _it$overlay$value : false;
+            });
+          });
+          watchEffect(() => {
+            if (components.length === 0) {
+              return 0;
+            }
+            const offsets = components.map((it) => it.offset?.value).filter((it) => typeof it === "number");
+            offset2.value = Math.max(0, ...offsets);
+          });
+        });
+        return () => {
+          components = components.filter((it) => it.id !== component.id);
+          scope.stop();
+        };
+      },
+      size
+    });
+    const disabled = computed(() => anyEnabled.value === false);
+    const hidden = computed(() => anyVisible.value === false);
+    const overlay = computed(() => anyOverlay.value === true);
+    function onResize(event) {
+      size.value = event.detail[0];
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(resolveDynamicComponent(tagName$1), mergeProps({
+        disabled: disabled.value,
+        hidden: hidden.value,
+        overlay: overlay.value,
+        offset: offset2.value
+      }, props, {
+        onResize
+      }), {
+        default: withCtx(() => [createBaseVNode("div", _hoisted_1$s, [renderSlot(_ctx.$slots, "default")])]),
+        _: 3
+      }, 16, ["disabled", "hidden", "overlay", "offset"]);
+    };
+  }
+});
+const _hoisted_1$r = {
+  ref: "root",
+  class: "panel__wrapper"
+};
+const _hoisted_2$m = {
+  class: "panel__header",
+  part: "header"
+};
+const _hoisted_3$h = {
+  class: "panel__title"
+};
+const _hoisted_4$e = {
+  class: "panel__content",
+  part: "content"
+};
+const _hoisted_5$c = {
+  class: "panel__footer",
+  part: "footer"
+};
+const _sfc_main$u = /* @__PURE__ */ defineComponent({
+  __name: "FDetailsPanel.ce",
+  emits: ["closed"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit2 = __emit;
+    const rootElement = useTemplateRef("root");
+    const {
+      attachPanel
+    } = useAreaData(rootElement);
+    const attachClass = computed(() => {
+      switch (attachPanel.value) {
+        case "left":
+          return "attach-left";
+        case "right":
+          return "attach-right";
+      }
+      return void 0;
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1$r, [createBaseVNode("div", {
+        class: normalizeClass(["panel panel--details", [attachClass.value]])
+      }, [createBaseVNode("div", _hoisted_2$m, [createBaseVNode("div", _hoisted_3$h, [renderSlot(_ctx.$slots, "header")]), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("button", {
+        class: "panel__close-button",
+        type: "button",
+        onClick: _cache[0] || (_cache[0] = ($event) => emit2("closed"))
+      }, [renderSlot(_ctx.$slots, "icon")])]), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode("div", _hoisted_4$e, [renderSlot(_ctx.$slots, "content")]), _cache[3] || (_cache[3] = createTextVNode()), createBaseVNode("div", _hoisted_5$c, [renderSlot(_ctx.$slots, "footer")])], 2)], 512);
+    };
+  }
+});
+const _style_0$2 = '@charset "UTF-8";\n*,\n*::before,\n*::after {\n  box-sizing: border-box;\n}\np,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  margin-top: 0;\n}\narticle,\naside,\ndialog,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nnav,\nsection {\n  display: block;\n}\nselect::-ms-expand {\n  display: none;\n}\nselect:focus::-ms-value {\n  background: none;\n  color: #000;\n  outline: 1px dotted #000;\n}\nul,\nol {\n  padding-left: 1rem;\n  margin-top: 0;\n  margin-bottom: 1rem;\n}\na {\n  text-decoration: none;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  font: inherit;\n  margin: 0;\n}\nhtml {\n  font-size: var(--f-font-size-default-rem);\n  overflow-y: scroll;\n  scrollbar-gutter: stable;\n}\n@media (min-width: 1024px) {\nhtml {\n    font-size: var(--f-font-size-default-large-up-rem);\n}\n}\nbody {\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-normal);\n  line-height: var(--f-line-height-large);\n}\np {\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-normal);\n  line-height: var(--f-line-height-large);\n  margin-bottom: 1rem;\n}\nb,\nstrong {\n  font-weight: var(--f-font-weight-medium);\n}\ncode {\n  font-size: var(--f-font-size-standard);\n  border-radius: var(--f-border-radius-small);\n  font-family: var(--f-font-family-code);\n  background-color: var(--fkds-color-background-secondary);\n  display: inline-block;\n  margin: 0 0.25rem;\n  padding: 0 0.25rem;\n}\npre code {\n  display: block;\n}\nh1, .heading--h1,\nh2,\n.heading--h2,\nh3,\n.heading--h3,\nh4,\n.heading--h4,\nh5,\n.heading--h5,\nh6,\n.heading--h6 {\n  font-weight: var(--f-font-weight-bold);\n  margin-bottom: 0.25rem;\n  line-height: var(--f-line-height-medium);\n}\nh1, .heading--h1 {\n  font-size: var(--f-font-size-h1);\n  color: var(--f-text-color-heading-1);\n}\nh2, .heading--h2 {\n  font-size: var(--f-font-size-h2);\n  color: var(--f-text-color-heading-2);\n}\nh3, .heading--h3 {\n  font-size: var(--f-font-size-h3);\n  color: var(--f-text-color-heading-3);\n}\nh4, .heading--h4 {\n  font-size: var(--f-font-size-h4);\n  color: var(--f-text-color-heading-4);\n}\nh5, .heading--h5 {\n  font-size: var(--f-font-size-large);\n  color: var(--f-text-color-heading-5);\n}\nh6, .heading--h6 {\n  font-size: var(--f-font-size-standard);\n  color: var(--f-text-color-heading-6);\n}\n.heading--strong {\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-medium);\n}\n* + h1, * + .heading--h1,\n* + h2,\n* + .heading--h2,\n* + h3,\n* + .heading--h3,\n* + h4,\n* + .heading--h4,\n* + h5,\n* + .heading--h5,\n* + h6,\n* + .heading--h6 {\n  margin-top: 2rem;\n}\n@media (max-width: 640px) {\nh1, .heading--h1 {\n    font-size: var(--f-font-size-h2);\n}\nh2, .heading--h2 {\n    font-size: var(--f-font-size-xxx-large);\n}\nh3, .heading--h3 {\n    font-size: var(--f-font-size-h4);\n}\nh4, .heading--h4 {\n    font-size: var(--f-font-size-large);\n}\nh5, .heading--h5 {\n    font-size: var(--f-font-size-standard);\n}\nh6, .heading--h6 {\n    font-size: var(--f-font-size-standard);\n}\n.heading--strong {\n    font-size: var(--f-font-size-large);\n    font-weight: var(--f-font-weight-medium);\n}\n}\n.heading--h1 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h2 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h3 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h4 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h5 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h6 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\nh1 + h2, .heading--h1 + h2, h1 + .heading--h2, .heading--h1 + .heading--h2 {\n  margin-top: 1rem;\n}\nh2 + h3, .heading--h2 + h3, h2 + .heading--h3, .heading--h2 + .heading--h3 {\n  margin-top: 1rem;\n}\nh3 + h4, .heading--h3 + h4, h3 + .heading--h4, .heading--h3 + .heading--h4 {\n  margin-top: 1rem;\n}\nh4 + h5, .heading--h4 + h5, h4 + .heading--h5, .heading--h4 + .heading--h5 {\n  margin-top: 1rem;\n}\nh5 + h6, .heading--h5 + h6, h5 + .heading--h6, .heading--h5 + .heading--h6 {\n  margin-top: 1rem;\n}\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.sr-separator {\n  display: block !important;\n}\nbutton:focus,\na:focus,\na.button:focus,\nimg:focus,\nselect:focus,\ntextarea:focus,\ninput[type=submit]:focus,\ninput[type=text]:focus,\ninput[type=email]:focus,\ninput[type=tel]:focus,\ninput[type=image]:focus,\ninput[type=search]:focus,\n[tabindex]:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n[tabindex="-1"]:focus {\n  box-shadow: none;\n  outline: none;\n}\n\n/*\n    For help-classes, it is alright to use `!important` when the intent is to\n    overwrite standard behaviour for components.\n\n    All help-classes shall be prefixed with `h-`.\n*/\n.h-no-margin {\n  margin: 0 !important;\n}\n.h-root-size {\n  font-size: 1rem !important;\n}\n.h-display-flex {\n  display: flex;\n}\n.container-fluid {\n  width: 100%;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  margin-right: auto;\n  margin-left: auto;\n}\n.container {\n  width: 100%;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  margin-right: auto;\n  margin-left: auto;\n  max-width: 95%;\n}\n@media (min-width: 640px) {\n.container {\n    max-width: 90%;\n}\n}\n@media (min-width: 1024px) {\n.container {\n    max-width: 80%;\n}\n}\n@media (min-width: 1280px) {\n.container {\n    max-width: 1280px;\n}\n}\n.row {\n  display: flex;\n  flex-wrap: wrap;\n  margin-right: -1rem;\n  margin-left: -1rem;\n}\n.row--align-end {\n  justify-content: flex-end;\n}\n.row--align-center {\n  justify-content: center;\n}\n.row--align-justify {\n  justify-content: space-between;\n}\n.row--align-spaced {\n  justify-content: space-around;\n}\n.row--align-middle {\n  align-items: center;\n}\n.row--align-bottom {\n  align-items: flex-end;\n}\n.row--align-top {\n  align-items: flex-start;\n}\n.col {\n  position: relative;\n  min-height: 1px;\n  box-sizing: border-box;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  width: auto;\n  max-width: none;\n}\n.col--align-bottom {\n  align-self: flex-end;\n}\n.col--align-middle {\n  align-self: center;\n}\n.col--align-stretch {\n  align-self: stretch;\n}\n.col--align-top {\n  align-self: flex-start;\n}\n.col.col--order-1 {\n  order: 1;\n}\n.col.col--order-2 {\n  order: 2;\n}\n.col.col--order-3 {\n  order: 3;\n}\n.col.col--order-4 {\n  order: 4;\n}\n.col.col--order-5 {\n  order: 5;\n}\n.col.col--order-6 {\n  order: 6;\n}\n.col.col--order-7 {\n  order: 7;\n}\n.col.col--order-8 {\n  order: 8;\n}\n.col.col--order-9 {\n  order: 9;\n}\n.col.col--order-10 {\n  order: 10;\n}\n.col.col--order-11 {\n  order: 11;\n}\n.col.col--order-12 {\n  order: 12;\n}\n.col.col--sm-1 {\n  width: 100%;\n}\n.col.col--sm-2 {\n  width: 100%;\n}\n.col.col--sm-3 {\n  width: 100%;\n}\n.col.col--sm-4 {\n  width: 100%;\n}\n.col.col--sm-5 {\n  width: 100%;\n}\n.col.col--sm-6 {\n  width: 100%;\n}\n.col.col--sm-7 {\n  width: 100%;\n}\n.col.col--sm-8 {\n  width: 100%;\n}\n.col.col--sm-9 {\n  width: 100%;\n}\n.col.col--sm-10 {\n  width: 100%;\n}\n.col.col--sm-11 {\n  width: 100%;\n}\n.col.col--sm-12 {\n  width: 100%;\n}\n.col.col--sm-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.col.col--sm-order-1 {\n  order: 1;\n}\n.col.col--sm-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.col.col--sm-order-2 {\n  order: 2;\n}\n.col.col--sm-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.col.col--sm-order-3 {\n  order: 3;\n}\n.col.col--sm-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.col.col--sm-order-4 {\n  order: 4;\n}\n.col.col--sm-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.col.col--sm-order-5 {\n  order: 5;\n}\n.col.col--sm-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.col.col--sm-order-6 {\n  order: 6;\n}\n.col.col--sm-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.col.col--sm-order-7 {\n  order: 7;\n}\n.col.col--sm-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.col.col--sm-order-8 {\n  order: 8;\n}\n.col.col--sm-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.col.col--sm-order-9 {\n  order: 9;\n}\n.col.col--sm-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.col.col--sm-order-10 {\n  order: 10;\n}\n.col.col--sm-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.col.col--sm-order-11 {\n  order: 11;\n}\n.col.col--sm-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.col.col--sm-order-12 {\n  order: 12;\n}\n.col.col--md-1 {\n  width: 100%;\n}\n.col.col--md-2 {\n  width: 100%;\n}\n.col.col--md-3 {\n  width: 100%;\n}\n.col.col--md-4 {\n  width: 100%;\n}\n.col.col--md-5 {\n  width: 100%;\n}\n.col.col--md-6 {\n  width: 100%;\n}\n.col.col--md-7 {\n  width: 100%;\n}\n.col.col--md-8 {\n  width: 100%;\n}\n.col.col--md-9 {\n  width: 100%;\n}\n.col.col--md-10 {\n  width: 100%;\n}\n.col.col--md-11 {\n  width: 100%;\n}\n.col.col--md-12 {\n  width: 100%;\n}\n@media (min-width: 640px) {\n.col.col--md-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--md-order-1 {\n    order: 1;\n}\n.col.col--md-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--md-order-2 {\n    order: 2;\n}\n.col.col--md-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--md-order-3 {\n    order: 3;\n}\n.col.col--md-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--md-order-4 {\n    order: 4;\n}\n.col.col--md-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--md-order-5 {\n    order: 5;\n}\n.col.col--md-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--md-order-6 {\n    order: 6;\n}\n.col.col--md-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--md-order-7 {\n    order: 7;\n}\n.col.col--md-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--md-order-8 {\n    order: 8;\n}\n.col.col--md-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--md-order-9 {\n    order: 9;\n}\n.col.col--md-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--md-order-10 {\n    order: 10;\n}\n.col.col--md-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--md-order-11 {\n    order: 11;\n}\n.col.col--md-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--md-order-12 {\n    order: 12;\n}\n}\n.col.col--lg-1 {\n  width: 100%;\n}\n.col.col--lg-2 {\n  width: 100%;\n}\n.col.col--lg-3 {\n  width: 100%;\n}\n.col.col--lg-4 {\n  width: 100%;\n}\n.col.col--lg-5 {\n  width: 100%;\n}\n.col.col--lg-6 {\n  width: 100%;\n}\n.col.col--lg-7 {\n  width: 100%;\n}\n.col.col--lg-8 {\n  width: 100%;\n}\n.col.col--lg-9 {\n  width: 100%;\n}\n.col.col--lg-10 {\n  width: 100%;\n}\n.col.col--lg-11 {\n  width: 100%;\n}\n.col.col--lg-12 {\n  width: 100%;\n}\n@media (min-width: 1024px) {\n.col.col--lg-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--lg-order-1 {\n    order: 1;\n}\n.col.col--lg-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--lg-order-2 {\n    order: 2;\n}\n.col.col--lg-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--lg-order-3 {\n    order: 3;\n}\n.col.col--lg-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--lg-order-4 {\n    order: 4;\n}\n.col.col--lg-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--lg-order-5 {\n    order: 5;\n}\n.col.col--lg-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--lg-order-6 {\n    order: 6;\n}\n.col.col--lg-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--lg-order-7 {\n    order: 7;\n}\n.col.col--lg-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--lg-order-8 {\n    order: 8;\n}\n.col.col--lg-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--lg-order-9 {\n    order: 9;\n}\n.col.col--lg-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--lg-order-10 {\n    order: 10;\n}\n.col.col--lg-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--lg-order-11 {\n    order: 11;\n}\n.col.col--lg-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--lg-order-12 {\n    order: 12;\n}\n}\n.col.col--xl-1 {\n  width: 100%;\n}\n.col.col--xl-2 {\n  width: 100%;\n}\n.col.col--xl-3 {\n  width: 100%;\n}\n.col.col--xl-4 {\n  width: 100%;\n}\n.col.col--xl-5 {\n  width: 100%;\n}\n.col.col--xl-6 {\n  width: 100%;\n}\n.col.col--xl-7 {\n  width: 100%;\n}\n.col.col--xl-8 {\n  width: 100%;\n}\n.col.col--xl-9 {\n  width: 100%;\n}\n.col.col--xl-10 {\n  width: 100%;\n}\n.col.col--xl-11 {\n  width: 100%;\n}\n.col.col--xl-12 {\n  width: 100%;\n}\n@media (min-width: 1280px) {\n.col.col--xl-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--xl-order-1 {\n    order: 1;\n}\n.col.col--xl-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--xl-order-2 {\n    order: 2;\n}\n.col.col--xl-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--xl-order-3 {\n    order: 3;\n}\n.col.col--xl-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--xl-order-4 {\n    order: 4;\n}\n.col.col--xl-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--xl-order-5 {\n    order: 5;\n}\n.col.col--xl-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--xl-order-6 {\n    order: 6;\n}\n.col.col--xl-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--xl-order-7 {\n    order: 7;\n}\n.col.col--xl-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--xl-order-8 {\n    order: 8;\n}\n.col.col--xl-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--xl-order-9 {\n    order: 9;\n}\n.col.col--xl-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--xl-order-10 {\n    order: 10;\n}\n.col.col--xl-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--xl-order-11 {\n    order: 11;\n}\n.col.col--xl-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--xl-order-12 {\n    order: 12;\n}\n}\n.i-width-sm-1 {\n  width: 8.3333333333%;\n}\n.i-width-sm-2 {\n  width: 16.6666666667%;\n}\n.i-width-sm-3 {\n  width: 25%;\n}\n.i-width-sm-4 {\n  width: 33.3333333333%;\n}\n.i-width-sm-5 {\n  width: 41.6666666667%;\n}\n.i-width-sm-6 {\n  width: 50%;\n}\n.i-width-sm-7 {\n  width: 58.3333333333%;\n}\n.i-width-sm-8 {\n  width: 66.6666666667%;\n}\n.i-width-sm-9 {\n  width: 75%;\n}\n.i-width-sm-10 {\n  width: 83.3333333333%;\n}\n.i-width-sm-11 {\n  width: 91.6666666667%;\n}\n.i-width-sm-12 {\n  width: 100%;\n}\n@media (min-width: 640px) {\n.i-width-md-1 {\n    width: 8.3333333333%;\n}\n.i-width-md-2 {\n    width: 16.6666666667%;\n}\n.i-width-md-3 {\n    width: 25%;\n}\n.i-width-md-4 {\n    width: 33.3333333333%;\n}\n.i-width-md-5 {\n    width: 41.6666666667%;\n}\n.i-width-md-6 {\n    width: 50%;\n}\n.i-width-md-7 {\n    width: 58.3333333333%;\n}\n.i-width-md-8 {\n    width: 66.6666666667%;\n}\n.i-width-md-9 {\n    width: 75%;\n}\n.i-width-md-10 {\n    width: 83.3333333333%;\n}\n.i-width-md-11 {\n    width: 91.6666666667%;\n}\n.i-width-md-12 {\n    width: 100%;\n}\n}\n@media (min-width: 1024px) {\n.i-width-lg-1 {\n    width: 8.3333333333%;\n}\n.i-width-lg-2 {\n    width: 16.6666666667%;\n}\n.i-width-lg-3 {\n    width: 25%;\n}\n.i-width-lg-4 {\n    width: 33.3333333333%;\n}\n.i-width-lg-5 {\n    width: 41.6666666667%;\n}\n.i-width-lg-6 {\n    width: 50%;\n}\n.i-width-lg-7 {\n    width: 58.3333333333%;\n}\n.i-width-lg-8 {\n    width: 66.6666666667%;\n}\n.i-width-lg-9 {\n    width: 75%;\n}\n.i-width-lg-10 {\n    width: 83.3333333333%;\n}\n.i-width-lg-11 {\n    width: 91.6666666667%;\n}\n.i-width-lg-12 {\n    width: 100%;\n}\n}\n@media (min-width: 1280px) {\n.i-width-xl-1 {\n    width: 8.3333333333%;\n}\n.i-width-xl-2 {\n    width: 16.6666666667%;\n}\n.i-width-xl-3 {\n    width: 25%;\n}\n.i-width-xl-4 {\n    width: 33.3333333333%;\n}\n.i-width-xl-5 {\n    width: 41.6666666667%;\n}\n.i-width-xl-6 {\n    width: 50%;\n}\n.i-width-xl-7 {\n    width: 58.3333333333%;\n}\n.i-width-xl-8 {\n    width: 66.6666666667%;\n}\n.i-width-xl-9 {\n    width: 75%;\n}\n.i-width-xl-10 {\n    width: 83.3333333333%;\n}\n.i-width-xl-11 {\n    width: 91.6666666667%;\n}\n.i-width-xl-12 {\n    width: 100%;\n}\n}\n.sticky {\n  /* Double position is specified due to E11-compability.\n  `fixed` is used by IE11.\n  `sticky` is used by other web browsers. */\n  position: fixed;\n  position: sticky;\n  z-index: 9999;\n}\n.sticky--top {\n  right: 0;\n  top: 0;\n  left: 0;\n}\n.density-default {\n  --f-density-factor: 1;\n}\n.density-dense {\n  --f-density-factor: 0.8;\n}\n.density-densest {\n  --f-density-factor: 0.6;\n}\n.formatter--date, .formatter--date-full, .formatter--date-long, .formatter--date-range, .formatter--text {\n  white-space: nowrap;\n}\n.formatter--bankgiro, .formatter--number, .formatter--orgnr, .formatter--plusgiro, .formatter--pnr, .formatter--postnummer {\n  white-space: nowrap;\n  font-feature-settings: "tnum";\n}\n.anchor, .file-item__file-open {\n  color: var(--fkds-color-action-text-primary-default);\n  text-decoration: underline;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 0.25em;\n  text-decoration-color: var(--fkds-color-action-text-primary-default);\n  font-weight: var(--f-font-weight-medium);\n}\n.anchor:hover, .file-item__file-open:hover {\n  text-decoration-thickness: 3px;\n  color: var(--fkds-color-action-text-primary-default);\n  text-decoration-color: var(--fkds-color-action-text-primary-default);\n}\n.anchor.anchor--block, .file-item__file-open {\n  display: inline-flex;\n}\n.anchor.anchor--block > svg, .file-item__file-open > svg, .anchor.anchor--block > .icon-stack, .file-item__file-open > .icon-stack {\n  flex-shrink: 0;\n  margin: calc((var(--f-line-height-large) * 1rem - var(--f-icon-size-small)) / 2) 0.25rem 0;\n}\n.anchor.anchor--discrete, .anchor--discrete.file-item__file-open {\n  color: var(--fkds-color-action-text-secondary-default);\n  text-decoration-color: var(--fkds-color-border-primary);\n}\n.anchor.anchor--discrete:hover, .anchor--discrete.file-item__file-open:hover {\n  color: var(--fkds-color-action-text-secondary-default);\n  text-decoration-color: var(--fkds-color-border-primary);\n}\n.badge {\n  border-radius: var(--f-border-radius-medium);\n  border-style: solid;\n  border-width: var(--f-border-width-small);\n  box-sizing: border-box;\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  line-height: calc(var(--f-line-height-large) * var(--f-density-factor));\n  font-weight: var(--f-font-weight-normal);\n  padding: 0 0.5rem;\n}\n.badge--default {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-neutral-strong);\n  border-color: var(--fkds-color-feedback-background-neutral-strong);\n}\n.badge--default-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-neutral);\n  border-color: var(--fkds-color-feedback-border-neutral);\n}\n.badge--warning {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-warning-strong);\n  border-color: var(--fkds-color-feedback-background-warning-strong);\n}\n.badge--warning-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-color: var(--fkds-color-feedback-border-warning);\n}\n.badge--error {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-negative-strong);\n  border-color: var(--fkds-color-feedback-background-negative-strong);\n}\n.badge--error-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.badge--success {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-positive-strong);\n  border-color: var(--fkds-color-feedback-background-positive-strong);\n}\n.badge--success-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-color: var(--fkds-color-feedback-border-positive);\n}\n.badge--info {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-info-strong);\n  border-color: var(--fkds-color-feedback-background-info-strong);\n}\n.badge--info-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-color: var(--fkds-color-feedback-border-info);\n}\n.button-group {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.button-group .button-group__item {\n  margin: 0;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n@media (min-width: 640px) {\n.button-group .button-group__item {\n    margin-bottom: calc(1rem * var(--f-density-factor));\n    margin-right: 1.25rem;\n}\n.button-group .button-group__item:last-child {\n    margin-right: 0;\n}\n}\n.button-group > .button.button--discrete, .button-group > .button--discrete.calendar-navbar__year-selector-button, .button-group > .button.button--text, .button-group > .button--text.calendar-navbar__year-selector-button {\n  margin-bottom: calc(1rem * var(--f-density-factor));\n  margin-right: 1.5rem;\n}\n.button-group > .button.button--discrete:last-child, .button-group > .button--discrete.calendar-navbar__year-selector-button:last-child, .button-group > .button.button--text:last-child, .button-group > .button--text.calendar-navbar__year-selector-button:last-child {\n  margin-right: 0;\n}\n.button-group > .button.button--small, .button-group > .button--small.calendar-navbar__year-selector-button {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n  margin-right: 0.75rem;\n}\n.button-group > .button.button--small:last-child, .button-group > .button--small.calendar-navbar__year-selector-button:last-child {\n  margin-right: 0;\n}\n@media (max-width: 639.98px) {\n.button-group > .button.button--small.button--full-width, .button-group > .button--small.button--full-width.calendar-navbar__year-selector-button {\n    margin-right: 0;\n}\n}\n.button-group > .button.button--medium, .button-group > .button--medium.calendar-navbar__year-selector-button {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n  margin-right: 1rem;\n}\n.button-group > .button.button--medium:last-child, .button-group > .button--medium.calendar-navbar__year-selector-button:last-child {\n  margin-right: 0;\n}\n@media (max-width: 639.98px) {\n.button-group > .button.button--medium.button--full-width, .button-group > .button--medium.button--full-width.calendar-navbar__year-selector-button {\n    margin-right: 0;\n}\n}\n@media (min-width: 640px) {\n.button-group > .button.button--large, .button-group > .button--large.calendar-navbar__year-selector-button {\n    margin-bottom: calc(1rem * var(--f-density-factor));\n    margin-right: 1.25rem;\n}\n.button-group > .button.button--large:last-child, .button-group > .button--large.calendar-navbar__year-selector-button:last-child {\n    margin-right: 0;\n}\n}\n.button-group--end {\n  justify-content: flex-end;\n}\n.button-list {\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  padding-left: 0;\n}\n.button-list > li button {\n  margin: 0;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.button-list > li button.button.button--small, .button-list > li button.button--small.calendar-navbar__year-selector-button, .button-list > li button.button.button--medium, .button-list > li button.button--medium.calendar-navbar__year-selector-button {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n}\n.button-list > li button.button.button--large, .button-list > li button.button--large.calendar-navbar__year-selector-button {\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.button, .calendar-navbar__year-selector-button {\n  border-color: transparent;\n  border-radius: var(--f-border-radius-medium);\n  border-style: solid;\n  border-width: var(--f-border-width-medium);\n  cursor: pointer;\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  justify-content: center;\n  align-items: center;\n  letter-spacing: var(--f-button-letter-spacing);\n  line-height: var(--f-button-default-line-height);\n  margin-bottom: calc(1.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  min-width: var(--f-button-min-width);\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-default-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-default-padding-right);\n  padding-bottom: calc(var(--f-button-default-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-default-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n  position: relative;\n  text-align: center;\n  transition: background-color var(--f-animation-duration-medium) ease-out;\n}\n@media (max-width: 639.98px) {\n.button, .calendar-navbar__year-selector-button {\n    max-width: var(--f-width-full);\n    width: var(--f-width-full);\n}\n}\n.button--text {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.button--text--black {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button, .calendar-navbar__year-selector-button {\n  display: inline-flex;\n  position: relative;\n  background-color: var(--fkds-color-action-background-secondary-default);\n  border-color: var(--fkds-color-action-border-primary-default);\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-standard-padding-top) * var(--f-density-factor)) var(--f-button-standard-padding-right) calc(var(--f-button-standard-padding-bottom) * var(--f-density-factor)) var(--f-button-standard-padding-left);\n}\n.button:hover, .calendar-navbar__year-selector-button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button:active, .calendar-navbar__year-selector-button:active, .button:focus, .calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n}\n.button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n}\n.button.button--primary, .button--primary.calendar-navbar__year-selector-button {\n  background-color: var(--fkds-color-action-background-primary-default);\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-inverted-default);\n  padding: calc(var(--f-button-primary-padding-top) * var(--f-density-factor)) var(--f-button-primary-padding-right) calc(var(--f-button-primary-padding-bottom) * var(--f-density-factor)) var(--f-button-primary-padding-left);\n}\n.button.button--primary:hover, .button--primary.calendar-navbar__year-selector-button:hover {\n  background-color: var(--fkds-color-action-background-primary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-default);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button.button--primary:active, .button--primary.calendar-navbar__year-selector-button:active, .button.button--primary:focus, .button--primary.calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-primary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.button.button--primary.disabled, .button--primary.disabled.calendar-navbar__year-selector-button, .button.button--primary.disabled:hover, .button.button--primary:disabled, .button--primary.calendar-navbar__year-selector-button:disabled, .button.button--primary:disabled:hover, .button.button--primary.button--disabled, .button--primary.button--disabled.calendar-navbar__year-selector-button, .button.button--primary.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n}\n.button.button--secondary, .button--secondary.calendar-navbar__year-selector-button {\n  background-color: var(--fkds-color-action-background-secondary-default);\n  border-color: var(--fkds-color-action-border-primary-default);\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-secondary-padding-top) * var(--f-density-factor)) var(--f-button-secondary-padding-right) calc(var(--f-button-secondary-padding-bottom) * var(--f-density-factor)) var(--f-button-secondary-padding-left);\n}\n.button.button--secondary:hover, .button--secondary.calendar-navbar__year-selector-button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button.button--secondary:active, .button--secondary.calendar-navbar__year-selector-button:active, .button.button--secondary:focus, .button--secondary.calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n}\n.button.button--secondary.disabled, .button--secondary.disabled.calendar-navbar__year-selector-button, .button.button--secondary.disabled:hover, .button.button--secondary:disabled, .button--secondary.calendar-navbar__year-selector-button:disabled, .button.button--secondary:disabled:hover, .button.button--secondary.button--disabled, .button--secondary.button--disabled.calendar-navbar__year-selector-button, .button.button--secondary.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n}\n.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button {\n  width: inherit;\n  min-width: 0;\n  font-weight: var(--f-font-weight-bold);\n  outline-offset: 0.25rem;\n  line-height: calc(1.25 * var(--f-font-size-standard));\n  background-color: transparent;\n  border-color: transparent;\n  border-width: 0;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);\n}\n.button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover {\n  background-color: none;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-hover);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button.button--discrete:active, .button--discrete.calendar-navbar__year-selector-button:active, .button.button--text:active, .button--text.calendar-navbar__year-selector-button:active, .button.button--discrete:focus, .button--discrete.calendar-navbar__year-selector-button:focus, .button.button--text:focus, .button--text.calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: none;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-hover);\n}\n.button.button--discrete.disabled, .button--discrete.disabled.calendar-navbar__year-selector-button, .button.disabled.button--text, .disabled.button--text.calendar-navbar__year-selector-button, .button.button--discrete.disabled:hover, .button.button--discrete:disabled, .button--discrete.calendar-navbar__year-selector-button:disabled, .button.button--text:disabled, .button--text.calendar-navbar__year-selector-button:disabled, .button.button--discrete:disabled:hover, .button.button--discrete.button--disabled, .button--discrete.button--disabled.calendar-navbar__year-selector-button, .button.button--disabled.button--text, .button--disabled.button--text.calendar-navbar__year-selector-button, .button.button--discrete.button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n}\n@media (max-width: 639.98px) {\n.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button {\n    width: auto;\n}\n}\n.button.button--discrete--black, .button--discrete--black.calendar-navbar__year-selector-button, .button.button--text--black, .button--text--black.calendar-navbar__year-selector-button {\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-discrete-black-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-discrete-black-padding-right);\n  padding-bottom: calc(var(--f-button-discrete-black-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-discrete-black-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover {\n  box-shadow: none;\n  mix-blend-mode: multiply;\n}\n.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button, .button.button--discrete:focus, .button.button--discrete:active, .button.button--discrete:hover {\n  border-radius: var(--f-button-discrete-radius-hover);\n}\n.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button {\n  width: inherit;\n  min-width: 0;\n  font-weight: var(--f-font-weight-bold);\n  outline-offset: 0.25rem;\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-discrete-padding-right);\n  padding-bottom: calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-discrete-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n  line-height: calc(1.25 * var(--f-font-size-standard));\n  background-color: transparent;\n  border-color: transparent;\n  border-width: 0;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-inverted-default);\n  padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);\n}\n.button.button--discrete-inverted:hover, .button--discrete-inverted.calendar-navbar__year-selector-button:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-hover);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button.button--discrete-inverted:active, .button--discrete-inverted.calendar-navbar__year-selector-button:active, .button.button--discrete-inverted:focus, .button--discrete-inverted.calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-hover);\n}\n.button.button--discrete-inverted.disabled, .button--discrete-inverted.disabled.calendar-navbar__year-selector-button, .button.button--discrete-inverted.disabled:hover, .button.button--discrete-inverted:disabled, .button--discrete-inverted.calendar-navbar__year-selector-button:disabled, .button.button--discrete-inverted:disabled:hover, .button.button--discrete-inverted.button--disabled, .button--discrete-inverted.button--disabled.calendar-navbar__year-selector-button, .button.button--discrete-inverted.button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n}\n@media (max-width: 639.98px) {\n.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button {\n    width: auto;\n}\n}\n.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button, .button.button--discrete-inverted:focus, .button.button--discrete-inverted:active, .button.button--discrete-inverted:hover {\n  border-radius: var(--f-button-discrete-radius-hover);\n}\n.button.button--tertiary, .calendar-navbar__year-selector-button {\n  width: inherit;\n  min-width: 0;\n  font-weight: var(--f-font-weight-medium);\n  outline-offset: 0.25rem;\n  background-color: transparent;\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor)) var(--f-button-tertiary-padding-right) calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor)) var(--f-button-tertiary-padding-left);\n}\n.button.button--tertiary:hover, .calendar-navbar__year-selector-button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n  box-shadow: none;\n}\n.button.button--tertiary:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary:focus, .calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n}\n.button.button--tertiary.disabled, .disabled.calendar-navbar__year-selector-button, .button.button--tertiary.disabled:hover, .button.button--tertiary:disabled, .calendar-navbar__year-selector-button:disabled, .button.button--tertiary:disabled:hover, .button.button--tertiary.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button.button--tertiary.button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n}\n@media (max-width: 639.98px) {\n.button.button--tertiary, .calendar-navbar__year-selector-button {\n    width: auto;\n}\n}\n.button.button--tertiary--black, .calendar-navbar__year-selector-button {\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button.button--tertiary--black:hover, .calendar-navbar__year-selector-button:hover, .button.button--tertiary--black:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary--black:focus, .calendar-navbar__year-selector-button:focus {\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button.button--tertiary:disabled, .calendar-navbar__year-selector-button:disabled {\n  border: none;\n}\n.button.button--tertiary--inverted, .button--tertiary--inverted.calendar-navbar__year-selector-button {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.button.button--tertiary--inverted:hover, .button--tertiary--inverted.calendar-navbar__year-selector-button:hover, .button.button--tertiary--inverted:active, .button--tertiary--inverted.calendar-navbar__year-selector-button:active, .button.button--tertiary--inverted:focus, .button--tertiary--inverted.calendar-navbar__year-selector-button:focus {\n  color: var(--fkds-color-action-text-inverted-focus);\n  background-color: transparent;\n}\n.button.button--tertiary--inverted:disabled, .button--tertiary--inverted.calendar-navbar__year-selector-button:disabled {\n  color: var(--fkds-color-text-disabled);\n  border: none;\n  border-width: 0;\n  background-color: transparent;\n}\n.button.button--tertiary--underline, .button--tertiary--underline.calendar-navbar__year-selector-button {\n  text-decoration: underline;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 4px;\n}\n.button.button--tertiary--underline:disabled, .button--tertiary--underline.calendar-navbar__year-selector-button:disabled {\n  text-decoration: none;\n}\n.button.button--tertiary.button--small, .button--small.calendar-navbar__year-selector-button {\n  min-width: 24px;\n  padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;\n  text-underline-offset: 3.5px;\n}\n.button.button--tertiary.button--small.button--align-text, .button--small.button--align-text.calendar-navbar__year-selector-button {\n  margin-left: -0.25rem;\n}\n.button.button--tertiary.button--medium, .button--medium.calendar-navbar__year-selector-button {\n  min-width: 8rem;\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-tertiary-padding-right);\n  padding-bottom: calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-tertiary-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n}\n.button.button--tertiary.button--medium.button--align-text, .button--medium.button--align-text.calendar-navbar__year-selector-button {\n  margin-left: -0.5rem;\n}\n.button.button--tertiary.button--large, .button--large.calendar-navbar__year-selector-button {\n  min-width: var(--f-button-min-width);\n  padding: calc(1.125rem * var(--f-density-factor)) 0.75rem;\n}\n.button.button--tertiary.button--large.button--align-text, .button--large.button--align-text.calendar-navbar__year-selector-button {\n  margin-left: -0.75rem;\n}\n.button.button--tertiary.button--align-text, .button--align-text.calendar-navbar__year-selector-button {\n  margin-left: -0.5rem;\n  min-width: 0;\n}\n@media (max-width: 639.98px) {\n.button.button--tertiary.button--full-width, .button--full-width.calendar-navbar__year-selector-button {\n    min-width: var(--f-width-full);\n}\n}\n.button.button--full-width, .button--full-width.calendar-navbar__year-selector-button {\n  min-width: var(--f-width-full);\n}\n.button.button--margin-bottom-0, .calendar-navbar__year-selector-button {\n  margin-bottom: 0;\n}\n.button.button--small, .button--small.calendar-navbar__year-selector-button {\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 4rem;\n  padding: calc(0.25rem * var(--f-density-factor)) 0.75rem;\n}\n@media (max-width: 639.98px) {\n.button.button--small:not(.button--full-width), .button--small.calendar-navbar__year-selector-button:not(.button--full-width) {\n    width: auto;\n}\n}\n.button.button--small > .button__icon, .button--small.calendar-navbar__year-selector-button > .button__icon {\n  height: 14px;\n  width: 14px;\n}\n.button.button--medium, .button--medium.calendar-navbar__year-selector-button {\n  line-height: 1.5rem;\n  min-width: 8rem;\n  padding: calc(0.625rem * var(--f-density-factor)) 1.25rem;\n}\n@media (max-width: 639.98px) {\n.button.button--medium:not(.button--full-width), .button--medium.calendar-navbar__year-selector-button:not(.button--full-width) {\n    width: auto;\n}\n}\n.button.button--large, .button--large.calendar-navbar__year-selector-button {\n  line-height: 1.5rem;\n  min-width: 9.5rem;\n  padding: calc(1rem * var(--f-density-factor)) 1.5rem;\n}\n@media (max-width: 639.98px) {\n.button.button--large, .button--large.calendar-navbar__year-selector-button {\n    max-width: var(--f-width-full);\n    width: var(--f-width-full);\n}\n}\n.button .button__icon, .calendar-navbar__year-selector-button .button__icon {\n  margin-right: 0.25rem;\n}\n.button .button__icon:not(:first-child), .calendar-navbar__year-selector-button .button__icon:not(:first-child) {\n  margin-left: 0.25rem;\n  margin-right: 0;\n}\n.button > .button__icon--end, .calendar-navbar__year-selector-button > .button__icon--end {\n  position: absolute;\n  right: 1.25rem;\n}\n.button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button {\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  cursor: default;\n}\n@keyframes button-spinner-rotation {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes button-spinner-delay {\n0%, 99% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n.button .button__spinner, .calendar-navbar__year-selector-button .button__spinner {\n  display: inline-block;\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n  animation: button-spinner-rotation 1250ms linear infinite, button-spinner-delay 300ms linear;\n}\n.button.button.button--small .button__spinner, .button--small.calendar-navbar__year-selector-button .button__spinner {\n  width: 14px;\n  height: 14px;\n}\n.button.button.button--small .spinner--before, .button--small.calendar-navbar__year-selector-button .spinner--before,\n.button.button.button--small .spinner--after,\n.button--small.calendar-navbar__year-selector-button .spinner--after {\n  width: calc(7px + 0.125rem);\n  height: 14px;\n}\n.button .spinner--before, .calendar-navbar__year-selector-button .spinner--before,\n.button .spinner--after,\n.calendar-navbar__year-selector-button .spinner--after {\n  display: inline-flex;\n  width: calc(var(--f-icon-size-small) * 0.5 + 0.125rem);\n  height: var(--f-icon-size-small);\n  align-self: center;\n  transition: width 300ms ease-out;\n}\n.button.button__inflight.button.button--small .spinner--after, .button__inflight.button--small.calendar-navbar__year-selector-button .spinner--after {\n  width: 0;\n}\n.button.button__inflight.button.button--small .spinner--before, .button__inflight.button--small.calendar-navbar__year-selector-button .spinner--before {\n  width: calc(14px + 0.25rem);\n}\n.button.button__inflight .spinner--after, .button__inflight.calendar-navbar__year-selector-button .spinner--after {\n  width: 0;\n}\n.button.button__inflight .spinner--before, .button__inflight.calendar-navbar__year-selector-button .spinner--before {\n  width: calc(var(--f-icon-size-small) + 0.25rem);\n}\n\n/* stylelint-disable no-invalid-position-declaration -- the selector is set when the mixin is included */\n.calendar-day {\n  align-items: center;\n  display: inline-flex;\n  font-weight: var(--f-font-weight-medium);\n  justify-content: center;\n  height: 2.75rem;\n  width: 100%;\n  color: var(--fkds-color-text-primary);\n}\n.calendar-day--highlight {\n  position: relative;\n}\n.calendar-day--highlight::before {\n  border-radius: 50%;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n  width: 2rem;\n  height: 2rem;\n  content: "";\n  position: absolute;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n}\n.calendar-day--highlight.calendar-day--selected::before {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-inverted);\n}\n@media (forced-colors: active) {\n.calendar-day--highlight.calendar-day--selected::before {\n    border-color: highlightText;\n}\n}\n.calendar-day--highlight:active:not(.calendar-day--highlight--disabled)::before {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-inverted);\n}\n@media (forced-colors: active) {\n.calendar-day--highlight:active:not(.calendar-day--highlight--disabled)::before {\n    border-color: highlightText;\n}\n}\n.calendar-day--highlight.calendar-day--disabled {\n  position: relative;\n}\n.calendar-day--highlight.calendar-day--disabled::before {\n  border-radius: 50%;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n  width: 2rem;\n  height: 2rem;\n  content: "";\n  position: absolute;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n}\n.calendar-day--highlight.calendar-day--disabled::after {\n  content: "";\n  z-index: 1;\n  position: absolute;\n  border-top: var(--f-border-width-medium) solid;\n  width: 60%;\n}\n.calendar-day--selected {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-select-background-primary-default);\n}\n@media (forced-colors: active) {\n.calendar-day--selected {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.calendar-day--disabled {\n  position: relative;\n}\n.calendar-day--disabled::before {\n  content: "";\n  position: absolute;\n  border-top: var(--f-border-width-medium) solid;\n  width: 60%;\n}\n.calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {\n  background-color: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {\n    border: 2px solid highlight;\n}\n}\n.calendar-day:active:not(.calendar-day--disabled), .calendar-day--active:not(.calendar-day--disabled) {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-select-background-primary-default);\n}\n@media (forced-colors: active) {\n.calendar-day:active:not(.calendar-day--disabled), .calendar-day--active:not(.calendar-day--disabled) {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.card {\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  margin: calc(1rem * var(--f-density-factor)) 0;\n}\n.card--default {\n  background-color: var(--fkds-color-background-primary);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n}\n.card--error {\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-negative);\n}\n.card__content {\n  color: var(--fkds-color-text-primary);\n}\n.card__content > p:last-child,\n.card__content > div:last-child {\n  margin-bottom: 0;\n}\n.card__content > p:last-child > *:last-child,\n.card__content > div:last-child > *:last-child {\n  margin-bottom: 0;\n}\n.card__header-label {\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  display: block;\n}\n.card__footer {\n  padding-top: calc(1.25rem * var(--f-density-factor));\n}\n.card__footer > .button-group {\n  margin-bottom: 0;\n}\n.card__footer > .button-group .button-group__item {\n  margin-bottom: 0 !important;\n}\n.card__error-message {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.list__item {\n  display: flex;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background: var(--fkds-color-background-primary);\n}\n.radio-button-group--border .radio-button-group__content .radio-button:not(.disabled):hover, .checkbox-group--border .checkbox-group__content .checkbox:not(.disabled):hover, .list--hover .list__item:not(.disabled):focus-within,\n.list--hover .list__item:not(.disabled):hover, .list__item--hover:not(.disabled) {\n  background: var(--fkds-color-select-background-primary-hover);\n}\n.list--hover .list__item:focus-within.list__item--active,\n.list--hover .list__item:hover.list__item--active, .list__item--active {\n  background: var(--fkds-color-select-background-primary-active);\n}\n.list {\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  padding-left: 0;\n}\n.list__item:not(:last-child) {\n  border-bottom: none;\n}\n.list__item__itempane {\n  width: 100%;\n  padding: calc(var(--f-list-item-itempane-padding) * var(--f-density-factor)) var(--f-list-item-itempane-padding);\n  color: inherit;\n  --f-margin-component-bottom: 0.5rem;\n}\n.list__item__itempane .button {\n  margin-bottom: 0;\n}\n.list__item__itempane ul {\n  list-style-type: disc;\n}\n.list__item__itempane ul ul {\n  list-style-type: circle;\n}\n.list__item__selectpane {\n  padding: calc((var(--f-list-item-itempane-padding) - 0.2rem) * var(--f-density-factor)) 0 calc((var(--f-list-item-itempane-padding) - 0.2rem) * var(--f-density-factor)) calc(var(--f-list-item-itempane-padding) - 0.2rem);\n}\n.list__item__selectpane__input {\n  margin-top: 0.1rem;\n}\n.list__item__selectpane__input .checkbox__label,\n.list__item__selectpane__input .radio-button__label {\n  min-width: 1.75rem;\n  height: 1.75rem;\n  padding: 0;\n}\n.list__item__selectpane__input .checkbox__label::after,\n.list__item__selectpane__input .checkbox__label::before,\n.list__item__selectpane__input .radio-button__label::after,\n.list__item__selectpane__input .radio-button__label::before {\n  top: calc(0.2rem * var(--f-density-factor));\n  left: 0.2rem;\n}\n.list--hover .list__item:focus-within,\n.list--hover .list__item:hover {\n  cursor: pointer;\n}\n.radio-button-group--border .radio-button-group__content .radio-button, .checkbox-group--border .checkbox-group__content .checkbox {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  margin-bottom: 0;\n  width: 100%;\n  cursor: pointer;\n  border-bottom: none;\n}\n.radio-button-group--border .radio-button-group__content .radio-button:last-child, .checkbox-group--border .checkbox-group__content .checkbox:last-child {\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n}\n.radio-button-group--border .radio-button-group__content .radio-button input:focus + label, .checkbox-group--border .checkbox-group__content .checkbox input:focus + label {\n  outline: 2px solid var(--fkds-color-border-primary);\n  outline-offset: -2px;\n}\n.radio-button-group--border .radio-button-group__content .radio-button input + label::after, .checkbox-group--border .checkbox-group__content .checkbox input + label::after {\n  top: 0.9rem;\n  left: 1rem;\n}\n.radio-button-group--border .radio-button-group__content .radio-button input:checked + label::after, .checkbox-group--border .checkbox-group__content .checkbox input:checked + label::after {\n  top: 0.9rem;\n  left: 1rem;\n}\n.radio-button-group--border .radio-button-group__content .radio-button label::before, .checkbox-group--border .checkbox-group__content .checkbox label::before {\n  top: 0.9rem;\n  left: 1rem;\n}\n.radio-button-group--border .radio-button-group__content .radio-button label, .checkbox-group--border .checkbox-group__content .checkbox label {\n  padding: 1rem;\n  padding-left: 3rem;\n  width: 100%;\n}\n.radio-button__details,\n.checkbox__details {\n  display: block;\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.radio-button__width,\n.checkbox__width {\n  width: 100%;\n}\n.checkbox-group__content {\n  display: flex;\n  flex-direction: column;\n}\n.checkbox__label::after {\n  mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImNoZWNrYm94LWljb24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgogICAgICAgICB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHJlY3QgeD0iMy40NzQiIHk9IjkuMTk0IiBmaWxsPSIjM0M1NTkyIiB3aWR0aD0iMCIgaGVpZ2h0PSIwIi8+CjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTguMzc2LDE1LjAwNWMtMC40MTYsMC0wLjgzMi0wLjE1OC0xLjE0OS0wLjQ3NWwtMy4yNS0zLjI0M2MtMC42MzUtMC42MzQtMC42MzUtMS42NiwwLTIuMjkzCiAgICAgICAgYzAuNjM1LTAuNjMzLDEuNjYzLTAuNjMzLDIuMjk4LDBsMi4xMDEsMi4wOTdsNS4zNTEtNS4zNGMwLjYzNS0wLjYzNCwxLjY2My0wLjYzNCwyLjI5OCwwYzAuNjM1LDAuNjMzLDAuNjM1LDEuNjU5LDAsMi4yOTMKICAgICAgICBsLTYuNSw2LjQ4N0M5LjIwNywxNC44NDcsOC43OTIsMTUuMDA1LDguMzc2LDE1LjAwNXoiLz4KPC9zdmc+Cg==");\n  mask-repeat: no-repeat;\n}\n.checkbox {\n  min-height: var(--f-height-medium);\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.checkbox:last-child {\n  margin-bottom: 0;\n}\n.checkbox__input {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n  min-height: calc(4 * var(--f-height-medium));\n}\n.checkbox__label {\n  min-width: 4.5rem;\n  display: inline-block;\n  cursor: pointer;\n  font-size: var(--f-font-size-standard);\n  line-height: var(--f-line-height-small);\n  padding-left: 1.75rem;\n  padding-top: 0.1rem;\n  padding-bottom: 0.1rem;\n  position: relative;\n  color: var(--fkds-color-text-primary);\n}\n.checkbox__label * {\n  pointer-events: none;\n}\n.checkbox__label::before, .checkbox__label::after {\n  content: "";\n  height: var(--f-icon-size-medium);\n  left: 0;\n  margin: 0.1rem 0;\n  position: absolute;\n  top: 0;\n  width: var(--f-icon-size-medium);\n}\n.checkbox__label::before {\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-small);\n  cursor: pointer;\n  display: block;\n  transition: background-color ease var(--f-animation-duration-medium), border-color ease var(--f-animation-duration-medium), opacity ease var(--f-animation-duration-medium);\n}\n.checkbox__label::after {\n  background-color: var(--fkds-color-text-inverted);\n  opacity: 0;\n  transition: opacity ease var(--f-animation-duration-medium);\n}\n@media (forced-colors: active) {\n.checkbox__label::after {\n    background-color: Canvas;\n}\n}\n.checkbox.disabled {\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.checkbox.disabled {\n    color: GrayText;\n}\n}\n.checkbox.disabled .checkbox__label {\n  cursor: default;\n}\n.checkbox.disabled .checkbox__label::before {\n  background-color: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n  cursor: inherit;\n}\n.checkbox.disabled input[type=checkbox]:checked + label::before {\n  background-color: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n}\n@media (forced-colors: active) {\n.checkbox.disabled input[type=checkbox]:checked + label::before {\n    border-color: GrayText;\n}\n}\n.checkbox.disabled input[type=checkbox]:checked + .checkbox__label::after {\n  background-color: var(--fkds-color-text-disabled);\n}\n.checkbox input[type=checkbox]:checked + label::before {\n  background-color: var(--fkds-color-select-background-primary-default);\n  border: var(--f-border-width-medium) solid transparent;\n}\n@media (forced-colors: active) {\n.checkbox input[type=checkbox]:checked + label::before {\n    background-color: HighLight;\n    border-color: HighLight;\n}\n}\n.checkbox input[type=checkbox]:checked + .checkbox__label::after {\n  opacity: 1;\n}\n.checkbox input[type=checkbox]:focus + .checkbox__label {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.radio-button-group--chip .radio-button-group__label {\n  margin-bottom: 0.25rem;\n}\n.radio-button-group--chip .radio-button-group__content {\n  margin: -0.25rem;\n}\n.radio-button-group--chip .radio-button {\n  margin: 0;\n  padding: 0.25rem;\n}\n.radio-button-group--chip .radio-button.disabled .radio-button__label {\n  background: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.radio-button-group--chip .radio-button.disabled .radio-button__label {\n    color: GrayText;\n}\n}\n.radio-button-group--chip .radio-button__label {\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n  font-weight: var(--f-font-weight-medium);\n  padding: 0.5rem 1rem;\n  border-radius: 20px;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  justify-content: center;\n  max-width: 400px;\n  user-select: none;\n}\n.radio-button-group--chip .radio-button__label::before, .radio-button-group--chip .radio-button__label::after {\n  display: none;\n}\n.radio-button-group--chip .radio-button__label svg {\n  margin-right: 0.5rem;\n}\n.radio-button-group--chip .radio-button__label:hover {\n  border-color: var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-select-background-secondary-hover);\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.radio-button-group--chip .radio-button__label:hover {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.radio-button-group--chip input[type=radio]:checked + .radio-button__label {\n  background: var(--fkds-color-select-background-secondary-default);\n  border-color: transparent;\n  color: var(--fkds-color-text-inverted);\n}\n@media (forced-colors: active) {\n.radio-button-group--chip input[type=radio]:checked + .radio-button__label {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.radio-button-group--chip input[type=radio]:focus + label.radio-button__label {\n  border-radius: 20px;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content {\n  flex-flow: row wrap;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content .radio-button {\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content {\n    flex-flow: row wrap;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content .radio-button {\n    margin-bottom: 0;\n}\n}\n.checkbox-group--chip .checkbox-group__label {\n  margin-bottom: 0.25rem;\n}\n.checkbox-group--chip .checkbox-group__content {\n  margin: -0.25rem;\n}\n.checkbox-group--chip .checkbox {\n  margin: 0;\n  padding: 0.25rem;\n}\n.checkbox-group--chip .checkbox.disabled .checkbox__label {\n  background: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.checkbox-group--chip .checkbox.disabled .checkbox__label {\n    color: GrayText;\n}\n}\n.checkbox-group--chip .checkbox__label {\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n  font-weight: var(--f-font-weight-medium);\n  padding: 0.5rem 1rem;\n  border-radius: 20px;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  justify-content: center;\n  max-width: 400px;\n  user-select: none;\n}\n.checkbox-group--chip .checkbox__label::before, .checkbox-group--chip .checkbox__label::after {\n  display: none;\n}\n.checkbox-group--chip .checkbox__label svg {\n  margin-right: 0.5rem;\n}\n.checkbox-group--chip .checkbox__label:hover {\n  border-color: var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-select-background-secondary-hover);\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.checkbox-group--chip .checkbox__label:hover {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {\n  background: var(--fkds-color-select-background-secondary-default);\n  border-color: transparent;\n  color: var(--fkds-color-text-inverted);\n}\n@media (forced-colors: active) {\n.checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.checkbox-group--chip input[type=checkbox]:focus + label.checkbox__label {\n  border-radius: 20px;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content {\n  flex-flow: row wrap;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content .checkbox {\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content {\n    flex-flow: row wrap;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content .checkbox {\n    margin-bottom: 0;\n}\n}\n.close-button {\n  align-items: center;\n  background: inherit;\n  border: none;\n  color: var(--fkds-color-action-text-secondary-default);\n  cursor: pointer;\n  display: flex;\n  font-weight: 700;\n  gap: 0.5rem;\n  margin: 0.375rem;\n  padding: 0.125rem 0.625rem;\n}\n.close-button .icon {\n  min-width: var(--f-icon-size-small);\n}\n.popup .popup__wrapper.combobox__listbox {\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium);\n  box-shadow: var(--f-box-modal-shadow);\n  margin-top: 4px;\n  margin-bottom: 4px;\n  padding: 2px;\n}\n.calendar__year-selector__listbox, .combobox__listbox__list {\n  margin: 0;\n  padding: 0;\n}\n.calendar__year-selector__year, .combobox__listbox__option {\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  list-style-type: none;\n  padding: 0.75rem;\n  white-space: nowrap;\n}\n.calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight), .combobox__listbox__option:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight) {\n  background-color: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight), .combobox__listbox__option:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight) {\n    outline: 2px solid highlight;\n}\n}\n.calendar__year-selector__year--highlight, .combobox__listbox__option--highlight {\n  background-color: var(--fkds-color-select-background-primary-default);\n  color: var(--fkds-color-text-inverted);\n  font-weight: var(--f-font-weight-medium);\n}\n@media (forced-colors: active) {\n.calendar__year-selector__year--highlight, .combobox__listbox__option--highlight {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.combobox__button {\n  background: inherit;\n  border: none;\n  color: var(--fkds-color-action-text-primary-default);\n  margin: 0;\n  padding: 0;\n}\n.combobox__button:disabled {\n  color: var(--fkds-color-text-disabled);\n}\n.contextmenu {\n  min-width: 260px;\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.contextmenu__list {\n  margin: 0;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n  padding: 0.5rem;\n  display: block;\n  list-style-type: none;\n}\n.contextmenu__list__item {\n  cursor: pointer;\n  white-space: normal;\n  display: flex;\n  align-items: center;\n  padding: 0.75rem;\n}\n.contextmenu__list__item a,\n.contextmenu__list__item a:visited,\n.contextmenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n.contextmenu__list__item:hover {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n@media (forced-colors: active) {\n.contextmenu__list__item:hover {\n    outline: 2px solid highlight;\n}\n}\n@media (min-width: 640px) {\n.contextmenu__list__item {\n    white-space: nowrap;\n}\n}\n.contextmenu__separator {\n  margin: 0.75rem;\n  height: 1px;\n  border: none;\n  border-top: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n}\n.contextmenu__lefticon {\n  margin-right: 0.75rem;\n  min-width: var(--f-icon-size-small);\n}\n.crud-dataset {\n  margin: 0 0 var(--f-margin-component-bottom);\n}\n.crud-dataset__add-button {\n  margin-bottom: 0 !important;\n  margin-top: 0.5rem !important;\n  margin-left: 2px;\n}\n.crud-dataset .list,\n.crud-dataset .table {\n  margin-bottom: 0;\n}\n.datepicker-field__button {\n  background: transparent;\n  border: 0;\n  border-radius: var(--f-border-radius-medium);\n  flex: 0 0 auto;\n  padding: 0;\n  cursor: pointer;\n}\n.datepicker-field__button .icon {\n  color: var(--fkds-color-action-text-primary-default);\n  min-height: var(--f-icon-size-large);\n  min-width: var(--f-icon-size-large);\n  height: calc(var(--f-icon-size-x-large) * var(--f-density-factor));\n  width: calc(var(--f-icon-size-x-large) * var(--f-density-factor));\n  vertical-align: middle;\n}\n.datepicker-field__button:hover .icon {\n  color: var(--fkds-color-action-text-primary-hover);\n}\n.datepicker-field__button:disabled .icon {\n  color: var(--fkds-color-text-disabled);\n}\n.datepicker-field__popup {\n  margin-top: -16px;\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n}\n.datepicker-field__close {\n  display: flex;\n  justify-content: flex-end;\n}\n.datepicker-field__close > .datepicker-field__close__button {\n  margin: 0;\n  padding: 1rem;\n}\n.popup--overlay .datepicker-field__popup {\n  width: calc(100vw - 40px);\n  max-width: 28rem;\n}\n.popup--inline .datepicker-field__popup {\n  width: 100%;\n}\n.popup--inline .datepicker-field__table {\n  margin-top: 0;\n}\n.popup--inline .datepicker-field__table .calendar-month__cell {\n  padding: 0;\n  border-bottom: unset;\n}\n.popup--inline .datepicker-field__table .calendar-month__header-cell {\n  background-color: unset;\n  border: unset;\n}\n.dialogue-tree {\n  margin: 0 0 var(--f-margin-component-bottom);\n}\n.dialogue-tree__list {\n  margin-left: 0;\n  padding-left: 0;\n  list-style-type: none;\n  border-radius: 2px;\n  border: 1px solid var(--fkds-color-border-primary);\n}\n.dialogue-tree__list-item {\n  background-color: var(--fkds-color-background-primary);\n  border-bottom: 1px solid var(--fkds-color-border-primary);\n  padding: 0.25em;\n  height: 60px;\n}\n.dialogue-tree__list-item:last-child {\n  border-bottom: none;\n}\n.dialogue-tree__list-item:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.dialogue-tree__list-item button {\n  padding: 0 0.75em;\n  border: 0;\n  width: 100%;\n  height: 100%;\n  background-color: inherit;\n  color: var(--fkds-color-action-text-secondary-default);\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.dialogue-tree__list-item button span {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  overflow: hidden;\n  font-weight: var(--f-font-weight-medium);\n  font-size: var(--f-font-size-standard);\n  text-align: left;\n  cursor: pointer;\n}\n.dialogue-tree__list-item button .icon {\n  flex-shrink: 0;\n  margin-left: 1.25rem;\n}\n.entrypoint {\n  background-color: var(--fkds-color-action-background-primary-default);\n  color: var(--fkds-color-action-text-inverted-default);\n  border: var(--f-border-width-medium) solid transparent;\n  border-radius: var(--f-border-radius-medium);\n  box-shadow: var(--f-button-shadow);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  transition: background-color var(--f-animation-duration-medium) ease-out;\n  display: inline-flex;\n  justify-content: space-between;\n  align-items: center;\n  cursor: pointer;\n  margin-bottom: calc(1.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  text-align: left;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  line-height: var(--f-line-height-large);\n  width: 100%;\n}\n.entrypoint__icon {\n  margin-left: 2rem;\n  flex-shrink: 0;\n}\n.entrypoint:hover {\n  background-color: var(--fkds-color-action-background-primary-hover);\n}\n.error-list {\n  color: var(--fkds-color-feedback-text-negative);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n}\n.error-list--list-style-none {\n  list-style-type: none;\n  padding: 0;\n}\n.error-list--padding-left {\n  padding-left: 1rem;\n}\n.error-list__list {\n  margin: 0;\n  line-height: max(1.5, 2 * var(--f-density-factor));\n}\n.error-list__bullet::before {\n  color: var(--fkds-color-feedback-text-negative);\n  content: "•";\n  display: inline;\n  font-size: var(--f-font-size-h4);\n  line-height: 0;\n  margin-right: 0.75rem;\n}\n.error-list__link {\n  color: var(--fkds-color-feedback-text-negative);\n  list-style-position: inside;\n  text-decoration: underline;\n  text-underline-offset: 0.25em;\n}\n.error-list__link a {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.error-list__link:hover {\n  text-decoration-thickness: 2px;\n}\n.error-list__icon {\n  max-width: none;\n  position: relative;\n  top: 3px;\n}\n.error-list--list-item {\n  display: list-item;\n}\n.offline .icon, .icon, .offline .icon-stack, .icon-stack,\n.icon--stack {\n  display: inline-block;\n  height: var(--f-icon-size-small);\n  max-height: 100%;\n  max-width: 100%;\n  pointer-events: none;\n  width: var(--f-icon-size-small);\n}\n.select-field__icon, .label__icon {\n  display: inline;\n  height: var(--f-icon-size-large);\n  position: absolute;\n  right: 0.75rem;\n  top: calc(0.5rem * var(--f-density-factor));\n  transition: opacity var(--f-animation-duration-medium) ease-in-out;\n  width: var(--f-icon-size-large);\n}\n.offline .icon-stack, .icon-stack,\n.icon--stack {\n  position: relative;\n}\n.icon-stack .icon,\n.icon--stack .icon {\n  position: absolute;\n}\n.icon--flip-horizontal {\n  transform: scaleX(-1);\n}\n.icon--flip-vertical {\n  transform: scaleY(-1);\n}\n.icon--rotate-90 {\n  transform: rotate(90deg);\n}\n.icon--rotate-180 {\n  transform: rotate(180deg);\n}\n.icon--rotate-270 {\n  transform: rotate(270deg);\n}\n.icon-stack--new-window .icon.f-icon-new-window,\n.icon--new-window .icon.f-icon-new-window {\n  width: 55%;\n  height: 55%;\n  top: 0;\n  right: 0;\n}\n.icon-stack--new-window .icon:not(.f-icon-new-window),\n.icon--new-window .icon:not(.f-icon-new-window) {\n  width: 83%;\n  height: 83%;\n  bottom: 0;\n  left: 5%;\n}\n.icon-stack--tooltip .f-icon-circle,\n.icon--stack--tooltip .f-icon-circle {\n  fill: var(--fkds-color-action-background-primary-default);\n  color: var(--fkds-color-action-border-primary-default);\n}\n.icon-stack--tooltip .f-icon-i,\n.icon--stack--tooltip .f-icon-i {\n  color: var(--fkds-color-text-inverted);\n}\n.icon-stack--info .f-icon-circle,\n.icon--stack--info .f-icon-circle {\n  color: var(--fkds-color-feedback-background-info);\n  fill: var(--fkds-color-feedback-border-info);\n}\n.icon-stack--info .f-icon-i,\n.icon--stack--info .f-icon-i {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--warning .f-icon-circle,\n.icon--stack--warning .f-icon-circle {\n  color: var(--fkds-color-feedback-background-warning);\n  fill: var(--fkds-color-feedback-border-warning);\n}\n.icon-stack--warning .f-icon-alert,\n.icon--stack--warning .f-icon-alert {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--error .f-icon-triangle,\n.icon--stack--error .f-icon-triangle {\n  color: var(--fkds-color-feedback-background-negative);\n  fill: var(--fkds-color-feedback-border-negative);\n}\n.icon-stack--error .f-icon-alert,\n.icon--stack--error .f-icon-alert {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--success .f-icon-circle,\n.icon--stack--success .f-icon-circle {\n  color: var(--fkds-color-feedback-background-positive);\n  fill: var(--fkds-color-feedback-border-positive);\n}\n.icon-stack--success .f-icon-success,\n.icon--stack--success .f-icon-success {\n  color: var(--fkds-color-text-primary);\n  transform: scale(0.6);\n}\n.icon-stack--large,\n.icon--stack--large {\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.icon-stack--large svg,\n.icon--stack--large svg {\n  width: 100%;\n  height: 100%;\n}\n.icon-stack--circle, .icon-stack--circle-bottom,\n.icon--stack--circle,\n.icon--stack--circle-bottom {\n  width: 4rem;\n  height: 4rem;\n  border-radius: 100%;\n  overflow: hidden;\n}\n.icon-stack--circle .f-icon-circle, .icon-stack--circle-bottom .f-icon-circle,\n.icon--stack--circle .f-icon-circle,\n.icon--stack--circle-bottom .f-icon-circle {\n  color: var(--f-icon-color-success-background);\n  fill: var(--f-icon-color-success-background);\n  width: 100%;\n  height: 100%;\n}\n.icon-stack--circle .icon:not(.f-icon-circle), .icon-stack--circle-bottom .icon:not(.f-icon-circle),\n.icon--stack--circle .icon:not(.f-icon-circle),\n.icon--stack--circle-bottom .icon:not(.f-icon-circle) {\n  color: var(--f-icon-color-success);\n  position: absolute;\n}\n.icon-stack--circle .icon:not(.f-icon-circle),\n.icon--stack--circle .icon:not(.f-icon-circle) {\n  width: 70%;\n  height: 70%;\n  inset: 0;\n  margin: auto;\n}\n.icon-stack--circle-bottom .icon:not(.f-icon-circle),\n.icon--stack--circle-bottom .icon:not(.f-icon-circle) {\n  width: 80%;\n  height: 80%;\n  left: 0;\n  right: 0;\n  margin: 0 auto;\n  bottom: 0%;\n}\n.expandable-panel {\n  margin-bottom: calc(2rem * var(--f-density-factor));\n}\n.expandable-panel__icon svg {\n  width: var(--f-icon-size-medium);\n  height: var(--f-icon-size-medium);\n  max-height: initial;\n  max-width: initial;\n  vertical-align: middle;\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__icon svg {\n  transform: rotate(180deg);\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__content {\n  height: auto;\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__heading button {\n  border-radius: var(--f-border-radius-medium) var(--f-border-radius-medium) 0 0;\n}\n.expandable-panel.expandable-panel--collapsed .expandable-panel__icon svg {\n  transform: rotate(0);\n}\n.expandable-panel__heading {\n  margin-bottom: 0 !important;\n}\n.expandable-panel__heading button {\n  background-color: var(--fkds-color-background-secondary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium);\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n  margin: 0;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  text-align: left;\n  width: 100%;\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n}\n.expandable-panel__heading button:focus, .expandable-panel__heading button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.expandable-panel__title {\n  flex-grow: 1;\n  text-wrap: pretty;\n}\n.expandable-panel__title__text {\n  vertical-align: middle;\n}\n.expandable-panel__notification {\n  margin-left: 0.25em;\n  width: var(--f-icon-size-large);\n  height: var(--f-icon-size-large);\n  background: var(--fkds-color-feedback-background-negative-strong);\n  border: var(--f-border-radius-small) solid transparent;\n  border-radius: 50%;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  vertical-align: middle;\n}\n@media (forced-colors: active) {\n.expandable-panel__notification {\n    background: canvas;\n}\n}\n.expandable-panel__notification svg {\n  color: var(--fkds-color-text-inverted);\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n}\n@media (forced-colors: active) {\n.expandable-panel__notification svg {\n    color: buttonText;\n}\n}\n.expandable-panel__content {\n  height: 0;\n  overflow: hidden;\n  transition: height var(--f-animation-duration-medium) ease-in;\n}\n.expandable-panel__body {\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-top: 0;\n  border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);\n  line-height: inherit;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n}\n.expandable-paragraph {\n  color: var(--fkds-color-text-primary);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n}\n.expandable-paragraph__heading {\n  line-height: var(--f-line-height-medium);\n  margin: 0;\n}\n.expandable-paragraph__heading button {\n  border: none;\n  background-color: transparent;\n  cursor: pointer;\n  margin: 0;\n  display: flex;\n  text-align: left;\n  padding: 0;\n  flex-shrink: 0;\n}\n.expandable-paragraph__icon {\n  border-radius: 50%;\n  background-color: var(--fkds-color-select-background-secondary-default);\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n  margin-top: calc((var(--f-line-height-medium) * 1em - var(--f-icon-size-small)) / 2);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);\n  display: flex;\n  color: var(--fkds-color-text-inverted);\n  padding: 3px;\n  flex-shrink: 0;\n  margin-right: 0.5rem;\n}\n.expandable-paragraph__icon .icon {\n  transition: transform var(--f-animation-duration-long) ease;\n}\n.expandable-paragraph.expandable-paragraph--open .expandable-paragraph__icon svg:nth-child(2) {\n  transform: rotate(0);\n}\n.expandable-paragraph.expandable-paragraph--open .expandable-paragraph__container {\n  height: auto;\n}\n.expandable-paragraph.expandable-paragraph--closed .expandable-paragraph__icon svg:nth-child(2) {\n  transform: rotate(-90deg);\n}\n.expandable-paragraph__container {\n  height: 0;\n  overflow: hidden;\n  transition: height var(--f-animation-duration-medium) cubic-bezier(0.46, 0.03, 0.52, 0.96);\n}\n.expandable-paragraph__content, .expandable-paragraph__related-information {\n  margin-left: calc(var(--f-icon-size-small) + 0.5rem);\n}\n.expandable-paragraph__related-information {\n  color: var(--fkds-color-text-secondary);\n  font-size: 0.875rem;\n}\n.expandable-paragraph__content {\n  margin-top: calc(0.75rem * var(--f-density-factor));\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.expandable-paragraph__separator {\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  margin: 0 0.5rem calc(0.5rem * var(--f-density-factor)) 0.5rem;\n}\n.expandable-paragraph--list {\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  padding-bottom: calc(0.5rem * var(--f-density-factor));\n  border-bottom: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n}\n.fieldset {\n  border: 0;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  min-width: 0;\n  padding: 0;\n  width: var(--f-width-full);\n}\n.fieldset__label.label {\n  padding: 0;\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n}\n.fieldset__content {\n  display: flex;\n  flex-direction: column;\n}\n.file-item-list {\n  list-style-type: none;\n  padding-left: 0;\n}\n.file-item .button--discrete {\n  padding: 0;\n  min-width: auto;\n  text-align: left;\n  margin-right: 0.25rem;\n}\n.file-item__row {\n  margin-bottom: 1.25rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.file-item__row button,\n.file-item__row a {\n  margin-bottom: 0;\n}\n.file-item__file-open {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n  flex: 0 1 auto;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.file-item__file-remove {\n  flex: 0 0 auto;\n}\n.file-item__file-abort {\n  flex: 0 0 auto;\n}\n.file-item__file-abort svg {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.file-item__change-info {\n  margin-top: -1.25rem;\n}\n.file-item__file-name {\n  margin-left: 0.25rem;\n  min-width: 0;\n  overflow-wrap: break-word;\n  white-space: normal;\n}\n.file-item__separator {\n  margin-bottom: 1.25rem;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n}\n.file-selector input[type=file] {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.file-selector input[type=file]:focus + label {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.file-selector label {\n  cursor: pointer;\n}\n.file-selector input:disabled + label {\n  background-color: transparent;\n  border-color: transparent;\n  cursor: default;\n}\n.file-uploader__message-box {\n  margin-top: 1.25rem;\n}\n.component-group > .component-group__item:not(:only-child) {\n  margin-bottom: 1rem;\n}\n.component-group > .component-group__item:last-child:not(:first-child) {\n  margin-bottom: 2rem;\n}\n.indent {\n  border-left: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n  margin-bottom: 1rem;\n  margin-left: 0.5rem;\n  padding-left: 1.5rem;\n}\n.label {\n  color: var(--fkds-color-text-primary);\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n}\n.label.sr-only {\n  width: auto;\n}\n.label__message {\n  display: block;\n  font-weight: var(--f-font-weight-normal);\n  margin-top: var(--f-label-message-margin-top);\n}\n.label__message--error {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.label__icon-wrapper {\n  position: relative;\n}\n.label__icon--left {\n  position: relative;\n  top: calc(3px * var(--f-density-factor));\n}\n.label__description {\n  display: block;\n  font-weight: var(--f-font-weight-normal);\n  color: var(--fkds-color-text-primary);\n}\n.label__description--format {\n  color: var(--fkds-color-text-secondary);\n}\n.layout-application-template {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n.layout-application-template__header {\n  z-index: 9994;\n  position: sticky;\n  align-self: flex-start;\n  top: 0;\n  width: 100%;\n}\n.layout-application-template__footer {\n  flex-shrink: 0;\n}\n.layout-application-template__main {\n  flex-grow: 1;\n}\n.layout-application-template__main > .container-fluid {\n  margin: 20px;\n  width: initial;\n  max-width: 1440px;\n}\n.layout-application-template__body {\n  margin: 0;\n  padding: 0;\n  min-height: 100vh;\n}\n.layout-application-template__body > div {\n  height: 100%;\n}\n.layout-application-template__html {\n  height: 100%;\n}\n.grid--force .col.col--sm-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-sm .col.col--sm-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-1 {\n  order: 1;\n}\n.grid--force-sm .col.col--sm-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-2 {\n  order: 2;\n}\n.grid--force-sm .col.col--sm-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-sm .col.col--sm-order-3 {\n  order: 3;\n}\n.grid--force-sm .col.col--sm-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-4 {\n  order: 4;\n}\n.grid--force-sm .col.col--sm-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-5 {\n  order: 5;\n}\n.grid--force-sm .col.col--sm-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-sm .col.col--sm-order-6 {\n  order: 6;\n}\n.grid--force-sm .col.col--sm-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-7 {\n  order: 7;\n}\n.grid--force-sm .col.col--sm-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-8 {\n  order: 8;\n}\n.grid--force-sm .col.col--sm-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-sm .col.col--sm-order-9 {\n  order: 9;\n}\n.grid--force-sm .col.col--sm-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-10 {\n  order: 10;\n}\n.grid--force-sm .col.col--sm-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-11 {\n  order: 11;\n}\n.grid--force-sm .col.col--sm-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-sm .col.col--sm-order-12 {\n  order: 12;\n}\n.grid--force .col.col--md-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-md .col.col--md-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-md .col.col--md-order-1 {\n  order: 1;\n}\n.grid--force-md .col.col--md-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-md .col.col--md-order-2 {\n  order: 2;\n}\n.grid--force-md .col.col--md-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-md .col.col--md-order-3 {\n  order: 3;\n}\n.grid--force-md .col.col--md-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-md .col.col--md-order-4 {\n  order: 4;\n}\n.grid--force-md .col.col--md-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-md .col.col--md-order-5 {\n  order: 5;\n}\n.grid--force-md .col.col--md-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-md .col.col--md-order-6 {\n  order: 6;\n}\n.grid--force-md .col.col--md-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-md .col.col--md-order-7 {\n  order: 7;\n}\n.grid--force-md .col.col--md-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-md .col.col--md-order-8 {\n  order: 8;\n}\n.grid--force-md .col.col--md-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-md .col.col--md-order-9 {\n  order: 9;\n}\n.grid--force-md .col.col--md-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-md .col.col--md-order-10 {\n  order: 10;\n}\n.grid--force-md .col.col--md-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-md .col.col--md-order-11 {\n  order: 11;\n}\n.grid--force-md .col.col--md-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-md .col.col--md-order-12 {\n  order: 12;\n}\n.grid--force .col.col--lg-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-lg .col.col--lg-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-1 {\n  order: 1;\n}\n.grid--force-lg .col.col--lg-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-2 {\n  order: 2;\n}\n.grid--force-lg .col.col--lg-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-lg .col.col--lg-order-3 {\n  order: 3;\n}\n.grid--force-lg .col.col--lg-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-4 {\n  order: 4;\n}\n.grid--force-lg .col.col--lg-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-5 {\n  order: 5;\n}\n.grid--force-lg .col.col--lg-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-lg .col.col--lg-order-6 {\n  order: 6;\n}\n.grid--force-lg .col.col--lg-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-7 {\n  order: 7;\n}\n.grid--force-lg .col.col--lg-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-8 {\n  order: 8;\n}\n.grid--force-lg .col.col--lg-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-lg .col.col--lg-order-9 {\n  order: 9;\n}\n.grid--force-lg .col.col--lg-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-10 {\n  order: 10;\n}\n.grid--force-lg .col.col--lg-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-11 {\n  order: 11;\n}\n.grid--force-lg .col.col--lg-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-lg .col.col--lg-order-12 {\n  order: 12;\n}\n.grid--force .col.col--xl-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-xl .col.col--xl-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-1 {\n  order: 1;\n}\n.grid--force-xl .col.col--xl-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-2 {\n  order: 2;\n}\n.grid--force-xl .col.col--xl-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-xl .col.col--xl-order-3 {\n  order: 3;\n}\n.grid--force-xl .col.col--xl-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-4 {\n  order: 4;\n}\n.grid--force-xl .col.col--xl-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-5 {\n  order: 5;\n}\n.grid--force-xl .col.col--xl-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-xl .col.col--xl-order-6 {\n  order: 6;\n}\n.grid--force-xl .col.col--xl-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-7 {\n  order: 7;\n}\n.grid--force-xl .col.col--xl-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-8 {\n  order: 8;\n}\n.grid--force-xl .col.col--xl-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-xl .col.col--xl-order-9 {\n  order: 9;\n}\n.grid--force-xl .col.col--xl-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-10 {\n  order: 10;\n}\n.grid--force-xl .col.col--xl-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-11 {\n  order: 11;\n}\n.grid--force-xl .col.col--xl-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-xl .col.col--xl-order-12 {\n  order: 12;\n}\n.layout-navigation {\n  min-height: 100%;\n  width: 100%;\n}\n.layout-navigation__primary {\n  flex: auto;\n}\n.layout-navigation__primary > .container-fluid {\n  width: initial;\n  max-width: 1440px;\n  padding: 1.5rem;\n  margin-left: 0;\n  margin-right: 0;\n}\n.layout-navigation__navigation {\n  background-color: #f4f4f4;\n  display: flex;\n  position: fixed;\n  z-index: 9994;\n  left: 0;\n  bottom: 0;\n}\n.layout-navigation__navigation .button.button--tertiary:hover {\n  background-color: var(--f-background-sidepanel-button-tertiary-hover);\n}\n.layout-navigation__navigation__border {\n  width: 4px;\n  background-color: #f4f4f4;\n  cursor: w-resize;\n  flex-shrink: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.layout-navigation__navigation__border__dot {\n  background-color: #8d8e91;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  margin-top: 4px;\n}\n.layout-navigation__navigation__border:hover {\n  background-color: #e5e5f5;\n}\n.layout-navigation__navigation__inner {\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  margin-right: 12px;\n  overflow-wrap: break-word;\n  padding: 1rem;\n}\n.layout-navigation__navigation__inner__title {\n  display: flex;\n  align-items: center;\n  padding: 4px;\n}\n.layout-navigation__navigation__inner__title h3 {\n  flex: auto;\n  margin: 0;\n  min-width: 40%;\n}\n.layout-navigation__navigation__inner__title button {\n  margin: 0;\n  position: absolute;\n  right: 0.5rem;\n}\n.layout-navigation__navigation__inner__content {\n  flex-grow: 1;\n  overflow-y: auto;\n  padding: 4px;\n}\n.layout-navigation__navigation__inner__content::-webkit-scrollbar {\n  width: 6px;\n}\n.layout-navigation__navigation__inner__content::-webkit-scrollbar-thumb {\n  background: #8d8e91;\n  border: 1px solid #8d8e91;\n  box-sizing: border-box;\n  border-radius: 33px;\n}\n.layout-navigation__navigation__inner--minimized {\n  margin-left: -0.6rem;\n  margin-right: -0.8rem;\n  padding: 0;\n}\n.layout-secondary {\n  width: 100%;\n  min-height: 100%;\n}\n.layout-secondary__primary {\n  flex: auto;\n}\n.layout-secondary__primary > .container-fluid {\n  width: initial;\n  max-width: 1440px;\n  padding: 1.5rem;\n  margin-left: 0;\n  margin-right: 0;\n}\n.layout-secondary__secondary {\n  background-color: #f4f4f4;\n  position: fixed;\n  display: flex;\n  right: 0;\n  bottom: 0;\n  z-index: 9994;\n}\n.layout-secondary__secondary .button.button--tertiary:hover {\n  background-color: var(--f-background-sidepanel-button-tertiary-hover);\n}\n.layout-secondary__secondary__border {\n  width: 5px;\n  background-color: #f4f4f4;\n  cursor: w-resize;\n  flex-shrink: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.layout-secondary__secondary__border__dot {\n  background-color: #8d8e91;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  margin-top: 4px;\n}\n.layout-secondary__secondary__border:hover {\n  background-color: #e5e5f5;\n}\n.layout-secondary__secondary__inner {\n  position: relative;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  overflow-wrap: break-word;\n  margin: 16px;\n  margin-left: 11px;\n}\n.layout-secondary__secondary__inner__title {\n  display: flex;\n  align-items: center;\n  padding: 4px;\n}\n.layout-secondary__secondary__inner__title h3 {\n  flex: auto;\n  margin: 0;\n  min-width: 40%;\n}\n.layout-secondary__secondary__inner__close.button {\n  position: absolute;\n  top: 0;\n  right: 0;\n  margin-bottom: 0;\n}\n.layout-secondary__secondary__inner__content {\n  flex-grow: 1;\n  overflow-y: auto;\n  padding: 4px;\n}\n.layout-secondary__secondary__inner__content::-webkit-scrollbar {\n  width: 6px;\n}\n.layout-secondary__secondary__inner__content::-webkit-scrollbar-thumb {\n  background: #8d8e91;\n  border: 1px solid #8d8e91;\n  box-sizing: border-box;\n  border-radius: 33px;\n}\n@media (width <= 1280px) {\n.layout-secondary__secondary {\n    box-shadow: 4px 0 2px rgba(0, 0, 0, 0.5), -4px 0 2px rgba(0, 0, 0, 0.5);\n}\n}\n@keyframes bouncedelay {\n0%, 80%, 100% {\n    transform: scale(0);\n}\n40% {\n    transform: scale(1);\n}\n}\n@keyframes spinner-delay {\nfrom {\n    opacity: 0;\n}\nto {\n    opacity: 1;\n}\n}\n.loader div[tabindex] {\n  outline: none;\n}\n.loader__wrapper {\n  height: var(--f-loader-size);\n  margin: var(--f-loader-margin);\n  position: relative;\n  width: var(--f-loader-size);\n}\n.loader--delay {\n  animation: spinner-delay var(--f-animation-duration-short) forwards;\n  animation-delay: 1s;\n  opacity: 0;\n}\n.loader__spinner {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n}\n.loader__circle {\n  animation: bouncedelay 1.2s infinite ease-in-out;\n  animation-fill-mode: both;\n  background-color: var(--fkds-color-text-secondary);\n  border-radius: 100%;\n  height: 1rem;\n  position: absolute;\n  width: 1rem;\n}\n.loader__wait-text {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  white-space: pre-wrap;\n}\n.loader--overlay .loader__backdrop {\n  align-items: center;\n  background: var(--f-background-overlay);\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  justify-content: center;\n  left: 0;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 9999;\n}\n.loader--overlay .loader__wait-text {\n  color: var(--fkds-color-text-inverted);\n}\n.loader--overlay .loader__circle {\n  background-color: var(--fkds-color-text-inverted);\n}\n.loader .loader__spinner-1-circle2 {\n  animation-delay: -0.9s;\n}\n.loader .loader__spinner-1-circle3 {\n  animation-delay: -0.6s;\n}\n.loader .loader__spinner-1-circle4 {\n  animation-delay: -0.3s;\n}\n.loader .loader__spinner-2 {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  transform: rotateZ(45deg);\n}\n.loader .loader__spinner-2-circle1 {\n  animation-delay: -1.1s;\n}\n.loader .loader__spinner-2-circle2 {\n  animation-delay: -0.8s;\n}\n.loader .loader__spinner-2-circle3 {\n  animation-delay: -0.5s;\n}\n.loader .loader__spinner-2-circle4 {\n  animation-delay: -0.2s;\n}\n.loader .loader__spinner-3 {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  transform: rotateZ(90deg);\n}\n.loader .loader__spinner-3-circle1 {\n  animation-delay: -1s;\n}\n.loader .loader__spinner-3-circle2 {\n  animation-delay: -0.7s;\n}\n.loader .loader__spinner-3-circle3 {\n  animation-delay: -0.4s;\n}\n.loader .loader__spinner-3-circle4 {\n  animation-delay: -0.1s;\n}\n.loader__circle--1 {\n  left: 0;\n  top: 0;\n}\n.loader__circle--2 {\n  right: 0;\n  top: 0;\n}\n.loader__circle--3 {\n  bottom: 0;\n  right: 0;\n}\n.loader__circle--4 {\n  bottom: 0;\n  left: 0;\n}\n.loader__delay__spinner {\n  animation: spinner-delay var(--f-animation-duration-short) forwards;\n  animation-delay: 1s;\n  opacity: 0;\n}\n.logo {\n  display: inline-block;\n}\n.logo--small {\n  padding: var(--f-logo-size-small);\n  background: var(--f-logo-image-small);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n.logo--large {\n  padding: var(--f-logo-size-large);\n  background: var(--f-logo-image-large);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n.logo--responsive {\n  padding: var(--f-logo-size-large);\n  background: var(--f-logo-image-large);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n@media (max-width: 639.98px) {\n.logo--responsive {\n    padding: var(--f-logo-size-small);\n    background: var(--f-logo-image-small);\n    background-repeat: no-repeat;\n    background-position: center;\n}\n}\n.message-box {\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  margin: 1.5rem 0 calc(1.5rem * var(--f-density-factor)) 0;\n  color: var(--fkds-color-text-primary);\n}\n.message-box__heading {\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-medium);\n  color: var(--fkds-color-text-primary);\n  line-height: var(--f-line-height-medium);\n  align-items: flex-start;\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: 0;\n}\n.message-box__icon {\n  line-height: var(--f-line-height-large);\n}\n.message-box__content {\n  text-align: left;\n}\n.message-box--info {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-info);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-info);\n}\n.message-box--info .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--info-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-info);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-info);\n}\n.message-box--info-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--info-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--info-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--info-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--info-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--info-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--info-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--error {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--error .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--error-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--error-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--error-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--error-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--error-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--error-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--error-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--error-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--warning {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-warning);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-warning);\n}\n.message-box--warning .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--warning-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-warning);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-warning);\n}\n.message-box--warning-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--warning-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--warning-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--warning-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--warning-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--warning-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--warning-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--success {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-positive);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-positive);\n}\n.message-box--success .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--success-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-positive);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-positive);\n}\n.message-box--success-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--success-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--success-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--success-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--success-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--success-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--success-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--banner {\n  width: var(--f-width-full);\n  box-shadow: var(--f-box-modal-shadow);\n  border-collapse: separate;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--banner .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--banner .iflex__item > p {\n  margin-bottom: 0;\n}\n.modal__backdrop {\n  background: var(--f-background-overlay);\n  display: flex;\n  height: 100%;\n  inset: 0;\n  position: fixed;\n  width: 100%;\n  z-index: 9994;\n}\n.modal__outer-container {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n  overflow: auto;\n  width: 100%;\n}\n.modal__inner-container {\n  align-items: center;\n  justify-content: center;\n  max-height: 100%;\n  width: 100%;\n}\n.modal__shelf {\n  justify-content: flex-end;\n  display: flex;\n  background-color: var(--fkds-color-background-primary);\n  border-top-left-radius: var(--f-border-radius-medium);\n  border-top-right-radius: var(--f-border-radius-medium);\n  margin-bottom: 1rem;\n}\n.modal__header {\n  display: flex;\n  margin-bottom: 0.5rem;\n  width: 100%;\n}\n.modal__header .modal__title {\n  font-size: var(--f-modal-title-font-size);\n  font-weight: var(--f-font-weight-bold);\n  margin-bottom: 0;\n  margin-top: 0;\n  color: var(--fkds-color-text-primary);\n}\n.modal__dialog-container {\n  background: transparent;\n  display: flex;\n  margin: auto;\n  width: calc(100vw - 40px);\n}\n@media (min-width: 640px) {\n.modal__dialog-container {\n    max-width: var(--f-modal-size-small);\n}\n.modal__dialog-container--small {\n    max-width: var(--f-modal-size-small);\n}\n.modal__dialog-container--medium {\n    max-width: var(--f-modal-size-medium);\n}\n.modal__dialog-container--large {\n    max-width: var(--f-modal-size-large);\n}\n.modal__dialog-container--fullwidth {\n    max-width: var(--f-modal-size-fullwidth);\n}\n}\n@media (max-width: 639.98px) {\n.modal__dialog-container--fullscreen {\n    width: 100%;\n    max-width: none;\n}\n.modal__dialog-container--fullscreen .modal__dialog {\n    min-height: 100vh;\n    min-height: 100dvh;\n}\n.modal__dialog-container--fullscreen .modal__dialog-inner {\n    flex: 1 1 auto;\n    display: flex;\n    flex-direction: column;\n}\n.modal__dialog-container--fullscreen .modal__content {\n    flex: 1 1 auto;\n}\n}\n.modal__dialog {\n  background: var(--fkds-color-background-primary);\n  outline: 2px solid transparent;\n  border-radius: var(--f-border-radius-medium);\n  display: flex;\n  flex-direction: column-reverse;\n  height: auto;\n  margin: auto;\n  width: 100%;\n  position: relative;\n  z-index: 9995;\n}\n.modal__dialog .modal__dialog-inner {\n  height: auto;\n  margin: 0 1.5rem 1.5rem;\n}\n@media (max-width: 639.98px) {\n.modal__dialog .modal__dialog-inner {\n    margin: 0 1rem 1rem;\n}\n}\n.modal__dialog .modal__footer {\n  margin-top: 2rem;\n}\n.modal__dialog .modal__footer > .button-group {\n  margin-bottom: 0;\n}\n.modal__dialog .modal__footer > .button-group .button-group__item:last-child:not(.button--small, .button--medium) {\n  margin-bottom: 0;\n}\n@media (min-width: 640px) {\n.modal__dialog .modal__footer > .button-group .button-group__item {\n    margin-bottom: 0;\n}\n}\n.modal__dialog > .button-group {\n  margin: 0;\n}\n.modal__dialog > .button-group .button-group__item:last-child {\n  margin: var(--f-modal-close-button-margin);\n  padding: var(--f-modal-close-button-padding);\n}\n.modal--information .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-info-strong);\n}\n.modal--information .modal__shelf .close-button {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.modal--warning .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-warning-strong);\n}\n.modal--error .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-negative-strong);\n}\n.modal--error .modal__shelf .close-button {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.imenu__list {\n  background-color: var(--fkds-color-background-secondary);\n  margin: 0;\n  padding: 0;\n}\n.imenu__list__item {\n  cursor: pointer;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.imenu__list__item a,\n.imenu__list__item a:visited,\n.imenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n.imenu__list__item a:hover {\n  color: var(--fkds-color-text-primary);\n}\n.imenu__popup-item {\n  position: relative;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.imenu__popup-item__wrapper {\n  display: inline-flex;\n  position: absolute;\n  left: 0;\n  padding-top: 1rem;\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.imenu--vertical .imenu__list {\n  display: block;\n}\n.imenu--vertical .imenu__list__item {\n  padding: 0.75rem;\n  display: block;\n}\n.imenu--vertical .imenu__list__item:hover {\n  font-weight: var(--f-font-weight-normal);\n  background-color: var(--fkds-color-navigation-background-hover);\n}\n.imenu--vertical .imenu__list__item--highlight {\n  font-weight: var(--f-font-weight-medium);\n  background-color: var(--fkds-color-navigation-background-selected);\n}\n.imenu--vertical .imenu__list__item--highlight .imenu__list__anchor {\n  color: var(--fkds-color-text-inverted);\n}\n.imenu--vertical .imenu__list__item--highlight:hover {\n  background-color: var(--fkds-color-navigation-background-selected);\n  font-weight: var(--f-font-weight-medium);\n  color: var(--fkds-color-text-inverted);\n}\n.imenu--horizontal {\n  overflow: hidden;\n}\n.imenu--horizontal .imenu__list {\n  display: flex;\n}\n.imenu--horizontal .imenu__list__item {\n  display: inline-flex;\n  padding-top: 1rem;\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.imenu--horizontal .imenu__list__item--highlight {\n  font-weight: var(--f-font-weight-medium);\n}\n.imenu--horizontal .imenu__list__item--highlight .imenu__list__anchor-container {\n  border-bottom: 5px solid var(--fkds-color-navigation-border-selected);\n}\n.imenu--horizontal .imenu__list__item--highlight .imenu__list__anchor:hover {\n  font-weight: var(--f-font-weight-medium);\n}\n.imenu--horizontal .imenu__list__item--hidden {\n  visibility: hidden;\n}\n.imenu--horizontal .imenu__list__anchor-container {\n  padding-bottom: 0.5rem;\n  border-bottom: 5px solid transparent;\n}\n.imenu--horizontal .imenu__list__anchor-container:hover {\n  border-bottom: 5px solid var(--fkds-color-navigation-border-hover);\n}\n.imenu--horizontal .imenu__list__anchor {\n  display: inline-flex;\n}\n.imenu--horizontal .imenu__list__anchor-icon-right {\n  flex: 1 0 auto;\n  padding-top: 0.25rem;\n  margin-left: 0.25rem;\n}\n.offline {\n  width: var(--f-width-full);\n  box-shadow: var(--f-box-modal-shadow);\n  border-collapse: separate;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.offline .offline__icon {\n  font-size: 0;\n}\n.offline .offline__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.offline .offline__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.offline .offline__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.offline .offline__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.offline .offline__icon__banner {\n  margin-top: 0;\n}\n.offline .iflex__item > p {\n  margin-bottom: 0;\n}\n.offline .iflex__item > p {\n  margin-bottom: 0;\n}\n.offline {\n  padding: 1.5rem;\n}\n.offline__wrapper {\n  position: fixed;\n  position: sticky;\n  z-index: 9998;\n  right: 0;\n  top: 0;\n  left: 0;\n}\n.output-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  line-height: max(1, var(--f-line-height-large) * var(--f-density-factor));\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n.output-field__output {\n  line-height: max(1, var(--f-line-height-large) * var(--f-density-factor));\n  font-size: var(--f-font-size-standard);\n  min-height: var(--f-height-medium);\n  position: relative;\n  width: var(--f-width-full);\n  margin-bottom: 0;\n}\n.page-header {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-header-background-primary);\n  padding: 1rem 0 1rem 1rem;\n  align-items: center;\n  overflow: hidden;\n}\n.page-header__logo {\n  display: flex;\n  margin: 0;\n  padding: 0;\n  align-items: center;\n  box-sizing: border-box;\n}\n.page-header__logo > a {\n  display: inline-flex;\n}\n.page-header__logo::after {\n  content: " ";\n  background-color: var(--fkds-color-border-inverted);\n  height: 1.38rem;\n  padding: 0.5px;\n  margin: 0 1rem 0.155rem;\n}\n.page-header__app-name {\n  padding-top: 0.22rem;\n  margin: 0;\n  font-size: var(--f-font-size-h3);\n  font-weight: var(--f-font-weight-medium);\n  color: var(--fkds-color-text-inverted);\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  min-width: 9rem;\n}\n.page-header__right {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  flex-grow: 1;\n  white-space: nowrap;\n  padding-top: 0.4rem;\n  font-size: var(--f-font-size-standard);\n}\n.page-header__right-slot {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n.paginator {\n  display: flex;\n  gap: 0.5rem;\n  align-items: center;\n  justify-content: center;\n  white-space: nowrap;\n  container-type: inline-size;\n}\n.paginator__icon {\n  align-items: center;\n}\n.paginator__page, .paginator__previous, .paginator__next {\n  border: none;\n  color: var(--fkds-color-text-primary);\n  height: 2.5rem;\n  background-color: transparent;\n  padding: 0.25rem;\n  border-radius: 2px;\n  cursor: pointer;\n}\n.paginator__page--active, .paginator__previous--active, .paginator__next--active {\n  color: var(--fkds-color-action-text-inverted-default);\n  background-color: var(--fkds-color-action-background-primary-default);\n}\n.paginator__page:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active), .paginator__previous:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active), .paginator__next:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active) {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.paginator__next, .paginator__previous {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.25rem;\n}\n.paginator__page {\n  width: 2.5rem;\n  display: none;\n}\n.paginator__next, .paginator__page-counter, .paginator__previous {\n  width: 8rem;\n}\n.paginator__page-counter {\n  padding: 0.25rem;\n  text-align: center;\n  color: var(--fkds-color-text-primary);\n}\n@container (width >= 43.5rem) {\n.paginator__page-counter {\n    display: none;\n}\n.paginator__page {\n    display: inline-block;\n}\n}\n.progress {\n  background-color: var(--fkds-color-background-primary);\n  border-radius: var(--f-border-radius-medium);\n  height: var(--f-height-small);\n  margin-bottom: 1.5rem;\n  padding: 0;\n  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-positive);\n}\n@media (forced-colors: active) {\n.progress {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.progress__meter {\n  display: block;\n  float: left;\n  height: calc(var(--f-height-small) - var(--f-border-width-medium) * 2);\n  transition: width var(--f-animation-duration-medium) ease-out, background-color var(--f-animation-duration-medium) ease-out;\n}\n.progress__meter--inprogress {\n  background: var(--fkds-color-feedback-background-positive-strong);\n}\n@media (forced-colors: active) {\n.progress__meter--inprogress {\n    background: highlight;\n}\n}\n.progress__meter--finished {\n  background: var(--fkds-color-feedback-background-positive-strong);\n}\n@media (forced-colors: active) {\n.progress__meter--finished {\n    background: highlight;\n}\n}\n.radio-button {\n  min-height: var(--f-height-medium);\n  margin-bottom: calc(1rem * var(--f-density-factor));\n  margin-right: 1.5rem;\n}\n.radio-button:last-child {\n  margin-bottom: 0;\n  margin-right: 0;\n}\n.radio-button__input {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n  min-height: calc(4 * var(--f-height-medium));\n}\n.radio-button__label {\n  min-width: 4.5rem;\n  cursor: pointer;\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  line-height: var(--f-line-height-small);\n  padding-left: 1.75rem;\n  padding-top: 0.1rem;\n  padding-bottom: 0.1rem;\n  position: relative;\n  color: var(--fkds-color-text-primary);\n}\n.radio-button__label * {\n  pointer-events: none;\n}\n.radio-button__label::before, .radio-button__label::after {\n  border-radius: 50%;\n  content: "";\n  height: var(--f-icon-size-medium);\n  left: 0;\n  margin: 0.1rem 0;\n  position: absolute;\n  top: 0;\n  cursor: pointer;\n  width: var(--f-icon-size-medium);\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  display: block;\n  transition: background-color ease var(--f-animation-duration-medium), border-color ease var(--f-animation-duration-medium), opacity ease var(--f-animation-duration-medium);\n}\n.radio-button__label::after {\n  background-color: var(--fkds-color-select-background-primary-default);\n  box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--fkds-color-background-primary);\n  opacity: 0;\n}\n@media (forced-colors: active) {\n.radio-button__label::after {\n    forced-color-adjust: none;\n    background-color: Highlight;\n    box-shadow: inset 0 0 0 var(--f-border-width-medium) Canvas;\n}\n}\n.radio-button.disabled {\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.radio-button.disabled {\n    color: GrayText;\n}\n}\n.radio-button.disabled .radio-button__label {\n  cursor: default;\n}\n.radio-button.disabled .radio-button__label::before, .radio-button.disabled .radio-button__label::after {\n  background: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n  cursor: default;\n}\n@media (forced-colors: active) {\n.radio-button.disabled .radio-button__label::before, .radio-button.disabled .radio-button__label::after {\n    border: var(--f-border-width-medium) solid GrayText;\n}\n}\n.radio-button input[type=radio] + label::after {\n  opacity: 0;\n}\n.radio-button input[type=radio]:checked + label::after {\n  border: var(--f-border-width-medium) solid transparent;\n  opacity: 1;\n}\n.radio-button input[type=radio]:focus + label {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.radio-button-group__content {\n  display: flex;\n  flex-direction: column;\n}\n.radio-button-group--horizontal .radio-button-group__content {\n  flex-direction: row;\n}\n.radio-button-group--horizontal .radio-button-group__content .radio-button {\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.radio-button-group--horizontal .radio-button-group__content {\n    flex-direction: column;\n}\n.radio-button-group--horizontal .radio-button-group__content .radio-button {\n    margin-bottom: 1rem;\n}\n}\n.select-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.select-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.select-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.select-field--table {\n  margin-bottom: 0;\n}\n.select-field--table-error .select-field__select {\n  padding-right: calc(var(--f-icon-size-large) + 2.25rem);\n}\n.select-field__select {\n  appearance: none;\n  background-color: var(--fkds-color-background-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: var(--padding-input-fields);\n  width: var(--f-width-full);\n}\n.select-field__select:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.select-field__select:focus {\n  background-color: var(--fkds-color-background-primary);\n}\n.select-field__select:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n  opacity: 1;\n}\n.select-field__select:open + .select-field__icon {\n  transform: rotate(180deg);\n}\n.select-field__select:disabled + .select-field__icon {\n  color: var(--fkds-color-text-disabled);\n}\n.select-field__icon-wrapper {\n  position: relative;\n}\n.select-field__icon {\n  color: var(--fkds-color-action-text-primary-default);\n}\n.select-field__error-popup-icon {\n  color: var(--fkds-color-feedback-text-negative);\n  display: inline;\n  position: absolute;\n  right: calc(var(--f-icon-size-large) + 0.75rem);\n  top: 0.5rem;\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n  overflow: hidden;\n  text-align: center;\n}\n.select-field--error .select-field__select {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.sort-filter-dataset__sort {\n  min-width: 80px;\n}\n.sort-filter-dataset__search {\n  position: relative;\n}\n.sort-filter-dataset__search input {\n  padding-left: 2.1rem;\n  padding-right: 2.1rem;\n}\n@media (min-width: 640px) {\n.sort-filter-dataset__search input {\n    width: 160px;\n}\n}\n.sort-filter-dataset__search__magnify-icon {\n  position: absolute;\n  left: 1.75rem;\n  height: var(--f-height-large);\n  /* same as textfield */\n  z-index: 1;\n  /* In front of input field */\n  width: 1.2rem;\n  color: var(--fkds-color-text-secondary);\n}\n@media (max-width: 639.98px) {\n.sort-filter-dataset__search__magnify-icon {\n    top: 1.5rem;\n    left: 0.75rem;\n}\n}\n.sort-filter-dataset__search__close-icon.button--discrete {\n  position: absolute;\n  top: -0.75rem;\n  right: 0;\n  color: var(--fkds-color-text-secondary);\n  cursor: pointer;\n  padding: 1rem;\n}\n@media (max-width: 639.98px) {\n.sort-filter-dataset__search__close-icon.button--discrete {\n    top: 1rem;\n}\n}\n.sort-filter-dataset__search__close-icon.button--discrete:hover {\n  box-shadow: none;\n  background-color: transparent;\n}\n.static-panel {\n  margin-bottom: 2.5rem;\n}\n.static-panel__heading {\n  background: var(--fkds-color-background-secondary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium) var(--f-border-radius-medium) 0 0;\n  border-bottom: 0;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n  margin: 0;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n}\n.static-panel__content {\n  border-top: 0;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);\n  padding: 1.75rem 1.5rem;\n  background: var(--fkds-color-background-primary);\n}\n.static-panel__icon {\n  height: var(--f-icon-size-x-large);\n  margin-right: 0.25rem;\n  position: relative;\n  top: 0.5rem;\n  width: var(--f-icon-size-x-large);\n}\n.table tbody .table__column--numeric, .table tbody .table__column--date {\n  font-feature-settings: tnum 1;\n  font-variant-numeric: tabular-nums;\n}\n.table tbody .table__expandable-row, .table tbody .table__row--normal, .table tbody .table__row {\n  background: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.table--striped tbody .table__row:nth-child(even), .table tbody .table__row--striped {\n  background: var(--fkds-color-background-secondary);\n  color: var(--fkds-color-text-primary);\n}\n.table--hover tbody .table__row:hover, .table tbody .table__row--hover {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n  outline: 1px solid var(--fkds-color-border-primary);\n}\n.table tbody .table__row:focus-within, .table tbody .table__row--focus-within {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n.table tbody .table__row:focus, .table tbody .table__row--focus {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n  outline: 2px solid var(--fkds-color-border-strong);\n  box-shadow: none;\n}\n.table--hover tbody .table__row:hover.table__row--active, .table--striped tbody .table__row:nth-child(even).table__row--active, .table tbody .table__row--active, .table tbody .table__row:focus.table__row--active, .table tbody .table__row--focus.table__row--active, .table tbody .table__row:focus-within.table__row--active, .table tbody .table__row--focus-within.table__row--active {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n.table tbody .table__row--expanded-border td,\n.table tbody .table__row--expanded-border th {\n  border-bottom-color: var(--fkds-color-border-weak);\n}\n.table tbody .table__row--expandable {\n  cursor: pointer;\n}\n.table {\n  border-collapse: separate;\n  border-spacing: 0;\n  font-size: var(--f-font-size-standard);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  width: 100%;\n  border: 2px solid transparent;\n}\n.table:focus {\n  border-color: var(--fkds-color-border-strong);\n  box-shadow: none;\n}\n.table caption {\n  background: transparent;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n  text-align: left;\n}\n.table thead th {\n  background: var(--fkds-color-background-secondary);\n  border-bottom: 2px solid var(--fkds-color-border-primary);\n  border-right: 1px solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-align: left;\n  vertical-align: top;\n}\n.table thead th:last-child {\n  border-right: none;\n}\n.table thead th .table__column__header__icon {\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n  min-width: var(--f-icon-size-x-small);\n}\n.table thead th .table__column__header__icon--discrete {\n  color: var(--fkds-color-text-disabled);\n}\n.table thead .table__column--numeric {\n  text-align: right;\n}\n.table tbody .table__expandable-row--collapsed {\n  display: none;\n}\n.table tbody td,\n.table tbody th {\n  padding: calc(var(--f-table-body-row-padding) * var(--f-density-factor)) var(--f-table-body-row-padding);\n  border-bottom: 1px solid var(--fkds-color-border-primary);\n  vertical-align: top;\n}\n.table tbody td {\n  line-height: calc(1.5rem * var(--f-density-factor));\n  font-weight: var(--f-font-weight-normal);\n}\n.table tbody th {\n  border-right: 1px solid var(--fkds-color-border-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: calc(1.5rem * var(--f-density-factor));\n}\n.table tbody .table__column--action {\n  white-space: nowrap;\n}\n.table tbody .table__column--selectable {\n  padding: calc(0.2rem * var(--f-density-factor)) 0.2rem;\n}\n.table tbody .table__column--placeholder + .table__column {\n  padding-left: 1.5rem;\n}\n.table tbody .table__column--action .button--discrete, .table tbody .table__column--action .button--tertiary {\n  margin: var(--f-button-tertiary-table-column-action-margin);\n  min-width: 24px;\n  width: max-content;\n}\n.table tbody .table__column--action .button--discrete .button__icon, .table tbody .table__column--action .button--tertiary .button__icon {\n  margin: var(--f-button-tertiary-table-column-action-icon-margin);\n  transform: translate(0, 10%);\n}\n.table__column--text {\n  text-align: left;\n}\n.table__column--numeric {\n  text-align: right;\n}\n.table__column--date {\n  text-align: left;\n}\n.table__column--action {\n  text-align: center;\n}\n.table__column--shrink {\n  width: 1px;\n  white-space: nowrap;\n}\n.table__column--sortable {\n  cursor: pointer;\n}\n.table__column__description {\n  display: block;\n  background: transparent;\n  color: var(--fkds-color-text-secondary);\n  font-weight: var(--f-font-weight-normal);\n}\n.table__column__wrapper {\n  pointer-events: none;\n}\n.table__column__wrapper > * {\n  pointer-events: auto;\n}\n.table--selectable .table__row td:hover,\n.table--selectable .table__row th:hover {\n  cursor: pointer;\n}\n.table__scroll {\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  overflow: hidden;\n}\n.table__scroll thead th,\n.table__scroll thead td,\n.table__scroll tbody th,\n.table__scroll tbody td {\n  white-space: nowrap;\n}\n.table__scroll .table {\n  margin: 0;\n}\n.table__scroll--horizontal {\n  overflow-x: auto;\n}\n.table__input {\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.table__input .checkbox__label,\n.table__input .radio-button__label {\n  min-width: 1.75rem;\n  min-height: 1.75rem;\n  padding: 0;\n}\n.table__input .checkbox__label::after,\n.table__input .checkbox__label::before,\n.table__input .radio-button__label::after,\n.table__input .radio-button__label::before {\n  top: calc(0.15rem * var(--f-density-factor));\n  left: 0.25rem;\n}\n.table__expand-icon {\n  color: var(--fkds-color-action-text-primary-default);\n  background: transparent;\n  border: 0;\n  flex: 0 0 auto;\n  padding: 0;\n  pointer-events: none;\n  width: 1.5rem;\n  height: 1.5rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n@media (forced-colors: active) {\n.table__expand-icon {\n    color: ButtonText;\n}\n}\n.table__anchor {\n  cursor: pointer;\n  display: inline-flex;\n  gap: 0.25rem;\n}\n.table__anchor > svg.icon {\n  flex-shrink: 0;\n  align-self: center;\n  min-width: auto;\n  max-width: none;\n}\n.table__button {\n  background-color: transparent;\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor)) var(--f-button-tertiary-padding-right) calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor)) var(--f-button-tertiary-padding-left);\n}\n.table__button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n  box-shadow: none;\n}\n.table__button:active, .table__button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n}\n.table__button.disabled, .table__button.disabled:hover, .table__button:disabled, .table__button:disabled:hover, .table__button.table__button--disabled, .table__button.table__button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n}\n.table__button {\n  font-weight: var(--f-font-weight-medium);\n  outline-offset: 0.25rem;\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 24px;\n  padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;\n  text-underline-offset: 3.5px;\n  margin: var(--f-button-tertiary-table-column-action-margin);\n  width: max-content;\n  border: none;\n}\n.table__button .button__icon {\n  margin: var(--f-button-tertiary-table-column-action-icon-margin);\n  height: 14px;\n  width: 14px;\n}\n.table-ng {\n  border-collapse: separate;\n  border-spacing: 0;\n  font-size: var(--f-font-size-standard);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  width: 100%;\n}\n.table-ng caption {\n  background: transparent;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n  text-align: left;\n}\n.table-ng thead th {\n  background: var(--fkds-color-background-secondary);\n  border-bottom: 2px solid var(--fkds-color-border-primary);\n  border-right: 1px solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-align: left;\n  vertical-align: top;\n}\n.table-ng thead th:last-child {\n  border-right: none;\n}\n.table-ng tbody .table-ng__row,\n.table-ng tfoot .table-ng__row {\n  background: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.table-ng tbody .table-ng__row--empty,\n.table-ng tfoot .table-ng__row--empty {\n  text-align: center;\n}\n.table-ng__column__description {\n  background: transparent;\n  color: var(--fkds-color-text-secondary);\n  font-weight: var(--f-font-weight-normal);\n}\n.table-ng--striped tbody .table-ng__row:nth-child(even) {\n  background: var(--fkds-color-background-secondary);\n  color: var(--fkds-color-text-primary);\n}\n.table-ng__cell {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-wrap: nowrap;\n  border: 2px solid transparent;\n}\n.table-ng__cell:focus, .table-ng__cell:focus-within {\n  box-shadow: none;\n  border: 2px solid var(--f-color-focus);\n}\n.table-ng__cell input:focus,\n.table-ng__cell button:focus,\n.table-ng__cell a:focus,\n.table-ng__cell [role=combobox]:focus {\n  box-shadow: none;\n}\n.table-ng__cell--align-left span,\n.table-ng__cell--align-left input {\n  text-align: left;\n}\n.table-ng__cell--align-right span,\n.table-ng__cell--align-right input {\n  text-align: right;\n}\n.table-ng__cell--select, .table-ng__cell--text {\n  padding: 0 0.25rem;\n}\n.table-ng__cell--select:focus-visible .table-ng__editable__icon, .table-ng__cell--text:focus-visible .table-ng__editable__icon {\n  visibility: visible;\n}\n.table-ng__cell--text:focus-visible {\n  outline: none !important;\n  box-shadow: none !important;\n}\n.table-ng__cell--text .table-ng__editable {\n  border-width: 2px;\n  border-style: solid;\n  border-color: transparent;\n}\n.table-ng__cell--text .table-ng__editable:focus-within .table-ng__editable__text {\n  display: none;\n}\n.table-ng__cell--text .table-ng__editable:focus-within .table-ng__textedit {\n  flex: 1 0 auto;\n}\n.table-ng__cell--checkbox, .table-ng__cell--radio {\n  text-align: center;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__cell--checkbox input, .table-ng__cell--radio input {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  vertical-align: middle;\n}\n.table-ng__cell--expand button, .table-ng__cell--button button {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  min-width: var(--f-icon-size-medium);\n  width: 100%;\n  background: inherit;\n  cursor: pointer;\n}\n.table-ng__cell--expand button svg, .table-ng__cell--button button svg {\n  vertical-align: middle;\n}\n.table-ng__cell--expand {\n  width: var(--f-icon-size-medium);\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__cell--selectable {\n  width: var(--f-icon-size-medium);\n}\n.table-ng__cell--rowheader {\n  font-weight: var(--f-font-weight-medium);\n  text-align: left;\n}\n.table-ng__cell--custom {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  border: 2px solid transparent;\n}\n.table-ng__cell--custom:focus {\n  box-shadow: none;\n  border: 2px solid var(--f-color-focus);\n}\n.table-ng__textedit {\n  flex: 0 1 0;\n  width: 0;\n  border: none;\n  padding: 0;\n  background: transparent;\n}\n.table-ng__textedit:focus {\n  box-shadow: none !important;\n  outline: none !important;\n}\n.table-ng__editable {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  display: flex;\n  align-items: center;\n}\n.table-ng__editable:hover:not(:focus-within) .table-ng__editable__icon {\n  visibility: visible;\n}\n.table-ng__editable__text {\n  flex: 1 1 auto;\n}\n.table-ng__editable__numeric span,\n.table-ng__editable__numeric input {\n  font-feature-settings: "tnum" 1;\n}\n.table-ng__editable__icon {\n  visibility: hidden;\n  margin-left: 1rem;\n  flex: none;\n  color: var(--fkds-color-action-text-primary-default);\n}\n.table-ng__cell--select:hover .table-ng__editable, .table-ng__cell--text:hover .table-ng__editable {\n  background: var(--fkds-color-action-background-secondary-hover);\n}\n.table-ng__cell--text.table-ng__cell--error:not(:focus-within) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:hover:not(:focus-within) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:focus .table-ng__editable {\n  border-bottom-color: var(--fkds-color-feedback-text-negative);\n}\n.table-ng__column {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  border-bottom: 2px solid transparent;\n  border-right: 1px solid transparent;\n}\n.table-ng__column:focus, .table-ng__column:focus-within {\n  box-shadow: none;\n  border-bottom: 2px solid var(--f-color-focus);\n  border-right: 1px solid var(--f-color-focus);\n}\n.table-ng__column--selectable {\n  text-align: center;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__column--selectable input {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  vertical-align: middle;\n}\n.table-ng__column--rowheader {\n  text-align: left;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__column--shrink {\n  width: 1px;\n  white-space: nowrap;\n}\n.table-ng__column__sort-icon {\n  color: var(--fkds-color-text-primary);\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n  min-width: var(--f-icon-size-x-small);\n}\n.table-ng__column__sort-icon--discrete {\n  color: var(--fkds-color-text-secondary);\n}\n.text-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.text-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.text-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.text-field--table {\n  margin-bottom: 0;\n}\n.text-field input[type=text]::-ms-clear {\n  display: none;\n}\n.text-field__error-popup-icon {\n  color: var(--fkds-color-feedback-text-negative);\n  height: 16px;\n}\n.text-field__input-wrapper {\n  display: flex;\n  gap: calc(0.5rem * var(--f-density-factor));\n}\n.text-field__input {\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: 0 0.75rem;\n  width: var(--f-width-full);\n}\n.text-field__icon-wrapper {\n  flex: 1 1 auto;\n  position: relative;\n}\n.text-field__icon-wrapper:has(.text-field__append-inner) .text-field__input {\n  padding: var(--padding-input-fields);\n}\n.text-field__append-inner {\n  display: inline;\n  position: absolute;\n  right: calc(0.75rem * var(--f-density-factor));\n  top: calc(0.5rem * var(--f-density-factor));\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n  overflow: hidden;\n  text-align: center;\n}\n.text-field__icon {\n  height: var(--f-icon-size-large);\n  transition: opacity var(--f-animation-duration-medium) ease-in-out;\n  width: var(--f-icon-size-large);\n}\n.text-field__icon--left {\n  position: relative;\n  top: 3px;\n}\n.text-field__input:disabled + .text-field__icon {\n  color: var(--fkds-color-text-disabled);\n}\n.text-field__input:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n}\n.text-field--error .text-field__input {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.text-field--search + .text-field__append-inner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  top: 0;\n  right: calc(0.25rem * var(--f-density-factor));\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  width: 2.5rem;\n}\n.text-field .clear-button {\n  background: none;\n  border: 0;\n  cursor: pointer;\n}\n.text-field .clear-button__icon {\n  color: var(--fkds-color-text-secondary);\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n}\n@media (forced-colors: active) {\n.text-field .clear-button__icon {\n    color: buttonText;\n}\n}\n.text-field {\n  /* stylelint-disable property-no-vendor-prefix */\n}\n.text-field input[type=search]::-webkit-search-decoration,\n.text-field input[type=search]::-webkit-search-cancel-button,\n.text-field input[type=search]::-webkit-search-results-button,\n.text-field input[type=search]::-webkit-search-results-decoration {\n  -webkit-appearance: none;\n}\n.textarea-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  line-height: var(--f-line-height-large);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.textarea-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.textarea-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.textarea-field__textarea {\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  box-sizing: border-box;\n  font-size: var(--f-font-size-standard);\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: calc(0.5rem * var(--f-density-factor)) 0.75rem;\n  width: var(--f-width-full);\n}\n.textarea-field__textarea[rows] {\n  height: auto;\n}\n.textarea-field__textarea:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n}\n.textarea-field--error .textarea-field__textarea {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.textarea-field__resize--none {\n  resize: none;\n}\n.textarea-field__resize--vertical {\n  resize: vertical;\n}\n.tooltip {\n  display: none;\n  overflow: hidden;\n  width: 100%;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.tooltip.expanded, .tooltip.animating {\n  display: block;\n}\n.tooltip__container {\n  text-wrap: pretty;\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n}\n.tooltip__container:has(+ .tooltip.expanded), .tooltip__container:has(+ .tooltip.animating) {\n  margin-bottom: 0;\n}\n.tooltip__container .label {\n  display: inline;\n  width: max-content;\n}\n.tooltip__container h1,\n.tooltip__container h2,\n.tooltip__container h3,\n.tooltip__container h4,\n.tooltip__container h5,\n.tooltip__container h6 {\n  display: inline;\n  width: max-content;\n}\n.tooltip__button {\n  display: inline-flex;\n  appearance: none;\n  background: none;\n  border: 0;\n  cursor: pointer;\n  min-height: 24px;\n  min-width: 24px;\n  margin-left: 6px;\n  padding: 0;\n  position: relative;\n  transform: translateY(2px);\n}\n.tooltip__button .icon {\n  top: 0;\n  left: 0;\n}\n.tooltip__button .icon,\n.tooltip__button .icon-stack {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  padding: 0;\n  margin: auto;\n}\n.tooltip__body {\n  padding: 0 1rem;\n}\n.tooltip__header {\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-medium);\n  padding: 0 1rem;\n  margin-bottom: 0.5rem;\n}\n.tooltip .close-button {\n  margin: var(--f-tooltip-close-button-margin);\n}\n.tooltip__footer {\n  display: flex;\n  justify-content: flex-end;\n}\n.tooltip__bubble {\n  display: flex;\n  flex-direction: column;\n  position: relative;\n  margin-top: 10px;\n  margin-bottom: 0.5rem;\n  border: 2px solid var(--fkds-color-feedback-border-info);\n  border-radius: var(--f-border-radius-small);\n  background-color: var(--fkds-color-feedback-background-info);\n  padding-top: 1rem;\n}\n.tooltip__bubble::before {\n  content: "";\n  position: absolute;\n  top: 0;\n  left: clamp(20px / 2, var(--f-tooltip-offset), 100% - 20px / 2);\n  border-style: solid;\n  border-width: 0 10px 10px 10px;\n  border-color: transparent transparent var(--fkds-color-feedback-border-info);\n  translate: -50% -100%;\n}\n.tooltip__bubble::after {\n  content: "";\n  position: absolute;\n  top: 0;\n  left: clamp(20px / 2, var(--f-tooltip-offset), 100% - 20px / 2);\n  border-style: solid;\n  border-width: 0 7.2px 7.2px 7.2px;\n  border-color: transparent transparent var(--fkds-color-feedback-background-info);\n  translate: -50% -100%;\n}\n.wizard {\n  margin-top: 20px;\n}\n\n/* Selectors */\n/* position adjustments for lines */\n/* change line-gap-to-circle variable to change distances */\n.wizard-step {\n  display: grid;\n  grid-template: "wizard-step__line-up wizard-step__step-of" min-content "wizard-step__icon-container wizard-step__header" min-content "wizard-step__content wizard-step__content" min-content/min-content 1fr;\n  gap: 0 0.5rem;\n}\n.wizard-step:first-of-type .wizard-step__line-up {\n  border: 0;\n}\n.wizard-step:last-of-type .wizard-step__line-down,\n.wizard-step:last-of-type .wizard-step__icon-container__line-down {\n  border: 0;\n}\n.wizard-step .wizard-step__buttons {\n  margin-top: calc(4rem * var(--f-density-factor));\n}\n.wizard-step .wizard-step__header__title {\n  font-size: 1.125rem;\n  margin-top: 2px;\n  margin-bottom: 20px;\n}\n.wizard-step .wizard-step__icon-container {\n  grid-area: wizard-step__icon-container;\n  display: flex;\n  flex-direction: column;\n}\n.wizard-step .wizard-step__icon-container__circle {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  border: 2px solid var(--fkds-color-border-strong);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 1.25rem;\n  font-weight: bold;\n  text-align: center;\n  color: var(--fkds-color-text-primary);\n  transition: background-color 400ms ease-out, border-color 400ms ease-out, opacity 400ms ease-out;\n}\n@media (max-width: 639.98px) {\n.wizard-step .wizard-step-body__border-container {\n    display: none;\n}\n}\n.wizard-step .wizard-step-body__border-container .wizard-step__line-down {\n  margin-top: 0;\n}\n.wizard-step .wizard-step__icon-container__success {\n  display: none;\n}\n.wizard-step .wizard-step__header {\n  grid-area: wizard-step__header;\n}\n.wizard-step .wizard-step__step-of {\n  color: var(--fkds-color-text-secondary);\n  font-weight: normal;\n  font-size: 1rem;\n}\n.wizard-step .wizard-step__line-down,\n.wizard-step .wizard-step__icon-container__line-down,\n.wizard-step .wizard-step__line-up {\n  border-left: 2px solid var(--fkds-color-border-strong);\n  margin-left: 14px;\n}\n.wizard-step .wizard-step__icon-container__line-down {\n  margin-top: 4px;\n}\n.wizard-step .wizard-step__content {\n  margin-left: 0.5rem;\n  min-width: 0;\n  grid-area: wizard-step__content;\n}\n.wizard-step .wizard-step__line-up {\n  margin-bottom: 4px;\n  grid-area: wizard-step__line-up;\n}\n.wizard-step--open + .wizard-step--pending .wizard-step__line-up {\n  padding-top: 20px;\n  margin-top: -0.5rem;\n}\n.wizard-step .wizard-step__icon-container__line-down {\n  flex: 1;\n}\n@media (min-width: 640px) {\n.wizard-step {\n    grid-template: "wizard-step__line-up wizard-step__step-of" min-content "wizard-step__icon-container wizard-step__header" min-content "wizard-step__line-down wizard-step__content" min-content/min-content 1fr;\n}\n.wizard-step--open + .wizard-step--pending .wizard-step__line-up {\n    margin-top: 0;\n    padding-top: 0;\n}\n.wizard-step .wizard-step__content {\n    margin-left: 0;\n}\n.wizard-step .wizard-step__line-down {\n    grid-area: wizard-step__line-down;\n}\n}\n.wizard-step--open .wizard-step__header__title {\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--open .wizard-step__step-of {\n  display: block;\n}\n.wizard-step--done .wizard-step__header__title .anchor {\n  color: var(--fkds-color-feedback-text-positive);\n  text-decoration-color: currentcolor;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 0.25em;\n}\n.wizard-step--done .wizard-step__header__title .anchor:hover {\n  text-decoration-thickness: 3px;\n  text-underline-offset: 0.25em;\n}\n.wizard-step--done .wizard-step__icon-container__success {\n  display: block;\n  color: var(--fkds-color-text-inverted);\n  width: 20px;\n  height: auto;\n}\n.wizard-step--done .wizard-step__icon-container__circle {\n  background-color: var(--fkds-color-feedback-background-positive-strong);\n  border-color: var(--fkds-color-feedback-border-positive);\n}\n.wizard-step--done .wizard-step__icon-container__number {\n  display: none;\n}\n.wizard-step--done .wizard-step__line-down {\n  display: none;\n}\n.wizard-step--pending .wizard-step__header__title {\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--pending .wizard-step__icon-container__circle {\n  border: 2px solid var(--fkds-color-border-strong);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--pending .wizard-step__line-down {\n  display: none;\n}\n@media (forced-colors: active) {\n.wizard-step .wizard-step__icon-container__success {\n    color: CanvasText;\n}\n}\n.animate-expand {\n  transition: var(--f-animation-expand-close);\n  overflow: hidden;\n  visibility: hidden;\n}\n.animate-expand--expanded {\n  transition: var(--f-animation-expand-open);\n  opacity: 1;\n  visibility: visible;\n}\n.animate-expand--opacity {\n  opacity: 0;\n}\n.calendar-month__table {\n  border-spacing: 2px;\n  padding: 0 0.5rem 1rem;\n  width: 100%;\n  border-collapse: separate;\n  border: none;\n  margin: 0;\n}\n.calendar-month__col--week {\n  width: 2%;\n}\n.calendar-month__col--day {\n  width: 14%;\n}\n.calendar-month__header-cell {\n  padding: 0.5rem 0;\n  text-align: center;\n}\n.calendar-month__header-cell abbr,\n.calendar-month__header-cell span {\n  font-weight: var(--f-font-weight-normal);\n  text-decoration: none;\n  border-bottom: none;\n  text-transform: none;\n  font-size: 1rem;\n  cursor: auto;\n  color: var(--fkds-color-text-secondary);\n}\n.calendar-month__cell {\n  height: 2.75rem;\n  padding: 0;\n}\n.calendar-month__cell--week-number {\n  vertical-align: middle;\n  padding-right: 0.25rem;\n  text-align: right;\n  min-width: 2rem;\n  color: var(--fkds-color-text-secondary);\n}\n.calendar-month__button {\n  appearance: none;\n  border: 0;\n  cursor: pointer;\n  padding: 0;\n  width: 100%;\n  background-color: var(--fkds-color-background-secondary);\n  font-size: 1rem;\n}\n.calendar-month__button:focus {\n  position: relative;\n  z-index: 9997;\n}\n.calendar-month__button:focus[tabindex="-1"] {\n  box-shadow: var(--f-focus-box-shadow);\n}\n.calendar-navbar__year-selector-button--title, .calendar-navbar__month--title {\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n.calendar-navbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  text-align: center;\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n  color: var(--fkds-color-text-primary);\n  padding: 1rem;\n  gap: 1rem;\n  margin-bottom: 0.75rem;\n  font-size: var(--f-font-size-h3);\n}\n.calendar-navbar__month {\n  margin-right: auto;\n}\n.calendar-navbar__arrow--previous {\n  transform: scaleX(-1);\n}\n.calendar-navbar__arrow--up {\n  transform: rotate(0.5turn);\n}\n.calendar-navbar__year-selector-button {\n  /* stylelint-disable scss/at-extend-no-missing-placeholder -- technical debt */\n  /* stylelint-enable */\n  display: flex;\n  gap: 0.5rem;\n  align-items: center;\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 24px;\n  padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;\n  text-underline-offset: 3.5px;\n}\n.calendar-navbar__icon {\n  color: var(--fkds-color-action-text-inverted-default);\n  background-color: var(--fkds-color-action-background-primary-default);\n  width: var(--f-icon-size-large);\n  height: var(--f-icon-size-large);\n  padding: 5px;\n  border-radius: 50%;\n  box-shadow: var(--f-button-shadow);\n}\n.calendar-navbar__icon--disabled {\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n  padding: 4px;\n  border: 1px solid var(--fkds-color-border-disabled);\n  box-shadow: none;\n}\n.calendar-navbar__arrow {\n  padding: 0;\n  display: flex;\n  border: none;\n  background-color: transparent;\n  cursor: pointer;\n}\n.calendar__wrapper {\n  width: 100%;\n}\n.calendar__year-selector {\n  height: var(--f-calendar-height);\n  overflow-x: auto;\n  position: relative;\n}\n.calendar__year-selector__year {\n  margin: 5px;\n}\n.iflex {\n  display: flex;\n}\n.iflex--gap-1x {\n  margin-left: -0.25rem;\n  margin-right: -0.25rem;\n}\n.iflex--gap-1x .iflex__item {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.iflex--gap-2x {\n  margin-left: -0.5rem;\n  margin-right: -0.5rem;\n}\n.iflex--gap-2x .iflex__item {\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n}\n.iflex--gap-3x {\n  margin-left: -0.75rem;\n  margin-right: -0.75rem;\n}\n.iflex--gap-3x .iflex__item {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.iflex--gap-4x {\n  margin-left: -1rem;\n  margin-right: -1rem;\n}\n.iflex--gap-4x .iflex__item {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n.iflex--gap-5x {\n  margin-left: -1.25rem;\n  margin-right: -1.25rem;\n}\n.iflex--gap-5x .iflex__item {\n  padding-left: 1.25rem;\n  padding-right: 1.25rem;\n}\n.iflex--gap-6x {\n  margin-left: -1.5rem;\n  margin-right: -1.5rem;\n}\n.iflex--gap-6x .iflex__item {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.iflex--gap-7x {\n  margin-left: -1.75rem;\n  margin-right: -1.75rem;\n}\n.iflex--gap-7x .iflex__item {\n  padding-left: 1.75rem;\n  padding-right: 1.75rem;\n}\n.iflex--gap-8x {\n  margin-left: -2rem;\n  margin-right: -2rem;\n}\n.iflex--gap-8x .iflex__item {\n  padding-left: 2rem;\n  padding-right: 2rem;\n}\n.iflex__item {\n  flex: 1 0 0%;\n}\n.iflex--grow {\n  flex: 1 1 auto;\n}\n.iflex--shrink {\n  flex: 0 1 auto;\n}\n.iflex--align-top {\n  align-self: flex-start;\n}\n.iflex--align-center {\n  align-self: center;\n}\n.iflex--align-bottom {\n  align-self: flex-end;\n}\n@media (max-width: 639.98px) {\n.iflex--collapse {\n    display: block;\n}\n}\n.iflex--wrap {\n  flex-wrap: wrap;\n}\n.iflex--float-right {\n  justify-content: flex-end;\n}\n.iflex--float-center {\n  justify-content: center;\n}\n.popup-error {\n  --i-popup-error-offset: 24px;\n}\n.popup-error--overlay {\n  position: absolute;\n  top: 0;\n}\n.popup-error--overlay .popup-error__wrapper {\n  left: -10000px;\n  position: absolute;\n  z-index: 9996;\n  white-space: nowrap;\n  color: var(--fkds-color-text-primary);\n}\n.popup-error--inline {\n  position: static;\n}\n.popup-error--inline .popup-error__wrapper {\n  box-sizing: border-box;\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  position: static;\n}\n.popup-error--arrow {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5em 10px;\n  background: var(--fkds-color-feedback-border-negative);\n  line-height: 24px;\n  position: relative;\n}\n.popup-error--arrow .popup-error__icon {\n  margin-right: 5px;\n  padding: 0;\n  color: var(--fkds-color-feedback-text-negative);\n  min-height: var(--f-icon-size-medium);\n  min-width: var(--f-icon-size-medium);\n}\n.popup-error--arrow .popup-error__button {\n  margin: 0;\n  min-height: 24px;\n  min-width: 24px;\n  padding: 0;\n  padding-left: 5px;\n}\n.popup-error--arrow::before {\n  content: "";\n  position: absolute;\n  z-index: -1;\n  inset: 0;\n  padding: var(--f-border-width-medium);\n  border-radius: inherit;\n  background: var(--fkds-color-feedback-background-negative) content-box;\n}\n.popup-error--top {\n  border-radius: min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) 5.7735026919px 5.7735026919px/5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;\n  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px) 0, calc(100% - var(--i-popup-error-offset)) -10px, max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0);\n}\n.popup-error--bottom {\n  border-radius: 5.7735026919px 5.7735026919px min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg)/5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;\n  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px) 100%, calc(100% - var(--i-popup-error-offset)) calc(100% + 10px), max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 100%);\n}\n.popup-error--left {\n  border-radius: 5.7735026919px/min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) 5.7735026919px 5.7735026919px min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg);\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px), -10px calc(100% - var(--i-popup-error-offset)), 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px));\n}\n.popup-error--right {\n  border-radius: 5.7735026919px/5.7735026919px min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) 5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;\n  clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, 100% min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px), calc(100% + 10px) calc(100% - var(--i-popup-error-offset)), 100% max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px));\n}\n.popup-error--top::before {\n  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692) var(--f-border-width-medium), calc(100% - var(--i-popup-error-offset)) calc(var(--f-border-width-medium) / 0.5 - 10px), max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692) var(--f-border-width-medium));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;\n}\n.popup-error--bottom::before {\n  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692) calc(100% - var(--f-border-width-medium)), calc(100% - var(--i-popup-error-offset)) calc(100% + 10px - var(--f-border-width-medium) / 0.5), max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692) calc(100% - var(--f-border-width-medium)));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;\n}\n.popup-error--left::before {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, var(--f-border-width-medium) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(var(--f-border-width-medium) / 0.5 - 10px) calc(100% - var(--i-popup-error-offset)), var(--f-border-width-medium) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;\n}\n.popup-error--right::before {\n  clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--f-border-width-medium)) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(100% + 10px - var(--f-border-width-medium) / 0.5) calc(100% - var(--i-popup-error-offset)), calc(100% - var(--f-border-width-medium)) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;\n}\n.ipopupmenu {\n  background-color: var(--fkds-color-background-primary);\n}\n.ipopupmenu__list {\n  margin: 0;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n  padding: 0.5rem;\n}\n.ipopupmenu__list__item {\n  cursor: pointer;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.ipopupmenu__list__item a,\n.ipopupmenu__list__item a:visited,\n.ipopupmenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n.ipopupmenu__list__item a:hover {\n  color: var(--fkds-color-text-primary);\n}\n.ipopupmenu--vertical .ipopupmenu__list {\n  display: block;\n}\n.ipopupmenu--vertical .ipopupmenu__list__item {\n  padding: 0.75rem;\n  display: block;\n}\n.ipopupmenu--vertical .ipopupmenu__list__item:hover {\n  background-color: var(--fkds-color-navigation-background-hover);\n}\n.ipopupmenu--vertical .ipopupmenu__list__item--highlight {\n  background-color: var(--fkds-color-navigation-background-selected);\n  font-weight: var(--f-font-weight-medium);\n}\n.ipopupmenu--vertical .ipopupmenu__list__item--highlight a {\n  color: var(--fkds-color-text-inverted);\n}\n.popup--overlay {\n  position: absolute;\n  top: 0;\n}\n.popup--overlay .popup__wrapper {\n  left: -10000px;\n  max-width: fit-content;\n  border-radius: var(--f-border-radius-small);\n  position: absolute;\n  z-index: 9996;\n  box-shadow: var(--f-box-modal-shadow);\n}\n.popup--inline {\n  position: static;\n}\n.popup--inline .popup__wrapper {\n  box-sizing: border-box;\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  position: static;\n}\n.iskiplink {\n  position: absolute;\n  top: -200px;\n}\n.iskiplink:focus {\n  color: var(--fkds-color-action-text-primary-default);\n  background-color: var(--fkds-color-background-primary);\n  left: 20px;\n  top: 20px;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  text-decoration: underline;\n  text-underline-offset: 0.25em;\n  padding: 0.25rem 0.5rem;\n}\n\n/* spacing around the panel (space from layout area/resize handle to header, content, footer) */\n/* distance between each slot: header, content, footer) */\n/* panel background color */\n/* button background color when hovering */\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted([slot=icon]) {\n  display: contents;\n}\n::slotted([slot=header]) {\n  font-weight: 700 !important;\n  font-size: 1.25rem !important;\n  line-height: 1 !important;\n  margin: 0 !important;\n}\n.panel__wrapper {\n  flex-grow: 1;\n  display: flex;\n}\n.panel {\n  background: var(--f-page-layout-background);\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  padding: 0.5rem;\n  gap: 0.5rem;\n}\n.panel__header {\n  flex: 0 0 auto;\n  display: flex;\n  gap: 0.25rem;\n  align-items: baseline;\n  justify-content: center;\n}\n.attach-left .panel__header {\n  flex-direction: row;\n}\n.attach-right .panel__header {\n  flex-direction: row-reverse;\n}\n.panel__close-button {\n  flex: 0 0 auto;\n  appearance: none;\n  line-height: 1;\n  background: transparent;\n  border: 0;\n  cursor: pointer;\n  padding: 1rem;\n  width: max-content;\n}\n.panel__close-button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.panel__close-button:active, .panel__close-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.panel__title {\n  flex: 1 1 auto;\n}\n.panel__content {\n  flex: 1 0 auto;\n}\n.panel__footer {\n  flex: 0 0 auto;\n}';
+const FDetailsPanel = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["styles", [_style_0$2]]]);
+const _hoisted_1$q = {
+  slot: "icon"
+};
+const tagName = "ce-details-panel";
+const header$1 = "header";
+const content$1 = "content";
+const footer$1 = "footer";
+const _sfc_main$t = /* @__PURE__ */ defineComponent({
+  __name: "FDetailsPanel",
+  props: {
+    name: {},
+    exclusive: {
+      default: () => void 0
+    }
+  },
+  setup(__props) {
+    if (!customElements.get(tagName)) {
+      customElements.define(tagName, /* @__PURE__ */ defineCustomElement(FDetailsPanel));
+    }
+    const overlay = useMediaQuery("(width < 640px)");
+    const panel = createDetailsPanel(__props.name, {
+      exclusive: __props.exclusive
+    });
+    const $t2 = useTranslate();
+    const visible = computed(() => Boolean(panel.item.value));
+    const closeText = $t2("fkui.details-panel.close", "Stäng");
+    useResize({
+      visible,
+      overlay
+    });
+    onUnmounted(() => {
+      panel.destroy();
+    });
+    function onClose(reason = "close") {
+      if (panel.callback.value) {
+        const item = panel.item.value;
+        panel.callback.value({
+          item,
+          reason
+        });
+      }
+      panel.close();
+    }
+    return (_ctx, _cache) => {
+      return visible.value ? (openBlock(), createBlock(resolveDynamicComponent(tagName), {
+        key: 0,
+        "data-panel-name": __props.name,
+        onClosed: _cache[0] || (_cache[0] = ($event) => onClose())
+      }, {
+        default: withCtx(() => [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+          item: unref(panel).item.value,
+          close: onClose,
+          header: header$1,
+          footer: footer$1,
+          content: content$1
+        }))), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", _hoisted_1$q, [createVNode(unref(FIcon), {
+          name: "close"
+        }, {
+          default: withCtx(() => [createBaseVNode("title", null, toDisplayString(unref(closeText)), 1)]),
+          _: 1
+        })])]),
+        _: 3
+      }, 40, ["data-panel-name"])) : createCommentVNode("", true);
+    };
+  }
+});
+const anyType = [String, Object, Array, Number, Date, null, Boolean];
+const _sfc_main$l = /* @__PURE__ */ defineComponent({
+  name: "FRadioField",
+  inheritAttrs: false,
+  props: {
+    /**
+     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     */
+    disabled: {
+      type: Boolean,
+      required: false
+    },
+    /**
+     * The id for the input id attribute.
+     * The id for the label for attribute.
+     * If the prop is not set a random value will be generated.
+     */
+    id: {
+      type: String,
+      required: false,
+      default: () => ElementIdService.generateElementId()
+    },
+    /**
+     * The value for the input checked attribute.
+     */
+    modelValue: {
+      type: anyType,
+      default: () => void 0
+    },
+    /**
+     * The value for the input.
+     */
+    value: {
+      type: anyType,
+      default: () => void 0
+    }
+  },
+  emits: [
+    /**
+     * Emitted when the value of the radiobutton changes.
+     *
+     * @type {anyType}
+     */
+    "change",
+    /**
+     * V-model event.
+     * @type {anyType}
+     */
+    "update:modelValue"
+  ],
+  setup() {
+    const {
+      sharedName,
+      showDetails,
+      getFieldsetLabelText
+    } = useFieldset();
+    return {
+      sharedName,
+      showDetails,
+      getFieldsetLabelText
+    };
+  },
+  data() {
+    return {
+      height: 0,
+      initialStyle: {
+        overflow: "hidden",
+        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
+      },
+      hiddenStyle: {
+        height: "auto",
+        position: "absolute",
+        visibility: "hidden"
+      },
+      visibleStyle: {
+        width: "",
+        position: "",
+        visibility: "",
+        height: "0px"
+      },
+      openedStyle: {
+        height: "auto"
+      }
+    };
+  },
+  computed: {
+    attrs() {
+      var _this$sharedName;
+      return {
+        ...this.$attrs,
+        value: this.value,
+        checked: this.value === this.modelValue,
+        name: (_this$sharedName = this.sharedName) !== null && _this$sharedName !== void 0 ? _this$sharedName : this.$attrs.name,
+        onChange: (event) => {
+          if (event.target instanceof HTMLInputElement) {
+            this.$emit("update:modelValue", this.value);
+            this.$emit("change", this.value);
+          }
+        },
+        onInput: (event) => {
+          event.target.focus();
+        }
+      };
+    },
+    disabledClass() {
+      return this.disabled ? "disabled" : "";
+    }
+  },
+  methods: {
+    async onValidity({
+      detail
+    }) {
+      if (detail.target !== this.$el.querySelector("input")) {
+        return;
+      }
+      await this.$nextTick();
+      let errorMessage = "";
+      if (hasSlot(this, "default")) {
+        var _renderSlotText;
+        const labelText = this.getFieldsetLabelText();
+        const slotText = (_renderSlotText = renderSlotText(this.$slots.default)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
+        if (labelText) {
+          errorMessage = `${labelText} ${slotText}`;
+        } else {
+          errorMessage = slotText;
+        }
+      }
+      const element = this.$el.querySelector(`#${detail.elementId}`);
+      if (element) {
+        dispatchComponentValidityEvent(element, {
+          ...detail,
+          errorMessage,
+          focusElementId: detail.elementId
+        });
+      }
+    },
+    enter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const computedStyle = getComputedStyle(element);
+      Object.assign(htmlElement.style, this.initialStyle);
+      Object.assign(htmlElement.style, this.hiddenStyle);
+      htmlElement.style.width = computedStyle.width;
+      const height = computedStyle.height;
+      Object.assign(htmlElement.style, this.visibleStyle);
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        this.height = parseInt(height, 10);
+        htmlElement.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      Object.assign(htmlElement.style, this.openedStyle);
+    },
+    leave(element) {
+      const htmlElement = getHTMLElementFromVueRef(element);
+      const height = getComputedStyle(element).height;
+      htmlElement.style.height = height;
+      getComputedStyle(element).height;
+      setTimeout(() => {
+        Object.assign(htmlElement.style, this.visibleStyle);
+      });
+    }
+  }
+});
+const _hoisted_1$k = ["id", "disabled"];
+const _hoisted_2$g = ["for"];
+const _hoisted_3$b = {
+  key: 0,
+  class: "radio-button__details"
+};
+const _hoisted_4$a = {
+  key: 0,
+  class: "radio-button__details"
+};
+function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass(["radio-button", _ctx.disabledClass]),
+    onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
+  }, [createBaseVNode("input", mergeProps({
+    id: _ctx.id,
+    type: "radio",
+    class: "radio-button__input",
+    disabled: _ctx.disabled
+  }, _ctx.attrs), null, 16, _hoisted_1$k), _cache[3] || (_cache[3] = createTextVNode()), createBaseVNode("label", {
+    class: normalizeClass(_ctx.$slots.details ? "radio-button__label radio-button__width" : "radio-button__label"),
+    for: _ctx.id
+  }, [renderSlot(_ctx.$slots, "default"), _cache[2] || (_cache[2] = createTextVNode()), _ctx.$slots.details ? (openBlock(), createElementBlock(Fragment, {
+    key: 0
+  }, [_ctx.showDetails === "always" ? (openBlock(), createElementBlock("span", _hoisted_3$b, [renderSlot(_ctx.$slots, "details")])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), _ctx.showDetails === "when-selected" ? (openBlock(), createBlock(Transition, {
+    key: 1,
+    onEnter: _ctx.enter,
+    onAfterEnter: _ctx.afterEnter,
+    onLeave: _ctx.leave
+  }, {
+    default: withCtx(() => [_ctx.value === _ctx.modelValue ? (openBlock(), createElementBlock("span", _hoisted_4$a, [renderSlot(_ctx.$slots, "details", {
+      height: _ctx.height
+    })])) : createCommentVNode("", true)]),
+    _: 3
+  }, 8, ["onEnter", "onAfterEnter", "onLeave"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true)], 10, _hoisted_2$g)], 34);
+}
+const FRadioField = /* @__PURE__ */ _export_sfc$1(_sfc_main$l, [["render", _sfc_render$d]]);
+const keybindings = {
+  Up: focusTrAbove,
+  Down: focusTrBelow,
+  ArrowUp: focusTrAbove,
+  ArrowDown: focusTrBelow,
+  " ": activateRow,
+  Spacebar: activateRow
+};
+function focusTrAbove(table, current) {
+  const tr = table.tr.value;
+  if (current > 0) {
+    tr[current - 1].focus();
+  } else {
+    tr[tr.length - 1].focus();
+  }
+}
+function focusTrBelow(table, current) {
+  const tr = table.tr.value;
+  if (current < tr.length - 1) {
+    tr[current + 1].focus();
+  } else {
+    tr[0].focus();
+  }
+}
+function activateRow(table, current) {
+  const row = table.rows[current];
+  const element = table.tr.value[current];
+  table.activate(row, element);
+}
+function onKeydown(table, event, current) {
+  const fn2 = keybindings[event.key];
+  if (fn2) {
+    event.preventDefault();
+    fn2(table, current);
+  }
+}
+function useExpandableTable(expandableAttribute, keyAttribute, describedby, emit2, slots) {
+  const expandedRows = /* @__PURE__ */ ref([]);
+  const isExpandableTable = computed(() => {
+    return Boolean(expandableAttribute);
+  });
+  const hasExpandableSlot = computed(() => {
+    return Boolean(slots.expandable);
+  });
+  function toggleExpanded(row) {
+    if (isExpanded(row)) {
+      expandedRows.value = expandedRows.value.filter((it) => !itemEquals(it, row, keyAttribute));
+      emit2("collapse", row);
+    } else {
+      expandedRows.value.push(row);
+      emit2("expand", row);
+    }
+  }
+  function isExpanded(row) {
+    return includeItem(row, expandedRows.value, keyAttribute);
+  }
+  function rowAriaExpanded(row) {
+    if (!expandableAttribute) {
+      return void 0;
+    }
+    const expandedRow = row[expandableAttribute];
+    if (!expandedRow) {
+      return void 0;
+    }
+    return isExpanded(row);
+  }
+  function expandableRowClasses(row, index) {
+    const rows = expandableRows(row);
+    if (!rows) {
+      return [];
+    }
+    const border = index < rows.length - 1 ? ["table__row--expanded-border"] : [];
+    const expanded = isExpanded(row) ? [] : ["table__expandable-row--collapsed"];
+    return ["table__expandable-row", ...border, ...expanded];
+  }
+  function getExpandableDescribedby(row) {
+    if (!isExpandableTable) {
+      return void 0;
+    }
+    if (!describedby || describedby.length < 1) {
+      return void 0;
+    }
+    if (!hasExpandableContent(row)) {
+      return void 0;
+    }
+    return describedby;
+  }
+  function expandableRows(row) {
+    if (!expandableAttribute) {
+      return void 0;
+    }
+    const expandableRows2 = row[expandableAttribute];
+    if (expandableRows2 === void 0 || expandableRows2 === null) {
+      return void 0;
+    }
+    if (!Array.isArray(expandableRows2)) {
+      throw new Error(`Expandable rows must be an array`);
+    }
+    if (expandableRows2.length === 0) {
+      return void 0;
+    }
+    return expandableRows2;
+  }
+  function hasExpandableContent(row) {
+    return Boolean(expandableRows(row));
+  }
+  function getExpandedIndex(row, rows) {
+    let index = 0;
+    for (const currentRow of rows) {
+      if (currentRow === row) {
+        return index;
+      }
+      index++;
+      if (!hasExpandableContent(currentRow) || !isExpanded(currentRow)) {
+        continue;
+      }
+      const nestedRows = expandableRows(currentRow);
+      for (const currentNestedRow of nestedRows) {
+        if (currentNestedRow === row) {
+          return index;
+        }
+        index++;
+      }
+    }
+    return -1;
+  }
+  return {
+    isExpandableTable,
+    hasExpandableSlot,
+    toggleExpanded,
+    isExpanded,
+    rowAriaExpanded,
+    expandableRowClasses,
+    getExpandableDescribedby,
+    expandableRows,
+    hasExpandableContent,
+    getExpandedIndex
+  };
+}
+const _hoisted_1$j = ["role"];
+const _hoisted_2$f = {
+  key: 0
+};
+const _hoisted_3$a = {
+  key: 0,
+  class: "table__column--shrink"
+};
+const _hoisted_4$9 = {
+  key: 1,
+  class: "table__column--shrink"
+};
+const _hoisted_5$8 = {
+  class: "table__row"
+};
+const _hoisted_6$6 = {
+  key: 0,
+  scope: "col"
+};
+const _hoisted_7$4 = {
+  class: "sr-only"
+};
+const _hoisted_8$3 = {
+  key: 1,
+  scope: "col"
+};
+const _hoisted_9$3 = {
+  class: "sr-only"
+};
+const _hoisted_10$1 = ["innerHTML"];
+const _hoisted_11$1 = {
+  key: 1,
+  class: "table__column__description"
+};
+const _hoisted_12$1 = ["aria-label", "aria-expanded", "aria-level", "aria-describedby", "onKeydown", "onClick"];
+const _hoisted_13$1 = {
+  key: 0
+};
+const _hoisted_14 = {
+  key: 0,
+  class: "table__expand-icon"
+};
+const _hoisted_15 = {
+  key: 1,
+  class: "table__column--selectable"
+};
+const _hoisted_16 = {
+  class: "table__input"
+};
+const _hoisted_17 = {
+  key: 0,
+  class: "sr-only"
+};
+const _hoisted_18 = {
+  key: 1,
+  class: "sr-only"
+};
+const _hoisted_19 = {
+  key: 0,
+  class: "sr-only"
+};
+const _hoisted_20 = {
+  key: 1,
+  class: "sr-only"
+};
+const _hoisted_21 = {
+  key: 0,
+  class: "table__column--placeholder"
+};
+const _hoisted_22 = ["colspan"];
+const _hoisted_23 = {
+  key: 0
+};
+const _hoisted_24 = {
+  key: 1
+};
+const _hoisted_25 = ["colspan"];
+const _sfc_main$k = /* @__PURE__ */ defineComponent({
+  ...{
+    inheritAttrs: false
+  },
+  __name: "FInteractiveTable",
+  props: {
+    rows: {},
+    hover: {
+      type: Boolean
+    },
+    keyAttribute: {
+      default: () => void 0
+    },
+    expandableAttribute: {
+      default: () => void 0
+    },
+    expandableDescribedby: {
+      default: ""
+    },
+    selectable: {
+      type: [Boolean, String],
+      default: false
+    },
+    striped: {
+      type: Boolean
+    },
+    scroll: {
+      default: () => TableScroll.NONE
+    },
+    showActive: {
+      type: Boolean,
+      default: true
+    },
+    modelValue: {
+      default: () => void 0
+    },
+    active: {
+      default: () => void 0
+    }
+  },
+  emits: ["change", "click", "select", "unselect", "expand", "collapse", "update:modelValue", "update:active"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit2 = __emit;
+    const $t2 = useTranslate();
+    const slots = useSlots();
+    const {
+      hasSlot: hasSlot2
+    } = useSlotUtils();
+    const {
+      sort: sort2,
+      registerCallbackOnSort,
+      registerCallbackOnMount
+    } = FSortFilterDatasetInjected();
+    const {
+      registerCallbackAfterItemAdd,
+      registerCallbackBeforeItemDelete,
+      setNestedKey
+    } = ActivateItemInjected();
+    const internalKey = getLegacyInternalKey();
+    const activeRow = /* @__PURE__ */ ref(void 0);
+    const columns = /* @__PURE__ */ ref([]);
+    const selectedRows = /* @__PURE__ */ ref([]);
+    const tr = /* @__PURE__ */ shallowRef([]);
+    const trAll = /* @__PURE__ */ shallowRef([]);
+    const tbodyKey = /* @__PURE__ */ ref(0);
+    const {
+      isExpandableTable,
+      hasExpandableSlot,
+      toggleExpanded,
+      isExpanded,
+      rowAriaExpanded,
+      expandableRowClasses,
+      getExpandableDescribedby,
+      expandableRows,
+      hasExpandableContent,
+      getExpandedIndex
+    } = useExpandableTable(__props.expandableAttribute, internalKey, __props.expandableDescribedby, emit2, slots);
+    const tbody = useTemplateRef("tbodyElement");
+    const hasCaption = computed(() => {
+      return hasSlot2("caption", {}, {
+        stripClasses: []
+      });
+    });
+    const hasCheckboxDescription = computed(() => {
+      const firstRow = internalRows.value[0];
+      return hasSlot2("checkbox-description", {
+        row: firstRow
+      });
+    });
+    const hasSelectableDescription = computed(() => {
+      const firstRow = internalRows.value[0];
+      return hasSlot2("selectable-description", {
+        row: firstRow
+      });
+    });
+    const isEmpty2 = computed(() => {
+      return internalRows.value.length === 0;
+    });
+    const visibleColumns = computed(() => {
+      return columns.value.filter((col) => col.visible);
+    });
+    const tableClasses = computed(() => {
+      const classes = [];
+      if (__props.selectable) {
+        classes.push("table--selectable");
+      }
+      if (__props.hover) {
+        classes.push("table--hover");
+      }
+      return classes;
+    });
+    const tableRole = computed(() => {
+      return isExpandableTable.value ? "treegrid" : "grid";
+    });
+    const wrapperClasses = computed(() => {
+      return tableScrollClasses(__props.scroll);
+    });
+    const nbOfColumns = computed(() => {
+      let columnCount = visibleColumns.value.length;
+      if (__props.selectable) {
+        columnCount++;
+      }
+      if (isExpandableTable.value) {
+        columnCount++;
+      }
+      return columnCount;
+    });
+    const internalRows = computed(() => {
+      if (isExpandableTable) {
+        return setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute);
+      }
+      return setItemIdentifiers(__props.rows, __props.keyAttribute);
+    });
+    provide("addColumn", (column) => {
+      columns.value = addColumn(columns.value, column);
+    });
+    provide("setVisibilityColumn", (id, visible) => {
+      setVisibilityColumn(columns.value, id, visible);
+    });
+    provide("textFieldTableMode", true);
+    provide("renderColumns", computed(() => internalRows.value.length > 0));
+    watch(() => __props.rows, () => {
+      setSelectedRows();
+    }, {
+      immediate: true,
+      deep: true
+    });
+    watch(() => __props.active, () => {
+      updateActiveRowFromVModel();
+    }, {
+      immediate: true
+    });
+    watch(() => __props.showActive, (val) => {
+      if (!val) {
+        tbodyKey.value ^= 1;
+      }
+    }, {
+      immediate: true
+    });
+    watch(() => __props.modelValue, () => {
+      setSelectedRows();
+    }, {
+      immediate: true,
+      deep: true
+    });
+    function updateTr(tbodyElement) {
+      trAll.value = [].slice.call(tbodyElement.children);
+      const trInteractableElements = trAll.value.filter((tr2) => {
+        return tr2.tabIndex === 0;
+      });
+      tr.value = trInteractableElements;
+    }
+    onUpdated(() => {
+      if (tbody.value) {
+        updateTr(tbody.value);
+      }
+    });
+    onMounted(() => {
+      if (tbody.value) {
+        updateTr(tbody.value);
+      }
+      if (isExpandableTable) {
+        setNestedKey(__props.expandableAttribute);
+      }
+      registerCallbackOnSort(callbackOnSort);
+      registerCallbackOnMount(callbackSortableColumns);
+      registerCallbackAfterItemAdd(callbackAfterItemAdd);
+      registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
+    });
+    function isActive(row) {
+      if (!__props.showActive) {
+        return false;
+      }
+      return itemEquals(row, activeRow.value, internalKey);
+    }
+    function isSelected(row) {
+      return includeItem(row, selectedRows.value, internalKey);
+    }
+    function onKeydown$1(event, index) {
+      onKeydown({
+        rows: internalRows.value,
+        tr,
+        activate
+      }, event, index);
+    }
+    function onClick(event, row) {
+      const {
+        target
+      } = event;
+      const isRelevant = ["TD", "TH"].includes(target.nodeName);
+      if (isRelevant) {
+        const parent = target.parentElement;
+        activate(row, parent);
+      }
+    }
+    function activate(row, tr2) {
+      emit2("click", row);
+      if (isExpandableTable.value && hasExpandableContent(row)) {
+        toggleExpanded(row);
+      }
+      if (!itemEquals(row, activeRow.value, internalKey)) {
+        emit2("change", row);
+        setActiveRow(row);
+        if (tr2) {
+          tr2.focus();
+        }
+      }
+    }
+    function rowDescription(row) {
+      const slot = slots["row-description"];
+      return renderSlotText(slot, {
+        row
+      });
+    }
+    function onSelect(row) {
+      if (__props.selectable === "single") {
+        selectedRows.value = [row];
+        emit2("select", row);
+      } else {
+        if (includeItem(row, selectedRows.value, internalKey)) {
+          selectedRows.value = selectedRows.value.filter((i) => !itemEquals(i, row, internalKey));
+          emit2("unselect", row);
+        } else {
+          selectedRows.value.push(row);
+          emit2("select", row);
+        }
+      }
+      updateVModelWithSelectedRows();
+      getCurrentInstance()?.proxy?.$forceUpdate();
+    }
+    function setSelectedRows() {
+      if (!__props.modelValue?.length) {
+        selectedRows.value = [];
+        return;
+      }
+      selectedRows.value = __props.modelValue.filter((row) => {
+        return includeItem(row, internalRows.value, internalKey);
+      });
+    }
+    function updateVModelWithSelectedRows() {
+      if (__props.modelValue) {
+        emit2("update:modelValue", selectedRows.value);
+      }
+    }
+    function rowClasses(row, index) {
+      const active = isActive(row) ? ["table__row--active"] : [];
+      const selected = isSelected(row) ? ["table__row--selected"] : [];
+      const isExpandableRow = isExpandableTable.value && hasExpandableContent(row);
+      const expandable = isExpandableRow ? ["table__row--expandable"] : [];
+      const expanded = isExpanded(row) ? ["table__row--expanded-border"] : [];
+      const striped = __props.striped && index % 2 !== 0 ? ["table__row--striped"] : [];
+      return ["table__row", ...active, ...selected, ...striped, ...expandable, ...expanded];
+    }
+    function rowKey(row) {
+      return String(row[internalKey]);
+    }
+    function columnClasses(column) {
+      const sortable = column.sortable ? ["table__column--sortable"] : [];
+      return ["table__column", `table__column--${column.type}`, ...sortable, column.size];
+    }
+    function iconClasses2(column) {
+      return getSortableIconClasses(column);
+    }
+    function iconName(column) {
+      return getSortableIconName(column);
+    }
+    function onClickColumnHeader(column) {
+      if (!column.sortable) {
+        return;
+      }
+      let columnName = column.name;
+      if (!columnName) {
+        throw new Error("`FTableColumn` must have a unique `name` when used with `FSortFilterDataset`");
+      }
+      if (column.sort === FTableColumnSort.DESCENDING) {
+        columnName = "";
+        column.sort = FTableColumnSort.UNSORTED;
+      }
+      sort2(columnName, column.sort !== FTableColumnSort.ASCENDING);
+    }
+    function callbackOnSort(columnName, ascending) {
+      updateSortOrder(columns.value, columnName, ascending);
+    }
+    function callbackSortableColumns(columnNames) {
+      setSortableColumns(columns.value, columnNames);
+    }
+    function callbackAfterItemAdd(item) {
+      activate(item, null);
+    }
+    function callbackBeforeItemDelete(item) {
+      var _getPreviousFocus;
+      if (internalRows.value.length === 0) {
+        return;
+      }
+      let index;
+      if (isExpandableTable) {
+        index = getExpandedIndex(item, internalRows.value);
+      } else {
+        index = internalRows.value.indexOf(item);
+      }
+      const target = (_getPreviousFocus = getPreviousFocus(index)) !== null && _getPreviousFocus !== void 0 ? _getPreviousFocus : getNextFocus(index);
+      if (target) {
+        target.focus();
+      }
+    }
+    function getPreviousFocus(currentIndex) {
+      const previousIndex = currentIndex - 1;
+      if (previousIndex < 0) {
+        return void 0;
+      }
+      let targetRow = trAll.value[previousIndex];
+      if (!targetRow) {
+        return void 0;
+      }
+      for (let index = 0; index <= previousIndex; index++) {
+        const targetIndex = previousIndex - index;
+        targetRow = trAll.value[targetIndex];
+        if (!isVisible(targetRow)) {
+          continue;
+        }
+        const tabbables = findTabbableElements(targetRow);
+        if (tabbables.length > 0) {
+          return tabbables[tabbables.length - 1];
+        }
+      }
+      return void 0;
+    }
+    function getNextFocus(currentIndex) {
+      const targetIndex = currentIndex + 1;
+      return tr.value[targetIndex];
+    }
+    function escapeNewlines(value) {
+      return value.replace(/\n/g, "<br/>");
+    }
+    function updateActiveRowFromVModel() {
+      if (__props.active === void 0) {
+        setActiveRow(void 0);
+      } else if (!itemEquals(__props.active, activeRow.value, internalKey)) {
+        setActiveRow(__props.active);
+      }
+    }
+    function setActiveRow(row) {
+      activeRow.value = row;
+      emit2("update:active", activeRow.value);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(wrapperClasses.value)
+      }, [createCommentVNode("", true), _cache[21] || (_cache[21] = createTextVNode()), createBaseVNode("table", mergeProps({
+        class: ["table", tableClasses.value],
+        role: tableRole.value
+      }, _ctx.$attrs), [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$f, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[18] || (_cache[18] = createTextVNode()), createBaseVNode("colgroup", null, [unref(isExpandableTable) ? (openBlock(), createElementBlock("col", _hoisted_3$a)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("col", _hoisted_4$9)) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+        return openBlock(), createElementBlock("col", {
+          key: column.id,
+          class: normalizeClass(column.size)
+        }, null, 2);
+      }), 128))]), _cache[19] || (_cache[19] = createTextVNode()), createBaseVNode("thead", null, [createBaseVNode("tr", _hoisted_5$8, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        row: {}
+      }))), _cache[4] || (_cache[4] = createTextVNode()), unref(isExpandableTable) ? (openBlock(), createElementBlock("th", _hoisted_6$6, [createBaseVNode("span", _hoisted_7$4, toDisplayString(
+        /** Kolumnrubrik som visas för skärmläsare om funktionen för expanderbara rader (`expandable-attribute`) aktiveras */
+        unref($t2)("fkui.interactive-table.expand", "Expandera")
+      ), 1)])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("th", _hoisted_8$3, [createBaseVNode("span", _hoisted_9$3, toDisplayString(
+        /** Kolumnrubrik som visas för skärmläsare om funktionen för valbara rader (`selectable`) aktiveras */
+        unref($t2)("fkui.interactive-table.select", "Markera")
+      ), 1)])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(visibleColumns.value, (column) => {
+        return openBlock(), createElementBlock("th", mergeProps({
+          key: column.id,
+          scope: "col",
+          class: columnClasses(column)
+        }, toHandlers(column.sortable ? {
+          click: () => onClickColumnHeader(column)
+        } : {})), [createBaseVNode("span", {
+          innerHTML: escapeNewlines(column.title)
+        }, null, 8, _hoisted_10$1), _cache[2] || (_cache[2] = createTextVNode()), column.sortable ? (openBlock(), createBlock(unref(FIcon), {
+          key: 0,
+          class: normalizeClass(iconClasses2(column)),
+          name: iconName(column)
+        }, null, 8, ["class", "name"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), column.description ? (openBlock(), createElementBlock("span", _hoisted_11$1, toDisplayString(column.description), 1)) : createCommentVNode("", true)], 16);
+      }), 128))])]), _cache[20] || (_cache[20] = createTextVNode()), (openBlock(), createElementBlock("tbody", {
+        ref: "tbodyElement",
+        key: tbodyKey.value
+      }, [(openBlock(true), createElementBlock(Fragment, null, renderList(internalRows.value, (row, index) => {
+        return openBlock(), createElementBlock(Fragment, {
+          key: rowKey(row)
+        }, [createBaseVNode("tr", {
+          class: normalizeClass(rowClasses(row, index)),
+          "aria-label": rowDescription(row),
+          "aria-expanded": unref(rowAriaExpanded)(row),
+          "aria-level": unref(isExpandableTable) ? 1 : void 0,
+          "aria-describedby": unref(getExpandableDescribedby)(row),
+          tabindex: "0",
+          onKeydown: withModifiers(($event) => onKeydown$1($event, index), ["self"]),
+          onClick: ($event) => onClick($event, row)
+        }, [unref(isExpandableTable) ? (openBlock(), createElementBlock("td", _hoisted_13$1, [unref(hasExpandableContent)(row) ? (openBlock(), createElementBlock("div", _hoisted_14, [createVNode(unref(FIcon), {
+          name: "arrow-right",
+          rotate: unref(isExpanded)(row) ? "270" : "90"
+        }, null, 8, ["rotate"])])) : createCommentVNode("", true)])) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_15, [createBaseVNode("div", _hoisted_16, [__props.selectable === "single" ? (openBlock(), createBlock(unref(FRadioField), {
+          key: 0,
+          name: rowKey(row),
+          value: true,
+          "model-value": isSelected(row),
+          onClick: withModifiers(($event) => onSelect(row), ["self"])
+        }, {
+          default: withCtx(() => [hasCheckboxDescription.value ? (openBlock(), createElementBlock("span", _hoisted_17, [renderSlot(_ctx.$slots, "checkbox-description", mergeProps({
+            ref_for: true
+          }, {
+            row
+          }))])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), hasSelectableDescription.value ? (openBlock(), createElementBlock("span", _hoisted_18, [renderSlot(_ctx.$slots, "selectable-description", mergeProps({
+            ref_for: true
+          }, {
+            row
+          }))])) : createCommentVNode("", true)]),
+          _: 2
+        }, 1032, ["name", "model-value", "onClick"])) : (openBlock(), createBlock(unref(FCheckboxField), {
+          key: 1,
+          value: true,
+          "model-value": isSelected(row),
+          onClick: withModifiers(($event) => onSelect(row), ["self"])
+        }, {
+          default: withCtx(() => [hasCheckboxDescription.value ? (openBlock(), createElementBlock("span", _hoisted_19, [renderSlot(_ctx.$slots, "checkbox-description", mergeProps({
+            ref_for: true
+          }, {
+            row
+          }))])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), hasSelectableDescription.value ? (openBlock(), createElementBlock("span", _hoisted_20, [renderSlot(_ctx.$slots, "selectable-description", mergeProps({
+            ref_for: true
+          }, {
+            row
+          }))])) : createCommentVNode("", true)]),
+          _: 2
+        }, 1032, ["model-value", "onClick"]))])])) : createCommentVNode("", true), _cache[10] || (_cache[10] = createTextVNode()), renderSlot(_ctx.$slots, "default", mergeProps({
+          ref_for: true
+        }, {
+          row
+        }))], 42, _hoisted_12$1), _cache[14] || (_cache[14] = createTextVNode()), unref(isExpandableTable) && unref(hasExpandableContent)(row) ? (openBlock(true), createElementBlock(Fragment, {
+          key: 0
+        }, renderList(unref(expandableRows)(row), (expandableRow, expandableIndex) => {
+          return openBlock(), createElementBlock("tr", {
+            key: rowKey(expandableRow),
+            "aria-level": "2",
+            class: normalizeClass(unref(expandableRowClasses)(row, expandableIndex))
+          }, [_cache[11] || (_cache[11] = createBaseVNode("td", {
+            class: "table__column--placeholder"
+          }, null, -1)), _cache[12] || (_cache[12] = createTextVNode()), __props.selectable ? (openBlock(), createElementBlock("td", _hoisted_21)) : createCommentVNode("", true), _cache[13] || (_cache[13] = createTextVNode()), !unref(hasExpandableSlot) ? renderSlot(_ctx.$slots, "default", mergeProps({
+            key: 1,
+            ref_for: true
+          }, {
+            row: expandableRow
+          })) : (openBlock(), createElementBlock("td", {
+            key: 2,
+            class: "table__column table__column--indented",
+            colspan: columns.value.length
+          }, [renderSlot(_ctx.$slots, "expandable", mergeProps({
+            ref_for: true
+          }, {
+            expandableRow,
+            parentRow: row
+          }))], 8, _hoisted_22))], 2);
+        }), 128)) : createCommentVNode("", true)], 64);
+      }), 128)), _cache[16] || (_cache[16] = createTextVNode()), isEmpty2.value && columns.value.length === 0 ? (openBlock(), createElementBlock("tr", _hoisted_23, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        row: {}
+      })))])) : createCommentVNode("", true), _cache[17] || (_cache[17] = createTextVNode()), isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_24, [createBaseVNode("td", {
+        class: "table__column table__column--action",
+        colspan: nbOfColumns.value
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(
+        /** Text som visas som standardinnehåll i slotten `empty` (när tabellen är tom). */
+        unref($t2)("fkui.interactive-table.empty", "Tabellen är tom")
+      ), 1)])], 8, _hoisted_25), _cache[15] || (_cache[15] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        row: {}
+      })))])) : createCommentVNode("", true)]))], 16, _hoisted_1$j)], 2);
+    };
+  }
+});
 const _hoisted_1$d = ["aria-label"];
 const __default__ = /* @__PURE__ */ defineComponent({
   computed: {
@@ -21277,7 +23574,7 @@ const __default__ = /* @__PURE__ */ defineComponent({
     }
   }
 });
-/* @__PURE__ */ defineComponent({
+const _sfc_main$e = /* @__PURE__ */ defineComponent({
   ...__default__,
   __name: "FLogo",
   props: {
@@ -21305,6 +23602,742 @@ const __default__ = /* @__PURE__ */ defineComponent({
     };
   }
 });
+const _hoisted_1$b = {
+  ref: "root",
+  class: "panel__wrapper"
+};
+const _hoisted_2$9 = {
+  class: "panel__header"
+};
+const _hoisted_3$6 = {
+  key: 0,
+  class: "panel__title"
+};
+const _hoisted_4$5 = ["aria-expanded", "aria-label"];
+const _hoisted_5$5 = {
+  class: "panel__content"
+};
+const _hoisted_6$4 = {
+  class: "panel__footer"
+};
+const _sfc_main$c = /* @__PURE__ */ defineComponent({
+  __name: "FMinimizablePanel.ce",
+  props: {
+    openPrefix: {
+      default: "Återställ",
+      type: String
+    },
+    closePrefix: {
+      default: "Minimera",
+      type: String
+    },
+    context: {
+      default: "panel",
+      type: String
+    },
+    modelValue: {
+      type: Boolean,
+      default: true
+    }
+  },
+  emits: ["toggle", "update:modelValue"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit2 = __emit;
+    const rootRef = useTemplateRef("root");
+    const {
+      attachPanel
+    } = useAreaData(rootRef);
+    const isDesktop = useMediaQuery("(width >= 640px)");
+    const isOpen = computed(() => __props.modelValue);
+    function updateIsOpen(value) {
+      if (value && !isDesktop.value && rootRef.value) {
+        const offset2 = rootRef.value.getBoundingClientRect().width;
+        emit2("toggle", value, true, offset2);
+      } else {
+        emit2("toggle", value, false);
+      }
+      emit2("update:modelValue", value);
+    }
+    watch(() => [isDesktop, isOpen], ([isDesktopVal, isOpenVal]) => {
+      if (!isDesktopVal.value) {
+        updateIsOpen(false);
+      } else {
+        updateIsOpen(isOpenVal.value);
+      }
+    }, {
+      immediate: true
+    });
+    const expandedClass = computed(() => {
+      return isOpen.value ? "expanded" : "collapsed";
+    });
+    const attachClass = computed(() => {
+      switch (attachPanel.value) {
+        case "left":
+          return "attach-left";
+        case "right":
+          return "attach-right";
+      }
+      return void 0;
+    });
+    const ariaLabel = computed(() => {
+      const prefix = isOpen.value ? __props.closePrefix : __props.openPrefix;
+      return `${prefix} ${__props.context}`;
+    });
+    function onToggle() {
+      updateIsOpen(!isOpen.value);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1$b, [createBaseVNode("div", {
+        class: normalizeClass(["panel", [expandedClass.value, attachClass.value]])
+      }, [createBaseVNode("div", _hoisted_2$9, [isOpen.value ? (openBlock(), createElementBlock("div", _hoisted_3$6, [renderSlot(_ctx.$slots, "header")])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createBaseVNode("button", {
+        class: "panel__button",
+        type: "button",
+        "aria-expanded": isOpen.value,
+        "aria-label": ariaLabel.value,
+        onClick: onToggle
+      }, [renderSlot(_ctx.$slots, "icon")], 8, _hoisted_4$5)]), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", _hoisted_5$5, [renderSlot(_ctx.$slots, "content")]), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode("div", _hoisted_6$4, [renderSlot(_ctx.$slots, "footer")])], 2)], 512);
+    };
+  }
+});
+const _style_0 = '@charset "UTF-8";\n*,\n*::before,\n*::after {\n  box-sizing: border-box;\n}\np,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  margin-top: 0;\n}\narticle,\naside,\ndialog,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nnav,\nsection {\n  display: block;\n}\nselect::-ms-expand {\n  display: none;\n}\nselect:focus::-ms-value {\n  background: none;\n  color: #000;\n  outline: 1px dotted #000;\n}\nul,\nol {\n  padding-left: 1rem;\n  margin-top: 0;\n  margin-bottom: 1rem;\n}\na {\n  text-decoration: none;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  font: inherit;\n  margin: 0;\n}\nhtml {\n  font-size: var(--f-font-size-default-rem);\n  overflow-y: scroll;\n  scrollbar-gutter: stable;\n}\n@media (min-width: 1024px) {\nhtml {\n    font-size: var(--f-font-size-default-large-up-rem);\n}\n}\nbody {\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-normal);\n  line-height: var(--f-line-height-large);\n}\np {\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-normal);\n  line-height: var(--f-line-height-large);\n  margin-bottom: 1rem;\n}\nb,\nstrong {\n  font-weight: var(--f-font-weight-medium);\n}\ncode {\n  font-size: var(--f-font-size-standard);\n  border-radius: var(--f-border-radius-small);\n  font-family: var(--f-font-family-code);\n  background-color: var(--fkds-color-background-secondary);\n  display: inline-block;\n  margin: 0 0.25rem;\n  padding: 0 0.25rem;\n}\npre code {\n  display: block;\n}\nh1, .heading--h1,\nh2,\n.heading--h2,\nh3,\n.heading--h3,\nh4,\n.heading--h4,\nh5,\n.heading--h5,\nh6,\n.heading--h6 {\n  font-weight: var(--f-font-weight-bold);\n  margin-bottom: 0.25rem;\n  line-height: var(--f-line-height-medium);\n}\nh1, .heading--h1 {\n  font-size: var(--f-font-size-h1);\n  color: var(--f-text-color-heading-1);\n}\nh2, .heading--h2 {\n  font-size: var(--f-font-size-h2);\n  color: var(--f-text-color-heading-2);\n}\nh3, .heading--h3 {\n  font-size: var(--f-font-size-h3);\n  color: var(--f-text-color-heading-3);\n}\nh4, .heading--h4 {\n  font-size: var(--f-font-size-h4);\n  color: var(--f-text-color-heading-4);\n}\nh5, .heading--h5 {\n  font-size: var(--f-font-size-large);\n  color: var(--f-text-color-heading-5);\n}\nh6, .heading--h6 {\n  font-size: var(--f-font-size-standard);\n  color: var(--f-text-color-heading-6);\n}\n.heading--strong {\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-medium);\n}\n* + h1, * + .heading--h1,\n* + h2,\n* + .heading--h2,\n* + h3,\n* + .heading--h3,\n* + h4,\n* + .heading--h4,\n* + h5,\n* + .heading--h5,\n* + h6,\n* + .heading--h6 {\n  margin-top: 2rem;\n}\n@media (max-width: 640px) {\nh1, .heading--h1 {\n    font-size: var(--f-font-size-h2);\n}\nh2, .heading--h2 {\n    font-size: var(--f-font-size-xxx-large);\n}\nh3, .heading--h3 {\n    font-size: var(--f-font-size-h4);\n}\nh4, .heading--h4 {\n    font-size: var(--f-font-size-large);\n}\nh5, .heading--h5 {\n    font-size: var(--f-font-size-standard);\n}\nh6, .heading--h6 {\n    font-size: var(--f-font-size-standard);\n}\n.heading--strong {\n    font-size: var(--f-font-size-large);\n    font-weight: var(--f-font-weight-medium);\n}\n}\n.heading--h1 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h2 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h3 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h4 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h5 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.heading--h6 {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\nh1 + h2, .heading--h1 + h2, h1 + .heading--h2, .heading--h1 + .heading--h2 {\n  margin-top: 1rem;\n}\nh2 + h3, .heading--h2 + h3, h2 + .heading--h3, .heading--h2 + .heading--h3 {\n  margin-top: 1rem;\n}\nh3 + h4, .heading--h3 + h4, h3 + .heading--h4, .heading--h3 + .heading--h4 {\n  margin-top: 1rem;\n}\nh4 + h5, .heading--h4 + h5, h4 + .heading--h5, .heading--h4 + .heading--h5 {\n  margin-top: 1rem;\n}\nh5 + h6, .heading--h5 + h6, h5 + .heading--h6, .heading--h5 + .heading--h6 {\n  margin-top: 1rem;\n}\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.sr-separator {\n  display: block !important;\n}\nbutton:focus,\na:focus,\na.button:focus,\nimg:focus,\nselect:focus,\ntextarea:focus,\ninput[type=submit]:focus,\ninput[type=text]:focus,\ninput[type=email]:focus,\ninput[type=tel]:focus,\ninput[type=image]:focus,\ninput[type=search]:focus,\n[tabindex]:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n[tabindex="-1"]:focus {\n  box-shadow: none;\n  outline: none;\n}\n\n/*\n    For help-classes, it is alright to use `!important` when the intent is to\n    overwrite standard behaviour for components.\n\n    All help-classes shall be prefixed with `h-`.\n*/\n.h-no-margin {\n  margin: 0 !important;\n}\n.h-root-size {\n  font-size: 1rem !important;\n}\n.h-display-flex {\n  display: flex;\n}\n.container-fluid {\n  width: 100%;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  margin-right: auto;\n  margin-left: auto;\n}\n.container {\n  width: 100%;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  margin-right: auto;\n  margin-left: auto;\n  max-width: 95%;\n}\n@media (min-width: 640px) {\n.container {\n    max-width: 90%;\n}\n}\n@media (min-width: 1024px) {\n.container {\n    max-width: 80%;\n}\n}\n@media (min-width: 1280px) {\n.container {\n    max-width: 1280px;\n}\n}\n.row {\n  display: flex;\n  flex-wrap: wrap;\n  margin-right: -1rem;\n  margin-left: -1rem;\n}\n.row--align-end {\n  justify-content: flex-end;\n}\n.row--align-center {\n  justify-content: center;\n}\n.row--align-justify {\n  justify-content: space-between;\n}\n.row--align-spaced {\n  justify-content: space-around;\n}\n.row--align-middle {\n  align-items: center;\n}\n.row--align-bottom {\n  align-items: flex-end;\n}\n.row--align-top {\n  align-items: flex-start;\n}\n.col {\n  position: relative;\n  min-height: 1px;\n  box-sizing: border-box;\n  padding-right: 1rem;\n  padding-left: 1rem;\n  width: auto;\n  max-width: none;\n}\n.col--align-bottom {\n  align-self: flex-end;\n}\n.col--align-middle {\n  align-self: center;\n}\n.col--align-stretch {\n  align-self: stretch;\n}\n.col--align-top {\n  align-self: flex-start;\n}\n.col.col--order-1 {\n  order: 1;\n}\n.col.col--order-2 {\n  order: 2;\n}\n.col.col--order-3 {\n  order: 3;\n}\n.col.col--order-4 {\n  order: 4;\n}\n.col.col--order-5 {\n  order: 5;\n}\n.col.col--order-6 {\n  order: 6;\n}\n.col.col--order-7 {\n  order: 7;\n}\n.col.col--order-8 {\n  order: 8;\n}\n.col.col--order-9 {\n  order: 9;\n}\n.col.col--order-10 {\n  order: 10;\n}\n.col.col--order-11 {\n  order: 11;\n}\n.col.col--order-12 {\n  order: 12;\n}\n.col.col--sm-1 {\n  width: 100%;\n}\n.col.col--sm-2 {\n  width: 100%;\n}\n.col.col--sm-3 {\n  width: 100%;\n}\n.col.col--sm-4 {\n  width: 100%;\n}\n.col.col--sm-5 {\n  width: 100%;\n}\n.col.col--sm-6 {\n  width: 100%;\n}\n.col.col--sm-7 {\n  width: 100%;\n}\n.col.col--sm-8 {\n  width: 100%;\n}\n.col.col--sm-9 {\n  width: 100%;\n}\n.col.col--sm-10 {\n  width: 100%;\n}\n.col.col--sm-11 {\n  width: 100%;\n}\n.col.col--sm-12 {\n  width: 100%;\n}\n.col.col--sm-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.col.col--sm-order-1 {\n  order: 1;\n}\n.col.col--sm-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.col.col--sm-order-2 {\n  order: 2;\n}\n.col.col--sm-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.col.col--sm-order-3 {\n  order: 3;\n}\n.col.col--sm-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.col.col--sm-order-4 {\n  order: 4;\n}\n.col.col--sm-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.col.col--sm-order-5 {\n  order: 5;\n}\n.col.col--sm-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.col.col--sm-order-6 {\n  order: 6;\n}\n.col.col--sm-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.col.col--sm-order-7 {\n  order: 7;\n}\n.col.col--sm-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.col.col--sm-order-8 {\n  order: 8;\n}\n.col.col--sm-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.col.col--sm-order-9 {\n  order: 9;\n}\n.col.col--sm-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.col.col--sm-order-10 {\n  order: 10;\n}\n.col.col--sm-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.col.col--sm-order-11 {\n  order: 11;\n}\n.col.col--sm-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.col.col--sm-order-12 {\n  order: 12;\n}\n.col.col--md-1 {\n  width: 100%;\n}\n.col.col--md-2 {\n  width: 100%;\n}\n.col.col--md-3 {\n  width: 100%;\n}\n.col.col--md-4 {\n  width: 100%;\n}\n.col.col--md-5 {\n  width: 100%;\n}\n.col.col--md-6 {\n  width: 100%;\n}\n.col.col--md-7 {\n  width: 100%;\n}\n.col.col--md-8 {\n  width: 100%;\n}\n.col.col--md-9 {\n  width: 100%;\n}\n.col.col--md-10 {\n  width: 100%;\n}\n.col.col--md-11 {\n  width: 100%;\n}\n.col.col--md-12 {\n  width: 100%;\n}\n@media (min-width: 640px) {\n.col.col--md-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--md-order-1 {\n    order: 1;\n}\n.col.col--md-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--md-order-2 {\n    order: 2;\n}\n.col.col--md-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--md-order-3 {\n    order: 3;\n}\n.col.col--md-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--md-order-4 {\n    order: 4;\n}\n.col.col--md-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--md-order-5 {\n    order: 5;\n}\n.col.col--md-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--md-order-6 {\n    order: 6;\n}\n.col.col--md-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--md-order-7 {\n    order: 7;\n}\n.col.col--md-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--md-order-8 {\n    order: 8;\n}\n.col.col--md-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--md-order-9 {\n    order: 9;\n}\n.col.col--md-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--md-order-10 {\n    order: 10;\n}\n.col.col--md-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--md-order-11 {\n    order: 11;\n}\n.col.col--md-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--md-order-12 {\n    order: 12;\n}\n}\n.col.col--lg-1 {\n  width: 100%;\n}\n.col.col--lg-2 {\n  width: 100%;\n}\n.col.col--lg-3 {\n  width: 100%;\n}\n.col.col--lg-4 {\n  width: 100%;\n}\n.col.col--lg-5 {\n  width: 100%;\n}\n.col.col--lg-6 {\n  width: 100%;\n}\n.col.col--lg-7 {\n  width: 100%;\n}\n.col.col--lg-8 {\n  width: 100%;\n}\n.col.col--lg-9 {\n  width: 100%;\n}\n.col.col--lg-10 {\n  width: 100%;\n}\n.col.col--lg-11 {\n  width: 100%;\n}\n.col.col--lg-12 {\n  width: 100%;\n}\n@media (min-width: 1024px) {\n.col.col--lg-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--lg-order-1 {\n    order: 1;\n}\n.col.col--lg-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--lg-order-2 {\n    order: 2;\n}\n.col.col--lg-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--lg-order-3 {\n    order: 3;\n}\n.col.col--lg-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--lg-order-4 {\n    order: 4;\n}\n.col.col--lg-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--lg-order-5 {\n    order: 5;\n}\n.col.col--lg-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--lg-order-6 {\n    order: 6;\n}\n.col.col--lg-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--lg-order-7 {\n    order: 7;\n}\n.col.col--lg-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--lg-order-8 {\n    order: 8;\n}\n.col.col--lg-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--lg-order-9 {\n    order: 9;\n}\n.col.col--lg-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--lg-order-10 {\n    order: 10;\n}\n.col.col--lg-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--lg-order-11 {\n    order: 11;\n}\n.col.col--lg-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--lg-order-12 {\n    order: 12;\n}\n}\n.col.col--xl-1 {\n  width: 100%;\n}\n.col.col--xl-2 {\n  width: 100%;\n}\n.col.col--xl-3 {\n  width: 100%;\n}\n.col.col--xl-4 {\n  width: 100%;\n}\n.col.col--xl-5 {\n  width: 100%;\n}\n.col.col--xl-6 {\n  width: 100%;\n}\n.col.col--xl-7 {\n  width: 100%;\n}\n.col.col--xl-8 {\n  width: 100%;\n}\n.col.col--xl-9 {\n  width: 100%;\n}\n.col.col--xl-10 {\n  width: 100%;\n}\n.col.col--xl-11 {\n  width: 100%;\n}\n.col.col--xl-12 {\n  width: 100%;\n}\n@media (min-width: 1280px) {\n.col.col--xl-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n}\n.col.col--xl-order-1 {\n    order: 1;\n}\n.col.col--xl-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n}\n.col.col--xl-order-2 {\n    order: 2;\n}\n.col.col--xl-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n.col.col--xl-order-3 {\n    order: 3;\n}\n.col.col--xl-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n}\n.col.col--xl-order-4 {\n    order: 4;\n}\n.col.col--xl-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n}\n.col.col--xl-order-5 {\n    order: 5;\n}\n.col.col--xl-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n.col.col--xl-order-6 {\n    order: 6;\n}\n.col.col--xl-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n}\n.col.col--xl-order-7 {\n    order: 7;\n}\n.col.col--xl-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n}\n.col.col--xl-order-8 {\n    order: 8;\n}\n.col.col--xl-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n.col.col--xl-order-9 {\n    order: 9;\n}\n.col.col--xl-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n}\n.col.col--xl-order-10 {\n    order: 10;\n}\n.col.col--xl-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n}\n.col.col--xl-order-11 {\n    order: 11;\n}\n.col.col--xl-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n.col.col--xl-order-12 {\n    order: 12;\n}\n}\n.i-width-sm-1 {\n  width: 8.3333333333%;\n}\n.i-width-sm-2 {\n  width: 16.6666666667%;\n}\n.i-width-sm-3 {\n  width: 25%;\n}\n.i-width-sm-4 {\n  width: 33.3333333333%;\n}\n.i-width-sm-5 {\n  width: 41.6666666667%;\n}\n.i-width-sm-6 {\n  width: 50%;\n}\n.i-width-sm-7 {\n  width: 58.3333333333%;\n}\n.i-width-sm-8 {\n  width: 66.6666666667%;\n}\n.i-width-sm-9 {\n  width: 75%;\n}\n.i-width-sm-10 {\n  width: 83.3333333333%;\n}\n.i-width-sm-11 {\n  width: 91.6666666667%;\n}\n.i-width-sm-12 {\n  width: 100%;\n}\n@media (min-width: 640px) {\n.i-width-md-1 {\n    width: 8.3333333333%;\n}\n.i-width-md-2 {\n    width: 16.6666666667%;\n}\n.i-width-md-3 {\n    width: 25%;\n}\n.i-width-md-4 {\n    width: 33.3333333333%;\n}\n.i-width-md-5 {\n    width: 41.6666666667%;\n}\n.i-width-md-6 {\n    width: 50%;\n}\n.i-width-md-7 {\n    width: 58.3333333333%;\n}\n.i-width-md-8 {\n    width: 66.6666666667%;\n}\n.i-width-md-9 {\n    width: 75%;\n}\n.i-width-md-10 {\n    width: 83.3333333333%;\n}\n.i-width-md-11 {\n    width: 91.6666666667%;\n}\n.i-width-md-12 {\n    width: 100%;\n}\n}\n@media (min-width: 1024px) {\n.i-width-lg-1 {\n    width: 8.3333333333%;\n}\n.i-width-lg-2 {\n    width: 16.6666666667%;\n}\n.i-width-lg-3 {\n    width: 25%;\n}\n.i-width-lg-4 {\n    width: 33.3333333333%;\n}\n.i-width-lg-5 {\n    width: 41.6666666667%;\n}\n.i-width-lg-6 {\n    width: 50%;\n}\n.i-width-lg-7 {\n    width: 58.3333333333%;\n}\n.i-width-lg-8 {\n    width: 66.6666666667%;\n}\n.i-width-lg-9 {\n    width: 75%;\n}\n.i-width-lg-10 {\n    width: 83.3333333333%;\n}\n.i-width-lg-11 {\n    width: 91.6666666667%;\n}\n.i-width-lg-12 {\n    width: 100%;\n}\n}\n@media (min-width: 1280px) {\n.i-width-xl-1 {\n    width: 8.3333333333%;\n}\n.i-width-xl-2 {\n    width: 16.6666666667%;\n}\n.i-width-xl-3 {\n    width: 25%;\n}\n.i-width-xl-4 {\n    width: 33.3333333333%;\n}\n.i-width-xl-5 {\n    width: 41.6666666667%;\n}\n.i-width-xl-6 {\n    width: 50%;\n}\n.i-width-xl-7 {\n    width: 58.3333333333%;\n}\n.i-width-xl-8 {\n    width: 66.6666666667%;\n}\n.i-width-xl-9 {\n    width: 75%;\n}\n.i-width-xl-10 {\n    width: 83.3333333333%;\n}\n.i-width-xl-11 {\n    width: 91.6666666667%;\n}\n.i-width-xl-12 {\n    width: 100%;\n}\n}\n.sticky {\n  /* Double position is specified due to E11-compability.\n  `fixed` is used by IE11.\n  `sticky` is used by other web browsers. */\n  position: fixed;\n  position: sticky;\n  z-index: 9999;\n}\n.sticky--top {\n  right: 0;\n  top: 0;\n  left: 0;\n}\n.density-default {\n  --f-density-factor: 1;\n}\n.density-dense {\n  --f-density-factor: 0.8;\n}\n.density-densest {\n  --f-density-factor: 0.6;\n}\n.formatter--date, .formatter--date-full, .formatter--date-long, .formatter--date-range, .formatter--text {\n  white-space: nowrap;\n}\n.formatter--bankgiro, .formatter--number, .formatter--orgnr, .formatter--plusgiro, .formatter--pnr, .formatter--postnummer {\n  white-space: nowrap;\n  font-feature-settings: "tnum";\n}\n.anchor, .file-item__file-open {\n  color: var(--fkds-color-action-text-primary-default);\n  text-decoration: underline;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 0.25em;\n  text-decoration-color: var(--fkds-color-action-text-primary-default);\n  font-weight: var(--f-font-weight-medium);\n}\n.anchor:hover, .file-item__file-open:hover {\n  text-decoration-thickness: 3px;\n  color: var(--fkds-color-action-text-primary-default);\n  text-decoration-color: var(--fkds-color-action-text-primary-default);\n}\n.anchor.anchor--block, .file-item__file-open {\n  display: inline-flex;\n}\n.anchor.anchor--block > svg, .file-item__file-open > svg, .anchor.anchor--block > .icon-stack, .file-item__file-open > .icon-stack {\n  flex-shrink: 0;\n  margin: calc((var(--f-line-height-large) * 1rem - var(--f-icon-size-small)) / 2) 0.25rem 0;\n}\n.anchor.anchor--discrete, .anchor--discrete.file-item__file-open {\n  color: var(--fkds-color-action-text-secondary-default);\n  text-decoration-color: var(--fkds-color-border-primary);\n}\n.anchor.anchor--discrete:hover, .anchor--discrete.file-item__file-open:hover {\n  color: var(--fkds-color-action-text-secondary-default);\n  text-decoration-color: var(--fkds-color-border-primary);\n}\n.badge {\n  border-radius: var(--f-border-radius-medium);\n  border-style: solid;\n  border-width: var(--f-border-width-small);\n  box-sizing: border-box;\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  line-height: calc(var(--f-line-height-large) * var(--f-density-factor));\n  font-weight: var(--f-font-weight-normal);\n  padding: 0 0.5rem;\n}\n.badge--default {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-neutral-strong);\n  border-color: var(--fkds-color-feedback-background-neutral-strong);\n}\n.badge--default-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-neutral);\n  border-color: var(--fkds-color-feedback-border-neutral);\n}\n.badge--warning {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-warning-strong);\n  border-color: var(--fkds-color-feedback-background-warning-strong);\n}\n.badge--warning-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-color: var(--fkds-color-feedback-border-warning);\n}\n.badge--error {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-negative-strong);\n  border-color: var(--fkds-color-feedback-background-negative-strong);\n}\n.badge--error-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.badge--success {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-positive-strong);\n  border-color: var(--fkds-color-feedback-background-positive-strong);\n}\n.badge--success-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-color: var(--fkds-color-feedback-border-positive);\n}\n.badge--info {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-feedback-background-info-strong);\n  border-color: var(--fkds-color-feedback-background-info-strong);\n}\n.badge--info-inverted {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-color: var(--fkds-color-feedback-border-info);\n}\n.button-group {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.button-group .button-group__item {\n  margin: 0;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n@media (min-width: 640px) {\n.button-group .button-group__item {\n    margin-bottom: calc(1rem * var(--f-density-factor));\n    margin-right: 1.25rem;\n}\n.button-group .button-group__item:last-child {\n    margin-right: 0;\n}\n}\n.button-group > .button.button--discrete, .button-group > .button--discrete.calendar-navbar__year-selector-button, .button-group > .button.button--text, .button-group > .button--text.calendar-navbar__year-selector-button {\n  margin-bottom: calc(1rem * var(--f-density-factor));\n  margin-right: 1.5rem;\n}\n.button-group > .button.button--discrete:last-child, .button-group > .button--discrete.calendar-navbar__year-selector-button:last-child, .button-group > .button.button--text:last-child, .button-group > .button--text.calendar-navbar__year-selector-button:last-child {\n  margin-right: 0;\n}\n.button-group > .button.button--small, .button-group > .button--small.calendar-navbar__year-selector-button {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n  margin-right: 0.75rem;\n}\n.button-group > .button.button--small:last-child, .button-group > .button--small.calendar-navbar__year-selector-button:last-child {\n  margin-right: 0;\n}\n@media (max-width: 639.98px) {\n.button-group > .button.button--small.button--full-width, .button-group > .button--small.button--full-width.calendar-navbar__year-selector-button {\n    margin-right: 0;\n}\n}\n.button-group > .button.button--medium, .button-group > .button--medium.calendar-navbar__year-selector-button {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n  margin-right: 1rem;\n}\n.button-group > .button.button--medium:last-child, .button-group > .button--medium.calendar-navbar__year-selector-button:last-child {\n  margin-right: 0;\n}\n@media (max-width: 639.98px) {\n.button-group > .button.button--medium.button--full-width, .button-group > .button--medium.button--full-width.calendar-navbar__year-selector-button {\n    margin-right: 0;\n}\n}\n@media (min-width: 640px) {\n.button-group > .button.button--large, .button-group > .button--large.calendar-navbar__year-selector-button {\n    margin-bottom: calc(1rem * var(--f-density-factor));\n    margin-right: 1.25rem;\n}\n.button-group > .button.button--large:last-child, .button-group > .button--large.calendar-navbar__year-selector-button:last-child {\n    margin-right: 0;\n}\n}\n.button-group--end {\n  justify-content: flex-end;\n}\n.button-list {\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  padding-left: 0;\n}\n.button-list > li button {\n  margin: 0;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.button-list > li button.button.button--small, .button-list > li button.button--small.calendar-navbar__year-selector-button, .button-list > li button.button.button--medium, .button-list > li button.button--medium.calendar-navbar__year-selector-button {\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n}\n.button-list > li button.button.button--large, .button-list > li button.button--large.calendar-navbar__year-selector-button {\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.button, .calendar-navbar__year-selector-button {\n  border-color: transparent;\n  border-radius: var(--f-border-radius-medium);\n  border-style: solid;\n  border-width: var(--f-border-width-medium);\n  cursor: pointer;\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  justify-content: center;\n  align-items: center;\n  letter-spacing: var(--f-button-letter-spacing);\n  line-height: var(--f-button-default-line-height);\n  margin-bottom: calc(1.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  min-width: var(--f-button-min-width);\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-default-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-default-padding-right);\n  padding-bottom: calc(var(--f-button-default-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-default-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n  position: relative;\n  text-align: center;\n  transition: background-color var(--f-animation-duration-medium) ease-out;\n}\n@media (max-width: 639.98px) {\n.button, .calendar-navbar__year-selector-button {\n    max-width: var(--f-width-full);\n    width: var(--f-width-full);\n}\n}\n.button--text {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n}\n.button--text--black {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button, .calendar-navbar__year-selector-button {\n  display: inline-flex;\n  position: relative;\n  background-color: var(--fkds-color-action-background-secondary-default);\n  border-color: var(--fkds-color-action-border-primary-default);\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-standard-padding-top) * var(--f-density-factor)) var(--f-button-standard-padding-right) calc(var(--f-button-standard-padding-bottom) * var(--f-density-factor)) var(--f-button-standard-padding-left);\n}\n.button:hover, .calendar-navbar__year-selector-button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button:active, .calendar-navbar__year-selector-button:active, .button:focus, .calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n}\n.button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n}\n.button.button--primary, .button--primary.calendar-navbar__year-selector-button {\n  background-color: var(--fkds-color-action-background-primary-default);\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-inverted-default);\n  padding: calc(var(--f-button-primary-padding-top) * var(--f-density-factor)) var(--f-button-primary-padding-right) calc(var(--f-button-primary-padding-bottom) * var(--f-density-factor)) var(--f-button-primary-padding-left);\n}\n.button.button--primary:hover, .button--primary.calendar-navbar__year-selector-button:hover {\n  background-color: var(--fkds-color-action-background-primary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-default);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button.button--primary:active, .button--primary.calendar-navbar__year-selector-button:active, .button.button--primary:focus, .button--primary.calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-primary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.button.button--primary.disabled, .button--primary.disabled.calendar-navbar__year-selector-button, .button.button--primary.disabled:hover, .button.button--primary:disabled, .button--primary.calendar-navbar__year-selector-button:disabled, .button.button--primary:disabled:hover, .button.button--primary.button--disabled, .button--primary.button--disabled.calendar-navbar__year-selector-button, .button.button--primary.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n}\n.button.button--secondary, .button--secondary.calendar-navbar__year-selector-button {\n  background-color: var(--fkds-color-action-background-secondary-default);\n  border-color: var(--fkds-color-action-border-primary-default);\n  border-width: var(--f-border-width-medium);\n  box-shadow: var(--f-button-shadow);\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-secondary-padding-top) * var(--f-density-factor)) var(--f-button-secondary-padding-right) calc(var(--f-button-secondary-padding-bottom) * var(--f-density-factor)) var(--f-button-secondary-padding-left);\n}\n.button.button--secondary:hover, .button--secondary.calendar-navbar__year-selector-button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button.button--secondary:active, .button--secondary.calendar-navbar__year-selector-button:active, .button.button--secondary:focus, .button--secondary.calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: var(--fkds-color-action-border-primary-default);\n  color: var(--fkds-color-action-text-primary-default);\n}\n.button.button--secondary.disabled, .button--secondary.disabled.calendar-navbar__year-selector-button, .button.button--secondary.disabled:hover, .button.button--secondary:disabled, .button--secondary.calendar-navbar__year-selector-button:disabled, .button.button--secondary:disabled:hover, .button.button--secondary.button--disabled, .button--secondary.button--disabled.calendar-navbar__year-selector-button, .button.button--secondary.button--disabled:hover {\n  background-color: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n}\n.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button {\n  width: inherit;\n  min-width: 0;\n  font-weight: var(--f-font-weight-bold);\n  outline-offset: 0.25rem;\n  line-height: calc(1.25 * var(--f-font-size-standard));\n  background-color: transparent;\n  border-color: transparent;\n  border-width: 0;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);\n}\n.button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover {\n  background-color: none;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-hover);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button.button--discrete:active, .button--discrete.calendar-navbar__year-selector-button:active, .button.button--text:active, .button--text.calendar-navbar__year-selector-button:active, .button.button--discrete:focus, .button--discrete.calendar-navbar__year-selector-button:focus, .button.button--text:focus, .button--text.calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: none;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-hover);\n}\n.button.button--discrete.disabled, .button--discrete.disabled.calendar-navbar__year-selector-button, .button.disabled.button--text, .disabled.button--text.calendar-navbar__year-selector-button, .button.button--discrete.disabled:hover, .button.button--discrete:disabled, .button--discrete.calendar-navbar__year-selector-button:disabled, .button.button--text:disabled, .button--text.calendar-navbar__year-selector-button:disabled, .button.button--discrete:disabled:hover, .button.button--discrete.button--disabled, .button--discrete.button--disabled.calendar-navbar__year-selector-button, .button.button--disabled.button--text, .button--disabled.button--text.calendar-navbar__year-selector-button, .button.button--discrete.button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n}\n@media (max-width: 639.98px) {\n.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button {\n    width: auto;\n}\n}\n.button.button--discrete--black, .button--discrete--black.calendar-navbar__year-selector-button, .button.button--text--black, .button--text--black.calendar-navbar__year-selector-button {\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-discrete-black-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-discrete-black-padding-right);\n  padding-bottom: calc(var(--f-button-discrete-black-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-discrete-black-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button.button--discrete:hover, .button--discrete.calendar-navbar__year-selector-button:hover, .button.button--text:hover, .button--text.calendar-navbar__year-selector-button:hover {\n  box-shadow: none;\n  mix-blend-mode: multiply;\n}\n.button.button--discrete, .button--discrete.calendar-navbar__year-selector-button, .button.button--text, .button--text.calendar-navbar__year-selector-button, .button.button--discrete:focus, .button.button--discrete:active, .button.button--discrete:hover {\n  border-radius: var(--f-button-discrete-radius-hover);\n}\n.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button {\n  width: inherit;\n  min-width: 0;\n  font-weight: var(--f-font-weight-bold);\n  outline-offset: 0.25rem;\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-discrete-padding-right);\n  padding-bottom: calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-discrete-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n  line-height: calc(1.25 * var(--f-font-size-standard));\n  background-color: transparent;\n  border-color: transparent;\n  border-width: 0;\n  box-shadow: none;\n  color: var(--fkds-color-action-text-inverted-default);\n  padding: calc(var(--f-button-discrete-padding-top) * var(--f-density-factor)) var(--f-button-discrete-padding-right) calc(var(--f-button-discrete-padding-bottom) * var(--f-density-factor)) var(--f-button-discrete-padding-left);\n}\n.button.button--discrete-inverted:hover, .button--discrete-inverted.calendar-navbar__year-selector-button:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-hover);\n  box-shadow: var(--f-button-shadow-hover);\n}\n.button.button--discrete-inverted:active, .button--discrete-inverted.calendar-navbar__year-selector-button:active, .button.button--discrete-inverted:focus, .button--discrete-inverted.calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-action-text-inverted-hover);\n}\n.button.button--discrete-inverted.disabled, .button--discrete-inverted.disabled.calendar-navbar__year-selector-button, .button.button--discrete-inverted.disabled:hover, .button.button--discrete-inverted:disabled, .button--discrete-inverted.calendar-navbar__year-selector-button:disabled, .button.button--discrete-inverted:disabled:hover, .button.button--discrete-inverted.button--disabled, .button--discrete-inverted.button--disabled.calendar-navbar__year-selector-button, .button.button--discrete-inverted.button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n}\n@media (max-width: 639.98px) {\n.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button {\n    width: auto;\n}\n}\n.button.button--discrete-inverted, .button--discrete-inverted.calendar-navbar__year-selector-button, .button.button--discrete-inverted:focus, .button.button--discrete-inverted:active, .button.button--discrete-inverted:hover {\n  border-radius: var(--f-button-discrete-radius-hover);\n}\n.button.button--tertiary, .calendar-navbar__year-selector-button {\n  width: inherit;\n  min-width: 0;\n  font-weight: var(--f-font-weight-medium);\n  outline-offset: 0.25rem;\n  background-color: transparent;\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor)) var(--f-button-tertiary-padding-right) calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor)) var(--f-button-tertiary-padding-left);\n}\n.button.button--tertiary:hover, .calendar-navbar__year-selector-button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n  box-shadow: none;\n}\n.button.button--tertiary:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary:focus, .calendar-navbar__year-selector-button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n}\n.button.button--tertiary.disabled, .disabled.calendar-navbar__year-selector-button, .button.button--tertiary.disabled:hover, .button.button--tertiary:disabled, .calendar-navbar__year-selector-button:disabled, .button.button--tertiary:disabled:hover, .button.button--tertiary.button--disabled, .button--disabled.calendar-navbar__year-selector-button, .button.button--tertiary.button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n}\n@media (max-width: 639.98px) {\n.button.button--tertiary, .calendar-navbar__year-selector-button {\n    width: auto;\n}\n}\n.button.button--tertiary--black, .calendar-navbar__year-selector-button {\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button.button--tertiary--black:hover, .calendar-navbar__year-selector-button:hover, .button.button--tertiary--black:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary--black:focus, .calendar-navbar__year-selector-button:focus {\n  color: var(--fkds-color-action-text-secondary-default);\n}\n.button.button--tertiary:disabled, .calendar-navbar__year-selector-button:disabled {\n  border: none;\n}\n.button.button--tertiary--inverted, .button--tertiary--inverted.calendar-navbar__year-selector-button {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.button.button--tertiary--inverted:hover, .button--tertiary--inverted.calendar-navbar__year-selector-button:hover, .button.button--tertiary--inverted:active, .button--tertiary--inverted.calendar-navbar__year-selector-button:active, .button.button--tertiary--inverted:focus, .button--tertiary--inverted.calendar-navbar__year-selector-button:focus {\n  color: var(--fkds-color-action-text-inverted-focus);\n  background-color: transparent;\n}\n.button.button--tertiary--inverted:disabled, .button--tertiary--inverted.calendar-navbar__year-selector-button:disabled {\n  color: var(--fkds-color-text-disabled);\n  border: none;\n  border-width: 0;\n  background-color: transparent;\n}\n.button.button--tertiary--underline, .button--tertiary--underline.calendar-navbar__year-selector-button {\n  text-decoration: underline;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 4px;\n}\n.button.button--tertiary--underline:disabled, .button--tertiary--underline.calendar-navbar__year-selector-button:disabled {\n  text-decoration: none;\n}\n.button.button--tertiary.button--small, .button--small.calendar-navbar__year-selector-button {\n  min-width: 24px;\n  padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;\n  text-underline-offset: 3.5px;\n}\n.button.button--tertiary.button--small.button--align-text, .button--small.button--align-text.calendar-navbar__year-selector-button {\n  margin-left: -0.25rem;\n}\n.button.button--tertiary.button--medium, .button--medium.calendar-navbar__year-selector-button {\n  min-width: 8rem;\n  /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */\n  padding-top: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor));\n  padding-right: var(--f-button-tertiary-padding-right);\n  padding-bottom: calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor));\n  padding-left: var(--f-button-tertiary-padding-left);\n  /* stylelint-enable declaration-block-no-redundant-longhand-properties */\n}\n.button.button--tertiary.button--medium.button--align-text, .button--medium.button--align-text.calendar-navbar__year-selector-button {\n  margin-left: -0.5rem;\n}\n.button.button--tertiary.button--large, .button--large.calendar-navbar__year-selector-button {\n  min-width: var(--f-button-min-width);\n  padding: calc(1.125rem * var(--f-density-factor)) 0.75rem;\n}\n.button.button--tertiary.button--large.button--align-text, .button--large.button--align-text.calendar-navbar__year-selector-button {\n  margin-left: -0.75rem;\n}\n.button.button--tertiary.button--align-text, .button--align-text.calendar-navbar__year-selector-button {\n  margin-left: -0.5rem;\n  min-width: 0;\n}\n@media (max-width: 639.98px) {\n.button.button--tertiary.button--full-width, .button--full-width.calendar-navbar__year-selector-button {\n    min-width: var(--f-width-full);\n}\n}\n.button.button--full-width, .button--full-width.calendar-navbar__year-selector-button {\n  min-width: var(--f-width-full);\n}\n.button.button--margin-bottom-0, .calendar-navbar__year-selector-button {\n  margin-bottom: 0;\n}\n.button.button--small, .button--small.calendar-navbar__year-selector-button {\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 4rem;\n  padding: calc(0.25rem * var(--f-density-factor)) 0.75rem;\n}\n@media (max-width: 639.98px) {\n.button.button--small:not(.button--full-width), .button--small.calendar-navbar__year-selector-button:not(.button--full-width) {\n    width: auto;\n}\n}\n.button.button--small > .button__icon, .button--small.calendar-navbar__year-selector-button > .button__icon {\n  height: 14px;\n  width: 14px;\n}\n.button.button--medium, .button--medium.calendar-navbar__year-selector-button {\n  line-height: 1.5rem;\n  min-width: 8rem;\n  padding: calc(0.625rem * var(--f-density-factor)) 1.25rem;\n}\n@media (max-width: 639.98px) {\n.button.button--medium:not(.button--full-width), .button--medium.calendar-navbar__year-selector-button:not(.button--full-width) {\n    width: auto;\n}\n}\n.button.button--large, .button--large.calendar-navbar__year-selector-button {\n  line-height: 1.5rem;\n  min-width: 9.5rem;\n  padding: calc(1rem * var(--f-density-factor)) 1.5rem;\n}\n@media (max-width: 639.98px) {\n.button.button--large, .button--large.calendar-navbar__year-selector-button {\n    max-width: var(--f-width-full);\n    width: var(--f-width-full);\n}\n}\n.button .button__icon, .calendar-navbar__year-selector-button .button__icon {\n  margin-right: 0.25rem;\n}\n.button .button__icon:not(:first-child), .calendar-navbar__year-selector-button .button__icon:not(:first-child) {\n  margin-left: 0.25rem;\n  margin-right: 0;\n}\n.button > .button__icon--end, .calendar-navbar__year-selector-button > .button__icon--end {\n  position: absolute;\n  right: 1.25rem;\n}\n.button.disabled, .disabled.calendar-navbar__year-selector-button, .button.disabled:hover, .button:disabled, .calendar-navbar__year-selector-button:disabled, .button:disabled:hover, .button.button--disabled, .button--disabled.calendar-navbar__year-selector-button {\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  cursor: default;\n}\n@keyframes button-spinner-rotation {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes button-spinner-delay {\n0%, 99% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n.button .button__spinner, .calendar-navbar__year-selector-button .button__spinner {\n  display: inline-block;\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n  animation: button-spinner-rotation 1250ms linear infinite, button-spinner-delay 300ms linear;\n}\n.button.button.button--small .button__spinner, .button--small.calendar-navbar__year-selector-button .button__spinner {\n  width: 14px;\n  height: 14px;\n}\n.button.button.button--small .spinner--before, .button--small.calendar-navbar__year-selector-button .spinner--before,\n.button.button.button--small .spinner--after,\n.button--small.calendar-navbar__year-selector-button .spinner--after {\n  width: calc(7px + 0.125rem);\n  height: 14px;\n}\n.button .spinner--before, .calendar-navbar__year-selector-button .spinner--before,\n.button .spinner--after,\n.calendar-navbar__year-selector-button .spinner--after {\n  display: inline-flex;\n  width: calc(var(--f-icon-size-small) * 0.5 + 0.125rem);\n  height: var(--f-icon-size-small);\n  align-self: center;\n  transition: width 300ms ease-out;\n}\n.button.button__inflight.button.button--small .spinner--after, .button__inflight.button--small.calendar-navbar__year-selector-button .spinner--after {\n  width: 0;\n}\n.button.button__inflight.button.button--small .spinner--before, .button__inflight.button--small.calendar-navbar__year-selector-button .spinner--before {\n  width: calc(14px + 0.25rem);\n}\n.button.button__inflight .spinner--after, .button__inflight.calendar-navbar__year-selector-button .spinner--after {\n  width: 0;\n}\n.button.button__inflight .spinner--before, .button__inflight.calendar-navbar__year-selector-button .spinner--before {\n  width: calc(var(--f-icon-size-small) + 0.25rem);\n}\n\n/* stylelint-disable no-invalid-position-declaration -- the selector is set when the mixin is included */\n.calendar-day {\n  align-items: center;\n  display: inline-flex;\n  font-weight: var(--f-font-weight-medium);\n  justify-content: center;\n  height: 2.75rem;\n  width: 100%;\n  color: var(--fkds-color-text-primary);\n}\n.calendar-day--highlight {\n  position: relative;\n}\n.calendar-day--highlight::before {\n  border-radius: 50%;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n  width: 2rem;\n  height: 2rem;\n  content: "";\n  position: absolute;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n}\n.calendar-day--highlight.calendar-day--selected::before {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-inverted);\n}\n@media (forced-colors: active) {\n.calendar-day--highlight.calendar-day--selected::before {\n    border-color: highlightText;\n}\n}\n.calendar-day--highlight:active:not(.calendar-day--highlight--disabled)::before {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-inverted);\n}\n@media (forced-colors: active) {\n.calendar-day--highlight:active:not(.calendar-day--highlight--disabled)::before {\n    border-color: highlightText;\n}\n}\n.calendar-day--highlight.calendar-day--disabled {\n  position: relative;\n}\n.calendar-day--highlight.calendar-day--disabled::before {\n  border-radius: 50%;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n  width: 2rem;\n  height: 2rem;\n  content: "";\n  position: absolute;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-strong);\n}\n.calendar-day--highlight.calendar-day--disabled::after {\n  content: "";\n  z-index: 1;\n  position: absolute;\n  border-top: var(--f-border-width-medium) solid;\n  width: 60%;\n}\n.calendar-day--selected {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-select-background-primary-default);\n}\n@media (forced-colors: active) {\n.calendar-day--selected {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.calendar-day--disabled {\n  position: relative;\n}\n.calendar-day--disabled::before {\n  content: "";\n  position: absolute;\n  border-top: var(--f-border-width-medium) solid;\n  width: 60%;\n}\n.calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {\n  background-color: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.calendar-day:hover:not(.calendar-day--disabled, .calendar-day--selected), .calendar-day--hover:not(.calendar-day--disabled, .calendar-day--selected) {\n    border: 2px solid highlight;\n}\n}\n.calendar-day:active:not(.calendar-day--disabled), .calendar-day--active:not(.calendar-day--disabled) {\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-select-background-primary-default);\n}\n@media (forced-colors: active) {\n.calendar-day:active:not(.calendar-day--disabled), .calendar-day--active:not(.calendar-day--disabled) {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.card {\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  margin: calc(1rem * var(--f-density-factor)) 0;\n}\n.card--default {\n  background-color: var(--fkds-color-background-primary);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n}\n.card--error {\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-negative);\n}\n.card__content {\n  color: var(--fkds-color-text-primary);\n}\n.card__content > p:last-child,\n.card__content > div:last-child {\n  margin-bottom: 0;\n}\n.card__content > p:last-child > *:last-child,\n.card__content > div:last-child > *:last-child {\n  margin-bottom: 0;\n}\n.card__header-label {\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  display: block;\n}\n.card__footer {\n  padding-top: calc(1.25rem * var(--f-density-factor));\n}\n.card__footer > .button-group {\n  margin-bottom: 0;\n}\n.card__footer > .button-group .button-group__item {\n  margin-bottom: 0 !important;\n}\n.card__error-message {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.list__item {\n  display: flex;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background: var(--fkds-color-background-primary);\n}\n.radio-button-group--border .radio-button-group__content .radio-button:not(.disabled):hover, .checkbox-group--border .checkbox-group__content .checkbox:not(.disabled):hover, .list--hover .list__item:not(.disabled):focus-within,\n.list--hover .list__item:not(.disabled):hover, .list__item--hover:not(.disabled) {\n  background: var(--fkds-color-select-background-primary-hover);\n}\n.list--hover .list__item:focus-within.list__item--active,\n.list--hover .list__item:hover.list__item--active, .list__item--active {\n  background: var(--fkds-color-select-background-primary-active);\n}\n.list {\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  padding-left: 0;\n}\n.list__item:not(:last-child) {\n  border-bottom: none;\n}\n.list__item__itempane {\n  width: 100%;\n  padding: calc(var(--f-list-item-itempane-padding) * var(--f-density-factor)) var(--f-list-item-itempane-padding);\n  color: inherit;\n  --f-margin-component-bottom: 0.5rem;\n}\n.list__item__itempane .button {\n  margin-bottom: 0;\n}\n.list__item__itempane ul {\n  list-style-type: disc;\n}\n.list__item__itempane ul ul {\n  list-style-type: circle;\n}\n.list__item__selectpane {\n  padding: calc((var(--f-list-item-itempane-padding) - 0.2rem) * var(--f-density-factor)) 0 calc((var(--f-list-item-itempane-padding) - 0.2rem) * var(--f-density-factor)) calc(var(--f-list-item-itempane-padding) - 0.2rem);\n}\n.list__item__selectpane__input {\n  margin-top: 0.1rem;\n}\n.list__item__selectpane__input .checkbox__label,\n.list__item__selectpane__input .radio-button__label {\n  min-width: 1.75rem;\n  height: 1.75rem;\n  padding: 0;\n}\n.list__item__selectpane__input .checkbox__label::after,\n.list__item__selectpane__input .checkbox__label::before,\n.list__item__selectpane__input .radio-button__label::after,\n.list__item__selectpane__input .radio-button__label::before {\n  top: calc(0.2rem * var(--f-density-factor));\n  left: 0.2rem;\n}\n.list--hover .list__item:focus-within,\n.list--hover .list__item:hover {\n  cursor: pointer;\n}\n.radio-button-group--border .radio-button-group__content .radio-button, .checkbox-group--border .checkbox-group__content .checkbox {\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  margin-bottom: 0;\n  width: 100%;\n  cursor: pointer;\n  border-bottom: none;\n}\n.radio-button-group--border .radio-button-group__content .radio-button:last-child, .checkbox-group--border .checkbox-group__content .checkbox:last-child {\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n}\n.radio-button-group--border .radio-button-group__content .radio-button input:focus + label, .checkbox-group--border .checkbox-group__content .checkbox input:focus + label {\n  outline: 2px solid var(--fkds-color-border-primary);\n  outline-offset: -2px;\n}\n.radio-button-group--border .radio-button-group__content .radio-button input + label::after, .checkbox-group--border .checkbox-group__content .checkbox input + label::after {\n  top: 0.9rem;\n  left: 1rem;\n}\n.radio-button-group--border .radio-button-group__content .radio-button input:checked + label::after, .checkbox-group--border .checkbox-group__content .checkbox input:checked + label::after {\n  top: 0.9rem;\n  left: 1rem;\n}\n.radio-button-group--border .radio-button-group__content .radio-button label::before, .checkbox-group--border .checkbox-group__content .checkbox label::before {\n  top: 0.9rem;\n  left: 1rem;\n}\n.radio-button-group--border .radio-button-group__content .radio-button label, .checkbox-group--border .checkbox-group__content .checkbox label {\n  padding: 1rem;\n  padding-left: 3rem;\n  width: 100%;\n}\n.radio-button__details,\n.checkbox__details {\n  display: block;\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.radio-button__width,\n.checkbox__width {\n  width: 100%;\n}\n.checkbox-group__content {\n  display: flex;\n  flex-direction: column;\n}\n.checkbox__label::after {\n  mask-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImNoZWNrYm94LWljb24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgogICAgICAgICB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHJlY3QgeD0iMy40NzQiIHk9IjkuMTk0IiBmaWxsPSIjM0M1NTkyIiB3aWR0aD0iMCIgaGVpZ2h0PSIwIi8+CjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTguMzc2LDE1LjAwNWMtMC40MTYsMC0wLjgzMi0wLjE1OC0xLjE0OS0wLjQ3NWwtMy4yNS0zLjI0M2MtMC42MzUtMC42MzQtMC42MzUtMS42NiwwLTIuMjkzCiAgICAgICAgYzAuNjM1LTAuNjMzLDEuNjYzLTAuNjMzLDIuMjk4LDBsMi4xMDEsMi4wOTdsNS4zNTEtNS4zNGMwLjYzNS0wLjYzNCwxLjY2My0wLjYzNCwyLjI5OCwwYzAuNjM1LDAuNjMzLDAuNjM1LDEuNjU5LDAsMi4yOTMKICAgICAgICBsLTYuNSw2LjQ4N0M5LjIwNywxNC44NDcsOC43OTIsMTUuMDA1LDguMzc2LDE1LjAwNXoiLz4KPC9zdmc+Cg==");\n  mask-repeat: no-repeat;\n}\n.checkbox {\n  min-height: var(--f-height-medium);\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.checkbox:last-child {\n  margin-bottom: 0;\n}\n.checkbox__input {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n  min-height: calc(4 * var(--f-height-medium));\n}\n.checkbox__label {\n  min-width: 4.5rem;\n  display: inline-block;\n  cursor: pointer;\n  font-size: var(--f-font-size-standard);\n  line-height: var(--f-line-height-small);\n  padding-left: 1.75rem;\n  padding-top: 0.1rem;\n  padding-bottom: 0.1rem;\n  position: relative;\n  color: var(--fkds-color-text-primary);\n}\n.checkbox__label * {\n  pointer-events: none;\n}\n.checkbox__label::before, .checkbox__label::after {\n  content: "";\n  height: var(--f-icon-size-medium);\n  left: 0;\n  margin: 0.1rem 0;\n  position: absolute;\n  top: 0;\n  width: var(--f-icon-size-medium);\n}\n.checkbox__label::before {\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-small);\n  cursor: pointer;\n  display: block;\n  transition: background-color ease var(--f-animation-duration-medium), border-color ease var(--f-animation-duration-medium), opacity ease var(--f-animation-duration-medium);\n}\n.checkbox__label::after {\n  background-color: var(--fkds-color-text-inverted);\n  opacity: 0;\n  transition: opacity ease var(--f-animation-duration-medium);\n}\n@media (forced-colors: active) {\n.checkbox__label::after {\n    background-color: Canvas;\n}\n}\n.checkbox.disabled {\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.checkbox.disabled {\n    color: GrayText;\n}\n}\n.checkbox.disabled .checkbox__label {\n  cursor: default;\n}\n.checkbox.disabled .checkbox__label::before {\n  background-color: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n  cursor: inherit;\n}\n.checkbox.disabled input[type=checkbox]:checked + label::before {\n  background-color: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n}\n@media (forced-colors: active) {\n.checkbox.disabled input[type=checkbox]:checked + label::before {\n    border-color: GrayText;\n}\n}\n.checkbox.disabled input[type=checkbox]:checked + .checkbox__label::after {\n  background-color: var(--fkds-color-text-disabled);\n}\n.checkbox input[type=checkbox]:checked + label::before {\n  background-color: var(--fkds-color-select-background-primary-default);\n  border: var(--f-border-width-medium) solid transparent;\n}\n@media (forced-colors: active) {\n.checkbox input[type=checkbox]:checked + label::before {\n    background-color: HighLight;\n    border-color: HighLight;\n}\n}\n.checkbox input[type=checkbox]:checked + .checkbox__label::after {\n  opacity: 1;\n}\n.checkbox input[type=checkbox]:focus + .checkbox__label {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.radio-button-group--chip .radio-button-group__label {\n  margin-bottom: 0.25rem;\n}\n.radio-button-group--chip .radio-button-group__content {\n  margin: -0.25rem;\n}\n.radio-button-group--chip .radio-button {\n  margin: 0;\n  padding: 0.25rem;\n}\n.radio-button-group--chip .radio-button.disabled .radio-button__label {\n  background: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.radio-button-group--chip .radio-button.disabled .radio-button__label {\n    color: GrayText;\n}\n}\n.radio-button-group--chip .radio-button__label {\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n  font-weight: var(--f-font-weight-medium);\n  padding: 0.5rem 1rem;\n  border-radius: 20px;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  justify-content: center;\n  max-width: 400px;\n  user-select: none;\n}\n.radio-button-group--chip .radio-button__label::before, .radio-button-group--chip .radio-button__label::after {\n  display: none;\n}\n.radio-button-group--chip .radio-button__label svg {\n  margin-right: 0.5rem;\n}\n.radio-button-group--chip .radio-button__label:hover {\n  border-color: var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-select-background-secondary-hover);\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.radio-button-group--chip .radio-button__label:hover {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.radio-button-group--chip input[type=radio]:checked + .radio-button__label {\n  background: var(--fkds-color-select-background-secondary-default);\n  border-color: transparent;\n  color: var(--fkds-color-text-inverted);\n}\n@media (forced-colors: active) {\n.radio-button-group--chip input[type=radio]:checked + .radio-button__label {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.radio-button-group--chip input[type=radio]:focus + label.radio-button__label {\n  border-radius: 20px;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content {\n  flex-flow: row wrap;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content .radio-button {\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content {\n    flex-flow: row wrap;\n}\n.radio-button-group--chip.radio-button-group--horizontal .radio-button-group__content .radio-button {\n    margin-bottom: 0;\n}\n}\n.checkbox-group--chip .checkbox-group__label {\n  margin-bottom: 0.25rem;\n}\n.checkbox-group--chip .checkbox-group__content {\n  margin: -0.25rem;\n}\n.checkbox-group--chip .checkbox {\n  margin: 0;\n  padding: 0.25rem;\n}\n.checkbox-group--chip .checkbox.disabled .checkbox__label {\n  background: var(--fkds-color-background-disabled);\n  border-color: var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.checkbox-group--chip .checkbox.disabled .checkbox__label {\n    color: GrayText;\n}\n}\n.checkbox-group--chip .checkbox__label {\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n  font-weight: var(--f-font-weight-medium);\n  padding: 0.5rem 1rem;\n  border-radius: 20px;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  justify-content: center;\n  max-width: 400px;\n  user-select: none;\n}\n.checkbox-group--chip .checkbox__label::before, .checkbox-group--chip .checkbox__label::after {\n  display: none;\n}\n.checkbox-group--chip .checkbox__label svg {\n  margin-right: 0.5rem;\n}\n.checkbox-group--chip .checkbox__label:hover {\n  border-color: var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-select-background-secondary-hover);\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.checkbox-group--chip .checkbox__label:hover {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {\n  background: var(--fkds-color-select-background-secondary-default);\n  border-color: transparent;\n  color: var(--fkds-color-text-inverted);\n}\n@media (forced-colors: active) {\n.checkbox-group--chip input[type=checkbox]:checked + .checkbox__label {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.checkbox-group--chip input[type=checkbox]:focus + label.checkbox__label {\n  border-radius: 20px;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content {\n  flex-flow: row wrap;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content .checkbox {\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content {\n    flex-flow: row wrap;\n}\n.checkbox-group--chip.checkbox-group--horizontal .checkbox-group__content .checkbox {\n    margin-bottom: 0;\n}\n}\n.close-button {\n  align-items: center;\n  background: inherit;\n  border: none;\n  color: var(--fkds-color-action-text-secondary-default);\n  cursor: pointer;\n  display: flex;\n  font-weight: 700;\n  gap: 0.5rem;\n  margin: 0.375rem;\n  padding: 0.125rem 0.625rem;\n}\n.close-button .icon {\n  min-width: var(--f-icon-size-small);\n}\n.popup .popup__wrapper.combobox__listbox {\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium);\n  box-shadow: var(--f-box-modal-shadow);\n  margin-top: 4px;\n  margin-bottom: 4px;\n  padding: 2px;\n}\n.calendar__year-selector__listbox, .combobox__listbox__list {\n  margin: 0;\n  padding: 0;\n}\n.calendar__year-selector__year, .combobox__listbox__option {\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  list-style-type: none;\n  padding: 0.75rem;\n  white-space: nowrap;\n}\n.calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight), .combobox__listbox__option:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight) {\n  background-color: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n@media (forced-colors: active) {\n.calendar__year-selector__year:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight), .combobox__listbox__option:hover:not(.calendar__year-selector__year--highlight):not(.combobox__listbox__option--highlight) {\n    outline: 2px solid highlight;\n}\n}\n.calendar__year-selector__year--highlight, .combobox__listbox__option--highlight {\n  background-color: var(--fkds-color-select-background-primary-default);\n  color: var(--fkds-color-text-inverted);\n  font-weight: var(--f-font-weight-medium);\n}\n@media (forced-colors: active) {\n.calendar__year-selector__year--highlight, .combobox__listbox__option--highlight {\n    background-color: highlight;\n    color: highlightText;\n    forced-color-adjust: none;\n}\n}\n.combobox__button {\n  background: inherit;\n  border: none;\n  color: var(--fkds-color-action-text-primary-default);\n  margin: 0;\n  padding: 0;\n}\n.combobox__button:disabled {\n  color: var(--fkds-color-text-disabled);\n}\n.contextmenu {\n  min-width: 260px;\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.contextmenu__list {\n  margin: 0;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n  padding: 0.5rem;\n  display: block;\n  list-style-type: none;\n}\n.contextmenu__list__item {\n  cursor: pointer;\n  white-space: normal;\n  display: flex;\n  align-items: center;\n  padding: 0.75rem;\n}\n.contextmenu__list__item a,\n.contextmenu__list__item a:visited,\n.contextmenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n.contextmenu__list__item:hover {\n  color: var(--fkds-color-text-primary);\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n@media (forced-colors: active) {\n.contextmenu__list__item:hover {\n    outline: 2px solid highlight;\n}\n}\n@media (min-width: 640px) {\n.contextmenu__list__item {\n    white-space: nowrap;\n}\n}\n.contextmenu__separator {\n  margin: 0.75rem;\n  height: 1px;\n  border: none;\n  border-top: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n}\n.contextmenu__lefticon {\n  margin-right: 0.75rem;\n  min-width: var(--f-icon-size-small);\n}\n.crud-dataset {\n  margin: 0 0 var(--f-margin-component-bottom);\n}\n.crud-dataset__add-button {\n  margin-bottom: 0 !important;\n  margin-top: 0.5rem !important;\n  margin-left: 2px;\n}\n.crud-dataset .list,\n.crud-dataset .table {\n  margin-bottom: 0;\n}\n.datepicker-field__button {\n  background: transparent;\n  border: 0;\n  border-radius: var(--f-border-radius-medium);\n  flex: 0 0 auto;\n  padding: 0;\n  cursor: pointer;\n}\n.datepicker-field__button .icon {\n  color: var(--fkds-color-action-text-primary-default);\n  min-height: var(--f-icon-size-large);\n  min-width: var(--f-icon-size-large);\n  height: calc(var(--f-icon-size-x-large) * var(--f-density-factor));\n  width: calc(var(--f-icon-size-x-large) * var(--f-density-factor));\n  vertical-align: middle;\n}\n.datepicker-field__button:hover .icon {\n  color: var(--fkds-color-action-text-primary-hover);\n}\n.datepicker-field__button:disabled .icon {\n  color: var(--fkds-color-text-disabled);\n}\n.datepicker-field__popup {\n  margin-top: -16px;\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  background-color: var(--fkds-color-background-primary);\n}\n.datepicker-field__close {\n  display: flex;\n  justify-content: flex-end;\n}\n.datepicker-field__close > .datepicker-field__close__button {\n  margin: 0;\n  padding: 1rem;\n}\n.popup--overlay .datepicker-field__popup {\n  width: calc(100vw - 40px);\n  max-width: 28rem;\n}\n.popup--inline .datepicker-field__popup {\n  width: 100%;\n}\n.popup--inline .datepicker-field__table {\n  margin-top: 0;\n}\n.popup--inline .datepicker-field__table .calendar-month__cell {\n  padding: 0;\n  border-bottom: unset;\n}\n.popup--inline .datepicker-field__table .calendar-month__header-cell {\n  background-color: unset;\n  border: unset;\n}\n.dialogue-tree {\n  margin: 0 0 var(--f-margin-component-bottom);\n}\n.dialogue-tree__list {\n  margin-left: 0;\n  padding-left: 0;\n  list-style-type: none;\n  border-radius: 2px;\n  border: 1px solid var(--fkds-color-border-primary);\n}\n.dialogue-tree__list-item {\n  background-color: var(--fkds-color-background-primary);\n  border-bottom: 1px solid var(--fkds-color-border-primary);\n  padding: 0.25em;\n  height: 60px;\n}\n.dialogue-tree__list-item:last-child {\n  border-bottom: none;\n}\n.dialogue-tree__list-item:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.dialogue-tree__list-item button {\n  padding: 0 0.75em;\n  border: 0;\n  width: 100%;\n  height: 100%;\n  background-color: inherit;\n  color: var(--fkds-color-action-text-secondary-default);\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.dialogue-tree__list-item button span {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  overflow: hidden;\n  font-weight: var(--f-font-weight-medium);\n  font-size: var(--f-font-size-standard);\n  text-align: left;\n  cursor: pointer;\n}\n.dialogue-tree__list-item button .icon {\n  flex-shrink: 0;\n  margin-left: 1.25rem;\n}\n.entrypoint {\n  background-color: var(--fkds-color-action-background-primary-default);\n  color: var(--fkds-color-action-text-inverted-default);\n  border: var(--f-border-width-medium) solid transparent;\n  border-radius: var(--f-border-radius-medium);\n  box-shadow: var(--f-button-shadow);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  transition: background-color var(--f-animation-duration-medium) ease-out;\n  display: inline-flex;\n  justify-content: space-between;\n  align-items: center;\n  cursor: pointer;\n  margin-bottom: calc(1.5rem * var(--f-density-factor));\n  margin-top: calc(0.25rem * var(--f-density-factor));\n  text-align: left;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  line-height: var(--f-line-height-large);\n  width: 100%;\n}\n.entrypoint__icon {\n  margin-left: 2rem;\n  flex-shrink: 0;\n}\n.entrypoint:hover {\n  background-color: var(--fkds-color-action-background-primary-hover);\n}\n.error-list {\n  color: var(--fkds-color-feedback-text-negative);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n}\n.error-list--list-style-none {\n  list-style-type: none;\n  padding: 0;\n}\n.error-list--padding-left {\n  padding-left: 1rem;\n}\n.error-list__list {\n  margin: 0;\n  line-height: max(1.5, 2 * var(--f-density-factor));\n}\n.error-list__bullet::before {\n  color: var(--fkds-color-feedback-text-negative);\n  content: "•";\n  display: inline;\n  font-size: var(--f-font-size-h4);\n  line-height: 0;\n  margin-right: 0.75rem;\n}\n.error-list__link {\n  color: var(--fkds-color-feedback-text-negative);\n  list-style-position: inside;\n  text-decoration: underline;\n  text-underline-offset: 0.25em;\n}\n.error-list__link a {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.error-list__link:hover {\n  text-decoration-thickness: 2px;\n}\n.error-list__icon {\n  max-width: none;\n  position: relative;\n  top: 3px;\n}\n.error-list--list-item {\n  display: list-item;\n}\n.offline .icon, .icon, .offline .icon-stack, .icon-stack,\n.icon--stack {\n  display: inline-block;\n  height: var(--f-icon-size-small);\n  max-height: 100%;\n  max-width: 100%;\n  pointer-events: none;\n  width: var(--f-icon-size-small);\n}\n.select-field__icon, .label__icon {\n  display: inline;\n  height: var(--f-icon-size-large);\n  position: absolute;\n  right: 0.75rem;\n  top: calc(0.5rem * var(--f-density-factor));\n  transition: opacity var(--f-animation-duration-medium) ease-in-out;\n  width: var(--f-icon-size-large);\n}\n.offline .icon-stack, .icon-stack,\n.icon--stack {\n  position: relative;\n}\n.icon-stack .icon,\n.icon--stack .icon {\n  position: absolute;\n}\n.icon--flip-horizontal {\n  transform: scaleX(-1);\n}\n.icon--flip-vertical {\n  transform: scaleY(-1);\n}\n.icon--rotate-90 {\n  transform: rotate(90deg);\n}\n.icon--rotate-180 {\n  transform: rotate(180deg);\n}\n.icon--rotate-270 {\n  transform: rotate(270deg);\n}\n.icon-stack--new-window .icon.f-icon-new-window,\n.icon--new-window .icon.f-icon-new-window {\n  width: 55%;\n  height: 55%;\n  top: 0;\n  right: 0;\n}\n.icon-stack--new-window .icon:not(.f-icon-new-window),\n.icon--new-window .icon:not(.f-icon-new-window) {\n  width: 83%;\n  height: 83%;\n  bottom: 0;\n  left: 5%;\n}\n.icon-stack--tooltip .f-icon-circle,\n.icon--stack--tooltip .f-icon-circle {\n  fill: var(--fkds-color-action-background-primary-default);\n  color: var(--fkds-color-action-border-primary-default);\n}\n.icon-stack--tooltip .f-icon-i,\n.icon--stack--tooltip .f-icon-i {\n  color: var(--fkds-color-text-inverted);\n}\n.icon-stack--info .f-icon-circle,\n.icon--stack--info .f-icon-circle {\n  color: var(--fkds-color-feedback-background-info);\n  fill: var(--fkds-color-feedback-border-info);\n}\n.icon-stack--info .f-icon-i,\n.icon--stack--info .f-icon-i {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--warning .f-icon-circle,\n.icon--stack--warning .f-icon-circle {\n  color: var(--fkds-color-feedback-background-warning);\n  fill: var(--fkds-color-feedback-border-warning);\n}\n.icon-stack--warning .f-icon-alert,\n.icon--stack--warning .f-icon-alert {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--error .f-icon-triangle,\n.icon--stack--error .f-icon-triangle {\n  color: var(--fkds-color-feedback-background-negative);\n  fill: var(--fkds-color-feedback-border-negative);\n}\n.icon-stack--error .f-icon-alert,\n.icon--stack--error .f-icon-alert {\n  color: var(--fkds-color-text-primary);\n}\n.icon-stack--success .f-icon-circle,\n.icon--stack--success .f-icon-circle {\n  color: var(--fkds-color-feedback-background-positive);\n  fill: var(--fkds-color-feedback-border-positive);\n}\n.icon-stack--success .f-icon-success,\n.icon--stack--success .f-icon-success {\n  color: var(--fkds-color-text-primary);\n  transform: scale(0.6);\n}\n.icon-stack--large,\n.icon--stack--large {\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.icon-stack--large svg,\n.icon--stack--large svg {\n  width: 100%;\n  height: 100%;\n}\n.icon-stack--circle, .icon-stack--circle-bottom,\n.icon--stack--circle,\n.icon--stack--circle-bottom {\n  width: 4rem;\n  height: 4rem;\n  border-radius: 100%;\n  overflow: hidden;\n}\n.icon-stack--circle .f-icon-circle, .icon-stack--circle-bottom .f-icon-circle,\n.icon--stack--circle .f-icon-circle,\n.icon--stack--circle-bottom .f-icon-circle {\n  color: var(--f-icon-color-success-background);\n  fill: var(--f-icon-color-success-background);\n  width: 100%;\n  height: 100%;\n}\n.icon-stack--circle .icon:not(.f-icon-circle), .icon-stack--circle-bottom .icon:not(.f-icon-circle),\n.icon--stack--circle .icon:not(.f-icon-circle),\n.icon--stack--circle-bottom .icon:not(.f-icon-circle) {\n  color: var(--f-icon-color-success);\n  position: absolute;\n}\n.icon-stack--circle .icon:not(.f-icon-circle),\n.icon--stack--circle .icon:not(.f-icon-circle) {\n  width: 70%;\n  height: 70%;\n  inset: 0;\n  margin: auto;\n}\n.icon-stack--circle-bottom .icon:not(.f-icon-circle),\n.icon--stack--circle-bottom .icon:not(.f-icon-circle) {\n  width: 80%;\n  height: 80%;\n  left: 0;\n  right: 0;\n  margin: 0 auto;\n  bottom: 0%;\n}\n.expandable-panel {\n  margin-bottom: calc(2rem * var(--f-density-factor));\n}\n.expandable-panel__icon svg {\n  width: var(--f-icon-size-medium);\n  height: var(--f-icon-size-medium);\n  max-height: initial;\n  max-width: initial;\n  vertical-align: middle;\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__icon svg {\n  transform: rotate(180deg);\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__content {\n  height: auto;\n}\n.expandable-panel.expandable-panel--expanded .expandable-panel__heading button {\n  border-radius: var(--f-border-radius-medium) var(--f-border-radius-medium) 0 0;\n}\n.expandable-panel.expandable-panel--collapsed .expandable-panel__icon svg {\n  transform: rotate(0);\n}\n.expandable-panel__heading {\n  margin-bottom: 0 !important;\n}\n.expandable-panel__heading button {\n  background-color: var(--fkds-color-background-secondary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium);\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n  margin: 0;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  text-align: left;\n  width: 100%;\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n}\n.expandable-panel__heading button:focus, .expandable-panel__heading button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.expandable-panel__title {\n  flex-grow: 1;\n  text-wrap: pretty;\n}\n.expandable-panel__title__text {\n  vertical-align: middle;\n}\n.expandable-panel__notification {\n  margin-left: 0.25em;\n  width: var(--f-icon-size-large);\n  height: var(--f-icon-size-large);\n  background: var(--fkds-color-feedback-background-negative-strong);\n  border: var(--f-border-radius-small) solid transparent;\n  border-radius: 50%;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  vertical-align: middle;\n}\n@media (forced-colors: active) {\n.expandable-panel__notification {\n    background: canvas;\n}\n}\n.expandable-panel__notification svg {\n  color: var(--fkds-color-text-inverted);\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n}\n@media (forced-colors: active) {\n.expandable-panel__notification svg {\n    color: buttonText;\n}\n}\n.expandable-panel__content {\n  height: 0;\n  overflow: hidden;\n  transition: height var(--f-animation-duration-medium) ease-in;\n}\n.expandable-panel__body {\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-top: 0;\n  border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);\n  line-height: inherit;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n}\n.expandable-paragraph {\n  color: var(--fkds-color-text-primary);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n}\n.expandable-paragraph__heading {\n  line-height: var(--f-line-height-medium);\n  margin: 0;\n}\n.expandable-paragraph__heading button {\n  border: none;\n  background-color: transparent;\n  cursor: pointer;\n  margin: 0;\n  display: flex;\n  text-align: left;\n  padding: 0;\n  flex-shrink: 0;\n}\n.expandable-paragraph__icon {\n  border-radius: 50%;\n  background-color: var(--fkds-color-select-background-secondary-default);\n  width: var(--f-icon-size-small);\n  height: var(--f-icon-size-small);\n  margin-top: calc((var(--f-line-height-medium) * 1em - var(--f-icon-size-small)) / 2);\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);\n  display: flex;\n  color: var(--fkds-color-text-inverted);\n  padding: 3px;\n  flex-shrink: 0;\n  margin-right: 0.5rem;\n}\n.expandable-paragraph__icon .icon {\n  transition: transform var(--f-animation-duration-long) ease;\n}\n.expandable-paragraph.expandable-paragraph--open .expandable-paragraph__icon svg:nth-child(2) {\n  transform: rotate(0);\n}\n.expandable-paragraph.expandable-paragraph--open .expandable-paragraph__container {\n  height: auto;\n}\n.expandable-paragraph.expandable-paragraph--closed .expandable-paragraph__icon svg:nth-child(2) {\n  transform: rotate(-90deg);\n}\n.expandable-paragraph__container {\n  height: 0;\n  overflow: hidden;\n  transition: height var(--f-animation-duration-medium) cubic-bezier(0.46, 0.03, 0.52, 0.96);\n}\n.expandable-paragraph__content, .expandable-paragraph__related-information {\n  margin-left: calc(var(--f-icon-size-small) + 0.5rem);\n}\n.expandable-paragraph__related-information {\n  color: var(--fkds-color-text-secondary);\n  font-size: 0.875rem;\n}\n.expandable-paragraph__content {\n  margin-top: calc(0.75rem * var(--f-density-factor));\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.expandable-paragraph__separator {\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  margin: 0 0.5rem calc(0.5rem * var(--f-density-factor)) 0.5rem;\n}\n.expandable-paragraph--list {\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  padding-bottom: calc(0.5rem * var(--f-density-factor));\n  border-bottom: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n}\n.fieldset {\n  border: 0;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  min-width: 0;\n  padding: 0;\n  width: var(--f-width-full);\n}\n.fieldset__label.label {\n  padding: 0;\n  margin-bottom: calc(0.75rem * var(--f-density-factor));\n}\n.fieldset__content {\n  display: flex;\n  flex-direction: column;\n}\n.file-item-list {\n  list-style-type: none;\n  padding-left: 0;\n}\n.file-item .button--discrete {\n  padding: 0;\n  min-width: auto;\n  text-align: left;\n  margin-right: 0.25rem;\n}\n.file-item__row {\n  margin-bottom: 1.25rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.file-item__row button,\n.file-item__row a {\n  margin-bottom: 0;\n}\n.file-item__file-open {\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */\n  flex: 0 1 auto;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.file-item__file-remove {\n  flex: 0 0 auto;\n}\n.file-item__file-abort {\n  flex: 0 0 auto;\n}\n.file-item__file-abort svg {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.file-item__change-info {\n  margin-top: -1.25rem;\n}\n.file-item__file-name {\n  margin-left: 0.25rem;\n  min-width: 0;\n  overflow-wrap: break-word;\n  white-space: normal;\n}\n.file-item__separator {\n  margin-bottom: 1.25rem;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n}\n.file-selector input[type=file] {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.file-selector input[type=file]:focus + label {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.file-selector label {\n  cursor: pointer;\n}\n.file-selector input:disabled + label {\n  background-color: transparent;\n  border-color: transparent;\n  cursor: default;\n}\n.file-uploader__message-box {\n  margin-top: 1.25rem;\n}\n.component-group > .component-group__item:not(:only-child) {\n  margin-bottom: 1rem;\n}\n.component-group > .component-group__item:last-child:not(:first-child) {\n  margin-bottom: 2rem;\n}\n.indent {\n  border-left: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n  margin-bottom: 1rem;\n  margin-left: 0.5rem;\n  padding-left: 1.5rem;\n}\n.label {\n  color: var(--fkds-color-text-primary);\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n}\n.label.sr-only {\n  width: auto;\n}\n.label__message {\n  display: block;\n  font-weight: var(--f-font-weight-normal);\n  margin-top: var(--f-label-message-margin-top);\n}\n.label__message--error {\n  color: var(--fkds-color-feedback-text-negative);\n}\n.label__icon-wrapper {\n  position: relative;\n}\n.label__icon--left {\n  position: relative;\n  top: calc(3px * var(--f-density-factor));\n}\n.label__description {\n  display: block;\n  font-weight: var(--f-font-weight-normal);\n  color: var(--fkds-color-text-primary);\n}\n.label__description--format {\n  color: var(--fkds-color-text-secondary);\n}\n.layout-application-template {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n.layout-application-template__header {\n  z-index: 9994;\n  position: sticky;\n  align-self: flex-start;\n  top: 0;\n  width: 100%;\n}\n.layout-application-template__footer {\n  flex-shrink: 0;\n}\n.layout-application-template__main {\n  flex-grow: 1;\n}\n.layout-application-template__main > .container-fluid {\n  margin: 20px;\n  width: initial;\n  max-width: 1440px;\n}\n.layout-application-template__body {\n  margin: 0;\n  padding: 0;\n  min-height: 100vh;\n}\n.layout-application-template__body > div {\n  height: 100%;\n}\n.layout-application-template__html {\n  height: 100%;\n}\n.grid--force .col.col--sm-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--sm-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-sm .col.col--sm-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-1 {\n  order: 1;\n}\n.grid--force-sm .col.col--sm-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-2 {\n  order: 2;\n}\n.grid--force-sm .col.col--sm-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-sm .col.col--sm-order-3 {\n  order: 3;\n}\n.grid--force-sm .col.col--sm-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-4 {\n  order: 4;\n}\n.grid--force-sm .col.col--sm-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-5 {\n  order: 5;\n}\n.grid--force-sm .col.col--sm-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-sm .col.col--sm-order-6 {\n  order: 6;\n}\n.grid--force-sm .col.col--sm-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-7 {\n  order: 7;\n}\n.grid--force-sm .col.col--sm-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-8 {\n  order: 8;\n}\n.grid--force-sm .col.col--sm-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-sm .col.col--sm-order-9 {\n  order: 9;\n}\n.grid--force-sm .col.col--sm-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-sm .col.col--sm-order-10 {\n  order: 10;\n}\n.grid--force-sm .col.col--sm-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-sm .col.col--sm-order-11 {\n  order: 11;\n}\n.grid--force-sm .col.col--sm-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-sm .col.col--sm-order-12 {\n  order: 12;\n}\n.grid--force .col.col--md-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--md-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-md .col.col--md-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-md .col.col--md-order-1 {\n  order: 1;\n}\n.grid--force-md .col.col--md-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-md .col.col--md-order-2 {\n  order: 2;\n}\n.grid--force-md .col.col--md-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-md .col.col--md-order-3 {\n  order: 3;\n}\n.grid--force-md .col.col--md-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-md .col.col--md-order-4 {\n  order: 4;\n}\n.grid--force-md .col.col--md-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-md .col.col--md-order-5 {\n  order: 5;\n}\n.grid--force-md .col.col--md-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-md .col.col--md-order-6 {\n  order: 6;\n}\n.grid--force-md .col.col--md-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-md .col.col--md-order-7 {\n  order: 7;\n}\n.grid--force-md .col.col--md-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-md .col.col--md-order-8 {\n  order: 8;\n}\n.grid--force-md .col.col--md-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-md .col.col--md-order-9 {\n  order: 9;\n}\n.grid--force-md .col.col--md-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-md .col.col--md-order-10 {\n  order: 10;\n}\n.grid--force-md .col.col--md-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-md .col.col--md-order-11 {\n  order: 11;\n}\n.grid--force-md .col.col--md-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-md .col.col--md-order-12 {\n  order: 12;\n}\n.grid--force .col.col--lg-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--lg-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-lg .col.col--lg-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-1 {\n  order: 1;\n}\n.grid--force-lg .col.col--lg-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-2 {\n  order: 2;\n}\n.grid--force-lg .col.col--lg-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-lg .col.col--lg-order-3 {\n  order: 3;\n}\n.grid--force-lg .col.col--lg-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-4 {\n  order: 4;\n}\n.grid--force-lg .col.col--lg-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-5 {\n  order: 5;\n}\n.grid--force-lg .col.col--lg-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-lg .col.col--lg-order-6 {\n  order: 6;\n}\n.grid--force-lg .col.col--lg-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-7 {\n  order: 7;\n}\n.grid--force-lg .col.col--lg-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-8 {\n  order: 8;\n}\n.grid--force-lg .col.col--lg-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-lg .col.col--lg-order-9 {\n  order: 9;\n}\n.grid--force-lg .col.col--lg-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-lg .col.col--lg-order-10 {\n  order: 10;\n}\n.grid--force-lg .col.col--lg-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-lg .col.col--lg-order-11 {\n  order: 11;\n}\n.grid--force-lg .col.col--lg-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-lg .col.col--lg-order-12 {\n  order: 12;\n}\n.grid--force .col.col--xl-1 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-2 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-3 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-4 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-5 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-6 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-7 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-8 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-9 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-10 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-11 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force .col.col--xl-12 {\n  width: 100%;\n  max-width: 100%;\n  flex: none;\n}\n.grid--force-xl .col.col--xl-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-1 {\n  order: 1;\n}\n.grid--force-xl .col.col--xl-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-2 {\n  order: 2;\n}\n.grid--force-xl .col.col--xl-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n.grid--force-xl .col.col--xl-order-3 {\n  order: 3;\n}\n.grid--force-xl .col.col--xl-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-4 {\n  order: 4;\n}\n.grid--force-xl .col.col--xl-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-5 {\n  order: 5;\n}\n.grid--force-xl .col.col--xl-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n.grid--force-xl .col.col--xl-order-6 {\n  order: 6;\n}\n.grid--force-xl .col.col--xl-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-7 {\n  order: 7;\n}\n.grid--force-xl .col.col--xl-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-8 {\n  order: 8;\n}\n.grid--force-xl .col.col--xl-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n.grid--force-xl .col.col--xl-order-9 {\n  order: 9;\n}\n.grid--force-xl .col.col--xl-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n.grid--force-xl .col.col--xl-order-10 {\n  order: 10;\n}\n.grid--force-xl .col.col--xl-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n.grid--force-xl .col.col--xl-order-11 {\n  order: 11;\n}\n.grid--force-xl .col.col--xl-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n.grid--force-xl .col.col--xl-order-12 {\n  order: 12;\n}\n.layout-navigation {\n  min-height: 100%;\n  width: 100%;\n}\n.layout-navigation__primary {\n  flex: auto;\n}\n.layout-navigation__primary > .container-fluid {\n  width: initial;\n  max-width: 1440px;\n  padding: 1.5rem;\n  margin-left: 0;\n  margin-right: 0;\n}\n.layout-navigation__navigation {\n  background-color: #f4f4f4;\n  display: flex;\n  position: fixed;\n  z-index: 9994;\n  left: 0;\n  bottom: 0;\n}\n.layout-navigation__navigation .button.button--tertiary:hover {\n  background-color: var(--f-background-sidepanel-button-tertiary-hover);\n}\n.layout-navigation__navigation__border {\n  width: 4px;\n  background-color: #f4f4f4;\n  cursor: w-resize;\n  flex-shrink: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.layout-navigation__navigation__border__dot {\n  background-color: #8d8e91;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  margin-top: 4px;\n}\n.layout-navigation__navigation__border:hover {\n  background-color: #e5e5f5;\n}\n.layout-navigation__navigation__inner {\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  margin-right: 12px;\n  overflow-wrap: break-word;\n  padding: 1rem;\n}\n.layout-navigation__navigation__inner__title {\n  display: flex;\n  align-items: center;\n  padding: 4px;\n}\n.layout-navigation__navigation__inner__title h3 {\n  flex: auto;\n  margin: 0;\n  min-width: 40%;\n}\n.layout-navigation__navigation__inner__title button {\n  margin: 0;\n  position: absolute;\n  right: 0.5rem;\n}\n.layout-navigation__navigation__inner__content {\n  flex-grow: 1;\n  overflow-y: auto;\n  padding: 4px;\n}\n.layout-navigation__navigation__inner__content::-webkit-scrollbar {\n  width: 6px;\n}\n.layout-navigation__navigation__inner__content::-webkit-scrollbar-thumb {\n  background: #8d8e91;\n  border: 1px solid #8d8e91;\n  box-sizing: border-box;\n  border-radius: 33px;\n}\n.layout-navigation__navigation__inner--minimized {\n  margin-left: -0.6rem;\n  margin-right: -0.8rem;\n  padding: 0;\n}\n.layout-secondary {\n  width: 100%;\n  min-height: 100%;\n}\n.layout-secondary__primary {\n  flex: auto;\n}\n.layout-secondary__primary > .container-fluid {\n  width: initial;\n  max-width: 1440px;\n  padding: 1.5rem;\n  margin-left: 0;\n  margin-right: 0;\n}\n.layout-secondary__secondary {\n  background-color: #f4f4f4;\n  position: fixed;\n  display: flex;\n  right: 0;\n  bottom: 0;\n  z-index: 9994;\n}\n.layout-secondary__secondary .button.button--tertiary:hover {\n  background-color: var(--f-background-sidepanel-button-tertiary-hover);\n}\n.layout-secondary__secondary__border {\n  width: 5px;\n  background-color: #f4f4f4;\n  cursor: w-resize;\n  flex-shrink: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.layout-secondary__secondary__border__dot {\n  background-color: #8d8e91;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  margin-top: 4px;\n}\n.layout-secondary__secondary__border:hover {\n  background-color: #e5e5f5;\n}\n.layout-secondary__secondary__inner {\n  position: relative;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  overflow-wrap: break-word;\n  margin: 16px;\n  margin-left: 11px;\n}\n.layout-secondary__secondary__inner__title {\n  display: flex;\n  align-items: center;\n  padding: 4px;\n}\n.layout-secondary__secondary__inner__title h3 {\n  flex: auto;\n  margin: 0;\n  min-width: 40%;\n}\n.layout-secondary__secondary__inner__close.button {\n  position: absolute;\n  top: 0;\n  right: 0;\n  margin-bottom: 0;\n}\n.layout-secondary__secondary__inner__content {\n  flex-grow: 1;\n  overflow-y: auto;\n  padding: 4px;\n}\n.layout-secondary__secondary__inner__content::-webkit-scrollbar {\n  width: 6px;\n}\n.layout-secondary__secondary__inner__content::-webkit-scrollbar-thumb {\n  background: #8d8e91;\n  border: 1px solid #8d8e91;\n  box-sizing: border-box;\n  border-radius: 33px;\n}\n@media (width <= 1280px) {\n.layout-secondary__secondary {\n    box-shadow: 4px 0 2px rgba(0, 0, 0, 0.5), -4px 0 2px rgba(0, 0, 0, 0.5);\n}\n}\n@keyframes bouncedelay {\n0%, 80%, 100% {\n    transform: scale(0);\n}\n40% {\n    transform: scale(1);\n}\n}\n@keyframes spinner-delay {\nfrom {\n    opacity: 0;\n}\nto {\n    opacity: 1;\n}\n}\n.loader div[tabindex] {\n  outline: none;\n}\n.loader__wrapper {\n  height: var(--f-loader-size);\n  margin: var(--f-loader-margin);\n  position: relative;\n  width: var(--f-loader-size);\n}\n.loader--delay {\n  animation: spinner-delay var(--f-animation-duration-short) forwards;\n  animation-delay: 1s;\n  opacity: 0;\n}\n.loader__spinner {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n}\n.loader__circle {\n  animation: bouncedelay 1.2s infinite ease-in-out;\n  animation-fill-mode: both;\n  background-color: var(--fkds-color-text-secondary);\n  border-radius: 100%;\n  height: 1rem;\n  position: absolute;\n  width: 1rem;\n}\n.loader__wait-text {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  white-space: pre-wrap;\n}\n.loader--overlay .loader__backdrop {\n  align-items: center;\n  background: var(--f-background-overlay);\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  justify-content: center;\n  left: 0;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 9999;\n}\n.loader--overlay .loader__wait-text {\n  color: var(--fkds-color-text-inverted);\n}\n.loader--overlay .loader__circle {\n  background-color: var(--fkds-color-text-inverted);\n}\n.loader .loader__spinner-1-circle2 {\n  animation-delay: -0.9s;\n}\n.loader .loader__spinner-1-circle3 {\n  animation-delay: -0.6s;\n}\n.loader .loader__spinner-1-circle4 {\n  animation-delay: -0.3s;\n}\n.loader .loader__spinner-2 {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  transform: rotateZ(45deg);\n}\n.loader .loader__spinner-2-circle1 {\n  animation-delay: -1.1s;\n}\n.loader .loader__spinner-2-circle2 {\n  animation-delay: -0.8s;\n}\n.loader .loader__spinner-2-circle3 {\n  animation-delay: -0.5s;\n}\n.loader .loader__spinner-2-circle4 {\n  animation-delay: -0.2s;\n}\n.loader .loader__spinner-3 {\n  height: 100%;\n  position: absolute;\n  width: 100%;\n  transform: rotateZ(90deg);\n}\n.loader .loader__spinner-3-circle1 {\n  animation-delay: -1s;\n}\n.loader .loader__spinner-3-circle2 {\n  animation-delay: -0.7s;\n}\n.loader .loader__spinner-3-circle3 {\n  animation-delay: -0.4s;\n}\n.loader .loader__spinner-3-circle4 {\n  animation-delay: -0.1s;\n}\n.loader__circle--1 {\n  left: 0;\n  top: 0;\n}\n.loader__circle--2 {\n  right: 0;\n  top: 0;\n}\n.loader__circle--3 {\n  bottom: 0;\n  right: 0;\n}\n.loader__circle--4 {\n  bottom: 0;\n  left: 0;\n}\n.loader__delay__spinner {\n  animation: spinner-delay var(--f-animation-duration-short) forwards;\n  animation-delay: 1s;\n  opacity: 0;\n}\n.logo {\n  display: inline-block;\n}\n.logo--small {\n  padding: var(--f-logo-size-small);\n  background: var(--f-logo-image-small);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n.logo--large {\n  padding: var(--f-logo-size-large);\n  background: var(--f-logo-image-large);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n.logo--responsive {\n  padding: var(--f-logo-size-large);\n  background: var(--f-logo-image-large);\n  background-repeat: no-repeat;\n  background-position: center;\n}\n@media (max-width: 639.98px) {\n.logo--responsive {\n    padding: var(--f-logo-size-small);\n    background: var(--f-logo-image-small);\n    background-repeat: no-repeat;\n    background-position: center;\n}\n}\n.message-box {\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  margin: 1.5rem 0 calc(1.5rem * var(--f-density-factor)) 0;\n  color: var(--fkds-color-text-primary);\n}\n.message-box__heading {\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-medium);\n  color: var(--fkds-color-text-primary);\n  line-height: var(--f-line-height-medium);\n  align-items: flex-start;\n  margin-bottom: calc(0.5rem * var(--f-density-factor));\n  margin-top: 0;\n}\n.message-box__icon {\n  line-height: var(--f-line-height-large);\n}\n.message-box__content {\n  text-align: left;\n}\n.message-box--info {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-info);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-info);\n}\n.message-box--info .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--info-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-info);\n  background-color: var(--fkds-color-feedback-background-info);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-info);\n}\n.message-box--info-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--info-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--info-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--info-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--info-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--info-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--info-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--error {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--error .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--error-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--error-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--error-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--error-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--error-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--error-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--error-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--error-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--warning {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-warning);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-warning);\n}\n.message-box--warning .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--warning-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-warning);\n  background-color: var(--fkds-color-feedback-background-warning);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-warning);\n}\n.message-box--warning-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--warning-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--warning-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--warning-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--warning-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--warning-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--warning-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--success {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-positive);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-positive);\n}\n.message-box--success .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--success-short {\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-positive);\n  background-color: var(--fkds-color-feedback-background-positive);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-positive);\n}\n.message-box--success-short .message-box__icon {\n  font-size: 0;\n}\n.message-box--success-short .message-box__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--success-short .message-box__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.message-box--success-short .message-box__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.message-box--success-short .message-box__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.message-box--success-short .message-box__icon__banner {\n  margin-top: 0;\n}\n.message-box--success-short .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--banner {\n  width: var(--f-width-full);\n  box-shadow: var(--f-box-modal-shadow);\n  border-collapse: separate;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-top: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.message-box--banner .iflex__item > p {\n  margin-bottom: 0;\n}\n.message-box--banner .iflex__item > p {\n  margin-bottom: 0;\n}\n.modal__backdrop {\n  background: var(--f-background-overlay);\n  display: flex;\n  height: 100%;\n  inset: 0;\n  position: fixed;\n  width: 100%;\n  z-index: 9994;\n}\n.modal__outer-container {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n  overflow: auto;\n  width: 100%;\n}\n.modal__inner-container {\n  align-items: center;\n  justify-content: center;\n  max-height: 100%;\n  width: 100%;\n}\n.modal__shelf {\n  justify-content: flex-end;\n  display: flex;\n  background-color: var(--fkds-color-background-primary);\n  border-top-left-radius: var(--f-border-radius-medium);\n  border-top-right-radius: var(--f-border-radius-medium);\n  margin-bottom: 1rem;\n}\n.modal__header {\n  display: flex;\n  margin-bottom: 0.5rem;\n  width: 100%;\n}\n.modal__header .modal__title {\n  font-size: var(--f-modal-title-font-size);\n  font-weight: var(--f-font-weight-bold);\n  margin-bottom: 0;\n  margin-top: 0;\n  color: var(--fkds-color-text-primary);\n}\n.modal__dialog-container {\n  background: transparent;\n  display: flex;\n  margin: auto;\n  width: calc(100vw - 40px);\n}\n@media (min-width: 640px) {\n.modal__dialog-container {\n    max-width: var(--f-modal-size-small);\n}\n.modal__dialog-container--small {\n    max-width: var(--f-modal-size-small);\n}\n.modal__dialog-container--medium {\n    max-width: var(--f-modal-size-medium);\n}\n.modal__dialog-container--large {\n    max-width: var(--f-modal-size-large);\n}\n.modal__dialog-container--fullwidth {\n    max-width: var(--f-modal-size-fullwidth);\n}\n}\n@media (max-width: 639.98px) {\n.modal__dialog-container--fullscreen {\n    width: 100%;\n    max-width: none;\n}\n.modal__dialog-container--fullscreen .modal__dialog {\n    min-height: 100vh;\n    min-height: 100dvh;\n}\n.modal__dialog-container--fullscreen .modal__dialog-inner {\n    flex: 1 1 auto;\n    display: flex;\n    flex-direction: column;\n}\n.modal__dialog-container--fullscreen .modal__content {\n    flex: 1 1 auto;\n}\n}\n.modal__dialog {\n  background: var(--fkds-color-background-primary);\n  outline: 2px solid transparent;\n  border-radius: var(--f-border-radius-medium);\n  display: flex;\n  flex-direction: column-reverse;\n  height: auto;\n  margin: auto;\n  width: 100%;\n  position: relative;\n  z-index: 9995;\n}\n.modal__dialog .modal__dialog-inner {\n  height: auto;\n  margin: 0 1.5rem 1.5rem;\n}\n@media (max-width: 639.98px) {\n.modal__dialog .modal__dialog-inner {\n    margin: 0 1rem 1rem;\n}\n}\n.modal__dialog .modal__footer {\n  margin-top: 2rem;\n}\n.modal__dialog .modal__footer > .button-group {\n  margin-bottom: 0;\n}\n.modal__dialog .modal__footer > .button-group .button-group__item:last-child:not(.button--small, .button--medium) {\n  margin-bottom: 0;\n}\n@media (min-width: 640px) {\n.modal__dialog .modal__footer > .button-group .button-group__item {\n    margin-bottom: 0;\n}\n}\n.modal__dialog > .button-group {\n  margin: 0;\n}\n.modal__dialog > .button-group .button-group__item:last-child {\n  margin: var(--f-modal-close-button-margin);\n  padding: var(--f-modal-close-button-padding);\n}\n.modal--information .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-info-strong);\n}\n.modal--information .modal__shelf .close-button {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.modal--warning .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-warning-strong);\n}\n.modal--error .modal__shelf {\n  background-color: var(--fkds-color-feedback-background-negative-strong);\n}\n.modal--error .modal__shelf .close-button {\n  color: var(--fkds-color-action-text-inverted-default);\n}\n.imenu__list {\n  background-color: var(--fkds-color-background-secondary);\n  margin: 0;\n  padding: 0;\n}\n.imenu__list__item {\n  cursor: pointer;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.imenu__list__item a,\n.imenu__list__item a:visited,\n.imenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n.imenu__list__item a:hover {\n  color: var(--fkds-color-text-primary);\n}\n.imenu__popup-item {\n  position: relative;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.imenu__popup-item__wrapper {\n  display: inline-flex;\n  position: absolute;\n  left: 0;\n  padding-top: 1rem;\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.imenu--vertical .imenu__list {\n  display: block;\n}\n.imenu--vertical .imenu__list__item {\n  padding: 0.75rem;\n  display: block;\n}\n.imenu--vertical .imenu__list__item:hover {\n  font-weight: var(--f-font-weight-normal);\n  background-color: var(--fkds-color-navigation-background-hover);\n}\n.imenu--vertical .imenu__list__item--highlight {\n  font-weight: var(--f-font-weight-medium);\n  background-color: var(--fkds-color-navigation-background-selected);\n}\n.imenu--vertical .imenu__list__item--highlight .imenu__list__anchor {\n  color: var(--fkds-color-text-inverted);\n}\n.imenu--vertical .imenu__list__item--highlight:hover {\n  background-color: var(--fkds-color-navigation-background-selected);\n  font-weight: var(--f-font-weight-medium);\n  color: var(--fkds-color-text-inverted);\n}\n.imenu--horizontal {\n  overflow: hidden;\n}\n.imenu--horizontal .imenu__list {\n  display: flex;\n}\n.imenu--horizontal .imenu__list__item {\n  display: inline-flex;\n  padding-top: 1rem;\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.imenu--horizontal .imenu__list__item--highlight {\n  font-weight: var(--f-font-weight-medium);\n}\n.imenu--horizontal .imenu__list__item--highlight .imenu__list__anchor-container {\n  border-bottom: 5px solid var(--fkds-color-navigation-border-selected);\n}\n.imenu--horizontal .imenu__list__item--highlight .imenu__list__anchor:hover {\n  font-weight: var(--f-font-weight-medium);\n}\n.imenu--horizontal .imenu__list__item--hidden {\n  visibility: hidden;\n}\n.imenu--horizontal .imenu__list__anchor-container {\n  padding-bottom: 0.5rem;\n  border-bottom: 5px solid transparent;\n}\n.imenu--horizontal .imenu__list__anchor-container:hover {\n  border-bottom: 5px solid var(--fkds-color-navigation-border-hover);\n}\n.imenu--horizontal .imenu__list__anchor {\n  display: inline-flex;\n}\n.imenu--horizontal .imenu__list__anchor-icon-right {\n  flex: 1 0 auto;\n  padding-top: 0.25rem;\n  margin-left: 0.25rem;\n}\n.offline {\n  width: var(--f-width-full);\n  box-shadow: var(--f-box-modal-shadow);\n  border-collapse: separate;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n  border: var(--f-border-width-medium) solid;\n  border-color: var(--fkds-color-feedback-border-negative);\n  background-color: var(--fkds-color-feedback-background-negative);\n  border-radius: var(--f-border-radius-small);\n  border-left: 1rem solid var(--fkds-color-feedback-border-negative);\n}\n.offline .offline__icon {\n  font-size: 0;\n}\n.offline .offline__icon .icon {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.offline .offline__icon .icon-stack {\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n}\n.offline .offline__icon .icon__exclamation {\n  transform: translateY(-0.05rem);\n}\n.offline .offline__icon .icon__banner {\n  fill: var(--fkds-color-feedback-text-negative);\n  color: white;\n}\n.offline .offline__icon__banner {\n  margin-top: 0;\n}\n.offline .iflex__item > p {\n  margin-bottom: 0;\n}\n.offline .iflex__item > p {\n  margin-bottom: 0;\n}\n.offline {\n  padding: 1.5rem;\n}\n.offline__wrapper {\n  position: fixed;\n  position: sticky;\n  z-index: 9998;\n  right: 0;\n  top: 0;\n  left: 0;\n}\n.output-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  line-height: max(1, var(--f-line-height-large) * var(--f-density-factor));\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n.output-field__output {\n  line-height: max(1, var(--f-line-height-large) * var(--f-density-factor));\n  font-size: var(--f-font-size-standard);\n  min-height: var(--f-height-medium);\n  position: relative;\n  width: var(--f-width-full);\n  margin-bottom: 0;\n}\n.page-header {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  color: var(--fkds-color-text-inverted);\n  background-color: var(--fkds-color-header-background-primary);\n  padding: 1rem 0 1rem 1rem;\n  align-items: center;\n  overflow: hidden;\n}\n.page-header__logo {\n  display: flex;\n  margin: 0;\n  padding: 0;\n  align-items: center;\n  box-sizing: border-box;\n}\n.page-header__logo > a {\n  display: inline-flex;\n}\n.page-header__logo::after {\n  content: " ";\n  background-color: var(--fkds-color-border-inverted);\n  height: 1.38rem;\n  padding: 0.5px;\n  margin: 0 1rem 0.155rem;\n}\n.page-header__app-name {\n  padding-top: 0.22rem;\n  margin: 0;\n  font-size: var(--f-font-size-h3);\n  font-weight: var(--f-font-weight-medium);\n  color: var(--fkds-color-text-inverted);\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  min-width: 9rem;\n}\n.page-header__right {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  flex-grow: 1;\n  white-space: nowrap;\n  padding-top: 0.4rem;\n  font-size: var(--f-font-size-standard);\n}\n.page-header__right-slot {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n.paginator {\n  display: flex;\n  gap: 0.5rem;\n  align-items: center;\n  justify-content: center;\n  white-space: nowrap;\n  container-type: inline-size;\n}\n.paginator__icon {\n  align-items: center;\n}\n.paginator__page, .paginator__previous, .paginator__next {\n  border: none;\n  color: var(--fkds-color-text-primary);\n  height: 2.5rem;\n  background-color: transparent;\n  padding: 0.25rem;\n  border-radius: 2px;\n  cursor: pointer;\n}\n.paginator__page--active, .paginator__previous--active, .paginator__next--active {\n  color: var(--fkds-color-action-text-inverted-default);\n  background-color: var(--fkds-color-action-background-primary-default);\n}\n.paginator__page:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active), .paginator__previous:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active), .paginator__next:hover:enabled:not(.paginator__page--active, .paginator__previous--active, .paginator__next--active) {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.paginator__next, .paginator__previous {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.25rem;\n}\n.paginator__page {\n  width: 2.5rem;\n  display: none;\n}\n.paginator__next, .paginator__page-counter, .paginator__previous {\n  width: 8rem;\n}\n.paginator__page-counter {\n  padding: 0.25rem;\n  text-align: center;\n  color: var(--fkds-color-text-primary);\n}\n@container (width >= 43.5rem) {\n.paginator__page-counter {\n    display: none;\n}\n.paginator__page {\n    display: inline-block;\n}\n}\n.progress {\n  background-color: var(--fkds-color-background-primary);\n  border-radius: var(--f-border-radius-medium);\n  height: var(--f-height-small);\n  margin-bottom: 1.5rem;\n  padding: 0;\n  border: var(--f-border-width-medium) solid var(--fkds-color-feedback-border-positive);\n}\n@media (forced-colors: active) {\n.progress {\n    border: var(--f-border-width-medium) solid highlight;\n}\n}\n.progress__meter {\n  display: block;\n  float: left;\n  height: calc(var(--f-height-small) - var(--f-border-width-medium) * 2);\n  transition: width var(--f-animation-duration-medium) ease-out, background-color var(--f-animation-duration-medium) ease-out;\n}\n.progress__meter--inprogress {\n  background: var(--fkds-color-feedback-background-positive-strong);\n}\n@media (forced-colors: active) {\n.progress__meter--inprogress {\n    background: highlight;\n}\n}\n.progress__meter--finished {\n  background: var(--fkds-color-feedback-background-positive-strong);\n}\n@media (forced-colors: active) {\n.progress__meter--finished {\n    background: highlight;\n}\n}\n.radio-button {\n  min-height: var(--f-height-medium);\n  margin-bottom: calc(1rem * var(--f-density-factor));\n  margin-right: 1.5rem;\n}\n.radio-button:last-child {\n  margin-bottom: 0;\n  margin-right: 0;\n}\n.radio-button__input {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n  min-height: calc(4 * var(--f-height-medium));\n}\n.radio-button__label {\n  min-width: 4.5rem;\n  cursor: pointer;\n  display: inline-block;\n  font-size: var(--f-font-size-standard);\n  line-height: var(--f-line-height-small);\n  padding-left: 1.75rem;\n  padding-top: 0.1rem;\n  padding-bottom: 0.1rem;\n  position: relative;\n  color: var(--fkds-color-text-primary);\n}\n.radio-button__label * {\n  pointer-events: none;\n}\n.radio-button__label::before, .radio-button__label::after {\n  border-radius: 50%;\n  content: "";\n  height: var(--f-icon-size-medium);\n  left: 0;\n  margin: 0.1rem 0;\n  position: absolute;\n  top: 0;\n  cursor: pointer;\n  width: var(--f-icon-size-medium);\n  background-color: var(--fkds-color-background-primary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  display: block;\n  transition: background-color ease var(--f-animation-duration-medium), border-color ease var(--f-animation-duration-medium), opacity ease var(--f-animation-duration-medium);\n}\n.radio-button__label::after {\n  background-color: var(--fkds-color-select-background-primary-default);\n  box-shadow: inset 0 0 0 var(--f-border-width-medium) var(--fkds-color-background-primary);\n  opacity: 0;\n}\n@media (forced-colors: active) {\n.radio-button__label::after {\n    forced-color-adjust: none;\n    background-color: Highlight;\n    box-shadow: inset 0 0 0 var(--f-border-width-medium) Canvas;\n}\n}\n.radio-button.disabled {\n  color: var(--fkds-color-text-disabled);\n}\n@media (forced-colors: active) {\n.radio-button.disabled {\n    color: GrayText;\n}\n}\n.radio-button.disabled .radio-button__label {\n  cursor: default;\n}\n.radio-button.disabled .radio-button__label::before, .radio-button.disabled .radio-button__label::after {\n  background: var(--fkds-color-background-disabled);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-disabled);\n  cursor: default;\n}\n@media (forced-colors: active) {\n.radio-button.disabled .radio-button__label::before, .radio-button.disabled .radio-button__label::after {\n    border: var(--f-border-width-medium) solid GrayText;\n}\n}\n.radio-button input[type=radio] + label::after {\n  opacity: 0;\n}\n.radio-button input[type=radio]:checked + label::after {\n  border: var(--f-border-width-medium) solid transparent;\n  opacity: 1;\n}\n.radio-button input[type=radio]:focus + label {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n}\n.radio-button-group__content {\n  display: flex;\n  flex-direction: column;\n}\n.radio-button-group--horizontal .radio-button-group__content {\n  flex-direction: row;\n}\n.radio-button-group--horizontal .radio-button-group__content .radio-button {\n  margin-bottom: 0;\n}\n@media (max-width: 639.98px) {\n.radio-button-group--horizontal .radio-button-group__content {\n    flex-direction: column;\n}\n.radio-button-group--horizontal .radio-button-group__content .radio-button {\n    margin-bottom: 1rem;\n}\n}\n.select-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.select-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.select-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.select-field--table {\n  margin-bottom: 0;\n}\n.select-field--table-error .select-field__select {\n  padding-right: calc(var(--f-icon-size-large) + 2.25rem);\n}\n.select-field__select {\n  appearance: none;\n  background-color: var(--fkds-color-background-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  cursor: pointer;\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: var(--padding-input-fields);\n  width: var(--f-width-full);\n}\n.select-field__select:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.select-field__select:focus {\n  background-color: var(--fkds-color-background-primary);\n}\n.select-field__select:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n  opacity: 1;\n}\n.select-field__select:open + .select-field__icon {\n  transform: rotate(180deg);\n}\n.select-field__select:disabled + .select-field__icon {\n  color: var(--fkds-color-text-disabled);\n}\n.select-field__icon-wrapper {\n  position: relative;\n}\n.select-field__icon {\n  color: var(--fkds-color-action-text-primary-default);\n}\n.select-field__error-popup-icon {\n  color: var(--fkds-color-feedback-text-negative);\n  display: inline;\n  position: absolute;\n  right: calc(var(--f-icon-size-large) + 0.75rem);\n  top: 0.5rem;\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n  overflow: hidden;\n  text-align: center;\n}\n.select-field--error .select-field__select {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.sort-filter-dataset__sort {\n  min-width: 80px;\n}\n.sort-filter-dataset__search {\n  position: relative;\n}\n.sort-filter-dataset__search input {\n  padding-left: 2.1rem;\n  padding-right: 2.1rem;\n}\n@media (min-width: 640px) {\n.sort-filter-dataset__search input {\n    width: 160px;\n}\n}\n.sort-filter-dataset__search__magnify-icon {\n  position: absolute;\n  left: 1.75rem;\n  height: var(--f-height-large);\n  /* same as textfield */\n  z-index: 1;\n  /* In front of input field */\n  width: 1.2rem;\n  color: var(--fkds-color-text-secondary);\n}\n@media (max-width: 639.98px) {\n.sort-filter-dataset__search__magnify-icon {\n    top: 1.5rem;\n    left: 0.75rem;\n}\n}\n.sort-filter-dataset__search__close-icon.button--discrete {\n  position: absolute;\n  top: -0.75rem;\n  right: 0;\n  color: var(--fkds-color-text-secondary);\n  cursor: pointer;\n  padding: 1rem;\n}\n@media (max-width: 639.98px) {\n.sort-filter-dataset__search__close-icon.button--discrete {\n    top: 1rem;\n}\n}\n.sort-filter-dataset__search__close-icon.button--discrete:hover {\n  box-shadow: none;\n  background-color: transparent;\n}\n.static-panel {\n  margin-bottom: 2.5rem;\n}\n.static-panel__heading {\n  background: var(--fkds-color-background-secondary);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: var(--f-border-radius-medium) var(--f-border-radius-medium) 0 0;\n  border-bottom: 0;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-large);\n  margin: 0;\n  padding: calc(1rem * var(--f-density-factor)) 1rem;\n}\n.static-panel__content {\n  border-top: 0;\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);\n  padding: 1.75rem 1.5rem;\n  background: var(--fkds-color-background-primary);\n}\n.static-panel__icon {\n  height: var(--f-icon-size-x-large);\n  margin-right: 0.25rem;\n  position: relative;\n  top: 0.5rem;\n  width: var(--f-icon-size-x-large);\n}\n.table tbody .table__column--numeric, .table tbody .table__column--date {\n  font-feature-settings: tnum 1;\n  font-variant-numeric: tabular-nums;\n}\n.table tbody .table__expandable-row, .table tbody .table__row--normal, .table tbody .table__row {\n  background: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.table--striped tbody .table__row:nth-child(even), .table tbody .table__row--striped {\n  background: var(--fkds-color-background-secondary);\n  color: var(--fkds-color-text-primary);\n}\n.table--hover tbody .table__row:hover, .table tbody .table__row--hover {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n  outline: 1px solid var(--fkds-color-border-primary);\n}\n.table tbody .table__row:focus-within, .table tbody .table__row--focus-within {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n.table tbody .table__row:focus, .table tbody .table__row--focus {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n  outline: 2px solid var(--fkds-color-border-strong);\n  box-shadow: none;\n}\n.table--hover tbody .table__row:hover.table__row--active, .table--striped tbody .table__row:nth-child(even).table__row--active, .table tbody .table__row--active, .table tbody .table__row:focus.table__row--active, .table tbody .table__row--focus.table__row--active, .table tbody .table__row:focus-within.table__row--active, .table tbody .table__row--focus-within.table__row--active {\n  background: var(--fkds-color-select-background-primary-hover);\n  color: var(--fkds-color-text-primary);\n}\n.table tbody .table__row--expanded-border td,\n.table tbody .table__row--expanded-border th {\n  border-bottom-color: var(--fkds-color-border-weak);\n}\n.table tbody .table__row--expandable {\n  cursor: pointer;\n}\n.table {\n  border-collapse: separate;\n  border-spacing: 0;\n  font-size: var(--f-font-size-standard);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  width: 100%;\n  border: 2px solid transparent;\n}\n.table:focus {\n  border-color: var(--fkds-color-border-strong);\n  box-shadow: none;\n}\n.table caption {\n  background: transparent;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n  text-align: left;\n}\n.table thead th {\n  background: var(--fkds-color-background-secondary);\n  border-bottom: 2px solid var(--fkds-color-border-primary);\n  border-right: 1px solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-align: left;\n  vertical-align: top;\n}\n.table thead th:last-child {\n  border-right: none;\n}\n.table thead th .table__column__header__icon {\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n  min-width: var(--f-icon-size-x-small);\n}\n.table thead th .table__column__header__icon--discrete {\n  color: var(--fkds-color-text-disabled);\n}\n.table thead .table__column--numeric {\n  text-align: right;\n}\n.table tbody .table__expandable-row--collapsed {\n  display: none;\n}\n.table tbody td,\n.table tbody th {\n  padding: calc(var(--f-table-body-row-padding) * var(--f-density-factor)) var(--f-table-body-row-padding);\n  border-bottom: 1px solid var(--fkds-color-border-primary);\n  vertical-align: top;\n}\n.table tbody td {\n  line-height: calc(1.5rem * var(--f-density-factor));\n  font-weight: var(--f-font-weight-normal);\n}\n.table tbody th {\n  border-right: 1px solid var(--fkds-color-border-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: calc(1.5rem * var(--f-density-factor));\n}\n.table tbody .table__column--action {\n  white-space: nowrap;\n}\n.table tbody .table__column--selectable {\n  padding: calc(0.2rem * var(--f-density-factor)) 0.2rem;\n}\n.table tbody .table__column--placeholder + .table__column {\n  padding-left: 1.5rem;\n}\n.table tbody .table__column--action .button--discrete, .table tbody .table__column--action .button--tertiary {\n  margin: var(--f-button-tertiary-table-column-action-margin);\n  min-width: 24px;\n  width: max-content;\n}\n.table tbody .table__column--action .button--discrete .button__icon, .table tbody .table__column--action .button--tertiary .button__icon {\n  margin: var(--f-button-tertiary-table-column-action-icon-margin);\n  transform: translate(0, 10%);\n}\n.table__column--text {\n  text-align: left;\n}\n.table__column--numeric {\n  text-align: right;\n}\n.table__column--date {\n  text-align: left;\n}\n.table__column--action {\n  text-align: center;\n}\n.table__column--shrink {\n  width: 1px;\n  white-space: nowrap;\n}\n.table__column--sortable {\n  cursor: pointer;\n}\n.table__column__description {\n  display: block;\n  background: transparent;\n  color: var(--fkds-color-text-secondary);\n  font-weight: var(--f-font-weight-normal);\n}\n.table__column__wrapper {\n  pointer-events: none;\n}\n.table__column__wrapper > * {\n  pointer-events: auto;\n}\n.table--selectable .table__row td:hover,\n.table--selectable .table__row th:hover {\n  cursor: pointer;\n}\n.table__scroll {\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  overflow: hidden;\n}\n.table__scroll thead th,\n.table__scroll thead td,\n.table__scroll tbody th,\n.table__scroll tbody td {\n  white-space: nowrap;\n}\n.table__scroll .table {\n  margin: 0;\n}\n.table__scroll--horizontal {\n  overflow-x: auto;\n}\n.table__input {\n  margin-top: calc(0.25rem * var(--f-density-factor));\n}\n.table__input .checkbox__label,\n.table__input .radio-button__label {\n  min-width: 1.75rem;\n  min-height: 1.75rem;\n  padding: 0;\n}\n.table__input .checkbox__label::after,\n.table__input .checkbox__label::before,\n.table__input .radio-button__label::after,\n.table__input .radio-button__label::before {\n  top: calc(0.15rem * var(--f-density-factor));\n  left: 0.25rem;\n}\n.table__expand-icon {\n  color: var(--fkds-color-action-text-primary-default);\n  background: transparent;\n  border: 0;\n  flex: 0 0 auto;\n  padding: 0;\n  pointer-events: none;\n  width: 1.5rem;\n  height: 1.5rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n@media (forced-colors: active) {\n.table__expand-icon {\n    color: ButtonText;\n}\n}\n.table__anchor {\n  cursor: pointer;\n  display: inline-flex;\n  gap: 0.25rem;\n}\n.table__anchor > svg.icon {\n  flex-shrink: 0;\n  align-self: center;\n  min-width: auto;\n  max-width: none;\n}\n.table__button {\n  background-color: transparent;\n  border-color: transparent;\n  border-width: var(--f-border-width-medium);\n  box-shadow: none;\n  color: var(--fkds-color-action-text-primary-default);\n  padding: calc(var(--f-button-tertiary-padding-top) * var(--f-density-factor)) var(--f-button-tertiary-padding-right) calc(var(--f-button-tertiary-padding-bottom) * var(--f-density-factor)) var(--f-button-tertiary-padding-left);\n}\n.table__button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n  box-shadow: none;\n}\n.table__button:active, .table__button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n  border-color: transparent;\n  color: var(--fkds-color-action-text-primary-default);\n}\n.table__button.disabled, .table__button.disabled:hover, .table__button:disabled, .table__button:disabled:hover, .table__button.table__button--disabled, .table__button.table__button--disabled:hover {\n  background-color: transparent;\n  border-color: transparent;\n  color: var(--fkds-color-text-disabled);\n}\n.table__button {\n  font-weight: var(--f-font-weight-medium);\n  outline-offset: 0.25rem;\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 24px;\n  padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;\n  text-underline-offset: 3.5px;\n  margin: var(--f-button-tertiary-table-column-action-margin);\n  width: max-content;\n  border: none;\n}\n.table__button .button__icon {\n  margin: var(--f-button-tertiary-table-column-action-icon-margin);\n  height: 14px;\n  width: 14px;\n}\n.table-ng {\n  border-collapse: separate;\n  border-spacing: 0;\n  font-size: var(--f-font-size-standard);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  width: 100%;\n}\n.table-ng caption {\n  background: transparent;\n  color: var(--fkds-color-text-primary);\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n  width: var(--f-width-full);\n  text-align: left;\n}\n.table-ng thead th {\n  background: var(--fkds-color-background-secondary);\n  border-bottom: 2px solid var(--fkds-color-border-primary);\n  border-right: 1px solid var(--fkds-color-border-primary);\n  color: var(--fkds-color-text-primary);\n  font-weight: var(--f-font-weight-medium);\n  line-height: var(--f-line-height-large);\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-align: left;\n  vertical-align: top;\n}\n.table-ng thead th:last-child {\n  border-right: none;\n}\n.table-ng tbody .table-ng__row,\n.table-ng tfoot .table-ng__row {\n  background: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.table-ng tbody .table-ng__row--empty,\n.table-ng tfoot .table-ng__row--empty {\n  text-align: center;\n}\n.table-ng__column__description {\n  background: transparent;\n  color: var(--fkds-color-text-secondary);\n  font-weight: var(--f-font-weight-normal);\n}\n.table-ng--striped tbody .table-ng__row:nth-child(even) {\n  background: var(--fkds-color-background-secondary);\n  color: var(--fkds-color-text-primary);\n}\n.table-ng__cell {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  text-wrap: nowrap;\n  border: 2px solid transparent;\n}\n.table-ng__cell:focus, .table-ng__cell:focus-within {\n  box-shadow: none;\n  border: 2px solid var(--f-color-focus);\n}\n.table-ng__cell input:focus,\n.table-ng__cell button:focus,\n.table-ng__cell a:focus,\n.table-ng__cell [role=combobox]:focus {\n  box-shadow: none;\n}\n.table-ng__cell--align-left span,\n.table-ng__cell--align-left input {\n  text-align: left;\n}\n.table-ng__cell--align-right span,\n.table-ng__cell--align-right input {\n  text-align: right;\n}\n.table-ng__cell--select, .table-ng__cell--text {\n  padding: 0 0.25rem;\n}\n.table-ng__cell--select:focus-visible .table-ng__editable__icon, .table-ng__cell--text:focus-visible .table-ng__editable__icon {\n  visibility: visible;\n}\n.table-ng__cell--text:focus-visible {\n  outline: none !important;\n  box-shadow: none !important;\n}\n.table-ng__cell--text .table-ng__editable {\n  border-width: 2px;\n  border-style: solid;\n  border-color: transparent;\n}\n.table-ng__cell--text .table-ng__editable:focus-within .table-ng__editable__text {\n  display: none;\n}\n.table-ng__cell--text .table-ng__editable:focus-within .table-ng__textedit {\n  flex: 1 0 auto;\n}\n.table-ng__cell--checkbox, .table-ng__cell--radio {\n  text-align: center;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__cell--checkbox input, .table-ng__cell--radio input {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  vertical-align: middle;\n}\n.table-ng__cell--expand button, .table-ng__cell--button button {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  min-width: var(--f-icon-size-medium);\n  width: 100%;\n  background: inherit;\n  cursor: pointer;\n}\n.table-ng__cell--expand button svg, .table-ng__cell--button button svg {\n  vertical-align: middle;\n}\n.table-ng__cell--expand {\n  width: var(--f-icon-size-medium);\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__cell--selectable {\n  width: var(--f-icon-size-medium);\n}\n.table-ng__cell--rowheader {\n  font-weight: var(--f-font-weight-medium);\n  text-align: left;\n}\n.table-ng__cell--custom {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  border: 2px solid transparent;\n}\n.table-ng__cell--custom:focus {\n  box-shadow: none;\n  border: 2px solid var(--f-color-focus);\n}\n.table-ng__textedit {\n  flex: 0 1 0;\n  width: 0;\n  border: none;\n  padding: 0;\n  background: transparent;\n}\n.table-ng__textedit:focus {\n  box-shadow: none !important;\n  outline: none !important;\n}\n.table-ng__editable {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  display: flex;\n  align-items: center;\n}\n.table-ng__editable:hover:not(:focus-within) .table-ng__editable__icon {\n  visibility: visible;\n}\n.table-ng__editable__text {\n  flex: 1 1 auto;\n}\n.table-ng__editable__numeric span,\n.table-ng__editable__numeric input {\n  font-feature-settings: "tnum" 1;\n}\n.table-ng__editable__icon {\n  visibility: hidden;\n  margin-left: 1rem;\n  flex: none;\n  color: var(--fkds-color-action-text-primary-default);\n}\n.table-ng__cell--select:hover .table-ng__editable, .table-ng__cell--text:hover .table-ng__editable {\n  background: var(--fkds-color-action-background-secondary-hover);\n}\n.table-ng__cell--text.table-ng__cell--error:not(:focus-within) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:hover:not(:focus-within) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:focus .table-ng__editable {\n  border-bottom-color: var(--fkds-color-feedback-text-negative);\n}\n.table-ng__column {\n  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;\n  border-bottom: 2px solid transparent;\n  border-right: 1px solid transparent;\n}\n.table-ng__column:focus, .table-ng__column:focus-within {\n  box-shadow: none;\n  border-bottom: 2px solid var(--f-color-focus);\n  border-right: 1px solid var(--f-color-focus);\n}\n.table-ng__column--selectable {\n  text-align: center;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__column--selectable input {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  vertical-align: middle;\n}\n.table-ng__column--rowheader {\n  text-align: left;\n  padding: calc(0.25rem * var(--f-density-factor));\n}\n.table-ng__column--shrink {\n  width: 1px;\n  white-space: nowrap;\n}\n.table-ng__column__sort-icon {\n  color: var(--fkds-color-text-primary);\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n  min-width: var(--f-icon-size-x-small);\n}\n.table-ng__column__sort-icon--discrete {\n  color: var(--fkds-color-text-secondary);\n}\n.text-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.text-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.text-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.text-field--table {\n  margin-bottom: 0;\n}\n.text-field input[type=text]::-ms-clear {\n  display: none;\n}\n.text-field__error-popup-icon {\n  color: var(--fkds-color-feedback-text-negative);\n  height: 16px;\n}\n.text-field__input-wrapper {\n  display: flex;\n  gap: calc(0.5rem * var(--f-density-factor));\n}\n.text-field__input {\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: 0 0.75rem;\n  width: var(--f-width-full);\n}\n.text-field__icon-wrapper {\n  flex: 1 1 auto;\n  position: relative;\n}\n.text-field__icon-wrapper:has(.text-field__append-inner) .text-field__input {\n  padding: var(--padding-input-fields);\n}\n.text-field__append-inner {\n  display: inline;\n  position: absolute;\n  right: calc(0.75rem * var(--f-density-factor));\n  top: calc(0.5rem * var(--f-density-factor));\n  height: var(--f-icon-size-large);\n  width: var(--f-icon-size-large);\n  overflow: hidden;\n  text-align: center;\n}\n.text-field__icon {\n  height: var(--f-icon-size-large);\n  transition: opacity var(--f-animation-duration-medium) ease-in-out;\n  width: var(--f-icon-size-large);\n}\n.text-field__icon--left {\n  position: relative;\n  top: 3px;\n}\n.text-field__input:disabled + .text-field__icon {\n  color: var(--fkds-color-text-disabled);\n}\n.text-field__input:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n}\n.text-field--error .text-field__input {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.text-field--search + .text-field__append-inner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  top: 0;\n  right: calc(0.25rem * var(--f-density-factor));\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  width: 2.5rem;\n}\n.text-field .clear-button {\n  background: none;\n  border: 0;\n  cursor: pointer;\n}\n.text-field .clear-button__icon {\n  color: var(--fkds-color-text-secondary);\n  height: var(--f-icon-size-x-small);\n  width: var(--f-icon-size-x-small);\n}\n@media (forced-colors: active) {\n.text-field .clear-button__icon {\n    color: buttonText;\n}\n}\n.text-field {\n  /* stylelint-disable property-no-vendor-prefix */\n}\n.text-field input[type=search]::-webkit-search-decoration,\n.text-field input[type=search]::-webkit-search-cancel-button,\n.text-field input[type=search]::-webkit-search-results-button,\n.text-field input[type=search]::-webkit-search-results-decoration {\n  -webkit-appearance: none;\n}\n.textarea-field {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  line-height: var(--f-line-height-large);\n  margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));\n  position: relative;\n  width: var(--f-width-full);\n}\n@media (min-width: 640px) {\n.textarea-field--inline {\n    margin-bottom: calc(0.75rem * var(--f-density-factor));\n    flex-direction: row;\n    justify-content: flex-start;\n    width: auto;\n}\n.textarea-field--inline .label {\n    width: auto;\n    margin-right: 1rem;\n    padding-top: calc(0.5rem * var(--f-density-factor));\n}\n}\n.textarea-field__textarea {\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n  box-shadow: var(--f-input-shadow-inset);\n  border-radius: var(--f-border-radius-medium);\n  border: var(--f-border-width-medium) solid var(--fkds-color-border-primary);\n  box-sizing: border-box;\n  font-size: var(--f-font-size-standard);\n  min-height: calc(var(--f-height-large) * var(--f-density-factor));\n  padding: calc(0.5rem * var(--f-density-factor)) 0.75rem;\n  width: var(--f-width-full);\n}\n.textarea-field__textarea[rows] {\n  height: auto;\n}\n.textarea-field__textarea:disabled {\n  border-color: var(--fkds-color-border-disabled);\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n}\n.textarea-field--error .textarea-field__textarea {\n  border-color: var(--fkds-color-feedback-border-negative);\n}\n.textarea-field__resize--none {\n  resize: none;\n}\n.textarea-field__resize--vertical {\n  resize: vertical;\n}\n.tooltip {\n  display: none;\n  overflow: hidden;\n  width: 100%;\n  margin-bottom: calc(1rem * var(--f-density-factor));\n}\n.tooltip.expanded, .tooltip.animating {\n  display: block;\n}\n.tooltip__container {\n  text-wrap: pretty;\n  margin-bottom: calc(0.25rem * var(--f-density-factor));\n}\n.tooltip__container:has(+ .tooltip.expanded), .tooltip__container:has(+ .tooltip.animating) {\n  margin-bottom: 0;\n}\n.tooltip__container .label {\n  display: inline;\n  width: max-content;\n}\n.tooltip__container h1,\n.tooltip__container h2,\n.tooltip__container h3,\n.tooltip__container h4,\n.tooltip__container h5,\n.tooltip__container h6 {\n  display: inline;\n  width: max-content;\n}\n.tooltip__button {\n  display: inline-flex;\n  appearance: none;\n  background: none;\n  border: 0;\n  cursor: pointer;\n  min-height: 24px;\n  min-width: 24px;\n  margin-left: 6px;\n  padding: 0;\n  position: relative;\n  transform: translateY(2px);\n}\n.tooltip__button .icon {\n  top: 0;\n  left: 0;\n}\n.tooltip__button .icon,\n.tooltip__button .icon-stack {\n  height: var(--f-icon-size-medium);\n  width: var(--f-icon-size-medium);\n  padding: 0;\n  margin: auto;\n}\n.tooltip__body {\n  padding: 0 1rem;\n}\n.tooltip__header {\n  font-size: var(--f-font-size-large);\n  font-weight: var(--f-font-weight-bold);\n  line-height: var(--f-line-height-medium);\n  padding: 0 1rem;\n  margin-bottom: 0.5rem;\n}\n.tooltip .close-button {\n  margin: var(--f-tooltip-close-button-margin);\n}\n.tooltip__footer {\n  display: flex;\n  justify-content: flex-end;\n}\n.tooltip__bubble {\n  display: flex;\n  flex-direction: column;\n  position: relative;\n  margin-top: 10px;\n  margin-bottom: 0.5rem;\n  border: 2px solid var(--fkds-color-feedback-border-info);\n  border-radius: var(--f-border-radius-small);\n  background-color: var(--fkds-color-feedback-background-info);\n  padding-top: 1rem;\n}\n.tooltip__bubble::before {\n  content: "";\n  position: absolute;\n  top: 0;\n  left: clamp(20px / 2, var(--f-tooltip-offset), 100% - 20px / 2);\n  border-style: solid;\n  border-width: 0 10px 10px 10px;\n  border-color: transparent transparent var(--fkds-color-feedback-border-info);\n  translate: -50% -100%;\n}\n.tooltip__bubble::after {\n  content: "";\n  position: absolute;\n  top: 0;\n  left: clamp(20px / 2, var(--f-tooltip-offset), 100% - 20px / 2);\n  border-style: solid;\n  border-width: 0 7.2px 7.2px 7.2px;\n  border-color: transparent transparent var(--fkds-color-feedback-background-info);\n  translate: -50% -100%;\n}\n.wizard {\n  margin-top: 20px;\n}\n\n/* Selectors */\n/* position adjustments for lines */\n/* change line-gap-to-circle variable to change distances */\n.wizard-step {\n  display: grid;\n  grid-template: "wizard-step__line-up wizard-step__step-of" min-content "wizard-step__icon-container wizard-step__header" min-content "wizard-step__content wizard-step__content" min-content/min-content 1fr;\n  gap: 0 0.5rem;\n}\n.wizard-step:first-of-type .wizard-step__line-up {\n  border: 0;\n}\n.wizard-step:last-of-type .wizard-step__line-down,\n.wizard-step:last-of-type .wizard-step__icon-container__line-down {\n  border: 0;\n}\n.wizard-step .wizard-step__buttons {\n  margin-top: calc(4rem * var(--f-density-factor));\n}\n.wizard-step .wizard-step__header__title {\n  font-size: 1.125rem;\n  margin-top: 2px;\n  margin-bottom: 20px;\n}\n.wizard-step .wizard-step__icon-container {\n  grid-area: wizard-step__icon-container;\n  display: flex;\n  flex-direction: column;\n}\n.wizard-step .wizard-step__icon-container__circle {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  border: 2px solid var(--fkds-color-border-strong);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 1.25rem;\n  font-weight: bold;\n  text-align: center;\n  color: var(--fkds-color-text-primary);\n  transition: background-color 400ms ease-out, border-color 400ms ease-out, opacity 400ms ease-out;\n}\n@media (max-width: 639.98px) {\n.wizard-step .wizard-step-body__border-container {\n    display: none;\n}\n}\n.wizard-step .wizard-step-body__border-container .wizard-step__line-down {\n  margin-top: 0;\n}\n.wizard-step .wizard-step__icon-container__success {\n  display: none;\n}\n.wizard-step .wizard-step__header {\n  grid-area: wizard-step__header;\n}\n.wizard-step .wizard-step__step-of {\n  color: var(--fkds-color-text-secondary);\n  font-weight: normal;\n  font-size: 1rem;\n}\n.wizard-step .wizard-step__line-down,\n.wizard-step .wizard-step__icon-container__line-down,\n.wizard-step .wizard-step__line-up {\n  border-left: 2px solid var(--fkds-color-border-strong);\n  margin-left: 14px;\n}\n.wizard-step .wizard-step__icon-container__line-down {\n  margin-top: 4px;\n}\n.wizard-step .wizard-step__content {\n  margin-left: 0.5rem;\n  min-width: 0;\n  grid-area: wizard-step__content;\n}\n.wizard-step .wizard-step__line-up {\n  margin-bottom: 4px;\n  grid-area: wizard-step__line-up;\n}\n.wizard-step--open + .wizard-step--pending .wizard-step__line-up {\n  padding-top: 20px;\n  margin-top: -0.5rem;\n}\n.wizard-step .wizard-step__icon-container__line-down {\n  flex: 1;\n}\n@media (min-width: 640px) {\n.wizard-step {\n    grid-template: "wizard-step__line-up wizard-step__step-of" min-content "wizard-step__icon-container wizard-step__header" min-content "wizard-step__line-down wizard-step__content" min-content/min-content 1fr;\n}\n.wizard-step--open + .wizard-step--pending .wizard-step__line-up {\n    margin-top: 0;\n    padding-top: 0;\n}\n.wizard-step .wizard-step__content {\n    margin-left: 0;\n}\n.wizard-step .wizard-step__line-down {\n    grid-area: wizard-step__line-down;\n}\n}\n.wizard-step--open .wizard-step__header__title {\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--open .wizard-step__step-of {\n  display: block;\n}\n.wizard-step--done .wizard-step__header__title .anchor {\n  color: var(--fkds-color-feedback-text-positive);\n  text-decoration-color: currentcolor;\n  text-decoration-thickness: 2px;\n  text-underline-offset: 0.25em;\n}\n.wizard-step--done .wizard-step__header__title .anchor:hover {\n  text-decoration-thickness: 3px;\n  text-underline-offset: 0.25em;\n}\n.wizard-step--done .wizard-step__icon-container__success {\n  display: block;\n  color: var(--fkds-color-text-inverted);\n  width: 20px;\n  height: auto;\n}\n.wizard-step--done .wizard-step__icon-container__circle {\n  background-color: var(--fkds-color-feedback-background-positive-strong);\n  border-color: var(--fkds-color-feedback-border-positive);\n}\n.wizard-step--done .wizard-step__icon-container__number {\n  display: none;\n}\n.wizard-step--done .wizard-step__line-down {\n  display: none;\n}\n.wizard-step--pending .wizard-step__header__title {\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--pending .wizard-step__icon-container__circle {\n  border: 2px solid var(--fkds-color-border-strong);\n  background-color: var(--fkds-color-background-primary);\n  color: var(--fkds-color-text-primary);\n}\n.wizard-step--pending .wizard-step__line-down {\n  display: none;\n}\n@media (forced-colors: active) {\n.wizard-step .wizard-step__icon-container__success {\n    color: CanvasText;\n}\n}\n.animate-expand {\n  transition: var(--f-animation-expand-close);\n  overflow: hidden;\n  visibility: hidden;\n}\n.animate-expand--expanded {\n  transition: var(--f-animation-expand-open);\n  opacity: 1;\n  visibility: visible;\n}\n.animate-expand--opacity {\n  opacity: 0;\n}\n.calendar-month__table {\n  border-spacing: 2px;\n  padding: 0 0.5rem 1rem;\n  width: 100%;\n  border-collapse: separate;\n  border: none;\n  margin: 0;\n}\n.calendar-month__col--week {\n  width: 2%;\n}\n.calendar-month__col--day {\n  width: 14%;\n}\n.calendar-month__header-cell {\n  padding: 0.5rem 0;\n  text-align: center;\n}\n.calendar-month__header-cell abbr,\n.calendar-month__header-cell span {\n  font-weight: var(--f-font-weight-normal);\n  text-decoration: none;\n  border-bottom: none;\n  text-transform: none;\n  font-size: 1rem;\n  cursor: auto;\n  color: var(--fkds-color-text-secondary);\n}\n.calendar-month__cell {\n  height: 2.75rem;\n  padding: 0;\n}\n.calendar-month__cell--week-number {\n  vertical-align: middle;\n  padding-right: 0.25rem;\n  text-align: right;\n  min-width: 2rem;\n  color: var(--fkds-color-text-secondary);\n}\n.calendar-month__button {\n  appearance: none;\n  border: 0;\n  cursor: pointer;\n  padding: 0;\n  width: 100%;\n  background-color: var(--fkds-color-background-secondary);\n  font-size: 1rem;\n}\n.calendar-month__button:focus {\n  position: relative;\n  z-index: 9997;\n}\n.calendar-month__button:focus[tabindex="-1"] {\n  box-shadow: var(--f-focus-box-shadow);\n}\n.calendar-navbar__year-selector-button--title, .calendar-navbar__month--title {\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n.calendar-navbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  text-align: center;\n  border-bottom: var(--f-border-width-medium) solid var(--fkds-color-border-weak);\n  color: var(--fkds-color-text-primary);\n  padding: 1rem;\n  gap: 1rem;\n  margin-bottom: 0.75rem;\n  font-size: var(--f-font-size-h3);\n}\n.calendar-navbar__month {\n  margin-right: auto;\n}\n.calendar-navbar__arrow--previous {\n  transform: scaleX(-1);\n}\n.calendar-navbar__arrow--up {\n  transform: rotate(0.5turn);\n}\n.calendar-navbar__year-selector-button {\n  /* stylelint-disable scss/at-extend-no-missing-placeholder -- technical debt */\n  /* stylelint-enable */\n  display: flex;\n  gap: 0.5rem;\n  align-items: center;\n  font-size: 14px;\n  line-height: 1.25rem;\n  min-width: 24px;\n  padding: calc(0.375rem * var(--f-density-factor)) 0.25rem;\n  text-underline-offset: 3.5px;\n}\n.calendar-navbar__icon {\n  color: var(--fkds-color-action-text-inverted-default);\n  background-color: var(--fkds-color-action-background-primary-default);\n  width: var(--f-icon-size-large);\n  height: var(--f-icon-size-large);\n  padding: 5px;\n  border-radius: 50%;\n  box-shadow: var(--f-button-shadow);\n}\n.calendar-navbar__icon--disabled {\n  color: var(--fkds-color-text-disabled);\n  background-color: var(--fkds-color-background-disabled);\n  padding: 4px;\n  border: 1px solid var(--fkds-color-border-disabled);\n  box-shadow: none;\n}\n.calendar-navbar__arrow {\n  padding: 0;\n  display: flex;\n  border: none;\n  background-color: transparent;\n  cursor: pointer;\n}\n.calendar__wrapper {\n  width: 100%;\n}\n.calendar__year-selector {\n  height: var(--f-calendar-height);\n  overflow-x: auto;\n  position: relative;\n}\n.calendar__year-selector__year {\n  margin: 5px;\n}\n.iflex {\n  display: flex;\n}\n.iflex--gap-1x {\n  margin-left: -0.25rem;\n  margin-right: -0.25rem;\n}\n.iflex--gap-1x .iflex__item {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.iflex--gap-2x {\n  margin-left: -0.5rem;\n  margin-right: -0.5rem;\n}\n.iflex--gap-2x .iflex__item {\n  padding-left: 0.5rem;\n  padding-right: 0.5rem;\n}\n.iflex--gap-3x {\n  margin-left: -0.75rem;\n  margin-right: -0.75rem;\n}\n.iflex--gap-3x .iflex__item {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}\n.iflex--gap-4x {\n  margin-left: -1rem;\n  margin-right: -1rem;\n}\n.iflex--gap-4x .iflex__item {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}\n.iflex--gap-5x {\n  margin-left: -1.25rem;\n  margin-right: -1.25rem;\n}\n.iflex--gap-5x .iflex__item {\n  padding-left: 1.25rem;\n  padding-right: 1.25rem;\n}\n.iflex--gap-6x {\n  margin-left: -1.5rem;\n  margin-right: -1.5rem;\n}\n.iflex--gap-6x .iflex__item {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.iflex--gap-7x {\n  margin-left: -1.75rem;\n  margin-right: -1.75rem;\n}\n.iflex--gap-7x .iflex__item {\n  padding-left: 1.75rem;\n  padding-right: 1.75rem;\n}\n.iflex--gap-8x {\n  margin-left: -2rem;\n  margin-right: -2rem;\n}\n.iflex--gap-8x .iflex__item {\n  padding-left: 2rem;\n  padding-right: 2rem;\n}\n.iflex__item {\n  flex: 1 0 0%;\n}\n.iflex--grow {\n  flex: 1 1 auto;\n}\n.iflex--shrink {\n  flex: 0 1 auto;\n}\n.iflex--align-top {\n  align-self: flex-start;\n}\n.iflex--align-center {\n  align-self: center;\n}\n.iflex--align-bottom {\n  align-self: flex-end;\n}\n@media (max-width: 639.98px) {\n.iflex--collapse {\n    display: block;\n}\n}\n.iflex--wrap {\n  flex-wrap: wrap;\n}\n.iflex--float-right {\n  justify-content: flex-end;\n}\n.iflex--float-center {\n  justify-content: center;\n}\n.popup-error {\n  --i-popup-error-offset: 24px;\n}\n.popup-error--overlay {\n  position: absolute;\n  top: 0;\n}\n.popup-error--overlay .popup-error__wrapper {\n  left: -10000px;\n  position: absolute;\n  z-index: 9996;\n  white-space: nowrap;\n  color: var(--fkds-color-text-primary);\n}\n.popup-error--inline {\n  position: static;\n}\n.popup-error--inline .popup-error__wrapper {\n  box-sizing: border-box;\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  position: static;\n}\n.popup-error--arrow {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5em 10px;\n  background: var(--fkds-color-feedback-border-negative);\n  line-height: 24px;\n  position: relative;\n}\n.popup-error--arrow .popup-error__icon {\n  margin-right: 5px;\n  padding: 0;\n  color: var(--fkds-color-feedback-text-negative);\n  min-height: var(--f-icon-size-medium);\n  min-width: var(--f-icon-size-medium);\n}\n.popup-error--arrow .popup-error__button {\n  margin: 0;\n  min-height: 24px;\n  min-width: 24px;\n  padding: 0;\n  padding-left: 5px;\n}\n.popup-error--arrow::before {\n  content: "";\n  position: absolute;\n  z-index: -1;\n  inset: 0;\n  padding: var(--f-border-width-medium);\n  border-radius: inherit;\n  background: var(--fkds-color-feedback-background-negative) content-box;\n}\n.popup-error--top {\n  border-radius: min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) 5.7735026919px 5.7735026919px/5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;\n  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px) 0, calc(100% - var(--i-popup-error-offset)) -10px, max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0);\n}\n.popup-error--bottom {\n  border-radius: 5.7735026919px 5.7735026919px min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg)/5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;\n  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px) 100%, calc(100% - var(--i-popup-error-offset)) calc(100% + 10px), max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 100%);\n}\n.popup-error--left {\n  border-radius: 5.7735026919px/min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) 5.7735026919px 5.7735026919px min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg);\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px), -10px calc(100% - var(--i-popup-error-offset)), 0 max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px));\n}\n.popup-error--right {\n  border-radius: 5.7735026919px/5.7735026919px min(5.7735026919px, 100% - var(--i-popup-error-offset) - 60deg) min(5.7735026919px, 100% - (100% - var(--i-popup-error-offset)) - 60deg) 5.7735026919px;\n  border-image: conic-gradient(var(--fkds-color-feedback-border-negative) 0 0) fill 0/max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(0%, 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;\n  clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, 100% min(100%, 100% - var(--i-popup-error-offset) + 5.7735026919px), calc(100% + 10px) calc(100% - var(--i-popup-error-offset)), 100% max(0%, 100% - var(--i-popup-error-offset) - 5.7735026919px));\n}\n.popup-error--top::before {\n  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692) var(--f-border-width-medium), calc(100% - var(--i-popup-error-offset)) calc(var(--f-border-width-medium) / 0.5 - 10px), max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692) var(--f-border-width-medium));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/10px 0 0 0;\n}\n.popup-error--bottom::before {\n  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692) calc(100% - var(--f-border-width-medium)), calc(100% - var(--i-popup-error-offset)) calc(100% + 10px - var(--f-border-width-medium) / 0.5), max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692) calc(100% - var(--f-border-width-medium)));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px)/0 0 10px 0;\n}\n.popup-error--left::before {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, var(--f-border-width-medium) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(var(--f-border-width-medium) / 0.5 - 10px) calc(100% - var(--i-popup-error-offset)), var(--f-border-width-medium) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0.2em max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0/0 0 0 10px;\n}\n.popup-error--right::before {\n  clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, calc(100% - var(--f-border-width-medium)) min(100% - var(--f-border-width-medium), 100% - var(--i-popup-error-offset) + 5.7735026919px - var(--f-border-width-medium) * 0.5773502692), calc(100% + 10px - var(--f-border-width-medium) / 0.5) calc(100% - var(--i-popup-error-offset)), calc(100% - var(--f-border-width-medium)) max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px + var(--f-border-width-medium) * 0.5773502692));\n  border-image: conic-gradient(var(--fkds-color-feedback-background-negative) 0 0) fill 0/max(var(--f-border-width-medium), 100% - var(--i-popup-error-offset) - 5.7735026919px) 0 max(var(--f-border-width-medium), 100% - (100% - var(--i-popup-error-offset)) - 5.7735026919px) 0.2em/0 10px 0 0;\n}\n.ipopupmenu {\n  background-color: var(--fkds-color-background-primary);\n}\n.ipopupmenu__list {\n  margin: 0;\n  border: var(--f-border-width-small) solid var(--fkds-color-border-primary);\n  padding: 0.5rem;\n}\n.ipopupmenu__list__item {\n  cursor: pointer;\n  list-style-type: none;\n  white-space: nowrap;\n}\n.ipopupmenu__list__item a,\n.ipopupmenu__list__item a:visited,\n.ipopupmenu__list__item a:active {\n  color: var(--fkds-color-text-primary);\n}\n.ipopupmenu__list__item a:hover {\n  color: var(--fkds-color-text-primary);\n}\n.ipopupmenu--vertical .ipopupmenu__list {\n  display: block;\n}\n.ipopupmenu--vertical .ipopupmenu__list__item {\n  padding: 0.75rem;\n  display: block;\n}\n.ipopupmenu--vertical .ipopupmenu__list__item:hover {\n  background-color: var(--fkds-color-navigation-background-hover);\n}\n.ipopupmenu--vertical .ipopupmenu__list__item--highlight {\n  background-color: var(--fkds-color-navigation-background-selected);\n  font-weight: var(--f-font-weight-medium);\n}\n.ipopupmenu--vertical .ipopupmenu__list__item--highlight a {\n  color: var(--fkds-color-text-inverted);\n}\n.popup--overlay {\n  position: absolute;\n  top: 0;\n}\n.popup--overlay .popup__wrapper {\n  left: -10000px;\n  max-width: fit-content;\n  border-radius: var(--f-border-radius-small);\n  position: absolute;\n  z-index: 9996;\n  box-shadow: var(--f-box-modal-shadow);\n}\n.popup--inline {\n  position: static;\n}\n.popup--inline .popup__wrapper {\n  box-sizing: border-box;\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  position: static;\n}\n.iskiplink {\n  position: absolute;\n  top: -200px;\n}\n.iskiplink:focus {\n  color: var(--fkds-color-action-text-primary-default);\n  background-color: var(--fkds-color-background-primary);\n  left: 20px;\n  top: 20px;\n  font-size: var(--f-font-size-standard);\n  font-weight: var(--f-font-weight-medium);\n  text-decoration: underline;\n  text-underline-offset: 0.25em;\n  padding: 0.25rem 0.5rem;\n}\n:host {\n  display: contents;\n}\n:host([hidden]) {\n  display: none;\n}\n:host ::slotted([slot=icon]) {\n  display: contents;\n}\n::slotted([slot=header]) {\n  font-weight: var(--f-font-weight-medium) !important;\n  font-size: 1.25rem !important;\n  line-height: 1 !important;\n  margin: 0 !important;\n}\n.panel__wrapper {\n  flex-grow: 1;\n  display: flex;\n}\n.panel {\n  background: var(--f-page-layout-background);\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n  padding: 0.5rem;\n  gap: 0.5rem;\n}\n.panel__header {\n  flex: 0 0 auto;\n  display: flex;\n  gap: 0.25rem;\n  align-items: baseline;\n  justify-content: center;\n}\n.attach-left .panel__header {\n  flex-direction: row;\n}\n.attach-right .panel__header {\n  flex-direction: row-reverse;\n}\n.panel__button {\n  flex: 0 0 auto;\n  appearance: none;\n  line-height: 1;\n  background: transparent;\n  border: 0;\n  cursor: pointer;\n  padding: 1rem;\n  width: max-content;\n}\n.panel__button:hover {\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.panel__button:active, .panel__button:focus {\n  border-radius: 0;\n  box-shadow: var(--f-focus-box-shadow);\n  outline: 3px solid transparent;\n  background-color: var(--fkds-color-action-background-secondary-hover);\n}\n.panel__title {\n  flex: 1 1 auto;\n}\n.panel__content {\n  flex: 1 0 auto;\n}\n.panel__footer {\n  flex: 0 0 auto;\n}\n.expanded.attach-left .panel__button {\n  transform: scaleX(1);\n}\n.collapsed.attach-left .panel__button {\n  transform: scaleX(-1);\n}\n.expanded.attach-right .panel__button {\n  transform: scaleX(-1);\n}\n.collapsed.attach-right .panel__button {\n  transform: scaleX(1);\n}';
+const MinimizablePanel = /* @__PURE__ */ _export_sfc$1(_sfc_main$c, [["styles", [_style_0]]]);
+const _hoisted_1$a = ["model-value", "context", "close-prefix", "open-prefix"];
+const _hoisted_2$8 = {
+  slot: "icon"
+};
+const ceTag = "ce-minimizable-panel";
+const header = "header";
+const content = "content";
+const footer = "footer";
+const _sfc_main$b = /* @__PURE__ */ defineComponent({
+  __name: "FMinimizablePanel",
+  props: {
+    context: {
+      default: () => void 0
+    },
+    initial: {
+      default: "expanded"
+    }
+  },
+  setup(__props) {
+    if (!customElements.get(ceTag)) {
+      customElements.define(ceTag, /* @__PURE__ */ defineCustomElement(MinimizablePanel));
+    }
+    const $t2 = useTranslate();
+    const closePrefix = (
+      /** Del av skärmläsartext för knapp då panel är öppen. */
+      $t2("fkui.minimizable-panel.close", "Minimera")
+    );
+    const openPrefix = (
+      /** Del av skärmläsartext för knapp då panel är minimerad. */
+      $t2("fkui.minimizable-panel.open", "Återställ")
+    );
+    const defaultContext = (
+      /** Del av skärmläsartext för knapp. */
+      $t2("fkui.minimizable-panel.context", "panel")
+    );
+    const isOpen = /* @__PURE__ */ ref(__props.initial === "expanded");
+    const overlay = /* @__PURE__ */ ref(false);
+    const offset2 = /* @__PURE__ */ ref(void 0);
+    useResize({
+      enabled: computed(() => {
+        return Boolean(isOpen.value);
+      }),
+      overlay: computed(() => {
+        return Boolean(overlay.value);
+      }),
+      offset: computed(() => {
+        return Number(offset2.value);
+      })
+    });
+    const ceContext = computed(() => {
+      var _props$context;
+      return (_props$context = __props.context) !== null && _props$context !== void 0 ? _props$context : defaultContext;
+    });
+    function onToggle(e) {
+      isOpen.value = e.detail[0];
+      overlay.value = e.detail[1];
+      offset2.value = e.detail[2];
+    }
+    function onUpdateModel(e) {
+      isOpen.value = e.detail[0];
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("ce-minimizable-panel", {
+        "model-value": isOpen.value,
+        context: ceContext.value,
+        "close-prefix": unref(closePrefix),
+        "open-prefix": unref(openPrefix),
+        "onUpdate:modelValue": onUpdateModel,
+        onToggle
+      }, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
+        isOpen: isOpen.value,
+        header,
+        footer,
+        content
+      }))), _cache[0] || (_cache[0] = createTextVNode()), createBaseVNode("div", _hoisted_2$8, [renderSlot(_ctx.$slots, "icon", normalizeProps(guardReactiveProps({
+        isOpen: isOpen.value
+      })), () => [createVNode(unref(FIcon), {
+        name: "chevrons-left"
+      })])])], 40, _hoisted_1$a);
+    };
+  }
+});
+function findOverflowIndex(totalWidth, elements) {
+  let sum = 0;
+  const index = elements.findIndex((element) => {
+    sum += element.offsetWidth;
+    return sum > totalWidth;
+  });
+  return index < 1 ? index : index - 1;
+}
+function getNewItemIndexFromMenuAction(action, index, maxIndex) {
+  const minIndex = 0;
+  const nextIndex = index + 1;
+  const prevIndex = index - 1;
+  let newIndex;
+  switch (action) {
+    case MenuAction.MOVE_NEXT:
+      newIndex = nextIndex > maxIndex ? minIndex : nextIndex;
+      break;
+    case MenuAction.MOVE_PREV:
+      newIndex = prevIndex < minIndex ? maxIndex : prevIndex;
+      break;
+    case MenuAction.MOVE_FIRST:
+      newIndex = minIndex;
+      break;
+    case MenuAction.MOVE_LAST:
+      newIndex = maxIndex;
+      break;
+    default:
+      newIndex = index;
+  }
+  return newIndex;
+}
+async function doMenuAction(action, target, currentIndex, maxIndex) {
+  const itemIndex = getNewItemIndexFromMenuAction(action, currentIndex, maxIndex);
+  switch (action) {
+    case MenuAction.MOVE_NEXT:
+    case MenuAction.MOVE_PREV:
+    case MenuAction.MOVE_FIRST:
+    case MenuAction.MOVE_LAST:
+      await target.setFocusOnItem(itemIndex);
+      break;
+    case MenuAction.ACTIVATE:
+      await target.activateItem(itemIndex);
+      break;
+  }
+}
+const upKeys = ["Up", "ArrowUp"];
+const downKeys = ["Down", "ArrowDown"];
+const verticalKeys = [...upKeys, ...downKeys];
+const preventKeys = ["Tab", "Left", "Right", "ArrowLeft", "ArrowRight", "Home", "End", " ", "Spacebar", "Enter", ...verticalKeys];
+const _sfc_main$a = /* @__PURE__ */ defineComponent({
+  name: "FNavigationMenu",
+  components: {
+    FIcon,
+    IPopupMenu
+  },
+  mixins: [TranslationMixin],
+  props: {
+    /**
+     * Current route.
+     */
+    route: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * The route items to be diplayed in the menu
+     */
+    routes: {
+      type: Array,
+      required: true
+    },
+    /**
+     * If true, show the menu vertically
+     */
+    vertical: {
+      type: Boolean,
+      required: false
+    },
+    /**
+     * Screen reader text for selected item
+     */
+    selectedMenuItemScreenReaderText: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * Screen reader text for the more menu item
+     */
+    menuMoreScreenReaderText: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * Screen reader text for the more menu with selected items
+     */
+    menuMoreWithSelectedItemsScreenReaderText: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * Unique accessible name for navigation landmark in menu.
+     */
+    menuAriaLabel: {
+      type: String,
+      required: false,
+      default: "Navigeringsmeny"
+    },
+    /**
+     * Unique accessible name for navigation landmark in popup.
+     */
+    popupAriaLabel: {
+      type: String,
+      required: false,
+      default: "Popupmeny"
+    }
+  },
+  emits: [
+    /**
+     * Event that is dispatched when a menu item is selected, for example, by clicking on the item.
+     * In most use cases the event payload is used to call Vue `router.push()` from the consumer code.
+     *
+     * @param route
+     * @type {string}
+     */
+    "selectedRoute",
+    /**
+     * V-model event to update route property.
+     *
+     * @param route
+     * @type {string}
+     */
+    "update:route"
+  ],
+  setup() {
+    const isMounted = /* @__PURE__ */ ref(false);
+    return {
+      isMounted
+    };
+  },
+  data() {
+    return {
+      selectedItem: "",
+      focusedPopupMenuItem: "",
+      overflowIndex: -1,
+      popupOpen: false,
+      popupAnchor: void 0,
+      resizeObserver: void 0
+    };
+  },
+  computed: {
+    items() {
+      if (!this.routes || !Array.isArray(this.routes)) {
+        return [];
+      }
+      return this.routes.map((i) => ({
+        label: i.label,
+        key: i.route,
+        href: i.href,
+        target: i.target
+      }));
+    },
+    overflowItems() {
+      return this.hasOverflow ? this.items.slice(this.overflowIndex) : [];
+    },
+    hasOverflow() {
+      return this.overflowIndex > -1 && !this.vertical;
+    },
+    overflowItemSelected() {
+      return this.overflowItems.some((item) => item.key === this.selectedItem);
+    },
+    menuClasses() {
+      const vertical = this.vertical ? ["imenu--vertical"] : ["imenu--horizontal"];
+      return ["imenu", ...vertical];
+    },
+    popupItemClasses() {
+      const highlight = this.overflowItemSelected ? ["imenu__list__item--highlight"] : [];
+      return ["imenu__popup-item__wrapper", "imenu__list__item", ...highlight];
+    },
+    selectedItemSrText() {
+      if (this.selectedMenuItemScreenReaderText === "") {
+        return this.$t("fkui.navigation-menu.current-page", "Aktuell sida");
+      } else {
+        return this.selectedMenuItemScreenReaderText;
+      }
+    },
+    popupLabel() {
+      return this.$t("fkui.navigation-menu.more-text", "Mer");
+    },
+    popupMenuSrText() {
+      return this.overflowItemSelected ? this.popupMenuSelectedSrText : this.menuMoreScreenReaderText;
+    },
+    popupMenuSelectedSrText() {
+      if (this.menuMoreWithSelectedItemsScreenReaderText === "") {
+        return this.$t("fkui.navigation-menu.more-selection", "underliggande vald nu");
+      } else {
+        return this.menuMoreWithSelectedItemsScreenReaderText;
+      }
+    }
+  },
+  watch: {
+    route: {
+      handler(value) {
+        this.selectedItem = value;
+      },
+      immediate: true
+    },
+    routes: {
+      deep: true,
+      async handler() {
+        await this.$nextTick();
+        this.onResize();
+      }
+    }
+  },
+  mounted() {
+    this.isMounted = true;
+    this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
+    this.resizeObserver.observe(this.$el);
+    this.onResize();
+  },
+  unmounted() {
+    this.isMounted = false;
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
+  },
+  methods: {
+    itemClasses(item, index) {
+      const hidden = this.hasOverflow && index >= this.overflowIndex ? ["imenu__list__item--hidden"] : [];
+      const highlight = item.key === this.selectedItem ? ["imenu__list__item--highlight"] : [];
+      return ["imenu__list__item", ...highlight, ...hidden];
+    },
+    showItemSrText(index) {
+      const isSelected = this.items[index].key === this.selectedItem;
+      const isVisible2 = index < this.overflowIndex;
+      return isSelected && isVisible2;
+    },
+    getVisibleAnchors() {
+      const itemAnchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+      const sliceEnd = this.hasOverflow ? this.overflowIndex : void 0;
+      const visibleItemAnchors = itemAnchors.slice(0, sliceEnd);
+      const popupItemAnchor = this.hasOverflow ? [getHTMLElementFromVueRef(this.$refs["popup-anchor"])] : [];
+      return [...visibleItemAnchors, ...popupItemAnchor];
+    },
+    getAnchor(index) {
+      const anchors = this.getVisibleAnchors();
+      return anchors[index];
+    },
+    findItemByKey(key) {
+      return this.items.find((it) => it.key === key);
+    },
+    indexOfItemByKey(key) {
+      const item = this.findItemByKey(key);
+      if (!item) {
+        return -1;
+      }
+      return this.items.indexOf(item);
+    },
+    selectItem(key) {
+      if (key !== this.selectedItem) {
+        this.selectedItem = key;
+      }
+      if (key !== this.route) {
+        this.$emit("update:route", key);
+        this.$emit("selectedRoute", key);
+      }
+    },
+    /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
+    async activateItem(index) {
+      const popupItemFocused = this.hasOverflow && index === this.overflowIndex;
+      if (popupItemFocused) {
+        this.togglePopup(!this.popupOpen);
+        return;
+      }
+      const item = this.items[index];
+      this.selectItem(item.key);
+      this.clickItemAnchor(item);
+    },
+    onClickItem(event, item) {
+      this.selectItem(item.key);
+      const target = event.target;
+      const isAnchor = target instanceof HTMLElement && target.tagName === "A";
+      if (!isAnchor) {
+        this.clickItemAnchor(item);
+      }
+    },
+    clickItemAnchor(item) {
+      if (!item.href) {
+        return;
+      }
+      const index = this.items.indexOf(item);
+      this.getAnchor(index)?.click();
+    },
+    onPopupMenuItemSelected(key) {
+      this.selectItem(key);
+      if (key !== this.selectedItem) {
+        this.togglePopup(false);
+      }
+    },
+    togglePopup(open) {
+      if (open) {
+        this.popupAnchor = getHTMLElementFromVueRef(this.$refs["popup-item"]);
+      }
+      this.popupOpen = open;
+    },
+    async setFocusOnItem(index) {
+      if (this.popupOpen) {
+        this.togglePopup(false);
+        await this.$nextTick();
+      }
+      const itemAnchor = this.getAnchor(index);
+      focus(itemAnchor, {
+        preventScroll: true
+      });
+    },
+    async onResize() {
+      if (!this.isMounted || this.vertical) {
+        return;
+      }
+      const menu = getHTMLElementFromVueRef(this.$refs.menu);
+      const itemElements = getSortedHTMLElementsFromVueRef(this.$refs.items);
+      const menuWidth = menu.offsetWidth;
+      const foundOverflowIndex = findOverflowIndex(menuWidth, itemElements);
+      if (this.overflowIndex === foundOverflowIndex) {
+        return;
+      }
+      this.overflowIndex = foundOverflowIndex;
+      if (!this.hasOverflow) {
+        this.popupOpen = false;
+        return;
+      }
+      const popupWasOpen = this.popupOpen;
+      this.popupOpen = false;
+      await this.$nextTick();
+      const wrapper2 = getHTMLElementFromVueRef(this.$refs["popup-item"]);
+      wrapper2.style.left = "0";
+      const firstHiddenItem = itemElements[this.overflowIndex];
+      const firstHiddenItemRect = getAbsolutePosition(firstHiddenItem);
+      const wrapperRect = getAbsolutePosition(wrapper2);
+      const offset2 = wrapperRect.x - firstHiddenItemRect.x;
+      wrapper2.style.left = `-${String(offset2)}px`;
+      this.popupOpen = popupWasOpen;
+    },
+    onKeyUp(event) {
+      if (preventKeys.includes(event.key)) {
+        event.preventDefault();
+      }
+    },
+    async onKeyDown(event) {
+      if (event.key === "Escape") {
+        this.togglePopup(false);
+        return;
+      }
+      if (!preventKeys.includes(event.key)) {
+        return;
+      }
+      const anchors = this.getVisibleAnchors();
+      const focusedIndex = anchors.findIndex((anchor) => anchor === event.target);
+      const lastItemIndex = anchors.length - 1;
+      const firstItemFocused = focusedIndex === 0;
+      const lastItemFocused = focusedIndex === lastItemIndex;
+      const tabPrev = event.key === "Tab" && event.shiftKey;
+      const tabNext = event.key === "Tab" && !event.shiftKey;
+      const shouldCheckPopupKeys = this.hasOverflow && lastItemFocused && this.popupOpen;
+      const popupKeyPressed = verticalKeys.includes(event.key) || tabNext;
+      if (shouldCheckPopupKeys && popupKeyPressed) {
+        event.preventDefault();
+        const index = upKeys.includes(event.key) ? this.overflowItems.length - 1 : 0;
+        this.focusedPopupMenuItem = this.overflowItems[index].key;
+        return;
+      }
+      if (tabPrev && firstItemFocused || tabNext && lastItemFocused) {
+        return;
+      }
+      const action = actionFromKeyboardEvent(event);
+      if (action === null) {
+        return;
+      }
+      event.preventDefault();
+      await doMenuAction(action, this, focusedIndex, lastItemIndex);
+    }
+  }
+});
+const _hoisted_1$9 = ["aria-label"];
+const _hoisted_2$7 = ["data-ref-index", "onClick"];
+const _hoisted_3$5 = {
+  class: "imenu__list__anchor-container"
+};
+const _hoisted_4$4 = ["data-ref-index", "href", "target"];
+const _hoisted_5$4 = {
+  key: 0,
+  class: "sr-only"
+};
+const _hoisted_6$3 = {
+  key: 0,
+  class: "imenu__popup-item",
+  role: "none"
+};
+const _hoisted_7$2 = {
+  class: "imenu__list__anchor-container"
+};
+const _hoisted_8$1 = ["aria-expanded"];
+const _hoisted_9$1 = {
+  class: "sr-only"
+};
+function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_icon = resolveComponent("f-icon");
+  const _component_i_popup_menu = resolveComponent("i-popup-menu");
+  return openBlock(), createElementBlock("nav", {
+    ref: "menu",
+    "aria-label": _ctx.menuAriaLabel,
+    class: normalizeClass(_ctx.menuClasses)
+  }, [createBaseVNode("ul", {
+    class: "imenu__list",
+    role: "menubar",
+    onKeyup: _cache[1] || (_cache[1] = (...args) => _ctx.onKeyUp && _ctx.onKeyUp(...args)),
+    onKeydown: _cache[2] || (_cache[2] = (...args) => _ctx.onKeyDown && _ctx.onKeyDown(...args))
+  }, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item, index) => {
+    return openBlock(), createElementBlock("li", {
+      key: item.key,
+      ref_for: true,
+      ref: "items",
+      "data-ref-index": index,
+      class: normalizeClass(_ctx.itemClasses(item, index)),
+      role: "none",
+      onClick: (event) => _ctx.onClickItem(event, item)
+    }, [createBaseVNode("div", _hoisted_3$5, [createBaseVNode("a", {
+      ref_for: true,
+      ref: "anchors",
+      "data-ref-index": index,
+      tabindex: "0",
+      href: item.href,
+      target: item.target,
+      class: "imenu__list__anchor",
+      role: "menuitem"
+    }, [_ctx.showItemSrText(index) ? (openBlock(), createElementBlock("span", _hoisted_5$4, [createBaseVNode("span", null, toDisplayString(_ctx.selectedItemSrText) + " ", 1)])) : createCommentVNode("", true), createTextVNode(" " + toDisplayString(item.label), 1)], 8, _hoisted_4$4)])], 10, _hoisted_2$7);
+  }), 128)), _cache[6] || (_cache[6] = createTextVNode()), _ctx.hasOverflow ? (openBlock(), createElementBlock("li", _hoisted_6$3, [createBaseVNode("div", {
+    ref: "popup-item",
+    class: normalizeClass(_ctx.popupItemClasses),
+    onClick: _cache[0] || (_cache[0] = ($event) => _ctx.togglePopup(true))
+  }, [createBaseVNode("div", _hoisted_7$2, [createBaseVNode("a", {
+    ref: "popup-anchor",
+    tabindex: "0",
+    class: "imenu__list__anchor",
+    role: "menuitem",
+    "aria-haspopup": "menu",
+    "aria-expanded": _ctx.popupOpen ? "true" : "false"
+  }, [createBaseVNode("span", _hoisted_9$1, [createBaseVNode("span", null, toDisplayString(_ctx.popupMenuSrText) + " ", 1)]), createTextVNode(" " + toDisplayString(_ctx.popupLabel) + " ", 1), createVNode(_component_f_icon, {
+    name: "arrow-down",
+    class: "imenu__list__anchor-icon-right"
+  })], 8, _hoisted_8$1)])], 2)])) : createCommentVNode("", true)], 32), _cache[7] || (_cache[7] = createTextVNode()), createVNode(_component_i_popup_menu, {
+    ref: "popup-menu",
+    modelValue: _ctx.selectedItem,
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.selectedItem = $event),
+    "focused-item": _ctx.focusedPopupMenuItem,
+    "onUpdate:focusedItem": _cache[4] || (_cache[4] = ($event) => _ctx.focusedPopupMenuItem = $event),
+    items: _ctx.overflowItems,
+    "is-open": _ctx.popupOpen,
+    anchor: _ctx.popupAnchor,
+    "selected-menu-item-screen-reader-text": _ctx.selectedItemSrText,
+    "aria-label": _ctx.popupAriaLabel,
+    "enable-keyboard-navigation": "",
+    onSelect: _ctx.onPopupMenuItemSelected,
+    onClose: _cache[5] || (_cache[5] = ($event) => _ctx.togglePopup(false))
+  }, null, 8, ["modelValue", "focused-item", "items", "is-open", "anchor", "selected-menu-item-screen-reader-text", "aria-label", "onSelect"])], 10, _hoisted_1$9);
+}
+const FNavigationMenu = /* @__PURE__ */ _export_sfc$1(_sfc_main$a, [["render", _sfc_render$7]]);
+const _sfc_main$7$1 = /* @__PURE__ */ defineComponent({
+  name: "FPageHeader",
+  components: {
+    ISkipLink
+  },
+  inheritAttrs: true,
+  props: {
+    /**
+     * Render skiplink.
+     *
+     * When set to a non-empty string the skiplink feature is enabled.
+     * The string is the id of the element to move focus to.
+     *
+     * When set to empty string (default) the skiplink feature is disabled.
+     */
+    skipLink: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    /**
+     * HTML element type for header.
+     */
+    headerTag: {
+      default: "span",
+      required: false,
+      validator(value) {
+        return ["span", "h1"].includes(value);
+      }
+    }
+  },
+  computed: {
+    skipLinkAnchor() {
+      const {
+        skipLink
+      } = this;
+      if (skipLink === "") {
+        return null;
+      } else {
+        return `#${skipLink}`;
+      }
+    },
+    hasLogo() {
+      return Boolean(this.$slots.logo);
+    }
+  }
+});
+const _hoisted_1$6 = {
+  class: "page-header__root"
+};
+const _hoisted_2$4 = {
+  key: 0
+};
+const _hoisted_3$3 = {
+  ref: "header",
+  class: "page-header"
+};
+const _hoisted_4$2 = {
+  key: 0,
+  class: "page-header__logo"
+};
+const _hoisted_5$2 = {
+  class: "page-header__right"
+};
+const _hoisted_6$2 = {
+  class: "page-header__right-slot"
+};
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_i_skip_link = resolveComponent("i-skip-link");
+  return openBlock(), createElementBlock("div", _hoisted_1$6, [_ctx.skipLinkAnchor ? (openBlock(), createElementBlock("nav", _hoisted_2$4, [createVNode(_component_i_skip_link, {
+    href: _ctx.skipLinkAnchor
+  }, {
+    default: withCtx(() => [renderSlot(_ctx.$slots, "skip-link-text")]),
+    _: 3
+  }, 8, ["href"])])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode("div", _hoisted_3$3, [_ctx.hasLogo ? (openBlock(), createElementBlock("div", _hoisted_4$2, [renderSlot(_ctx.$slots, "logo")])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), (openBlock(), createBlock(resolveDynamicComponent(_ctx.headerTag), {
+    class: "page-header__app-name"
+  }, {
+    default: withCtx(() => [renderSlot(_ctx.$slots, "default")]),
+    _: 3
+  })), _cache[1] || (_cache[1] = createTextVNode()), createBaseVNode("div", _hoisted_5$2, [createBaseVNode("div", _hoisted_6$2, [renderSlot(_ctx.$slots, "right")])])], 512)]);
+}
+const FPageHeader = /* @__PURE__ */ _export_sfc$1(_sfc_main$7$1, [["render", _sfc_render$4]]);
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -21312,12 +24345,109 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$1 = {};
-function _sfc_render$1(_ctx, _cache) {
-  const _component_router_view = resolveComponent("router-view");
-  return openBlock(), createBlock(_component_router_view);
+const _sfc_main$8 = {};
+const _hoisted_1$5 = { class: "contextbar" };
+function _sfc_render$2(_ctx, _cache) {
+  return openBlock(), createElementBlock("div", _hoisted_1$5, [..._cache[0] || (_cache[0] = [
+    createBaseVNode("div", { class: "contextbar__forman" }, "KAT_ANS", -1),
+    createBaseVNode("div", { clas: "contextbar__pnr" }, "19120211-9151", -1),
+    createBaseVNode("div", { clas: "contextbar__name" }, "Test Testorsson", -1)
+  ])]);
 }
-const App = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+const XContextBar = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$2], ["__scopeId", "data-v-f3c4fc0f"]]);
+const _hoisted_1$4 = ["slot"];
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+  __name: "XExpensePanel",
+  props: {
+    name: {},
+    exclusive: {}
+  },
+  setup(__props) {
+    const XExpensePanel = _sfc_main$t;
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(XExpensePanel), {
+        name: __props.name,
+        exclusive: __props.exclusive
+      }, {
+        default: withCtx(({ item, content: content2 }) => [
+          createBaseVNode("div", { slot: content2 }, [
+            createBaseVNode("dl", null, [
+              _cache[0] || (_cache[0] = createBaseVNode("dt", null, "ID", -1)),
+              createBaseVNode("dd", null, toDisplayString(item.id), 1),
+              _cache[1] || (_cache[1] = createBaseVNode("dt", null, "Beskrivning", -1)),
+              createBaseVNode("dd", null, toDisplayString(item.description), 1),
+              _cache[2] || (_cache[2] = createBaseVNode("dt", null, "Belopp", -1)),
+              createBaseVNode("dd", null, toDisplayString(item.amount) + " kr", 1)
+            ])
+          ], 8, _hoisted_1$4)
+        ]),
+        _: 1
+      }, 8, ["name", "exclusive"]);
+    };
+  }
+});
+const _hoisted_1$3 = ["slot"];
+const _hoisted_2$2 = ["slot"];
+const _hoisted_3 = ["slot"];
+const sourceUrl = "https://github.com/Forsakringskassan/designsystem/blob/main/examples/page-layout/src/App.vue";
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+  __name: "XLeftPanel",
+  setup(__props) {
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(_sfc_main$b), null, {
+        default: withCtx(({ isOpen, header: header2, footer: footer2, content: content2 }) => [
+          isOpen ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+            createBaseVNode("h1", { slot: header2 }, "Rubrik", 8, _hoisted_1$3),
+            createBaseVNode("p", { slot: content2 }, "Innehåll", 8, _hoisted_2$2),
+            createBaseVNode("div", { slot: footer2 }, [
+              createBaseVNode("a", {
+                class: "anchor",
+                href: sourceUrl,
+                target: "_blank"
+              }, "Visa källkod")
+            ], 8, _hoisted_3)
+          ], 64)) : createCommentVNode("", true)
+        ]),
+        _: 1
+      });
+    };
+  }
+});
+const _hoisted_1$2 = ["slot"];
+const _hoisted_2$1 = ["slot"];
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  __name: "XPersonPanel",
+  props: {
+    name: {},
+    exclusive: {}
+  },
+  setup(__props) {
+    const XPersonPanel = _sfc_main$t;
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(XPersonPanel), {
+        name: __props.name,
+        exclusive: __props.exclusive
+      }, {
+        default: withCtx(({ item, header: header2, content: content2 }) => [
+          createBaseVNode("h2", { slot: header2 }, "Detaljer om person", 8, _hoisted_1$2),
+          createBaseVNode("div", { slot: content2 }, [
+            createBaseVNode("dl", null, [
+              _cache[0] || (_cache[0] = createBaseVNode("dt", null, "Namn", -1)),
+              createBaseVNode("dd", null, toDisplayString(item.name), 1),
+              _cache[1] || (_cache[1] = createBaseVNode("dt", null, "Address", -1)),
+              createBaseVNode("dd", null, toDisplayString(item.adress ?? "-"), 1),
+              _cache[2] || (_cache[2] = createBaseVNode("dt", null, "Stad", -1)),
+              createBaseVNode("dd", null, toDisplayString(item.city ?? "-"), 1),
+              _cache[3] || (_cache[3] = createBaseVNode("dt", null, "Bil", -1)),
+              createBaseVNode("dd", null, toDisplayString(item.car ?? "-"), 1)
+            ])
+          ], 8, _hoisted_2$1)
+        ]),
+        _: 1
+      }, 8, ["name", "exclusive"]);
+    };
+  }
+});
 const isBrowser = typeof document !== "undefined";
 function isRouteComponent(component) {
   return typeof component === "object" || "displayName" in component || "props" in component || "__vccOpts" in component;
@@ -21487,13 +24617,13 @@ const BEFORE_HASH_RE = /^[^#]+#/;
 function createHref(base, location2) {
   return base.replace(BEFORE_HASH_RE, "#") + location2;
 }
-function getElementPosition(el, offset) {
+function getElementPosition(el, offset2) {
   const docRect = document.documentElement.getBoundingClientRect();
   const elRect = el.getBoundingClientRect();
   return {
-    behavior: offset.behavior,
-    left: elRect.left - docRect.left - (offset.left || 0),
-    top: elRect.top - docRect.top - (offset.top || 0)
+    behavior: offset2.behavior,
+    left: elRect.left - docRect.left - (offset2.left || 0),
+    top: elRect.top - docRect.top - (offset2.top || 0)
   };
 }
 const computeScrollPosition = () => ({
@@ -22846,62 +25976,230 @@ function createRouter(options) {
   }
   return router2;
 }
-const _sfc_main = /* @__PURE__ */ defineComponent({
-  components: { FTextField },
-  data() {
-    return {
-      awesomeModel: ""
+function useRouter() {
+  return inject(routerKey);
+}
+const _hoisted_1$1 = { class: "toolbar" };
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  __name: "XToolbar",
+  setup(__props) {
+    const router2 = useRouter();
+    const bar1 = [
+      { label: "Översikt", route: "overview" },
+      { label: "Journal", route: "journal" },
+      { label: "Dokument", route: "documents" }
+    ];
+    const bar2 = [
+      { label: "Kundinformation", route: "ROUTE_1" },
+      { label: "Kundens ärenden", route: "ROUTE_2" },
+      { label: "Serviceåtgärder", route: "ROUTE_3" }
+    ];
+    function onSelectRoute(route) {
+      router2.push({ name: route });
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1$1, [
+        createVNode(unref(FNavigationMenu), {
+          "aria-label": "Primary toolbar",
+          routes: bar1,
+          onSelectedRoute: onSelectRoute
+        }),
+        createVNode(unref(FNavigationMenu), {
+          "aria-label": "Secondary toolbar",
+          routes: bar2
+        })
+      ]);
     };
   }
 });
-const _hoisted_1 = { class: "sandbox-root" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_text_field = resolveComponent("f-text-field");
-  const _directive_validation = resolveDirective("validation");
-  return openBlock(), createElementBlock("div", _hoisted_1, [
-    _cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
-    _cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
-    _cache[4] || (_cache[4] = createBaseVNode("p", null, [
-      createBaseVNode("strong", null, "Ändra och labba gärna här men glöm inte återställa innan merge!")
-    ], -1)),
-    _cache[5] || (_cache[5] = createBaseVNode("hr", null, null, -1)),
-    withDirectives((openBlock(), createBlock(_component_f_text_field, {
-      id: "awesome-field",
-      modelValue: _ctx.awesomeModel,
-      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.awesomeModel = $event)
-    }, {
-      default: withCtx(() => [..._cache[1] || (_cache[1] = [
-        createTextVNode(" Inmatningsfält. ", -1)
-      ])]),
-      description: withCtx(({ descriptionClass }) => [
-        createBaseVNode("span", {
-          class: normalizeClass(descriptionClass)
-        }, " Lorem ipsum dolor sit amet. ", 2)
-      ]),
-      _: 1
-    }, 8, ["modelValue"])), [
-      [
-        _directive_validation,
-        { maxLength: { length: 10 } },
-        void 0,
-        {
-          required: true,
-          maxLength: true
+const _hoisted_1 = ["slot"];
+const _hoisted_2 = ["slot"];
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  __name: "App",
+  setup(__props) {
+    registerLayout({
+      name: "awesome-layout",
+      areas: {
+        header: {
+          attachPanel: "none",
+          direction: "column"
+        },
+        left: {
+          attachPanel: "left",
+          direction: "column"
+        },
+        contextbar: {
+          attachPanel: "none",
+          direction: "row"
+        },
+        toolbar: {
+          attachPanel: "none",
+          direction: "row"
+        },
+        content: {
+          attachPanel: "none",
+          direction: "column",
+          scroll: true
+        },
+        right: {
+          attachPanel: "right",
+          direction: "column"
+        },
+        footer: {
+          attachPanel: "none",
+          direction: "column"
         }
-      ]
-    ])
-  ]);
+      }
+    });
+    return (_ctx, _cache) => {
+      const _component_router_view = resolveComponent("router-view");
+      return openBlock(), createBlock(unref(_sfc_main$x), { layout: "awesome-layout" }, {
+        default: withCtx(({ header: header2, contextbar, toolbar, content: content2, left, right }) => [
+          createBaseVNode("header", { slot: header2 }, [
+            createVNode(unref(FPageHeader), null, {
+              logo: withCtx(() => [
+                createVNode(unref(_sfc_main$e), { size: "small" }, {
+                  default: withCtx(() => [..._cache[0] || (_cache[0] = [
+                    createTextVNode("Logo", -1)
+                  ])]),
+                  _: 1
+                })
+              ]),
+              right: withCtx(() => [..._cache[1] || (_cache[1] = [
+                createTextVNode(" Namn Namnsson ", -1)
+              ])]),
+              default: withCtx(() => [
+                _cache[2] || (_cache[2] = createTextVNode(" Application layout components ", -1))
+              ]),
+              _: 1
+            })
+          ], 8, _hoisted_1),
+          createVNode(unref(XContextBar), { slot: contextbar }, null, 8, ["slot"]),
+          createVNode(unref(_sfc_main$4), { slot: toolbar }, null, 8, ["slot"]),
+          createVNode(unref(_sfc_main$v), {
+            slot: left,
+            min: "200px 10%",
+            max: "40%",
+            initial: "600px"
+          }, {
+            default: withCtx(() => [
+              createVNode(unref(_sfc_main$6))
+            ]),
+            _: 1
+          }, 8, ["slot"]),
+          createBaseVNode("main", { slot: content2 }, [
+            createVNode(_component_router_view)
+          ], 8, _hoisted_2),
+          createVNode(unref(_sfc_main$v), {
+            slot: right,
+            min: "200px 10%",
+            max: "40%",
+            initial: "200px"
+          }, {
+            default: withCtx(() => [
+              createVNode(unref(_sfc_main$5), {
+                name: "person-panel",
+                exclusive: "right"
+              }),
+              createVNode(unref(_sfc_main$7), {
+                name: "expense-panel",
+                exclusive: "right"
+              })
+            ]),
+            _: 1
+          }, 8, ["slot"])
+        ]),
+        _: 1
+      });
+    };
+  }
+});
+const App = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-7fd1e637"]]);
+const _sfc_main$2 = {};
+function _sfc_render$1(_ctx, _cache) {
+  return openBlock(), createElementBlock(Fragment, null, [
+    _cache[0] || (_cache[0] = createBaseVNode("h1", null, "Dokument", -1)),
+    _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))
+  ], 64);
 }
-const DefaultView = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const XDocumentView = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
+const _sfc_main$1 = {};
+function _sfc_render(_ctx, _cache) {
+  return openBlock(), createElementBlock(Fragment, null, [
+    _cache[0] || (_cache[0] = createBaseVNode("h1", null, "Journal", -1)),
+    _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))
+  ], 64);
+}
+const XJournalView = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  __name: "XOverviewView",
+  setup(__props) {
+    const personPanel = useDetailsPanel("person-panel");
+    const expensePanel = useDetailsPanel("expense-panel");
+    const ankeborgare = [
+      { name: "Kalle Anka", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: "Skruttomobil" },
+      { name: "Kajsa Anka", adress: null, city: "Ankeborg", car: null },
+      { name: "Magica De Hex", adress: "Vulkanen", city: "Vesuvius", car: null },
+      { name: "Bolivar", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: null }
+    ];
+    function showPerson(item) {
+      personPanel.open(item);
+    }
+    function openThing() {
+      expensePanel.open({ id: 1, description: "Hallonsoda", amount: 25 });
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock(Fragment, null, [
+        _cache[2] || (_cache[2] = createBaseVNode("h1", null, "Översikt", -1)),
+        _cache[3] || (_cache[3] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1)),
+        createBaseVNode("button", {
+          type: "button",
+          class: "button button--secondary",
+          onClick: openThing
+        }, "Öppna en helt annan detaljpanel"),
+        createVNode(unref(_sfc_main$k), {
+          rows: ankeborgare,
+          "key-attribute": "name",
+          "aria-labelledby": "ankeborgare",
+          onClick: _cache[0] || (_cache[0] = ($event) => showPerson($event))
+        }, {
+          caption: withCtx(() => [..._cache[1] || (_cache[1] = [
+            createTextVNode("Ankeborgare", -1)
+          ])]),
+          default: withCtx(({ row }) => [
+            createVNode(unref(_sfc_main$B), {
+              name: "name",
+              title: "Namn"
+            }, {
+              default: withCtx(() => [
+                createTextVNode(toDisplayString(row.name), 1)
+              ]),
+              _: 2
+            }, 1024),
+            createVNode(unref(_sfc_main$B), {
+              name: "adress",
+              title: "Address"
+            }, {
+              default: withCtx(() => [
+                createTextVNode(toDisplayString(row.adress), 1)
+              ]),
+              _: 2
+            }, 1024)
+          ]),
+          _: 1
+        })
+      ], 64);
+    };
+  }
+});
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [{ path: "/", name: "", component: DefaultView }]
+  routes: [
+    { path: "/", name: "overview", component: _sfc_main },
+    { path: "/journal", name: "journal", component: XJournalView },
+    { path: "/documents", name: "documents", component: XDocumentView }
+  ]
 });
-config.production = false;
-config.popupContainer = "#app";
 const app = createApp(App);
 app.use(router);
-app.use(ValidationPlugin);
-app.use(TestPlugin);
 app.mount("#app");
-setRunningContext(app);

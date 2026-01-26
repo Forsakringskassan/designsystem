@@ -1,9 +1,9 @@
-// ../../node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
+// node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
 import { defineComponent as defineComponent2 } from "vue";
 import { defineComponent as _defineComponent } from "vue";
 import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from "vue";
 
-// ../../node_modules/prettier/plugins/html.mjs
+// node_modules/prettier/plugins/html.mjs
 var Jr = Object.defineProperty;
 var Zr = (e) => {
   throw TypeError(e);
@@ -2928,7 +2928,7 @@ var yl = gt({ name: "vue", isTagNameCaseSensitive: true, shouldParseAsRawText(e,
 var Nl = gt({ name: "lwc", canSelfClose: false });
 var Ll = { html: hs };
 
-// ../../node_modules/prettier/standalone.mjs
+// node_modules/prettier/standalone.mjs
 var Zn2 = Object.create;
 var Mt2 = Object.defineProperty;
 var eo2 = Object.getOwnPropertyDescriptor;
@@ -5393,7 +5393,7 @@ Yt(wu, { builders: () => Wa2, printer: () => $a2, utils: () => Va2 });
 var Wa2 = { join: Ie2, line: ut2, softline: or2, hardline: V2, literalline: Qe2, group: Kt, conditionalGroup: tr2, fill: er2, lineSuffix: ve2, lineSuffixBoundary: ar2, cursor: ee, breakParent: ce2, ifBreak: ur2, trim: ir2, indent: ae, indentIfBreak: rr2, align: De2, addAlignmentToDoc: tt2, markAsRoot: et2, dedentToRoot: Qu, dedent: Zu, hardlineWithoutBreakParent: ke, literallineWithoutBreakParent: Gt, label: nr, concat: (e) => e };
 var $a2 = { printDocToString: Ce2 };
 var Va2 = { willBreak: Ku, traverseDoc: we2, findInDoc: Xe2, mapDoc: Pe2, removeLines: zu, stripTrailingHardline: qe2, replaceEndOfLine: Ju, canBreak: Hu };
-var Mn2 = "3.8.0";
+var Mn2 = "3.8.1";
 var Pu = {};
 Yt(Pu, { addDanglingComment: () => ue2, addLeadingComment: () => fe2, addTrailingComment: () => le, getAlignmentSize: () => he2, getIndentSize: () => Yn2, getMaxContinuousCount: () => jn2, getNextNonSpaceNonCommentCharacter: () => Un2, getNextNonSpaceNonCommentCharacterIndex: () => ni2, getPreferredQuote: () => Vn2, getStringWidth: () => Re2, hasNewline: () => z, hasNewlineInRange: () => Kn2, hasSpaces: () => Gn2, isNextLineEmpty: () => Di2, isNextLineEmptyAfterIndex: () => kt2, isPreviousLineEmpty: () => ai2, makeString: () => si2, skip: () => ye2, skipEverythingButNewLine: () => ot2, skipInlineComment: () => xe2, skipNewline: () => K2, skipSpaces: () => Y2, skipToLineEnd: () => nt2, skipTrailingComment: () => Be2, skipWhitespace: () => Fr2 });
 function Ka2(e, t) {
@@ -5502,7 +5502,7 @@ async function ci2(e, t) {
 var fi2 = me2(it2, 0);
 var li2 = { parse: me2(In2), formatAST: me2(kn2), formatDoc: me2(vn2), printToDoc: me2(Rn2), printDocToString: me2(Ln2) };
 
-// ../../node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
+// node_modules/@forsakringskassan/docs-live-example/dist/esm/index.js
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, createCommentVNode as _createCommentVNode, vModelRadio as _vModelRadio, withDirectives as _withDirectives, openBlock as _openBlock, createElementBlock as _createElementBlock, Fragment as _Fragment } from "vue";
 import { compile, defineComponent, h as h2 } from "vue";
 import { resolveComponent as _resolveComponent, createVNode as _createVNode, openBlock as _openBlock2, createElementBlock as _createElementBlock2, createCommentVNode as _createCommentVNode2, createElementVNode as _createElementVNode2, Fragment as _Fragment2, renderSlot as _renderSlot, normalizeClass as _normalizeClass } from "vue";

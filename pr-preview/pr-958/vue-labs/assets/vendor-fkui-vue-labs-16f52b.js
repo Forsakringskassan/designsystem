@@ -1,7 +1,318 @@
 // dist/esm/index.esm.js
-import { nextTick, toValue, defineComponent, useTemplateRef, computed, openBlock, createElementBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref, inject, withDirectives, vShow, onMounted, vModelText, toRef, watch, onUpdated, useModel, useSlots, provide, Fragment, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, debounce, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
-import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, FContextMenu, IComboboxDropdown, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, FContextMenu, IComboboxDropdown, IPopupError, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+
+// ../../node_modules/@vueuse/shared/index.mjs
+import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
+function tryOnScopeDispose(fn) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn);
+    return true;
+  }
+  return false;
+}
+var isClient = typeof window !== "undefined" && typeof document !== "undefined";
+var isWorker = typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
+var notNullish = (val) => val != null;
+var toString = Object.prototype.toString;
+var isObject = (val) => toString.call(val) === "[object Object]";
+var noop = () => {
+};
+function cacheStringFunction(fn) {
+  const cache = /* @__PURE__ */ Object.create(null);
+  return (str) => {
+    const hit = cache[str];
+    return hit || (cache[str] = fn(str));
+  };
+}
+var hyphenateRE = /\B([A-Z])/g;
+var hyphenate = cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
+var camelizeRE = /-(\w)/g;
+var camelize = cacheStringFunction((str) => {
+  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
+});
+function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+function watchImmediate(source, cb, options) {
+  return watch(
+    source,
+    cb,
+    {
+      ...options,
+      immediate: true
+    }
+  );
+}
+
+// ../../node_modules/@vueuse/core/index.mjs
+import { isRef as isRef2, shallowRef as shallowRef2, ref as ref2, watchEffect as watchEffect2, computed as computed2, inject as inject2, defineComponent, h, TransitionGroup, shallowReactive, Fragment, toValue, unref as unref2, getCurrentInstance as getCurrentInstance2, onMounted as onMounted2, watch as watch2, customRef as customRef2, onUpdated, readonly as readonly2, reactive as reactive2, hasInjectionContext as hasInjectionContext2, toRaw, nextTick as nextTick2, markRaw, getCurrentScope as getCurrentScope2, isReadonly, onBeforeUpdate } from "vue";
+var defaultWindow = isClient ? window : void 0;
+var defaultDocument = isClient ? window.document : void 0;
+var defaultNavigator = isClient ? window.navigator : void 0;
+var defaultLocation = isClient ? window.location : void 0;
+function unrefElement(elRef) {
+  var _a;
+  const plain = toValue(elRef);
+  return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
+}
+function useEventListener(...args) {
+  const cleanups = [];
+  const cleanup = () => {
+    cleanups.forEach((fn) => fn());
+    cleanups.length = 0;
+  };
+  const register = (el, event, listener, options) => {
+    el.addEventListener(event, listener, options);
+    return () => el.removeEventListener(event, listener, options);
+  };
+  const firstParamTargets = computed2(() => {
+    const test = toArray(toValue(args[0])).filter((e) => e != null);
+    return test.every((e) => typeof e !== "string") ? test : void 0;
+  });
+  const stopWatch = watchImmediate(
+    () => {
+      var _a, _b;
+      return [
+        (_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
+        toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
+        toArray(unref2(firstParamTargets.value ? args[2] : args[1])),
+        // @ts-expect-error - TypeScript gets the correct types, but somehow still complains
+        toValue(firstParamTargets.value ? args[3] : args[2])
+      ];
+    },
+    ([raw_targets, raw_events, raw_listeners, raw_options]) => {
+      cleanup();
+      if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length))
+        return;
+      const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
+      cleanups.push(
+        ...raw_targets.flatMap(
+          (el) => raw_events.flatMap(
+            (event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone))
+          )
+        )
+      );
+    },
+    { flush: "post" }
+  );
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(cleanup);
+  return stop;
+}
+function useMounted() {
+  const isMounted = shallowRef2(false);
+  const instance = getCurrentInstance2();
+  if (instance) {
+    onMounted2(() => {
+      isMounted.value = true;
+    }, instance);
+  }
+  return isMounted;
+}
+function useSupported(callback) {
+  const isMounted = useMounted();
+  return computed2(() => {
+    isMounted.value;
+    return Boolean(callback());
+  });
+}
+function useMutationObserver(target, callback, options = {}) {
+  const { window: window2 = defaultWindow, ...mutationOptions } = options;
+  let observer;
+  const isSupported = useSupported(() => window2 && "MutationObserver" in window2);
+  const cleanup = () => {
+    if (observer) {
+      observer.disconnect();
+      observer = void 0;
+    }
+  };
+  const targets = computed2(() => {
+    const value = toValue(target);
+    const items = toArray(value).map(unrefElement).filter(notNullish);
+    return new Set(items);
+  });
+  const stopWatch = watch2(
+    () => targets.value,
+    (targets2) => {
+      cleanup();
+      if (isSupported.value && targets2.size) {
+        observer = new MutationObserver(callback);
+        targets2.forEach((el) => observer.observe(el, mutationOptions));
+      }
+    },
+    { immediate: true, flush: "post" }
+  );
+  const takeRecords = () => {
+    return observer == null ? void 0 : observer.takeRecords();
+  };
+  const stop = () => {
+    stopWatch();
+    cleanup();
+  };
+  tryOnScopeDispose(stop);
+  return {
+    isSupported,
+    stop,
+    takeRecords
+  };
+}
+function onElementRemoval(target, callback, options = {}) {
+  const {
+    window: window2 = defaultWindow,
+    document: document2 = window2 == null ? void 0 : window2.document,
+    flush = "sync"
+  } = options;
+  if (!window2 || !document2)
+    return noop;
+  let stopFn;
+  const cleanupAndUpdate = (fn) => {
+    stopFn == null ? void 0 : stopFn();
+    stopFn = fn;
+  };
+  const stopWatch = watchEffect2(() => {
+    const el = unrefElement(target);
+    if (el) {
+      const { stop } = useMutationObserver(
+        document2,
+        (mutationsList) => {
+          const targetRemoved = mutationsList.map((mutation) => [...mutation.removedNodes]).flat().some((node) => node === el || node.contains(el));
+          if (targetRemoved) {
+            callback(mutationsList);
+          }
+        },
+        {
+          window: window2,
+          childList: true,
+          subtree: true
+        }
+      );
+      cleanupAndUpdate(stop);
+    }
+  }, { flush });
+  const stopHandle = () => {
+    stopWatch();
+    cleanupAndUpdate();
+  };
+  tryOnScopeDispose(stopHandle);
+  return stopHandle;
+}
+function useActiveElement(options = {}) {
+  var _a;
+  const {
+    window: window2 = defaultWindow,
+    deep = true,
+    triggerOnRemoval = false
+  } = options;
+  const document2 = (_a = options.document) != null ? _a : window2 == null ? void 0 : window2.document;
+  const getDeepActiveElement = () => {
+    var _a2;
+    let element = document2 == null ? void 0 : document2.activeElement;
+    if (deep) {
+      while (element == null ? void 0 : element.shadowRoot)
+        element = (_a2 = element == null ? void 0 : element.shadowRoot) == null ? void 0 : _a2.activeElement;
+    }
+    return element;
+  };
+  const activeElement = shallowRef2();
+  const trigger = () => {
+    activeElement.value = getDeepActiveElement();
+  };
+  if (window2) {
+    const listenerOptions = {
+      capture: true,
+      passive: true
+    };
+    useEventListener(
+      window2,
+      "blur",
+      (event) => {
+        if (event.relatedTarget !== null)
+          return;
+        trigger();
+      },
+      listenerOptions
+    );
+    useEventListener(
+      window2,
+      "focus",
+      trigger,
+      listenerOptions
+    );
+  }
+  if (triggerOnRemoval) {
+    onElementRemoval(activeElement, trigger, { document: document2 });
+  }
+  trigger();
+  return activeElement;
+}
+function useElementHover(el, options = {}) {
+  const {
+    delayEnter = 0,
+    delayLeave = 0,
+    triggerOnRemoval = false,
+    window: window2 = defaultWindow
+  } = options;
+  const isHovered = shallowRef2(false);
+  let timer;
+  const toggle = (entering) => {
+    const delay = entering ? delayEnter : delayLeave;
+    if (timer) {
+      clearTimeout(timer);
+      timer = void 0;
+    }
+    if (delay)
+      timer = setTimeout(() => isHovered.value = entering, delay);
+    else
+      isHovered.value = entering;
+  };
+  if (!window2)
+    return isHovered;
+  useEventListener(el, "mouseenter", () => toggle(true), { passive: true });
+  useEventListener(el, "mouseleave", () => toggle(false), { passive: true });
+  if (triggerOnRemoval) {
+    onElementRemoval(
+      computed2(() => unrefElement(el)),
+      () => toggle(false)
+    );
+  }
+  return isHovered;
+}
+var EVENT_FOCUS_IN = "focusin";
+var EVENT_FOCUS_OUT = "focusout";
+var PSEUDO_CLASS_FOCUS_WITHIN = ":focus-within";
+function useFocusWithin(target, options = {}) {
+  const { window: window2 = defaultWindow } = options;
+  const targetElement = computed2(() => unrefElement(target));
+  const _focused = shallowRef2(false);
+  const focused = computed2(() => _focused.value);
+  const activeElement = useActiveElement(options);
+  if (!window2 || !activeElement.value) {
+    return { focused };
+  }
+  const listenerOptions = { passive: true };
+  useEventListener(targetElement, EVENT_FOCUS_IN, () => _focused.value = true, listenerOptions);
+  useEventListener(targetElement, EVENT_FOCUS_OUT, () => {
+    var _a, _b, _c;
+    return _focused.value = (_c = (_b = (_a = targetElement.value) == null ? void 0 : _a.matches) == null ? void 0 : _b.call(_a, PSEUDO_CLASS_FOCUS_WITHIN)) != null ? _c : false;
+  }, listenerOptions);
+  return { focused };
+}
+var DEFAULT_UNITS = [
+  { max: 6e4, value: 1e3, name: "second" },
+  { max: 276e4, value: 6e4, name: "minute" },
+  { max: 72e6, value: 36e5, name: "hour" },
+  { max: 5184e5, value: 864e5, name: "day" },
+  { max: 24192e5, value: 6048e5, name: "week" },
+  { max: 28512e6, value: 2592e6, name: "month" },
+  { max: Number.POSITIVE_INFINITY, value: 31536e6, name: "year" }
+];
+
+// dist/esm/index.esm.js
 var es_iterator_constructor = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
@@ -127,10 +438,10 @@ function requireClassofRaw() {
   if (hasRequiredClassofRaw) return classofRaw;
   hasRequiredClassofRaw = 1;
   var uncurryThis = requireFunctionUncurryThis();
-  var toString2 = uncurryThis({}.toString);
+  var toString22 = uncurryThis({}.toString);
   var stringSlice = uncurryThis("".slice);
   classofRaw = function(it) {
-    return stringSlice(toString2(it), 8, -1);
+    return stringSlice(toString22(it), 8, -1);
   };
   return classofRaw;
 }
@@ -199,16 +510,16 @@ function requireIsCallable() {
   };
   return isCallable;
 }
-var isObject;
+var isObject2;
 var hasRequiredIsObject;
 function requireIsObject() {
-  if (hasRequiredIsObject) return isObject;
+  if (hasRequiredIsObject) return isObject2;
   hasRequiredIsObject = 1;
   var isCallable2 = requireIsCallable();
-  isObject = function(it) {
+  isObject2 = function(it) {
     return typeof it == "object" ? it !== null : isCallable2(it);
   };
-  return isObject;
+  return isObject2;
 }
 var getBuiltIn;
 var hasRequiredGetBuiltIn;
@@ -240,8 +551,8 @@ function requireEnvironmentUserAgent() {
   if (hasRequiredEnvironmentUserAgent) return environmentUserAgent;
   hasRequiredEnvironmentUserAgent = 1;
   var globalThis2 = requireGlobalThis();
-  var navigator = globalThis2.navigator;
-  var userAgent = navigator && navigator.userAgent;
+  var navigator2 = globalThis2.navigator;
+  var userAgent = navigator2 && navigator2.userAgent;
   environmentUserAgent = userAgent ? String(userAgent) : "";
   return environmentUserAgent;
 }
@@ -252,9 +563,9 @@ function requireEnvironmentV8Version() {
   hasRequiredEnvironmentV8Version = 1;
   var globalThis2 = requireGlobalThis();
   var userAgent = requireEnvironmentUserAgent();
-  var process = globalThis2.process;
+  var process2 = globalThis2.process;
   var Deno2 = globalThis2.Deno;
-  var versions = process && process.versions || Deno2 && Deno2.version;
+  var versions = process2 && process2.versions || Deno2 && Deno2.version;
   var v8 = versions && versions.v8;
   var match, version;
   if (v8) {
@@ -363,13 +674,13 @@ function requireOrdinaryToPrimitive() {
   hasRequiredOrdinaryToPrimitive = 1;
   var call = requireFunctionCall();
   var isCallable2 = requireIsCallable();
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var $TypeError = TypeError;
   ordinaryToPrimitive = function(input, pref) {
     var fn, val;
-    if (pref === "string" && isCallable2(fn = input.toString) && !isObject2(val = call(fn, input))) return val;
-    if (isCallable2(fn = input.valueOf) && !isObject2(val = call(fn, input))) return val;
-    if (pref !== "string" && isCallable2(fn = input.toString) && !isObject2(val = call(fn, input))) return val;
+    if (pref === "string" && isCallable2(fn = input.toString) && !isObject22(val = call(fn, input))) return val;
+    if (isCallable2(fn = input.valueOf) && !isObject22(val = call(fn, input))) return val;
+    if (pref !== "string" && isCallable2(fn = input.toString) && !isObject22(val = call(fn, input))) return val;
     throw new $TypeError("Can't convert object to primitive value");
   };
   return ordinaryToPrimitive;
@@ -416,10 +727,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.47.0",
+    version: "3.48.0",
     mode: IS_PURE ? "pure" : "global",
-    copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru), 2025 CoreJS Company (core-js.io)",
-    license: "https://github.com/zloirock/core-js/blob/v3.47.0/LICENSE",
+    copyright: "\xA9 2013\u20132025 Denis Pushkarev (zloirock.ru), 2025\u20132026 CoreJS Company (core-js.io). All rights reserved.",
+    license: "https://github.com/zloirock/core-js/blob/v3.48.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -455,7 +766,7 @@ function requireHasOwnProperty() {
   var uncurryThis = requireFunctionUncurryThis();
   var toObject2 = requireToObject();
   var hasOwnProperty = uncurryThis({}.hasOwnProperty);
-  hasOwnProperty_1 = Object.hasOwn || function hasOwn(it, key) {
+  hasOwnProperty_1 = Object.hasOwn || function hasOwn2(it, key) {
     return hasOwnProperty(toObject2(it), key);
   };
   return hasOwnProperty_1;
@@ -468,9 +779,9 @@ function requireUid() {
   var uncurryThis = requireFunctionUncurryThis();
   var id = 0;
   var postfix = Math.random();
-  var toString2 = uncurryThis(1.1.toString);
+  var toString22 = uncurryThis(1.1.toString);
   uid = function(key) {
-    return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString2(++id + postfix, 36);
+    return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString22(++id + postfix, 36);
   };
   return uid;
 }
@@ -481,7 +792,7 @@ function requireWellKnownSymbol() {
   hasRequiredWellKnownSymbol = 1;
   var globalThis2 = requireGlobalThis();
   var shared2 = requireShared();
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var uid2 = requireUid();
   var NATIVE_SYMBOL = requireSymbolConstructorDetection();
   var USE_SYMBOL_AS_UID = requireUseSymbolAsUid();
@@ -489,8 +800,8 @@ function requireWellKnownSymbol() {
   var WellKnownSymbolsStore = shared2("wks");
   var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol2["for"] || Symbol2 : Symbol2 && Symbol2.withoutSetter || uid2;
   wellKnownSymbol = function(name) {
-    if (!hasOwn(WellKnownSymbolsStore, name)) {
-      WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn(Symbol2, name) ? Symbol2[name] : createWellKnownSymbol("Symbol." + name);
+    if (!hasOwn2(WellKnownSymbolsStore, name)) {
+      WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn2(Symbol2, name) ? Symbol2[name] : createWellKnownSymbol("Symbol." + name);
     }
     return WellKnownSymbolsStore[name];
   };
@@ -502,7 +813,7 @@ function requireToPrimitive() {
   if (hasRequiredToPrimitive) return toPrimitive;
   hasRequiredToPrimitive = 1;
   var call = requireFunctionCall();
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var isSymbol2 = requireIsSymbol();
   var getMethod2 = requireGetMethod();
   var ordinaryToPrimitive2 = requireOrdinaryToPrimitive();
@@ -510,13 +821,13 @@ function requireToPrimitive() {
   var $TypeError = TypeError;
   var TO_PRIMITIVE = wellKnownSymbol2("toPrimitive");
   toPrimitive = function(input, pref) {
-    if (!isObject2(input) || isSymbol2(input)) return input;
+    if (!isObject22(input) || isSymbol2(input)) return input;
     var exoticToPrim = getMethod2(input, TO_PRIMITIVE);
     var result;
     if (exoticToPrim) {
       if (pref === void 0) pref = "default";
       result = call(exoticToPrim, input, pref);
-      if (!isObject2(result) || isSymbol2(result)) return result;
+      if (!isObject22(result) || isSymbol2(result)) return result;
       throw new $TypeError("Can't convert object to primitive value");
     }
     if (pref === void 0) pref = "number";
@@ -543,9 +854,9 @@ function requireDocumentCreateElement() {
   if (hasRequiredDocumentCreateElement) return documentCreateElement;
   hasRequiredDocumentCreateElement = 1;
   var globalThis2 = requireGlobalThis();
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var document2 = globalThis2.document;
-  var EXISTS = isObject2(document2) && isObject2(document2.createElement);
+  var EXISTS = isObject22(document2) && isObject22(document2.createElement);
   documentCreateElement = function(it) {
     return EXISTS ? document2.createElement(it) : {};
   };
@@ -578,7 +889,7 @@ function requireObjectGetOwnPropertyDescriptor() {
   var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
   var toIndexedObject2 = requireToIndexedObject();
   var toPropertyKey2 = requireToPropertyKey();
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var IE8_DOM_DEFINE = requireIe8DomDefine();
   var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
   objectGetOwnPropertyDescriptor.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
@@ -588,7 +899,7 @@ function requireObjectGetOwnPropertyDescriptor() {
       return $getOwnPropertyDescriptor(O, P);
     } catch (error) {
     }
-    if (hasOwn(O, P)) return createPropertyDescriptor2(!call(propertyIsEnumerableModule.f, O, P), O[P]);
+    if (hasOwn2(O, P)) return createPropertyDescriptor2(!call(propertyIsEnumerableModule.f, O, P), O[P]);
   };
   return objectGetOwnPropertyDescriptor;
 }
@@ -614,11 +925,11 @@ var hasRequiredAnObject;
 function requireAnObject() {
   if (hasRequiredAnObject) return anObject;
   hasRequiredAnObject = 1;
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var $String = String;
   var $TypeError = TypeError;
   anObject = function(argument) {
-    if (isObject2(argument)) return argument;
+    if (isObject22(argument)) return argument;
     throw new $TypeError($String(argument) + " is not an object");
   };
   return anObject;
@@ -693,10 +1004,10 @@ function requireFunctionName() {
   if (hasRequiredFunctionName) return functionName;
   hasRequiredFunctionName = 1;
   var DESCRIPTORS = requireDescriptors();
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var FunctionPrototype = Function.prototype;
   var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
-  var EXISTS = hasOwn(FunctionPrototype, "name");
+  var EXISTS = hasOwn2(FunctionPrototype, "name");
   var PROPER = EXISTS && (function something() {
   }).name === "something";
   var CONFIGURABLE = EXISTS && (!DESCRIPTORS || DESCRIPTORS && getDescriptor(FunctionPrototype, "name").configurable);
@@ -731,8 +1042,8 @@ function requireWeakMapBasicDetection() {
   hasRequiredWeakMapBasicDetection = 1;
   var globalThis2 = requireGlobalThis();
   var isCallable2 = requireIsCallable();
-  var WeakMap = globalThis2.WeakMap;
-  weakMapBasicDetection = isCallable2(WeakMap) && /native code/.test(String(WeakMap));
+  var WeakMap2 = globalThis2.WeakMap;
+  weakMapBasicDetection = isCallable2(WeakMap2) && /native code/.test(String(WeakMap2));
   return weakMapBasicDetection;
 }
 var sharedKey;
@@ -763,15 +1074,15 @@ function requireInternalState() {
   hasRequiredInternalState = 1;
   var NATIVE_WEAK_MAP = requireWeakMapBasicDetection();
   var globalThis2 = requireGlobalThis();
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var createNonEnumerableProperty2 = requireCreateNonEnumerableProperty();
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var shared2 = requireSharedStore();
   var sharedKey2 = requireSharedKey();
   var hiddenKeys2 = requireHiddenKeys();
   var OBJECT_ALREADY_INITIALIZED = "Object already initialized";
   var TypeError2 = globalThis2.TypeError;
-  var WeakMap = globalThis2.WeakMap;
+  var WeakMap2 = globalThis2.WeakMap;
   var set, get, has;
   var enforce = function(it) {
     return has(it) ? get(it) : set(it, {});
@@ -779,14 +1090,14 @@ function requireInternalState() {
   var getterFor = function(TYPE) {
     return function(it) {
       var state;
-      if (!isObject2(it) || (state = get(it)).type !== TYPE) {
+      if (!isObject22(it) || (state = get(it)).type !== TYPE) {
         throw new TypeError2("Incompatible receiver, " + TYPE + " required");
       }
       return state;
     };
   };
   if (NATIVE_WEAK_MAP || shared2.state) {
-    var store = shared2.state || (shared2.state = new WeakMap());
+    var store = shared2.state || (shared2.state = new WeakMap2());
     store.get = store.get;
     store.has = store.has;
     store.set = store.set;
@@ -806,16 +1117,16 @@ function requireInternalState() {
     var STATE = sharedKey2("state");
     hiddenKeys2[STATE] = true;
     set = function(it, metadata) {
-      if (hasOwn(it, STATE)) throw new TypeError2(OBJECT_ALREADY_INITIALIZED);
+      if (hasOwn2(it, STATE)) throw new TypeError2(OBJECT_ALREADY_INITIALIZED);
       metadata.facade = it;
       createNonEnumerableProperty2(it, STATE, metadata);
       return metadata;
     };
     get = function(it) {
-      return hasOwn(it, STATE) ? it[STATE] : {};
+      return hasOwn2(it, STATE) ? it[STATE] : {};
     };
     has = function(it) {
-      return hasOwn(it, STATE);
+      return hasOwn2(it, STATE);
     };
   }
   internalState = {
@@ -834,7 +1145,7 @@ function requireMakeBuiltIn() {
   var uncurryThis = requireFunctionUncurryThis();
   var fails2 = requireFails();
   var isCallable2 = requireIsCallable();
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var DESCRIPTORS = requireDescriptors();
   var CONFIGURABLE_FUNCTION_NAME = requireFunctionName().CONFIGURABLE;
   var inspectSource2 = requireInspectSource();
@@ -859,20 +1170,20 @@ function requireMakeBuiltIn() {
     }
     if (options && options.getter) name = "get " + name;
     if (options && options.setter) name = "set " + name;
-    if (!hasOwn(value, "name") || CONFIGURABLE_FUNCTION_NAME && value.name !== name) {
+    if (!hasOwn2(value, "name") || CONFIGURABLE_FUNCTION_NAME && value.name !== name) {
       if (DESCRIPTORS) defineProperty(value, "name", {
         value: name,
         configurable: true
       });
       else value.name = name;
     }
-    if (CONFIGURABLE_LENGTH && options && hasOwn(options, "arity") && value.length !== options.arity) {
+    if (CONFIGURABLE_LENGTH && options && hasOwn2(options, "arity") && value.length !== options.arity) {
       defineProperty(value, "length", {
         value: options.arity
       });
     }
     try {
-      if (options && hasOwn(options, "constructor") && options.constructor) {
+      if (options && hasOwn2(options, "constructor") && options.constructor) {
         if (DESCRIPTORS) defineProperty(value, "prototype", {
           writable: false
         });
@@ -880,12 +1191,12 @@ function requireMakeBuiltIn() {
     } catch (error) {
     }
     var state = enforceInternalState(value);
-    if (!hasOwn(state, "source")) {
+    if (!hasOwn2(state, "source")) {
       state.source = join(TEMPLATE, typeof name == "string" ? name : "");
     }
     return value;
   };
-  Function.prototype.toString = makeBuiltIn$1(function toString2() {
+  Function.prototype.toString = makeBuiltIn$1(function toString22() {
     return isCallable2(this) && getInternalState(this).source || inspectSource2(this);
   }, "toString");
   return makeBuiltIn.exports;
@@ -1030,7 +1341,7 @@ function requireObjectKeysInternal() {
   if (hasRequiredObjectKeysInternal) return objectKeysInternal;
   hasRequiredObjectKeysInternal = 1;
   var uncurryThis = requireFunctionUncurryThis();
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var toIndexedObject2 = requireToIndexedObject();
   var indexOf = requireArrayIncludes().indexOf;
   var hiddenKeys2 = requireHiddenKeys();
@@ -1040,8 +1351,8 @@ function requireObjectKeysInternal() {
     var i = 0;
     var result = [];
     var key;
-    for (key in O) !hasOwn(hiddenKeys2, key) && hasOwn(O, key) && push(result, key);
-    while (names.length > i) if (hasOwn(O, key = names[i++])) {
+    for (key in O) !hasOwn2(hiddenKeys2, key) && hasOwn2(O, key) && push(result, key);
+    while (names.length > i) if (hasOwn2(O, key = names[i++])) {
       ~indexOf(result, key) || push(result, key);
     }
     return result;
@@ -1099,7 +1410,7 @@ var hasRequiredCopyConstructorProperties;
 function requireCopyConstructorProperties() {
   if (hasRequiredCopyConstructorProperties) return copyConstructorProperties;
   hasRequiredCopyConstructorProperties = 1;
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var ownKeys2 = requireOwnKeys();
   var getOwnPropertyDescriptorModule = requireObjectGetOwnPropertyDescriptor();
   var definePropertyModule = requireObjectDefineProperty();
@@ -1109,7 +1420,7 @@ function requireCopyConstructorProperties() {
     var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
     for (var i = 0; i < keys.length; i++) {
       var key = keys[i];
-      if (!hasOwn(target, key) && !(exceptions && hasOwn(exceptions, key))) {
+      if (!hasOwn2(target, key) && !(exceptions && hasOwn2(exceptions, key))) {
         defineProperty(target, key, getOwnPropertyDescriptor(source, key));
       }
     }
@@ -1212,7 +1523,7 @@ var hasRequiredObjectGetPrototypeOf;
 function requireObjectGetPrototypeOf() {
   if (hasRequiredObjectGetPrototypeOf) return objectGetPrototypeOf;
   hasRequiredObjectGetPrototypeOf = 1;
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var isCallable2 = requireIsCallable();
   var toObject2 = requireToObject();
   var sharedKey2 = requireSharedKey();
@@ -1222,7 +1533,7 @@ function requireObjectGetPrototypeOf() {
   var ObjectPrototype = $Object.prototype;
   objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
     var object = toObject2(O);
-    if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
+    if (hasOwn2(object, IE_PROTO)) return object[IE_PROTO];
     var constructor = object.constructor;
     if (isCallable2(constructor) && object instanceof constructor) {
       return constructor.prototype;
@@ -1380,7 +1691,7 @@ function requireIteratorsCore() {
   hasRequiredIteratorsCore = 1;
   var fails2 = requireFails();
   var isCallable2 = requireIsCallable();
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var create = requireObjectCreate();
   var getPrototypeOf = requireObjectGetPrototypeOf();
   var defineBuiltIn2 = requireDefineBuiltIn();
@@ -1397,7 +1708,7 @@ function requireIteratorsCore() {
       if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
     }
   }
-  var NEW_ITERATOR_PROTOTYPE = !isObject2(IteratorPrototype) || fails2(function() {
+  var NEW_ITERATOR_PROTOTYPE = !isObject22(IteratorPrototype) || fails2(function() {
     var test = {};
     return IteratorPrototype[ITERATOR].call(test) !== test;
   });
@@ -1427,7 +1738,7 @@ function requireEs_iterator_constructor() {
   var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
   var createProperty2 = requireCreateProperty();
   var fails2 = requireFails();
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var wellKnownSymbol2 = requireWellKnownSymbol();
   var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
   var DESCRIPTORS = requireDescriptors();
@@ -1454,14 +1765,14 @@ function requireEs_iterator_constructor() {
         set: function(replacement) {
           anObject2(this);
           if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
-          if (hasOwn(this, key)) this[key] = replacement;
+          if (hasOwn2(this, key)) this[key] = replacement;
           else createProperty2(this, key, replacement);
         }
       });
     } else IteratorPrototype[key] = value;
   };
-  if (!hasOwn(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
-  if (FORCED || !hasOwn(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
+  if (!hasOwn2(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
+  if (FORCED || !hasOwn2(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
     defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
   }
   IteratorConstructor.prototype = IteratorPrototype;
@@ -2051,7 +2362,7 @@ function getCell(element) {
   return closest;
 }
 async function setDefaultCellTarget(table) {
-  await nextTick();
+  await nextTick3();
   const target = getCellTarget(table, 1, 0);
   activateCell(target, {
     focus: false
@@ -2082,7 +2393,7 @@ function maybeNavigateToCell(e) {
 function activateCell(element, options) {
   var _toValue;
   const api = element[tableCellApiSymbol];
-  const targetEl = (_toValue = toValue(api?.tabstopEl)) !== null && _toValue !== void 0 ? _toValue : element;
+  const targetEl = (_toValue = toValue2(api?.tabstopEl)) !== null && _toValue !== void 0 ? _toValue : element;
   targetEl.tabIndex = 0;
   if (options?.focus) {
     targetEl.focus();
@@ -2166,14 +2477,14 @@ var _hoisted_1$e = {
   key: 0,
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _hoisted_2$a = ["aria-label", "aria-expanded"];
+var _hoisted_2$b = ["aria-label", "aria-expanded"];
 var _hoisted_3$7 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _sfc_main$g = /* @__PURE__ */ defineComponent({
+var _sfc_main$g = /* @__PURE__ */ defineComponent2({
   __name: "ITableExpandButton",
   props: {
     isExpandable: {
@@ -2191,8 +2502,8 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
   }) {
     const emit = __emit;
     const expandableRef = useTemplateRef("expandable");
-    const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
-    const expandLabel = computed(() => __props.isExpanded ? "St\xE4ng rad" : "Expandera rad");
+    const toggleIcon = computed3(() => __props.isExpanded ? "arrow-down" : "arrow-right");
+    const expandLabel = computed3(() => __props.isExpanded ? "St\xE4ng rad" : "Expandera rad");
     function onClick() {
       assertRef(expandableRef);
       expandableRef.value.tabIndex = 0;
@@ -2210,15 +2521,15 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent({
         "aria-expanded": __props.isExpanded,
         type: "button",
         onClick
-      }, [createVNode(unref(FIcon), {
+      }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$b)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, null, 512));
     };
   }
 });
 var _hoisted_1$d = ["colspan"];
-var _sfc_main$f = /* @__PURE__ */ defineComponent({
+var _sfc_main$f = /* @__PURE__ */ defineComponent2({
   __name: "ITableExpandable",
   props: {
     colspan: {}
@@ -2521,11 +2832,11 @@ var inputFieldConfig = {
   }
 };
 var _hoisted_1$c = ["aria-sort"];
-var _hoisted_2$9 = {
+var _hoisted_2$a = {
   key: 0,
   class: "table-ng__column__description"
 };
-var _sfc_main$e = /* @__PURE__ */ defineComponent({
+var _sfc_main$e = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeader",
   props: {
     column: {},
@@ -2540,17 +2851,17 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent({
   }) {
     const emit = __emit;
     const thElement = useTemplateRef("th");
-    const columnClasses = computed(() => {
+    const columnClasses = computed3(() => {
       const size = __props.column.size.value === "shrink" ? "table-ng__column--shrink" : "table-ng__column--grow";
       return ["table-ng__column", size];
     });
-    const sortIconClass = computed(() => {
+    const sortIconClass = computed3(() => {
       return {
         "table-ng__column__sort-icon": true,
         "table-ng__column__sort-icon--discrete": __props.sortOrder === "unsorted"
       };
     });
-    const sortIcon = computed(() => {
+    const sortIcon = computed3(() => {
       switch (__props.sortOrder) {
         case "unsorted":
           return "sort";
@@ -2562,7 +2873,7 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent({
           return "";
       }
     });
-    const sortValue = computed(() => {
+    const sortValue = computed3(() => {
       switch (__props.sortOrder) {
         case "ascending":
         case "descending":
@@ -2577,7 +2888,7 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent({
       }
       return isInputTypeText(column.type) || isInputTypeNumber(column.type);
     }
-    const alignment = computed(() => {
+    const alignment = computed3(() => {
       return isAlignableColumn(__props.column) ? __props.column.align : "left";
     });
     function onClickCell() {
@@ -2602,29 +2913,29 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         onKeydown: onKeydownCell,
         onClick: withModifiers(onClickCell, ["stop"])
-      }, [createVNode(unref(IFlex), {
+      }, [createVNode(unref3(IFlex), {
         gap: "1x",
         float: alignment.value
       }, {
-        default: withCtx(() => [createVNode(unref(IFlexItem), {
+        default: withCtx(() => [createVNode(unref3(IFlexItem), {
           shrink: "",
           class: "table-ng__column__title"
         }, {
           default: withCtx(() => [createTextVNode(toDisplayString(__props.column.header), 1)]),
           _: 1
-        }), _cache[0] || (_cache[0] = createTextVNode()), __props.sortEnabled ? (openBlock(), createBlock(unref(IFlexItem), {
+        }), _cache[0] || (_cache[0] = createTextVNode()), __props.sortEnabled ? (openBlock(), createBlock(unref3(IFlexItem), {
           key: 0,
           shrink: "",
           align: "center"
         }, {
-          default: withCtx(() => [createVNode(unref(FIcon), {
+          default: withCtx(() => [createVNode(unref3(FIcon), {
             name: sortIcon.value,
             class: normalizeClass(sortIconClass.value)
           }, null, 8, ["name", "class"])]),
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_2$9, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 42, _hoisted_1$c);
+      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_2$a, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 42, _hoisted_1$c);
     };
   }
 });
@@ -2632,8 +2943,8 @@ var _hoisted_1$b = {
   scope: "col",
   class: "table-ng__column table-ng__column--selectable"
 };
-var _hoisted_2$8 = ["checked", "indeterminate"];
-var _sfc_main$d = /* @__PURE__ */ defineComponent({
+var _hoisted_2$9 = ["checked", "indeterminate"];
+var _sfc_main$d = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeaderSelectable",
   props: {
     selectable: {},
@@ -2647,8 +2958,8 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent({
     emit: __emit
   }) {
     const emit = __emit;
-    const indeterminate = computed(() => __props.state === "indeterminate");
-    const checked = computed(() => __props.state === "indeterminate" ? false : __props.state);
+    const indeterminate = computed3(() => __props.state === "indeterminate");
+    const checked = computed3(() => __props.state === "indeterminate" ? false : __props.state);
     const expose = {};
     if (__props.selectable === "multi") {
       const inputRef = useTemplateRef("input");
@@ -2665,7 +2976,7 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent({
         "aria-label": "select all",
         tabindex: "-1",
         onChange: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
-      }, null, 40, _hoisted_2$8)) : createCommentVNode("", true)]);
+      }, null, 40, _hoisted_2$9)) : createCommentVNode("", true)]);
     };
   }
 });
@@ -2673,7 +2984,7 @@ var _hoisted_1$a = {
   key: 0,
   class: "table-ng__cell table-ng__cell--checkbox"
 };
-var _hoisted_2$7 = ["checked", "aria-label"];
+var _hoisted_2$8 = ["checked", "aria-label"];
 var _hoisted_3$6 = {
   key: 1,
   ref: "target",
@@ -2681,7 +2992,7 @@ var _hoisted_3$6 = {
   class: "table-ng__cell table-ng__cell--checkbox"
 };
 var _hoisted_4$3 = ["checked", "aria-label"];
-var _sfc_main$c = /* @__PURE__ */ defineComponent({
+var _sfc_main$c = /* @__PURE__ */ defineComponent2({
   __name: "ITableCheckbox",
   props: {
     column: {},
@@ -2691,7 +3002,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
     expose: __expose
   }) {
     const targetElement = useTemplateRef("target");
-    const ariaLabel = computed(() => {
+    const ariaLabel = computed3(() => {
       const value = __props.column.label(__props.row);
       return value.length > 0 ? value : void 0;
     });
@@ -2711,7 +3022,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$7)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
+      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
         checked: __props.column.checked(__props.row),
         type: "checkbox",
         "aria-label": ariaLabel.value
@@ -2722,8 +3033,8 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent({
 var _hoisted_1$9 = {
   class: "table-ng__cell table-ng__cell--radio"
 };
-var _hoisted_2$6 = ["checked", "aria-label"];
-var _sfc_main$b = /* @__PURE__ */ defineComponent({
+var _hoisted_2$7 = ["checked", "aria-label"];
+var _sfc_main$b = /* @__PURE__ */ defineComponent2({
   __name: "ITableRadio",
   props: {
     column: {},
@@ -2733,7 +3044,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
     expose: __expose
   }) {
     const inputElement = useTemplateRef("input");
-    const ariaLabel = computed(() => {
+    const ariaLabel = computed3(() => {
       const value = __props.column.label(__props.row);
       return value.length > 0 ? value : void 0;
     });
@@ -2753,7 +3064,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$6)]);
+      }, null, 40, _hoisted_2$7)]);
     };
   }
 });
@@ -2762,7 +3073,7 @@ var _hoisted_1$8 = {
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$a = /* @__PURE__ */ defineComponent({
+var _sfc_main$a = /* @__PURE__ */ defineComponent2({
   __name: "ITableSelectable",
   props: {
     selectable: {},
@@ -2783,7 +3094,7 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
     const expose = {};
     if (__props.level === 1) {
       const childRef = useTemplateRef("child");
-      expose.tabstopEl = computed(() => {
+      expose.tabstopEl = computed3(() => {
         var _childRef$value$tabst;
         return (_childRef$value$tabst = childRef.value?.tabstopEl) !== null && _childRef$value$tabst !== void 0 ? _childRef$value$tabst : null;
       });
@@ -2793,10 +3104,10 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
     const multiSelectColumn = {
       type: "checkbox",
       id: /* @__PURE__ */ Symbol("multi-select"),
-      header: ref("selectable"),
-      description: ref(null),
+      header: ref3("selectable"),
+      description: ref3(null),
       sortable: null,
-      size: ref(null),
+      size: ref3(null),
       component: _sfc_main$c,
       label() {
         return $t("fkui.table.selectable.checkbox", "V\xE4lj rad");
@@ -2814,10 +3125,10 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent({
     const singleSelectColumn = {
       type: "radio",
       id: /* @__PURE__ */ Symbol("single-select"),
-      header: ref("V\xE4lj en rad"),
-      description: ref(null),
+      header: ref3("V\xE4lj en rad"),
+      description: ref3(null),
       sortable: null,
-      size: ref(null),
+      size: ref3(null),
       component: _sfc_main$b,
       label() {
         return $t("fkui.table.selectable.radio", "V\xE4lj rad");
@@ -2856,7 +3167,7 @@ function getBodyRowCount(rows, childKey) {
 }
 var stopEditKey = /* @__PURE__ */ Symbol();
 function useStartStopEdit() {
-  const stopEdit2 = inject(stopEditKey, () => Promise.resolve());
+  const stopEdit2 = inject3(stopEditKey, () => Promise.resolve());
   return {
     stopEdit: stopEdit2
   };
@@ -3073,14 +3384,14 @@ var _hoisted_1$7 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--anchor"
 };
-var _hoisted_2$5 = ["href"];
+var _hoisted_2$6 = ["href"];
 var _hoisted_3$5 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$9 = /* @__PURE__ */ defineComponent({
+var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
   __name: "ITableAnchor",
   props: {
     column: {},
@@ -3090,7 +3401,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
     expose: __expose
   }) {
     const targetElement = useTemplateRef("target");
-    const renderAnchor = computed(() => {
+    const renderAnchor = computed3(() => {
       return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
     });
     const expose = {
@@ -3104,7 +3415,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -3112,7 +3423,7 @@ var _hoisted_1$6 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--button"
 };
-var _hoisted_2$4 = {
+var _hoisted_2$5 = {
   class: "sr-only"
 };
 var _hoisted_3$4 = {
@@ -3121,7 +3432,7 @@ var _hoisted_3$4 = {
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$8 = /* @__PURE__ */ defineComponent({
+var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
   __name: "ITableButton",
   props: {
     column: {},
@@ -3139,7 +3450,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         __props.column.onClick(__props.row);
       }
     }
-    const renderButton = computed(() => {
+    const renderButton = computed3(() => {
       return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
     });
     const expose = {
@@ -3153,10 +3464,10 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
         type: "button",
         tabindex: "-1",
         onClick: onClickButton
-      }, [__props.column.icon ? (openBlock(), createBlock(unref(FIcon), {
+      }, [__props.column.icon ? (openBlock(), createBlock(unref3(FIcon), {
         key: 0,
         name: __props.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
@@ -3205,7 +3516,7 @@ var _hoisted_1$5 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--button"
 };
-var _hoisted_2$3 = {
+var _hoisted_2$4 = {
   class: "sr-only"
 };
 var _hoisted_3$3 = {
@@ -3213,7 +3524,7 @@ var _hoisted_3$3 = {
   tabindex: "-1",
   class: "table-ng__cell"
 };
-var _sfc_main$7 = /* @__PURE__ */ defineComponent({
+var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
   __name: "ITableMenu",
   props: {
     column: {},
@@ -3226,8 +3537,8 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     const expose = {
       tabstopEl: buttonRef
     };
-    const isOpen = ref(false);
-    const actions = computed(() => {
+    const isOpen = ref3(false);
+    const actions = computed3(() => {
       return __props.column.actions.map((it, index) => {
         return {
           ...it,
@@ -3235,7 +3546,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         };
       });
     });
-    const menuitems = computed(() => {
+    const menuitems = computed3(() => {
       return actions.value.map((it) => {
         var _it$icon;
         return {
@@ -3245,7 +3556,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         };
       });
     });
-    const renderButton = computed(() => {
+    const renderButton = computed3(() => {
       return __props.column.enabled(__props.row);
     });
     function onOpen(event) {
@@ -3269,9 +3580,9 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         "aria-haspopup": "menu",
         onClick: onOpen
-      }, [createVNode(unref(FIcon), {
+      }, [createVNode(unref3(FIcon), {
         name: "bars"
-      }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$3, toDisplayString(__props.column.text(__props.row)), 1)], 512), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref(FContextMenu), {
+      }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.text(__props.row)), 1)], 512), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref3(FContextMenu), {
         "is-open": isOpen.value,
         items: menuitems.value,
         anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
@@ -3281,7 +3592,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _sfc_main$6 = /* @__PURE__ */ defineComponent({
+var _sfc_main$6 = /* @__PURE__ */ defineComponent2({
   __name: "ITableRowheader",
   props: {
     row: {},
@@ -3300,7 +3611,7 @@ var _sfc_main$6 = /* @__PURE__ */ defineComponent({
 var _hoisted_1$4 = {
   class: "table-ng__editable"
 };
-var _hoisted_2$2 = {
+var _hoisted_2$3 = {
   class: "table-ng__editable__text"
 };
 var _hoisted_3$2 = ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-label"];
@@ -3309,27 +3620,27 @@ var _hoisted_4$2 = {
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--static"
 };
-var _sfc_main$5 = /* @__PURE__ */ defineComponent({
+var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
   __name: "ITableSelect",
   props: {
     row: {},
     column: {}
   },
   setup(__props) {
-    const editing = ref(false);
+    const editing = ref3(false);
     const editRef = useTemplateRef("edit");
     const {
       stopEdit: stopEdit2
     } = useStartStopEdit();
-    const viewValue = ref(__props.column.selected(__props.row));
-    const ariaLabel = computed(() => {
+    const viewValue = ref3(__props.column.selected(__props.row));
+    const ariaLabel = computed3(() => {
       const value = __props.column.label(__props.row);
       return value.length > 0 ? value : void 0;
     });
     const dropdownId = ElementIdService.generateElementId();
-    const dropdownIsOpen = ref(false);
+    const dropdownIsOpen = ref3(false);
     const activeOptionId = ElementIdService.generateElementId();
-    const activeOption = ref(null);
+    const activeOption = ref3(null);
     async function onCellKeyDown(e) {
       if (e.code === "Enter" || e.code === "NumpadEnter") {
         await startEditing(e);
@@ -3345,7 +3656,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       assertRef(editRef);
       e.preventDefault();
       editing.value = true;
-      await nextTick();
+      await nextTick3();
       editRef.value.tabIndex = 0;
       editRef.value.focus();
       await openDropdown();
@@ -3367,7 +3678,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
     }
     async function openDropdown() {
       dropdownIsOpen.value = true;
-      await nextTick();
+      await nextTick3();
       if (viewValue.value) {
         activeOption.value = viewValue.value;
       } else {
@@ -3444,7 +3755,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
       assertSet(stopEdit2);
       assertRef(editRef);
       closeDropdown();
-      await nextTick();
+      await nextTick3();
       await stopEdit2(editRef.value, "blur");
     }
     return (_ctx, _cache) => {
@@ -3454,7 +3765,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         tabindex: "-1",
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"])
-      }, [withDirectives(createElementVNode("div", _hoisted_1$4, [createElementVNode("span", _hoisted_2$2, toDisplayString(viewValue.value), 1), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref(FIcon), {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$4, [createElementVNode("span", _hoisted_2$3, toDisplayString(viewValue.value), 1), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
       })], 512), [[vShow, !editing.value]]), _cache[4] || (_cache[4] = createTextVNode()), withDirectives(createElementVNode("div", {
@@ -3462,8 +3773,8 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         role: "combobox",
         tabindex: "-1",
         "aria-expanded": dropdownIsOpen.value,
-        "aria-controls": dropdownIsOpen.value ? unref(dropdownId) : void 0,
-        "aria-activedescendant": dropdownIsOpen.value ? unref(activeOptionId) : void 0,
+        "aria-controls": dropdownIsOpen.value ? unref3(dropdownId) : void 0,
+        "aria-activedescendant": dropdownIsOpen.value ? unref3(activeOptionId) : void 0,
         "aria-autocomplete": "list",
         class: "table-ng__editable",
         "aria-label": ariaLabel.value,
@@ -3473,12 +3784,12 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
         }, ["prevent"])),
         onKeydown: withModifiers(onEditKeyDown, ["stop"]),
         onFocusout: _cache[2] || (_cache[2] = (e) => onEditBlur(e))
-      }, toDisplayString(viewValue.value), 41, _hoisted_3$2), [[vShow, editing.value]]), _cache[5] || (_cache[5] = createTextVNode()), withDirectives(createVNode(unref(IComboboxDropdown), {
-        id: unref(dropdownId),
+      }, toDisplayString(viewValue.value), 41, _hoisted_3$2), [[vShow, editing.value]]), _cache[5] || (_cache[5] = createTextVNode()), withDirectives(createVNode(unref3(IComboboxDropdown), {
+        id: unref3(dropdownId),
         "is-open": dropdownIsOpen.value,
         options: __props.column.options,
         "active-option": activeOption.value,
-        "active-option-id": unref(activeOptionId),
+        "active-option-id": unref3(activeOptionId),
         "input-node": editRef.value,
         onSelect: selectDropdownOption,
         onClose: onDropdownClose
@@ -3502,28 +3813,38 @@ function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
 var _hoisted_1$3 = ["aria-label"];
-var _sfc_main$4 = /* @__PURE__ */ defineComponent({
+var _hoisted_2$2 = {
+  ref: "pen"
+};
+var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   __name: "ITableText",
   props: {
     row: {},
-    column: {}
+    column: {},
+    activeErrorAnchor: {
+      default: () => void 0
+    }
   },
-  setup(__props) {
-    const model = ref("");
-    const inEdit = ref(false);
-    const validity = ref({
+  emits: ["onError", "closeError"],
+  setup(__props, {
+    emit: __emit
+  }) {
+    const emit = __emit;
+    const model = ref3("");
+    const inEdit = ref3(false);
+    const validity = ref3({
       isValid: true,
       validationMessage: "",
       validityMode: "INITIAL"
     });
-    const hasError = computed(() => validity.value.validityMode === "ERROR");
-    const divClasses = computed(() => {
+    const hasError = computed3(() => validity.value.validityMode === "ERROR");
+    const divClasses = computed3(() => {
       return {
         "table-ng__editable": true,
         "table-ng__editable__numeric": __props.column.tnum
       };
     });
-    const wrapperClasses = computed(() => {
+    const wrapperClasses = computed3(() => {
       return {
         "table-ng__cell": true,
         "table-ng__cell--text": true,
@@ -3533,7 +3854,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         "table-ng__cell--align-right": __props.column.align === "right"
       };
     });
-    const staticClasses = computed(() => {
+    const staticClasses = computed3(() => {
       return {
         "table-ng__cell": true,
         "table-ng__cell--static": true,
@@ -3541,26 +3862,65 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         "table-ng__cell--align-right": __props.column.align === "right"
       };
     });
-    const inputClasses = computed(() => {
+    const inputClasses = computed3(() => {
       return {
         foobar: true,
         "table-ng__textedit": true
       };
     });
-    const ariaLabel = computed(() => {
-      const value = __props.column.label(__props.row);
+    const ariaLabel = computed3(() => {
+      let value = __props.column.label(__props.row);
+      if (hasError.value) {
+        value = `${value} ${validity.value.validationMessage}`;
+      }
       return value.length > 0 ? value : void 0;
     });
     const tdElement = useTemplateRef("td");
     const viewElement = useTemplateRef("view");
     const inputElement = useTemplateRef("input");
+    const penElement = useTemplateRef("pen");
     const {
       stopEdit: stopEdit2
     } = useStartStopEdit();
-    onMounted(() => {
+    const isHovered = useElementHover(tdElement, {
+      delayEnter: 200
+    });
+    const {
+      focused
+    } = useFocusWithin(tdElement);
+    const openPopupError = computed3(() => {
+      if (!tdElement.value) {
+        return false;
+      }
+      return tdElement.value === __props.activeErrorAnchor;
+    });
+    onMounted3(() => {
       if (inputElement.value) {
         addInputValidators(inputElement.value, __props.column.type);
         ValidationService.addValidatorsToElement(inputElement.value, __props.column.validation);
+      }
+    });
+    watchEffect3(() => {
+      if (hasError.value) {
+        var _tdElement$value, _penElement$value;
+        emit("onError", {
+          anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
+          arrowAnchor: (_penElement$value = penElement.value) !== null && _penElement$value !== void 0 ? _penElement$value : void 0,
+          message: validity.value.validationMessage,
+          hasFocus: focused.value,
+          hasHover: isHovered.value,
+          inEdit: inEdit.value
+        });
+      } else {
+        var _tdElement$value2, _penElement$value2;
+        emit("closeError", {
+          anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
+          arrowAnchor: (_penElement$value2 = penElement.value) !== null && _penElement$value2 !== void 0 ? _penElement$value2 : void 0,
+          message: validity.value.validationMessage,
+          hasFocus: focused.value,
+          hasHover: isHovered.value,
+          inEdit: inEdit.value
+        });
       }
     });
     function onStartEdit(modelValue) {
@@ -3691,15 +4051,16 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
         "aria-label": ariaLabel.value,
         onBlur,
         onValidity
-      }, null, 42, _hoisted_1$3), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), hasError.value ? (openBlock(), createBlock(unref(FIcon), {
-        key: 0,
-        name: "error",
-        class: "table-ng__editable__icon"
-      })) : (openBlock(), createBlock(unref(FIcon), {
-        key: 1,
+      }, null, 42, _hoisted_1$3), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_2$2, [createVNode(unref3(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
-      }))], 2)], 34)) : (openBlock(), createElementBlock("td", {
+      })], 512)], 2), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(IPopupError), {
+        anchor: tdElement.value,
+        "is-open": openPopupError.value,
+        "error-message": validity.value.validationMessage,
+        "arrow-anchor": penElement.value,
+        layout: "f-table"
+      }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])], 34)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "td",
         tabindex: "-1",
@@ -3708,57 +4069,23 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function getUpdateFn(fn, key) {
-  if (fn) {
-    return fn;
-  }
-  if (key) {
-    return (row, value) => {
-      row[key] = value;
-    };
-  }
-  return () => void 0;
+function defaultTnumValue(type) {
+  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
+  return tnumTypes.includes(type);
 }
-function getParsedUpdateFn(fn, key, parser) {
+function getFormattedNumberValueFn(fn, key, formatter, defaultValue) {
   if (fn) {
-    return (row, newValue, oldValue) => {
-      const parsedNewValue = parser(newValue);
-      const parsedOldValue = parser(oldValue);
-      fn(row, parsedNewValue !== null && parsedNewValue !== void 0 ? parsedNewValue : newValue, parsedOldValue !== null && parsedOldValue !== void 0 ? parsedOldValue : oldValue);
+    return (row) => {
+      var _formatter;
+      const value = fn(row);
+      return (_formatter = formatter(value)) !== null && _formatter !== void 0 ? _formatter : value;
     };
-  }
-  if (key) {
-    return (row, value) => {
-      const newValue = parser(value);
-      row[key] = isSet(newValue) ? newValue : value;
-    };
-  }
-  return () => void 0;
-}
-function getParsedNumberUpdateFn(fn, key, parser) {
-  if (fn) {
-    return (row, newValue, oldValue) => {
-      var _parser, _parser2;
-      const parsedNewValue = (_parser = parser(newValue)) !== null && _parser !== void 0 ? _parser : newValue;
-      const parsedOldValue = (_parser2 = parser(oldValue)) !== null && _parser2 !== void 0 ? _parser2 : oldValue;
-      fn(row, parsedNewValue, parsedOldValue);
-    };
-  }
-  if (key) {
-    return (row, value) => {
-      const newValue = parser(value);
-      row[key] = isSet(newValue) ? newValue : value;
-    };
-  }
-  return () => void 0;
-}
-function getValueFn(fn, key, coerce, defaultValue) {
-  if (fn) {
-    return fn;
   }
   if (key) {
     return (row) => {
-      return coerce(row[key]);
+      var _formatter2;
+      const value = row[key];
+      return (_formatter2 = formatter(value)) !== null && _formatter2 !== void 0 ? _formatter2 : value;
     };
   }
   return () => defaultValue;
@@ -3780,111 +4107,270 @@ function getFormattedValueFn(fn, key, formatter, defaultValue) {
   }
   return () => defaultValue;
 }
-function getFormattedNumberValueFn(fn, key, formatter, defaultValue) {
-  if (fn) {
-    return (row) => {
-      var _formatter;
-      const value = fn(row);
-      return (_formatter = formatter(value)) !== null && _formatter !== void 0 ? _formatter : value;
-    };
-  }
-  if (key) {
-    return (row) => {
-      var _formatter2;
-      const value = row[key];
-      return (_formatter2 = formatter(value)) !== null && _formatter2 !== void 0 ? _formatter2 : value;
-    };
-  }
-  return () => defaultValue;
-}
 function getLabelFn(fn) {
   if (fn) {
     return fn;
   }
   return () => "";
 }
-function defaultTnumValue(type) {
-  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
-  return tnumTypes.includes(type);
+function getParsedNumberUpdateFn(fn, key, parser) {
+  if (fn) {
+    return (row, newValue, oldValue) => {
+      var _parser, _parser2;
+      const parsedNewValue = (_parser = parser(newValue)) !== null && _parser !== void 0 ? _parser : newValue;
+      const parsedOldValue = (_parser2 = parser(oldValue)) !== null && _parser2 !== void 0 ? _parser2 : oldValue;
+      fn(row, parsedNewValue, parsedOldValue);
+    };
+  }
+  if (key) {
+    return (row, value) => {
+      const newValue = parser(value);
+      row[key] = isSet(newValue) ? newValue : value;
+    };
+  }
+  return () => void 0;
 }
-function noop() {
+function getParsedUpdateFn(fn, key, parser) {
+  if (fn) {
+    return (row, newValue, oldValue) => {
+      const parsedNewValue = parser(newValue);
+      const parsedOldValue = parser(oldValue);
+      fn(row, parsedNewValue !== null && parsedNewValue !== void 0 ? parsedNewValue : newValue, parsedOldValue !== null && parsedOldValue !== void 0 ? parsedOldValue : oldValue);
+    };
+  }
+  if (key) {
+    return (row, value) => {
+      const newValue = parser(value);
+      row[key] = isSet(newValue) ? newValue : value;
+    };
+  }
+  return () => void 0;
+}
+function getUpdateFn(fn, key) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row, value) => {
+      row[key] = value;
+    };
+  }
+  return () => void 0;
+}
+function getValueFn(fn, key, coerce, defaultValue) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row) => {
+      return coerce(row[key]);
+    };
+  }
+  return () => defaultValue;
+}
+function normalizeAnchorColumn(column) {
+  var _column$key;
+  return {
+    type: "anchor",
+    text: getValueFn(column.text, column.key, String, ""),
+    href: column.href,
+    enabled: typeof column.enabled === "function" ? column.enabled : () => {
+      var _column$enabled;
+      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
+    },
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeBaseColumn(column) {
+  const id = /* @__PURE__ */ Symbol();
+  const header = toRef2(column.header);
+  const description = typeof column.description !== "undefined" ? toRef2(column.description) : ref3("");
+  const size = typeof column.size !== "undefined" ? toRef2(column.size) : ref3("grow");
+  return {
+    id,
+    header,
+    description,
+    size
+  };
+}
+function normalizeButtonColumn(column) {
+  var _column$icon, _column$key;
+  return {
+    type: "button",
+    text: getValueFn(column.text, column.key, String, ""),
+    onClick: column.onClick,
+    enabled: typeof column.enabled === "function" ? column.enabled : () => {
+      var _column$enabled;
+      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
+    },
+    icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeCheckboxColumn(column) {
+  var _column$key;
+  return {
+    type: "checkbox",
+    label: getLabelFn(column.label),
+    checked: getValueFn(column.checked, column.key, Boolean, false),
+    update: getUpdateFn(column.update, column.key),
+    editable: typeof column.editable === "function" ? column.editable : () => {
+      var _column$editable;
+      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+    },
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function noop2() {
+}
+function normalizeMenuColumn(column) {
+  var _column$actions;
+  return {
+    type: "menu",
+    text: getValueFn(column.text, void 0, String, ""),
+    sortable: null,
+    actions: ((_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : []).map((it) => {
+      var _it$icon, _it$onClick;
+      return {
+        label: it.label,
+        icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : null,
+        onClick: (_it$onClick = it.onClick) !== null && _it$onClick !== void 0 ? _it$onClick : noop2
+      };
+    }),
+    enabled: typeof column.enabled === "function" ? column.enabled : () => {
+      var _column$enabled;
+      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
+    }
+  };
+}
+function normalizeNumberColumn(column) {
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  const type = column.type;
+  const config = inputFieldConfig[type];
+  const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
+  const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter.bind(column);
+  const decimals = type === "text:currency" ? 0 : column.decimals;
+  return {
+    type,
+    label: getLabelFn(column.label),
+    decimals,
+    tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
+    align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
+    value: getFormattedNumberValueFn(column.value, column.key, formatter, ""),
+    update: getParsedNumberUpdateFn(column.update, column.key, parser),
+    editable: typeof column.editable === "function" ? column.editable : () => {
+      var _column$editable;
+      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+    },
+    validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeRadioColumn(column) {
+  var _column$key;
+  return {
+    type: "radio",
+    label: getLabelFn(column.label),
+    checked: getValueFn(column.checked, column.key, Boolean, false),
+    update: getUpdateFn(column.update, column.key),
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeRenderColumn(column) {
+  return {
+    type: void 0,
+    render: column.render,
+    sortable: null
+  };
+}
+function normalizeRowHeaderColumn(column) {
+  var _column$key;
+  return {
+    type: "rowheader",
+    text: getValueFn(column.text, column.key, String, ""),
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeSelectColumn(column) {
+  var _column$key;
+  return {
+    type: "select",
+    label: getLabelFn(column.label),
+    selected: getValueFn(column.selected, column.key, String, ""),
+    update: getUpdateFn(column.update, column.key),
+    editable: typeof column.editable === "function" ? column.editable : () => {
+      var _column$editable;
+      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+    },
+    options: column.options,
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
+}
+function normalizeSimpleColumn(column) {
+  var _column$key;
+  return {
+    type: "text",
+    label: () => "",
+    tnum: false,
+    align: "left",
+    value: getValueFn(column.value, column.key, String, ""),
+    update() {
+    },
+    editable: () => false,
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
+    validation: {}
+  };
+}
+function normalizeTextColumn(column) {
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  const type = column.type;
+  const config = inputFieldConfig[type];
+  const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
+  const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter;
+  return {
+    type,
+    tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
+    align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "left",
+    label: getLabelFn(column.label),
+    value: getFormattedValueFn(column.value, column.key, formatter, ""),
+    update: getParsedUpdateFn(column.update, column.key, parser),
+    editable: typeof column.editable === "function" ? column.editable : () => {
+      var _column$editable;
+      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
+    },
+    validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+  };
 }
 function normalizeTableColumn(column) {
-  var _column$key, _column$key2, _column$key5, _column$key6, _column$icon, _column$key7, _column$key8, _column$actions, _column$key9;
-  const description = typeof column.description !== "undefined" ? toRef(column.description) : ref("");
-  const size = typeof column.size !== "undefined" ? toRef(column.size) : ref("grow");
+  const base = normalizeBaseColumn(column);
   if ("render" in column) {
     return {
-      type: void 0,
-      id: /* @__PURE__ */ Symbol(),
-      header: toRef(column.header),
-      description,
-      size,
-      render: column.render,
-      sortable: null
+      ...normalizeRenderColumn(column),
+      ...base
     };
   }
   switch (column.type) {
     case "checkbox":
       return {
-        type: "checkbox",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        label: getLabelFn(column.label),
-        checked: getValueFn(column.checked, column.key, Boolean, false),
-        update: getUpdateFn(column.update, column.key),
-        editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable;
-          return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-        },
-        sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
+        ...normalizeCheckboxColumn(column),
+        ...base,
         component: _sfc_main$c
       };
     case "radio":
       return {
-        type: "radio",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        label: getLabelFn(column.label),
-        checked: getValueFn(column.checked, column.key, Boolean, false),
-        update: getUpdateFn(column.update, column.key),
-        sortable: (_column$key2 = column.key) !== null && _column$key2 !== void 0 ? _column$key2 : null,
+        ...normalizeRadioColumn(column),
+        ...base,
         component: _sfc_main$b
       };
     case "text:currency":
     case "text:number":
-    case "text:percent": {
-      var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key3;
-      const type = column.type;
-      const config = inputFieldConfig[type];
-      const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
-      const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter.bind(column);
-      const decimals = type === "text:currency" ? 0 : column.decimals;
+    case "text:percent":
       return {
-        type,
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        label: getLabelFn(column.label),
-        decimals,
-        tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
-        align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
-        value: getFormattedNumberValueFn(column.value, column.key, formatter, ""),
-        update: getParsedNumberUpdateFn(column.update, column.key, parser),
-        editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable2;
-          return Boolean((_column$editable2 = column.editable) !== null && _column$editable2 !== void 0 ? _column$editable2 : false);
-        },
-        validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-        sortable: (_column$key3 = column.key) !== null && _column$key3 !== void 0 ? _column$key3 : null,
+        ...normalizeNumberColumn(column),
+        ...base,
         component: _sfc_main$4
       };
-    }
     case "text":
     case "text:bankAccountNumber":
     case "text:bankgiro":
@@ -3895,133 +4381,46 @@ function normalizeTableColumn(column) {
     case "text:personnummer":
     case "text:phoneNumber":
     case "text:plusgiro":
-    case "text:postalCode": {
-      var _column$parser2, _column$formatter2, _column$tnum2, _column$align2, _column$validation2, _column$key4;
-      const type = column.type;
-      const config = inputFieldConfig[type];
-      const parser = (_column$parser2 = column.parser) !== null && _column$parser2 !== void 0 ? _column$parser2 : config.parser;
-      const formatter = (_column$formatter2 = column.formatter) !== null && _column$formatter2 !== void 0 ? _column$formatter2 : config.formatter;
+    case "text:postalCode":
       return {
-        type,
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        tnum: (_column$tnum2 = column.tnum) !== null && _column$tnum2 !== void 0 ? _column$tnum2 : defaultTnumValue(type),
-        align: (_column$align2 = column.align) !== null && _column$align2 !== void 0 ? _column$align2 : "left",
-        label: getLabelFn(column.label),
-        value: getFormattedValueFn(column.value, column.key, formatter, ""),
-        update: getParsedUpdateFn(column.update, column.key, parser),
-        editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable3;
-          return Boolean((_column$editable3 = column.editable) !== null && _column$editable3 !== void 0 ? _column$editable3 : false);
-        },
-        validation: (_column$validation2 = column.validation) !== null && _column$validation2 !== void 0 ? _column$validation2 : {},
-        sortable: (_column$key4 = column.key) !== null && _column$key4 !== void 0 ? _column$key4 : null,
+        ...normalizeTextColumn(column),
+        ...base,
         component: _sfc_main$4
       };
-    }
     case "rowheader":
       return {
-        type: "rowheader",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        text: getValueFn(column.text, column.key, String, ""),
-        sortable: (_column$key5 = column.key) !== null && _column$key5 !== void 0 ? _column$key5 : null,
+        ...normalizeRowHeaderColumn(column),
+        ...base,
         component: _sfc_main$6
       };
     case "anchor":
       return {
-        type: "anchor",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        text: getValueFn(column.text, column.key, String, ""),
-        href: column.href,
-        enabled: typeof column.enabled === "function" ? column.enabled : () => {
-          var _column$enabled;
-          return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
-        },
-        sortable: (_column$key6 = column.key) !== null && _column$key6 !== void 0 ? _column$key6 : null,
+        ...normalizeAnchorColumn(column),
+        ...base,
         component: _sfc_main$9
       };
     case "button":
       return {
-        type: "button",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        text: getValueFn(column.text, column.key, String, ""),
-        onClick: column.onClick,
-        enabled: typeof column.enabled === "function" ? column.enabled : () => {
-          var _column$enabled2;
-          return Boolean((_column$enabled2 = column.enabled) !== null && _column$enabled2 !== void 0 ? _column$enabled2 : true);
-        },
-        icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-        sortable: (_column$key7 = column.key) !== null && _column$key7 !== void 0 ? _column$key7 : null,
+        ...normalizeButtonColumn(column),
+        ...base,
         component: _sfc_main$8
       };
     case "select":
       return {
-        type: "select",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        label: getLabelFn(column.label),
-        selected: getValueFn(column.selected, column.key, String, ""),
-        update: getUpdateFn(column.update, column.key),
-        editable: typeof column.editable === "function" ? column.editable : () => {
-          var _column$editable4;
-          return Boolean((_column$editable4 = column.editable) !== null && _column$editable4 !== void 0 ? _column$editable4 : false);
-        },
-        options: column.options,
-        sortable: (_column$key8 = column.key) !== null && _column$key8 !== void 0 ? _column$key8 : null,
+        ...normalizeSelectColumn(column),
+        ...base,
         component: _sfc_main$5
       };
     case "menu":
       return {
-        type: "menu",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        sortable: null,
-        actions: ((_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : []).map((it) => {
-          var _it$icon, _it$onClick;
-          return {
-            label: it.label,
-            icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : null,
-            onClick: (_it$onClick = it.onClick) !== null && _it$onClick !== void 0 ? _it$onClick : noop
-          };
-        }),
-        component: _sfc_main$7,
-        text: getValueFn(column.text, void 0, String, ""),
-        enabled: typeof column.enabled === "function" ? column.enabled : () => {
-          var _column$enabled3;
-          return Boolean((_column$enabled3 = column.enabled) !== null && _column$enabled3 !== void 0 ? _column$enabled3 : true);
-        }
+        ...normalizeMenuColumn(column),
+        ...base,
+        component: _sfc_main$7
       };
     case void 0:
       return {
-        type: "text",
-        id: /* @__PURE__ */ Symbol(),
-        header: toRef(column.header),
-        description,
-        size,
-        label: () => "",
-        tnum: false,
-        align: "left",
-        value: getValueFn(column.value, column.key, String, ""),
-        update() {
-        },
-        editable: () => false,
-        sortable: (_column$key9 = column.key) !== null && _column$key9 !== void 0 ? _column$key9 : null,
-        validation: {},
+        ...normalizeSimpleColumn(column),
+        ...base,
         component: _sfc_main$4
       };
   }
@@ -4033,6 +4432,69 @@ function normalizeTableColumns(columns) {
   return columns.map((column) => {
     return normalizeTableColumn(column);
   });
+}
+function usePopupError() {
+  const errorAnchor = ref3(void 0);
+  const errorArrowAnchor = ref3(void 0);
+  const errorMessage = ref3(void 0);
+  const activeErrorAnchor = ref3(void 0);
+  async function onPopupError(popupError) {
+    const {
+      anchor,
+      arrowAnchor,
+      hasFocus,
+      hasHover,
+      inEdit
+    } = popupError;
+    if (!anchor || !arrowAnchor) {
+      return;
+    }
+    if (inEdit) {
+      onClosePopupError(popupError);
+      return;
+    }
+    if (hasFocus || hasHover) {
+      await open(popupError);
+    } else {
+      onClosePopupError(popupError);
+    }
+  }
+  async function open(popupError) {
+    const {
+      message,
+      anchor,
+      arrowAnchor
+    } = popupError;
+    if (!anchor || !arrowAnchor) {
+      return;
+    }
+    activeErrorAnchor.value = void 0;
+    errorMessage.value = message;
+    errorAnchor.value = anchor;
+    errorArrowAnchor.value = arrowAnchor;
+    await nextTick3();
+    activeErrorAnchor.value = anchor;
+  }
+  function onClosePopupError(popupError) {
+    var _errorAnchor$value;
+    if (!popupError) {
+      return;
+    }
+    const {
+      anchor
+    } = popupError;
+    if (anchor?.isSameNode((_errorAnchor$value = errorAnchor.value) !== null && _errorAnchor$value !== void 0 ? _errorAnchor$value : null)) {
+      activeErrorAnchor.value = void 0;
+    }
+  }
+  return {
+    onPopupError,
+    onClosePopupError,
+    errorAnchor,
+    errorArrowAnchor,
+    errorMessage,
+    activeErrorAnchor
+  };
 }
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
@@ -4093,11 +4555,11 @@ function useSelectable(options) {
       toggleSelectableRow: () => void 0
     };
   }
-  const isIndeterminate = computed(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length < toValue(rows).length;
+  const isIndeterminate = computed3(() => {
+    return selectedRows.value.length > 0 && selectedRows.value.length < toValue2(rows).length;
   });
-  const isAllRowsSelected = computed(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length === toValue(rows).length;
+  const isAllRowsSelected = computed3(() => {
+    return selectedRows.value.length > 0 && selectedRows.value.length === toValue2(rows).length;
   });
   function selectableHeaderState() {
     return isIndeterminate.value ? "indeterminate" : isAllRowsSelected.value;
@@ -4106,7 +4568,7 @@ function useSelectable(options) {
     if (isAllRowsSelected.value) {
       selectedRows.value = [];
     } else {
-      selectedRows.value = [...toValue(rows)];
+      selectedRows.value = [...toValue2(rows)];
     }
   }
   function toggleSelectableRow(row) {
@@ -4127,7 +4589,7 @@ function useSelectable(options) {
     return selectedRows.value.some((selectedRow) => rowKey(selectedRow) === key);
   }
   let oldKeys = void 0;
-  watch(() => toValue(rows), (newValue) => {
+  watch3(() => toValue2(rows), (newValue) => {
     const newKeys = newValue.map(rowKey).sort();
     if (!oldKeys) {
       oldKeys = newKeys;
@@ -4155,7 +4617,7 @@ function useSelectable(options) {
 }
 function useTabstop(tableRef, metaRows) {
   let pendingRowRemoval = false;
-  const renderOptions = ref({
+  const renderOptions = ref3({
     fallbackToFirstCell: false,
     focus: false
   });
@@ -4172,7 +4634,7 @@ function useTabstop(tableRef, metaRows) {
       renderOptions.value.fallbackToFirstCell = true;
     }
   }
-  watch(metaRows, (newRows, oldRows) => {
+  watch3(metaRows, (newRows, oldRows) => {
     const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
     pendingRowRemoval = false;
     assertRef(tableRef);
@@ -4248,7 +4710,7 @@ function useTabstop(tableRef, metaRows) {
       }
     }
   });
-  onUpdated(() => {
+  onUpdated2(() => {
     if (!renderOptions.value.fallbackToFirstCell) {
       return;
     }
@@ -4299,7 +4761,7 @@ var _hoisted_8 = {
 };
 var _hoisted_9 = ["aria-rowindex"];
 var _hoisted_10 = ["colspan"];
-var _sfc_main$3 = /* @__PURE__ */ defineComponent({
+var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
     columns: {},
@@ -4331,45 +4793,45 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       hasSlot
     } = useSlotUtils();
     const tableRef = useTemplateRef("table");
-    const expandedKeys = ref([]);
-    const keyedRows = computed(() => setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute));
-    const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
-    const isTreegrid = computed(() => Boolean(__props.expandableAttribute));
-    const role = computed(() => isTreegrid.value ? "treegrid" : "grid");
-    const hasCaption = computed(() => {
+    const expandedKeys = ref3([]);
+    const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute));
+    const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
+    const isTreegrid = computed3(() => Boolean(__props.expandableAttribute));
+    const role = computed3(() => isTreegrid.value ? "treegrid" : "grid");
+    const hasCaption = computed3(() => {
       return hasSlot("caption", {}, {
         stripClasses: []
       });
     });
-    const isEmpty2 = computed(() => {
+    const isEmpty2 = computed3(() => {
       return metaRows.value.length === 0;
     });
-    const ariaRowcount = computed(() => {
+    const ariaRowcount = computed3(() => {
       const headerRow = 1;
       const footerRow = hasFooter.value ? 1 : 0;
       return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + headerRow + footerRow;
     });
-    const columnCount = computed(() => {
+    const columnCount = computed3(() => {
       const expandCol = isTreegrid.value ? 1 : 0;
       const selectCol = __props.selectable ? 1 : 0;
       const count = columns.value.length + expandCol + selectCol;
       return Math.max(1, count);
     });
-    const hasFooter = computed(() => {
+    const hasFooter = computed3(() => {
       return hasSlot("footer");
     });
-    const columns = computed(() => normalizeTableColumns(__props.columns));
-    const tableClasses = computed(() => {
+    const columns = computed3(() => normalizeTableColumns(__props.columns));
+    const tableClasses = computed3(() => {
       return __props.striped ? "table-ng table-ng--striped" : "table-ng";
     });
     const slots = useSlots();
-    const hasExpandableSlot = computed(() => {
+    const hasExpandableSlot = computed3(() => {
       return Boolean(slots.expandable);
     });
     async function stopEditHandler(element, reason) {
       stopEdit(element, reason);
     }
-    provide(stopEditKey, stopEditHandler);
+    provide2(stopEditKey, stopEditHandler);
     function onToggleExpanded(key) {
       const index = expandedKeys.value.indexOf(key);
       if (index < 0) {
@@ -4435,9 +4897,9 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       registerCallbackOnSort,
       registerCallbackOnMount
     } = FSortFilterDatasetInjected();
-    const sortableColumns = ref([]);
-    const sortedColumn = ref("");
-    const sortedAscending = ref(false);
+    const sortableColumns = ref3([]);
+    const sortedColumn = ref3("");
+    const sortedAscending = ref3(false);
     function callbackSortableColumns(columnNames) {
       sortableColumns.value = columnNames;
     }
@@ -4469,21 +4931,26 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
         sort(sortable, true);
       }
     }
-    function bindCellApiRef(ref2) {
-      if (!isFTableCellApi(ref2)) {
+    function bindCellApiRef(ref22) {
+      if (!isFTableCellApi(ref22)) {
         return;
       }
-      const apiEl = toValue(ref2.tabstopEl);
+      const apiEl = toValue2(ref22.tabstopEl);
       if (!apiEl) {
         return;
       }
       const cell = apiEl.closest("td, th");
       assertSet(cell);
-      cell[tableCellApiSymbol] = ref2;
+      cell[tableCellApiSymbol] = ref22;
     }
     function isAriaSelected(level = 1, row) {
       return level < 2 && selectableRowState(row);
     }
+    const {
+      onPopupError,
+      onClosePopupError,
+      activeErrorAnchor
+    } = usePopupError();
     const {
       selectableHeaderState,
       toggleSelectableHeader,
@@ -4496,7 +4963,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
     });
     const tableApi = useTabstop(tableRef, metaRows);
     __expose(tableApi);
-    onMounted(() => {
+    onMounted3(() => {
       assertRef(tableRef);
       registerCallbackOnMount(callbackSortableColumns);
       registerCallbackOnSort(callbackOnSort);
@@ -4515,10 +4982,10 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
-        state: unref(selectableHeaderState)(),
+        state: unref3(selectableHeaderState)(),
         selectable: __props.selectable,
-        onToggle: unref(toggleSelectableHeader)
-      }, null, 8, ["state", "selectable", "onToggle"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
+        onToggle: unref3(toggleSelectableHeader)
+      }, null, 8, ["state", "selectable", "onToggle"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$e, {
           key: column.id,
           column,
@@ -4530,7 +4997,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
       }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[2] || (_cache[2] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment, {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[2] || (_cache[2] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
         key: 1
       }, renderList(metaRows.value, ({
         key,
@@ -4568,7 +5035,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
             row
           }))]),
           _: 2
-        }, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment, {
+        }, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment2, {
           key: 2
         }, [__props.selectable ? (openBlock(), createBlock(_sfc_main$a, {
           key: 0,
@@ -4576,19 +5043,22 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
           ref: bindCellApiRef,
           level,
           selectable: __props.selectable,
-          state: unref(selectableRowState)(row),
+          state: unref3(selectableRowState)(row),
           row,
-          onToggle: unref(toggleSelectableRow)
-        }, null, 8, ["level", "selectable", "state", "row", "onToggle"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-          return openBlock(), createElementBlock(Fragment, {
+          onToggle: unref3(toggleSelectableRow)
+        }, null, 8, ["level", "selectable", "state", "row", "onToggle"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
+          return openBlock(), createElementBlock(Fragment2, {
             key: column.id
           }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
             key: 0,
             ref_for: true,
             ref: bindCellApiRef,
             row,
-            column
-          }, null, 8, ["row", "column"])) : "render" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.render(row)), {
+            column,
+            "active-error-anchor": unref3(activeErrorAnchor),
+            onCloseError: unref3(onClosePopupError),
+            onOnError: unref3(onPopupError)
+          }, null, 40, ["row", "column", "active-error-anchor", "onCloseError", "onOnError"])) : "render" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.render(row)), {
             key: 1,
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
@@ -4988,29 +5458,14 @@ function requireEs_iterator_reduce() {
 }
 requireEs_iterator_reduce();
 var es_typedArray_toReversed = {};
-var arrayToReversed;
-var hasRequiredArrayToReversed;
-function requireArrayToReversed() {
-  if (hasRequiredArrayToReversed) return arrayToReversed;
-  hasRequiredArrayToReversed = 1;
-  var lengthOfArrayLike2 = requireLengthOfArrayLike();
-  arrayToReversed = function(O, C) {
-    var len = lengthOfArrayLike2(O);
-    var A = new C(len);
-    var k = 0;
-    for (; k < len; k++) A[k] = O[len - k - 1];
-    return A;
-  };
-  return arrayToReversed;
-}
 var isPossiblePrototype;
 var hasRequiredIsPossiblePrototype;
 function requireIsPossiblePrototype() {
   if (hasRequiredIsPossiblePrototype) return isPossiblePrototype;
   hasRequiredIsPossiblePrototype = 1;
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   isPossiblePrototype = function(argument) {
-    return isObject2(argument) || argument === null;
+    return isObject22(argument) || argument === null;
   };
   return isPossiblePrototype;
 }
@@ -5034,7 +5489,7 @@ function requireObjectSetPrototypeOf() {
   if (hasRequiredObjectSetPrototypeOf) return objectSetPrototypeOf;
   hasRequiredObjectSetPrototypeOf = 1;
   var uncurryThisAccessor = requireFunctionUncurryThisAccessor();
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var requireObjectCoercible2 = requireRequireObjectCoercible();
   var aPossiblePrototype2 = requireAPossiblePrototype();
   objectSetPrototypeOf = Object.setPrototypeOf || ("__proto__" in {} ? (function() {
@@ -5050,7 +5505,7 @@ function requireObjectSetPrototypeOf() {
     return function setPrototypeOf(O, proto) {
       requireObjectCoercible2(O);
       aPossiblePrototype2(proto);
-      if (!isObject2(O)) return O;
+      if (!isObject22(O)) return O;
       if (CORRECT_SETTER) setter(O, proto);
       else O.__proto__ = proto;
       return O;
@@ -5067,8 +5522,8 @@ function requireArrayBufferViewCore() {
   var DESCRIPTORS = requireDescriptors();
   var globalThis2 = requireGlobalThis();
   var isCallable2 = requireIsCallable();
-  var isObject2 = requireIsObject();
-  var hasOwn = requireHasOwnProperty();
+  var isObject22 = requireIsObject();
+  var hasOwn2 = requireHasOwnProperty();
   var classof2 = requireClassof();
   var tryToString2 = requireTryToString();
   var createNonEnumerableProperty2 = requireCreateNonEnumerableProperty();
@@ -5112,20 +5567,20 @@ function requireArrayBufferViewCore() {
     BigUint64Array: 8
   };
   var isView = function isView2(it) {
-    if (!isObject2(it)) return false;
+    if (!isObject22(it)) return false;
     var klass = classof2(it);
-    return klass === "DataView" || hasOwn(TypedArrayConstructorsList, klass) || hasOwn(BigIntArrayConstructorsList, klass);
+    return klass === "DataView" || hasOwn2(TypedArrayConstructorsList, klass) || hasOwn2(BigIntArrayConstructorsList, klass);
   };
   var getTypedArrayConstructor = function(it) {
     var proto = getPrototypeOf(it);
-    if (!isObject2(proto)) return;
+    if (!isObject22(proto)) return;
     var state = getInternalState(proto);
-    return state && hasOwn(state, TYPED_ARRAY_CONSTRUCTOR) ? state[TYPED_ARRAY_CONSTRUCTOR] : getTypedArrayConstructor(proto);
+    return state && hasOwn2(state, TYPED_ARRAY_CONSTRUCTOR) ? state[TYPED_ARRAY_CONSTRUCTOR] : getTypedArrayConstructor(proto);
   };
   var isTypedArray = function(it) {
-    if (!isObject2(it)) return false;
+    if (!isObject22(it)) return false;
     var klass = classof2(it);
-    return hasOwn(TypedArrayConstructorsList, klass) || hasOwn(BigIntArrayConstructorsList, klass);
+    return hasOwn2(TypedArrayConstructorsList, klass) || hasOwn2(BigIntArrayConstructorsList, klass);
   };
   var aTypedArray = function(it) {
     if (isTypedArray(it)) return it;
@@ -5139,7 +5594,7 @@ function requireArrayBufferViewCore() {
     if (!DESCRIPTORS) return;
     if (forced) for (var ARRAY in TypedArrayConstructorsList) {
       var TypedArrayConstructor = globalThis2[ARRAY];
-      if (TypedArrayConstructor && hasOwn(TypedArrayConstructor.prototype, KEY)) try {
+      if (TypedArrayConstructor && hasOwn2(TypedArrayConstructor.prototype, KEY)) try {
         delete TypedArrayConstructor.prototype[KEY];
       } catch (error) {
         try {
@@ -5158,7 +5613,7 @@ function requireArrayBufferViewCore() {
     if (setPrototypeOf) {
       if (forced) for (ARRAY in TypedArrayConstructorsList) {
         TypedArrayConstructor = globalThis2[ARRAY];
-        if (TypedArrayConstructor && hasOwn(TypedArrayConstructor, KEY)) try {
+        if (TypedArrayConstructor && hasOwn2(TypedArrayConstructor, KEY)) try {
           delete TypedArrayConstructor[KEY];
         } catch (error) {
         }
@@ -5205,12 +5660,12 @@ function requireArrayBufferViewCore() {
   if (NATIVE_ARRAY_BUFFER_VIEWS && getPrototypeOf(Uint8ClampedArrayPrototype) !== TypedArrayPrototype) {
     setPrototypeOf(Uint8ClampedArrayPrototype, TypedArrayPrototype);
   }
-  if (DESCRIPTORS && !hasOwn(TypedArrayPrototype, TO_STRING_TAG)) {
+  if (DESCRIPTORS && !hasOwn2(TypedArrayPrototype, TO_STRING_TAG)) {
     TYPED_ARRAY_TAG_REQUIRED = true;
     defineBuiltInAccessor2(TypedArrayPrototype, TO_STRING_TAG, {
       configurable: true,
       get: function() {
-        return isObject2(this) ? this[TYPED_ARRAY_TAG] : void 0;
+        return isObject22(this) ? this[TYPED_ARRAY_TAG] : void 0;
       }
     });
     for (NAME in TypedArrayConstructorsList) if (globalThis2[NAME]) {
@@ -5236,13 +5691,18 @@ var hasRequiredEs_typedArray_toReversed;
 function requireEs_typedArray_toReversed() {
   if (hasRequiredEs_typedArray_toReversed) return es_typedArray_toReversed;
   hasRequiredEs_typedArray_toReversed = 1;
-  var arrayToReversed2 = requireArrayToReversed();
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
   var ArrayBufferViewCore = requireArrayBufferViewCore();
   var aTypedArray = ArrayBufferViewCore.aTypedArray;
   var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
   var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
   exportTypedArrayMethod("toReversed", function toReversed() {
-    return arrayToReversed2(aTypedArray(this), getTypedArrayConstructor(this));
+    var O = aTypedArray(this);
+    var len = lengthOfArrayLike2(O);
+    var A = new (getTypedArrayConstructor(O))(len);
+    var k = 0;
+    for (; k < len; k++) A[k] = O[len - k - 1];
+    return A;
   });
   return es_typedArray_toReversed;
 }
@@ -5285,26 +5745,6 @@ function requireEs_typedArray_toSorted() {
 }
 requireEs_typedArray_toSorted();
 var es_typedArray_with = {};
-var arrayWith;
-var hasRequiredArrayWith;
-function requireArrayWith() {
-  if (hasRequiredArrayWith) return arrayWith;
-  hasRequiredArrayWith = 1;
-  var lengthOfArrayLike2 = requireLengthOfArrayLike();
-  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
-  var $RangeError = RangeError;
-  arrayWith = function(O, C, index, value) {
-    var len = lengthOfArrayLike2(O);
-    var relativeIndex = toIntegerOrInfinity2(index);
-    var actualIndex = relativeIndex < 0 ? len + relativeIndex : relativeIndex;
-    if (actualIndex >= len || actualIndex < 0) throw new $RangeError("Incorrect index");
-    var A = new C(len);
-    var k = 0;
-    for (; k < len; k++) A[k] = k === actualIndex ? value : O[k];
-    return A;
-  };
-  return arrayWith;
-}
 var isBigIntArray;
 var hasRequiredIsBigIntArray;
 function requireIsBigIntArray() {
@@ -5335,14 +5775,15 @@ var hasRequiredEs_typedArray_with;
 function requireEs_typedArray_with() {
   if (hasRequiredEs_typedArray_with) return es_typedArray_with;
   hasRequiredEs_typedArray_with = 1;
-  var arrayWith2 = requireArrayWith();
   var ArrayBufferViewCore = requireArrayBufferViewCore();
   var isBigIntArray2 = requireIsBigIntArray();
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
   var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
   var toBigInt2 = requireToBigInt();
   var aTypedArray = ArrayBufferViewCore.aTypedArray;
   var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
   var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+  var $RangeError = RangeError;
   var PROPER_ORDER = (function() {
     try {
       new Int8Array(1)["with"](2, {
@@ -5364,9 +5805,15 @@ function requireEs_typedArray_with() {
   exportTypedArrayMethod("with", {
     "with": function(index, value) {
       var O = aTypedArray(this);
+      var len = lengthOfArrayLike2(O);
       var relativeIndex = toIntegerOrInfinity2(index);
-      var actualValue = isBigIntArray2(O) ? toBigInt2(value) : +value;
-      return arrayWith2(O, getTypedArrayConstructor(O), relativeIndex, actualValue);
+      var actualIndex = relativeIndex < 0 ? len + relativeIndex : relativeIndex;
+      var numericValue = isBigIntArray2(O) ? toBigInt2(value) : +value;
+      if (actualIndex >= len || actualIndex < 0) throw new $RangeError("Incorrect index");
+      var A = new (getTypedArrayConstructor(O))(len);
+      var k = 0;
+      for (; k < len; k++) A[k] = k === actualIndex ? numericValue : O[k];
+      return A;
     }
   }["with"], !PROPER_ORDER || THROW_ON_NEGATIVE_FRACTIONAL_INDEX);
   return es_typedArray_with;
@@ -5379,11 +5826,11 @@ var hasRequiredAnObjectOrUndefined;
 function requireAnObjectOrUndefined() {
   if (hasRequiredAnObjectOrUndefined) return anObjectOrUndefined;
   hasRequiredAnObjectOrUndefined = 1;
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var $String = String;
   var $TypeError = TypeError;
   anObjectOrUndefined = function(argument) {
-    if (argument === void 0 || isObject2(argument)) return argument;
+    if (argument === void 0 || isObject22(argument)) return argument;
     throw new $TypeError($String(argument) + " is not an object or undefined");
   };
   return anObjectOrUndefined;
@@ -5444,7 +5891,7 @@ function requireUint8FromBase64() {
   var uncurryThis = requireFunctionUncurryThis();
   var anObjectOrUndefined2 = requireAnObjectOrUndefined();
   var aString2 = requireAString();
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var base64Map2 = requireBase64Map();
   var getAlphabetOption2 = requireGetAlphabetOption();
   var notDetached = requireArrayBufferNotDetached();
@@ -5550,7 +5997,7 @@ function requireUint8FromBase64() {
         read = stringLength;
         break;
       }
-      if (!hasOwn(alphabet, chr)) {
+      if (!hasOwn2(alphabet, chr)) {
         throw new SyntaxError("Unexpected character");
       }
       var remainingBytes = maxLength - written;
@@ -5684,9 +6131,20 @@ function requireEs_uint8Array_setFromHex() {
   var anUint8Array2 = requireAnUint8Array();
   var notDetached = requireArrayBufferNotDetached();
   var $fromHex = requireUint8FromHex();
+  function throwsOnLengthTrackingView() {
+    try {
+      var rab = new ArrayBuffer(16, {
+        maxByteLength: 1024
+      });
+      new Uint8Array(rab).setFromHex("cafed00d");
+    } catch (error) {
+      return true;
+    }
+  }
   if (globalThis2.Uint8Array) $({
     target: "Uint8Array",
-    proto: true
+    proto: true,
+    forced: throwsOnLengthTrackingView()
   }, {
     setFromHex: function setFromHex(string) {
       anUint8Array2(this);
@@ -5831,40 +6289,40 @@ function requireInheritIfRequired() {
   if (hasRequiredInheritIfRequired) return inheritIfRequired;
   hasRequiredInheritIfRequired = 1;
   var isCallable2 = requireIsCallable();
-  var isObject2 = requireIsObject();
+  var isObject22 = requireIsObject();
   var setPrototypeOf = requireObjectSetPrototypeOf();
   inheritIfRequired = function($this, dummy, Wrapper) {
     var NewTarget, NewTargetPrototype;
     if (
       // it can work only with native `setPrototypeOf`
       setPrototypeOf && // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
-      isCallable2(NewTarget = dummy.constructor) && NewTarget !== Wrapper && isObject2(NewTargetPrototype = NewTarget.prototype) && NewTargetPrototype !== Wrapper.prototype
+      isCallable2(NewTarget = dummy.constructor) && NewTarget !== Wrapper && isObject22(NewTargetPrototype = NewTarget.prototype) && NewTargetPrototype !== Wrapper.prototype
     ) setPrototypeOf($this, NewTargetPrototype);
     return $this;
   };
   return inheritIfRequired;
 }
-var toString;
+var toString2;
 var hasRequiredToString;
 function requireToString() {
-  if (hasRequiredToString) return toString;
+  if (hasRequiredToString) return toString2;
   hasRequiredToString = 1;
   var classof2 = requireClassof();
   var $String = String;
-  toString = function(argument) {
+  toString2 = function(argument) {
     if (classof2(argument) === "Symbol") throw new TypeError("Cannot convert a Symbol value to a string");
     return $String(argument);
   };
-  return toString;
+  return toString2;
 }
 var normalizeStringArgument;
 var hasRequiredNormalizeStringArgument;
 function requireNormalizeStringArgument() {
   if (hasRequiredNormalizeStringArgument) return normalizeStringArgument;
   hasRequiredNormalizeStringArgument = 1;
-  var toString2 = requireToString();
+  var toString22 = requireToString();
   normalizeStringArgument = function(argument, $default) {
-    return argument === void 0 ? arguments.length < 2 ? "" : $default : toString2(argument);
+    return argument === void 0 ? arguments.length < 2 ? "" : $default : toString22(argument);
   };
   return normalizeStringArgument;
 }
@@ -6032,7 +6490,7 @@ function requireWeb_domException_stack() {
   var getBuiltIn2 = requireGetBuiltIn();
   var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
   var defineProperty = requireObjectDefineProperty().f;
-  var hasOwn = requireHasOwnProperty();
+  var hasOwn2 = requireHasOwnProperty();
   var anInstance2 = requireAnInstance();
   var inheritIfRequired2 = requireInheritIfRequired();
   var normalizeStringArgument2 = requireNormalizeStringArgument();
@@ -6075,10 +6533,10 @@ function requireWeb_domException_stack() {
     if (!IS_PURE) {
       defineProperty(PolyfilledDOMExceptionPrototype, "constructor", createPropertyDescriptor2(1, PolyfilledDOMException));
     }
-    for (var key in DOMExceptionConstants) if (hasOwn(DOMExceptionConstants, key)) {
+    for (var key in DOMExceptionConstants) if (hasOwn2(DOMExceptionConstants, key)) {
       var constant = DOMExceptionConstants[key];
       var constantName = constant.s;
-      if (!hasOwn(PolyfilledDOMException, constantName)) {
+      if (!hasOwn2(PolyfilledDOMException, constantName)) {
         defineProperty(PolyfilledDOMException, constantName, createPropertyDescriptor2(6, constant.c));
       }
     }
@@ -6111,12 +6569,12 @@ var _hoisted_7 = ["aria-label"];
 var STATUS_HAR_INTE_VALT_FIL = 0;
 var STATUS_HAR_VALT_FIL = 1;
 var STATUS_MISSLYCKATS = 2;
-var _sfc_main$2 = /* @__PURE__ */ defineComponent({
+var _sfc_main$2 = /* @__PURE__ */ defineComponent2({
   __name: "XFileDragdrop",
   setup(__props) {
-    const valdFil = ref(File);
-    const currentStatus = ref(STATUS_HAR_INTE_VALT_FIL);
-    const uppladdatDokument = ref({
+    const valdFil = ref3(File);
+    const currentStatus = ref3(STATUS_HAR_INTE_VALT_FIL);
+    const uppladdatDokument = ref3({
       dokument: {
         filnamn: "",
         mime: "",
@@ -6124,24 +6582,24 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         fel: ""
       }
     });
-    const fileName = ref("");
-    const mimeType = ref("");
-    const fileSize = ref(0);
-    const filValidering = ref("");
-    const maxFileSize = ref(1e7);
-    const allowedFileTypes = ref("application/pdf");
-    const dragEnterTarget = ref(null);
-    const visadrag = ref(false);
-    const harValtFil = computed(() => {
+    const fileName = ref3("");
+    const mimeType = ref3("");
+    const fileSize = ref3(0);
+    const filValidering = ref3("");
+    const maxFileSize = ref3(1e7);
+    const allowedFileTypes = ref3("application/pdf");
+    const dragEnterTarget = ref3(null);
+    const visadrag = ref3(false);
+    const harValtFil = computed3(() => {
       return currentStatus.value === STATUS_HAR_VALT_FIL;
     });
-    const harMisslyckats = computed(() => {
+    const harMisslyckats = computed3(() => {
       return currentStatus.value === STATUS_MISSLYCKATS;
     });
-    const filstorlek = computed(() => {
+    const filstorlek = computed3(() => {
       return Math.round(fileSize.value / 1024 * 100) / 100;
     });
-    const srtextFilvaljare = computed(() => {
+    const srtextFilvaljare = computed3(() => {
       if (!harValtFil.value) {
         return "V\xE4lj en PDF";
       } else {
@@ -6292,9 +6750,9 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         onDragover: dragover,
         onDragleave: dragleave,
         onDrop: drop
-      }, [renderSlot(_ctx.$slots, "image"), _cache[6] || (_cache[6] = createTextVNode()), _cache[7] || (_cache[7] = createElementVNode("h3", null, "Ladda upp ett dokument", -1)), _cache[8] || (_cache[8] = createTextVNode("\n        dra och sl\xE4pp eller\n        ", -1)), filValidering.value !== "" ? (openBlock(), createElementBlock("div", _hoisted_1$1, [createElementVNode("span", _hoisted_2, [createVNode(unref(FIcon), {
+      }, [renderSlot(_ctx.$slots, "image"), _cache[6] || (_cache[6] = createTextVNode()), _cache[7] || (_cache[7] = createElementVNode("h3", null, "Ladda upp ett dokument", -1)), _cache[8] || (_cache[8] = createTextVNode("\n        dra och sl\xE4pp eller\n        ", -1)), filValidering.value !== "" ? (openBlock(), createElementBlock("div", _hoisted_1$1, [createElementVNode("span", _hoisted_2, [createVNode(unref3(FIcon), {
         name: "error"
-      })]), createTextVNode(" " + toDisplayString(filValidering.value), 1)])) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", null, [withDirectives((openBlock(), createBlock(unref(FFileSelector), {
+      })]), createTextVNode(" " + toDisplayString(filValidering.value), 1)])) : createCommentVNode("", true), _cache[9] || (_cache[9] = createTextVNode()), createElementVNode("div", null, [withDirectives((openBlock(), createBlock(unref3(FFileSelector), {
         id: "valjFil",
         modelValue: valdFil.value,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => valdFil.value = $event),
@@ -6308,7 +6766,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
         _: 1
       }, 8, ["modelValue", "accept", "aria-label"])), [[_directive_test, "valdFil"]])]), _cache[10] || (_cache[10] = createTextVNode()), harValtFil.value || harMisslyckats.value ? (openBlock(), createElementBlock("div", _hoisted_3, [_cache[4] || (_cache[4] = createElementVNode("hr", {
         class: "file-item__separator show_separator"
-      }, null, -1)), _cache[5] || (_cache[5] = createTextVNode()), withDirectives((openBlock(), createBlock(unref(FFileItem), {
+      }, null, -1)), _cache[5] || (_cache[5] = createTextVNode()), withDirectives((openBlock(), createBlock(unref3(FFileItem), {
         id: "fillista",
         "file-name": fileName.value,
         "mime-type": mimeType.value,
@@ -6321,7 +6779,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
           class: "button button--discrete file-item__file-remove",
           "aria-label": `Ta bort ${fileName.value}`,
           onClick: taBortFil
-        }, [createVNode(unref(FIcon), {
+        }, [createVNode(unref3(FIcon), {
           name: "trashcan",
           class: "button__icon"
         }), _cache[1] || (_cache[1] = createTextVNode("\n                            Ta bort\n                        ", -1))], 8, _hoisted_7)])]),
@@ -6976,7 +7434,7 @@ requireEs_iterator_filter();
 var _hoisted_1 = {
   class: "sort-filter-dataset-ng"
 };
-var _sfc_main$1 = /* @__PURE__ */ defineComponent({
+var _sfc_main$1 = /* @__PURE__ */ defineComponent2({
   __name: "XSortFilterDatasetNg",
   props: {
     data: {},
@@ -6995,8 +7453,8 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const props = __props;
-    const filtered = ref(props.filter(props.data));
-    const result = ref(props.data);
+    const filtered = ref3(props.filter(props.data));
+    const result = ref3(props.data);
     const debouncedUpdate = debounce(update, 250);
     function update() {
       filtered.value = props.filter(props.data);
@@ -7004,7 +7462,7 @@ var _sfc_main$1 = /* @__PURE__ */ defineComponent({
     }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1, [renderSlot(_ctx.$slots, "filter", normalizeProps(guardReactiveProps({
-        update: unref(debouncedUpdate)
+        update: unref3(debouncedUpdate)
       }))), _cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
         result: result.value
       })))]);
@@ -7164,7 +7622,7 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main = defineComponent({
+var _sfc_main = defineComponent2({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],
