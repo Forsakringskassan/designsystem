@@ -4669,7 +4669,7 @@ IPopupError_default.__file = "packages/vue/src/internal-components/IPopupError/I
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
-import { computed, nextTick, onUnmounted as onUnmounted2, useTemplateRef, watch, watchEffect } from "vue";
+import { computed, onUnmounted as onUnmounted2, useTemplateRef, watch, watchEffect } from "vue";
 import { debounce as debounce2 } from "@fkui/logic";
 
 // packages/vue/src/composables/useEventListener.ts
@@ -4784,14 +4784,14 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
     watchEffect(() => {
-      if (wrapperRef.value && __props.activeElement !== void 0) {
-        const centerPosition = __props.activeElement.offsetTop - /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-        (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
-        if (!isElementInsideViewport(wrapperRef.value)) {
-          wrapperRef.value.scrollIntoView({ behavior: "instant", block: "nearest" });
-        }
-        wrapperRef.value.scrollTo({ top: centerPosition, behavior: "instant" });
+      if (!wrapperRef.value || __props.activeElement === void 0) {
+        return;
       }
+      const centerPosition = __props.activeElement.offsetTop - (wrapperRef.value.getBoundingClientRect().height - __props.activeElement.getBoundingClientRect().height) / 2;
+      if (!isElementInsideViewport(wrapperRef.value)) {
+        wrapperRef.value.scrollIntoView({ behavior: "instant", block: "nearest" });
+      }
+      wrapperRef.value.scrollTo({ top: centerPosition, behavior: "instant" });
     });
     function addListeners() {
       document.addEventListener("click", onDocumentClickHandler);
@@ -4846,8 +4846,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     function guessItemHeight(numOfItems, contentWrapper) {
       return Math.ceil(contentWrapper.clientHeight / numOfItems);
     }
-    async function calculatePosition() {
-      await nextTick();
+    function calculatePosition() {
       const wrapperElement = wrapperRef.value;
       const contentWrapper = contentRef.value;
       if (!__props.anchor || !wrapperElement || !contentWrapper) {
@@ -4872,7 +4871,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
       const rect = computeListboxRect(__props.anchor, { itemHeight: contentItemHeigth, numOfItems: __props.numOfItems, verticalSpacing });
       if (rect) {
         const { top, left, width, height } = rect;
-        const offsetRect = wrapperElement?.offsetParent?.getBoundingClientRect();
+        const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
         const offsetLeft = offsetRect?.x ?? 0;
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
@@ -6358,7 +6357,7 @@ ICalendarNavbar_default.__file = "packages/vue/src/internal-components/calendar/
 // packages/vue/src/internal-components/combobox/useCombobox.ts
 import {
   computed as computed2,
-  nextTick as nextTick2,
+  nextTick,
   onMounted as onMounted2,
   ref,
   watchEffect as watchEffect2
@@ -6373,7 +6372,7 @@ var $t = useTranslate();
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=script
 import { defineComponent as _defineComponent2 } from "vue";
-import { nextTick as nextTick3, ref as ref2, useTemplateRef as useTemplateRef2, watchEffect as watchEffect3 } from "vue";
+import { nextTick as nextTick2, ref as ref2, useTemplateRef as useTemplateRef2, watchEffect as watchEffect3 } from "vue";
 var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
   __name: "IComboboxDropdown",
   props: {
@@ -6401,7 +6400,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
     }
     watchEffect3(async () => {
       if (__props.activeOption !== null) {
-        await nextTick3();
+        await nextTick2();
         const activeOptionNode = listboxRef.value?.querySelector(`#${__props.activeOptionId}`);
         activeElement.value = activeOptionNode ?? void 0;
       }
