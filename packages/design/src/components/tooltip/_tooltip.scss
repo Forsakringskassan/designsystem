@@ -109,6 +109,7 @@ $inner-border:
 
     &__body {
         padding: 0 size.$padding-100;
+        color: $tooltip-color-text;
     }
 
     &__header {
@@ -117,6 +118,7 @@ $inner-border:
         line-height: var(--f-line-height-medium);
         padding: 0 size.$padding-100;
         margin-bottom: size.$margin-050;
+        color: $tooltip-color-text;
     }
 
     .close-button {
