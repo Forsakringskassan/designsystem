@@ -195,6 +195,7 @@ onMounted(() => {
     tableCallbackSortableColumns(Object.keys(props.sortableAttributes));
 });
 
+// shallow watch used because inline row edits should not trigger sort directly
 watch(
     () => props.data,
     () => {
@@ -212,7 +213,7 @@ watch(
         }
         sortFilterData();
     },
-    { immediate: true, deep: true },
+    { immediate: true, deep: 1 },
 );
 
 function sortFilterData(): void {
