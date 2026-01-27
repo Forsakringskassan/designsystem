@@ -150,6 +150,10 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
             e.preventDefault();
             setPreviousOption();
             break;
+        case "Space":
+            // Prevent default scrolling with space while editing dropdown.
+            e.preventDefault();
+            break;
         default:
             break;
     }
