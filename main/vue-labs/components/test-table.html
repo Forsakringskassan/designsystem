@@ -26,7 +26,7 @@
     "@fkui/logic": "../assets/vendor-fkui-logic-fb32f2.js",
     "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
     "@fkui/vue": "../assets/vendor-fkui-vue-2cc4cf.js",
-    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-43e993.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-257616.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-fe2383.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
     "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
     "../assets/vendor-fkui-vue-2cc4cf.js": "sha384-m1eElOXkq4Kv4TNacovxF9OWKIxp1YVi99EBKaCPudRh0aQTxnvTBdPjebgsV1RV",
-    "../assets/vendor-fkui-vue-labs-43e993.js": "sha384-t+GpeQ8huGBK0uMiB2lHpSJ4yOhCXi3k+y+P/PcEtr6+LbR1iMeF9VOtHGi81DEh",
+    "../assets/vendor-fkui-vue-labs-257616.js": "sha384-yJZZL/4Np5mCWkXUHIzkIbK4Hers/D5mT2mlFmLFzNp6bZ5ohVxoCROoO2jQyG+o",
     "../assets/vendor-forsakringskassan-docs-live-example-fe2383.js": "sha384-zp/dC2Q9fr2MNGNwpaTNP+qizDjGJBio6keMixt3Nzm4r55B+r3hAHw54F4fE17W"
   }
 }
@@ -233,7 +233,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-2e1d9d"></div>
+        <div id="example-7286d5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -259,7 +259,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-2e1d9d.js"></script>
+        <script type="module" src="./FTableExample-7286d5.js"></script>
     
                 </div>
                 <div>
@@ -282,7 +282,7 @@ body {
 <span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumn</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumn</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, removeRow } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
 
@@ -353,7 +353,9 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">`Ta bort <span class="hljs-subst">${row.id}</span>`</span>;
         },
-        <span class="hljs-attr">onClick</span>: onRemoveRow,
+        <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> {
+            <span class="hljs-title function_">onRemoveRow</span>(row);
+        },
     },
     {
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Länk&quot;</span>,
@@ -513,26 +515,11 @@ interface <span class="hljs-title class_">Row</span> {
     });
 }
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params">rowToRemove: Row</span>): <span class="hljs-keyword">void</span> {
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params">row: Row</span>): <span class="hljs-keyword">void</span> {
     <span class="hljs-title function_">assertRef</span>(tableRef);
 
     tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-keyword">const</span> rowIndex = rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(rowToRemove);
-        <span class="hljs-keyword">if</span> (rowIndex !== -<span class="hljs-number">1</span>) {
-            rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">splice</span>(rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(rowToRemove), <span class="hljs-number">1</span>);
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> row <span class="hljs-keyword">of</span> rows.<span class="hljs-property">value</span>) {
-                <span class="hljs-keyword">if</span> (!row.<span class="hljs-property">expandableRows</span>) {
-                    <span class="hljs-keyword">continue</span>;
-                }
-
-                <span class="hljs-keyword">const</span> expandableRowIndex = row.<span class="hljs-property">expandableRows</span>.<span class="hljs-title function_">indexOf</span>(rowToRemove);
-                <span class="hljs-keyword">if</span> (expandableRowIndex !== -<span class="hljs-number">1</span>) {
-                    row.<span class="hljs-property">expandableRows</span>.<span class="hljs-title function_">splice</span>(expandableRowIndex, <span class="hljs-number">1</span>);
-                    <span class="hljs-keyword">break</span>;
-                }
-            }
-        }
+        rows.<span class="hljs-property">value</span> = <span class="hljs-title function_">removeRow</span>(rows.<span class="hljs-property">value</span>, row, <span class="hljs-string">&quot;expandableRows&quot;</span>);
     });
 }
 
