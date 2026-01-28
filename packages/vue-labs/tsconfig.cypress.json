@@ -5,7 +5,6 @@
         "outDir": "temp",
         "rootDir": "src",
         "target": "es2023",
-        "noEmit": false,
         "emitDeclarationOnly": true,
         "allowSyntheticDefaultImports": true,
         "declarationDir": "temp/cypress",
