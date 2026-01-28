@@ -36,7 +36,8 @@
         &__item {
             padding: size.$padding-075;
             display: block;
-            &:hover {
+
+            &:hover:not(.ipopupmenu__list__item--highlight) {
                 background-color: $popupmenu-color-background-hover;
             }
 
