@@ -4,7 +4,6 @@
         "composite": true,
         "outDir": "temp",
         "rootDir": "src",
-        "noEmit": false,
         "emitDeclarationOnly": true,
         "allowSyntheticDefaultImports": true,
         "declarationDir": "temp/cypress",
