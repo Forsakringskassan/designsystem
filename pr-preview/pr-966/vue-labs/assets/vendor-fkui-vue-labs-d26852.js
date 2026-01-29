@@ -3757,6 +3757,9 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
           e.preventDefault();
           setPreviousOption();
           break;
+        case "Space":
+          e.preventDefault();
+          break;
       }
     }
     async function onEditBlur(event) {
