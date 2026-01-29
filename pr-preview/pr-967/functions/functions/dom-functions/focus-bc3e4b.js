@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/functions/dom-functions/focus.md:focus-bcee63.js
+// virtual-entry:virtual:docs/functions/functions/dom-functions/focus.md:focus-bc3e4b.js
 import { defineComponent } from "vue";
 import { focus } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -68,7 +68,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-bcee63"
+  selector: "#example-bc3e4b"
 });
 export {
   render
