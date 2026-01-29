@@ -39,5 +39,8 @@ export function normalizeSimpleColumn<T, K extends keyof T>(
         editable: () => false,
         sortable: column.key ?? null,
         validation: {},
+        hasValidation: false,
+        formatter: (value) => value,
+        parser: (value) => value,
     };
 }

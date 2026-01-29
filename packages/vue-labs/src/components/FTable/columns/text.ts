@@ -8,9 +8,9 @@ import {
 } from "./base";
 import {
     defaultTnumValue,
-    getFormattedValueFn,
     getLabelFn,
-    getParsedUpdateFn,
+    getUpdateFn,
+    getValueFn,
 } from "./helpers";
 
 /**
@@ -26,8 +26,8 @@ export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
     update?(this: void, row: T, newValue: string, oldValue: string): void;
     editable?: boolean | ((this: void, row: T) => boolean);
     validation?: ValidatorConfigs;
-    parser?(this: void, value: string): string;
-    formatter?(this: void, value: string): string;
+    parser?(this: void, value: string): string | undefined;
+    formatter?(this: void, value: string): string | undefined;
 }
 
 /**
@@ -39,6 +39,7 @@ export interface NormalizedTableColumnText<
 > extends NormalizedTableColumnBase<K> {
     readonly type: InputTypeText;
     readonly validation: ValidatorConfigs;
+    readonly hasValidation: boolean;
     readonly tnum: boolean;
     readonly align: "left" | "right";
     readonly component: Component<{
@@ -49,6 +50,8 @@ export interface NormalizedTableColumnText<
     label(this: void, row: T): string;
     value(this: void, row: T): string;
     update(this: void, row: T, newValue: string, oldValue: string): void;
+    parser(this: void, value: string): string | undefined;
+    formatter(this: void, value: string): string | undefined;
     editable(this: void, row: T): boolean;
 }
 
@@ -67,13 +70,17 @@ export function normalizeTextColumn<T, K extends keyof T>(
         tnum: column.tnum ?? defaultTnumValue(type),
         align: column.align ?? "left",
         label: getLabelFn(column.label),
-        value: getFormattedValueFn(column.value, column.key, formatter, ""),
-        update: getParsedUpdateFn(column.update, column.key, parser),
+        value: getValueFn(column.value, column.key, String, ""),
+        update: getUpdateFn(column.update, column.key),
         editable:
             typeof column.editable === "function"
                 ? column.editable
                 : () => Boolean(column.editable ?? false),
         validation: column.validation ?? {},
+        hasValidation:
+            column.type.startsWith("text:") || Boolean(column.validation),
         sortable: column.key ?? null,
+        formatter,
+        parser,
     };
 }
