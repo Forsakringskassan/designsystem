@@ -13387,11 +13387,14 @@ const _sfc_main$1n = /* @__PURE__ */ defineComponent({
       }
       return classes;
     });
+    const disabled = computed(() => {
+      return props.disabled || inflight.value;
+    });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", mergeProps({
         type: __props.type,
         class: buttonClass.value,
-        disabled: props.disabled
+        disabled: disabled.value
       }, attrs), [hasIconLeft.value ? (openBlock(), createElementBlock(Fragment, {
         key: 0
       }, [unref(inflight) ? (openBlock(), createBlock(unref(FIcon), {

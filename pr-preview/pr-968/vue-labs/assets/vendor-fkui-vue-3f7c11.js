@@ -1,4 +1,4 @@
-// packages/vue/dist/esm/index.esm.js
+// ../vue/dist/esm/index.esm.js
 import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, Fragment, unref, createBlock, createCommentVNode, createApp, resolveComponent, withKeys, toDisplayString, createVNode, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Teleport, normalizeStyle, withDirectives, vShow, Transition, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, findTabbableElements, popFocus, pushFocus, ElementIdService, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, debounce, alertScreenReader, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -2193,11 +2193,14 @@ var _sfc_main$1n = /* @__PURE__ */ defineComponent({
       }
       return classes;
     });
+    const disabled = computed(() => {
+      return props.disabled || inflight.value;
+    });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", mergeProps({
         type: __props.type,
         class: buttonClass.value,
-        disabled: props.disabled
+        disabled: disabled.value
       }, attrs), [hasIconLeft.value ? (openBlock(), createElementBlock(Fragment, {
         key: 0
       }, [unref(inflight) ? (openBlock(), createBlock(unref(FIcon), {
