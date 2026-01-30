@@ -266,7 +266,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       }
     },
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     * Set to `true`, empty string `""` or string `"disabled"` to disable the button.
      */
     disabled: {
       type: Boolean,
