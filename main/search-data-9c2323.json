@@ -271,8 +271,6 @@
     "h-display-flex",
     "Skärmläsare",
     "NVDA",
-    "clamp() function",
-    "datum",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -294,6 +292,8 @@
     "dispatchComponentValidityEvent",
     "assertSet() function",
     "assertRef() function",
+    "clamp() function",
+    "datum",
     "Validatorer",
     "identisk",
     "matches",
@@ -534,6 +534,18 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -569,18 +581,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -1241,13 +1241,6 @@
       ]
     },
     {
-      "url": "functions/date/clamp.html",
-      "title": "clamp() function",
-      "terms": [
-        "datum"
-      ]
-    },
-    {
       "url": "functions/functions/use-resize.html",
       "title": "useResize() composable",
       "terms": [
@@ -1330,6 +1323,13 @@
       "url": "functions/functions/assert-ref.html",
       "title": "assertRef() function",
       "terms": []
+    },
+    {
+      "url": "functions/date/clamp.html",
+      "title": "clamp() function",
+      "terms": [
+        "datum"
+      ]
     },
     {
       "url": "components/validation/validators.html",
@@ -1866,6 +1866,38 @@
       ]
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -1983,38 +2015,6 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
       ]
     },
     {
@@ -2541,24 +2541,24 @@
     "272": 69,
     "273": 70,
     "274": 70,
-    "275": 71,
-    "276": 71,
-    "277": 71,
+    "275": 70,
+    "276": 70,
+    "277": 70,
     "278": 71,
     "279": 71,
     "280": 72,
-    "281": 72,
-    "282": 73,
-    "283": 74,
-    "284": 75,
-    "285": 76,
-    "286": 77,
-    "287": 78,
-    "288": 79,
-    "289": 80,
-    "290": 81,
-    "291": 82,
-    "292": 83,
+    "281": 73,
+    "282": 74,
+    "283": 75,
+    "284": 76,
+    "285": 77,
+    "286": 78,
+    "287": 79,
+    "288": 80,
+    "289": 81,
+    "290": 82,
+    "291": 83,
+    "292": 84,
     "293": 84,
     "294": 85,
     "295": 85,
@@ -2802,49 +2802,49 @@
     "533": 144,
     "534": 145,
     "535": 145,
-    "536": 146,
+    "536": 145,
     "537": 146,
-    "538": 147,
-    "539": 147,
-    "540": 148,
-    "541": 148,
-    "542": 149,
-    "543": 149,
-    "544": 150,
-    "545": 150,
-    "546": 151,
-    "547": 151,
-    "548": 152,
-    "549": 152,
-    "550": 153,
-    "551": 153,
-    "552": 154,
-    "553": 154,
-    "554": 155,
-    "555": 155,
-    "556": 156,
-    "557": 156,
-    "558": 157,
-    "559": 157,
-    "560": 158,
-    "561": 158,
-    "562": 158,
-    "563": 159,
-    "564": 159,
-    "565": 160,
-    "566": 160,
-    "567": 161,
-    "568": 161,
-    "569": 162,
-    "570": 162,
-    "571": 162,
-    "572": 163,
-    "573": 163,
-    "574": 163,
-    "575": 164,
-    "576": 164,
+    "538": 146,
+    "539": 146,
+    "540": 147,
+    "541": 147,
+    "542": 147,
+    "543": 148,
+    "544": 148,
+    "545": 148,
+    "546": 149,
+    "547": 149,
+    "548": 150,
+    "549": 150,
+    "550": 151,
+    "551": 151,
+    "552": 152,
+    "553": 152,
+    "554": 153,
+    "555": 153,
+    "556": 154,
+    "557": 154,
+    "558": 155,
+    "559": 155,
+    "560": 156,
+    "561": 156,
+    "562": 157,
+    "563": 157,
+    "564": 158,
+    "565": 158,
+    "566": 159,
+    "567": 159,
+    "568": 160,
+    "569": 160,
+    "570": 161,
+    "571": 161,
+    "572": 162,
+    "573": 162,
+    "574": 162,
+    "575": 163,
+    "576": 163,
     "577": 164,
-    "578": 165,
+    "578": 164,
     "579": 165,
     "580": 165,
     "581": 166,
