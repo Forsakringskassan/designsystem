@@ -79,6 +79,25 @@
     .imenu__list {
         display: flex;
 
+        &__anchor-container {
+            padding-bottom: size.$padding-050;
+            border-bottom: 5px solid transparent;
+
+            &:hover {
+                border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
+            }
+        }
+
+        &__anchor {
+            display: inline-flex;
+
+            &-icon-right {
+                flex: 1 0 auto;
+                padding-top: size.$padding-025;
+                margin-left: size.$padding-025;
+            }
+        }
+
         &__item {
             display: inline-flex;
             padding-top: size.$padding-100;
@@ -99,25 +118,6 @@
 
             &--hidden {
                 visibility: hidden;
-            }
-        }
-
-        &__anchor-container {
-            padding-bottom: size.$padding-050;
-            border-bottom: 5px solid transparent;
-
-            &:hover {
-                border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
-            }
-        }
-
-        &__anchor {
-            display: inline-flex;
-
-            &-icon-right {
-                flex: 1 0 auto;
-                padding-top: size.$padding-025;
-                margin-left: size.$padding-025;
             }
         }
     }
