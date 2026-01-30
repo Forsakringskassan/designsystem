@@ -3,6 +3,26 @@ import { FIcon } from "../FIcon";
 import FButton from "./FButton.vue";
 
 describe("props", () => {
+    describe("disabled", () => {
+        it("should disable the button when true", () => {
+            expect.assertions(1);
+            const wrapper = shallowMount(FButton, {
+                props: {
+                    disabled: true,
+                },
+            });
+            const button = wrapper.get("button");
+            expect(button.attributes("disabled")).toBeDefined();
+        });
+
+        it("should not disable the button as default", () => {
+            expect.assertions(1);
+            const wrapper = shallowMount(FButton);
+            const button = wrapper.get("button");
+            expect(button.attributes("disabled")).toBeUndefined();
+        });
+    });
+
     it("type prop should set type attribute on button element", () => {
         expect.assertions(1);
         const wrapper = shallowMount(FButton, {
