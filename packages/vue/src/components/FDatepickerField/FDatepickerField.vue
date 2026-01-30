@@ -98,7 +98,7 @@ export default defineComponent({
             default: "sm-12",
         },
         /**
-         * Set to `true`, empty string `""` or string `"disabled"` to disable this field.
+         * Disables the date picker.
          */
         disabled: {
             type: Boolean,
