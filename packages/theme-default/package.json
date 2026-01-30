@@ -1,6 +1,6 @@
 {
   "name": "@fkui/theme-default",
-  "version": "6.34.0",
+  "version": "6.34.1",
   "description": "FK Themes",
   "keywords": [
     "fkui",
@@ -32,7 +32,7 @@
     "prepack": "npm run build"
   },
   "devDependencies": {
-    "@fkui/theme-builder": "6.34.0"
+    "@fkui/theme-builder": "6.34.1"
   },
   "engines": {
     "node": ">= 20",

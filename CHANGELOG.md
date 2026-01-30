@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 6.34.1 (2026-01-30)
+
+### Bug Fixes
+
+* **@fkui/tsconfig, @fkui/vue-labs, @fkui/vue:** revert typescript config emit (refs SB-4982) 1373364
+* **@fkui/vue:** `FExpandablePanel` page objects unable to use `data-*` or `id` as selectors (fixes SFKUI-7553) 4b843cc
+* **@fkui/vue:** fix to not scroll to top on combobox selection (fixes SFKUI-7368) 2088cf0, closes #709
+* **deps:** update dependency i18next to v25.8.0 3596daf
+* **deps:** update dependency sass to v1.97.3 d3401ec
+
 ## 6.34.0 (2026-01-23)
 
 ### Features

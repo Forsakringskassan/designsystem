@@ -1,6 +1,6 @@
 {
   "name": "@fkui/icon-lib-default",
-  "version": "6.34.0",
+  "version": "6.34.1",
   "description": "Default icon library",
   "keywords": [
     "fkui",
@@ -26,7 +26,7 @@
     "start": "run-s build serve"
   },
   "devDependencies": {
-    "@fkui/icon-lib-builder": "6.34.0"
+    "@fkui/icon-lib-builder": "6.34.1"
   },
   "engines": {
     "node": ">= 20",

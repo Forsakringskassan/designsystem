@@ -3,7 +3,7 @@
  * If `expandableAttribute` is set it can removes rows from nested rows.
  *
  * @public
- * @since %version%
+ * @since v6.34.1
  * @param rows - The row array
  * @param row - The row to remove (expected to exist in the row array)
  * @param expandableAttribute - If set, this function will search for and remove expandable rows the given row.
