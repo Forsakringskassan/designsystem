@@ -23,12 +23,12 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-2e1d9d.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-7286d5.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
 import { FSortFilterDataset } from "@fkui/vue";
-import { FTable, defineTableColumns } from "@fkui/vue-labs";
+import { FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "FTableExample",
@@ -86,7 +86,9 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         text(row) {
           return `Ta bort ${row.id}`;
         },
-        onClick: onRemoveRow
+        onClick: (row) => {
+          onRemoveRow(row);
+        }
       },
       {
         header: "L\xE4nk",
@@ -238,24 +240,10 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         aktiv: false
       });
     }
-    function onRemoveRow(rowToRemove) {
+    function onRemoveRow(row) {
       assertRef(tableRef);
       tableRef.value.withTabstopBehaviour("row-removal", () => {
-        const rowIndex = rows.value.indexOf(rowToRemove);
-        if (rowIndex !== -1) {
-          rows.value.splice(rows.value.indexOf(rowToRemove), 1);
-        } else {
-          for (const row of rows.value) {
-            if (!row.expandableRows) {
-              continue;
-            }
-            const expandableRowIndex = row.expandableRows.indexOf(rowToRemove);
-            if (expandableRowIndex !== -1) {
-              row.expandableRows.splice(expandableRowIndex, 1);
-              break;
-            }
-          }
-        }
+        rows.value = removeRow(rows.value, row, "expandableRows");
       });
     }
     function onRemoveSelectedRows() {
@@ -330,7 +318,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-2e1d9d"
+  selector: "#example-7286d5"
 });
 export {
   render

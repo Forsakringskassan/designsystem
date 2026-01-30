@@ -2477,7 +2477,7 @@ var _hoisted_1$e = {
   key: 0,
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _hoisted_2$b = ["aria-label", "aria-expanded"];
+var _hoisted_2$a = ["aria-label", "aria-expanded"];
 var _hoisted_3$8 = {
   key: 1,
   ref: "expandable",
@@ -2524,7 +2524,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$b)])) : (openBlock(), createElementBlock("td", _hoisted_3$8, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$8, null, 512));
     };
   }
 });
@@ -2832,10 +2832,6 @@ var inputFieldConfig = {
   }
 };
 var _hoisted_1$c = ["aria-sort"];
-var _hoisted_2$a = {
-  key: 0,
-  class: "table-ng__column__description"
-};
 var _sfc_main$e = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeader",
   props: {
@@ -2935,7 +2931,20 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent2({
           _: 1
         })) : createCommentVNode("", true)]),
         _: 1
-      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createElementBlock("div", _hoisted_2$a, toDisplayString(__props.column.description), 1)) : createCommentVNode("", true)], 42, _hoisted_1$c);
+      }, 8, ["float"]), _cache[1] || (_cache[1] = createTextVNode()), __props.column.description.value ? (openBlock(), createBlock(unref3(IFlex), {
+        key: 0,
+        gap: "1x",
+        float: alignment.value,
+        class: "table-ng__column__description"
+      }, {
+        default: withCtx(() => [createVNode(unref3(IFlexItem), {
+          shrink: ""
+        }, {
+          default: withCtx(() => [createTextVNode(toDisplayString(__props.column.description), 1)]),
+          _: 1
+        })]),
+        _: 1
+      }, 8, ["float"])) : createCommentVNode("", true)], 42, _hoisted_1$c);
     };
   }
 });
@@ -3748,6 +3757,9 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
           e.preventDefault();
           setPreviousOption();
           break;
+        case "Space":
+          e.preventDefault();
+          break;
       }
     }
     async function onEditBlur(event) {
@@ -3845,6 +3857,15 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       validationMessage: "",
       validityMode: "INITIAL"
     });
+    let validationFacade = {
+      validateElement: () => Promise.resolve({
+        isValid: true,
+        error: "",
+        isSubmitted: false,
+        isTouched: false
+      }),
+      dispatchComponentValidityEvent: () => void 0
+    };
     const hasError = computed3(() => validity.value.validityMode === "ERROR");
     const divClasses = computed3(() => {
       return {
@@ -3906,7 +3927,10 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     function setUpValidation(el) {
       addInputValidators(el, __props.column.type);
       ValidationService.addValidatorsToElement(el, __props.column.validation);
-      void nextTick3().then(() => ValidationService.validateElement(el));
+      validationFacade = {
+        validateElement: (el2) => ValidationService.validateElement(el2),
+        dispatchComponentValidityEvent
+      };
     }
     function setUpFakeValidation(el) {
       assertRef(inputElement);
@@ -3939,6 +3963,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         } else {
           setUpFakeValidation(inputElement.value);
         }
+        void nextTick3().then(() => validationFacade.validateElement(inputElement.value));
       }
     });
     watchEffect3(() => {
@@ -4048,10 +4073,8 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
           reason: "escape"
         });
         viewValue.value = initialViewValue;
-        if (__props.column.hasValidation) {
-          inputElement.value.value = initialViewValue;
-          void ValidationService.validateElement(inputElement.value);
-        }
+        inputElement.value.value = initialViewValue;
+        void validationFacade.validateElement(inputElement.value);
       } else if (event.key === "Tab") {
         pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
       }
@@ -4076,7 +4099,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         validityMode
       };
       assertRef(inputElement);
-      dispatchComponentValidityEvent(inputElement.value, {
+      validationFacade.dispatchComponentValidityEvent(inputElement.value, {
         ...eventDetail,
         errorMessage: validationMessage,
         focusElementId: cellId
@@ -5097,6 +5120,100 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     };
   }
 });
+var es_array_toSpliced = {};
+var addToUnscopables;
+var hasRequiredAddToUnscopables;
+function requireAddToUnscopables() {
+  if (hasRequiredAddToUnscopables) return addToUnscopables;
+  hasRequiredAddToUnscopables = 1;
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var create = requireObjectCreate();
+  var defineProperty = requireObjectDefineProperty().f;
+  var UNSCOPABLES = wellKnownSymbol2("unscopables");
+  var ArrayPrototype = Array.prototype;
+  if (ArrayPrototype[UNSCOPABLES] === void 0) {
+    defineProperty(ArrayPrototype, UNSCOPABLES, {
+      configurable: true,
+      value: create(null)
+    });
+  }
+  addToUnscopables = function(key) {
+    ArrayPrototype[UNSCOPABLES][key] = true;
+  };
+  return addToUnscopables;
+}
+var hasRequiredEs_array_toSpliced;
+function requireEs_array_toSpliced() {
+  if (hasRequiredEs_array_toSpliced) return es_array_toSpliced;
+  hasRequiredEs_array_toSpliced = 1;
+  var $ = require_export();
+  var addToUnscopables2 = requireAddToUnscopables();
+  var doesNotExceedSafeInteger2 = requireDoesNotExceedSafeInteger();
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  var toAbsoluteIndex2 = requireToAbsoluteIndex();
+  var toIndexedObject2 = requireToIndexedObject();
+  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
+  var createProperty2 = requireCreateProperty();
+  var $Array = Array;
+  var max = Math.max;
+  var min = Math.min;
+  $({
+    target: "Array",
+    proto: true
+  }, {
+    toSpliced: function toSpliced(start, deleteCount) {
+      var O = toIndexedObject2(this);
+      var len = lengthOfArrayLike2(O);
+      var actualStart = toAbsoluteIndex2(start, len);
+      var argumentsLength = arguments.length;
+      var k = 0;
+      var insertCount, actualDeleteCount, newLen, A;
+      if (argumentsLength === 0) {
+        insertCount = actualDeleteCount = 0;
+      } else if (argumentsLength === 1) {
+        insertCount = 0;
+        actualDeleteCount = len - actualStart;
+      } else {
+        insertCount = argumentsLength - 2;
+        actualDeleteCount = min(max(toIntegerOrInfinity2(deleteCount), 0), len - actualStart);
+      }
+      newLen = doesNotExceedSafeInteger2(len + insertCount - actualDeleteCount);
+      A = $Array(newLen);
+      for (; k < actualStart; k++) createProperty2(A, k, O[k]);
+      for (; k < actualStart + insertCount; k++) createProperty2(A, k, arguments[k - actualStart + 2]);
+      for (; k < newLen; k++) createProperty2(A, k, O[k + actualDeleteCount - insertCount]);
+      return A;
+    }
+  });
+  addToUnscopables2("toSpliced");
+  return es_array_toSpliced;
+}
+requireEs_array_toSpliced();
+function removeRow(rows, row, expandableAttribute) {
+  const rowIndex = rows.indexOf(row);
+  if (rowIndex !== -1) {
+    return rows.toSpliced(rowIndex, 1);
+  } else if (expandableAttribute) {
+    return removeExpandableRowFromRows(rows, row, expandableAttribute);
+  } else {
+    return rows;
+  }
+}
+function removeExpandableRowFromRows(rows, row, key) {
+  return rows.map((currentRow) => {
+    const expandableRows = currentRow[key];
+    if (Array.isArray(expandableRows)) {
+      const index = expandableRows.indexOf(row);
+      if (index !== -1) {
+        return {
+          ...currentRow,
+          [key]: expandableRows.toSpliced(index, 1)
+        };
+      }
+    }
+    return currentRow;
+  });
+}
 var es_arrayBuffer_detached = {};
 var arrayBufferBasicDetection;
 var hasRequiredArrayBufferBasicDetection;
@@ -7702,6 +7819,7 @@ export {
   minutesToUserFriendlyString,
   numberTypes,
   parseTimeToNumber,
+  removeRow,
   splitHoursMinutes,
   textTypes,
   uniqueValues

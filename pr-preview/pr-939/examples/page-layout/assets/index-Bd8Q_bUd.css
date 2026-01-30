@@ -225,7 +225,7 @@
   --fkds-color-navigation-background-hover: #dbe9e2;
   --fkds-color-navigation-background-selected: #35805b;
   --fkds-color-header-background-primary: #116a3e;
-  --fkui-theme-default-version: "6.34.0";
+  --fkui-theme-default-version: "6.34.1";
 }
 
 *,
@@ -5447,9 +5447,15 @@ input[type=search]:focus,
 .table-ng__cell [role=combobox]:focus {
   box-shadow: none;
 }
+.table-ng__cell--align-left {
+  text-align: left;
+}
 .table-ng__cell--align-left span,
 .table-ng__cell--align-left input {
   text-align: left;
+}
+.table-ng__cell--align-right {
+  text-align: right;
 }
 .table-ng__cell--align-right span,
 .table-ng__cell--align-right input {
