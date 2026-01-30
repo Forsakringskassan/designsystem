@@ -88,6 +88,7 @@ const props = defineProps({
     mobileFullWidth: {
         type: Boolean,
     },
+
     /**
      * The default behavior of the button. Possible values are:
      * - `submit`
@@ -100,6 +101,14 @@ const props = defineProps({
         validator(value: string) {
             return ["submit", "reset", "button"].includes(value);
         },
+    },
+
+    /**
+     * Disable the button.
+     */
+    disabled: {
+        type: Boolean,
+        required: false,
     },
 });
 defineOptions({
@@ -146,10 +155,14 @@ const buttonClass = computed((): string[] => {
 
     return classes;
 });
+
+const disabled = computed((): boolean => {
+    return props.disabled || inflight.value;
+});
 </script>
 
 <template>
-    <button :type :class="buttonClass" :disabled="inflight" v-bind="attrs">
+    <button :type :class="buttonClass" :disabled v-bind="attrs">
         <template v-if="hasIconLeft">
             <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
             <f-icon
