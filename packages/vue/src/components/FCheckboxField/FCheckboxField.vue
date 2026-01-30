@@ -13,7 +13,7 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         /**
-         * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+         * Disables the checkbox.
          */
         disabled: {
             type: Boolean,
