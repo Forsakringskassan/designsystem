@@ -121,7 +121,7 @@ export default defineComponent({
             default: () => undefined,
         },
         /**
-         * Set to `true`, empty string `""` or string `"disabled"` to disable this field.
+         * Disables the text field.
          */
         disabled: {
             type: Boolean,
