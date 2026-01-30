@@ -2147,7 +2147,7 @@ var _sfc_main$1n = /* @__PURE__ */ defineComponent({
       }
     },
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable the button.
+     * Disable the button.
      */
     disabled: {
       type: Boolean,

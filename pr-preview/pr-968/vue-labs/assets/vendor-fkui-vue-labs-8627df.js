@@ -1,7 +1,7 @@
 // dist/esm/index.esm.js
-import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
-import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, isSet, alertScreenReader, debounce, isEmpty, stripWhitespace, TranslationService } from "@fkui/logic";
-import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, FContextMenu, IComboboxDropdown, IPopupError, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, useId, onMounted as onMounted3, watchEffect as watchEffect3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
+import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
 // ../../node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -2478,7 +2478,7 @@ var _hoisted_1$e = {
   class: "table-ng__cell table-ng__cell--expand"
 };
 var _hoisted_2$a = ["aria-label", "aria-expanded"];
-var _hoisted_3$7 = {
+var _hoisted_3$8 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -2524,7 +2524,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$8, null, 512));
     };
   }
 });
@@ -2994,7 +2994,7 @@ var _hoisted_1$a = {
   class: "table-ng__cell table-ng__cell--checkbox"
 };
 var _hoisted_2$8 = ["checked", "aria-label"];
-var _hoisted_3$6 = {
+var _hoisted_3$7 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -3026,13 +3026,13 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
     return (_ctx, _cache) => {
       return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
         ref: "target",
-        checked: __props.column.checked(__props.row),
+        checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
-        checked: __props.column.checked(__props.row),
+      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, [createElementVNode("input", {
+        checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value
       }, null, 8, _hoisted_4$3)], 512));
@@ -3069,7 +3069,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent2({
       return openBlock(), createElementBlock("td", _hoisted_1$9, [createElementVNode("input", {
         ref: "input",
         type: "radio",
-        checked: __props.column.checked(__props.row),
+        checked: Boolean(__props.column.checked(__props.row)),
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
@@ -3394,7 +3394,7 @@ var _hoisted_1$7 = {
   class: "table-ng__cell table-ng__cell--anchor"
 };
 var _hoisted_2$6 = ["href"];
-var _hoisted_3$5 = {
+var _hoisted_3$6 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -3424,7 +3424,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, null, 512));
     };
   }
 });
@@ -3435,7 +3435,7 @@ var _hoisted_1$6 = {
 var _hoisted_2$5 = {
   class: "sr-only"
 };
-var _hoisted_3$4 = {
+var _hoisted_3$5 = {
   key: 1,
   ref: "td",
   tabindex: "-1",
@@ -3476,7 +3476,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
       }, [__props.column.icon ? (openBlock(), createBlock(unref3(FIcon), {
         key: 0,
         name: __props.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -3528,7 +3528,7 @@ var _hoisted_1$5 = {
 var _hoisted_2$4 = {
   class: "sr-only"
 };
-var _hoisted_3$3 = {
+var _hoisted_3$4 = {
   key: 1,
   tabindex: "-1",
   class: "table-ng__cell"
@@ -3597,7 +3597,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
         anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
         onClose,
         onSelect
-      }, null, 8, ["is-open", "items", "anchor"])])) : (openBlock(), createElementBlock("td", _hoisted_3$3));
+      }, null, 8, ["is-open", "items", "anchor"])])) : (openBlock(), createElementBlock("td", _hoisted_3$4));
     };
   }
 });
@@ -3623,7 +3623,7 @@ var _hoisted_1$4 = {
 var _hoisted_2$3 = {
   class: "table-ng__editable__text"
 };
-var _hoisted_3$2 = ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-label"];
+var _hoisted_3$3 = ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-label"];
 var _hoisted_4$2 = {
   class: "table-ng__editable__text"
 };
@@ -3802,7 +3802,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
       }, [createElementVNode("span", _hoisted_4$2, toDisplayString(viewValue.value), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(FIcon), {
         name: "arrow-down",
         class: "table-ng__editable__icon--active"
-      })], 40, _hoisted_3$2), [[vShow, editing.value]]), _cache[6] || (_cache[6] = createTextVNode()), withDirectives(createVNode(unref3(IComboboxDropdown), {
+      })], 40, _hoisted_3$3), [[vShow, editing.value]]), _cache[6] || (_cache[6] = createTextVNode()), withDirectives(createVNode(unref3(IComboboxDropdown), {
         id: unref3(dropdownId),
         "is-open": dropdownIsOpen.value,
         options: __props.column.options,
@@ -3825,13 +3825,13 @@ function addInputValidators(inputElement, type, decimals) {
   } of attributes) {
     inputElement.setAttribute(name, value);
   }
-  ValidationService.validateElement(inputElement);
 }
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$3 = ["aria-label"];
-var _hoisted_2$2 = {
+var _hoisted_1$3 = ["id"];
+var _hoisted_2$2 = ["id", "aria-label"];
+var _hoisted_3$2 = {
   ref: "pen"
 };
 var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
@@ -3848,13 +3848,24 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     emit: __emit
   }) {
     const emit = __emit;
-    const model = ref3("");
+    const viewValue = ref3("");
     const inEdit = ref3(false);
+    const cellId = useId();
+    const inputId = useId();
     const validity = ref3({
       isValid: true,
       validationMessage: "",
       validityMode: "INITIAL"
     });
+    let validationFacade = {
+      validateElement: () => Promise.resolve({
+        isValid: true,
+        error: "",
+        isSubmitted: false,
+        isTouched: false
+      }),
+      dispatchComponentValidityEvent: () => void 0
+    };
     const hasError = computed3(() => validity.value.validityMode === "ERROR");
     const divClasses = computed3(() => {
       return {
@@ -3882,7 +3893,6 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     });
     const inputClasses = computed3(() => {
       return {
-        foobar: true,
         "table-ng__textedit": true
       };
     });
@@ -3912,10 +3922,48 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       }
       return tdElement.value === __props.activeErrorAnchor;
     });
+    let initialViewValue = "";
+    let pendingStopEditReason = null;
+    function setUpValidation(el) {
+      addInputValidators(el, __props.column.type);
+      ValidationService.addValidatorsToElement(el, __props.column.validation);
+      validationFacade = {
+        validateElement: (el2) => ValidationService.validateElement(el2),
+        dispatchComponentValidityEvent
+      };
+    }
+    function setUpFakeValidation(el) {
+      assertRef(inputElement);
+      const nativeEvents = ["change", "blur"];
+      nativeEvents.forEach((nativeEvent) => {
+        useEventListener(el, nativeEvent, () => {
+          const fakeEvent = new CustomEvent("validity", {
+            detail: {
+              isValid: true,
+              nativeEvent,
+              validityMode: "INITIAL",
+              validationMessage: "",
+              target: inputElement.value,
+              elementId: String(inputElement.value.id)
+            }
+          });
+          onValidity(fakeEvent);
+        });
+      });
+      useEventListener(el, "input", onPendingValidity);
+      useEventListener(el, "component-validity", (e) => {
+        e.stopPropagation();
+      });
+    }
     onMounted3(() => {
       if (inputElement.value) {
-        addInputValidators(inputElement.value, __props.column.type);
-        ValidationService.addValidatorsToElement(inputElement.value, __props.column.validation);
+        viewValue.value = fromColumnValue();
+        if (__props.column.hasValidation) {
+          setUpValidation(inputElement.value);
+        } else {
+          setUpFakeValidation(inputElement.value);
+        }
+        void nextTick3().then(() => validationFacade.validateElement(inputElement.value));
       }
     });
     watchEffect3(() => {
@@ -3941,7 +3989,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         });
       }
     });
-    function onStartEdit(modelValue) {
+    function onStartEdit(value) {
       if (inEdit.value) {
         return;
       }
@@ -3951,7 +3999,8 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       const {
         width
       } = tdElement.value.getBoundingClientRect();
-      model.value = modelValue;
+      initialViewValue = viewValue.value;
+      viewValue.value = value;
       tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.tabIndex = 0;
       inputElement.value.focus();
@@ -3963,13 +4012,38 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       inEdit.value = false;
       assertRef(inputElement);
       inputElement.value.tabIndex = -1;
-      stopEdit2(inputElement.value, reason);
+      assertRef(tdElement);
+      tdElement.value.style.removeProperty("width");
+      void stopEdit2(inputElement.value, reason);
+    }
+    function fromColumnValue() {
+      assertRef(validity);
+      const value = __props.column.value(__props.row);
+      if (validity.value.isValid) {
+        var _props$column$format;
+        return (_props$column$format = __props.column.formatter(value)) !== null && _props$column$format !== void 0 ? _props$column$format : value;
+      }
+      return value;
+    }
+    function toColumnValue(value) {
+      assertRef(validity);
+      if (validity.value.isValid) {
+        var _props$column$parser;
+        return (_props$column$parser = __props.column.parser(value)) !== null && _props$column$parser !== void 0 ? _props$column$parser : value;
+      }
+      return value;
+    }
+    function updateColumnValue() {
+      const oldValue = __props.column.value(__props.row);
+      const newValue = toColumnValue(viewValue.value);
+      if (oldValue !== newValue) {
+        __props.column.update(__props.row, newValue, oldValue);
+      }
     }
     function onClickCell(event) {
       assertRef(tdElement);
       if (tdElement.value.contains(event.target)) {
-        const value = __props.column.value(__props.row);
-        onStartEdit(value);
+        onStartEdit(fromColumnValue());
       }
     }
     function onViewingKeydown(event) {
@@ -3979,8 +4053,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       }
       if (event.key === "Enter") {
         event.stopPropagation();
-        const value = __props.column.value(__props.row);
-        onStartEdit(value);
+        onStartEdit(fromColumnValue());
       }
     }
     function onEditingKeydown(event) {
@@ -3988,31 +4061,22 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       assertRef(inputElement);
       event.stopPropagation();
       if (event.key === "Enter") {
-        event.preventDefault();
-        const oldValue = __props.column.value(__props.row);
-        const newValue = model.value;
-        __props.column.update(__props.row, newValue, oldValue);
-        model.value = "";
-        onStopEdit({
-          reason: "enter"
-        });
-      }
-      if (event.key === "Escape") {
-        event.preventDefault();
-        model.value = "";
+        if (viewValue.value === initialViewValue) {
+          onStopEdit({
+            reason: "enter"
+          });
+        } else {
+          pendingStopEditReason = "enter";
+        }
+      } else if (event.key === "Escape") {
         onStopEdit({
           reason: "escape"
         });
-      }
-      if (event.key === "Tab") {
-        event.preventDefault();
-        const oldValue = __props.column.value(__props.row);
-        const newValue = model.value;
-        __props.column.update(__props.row, newValue, oldValue);
-        model.value = "";
-        onStopEdit({
-          reason: event.shiftKey ? "shift-tab" : "tab"
-        });
+        viewValue.value = initialViewValue;
+        inputElement.value.value = initialViewValue;
+        void validationFacade.validateElement(inputElement.value);
+      } else if (event.key === "Tab") {
+        pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
       }
     }
     function onKeydown(event) {
@@ -4023,32 +4087,53 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         onViewingKeydown(event);
       }
     }
-    function onBlur() {
-      inEdit.value = false;
-      assertRef(tdElement);
-      tdElement.value.style.removeProperty("width");
-      const isDirty = model.value !== "";
-      if (isDirty) {
-        const oldValue = __props.column.value(__props.row);
-        const newValue = model.value;
-        __props.column.update(__props.row, newValue, oldValue);
-      }
-    }
-    function onValidity(event) {
+    function updateValidity(eventDetail) {
       const {
         isValid,
         validationMessage,
         validityMode
-      } = event.detail;
+      } = eventDetail;
       validity.value = {
         isValid,
         validationMessage,
         validityMode
       };
+      assertRef(inputElement);
+      validationFacade.dispatchComponentValidityEvent(inputElement.value, {
+        ...eventDetail,
+        errorMessage: validationMessage,
+        focusElementId: cellId
+      });
+    }
+    function onValidity(event) {
+      const nativeEvent = event.detail.nativeEvent;
+      const reason = pendingStopEditReason !== null && pendingStopEditReason !== void 0 ? pendingStopEditReason : nativeEvent === "blur" ? "blur" : null;
+      pendingStopEditReason = null;
+      if (inEdit.value && reason) {
+        onStopEdit({
+          reason
+        });
+        updateValidity(event.detail);
+        updateColumnValue();
+        return;
+      }
+      if (nativeEvent === "input") {
+        updateValidity(event.detail);
+        updateColumnValue();
+        return;
+      }
+      if (nativeEvent === "validate") {
+        updateValidity(event.detail);
+      }
+    }
+    function onPendingValidity() {
+      assertRef(validity);
+      validity.value.validityMode = "INITIAL";
     }
     return (_ctx, _cache) => {
       return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
+        id: unref3(cellId),
         ref: "td",
         tabindex: "-1",
         class: normalizeClass(wrapperClasses.value),
@@ -4059,17 +4144,18 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       }, [createElementVNode("span", {
         ref: "view",
         class: "table-ng__editable__text"
-      }, toDisplayString(__props.column.value(__props.row)), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
+      }, toDisplayString(fromColumnValue()), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
+        id: unref3(inputId),
         ref: "input",
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => model.value = $event),
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
         class: normalizeClass(inputClasses.value),
         type: "text",
         maxlength: "40",
         tabindex: "-1",
         "aria-label": ariaLabel.value,
-        onBlur,
-        onValidity
-      }, null, 42, _hoisted_1$3), [[vModelText, model.value]]), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_2$2, [createVNode(unref3(FIcon), {
+        onValidity,
+        onPendingValidity
+      }, null, 42, _hoisted_2$2), [[vModelText, viewValue.value]]), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_3$2, [createVNode(unref3(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
       })], 512)], 2), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(IPopupError), {
@@ -4078,12 +4164,12 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         "error-message": validity.value.validationMessage,
         "arrow-anchor": penElement.value,
         layout: "f-table"
-      }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])], 34)) : (openBlock(), createElementBlock("td", {
+      }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])], 42, _hoisted_1$3)) : (openBlock(), createElementBlock("td", {
         key: 1,
         ref: "td",
         tabindex: "-1",
         class: normalizeClass(staticClasses.value)
-      }, toDisplayString(__props.column.value(__props.row)), 3));
+      }, toDisplayString(fromColumnValue()), 3));
     };
   }
 });
@@ -4091,78 +4177,11 @@ function defaultTnumValue(type) {
   const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
   return tnumTypes.includes(type);
 }
-function getFormattedNumberValueFn(fn, key, formatter, defaultValue) {
-  if (fn) {
-    return (row) => {
-      var _formatter;
-      const value = fn(row);
-      return (_formatter = formatter(value)) !== null && _formatter !== void 0 ? _formatter : value;
-    };
-  }
-  if (key) {
-    return (row) => {
-      var _formatter2;
-      const value = row[key];
-      return (_formatter2 = formatter(value)) !== null && _formatter2 !== void 0 ? _formatter2 : value;
-    };
-  }
-  return () => defaultValue;
-}
-function getFormattedValueFn(fn, key, formatter, defaultValue) {
-  if (fn) {
-    return (row) => {
-      const value = fn(row);
-      const result = formatter(value);
-      return result !== null && result !== void 0 ? result : value;
-    };
-  }
-  if (key) {
-    return (row) => {
-      const value = row[key];
-      const result = formatter(value);
-      return result !== null && result !== void 0 ? result : value;
-    };
-  }
-  return () => defaultValue;
-}
 function getLabelFn(fn) {
   if (fn) {
     return fn;
   }
   return () => "";
-}
-function getParsedNumberUpdateFn(fn, key, parser) {
-  if (fn) {
-    return (row, newValue, oldValue) => {
-      var _parser, _parser2;
-      const parsedNewValue = (_parser = parser(newValue)) !== null && _parser !== void 0 ? _parser : newValue;
-      const parsedOldValue = (_parser2 = parser(oldValue)) !== null && _parser2 !== void 0 ? _parser2 : oldValue;
-      fn(row, parsedNewValue, parsedOldValue);
-    };
-  }
-  if (key) {
-    return (row, value) => {
-      const newValue = parser(value);
-      row[key] = isSet(newValue) ? newValue : value;
-    };
-  }
-  return () => void 0;
-}
-function getParsedUpdateFn(fn, key, parser) {
-  if (fn) {
-    return (row, newValue, oldValue) => {
-      const parsedNewValue = parser(newValue);
-      const parsedOldValue = parser(oldValue);
-      fn(row, parsedNewValue !== null && parsedNewValue !== void 0 ? parsedNewValue : newValue, parsedOldValue !== null && parsedOldValue !== void 0 ? parsedOldValue : oldValue);
-    };
-  }
-  if (key) {
-    return (row, value) => {
-      const newValue = parser(value);
-      row[key] = isSet(newValue) ? newValue : value;
-    };
-  }
-  return () => void 0;
 }
 function getUpdateFn(fn, key) {
   if (fn) {
@@ -4181,7 +4200,8 @@ function getValueFn(fn, key, coerce, defaultValue) {
   }
   if (key) {
     return (row) => {
-      return coerce(row[key]);
+      var _row$key;
+      return coerce((_row$key = row[key]) !== null && _row$key !== void 0 ? _row$key : defaultValue);
     };
   }
   return () => defaultValue;
@@ -4274,14 +4294,17 @@ function normalizeNumberColumn(column) {
     decimals,
     tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
     align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
-    value: getFormattedNumberValueFn(column.value, column.key, formatter, ""),
-    update: getParsedNumberUpdateFn(column.update, column.key, parser),
+    value: getValueFn(column.value, column.key, String, ""),
+    update: getUpdateFn(column.update, column.key),
     editable: typeof column.editable === "function" ? column.editable : () => {
       var _column$editable;
       return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
     },
     validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
+    formatter,
+    parser
   };
 }
 function normalizeRadioColumn(column) {
@@ -4336,7 +4359,10 @@ function normalizeSimpleColumn(column) {
     },
     editable: () => false,
     sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
-    validation: {}
+    validation: {},
+    hasValidation: false,
+    formatter: (value) => value,
+    parser: (value) => value
   };
 }
 function normalizeTextColumn(column) {
@@ -4350,14 +4376,17 @@ function normalizeTextColumn(column) {
     tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
     align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "left",
     label: getLabelFn(column.label),
-    value: getFormattedValueFn(column.value, column.key, formatter, ""),
-    update: getParsedUpdateFn(column.update, column.key, parser),
+    value: getValueFn(column.value, column.key, String, ""),
+    update: getUpdateFn(column.update, column.key),
     editable: typeof column.editable === "function" ? column.editable : () => {
       var _column$editable;
       return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
     },
     validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
+    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
+    formatter,
+    parser
   };
 }
 function normalizeTableColumn(column) {

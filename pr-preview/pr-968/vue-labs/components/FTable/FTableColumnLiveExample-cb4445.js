@@ -57,12 +57,6 @@ function defaultTnumValue(type) {
   return tnumTypes.includes(type);
 }
 
-// src/components/FTable/columns/helpers/get-parsed-number-update-fn.ts
-import { isSet } from "@fkui/logic";
-
-// src/components/FTable/columns/helpers/get-parsed-update-fn.ts
-import { isSet as isSet2 } from "@fkui/logic";
-
 // src/components/FTable/is-text-column.ts
 function isTextColumn(column) {
   if (!column.type) {
