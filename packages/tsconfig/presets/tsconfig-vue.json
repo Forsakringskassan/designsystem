@@ -16,5 +16,13 @@
                 "f-checkbox-field": true
             }
         }
-    }
+    },
+    "include": ["${configDir}/src/**/*.ts", "${configDir}/src/**/*.vue"],
+    "exclude": [
+        "${configDir}/src/@types/cypress.d.ts",
+        "${configDir}/src/cypress/**/*.ts",
+        "${configDir}/src/stub.d.ts",
+        "${configDir}/src/**/*.cy.ts",
+        "${configDir}/src/**/*.pageobject.ts"
+    ]
 }
