@@ -102,7 +102,7 @@
     "@types/node": "20.19.30",
     "@vue/server-renderer": "3.5.27",
     "artifact-size-analyzer": "1.2.2",
-    "autoprefixer": "10.4.23",
+    "autoprefixer": "10.4.24",
     "cli-table": "0.3.11",
     "core-js": "3.48.0",
     "cypress": "15.9.0",
