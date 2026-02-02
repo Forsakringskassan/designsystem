@@ -11443,7 +11443,7 @@ var _sfc_main$X = defineComponent({
   inheritAttrs: false,
   props: {
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     * Disables the checkbox.
      */
     disabled: {
       type: Boolean,
@@ -12905,7 +12905,7 @@ var _sfc_main$Q = defineComponent({
       default: () => void 0
     },
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this field.
+     * Disables the text field.
      */
     disabled: {
       type: Boolean,
@@ -15089,7 +15089,7 @@ var _sfc_main$z = defineComponent({
       default: "sm-12"
     },
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this field.
+     * Disables the date picker.
      */
     disabled: {
       type: Boolean,
@@ -17006,7 +17006,7 @@ var _sfc_main$l = defineComponent({
   inheritAttrs: false,
   props: {
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     * Disables the radio button.
      */
     disabled: {
       type: Boolean,

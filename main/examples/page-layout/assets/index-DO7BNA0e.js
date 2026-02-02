@@ -19200,7 +19200,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
   inheritAttrs: false,
   props: {
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     * Disables the checkbox.
      */
     disabled: {
       type: Boolean,
@@ -20270,7 +20270,7 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
       default: () => void 0
     },
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this field.
+     * Disables the text field.
      */
     disabled: {
       type: Boolean,
@@ -22655,7 +22655,7 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
   inheritAttrs: false,
   props: {
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     * Disables the radio button.
      */
     disabled: {
       type: Boolean,
