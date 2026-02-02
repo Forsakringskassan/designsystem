@@ -120,7 +120,7 @@
     "lerna": "9.0.3",
     "mocha-junit-reporter": "2.2.1",
     "mocha-multi-reporters": "1.5.1",
-    "npm-pkg-lint": "4.3.3",
+    "npm-pkg-lint": "4.3.4",
     "npm-run-all2": "8.0.4",
     "postcss": "8.5.6",
     "rimraf": "6.1.2",
