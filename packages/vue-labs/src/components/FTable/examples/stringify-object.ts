@@ -1,6 +1,13 @@
 function stringifyValue(value: unknown): string {
     if (Array.isArray(value)) {
-        const joinedValues = value.map((it) => `'${String(it)}'`).join(", ");
+        const joinedValues = value
+            .map((it) => {
+                if (typeof it === "object") {
+                    return stringifyObject(it as Record<string, unknown>);
+                }
+                return `'${String(it)}'`;
+            })
+            .join(", ");
         return `[${joinedValues}]`;
     }
 
