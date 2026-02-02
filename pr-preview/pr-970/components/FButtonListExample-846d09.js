@@ -264,6 +264,13 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       validator(value) {
         return ["submit", "reset", "button"].includes(value);
       }
+    },
+    /**
+     * Disable the button.
+     */
+    disabled: {
+      type: Boolean,
+      required: false
     }
   },
   setup(__props, { expose: __expose }) {
@@ -300,7 +307,10 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       }
       return classes;
     });
-    const __returned__ = { props, originalAttrs, inflight, onClick, attrs, hasIconLeft, hasIconRight, hasIcon, buttonClass, get FIcon() {
+    const disabled = computed(() => {
+      return props.disabled || inflight.value;
+    });
+    const __returned__ = { props, originalAttrs, inflight, onClick, attrs, hasIconLeft, hasIconRight, hasIcon, buttonClass, disabled, get FIcon() {
       return FIcon_default2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -323,7 +333,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock2(), _createElementBlock2("button", _mergeProps2({
     type: $props.type,
     class: $setup.buttonClass,
-    disabled: $setup.inflight
+    disabled: $setup.disabled
   }, $setup.attrs), [
     $setup.hasIconLeft ? (_openBlock2(), _createElementBlock2(
       _Fragment2,
