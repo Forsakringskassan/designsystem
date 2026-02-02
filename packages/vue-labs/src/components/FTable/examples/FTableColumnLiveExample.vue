@@ -135,10 +135,33 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     menu: {
         type: "menu",
-        header: "Kontextmeny",
-        text() {
-            return "Skärmläsartext";
+        header: "Åtgärd",
+        text: (row) => {
+            return `Visa åtgärder för rad "${row.id ?? -1}"`;
         },
+        actions: [
+            {
+                label: "Visa",
+                icon: "search",
+                onClick: (row) => {
+                    console.log(`Visa detaljer för rad "${row.id ?? -1}"`);
+                },
+            },
+            {
+                label: "Redigera",
+                icon: "pen",
+                onClick: (row) => {
+                    console.log(`Redigera rad "${row.id ?? -1}"`);
+                },
+            },
+            {
+                label: "Ta bort",
+                icon: "trashcan",
+                onClick: (row) => {
+                    console.log(`Ta bort rad "${row.id ?? -1}"`);
+                },
+            },
+        ],
     },
 };
 
@@ -327,6 +350,7 @@ export default defineComponent({
             <option value="anchor">Länk</option>
             <option value="button">Knapp</option>
             <option value="select">Dropplista</option>
+            <option value="menu">Meny</option>
         </f-select-field>
 
         <f-select-field v-if="columnType === 'text'" v-model="textType" @change="onTextTypeChange">

@@ -8,8 +8,13 @@ it("should stringify object", () => {
             active: true,
             options: ["bar", "baz"],
             func: () => "hello func",
+            actions: [
+                { prop1: "value1" },
+                { prop2: "value2" },
+                { func: () => "array func" },
+            ],
         }),
     ).toMatchInlineSnapshot(
-        `"{ title: 'foo', id: 42, active: true, options: ['bar', 'baz'], func: () => 'hello func' }"`,
+        `"{ title: 'foo', id: 42, active: true, options: ['bar', 'baz'], func: () => 'hello func', actions: [{ prop1: 'value1' }, { prop2: 'value2' }, { func: () => 'array func' }] }"`,
     );
 });
