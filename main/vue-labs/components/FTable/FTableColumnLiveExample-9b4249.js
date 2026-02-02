@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-cb4445.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-9b4249.js
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import {
@@ -84,7 +84,12 @@ function isEnableColumn(column) {
 // src/components/FTable/examples/stringify-object.ts
 function stringifyValue(value) {
   if (Array.isArray(value)) {
-    const joinedValues = value.map((it) => `'${String(it)}'`).join(", ");
+    const joinedValues = value.map((it) => {
+      if (typeof it === "object") {
+        return stringifyObject(it);
+      }
+      return `'${String(it)}'`;
+    }).join(", ");
     return `[${joinedValues}]`;
   }
   if (typeof value === "function") {
@@ -102,7 +107,7 @@ function stringifyObject(obj) {
   return `{ ${props.join(", ")} }`;
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-cb4445.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-9b4249.js
 import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, toDisplayString as _toDisplayString } from "vue";
 var columnData = {
   checkbox: {
@@ -212,10 +217,33 @@ var columnData = {
   },
   menu: {
     type: "menu",
-    header: "Kontextmeny",
-    text() {
-      return "Sk\xE4rml\xE4sartext";
-    }
+    header: "\xC5tg\xE4rd",
+    text: (row) => {
+      return `Visa \xE5tg\xE4rder f\xF6r rad "${row.id ?? -1}"`;
+    },
+    actions: [
+      {
+        label: "Visa",
+        icon: "search",
+        onClick: (row) => {
+          console.log(`Visa detaljer f\xF6r rad "${row.id ?? -1}"`);
+        }
+      },
+      {
+        label: "Redigera",
+        icon: "pen",
+        onClick: (row) => {
+          console.log(`Redigera rad "${row.id ?? -1}"`);
+        }
+      },
+      {
+        label: "Ta bort",
+        icon: "trashcan",
+        onClick: (row) => {
+          console.log(`Ta bort rad "${row.id ?? -1}"`);
+        }
+      }
+    ]
   }
 };
 var rowData = {
@@ -436,6 +464,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "Dropplista",
             -1
             /* CACHED */
+          )),
+          _cache[17] || (_cache[17] = _createElementVNode(
+            "option",
+            { value: "menu" },
+            "Meny",
+            -1
+            /* CACHED */
           ))
         ]),
         _: 1
@@ -447,7 +482,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.textType = $event),
         onChange: _ctx.onTextTypeChange
       }, {
-        label: _withCtx(() => [..._cache[17] || (_cache[17] = [
+        label: _withCtx(() => [..._cache[18] || (_cache[18] = [
           _createTextVNode(
             " Texttyp ",
             -1
@@ -455,98 +490,98 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           )
         ])]),
         default: _withCtx(() => [
-          _cache[18] || (_cache[18] = _createElementVNode(
+          _cache[19] || (_cache[19] = _createElementVNode(
             "option",
             { value: "text" },
             "Fritext",
             -1
             /* CACHED */
           )),
-          _cache[19] || (_cache[19] = _createElementVNode(
+          _cache[20] || (_cache[20] = _createElementVNode(
             "option",
             { value: "text:bankgiro" },
             "Bankgiro",
             -1
             /* CACHED */
           )),
-          _cache[20] || (_cache[20] = _createElementVNode(
+          _cache[21] || (_cache[21] = _createElementVNode(
             "option",
             { value: "text:clearingNumber" },
             "Clearingnummer",
             -1
             /* CACHED */
           )),
-          _cache[21] || (_cache[21] = _createElementVNode(
+          _cache[22] || (_cache[22] = _createElementVNode(
             "option",
             { value: "text:bankAccountNumber" },
             "Kontonummer",
             -1
             /* CACHED */
           )),
-          _cache[22] || (_cache[22] = _createElementVNode(
+          _cache[23] || (_cache[23] = _createElementVNode(
             "option",
             { value: "text:email" },
             "Mejladress",
             -1
             /* CACHED */
           )),
-          _cache[23] || (_cache[23] = _createElementVNode(
+          _cache[24] || (_cache[24] = _createElementVNode(
             "option",
             { value: "text:number" },
             "Numeriskt",
             -1
             /* CACHED */
           )),
-          _cache[24] || (_cache[24] = _createElementVNode(
+          _cache[25] || (_cache[25] = _createElementVNode(
             "option",
             { value: "text:organisationsnummer" },
             "Organisationsnummer",
             -1
             /* CACHED */
           )),
-          _cache[25] || (_cache[25] = _createElementVNode(
+          _cache[26] || (_cache[26] = _createElementVNode(
             "option",
             { value: "text:personnummer" },
             "Personnummer",
             -1
             /* CACHED */
           )),
-          _cache[26] || (_cache[26] = _createElementVNode(
+          _cache[27] || (_cache[27] = _createElementVNode(
             "option",
             { value: "text:plusgiro" },
             "Plusgiro",
             -1
             /* CACHED */
           )),
-          _cache[27] || (_cache[27] = _createElementVNode(
+          _cache[28] || (_cache[28] = _createElementVNode(
             "option",
             { value: "text:postalCode" },
             "Postnummer",
             -1
             /* CACHED */
           )),
-          _cache[28] || (_cache[28] = _createElementVNode(
+          _cache[29] || (_cache[29] = _createElementVNode(
             "option",
             { value: "text:percent" },
             "Procent",
             -1
             /* CACHED */
           )),
-          _cache[29] || (_cache[29] = _createElementVNode(
+          _cache[30] || (_cache[30] = _createElementVNode(
             "option",
             { value: "text:phoneNumber" },
             "Telefonnummer",
             -1
             /* CACHED */
           )),
-          _cache[30] || (_cache[30] = _createElementVNode(
+          _cache[31] || (_cache[31] = _createElementVNode(
             "option",
             { value: "text:currency" },
             "Valuta",
             -1
             /* CACHED */
           )),
-          _cache[31] || (_cache[31] = _createElementVNode(
+          _cache[32] || (_cache[32] = _createElementVNode(
             "option",
             { value: "text:date" },
             "Datum",
@@ -563,7 +598,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.editableChecked = $event),
         value: true
       }, {
-        default: _withCtx(() => [..._cache[32] || (_cache[32] = [
+        default: _withCtx(() => [..._cache[33] || (_cache[33] = [
           _createTextVNode(
             "Redigerbar",
             -1
@@ -579,7 +614,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.enabledChecked = $event),
         value: true
       }, {
-        default: _withCtx(() => [..._cache[33] || (_cache[33] = [
+        default: _withCtx(() => [..._cache[34] || (_cache[34] = [
           _createTextVNode(
             "Enabled",
             -1
@@ -593,7 +628,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 3,
         name: "align"
       }, {
-        label: _withCtx(() => [..._cache[34] || (_cache[34] = [
+        label: _withCtx(() => [..._cache[35] || (_cache[35] = [
           _createTextVNode(
             " Justering ",
             -1
@@ -639,7 +674,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 4,
         name: "tnum"
       }, {
-        label: _withCtx(() => [..._cache[35] || (_cache[35] = [
+        label: _withCtx(() => [..._cache[36] || (_cache[36] = [
           _createTextVNode(
             " TNUM ",
             -1
@@ -682,7 +717,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* STABLE */
       })) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_fieldset, { name: "rubrik" }, {
-        label: _withCtx(() => [..._cache[36] || (_cache[36] = [
+        label: _withCtx(() => [..._cache[37] || (_cache[37] = [
           _createTextVNode(
             " Rubriken ",
             -1
@@ -695,7 +730,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.descriptionChecked = $event),
             value: true
           }, {
-            default: _withCtx(() => [..._cache[37] || (_cache[37] = [
+            default: _withCtx(() => [..._cache[38] || (_cache[38] = [
               _createTextVNode(
                 " Formatbeskrivning ",
                 -1
@@ -717,7 +752,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-cb4445"
+  selector: "#example-9b4249"
 });
 export {
   render
