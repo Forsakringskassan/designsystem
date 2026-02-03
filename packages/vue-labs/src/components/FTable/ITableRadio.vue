@@ -17,7 +17,6 @@ const ariaLabel = computed(() => {
 
 function onChange(_e: Event): void {
     assertRef(inputElement);
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     column.update(row, inputElement.value.checked, !inputElement.value.checked);
 }
 

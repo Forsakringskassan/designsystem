@@ -122,7 +122,6 @@ export default defineComponent({
                 if (this.enableKeyboardNavigation) {
                     return;
                 }
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
                 const index = this.indexOfItemByKey(newVal);
                 if (index >= 0) {
                     await this.activateItem(index);
@@ -137,7 +136,6 @@ export default defineComponent({
                     return;
                 }
 
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
                 const index = this.indexOfItemByKey(newVal);
                 if (index >= 0) {
                     await this.setFocusOnItem(index);

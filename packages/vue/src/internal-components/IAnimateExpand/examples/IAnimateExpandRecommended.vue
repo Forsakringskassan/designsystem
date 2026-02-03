@@ -26,7 +26,6 @@ export default defineComponent({
             this.callbackInfo = "After animation callback";
 
             setTimeout(() => {
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
                 this.contentDivInDOM = this.$el.contains(this.$refs["content-div"]);
             });
         },

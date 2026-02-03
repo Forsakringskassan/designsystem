@@ -24,11 +24,8 @@ export default defineComponent({
     },
     data() {
         return {
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
             defaultText: this.$t("fkui.postal-code-text-field.label", "Postnummer"),
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
             discreteDescriptionText: this.$t("fkui.postal-code-text-field.example", "(123 45)"),
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
             discreteDescriptionScreenReaderText: this.$t(
                 "fkui.postal-code-text-field.format-description",
                 "Formatbeskrivning",
@@ -36,7 +33,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const inputElement = getInputElement(this);
 
         ValidationService.addValidatorsToElement(

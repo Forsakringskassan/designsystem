@@ -24,11 +24,8 @@ export default defineComponent({
     },
     data() {
         return {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
             defaultText: this.$t("fkui.organisationsnummer-text-field.label", "Organisationsnummer"),
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
             discreteDescriptionText: this.$t("fkui.organisationsnummer-text-field.example", "(999999-9999)"),
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
             discreteDescriptionScreenReaderText: this.$t(
                 "fkui.organisationsnummer-text-field.format-description",
                 "Formatbeskrivning",
@@ -36,7 +33,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const inputElement = getInputElement(this);
 
         ValidationService.addValidatorsToElement(

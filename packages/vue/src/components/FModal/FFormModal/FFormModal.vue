@@ -168,19 +168,16 @@ export default defineComponent({
     },
     methods: {
         onClose() {
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             ValidationService.resetState(this.$el);
             this.$emit("cancel");
             this.$emit("close", { reason: "close" });
         },
         onSubmit() {
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             ValidationService.resetState(this.$el);
             this.$emit("submit", { data: this.value });
             this.$emit("close", { reason: "submit", data: this.value });
         },
         onCancel() {
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             ValidationService.resetState(this.$el);
             this.$emit("cancel");
             this.$emit("close", { reason: "close" });

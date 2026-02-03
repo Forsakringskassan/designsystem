@@ -267,7 +267,6 @@ function onItemKeyDown(event: KeyboardEvent, item: T): void {
         const event = new CustomEvent<FPaginateDatasetPageEventDetail>(`paginateDataset:${type}`, {
             bubbles: true,
         });
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         ulElement.value.dispatchEvent(event);
     }
 }

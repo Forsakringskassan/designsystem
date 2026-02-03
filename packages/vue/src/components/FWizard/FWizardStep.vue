@@ -139,7 +139,6 @@ export default defineComponent({
             throw new Error("FWizardStep requires key to be set");
         }
 
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         this.step = this.register(key, this.$el);
     },
     beforeUnmount() {

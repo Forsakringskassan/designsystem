@@ -49,7 +49,6 @@ const resolvedSlots = computed(() => {
 
 onMounted(() => {
     if (rootRef.value) {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         const host = (rootRef.value.getRootNode() as ShadowRoot).host as HTMLElement;
         slotNames.value = getSlotNames(host);
 

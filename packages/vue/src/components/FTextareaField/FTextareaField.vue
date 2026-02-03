@@ -158,10 +158,8 @@ export default defineComponent({
             this.validationMessage = detail.validationMessage;
             this.validityMode = detail.validityMode;
             const errorMessage = renderSlotText(this.$slots.default) ?? "";
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
             const element = this.$el.querySelector(`#${detail.elementId}`);
             if (element) {
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
                 dispatchComponentValidityEvent(element, {
                     ...detail,
                     errorMessage,

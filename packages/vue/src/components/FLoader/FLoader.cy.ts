@@ -73,7 +73,6 @@ describe("FLoader", () => {
                 methods: {
                     onClick() {
                         this.show = true;
-                        /* eslint-disable-next-line sonarjs/no-nested-functions -- technical debt */
                         setTimeout(() => {
                             this.show = false;
                         }, 2000);

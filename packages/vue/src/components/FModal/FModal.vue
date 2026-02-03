@@ -185,13 +185,11 @@ export default defineComponent({
         onFocusFirst() {
             const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer as HTMLElement);
             const lastTabbableElement = tabbableElements[tabbableElements.length - 2];
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             focusElement(lastTabbableElement, this.$el);
         },
         onFocusLast() {
             const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer as HTMLElement);
             const firstTabbableElement = tabbableElements[1];
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             focusElement(firstTabbableElement, this.$el);
         },
     },

@@ -239,7 +239,6 @@ function onAddRow(): void {
 function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     tableRef.value.withTabstopBehaviour("row-removal", () => {
         rows.value = removeRow(rows.value, row, "expandableRows");
     });

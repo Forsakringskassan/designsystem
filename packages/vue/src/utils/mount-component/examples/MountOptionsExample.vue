@@ -7,7 +7,6 @@ export default defineComponent({
     name: "MountOptionsExample",
     mounted() {
         mountComponent(this, MyAwesomeComponent, {
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
             attachTo: this.$el,
             name: "Världen",
             onReply() {
