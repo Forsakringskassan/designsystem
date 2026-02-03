@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="sv" class="layout--component" data-root-url="../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Kolumntyper - FKUI Labs</title><link
+            rel="stylesheet"
+            href="../../assets/docs-12df43.css"
+            crossorigin
+            integrity="sha384-B92g2anS85x7wwlY5jq13WFS6DXN2QjtiLtrZdoglRpR+95e/S4R3lPJr+Wp2MqE"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-fkui-309dcd.css"
+            crossorigin
+            integrity="sha384-Po+IFJIMQBTLx4+pVJK9DWePbmj6a7LeQgpfjB9RoEzvuwtJF58zCMP7H8WNvYUE"
+            data-theme="fkui" disabled
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-abba52.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-fb32f2.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-1d9b40.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-fd0908.js",
+    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-8627df.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-fe2383.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-abba52.js": "sha384-SxKEyNX6tSTQsiQzh6XKyPXj6flm136L3+YapliZNb/JqTTA8owPUNKeRoca7sT6",
+    "../../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
+    "../../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
+    "../../assets/vendor-fkui-vue-fd0908.js": "sha384-Z2xowocxqy4l23LH2p2pxbaFvjYU5YoNUEUACku4xm6S2e0xr6cRZtiY4T9wCrsr",
+    "../../assets/vendor-fkui-vue-labs-8627df.js": "sha384-SQdsgqok4NVEGjjmw+yRsNO9vu2OD5WkRQmmbIzpKlMJJiY8Xx9swP7/P5fyJg6t",
+    "../../assets/vendor-forsakringskassan-docs-live-example-fe2383.js": "sha384-zp/dC2Q9fr2MNGNwpaTNP+qizDjGJBio6keMixt3Nzm4r55B+r3hAHw54F4fE17W"
+  }
+}
+        </script><script
+            src="../../assets/bootstrap-dfc010.js"
+            
+            crossorigin
+            integrity="sha384-4CY3mj1uza2HPzeViyHD3gIMd8d3TDJDCoq1h22Ak/QLHgKLnc2ymTmUrjDIDy3M"
+            
+        ></script><link
+            rel="preload"
+            href="../../search-data-1c76f1.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-xQT7AAxnMv9ZNsgBkLW2N6mjdUzy9hxRnuzYGTgo2oW9dystKbe8nXGbWTWhPmdV"
+            id="search-data"
+        />
+    </head>
+    <body><div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../index.html">
+            <span aria-label="FKUI Labs" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../index.html"> FKUI Labs </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../pageobjects/"> Pageobjekt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../pageobjects/"> Pageobjekt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <span class="version">
+        6.34.1
+    </span>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol><li class="expandable active">
+        <details open>
+            <summary>Tabell</summary>
+            
+            
+<ol><li class="link active">
+        <a
+            href="./ftable-columns.html"
+            
+            
+            
+            data-path="components/FTable/ftable-columns.html"
+            
+        >
+            Kolumntyper
+        </a>
+    </li><li class="link ">
+        <a
+            href="./"
+            
+            
+            
+            data-path="components/FTable/"
+            
+        >
+            Tabell
+        </a>
+    </li><li class="link ">
+        <a
+            href="./contextmenu.html"
+            
+            
+            
+            data-path="components/FTable/contextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../code-table.html"
+            
+            
+            
+            data-path="components/code-table.html"
+            
+        >
+            Kod (tillhör nya tabellkomponenten)
+        </a>
+    </li><li class="link ">
+        <a
+            href="../xtimetextfield.html"
+            
+            
+            
+            data-path="components/xtimetextfield.html"
+            
+        >
+            Tidsinmatning
+        </a>
+    </li><li class="link ">
+        <a
+            href="../xfiledragdrop.html"
+            
+            
+            
+            data-path="components/xfiledragdrop.html"
+            
+        >
+            XFileDragdrop
+        </a>
+    </li><li class="link ">
+        <a
+            href="../xsortfilterdatasetng.html"
+            
+            
+            
+            data-path="components/xsortfilterdatasetng.html"
+            
+        >
+            XSortFilterDatasetNg
+        </a>
+    </li></ol>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Kolumntyper</h1>
+
+                    
+                    <div id="aside"><dl>
+    
+    <dt>Komponent</dt>
+    <dd>
+        <div class="docs-badge-list">
+            
+            
+            <div class="docs-badge docs-badge--component">
+                FTable
+            </div>
+            
+            
+            
+            <div class="docs-badge docs-badge--component">
+                TableColumn
+            </div>
+            
+            
+        </div>
+    </dd>
+    
+
+    
+    <dt>Status</dt>
+    <dd>
+        <div class="badge badge--info">Draft</div>
+    </dd>
+    
+</dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#ftable_kolumntyper">FTable — Kolumntyper</a></li>
+                                
+                                <li><a href="#oversikt">Översikt</a></li>
+                                
+                                <li><a href="#gemensamma_egenskaper_tablecolumnbase">Gemensamma egenskaper (TableColumnBase)</a></li>
+                                
+                                <li><a href="#kolumntyper_detaljer">Kolumntyper — detaljer</a></li>
+                                
+                                <li><a href="#sortering_storlek_och_synlighet">Sortering, storlek och synlighet</a></li>
+                                
+                                <li><a href="#redigering_parser_formatter_och_validering">Redigering, parser/formatter och validering</a></li>
+                                
+                                <li><a href="#accessibility_tillganglighet">Accessibility (tillgänglighet)</a></li>
+                                
+                                <li><a href="#snabbstart_exempel">Snabbstart / Exempel</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content"><h2 id="ftable_kolumntyper"><a class="header-anchor" href="#ftable_kolumntyper">FTable — Kolumntyper</a></h2><p class="docs-paragraph">Denna sida beskriver alla kolumntyper som FTable stödjer och deras egenskaper,
+beteenden vid visning och redigering, samt exempel på hur de används.</p>
+<h2 id="oversikt"><a class="header-anchor" href="#oversikt">Översikt</a></h2><p class="docs-paragraph">FTable accepterar kolumnbeskrivningar via <code>defineTableColumns([...])</code>. Varje kolumn beskrivs med en union-typ som omfattar olika specialiseringar (text, checkbox, radio, mm). Fält som <code>key</code> används för värde-åtkomst och sortering; specialiserade text-typer använder interna parser/formatter/validation-konfigurationer.</p>
+<h2 id="gemensamma_egenskaper_tablecolumnbase"><a class="header-anchor" href="#gemensamma_egenskaper_tablecolumnbase">Gemensamma egenskaper (TableColumnBase)</a></h2><p class="docs-paragraph">Alla kolumntyper delar följande proppar:</p>
+<ul>
+<li><code>header</code> (<code>string</code> | <code>Ref&lt;string&gt;</code>) — kolumnrubrik som visas i thead.</li>
+<li><code>description?</code> (<code>string</code> | <code>Ref&lt;string | null&gt;</code>) — valfri beskrivning/formatbeskrivning.</li>
+<li><code>size?</code> (&quot;grow&quot; | &quot;shrink&quot; | Ref&lt;...&gt;) — hur kolumnen skalas. Standard: &quot;grow&quot;.</li>
+</ul>
+<p class="docs-paragraph">Basnormalisering (internt) ger varje kolumn:</p>
+<ul>
+<li>unikt <code>id</code> (Symbol), <code>header</code> som Ref, <code>description</code> som Ref och <code>size</code> som Ref.</li>
+</ul>
+<h2 id="kolumntyper_detaljer"><a class="header-anchor" href="#kolumntyper_detaljer">Kolumntyper — detaljer</a></h2><p class="docs-paragraph">Följande avsnitt förklarar var och en av kolumntyperna, deras viktiga proppar och rekommendationer.</p>
+<h3 id="text_allmant"><a class="header-anchor" href="#text_allmant">text (allmänt)</a></h3><ul>
+<li><code>type</code>: <code>&quot;text&quot;</code> eller specialvarianter <code>text:...</code>.</li>
+<li>Används för fri text och för redigerbara fält.</li>
+<li>Vanliga proppar:
+<ul>
+<li><code>key?: K</code> — property i row som används för värde och sortering.</li>
+<li><code>label?(row): string</code> — label för redigerbart fält.</li>
+<li><code>value?(row): string</code> — egen value-funktion (annars används key).</li>
+<li><code>update?(row, newValue, oldValue)</code> — callback vid ändring.</li>
+<li><code>editable?: boolean | (row =&gt; boolean)</code> — om cellen är redigerbar.</li>
+<li><code>tnum?: boolean</code> — tabular figures (sätts automatiskt för vissa typer).</li>
+<li><code>align?: &quot;left&quot; | &quot;right&quot;</code> — textjustering.</li>
+</ul>
+</li>
+</ul>
+<p class="docs-paragraph">Observera: specialiserade <code>text:...</code>-typer (t.ex. <code>text:currency</code>, <code>text:personnummer</code>) har parser/formatter/validation kopplat via <code>input-fields-config</code>.</p>
+<h3 id="specialiserade_text_typer_lista"><a class="header-anchor" href="#specialiserade_text_typer_lista">Specialiserade text-typer (lista)</a></h3><p class="docs-paragraph">Följande <code>text:...</code>-typer finns implementerade:</p>
+<ul>
+<li>text:personnummer</li>
+<li>text:bankAccountNumber</li>
+<li>text:bankgiro</li>
+<li>text:clearingNumber</li>
+<li>text:currency</li>
+<li>text:date</li>
+<li>text:email</li>
+<li>text:organisationsnummer</li>
+<li>text:number</li>
+<li>text:percent</li>
+<li>text:phoneNumber</li>
+<li>text:plusgiro</li>
+<li>text:postalCode</li>
+</ul>
+<p class="docs-paragraph">Nedan följer per-typ sammanfattning av beteende och rekommendationer.</p>
+<h4 id="text_personnummer"><a class="header-anchor" href="#text_personnummer">text:personnummer</a></h4><ul>
+<li>Formatter/parser: normaliserar och formatterar personnummer (via @fkui/logic).</li>
+<li>Validering: personnummerformat + Luhn + maxLength.</li>
+<li>Input-attribut: inputmode=numeric, maxlength=23.</li>
+<li>Modell: rekommenderas string (parser normaliserar format).</li>
+</ul>
+
+                <div
+                    id="example-38bc82"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">TableRow</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">pnr</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
+  {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:personnummer&quot;</span>,
+    <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Personnummer&quot;</span>,
+    <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pnr&quot;</span>,
+    <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Personnummer för rad <span class="hljs-subst">${row.id}</span>`</span>
+  }
+]);
+</code></pre>
+                </div>
+            <h4 id="text_bankaccountnumber"><a class="header-anchor" href="#text_bankaccountnumber">text:bankAccountNumber</a></h4><ul>
+<li>Parser/formatter: parseBankAccountNumber.</li>
+<li>Validering: bankAccountNumber.</li>
+<li>Attribut: inputmode=numeric, maxlength=40.</li>
+<li>Modell: string.</li>
+</ul>
+<h4 id="text_bankgiro"><a class="header-anchor" href="#text_bankgiro">text:bankgiro</a></h4><ul>
+<li>Parser/formatter: parseBankgiro.</li>
+<li>Validering: bankgiro + maxLength.</li>
+<li>Attribut: inputmode=numeric, maxlength=40.</li>
+<li>Modell: string.</li>
+</ul>
+<h4 id="text_clearingnumber"><a class="header-anchor" href="#text_clearingnumber">text:clearingNumber</a></h4><ul>
+<li>Parser/formatter: parseClearingNumber (trim).</li>
+<li>Validering: clearingNumber.</li>
+<li>Attribut: inputmode=numeric, maxlength=16.</li>
+<li>Modell: string.</li>
+</ul>
+<h4 id="text_currency"><a class="header-anchor" href="#text_currency">text:currency</a></h4><ul>
+<li>Formatter: formatNumber (tusentalsavgränsare).</li>
+<li>Parser: parseNumber.</li>
+<li>Validering: currency, integer.</li>
+<li>Attribut: inputmode=numeric, maxlength=20.</li>
+<li>Modell: kan sparas som number vid lyckad parse; annars sträng.</li>
+</ul>
+<h4 id="text_number"><a class="header-anchor" href="#text_number">text:number</a></h4><ul>
+<li>Formatter/parser: formatNumber/parseNumber, stöder <code>decimals</code>.</li>
+<li>Validering: number.</li>
+<li>Attribut: inputmode=numeric, maxlength=20.</li>
+<li>Modell: number vid lyckad parse.</li>
+</ul>
+<h4 id="text_percent"><a class="header-anchor" href="#text_percent">text:percent</a></h4><ul>
+<li>Formatter/parser: formatNumber/parseNumber med decimals.</li>
+<li>Validering: percent, min/max (0–999).</li>
+<li>Attribut: inputmode=numeric, maxlength=20.</li>
+<li>Modell: number.</li>
+</ul>
+<h4 id="text_date"><a class="header-anchor" href="#text_date">text:date</a></h4><ul>
+<li>Formatter/parser: parseDate (ex. YYYY-MM-DD).</li>
+<li>Validering: date.</li>
+<li>Attribut: input type text (fungerar med datumformat-kontroller).</li>
+<li>Modell: string i ISO-liknande format.</li>
+</ul>
+<h4 id="text_email"><a class="header-anchor" href="#text_email">text:email</a></h4><ul>
+<li>Formatter/parser: ingen automatiserad formatering (returnerar value).</li>
+<li>Validering: email-format + maxLength.</li>
+<li>Attribut: type=email, maxlength=80.</li>
+<li>Modell: string (sparas exakt som inmatat).</li>
+</ul>
+<h4 id="text_organisationsnummer"><a class="header-anchor" href="#text_organisationsnummer">text:organisationsnummer</a></h4><ul>
+<li>Formatter/parser: parseOrganisationsnummer.</li>
+<li>Validering: organisationsnummer + maxLength.</li>
+<li>Attribut: inputmode=numeric, maxlength=20.</li>
+<li>Modell: string.</li>
+</ul>
+<h4 id="text_phonenumber"><a class="header-anchor" href="#text_phonenumber">text:phoneNumber</a></h4><ul>
+<li>Formatter/parser: specialfunktion (från logikpaketet).</li>
+<li>Attribut: inputmode=numeric.</li>
+<li>Modell: string.</li>
+</ul>
+<h4 id="text_plusgiro"><a class="header-anchor" href="#text_plusgiro">text:plusgiro</a></h4><ul>
+<li>Formatter/parser: parsePlusgiro.</li>
+<li>Validering: relevant plusgiro-format.</li>
+<li>Attribut: inputmode=numeric.</li>
+<li>Modell: string.</li>
+</ul>
+<h4 id="text_postalcode"><a class="header-anchor" href="#text_postalcode">text:postalCode</a></h4><ul>
+<li>Formatter/parser: formatPostalCode / parse.</li>
+<li>Validering: postnummer-specifik.</li>
+<li>Attribut: inputmode=numeric.</li>
+<li>Modell: string.</li>
+</ul>
+<h3 id="checkbox"><a class="header-anchor" href="#checkbox">checkbox</a></h3><ul>
+<li><code>type: &quot;checkbox&quot;</code>.</li>
+<li>Proppar:
+<ul>
+<li><code>key?: K</code></li>
+<li><code>label?(row): string</code></li>
+<li><code>checked?(row): boolean</code></li>
+<li><code>update?(row, newVal, oldVal)</code></li>
+<li><code>editable?: boolean | (row =&gt; boolean)</code></li>
+</ul>
+</li>
+<li>Beteende: visas som en kryssruta; <code>checked</code> eller <code>key</code> används för status; <code>update</code> kallas vid ändring.</li>
+</ul>
+<h3 id="radio"><a class="header-anchor" href="#radio">radio</a></h3><ul>
+<li><code>type: &quot;radio&quot;</code>.</li>
+<li>Proppar:
+<ul>
+<li><code>key?: K</code></li>
+<li><code>label?(row): string</code></li>
+<li><code>checked?(row): boolean</code></li>
+<li><code>update?(row, newVal, oldVal)</code></li>
+<li><code>editable?: boolean | (row =&gt; boolean)</code></li>
+</ul>
+</li>
+<li>Används när en kolumn representerar en radiovalsstatus.</li>
+</ul>
+<h3 id="rowheader_radrubrik"><a class="header-anchor" href="#rowheader_radrubrik">rowheader (radrubrik)</a></h3><ul>
+<li><code>type: &quot;rowheader&quot;</code>.</li>
+<li>Används för celler som ska vara rad-rubriker (t.ex. identifierare).</li>
+<li>Ger förbättrad tillgänglighet: cellen markeras som radrubrik (th scope=row).</li>
+<li>Proppar:
+<ul>
+<li><code>text?(row)</code></li>
+<li><code>key?</code>.</li>
+</ul>
+</li>
+<li>Rekommendation: använd när en cell tydligt identifierar raden och du vill underlätta skärmläsarnavigering.</li>
+</ul>
+<h3 id="anchor_lank"><a class="header-anchor" href="#anchor_lank">anchor (länk)</a></h3><ul>
+<li><code>type: &quot;anchor&quot;</code>.</li>
+<li>Proppar:
+<ul>
+<li><code>text(row): string | null</code></li>
+<li><code>href: string</code> — länkens url (kan vara statisk eller interpolerad).</li>
+<li><code>enabled?: boolean | (row =&gt; boolean)</code></li>
+</ul>
+</li>
+<li>Beteende: visas som länk; <code>enabled</code> kan styra om länken ska vara interaktiv.</li>
+</ul>
+<h3 id="button"><a class="header-anchor" href="#button">button</a></h3><ul>
+<li><code>type: &quot;button&quot;</code>.</li>
+<li>Proppar:
+<ul>
+<li><code>text(row): string | null</code></li>
+<li><code>onClick?(row)</code> — callback vid knappklick.</li>
+<li><code>icon?: string</code></li>
+<li><code>enabled?: boolean | (row =&gt; boolean)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="select_dropplista"><a class="header-anchor" href="#select_dropplista">select (dropplista)</a></h3><ul>
+<li><code>type: &quot;select&quot;</code>.</li>
+<li>Proppar:
+<ul>
+<li><code>options: string[]</code></li>
+<li><code>selected?(row): string</code></li>
+<li><code>update?(row, newVal, oldVal)</code></li>
+<li><code>editable?: boolean | (row =&gt; boolean)</code></li>
+<li><code>label?(row)</code></li>
+</ul>
+</li>
+<li>Presenteras som ett select-fält i redigeringsläge.</li>
+</ul>
+<h3 id="menu_kontextmeny"><a class="header-anchor" href="#menu_kontextmeny">menu (kontextmeny)</a></h3><ul>
+<li><code>type: &quot;menu&quot;</code>.</li>
+<li>Proppar:
+<ul>
+<li><code>text(row): string | null</code></li>
+<li><code>enabled?: boolean | (row =&gt; boolean)</code></li>
+<li><code>actions?: Array&lt;{ label: string; icon?: string; onClick?(row): void }&gt;</code></li>
+</ul>
+</li>
+<li>Beteende: visar en meny med actions; varje action får onClick-row callback.</li>
+</ul>
+<h3 id="render_egendefinierad_rendering"><a class="header-anchor" href="#render_egendefinierad_rendering">render (egendefinierad rendering)</a></h3><ul>
+<li>Ingen <code>type</code> — istället används <code>render(this, row)</code> i kolumn-objektet.</li>
+<li>Returnerar en VNode eller Component.</li>
+<li>Använd när full kontroll över cellens DOM/komponentinnehåll behövs.</li>
+<li>Normaliseras till typ <code>undefined</code> internt och blir normalt inte sortbar.</li>
+</ul>
+<h3 id="simple_ingen_type_read_only"><a class="header-anchor" href="#simple_ingen_type_read_only">simple (ingen type - read-only)</a></h3><ul>
+<li>Om <code>type</code> inte sätts i kolumnobjektet används en &quot;simple&quot; kolumn som normaliseras till en text-kolumn med default-värden: icke-redigerbar, ingen label, etc.</li>
+<li>Praktiskt för snabba read-only-kolumner.</li>
+</ul>
+<h2 id="sortering_storlek_och_synlighet"><a class="header-anchor" href="#sortering_storlek_och_synlighet">Sortering, storlek och synlighet</a></h2><ul>
+<li>
+<p class="docs-paragraph">Sortering:</p>
+<ul>
+<li>En kolumn blir sorteringsbar om <code>sortable</code> sätts internt från <code>key</code> (d.v.s. om du anger <code>key</code> i kolumnen).</li>
+<li>Tabell-komponenten kan hantera uppdatering av sort-order via interna funktioner (se <code>updateSortOrder</code> i koden).</li>
+</ul>
+</li>
+<li>
+<p class="docs-paragraph">Storlek (size):</p>
+<ul>
+<li><code>size</code> kan vara <code>&quot;grow&quot;</code> (expanderar) eller <code>&quot;shrink&quot;</code> (krymper).</li>
+<li>Du kan också använda <code>expand</code> / <code>shrink</code> props på komponentnivå (beroende på implementation) för att påverka kolumnens layout.</li>
+</ul>
+</li>
+<li>
+<p class="docs-paragraph">Synlighet:</p>
+<ul>
+<li>Intern logik tillåter att kolumner göms/visas (funktioner som <code>setVisibilityColumn</code> används av API).</li>
+</ul>
+</li>
+</ul>
+<h2 id="redigering_parser_formatter_och_validering"><a class="header-anchor" href="#redigering_parser_formatter_och_validering">Redigering, parser/formatter och validering</a></h2><ul>
+<li>Specialiserade text-typer använder centrala parser/formatter/validation-konfig i <code>input-fields-config.ts</code> (se utdrag ovan).</li>
+<li>Vid redigering:
+<ul>
+<li>Inmatningsfält får attribut från <code>attributes()</code> (t.ex. <code>inputmode</code>, <code>maxlength</code>, <code>type</code>).</li>
+<li>Parser används när användaren lämnar (blur) redigeringsläge för att omvandla visningsvärdet till modellvärde.</li>
+<li>Formatter används för att visa modellvärdet i läsvy (span) i ett formaterat sätt (t.ex. tusentalsseparator).</li>
+<li>Om parser lyckas returneras normalt en <code>number</code> för numeriska typer; vid parserfel kan modellen uppdateras med den råa strängen och cellen markeras med error-klass.</li>
+</ul>
+</li>
+<li>ValidationConfig används för att utföra valideringar och visa felmarkeringar i cellen.</li>
+</ul>
+<p class="docs-paragraph">Testbeteenden (ur testkod):</p>
+<ul>
+<li>Valuta-kolumn (<code>text:currency</code>) formaterar visning med tusentalsavgränsare och uppdaterar modell med <code>number</code> när parser lyckas.</li>
+<li>Email-kolumn (<code>text:email</code>) gör ingen automatisk formatering; modellen sparas som inmatad text.</li>
+</ul>
+<h2 id="accessibility_tillganglighet"><a class="header-anchor" href="#accessibility_tillganglighet">Accessibility (tillgänglighet)</a></h2><ul>
+<li>Använd <code>rowheader</code> när en cell identifierar raden — detta hjälper skärmläsare att läsa ut rubriker per rad.</li>
+<li><code>header</code> och <code>description</code> kan användas som Ref för dynamiska rubriker / beskrivningar.</li>
+<li>Menyer, knappar och länkar bör ha tydliga labels och aria-attribut vid behov (komponentimplementeringen tar hand om grundläggande markup).</li>
+</ul>
+<h2 id="snabbstart_exempel"><a class="header-anchor" href="#snabbstart_exempel">Snabbstart / Exempel</a></h2><p class="docs-paragraph">Exempel: definiera en uppsättning kolumner och rader:</p>
+
+                <div
+                    id="example-070beb"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">TableRow</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">amount</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">active</span>: <span class="hljs-built_in">string</span>;
+}
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
+  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;rowheader&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;ID&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;id&quot;</span> },
+  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">label</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Namn&quot;</span> },
+  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Belopp&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;amount&quot;</span>, <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span> },
+  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;checkbox&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Aktiv&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;active&quot;</span> },
+  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärd&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Ta bort&quot;</span>, <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) { <span class="hljs-comment">/* ... */</span> } },
+]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Exempel på <code>text:number</code> med decimals:</p>
+
+                <div
+                    id="example-8aff4b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
+  {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:number&quot;</span>,
+    <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Vikt&quot;</span>,
+    <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;weight&quot;</span>,
+    <span class="hljs-attr">decimals</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+  }
+]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Exempel på <code>menu</code>-kolumn:</p>
+
+                <div
+                    id="example-cf6cde"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
+  {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
+    <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärder&quot;</span>,
+    <span class="hljs-attr">text</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Åtgärder för <span class="hljs-subst">${row.id}</span>`</span>,
+    <span class="hljs-attr">actions</span>: [
+      { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Visa&quot;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;search&quot;</span>, <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;visa&quot;</span>, row) },
+      { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>, <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;ta bort&quot;</span>, row) },
+    ],
+  }
+]);
+</code></pre>
+                </div>
+            
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="../../changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content"></div>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Sök</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog><script
+            src="../../assets/main-3893bd.js"
+            type="module"
+            crossorigin
+            integrity="sha384-QnqFOTWAYDyMNzjW6B1++egFEdnx/l6Lz85o3oq0NwjAgMVFkKb1MUdAHnFIZP/Z"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/FTable/FTable-columns.md
+         Document ID: fs:docs/components/FTable/FTable-columns.md
+         Document name: FTable-columns
+         Document alias: component:FTable, component:TableColumn
+
+    -->
+</html>
