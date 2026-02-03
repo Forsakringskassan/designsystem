@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, Fragment, unref, createBlock, createCommentVNode, createApp, resolveComponent, withKeys, toDisplayString, createVNode, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Teleport, normalizeStyle, withDirectives, vShow, Transition, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, findTabbableElements, popFocus, pushFocus, ElementIdService, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, debounce, alertScreenReader, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -4498,6 +4498,95 @@ function getHTMLElementFromVueRef(ref2) {
   }
   throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
+var es_map_getOrInsert = {};
+var mapHelpers;
+var hasRequiredMapHelpers;
+function requireMapHelpers() {
+  if (hasRequiredMapHelpers) return mapHelpers;
+  hasRequiredMapHelpers = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var MapPrototype = Map.prototype;
+  mapHelpers = {
+    // eslint-disable-next-line es/no-map -- safe
+    Map,
+    set: uncurryThis(MapPrototype.set),
+    get: uncurryThis(MapPrototype.get),
+    has: uncurryThis(MapPrototype.has),
+    remove: uncurryThis(MapPrototype["delete"]),
+    proto: MapPrototype
+  };
+  return mapHelpers;
+}
+var aMap;
+var hasRequiredAMap;
+function requireAMap() {
+  if (hasRequiredAMap) return aMap;
+  hasRequiredAMap = 1;
+  var has = requireMapHelpers().has;
+  aMap = function(it) {
+    has(it);
+    return it;
+  };
+  return aMap;
+}
+var hasRequiredEs_map_getOrInsert;
+function requireEs_map_getOrInsert() {
+  if (hasRequiredEs_map_getOrInsert) return es_map_getOrInsert;
+  hasRequiredEs_map_getOrInsert = 1;
+  var $ = require_export();
+  var aMap2 = requireAMap();
+  var MapHelpers = requireMapHelpers();
+  var IS_PURE = requireIsPure();
+  var get = MapHelpers.get;
+  var has = MapHelpers.has;
+  var set = MapHelpers.set;
+  $({
+    target: "Map",
+    proto: true,
+    real: true,
+    forced: IS_PURE
+  }, {
+    getOrInsert: function getOrInsert(key, value) {
+      if (has(aMap2(this), key)) return get(this, key);
+      set(this, key, value);
+      return value;
+    }
+  });
+  return es_map_getOrInsert;
+}
+requireEs_map_getOrInsert();
+var es_map_getOrInsertComputed = {};
+var hasRequiredEs_map_getOrInsertComputed;
+function requireEs_map_getOrInsertComputed() {
+  if (hasRequiredEs_map_getOrInsertComputed) return es_map_getOrInsertComputed;
+  hasRequiredEs_map_getOrInsertComputed = 1;
+  var $ = require_export();
+  var aCallable2 = requireACallable();
+  var aMap2 = requireAMap();
+  var MapHelpers = requireMapHelpers();
+  var IS_PURE = requireIsPure();
+  var get = MapHelpers.get;
+  var has = MapHelpers.has;
+  var set = MapHelpers.set;
+  $({
+    target: "Map",
+    proto: true,
+    real: true,
+    forced: IS_PURE
+  }, {
+    getOrInsertComputed: function getOrInsertComputed(key, callbackfn) {
+      aMap2(this);
+      aCallable2(callbackfn);
+      if (has(this, key)) return get(this, key);
+      if (key === 0 && 1 / key === -Infinity) key = 0;
+      var value = callbackfn(key);
+      set(this, key, value);
+      return value;
+    }
+  });
+  return es_map_getOrInsertComputed;
+}
+requireEs_map_getOrInsertComputed();
 function lazyLoad(fn2) {
   let cache;
   return () => cache !== null && cache !== void 0 ? cache : cache = fn2();
@@ -7892,8 +7981,8 @@ var injectLocal = (...args) => {
 var isClient = typeof window !== "undefined" && typeof document !== "undefined";
 typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
 var notNullish = (val) => val != null;
-var toString = Object.prototype.toString;
-var isObject = (val) => toString.call(val) === "[object Object]";
+var toString$1 = Object.prototype.toString;
+var isObject = (val) => toString$1.call(val) === "[object Object]";
 function pxValue(px) {
   return px.endsWith("rem") ? Number.parseFloat(px) * 16 : Number.parseFloat(px);
 }
@@ -11306,11 +11395,7 @@ var _sfc_main$Y = defineComponent({
   },
   async mounted() {
     await this.$nextTick();
-    const types = Array.from(
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument -- technical debt */
-      this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
-      (it) => it.getAttribute("type")
-    );
+    const types = Array.from(this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`), (it) => it.getAttribute("type"));
     this.hasCheckbox = types.includes("checkbox");
     this.hasRadiobutton = types.includes("radio");
     if (this.hasCheckbox) {
@@ -11339,7 +11424,6 @@ var _sfc_main$Y = defineComponent({
       this.dispatchObject = {
         ...detail,
         errorMessage,
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         focusElementId
       };
       this.validity = this.detail;
@@ -13587,7 +13671,6 @@ var _sfc_main$N = defineComponent({
   },
   data() {
     return {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.currency-text-field.label", "Pengar")
     };
   },
@@ -13749,7 +13832,6 @@ var _sfc_main$L = defineComponent({
   },
   data() {
     return {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.bank-account-number-text-field.label", "Kontonummer")
     };
   },
@@ -13780,7 +13862,6 @@ var _sfc_main$K = defineComponent({
   },
   data() {
     return {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.bankgiro-text-field.label", "Bankgironummer")
     };
   },
@@ -13814,7 +13895,6 @@ var _sfc_main$J = defineComponent({
   },
   data() {
     return {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.clearingnumber-text-field.label", "Clearingnummer")
     };
   },
@@ -13893,11 +13973,8 @@ var _sfc_main$H = defineComponent({
   },
   data() {
     return {
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       defaultText: this.$t("fkui.personnummer-text-field.label-10-digits", "Personnummer"),
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       discreteDescriptionText: this.$t("fkui.personnummer-text-field.example-10-digits", "(\xE5\xE5mmdd-nnnn)"),
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       discreteDescriptionScreenReaderText: this.$t("fkui.personnummer-text-field.format-description-10-digits", "Skriv personnumret med 10 siffror,")
     };
   },
@@ -13932,7 +14009,6 @@ var _sfc_main$G = defineComponent({
   },
   data() {
     return {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.plusgiro-text-field.label", "Plusgironummer")
     };
   },
@@ -13966,11 +14042,8 @@ var _sfc_main$F = defineComponent({
   },
   data() {
     return {
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       defaultText: this.$t("fkui.postal-code-text-field.label", "Postnummer"),
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       discreteDescriptionText: this.$t("fkui.postal-code-text-field.example", "(123 45)"),
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
       discreteDescriptionScreenReaderText: this.$t("fkui.postal-code-text-field.format-description", "Formatbeskrivning")
     };
   },
@@ -14021,7 +14094,6 @@ var _sfc_main$E = defineComponent({
   },
   data() {
     return {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.percent-text-field.label", "Procent")
     };
   },
@@ -14058,11 +14130,8 @@ var _sfc_main$D = defineComponent({
   },
   data() {
     return {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       defaultText: this.$t("fkui.organisationsnummer-text-field.label", "Organisationsnummer"),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       discreteDescriptionText: this.$t("fkui.organisationsnummer-text-field.example", "(999999-9999)"),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
       discreteDescriptionScreenReaderText: this.$t("fkui.organisationsnummer-text-field.format-description", "Formatbeskrivning")
     };
   },
@@ -15700,6 +15769,326 @@ var _sfc_main$x = /* @__PURE__ */ defineComponent({
     };
   }
 });
+var es_json_parse = {};
+var toString;
+var hasRequiredToString;
+function requireToString() {
+  if (hasRequiredToString) return toString;
+  hasRequiredToString = 1;
+  var classof2 = requireClassof();
+  var $String = String;
+  toString = function(argument) {
+    if (classof2(argument) === "Symbol") throw new TypeError("Cannot convert a Symbol value to a string");
+    return $String(argument);
+  };
+  return toString;
+}
+var parseJsonString;
+var hasRequiredParseJsonString;
+function requireParseJsonString() {
+  if (hasRequiredParseJsonString) return parseJsonString;
+  hasRequiredParseJsonString = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var hasOwn = requireHasOwnProperty();
+  var $SyntaxError = SyntaxError;
+  var $parseInt = parseInt;
+  var fromCharCode = String.fromCharCode;
+  var at = uncurryThis("".charAt);
+  var slice = uncurryThis("".slice);
+  var exec = uncurryThis(/./.exec);
+  var codePoints = {
+    '\\"': '"',
+    "\\\\": "\\",
+    "\\/": "/",
+    "\\b": "\b",
+    "\\f": "\f",
+    "\\n": "\n",
+    "\\r": "\r",
+    "\\t": "	"
+  };
+  var IS_4_HEX_DIGITS = /^[\da-f]{4}$/i;
+  var IS_C0_CONTROL_CODE = /^[\u0000-\u001F]$/;
+  parseJsonString = function(source, i) {
+    var unterminated = true;
+    var value = "";
+    while (i < source.length) {
+      var chr = at(source, i);
+      if (chr === "\\") {
+        var twoChars = slice(source, i, i + 2);
+        if (hasOwn(codePoints, twoChars)) {
+          value += codePoints[twoChars];
+          i += 2;
+        } else if (twoChars === "\\u") {
+          i += 2;
+          var fourHexDigits = slice(source, i, i + 4);
+          if (!exec(IS_4_HEX_DIGITS, fourHexDigits)) throw new $SyntaxError("Bad Unicode escape at: " + i);
+          value += fromCharCode($parseInt(fourHexDigits, 16));
+          i += 4;
+        } else throw new $SyntaxError('Unknown escape sequence: "' + twoChars + '"');
+      } else if (chr === '"') {
+        unterminated = false;
+        i++;
+        break;
+      } else {
+        if (exec(IS_C0_CONTROL_CODE, chr)) throw new $SyntaxError("Bad control character in string literal at: " + i);
+        value += chr;
+        i++;
+      }
+    }
+    if (unterminated) throw new $SyntaxError("Unterminated string at: " + i);
+    return {
+      value,
+      end: i
+    };
+  };
+  return parseJsonString;
+}
+var hasRequiredEs_json_parse;
+function requireEs_json_parse() {
+  if (hasRequiredEs_json_parse) return es_json_parse;
+  hasRequiredEs_json_parse = 1;
+  var $ = require_export();
+  var DESCRIPTORS = requireDescriptors();
+  var globalThis2 = requireGlobalThis();
+  var getBuiltIn2 = requireGetBuiltIn();
+  var uncurryThis = requireFunctionUncurryThis();
+  var call = requireFunctionCall();
+  var isCallable2 = requireIsCallable();
+  var isObject2 = requireIsObject$1();
+  var isArray2 = requireIsArray$1();
+  var hasOwn = requireHasOwnProperty();
+  var toString2 = requireToString();
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  var createProperty2 = requireCreateProperty();
+  var fails2 = requireFails();
+  var parseJSONString = requireParseJsonString();
+  var NATIVE_SYMBOL = requireSymbolConstructorDetection();
+  var JSON2 = globalThis2.JSON;
+  var Number2 = globalThis2.Number;
+  var SyntaxError2 = globalThis2.SyntaxError;
+  var nativeParse = JSON2 && JSON2.parse;
+  var enumerableOwnProperties = getBuiltIn2("Object", "keys");
+  var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  var at = uncurryThis("".charAt);
+  var slice = uncurryThis("".slice);
+  var exec = uncurryThis(/./.exec);
+  var push = uncurryThis([].push);
+  var IS_DIGIT = /^\d$/;
+  var IS_NON_ZERO_DIGIT = /^[1-9]$/;
+  var IS_NUMBER_START = /^[\d-]$/;
+  var IS_WHITESPACE = /^[\t\n\r ]$/;
+  var PRIMITIVE = 0;
+  var OBJECT = 1;
+  var $parse = function(source, reviver) {
+    source = toString2(source);
+    var context = new Context(source, 0);
+    var root = context.parse();
+    var value = root.value;
+    var endIndex = context.skip(IS_WHITESPACE, root.end);
+    if (endIndex < source.length) {
+      throw new SyntaxError2('Unexpected extra character: "' + at(source, endIndex) + '" after the parsed data at: ' + endIndex);
+    }
+    return isCallable2(reviver) ? internalize({
+      "": value
+    }, "", reviver, root) : value;
+  };
+  var internalize = function(holder, name, reviver, node) {
+    var val = holder[name];
+    var unmodified = node && val === node.value;
+    var context = unmodified && typeof node.source == "string" ? {
+      source: node.source
+    } : {};
+    var elementRecordsLen, keys, len, i, P;
+    if (isObject2(val)) {
+      var nodeIsArray = isArray2(val);
+      var nodes = unmodified ? node.nodes : nodeIsArray ? [] : {};
+      if (nodeIsArray) {
+        elementRecordsLen = nodes.length;
+        len = lengthOfArrayLike2(val);
+        for (i = 0; i < len; i++) {
+          internalizeProperty(val, i, internalize(val, "" + i, reviver, i < elementRecordsLen ? nodes[i] : void 0));
+        }
+      } else {
+        keys = enumerableOwnProperties(val);
+        len = lengthOfArrayLike2(keys);
+        for (i = 0; i < len; i++) {
+          P = keys[i];
+          internalizeProperty(val, P, internalize(val, P, reviver, hasOwn(nodes, P) ? nodes[P] : void 0));
+        }
+      }
+    }
+    return call(reviver, holder, name, val, context);
+  };
+  var internalizeProperty = function(object, key, value) {
+    if (DESCRIPTORS) {
+      var descriptor = getOwnPropertyDescriptor(object, key);
+      if (descriptor && !descriptor.configurable) return;
+    }
+    if (value === void 0) delete object[key];
+    else createProperty2(object, key, value);
+  };
+  var Node = function(value, end, source, nodes) {
+    this.value = value;
+    this.end = end;
+    this.source = source;
+    this.nodes = nodes;
+  };
+  var Context = function(source, index) {
+    this.source = source;
+    this.index = index;
+  };
+  Context.prototype = {
+    fork: function(nextIndex) {
+      return new Context(this.source, nextIndex);
+    },
+    parse: function() {
+      var source = this.source;
+      var i = this.skip(IS_WHITESPACE, this.index);
+      var fork = this.fork(i);
+      var chr = at(source, i);
+      if (exec(IS_NUMBER_START, chr)) return fork.number();
+      switch (chr) {
+        case "{":
+          return fork.object();
+        case "[":
+          return fork.array();
+        case '"':
+          return fork.string();
+        case "t":
+          return fork.keyword(true);
+        case "f":
+          return fork.keyword(false);
+        case "n":
+          return fork.keyword(null);
+      }
+      throw new SyntaxError2('Unexpected character: "' + chr + '" at: ' + i);
+    },
+    node: function(type, value, start, end, nodes) {
+      return new Node(value, end, type ? null : slice(this.source, start, end), nodes);
+    },
+    object: function() {
+      var source = this.source;
+      var i = this.index + 1;
+      var expectKeypair = false;
+      var object = {};
+      var nodes = {};
+      while (i < source.length) {
+        i = this.until(['"', "}"], i);
+        if (at(source, i) === "}" && !expectKeypair) {
+          i++;
+          break;
+        }
+        var result = this.fork(i).string();
+        var key = result.value;
+        i = result.end;
+        i = this.until([":"], i) + 1;
+        i = this.skip(IS_WHITESPACE, i);
+        result = this.fork(i).parse();
+        createProperty2(nodes, key, result);
+        createProperty2(object, key, result.value);
+        i = this.until([",", "}"], result.end);
+        var chr = at(source, i);
+        if (chr === ",") {
+          expectKeypair = true;
+          i++;
+        } else if (chr === "}") {
+          i++;
+          break;
+        }
+      }
+      return this.node(OBJECT, object, this.index, i, nodes);
+    },
+    array: function() {
+      var source = this.source;
+      var i = this.index + 1;
+      var expectElement = false;
+      var array = [];
+      var nodes = [];
+      while (i < source.length) {
+        i = this.skip(IS_WHITESPACE, i);
+        if (at(source, i) === "]" && !expectElement) {
+          i++;
+          break;
+        }
+        var result = this.fork(i).parse();
+        push(nodes, result);
+        push(array, result.value);
+        i = this.until([",", "]"], result.end);
+        if (at(source, i) === ",") {
+          expectElement = true;
+          i++;
+        } else if (at(source, i) === "]") {
+          i++;
+          break;
+        }
+      }
+      return this.node(OBJECT, array, this.index, i, nodes);
+    },
+    string: function() {
+      var index = this.index;
+      var parsed = parseJSONString(this.source, this.index + 1);
+      return this.node(PRIMITIVE, parsed.value, index, parsed.end);
+    },
+    number: function() {
+      var source = this.source;
+      var startIndex = this.index;
+      var i = startIndex;
+      if (at(source, i) === "-") i++;
+      if (at(source, i) === "0") i++;
+      else if (exec(IS_NON_ZERO_DIGIT, at(source, i))) i = this.skip(IS_DIGIT, i + 1);
+      else throw new SyntaxError2("Failed to parse number at: " + i);
+      if (at(source, i) === ".") i = this.skip(IS_DIGIT, i + 1);
+      if (at(source, i) === "e" || at(source, i) === "E") {
+        i++;
+        if (at(source, i) === "+" || at(source, i) === "-") i++;
+        var exponentStartIndex = i;
+        i = this.skip(IS_DIGIT, i);
+        if (exponentStartIndex === i) throw new SyntaxError2("Failed to parse number's exponent value at: " + i);
+      }
+      return this.node(PRIMITIVE, Number2(slice(source, startIndex, i)), startIndex, i);
+    },
+    keyword: function(value) {
+      var keyword = "" + value;
+      var index = this.index;
+      var endIndex = index + keyword.length;
+      if (slice(this.source, index, endIndex) !== keyword) throw new SyntaxError2("Failed to parse value at: " + index);
+      return this.node(PRIMITIVE, value, index, endIndex);
+    },
+    skip: function(regex, i) {
+      var source = this.source;
+      for (; i < source.length; i++) if (!exec(regex, at(source, i))) break;
+      return i;
+    },
+    until: function(array, i) {
+      i = this.skip(IS_WHITESPACE, i);
+      var chr = at(this.source, i);
+      for (var j = 0; j < array.length; j++) if (array[j] === chr) return i;
+      throw new SyntaxError2('Unexpected character: "' + chr + '" at: ' + i);
+    }
+  };
+  var NO_SOURCE_SUPPORT = fails2(function() {
+    var unsafeInt = "9007199254740993";
+    var source;
+    nativeParse(unsafeInt, function(key, value, context) {
+      source = context.source;
+    });
+    return source !== unsafeInt;
+  });
+  var PROPER_BASE_PARSE = NATIVE_SYMBOL && !fails2(function() {
+    return 1 / nativeParse("-0 	") !== -Infinity;
+  });
+  $({
+    target: "JSON",
+    stat: true,
+    forced: NO_SOURCE_SUPPORT
+  }, {
+    parse: function parse(text, reviver) {
+      return PROPER_BASE_PARSE && !isCallable2(reviver) ? nativeParse(text) : $parse(text, reviver);
+    }
+  });
+  return es_json_parse;
+}
+requireEs_json_parse();
 function getProperty(style, key) {
   const value = style.getPropertyValue(key);
   if (value === "") {
@@ -15881,6 +16270,173 @@ function usePointerHandler(options) {
     };
   }
 }
+var es_json_stringify = {};
+var functionApply;
+var hasRequiredFunctionApply;
+function requireFunctionApply() {
+  if (hasRequiredFunctionApply) return functionApply;
+  hasRequiredFunctionApply = 1;
+  var NATIVE_BIND = requireFunctionBindNative();
+  var FunctionPrototype = Function.prototype;
+  var apply = FunctionPrototype.apply;
+  var call = FunctionPrototype.call;
+  functionApply = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
+    return call.apply(apply, arguments);
+  });
+  return functionApply;
+}
+var isRawJson;
+var hasRequiredIsRawJson;
+function requireIsRawJson() {
+  if (hasRequiredIsRawJson) return isRawJson;
+  hasRequiredIsRawJson = 1;
+  var isObject2 = requireIsObject$1();
+  var getInternalState = requireInternalState().get;
+  isRawJson = function isRawJSON(O) {
+    if (!isObject2(O)) return false;
+    var state = getInternalState(O);
+    return !!state && state.type === "RawJSON";
+  };
+  return isRawJson;
+}
+var arraySlice;
+var hasRequiredArraySlice;
+function requireArraySlice() {
+  if (hasRequiredArraySlice) return arraySlice;
+  hasRequiredArraySlice = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  arraySlice = uncurryThis([].slice);
+  return arraySlice;
+}
+var nativeRawJson;
+var hasRequiredNativeRawJson;
+function requireNativeRawJson() {
+  if (hasRequiredNativeRawJson) return nativeRawJson;
+  hasRequiredNativeRawJson = 1;
+  var fails2 = requireFails();
+  nativeRawJson = !fails2(function() {
+    var unsafeInt = "9007199254740993";
+    var raw = JSON.rawJSON(unsafeInt);
+    return !JSON.isRawJSON(raw) || JSON.stringify(raw) !== unsafeInt;
+  });
+  return nativeRawJson;
+}
+var hasRequiredEs_json_stringify;
+function requireEs_json_stringify() {
+  if (hasRequiredEs_json_stringify) return es_json_stringify;
+  hasRequiredEs_json_stringify = 1;
+  var $ = require_export();
+  var getBuiltIn2 = requireGetBuiltIn();
+  var apply = requireFunctionApply();
+  var call = requireFunctionCall();
+  var uncurryThis = requireFunctionUncurryThis();
+  var fails2 = requireFails();
+  var isArray2 = requireIsArray$1();
+  var isCallable2 = requireIsCallable();
+  var isRawJSON = requireIsRawJson();
+  var isSymbol2 = requireIsSymbol();
+  var classof2 = requireClassofRaw();
+  var toString2 = requireToString();
+  var arraySlice2 = requireArraySlice();
+  var parseJSONString = requireParseJsonString();
+  var uid2 = requireUid();
+  var NATIVE_SYMBOL = requireSymbolConstructorDetection();
+  var NATIVE_RAW_JSON = requireNativeRawJson();
+  var $String = String;
+  var $stringify = getBuiltIn2("JSON", "stringify");
+  var exec = uncurryThis(/./.exec);
+  var charAt = uncurryThis("".charAt);
+  var charCodeAt = uncurryThis("".charCodeAt);
+  var replace = uncurryThis("".replace);
+  var slice = uncurryThis("".slice);
+  var push = uncurryThis([].push);
+  var numberToString = uncurryThis(1.1.toString);
+  var surrogates = /[\uD800-\uDFFF]/g;
+  var lowSurrogates = /^[\uD800-\uDBFF]$/;
+  var hiSurrogates = /^[\uDC00-\uDFFF]$/;
+  var MARK = uid2();
+  var MARK_LENGTH = MARK.length;
+  var WRONG_SYMBOLS_CONVERSION = !NATIVE_SYMBOL || fails2(function() {
+    var symbol = getBuiltIn2("Symbol")("stringify detection");
+    return $stringify([symbol]) !== "[null]" || $stringify({
+      a: symbol
+    }) !== "{}" || $stringify(Object(symbol)) !== "{}";
+  });
+  var ILL_FORMED_UNICODE = fails2(function() {
+    return $stringify("\uDF06\uD834") !== '"\\udf06\\ud834"' || $stringify("\uDEAD") !== '"\\udead"';
+  });
+  var stringifyWithProperSymbolsConversion = WRONG_SYMBOLS_CONVERSION ? function(it, replacer) {
+    var args = arraySlice2(arguments);
+    var $replacer = getReplacerFunction(replacer);
+    if (!isCallable2($replacer) && (it === void 0 || isSymbol2(it))) return;
+    args[1] = function(key, value) {
+      if (isCallable2($replacer)) value = call($replacer, this, $String(key), value);
+      if (!isSymbol2(value)) return value;
+    };
+    return apply($stringify, null, args);
+  } : $stringify;
+  var fixIllFormedJSON = function(match, offset2, string) {
+    var prev = charAt(string, offset2 - 1);
+    var next = charAt(string, offset2 + 1);
+    if (exec(lowSurrogates, match) && !exec(hiSurrogates, next) || exec(hiSurrogates, match) && !exec(lowSurrogates, prev)) {
+      return "\\u" + numberToString(charCodeAt(match, 0), 16);
+    }
+    return match;
+  };
+  var getReplacerFunction = function(replacer) {
+    if (isCallable2(replacer)) return replacer;
+    if (!isArray2(replacer)) return;
+    var rawLength = replacer.length;
+    var keys = [];
+    for (var i = 0; i < rawLength; i++) {
+      var element = replacer[i];
+      if (typeof element == "string") push(keys, element);
+      else if (typeof element == "number" || classof2(element) === "Number" || classof2(element) === "String") push(keys, toString2(element));
+    }
+    var keysLength = keys.length;
+    var root = true;
+    return function(key, value) {
+      if (root) {
+        root = false;
+        return value;
+      }
+      if (isArray2(this)) return value;
+      for (var j = 0; j < keysLength; j++) if (keys[j] === key) return value;
+    };
+  };
+  if ($stringify) $({
+    target: "JSON",
+    stat: true,
+    arity: 3,
+    forced: WRONG_SYMBOLS_CONVERSION || ILL_FORMED_UNICODE || !NATIVE_RAW_JSON
+  }, {
+    stringify: function stringify(text, replacer, space) {
+      var replacerFunction = getReplacerFunction(replacer);
+      var rawStrings = [];
+      var json = stringifyWithProperSymbolsConversion(text, function(key, value) {
+        var v = isCallable2(replacerFunction) ? call(replacerFunction, this, $String(key), value) : value;
+        return !NATIVE_RAW_JSON && isRawJSON(v) ? MARK + (push(rawStrings, v.rawJSON) - 1) : v;
+      }, space);
+      if (typeof json != "string") return json;
+      if (ILL_FORMED_UNICODE) json = replace(json, surrogates, fixIllFormedJSON);
+      if (NATIVE_RAW_JSON) return json;
+      var result = "";
+      var length = json.length;
+      for (var i = 0; i < length; i++) {
+        var chr = charAt(json, i);
+        if (chr === '"') {
+          var end = parseJSONString(json, ++i).end - 1;
+          var string = slice(json, i, end);
+          result += slice(string, 0, MARK_LENGTH) === MARK ? rawStrings[slice(string, MARK_LENGTH)] : '"' + string + '"';
+          i = end;
+        } else result += chr;
+      }
+      return result;
+    }
+  });
+  return es_json_stringify;
+}
+requireEs_json_stringify();
 function useStorage(options) {
   const {
     state,

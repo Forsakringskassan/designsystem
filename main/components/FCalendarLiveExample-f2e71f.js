@@ -7159,7 +7159,6 @@ var FFieldset_default = defineComponent22({
   async mounted() {
     await this.$nextTick();
     const types = Array.from(
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument -- technical debt */
       this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
       (it) => it.getAttribute("type")
     );
@@ -7190,7 +7189,6 @@ var FFieldset_default = defineComponent22({
       this.dispatchObject = {
         ...detail,
         errorMessage,
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         focusElementId
       };
       this.validity = this.detail;

@@ -5960,7 +5960,6 @@ function requireEs_typedArray_with() {
   return es_typedArray_with;
 }
 requireEs_typedArray_with();
-var esnext_uint8Array_setFromBase64 = {};
 var es_uint8Array_setFromBase64 = {};
 var anObjectOrUndefined;
 var hasRequiredAnObjectOrUndefined;
@@ -6219,15 +6218,7 @@ function requireEs_uint8Array_setFromBase64() {
   });
   return es_uint8Array_setFromBase64;
 }
-var hasRequiredEsnext_uint8Array_setFromBase64;
-function requireEsnext_uint8Array_setFromBase64() {
-  if (hasRequiredEsnext_uint8Array_setFromBase64) return esnext_uint8Array_setFromBase64;
-  hasRequiredEsnext_uint8Array_setFromBase64 = 1;
-  requireEs_uint8Array_setFromBase64();
-  return esnext_uint8Array_setFromBase64;
-}
-requireEsnext_uint8Array_setFromBase64();
-var esnext_uint8Array_setFromHex = {};
+requireEs_uint8Array_setFromBase64();
 var es_uint8Array_setFromHex = {};
 var uint8FromHex;
 var hasRequiredUint8FromHex;
@@ -6300,15 +6291,7 @@ function requireEs_uint8Array_setFromHex() {
   });
   return es_uint8Array_setFromHex;
 }
-var hasRequiredEsnext_uint8Array_setFromHex;
-function requireEsnext_uint8Array_setFromHex() {
-  if (hasRequiredEsnext_uint8Array_setFromHex) return esnext_uint8Array_setFromHex;
-  hasRequiredEsnext_uint8Array_setFromHex = 1;
-  requireEs_uint8Array_setFromHex();
-  return esnext_uint8Array_setFromHex;
-}
-requireEsnext_uint8Array_setFromHex();
-var esnext_uint8Array_toBase64 = {};
+requireEs_uint8Array_setFromHex();
 var es_uint8Array_toBase64 = {};
 var hasRequiredEs_uint8Array_toBase64;
 function requireEs_uint8Array_toBase64() {
@@ -6368,15 +6351,7 @@ function requireEs_uint8Array_toBase64() {
   });
   return es_uint8Array_toBase64;
 }
-var hasRequiredEsnext_uint8Array_toBase64;
-function requireEsnext_uint8Array_toBase64() {
-  if (hasRequiredEsnext_uint8Array_toBase64) return esnext_uint8Array_toBase64;
-  hasRequiredEsnext_uint8Array_toBase64 = 1;
-  requireEs_uint8Array_toBase64();
-  return esnext_uint8Array_toBase64;
-}
-requireEsnext_uint8Array_toBase64();
-var esnext_uint8Array_toHex = {};
+requireEs_uint8Array_toBase64();
 var es_uint8Array_toHex = {};
 var hasRequiredEs_uint8Array_toHex;
 function requireEs_uint8Array_toHex() {
@@ -6415,14 +6390,7 @@ function requireEs_uint8Array_toHex() {
   });
   return es_uint8Array_toHex;
 }
-var hasRequiredEsnext_uint8Array_toHex;
-function requireEsnext_uint8Array_toHex() {
-  if (hasRequiredEsnext_uint8Array_toHex) return esnext_uint8Array_toHex;
-  hasRequiredEsnext_uint8Array_toHex = 1;
-  requireEs_uint8Array_toHex();
-  return esnext_uint8Array_toHex;
-}
-requireEsnext_uint8Array_toHex();
+requireEs_uint8Array_toHex();
 var web_domException_stack = {};
 var inheritIfRequired;
 var hasRequiredInheritIfRequired;
@@ -6792,9 +6760,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent2({
             const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), "");
             uppladdatDokument.value = {
               dokument: {
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 filnamn: value.name,
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 mime: value.type,
                 data: btoa(reduced),
                 fel: ""
