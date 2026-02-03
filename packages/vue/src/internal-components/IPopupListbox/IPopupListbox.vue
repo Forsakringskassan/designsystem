@@ -28,6 +28,7 @@ const contentRef = useTemplateRef<HTMLElement>("content");
 const teleportDisabled = false;
 const popupClasses = ["popup", "popup--overlay"];
 const teleportTarget = computed(() => config.teleportTarget);
+const debouncedOnWindowChange = debounce(onWindowChange, 100);
 let guessedItemHeight: number | undefined = undefined;
 let verticalSpacing: number | undefined = undefined;
 
@@ -53,14 +54,14 @@ watchEffect(() => {
 
 function addListeners(): void {
     document.addEventListener("click", onDocumentClickHandler);
-    window.addEventListener("resize", debounce(onWindowChange, 100));
-    window.addEventListener("scroll", debounce(onWindowChange, 100), { capture: true });
+    window.addEventListener("resize", debouncedOnWindowChange);
+    window.addEventListener("scroll", debouncedOnWindowChange, { capture: true });
 }
 
 function removeListeners(): void {
     document.removeEventListener("click", onDocumentClickHandler);
-    window.removeEventListener("resize", debounce(onWindowChange, 100));
-    window.removeEventListener("scroll", debounce(onWindowChange, 100), { capture: true });
+    window.removeEventListener("resize", debouncedOnWindowChange);
+    window.removeEventListener("scroll", debouncedOnWindowChange, { capture: true });
 }
 
 function isElementInsideViewport(element: Element): boolean {
