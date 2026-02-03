@@ -4674,7 +4674,7 @@ function useTabstop(tableRef, metaRows) {
   });
   function fallbackToFirstCell(newRows, oldRows, focus) {
     assertRef(tableRef);
-    const needle = oldRows[0];
+    const needle = newRows[0];
     const newFirstRowOldIndex = oldRows.findIndex(matching(needle));
     if (newFirstRowOldIndex > -1) {
       const target = getCellTarget(tableRef.value, newFirstRowOldIndex + 1, 0);
