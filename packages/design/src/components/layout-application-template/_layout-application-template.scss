@@ -16,6 +16,7 @@ $ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
         align-self: flex-start;
         top: 0;
         width: 100%;
+        background-color: var(--fkds-color-background-primary);
     }
 
     &__footer {
