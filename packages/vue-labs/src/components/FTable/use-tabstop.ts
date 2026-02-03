@@ -8,6 +8,11 @@ import {
 } from "./FTable.logic";
 import { type FTableApi } from "./f-table-api";
 
+function matching(needle: unknown): (item: unknown) => boolean {
+    const id = getItemIdentifier(needle);
+    return (item) => getItemIdentifier(item) === id;
+}
+
 /**
  * A table composable responsible for setting new tabstop and focus when a table row
  * with tabstop is removed.
@@ -38,10 +43,9 @@ export function useTabstop(
         focus: boolean,
     ): void {
         assertRef(tableRef);
-        const needle = getItemIdentifier(newRows[0]);
-        const newFirstRowOldIndex = oldRows.findIndex(
-            (it) => getItemIdentifier(it) === needle,
-        );
+
+        const needle = newRows[0];
+        const newFirstRowOldIndex = oldRows.findIndex(matching(needle));
         if (newFirstRowOldIndex > -1) {
             const target = getCellTarget(
                 tableRef.value,
@@ -81,10 +85,8 @@ export function useTabstop(
         const oldTabstopTd = oldTabstopElement.closest("td");
         assertSet(oldTabstopTd);
         const oldTabstopTr = oldTabstopTd.parentElement as HTMLTableRowElement;
-        const needle = getItemIdentifier(oldRows[oldTabstopTr.rowIndex - 1]);
-        const isBeingRemoved = !newRows.some(
-            (it) => getItemIdentifier(it) === needle,
-        );
+        const needle = oldRows[oldTabstopTr.rowIndex - 1];
+        const isBeingRemoved = !newRows.some(matching(needle));
 
         // exit if only updated rows when tabstop focused (change triggered from inside table)
         if (oldTabstopFocused && !isBeingRemoved) {
@@ -108,10 +110,8 @@ export function useTabstop(
 
         if (oldTabstopTr.rowIndex === 1) {
             // removing first row
-            const needle = getItemIdentifier(oldRows[1]);
-            const hasRowBelowInNewRows = newRows.some(
-                (it) => getItemIdentifier(it) === needle,
-            );
+            const needle = oldRows[1];
+            const hasRowBelowInNewRows = newRows.some(matching(needle));
 
             if (hasRowBelowInNewRows) {
                 const { cell } = getVerticalNavIndex(
@@ -126,12 +126,8 @@ export function useTabstop(
             }
         } else {
             // removing later row
-            const needle = getItemIdentifier(
-                oldRows[oldTabstopTr.rowIndex - 2],
-            );
-            const hasRowAboveInNewRows = newRows.some(
-                (it) => getItemIdentifier(it) === needle,
-            );
+            const needle = oldRows[oldTabstopTr.rowIndex - 2];
+            const hasRowAboveInNewRows = newRows.some(matching(needle));
 
             if (hasRowAboveInNewRows) {
                 const { row, cell } = getVerticalNavIndex(
