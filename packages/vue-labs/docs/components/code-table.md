@@ -34,15 +34,34 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
 
 Om tabellen har en rubrik (heading) i nära anslutning som också förklarar tabellens innebörd assoccierar du den med `aria-labelledby`:
 
-// plats för kodexempel
+```diff
+-<h3>Tabellrubrik</h3>
+-<f-table :columns :rows>
++<h3 id="awesome-heading">Tabellrubrik</h3>
++<f-table :columns :rows aria-labelledby="awesome-header">
+ ...
+</f-table>
+```
 
 Använd caption om tabellen inte har en naturlig rubrik:
 
-// plats för kodexempel
+```diff
+<f-table :columns :rows>
++   <template #caption> Tabellrubrik </template>
+ ...
+</f-table>
+```
 
 I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:
 
-// plats för kodexempel
+```diff
+<f-table :columns :rows>
++   <template #caption>
++       <span class="sr-only"> Tabellrubrik </span>
++   </template>
+ ...
+</f-table>
+```
 
 ## Kolumner
 
@@ -92,7 +111,7 @@ Tabellen har nio olika kolumntyper som påverkar hur cellen presenteras:
 - länk: `anchor`
 - dropplista: `select`
 - kontextmeny: `contextmenu`
-- specialiserade inmatningsfält: `text:namn på specialiserat inmatningsfält `
+- specialiserade inmatningsfält: `text:namn på specialiserat inmatningsfält`
 - eget innehåll: `render`
 
 Specialiserade inmatningsfält som tabellen stödjer:
