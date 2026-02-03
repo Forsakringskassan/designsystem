@@ -4662,6 +4662,10 @@ function useSelectable(options) {
     selectableRowState
   };
 }
+function matching(needle) {
+  const id = getItemIdentifier(needle);
+  return (item) => getItemIdentifier(item) === id;
+}
 function useTabstop(tableRef, metaRows) {
   let pendingRowRemoval = false;
   const renderOptions = ref3({
@@ -4670,8 +4674,8 @@ function useTabstop(tableRef, metaRows) {
   });
   function fallbackToFirstCell(newRows, oldRows, focus) {
     assertRef(tableRef);
-    const needle = getItemIdentifier(oldRows[0]);
-    const newFirstRowOldIndex = oldRows.findIndex((it) => getItemIdentifier(it) === needle);
+    const needle = oldRows[0];
+    const newFirstRowOldIndex = oldRows.findIndex(matching(needle));
     if (newFirstRowOldIndex > -1) {
       const target = getCellTarget(tableRef.value, newFirstRowOldIndex + 1, 0);
       activateCell(target, {
@@ -4700,8 +4704,8 @@ function useTabstop(tableRef, metaRows) {
     const oldTabstopTd = oldTabstopElement.closest("td");
     assertSet(oldTabstopTd);
     const oldTabstopTr = oldTabstopTd.parentElement;
-    const needle = getItemIdentifier(oldRows[oldTabstopTr.rowIndex - 1]);
-    const isBeingRemoved = !newRows.some((it) => getItemIdentifier(it) === needle);
+    const needle = oldRows[oldTabstopTr.rowIndex - 1];
+    const isBeingRemoved = !newRows.some(matching(needle));
     if (oldTabstopFocused && !isBeingRemoved) {
       return;
     }
@@ -4718,8 +4722,8 @@ function useTabstop(tableRef, metaRows) {
       return;
     }
     if (oldTabstopTr.rowIndex === 1) {
-      const needle2 = getItemIdentifier(oldRows[1]);
-      const hasRowBelowInNewRows = newRows.some((it) => getItemIdentifier(it) === needle2);
+      const needle2 = oldRows[1];
+      const hasRowBelowInNewRows = newRows.some(matching(needle2));
       if (hasRowBelowInNewRows) {
         const {
           cell
@@ -4738,8 +4742,8 @@ function useTabstop(tableRef, metaRows) {
         fallbackToFirstCell(newRows, oldRows, true);
       }
     } else {
-      const needle2 = getItemIdentifier(oldRows[oldTabstopTr.rowIndex - 2]);
-      const hasRowAboveInNewRows = newRows.some((it) => getItemIdentifier(it) === needle2);
+      const needle2 = oldRows[oldTabstopTr.rowIndex - 2];
+      const hasRowAboveInNewRows = newRows.some(matching(needle2));
       if (hasRowAboveInNewRows) {
         const {
           row,
