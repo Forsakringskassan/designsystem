@@ -327,7 +327,7 @@ beteenden vid visning och redigering, samt exempel på hur de används.</p>
 </ul>
 
                 <div
-                    id="example-38bc82"
+                    id="example-8a1718"
                     class="code-preview code-preview--default"
                     
                     
@@ -335,18 +335,18 @@ beteenden vid visning och redigering, samt exempel på hur de används.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">TableRow</span> {
-  <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
-  <span class="hljs-attr">pnr</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">pnr</span>: <span class="hljs-built_in">string</span>;
 }
 
 <span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
-  {
-    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:personnummer&quot;</span>,
-    <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Personnummer&quot;</span>,
-    <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pnr&quot;</span>,
-    <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Personnummer för rad <span class="hljs-subst">${row.id}</span>`</span>
-  }
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:personnummer&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Personnummer&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pnr&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Personnummer för rad <span class="hljs-subst">${row.id}</span>`</span>,
+    },
 ]);
 </code></pre>
                 </div>
@@ -563,7 +563,7 @@ beteenden vid visning och redigering, samt exempel på hur de används.</p>
 <h2 id="snabbstart_exempel"><a class="header-anchor" href="#snabbstart_exempel">Snabbstart / Exempel</a></h2><p class="docs-paragraph">Exempel: definiera en uppsättning kolumner och rader:</p>
 
                 <div
-                    id="example-070beb"
+                    id="example-e873a3"
                     class="code-preview code-preview--default"
                     
                     
@@ -573,24 +573,37 @@ beteenden vid visning och redigering, samt exempel på hur de används.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">TableRow</span> {
-  <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
-  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
-  <span class="hljs-attr">amount</span>: <span class="hljs-built_in">string</span>;
-  <span class="hljs-attr">active</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">amount</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">active</span>: <span class="hljs-built_in">string</span>;
 }
 <span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
-  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;rowheader&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;ID&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;id&quot;</span> },
-  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">label</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Namn&quot;</span> },
-  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Belopp&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;amount&quot;</span>, <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span> },
-  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;checkbox&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Aktiv&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;active&quot;</span> },
-  { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärd&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Ta bort&quot;</span>, <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) { <span class="hljs-comment">/* ... */</span> } },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;rowheader&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;ID&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;id&quot;</span> },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Namn&quot;</span>,
+    },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Belopp&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;amount&quot;</span>, <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;checkbox&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Aktiv&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;active&quot;</span> },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärd&quot;</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Ta bort&quot;</span>,
+        <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-comment">/* ... */</span>
+        },
+    },
 ]);
 </code></pre>
                 </div>
             <p class="docs-paragraph">Exempel på <code>text:number</code> med decimals:</p>
 
                 <div
-                    id="example-8aff4b"
+                    id="example-8853f3"
                     class="code-preview code-preview--default"
                     
                     
@@ -598,20 +611,20 @@ beteenden vid visning och redigering, samt exempel på hur de används.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
-  {
-    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:number&quot;</span>,
-    <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Vikt&quot;</span>,
-    <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;weight&quot;</span>,
-    <span class="hljs-attr">decimals</span>: <span class="hljs-number">3</span>,
-    <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
-  }
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:number&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Vikt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;weight&quot;</span>,
+        <span class="hljs-attr">decimals</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    },
 ]);
 </code></pre>
                 </div>
             <p class="docs-paragraph">Exempel på <code>menu</code>-kolumn:</p>
 
                 <div
-                    id="example-cf6cde"
+                    id="example-fd1445"
                     class="code-preview code-preview--default"
                     
                     
@@ -619,15 +632,23 @@ beteenden vid visning och redigering, samt exempel på hur de används.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">TableRow</span>, keyof <span class="hljs-title class_">TableRow</span>&gt;([
-  {
-    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
-    <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärder&quot;</span>,
-    <span class="hljs-attr">text</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Åtgärder för <span class="hljs-subst">${row.id}</span>`</span>,
-    <span class="hljs-attr">actions</span>: [
-      { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Visa&quot;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;search&quot;</span>, <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;visa&quot;</span>, row) },
-      { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>, <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;ta bort&quot;</span>, row) },
-    ],
-  }
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärder&quot;</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Åtgärder för <span class="hljs-subst">${row.id}</span>`</span>,
+        <span class="hljs-attr">actions</span>: [
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Visa&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;search&quot;</span>,
+                <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;visa&quot;</span>, row),
+            },
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+                <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;ta bort&quot;</span>, row),
+            },
+        ],
+    },
 ]);
 </code></pre>
                 </div>
