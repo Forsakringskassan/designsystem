@@ -66,7 +66,7 @@ export default defineComponent({
                 assertive: true,
             });
             this.$emit("update:modelValue", "");
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+
             this.$el.querySelector("input").focus();
         },
         onInput(event: Event): void {

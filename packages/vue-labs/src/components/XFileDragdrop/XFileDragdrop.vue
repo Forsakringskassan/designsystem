@@ -94,24 +94,18 @@ function hanteraFil(filer: FileList): void {
         /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         Object.values(filer ? filer : valdFil.value).forEach(async (value) => {
             try {
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
                 const buffer = await value.arrayBuffer();
                 const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), "");
                 uppladdatDokument.value = {
                     dokument: {
-                        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                         filnamn: value.name,
-                        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                         mime: value.type,
                         data: btoa(reduced),
                         fel: "",
                     },
                 };
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 fileName.value = value.name;
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 mimeType.value = value.type;
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 fileSize.value = value.size;
                 currentStatus.value = STATUS_HAR_VALT_FIL;
             } catch (error: unknown) {

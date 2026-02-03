@@ -40,7 +40,7 @@ const MIN_VALUE = 0;
 const MAX_VALUE = 100;
 
 /* @ts-expect-error The prop name is actually normalized to ariaLabel but the type system does not realize */
-const ariaLabel = props.ariaLabel; // eslint-disable-line @typescript-eslint/no-unsafe-assignment -- technical debt
+const ariaLabel = props.ariaLabel;
 
 function clamp(val: number): number {
     return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));

@@ -14,7 +14,6 @@ function importDefault<T extends object>(m: { default: T } | T): T {
 }
 
 async function importIcons(): Promise<IconPackage> {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return importDefault(await import(process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default"));
 }
 

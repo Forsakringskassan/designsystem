@@ -199,7 +199,6 @@ export default defineComponent({
         this.isMounted = true;
         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         this.resizeObserver = new ResizeObserver(debounce(this.onResize, 100));
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         this.resizeObserver.observe(this.$el);
         /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
         this.onResize();

@@ -48,7 +48,7 @@ async function startEditing(e: UIEvent): Promise<void> {
     editing.value = true;
     await nextTick();
     editRef.value.tabIndex = 0;
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+
     editRef.value.focus();
     await openDropdown();
 }
@@ -83,7 +83,6 @@ async function openDropdown(): Promise<void> {
     }
 
     assertRef(editRef);
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     editRef.value.focus();
 }
 

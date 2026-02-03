@@ -42,12 +42,10 @@ export default defineComponent({
     },
     data() {
         return {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- technical debt
             defaultText: this.$t("fkui.percent-text-field.label", "Procent"),
         };
     },
     mounted() {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const inputElement = getInputElement(this);
         inputElement.setAttribute("inputmode", this.decimals ? "decimal" : "numeric");
         inputElement.setAttribute("maxlength", "10");

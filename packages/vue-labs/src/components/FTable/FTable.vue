@@ -157,10 +157,8 @@ function onClick(e: MouseEvent): void {
 function onTableFocusin(e: FocusEvent): void {
     assertRef(tableRef);
 
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     tableRef.value.querySelectorAll(`[tabindex="0"]`).forEach((it) => {
         if (it !== e.target) {
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             it.setAttribute("tabindex", "-1");
         }
     });
@@ -186,7 +184,7 @@ function onTableFocusout(e: FocusEvent): void {
     if (!tableRef.value) {
         return;
     }
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unsafe-call -- technical debt */
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
     const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
 
     if (outsideTable) {

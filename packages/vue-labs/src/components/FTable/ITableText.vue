@@ -196,15 +196,12 @@ function onStartEdit(value: string): void {
     assertRef(tdElement);
     assertRef(inputElement);
 
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- technical debt */
     const { width } = tdElement.value.getBoundingClientRect();
     initialViewValue = viewValue.value;
     viewValue.value = value;
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     tdElement.value.style.setProperty("width", `${String(width)}px`);
 
     inputElement.value.tabIndex = 0;
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     inputElement.value.focus();
 }
 
@@ -215,7 +212,6 @@ function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" 
     inputElement.value.tabIndex = -1;
 
     assertRef(tdElement);
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     tdElement.value.style.removeProperty("width");
 
     void stopEdit(inputElement.value, reason);
@@ -254,7 +250,6 @@ function updateColumnValue(): void {
 function onClickCell(event: MouseEvent): void {
     assertRef(tdElement);
 
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     if (tdElement.value.contains(event.target as Node)) {
         onStartEdit(fromColumnValue());
     }
