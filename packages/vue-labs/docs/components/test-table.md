@@ -17,3 +17,9 @@ FTableExample.vue
 ```import
 FTableInputFieldsExample.vue
 ```
+
+## Paginering
+
+```import
+FTableInputFieldsExample.vue
+```
