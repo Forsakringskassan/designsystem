@@ -1,11 +1,11 @@
-import { type ComputedRef, type ShallowRef, onUpdated, ref, watch } from "vue";
+import { type Ref, type ShallowRef, onUpdated, ref, watch } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
+import { getItemIdentifier } from "@fkui/vue";
 import {
     activateCell,
     getCellTarget,
     getVerticalNavIndex,
 } from "./FTable.logic";
-import { type MetaRow } from "./MetaRow";
 import { type FTableApi } from "./f-table-api";
 
 /**
@@ -27,19 +27,20 @@ import { type FTableApi } from "./f-table-api";
  */
 export function useTabstop(
     tableRef: Readonly<ShallowRef<HTMLTableElement | null>>,
-    metaRows: Readonly<ComputedRef<Array<MetaRow<unknown>>>>,
+    metaRows: Readonly<Ref<unknown[]>>,
 ): FTableApi {
     let pendingRowRemoval = false;
     const renderOptions = ref({ fallbackToFirstCell: false, focus: false });
 
     function fallbackToFirstCell(
-        newRows: Array<MetaRow<unknown>>,
-        oldRows: Array<MetaRow<unknown>>,
+        newRows: unknown[],
+        oldRows: unknown[],
         focus: boolean,
     ): void {
         assertRef(tableRef);
+        const needle = getItemIdentifier(newRows[0]);
         const newFirstRowOldIndex = oldRows.findIndex(
-            (it) => it.key === newRows[0].key,
+            (it) => getItemIdentifier(it) === needle,
         );
         if (newFirstRowOldIndex > -1) {
             const target = getCellTarget(
@@ -80,9 +81,9 @@ export function useTabstop(
         const oldTabstopTd = oldTabstopElement.closest("td");
         assertSet(oldTabstopTd);
         const oldTabstopTr = oldTabstopTd.parentElement as HTMLTableRowElement;
-        const oldTabstopRowKey = oldRows[oldTabstopTr.rowIndex - 1].key;
+        const needle = getItemIdentifier(oldRows[oldTabstopTr.rowIndex - 1]);
         const isBeingRemoved = !newRows.some(
-            (it) => it.key === oldTabstopRowKey,
+            (it) => getItemIdentifier(it) === needle,
         );
 
         // exit if only updated rows when tabstop focused (change triggered from inside table)
@@ -107,8 +108,9 @@ export function useTabstop(
 
         if (oldTabstopTr.rowIndex === 1) {
             // removing first row
+            const needle = getItemIdentifier(oldRows[1]);
             const hasRowBelowInNewRows = newRows.some(
-                (it) => it.key === oldRows[1].key,
+                (it) => getItemIdentifier(it) === needle,
             );
 
             if (hasRowBelowInNewRows) {
@@ -124,8 +126,11 @@ export function useTabstop(
             }
         } else {
             // removing later row
+            const needle = getItemIdentifier(
+                oldRows[oldTabstopTr.rowIndex - 2],
+            );
             const hasRowAboveInNewRows = newRows.some(
-                (it) => it.key === oldRows[oldTabstopTr.rowIndex - 2].key,
+                (it) => getItemIdentifier(it) === needle,
             );
 
             if (hasRowAboveInNewRows) {

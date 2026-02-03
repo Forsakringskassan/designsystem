@@ -268,7 +268,7 @@ const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggl
     rows: keyedRows,
 });
 
-const tableApi = useTabstop(tableRef, metaRows);
+const tableApi = useTabstop(tableRef, keyedRows);
 defineExpose(tableApi);
 
 onMounted(() => {
