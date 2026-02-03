@@ -53,12 +53,14 @@ watchEffect(() => {
 
 function addListeners(): void {
     document.addEventListener("click", onDocumentClickHandler);
-    window.addEventListener("resize", debounce(onResize, 100));
+    window.addEventListener("resize", debounce(onWindowChange, 100));
+    window.addEventListener("scroll", debounce(onWindowChange, 100), { capture: true });
 }
 
 function removeListeners(): void {
     document.removeEventListener("click", onDocumentClickHandler);
-    window.removeEventListener("resize", debounce(onResize, 100));
+    window.removeEventListener("resize", debounce(onWindowChange, 100));
+    window.removeEventListener("scroll", debounce(onWindowChange, 100), { capture: true });
 }
 
 function isElementInsideViewport(element: Element): boolean {
@@ -104,7 +106,7 @@ function onDocumentClickHandler(): void {
     emit("close");
 }
 
-function onResize(): void {
+function onWindowChange(): void {
     if (isOpen) {
         calculatePosition();
     }
