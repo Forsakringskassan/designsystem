@@ -9,6 +9,16 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.35.0
+
+2026-02-04
+
+Applikationslayout, vi har satt en bakgrundsfärg på sidhuvudet (slot= #header) för att dölja innehåll som skrollas bakom.  
+Vi har förbättrat validering och felhantering för nya tabellkomponenten så att första felet får fokus.  
+Vi har rättat till komponent f-button så att den byter state om disable ändras efter knappen har renderats.
+
+Buggfixar, se {@link changelog Changelog}.
+
 ## Version 6.34.0
 
 2026-01-23
