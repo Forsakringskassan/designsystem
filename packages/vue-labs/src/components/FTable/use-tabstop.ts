@@ -65,8 +65,9 @@ export function useTabstop(
 
         // resolve current tabstop details
         assertRef(tableRef);
-        const oldTabstopElement =
-            tableRef.value.querySelector<HTMLElement>(`[tabindex="0"]`);
+        const oldTabstopElement = tableRef.value.querySelector<HTMLElement>(
+            `:not(tfoot)[tabindex="0"]`,
+        );
         assertSet(oldTabstopElement);
         const oldTabstopFocused = oldTabstopElement === document.activeElement;
 
