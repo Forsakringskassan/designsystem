@@ -13,7 +13,7 @@ const items = [
 
 it("should run callback on each item", () => {
     const newItems: NewTestItem[] = [];
-    walk(items, (item, level) => {
+    walk(items, undefined, (item, level) => {
         const newItem = {
             name: item.name,
             level,
@@ -30,18 +30,14 @@ it("should run callback on each item", () => {
 
 it("should run callback on each nested item when `childKey` is provided", () => {
     const newItems: NewTestItem[] = [];
-    walk(
-        items,
-        (item, level) => {
-            const newItem = {
-                name: item.name,
-                level,
-            };
-            newItems.push(newItem);
-            return true;
-        },
-        "nested",
-    );
+    walk(items, "nested", (item, level) => {
+        const newItem = {
+            name: item.name,
+            level,
+        };
+        newItems.push(newItem);
+        return true;
+    });
     expect(newItems).toStrictEqual([
         { name: "A", level: 1 },
         { name: "A1", level: 2 },

@@ -4,18 +4,14 @@ import { walk } from "./walk";
 
 function getRowIndexes<T>(
     rows: T[],
-    expandableAttribute?: keyof T,
+    expandableAttribute: keyof T | undefined,
 ): ItemIdentifier[] {
     const array: ItemIdentifier[] = [];
 
-    walk(
-        rows,
-        (row) => {
-            array.push(getItemIdentifier(row));
-            return true;
-        },
-        expandableAttribute,
-    );
+    walk(rows, expandableAttribute, (row) => {
+        array.push(getItemIdentifier(row));
+        return true;
+    });
 
     return array;
 }
@@ -31,31 +27,27 @@ export function getMetaRows<T>(
     const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
     const array: Array<MetaRow<T>> = [];
 
-    walk(
-        keyedRows,
-        (row, level) => {
-            const key = getItemIdentifier(row);
-            const isExpandable = Boolean(
-                expandableAttribute && row[expandableAttribute],
-            );
-            const isExpanded = isExpandable && expandedKeys.has(key);
+    walk(keyedRows, expandableAttribute, (row, level) => {
+        const key = getItemIdentifier(row);
+        const isExpandable = Boolean(
+            expandableAttribute && row[expandableAttribute],
+        );
+        const isExpanded = isExpandable && expandedKeys.has(key);
 
-            // +2 since header row has rowindex 1.
-            const rowIndex = rowIndexes.indexOf(key) + 2;
+        // +2 since header row has rowindex 1.
+        const rowIndex = rowIndexes.indexOf(key) + 2;
 
-            array.push({
-                key,
-                row,
-                rowIndex,
-                level: expandableAttribute ? level : undefined,
-                isExpandable,
-                isExpanded,
-            });
+        array.push({
+            key,
+            row,
+            rowIndex,
+            level: expandableAttribute ? level : undefined,
+            isExpandable,
+            isExpanded,
+        });
 
-            return isExpanded;
-        },
-        expandableAttribute,
-    );
+        return isExpanded;
+    });
 
     return array;
 }
