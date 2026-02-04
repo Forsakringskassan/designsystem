@@ -67,28 +67,20 @@ export function getVerticalNavIndex(
     return target;
 }
 
+function isDefined(value: Partial<TableCellIndex>): value is TableCellIndex {
+    return value.row !== undefined && value.cell !== undefined;
+}
+
 function navigate(
     e: KeyboardEvent,
     table: HTMLTableElement,
-    from: TableCellIndex,
-    last: TableCellIndex,
+    from: Partial<TableCellIndex>,
+    last: Partial<TableCellIndex>,
 ): TableCellIndex | undefined {
-    /* @todo fix this */
-    /* eslint-disable sonarjs/different-types-comparison -- the types does not allow this to be true so this "cannot happen" */
-
-    if (
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-        from.row === undefined ||
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-        from.cell === undefined ||
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-        last.row === undefined ||
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-        last.cell === undefined
-    ) {
+    if (!isDefined(from) || !isDefined(last)) {
         return;
     }
-    /* eslint-enable sonarjs/different-types-comparison */
+
     if (!navKeys.includes(e.code)) {
         return;
     }
