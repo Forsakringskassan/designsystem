@@ -2,10 +2,6 @@ import { type ItemIdentifier, getItemIdentifier } from "@fkui/vue";
 import { type MetaRow } from "./MetaRow";
 import { walk } from "./walk";
 
-function rowKey(row: unknown): ItemIdentifier {
-    return getItemIdentifier(row);
-}
-
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
 function getRowIndexes<T, K extends keyof T = keyof T>(
     rows: T[],
@@ -44,13 +40,13 @@ export function getMetaRows<T, K extends keyof T = keyof T>(
                 expandableAttribute && row[expandableAttribute],
             );
             const isExpanded =
-                isExpandable && expandedKeys.includes(rowKey(row));
+                isExpandable && expandedKeys.includes(getItemIdentifier(row));
 
             // +2 since header row has rowindex 1.
-            const rowIndex = rowIndexes.indexOf(rowKey(row)) + 2;
+            const rowIndex = rowIndexes.indexOf(getItemIdentifier(row)) + 2;
 
             array.push({
-                key: rowKey(row),
+                key: getItemIdentifier(row),
                 row,
                 rowIndex,
                 level: expandableAttribute ? level : undefined,
