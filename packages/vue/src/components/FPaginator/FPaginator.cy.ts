@@ -1,6 +1,6 @@
 import { FInteractiveTablePageObject } from "../../cypress";
 import { FPaginatorPageObject } from "../../cypress/FPaginator.pageobject";
-import { FPaginateDataset } from "../FPaginateDataset";
+import FPaginator from "./FPaginator.vue";
 import paginatorDynamicDataExample from "./examples/FPaginatorDynamicDataExample.vue";
 import paginatorStaticDataExample from "./examples/FPaginatorStaticDataExample.vue";
 
@@ -270,7 +270,7 @@ describe("Requirement 1.11: Mobile mode", () => {
 
 describe("visual regression", () => {
     beforeEach(() => {
-        cy.mount(FPaginateDataset, {
+        cy.mount(FPaginator, {
             props: {
                 numberOfPages: 15,
                 currentPage: 7,
