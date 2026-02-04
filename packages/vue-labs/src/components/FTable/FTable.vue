@@ -156,7 +156,7 @@ function onClick(e: MouseEvent): void {
 function onTableFocusin(e: FocusEvent): void {
     assertRef(tableRef);
 
-    tableRef.value.querySelectorAll(`[tabindex="0"]`).forEach((it) => {
+    tableRef.value.querySelectorAll(`:not(tfoot)[tabindex="0"]`).forEach((it) => {
         if (it !== e.target) {
             it.setAttribute("tabindex", "-1");
         }
@@ -183,8 +183,9 @@ function onTableFocusout(e: FocusEvent): void {
     if (!tableRef.value) {
         return;
     }
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-    const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
+
+    const outsideTable =
+        Boolean(tableRef.value.tFoot?.contains(relatedTarget)) || !tableRef.value.contains(relatedTarget);
 
     if (outsideTable) {
         const cell = target.closest<HTMLElement>("td, th");
@@ -280,20 +281,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <table
-        ref="table"
-        :role
-        :class="tableClasses"
-        :aria-rowcount
-        @focusin="onTableFocusin"
-        @focusout="onTableFocusout"
-        @click="onClick"
-        @keydown="onKeydown"
-    >
+    <table ref="table" :role :class="tableClasses" :aria-rowcount>
         <caption v-if="hasCaption" data-test="caption">
             <slot name="caption"></slot>
         </caption>
-        <thead>
+        <thead @focusin="onTableFocusin" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
             <tr class="table-ng__row" aria-rowindex="1">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <i-table-header-selectable
@@ -316,7 +308,7 @@ onMounted(() => {
             </tr>
         </thead>
 
-        <tbody>
+        <tbody @focusin="onTableFocusin" @focusout="onTableFocusout" @click="onClick" @keydown="onKeydown">
             <template v-if="isEmpty">
                 <tr class="table-ng__row--empty">
                     <td :colspan="columnCount" class="table-ng__cell">

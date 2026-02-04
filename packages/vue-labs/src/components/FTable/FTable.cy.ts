@@ -1369,6 +1369,23 @@ describe("5 tabstop", () => {
         cy.focused().press(Cypress.Keyboard.Keys.TAB);
         table.cell({ row: 2, col: 2 }).should("have.focus");
     });
+
+    it("should not change footer tabindex", () => {
+        const footerButtonSelector = "footerButton";
+        const slots = {
+            footer: renderButton("Footer button", {
+                dataTest: footerButtonSelector,
+            }),
+        };
+        mountNavigationTestbed(slots);
+        const footerButton = getTestSelector(footerButtonSelector);
+
+        table.cell({ row: 1, col: 3 }).click();
+        cy.focused().press(Cypress.Keyboard.Keys.TAB);
+        cy.get(footerButton).should("have.focus");
+        cy.focused().realPress(["Shift", "Tab"]);
+        table.cell({ row: 1, col: 3 }).should("have.focus");
+    });
 });
 
 describe("Radio button single‑select functionality in table", () => {
