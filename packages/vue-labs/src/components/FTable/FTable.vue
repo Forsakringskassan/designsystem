@@ -15,14 +15,19 @@ import {
     useTemplateRef,
 } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
-import { type ItemIdentifier, FSortFilterDatasetInjected, setItemIdentifiers, useSlotUtils } from "@fkui/vue";
+import {
+    type ItemIdentifier,
+    FSortFilterDatasetInjected,
+    reactiveDataset,
+    setItemIdentifiers,
+    useSlotUtils,
+} from "@fkui/vue";
 import { activateCell, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
 import ITableHeader from "./ITableHeader.vue";
 import ITableHeaderSelectable from "./ITableHeaderSelectable.vue";
 import ITableSelectable from "./ITableSelectable.vue";
-import { type MetaRow } from "./MetaRow";
 import { isFTableCellApi, tableCellApiSymbol } from "./f-table-api";
 import { getBodyRowCount } from "./get-body-row-count";
 import { getMetaRows } from "./get-meta-rows";
@@ -81,10 +86,9 @@ defineSlots<{
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const expandedKeys: Ref<Set<ItemIdentifier>> = ref(new Set());
-const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttribute));
-const metaRows = computed(
-    (): Array<MetaRow<T>> => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute),
-);
+const dataset = computed(() => reactiveDataset(rows, expandableAttribute));
+const keyedRows = computed(() => setItemIdentifiers(dataset.value, keyAttribute, expandableAttribute));
+const metaRows = computed(() => getMetaRows(dataset.value, expandedKeys.value, expandableAttribute));
 const isTreegrid = computed(() => Boolean(expandableAttribute));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 

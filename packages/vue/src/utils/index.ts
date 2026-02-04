@@ -44,3 +44,9 @@ export {
     setItemIdentifier,
     setItemIdentifiers,
 } from "./item-identifier";
+export {
+    type ReactiveDataset,
+    type RowAriaData,
+    getRowAriaData,
+    reactiveDataset,
+} from "./row-meta";
