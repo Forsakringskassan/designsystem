@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 6.35.0 (2026-02-04)
+
+### Features
+
+* **@fkui/vue-labs:** add text validation logic (refs SFKUI-7344) 6882d57
+* **@fkui/vue:** new `disabled` prop in `FButton` (fixes SFKUI-7587) cfe25ec, closes #952
+
+### Bug Fixes
+
+* **@fkui/design:** application layout `default` slot visible under `header` slot (fixes SFKUI-7606) 2497992, closes #969
+
 ## 6.34.1 (2026-01-30)
 
 ### Bug Fixes

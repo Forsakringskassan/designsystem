@@ -1,6 +1,6 @@
 {
   "name": "@fkui/test-utils",
-  "version": "6.34.0",
+  "version": "6.35.0",
   "description": "FKUI test utils for Jest",
   "keywords": [
     "fkui",
