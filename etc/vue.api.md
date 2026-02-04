@@ -990,6 +990,9 @@ export function getLegacyInternalKey<T>(): keyof T;
 export function getParentByName(vm: ComponentPublicInstance | undefined | null, name: string): ComponentPublicInstance | never;
 
 // @public
+export function getRowAriaData(item: unknown): RowAriaData;
+
+// @public
 export function getSortedHTMLElementsFromVueRef(ref: unknown): HTMLElement[];
 
 // @public (undocumented)
@@ -1282,6 +1285,14 @@ export interface Point {
     y: number;
 }
 
+// @public (undocumented)
+export type ReactiveDataset<T> = T[] & {
+    __FKUI_VUE_REACTIVE_DATASET: true;
+};
+
+// @public
+export function reactiveDataset<T>(array: T[], nestedAttribute?: keyof T): ReactiveDataset<T>;
+
 // @internal (undocumented)
 export interface Rect extends Point {
     // (undocumented)
@@ -1316,6 +1327,14 @@ export interface RenderSlotOptions {
 
 // @public
 export function renderSlotText(render: Slot | undefined, props?: Record<string, unknown>, options?: Partial<RenderSlotOptions>): string | undefined;
+
+// @public
+export interface RowAriaData {
+    readonly ariaLevel: number;
+    readonly ariaPosInSet: number;
+    readonly ariaRowIndex: number;
+    readonly ariaSetSize: number;
+}
 
 // @public
 export function setItemIdentifier(item: unknown, value?: ItemIdentifier): void;
