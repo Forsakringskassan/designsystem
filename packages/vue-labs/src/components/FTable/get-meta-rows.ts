@@ -25,7 +25,7 @@ function getRowIndexes<T>(
  */
 export function getMetaRows<T>(
     keyedRows: T[],
-    expandedKeys: ItemIdentifier[],
+    expandedKeys: Set<ItemIdentifier>,
     expandableAttribute?: keyof T,
 ): Array<MetaRow<T>> {
     const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
@@ -38,7 +38,7 @@ export function getMetaRows<T>(
                 expandableAttribute && row[expandableAttribute],
             );
             const isExpanded =
-                isExpandable && expandedKeys.includes(getItemIdentifier(row));
+                isExpandable && expandedKeys.has(getItemIdentifier(row));
 
             // +2 since header row has rowindex 1.
             const rowIndex = rowIndexes.indexOf(getItemIdentifier(row)) + 2;

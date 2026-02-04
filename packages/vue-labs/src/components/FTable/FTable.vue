@@ -80,7 +80,7 @@ defineSlots<{
 
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
-const expandedKeys: Ref<ItemIdentifier[]> = ref([]);
+const expandedKeys: Ref<Set<ItemIdentifier>> = ref(new Set());
 const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttribute));
 const metaRows = computed(
     (): Array<MetaRow<T>> => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute),
@@ -134,12 +134,10 @@ async function stopEditHandler(
 provide(stopEditKey, stopEditHandler);
 
 function onToggleExpanded(key: ItemIdentifier): void {
-    const index = expandedKeys.value.indexOf(key);
-
-    if (index < 0) {
-        expandedKeys.value.push(key);
+    if (expandedKeys.value.has(key)) {
+        expandedKeys.value.delete(key);
     } else {
-        expandedKeys.value.splice(index, 1);
+        expandedKeys.value.add(key);
     }
 }
 
