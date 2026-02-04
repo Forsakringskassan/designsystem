@@ -10,13 +10,9 @@ import { walk } from "./walk";
  */
 export function getBodyRowCount<T>(rows: T[], childKey?: keyof T): number {
     let count = 0;
-    walk(
-        rows,
-        () => {
-            count++;
-            return true;
-        },
-        childKey,
-    );
+    walk(rows, childKey, () => {
+        count++;
+        return true;
+    });
     return count;
 }
