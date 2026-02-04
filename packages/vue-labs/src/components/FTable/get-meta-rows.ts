@@ -2,10 +2,9 @@ import { type ItemIdentifier, getItemIdentifier } from "@fkui/vue";
 import { type MetaRow } from "./MetaRow";
 import { walk } from "./walk";
 
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
-function getRowIndexes<T, K extends keyof T = keyof T>(
+function getRowIndexes<T>(
     rows: T[],
-    expandableAttribute?: K,
+    expandableAttribute?: keyof T,
 ): ItemIdentifier[] {
     const array: ItemIdentifier[] = [];
 
@@ -24,11 +23,10 @@ function getRowIndexes<T, K extends keyof T = keyof T>(
 /**
  * @internal
  */
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- technical debt */
-export function getMetaRows<T, K extends keyof T = keyof T>(
+export function getMetaRows<T>(
     keyedRows: T[],
     expandedKeys: ItemIdentifier[],
-    expandableAttribute?: K,
+    expandableAttribute?: keyof T,
 ): Array<MetaRow<T>> {
     const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
     const array: Array<MetaRow<T>> = [];
