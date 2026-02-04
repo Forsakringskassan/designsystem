@@ -3800,6 +3800,9 @@ function getAbsolutePosition(src) {
   };
 }
 
+// packages/vue/src/utils/row-meta.ts
+import { isReactive, reactive, watch } from "vue";
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
@@ -4669,7 +4672,7 @@ IPopupError_default.__file = "packages/vue/src/internal-components/IPopupError/I
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
-import { computed, onUnmounted as onUnmounted2, useTemplateRef, watch, watchEffect } from "vue";
+import { computed, onUnmounted as onUnmounted2, useTemplateRef, watch as watch2, watchEffect } from "vue";
 import { debounce as debounce2 } from "@fkui/logic";
 
 // packages/vue/src/composables/useEventListener.ts
@@ -4821,7 +4824,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         removeListeners();
       }
     });
-    watch(
+    watch2(
       () => __props.numOfItems,
       (oldValue, newValue) => {
         if (oldValue !== newValue && __props.isOpen) {
@@ -6658,12 +6661,12 @@ function useAnimation(options) {
 }
 
 // packages/vue/src/components/FTooltip/use-horizontal-offset.ts
-import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref4, watch as watch2 } from "vue";
+import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref4, watch as watch3 } from "vue";
 function useHorizontalOffset(options) {
   const { element: elementRef, parent: parentRef } = options;
   const offset2 = ref4(16);
-  watch2(() => elementRef.value, updateOffset);
-  watch2(() => parentRef, updateOffset);
+  watch3(() => elementRef.value, updateOffset);
+  watch3(() => parentRef, updateOffset);
   onMounted4(() => {
     window.addEventListener("resize", updateOffset);
   });
@@ -7159,7 +7162,6 @@ var FFieldset_default = defineComponent22({
   async mounted() {
     await this.$nextTick();
     const types = Array.from(
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument -- technical debt */
       this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
       (it) => it.getAttribute("type")
     );
@@ -7190,7 +7192,6 @@ var FFieldset_default = defineComponent22({
       this.dispatchObject = {
         ...detail,
         errorMessage,
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         focusElementId
       };
       this.validity = this.detail;

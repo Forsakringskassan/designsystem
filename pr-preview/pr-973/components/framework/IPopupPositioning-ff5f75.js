@@ -3687,6 +3687,9 @@ function getAbsolutePosition(src) {
   };
 }
 
+// packages/vue/src/utils/row-meta.ts
+import { isReactive, reactive, watch } from "vue";
+
 // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
 function clamp(value, min, max) {
   return Math.max(Math.min(value, max), min);

@@ -3674,6 +3674,9 @@ function hasSlot(vm, name, props = {}, options = {}) {
 // packages/vue/src/utils/use-modal.ts
 import { getCurrentInstance } from "vue";
 
+// packages/vue/src/utils/row-meta.ts
+import { isReactive, reactive, watch } from "vue";
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=script
 var EVENTS = ["online", "offline"];
 var FOffline_default = defineComponent12({

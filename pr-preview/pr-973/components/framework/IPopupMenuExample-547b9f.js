@@ -3764,6 +3764,9 @@ function getAbsolutePosition(src) {
   };
 }
 
+// packages/vue/src/utils/row-meta.ts
+import { isReactive, reactive, watch } from "vue";
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
 import { defineComponent as defineComponent12 } from "vue";
 import { debounce, handleTab, popFocus as popFocus2, pushFocus as pushFocus2 } from "@fkui/logic";
