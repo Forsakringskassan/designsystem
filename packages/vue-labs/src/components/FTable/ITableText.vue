@@ -52,6 +52,10 @@ let validationFacade: ValidationFacade = {
 };
 
 const hasError = computed(() => validity.value.validityMode === "ERROR");
+const viewModeAriaInvalid = computed(() => (!inEdit.value && hasError.value ? true : undefined));
+const viewModeErrorMessage = computed(() =>
+    !inEdit.value && hasError.value ? validity.value.validationMessage : undefined,
+);
 
 const divClasses = computed(() => {
     return {
@@ -97,7 +101,6 @@ const ariaLabel = computed(() => {
 });
 
 const tdElement = useTemplateRef("td");
-const viewElement = useTemplateRef("view");
 const inputElement = useTemplateRef("input");
 const penElement = useTemplateRef("pen");
 const { stopEdit } = useStartStopEdit();
@@ -268,7 +271,6 @@ function onViewingKeydown(event: KeyboardEvent): void {
 }
 
 function onEditingKeydown(event: KeyboardEvent): void {
-    assertRef(viewElement);
     assertRef(inputElement);
     event.stopPropagation();
 
@@ -346,11 +348,13 @@ function onPendingValidity(): void {
         ref="td"
         tabindex="-1"
         :class="wrapperClasses"
+        :aria-invalid="viewModeAriaInvalid"
         @click.stop="onClickCell"
         @keydown="onKeydown"
     >
         <div :class="divClasses">
-            <span ref="view" class="table-ng__editable__text">{{ fromColumnValue() }}</span>
+            <span class="table-ng__editable__text">{{ fromColumnValue() }}</span>
+            <span v-if="viewModeErrorMessage" class="sr-only">{{ viewModeErrorMessage }}</span>
             <input
                 :id="inputId"
                 ref="input"
