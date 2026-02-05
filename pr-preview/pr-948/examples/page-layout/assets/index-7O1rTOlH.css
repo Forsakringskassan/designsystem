@@ -1,4 +1,48 @@
 @charset "UTF-8";
+.contextbar[data-v-f3c4fc0f] {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+.contextbar__forman[data-v-f3c4fc0f] {
+    font-weight: bold;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+[data-v-7fd1e637]::part(grid awesome-layout) {
+    grid-template:
+        "header header header" min-content
+        "left contextbar contextbar" min-content
+        "left toolbar toolbar" min-content
+        "left content right" 1fr
+        / min-content 1fr;
+}
+[data-v-7fd1e637]::part(area header) {
+    --f-page-layout-background: var(--fkds-color-header-background-primary);
+    --f-page-layout-color: var(--fkds-color-text-inverted);
+}
+[data-v-7fd1e637]::part(area contextbar) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-7fd1e637]::part(area toolbar) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-7fd1e637]::part(area left) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-7fd1e637]::part(area right) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+
 :root {
   --f-text-color-heading-1: inherit;
   --f-text-color-heading-2: inherit;
@@ -4575,11 +4619,6 @@ input[type=search]:focus,
 .imenu--horizontal .imenu__list__anchor-container {
   padding-bottom: 0.5rem;
   border-bottom: 5px solid transparent;
-  /*
-  &:hover {
-      border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
-  }
-      */
 }
 .imenu--horizontal .imenu__list__anchor {
   display: inline-flex;
@@ -6458,13 +6497,13 @@ body {
   --f-font-weight-medium: 600;
   --f-font-weight-bold: 700;
 }
-.sandbox-root {
-    width: min(100% - 2rem, 80ch);
-    margin: auto;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
-h1 {
-    margin-top: 2rem;
-}
-hr {
-    margin-bottom: 2rem;
+
+main {
+  padding: 1rem;
 }

@@ -4577,11 +4577,6 @@ input[type=search]:focus,
 .imenu--horizontal .imenu__list__anchor-container {
   padding-bottom: 0.5rem;
   border-bottom: 5px solid transparent;
-  /*
-  &:hover {
-      border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
-  }
-      */
 }
 .imenu--horizontal .imenu__list__anchor {
   display: inline-flex;
