@@ -34,47 +34,9 @@ let verticalSpacing: number | undefined = undefined;
 useEventListener(anchor, "keyup", onKeyEsc);
 
 watchEffect(() => {
-    if (!wrapperRef.value || activeElement === undefined) {
-        return;
-    }
-
-    const centerPosition =
-        activeElement.offsetTop -
-        (wrapperRef.value.getBoundingClientRect().height - activeElement.getBoundingClientRect().height) / 2;
-
-    if (!isElementInsideViewport(wrapperRef.value)) {
-        // Scroll wrapper into viewport
-        wrapperRef.value.scrollIntoView({ behavior: "instant", block: "nearest" });
-    }
-
-    // Scroll activeElement to center of wrapper.
-    wrapperRef.value.scrollTo({ top: centerPosition, behavior: "instant" });
-});
-
-function addListeners(): void {
-    document.addEventListener("click", onDocumentClickHandler);
-    window.addEventListener("resize", debounce(onResize, 100));
-}
-
-function removeListeners(): void {
-    document.removeEventListener("click", onDocumentClickHandler);
-    window.removeEventListener("resize", debounce(onResize, 100));
-}
-
-function isElementInsideViewport(element: Element): boolean {
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-
-    const insideX = rect.left >= 0 && rect.left + rect.width <= windowWidth;
-    const insideY = rect.top >= 0 && rect.top + rect.height <= windowHeight;
-
-    return insideX && insideY;
-}
-
-watchEffect(() => {
     if (isOpen) {
         calculatePosition();
+        scrollToPopup();
         // wait one tick so we dont get the click
         // that launches the popup (await nextTick doesnt work here)
         setTimeout(() => {
@@ -100,6 +62,16 @@ watch(
 
 onUnmounted(removeListeners);
 
+function addListeners(): void {
+    document.addEventListener("click", onDocumentClickHandler);
+    window.addEventListener("resize", debounce(onResize, 100));
+}
+
+function removeListeners(): void {
+    document.removeEventListener("click", onDocumentClickHandler);
+    window.removeEventListener("resize", debounce(onResize, 100));
+}
+
 function onDocumentClickHandler(): void {
     emit("close");
 }
@@ -113,6 +85,35 @@ function onResize(): void {
 function onKeyEsc(event: KeyboardEvent): void {
     if (event.key === "Escape") {
         emit("close");
+    }
+}
+
+function isElementInsideViewport(element: Element): boolean {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    const insideX = rect.left >= 0 && rect.left + rect.width <= windowWidth;
+    const insideY = rect.top >= 0 && rect.top + rect.height <= windowHeight;
+
+    return insideX && insideY;
+}
+
+function scrollToPopup(): void {
+    if (!wrapperRef.value) {
+        return;
+    }
+    if (!isElementInsideViewport(wrapperRef.value)) {
+        // Scroll wrapper into viewport
+        wrapperRef.value.scrollIntoView({ behavior: "instant", block: "nearest" });
+    }
+    if (activeElement !== undefined) {
+        const wrapperHeight = wrapperRef.value.getBoundingClientRect().height;
+        const activeElementHeight = activeElement.getBoundingClientRect().height;
+        const centerPosition = activeElement.offsetTop - (wrapperHeight - activeElementHeight / 2);
+
+        // Scroll activeElement to center of wrapper.
+        wrapperRef.value.scrollTo({ top: centerPosition, behavior: "instant" });
     }
 }
 
