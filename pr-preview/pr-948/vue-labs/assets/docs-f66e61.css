@@ -4548,9 +4548,6 @@ input[type=search]:focus,
 .imenu--horizontal {
   overflow: hidden;
 }
-.imenu--horizontal :not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
-  border-bottom: 5px solid var(--fkds-color-navigation-border-hover);
-}
 .imenu--horizontal .imenu__list {
   display: flex;
 }
@@ -4571,6 +4568,9 @@ input[type=search]:focus,
 }
 .imenu--horizontal .imenu__list__item--hidden {
   visibility: hidden;
+}
+.imenu--horizontal .imenu__list__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
+  border-bottom: 5px solid var(--fkds-color-navigation-border-hover);
 }
 .imenu--horizontal .imenu__list__anchor-container {
   padding-bottom: 0.5rem;
