@@ -410,7 +410,7 @@ interface <span class="hljs-title class_">Row</span> {
         <h2 id="value"><a class="header-anchor" href="#value">Value</a></h2><p class="docs-paragraph">Texten som ska visas kan manipuleras med hjälp av callbackfunktionen <code>value(row: T): string</code>. Parametern <code>row</code> innehåller det aktuella rad-objektet.</p>
 
                 <div
-                    id="example-da8382"
+                    id="example-b7047e"
                     class="code-preview code-preview--default"
                     
                     
@@ -536,7 +536,7 @@ Om formateraren kombineras med callbackfunktionen <code>value()</code> så anrop
 Om formateraren kombineras med validering så krävs en lyckad validering för att formatteraren ska anropas.</p>
 
                 <div
-                    id="example-27b9c8"
+                    id="example-e93ad2"
                     class="code-preview code-preview--default"
                     
                     
@@ -663,7 +663,7 @@ Parsern anropas med cellens värde då editeringen avslutas.
 Om parsern kombineras med validering så krävs en lyckad validering för att parsern ska anropas.</p>
 
                 <div
-                    id="example-8d1c7b"
+                    id="example-4f075d"
                     class="code-preview code-preview--default"
                     
                     
@@ -780,7 +780,7 @@ interface <span class="hljs-title class_">Row</span> {
 Det nya värdet <code>newValue</code>, om pareser används så är detta det parsade värdet, samt det gamla värdet <code>oldValue</code>.</p>
 
                 <div
-                    id="example-8190b2"
+                    id="example-be0e33"
                     class="code-preview code-preview--default"
                     
                     
@@ -804,7 +804,7 @@ Det nya värdet <code>newValue</code>, om pareser används så är detta det par
          key: &quot;value&quot;,
 <span class="hljs-addition">+        editable: true,</span>
 <span class="hljs-addition">+        update(row: T, newValue: string, oldValue: string): void {</span>
-<span class="hljs-addition">+            /* do stuff */ </span>
+<span class="hljs-addition">+            /* do stuff */</span>
 <span class="hljs-addition">+            row.value = &quot;Some new value&quot;;</span>
          },
 <span class="hljs-addition">+    },</span>
@@ -895,7 +895,7 @@ interface <span class="hljs-title class_">Row</span> {
         <h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Redigerbara celler kan valideras med hjälp av &quot;@link validators validatorer&quot;, det görs genom parameten <code>validation: ValidatorConfigs</code>.</p>
 
                 <div
-                    id="example-dcb840"
+                    id="example-edd3db"
                     class="code-preview code-preview--default"
                     
                     
@@ -1028,8 +1028,8 @@ interface <span class="hljs-title class_">Row</span> {
  C@{ shape: &quot;rounded&quot;, label: &quot;formatter()&quot;}
  E@{ shape: &quot;rounded&quot;, label: &quot;value()&quot;}
   G@{ shape: &quot;circle&quot;, label: &quot;view value&quot;}
- 
- 
+
+
   A --&gt; B;
   B -- OK --&gt; C;
   B -- NOK --&gt; G;
@@ -1040,7 +1040,7 @@ interface <span class="hljs-title class_">Row</span> {
  X@{ shape: &quot;rounded&quot;, label: &quot;parser()&quot;}
  Y@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
  Z@{ shape: &quot;rounded&quot;, label: &quot;update()&quot;}
-  
+
   G -- no validation --&gt; X;
 
   G --&gt; Y;
@@ -1051,7 +1051,7 @@ interface <span class="hljs-title class_">Row</span> {
 </pre>
             <h2 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
 <dt><strong><code>align:</code></strong> <code>&quot;left&quot; | &quot;right&quot;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Höger eller vänsterställd text och kolumnrubrik.  Default <code>left</code>.</dd>
+<dd>Höger eller vänsterställd text och kolumnrubrik. Default <code>left</code>.</dd>
 <dt><strong><code>description:</code></strong> <code>string | Readonly&lt;Ref&lt;string | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>Formatbeskrivning</dd>
 <dt><strong><code>editable:</code></strong> <code>boolean | ((row: T) =&gt; boolean)  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
