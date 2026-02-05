@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/internal-components/IAnimateExpand/examples/IAnimateExpandRecommended.vue:IAnimateExpandRecommended-fc159d.js
+// virtual-entry:virtual:packages/vue/src/internal-components/IAnimateExpand/examples/IAnimateExpandRecommended.vue:IAnimateExpandRecommended-463db9.js
 import { defineComponent } from "vue";
 import { IAnimateExpand } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, vModelCheckbox as _vModelCheckbox, withDirectives as _withDirectives, createTextVNode as _createTextVNode, vModelSelect as _vModelSelect, toDisplayString as _toDisplayString, normalizeStyle as _normalizeStyle, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -200,7 +200,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-fc159d"
+  selector: "#example-463db9"
 });
 export {
   render

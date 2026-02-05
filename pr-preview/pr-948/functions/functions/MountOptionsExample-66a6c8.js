@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/utils/mount-component/examples/MountOptionsExample.vue:MountOptionsExample-c5f702.js
+// virtual-entry:virtual:packages/vue/src/utils/mount-component/examples/MountOptionsExample.vue:MountOptionsExample-66a6c8.js
 import { defineComponent as defineComponent2 } from "vue";
 import { mountComponent } from "@fkui/vue";
 
@@ -74,13 +74,12 @@ MyAwesomeComponent_default.render = render;
 MyAwesomeComponent_default.__file = "packages/vue/src/utils/mount-component/examples/MyAwesomeComponent.vue";
 var MyAwesomeComponent_default2 = MyAwesomeComponent_default;
 
-// virtual-entry:virtual:packages/vue/src/utils/mount-component/examples/MountOptionsExample.vue:MountOptionsExample-c5f702.js
+// virtual-entry:virtual:packages/vue/src/utils/mount-component/examples/MountOptionsExample.vue:MountOptionsExample-66a6c8.js
 import { openBlock as _openBlock2, createElementBlock as _createElementBlock2 } from "vue";
 var exampleComponent = defineComponent2({
   name: "MountOptionsExample",
   mounted() {
     mountComponent(this, MyAwesomeComponent_default2, {
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
       attachTo: this.$el,
       name: "V\xE4rlden",
       onReply() {
@@ -95,7 +94,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-c5f702"
+  selector: "#example-66a6c8"
 });
 export {
   render2 as render

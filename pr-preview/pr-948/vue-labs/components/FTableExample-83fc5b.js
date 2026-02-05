@@ -23,7 +23,7 @@ function setup(options) {
   setRunningContext(app);
 }
 
-// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-7286d5.js
+// virtual-entry:virtual:src/components/FTable/examples/FTableExample.vue:FTableExample-83fc5b.js
 import { defineComponent as _defineComponent } from "vue";
 import { h as h2, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
@@ -318,7 +318,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-7286d5"
+  selector: "#example-83fc5b"
 });
 export {
   render

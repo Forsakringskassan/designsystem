@@ -1,7 +1,7 @@
 // dist/esm/index.esm.js
 import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, useId, onMounted as onMounted3, watchEffect as watchEffect3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
-import { getItemIdentifier, FIcon, IFlex, IFlexItem, useTranslate, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
 // ../../node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -313,7 +313,7 @@ var DEFAULT_UNITS = [
 ];
 
 // dist/esm/index.esm.js
-var es_iterator_constructor = {};
+var es_iterator_forEach = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
 function requireGlobalThis() {
@@ -1491,302 +1491,6 @@ function require_export() {
   };
   return _export;
 }
-var anInstance;
-var hasRequiredAnInstance;
-function requireAnInstance() {
-  if (hasRequiredAnInstance) return anInstance;
-  hasRequiredAnInstance = 1;
-  var isPrototypeOf = requireObjectIsPrototypeOf();
-  var $TypeError = TypeError;
-  anInstance = function(it, Prototype) {
-    if (isPrototypeOf(Prototype, it)) return it;
-    throw new $TypeError("Incorrect invocation");
-  };
-  return anInstance;
-}
-var correctPrototypeGetter;
-var hasRequiredCorrectPrototypeGetter;
-function requireCorrectPrototypeGetter() {
-  if (hasRequiredCorrectPrototypeGetter) return correctPrototypeGetter;
-  hasRequiredCorrectPrototypeGetter = 1;
-  var fails2 = requireFails();
-  correctPrototypeGetter = !fails2(function() {
-    function F() {
-    }
-    F.prototype.constructor = null;
-    return Object.getPrototypeOf(new F()) !== F.prototype;
-  });
-  return correctPrototypeGetter;
-}
-var objectGetPrototypeOf;
-var hasRequiredObjectGetPrototypeOf;
-function requireObjectGetPrototypeOf() {
-  if (hasRequiredObjectGetPrototypeOf) return objectGetPrototypeOf;
-  hasRequiredObjectGetPrototypeOf = 1;
-  var hasOwn2 = requireHasOwnProperty();
-  var isCallable2 = requireIsCallable();
-  var toObject2 = requireToObject();
-  var sharedKey2 = requireSharedKey();
-  var CORRECT_PROTOTYPE_GETTER = requireCorrectPrototypeGetter();
-  var IE_PROTO = sharedKey2("IE_PROTO");
-  var $Object = Object;
-  var ObjectPrototype = $Object.prototype;
-  objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
-    var object = toObject2(O);
-    if (hasOwn2(object, IE_PROTO)) return object[IE_PROTO];
-    var constructor = object.constructor;
-    if (isCallable2(constructor) && object instanceof constructor) {
-      return constructor.prototype;
-    }
-    return object instanceof $Object ? ObjectPrototype : null;
-  };
-  return objectGetPrototypeOf;
-}
-var defineBuiltInAccessor;
-var hasRequiredDefineBuiltInAccessor;
-function requireDefineBuiltInAccessor() {
-  if (hasRequiredDefineBuiltInAccessor) return defineBuiltInAccessor;
-  hasRequiredDefineBuiltInAccessor = 1;
-  var makeBuiltIn2 = requireMakeBuiltIn();
-  var defineProperty = requireObjectDefineProperty();
-  defineBuiltInAccessor = function(target, name, descriptor) {
-    if (descriptor.get) makeBuiltIn2(descriptor.get, name, {
-      getter: true
-    });
-    if (descriptor.set) makeBuiltIn2(descriptor.set, name, {
-      setter: true
-    });
-    return defineProperty.f(target, name, descriptor);
-  };
-  return defineBuiltInAccessor;
-}
-var createProperty;
-var hasRequiredCreateProperty;
-function requireCreateProperty() {
-  if (hasRequiredCreateProperty) return createProperty;
-  hasRequiredCreateProperty = 1;
-  var DESCRIPTORS = requireDescriptors();
-  var definePropertyModule = requireObjectDefineProperty();
-  var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
-  createProperty = function(object, key, value) {
-    if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor2(0, value));
-    else object[key] = value;
-  };
-  return createProperty;
-}
-var objectDefineProperties = {};
-var objectKeys;
-var hasRequiredObjectKeys;
-function requireObjectKeys() {
-  if (hasRequiredObjectKeys) return objectKeys;
-  hasRequiredObjectKeys = 1;
-  var internalObjectKeys = requireObjectKeysInternal();
-  var enumBugKeys2 = requireEnumBugKeys();
-  objectKeys = Object.keys || function keys(O) {
-    return internalObjectKeys(O, enumBugKeys2);
-  };
-  return objectKeys;
-}
-var hasRequiredObjectDefineProperties;
-function requireObjectDefineProperties() {
-  if (hasRequiredObjectDefineProperties) return objectDefineProperties;
-  hasRequiredObjectDefineProperties = 1;
-  var DESCRIPTORS = requireDescriptors();
-  var V8_PROTOTYPE_DEFINE_BUG = requireV8PrototypeDefineBug();
-  var definePropertyModule = requireObjectDefineProperty();
-  var anObject2 = requireAnObject();
-  var toIndexedObject2 = requireToIndexedObject();
-  var objectKeys2 = requireObjectKeys();
-  objectDefineProperties.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-    anObject2(O);
-    var props = toIndexedObject2(Properties);
-    var keys = objectKeys2(Properties);
-    var length = keys.length;
-    var index = 0;
-    var key;
-    while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
-    return O;
-  };
-  return objectDefineProperties;
-}
-var html;
-var hasRequiredHtml;
-function requireHtml() {
-  if (hasRequiredHtml) return html;
-  hasRequiredHtml = 1;
-  var getBuiltIn2 = requireGetBuiltIn();
-  html = getBuiltIn2("document", "documentElement");
-  return html;
-}
-var objectCreate;
-var hasRequiredObjectCreate;
-function requireObjectCreate() {
-  if (hasRequiredObjectCreate) return objectCreate;
-  hasRequiredObjectCreate = 1;
-  var anObject2 = requireAnObject();
-  var definePropertiesModule = requireObjectDefineProperties();
-  var enumBugKeys2 = requireEnumBugKeys();
-  var hiddenKeys2 = requireHiddenKeys();
-  var html2 = requireHtml();
-  var documentCreateElement2 = requireDocumentCreateElement();
-  var sharedKey2 = requireSharedKey();
-  var GT = ">";
-  var LT = "<";
-  var PROTOTYPE = "prototype";
-  var SCRIPT = "script";
-  var IE_PROTO = sharedKey2("IE_PROTO");
-  var EmptyConstructor = function() {
-  };
-  var scriptTag = function(content) {
-    return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
-  };
-  var NullProtoObjectViaActiveX = function(activeXDocument2) {
-    activeXDocument2.write(scriptTag(""));
-    activeXDocument2.close();
-    var temp = activeXDocument2.parentWindow.Object;
-    activeXDocument2 = null;
-    return temp;
-  };
-  var NullProtoObjectViaIFrame = function() {
-    var iframe = documentCreateElement2("iframe");
-    var JS = "java" + SCRIPT + ":";
-    var iframeDocument;
-    iframe.style.display = "none";
-    html2.appendChild(iframe);
-    iframe.src = String(JS);
-    iframeDocument = iframe.contentWindow.document;
-    iframeDocument.open();
-    iframeDocument.write(scriptTag("document.F=Object"));
-    iframeDocument.close();
-    return iframeDocument.F;
-  };
-  var activeXDocument;
-  var NullProtoObject = function() {
-    try {
-      activeXDocument = new ActiveXObject("htmlfile");
-    } catch (error) {
-    }
-    NullProtoObject = typeof document != "undefined" ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument);
-    var length = enumBugKeys2.length;
-    while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys2[length]];
-    return NullProtoObject();
-  };
-  hiddenKeys2[IE_PROTO] = true;
-  objectCreate = Object.create || function create(O, Properties) {
-    var result;
-    if (O !== null) {
-      EmptyConstructor[PROTOTYPE] = anObject2(O);
-      result = new EmptyConstructor();
-      EmptyConstructor[PROTOTYPE] = null;
-      result[IE_PROTO] = O;
-    } else result = NullProtoObject();
-    return Properties === void 0 ? result : definePropertiesModule.f(result, Properties);
-  };
-  return objectCreate;
-}
-var iteratorsCore;
-var hasRequiredIteratorsCore;
-function requireIteratorsCore() {
-  if (hasRequiredIteratorsCore) return iteratorsCore;
-  hasRequiredIteratorsCore = 1;
-  var fails2 = requireFails();
-  var isCallable2 = requireIsCallable();
-  var isObject22 = requireIsObject();
-  var create = requireObjectCreate();
-  var getPrototypeOf = requireObjectGetPrototypeOf();
-  var defineBuiltIn2 = requireDefineBuiltIn();
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var IS_PURE = requireIsPure();
-  var ITERATOR = wellKnownSymbol2("iterator");
-  var BUGGY_SAFARI_ITERATORS = false;
-  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
-  if ([].keys) {
-    arrayIterator = [].keys();
-    if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
-    else {
-      PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
-      if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
-    }
-  }
-  var NEW_ITERATOR_PROTOTYPE = !isObject22(IteratorPrototype) || fails2(function() {
-    var test = {};
-    return IteratorPrototype[ITERATOR].call(test) !== test;
-  });
-  if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
-  else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
-  if (!isCallable2(IteratorPrototype[ITERATOR])) {
-    defineBuiltIn2(IteratorPrototype, ITERATOR, function() {
-      return this;
-    });
-  }
-  iteratorsCore = {
-    IteratorPrototype,
-    BUGGY_SAFARI_ITERATORS
-  };
-  return iteratorsCore;
-}
-var hasRequiredEs_iterator_constructor;
-function requireEs_iterator_constructor() {
-  if (hasRequiredEs_iterator_constructor) return es_iterator_constructor;
-  hasRequiredEs_iterator_constructor = 1;
-  var $ = require_export();
-  var globalThis2 = requireGlobalThis();
-  var anInstance2 = requireAnInstance();
-  var anObject2 = requireAnObject();
-  var isCallable2 = requireIsCallable();
-  var getPrototypeOf = requireObjectGetPrototypeOf();
-  var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
-  var createProperty2 = requireCreateProperty();
-  var fails2 = requireFails();
-  var hasOwn2 = requireHasOwnProperty();
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
-  var DESCRIPTORS = requireDescriptors();
-  var IS_PURE = requireIsPure();
-  var CONSTRUCTOR = "constructor";
-  var ITERATOR = "Iterator";
-  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
-  var $TypeError = TypeError;
-  var NativeIterator = globalThis2[ITERATOR];
-  var FORCED = IS_PURE || !isCallable2(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails2(function() {
-    NativeIterator({});
-  });
-  var IteratorConstructor = function Iterator2() {
-    anInstance2(this, IteratorPrototype);
-    if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
-  };
-  var defineIteratorPrototypeAccessor = function(key, value) {
-    if (DESCRIPTORS) {
-      defineBuiltInAccessor2(IteratorPrototype, key, {
-        configurable: true,
-        get: function() {
-          return value;
-        },
-        set: function(replacement) {
-          anObject2(this);
-          if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
-          if (hasOwn2(this, key)) this[key] = replacement;
-          else createProperty2(this, key, replacement);
-        }
-      });
-    } else IteratorPrototype[key] = value;
-  };
-  if (!hasOwn2(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
-  if (FORCED || !hasOwn2(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
-    defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
-  }
-  IteratorConstructor.prototype = IteratorPrototype;
-  $({
-    global: true,
-    constructor: true,
-    forced: FORCED
-  }, {
-    Iterator: IteratorConstructor
-  });
-  return es_iterator_constructor;
-}
-requireEs_iterator_constructor();
-var es_iterator_forEach = {};
 var functionUncurryThisClause;
 var hasRequiredFunctionUncurryThisClause;
 function requireFunctionUncurryThisClause() {
@@ -2091,133 +1795,900 @@ function requireEs_iterator_forEach() {
 }
 requireEs_iterator_forEach();
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
-var es_array_push = {};
-var isArray;
-var hasRequiredIsArray;
-function requireIsArray() {
-  if (hasRequiredIsArray) return isArray;
-  hasRequiredIsArray = 1;
-  var classof2 = requireClassofRaw();
-  isArray = Array.isArray || function isArray2(argument) {
-    return classof2(argument) === "Array";
-  };
-  return isArray;
-}
-var arraySetLength;
-var hasRequiredArraySetLength;
-function requireArraySetLength() {
-  if (hasRequiredArraySetLength) return arraySetLength;
-  hasRequiredArraySetLength = 1;
-  var DESCRIPTORS = requireDescriptors();
-  var isArray2 = requireIsArray();
+var es_iterator_constructor = {};
+var anInstance;
+var hasRequiredAnInstance;
+function requireAnInstance() {
+  if (hasRequiredAnInstance) return anInstance;
+  hasRequiredAnInstance = 1;
+  var isPrototypeOf = requireObjectIsPrototypeOf();
   var $TypeError = TypeError;
-  var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-  var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS && !(function() {
-    if (this !== void 0) return true;
-    try {
-      Object.defineProperty([], "length", {
-        writable: false
-      }).length = 1;
-    } catch (error) {
-      return error instanceof TypeError;
-    }
-  })();
-  arraySetLength = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function(O, length) {
-    if (isArray2(O) && !getOwnPropertyDescriptor(O, "length").writable) {
-      throw new $TypeError("Cannot set read only .length");
-    }
-    return O.length = length;
-  } : function(O, length) {
-    return O.length = length;
+  anInstance = function(it, Prototype) {
+    if (isPrototypeOf(Prototype, it)) return it;
+    throw new $TypeError("Incorrect invocation");
   };
-  return arraySetLength;
+  return anInstance;
 }
-var doesNotExceedSafeInteger;
-var hasRequiredDoesNotExceedSafeInteger;
-function requireDoesNotExceedSafeInteger() {
-  if (hasRequiredDoesNotExceedSafeInteger) return doesNotExceedSafeInteger;
-  hasRequiredDoesNotExceedSafeInteger = 1;
-  var $TypeError = TypeError;
-  var MAX_SAFE_INTEGER = 9007199254740991;
-  doesNotExceedSafeInteger = function(it) {
-    if (it > MAX_SAFE_INTEGER) throw $TypeError("Maximum allowed index exceeded");
-    return it;
-  };
-  return doesNotExceedSafeInteger;
-}
-var hasRequiredEs_array_push;
-function requireEs_array_push() {
-  if (hasRequiredEs_array_push) return es_array_push;
-  hasRequiredEs_array_push = 1;
-  var $ = require_export();
-  var toObject2 = requireToObject();
-  var lengthOfArrayLike2 = requireLengthOfArrayLike();
-  var setArrayLength = requireArraySetLength();
-  var doesNotExceedSafeInteger2 = requireDoesNotExceedSafeInteger();
+var correctPrototypeGetter;
+var hasRequiredCorrectPrototypeGetter;
+function requireCorrectPrototypeGetter() {
+  if (hasRequiredCorrectPrototypeGetter) return correctPrototypeGetter;
+  hasRequiredCorrectPrototypeGetter = 1;
   var fails2 = requireFails();
-  var INCORRECT_TO_LENGTH = fails2(function() {
-    return [].push.call({
-      length: 4294967296
-    }, 1) !== 4294967297;
-  });
-  var properErrorOnNonWritableLength = function() {
-    try {
-      Object.defineProperty([], "length", {
-        writable: false
-      }).push();
-    } catch (error) {
-      return error instanceof TypeError;
+  correctPrototypeGetter = !fails2(function() {
+    function F() {
     }
+    F.prototype.constructor = null;
+    return Object.getPrototypeOf(new F()) !== F.prototype;
+  });
+  return correctPrototypeGetter;
+}
+var objectGetPrototypeOf;
+var hasRequiredObjectGetPrototypeOf;
+function requireObjectGetPrototypeOf() {
+  if (hasRequiredObjectGetPrototypeOf) return objectGetPrototypeOf;
+  hasRequiredObjectGetPrototypeOf = 1;
+  var hasOwn2 = requireHasOwnProperty();
+  var isCallable2 = requireIsCallable();
+  var toObject2 = requireToObject();
+  var sharedKey2 = requireSharedKey();
+  var CORRECT_PROTOTYPE_GETTER = requireCorrectPrototypeGetter();
+  var IE_PROTO = sharedKey2("IE_PROTO");
+  var $Object = Object;
+  var ObjectPrototype = $Object.prototype;
+  objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
+    var object = toObject2(O);
+    if (hasOwn2(object, IE_PROTO)) return object[IE_PROTO];
+    var constructor = object.constructor;
+    if (isCallable2(constructor) && object instanceof constructor) {
+      return constructor.prototype;
+    }
+    return object instanceof $Object ? ObjectPrototype : null;
   };
-  var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
+  return objectGetPrototypeOf;
+}
+var defineBuiltInAccessor;
+var hasRequiredDefineBuiltInAccessor;
+function requireDefineBuiltInAccessor() {
+  if (hasRequiredDefineBuiltInAccessor) return defineBuiltInAccessor;
+  hasRequiredDefineBuiltInAccessor = 1;
+  var makeBuiltIn2 = requireMakeBuiltIn();
+  var defineProperty = requireObjectDefineProperty();
+  defineBuiltInAccessor = function(target, name, descriptor) {
+    if (descriptor.get) makeBuiltIn2(descriptor.get, name, {
+      getter: true
+    });
+    if (descriptor.set) makeBuiltIn2(descriptor.set, name, {
+      setter: true
+    });
+    return defineProperty.f(target, name, descriptor);
+  };
+  return defineBuiltInAccessor;
+}
+var createProperty;
+var hasRequiredCreateProperty;
+function requireCreateProperty() {
+  if (hasRequiredCreateProperty) return createProperty;
+  hasRequiredCreateProperty = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var definePropertyModule = requireObjectDefineProperty();
+  var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
+  createProperty = function(object, key, value) {
+    if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor2(0, value));
+    else object[key] = value;
+  };
+  return createProperty;
+}
+var objectDefineProperties = {};
+var objectKeys;
+var hasRequiredObjectKeys;
+function requireObjectKeys() {
+  if (hasRequiredObjectKeys) return objectKeys;
+  hasRequiredObjectKeys = 1;
+  var internalObjectKeys = requireObjectKeysInternal();
+  var enumBugKeys2 = requireEnumBugKeys();
+  objectKeys = Object.keys || function keys(O) {
+    return internalObjectKeys(O, enumBugKeys2);
+  };
+  return objectKeys;
+}
+var hasRequiredObjectDefineProperties;
+function requireObjectDefineProperties() {
+  if (hasRequiredObjectDefineProperties) return objectDefineProperties;
+  hasRequiredObjectDefineProperties = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var V8_PROTOTYPE_DEFINE_BUG = requireV8PrototypeDefineBug();
+  var definePropertyModule = requireObjectDefineProperty();
+  var anObject2 = requireAnObject();
+  var toIndexedObject2 = requireToIndexedObject();
+  var objectKeys2 = requireObjectKeys();
+  objectDefineProperties.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
+    anObject2(O);
+    var props = toIndexedObject2(Properties);
+    var keys = objectKeys2(Properties);
+    var length = keys.length;
+    var index = 0;
+    var key;
+    while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
+    return O;
+  };
+  return objectDefineProperties;
+}
+var html;
+var hasRequiredHtml;
+function requireHtml() {
+  if (hasRequiredHtml) return html;
+  hasRequiredHtml = 1;
+  var getBuiltIn2 = requireGetBuiltIn();
+  html = getBuiltIn2("document", "documentElement");
+  return html;
+}
+var objectCreate;
+var hasRequiredObjectCreate;
+function requireObjectCreate() {
+  if (hasRequiredObjectCreate) return objectCreate;
+  hasRequiredObjectCreate = 1;
+  var anObject2 = requireAnObject();
+  var definePropertiesModule = requireObjectDefineProperties();
+  var enumBugKeys2 = requireEnumBugKeys();
+  var hiddenKeys2 = requireHiddenKeys();
+  var html2 = requireHtml();
+  var documentCreateElement2 = requireDocumentCreateElement();
+  var sharedKey2 = requireSharedKey();
+  var GT = ">";
+  var LT = "<";
+  var PROTOTYPE = "prototype";
+  var SCRIPT = "script";
+  var IE_PROTO = sharedKey2("IE_PROTO");
+  var EmptyConstructor = function() {
+  };
+  var scriptTag = function(content) {
+    return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
+  };
+  var NullProtoObjectViaActiveX = function(activeXDocument2) {
+    activeXDocument2.write(scriptTag(""));
+    activeXDocument2.close();
+    var temp = activeXDocument2.parentWindow.Object;
+    activeXDocument2 = null;
+    return temp;
+  };
+  var NullProtoObjectViaIFrame = function() {
+    var iframe = documentCreateElement2("iframe");
+    var JS = "java" + SCRIPT + ":";
+    var iframeDocument;
+    iframe.style.display = "none";
+    html2.appendChild(iframe);
+    iframe.src = String(JS);
+    iframeDocument = iframe.contentWindow.document;
+    iframeDocument.open();
+    iframeDocument.write(scriptTag("document.F=Object"));
+    iframeDocument.close();
+    return iframeDocument.F;
+  };
+  var activeXDocument;
+  var NullProtoObject = function() {
+    try {
+      activeXDocument = new ActiveXObject("htmlfile");
+    } catch (error) {
+    }
+    NullProtoObject = typeof document != "undefined" ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument);
+    var length = enumBugKeys2.length;
+    while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys2[length]];
+    return NullProtoObject();
+  };
+  hiddenKeys2[IE_PROTO] = true;
+  objectCreate = Object.create || function create(O, Properties) {
+    var result;
+    if (O !== null) {
+      EmptyConstructor[PROTOTYPE] = anObject2(O);
+      result = new EmptyConstructor();
+      EmptyConstructor[PROTOTYPE] = null;
+      result[IE_PROTO] = O;
+    } else result = NullProtoObject();
+    return Properties === void 0 ? result : definePropertiesModule.f(result, Properties);
+  };
+  return objectCreate;
+}
+var iteratorsCore;
+var hasRequiredIteratorsCore;
+function requireIteratorsCore() {
+  if (hasRequiredIteratorsCore) return iteratorsCore;
+  hasRequiredIteratorsCore = 1;
+  var fails2 = requireFails();
+  var isCallable2 = requireIsCallable();
+  var isObject22 = requireIsObject();
+  var create = requireObjectCreate();
+  var getPrototypeOf = requireObjectGetPrototypeOf();
+  var defineBuiltIn2 = requireDefineBuiltIn();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var IS_PURE = requireIsPure();
+  var ITERATOR = wellKnownSymbol2("iterator");
+  var BUGGY_SAFARI_ITERATORS = false;
+  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+  if ([].keys) {
+    arrayIterator = [].keys();
+    if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+    else {
+      PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+      if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+    }
+  }
+  var NEW_ITERATOR_PROTOTYPE = !isObject22(IteratorPrototype) || fails2(function() {
+    var test = {};
+    return IteratorPrototype[ITERATOR].call(test) !== test;
+  });
+  if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
+  else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
+  if (!isCallable2(IteratorPrototype[ITERATOR])) {
+    defineBuiltIn2(IteratorPrototype, ITERATOR, function() {
+      return this;
+    });
+  }
+  iteratorsCore = {
+    IteratorPrototype,
+    BUGGY_SAFARI_ITERATORS
+  };
+  return iteratorsCore;
+}
+var hasRequiredEs_iterator_constructor;
+function requireEs_iterator_constructor() {
+  if (hasRequiredEs_iterator_constructor) return es_iterator_constructor;
+  hasRequiredEs_iterator_constructor = 1;
+  var $ = require_export();
+  var globalThis2 = requireGlobalThis();
+  var anInstance2 = requireAnInstance();
+  var anObject2 = requireAnObject();
+  var isCallable2 = requireIsCallable();
+  var getPrototypeOf = requireObjectGetPrototypeOf();
+  var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
+  var createProperty2 = requireCreateProperty();
+  var fails2 = requireFails();
+  var hasOwn2 = requireHasOwnProperty();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
+  var DESCRIPTORS = requireDescriptors();
+  var IS_PURE = requireIsPure();
+  var CONSTRUCTOR = "constructor";
+  var ITERATOR = "Iterator";
+  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
+  var $TypeError = TypeError;
+  var NativeIterator = globalThis2[ITERATOR];
+  var FORCED = IS_PURE || !isCallable2(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails2(function() {
+    NativeIterator({});
+  });
+  var IteratorConstructor = function Iterator2() {
+    anInstance2(this, IteratorPrototype);
+    if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
+  };
+  var defineIteratorPrototypeAccessor = function(key, value) {
+    if (DESCRIPTORS) {
+      defineBuiltInAccessor2(IteratorPrototype, key, {
+        configurable: true,
+        get: function() {
+          return value;
+        },
+        set: function(replacement) {
+          anObject2(this);
+          if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
+          if (hasOwn2(this, key)) this[key] = replacement;
+          else createProperty2(this, key, replacement);
+        }
+      });
+    } else IteratorPrototype[key] = value;
+  };
+  if (!hasOwn2(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
+  if (FORCED || !hasOwn2(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
+    defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
+  }
+  IteratorConstructor.prototype = IteratorPrototype;
   $({
-    target: "Array",
-    proto: true,
-    arity: 1,
+    global: true,
+    constructor: true,
     forced: FORCED
   }, {
-    // eslint-disable-next-line no-unused-vars -- required for `.length`
-    push: function push(item) {
-      var O = toObject2(this);
-      var len = lengthOfArrayLike2(O);
-      var argCount = arguments.length;
-      doesNotExceedSafeInteger2(len + argCount);
-      for (var i = 0; i < argCount; i++) {
-        O[len] = arguments[i];
-        len++;
-      }
-      setArrayLength(O, len);
-      return len;
-    }
+    Iterator: IteratorConstructor
   });
-  return es_array_push;
+  return es_iterator_constructor;
 }
-requireEs_array_push();
+requireEs_iterator_constructor();
+var es_set_difference_v2 = {};
+var setHelpers;
+var hasRequiredSetHelpers;
+function requireSetHelpers() {
+  if (hasRequiredSetHelpers) return setHelpers;
+  hasRequiredSetHelpers = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var SetPrototype = Set.prototype;
+  setHelpers = {
+    // eslint-disable-next-line es/no-set -- safe
+    Set,
+    add: uncurryThis(SetPrototype.add),
+    has: uncurryThis(SetPrototype.has),
+    remove: uncurryThis(SetPrototype["delete"]),
+    proto: SetPrototype
+  };
+  return setHelpers;
+}
+var aSet;
+var hasRequiredASet;
+function requireASet() {
+  if (hasRequiredASet) return aSet;
+  hasRequiredASet = 1;
+  var has = requireSetHelpers().has;
+  aSet = function(it) {
+    has(it);
+    return it;
+  };
+  return aSet;
+}
+var iterateSimple;
+var hasRequiredIterateSimple;
+function requireIterateSimple() {
+  if (hasRequiredIterateSimple) return iterateSimple;
+  hasRequiredIterateSimple = 1;
+  var call = requireFunctionCall();
+  iterateSimple = function(record, fn, ITERATOR_INSTEAD_OF_RECORD) {
+    var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
+    var next = record.next;
+    var step, result;
+    while (!(step = call(next, iterator)).done) {
+      result = fn(step.value);
+      if (result !== void 0) return result;
+    }
+  };
+  return iterateSimple;
+}
+var setIterate;
+var hasRequiredSetIterate;
+function requireSetIterate() {
+  if (hasRequiredSetIterate) return setIterate;
+  hasRequiredSetIterate = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var iterateSimple2 = requireIterateSimple();
+  var SetHelpers = requireSetHelpers();
+  var Set2 = SetHelpers.Set;
+  var SetPrototype = SetHelpers.proto;
+  var forEach = uncurryThis(SetPrototype.forEach);
+  var keys = uncurryThis(SetPrototype.keys);
+  var next = keys(new Set2()).next;
+  setIterate = function(set, fn, interruptible) {
+    return interruptible ? iterateSimple2({
+      iterator: keys(set),
+      next
+    }, fn) : forEach(set, fn);
+  };
+  return setIterate;
+}
+var setClone;
+var hasRequiredSetClone;
+function requireSetClone() {
+  if (hasRequiredSetClone) return setClone;
+  hasRequiredSetClone = 1;
+  var SetHelpers = requireSetHelpers();
+  var iterate2 = requireSetIterate();
+  var Set2 = SetHelpers.Set;
+  var add = SetHelpers.add;
+  setClone = function(set) {
+    var result = new Set2();
+    iterate2(set, function(it) {
+      add(result, it);
+    });
+    return result;
+  };
+  return setClone;
+}
+var functionUncurryThisAccessor;
+var hasRequiredFunctionUncurryThisAccessor;
+function requireFunctionUncurryThisAccessor() {
+  if (hasRequiredFunctionUncurryThisAccessor) return functionUncurryThisAccessor;
+  hasRequiredFunctionUncurryThisAccessor = 1;
+  var uncurryThis = requireFunctionUncurryThis();
+  var aCallable2 = requireACallable();
+  functionUncurryThisAccessor = function(object, key, method) {
+    try {
+      return uncurryThis(aCallable2(Object.getOwnPropertyDescriptor(object, key)[method]));
+    } catch (error) {
+    }
+  };
+  return functionUncurryThisAccessor;
+}
+var setSize;
+var hasRequiredSetSize;
+function requireSetSize() {
+  if (hasRequiredSetSize) return setSize;
+  hasRequiredSetSize = 1;
+  var uncurryThisAccessor = requireFunctionUncurryThisAccessor();
+  var SetHelpers = requireSetHelpers();
+  setSize = uncurryThisAccessor(SetHelpers.proto, "size", "get") || function(set) {
+    return set.size;
+  };
+  return setSize;
+}
+var getSetRecord;
+var hasRequiredGetSetRecord;
+function requireGetSetRecord() {
+  if (hasRequiredGetSetRecord) return getSetRecord;
+  hasRequiredGetSetRecord = 1;
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var call = requireFunctionCall();
+  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var INVALID_SIZE = "Invalid size";
+  var $RangeError = RangeError;
+  var $TypeError = TypeError;
+  var max = Math.max;
+  var SetRecord = function(set, intSize) {
+    this.set = set;
+    this.size = max(intSize, 0);
+    this.has = aCallable2(set.has);
+    this.keys = aCallable2(set.keys);
+  };
+  SetRecord.prototype = {
+    getIterator: function() {
+      return getIteratorDirect2(anObject2(call(this.keys, this.set)));
+    },
+    includes: function(it) {
+      return call(this.has, this.set, it);
+    }
+  };
+  getSetRecord = function(obj) {
+    anObject2(obj);
+    var numSize = +obj.size;
+    if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
+    var intSize = toIntegerOrInfinity2(numSize);
+    if (intSize < 0) throw new $RangeError(INVALID_SIZE);
+    return new SetRecord(obj, intSize);
+  };
+  return getSetRecord;
+}
+var setDifference;
+var hasRequiredSetDifference;
+function requireSetDifference() {
+  if (hasRequiredSetDifference) return setDifference;
+  hasRequiredSetDifference = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var clone = requireSetClone();
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var has = SetHelpers.has;
+  var remove = SetHelpers.remove;
+  setDifference = function difference(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    var result = clone(O);
+    if (size(O) <= otherRec.size) iterateSet(O, function(e) {
+      if (otherRec.includes(e)) remove(result, e);
+    });
+    else iterateSimple2(otherRec.getIterator(), function(e) {
+      if (has(result, e)) remove(result, e);
+    });
+    return result;
+  };
+  return setDifference;
+}
+var setMethodAcceptSetLike;
+var hasRequiredSetMethodAcceptSetLike;
+function requireSetMethodAcceptSetLike() {
+  if (hasRequiredSetMethodAcceptSetLike) return setMethodAcceptSetLike;
+  hasRequiredSetMethodAcceptSetLike = 1;
+  var getBuiltIn2 = requireGetBuiltIn();
+  var createSetLike = function(size) {
+    return {
+      size,
+      has: function() {
+        return false;
+      },
+      keys: function() {
+        return {
+          next: function() {
+            return {
+              done: true
+            };
+          }
+        };
+      }
+    };
+  };
+  var createSetLikeWithInfinitySize = function(size) {
+    return {
+      size,
+      has: function() {
+        return true;
+      },
+      keys: function() {
+        throw new Error("e");
+      }
+    };
+  };
+  setMethodAcceptSetLike = function(name, callback) {
+    var Set2 = getBuiltIn2("Set");
+    try {
+      new Set2()[name](createSetLike(0));
+      try {
+        new Set2()[name](createSetLike(-1));
+        return false;
+      } catch (error2) {
+        if (!callback) return true;
+        try {
+          new Set2()[name](createSetLikeWithInfinitySize(-Infinity));
+          return false;
+        } catch (error) {
+          var set = new Set2([1, 2]);
+          return callback(set[name](createSetLikeWithInfinitySize(Infinity)));
+        }
+      }
+    } catch (error) {
+      return false;
+    }
+  };
+  return setMethodAcceptSetLike;
+}
+var hasRequiredEs_set_difference_v2;
+function requireEs_set_difference_v2() {
+  if (hasRequiredEs_set_difference_v2) return es_set_difference_v2;
+  hasRequiredEs_set_difference_v2 = 1;
+  var $ = require_export();
+  var difference = requireSetDifference();
+  var fails2 = requireFails();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var SET_LIKE_INCORRECT_BEHAVIOR = !setMethodAcceptSetLike2("difference", function(result) {
+    return result.size === 0;
+  });
+  var FORCED = SET_LIKE_INCORRECT_BEHAVIOR || fails2(function() {
+    var setLike = {
+      size: 1,
+      has: function() {
+        return true;
+      },
+      keys: function() {
+        var index = 0;
+        return {
+          next: function() {
+            var done = index++ > 1;
+            if (baseSet.has(1)) baseSet.clear();
+            return {
+              done,
+              value: 2
+            };
+          }
+        };
+      }
+    };
+    var baseSet = /* @__PURE__ */ new Set([1, 2, 3, 4]);
+    return baseSet.difference(setLike).size !== 3;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    difference
+  });
+  return es_set_difference_v2;
+}
+requireEs_set_difference_v2();
+var es_set_intersection_v2 = {};
+var setIntersection;
+var hasRequiredSetIntersection;
+function requireSetIntersection() {
+  if (hasRequiredSetIntersection) return setIntersection;
+  hasRequiredSetIntersection = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var Set2 = SetHelpers.Set;
+  var add = SetHelpers.add;
+  var has = SetHelpers.has;
+  setIntersection = function intersection(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    var result = new Set2();
+    if (size(O) > otherRec.size) {
+      iterateSimple2(otherRec.getIterator(), function(e) {
+        if (has(O, e)) add(result, e);
+      });
+    } else {
+      iterateSet(O, function(e) {
+        if (otherRec.includes(e)) add(result, e);
+      });
+    }
+    return result;
+  };
+  return setIntersection;
+}
+var hasRequiredEs_set_intersection_v2;
+function requireEs_set_intersection_v2() {
+  if (hasRequiredEs_set_intersection_v2) return es_set_intersection_v2;
+  hasRequiredEs_set_intersection_v2 = 1;
+  var $ = require_export();
+  var fails2 = requireFails();
+  var intersection = requireSetIntersection();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("intersection", function(result) {
+    return result.size === 2 && result.has(1) && result.has(2);
+  }) || fails2(function() {
+    return String(Array.from((/* @__PURE__ */ new Set([1, 2, 3])).intersection(/* @__PURE__ */ new Set([3, 2])))) !== "3,2";
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    intersection
+  });
+  return es_set_intersection_v2;
+}
+requireEs_set_intersection_v2();
+var es_set_isDisjointFrom_v2 = {};
+var setIsDisjointFrom;
+var hasRequiredSetIsDisjointFrom;
+function requireSetIsDisjointFrom() {
+  if (hasRequiredSetIsDisjointFrom) return setIsDisjointFrom;
+  hasRequiredSetIsDisjointFrom = 1;
+  var aSet2 = requireASet();
+  var has = requireSetHelpers().has;
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSet = requireSetIterate();
+  var iterateSimple2 = requireIterateSimple();
+  var iteratorClose2 = requireIteratorClose();
+  setIsDisjointFrom = function isDisjointFrom(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) <= otherRec.size) return iterateSet(O, function(e) {
+      if (otherRec.includes(e)) return false;
+    }, true) !== false;
+    var iterator = otherRec.getIterator();
+    return iterateSimple2(iterator, function(e) {
+      if (has(O, e)) return iteratorClose2(iterator, "normal", false);
+    }) !== false;
+  };
+  return setIsDisjointFrom;
+}
+var hasRequiredEs_set_isDisjointFrom_v2;
+function requireEs_set_isDisjointFrom_v2() {
+  if (hasRequiredEs_set_isDisjointFrom_v2) return es_set_isDisjointFrom_v2;
+  hasRequiredEs_set_isDisjointFrom_v2 = 1;
+  var $ = require_export();
+  var isDisjointFrom = requireSetIsDisjointFrom();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isDisjointFrom", function(result) {
+    return !result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isDisjointFrom
+  });
+  return es_set_isDisjointFrom_v2;
+}
+requireEs_set_isDisjointFrom_v2();
+var es_set_isSubsetOf_v2 = {};
+var setIsSubsetOf;
+var hasRequiredSetIsSubsetOf;
+function requireSetIsSubsetOf() {
+  if (hasRequiredSetIsSubsetOf) return setIsSubsetOf;
+  hasRequiredSetIsSubsetOf = 1;
+  var aSet2 = requireASet();
+  var size = requireSetSize();
+  var iterate2 = requireSetIterate();
+  var getSetRecord2 = requireGetSetRecord();
+  setIsSubsetOf = function isSubsetOf(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) > otherRec.size) return false;
+    return iterate2(O, function(e) {
+      if (!otherRec.includes(e)) return false;
+    }, true) !== false;
+  };
+  return setIsSubsetOf;
+}
+var hasRequiredEs_set_isSubsetOf_v2;
+function requireEs_set_isSubsetOf_v2() {
+  if (hasRequiredEs_set_isSubsetOf_v2) return es_set_isSubsetOf_v2;
+  hasRequiredEs_set_isSubsetOf_v2 = 1;
+  var $ = require_export();
+  var isSubsetOf = requireSetIsSubsetOf();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isSubsetOf", function(result) {
+    return result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isSubsetOf
+  });
+  return es_set_isSubsetOf_v2;
+}
+requireEs_set_isSubsetOf_v2();
+var es_set_isSupersetOf_v2 = {};
+var setIsSupersetOf;
+var hasRequiredSetIsSupersetOf;
+function requireSetIsSupersetOf() {
+  if (hasRequiredSetIsSupersetOf) return setIsSupersetOf;
+  hasRequiredSetIsSupersetOf = 1;
+  var aSet2 = requireASet();
+  var has = requireSetHelpers().has;
+  var size = requireSetSize();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  var iteratorClose2 = requireIteratorClose();
+  setIsSupersetOf = function isSupersetOf(other) {
+    var O = aSet2(this);
+    var otherRec = getSetRecord2(other);
+    if (size(O) < otherRec.size) return false;
+    var iterator = otherRec.getIterator();
+    return iterateSimple2(iterator, function(e) {
+      if (!has(O, e)) return iteratorClose2(iterator, "normal", false);
+    }) !== false;
+  };
+  return setIsSupersetOf;
+}
+var hasRequiredEs_set_isSupersetOf_v2;
+function requireEs_set_isSupersetOf_v2() {
+  if (hasRequiredEs_set_isSupersetOf_v2) return es_set_isSupersetOf_v2;
+  hasRequiredEs_set_isSupersetOf_v2 = 1;
+  var $ = require_export();
+  var isSupersetOf = requireSetIsSupersetOf();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var INCORRECT = !setMethodAcceptSetLike2("isSupersetOf", function(result) {
+    return !result;
+  });
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: INCORRECT
+  }, {
+    isSupersetOf
+  });
+  return es_set_isSupersetOf_v2;
+}
+requireEs_set_isSupersetOf_v2();
+var es_set_symmetricDifference_v2 = {};
+var setSymmetricDifference;
+var hasRequiredSetSymmetricDifference;
+function requireSetSymmetricDifference() {
+  if (hasRequiredSetSymmetricDifference) return setSymmetricDifference;
+  hasRequiredSetSymmetricDifference = 1;
+  var aSet2 = requireASet();
+  var SetHelpers = requireSetHelpers();
+  var clone = requireSetClone();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  var add = SetHelpers.add;
+  var has = SetHelpers.has;
+  var remove = SetHelpers.remove;
+  setSymmetricDifference = function symmetricDifference(other) {
+    var O = aSet2(this);
+    var keysIter = getSetRecord2(other).getIterator();
+    var result = clone(O);
+    iterateSimple2(keysIter, function(e) {
+      if (has(O, e)) remove(result, e);
+      else add(result, e);
+    });
+    return result;
+  };
+  return setSymmetricDifference;
+}
+var setMethodGetKeysBeforeCloningDetection;
+var hasRequiredSetMethodGetKeysBeforeCloningDetection;
+function requireSetMethodGetKeysBeforeCloningDetection() {
+  if (hasRequiredSetMethodGetKeysBeforeCloningDetection) return setMethodGetKeysBeforeCloningDetection;
+  hasRequiredSetMethodGetKeysBeforeCloningDetection = 1;
+  setMethodGetKeysBeforeCloningDetection = function(METHOD_NAME) {
+    try {
+      var baseSet = /* @__PURE__ */ new Set();
+      var setLike = {
+        size: 0,
+        has: function() {
+          return true;
+        },
+        keys: function() {
+          return Object.defineProperty({}, "next", {
+            get: function() {
+              baseSet.clear();
+              baseSet.add(4);
+              return function() {
+                return {
+                  done: true
+                };
+              };
+            }
+          });
+        }
+      };
+      var result = baseSet[METHOD_NAME](setLike);
+      return result.size === 1 && result.values().next().value === 4;
+    } catch (error) {
+      return false;
+    }
+  };
+  return setMethodGetKeysBeforeCloningDetection;
+}
+var hasRequiredEs_set_symmetricDifference_v2;
+function requireEs_set_symmetricDifference_v2() {
+  if (hasRequiredEs_set_symmetricDifference_v2) return es_set_symmetricDifference_v2;
+  hasRequiredEs_set_symmetricDifference_v2 = 1;
+  var $ = require_export();
+  var symmetricDifference = requireSetSymmetricDifference();
+  var setMethodGetKeysBeforeCloning = requireSetMethodGetKeysBeforeCloningDetection();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var FORCED = !setMethodAcceptSetLike2("symmetricDifference") || !setMethodGetKeysBeforeCloning("symmetricDifference");
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    symmetricDifference
+  });
+  return es_set_symmetricDifference_v2;
+}
+requireEs_set_symmetricDifference_v2();
+var es_set_union_v2 = {};
+var setUnion;
+var hasRequiredSetUnion;
+function requireSetUnion() {
+  if (hasRequiredSetUnion) return setUnion;
+  hasRequiredSetUnion = 1;
+  var aSet2 = requireASet();
+  var add = requireSetHelpers().add;
+  var clone = requireSetClone();
+  var getSetRecord2 = requireGetSetRecord();
+  var iterateSimple2 = requireIterateSimple();
+  setUnion = function union(other) {
+    var O = aSet2(this);
+    var keysIter = getSetRecord2(other).getIterator();
+    var result = clone(O);
+    iterateSimple2(keysIter, function(it) {
+      add(result, it);
+    });
+    return result;
+  };
+  return setUnion;
+}
+var hasRequiredEs_set_union_v2;
+function requireEs_set_union_v2() {
+  if (hasRequiredEs_set_union_v2) return es_set_union_v2;
+  hasRequiredEs_set_union_v2 = 1;
+  var $ = require_export();
+  var union = requireSetUnion();
+  var setMethodGetKeysBeforeCloning = requireSetMethodGetKeysBeforeCloningDetection();
+  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
+  var FORCED = !setMethodAcceptSetLike2("union") || !setMethodGetKeysBeforeCloning("union");
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    union
+  });
+  return es_set_union_v2;
+}
+requireEs_set_union_v2();
 function isFTableCellApi(value) {
   return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
 }
 var tableCellApiSymbol = /* @__PURE__ */ Symbol("table:cell-api");
-function walk(array, visit, childKey, level = 1) {
-  for (const item of array) {
-    const visitChildren = visit(item, level);
-    if (visitChildren && childKey && item[childKey]) {
-      walk(item[childKey], visit, childKey, level + 1);
-    }
-  }
-}
 var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
 var prevCellIndex = void 0;
-function rowKey$1(row) {
-  return getItemIdentifier(row);
-}
-function getRowIndexes(rows, expandableAttribute) {
-  const array = [];
-  walk(rows, (row) => {
-    array.push(getItemIdentifier(row));
-    return true;
-  }, expandableAttribute);
-  return array;
-}
 function getCellTarget(tableElement, rowIndex, cellIndex) {
   return tableElement.rows[rowIndex].cells[cellIndex];
 }
@@ -2250,14 +2721,11 @@ function getVerticalNavIndex(table, from, to) {
   }
   return target;
 }
+function isDefined(value) {
+  return value.row !== void 0 && value.cell !== void 0;
+}
 function navigate(e, table, from, last) {
-  if (
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-    from.row === void 0 || /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-    from.cell === void 0 || /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-    last.row === void 0 || /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-    last.cell === void 0
-  ) {
+  if (!isDefined(from) || !isDefined(last)) {
     return;
   }
   if (!navKeys.includes(e.code)) {
@@ -2334,25 +2802,6 @@ function navigate(e, table, from, last) {
       };
     }
   }
-}
-function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
-  const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
-  const array = [];
-  walk(keyedRows, (row, level) => {
-    const isExpandable = Boolean(expandableAttribute && row[expandableAttribute]);
-    const isExpanded = isExpandable && expandedKeys.includes(rowKey$1(row));
-    const rowIndex = rowIndexes.indexOf(rowKey$1(row)) + 2;
-    array.push({
-      key: rowKey$1(row),
-      row,
-      rowIndex,
-      level: expandableAttribute ? level : void 0,
-      isExpandable,
-      isExpanded
-    });
-    return isExpanded;
-  }, expandableAttribute);
-  return array;
 }
 function getCell(element) {
   const closest = element.closest("td, th");
@@ -3166,13 +3615,151 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
     };
   }
 });
+function walk(array, childKey, visit, level = 1) {
+  for (const item of array) {
+    const visitChildren = visit(item, level);
+    if (visitChildren && childKey && item[childKey]) {
+      walk(item[childKey], childKey, visit, level + 1);
+    }
+  }
+}
 function getBodyRowCount(rows, childKey) {
   let count = 0;
-  walk(rows, () => {
+  walk(rows, childKey, () => {
     count++;
     return true;
-  }, childKey);
+  });
   return count;
+}
+var es_array_push = {};
+var isArray;
+var hasRequiredIsArray;
+function requireIsArray() {
+  if (hasRequiredIsArray) return isArray;
+  hasRequiredIsArray = 1;
+  var classof2 = requireClassofRaw();
+  isArray = Array.isArray || function isArray2(argument) {
+    return classof2(argument) === "Array";
+  };
+  return isArray;
+}
+var arraySetLength;
+var hasRequiredArraySetLength;
+function requireArraySetLength() {
+  if (hasRequiredArraySetLength) return arraySetLength;
+  hasRequiredArraySetLength = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var isArray2 = requireIsArray();
+  var $TypeError = TypeError;
+  var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS && !(function() {
+    if (this !== void 0) return true;
+    try {
+      Object.defineProperty([], "length", {
+        writable: false
+      }).length = 1;
+    } catch (error) {
+      return error instanceof TypeError;
+    }
+  })();
+  arraySetLength = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function(O, length) {
+    if (isArray2(O) && !getOwnPropertyDescriptor(O, "length").writable) {
+      throw new $TypeError("Cannot set read only .length");
+    }
+    return O.length = length;
+  } : function(O, length) {
+    return O.length = length;
+  };
+  return arraySetLength;
+}
+var doesNotExceedSafeInteger;
+var hasRequiredDoesNotExceedSafeInteger;
+function requireDoesNotExceedSafeInteger() {
+  if (hasRequiredDoesNotExceedSafeInteger) return doesNotExceedSafeInteger;
+  hasRequiredDoesNotExceedSafeInteger = 1;
+  var $TypeError = TypeError;
+  var MAX_SAFE_INTEGER = 9007199254740991;
+  doesNotExceedSafeInteger = function(it) {
+    if (it > MAX_SAFE_INTEGER) throw $TypeError("Maximum allowed index exceeded");
+    return it;
+  };
+  return doesNotExceedSafeInteger;
+}
+var hasRequiredEs_array_push;
+function requireEs_array_push() {
+  if (hasRequiredEs_array_push) return es_array_push;
+  hasRequiredEs_array_push = 1;
+  var $ = require_export();
+  var toObject2 = requireToObject();
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  var setArrayLength = requireArraySetLength();
+  var doesNotExceedSafeInteger2 = requireDoesNotExceedSafeInteger();
+  var fails2 = requireFails();
+  var INCORRECT_TO_LENGTH = fails2(function() {
+    return [].push.call({
+      length: 4294967296
+    }, 1) !== 4294967297;
+  });
+  var properErrorOnNonWritableLength = function() {
+    try {
+      Object.defineProperty([], "length", {
+        writable: false
+      }).push();
+    } catch (error) {
+      return error instanceof TypeError;
+    }
+  };
+  var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
+  $({
+    target: "Array",
+    proto: true,
+    arity: 1,
+    forced: FORCED
+  }, {
+    // eslint-disable-next-line no-unused-vars -- required for `.length`
+    push: function push(item) {
+      var O = toObject2(this);
+      var len = lengthOfArrayLike2(O);
+      var argCount = arguments.length;
+      doesNotExceedSafeInteger2(len + argCount);
+      for (var i = 0; i < argCount; i++) {
+        O[len] = arguments[i];
+        len++;
+      }
+      setArrayLength(O, len);
+      return len;
+    }
+  });
+  return es_array_push;
+}
+requireEs_array_push();
+function getRowIndexes(rows, expandableAttribute) {
+  const array = [];
+  walk(rows, expandableAttribute, (row) => {
+    array.push(getItemIdentifier(row));
+    return true;
+  });
+  return array;
+}
+function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
+  const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
+  const array = [];
+  walk(keyedRows, expandableAttribute, (row, level) => {
+    const key = getItemIdentifier(row);
+    const isExpandable = Boolean(expandableAttribute && row[expandableAttribute]);
+    const isExpanded = isExpandable && expandedKeys.has(key);
+    const rowIndex = rowIndexes.indexOf(key) + 2;
+    array.push({
+      key,
+      row,
+      rowIndex,
+      level: expandableAttribute ? level : void 0,
+      isExpandable,
+      isExpanded
+    });
+    return isExpanded;
+  });
+  return array;
 }
 var stopEditKey = /* @__PURE__ */ Symbol();
 function useStartStopEdit() {
@@ -4662,6 +5249,10 @@ function useSelectable(options) {
     selectableRowState
   };
 }
+function matching(needle) {
+  const id = getItemIdentifier(needle);
+  return (item) => getItemIdentifier(item) === id;
+}
 function useTabstop(tableRef, metaRows) {
   let pendingRowRemoval = false;
   const renderOptions = ref3({
@@ -4670,7 +5261,8 @@ function useTabstop(tableRef, metaRows) {
   });
   function fallbackToFirstCell(newRows, oldRows, focus) {
     assertRef(tableRef);
-    const newFirstRowOldIndex = oldRows.findIndex((it) => it.key === newRows[0].key);
+    const needle = newRows[0];
+    const newFirstRowOldIndex = oldRows.findIndex(matching(needle));
     if (newFirstRowOldIndex > -1) {
       const target = getCellTarget(tableRef.value, newFirstRowOldIndex + 1, 0);
       activateCell(target, {
@@ -4685,7 +5277,7 @@ function useTabstop(tableRef, metaRows) {
     const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
     pendingRowRemoval = false;
     assertRef(tableRef);
-    const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
+    const oldTabstopElement = tableRef.value.querySelector(`:not(tfoot)[tabindex="0"]`);
     assertSet(oldTabstopElement);
     const oldTabstopFocused = oldTabstopElement === document.activeElement;
     if (oldTabstopElement.closest("th")) {
@@ -4699,8 +5291,8 @@ function useTabstop(tableRef, metaRows) {
     const oldTabstopTd = oldTabstopElement.closest("td");
     assertSet(oldTabstopTd);
     const oldTabstopTr = oldTabstopTd.parentElement;
-    const oldTabstopRowKey = oldRows[oldTabstopTr.rowIndex - 1].key;
-    const isBeingRemoved = !newRows.some((it) => it.key === oldTabstopRowKey);
+    const needle = oldRows[oldTabstopTr.rowIndex - 1];
+    const isBeingRemoved = !newRows.some(matching(needle));
     if (oldTabstopFocused && !isBeingRemoved) {
       return;
     }
@@ -4717,7 +5309,8 @@ function useTabstop(tableRef, metaRows) {
       return;
     }
     if (oldTabstopTr.rowIndex === 1) {
-      const hasRowBelowInNewRows = newRows.some((it) => it.key === oldRows[1].key);
+      const needle2 = oldRows[1];
+      const hasRowBelowInNewRows = newRows.some(matching(needle2));
       if (hasRowBelowInNewRows) {
         const {
           cell
@@ -4736,7 +5329,8 @@ function useTabstop(tableRef, metaRows) {
         fallbackToFirstCell(newRows, oldRows, true);
       }
     } else {
-      const hasRowAboveInNewRows = newRows.some((it) => it.key === oldRows[oldTabstopTr.rowIndex - 2].key);
+      const needle2 = oldRows[oldTabstopTr.rowIndex - 2];
+      const hasRowAboveInNewRows = newRows.some(matching(needle2));
       if (hasRowAboveInNewRows) {
         const {
           row,
@@ -4840,7 +5434,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       hasSlot
     } = useSlotUtils();
     const tableRef = useTemplateRef("table");
-    const expandedKeys = ref3([]);
+    const expandedKeys = ref3(/* @__PURE__ */ new Set());
     const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute));
     const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
     const isTreegrid = computed3(() => Boolean(__props.expandableAttribute));
@@ -4880,11 +5474,10 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     }
     provide2(stopEditKey, stopEditHandler);
     function onToggleExpanded(key) {
-      const index = expandedKeys.value.indexOf(key);
-      if (index < 0) {
-        expandedKeys.value.push(key);
+      if (expandedKeys.value.has(key)) {
+        expandedKeys.value.delete(key);
       } else {
-        expandedKeys.value.splice(index, 1);
+        expandedKeys.value.add(key);
       }
     }
     function onKeydown(e) {
@@ -4900,7 +5493,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     }
     function onTableFocusin(e) {
       assertRef(tableRef);
-      tableRef.value.querySelectorAll(`[tabindex="0"]`).forEach((it) => {
+      tableRef.value.querySelectorAll(`:not(tfoot)[tabindex="0"]`).forEach((it) => {
         if (it !== e.target) {
           it.setAttribute("tabindex", "-1");
         }
@@ -4927,7 +5520,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       if (!tableRef.value) {
         return;
       }
-      const outsideTable = !relatedTarget || !tableRef.value.contains(relatedTarget);
+      const outsideTable = Boolean(tableRef.value.tFoot?.contains(relatedTarget)) || !tableRef.value.contains(relatedTarget);
       if (outsideTable) {
         const cell = target.closest("td, th");
         if (cell) {
@@ -5008,7 +5601,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       selectedRows,
       rows: keyedRows
     });
-    const tableApi = useTabstop(tableRef, metaRows);
+    const tableApi = useTabstop(tableRef, keyedRows);
     __expose(tableApi);
     onMounted3(() => {
       assertRef(tableRef);
@@ -5021,12 +5614,13 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
-        "aria-rowcount": ariaRowcount.value,
+        "aria-rowcount": ariaRowcount.value
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", {
         onFocusin: onTableFocusin,
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
+      }, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
@@ -5041,7 +5635,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])]), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
+      }), 128))])], 32), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", {
+        onFocusin: onTableFocusin,
+        onFocusout: onTableFocusout,
+        onClick,
+        onKeydown
+      }, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[2] || (_cache[2] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
@@ -5110,13 +5709,13 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
         }), 128))], 64))], 8, _hoisted_7$1);
-      }), 128))]), _cache[7] || (_cache[7] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+      }), 128))], 32), _cache[7] || (_cache[7] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
       }, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 10, _hoisted_1$2);
     };
   }
 });
@@ -5222,21 +5821,6 @@ function requireArrayBufferBasicDetection() {
   hasRequiredArrayBufferBasicDetection = 1;
   arrayBufferBasicDetection = typeof ArrayBuffer != "undefined" && typeof DataView != "undefined";
   return arrayBufferBasicDetection;
-}
-var functionUncurryThisAccessor;
-var hasRequiredFunctionUncurryThisAccessor;
-function requireFunctionUncurryThisAccessor() {
-  if (hasRequiredFunctionUncurryThisAccessor) return functionUncurryThisAccessor;
-  hasRequiredFunctionUncurryThisAccessor = 1;
-  var uncurryThis = requireFunctionUncurryThis();
-  var aCallable2 = requireACallable();
-  functionUncurryThisAccessor = function(object, key, method) {
-    try {
-      return uncurryThis(aCallable2(Object.getOwnPropertyDescriptor(object, key)[method]));
-    } catch (error) {
-    }
-  };
-  return functionUncurryThisAccessor;
 }
 var arrayBufferByteLength;
 var hasRequiredArrayBufferByteLength;
@@ -5960,7 +6544,6 @@ function requireEs_typedArray_with() {
   return es_typedArray_with;
 }
 requireEs_typedArray_with();
-var esnext_uint8Array_setFromBase64 = {};
 var es_uint8Array_setFromBase64 = {};
 var anObjectOrUndefined;
 var hasRequiredAnObjectOrUndefined;
@@ -6219,15 +6802,7 @@ function requireEs_uint8Array_setFromBase64() {
   });
   return es_uint8Array_setFromBase64;
 }
-var hasRequiredEsnext_uint8Array_setFromBase64;
-function requireEsnext_uint8Array_setFromBase64() {
-  if (hasRequiredEsnext_uint8Array_setFromBase64) return esnext_uint8Array_setFromBase64;
-  hasRequiredEsnext_uint8Array_setFromBase64 = 1;
-  requireEs_uint8Array_setFromBase64();
-  return esnext_uint8Array_setFromBase64;
-}
-requireEsnext_uint8Array_setFromBase64();
-var esnext_uint8Array_setFromHex = {};
+requireEs_uint8Array_setFromBase64();
 var es_uint8Array_setFromHex = {};
 var uint8FromHex;
 var hasRequiredUint8FromHex;
@@ -6300,15 +6875,7 @@ function requireEs_uint8Array_setFromHex() {
   });
   return es_uint8Array_setFromHex;
 }
-var hasRequiredEsnext_uint8Array_setFromHex;
-function requireEsnext_uint8Array_setFromHex() {
-  if (hasRequiredEsnext_uint8Array_setFromHex) return esnext_uint8Array_setFromHex;
-  hasRequiredEsnext_uint8Array_setFromHex = 1;
-  requireEs_uint8Array_setFromHex();
-  return esnext_uint8Array_setFromHex;
-}
-requireEsnext_uint8Array_setFromHex();
-var esnext_uint8Array_toBase64 = {};
+requireEs_uint8Array_setFromHex();
 var es_uint8Array_toBase64 = {};
 var hasRequiredEs_uint8Array_toBase64;
 function requireEs_uint8Array_toBase64() {
@@ -6368,15 +6935,7 @@ function requireEs_uint8Array_toBase64() {
   });
   return es_uint8Array_toBase64;
 }
-var hasRequiredEsnext_uint8Array_toBase64;
-function requireEsnext_uint8Array_toBase64() {
-  if (hasRequiredEsnext_uint8Array_toBase64) return esnext_uint8Array_toBase64;
-  hasRequiredEsnext_uint8Array_toBase64 = 1;
-  requireEs_uint8Array_toBase64();
-  return esnext_uint8Array_toBase64;
-}
-requireEsnext_uint8Array_toBase64();
-var esnext_uint8Array_toHex = {};
+requireEs_uint8Array_toBase64();
 var es_uint8Array_toHex = {};
 var hasRequiredEs_uint8Array_toHex;
 function requireEs_uint8Array_toHex() {
@@ -6415,14 +6974,7 @@ function requireEs_uint8Array_toHex() {
   });
   return es_uint8Array_toHex;
 }
-var hasRequiredEsnext_uint8Array_toHex;
-function requireEsnext_uint8Array_toHex() {
-  if (hasRequiredEsnext_uint8Array_toHex) return esnext_uint8Array_toHex;
-  hasRequiredEsnext_uint8Array_toHex = 1;
-  requireEs_uint8Array_toHex();
-  return esnext_uint8Array_toHex;
-}
-requireEsnext_uint8Array_toHex();
+requireEs_uint8Array_toHex();
 var web_domException_stack = {};
 var inheritIfRequired;
 var hasRequiredInheritIfRequired;
@@ -6792,9 +7344,7 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent2({
             const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), "");
             uppladdatDokument.value = {
               dokument: {
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 filnamn: value.name,
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
                 mime: value.type,
                 data: btoa(reduced),
                 fel: ""
@@ -6934,583 +7484,6 @@ function matchPropertyValue(property) {
     return value === null || item[property] === value;
   };
 }
-var es_set_difference_v2 = {};
-var setHelpers;
-var hasRequiredSetHelpers;
-function requireSetHelpers() {
-  if (hasRequiredSetHelpers) return setHelpers;
-  hasRequiredSetHelpers = 1;
-  var uncurryThis = requireFunctionUncurryThis();
-  var SetPrototype = Set.prototype;
-  setHelpers = {
-    // eslint-disable-next-line es/no-set -- safe
-    Set,
-    add: uncurryThis(SetPrototype.add),
-    has: uncurryThis(SetPrototype.has),
-    remove: uncurryThis(SetPrototype["delete"]),
-    proto: SetPrototype
-  };
-  return setHelpers;
-}
-var aSet;
-var hasRequiredASet;
-function requireASet() {
-  if (hasRequiredASet) return aSet;
-  hasRequiredASet = 1;
-  var has = requireSetHelpers().has;
-  aSet = function(it) {
-    has(it);
-    return it;
-  };
-  return aSet;
-}
-var iterateSimple;
-var hasRequiredIterateSimple;
-function requireIterateSimple() {
-  if (hasRequiredIterateSimple) return iterateSimple;
-  hasRequiredIterateSimple = 1;
-  var call = requireFunctionCall();
-  iterateSimple = function(record, fn, ITERATOR_INSTEAD_OF_RECORD) {
-    var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
-    var next = record.next;
-    var step, result;
-    while (!(step = call(next, iterator)).done) {
-      result = fn(step.value);
-      if (result !== void 0) return result;
-    }
-  };
-  return iterateSimple;
-}
-var setIterate;
-var hasRequiredSetIterate;
-function requireSetIterate() {
-  if (hasRequiredSetIterate) return setIterate;
-  hasRequiredSetIterate = 1;
-  var uncurryThis = requireFunctionUncurryThis();
-  var iterateSimple2 = requireIterateSimple();
-  var SetHelpers = requireSetHelpers();
-  var Set2 = SetHelpers.Set;
-  var SetPrototype = SetHelpers.proto;
-  var forEach = uncurryThis(SetPrototype.forEach);
-  var keys = uncurryThis(SetPrototype.keys);
-  var next = keys(new Set2()).next;
-  setIterate = function(set, fn, interruptible) {
-    return interruptible ? iterateSimple2({
-      iterator: keys(set),
-      next
-    }, fn) : forEach(set, fn);
-  };
-  return setIterate;
-}
-var setClone;
-var hasRequiredSetClone;
-function requireSetClone() {
-  if (hasRequiredSetClone) return setClone;
-  hasRequiredSetClone = 1;
-  var SetHelpers = requireSetHelpers();
-  var iterate2 = requireSetIterate();
-  var Set2 = SetHelpers.Set;
-  var add = SetHelpers.add;
-  setClone = function(set) {
-    var result = new Set2();
-    iterate2(set, function(it) {
-      add(result, it);
-    });
-    return result;
-  };
-  return setClone;
-}
-var setSize;
-var hasRequiredSetSize;
-function requireSetSize() {
-  if (hasRequiredSetSize) return setSize;
-  hasRequiredSetSize = 1;
-  var uncurryThisAccessor = requireFunctionUncurryThisAccessor();
-  var SetHelpers = requireSetHelpers();
-  setSize = uncurryThisAccessor(SetHelpers.proto, "size", "get") || function(set) {
-    return set.size;
-  };
-  return setSize;
-}
-var getSetRecord;
-var hasRequiredGetSetRecord;
-function requireGetSetRecord() {
-  if (hasRequiredGetSetRecord) return getSetRecord;
-  hasRequiredGetSetRecord = 1;
-  var aCallable2 = requireACallable();
-  var anObject2 = requireAnObject();
-  var call = requireFunctionCall();
-  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
-  var getIteratorDirect2 = requireGetIteratorDirect();
-  var INVALID_SIZE = "Invalid size";
-  var $RangeError = RangeError;
-  var $TypeError = TypeError;
-  var max = Math.max;
-  var SetRecord = function(set, intSize) {
-    this.set = set;
-    this.size = max(intSize, 0);
-    this.has = aCallable2(set.has);
-    this.keys = aCallable2(set.keys);
-  };
-  SetRecord.prototype = {
-    getIterator: function() {
-      return getIteratorDirect2(anObject2(call(this.keys, this.set)));
-    },
-    includes: function(it) {
-      return call(this.has, this.set, it);
-    }
-  };
-  getSetRecord = function(obj) {
-    anObject2(obj);
-    var numSize = +obj.size;
-    if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
-    var intSize = toIntegerOrInfinity2(numSize);
-    if (intSize < 0) throw new $RangeError(INVALID_SIZE);
-    return new SetRecord(obj, intSize);
-  };
-  return getSetRecord;
-}
-var setDifference;
-var hasRequiredSetDifference;
-function requireSetDifference() {
-  if (hasRequiredSetDifference) return setDifference;
-  hasRequiredSetDifference = 1;
-  var aSet2 = requireASet();
-  var SetHelpers = requireSetHelpers();
-  var clone = requireSetClone();
-  var size = requireSetSize();
-  var getSetRecord2 = requireGetSetRecord();
-  var iterateSet = requireSetIterate();
-  var iterateSimple2 = requireIterateSimple();
-  var has = SetHelpers.has;
-  var remove = SetHelpers.remove;
-  setDifference = function difference(other) {
-    var O = aSet2(this);
-    var otherRec = getSetRecord2(other);
-    var result = clone(O);
-    if (size(O) <= otherRec.size) iterateSet(O, function(e) {
-      if (otherRec.includes(e)) remove(result, e);
-    });
-    else iterateSimple2(otherRec.getIterator(), function(e) {
-      if (has(result, e)) remove(result, e);
-    });
-    return result;
-  };
-  return setDifference;
-}
-var setMethodAcceptSetLike;
-var hasRequiredSetMethodAcceptSetLike;
-function requireSetMethodAcceptSetLike() {
-  if (hasRequiredSetMethodAcceptSetLike) return setMethodAcceptSetLike;
-  hasRequiredSetMethodAcceptSetLike = 1;
-  var getBuiltIn2 = requireGetBuiltIn();
-  var createSetLike = function(size) {
-    return {
-      size,
-      has: function() {
-        return false;
-      },
-      keys: function() {
-        return {
-          next: function() {
-            return {
-              done: true
-            };
-          }
-        };
-      }
-    };
-  };
-  var createSetLikeWithInfinitySize = function(size) {
-    return {
-      size,
-      has: function() {
-        return true;
-      },
-      keys: function() {
-        throw new Error("e");
-      }
-    };
-  };
-  setMethodAcceptSetLike = function(name, callback) {
-    var Set2 = getBuiltIn2("Set");
-    try {
-      new Set2()[name](createSetLike(0));
-      try {
-        new Set2()[name](createSetLike(-1));
-        return false;
-      } catch (error2) {
-        if (!callback) return true;
-        try {
-          new Set2()[name](createSetLikeWithInfinitySize(-Infinity));
-          return false;
-        } catch (error) {
-          var set = new Set2([1, 2]);
-          return callback(set[name](createSetLikeWithInfinitySize(Infinity)));
-        }
-      }
-    } catch (error) {
-      return false;
-    }
-  };
-  return setMethodAcceptSetLike;
-}
-var hasRequiredEs_set_difference_v2;
-function requireEs_set_difference_v2() {
-  if (hasRequiredEs_set_difference_v2) return es_set_difference_v2;
-  hasRequiredEs_set_difference_v2 = 1;
-  var $ = require_export();
-  var difference = requireSetDifference();
-  var fails2 = requireFails();
-  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
-  var SET_LIKE_INCORRECT_BEHAVIOR = !setMethodAcceptSetLike2("difference", function(result) {
-    return result.size === 0;
-  });
-  var FORCED = SET_LIKE_INCORRECT_BEHAVIOR || fails2(function() {
-    var setLike = {
-      size: 1,
-      has: function() {
-        return true;
-      },
-      keys: function() {
-        var index = 0;
-        return {
-          next: function() {
-            var done = index++ > 1;
-            if (baseSet.has(1)) baseSet.clear();
-            return {
-              done,
-              value: 2
-            };
-          }
-        };
-      }
-    };
-    var baseSet = /* @__PURE__ */ new Set([1, 2, 3, 4]);
-    return baseSet.difference(setLike).size !== 3;
-  });
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: FORCED
-  }, {
-    difference
-  });
-  return es_set_difference_v2;
-}
-requireEs_set_difference_v2();
-var es_set_intersection_v2 = {};
-var setIntersection;
-var hasRequiredSetIntersection;
-function requireSetIntersection() {
-  if (hasRequiredSetIntersection) return setIntersection;
-  hasRequiredSetIntersection = 1;
-  var aSet2 = requireASet();
-  var SetHelpers = requireSetHelpers();
-  var size = requireSetSize();
-  var getSetRecord2 = requireGetSetRecord();
-  var iterateSet = requireSetIterate();
-  var iterateSimple2 = requireIterateSimple();
-  var Set2 = SetHelpers.Set;
-  var add = SetHelpers.add;
-  var has = SetHelpers.has;
-  setIntersection = function intersection(other) {
-    var O = aSet2(this);
-    var otherRec = getSetRecord2(other);
-    var result = new Set2();
-    if (size(O) > otherRec.size) {
-      iterateSimple2(otherRec.getIterator(), function(e) {
-        if (has(O, e)) add(result, e);
-      });
-    } else {
-      iterateSet(O, function(e) {
-        if (otherRec.includes(e)) add(result, e);
-      });
-    }
-    return result;
-  };
-  return setIntersection;
-}
-var hasRequiredEs_set_intersection_v2;
-function requireEs_set_intersection_v2() {
-  if (hasRequiredEs_set_intersection_v2) return es_set_intersection_v2;
-  hasRequiredEs_set_intersection_v2 = 1;
-  var $ = require_export();
-  var fails2 = requireFails();
-  var intersection = requireSetIntersection();
-  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
-  var INCORRECT = !setMethodAcceptSetLike2("intersection", function(result) {
-    return result.size === 2 && result.has(1) && result.has(2);
-  }) || fails2(function() {
-    return String(Array.from((/* @__PURE__ */ new Set([1, 2, 3])).intersection(/* @__PURE__ */ new Set([3, 2])))) !== "3,2";
-  });
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: INCORRECT
-  }, {
-    intersection
-  });
-  return es_set_intersection_v2;
-}
-requireEs_set_intersection_v2();
-var es_set_isDisjointFrom_v2 = {};
-var setIsDisjointFrom;
-var hasRequiredSetIsDisjointFrom;
-function requireSetIsDisjointFrom() {
-  if (hasRequiredSetIsDisjointFrom) return setIsDisjointFrom;
-  hasRequiredSetIsDisjointFrom = 1;
-  var aSet2 = requireASet();
-  var has = requireSetHelpers().has;
-  var size = requireSetSize();
-  var getSetRecord2 = requireGetSetRecord();
-  var iterateSet = requireSetIterate();
-  var iterateSimple2 = requireIterateSimple();
-  var iteratorClose2 = requireIteratorClose();
-  setIsDisjointFrom = function isDisjointFrom(other) {
-    var O = aSet2(this);
-    var otherRec = getSetRecord2(other);
-    if (size(O) <= otherRec.size) return iterateSet(O, function(e) {
-      if (otherRec.includes(e)) return false;
-    }, true) !== false;
-    var iterator = otherRec.getIterator();
-    return iterateSimple2(iterator, function(e) {
-      if (has(O, e)) return iteratorClose2(iterator, "normal", false);
-    }) !== false;
-  };
-  return setIsDisjointFrom;
-}
-var hasRequiredEs_set_isDisjointFrom_v2;
-function requireEs_set_isDisjointFrom_v2() {
-  if (hasRequiredEs_set_isDisjointFrom_v2) return es_set_isDisjointFrom_v2;
-  hasRequiredEs_set_isDisjointFrom_v2 = 1;
-  var $ = require_export();
-  var isDisjointFrom = requireSetIsDisjointFrom();
-  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
-  var INCORRECT = !setMethodAcceptSetLike2("isDisjointFrom", function(result) {
-    return !result;
-  });
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: INCORRECT
-  }, {
-    isDisjointFrom
-  });
-  return es_set_isDisjointFrom_v2;
-}
-requireEs_set_isDisjointFrom_v2();
-var es_set_isSubsetOf_v2 = {};
-var setIsSubsetOf;
-var hasRequiredSetIsSubsetOf;
-function requireSetIsSubsetOf() {
-  if (hasRequiredSetIsSubsetOf) return setIsSubsetOf;
-  hasRequiredSetIsSubsetOf = 1;
-  var aSet2 = requireASet();
-  var size = requireSetSize();
-  var iterate2 = requireSetIterate();
-  var getSetRecord2 = requireGetSetRecord();
-  setIsSubsetOf = function isSubsetOf(other) {
-    var O = aSet2(this);
-    var otherRec = getSetRecord2(other);
-    if (size(O) > otherRec.size) return false;
-    return iterate2(O, function(e) {
-      if (!otherRec.includes(e)) return false;
-    }, true) !== false;
-  };
-  return setIsSubsetOf;
-}
-var hasRequiredEs_set_isSubsetOf_v2;
-function requireEs_set_isSubsetOf_v2() {
-  if (hasRequiredEs_set_isSubsetOf_v2) return es_set_isSubsetOf_v2;
-  hasRequiredEs_set_isSubsetOf_v2 = 1;
-  var $ = require_export();
-  var isSubsetOf = requireSetIsSubsetOf();
-  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
-  var INCORRECT = !setMethodAcceptSetLike2("isSubsetOf", function(result) {
-    return result;
-  });
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: INCORRECT
-  }, {
-    isSubsetOf
-  });
-  return es_set_isSubsetOf_v2;
-}
-requireEs_set_isSubsetOf_v2();
-var es_set_isSupersetOf_v2 = {};
-var setIsSupersetOf;
-var hasRequiredSetIsSupersetOf;
-function requireSetIsSupersetOf() {
-  if (hasRequiredSetIsSupersetOf) return setIsSupersetOf;
-  hasRequiredSetIsSupersetOf = 1;
-  var aSet2 = requireASet();
-  var has = requireSetHelpers().has;
-  var size = requireSetSize();
-  var getSetRecord2 = requireGetSetRecord();
-  var iterateSimple2 = requireIterateSimple();
-  var iteratorClose2 = requireIteratorClose();
-  setIsSupersetOf = function isSupersetOf(other) {
-    var O = aSet2(this);
-    var otherRec = getSetRecord2(other);
-    if (size(O) < otherRec.size) return false;
-    var iterator = otherRec.getIterator();
-    return iterateSimple2(iterator, function(e) {
-      if (!has(O, e)) return iteratorClose2(iterator, "normal", false);
-    }) !== false;
-  };
-  return setIsSupersetOf;
-}
-var hasRequiredEs_set_isSupersetOf_v2;
-function requireEs_set_isSupersetOf_v2() {
-  if (hasRequiredEs_set_isSupersetOf_v2) return es_set_isSupersetOf_v2;
-  hasRequiredEs_set_isSupersetOf_v2 = 1;
-  var $ = require_export();
-  var isSupersetOf = requireSetIsSupersetOf();
-  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
-  var INCORRECT = !setMethodAcceptSetLike2("isSupersetOf", function(result) {
-    return !result;
-  });
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: INCORRECT
-  }, {
-    isSupersetOf
-  });
-  return es_set_isSupersetOf_v2;
-}
-requireEs_set_isSupersetOf_v2();
-var es_set_symmetricDifference_v2 = {};
-var setSymmetricDifference;
-var hasRequiredSetSymmetricDifference;
-function requireSetSymmetricDifference() {
-  if (hasRequiredSetSymmetricDifference) return setSymmetricDifference;
-  hasRequiredSetSymmetricDifference = 1;
-  var aSet2 = requireASet();
-  var SetHelpers = requireSetHelpers();
-  var clone = requireSetClone();
-  var getSetRecord2 = requireGetSetRecord();
-  var iterateSimple2 = requireIterateSimple();
-  var add = SetHelpers.add;
-  var has = SetHelpers.has;
-  var remove = SetHelpers.remove;
-  setSymmetricDifference = function symmetricDifference(other) {
-    var O = aSet2(this);
-    var keysIter = getSetRecord2(other).getIterator();
-    var result = clone(O);
-    iterateSimple2(keysIter, function(e) {
-      if (has(O, e)) remove(result, e);
-      else add(result, e);
-    });
-    return result;
-  };
-  return setSymmetricDifference;
-}
-var setMethodGetKeysBeforeCloningDetection;
-var hasRequiredSetMethodGetKeysBeforeCloningDetection;
-function requireSetMethodGetKeysBeforeCloningDetection() {
-  if (hasRequiredSetMethodGetKeysBeforeCloningDetection) return setMethodGetKeysBeforeCloningDetection;
-  hasRequiredSetMethodGetKeysBeforeCloningDetection = 1;
-  setMethodGetKeysBeforeCloningDetection = function(METHOD_NAME) {
-    try {
-      var baseSet = /* @__PURE__ */ new Set();
-      var setLike = {
-        size: 0,
-        has: function() {
-          return true;
-        },
-        keys: function() {
-          return Object.defineProperty({}, "next", {
-            get: function() {
-              baseSet.clear();
-              baseSet.add(4);
-              return function() {
-                return {
-                  done: true
-                };
-              };
-            }
-          });
-        }
-      };
-      var result = baseSet[METHOD_NAME](setLike);
-      return result.size === 1 && result.values().next().value === 4;
-    } catch (error) {
-      return false;
-    }
-  };
-  return setMethodGetKeysBeforeCloningDetection;
-}
-var hasRequiredEs_set_symmetricDifference_v2;
-function requireEs_set_symmetricDifference_v2() {
-  if (hasRequiredEs_set_symmetricDifference_v2) return es_set_symmetricDifference_v2;
-  hasRequiredEs_set_symmetricDifference_v2 = 1;
-  var $ = require_export();
-  var symmetricDifference = requireSetSymmetricDifference();
-  var setMethodGetKeysBeforeCloning = requireSetMethodGetKeysBeforeCloningDetection();
-  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
-  var FORCED = !setMethodAcceptSetLike2("symmetricDifference") || !setMethodGetKeysBeforeCloning("symmetricDifference");
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: FORCED
-  }, {
-    symmetricDifference
-  });
-  return es_set_symmetricDifference_v2;
-}
-requireEs_set_symmetricDifference_v2();
-var es_set_union_v2 = {};
-var setUnion;
-var hasRequiredSetUnion;
-function requireSetUnion() {
-  if (hasRequiredSetUnion) return setUnion;
-  hasRequiredSetUnion = 1;
-  var aSet2 = requireASet();
-  var add = requireSetHelpers().add;
-  var clone = requireSetClone();
-  var getSetRecord2 = requireGetSetRecord();
-  var iterateSimple2 = requireIterateSimple();
-  setUnion = function union(other) {
-    var O = aSet2(this);
-    var keysIter = getSetRecord2(other).getIterator();
-    var result = clone(O);
-    iterateSimple2(keysIter, function(it) {
-      add(result, it);
-    });
-    return result;
-  };
-  return setUnion;
-}
-var hasRequiredEs_set_union_v2;
-function requireEs_set_union_v2() {
-  if (hasRequiredEs_set_union_v2) return es_set_union_v2;
-  hasRequiredEs_set_union_v2 = 1;
-  var $ = require_export();
-  var union = requireSetUnion();
-  var setMethodGetKeysBeforeCloning = requireSetMethodGetKeysBeforeCloningDetection();
-  var setMethodAcceptSetLike2 = requireSetMethodAcceptSetLike();
-  var FORCED = !setMethodAcceptSetLike2("union") || !setMethodGetKeysBeforeCloning("union");
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: FORCED
-  }, {
-    union
-  });
-  return es_set_union_v2;
-}
-requireEs_set_union_v2();
 function uniqueValues(items, property) {
   const values = items.map((it) => it[property]);
   const unique = Array.from(new Set(values));

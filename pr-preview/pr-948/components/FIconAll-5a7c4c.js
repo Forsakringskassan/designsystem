@@ -236,7 +236,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FIcon/examples/FIconAll.vue:FIconAll-d96214.js
+// virtual-entry:virtual:packages/vue/src/components/FIcon/examples/FIconAll.vue:FIconAll-5a7c4c.js
 import { defineComponent } from "vue";
 import { FDataTable, FIcon, FTableColumn } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -356,7 +356,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d96214"
+  selector: "#example-5a7c4c"
 });
 export {
   render
