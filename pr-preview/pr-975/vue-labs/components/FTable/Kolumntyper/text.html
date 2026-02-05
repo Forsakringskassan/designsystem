@@ -46,10 +46,10 @@
             
         ></script><link
             rel="preload"
-            href="../../../search-data-b555e7.json"
+            href="../../../search-data-440052.json"
             as="fetch"
             crossorigin
-            integrity="sha384-w7ZttPy3EycoMVobUDj2er7pnzBjqWLELRq9lTFcjj1LYObXcFTFwAEC1Ei6sEt9"
+            integrity="sha384-bEO7WdmjF6rKM9f3oVlN3ueMQ8xWfCFKArRiy4V8UBpWTeHiasUP0WThykyeXVYQ"
             id="search-data"
         />
     </head>
@@ -964,39 +964,68 @@ interface <span class="hljs-title class_">Row</span> {
             </div>
         <h2 id="flodesdiagram"><a class="header-anchor" href="#flodesdiagram">Flödesdiagram</a></h2>
                 <pre class="mermaid">flowchart TD
- A@{ shape: &quot;circle&quot;, label: &quot;model value&quot; }
+ A@{ shape: &quot;circle&quot;, label: &quot;row value&quot; }
  B@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
  C@{ shape: &quot;rounded&quot;, label: &quot;formatter()&quot;}
  E@{ shape: &quot;rounded&quot;, label: &quot;value()&quot;}
-  G@{ shape: &quot;circle&quot;, label: &quot;view value&quot;}
+ G@{ shape: &quot;circle&quot;, label: &quot;view value&quot;}
 
-
-  A --&gt; B;
-  B -- OK --&gt; C;
+  A --&gt; E;
   B -- NOK --&gt; G;
-  C --&gt; E;
-  E --&gt; G;
-  A -- no validation --&gt; C;;
+  C --&gt; G;
+  B -- OK --&gt; C;
+  E -- no validation--&gt; C;
+  E --&gt; B;
 
  X@{ shape: &quot;rounded&quot;, label: &quot;parser()&quot;}
  Y@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
  Z@{ shape: &quot;rounded&quot;, label: &quot;update()&quot;}
 
-  G -- no validation --&gt; X;
-
   G --&gt; Y;
   Y -- OK --&gt; X;
+  Y -- NOK --&gt; Z;
+  G -- no validation --&gt; X;
   X --&gt; Z;
   Z --&gt; A;
-  Y -- NOK --&gt; A
+</pre>
+            <p class="docs-paragraph">Alternativ layout:</p>
+
+                <pre class="mermaid">flowchart TD
+ A@{ shape: &quot;circle&quot;, label: &quot;row value&quot; }
+ B@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
+ C@{ shape: &quot;rounded&quot;, label: &quot;formatter()&quot;}
+ E@{ shape: &quot;rounded&quot;, label: &quot;value()&quot;}
+ G@{ shape: &quot;circle&quot;, label: &quot;view value&quot;}
+
+  A --&gt; E;
+  B -- NOK --&gt; G;
+  C --&gt; G;
+  B -- OK --&gt; C;
+  E -- no validation--&gt; C;
+  E --&gt; B;
+
+ V@{ shape: &quot;circle&quot;, label: &quot;row value&quot; }
+ W@{ shape: &quot;circle&quot;, label: &quot;view value&quot;}
+ X@{ shape: &quot;rounded&quot;, label: &quot;parser()&quot;}
+ Y@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
+ Z@{ shape: &quot;rounded&quot;, label: &quot;update()&quot;}
+
+  W --&gt; Y;
+  Y -- OK --&gt; X;
+  Y -- NOK --&gt; Z;
+  W -- no validation --&gt; X;
+  X --&gt; Z;
+  Z --&gt; V;
 </pre>
             <h2 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
 <dt><strong><code>align:</code></strong> <code>&quot;left&quot; | &quot;right&quot;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Höger eller vänsterställd text och kolumnrubrik. Default <code>left</code>.</dd>
+<dd>Höger eller vänsterställd text och kolumnrubrik.
+Default <code>left</code>.</dd>
 <dt><strong><code>description:</code></strong> <code>string | Readonly&lt;Ref&lt;string | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>Formatbeskrivning</dd>
 <dt><strong><code>editable:</code></strong> <code>boolean | ((row: T) =&gt; boolean)  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Om cellen är redigerbar. Default <code>false</code>.</dd>
+<dd>Om cellen är redigerbar.
+Default <code>false</code>.</dd>
 <dt><strong><code>formatter:</code></strong> <code>(value: string): string | undefined  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>Funktion som används för att formatera värdet som visas. Parametern <code>value</code> är värdet från funktionen <code>value()</code> nedan.
 Anropas ej vid misslyckad validering.</dd>
@@ -1009,7 +1038,8 @@ Anropas ej vid misslyckad validering.</dd>
 <dt><strong><code>parser:</code></strong> <code>(value: string): string | undefined  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>Funktion som parsar värdet innan <code>update()</code> anropas. Anropas ej vid misslyckad validering.</dd>
 <dt><strong><code>size:</code></strong> <code>TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Hur kolumnens bredd skalas. <code>&quot;grow&quot;</code> ger största möjliga bredd och <code>&quot;shrink&quot;</code> minsta möjliga bredd. Default: <code>grow</code>.</dd>
+<dd>Hur kolumnens bredd skalas. <code>&quot;grow&quot;</code> ger största möjliga bredd och <code>&quot;shrink&quot;</code> minsta möjliga bredd.
+Default: <code>grow</code>.</dd>
 <dt><strong><code>tnum:</code></strong> <code>boolean</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>Tabular figures, till exempel att tal 111 ta samma plats som 000.</dd>
 <dt><strong><code>type:</code></strong> <code>InputTypeText</code></dt>
