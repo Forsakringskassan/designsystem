@@ -46,10 +46,10 @@
             
         ></script><link
             rel="preload"
-            href="../../../search-data-440052.json"
+            href="../../../search-data-b555e7.json"
             as="fetch"
             crossorigin
-            integrity="sha384-bEO7WdmjF6rKM9f3oVlN3ueMQ8xWfCFKArRiy4V8UBpWTeHiasUP0WThykyeXVYQ"
+            integrity="sha384-w7ZttPy3EycoMVobUDj2er7pnzBjqWLELRq9lTFcjj1LYObXcFTFwAEC1Ei6sEt9"
             id="search-data"
         />
     </head>
@@ -410,25 +410,14 @@ interface <span class="hljs-title class_">Row</span> {
         <h2 id="value"><a class="header-anchor" href="#value">Value</a></h2><p class="docs-paragraph">Texten som ska visas kan manipuleras med hjälp av callbackfunktionen <code>value(row: T): string</code>. Parametern <code>row</code> innehåller det aktuella rad-objektet.</p>
 
                 <div
-                    id="example-b7047e"
+                    id="example-42bb73"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-interface Row {</span>
-<span class="hljs-deletion">-    value: string;</span>
-<span class="hljs-deletion">-}</span>
-<span class="hljs-deletion">-</span>
-<span class="hljs-deletion">-const rows = ref&lt;Row[]&gt;([</span>
-<span class="hljs-deletion">-    {</span>
-<span class="hljs-deletion">-        value: &quot;It´s a string&quot;,</span>
-<span class="hljs-deletion">-    },</span>
-<span class="hljs-deletion">-]);</span>
-<span class="hljs-deletion">-</span>
- const columns = defineTableColumns&lt;Row&gt;([
-     {
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">     {
          type: &quot;text&quot;,
          header: &quot;Kolumnrubrik&quot;,
 <span class="hljs-deletion">-        key: &quot;value&quot;,</span>
@@ -444,7 +433,7 @@ interface <span class="hljs-title class_">Row</span> {
             <p class="docs-paragraph">I exemplet nedan visas hur man med hjälp av <code>value()</code> kan slå samman två värden för att visa i en egen kolumn.</p>
 
             <div
-                id="example-a44a64"
+                id="example-353fbc"
                 class="code-preview code-preview--default"
                 
                 
@@ -536,26 +525,14 @@ Om formateraren kombineras med callbackfunktionen <code>value()</code> så anrop
 Om formateraren kombineras med validering så krävs en lyckad validering för att formatteraren ska anropas.</p>
 
                 <div
-                    id="example-e93ad2"
+                    id="example-fb8ce5"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-interface Row {</span>
-<span class="hljs-deletion">-    value: string;</span>
-<span class="hljs-deletion">-}</span>
-<span class="hljs-deletion">-</span>
-<span class="hljs-deletion">-const rows = ref&lt;Row[]&gt;([</span>
-<span class="hljs-deletion">-    {</span>
-<span class="hljs-deletion">-        value: &quot;It´s a string&quot;,</span>
-<span class="hljs-deletion">-    },</span>
-<span class="hljs-deletion">-]);</span>
-<span class="hljs-deletion">-</span>
- const columns = defineTableColumns&lt;Row&gt;([
-     {
-         type: &quot;text&quot;,
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         type: &quot;text&quot;,
          header: &quot;Kolumnrubrik&quot;,
          key: &quot;value&quot;,
 <span class="hljs-addition">+        formatter(value: string): string {</span>
@@ -570,7 +547,7 @@ Om formateraren kombineras med validering så krävs en lyckad validering för a
             <p class="docs-paragraph">Exemplet nedan visar hur formateraren gör om texten till gemener.</p>
 
             <div
-                id="example-61cbad"
+                id="example-4bdc61"
                 class="code-preview code-preview--default"
                 
                 
@@ -663,26 +640,14 @@ Parsern anropas med cellens värde då editeringen avslutas.
 Om parsern kombineras med validering så krävs en lyckad validering för att parsern ska anropas.</p>
 
                 <div
-                    id="example-4f075d"
+                    id="example-dd51a3"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-interface Row {</span>
-<span class="hljs-deletion">-    value: string;</span>
-<span class="hljs-deletion">-}</span>
-<span class="hljs-deletion">-</span>
-<span class="hljs-deletion">-const rows = ref&lt;Row[]&gt;([</span>
-<span class="hljs-deletion">-    {</span>
-<span class="hljs-deletion">-        value: &quot;It´s a string&quot;,</span>
-<span class="hljs-deletion">-    },</span>
-<span class="hljs-deletion">-]);</span>
-<span class="hljs-deletion">-</span>
- const columns = defineTableColumns&lt;Row&gt;([
-     {
-         type: &quot;text&quot;,
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         type: &quot;text&quot;,
          header: &quot;Kolumnrubrik&quot;,
          key: &quot;value&quot;,
 <span class="hljs-addition">+        editable: true,</span>
@@ -699,7 +664,7 @@ Om parsern kombineras med validering så krävs en lyckad validering för att pa
 Notera att parsen inte anropas förens editeringen avslutas, därav så innehåller rad-objektet versaler ända tills cellen har redigerats.</p>
 
             <div
-                id="example-252f08"
+                id="example-b5e829"
                 class="code-preview code-preview--default"
                 
                 
@@ -780,26 +745,14 @@ interface <span class="hljs-title class_">Row</span> {
 Det nya värdet <code>newValue</code>, om pareser används så är detta det parsade värdet, samt det gamla värdet <code>oldValue</code>.</p>
 
                 <div
-                    id="example-be0e33"
+                    id="example-bc5570"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-interface Row {</span>
-<span class="hljs-deletion">-    value: string;</span>
-<span class="hljs-deletion">-}</span>
-<span class="hljs-deletion">-</span>
-<span class="hljs-deletion">-const rows = ref&lt;Row[]&gt;([</span>
-<span class="hljs-deletion">-    {</span>
-<span class="hljs-deletion">-        value: &quot;It´s a string&quot;,</span>
-<span class="hljs-deletion">-    },</span>
-<span class="hljs-deletion">-]);</span>
-<span class="hljs-deletion">-</span>
- const columns = defineTableColumns&lt;Row&gt;([
-     {
-         type: &quot;text&quot;,
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         type: &quot;text&quot;,
          header: &quot;Kolumnrubrik&quot;,
          key: &quot;value&quot;,
 <span class="hljs-addition">+        editable: true,</span>
@@ -814,7 +767,7 @@ Det nya värdet <code>newValue</code>, om pareser används så är detta det par
             <p class="docs-paragraph">Exemplet nedan visar hur värdet i rad-objektet bara uppdateras om det nya värdet börjar på bokstaven a.</p>
 
             <div
-                id="example-7c9097"
+                id="example-3f1314"
                 class="code-preview code-preview--default"
                 
                 
@@ -895,26 +848,14 @@ interface <span class="hljs-title class_">Row</span> {
         <h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Redigerbara celler kan valideras med hjälp av &quot;@link validators validatorer&quot;, det görs genom parameten <code>validation: ValidatorConfigs</code>.</p>
 
                 <div
-                    id="example-edd3db"
+                    id="example-1af400"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-interface Row {</span>
-<span class="hljs-deletion">-    value: string;</span>
-<span class="hljs-deletion">-}</span>
-<span class="hljs-deletion">-</span>
-<span class="hljs-deletion">-const rows = ref&lt;Row[]&gt;([</span>
-<span class="hljs-deletion">-    {</span>
-<span class="hljs-deletion">-        value: &quot;It´s a string&quot;,</span>
-<span class="hljs-deletion">-    },</span>
-<span class="hljs-deletion">-]);</span>
-<span class="hljs-deletion">-</span>
- const columns = defineTableColumns&lt;Row&gt;([
-     {
-         type: &quot;text&quot;,
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         type: &quot;text&quot;,
          header: &quot;Kolumnrubrik&quot;,
          key: &quot;value&quot;,
 <span class="hljs-addition">+        editable: true,</span>
@@ -945,7 +886,7 @@ interface <span class="hljs-title class_">Row</span> {
 <p class="docs-paragraph">Nedan visas ett exempel där texten i cellen valideras mot både en min-längd och en max-längd.</p>
 
             <div
-                id="example-043591"
+                id="example-aa2f03"
                 class="code-preview code-preview--default"
                 
                 
