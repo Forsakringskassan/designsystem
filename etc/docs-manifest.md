@@ -227,6 +227,7 @@ search-data-[hash].json
 styles/colors.html
 styles/compare-density.html
 styles/density.html
+styles/forcedcolors.html
 styles/grid.html
 styles/icons.html
 styles/index.html
