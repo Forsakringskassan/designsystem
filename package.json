@@ -99,7 +99,7 @@
     "@types/estree": "1.0.8",
     "@types/jest": "29.5.14",
     "@types/lodash": "4.17.23",
-    "@types/node": "20.19.30",
+    "@types/node": "20.19.31",
     "@vue/server-renderer": "3.5.27",
     "artifact-size-analyzer": "1.2.2",
     "autoprefixer": "10.4.24",
