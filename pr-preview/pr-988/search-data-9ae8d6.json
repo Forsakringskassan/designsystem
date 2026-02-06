@@ -202,6 +202,9 @@
     "produktionsklar",
     "beta",
     "experimentell",
+    "EventBus",
+    "EventBus",
+    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -215,9 +218,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -623,15 +623,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -1096,6 +1096,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1126,14 +1134,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -2218,6 +2218,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2245,21 +2260,6 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -2484,17 +2484,17 @@
     "202": 53,
     "203": 53,
     "204": 53,
-    "205": 53,
+    "205": 54,
     "206": 54,
     "207": 54,
     "208": 54,
-    "209": 54,
+    "209": 55,
     "210": 55,
     "211": 55,
     "212": 55,
     "213": 56,
     "214": 56,
-    "215": 57,
+    "215": 56,
     "216": 57,
     "217": 57,
     "218": 58,
