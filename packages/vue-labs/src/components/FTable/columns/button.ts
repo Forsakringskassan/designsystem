@@ -19,6 +19,10 @@ export interface TableColumnButton<
     onClick?(this: void, row: T): void;
     enabled?: boolean | ((this: void, row: T) => boolean);
     icon?: string;
+    /**
+     * The icon library to use when rendering an icon. If not set, the default icon library will be used.
+     */
+    iconLibrary?: string;
 }
 
 /**
@@ -30,6 +34,7 @@ export interface NormalizedTableColumnButton<
 > extends NormalizedTableColumnBase<K> {
     readonly type: "button";
     readonly icon: string | null;
+    readonly iconLibrary: string | undefined;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnButton<T, K>;
@@ -54,6 +59,7 @@ export function normalizeButtonColumn<T, K extends keyof T>(
                 ? column.enabled
                 : () => Boolean(column.enabled ?? true),
         icon: column.icon ?? null,
+        iconLibrary: column.iconLibrary,
         sortable: column.key ?? null,
     };
 }

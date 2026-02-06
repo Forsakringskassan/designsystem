@@ -33,7 +33,7 @@ defineExpose(expose);
 <template>
     <td v-if="renderButton" class="table-ng__cell table-ng__cell--button">
         <button ref="button" class="icon-button" type="button" tabindex="-1" @click="onClickButton">
-            <f-icon v-if="column.icon" :name="column.icon"></f-icon>
+            <f-icon v-if="column.icon" :library="column.iconLibrary" :name="column.icon"></f-icon>
             <span class="sr-only">{{ column.text(row) }}</span>
         </button>
     </td>
