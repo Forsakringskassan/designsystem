@@ -18318,7 +18318,7 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
           height
         } = rect;
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
-        const offsetLeft = (_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
+        const offsetLeft = Math.floor(((_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0) + window.scrollX);
         const offSetTop = Math.floor(((_offsetRect$top = offsetRect?.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
