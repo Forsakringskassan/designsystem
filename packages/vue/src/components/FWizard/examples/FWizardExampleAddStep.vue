@@ -46,7 +46,7 @@ export default defineComponent({
                 this.fruktkorgar.splice(index, 1);
             }
         },
-        onBeforeNext() {
+        onBeforeNext(): Promise<void> {
             return new Promise((resolve) => {
                 console.log("Här kanska man anropar backend för att kontrollera något?");
                 setTimeout(resolve, 2000);
@@ -115,7 +115,7 @@ export default defineComponent({
                 key="baz"
                 v-test="'myInfoStep'"
                 title="Mina uppgifter"
-                @before-next="onBeforeNext"
+                :before-next="onBeforeNext"
             >
                 <p>Min adress</p>
             </f-wizard-step>
