@@ -48,7 +48,7 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
         &__itempane {
             width: 100%;
             padding: core.densify(var(--f-list-item-itempane-padding)) var(--f-list-item-itempane-padding);
-            color: inherit;
+            color: $list-row-color-text;
 
             --f-margin-component-bottom: 0.5rem;
 
