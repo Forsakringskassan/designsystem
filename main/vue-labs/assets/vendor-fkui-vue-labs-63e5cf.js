@@ -3449,7 +3449,7 @@ var _hoisted_3$7 = {
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--checkbox"
 };
-var _hoisted_4$3 = ["checked", "aria-label"];
+var _hoisted_4$4 = ["checked", "aria-label"];
 var _sfc_main$c = /* @__PURE__ */ defineComponent2({
   __name: "ITableCheckbox",
   props: {
@@ -3484,7 +3484,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
         checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value
-      }, null, 8, _hoisted_4$3)], 512));
+      }, null, 8, _hoisted_4$4)], 512));
     };
   }
 });
@@ -4211,10 +4211,10 @@ var _hoisted_2$3 = {
   class: "table-ng__editable__text"
 };
 var _hoisted_3$3 = ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-label"];
-var _hoisted_4$2 = {
+var _hoisted_4$3 = {
   class: "table-ng__editable__text"
 };
-var _hoisted_5$2 = {
+var _hoisted_5$3 = {
   key: 1,
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--static"
@@ -4386,7 +4386,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         }, ["prevent"])),
         onKeydown: withModifiers(onEditKeyDown, ["stop"]),
         onFocusout: _cache[2] || (_cache[2] = (e) => onEditBlur(e))
-      }, [createElementVNode("span", _hoisted_4$2, toDisplayString(viewValue.value), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(FIcon), {
+      }, [createElementVNode("span", _hoisted_4$3, toDisplayString(viewValue.value), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(FIcon), {
         name: "arrow-down",
         class: "table-ng__editable__icon--active"
       })], 40, _hoisted_3$3), [[vShow, editing.value]]), _cache[6] || (_cache[6] = createTextVNode()), withDirectives(createVNode(unref3(IComboboxDropdown), {
@@ -4398,7 +4398,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         "input-node": editRef.value,
         onSelect: selectDropdownOption,
         onClose: onDropdownClose
-      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$2, toDisplayString(__props.column.selected(__props.row)), 1));
+      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$3, toDisplayString(__props.column.selected(__props.row)), 1));
     };
   }
 });
@@ -4416,9 +4416,16 @@ function addInputValidators(inputElement, type, decimals) {
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
-var _hoisted_1$3 = ["id"];
-var _hoisted_2$2 = ["id", "aria-label"];
+var _hoisted_1$3 = ["id", "aria-invalid"];
+var _hoisted_2$2 = {
+  class: "table-ng__editable__text"
+};
 var _hoisted_3$2 = {
+  key: 0,
+  class: "sr-only"
+};
+var _hoisted_4$2 = ["id", "aria-label"];
+var _hoisted_5$2 = {
   ref: "pen"
 };
 var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
@@ -4454,6 +4461,8 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       dispatchComponentValidityEvent: () => void 0
     };
     const hasError = computed3(() => validity.value.validityMode === "ERROR");
+    const viewModeAriaInvalid = computed3(() => !inEdit.value && hasError.value ? true : void 0);
+    const viewModeErrorMessage = computed3(() => !inEdit.value && hasError.value ? validity.value.validationMessage : void 0);
     const divClasses = computed3(() => {
       return {
         "table-ng__editable": true,
@@ -4491,7 +4500,6 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       return value.length > 0 ? value : void 0;
     });
     const tdElement = useTemplateRef("td");
-    const viewElement = useTemplateRef("view");
     const inputElement = useTemplateRef("input");
     const penElement = useTemplateRef("pen");
     const {
@@ -4644,7 +4652,6 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       }
     }
     function onEditingKeydown(event) {
-      assertRef(viewElement);
       assertRef(inputElement);
       event.stopPropagation();
       if (event.key === "Enter") {
@@ -4724,14 +4731,12 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         ref: "td",
         tabindex: "-1",
         class: normalizeClass(wrapperClasses.value),
+        "aria-invalid": viewModeAriaInvalid.value,
         onClick: withModifiers(onClickCell, ["stop"]),
         onKeydown
       }, [createElementVNode("div", {
         class: normalizeClass(divClasses.value)
-      }, [createElementVNode("span", {
-        ref: "view",
-        class: "table-ng__editable__text"
-      }, toDisplayString(fromColumnValue()), 513), _cache[1] || (_cache[1] = createTextVNode()), withDirectives(createElementVNode("input", {
+      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[1] || (_cache[1] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("input", {
         id: unref3(inputId),
         ref: "input",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
@@ -4742,10 +4747,10 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         "aria-label": ariaLabel.value,
         onValidity,
         onPendingValidity
-      }, null, 42, _hoisted_2$2), [[vModelText, viewValue.value]]), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("div", _hoisted_3$2, [createVNode(unref3(FIcon), {
+      }, null, 42, _hoisted_4$2), [[vModelText, viewValue.value]]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("div", _hoisted_5$2, [createVNode(unref3(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
-      })], 512)], 2), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(IPopupError), {
+      })], 512)], 2), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(IPopupError), {
         anchor: tdElement.value,
         "is-open": openPopupError.value,
         "error-message": validity.value.validationMessage,
