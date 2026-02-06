@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Högkontrast - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-772c4b.css"
+            href="../assets/docs-d0eb81.css"
             crossorigin
-            integrity="sha384-A4qmHsbbEtOqtesYei6Wtu36aYB4U+2kPF+4/5PFp8KhgK6v3MNCngCVl4htQRlp"
+            integrity="sha384-xe3Iwr+OPUKbXEUnsLspqz5em8rCtaNam58TMWHFTmlTbuD676xI7wcLlQwkuq7w"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-59aa9f.js",
     "@fkui/date": "../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-2b3c14.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-10c746.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../assets/vendor-fkui-logic-59aa9f.js": "sha384-if5Op9xLJOQ+bexhtVxEfbgViVdwDXK0yKCqmJ7KlArve38A9EfWK+ICL67V5ZjA",
     "../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../assets/vendor-fkui-vue-2b3c14.js": "sha384-2pnf7O/Z9Zj9mt//1BefZAJZbTHwCKkgDQ6isCtyddYRDA2uwS2lR4TG/IFsKE+u",
+    "../assets/vendor-fkui-vue-10c746.js": "sha384-JDknYX0eMzeFp19Pa7n8RxXVuOAqVVMs8DYweeUbuwljGr83TEiomwcSeUhksA9B",
     "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-2ddf50.json"
+            href="../search-data-ce05da.json"
             as="fetch"
             crossorigin
-            integrity="sha384-1oq8ZP75kqr0gp0a0tqoisUTdjZUnYCxRJU66z9Ork0VhK7oQQQbe/63skqen8Fm"
+            integrity="sha384-kMJXKe983qwsqx908etoSWxnMqiIn/m5P5c2md2mNY4IgyTmDwVunmboINRPfbH4"
             id="search-data"
         />
     </head>
@@ -350,7 +350,7 @@
 <p class="docs-paragraph">Det här kallas Windows högkontrast eller Windows kontrasttema och aktiverar i sin tur <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors">CSS media-funktionen forced-colors</a>.</p>
 <p class="docs-paragraph">Varken Android, iOS eller MacOS har stöd för kontrastteman. Däremot har flera <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors#browser_compatibility">webbläsare stöd för forced-colors</a>. I praktiken är det bara Windows i kombination med någon av webbläsarna med stöd för forced-colors som ger användaren möjlighet att själv välja ett kontrasttema.</p>
 <p class="docs-paragraph">Här används omväxlande begreppen högkontrast och forced-colors.</p>
-<h2 id="fkds_och_hogkontrast"><a class="header-anchor" href="#fkds_och_hogkontrast">FKDS och högkontrast</a></h2><p class="docs-paragraph">I designsystemet försöker vi undvika att designa specifikt för högkontrast, istället ska komponenter i FKDS ha en design som fungerar även i högkontrast. Ibland behöver designers och utvecklare gör val för att designen ska fungera även i högkontrast. Ibland behövs justeringar specifikt för högkontrast. Här tar vi upp några exempel på designval och anpassningar som används i designsystemet.</p>
+<h2 id="fkds_och_hogkontrast"><a class="header-anchor" href="#fkds_och_hogkontrast">FKDS och högkontrast</a></h2><p class="docs-paragraph">I designsystemet försöker vi undvika att designa specifikt för högkontrast, istället ska komponenter i FKDS ha en design som fungerar även i högkontrast. Ibland behöver designers och utvecklare göra val för att designen ska fungera även i högkontrast. Ibland behövs justeringar specifikt för högkontrast. Här tar vi upp några exempel på designval och anpassningar som används i designsystemet.</p>
 <h2 id="bakgrundsfarger"><a class="header-anchor" href="#bakgrundsfarger">Bakgrundsfärger</a></h2><p class="docs-paragraph">Alla element får samma bakgrundsfärg när forced-colors är aktivt. Om du använder en avvikande bakgrundsfärg för att skilja ut ett element eller en del av en sida behöver du hitta andra eller kompletterande metoder.</p>
 <p class="docs-paragraph">Exempel:</p>
 <ul>
@@ -363,105 +363,133 @@
 <li>Knappen eller ytan kan kompletteras med en kantlinje (<code>border</code> eller <code>outline</code>).</li>
 <li>Ytan med viktig information skulle kunna avskiljas från övrigt innehåll med avstånd eller en linje.</li>
 </ul>
-<p class="docs-paragraph">Tips: Genom att använda en transparent kantlinje får elementen en kantlinje som bara syns i högkontrastläget.</p>
+<p class="docs-paragraph">Tips: Genom att använda en transparent kantlinje syns den bara i högkontrastläget.</p>
 
                 <div
-                    id="example-114417"
+                    id="example-61f4d1"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="css"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid transparent;
+                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-class">.mydiv</span> {
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid transparent;
+}
 </code></pre>
                 </div>
             <p class="docs-paragraph">I <a href="../components/modal/fmodal.html">modalen</a> används en transparent <code>outline</code> för att säkra att modalen syns tydligt mot bakgrunden.</p>
 <p class="docs-paragraph"><img src="../assets/images/e98a0c899e28019118b3e1d64bbe22a2.png" alt="FKDS modal i Windows kontrasttema Natthimmel. Modalen flyter ihop med bakgrunden eftersom allt har samma svarta bakgrund."><br>
 Tidigare syntes inte designsystemets modal mot bakgrunden eftersom alla bakgrundsfärger sätts till svart i Windows kontrasttema Natthimmel.</p>
-<p class="docs-paragraph"><img src="../assets/images/5ec99b694b9007c95610dd7e8ceadc7e.png" alt="FKDS modal i Windows kontrasttema Natthimmel. Modalen syns tydligt mot den svarta bakgrunden tack vare en vit kantlinje run modalen."><br>
+<p class="docs-paragraph"><img src="../assets/images/5ec99b694b9007c95610dd7e8ceadc7e.png" alt="FKDS modal i Windows kontrasttema Natthimmel. Modalen syns tydligt mot den svarta bakgrunden tack vare en vit kantlinje runt modalen."><br>
 Med en transparent outline får modalen en tydlig kantlinje när forcedcolors är aktivt.</p>
 <h2 id="visuella_effekter_som_feedback_till_anvandaren"><a class="header-anchor" href="#visuella_effekter_som_feedback_till_anvandaren">Visuella effekter som feedback till användaren</a></h2><h3 id="muspekaren_fors_over_ett_element"><a class="header-anchor" href="#muspekaren_fors_over_ett_element">Muspekaren förs över ett element</a></h3><p class="docs-paragraph">I FKDS ändras ofta en komponents bakgrundsfärg för att visa användaren när muspekaren förs över ett interaktivt element.</p>
 <p class="docs-paragraph">Exempel:</p>
 <ul>
-<li>Rad i en utfälld kombo-box</li>
+<li>Rad i en utfälld kombobox</li>
 <li>Dag i en kalender</li>
 </ul>
 <p class="docs-paragraph">Den här typen av visuell effekt försvinner i högkontrast eftersom alla element får samma bakgrundsfärg.</p>
-<p class="docs-paragraph">I dessa falla använder komponenter i FKDS en media-query för att sätta elements kantlinje (border eller outline) till <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color">systemfärgen highlight</a>.</p>
+<p class="docs-paragraph">I dessa fall använder komponenter i FKDS en media-query för att sätta elements kantlinje (border eller outline) till <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color">systemfärgen</a> highlight.</p>
+<p class="docs-paragraph"><img src="../assets/images/c264e4052d8486a61386d9083c9e0e6c.png" alt="Ett datum i kalendern visas med en lila ram som hover-effekt i högkontrast."><br>
+Hover-effekt för en dag i kalendern i Windows kontrasttema Natthimmel.</p>
 
                 <div
-                    id="example-e2a2a8"
+                    id="example-bd31f9"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="css"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-pseudo">:hover</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-class">.calendar-day</span><span class="hljs-selector-pseudo">:hover</span> {
     <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">forced-colors</span>: active) {
         <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid highlight;
     }
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Ibland kan det vara bra att hitta andra sätt att än att ändra bakgrundsfärgen när du vill ge användaren tydlig återkoppling. I FKDS ändras till exempel tjockleken på länkars understrykning när användaren för muspekaren över dem. En design som alltså fungerar även i högkontrast, utan justeringar.</p>
+            <p class="docs-paragraph">Ibland kan det vara bra att hitta andra sätt att än att ändra bakgrundsfärgen när du vill ge användaren tydlig återkoppling. I FKDS ändras till exempel tjockleken på länkars understrykning när användaren för muspekaren över dem. En design som fungerar även i högkontrast, utan justeringar.</p>
 
-                <div
-                    id="example-c54721"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="css"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0">&lt;<span class="hljs-selector-tag">a</span> class=&quot;anchor anchor<span class="hljs-attr">--block</span>&quot; href=&quot;javascript:<span class="hljs-string">&quot;
-    &gt;En länk
-&lt;/a&gt;
-</span></code></pre>
+            <div
+                id="example-f1a7fc"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="html"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    <a class="anchor anchor--block" href="javascript:">En länk </a>
+
                 </div>
-            <h3 id="visa_ett_element_som_valt"><a class="header-anchor" href="#visa_ett_element_som_valt">Visa ett element som valt</a></h3><p class="docs-paragraph">Valbara element markeras ofta som valda genom att bakgrundsfärgen ändras.</p>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;anchor anchor--block&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span>&gt;</span>En länk <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h3 id="visa_ett_element_som_valt"><a class="header-anchor" href="#visa_ett_element_som_valt">Visa ett element som valt</a></h3><p class="docs-paragraph">Valbara element markeras ofta som valda genom att bakgrundsfärgen ändras.</p>
 <p class="docs-paragraph">Exempel i FKDS</p>
 <ul>
-<li>Rad i en utfälld kombo-box</li>
+<li>Rad i en utfälld kombobox</li>
 <li>Dag i kalendern</li>
-<li>Check-box</li>
+<li>Checkbox</li>
 </ul>
-<p class="docs-paragraph">I dessa fall sätts komponents bakgrundsfärg till systemfärgen highlight när forced-colors är aktivt. Eventuell text som visas i förgrunden får systemfärgen highlightText.</p>
-<p class="docs-paragraph">När en bakgrund färgläggs med en systemfärg lägger webbläsare till en bakgrund bakom texten för att säkra tillräcklig kontrast. Genom att använda forced-color-adjust kan du ta full kontroll över presentationen i högkontrastläget.</p>
-<p class="docs-paragraph">[bild som visar med / utan forced-color-adjust: none]</p>
+<p class="docs-paragraph">I dessa fall sätts komponents bakgrundsfärg till systemfärgen <code>highlight</code> när forced-colors är aktivt. Eventuell text som visas i förgrunden får systemfärgen <code>highlightText</code>.</p>
+<p class="docs-paragraph">När en bakgrund färgläggs med en systemfärg lägger webbläsare till en bakgrund bakom texten för att säkra tillräcklig kontrast. Genom att använda <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/forced-color-adjust">forced-color-adjust: none</a> kan du ta full kontroll över presentationen i högkontrastläget.</p>
+<p class="docs-paragraph"><img src="../assets/images/69a9bfbc2402c523cd7f7d01d32fc415.png" alt="3 exempel som visar ett markerat alternativ i en lista i komboboxen. I alla exempel är det valda alternativets bakgrund satt till highglight. Exempel 1 har oförändrad textfärg. I exempel 2 är textens färg highlighttext. I tredje exempel är texten satt till highlighttext och forced-color-adjust är satt till none "><br>
+De tre exemplen visar ett valt alternativ i komboboxens lista där bakgrundsfärgen är satt till <code>highlight</code>. I första exemmplet är textens färg oförändrad. I andra exemplet är textfärgen <code>highlightText</code>. I både första och andra exemplet har browsern lagt en svart bakgrund bakom texten. I tredje exemplet används <code>highlightText</code> och <code>forced-color-adjust: none</code>.</p>
 
                 <div
-                    id="example-6328fb"
+                    id="example-844679"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="css"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">forced-colors</span>: active) {
-    <span class="hljs-attribute">background-color</span>: highlight;
-    <span class="hljs-attribute">color</span>: highlightText;
-    <span class="hljs-attribute">forced-color-adjust</span>: none;
+                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-class">.combobox__listbox__option--highlight</span> {
+    <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">forced-colors</span>: active) {
+        <span class="hljs-attribute">background-color</span>: highlight;
+        <span class="hljs-attribute">color</span>: highlightText;
+        <span class="hljs-attribute">forced-color-adjust</span>: none;
+    }
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Var noggrann med när du använder forced-color-adjust, det kan ge oförutsedda effekter i högkontrast-läget.</p>
-<h2 id="svg_filer_och_farger"><a class="header-anchor" href="#svg_filer_och_farger">SVG-filer och färger</a></h2><p class="docs-paragraph">SVG-filer behåller sina färger när forcedcolors är aktivt. Det gäller både SVG-filer som färgsätts i SVG-filen i sig eller via CSS.</p>
-<p class="docs-paragraph">I FKDS komponenter används ikoner i SVG-format som komplement till text. Till exempel kan en knapp för att radera har en text samt en ikon i form av en soptunna. Ikonerna är alltid enkla och består oftast bara av en färg, samma som intilliggande text.</p>
-<p class="docs-paragraph">Ikoner i designsystemet har oftast ingen egen färg. Istället pekar SVG-filerna på <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#currentcolor_keyword">currentColor</a>. Därmed kommer ikonen att följa textfärgen i den kontext där ikonen används. Till exempel kommer en ikon som används i en knapp alltid att följa knappens textfärg, även när forcedcolors är aktivt.</p>
-<p class="docs-paragraph">I de fall en ikon används som en knapp utan någon relaterad text sätts ikonen till systemfärgen buttonBorder.</p>
+            <p class="docs-paragraph">Var noggrann med när du använder forced-color-adjust, det kan ge oförutsedda effekter.</p>
+<h2 id="svg_filer_och_farger"><a class="header-anchor" href="#svg_filer_och_farger">SVG-filer och färger</a></h2><p class="docs-paragraph">SVG-filer behåller sina färger när forced-colors är aktivt. Det gäller både SVG-filer som färgsätts i SVG-filen i sig eller via CSS.</p>
+<p class="docs-paragraph">I FKDS komponenter används ikoner i SVG-format som komplement till text. Till exempel kan en knapp för att radera ha en text samt en ikon i form av en soptunna. Ikonerna är alltid enkla och består oftast bara av en färg, samma som intilliggande text.</p>
+<p class="docs-paragraph">Ikoner i designsystemet har oftast ingen egen färg. Istället pekar SVG-filerna på <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#currentcolor_keyword">currentColor</a>. Därmed kommer ikonen att följa textfärgen i den kontext där ikonen används. Till exempel kommer en ikon som används i en knapp alltid att följa knappens textfärg, även när forced-colors är aktivt.</p>
+<p class="docs-paragraph">I de fall en ikon används som en knapp utan någon relaterad text sätts ikonen till systemfärgen <code>buttonBorder</code>.</p>
 
                 <div
-                    id="example-e010ef"
+                    id="example-2d691a"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="css"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">forced-colors</span>: active) {
-    <span class="hljs-attribute">color</span>: buttonBorder;
+                    <pre class="code-preview__markup"><code class="hljs lang-css" tabindex="0"><span class="hljs-selector-class">.buttonicon</span> {
+    <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">forced-colors</span>: active) {
+        <span class="hljs-attribute">color</span>: buttonBorder;
+    }
 }
 </code></pre>
                 </div>
@@ -493,9 +521,9 @@ Kantlinjen till en <a href="../components/page-layout/fresizepane.html">Justerba
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/forcedcolors_guidelines (<a href="https://github.com/Forsakringskassan/designsystem/commits/6cce731765f743faf414f065c1544c17714e660a">6cce731</a>)<br />
+<div class="footer__right"><div class="version">docs/forcedcolors_guidelines (<a href="https://github.com/Forsakringskassan/designsystem/commits/4b9e13fde1c473d1c74a47f2af37fa3cb67a1e4d">4b9e13f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/988">PR 988</a><br />
-        2026-02-05 13:54
+        2026-02-06 08:57
 </div>
 <div class="toolbar__item">
     <form id="version">
