@@ -135,6 +135,7 @@ export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase
     enabled?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
     icon?: string;
+    iconLibrary?: string;
     // (undocumented)
     key?: K;
     // (undocumented)

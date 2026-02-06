@@ -51,6 +51,17 @@ it("icon should be rendered when icon prop is used", () => {
     expect(icon.attributes("name")).toBe("foo");
 });
 
+it("icon library should be set when iconLibrary prop is used", () => {
+    expect.assertions(2);
+    const wrapper = shallowMount(FTableButton, {
+        props: { icon: "foo", iconLibrary: "bar" },
+        slots: { default: "lorem ipsum" },
+    });
+    const icon = wrapper.find("f-icon-stub");
+    expect(icon.exists()).toBeTruthy();
+    expect(icon.attributes("library")).toBe("bar");
+});
+
 describe("html-validate", () => {
     it("should require text content", () => {
         const markup = /* HTML */ `
