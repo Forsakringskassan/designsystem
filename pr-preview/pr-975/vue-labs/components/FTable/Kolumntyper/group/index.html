@@ -1,0 +1,1371 @@
+<!doctype html>
+<html lang="sv" class="layout--api" data-root-url="../../../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Textfält - FKUI Labs</title><link
+            rel="stylesheet"
+            href="../../../../assets/docs-f66e61.css"
+            crossorigin
+            integrity="sha384-U3xBfyDm/sJ5XRjY6n9iI/yGaRYNx4wGXHoteOwuZ92VHH1B1KLQsYIWF6yNuYWQ"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../../../assets/docs-fkui-813f2b.css"
+            crossorigin
+            integrity="sha384-IFBsOENAbT7AWzkBmEXjK43Qkqi61LnLXJvipg9XSXp740mkveimGg/558wAdaU8"
+            data-theme="fkui" disabled
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../../../assets/vendor-vue-abba52.js",
+    "@fkui/logic": "../../../../assets/vendor-fkui-logic-fb32f2.js",
+    "@fkui/date": "../../../../assets/vendor-fkui-date-1d9b40.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-660e26.js",
+    "@fkui/vue-labs": "../../../../assets/vendor-fkui-vue-labs-91b5f6.js",
+    "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-fe2383.js"
+  },
+  "integrity": {
+    "../../../../assets/vendor-vue-abba52.js": "sha384-SxKEyNX6tSTQsiQzh6XKyPXj6flm136L3+YapliZNb/JqTTA8owPUNKeRoca7sT6",
+    "../../../../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
+    "../../../../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
+    "../../../../assets/vendor-fkui-vue-660e26.js": "sha384-SIEBycKrDzIxE8W2WZF1wcgy1RAAi0uzW73yPJSUiBQ2HSLIvzaBPkP6nGBmEfAk",
+    "../../../../assets/vendor-fkui-vue-labs-91b5f6.js": "sha384-lcgN7zpG/XKDammpsYRGct11xbyQ594q6UJ27bXp9tZutDlvCeDR+moaZZ0Mg5ht",
+    "../../../../assets/vendor-forsakringskassan-docs-live-example-fe2383.js": "sha384-zp/dC2Q9fr2MNGNwpaTNP+qizDjGJBio6keMixt3Nzm4r55B+r3hAHw54F4fE17W"
+  }
+}
+        </script><script
+            src="../../../../assets/bootstrap-dfc010.js"
+            
+            crossorigin
+            integrity="sha384-4CY3mj1uza2HPzeViyHD3gIMd8d3TDJDCoq1h22Ak/QLHgKLnc2ymTmUrjDIDy3M"
+            
+        ></script><link
+            rel="preload"
+            href="../../../../search-data-40c7e8.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-YQ+EHYbnTohOHc8ZMfTkBs2KyDNTaEuqWpfvi1fLgFmLHUrP0R9qSWDbm6ldJIFC"
+            id="search-data"
+        />
+    </head>
+    <body><div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../../../index.html">
+            <span aria-label="FKUI Labs" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../../../index.html"> FKUI Labs </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../../../"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../../pageobjects/"> Pageobjekt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../../pageobjects/"> Pageobjekt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <span class="version">
+        6.35.0
+    </span>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol><li class="expandable active">
+        <details open>
+            <summary>Tabell</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../ftable-columns.html"
+            
+            
+            
+            data-path="components/FTable/ftable-columns.html"
+            
+        >
+            Kolumntyper - AI
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../"
+            
+            
+            
+            data-path="components/FTable/"
+            
+        >
+            Tabell
+        </a>
+    </li><li class="expandable active">
+        <details open>
+            <summary>Kolumntyper</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../render.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/render.html"
+            
+        >
+            Anpassad
+        </a>
+    </li><li class="link ">
+        <a
+            href="../select.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/select.html"
+            
+        >
+            Dropplista
+        </a>
+    </li><li class="link ">
+        <a
+            href="../button.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/button.html"
+            
+        >
+            Knapp
+        </a>
+    </li><li class="link ">
+        <a
+            href="../menu.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/menu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li><li class="link ">
+        <a
+            href="../checkbox.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/checkbox.html"
+            
+        >
+            Kryssruta
+        </a>
+    </li><li class="link ">
+        <a
+            href="../anchor.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/anchor.html"
+            
+        >
+            Länk
+        </a>
+    </li><li class="link ">
+        <a
+            href="../radio.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/radio.html"
+            
+        >
+            Radioknapp
+        </a>
+    </li><li class="link ">
+        <a
+            href="../rowheader.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/rowheader.html"
+            
+        >
+            Radrubrik
+        </a>
+    </li><li class="expandable active">
+        <details open>
+            <summary>Textfält</summary>
+            
+            
+<ol><li class="link active">
+        <a
+            href="./"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/"
+            
+        >
+            Textfält
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Specialiserade</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="./Specialiserade/text-bankgiro.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-bankgiro.html"
+            
+        >
+            Bankgiro
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-clearing-number.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-clearing-number.html"
+            
+        >
+            Clearingnummer
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-date.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-date.html"
+            
+        >
+            Datum
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-bank-account-number.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-bank-account-number.html"
+            
+        >
+            Kontonummer
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-email.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-email.html"
+            
+        >
+            Mejladress
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-number.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-number.html"
+            
+        >
+            Numeriskt
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-organisationsnummer.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-organisationsnummer.html"
+            
+        >
+            Organisationsnummer
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-personnummer.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-personnummer.html"
+            
+        >
+            Personnummer
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-plusgiro.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-plusgiro.html"
+            
+        >
+            Plusgiro
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-postal-code.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-postal-code.html"
+            
+        >
+            Postnummer
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-percent.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-percent.html"
+            
+        >
+            Procent
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-phonenumber.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-phonenumber.html"
+            
+        >
+            Telefonnummer
+        </a>
+    </li><li class="link ">
+        <a
+            href="./Specialiserade/text-currency.html"
+            
+            
+            
+            data-path="components/FTable/Kolumntyper/group/Specialiserade/text-currency.html"
+            
+        >
+            Valuta
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../../contextmenu.html"
+            
+            
+            
+            data-path="components/FTable/contextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../../../code-table.html"
+            
+            
+            
+            data-path="components/code-table.html"
+            
+        >
+            Kod (tillhör nya tabellkomponenten)
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../xtimetextfield.html"
+            
+            
+            
+            data-path="components/xtimetextfield.html"
+            
+        >
+            Tidsinmatning
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../xfiledragdrop.html"
+            
+            
+            
+            data-path="components/xfiledragdrop.html"
+            
+        >
+            XFileDragdrop
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../xsortfilterdatasetng.html"
+            
+            
+            
+            data-path="components/xsortfilterdatasetng.html"
+            
+        >
+            XSortFilterDatasetNg
+        </a>
+    </li></ol>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Textfält</h1>
+
+                    
+                    <div id="aside"><dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#value">Value</a></li>
+                                
+                                <li><a href="#formaterare">Formaterare</a></li>
+                                
+                                <li><a href="#parsning">Parsning</a></li>
+                                
+                                <li><a href="#update">Update</a></li>
+                                
+                                <li><a href="#validering">Validering</a></li>
+                                
+                                <li><a href="#flodesdiagram">Flödesdiagram</a></li>
+                                
+                                <li><a href="#parametrar">Parametrar</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content"><p class="docs-paragraph">Kolumntypen <code>text</code> används för att visa text i <code>FTable</code>, texten går att anpassa med egen formaterare, parser och validator.</p>
+<p class="docs-paragraph">Tabellens kolumner och dess egenskaper defineras med hjälp av hjälpfunktionen <code>defineTableColumns</code>.</p>
+
+                <div
+                    id="example-5c721e"
+                    class="code-preview code-preview--default"
+                    data-test="column-base"
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;It´s a string&quot;</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Kolumnrubrik&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value&quot;</span>,
+    },
+]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Nedan visas ett komplett exempel tillsammans med <code>FTable</code>.</p>
+
+            <div
+                id="example-5dc4a4"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-806281"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableText-806281.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">value1</span>: string;
+    <span class="hljs-attr">value2</span>: string;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Kolumnrubrik 1&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value1&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Kolumnrubrik 2&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value2&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;Text 1&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;Text 2&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;Text 3&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;Text 4&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;Text 5&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;Text 6&quot;</span>,
+    },
+]);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="value"><a class="header-anchor" href="#value">Value</a></h2><p class="docs-paragraph">Texten som ska visas kan manipuleras med hjälp av callbackfunktionen <code>value(row: T): string</code>. Parametern <code>row</code> innehåller det aktuella rad-objektet.</p>
+
+                <div
+                    id="example-42bb73"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">     {
+         type: &quot;text&quot;,
+         header: &quot;Kolumnrubrik&quot;,
+<span class="hljs-deletion">-        key: &quot;value&quot;,</span>
+<span class="hljs-addition">+        value(row): string {</span>
+<span class="hljs-addition">+            const newValue = row.value;</span>
+<span class="hljs-addition">+            /* do stuff with newValue */</span>
+<span class="hljs-addition">+            return newValue;</span>
+         },
+<span class="hljs-addition">+    },</span>
+ ]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">I exemplet nedan visas hur man med hjälp av <code>value()</code> kan slå samman två värden för att visa i en egen kolumn.</p>
+
+            <div
+                id="example-353fbc"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-644e7a"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableTextValue-644e7a.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">value1</span>: string;
+    <span class="hljs-attr">value2</span>: string;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col 1&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value1&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col 2&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value2&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col 3&quot;</span>,
+        <span class="hljs-title function_">value</span>(row): string {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${row.value1}</span>:<span class="hljs-subst">${row.value2}</span>`</span>;
+        },
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;A&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;B&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;C&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;D&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;E&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;F&quot;</span>,
+    },
+]);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="formaterare"><a class="header-anchor" href="#formaterare">Formaterare</a></h2><p class="docs-paragraph">Om innehållet i rad-objektet behöver formateras innan det visas i tabellen så används callbackfunktionen <code>formatter(value: string): string</code>.
+Inparametern <code>value</code> är värdet från rad-objektet vars prop matchar värdet i kolumndefinitionens <code>key</code>.
+Om formateraren kombineras med callbackfunktionen <code>value()</code> så anropas den med resultatet från <code>value()</code> som inparameter.
+Om formateraren kombineras med validering så krävs en lyckad validering för att formatteraren ska anropas.</p>
+
+                <div
+                    id="example-fb8ce5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         type: &quot;text&quot;,
+         header: &quot;Kolumnrubrik&quot;,
+         key: &quot;value&quot;,
+<span class="hljs-addition">+        formatter(value: string): string {</span>
+<span class="hljs-addition">+            const newValue = value;</span>
+<span class="hljs-addition">+            /* do stuff with newValue */</span>
+<span class="hljs-addition">+            return newValue;</span>
+         },
+<span class="hljs-addition">+    },</span>
+ ]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Exemplet nedan visar hur formateraren gör om texten till gemener.</p>
+
+            <div
+                id="example-4bdc61"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-0b9efd"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableTextFormatter-0b9efd.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">value1</span>: string;
+    <span class="hljs-attr">value2</span>: string;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col 1&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value1&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col 2&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value2&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col 3&quot;</span>,
+        <span class="hljs-title function_">value</span>(<span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span>): string {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${row.value1}</span>:<span class="hljs-subst">${row.value2}</span>`</span>;
+        },
+        <span class="hljs-title function_">formatter</span>(<span class="hljs-attr">value</span>: string): string {
+            <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">toLowerCase</span>();
+        },
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;A&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;B&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;C&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;D&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value1</span>: <span class="hljs-string">&quot;E&quot;</span>,
+        <span class="hljs-attr">value2</span>: <span class="hljs-string">&quot;F&quot;</span>,
+    },
+]);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="parsning"><a class="header-anchor" href="#parsning">Parsning</a></h2><p class="docs-paragraph">Om cellen är redigerbar så kan datan manipuleras innan den skrivs ned i rad-objeket, det görs med hälp av callbackfunktionen <code>parser(value: string): string | undefined</code>.
+Parsern anropas med cellens värde då editeringen avslutas.
+Om parsern kombineras med validering så krävs en lyckad validering för att parsern ska anropas.</p>
+
+                <div
+                    id="example-dd51a3"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         type: &quot;text&quot;,
+         header: &quot;Kolumnrubrik&quot;,
+         key: &quot;value&quot;,
+<span class="hljs-addition">+        editable: true,</span>
+<span class="hljs-addition">+        parser(value: string): string {</span>
+<span class="hljs-addition">+            const newValue = value;</span>
+<span class="hljs-addition">+            /* do stuff with newValue */</span>
+<span class="hljs-addition">+            return newValue;</span>
+         },
+<span class="hljs-addition">+    },</span>
+ ]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Nedan visas ett exempel där inmatad text görs om till gemener då editering av celll avslutas.
+Notera att parsen inte anropas förens editeringen avslutas, därav så innehåller rad-objektet versaler ända tills cellen har redigerats.</p>
+
+            <div
+                id="example-b5e829"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-16c6d2"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableTextParser-16c6d2.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: string;
+    <span class="hljs-attr">value1</span>: string;
+    <span class="hljs-attr">value2</span>: string;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value&quot;</span>,
+        <span class="hljs-title function_">parser</span>(<span class="hljs-attr">value</span>: string): string {
+            <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">toLowerCase</span>();
+        },
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;A&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;C&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;F&quot;</span>,
+    },
+]);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span> rows: {{ rows }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="update"><a class="header-anchor" href="#update">Update</a></h2><p class="docs-paragraph">Som en sista möjlighet att påverka vad som skrivs ner i rad-objektet så kan callbackfunktionen <code>update(row: T, newValue: string, oldValue: string): void</code> användas.
+<code>update()</code> anropas efter eventuell parser och har tillgång till det aktuella rad-objektet <code>row</code>.
+Det nya värdet <code>newValue</code>, om pareser används så är detta det parsade värdet, samt det gamla värdet <code>oldValue</code>.</p>
+
+                <div
+                    id="example-bc5570"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         type: &quot;text&quot;,
+         header: &quot;Kolumnrubrik&quot;,
+         key: &quot;value&quot;,
+<span class="hljs-addition">+        editable: true,</span>
+<span class="hljs-addition">+        update(row: T, newValue: string, oldValue: string): void {</span>
+<span class="hljs-addition">+            /* do stuff */</span>
+<span class="hljs-addition">+            row.value = &quot;Some new value&quot;;</span>
+         },
+<span class="hljs-addition">+    },</span>
+ ]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Exemplet nedan visar hur värdet i rad-objektet bara uppdateras om det nya värdet börjar på bokstaven a.</p>
+
+            <div
+                id="example-3f1314"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-d02421"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableTextUpdate-d02421.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">value</span>: string;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value&quot;</span>,
+        <span class="hljs-title function_">update</span>(<span class="hljs-attr">row</span>: T, <span class="hljs-attr">newValue</span>: string, <span class="hljs-attr">oldValue</span>: string): <span class="hljs-keyword">void</span> {
+            <span class="hljs-keyword">if</span> (newValue.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;a&quot;</span>)) {
+                row.<span class="hljs-property">value</span> = newValue;
+                <span class="hljs-keyword">return</span>;
+            }
+            row.<span class="hljs-property">value</span> = oldValue;
+        },
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;apelsin&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;annanas&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;avokado&quot;</span>,
+    },
+]);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span> rows: {{ rows }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Redigerbara celler kan valideras med hjälp av &quot;@link validators validatorer&quot;, det görs genom parameten <code>validation: ValidatorConfigs</code>.</p>
+
+                <div
+                    id="example-1af400"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         type: &quot;text&quot;,
+         header: &quot;Kolumnrubrik&quot;,
+         key: &quot;value&quot;,
+<span class="hljs-addition">+        editable: true,</span>
+<span class="hljs-addition">+        validation: {</span>
+<span class="hljs-addition">+            minLength: { length: 2 },</span>
+<span class="hljs-addition">+            maxLength: { length: 3 },</span>
+         },
+<span class="hljs-addition">+    },</span>
+ ]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Alternativt så använder man sig av någon av de färdiga subtyperna, som motsvarar de &quot;@link textfield-specialized specialiserade inmatningsfälten&quot;:</p>
+<ul>
+<li><a href="Specialiserade/text-bank-account-number.html">text:bankAccountNumber</a></li>
+<li>text:bankgiro</li>
+<li>text:clearingNumber</li>
+<li>text:currency</li>
+<li>text:date</li>
+<li>text:email</li>
+<li>text:number</li>
+<li>text:organisationsnummer</li>
+<li>text:percent</li>
+<li>text:personnummer</li>
+<li>text:phoneNumber</li>
+<li>text:plusgiro</li>
+<li>text:postalCode</li>
+</ul>
+<p class="docs-paragraph">Nedan visas ett exempel där texten i cellen valideras mot både en min-längd och en max-längd.</p>
+
+            <div
+                id="example-aa2f03"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-6cd665"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableTextValidation-6cd665.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: string;
+    <span class="hljs-attr">value1</span>: string;
+    <span class="hljs-attr">value2</span>: string;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Col&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;value&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">validation</span>: {
+            <span class="hljs-attr">minLength</span>: { <span class="hljs-attr">length</span>: <span class="hljs-number">2</span> },
+            <span class="hljs-attr">maxLength</span>: { <span class="hljs-attr">length</span>: <span class="hljs-number">3</span> },
+        },
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;A&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;BBB&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;CCCC&quot;</span>,
+    },
+]);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="flodesdiagram"><a class="header-anchor" href="#flodesdiagram">Flödesdiagram</a></h2>
+                <pre class="mermaid">flowchart TD
+ accTitle: Flödesdiagram
+ accDescr: Bilden visar hur callbackfunktionerna value, formatter, parser och update förhåller sig till varandra.
+ A@{ shape: &quot;circle&quot;, label: &quot;row value&quot; }
+ B@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
+ C@{ shape: &quot;rounded&quot;, label: &quot;formatter()&quot;}
+ E@{ shape: &quot;rounded&quot;, label: &quot;value()&quot;}
+ G@{ shape: &quot;circle&quot;, label: &quot;view value&quot;}
+
+  A --&gt; E;
+  B -- NOK --&gt; G;
+  C --&gt; G;
+  B -- OK --&gt; C;
+  E -- no validation--&gt; C;
+  E --&gt; B;
+
+ X@{ shape: &quot;rounded&quot;, label: &quot;parser()&quot;}
+ Y@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
+ Z@{ shape: &quot;rounded&quot;, label: &quot;update()&quot;}
+
+  G --&gt; Y;
+  Y -- OK --&gt; X;
+  Y -- NOK --&gt; Z;
+  G -- no validation --&gt; X;
+  X --&gt; Z;
+  Z --&gt; A;
+</pre>
+            <p class="docs-paragraph">Alternativ layout:</p>
+
+                <pre class="mermaid">flowchart TD
+ accTitle: Flödesdiagram
+ accDescr: Bilden visar hur callbackfunktionerna value, formatter, parser och update förhåller sig till varandra.
+ A@{ shape: &quot;circle&quot;, label: &quot;row value&quot; }
+ B@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
+ C@{ shape: &quot;rounded&quot;, label: &quot;formatter()&quot;}
+ E@{ shape: &quot;rounded&quot;, label: &quot;value()&quot;}
+ G@{ shape: &quot;circle&quot;, label: &quot;view value&quot;}
+
+  A --&gt; E;
+  B -- NOK --&gt; G;
+  C --&gt; G;
+  B -- OK --&gt; C;
+  E -- no validation--&gt; C;
+  E --&gt; B;
+
+ V@{ shape: &quot;circle&quot;, label: &quot;row value&quot; }
+ W@{ shape: &quot;circle&quot;, label: &quot;view value&quot;}
+ X@{ shape: &quot;rounded&quot;, label: &quot;parser()&quot;}
+ Y@{ shape: &quot;diam&quot;, label: &quot;validation&quot;}
+ Z@{ shape: &quot;rounded&quot;, label: &quot;update()&quot;}
+
+  W --&gt; Y;
+  Y -- OK --&gt; X;
+  Y -- NOK --&gt; Z;
+  W -- no validation --&gt; X;
+  X --&gt; Z;
+  Z --&gt; V;
+</pre>
+            <h2 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
+<dt><strong><code>align:</code></strong> <code>&quot;left&quot; | &quot;right&quot;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Höger eller vänsterställd text och kolumnrubrik.
+Default <code>left</code>.</dd>
+<dt><strong><code>description:</code></strong> <code>string | Readonly&lt;Ref&lt;string | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Formatbeskrivning</dd>
+<dt><strong><code>editable:</code></strong> <code>boolean | ((row: T) =&gt; boolean)  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Om cellen är redigerbar.
+Default <code>false</code>.</dd>
+<dt><strong><code>formatter:</code></strong> <code>(value: string): string | undefined  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Funktion som används för att formatera värdet som visas. Parametern <code>value</code> är värdet från funktionen <code>value()</code> nedan.
+Anropas ej vid misslyckad validering.</dd>
+<dt><strong><code>header:</code></strong> <code>string | Readonly&lt;Ref&lt;string&gt;&gt;</code></dt>
+<dd>Kolumnrubrik som visas i thead.</dd>
+<dt><strong><code>key:</code></strong> <code>K</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Kopplar cellens värde till värde i <code>T</code>.</dd>
+<dt><strong><code>label:</code></strong> <code>(row: T): string  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Etikett kopplad till cellen för skärmläsare, ej synlig.</dd>
+<dt><strong><code>parser:</code></strong> <code>(value: string): string | undefined  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Funktion som parsar värdet innan <code>update()</code> anropas. Anropas ej vid misslyckad validering.</dd>
+<dt><strong><code>size:</code></strong> <code>TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Hur kolumnens bredd skalas. <code>&quot;grow&quot;</code> ger största möjliga bredd och <code>&quot;shrink&quot;</code> minsta möjliga bredd.
+Default: <code>grow</code>.</dd>
+<dt><strong><code>tnum:</code></strong> <code>boolean</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Tabular figures, till exempel att tal 111 ta samma plats som 000.</dd>
+<dt><strong><code>type:</code></strong> <code>InputTypeText</code></dt>
+<dd>Kolumnens typ, sätts till <code>text</code>.</dd>
+<dt><strong><code>update:</code></strong> <code>(row: T, newValue: string, oldValue: string): void  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Funktion som uppdater det parsade värdet från <code>parse()</code> innan det uppdateras i rad-objektet <code>T</code>.</dd>
+<dt><strong><code>validation:</code></strong> <code>ValidatorConfigs</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Konfiguration för validering, till exempel <code>{ minLength: { length: 2 }, maxLength: { length: 3 }}</code>. Se <a href="../../../logic/types/ValidatorConfigs.html">ValidatorConfigs</a></dd>
+<dt><strong><code>value</code>:</strong> <code>(row: T): string =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Anropas vid läsning av värde från <code>T</code>. Ger möjlighet att manipulera värdet innan till exempel formattering.</dd>
+</dl>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="../../../../changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content"></div>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Sök</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog><script
+            src="../../../../assets/main-3893bd.js"
+            type="module"
+            crossorigin
+            integrity="sha384-QnqFOTWAYDyMNzjW6B1++egFEdnx/l6Lz85o3oq0NwjAgMVFkKb1MUdAHnFIZP/Z"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/FTable/Kolumntyper/group/index.md
+         Document ID: fs:docs/components/FTable/Kolumntyper/group/index.md
+         Document name: index
+         Document alias: component:FTable, component:TableColumn
+
+    -->
+</html>
