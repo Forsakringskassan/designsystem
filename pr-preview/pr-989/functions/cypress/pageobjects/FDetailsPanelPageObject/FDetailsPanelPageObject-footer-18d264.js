@@ -28,13 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-header.vue:FDetailsPanelPageObject-header-1cc49f.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-footer.vue:FDetailsPanelPageObject-footer-18d264.js
 import { defineComponent as _defineComponent } from "vue";
 import { onMounted } from "vue";
 import { FDetailsPanel, FPageLayout, useDetailsPanel } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject-header",
+  __name: "FDetailsPanelPageObject-footer",
   setup(__props, { expose: __expose }) {
     __expose();
     onMounted(() => {
@@ -58,8 +58,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         slot: left,
         name: "awesome-panel"
       }, {
-        default: _withCtx(({ header }) => [
-          _createElementVNode("h2", { slot: header }, "Lorem ipsum", 8, _hoisted_1)
+        default: _withCtx(({ footer }) => [
+          _createElementVNode("div", { slot: footer }, "Lorem ipsum", 8, _hoisted_1)
         ]),
         _: 1
         /* STABLE */
@@ -73,7 +73,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1cc49f"
+  selector: "#example-18d264"
 });
 export {
   render
