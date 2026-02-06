@@ -493,13 +493,41 @@
                                 
                                 <li><a href="#here_be_dragons">Here be dragons</a></li>
                                 
+                                <li><a href="#parametrar">Parametrar</a></li>
+                                
                             </ul>
                         </details>
                         
                     </div>
                     
 
-                    <div id="content"><h2 id="here_be_dragons"><a class="header-anchor" href="#here_be_dragons">Here be dragons</a></h2>
+                    <div id="content"><h2 id="here_be_dragons"><a class="header-anchor" href="#here_be_dragons">Here be dragons</a></h2><h2 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
+<dt><strong><code>description:</code></strong> <code>string | Readonly&lt;Ref&lt;string | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Formatbeskrivning</dd>
+<dt><strong><code>editable:</code></strong> <code>boolean | ((row: T) =&gt; boolean)  =&gt; {})</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Om dropplistan är aktiv.
+Default <code>true</code>.</dd>
+<dt><strong><code>header:</code></strong> <code>string | Readonly&lt;Ref&lt;string&gt;&gt;</code></dt>
+<dd>Kolumnrubrik som visas i thead.</dd>
+<dt><strong><code>key:</code></strong> <code>K</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Kopplar cellens värde till värde i <code>T</code>.</dd>
+<dt><strong><code>label:</code></strong> <code>(row: T): string  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Skärmläsartext för dropplistan.</dd>
+<dt><strong><code>options:</code></strong> <code>string[]</code></dt>
+<dd>Lista med val.</dd>
+<dt><strong><code>size:</code></strong> <code>TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Hur kolumnens bredd skalas. <code>&quot;grow&quot;</code> ger största möjliga bredd och <code>&quot;shrink&quot;</code> minsta möjliga bredd.
+Default: <code>grow</code>.</dd>
+<dt><strong><code>type:</code></strong> <code>InputTypeText</code></dt>
+<dd>Kolumnens typ, sätts till <code>select</code>.</dd>
+</dl>
+<p class="docs-paragraph"><strong><code>selected:</code></strong> <code>(rox: T): string =&gt; {}</code>
+Funktion som retunerar värdet för aktivt val.</p>
+<dl>
+<dt><strong><code>update:</code></strong> <code>(row: T, newValue: string, oldValue: string): void  =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Anropas vid uppdaterat val.</dd>
+</dl>
+
 
                     </div>
                 </main>
