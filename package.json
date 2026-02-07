@@ -112,7 +112,7 @@
     "fflate": "0.8.2",
     "flush-promises": "1.0.2",
     "fs-extra": "11.3.3",
-    "glob": "13.0.0",
+    "glob": "13.0.1",
     "html-validate": "10.7.0",
     "html-validate-markdown": "5.1.0",
     "html-validate-vue": "7.4.1",
