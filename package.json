@@ -115,7 +115,7 @@
     "glob": "13.0.1",
     "html-validate": "10.7.0",
     "html-validate-markdown": "5.1.0",
-    "html-validate-vue": "7.4.1",
+    "html-validate-vue": "7.4.2",
     "is-ci": "4.1.0",
     "lerna": "9.0.3",
     "mocha-junit-reporter": "2.2.1",
