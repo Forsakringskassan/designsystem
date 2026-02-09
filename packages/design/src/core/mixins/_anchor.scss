@@ -11,6 +11,7 @@ $anchor-underline-width: 2px !default;
     text-underline-offset: $anchor-underline-offset;
     text-decoration-color: $anchor-color-text-standard-default;
     font-weight: var(--f-font-weight-medium);
+    line-height: var(--f-line-height-large);
 
     &:hover {
         text-decoration-thickness: 3px;
