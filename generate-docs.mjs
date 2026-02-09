@@ -22,6 +22,7 @@ import fse from "fs-extra";
 import { glob } from "glob";
 import isCI from "is-ci";
 import config from "./docs.config.js";
+import { fontDir } from "./packages/font-default/metadata.mjs";
 
 const require = module.createRequire(import.meta.url);
 
@@ -208,7 +209,7 @@ docs.compileStyle("docs-fkui", "./docs/src/fkui-theme.scss", {
 });
 
 docs.copyResource("images", "docs/src/assets/images");
-docs.copyResource("fonts", "packages/font-default/fonts");
+docs.copyResource("fonts", fontDir);
 
 try {
     await docs.build(config.sourceFiles);
