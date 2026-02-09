@@ -31,7 +31,7 @@ export function normalizeRenderColumn<T, K extends keyof T>(
     column: TableColumnRender<T, K>,
 ): Omit<
     NormalizedTableColumnRender<T>,
-    "id" | "header" | "description" | "size"
+    "id" | "header" | "description" | "size" | "enabled"
 > {
     return {
         type: undefined,
