@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-1ec667.json"
+            href="../search-data-ce05da.json"
             as="fetch"
             crossorigin
-            integrity="sha384-sZLdYLvXxgq0EynFvNBqnfk4JfugYWVR9PU4rsUF1x9F/Ap0CheufZBR5GC2fLk2"
+            integrity="sha384-kMJXKe983qwsqx908etoSWxnMqiIn/m5P5c2md2mNY4IgyTmDwVunmboINRPfbH4"
             id="search-data"
         />
     </head>
@@ -1725,10 +1725,10 @@
 <span class="hljs-addition">+);</span>
 </code></pre>
                 </div>
-            <h2 id="metadata"><a class="header-anchor" href="#metadata">Metadata</a></h2><p class="docs-paragraph">Paketet levererar metadata i <code>@fkui/font-default/metadata.json</code> med följande format:</p>
+            <h2 id="metadata"><a class="header-anchor" href="#metadata">Metadata</a></h2><p class="docs-paragraph">Paketet levererar metadata i <code>@fkui/font-default/metadata</code> med följande format:</p>
 
                 <div
-                    id="example-798de9"
+                    id="example-6801e1"
                     class="code-preview code-preview--default"
                     
                     
@@ -1736,9 +1736,18 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Asset</span> {
+    <span class="hljs-comment">/** Name of the font file */</span>
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">/** Relative path to the font file */</span>
     <span class="hljs-attr">filename</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">/** Full path to the font file */</span>
+    <span class="hljs-attr">filePath</span>: <span class="hljs-built_in">string</span>;
 }
 
+<span class="hljs-comment">/** Absolute path to the folder containing the font files */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">fontDir</span>: <span class="hljs-built_in">string</span>;
+
+<span class="hljs-comment">/** List of available font assets */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">assets</span>: <span class="hljs-title class_">Asset</span>[];
 </code></pre>
                 </div>
@@ -1767,9 +1776,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">anchor-line-height (<a href="https://github.com/Forsakringskassan/designsystem/commits/42d67131bce68f38c64f77156387cac4282686a1">42d6713</a>)<br />
+<div class="footer__right"><div class="version">anchor-line-height (<a href="https://github.com/Forsakringskassan/designsystem/commits/9a3db6e497c1f395c56836770ec401841cc3cce0">9a3db6e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/992">PR 992</a><br />
-        2026-02-09 10:25
+        2026-02-09 14:14
 </div>
 <div class="toolbar__item">
     <form id="version">
