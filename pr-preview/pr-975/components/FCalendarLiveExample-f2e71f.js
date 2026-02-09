@@ -4872,7 +4872,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
       if (rect) {
         const { top, left, width, height } = rect;
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
-        const offsetLeft = offsetRect?.x ?? 0;
+        const offsetLeft = Math.floor((offsetRect?.x ?? 0) + window.scrollX);
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;

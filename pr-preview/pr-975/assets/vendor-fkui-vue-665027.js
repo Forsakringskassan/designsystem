@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, ref, useAttrs, Fragment, unref, createBlock, createCommentVNode, createApp, resolveComponent, withKeys, toDisplayString, createVNode, withCtx, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, watch, getCurrentScope, onScopeDispose, onMounted, nextTick, hasInjectionContext, inject, toValue, shallowRef, watchEffect, useTemplateRef, onUnmounted, useSlots, normalizeProps, guardReactiveProps, Teleport, normalizeStyle, withDirectives, vShow, Transition, readonly, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, findTabbableElements, popFocus, pushFocus, ElementIdService, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, debounce, alertScreenReader, assertRef, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, isVisible, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings, FYear, range, clamp as clamp$1 } from "@fkui/date";
@@ -9854,7 +9854,7 @@ var _sfc_main$14 = /* @__PURE__ */ defineComponent({
           height
         } = rect;
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
-        const offsetLeft = (_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
+        const offsetLeft = Math.floor(((_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0) + window.scrollX);
         const offSetTop = Math.floor(((_offsetRect$top = offsetRect?.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
@@ -12424,6 +12424,9 @@ var _sfc_main$U = /* @__PURE__ */ defineComponent({
     icon: {
       default: () => void 0
     },
+    iconLibrary: {
+      default: () => void 0
+    },
     label: {
       type: Boolean
     }
@@ -12441,8 +12444,9 @@ var _sfc_main$U = /* @__PURE__ */ defineComponent({
       }, [__props.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         class: "button__icon",
+        library: __props.iconLibrary,
         name: __props.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), !__props.label ? (openBlock(), createElementBlock("span", _hoisted_1$E, [renderSlot(_ctx.$slots, "default")])) : renderSlot(_ctx.$slots, "default", {
+      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), !__props.label ? (openBlock(), createElementBlock("span", _hoisted_1$E, [renderSlot(_ctx.$slots, "default")])) : renderSlot(_ctx.$slots, "default", {
         key: 2
       })]);
     };
