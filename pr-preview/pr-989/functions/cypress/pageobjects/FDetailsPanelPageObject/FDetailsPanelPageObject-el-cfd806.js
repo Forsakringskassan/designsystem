@@ -28,19 +28,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject.vue:FDetailsPanelPageObject-e5c39a.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-el.vue:FDetailsPanelPageObject-el-cfd806.js
 import { defineComponent as _defineComponent } from "vue";
-import { onMounted } from "vue";
 import { FDetailsPanel, FPageLayout, useDetailsPanel } from "@fkui/vue";
-import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createVNode as _createVNode, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FDetailsPanelPageObject",
+  __name: "FDetailsPanelPageObject-el",
   setup(__props, { expose: __expose }) {
     __expose();
-    onMounted(() => {
-      useDetailsPanel("awesome-panel").open("foo");
-    });
-    const __returned__ = { get FDetailsPanel() {
+    const panel = useDetailsPanel("awesome-panel");
+    const __returned__ = { panel, get FDetailsPanel() {
       return FDetailsPanel;
     }, get FPageLayout() {
       return FPageLayout;
@@ -57,7 +54,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         slot: left,
         name: "awesome-panel"
       }, null, 8, ["slot"]),
-      _createElementVNode("div", { slot: content }, "Inneh\xE5ll", 8, _hoisted_1)
+      _createElementVNode("div", { slot: content }, [
+        _cache[1] || (_cache[1] = _createTextVNode(
+          " Inneh\xE5ll ",
+          -1
+          /* CACHED */
+        )),
+        _createElementVNode("button", {
+          type: "button",
+          onClick: _cache[0] || (_cache[0] = ($event) => $setup.panel.open("foo"))
+        }, "\xD6ppna")
+      ], 8, _hoisted_1)
     ]),
     _: 1
     /* STABLE */
@@ -66,7 +73,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e5c39a"
+  selector: "#example-cfd806"
 });
 export {
   render
