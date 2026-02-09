@@ -27,10 +27,6 @@ const menuitems = computed((): ContextMenuItem[] => {
     });
 });
 
-const renderButton = computed(() => {
-    return column.enabled(row);
-});
-
 function onOpen(event: MouseEvent): void {
     /* prevent FTable from activating the cell (which moves the focus back to
      * the cell instead of the context menu) */
@@ -61,7 +57,7 @@ defineExpose(expose);
 </script>
 
 <template>
-    <td v-if="renderButton" class="table-ng__cell table-ng__cell--button">
+    <td class="table-ng__cell table-ng__cell--button">
         <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onOpen">
             <f-icon name="bars"></f-icon>
             <span class="sr-only">{{ column.text(row) }}</span>
@@ -75,5 +71,4 @@ defineExpose(expose);
             @focusout="onFocusout"
         ></f-context-menu>
     </td>
-    <td v-else tabindex="-1" class="table-ng__cell"></td>
 </template>

@@ -18,21 +18,6 @@ describe("ITableMenu", () => {
         expect(wrapper.find("button").exists()).toBeTruthy();
     });
 
-    it("should render empty cell when disabled", () => {
-        expect.assertions(1);
-        const row = {};
-        const column = normalizeTableColumn<typeof row>({
-            type: "menu",
-            header: "Actions",
-            enabled: false,
-            text: () => "Actions",
-        });
-        const wrapper = shallowMount(ITableMenu<typeof row>, {
-            props: { column, row },
-        });
-        expect(wrapper.find("button").exists()).toBeFalsy();
-    });
-
     it("should render button text", () => {
         expect.assertions(1);
         const row = { text: "Kalle Anka" };

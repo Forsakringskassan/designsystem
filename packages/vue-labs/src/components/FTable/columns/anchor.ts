@@ -16,7 +16,6 @@ export interface TableColumnAnchor<
     type: "anchor";
     key?: K;
     text(this: void, row: T): string | null;
-    enabled?: boolean | ((this: void, row: T) => boolean);
     href: string;
 }
 
@@ -34,7 +33,6 @@ export interface NormalizedTableColumnAnchor<
         column: NormalizedTableColumnAnchor<T, K>;
     }>;
     text(this: void, row: T): string | null;
-    enabled(this: void, row: T): boolean;
 }
 
 /**
@@ -47,10 +45,6 @@ export function normalizeAnchorColumn<T, K extends keyof T>(
         type: "anchor",
         text: getValueFn(column.text, column.key, String, ""),
         href: column.href,
-        enabled:
-            typeof column.enabled === "function"
-                ? column.enabled
-                : () => Boolean(column.enabled ?? true),
         sortable: column.key ?? null,
     };
 }

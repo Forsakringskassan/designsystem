@@ -901,7 +901,9 @@ describe("7.6 aria-selected", () => {
         expect(
             trs.map(
                 (tr, index) =>
-                    `Row ${index + 1} aria-selected: ${tr.attributes("aria-selected")}`,
+                    `Row ${index + 1} aria-selected: ${tr.attributes(
+                        "aria-selected",
+                    )}`,
             ),
         ).toMatchObject([
             "Row 1 aria-selected: true",
@@ -1015,5 +1017,103 @@ describe("select cell", () => {
         await cell.trigger("click");
         expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
         expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
+    });
+});
+
+describe("empty values", () => {
+    it("should render empty text when value, text returns null", () => {
+        const columnDefaults = {
+            header: "Empty",
+            value: () => null,
+            text: () => null,
+        };
+        const rows = [{ foo: "bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "anchor",
+                href: "",
+                ...columnDefaults,
+            },
+            {
+                type: "button",
+                ...columnDefaults,
+            },
+            {
+                type: "checkbox",
+                ...columnDefaults,
+            },
+            {
+                type: "menu",
+                ...columnDefaults,
+            },
+            {
+                type: "radio",
+                ...columnDefaults,
+            },
+            {
+                type: "select",
+                options: ["foo", "bar", "baz"],
+                ...columnDefaults,
+            },
+        ]);
+
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows,
+            },
+        });
+
+        wrapper.findAll("td").every((it) => expect(it.text()).toBe(""));
+    });
+
+    it("should render empty text when value, text returns empty string", () => {
+        const columnDefaults = {
+            header: "Empty",
+            value: () => "",
+            text: () => "",
+        };
+        const rows = [{ foo: "bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "anchor",
+                href: "",
+                ...columnDefaults,
+            },
+            {
+                type: "button",
+                ...columnDefaults,
+            },
+            {
+                type: "checkbox",
+                ...columnDefaults,
+            },
+            {
+                type: "menu",
+                ...columnDefaults,
+            },
+            {
+                type: "radio",
+                ...columnDefaults,
+            },
+            {
+                type: "select",
+                options: ["foo", "bar", "baz"],
+                ...columnDefaults,
+            },
+            {
+                type: "text",
+                ...columnDefaults,
+            },
+        ]);
+
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows,
+            },
+        });
+
+        wrapper.findAll("td").every((it) => expect(it.text()).toBe(""));
     });
 });

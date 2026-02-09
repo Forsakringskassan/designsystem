@@ -12,6 +12,7 @@ import { DefineComponent } from 'vue';
 import { ExtractPropTypes } from 'vue';
 import { FormatFunction } from '@fkui/vue';
 import { IPopupErrorData } from '@fkui/vue';
+import { MaybeRef } from 'vue';
 import { ParseFunction } from '@fkui/vue';
 import { PropType } from 'vue';
 import { PublicProps } from 'vue';
@@ -108,8 +109,6 @@ export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K
 // @public (undocumented)
 export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
-    enabled?: boolean | ((this: void, row: T) => boolean);
-    // (undocumented)
     href: string;
     // (undocumented)
     key?: K;
@@ -124,6 +123,8 @@ export interface TableColumnBase {
     // (undocumented)
     description?: string | Readonly<Ref<string | null>>;
     // (undocumented)
+    enabled?: MaybeRef<boolean>;
+    // (undocumented)
     header: string | Readonly<Ref<string>>;
     // (undocumented)
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
@@ -131,8 +132,6 @@ export interface TableColumnBase {
 
 // @public (undocumented)
 export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase {
-    // (undocumented)
-    enabled?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
     icon?: string;
     iconLibrary?: string;
@@ -170,8 +169,6 @@ export interface TableColumnMenu<T> extends TableColumnBase {
         icon?: string;
         onClick?(this: void, row: T): void;
     }>;
-    // (undocumented)
-    enabled?: boolean | ((row: T) => boolean);
     // (undocumented)
     text(this: void, row: T): string | null;
     // (undocumented)

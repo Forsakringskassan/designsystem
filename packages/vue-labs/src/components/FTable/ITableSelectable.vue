@@ -50,6 +50,7 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, K> = {
     update() {
         emit("toggle", row);
     },
+    enabled: true,
 };
 
 const singleSelectColumn: NormalizedTableColumnRadio<T, K> = {
@@ -70,6 +71,7 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, K> = {
     update() {
         emit("toggle", row);
     },
+    enabled: true,
 };
 </script>
 

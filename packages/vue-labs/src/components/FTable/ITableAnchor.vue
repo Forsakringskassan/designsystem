@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, useTemplateRef } from "vue";
+import { useTemplateRef } from "vue";
 import { type FTableCellApi } from "./f-table-api";
 import { type NormalizedTableColumnAnchor } from "./table-column";
 
@@ -10,16 +10,12 @@ const { column, row } = defineProps<{
 
 const targetElement = useTemplateRef("target");
 
-const renderAnchor = computed(() => {
-    return column.enabled(row) && column.text(row) !== null;
-});
-
 const expose: FTableCellApi = { tabstopEl: targetElement };
 defineExpose(expose);
 </script>
 
 <template>
-    <td v-if="renderAnchor" class="table-ng__cell table-ng__cell--anchor">
+    <td v-if="column.text(row)" class="table-ng__cell table-ng__cell--anchor">
         <a ref="target" class="anchor anchor--block" target="_blank" :href="column.href" tabindex="-1">
             {{ column.text(row) }}
         </a>
