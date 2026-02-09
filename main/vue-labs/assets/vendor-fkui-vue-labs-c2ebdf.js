@@ -4062,8 +4062,9 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
         onClick: onClickButton
       }, [__props.column.icon ? (openBlock(), createBlock(unref3(FIcon), {
         key: 0,
+        library: __props.column.iconLibrary,
         name: __props.column.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -4834,6 +4835,7 @@ function normalizeButtonColumn(column) {
       return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
     },
     icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
+    iconLibrary: column.iconLibrary,
     sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
   };
 }

@@ -12424,6 +12424,9 @@ var _sfc_main$U = /* @__PURE__ */ defineComponent({
     icon: {
       default: () => void 0
     },
+    iconLibrary: {
+      default: () => void 0
+    },
     label: {
       type: Boolean
     }
@@ -12441,8 +12444,9 @@ var _sfc_main$U = /* @__PURE__ */ defineComponent({
       }, [__props.icon ? (openBlock(), createBlock(unref(FIcon), {
         key: 0,
         class: "button__icon",
+        library: __props.iconLibrary,
         name: __props.icon
-      }, null, 8, ["name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), !__props.label ? (openBlock(), createElementBlock("span", _hoisted_1$E, [renderSlot(_ctx.$slots, "default")])) : renderSlot(_ctx.$slots, "default", {
+      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), !__props.label ? (openBlock(), createElementBlock("span", _hoisted_1$E, [renderSlot(_ctx.$slots, "default")])) : renderSlot(_ctx.$slots, "default", {
         key: 2
       })]);
     };
