@@ -3292,6 +3292,7 @@ function onErrorCaptured(hook, target = currentInstance) {
   injectHook("ec", hook, target);
 }
 const COMPONENTS = "components";
+const DIRECTIVES = "directives";
 function resolveComponent(name, maybeSelfReference) {
   return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
 }
@@ -3303,11 +3304,14 @@ function resolveDynamicComponent(component) {
     return component || NULL_DYNAMIC_COMPONENT;
   }
 }
+function resolveDirective(name) {
+  return resolveAsset(DIRECTIVES, name);
+}
 function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false) {
   const instance = currentRenderingInstance || currentInstance;
   if (instance) {
     const Component = instance.type;
-    {
+    if (type === COMPONENTS) {
       const selfName = getComponentName$1(
         Component,
         false
@@ -18206,7 +18210,6 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
     const contentRef = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
     const teleportTarget = computed(() => config.teleportTarget);
-    const debouncedOnWindowChange = debounce(onWindowChange, 100);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -18228,15 +18231,15 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
     });
     function addListeners() {
       document.addEventListener("click", onDocumentClickHandler);
-      window.addEventListener("resize", debouncedOnWindowChange);
-      window.addEventListener("scroll", debouncedOnWindowChange, {
+      window.addEventListener("resize", onResize);
+      window.addEventListener("scroll", onScroll, {
         capture: true
       });
     }
     function removeListeners() {
       document.removeEventListener("click", onDocumentClickHandler);
-      window.removeEventListener("resize", debouncedOnWindowChange);
-      window.removeEventListener("scroll", debouncedOnWindowChange, {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll, {
         capture: true
       });
     }
@@ -18269,10 +18272,15 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
     function onDocumentClickHandler() {
       emit2("close");
     }
-    function onWindowChange() {
-      if (__props.isOpen) {
-        calculatePosition();
+    function onResize() {
+      emit2("close");
+    }
+    function onScroll(event) {
+      const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+      if (isPopupTarget) {
+        return;
       }
+      emit2("close");
     }
     function onKeyEsc(event) {
       if (event.key === "Escape") {
@@ -18321,7 +18329,7 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
           height
         } = rect;
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
-        const offsetLeft = (_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0;
+        const offsetLeft = Math.floor(((_offsetRect$x = offsetRect?.x) !== null && _offsetRect$x !== void 0 ? _offsetRect$x : 0) + window.scrollX);
         const offSetTop = Math.floor(((_offsetRect$top = offsetRect?.top) !== null && _offsetRect$top !== void 0 ? _offsetRect$top : 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
@@ -21871,56 +21879,6 @@ function requireEs_json_stringify() {
   return es_json_stringify;
 }
 requireEs_json_stringify();
-const _sfc_main$j = /* @__PURE__ */ defineComponent({
-  name: "FLayoutApplicationTemplate",
-  computed: {
-    showHeader() {
-      return this.hasSlot("header");
-    },
-    showTopNavigation() {
-      return this.hasSlot("top-navigation");
-    },
-    showFooter() {
-      return this.hasSlot("footer");
-    }
-  },
-  mounted() {
-    document.body.classList.add("layout-application-template__body");
-  },
-  beforeUnmount() {
-    document.body.classList.remove("layout-application-template__body");
-  },
-  methods: {
-    hasSlot(name) {
-      return isSet(this.$slots[name]);
-    }
-  }
-});
-const _hoisted_1$i = {
-  class: "layout-application-template"
-};
-const _hoisted_2$e = {
-  key: 0,
-  ref: "header",
-  class: "layout-application-template__header"
-};
-const _hoisted_3$9 = {
-  key: 1
-};
-const _hoisted_4$8 = {
-  ref: "primary-content",
-  class: "layout-application-template__main"
-};
-const _hoisted_5$7 = {
-  key: 0,
-  class: "layout-application-template__footer"
-};
-function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$i, [_ctx.showHeader || _ctx.showTopNavigation ? (openBlock(), createElementBlock("header", _hoisted_2$e, [_ctx.showHeader ? renderSlot(_ctx.$slots, "header", {
-    key: 0
-  }) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), _ctx.showTopNavigation ? (openBlock(), createElementBlock("nav", _hoisted_3$9, [renderSlot(_ctx.$slots, "top-navigation")])) : createCommentVNode("", true)], 512)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode("main", _hoisted_4$8, [renderSlot(_ctx.$slots, "default"), _cache[1] || (_cache[1] = createTextVNode()), _ctx.showFooter ? (openBlock(), createElementBlock("footer", _hoisted_5$7, [renderSlot(_ctx.$slots, "footer")])) : createCommentVNode("", true)], 512)]);
-}
-const FLayoutApplicationTemplate = /* @__PURE__ */ _export_sfc$1(_sfc_main$j, [["render", _sfc_render$c]]);
 const _hoisted_1$d = ["aria-label"];
 const __default__ = /* @__PURE__ */ defineComponent({
   computed: {
@@ -21969,11 +21927,11 @@ const _export_sfc = (sfc, props) => {
   return target;
 };
 const _sfc_main$1 = {};
-function _sfc_render(_ctx, _cache) {
+function _sfc_render$1(_ctx, _cache) {
   const _component_router_view = resolveComponent("router-view");
   return openBlock(), createBlock(_component_router_view);
 }
-const App = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
+const App = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
 const isBrowser = typeof document !== "undefined";
 function isRouteComponent(component) {
   return typeof component === "object" || "displayName" in component || "props" in component || "__vccOpts" in component;
@@ -23503,25 +23461,52 @@ function createRouter(options) {
   return router2;
 }
 const _sfc_main = /* @__PURE__ */ defineComponent({
-  __name: "DefaultView",
-  setup(__props) {
-    const count = Array(250).fill(0).map((_, i) => i);
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(unref(FLayoutApplicationTemplate), null, {
-        header: withCtx(() => [..._cache[0] || (_cache[0] = [
-          createBaseVNode("div", { class: "sandbox-header" }, "En header", -1)
-        ])]),
-        default: withCtx(() => [
-          (openBlock(true), createElementBlock(Fragment, null, renderList(unref(count), (value) => {
-            return openBlock(), createElementBlock("div", { key: value }, toDisplayString(value), 1);
-          }), 128))
-        ]),
-        _: 1
-      });
+  components: { FTextField },
+  data() {
+    return {
+      awesomeModel: ""
     };
   }
 });
-const DefaultView = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-bc765a8a"]]);
+const _hoisted_1 = { class: "sandbox-root" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_text_field = resolveComponent("f-text-field");
+  const _directive_validation = resolveDirective("validation");
+  return openBlock(), createElementBlock("div", _hoisted_1, [
+    _cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
+    _cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
+    _cache[4] || (_cache[4] = createBaseVNode("p", null, [
+      createBaseVNode("strong", null, "Ändra och labba gärna här men glöm inte återställa innan merge!")
+    ], -1)),
+    _cache[5] || (_cache[5] = createBaseVNode("hr", null, null, -1)),
+    withDirectives((openBlock(), createBlock(_component_f_text_field, {
+      id: "awesome-field",
+      modelValue: _ctx.awesomeModel,
+      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.awesomeModel = $event)
+    }, {
+      default: withCtx(() => [..._cache[1] || (_cache[1] = [
+        createTextVNode(" Inmatningsfält. ", -1)
+      ])]),
+      description: withCtx(({ descriptionClass }) => [
+        createBaseVNode("span", {
+          class: normalizeClass(descriptionClass)
+        }, " Lorem ipsum dolor sit amet. ", 2)
+      ]),
+      _: 1
+    }, 8, ["modelValue"])), [
+      [
+        _directive_validation,
+        { maxLength: { length: 10 } },
+        void 0,
+        {
+          required: true,
+          maxLength: true
+        }
+      ]
+    ])
+  ]);
+}
+const DefaultView = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [{ path: "/", name: "", component: DefaultView }]
