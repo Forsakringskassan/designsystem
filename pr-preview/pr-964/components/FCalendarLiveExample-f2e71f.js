@@ -4872,7 +4872,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
       if (rect) {
         const { top, left, width, height } = rect;
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
-        const offsetLeft = offsetRect?.x ?? 0;
+        const offsetLeft = Math.floor((offsetRect?.x ?? 0) + window.scrollX);
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
@@ -7159,7 +7159,6 @@ var FFieldset_default = defineComponent22({
   async mounted() {
     await this.$nextTick();
     const types = Array.from(
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-argument -- technical debt */
       this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
       (it) => it.getAttribute("type")
     );
@@ -7190,7 +7189,6 @@ var FFieldset_default = defineComponent22({
       this.dispatchObject = {
         ...detail,
         errorMessage,
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- technical debt */
         focusElementId
       };
       this.validity = this.detail;
@@ -7388,7 +7386,7 @@ var FCheckboxField_default = defineComponent23({
   inheritAttrs: false,
   props: {
     /**
-     * Set to `true`, empty string `""` or string `"disabled"` to disable this input field.
+     * Disables the checkbox.
      */
     disabled: {
       type: Boolean,
