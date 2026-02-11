@@ -3498,8 +3498,7 @@ var FFormModal_default = defineComponent11({
       ]
     },
     /**
-     * Hides the submit button.
-     * This can be used to hide the submit button until a certain step in a multi-step form is reached.
+     * Hide the submit button.
      */
     hideSubmitButton: {
       type: Boolean,
