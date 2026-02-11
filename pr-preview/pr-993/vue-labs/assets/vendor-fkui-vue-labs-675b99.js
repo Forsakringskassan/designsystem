@@ -3142,7 +3142,7 @@ var _hoisted_1$e = {
   class: "table-ng__cell table-ng__cell--expand"
 };
 var _hoisted_2$a = ["aria-label", "aria-expanded"];
-var _hoisted_3$5 = {
+var _hoisted_3$6 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -3188,7 +3188,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, null, 512));
     };
   }
 });
@@ -3658,7 +3658,7 @@ var _hoisted_1$a = {
   class: "table-ng__cell table-ng__cell--checkbox"
 };
 var _hoisted_2$8 = ["checked", "aria-label"];
-var _hoisted_3$4 = {
+var _hoisted_3$5 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -3695,7 +3695,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, [createElementVNode("input", {
+      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, [createElementVNode("input", {
         checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value
@@ -3795,7 +3795,6 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
         emit("toggle", __props.row);
       },
       enabled: true
-      // TEMP IN DRAFT
     };
     const singleSelectColumn = {
       type: "radio",
@@ -3815,7 +3814,6 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
         emit("toggle", __props.row);
       },
       enabled: true
-      // TEMP IN DRAFT
     };
     return (_ctx, _cache) => {
       return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$8)) : __props.selectable === "multi" ? (openBlock(), createBlock(_sfc_main$c, {
@@ -4036,9 +4034,16 @@ function requireEs_iterator_map() {
 }
 requireEs_iterator_map();
 var _hoisted_1$7 = {
+  key: 0,
   class: "table-ng__cell table-ng__cell--anchor"
 };
 var _hoisted_2$6 = ["href"];
+var _hoisted_3$4 = {
+  key: 1,
+  ref: "target",
+  tabindex: "-1",
+  class: "table-ng__cell"
+};
 var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
   __name: "ITableAnchor",
   props: {
@@ -4054,13 +4059,13 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
+      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)]);
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });

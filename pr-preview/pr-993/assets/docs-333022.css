@@ -181,7 +181,7 @@
   --fkds-color-navigation-background-hover: #dbe9e2;
   --fkds-color-navigation-background-selected: #35805b;
   --fkds-color-header-background-primary: #116a3e;
-  --fkui-theme-default-version: "6.35.0";
+  --fkui-theme-default-version: "6.36.0";
 }
 
 *,
@@ -1282,6 +1282,7 @@ input[type=search]:focus,
   text-underline-offset: 0.25em;
   text-decoration-color: var(--fkds-color-action-text-primary-default);
   font-weight: var(--f-font-weight-medium);
+  line-height: var(--f-line-height-large);
 }
 .anchor:hover, .file-item__file-open:hover {
   text-decoration-thickness: 3px;
@@ -2054,7 +2055,7 @@ input[type=search]:focus,
 .list__item__itempane {
   width: 100%;
   padding: calc(var(--f-list-item-itempane-padding) * var(--f-density-factor)) var(--f-list-item-itempane-padding);
-  color: inherit;
+  color: var(--fkds-color-text-primary);
   --f-margin-component-bottom: 0.5rem;
 }
 .list__item__itempane .button, .list__item__itempane .docs-example-button {
