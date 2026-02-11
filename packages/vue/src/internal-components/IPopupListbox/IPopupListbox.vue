@@ -54,11 +54,13 @@ watchEffect(() => {
 function addListeners(): void {
     document.addEventListener("click", onDocumentClickHandler);
     window.addEventListener("resize", debounce(onResize, 100));
+    window.addEventListener("scroll", onScroll, { capture: true });
 }
 
 function removeListeners(): void {
     document.removeEventListener("click", onDocumentClickHandler);
     window.removeEventListener("resize", debounce(onResize, 100));
+    window.removeEventListener("scroll", onScroll, { capture: true });
 }
 
 function isElementInsideViewport(element: Element): boolean {
@@ -108,6 +110,14 @@ function onResize(): void {
     if (isOpen) {
         calculatePosition();
     }
+}
+
+function onScroll(event: Event): void {
+    const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+    if (isPopupTarget) {
+        return;
+    }
+    emit("close");
 }
 
 function onKeyEsc(event: KeyboardEvent): void {
