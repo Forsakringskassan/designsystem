@@ -14,7 +14,7 @@ import { type PopupError } from "./PopupEror";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { useStartStopEdit } from "./start-stop-edit";
-import { type NormalizedTableColumnText } from "./table-column";
+import { type NormalizedTableColumnNumber, type NormalizedTableColumnText } from "./table-column";
 
 interface ValidationFacade {
     validateElement(element: string | Element | null): Promise<ValidationResult>;
@@ -27,7 +27,7 @@ const {
     activeErrorAnchor = undefined,
 } = defineProps<{
     row: T;
-    column: NormalizedTableColumnText<T, K>;
+    column: NormalizedTableColumnText<T, K> | NormalizedTableColumnNumber<T, K>;
     activeErrorAnchor?: HTMLElement;
 }>();
 
@@ -226,13 +226,14 @@ function fromColumnValue(): string {
     const value = column.value(row);
 
     if (validity.value.isValid) {
-        return column.formatter(value) ?? value;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- type of value must always match between column.value() and column.formater()
+        return column.formatter(value as any) ?? value.toString();
     }
 
-    return value;
+    return value.toString();
 }
 
-function toColumnValue(value: string): string {
+function toColumnValue(value: string): unknown {
     assertRef(validity);
 
     if (validity.value.isValid) {
@@ -247,7 +248,8 @@ function updateColumnValue(): void {
     const newValue = toColumnValue(viewValue.value);
 
     if (oldValue !== newValue) {
-        column.update(row, newValue, oldValue);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- type of value must always match between column.parse() and column.update()
+        column.update(row, newValue as any, oldValue as any);
     }
 }
 

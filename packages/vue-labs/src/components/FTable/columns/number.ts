@@ -12,7 +12,6 @@ import {
     getUpdateFn,
     getValueFn,
 } from "./helpers";
-import { type NormalizedTableColumnText } from "./text";
 
 /**
  * @public
@@ -55,7 +54,7 @@ export interface NormalizedTableColumnNumber<
     readonly align: "left" | "right";
     readonly component: Component<{
         row: T;
-        column: NormalizedTableColumnText<T, K>;
+        column: NormalizedTableColumnNumber<T, K>;
         activeErrorAnchor?: HTMLElement;
     }>;
     label(this: void, row: T): string;
