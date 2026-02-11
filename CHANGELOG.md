@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 6.36.0 (2026-02-11)
+
+### Features
+
+* **@fkui/design:** update list with semantic color tokens for item texts (refs SFKUI-7263) 3247595
+* **@fkui/font-default:** expose `fontDir` and `filePath` (full path to font file) (refs SFKUI-6500) 42f902c
+* **@fkui/vue:** new `iconLibrary` prop in `FTableButton` (fixes SFKUI-7621) d85a1e8
+
+### Bug Fixes
+
+* **@fkui/design:** `line-height` CSS prop not set for anchor (fixes SFKUI-7583) 6b77278
+* **@fkui/design:** hover effect displayed for highlighted option in `FNavigationMenu` (fixes SFKUI-7480) 5e3e1ca
+* **@fkui/design:** hover effect displayed for highlighted option in popup menu (fixes SFKUI-7480) e0338ea
+* **@fkui/vue:** combobox dropdown should not follow horizontal scroll (fixes SFKUI-7595) 265ad6b
+* **deps:** update dependency glob to v13.0.1 fa36f12
+* **deps:** update dependency i18next to v25.8.1 7fdb19d
+* **deps:** update dependency i18next to v25.8.3 1f20c57
+* **deps:** update dependency i18next to v25.8.4 5c05c7e
+
 ## 6.35.0 (2026-02-04)
 
 ### Features
