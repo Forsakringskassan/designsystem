@@ -9,6 +9,15 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.36.0
+
+2026-02-11
+
+Nu finns det en artikel om högkontrast.
+Artikeln beskriver vad det innebär och ger några exempel på vad som är gjort i designsystemet, se {@link forcedcolors Högkontrast}.
+
+Buggfixar, se {@link changelog Changelog}.
+
 ## Version 6.35.0
 
 2026-02-04
