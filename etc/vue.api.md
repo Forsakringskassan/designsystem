@@ -48,6 +48,7 @@ import { ShallowRef } from 'vue';
 import { Slot } from 'vue';
 import { Slots } from 'vue';
 import { StackHandle } from '@fkui/logic';
+import { TranslateFunction } from '@fkui/logic';
 import { UnwrapRef } from 'vue';
 import { UnwrapRefSimple } from '@vue/reactivity';
 import { ValidatableHTMLElement } from '@fkui/logic';
@@ -1386,13 +1387,7 @@ export interface TextFieldSetupProps {
 // @internal (undocumented)
 export const tooltipAttachTo: InjectionKey<Readonly<ShallowRef<HTMLElement | null>>>;
 
-// @public (undocumented)
-export interface TranslateFunction {
-    (key: string): string;
-    (key: string, defaultValue: string): string;
-    (key: string, args: Record<string, unknown>): string;
-    (key: string, defaultValue: string, args: Record<string, unknown>): string;
-}
+export { TranslateFunction }
 
 // @public (undocumented)
 export const TranslationMixin: ComponentOptions;

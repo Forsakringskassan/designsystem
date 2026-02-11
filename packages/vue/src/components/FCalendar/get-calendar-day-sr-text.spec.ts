@@ -2,7 +2,10 @@ import { FDate } from "@fkui/date";
 import { type TranslateFunction } from "@fkui/logic";
 import { getCalendarDaySrText } from "./get-calendar-day-sr-text";
 
-const t: TranslateFunction = (key, defaultValueOrArgs) => {
+const t: TranslateFunction = (
+    key: string,
+    defaultValueOrArgs?: string | Record<string, unknown>,
+): string => {
     if (typeof defaultValueOrArgs !== "string") {
         throw new Error("default translation missing");
     }

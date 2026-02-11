@@ -3,8 +3,8 @@ import { type TranslateFunction } from "@fkui/logic";
 import { TranslationService } from "@fkui/logic";
 import { getMessage } from "./get-message";
 
-const t: TranslateFunction = (key, defaultValueOrArgs, args) => {
-    return TranslationService.provider.translate(key, defaultValueOrArgs, args);
+const t: TranslateFunction = (...args: Parameters<TranslateFunction>) => {
+    return TranslationService.provider.translate(...args);
 };
 
 const minDate = FDate.fromIso("2022-01-01");
