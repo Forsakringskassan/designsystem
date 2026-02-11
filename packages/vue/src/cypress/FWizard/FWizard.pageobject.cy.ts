@@ -1,18 +1,57 @@
-import {
-    FRUIT,
-    FruitBasketWizardStepPageobject,
-} from "../pageobjects/wizardstep/FruitBasketWizardStep.pageobject";
-import { MyInfoWizardStepPageobject } from "../pageobjects/wizardstep/MyInfoWizardStep.pageobject";
-import { MyOrderWizardStepPageobject } from "../pageobjects/wizardstep/MyOrderWizardStep.pageobject";
-import { FWizardPageobject, STATUS } from "@fkui/vue/cypress";
+import FWizardExampleAddStep from "../../components/FWizard/examples/FWizardExampleAddStep.vue";
+import { FFieldsetPageObject } from "../FFieldset.pageobject";
+import { FTextFieldPageObject } from "../FTextField.pageobject";
+import { DefaultCypressChainable } from "../common";
+import { FWizardPageobject } from "./FWizard.pageobject";
+import { FWizardStepPageobject, STATUS } from "./FWizardStep.pageobject";
+
+export enum FRUIT {
+    banana = ".checkbox:nth(0)",
+    apple = ".checkbox:nth(1)",
+    mandarin = ".checkbox:nth(2)",
+    pineapple = ".checkbox:nth(3)",
+    watermelon = ".checkbox:nth(4)",
+    other = ".checkbox:nth(5)",
+}
+
+export class MyOrderWizardStepPageobject extends FWizardStepPageobject {
+    public addBasket: () => DefaultCypressChainable;
+    public constructor(selector: string) {
+        super(selector);
+
+        this.addBasket = () =>
+            cy.get(`${this.selector} button.button--tertiary`);
+    }
+}
+
+export class FruitBasketWizardStepPageobject extends FWizardStepPageobject {
+    public nameOnGiftcard: FTextFieldPageObject;
+    public fruits: FFieldsetPageObject;
+    public constructor(selector: string) {
+        super(selector);
+
+        this.nameOnGiftcard = new FTextFieldPageObject(
+            `${this.selector} .text-field`,
+        );
+        this.fruits = new FFieldsetPageObject(
+            `${this.selector} [id="frukt-checkbox-group"]`,
+        );
+    }
+}
+
+export class MyInfoWizardStepPageobject extends FWizardStepPageobject {
+    public myAddress: () => DefaultCypressChainable;
+    public constructor(selector: string) {
+        super(selector);
+        this.myAddress = () => cy.get(`${this.selector} #baz-form > p`);
+    }
+}
 
 describe("FWizardStep", () => {
-    before(() => {
-        cy.visit("/components/fwizard.html");
-    });
-
     it("Should have a page object that can access any necessary elements", () => {
-        const wizard = new FWizardPageobject(`[data-test=add-step] .wizard`);
+        cy.mount(FWizardExampleAddStep);
+
+        const wizard = new FWizardPageobject(`.wizard`);
         const stepBestallning = new MyOrderWizardStepPageobject(
             "[data-test=myOrderStep]",
         );
