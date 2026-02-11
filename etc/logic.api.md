@@ -49,6 +49,9 @@ export interface BlacklistValidatorConfig extends ValidatorOptions {
 }
 
 // @public
+export type BuildDepth<N extends number, T extends unknown[] = []> = T["length"] extends N ? T : BuildDepth<N, [...T, unknown]>;
+
+// @public
 export type ClearingnumberString = string;
 
 // @public (undocumented)
@@ -63,6 +66,10 @@ export interface CookieOptions {
     timeLimitSeconds?: number;
     // (undocumented)
     value: string;
+}
+
+// @public
+export interface CustomTranslationRegistry {
 }
 
 // @public
@@ -262,6 +269,9 @@ export function isVisible(element: HTMLElement): boolean;
 // @public
 export function isVisibleInViewport(element: Element): boolean;
 
+// @public
+export type Join<K extends ValidKey, P extends ValidKey> = `${K}.${P}`;
+
 // @public (undocumented)
 export interface MatchesValidatorConfig extends ValidatorOptions {
     id?: string;
@@ -295,6 +305,9 @@ export interface MinLengthValidatorConfig extends ValidatorOptions {
 export class MissingValueError extends Error {
     constructor(message?: string);
 }
+
+// @public
+export type NestedKeys<T, Depth extends number = 6> = [Depth] extends [never] ? never : T extends object ? PathMap<T, Depth>[keyof T & ValidKey] : never;
 
 // @public (undocumented)
 export interface NestedStringRecord {
@@ -342,6 +355,11 @@ export function parsePlusgiro(value: string): PlusgiroString | undefined;
 export function parsePostalCode(value: string): PostalCodeString | undefined;
 
 // @public
+export type PathMap<T, Depth extends number> = {
+    [K in keyof T & ValidKey]: T[K] extends object ? `${K}` | Join<K, NestedKeys<T[K], Prev<Depth>>> : `${K}`;
+};
+
+// @public
 export interface PendingValidityEvent {
 }
 
@@ -387,10 +405,18 @@ export function popFocus(handle: StackHandle, options?: {
 export type PostalCodeString = string;
 
 // @public
+export type Prev<N extends number> = BuildDepth<N> extends [...infer R, unknown] ? R["length"] : never;
+
+// @public
 export function pushFocus(element?: Element | null): StackHandle;
 
 // @public
 export function removeFocusListener(elements: HTMLElement[], listener: ((event: Event) => unknown) | (() => unknown)): void;
+
+// @public
+export type ResolveTranslationKey = CustomTranslationRegistry extends {
+    Keys: infer K;
+} ? K : string;
 
 // @public
 export function restoreFocus(): void;
@@ -470,7 +496,13 @@ export function stripWhitespace(text: string): string;
 export function testLuhnChecksum(inputString: string): boolean;
 
 // @public (undocumented)
-export type TranslateFunction = (key: string, defaultValueOrArgs?: string | Record<string, unknown>, args?: Record<string, unknown>) => string;
+export interface TranslateFunction<Key = ResolveTranslationKey> {
+    (key: Key): string;
+    (key: Key, defaultValue: string): string;
+    (key: Key, args: Record<string, unknown>): string;
+    (key: Key, defaultValue: string, args: Record<string, unknown>): string;
+    (key: Key, defaultValue?: string | Record<string, unknown>, args?: Record<string, unknown>): string;
+}
 
 // @public (undocumented)
 export interface TranslationProviderInterface {
@@ -613,6 +645,9 @@ export type ValidityMode = "INITIAL" | "ERROR" | "VALID";
 
 // @public (undocumented)
 export type ValidityNativeEvent = "input" | "change" | "blur" | "validate";
+
+// @public
+export type ValidKey = string;
 
 // @public (undocumented)
 export function validLimit(limit: unknown): string;
