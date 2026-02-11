@@ -3802,7 +3802,7 @@ function getAbsolutePosition(src) {
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
-import { ElementIdService as ElementIdService6, debounce as debounce3 } from "@fkui/logic";
+import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=script
 import {
@@ -4670,6 +4670,7 @@ IPopupError_default.__file = "packages/vue/src/internal-components/IPopupError/I
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
 import { computed, onUnmounted as onUnmounted2, useTemplateRef, watch, watchEffect } from "vue";
+import { debounce as debounce2 } from "@fkui/logic";
 
 // packages/vue/src/composables/useEventListener.ts
 import { onMounted, onUnmounted, toValue } from "vue";
@@ -4779,6 +4780,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     const contentRef = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
     const teleportTarget = computed(() => config.teleportTarget);
+    const debouncedOnResize = debounce2(onResize, 100);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -4794,12 +4796,12 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     });
     function addListeners() {
       document.addEventListener("click", onDocumentClickHandler);
-      window.addEventListener("resize", onResize);
+      window.addEventListener("resize", debouncedOnResize);
       window.addEventListener("scroll", onScroll, { capture: true });
     }
     function removeListeners() {
       document.removeEventListener("click", onDocumentClickHandler);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", debouncedOnResize);
       window.removeEventListener("scroll", onScroll, { capture: true });
     }
     function isElementInsideViewport(element) {
@@ -4835,7 +4837,9 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
       emit("close");
     }
     function onResize() {
-      emit("close");
+      if (__props.isOpen) {
+        calculatePosition();
+      }
     }
     function onScroll(event) {
       const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
@@ -4887,7 +4891,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         contentWrapper.style.width = `${String(width)}px`;
       }
     }
-    const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, get guessedItemHeight() {
+    const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, debouncedOnResize, get guessedItemHeight() {
       return guessedItemHeight;
     }, set guessedItemHeight(v) {
       guessedItemHeight = v;
@@ -5619,7 +5623,7 @@ import { alertScreenReader, focus as focus7 } from "@fkui/logic";
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=script
 import { defineComponent as defineComponent17 } from "vue";
 import { getWeekdayNamings, groupByWeek } from "@fkui/date";
-import { debounce as debounce2 } from "@fkui/logic";
+import { debounce as debounce3 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/calendar/get-day-offset.ts
 function getDayStartOffset(days) {
@@ -5669,7 +5673,7 @@ var ICalendarMonthGrid_default = defineComponent17({
     }
   },
   mounted() {
-    this.resizeObserver = new ResizeObserver(debounce2(this.onResize, 100));
+    this.resizeObserver = new ResizeObserver(debounce3(this.onResize, 100));
     this.resizeObserver.observe(this.$el);
     this.onResize();
   },
@@ -7145,7 +7149,7 @@ var FFieldset_default = defineComponent22({
       return this.children.filter((child) => child.checked);
     },
     debouncedUpdateChildren() {
-      return debounce3(this.updateCheckboxChildren.bind(this), 150);
+      return debounce4(this.updateCheckboxChildren.bind(this), 150);
     },
     checkboxCheckedScreenReaderText() {
       return this.checkedChildren.length === 1 ? this.$t("fkui.checkbox-group.checkbox.checked", "Kryssruta kryssad") : this.$t("fkui.checkbox-group.checkbox.not.checked", "Kryssruta ej kryssad");
