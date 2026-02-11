@@ -573,18 +573,7 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
+    "FPaginatorPageObject",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -601,7 +590,18 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
-    "FPaginatorPageObject",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -1999,36 +1999,9 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": []
     },
     {
       "url": "functions/date/f-year/index.html",
@@ -2108,9 +2081,36 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
-      "terms": []
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
     },
     {
       "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
@@ -2853,33 +2853,33 @@
     "571": 162,
     "572": 162,
     "573": 163,
-    "574": 163,
-    "575": 163,
-    "576": 164,
-    "577": 164,
-    "578": 164,
-    "579": 165,
-    "580": 165,
-    "581": 165,
-    "582": 166,
-    "583": 166,
-    "584": 166,
-    "585": 167,
-    "586": 167,
-    "587": 168,
-    "588": 169,
-    "589": 170,
-    "590": 171,
-    "591": 172,
-    "592": 173,
-    "593": 174,
-    "594": 175,
-    "595": 176,
-    "596": 177,
-    "597": 178,
-    "598": 179,
-    "599": 180,
-    "600": 181,
+    "574": 164,
+    "575": 164,
+    "576": 165,
+    "577": 166,
+    "578": 167,
+    "579": 168,
+    "580": 169,
+    "581": 170,
+    "582": 171,
+    "583": 172,
+    "584": 173,
+    "585": 174,
+    "586": 175,
+    "587": 176,
+    "588": 177,
+    "589": 178,
+    "590": 179,
+    "591": 179,
+    "592": 179,
+    "593": 180,
+    "594": 180,
+    "595": 180,
+    "596": 181,
+    "597": 181,
+    "598": 181,
+    "599": 182,
+    "600": 182,
     "601": 182,
     "602": 183,
     "603": 184,
