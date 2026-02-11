@@ -121,7 +121,7 @@ var FlerstegsModal_default = defineComponent({
       value: {
         organisationNumber: ""
       },
-      hideSubmitButtons: true
+      hideSubmitButton: true
     };
   },
   methods: {
@@ -135,7 +135,7 @@ var FlerstegsModal_default = defineComponent({
       this.$emit("submit", event);
     },
     onLastStepReached() {
-      this.hideSubmitButtons = false;
+      this.hideSubmitButton = false;
     }
   }
 });
@@ -151,7 +151,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock(_component_f_form_modal, {
     "is-open": _ctx.isOpen,
     value: _ctx.value,
-    "hide-submit-buttons": _ctx.hideSubmitButtons,
+    "hide-submit-button": _ctx.hideSubmitButton,
     onSubmit: _ctx.onSubmit,
     onCancel: _ctx.onCancel,
     onClose: _ctx.onClose
@@ -198,7 +198,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["is-open", "value", "hide-submit-buttons", "onSubmit", "onCancel", "onClose"]);
+  }, 8, ["is-open", "value", "hide-submit-button", "onSubmit", "onCancel", "onClose"]);
 }
 
 // packages/vue/src/components/FDialogueTree/examples/FlerstegsModal.vue

@@ -3435,10 +3435,10 @@ var FFormModal_default = defineComponent11({
       ]
     },
     /**
-     * If true, the submit buttons will be hidden.
-     * This can be used to hide submit buttons until a certain step in a multi-step form is reached.
+     * If true, the submit button will be hidden.
+     * This can be used to hide the submit button until a certain step in a multi-step form is reached.
      */
-    hideSubmitButtons: {
+    hideSubmitButton: {
       type: Boolean,
       required: false
     }
@@ -3474,7 +3474,7 @@ var FFormModal_default = defineComponent11({
   computed: {
     preparedButtons() {
       return prepareButtonList(
-        this.hideSubmitButtons ? this.buttons.filter((button) => !button.submitButton) : this.buttons
+        this.hideSubmitButton ? this.buttons.filter((button) => !button.submitButton) : this.buttons
       );
     }
   },
