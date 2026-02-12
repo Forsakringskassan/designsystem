@@ -28,6 +28,7 @@ const contentRef = useTemplateRef<HTMLElement>("content");
 const teleportDisabled = false;
 const popupClasses = ["popup", "popup--overlay"];
 const teleportTarget = computed(() => config.teleportTarget);
+const debouncedOnResize = debounce(onResize, 100);
 let guessedItemHeight: number | undefined = undefined;
 let verticalSpacing: number | undefined = undefined;
 
@@ -53,12 +54,12 @@ watchEffect(() => {
 
 function addListeners(): void {
     document.addEventListener("click", onDocumentClickHandler);
-    window.addEventListener("resize", debounce(onResize, 100));
+    window.addEventListener("resize", debouncedOnResize);
 }
 
 function removeListeners(): void {
     document.removeEventListener("click", onDocumentClickHandler);
-    window.removeEventListener("resize", debounce(onResize, 100));
+    window.removeEventListener("resize", debouncedOnResize);
 }
 
 function isElementInsideViewport(element: Element): boolean {
