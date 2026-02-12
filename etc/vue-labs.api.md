@@ -183,6 +183,8 @@ export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase
     // (undocumented)
     align?: "left" | "right";
     // (undocumented)
+    attributes?: Record<string, string | number | boolean | undefined> | ((this: void, row: T) => Record<string, string | number | boolean | undefined>);
+    // (undocumented)
     decimals?: number;
     // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
@@ -275,6 +277,8 @@ export type TableColumnSize = "grow" | "shrink";
 export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     align?: "left" | "right";
+    // (undocumented)
+    attributes?: Record<string, string | number | boolean | undefined> | ((this: void, row: T) => Record<string, string | number | boolean | undefined>);
     // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)

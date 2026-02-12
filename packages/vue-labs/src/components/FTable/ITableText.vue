@@ -11,6 +11,8 @@ import {
 import { type ComponentValidityEvent, FIcon, IPopupError, dispatchComponentValidityEvent } from "@fkui/vue";
 import { useElementHover, useEventListener, useFocusWithin } from "@vueuse/core";
 import { type PopupError } from "./PopupEror";
+import { isColumnTypeNumber } from "./columns/helpers";
+import { inputFieldConfig } from "./input-fields-config";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { useStartStopEdit } from "./start-stop-edit";
@@ -99,6 +101,23 @@ const ariaLabel = computed(() => {
     }
 
     return value.length > 0 ? value : undefined;
+});
+
+const columnAttributes = computed(() => {
+    if (column.attributes && typeof column.attributes === "function") {
+        return column.attributes(row);
+    } else {
+        return column.attributes;
+    }
+});
+
+const configAttributes = computed(() => {
+    let decimals: number | undefined = undefined;
+
+    if (isColumnTypeNumber(column)) {
+        decimals = column.decimals;
+    }
+    return inputFieldConfig[column.type].attributes({ decimals });
 });
 
 const tdElement = useTemplateRef("td");
@@ -367,6 +386,7 @@ function onPendingValidity(): void {
                 maxlength="40"
                 tabindex="-1"
                 :aria-label
+                v-bind="{ ...configAttributes, ...columnAttributes }"
                 @validity="onValidity"
                 @pending-validity="onPendingValidity"
             />

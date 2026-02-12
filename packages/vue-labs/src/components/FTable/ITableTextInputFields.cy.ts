@@ -101,7 +101,7 @@ describe("FTable, personnummer", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             pnr: "",
         };
@@ -181,7 +181,7 @@ describe("FTable, bankgiro", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             bankgiro: "",
         };
@@ -259,7 +259,7 @@ describe("FTable, bankAccountNumber", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             bankAccountNumber: "",
         };
@@ -336,7 +336,7 @@ describe("FTable, clearingNumber", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             clearingNumber: "",
         };
@@ -414,7 +414,7 @@ describe("FTable, date", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             date: "",
         };
@@ -486,7 +486,7 @@ describe("FTable, email", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             email: "",
         };
@@ -563,7 +563,7 @@ describe("FTable, organisationsnummer", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             orgnr: "",
         };
@@ -638,7 +638,7 @@ describe("FTable, telefonnummer", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             tele: "",
         };
@@ -715,7 +715,7 @@ describe("FTable, postnummer", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             postnr: "",
         };
@@ -793,7 +793,7 @@ describe("FTable, plusgiro", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             plusgiro: "",
         };
@@ -871,7 +871,7 @@ describe("FTable, valuta", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             currency: "",
         };
@@ -950,7 +950,7 @@ describe("FTable, procent", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have attribute inputmode set to decimals", () => {
         const row = {
             percent: "",
         };
@@ -960,8 +960,20 @@ describe("FTable, procent", () => {
 
         cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
-        cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
+        cell.get("input").invoke("attr", "inputmode").should("eq", "decimal");
         cell.get("input").invoke("attr", "maxlength").should("eq", "10");
+    });
+
+    it("should have attribute inputmode set to numeric", () => {
+        const row = {
+            percent: "",
+        };
+        column.decimals = undefined;
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
     });
 });
 
@@ -1029,7 +1041,7 @@ describe("FTable, nummer", () => {
         });
     });
 
-    it("sholud have correct attributes", () => {
+    it("should have correct attributes", () => {
         const row = {
             number: "",
         };
@@ -1041,5 +1053,215 @@ describe("FTable, nummer", () => {
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
         cell.get("input").invoke("attr", "maxlength").should("eq", "20");
+    });
+});
+
+describe("FTable, attribute config function", () => {
+    it("should set attributes for type text", () => {
+        const column: TableColumn<Row, keyof Row> = {
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: true,
+            label: () => `Label`,
+            attributes: () => {
+                return {
+                    foo: "bar",
+                    bar: "foo",
+                    baz: true,
+                };
+            },
+        };
+        const row = {
+            text: "Abc",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "foo").should("eq", "bar");
+        cell.get("input").invoke("attr", "bar").should("eq", "foo");
+        cell.get("input").invoke("attr", "baz").should("eq", "true");
+    });
+
+    it("should set attributes for type number", () => {
+        const column: TableColumn<Row, keyof Row> = {
+            type: "text:number",
+            header: "Nummer",
+            key: "number",
+            editable: true,
+            label: () => `Label`,
+            attributes: () => {
+                return {
+                    foo: "bar",
+                    bar: "foo",
+                    baz: true,
+                };
+            },
+        };
+        const row = {
+            number: "123",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "foo").should("eq", "bar");
+        cell.get("input").invoke("attr", "bar").should("eq", "foo");
+        cell.get("input").invoke("attr", "baz").should("eq", "true");
+    });
+
+    it("should override default attributes", () => {
+        const column: TableColumn<Row, keyof Row> = {
+            type: "text:number",
+            header: "Nummer",
+            key: "number",
+            editable: true,
+            label: () => `Label`,
+            attributes: () => {
+                return {
+                    inputmode: "text",
+                    maxlength: "2",
+                };
+            },
+        };
+        const row = {
+            number: "123",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "inputmode").should("eq", "text");
+        cell.get("input").invoke("attr", "maxlength").should("eq", "2");
+    });
+
+    it("should remove default attribute", () => {
+        const column: TableColumn<Row, keyof Row> = {
+            type: "text:number",
+            header: "Nummer",
+            key: "number",
+            editable: true,
+            label: () => `Label`,
+            attributes: () => {
+                return {
+                    maxlength: undefined,
+                };
+            },
+        };
+        const row = {
+            number: "123",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "maxlength").should("be.undefined");
+        cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
+    });
+});
+
+describe("FTable, attribute config object", () => {
+    it("should set attributes for type text", () => {
+        const column: TableColumn<Row, keyof Row> = {
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: true,
+            label: () => `Label`,
+            attributes: {
+                foo: "bar",
+                bar: "foo",
+                baz: true,
+            },
+        };
+        const row = {
+            text: "Abc",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "foo").should("eq", "bar");
+        cell.get("input").invoke("attr", "bar").should("eq", "foo");
+        cell.get("input").invoke("attr", "baz").should("eq", "true");
+    });
+
+    it("should set attributes for type number", () => {
+        const column: TableColumn<Row, keyof Row> = {
+            type: "text:number",
+            header: "Nummer",
+            key: "number",
+            editable: true,
+            label: () => `Label`,
+            attributes: {
+                foo: "bar",
+                bar: "foo",
+                baz: true,
+            },
+        };
+        const row = {
+            number: "123",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "foo").should("eq", "bar");
+        cell.get("input").invoke("attr", "bar").should("eq", "foo");
+        cell.get("input").invoke("attr", "baz").should("eq", "true");
+    });
+
+    it("should override default attributes", () => {
+        const column: TableColumn<Row, keyof Row> = {
+            type: "text:number",
+            header: "Nummer",
+            key: "number",
+            editable: true,
+            label: () => `Label`,
+            attributes: {
+                inputmode: "text",
+                maxlength: "2",
+            },
+        };
+        const row = {
+            number: "123",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "inputmode").should("eq", "text");
+        cell.get("input").invoke("attr", "maxlength").should("eq", "2");
+    });
+
+    it("should remove default attribute", () => {
+        const column: TableColumn<Row, keyof Row> = {
+            type: "text:number",
+            header: "Nummer",
+            key: "number",
+            editable: true,
+            label: () => `Label`,
+            attributes: {
+                maxlength: undefined,
+            },
+        };
+        const row = {
+            number: "123",
+        };
+
+        mountTable(row, column);
+        const cell = table.cell({ row: 1, col: 1 });
+
+        cell.click();
+        cell.get("input").invoke("attr", "maxlength").should("be.undefined");
+        cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
     });
 });

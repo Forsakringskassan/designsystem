@@ -96,14 +96,6 @@ export function isInputTypeBase(value: string): value is InputTypeBase {
 /**
  * @internal
  */
-export interface InputAttribute {
-    readonly name: string;
-    readonly value: string;
-}
-
-/**
- * @internal
- */
 export interface AttributeOptions {
     decimals?: number;
 }
@@ -112,7 +104,9 @@ export interface AttributeOptions {
  * @internal
  */
 export interface InputTypeTextConfig {
-    attributes(): InputAttribute[];
+    attributes(
+        options?: AttributeOptions,
+    ): Record<string, string | number | undefined>;
     formatter(this: void, value: string): string | undefined;
     parser(this: void, value: string): string | undefined;
     readonly validationConfig: ValidatorConfigs;
@@ -122,7 +116,9 @@ export interface InputTypeTextConfig {
  * @internal
  */
 export interface InputTypeNumberConfig {
-    attributes(options?: AttributeOptions): InputAttribute[];
+    attributes(
+        options?: AttributeOptions,
+    ): Record<string, string | number | undefined>;
     formatter(
         this: AttributeOptions,
         value: string | number,
@@ -147,10 +143,12 @@ export const inputFieldConfig = {
             personnummerFormat: {},
             personnummerLuhn: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "23" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "23",
+            };
+        },
     } satisfies InputTypeTextConfig,
     "text:bankAccountNumber": {
         formatter(value) {
@@ -162,10 +160,12 @@ export const inputFieldConfig = {
         validationConfig: {
             bankAccountNumber: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "40" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "40",
+            };
+        },
     } satisfies InputTypeTextConfig,
     "text:bankgiro": {
         formatter(value) {
@@ -178,10 +178,12 @@ export const inputFieldConfig = {
             maxLength: { length: 9 },
             bankgiro: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "40" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "40",
+            };
+        },
     } satisfies InputTypeTextConfig,
     "text:clearingNumber": {
         formatter(value) {
@@ -193,10 +195,12 @@ export const inputFieldConfig = {
         validationConfig: {
             clearingNumber: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "16" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "16",
+            };
+        },
     } satisfies InputTypeTextConfig,
     "text:currency": {
         formatter(value) {
@@ -209,10 +213,12 @@ export const inputFieldConfig = {
             currency: {},
             integer: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "20" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "20",
+            };
+        },
     } satisfies InputTypeNumberConfig,
     "text:date": {
         formatter(value) {
@@ -224,7 +230,9 @@ export const inputFieldConfig = {
         validationConfig: {
             date: {},
         },
-        attributes: () => [{ name: "type", value: "text" }],
+        attributes: () => {
+            return { type: "text" };
+        },
     } satisfies InputTypeTextConfig,
     "text:email": {
         formatter(value) {
@@ -237,10 +245,12 @@ export const inputFieldConfig = {
             email: {},
             maxLength: { length: 80 },
         },
-        attributes: () => [
-            { name: "type", value: "email" },
-            { name: "maxlength", value: "80" },
-        ],
+        attributes: () => {
+            return {
+                type: "email",
+                maxlength: "80",
+            };
+        },
     } satisfies InputTypeTextConfig,
     "text:number": {
         formatter(value) {
@@ -252,10 +262,12 @@ export const inputFieldConfig = {
         validationConfig: {
             number: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "20" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "20",
+            };
+        },
     } satisfies InputTypeNumberConfig,
     "text:organisationsnummer": {
         formatter(value) {
@@ -268,10 +280,12 @@ export const inputFieldConfig = {
             maxLength: { length: 11 },
             organisationsnummer: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "20" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "20",
+            };
+        },
     } satisfies InputTypeTextConfig,
     "text:percent": {
         formatter(value) {
@@ -285,14 +299,12 @@ export const inputFieldConfig = {
             minValue: { minValue: 0 },
             maxValue: { maxValue: 999 },
         },
-        attributes: (decimals) => {
-            return [
-                {
-                    name: "inputmode",
-                    value: decimals ? "decimal" : "numeric",
-                },
-                { name: "maxlength", value: "10" },
-            ];
+        attributes: (options) => {
+            const decimals = options?.decimals;
+            return {
+                inputmode: decimals ? "decimal" : "numeric",
+                maxlength: "10",
+            };
         },
     } satisfies InputTypeNumberConfig,
     "text:phoneNumber": {
@@ -306,10 +318,12 @@ export const inputFieldConfig = {
             maxLength: { length: 80 },
             phoneNumber: {},
         },
-        attributes: () => [
-            { name: "maxlength", value: "80" },
-            { name: "type", value: "tel" },
-        ],
+        attributes: () => {
+            return {
+                maxlength: "80",
+                type: "tel",
+            };
+        },
     } satisfies InputTypeTextConfig,
     "text:plusgiro": {
         formatter(value) {
@@ -322,10 +336,12 @@ export const inputFieldConfig = {
             maxLength: { length: 11 },
             plusgiro: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "16" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "16",
+            };
+        },
     } satisfies InputTypeTextConfig,
     "text:postalCode": {
         formatter(value) {
@@ -338,10 +354,12 @@ export const inputFieldConfig = {
             maxLength: { length: 13 },
             postalCode: {},
         },
-        attributes: () => [
-            { name: "inputmode", value: "numeric" },
-            { name: "maxlength", value: "15" },
-        ],
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "15",
+            };
+        },
     } satisfies InputTypeTextConfig,
     text: {
         formatter(value) {
@@ -351,7 +369,9 @@ export const inputFieldConfig = {
             return value;
         },
         validationConfig: {},
-        attributes: () => [],
+        attributes: () => {
+            return {};
+        },
     } satisfies InputTypeTextConfig,
 } satisfies Record<
     InputTypeText | InputTypeNumber,
