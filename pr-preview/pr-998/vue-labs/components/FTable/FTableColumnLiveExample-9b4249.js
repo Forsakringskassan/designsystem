@@ -57,21 +57,6 @@ function defaultTnumValue(type) {
   return tnumTypes.includes(type);
 }
 
-// src/components/FTable/input-fields-config.ts
-import {
-  formatNumber,
-  formatPersonnummer,
-  formatPostalCode,
-  parseBankAccountNumber,
-  parseBankgiro,
-  parseClearingNumber,
-  parseDate,
-  parseNumber,
-  parseOrganisationsnummer,
-  parsePersonnummer,
-  parsePlusgiro
-} from "@fkui/logic";
-
 // src/components/FTable/is-text-column.ts
 function isTextColumn(column) {
   if (!column.type) {
