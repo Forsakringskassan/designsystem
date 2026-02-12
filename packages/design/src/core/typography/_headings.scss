@@ -7,32 +7,37 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: var(--f-font-weight-bold);
     margin-bottom: size.$margin-025;
     line-height: var(--f-line-height-medium);
 }
 h1 {
     font-size: var(--f-font-size-h1);
+    font-weight: var(--f-font-weight-bold);
     color: var(--f-text-color-heading-1);
 }
 h2 {
     font-size: var(--f-font-size-h2);
+    font-weight: var(--f-font-weight-semi-bold);
     color: var(--f-text-color-heading-2);
 }
 h3 {
     font-size: var(--f-font-size-h3);
+    font-weight: var(--f-font-weight-semi-bold);
     color: var(--f-text-color-heading-3);
 }
 h4 {
     font-size: var(--f-font-size-h4);
+    font-weight: var(--f-font-weight-semi-bold);
     color: var(--f-text-color-heading-4);
 }
 h5 {
     font-size: var(--f-font-size-large);
+    font-weight: var(--f-font-weight-semi-bold);
     color: var(--f-text-color-heading-5);
 }
 h6 {
     font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-semi-bold);
     color: var(--f-text-color-heading-6);
 }
 .heading--strong {
