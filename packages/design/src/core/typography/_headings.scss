@@ -14,18 +14,22 @@ h6 {
 h1 {
     font-size: var(--f-font-size-h1);
     color: var(--f-text-color-heading-1);
+    letter-spacing: var(--f-letter-spacing-tighter);
 }
 h2 {
     font-size: var(--f-font-size-h2);
     color: var(--f-text-color-heading-2);
+    letter-spacing: var(--f-letter-spacing-tight);
 }
 h3 {
     font-size: var(--f-font-size-h3);
     color: var(--f-text-color-heading-3);
+    letter-spacing: var(--f-letter-spacing-tight);
 }
 h4 {
     font-size: var(--f-font-size-h4);
     color: var(--f-text-color-heading-4);
+    letter-spacing: var(--f-letter-spacing-tight);
 }
 h5 {
     font-size: var(--f-font-size-large);
