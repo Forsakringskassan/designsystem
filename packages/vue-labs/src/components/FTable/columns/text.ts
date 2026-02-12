@@ -22,6 +22,12 @@ export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
     label?(this: void, row: T): string;
     tnum?: boolean;
     align?: "left" | "right";
+    attributes?:
+        | Record<string, string | number | boolean | undefined>
+        | ((
+              this: void,
+              row: T,
+          ) => Record<string, string | number | boolean | undefined>);
     value?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
     editable?: boolean | ((this: void, row: T) => boolean);
@@ -47,6 +53,12 @@ export interface NormalizedTableColumnText<
         column: NormalizedTableColumnText<T, K>;
         activeErrorAnchor?: HTMLElement;
     }>;
+    attributes?:
+        | Record<string, string | number | boolean | undefined>
+        | ((
+              this: void,
+              row: T,
+          ) => Record<string, string | number | boolean | undefined>);
     label(this: void, row: T): string;
     value(this: void, row: T): string;
     update(this: void, row: T, newValue: string, oldValue: string): void;
@@ -69,6 +81,7 @@ export function normalizeTextColumn<T, K extends keyof T>(
         type,
         tnum: column.tnum ?? defaultTnumValue(type),
         align: column.align ?? "left",
+        attributes: column.attributes,
         label: getLabelFn(column.label),
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
