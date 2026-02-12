@@ -64,6 +64,10 @@
     --f-font-size-large: 1.125rem; // Desktop h6, mobile h4
     --f-font-size-standard: 1rem; // Desktop normal, mobile normal, h5, h6
 
+    /// Font letter spacing
+    --f-letter-spacing-tight: -0.3px;
+    --f-letter-spacing-tighter: -0.5px;
+
     /// Height, width and icon size variables
     /// Default icon size
     --f-icon-size-x-small: 0.75rem;
