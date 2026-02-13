@@ -1,9 +1,10 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, nextTick, onMounted, ref, useId, useTemplateRef, watchEffect } from "vue";
+import { computed, nextTick, onMounted, ref, useTemplateRef, watchEffect } from "vue";
 import {
     type ValidationResult,
     type ValidityEvent,
     type ValidityNativeEvent,
+    ElementIdService,
     ValidationService,
     assertRef,
 } from "@fkui/logic";
@@ -37,8 +38,8 @@ const emit = defineEmits<{
 
 const viewValue = ref("");
 const inEdit = ref(false);
-const cellId = useId();
-const inputId = useId();
+const cellId = ElementIdService.generateElementId();
+const inputId = ElementIdService.generateElementId();
 
 const validity = ref<Pick<ValidityEvent, "isValid" | "validationMessage" | "validityMode">>({
     isValid: true,
