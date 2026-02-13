@@ -141,6 +141,34 @@ describe("ITableMenu", () => {
         table.cell({ row: 1, col: 2 }).find("button").should("be.focused");
     });
 
+    it("should close current context menu when opening another", () => {
+        const rows = [
+            { id: 1, text: "Text 1" },
+            { id: 1, text: "Text 2" },
+        ];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            { type: "text", header: "Text", key: "text" },
+            {
+                type: "menu",
+                header: "Actions",
+                text() {
+                    return "Actions";
+                },
+                actions: [{ label: "foo" }, { label: "bar" }],
+            },
+        ]);
+
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 2, col: 2 }).click();
+        table.contextmenu().should("have.length", 1);
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.contextmenu().should("have.length", 1);
+    });
+
     it("should call action when menu item is selected", () => {
         const rows = [{ id: 1, text: "Text" }];
         const foo = cy.stub().as("fooClick");
