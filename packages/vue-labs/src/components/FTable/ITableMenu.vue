@@ -32,7 +32,7 @@ const renderButton = computed(() => {
 });
 
 function onOpen(event: MouseEvent): void {
-    /* prevent FTable from activaging the cell (which moves the focus back to
+    /* prevent FTable from activating the cell (which moves the focus back to
      * the cell instead of the context menu) */
     event.stopPropagation();
 
@@ -40,6 +40,15 @@ function onOpen(event: MouseEvent): void {
 }
 
 function onClose(): void {
+    isOpen.value = false;
+}
+
+function onFocusout(event: FocusEvent): void {
+    const validTarget = event.relatedTarget && event.relatedTarget instanceof HTMLElement;
+    const inPopup = validTarget && Boolean(event.relatedTarget.closest(".popup"));
+    if (inPopup) {
+        return;
+    }
     isOpen.value = false;
 }
 
@@ -63,6 +72,7 @@ defineExpose(expose);
             :anchor="buttonRef ?? undefined"
             @close="onClose"
             @select="onSelect"
+            @focusout="onFocusout"
         ></f-context-menu>
     </td>
     <td v-else tabindex="-1" class="table-ng__cell"></td>
