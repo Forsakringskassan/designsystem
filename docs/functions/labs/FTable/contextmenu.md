@@ -31,7 +31,7 @@ const columns = defineTableColumns<typeof row>([
         type: "menu",
         text(row) {
             return `Åtgärder för rad ${row.id}`;
-        }
+        },
         actions: [
             {
                 label: "Etikett",

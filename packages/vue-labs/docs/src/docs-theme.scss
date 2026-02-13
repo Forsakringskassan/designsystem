@@ -1,8 +1,0 @@
-@use "pkg:@fkui/theme-default";
-@use "@fkui/design/src/core/config-variables" with (
-    $asset-path: ".",
-    $asset-path-images: "./images"
-);
-@use "@fkui/design/src/fkui";
-@use "@forsakringskassan/docs-generator/style";
-@use "@forsakringskassan/docs-live-example";

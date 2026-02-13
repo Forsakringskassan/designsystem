@@ -5,7 +5,7 @@ import { FTable, defineTableColumns } from "@fkui/vue-labs";
 interface Row {
     id: string;
     name: string;
-    nested?: Row;
+    nested?: Row[];
 }
 
 const columns = defineTableColumns<Row>([

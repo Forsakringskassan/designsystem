@@ -1,9 +1,11 @@
 ---
-title: FKUI Vue Labs
+title: Om FKUI Vue Labs
+sortorder: 1
+layout: pattern
 ---
 
 Här kan du tillfälligt lägga experimentversioner av komponenter och annan funktionalitet som kan bli kandidater till FKUI men som inte är helt beslutade.
-Komponenter i labs kan förändras och de kan tas bort.
+Komponenter i labs kan förändras och de kan tas bort utan att det anses brytande.
 Inga komponenter ska ligga i labs någon längre tid och konsumenten ansvarar själv för att testa komponenten.
 Det kan till exempel vara så att såväl enhetstester som tester för tillgänglighet och SLA saknas.
 
