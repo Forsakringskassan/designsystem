@@ -6,32 +6,36 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tidsinmatning - FKUI Labs</title><link
             rel="stylesheet"
-            href="../assets/docs-481271.css"
+            href="../assets/docs-4b812f.css"
             crossorigin
-            integrity="sha384-npUGpYgk5FTrstn/29seScFBRDPEvKociWD1eWq1yU5K6RPnHbpfJTZRWzfl8AK1"
+            integrity="sha384-04BBskCTkRrSGiCBNnb4GOSVUe2rTCJtmxKZfO8zv0Ikx1pgwC2KwlemwgJSiF+K"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-fkui-2b1efe.css"
+            href="../assets/docs-fkui-1c3203.css"
             crossorigin
-            integrity="sha384-H0kRsyVWOYMAmXQhwXPZ1MsPKifnoKMKEM22fL6gg5sczb1oFGTvqK10erhn2G1e"
+            integrity="sha384-O/QzI0QeuSVt7PC7hu6nCVtGuhEJutun3SXB79bG6E7CJpUorFBdUtpvPcg8x/Up"
             data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-fd4a2d.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-cb1d47.js",
-    "@fkui/date": "../assets/vendor-fkui-date-024cc2.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-357690.js"
+    "vue": "../assets/vendor-vue-253fec.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-fb32f2.js",
+    "@fkui/date": "../assets/vendor-fkui-date-1d9b40.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-d26117.js",
+    "@fkui/vue-labs": "../assets/vendor-fkui-vue-labs-844796.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-fe2383.js"
   },
   "integrity": {
-    "../assets/vendor-vue-fd4a2d.js": "sha384-kmC4T0C5ZzwbUEm2knIR443x2ILwlEZgPawQWZvqbegtVKkhK/F5ifTqm7n0M6rE",
-    "../assets/vendor-fkui-logic-cb1d47.js": "sha384-cYyAMpzX6o+Mx1ahOrF5blFq85m9utKy9qg8GmepiyZ+c/Ha6q7usDcijN+bsdK1",
-    "../assets/vendor-fkui-date-024cc2.js": "sha384-p0OHhMI0IsoyIh+/1Cyvu2qD+riXRyL6F/I3NNxpdud8wBwA0pXVP6Vdo3y0bdMO",
-    "../assets/vendor-fkui-vue-357690.js": "sha384-1uqTbbXAXaa4vvv6Nb9i7C1i2dSQcW4UVOJFwL/R0eB8+McMJmzNrMgqGxzdidfC"
+    "../assets/vendor-vue-253fec.js": "sha384-Gwrpy/MvW7PMgGlf4uibXir5qKDE3HDix0+Qt3l0wFa+npyBm1McByJTLxY6Q5/p",
+    "../assets/vendor-fkui-logic-fb32f2.js": "sha384-1vh7Ny8xbbIVFIhEjCMORtLLt64Vy29eseX0XqrQGbQFrGYkycu+ognj9wYspcpX",
+    "../assets/vendor-fkui-date-1d9b40.js": "sha384-jwnzF0g6EtC2yS5CmBTnhsoxNKltuOO2MAIxVshZCar1ztgxBrTNxNUOlB18Hk/w",
+    "../assets/vendor-fkui-vue-d26117.js": "sha384-jnDHUbtutsaGv81g7GeoQDqRyg5SBtBM3E+N4hIPgBL/RD8VaGmgmqA48zZk250C",
+    "../assets/vendor-fkui-vue-labs-844796.js": "sha384-EQr5KCtzdtOFZEynk/R/X7sUSjsMZ9nKlztUKR+hbfZN8KCoY7dQSTLnQNZbanQi",
+    "../assets/vendor-forsakringskassan-docs-live-example-fe2383.js": "sha384-zp/dC2Q9fr2MNGNwpaTNP+qizDjGJBio6keMixt3Nzm4r55B+r3hAHw54F4fE17W"
   }
 }
         </script><script
@@ -42,10 +46,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-f0ae84.json"
+            href="../search-data-3d1652.json"
             as="fetch"
             crossorigin
-            integrity="sha384-dZ9g0/X4h0qBNZGqSLu+uPIc1TeTl3IScKwbih7PM/p6sTedyOIJskkTJcCezl/A"
+            integrity="sha384-WNo6KZqwXu/ubFemAEo5uLPjAHHp9iVZmTQ6vh+cPpi3pRqexB7xp97m7FJdlqnU"
             id="search-data"
         />
     </head>
@@ -94,16 +98,17 @@
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
-        <button class="text-field__input" type="submit">
-            <svg focusable="false" class="icon button__icon">
-                <use xlink:href="#docs-icon-search"></use></svg
-            >Sök <kbd>ctrl-k</kbd>
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
 </div>
 <div class="toolbar__item">
     <span class="version">
-        6.24.1
+        6.36.0
     </span>
 </div>
 </div>
@@ -116,16 +121,47 @@
             <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
+<ol><li class="expandable ">
+        <details >
+            <summary>Tabell</summary>
+            
+            
 <ol><li class="link ">
         <a
-            href="./ftable.html"
+            href="./FTable/"
             
             
             
-            data-path="components/ftable.html"
+            data-path="components/FTable/"
             
         >
-            FTable
+            Tabell
+        </a>
+    </li><li class="link ">
+        <a
+            href="./FTable/contextmenu.html"
+            
+            
+            
+            data-path="components/FTable/contextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="./code-table.html"
+            
+            
+            
+            data-path="components/code-table.html"
+            
+        >
+            Kod (tillhör nya tabellkomponenten)
         </a>
     </li><li class="link active">
         <a
@@ -137,6 +173,28 @@
             
         >
             Tidsinmatning
+        </a>
+    </li><li class="link ">
+        <a
+            href="./xfiledragdrop.html"
+            
+            
+            
+            data-path="components/xfiledragdrop.html"
+            
+        >
+            XFileDragdrop
+        </a>
+    </li><li class="link ">
+        <a
+            href="./xsortfilterdatasetng.html"
+            
+            
+            
+            data-path="components/xsortfilterdatasetng.html"
+            
+        >
+            XSortFilterDatasetNg
         </a>
     </li></ol>
 </nav>
@@ -234,15 +292,17 @@ följas av två siffror för att vara giltigt (dvs. 08: och 08:0 är ogiltiga). 
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-a26e0a"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-eb2b52"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./XTimeTextFieldExample-a26e0a.js"></script>
-    </div>
+        <script type="module" src="./XTimeTextFieldExample-eb2b52.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -368,15 +428,17 @@ Exempel:</p>
                 data-language="vue"
             >
                 
-                <div class="code-preview__preview">
-        <div id="example-63f4e6"></div>
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-58066d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ForgivingInput-63f4e6.js"></script>
-    </div>
+        <script type="module" src="./ForgivingInput-58066d.js"></script>
+    
+                </div>
                 <div>
             <button
                 type="button"
@@ -543,10 +605,10 @@ Exempel:</p>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog><script
-            src="../assets/main-8a3e62.js"
+            src="../assets/main-3893bd.js"
             type="module"
             crossorigin
-            integrity="sha384-0RlHNrQgJvdxR4N7lQSd3sc3MQDrTPlAovPWpFZDaeI8hkGn544BhbzOJxQzGpcO"
+            integrity="sha384-QnqFOTWAYDyMNzjW6B1++egFEdnx/l6Lz85o3oq0NwjAgMVFkKb1MUdAHnFIZP/Z"
             
         ></script>
     </body>
