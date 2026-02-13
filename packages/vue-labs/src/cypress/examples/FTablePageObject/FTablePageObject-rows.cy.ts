@@ -1,4 +1,4 @@
-import { FTablePageObject } from "../../../../src/cypress";
+import { FTablePageObject } from "../..";
 import Example from "./FTablePageObject-rows.vue";
 
 it("rows() should get correct number of rows.", () => {

@@ -86,9 +86,3 @@ const rows = [
 <template>
     <f-table ref="table" :rows :columns striped></f-table>
 </template>
-
-<style>
-body {
-    padding: 1rem;
-}
-</style>

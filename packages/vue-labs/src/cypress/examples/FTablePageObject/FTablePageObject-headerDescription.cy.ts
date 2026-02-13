@@ -1,4 +1,4 @@
-import { FTablePageObject } from "../../../../src/cypress";
+import { FTablePageObject } from "../..";
 import Example from "./FTablePageObject-headerDescription.vue";
 
 it("headerDescription() should get correct header description text.", () => {

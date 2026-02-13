@@ -150,10 +150,12 @@ module.exports = {
                 "./packages/vue/src/components/**/*.vue",
                 "./packages/vue/src/internal-components/**/*.vue",
                 "./packages/vue/src/design-components-test/**/*.vue",
+                "./packages/vue-labs/src/components/**/*.vue",
             ],
             exclude: [
                 "./packages/vue/src/**/examples/*.vue",
                 "./packages/vue/src/**/ct/*.vue",
+                "./packages/vue-labs/src/**/examples/*.vue",
             ],
             fileReader: vueFileReader,
         },

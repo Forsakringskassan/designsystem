@@ -171,6 +171,15 @@ functions/i18next-translate/i18next-provider-interface.html
 functions/i18next-translate/i18next-provider.html
 functions/i18next-translate/i18next.html
 functions/index.html
+functions/labs/code-table.html
+functions/labs/FTable/contextmenu.html
+functions/labs/FTable/index.html
+functions/labs/ftablepageobject.html
+functions/labs/index.html
+functions/labs/test-table.html
+functions/labs/xfiledragdrop.html
+functions/labs/xsortfilterdatasetng.html
+functions/labs/xtimetextfield.html
 functions/logo-default.html
 functions/plugins/errorplugin.html
 functions/plugins/formatplugin.html

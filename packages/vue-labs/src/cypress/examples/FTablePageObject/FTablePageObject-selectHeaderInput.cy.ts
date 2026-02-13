@@ -1,4 +1,4 @@
-import { FTablePageObject } from "../../../../src/cypress";
+import { FTablePageObject } from "../..";
 import Example from "./FTablePageObject-selectHeaderInput.vue";
 
 it("selectHeaderInput() should select all rows.", () => {

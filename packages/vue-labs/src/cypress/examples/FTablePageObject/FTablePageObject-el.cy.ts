@@ -1,4 +1,4 @@
-import { FTablePageObject } from "../../../../src/cypress";
+import { FTablePageObject } from "../..";
 import Example from "./FTablePageObject-el.vue";
 
 it("`FTablePageObject.el()` should get correct element", () => {
