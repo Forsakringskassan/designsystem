@@ -25,6 +25,9 @@ export default defineConfig({
                 "packages/vue/src/cypress/index.ts",
             ),
             "@fkui/vue": path.resolve("packages/vue/src/index.ts"),
+            "@fkui/vue-labs/cypress": path.resolve(
+                "packages/vue-labs/src/cypress/index.ts",
+            ),
             "@fkui/vue-labs": path.resolve("packages/vue-labs/src/index.ts"),
         },
     },

@@ -1,5 +1,5 @@
-import { FTablePageObject } from "../..";
 import Example from "./FTablePageObject-caption.vue";
+import { FTablePageObject } from "@fkui/vue-labs/cypress";
 
 it("caption() should get correct text from table caption.", () => {
     cy.mount(Example);
