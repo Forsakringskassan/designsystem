@@ -6475,11 +6475,10 @@ var IComboboxToggleButton_default = /* @__PURE__ */ _defineComponent3({
   emits: ["toggle"],
   setup(__props, { expose: __expose, emit: __emit }) {
     __expose();
-    const props = __props;
     const emit = __emit;
     const $t2 = useTranslate();
     const ariaLabel = $t2("fkui.combobox.toggle", "\xD6ppna f\xF6rslagen");
-    const __returned__ = { props, emit, $t: $t2, ariaLabel, get FIcon() {
+    const __returned__ = { emit, $t: $t2, ariaLabel, get FIcon() {
       return FIcon_default2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -6500,7 +6499,7 @@ function render22(_ctx, _cache, $props, $setup, $data, $options) {
   }, [
     _createVNode8($setup["FIcon"], {
       name: "arrow-down",
-      rotate: $setup.props.isOpen ? "180" : void 0,
+      rotate: $props.isOpen ? "180" : void 0,
       class: "text-field__icon"
     }, null, 8, ["rotate"])
   ], 8, _hoisted_118);
