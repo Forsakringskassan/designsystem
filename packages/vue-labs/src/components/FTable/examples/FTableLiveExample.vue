@@ -92,8 +92,8 @@ const columnsBase = defineTableColumns<Row>([
     },
     {
         header: "Render function",
-        render() {
-            return h("td", { id: "foo", class: "bar" }, ["👻"]);
+        render(row) {
+            return h("td", { id: `foo-${row.id}`, class: "bar" }, ["👻"]);
         },
     },
 ]);
