@@ -1,5 +1,5 @@
-import { FTablePageObject } from "../..";
 import Example from "./FTablePageObject-selectInput.vue";
+import { FTablePageObject } from "@fkui/vue-labs/cypress";
 
 it("selectInput() should select correct row.", () => {
     cy.mount(Example);
