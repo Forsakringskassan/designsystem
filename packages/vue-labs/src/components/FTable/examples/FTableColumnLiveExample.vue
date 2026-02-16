@@ -32,78 +32,123 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
         type: "checkbox",
         header: "Kryssruta",
         key: "value",
+        label: () => {
+            return "Kryssruta label";
+        },
     },
     radio: {
         type: "radio",
         header: "Radioknapp",
         key: "value",
+        label: () => {
+            return "Radioknapp label";
+        },
     },
     "text:currency": {
         type: "text:currency",
         header: "Valuta",
         key: "value",
+        label: () => {
+            return "Valuta label";
+        },
     },
     "text:number": {
         type: "text:number",
         decimals: 3,
         header: "Numeriskt, tre decimaler",
         key: "value",
+        label: () => {
+            return "Numeriskt label";
+        },
     },
     "text:percent": {
         type: "text:percent",
         decimals: 2,
         header: "Procent, två decimaler",
         key: "value",
+        label: () => {
+            return "Procent label";
+        },
     },
     text: {
         type: "text",
         header: "Fritext",
         key: "value",
+        label: () => {
+            return "Fritext label";
+        },
     },
     "text:bankAccountNumber": {
         type: "text:bankAccountNumber",
         header: "Kontonummer",
         key: "value",
+        label: () => {
+            return "Kontonummer label";
+        },
     },
     "text:bankgiro": {
         type: "text:bankgiro",
         header: "Bankgiro",
         key: "value",
+        label: () => {
+            return "Bankgiro label";
+        },
     },
     "text:clearingNumber": {
         type: "text:clearingNumber",
         header: "Clearingnummer",
         key: "value",
+        label: () => {
+            return "Clearingnummer label";
+        },
     },
     "text:email": {
         type: "text:email",
         header: "Mejladress",
         key: "value",
+        label: () => {
+            return "Mejladress label";
+        },
     },
     "text:organisationsnummer": {
         type: "text:organisationsnummer",
         header: "Organisationsnummer",
         key: "value",
+        label: () => {
+            return "Organisationsnummer label";
+        },
     },
     "text:personnummer": {
         type: "text:personnummer",
         header: "Personnummer",
         key: "value",
+        label: () => {
+            return "Personnummer label";
+        },
     },
     "text:phoneNumber": {
         type: "text:phoneNumber",
         header: "Telefonnummer",
         key: "value",
+        label: () => {
+            return "Telefonnummer label";
+        },
     },
     "text:plusgiro": {
         type: "text:plusgiro",
         header: "Plusgiro",
         key: "value",
+        label: () => {
+            return "Plusgiro label";
+        },
     },
     "text:postalCode": {
         type: "text:postalCode",
         header: "Postnummer",
         key: "value",
+        label: () => {
+            return "Postnummer label";
+        },
     },
     rowheader: {
         type: "rowheader",
@@ -127,11 +172,17 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
         header: "Dropplista",
         key: "value",
         options: ["Foo", "Bar", "Baz"],
+        label: () => {
+            return "Dropplista label";
+        },
     },
     "text:date": {
         type: "text:date",
         header: "Datum",
         key: "value",
+        label: () => {
+            return "Datum label";
+        },
     },
     menu: {
         type: "menu",

@@ -1,6 +1,6 @@
 ---
 title: XFileDragdrop
-status: Draft
+status: Experimentell
 layout: component
 component:
     - XFileDragdrop

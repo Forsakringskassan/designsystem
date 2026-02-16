@@ -27,30 +27,45 @@ const columns1 = defineTableColumns<TableRow, keyof TableRow>([
         header: "Text",
         key: "text",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:personnummer",
         header: "Pnr",
         key: "pnr",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:bankAccountNumber",
         header: "Kontonr",
         key: "bankAccountNumber",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:bankgiro",
         header: "Bankgiro",
         key: "bankgiro",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:clearingNumber",
         header: "Clearingnr",
         key: "clearingNumber",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
 ]);
 
@@ -60,12 +75,18 @@ const columns2 = defineTableColumns<TableRow, keyof TableRow>([
         header: "Valuta",
         key: "currency",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:date",
         header: "Datum",
         key: "date",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:number",
@@ -73,6 +94,9 @@ const columns2 = defineTableColumns<TableRow, keyof TableRow>([
         header: "Nummer, tre decimaler",
         key: "number",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:percent",
@@ -80,12 +104,18 @@ const columns2 = defineTableColumns<TableRow, keyof TableRow>([
         header: "% två decimaler",
         key: "percent",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:email",
         header: "Epost",
         key: "epost",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
 ]);
 
@@ -95,24 +125,36 @@ const columns3 = defineTableColumns<TableRow, keyof TableRow>([
         header: "Orgnr",
         key: "orgnr",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:phoneNumber",
         header: "Tele",
         key: "tele",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:postalCode",
         header: "Postnr",
         key: "postnr",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
     {
         type: "text:plusgiro",
         header: "Plusgiro",
         key: "plusgiro",
         editable: true,
+        label() {
+            return "Label";
+        },
     },
 ]);
 
