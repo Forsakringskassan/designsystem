@@ -31,15 +31,15 @@ Vanligt undantag är `chore(deps)` för beroenden, `chore(release)` för release
 
 Den viktigaste beståndsdelen är `type` som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.
 
-De vanligaste två är `feat` (ny funktionallitet) och `fix` (rättning av existerande funktionallitet).
+De vanligaste två är `feat` (ny funktionalitet) och `fix` (rättning av existerande funktionalitet).
 Andra vanliga är `docs` (ändring enbart av dokumentation) och `refactor` (interna förändringar som inte påverkar konsument).
 
 ::: details Tillgängliga typer
 
 | Typ              | Release | Changelog | Beskrivning                                                                         |
 | ---------------- | ------- | --------- | ----------------------------------------------------------------------------------- |
-| `fix`            | Patch   | Ja        | Rättning av existerande funktionallitet eller komponent                             |
-| `feat`           | Minor   | Ja        | Ny funktionallitet eller komponent.                                                 |
+| `fix`            | Patch   | Ja        | Rättning av existerande funktionalitet eller komponent                              |
+| `feat`           | Minor   | Ja        | Ny funktionalitet eller komponent.                                                  |
 | `build`          | -       |           | Ändringar av byggscript.                                                            |
 | `chore(deps)`    | -       |           | Ändringar av beroenden.                                                             |
 | `chore(release)` | -       |           | Release (ej manuellt, används för automatiska releaser).                            |
