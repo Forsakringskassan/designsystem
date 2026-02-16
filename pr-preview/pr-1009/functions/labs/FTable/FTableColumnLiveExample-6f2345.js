@@ -4666,9 +4666,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       const value = __props.column.value(__props.row);
       if (validity.value.isValid) {
         var _props$column$format;
-        return (_props$column$format = __props.column.formatter(value)) !== null && _props$column$format !== void 0 ? _props$column$format : value;
+        return (_props$column$format = __props.column.formatter(value)) !== null && _props$column$format !== void 0 ? _props$column$format : value.toString();
       }
-      return value;
+      return value.toString();
     }
     function toColumnValue(value) {
       assertRef(validity);
