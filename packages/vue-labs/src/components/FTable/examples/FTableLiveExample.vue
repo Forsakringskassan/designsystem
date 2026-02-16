@@ -236,6 +236,7 @@ export default defineComponent({
         return {
             isEmpty: false,
             striped: false,
+            divided: false,
             hasRowDescription: false,
             hasCustomEmptyText: false,
             hasHiddenCaption: false,
@@ -292,7 +293,7 @@ export default defineComponent({
         },
 
         template(): string {
-            const { striped, selectable, expandableAttribute } = this;
+            const { striped, divided, selectable, expandableAttribute } = this;
 
             return createElement(
                 "f-table",
@@ -302,6 +303,7 @@ export default defineComponent({
                     "v-model:selected-rows": selectable ? "selectedRows" : undefined,
                     "key-attribute": "id",
                     striped,
+                    divided,
                     selectable,
                     expandableAttribute,
                 },
@@ -326,6 +328,7 @@ export default defineComponent({
         <f-fieldset name="styling">
             <template #label> Visuellt </template>
             <f-checkbox-field v-model="striped" :value="true"> Zebrarandig </f-checkbox-field>
+            <f-checkbox-field v-model="divided" :value="true"> Radavskiljare </f-checkbox-field>
             <f-checkbox-field v-model="hasRowHeader" :value="true"> Radrubriker </f-checkbox-field>
             <f-checkbox-field v-model="hasHiddenCaption" :value="true">
                 Dold caption

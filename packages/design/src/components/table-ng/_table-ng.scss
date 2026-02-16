@@ -79,4 +79,10 @@ $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
             color: $table-ng-row-foreground;
         }
     }
+
+    &--divided {
+        border-collapse: separate;
+        border-spacing: 0 1px;
+        background: $table-ng-cell-color-border;
+    }
 }

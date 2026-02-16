@@ -44,6 +44,7 @@ const {
     keyAttribute = undefined,
     expandableAttribute = undefined,
     striped,
+    divided,
     selectable = undefined,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;
@@ -51,6 +52,7 @@ const {
     keyAttribute?: KeyAttribute;
     expandableAttribute?: ExpandableAttribute;
     striped?: boolean;
+    divided?: boolean;
     selectable?: "single" | "multi";
 }>();
 
@@ -115,7 +117,13 @@ const hasFooter = computed((): boolean => {
 const columns = computed(() => normalizeTableColumns(rawColumns));
 
 const tableClasses = computed(() => {
-    return striped ? "table-ng table-ng--striped" : "table-ng";
+    return [
+        "table-ng",
+        {
+            "table-ng--striped": striped,
+            "table-ng--divided": divided,
+        },
+    ];
 });
 
 const slots = useSlots();
