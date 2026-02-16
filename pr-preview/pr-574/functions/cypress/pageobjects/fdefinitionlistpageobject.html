@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-f348f3.json"
+            href="../../../search-data-5e14c4.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Fp7+V6z7eWwO1b2nhyc8kyWYNeldceZziYZrbyADiyVCMXoQdFSaXxEP8r6+hxp/"
+            integrity="sha384-Wo6JSzvTjI+8i21TaZie3ptm1xjMMKdcyw4Zj3JOs2XNlI7HXuOIxNMkduwMw87I"
             id="search-data"
         />
     </head>
@@ -285,59 +285,6 @@
             
         >
             status()
-        </a>
-    </li></ol>
-
-            
-        </details>
-    </li><li class="expandable ">
-        <details >
-            <summary>FDefinitionListPageObject()</summary>
-            
-            
-<ol><li class="link ">
-        <a
-            href="./FDefinitionListPageObject/"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FDefinitionListPageObject/"
-            
-        >
-            FDefinitionListPageObject()
-        </a>
-    </li><li class="link ">
-        <a
-            href="./FDefinitionListPageObject/description.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FDefinitionListPageObject/description.html"
-            
-        >
-            description()
-        </a>
-    </li><li class="link ">
-        <a
-            href="./FDefinitionListPageObject/number-of-definitions.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FDefinitionListPageObject/number-of-definitions.html"
-            
-        >
-            numberOfDefinitions()
-        </a>
-    </li><li class="link ">
-        <a
-            href="./FDefinitionListPageObject/term.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FDefinitionListPageObject/term.html"
-            
-        >
-            term()
         </a>
     </li></ol>
 
@@ -1725,7 +1672,7 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#fpaginatorpageobject">FPaginatorPageObject()</a></li>
+                                <li><a href="#fdefinitionlistpageobject">FDefinitionListPageObject()</a></li>
                                 
                                 <li><a href="#description">description()</a></li>
                                 
@@ -1740,26 +1687,10 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Använd <code>FDefinitionListPageObject</code> för att hämta information relaterat till <a href="../../../components/table-and-list/fdefinitionlist.html">definitionslista</a>.</p>
-<h2 id="fpaginatorpageobject"><a class="header-anchor" href="#fpaginatorpageobject">FPaginatorPageObject()</a></h2><p class="docs-paragraph">Skapar ett nytt Cypress-pageobjekt.</p>
-<h3 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h3>
+<p class="docs-paragraph">Samtliga exempel använder detta underlag:</p>
+
                 <div
-                    id="example-add6cc"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="nocompile nolint"
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(selector);
-</code></pre>
-                </div>
-            <h4 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h4><dl>
-<dt><code>selector: string</code></dt>
-<dd>Selector till elementet. Du kan med fördel använda direktivet <a href="../../plugins/testplugin.html"><code>v-test</code></a> för din selector.</dd>
-</dl>
-<h3 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h3>
-                <div
-                    id="example-52ef9d"
+                    id="example-eddddd"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1781,9 +1712,26 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
-            
+            <h2 id="fdefinitionlistpageobject"><a class="header-anchor" href="#fdefinitionlistpageobject">FDefinitionListPageObject()</a></h2><p class="docs-paragraph">Skapar ett nytt Cypress-pageobjekt.</p>
+<h3 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h3>
                 <div
-                    id="example-3399e3"
+                    id="example-a33f85"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(selector);
+</code></pre>
+                </div>
+            <h4 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h4><dl>
+<dt><code>selector: string</code></dt>
+<dd>Selector till elementet. Du kan med fördel använda direktivet <a href="../../plugins/testplugin.html"><code>v-test</code></a> för din selector.</dd>
+</dl>
+<h3 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h3>
+                <div
+                    id="example-c3dd60"
                     class="code-preview code-preview--default"
                     
                     
@@ -1798,7 +1746,7 @@ myDefinitionList.<span class="hljs-title function_">numberOfDefinitions</span>()
             <h2 id="description"><a class="header-anchor" href="#description">description()</a></h2><p class="docs-paragraph">Används för att komma åt beskrivningen för en definition i definitionslistan.</p>
 <h3 id="syntax--1"><a class="header-anchor" href="#syntax--1">Syntax</a></h3>
                 <div
-                    id="example-b312c5"
+                    id="example-dd72d3"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1815,31 +1763,7 @@ myDefinitionList.<span class="hljs-title function_">numberOfDefinitions</span>()
 <h4 id="returvarde"><a class="header-anchor" href="#returvarde">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> som innehåller definitionens beskrivning.</p>
 <h3 id="exempel--3"><a class="header-anchor" href="#exempel--3">Exempel</a></h3>
                 <div
-                    id="example-a4b32a"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="static"
-                    data-language="vue"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FDefinitionListItem</span>, <span class="hljs-title class_">FDefinitionList</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">const</span> <span class="hljs-attr">definitions</span>: <span class="hljs-title class_">FDefinitionListItem</span>[] = [
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Skulle ha jobbat&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Vabbade&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Omfattning&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;100 procent&quot;</span> },
-];
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-definition-list</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;my-definition-list&#x27;&quot;</span> <span class="hljs-attr">:definitions</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            
-                <div
-                    id="example-295c0a"
+                    id="example-bc1b17"
                     class="code-preview code-preview--default"
                     
                     
@@ -1856,7 +1780,7 @@ myDefinitionList.<span class="hljs-title function_">description</span>(<span cla
             <h2 id="numberofdefinitions"><a class="header-anchor" href="#numberofdefinitions">numberOfDefinitions()</a></h2><p class="docs-paragraph">Används för att komma åt antalet definitioner i definitionslistan.</p>
 <h3 id="syntax--4"><a class="header-anchor" href="#syntax--4">Syntax</a></h3>
                 <div
-                    id="example-186867"
+                    id="example-de1284"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1869,55 +1793,22 @@ myDefinitionList.<span class="hljs-title function_">description</span>(<span cla
             <h4 id="returvarde--5"><a class="header-anchor" href="#returvarde--5">Returvärde</a></h4><p class="docs-paragraph"><code>Number</code> ger tillbaka status på antalet definitioner i definitionslistan.</p>
 <h3 id="exempel--6"><a class="header-anchor" href="#exempel--6">Exempel</a></h3>
                 <div
-                    id="example-659c22"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="static"
-                    data-language="vue"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FDefinitionListItem</span>, <span class="hljs-title class_">FDefinitionList</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">const</span> <span class="hljs-attr">oneDefinition</span>: <span class="hljs-title class_">FDefinitionListItem</span>[] = [{ <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Omfattning&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;100 procent&quot;</span> }];
-
-<span class="hljs-keyword">const</span> <span class="hljs-attr">threeDefinitions</span>: <span class="hljs-title class_">FDefinitionListItem</span>[] = [
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Skulle ha jobbat&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Vabbade&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Omfattning&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;100 procent&quot;</span> },
-];
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-definition-list</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;my-definition-list-one-definition&#x27;&quot;</span> <span class="hljs-attr">:definitions</span>=<span class="hljs-string">&quot;oneDefinition&quot;</span> /&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-definition-list</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;my-definition-list-three-definitions&#x27;&quot;</span> <span class="hljs-attr">:definitions</span>=<span class="hljs-string">&quot;threeDefinitions&quot;</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            
-                <div
-                    id="example-ac2ca6"
+                    id="example-f7f06a"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> myDefinitionListOneDefinition = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(
-    <span class="hljs-string">&quot;[data-test=my-definition-list-one-definition]&quot;</span>,
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> myDefinitionList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(
+    <span class="hljs-string">&quot;[data-test=my-definition-list]&quot;</span>,
 );
-myDefinitionListOneDefinition.<span class="hljs-title function_">numberOfDefinitions</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;eq&quot;</span>, <span class="hljs-number">1</span>);
-
-<span class="hljs-keyword">const</span> myDefinitionListThreeDefinitions = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(
-    <span class="hljs-string">&quot;[data-test=my-definition-list-three-definitions]&quot;</span>,
-);
-myDefinitionListThreeDefinitions.<span class="hljs-title function_">numberOfDefinitions</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;eq&quot;</span>, <span class="hljs-number">3</span>);</code></pre>
+myDefinitionList.<span class="hljs-title function_">numberOfDefinitions</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;eq&quot;</span>, <span class="hljs-number">3</span>);</code></pre>
                 </div>
             <h2 id="term"><a class="header-anchor" href="#term">term()</a></h2><p class="docs-paragraph">Används för att komma åt termen för en definition i definitionslistan.</p>
 <h3 id="syntax--7"><a class="header-anchor" href="#syntax--7">Syntax</a></h3>
                 <div
-                    id="example-075c8a"
+                    id="example-6d0c84"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1934,31 +1825,7 @@ myDefinitionListThreeDefinitions.<span class="hljs-title function_">numberOfDefi
 <h4 id="returvarde--9"><a class="header-anchor" href="#returvarde--9">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> som innehåller definitionens term.</p>
 <h3 id="exempel--10"><a class="header-anchor" href="#exempel--10">Exempel</a></h3>
                 <div
-                    id="example-22c755"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="static"
-                    data-language="vue"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FDefinitionListItem</span>, <span class="hljs-title class_">FDefinitionList</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">const</span> <span class="hljs-attr">definitions</span>: <span class="hljs-title class_">FDefinitionListItem</span>[] = [
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Skulle ha jobbat&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Vabbade&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Omfattning&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;100 procent&quot;</span> },
-];
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-definition-list</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;my-definition-list&#x27;&quot;</span> <span class="hljs-attr">:definitions</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            
-                <div
-                    id="example-d63a3a"
+                    id="example-ab0e60"
                     class="code-preview code-preview--default"
                     
                     
@@ -1996,9 +1863,9 @@ myDefinitionList.<span class="hljs-title function_">term</span>(<span class="hlj
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">compact-description-list (<a href="https://github.com/Forsakringskassan/designsystem/commits/37e452a250d36fb07deffc66696a4845f19354c9">37e452a</a>)<br />
+<div class="footer__right"><div class="version">compact-description-list (<a href="https://github.com/Forsakringskassan/designsystem/commits/440575789847a387a00bcd159a47f13334022b3b">4405757</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/574">PR 574</a><br />
-        2026-02-13 15:02
+        2026-02-16 10:13
 </div>
 <div class="toolbar__item">
     <form id="version">
