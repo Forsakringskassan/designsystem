@@ -1,5 +1,5 @@
 // dist/esm/index.esm.js
-import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, useId, onMounted as onMounted3, watchEffect as watchEffect3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
@@ -4163,6 +4163,14 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
     function onClose() {
       isOpen.value = false;
     }
+    function onFocusout(event) {
+      const validTarget = event.relatedTarget && event.relatedTarget instanceof HTMLElement;
+      const inPopup = validTarget && Boolean(event.relatedTarget.closest(".popup"));
+      if (inPopup) {
+        return;
+      }
+      isOpen.value = false;
+    }
     function onSelect(key) {
       const action = actions.value.find((it) => it.key === key);
       action?.onClick(__props.row);
@@ -4184,7 +4192,8 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
         items: menuitems.value,
         anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
         onClose,
-        onSelect
+        onSelect,
+        onFocusout
       }, null, 8, ["is-open", "items", "anchor"])])) : (openBlock(), createElementBlock("td", _hoisted_3$4));
     };
   }
@@ -4445,8 +4454,8 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     const emit = __emit;
     const viewValue = ref3("");
     const inEdit = ref3(false);
-    const cellId = useId();
-    const inputId = useId();
+    const cellId = ElementIdService.generateElementId();
+    const inputId = ElementIdService.generateElementId();
     const validity = ref3({
       isValid: true,
       validationMessage: "",

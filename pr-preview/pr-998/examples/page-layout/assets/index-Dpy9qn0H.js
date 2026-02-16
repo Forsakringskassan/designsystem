@@ -279,6 +279,7 @@ const stringifySymbol = (v, i = "") => {
 };
 let activeEffectScope;
 class EffectScope {
+  // TODO isolatedDeclarations "__v_skip"
   constructor(detached = false) {
     this.detached = detached;
     this._active = true;
@@ -286,6 +287,7 @@ class EffectScope {
     this.effects = [];
     this.cleanups = [];
     this._isPaused = false;
+    this.__v_skip = true;
     this.parent = activeEffectScope;
     if (!detached && activeEffectScope) {
       this.index = (activeEffectScope.scopes || (activeEffectScope.scopes = [])).push(
@@ -2640,7 +2642,22 @@ function moveTeleport(vnode, container, parentAnchor, { o: { insert }, m: move }
 function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScopeIds, optimized, {
   o: { nextSibling, parentNode, querySelector, insert, createText }
 }, hydrateChildren) {
-  function hydrateDisabledTeleport(node2, vnode2, targetStart, targetAnchor) {
+  function hydrateAnchor(target2, targetNode) {
+    let targetAnchor = targetNode;
+    while (targetAnchor) {
+      if (targetAnchor && targetAnchor.nodeType === 8) {
+        if (targetAnchor.data === "teleport start anchor") {
+          vnode.targetStart = targetAnchor;
+        } else if (targetAnchor.data === "teleport anchor") {
+          vnode.targetAnchor = targetAnchor;
+          target2._lpa = vnode.targetAnchor && nextSibling(vnode.targetAnchor);
+          break;
+        }
+      }
+      targetAnchor = nextSibling(targetAnchor);
+    }
+  }
+  function hydrateDisabledTeleport(node2, vnode2) {
     vnode2.anchor = hydrateChildren(
       nextSibling(node2),
       vnode2,
@@ -2650,8 +2667,6 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
       slotScopeIds,
       optimized
     );
-    vnode2.targetStart = targetStart;
-    vnode2.targetAnchor = targetAnchor;
   }
   const target = vnode.target = resolveTarget(
     vnode.props,
@@ -2662,27 +2677,22 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
     const targetNode = target._lpa || target.firstChild;
     if (vnode.shapeFlag & 16) {
       if (disabled) {
-        hydrateDisabledTeleport(
-          node,
-          vnode,
-          targetNode,
-          targetNode && nextSibling(targetNode)
-        );
+        hydrateDisabledTeleport(node, vnode);
+        hydrateAnchor(target, targetNode);
+        if (!vnode.targetAnchor) {
+          prepareAnchor(
+            target,
+            vnode,
+            createText,
+            insert,
+            // if target is the same as the main view, insert anchors before current node
+            // to avoid hydrating mismatch
+            parentNode(node) === target ? node : null
+          );
+        }
       } else {
         vnode.anchor = nextSibling(node);
-        let targetAnchor = targetNode;
-        while (targetAnchor) {
-          if (targetAnchor && targetAnchor.nodeType === 8) {
-            if (targetAnchor.data === "teleport start anchor") {
-              vnode.targetStart = targetAnchor;
-            } else if (targetAnchor.data === "teleport anchor") {
-              vnode.targetAnchor = targetAnchor;
-              target._lpa = vnode.targetAnchor && nextSibling(vnode.targetAnchor);
-              break;
-            }
-          }
-          targetAnchor = nextSibling(targetAnchor);
-        }
+        hydrateAnchor(target, targetNode);
         if (!vnode.targetAnchor) {
           prepareAnchor(target, vnode, createText, insert);
         }
@@ -2700,7 +2710,9 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
     updateCssVars(vnode, disabled);
   } else if (disabled) {
     if (vnode.shapeFlag & 16) {
-      hydrateDisabledTeleport(node, vnode, node, nextSibling(node));
+      hydrateDisabledTeleport(node, vnode);
+      vnode.targetStart = node;
+      vnode.targetAnchor = nextSibling(node);
     }
   }
   return vnode.anchor && nextSibling(vnode.anchor);
@@ -2724,13 +2736,13 @@ function updateCssVars(vnode, isDisabled2) {
     ctx.ut();
   }
 }
-function prepareAnchor(target, vnode, createText, insert) {
+function prepareAnchor(target, vnode, createText, insert, anchor = null) {
   const targetStart = vnode.targetStart = createText("");
   const targetAnchor = vnode.targetAnchor = createText("");
   targetStart[TeleportEndKey] = targetAnchor;
   if (target) {
-    insert(targetStart, target);
-    insert(targetAnchor, target);
+    insert(targetStart, target, anchor);
+    insert(targetAnchor, target, anchor);
   }
   return targetAnchor;
 }
@@ -2954,7 +2966,7 @@ function resolveTransitionHooks(vnode, props, state, instance, postClone) {
         }
       }
       let called = false;
-      const done = el[enterCbKey] = (cancelled) => {
+      el[enterCbKey] = (cancelled) => {
         if (called) return;
         called = true;
         if (cancelled) {
@@ -2967,6 +2979,7 @@ function resolveTransitionHooks(vnode, props, state, instance, postClone) {
         }
         el[enterCbKey] = void 0;
       };
+      const done = el[enterCbKey].bind(null, false);
       if (hook) {
         callAsyncHook(hook, [el, done]);
       } else {
@@ -2986,7 +2999,7 @@ function resolveTransitionHooks(vnode, props, state, instance, postClone) {
       }
       callHook2(onBeforeLeave, [el]);
       let called = false;
-      const done = el[leaveCbKey] = (cancelled) => {
+      el[leaveCbKey] = (cancelled) => {
         if (called) return;
         called = true;
         remove2();
@@ -3000,6 +3013,7 @@ function resolveTransitionHooks(vnode, props, state, instance, postClone) {
           delete leavingVNodesCache[key2];
         }
       };
+      const done = el[leaveCbKey].bind(null, false);
       leavingVNodesCache[key2] = vnode;
       if (onLeave) {
         callAsyncHook(onLeave, [el, done]);
@@ -3108,6 +3122,10 @@ function useTemplateRef(key) {
   const ret = r;
   return ret;
 }
+function isTemplateRefKey(refs, key) {
+  let desc;
+  return !!((desc = Object.getOwnPropertyDescriptor(refs, key)) && !desc.configurable);
+}
 const pendingSetRefMap = /* @__PURE__ */ new WeakMap();
 function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   if (isArray$2(rawRef)) {
@@ -3136,7 +3154,16 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
   const setupState = owner.setupState;
   const rawSetupState = /* @__PURE__ */ toRaw(setupState);
   const canSetSetupRef = setupState === EMPTY_OBJ ? NO : (key) => {
+    if (isTemplateRefKey(refs, key)) {
+      return false;
+    }
     return hasOwn(rawSetupState, key);
+  };
+  const canSetRef = (ref22, key) => {
+    if (key && isTemplateRefKey(refs, key)) {
+      return false;
+    }
+    return true;
   };
   if (oldRef != null && oldRef !== ref3) {
     invalidatePendingSetRef(oldRawRef);
@@ -3146,10 +3173,10 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
         setupState[oldRef] = null;
       }
     } else if (/* @__PURE__ */ isRef(oldRef)) {
-      {
+      const oldRawRefAtom = oldRawRef;
+      if (canSetRef(oldRef, oldRawRefAtom.k)) {
         oldRef.value = null;
       }
-      const oldRawRefAtom = oldRawRef;
       if (oldRawRefAtom.k) refs[oldRawRefAtom.k] = null;
     }
   }
@@ -3161,7 +3188,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
     if (_isString || _isRef) {
       const doSet = () => {
         if (rawRef.f) {
-          const existing = _isString ? canSetSetupRef(ref3) ? setupState[ref3] : refs[ref3] : ref3.value;
+          const existing = _isString ? canSetSetupRef(ref3) ? setupState[ref3] : refs[ref3] : canSetRef() || !rawRef.k ? ref3.value : refs[rawRef.k];
           if (isUnmount) {
             isArray$2(existing) && remove(existing, refValue);
           } else {
@@ -3173,7 +3200,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
                 }
               } else {
                 const newVal = [refValue];
-                {
+                if (canSetRef(ref3, rawRef.k)) {
                   ref3.value = newVal;
                 }
                 if (rawRef.k) refs[rawRef.k] = newVal;
@@ -3188,7 +3215,7 @@ function setRef(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
             setupState[ref3] = value;
           }
         } else if (_isRef) {
-          {
+          if (canSetRef(ref3, rawRef.k)) {
             ref3.value = value;
           }
           if (rawRef.k) refs[rawRef.k] = value;
@@ -4302,7 +4329,7 @@ function shouldUpdateComponent(prevVNode, nextVNode, optimized) {
       const dynamicProps = nextVNode.dynamicProps;
       for (let i = 0; i < dynamicProps.length; i++) {
         const key = dynamicProps[i];
-        if (nextProps[key] !== prevProps[key] && !isEmitListener(emits, key)) {
+        if (hasPropValueChanged(nextProps, prevProps, key) && !isEmitListener(emits, key)) {
           return true;
         }
       }
@@ -4333,11 +4360,19 @@ function hasPropsChanged(prevProps, nextProps, emitsOptions) {
   }
   for (let i = 0; i < nextKeys.length; i++) {
     const key = nextKeys[i];
-    if (nextProps[key] !== prevProps[key] && !isEmitListener(emitsOptions, key)) {
+    if (hasPropValueChanged(nextProps, prevProps, key) && !isEmitListener(emitsOptions, key)) {
       return true;
     }
   }
   return false;
+}
+function hasPropValueChanged(nextProps, prevProps, key) {
+  const nextProp = nextProps[key];
+  const prevProp = prevProps[key];
+  if (key === "style" && isObject$3(nextProp) && isObject$3(prevProp)) {
+    return !looseEqual(nextProp, prevProp);
+  }
+  return nextProp !== prevProp;
 }
 function updateHOCHostEl({ vnode, parent }, el) {
   while (parent) {
@@ -4850,9 +4885,7 @@ function baseCreateRenderer(options, createHydrationFns) {
     } else {
       const el = n2.el = n1.el;
       if (n2.children !== n1.children) {
-        {
-          hostSetText(el, n2.children);
-        }
+        hostSetText(el, n2.children);
       }
     }
   };
@@ -4913,7 +4946,7 @@ function baseCreateRenderer(options, createHydrationFns) {
         optimized
       );
     } else {
-      const customElement = !!(n1.el && n1.el._isVueCE) ? n1.el : null;
+      const customElement = n1.el && n1.el._isVueCE ? n1.el : null;
       try {
         if (customElement) {
           customElement._beginPatch();
@@ -5324,8 +5357,7 @@ function baseCreateRenderer(options, createHydrationFns) {
         }
         toggleRecurse(instance, true);
         {
-          if (root.ce && // @ts-expect-error _def is private
-          root.ce._def.shadowRoot !== false) {
+          if (root.ce && root.ce._hasShadowRoot()) {
             root.ce._injectChildStyle(type);
           }
           const subTree = instance.subTree = renderComponentRoot(instance);
@@ -5365,9 +5397,9 @@ function baseCreateRenderer(options, createHydrationFns) {
               updateComponentPreRender(instance, next, optimized);
             }
             nonHydratedAsyncRoot.asyncDep.then(() => {
-              if (!instance.isUnmounted) {
-                componentUpdateFn();
-              }
+              queuePostRenderEffect(() => {
+                if (!instance.isUnmounted) update();
+              }, parentSuspense);
             });
             return;
           }
@@ -6012,12 +6044,10 @@ function traverseStaticChildren(n1, n2, shallow = false) {
           traverseStaticChildren(c1, c2);
       }
       if (c2.type === Text) {
-        if (c2.patchFlag !== -1) {
-          c2.el = c1.el;
-        } else {
-          c2.__elIndex = i + // take fragment start anchor into account
-          (n1.type === Fragment ? 1 : 0);
+        if (c2.patchFlag === -1) {
+          c2 = ch2[i] = cloneIfMounted(c2);
         }
+        c2.el = c1.el;
       }
       if (c2.type === Comment && !c2.el) {
         c2.el = c1.el;
@@ -6744,7 +6774,7 @@ function h(type, propsOrChildren, children) {
     setBlockTracking(1);
   }
 }
-const version = "3.5.27";
+const version = "3.5.28";
 let policy = void 0;
 const tt = typeof window !== "undefined" && window.trustedTypes;
 if (tt) {
@@ -7793,6 +7823,12 @@ class VueElement extends BaseClass {
   /**
    * @internal
    */
+  _hasShadowRoot() {
+    return this._def.shadowRoot !== false;
+  }
+  /**
+   * @internal
+   */
   _removeChildStyle(comp) {
   }
 }
@@ -8051,6 +8087,7 @@ const modifierGuards = {
   exact: (e, modifiers) => systemModifiers.some((m) => e[`${m}Key`] && !modifiers.includes(m))
 };
 const withModifiers = (fn, modifiers) => {
+  if (!fn) return fn;
   const cache = fn._withMods || (fn._withMods = {});
   const cacheKey = modifiers.join(".");
   return cache[cacheKey] || (cache[cacheKey] = ((event, ...args) => {
