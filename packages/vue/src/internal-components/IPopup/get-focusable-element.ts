@@ -3,7 +3,7 @@ import { getHTMLElementFromVueRef } from "../../utils";
 
 export function getFocusableElement(
     rootElement: unknown,
-    callback?: () => HTMLElement | null,
+    callback?: (() => HTMLElement | null) | null,
 ): HTMLElement | null {
     /* if user callback is provided use that only, if it returns null no element should be focused */
     if (callback) {
