@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { type Ref, computed, nextTick, ref, useTemplateRef } from "vue";
 import { ElementIdService, assertRef, assertSet } from "@fkui/logic";
-import { FIcon, IComboboxDropdown } from "@fkui/vue";
+import { IComboboxDropdown } from "@fkui/vue";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnSelect } from "./table-column";
 
@@ -182,7 +182,6 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
     >
         <div v-show="!editing" class="table-ng__editable">
             <span class="table-ng__editable__text">{{ viewValue }}</span>
-            <f-icon name="arrow-down" class="table-ng__editable__icon"></f-icon>
         </div>
         <div
             v-show="editing"
@@ -201,7 +200,6 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
             @focusout="(e) => onEditBlur(e)"
         >
             <span class="table-ng__editable__text">{{ viewValue }}</span>
-            <f-icon name="arrow-down" class="table-ng__editable__icon--active"></f-icon>
         </div>
 
         <i-combobox-dropdown
