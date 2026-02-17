@@ -40,7 +40,7 @@ import {
 } from "@fkui/vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
@@ -3057,13 +3057,12 @@ var inputFieldConfig = {
       personnummerFormat: {},
       personnummerLuhn: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "23"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "23"
+      };
+    }
   },
   "text:bankAccountNumber": {
     formatter(value) {
@@ -3075,13 +3074,12 @@ var inputFieldConfig = {
     validationConfig: {
       bankAccountNumber: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "40"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "40"
+      };
+    }
   },
   "text:bankgiro": {
     formatter(value) {
@@ -3096,13 +3094,12 @@ var inputFieldConfig = {
       },
       bankgiro: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "40"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "40"
+      };
+    }
   },
   "text:clearingNumber": {
     formatter(value) {
@@ -3114,13 +3111,12 @@ var inputFieldConfig = {
     validationConfig: {
       clearingNumber: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "16"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "16"
+      };
+    }
   },
   "text:currency": {
     formatter(value) {
@@ -3133,13 +3129,12 @@ var inputFieldConfig = {
       currency: {},
       integer: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "20"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "20"
+      };
+    }
   },
   "text:date": {
     formatter(value) {
@@ -3151,10 +3146,11 @@ var inputFieldConfig = {
     validationConfig: {
       date: {}
     },
-    attributes: () => [{
-      name: "type",
-      value: "text"
-    }]
+    attributes: () => {
+      return {
+        type: "text"
+      };
+    }
   },
   "text:email": {
     formatter(value) {
@@ -3169,13 +3165,12 @@ var inputFieldConfig = {
         length: 80
       }
     },
-    attributes: () => [{
-      name: "type",
-      value: "email"
-    }, {
-      name: "maxlength",
-      value: "80"
-    }]
+    attributes: () => {
+      return {
+        type: "email",
+        maxlength: "80"
+      };
+    }
   },
   "text:number": {
     formatter(value) {
@@ -3189,13 +3184,12 @@ var inputFieldConfig = {
     validationConfig: {
       number: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "20"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "20"
+      };
+    }
   },
   "text:organisationsnummer": {
     formatter(value) {
@@ -3210,13 +3204,12 @@ var inputFieldConfig = {
       },
       organisationsnummer: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "20"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "20"
+      };
+    }
   },
   "text:percent": {
     formatter(value) {
@@ -3236,14 +3229,12 @@ var inputFieldConfig = {
         maxValue: 999
       }
     },
-    attributes: (decimals) => {
-      return [{
-        name: "inputmode",
-        value: decimals ? "decimal" : "numeric"
-      }, {
-        name: "maxlength",
-        value: "10"
-      }];
+    attributes: (options) => {
+      const decimals = options?.decimals;
+      return {
+        inputmode: decimals ? "decimal" : "numeric",
+        maxlength: "10"
+      };
     }
   },
   "text:phoneNumber": {
@@ -3259,13 +3250,12 @@ var inputFieldConfig = {
       },
       phoneNumber: {}
     },
-    attributes: () => [{
-      name: "maxlength",
-      value: "80"
-    }, {
-      name: "type",
-      value: "tel"
-    }]
+    attributes: () => {
+      return {
+        maxlength: "80",
+        type: "tel"
+      };
+    }
   },
   "text:plusgiro": {
     formatter(value) {
@@ -3280,13 +3270,12 @@ var inputFieldConfig = {
       },
       plusgiro: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "16"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "16"
+      };
+    }
   },
   "text:postalCode": {
     formatter(value) {
@@ -3301,13 +3290,12 @@ var inputFieldConfig = {
       },
       postalCode: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "15"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "15"
+      };
+    }
   },
   text: {
     formatter(value) {
@@ -3317,7 +3305,9 @@ var inputFieldConfig = {
       return value;
     },
     validationConfig: {},
-    attributes: () => []
+    attributes: () => {
+      return {};
+    }
   }
 };
 var _hoisted_1$c = ["aria-sort"];
@@ -4452,16 +4442,45 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
     };
   }
 });
-function addInputValidators(inputElement, type, decimals) {
-  ValidationService.addValidatorsToElement(inputElement, inputFieldConfig[type].validationConfig, true);
-  const options = void 0;
-  const attributes = inputFieldConfig[type].attributes(options);
-  for (const {
-    name,
-    value
-  } of attributes) {
-    inputElement.setAttribute(name, value);
+function defaultTnumValue(type) {
+  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
+  return tnumTypes.includes(type);
+}
+function getLabelFn(fn) {
+  if (fn) {
+    return fn;
   }
+  return () => "";
+}
+function getUpdateFn(fn, key) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row, value) => {
+      row[key] = value;
+    };
+  }
+  return () => void 0;
+}
+function getValueFn(fn, key, coerce, defaultValue) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row) => {
+      var _row$key;
+      return coerce((_row$key = row[key]) !== null && _row$key !== void 0 ? _row$key : defaultValue);
+    };
+  }
+  return () => defaultValue;
+}
+function isColumnTypeNumber(column) {
+  const type = column.type;
+  return numberTypes.includes(type);
+}
+function addInputValidators(inputElement, type) {
+  ValidationService.addValidatorsToElement(inputElement, inputFieldConfig[type].validationConfig, true);
 }
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
@@ -4548,6 +4567,22 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         value = `${value} ${validity.value.validationMessage}`;
       }
       return value.length > 0 ? value : void 0;
+    });
+    const columnAttributes = computed3(() => {
+      if (__props.column.attributes && typeof __props.column.attributes === "function") {
+        return __props.column.attributes(__props.row);
+      } else {
+        return __props.column.attributes;
+      }
+    });
+    const configAttributes = computed3(() => {
+      let decimals = void 0;
+      if (isColumnTypeNumber(__props.column)) {
+        decimals = __props.column.decimals;
+      }
+      return inputFieldConfig[__props.column.type].attributes({
+        decimals
+      });
     });
     const tdElement = useTemplateRef("td");
     const inputElement = useTemplateRef("input");
@@ -4786,18 +4821,22 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         onKeydown
       }, [createElementVNode("div", {
         class: normalizeClass(divClasses.value)
-      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[1] || (_cache[1] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("input", {
+      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[1] || (_cache[1] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("input", mergeProps({
         id: unref3(inputId),
         ref: "input",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
-        class: normalizeClass(inputClasses.value),
+        class: inputClasses.value,
         type: "text",
         maxlength: "40",
         tabindex: "-1",
-        "aria-label": ariaLabel.value,
+        "aria-label": ariaLabel.value
+      }, {
+        ...configAttributes.value,
+        ...columnAttributes.value
+      }, {
         onValidity,
         onPendingValidity
-      }, null, 42, _hoisted_4$2), [[vModelText, viewValue.value]]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("div", _hoisted_5$2, [createVNode(unref3(FIcon), {
+      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("div", _hoisted_5$2, [createVNode(unref3(FIcon), {
         name: "pen",
         class: "table-ng__editable__icon"
       })], 512)], 2), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(IPopupError), {
@@ -4815,39 +4854,6 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     };
   }
 });
-function defaultTnumValue(type) {
-  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
-  return tnumTypes.includes(type);
-}
-function getLabelFn(fn) {
-  if (fn) {
-    return fn;
-  }
-  return () => "";
-}
-function getUpdateFn(fn, key) {
-  if (fn) {
-    return fn;
-  }
-  if (key) {
-    return (row, value) => {
-      row[key] = value;
-    };
-  }
-  return () => void 0;
-}
-function getValueFn(fn, key, coerce, defaultValue) {
-  if (fn) {
-    return fn;
-  }
-  if (key) {
-    return (row) => {
-      var _row$key;
-      return coerce((_row$key = row[key]) !== null && _row$key !== void 0 ? _row$key : defaultValue);
-    };
-  }
-  return () => defaultValue;
-}
 function normalizeAnchorColumn(column) {
   var _column$key;
   return {
@@ -4937,6 +4943,7 @@ function normalizeNumberColumn(column) {
     decimals,
     tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
     align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
+    attributes: column.attributes,
     value: getValueFn(column.value, column.key, String, ""),
     update: getUpdateFn(column.update, column.key),
     editable: typeof column.editable === "function" ? column.editable : () => {
@@ -5018,6 +5025,7 @@ function normalizeTextColumn(column) {
     type,
     tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
     align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "left",
+    attributes: column.attributes,
     label: getLabelFn(column.label),
     value: getValueFn(column.value, column.key, String, ""),
     update: getUpdateFn(column.update, column.key),
@@ -7519,6 +7527,21 @@ function defaultTnumValue2(type) {
   ];
   return tnumTypes.includes(type);
 }
+
+// packages/vue-labs/src/components/FTable/input-fields-config.ts
+import {
+  formatNumber as formatNumber2,
+  formatPersonnummer as formatPersonnummer2,
+  formatPostalCode as formatPostalCode2,
+  parseBankAccountNumber as parseBankAccountNumber2,
+  parseBankgiro as parseBankgiro2,
+  parseClearingNumber as parseClearingNumber2,
+  parseDate as parseDate2,
+  parseNumber as parseNumber2,
+  parseOrganisationsnummer as parseOrganisationsnummer2,
+  parsePersonnummer as parsePersonnummer2,
+  parsePlusgiro as parsePlusgiro2
+} from "@fkui/logic";
 
 // packages/vue-labs/src/components/FTable/is-text-column.ts
 function isTextColumn(column) {
