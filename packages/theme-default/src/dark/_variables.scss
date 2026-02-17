@@ -52,7 +52,7 @@
 
     // FEEDBACK - BACKGROUND
     --fkds-color-feedback-background-neutral: #{$palette-color-fk-black-100};
-    --fkds-color-feedback-background-neutral-strong: #{$palette-color-fk-black-30};
+    --fkds-color-feedback-background-neutral-strong: #{$palette-color-fk-black-50};
     --fkds-color-feedback-background-info: #{$palette-color-fk-black-100};
     --fkds-color-feedback-background-info-strong: #{$palette-color-bluebell-50};
     --fkds-color-feedback-background-positive: #{$palette-color-fk-black-100};
@@ -72,6 +72,7 @@
     // FEEDBACK - TEXT
     --fkds-color-feedback-text-negative: #{$palette-color-red-50};
     --fkds-color-feedback-text-positive: #{$palette-color-green-a-50};
+    --fkds-color-feedback-text-on-warning: #{$palette-color-fk-black-100};
 
     // SELECT - BACKGROUND
     --fkds-color-select-background-primary-default: #{$palette-color-bluebell-50};
