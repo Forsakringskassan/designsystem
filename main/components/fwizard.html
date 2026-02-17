@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-fa1735.json"
+            href="../search-data-2e292b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Vkw2ggh5hjkIvm9VD18YIS7Bv3mDMT8CsttbR7ZSYIvoR6kvz7GYGCGms+5l6w3m"
+            integrity="sha384-Bzhy2GgxVSYEGkfAMT08j4FGw8NWFTh9PX7tvWML3v0aEsypPYUdzGh0Bjy2XqFN"
             id="search-data"
         />
     </head>
@@ -1097,13 +1097,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/68a7e144b63d42882e2bccc807b7a5bc8f00dda6/packages/vue/src/components/FWizard/FWizard.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/92f8c0a7e0ae30af2fcfe1444335522f5ad84771/packages/vue/src/components/FWizard/FWizard.vue">
                 FWizard
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/68a7e144b63d42882e2bccc807b7a5bc8f00dda6/packages/vue/src/components/FWizard/FWizardStep.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/92f8c0a7e0ae30af2fcfe1444335522f5ad84771/packages/vue/src/components/FWizard/FWizardStep.vue">
                 FWizardStep
             </a>
             
@@ -1345,13 +1345,13 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-53a8ca"></div>
+        <div id="example-761ed5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FWizardExampleAddStep-53a8ca.js"></script>
+        <script type="module" src="./FWizardExampleAddStep-761ed5.js"></script>
     
                 </div>
                 <div>
@@ -1418,11 +1418,8 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
                 <span class="hljs-variable language_">this</span>.<span class="hljs-property">fruktkorgar</span>.<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);
             }
         },
-        <span class="hljs-title function_">onBeforeNext</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> {
-                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Här kanska man anropar backend för att kontrollera något?&quot;</span>);
-                <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">2000</span>);
-            });
+        <span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-keyword">void</span> {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Här kanske man anropar backend för att kontrollera något?&quot;</span>);
         },
         <span class="hljs-title function_">onCompleted</span>(<span class="hljs-params"></span>) {
             <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Tack för din beställning! 🙏 Applikationsspecifik logik tar det vidare.&quot;</span>);
@@ -1487,7 +1484,7 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
                 <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;baz&quot;</span>
                 <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myInfoStep&#x27;&quot;</span>
                 <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Mina uppgifter&quot;</span>
-                @<span class="hljs-attr">before-next</span>=<span class="hljs-string">&quot;onBeforeNext&quot;</span>
+                <span class="hljs-attr">:before-next</span>=<span class="hljs-string">&quot;onBeforeNext&quot;</span>
             &gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Min adress<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-wizard-step</span>&gt;</span>
@@ -2006,9 +2003,9 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/68a7e144b63d42882e2bccc807b7a5bc8f00dda6">68a7e14</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/92f8c0a7e0ae30af2fcfe1444335522f5ad84771">92f8c0a</a>)<br />
         
-        2026-02-17 13:08
+        2026-02-17 13:46
 </div>
 <div class="toolbar__item">
     <form id="version">
