@@ -106,6 +106,7 @@
 
     &__body {
         background-color: $expandablepanel-body-color-background-default;
+        color: $expandablepanel-body-color-text-default;
         border: var(--f-border-width-medium) solid $expandablepanel-heading-color-border;
         border-top: 0;
         border-radius: 0 0 var(--f-border-radius-medium) var(--f-border-radius-medium);
