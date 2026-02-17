@@ -214,20 +214,23 @@ export default defineComponent({
             </f-validation-form>
         </template>
         <template #footer>
-            <div class="button-group">
-                <button
-                    v-for="button in preparedButtons"
-                    :key="button.label"
-                    :type="button.buttonType"
-                    :class="button.classlist"
-                    class="button-group__item"
-                    :form="button.buttonType === 'submit' ? formId : undefined"
-                    @click="button.buttonType === 'button' ? onCancel() : false"
-                >
-                    <span>{{ button.label }}</span>
-                    <span v-if="button.screenreader" class="sr-only">&nbsp;{{ button.screenreader }}</span>
-                </button>
-            </div>
+            <!-- @slot Slot for the footer. -->
+            <slot name="footer">
+                <div class="button-group">
+                    <button
+                        v-for="button in preparedButtons"
+                        :key="button.label"
+                        :type="button.buttonType"
+                        :class="button.classlist"
+                        class="button-group__item"
+                        :form="button.buttonType === 'submit' ? formId : undefined"
+                        @click="button.buttonType === 'button' ? onCancel() : false"
+                    >
+                        <span>{{ button.label }}</span>
+                        <span v-if="button.screenreader" class="sr-only">&nbsp;{{ button.screenreader }}</span>
+                    </button>
+                </div>
+            </slot>
         </template>
     </f-modal>
 </template>

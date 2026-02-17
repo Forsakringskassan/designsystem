@@ -1210,7 +1210,13 @@ module.exports = defineMetadata({
         flow: true,
         interactive: true,
         phrasing: false,
-        slots: ["default", "header", "error-message", "input-text-fields"],
+        slots: [
+            "default",
+            "header",
+            "error-message",
+            "input-text-fields",
+            "footer",
+        ],
         permittedContent: ["@flow", "template"],
         attributes: {
             "aria-close-text": {},
@@ -1232,6 +1238,10 @@ module.exports = defineMetadata({
     },
 
     "f-form-modal#input-text-fields": {
+        permittedContent: ["@flow"],
+    },
+
+    "f-form-modal#footer": {
         permittedContent: ["@flow"],
     },
 

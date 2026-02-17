@@ -453,6 +453,7 @@ describe("html-validate", () => {
         ${"header"}            | ${"<f-form-modal><template #header>Header</template></f-form-modal>"}
         ${"error-message"}     | ${"<f-form-modal><template #error-message>Error</template></f-form-modal>"}
         ${"input-text-fields"} | ${"<f-form-modal><template #input-text-fields></template></f-form-modal>"}
+        ${"footer"}            | ${"<f-form-modal><template #footer></template></f-form-modal>"}
     `("should allow $slotName slot", ({ html }) => {
         expect.assertions(1);
 
