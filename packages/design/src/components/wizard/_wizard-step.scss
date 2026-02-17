@@ -117,6 +117,7 @@ $icon-size: 30px;
     }
 
     .wizard-step__content {
+        color: $wizardstep-color-text-default;
         margin-left: 0.5rem;
         min-width: 0;
         grid-area: wizard-step__content;
