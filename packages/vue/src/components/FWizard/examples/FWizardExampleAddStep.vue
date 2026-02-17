@@ -47,7 +47,7 @@ export default defineComponent({
             }
         },
         onBeforeNext(): void {
-            console.log("Här kanska man anropar backend för att kontrollera något?");
+            console.log("Här kanske man anropar backend för att kontrollera något?");
         },
         onCompleted() {
             alert("Tack för din beställning! 🙏 Applikationsspecifik logik tar det vidare.");

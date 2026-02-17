@@ -17,6 +17,6 @@ it("should log message from beforeNext callback", () => {
 
     cy.get("@log").should(
         "be.calledWith",
-        "Här kanska man anropar backend för att kontrollera något?",
+        "Här kanske man anropar backend för att kontrollera något?",
     );
 });
