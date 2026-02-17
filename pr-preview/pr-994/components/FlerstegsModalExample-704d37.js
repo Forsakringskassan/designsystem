@@ -120,9 +120,13 @@ var FlerstegsModal_default = defineComponent({
       treeData: DIALOGUE_TREE_DATA,
       value: {
         organisationNumber: ""
-      },
-      hideSubmitButton: true
+      }
     };
+  },
+  computed: {
+    hideSubmitButton() {
+      return !this.current.lastStep;
+    }
   },
   methods: {
     onClose(event) {
@@ -133,9 +137,6 @@ var FlerstegsModal_default = defineComponent({
     },
     onSubmit(event) {
       this.$emit("submit", event);
-    },
-    onLastStepReached() {
-      this.hideSubmitButton = false;
     }
   }
 });
@@ -174,8 +175,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _createVNode(_component_f_dialogue_tree, {
         modelValue: _ctx.current,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.current = $event),
-        "dialogue-tree": _ctx.treeData,
-        onLastStepReached: _ctx.onLastStepReached
+        "dialogue-tree": _ctx.treeData
       }, {
         default: _withCtx(({ userData }) => [
           userData.label ? _withDirectives((_openBlock(), _createBlock(_component_f_organisationsnummer_text_field, {
@@ -194,7 +194,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 1
         /* STABLE */
-      }, 8, ["modelValue", "dialogue-tree", "onLastStepReached"])
+      }, 8, ["modelValue", "dialogue-tree"])
     ]),
     _: 1
     /* STABLE */
