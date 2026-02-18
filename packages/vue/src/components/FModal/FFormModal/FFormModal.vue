@@ -215,7 +215,7 @@ export default defineComponent({
         </template>
         <template #footer>
             <!-- @slot Slot for the footer. -->
-            <slot name="footer">
+            <slot name="footer" v-bind="{ onCancel }">
                 <div class="button-group">
                     <button
                         v-for="button in preparedButtons"

@@ -92,5 +92,8 @@ export default defineComponent({
                 </template>
             </f-dialogue-tree>
         </template>
+        <template #footer="{ onCancel }">
+            <button type="button" @click="onCancel">...</button>
+        </template>
     </f-form-modal>
 </template>
