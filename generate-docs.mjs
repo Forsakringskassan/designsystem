@@ -132,7 +132,7 @@ const docs = new Generator(import.meta.url, {
     },
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
-    exampleFolders: ["./packages/vue/src", "./docs"],
+    exampleFolders: ["./packages/vue/src", "./docs", "./packages/vue-labs/src"],
     templateFolders: ["./docs-alt/templates", "./docs/templates"],
     markdown: {
         messagebox: {
@@ -230,11 +230,6 @@ try {
     console.log(); // intentional blank line
     await copyDocs("@fkui/date", "packages/date/typedoc", "public/date");
     await copyDocs("@fkui/logic", "packages/logic/typedoc", "public/logic");
-    await copyDocs(
-        "@fkui/vue-labs",
-        "packages/vue-labs/public",
-        "public/vue-labs",
-    );
     await copyDocs(
         "@fkui/vue-sandbox",
         "internal/vue-sandbox/dist",

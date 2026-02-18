@@ -10,6 +10,7 @@
         "declarationDir": "temp/cypress",
         "allowJs": true,
         "paths": {
+            "@fkui/vue-labs/cypress": ["./src/cypress/index.ts"],
             "@fkui/vue-labs": ["./src/index.ts"]
         },
         "skipLibCheck": true,

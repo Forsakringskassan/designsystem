@@ -492,6 +492,7 @@ export default defineComponent({
                 <div v-if="options" class="text-field__append-inner">
                     <i-combobox-toggle-button
                         :disabled
+                        :is-open="dropdownIsOpen"
                         :aria-controls="dropdownIsOpen ? dropdownId : undefined"
                         :aria-expanded="dropdownIsOpen"
                         @toggle="toggleDropdown"

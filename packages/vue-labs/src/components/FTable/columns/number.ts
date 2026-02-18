@@ -12,7 +12,6 @@ import {
     getUpdateFn,
     getValueFn,
 } from "./helpers";
-import { type NormalizedTableColumnText } from "./text";
 
 /**
  * @public
@@ -27,6 +26,12 @@ export interface TableColumnNumber<
     label?(this: void, row: T): string;
     tnum?: boolean;
     align?: "left" | "right";
+    attributes?:
+        | Record<string, string | number | boolean | undefined>
+        | ((
+              this: void,
+              row: T,
+          ) => Record<string, string | number | boolean | undefined>);
     value?(this: void, row: T): string | number;
     update?(
         this: void,
@@ -55,9 +60,15 @@ export interface NormalizedTableColumnNumber<
     readonly align: "left" | "right";
     readonly component: Component<{
         row: T;
-        column: NormalizedTableColumnText<T, K>;
+        column: NormalizedTableColumnNumber<T, K>;
         activeErrorAnchor?: HTMLElement;
     }>;
+    attributes?:
+        | Record<string, string | number | boolean | undefined>
+        | ((
+              this: void,
+              row: T,
+          ) => Record<string, string | number | boolean | undefined>);
     label(this: void, row: T): string;
     value(this: void, row: T): string | number;
     update(
@@ -88,6 +99,7 @@ export function normalizeNumberColumn<T, K extends keyof T>(
         decimals,
         tnum: column.tnum ?? defaultTnumValue(type),
         align: column.align ?? "right",
+        attributes: column.attributes,
         value: getValueFn(column.value, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
         editable:

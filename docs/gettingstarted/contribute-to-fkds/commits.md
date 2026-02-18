@@ -4,6 +4,7 @@ layout: article
 ---
 
 I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.
+Du skriver commitmeddelandet på engelska och det får max innehålla 72 tecken.
 
 Commitmeddelanden använder en modifierad variant av [Conventional Commits][conventional-commits] där skillnaden är att vi kräver en Jira-referens i slutet:
 
@@ -18,28 +19,26 @@ där:
 - `${relation}` är hur commit relaterat till en Jira, `refs` eller `fixes`.
 - `${jira}` är den Jira som commit relaterar till.
 
-::: info Exempelvis
+Skriv till exempel:
 
 ``feat: new component `FFoobar` (fixes XYZ-123)``
 
-:::
-
-Scope sätter vi enbart i undantagsfall då det populeras automatiskt i Changelog.
+Du sätter scope enbart i undantagsfall då det populeras automatiskt i Changelog.
 Vanligt undantag är `chore(deps)` för beroenden, `chore(release)` för releaser samt `refactor(${verktyg})` och `style(${verktyg})`.
 
 ## Typ
 
 Den viktigaste beståndsdelen är `type` som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.
 
-De vanligaste två är `feat` (ny funktionallitet) och `fix` (rättning av existerande funktionallitet).
+De vanligaste två är `feat` (ny funktionalitet) och `fix` (rättning av existerande funktionalitet).
 Andra vanliga är `docs` (ändring enbart av dokumentation) och `refactor` (interna förändringar som inte påverkar konsument).
 
 ::: details Tillgängliga typer
 
 | Typ              | Release | Changelog | Beskrivning                                                                         |
 | ---------------- | ------- | --------- | ----------------------------------------------------------------------------------- |
-| `fix`            | Patch   | Ja        | Rättning av existerande funktionallitet eller komponent                             |
-| `feat`           | Minor   | Ja        | Ny funktionallitet eller komponent.                                                 |
+| `fix`            | Patch   | Ja        | Rättning av existerande funktionalitet eller komponent                              |
+| `feat`           | Minor   | Ja        | Ny funktionalitet eller komponent.                                                  |
 | `build`          | -       |           | Ändringar av byggscript.                                                            |
 | `chore(deps)`    | -       |           | Ändringar av beroenden.                                                             |
 | `chore(release)` | -       |           | Release (ej manuellt, används för automatiska releaser).                            |
@@ -59,22 +58,19 @@ Läs mer om {@link release#brytande_andringar brytande ändringar}.
 
 Ett bra commitmeddelande ska:
 
-- Beskriva vilken eller vilka komponenter eller funktioner som berörs. Skriv "add new prop `foo` on component `FBar`" istället för `"add new prop"` eller "add new prop `foo`" eftersom läsaren inte känner till sammanhanget.
+- Beskriva vilken eller vilka komponenter eller funktioner som berörs.
+  Skriv "add new prop `foo` on component `FBar`" istället för `"add new prop"` eller "add new prop `foo`" eftersom läsaren inte känner till sammanhanget.
 - Undvika att benämna ramverkskomponenter ("i-komponenter") utan skriv istället de publika komponenter ("f-komponenter") som påverkas av ändringen.
 
-::: info Bra meddelande
+Exempel på bra meddelande:
 
 - feat: add new prop `foo` on component `FBar` (refs XYZ-123)
 - fix: fix styling issue when clicking on `FBaz` (fixes XYZ-123)
 
-:::
-
-::: danger Undvik
+Undvik:
 
 - feat: add new prop (refs XYZ-123)
 - fix: WIP (fix XYZ-123)
-
-:::
 
 ## Commitlint
 
@@ -94,6 +90,8 @@ git commit --no-verify -m 'non-conforming message'
 
 För feature-branches rekommenderar vi detta arbetsflödet för dina commits:
 
-1. För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch). Denna commit ska använda `feat` eller `fix` som type.
-2. Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda `git commit --fixup` eller skapar en ny commit med `refactor` som type.
-3. Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups men även de commits som använder `refactor` (vars syfte inte är att göra en refaktorisering av kod som inte skapats i denna branch).
+1. För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch).
+   Denna commit ska använda `feat` eller `fix` som type.
+2. Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda `git commit --fixup` eller skapa en ny commit med `refactor` som type.
+3. Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups.
+   Slå även ihop commits av typen `refactor` som avser refaktorisering av kod som tillkommit i din branch.

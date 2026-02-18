@@ -1,5 +1,5 @@
-import { FTablePageObject } from "../../../../src/cypress";
 import Example from "./FTablePageObject-headerTitle.vue";
+import { FTablePageObject } from "@fkui/vue-labs/cypress";
 
 it("headerTitle() should get correct header title text.", () => {
     cy.mount(Example);

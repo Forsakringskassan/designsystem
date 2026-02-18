@@ -11,10 +11,12 @@ import {
 import { type ComponentValidityEvent, IPopupError, dispatchComponentValidityEvent } from "@fkui/vue";
 import { useElementHover, useEventListener, useFocusWithin } from "@vueuse/core";
 import { type PopupError } from "./PopupEror";
+import { isColumnTypeNumber } from "./columns/helpers";
+import { inputFieldConfig } from "./input-fields-config";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { useStartStopEdit } from "./start-stop-edit";
-import { type NormalizedTableColumnText } from "./table-column";
+import { type NormalizedTableColumnNumber, type NormalizedTableColumnText } from "./table-column";
 
 interface ValidationFacade {
     validateElement(element: string | Element | null): Promise<ValidationResult>;
@@ -27,7 +29,7 @@ const {
     activeErrorAnchor = undefined,
 } = defineProps<{
     row: T;
-    column: NormalizedTableColumnText<T, K>;
+    column: NormalizedTableColumnText<T, K> | NormalizedTableColumnNumber<T, K>;
     activeErrorAnchor?: HTMLElement;
 }>();
 
@@ -99,6 +101,23 @@ const ariaLabel = computed(() => {
     }
 
     return value.length > 0 ? value : undefined;
+});
+
+const columnAttributes = computed(() => {
+    if (column.attributes && typeof column.attributes === "function") {
+        return column.attributes(row);
+    } else {
+        return column.attributes;
+    }
+});
+
+const configAttributes = computed(() => {
+    let decimals: number | undefined = undefined;
+
+    if (isColumnTypeNumber(column)) {
+        decimals = column.decimals;
+    }
+    return inputFieldConfig[column.type].attributes({ decimals });
 });
 
 const tdElement = useTemplateRef("td");
@@ -225,13 +244,14 @@ function fromColumnValue(): string {
     const value = column.value(row);
 
     if (validity.value.isValid) {
-        return column.formatter(value) ?? value;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- type of value must always match between column.value() and column.formater()
+        return column.formatter(value as any) ?? value.toString();
     }
 
-    return value;
+    return value.toString();
 }
 
-function toColumnValue(value: string): string {
+function toColumnValue(value: string): unknown {
     assertRef(validity);
 
     if (validity.value.isValid) {
@@ -246,7 +266,8 @@ function updateColumnValue(): void {
     const newValue = toColumnValue(viewValue.value);
 
     if (oldValue !== newValue) {
-        column.update(row, newValue, oldValue);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- type of value must always match between column.parse() and column.update()
+        column.update(row, newValue as any, oldValue as any);
     }
 }
 
@@ -364,6 +385,7 @@ function onPendingValidity(): void {
                 maxlength="40"
                 tabindex="-1"
                 :aria-label
+                v-bind="{ ...configAttributes, ...columnAttributes }"
                 @validity="onValidity"
                 @pending-validity="onPendingValidity"
             />

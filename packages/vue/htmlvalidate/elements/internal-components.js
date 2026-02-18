@@ -282,5 +282,11 @@ module.exports = defineMetadata({
     "i-combobox-toggle-button": {
         flow: true,
         interactive: true,
+        attributes: {
+            "is-open": {
+                boolean: true,
+                required: true,
+            },
+        },
     },
 });
