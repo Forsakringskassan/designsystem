@@ -27,7 +27,8 @@
       "require": "./dist/cjs/cypress.cjs.js",
       "import": "./dist/esm/cypress.esm.js"
     },
-    "./style.css": "./dummy.css"
+    "./style.css": "./dummy.css",
+    "./htmlvalidate": "./htmlvalidate/index.cjs"
   },
   "main": "./dist/cjs/index.cjs.js",
   "module": "./dist/esm/index.esm.js",
