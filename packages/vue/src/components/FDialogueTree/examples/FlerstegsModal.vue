@@ -27,31 +27,53 @@ export default defineComponent({
                 label: "",
                 lastStep: true,
                 steps: [],
-            } satisfies FDialogueTreeUserProgress,
+            } as FDialogueTreeUserProgress,
             treeData: DIALOGUE_TREE_DATA,
             value: {
                 organisationNumber: "",
             },
-            buttons: [
-                {
-                    label: "Avbryt",
-                    type: "secondary",
-                    screenreader: "formuläret",
-                    event: "dismiss",
-                },
-            ] as FModalButtonDescriptor[],
         };
+    },
+    computed: {
+        buttons(): FModalButtonDescriptor[] {
+            if (this.current.lastStep) {
+                return [
+                    {
+                        label: "Avbryt",
+                        type: "secondary",
+                        screenreader: "formuläret",
+                        event: "dismiss",
+                    },
+                    {
+                        label: "Lägg till",
+                        type: "primary",
+                        screenreader: "lägg till knapp",
+                        event: "submit",
+                        submitButton: true,
+                    },
+                ];
+            } else {
+                return [
+                    {
+                        label: "Avbryt",
+                        type: "secondary",
+                        screenreader: "formuläret",
+                        event: "dismiss",
+                    },
+                ];
+            }
+        },
     },
     methods: {
         onClose(event: Event): void {
-            this.buttons = [
+            /* this.buttons = [
                 {
                     label: "Avbryt",
                     type: "secondary",
                     screenreader: "formuläret",
                     event: "dismiss",
                 },
-            ];
+            ]; */
             this.$emit("close", event);
         },
         onCancel(event: Event): void {
@@ -61,7 +83,7 @@ export default defineComponent({
             this.$emit("submit", event);
         },
         onChange(event: FDialogueTreeUserProgress): void {
-            if (event.lastStep) {
+            /* if (event.lastStep) {
                 this.buttons.push({
                     label: "Lägg till",
                     type: "primary",
@@ -69,7 +91,7 @@ export default defineComponent({
                     event: "submit",
                     submitButton: true,
                 });
-            }
+            } */
         },
     },
 });
@@ -80,7 +102,11 @@ export default defineComponent({
         <template #header> {{ current.label }} </template>
         <template #error-message>Oj, du har glömt fylla i något. Gå till:</template>
         <template #input-text-fields>
-            <f-dialogue-tree v-model="current" :dialogue-tree="treeData" @change="onChange">
+            <f-dialogue-tree
+                v-model="current"
+                :dialogue-tree="treeData"
+                @update:model-value="onChange"
+            >
                 <template #default="{ userData }">
                     <template v-if="userData.label">
                         <f-organisationsnummer-text-field
@@ -91,9 +117,6 @@ export default defineComponent({
                     </template>
                 </template>
             </f-dialogue-tree>
-        </template>
-        <template #footer="{ onCancel }">
-            <button type="button" @click="onCancel">...</button>
         </template>
     </f-form-modal>
 </template>
